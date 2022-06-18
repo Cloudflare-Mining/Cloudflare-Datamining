@@ -12,7 +12,16 @@ async function run(){
 		limit: 1000,
 	});
 
-	const data = rawData.map((pkg) => {
+	const rawMaintainers = rawData.flatMap(pkg => pkg.maintainers);
+	const uniqueMaintainers = [];
+	for(const maintainer of rawMaintainers){
+		if(!uniqueMaintainers.some(findMaintainer => findMaintainer.username === maintainer.username)){
+			uniqueMaintainers.push(maintainer);
+		}
+	}
+	await fs.writeFile(path.resolve('../data/npm-maintainers.json'), JSON.stringify(uniqueMaintainers, null, 4));
+
+	const packages = rawData.map((pkg) => {
 		return {
 			name: pkg.name,
 			description: pkg.description,
@@ -21,7 +30,7 @@ async function run(){
 			links: pkg.links,
 		};
 	}).sort((pkgA, pkgB) => (pkgA.date < pkgB.date ? 1 : -1));
-	await fs.writeFile(path.resolve('../data/npm.json'), JSON.stringify(data, null, 4));
+	await fs.writeFile(path.resolve('../data/npm.json'), JSON.stringify(packages, null, 4));
 
 	console.log('Pushing!');
 	const prefix = dateFormat(new Date(), 'd mmmm yyyy');
