@@ -22,10 +22,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-      - name: 'Run my scripts'
+      - name: 'NPM scripts mine'
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
           cd scripts
           npm ci
           npm run npm
+          npm run types
