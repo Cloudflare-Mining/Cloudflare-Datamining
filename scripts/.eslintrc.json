@@ -1,0 +1,21 @@
+{
+	"root": true,
+	"extends": [
+		"@nodecraft"
+	],
+	"plugins": [
+		"json"
+	],
+	"rules": {
+		"node/no-unsupported-features/es-syntax": "off",
+		"node/no-missing-import": "off"
+	},
+	"parserOptions": {
+		"allowImportExportEverywhere": true,
+		"ecmaVersion": 2020,
+		"ecmaFeatures": {
+			"impliedStrict": true
+		},
+		"sourceType": "module"
+	}
+}

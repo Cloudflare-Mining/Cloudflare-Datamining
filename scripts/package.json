@@ -1,0 +1,28 @@
+{
+	"name": "cf-datamining",
+	"version": "1.0.0",
+	"description": "",
+	"keywords": [],
+	"license": "MIT",
+	"author": "",
+	"type": "module",
+	"main": "data.js",
+	"scripts": {
+		"npm": "node src/npm.js",
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix"
+	},
+	"devDependencies": {
+		"@nodecraft/eslint-config": "18.1.0",
+		"dateformat": "5.0.3",
+		"dotenv": "16.0.1",
+		"eslint": "8.18.0",
+		"eslint-plugin-import": "2.26.0",
+		"eslint-plugin-json": "3.1.0",
+		"eslint-plugin-node": "11.1.0",
+		"eslint-plugin-unicorn": "42.0.0",
+		"libnpmsearch": "5.0.3",
+		"node-fetch": "3.2.6",
+		"simple-git": "3.8.0"
+	}
+}
