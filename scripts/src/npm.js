@@ -16,7 +16,9 @@ async function run(){
 	const uniqueMaintainers = [];
 	for(const maintainer of rawMaintainers){
 		if(!uniqueMaintainers.some(findMaintainer => findMaintainer.username === maintainer.username)){
-			uniqueMaintainers.push(maintainer);
+			uniqueMaintainers.push({
+				username: maintainer.username
+			});
 		}
 	}
 	await fs.writeFile(path.resolve('../data/npm-maintainers.json'), JSON.stringify(uniqueMaintainers, null, 4));
