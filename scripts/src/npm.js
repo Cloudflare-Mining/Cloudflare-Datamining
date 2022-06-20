@@ -17,7 +17,7 @@ async function run(){
 	for(const maintainer of rawMaintainers){
 		if(!uniqueMaintainers.some(findMaintainer => findMaintainer.username === maintainer.username)){
 			uniqueMaintainers.push({
-				username: maintainer.username
+				username: maintainer.username,
 			});
 		}
 	}
