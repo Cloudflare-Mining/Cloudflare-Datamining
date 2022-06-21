@@ -163,7 +163,12 @@ export const LoadBalancer = eg.object({
   session_affinity_attributes: eg.object({
     samesite: eg.string,
     secure: eg.string,
-    drain_duration: eg.number.optional
+    drain_duration: eg.number.optional,
+    zero_downtime_failover: eg.union([
+      eg.literal('none'),
+      eg.literal('temporary'),
+      eg.literal('sticky')
+    ]).optional
   }),
   session_affinity_ttl: eg.number.optional,
   steering_policy: eg.union([
