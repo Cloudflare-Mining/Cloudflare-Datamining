@@ -1,0 +1,355 @@
+{
+	"name": "@cloudflare/util-mock-api",
+	"dist-tags": {
+		"latest": "1.0.17"
+	},
+	"versions": {
+		"1.0.1": {
+			"name": "@cloudflare/util-mock-api",
+			"version": "1.0.1",
+			"dependencies": {
+				"fetch-mock": "^8.3.2",
+				"path-to-regexp": "^5.0.0"
+			},
+			"devDependencies": {
+				"@types/fetch-mock": "^7.3.2"
+			},
+			"dist": {
+				"integrity": "sha512-b4+w9maT0WiHRoVzYpy/Q1Bulc5o1UjYsLfn2vsMwGVrwzq7cJp0XV6BdWJn1pFw7vaRpifzQssk5EX/lprR+w==",
+				"shasum": "30197ae7402c95e3fe33c91019d842c3c87f3728",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-mock-api/-/util-mock-api-1.0.1.tgz",
+				"fileCount": 11,
+				"unpackedSize": 16252,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeTY65CRA9TVsSAnZWagAAhC4P/i77dxoQHgi9C5KAA5Dx\nZ1M1NnemMZcnqJnLtL+RAymD1HSKkXyEzt/cHdxZDYDHWXahp4C3rYZIPsQQ\nzzjwlkcKX79//4gaBF/oM1fdjj69k9jjSrUjEsk9uViK78Z3ILbRoAL2xsxF\nHiYfthVwiDJFVbF2G3/M/KGqrJbPG068v1CHQv7fc49qQvZpmcbZUFnp+auD\nNzFAhmdPKgtOQ/unqbWSx5s2tet4/INGvucWRffeEWpjysZYTHCQ0Ef7KoXm\nrYaTpo1iJFiZfnms4I2QlWxU+Ae5EjYcAN1o+Go1ILt0ekga0dBW9LcdmTrx\n5bBQaJJzhxeOM+1vgEdlynpw6IAMdXZd1DwMnsG2KCb0cAw7wXugASn/0od1\nrVD62M4Z3cWoGnP6gACFFnJvJ7LoL+4G17hKamIFOrrhv+Xp4GNXU1DbYJQ3\nIgl7lpZRwZtwfFoa0lFXpvJyUNOd5/pd295zpNYqKV/kdQspHhFfk+u/pjpe\nyTlbxfqXWHGuqGAMQoiTAAzCgKAaiRoS+xu6p9Cey7kG42rXKZit4H3+iq9q\nFTXvL2k1QXLjIUKypAjvvnGS4ABf08Fp73YvDH7/W3K0/shQTDjJY3V9xrv4\naseUCKbGN1SfeTYVip219jRzYfSMlGIfEBdWlda9v1Fa8puos08QrlDHMl1j\ndBTr\r\n=2NWR\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCnC3bmG/Az3IrA4qL494pook0JZIHI50RxoJxlpwvocwIgL33spe0mpS0oBRMaA/Mw16iw4Gxi5VfuUXHMXL3jHp4="
+					}
+				]
+			}
+		},
+		"1.0.2": {
+			"name": "@cloudflare/util-mock-api",
+			"version": "1.0.2",
+			"dependencies": {
+				"@types/fetch-mock": "^7.3.2",
+				"fetch-mock": "^8.3.2",
+				"path-to-regexp": "^5.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-fEVDmHTWTg2mTYLILwCCFYGbxXVc/3lxs01X+GEwSyy3eLd6nCkFI+21nrkkVwznjURUPwxne20siegqDRexOg==",
+				"shasum": "91dd7da20eff5dfbd83dbc9fd648fcb98fdf6967",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-mock-api/-/util-mock-api-1.0.2.tgz",
+				"fileCount": 19,
+				"unpackedSize": 16667,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeo1prCRA9TVsSAnZWagAAzHoP/RPNbP0YwvSuojglyZUs\nqFJYEnVXo5S/p33+d95dPVsd51T3/inNaDqYsVw2gt7C2LIc+jQEBR3rDg++\n10FCvzJHBQ4tspc2+4tZ0Z/mzFX8RNaDe7+umIWyfDNRJtqHY4jtaItL7vMw\nGDXhWAm1noyg/6/d2Ak4/FMtN8DPhOiUZPH83HpbMOAU1mFY0zOqJU/b9UZZ\nyeW2HDkIFXi2zCOOStVJBf9AdG0Gi4bVDertyQF2L1dXyeqnB3SlFVoFWUbE\n6kF3bq2zKxFu6JMiCgs2MpWAaPxqjy8mokB67WQrg1wM4d5juGOQsLS0yuPT\n3X+P0VaoRFSbJl4KPaX6DVtcUp3zrPQZIadtgwzbngtCgwBrh0lKNz7YMQNl\ngXrZ3uT5Pbdm1KxVi8FaEbjIam4xsXNioS6owZ5f2qYm5PGszRyKrsFP4isy\ntSQ2b3hPCr+a0+yzAvwUMfFo4+LZi/CffluPMN05egxZbDIsM9cRRj7Gl16f\nLfzFso5Ir9gepHrPEm4hVZ954OqXp/jYfkNhJoQdOj0OqQ1yAdjLSElSDqTx\nFIyhhxhBIeiXLW40NuZB4pA/OYUSJTW2g6ox4ZJbOgLxXWiZMsT0wnt9K3PS\nddur60mZyCLN+q9IOJxljismFeZV1xUkM5lgZZyfg/+ypVUml0sDsyveVm/I\nhrIJ\r\n=AKSI\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIDNuxoRj/GPoT/eUKuqQCUfYBxDADquguMtRVWQKbeAaAiBTf3hBtDuuuf/2x5N77x2MyPP5sEilX03yOGHW1LonTw=="
+					}
+				]
+			}
+		},
+		"1.0.4": {
+			"name": "@cloudflare/util-mock-api",
+			"version": "1.0.4",
+			"dependencies": {
+				"@types/fetch-mock": "^7.3.2",
+				"fetch-mock": "^8.3.2",
+				"path-to-regexp": "^5.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-aYSnMpzcajLXA12m/8ggx6IUWkJxZNJEDglRVTHkbRM0S5H9YSDbA5Fq01f17zPyAKPsHdQfXLXAw7wWZSs98w==",
+				"shasum": "60ba9e05298d40fc237c3fe22bf22baa3a517c16",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-mock-api/-/util-mock-api-1.0.4.tgz",
+				"fileCount": 19,
+				"unpackedSize": 16876,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeo5dPCRA9TVsSAnZWagAAmrgP/jnEa0VKVfXiWK7mjA1G\nUm/skyMBsuR62kzpK16+HUhpm7qX6s1VLQkg1vCtC29aVlI4+sYtXZjiOcT9\nefgsDegL86MoqoIP6/AcfVWZrjfzoi0lnOtM+EIwWTTlCUsqehj/ZPZzAueu\nGDpmvjPidWwJru4Qp0DosGjwhPglKkYGb5o1952ykslyhJlcNcoz8Do//08n\nkDHzL95Cs25z2OpbUWgcc14VBvJywB/OiP101XF6I5+eauyb7PIHatHYfso6\nymdpIUzyVXwYaJNMr7o0/zP3kVg5jQF0yS7IjGq7DvXVvfrkz2B3g2YikqgE\ncJriAoliNnIaZvbloYHFqhD6jUrMx7mQeImj8zymgnvtHAlQdXD/Grw10wT8\nRKEz3is28TDS/H9dZyH15Fpa3R2GHgBPj9oOTKYgbLqwqnrvddRjHlisgr3M\nOLBIBMohtrWO/EhU74FJ3cXFSSU1GtV825oj47N4GIBNFeAVhYDgyxhyKfn0\nMebvUujzaQsv+moRBivcWPGCJxWkUgEFgUaaxje6D9k+McxEUp/UnCkPcAQF\nHlzLSkw1K79OS4j1VWsBJ7DGWwkU5jXMgPxq0CbWDCtFwiTD1ObLmdtuLTpf\ncb0DOK26CM9z7/PHhRXZY0xLHQ8cm9f5Z1j5Vz9yHcorbaOJ5Krq87N5FsMm\nTKuC\r\n=fSAJ\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIF7aFnLayguLrgJwTisiR+R2mfvMRezAHPUs8l1K0ZNUAiEAuFCwBlyyhNrD+PvsvhYi5lVUaC9lciXzAHV7Upbn2fA="
+					}
+				]
+			}
+		},
+		"1.0.6": {
+			"name": "@cloudflare/util-mock-api",
+			"version": "1.0.6",
+			"dependencies": {
+				"@types/fetch-mock": "^7.3.2",
+				"fetch-mock": "^8.3.2",
+				"path-to-regexp": "^5.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-4yRy4z39jHVVe+aylnaOpJhu3BxiO3WRQI1V7hyVIWQaJMR3xYDDSBj1P6MIi7AZrcHa17OBerFXZtx5SP/CBg==",
+				"shasum": "788d91725bbaf26d376222f483f1efc054a18891",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-mock-api/-/util-mock-api-1.0.6.tgz",
+				"fileCount": 15,
+				"unpackedSize": 18109,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJepySGCRA9TVsSAnZWagAAbrgP/jX8Ad5cE+Nw9kAe/ANu\nkRPlZh41wAnIjtcGfJFxC3pxw7KC3AeH2YcZs5iqpf+rGFQzSm+cs0AwAilR\nXzzxc2JFXWzGfM2pkU6Fys7FEmDlU8c5hEYiPW3NgymK1c4CfuZoMmN/o5Hn\nvvzKx9v7tv03Hc1EKx1rcrMQpvTMjxxhNc7p67Q2ULjgu39tOAIz0p87roZi\nfEtHwSguBU6NteZcbQYtUUdfJ0ntYoF8P0BlKAAkDv91vgu7SaF7w2bZIQ6m\n0Mdo+qTAPx3F1d0bshrAbSmyKlYpycBhGX6gZHvOmblZHZ6Mp9CmdST2gJrs\nJ4frwnSLmVCmD2aSQ0STbhldaJ2NzUybV3SJ3Af6Vh6xFH6hcLVSllY0BMKa\ncdDjG5FeuUVUjnysL9J3Gv3c9i2TAx8RKkkR8oxeG1bVUcZ8U9j3Z4U7oyuU\ncgYm3LYmdMWcTDwNsIyr2nds0/voF+ApZ+xowkAQruG49e8vT+6QLmkj5aLj\nsT+d6ECCyZmJOuI64NnWFhMmPHN/hSvZe9OxxjYjkT5ISFe0VDW4zKtnmpRJ\nRVV4nZEG8z9BE2MGiyXMrKhrYbjFil/Z02U/ul7ANhh27C3uryol0g6gIeD6\nAFPOxCfpEkYwBYn00m8oSK3mNriiXgHfmE0UrlS16NTY+ynWd1rozxVJmRxy\n8aOM\r\n=VGi0\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCpI+/DQUD8IB00CEtOsjeQYf6fSkc5UyQzvsgEoPkJ9QIgI/rkjEyqPy/UKmIMFhJstdWNxCKDdtzOvYIb3ZM/m3A="
+					}
+				]
+			}
+		},
+		"1.0.7": {
+			"name": "@cloudflare/util-mock-api",
+			"version": "1.0.7",
+			"dependencies": {
+				"@types/fetch-mock": "^7.3.2",
+				"fetch-mock": "^8.3.2",
+				"path-to-regexp": "^5.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-5wrLBE+GsO06PuzVNBw6DXC38Ga1qFUYAOk/rAAIfQtHJtlgG3Yu/HaDLTsyJ75igi9BA/r/iJ8LhDHw7Qag1g==",
+				"shasum": "e1e12f2c20732bcdc4ea52c61ce73fe491d6dee8",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-mock-api/-/util-mock-api-1.0.7.tgz",
+				"fileCount": 18,
+				"unpackedSize": 20462,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeubDICRA9TVsSAnZWagAA5/4P/0ANXZc1Vc/f9uuVogW1\nXsF35yjc2ho9quhC5rWw4Alh+GX4/MY06SBlvhR5zeEhEUFFacE41UaNbKom\nRRNAH4xTOxxw/JuazIWd4oZG4xP0h4I/m0bAZ1qC/cieW1gQ3WRReBZnpDuJ\n1k4yzQIfA4s+R7mPJAjVArZbSov1vBUsq9I7JF1s8gYA44d+IRmt9bdH02NZ\ntmJT44Ha/cTpSXuxbGWmmfEmBdF2+eQc2LxecddR0hnFwXEMG4sdI6sMFBlQ\nf6rm15K2nDXVyhohPbS0e0GKI1Un6c4Lh+LXfnBD0cZgzU13aujPjevk1jzZ\nLyKFmk5epE5vjs2g8GlHhJTDlMC8EQEqr2oT/+LiiNsaKzGzDV04Q3uvAgWK\nHssXA+ZKWDPJ9CxruAP5+UYIKFVEGFFhDcCv6bSGAqZ7qOt4gNiJSXj9ZEyV\nNzjoNLSN5phaVZ2ha2svwd7mUankgxS7OE+Ty+gL3Upz16k3v0LyCY6qIcAE\nqDx7qactRqPlUgrXnWXOjuFmciP6MrYaXq46dnynMQSzWvpP7E4WUWVdLEuE\n/k45+gCruPAltMIevjvGai6gxduONd0SA0aYG7nE8o8z1Jh/dU0uAxeQlqnt\ns7g2VydZ+4Un1f+9RtFY55Gs/3DInChljmrROYBLRB6dzNFC/rlTI0z0oBFJ\n+5gy\r\n=DGrv\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIGVpnqMWdTAwjlZ3NX6cxYh3hn64/Mxump6/MQXf5J0QAiEA+SUUWb9SxUvRQobpDAU1bsbBfIpJ6fFP8jYOn8c3Hmg="
+					}
+				]
+			}
+		},
+		"1.0.8": {
+			"name": "@cloudflare/util-mock-api",
+			"version": "1.0.8",
+			"dependencies": {
+				"@types/fetch-mock": "^7.3.2",
+				"fetch-mock": "^8.3.2",
+				"path-to-regexp": "^5.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-f+lTlvYIBPeOXsd1THFS60NXb8AjEU2R+Ma2KJV8cCbGwrxCv4aCPsdVBzhLrkOfZNFIHAzizH6yxR3HmtlUfA==",
+				"shasum": "196c2c39e96a344a8e7278adee8096f463a5461e",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-mock-api/-/util-mock-api-1.0.8.tgz",
+				"fileCount": 18,
+				"unpackedSize": 20671,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJe4/+7CRA9TVsSAnZWagAAtbYP/34PbXylqZ4uj+krE834\n9HgHIo1uOl12MviaOV/3gvRPTTVWTsREln2O3HBwBwHtZh3WLuaxoLavsokp\nxRe6Ouk6Tvt3pty1XDFED1mjQ5skLjGs55fpiLnvi2uTJStSxvz/gJ6sqK08\nMEbH5ZLjCc4Q42EbyEGPsotxcr4RNasVg6ZYY0xHumz7a1DYlQHOcOcIFnoO\np/0QmThgjAnlg7xrjpZ3BCYqgVhQGxlqzouaprRukboTy7547KxeE/zkY1hT\naFib8VOtvlSgaM5/eDBZ5qAbZMMI9+4rz3TywW34zfhTEWbVjHJhnbZEptpZ\nntZxH+s/YnP+bwzwEF6IazLCNRtC2OSwwRlJJ39tksx2x+8T57KiCZru+bjQ\nrvKTZu8Mucq1Zfai0ww2OCwoxUH+YY6AB5hnSQxq7QR4nfyjtUgaojWsIhQa\n3Ehjq8kohATPnLnoQboTuv3rdph3N/kOp0bkpk35as1FWma1sETgcz9q/kE7\n/0Tq+ITTHI8L2naq4/6tc2791jkEpeXhVRIwP/hBMh+lnxyNuUom/cytO9g4\nObkFDf4q9iReBFAe8pRtNFR9piYIzKHTcV6dxyE6hQOCyHhUBQFo3ziylQj+\nRBxysNDlEj7rNzl6xY56I37m7qf+84h1eNHVaIYSqQFhXGop2yMA4EzfVaF8\nu04Z\r\n=JUUP\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDPtuC+kZp/qmcHhL4MwAozUSHSmVZzkcD6o5T3kWHX1gIhAKRw2AkuGsu2PKLuhEpxNn34sVtYC0hO54cGPD1HaO4a"
+					}
+				]
+			}
+		},
+		"1.0.9": {
+			"name": "@cloudflare/util-mock-api",
+			"version": "1.0.9",
+			"dependencies": {
+				"@types/fetch-mock": "^7.3.2",
+				"fetch-mock": "^8.3.2",
+				"path-to-regexp": "^5.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-Ba8QidRp7WjRN7d4d1JEvylczOxoiLGmgwqV5P0edybZzb4cLzXHvkAX0iW+Uali5pnMc4i/7WQ0f2tKt3bJhw==",
+				"shasum": "61706c6f412fedb1e048d363fa4a56ae482eba57",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-mock-api/-/util-mock-api-1.0.9.tgz",
+				"fileCount": 18,
+				"unpackedSize": 20880,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJf08hsCRA9TVsSAnZWagAAW74P/0xEcpZcEyrvRd/qLuQ3\nzq5+/bkiF7z+3c9BKNMnHJpn71VNZlEs3ZH/L6svQfP1MgwkpvpytRvxgTyf\nO+OKDLjU/E+nz3QYBL20R/c+maQCBrVNax7GOaPop9TzfIInHvVxwRtPhgc1\njGK7zg3A2Lu0OjctaQZj088khpiN7mH1XK2mUnTKPr1/y4CfBCVseWPWJZLa\neRpd0b6tUlp/QhtnsikCdq5p2oPCADHKlt0VApV2ONl+tOYy1vdv4EubSFg9\ngGRnYhn0f5BClHTZ7cCvJleVKtTqEwRHEPnxOI5vub2m3mYfAwuMH5P5ruRZ\nabBDE7J1PVKo+C3Rz5gyBjiWqU+MaVyYDUKXIsUOfouQUkgsPi7xs8qBkiRK\np3uRqde8/GJE5TCRZH6ic0XXdL2Vw2LjmtloiBtNfikvvmejKXZaxTO9tMRv\nxjjMTDFgTTnx0gxTknBLZwbZRgnt2SptWklvkldGGuZd4HQuZKuvqaFml41q\nGY3UdzIEwSaJoJODvbcPr7p0Fx/s2dNosnBWbw063DK6IyXTDvfjeJWJOylC\nZIjp1LlR7LG3naLug3Vysw4fZGmfxc4go7qz96myZ+Y+iNsHW4tNWKD1xWkX\nJLU+4z7lq3ip9+1UIN1xW5+p1AstUhw70D0sXI5MZdryVRqgiKXwpGi/kVks\nbRtc\r\n=ShPx\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCWa0POdvWFiuJz+oShQAfqwHyzzbeyNtsBRw6XMAZ1RwIhANvZyzBgZfkJCXzoiTFkVvfW8p+TV6cdahcNWknY+Mu5"
+					}
+				]
+			}
+		},
+		"1.0.10": {
+			"name": "@cloudflare/util-mock-api",
+			"version": "1.0.10",
+			"dependencies": {
+				"@types/fetch-mock": "^7.3.2",
+				"fetch-mock": "^8.3.2",
+				"path-to-regexp": "^5.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-dxLK4yHXuISfSTpkaLl4LV6rUaaOth+wAeDIA/RrXhvJxkocm0YDE98t7YJSOnXDV3DhYdREO+eAL74WsNXYqw==",
+				"shasum": "548494b186a963f4f2dec761ead65bce55d1b4e9",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-mock-api/-/util-mock-api-1.0.10.tgz",
+				"fileCount": 18,
+				"unpackedSize": 21092,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJf09UmCRA9TVsSAnZWagAAZgEP/2LOnofVwUUqEiPCLv0a\nA7kdkCo2tDw8mG7DtIRky4MawrC+/+165v8XRwxMrD3MMT7pmnOdco0FPDMQ\nJ7q/i/8r94xq3uTOuIhrdt7aZLCfRFZaBze7QbBxmYQQX3V4ZJosbGtJ3L7k\nZJkszFJ1F9tuGvMny2tY8ZWDo32S2ot+tWxGpx0wlgOFEnAoioQKGbbhZbz4\ntDTN8lfFD0bfbDIrrMMc7LX+sC7pWGdF6nR1g6ClOZRm3jWzbj7hxRJxxUox\n1CEwu3zkr2n5EeSny3i/t9LEdmP6YZ9cUcE9gL1AKNIoWlyUxhBSRttyYjBl\nFoPQNDjFUDtTFTZLpTNLSOOzIhtPShY+n+bQvbBH87QcIjlByXWcomdctJqK\n9xYK/WHWMQaSRWBads7wEs70fCIKEZldPPxbuD3uuvFGzBjIYoLdb0XKtQux\nHMEjlbj2wxfszM15D6RZs5alc0B6Dff6QynoYoHqeqU6z7Y7YMqr7d2CLjrg\nCD3AlFjJE2uYiyzq0SPWHmMZOw5GkHDFtEDlX9YXexYvfkKyF4TKjOvRkXH8\nRaZ281/d7+pWJizXFwuj5DXUM5dZrc7zhD5mpqNhViCxGOCCRQHdlPpUAgXd\npEhWOlEp/8cbyBH0yUkKHdsiwdww5JmSawUdAX89Z9pb4eSVkvVXQOh/LatT\nyXXE\r\n=KcbW\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCyRHXeVLzOn7JOBo1WEFzizNS3O2gNw6qg5JV+AGmtfgIgfa8Tq0DYr2XzTu74EVPqufeaUwjlEmdn+VakVmpEqh4="
+					}
+				]
+			}
+		},
+		"1.0.11": {
+			"name": "@cloudflare/util-mock-api",
+			"version": "1.0.11",
+			"dependencies": {
+				"@types/fetch-mock": "^7.3.2",
+				"fetch-mock": "^8.3.2",
+				"path-to-regexp": "^5.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-cXyuAktgpI2i6tw0cwpHDKoHOb83BTy2adj1k0G84Of6QzD2FmEf59JhZqJreQ8AHoZ9g5cTHhZ3t34x+Ki7uQ==",
+				"shasum": "7a6324f53b25e79df2037851cd3cc2d88494d0d7",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-mock-api/-/util-mock-api-1.0.11.tgz",
+				"fileCount": 18,
+				"unpackedSize": 21304,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJf0+HRCRA9TVsSAnZWagAADTcP/1adXrLWfix4HvFsTlOn\n8z9iPpcHTajtrrFHVkoRznzkIvA+OYkB6z3yqEha/LfvJfXw+LcJ1SSIgUbA\nNioMglivzkWt5ZtBIAxxS4wbneEkIDee3uDLmGeN+ZfW6/D6uYmlHx+N1mIr\nw3Bwpn9uzfFxeBEbsZcJmw4t1mEdFeHkadAoRGpgrzKE0R9DM2IEHO5ROCX7\nrkNPk9g5cPgIDPZg4akbAQOpN8GQLaiSevA4MaF9Hqi2o1qjo16q6zMkUNKO\nihVaI0RdEhyT/VJ5HqlyboOjCCeTQY/+CjiuVmU3htARqFnjPnzZJs+/5JhD\nmQU5crgqZwCgaVA+7rM95efan3sYb1W7tvnHabGh09md5zj+zgr58kWdrBlz\nQH4m8F8jAWuDltQCeCyUisi/1t9vP2fCWjIFsXZLLWr5qEYpyBKlTNwV7kxk\nbb288XwmvzntZUe8xHbZ/88TanNpPcgAtIB/liXNgS+UHwLETt/h/pdPlLm7\ngfSIKGeRh8df9RWnUd5FiUYNRUKQCaFsAk05M2Ep2FXSppnKvBw2G8sag3M0\n4CquLEIdE4SXlftZwctUYlYwALxiQQnG7O5Diy5IkSH3TJ/EE8ERlNadgWt4\nbtG/LSWe4uVbqI1cmSiuk7Y3vG0BBBfHACh8lDDmVPyjKW6fcJD+VnzhHeiC\nR6A8\r\n=Fzzt\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQChEBwV6jtLT4QImwFraXP8xA4zFaRCmXWwGWayOfNp5QIhALu07XFcCcrNWci9dnXxXR3ekC8y07LPVEOK8SfEMKNE"
+					}
+				]
+			}
+		},
+		"1.0.12": {
+			"name": "@cloudflare/util-mock-api",
+			"version": "1.0.12",
+			"dependencies": {
+				"@types/fetch-mock": "^7.3.2",
+				"fetch-mock": "^8.3.2",
+				"path-to-regexp": "^5.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-MUiQdxqo5JRqtTlgpdqSpKiwdeBWemuFe63EHvULAB2uJMrtN669fZg8zoc42vmuG1FUmm8JpKL+e3Sd0oIg8Q==",
+				"shasum": "332e721a3a458539776d74325f3352554b319d63",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-mock-api/-/util-mock-api-1.0.12.tgz",
+				"fileCount": 18,
+				"unpackedSize": 21168,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgQowlCRA9TVsSAnZWagAANugP/2W9TjuXoj403k7ELSrp\nH7FzPYm4tywKKbD+lYu1hUl57kq/gJIVyoW03DBcdIROAG6eGYIPMxNA4l0m\nvVZ/Jh49tov2ajVD3eJIzY+1ZToB4jQ9W4ejApBH9+2imQexHUaljPubm1e6\nA/sMrOJ3/gxprUID0pdj4Xc9LnETC/cWWz3eqQkKCzIIMvY2RMle9lK50xxO\nLpXKEFAZJim0/1m20YXhHL/I9sDr7Gn7oIyXKzbz1ZjlbjAK+krXO698pYxf\nqFUhDAA7rCKdLSIr2gBP78p1oxQWpnvehHixoWaGKRcqSSYz7UrXLC2ZUJwO\nLcBndyPLhxDj+0RUTsWJPNtD1Z2bLu7MKOWVjZBq7itOi8gqaURAd3/pnySg\nMG/k5wUKSGP9esHAnz5Ba35fwVFDAnhnh31y1+66q88RyoUh6AD8+1ka/VrT\nhJouMEIhTowEtq+bUsuPqmKEAytZWK6NgPDgZ19rkYvSbPZwFaxIXy5xv3GQ\nRwHxVOeY+PtKVR6E8b1JjYMNs9h5FhzlONvON4fnuOrMfT6GEDYafTqwpbbR\nmKkLxxxOM2pIYnBwFS7+5Kpw35wTyUcj5hp+C4WF1FOPyfotYkpKMHEXTR0j\nRE7sJ+4vGiEjtMDrquzjil1T9E33vHI4XPYYj4uSM4ba+AaTXAZV2Ru9bJuq\niKFh\r\n=tZU1\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDzJOAhPlp09s/plV4qZE9qiuQuPM9PovydGGp3XrtgawIgAjkiAU2vSFGAuzDISo1O03J6fag9DAUG27uFttHk1Rs="
+					}
+				]
+			}
+		},
+		"1.0.13": {
+			"name": "@cloudflare/util-mock-api",
+			"version": "1.0.13",
+			"dependencies": {
+				"@types/fetch-mock": "^7.3.2",
+				"fetch-mock": "^8.3.2",
+				"path-to-regexp": "^5.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-FyXHeMu6KWpFnInjblAbMfniWoofHcIDUurkF64Q2kHXW8FAiDHxQhupgIZ3nJ6k9zINdDS2KGxT5dxN3PPyrg==",
+				"shasum": "46cfc1e83d6fa3d4f8cbe908dd402b7f8d010f8d",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-mock-api/-/util-mock-api-1.0.13.tgz",
+				"fileCount": 18,
+				"unpackedSize": 21348,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJggy+RCRA9TVsSAnZWagAAflQP/2UtAFo18qBFAsNqnKkt\nI9NIWIPUTb5Y3n/xeuIQo0EdD07hpAau/KXSCn40A7a5xrF+UycqNNQvH6Pw\nvG500A68hSnBTL/0CQl3eZChh3/oRXFfpU1Zm15QucpNAjQa0aXLSGOKU2WS\nDIMkOzum2P1vu5Y48nl+WPXmOaRs1tcVy+6OS05BzuGlvzduinrU4HFJVtdc\nDKTHIL4IkqfzdqMUa9yzR/mWc3BccZV4gIC043d6Ucwx+cr9y1vuhEtj1pBm\nZsSIzgFKWQkvXetzECpmDjxI1qIZb/A4HmzSyVtNZS5Ltf9zP8Dh5TK72+84\nIcPF0/wy4TE71qSgC9MfPu8A6JCJ2G1Tmq//hwG7FBr9mBjjIYWsVkFD6fhI\nB3dOQ2H8hmPaueREwJJQtijad5tEfbRfQSBzJPyaaSYZneSDd8Gbrw6o0BzH\nl7D77bwIY44xCzFac6zCQdrY3fTzBc5KOQJ5nqvQaUI7HAho9Hx9xSpxulhI\nReu9QAEX4DTqR22B9Y0j9CEeVi5v98rdOs71chEDCKQBrx5hvMUfqabPZWFw\n9wirdlq/rwXbY9jDUmRWG0NKulH7zEFUWxtAr/0h8tYzQeD9sJuTEmDvgQj+\nr35i8qZnuAwRWvS13p7CgSyD+VRBQX2z7tTXPwERHtDiZIBJa53uIlVZNtLh\nnP8+\r\n=HJGW\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCQG9LkjcTao6S4oiKJQhb1t+Wvi9wnwtyGj3aM9PehSgIgFspn1sZKrDHCFdvmqFTUNuVSsXIdoXJoKHbJupREkGI="
+					}
+				]
+			}
+		},
+		"1.0.14": {
+			"name": "@cloudflare/util-mock-api",
+			"version": "1.0.14",
+			"dependencies": {
+				"@types/fetch-mock": "^7.3.2",
+				"fetch-mock": "^8.3.2",
+				"path-to-regexp": "^5.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-f84EpASG996uyWi2Q226LH7YhdO4l1neYQUUnYADwD4YRIK0eoagtAkFx0vh2hFmMr0VO+uo4cklDovjOduwmg==",
+				"shasum": "8068d3c5a097bc7fd643d8744e37cebcaf6ebb5c",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-mock-api/-/util-mock-api-1.0.14.tgz",
+				"fileCount": 18,
+				"unpackedSize": 21469,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgyh4cCRA9TVsSAnZWagAA+hcP/ijlEPICPWzGO4WBbU+J\ni+ZUhw/GUMd2bAuD18uSeu0Mj1iwPDc+g6aPru2JBDV5Eu9+H/tJ0YgJGPmZ\nI4R7puHHGnj/71601RewvqVuGctAG2KnucSXy8ifFdmzRbAN/pVcd9+lbYSy\n+hdU1FmROYpJzPhMWu0ZCsOZN+K0ocjegFLNBBFNhK9SBxDQdcnD/1qgMpZk\nEIUhjsY4VOGdkfPAwGlGK6ZMcvLRTtoU28OvGa80daWuyOcFdv7IEYjYcoV1\nXAD5JGsTCVV5LX/c0X7XyIhtwTfrHzWOf9zCOuoUUtYIf0Q3Q21LDiIQh/W9\nOnaf31zaVnyHevcQWK1skHbGQ3FxwL041QY3PnOLlROuzgsG6LyRw9oQJPFB\nvx+KuC5OHzvm7E3OHNvrSYFvzd6cF/bIZR4+ygJP2suM3JvyHYwWpCVovF+E\nIcLqD4vddjME9XcJMI44ru4OD/9hzjoX5j48sYIRA2ibN9alnD4n095qxI+A\nQnNSLHG8p5sLQDcaD0vYVqnQe078msvFNipDPT4u259FVoMIblg63I7K8FfQ\nKdp6QN15iZyCcC2zl4Y87YVhO4lo3yFntAFqd2j7UcH0222vzAzaiI2xV0AE\niMKQzZsfJHziAjk1PQje4Faqv1SxGc2TmjBsD4Y0+nZ8rUxsObEjmPzNNVTe\na+P8\r\n=RqSb\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDOsoVH8LLaiN7NS0OGwbkqSP+JlLXrIf427UkDpDZOewIhAIexfX5S7fZmRhLVt+C4jxdEh09lOrlNYsfUwY8u9ljt"
+					}
+				]
+			}
+		},
+		"1.0.15": {
+			"name": "@cloudflare/util-mock-api",
+			"version": "1.0.15",
+			"dependencies": {
+				"@types/fetch-mock": "^7.3.2",
+				"fetch-mock": "^8.3.2",
+				"path-to-regexp": "^5.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-6pMfT+iB6H2GDeg8cCH4d7Hr7sUhS5HA4TPCh6ICAvGUa8AY+VQ3sk+OTzQcM/T0RTHGOg/RjBMCRmrpfFwXUg==",
+				"shasum": "b920b5ab6cc73909e6862d47714aa2ef10e1998e",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-mock-api/-/util-mock-api-1.0.15.tgz",
+				"fileCount": 18,
+				"unpackedSize": 21682,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCECazkOE2ZM+d8d7oBlPkOlnFV9Y9p+wUlN6T6TwWQmgIgJl3DWkzgaRCRc3JHAXcdpKRKGXDW8+7mduy1xAMKv+4="
+					}
+				]
+			}
+		},
+		"1.0.16": {
+			"name": "@cloudflare/util-mock-api",
+			"version": "1.0.16",
+			"dependencies": {
+				"@types/fetch-mock": "^7.3.2",
+				"fetch-mock": "^8.3.2",
+				"path-to-regexp": "^5.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-SXQAN9ZQqT2C/XZtdq1ullkA12vhggvrKcpn6sKYwqyWvHanCAO1voSjnf6NWgO6jDhKPWlXFMCDrK+UudcQ4g==",
+				"shasum": "ecec919090d13078a8a58863f19f2b5df4ba09a2",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-mock-api/-/util-mock-api-1.0.16.tgz",
+				"fileCount": 18,
+				"unpackedSize": 21682,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIBzFdk6GiUZ5Fx2SAJUmkFYyUj8c3+f9pj3M4ep5N0sTAiEAr50UbKAsv7wOcULZEh508unnJBO4bXA6D/rGQvBAspM="
+					}
+				]
+			}
+		},
+		"1.0.17": {
+			"name": "@cloudflare/util-mock-api",
+			"version": "1.0.17",
+			"dependencies": {
+				"@types/fetch-mock": "^7.3.2",
+				"fetch-mock": "^8.3.2",
+				"path-to-regexp": "^5.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-ExnEyXxRAQtYDAXH/m6dNWcpPKaX+1UVP7h3XF0ugYeC9nmYgTSRhZzIbAn1TeSFA3ZYll+l/CFMa7IJgMpDaA==",
+				"shasum": "418f70d753d73d47015a8105c6558b71821c9be3",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-mock-api/-/util-mock-api-1.0.17.tgz",
+				"fileCount": 18,
+				"unpackedSize": 21743,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIB5q/ymI7ItaN+UBgaUb5socXSmc9KvKJJRuanASCDm2AiEA13mwcRTtjP06kEX6eAXN5M+Ei/jhz4o/kLjn7Sp++Ms="
+					}
+				]
+			}
+		}
+	},
+	"modified": "2022-06-21T16:57:47.684Z",
+	"_cached": false,
+	"_contentLength": 20683
+}

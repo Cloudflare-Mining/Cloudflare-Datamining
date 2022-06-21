@@ -1,0 +1,736 @@
+{
+	"name": "@cloudflare/megaphone",
+	"dist-tags": {
+		"latest": "0.0.30"
+	},
+	"versions": {
+		"0.0.2": {
+			"name": "@cloudflare/megaphone",
+			"version": "0.0.2",
+			"dependencies": {
+				"@cloudflare/cli-helpers": "^1.1.2",
+				"axios": "^0.18.0",
+				"chalk": "^2.4.1",
+				"commander": "^2.19.0",
+				"cosmiconfig": "^5.0.6"
+			},
+			"bin": {
+				"megaphone": "./src/cli.js"
+			},
+			"dist": {
+				"shasum": "6623328c1ebd2b7735e30b1b71ffc85eb1a14812",
+				"tarball": "https://registry.npmjs.org/@cloudflare/megaphone/-/megaphone-0.0.2.tgz",
+				"integrity": "sha512-Y9lx6md1zmM/ohauuL8kvHWhcEjTPife5tMy48Q2v23fMH4cJALZuBnS/S7aDmcfJnGDE7AvJvaUm9zSva79FA==",
+				"fileCount": 16,
+				"unpackedSize": 17759,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJb41MqCRA9TVsSAnZWagAAELIP/iSjyDrYfbbJoyijuowr\numb37IIbsmyrJPPeg/x9CtErd4ihD4d81CtntNKCnn05xy0SrELFyRBo3uVf\neM6CiT+d1WaCuB/RpR0x1cn8lrKs01F+MfhEaqzl1V8OwyERR1qQBwhvb4Bj\n6gOl7q//S1sj2dXRalCrIqhubQwDCpWoD9ibMgt4Q1pv5ZgI61XFPK+hUFzH\ng9ucEF59gU0LSCkmi0/dbFwl/LVvplWBygisBm++okBmE0GcUwRBFmFjKouQ\nN3xBoHo4sZbqi1KgtxLx/AjNnLUJ9MUkjS0hr86FdGhC+asCUX0t9gTtJHi5\nKAjH4471Z41Rpc2MzjRx47Nmybd1u+fSQ3gUUXv6EWyz9NmNVc46ZZlIlaPU\ned6yfxdiWcdwfS9Q4upy2WNRnpVm9RdLqN2fmsfj3NGgqvVSiXYS2ndTcmZ0\nwMX1pJGPRu4qegdc4q0usk2lInd8p4XJwT/vasllvThssGWM2ujED8amahQS\ngodw7cufwClLYqrjF16E/CTVvn9DcMSpXuhvxYtXWxWXCOaOEOYLYvlXSUug\nDVve7zArcImofe921YE7Ik4OpQDy9fSZrK5G5vTR0vMGTIhjBiI5cr5se/8W\nNJhW6z49mkhyWx9mKYDEdQ0UwifhzQ4Zdpe9/IbYaY6FQ9fdPuB6mm91qTDQ\nFVMi\r\n=BNVa\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCICL+0Kq0sjRI+zw/AYBYhyA/7Lv1LpguyblEkn+9gkMAAiEAr6Q3rP656Dn7qe70iBoeNbYjzzDXPr52FvCv/f99b50="
+					}
+				]
+			}
+		},
+		"0.0.3": {
+			"name": "@cloudflare/megaphone",
+			"version": "0.0.3",
+			"dependencies": {
+				"@cloudflare/cli-helpers": "^1.1.2",
+				"axios": "^0.18.0",
+				"chalk": "^2.4.1",
+				"commander": "^2.19.0",
+				"cosmiconfig": "^5.0.6"
+			},
+			"bin": {
+				"megaphone": "./src/cli.js"
+			},
+			"dist": {
+				"shasum": "e5f27bdb28e87a47eee86f42a79d2b0eba138ef6",
+				"integrity": "sha512-RzSmjScK9Goi2YYB28KUKHEXeN0Z1l75xFbCUBQlAcbfzD1n1JRR63oN6mKNrimAG1zeDWMzPYoVW1OiWbeHTA==",
+				"tarball": "https://registry.npmjs.org/@cloudflare/megaphone/-/megaphone-0.0.3.tgz",
+				"fileCount": 16,
+				"unpackedSize": 18000,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcCyfBCRA9TVsSAnZWagAAqZ4P/RW1zaJX2rwK5NNeYvZS\nNOeuYqveQgMdUSB3q8rBXdiFeN3t0/V/DC1BPF2l6Q/X6wNSOejuukhUCU3T\n/ApSWXpAx+RCNuUnLmnHBya2lsl9I6wJHEmwWrR/8KO94mhVRQHS25mFsRBG\n1ZiEM4T1id0O4A4FcMfqZmBMFk2lBMMXjhP+ZvesWDq3GsBganRbYr2KSUl8\npaDYmpyWw34gQ41ISGXHcwDA0Lq+prh22TvIxECHb5WPXuQMIfgSCX0yBvXV\nik8W36NJnQmVh3rHCTuCYAlkkU6R8LJVmpDJ0vDZ7QgJpqGj6z05qgx3Sl2H\nzKu4psf09mdkLMEkop9gA/eeO11irw42FPME/FKRM+Li53H/AUTEuK6aQmK7\ngyveqUipjCp+LiWGA+DlysG0pXwO/Oa2B66c25HX3ZuYlHwUvBgQy9pc9mlj\nbjepyDqTu842g0U16IsfjmLb/A731so1jFNLzL1z1o9dlU8JZqlHXWRFt/vB\n38C8+Gxr9IvafEA5QuE8M3MgGLufQWCIkO42MzHhSHwdX2PSoSxe6qrNzuTk\naGF+qqO9Rf6oL+FakvF+U4u4ejGQY5ntG4lhUbo4xKfQt3H6YygvS9k/XHJS\n5AHaGgeoAkXFW8Z6UwGuMin/Muk6G0PkER7czktZlZlJbeI1nakrdkrlheHK\nxJoe\r\n=fE3h\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIGioeQ6gknvYr0kJv9izM/ylLZ5Pg14liYWbFYXHgaBgAiAjihPqN2EVdYO8n5+v4/Ce94HsbumRZeJighBxAqzHLw=="
+					}
+				]
+			}
+		},
+		"0.0.4": {
+			"name": "@cloudflare/megaphone",
+			"version": "0.0.4",
+			"dependencies": {
+				"@cloudflare/cli-helpers": "^1.1.3",
+				"axios": "^0.18.0",
+				"chalk": "^2.4.1",
+				"commander": "^2.19.0",
+				"cosmiconfig": "^5.0.6"
+			},
+			"bin": {
+				"megaphone": "./src/cli.js"
+			},
+			"dist": {
+				"shasum": "68f3995955dc6bfee6a076fe3c774b70254b0643",
+				"integrity": "sha512-qT2NSvSPj+fnHg1m5Kdlm/AoqaqRbU9/UHSEuao574Y0GSZE8nyxAHpg6fjDKvY474jaINpNHobYqluYq66byQ==",
+				"tarball": "https://registry.npmjs.org/@cloudflare/megaphone/-/megaphone-0.0.4.tgz",
+				"fileCount": 16,
+				"unpackedSize": 18217,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcDvO7CRA9TVsSAnZWagAAPbQP/ipwYzhpuTtvDoBZqg9/\nhDpkNTfqUpV+1aa/RNOa7eNC8quqJ5FunAPexv+9gzeazU+wTCunXRFNfp/c\n0EowMKhLqG65jVaNsvok7x970TYt2X9eu4dKLig3bamVna1yOlOlEqhdwAO6\nKWd0cwl9Qjjx8bYj0LJ7dZCYD+NgaM55vOLOxAd+sIUyrdWHu29lCZntDfDD\ncZgqbFQhGmxapNxO4dQz6t7rPaVnGCM4Gy1iS0RKb8p4BRui0alogcYwWG/M\n/7E3VAoFHYhWoJazH/ssKWZow6XaSIK9Lsf0yGireEF3k/OZiwx8c1j4x0M+\njfcuXrhQDR9Wpx7NwArpfV6UkPKh1Q/nRwiBRLB4CQNDuyJWEIuY7io9wNxO\nSpPyMS1fZob0ayDcb6gBWom7xPuOM4L2oyUxyTrnRwPNoaKBtywXceSnZ51y\nx3nOriyLm7DQkxjkz99Wf31hxeGKAkGfSRdMlcS8UGRrfWf2eR0irHgspE4E\nejhsFJiregD4Av0kreBE2+4t5igOhBlO2Z04F/kEs69fa6hOnVHb9vWg9Rtm\ngT0BsBbZBixy4jK6MlGlDuTlAP9fpsg/Qswtp31JHFho/eU3rBO51ns5aFpc\nOw/pjBMmSMUHg+nOgLsyhMk6LgdFe1o3U7mXGR+LAyMlwDXXyP1OhiU8gbsV\n56wY\r\n=gauX\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCICDnwPtIpZzrLyBcgpHHV3+lux1vdZxgwfd7tpclnT3YAiBLI1fzhikuRhsVLfzHJIaQYG1WpGAj/2WUS4dix9L+fg=="
+					}
+				]
+			}
+		},
+		"0.0.6": {
+			"name": "@cloudflare/megaphone",
+			"version": "0.0.6",
+			"dependencies": {
+				"@cloudflare/cli-helpers": "^1.1.3",
+				"axios": "^0.18.0",
+				"chalk": "^2.4.1",
+				"commander": "^2.19.0",
+				"cosmiconfig": "^5.0.6"
+			},
+			"bin": {
+				"megaphone": "./src/cli.js"
+			},
+			"dist": {
+				"shasum": "b6d9d4953e071aab9f0d6c3619a3635dc69bc76c",
+				"integrity": "sha512-iHLGf7IZm3xaeZuo9stoA7CwrTMo4bsT4LFhVPvz5+qxH7rhwX+zOkr0hLnod6NNiZ44s0/7xFNcRwr/ODG2tg==",
+				"tarball": "https://registry.npmjs.org/@cloudflare/megaphone/-/megaphone-0.0.6.tgz",
+				"fileCount": 16,
+				"unpackedSize": 18440,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcFDgaCRA9TVsSAnZWagAAeG0P/39vSQG26YwSN30/WLgS\ntRfOeQzeCL0KQjOgw6y6K4WXZH6PtCE6GP1+BflHlxUBBVOkazZgj52PgUea\n+qU9prnzKxzzjzPgiMzsiCwz51FDMV0h5ZLHKo+qR5xnimdwnh80IUU3U22n\n8esYD8MTX6IsQ+agBZ6BHiqo37JrygZu1A3KwFDnNT5BCULkdz9PskyCXgeL\n1eebkMHFAMnNejNrHL+lieFazMZEolCgsoOP+YOOMiHJAPl0q8//7FwYwnvI\nCD1yVpkHXAANhQdj/hnDUP1/QN2MPpTIhQ9b75RwTxN0lw8z38ed+V67TEHW\nPc4XCte0QAqsAEwniuaqdzH8q1YjexLgYhrSBXa2butVkyPEL4vEMzY3RRHa\nWojTi0+4ZMFTH0RA6QoUhhniET/HRu9pQWuPH7XwqBqwd3cMqhjOBk8HDLo9\nepaZwW5ckfF68lqZrGWpCs22BMkm4CF2SBC0KNPsCBgmO7WEAJf8UneP7QRS\nr9vm2v97QcBL0uPGPm86GTdg/VQb5kgNJB2Ex4X+6Obr/lvZX0aAL9gPdQsS\nphkE8fVPyXUM6MOOWeD2NO2wj9PuJbuxXRwm4vc9w1euONrcaWcxmZE0DUey\nTwo5q2yMG/EIZaXZuxA9QePnTIkoB0vLE16htvKltAjlDVy0vS+CdH7Np8Qq\nCSRk\r\n=aWri\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCkDuiAJD6gLha8Q+RLd2+DsIpRgIj/mABPsrg9Y5VncwIgVlUYfe3bS0WF/2wIsg+wMplXpgC+z3hq0PAZoNXO3nk="
+					}
+				]
+			}
+		},
+		"0.0.7": {
+			"name": "@cloudflare/megaphone",
+			"version": "0.0.7",
+			"dependencies": {
+				"@cloudflare/cli-helpers": "^2.0.0",
+				"axios": "^0.18.0",
+				"chalk": "^2.4.1",
+				"commander": "^2.19.0",
+				"cosmiconfig": "^5.0.6"
+			},
+			"bin": {
+				"megaphone": "./src/cli.js"
+			},
+			"dist": {
+				"integrity": "sha512-TbDxcpYy+kPdDiuWf62dRFoYpZdBCf2C2Ej+/rciBjX+fqe2QKSyBX7v8UQhgFeu/UznypoIDrbTO3XSdQ9szw==",
+				"shasum": "488b89718d24dda26fd258055710cac7002d7d5b",
+				"tarball": "https://registry.npmjs.org/@cloudflare/megaphone/-/megaphone-0.0.7.tgz",
+				"fileCount": 12,
+				"unpackedSize": 18694,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJciEZoCRA9TVsSAnZWagAAxr8P/2C06Fd3uQkOme6P26xq\nc1D1lZCN7VUfqakepjSvG6GtQOdrBX3Fo5lztL/iwZ0rmbk4LrZ0EK8VC00U\npsbdx5PrVPn7sGn0QW+PVXgza1VK64s4FQIFJx3A5JEc+Evns5oLU1lJl/XI\niPODfrf5yHOV/VgYAjOI/gcsT5wHd8TTtfwwEq85cF/s8B+QwSK5M5F3NoUV\nbW5iP0Y4voz9HyVCimDrNWwIQAitpnLkGl+OHJiJRkn58QhPLVRLbz6iiYvf\nnO7I0gnR6BIO05OJV6zC/XEZeFZoK9CM8a2CeISLd0X6Euc6d4doPSJFo4Nh\nyMhOyhDJsWxB4l17dJ4yj+2md1GjDjoJVVzFauwcpS59ufmKNYOpGDCkWeDA\nMw7Osli0qODrirSna5sjyaTsHHv9uQmoxdSYyHUzhpMzEycjcng/Mz0xdaOT\nqta3bS0QMWqms/nH8nK7+/0SMorTMsxRoTHNgU1bkqx3kkNDoMqYA6KzakpR\no3k4yPcwKdcFByHYowaVJbsNC5sOGTtV5uxGByVW6QUpLtm5n8KH8Q9VDmFA\nmV7Xv/CIgzCWxYUuWVqJk4oWc6pVryHVST5kOrrgk+94mCr23CVy8uNASwhU\naakPtv1VB7jsq9vbJYuNIx/ZJs8Epz0jzBV3kKwWvBaIO2sj903PWy6XazG+\nHJ+6\r\n=Mii5\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIAZwiLJQ+7GOf7H56QQ4Myj3fpTngt5FbXZKFPEoWYpTAiEA5teoIjE52HlUuMTTmpLEQHe+0Ipga2VrQoqhqdcS7pA="
+					}
+				]
+			}
+		},
+		"0.0.8": {
+			"name": "@cloudflare/megaphone",
+			"version": "0.0.8",
+			"dependencies": {
+				"@cloudflare/cli-helpers": "^2.1.0",
+				"axios": "^0.18.0",
+				"chalk": "^2.4.1",
+				"commander": "^2.19.0",
+				"cosmiconfig": "^5.0.6"
+			},
+			"bin": {
+				"megaphone": "./src/cli.js"
+			},
+			"dist": {
+				"integrity": "sha512-hku2y55CMczlkmB3lfgGSiOaugLvuygqGQIP2fjWdUeq31o/1DQbTbaG9PFt/e63RljTdOG5NySPWwUJoYbs8g==",
+				"shasum": "fd2916ca9d40c9e10f2550da16f4829a40d1d31b",
+				"tarball": "https://registry.npmjs.org/@cloudflare/megaphone/-/megaphone-0.0.8.tgz",
+				"fileCount": 12,
+				"unpackedSize": 18891,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJconqzCRA9TVsSAnZWagAA2oIP/121WyjcgyUjabjMnEH6\neyLYA4tPnc9bee1dtLZAPSGRZcoF1tXVPZIXqD7rsTQCvgLczkmz16EOIGpX\nihzdNV13pL7PdlCxS4J4lAQ5dP4HXBE0IhbpFzY3m5hcvwdVLONeVYZrimRu\nCISnaq6YhvvK8G0GOaQ8CcGDEwitU/J2+AVzuqYRa7wwl5aKGqoiDxTdP/SC\na7SDB0Ijm2C75X+kDXRhcOzK5x3f055ZwJWO3PPcp+QPfeQxzuRImm+J0Tx8\nCzq5uuQ32VQp31RRC8KpOeFOiEWVHmPtKsi2fV5nUt0idnWpOLbAl4RPKOvd\nJ/wYvL0Us9FJDdwPLNwuXsaHzglmXkFmtmB9W5fvjm0RZP7TUFCyZ6fxOuam\nIRyRv0RvTzzr84XXLhBvhb37sW2w87OOff/g/YT/Udy+6RpItXtZtmJ28nf8\nayzXqkHPCecUCH713oThGn90c7Q03aRaglXnYHKKG5qsbzeAUS7o+veV+Rfj\n3TxP39vP8fby6+asl5dZVgyipLs2XkgGvi9hMRfwyWEvtvGdQ8XfsZc5btrx\nFa5L/1StLwXP18dfagntGAGnBDxNFuow7eJsG8mFrN2dF83Tm66oU2ajVUuj\nkLw7CfWb3jQHatsAzchevBwwSDQzlNM6/ec9xbpSNusZQrplqcB5ohW17dG3\nAkfq\r\n=s9ss\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIBfJ7558PA6nuXvwB5w/e2BWSXQq4pfS2VEnnFLJjjIDAiEA3YOZAepQng16kekcON06Z2cmNoFpmFrX9xh4Lo1A/1A="
+					}
+				]
+			}
+		},
+		"0.0.9": {
+			"name": "@cloudflare/megaphone",
+			"version": "0.0.9",
+			"dependencies": {
+				"@cloudflare/cli-helpers": "^2.1.0",
+				"axios": "^0.18.0",
+				"chalk": "^2.4.1",
+				"commander": "^2.19.0",
+				"cosmiconfig": "^5.0.6"
+			},
+			"bin": {
+				"megaphone": "./src/cli.js"
+			},
+			"dist": {
+				"integrity": "sha512-hOYxJ+kvPdc5lnSqiiYhMtCNHiMa1N5/3d3Kzzx7fvuU7T+TshQLACc3tCJjFTH3TTOzZ7wRDxqZt6JWyhrG2Q==",
+				"shasum": "72410e0e8abe7475d919c09d60cfdcd0f3da8462",
+				"tarball": "https://registry.npmjs.org/@cloudflare/megaphone/-/megaphone-0.0.9.tgz",
+				"fileCount": 12,
+				"unpackedSize": 19238,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcq7RSCRA9TVsSAnZWagAA5HUP/iyaJJe5eGYgN4DewLJ3\nG9sFsfoXLKTDjS44CtB6c5BX/zjGn22gocoTRDTt3K8DjVIT3Yr79lNliU+S\neiSyQdSfqt95hdKCXwgS54DgKeFvGoLFj/6l30XbC1cx04DT56tzBSl49Jf+\niBEqUUcmW9jNQ3EEGR/tZDEFPqcsSqj2eQcxTc5chj9uPqQPuZhECeKAOyag\nKwXU8QF9e42LNkTq3QEdyhtciSguIdjoip4jfmdgFDbUq8x62iALVKV2OFqK\nAqhHoYIiLgVRrSAXVELuXUkSKrWwnRu+0XLlstII4f+NyANIRfmletykbHoz\nDvqRUdaP72n2GUfUhdi9jkgTOgX1/BGJrq5082El3jLAKTEQjaFGUXcja+cg\n3995++pXYNR9QisQsIxf9WbiinYRINHigCSt8ccSmLf0vtQVNLSGWUoUv9tW\nMiMEPlMr/a8o2VZG/jzbuSwC3zSrVEx04F3NiYJrMQdxBq6f637LzJGDG4GO\nvS27efafNGkbbBnXQKeAgBaIpaCJNsJnwA30HonEylCtucfGrjxAhDZ5JOY4\nDvUaSpONoZ83NUD7cmPazG0bosJGSKJ/XoX2cg4364LBJgnclSB6jzmQ8Sjo\netE1MHHnSVNwVVnv+Eh4N5t5TVRysDAJS7fIhJZb2RUAMsWKWeR9c9PCiFs0\nvLH3\r\n=aJo/\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIB49JRzidU7LIb8VMRqAeNHpvZxju0Xc3OOukLb3/f7iAiEA9IGgUD1YOVsKodJsG08NLz4dE53AQgoaONtTQoEODNk="
+					}
+				]
+			}
+		},
+		"0.0.10": {
+			"name": "@cloudflare/megaphone",
+			"version": "0.0.10",
+			"dependencies": {
+				"@cloudflare/cli-helpers": "^2.1.1",
+				"axios": "^0.18.0",
+				"chalk": "^2.4.1",
+				"commander": "^2.19.0",
+				"cosmiconfig": "^5.0.6"
+			},
+			"bin": {
+				"megaphone": "./src/cli.js"
+			},
+			"dist": {
+				"integrity": "sha512-B/Rw2aPlQ1jfBt7UE/U7k9/df638CDu2LeZGQDSUiabHqZhr4klV6pRNHwRrqPweCJoUtpYzsVbyOXKkTgn7Dg==",
+				"shasum": "a1caff4975f2e19904149f24897857e22c3c00b1",
+				"tarball": "https://registry.npmjs.org/@cloudflare/megaphone/-/megaphone-0.0.10.tgz",
+				"fileCount": 12,
+				"unpackedSize": 19450,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdpJNLCRA9TVsSAnZWagAA96sP/jL5Ul8IfmZXRUiGs0sf\n4sRGHyD0sW38wWXlnmXaDQArUpbMkn09yQt1p5sARza3r/cpjkUa+ZXqG5By\nVoUYODYBvQdmmzooWvhNUhLiKpW+z5BJiwL17p8X+3wtINzE82x0zq9Qx05Y\nc0dqC4Cm/5T/28QeZanYBsoom6r/21pnXcR0BPV4omfAuKb32+FsRqZbNPbE\nYFgCNYJIOk7c2Dmnzt1DSDhkUIkTtQlYbmniAKyvUuwpzLdTy+T419BKUvMD\ncl5vun2VrTk+rQSOSLXzTW94b+LQVnqX4MEXlVGx5FUvuqCFntYJofD/gdPp\nWFvGCAEAzJdLw4zB0yLoJY/3vswj3ECYaWVEbmKTOkUuiWuHjop2EoLPrImi\np2Mt6MSH9HqjarfNuXh8CUFFel7cf11HfLFA1hrVfDiRK75ev6Zd3vFexlf3\nRO+xZmXhJGHDDNvxIBH64UsWXGEkGGVwKNWdjU1Rwm2XjQFJnh2g6rZvlESW\n/+G4bVZcbQJe/wGjIi9/gqLsVZ/htye1U0UFhPX4f7EWz3DRsyGvzTJCKQaf\nWEE/u8jEPZYC/qmhghdQ9M3ieXj8KKg75NxKIw16iISIJTmK4lG0PC11DynO\nm3UsmYprxy4Zg2ISEgYqGP71wzYDgxHHiycrGOPuag9sGPAda6iZE02sdNSn\nffLz\r\n=K1wJ\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDzQvI7aNNv+brPSGc2FpIRsqb9M8GWIOgONidfUGPNNgIgdtEvQEDfiLAooZo5/J3l4RtJWBx1Q0PmAoHCgPOG4cI="
+					}
+				]
+			}
+		},
+		"0.0.11": {
+			"name": "@cloudflare/megaphone",
+			"version": "0.0.11",
+			"dependencies": {
+				"@cloudflare/cli-helpers": "^2.1.2",
+				"axios": "^0.18.0",
+				"chalk": "^2.4.1",
+				"commander": "^2.19.0",
+				"cosmiconfig": "^5.0.6"
+			},
+			"bin": {
+				"megaphone": "./src/cli.js"
+			},
+			"dist": {
+				"integrity": "sha512-sOXg3IQlN9I37B8mrc4Zy+goF4NCF9+gEXv64Sw6kyxRgmALG3VWmcQlh4KSRkV06U5+E0ibVRISV+s55+A+Eg==",
+				"shasum": "13b442dcd2ddc1e9f6b3e87051a91d63e8dfb600",
+				"tarball": "https://registry.npmjs.org/@cloudflare/megaphone/-/megaphone-0.0.11.tgz",
+				"fileCount": 12,
+				"unpackedSize": 19521,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdpaI9CRA9TVsSAnZWagAA0XcP/jga1QXWz9Jz96Ky94uH\nLry9hXm81CxG59SN1EnkGxqzXMEoC3nQh++g04hle4APyDtoRuRooSSe4nQg\naDOB9Ookbz+pOWTTvaF9HCAxitbmFIy/zqyb0aifE8pRXS+x+QwI5Bu7pcZ2\nJASMNBQMoBmb6ismAVEyWmccgtLy1t3z9LCJuZHhgYHJIOULYIp956ZT8KhZ\n736CyThISSRVQCpkmpJqr82lEjy5JsZCgEseKSyBCU5vKFw4/pVbBUH0hsQA\nywWPG/40n6ivlltIKd+gbAVH/gG503UfynUly3JtpkuobnzazjPTQ4kNNX7i\nzBAUKvMSqdfPQrXbGESYjnXpa406ZnGOWPC3470skzmNs7JXzYJ3W2nJ8A6h\nd9yFPwuyt/Ipl7SiuYYu46wFXa+ptcHHNWb88ux8Y4gG5uipkOZeBOxxpdfB\nhSoD1USMkSPq9C3jpESgLNGwhtar/KDmqy60oT61MZs/tJljOQ1A/xSfyP+Y\njISMJDNwVvO5ASTLHxFGkfSHgEKauhiQPd7T7u6p8TdnktSHDc8S643FuD9Z\nSdx4mhq22VnHML2ZKKgsWb8U/xiHdqX3MhYBDHo713bN/TB6HpkNjRijdSFz\ncX/eOb7XN0xhpFvmQ/HtJ7ex1LilTmKtGAKz+KWczNyhiEfFwxa6o11BCw/P\nyAHj\r\n=ysX5\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCFRiDNLSUGfxeLPGDJbgt3yhk7dt9jvhdt9jNZHqTWmAIgRe4nVJ9dPxhlMYNOgw21psIEzME1KWq/tZ1Rtqzaj7w="
+					}
+				]
+			}
+		},
+		"0.0.12": {
+			"name": "@cloudflare/megaphone",
+			"version": "0.0.12",
+			"dependencies": {
+				"@cloudflare/cli-helpers": "^2.1.4",
+				"axios": "^0.18.0",
+				"chalk": "^2.4.1",
+				"commander": "^2.19.0",
+				"cosmiconfig": "^5.0.6"
+			},
+			"bin": {
+				"megaphone": "./src/cli.js"
+			},
+			"dist": {
+				"integrity": "sha512-FadHRpyocAIbXjQ6XeKIPk/GA70UivOTx1qjwESbpVeCeQFBfNvf51LUMaTQ42RUL674U+SxUXV+E7yE/yf6rg==",
+				"shasum": "70f4478c392ac8986ce485e36be7caec868acb43",
+				"tarball": "https://registry.npmjs.org/@cloudflare/megaphone/-/megaphone-0.0.12.tgz",
+				"fileCount": 12,
+				"unpackedSize": 19638,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeNQ0NCRA9TVsSAnZWagAAOiUP/0tW+0iykNnrIJqQE9/f\nzkm/ZhkR0yVChryleCMf3k0g5mRYfzAPWlPO8+EmbjilHt6hDXpllKmJTJb1\nH+s+uRicjHWy/vl1JRqcsSMv9DR11Z/x2u1cfwWGglgQ+cjeJSNJDT2R1hLp\nPq/fHVR+xQ7es88VtqiCwW/V+Bx0DPQNY3unEFGoskh7G6yp0dO+Q6GmaySq\ngOdTX5/mwdKI8acxgN1k6OXFAcl5+hL6YXYiz1XZMDccwjJYl8Zk2Fr42EAW\ndCWhVqGbUZjthLRx60yOYDFIGIwrv772Oi5warLMAqGG0b7LZB9Bjv3twU8N\nijcGRSzd0D/xIfKFzmQsSlAThOBFbuft0EWMfXjVocm5UHwSRmKT9Ly40x5E\njxyjGlfP5Yseu8s2PN09IEIS/TsIM2sW1rLtnx9yUYtHnRSIqwh+Q5KlJ68o\ny1rduNzUdWtUvINo2ZcmaHk4aoX0ZuKQBIMeL1GeBBtEi7GYtWaOlXASqgPz\n8jJXaAO7PJFLT2WjQ/pev9SF3l6Uzm5oH/5eMejdf3veb/qBOc/hupz5GjaC\nCVNX/HeqBwrYevU4Ren5AvqS1G2Q2YOyr1aerdWzBl/+K7J5U+VFr/wn64Gi\nzGMl5iPicCufXgGww9QC+EtpEa9vXHvx0sabl5NwGYBxfa+PBIkNhc3cCKrR\nwj/y\r\n=+DyG\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIARtAy46FeYuR9qzM0Wy6MzUwZJ77LATw/eeaNiJT1ysAiEAj3Lng9rWxEYnNF/8GzLM55KH/zRFGCujNzlSBNakE54="
+					}
+				]
+			}
+		},
+		"0.0.14": {
+			"name": "@cloudflare/megaphone",
+			"version": "0.0.14",
+			"dependencies": {
+				"@cloudflare/cli-helpers": "^2.1.6",
+				"axios": "^0.18.0",
+				"chalk": "^2.4.1",
+				"commander": "^2.19.0",
+				"cosmiconfig": "^5.0.6"
+			},
+			"bin": {
+				"megaphone": "./src/cli.js"
+			},
+			"dist": {
+				"integrity": "sha512-O8Me0upzJhkvRFWZhouwvuylTwKuumPYCcODD/jWQFYUsEevwmi+IoGKN5clZiR0mZL16+enRtBORAPjG9a6tA==",
+				"shasum": "b7eaa0a2a4b21015d58878ed55ab0890b7789689",
+				"tarball": "https://registry.npmjs.org/@cloudflare/megaphone/-/megaphone-0.0.14.tgz",
+				"fileCount": 12,
+				"unpackedSize": 20025,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeNiCmCRA9TVsSAnZWagAAEAgP/2clOUuRl8Yf6/g3m+3d\nC5T2H+mWyyjmolRYpNdd55eN3h0+EIEreSDwmJVZwXbVbs31q3i6++yUcake\nP0UQ79XFmzOXcqErejvYKjiJt+f+rGnJ6pjcvUulU1gkq5Vk6Mas1mKLOLm1\nugteRgrz6DGCx/Z8ykv9KGFy1IZJJ3GrNNSpoItwE4GyBehTo7ZJPf1NTP7G\nM1hthgBQeZrYAh0OS+7JwfKfm6EXkc29rCnUMeVzGHCkrPQTAdRdlQ/0hHO9\nLuAe2yqEdFMLfLbI92MY/pc2/Fdh1P/PDqRPfPuPhfJp02PyMRXJG2aFK/9w\nvditsmwZTHaGe1C+Chtcu06uC6v48Yf9apMXtk0VqWtP/Qiy1CMyz6/xgYxi\ngS2fCMs2dD5mPbIQuH1WLmrsEefyZu2kf8JZsy/CF0Sqjh8cE66Dl9pVZLq0\nQ375a0SZT6vJZLBmLCSqQEbveZetPUc4q6GahWSPy+naVwAlpE3eb3gifTLu\n/ztBB3erdvpPpK0EoXYitzQvPYkbOYBVrDcviDy9/LnJ3t+TicP4YVK61oEU\nhXCUn5JEyURFvTXvxV08Qdx4hpOhoUqFnbljksONLSf/L64ZJUSDUEYzp47L\nfWzn7pvFPt8U3fsaNN28F7wiJN1/QF5/l1d5WaznfFE9I8imtix2mehqrj05\nOMNz\r\n=JJ8p\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIHcG1Q/Ns5vsMTds++UVxtZBf1rv8a7B69fmILEtJM3bAiEAwbtNMsoU6pPEQslwl1THOixmCw64jFEebPmzSz1HFDs="
+					}
+				]
+			}
+		},
+		"0.0.16": {
+			"name": "@cloudflare/megaphone",
+			"version": "0.0.16",
+			"dependencies": {
+				"@cloudflare/cli-helpers": "^2.1.8",
+				"axios": "^0.18.0",
+				"chalk": "^2.4.1",
+				"commander": "^2.19.0",
+				"cosmiconfig": "^5.0.6"
+			},
+			"bin": {
+				"megaphone": "./src/cli.js"
+			},
+			"dist": {
+				"integrity": "sha512-R1jg5OPRJSlty9Wqzc4QBXQVH7YzomHjUumoVzvKyd6FhsAMKgdnPa1RPIZ8LKaqINWIkQcBao4LbFzJD1D3Bw==",
+				"shasum": "23d929a8d7d43499733d7bd2bd2313d21db787b4",
+				"tarball": "https://registry.npmjs.org/@cloudflare/megaphone/-/megaphone-0.0.16.tgz",
+				"fileCount": 12,
+				"unpackedSize": 20225,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeRHPBCRA9TVsSAnZWagAA3wQP/2c26VL3d75ZdIjBJgb1\nJEHeTJx5hzIGNaJtXhgB5+/uvOyXPIQ+ahGz8+Q1hdZIzVorD4rWD9QGMH9i\nku7t7PEl3z/nCENx3qQXcCy39TXCfz2aI3dAV3kfb4HyVa4xYqj/xciVBTgH\naZYDnJeG4uBy0yF9ljHDGPTPoGL4NaQjdQcjxVjN2VLleMeWb9IL8UntD1vB\nS6h3Cl20O/NfIx+eKnNwnjpf6ilUERE+I/wxoKMmbrnq4ItpRveN6EY6wRLF\njyQ0ka/XIwHBwj85zTmFLvtZU6CH8S2Z/E3bpD4Bfay5KIHBKV0iUcDWJ8Oo\ngdWcN4bpdFWEWmvnZVE9IFrTj1s7ajl+0Zk71tudpb8saNC1OW740QoQStQg\nmLToSW5npPI4aHjsn3NEIARXRiWSr56C3B9mQJ+ow4ALjBiixKMd3hkb+1FS\nqlh8bEo/Vij8MyudZarlRBp4ky+lyldxKL2gMTuFQvSqLJWsjN63ytIrDjtm\nIJK8/hzY45CrVk24Q2rojnW2q0bT/4wZErhdvjrVQJvlmQpi2LjLBymxsCGY\nnqqCjr1yOEFT0aHWTRlbtyLmSQ7WxXEBUbqjbxVisFABVv08eIVbgqXSn2iX\n0Jbkt2izriXqknsbGH4r3nH1L4x19AVge3xh1JZ71ZUx1Zef7IwLzvmlQgvR\n2uK9\r\n=womT\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIEzxpc4g4PckRRYIioqzmz8GmpgrI6dytG5oWy+x0R7nAiEAjRv22aDhkupi/xXlBbmzwTjmIpsmWRQdW+ncbNqEyzQ="
+					}
+				]
+			}
+		},
+		"0.0.17": {
+			"name": "@cloudflare/megaphone",
+			"version": "0.0.17",
+			"dependencies": {
+				"@cloudflare/cli-helpers": "^2.1.8",
+				"axios": "^0.18.0",
+				"chalk": "^2.4.1",
+				"commander": "^2.19.0",
+				"cosmiconfig": "^5.0.6"
+			},
+			"bin": {
+				"megaphone": "./src/cli.js"
+			},
+			"dist": {
+				"integrity": "sha512-Rm17RFXqHdYG77noYm3XOTIbTtx8JUWe9ljOrBJ75fAGZ/8ArbvvoEYWkr33oioAoTNcaBA2zlsxPxzKgPuIlA==",
+				"shasum": "8ef43bd7803e476e8b553ccaf252c391f284ee15",
+				"tarball": "https://registry.npmjs.org/@cloudflare/megaphone/-/megaphone-0.0.17.tgz",
+				"fileCount": 12,
+				"unpackedSize": 20720,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeh41RCRA9TVsSAnZWagAAxz8P/RtNGRxzl6TQGSu0XUT/\nt7P7q5GkUqNry5HLNCPONsW/xK3iZHbs3BRYpxr3mrOBgLC+GcKY4SD5N/kM\nkJBSZoueB4FYWO8lFByiRNOCKnfNZol4hb2ASmDswxyxQ+WOOrifZbHNfeuW\nYbw/j3517j8xHu0JR9f0pC4dSNaEK1JbJqHtK+KPaGYrkhDmMkdWMTu0miYM\nfK+3lAbKIf1XV6+1/RtX6qCAm41ywhR+OpjjM6liJdyzdjj7OKnqfA1AOzq0\nRzXA/DareDDIPLSLDaoO+6heKI+t3HlgNspFHDV/MsYv4aBKmetk3E8tc17z\n1GAXgnUy53BOmBrA8NmQ1aqrdTRaV3pZIIlXpwOsVQX1TG1Vy5A3xuyQ2otV\nhNEATz42N5Uio5YUlsibVQDTBOXPWYGx+5N8rKTiQlzdCR0XA/nuwweviaGY\nLLcGBZokwksVvFhirDfAGftoVbdtPluV+XzSFoAxA/r+Ra+HBDfF1/uOMrdK\nOPTLvtsflsEKQFaNx+Y42iDtufkbIPgD3O7hy9jaGljU5Dz+ZAgtWFoQT5EP\nc/lUk2piK7kz+jfUzrJYgw3xFGoCasPkZWLcl/1kl74z56x2NcY9ZkwZVuwM\nh84J+y3abcBwtuRO7zHYm3EiD9XD2o4caFUsi4OVxzNSZgB48rfptqBqoMT/\nGepA\r\n=H9pi\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQC3JKF79AhEwR3DzMleloWvZkD/p/bCHQmKURm2Gji1kQIgCVJmaXGKdN8oLywaS37SI0TGErd9z63mX+UVCtY3+IE="
+					}
+				]
+			}
+		},
+		"0.0.18": {
+			"name": "@cloudflare/megaphone",
+			"version": "0.0.18",
+			"dependencies": {
+				"@cloudflare/cli-helpers": "^2.1.8",
+				"axios": "^0.18.0",
+				"chalk": "^2.4.1",
+				"commander": "^2.19.0",
+				"cosmiconfig": "^5.0.6"
+			},
+			"bin": {
+				"megaphone": "./src/cli.js"
+			},
+			"dist": {
+				"integrity": "sha512-WHaB7xeoSN3KIIdbeJ7lPvMVqHfSCa3m38JEh/fJGKDotNq32TPvcmwVyuEmi3O277EdUIaLvaw6FKZ/YOZLhA==",
+				"shasum": "0c35209f1768bb4399c07777edaa056cd915bfe0",
+				"tarball": "https://registry.npmjs.org/@cloudflare/megaphone/-/megaphone-0.0.18.tgz",
+				"fileCount": 12,
+				"unpackedSize": 20860,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeh9TuCRA9TVsSAnZWagAAS68P/0A5AsI92wxaHOsmoTA7\n/BVBjVhZghNTH9FXh2X9xuoWpSfPW/PJASt1EaSfdMCA9RNJCItDLt3Ylzuy\n8GtapiJWwJamz6i+fWwk86rFoGYLUVl9Z94vUndGKsa+q5bFGmQoss/E3a2A\npZTiHG5RBBjo5e1rdzxjhnSlz70iX4XZ7f+BXdvi8lV3qkRqLFtWCHRi3fMu\np+UZuSOKwvZYoMGO/9VSqFDIxLZFsCeJ4uupneP2cg/9+mX1GB3MieB2rqY1\n76x7xFJQAnbXivby1E59Wupgz33sHMj1JuHDs8XhpQq1o/Jzr+Skiwx3lTih\n0RdHCaGbsq437rgbW7zoKCibdAJmQjihyMsZ1agk0+lLpF2oAkpBzsyfF7wB\n9aEE/Kbx20v3ttVylSqdA3JNSzznUat+0mYSy9NhxPQxr+swjtD/7MSeNjNr\nLxQ1lny6qNXzFckXi8t9XR+SG5GGnDwdBJQjQdmwyJzjiV6g6o2wI1JAmp76\nY+0UgwOJmBmUphV+74/qlzl0zZ6YWc0/TLLrMyPF3TsvkHygqGStZPKh0Uw4\nF6xnMR/PchvMaZk0HZy2vZi8/fwv0r5fgmye2JUll2XW7BBY9hOYNcNleeGD\n8Wwu3GiucwRpYUQZ18rQhVUJTgbTwN9pLCHYhlqwAKKfjvMkTGhePMVUYhYW\n2OM5\r\n=peDv\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCz+52jxcmkefEXDlR4YrQiso1M1ncBCx6c7oO3cqdG+QIhAN4AeA7EIFyw0ov8Kk8/UAUEbrM5cdX+nDaiNTrzwyxg"
+					}
+				]
+			}
+		},
+		"0.0.19": {
+			"name": "@cloudflare/megaphone",
+			"version": "0.0.19",
+			"dependencies": {
+				"@cloudflare/cli-helpers": "^2.1.10",
+				"axios": "^0.18.0",
+				"chalk": "^2.4.1",
+				"commander": "^2.19.0",
+				"cosmiconfig": "^5.0.6"
+			},
+			"bin": {
+				"megaphone": "./src/cli.js"
+			},
+			"dist": {
+				"integrity": "sha512-NGerezVJGCY0rTtOwPUQsw7IQrGgXCAPQB24036OD2EU7N48D8PYhELP3J/TUz3++CD3+ybmzZ3AN73/T4Yahg==",
+				"shasum": "a2bd9566219ae3063a8d0471c2696469cd47974b",
+				"tarball": "https://registry.npmjs.org/@cloudflare/megaphone/-/megaphone-0.0.19.tgz",
+				"fileCount": 12,
+				"unpackedSize": 21337,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeqPvBCRA9TVsSAnZWagAABQEP/1wXP6YidIAuMo/gmQON\nIodbw+bgAEdjDCK7evGdOvY1l8jZr8zylBOMc8Ufmf/X8UOKuuWe3AWok3IM\n06xmuFWkC5dt/k0R6EOmF3iHDRzNyGx5kXxjT67XA9vSyZBfCWZoH1R0kZET\n8mZ5IJkmE7EgbfXMj5FwxMg+HCwzUeMeOmvcR2TogHT0LyLiV5GSRaqIplvg\nxInmhkBSeBll9zd3b8axXri6NjKy4WLULRiJOqBKLDclGb5W3jRWMla7md5i\nVoqbaCBrES0e89JrQQmB6gvgC97Qy2bzRxB7P8NGmI9xUDYOKxOfcP657W5K\nBMb1slVbsuHMs009qRASUikXHDugGIkFfwxwFwlndVJpVvu41z7T0KlvU3v7\ny5qVPbvw53USHZbtSB1eV0myu1OfbPKnkxGvBE4EvGRV6GJkLPRG4Vn35QWS\nUZj1lrm4fOlf3CDGPcEp9jg25g8sG+VXXUFQriGmNx8GgeYpq4XfY0i7dtyJ\ntZT6qm1sbAD/lDCtY6HjIScm3WCAbo6BaAxxsE3yDFxKmUYkAKJ3aM395xOZ\njztFCWRVQBa5B09rmpeIjGEk6KguqZWKvjgBxRbcXyw6s5NMUFHabWtJ+OeI\n+Pa8PPl50ZrODC+8Y+/N9rZgxpRjGlPdoyphsgLl23DvUo9T70JgEpfkKoM2\nieRE\r\n=L1IF\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCRyORLNd6P12d97D6ILO7iIxbkWVCJA+z916Wfyex7IgIgaLHgvaPKSWNEWAFdETdMVyZ7hCKuZp0aQw1UGBUlkrw="
+					}
+				]
+			}
+		},
+		"0.0.20": {
+			"name": "@cloudflare/megaphone",
+			"version": "0.0.20",
+			"dependencies": {
+				"@cloudflare/cli-helpers": "^2.1.10",
+				"axios": "^0.18.0",
+				"chalk": "^2.4.1",
+				"commander": "^2.19.0",
+				"cosmiconfig": "^5.0.6"
+			},
+			"bin": {
+				"megaphone": "./src/cli.js"
+			},
+			"dist": {
+				"integrity": "sha512-du2+N+j7Q/zLN5YnnT44ZY6lZVOPJPf25EgMxx+nD4vMP8PcQ2+cjExu2BnfLOV/mZdVnkxV1oNir+3op2CHTQ==",
+				"shasum": "4d03d1dc49b0bbed3e5b3657b957941d6ca1e1b9",
+				"tarball": "https://registry.npmjs.org/@cloudflare/megaphone/-/megaphone-0.0.20.tgz",
+				"fileCount": 12,
+				"unpackedSize": 21596,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJf08hiCRA9TVsSAnZWagAAWlsQAJeLQzD2Zu4otAfUmlQX\n0juhO5BJOo5wfTDSIVbFs0ZIT9OmKfVKCZycAQyUuqQut5xg4IEdAs5x0QjZ\nK8s2xNkSTzfoloccvBQv/VJ5mgK52eFIXaVIsF7uvB+rq4gzXx/ndz2rFwYj\nxfQzi7XqsY5XhAgVDDWdkEeAIlXvS7aoquNYIfVrxNgrtI3SC9OcnQy782vg\nyrDj7zSgjmOI+oeth3wHicHqEx6NMXraQtj83/0TOREeyOwbMREJxfeta9zh\n+/cSpV+hIrEMB1Asu9k/oVENFFLjeElXEZhNVZ1xLQoKFPdQu8gKYrC3oYAx\nNNRVZSq58QZ7lqDg81IMUKMjQWcb4MJxFsksqvZ04VqH352jt5C17+jiDB7S\n4bQ7hs0iRIOzZvNr2866L2nBxapxXG7zxwfS5/8MRcv4X920nn7DlECHVNtw\nrCuAkHveZnbrFtGVCNTWMBO1IMSgjvabhhFwA5BQMOyXWmctKIFQIUaJ+Nde\n8h8MKwwDgvTwS5TUv+QtZx3jvJwuWxRqupT2cLI7Y2+w3+xDMjkxTavOQwIO\nHFnHXkQqq5BUVCK1WEeUlmoT8qhyOfbRGDdZJGaX9UTMIWAdQEWopybRsAHx\nYv5KDOKrTFNCFGpAxlOVaznHhmAjBlsd14BkTRZtok8R/uMAg1dT3yaTgDfR\n3G0T\r\n=q1zv\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIECQlP11nZCWsRIheeHJBYYavpJai45uwveLsFdF1nB2AiBzRtVTCws8ZvkLTOZ2QW+7cYDEYcc/8HZqrmcWN6uk5A=="
+					}
+				]
+			}
+		},
+		"0.0.21": {
+			"name": "@cloudflare/megaphone",
+			"version": "0.0.21",
+			"dependencies": {
+				"@cloudflare/cli-helpers": "^2.1.10",
+				"axios": "^0.18.0",
+				"chalk": "^2.4.1",
+				"commander": "^2.19.0",
+				"cosmiconfig": "^5.0.6"
+			},
+			"bin": {
+				"megaphone": "./src/cli.js"
+			},
+			"dist": {
+				"integrity": "sha512-XztvXWhiJfkmQAZ1Py7BMdKAZNgrURN//472RqYXfjw7HWKx1ya3miMBOH6ih3+MPOJ8g1aXeGc967xCb1cF3A==",
+				"shasum": "3587ee8943c59b9e3718aea5966c63c6775db31e",
+				"tarball": "https://registry.npmjs.org/@cloudflare/megaphone/-/megaphone-0.0.21.tgz",
+				"fileCount": 12,
+				"unpackedSize": 21796,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJf09UYCRA9TVsSAnZWagAAYEsQAJWDPbxv6aYwVUiRjHNP\ncK1qW9jl6MZbs/uEMTaW5mNtk5yqf/LL+JL8GOb2PoSQ9DfZQ3OhwSTHB1ic\nR0Wpp+PLOnjY/wXan4i2iq08i9im7ysm8A9i3g5KHn/6m8n84WxYPQ7ZqIfW\ns2XdmwomeybF++snuFhx+hEMpjrBijyG3w//lsVanV3lA7hOLv4rMl0X25+4\nZbzBUWG5FLVs4vDNydaxJM6ccSJygzOTEESnniEweZSP1cEiKshb7REkKY5/\nmcWA85f3s15/5J2SFriG2EcFB087+8RJedCJMF9CrdvbiFIPZH2DhC5aH6Dy\nfdDpoNvbINIqozq0fccKdu6F23c5vqyB6yXfNt4mHGvls0E1pomGS+HnXrIZ\nsaEazsAL/u0OXQ/ZOoSVb6rApVSnc7b7zWcXKXqr9CN+1ilAXfmIimM1/Khh\nfpDX5lGy7tqnIO7OmdfvYUzI2crI8KP2xylq+l1879cG2ZWTc18w0ESrlkJT\n2WexmZl46Ti+OVJ+4E/8wnbSShpgyqp1QUmZrsg4t7hMRfIoIRhvohiVv/P4\nP3NHEOunme9N13g3QC7wtLxLKyZc4b+s1nc9SMVJNbkg4Zj7y1jXpNWBXR3g\nOmgIn377jxuiyv2HTIIFZZo5yDqFLy79evdUVyYyCFKxN67JDkldQhlAZ4Cb\nm4Zq\r\n=BHu4\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIHER1b51K9tRIDX3kT9nRmxEx4fyYTnu4FyaYhmha1hzAiAlUqU5ZQFVjkasK/vEzp8vr1N1DN9zjJPExapeMLDUlQ=="
+					}
+				]
+			}
+		},
+		"0.0.22": {
+			"name": "@cloudflare/megaphone",
+			"version": "0.0.22",
+			"dependencies": {
+				"@cloudflare/cli-helpers": "^2.1.10",
+				"axios": "^0.18.0",
+				"chalk": "^2.4.1",
+				"commander": "^2.19.0",
+				"cosmiconfig": "^5.0.6"
+			},
+			"bin": {
+				"megaphone": "./src/cli.js"
+			},
+			"dist": {
+				"integrity": "sha512-Ppb6Ws1s/7IaYsKjf2IHC2l3SijjtQz+BLgD4Yv5JQJhi47MpUh4IafvnViEm7GaodjDLQaacYWtK16TaoTn+A==",
+				"shasum": "d64a184e53a902e4038f48614d448f841c79084e",
+				"tarball": "https://registry.npmjs.org/@cloudflare/megaphone/-/megaphone-0.0.22.tgz",
+				"fileCount": 12,
+				"unpackedSize": 21996,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJf0+HGCRA9TVsSAnZWagAAx18P/0wDIACI5yDckBATgvss\nf5MKWCLWSD8V6cF4EyngCmbjeBzKx0E+kCS0uLddmukeWz7WOYw8Ut3IOI96\n5hpB/3W81WMswW67P+8b1Ofmq+wkxnzDuKZzTu0JIMtvu5WVVnZ+n9MS8oTv\nEx7hp42zx3oVYa/v8MvSObST8uTGJDlh8kpY+frMMy6rw6/167pg7+F66IL6\nijrVFjgYNj/+FVznALqsMHSBG1Pd260sUZIqbov7hsFdK+MCEOZnwC+kquYA\ncJ1W+mokwCKx/0eXLFKtX+yykA9jodVAyLVG9dgIYOKpPC1FwEpGAnPmTjHF\nB7Yf1Hw01rHMOLgWiTX8RJsO7YyammGz4oqBjwq5xHb5RxY4pdKu8BjLbNDH\nSyIX3/o5wBQmfMsg9Yu1VKi3j0u3K8/uEkLh4YvknHvyawC2V6yShgth9Ay0\nAoiEGSNrNm2pSEaux1VdPyYsxlKguiGYbdY6FBi5yD5/bHcYD04Box8jArTY\nOMSRMU26Oo0qz4kA2uaZYDG/05i+fbHpdMXe58Xk+8kRwJEwuSbP5lzui3IO\noXybCPw8sIKRbz188CIj+cgm/fjpqLU0pOulBB/FtV7f1vH4sbdGVvQQxgmY\nKL6nZB7jpE+7Pl5lMahTQWu12oO6WURKyUDHUEg3XZicRfCmKhbwR7mR6qEv\nsBRZ\r\n=YlQx\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDOOJVy3e4Cxpvn0u9T/hNhOgrhyRIUUmr0A3p61U7tsQIgDNnEzqhxCE3+YWczNo+UF4cfOS1uCq4HETpz0dzQkKM="
+					}
+				]
+			}
+		},
+		"0.0.23": {
+			"name": "@cloudflare/megaphone",
+			"version": "0.0.23",
+			"dependencies": {
+				"@cloudflare/cli-helpers": "^2.1.11",
+				"axios": "^0.18.0",
+				"chalk": "^2.4.1",
+				"commander": "^2.19.0",
+				"cosmiconfig": "^5.0.6"
+			},
+			"bin": {
+				"megaphone": "./src/cli.js"
+			},
+			"dist": {
+				"integrity": "sha512-Kl9Ex0v4GU4QIJLyitSrEzGmalEcGxihRZ7ZUMtRDnyvWSgLyGdo/ShgiN06HenE4IUJt2L7PpJCfgBY2pY8XA==",
+				"shasum": "66b39a6fc9a5aa3f0523a2ac5a5dc4eedabb97c7",
+				"tarball": "https://registry.npmjs.org/@cloudflare/megaphone/-/megaphone-0.0.23.tgz",
+				"fileCount": 12,
+				"unpackedSize": 22196,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgQAF2CRA9TVsSAnZWagAAgMQQAJ2HwHv0zPaTXJL15y7G\nJ3gNxvcJzqIWh0ld0h6mYny/HGWlTzL4cOS2ECIMj2XHq8dWafI4Yv1d5NBn\njohT25x78EsrGL8J+8K23f8QOoZEcPQUuDECtlMblDrgZdKI7zQhdzq7uEZi\npMQVZH1p/j0Oq0NqTQ6b1juNuKP3yb7M7RThZ83jIMFvuU2/RLuqedFOosXU\n5L/vfuhks/SVCUPIv8abHmrLiftJUuRPT7UbyK7bixWzkrXnT4Olf/6wsLkh\nW9as2Yx5i4wejCsK683d9yqNQtdd70ec5Q0kDlyu7NOJ+EAuC0Qm4XnG4K7g\nsI8mz04CT7QbFH4tVN7QKrclEQ6hlnA1HG+ZLtuqp8dWxmvSTLt+IA0wLGp2\nJaDtcsBx1Aw30AspEPxC/t7SxQnNjmwv6a3HbSs7IZuyxoBVvidaJX4uvq9m\nx14Y6kvClhHf7gGB8SRU2VuDWN1iF8tGeA/BAyEjuyGanFAT1wd3wpi3TR6k\nMq0ckdIQPkK8+b299+1JIOS7OMz/bgjKOy/N4yDy5TschPvy1lX4RjeFEShU\nege2nVJjWsR16uK0hDxjEsCHhStIUr8pntz2CcZBO454b6JQQbTaGYnXBjCj\nvm7CDLtpbrEXJrfMv4Uz8yqXGg/yMv+5eAwnJ9xPeqkz2V2bVVt6PuGq3UDG\nC/Fk\r\n=0FuA\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQD5tMzNEAPW0+Kb1QNON2bKdRIsvj9gUnxXSOPOHu8CnAIgMNyOEs+6YHgL6JXdMKbrpnBuz45mO9dAKf8aMHczkgU="
+					}
+				]
+			}
+		},
+		"0.0.24": {
+			"name": "@cloudflare/megaphone",
+			"version": "0.0.24",
+			"dependencies": {
+				"@cloudflare/cli-helpers": "^2.1.12",
+				"axios": "^0.18.0",
+				"chalk": "^2.4.1",
+				"commander": "^2.19.0",
+				"cosmiconfig": "^5.0.6"
+			},
+			"bin": {
+				"megaphone": "./src/cli.js"
+			},
+			"dist": {
+				"integrity": "sha512-hYNtQ6joU1BDMysA0rdYdWgKJNtF5Edf1he/Hy2t4/OWy8Uhn+ynCo78RTzb7HB5n2+gpbN+YDRxEDt84SP85Q==",
+				"shasum": "e72009a15ae3cc5553b33d10cd163ecf4af09d9d",
+				"tarball": "https://registry.npmjs.org/@cloudflare/megaphone/-/megaphone-0.0.24.tgz",
+				"fileCount": 12,
+				"unpackedSize": 22396,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgQBEWCRA9TVsSAnZWagAANxUQAJx01K29kjGjAnM1sMII\nUysGBLc1+eFPMSPNfvD3ACgDEQ83RcSDmj/AM0Oiosuz5XTwkl3+4/lcfcqz\nszx627DtQr2XhUhHHtPmUErT/3VgMeFTMZ2/cGiKILTxREbLDFwSyNqro3h/\n+R8d5FTLSgi2VL0DLHy7jBFeYSuICigg3kAeMU8fyli6bjxvupcfb7ZzdUBI\nmzck27eGTBmsdaMt9cn02BMqhAyzs+RQWN108DSmTpOBjGoQ1WAgEW7OvUjS\nrV7rIwDTsCrUl0WtUTpRkMV/HrR1TJMDCQwC+hco9SGaw6gb5xb6xqxFYIVD\nmqFupxje9jHdtsUwc8gkmcTxf/QAbN7hTNhSOQgxUJJaFZ5LgP/wzZuswq6g\nviwte253N+wht3oYg6lzc8t6GHNWG9T6cKnGg6EQPnnmpazNUrfPQ1tJ8xWJ\nTxHHyyepuf6TtKPUjrz1uM3M0aS/Z3q3s2mWDOpVs5zKAGuCcVtEtjeMDd51\nd0YxG8PnOgqRYhTYOdV7N0pS0dH5KgD8gMyE/b/xumARh/vq2ClCVCv5j2TC\nC34JViCE9lC6m0sm/kQ6f1fxhFe0e5GtTthTTs77VTpxTjjF2I3cubnoyOGi\n6hm3tbwO/LS3414kOR/ScQFN3ZvhUJoerAAJjky2rOjN6XopMxOtPx0e0u5s\npK4S\r\n=LHVj\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIAfM3RDfbo1xCswtCET9y0RX1ONDlbUsBwyv6ykoKZnaAiBCTl+IqR+y2/P/X3Chkbo/fBVL37JQl5qHCEM/+YRx/w=="
+					}
+				]
+			}
+		},
+		"0.0.25": {
+			"name": "@cloudflare/megaphone",
+			"version": "0.0.25",
+			"dependencies": {
+				"@cloudflare/cli-helpers": "^2.1.13",
+				"axios": "^0.18.0",
+				"chalk": "^2.4.1",
+				"commander": "^2.19.0",
+				"cosmiconfig": "^5.0.6"
+			},
+			"bin": {
+				"megaphone": "./src/cli.js"
+			},
+			"dist": {
+				"integrity": "sha512-r0Grzhk5ZVfY+XOTq6It27juyLlRAjT1ynYEJH6s1LEmEjTt5e4E9pwqvxQwjnLZQ+fj7CnEaIqTHdSNiCAQ8A==",
+				"shasum": "02fbc3f30572807411fab66b536a38080e9dd43b",
+				"tarball": "https://registry.npmjs.org/@cloudflare/megaphone/-/megaphone-0.0.25.tgz",
+				"fileCount": 12,
+				"unpackedSize": 20470,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIB2TQgjEHBLbDMFMNSyEGgV/R/tgQwwPrWje3t/iU3knAiBsltQaFj3PZABMwaEAoeXRHrbsYI/8+W28Bt0d0qlyUw=="
+					}
+				]
+			}
+		},
+		"0.0.26": {
+			"name": "@cloudflare/megaphone",
+			"version": "0.0.26",
+			"dependencies": {
+				"@cloudflare/cli-helpers": "^2.1.14",
+				"axios": "^0.18.0",
+				"chalk": "^2.4.1",
+				"commander": "^2.19.0",
+				"cosmiconfig": "^5.0.6"
+			},
+			"bin": {
+				"megaphone": "./src/cli.js"
+			},
+			"dist": {
+				"integrity": "sha512-Tthc09kF3u4DipDkq6Kwc9jhdXeNAP7VtOJ9Urn8dX64ce44uUhw4Cr+JqZ0wVSJnxKCvQZtD6Hy7eIFPYpp2Q==",
+				"shasum": "9a5f88798abd7e7e02901056ed3161af6abf100f",
+				"tarball": "https://registry.npmjs.org/@cloudflare/megaphone/-/megaphone-0.0.26.tgz",
+				"fileCount": 12,
+				"unpackedSize": 20470,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIEC8NdKFXbZtJ5kihFLDrdin0afdyPEghB/AGeSr6IG2AiEA+QuPY72L13crSIl4zR/iKqT/9tpjtNyeyKtnda/GTHY="
+					}
+				]
+			}
+		},
+		"0.0.27": {
+			"name": "@cloudflare/megaphone",
+			"version": "0.0.27",
+			"dependencies": {
+				"@cloudflare/cli-helpers": "^2.1.15",
+				"axios": "^0.18.0",
+				"chalk": "^2.4.1",
+				"commander": "^2.19.0",
+				"cosmiconfig": "^5.0.6"
+			},
+			"bin": {
+				"megaphone": "./src/cli.js"
+			},
+			"dist": {
+				"integrity": "sha512-Dm32W+lUn27KrYgetR1EzndpRYOWYiaVUd9gmR3glMIykXA/Kw6PSrNG/xPjL/BQrIRaSDkzH4fPWmmY/EV8Gg==",
+				"shasum": "2b80e3fa16ae15eaa0a1b1ad0bc22a7647097d2c",
+				"tarball": "https://registry.npmjs.org/@cloudflare/megaphone/-/megaphone-0.0.27.tgz",
+				"fileCount": 12,
+				"unpackedSize": 20535,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIGRbFKYCwpTY/zFt7CWAqlr35exoRYcdKUHJhUMPaqdoAiBxbsYb/HYmEQjfd1k6iXpgv7V8DOnRkqkLIHV2Xcnx8g=="
+					}
+				]
+			}
+		},
+		"0.0.28": {
+			"name": "@cloudflare/megaphone",
+			"version": "0.0.28",
+			"dependencies": {
+				"@cloudflare/cli-helpers": "^2.1.15",
+				"axios": "^0.21.3",
+				"chalk": "^2.4.1",
+				"commander": "^2.19.0",
+				"cosmiconfig": "^5.0.6"
+			},
+			"bin": {
+				"megaphone": "./src/cli.js"
+			},
+			"dist": {
+				"integrity": "sha512-TpTQG4B38SdkX/BPoGBwgCmuOJnWuM8IFNcsXofVJTEoYbVfMUdzYdljp8NnVJ/Qi0iRXbFdmBFHsShmkDROqQ==",
+				"shasum": "a611e9ad07e6ac920cd37e21a14cd266f53748d2",
+				"tarball": "https://registry.npmjs.org/@cloudflare/megaphone/-/megaphone-0.0.28.tgz",
+				"fileCount": 12,
+				"unpackedSize": 20735,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJiCpdDCRA9TVsSAnZWagAAZjkQAJ9lkcVbo1gbm7eNmoHm\nUQXXWui54sJOlOtkF/A51AOK5pD2bQ2ngiMfNegxB/y6TJAc79P3EZc5S3av\nBtgXRugEtaXaexwH54qyFniLQJMNBbKdRv/62w7r9xje4wQlKhx6XeiS+Ijw\nDlwBNiPe/ciqnh+QjqQ8vj25wzVm9DMMJO6pdg/vXNc6U6/NNJTG98tzQRnj\nz0uUtLdfiCJKdIfuqmCdLAKhnEeqTcwi6/zUvb+8PxY2KsQfPXrnnw5mZQg1\nHZIyc1+E/FBqA0DN/DO0Wppjmaw60WjAGbGHIwwHcb2l7LQu7fAZq2GoxDzI\nb/bfuUhOQesZMrwFrW33pQYq/T9kzSz0Gk0dVkuJPcnCLbeUgS3EEAyofo4Z\n1ef3NUCwGxj9VYHB9VS3X2r24aC9Rf6a6b2UpEMW3imE0I1MN5h39cxYjkTV\nrG/xixWjjUj75k23tLXIPeuvjes+ZcSkaIqvtoI9gW+leihJJ44DZ90mgoF6\noOYjd630ajSsFBBQwXVOW645HeI8bq+bbcittzdx8FjNbs46ll4eGDOzLqUQ\nMXFCBYwOsl7SCe1AgBJLwplQNaexd8phBA/uGsHT/euhVVULGXs+/atBUkhx\ndwIYedt5iZXq2FZ/7pwCDPVw4ufZhFqIk0l4Ui/54eylMqE+INIhqgDjvFm9\n8oLq\r\n=dfAp\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIBJpzMpc3z77O5nZjMY3XW57f0ep8iNJ/2Lva+kb574SAiEAmab4h9L66J0ioCNJJFxeRHSWnR7ttBkyagEXmMs9suo="
+					}
+				]
+			}
+		},
+		"0.0.29": {
+			"name": "@cloudflare/megaphone",
+			"version": "0.0.29",
+			"dependencies": {
+				"@cloudflare/cli-helpers": "^2.1.15",
+				"axios": "^0.21.3",
+				"chalk": "^2.4.1",
+				"commander": "^2.19.0",
+				"cosmiconfig": "^5.0.6"
+			},
+			"bin": {
+				"megaphone": "./src/cli.js"
+			},
+			"dist": {
+				"integrity": "sha512-w3i80U7LCYAksUUZuCvpnAUPEpH5+jYHmGzDaGzZdr6c3KWhTt2TNTRTqMXs+uGx9RnU85lvXxM37IwNbTlazg==",
+				"shasum": "3555afd4bb67fd394db2deaaaf5f862bfc82eaac",
+				"tarball": "https://registry.npmjs.org/@cloudflare/megaphone/-/megaphone-0.0.29.tgz",
+				"fileCount": 12,
+				"unpackedSize": 22084,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCaFP4LBuu8QPlPoPW0aC4+ojrtYRnS/VIJ9sGfNXK2pQIgGp/Dl8F6MF6eJgc3OFzYnILknRMQE72QQJL9BgzFs7k="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJijVpnACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqHzg/7Bm0e+sWtHv5qEfOzrDrj1CdNTkQf4L7GvHOEKQsJPSewRFJN\r\nXGr4/9fi1euPQzu9GDkM4NDY0qnBLmk5omO+1ucqC9Ixe/amjhiM4la7WsTq\r\nS5+i0C+c+rSF8DTakTwPp5he8Syx6oUNBXPVjh2gaC09VTYLxWC+1FyVU/kc\r\nSXhVCVBOt0C8C7qazgjlJSPV+EYQdLqi8K/nmkv/MUuvzcO+yye6NagSvJ2d\r\nu99PCeRX6YrcPOPPrHuuDXFpfv0rRJFNfWs5EMOi4j34xLkBzmQenwAtrg+C\r\nJWT+i+f5V+MfRRv+OUx+Is2LrHRDfWB80HPu1YOxiZJjUggckHriUNhJ4/dy\r\nd+N9HieOFco8gwTh5uMA5lWOJV5hKTWODYUNfuW1jj6ZX3pmh/ypR/W0AM4w\r\nk1u6e3ZYdoXv7Av/DjVdY8PvuCoPQ7jsQIon2AbLxOmO1WSr+F7g6qcIQgoJ\r\njp+Jcbbt/RJ5c6nX0PO0noU9BUcW2KkWlY/FL+X8RTnjoDbXHvG3jUg3nTil\r\nTrqA3t9kE+Z5hqoVbpDiXa4gdugTavGT5WyPLIUoiaW/4q/1pS9HOto5iYcn\r\ngFsIcWlFRpods7xBp/T8nONCQNzVhfaeoMO9YImcnIeea7/jaiY5s/yMcWB2\r\nUC++pDRrGzTgSwRJvTNgXcScKZ5ePC016Jo=\r\n=116m\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.30": {
+			"name": "@cloudflare/megaphone",
+			"version": "0.0.30",
+			"dependencies": {
+				"@cloudflare/cli-helpers": "^2.1.15",
+				"axios": "^0.21.3",
+				"chalk": "^2.4.1",
+				"commander": "^2.19.0",
+				"cosmiconfig": "^5.0.6"
+			},
+			"bin": {
+				"megaphone": "./src/cli.js"
+			},
+			"dist": {
+				"integrity": "sha512-1ZIvfttMvRd6rcxIV8LMUdIfjCLeq0H5CP57gsHvDAeXp5iYnALGZ+DdC4SswAJyLeZrA37XnWWfo9VMHGml1Q==",
+				"shasum": "2937b0e62b50c372681271cbedbe6601646a9279",
+				"tarball": "https://registry.npmjs.org/@cloudflare/megaphone/-/megaphone-0.0.30.tgz",
+				"fileCount": 12,
+				"unpackedSize": 22583,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCdECsxinY0KYO6hjOunOwI2vlQpS19wi81V6ZReeX56AIgbBSLZDcZwYP5xhJF3xi22pIw5BySl6iRSn1meO85Wos="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJijpT2ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqEKRAAggIjRVHE8S5dvectcw7w/kUZUdwfQRVh0zc9cRupaYmAz9sv\r\nHtY6dF5iFHfRkfedI1sOsUsSk7gT5jY1YqmQNiODRQJysDP2iWgHZK47eEl/\r\nHTE3PHBUSbDBT/E/uG7dWEo7WKgPW4wkjjGhjawK7X1sheLLkDjzQFAFavRK\r\nmqaYuQVjn/1ldreZh0d+6vfhOqShyScq7nFptKnrsmgHpye0zQidUeUtwzrx\r\nPD184MdtGPqPe/Hp02LjIMHwoCqgey07+kTd4RA3PqYY4rIDzAaLyc9q3o6F\r\n2DcMfeiI3FbmkdMx2IBgSHV0YJETJHKgNCjP6fmxF+iQc3/cyABLIHsw0vAg\r\n2PIyRFctWhu/um2/bwj+r+IYFZ+xfnyhc5sYk86cuEOYHbPJvnBjkBqkIpDG\r\nMmep1Kb72vi1Br2yyE4FAGAM00Bsg8QV1jqJEfcEogSK7C/Y0dRyD5iwLtdV\r\nJCS9LDb+RvScixWsFKFU+jNUcv5HdgGGKRH/HxyRQu3cx1PJplDzkXnCg8w+\r\nNnJjjcjWEqKiRCcQMV0Os0B4uRp/uEIX5xuIsilQ7dDhlMYy7sc39gbDdCAR\r\nb9UcwUPvhjgXcRthyVCwX1b5cl5hpmbhjw9EXmYGC4bXz1xzV5g7tdTftuYm\r\ndfQW9BCBOC27CJwEU9huIuFOh3iKquO/bGk=\r\n=AeQB\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		}
+	},
+	"modified": "2022-06-21T16:57:04.093Z",
+	"_cached": false,
+	"_contentLength": 39456
+}

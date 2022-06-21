@@ -1,0 +1,940 @@
+{
+	"name": "@cloudflare/stream-react",
+	"dist-tags": {
+		"latest": "1.8.0",
+		"next": "1.7.0-rc1"
+	},
+	"versions": {
+		"0.1.2": {
+			"name": "@cloudflare/stream-react",
+			"version": "0.1.2",
+			"devDependencies": {
+				"@babel/core": "^7.9.0",
+				"@storybook/addon-actions": "^5.3.18",
+				"@storybook/addon-docs": "^5.3.18",
+				"@storybook/addon-info": "^5.3.18",
+				"@storybook/addon-knobs": "^5.3.18",
+				"@storybook/addon-links": "^5.3.18",
+				"@storybook/addon-storysource": "^5.3.18",
+				"@storybook/addons": "^5.3.18",
+				"@storybook/react": "^5.3.18",
+				"@types/jest": "^25.2.1",
+				"@types/react": "^16.9.32",
+				"@types/react-dom": "^16.9.6",
+				"babel-loader": "^8.1.0",
+				"husky": "^4.2.3",
+				"prettier": "^2.0.4",
+				"react": "^16.13.1",
+				"react-docgen-typescript-loader": "^3.7.2",
+				"react-dom": "^16.13.1",
+				"react-is": "^16.13.1",
+				"ts-loader": "^6.2.2",
+				"tsdx": "^0.13.1",
+				"tslib": "^1.11.1",
+				"typescript": "^3.8.3"
+			},
+			"peerDependencies": {
+				"react": ">=16"
+			},
+			"dist": {
+				"integrity": "sha512-WefdBIUDnymrnTrh6iyZ5Rqd4Z7m3WuoqQw7awbN765c+3XMvyrhdnqAPjdhhKWM2dOjxNafYDwmvQ+nylUehQ==",
+				"shasum": "3eae28d5111bbc13e593a72664e67b184a443cd2",
+				"tarball": "https://registry.npmjs.org/@cloudflare/stream-react/-/stream-react-0.1.2.tgz",
+				"fileCount": 14,
+				"unpackedSize": 101662,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeniNCCRA9TVsSAnZWagAAERwP/j5LGcVbfvMmLPFMxnOk\npneaau+025e/QQYeXt5b2RIMuhbYwfvbOMVcrSkXxmaNrNGFWVWU74PF7cU5\n3tQpyqpPIPxC9TsSWxrScc+AwKVgO6Mkmm00edL9TIIGbCR8blOkcfoLfrnR\nzBtpUjMJWFXYjL8wVNk9B+oE0iXzZn3M9J/XYRtflYsTHKNwgG/h/r/G7D45\nYKm5pztKTFHjHWgXHQznZ7g62TslyAzcKij4DkkSm4sRAl2tPDZ/Hui5xgwc\nFmP/Od/tJiiRILJaD4Nzbask+r1ZyrsK26g+rK/2UrFZKS6X3rBAcLny3vwM\n2hpWlPFX2bk82+jPCwvGzp0GjO57fvGLBDTWUrRYZdqlVtojgbYZSwH5apGg\nW6f01xM3Ic64p9rX9paD5cUf37QQLcCrL/TJqT7ocioLgpmvmD5uOR6wWOYi\nCUwJEBDqtzAm3/BT0mICcp0PZjejhAccnV3og1lzER7oPlP4eiox0KnGWhXN\nv1DLmmXgZaqxMfb8PMu68qfowOE9wctHkP77PBskKrK+tBaUz/pb/37mhCdf\nIyd1T0FRIGeIGJV55LQHhmU6OIYuEKpY5z4FZ9W8v7W4c4W2s0JIcPBu195P\nawfmrY6Xv5xphYZMpRRwu8jQF2o1Fb3A6eOQm4zN77N0usLSJckUET7Z+TN6\ngqLq\r\n=BJ+3\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCICmu2mz8y8bbdA1nfX8k6speJ4xVw1vmF1LT/F4w3a36AiEAo0xSxszf8xgAeSxUDndgrbyHXihZFWNwtdTpNq18E94="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=10"
+			}
+		},
+		"0.1.3": {
+			"name": "@cloudflare/stream-react",
+			"version": "0.1.3",
+			"devDependencies": {
+				"@babel/core": "^7.9.0",
+				"@storybook/addon-actions": "^5.3.18",
+				"@storybook/addon-docs": "^5.3.18",
+				"@storybook/addon-info": "^5.3.18",
+				"@storybook/addon-knobs": "^5.3.18",
+				"@storybook/addon-links": "^5.3.18",
+				"@storybook/addon-storysource": "^5.3.18",
+				"@storybook/addons": "^5.3.18",
+				"@storybook/react": "^5.3.18",
+				"@types/jest": "^25.2.1",
+				"@types/react": "^16.9.32",
+				"@types/react-dom": "^16.9.6",
+				"babel-loader": "^8.1.0",
+				"husky": "^4.2.3",
+				"prettier": "^2.0.4",
+				"react": "^16.13.1",
+				"react-docgen-typescript-loader": "^3.7.2",
+				"react-dom": "^16.13.1",
+				"react-is": "^16.13.1",
+				"ts-loader": "^6.2.2",
+				"tsdx": "^0.13.1",
+				"tslib": "^1.11.1",
+				"typescript": "^3.8.3"
+			},
+			"peerDependencies": {
+				"react": ">=16"
+			},
+			"dist": {
+				"integrity": "sha512-+aAL2a64Chf+4Cz59TzEuHfsR0Ry93tQqtkgh7kvXzh4E2dn5m7jX2xCcunF4x2HofMESH9g3AdyV1QxKBM7vw==",
+				"shasum": "f763830d627b5bdb5d6e74917fc669bd28f62f36",
+				"tarball": "https://registry.npmjs.org/@cloudflare/stream-react/-/stream-react-0.1.3.tgz",
+				"fileCount": 14,
+				"unpackedSize": 101711,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeni4QCRA9TVsSAnZWagAA77gP/282YMg39LNleKxNx/wR\nRFlos3qJzyE1eNHJ/XG/iqokZRBMDuPTvUwnFhFDJUaqrYh/d6cFM0Y/bjnV\nRNn1smIb2To4oT7nTd9bym6Hmi3UF7UOwITj9f0QdoChxKPGw44+r0S85ZBC\nC7cT4muSyWGXOKX+7VVM54D09eC8EErAAdW4NCVk7hN2vYGoVqMRcbeksXhW\nZNT/rnEZtJWkGNTa2ov45u6vi0KlBVtRJ4a87SfGQ2gFQy2jstTw9rTxrd91\nI926uL7bRNw+2morD1jHiE8bp6VrItn4ry4MngPIa6qNbzmdIf7hSaF2klcg\nQkIlQJUPCB7BQ6G/JDyt1b9ZB00FdliSyPdJ5Jvy5gSp+08eMmKCu/oPxVZW\nmknHrXowA4cl+nadCCeDXtovnId0cXLxmgggQ5WWL9FVTxQ0himS0WTw36CA\nkrvZugbcP57JchS6LoiX3eIJy2WTzuF8P6GxJevni0A19U+zNH6Lvx436j7U\nrGPnuMqrAwQfe9POTuarJetnFSSeawHx4H9qjkAEE+db39r/aW6mImkd/EQa\nC3OPK56aNf0y9w+rMYKgzNC3cAA39s7IYA8OoCqKXt9J/nJzQZFFf5S/tGii\nryKM70UV39frOqnBTfJPBXTizCIyiqPLg1aqY4VFBdmhacMQs2YPX3pN1dn2\nG4hp\r\n=AHER\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIDYU2jQ/KCCEdZAq/c4+SY3cYhZRdflaPWSNCgnDOHBMAiEAyoH+rZH2rsmf5LYp+P2N2cO78r2VDK7BW3NZQvpE3P8="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=10"
+			}
+		},
+		"0.1.4": {
+			"name": "@cloudflare/stream-react",
+			"version": "0.1.4",
+			"devDependencies": {
+				"@babel/core": "^7.9.0",
+				"@storybook/addon-actions": "^5.3.18",
+				"@storybook/addon-docs": "^5.3.18",
+				"@storybook/addon-info": "^5.3.18",
+				"@storybook/addon-knobs": "^5.3.18",
+				"@storybook/addon-links": "^5.3.18",
+				"@storybook/addon-storysource": "^5.3.18",
+				"@storybook/addons": "^5.3.18",
+				"@storybook/react": "^5.3.18",
+				"@types/jest": "^25.2.1",
+				"@types/react": "^16.9.32",
+				"@types/react-dom": "^16.9.6",
+				"babel-loader": "^8.1.0",
+				"husky": "^4.2.3",
+				"prettier": "^2.0.4",
+				"react": "^16.13.1",
+				"react-docgen-typescript-loader": "^3.7.2",
+				"react-dom": "^16.13.1",
+				"react-is": "^16.13.1",
+				"ts-loader": "^6.2.2",
+				"tsdx": "^0.13.1",
+				"tslib": "^1.11.1",
+				"typescript": "^3.8.3"
+			},
+			"peerDependencies": {
+				"react": ">=16"
+			},
+			"dist": {
+				"integrity": "sha512-ta4HoR0DS7M4sHpl3zsDms8WfmNLgt+iyX5F7jlHm5iJv66g0EUVIbEJg/hWnByqS5BLxVsnJwgOvgcU/zMofw==",
+				"shasum": "7b9344485bba3f2c7d52b002ed2fafb0521ad5ac",
+				"tarball": "https://registry.npmjs.org/@cloudflare/stream-react/-/stream-react-0.1.4.tgz",
+				"fileCount": 14,
+				"unpackedSize": 108921,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJen1IoCRA9TVsSAnZWagAADgoQAJoHHblWuA6B+98YGXh8\nf0PXVIzpA+srGAJElSQ8d35RqfKv3LMDUfAkwoMo3wB9V0BXQsxecZweuYbZ\nnwtv/d5ELxhicmTdoBH6dLHjiwTnwnLUegqryqOx7wDTdkmBDyG0xJ0YyUae\nqA2nVq9jqqODvMQ6SLWpkDxakTld/tkD4eYimZTFq12Y5/dFiHUM22WfUKe2\nb/Mlx0Vx7gG72gVx5G77UA6nJgi//rjhq2QezEblJ0SoBzzECehp6Txd7655\nxDNOgZj4wW94hTFstsFv4dYPppoVFc5xESlqPGSBJIZrOOsSBRxZd86iZIQO\n2eATz18o1PYLQVXEQG2A2Q9lHaRsXaN5mCBhlN4bSoMFBQ2vY9bX7q3EeqU7\nrB0nJcAcUrHJGmLFOhcoSDlvv3pXL71lFS/lSfKxTb0qV2JXKE3oZ3sCjizF\nwGaVDLl4QexQtOtzFWoreNpFIfOX4T0wiRuXVjyIqoYNiZW44EyzA3sqRrTw\n3A2UauR0pLvODIZP+2bI7AYBgV33DgkK49nO6+jpesphXPZtVfwggaPjtBgp\nsfPXfhQWWXysM9fAbgLkwiKm04y9hTrpdhgLM6fztxX8cAsqmCk3dD5AFARc\nRQydTdVSS/SnmtZuEq8R2vavNsgLw+b7XvZtVsWRwdxg7iMt5dFIK/0QGZtz\nTkOc\r\n=92It\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQD9cPyRtd0YoclyI1Bp2Oj5wP9VcOoPQDS9eeVvuF4P/AIgD+xmGDuB38jXt89WzUht7tEVGCiPCE8Iu3uCd9v/YL0="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=10"
+			}
+		},
+		"0.1.5": {
+			"name": "@cloudflare/stream-react",
+			"version": "0.1.5",
+			"devDependencies": {
+				"@babel/core": "^7.9.0",
+				"@storybook/addon-actions": "^5.3.18",
+				"@storybook/addon-docs": "^5.3.18",
+				"@storybook/addon-info": "^5.3.18",
+				"@storybook/addon-knobs": "^5.3.18",
+				"@storybook/addon-links": "^5.3.18",
+				"@storybook/addon-storysource": "^5.3.18",
+				"@storybook/addons": "^5.3.18",
+				"@storybook/react": "^5.3.18",
+				"@types/jest": "^25.2.1",
+				"@types/react": "^16.9.32",
+				"@types/react-dom": "^16.9.6",
+				"babel-loader": "^8.1.0",
+				"husky": "^4.2.3",
+				"prettier": "^2.0.4",
+				"react": "^16.13.1",
+				"react-docgen-typescript-loader": "^3.7.2",
+				"react-dom": "^16.13.1",
+				"react-is": "^16.13.1",
+				"ts-loader": "^6.2.2",
+				"tsdx": "^0.13.1",
+				"tslib": "^1.11.1",
+				"typescript": "^3.8.3"
+			},
+			"peerDependencies": {
+				"react": ">=16"
+			},
+			"dist": {
+				"integrity": "sha512-wA6k5qI9WiMjGDUSfTyWz878ptHTTGFFWaOEAp+Xl3R5p7BzqGZ2SliFAo1bUUJ7DQIqnagKuS8graZovtFWbQ==",
+				"shasum": "7b8f38564748ff08604e6c45424a371ad9380c32",
+				"tarball": "https://registry.npmjs.org/@cloudflare/stream-react/-/stream-react-0.1.5.tgz",
+				"fileCount": 14,
+				"unpackedSize": 109051,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJen5xJCRA9TVsSAnZWagAADOoP/3JdepezomjIKcyWtPPd\nAu31+X4mxZ+V3Z68m0R++wWx/O2O78/BU+ezxoBnGIzgibZkhLEprpMuqiNQ\nO88crqzfEh+IPB9CY3rvHsSK2GUr2//ia9GZlCVvCDXJL0RzJ9hh+7OXaQml\nC788ucYXWeOwbes/XAPpHGJGWJrjwy4l4pduzT+ArJYxlo6v1wBYiLq39Ovi\nn4Q2lUe8j/ON1Glmc+sFgdXrGhR3YVvsA8sjdoGaIddSpjhPo57v7oeJ5CHJ\nlM13QKrijC/QwMjrFKMzi1MZLdjQ9UcsXGvtbAvAAdITBocAp8DCRe0auO94\nacPCU+/jdYlk9JYwTuq8+rO3JlWo/6R7UjvBMzN+GVEOeNy5cRSi1fXdMpUg\noO9Yf/+5Ecvee7UPVecitp+qp8ZJ14WiG+zlGcNr3yyP9D1gR1wzpwpwDDpN\nMuq5O+7yITH9PT80sxshgy2mE3199OBPqoYjsmXaUy2CaM89ahGUdconlw5t\nrcchBQWvCfZUeDr7UXCtnrCVeAe16rQRmji4uJ1e7+UYq+Ts2MrBPa2SOuL7\nw+oT42RpxiDUebxXvomDt95h3VZhVpa0slv1ePt1vzimdAqLlMUd8BC5NUsJ\nn19gQaQ4qlWlcMvZPGVKS48+TwuthAVZkXs2bHM0hQcg+DOaUGUsXDS2XpkF\nNPrq\r\n=I1Gc\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIE433umOGHJ9P15vpKv5fX4Np4EkFbJaFd2sHUNHmXzfAiBafgxkswJ6RvFh4fZL1gS+t/+0j2GzHIyK+YIVjVH9Zg=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=10"
+			}
+		},
+		"0.2.0": {
+			"name": "@cloudflare/stream-react",
+			"version": "0.2.0",
+			"devDependencies": {
+				"@babel/core": "^7.9.0",
+				"@storybook/addon-actions": "^5.3.18",
+				"@storybook/addon-docs": "^5.3.18",
+				"@storybook/addon-info": "^5.3.18",
+				"@storybook/addon-knobs": "^5.3.18",
+				"@storybook/addon-links": "^5.3.18",
+				"@storybook/addon-storysource": "^5.3.18",
+				"@storybook/addons": "^5.3.18",
+				"@storybook/react": "^5.3.18",
+				"@types/jest": "^25.2.1",
+				"@types/react": "^16.9.32",
+				"@types/react-dom": "^16.9.6",
+				"babel-loader": "^8.1.0",
+				"husky": "^4.2.3",
+				"prettier": "^2.0.4",
+				"react": "^16.13.1",
+				"react-docgen-typescript-loader": "^3.7.2",
+				"react-dom": "^16.13.1",
+				"react-is": "^16.13.1",
+				"ts-loader": "^6.2.2",
+				"tsdx": "^0.13.1",
+				"tslib": "^1.11.1",
+				"typescript": "^3.8.3"
+			},
+			"peerDependencies": {
+				"react": ">=16"
+			},
+			"dist": {
+				"integrity": "sha512-4SOW9qrmvH4c8hTI4WCeMVoFlxuFDaE2ctCazk9SDKDqGIqUs0ABYRFFfUrXg068RsgiCWiE+yq18zLPl/Cstg==",
+				"shasum": "79633d646e5ae3f0428347c47984c9f744f71ac8",
+				"tarball": "https://registry.npmjs.org/@cloudflare/stream-react/-/stream-react-0.2.0.tgz",
+				"fileCount": 14,
+				"unpackedSize": 115556,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJf9Lo6CRA9TVsSAnZWagAA86UQAJaFXHzSyz/ylsutKT8e\naNVllRxRXu6xjnMX4kBEiFqQdxzYQ/FMGy+73XhgjJvmnRdTEo1DzN6W8tZa\nXEFdLRQFjXpUEOWhFvwUx+iokTjHhKhOsLE4mJiNsJoSTraTCez//X4+90Am\niGk8cTRB7FebWbSzesllWsZ1t/P2Bffur7laZcsn52oIwWJx9nF45OB6BG8H\nsHqmitpoWp1vbOaZyfttJS4VK+pVl7SIPqGt/KrarisLxFZrBW7ETVKD//nZ\n9Ps08ik3b9lmaTB6Ev+NK0TD8bCka2JwaYR/eMv0gtqcYzEy9h2oq/0b4riS\nNmtyj6ZSxAWuRgKefugvUi0wIwZrnKKV4DotS7x8wU4g8zTj79cbO5e6kN16\nKZ7h5ujzqCUp7g3sE8OXZZp+AZvv8DA2jSCPNaWXnkBkxiTMNm4/Y5MWtNaC\nWE4bKPNxpANQf+hfGIu5TR4Yfg/vnv2ygkYv4P53Ls7DA/8n1XR5FH3tt5eT\njlctsa1UPK48+IjfT6vH653Li3uI6VW5+Fv5sVOGaJGoJ3RYDIg0WZJyWcE3\nI6oWRR5eF0w5k6iJhkpDL+lb/+tnG96u/JXz+7zW2348eURfmQZSji9Qwx2p\n+FkwUVmypM0fhvvjL8gqse+oMphk90VsU41rltbEFSwyvpM0eBuaz44445gX\n/Kxq\r\n=PJAa\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDjzA8otjYmEldcBeo+tXOYqB20N7c85+suV8O1lm1HxQIgP4cmIwizETrEQxAvp0wTH0/lCgs5KACY+G5Q5kX6ZNE="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=10"
+			}
+		},
+		"0.3.0": {
+			"name": "@cloudflare/stream-react",
+			"version": "0.3.0",
+			"devDependencies": {
+				"@babel/core": "^7.9.0",
+				"@storybook/addon-actions": "^5.3.18",
+				"@storybook/addon-docs": "^5.3.18",
+				"@storybook/addon-info": "^5.3.18",
+				"@storybook/addon-knobs": "^5.3.18",
+				"@storybook/addon-links": "^5.3.18",
+				"@storybook/addon-storysource": "^5.3.18",
+				"@storybook/addons": "^5.3.18",
+				"@storybook/react": "^5.3.18",
+				"@types/jest": "^25.2.1",
+				"@types/react": "^16.9.32",
+				"@types/react-dom": "^16.9.6",
+				"babel-loader": "^8.1.0",
+				"husky": "^4.2.3",
+				"prettier": "^2.0.4",
+				"react": "^16.13.1",
+				"react-docgen-typescript-loader": "^3.7.2",
+				"react-dom": "^16.13.1",
+				"react-is": "^16.13.1",
+				"ts-loader": "^6.2.2",
+				"tsdx": "^0.13.1",
+				"tslib": "^1.11.1",
+				"typescript": "^3.8.3"
+			},
+			"peerDependencies": {
+				"react": ">=16"
+			},
+			"dist": {
+				"integrity": "sha512-EraOdvalJMJmmyntAYl9aO77udXleXZintg1Gn8uvJGuYYCiUP6ELY0cMN2KUE+xqD3YeF+/MeHPOYM2z1sn8Q==",
+				"shasum": "b231cfeeab56c74242e2e70be8831e4e2d11fb41",
+				"tarball": "https://registry.npmjs.org/@cloudflare/stream-react/-/stream-react-0.3.0.tgz",
+				"fileCount": 14,
+				"unpackedSize": 115700,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgWPfrCRA9TVsSAnZWagAABF4QAJzYZYEfRsCQuQBPAPqT\nkjDj9UfSuYOghi0IbHfRtQMQ8X9G68nwf05FTJA3gqsnCfzxD5LO6J5J2NKz\nP9ZwffWoiwc+HhJArwnkgsRBgjhy2FiarSkck4U6wUSYPnMX+5e2ClP2jA4U\nQQon3Fb6uuazAUxijsDxzZ/5SjANaAUlcEIwwGW1RLxkwNhXHq5anDS93oQ9\nUZt+3t0wDBPYSr8FUzIVIkbQVBxqYhAeCoUG7pPaUnP1mdJdGYNGqPY5raoj\n3eUajGiN/DFO4TOTpb7IrsVljFMO+2cqFODVWMQUyuAOO1GycIj4hXeE0osK\n33lm3+U7aur2tVpd6yFuwL/f+XcakRmjSB5cDv/WlTY1YX/JuqDghuSPzSRJ\nx7hveubkZhxZe0daS26H1CuKmz67QW0DlrGxrguMciHixPpuigkIq0Uomsqd\nhpPWFh6TRch2I6TWCT2j80VoMVDO/J1SVAAhRYoObLCFGuxap6wPemvLfpUK\nP0heuXppBnP/jLVxyrAUmxYK+lj8GT5/FRUNB6Y9KSeMujBsd6dUArmvMGm8\nDJLdOKkLmUAHhv4u+4a8hmXBGPBLRD0IRgp2Aw/BqipAwWO5rShabW+qbvSr\nUODpAwDRobdcorPNJg0VZsBSEHyd9nKqBedaI3zpDVJY1hQf7mK83f9aMwgX\n0psQ\r\n=MDFs\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCICFi7l7+exT/4v5vY4j/YhB7MYeM0eEbTzFnyJuRh22rAiBn2hYBrml70IaJOfb4H3g0IoEt2Zqq4giLLtXG64Kqgw=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=10"
+			}
+		},
+		"1.0.0-rc.1": {
+			"name": "@cloudflare/stream-react",
+			"version": "1.0.0-rc.1",
+			"devDependencies": {
+				"@babel/core": "^7.9.0",
+				"@storybook/addon-actions": "^5.3.18",
+				"@storybook/addon-docs": "^5.3.18",
+				"@storybook/addon-info": "^5.3.18",
+				"@storybook/addon-knobs": "^5.3.18",
+				"@storybook/addon-links": "^5.3.18",
+				"@storybook/addon-storysource": "^5.3.18",
+				"@storybook/addons": "^5.3.18",
+				"@storybook/react": "^5.3.18",
+				"@types/jest": "^25.2.1",
+				"@types/react": "^16.9.32",
+				"@types/react-dom": "^16.9.6",
+				"babel-loader": "^8.1.0",
+				"husky": "^4.2.3",
+				"prettier": "^2.0.4",
+				"react": "^16.13.1",
+				"react-docgen-typescript-loader": "^3.7.2",
+				"react-dom": "^16.13.1",
+				"react-is": "^16.13.1",
+				"ts-loader": "^6.2.2",
+				"tsdx": "^0.13.1",
+				"tslib": "^1.11.1",
+				"typescript": "^3.8.3"
+			},
+			"peerDependencies": {
+				"react": ">=16"
+			},
+			"dist": {
+				"integrity": "sha512-ilh8/7Y1yyFsX7RpTmANi3q1niR2hn5XwdeYCXFWja0iZ3J8bQbfJt/YeJaqtCaDvQ4JDWPRnpTgkNzFNF5vKA==",
+				"shasum": "2d34013835d7101aabc6dfd47fee96c3aeb05d64",
+				"tarball": "https://registry.npmjs.org/@cloudflare/stream-react/-/stream-react-1.0.0-rc.1.tgz",
+				"fileCount": 20,
+				"unpackedSize": 111009,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgYeYrCRA9TVsSAnZWagAAXNIQAIXw1Ls2uTaT2neFEoen\nwk+MsQvii/eQBUctjGX2P0injH5Tm9x9THzzgLL0qS23EnNObd1fC2iIOgUj\nbHcJMbOnXGdlj2MbAY9b+Vi4fG8skFbhxzw5Fn7sv7bWfxwvx9+PxnDWsfEw\nZxRkeTmj2s7cp23CK1eTNwDjCxzLUX44Mdm5HFlI297ySuBMP1F/TeYpgT/F\nzuLE4amPkkNahBlKvrWK1PMUuXdaD0o71t4flowxjyMRR62mY6YpnlB2gCCl\nj1mvAKdEsBsqP+VPwSWMb3MadoUv4EDJwCT8Tv0LoFi7AhhW5Qa57D9ryHrA\njb1aPiIINFP/vzzW60o9UZCi0rN5Agjde7DTDCY5+zu/UI5uLP2p43e8p9N6\nq5G0V55hUyhC7pefX0fqA4g4XypJnGM3j67SNPvqVUYi9It1OdVj3V+wpzB5\nVURSK5EhMC1v1lUY4+CwI9JXGdCfyi2IZNNQuxuyXh1vVSccqNzh0KRKetFq\nF9QyC+Ir/V53p2u9MB0fH4pdVDwtXHsdcL9gZhOD7l33nQP6GtoQtSTZGkUe\n/StcvypsfCU2jSZ1dJ4Y9b/F231MKtaLkUgLthz7VNbBlo0Wc8C9p6C2ZqYp\nkRd4dkK5cTpsLnQXb7ekprvyJdNenvmWc+VDhyNRHUZ7R6Wa270muF04gcOt\nJj4+\r\n=7SpV\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDLBUF/LtNAgSC8+G7BwDDq0BAiUtTo2IVDWjI8tOJ2rwIgRCMrXv+LVcsm0ZZ3J7CHu/qCSo5gQkDzGT0Q1v+P0XQ="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=10"
+			}
+		},
+		"1.0.0": {
+			"name": "@cloudflare/stream-react",
+			"version": "1.0.0",
+			"devDependencies": {
+				"@babel/core": "^7.9.0",
+				"@storybook/addon-actions": "^5.3.18",
+				"@storybook/addon-docs": "^5.3.18",
+				"@storybook/addon-info": "^5.3.18",
+				"@storybook/addon-knobs": "^5.3.18",
+				"@storybook/addon-links": "^5.3.18",
+				"@storybook/addon-storysource": "^5.3.18",
+				"@storybook/addons": "^5.3.18",
+				"@storybook/react": "^5.3.18",
+				"@types/jest": "^25.2.1",
+				"@types/react": "^16.9.32",
+				"@types/react-dom": "^16.9.6",
+				"babel-loader": "^8.1.0",
+				"husky": "^4.2.3",
+				"prettier": "^2.0.4",
+				"react": "^16.13.1",
+				"react-docgen-typescript-loader": "^3.7.2",
+				"react-dom": "^16.13.1",
+				"react-is": "^16.13.1",
+				"ts-loader": "^6.2.2",
+				"tsdx": "^0.13.1",
+				"tslib": "^1.11.1",
+				"typescript": "^3.8.3"
+			},
+			"peerDependencies": {
+				"react": ">=16"
+			},
+			"dist": {
+				"integrity": "sha512-HP28LR3Ed8IJX0kSnbzCnVZxY72DTye27JuBGNjZfAp6piOtk5C5Le9WHs7QsaqyJqCqfyLrTYtY3tJdFihUZw==",
+				"shasum": "75b4cfc5e7786c67f323f34a015987b3ce6d3e4d",
+				"tarball": "https://registry.npmjs.org/@cloudflare/stream-react/-/stream-react-1.0.0.tgz",
+				"fileCount": 20,
+				"unpackedSize": 112081,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgdGx4CRA9TVsSAnZWagAAVZUP/2RDLMqo5x37tD+9bUI0\ndVFkqdRKclW/YNAMklj6RnS2lwqatkaKB8hDo6JG0DvEkiAClZ1HmlU4A2N5\nR2K2xyrReT0+/3pQUtfAUaYpu0vG6GE9K8KL68blO0UG6waq4RhQkFu6GSKe\nAZh34mY4PJj+ewDEj9EHp9dbZDjhNb8KhSgp9nCfvcuHInhSEQF4mG0+BaMB\nbRVu2ODi3ecpLi4b4VIGp7rldYE8WMAmRXG8DYwYs91cq6Ak8ssROOGGbCk9\no4YHndWFDQw8TSEu9Z1Pm/G+e7KMHPK4CNaKpEMC9lUkYsmjLVSXuVfVccKw\n/DjOlMakfh+nhIG2ZpeTD4kiLiQonJypr67tJdomClqiZnCWJPu/SHV2HKPl\nrPbU4qGjLZtGY6N+DZzgwlUhXkGM9YcP3QcL/42fAef+6aExn9BFcX18GaTo\n/WCRMQmRD/Ovp71CD0BQx83niWITvEKviAR6p4Fru49S69wYspUywMKmJ/gc\nYIYxDhho4pB1GE4KSHYdOFcEIgvEVSK10tdk6Zcx60JLmAW1N6u92NF3GfTo\nazZ0EvKnSbScxv/Nkyf2sCZCmQadlZL5qZD/yl2KhUJ8P1jV9BAyrTbS1zC2\n/NFQcPW3kdrzHMEvUGYCzE/H/w8oTyeQnFWaBLblndR5tp6S307BR3HXA4tl\nK7Gc\r\n=gh6t\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIGThlM+BjCcQG00g6C29iRO8rbnhbBYu3+4U9muFJiKVAiEAro1tGHPMtGx8yPLLFG/d7tFcCFxi8lnpZmlr81AVgV8="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=10"
+			}
+		},
+		"1.0.1": {
+			"name": "@cloudflare/stream-react",
+			"version": "1.0.1",
+			"devDependencies": {
+				"@babel/core": "^7.9.0",
+				"@storybook/addon-actions": "^5.3.18",
+				"@storybook/addon-docs": "^5.3.18",
+				"@storybook/addon-info": "^5.3.18",
+				"@storybook/addon-knobs": "^5.3.18",
+				"@storybook/addon-links": "^5.3.18",
+				"@storybook/addon-storysource": "^5.3.18",
+				"@storybook/addons": "^5.3.18",
+				"@storybook/react": "^5.3.18",
+				"@types/jest": "^25.2.1",
+				"@types/react": "^16.9.32",
+				"@types/react-dom": "^16.9.6",
+				"babel-loader": "^8.1.0",
+				"husky": "^4.2.3",
+				"prettier": "^2.0.4",
+				"react": "^16.13.1",
+				"react-docgen-typescript-loader": "^3.7.2",
+				"react-dom": "^16.13.1",
+				"react-is": "^16.13.1",
+				"ts-loader": "^6.2.2",
+				"tsdx": "^0.13.1",
+				"tslib": "^1.11.1",
+				"typescript": "^3.8.3"
+			},
+			"peerDependencies": {
+				"react": ">=16"
+			},
+			"dist": {
+				"integrity": "sha512-spdw5fWl90E2BQMrHt7N1IEaD5J0c3yRx20BYuRA041lQ2u3KXIfvyCAUpG3ISelTiasxibFuWsPiyPffSp0VA==",
+				"shasum": "73ebaba87a3f7f80bb5f0b6db94c331d6dbddef9",
+				"tarball": "https://registry.npmjs.org/@cloudflare/stream-react/-/stream-react-1.0.1.tgz",
+				"fileCount": 20,
+				"unpackedSize": 113279,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgfgCJCRA9TVsSAnZWagAA/P8P/2hmFHjwGCcNv8i4YbZ6\nVjsuppgFwack8CjFSU3uL1cJE6caQjUbJNBjcx23bmWk+ocobQE4OJBZYWtA\nHxSlGkqcGc9y/Kd/WIR6DNTrjF/8luOpcWGGqm8YL6JGtz+Q+a7AHKQFBIX/\ndmD1HccFa1lbQkgkZl/nhdxraYSdSILtGvAxkgCX8JU+uqE/k9UKfDUNW1NL\n6Ixcwy+x9UJQnyG44ZGfCR7D9Uu8jMcpJe9jCuwS+xFs2MRToRH8NnLhL4Oc\n5QcwqBIJOXz6ARJid0K5BwHZ2TA/Tvu/kgzVLMpCxLY0uuxahQ817nW3hpUz\nM5Ye3uewzIsG3Xhfy9tX8PWuUG4UzVzUGGPReNqLjGke7WclGbtxufv1sSHr\nNoQOhQgSF/rQE0LNihFz23pB2CoEFBwcDAlhPdUzAX9zZwS674WuqFPPptQJ\nEyL6WmN+BJ3dO9Z2qiu6qvA2Ko3tb5qgUd9CyH5mElECb8V5JzgE5p4oP+la\ngnGLN4rZX6oxj0AwZXWsoi6Shh3D3/my9kkrwBwutbBu1yKuhC5+jtTikTH/\nJjTGeUKQ6DfUoigRFUuqJHU1uiYBSTn32lS1zbv1ZV0UCvQAh4RURc/YbzzH\nwpou6X646+2Vr17bYfxMPitm1j+eVSTe/yiGWOZ0jw/uozCoGNo0EtIynw5Z\njego\r\n=FsgW\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIC5cbD/x4TSEQHC6kLcjh3g9+PAKssHZ1SjhcLJ3mUtPAiEA8Jzwt536EbqgTMPTvs3L8iTPtQTcqF0Dm/yNZbadpYs="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=10"
+			}
+		},
+		"1.1.0": {
+			"name": "@cloudflare/stream-react",
+			"version": "1.1.0",
+			"devDependencies": {
+				"@babel/core": "^7.9.0",
+				"@storybook/addon-actions": "^5.3.18",
+				"@storybook/addon-docs": "^5.3.18",
+				"@storybook/addon-info": "^5.3.18",
+				"@storybook/addon-knobs": "^5.3.18",
+				"@storybook/addon-links": "^5.3.18",
+				"@storybook/addon-storysource": "^5.3.18",
+				"@storybook/addons": "^5.3.18",
+				"@storybook/react": "^5.3.18",
+				"@types/jest": "^25.2.1",
+				"@types/react": "^16.9.32",
+				"@types/react-dom": "^16.9.6",
+				"babel-loader": "^8.1.0",
+				"husky": "^4.2.3",
+				"prettier": "^2.0.4",
+				"react": "^16.13.1",
+				"react-docgen-typescript-loader": "^3.7.2",
+				"react-dom": "^16.13.1",
+				"react-is": "^16.13.1",
+				"ts-loader": "^6.2.2",
+				"tsdx": "^0.13.1",
+				"tslib": "^1.11.1",
+				"typescript": "^3.8.3"
+			},
+			"peerDependencies": {
+				"react": ">=16"
+			},
+			"dist": {
+				"integrity": "sha512-WpWqDNAlutBJ04SsN+rmNnSR4uHEQM/+X6Bs3/nNCOa4R8Lde1Cp7h86HtEadl/y8RsuT6hIXEp6Yc90L5/6Nw==",
+				"shasum": "61c7afaf0ee2f8c0343e3d6fa611db8a487890f8",
+				"tarball": "https://registry.npmjs.org/@cloudflare/stream-react/-/stream-react-1.1.0.tgz",
+				"fileCount": 20,
+				"unpackedSize": 115886,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgkXecCRA9TVsSAnZWagAABRsP/36RSIrKHQHQ6MPTxO0R\n3rKUsroYWu+s1UxbZBKxeHfzkV/oSshOeBHWLrmygFEdSCX0oLirP03mKHj9\nn/FOyzJ1My4aEgiKn/UnXQkc24ZdnJsvAGyyIz49q4nHeoTc9XeTLpdbCR66\nQunO1gUTkKuv6K9KGGeIm+FkYXmCQNZHOdLIoUl/pYDiuZoAsIrKk3cInpAQ\n/wp7HL0wd1CWtVx8C3gGGgBdAFnlDmnP9mYtnGp9UwxPmCts02EwUYSx/2wv\npFabD5dVPgW3kWHXaX03v726ggwnm+5kSNSK8KIrs57ZTiowGS/PLDXNYu0Z\nHJt9NXWi96XxJvpm55VlSSYqS9UnU3kFi0X2zb4RtTGkDhKoNk4puUhnXbvL\nCQlHAeuQYtAPUXsb5XncwbbHFQbZuEZJNT5x4abKUvEQGsPkmR9q3c63Mznt\n6NhSKN/MGut4Z5g3khD6XVqI2QOh8/gJBG2LNO6sktdzT6A9ZDPbI0NsCwJX\nh+wdk/e0+cpsS4/o7te/ST+SefZ8FpHstSYMf7gnPJ8fqL/RzNtf+qIKUfWI\nj1qvq0RQoJcr9wde62dlw9NKjbv0Igr4AuS05G+a1ab7Gdwx3Hv2p7R0eXgY\nsJa/XCtWyp7TQzw15nM/zlirPYaSvMm9Zi90XCNZ9c8yTz8mrtiXYvPNWjkJ\njrmD\r\n=mSzl\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCmepL0kPY6hDu5u6R/0PUT+FYsQqdnbkUpTTaBHJwG9QIgUHy1wHaLJ/4grNaGLskWajxKIokbJrf89MgAAtG3CYk="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=10"
+			}
+		},
+		"1.2.0": {
+			"name": "@cloudflare/stream-react",
+			"version": "1.2.0",
+			"devDependencies": {
+				"@babel/core": "^7.9.0",
+				"@storybook/addon-actions": "^5.3.18",
+				"@storybook/addon-docs": "^5.3.18",
+				"@storybook/addon-info": "^5.3.18",
+				"@storybook/addon-knobs": "^5.3.18",
+				"@storybook/addon-links": "^5.3.18",
+				"@storybook/addon-storysource": "^5.3.18",
+				"@storybook/addons": "^5.3.18",
+				"@storybook/react": "^5.3.18",
+				"@types/jest": "^25.2.1",
+				"@types/react": "^16.9.32",
+				"@types/react-dom": "^16.9.6",
+				"babel-loader": "^8.1.0",
+				"husky": "^4.2.3",
+				"prettier": "^2.0.4",
+				"react": "^16.13.1",
+				"react-docgen-typescript-loader": "^3.7.2",
+				"react-dom": "^16.13.1",
+				"react-is": "^16.13.1",
+				"ts-loader": "^6.2.2",
+				"tsdx": "^0.13.1",
+				"tslib": "^1.11.1",
+				"typescript": "^3.8.3"
+			},
+			"peerDependencies": {
+				"react": ">=16"
+			},
+			"dist": {
+				"integrity": "sha512-uLsKstcNOrTH19UEFxHWUX6h8SM9Ytr1Qyo6dIObuDUQ40g/cJgNnNnFn4gcGWf3zPwXQN3LkRmVol5MU/rU2Q==",
+				"shasum": "7324ba93d8424460fbb0005a95cddb9f54a3a00b",
+				"tarball": "https://registry.npmjs.org/@cloudflare/stream-react/-/stream-react-1.2.0.tgz",
+				"fileCount": 20,
+				"unpackedSize": 117651,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhAayoCRA9TVsSAnZWagAApWoP+wWTiDGYObpTvN2xRw4t\ns/n+rtfL2P42fOgL1XCojb2KJXwIwk22OPczd+vHoM8/m4OtARXzLYmi7Ivj\nlXymUEt/DqUi62LXafE6qemwMKjPaIrq1XiKv/3MO0wsPZVKEI56A/7IKI+Q\nxDGdG7XgKU53PWkTggdlxff97E1ofy0kiv1tjJJrOioYIDi5Y9ezhEa7A3zb\nn+kjEMzdX/dEkRhmgic6hd9Env0p9XYbcMjSNg26HI82O7j+uwemyD2RcUNh\ni0aCIhgA0cSVrdosUkiTvSpwP4cN0fUTXQIha9J6pVSmVOQX/Z4m3iQ9dpuV\n8i2zw6I1XdM5LcrAE9tcaHB1lr6iYPvSW6HJdr/SlC8+U7kCdYv2Mn0JK00l\nT/Sz/va1HRPDFnrDURSrlS2RVn2TX7epE+31CXor+mJYDHhQ1qbxbCho4YOO\nY6D0DXYk2e/wC1gD4kBGxIwjIO5ZHCtGQ3WwaMGPyAlCVv4tEDuwljwZn5bA\nGv/96qyya37Qcsj6m4rmpI4F+YP3ZujNalB/k5D5iiM8c0ryba2SNqtldwZz\nwHT3KHQCvUP7cFSQNZ4tflFiuysvGdqBL1RtMQGowTNJ6kK38lYYvp4OE5nU\n0I8XP6zG625qXEi4ySD0SJ3ZEJ4/0iJyt6MzOMoqPq0XVCn5QOeWt+uAc5zo\nwtKV\r\n=exI5\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCYNY6jMMQ07BPeV43E2Z7fXkWkPA4l/QDG02JwyPK5FQIhAJ+q/Q/T7nRio+P90Pj4nP5G0dji0T6hoJxGV2fKdZwt"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=10"
+			}
+		},
+		"1.3.0": {
+			"name": "@cloudflare/stream-react",
+			"version": "1.3.0",
+			"devDependencies": {
+				"@babel/core": "^7.9.0",
+				"@storybook/addon-actions": "^5.3.18",
+				"@storybook/addon-docs": "^5.3.18",
+				"@storybook/addon-info": "^5.3.18",
+				"@storybook/addon-knobs": "^5.3.18",
+				"@storybook/addon-links": "^5.3.18",
+				"@storybook/addon-storysource": "^5.3.18",
+				"@storybook/addons": "^5.3.18",
+				"@storybook/react": "^5.3.18",
+				"@types/jest": "^25.2.1",
+				"@types/react": "^16.9.32",
+				"@types/react-dom": "^16.9.6",
+				"babel-loader": "^8.1.0",
+				"husky": "^4.2.3",
+				"prettier": "^2.0.4",
+				"react": "^16.13.1",
+				"react-docgen-typescript-loader": "^3.7.2",
+				"react-dom": "^16.13.1",
+				"react-is": "^16.13.1",
+				"ts-loader": "^6.2.2",
+				"tsdx": "^0.13.1",
+				"tslib": "^1.11.1",
+				"typescript": "^3.8.3"
+			},
+			"peerDependencies": {
+				"react": ">=16"
+			},
+			"dist": {
+				"integrity": "sha512-czTQk/brhMUlCHYueVkFsMFwKUtiYM/h5qtYnVvo6A2CC6DAfnLaOCRbUpk3y0dO9QW3D1rcx4iHU1dn+HHU+w==",
+				"shasum": "93caae894bbf92e12db235b633e68caf716251c8",
+				"tarball": "https://registry.npmjs.org/@cloudflare/stream-react/-/stream-react-1.3.0.tgz",
+				"fileCount": 20,
+				"unpackedSize": 120619,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCFXRHFht0wMN+YG5E6GD/NVHwwDPUJpAQuDWANrM+eMgIgBYdH6OPwycfN7o+vO45Z6SAHrmVY9KL+LJFUBv2U20s="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=10"
+			}
+		},
+		"1.4.0": {
+			"name": "@cloudflare/stream-react",
+			"version": "1.4.0",
+			"devDependencies": {
+				"@babel/core": "^7.9.0",
+				"@storybook/addon-actions": "^5.3.18",
+				"@storybook/addon-docs": "^5.3.18",
+				"@storybook/addon-info": "^5.3.18",
+				"@storybook/addon-knobs": "^5.3.18",
+				"@storybook/addon-links": "^5.3.18",
+				"@storybook/addon-storysource": "^5.3.18",
+				"@storybook/addons": "^5.3.18",
+				"@storybook/react": "^5.3.18",
+				"@types/jest": "^25.2.1",
+				"@types/react": "^16.9.32",
+				"@types/react-dom": "^16.9.6",
+				"babel-loader": "^8.1.0",
+				"husky": "^4.2.3",
+				"prettier": "^2.0.4",
+				"react": "^16.13.1",
+				"react-docgen-typescript-loader": "^3.7.2",
+				"react-dom": "^16.13.1",
+				"react-is": "^16.13.1",
+				"ts-loader": "^6.2.2",
+				"tsdx": "^0.13.1",
+				"tslib": "^1.11.1",
+				"typescript": "^3.8.3"
+			},
+			"peerDependencies": {
+				"react": ">=16"
+			},
+			"dist": {
+				"integrity": "sha512-rnNNPiy7kkeR+JGIgob9SdYW+BUNe7n7+nhDz6zrWNSxSbq9IXZRv8bQbgUnBKYjOTOlqP25boCQzC74gkugtQ==",
+				"shasum": "a45751c3412ccf2768788122efabb76427e490cd",
+				"tarball": "https://registry.npmjs.org/@cloudflare/stream-react/-/stream-react-1.4.0.tgz",
+				"fileCount": 22,
+				"unpackedSize": 124530,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIDlUcrigoMRHQEHWaTdoOaEgcwq1hozBSv01wPmdYDkFAiAV8bMJfDBuJRfHjkhgv10v1HoP3Up8gxxX1LUHarniQQ=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=10"
+			}
+		},
+		"1.4.1": {
+			"name": "@cloudflare/stream-react",
+			"version": "1.4.1",
+			"devDependencies": {
+				"@babel/core": "^7.9.0",
+				"@storybook/addon-actions": "^5.3.18",
+				"@storybook/addon-docs": "^5.3.18",
+				"@storybook/addon-info": "^5.3.18",
+				"@storybook/addon-knobs": "^5.3.18",
+				"@storybook/addon-links": "^5.3.18",
+				"@storybook/addon-storysource": "^5.3.18",
+				"@storybook/addons": "^5.3.18",
+				"@storybook/react": "^5.3.18",
+				"@types/jest": "^25.2.1",
+				"@types/react": "^16.9.32",
+				"@types/react-dom": "^16.9.6",
+				"babel-loader": "^8.1.0",
+				"husky": "^4.2.3",
+				"prettier": "^2.0.4",
+				"react": "^16.13.1",
+				"react-docgen-typescript-loader": "^3.7.2",
+				"react-dom": "^16.13.1",
+				"react-is": "^16.13.1",
+				"ts-loader": "^6.2.2",
+				"tsdx": "^0.13.1",
+				"tslib": "^1.11.1",
+				"typescript": "^3.8.3"
+			},
+			"peerDependencies": {
+				"react": ">=16"
+			},
+			"dist": {
+				"integrity": "sha512-UTpAyr1TX8SDFk8vIA0WwEnKl+UZZO+1BPwi9sHujpdw+UXpH2d+ukhgSHH26KHhxSVIN09uDUQDURK/pdngtw==",
+				"shasum": "988e67c01e45e0a12a4492cf4ad832efb743d0aa",
+				"tarball": "https://registry.npmjs.org/@cloudflare/stream-react/-/stream-react-1.4.1.tgz",
+				"fileCount": 22,
+				"unpackedSize": 124540,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQC/T3p56NIO86mKXqwtMT0FbOQydAye3fNYuF+IWI841AIhAM0gTwR8lX4otziJojpNvaih5dA29f2hZ426TzRnmXKN"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=10"
+			}
+		},
+		"1.5.0": {
+			"name": "@cloudflare/stream-react",
+			"version": "1.5.0",
+			"devDependencies": {
+				"@babel/core": "^7.9.0",
+				"@storybook/addon-actions": "^5.3.18",
+				"@storybook/addon-docs": "^5.3.18",
+				"@storybook/addon-info": "^5.3.18",
+				"@storybook/addon-knobs": "^5.3.18",
+				"@storybook/addon-links": "^5.3.18",
+				"@storybook/addon-storysource": "^5.3.18",
+				"@storybook/addons": "^5.3.18",
+				"@storybook/react": "^5.3.18",
+				"@types/jest": "^25.2.1",
+				"@types/react": "^16.9.32",
+				"@types/react-dom": "^16.9.6",
+				"babel-loader": "^8.1.0",
+				"husky": "^4.2.3",
+				"prettier": "^2.0.4",
+				"react": "^16.13.1",
+				"react-docgen-typescript-loader": "^3.7.2",
+				"react-dom": "^16.13.1",
+				"react-is": "^16.13.1",
+				"ts-loader": "^6.2.2",
+				"tsdx": "^0.13.1",
+				"tslib": "^1.11.1",
+				"typescript": "^3.8.3"
+			},
+			"peerDependencies": {
+				"react": ">=16"
+			},
+			"dist": {
+				"integrity": "sha512-e7rx64LjQ4vxmJH/NUOPOLURVfdxUbgKyYCK6clYOMHdZyNU9ClgYGq44OKP/UnXu29tSSx1Fqw+uWgq8XKguA==",
+				"shasum": "8b428cabae006c4b03e3b156dfc0bb892db77374",
+				"tarball": "https://registry.npmjs.org/@cloudflare/stream-react/-/stream-react-1.5.0.tgz",
+				"fileCount": 22,
+				"unpackedSize": 126872,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhvLxGCRA9TVsSAnZWagAACS8P/2fjgH6f/tJVdtRLi8Zp\n2hDxMKtEn9YGfpAOpGPMFwslor+/P8kDoCuohQdU6Yv0O5Noer9c0ntq6Kng\naH3A6sHcQurrB4jNJ0mEPR5GVWCgVeyGe/BL+xF+JJIzVOR60QsoXf2KDPtg\n6h2K0xfR51BDYAGCu9C+K9DepKgcccAboTsLsFGdSXLw1CeK0oogBIOy//J2\n+hDRXTXDzAIdFAs9/8aXV4FT6J+kRMzphnnSjFqjYEbu5O1CF/t3oeOmPvAy\n7zZ98O8py9E2DnhhIXHg+Wnbhv6MibZlc8wsWml6lb9KG2Duac0XCuODtHio\nDbJtYaLl9hxkMH+exqpgAzvOT07T26ON4ic5COmjhEBjFof9CO1tmfro6/Ft\nQoyCwh4f3rSiFmsoyn0BmIwfenC6Y+k2SDg5Llsgxxsa9OkihhMrp/0WDzGu\n4wKOeZta+QnrmSMs2XUciyTgFA3MFEMkt6WPA/jQFqkTyemQPszUwM3v5lFC\nyxDRfjfvTag5TCQ1h99UTJSJbZoOvbiYxeSiysYfLggntUzkMn2pzl9xMhYz\nqtfop8yQCFIlcR12TsPSMg9qDQirVmRtcWDcGLY8WZVF/OipcoNGtRD9SaPY\nNDSz0CIGHCTdrPbfqjIjZg2MIEzqgvdNcXQxdcHMpMcI0De76euOGlNn4YyD\n2sYb\r\n=Sfds\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIFKfVWVKPZbKBeu51JpPwQ8f1YN3g1breofEGvlIe5RNAiBNxxULaMknjEsbJVAjMvux2rR13gRfzJwcvMvnPVHh+Q=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=10"
+			}
+		},
+		"1.6.1": {
+			"name": "@cloudflare/stream-react",
+			"version": "1.6.1",
+			"devDependencies": {
+				"@babel/core": "^7.9.0",
+				"@storybook/addon-actions": "^5.3.18",
+				"@storybook/addon-docs": "^5.3.18",
+				"@storybook/addon-info": "^5.3.18",
+				"@storybook/addon-knobs": "^5.3.18",
+				"@storybook/addon-links": "^5.3.18",
+				"@storybook/addon-storysource": "^5.3.18",
+				"@storybook/addons": "^5.3.18",
+				"@storybook/react": "^5.3.18",
+				"@types/jest": "^25.2.1",
+				"@types/react": "^16.9.32",
+				"@types/react-dom": "^16.9.6",
+				"babel-loader": "^8.1.0",
+				"husky": "^4.2.3",
+				"prettier": "^2.0.4",
+				"react": "^16.13.1",
+				"react-docgen-typescript-loader": "^3.7.2",
+				"react-dom": "^16.13.1",
+				"react-is": "^16.13.1",
+				"ts-loader": "^6.2.2",
+				"tsdx": "^0.13.1",
+				"tslib": "^1.11.1",
+				"typescript": "^3.8.3"
+			},
+			"peerDependencies": {
+				"react": ">=16"
+			},
+			"dist": {
+				"integrity": "sha512-Mw6c1VwNTM5a1pP2UZ8snwWztBuO5Oeu0adkLYWIcEjRbvR8ypMAVUPOppvgFS3psRx68/xwYVGZJmCZI+FDGQ==",
+				"shasum": "662a75767274162f8ce19d809eee029329941696",
+				"tarball": "https://registry.npmjs.org/@cloudflare/stream-react/-/stream-react-1.6.1.tgz",
+				"fileCount": 22,
+				"unpackedSize": 127138,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJiBAsvCRA9TVsSAnZWagAAeNEP/jG7waKaq65M7ePoM7uI\nOEwd9PFztY1DsYcfwbVOIZh1V7r19I3l3ijo+Slqbi6wuu4aXFA/orCZRujN\n1X9VYhCakqkE+4YFrUGj6lFcBsbpxmKCX9CiacLtrViEEijoFk5aAqqsM2TU\nFNgm1AiWHv/aDjGUHDhoxLnoFv+9wwyjzj/Wzu7k62p9KfAycz3bub1DuzYf\nITyT/5j/vl+3C/14QMD7cGJCpA7aNxRttTt0oHL1bthtZgEKLjw4lNWHGS1w\n5IalJgnO4KOEuitI/lVhyZjFF7kmZKW3czfWlZsmba9b5M3FftMHBrdfsjwH\nYthHCOMQryBcUOAtq0ZVt0Ktg2YrsKn2wnjk9vnLLhaSaXp34rJwHBJFPdkL\nGMUGfU5Z9gsjQ5e5X/gk7l2lYBzCZSWxOs9V+yCmM4/qScXeDz0o/vsedQN+\nq8jqgKzCw6QG/aoPMRO59xF+zpRpF6rD9j3Wi5Q7t3dGpUGFwRKz7FTrO8KY\nld/uQpRrLjVh4YgbrA/C5Lh5lFD0g1O+/ZNsso+Q5GPrNchcEz3QxP1Q5GQi\nZzrvsI3p0/Gxq0ujzrMP9LJ8ytkVUvQH9QuL1q7QvKNPIUdobYul4WzLt/yj\n4MIF36Rlv2nsESoaFtuAH7jlVwdqz+rUN8qMRWybA+oVbE2MJn0m0TupD716\n5uZi\r\n=OJMl\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIDKWyy0LAcnAZ0ls2rs+UVj1gidW7HvQ2E9kLkzzhF1QAiBbm+3Mfrjy+6yrRG6G8lEjfI55ra1dXkfczHTrPoQqXg=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=10"
+			}
+		},
+		"1.7.0-rc1": {
+			"name": "@cloudflare/stream-react",
+			"version": "1.7.0-rc1",
+			"devDependencies": {
+				"@babel/core": "^7.9.0",
+				"@storybook/addon-actions": "^5.3.18",
+				"@storybook/addon-docs": "^5.3.18",
+				"@storybook/addon-info": "^5.3.18",
+				"@storybook/addon-knobs": "^5.3.18",
+				"@storybook/addon-links": "^5.3.18",
+				"@storybook/addon-storysource": "^5.3.18",
+				"@storybook/addons": "^5.3.18",
+				"@storybook/react": "^5.3.18",
+				"@types/jest": "^25.2.1",
+				"@types/react": "^16.9.32",
+				"@types/react-dom": "^16.9.6",
+				"babel-loader": "^8.1.0",
+				"husky": "^4.2.3",
+				"prettier": "^2.0.4",
+				"react": "^16.13.1",
+				"react-docgen-typescript-loader": "^3.7.2",
+				"react-dom": "^16.13.1",
+				"react-is": "^16.13.1",
+				"ts-loader": "^6.2.2",
+				"tsdx": "^0.13.1",
+				"tslib": "^1.11.1",
+				"typescript": "^3.8.3"
+			},
+			"peerDependencies": {
+				"react": ">=16"
+			},
+			"dist": {
+				"integrity": "sha512-dBlaXm5oKIVjr87JRq/7D5dDB7WGeAoHsG6by8Aa7e2tCQeJp3WIL/om67rsOWai3pUG1rX5QUthu8HdaFANIA==",
+				"shasum": "e9ff21072addfabc144a58d1b341584880411725",
+				"tarball": "https://registry.npmjs.org/@cloudflare/stream-react/-/stream-react-1.7.0-rc1.tgz",
+				"fileCount": 22,
+				"unpackedSize": 132457,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDR8WQ8sO2RaScF0e0yH6ky9sMaOk+YbsVSg7F/Mjn/MQIhAOxsXI9mPkW0vGqwRnvzwL7AHJaxxwxoemr1n5M5BJVc"
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiTf3KACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrNaA//V8YZAxWdxjUoHV0x8rxI/0OStvc9OD+WTCeUbi+/nWRJtYlE\r\nF4spGfuua+wrrW585CBtY4pfgS9aQ3Z69Z0vDthWWXxzw6QbvVK+F2P2EzlN\r\nledMvYzOPTFsWa4fXOnkITIVq9a+0MqR6nUhA3KxH4pnn+Q6CFUXHvvbGiK4\r\nbGfRU2riSCrX/grFjV8SjN6JMbZiee6CEfdBkndumbBu4mEhWgIH7mFzRTNx\r\nmWPDOpKJb8QXmm7M/UNDBZnDfAyRL2psWgsXtjlfjgY+c3rY78p1c7hrkBup\r\n2QDb9HYYVrCvb/6MUCt49Ewi5VLDfQv8ZrypF+bX0+MBHqkGX0jVl2d1zY6L\r\nT9RaefU5elVR0enV4pRnuSSjlSrE5RATn4a1w7WSpZavl7bZsZZD+sJaAJFi\r\nI8WkuwxW8rYF+Jfj1ju2y9uOpVBrW+w6ewztP5dWZu5IX781GqyppoN1yary\r\ncLjjCug7WGK69lJcX/j3TFs7BIFLpExeIIMkgTJCUaO3sMQtlM8Z6xjQeU2B\r\nUmLldmd7Sg2AricaBPn+1TqNGQq3c/0lOB4niIpaBX4j2OUlzTDI92JzMX7d\r\nAf8lcgk7Rvoq8/zEIkCJ3Bb1Qx4jCtjVUOeDgxnrAyKSEykNlBTq5LEAvMYm\r\nY3goaG1zK248C1rUWve0dGHiLPnnriXrumk=\r\n=LbXn\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=10"
+			}
+		},
+		"1.7.0": {
+			"name": "@cloudflare/stream-react",
+			"version": "1.7.0",
+			"devDependencies": {
+				"@babel/core": "^7.9.0",
+				"@storybook/addon-actions": "^5.3.18",
+				"@storybook/addon-docs": "^5.3.18",
+				"@storybook/addon-info": "^5.3.18",
+				"@storybook/addon-knobs": "^5.3.18",
+				"@storybook/addon-links": "^5.3.18",
+				"@storybook/addon-storysource": "^5.3.18",
+				"@storybook/addons": "^5.3.18",
+				"@storybook/react": "^5.3.18",
+				"@types/jest": "^25.2.1",
+				"@types/react": "^16.9.32",
+				"@types/react-dom": "^16.9.6",
+				"babel-loader": "^8.1.0",
+				"husky": "^4.2.3",
+				"prettier": "^2.0.4",
+				"react": "^16.13.1",
+				"react-docgen-typescript-loader": "^3.7.2",
+				"react-dom": "^16.13.1",
+				"react-is": "^16.13.1",
+				"ts-loader": "^6.2.2",
+				"tsdx": "^0.13.1",
+				"tslib": "^1.11.1",
+				"typescript": "^3.8.3"
+			},
+			"peerDependencies": {
+				"react": ">=16"
+			},
+			"dist": {
+				"integrity": "sha512-jYjN1NfEAkYeSYA97Bj9sRq8ODk4ORnrxe2wouPQ3QHFvRbApN66QlDpSK0KriAz3emWQbDOB5rf0NRaKoqEhQ==",
+				"shasum": "ee6b0a64d1b82874cb3c32214ff5a2968fa56f9b",
+				"tarball": "https://registry.npmjs.org/@cloudflare/stream-react/-/stream-react-1.7.0.tgz",
+				"fileCount": 22,
+				"unpackedSize": 132453,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCNkvAEtUxGhcbaBb7+mZaI0FGI+ZwC4ICO0EpAZAcnUAIhAOnZ1gCDbH9vQz+DQtJyUBkabaILX1MH6uKajgwIx3tc"
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiTgalACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoOEQ/+NZUl0fTdravmsucE29c+7A3OY56qe+8qcn2RruEv/tZ9GYSe\r\ndeJMKtbVGk76WrQT2eW/UHcwM9uQdlWIED+f597OVoSh9WTbv7kI6Btbb7Fw\r\nAMmb230apuaOHcr6XqIs2ffGDeQwv4cTNCjDdhdfggstifK8II5SasUJtLwX\r\ny9a/1T24pqSPIIowL+zAUt2+Uw/zCHyeMQUaK6ZpeslpidBwY1gAGTG7cpX9\r\n0a0ShC+imCR2+mCk6wE86WQU8YoLtQPA9SOB5/Z7/W9d6kNXP9Lq4tgxtBsb\r\nLNf7wrQKgvo3qvrualvlSEffTMXjPMwNbc3UQV0R400UDDfRj/wb3EB8rpa9\r\nR2gPABXfCWYlGa9cmCoMw3DB/BFpunfNVGzzZ9ENxSRGpt+1vAaUrGpfcVSn\r\nfJ2cZ+MCIure2E/oYJ2XGR/2mvzkbY3vFruD61RaDn1QyLTuHiYu7uDMIZvR\r\nTiw+soUW7Tn+3tG9EAu96+ChgynBQJtYDmO2y46aLSxSgYbKG4yskskKoRBu\r\nIwS08jVhjq+D3idRFnVwDy8lYPcQwEL0bQitUuvg2tjrQ+0MiHuIRTJMKeKU\r\nXjR9HlTn4sEEpYXzStNQ0BFDpIL/I1MunMAPCvotsK6yTRO+STHCQSTU6C1b\r\nt1KUttkUOcHoTpNP1Fcb3cx7gZA/KVejenw=\r\n=TSq/\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=10"
+			}
+		},
+		"1.8.0": {
+			"name": "@cloudflare/stream-react",
+			"version": "1.8.0",
+			"devDependencies": {
+				"@babel/core": "^7.9.0",
+				"@storybook/addon-actions": "^5.3.18",
+				"@storybook/addon-docs": "^5.3.18",
+				"@storybook/addon-info": "^5.3.18",
+				"@storybook/addon-knobs": "^5.3.18",
+				"@storybook/addon-links": "^5.3.18",
+				"@storybook/addon-storysource": "^5.3.18",
+				"@storybook/addons": "^5.3.18",
+				"@storybook/react": "^5.3.18",
+				"@types/jest": "^25.2.1",
+				"@types/react": "^16.9.32",
+				"@types/react-dom": "^16.9.6",
+				"babel-loader": "^8.1.0",
+				"husky": "^4.2.3",
+				"prettier": "^2.0.4",
+				"react": "^16.13.1",
+				"react-docgen-typescript-loader": "^3.7.2",
+				"react-dom": "^16.13.1",
+				"react-is": "^16.13.1",
+				"ts-loader": "^6.2.2",
+				"tsdx": "^0.13.1",
+				"tslib": "^1.11.1",
+				"typescript": "^3.8.3"
+			},
+			"peerDependencies": {
+				"react": ">=16"
+			},
+			"dist": {
+				"integrity": "sha512-Kxt4s1xA/Nf4oSAeLvWrkeUftXNhykY+Up6dFH881vrAKCJUeSKSqSGgn5gi0BV0UvjwriOxHRa1Fu0cyuOS3w==",
+				"shasum": "b858b5aeb473a3c217043f9609ea11389053b24d",
+				"tarball": "https://registry.npmjs.org/@cloudflare/stream-react/-/stream-react-1.8.0.tgz",
+				"fileCount": 22,
+				"unpackedSize": 133079,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIGa3Jm12uQOg925uR2z71Bdk/4LTcBlM90DdguycO0RBAiEA05RwjQZcoCGQ6s63A6+MPUMO9MhX6xE+515fPmqMR8A="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiZuhaACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmpi4A//VklJEzmBC+3XBPvb4PGkBv61BRSKKmEGDRPyhL3y6xTzjE/c\r\nxAAODoLX8CJuRX5P4VPAczs8ijae55wj4Wp5gUMclpzirWfJ6iGQJ+tYvcbS\r\nssOB8pZN9D3uI//bGqte4I/1yAj3y9YXvrTFLpCkhDVURj7evxef4B64OOTU\r\nsgjmCTx2VyO7/LQDiHi8dSEeLE+k9Qy2WoiMclNn/i5Pt11iXU5y9jvOAs+V\r\niVO6jZ5optuOmYW+1MLu1mhTLwcRSuWt/EOvUCTlZNmun8gI2GfTDfCg3BvX\r\n/FnmN9E3TNky2kQ0lVjN1AWnq/mxgD50EqBH8LtWxHdCIR0oy9HPmg7TH5GN\r\n60nfHPIaXAnlWzHiwyoMX9++ipUYvq+QgqhRmKowTQUOtK+uSzIRYOd0/Ptq\r\ndt47IPtB3786EmKc09zw7XmHINwkos0YErnE624/2p5i38TdiFdjvTIcgCDV\r\nkODStHz0qc3BfmJCGBNjWRSegbLBuzaIZWOVxgLsde9EtJXdzzTNiiQVXB8D\r\njjSyy+svNeq0+qZ5xQoJJgdGO7Xu7v9qO4sssgYcXMQzG8A4vBj+S0hSxJWh\r\nRzty/moCxARD6Tyd/2wSlsM2qAJWlzGwkecXAqJ1jGsp8+8fOgjy08rhG9L2\r\n6+qLh0xsyc24BAsrK8US6wLN5ka7IUNqkB8=\r\n=+8ya\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=10"
+			}
+		}
+	},
+	"modified": "2022-06-21T16:57:27.550Z",
+	"_cached": false,
+	"_contentLength": 38612
+}

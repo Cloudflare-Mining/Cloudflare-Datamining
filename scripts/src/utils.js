@@ -6,19 +6,6 @@ import simpleGit from 'simple-git';
 // We want it to be ran from root not scripts
 const git = simpleGit({baseDir: path.resolve('..')});
 
-export function get(url){
-	if(process.env.VERBOSE){
-		console.log(`GET ${url}`);
-	}
-
-	return fetch(url, {
-		method: 'GET',
-		headers: {
-			'User-Agent': 'Mozilla/5.0 (@CherryJimbo)',
-		},
-	});
-}
-
 export async function sendToDiscord(name, msg){
 	// Send message
 	return fetch(`${process.env.DISCORD_URL}?wait=true`, {
@@ -34,6 +21,10 @@ export async function sendToDiscord(name, msg){
 }
 
 export async function tryAndPush(files, commitMessage, webhookUsername, webhookMessage){
+	if(!process.env.CI){
+		console.log('Not pushing changes as not in CI environment.');
+		return;
+	}
 	try{
 		const result = await git.status();
 		if(result.files.length === 0){
@@ -46,7 +37,7 @@ export async function tryAndPush(files, commitMessage, webhookUsername, webhookM
 		await git.push('origin', 'main');
 		// eslint-disable-next-line unicorn/no-await-expression-member
 		const commit = (await git.log({maxCount: 1})).latest;
-		const commitUrl = `https://github.com/Cherry/CF-Datamining/commit/${commit.hash}`;
+		const commitUrl = `https://github.com/Cherry/Cloudflare-NPM-Datamining/commit/${commit.hash}`;
 		await sendToDiscord(webhookUsername, `[${webhookMessage}](${commitUrl})`);
 	}catch(err){
 		console.error(err);

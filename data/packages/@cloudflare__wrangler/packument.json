@@ -1,0 +1,1982 @@
+{
+	"name": "@cloudflare/wrangler",
+	"dist-tags": {
+		"latest": "1.19.12",
+		"beta": "1.19.3-rc.1"
+	},
+	"versions": {
+		"1.0.0": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.0.0",
+			"dependencies": {
+				"axios": "^0.18.0",
+				"rimraf": "^2.6.3",
+				"tar": "^4.4.8"
+			},
+			"bin": {
+				"wrangler": "./run-wrangler.js"
+			},
+			"dist": {
+				"integrity": "sha512-DMjuPeQFJ+QJLZaE+F8c56HhgE9bkKcQsLot5XH4EYIyWvVJyZe/TUK+37T9jxkzRM8tWHKFWyaSlwggx5A49g==",
+				"shasum": "5aa10967614156fc604924aa18dac5d02c0f6f9a",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.0.0.tgz",
+				"fileCount": 3,
+				"unpackedSize": 2879,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJc8tDtCRA9TVsSAnZWagAArc4P/R/w+JEaWA2/dnHN4e3m\n+C2my3V+MITrUaypPlcHLhRZ3YlsE110emXB0GQbjYGLgKz+3FO22cHBVURH\n2pjW+3E8aZySdaoBKfa0ZYDmszsX5j0MZZZh0jNO8+zFijGHgWtlr0DLens7\nsoK3hkjR7w+9uzy44QGTYWrgLFR4ZwnuMUd03bAjgVUVc9CmMt6nDDI3auLR\nhYVjJ5T05MVSEUvNEpSXTXYVmT6fPgC64eayPNxPPFzaj7LejEwuTzb7p2fK\nguMG7yCQOo+g63JiIqU5kmHBo6lM9uH6x046uwt/eSR1UEtpOLu+inSBc6Ul\nujS01WhM/MoU8nvymGpK4LO/Xptwm5c/Estgek2qEz7Hw0kbPYWA+fMfiDzv\nhHfIC5l4UqVkHPLmLnzBA+0vknIaaYOLwqHz/FVMfxqihpDa6Cb4rdHA8BmK\n8g2NbfJIjyAD/ZRILwD+BVzV6srJrxsbGkcM+A0wY/O1a8JLgqIIYQdnNBAm\n6bM62jVwuVGnKNam+Gg/MH1KfVIOQxalx8GRZ28YiwjlKLU+JG0I32tOJFT6\nnWhRDRZK5lNM4SzqlOslAqY4o5hpLLPJK4QRjIZNCgV6/H7UuOrsSs9JzVlq\ncDCWOs0bzA72yCYNzjTTiO5IglVvDaVNsTxgs28uUDeEWRJ1AqiDklZtg8kI\nd/HY\r\n=hpzB\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIBobxHXWynxgnPaHwnkMMsnCyOdlCR/HfMh2R/6oYhrQAiB91Fu4faJnFtqp6tkKTq0IrVST+EWgZOqIEv6nwtc56A=="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.0.0-alpha": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.0.0-alpha",
+			"dependencies": {
+				"axios": "^0.18.0",
+				"rimraf": "^2.6.3",
+				"tar": "^4.4.8"
+			},
+			"bin": {
+				"wrangler": "./run-wrangler.js"
+			},
+			"dist": {
+				"integrity": "sha512-VHlznw/9jEPImghxLpbIzuj0NjBPF5mUuM2Dpnmgq6vf5RRE/m+4CPuFhZpry5XD13ZJ6v/2PTYWUApaCgm9SQ==",
+				"shasum": "c44f0152920e20efd39165fb91d63dcb2b03c430",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.0.0-alpha.tgz",
+				"fileCount": 3,
+				"unpackedSize": 2924,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJc8tL/CRA9TVsSAnZWagAATowP/0x8WFhMVMDe955rpWeW\nr06342cmS3445DdnxvPEql63q25QuoItCMGFl+UQ2yXFn+MIRuJ6ahXQQTmg\nzmGOX/4e/MMzewpAswNv1hbsBw5XLIk3n3yRUDW2lAf4UIkkhRT+I9q9oUpj\nfmzktVhP+yCV7Y+eA6+Jc3BHV2tzd8+pU6t9GkpYrM8TUZt2qR1huLtrUF14\no9kkAFNplLJPKZ7RiS8d2s7fMI2sfby1icH9AoLBoGUJWKycVwIdbFVJ7XiL\ngDkVR66dqLFGYPyng50qbySbdbAo/mYeN8Y8/xo6qWkUhrMSGWLrekNfUmTK\ngmM8BljKF5vAvdNEfPENPbxgWcMEEC46cFRzdeYU1tHap/3QsAhl0eF0E/l7\n7QM3+XJjqPO2qIdVhJBMmTQNa2pHlUSjpeFwbFqv6ayFlAuWUYzTTSUyT7db\nv0wki86yiUwFTjEJAWyTUNXi4g4zbH8Dfdc3bCoZlwhyMhNsBbLI/QHzDbHe\nWDBcuWdH7AhMfVbkjba+uatgncm8fTyBkPfdlgvw2DKn6axED3kqV6idKxdA\nhGXOoU2loV9HxKVUA+BcTbA4Q+P5uuOUwh3PDwQrMGWFi0+bXXApQCclZGfY\nbUIO7Zamq5zSUQe/AFWnsDs9hKUPDlosdZtnU/X47jHzJAzCWsQBA3jTqVdn\nqCbh\r\n=RYK4\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIGSsIZHw89CtG1gLjWI1arLrD7jjeoGhIlEvTdnBgixXAiAzxHBms1jghDJLkE0mD2u7TuLWXGxcFWdcxWMRzzdxrw=="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.0.0-alpha2": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.0.0-alpha2",
+			"dependencies": {
+				"axios": "^0.18.0",
+				"rimraf": "^2.6.3",
+				"tar": "^4.4.8"
+			},
+			"bin": {
+				"wrangler": "./run-wrangler.js"
+			},
+			"dist": {
+				"integrity": "sha512-N0iiDELINIC8PN434di0x6+JKV2ie+ApyS/1FXpYPRwZ6N/axAm9WPtjMbCpT27vwI86itygSDHE0m42hP9lhg==",
+				"shasum": "1c4604c2641211bb64621e92915697c7859a1880",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.0.0-alpha2.tgz",
+				"fileCount": 3,
+				"unpackedSize": 2926,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJc8tPuCRA9TVsSAnZWagAAE24QAJWYrVYw9tnXvnbNc2aT\n7pPKzr8Y9giM37MlG1FztoxkLteyBGVjn1IKS5VjsZLz3hkLC95dAPFjlnif\nu4nRq65wvUneFkqKrj4Mjq6y3l/NsTfMnXtlCj82DBJ+kLHxTA6t4r7s6ecH\nu4HtWUMlZ5k57PKdUbQ6CcpMm6ao5dO9ltu2TEmnoqepskOtOjwr5Kj33ALC\nF2HBGlx5SaYXDGg1Pwk52DhqABHFQoTsPPdgKV4xLKRTDXiU/h01E4PY3R0A\nZktMbduXKogV52lBGlbB0yym/XPX6wHEIzJ9+oncOQxmffiq5SEoI+2Yak2E\npjEuMuA0Q/SmqGO1CeSCRWKna4DnqUfUhO3N7qwDJsvKa3zUpC9UaVvRTpjs\npbGbE1nYeBoDyqowQS0/dEZtfQ6faqBch5igvfp/qDkX3A6oJX9v2oJBebbG\nI0EFgmDSc/0jU+IHjHe6WO5rqSLjjfaClQ18Q71hZ1aRxAL4eSjz4RlmFav6\nekcjb3zPn+SVhKT+IWYjyJD7SIOCjg/0lE6kVXZ8BXNrkDJ5w+v8iEY7yUCO\nZ7ocFKtotG6Vyp3XJqntXoZWa7qsGu6v50FJja7ERVeN1nBmNDQr6Knlz3xw\n7B1B47WLys7MxIM+OKkCZCCDrnH5SdFw5l27K/sNH6Xr1R5yNy8mHPs5kpId\nIvz4\r\n=RIBV\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCdlRPU44QKdlUQrXA+HwTUqAct/SmOyFGfQx8crLJzXAIgcKpqokoGhBjcQOk6gC4FX6Jg5Q/IzBOSkd2MyfOnLRw="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.0.1": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.0.1",
+			"dependencies": {
+				"axios": "^0.18.0",
+				"rimraf": "^2.6.3",
+				"tar": "^4.4.8"
+			},
+			"bin": {
+				"wrangler": "./run-wrangler.js"
+			},
+			"dist": {
+				"integrity": "sha512-tXzoMcc1vi9bkF3/nUBY93F1lcngHls7YwXcpvyqwlf14hCk5yuxsTvUbDj8zZGdvLddeuv0xYtjA9iSu1DS6g==",
+				"shasum": "a268d163c4f87640c397352b17f1f064ce58ec2b",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.0.1.tgz",
+				"fileCount": 3,
+				"unpackedSize": 2919,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJc8tWTCRA9TVsSAnZWagAAY5YP/1bWaD2u2Bhk1iyqYMWv\n2+WTsODYpi3v/8i8XPEbLzjM53O7RGzLZYBmfSq2s5MX0SkpFQZ+h5gmZI3h\n8diEI9z0F+PaZeahpBZ5hHDjRsusgw/cGma6naTnF9U+/1mSXHqakCnrqLx6\nyn5pMNNCSz61qWKi/rSqNwz+UMyzmAowTihOnjkavb0dFUOVpXoW9V+xdB40\n8BrkgTGd3F38P46IooIaioGMsvoFEopbV2WFaZA57zgOweazQEeRNHiqtmyw\na004V62FT2foCJiuz89l2fqVdqU68Jpwqbns02WfEEEvrYj1mVBK6VqtK2Ld\naNDGP5Cc9wKw5Y1D2x50roBjDr5uexxzHMJol+ItNIBTwPr9zOpi8jGOdnAJ\nfhF39lLgYVbT6exDJFZ72EInXAbmKlgx8jkLT5mEFvSQUZ1hkYzuhlSKffrj\n8u0AM2OvrWvQfg3QhhIv7gC/DEvfh+t1VsVLdtok7UvZ+gRtoQ6yqtHfoDAE\nMfmAzd7oPfbRi//O36SNL5D5BnZie3M5q+HhixtJruHg9LiVsE+HiJAxawzr\nO4oBMlWBDgs7qAbH10gLI36kvJnPT/9lJyPOCBU+fL++wjiRWXygSks82muQ\n7IFQqLzQwk8wvAuhcpheNEhDmHHSpjCbcwu7g2DsYbVaofQkxrnIVs/Zp1Nf\nKFDP\r\n=c0sC\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIEIW9ACYcy0TEF/oGiFQW2BP6VFL4S0YUqH/NvK/Yf3VAiBG7z4o8+sF0O600o7L7gv1ivzKS2JF+0TVbFb0IRLsWQ=="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.0.2": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.0.2",
+			"dependencies": {
+				"axios": "^0.18.0",
+				"rimraf": "^2.6.3",
+				"tar": "^4.4.8"
+			},
+			"bin": {
+				"wrangler": "./run-wrangler.js"
+			},
+			"dist": {
+				"integrity": "sha512-HJtyFvaaSurgY0lHTZzV8nLcK/e2/eZxv4byvRajA3SfuNjKUqduVegRTe8JUN51zz9blgpQplr4yUm3sCYNhA==",
+				"shasum": "6a7a6cbe3579dde59623db3a0e550101ec24cd2b",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.0.2.tgz",
+				"fileCount": 4,
+				"unpackedSize": 11368,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJc8tagCRA9TVsSAnZWagAAiNoQAKOhtY5Fgnh528etI876\n4/WVtDBq+FO/hRepLBWp79FiMozwqxaAqDD9oWA2ISJqyOhEJT4CqOrJrcd2\nZrl6Fxiuf5X6n5XX4uNC6CFI45Dgq2JCy9OmGRuCPtZa4SAZ3J2NiglmyFOm\nSxE4ISDv5fRxfCWOay8Zi/porPW2pV8WZ/6nZNmw0kBwHm0ShZPvVnHMdEgB\ngfr51iJNu2U6N3zyTH4PidLDUDUcb9DzOP0Oev4dzdP4HwTDmG/exa7W9OJh\nMH6mYfjC+jTB2jAxB5MTvKIDWnvFmPdjJGiuluWZ9+qbr7GUE2J9l5wvYHnb\nFAVZKkw8yHVzb6jx4Pqs33BsKzX0Gb6WXFCDoaiZ4kZUOBsy5/OXrdDUqY9J\ngWaIntFQcPWkhXeh61Xo+zlEYoouBJXHag+G1u/tXlTLBA55y/7jezsYOeJv\nCnpL9jK7yzq3ZkBlLVimuzWtVOwciy3x1QGFEifEdZJ+k9KwbMYd/ui3DKEp\nfKSTJO5H8IQ1/tQ33nOU+G7eGkxegAVz30fCtzdBswTqO5ssm0zN7KeEQCcu\naYdvPZMwu6KB0+LbAqyTlkOVtyD8S1OU6H8yBIf6SfE/FZL1ZtekVFOC7J+f\n2jxNFyoVZTAStv0orLanWPI6f5hvgvL/ou69RjEqmTPIaBWmRAyLQHovxE5X\nxLqS\r\n=JnnS\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCCR+x+IK3tLfVguObg0rUs9jVs504720N6PF1WRivT7gIgKOZGcyOLcb0325xAoO2mDsrFClejEV6w4mcwRXkOfxY="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.1.1": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.1.1",
+			"dependencies": {
+				"axios": "^0.18.0",
+				"rimraf": "^2.6.3",
+				"tar": "^4.4.8"
+			},
+			"bin": {
+				"wrangler": "./run-wrangler.js"
+			},
+			"dist": {
+				"integrity": "sha512-epxvelTi/4SkDkIglC4hS1qRp7KNa/cfIuqlwjMUgEwUFmljzufqieWbTPGnuTUkbIQtdh7LSLIAMOWdY9fkcQ==",
+				"shasum": "c4af668a0efb786efd6c2c5c44c1baab0963b872",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.1.1.tgz",
+				"fileCount": 4,
+				"unpackedSize": 13303,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdTeUgCRA9TVsSAnZWagAA9kYP/3skDeMuP6sv8SX31IDo\nDIjrrJaKlQvnxDJvJPvuxHk2AkmgcjtlRhQYFRy0P1FgLeexd4bCt3nk17WY\nS81nwtfNeHYzzHYvPg6n7h/mNb/881PMAANLDjprUWjiIDzDxJRdjyM6NgGe\nDKsdSrD+XWfPhZXFVKSfXWjfAY/88WUl7s1DPLeHyGcvFQkjJXdsRa+cApVd\n4wtFD1Q86QvB7HRKQuxo9DKNY8syAnvs135QdOVN0MFa2YWcK7iBmq1i3BsM\nQhfJlF3kqwgczr3sLfjJcy12LvfyESoDl1Kmw6HoDvd6MRDpnhKi0CoQl/L6\nkw2ahwoHl3NWfM4CvgnxK86MwWGy+W0oDeiVsP9xgwp59zviZfOM3eNsg1GK\n8w/M/dS3j6ss+4hkIf8chNIMx+pfEdc9Ky+3Wx4h3p3+WAfbVKgJ3+Uk3TjQ\ngBov5oiULGWchl+Q527VklOV7zNNQA0kig3QwhNUiDZ2qCo7c6qD3fEADYKv\nRZB02rFfXr8BE8ZBVd4PePDnR2wDoppnx/kTTbpsxUp8acrJO3PudjdZ8bpZ\nl6BTu8Ae6ZLbFTtTwGcQm9GoBwyQyxPJ3vwNWAHm/q2sAciVHyRGPD+EHEDN\nhThtIkGoHGNbMQWsR3GsA5nT91W7quwOXQg4wrsymnucVGzykb14jYGiMply\noD9O\r\n=UQqd\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQC1vNPECdh2yUOhHgixA6FJGCQkMg7NOtdYGu+PUK0BUgIhAIdyXXExhSq1318Z//OcAnOFhApQTPv4mYYp2KuLSM2O"
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.2.0": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.2.0",
+			"dependencies": {
+				"axios": "^0.18.0",
+				"rimraf": "^2.6.3",
+				"tar": "^4.4.8"
+			},
+			"bin": {
+				"wrangler": "./run-wrangler.js"
+			},
+			"dist": {
+				"integrity": "sha512-j8ZDPuS288QtePbW030B0EJDHaDBzw/b+fxjADzYjir/bIstHsiYNbCU/hGrdiQTuoBeKFi2rhtMuIxXjYEX/A==",
+				"shasum": "18264175a66ca78f04192a0ad39f7cc886de03cc",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.2.0.tgz",
+				"fileCount": 4,
+				"unpackedSize": 13760,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdWrZSCRA9TVsSAnZWagAAtIAP/ArAiveLQ7HAGgI4DJEc\n60fr43TeP57tQAlckl6ZSefKEULLfXD5C2BSBsTJDTh0T2ECtMRgwjJcjOod\nFisvLq8x/hmHANaDBmwPkkY/pijMLDrnpOkPHan+pTQLarGbHY1j69sjdfCc\nKzLZHSBJ1QbtnLBaO64ENn/t4ukIh84GF3RAdrG7/47mwBUTkCARrWAHo/jk\n7Oe0kFPCZQMlccntmVlq5axnDY20X4e3eD5DLIqc6tOFPuIquJqoqtdfo+d/\nsvYQhsX66VmlBOItjZpN0GbKvdgL/9w/3XVPah+LoQmN7qZT8abelG02vVYB\nLCGGduTU0/jPH0+bfjDQ2IvCyvSOfIwVBkrgtacYygnYd2gbHtCc3OqKI78w\nL2gGyevcEnAdlOnutclTYWOp6FoRj9ruCD5TLTmBrvW2M2199G7otj++mLpb\nN/6Fs62f8WaV6LfMv77D9J+HJKHCody3im/gkHMoYhrSTorVQH8W5SNa9HfJ\nckFxa0/o+pToYmwXGhDiqRvX19P8sqQsYFa1I/Jg7nCIn5fp6mysM0uayV8F\nt7qg1Sia6Z6MN8V2LghmQzruvqjGEXdewAeabPgcmI/5BphkXiOEDlsE90qX\n3CVPs20qtq2QaH/hCE8zBVsLrcbVhCsQ09wwWSnfmqxyI8vf35NYms796jMj\nyhL7\r\n=DDvT\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIF4Mbdhyk0Op/hmsJX9BCX0/r0mRU/DyH5s4snLdgX3FAiEAvAwZ71NOLqS5vk2SVYClpazGQzgyDgPKaIOgo6WueqM="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.3.1": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.3.1",
+			"dependencies": {
+				"axios": "^0.18.0",
+				"rimraf": "^2.6.3",
+				"tar": "^4.4.8"
+			},
+			"bin": {
+				"wrangler": "./run-wrangler.js"
+			},
+			"dist": {
+				"integrity": "sha512-6J0jwyXbA7omDHueFGVQ3Fa15y1AngmbxR/whVQPTfG2nf9VOxqbbc8TbkConQbl7AibN/UMm3P21fFaArgZ5g==",
+				"shasum": "f676a054f933216224b1c64e5aad1ee974156ac4",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.3.1.tgz",
+				"fileCount": 4,
+				"unpackedSize": 17284,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdgSBVCRA9TVsSAnZWagAApgIP/3TsFw5/x/aBWqbAxRgz\nGfOVms1qNqmLelCmykQpXRe0cE+AMi2ErAOCUeXk6C1ld7aR1Qi1Ne9Fdi1F\nYV0dASWQyE5lMdN8ybQTlNI2VEKkuw9B/gQ15smsYCdwmuQFkx62g6otbuY4\nfSMTV0TwJiBxwiCS4RlsHWSGg2Q9SN/Op4NHD+sIqp/pMCZOQaTLgD2D0ZBr\neybVTCESjHyNSlFUV8Y4xNtb5eNLa+ZBvrE0+KnMKljKevns09yNgfj8EPYh\npmFioEXZQLyuu3VZ5szzzJb+mqvUpnHqvZez2MWBFN54csg5zSvkFXnn4ih4\nykFEniHZH7BM8xoi1q95/6DmYzyIcS8S/n2XBnEY52j8K5nG527DLESLGmuI\n5WKd02BJ6JdbTGIRcyAvJ1AMO1JLu28Ibrb6HThENr2hJTaS0dteVbOYsZO7\nH6zXhVYPNbIpIYcTf2G9EYrRh5NI45EUJoB38P5R2UFmdkRmWP7R0DJnZMoS\nTQDlze5uZwgzC44QhKRYPDyBvT0u6T/6lx75y5uOwyFtAWihQMfLcgzGCof9\nLMVBwieCfArz0n92yfZV/s/FViQ6nOWyMzoF8VAiUhz3PAo5q31SrcDm5mj5\nSr4wtQPdHnSfY50S2d/xJ8uhKJ+6p+IzNbGDbS7fIKbrv2cLRbPE580y5h+y\ncWv6\r\n=Pv4X\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDMuFLZM5RbROJdFozL4MpUpiIAkB0wrZA91PSd2ezz/QIgXvvhdN/uO0EN7xvUsXY5wftz3LhVTLTuXSbasLpwTwY="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.4.0-rc.1": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.4.0-rc.1",
+			"dependencies": {
+				"axios": "^0.18.0",
+				"rimraf": "^2.6.3",
+				"tar": "^4.4.8"
+			},
+			"bin": {
+				"wrangler": "./run-wrangler.js"
+			},
+			"dist": {
+				"integrity": "sha512-uxQnp+Di5kEK6Sw4A+z4UfSCUGd0ml9w3tp6b0VPbJtjzTLM6EecAs1/h7bNCJPW67K8MzutuH+ncL9vXZLzEA==",
+				"shasum": "c58734641e9dbbed12bec37e1b73b9c1c8d9a871",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.4.0-rc.1.tgz",
+				"fileCount": 4,
+				"unpackedSize": 17294,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdhVtRCRA9TVsSAnZWagAAvlwP/2s688rp88mwR4RQHwRp\nZOaKxMTetmWN0rMKwiWDVtTtx8DxkxuLNSCbtobE/bFAH4Q19OeiVouZW+G3\nNEOHjaynz/FlZrR3dsEqrhlYO8c6IFzszqH1IcVxXFeb7MHQdYzc3imwCAXG\nBpMrCrhwk3sostX3jAk4XZdbMDoVaALUDA9mk02edQgGz+03WHFMCBHKGz6A\nAspplpRk4FkcUOuQi9CznFxQKKeFuLEY9VoDWM5hlPFU8x2YhbmuPFNoUCzR\nnoPui6EsDirfxCj9+EsheTsviCXmUXxrEYdP6z/ZZtbtgCl+YKFUUksjYNlv\nYtBglm7e+5MxMx259GS7ReEPXsn632ys42d8PuO+5rCBD3u9AG4Jtcz0BKJt\nOnTlqheDccYzf0qr2ruOhKpZudD2HWeaFSf7TcEL3cUZgZc6QTbVK7vcaI4g\n5i72hLK7I0kNcpNHw/HIkIRD9515ka8YhGH8yYfJerKBphAqTFgKnmPTo0eA\nwfCtpiorkOy+3GHq3gq6KgwsxjrG2ZsZc/B6Hq/LUY6DYVHNqJtCEea7SY4f\nR+nf7Hbva8xceVqt3l4XJ6SRsTSauQZPbrUsHwTKeFNJ57SgLKxg5qfuZKx9\n31B6qCSLIFZ6N6kovjuN4gdOAYo4Yv690h7QuVPJRGFCjDwSP2DBkYBjvIqD\nZxB0\r\n=OmPB\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDipz9SX5Lh/br5bk5dXfZkhtAW01Vs4tXM4h8JTrwxqQIgME2nXxM450Vufdtu5SAsE5aKixVnUIyGA3k3L9mx4gE="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.4.0-rc.3": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.4.0-rc.3",
+			"dependencies": {
+				"axios": "0.18.1",
+				"rimraf": "2.7.1",
+				"tar": "4.4.10"
+			},
+			"bin": {
+				"wrangler": "./run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-5+gwXRZ/608kJyhR6yn/RSWar++2imyK87AU81UPX6CwfWeUefkmGkW6CFDVHobrhFqx4/mUSKn8cV8uisquNQ==",
+				"shasum": "0fea283e9f79a6580c9a7bd391ee923bee290b70",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.4.0-rc.3.tgz",
+				"fileCount": 5,
+				"unpackedSize": 24509,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdiXwACRA9TVsSAnZWagAAJnoQAIVpEw1pzuo59AtSGt6Y\nmzIBMVa0KTrOUJF3akl/E9hi19pqlxSon/Sc8CLWSiGWt8iysBB78MR8UrKC\no0m3ZzLaC1Fw2z2hyXgOM3gjHj2SgyYtr5Bq5LGwVpXivnw4YHXAyCzq21Lt\nV0pIU6d+X+2Gf7FN3NJIp3ueYFD4Z+8ozSnBEEh8XU27YeXZxSEhsP/OcU4W\nbxWYxDStnBuVk4SoGyvm4lqGjktUj648RFdaVT3f1MC56L+uQWxVw8j4oNqc\njdTEbZ5VjRCXJA1wiRzViDL/sZflesiMmYHXFiZZ8VBHakPANP/0PSiWXUM7\nq/+0xBqEg3hzpBT6qPvbbGzWzbVkzJwWwFoyL2Eo3m3a6Ja3FHQr77iWsUpR\nLW62Jc2nuab3Xm/QKGPUCwFpsRuuxGTTVNdPlatFaKw/SdsiJWyWk7EtP8tS\nWwwPGgFamWIrR9EeMU0Rh7RPJgfx5Z238FTTS5kvLotSXZJCQfTGgjHgejW2\nAw3+lOORA7NZper4NPznWHV8UGM13KjC22NuojxjHaOtEAZK8MJOymlIzXY2\n3u+QHwjg7W/kxERkv+sIm06Ei5p1hpLq+j1ZUVJ34ysx7+grS/P/HO2JPLxY\n3a+ES3oNiXgCOLTA423mPDlUtz4/WQ6ZV4t20l8W3iNA4Cu9pcUqzVrYELum\n3IMN\r\n=OIu2\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCBvJg3ujO1P6bgWqlxN7kcAHxAGbOj4NXyv4gqcfaYWgIhAK5VAJIYz8W2Nra1fYtJZeWI/gCMw+tC4+uv/qNwdelM"
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.4.0-rc.4": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.4.0-rc.4",
+			"dependencies": {
+				"axios": "0.18.1",
+				"rimraf": "2.7.1",
+				"tar": "4.4.10"
+			},
+			"bin": {
+				"wrangler": "./run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-AeL53Icra09fW6l0nhKNee3umAtwk32SEIbbK+UThRFc/l0YR/8spZ63iaH1BbRz9TOpIJ0ioyIdhAAt8Q1E5w==",
+				"shasum": "4dc7cff95ff51384c1157415e100493927b0ab43",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.4.0-rc.4.tgz",
+				"fileCount": 5,
+				"unpackedSize": 24106,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdil7bCRA9TVsSAnZWagAA1YYP/1U3Jo9F6ChKF56LRnRI\nZuqDfvm2v4Dc/hHLRd6LOfm2dhLiBqnqW7HvB8MCRtbz2ZOJdIjItyYyj2Vm\nUrIL82jT6uhOHTsAIPg4Q0RPFdBBDRq8aBTt5/pWcM1+iZpN8wn0jA3+nBSF\nPKjvoSrPeYgoEYiEhpePwuXcb11xj3BXPcrcrwhqLGYf+Fue/PXkVwVBAD8B\ni4jiMP4mN2HJuAutbLBk57dup6cCd03pR5VGbcZJWtm8Z7n0E0PHhmaxvGtv\nG9deoNRxjoEhRKnTtUa/kBuKSRGbQPRjc2cScwh5dMRWg+V21sCaLOhrVEcU\nMqyJj2awczEDZpT4ayYCYi2Y/XL9DPNmPwmEB3Njimvl7EC/nBvF6yAghJm9\nA349JAxVDRRj7YDETsyehujD83bbqeUoKjU22wsAwMCGZDaGe9ytwO0nPYFx\naoW6A1ne7HpLieUSswZm3xxGKL67hyi80+TmXhZd9e3JXQFWypozrdjyGlkh\nfMV6ckug17yW3brX7MOOFgAFexI8O7uVsmTV5LTl8QDIBO8ftPEMLvvbF+c6\n67irg1jlA76ByFMbJ3Y4Aa4qkStj+yJdJR5+K0xzC4EGdkRALkyYk9wRRz/D\nPo8PEe6tjB4InONQM7tKjpMTuDQILKRVNr1GjP0E83SSscnr51mrQTMOsMlq\nj/Uk\r\n=9nb8\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQChYc7KrW2OEgyO6626srSyQ9K+78KzEkjmZpLdAcM+iQIhAIp/KtX7Bfu3NXBTyKoLhfYxESuCNdVXoaKIKFYoIjZB"
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.4.0-rc.5": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.4.0-rc.5",
+			"dependencies": {
+				"axios": "0.18.1",
+				"rimraf": "2.7.1",
+				"tar": "4.4.10"
+			},
+			"bin": {
+				"wrangler": "./run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-+XBoSkt+sOrK6j3j0u09mpJxTU1UGrOo3uQhnEI+VJxKzfpbYFLszVrfkxKzgekq6S36fYW+Ww1NSF1l5Lfgzw==",
+				"shasum": "843157df9ce2aed134c03b3d2095fd4a7d63208e",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.4.0-rc.5.tgz",
+				"fileCount": 5,
+				"unpackedSize": 24564,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdjUnvCRA9TVsSAnZWagAADfgQAJkGR8i53lmy+nNbQNC6\nD5xaaNhlTDu07IflluYrcVQ/cnYjp87KRWx6/eMIbDhFnjUorsqH0vmJ4+hk\n8x46I1+afzdAE7oVkNthA7tBorrLCHOAfxzu87HWmgsWbkFavEtYkFryFWU8\nHgx0890HUQw2QvKOQXYSuKeMPBtw4kFF5uyeB2co7Rf1tXtt4J5gUYMczcLb\nGEJvR+mjohcH8AF+zQuahmrCyq+MiOTrun1oMSh41dufIeA5JXwFMVw1bulS\nYxrH2MLUlOh/AWuFug5UZwcpbp3OVZjHro/tTkg0NvWrTAGNsscss7k0f9Am\n77/oXissyycDFdSArEN8zpaIV9+Bkj1/R5U6NtDyZh0XcF4p5mFDlP3Gbm9/\nRR7pb3MwUK7YWEOkH3fPZdnmfWioDhMj5Ad86rdomz11HgvPOfLd2nn3DzCh\nlE5JGn28KFnUzFK7Z6zQtplvl1FROUePSFpw6agVsk1ukZfmwQNmEhkSOHmM\ncIvVtqFx9azODHPmjPuWKtlhVbEOiTz/pgo9h3H0Dgx+TWGbLFCIO7yzbS5e\ngYeRCde6ns+SL3bAxlw25SC3PJ0gdz6yEZ7AnqosCmK1OajGGwXWS5UQz5FD\n4bToiWrymLNu/Wt6/pYr3ztFD1D44wjSu5LzoKFVSy7PX6y2MO2t1FCzXaaR\nwX2D\r\n=Ns2X\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIDlAU61oKSCfTyI07zxr+N4l64hAFxfrlCBxPP12J6pQAiBcoGZjeHZpcFFfpS3w5JrmiCV36EaBKFTZXaP501kqJg=="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.4.0-rc.6": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.4.0-rc.6",
+			"dependencies": {
+				"axios": "0.18.1",
+				"rimraf": "2.7.1",
+				"tar": "4.4.10"
+			},
+			"bin": {
+				"wrangler": "./run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-eo0IUXtj8mVjNh/f2m6m/PjEDn1IFhs1datmHWok8rneKkV9IUTcX0kLrEBTrT6i2DZikC+tjGMUI74D5HFi9Q==",
+				"shasum": "f18bfcabad1a7a1cd119367abb71588ab8a8895d",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.4.0-rc.6.tgz",
+				"fileCount": 5,
+				"unpackedSize": 24564,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdjX5lCRA9TVsSAnZWagAARS0P/RNjPLyi0pXoO+F1zmSZ\nmD6vgvhR3uxBAHa2MGVDYIv1FnM8U/C/ZjKPgftyk2QE04beFAmdr3pWhM+f\nXgiJVgvTTgnp8yKdZp78fchvTIC8Qvq5Ji7wkBCRJgfwipL20WSphlIIMT6q\niWxjh6N6/rjyTfPq8bvmadwwMbG8bL+i58Kve3xAkkgfcZxTAsSa3cNtTEDs\nfQqJXs9/EjTsvksV4hJx5RizZBNFaUuwz3LLNNz0Q9AQRaoIPaUTzilLt80p\n9qTDmrOsTmJ1d8WF2U2c0dROHI9s1k9p+5j6m9trblgFmIUU7XGTVxPIBwOx\nPXZ+nAeZHF78/DYDpQHF7dWLB1kFYcQpG2rbU1iDKpneZnkNjacdI5Bp/l7m\nCkYtBOMzOHKTDgijniRkS3nupSqQeNqFQIDj76h+0GozDmE1zYiJzist3crR\nNKTXXbctfVeTsCE7tnYC+h0Uni8yGIJSNhwCfl7wxdpKH1GXyFudg4glODBv\nC9eQv6CQQaExYDzxdhE2VdX75qQmGInQjQddX6oymRYgpiHE8AQMcNmdswxJ\nkedBrZPIaa2dQNOA23qTu/OwmpJB5vOLF6vFHzEakO6+zTpQ92LM3tAKLl/D\nZdi6vp+3M6tPA3jhAHoQVgGcNWx1/vTTHxWZIZdJIyn4N3V7iUtEiYcTNnRR\nPJiB\r\n=H1cH\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCID7v25jU5nNM0l1m8XhaJhrnUCxlFcSR1U0lRr8YOfK/AiEAg5uM7LnKsHzrILrYe/YHgdBDqxMI1GaQHgOOSanWpqQ="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.4.0-rc.7": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.4.0-rc.7",
+			"dependencies": {
+				"axios": "0.18.1",
+				"rimraf": "2.7.1",
+				"tar": "4.4.10"
+			},
+			"bin": {
+				"wrangler": "./run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-qFDY+hdQaO9zy11GuU7Kvlps1nPXZteN2V4MGGSDDFiUJul7VOfm0h2SdYpqYXw/aCpTtCViNN6dNEQXH6ZWZg==",
+				"shasum": "f824744cddc0c1cd88dc4fd1cb58e8137b35b781",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.4.0-rc.7.tgz",
+				"fileCount": 5,
+				"unpackedSize": 24564,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdjYYhCRA9TVsSAnZWagAAKQQP/jLH5BcmM4H/g3OyzOjy\n+kStoW+4/BA/v921kiHrQlYRHwh3hJXeyZ44ZMy9zmnfFxpHx5WvPKajRdQl\nntBj0dXbF7yjEVUgxy1tphD0hZFZ8ksjwCDsTjacW4p5zSMYhmHKKKXB2YWU\nQEUtj/WhyyeIiWOVeCuNKjWtVm/Jou+U32LEeBCeyhKjHbwktsKFJC/mWS5q\nxHaNNF3Pkl1N7FfjC6qesP37w5gy572mXXDK1hUL3WIquIICysNKiWKcHJtn\nIACxV9oSbv7uk5mTRLxsvPs7oJcdUlFfrRhdZh5UurdbDlaoX3OXBBePY6qy\nUyuHxVWxzCUmfbEVffd58wF4rO3qfRYUh3JhT/PexY4BF4FqcjmvOQwpg47P\nTDpaQT6FwPpsstXaItgkh5TQ9l+U0WCGP8DvIn8NV1dzHjdrOMhCd8nL7W4S\nsPTHTG/AiqA0mTMap417eSvu9PYL27CujKx53LQwbEEAHXMt9hSvSx2Ai/79\nfo8+xC+ShcHrYV2ptAHf6G6EtAaFJQWxA1ml8IFVcPsYZevaE36VQm7Mc7TE\nDTpO+HaJvvPL2VWfLzcrjsMG4pjhLXWgQdqrrQenU99pxuMIE0zAE+QO9lEC\nNXhmuuqKHs9vZqkdVDLyQeMQCEznOTl0vTUgFWC4YbuLzKj3texrYaHYS2eM\nSpsl\r\n=l46r\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDYG4VSxJ6E1yql6uA9wup5v9soApZvsgC9ZATU0OZrxQIgXBdHLai3abBBIO9JlYJ8VH3UItYKI5mIL6WIV7N1amA="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.4.0": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.4.0",
+			"dependencies": {
+				"axios": "0.18.1",
+				"rimraf": "2.7.1",
+				"tar": "4.4.10"
+			},
+			"bin": {
+				"wrangler": "./run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-g5+HtnmlUSI+GZV7KaUsCV1BPyZKFCe0xjBD48WvYXUg3clHe9tkQq2Q9wgFWPzDLrsC1MOi9hW8MPSGOfoOnA==",
+				"shasum": "8680833291c9687d0a1a7e0cad04e74f3a59cdc4",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.4.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 24731,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdjf1hCRA9TVsSAnZWagAAatYP/36eySaTtkGX8OIIqzQG\nMYQXX3OUcJHDHNwPPGErVV92h/M9jSxQd97vOomkK/bYQA6SXaU2hoFG+6ux\nOOtvuG+mGZGFnTfyUv29dIYCYyYE5lcQ2WivUDrSt4DBh94akJ8C1C3p1yBQ\nm1MkSd+Q1NpxGW6ht+YBdHA3Tbq6tU3qeEhVPaL7p6ZzLW/a1aF1WMkSY8H4\n11eEDvMGrMt5BVSEuyokjdHknaUKmOoC3NCx9REOoF/2zcpg2BGnU5P5kEte\nPmnW285hBLf+zCnyFReWYHRPINK6I4FGm+7lfDcuWADjGSd2n/t5yZHrUwj0\nxhyNHQQpeoiYFTySpdf8DjvuHoMxMf5dc3j1UVsuGlpM9f9M7yiW3KgGi8HX\nacEk/1R2SHvmmWqGZRwdnUy0U4qU1pVkq+1RJAdNUdeeT4ngM0DrUUiVO0dj\nCEy+aBDGmu/uM/S8xwP78bg6MUpf/fC3a3CGk/2ZcyqWLuNyBlfUwP1swNhK\nxkCaVpU43NqsJfb+qrUXdi70QxijZQsdL5d2QDi4GvIHZyvgcW/k5EH0KUyZ\n+sXyuPu6CHmrUdH4EGRwf4SIpV6Ip0GLiPcQEbZFsChakZSzcmuiOatAq62E\nXr2EmBmOzlMncxmRHC0aFueqvsHfyiJyNYt3LgOh+JcMY4gCFtt+q4lvg3Nw\nb765\r\n=s42N\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCr26awA8UI0IbAf3LSPpq+ML9mx4ibFUid6VYPJVEMtwIgWOhCqUXhHLzFrKqCyjAN6NTOpOc0Cc9rpFkyW6Z2IWI="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.5.0-rc.0": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.5.0-rc.0",
+			"dependencies": {
+				"axios": "0.18.1",
+				"rimraf": "2.7.1",
+				"tar": "4.4.10"
+			},
+			"bin": {
+				"wrangler": "./run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-PlTk3P1U6YoptBlX6xHMp5zG7mpAhC3Yyle6G9bSEfrEhAX6lb1q4TJfuauhn9+iUG4j6RglSRpI0UUgiOSr8A==",
+				"shasum": "362cb753cee01a775eebb708d460bf9415970eb4",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.5.0-rc.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 24724,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdngBiCRA9TVsSAnZWagAApeMP/AxgQDx3Kw3loudtXrKl\nZgeNFl3BLt9PWo3ggIW9n3N8BAb3CqavkganK6rw/aEhq6WlRjWHjes7Hu3o\nPLvb6XwzXEgS4jQxwMilFKUJ+6ULK3wgJwQSeKssG8Hmd8ICzfKFgTxOBWSP\n7YbBgCEHHfgRLoc1s4w6O/5/5NDTrCBJX/D0KrDYScMTxp7f5lXTeJURZ3vq\nZplqipaIfFxea2efL1nv1F+2Jg9BhcUWAsNkcpm9qLM0UWhf+Mxr+lxpjY8g\ndY5EwgHWCCklBzPvl8oKpvoVKx6Xg4lHSGcbhQcFgzW4YR3Ujd2OIObG6ZaP\nS1spjYtbYO0j8eRuP4hR4OYDRKdYpkrUPjBaL/PeOEIAe/yboEyCDlRuRcvQ\nQfG5KI8opGoBIjbNodRoPlmQXr43fbo5gZ0HJUSsz4BpmKzU4I29jqmV0sC8\nnzpSEAvnWDtT7nqCCTlByZWxEJdpv4loGLi3Sm+Y+IZ902O63rQQaBsZj+bv\nW4tW0zB/I4KzfGmDmBJpDVkhOS6T3PqEIw7NudD2tZ8sQ9iEDZESsfkXFtuG\n4DlLkIoijgxxB13a6idk+w4KT416aZ3jNbzlpVg6OmBXY0m1qQFJjO6AD8bQ\nFDjHViG1wGxN6H7/JFnA4HacqUZdCboUmyrFvk+cnt0aFTXHfFwp54IoCm6N\ngkKJ\r\n=iF4f\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIHIdoLCJk7nk33f2RrlrX1hesZvxiSmKpptaKROHds4jAiEApeRgIrfhI52s2IdrMnkBzkj8dCBeQhWITG3FAyv58r0="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.5.0": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.5.0",
+			"dependencies": {
+				"axios": "0.18.1",
+				"rimraf": "2.7.1",
+				"tar": "4.4.10"
+			},
+			"bin": {
+				"wrangler": "./run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-waJm/Wyc9P55E6T00J73e2oPoqdBNHCN2SBQ2IRWI147ByzotSgCANtVd/uh5nuwZUVYbPpl1pSgTK/zViOcFg==",
+				"shasum": "90154542dc883d03cbc2372b63aafe4908c77d9d",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.5.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 24721,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdtdFaCRA9TVsSAnZWagAAx2YP/10W5Epz3mWsTQBvotjr\n7PEyjOKfS89gMECLSOtudB5YZjT5mBKeg62TZhFxGTLn5NpTcYTvKnT30plH\nm37dKW87p3u4Zhj9iiLk/xst4evG2PFtFR07t69wklAosshSXHXLP46MCgfS\nbQxh0Xifgay+tZfzzbRjkiq9PM9oaM0peflMxXo1NvPNt7YLYGFpRxYEM1Gu\nU4WFPHbGEMyZzyyCujjNg2BH52zmAitMvk0eLyAra+HE0RDky/TWDH6oUCOW\nPFATedWzqf3z64kkYXKmxnLWJ0irNEe7OIRDKFGfSUVkP4l8ocTgYr3vnohM\n8/7eiuhW6AkW7vMgSMT7JJrl3rAWkQLjXxecDP5lpQQzgTLd71m53xR2RcRH\nF1bzpLimYDKCGMTDgkmLtP/lZkHp3YEGpnd1jyUm+IVuRiRn51/5uJ1yE+qJ\nUtVOpwRY5hkN15qQcAJ0mi2+EOYj/7DxIdD+P1ahds31h5ysy8EKizREuwnl\nfXxBFqTuAiEoqeRDsUra9FgpfkYJDBk/iEigDvTNvWDerWvBMzJZm4wcvSks\nAWtpjzLE/yDAdHWUmJHh1/klvbuUqSA4XFhxoV6vcvv8hrK9sCjAUCJlXs+/\nC98Fc8YCDEO6VnPtca+wLLslTwYByn2AYtQPrkUyT7BN9Kaaoy1P1HOA0LZk\n2nwT\r\n=ogwS\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCS1YKawPqURTm7/pDBUDL3npCr892tPKih/aFKTcxZPQIhANHseH9vn7F5Wf48asv2lmCrSjUSa6ii7+kxX7i0wi2N"
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.6.0-rc.0": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.6.0-rc.0",
+			"dependencies": {
+				"axios": "0.18.1",
+				"rimraf": "2.7.1",
+				"tar": "4.4.10"
+			},
+			"bin": {
+				"wrangler": "./run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-r9Jp+P14f6Xy1IgxRCt1SuyHbwzq9sHh6xQoDTgBDELofHTO+EVY332Vd+g1OfjfJd9KkrnEc9wMIHmd2nK/Kw==",
+				"shasum": "8abed923005e4460e2e6570f0b09d8a35c51d252",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.6.0-rc.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 15153,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdyeudCRA9TVsSAnZWagAAFkIP/2dPhnBsnqRTl3niWkdk\nLiKFHpdSpjaeAg6JiyZP63IPMn9i9BI53V6HfIFDDTMPOe4kBkX0P4+m9Y6m\nwwbkZP0UAjosugmP5CLLxOW3/Im8Ty/ucO/ypimZc42FNCmZCslUnJ6pwRUk\nJBcfSFXzPbIYfNb17ydZsbXJ9A8Q3eHJF4vePgOndalU+xo5i7Cr1+Nd9ZCh\n0HFMXphTEp0nHlBithwch3sZdv4fpxLzD1XcdTjfDwEFBvTJ+18JUY4w0nfo\nPZaPuM/Gr3osmy+6d9jsOTOTSgJxffgtoUeXMDjXzacrqrUuagf2t6fOv2Wz\niwTRSMbweEcLXkij3pua7hUcUVuhOg/DK7iXWpqDRHTxBnOdBnD+0D/AH/1m\nFLvKLtg3PPPYBW3UdlUUBOo7yWgJSMTI066+KlwNZmvaqpe6xgpACQpgl+51\nHrqgoyWdvhpHAGxIjCLKJR8fiEnx5AQPsrsVrT/DHz3sEvFNt30VdbEz5e5d\nXlPwkUDG37QccO/cB7rnfh0So/V6ZYbDNT0RnPqk6zbBVoC3/CaF6koWYy21\nBoEJr8W6r3Mix3SBLT7auvl72VL5Ta5yRA0nrNkBCtXyJGee7ck06scAS9rg\nV0ZxSckZOVYXNcvuyy2QGLvYWrxCWMwvXK+vKDNttOubi/CwVjxkqyWSm76b\n2FlS\r\n=HHW6\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIBpqPrSuhk7Xj4r9Xii0YYbzvVQvWkuM6Zg0kGfirP/qAiEAshYzjMAIjtV6OVWYdAu0w6kl5G3D8M6aEuJLNcgFfy4="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.6.0": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.6.0",
+			"dependencies": {
+				"axios": "0.18.1",
+				"rimraf": "2.7.1",
+				"tar": "4.4.10"
+			},
+			"bin": {
+				"wrangler": "./run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-a8HpSxG+AJZDt+UD+M1th/2bw0sYDEBJdmcYqlhouZLz+3dO5beNnNlxN78s6uIrgjQxhQyu7RacKD/8u3lTbQ==",
+				"shasum": "088ed171dea9e90a1d7fd82caafc3ab8eb2967b9",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.6.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 15063,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJd1ZwUCRA9TVsSAnZWagAAOAoP/2HxeFOVfoy3XlDK2hb6\ntzDKIUds1zK50x/91kZBoxPPwwJZN9Vvy2aYJLDc0gexNLtFQcnJeNims4VJ\nHNIUJFVpB+oasgCVV8LD5MYJx8VQhv6s22C5cWJCimvEcEDHT1NfQocIiNXR\nuuVO1q9tgpTIiRsKgSN7SofPsIukj3PeO1gTwXJ0ROGkCAUKJEv/RuYmeKfo\n8x3FvfllZlt7TmUlXeJpd1Zzo6MD6uqxZoJK4+uGm6MWT8WTsznd9VEIIB4m\n2h+lmNhCnCcHespd3VWy0DrR6+F2+Bu/HmvLjZQKXAFGw/x3Cc2O8SaUWoca\nEfSLW8cFmLA7yOvIDLwfRPFD5KKlzsYAFbtVZF8nZWb0Z06FJOmnZtU/elrR\nkfNMejhA21jJN+07XK+b69aEyhQ1dxHif6i/lwrXs7g/ebGXR+s+8XUcfPuG\nRLGS5qEqTqtByYo0Ctny3zJcRdImsp/97oefYzYnqzl+mQpmaX5ufYmUi1ZT\nsDxk+Bqh+u/HUqjcK4AVVBbbfv9sNbqS/9zgD8s10F17j/LCCS/7KXpFo5sl\nFOWZhf9c3cH2aKykFE8cNixR3bIIOfz5m2VzLW+v/eVY0IvD/wvuJcWf3iiM\nt0hhuRlggqJuFnXJ1IK1pxLW06z0mY9VQg2KrPmXd8ysYx44QWuUfcox/HwV\n3rnT\r\n=YJq4\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQC0U7Py11gGs6mRkD+FQ+WujoDp+o+pYNGCnZaEF2ZfegIgSDG52rpO2M350UzmSC68pxELQ1+PkcAvJONgkMhVYgw="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.7.0": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.7.0",
+			"dependencies": {
+				"binary-install": "0.0.1"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-dlka4j8aEjaWDZORfXsxgdwrFg8SaUM69XCoRVNy/xXlkvaIayT7kC2wxLXuSPET6mi3ujHRp106tItY4BimlA==",
+				"shasum": "c0b76b0a7d6dffca32618cedbc79965e839ee622",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.7.0.tgz",
+				"fileCount": 7,
+				"unpackedSize": 16698,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeOzWUCRA9TVsSAnZWagAAMccP/ihh/qsi1uJEmESaMFKR\n799xOZuuDrdTZXx5PfoO0jqMan4E+Pz8dnxc9g7zHDg7fRy6cTWlp7nxxIpZ\nrEmCT2tRpc08wUOD0HKQS7k1mDSXKBkOFA2XxDV0wSworjOog7BuA/7PtHMG\npnhotLKq/84OOKxyyv2mAgi3k251+boPCsOO02Xde1OUSSsz3d8pazED99yj\nyVt4hg64FInpunJQkgpg15433EcD0lSAMsemyO2x/ViYrPE8E+wu0Pc1habW\noVf7ZN5fLUjeFNqzeEsGcJJ06ouudfFxrLUCK9XXUFkx7LRWtz/c2RUFY7zJ\naUviS8IwrUQWNVGswMxZRacCom77WWxZWiVeHMizMZGeU7+2NSdb3CBa+ipv\noetvPmgLo1x6m36dyqZFwd8AaZN7Tta4Tly0yDwJRM61SXs5vvKA5kkIVo9S\njm2kWKK++U6PBSDqIjgboHXuCgxrLxv7DHl9k6zurkBYaOrKUWo+HD+fzJoh\ne55YqEys4hPd/oLxO6BFB1V4Hfwpkc4PyvW2/0VsKpBhk5fPfw/Xn3ExZS1+\n/8BPoh3hbaLnGNk1m3b/OYU165YFByHnNlU2bLk6KXW07X/PuHbmIX0eG8Yy\nEGA+1aUC+/wig12DKxigo7fSjJA7ImLujevCAUVdHiNEJy/fLFxHEXUVVl6A\ndX8c\r\n=gRcu\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCU7/Rk+dTExESAuy5EemkiiPlHHtvR2ViowFL2mPZR5AIgRsFIo2iFOCFky3GcVOLy7n8JjhZMyHKid66No08k+Bs="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.8.0-rc.0": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.8.0-rc.0",
+			"dependencies": {
+				"binary-install": "0.0.1"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-zhQcQgxh2Qan3JtmMjlGUZJaKjsyN5XJx2tErHgTUFx1nJxknLdOk55+pTgynVmgeQaxpnallWj8rHm1KPZvug==",
+				"shasum": "f8c7312da65f5996eaf0ce50405315f264b1ac4d",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.8.0-rc.0.tgz",
+				"fileCount": 7,
+				"unpackedSize": 16703,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeRI27CRA9TVsSAnZWagAAVv0P/2zdeOrA54Gj+BmaL7KC\n+UTIAcMNyPWT520r1TtPthRffNfw8MrkhfbMo6KAua4hco1Z4QVO7/oz5GW+\nwOGLP5yP7HHJgozU8eT+2Om0AKZfz93Ly1PQROqUJgJKKpxRU4xFlUhcOPS7\n7jScmIxO+N1F/Z/V0dWQaUJk9xnIghyKuvicuhkmDeoBQh+8/rZhvFjKNuZR\nB+d+BJJMyEem++ChJpVMhAJvFRjqLgDL2xPJS9MO1v8dlYDKXFOjkiIKG9Jx\nUJPIsKOFAu4/fKfjbvIev9tM+hju5n3pYeqbqm21EaWOpE4Fm307ewf7DviX\nk3N5DYqh5NWt9DRkMghIir0I7UVLE4UefNPPiGJ/qDlHWh1cDDvEHVB4TykJ\nBxrNAlhWRBbTXBOoN+rELxEOVr9HpsCE9NmtTmCsft0BteMogxiOvR1U/tll\nMTzLOxG2lPbHVscegDo7PgV9F4Tt/AIpf0iJh1Phec9cWmfUmgmzxNrFyROh\nXm4dHbp57XoOBcYZuy1IgSfLTEJdgBrT/KYacYTC/e1d148W9GeFIkVTIhBh\n2nS3iy1k6Hcas4E16ifqer9r/Z+kJKaM0urNl8BUFzDSXVpHae+XZO/0skVD\n71Cl1QdzRZYdcFAy6xP96J+bez2XbKAz+A0UG/lBrEgqoc588m0BZj3Bksj5\nzyAR\r\n=TML4\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIBHwA6bKo2n2x6U2G/XO3CNGsehr3M7yHsRI7MneuHPQAiAHDGXh28Uq+vJ0gwBJptSwigSfc2nV0bVk2DHKOOle+A=="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.8.0-rc.1": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.8.0-rc.1",
+			"dependencies": {
+				"binary-install": "0.0.1"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-71TxJhpfK6kOc1v6FONo+TUy+wYDSIawv8tFibkD9GCeoEbV9FRYxKCoIyJVWEnFDzYx20B9pwKs+zdOGJBgTg==",
+				"shasum": "46979c610a9c0bd3b8937b4158fcd406d450a1e3",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.8.0-rc.1.tgz",
+				"fileCount": 7,
+				"unpackedSize": 17003,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeTCIpCRA9TVsSAnZWagAAjZ0P/jYcsEmuwgIAXz5BZihp\nw3YCZWD3k4DZnxqOo/d+UnQoTpnY8Y4Joh6PhnGuH7Gm7Gk/nZMPeOlwfnwJ\np/HucCHx/AfraEHUFPkYOUdeNh6eUIUlIiKbcf6vxj1GCk5Ou6P39xeKFkfw\nh5F4fEtRrpEA2ditNN/pZ5Dx9iyXne1ifZOYd0eQ4ciiZDMq/5E2RqqXnxNe\n4ysGXOxAOs850gimx5G0Ti09ezSFl+d3sAzvtTc9tUZSgAklsezNDw8gMD24\nWyXtqBraTaNCySsLGTg9UMXersHPG+0R1PItgBtE1YXUu49DZjUH7pH72eOr\nBS6c+a4tYHJUrOOsqpEALotw5ILspJKqUVDAO21uTbrFftM5WWp8Uj83AvBn\nBhzrQfnWtAt61MoNm6JxLYEDi52ldH4OaM0qPhBsOiBGM2uKUXMipOicw6mF\nKzhvfZYcFUzZxGiULtZWxACCM3FyspSYakADtx3brOhtpSZxuPmANAD9V9g3\nIIKoKh4jgcOXRnh6uNRVXKooF8TMqtaMZjOLe9toPvihkBALJg0PICaz/ROT\nCmAPNAhzFJBFJpJQXyUN6FCWKA4+5wcFaRTcVNuZdWe+wYYTC5PYFOuttrDw\njWGl0Nsszb1sPPFmenIi9ZXgcySVSPZLiS2rObcKyU+uJv5SaH9B/C3sOCPR\nIeXU\r\n=+m7Q\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCyidV08LF9SxqgVYgrXzNws9E1ycWf6HFX5Lntjrm/DgIgYDIN80hNrasd4AME/uNpusc6c6pjlwlmZGnSHMjB9NY="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.8.0-rc.2": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.8.0-rc.2",
+			"dependencies": {
+				"binary-install": "0.0.1"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-Mu04pJ4Wdj0Rs/6XnglnV7+I3G13VYYRorjie1vsdQriONN6gQyvu4WsHUHbLmMDatYmkl18MtCuaapucpzdNg==",
+				"shasum": "4d443eda551120c57a56dacbcc96bfda88ecb2f3",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.8.0-rc.2.tgz",
+				"fileCount": 7,
+				"unpackedSize": 18168,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeUA3tCRA9TVsSAnZWagAAiJEP/jYU6M49NcqfQjTevo2g\n3RY3qfiI9MrRGOVjHTmu/ZpIde9jnDG/R+iwhbwjNKUMJxn1/yELLA+fAtSS\nJPwFtR22OiKl+mgJoGngi7NJ4kYBs8kCF3Uq1ArVsJkMB3E0BngczZBg8noQ\niy6evr72wHGA6ciSVpDrES/Dae+vPtG5NNHkwv2xXtaZrnXayiJVIlRuitTc\nvgbMVHbR1btnFGJEoKcuYaaDzLMavMX3tA3RlBMLsFYekb4cxuxwPdNQyc9r\nVfpf6jvb/YDwzupnevHzUB/jgfwH5K6f4zvyi6Ib5SmeMmDkE7JP6bTor4kf\n5BxV8Sg6jagKc/LngZXfbq0WqUUGUaMYwnEVaGNMvgatEBvgsnl91QZ2ASzS\nTnA/k9ug43GvBfeeVvGb+p9eCF5Yt/VyM2/dPWSg5Yc81wELjHpp1MOO4ttx\nmQxc39UzWMwieFtFoARW/Od7Z9vjE6P0WJ9VShwb2IKQl56/e4ShYdbBmhR4\ntNQ5h0h0Sh6AuWa5dfYFZ2uAWCHZ2lxFKdcob7K/KvvhQFl4bL8Obla4Nthn\nu0SMufBM0WWiQGOYWGZgyzqrQJZfo3aGjUc4WpcYL7F25yXn0N9N587eP91n\nmvWOEWBOBxNBwqJuVuqjkA2xwQZj4x5ZOziTjqbuUrbmqJTA8KhmSht0H/6z\nezTK\r\n=T2gs\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIBDZ6VG6E45iCkm3GByY/zTLs5hmoaixP0t3BaQlVH6eAiBR7mbWOaEk8VPpUILnnFgXry7whlyu+CLijBYPT+nAPQ=="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.8.0": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.8.0",
+			"dependencies": {
+				"binary-install": "0.0.1"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-LBxVXQr6j9yCYwRzeSrc0Ug8CLZo6P3RbSXXqUMBfRrqKSsjUtYyU/vZbBY/AMUeZyKFKUGH6hWzHBUCRFeP0Q==",
+				"shasum": "b68ae601e7028aac0c7ef0c78f28434a4159ab39",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.8.0.tgz",
+				"fileCount": 7,
+				"unpackedSize": 18158,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeVfLlCRA9TVsSAnZWagAA5B8QAIAgoJqGDiz6GnDwKRZJ\n80p+LEFYGLuQaiMhp/0RwBt6HVJJryBELjVwwuJesrrutPGky538M5sIbvkb\n3V9yAj9+3bd5jYdG1GonzSzQmvBE5dx1t1rc2GlxX0uFxOQegQ1DLHditSHq\nHjC/IHF/U/63hrVZRwVL+RsApSv2Txrmz/o4MVVWesMf2Ej7AJVPX/kff80f\nDiASY4pnKmZsJ10qPigQ7pl8zJ6D6lCu1dPE+mtAg4UJXuQ9PWl/FjeuoTZd\nK84/kTBrzsWWRQecl9XPbo3oUgGXV5S8GLWbQtdvEjbx3KOlIqqaTzhkhu56\nlWIpe/xntI6dUhQTlwfctR41EyTWXHVFBB+BEQcQf1yddj+wfO4N/TUhkghh\nMqQUvi9+ta2YbZa3hERJN0KpscOew+7NXnoZp+JHLH5DRW89rpjzzDUW/rIx\nII0JD8vByqCfLX5IJoZXiRC0BHLQr7/z/nihyd706Tudw5UaQlBIouUPJ93S\nkltpvV3kL3LpQxGGvkmTn7VFrX10sQKE+XOdqKlTokLHDcAVnM5SRzpxCE7B\nHM3H9VKX7130iltnyj9bHYflb/WFLl36xc9hRRPsOwpvh60HYU9OiF/hDO3g\n1xzP5g79P4hPKnh53GsDyjStoxAYBvwhOn1+/Keuns/njpY3Xt+Bnpjeaevx\nyw8E\r\n=hrRm\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIHsjfasrhjLP1Amb4lr3eOcbYiS8KlneHdBEoGO15u4dAiAn54rrZ/7exopwZsLx/9HYcZq88tSdpBS1SYLUWVjwfw=="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.8.1": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.8.1",
+			"dependencies": {
+				"binary-install": "0.0.1"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-8Ipdi4aKqhiTeJ6YhlFvAvaY0MNhwPfa18EGIM5A8Zhf05WgwxYjxSCNLKRVtY8/fsLBRS3gn6YuQNoCQGkG5w==",
+				"shasum": "d48f2d5ea8086c245de4a164148baed21a860b60",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.8.1.tgz",
+				"fileCount": 7,
+				"unpackedSize": 18158,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeX/I3CRA9TVsSAnZWagAAqJcP/2KqiPA3SuqqvYDX9U0E\neXM3atkUavN/AMUBeIp17VPa/mO03dev9/ygMAkwI5z4K8bul7dd/Ih7N7Ln\nPK3SB103SqV2Jp028Q1fK9WTIEKpUByFgtVR6VaqdK1leFPBOp3ymW8IZwP2\nXlti/HsVOaCj6Dxn78auAhApOMUhrst66XK+J0axpnyn60sIGmDZrVg2wHP5\nY2UfvtmeeWrl6vtpqu36uHn00MyGEgISHDHrZlzkfMw9SFvmY8OY6phgt3iJ\nTV6goxSizaFjkqnLtNkD8tszyrUTlbdqBe2U2VLGQd/imcTiT2ci6o+zCfAf\nXq3mSbeorxyDp6h0TmpR1ofgUKZlLuW7T/C1ByRsyOaxRrDrgjlMR8IwH8b/\nCEyeeSwq9uCoQdtEwPsnufITypEU5AbboL+aVNTLrll4EwJxjPzo2NCNj4ca\nqSfGDYZnzyTWtAkLnmSFkZu/NKD49kpDG4xohfD3GHrTbfvmDztF3znUtyXr\n9HVSSkUrlx7T1x/hRT/usc2bnNdZUHmnbtzyGlq49nRUWFJ7q/drXXXLsUIb\nV7n3sEddK2ZXYyIZkw0z84WpjsPkRlVKIdKZCDduNaWuIM9U+mOpfVSYrTTq\nM76sEIw8Bwf5UY8PzLDs+9lFP65/1mw4ARL1Y6IThDS7pXcXessE+FAGaRCw\niSdR\r\n=NE89\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCo7zyhMeZLyR0xVTPLD1iBbck09ZW1uQOuzw7VM8SQdgIgd3+lNut2nd3xaZD/VYEdtNQhEmKMJh74DYCoZWSAS1A="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.8.2": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.8.2",
+			"dependencies": {
+				"binary-install": "0.0.1"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-7qzfI0tuF0McSPZPKEk1LuMl27EKJ9pwDX8MnZUnZDQM1oli5WlSs9CfNUield7UIfDqMEyG7FZ2Ade8pjSSjw==",
+				"shasum": "77969457e83342ecb5f089c78611ca278285fa64",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.8.2.tgz",
+				"fileCount": 7,
+				"unpackedSize": 18766,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJecOrhCRA9TVsSAnZWagAAZc8P/2tVgZ5nU82u6+dVy+j9\nGXzl+YDWeMuOSouLbA+98RM5/H8OEdMi5Ic8ret1kmTPM+hXFq7rlNBWreyD\ntmKwz1Q8fxWR2MN4bih+5SZQQ3TZvLTCtw4X1qSRf+3bhT9zBnsBmNHSg2pf\nJvWpneqzupsqsbcT6YDUrAPurseN6NNLXHEu4rbfu4iswM29gR6ZBbN/DMqn\nCazy6CSjCgbpk0AW2KILgI7UbIegHi06j4PvIIB8p0b/PaYXySX/4pfHDvJJ\n35H0yeexQKgxxugMBV8i8YWvPv3okXtiz+hbORm3/GMAUqw6/I170eMz3vXq\n4AgpEDYA2hO5zRppLU2SEAbz9yLXrds4qTzui1BYR0s+ovYWfgkoK9zEc0/O\nLkhvWCeYeSxM/Z1HaKIJP4kuBXpCJ4xfE0Qqi4YfZW+qfIVHrE1hhY+NC7Sz\nBHsgfFwE2eHfLDYAGLW4HLXDRNB47KeyJYXP7xm91gaHmM4NHBVu/9qBefg7\nIc/rnxTem07hDJUpuXQTlzIq9UFncfxw18/Vr6BAXmFqB8HmAHNGx4gzO41F\n584Yrnhvp1A3Q+oqfjI15HOkwPlwwrE80EK+iEtfGp5p8xwjZjylYh496UoC\nEUTUPdZAELBqc3H9lYkcITShEo/XXd35b12NHPT1gOyqzOA4mk64ztLPEpYX\nuOcy\r\n=MjGN\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCICv74IZ5o/CLxXJElC316DdZLeNBMoZAvy2FGZ/gMbvFAiEAiqIfTP4PRhXfhlb1kEqlZJbST4Hy+lqIIbT4VyA9JQs="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.8.3": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.8.3",
+			"dependencies": {
+				"binary-install": "0.0.1"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-jGQiZlnZnF6nNhgtfyUzHfBipRN+o2XQq2bdLeLmTyV0mPbaar1osMzKX+NRhYSjxPfIZ92RLLnFSrGEe5KbBg==",
+				"shasum": "2b31aa107cf5e9ca10e18f88fe6b2a895e711446",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.8.3.tgz",
+				"fileCount": 7,
+				"unpackedSize": 18412,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJefhueCRA9TVsSAnZWagAAW/kP+gJODqhWq3CKZUQd4lZc\nK8s1WjFbX/L/LUK74PFWdr94KEL6Dwz8/yN3HiY7SI4UIlH58Nh6A5tAMIF9\nDO24qszsoJeNiGQRQwJDAG2d+IdTFUSEke3liKBl5XRjtDhxBr54GVx/SNx5\nAgFLRnlvtPnMkOpLGCVccdyEa6ZJR718CHRsX1/Lu+xWczn/Ul5yd3fy7bm5\nwfQq1eU6dp+3AmTi3WZtK42gbwDo7LpGstHlJ9WS4Ld2iP2KyNpbzkq/kW5G\nFGunh3f3Ya7w0QOfFWeMS1EbMUg/30+JXtalyXV5XCc7aJRnOsGvgkf5Um+E\nZnfY0K8sKe1caIuy16ATGGc4RojJdRjpoVOtHO3bIXcXuHbe0rZOYVQ7DK4q\nGULBnpFKpWyLF6E9P1xcdk5e/eHJPTjg2GkP2d4mTLU6HugE3OMdqgs7K/08\n8mh3CjeOj/NBJqHaYgc/ogag4p+bRUzlrat3W3pmNSi74Q3PSkvudjkF0bNx\nEoCrYuEpZ9ZbuLcqRqUkWka39XrXle4Cu8fVBv2BEreHvR7vRZHX1vDgSPF7\n+AHB7I2kK93zrJHxbsRfd6VGhmMGkLkHnqm/7+KlGw+j5zlvc2FvQlGupAda\nerdJGZYXbctDZHgsKhfHC6YfJ+rfx+R+T9shL7JszB9HLxAB/TF/2u9ttHBX\nBSuq\r\n=4e5N\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQD4aG1MUGzgFKZnR6uRTqnFag2wZLBbGkCc01jnqR0xCwIgfzc43z70OxgSJWgJ89vFmcXkk+srLrA7OhOlJN2MFpk="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.8.4": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.8.4",
+			"dependencies": {
+				"binary-install": "0.0.1"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-R4vajhzT+eDDZel9b5iBfzXvUlDa8he5GAa1yazSwTs/WWhIAti209bft0zHn2wPUD8q1e6s9RcBdqmGQpajWA==",
+				"shasum": "0ae33f27d78600eebcddafa65f5df54020e9952c",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.8.4.tgz",
+				"fileCount": 7,
+				"unpackedSize": 18360,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeg8DxCRA9TVsSAnZWagAAHc4P/iH+bSRY+OrGltGlOZFE\n7f4aUes0PBc6J7bhSGnhK6+swKPe2eWzW+hVWIJ8ni0hPAEdzo5sLwb5Svg8\nxuFRalQMw7bLtBxSUn0u/VDtxzDL34eE0gj5UvrRwjyhR/fM/o+zGoCOMr1p\n2ZETxxykyDBOoDf8/5ftdvOVWrnerNo7sEvTxWc0Y0zDtG7s0oksGh52Tynh\n5Mx9OXZHCfbPcorO5LIFQ+nuuYlc/e4KV1Ht8QU2HuavIKWzxmdV8Senb+Es\nrQGWf5WwXEtSbYQSPf+NlToEHSNNqQlL8lTo8pxUCnYkbQ+vMnAxXYkAgI9T\nkcE3dIgQdY+En28h3myRh25opdla2QL9xAgZkX4GMYInGJsETCngWzUi338v\nSfQeZDMRA63vEc0Qb+Y0PNMBbMXogaq3X2p6UaZ+6+GhhO9/hVMdGP7/Hcpl\nzYvdb2mDgHQ4b7c9jEY6I4mCet5l7g7nXsOiZF6Fu+oMotO4pCGaHcnjGNdX\n5vIgdqVCtVXvjSCkMuh8TTccmAf+vmWAJU1iTeHbXh8CCnj1tfqwntESKb3X\nJ3/tO8uIgNr222R70d1smu0n8P7C9gV/Qd3lQNJcZtG/nxNJtqHKQfgrh/Zm\nB05loLE6b15P5u6CKFVU8P73HjFs1fVyItqK09fzn+a3I8Fl7l+ievk+yQ8y\nj9DT\r\n=39e2\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCsKwzSfRwdYOgRUrwptVLw1DZhiObpCGgxzdpg05prOgIgc0rRYfK+RkZqf3yA8fZmDBClmFY1h/WnfiThKb82zRs="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.9.0-rc.0": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.9.0-rc.0",
+			"dependencies": {
+				"binary-install": "0.0.1"
+			},
+			"bin": {
+				"wrangler": "./run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-ykuoEzZgGfGSh13AYYqLktjKp7+i2p2qmDxw0VAXUo6pz3ImX6hnKoRimu3XzG4m9q+SktJ5i13C87qrq3ajdA==",
+				"shasum": "48145e7bc5915c0f32e1cfb873e771d493b68489",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.9.0-rc.0.tgz",
+				"fileCount": 7,
+				"unpackedSize": 18495,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJemc2TCRA9TVsSAnZWagAAuZAP/3UEchrM2T2ccfPOK9jo\nvAtGR+Po+xphAYkrKjwoKrIpjH1EiRC4/Lxi7U0r3VQF/hjAtz5hZ5srUFIf\nb/ZUmTbFLrEaK+AQPqBQjH2wg7M2m3q2+Pvmj5uE9b4IHYyhtMO2kHYZ+W1j\nIvlIZGnJMfnp0RQYYLHZpCt6Oc41227Tfawh4bUheYa01a+hUyWjYFvT0sDD\ncwKhixl7tFwlCFq7zSAAd6r6w/0Nc+VOS2Z7BFJW+1Ym7Xj67YFPlY35tBcs\n863ShUpQ8GUZXUsbqshQbYofvxHj4GVLrzkHVeAVqR9Q1Qr+4imAnFJeD3ZC\nXk+SPAPmZcroghiVCkh8BK7c/OIag1xjcr5mMCiT6fK/8Chd2Tsk6POeP7le\ng7QsxOaanPTQ1lMtpzzicAT+xjUtfVJSMRj/boStkUKZ2jG70DcMHwwOK0K4\nqPRKlZ1/9futbkFg3cfzb1tJ4KSOc3EZFv8E7ungRsBKjqudILWD8S1hFKpO\nbQ9NPND2X2dMpf+Y2YF98AhVP/OBDtoiKY+npTeAgpHCNLr+7Op7JNq2DZeT\nrqxtCPz83361XCdtSmGbxCVzEEx+5jJq3XWMh/vo5i8w0kaxBRz+nW0Riyr6\nOkH5lOK0HXlUqC15BwpiBOpZxL+bkL494TWmbRexmHJCheEzRevY1EWOZaJO\nmpyG\r\n=CQ9M\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCtGh7F58UdVMV5iz6TSka8PKoQshkEDQDIQXY/FzPWkQIhALHikLhw2cWHIysBVt+0YI2zKPl43pDAxmDYXnvwK361"
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.9.0-rc.1": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.9.0-rc.1",
+			"dependencies": {
+				"binary-install": "0.0.1"
+			},
+			"bin": {
+				"wrangler": "./run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-uTM0OCRnBJYlFQP+0Ma6IMl+RnGasgJLOVePetybLxsBDFwfpDZyr2RabzHQwKFOs3Am5GWWnQUJFTH8877ZHA==",
+				"shasum": "9459afdc81a2784f67d53a0751474f6edf8efc1b",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.9.0-rc.1.tgz",
+				"fileCount": 7,
+				"unpackedSize": 18495,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeqc2rCRA9TVsSAnZWagAAGMMP/3ULwOtlKTk4n8QGPO6y\nqd6MdIpdaABpsbQwEzvhnmPShArtU5lpTiYYO4c+tXt9aKJNY3L5zIeJ4pST\nSjCNLu4ldldX2/1kUpjpb7wn0pVXg0U4vXDfBmxPJbAAbpct67DluNX8lSRw\nfqixxY/zwkkDEsqPyeZy9KwT+rKfShPYSbXaJOM4RxLB24QBpwjq8xm8NKR2\n5SODv5CVVo08NTBB50lkHNOZ6Q66SsbT2CAXSenL5yMdQAX60GKIhxDLkx5z\nrVlyYj4ZaSbcvcavlTnuxY9URciP+S35EAE55MglEau4mlQM4OBqkgCldt6y\nfaYARibWg1Sw/uHwOz6v68Z283GvAsVk0jlU4Ne94pHOVUpZ+TIJXPJG5SCM\nLexY3ece1OiyjAAqhZJklx2xcqr8YSvsijwFmyKYyB0m6x9ZynfRxy4CmrVs\nGKeqZ4J8D4MFgzJeLymaLNilJVtBt1kcGvahLWILwmTz5zafGdkcQSOiZF97\ngn9p1KxwgmxqMFiClyZnFKa+37DPd+Vhxx1HMi0amw+4IOEetL7ouwQK7x6E\nkw7laa3vbYWtaHcT+rhZdtdqshOWOiGaoFD4MhnYhEuWh17y0nWhMbTEzwqT\nJGUV1khMiFn91zdR8MXcv13F/+buB9oRHmfDVKoclrAAcIHffjPlt9linkvD\nhRdL\r\n=CHxY\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIDvPoO/L0H0lERB2PIGkd9YvYhS3D1sNLz8maUEgaZ2+AiA7jdj9oIGJFw393nBtkhalphgFHR4CFXjonCrnAF7NYw=="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.9.0": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.9.0",
+			"dependencies": {
+				"binary-install": "0.0.1"
+			},
+			"bin": {
+				"wrangler": "./run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-DOVeFhFWHi6r1ifQG0ApeXdz2Xjn+Wd1CQNjJL7j0EL+AjOsaRmxR73o22jQkmpO4UyKj/fETVyG9Gl5hEL2kA==",
+				"shasum": "3223118542f3cef9238af02e30d7b62c2f3219af",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.9.0.tgz",
+				"fileCount": 7,
+				"unpackedSize": 18485,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJetJEoCRA9TVsSAnZWagAA+JUQAIG2C4JC3Ty0YzBbRkJ1\nT492Q4w9XgTlhBkusnAorxMuSIorsAOl1HSmV0P1Hrnw6e5fhsM1MDUrupU6\nuG7UXtBfa16RX5cy+t1x/HJEW8s/dHDwbBKWZEYyy0+XnW8TsLh3Y1GUD8Sy\nFr2dyu/uGqBY1ii6XXHAgaSSCyQPp1Bb57VESH/IbIPO4YRPmVfLkewWDrPc\nsUdSbA6ICxSMqPhVsydHVnk7Xx9kSqWGOPlTAOoSGPlkZyFqG7sLNeldjVwz\nHynyhUkpQVHlD76L8QxWVn5tka81rb59r4ImGADgRDFg2osyH5qk+sh0J/6q\nRwOh1S4XKDIMkKAck4c8c3yFtNhHYrvY17iFsNBAEtTFha4KynG0fV1xt0ne\nyxNyjuCdPPCeSR9SgzQ+GsvrYcNGu8qmOHlGphaXC7zwrfHE0hET4RgtRssW\njZaXUUz8V8ZBTmbFDGC6GjgaX4rqXWDII0SBCoTjn8bxafszTL22C+4p2BBR\nOQWyGWqvPMf2M7wZaD6/ECkVuZK1b94MGq71tJQQ18Bor5yNa0gtPAlIJm6Z\n6DE5ZCC0bweqjN3iFYnD6wouUMyA0k3uQBisoiE/86owq/Wo6rcuGXo3cfET\nvgkEJkZtfYGPz5wEBGwX3kEKVz5F8EBg3bKpPmJRg4BC+wlfZtNMk48YB3KL\nAp1l\r\n=N3lj\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCICumKVt37IIbS8K5wceCsqESpmtFpKK/KMPz2mW/OjOBAiEAiLWsGD7BKDAoWncUg0Wv4431gwg2zLzmsrzmmo0mOsQ="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.9.1": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.9.1",
+			"dependencies": {
+				"binary-install": "0.0.1"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-XIZRFLsCEQSEyFppMcFIxNMc3UEJ8tAEQ5IWua1x3TH+R9Lr/ar+xnX1YoI7E2eOneWQl43vb6hCqg7Bm3vdgA==",
+				"shasum": "2108854e1252558a512c3b653a579363a6f33a98",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.9.1.tgz",
+				"fileCount": 7,
+				"unpackedSize": 18485,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJexqWlCRA9TVsSAnZWagAAQLYQAJCSnm2CpNyhvu/I6Wn/\nvx7j5i/RwTE6+pvGUi3OwEjuVxnV5JCDlY/JIa5OWISOw67UnqzMxnvIyicL\na1Kqlw0SrMWUdd5OE7WetuX21bKOt+R1b9cfoVveonGmGdTG9LDDydZqshu5\nZ1Z6p+KBLIzLvffkF7IIkHJtBuTP8ewjEzpS8WynHujQ1JS+tDAaTkfFBzp6\nlO2Jfom3ROHAdI8J33YAjraN/Y80z34Jxz0KxQ0THTwdlBKoohfYHbkUUyr6\nMZwcnpt2zKpxbkGkCemEJv4icx/Z5D5z8yBVIe0pdZvpU4lHg3hqwWEpR5ro\nDubd1212jNpyKIFVX8Xi2p3mn7jalsEOMB8/DECFlvq8w0FQY/Fy6usJ90aC\n2riXWmQMsGugc1QYG+bPrL7mq9Zj2uRWuQUlYnVw/FD4UEpv8hbjQWDoXi87\n5OpddHltwa3RadrH+vlnafY6kfBxGrQaYxt0NfijydmoAN6cF6NdBia7aYyN\nPzCw8HEccDQKK+Rbutz+DuYZMJRxhcAB2jrHvtXnQGudFvwmEMlOO2uAcwZK\nuRFBHaZyvYNr0DxWqtK2ghWd3f2/bRY2C9PU3wtvWoQy3JUZYE5vsNRJnYgf\nYt62n34Vs9Pgtuiqz8o39L1OMGdsF17ksfh0pRXLsSJlhfK9xcnSOQkVUHq2\nObN+\r\n=Hxqm\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIDhCR9li/waJBllKdVijoGO+GTvd96CiirjcQBhsCntCAiBb/MJ6N6LJ6oWqFD1ar9UvBop0BDUIKPAo9eXME/8OZw=="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.9.2": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.9.2",
+			"dependencies": {
+				"binary-install": "0.0.1"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-gqw/Y3oa75xKF8nTsXrzipKL5Sm5c6RgDhd7byzbKf9pWQH7sB0kQ+BrhY0wLeFPeXTrPq78TWBNxAXB2Tizsw==",
+				"shasum": "626e31d1b50b08cdc70d1662781aaf20f3af1c89",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.9.2.tgz",
+				"fileCount": 7,
+				"unpackedSize": 18510,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJezVYsCRA9TVsSAnZWagAAFJwP/2Q5baxqMWghh+NtBM0P\nKYNFv90ojGHy20Lizj6FLaWGAABvlFk/vm0iwa5bPuzX8vdU5AGzlWCtw0sS\nsh1eXxWD1bBTFkzkVVj3G14d3GInsPy87nnHQtBXQMV7Xc5iJFfbDOcpu15D\nP5LbZcXocsYpAWyOhoutBeyT4Jg2SbmxSj5x2s/F0nucTobJiRd4FQq5mEr0\nQT0NY3LeEhYnbUA01tnfNjQ1UbNujOWr4jFHYkoTfN87qOMmnM4PnGdF0gGF\nkclyHotvirMiPHv7hZF79lsGGdq+2n/xzoG9a0TD0Vs3rS4SueklEZrb//AL\nuYdbt/EtLUXNs61Q/DtuHLdZWnaxakhSDKn2ilWmgn/D8Ui0u/7hz1UZqTo3\nZxr2DyYSaHGncoxA9txCrMbhgEPJ4HWwQ1/KkvJW18/BIXWisAEwodD31sev\nlJZGQGfIfAvxMxAjFhNOAJVRNNEU40j8zwrftwiHc1kBvRDdH5oq+mMmM/qK\nJSAkqDl0/9BD7KjJKeazTDVc4Ur0XkHccwd/KYdpHkq69+ZhHe2Pu7VK9N4v\nkoR2CCFdj1cp1dFeX+JHVTUaqyciNKIrYvT5Xr6mvcF5NPpqtKXh65XDXXuj\nVDY0SYph7dvNprEwoedykV9EgsrsoTGo8OF95jnJTOG3lKKZcoF3HmUoD276\n2Z81\r\n=GwSL\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCICL/ETLf89Y7GB3sPySiT6xw1lM9VZCVcs9OPk7ChfCbAiEAyLH+Cri8zSNGxoZhp8jzxFxXKpyDpk9xbtVWNcjKON0="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.10.0": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.10.0",
+			"dependencies": {
+				"binary-install": "0.0.1"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-CFu2S+5kewuCD9X0u+U1riau/IvvntqRmc6Mgls1Jr2FqjgNa61BjNdx2J69NSZQ+orMaWwe+28Jgmzmcs1T3A==",
+				"shasum": "e67f7a41fdac9f30130bad380f545b796e10a5e1",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.10.0.tgz",
+				"fileCount": 7,
+				"unpackedSize": 18512,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJe59vBCRA9TVsSAnZWagAAs9cP/1N4vGEKNy/20PD0wIut\n3hqIb2316J4qbsNKofK1VmnTv9qlsALRSiwbFSufwk0+Av3Jg0NkAoVzgEhy\npoaymCFh5JIYY7/kj37VjKu1OnC4VbzIpAiCdGSYmC9za/P3GDi6jC1+aY53\n9NmguK3D2xctRpk+xdSMBiM4Qq4y038pDbAgZ9PPNdXHTZSPqRMM555ob7Tx\nwVbgqDVh7bv1ZPy6N2ewo74fP5BVdU+2lYmgTiCSt2Gbi6ihxDMhXKTaAVls\n+1mxwI5jjHNlwJIh7PBlNJHQjy0gFD6IRXPLSc41yuDH3Hhv/7X3tbC4gDBL\nWxg30szwdtTaR1CbkWU7lAtK+DrzVKB07XO6dQ7ENV7Px4McrkRsxQSgcV0j\njAPE3ERvBCeV/3eH2qRL9lpEBewEuUk1T9WqNV1iPC2A2tamqVXckbT7jt5V\nod8ZVQdNwABr/kF4th3zgjPm7vfQBR0BroWYDRojJ14QcLeA9ct2tUtudQqL\ntJgn8T+cUYcskFg9YMYT90GkERYMKMm9rtScL6/n+WiBUit5Zcji0ApHcXTy\nTVMAKQe23diugeY3YNvuIdgxF8btKVpc66FQFeKMoNtwGzXjYt+8HnZRNVn+\nez1v7irUt+cJxQzs08Gb8nit0rwxURx/1cJqMVPidHQCDOiw4u3Gc7Qj8WWi\nWfKd\r\n=LVio\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQChWmkxR8tn4iHkU6swgiMX6v7ItotMHf+8J+i3kxX7GAIgXcCrZxWfdjS4ITi9JBrWXnyQRgdY2QhpJyfYL7ps8VY="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.10.1": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.10.1",
+			"dependencies": {
+				"binary-install": "0.0.1"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-83cHQFUoV+6JDfDkc1SFpmTyfWdoN2j3PBkG9LZUOteWgG+Y/uZ8XV4FozgkTl3Z3D26JpZW9Z8Q2ycEhNpMvA==",
+				"shasum": "3ce46598e714b98ee691b3572138663074fa1fb3",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.10.1.tgz",
+				"fileCount": 7,
+				"unpackedSize": 18512,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJe6RTtCRA9TVsSAnZWagAAQskP/jz2KTUmJFbyaOnmg2l4\nwII890NEqbVgnzGDvzdTlp4vYDRjrD4358AamLT3R0OIaGh0s4wwQsimCZgD\naNShr35srD6MMSbRHCnfD0A/1ewnZseUdubOI0rhTlejHzbhDRDLsXt0VCIk\ne8rqcOC2Urjx4fiHaGMsm4siYRTr5gfW9CxbYOqU9UeNd/QWNumKniA6ADEY\neErG7rXWOAaydriSTVXAV5vtPQ/qphUymHhQPRf1PzKCo+X8keChDocGaETN\nSPRx1YaYIobOMHJVwIluGEnKnS8im2ZGqwo/aKfOtnUyWN1+Xr1f1MtvOZDz\nS2l5DYixyj3Ej95gn56wWgFzHO7J1HoegVSQH4udEqyESlIKnWmIQ+NUahln\nitH5mtMlOi/AlZdRbw3bup73f51J8OOpPytAn12ILHJPFGrPWgrUmb7LQHI4\nKPUoPleTKr+GmmLUI6M9hpz8FprTcw9NTZJneMG09AQj52cDLo3+4HImY0wW\npwgEYwV2Ef2aRDfz/a6bxY5VOm4BOGsT32ABbWw/fp1Tj29Oij7KUikFIKtg\nnxw6f2nlnL4ryVmkbPGjfmWHHOxG3D0dVmQgFrANBHXwH0Ay4/ewlGkObmZr\nKEobDVW3aSJ8qbWAbGPzJ/eSbfqzLu7cN7flwHrcolpdAIgcUbkFyC/UL4pc\nhbPr\r\n=WijT\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDdwEZm6gRcW95vu4vt8rq1AWpE/kfbw0TwiKMMTUCwMAIgKt+280GQWjuHhZyj/VekBQG5GcHAUZTF9FqYDmS8y9s="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.10.2": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.10.2",
+			"dependencies": {
+				"binary-install": "0.0.1"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-9bumgVaS7vZhbhdAdHex+Iutkr3IZoA3DxG55LaNrXUHNV6uJwzN78uUJFwZQypxBzroZ1LwE1CFJxG1Z9KFrQ==",
+				"shasum": "9831e5331bb180be2432c6c46ecf367ec2dc8559",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.10.2.tgz",
+				"fileCount": 7,
+				"unpackedSize": 18512,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJe8SteCRA9TVsSAnZWagAAghQP/26IdJAyCLicvBSQPHNV\nlABTJGG/ds7JPDAYyhjSQv4ceQneqKtaB2CYd1KLZ6TK3ICqAIc7c0ADdfPQ\nqYqWrP8JAKU0vXfrMDFHfkzodAf1tEBn+pSTW9criFghUWi8HJk7rS0u41Ff\nCgU1jEPrgioUJcPfDeJ9aDAfVLA4a31Ivq63KvjYOER84u6FtQTh7NS4Mu7m\nsPye1e1G1Kw+H5OyIDvjETsrT6nbbl3TRLaXNDRFMa6WCy7clwCTbx9UFmos\n3+bqNkuAN+2O6juKwBuT5ceB/gvdPcXf7HFNV83em8Ul5PWOB5Hmr4U3NCvp\nabbeWGH7ZJx+VCh7S4o4ApGtWsU7/thIHM0RRa5R6Ccy/VGWLE0kmJ5zrh+y\n8mOX66gSyCTJLT0riobAv4Kwm7BmnbuCtvtd0QQfJs+H8cJxGI3jewdw01/d\n+5z87MnVmH/vmSiMacQfTzMw9a2mW62zvLYeVmm/pi6om9e15baJYFduPQwK\nTFz8cvDIa5vAholRfK+pW0W+PAS7ZmsUvI3OofRK/lcCS6KT7X1dF+sFUcXQ\nyvkv7tZ3HZGTFQ2Yu71fnuZaXjpDtW7aka+gA1eVLd8sHL+owjMWMu/obL6a\n8IBnV/11NXJ94ziyIKVykP2mMwE76fNnWvWSy4PuPC0gMHglRO4ripVHLFQD\nd4rO\r\n=UV36\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDzsq7it0Viy6J6Amai5QzGwjjuZqMWBvF7ynENuZYIsQIhALWUFKzMB8mZ9bKKU0nyj4PBiKu1hG3eqnEhbuZmyV92"
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.10.3": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.10.3",
+			"dependencies": {
+				"binary-install": "0.0.1"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-mNN7Ht5tkjCDRwyHXqMdx6A7y/Wd13+r5ilWyDCUYW8by1K98Bn82pL3T+4DkqkdFS5JG4O3hHjQOAvXq/k/0Q==",
+				"shasum": "c0a41973cf95c1a191beb31b51e16f370625df49",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.10.3.tgz",
+				"fileCount": 7,
+				"unpackedSize": 18512,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJe9k0oCRA9TVsSAnZWagAAUPwP/A28fUwE3v7Jc4RXgKTA\n7sGDKZnbCDGr0Q2T1BRqGS2SbwdqXYgwugC/m2UEwGm3my34kTgJUytHl+IN\npzsUOC0b7dfIMvGccXiBS8uQK9IMt6rqQFdgWqt1QNSznp9P9SJGrrZoO+aB\nHUCUbipW83CL2JuQ1JrdOVLxTcXmWzq/EtvGEm+JS+vnQ/oLwBsxmjGD2k+c\n2dOWHjLGBXx63Mx/D+1x+HwqJZl8F2N/nsxFVYtsC3hTtaRtJbx+izX8oZ4t\nM+Le4qpMFnE33YWx2V4rer48jklpQwLfsjHAw51DE5aquYOO2yX7xLTonPoK\nuAIiMI3cIXWSo0VlEb84o8d59v7wPuqHymRK81YSzf5tu74yK26FeKs7rXFa\nZftgaPZfIMYbtVFOdkSi+XXA90R9AgUkcTLLxTxZYlPD448XMSjqZH/55Oaw\nX2OT5HGMrO4lm6k+eHCNafPd9GEiF40yTSAMVyMNVzvxYPjfM5pgh+0XdFWQ\nlkTeUtMpIMzizplE+RpXbD8M0NuD2tNd/3/5GPLQqNo4YSpdeY5OzdAw7CNw\n54j+LBAzH4rIcuQKu0Xcq3gow4/4919jW/qkJOroB1Mcpg4YHpmgBRn50JeO\neacSH1F3+fYZ6zYD+/ostA7jU9N/K2eZuJ84ypoCHfNXt+4ap2CvJvhrDOdv\nad7k\r\n=yQ6l\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDjKn6EVV4Zx2avJ2WD6tCI59bMl795jclXXTRff/CsewIgIUwfDZQm2JJgLBWvSnSVIrvOQFly8Q/yFhgyVzxyNls="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.11.0-rc.0": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.11.0-rc.0",
+			"dependencies": {
+				"binary-install": "0.0.1"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-ysyTGEOPjxT8TR6QBN2HKQwO7AMzy5YFLmKGcksjppjit7VmgWwYmNZtx517q0akJr2p0j779aHxIs8bWmmn1A==",
+				"shasum": "dd3363707c3d7b122024ae745a809faab8d05d3a",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.11.0-rc.0.tgz",
+				"fileCount": 7,
+				"unpackedSize": 18522,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfIzzQCRA9TVsSAnZWagAARPEP/iVF0tIsUACRTS95FDc9\nKGa9oPKQR3peaYXTJARCX6ud8ZQECGaxKD2OYeLCZ0N3b78kZo9OqhKczEon\nVzCs36BzHTlLMMk+4jY1BT9EMz/dK9HJsEi+tUkSHzWnPVnpyjySGJKwgWdQ\nOR4mYTnZVGSo2/szpQGyAEjZUwNt6GWEAhYM9ijamgyRrA8lfadwpnO9zNwK\nR6OpS3u0pFVTXOgpN952Nlz4KCsWqXhuCt9Q/hNIlK8FRMhGT98iLSDk/5C4\nwbZuHUDQc0Pli2sGi/2jCUOA6onOP6hAcxLEiB2xxKcjGaIyt3+cNF6rXcu6\nwqUyNpuSzo28DZDSbzSN7b5sJkWJBmUKpkJv65HBN/55i1vyq2bXMWrUbjpl\nTCVdRCqeVas4AB2jg7nqmEKXfq0bmifpK4NTAQd71DVnOW22FhE4+RtCw44R\nmSsxlgQ2dI6NoR8jRw6fUkD/B60NWZ8gjBGOOZq3e40hbZtHlsh/eszF2cJe\ndBCFsykXniydeIq69B+0hAH4BcF5AXl0GQo+cq4e7OsjhX6Gwf/FRieWjWz0\nGLvgE8ixbTkWWjGhYT9Z8ufZiqQH+MB6J2FzV9X+VvWCCsqUAVKDGJK2R4eQ\nuOAQKmUB3Hnr/DfrgZML4wGz5GdZ5dYYoIKQQEmezXiQyFDq7EwbkVvv89rJ\nyuzp\r\n=4uCi\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCW2/SV4nPpmkJ3GqLyYUC6TWMNSuJ0nTfFCqnh5aO99wIhAIFXexE78WJFMImN37Rue1luM2IWhjyGBiQgD2n+0a1f"
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.11.0-rc.1": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.11.0-rc.1",
+			"dependencies": {
+				"binary-install": "0.0.1"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-/3f8r+pwfnDV3acPXH8fnbcljL3MrzH0ZzOy+O25PIl5VJM4vQRdhyOAruNeKRWt4wQs4pM8hsFvS0tGJm96XA==",
+				"shasum": "1de5406c60448935768435dc639c5192750a6587",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.11.0-rc.1.tgz",
+				"fileCount": 7,
+				"unpackedSize": 18709,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfNYc2CRA9TVsSAnZWagAAbtQP/31LVmgj06XaA09t+q8F\nb8EyuUzyGI4wWFI8P0hdxeUtrL4HXRjSpbqFZUA5KbzSxnXuKQUEydEEZk61\n43mKjGXIMpj40aGxokSLBtESZFvUmqgWOks7+ja52A62bQIWyWjT7EJZXTCV\nFmxa15z5b4zARPdDh1Zar1WveMMWYvG38Q+BSR3ydgXbl/W7sT/Wv7F4/MjU\nOWAX78EvjHHGu6J/j1tQGHzG9b6mZOzvOXt0wsTW1rrk/tV8vnvjz+u98NtZ\nEdRRasAEYAQhnAJTd3ng/VQdNrx0Mx6KhnSVjZLSwp2mLXw3ovQtAZJYc9Ed\njqEzDLkGRx33VIk+pK4saWXu9Bx4yJsN+rn3mFnppGIdQ9nS+jklLUeLkpD/\nBcG6p1wdw0fqu4FTwYP3jMPBHYOAK/VQUQ7uhgisamJh4IOkQoav1H8mBhpF\n76iEgBn09/ji4Jp5mBy6WnCxwNGtT7axap//bdeETgmpdIo+AM54e2HiwmxG\naNaArXzwj+ydg1/QsY9QjGgWIAmFnnIdqH6HR+O/L5HPpvgF77jY4BQIn+IO\nmYFukbYXIaIC04C4fV6H3Joa4fPgDvgVG3344T2bBhEKMpQhY7lZt/fZbRKU\nYknXGLS2aGyqb/OZnY64/qy9q0DkTkmXNQIeO6B5YvtqZeA+bYhqIOuWgBYr\nj0pP\r\n=Q1xI\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIBrO2zIOo5uBsRvMMGSXd+zyRNHz1nj7GMIQMHrOzpCHAiAlqXjTPCrQ9IiO5PJHuxuR0VPXy0AbuRQPqCTc6Fl9aQ=="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.11.0": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.11.0",
+			"dependencies": {
+				"binary-install": "0.0.1"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-FMF2Dslv2yCVc1W3zkNQaplfK0cUfE5sIL8wRT39A1yrm9pJpib99An8SMl03uar/Db9TuEFEsKqkFLuxw528w==",
+				"shasum": "a7c1fcb5d2f0c4949d88fd0edd3166c9a3bed658",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.11.0.tgz",
+				"fileCount": 7,
+				"unpackedSize": 18699,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfQDO6CRA9TVsSAnZWagAASxYP/0uE5/xStItsbTiCYKZj\nAV3AaVlNLjHtB2ueHfWirIAIjKXpYuT3yd+QYoNUpa5OOn/RIrnt+NYbtYU2\nngvKwnTSkXpWyHYeeRvsUnoTR9wSHDzPKj6zG4Lp4yi1J4dskD0np9EaYN0m\nMtnkAIMh9jOUkEbcSc43S5LsLRlKxHb0jVzm4iXQnwhcWdKaKQuaqyPaB0CT\nZH65378ZJ6CP2qjxijMHPwK7nbZh1qVV+EczRKitINt3g9rjKiECW0GbkqUe\n/ehtF0y5Nq5n7RNfrvFX2YeUM0hpPw5J1xXc0kO4yp3mJLoLLygYU5QuZgKi\nJQgUg18za+QP+wLPINNbi/QCyrvRvO7SzIyoXjlH2T6yFYeJHWvKLt+d0z02\n5wrNeZJEQHvR+P40oauZryrWEyEeaGCS3Ds5pRN5bzZ3M8MBGBRnnDONX7Qa\n8Ghjj7dKcfslB0TcpL4oioju9Hq3VIVExgcLExg7L0FJRMX7eszYdWYjNuPM\ny946Pl8qdrkJ4TL81V46xwmv9VMXsgARndNkCeElERThe4CFYgPEA6mQdGaJ\nD5m2MNo4AqEp1JDB+hWdXnk+ddN5MoR7QpvQHoaffyL2JqYFzd/TDgiTpcDv\nD82Ucr1QUtKsC0zEUfzzQ+brZyPt9zlu+Bx2YYs4nNU9pp+0FBdg9sYXNW1R\nZxCG\r\n=Gbpf\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCICGbDiJM4xTf8aPCRWESw1Vf9fNpUpoX5UyZSGVkllk3AiEA1nfAl7rBzX7FixARYt89d0x9xN+i6IP85c14bFyUfiE="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.12.0": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.12.0",
+			"dependencies": {
+				"binary-install": "0.0.1"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-jzemys+sam/RQlvTPGIXR97r3WGprV6VjtXofJkmzssazlM8FtAcj/chiytGftf0+M5qwaGhK1lJ90e3L6BkDQ==",
+				"shasum": "f657ec9af6acae81f6259e1e82f9569100e07a27",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.12.0.tgz",
+				"fileCount": 7,
+				"unpackedSize": 19215,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfmdcJCRA9TVsSAnZWagAAGigP/jkjqIf0V8b2+QjlHIjP\n8KNWRbN0WNBshkpSLaxnHnXznZtsqYIkVywDjny6N1N2dePldBXi7IXPZmer\nltLlb965RKkNwOsvbZyoMtrsrsvpD82Sc+hsi8CWELe3nHqGLK4lLx8CQZcn\nhJ4jMvBXcK7ktOjzTO/uANAmHhJFTFsZeWrmgEPPeO+t5hdOviT2YaIR6wWb\npW/H6TqMnowuCuFp+nwSDaKO8sOxu5XdyA/S0SpC4p71ar/KsOcSKnSazHr+\nezTvcubfPRYnsNAhV8ZA/VBmwlbNPRujYYdeNi8MZCBLlWNzLyLtGwPiAKBh\n+h4SgPSiSOrST6U3zpb5WWSzHwIFrtZQxUL/jSpeMEH8B4lWfsHPXuCU2OQ8\nIA0pfiGdllrOTTjzE8qTVqv6KQxGLLKcpa3ZHQFM/eoIuq/EaHuoWcotTG3P\nhRcaEOgtBuWxTWy+6pIimo7yO0ISHfYnT1hbwm1iNxEfQzdzWO04sl6NfQm0\ndXO3znvaPao6F+tCkYQismHFMV2Szlj8FJ46isATbtU69gaarWm1zTj/fx7G\nQ1qTZ2+9wvR4QcGU6T8Wf07Bk3p5BWUVdozQsgfmLanfT/BAvWBTYxoDqhAx\nZq4nzaim4i8mYNNbPYiOF1RX0m1jTjg+41UD6GTh07fbMihota07BODvk2Qm\nPcuR\r\n=dYgw\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIACM7j+gz0qN3SXYqldLPh9FjhkhacIJn+fM4ZlBvxOPAiB1PjqS7M97+AN6A2E8xB8/lbZjPn7+HLM1O3ooXzCbww=="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.12.1": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.12.1",
+			"dependencies": {
+				"binary-install": "0.0.1"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-oiDeIxNIdzZd1gC1TQcE9NgJtC6YO6CbF8Pye/n+DEr6hZ+z0yz3SkNf6Yl1MM+M76oWpXtHwXxurijyTYJLZA==",
+				"shasum": "d2175c52ccc32c8e2a9add98d949d77e7c34f641",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.12.1.tgz",
+				"fileCount": 7,
+				"unpackedSize": 19215,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfm3tDCRA9TVsSAnZWagAAMiEQAKSohg2DYsRsLhFpP3Nx\nsO1fvJJ8M+L3XeU4ufxQ0gkvxcU7TtBYcjyYCy720DGKJe/SHlwf0gujTWrO\n7te5VCNvy7E2ZSP9+wYt7Vl4XAXySgcyIeh6f46VLhQo5avGCvyEPioI00dz\njp1eulLhmcdJ/nWgnl6KgoPgvvEatJaNSegzOLSV2JiH9AAESWYchkQW1Fsw\nAiMxIzdzpJFbqKwbd2qCkYuNvlOXjS4ohPrqmpKgvtX0tD4ci1MGBFkcay54\nC9AVEsfi2G51M6aSYDVGAbqjZ88RtTVv7fTF53b5rTbOVvNDKNUyRpM4Ze1m\nCfj0E5OVgio3nlnbZDN3ymXgIXfCUO4SykRR6xjY36vgi3qOaREFUt2SZPkt\ntPRNkqzrKwaS0RxDt5tGls06Xil5cO689hAQIFbNjJX3EIIcxXNVH1DGIIcu\nVvdu+CN1Rgt+W1BQmzJhzmN37NT/zUe0uYN7wepZFHrJlBOjJ1SLVvKSX5+p\nr05wmam/+iETPRZgidz4c1WBk1rmOQIbuXTeLNlUFaO0LUrkgRKQ3o3CyVI0\ngAHmm6mQm9Pb9f25Rtub22C0fj3s6FL5qVqdzdi96itnm9O8JfHIOcTH4iUG\nd5d9onA3YpBIQG3H5H1Gd768ABnTW6w3vwlF6H/wXMEDBJT39HE3qs3iOJs1\nLS62\r\n=X1O1\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCICdoBzpSo3b/o/xYKxwKD+AxciGQTszqv+RS94F6K+sJAiEAp1apIFEtsoaCPPthHWQItgGbm42lKPPJs1Wk9s4+JZI="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.12.2": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.12.2",
+			"dependencies": {
+				"binary-install": "0.0.1"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-hovZ0yR8pofMiyIAsxOdKxdU9P33yWcTKuaiOYlwKRAMctB8ghRDeUhYzreAe/Kq6Iu7hdP8lfeub4sUHQxe4Q==",
+				"shasum": "9185d46f0f81c2f7a3700511712754fd9c3b2615",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.12.2.tgz",
+				"fileCount": 7,
+				"unpackedSize": 19215,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfoISXCRA9TVsSAnZWagAAWrQP/Rp2eDiGedyvlvrik/PW\nSTwmT4c7VlBhQaDqSaWn0xGxYbh0hdu1oA9wWS9rq8mChZ50YFkRWBkeLk2q\nChD9W9ys8Non55UV/BYTfXSbyCCpfh/uJRUOZZ4/opesJ51vqyYb3/Gs4x7I\nHUd4frr8QwTW2JKNzWIuSvjh2JXO1FiUR8urJipAIhK7i1xkeRxiKltrr/di\nGIf5gpOWHy/UYO7AQz5c0WmNCzoFMWxHalHWewHu876EiAzLGc5se+eHfzIH\ne/5F2hehmiAPV0qQGRCOby36z6uNQ/zI8+DBNPrvlOZViXjcJezk+I2tW/9z\niU7oLhzwC3tKUjkMgX3IUEpmnno42b4a+j9Q/9X/2gLAujctvM8IbxKfnp1o\n5flsGcneul2CmnGs1I7Adzmui0QniDOClAjSKUOtBmGaz8+az43vpPSHOwcm\nhEhTsxqUaAjAkBhvqPzB6JT5wnjxB8WAPj87eJK7nwTW2cnadiBVTXRfABGi\n3LqR1Dxd4XEr4c7oCDCLuIRH++QV7T46f39Osew9E0g/tcY1cswskGaxlX1b\nLOn6z1+ZRMlWvAzNN9VVNkbaWFG+iZwHgJKB+AZZAnIsP80MJHFK3Vlnbkik\nSUV9LxHlrDfWfEZA3Ja74JI9YgDxcK6hZytea30vcwdcyRMsqJfM/jXfNtSn\nKL21\r\n=8gcX\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIQDA8GDEjTFNfJKWICe+fB9CsCEQVzu66zGmDR8a8FsobQIfHbilSEn2Sh4gmPLvYUN2+D9pVnVSxKqs6T+re+hOyw=="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.12.3": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.12.3",
+			"dependencies": {
+				"binary-install": "0.0.1"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-p1roGAuaxiXPmUG/m2qiaFfwxW5b7e4P5cw9jpWvKz2i+GyWxxyIdytX898kJorXPq5RnoypdHB9yjEjTNB0uA==",
+				"shasum": "291331b105a441fab925456e88f93391211de319",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.12.3.tgz",
+				"fileCount": 7,
+				"unpackedSize": 19547,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJf3S/KCRA9TVsSAnZWagAAKbIP/1eN6LitBcJt09kkxAtC\nHer+/jPt1vxmQ8BlhSdw71z3noV04ZkPUlOBydb/Ql7nPRWRcRa7SGT2WOFT\nm7+5zw0savBLLm9oeySNFlcV7dnKsCvrIOpGhDD6YExRIm63ZZmkTNC1aPlL\ngJ0pZcyJcnppTN5IT8kmaVk1DfLuetbm4DjSnlDPXE8lNqt+h8PLDA6TaCVZ\nPXABUaZI/Ezs9XKNmgEXR8IgdflFFOC/VtHL0Van+92EKnKHEi+f+Rk7R2Fl\nr7gtUAmN/S4xAlinQOna2aEW0UupBJBLBVTbznbHZ1t5EpIjRkEGC5yPsdNr\nFZrYxYrdm4BKcG/32oSAgalNmta3DwYe6d8849ctC+zRlt81SbkLJAlGsrpS\n4vARyRa40cF2cmyS7JwZWq7ghrsO0q+joyhTanzbvcgK+N+ltCDMnc0NuNS0\nZBOSI+lEpNRN9V225mlWHQBjvIhFQW+Vy/90fmSY5yWff+C5XYg7YL5aTuC1\nVe4ynNZi0tWzAGrzjni4mJdAhzL/qaUie6RuW2P+mUlKamUxJQ8R14LVQFoI\nYfe1sKosFFf+Ohd0pJCz6saJ8J6OoFwiYBSl91I2eosEKkltoKspzd7Pgh8d\nSYw4G4a0jWWLifSca4fj0oAM0c05m6crIHqWQvg01eL9hV8xI6peD1ZNbkVk\nOTpB\r\n=x1Xn\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQD6cZnuzhvUsuTV3dwc4H4pJDnH0IhzRgNoRZnGEIr11gIgHLe5W2F2dNEsHLMMxnBVflpFfxdQ/myJZAjDZuuilac="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.13.0": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.13.0",
+			"dependencies": {
+				"binary-install": "0.0.1"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-D6oNE5ft2SvIYMCjHvOTReHfnNtf5spejJXAGJyOv/hYfLqph7/MBJcg3MRTFAhOV5yCdUTM6aATXzpxHKMh8w==",
+				"shasum": "10ee1eb593d9f91d5f43aca469b8d28fb2a28769",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.13.0.tgz",
+				"fileCount": 7,
+				"unpackedSize": 19547,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgAKZWCRA9TVsSAnZWagAApGQQAISZgWriW5OzsPlC2Zdw\nacWmOVm+9i95ri3I0bhyY/ZExpZ4V033UJC4jksbyVOLippMr8VJhMA4kadZ\ncl82l4G/3X3IpLcYfOkyY0pK6txgkD689ovxt+AANSd3B7LNF1HpxNg9eTev\nmA9Fu9d+cuaYXw/chE4J6SehjL3o7K4oNibXwykA+oLsiD4ZlIctV+ol8VIS\niU+eSYn3RnNs1pzZwc80kDQy/Z1XTv/AjHHv2WGcGGay2iPpJkEtSdfBblmB\n6K4aGdJtMSFAvpUTtPr/uNVGspdti7w9iHES0QeioAVyJIE7BpAqdFWbBGoI\nhLz7y2KRiRJqJtUFabsEtIzHvKaIHxe5SammiBLQ5l8rCe+Ov996WTw4nTb5\n3pGocykxPy0kyoOqiI+ntoYZWGBb+6vyn8g+2av/EQr+6F+gcKtfJRHDXghx\nREQ5V4boteXZNRJ7rerRu7zYSLUMtVQm51RZJB63z4g/j7N9PkLTaglZ7x+c\nAS+NKw3BxzaHKoElxUorb8r90UoV9Y2gFi6IFEVPIMW56F8CC6qJQ3YOhZgI\n7ad7IE6ikI2+/uF3RNN/Iuu5cF8CadfJ9RCb8MvnvjqiqZskQT0MKyqVAhHv\nkXSEviUy4yTxBF5ckNPOHQiKxzC9egQpouXKn4uoebu4Cbi0LkV4kVSdI/E6\nUWuh\r\n=gz1R\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIBlz0j5pP5HzREZrOlP2AkqBpB3gDcla+zr3tM4H0aeSAiEAhBaXcSrW8K4Ki7Laov3JLo1PmJ7UbLm5omjVJ1iAHeo="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.14.0": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.14.0",
+			"dependencies": {
+				"@cloudflare/binary-install": "0.2.0"
+			},
+			"bin": {
+				"wrangler": "./run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-doPPJT+VbDNFBdYomopwDM2HWPLcNjt7TWKwYi+umt4rJ1b2WhrlfHLKBSiiap9Al5OD/EjV03H+2qnsp2cyHQ==",
+				"shasum": "a8a35b576c8d9eece0fa1cc583d6030aaab009a5",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.14.0.tgz",
+				"fileCount": 7,
+				"unpackedSize": 25078,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgQXkWCRA9TVsSAnZWagAA7DgP+wWl3CUaNSHYbmeZOF9m\nBhctvMn0zxNqw1PrcxTWKmZvyPXA284HTOPKpn8tcaU3klvas4QBy4zvxHXF\nF38CRl5vuG8E1NA7t+OdWqOJdBc7Y1w+NbMI/ewJFdi73G/2vulWusOjbRnp\nP5gMopDiLxYu3EkE/UqXTxzkPSTTJl6kdNEZnDxnXG7/EGtGHpRHURgZMXQ9\nqrtxayW4OkKMj4g8aaUZDLR+zmyN/kx6H8b0CggJeydK4DLyuz2f3KMYagQB\n8jXwJ8FgQMffRILCsqs2425yrjEMKxqIa0RStnyI5lWAaRqaZ1Q6d/l9ZypV\n19ysTeBfwZZfiKwFqj41zjMRBDUcjS+4zI25MBp96i4Vq2doepg9RNmbdAv8\n2mM3NpLo115thWPMvuwtnxGTL940MjOxkAkdD8N7WEMrPmo1wpH56VNmALFn\niOyXw35BVbMPRINEf8cw7hhjAQ9aov6njXZFjRr4Xp950jwEE/51MrNfmMA2\nBarM1304Vf7A1Y90fA/EZJQJXPLajHW4R0+IPva8ixocZAkgX/clkHOLZupz\ntGIzPp0UiJgnJB0GX5sLDV3PhLY+QbJxqLK4zGHWpNSbiuGgdKse4Hx80sbR\nUjbq5Vfq4ZilpwyLBg1CpOmxUDTtawbECIFz84Fbni+DgahZuw31eMPOfnfQ\nBim/\r\n=69Pz\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCcKhiV4vJZHdeYpzeGFydHIhBEPiMc9FiSJjEYCCFG2gIgBSqRvS4rJgm1i1ZJjsOBYtjFWTkBC0XsRkdOT4/ievk="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.14.1": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.14.1",
+			"dependencies": {
+				"@cloudflare/binary-install": "0.2.0"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-Ua1anKiQvG9AHYhrcL6dRHsU1Zi6Ics3jEraLSn7uLRcSkHg/qblvoVwXTRCklhq7iokXl8/CFlFsuCTcb5riA==",
+				"shasum": "51f2221a96cbbf9545d7acee79f59707cdba06a7",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.14.1.tgz",
+				"fileCount": 7,
+				"unpackedSize": 25082,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgQlFwCRA9TVsSAnZWagAAzwEP/RTuc1y8Ejy0X6Op6RPE\nryEJe578jKUv3uLg7eSu49kr0kKqO/eRRkkKlGI1BgwLXmQqX8kSNHYXlff1\nVjFVnKV0NxKMQW6ikaZtzUl+CXCagw3HwKH5zJJvQSh1/UmUBN53OYL8Rb8x\nxNylSqkKrbAoAeGm9NEgqeer7V4GSdLGb6yrjUxu2uZoD9Km0j0sqO3zJXar\nQ2CxNO2M7gGWQBaD/OKBmTM+fYOpXDsJRgh4p8yz4wDfHYDzMaw6ZTZrh2fS\nICDawDIXpuRoI/nlo/TVt7WZ3DaGVMKn3FKUGydXOZ68Ft2XQITJiwB9MBQB\nwKKToydH+ZBLUuUIJQRDZkALLFmFTOnZo+YUGxtY3v2mOuQGSgC4hSFHNm/4\n42w0KCNSWYEJoMfdxdpnpEJFuw2nrGYlJEnkyv2jB0Rvk0mowyd2BjY4DM4n\nEGJ4H+A9Em8gj61+yh6Pdyh1WKK7QRMqUitJXdzQbdGSEb+yWSbupGm8/N6O\nzDhoKihMuDf11RrEO/Zjqjfb9gNbbU10rjY/v8RkptYpzMLhKACr51oNu9XY\nlXN0ykVOLvMZP8znH74UKlXFo26r9UZEOlsvJobjqq9jDs9Z6uONQbBd2IhF\n6a/ZEOyPtsLlgwfzcb/IhR8LnAf8PLXW1sF85ALvO+z00kuXqRIuxS8q9vOE\n8qz1\r\n=J3Rv\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDgLRiEqVQXcpePOpcYFpgq0zkLyKvIkuv8kViv+AdiWgIhAOf0j7Oxyqs4hdilK+RLum4u0aiodOYX+ojR6e/U+fVw"
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.15.0": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.15.0",
+			"dependencies": {
+				"@cloudflare/binary-install": "0.2.0"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-YqWox84zYD3IN1qCh2x1yUaaI+VMkc0ngmpHoLnanuws8+dJynsIlbYU3+wnknzPCY1FbnNHujDR8BPRzuySpg==",
+				"shasum": "13795ecebf30fb61e144b548d8b8d998faf1340a",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.15.0.tgz",
+				"fileCount": 7,
+				"unpackedSize": 25082,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgRlp6CRA9TVsSAnZWagAA1TgQAII3YWs+FfJl92UWBs8o\nvBKLx9Y/TqIo1qhKTiKHPKghzz+2uiIPONTciPWwbW77pyaFd81YE9RgV/cc\n+w6GPsZ4sPwaky9D9sn1qRa8SKytZaiiZRfTmMEgHatZg0hqTYiD6ZP4pQqF\nB7FOTMRz5Kx1a5/4Ys7bHr08yWoqQ1QKcJVW5dG94XBhMUpPspaViJANI5v5\nwZhMO0QECGTk4k2w+j49G7BZlejgjgRh0Z7J/+1NxqgDZeWMwrmmIEbnkGpw\nSq2ycfYsVlRFjioAt4PJaCbzTopUaxiVrIbhCs/6VJdsrNik3hmhboCh48cc\nqJ9x/wUcF0+CFhVONR+tGc07rps6D8THppGN/+lwFXW1sDUXoCu8ZwY2wZpg\nyezngFYdys0FG1Bx0OFZVGHPtPYNsSiJEq38m28yUYyk0I+mqNcJgLTsWI94\n0V+7W68/wrhfkus4qFis+YAGInQ3aC8oVpfdV+P+eYSZXgfdCijpatHH34E/\nthdyP4USgFPmE5RtbpBAFZRUYUKUetAD4LtX/NbAq6piMML/NM/8wCIDjzi1\n65YW/tiYUkrNXVPgIuSL+0PynpB2R/3EZpxUsxzmXnszQqdtzzWPu1glFJbE\nPh0Z17oYlUaEKH4DfqYAu9251Y3733Exg+RruHUNu4K4DsiRir7BWNwOzT7O\nhnKI\r\n=ned9\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIBb7sOf0o72yPLciKFTIdgRGGGeMdVyNQG0pukwgDxmwAiAuyrSqRJ3uOlXbySj3M99oUtwDxNWE2szJPSMqsrKaMw=="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.15.0-custom-builds-rc.0": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.15.0-custom-builds-rc.0",
+			"dependencies": {
+				"@cloudflare/binary-install": "0.2.0"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-ShXYr5Ec4hcSOyD3wYBwdHV4PFPa7X17BSQN2ctuuWbrKnhts916eEwM8dSQkc5Sy0qjy0P9mi5Kmd01Tbihkw==",
+				"shasum": "ac4725dc6db62402fb97d6bcdd23b57ca6851bff",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.15.0-custom-builds-rc.0.tgz",
+				"fileCount": 7,
+				"unpackedSize": 25139,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgRs4xCRA9TVsSAnZWagAATjIQAIq+dbLuk8/X0jURV33k\nR/2w1XMZiUaCyJkMtW0ly5EH5oEkADhbzW/Jwt6HZyHl/bApEmbeOSyafgoR\nc6egEDYuOD37rnF40sGXzBsVHlyRv0tOwMIp7IuMEGHWJrBBe9RtyXweVb4C\nldgCxroQEuW00doFKLkj6641rgHZM7WkPMwYyEmP9wtp/RtBBl34UgZXsU64\nYoh386mrS2+1xZBWPRw55siMOa3M94IdQhboRr+axqHOqvVDj3+7maplUecE\nGDE407Pfy1qNF0RBmb6iT9dc2OLTQHvw9BKPMJBBgWGUkfcz73naSYwS92Jy\nNeAG5VYu6nXGrOXscmsBQ+quYciYtE/lskqe+wv8uv8eqnDiq8npAutLVY/Q\nZCjLhLzgStijx5QCAg1buwEj4ZNrCQZy7bHm5DKArq+Xvuhq0hIBFWljRsfc\nPaIhGNKmZ73sA5VvvyZ92qhVABgPpBzk91ibyORavHsftF28VJrZJVKrkw/v\nRFaMu7NaTjicSj32lP0nmYfQRLUPNwiywkSSp/M2QoI/bmY7gnjPcvC5RhvL\n1g+r8aGVyHuEGmUIxvy4uEh7hEN7WID2w9JEU52I8eJCs5HV59RGV4zNFUE7\nJFfdHpx0tVjqAJzzYT8yWgHfHBY8320AaEGfPLlUNCJj+9gKYqU05QvVbwm+\nadDg\r\n=/rCY\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIHxOQs7k+6eLoeVKBmHrYmaa4V9YKGU6+7xvy9T70qxqAiA5kdQ5WoLCn64/fFMY+22oMJa+KuLz+/q7DpFF30Q6+Q=="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.15.0-custom-builds-rc.1": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.15.0-custom-builds-rc.1",
+			"dependencies": {
+				"@cloudflare/binary-install": "0.2.0"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-QPnZT5URZx2z0dUOqMuNOYvFGRvKZDmtqOCYH0yVbuh3/pqJFpdSuTWooGguXIWCbSmzrDwZkEIEYoi2x2UG+A==",
+				"shasum": "5840125e2b930e7b3a0131dc99d5989efc09e202",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.15.0-custom-builds-rc.1.tgz",
+				"fileCount": 7,
+				"unpackedSize": 25139,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgWNOcCRA9TVsSAnZWagAAvw8QAI4kqMISKHXWXX5Bxm4C\nS/zA+l93WfIyoaH34TKG42eWijcaYsezhZhfNyc3ECH+YuVXIGlXp4l/7szV\nJcbRQmNawmN4FMp2g2xYqRNBsnDMl22gMBuBpjzNsPvuUhJS0f2l1jUry8Nt\nvAIhxByazG2t0lEiBgILstJv8cm2UscJ0Cz1HuxU/hYepXphGDp5L2sRZ0gg\nAAUdOCds2qg6zv4JkzH51OVG9TgxkX9s+GIRnzGOHFvqlVXv/ctT+gKKzUr0\ngZ85X4DB7O6N7idZku6MVsb104XSZMd4V334HBD9cMwgPcfp/zO0qB++CBmx\niSCpK0jDrl+MoH/Ozq845jCOiUC+Gfwcf1+iVt5gBpwcNl3/TGuhg4Bw73sG\n/MHKGfWVeR6Gwpo9gaukvAznk3W+r7aZCbNmozsQaPUFNa2LqasMtJVmDsMS\n1+KzZ0FzyHmkHgiVZuY+OTJQ83O+X0W8WHDdJh1W7AsmJfOcY5x1fUj5DBWr\nFUAUqPmmiYzJT2D65QYYHBBHds5pJWrxQtagTpwRgJGZ7Wb+B/XvVpM9nsh9\n0ELZjN6vY63Z3xZwNoTmRioGjZxjCN7cH8u7yaun2tdZUifKEiH80W+vpo6m\nzpXxt6Sr+7WiVv0spwni+MeVwG+oKETFR/PFkSk56Z/eD+VNmY1tdT4bzQLC\nnBbd\r\n=Kk/g\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCD2UfI5STiZIc3xksDZXKwV8dMfNGvUW/kESnQL8WLnAIhANA4Ye3ZT7hhmuqevT5gLrnkHVfT0WzmMc/OS74yZ/sw"
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.15.0-custom-builds-rc.2": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.15.0-custom-builds-rc.2",
+			"dependencies": {
+				"@cloudflare/binary-install": "0.2.0"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-T4K4sktXQrkYXzO2yo3MtIa92rMsxpNNLP54/XVxSu7IuRkIjU/VcCcF8/9/mI+ieBXQ9MQH18cMp9PPfAsT7w==",
+				"shasum": "ef8c736eea5239c68b86de4a86fc80f7d6f63fb9",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.15.0-custom-builds-rc.2.tgz",
+				"fileCount": 7,
+				"unpackedSize": 25139,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgY6SbCRA9TVsSAnZWagAAeJQP/2/6mrMFIxUPZGDYlGFx\nTVVAqdKsxorykQKb5TIdKOcxfgGxNTa6+cW5dGSFl6O8rS63wQTSRHVYcWMy\nXTtapSUUXqSwazan1EjBvPsRtdYiW0t+6eqX/CZ+ZJcYiLr+UdwTw2FB0Bv4\naYhiSbW5MjM0xbBlNL7RIjoGnFPUzEp2JJvh2r9igwNDiwb1cFBk6WAtHcsT\npo9z8GGvW8u+xcStP47/+IDkf7EHNSnPvMznb522mGD8rpiOG4QYuTvi7sfg\n0+wsUvvh75v7eB/2De3gEg8mqRSvFfDKLo0y6DG9DDkxfthY81lp6aFpNfIc\nnAH9yNa/hQo4obmbT4UB+108vVH21nKjrv6y/kttmmCx5ehjQrF24Oo2WXMw\nub77inB7qRO6drN3P+CXF7GrNGzoHWorvT/sILOLxIaLWeFOnTxtR0Qkzuog\nHKXIjXIhleZXz+rCqJsbkpAhvw5L7uep+7TbSsHTtxeSpUf1nEHja1tESfM9\n/rwyV3zimPoT90cIu3OhzOAxBt4TCrMKVjc9dNtfuflDOBuulFCtgzXdez19\nuMHabbPzu1FlGtYQB45634iAVeK+9GejEKeux/h56KWFtGcfRfDIvNhv/vge\nl2qH2ZnhyACXRR4bLy3xbxJ+JFQbhIbLDeJmfkMvs+OXMWCU2aNFfBuQzFxk\nlOTS\r\n=N6jC\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQC/VNd83n7xuSIoWHsKcXQmcskp2cRQmbqGQNPrhSTtdQIhAMjq4YU0qKpUGT0pCNx7O0w9F+G/ynbZxSl++acoKAAt"
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.15.1": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.15.1",
+			"dependencies": {
+				"@cloudflare/binary-install": "0.2.0"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-QwRfpgN//3vo27bk4oBe+Aj2a6ZgHgQCfFxf0PJm7j9boSWtttKwZPLOyJPHBJEF+sLwg/eqwcwAbUwPviABbA==",
+				"shasum": "dba8a40a36a6d1e83604610d48eeffc672735a87",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.15.1.tgz",
+				"fileCount": 7,
+				"unpackedSize": 25082,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgdhZFCRA9TVsSAnZWagAAbyMP/RP92raXB7saXCtH/Mtc\n/AKxhdXf+r78svFKJPTwVG96TwF+YyCVrH/xAfvg51nyX97DTMCLGPWNBq3M\nI3FsFgk9OC3arbnpVyq60Kz171Scjsacru2AjVMNuDH/lORKlg85ZhlldCWi\nAetDrCOFqMHMVMouDo0ggwaWNy9AVtXjp5VxcOc13hdIJ3BVoWDBIL8GREDM\nQeKAMqG81uoEhTntbykWkGMLjwGjSZvBniBe12REMiSrZRGy/I9XftBklUlc\n0Uc06xir8u4PoQ7EVfLwe2DkUvnAhhFOuHYmt4LEqlkJhjDx2tO2KTtqObzn\nm4LfZ6SGk31bn3Ob5rD6QgMKoMGtvX3/MMGbvYLdlwEK1jSCag53X6cIRMS8\nztEA6paOzMH6knAy49WuiJWAy8sDPjTyr1MaU0romZR3mJqv6kwDyWd42ap9\nRWYr/izumunSEPtfOcfZFoz2Vv264XyZbs8HVQ7Q1lRk7Rs3NUI/H2qENHDk\nilON9ph+aLk0iqcKVTnuVUbOBW7FiQdj17ClJytzDRx65Qw5bQsEf0j5hVTT\n8Q7K/e59WtA9agUsvLfXqCGOLWDo8yHvqVf2XmajiDwU2GjNL/zOOLD00le0\nbVYG5DBa1hjMbdGoRtMyEU4JfK4INx+n9vYhofAZHWnaCj7PJo4lwl+KQqk0\nDFn0\r\n=VTc3\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIHMzEz0Kb/YvtarvQNUMriilNI6yLnoi2C+FzTdRRXRNAiAj8RgX8XWkAMokVQS7qmVifQyVssiP40M3+dVPwyxkMQ=="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.16.0": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.16.0",
+			"dependencies": {
+				"@cloudflare/binary-install": "0.2.0"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-zxGWIIW0Kk8Alc4PgE5EvCu5pHdnFjFZ/4mHfGR7FIDBVdsFk4xZ0+CiL3Je8DrbriJyn+QYKNQub78EA0kA6g==",
+				"shasum": "053bb922fad89490fa05762af91630034306435a",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.16.0.tgz",
+				"fileCount": 7,
+				"unpackedSize": 25082,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgeX6pCRA9TVsSAnZWagAAocIP/27vj3ejYc+80UdpKMG9\nUrDdloYWDL2Y+Y+doYCFgnXVclM+fMlpLQdQ9E/XphkyPGBPPMkO15MSxc38\nJjZocZmrVadNSbx1oTYmpkAZbfuizCHgCnxwdibtlTguLIekc5+YmjG4j0Dt\nuezreQ40+lk6eqhQ3HgNuKAGrb5bEg5eY/cEnK+bTnR4PGUcAHJ1tgYy8Xss\nGz+vRMYmsB37IQEHH+FTOOIw8+O+AIDIFmUnclAFJnf1KFpSHGRrpYuBP/TH\nRO966B7lsFs7bdawAnphX32VkKhd5GqJ4K9/8taIylk8oenVe4EgbEMOxrbf\nx6kJS/3mJ9ISVkXEhyVXlkCknlN8ixQXCzgSNJVZWcwJu2CzHjBPP2g4tBsT\nsJikI+22f/eMNdmChC3t02cPUdtFcy46c6AhAPWo4QgeRzcpR0zQeSQ0z+Zi\nXM1WVH6i1JlVIgQYVtAH7iIlSC1ihohXabchCAcHnnc98XHAGpFUMTdH01jr\nGuIOmVjFlgvM4gfNKHexfOi1t2b1iW0p3Y/B6eZgkL2TFR+C2Ejn6LdYLHP5\ndYGfuoiTfWEygzUOzk5QRRZTiI4oyCxCoIAeUC33w9Z/fR0dKVh2ZulmNQEr\ncuAO2sDgCbGKaUqQXzQHBkeiClxwVqFQgVk+lMub6vZ8gbyZ6os/PmcB09cl\nG3AC\r\n=2Gt+\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIGgijfJolzVrUXLi32bROV/RhugmNd+aBVRocNcg4NuhAiAslc21alGfbQuGf0upiPuZ83lVnVYpDv97hGpSs1DxWw=="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.16.0-durable-objects-rc.0": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.16.0-durable-objects-rc.0",
+			"dependencies": {
+				"@cloudflare/binary-install": "0.2.0"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-B8BV4qX0CR22W0ZYPxMrIS1CWXlSVxRkK+r43FLDad5wJCit3asAHqSLYB6AyfWhdsKmZeLbKPGGZzfExo6tLA==",
+				"shasum": "8de92c5242988d0301ebeed5b87c3ff3931a1bd3",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.16.0-durable-objects-rc.0.tgz",
+				"fileCount": 7,
+				"unpackedSize": 25145,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgeYFbCRA9TVsSAnZWagAAqNoP/0XG+hjFU4gRPSoGmWLK\nsExtQ5S2Wo2EkH7ITtZgLfc3zVf7DeaZA4oTYup2gi2HqQkWBLcAx1Uf9DXK\n/PHk5QrwgAKMy9a27nBhcP7TKeOzCWXxDuf1/5YS9tQWm+muNGtOxUAyCXgq\n7hiCrGYvrYU62+f3c6oDoqaVeSSFFq+n5s4H43y9aPaV6cL4qYSsTpNSWjLI\nHZnDC3p//Nj0AdKyyIsHCge++UIASp9wGKZInAqyKvkrFqHY1Z3uDl9rXZ8+\n/yVGwYwbe8P3hBcTPBnORiG6mHhI0P6xVogZRFWoV02lgMyb93OtMxqNFu9e\nXVQL7wZRzOOH5EGbp1/h5/uZdXGv1cPOvCUzfoLTjTUlj/Oc+n0FItSMOaIK\nGyOOyNucl6yuNeojxmxD5P5hqIal/RbGFKszSckrgeRooA2UGJ7hMvizUaPE\nvddlU43zGJuR8k8petTtH0ozHxXa99LKjzn4BzJwd3BRo69f29MDtJ0fVfmR\n1FBp0ARoj9fcp2vX4sLBEt6ItDCHdVdcL6uUWLE2mmlU0eJ9STkLRT8axxA4\nmkKVsG4iPJC6Mlz9WKc+6uxT9a0YyZiMZRXVAeS7MC6xj++lJyzlo9ySANh2\n3xhGdw++KAfqzNV0XfjsSkrS+eO/JyhZlOPVOeqNZaWGV4gA2UF70lcQ/xx7\noP6F\r\n=G0SD\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIH6E73fUqFaTBiFqw5+h/XUIoeXoauqExIGrWmzN3ArpAiAh36BM6R1FQOTydxAXzM0tN3C+P+B2f35CvJi9WZB3Jg=="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.16.1": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.16.1",
+			"dependencies": {
+				"axios": "^0.21.1",
+				"rimraf": "^3.0.2",
+				"tar": "^6.0.2"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-jDxtri9v6IRszObICQU+eB/eFGySOnBJJvVcp5tp+Q1niH2l51wbWoXOThLfgv0DeSu7o7rSpjn13oULeSj2vg==",
+				"shasum": "c7a4d827c703ba9ecc0c43d447a7666dbec4dd88",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.16.1.tgz",
+				"fileCount": 8,
+				"unpackedSize": 21110,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgh0jhCRA9TVsSAnZWagAALtYP/0ksiP+IWpOgUQC3ptNa\nYMYCJQwml2sRsZBoMe+5m0mR9gJx8bDcejofo8Uv9LncmzQJuJRqvwx9PG19\nV4LWNSsN/DbcRCTZj8N0JH3M+Ne5Yk9CVxkaqeij62VrsT0K+/MKEUXhwPu9\n0FlwiXxlD7s+e7Q0+7kBB626OBUVBcKr7mFkgEbrI+SM5eb8juG1dn4d/34M\nb9fsWKCrkmq8J4C0z/yyFnDMat0+p1yFok74b+/Vp7Msw48rZwuOqiiyerpN\npYt/G9DCVj5ewblWqGI+TJ/kopQVwqev55DmRzwLXlf33UFFtx3kzFjqBT8P\nzn4UbkSmPbxKoEL230d23PkNpZbiefXlR6aKCCbgVEoIbLrkiQl2dZG1m49S\nZh8nwEQuBoh80pyRPWh9uNJZk5a2QTFd7FYFZ1gWS78r+ahS+VjOARaVCQVT\n8X/hae8dg/5fpvBFRicjodubbX7RY0LGvXVU5raSHlqjb4Bnytplt/mtHoE3\nYHl4Ifwe9U0kLox2U3pzTto5yf9EsamfJsiIjnxeUByEz9G3zIFJzPquUUKs\nwO1n7MEvY7wZWFXSQvavT01Uony9j0ABfVqIUd/+tUZIQhjVdFVZNfPWX2u2\nNc6l0ULkwHQnCfe2PHUxKVt9VQFqbkO9arNg9vjQPHF9f0IR38iulceqWaoX\nm2D7\r\n=K4ee\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQC9bY1w/kowveXNm+QeKE3tc0GRx9QsTIS8gSPjPlK1FwIhAOtmcBCaMhO//trbaTRuPdvtQYESN25emjE3V0nI8+Kk"
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.17.0": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.17.0",
+			"dependencies": {
+				"axios": "^0.21.1",
+				"rimraf": "^3.0.2",
+				"tar": "^6.0.2"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-phGI5j6jpyWcdjh6muxKaX2vZHgNnDporrw16eGqWCe5K/J+dgY4MBpkN3v4VJ4sW6TvSzVdsvr8xwwI1Rzg9g==",
+				"shasum": "31354bceec136952224089084d2206d2f5a21ad9",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.17.0.tgz",
+				"fileCount": 8,
+				"unpackedSize": 21110,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgsTqnCRA9TVsSAnZWagAA53IP/0EGdrKpnzlJXpNGwGvG\nZ5q3cXmO0X6lOu5l88NzLqHUYQtzk6yRPO4MbexzMP7KNgVNod4++9X+nmCN\nwfu9eJSIIfyoSXj4xl27reIryeDY9CEvqI8WkNv9oNZZsI0lSe9RqPqtGz+r\nzZoM3Ttv2Xlbz4SoKiYsJ6BsmVG40RClTlU/Rw+tM6jMMI8M3QZgGHfr5bj/\nf0Mh/NFnqUser9+khlUBpg8iOAx6DbglIzYCllTlMFUvcV/UGbncrV9+HO5A\n1wixhkMotAoIj+Nhz2c+ommd2k7/NiIsJFyZHQdRY+wIyba1DIBZE/gRBMmg\n07Z8l3hwEHLuW/hrnB2RccqJg3XR3ACrOp0V5ni99R4Y1QKoWJKeRMD8d14C\nFFCqXbD/DqrUsbDrE96Iy+XtW52fEhC0i4mtfbspf6uZ/lKHN3AgedYU188S\n/7nhQwogoznOdKsjZFbhhSke80WbnS9WZwvkRwj4URrWCG3fnJS4ojWTaijG\nVDNkL17agXPGt9FNJZAz85W/k8JL7+NGNiOkw4TsdhNpAP/Dwwupdulg7q+L\nFaspGukhVm7c7ST4m3FkXXkaoJmzZCngnOHYJjFjb3DoVeMjpnBIlBAZGt+f\nppLIEjAZ1MmncO8CAhEcvVJgYujBkbx2skWsvU2McORYFCDM74fQAKbugrZp\nJKQk\r\n=Za3V\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDNAXF8ekyl2o8JCs3ngVgR5ZXm63Rk64+GBQtVDxT7fQIhAKJBfs976Udg0pVRq7iZcj7BNm4yRquiM12jq/p8/R4k"
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.17.1-rc.0": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.17.1-rc.0",
+			"dependencies": {
+				"axios": "^0.21.1",
+				"rimraf": "^3.0.2",
+				"tar": "^6.0.2"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-OP1nn83h95wzvKWAHctw6qfr2NjyoWZM8Re13G7Zl6rYp1fxAdy0AL+qJYq9UZkUMUeAFiUNlUhWLn/i7/mRQg==",
+				"shasum": "5a9a1a2dd60a5edc346f56d9e8f7fc7720fc165b",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.17.1-rc.0.tgz",
+				"fileCount": 8,
+				"unpackedSize": 21120,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJg1krACRA9TVsSAnZWagAA564P/1Wr9GeEoZsQLI8UVhET\nd55rIM15AzFnx2mDPo5W0de7kbJMNiuTyN5zQg2kwKPEse/xoKyYknB+hnjm\n6xGKJo6bsXdsAQtjM3eA5kIyqujuON4RrirKWZ0Dj+kv9e2F5uWoZMMjFzFI\n/SpAA6AqK0vSONjaqOPM5Wfmn34mb5ui0jbsaK1s9wi4K6JmxWfHJpCQqAVg\nZFNfklVNeXy5zKjurCaZX4LgFZrtDUp0AYEwxB/x2ckdaIxfZEAHn8kFnp15\n+qf6fpsZ74jXfaQBayEWLSudrgLqJDCJEILacyEZEgL5l2vPy7E2hm1Gtxf6\nkZW1SL+9Ok+HG3+dy9ydnmxJlV0Jw8KiF6efVpLtrRj1u/dQ2ylB7M//iRix\n2VDwW4o54TNdo5gHuOIqQ6R1P4OFbdbrdVAd/XOoY2+PLQU5H1siKBJl9J14\nRSy/icvriC4nIiE+OHYiDBcAsLJ2DFJ2taydEEqx8vHYnS4s1xYYGYYS7gEP\nDejgqT4jhlxP6qyuui5w2q0e5osCU9j9Y6y2NHgoxL2VJl2QB3j4ZAgml2Sg\ntgMGaMmno9uAchd6wuv7ERCGu3ELPX5YixbjoF2XbIhbFNg+NmMleUR0R4z7\nkgt6WK59mvSNCRXWI1hHDnsqyV49nRGhJFPFbLHXP0Jk6LqpxFsWqpoAJnBp\nGxMN\r\n=WKNy\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCIHT6QjQ/P1DzrI0GtnlSG22uLR4m6zosC5x+xE3xe2wIgQZDQbMrRZrkIfHF9vwkfz4QEQbkIfZGw5uyvLtLzG68="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.17.1-rc.1": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.17.1-rc.1",
+			"dependencies": {
+				"axios": "^0.21.1",
+				"rimraf": "^3.0.2",
+				"tar": "^6.0.2"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-q6xN9QrsyoIXhtDit6DFt5rSIuKarQq11adVST9k800AVUFtULsKy61s0rPhxJtzGh1exGZZ8nvhBzLDd5bj0w==",
+				"shasum": "dfc8f2881b4926df58df5c0c72f02813431ec6cf",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.17.1-rc.1.tgz",
+				"fileCount": 8,
+				"unpackedSize": 21120,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJg21ekCRA9TVsSAnZWagAAjFkP/04r1mFe2kNcNQTglg/f\nuzQPVNPKW34JTuV6U94lk8jx19zLtM8PyO+8mhbg/yhwYASAhIUxzy/OpGWf\nUfgQ50Rpa8yoyWdb9JNnHYG/GREyxPyMkUOMpc3/uLsfxBlPsgeQ91feS3Ks\n3yj52bRHPt5Pd4Wtgldroe2MozmD/MBBSWEoHjMk1lg/WCjiEvVgEoZpzD9q\n2T+AQaDk5BZEk3Y2vgZeV59GXVJxOCnhCcXs+ODvpYbprF8W5jnnVXQqXDba\nBeB17h3BDNAtdRlb1Mcz37Qn6KnV5XU7ek7JjPmVhV8y/hdTy1Ko3WdAy2TE\nw1f+dSCtmVSUY+fkVl62KLU7DMRYyscfUq6EpOXkR7nS/ogyf/JnqseC62ws\nAHxyz3DQYEEQSeq/Sl9LlgLbf/C1NaOycWIbFKNK9xOu2Uqjd++J7dq40XOJ\n+fN4zEb898UEWuSIJrJoPH5znlM67oP2S4rASuGEVRj4fIOrghuGzDcpWBWJ\nBkWyu9FtPHHU631xScoV1fFwFEFj/EM8gFPnLBFpOJxI9GuaK3AHDmfNBJ1w\n3sS0tdRd8l8XW93eQuQuHdk0dDQuA/x2deFydduWcmUepPoR4WeEfz1q/C04\n7KHCbr6cVaImFXXQ/uiiIiKfmczEwtnQwOt6rI03r8Y5cfEsrJI3TVk7ucXj\nEmuV\r\n=ifuw\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCICSd9DIuPBX8wRE3ddahOEzKusdpFUP/s1Jg8N7xg+vTAiEAgAb7M9QWNG49piR1cckS4O9UcbuMXsIPp3pMURvhooo="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.18.0": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.18.0",
+			"dependencies": {
+				"axios": "^0.21.1",
+				"rimraf": "^3.0.2",
+				"tar": "^6.0.2"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-Hsl3dnmu9c8cX28LT4DskAeRqRgDEb5mWdD/R4o7oTFGOGNk4/hBEAH40xRVrGIcTAyCQh+WPEQ8uzFkIBZbYQ==",
+				"shasum": "3107e7fe3d5522d9c277a48ae1b99125f3ddea67",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.18.0.tgz",
+				"fileCount": 8,
+				"unpackedSize": 28193,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJg8KopCRA9TVsSAnZWagAAmpYP/jgzIH31c8C4+InXI3Md\nqqcaeJrDE+cupiOoNJezeODaF6uP4cTkIta3zazO1Li0vR3eljsy3dIEzqpf\nCzcLei1dnQ2wHadiLaTViJzkz1zT7wZgu+OHWluQV8ZEcDlxyJF2RW+lw5As\nmC2WeD0JOjsF/IkVAJ0PJhBrGU7nDyqeWm/XlmQa1jZBhEuHCOOZqDib+7Se\njhHDrTamrZBZ94DylfcDv2iAwRd77wtKK5smgz02cJqPKVdpDT9CFlYWnv3X\nDdJMTxqSVbiJQiT/nuvkkqhb5vnfqGZTksGniIS9fgJCY68b56CKXqNlw627\nABBRDxfAxZH+NGJYIJLVtxIDdN8py9oY/9uvMTV2mt8qtLj1/xJkdm40mxVk\n+M4dg2ZtWHrC6Iz04a0HrWWDN3abhnuTch+TKsGpiMONPEEjaFOWZV3HnjPL\nOp9YQcaTWcCNv0WDK3ioV30dokL+6GbjD1ik/mKMFHvzF8y7ueVHzLxpx6mk\nOotyTSBvuGHzy8X4OB5QpFWlrU3GXBb95jhkPmMQXnXuK+kgujvpjieBvaaY\nyY3keFkVK3TWbr0Ofy3gtB9DvF0PfBxqJ0nY5ToVjH7y8bNfHKxA2of1yQKf\nivvFwrXCYOoK2UmRRSF4Kj2hYNf8Hv9b1guc5UGSDt9uYz7dl5D481pFxElR\n/Y1q\r\n=1kcw\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDqd3z+3w0LjkA/2tUqNdUM/irp9UIr3/a+I2zA4P5cxQIgH9FCzWKHee7wZhC8r9HVr78id4WCht35CYcnYurxVc4="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.19.0": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.19.0",
+			"dependencies": {
+				"axios": "^0.21.1",
+				"rimraf": "^3.0.2",
+				"tar": "^6.0.2"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-fbvJEzb8P/IulJus72pG/G3THDyNk+YGwl1PzuMGlJGF+yvCaNWj+NmyZERmQxfq2bDs8UTUSQTrIdYVGH1tXQ==",
+				"shasum": "1cf2d7332b74e60a12730f9aa69b7e562022d57b",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.19.0.tgz",
+				"fileCount": 8,
+				"unpackedSize": 28189,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhBEdQCRA9TVsSAnZWagAA94wP/jtIorlN5k8ugi78ZeQq\nh5D6V+3rWOIlBBGrxaaVesvEodk5IcrV+QK9NeEUKb5St2oXwtfCmHuGvgXZ\namJ6svGJXEelqwpXO3s462CdqOSNJ4D1luSi+Kx4ug5eMlfJDeIuXyEzlP18\nzi13wUM93vIxwVVtPbvmxhOsyJnBGP05nELOReBFV4BBKAv95RMPiqnI23oa\n3P0t0OMI/1xtrrmJQtZBVfnnXH8+ZpUPwG+72d0Y2ytYUPZNGmkCsMd0JMtx\nwHgcT/6bloLa7+4pJC1QVXfn9Ci/NABQPCT37bT8eaesLNYM1M+6alFGe4m6\ngnVAkzOEm2pAoyeNVEdwO91i6JL8AQrUUEHlmPMsZJ7KHGxTxH0nxhEN+XyJ\njLcLET8yaVPSg2AOFIFwYZPbdss4jZncn2y4UmUAahoXgA+wt0SxlRDvp4o2\n5NyxO1U4Z+wS6rfzNXVj9Lec9bq48HwHk3xdWejucZgfjAhQL7Me0CyDmyIi\ny4MWXAINODaJumUlsV1zduuQ4X9lyJcAYm0bHEjMy4zmqIjpcj520//oVagp\njreQdNwxJDptnXKN+DSWJePcuOtyuKrAsz98AwmPA1T9KzQp2QjGzgMJYC6X\nTkaTECG/fnvj+dymCIwaQG0fbaQ44ArCjkuYzONINkH7BU2sqt5izzi9ASO/\nklhj\r\n=Q+Mt\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIGKzadCY1l4dSsOqtdNT8jaG7v3vyJDSmEtOzffJIqlzAiEAkK1EGfbu988thlEylQKjBiOoLv+l7MmH8mtirBQP41k="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.19.1": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.19.1",
+			"dependencies": {
+				"axios": "^0.21.1",
+				"rimraf": "^3.0.2",
+				"tar": "^6.1.10"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-LSLvuXAHs8ZQPTLbbzNqHkd55/N6SVkqahGiNUGgmd+eErDeofVzNGYqvmoi64v+nOApRbVCaGHoELaebjM5Jg==",
+				"shasum": "78080151e024c33579c19dd58c91abec4174ee25",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.19.1.tgz",
+				"fileCount": 8,
+				"unpackedSize": 28593,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhLqADCRA9TVsSAnZWagAAi6YP/jUU9Bun05faYo+2Utxj\nCFszKGo46lUcpkYD4mxnhJHa9nteVstYBqWVGFEoyXdB99I+CGqqdYMxieDd\nkRgabFh7+4Nzmt1Ze8v4R7/CY3el5SEopc3eDZRVW5ivhleomIpUG6RUCRSe\ncn9mM1UvEnYPqZd9bu2l8+5VYqrB0J4nCocl6qinlV7UkSv47PwMSo+cK7ab\nQtGn8baosE5EBg66zUqeFYYQqKC/2c4CqkWnTGD6+8T6iSQQP740eYsXWRAc\nIZfcyfQpgsCyErs3yAm40lWhz+FtlYBShDniFhTf9XtinvBuF09//o4X+Jqo\n862JRbAt7iZ4pNNqU7ZkY6ijW/t9WLjdd1dBUgJU0YXkqcqA9Q9QPcpL7zVB\npHQzxyeZ4aD+2Mak16BYK4b7vorqu4gQgsk5olu8UyNOMtliVOlQotrKVwKx\nVzoxjsL0smMLFG14PaYFhFUJW05bCLQGKaA6ZgeSGtbR9YWtf9cVL7PQlhSk\nHJe33+8EdGx4nvvMQuqqgPCRXv/qDZfPKmupFkFdJf1DMlW3qYL/FtofqzIh\n4/ooJ/sKeQhhhkRjmqwL5R2uZ6V34yfQk7jC44Zswxn8tdvgynytOzrR6Wwr\nJytwPEpd6RwDyNQbrKhLFrMoX72JQe4M+S5Yf/GO6WemGpO4aLe+jnjxxPgs\nKhgf\r\n=FUv4\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQC78Eeg/DtcYuDUaoraec3kXzDZrQGoJigAkBY2i8VKFgIgM4idrOsuBPCR49BNibqeymWODgTwqGESMOQuBIycmOk="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.19.2": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.19.2",
+			"dependencies": {
+				"axios": "^0.21.1",
+				"rimraf": "^3.0.2",
+				"tar": "^6.1.10"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-MLvc19qVlU9u3KQU8OM2AdOWfPyiJfEPCGFn0gQYATNxBwEDEJfuvzlGQyrA5+XOSutWYv+DS1685APREhm5OA==",
+				"shasum": "0383a658c85ad50f9e70883fefb08e19a27f179b",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.19.2.tgz",
+				"fileCount": 8,
+				"unpackedSize": 28596,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhMOr/CRA9TVsSAnZWagAAo8MP+wTO6Sk4KOVqicJZUVpu\nSY0KAAwV4K6fQC9x2lwUJrfxDNBzZwkCzHGZR5BTey7BYJT7iZjTRn9QV64A\nhWHNAvZpN2FPysTuaWelb3eaefVG1r44A2U+3/la3sLTpEk8RkJUHqtkFPfD\nWtVWGIWGdW8MoyKsfPUEWhEOJOyk8oYBlZu7KkCVa79Vj0cX0FsQ0P6zc6Xp\nEhUo1DMirFTVQ/bTqrHo6CN1YrXtptYeUMSPjFcbOx6Bcs3dq+14/YEU33Sb\nsE5LfqBfvPVIwSS2dwUIK52GFDsVCif/uNBwOylOfV1SV8RJWrDqZbKlEfsC\nK4IT8EdaSmr3/oC50Cq0vEJBma26EglJB8dcefSR2vrhjaduvYlk6MpSSCHi\nFtTQqkCBUuKzM25N6D2wQJGwmOlkP2XxsH3Mpj5bm+4SAUn5XhTEboNZhgoL\nTpiXrzMR8mM1Y0//JyV3Tq6cuiML2TtZTl/8uwGjaTXpYXvJqfZUHVzhgXcC\n8DbnL1p853N19lRSHL0DKVbRfH9Lsz+4vNlXyQ2YUobk2PvM2xuHs42AhVRq\nJta1kFp9x/a6/BxY2ztoO39pWqTqWQIUFEOjhzXRaDk0aHdL3qXdlDlW7iF6\nQJk484iV+4/GulsStEdmzg9a9uuBcb72BwZ3MmQJKsUBp/O5zz3Hu7lUYM1L\ngc8Y\r\n=/W2d\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIGQIG60frNoDIXPiFJbsHFc5nW2Rjl4RCwSuDBiUpHfKAiAlly1cU06wsrMozheah0AKfWiq2rsM+Tj9FuhiB3D0Zw=="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.19.3-rc.1": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.19.3-rc.1",
+			"dependencies": {
+				"axios": "^0.21.1",
+				"rimraf": "^3.0.2",
+				"tar": "^6.1.10"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-u6EvunbUw5/0GQTn2zLrS1qi4MgZSRiSQKMJegor+/qyibHkItJXczy68bQscgy/NAC1kJW6vhu/dZQpvj+2aA==",
+				"shasum": "fc1b5bcb0920be37a985649b544b9c9fc9ce848d",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.19.3-rc.1.tgz",
+				"fileCount": 8,
+				"unpackedSize": 28601,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhO5lDCRA9TVsSAnZWagAAYH0P/20Chlrjw1XlU8JXMu6E\nK2V8CUff5n+8PJJJZ9Llyc4CnSe51Ut5RWAF3uRG3Pe5L995ahFc0ts6GRDR\nY9XpYvQccJMvgBybye8ABoGHmQa1F+vux1pc8x03Z9wP1wwneGRKSPIDcj4J\n2QzHA+oInVCUcuDJjfFU4ZEHQoiomX9qH7mM5Lkha1KuZxRDADiYYYte03iO\n8qOMdCLKc34jD/Z8VVI+EQr5Pd+2zspv10agw4Av7wq2jiPL3VDPPLcSLQeV\nKYvwSjHCsiB1kcUmCIRCXsRMSMx6B/G/63BWpNsNWTyU5PtW+KIw8JezERxm\nhaChZntx1K3dbBpaLbh5pfwROClXnmACBy7CyKNW+VEQUkhqfK4V1cpVREpJ\nQS0J+vRhsXU3BJTGmrwqEhSrnpAgJgV8ijcYQBcOGYyXW+8MdgtmsOMSJkIc\nVtZ0arW9extwrqX9TLFLYA0ONdgMtt5URvYfa7N1WkAlFc8F3AcUvpR2kiJ9\nmbfSi43IPLiA9jVizyi99xBgRRF84c+zdShqdjzGvUXjDB8/QQ2pTX6903BZ\na4yr+t0SDWrZAq/FGz2MTGLnMwSc2xqhM9AGXTRfDPwhRGIPUMLYVyYUj8ak\n9Zf9zbrKX4L7lhghlJBuU/cPr5MESSoafsNd0fOERPM8dtr0ixIf7w1RDcBV\nJfGv\r\n=Bf2N\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIEeXnbPc1x8SwywGXDdLZ1vvbHsoRlHMg15yCCC4NFSZAiEAwTtKY90xXxQ1b/3TbKvtTmx4joBjZgqiqDsvkg6+jRA="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.19.3": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.19.3",
+			"dependencies": {
+				"axios": "^0.21.1",
+				"rimraf": "^3.0.2",
+				"tar": "^6.1.10"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-xvmj4xzarcHDcKdYaYVJ5E49eA0/2oNPz+9gMaQ88ym3RGgc0OxxFkCV0+XUb11QiAl2VEEtZr0/jbQXypvDcA==",
+				"shasum": "1519bb2dd8763598607a04ae71f80b79cfa0a90f",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.19.3.tgz",
+				"fileCount": 8,
+				"unpackedSize": 28596,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhQ1CVCRA9TVsSAnZWagAAuTgP+wXWlFNXuyj2R/P7h+Cg\nYxNwHCBWgPwkWtuCdJV4N6MvjoLlkn1Vf0UmS30FsC7ZqKXm4Xyv1BknLnMS\ngSZ/oeXmJI3iBJa2xIk4hVaPz7F8xTqgglPtbGG9FqniAR93EytSrwI3o3hE\nFfkbW8af5ekQB1QYNcie/0IypdF3ZJ8z6cQ5lSAulehGzbLWjC1kuLHf8tHQ\nlfqaEiHOwqMItrmQ1ula3If4YZ5szERiIIb4uN+/lfBoooiQDz5WjNEQb9yE\nXlaZW4+2f44QDjAJGhncCO29wkjKlrJHOfbBPCaxGWVXshhIs2NZZ25BGLOz\nKl/HDzoXqPFFL5VNlPyDlenv3OkugilOVzUBIPTn1OlQL8bi/P5TnKmZqjQX\njI+zB4JqWsshA+8cM3NWjouPYgt95JoCXdJHNa92Raz5UZfs62tE8mKcRQ6F\nmQ6Rv+dAgouF0/7Hz3p+k+U6kK27CyJsSxFPqJhwVeCI+321FOkoxYwoghi8\nSx3sRU+NbWYgiTRizdQR4EoSp9PzfHjhquRbup9SsIDFuulgpKOI2wJPMSgc\nOdBzLxhSs8eopbXIE6Ek8frcgNoeAjLEmmH5hANdQEdaUsZBlSHcuuIdaPop\nugatYuuq9I19odX4ygtWFZb7jQNsdyZPmJg/AiyFOgXcEtf30SykPFkbJhrZ\nULkf\r\n=Mn16\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCzkb1WlUPv0y0V5l0MwQ6WTXatIWXdRm2Aslh8kkEosQIgBefQyU2TgryvF3b6OT3diHcizxz/MSlDxryy8lcS40M="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.19.4": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.19.4",
+			"dependencies": {
+				"axios": "^0.21.1",
+				"rimraf": "^3.0.2",
+				"tar": "^6.1.10"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-bH+MinjQdgAQucns4kHEx+OaUTA7Sk8Cf3IwhN7RmtMvhgE3/QNeyLpBaBPiSvvog+CrzogyyicbzTOXdEJDSw==",
+				"shasum": "53cfa5198c5588a703a73bfd927f8196dd9518da",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.19.4.tgz",
+				"fileCount": 8,
+				"unpackedSize": 29063,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQD0sl1dd5YPDtPIF+I+zFqsKU8MJba22WGP752FH38a+AIhAJpteBwzqXDtk85ILfn/BQLdlBBJEcjo3SpzAYu1ClUE"
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.19.5": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.19.5",
+			"dependencies": {
+				"axios": "^0.21.1",
+				"rimraf": "^3.0.2",
+				"tar": "^6.1.10"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-fVyJfzS2FNETmdIQAZRf1Zgq9uuFHfHQtLgUSMC/FKCkRxNN2wES/F1/PYn5OXQqnYkUZf1dKW3xoLi5lY4U0Q==",
+				"shasum": "96e7d90276a94fbda6e55af17be3701bcc0552ec",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.19.5.tgz",
+				"fileCount": 8,
+				"unpackedSize": 29063,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQD8nQpqr/Iv9sI7nXi5rzIS+0Qnzm4qm8uS4KPOiPwJ3QIgDRXPMvGnjZi/+cAOvh1tTIEsJwHOI7voV6yWSwkslQk="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.19.6": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.19.6",
+			"dependencies": {
+				"axios": "^0.21.1",
+				"rimraf": "^3.0.2",
+				"tar": "^6.1.10"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js",
+				"wrangler1": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-fD0trhm9p5aSQBAtntxL7vePNn/ENzRV9LoF3s48MPbR28rQEu2bG9K7mgui5LagJ4EfJzG9AiN7tQSmK3W6Lg==",
+				"shasum": "9e31d27d6404946ef8d7b28515ff8736015e7c2a",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.19.6.tgz",
+				"fileCount": 8,
+				"unpackedSize": 29612,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhu1WbCRA9TVsSAnZWagAAoDAQAJwTRbXgMTVu5wIgzhpp\nWx/E3P2yem+Br9yYwRLNh6t4nSWh+lxxDB4QITfmH7fWy2PmwEJ5wSscEEtF\nMwSjzIMsZca4eA2C0FwofPFAxflVfmK7e3ltmfaie7FRb1osAUgGzPcWs1Ut\nldozk88x+c0OKeUwutk5rvng59g6a4JRmVDZRG0bTWiy6P64mwuSGy7c0RJm\nIX/JCGrO25epTnJ/3fhft4IffITmN8tT0RvVKC8dsHEnmaGwGzy/LwQaNlRX\nnRJer+m5/ZAYqCxPkkbUWG3KJlZBkKpojdCFI3JXmsMXT8cB6Olk9rbgWJQ3\nfbeCjG+Fqid5nAMcvMaK6lQ/dyLOWE991qzhBSWyCtOOnht3XqUkwtWlREYS\n6Q8i0Pcbbwj9QwWwTqaoC3PeA9t+NB/hBCAaqmOGEZhvBsaE994Uxsp7LqOP\nvvWp56LVVxxqB5BNyBnMoENEDAt6xgguifcdS3uFJJ0RYKA4l89Fb3g90P3G\no1fPUUOSq7oFS2ZzIGOBnoFV67Ak1k9wO1/U3qH4gF1K16YRIfh9yal6cQYp\npDqOzYzbfF0AC+Zd5rgBxyuaUjTiDFyFS2INtNk1iiMCyet2w/aJl03fgpub\nNbZUi84FsPpXsZb97dHJ0MPVmhlSnnCLYhB9M3ZyOtk4VCgj+rqZHowpTSx3\nmBvC\r\n=m5IU\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIAiqGWcMLVvDnADMBCrtwJFDy2uOuXCqIvOkuC3H7jsxAiEA+kf/e02507SzzEnQf/kMG0XocIXTwWsjV2NDms6a4fs="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.19.7": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.19.7",
+			"dependencies": {
+				"axios": "^0.21.1",
+				"rimraf": "^3.0.2",
+				"tar": "^6.1.10"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js",
+				"wrangler1": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-za2r33ccJVTOtnnMl36VbiGw2Hw4QuQPxuzUfTwB6IgU1XdlBHvAS+OpXbDed5WE3sMs2ORGTQQfmilB9t7S1A==",
+				"shasum": "264391e159302cf45336369f2c1672879e17bec2",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.19.7.tgz",
+				"fileCount": 8,
+				"unpackedSize": 29612,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJh1LBmCRA9TVsSAnZWagAA7zYP/icGLeEjLupyuK9nfoYQ\nKhQ08h7V0LzITTCIBzZi9YAkXPea71g4snKaStbRsa3qrWKHRYMogz7wwY9i\n0j1clERLrwUQmTffY6ZStKA8MtALsuDr/gornCi5udD/lRy86E4Xh/4K+4x+\nX91Q2xnzAFkiaavQmWrhBwhOI0LzHdGo9dCOKC8syK5ld9Reiz7dPBwtT6T6\nYxWi+UUHBh9P43P/Gysqj3A0VLvBJJ2bDqCRdQu57zpSuWCjm4dZDBcwhS3i\nSzWJbv9tjL5SmYglloIAvRZZEgD0yOryhLUz9Dlf22FT/UcWF9kBODAOjEOE\nxkmUXH5LXABWv2ePYK7pXml2KQjT9VvaBdo37rAVB+0xr0bHPAiNANhiiAlH\ndaNSa1WEAE9oGESLaqaCao0shHX7Bc5kCKPBfY+9qJudgEXsL99eLpEJT0wA\ndI1DlPwroYCg4iaKyWIEYycUxthpv1b84yREvmk5AFUSkojFdsdr446liew5\nYA4lHpaVfXFoTjz+A82FupkvNHVD8s3RURrgEw7p3qEygS5ZMO69ooh5w1qu\nvxKljmP7haFMUq1uKeN0ghzG6YC7L2Av3k2uweVTQkofr2xYmeEuEIRQl8H9\nMpmCyoYQTsx352c0HCyzs+3AwZomjSlCXtPGVtH5FCcecw0VyqdkpR3OkAE1\njNzg\r\n=rtXb\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQD3jTuMp0tztG0LVCNoLhSrlf4EohLd15Sp8smWP4LwBQIhAOLqdBCnKjnuEh+YJAcWcSijGnr+uKHxZf2IHr6xPYWt"
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.19.8": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.19.8",
+			"dependencies": {
+				"axios": "^0.21.1",
+				"rimraf": "^3.0.2",
+				"tar": "^6.1.10"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js",
+				"wrangler1": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-bckvdgBT3ZkvJQtGhdWEwa7GKi3zWYlxBPQoaOa+Utqw4bzg3BkbzUouI8+7WmcvkOoLxQ2emgTTNfudHBcCqA==",
+				"shasum": "fd5b6cbb2ec353c0fc479575667561884a267ca6",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.19.8.tgz",
+				"fileCount": 8,
+				"unpackedSize": 29612,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJiArkTCRA9TVsSAnZWagAAhMQP/0w4Njgfr5JW5cjLAgyb\nGAI4Ip887nNvZPCwtzvBPfRryiwqML1zfjTY8rCG5Ps0E82XstVff4PY7LTY\n2bkZ6raCNyaB8NFcPnFNxiqjc4aErywR1b/eM6SLTAK5VsaRh59lCAXJqIBX\nOaePzrfr3IY2J8jBaETOIFAbjkny8LFeHHgsNaDYLT8kdgSSiHxOw0ebM/0R\nZ6wxu9Ph4IivWnAVzfdt4kDGtXU+Jz/CwyQLPWbiKctJxkmQogG1xF1HgRxy\nbEhA8b996AE5DseCRKIqVGiKsQxSs7ojQ0VrAyiab1H4dSjd8EDvAg6uFCXG\nkA0hjJQ2fTcaufnZJ4Imky7t8HltBj5wxksniiaJ1mqLJB1eZqVvPk9a7izB\nXKISIcfjA9GODiXqqyZ0jZhLtMtG/3SfRDAgS+BKkmW0hw2o38T+6hqFbcoH\nNkvxXSIlH89TOOzWhr9ba5fyeMkGozcMcfjDH4nWBMMmJaAC1X9bNo4egR9l\nD8tK8JLDnErrcRiWUscc+K/q51rhXNd6TqqIyoppJnI+pRWhqdq/mcbYbGRp\ndj+rBkQL8jHY6NbDLxi7EONiH9ERuAee8e0j+O93f+HwyWIokv7tbxr9AC02\nkmY1orwempm/murjJQERqpIo4RT5B12P1C/YvLICy+IVEGTFMgL9ob9voXeF\nE5WK\r\n=TLPz\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCqel7Blqq9S3EtSGMPlyWalZqslsC3+rSITR1tYKby5QIhAJZd5pOX/a8+ZSeeeulx8zA3bHk0egMUG0f9ZU1x/LIK"
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.19.9": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.19.9",
+			"dependencies": {
+				"axios": "^0.21.1",
+				"rimraf": "^3.0.2",
+				"tar": "^6.1.10"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js",
+				"wrangler1": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-y90QdtK1ZsxygwQ3iEIkWBAJ5sq6baAMDI3OKozmZjhaEoRfGFyoCHeE55mIqXFFbeHbmKTGca+RZWaaw2Aocg==",
+				"shasum": "040308eb5c7d04318f38bdc1c5bccf7d2d1dee7e",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.19.9.tgz",
+				"fileCount": 8,
+				"unpackedSize": 29630,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiM9eRACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoXWg//T64wvxMSHPyD4fctHthbRN9dRD67vnijZbvVCS8jWwBz9qk0\r\niWQTqJxUznFrxyesmn3oXKJ8YWd8RJgbEwr5aiQ8g0bspvTPzjfVEgdnDm2Q\r\nM6dDvKRswBV7rxKn2FAZGX0zsSWZTyvrL/v15vTYKnK+R51fCf62vvpewDhO\r\nsghofR26TV+0RQ8dEPGNBMltk/2IwSdZUH2p5ZPlio0sZ2qLz0MLYbXOt+qG\r\ngtBHP6Nx9Ed3olLJGZt/9YneemUBPcqkTqTT5rHGFys2S1xtChy9Xu8b7dfC\r\nAoaQM+UlAnOL8xb9s25Lqh7dkCyJBmg9OUqvyPxrUBlcXNlpkw17TYBjqu0z\r\nNjMqIbTpFqLWAHTnkYn9y577+03va2t9hbn9yiJju9uEAt1BMEC8umk+Qr0B\r\nTlfu4GqYCzRrm81n0EWiidz7wAQSqUcUOmiDUxkQjyvcWAjQu2qtsQx44mtO\r\nP+fRtz4ttcGkmAJCfwP6rKu0mJMbWf/jOutWXWI9i5lTqr1iEZvCm/nm72oh\r\n/DiG0xdHhTWoH0MOrMehqBMxdv5N52Vy8Pg70GQ+A3El7c5/A8q6X2BOTyo7\r\nhUvIgGjevkJa3ZLtWH+03e1Ej/Hxws81+YiibkOxo8ayqb36H52xC+iI3rr4\r\npXNb48FujrysB77Ku5pcS/t9GO7T6xsVKMU=\r\n=eFSV\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIDI2PG8XTQOJXo/cqMr4xVteN0ySOvIO4aXHCrz5Nf6VAiEA0KbTUEa7BNRwIkelUdHp4ZtkCba0BsKOr1DibbDhHQI="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.19.10": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.19.10",
+			"dependencies": {
+				"axios": "^0.21.1",
+				"rimraf": "^3.0.2",
+				"tar": "^6.1.10"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js",
+				"wrangler1": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-I0SEy3svhBLgBgL4wkwQlQbkXwJP2r7KELm/BAZnhcTgwsas5VfWL4gWqr/9g1JLBv183eEgQpFWWi+xnFtXWw==",
+				"shasum": "951f34dc1e13a1e49c0c96626075bbd3b662eeec",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.19.10.tgz",
+				"fileCount": 8,
+				"unpackedSize": 29633,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiOLm8ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrUHxAAnLZp1cFLDLibxVn4r1q2ON/DyReg+98Ex7JZcf+pkEj/J+Jf\r\nIhhNPq42g5qSuIv1aYs+G38/u6UD2PLpXu0M5s5DLBNEHPuBGRMaaoW+oVkX\r\nI6iSH1Hv62EVH7FvTgMfE8CaER3nopkWFFSG97CBCFsm5GIVz/lIjmtQarSv\r\nGWJcf0SVs9GQ5NplX9hDgbRbg/A3xuEe/OJnX97g5/zhG7QKNeTsyjDhUABc\r\ntODRNFtP2lncUs+HRqUwYqaFmdYGLTtn0Uws06slwxhT72sFTn9i7xrP5xK4\r\nSwAO5er7Pu2Wu5+QAINU9TYL0IaEv78WSUYPI0tVEcMjVx1Gt8T7W8aFrHuz\r\neS5ELzdlcRS3gNz7mbtHGjCsQIFmLxzW5Gr/lQJJ47LvoBy1y0Cjfvl1MVYq\r\n0tgNz2mO8VW6vSDCmB4AjkRAKYZ4+gTPvS2U+0o9MyxrDqVMEf8G29wCmtkQ\r\nfkFGBEa1CYp3gHl0WFR3nQOEfm2dPHv420d/UzW/oUAB1UD8fCYf2VXH1B7T\r\nsmQhFzExnrkrVy9OZPHrJYb8GmXXDXxKBs1XKaWqqPEywvyIzBroQGRsgeDT\r\nWDF0XUXmaJrSJyZwvPV2hrKwyJt4a6HwzHC9BQr+PYhJZWzv13IQDtXTnqbz\r\n3QGdA3m44/xvtxBs2NsinR2hUFbMDNaJjnA=\r\n=UIqn\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIEU0WKFq4bRVJjdYANs88Dw5W8OevNbWHohwsdWTC6ifAiEAmABSyjUhyqK6uBp7aKcq+paWV+qcvatzcWp7VS5Vq6I="
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.19.11": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.19.11",
+			"dependencies": {
+				"axios": "^0.21.1",
+				"rimraf": "^3.0.2",
+				"tar": "^6.1.10"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js",
+				"wrangler1": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-aUoSHodCx79b1mMxv2L68fEQmMj+6vFO5dwCozBPL8AE81XumeUau2RfqQEAInciESdiJbYnam7b1q2D59PQew==",
+				"shasum": "bace35405b423e3da3a5a06f5cd1bcb96b5d2406",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.19.11.tgz",
+				"fileCount": 8,
+				"unpackedSize": 29633,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiOZliACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmohHRAAnOGoDSwflWwQuuyoo0ZSveikG7k9RLMvpshrCDZbD5wmZA9p\r\nuwc1FRk3B5SJn8QxUVC7e+44NVZA5cZ+WMmTb3SSu4cxT73k0S8f63QqsRTn\r\nqcVR4g7SvWtJKVe2reTJZwOml/OlfCUkUUpWoQrD8QzwuMav4apNMOqkf8z6\r\n9Pu5htrpFPId46V8ooEIlpLqn6rOS41MfbFcJFIdEub0PVOlMC5G+EobEwp8\r\nxrxSUTQnjhgPkmJdpK4JsGbxHusXxRiODSlkfFD4iKhW1QfebAaO+abOkB0f\r\nZPRBE1zJ7Gt8wbj+POVcEVVFFjk71W9fp3WDV/nWCThmlyQXn82tvQb+9Fae\r\nLW2KzN0Rw5YNQssfqw3Azf8K5Nvu8lOiOnBxlqsKjoLrRA2lHrH8BjhlWet2\r\n0xH6kPoA2S+6Fg7p0Df/U0fo2ze/Mw5ZD5xK9nqK9/jW/iLwSjdwet8iWwFW\r\noZ3wKF198zte7pJp7KlLz4mnwtNu1Qbwo+CqmMWxXXv0z5x/VnoI1zUTevMG\r\nE+bsu2WfyeeDhgyR9KlRyrXaOEnkdpuXE2i3uYNng3Wo7UM8ioZjb60ZFTWr\r\nyFqNpIwy55r37q5qyQilBpvGCl4OZS732JcdA5J+LRhOvSM5Wa+DDkFwi/aU\r\ntoknYu0sTWfJHj/1A4xHvJ/QgbR/t5svPM0=\r\n=g4Ce\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDfz20t8/0Y8z01fKXVfLhkGSynXXGgnDMS2YxOzjjNegIhAJ2og/uk38xNirg6JZiZxc3qN96U9YvJ/3SXYONiNq+S"
+					}
+				]
+			},
+			"hasInstallScript": true
+		},
+		"1.19.12": {
+			"name": "@cloudflare/wrangler",
+			"version": "1.19.12",
+			"dependencies": {
+				"axios": "^0.21.1",
+				"rimraf": "^3.0.2",
+				"tar": "^6.1.10"
+			},
+			"bin": {
+				"wrangler": "run-wrangler.js",
+				"wrangler1": "run-wrangler.js"
+			},
+			"_hasShrinkwrap": true,
+			"dist": {
+				"integrity": "sha512-ALuQDzJetYGqzNuIa3KY8S8X9rvZjIh5uEY3nK31jV/EmBamiiSJn4XIdPuSn65FaEmmZem78OJIWFyu80OIuA==",
+				"shasum": "17ff0ad7e816d3ea79069a31654d98328d4df75c",
+				"tarball": "https://registry.npmjs.org/@cloudflare/wrangler/-/wrangler-1.19.12.tgz",
+				"fileCount": 8,
+				"unpackedSize": 29633,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDcpyR11rzuRUiPIVQ4szvlo4S3wIABnYdTZIyGDLtsPAIgG/6nzKnwIFJ7DOVDIc7OgtY/lBRV5TwQbrHkOymnSlM="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiYTZIACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmocsBAAhmTkJxfvLUS6GOgj/vpujsS8hfIGJc6sc+puL49GtagSYDaA\r\nCXXNFNUfNWzoSUkhle/L/KDXnfi+fS12eH7ChFwXW7KnFkmrFEvzISG4Frr4\r\nAt2rSHqlxbDKyhXjh8YEC9sU6SVbf4PF2aFvohVXkLT38ICIxazTxWZtRFNT\r\nplFgILzc0xoJOlLYMxikYWrwg1XFmZBw1QPHNthXHbwUY89s50/IkUnQc1as\r\nWbWpqKLJcsbS5apn4vzIA2JD+aqzJfCtedNIUlnbdUbkyD7HRnHHwWBfTuIe\r\nbD107iu0PNKnIAorKp7EIyB4Pi1UFxwwDhmBfflqL1WIdDgQaxfpsw4PMqf7\r\nqsTWqv2cjAsWmJc6rZY8Q0z7ZpdLm8gIZkfdV0oP5qH/nh9gasmbziT64GPD\r\nBTW+wkv5b6EpdilnswhdOE7gjUgMQ9fn4BxUL/d/Wzinww3vzWx/j8QA61O5\r\nu8l2pptjVC8F/VO9GvjwCna/JAtnxFlqymdz10go+3sWzZc85LRD/OX8kmhk\r\nxpQ7YKfrP4t0uUC94nkEFtL1o9UFZegqn2eHaiERUAyhJ6ZAkRO60DEqtHKK\r\nQkeGohMCQaulhglv6PVAtg/8jGGlj+k7mMPD38iR5pdgBTibJX1WuxsG66Ws\r\nUwgwazpM/7zgbDDZmUJLSq5dwF2sf2RsOq4=\r\n=xG3p\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"hasInstallScript": true
+		}
+	},
+	"modified": "2022-06-03T16:38:59.184Z",
+	"_cached": false,
+	"_contentLength": 114631
+}

@@ -1,8 +1,10 @@
 import 'dotenv/config';
 import search from 'libnpmsearch';
 import path from 'path';
-import fs from 'fs/promises';
+import fs from 'fs-extra';
 import dateFormat from 'dateformat';
+import filenamify from 'filenamify';
+import pacote from 'pacote';
 
 import {tryAndPush} from './utils.js';
 
@@ -21,23 +23,36 @@ async function run(){
 			});
 		}
 	}
-	await fs.writeFile(path.resolve('../data/npm-maintainers.json'), JSON.stringify(uniqueMaintainers, null, 4));
+	await fs.writeFile(path.resolve('../data/maintainers.json'), JSON.stringify(uniqueMaintainers, null, '\t'));
 
-	const packages = rawData.map((pkg) => {
-		return {
-			name: pkg.name,
-			description: pkg.description,
-			version: pkg.version,
-			date: pkg.date,
-			links: pkg.links,
-		};
-	}).sort((pkgA, pkgB) => (pkgA.date < pkgB.date ? 1 : -1));
-	await fs.writeFile(path.resolve('../data/npm.json'), JSON.stringify(packages, null, 4));
+	const getDataAndWriteFiles = [];
+	for(const packageInfo of rawData){
+		const filename = filenamify(packageInfo.name, {replacement: '__'});
+		getDataAndWriteFiles.push(async () => {
+			await fs.ensureDir(path.resolve('../data/packages/' + filename));
+			fs.writeFile(
+				path.resolve(`../data/packages/${filename}/info.json`),
+				JSON.stringify({
+					name: packageInfo.name,
+					description: packageInfo.description,
+					version: packageInfo.version,
+					date: packageInfo.date,
+					links: packageInfo.links,
+				}, null, '\t'),
+			);
+			const packument = await pacote.packument(packageInfo.name);
+			fs.writeFile(
+				path.resolve(`../data/packages/${filename}/packument.json`),
+				JSON.stringify(packument, null, '\t'),
+			);
+		});
+	}
+	await Promise.all(getDataAndWriteFiles.map(fn => fn()));
 
 	console.log('Pushing!');
 	const prefix = dateFormat(new Date(), 'd mmmm yyyy');
 	await tryAndPush(
-		['data/npm.json', 'data/npm-maintainers.json'],
+		['data/packages/*.json', 'data/maintainers.json'],
 		`${prefix} - NPM Package Data was updated!`,
 		'CFData - NPM Package Data Update',
 		'Pushed NPM Package Data: ' + prefix,

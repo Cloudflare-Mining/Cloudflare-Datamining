@@ -1,0 +1,996 @@
+{
+	"name": "@cloudflare/redux-fields",
+	"dist-tags": {
+		"latest": "2.2.4"
+	},
+	"versions": {
+		"1.0.0": {
+			"name": "@cloudflare/redux-fields",
+			"version": "1.0.0",
+			"dependencies": {
+				"invariant": "^2.2.2",
+				"prop-types": "^15.5.8",
+				"seamless-immutable": "^7.1.2"
+			},
+			"devDependencies": {
+				"babel-cli": "^6.24.1",
+				"babel-core": "^6.24.1",
+				"babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
+				"babel-plugin-transform-object-rest-spread": "^6.23.0",
+				"babel-preset-es2015": "^6.24.1",
+				"babel-preset-react": "^6.24.1",
+				"enzyme": "^2.8.2",
+				"jest": "^19.0.2",
+				"react": "^15.5.4",
+				"redux": "^3.6.0"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0"
+			},
+			"dist": {
+				"shasum": "7c5c062747bc74804ff0000cf8d494a753630525",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redux-fields/-/redux-fields-1.0.0.tgz",
+				"integrity": "sha512-iM0ZSx0XoTZNE314TI0IjOXoMIEqQV+KX+42bbgxjd5aD680+HslW97yAzahbg6rfoXSCJfkbtV5ELy/vyll5g==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIFnXiLI8NZPp8n4sVEypVWI6ix3KaTWtrHuEzm5CX9KFAiANFBP72fCrN38fytIJCQeIndNSi49y3p+FTITKRiePjw=="
+					}
+				]
+			}
+		},
+		"1.1.0": {
+			"name": "@cloudflare/redux-fields",
+			"version": "1.1.0",
+			"dependencies": {
+				"invariant": "^2.2.2",
+				"prop-types": "^15.5.8",
+				"seamless-immutable": "^7.1.2"
+			},
+			"devDependencies": {
+				"babel-cli": "^6.24.1",
+				"babel-core": "^6.24.1",
+				"babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
+				"babel-plugin-transform-object-rest-spread": "^6.23.0",
+				"babel-preset-es2015": "^6.24.1",
+				"babel-preset-react": "^6.24.1",
+				"enzyme": "^2.8.2",
+				"jest": "^19.0.2",
+				"react": "^15.5.4",
+				"redux": "^3.6.0"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0"
+			},
+			"dist": {
+				"integrity": "sha512-aLRI8beXfhhJHYlLAVABRH/o8hYEOCvKJB2YbgGlThCxOnKNtBGxFZG8e4+Vb2HvZ5gj1OOfVYjTLR4tllxJfg==",
+				"shasum": "0eaac39ebad17e4f8f3246ed28add91bbf375cde",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redux-fields/-/redux-fields-1.1.0.tgz",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIDJ7XbBQqX8CGf3sCPDwss5FH3P/zTs2bQsdlAeOrCLSAiAb6ukJnbWcdW5eQSSFpFwei2jHp+glUYvdlh9ztgpKfQ=="
+					}
+				]
+			}
+		},
+		"1.1.1": {
+			"name": "@cloudflare/redux-fields",
+			"version": "1.1.1",
+			"dependencies": {
+				"invariant": "^2.2.2",
+				"prop-types": "^15.6.0",
+				"seamless-immutable": "^7.1.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"shasum": "fa2141c8ec0b23700fa8007818750f0784d0ac6c",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redux-fields/-/redux-fields-1.1.1.tgz",
+				"fileCount": 19,
+				"unpackedSize": 29776,
+				"integrity": "sha512-UD3c8MLTR12uxXLNiQigxxkwzPYWUTEokwFf3oU0ZcrFfKEagbxtYPFR/jj4CDaTjDonnEoCZ5ncdzidau+frg==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQD671njvzu5C0B6Gix9tyjXKYfMRIYZWT1piItyCs3L8gIhAI4AZI/AB7S4AjOkP5fYddsUFcSea1Po3BTr4XCxNeua"
+					}
+				]
+			}
+		},
+		"1.1.2": {
+			"name": "@cloudflare/redux-fields",
+			"version": "1.1.2",
+			"dependencies": {
+				"prop-types": "^15.6.0",
+				"seamless-immutable": "^7.1.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"shasum": "2e479bceed70e7715abd6e853ac386191993ec28",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redux-fields/-/redux-fields-1.1.2.tgz",
+				"fileCount": 19,
+				"unpackedSize": 31800,
+				"integrity": "sha512-ICUSX6YLK1d05BBLrFyg5FwKjNVZAQL7n5yQ7prVfRRyuENZQdIvMcW4k664XaHiYvt0q2WM23E4pBJRkD5siQ==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCVt9Q9qjKenYo13SxYYSRORWdMWUhKqArGtSPAcax6UgIgRW100qcHQAhwpSBEBNCeeEOkaQWb0ubI4eylH/BlFG0="
+					}
+				]
+			}
+		},
+		"1.1.3": {
+			"name": "@cloudflare/redux-fields",
+			"version": "1.1.3",
+			"dependencies": {
+				"prop-types": "^15.6.0",
+				"seamless-immutable": "^7.1.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"shasum": "9092aabb79c991f744bef4bf50ea886ff86315f9",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redux-fields/-/redux-fields-1.1.3.tgz",
+				"fileCount": 25,
+				"unpackedSize": 35935,
+				"integrity": "sha512-TNLB2pkz5n8uMB8EN9Qr/e8Gz8Y6BCn/7cVvS68gUEO+glo0GTV4Mmn6M3+ZzvuZtncUqurse7mDEknWlFZLJw==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIFMY6G2ozxbZKgBnTcuuL+YUA5QOHUbSZNt454copPCnAiAW0ssWYmeBMFWnqpaQG0S31tYo8aMq1EcmvhYB3yo/7g=="
+					}
+				]
+			}
+		},
+		"1.1.4": {
+			"name": "@cloudflare/redux-fields",
+			"version": "1.1.4",
+			"dependencies": {
+				"prop-types": "^15.6.0",
+				"seamless-immutable": "^7.1.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"shasum": "0096104744ff48b0c7dbecc49d15fdc37fcc69d4",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redux-fields/-/redux-fields-1.1.4.tgz",
+				"fileCount": 25,
+				"unpackedSize": 37423,
+				"integrity": "sha512-YQWn2J3379eU2sdsUV7iW9PwTJtpxdxtdm2Atbx6RG5p1Dw1F3Luq3Tz0mH9odwoBrVY5Xga4hznB212nVApIA==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCPVtPJFGhmlOlgyra2nn4a276lZnl7wp3/PmQ6oWJ2XgIhAMp+Fvak5lK5kiHWfp8FjXiAD8veZCRfF3cvjEh1XUD5"
+					}
+				]
+			}
+		},
+		"1.1.5": {
+			"name": "@cloudflare/redux-fields",
+			"version": "1.1.5",
+			"dependencies": {
+				"prop-types": "^15.6.0",
+				"seamless-immutable": "^7.1.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"shasum": "3ccd80a63c935b646d4159e62866817e5eb8b6a2",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redux-fields/-/redux-fields-1.1.5.tgz",
+				"integrity": "sha512-yFYVt+RmPX2FC0fjyBGtj/Y7Op+njl0p6J+fv/hjL0oKN4S01u8YaHvp6HeP7cY5nPeQ23sFIFdm4rfZ988k1Q==",
+				"fileCount": 25,
+				"unpackedSize": 37649,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbpS39CRA9TVsSAnZWagAAV4QQAJFM6PrrF3pjBGzmfMiy\ntkphBdjzAsszF+WYjpv6L50Hq0IpqS2g8s2mnWcPAFKqHJiWgsI4UDIAyNYW\ndoqEnbgh67SV3TGMaPqDx9dpzjgNVaahdw/OWmzDGC7wZIsV/wwGpzRLYhx5\niX+G2wFr/CwND66c/MP6EwrLgdZzoJYHyEvBtnLLA/E7ktgLIdlw2nPH1bcH\nhuY+rm7SD1Fc0H/CakMz90/kcJi4iM2KYzbmzJiZ8oZOMHzUKr1Rbota1JUj\nadEY+k6UJ8vSTl8iU9DrQrIyxxMs/jEPv8qwBZXT1MZlf+rjeys8gQcTXj/c\nu45UB7+EtFrKHYSOPP2PeYhDDREuFGLN1ob09boel++VYe2iYDIgtu6hMcF0\n71Dx54L1USd/OSHv07AvS/WxP16zsYWHM9Se6FsDoLmYJMTvYgCNaZTdNBrB\nCuhPC9SLp2V50f/Evx4aC9/ioM1/boWHN7Ffm8C0WPsX2Zcza+bHA9yv423v\nhLMDhuCZAcQJdS+EQ/cIRX5JSPC69LQQ5gEEqnB6PJIHqa3ooqApUKLCCnNI\ny4X35lmmxEYQOyIfoLZ1QOOSLTRZdRsD9XpUkv8dIUtT2u3HUMmnpFTGNWcq\nH+aQZUVL02RhYmQtTGl/QJVOfne36WjBM64+L3ZX5rET4dMkwecOZgsnaSrZ\n0ZFU\r\n=Ghbf\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCvQjXTDJjZEWlt0lkh8hzNDcWTVQlbNvn8TbaYQqf+EwIgQEq+ABPU8UuOfHHzdytz0xmgbw+4siyaNfZtkAcaRVI="
+					}
+				]
+			}
+		},
+		"1.1.6": {
+			"name": "@cloudflare/redux-fields",
+			"version": "1.1.6",
+			"dependencies": {
+				"prop-types": "^15.6.0",
+				"seamless-immutable": "^7.1.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"shasum": "8a5ca7fdca1d6e9d37ae2011a866a1cea2e5ccb7",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redux-fields/-/redux-fields-1.1.6.tgz",
+				"integrity": "sha512-SyzvWrH4kitfevqukAf49j21j5QxO2yFVUs/jdw2Jd5G7RUR4OuDV48Tdwex6fWWEeSsCj+Eii6Cwk/++TTMtQ==",
+				"fileCount": 25,
+				"unpackedSize": 38006,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbs3McCRA9TVsSAnZWagAApmoQAIQ8FUnneGqHla0KKyix\nodfXQQN1MbXo/38xVUVtoDeA5vxrx/xZE6pdTnv05O30JKmX1tmuHcHbFWDd\nWMAVLJGVP4gbagFnq1FLowo5QjlJFZxWvYEA8Ge4ZL1VPMr09FuQwMtB7el9\nfjWYPXjH9vi24bYXFiuRgUMzzJmbrJO221TtiiMbkZKF3Vah5fpQsrWbr02V\nXrA7x0mx0w6cQTqpFTeP7IOK7kTqxNkvYDAXwGmBhW5Ua+3/MlGXWjFCxmbq\niCvsLfenxgd/JBRVyhWj/cftnAnD/ZxnacmmL/NBL36x2M/qm+0Dl3gdWmyx\nO5zPFEZa/HoxfkLaxQOM8q4v1YkSC+eyo8QFJOA0q2ebuXRlbUj2QSvi+YIr\nONdKoTjXFZzEOlsNo8Kh44gS7DhUol8oISGFU1DiYhd0jXnic68pXUV3p4X/\nlXP04+YE7IfVLnvmFeLaVottHR6XenHgKCk5SOZcBdrO1c70MgB8ce/bLPI0\nFHBu4wsZQVZ5DlC62Dc4i/EcNOwPkJIbGd4Fet4UuFOXId8oQ/TUcd0fasGC\nr5LOv0Uwiey3xA+MGkcLSqnLyukgzc5+GrkIHvPmYxQ8bSx+tuLLhXW7ym4n\nQiQFM03XMi9YN4IIahv+nHirAaHgUbDqYk2VoKp35TqIXn8M/Q32wAhMRT5O\n9QhO\r\n=mtHD\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCplXF/HAIPTYhzaPQy4Hb52QoyEBugFHkQp/OUgKbh7AIgIPBXFj0aapJ0y/Fxw7LscRNGavA5GoKAOrN5dC0t074="
+					}
+				]
+			}
+		},
+		"1.1.7": {
+			"name": "@cloudflare/redux-fields",
+			"version": "1.1.7",
+			"dependencies": {
+				"prop-types": "^15.6.0",
+				"seamless-immutable": "^7.1.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"shasum": "4833bb0cac88e2c4ac71987f6bc18fc18acf9c5c",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redux-fields/-/redux-fields-1.1.7.tgz",
+				"integrity": "sha512-XM6VvPUUZEJd2H87a8pVrSYpJMjguz/GiwsacLZVGxNJ7Uo+rjbWLiPPTbMH6OOiGxwr9WWvHcZbjpeNRs9joQ==",
+				"fileCount": 25,
+				"unpackedSize": 38234,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbtFdmCRA9TVsSAnZWagAA5MQP/2m21GcPb1hYGmOYIptr\npwQKmaCdoSJC4w9qRNDtO8Gw+KrCnQ8bUXwCqTNAawBH5PxQlmxbd6Iyj0u1\ndKs8yC1qtEkRm+of4dG7De2kCh5FcX6Np2/P6N6ppqMhjTPyLRF/rwOusgKV\ndY+h+BnZCAkwH5I4UWY+rzmpc2+E1+4UUtsrt1qzvc46e8oadcibDrKBuZdR\nesPu3pVxloielTv/LEjY9UF9zCmCdTQD9URzY9IST8iVr1ktpQrVLwS3UX+b\n1XuPUqZdVwO5HZrzAZ4RXqu71kknbdVa1QaT8owmyaczIXssiSGdF2RA9/1L\n+yB4yeEsoL+DCahedfnhhv3AUPjKgsnoZyUhsmAangPqYJFZiiOrBSMV/4Mk\nGJkijIWkq6L8Y8MliIJ3pvheqIHQTANgXkVwTkihNXVpUsJY1gx02YK2FAtL\nJkU3xy7DmzR7ovJew6kyyu46OGquc2Pzxz31JYZM7cIRhtDiMVZX3ZxurjpD\n5bGAE9UDQLhRbROOxTbb6vjZdJ2nLIG3L2HnWlyCMznoWTTmG+bJ/WQep3mN\nTO1OWqR2Nx+NeWYP1dYvvXIeSmwuhHiKKTkUxmHTUVVZ4q7AlGk/AMrHHZ+U\nRK8Uzqz8PU+ZlkONc32IbwmkIqZi1DrISZTUzV1TreRFwVY629fSU/NiR3OD\nb5pG\r\n=xC+8\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCbkfhzxj2IAFz+4nRd8rt9nGsrpysrNwc6+VuaLMnaEQIgZRJZGpCnItkH1IoDKazqMot7EmS59Lwj4F6wKu4M5CE="
+					}
+				]
+			}
+		},
+		"1.1.8": {
+			"name": "@cloudflare/redux-fields",
+			"version": "1.1.8",
+			"dependencies": {
+				"prop-types": "^15.6.0",
+				"seamless-immutable": "^7.1.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"shasum": "4ebc4437090ecca4b56404ae8bb365bbe0607d52",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redux-fields/-/redux-fields-1.1.8.tgz",
+				"integrity": "sha512-nvkcH0WKxdGw7LIjUKbiQy26jmzWsfO4V/ZZJ2BW1kvGxXNj61rE9Y+klE6wZjHhiXv5ZmtqpzkjkK26LAGmVw==",
+				"fileCount": 25,
+				"unpackedSize": 38462,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbt8x7CRA9TVsSAnZWagAAzhAP/0AgC+R1uhIJ9T4aq12a\nfUk3R+W9x6jJklX8qnDkfiRba32ckD5AwAdKtPX2ZUz3BISDrtWCk6c87X1z\nb/X7RJy+WZNwydWdOW5xLD1DBsYezDlxczWHPoyinCJBTXkzepLPwHbvN8NM\nDrUsyLluM+GkoWwR1nteq6xIcmze7LEcqg9RifYLscXFSp/EttMJmqn+ibKm\nEnLZ854Ag36ImVpjq2iTyFeVlZclUu4N6094p3bRNTObflGeaDY4eVKyajB+\nSt0BaXOIPo5U6Gk66MsBfyEa5oC7M/8u7Z6yDxPLQ7S/earK1ZhxIDVhFNQi\nQP/Xhy1wIlL2yOxV03ej9dpqUC1/r8x4W1GTyHgdBuHDSRTHfZn1WI5ckjGg\nzXlYsMRCTSMpL0NhYUTO28bi86DCnFine9AliC1Nt9kuweUruA3qILFxEd7U\nAIvC0vc45beHanIp8lPWwQ5sDzwxQosGA4plCFHC/Af3D1c5O8tcTaKh4QUy\nWkjDbVqM96V5ztKArGokdRCrrpIaynKUuV/sJ+u1M5pwRNmSwFLgAixP/HZz\ndpSwh+5dbp4ko4ZvgpYpgdO10XE/WoR2FJOWl5XxgF6FzkWEDCeThhCqHQ4n\nkqSAUpIpTLHVooeFJw4yiWvBXDddrv3YMhRTnUDhGH4LO92Ilmn8nPUSfWMU\nYOnl\r\n=mD51\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIHZQIUZRWPgxVbzrFqzN+W1fDzEeQxIyGJotgNAzT+moAiEA5Ev+YwnPJTw6ZIJ+ZAjwE7MqvB4vje130q7PpmEbaTM="
+					}
+				]
+			}
+		},
+		"1.1.9": {
+			"name": "@cloudflare/redux-fields",
+			"version": "1.1.9",
+			"dependencies": {
+				"prop-types": "^15.6.0",
+				"seamless-immutable": "^7.1.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"shasum": "c3f366d45d790d3818bbbfe4a0d783fda79685e7",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redux-fields/-/redux-fields-1.1.9.tgz",
+				"integrity": "sha512-G9U8WojvMaBkYvhmParuFKeXClSTTIcRlBh1CSKCG7ZuWdkk36euOM3kkH+D6zTSiEp0lvTEgLbW30lwA9OAig==",
+				"fileCount": 25,
+				"unpackedSize": 38688,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbwIETCRA9TVsSAnZWagAArG8P/jbzs/cSWWK5ctbCImyc\npW53NcZCYuoyxo8iEJvpA8vsCOSm45SXx9Gc8q1Bx1DbRtYkh7r3SAnEguVb\nNItMZseB0L1TRrTg51Jzk12iPWMMGmeYH8YoSoHMeWtuSR31+3SSBRQNEAT4\nW9U6Prsi9F1NwsFE8uU61i0BAifl0gaOX6L+EJ+VH1v4eKdN3L3xwzFyY2hP\ndIcxO2PyTQ8f9IwH+zXj8cnbNNsdecqW/ndRbG+kGpwR3CMBoTeveTbNg4od\nF7lIkB64OtIEErSFnBU/H+EKQq1ygGyw93mgprzWsllesHPEnWMrGRf1lRtq\no1nXO7U13Ps9da7pK02nHCXTj1FaXyKyQnnBU28vgdMBXZqBB4T3YwAp4WF2\nx3lv2eGxmYLRm8ZtIslU0F3oQilZ12eMf1x9e5zuqkypWyF6YXcjQsp3M4qy\nqoghLQxZ1+nn3K3O5obhtesVtdNfJuDvMqtWEfr2FkeLDOWwTRYQyAM0mxCr\nEXL0AfL2LF+oXIXU+q/laAmjR9mU5X9Map3r+yfPC04xS8eKd8r17MTDudbS\n8NeJZb0+WWIGfgBDdNbv4GrtNuyU+Fysq5p2WDfS7Ht8uSF48XK5huOBv1o7\niuvNC2t9aasiElNwK1Z8YPNyjZGXOmg5SqNAQdwvKD3THtjb2rezUlA8YCKl\nZJRl\r\n=kWpA\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIHkUBpEEaGb8W/aXyMqQdRLIu3kRPY8sK5ASwHlIRcweAiBgzQsvwxVtBhBMJfumkIj6mQ/vbRhprv/6bqFeUzgtLw=="
+					}
+				]
+			}
+		},
+		"1.2.0": {
+			"name": "@cloudflare/redux-fields",
+			"version": "1.2.0",
+			"dependencies": {
+				"prop-types": "^15.6.0",
+				"seamless-immutable": "^7.1.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"shasum": "239447a5eb670af7035305aa38ac8586db9ba8ca",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redux-fields/-/redux-fields-1.2.0.tgz",
+				"integrity": "sha512-iNABImtxzf8zHuTRflYs8e75U8iD6UqABebS4vDQY23a5C8kGgmlZXhPHduFXl85IE2MSrkW+5kivphmMw9nxQ==",
+				"fileCount": 25,
+				"unpackedSize": 39122,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJb0eyACRA9TVsSAnZWagAAmtMP/Ah4aErdsmKNpoqYm3S2\nz+7YH1iDoM9YzKOEFtwHDf2djBXdkTaHHX4gW5gm6e5H0raQzOmqyOntNlid\n/8k1N91NLkVwIp7yBpQTugnOgh2Lq4MJ3pdx36Jul8nf8Xzg5OSv9xydq5G0\nTwgB/u3J5kN3+ZtJWsB7O3jkQdD4lEypny2qPYCryQ7j+LYCw2lmf3tLy4pY\n2vkyWMsRKlEZa+VogEI0SleTVPdfnt/o8FAyhbxKHjL0UHQizFJ0WZkHjwW+\nbQnHkOQZQwFeJhOBdQ+toCcCo20vKlNDBsAOj6ZvPdIh72/aolJj3hPrnjyu\niF9KEh23doIstxJQCdporB8UWeu00Z5HoOZ3JeHeKICEgtRHzptSRv6diNBn\nO7iwZZIcR3MTmrM1cuAI90eosRVNRQWtulliSNF+NEKDupz8hGydyuZUc435\n6xPQaWjPEcdYwaGXwYN6QkvrZ6zqSaD2/B7UWTN6oEGwFhyyqD3Ap9E9db2h\nZBhv8MkleSbhTBwUb77lo7jGeVfEAWlnhHJMS0DoWZUYIlBcquakQoQAAKr+\nW0jQNSNo7bDkIWRWnlD0zbtTmLB0Nkjw1LSLOWKJ2ZppH4l2RDPliM5qtybh\njnXBfemiJX/P5yxxbVxHwPV3lQxM2JI2AZ5P1Gl7DPjDv/+/yVERiRWuF3nT\nWuIr\r\n=w6R+\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIEk+hg9YYhVMcadOJahcRSqqE8qrIXM/4FBVbqNXkeU4AiAc4pBLhQTsPUiB0/oJNw8MYcZdbgNpvrM/4uYe5LTEwA=="
+					}
+				]
+			}
+		},
+		"1.2.1": {
+			"name": "@cloudflare/redux-fields",
+			"version": "1.2.1",
+			"dependencies": {
+				"prop-types": "^15.6.0",
+				"seamless-immutable": "^7.1.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"shasum": "9ad7c0534cfef514d1610f79c03d746c256d3c54",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redux-fields/-/redux-fields-1.2.1.tgz",
+				"integrity": "sha512-GcIkUtCMUkqftsw6xeQyXD/svaKRGnWnG6OuEEnUOXD33uIFT93G4x7qtQ+ahv7EdXQDeNud7MQEebDfrcD+OQ==",
+				"fileCount": 25,
+				"unpackedSize": 39353,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJb10aICRA9TVsSAnZWagAAlpgP/R1R0NFOl/28uZUCWFzy\nEXu8FR1yxvivI3Sh/wvcAy87t7XUE/iDPRbHjyUX9iXfhSSjWtglDh5xDC3r\nd6Cx3ze/fFN1h2bOhF46VU85Rt7xUtMi1mRdvafXZKDr8b5bj851PKHUCo47\nBotMrkDtZS8Ajm/9MWzgrE37l37OjHFsXZVfmtxAqAWoLUP7dp8/i7M+/RgH\nc9pFPyp0cqibBv7DgKfLcdDAfFEb+6v2DmRKBjdhfjHxXwfgzQRksj9uKSRE\ne0dEEDjU9wBlnA9VU82JVRWCj0G9rXF1Je+SwvI4Iee/aku+Buj33QbWo8Bv\n/Iod8UHiTgWy3HHy7CgfxJ4OnfPgzPUBF92tS+OdfgSnxykm8kGLSCrT4Hjs\n2fwPXUqu81WT6XOVfTyX2H6tAxc/xO6QYyTEJ6IGW0q7tY2badmGo0z+AcJh\nfP+1dvpL1C48PW7fpbo+OGLTOp3RbzZyjurn8CN8MarZ7yKDpXcw9D+NtcoH\niuO6NfCyixryVnKCLtHjwMQnd//6rzHSD4h28A/MMdgLvCpBQaFfRdxrm8nj\nORFLwZVy3P1T6Z9r1QT79NA/4w+0QEj3vmmHP00Xt/Ifj2Fh/7Ff6eFinB8G\n5Mxe2PXHN2CFuT+jMgXNv9mFJ6qPgroNIF96f5cOnOGZtuBYyK5JC/S5ZHTn\nt6il\r\n=hZ8o\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCICIk76fqs+cjcmOn95y770xGySckDynJRPsBHsryTSogAiEApbz74m2eUWKEPDoJXLObyFeZOZH7IQm8PxLYSDgHguM="
+					}
+				]
+			}
+		},
+		"1.3.0": {
+			"name": "@cloudflare/redux-fields",
+			"version": "1.3.0",
+			"dependencies": {
+				"prop-types": "^15.6.0",
+				"seamless-immutable": "^7.1.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"shasum": "332cf20b1958645ca353aa1fb4c194dc9fc6b790",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redux-fields/-/redux-fields-1.3.0.tgz",
+				"integrity": "sha512-eJUaUIGdWGZ4VkoXnYcwg84x7kvVXaTW1XckkgZbj/p3aGDb/ZRzUoyTnv+B2dZiH1FwZefUND+NtXvdqBQD6w==",
+				"fileCount": 25,
+				"unpackedSize": 39646,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJb2JIECRA9TVsSAnZWagAA+zEQAKBhIlXN9txzd5lo5/WV\n6IgcZLVz/cQz6c00VGZwzAkxDlXZRrt50wuyvFJAXk+iYQ7r5mCI6oMbgsXE\nPG9MPtX2cvYoX1AMkIJ4p8Du1Q1Hg6bYgqgKIEKn2vEqC2k+EfrMEdmKs7+0\nYXFBS5Vo7t8wlYdXWMehJ/nuG6ZQk2QPti846cSrpoPhqEe7qYZAY6VBsBNc\nQ0Q5OGrSWbPMo+Lm0Wo37WXV3KsYa5MG6FJjm2l37CR+iwpcKUE57QpwhP6D\nrnxe4kFg8to/SAr5abk5dSL68mv7/SFrrNgTnLw37cmXOzyQodYIVP7hfBsp\nT6HSMeu/ST+Nb3t3l80wmVs0wNpi9VAFel89tg1PrFq2RL7y+/r8HxNu1Ars\njwPskv5p+HBpXdBjUT9nahwJGvZAcPPb/krcYwH8mTlt/zQ+Fqh5tbejk8y1\nv2e8dQb0kY5+aBR26dgWAzv1L7myH6w6AVDQoKUMAP2wwQuifqWcFpf5unKZ\n2Jvt9Mvphl6SQm5LJeMriBYUzLBqxoX3uN1WODRBzUlFpWh8QAPu6Aj+0JDj\nyBxSlpSTOK383CYZ6o83G85wEIk8Y5NVE/iMllAQs8Zuw9GYJOKkvJwjnK8L\nfJf4mqf57EldIsVLcJW2Gp6Nlm4IxoazvjroCjFcKLbSlEuUpxsVU6PkUKW7\nG+X/\r\n=SZGn\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIF1g1wMUXsUj7PwzkUSQkcY5XPjcSt6WCLxoVvoolLP+AiEA/TqiS/nsByzUtLQj9JEi6vTp5ySV2nCy8vX5jmlHzoQ="
+					}
+				]
+			}
+		},
+		"1.3.1": {
+			"name": "@cloudflare/redux-fields",
+			"version": "1.3.1",
+			"dependencies": {
+				"prop-types": "^15.6.0",
+				"seamless-immutable": "^7.1.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"shasum": "694194dc9e06a80fff6666adc71f0020527331a2",
+				"integrity": "sha512-wiCdSIAfS+xXP3S8Yjnth/Zm111IUbJV91WJM1lRJWpNjjM1KVY2pA4z/GwT7b6zuvKrjb6xnt4LjfG4DsJ/gw==",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redux-fields/-/redux-fields-1.3.1.tgz",
+				"fileCount": 25,
+				"unpackedSize": 39760,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcVjc6CRA9TVsSAnZWagAAgUcP/RDRRi6DNlGGNhz4syLD\nOZLTHcNGtA5aboptZ+MBoyYAjcXaZ5sCpkbOvTlCY4khUCzCmk9Ukhh9wyUA\nxVjbvtpIl5XqOuIohiHjfG0Vn00ZpVSoiUBKTm5LAePFwD3K+fskhbZXsgSp\nAoGSZkm7+78aHjMHdfgYBm4uqRpE2FuCRLzrWkfvNkZXQExpQ+ZVAegHlGRz\nql1IrlMTdbx7yRn0yv0ajyRxh9EMfnCwrJSwOtjRk9bGRJL4BsbYrxGBPewv\n/pnWoprBdwOsWFZKlhxdaB2ykkrhU/jCtk25++MObMocPtf/6ZL61HPSsDSx\n6/dMccNb9TgvEgrPxa9wCoWdwKkm11NeXsQR0I15zB+H035DCBypuZIswKT2\nA0iWcVsjBkqcJPom1e6huvEA8pjddEAy7E6oM4EdCeea1Ax1IN8mb6aBd4Wf\ntv1hagDFXEmh4qTtkbI8onG5dbShENoOUWGbLDtbzWI/llP3TVpui1WNtRXs\nfsYUnO52DSPMAC7QtBaI5t01LmlxqUeqkFV/Cvpp6gk3HI2DjFCw9asx/5jC\nhGAwPo1vGX8OrxfTxxmw0rDcnyoVEwg6CdIj6VNGuyoBuWRsq6UpwSdo738E\nGkbVmI+8UUHNu2eLj7lhKtt1PwvE1poIX6kDYh+WqEy1MsGwwiWx0l3skgTT\nDDOZ\r\n=OKSW\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIH16VqzIRh8YBbIAlTJjKt5YS2kq3MRZ/m7UHZJpEse6AiEA5lFfqiyw6Ojfpgt66QGzSNR9T/DBWEQg5gmWQ2OtDC4="
+					}
+				]
+			}
+		},
+		"1.3.2": {
+			"name": "@cloudflare/redux-fields",
+			"version": "1.3.2",
+			"dependencies": {
+				"prop-types": "^15.6.0",
+				"seamless-immutable": "^7.1.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"integrity": "sha512-bInRqOQ+GE9XdsluXbXg6dTZyPkK7O0HrV1xJwgss2NgaeoZxvA6lcRc+80OQZe5OFVAU1/bwXhTWw2dVstGIA==",
+				"shasum": "be0248b0f4c32256d3ae47f86248064cb9b7b985",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redux-fields/-/redux-fields-1.3.2.tgz",
+				"fileCount": 21,
+				"unpackedSize": 40023,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJccKleCRA9TVsSAnZWagAA0TwQAJzSbrlO4bYcUJASGr7l\njuPDNWDJGzAV2+vPuTB+e8yLDJhBIcw/Zc8Pder1LFPm5bhFH4/t9DlGJa2X\n7OZxRpnr2EMmBT+Q69KANcjrNNvhiH5HFaBjFaVm0nTfaXAuv1N9onMJClge\nMFUu608bsJrZA7sGIs0T87BfYEfSEliFjF+m0EeFuA4kEZOLh2lu6mqXud9m\nK+SFPIVJga3xEf75AZNa4ftl9vAXWwSDjUDbgJvevm6KVKgAL6DHeGVpNtiJ\n8nFIben5agI8a4unk9dBXpVbKWgLBW8tl3VqpLjbWGh/meM7IFoAcuDY1hZr\ntMFsEXwtgQOeSXlTtc89yuSwumRo/JTG2nkKMpHAM3uq/4OFa/jZwUIfmgVX\nDcl4J/Bb5YgwMP3lPxUVD6R6qFzmdT74aL0alsnLOal9yOn5JIgQdoZ//6/Z\n/EdsIuC2FZnRGc5GQAIuicvl0NKJ0J60HhrZuanE1WVBzECbDG6+SzUZVbju\nRICLl62yR1Ce+ZRHWURausN+RKdsSZpsoazg6A9cP9LU+YBqhg3ZfImskJSs\no4LslOx53mbgq5fhpD1d4p27sFmqnq6UX17xHAOO1vgZqtyiFr8ABJ7oHp25\nLxOgqQB+Old9Vd6LqCLXQwhnFf9pMnn4OFptfSN0wswnnr+n+59AMWD8utw4\nO6zo\r\n=ICUS\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDMYctIdQWnrbatTFv5Kc3Obqj2K7WXUFLNlLfMvntaQAIgYC7Wl0oOLiNoMIMfbdN+OYDptruGwjPN7IXdJVP3jvc="
+					}
+				]
+			}
+		},
+		"1.3.3": {
+			"name": "@cloudflare/redux-fields",
+			"version": "1.3.3",
+			"dependencies": {
+				"prop-types": "^15.6.0",
+				"seamless-immutable": "^7.1.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"integrity": "sha512-QC2Was2gByEtLGAD4tPtGlt6vj7PRU2MHisaejYMI/K1uMC3oEWL1Sm3VMvweIqaNxbZhkMZYZsz7B868YqDHQ==",
+				"shasum": "5c0ae16bd1241674be0d3860bd72fa30a089de35",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redux-fields/-/redux-fields-1.3.3.tgz",
+				"fileCount": 21,
+				"unpackedSize": 40236,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcoi/VCRA9TVsSAnZWagAA1JoP/18sKFSmhqP882Dgcx6M\n3sM00R7cQY5z6n/wNI0ayvfAlYb+Vip3QPNZ9xVX0LIXbtrMWKlTBXDeO3Mw\nK73K8zdyLPjIGf/TLTHKJouLrer1YYL/m4hAP0qNlb0RT+YBZ7RB26yLIOiH\ncyP6u9MxbBGORSn0jpNwOkaok5GSNyrhka9HkdVUzolynorJjlUsDlrjzpoK\nkvMndBGJaObu8NbOG4DQphLBnhz12uFdcUeH05g+7VsavzP9vkaYzwIVq7PB\nY3oQeu4hRXrZOUtCPgrUg0xC2aFywuVEwttgj7ii+jk4Bpoicoua9vYT1uBU\nKvj9u4omXk6Sc9Jo0DKi1cvA20OIB0LFT6ApfD+JozYtZegO3qceJH7UcfF/\nO7Mrb24smBWamft38cwrWbInd8lSJK5xJx4kBQLNQ8G0SAnr4eln3YR2nKSC\ndjMj+/Ta8o+9OW7lFqlrJ3vsHurbUsox81vHTokddsEWBACA8OAntEPPd9vD\niVclT0XBmkEaFsvF8q33lD9xlzmxDaRsigEElgrWI7eH0TxHhlAFmC5ZuKvM\njHNvik8FJC8wNLlDFFV5f6ZrCqi9jLmcXlhBZG4g3qnhW92U+/pG/TozXfPS\nJo1qQ6LSRU6x3R0FnJqxaasSLpmkPJQGVHHbeTqyrtC7nYuVr0RFEq4qTiCV\nRrtg\r\n=abfd\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIDiTDEElDCYC+Ekff9UxFtzITzDEEVRbScu2A414SlJ7AiBYUNldNah4by4BbfhBEvfsFvchggRbpppBP5V2OJDGtQ=="
+					}
+				]
+			}
+		},
+		"2.0.1": {
+			"name": "@cloudflare/redux-fields",
+			"version": "2.0.1",
+			"dependencies": {
+				"prop-types": "^15.6.0",
+				"react-redux": "^7.1.0",
+				"seamless-immutable": "^7.1.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"integrity": "sha512-PwBjryLXQXV+K2GQZWjrBPImcOO/Ze33LghScq/3LW5TUI58dzPF8vbu4pZo282ImVIOZYutDQF5X2+fiKR/ag==",
+				"shasum": "5b3357f135a31cd78d432cb4ef7859fcfa73ef12",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redux-fields/-/redux-fields-2.0.1.tgz",
+				"fileCount": 21,
+				"unpackedSize": 43548,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdQJUSCRA9TVsSAnZWagAAh4IP/2Slw2HLn9SVT92/kvmz\nac+PL3UMV0y/1HkVHmnr7txLpo9vKOIDbj8mFtjeDFf5l8Tc9Fu9mGZ1mlyw\nCVCADw35oJ3u4PViDx+++YNeY6VqSdnYfOsO1z2S4flvM0GONzfAABLIJ5Ss\nC3nP5bI6eTAnm4lIXNIlzWm9eoXdvPBXlsOu8ZL9l8z6WZGhDwUIVvtxywsM\nFTfS9TzgdpdwA34goXnURVKQXM+x3ssFw+98hEo2CEnjZ8rtacZX/rXorK5r\nVc5giGWm7HZQY6zx9NN4aDQuPqbRG7KnOwAtlsgQFOC254RRDzIkTekkTvIQ\noLSiuTjxzRoILqlqNWvyev3/Bti834PkSIf6YlIcKQxg7xtKdeU7ewwDzW24\nvwt7Rmoc1R2X6WcrC1vFczjAPUyru4teIwS/ZTZYvnkVzASOETAEbqQpgJLS\nwx7bQ86p9eOsABbwZrcIfrXSF8berB41vDJLnRZ5P3/Hh7cwAHtCEXZD8R1h\nM3p+VRXm8UVh+32V+QCL18xIiKqenjNp+gc0r6+ZCouvnO07zzqeuHqNtIaw\n8Z/DmaHaXqlEOfoC5KyGOr1DXlRIWavQjtJA5b7A37cQNxN+X0AmeBnIbdtA\ndq/JuKEctup/7mN2hUH1jnh2F/Wb8HTTg0EKHY6MWtR/ovzxTekfxRTHmzw6\n9DcP\r\n=JDzQ\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDPFb9ukA36T25z6iKhad6hVJVVNjLoUonJMeDZdO/JTgIgW+4Z/a/U2Iyc+P/IMoh3V/1rN1h0o8+awyKk8+fRBKA="
+					}
+				]
+			}
+		},
+		"2.0.2": {
+			"name": "@cloudflare/redux-fields",
+			"version": "2.0.2",
+			"dependencies": {
+				"prop-types": "^15.6.0",
+				"react-redux": "^7.1.0",
+				"seamless-immutable": "^7.1.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"integrity": "sha512-mqlN9IsF3Gi7ga4sPg6MZ0RkJGwazxVAMi2TnA1USATTy1X5/jigHo88v3Pa1qcpc4qL+//1edTPJI3PHe82xQ==",
+				"shasum": "3b0b1a4b98a77a2533c8004c1648a0d95a8f6715",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redux-fields/-/redux-fields-2.0.2.tgz",
+				"fileCount": 21,
+				"unpackedSize": 43683,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdSZRgCRA9TVsSAnZWagAAcDIP/AjsfgsZAAOtiMsY28UB\nJalNILPoew1BFtUPhJUElC6TTtnhwPG5X6RuL9AaugObg1uAg/ciZwdl7q1p\n8qCP0FW/4xTz8mQv+cbcm5kkWt3D4FJz3NK9AS25z3FOVPe4Wc3e12w9+ESE\nDFBlCHhGV3uc+iouPBW+YAYMLI1A3Zb9rMMZc/r+t637uPMNLqGBKVPQtoHg\nqcNKNJJVho7t6Igz2OWGtvy4j9vIsiub9C9nzXQWpz4dTnUpepvVN/ETTYzd\n+hhOKHQ5hcz58UN2KMPylhahlny4I7JnyTyba0z5ISK/2Do+qiWciDT2ZF5x\nP1glqzeAYizT6uAn8epEVNc6ZWoC0CRY9I1AMFzFBpFgakvXCMHyrvN7Ci1j\n2sqh4gTJ6TPrCLJOyQXm0uCzLxXrEZLwGp5D1u+jYYJAWq+aiG504x2IoZIH\nWi0PqOXkFrHMvftI25+mwrNLV+HBgUbIex1jQWBkk1jqd1SVIywF9lKQd1+f\nyGJyFsjaBDtmyVa9KbbMvpqjRgR12kzhn99vbQ5s+w8pLlvGtlc4ddQCJVkc\nBEb2mXejkd0d1pxiEQ3w1Ss+IaItNlbFpA4uIiXX1wcE6e4LdJY5oM/lXqEi\n4PLEsLUAaDP8y+lh+gi2aQfPKuUz2hZ2r6PnN/WpTD3cyLd8nwNWL6u1p9/L\n8vT/\r\n=jovR\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQD9uSPZ/TEAssrU9MOTop7hBTUU8BDYluRKWUerIuu+5QIgIXVw4cXinewV2NL4/234j3rG4mDxQ/tDzXNazPfnOP0="
+					}
+				]
+			}
+		},
+		"2.0.3": {
+			"name": "@cloudflare/redux-fields",
+			"version": "2.0.3",
+			"dependencies": {
+				"prop-types": "^15.6.0",
+				"react-redux": "^7.1.0",
+				"seamless-immutable": "^7.1.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"integrity": "sha512-3cpb4HpkNYxvfoML7YYoc6MLvYCRnjPhhKpo6RVJYH6AESo7jCBV2kMMwHwDnKazGbZfIhKIBEgwJHW+HHMz5A==",
+				"shasum": "686c74669311d313eab69e95a1084739824095a5",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redux-fields/-/redux-fields-2.0.3.tgz",
+				"fileCount": 21,
+				"unpackedSize": 44134,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdTCHsCRA9TVsSAnZWagAAFdsP+gPopznvIEpPHNyQ8hQU\ntLkZcktNuRa0k8DcSmw2C6BQ4Iu3qOEPIsTWfRwdjMnwA5Yl8FtM701fWwJT\nwxNr3d2GsLNwdlAlr5zqLjonKJvmYurvODzlsmjFPHSzzAJPo1jyCKL6npPi\nKWe81vBE0rISFeDgX8MMF0VkR+YIrCXaKwB4/cbZvZBe+geNQLgbX4UGfOem\nFDsG2jPs1Tugx/5+RBqwVMwJcG7pC5XYX4mJ1zMT7WO96E3ty6kL9WgjUjp0\n2lUOfYhgyCHQUBVAI1NZBTY/MccubhNRTV7zUixpI7k1fVHaJfvecDG03Ygj\nGLxpDFl3ohWdL6d5RanSkGkEiyeLKTpS/VbzktmfR2pkUsZ3UMXtYuEQxPun\n986SHKGGxXgbcYsFn9SHJE2r1Fc3CSkINn6qpBZlVmFzEl7wX4s+85/s3847\n2srTCUf6i/m3mCaAZ38W/aORiENC4OzKbWNdyaYIf/3xL4A1AadjWgJMOmDb\nB+4Qyyaz4+YLp9CzdVgLJhLZuxsS1jdx8Fc51v1XFc1jWJX25Sd1hARpXMs8\nFHaKKx6rBg87gXl67HPULlNO3JPxjOfIenP3+wccDC2xAfoOtKh6kZ/bD/fp\nLz5oh6Nt2T7drik8i6mlk2DwDJ4rQ+j1kKEgsXhrv8zcNA/be5K8GKjQdeEz\n4v9x\r\n=1Xd+\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCNJahd/AuO+LjGezza/6VKcu/QXNA1IS+ji0t4J7KWLQIgODhTlZFnRbfFTnFTfwPtprTn53QHgBHjbBB6vj2p6wU="
+					}
+				]
+			}
+		},
+		"2.0.4": {
+			"name": "@cloudflare/redux-fields",
+			"version": "2.0.4",
+			"dependencies": {
+				"prop-types": "^15.6.0",
+				"react-redux": "^7.1.0",
+				"seamless-immutable": "^7.1.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"integrity": "sha512-6KFyjS/RVHWooMiDQWBkStQefSNXDyn9RSDXMqFqvxPez27abaEk94wglYDyGk1i7llN+tPFTWJsflO2NGTxag==",
+				"shasum": "a000fe2259d7bf7d7eccbc6221c04de3c2f7716d",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redux-fields/-/redux-fields-2.0.4.tgz",
+				"fileCount": 21,
+				"unpackedSize": 42973,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdpJM0CRA9TVsSAnZWagAAGGoP/2v7V8+W7TcCBcO1AqmH\nJFAdkqsOQGuYOTq68CfkWe78vvp5HKO6MhQKBd1xtPeXnecN/nHLygFe3GW6\njeZCDO3QsBzwJAK07Yj1++iocCLCpqiqfcRYPdv983gDzj1SdapTXYiJYa10\n6529Okj1Vz9YPiizphdonjBn3HPXH+/L9a0K00k0uBsG7IQVIIA4feQAdne2\n6rJpEedg1dz5g+3Uc4DaxRt/ahK3pxfxxBKzjF+LlRMHNk/mlulDvWL/dbL0\ncG7AZK7e+jjirwrFdpwQ/iMqcbS9psIycNp+bN2DGY4yqPcs+MhwsjxL/xLV\nfmKYPwVPUaklpSu/yeyqcsNvbOB1L3tnvt6ZHMlKa9w5iUk0CPvXei7zZOzf\nMDX7fqCEFcShjp4phngFKh7xvR9L5ZcDelOfL/2VKO+vwmtlkxJqa0jpbRX/\no/S5mXz6sMWHB5WWThsiwfecdPNAFSKn7e7ho7LgMm8tHlewKZE1rGtjNS66\nP74jFVNJrHRi++WqpjumSJ+MJgFdmml36A+sY0sLfOlHhuVFQ8+hF2naHfoD\nv0ex4HhK58cfOz9929jrfh+ls0sPTEP1YJobpGN9OA3ncpNLuiUAIwhlAPYW\nremQFx4LhmvNFoPf37IlYJ4fxOGLBnv2lj3VqdOd9NqYdy26OhjX/13I/7RA\nRAw/\r\n=FoLt\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIGmNdzCslN2mwk/+VBTOUgeaM17eX2MDTFHLlxDTidiKAiEAlkJOI6g+xK09HsMPBqtbOyvHXzv1gTjQtNvRkumRNAk="
+					}
+				]
+			}
+		},
+		"2.0.5": {
+			"name": "@cloudflare/redux-fields",
+			"version": "2.0.5",
+			"dependencies": {
+				"prop-types": "^15.6.0",
+				"react-redux": "^7.1.0",
+				"seamless-immutable": "^7.1.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"integrity": "sha512-h8Ysl4BZchMG4APrtxtrfbii39dYb1cG2zGtfuQzxv+OgxE2AhlL9f9KjscnR/TgrUVNVPeoW2XxBPe6COeYnQ==",
+				"shasum": "3808d65a1736dd51b6f561bb68cbdf3e6404d9c5",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redux-fields/-/redux-fields-2.0.5.tgz",
+				"fileCount": 21,
+				"unpackedSize": 43041,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJdpaIkCRA9TVsSAnZWagAAqAUP/jncYDgDboxwmgVS1rwU\nha/uSrfLjZU8cPEmGjUJcCu1I1F5DvWem09xuGzQnJfD/uwOnFinklWs/HNo\niT7u8wqj9Dfv1sVM5bm9ahCk6cilUB20442N7Dkmvl7QI1Cxy1Lo0/2enCwZ\nKOxJLjlfwXZpBQIUNdfOgAjwURs9FLBbJzO0gP0LsyTu6wfQfV1fvOYLAQfZ\niNUlzGyBvJ/t0uqP3VqWMfIwTK4wzB5Saj5JscUvfK57Orb2qytHS0a72j+S\nWKQfEnWGS7RuVDctITaYANEfq3jJzKN3fiUbqgl1EGAF6b65/knXd5ejFExt\n8HHAQMspghw1qT66cU1WNfOSa160YsxcJhbJHQawnkuuUTRRhlN3FoTMIdC5\n6kgiIHKwr7AfjFYrcJf4NhJEPM9otUQ68+dGl+aJUJejgghy6P7vgzlQITAR\nZKqjHp7Sw0vXBRWWfLUZQHPvhK56+zqomNm1onR3rgaSafVJmdK369h4rnWN\nNMBsBwCdlp+7VckFAHelwMcam/6PozRLFp/RmjCd/pIsE9pgi68KRsOVySKe\nSLlozzqeTIuoO2O06p9yxcTwQhhepmcKlpJfTKT9pmtiv3S/uPTUiAp3rFt1\n+AX6yVc90j6DvOkcbEnfe8k/E3dC1KCYq034/6GD2z6Hsf64x3vxgPO4QX8N\nE5oe\r\n=tncL\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIAabqOQ8lwsQskA4Z3QzztaNYUK2ZrKY6L7DVar+mSi4AiAAilvCK6s76TWHBXthcxPRpB+Vqc+dpuy6PiZ6/8pjdw=="
+					}
+				]
+			}
+		},
+		"2.0.7": {
+			"name": "@cloudflare/redux-fields",
+			"version": "2.0.7",
+			"dependencies": {
+				"prop-types": "^15.6.0",
+				"react-redux": "^7.1.0",
+				"seamless-immutable": "^7.1.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"integrity": "sha512-1eIGvlLo3EOdfzu+1pOYuZsggJn4Tp3G5T9WB3LFcZ/Knf8qSlElgMOmvgUuTuN5+qytx/b5930aUNUfc8sOtg==",
+				"shasum": "027242619dfb5ea22284ad9b6c2edc298ab7c56f",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redux-fields/-/redux-fields-2.0.7.tgz",
+				"fileCount": 21,
+				"unpackedSize": 43549,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJd1NFZCRA9TVsSAnZWagAAO64P/3CfEmnzmZqmz/vNTVPE\nff5VlRRusLJh+pRB0+Keko3p70FnBwmwXxx0xlQWT3ZDXuogqrGetJgdNwbW\nO5XQ0sI6NiQjRm36mg4KwAkX23A/ZNsXdR/XukEweWpBVvhg4sLp9m/oQpM0\n1ANPLu265nXQ++Ggeard+f37fPMc5sojLivK/u6T3z7YDcqncvva6SHSc97W\n0FIUhkkHCJ+hkZz12HWtgOcU9mmi58RP3dnbHdjr5rlCIh3BMer6X4sn53Uf\nSKhIbZQN64jNDSwGRXkW47f5ML4nAA3fxdWLknrTbWCcC1hj499zLyrJwX/3\nSOUHoX7C5/YKufaqeDNlkxmT03gwObYHPdsgMB5IrsTVYqQxdlZfk4PbaHcq\nDYn2biLduaDPmGrKRqtLMA7JZ4cTqgr29Jyz7UXNreZ/wLDM4M1w59uSbvSb\n7J8coQou+YMMmUGOkLdehGrceWl9s/STZo4x10ttqMR4aNlOdtlNSdLUHMDw\nr2K4RVpoVmw9u9OUc8GhJAwszXVXtmhPRnaYnSJtuQtxv8AbHR4/lmgyGvRm\nj/JVENg+d+UdGODeZVwbVp9lKrexSb8XaIO3ifzFMkP7Vw8kdKSWbaiczdCW\n3AfPlEciT7Udr6pX6dsODRMEij24ZlDstKMHsIK/U5fwWqcvUqHOg7KTgWSM\nPlI7\r\n=YUQn\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQC6urcqz2O1JvOT0m1dBtTID/XvLCP1ij29AntXjYCE/wIgB1dSJ5a1oRhQln3ED7sydZ6t4avBgFSt7FvbTEiHpFk="
+					}
+				]
+			}
+		},
+		"2.0.8": {
+			"name": "@cloudflare/redux-fields",
+			"version": "2.0.8",
+			"dependencies": {
+				"prop-types": "^15.6.0",
+				"react-redux": "^7.1.0",
+				"seamless-immutable": "^7.1.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"integrity": "sha512-HSYZP2ugFy5+kNbzGCTetLFmYmGaB8a39Brbf892gwhoUKEcf8ocdTFXMJqe0W7R/Qq2QB8yenGob9wjIuV5YQ==",
+				"shasum": "eed85e9929aef9a619f60d47c6f37935c329c33b",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redux-fields/-/redux-fields-2.0.8.tgz",
+				"fileCount": 21,
+				"unpackedSize": 43843,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeL19PCRA9TVsSAnZWagAAoNoP/i9smKU6yP1MLe8/c/u/\nzT7gVgwc9GeuXlYxomTASbGRwOTXb0xwVFaVLZiyxMv+CVzFxVPbLn98s/XE\nYJ49QD47PRHA7dzjYxROEoEI2KzBHAxXrhCLyuc2ooJw1EcKqAddVzLR7KlL\n/IPtMsNDkGkt77TQMPjl9wWqiITQxKVEMEDiQoYzVyMh0rkvjg6/0OwNOtrI\nHeDwLWL0laaJOo5gG7/tTLjtplbik0ewe95hUDUMJg7DndM6qTUXgKlHgbtP\nI17BunNzp+lka5Irkenhr6dPjsWRhIZadyab0ANwQQv7IdBZZhERgkXcomrR\nbP3nC+stg9ovOg1n1ik1gciZIZcGSVAglx9wbSWnkPpG+BFYzJsXF2sW8dwT\nMwQM5leAv0i5KFM0YlGDY0Vk+Vocefegzn2CC/rYKkESgjNhjYQvHgC2duR/\ni+GkLz5jA+fxxlNEefQY/i1EgJPDuCQsMGAPH3GieQsSxX5L2l1apPzkWRcS\n/Dy/Xe4C1ZrrtNh/t/mLalAeSRJQytRYUPv35ZhFywtcpHAfjHpzj3ngyzni\nZ4ZpHaycvtl70BSk+5w8WCokxjQibGpsbo/krAhnhV8+45td/RulxMauJJKh\n758Qz8Z8d8wuV3wA9fYBF55Ce4iFw1uL/YUqamNLao1EoLQMYYjwFP4mpfWo\nXS57\r\n=cN7Z\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCC/WOgYEqD9b8FPS+FqoIX3u/nS4M6juSyUN6VvfioggIhAJ53HnVH919lRnJyWbJgFOvf6Vc3FiIZDpQeFads/29E"
+					}
+				]
+			}
+		},
+		"2.0.9": {
+			"name": "@cloudflare/redux-fields",
+			"version": "2.0.9",
+			"dependencies": {
+				"prop-types": "^15.6.0",
+				"react-redux": "^7.1.0",
+				"seamless-immutable": "^7.1.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"integrity": "sha512-/zmqSsgViLQSg8m7dS2QQ0i5Nc10BZv69Xl4vGylZKoVlPnOierLZFEvKMBQFmHQk81u7UPQdyMF8/KBOoj97g==",
+				"shasum": "7d2a13e8bc9b5cc025513e5da7e1c892ae9b0420",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redux-fields/-/redux-fields-2.0.9.tgz",
+				"fileCount": 33,
+				"unpackedSize": 46188,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeL4INCRA9TVsSAnZWagAAp4cP+gNY7K24puh5uDTlDBgc\nSJBSaM24g4BOSf36GDBFD3Ekc02CVALVcK0xuOWMOGoqv2BmS9w4ei9X5pIv\nnEQ3E43xnODbOjd+2wMRogcT04+UUBlxET/vG6wuE3gisPVPawFZtOQLMftr\ntvh1vX3OtmemqP5tn9SEpNlBc++4CjPMa7hxQnw27zd/T3o30VHZqPrim4N0\nVPcuaQ4oVSmPGqJYhieWSicA3PlJTVnZQZOWrK9v+0nJH8YNP2T9E84O7wTm\nCWm7xvAzPv3P/UYiDZnYnkczWU7njA2tKaUL5kRbVNYl2P6AsgquxhoL0QL8\ncloOtc5boAwCAEhVcGmpOhnAL4ZIYA+R6Ek0J9TpLFxOXKZEYj5ASC+X+GKQ\nvxCTYTOjx/U3bVMP0nemqNbkz6dwbLuUC5nsuJhLIwFEmRRfXzh7nLVpYXvy\nSfqUcxvTjkVzt94v5atYAzWn53uMluE5nHfvvkNsEA5T0CMpn8dvPCn6envo\nC+eZKnCyIkY8XoMFvteuDYVcr9RLc57DCG1F2HUgtlfKTDfm1blgal1e94A+\ndz1PJ2uo7bZcIwKGa2x4Z5tBdQ80P51hW809cPgrTJdgPTRan64ymfg+5PeH\n3vFVEcL2JBZJJYKpuzAvUSKw32K6C5IV9H6v5U+0MvSSalzwOdGlEqqxXIgA\nsjcV\r\n=MI1w\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCVRT4/h9vz+aqdhbfXVvU6iPJppgmPJ2koyofD+kjvfgIhAJUbU30UFd86yVoRWIdA4+ymM0V8CeOZVfUFVfO5WLtM"
+					}
+				]
+			}
+		},
+		"2.0.10": {
+			"name": "@cloudflare/redux-fields",
+			"version": "2.0.10",
+			"dependencies": {
+				"prop-types": "^15.6.0",
+				"react-redux": "^7.1.0",
+				"seamless-immutable": "^7.1.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"integrity": "sha512-preIisbgjOpMSi9vTCRDnastA/XyoJm+qPIx2qMbpCuOIjwF1nlV6sO3BicD+lFuQf3kAtwBSU/6NZ67Z3bs7Q==",
+				"shasum": "86a6ce800080d0508b98eb26ca2219ca9dbe94b6",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redux-fields/-/redux-fields-2.0.10.tgz",
+				"fileCount": 21,
+				"unpackedSize": 44258,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeNPLTCRA9TVsSAnZWagAANf8P/3E4TlL8nam/H45zEVX+\nK1Wv2l3MKWejGloDl3t8banqjveelx8hNZx1q1oEpKuhyI78VUectTOvH05j\no/dHF62iSmpuGtn4ZSKZL6pxuT/OGlWXHckxHpnaifoQdtYJmttPExpBQtgF\nytv4PBIZ/ah7i5izif6GTZUsKneyQtlm04oFHEyLNzFjVDY83zk4UIWlJD7r\nnruexdneiZHcvojWz6ptDh5HsDHorBJtdu/slZ+6mgM9DjKE05SKpuUoMuba\nR1Zv+932zMWRNR2jMufl9EdLoKg03Ilik2k941T5VxtwMPzY1XvHpi7ZLGzp\nxNFU/r5+CRU/hTgNz0E6d2L8IeJG6FLPOVcjuU6ow2b6rIDWsil2nEVT2nBC\nXmSjVukInmQxI9+KNjUFkYiAGa8tg0Ehm/1zazSsWnVY8dXgKsUWI8eeQ2zM\nRWxS1mWplAsmN3TI0AYi+Yyjz9T34LHiZ3dXZEmpOVKjQdJs2yEr/cuA74CI\nHmvs/lwYJgzY7bN5tUkkwBkK19PzlvOeBg1ee4IbyQxw+4J/vEhxEQDB1mhB\nvJ8pDHabHDDuyHPCHhSC9IabEYCrrVaX8HpE49u5dadG2C+1og/LmeQ19ZW4\njR/ii1tKeSJJZqHwHqvfZ/yB6E5BUCMMsa8Y53c9xNAO3ATLPhMzpPshiRSg\nxFZ/\r\n=sPdA\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIGiou9J0szzGI7qxueyGG5jPzONlmW/1q00VxM2vW6YZAiB76cUW3LY1udAxyqBRGCT9tpG/o5R/sDF4M3cmBDMZVg=="
+					}
+				]
+			}
+		},
+		"2.0.11": {
+			"name": "@cloudflare/redux-fields",
+			"version": "2.0.11",
+			"dependencies": {
+				"prop-types": "^15.6.0",
+				"react-redux": "^7.1.0",
+				"seamless-immutable": "^7.1.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"integrity": "sha512-fi4AkkGoeaq7QHFJ/Tn+78diHMv1U5Ts/mYi1fNuIpNC7yZUYCUz7BBDAEDf/hW4VVirQIJvyU1Y+ONawo9ANw==",
+				"shasum": "d1308c269db2366d9b8f13bb1b92c1f5279413ba",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redux-fields/-/redux-fields-2.0.11.tgz",
+				"fileCount": 21,
+				"unpackedSize": 44258,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeNQz9CRA9TVsSAnZWagAAWD8P/0MOq1gbUj3nLKcRfzHK\niC+GmpiHvELddA90Ds/YmGybcACfz/qgQiMW+FkKsxRY45soGhVx//DZh+Ka\nI68AeNPQXOB9XPrYmd2fCONC76M+8fHNpChY5Q6ozO8HgvKmqRKB0RGebkRI\nQ/HrT4M/TxJQu3wj2KReeGX64+HV7BywO3vTVrVhd+6y1yQi+h+ij+hSaEs5\nm0WIwul3AF4XrJde9k2T+wilESUQxXuVS9Op2qXqk2wQxZyF0yIYelDNINnq\nLV0KyssYiDKGYmUk9BQEC8rkNnyxjfk6U5IbKMLb+BJsQEL0eQ/2zVYeWbcJ\n67G5/GakZH+6aEgghwEylxSn7bAGmigJqXx6t9tho310Gw8vfALSAIZ8zflC\ntZwWYy7sxbCVrjkQMZCSDnuJA16qVXC9lysQ5lb/PIf34hSITPmhFcZEfpXZ\n6Gwwc7UGnbzJqqc+myZhQycXYtDmOsyBuLX0crqd+jD2u2Iis4CMucsSGB+j\nmcvyWAjiZ+bpcWG+JGMD75s00PD3LYx9gsrT3PfVJetsSRjGQ6YSot54ffnB\naD8MOAUz9AeyKPzmBYzXCRIWEtMQQxBzk3sqFe8k/+Z6MayCGUJoHnsXImmB\nuw41vtNNeXiGpArdoxqLtvHzcCdAj6fWZjBwRqy4Kl0yq7K7Vl35ixNGw0UR\nGmOd\r\n=5sBI\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIGmUKycO770m5D7ovlkQKk49F7cl5gmNwSim9OBqc66YAiEA3jthlZbHEKsMpaB7zWswdRZiIxE8ChhK7TPIvhVFncw="
+					}
+				]
+			}
+		},
+		"2.0.13": {
+			"name": "@cloudflare/redux-fields",
+			"version": "2.0.13",
+			"dependencies": {
+				"prop-types": "^15.6.0",
+				"react-redux": "^7.1.0",
+				"seamless-immutable": "^7.1.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"integrity": "sha512-070g/N7tDaMJ0v0lxa0kyiZ5dD2u2MW/5POSMG2XHcd0dKOSX4VAx769KQCf3oTFQi8DbitaM2VldV7Kn+7tVg==",
+				"shasum": "e203c919d974a6d52b2cb5806121700ea50758ed",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redux-fields/-/redux-fields-2.0.13.tgz",
+				"fileCount": 21,
+				"unpackedSize": 44466,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeNiCVCRA9TVsSAnZWagAAEX0P/jwwo0cOV6YKLvrHRQq+\nXBIUEIlfmiqrwd75LorOWE1tpFnb6DY2BI73dR714WJDp8SrohxsrgjYSXb/\nNbmpJVK4iElbwI5sTARYSZ+OWZ2nmWoLW+XQk8PAXvKTt6TEPkzXn/2HSySj\ndJZP4oqRkzuWirv6Mb7qWUxAEJujqVXIFKblI7oI6W5Cb+AmyRqDaIJS6+Ns\nQdhI5couMvaLoFdQwp2NkrrbSjgppwI2u9H0oIeoQ4PtCWv4SyybySClG5fS\n/oytY0Bf8twgB2Yoyp+o/mVeuv67VOvCWqjvCbgQrfqZ80OS614o2qsXdrwm\ntpJ4RVJFcCXf1bycHjbwQIR/sxLACfTBiLHeO7Mfs6EnSbwu4MwudfBqdeZs\nSHlbcHvHmA/HaAxhEEDRe/nqeiF/Yt7pk6vkKge0D3F2yrCrif0KcSIj86X6\nOX3zaNfs04RypY1pIBi/Fwe96ggijFZKkrk9gBfgkxOnVljYq7asCvBoNuat\n56Vwz/7Xxz+d2fgAPv91RfSc+Crr3PmSCp/s2C0CeTwLD7UiMboRvPY29Z8A\nAbJGxV2eo8vEggNXCFynXtg08g+x92yTnOhYr7WB8fiFhygIyxBpMFMeLQuF\nRmpVq0GIZDulMjn125x+pgaGrX41rJaFvqJIXs7YPvMr7zEwlkrFFtN9mz2G\nzNcp\r\n=hO1X\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCG4PjkABLG8VUlH9PKADGHFb4KPmkGi0lQnYWQJCXfnQIgRISUM/xrZbjlWU2cRvxRkD4eBFpz9gQA/mhdye1CE9M="
+					}
+				]
+			}
+		},
+		"2.0.14": {
+			"name": "@cloudflare/redux-fields",
+			"version": "2.0.14",
+			"dependencies": {
+				"prop-types": "^15.6.0",
+				"react-redux": "^7.1.0",
+				"seamless-immutable": "^7.1.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"integrity": "sha512-aLNwxVJydzwktm8qlIVMpA9kK8VUhP+WN1xvZzFyJzxUzzXYfZ3lG5HP2DirQie0F4eT1+w8CaWsRdEA3/zAqg==",
+				"shasum": "1dc397960c39c73de46141ba338a492fd0876cce",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redux-fields/-/redux-fields-2.0.14.tgz",
+				"fileCount": 27,
+				"unpackedSize": 52496,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeRA33CRA9TVsSAnZWagAADWIP/05PZ9fFh4RPZUB4Q3Fj\nKNLkf3wVv35UGSJe0/LU4ucRDx4fyIe3DtDxxzzDrcOysy/opVM29vDc71xx\nybgRsSMpzSYLo+pnbJCuFdtveIxGnsm5hxmdeSA08wDJ6R7x8rRJigjEqhL9\ngrJuVLZEisrxZtNmmM3qCi9wd/RT8luDiCefTS6rfpbFlu4WIb+pyxCyNXXR\nVYuafRKa6Sn0Xj/EdMBXBto+4bDijwmqcgruV1/cBvb+Q7aDzNMMrN7dAEav\noKoPHnOLEpF9Qjgq93lSeT3I+dSwxuaNqwX6LCMcooCJi+0azHdwiXZguB1d\nwDjtl+6I195arU0pN4HAsW1Yym97Kchckkvn8HlxnpRK1WIh/GrvNQWeSgRr\n4056dSbMmnCMqLTjq60XSyOYDgXcBfVF0R817oupWTIggMcw1Z6I68L28tTT\nWZc6jZJikto0yzpsiwoH6KuaJiA5unWa5nsuXpMqJK3eZVhQumJrJNnbjl1K\nI7JJSjv7R8V0HQ/6LS9bUQ2t1/xgjy9dgRtUw4uNXxYkxBGeBaDAl7VdJBMa\n7YfLGHF9sp+zIidWLahIy/Y7T/+iB7pOx+ZYV2LN9iy78zZms1Vstbb6j1nu\n6P/DIQeEm/FDnD0VPs7/hBfDn6skP5SVWBaXnJmVfa811BLy5q9XiLtBczy9\n6xpl\r\n=+zTG\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDTK8pUBVytl6kdE3lFFEXPLLn0Xet4Nybel1vJHNR49AIgfT3UkJUQGPz0yrgewQnBB1uEIj77TubIVYKacmzVKS8="
+					}
+				]
+			}
+		},
+		"2.0.15": {
+			"name": "@cloudflare/redux-fields",
+			"version": "2.0.15",
+			"dependencies": {
+				"prop-types": "^15.6.0",
+				"react-redux": "^7.1.0",
+				"seamless-immutable": "^7.1.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"integrity": "sha512-ZYktLwR9D5ktFM+RAvW9M1RUxrgoYcwlVnTrx6qQrEiBzlD3esJMmMbKo2KzL86voG1s52hVvS0jr3RiGYoIcQ==",
+				"shasum": "635d1bcc36b01f943cc2b8a2f17dc191811496ef",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redux-fields/-/redux-fields-2.0.15.tgz",
+				"fileCount": 21,
+				"unpackedSize": 44675,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeRHOxCRA9TVsSAnZWagAANm4P/2RmPvYJvDxNQbeDHf7x\n2c4+CLE7qU2Ag/eUAIzQ5x3ygN2oOLmhEfArkoOWR8tw3j7U5+mblbQkj72M\nM18LMZN6G5BBI96OXJ9gM5H3abl3KrhtigHuxFNqfUdYnYZV+ghooiO/Op8C\nIpfeaQwI1u2UonF4sw0m6bivPIzHMiTHUJw8EWcY8Y0j9txDyRzCwcf45u1q\ncaaiAsTU5g5ldBuQxs0UOv6pXPaBSLXUuUdxJPc+XDcJ8cNQqS+RA2tPQXMx\nFUFv43Al5fHkpDa/3CBzNPbVlQhylktF5mvej5iMJAJK1fJyaKFdpKDag+sd\n0FEy6nVy32c/VZOGuZ24kmcFvPz+7APVZ8hVV+lGfRgK89Cp01qKRM4KSq04\nUfjzTkaD5zDojJ3wZ9+jDI/PP6QAhq/vtQw3BT/uo2hRHmEx0Uc7LXODRuc5\npEOyOA1Aji6MxeVcoNRjsLQs4bspCoJZl6tOMZK78/Be5RqXSCV7yRWttdMa\ngUjGWg5Jm2/iEtQybF3QJ0MDfjkPxGO7Wpj3Vkotyq3egVQWnOppJZH65HNW\nXxXwNesmiwuHkk4+gudbAXnTQfB0fDA60345xw7CLyR7rEsy1IFujmkfy3Ch\nl/OHR6jJAuZmyR9j7oi/yMprNk8HXOgixUG+csbC6JwFr3a3Yj1XY2urv5wW\ntwpE\r\n=gQdk\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIHQxrD8zKOmr1DEK3u/+tBuVbyYZYy0bUUoj0LjEw8ItAiEA8BYxww0xkj6pRBuwopO/VzsjJO+t2ZEF6mdcl62u0f0="
+					}
+				]
+			}
+		},
+		"2.0.17": {
+			"name": "@cloudflare/redux-fields",
+			"version": "2.0.17",
+			"dependencies": {
+				"prop-types": "^15.6.0",
+				"react-redux": "^7.1.0",
+				"seamless-immutable": "^7.1.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"integrity": "sha512-xCXhrtGM/uTEY7cTFGRgNE6ILYbYap6R35mtGCUn4U9p2jFOxDhAsLAHhgpfdivuj7sTG7Nfw4OMb5qHtJxgyQ==",
+				"shasum": "ce97295a2bfe841e30c9f29ca2fcca5760ebe11f",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redux-fields/-/redux-fields-2.0.17.tgz",
+				"fileCount": 21,
+				"unpackedSize": 44926,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJepyR4CRA9TVsSAnZWagAAr1QP/Rvacte44pnyEXJioXlz\nXO9rTEux+rcUZlznO6ebIzCJY1BYIGIkNPyv+yA14ze1J3Q8USawu//BtvWx\nQ5arfcVfmm/i2lsrOtNk9nPkk9/fAaM9xvUHChbfQL8cnGk5h0VvBpbSAwux\nlcSTrmlGIWAdiS0MBSz+WgyO/mgyzklUhKRtW8CZwZwo1FJ8tWH9pN1sbCQ5\nXBrmIFr2T0iHkowk/31l3zW74QKe8pxm/ROOy6XC70U2D/wxUUhsyVqmQptz\ncIX1ixdjjTHXSxI70uj2C996af5XS1vnIYQP/Jd6wjwk4Q1B5KBbQo85KcRM\nneLvigmWS5zOJnNLWdJoA231OUDFQB8RHHIXLlCC0QNTLOFhYeC9FtKIp9QV\n+nPYGzi3n/9ZIS5yh1i7ZFyoD3DTRlMzZ0W9O/LAJMlEDzwbiolQHcLphm8K\nNnhj5j/g5tAiJOEF0F7MSptBYItXw1npDgsMo4RsO6Xt1WLEIFaR8CrzCNpf\nXxffgosOpN4ThGyUmWX7YipruKkMYHjyDr797OhgRL8MdjSx2aQAwECX2dIa\nziok1vagLAxe0KX45Bhmzls2vQGdSFBPYWwg8r3tlG+GccyB7PtqtvlhAqY3\nSQJIt9Obsp1t46aIpIlq8t4GzYJGTn79t/rcva/gPUxj3JE4HNfPXcfhVHPo\nSOy0\r\n=a18n\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIBU2xqeeG/nkc40CQ58/iRhHIqsJvsbzybYYKBkOXpMrAiEA1tvQetVYdb9hswt4pOJEXYRzkkgN65EFmiY2pjRQGzw="
+					}
+				]
+			}
+		},
+		"2.1.0": {
+			"name": "@cloudflare/redux-fields",
+			"version": "2.1.0",
+			"dependencies": {
+				"prop-types": "^15.6.0",
+				"react-redux": "^7.1.0",
+				"seamless-immutable": "^7.1.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"integrity": "sha512-gIEOZZlKHK6U3qZfC6TverqBVu6uNWSWneSHYuxCxOY60w3TGj7EsAYY2GvC4GLYL0KCMPugAfbd/2ZbGvfGtQ==",
+				"shasum": "28696570e454bb5bf959b5a88781629352109b4f",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redux-fields/-/redux-fields-2.1.0.tgz",
+				"fileCount": 21,
+				"unpackedSize": 45730,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJevCW5CRA9TVsSAnZWagAAnOgP/jl4u9kvDSWk/r0FmB//\nSmf6m0dfpXzwtkegTmIlUA/RmzwHr+PPLY8mUHpnavo3t2WIbAKNQQJwW9Iw\nb6/jrKebJlFloq+6vVqwoNkn9PjsrYTGthG2IHWIIKY3fIdbvLdaVzj+e5es\ncGX5/L2+7ITw+UL7vyBmrb1B7R+9dyFUGx2NZ70mMaiiTIBQ1JUXY3z5gjrp\nmowCmA2SaYoQT3vBw4I0G71wbKbRLmrVeisl7G6Sy+WjCEii48fr9UmokGa/\n1AQWrt0NrX75fzKWl394aXczhmWcNeeyxodNScvUkhbu50sieBJYf2q0ufbn\non+E/5Qc8VwhfvPWV5z/536gdlcOdm94XBaZ6HNOxTqw34XsuNand9mIWc7K\nSOleU4MV7MSTRW3of0w+WW1bq339oQJkopa1jzZkJdKaOJ1lMRURpBBrsSd5\njEFgKg1G88O3uqnz9BCbKo9I+2WOTQOzQ+T0p8DeqfdzeiFlantrjUalXc5+\nMaLQZ6rfYcvfl7EWpUCMYAlVqhmwHqn37ypZbGFHX+zJNQu0MCju3RLDL/Un\nZVBg1xxH+ea7dfjn/Pki+whDix5RGMnW6z/jdp/Y1X0GVyEVBXLMsk6b+OnU\nyd1z252nMWAwcDe0TAlCTOlvwQK+ycR77nQk8vToq9MGDrh5biPQl+f5DQop\n+Y+P\r\n=Wwh6\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDg/nMJ1LxhRk5beZHoJSg6TiyhvhQbi3f1gvN05gPftAIhALCH/2FhGE79XK+q1q6XaGxGNakRu6HdJPcVzYmz2y1Z"
+					}
+				]
+			}
+		},
+		"2.1.1": {
+			"name": "@cloudflare/redux-fields",
+			"version": "2.1.1",
+			"dependencies": {
+				"prop-types": "^15.6.0",
+				"react-redux": "^7.1.0",
+				"seamless-immutable": "^7.1.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"integrity": "sha512-Jdomyx19kYXK8sDC2Ssf2opNq33E96x9BNJnmResQyhMD5Kx+ZmSJiq0yKKRKJDyopZn1pixddjNnGmksrhENQ==",
+				"shasum": "66acee1a702fc87243b555c0f6e04aced802c4d8",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redux-fields/-/redux-fields-2.1.1.tgz",
+				"fileCount": 21,
+				"unpackedSize": 45936,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJevC20CRA9TVsSAnZWagAAOY4P/3hlTi4OFDBWadH3ZRrl\nzhAMZfAu/KLP43bSY8NTkd+6ST0XjS7ex8Xl2zXBB1r29v9znloSS7s4Cc6h\njWBn9foWSdX3uM7TSwx81PfUKkIMQkQjl6Is1on773bPj/puWgJLU7uGSiS3\nSP76yxRx/fWRm2W74Vx4BHf2Bfb/KvwGn3pnbPsTGJdCWgdNTrsMVnIgITk7\nIAxkFPMSKgBH6HMnH0KNDtopYaXCX44fmZcilb0RxShuCw74SLyJl446ROpM\nR4JUTB2x2ptABZbzs6yV6qw8P0c94ber56qAhl9TUM1qzTGB0Yy1vcfqJm6f\nhjrAnI9yOm56veqKR7/l4ww1liMUhi7YTSYUOVwVozzn5G9l48hg4crsmKyF\nsmKIghNDzzn0PirxZmXEj92QFimbRVLCeVXJhDoI6DqvUUeHN+3T1ro+tMUs\nQ/+fsJICJr3iUR0eK32XJrNnPMc4MaIBJ0GYtkiPmj/Pa7NUTWdud/8XkykN\nMQT5tQx4ev+XzxbQMBcKMsXL0xU3W5Uc3abF6znu58hVmBxheuk5mAfW1+7S\nEV1fmKn/Myk9YVCDgFbb6eFWHvxm0O80h+QJAS4JEhYPQng2C3XpaA4IxJ0J\n6sYI8OmyTaqCjuDqCf5vdfcm+mDT/24T+IjianYJeJQ98kcK40j9tRHNWhRk\nBdAH\r\n=dsGP\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCxqIi3ZOK2WPcCVe7WmKZj69qQUXNSQVc8qCv5H5w4LgIhAPLgK//7X50hmVqyf+H8vIiFFS4QvOTs0SyERnOy7SOh"
+					}
+				]
+			}
+		},
+		"2.2.0": {
+			"name": "@cloudflare/redux-fields",
+			"version": "2.2.0",
+			"dependencies": {
+				"prop-types": "^15.6.0",
+				"react-redux": "^7.1.0",
+				"seamless-immutable": "^7.1.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"integrity": "sha512-pIqXsley25OQmxiL61c2r3yKnLV+jpIe+7te2j/UUsiTB5VgcaejME/TqtIJSM7gyqBXo54eOTjjGJVrnOrBow==",
+				"shasum": "71bd0206be1ed4b66dc7aea65f9a22dfe8bf015a",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redux-fields/-/redux-fields-2.2.0.tgz",
+				"fileCount": 15,
+				"unpackedSize": 39740,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJfBMZjCRA9TVsSAnZWagAA+sMP/jKXhtqZD+sIKGKzxup4\nS9GmcuyPg5w8Uq0n11r6cd5k7GdhEZnUWnluQm/oKLJUN1l1Mu56IAOCVuB5\nhoiSTEdiZ41/ZqjQYvfGPxYjQyMtbwmQcyFgmMXvxBpUmiMnHwot4NrZyCrD\n8/tVUEPaXF89SZ0kAVWuAMjlI3B4aEP+i/4A83uyVYYgOJbsa7WtUuw2MZ74\nHg1emjCJmkqrMTBK/C/yUBe9POoQLm35qUeC2LNVrWrh08g5lqj2PFsDJM7l\n/viBeGM8CfZxQ+vNMxh++dBElBTJBDUBcE6wU3fPsdQSiCaPvw91rmPB8T4m\nWzS+zSyBF02zpyZ3ZQmY/L8dEn7uwqWdTD+b0+6naqARc5fPPO88Lhrfgy3X\nh95x653jMe9KjVPNFJKTPPjaY0VN+Zi7cua0UCSJyVMT4LsYKs7cRaslkY+B\n6HdbxV5JVJUNW+atrl6oKtBDWlpkF4ngQQAdUxEVFET7zrXaDNSpR/Y9gxso\nYpH+dGliW9c6irE3fT5cF56gHl6YUofMp4GMBuqGdLsrEqB5b16T2PdRyN6N\nbn4yNGi7/IXH4dtsbcouBS9h8PDM0gob+qniWVNmZeImPjaJLH8vcg83KjIl\npCNzSLOX/R5tDbesaBHnImR9K/1u96ZQ2vw8KOLEV82BNH9ncRkmRKKZWtJa\nJQ/2\r\n=RveE\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIHFCjaUWjMFbHYsL4DO3EkGgak2G4umy7A3Cgh4GN5qXAiBBKRJjXv1mmr1ERWDRKEof2eSDy0nezBGIuSJa6kQK4Q=="
+					}
+				]
+			}
+		},
+		"2.2.1": {
+			"name": "@cloudflare/redux-fields",
+			"version": "2.2.1",
+			"dependencies": {
+				"prop-types": "^15.6.0",
+				"react-redux": "^7.1.0",
+				"seamless-immutable": "^7.1.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"integrity": "sha512-fEN9/9qRFJJd2dBhe0CYYN5yWHzJO330rV1rQ1CjAgo6grIADmgwfew9053aRpP9fIhJaEhK4ZL8OOgZosAfOQ==",
+				"shasum": "50e664d2eb34938a87b2eda0bf2c506292722e87",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redux-fields/-/redux-fields-2.2.1.tgz",
+				"fileCount": 21,
+				"unpackedSize": 51319,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJggy+GCRA9TVsSAnZWagAA3ZsQAIsDEacpwAB1TdH/wgjs\nVpqYdRZR6+YJ5q5WGzoUtw7jT2bs3qMjLnPwBx7MIyjVOVH0dFDaNJ7CB0bO\nvc+yFiMf6xa7dNoEFxXXtBz57EhfOQ6yDpmSWShm/jHQoHUPIyy+4qJgtnJR\ng9Y51cjqjf7SaGirulVl1lIMel5kSXFHBFxzd0lSGrYbFKsTkiSQT491sy2Y\n8wRPqwN1WM04Wao4Ma7+4HFkraxQvGZrQkmGw/NA+oi6uPUa7V1DFiQdymEd\nYED7W5d3CCzi1gVPB8lOwqNtxtmsmTA5k9qEoBwa/SdkESkhQVHNA5T4e0aO\nJO5EzRIGOyIN+6s6NeH3qNJ7WnfjmbzVeTgNvARyW/JEKF8omd3QY2a/Lz+o\ngShyH5nenZlHrWJrbCks7qnOdnWwW2JBIkEAr7Mk4DIh3xwkC6EqNtqokDUD\n5ts0qVt1gpEmyOOCQ00lFrFuLvkK+qc4KXG2YXbPtnl/iRixaJzEztSIrZS2\n0MMDlUqBrmfvZauZI5Bjvcmj0rmRP19BROcBCC0NSOkraOWBbPDuQ6OpShri\nCp6Likh0WNGLpREjOMQ0GeWV5Z+eitlS1tbydvlepnBvMFJnNskJAt43QaAq\nue8LT8qsdBBiF4Ur5jTG+stwBx8GdaKSOBsNDt1hS58shOdM7FuS3RcSOCho\n6FKR\r\n=UEC/\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIDBZgBs93OcZPzNobsjwrK+Cc+buzIKLoJCPZWmTltoeAiEAsQFOuZ+8dWj7UXikZgEgzPGtstqgMPwhfbVUjxPfCws="
+					}
+				]
+			}
+		},
+		"2.2.2": {
+			"name": "@cloudflare/redux-fields",
+			"version": "2.2.2",
+			"dependencies": {
+				"prop-types": "^15.6.0",
+				"react-redux": "^7.1.0",
+				"seamless-immutable": "^7.1.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"integrity": "sha512-EyvKfnarhn06Z6q6RVTrALyTY2UlIAhyP6ABNOp9r9yvjXpqN9n69jLlpPlYEegU65vr7WcjUe7kYdMAMJgjNQ==",
+				"shasum": "75aa576aa858776fdaddb78f82256a68e185bd8d",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redux-fields/-/redux-fields-2.2.2.tgz",
+				"fileCount": 21,
+				"unpackedSize": 45368,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIGmnaoZV2OeNXhFhc42juyhSCDjC3xIi+08dMrPdkI4UAiBMFksDCufRWGFFuFuEi8vF1r7jkZmQVRF0ptCo37b9xA=="
+					}
+				]
+			}
+		},
+		"2.2.3": {
+			"name": "@cloudflare/redux-fields",
+			"version": "2.2.3",
+			"dependencies": {
+				"prop-types": "^15.6.0",
+				"react-redux": "^7.1.0",
+				"seamless-immutable": "^7.1.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"integrity": "sha512-wKNfHFvp8LEoLZGiX+OhrKaZZFtopLfu7GZswjfY+psQOMSgDdoGnokc4dvxOYaO4NyDl+Rd0Mc7THqmsstVSA==",
+				"shasum": "eecef4d9010162a2270e1b14d6d217b777f79a17",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redux-fields/-/redux-fields-2.2.3.tgz",
+				"fileCount": 21,
+				"unpackedSize": 45368,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIG9bn78IV/Ij3Ip+5VaZo3NEpAJGcselcMspqDlH6CtwAiABRwE7AkI4pYriqCpjRA3iX5nxK5jZqI7o57v3ym0tdw=="
+					}
+				]
+			}
+		},
+		"2.2.4": {
+			"name": "@cloudflare/redux-fields",
+			"version": "2.2.4",
+			"dependencies": {
+				"prop-types": "^15.6.0",
+				"react-redux": "^7.1.0",
+				"seamless-immutable": "^7.1.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"integrity": "sha512-mpVPN+S/Xe6neWNvJxhrszR/bwF/ypo4v3Y11917iur6drh09lEo2cctJXUMvJm0QDKRh+NqCNRWN7ogbBmgpA==",
+				"shasum": "f59dfdf7abe74b6a82d98bc6dec1e1a1f8a67b62",
+				"tarball": "https://registry.npmjs.org/@cloudflare/redux-fields/-/redux-fields-2.2.4.tgz",
+				"fileCount": 21,
+				"unpackedSize": 45430,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDefimEhRI5eCD+0+SwZ1Ikiiy765zeGSbVBSxf55yzVgIhAKVui1vUF6ZB5LbcAwvfM3s5qCuczxjttgQWNQwcxjyx"
+					}
+				]
+			}
+		}
+	},
+	"modified": "2022-06-21T16:57:20.335Z",
+	"_cached": false,
+	"_contentLength": 53418
+}

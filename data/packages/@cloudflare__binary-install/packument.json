@@ -1,0 +1,40 @@
+{
+	"name": "@cloudflare/binary-install",
+	"dist-tags": {
+		"latest": "0.2.0"
+	},
+	"versions": {
+		"0.2.0": {
+			"name": "@cloudflare/binary-install",
+			"version": "0.2.0",
+			"dependencies": {
+				"axios": "^0.21.1",
+				"rimraf": "^3.0.2",
+				"tar": "^6.0.2"
+			},
+			"devDependencies": {
+				"prettier": "^1.19.1"
+			},
+			"dist": {
+				"integrity": "sha512-54n9ILgln+qUJc0BtbetEIEi1GrIL88p7ZDJy+BV8EsUqA7pMCMHAUOHjDq+YrIoqJHGJktlQJxBYB+4Umf3ww==",
+				"shasum": "0fec1bc5817c00a8a2b5ea7c291e837d76aa16a3",
+				"tarball": "https://registry.npmjs.org/@cloudflare/binary-install/-/binary-install-0.2.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 5373,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgNoWMCRA9TVsSAnZWagAASkYP/AuOLD+izb/ajb2tAmtP\nRGhoHGUVgRFP8XIdpgNlOqs9Wa0xVGiV23uOz+xn7q/b0REuWzk7lMBW3eTQ\nc9GO5JR0O5Xjt5pe37WuwOKj+5K7t01GYBE6EywDHnVCSNBOVZnqF5Yx6ei/\n1k2zX2ZvesUzIZSZpTV+QdkPXxEoPTArtVM8Zu4IkjkKCA+lcSQKf9cfhVJl\nTgA/fq+xxmr8H17xmJ9oCitaBcYt47ukd1BiqLlYOd8QZUCCM9sRneRgTZXb\nSu7DQgAHhaQFp+SjmQM0szufM9tby5DIhLr+VmkZuMISbxl5yIZT6FU0S7Z3\nL1gsgsbp/c9FTga0EhlfWtz3+9fUidezMvIQ81UAtqG4wCF92jQ3YOYMpTAU\nCvE3f05N3HOZZ3XdEuiccMinaxUTxYdomlcCsr9atsWQSDFQ7mrwNeWpaMso\nYL5BeAkgma9ugm3D1+FtfX+9V0MP2MgXEDBb5x6MjWYPD2dZ/sN5yWhnh6ty\nhts7oD58W8mS8Wy8kW/162xK6mTVhXgc9ZPt02e/4cQDt5NgttnctS7pizRw\nQurEkNKZNrzlM/Qh0JhuN26cuTi0N423eJhH7VfMZPqKmNB8lUs5BObWXwKZ\n1yR+c34jTEH5CYt8k6Aw2q4a9mPkh1X6iIHQVAaDTd+Jze3kbc9587MwwvEj\naQ4K\r\n=gnRs\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQC9KaPjpxFeOBETeKGgTcOgAMjohGAlsdgmo2nR17m5DAIgHH0qkq+2cGGdnvmbBGmLoRPiKSNVRkq9GoCAwzuWkcM="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=10"
+			}
+		}
+	},
+	"modified": "2022-06-21T16:54:18.713Z",
+	"_cached": false,
+	"_contentLength": 1712
+}

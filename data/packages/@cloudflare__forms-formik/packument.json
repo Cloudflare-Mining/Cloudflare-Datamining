@@ -1,0 +1,161 @@
+{
+	"name": "@cloudflare/forms-formik",
+	"dist-tags": {
+		"latest": "1.0.5"
+	},
+	"versions": {
+		"1.0.1": {
+			"name": "@cloudflare/forms-formik",
+			"version": "1.0.1",
+			"dependencies": {
+				"@cloudflare/component-button": "^2.12.0",
+				"@cloudflare/component-listbox": "^1.1.0",
+				"@cloudflare/elements": "^1.11.39",
+				"@cloudflare/forms": "^1.0.1",
+				"@cloudflare/style-container": "^7.6.0",
+				"formik": "2.1.6",
+				"lodash.get": "^4.4.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"integrity": "sha512-0K9xQA6lS6w3tctoUvXgWL6oMOIuEye5ahn4VDI/qj1bsypkPxjcb+EQvcVsQ7BiHiKRFf794Z2BhMrYOdw4hw==",
+				"shasum": "453e1e7833101b518b2600f85ceded4553657ee5",
+				"tarball": "https://registry.npmjs.org/@cloudflare/forms-formik/-/forms-formik-1.0.1.tgz",
+				"fileCount": 59,
+				"unpackedSize": 136102,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJh4Ez5CRA9TVsSAnZWagAA85wP/31fl4ISbAo2munK5j0q\nL0FE0QRr6CW3vBHzQowfJuSIlIrSZ7ENEWqZbgd5/5GuvGVUgGB7G0xH7Np6\nC2NYCym8PlCX7I8VxSrbu8Fhp6W6k+fbIgonnFcYDNr6uW5tVytuDLqhoaym\nNzG/lQKECfmkoGm9anNjgGec/iuqP2790FPDoQ3A4X947znV3QbNPa4kxror\nkGyObK3fICxTzcuneJf1kFGVVLq8eGO1VJGG4sRKkAp/M93jfT883YZaTsHa\nafEfARrYVV5yBuuPI/Q5lkNGxm5MXILN/vT6oi/RKCWGxhyRrXoCI6st4EFY\nZidgWq1cVVcqAhqTqR5HL0gLC4ubSzV8UBEDX0mAUreM9gHo2iUYddWz0iFE\n1f/FdeiOLZVU9rXqqKL5WkNyMQQTscf6EJr2bBPXoHXEXTEuawlGYLlLbmvg\nXo/0cQZaBEiQOvDoRVy+oEFUQh99W/wsT8tF1oVkUUdPm5mxo5RJFAeOU3SY\nGxwy9bj9PxcpTB++qyU3j+gcVc8I2hi+JxGyS1/JePjXfmGOe2psOCxI9Cbc\nL2da7JqSNaVVNsWMcPpEYf4FYClPXmiJbjk1fX1qqcZHgKve2UrOFyBX2hMU\ndV/VCu7JDUCY8GSJY+r00dN4nHDMtxGYc+GT5l0bsXvaAN4opu5oA7K/O/ox\nP/Pm\r\n=pOp3\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIFTwfqIzq6IXh+yN84Db0JuC2C31XPdMdPceyprWFy9NAiB43RGaEb3lJzQAnGbXLGV2o1JipXv8YKkfVe7ssbU3AQ=="
+					}
+				]
+			}
+		},
+		"1.0.2": {
+			"name": "@cloudflare/forms-formik",
+			"version": "1.0.2",
+			"dependencies": {
+				"@cloudflare/component-button": "^2.12.0",
+				"@cloudflare/component-listbox": "^1.1.0",
+				"@cloudflare/elements": "^1.11.39",
+				"@cloudflare/forms": "^1.0.2",
+				"@cloudflare/style-container": "^7.6.0",
+				"formik": "2.1.6",
+				"lodash.get": "^4.4.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"integrity": "sha512-7QWoOPEBeKfrhHi2m7u23s41t5bYOds0e9C0p9yeOKCumEcKC1nMeeWPyU4+BD5PHkMY7D3Xd5oycIulPt25yw==",
+				"shasum": "a10c407f55d5c992473e61836ba8e82f93284180",
+				"tarball": "https://registry.npmjs.org/@cloudflare/forms-formik/-/forms-formik-1.0.2.tgz",
+				"fileCount": 59,
+				"unpackedSize": 136308,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJh4V8QCRA9TVsSAnZWagAAUJkQAIrjQdTUexzzH277bItt\nwOuwluMbJ/PV31msnekRHApLc8jhS3L8NSHkady6aKOW5g1ppcR5IAxZ6HIV\nQiWzHv+uPcYpGj4LfDC+60kk8S1d2hOprHRrEVC6bkH7EhcVCHzCIQAdZ8o2\nr9zYRs/wASldLEFofhWCNSJpXcCDJo7I3gEik2bJHnyxdo5Yi8nLNKMELUCe\nM+g/fLmttIEA0rQbM+dk/KMyEOqS00Oa2uRan6dUggjFyNTkzH+jv0wd7z8u\neUlIo28AyLgL8iNSASjrx4fsqsIcul/0QRcvSYgMM4utCilaMjvnK4gDwudb\nVQOpAX/F42ZFtwd8GWhqPhoxs7ntFkakPhzUESuwmBor0NUb7k2BccRHi96E\nf0u2U92BhjvCCJaQdPvRu+tZD51I+OebmwDkb3QkosAwLCNqD6ecHje+zvP0\nTCCJO4Fe26TmfJT2pmJQ8rOuzdvlByXVIowmJoMAyU1AvJuEohEBWJKepws2\nMYphXXUYPZjCSe2KWye3eWYyE5dMQaZIi8lJYYJUakQGtY/hulDrMAUa5XWU\n6QOydTwYZAY5b1muepWKzaYG1AHdrWf4rRdHfe8XLHRqwrDem8XsAiLlh3xg\nbZufEYxbGEREE69UEFoddX64Fld/02G1OsOtZVQQCtC2Vor/Ntnw4cYV2efp\nxyU0\r\n=9blk\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIC76XtICxg+C1EFiAfhot2cxWl/rPaKcXis+0ASW9fAnAiEA4qzv1f/ajC7GAOtZpmxmALthpYAzfvNvnILTklJrfaA="
+					}
+				]
+			}
+		},
+		"1.0.3": {
+			"name": "@cloudflare/forms-formik",
+			"version": "1.0.3",
+			"dependencies": {
+				"@cloudflare/component-button": "^2.12.0",
+				"@cloudflare/component-listbox": "^1.1.0",
+				"@cloudflare/elements": "^1.11.39",
+				"@cloudflare/forms": "^1.0.3",
+				"@cloudflare/style-container": "^7.6.0",
+				"formik": "2.1.6",
+				"lodash.get": "^4.4.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"integrity": "sha512-ihZckuODT+BgpTHMamSME3rkNzzMvpQrL3Alw/R57f3bWHvxMnBR5xWs6zWZ/519MSdYzbnbyAm6yF/RKUM7sw==",
+				"shasum": "44da9738bc2857c0b9025b170706ddbfd9c8093b",
+				"tarball": "https://registry.npmjs.org/@cloudflare/forms-formik/-/forms-formik-1.0.3.tgz",
+				"fileCount": 59,
+				"unpackedSize": 136514,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJh4ezrCRA9TVsSAnZWagAA3tcP/jqtRJvDnq4X5coo9VON\noKutrLM2Fp5xD3RJknx36Pkt6lP0sc2s5qQU/tTiv47AaFX4hlwTNkbihEzd\nmPrQMR7wbGIYC4+Qz9RmMYJWClu47xNo+4dvfRBixuJOVdlJBQ+tOsm+c0vo\nZNfSdkFEpUQhMzUJo+Ty1E/P9nK4mWGLXEB+uxYa2csro5mJCvcJaeBA7vNH\nmep/iZrHgeYBy0yCHXEumsVzr2/BVmt7YvcSgZsQOeREkH9G1/lBZywBONEF\n6A9LzSbyfpzYrTJoNM6mH6jqpy1kKi4kpgONoscTe+R6pE5IKeoO19p5H1wn\nIA5PjeSvE9xw2yLK0aLrWR/eKxlhZdz1GUN0/usl4CylKoaXHofQPhvuEF5Q\nJHfg7iz+2PeCWgEGpQNplJkdS+3pgpKrYgMJ0R54RbTToM5IaYhHo6qOGPjC\nU5mbxfvGJVH7B2XAZ1rbPkJcBivYV6JCsnuz8l44nIV0SrhWxknVdM5fegmi\nvisRQ6IPLMOqJwx0WI444p35u65hWe1Ark1tmJ4KNZi/yv6PeOoedm2+XY0R\nxoqk4igNH3QgsSAcSFblmtHphsBxxzcD/2s/tanfZPEYEcac5Dlokpb5rJY4\nxk0013KGSuKcemJusBn0Lihl/jrRrJ1mWr3NzM0M0kGuUxDSuRLqKxGBz/kC\n6CgA\r\n=/8sK\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDF3Kf1xYsbBs+59CGMwBROuWw0kFQyIdbzgWFxNwqlmwIhAO07gs+C1iLpPjlWJo612PHdAyBlyeohXJ4TzoOUS8Qp"
+					}
+				]
+			}
+		},
+		"1.0.4": {
+			"name": "@cloudflare/forms-formik",
+			"version": "1.0.4",
+			"dependencies": {
+				"@cloudflare/component-button": "^2.12.0",
+				"@cloudflare/component-listbox": "^1.1.0",
+				"@cloudflare/elements": "^1.11.39",
+				"@cloudflare/forms": "^1.0.4",
+				"@cloudflare/style-container": "^7.6.0",
+				"formik": "2.1.6",
+				"lodash.get": "^4.4.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"integrity": "sha512-xLSRPaZWruFhZ0oj/1Kxu1a2JhOArekuB4s3I39wowCzV8Mw1Cpe1S6Hj6EKVqjce42ebotp6vrRCnd7FBEzYw==",
+				"shasum": "142531bda6ae1e7ef127e1f5660f89013e668c35",
+				"tarball": "https://registry.npmjs.org/@cloudflare/forms-formik/-/forms-formik-1.0.4.tgz",
+				"fileCount": 59,
+				"unpackedSize": 136720,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJh5aoFCRA9TVsSAnZWagAAMcIQAKFIP0dNAbZ42yp22Ckm\nmf4oZ7dcPmc1+CtDIZp3P0wDV05XMGT3VAYIJD0JFefebSjftc6IyMYlmTFH\ndyE7UICosToS7bmlcziLBg26J9mG05TCwG8Sp1zkwgz7SxuX+Xi3AWPrKUF5\n+fDnreRUIHKcD1EOxwkX5o+2ouemwGRs0S5bGuJCVAXtd8gxxsCSsEaao0OJ\nHfeFVbNLMN8dRY+bE71NxioMjEQqAkeuQQV03P042WwuTABjnF7RoPY6ZRPz\nIn6er1hcfJmCIoD/SRiaDC9X0FZZDeO63xNooXU+nN8TjUa+qYUyXGz3VmWK\nEItgzr0CXNocZWIQsLze25bPt0IRz5ybKp3wjLe+o79qz5CxOmUf46LHkqX6\nwzWC2q9kUJJGz2HOzktehDps9x/x/joWxNOjq0mw6piiU5DPqUQe8Ryz9AkQ\nt0Npey74c7OUs0E3AegGWnFJ/xQMFrLWB5xCsao2IiRKP7j7IYFB5FgloOkE\nyXvHsp9zT3Ax9Ote8q0Biu//IfwQkDxJ4hr8zuu/kZw2/4JoAHu4N3BFqof9\nhFd6mYTXB3/HeYbZdqPlCu0ZEdMqu5VFGALXAMsI1liXp73fZ81AFIVSjUcJ\nnMreVMUzXvuZd/auIITSzeLIa/c6FUvZuKs5XW22UQK/87Uahgpi8wVw8aMk\nwWT8\r\n=rVv4\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIHvEZLnPgu9EIonC7+AFHvVVJ08h01QJTMuybAFQjxd9AiAFgq+eSMh+ktbUW/6rbyA4oIGgiywWMTRu6HMsPJcV5Q=="
+					}
+				]
+			}
+		},
+		"1.0.5": {
+			"name": "@cloudflare/forms-formik",
+			"version": "1.0.5",
+			"dependencies": {
+				"@cloudflare/component-button": "^2.12.1",
+				"@cloudflare/component-listbox": "^1.1.1",
+				"@cloudflare/elements": "^1.11.40",
+				"@cloudflare/forms": "^1.0.5",
+				"@cloudflare/style-container": "^7.6.1",
+				"formik": "2.1.6",
+				"lodash.get": "^4.4.2"
+			},
+			"peerDependencies": {
+				"react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
+			},
+			"dist": {
+				"integrity": "sha512-ZIhMhucOBmBrdjHae7dTSeUdDyjzzkTjJlp0C+Rq6PYu2c6ZOB5BzrmH0Z0DPMcBCs0oJ+eMRJVFcIRoWVKeSQ==",
+				"shasum": "7263dca5c96c60eafeab22db2a3e7b10434c8b65",
+				"tarball": "https://registry.npmjs.org/@cloudflare/forms-formik/-/forms-formik-1.0.5.tgz",
+				"fileCount": 59,
+				"unpackedSize": 136926,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJh6AYnCRA9TVsSAnZWagAAMHsP+gOzKUUQTbJvM28WqXQ0\n81OjMVKhX9ou9uh1X+EWJC3hgT9TsKOQcn1Yxyo1yA7SwfsFBEFNldnDlfqA\nT97x4lXwpgmFZS8O98xUEKjgcsksCboDxa8AQp1KMG23VAB+hzYHpN2CS+R5\nTkCdTeG43wFqCKDmiygbOFBjRnKy/XXVNsCNv4Z/ZBzwnBqWbUMNBLDJeXM7\nVnsh7DIoAVdPnR2ZLC0KQR43Bh9DDQcBKH4ND50gbFOMHVyJ6Av6r+SHxViY\n9NHwOmaAEwVljixZNw3aFziY+3g+CYcy/Uz9jVmjYeV5M0WmslpktW5nHUgA\nfIoBgNnW9wCKK7Aq6lCAruLysAJUmCbZU4qMunioqVeetHbG3jNgke3qhgpP\nvh689Kv2Vp3N+gUNT64anqhN8Uo8WStVzYFXllAbP+k0ycsjNG4BlpLKU1Gl\n1wbPdr/RMJP7HonoW74FBIGFwqUtX+XwqVNUNVpY/RRmX+1lry8TlN0MdpTp\nmiEXRhZEXC+E9t14WAwENdR8tn9oF5IQzkIzpeOXnp95fop0EqqugDVBz1RT\neIJ92cSL9xhSsd6hOqasNrg9jPjbBzUINEYilc9lglHJpTLvYajpSpQDA0y9\nSY4ZxoXxiBUgThU57Sv4hkX09wUqhagXGgjKfZljE3Hf3SMDODcapz7UGYhT\nBw2+\r\n=oaSe\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCd5MVqPGIPKqEwtTWYnlTORDZ+vSwzbeMHyZ+Mrbm31AIhAJV2jGzyAoM9TPfJSwl4Galm++YMOTcI9IN35qdgtSr7"
+					}
+				]
+			}
+		}
+	},
+	"modified": "2022-06-21T16:56:38.503Z",
+	"_cached": false,
+	"_contentLength": 8927
+}

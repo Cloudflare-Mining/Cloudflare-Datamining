@@ -1,0 +1,2611 @@
+{
+	"name": "@cloudflare/util-billing-calculator",
+	"dist-tags": {
+		"latest": "1.2.95"
+	},
+	"versions": {
+		"1.1.0": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.1.0",
+			"dependencies": {
+				"@cloudflare/types": "^6.7.21"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-CR1laeYFjr7ci8rIz28/BOTGTc9RDJUkGBdhjDAe6ZdD4T+KwRZ/k4RkkS857fIpLSrDCSQB8sqCuw3O1K+Cqw==",
+				"shasum": "4b3a5358b31c4b0d8c6bf0ee4f4c6f6fd5692699",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.1.0.tgz",
+				"fileCount": 15,
+				"unpackedSize": 40229,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgeM7gCRA9TVsSAnZWagAA7IEP/jFU3liME1xD7+QDFoZi\nSZsJPfLvJCNsT/T5yw9DcW1ULzmyohI4TgmIKJroYMy9vWm0dU1k7a+/0PNt\nPHjtl0ZUkuFytCfWGiaCfKEWKOBcE5L2QO7cptmf1wA2MgqDQhP1yD2kBnES\nf8RLz8wKqODjBL+k9culnFy+rMVWEtHNnZbZth+R8B8PH8gvQJsJ9OR8u7o+\nodopIiHiSm5xKgS3p4+18Rln3epLO/NsjF7815MM3P2j/jk/+LC6/0psMUVI\nf5suEjvyV4tc7rC/Ac5G/DlgbAybIiv7yuKXMSeMyCRkTmW7pLhVFP8UdU4o\n5BSwM7ap2xWVxF35J/JBqmZhNtbvI84wF59HkaW9QsCryHKivu5e/MtF4mpr\nJxnA4xVfk8X5b/wntF0FBgRa13kpZaEQut8I/30HM9H28LbKuyQLhfdVhOQ3\n6awKCn4Tr7Mac0cshjgAHbq7SJAsXP6DfwitneLWGuf4PAj7hCkNB2ecNowm\nVtatszb0E9TfpbGpJ1CiEppuivOsqODKPw5iBdQDTcDVLJPoVkUpd+XVQTYW\nykNNVao2P8hockQCGvTi+5tJl3rly0QsJ/Ogpv3mwX5INTwTGS+QsCKEiyqo\nqCvqKoZYc7KFRQQmbYuUVnMldFYDue7A6Jm74npWN5/ASp3G1XPQGzSlarkC\nCQZs\r\n=Srig\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDbUAJFq+/gAhYKKHxJdOKSZmx38l0lN2/CRTAnZLPhHQIgSPgNWWYUZhrJQWlwSyTVpotehku5gJGYdk+f0vglRD8="
+					}
+				]
+			}
+		},
+		"1.1.1": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.1.1",
+			"dependencies": {
+				"@cloudflare/types": "^6.7.22"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-TS3HxGyaYX+H5ClQyMABVMVYjE1Lkh6o+HEQIMLT8NiqfvzqpHX00kcurBHDXQ5Q1MGjs3HE2+RMxg6sbh87Gw==",
+				"shasum": "4118d5f14bdbf821353d2260ec0bf7628c180041",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.1.1.tgz",
+				"fileCount": 15,
+				"unpackedSize": 40468,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgeWpKCRA9TVsSAnZWagAAn6EP/i+lAiT3aDtzdM5vHijX\nm2xSQFU1d/Ehl/Y7aYvTcqnGxH5dG0DwUVmBxeY6QspSnlGGiclViwdjhH0L\n0nyx5Va2ZKi7nAhmklMj6kTc2zvpLYKiEnRZoPb+wsOdO8R661YSZHLMLUc2\nhWdFwwrAARGenSqwo+8+x8S/4AUAY3TMzWX7wWNxN8IbmucxkZofrA/zrCd5\nOrWhwswgw+5QhNznr89sjSGYU4CqaZl2vIrFlmeinQVq7obYW2XWGGpkJHow\noukvf9iL+N0c7NXPapxafvzgGjUv3AyqbS5FM/B1Y78PmvxXQ3E6ZhAX9MfC\n+TPw/G2HqhzYTH5VDDR1dYbf57gLiEhAKw9hab40ieWkWB7orBGaiFI5eDyK\nF3WZodvqEyCqgiwS4HwZ4xGE3vRGuHjWseP+YkkcHhWSeQxWS/U2siucSEnl\nFk1rS1crNw6re6odQy/LHejP9jgCgY39p6eJygHA3JU/yTpzslMyDTJq22iq\n+8hR4ExjEB6Te31uZftXaJqFE1Czyh5Th2iYOJhGAE+1l46kCEW8wPi2ulUS\n10kitQik6CfjATlEugu5SLfoQtQYFzb3OgcG2G4RGF1Wg7HufBgMPJg20Mk7\nWFOGYYs0TQlZaKmYl+DpNR7Bcn/aNzRCMrqWXEAKz2QscQJfWpG75eG2ACuO\ng3uf\r\n=KWBO\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIFzEOUseJIShPx9KjickY+4bFG1ugBxTJI0xbCcI1d9YAiEA7NliKHZUuNvhWhKmnXBwlJrDTDt/XauBk/BcfMl6QRY="
+					}
+				]
+			}
+		},
+		"1.1.2": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.1.2",
+			"dependencies": {
+				"@cloudflare/types": "^6.7.23"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-fhqqknfI7cPlCp3n6osIzc//hL4mNMOZpxp8sX/DTpps/nWV2Kg9UT1frddd9Q638j7orVFBV1TrEQgWXh9EmA==",
+				"shasum": "775df4179f5e54af6bd5224219824cefff0c6325",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.1.2.tgz",
+				"fileCount": 15,
+				"unpackedSize": 40707,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgf0u5CRA9TVsSAnZWagAAankQAJPHjcVG/k5h/aCsKZPx\nszILp9+ex3wR7x5DkanSpod208/dvWSO6WA/X4T2uU+7riTFokINjBGXKwpq\nSk7DV0FvxV29DIg0uOp2au6I2PGPYoT2SS2WoRYikfu70UEJ7EBuRXLFwDlw\n+8sag3dlyykC8wNI4tuedJ/6FSDtb76hP+MwuMi4SIsYTZj8sx5YDloWQ0Bm\n+zA4NbswS7gyp1HIOOp2lPeKn20EgJg3YtTHxiTOGrTWIDfRzEPRqL+EAU74\nTbhEs0gtWnyUKb+AcIFVgXuzYxaFvjO8oAC0tftJ05nfYAUVV4SbhMhT6eTc\n+TtLX/bUk5gEvmw5bSEUEq5XqWfCOI/lNlLq3l38g2hAT9le8vbKH0Pr0JNp\nGHceGq8sMpP6qdzc5hMpQKBnz18Tw7buPo+Zp4cRZ+BzZf3yFZDQwWo8w/iI\nhM+eerYgomA8c1zyoC6r7BvgQQ9F7Typj5Ef1xsz7jTl7YxkeTkcKPDQPC/f\nOMoNAVyTwuj4ayDblPznZnb3q5UWIvzHKzvKrUHfHq/y2w2+AGZb4kqX3Vn/\nLR5JObDakUA6vZDKGNl1/3qYthalHhhPc4+x3lE3vSL7noQCbyYKcrNV8vRU\nUaOR9ijodHLxNi4MYYeggo3L5vmN4zUjsjjeHMtbLJdwDERqzm195VdURGnU\n9I2Z\r\n=55nO\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIGGKnGbNJJPYaNj7Jj1BFkCgCDg1VLP2hIp3LdTMVzxcAiApB4RJFoVA0mY46ggVYbPwi+bVg1dM8grVSgmut+zQcg=="
+					}
+				]
+			}
+		},
+		"1.1.3": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.1.3",
+			"dependencies": {
+				"@cloudflare/types": "^6.7.24"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-v5HQdjjoDprBdUlbF27WdhPGG1ZOElNa9F6tdzS/z/Jio2MGw1rLEnz3yVbJpONEixllYYfMfPHVByQwU6Iyww==",
+				"shasum": "89a9c6f65b7ee8442fce0355fa3a866572ac7281",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.1.3.tgz",
+				"fileCount": 15,
+				"unpackedSize": 40946,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJggZBKCRA9TVsSAnZWagAA3BIP/Rf6Q5RD8543R91RNIgu\nYrqJ/ZXcY5UNqU1Md2USPOoRq5GCKUpgvo5Rxeq8zqkrg0/JS3tAdjWx5w2a\nGGwxeOkB5wF5QZo8uFNMI8G2Vp89JY6zEQGH/2OstdOGFmk+Qw5dtCBCdG/f\nhg8IHtB8I3QBAf14vUcOn1oEMovIMQ46ENeDddaIpCiTVtT9dQw5TANzg9K+\npJJlnEJSbgyoFp90YruNH7Sk0Ext+933F3WD4IwF0ldKIVnVsIVmhKWOIZ0g\nEFGlC+wvwDjJepPVB9C3Yn0W3Vt/P8PsiJcCBTXinzEarEhv/4XYsHIvLkPU\nlLOsjzB0iidXVPYi6HCM2iHe6Rs0Hg6JqVUXlFf1KAKM0Bob0XIAxRGiiyZV\nyx2r4fdi2JsMU4MiAIiBqFeuUZOxflnigZ2R/th+gMMq8WwJGrDUaPyVtiCm\nEfpToMxuuSlYrvkoosbZ2BEx3b7BipA4FnqNvPi7QJvAw6E4P8+h8dHj81ss\nfyFIHnOtvlH8d7QmBFy+UIFuHyFo/QgE66ToFfOl2aM8iTumWnQfeboBtmC3\nE6dlQtVK7D4geWT9S1hVR++UtJWpKvHOQfBZzsUbd05pVDFj9SZ9AGIXKNb7\nl685Lz7JzK1bq61IUSzFbkTWKUGjXtHnrLcpIBL67twPog9DFqcLh1P4LqKa\nM3ZR\r\n=hzrE\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIEtbYPsZmwGyRtUuFxt1XDBJnmiybyHgOqOeyn9+1+4cAiEAwcygc86FE3wGs+zQxtG3qGRix3bNdUqCYj+njC7tXzQ="
+					}
+				]
+			}
+		},
+		"1.1.4": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.1.4",
+			"dependencies": {
+				"@cloudflare/types": "^6.7.25"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-7efGeUG7Ls0Z8sYbn62vUMqPvYlAgT+AG1wSmENPClBEmznmrTjpBi93firnCNit4iBrJ8zXjAIfAfAYg4LKYA==",
+				"shasum": "14c8df85284d99d4e04f93801bdf5ea137180caf",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.1.4.tgz",
+				"fileCount": 15,
+				"unpackedSize": 41153,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJggy+sCRA9TVsSAnZWagAAOpoP/3k83KgWtJIh6csJdIvS\n6Qzplx7T28y0cJE3ZRdnUOMDrrK+YbmTcM9zcP+/9Obyky3xcGXaTtWFWo47\nEp3AqWIDlTJWs+8K2XaN/1uXU3U/olI6WP/hOokQBwqUbyFg+G9Xge30/tbT\nN81ebmixXEFojWQdGU+yAgkuJy3WSCpV40FWczNAu+1nLZS1nOKo2ztq0rgK\nCpuzDKJsHQMznJVAaVM84aWnwAkWtz/rNvFv3RbK8Vjsh8JkgV1QDtMbi0t6\nIkJgxHwSHQLoQLdeRGweVFP2IcS021Hd5b1khdsufQkLsVzdJX3L9F6WOaGr\n4XqeaqTFLKRMRqY705u0EWdUbZYxaDbOg3O2ERezbuXi73OHVF8+fWV+x9c1\n61pZrVN/2eCVeF4+U4zvZa0YKBPqapfLnjV+ijOSK4BLf6/pBTlZnFzp6kh3\nqq5XERC0feQAsUO6X53syX7lNl8Gm3Y11mFjelJ5dpEIjtPfxiXBtT+95LOf\n9xAVmLetwcKRIdV6FT6crjxaaDaNZ7+4WbE4JtllJeoi9FCVOdH1vbms0xYB\nSDpdjvD0Y79D2EWoChuwwtxqpevo8VRTz5Lr65ErPNPccV9OslOJmcChWkUN\nBQRCtzS1I6pOxPjpTroD1Y8xeDSnE8mW1eGCzOFw25WUUjOueBTkaElMJGum\nQ8La\r\n=Fdq4\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIHnTA38acsvyTrrTQF8YONkGmoHvb3bFmYNG35B756epAiBGfdxuy1WSAjDtS9Z3PmVgCKbcaLe4c2Kg91jszbImSA=="
+					}
+				]
+			}
+		},
+		"1.1.5": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.1.5",
+			"dependencies": {
+				"@cloudflare/types": "^6.7.26"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-mZAtsoMgzRRmUrWpKv8f9m2xwt/60/Pm+kXD0S5odu3dZx4JyRsf99AyHkHgSQNUCMt351ePBhprfBWYgMfdQQ==",
+				"shasum": "17bbf5dc0d37cdac79c7bed52d1aa7b4a23dc891",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.1.5.tgz",
+				"fileCount": 15,
+				"unpackedSize": 41095,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJghud/CRA9TVsSAnZWagAAcOsQAJkASxTMH3RxlKSQKfHh\nwUiE7oYG5UAGutsEuSgF7AWS+UcOw8OO0lB6tmszg6mTrparYSElyqeoDK8I\n9L0famQ2EfO2oPTqITjw1isx8iWo5BsuYFOuTKL7LABIpj61UoxY3M9HN+nt\njNo3dph1lmO/iN/nuptUv5D0UyJwT7qqA4adW5VFwOXnm9TFCu1cz+4RBYyI\n+EEYq5WdTp7b0uItDxuXHX3CBQEAftr49Y4pAieVNN//LIgwHqyMUzX6RWnn\n0AjtSprHuHC160LZy1FDT/RY4XaTUEmPFkWNZbQn9loGQSI/EGdbMrCd6HPx\nFTzuwWe/Wk4BLlvag4bQZE2R73xggYjK2ndsTe+RCiLM6Rqa0bjJc/1Yw0NP\n0AcnLhSlq4yHjEpHa6kdk9nDMS/WJPKgCRs8aDhu/rKDmg2zHkGPs6P1KCND\ndT6chqPvUaK4gw4KXlmDl1tiF8xQuPKa1mpJg7+JZZzWM+Z4/XJ1Qqo7LSUg\nwMgxwGnMiva4iY7WRj/41rb5ZfgRYKXXjSYol8/49t40rjzFBeh/OT8hpdS/\nfdc5kWMC6AnsJgy0PUGgk033C7HJDB+OZiSwdEDROwN58sVAOjzzhf9gLHXO\nSfHHo3+Gi4KAkF9k5bG40NItC9Fra/H1b9OXBnhz7MSlMGRzQoVnXe19IA+I\nwA/5\r\n=WHkv\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDGnPWc4WkYVHihC/ndYO2/gfnn86nsRlzf42K04BQHVQIgWjnZrKBV2LZ7woqeygZubB2xzi3p7VOl+Ywo35xo2Tc="
+					}
+				]
+			}
+		},
+		"1.1.6": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.1.6",
+			"dependencies": {
+				"@cloudflare/types": "^6.7.27"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-KkZjBSTaXm31xsR05ywuTB/2rVigH8QkF8pTLsV2XXtCgmc8JUOPecDL9M6ecbb+niokcSnAFGXxUd1iQSOSxA==",
+				"shasum": "da77d9c09597feacae03fcb63ccfdc574bc37b7f",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.1.6.tgz",
+				"fileCount": 15,
+				"unpackedSize": 41334,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJghvKJCRA9TVsSAnZWagAAxkkP/1QV2T2s3XJK0THh8nGK\n0u91YqmId1FZHjlqyOFq2QBSAGRrIm8fejrfoNgFpPIk7BBrAy1MVdYVn280\nluzSZcvU+6n/UOX8OY1TdQ6KsgWIk2BIC40v4J4uTFnL9DmieNEZqDxdpTvy\ncc6dS8LzvO3jWPFpgAcHyiFDfQ3+fCTrGllURhGyGfE2W/YQeMVgsZRpInd/\nXrSbmt8lbKmEOto43xlbddG7MOevS1IzY4L2B5uk+dwRXFbThi4jgFp97t0Q\n+SBuTVE/thiFcfIDR5KxqBZ+Oq741zie07q+edCwTNFxhKz4cHM2xlMatUZ3\n9fs1D9Z9ZrovKUopsqBqrnMulHNmFzbDII+7mVIULHCMFUYWyJEFZVnvEPh/\noQknB9aUEnQcT0xA/SnmiwT6qo9FSpEjLWt85rgYx87+V5zRHpFF/kn5/JJC\n/mQhrdRd9XK04K9d5RCWninxS8POxh7dI+umyFlPommUPRwx9OQo5JweHW6n\nNapmR+bRMLCVvcM4k5m38t3Z90pCoRICrjwG49NzDq1rrSh1/F/so9dXWIVp\n8MLX5alJYbPuLO5x3RyvV0I1FF9AGP5+Beh03u2ym5VC77oVF9tDSuyyY8X+\nXBPMjRDV82BdYUGe3GROCKBkz4FCN5bFDiiqHdTZX5QWS6+4Hcbcg+1JZhoA\nVsyj\r\n=HtN3\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCICtSotDzsQXDevwBt92GsJy530+UZ3F+YiWYdb3A6zdYAiEA+pmD6KX8sPl94mYsVWqnl2cLKpHxdga1YItHdDtQfic="
+					}
+				]
+			}
+		},
+		"1.1.7": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.1.7",
+			"dependencies": {
+				"@cloudflare/types": "^6.7.28"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-AlvPUCXAEVYm/AvtTwYjM4ebta0VvPhSxJ1eCd+IhyDYJjQijYdtUJfZHgCO/5POvKudy/8JqMW7LCOSSsGB6Q==",
+				"shasum": "0f5a6d69e36c7acbaed2a72e2824de86501f9bee",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.1.7.tgz",
+				"fileCount": 15,
+				"unpackedSize": 41573,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgiwcICRA9TVsSAnZWagAA/sEP/Ro75sbDhEssAYNLf8T2\no6ETuyDfMgKhFcYjClIjRhY1LN17PL2L85FekFG35B5KlDARrjbaEWTRgbEw\n4+kqNjG8ui8JF+bxwQiEGcCcOWyVNJY3wt/KonotK6qsXvw1zx+S/nahPB9z\nxwfSDJyw98tQLgndnRHo5B2BryZ0xhF3nr38p79LC2dBMfGHeA0ZvUZaycch\nq9M/bLo8Lym7x3nCDCauyg15mmQhDx8Q3v7Jnhy06RDroiPHk2jT0a6shTYo\nZFd9p50xD+RRIJQj//jGsmiPJsIQufMkQlg8JTCLEw0jhiYQ6Y6WI1dV/FWJ\nDVY90noDBmyvDPPyFG99RQOtQyxoNur2xwa+z8xHou8JLeE+EQEprcw8lg2V\njkN7Sgt3X76WsslfujsidJ5DNLjg8PhEY8Ltm0hyH97ek/JZZ29qjmoqu8Bt\nNtJDVja8ia4OE3sHgQP8pk6ibYqq+SEQnvW63m0Z59QXJ1nCY64DzAcYB1vl\nnhfGcKomtH2GatXMwgwBs/enXIurCsobyDX0h2MdQl7Jfp1wwny92KJ6cKLg\ncMsclJbPvuXZ8+jsQ+LnmZm8ctP0umj6IqHK9cZ15fh6Ihb6hRKtTw5rwjL1\nDN6Ic6N4bhlHP2zApNUikk7JMeNenW5wc7tzao9aApVNkc4K3oRO7NGpZs8H\n87xP\r\n=8q35\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDtSw+h8gDFV+oRux6INVNI++r3xXhOuh19cIiJ7PfRPQIhAN5BKQUwq2WMAY1JJpIbpvH+0Ze//HY+jmTbbMfThVp8"
+					}
+				]
+			}
+		},
+		"1.1.8": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.1.8",
+			"dependencies": {
+				"@cloudflare/types": "^6.7.29"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-qwJiIHp9zXs2CxCbNfc47hD3DWRW2foCOeZKCC/pD0uoIH1CFDQWTMcq4500cSuztDVfyNQHczH3lxazMZF7zQ==",
+				"shasum": "7cfc257ea22142e251e06f89b4c99fc2ccbf55fb",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.1.8.tgz",
+				"fileCount": 15,
+				"unpackedSize": 41812,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgixO4CRA9TVsSAnZWagAAK2UP/RsCBQmAxFkXh8bJ0V3Z\nUy/w4iipJECzhgpWx0k9ERqipxxqMjCilKKPTMYefVPCyYJ4j2n+JRmmU/Ys\n7HqeIC1ZCuxYAeXwBdV/4UKq5uRGc1Dfjix5QZ/LwLyCw10uj4ZmdtR+0uXi\nYxm3QEfRj3iJjXxGnm9zMtpwUs8AF9U84v0a0daLcZLBJezy+koOEYtYFspb\n1CxQVrKDi0Bv019tPp/tOTJQc3pNZSiHO9HwicfAkO5TzKUQ1RBbHDZlSgvA\nXwTr89cwnd5MAsMrZvL3ztVSmQstRIm0s4Gh3Vb2quXKBlbort+nlXJ9rIWQ\nZwNdRB0riLceuMIBtlpA0qd2lLLx+aY/WJtudR6BDDnWuG+FCl3AcWo56U4I\ngBJqeg+FM9D94uZXTeh6I22Yr01dLiTY6k9pcWxls0TZmpKKjt/ydnNxKSyt\nH6uf/Vwt+5fJywXMA2nXbMFbP4iTlU1wN53MOWq7XLxy/ppRAhEsyH1IskyG\nCCMSYpyDX/9I+L3oBevjE9UsqICC5KJ2O+/d0LDnWIW6SLIUrpeeFSkk4X5r\nck9nvZ5ofnHehP7JYehxl0RXrDXUTTFQRDRSMbyOOeLc7P/2VqMO7FxBxlPD\nfEKJ9X3xPmFI7BD9zZLYESGw+kMblSkTbbLKPQs0/OVXgKEdT8Zsrt8SLpN6\nXbXj\r\n=CdVb\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDgpoMEoGZWtBrNdjPZmVCUrynHyDOiJk39SWLmm0OCBwIhAL7dNOL2cDVTCo7oW30ShC9AhZDdxgsHgFgx3rdMuNFT"
+					}
+				]
+			}
+		},
+		"1.1.9": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.1.9",
+			"dependencies": {
+				"@cloudflare/types": "^6.7.30"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-D0FGIBRZ+szrms0zpzvjk2YcSk5jf2UcQmwBxwmhT1UulOSpYDNuOXbLqvZM/UxH95jlGbkxdIxQE/bxDViW9g==",
+				"shasum": "82b0553e947cc1a7ae397d55cb2006cd0214ce52",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.1.9.tgz",
+				"fileCount": 15,
+				"unpackedSize": 42051,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgmnQZCRA9TVsSAnZWagAAZ60P/jSCIAEZhpB0XJ+KN5oT\n7SK8mmwvzMFrn0RNpR9fSi5M5QdRWcWwhU9TdJY+rcaq9QOXQll3ZS00m505\nQyi9LUz2IeG5MrHOibBCCNLSN3+unxpPNMCC4NMDR+HP30dj/p6HWek2gnt/\nsrSsL/v0hgV11OUdqzfTui+wiDQgIVd14/kQ4mtRLeH8400Z7y76l2HsoTYv\n7LqZ+7xld3ZkE+T5AejyRJLHbTAbB4u2u9stLsdMEmdf0W/axLUtsgDw1aZm\nUI/ddDLEQPbDAO0u2Wx2DL6M9jKR7V2T9Wj0ZILJePIwRpGkdycy+ETo6BRl\n5gMqunq3fjA1jBRQcHsm2WaiuVsQRVcuL6BSVvKh9oxmmSV/kLOek2uk2sfV\nPxRws2fkdw66DdAFRCT26Uc5ot2UZc1dT97r1FI4a+wy3m0pZL0bzwR7aVYh\nNm5xNU138lzH7jRaaatYlY2xltO1xc46Xm+a7ilhj4mgZkJDN0Tnt8EI5PZI\nlPOrKMgH7uLdDC4qzkj8Epndr/flIyUys5fkon5Bynx3yAr5iazsjD13OKvf\nDIj0B0qseKlmgqi+lC8LPD48M268QKg4RFqPLwXH5ZxK6KIfuu2mL8ec59zo\ne4mTN/19a1JMDPktsiLoagAVaxXlnKgOUorA9dBwHhwN8UMbbBCqD/l5Xgkt\nC9Gy\r\n=wHwE\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDXa2gJvFo52WXv8Rfu1phgOS+rSV9F8eSz7WHjbTuhNwIhAJsuSJMGwpBUaXuKj/vWqYEE7XQt2iGKsV3B+vcyVWiw"
+					}
+				]
+			}
+		},
+		"1.1.10": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.1.10",
+			"dependencies": {
+				"@cloudflare/types": "^6.7.30"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-3xAjb6FxLs+jlekpEpYcYyIkiLFCeWM6MQp3DZjR3T0w8eeuXNaPK6Dn+TD3+dPW+AvYHH+ArA+aTpZ6FfNB8A==",
+				"shasum": "433c3af48e47c7f2b4b642b318a966cdad35396b",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.1.10.tgz",
+				"fileCount": 15,
+				"unpackedSize": 42293,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgnEKKCRA9TVsSAnZWagAAqGEP/2oKF9YaBBeFZJfRsma+\nYmZRXKec7O+F5hLeND4kNjFU0wNhWbEAJMA4PlQpoEVyzWs78zCDdVAYA6WK\noqpJBZ32E4MRD2nm5X3hU3LF9knAhhyZHGq3YhpxvAU+hkvigmOhjC4vE0Sd\nEWNttlPEgIEELmAcyMgfIuSr/dwumri0h52mpJ69cVXxDo2jD599Y2Ml211K\nz5vJuMa4sFvwyN9EnwH2nU7qAy9BIMZdRgRoDH8sR5yD+NH5UUIk//TH7oBp\nUAfVyQb4PmJDYUrLALHimtVM6dRGE/Yb2yphjOP3xHoKRJLYJlNP7KP68SfK\nd3IituYDPuvFsdnLWGc+eJtTZtjr+/2GRsWW3uOfyo6j5xB40aPd07YgUflT\np3ZFGWSME9/jSC6Y0IG5dw/xU403PlJJqBdBXWQR+4VYjZG8b0NE1Hr7IIDT\n7cgTll84bUXM+pCnJZcK4DLK9GPRuHU5nHS3zL7ylx1sqcPhtxogneekNg5J\n47MGqfA57D0Oc/n7lSHLfDtvmEi5Xzlxl8p69CiOj80uOqEirP+KvzhdhXLq\nnsFhplUoPdUGhWQsZD24m4y2CqGgKOBVmAQdQG1Grv31bZ0y8Rev3xzX/eZQ\nXyuSZwDcdFJkvvHVmoZpVCdG2fnN9mDLvs/84mYAPaFMT57RWgJ/Kp+lJrdT\nGVow\r\n=eu0c\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIHWDeByjZtPytwjF+L8gClrm90/y0a12x3NQpZb/SN/3AiBCz7dQcmxtOMbU65E9zYx8kfFl6dMPAx9DYfQL12AH3w=="
+					}
+				]
+			}
+		},
+		"1.1.12": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.1.12",
+			"dependencies": {
+				"@cloudflare/types": "^6.7.32"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-80tAK7tqHZkQw/VIp1xZyaUpeXewurMM92vNAwqea1HgLOHPQnWUrZD3XCYr4HPDPLta5eG2xuQei9orYDVPjA==",
+				"shasum": "dda47a1ff4fe55004ed787c3293b894f7a00b977",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.1.12.tgz",
+				"fileCount": 15,
+				"unpackedSize": 37850,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgpYvZCRA9TVsSAnZWagAAZYoP/ReHLOUXOwENA0gV9Q2D\n6cZKTlP3qEZ6AsYjwrKY+FOtUqUHcIQoUL2d554xdxxk6wLLXuct46dTjx5N\nzUcxhAi+AjlU+HKk6NhmwX37k7FcX2lO/jEnp/9X1xgTfa/plS9BUSZ0gYsO\ncDmmDHqgSQB8Elq7Es6B1GH5QBe5IEphpJH2fFrpUkSlI/u3bkaqg5M/4Hcm\n0k99ZG/MT7PTOZMPGhvQAGtrk4IV51f5anBocqHcqOFYhJU+CfR45EHAGlm2\nkOxJ7/c1CohH0VTl16C5qnJ8GVrP9YZfw9v/XJxjvvDUugICoPOhuV/NHRR6\nccYlkM7kt4jyF8Cz4VSST+2ftPis2VmZivVaW40U9bfe3wPhLhsWQKkb2RkN\nFYUm1NZN3S+0U/qqXYb+1Nf3SbniuNEqBqphzHe+Qe0LlNsPo/OPT1Q8ChcK\n/DikUIpkJeVP6Be8WZfmoMhnoW7wLjrpwEWijhM5PWkl95Y23sJikkOulleu\nMjsx1jhYp23d8yfdgu+2G6LU55gYa54CIK3xaqQpdDeR6ySZdTM2+tdoysBg\nYrFGwOVtakC1dfWM0KDPkFK1YLPGagcQPJpZjqUAeMDuDjltE6THsPWNNr39\nVrjk0dZmJi/zy8u2nq1+FQFymPoiHP0EZLA8pB9JzmqkCEqANSpV2l9XaXLk\n6tcc\r\n=tmGA\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCICnyabui/KcsUKs8CjuHtU4lxXmL0rS5QgLKuIDXxHiEAiBvcLFGZqz9UAAKVd8QcZWxaRwmuwehXaiV1JZnusQ/zg=="
+					}
+				]
+			}
+		},
+		"1.1.13": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.1.13",
+			"dependencies": {
+				"@cloudflare/types": "^6.7.33"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-v+j/x8NTcQvfIfC2tlDK+PVHJ7ULN8Ws+uj8oVBPC6QY7WO643HcLXuMU3+6UHTKAanpDUg0JnKkfx7gGz1Xhg==",
+				"shasum": "4e6676864d86418a1f6528ac5a1c0289d7f32ad3",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.1.13.tgz",
+				"fileCount": 15,
+				"unpackedSize": 37927,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgrA/4CRA9TVsSAnZWagAATQ0P/1RNHb+Jak/jhlULDIJM\nRApf6Th/WEwZ/FG9xmubfQsC4QJr/kzB1L6wsPBZ4SkeDnAIZacx9N1mBDjb\nZTqV2/UqjrGoMTbm/56XAGxtqa/KGfp8iJp1KcdZmXWclLEwTKrzHFnTOFJg\nmMTlNqbTUh8vkCU6ZUfPH5y0o3gvpHZ0veha/CeyRaTkzJUzMEmruIgCcuCa\nGbOfmwsEGliosyG/b3PSMwdW/HyIkC+Ybqtw3MTQXs4ratEHLLsQM7MRy9yo\nCU+DGGrlGSLSTqQdkDt20poiekaha26A3KdGcc80xu5JEF1UfMD3FVHiKViX\neoDKtCS/v2qEUWzifxEyscnRT7+YNcMTJH+N1lIGjVik5an8gChwvCeNSGXh\nkaah9o1XrjsaFlpS9o6mJMry4JA+XWqhFKhE5zHRkqvZjFdwx9dc+LDZ7KLX\no1EciIkR3mz1gAFs6TkS3fjvKAYvkBm8K6eS39xA+lCSRpDo1JjMATro2Xyz\ngaqY7Gc6Bxe+HGQZD7BfjpiiHRcYM+UMXxke4pFhWQBLwGc3+xusRKmhVwTq\n2vk7RLAGrdowGPIPEGUa45N4V23D82V4+k4I2ekzR5rc6NlygsjweTHf/1oM\n45VN7W6yAmQt6fPYNYh7z+UiQ9upNbjizv9ALV9YZ/wSoDhplSJXiJ5uXjJq\nkdi3\r\n=JmVJ\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDV8BUFBknxDvagAbe6ZveJlNedKjIP9C8bOLr7CbpOQQIhALAHxAkplOPgc8NrYFRaCIVRA6q0nqnZJk1S8or224/j"
+					}
+				]
+			}
+		},
+		"1.2.0": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.0",
+			"dependencies": {
+				"@cloudflare/types": "^6.8.0"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-Xzd198Mhha0MivCkyBXiBKeKsg1ijdHRffbLoz7aJVCFKkAhIXlRY+Rebpw1Zc/wNQQpppi9ljkvTCwiFSVUOw==",
+				"shasum": "3e158d8ecc5c8cc0ecad705c2793105926a47e74",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.0.tgz",
+				"fileCount": 15,
+				"unpackedSize": 40189,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgsEKoCRA9TVsSAnZWagAAlygP/3cPGGc/R4K/5rBg7yw5\nltISgJDWQypmx/Pi2GpQBARbvkE/p69e15wGuRHScO2mT1gykRsLvs4hj0ig\nQTgDHsz8H1VL5J3JYA3bgJb3DpwgyDw9DcS3M8jUPXVS1HqbHU9cDx9e2ToT\naimwbggiGZmFCwUs8pRWsUVxpuYs0xjk0QwfcTX9TmAX+FasDWEInykLAm6t\nCeWsVhC0+/yqmlcDyzhULN+dZvWc6+giEIGcK1rbLbqoX63LjT+53WpFsHO2\n/+7wQ6wz3FKwnmnVy2Crt7Taod9oO19dWZ+/BDB/o5QSZ2ibmmDDfxL+lbfa\nqWvEdXJf7aTZByN44QBLyqOAg04PIMq3fyMBrzL6LJAaoY3NT+lXMMvfUlzd\nx6d5pcQQ+Dbmg9fxe8lniEiyJEUpheJnYWcPNvd4teWROp6Gi23/eRxMOJsg\nosxerzoDtjTu5xwDx6RPyjcNi3G0UBwsRQJmJ/UiDl93ozxTKkfKDVBYP8jX\nrJTLBzHytukoWcLXbD+5LZgFCE24G0+9O0LxPvi1iM+D9aq68wlwUrtz+E6E\nVd3m+0jQiCOO3sqmo+uarUKFIpzA2XOcBzHKdh4agaWYF8qFEIASptl0FH8f\nNcGlAyMkXwBsuCmxvatrEv7ZymMvVo85SmxJuyT7VfRH4H+l8GIrFdbpD5zh\n45Pj\r\n=UJNl\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDrHYuLHMMB99Xrphp6+BTnHsnkG+14NBmIrxgOcIm8QwIgULKGQjjNOPyj9KlMhKvrQm+J9lKH8l8Bd5bYfiYXfVQ="
+					}
+				]
+			}
+		},
+		"1.2.1": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.1",
+			"dependencies": {
+				"@cloudflare/types": "^6.8.1"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-igE5dro0tPZ5y1Cco8qg+VyTkVFNAnelEA42jbtArz8iaqtEiQYQfD/VWY3EfV6G2aoqpmDna90qM3dvviLc7w==",
+				"shasum": "a70e8b1e4763bab061dd4bbf8f53f3be96c66ee3",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.1.tgz",
+				"fileCount": 15,
+				"unpackedSize": 40428,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJguL4KCRA9TVsSAnZWagAA6c8P/3ALyWqObjQqMi+mcpro\nyT75+VgZG6QE563IQJ21dY57jt6OoUo+50hGA/r0XbbwyNb3RR+++GqsM0ei\nV6ZoLQi28J3XD4Skjjs4qkYCa2/iRnyvBYKXqu9wMkpFwkHqbwyOlo8c4YFr\nDEt0AoxUq7npq9vGBx2dEffMnxilbK10+JBuccRkr6sKNuB5anlfbAjKTrMn\n/Xnf6FOOaIXfhTA8JGn6mWu3YWzjbtI1C2b3C2BE4qmwIsMedLfuozKfLjTM\nxJuyPlYgSDbcxJawcuJBY2qByF4tCOmo4CF8PEGoQ2TzEQ34WA6TY7+1bRyt\nOAyvXwQoz9bVPytsIq4+UyUNk+W38hhBiQJT8+AMUdQpwYldRFpTHDENXMgA\nmjWtjqTZ+w7l+QqBjjoxkW2FFQ6bC08FYYlUdRV8TJTqFxVX52etSnosVzLB\nJ4zCCkvX8gDsgasWChgt9meDrt2/589+MYnvhy4ISj3MtPSq9oyGIbb91GlT\nZ87KYG1olGOfsiTDsXOMp4mm52BRzmm7qKTB2xMTHMN+3HqQWksMrjcyIteB\n/zlSsztYhSWSDkfWFtFKUWbUD1xKom3Hu32q8kTOvfIcQ65bqYB3iE+SV2HE\nzvM7FviSp2We829NQV+YKEBpkjCrztPouZgTnAW1bBL1IUxgFiDCA3al+1Ba\njuAh\r\n=C91t\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIAMglxVKyPLOqGRPEbm3u19UK7ztUdL1FvEivM4Zrk/IAiEAz0jcLtply08+3AqT5cZ3PVdsTey6icGZWc8XzGK9lSI="
+					}
+				]
+			}
+		},
+		"1.2.2": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.2",
+			"dependencies": {
+				"@cloudflare/types": "^6.8.2"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-df5n/F/l2lDpDp0UWj7UOJoEtXRICpzdEs1dwHxPvfSXnDzqjpqCEubDeSQqulkRSYnnJn36mY8GLl4DaFaBtA==",
+				"shasum": "961fe14e1a5a2e500e802f1d54319107eb3ded79",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.2.tgz",
+				"fileCount": 15,
+				"unpackedSize": 40667,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgx7h+CRA9TVsSAnZWagAA+UYP/1fwCmdVzMmRTo0vc+az\nK5LgmOz150xNM7YNtZtpTFDksrggNZ0e9c0VeShctMJgpvVmPCLs59peAJwn\nrGu5kxdVhHPDgoqJmO5vLqAXFr5MHVIBu/qx2RIh3DCwoIg0LWU0S8aX2+tz\nUJ1EqaFep8tiHJD6VUOuCVsfxskVG7jVci78RuqWOdqBQibD8AuuV49Y7CSf\nrOTqNqi0zjHsYleDsrJ2vxH67CGUUbHQucTUAgXq4LVj+vfCOditf9eujr3D\nah5NYj0lqK3kL8Z+4cjZatpAAGyAt244xOO77yFkVdmXdHL1eplsHy1BXgb4\nq/Qtvm0zPTq7ZQ8X4MIxcpTUaUoUosypRuvXjBH6FrzOPRS8p8WmhUcaCswT\ncaZFgt1Y0IwcGv1+DmkUIoqGrlRwBoqpEATzWt33pGnjov7dQm5WJAvCk93n\nuGoJaHkU5726bqposcHcIzOtzNeyKS5IbvsPNVvOEMkAnWr5k/hef7buGmQV\nG+0PH9JNnK7XcBCMDro2blL0MoOox4EYfeUkGK7NFoJxrDeK1KgBXMg/s+Zb\nKliuVc3vq5eCJJt8IYi8jWabw4ktFGkvZBrwM24MLJQYWiV9LooZghWbmYQw\nCyctIk7fo5e8t+RMWLaBad3M0eRKZ2dwt6NZLrkwHgNQCO0dXFv/MWnwB3gf\nwKeN\r\n=p0Gr\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCRo2DiJL+w7V3DpD1ugYYi0zVICR3EiIHJuoa8WzBe1gIgZaMHRm8CXdAis3Wn0SxTy2beD4bOmo0Rl7trPTnWtck="
+					}
+				]
+			}
+		},
+		"1.2.3": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.3",
+			"dependencies": {
+				"@cloudflare/types": "^6.8.3"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-4dcKFWktYa/baxrALE8dBIykps7ZQl1yG8y0WXXmUd8WUm2a28D7giVaKKrC5HoLEjnWDCWrGo+zWv8ldQxwDA==",
+				"shasum": "7be38b46a9e24e19ee7aa841bae3e899e15365db",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.3.tgz",
+				"fileCount": 15,
+				"unpackedSize": 40906,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgx86mCRA9TVsSAnZWagAAmVMP/i4Zurm9O8VS77QGUM2+\nIWa24kg04ckkwCgfkl8rzPsfWevJ7Xr41pxLluxDox9LlRj52Zn0Pvg9nmIT\nS+oW7wOsEBUwpcm9rK3UvNi0UBb13vAiwrrRhWb5ojmnTohEldWpevDpMewb\n2rAzhUdRu5AjXGZVJ52LG3XM3IkBftf4L9aY09I8e1M5fcHHMYRkexJxL0w0\nQMkItb3jM7QFkrynmdDMZWHXMMPXu3SSQhgh0FFblILpm0hWTlOugo/83EPX\nUatNSs6vzPmB4VBjZjoWcfXgons5mSAnkvciDXgOMaMVmaU+fmGRf4RkXr17\nq/HtTDCTRspS+iOaqsZIQ7/8EzDYe1I+tebl5YHZHgpWV+gqZtTAvvQ+6vjO\nfg+cpslAe6MDvg0K+Cu+GxckU9gxugBabLQo9Kvy7KZGBLiyyjI/sRTDmTPy\n/sWzqgmKPUZZbgMrD17DSFIDijCy4PFDV3VxiA2UH/PTD7QbfowGjUFodtzQ\nD3zLSNCenvhB5NLG0c95avVr+1T0okzocztMxEGwmIMayLdtdvjpA92VK5N0\nWMjFrvbfYOohRifshUVx3le4M4zZ2fIVgVi6F1hZVAkx9DTXRbchHNe8wlVv\nkXcctyQrgPjbudZAA2waneQlNE6/8IU1C/vrSiczwDyd1vM+VfBk27+cjMah\nFAFE\r\n=AjBP\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIFl8wPVmxDcl96D5tfukxawSQ5fI0ykHpp+GAsqxiGKbAiA3fVPBsgG21JnVDBhUfq4k3CIT85CsYvAPzl940RpTRQ=="
+					}
+				]
+			}
+		},
+		"1.2.4": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.4",
+			"dependencies": {
+				"@cloudflare/types": "^6.8.4"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-Oplvd+2GK6e2VIQl/fKqKQGT8GIXGcRJJH/TsOwNrOIzUcGUbCRuqA/JL+n46D2jG1WKrHujFGmIeKYrsDMrvw==",
+				"shasum": "470c863487ce036798c5a7e56975170ee66218f8",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.4.tgz",
+				"fileCount": 15,
+				"unpackedSize": 41145,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgx+ZCCRA9TVsSAnZWagAAL14P/icDUrWKAo6p+6Hub5c/\nQuNMoGdFRxHwSuvCokWvD4ZrRExQi1a2frJESp71o2Ko9KFzVk74eJv9mCu7\neHr5g2bzcVUHoRb7Jq80atlf+zpHrWyz3YXk2Ksfg0m7Y1dTwBitc9G9mhxz\n43ej7XAF0WjdmMNLcH89JGuxTmTLO5SP6pBi9zUcLfgcN8J4zzwSITYLKkFK\nzLwhBkINgqVQ8TDlMhXgBlKusxqVQX1L1jugENdqE/B8WGMY9qwL6AncNI98\nkoHf4KPo8/xtgpu6BhaPELI0PR3mBSGAXKxMYQ8QncpcpQ7WXykwPafbZrtx\niMflL0zYhXZOjJojgU6J5Pt/ZDkLHuENboYt8hG0a+KJS1JeD1Z/dQ/Tjz2m\noSmYokwsbkP3H+1GxdC7wBlzQvJ10J1k2ICv5YsIKvLGQVNBXvl90EWWYm/n\nUFpLLZ8FDQ3fi4sJuqfs7o0DBOQqw3m2XcnoIeHqmnY+m2fxtBq/a53F5tXr\nNylKoi/YRzWrU2vhMhOixeSbfuRJ2u1nC7RLtWy3VSKUbm1d0QGlc8Upu2kr\nO3RWxIKGglsF+vLkHJqfH0z91B2r7ney6xroBLDvSAh2ZfNznIbLH1xL0W4W\nCKbw7iQqdw4YpJTrV6w/Kp6zFOr5eOflu0FjavWSYSmmUTSHlXoWGfNNEYdP\nBKLz\r\n=WYVu\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCrYyzi1H8sngoJsvf3ENk3iPZX/iXJtx800l7Mlz1qCgIhAOmLNMKS+aRvcmv60+C96O4039gPuKTX5yoa37C7TmCr"
+					}
+				]
+			}
+		},
+		"1.2.5": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.5",
+			"dependencies": {
+				"@cloudflare/types": "^6.8.5"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-JI2iI0a+fSsP8VMKBXFEHNkUUUJbIxTCyiyaMikdThWiP5+Su0wTrVVtpTF85mAamIaWLDEbkZ4F1WdX8UZhng==",
+				"shasum": "1e6c29cc7e19a7782cc3b85e8c6f41c7ef36c744",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.5.tgz",
+				"fileCount": 15,
+				"unpackedSize": 41384,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgyAECCRA9TVsSAnZWagAAEPAQAIU3xV9Ornbh8qA/uHAC\nzpU3FiyHZ2FjQQYJD30YIqW//wLJFmOSqp9hIp88vz7rGrIoLbt4MhKpQW9r\nH/N4TYo4pLKQH/omaKonz2L33FwrrNL7bTK5V7IDbZtgVkc1HiCdjQ1W24QF\nz2avz51crnO38Rpm2Pxaj8Xi0caF9N2p9HVR89tLhfOffcCgFe0xF492yQbU\nHPEf4M24C2ZKZvZsuJjHVv9zjKzn/nSfHb1FaOrXw6XxqU6Tzg0l2YaPJBru\nvPVXNlJcVRqRT4ds6oc8XMMRSigjzeHjckGqONyCE7jP0w48uOd+5BhqAA1H\nF/X9w4Op18FVG174hXpYae7FZeCA636fFp5Dhum1ObLiUaKQ6BYMnmAwKrDr\nfXRjV9rky6GEpvmGurRtgg0Eis3R9Qz8pKl3z3bil1y0nWMrMj9p7wHCfAtK\n7RZTvWWY9lWTm3s70gKEMHQzg9mDlg1Cz4/EcqdAL4w0ncJi70jlMj5y33Mi\njLUhIJpVf5FH7gEVuEgSJg1yTCZo3dRpwpdnBfcQqVlXpCet4MGSY9uP5+pK\nnleZ3PMrrbJRutHXGMt7S0UJuHfD3QZ6aWxiz05pHhfKt5v7QJ7njzeDab7S\nQuAdqD6nUhnQ/wCz+3nmjerxmLHBPpBixvhm/ZRZ5tIoqRe8yqPXI2OmXSx0\nHIV7\r\n=cfCB\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDsg1wJl+4/dRKUWfQjTKbhUCgYjD9lwFX4O7rl7FHfYwIgMe96mxN6Xlc99EW3LV2ju51JaW8xbxLEV3GCNyTEj4o="
+					}
+				]
+			}
+		},
+		"1.2.6": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.6",
+			"dependencies": {
+				"@cloudflare/types": "^6.8.6"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-pEPBaCd1wruPUlOM3wH3/XBEpAKYY66NElD/zOAqR8atXNPIjZ08rXWA9TZS3+hNy8JTVhWlKhAikMn0cs3SLA==",
+				"shasum": "54bd37a56e0df60af87ca95420888901cbde0d7d",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.6.tgz",
+				"fileCount": 15,
+				"unpackedSize": 41623,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgyBc2CRA9TVsSAnZWagAARdwP/i9WDLeAU1gogW6gkPDu\nY1pf0juoD0mY3OVnhtrRN2aZ7TAzrth9fGHVnpbjpQAUjAzMU/uui11S/WTP\nfpqdhuX4Oct4Sk/wzOZVi3FQVF0layinbrNbML136xzp71rTazFnEMJD/b3a\nunxnA+NP7h+khXX+/7Y0caqUchXCVzvIwGaNB2SRGcfxamSqL5hN3HzP+qGT\ntObpP7E+W6nxEzIARUd3BB4CpbxNqu8+0nClRAJLCk7re23r3Ofdmwz3tHcA\nJnZknMl169puLuSP5GwC/+rWaGSiBEqq1miUcankBDdWtId3ZJcXQ+FEEgkI\nwYD/sZEcxnTokMPmVYBf7HYjd1ulXtcC7t1c1MLF3E4GGw8tYa3G7X+QFl3g\n1ZB+FOsIrBAkx7JFk7u3zEpFUdN3WlSHJXWzv4izibXnDwaiXlVKM3U9cAeM\na69wMOTRjesh7j6FsKo2yCl0JYQWDElbJ6I6E+eO4qUfW7ehX5gJ2Ajt4jBD\nPbJOHL28YIKIw/6uFx5D/ix+CJwqla402IdKCc7vUxR9GZ6n8bIck/2gZvjR\nNVFX31PID/7rphiorUIcS9977OgMFdt9nccMSiUPB06C5CAcb7YlQPpmQAVb\nLssjMi642c5aTFdARUmyJ82pWJkuHQ50QniaFxpF3KRfiU0Ha5L/DRYbVNeP\nb9Ko\r\n=lyNp\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDz43VgaRrsSu/oVOcnydHm+hs2g0k56oyKy/+/heT6SwIgD32IAVdn69hQ3+VLGlUuH59W4gdtHNqyibMq2skNwIc="
+					}
+				]
+			}
+		},
+		"1.2.7": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.7",
+			"dependencies": {
+				"@cloudflare/types": "^6.8.7"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-zIMylpl12BGabYI7V+8jKHRVJS6IZqpIOUbSmz1aiRf+g8VajWcP3/Cnljep5xi8XNbxTrn41NQK0BOpVMDxYg==",
+				"shasum": "7677cb86b624461d76f8ba02844b84d84979cab3",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.7.tgz",
+				"fileCount": 15,
+				"unpackedSize": 41862,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgyjmCCRA9TVsSAnZWagAA7yIP/2CPUpoTVbAQhhAmTo3p\n11uXQv7njefjb5KaV91M2LQv53WUs0AxvCgE4ecIx3dCCL37b/JXIAfJW8iN\nam2BW77sFS2pjQc+D4Rcxh/mUB8KfujPOq/uBfiaOK5tUg4z4S6IXAB2bRHI\njOQj23xJ3xvHcutc4ZL2aTBFf4lvVHu0wFO1MaiOivSLSpqeixrb8f4b0ep+\nJ9s9qN+Ns7qRpO5+lI0hvBWLjEDcI7/RuISJKiNF4P1eZgqPKyH4dubzvw1x\nRj+FQ5mI2CsP/JR027ANN76gWaq/818JKLNvEe8nmXCQ4GEIk0cinDpSs73y\nJXdpqhYinx8/L7dKWA1W7gBlEb8SM9Jo3w10fwZVRN1eFu89a50w3LPlidpH\nZlui+9CMZCvSzGX7usTazKffyXScCu61rO7Ee6ZjYv796TC+thoHGuzzd32S\nSl02FN5tNsgRE9OB/p6MWQNwFBCdvzaVm6aAcvPJoQ8gqKUu0mYxI3Vp/Rbg\nhISwQXrpMqrukX2Tw5SJgz22901t+ee7sBOQpEbKjKSIz241LOWSJFHTB/sd\nmyXhjW/dZyAz6aMIjbdGkYMr7M6kP6I45moATubuwiuHHp9obrIMMhnR8Pwp\nsKu2XYFhuFQ5DnHef+CG31PQjYXbJBxRDEeVTJ8LFwXnya71lYUHtZVmx5SK\nXFgt\r\n=ThXR\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIB8N0KecZdsRYh76n7ol82krnxeT6zFyjG1zKrzrx0cEAiAqiEHhnQmI06zAyjOjzK9QG5+m0iyswKZaKBrkgp5Vig=="
+					}
+				]
+			}
+		},
+		"1.2.8": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.8",
+			"dependencies": {
+				"@cloudflare/types": "^6.8.8"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-HU1Ebl7NSKb23xrslM8o7LuDLmSrwivrGd+kgqX//oK4isG/mcXhpPH+uYZFAsiwyEAp5/KcB1mRf/vdV7hBtw==",
+				"shasum": "461fcd9d08c6aa6a409b81a3ae68d1de0aae263d",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.8.tgz",
+				"fileCount": 15,
+				"unpackedSize": 42101,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgylEHCRA9TVsSAnZWagAAcvwP/RhOARB66OAGvZ0027+i\nD7PDV1ur3gT/BFcXoxST4uueQH3shTfMePsJEAd+upqeWBKmhs3tdTOUBDgr\nyMMPLJYM6wKty1B6RQwSpr5mh9Ep8+pnW3Fn2tY1VFOCHyjHoj99ow3qbf7u\neeL29pKruTrcElH96ROZFn1XIgNYTViwoUfVjey//Kv6Op3IhdZH07tpJTKw\nbN/FlideZzXLJvBDEIkTiya34VmxVF3vN4kDXC0OZlT4MemYUOvZNBewapIS\ndjcuvfgCovQ+jDMnalGYi7ev/LSzCVWKPanGis10iUPOBMNjZW5A2r+a5/z8\nRfmuHxJbuSXfa3woLp2W/s30R6aeMuCRVqEyPQIn82e1PnEVbL2NKc+/UjMR\naIZXzHYbavQyLk8Q7Sdnch9863sEf9G1i6/PvquZ4D66EcDCAQZi59G81cWh\noMOfJNAOZj+zApo63I0KuAKj73Fl0pLeD0yusg/56bJegusSBNmbkyFhMVN3\niLSMMTV+3YBWBu1NQ9VgLCYR2GcpEt4JtWhXFDD7bPDLZtZEtdEW2DVsXyF9\nVOi6UdXtSRwJiW1lUbp09GjD1ZI0msN0xHji8+p7kzlft+GAfzT9tJtBbFOv\neFvWzGbkQghH/q7uenBygqekfnTKo6j6unVGFTVTqA+U9NrUO9lFuTQ1PzlU\nZmps\r\n=DDX7\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIDrZMQsXzX/kRrLwc4NgRizR5x4ZZ4ZYiZLF8aaiUsHPAiEAkXSC3Kbln+/Neu7YYAPssTLgk6izjQcADiQ2dzPTHEE="
+					}
+				]
+			}
+		},
+		"1.2.9": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.9",
+			"dependencies": {
+				"@cloudflare/types": "^6.8.9"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-TeWA3vk6F2f6pi4Ah4L61f7X65eaCXuQ2Dvi8TjkY5ED4P617Z9qOrWv9Rh3TeZIOX0UwHWLT7yiYWr3sg66ng==",
+				"shasum": "c4a5579d7b4184bbdfe1f40a732ebdd32cbe7fd4",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.9.tgz",
+				"fileCount": 15,
+				"unpackedSize": 42340,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJgymfICRA9TVsSAnZWagAA51IP/i9lXv6e88FV6GByZn31\nuBAt1AkFiIdB/X7CofRC6bEbU1VdQO6ggaM1WsLRMTexRy84OynSFU48DqbZ\nMDXW5uhIDaPA8PI8jpSHYTdlEA0iHaArmWEScfLzQUF7qEGs+/OjYEGb5gcV\n8eGnNQWlOPymRxIUF1+5dq9dq1mUzWylH18f3nM2sh/JEcXU8JNYsbBucLcf\n2LrYbSGT/MpwsKuUfdOlcg3bOEg2g/XPePvbBFewH6c3o7YCn8M4RuOCc15e\n6lB//3qlIvGXF0YC4tkWdDc7443rIlbQHyVyyBj/yRdaMZXO8z0p98bT2tt4\nzcueSuzZ61H0ACjM4+BmZOFIkVmDiNAF//m7Aj/uLXI7+dZKjqZKCo7I9bgM\nsL5EEN50y1VQUg/Kn+U4gyqPTSRiPS/Ba2ugAn5kCX1uTCMVFIzfHY5mXKFi\nuqpe70xQXH0Z2jvDhfo9ztQUwrrHptDploClsZJZlDYXeP8AL4aLdon+1M1J\nncUIQ9f+cYLVgnbQx1JrJhTk/uZC04qSqF7DK/9xUsLPA3IL8m0oscqfdzJ+\nfMaTDTN28PL9mtWwbEWqWsy5VFt9kPGrrucR6FwbzxDooJofKAyP+mXk/t65\ndKtBA7LFpiRBSr0vKzgQvbaXNaP1R0/3rC8VdrnY+YxKoqUngzrG5xdH/Utz\nGtGa\r\n=XG2R\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIDy9Y/hQUXqI6BSJkIABiZ7dGu1YWJZgR+dN+jVIFQsNAiB3X5AfajXVyoeSDfFlU0KJHfI1IcPI2MueN8AYH1v3kQ=="
+					}
+				]
+			}
+		},
+		"1.2.10": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.10",
+			"dependencies": {
+				"@cloudflare/types": "^6.8.10"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-anheqr5nTZYW3BMSTj/cIv5EcNHJWY10EdC20GQd29kEDk65/MQYzYzEhRk8+souu/99rmqlOjvRDmNDffxL5A==",
+				"shasum": "8d20b1b699d1eb89e26978ffb63b01b49d55b2a6",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.10.tgz",
+				"fileCount": 15,
+				"unpackedSize": 42583,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJg1OZxCRA9TVsSAnZWagAAiPkP/2hfkqcaOdZq9Lj4zD6A\n8xaaifyskTu1vUcvDgpwhQz9zu96yHozDG8IB8aM80BtpISnJieYVzGkV17a\nEsYEpuNESZhUYQtxv9B/A2Kjv7FiF98gWdBInItgUMyszGqwixpJvG/D1XTw\noNBPjxze+q7qzIpYTWhM33A7tN5sSzFWbaFhiRjxFnjks1DBpdHQBbWU3MgG\nHHsHC977JBRcuLXTYCRcrRJVBd4F+p8lwaGPM4dd+Xi1Kpgyx8AX7Ciumedb\nBmC3/VeSoFA7Cs0ItDGDqCZ0NSvBIFwENwIVx55GM3xdEx7Mj4HelvHA+pmy\ngR4lrAh/Q8d0y+b4YhkJV+K47bQHn4bVFhpYMWrLiHSGCIh6qfciRRjhOkbL\naPLVQQFyBeFNSsY94ww2B6hw6f+akp1MzpOonNWRu7IzsDnSMZJulj8tmnXq\na1fImsmWD/jc5RucMs6cazOti4q16gqXHN+2PL7tlsRF9DqH1n8UW81g+fPE\nwz/gOzEmOlr3ur5dQ3zv5Zyp9UOZWrBaIwXWspQF/tVPVf4KSCpNYM3Cp6zQ\nz/kJZshTipLFT0JpJFiGwB4qigJg7AX+/OJ/6Gku5PVOnz60n3eQaHmaaBGG\n6g+lnuAJ1oSIi6Ap8/5JNeeR6AGiBT8Lqh8KBKYP01MTCfkDNwZdyYaqRV8B\ndTYy\r\n=UxbH\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCCufJAfvdn4jUB/Ed62rsO2G+veSdVR2tscTS3nqfaUwIgIq9ZbXvKpuEYsFz0WLa5fjRIWqhZdKr6bko8zhgPSrU="
+					}
+				]
+			}
+		},
+		"1.2.11": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.11",
+			"dependencies": {
+				"@cloudflare/types": "^6.8.11"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-FLWIqOVBPylZeb8ZYDeCbUYs8MBd+innibT+BVTz6w2SfJ5IEiEEX1kS1Mn7zhziMJU+ON/eoSDWiq7lZWy4JA==",
+				"shasum": "79d79065e5459fb49d9cf18386889b197c0d9585",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.11.tgz",
+				"fileCount": 15,
+				"unpackedSize": 42825,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJg5t3lCRA9TVsSAnZWagAAzlMP+QArcdQDqTCE+lVueRPO\n/mbmx90pg2zn8JpB1kdkc3SRnpJF5HI9sVYNREfLckiZUxWd+QT7XNM1cxOI\n+O6G9ONMpb59lThEo+TNKgZjNXefWrLuMdRaYAy8iG2QKrlTB8rVyW0M9+01\ntFYn3bqal4sXFcSzDzUDcdzvuoB27Yp0P+AN2BtmR8BYPxsTkbO3kJKU9Dfh\nRMGOpVniaNLoE6sKWK0bizW82Ax57OyCN1T27js6r8Vby2JAs8LaC0RfxkVh\nE9aId1l55o3nadouO4Hqyl0+RezYIocJIPeto91bc0ehEN7SkbUNkWrggaKK\n23koyBALO+9lffNVXuB2DfgM9AicWOXmc18RjkdmAL6+SkdB0b7QIUMa516/\nj/xtk4R+E8y43snK7Ma1SXgz6LVG5/5438zKduQh5ySPSK29JU41WVlz7nrx\ndaq03lZUR1ZjBnKuo48lg878TUIWwEM1A1VCGUqYo2Tg1InYcewy5KFuNiLK\nuK7M9ZkHaXDhoZZEJuL8Dkykos4b33uZDP1R9A0KlJQY38ruLxEKLseDISTf\nuhBVM5M5WbejItJqUkyOsKv30mLoztCwC2Oxn0l7UY9W92+3oE8ObSCRcbDd\nJdh7oEKEKacJtXaLt6WPJ/7aqvx3tbX+J97TUvIl+1gtzwLWvyGVlifRrwZT\ndIE/\r\n=X6SH\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQC8rh6+f4jk3sibFv7eNoiha4hSfkZP8myhvdBH31YxXQIgB/8g5/lGaPXCnqir+il5NR5LNYW+Mj3kYoMELPhurZk="
+					}
+				]
+			}
+		},
+		"1.2.12": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.12",
+			"dependencies": {
+				"@cloudflare/types": "^6.8.12"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-wEZryJJ9gULeZSpf4sLfKySXfpBjr5NJPrxBPEdfCDRXZDEvNYw5dJVu9ljn6Ts8vrUmqKgj97srqVn24RTskg==",
+				"shasum": "59b7dd7447ec5a084e52f71cceb4d406bafadd01",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.12.tgz",
+				"fileCount": 15,
+				"unpackedSize": 43067,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJg5wRrCRA9TVsSAnZWagAA0QUP/0mWzaJo/WPmm4XXOLk/\nx3p2WN8QVyIdm4P/Kfw+6EXlLgaNp5t6nMU7ETeRcx7ibBuiFeesG0ndPEMf\n64DtGvJ6xtKch0qIoS8d+5EqkP+YUm2Un7AZVp/caL7bVr3JVA/4g263g3Bj\nxbiRIElR9jGqDbqsIXvQxeS2ySGXaWypvEcXffQFRoqwmFHRicUuFJmk6/v3\nzmZHvagjddVYyBUOIO8PH4Z+dctnYk3RmZzno6ONjt4/wXZW5vIBAl99EK9K\nwxYoEXzFnE3YR87R0Tec1cTa/WXAOla/n2zunLoikS5QkWeX4Tq3peLB7tzz\nVSSEDL+VfH4mga9mCI27PJ7bAx1Ci2v4+ueYHtT7iTt2AwKUiffGFwvpPpMB\nE4lZBd2aZANgAdrsJXWyniOyo7xzbcLM3BoQj6JHNk4UZZDHII9AqmeaRu5E\n56U4dmHD3FBItkJq8lu7DBpjf7MFJH7EedVEw6zQowX9YE5IZqJVx+tOUUla\n4j+HObL5zuzo1CtVQpqvQtqFeKytBbcjaQRTcL+1T4M2XJX1S3hrssTQcTS/\nyJcCHmFrhVdS1aF2dJYAlb17Vh92tBRWW+aS2kH8YOUEj+nR9XYdrlGnpAod\nu9XQ1qoqsGHeEvS0xegiQGqrsOFcY4EX7CFNFDkb7/EJdZTTUgAARoRx/FoT\nbXOd\r\n=Xffg\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDiG1+zhVCKHDq+fGx6msT4MPKjTh0NTxGaXpBkNYtm/gIhAIgduADKIruX8AohEzoMQp1xymYnOjKFhN7ZKNHZI2EB"
+					}
+				]
+			}
+		},
+		"1.2.13": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.13",
+			"dependencies": {
+				"@cloudflare/types": "^6.8.13"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-a+Bk/eNv+ZyL3JvDyiwC//ymcgok8w7OmaxCi5inrIvCueVEFrLtumaVmkm+ciXTGmbCH/Pg6HGrzCAljuqPFg==",
+				"shasum": "189d698eeb198ad288c9d58c707ce54d726f552d",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.13.tgz",
+				"fileCount": 15,
+				"unpackedSize": 43309,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJg5zTiCRA9TVsSAnZWagAAPUsP/3JQ/cPDa5XTTVOIIhAP\nToNVwSdwXG7L/bAbAlApmOVS4NVG8PMOgLqZ4YxaYUdgDfRB+AP6K7t5OCwf\n/B11bD7wKLILN7C1bAzmimPcabvx+RgfgzCNa1UaAO1WCrqvAmVBZ5MPeDDh\n89jgIFv2rL0NTTEmBiqPjEFIJEgqqqiwk9gw+YJNhZUa3rY+8OUF9CkMJWau\ns9gO2JS5jIdV+gnbzuhaSIObBxH1ogpDh58W10U/NMO1ZwlXcTGX/7E0Tdhp\nqGiyXqPG+JQBuiKNmqO0wCyIwENt1JfUBdesJ4ZuqdvRYMVoNqCKkjUIuJc0\nBaWuQ/EWaQ3/oBa6jnQu+rqAHUhmNE9uDbLVGfSSFGRujWFHhzFwQWVZoVyk\n/Eg0S67xwiFBIDAYHnc6FNMYqAoDgWSeeK5PJDfpieWXOENCUq1r1pjl0Au/\nsRfjrKnJCI5/18Sg9TkH7ObiHsZVuXM0d3uxtZhr7GI2nre4XLJA5AFa1K+O\nPyGoQ0+DdmCrQN+eg9/6KjVC7j3YzJSIZDBh17Yw6y5He7a0Kn279VpmjYph\nm8OJ9ORkg3akJGtAausv7qFoD+9jI131MsBXzaygDV0pcVFZDSJheinrDOy4\n/AA6gY5IktqJw2jzjC/D9l5eBzH8qIh8dMg4OV4ao2V4q4qQUJZObDZbg5DG\nYE6I\r\n=VVET\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIAQwbV2kCuF650M3jtjU5ksomHGxNMSF9uIySSP/ClSmAiBdkVvaB0DC5ImDHu7RJNaPGstpabxRzE+IVoFYDiu6Wg=="
+					}
+				]
+			}
+		},
+		"1.2.14": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.14",
+			"dependencies": {
+				"@cloudflare/types": "^6.8.14"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-3KNOWz1mEpLiWJxmohK2IS9hbKuEcB9Ry9HKec1mw7pLSuflxHRn5FD+LRD0TAkv0CNVz/Zj6+goRV/QVGBaww==",
+				"shasum": "a6a77ceeedc5244f849220763a7ba099c864e18d",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.14.tgz",
+				"fileCount": 15,
+				"unpackedSize": 43551,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJg+HGJCRA9TVsSAnZWagAAiDYP/0c9bx5vPoJmHBJXCsCS\nDdThjlETI2hfEdApFvV/l4sl5d/kMORVMJg3WuoSg1U7rWptDA3XOPRjYnAP\n9b7iDlVW1/yyQKKoJb4uxWdGHMYnDTvajV6VG+/6U9qkCCOUvgcOwCuGmBeG\n/JK9IfEzHZjPObp1XBw/1EkV5/xU93n+NeDqRENqwX+1CQtjEPa709Gv9rrI\n7M0en++qVOWiRWFybA0mcoJQtnOH8PI6B5liimDpdtGMdSpI6sdjhiYIoGqT\nLSlQtTQsT+tXKn3QqRIZW27I1B3s3mzwfv+VXa+Lk1y+rCpRwph5rsDUSzWy\nMBeRT2paDvJYku1Wu8AcsEg7hiLo++InxZ+Chgam05I9nZgk0j9/eP80SDTW\n2/U4i+fLyAsia+1MdWF7Og0jT0vXrcm0wD7Oo4nOzcXyP+Jl/t7P+kYv7+tI\nuMi74BAW64vTPiHPvPgzjBcqgbdln2nqKbVCyn3nYDh9llsqtkilh2yxvmHI\np5MTHx9MsodNvrwcn/6Z6+/ob1RDIIhwSzy/mUFyUqRJCSl7LgI/roJOcg6H\nl0+tH/CSv1VGCHTrBubBL7uHs50xZaIXUQGYFnnNUYhfYGan9kV/ME/a+vgO\nMSoU2/zARdcFlTZj6aiGrHGsKi3GWjtEc45XKOLrQIJiu8A3XfzA7MOVORcL\ngZ5z\r\n=sr3L\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQC1o/bO/oQSOhinSHBuZAubjM9gmFh1gwVUrVjhDh/emQIgdpSr9AypynAWboSAhQvn3jxz2sQ9reCrtioT2Dhkt5g="
+					}
+				]
+			}
+		},
+		"1.2.15": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.15",
+			"dependencies": {
+				"@cloudflare/types": "^6.8.15"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-Fnvo58h6DKbkV1REI3lqSG9UiOq7XSFRN3qc+AWUJrkt+PyuA3kmiHDKJnp1r3ZQGaa7TJdbw7ehAMNa0fu4jQ==",
+				"shasum": "90e64fc150115079579eb847956580d156cd9ac4",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.15.tgz",
+				"fileCount": 15,
+				"unpackedSize": 43621,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhAGOiCRA9TVsSAnZWagAAw7sP+wY1YPIVLwOfv7/G+1aV\nMqHLlKAj2GtNbwW30rBIjVvKbzeyMLo5rFQ1VAszLEyFW4HFZg6uxby0GJiR\n+fWJCIkayzW03Q2AfmlOJ3bi/obr2FVVyI7GnFuVlXGmHCtvWvrgMw8O/+sj\nlLqqZ2vAFmRsjlV9rN6IM6GbQ9KOo/V1ZJi4DWN5s/jR+uLogQruin45FnDv\n5jVn++8d06Mw+ouAr8/FO6aoYfLGlY2AXXYqWE+DJWNzGgyY2fFQs+qY5pR8\nh5O8OpmIoa1xJgiB73L0qzd415pq+9zTwl7EAuJs5sxrENxurz6Rt3NsFjDl\nF0b8VThsrizAkyjVixAT9enuTsnB2MED3+g5N0kk1HpWnj8WXIlwSJh6iOjn\nstMtFdg4+aWZSibn1A9dOVr/lOw3DOuBd2KZCcOWbeYn78+mSSl6WHWIe0AU\nzCqD2H1Pmq/eLfXO2rO+FXFAgmBbV/hfQE7jVWj/K2JlFs6Uj5AIx8MyT2Yf\nCoIp+ojUjHIYY5kPHmV3ZN8S2C6M+cIkE74L6ZBRDabG3eUg8clr8aHGYHKk\nXRh2IKfybSL5lRSq+B27YlJEY4wYvzH9xxtGnw+qBJzpdi+EMJoEVcrY0U1M\nkKRN8CLVcguwh4sWx7gImf8o6truwA9/POBEdriVNNvjgVWmt1iaHsdiokhs\nHvym\r\n=3mHw\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIAHn65qVYvGE/xrsjyhHK142+fbMMqSU3NEsIkKZSbsjAiBInHHIt1Oe3KS4f4i/K60uY9xA2e2IeIZg7QmlVuSz0g=="
+					}
+				]
+			}
+		},
+		"1.2.16": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.16",
+			"dependencies": {
+				"@cloudflare/types": "^6.8.16"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-Yy2ATH7/v2KKQFxFeacNRGjusBBMOOC1DekTG2Ui+dUxKD3oxAHgeLFtmhGh83Rt1Avi8rkZ0Lwo/b95kzuVPg==",
+				"shasum": "9ac1707bee6312afca3680ea1adb7cc43ea45900",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.16.tgz",
+				"fileCount": 15,
+				"unpackedSize": 43863,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhGr3YCRA9TVsSAnZWagAA4kEP/30AOWLgAFYecQka/RbB\nMcR2i2JEFpIDaliORVhWjDq6WC1lfPXgOXeeil02cj3w188vL7igffNviZTg\nHb84ljAE7Q7kPVV0folY8NvCi0+RlBmriQtkiTKmjX4l2yBpDAmn+UDX4in1\nKYC9O9akBVytnXdBOONf5h/PjKM6x7Ne/b0oBOpTtJ0+YfB1iGePbf9VuV0N\nhjBo/kLVWwAK32ahRT4N9apyWLClnnKWAjnPR0lw32ejG6ciWckjR1qK8FON\nHPkuZ4YPyWCYaDdZyFJ+bw+wiY9NrpnNvUh3NP0q9qAyTO1/YxLJhRxjGSE1\nUOgMxlaGk00V6FRhjIoCT4J8EDULphYOkFYpKJLLBM7oN6sSq7ZGoSLQInNh\nTeVhvlppAeiYuPsRFEgZdFfUAdEQ6BeLAnArA8Nhxtza+cw4QMgVyMQMa+Me\nUIsHMUTeFO6fM0FoyL8fJ99Tezu5Bbzm/9rOflTPjXZAVHx8WlI0vmI01H4g\nwKBBsAMKH5k3ZUMcfCIWDvmTg2pqSHitaDgfo8igy4K1ZlMNUQe57JBfKaQH\nopeZsGGf3ihI/kZT/y0swZh8l65+PT08UrSIMkOGpwKkbKP5giSHdeSrx8Yc\n7edFdBBZqhTpRbeLS6hTKUZpbif2E2Y18dRwlSDRmcK6MTrihlsmidzq8l7K\n9GeQ\r\n=cNMq\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCOP9ZJt/sqBiSJvenEG/RWFI06ebwjUn/noKTeRC1ZMQIhAJY3kFo4j8lmMWDqAhJzS/bhrVs654EnET9eZs9WJWuK"
+					}
+				]
+			}
+		},
+		"1.2.17": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.17",
+			"dependencies": {
+				"@cloudflare/types": "^6.8.17"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-3DNrSOzbMBhkeHsbq1mmA7M2c48naWbyhBrMP9uMvi+1z2jaKTg9f/dTHFhgWapE7OX8d8sRVxO8l0seERuzjw==",
+				"shasum": "3ed8dc65087f21b6e30823058df1d28e0ddff618",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.17.tgz",
+				"fileCount": 15,
+				"unpackedSize": 43911,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhHXsrCRA9TVsSAnZWagAAwKUQAIvSXXwpxZcROo39Uwxl\nsjxA5A/okQ2PaSut40PSdztn9dl4SFcqL6Qqba9erMsmSyzYDjHY94GJjWxB\n2Kgtu1X9S/P0dC7TnjKhsNhOM/pF88if8G3Abo/5bNPUWkEKyaCnSFXtVgzW\ngt+pMszaVPsMCF+XgD13wHT4xPPXv9a+gj2E3ZQrZ7Lopwij19MG9kdm+TZw\nW2cRCyM8ErYIxV5GHuQZZDXE8tRFC9aWrttvZLyyPjJCG/nFf3D0RWZpGMI2\nj0BPFYGOKMDt1ryeitzx7X9id9FeX7tL9sBkJlPkdAkaiVp7HRq8eOHBPLe+\nIiHCBsCG60VaMj4FlAR0fg/wjbceea7AAlGd+9LIrYWvoyw5XuqkiWskfqt3\nKrMj5wklnPLuhoJukkPf6hBvXhXsts3S84yuoKc9HXDa9mSdhXmxqLxUM5Ep\noU7G7ZaADdhY4JktYgYjOpIBYUY9NrgWILjXW0PoxfXbEKf+zNn6hav/ZqP5\n3A+afDnGIsZRzqSf83bMfYMXaQgVQjL3HNJ96MeTmpl+JosC7byyMm/8TAAc\ny5a7xt37RhRnOP6+mEdnG92MUyaebksKCmZQsKQWOaHuoKr+zOeti34Uda5Y\nc2TtOgnzhvwhjFmGaA7aB/he3FE+82HaXhCjc8F946ogRfd0E1wLPUBBBbbD\nrPIV\r\n=I9il\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQD0gzBvOsOhjNsp4HMtniVeAKuKa2dJTnJahIs9j+AjIgIgDA39fCW8LAqPcPWiQyZd7Fkn2Mad2KLAFuePMtfHeDg="
+					}
+				]
+			}
+		},
+		"1.2.18": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.18",
+			"dependencies": {
+				"@cloudflare/types": "^6.8.18"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-3wKWMqdV8M+A4fFoHYQsGEqCxDkqqjlsUaL5WzDnO/znzE2C67uncK833jLwtaOj801h+wMPvyxnEoN5tLR46g==",
+				"shasum": "4a995ed3e6032edb3173b870144e23213b82b34b",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.18.tgz",
+				"fileCount": 15,
+				"unpackedSize": 44153,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhJY38CRA9TVsSAnZWagAAuqgQAJ9IV+8EWkK1ew0Sxef9\nB/wfp3+Idv6xaLN6ezS0g8igS5sduIXoOPhLCA45XE7v1D5pKbdaijHtQx6V\n7/DJ97EHa3cTDL/VfcZ1ntbtCF3V9GPH0MlRpSgkmmD1ptz7XyrspsnyyOOT\nh339+8UJOcqNUiFAnkFR4y3eS4ibQj4KUGig06X5o/DQOTSvsHWtyvGn/AF/\ndmxX+xwF9bNKRaleT5M/c6GSA+ost55wx6aV8PaJ5CvSNELqqmWMPMN5yJVL\nEOTFbY1D6sh3kEYm+nnEzXGPUvarWsx6w2Mk+eUiA1gy43HyZDDiPDjqduqV\nWYVYZsJKlx+LoQtojbnqFnHj+dTUTPv+d547paPDhK7cPLKAnCvJBwVkW5yc\nzrhqomt01g3dAFPBkRr1hpsTHB0lck54silvHg6XqDW2UPnKkZhvZIs+tuBF\nDM9/W91N/eZXXR1+ssVK6YY+QF2KtQ+4YoNSi4IRoW+1MORdDYPEctvZsw7K\nf1XAU+ieBIjieA9syDX0wFzwCwyfA9bt1A+68qumHtrsKn5PLWmAjOMV24kd\nBNyFVUeGjN4vYiqIsKBn8gH/mti9SL16q0EicloJkUkPHf6DUdIKFfG9W398\nK6E9bg1VPHR8Q6Eqs8TJ4gZHAjTsfKBwhc2dSD+D37QdSgmu0h05mQlrIUJo\n4HWO\r\n=xVRN\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIE/X3vvJlVt83Ij60xWSLNt7nRJc2wTyb1C6vT1PpQTBAiBgy8qXU37rMOyGnLw9ZtY4O1sYsIjC3dfRfOyIqHmTKg=="
+					}
+				]
+			}
+		},
+		"1.2.19": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.19",
+			"dependencies": {
+				"@cloudflare/types": "^6.8.19"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-+oKVE7LttWqxoabMacVLI5hpA8lK9PXg5OWTnzE2MWdPEm5afqmlyjaI6dwlo5Z/S/9hIdeYhdjQDF2Zj/iRGw==",
+				"shasum": "95b035c23dbb1eecfbcbd085c519c945dee665ce",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.19.tgz",
+				"fileCount": 15,
+				"unpackedSize": 44889,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhQNgICRA9TVsSAnZWagAA5JgP/0Pe1z756LZHdP/9DodT\n04zXTc4eFOBPRRN2g8fWqhkz76OVKkJvo/nrmyuG7byVHjTZrMpCekLHEVI2\nxk/PkGkDCmy/kGIlZDjsrfygG5uU3zZR0nMCCNBG/OWavg4L4R07IYCJQ0ed\neUxW6FCswNur4XuBqm6hHqdMst1nK3iyonN4TXOVcEAgbpUSgwejqTYwImMU\ng5cAHHgAEClG+Hd3whnsSg0tJesk0jMqq8mMa7ulJ905Mo2zNi4cOlPwXI1Q\nCUw7cIOT6f+OohJ3+yuQbRceXO0o+NgsKKCFAkWdmlv3YhnF5eTBWtsKQUKB\nwoRdQdgA4GaAvDuiluud+RXQnDMRnabB6KCKADA/gHW0cqQ9lc/qCh8yngdJ\naa4GR9uuNnx9ZZV0dRqpBbXvMSiaY+SESXikY5tiYQW2yzetHiUU6wGKu5sL\nfzBzf9YwB3gj6HaSBbfaPziRLO3p2iUubMtFTIG9ahxholv3uNVbqQBEEvM2\nuzvyfUz8XfZESsYoQ78jMlEiQuC04WUqWv1usXTtgh3AIGX8uiJcCfNWFmCy\ndr7ZIodSnYWc4gAuOeSnAEmhI67p0oBQ8CEBHNL2Pu+3SRNnucISCxaeMBPU\nMGl6oRQ9JPrn5fifenogSzAsZDPuZLnW1cK2AbMro4VjI57WiahK3eFCq0EJ\nkktM\r\n=6eAS\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIEgdtBuVGAP16uy5j1wSj4GPrKeff5b1DD2Dex4xBMkWAiB7gxBgsAm2xommUEx2KObhowIvQpWb7KI0UOZzWzr/0w=="
+					}
+				]
+			}
+		},
+		"1.2.20": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.20",
+			"dependencies": {
+				"@cloudflare/types": "^6.8.20"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-srq0u0qynIOospd6Je0sQHHI/beIaQwzdNQcIdo9VGDR8ronSNIdwsH01N3pzo2qXpgErSL3Mr+a6QfCfjXAYw==",
+				"shasum": "754619c0ed32df2a00408383fe036a45543064e3",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.20.tgz",
+				"fileCount": 15,
+				"unpackedSize": 44889,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhQkfmCRA9TVsSAnZWagAAsGcP/0c0hbZHd+zwNpybC/ol\n/vx8id1ch1y8btzsHyb5D9hVVt0Wevyr0lRLb3lDJEyRGjE9CK1iuqbRAonj\nOrXQOvFKH+RyldBmT+poQ5TUa56PA6WN4qvy64Ap6OKQwq4C4XzDVlJmoSdl\nNsNdfrMPTzCE5WMB8Hmm/fKOReumXkFVsXhTKF4tjX9bfpxtHXm9WcUDsyRc\n7+D+Bpl2ecsk4rXQaczRt3KqXB9W353jCKH6E0veCDsYc8hZEAqHBW9LvHbD\nagSdleqRJdk7ZV//XuCZqaTi1s2CGDUNdamjBqmW9LXHzPJ6WBCgoCcBDwoj\nO5jwlO2YUTzn2p09kiH1znr1SN5FtoZfSZHacSUQdi3eMo1CrY9/Yq1+d1T1\nRm8pkgZ3mumqUpPFtSwkpJq89djEFjHLFL2OzyYLwwJfKjeCsFlPXL/tMnSp\nQecRyx+V/6+bvEq87KqkWwh+W0jTMEM2Ps0Bq48bdQ2PET6fnLby8EswgZeq\nEj6zHfolJpzZX38UjjpVRjzDrXgCeGme6ruElXeZinAwJXwB72nyigP3tMA+\nKKK/5PnXiRGUhoCv08g7g1EUXgBHXv/PW8Jp2tU0mB8nH7MrWKJrGoQuHl1/\nHNn5Z7Sgpr1ZpiRwaiz+ld5VCszlapRSLgLAqMfvZiMfZ93XfHbsCpMASGuW\ntDDf\r\n=EEVE\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDxj44t+/oItY3/RfTYLIO5vrpRgVnwFNLsrf+ncXX/dgIhAIjzbslNWIC1uFAd4TzWKMN4he9zeJyG6XDOJrNZ5FSJ"
+					}
+				]
+			}
+		},
+		"1.2.21": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.21",
+			"dependencies": {
+				"@cloudflare/types": "^6.8.21"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-dRW+vYelPSTaYd9CRVEx9embGW33AWVNAcTBlMgg6uioRcqAXme+LI+btutczahQrwhXjB5NnK1n/WOc8L0lBA==",
+				"shasum": "affa13098dbbfef5ab87ff64bb8994dbddd109d4",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.21.tgz",
+				"fileCount": 15,
+				"unpackedSize": 45131,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDtSBL1rCjRZfkeQc/6en1dQHfi8cGw/ueHr19Js7ku/gIgHVqZNfersCYNayxG5QqmBkwDG+3Odxugc2XTrXWaiXc="
+					}
+				]
+			}
+		},
+		"1.2.22": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.22",
+			"dependencies": {
+				"@cloudflare/types": "^6.8.22"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-bdF2ekTUdwUVg05jaMvNxMTV1G448sNeYGrnE9cwMXvXc3Ao9DI5/AIqDZM0edKcEkYqv13gZk1AwLEJdja98Q==",
+				"shasum": "0ff4d6b83585a614439059ae3de6f491df925c79",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.22.tgz",
+				"fileCount": 15,
+				"unpackedSize": 45373,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCOg6mV6t4cAXjZchdVVDkeUdyvr1hEcpZYKwVj346awAIgVtIGjPpnc772t0yiS9w6080cNj3OC2XqEbuyGYKZ9E8="
+					}
+				]
+			}
+		},
+		"1.2.23": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.23",
+			"dependencies": {
+				"@cloudflare/types": "^6.8.23"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-Ot3xX3gC16/x1dUbQRNbJBJHGb2y11IMmlgtK+TBXlNO4oFWCckeZsjXCtwudEvQjq3qi1ENZ6nFslOFtJFKMw==",
+				"shasum": "62d200f3a1bb027e6a4e7587d5ca69651ca70914",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.23.tgz",
+				"fileCount": 15,
+				"unpackedSize": 45615,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIHs4lmwIniSPNiSILL0a6w3KCrcVd0f1qDOclyp86y+QAiBLBcOLEfFAynWeQKnZTBBHn8GNnOLiIbCJvPLkFoHmuQ=="
+					}
+				]
+			}
+		},
+		"1.2.24": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.24",
+			"dependencies": {
+				"@cloudflare/types": "^6.8.24"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-7HV1QW8l7I9qpw2f5SSaFABmb+j1Xk/KNMYlKINLxXblfW3ULWAQtoUu+110usvGYGtgxUpCsxYLvqfAE9Qovg==",
+				"shasum": "2d4521ec0ef2f528c169a65455f8f9b319fce813",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.24.tgz",
+				"fileCount": 15,
+				"unpackedSize": 45857,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQC4LCD6vaaKoruSdo+SYdwEpiG+p85eroSKEkvEnQAtfgIgB/4x1Ka5L5Lxs6NKM9mB39rFiakT0nCGcL+2IyEUCBM="
+					}
+				]
+			}
+		},
+		"1.2.25": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.25",
+			"dependencies": {
+				"@cloudflare/types": "^6.9.0"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-9vvpZ5ls021DLpKsgk7IW/bS6/3b4DAL68XMf14MKSEnpULKyZX6+7EG365Q80iyx0YB99YmQNbxSa8nmcPyHA==",
+				"shasum": "359078bd0bea2d21683f107e27951e8f0b767c8e",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.25.tgz",
+				"fileCount": 15,
+				"unpackedSize": 46145,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDZ7UDknnb4NfFt6dlI6pbrrI/syMhQh48p1y7sn9+s6AIgOOldseA0u8+GIseMWtQaGgCzC0Khc9ACUlr0RSVZVIo="
+					}
+				]
+			}
+		},
+		"1.2.26": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.26",
+			"dependencies": {
+				"@cloudflare/types": "^6.10.0"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-Fhc3klUYRce/e+G/u0suZrfyh4nIpVQQztG6oyEhNi+4CdbEkfp42YrivWHT3mrhfpqVsQjeovFVA5Ww6SqmZw==",
+				"shasum": "881cf13ce6134eff352920212e02251edc9549c9",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.26.tgz",
+				"fileCount": 15,
+				"unpackedSize": 46146,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCh0cmE1miZ955dFdo8f7Wo7JCSQkLROuUuplSo8gfblAIhAIRhXzircHMTCG4wZleMyQOjsspbDlkDEBfwjUuq4XLF"
+					}
+				]
+			}
+		},
+		"1.2.27": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.27",
+			"dependencies": {
+				"@cloudflare/types": "^6.11.0"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-iVjF7cWwdgTZXscJ7dud0eFaBe/iRoE7KbdHn6OAg6XTOJ9ZLjBYY9Up9dkOo5K8t9ZLvrpk4t5kdDKxWn+jPA==",
+				"shasum": "6de3910bc0c8adfef0b412956a0367b6728290b9",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.27.tgz",
+				"fileCount": 15,
+				"unpackedSize": 46197,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQD4yzq9a+MLOBPTmsrr9O+52nntpqkpSYgUY4Eknv2+4QIgPa2m7dJ1KuL2QDqDc6RL48NiVPRmm77DkrwDW5UnBns="
+					}
+				]
+			}
+		},
+		"1.2.28": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.28",
+			"dependencies": {
+				"@cloudflare/types": "^6.11.1"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-1AjDHW1i0H664lP7g92QTvaz2LrY58TIjqqfU+OCoCohfltEB6DoU8iytiMJSg0R0WRoghspBRjXFNI1M5/rfA==",
+				"shasum": "de06cf53b8fb95a0ad511cf77c6ae010ed074f0b",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.28.tgz",
+				"fileCount": 15,
+				"unpackedSize": 46439,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDWMMurX+yLPGo+Wx5QVd9ce6akOQ+o1efICf4RLB6JkwIgFA8FXlrxp5C6vpjbDsCeCNqJsXUhUeHiX/INHzsvRz4="
+					}
+				]
+			}
+		},
+		"1.2.29": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.29",
+			"dependencies": {
+				"@cloudflare/types": "^6.11.2"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-J9FEOiqVPXht+DWt0omMV/p6WXFj4Ygx3O1bJ/k9xKsXM8EAkfz4baYwuaXkQvCYn8QkbEC3LueCw6UuLzq8KQ==",
+				"shasum": "ccc26e651f807d514b8eb88c08a789836186c08d",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.29.tgz",
+				"fileCount": 15,
+				"unpackedSize": 46681,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCICOYJwAS9DL71eDW3GkHg//muIOz3JQXcKtyGTjGVQ1ZAiEA/P1ESPPEnDGav7Tb04UfRkbzEE4ukvX6Jt2jC0KAG90="
+					}
+				]
+			}
+		},
+		"1.2.30": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.30",
+			"dependencies": {
+				"@cloudflare/types": "^6.11.3"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-0H3fVI9E7uVR24vX2OtRIb9xWoGKlqfksU2aETGZgo0PjErKjAehK3wJ6+F1ZlLbKDRxFCaeI7yjX+2ELWoCzw==",
+				"shasum": "48f85c339bdf2a4e107ee02e0ba610f643ee38f5",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.30.tgz",
+				"fileCount": 15,
+				"unpackedSize": 46923,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIGIKmqFdfqszFqpO8tc7e45iYC7cqyfba8fevikb88kLAiBOTn69E6/rOOplkTS+NKdEFoUG+hPTo8ryAGfvxlJy4w=="
+					}
+				]
+			}
+		},
+		"1.2.31": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.31",
+			"dependencies": {
+				"@cloudflare/types": "^6.11.4"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-Eu87O5/rdW/VDvZHaNzqljU3d7ZCcfq0t6o7Qq7VrURHTHUSWX2F4VpIyhuwUaCBoZnJIQhLvJgQv3PakwGuNw==",
+				"shasum": "5ad92f39f7b11dc941b028729d9dc3be7d5c4323",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.31.tgz",
+				"fileCount": 15,
+				"unpackedSize": 47165,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIBE/qxFAH6LJSy6Ot/urRPE6VrDPeB4qJdCnB4t/FMssAiBpLlE+dYVoJPtma+Je5mIYwVBFebV5PNDfBk6gvYcdCA=="
+					}
+				]
+			}
+		},
+		"1.2.32": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.32",
+			"dependencies": {
+				"@cloudflare/types": "^6.11.5"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-BYPQgoqMtm5vQGqZk6hdQattz1hfBXBafTHrM0EiYHoBbm93OasGvEhiO/qZeNJnDBy+xDc/DhegP18vzTiSkA==",
+				"shasum": "ed246e09787bd815b38ffbe849a51b60f413d782",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.32.tgz",
+				"fileCount": 15,
+				"unpackedSize": 47407,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIDppYgMsEL+PLmEs8/+IQado+KuLpz6YRNGsvpn7zZq7AiEA90sElLh1dS9Yb95+veB4SdsTuuwh3p9uAe+xiM4PyMo="
+					}
+				]
+			}
+		},
+		"1.2.33": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.33",
+			"dependencies": {
+				"@cloudflare/types": "^6.11.6"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-sOqK5yZTdVhr5kuxMxlvIFMsQFuimrXdW7BSlXPPks7Z1LuY5lymzpLco0DQkK+GKwma5ckuxmfug7s2dtOHOQ==",
+				"shasum": "c4d4c392ad5f21871e768beaa0d293a9b407d4e8",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.33.tgz",
+				"fileCount": 15,
+				"unpackedSize": 47727,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCOrFghUgI2sc7+sNcwgFUlY4J1AV064nUNEj8Bu/Cy0wIhAIukOAzfMwJ2f2tjlivOo5IRUg6K203drYuWCOgNHAyq"
+					}
+				]
+			}
+		},
+		"1.2.34": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.34",
+			"dependencies": {
+				"@cloudflare/types": "^6.11.7"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-TfzkFS0Rln5qv8ssDepljyNBdP766lPMO9msr0m4TtV+gqDuHTR7G6TIO475RvawvSm1UrUrDF7EGWBdkSffdA==",
+				"shasum": "72a4c68d8a1b3ab278ea66ec588b0a91d4be974e",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.34.tgz",
+				"fileCount": 15,
+				"unpackedSize": 47969,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDshv7voarJsxHyaDooyh2e1JhmQ0NWtotSrIu0ep57GwIgKiygUb+6yWGluXN8vn6RMSo4q4OYQpzu56tfUThVJGk="
+					}
+				]
+			}
+		},
+		"1.2.35": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.35",
+			"dependencies": {
+				"@cloudflare/types": "^6.11.8"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-iILUBSu6WyQ0nMM7XJ5SYFhga19nAGrhL7jqj/n8fSeCGPIJN0bT1wfevJNMgZDzI1T3KWrbYuDIL5VWD8vjng==",
+				"shasum": "5fbb40b93a3f2286c1d78c910ce0ca3d93daa065",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.35.tgz",
+				"fileCount": 15,
+				"unpackedSize": 48211,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDqqwOzBw9MFoXIF8S1CIB5KgY5yItTw1Llc9ro8DlqlAIgPGVYKCODei7WXhJSIA45G4AncUdrdeA+IuAIZTkyzn0="
+					}
+				]
+			}
+		},
+		"1.2.36": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.36",
+			"dependencies": {
+				"@cloudflare/types": "^6.11.9"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-70KPclZfmwxmwPOP6cKrEilST93IE9VspMgc+Y3MrIbtBkvMkpufWZRslVPxHyEutVxeDHeopXDEMUUkcaI0fQ==",
+				"shasum": "98370e3ae3eb90cf92d75d727f7babadfcd97da5",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.36.tgz",
+				"fileCount": 15,
+				"unpackedSize": 48453,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIDWg3GyPDwpT5NaQD0RyFaZND7Pcl3QjHqOQ2EFIICZyAiBIBO9gayFxLRnap74AMAzMA7qwuxzJPBpq+LefuS+7hg=="
+					}
+				]
+			}
+		},
+		"1.2.37": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.37",
+			"dependencies": {
+				"@cloudflare/types": "^6.11.10"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-ru7OcjueqCcw3c4Uxn1uaThKxmJkU0EC9U8/7/jQL2vZfRLHC6Ikx20OoyZegjsxZgyND43Xips+l5h9kd1V8A==",
+				"shasum": "9b6d0713d0cf6dbb889b3a5830be5b99eb1bd9c7",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.37.tgz",
+				"fileCount": 15,
+				"unpackedSize": 48696,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhkreOCRA9TVsSAnZWagAAaucP/AgtF4e+XASkEkW++uht\nMdwAbIi7rZ50gLY2T67IiMgrtpphl3j6adKljDxyqvK8/sIeWWds9+VbwBD2\nDVbzAu2l5EU23yMlY8awg0e9fvwMZprJZs3WyTMtZoDyizL89n3oFJqpwRfv\nP52X5QRXJy7z0GAjvt2B6d/75h2yxMAJ7KIgRwd0q5GhONFYrL73y/nQIGEt\nb1Caqj4QR2D1qdPowWn1D0jYcDq8JQW3GNBF/RV57VQXek7ggR5p0BaiVbvk\nTbNlLwLVdwbvHAb9L+2WbLUzjyBeIOXLSpnsNHF1JUg7iSWcJiLyr0lUIs/B\n0RW8Za/wMwyDiwcoe/iZoXFy21m5iI3pbgxMF8o/kZwxTt/y+bzyPKh/YjDH\n94Rr4tDZ7ap4EVQsSo8gPMwnL8dCXoOaj7R5IaE92J3m1sSMcD78J080JeFV\nJZ3xCFs3OM8zwCtWbg6puU6GvWZVfJ0sCQf0hq4oK8ztfZG6ox2nku5lr2dN\njdrmIzKslQ3L5+uVQ/kSpnQwgChAGsjgK/Oih8kQ/YhyQz75uPMtST2zHKHU\nahvi7of5kHJi94da5EtAdesayojBvX/2AysKNOU4BlN4h1dnd7LWfoNv9T5K\nGlgEUCDcvbvJ52XBHEc6DhIUC+AqspMni1xoKv2B0xmEDlZ3jmUte/AvZTMv\nt0/w\r\n=Y2SD\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIC/yBNiMKHb124/g3QjOov8MFHFX90Loefl5pLLmPMQwAiEA+LPAFXJ00f4f+ToSuoy+RoA2BxbYxj9FoNB5AikPHgw="
+					}
+				]
+			}
+		},
+		"1.2.38": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.38",
+			"dependencies": {
+				"@cloudflare/types": "^6.11.11"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-IQQCFlsaBXT3yQxtDRwKIHmO/NGzdYid8crBSpfhgj84R2q9ZR0G0HQyMm/SDide6gcoSZkPW+lwLXTuUrDmKg==",
+				"shasum": "233c89bfccfb4bb401be20dd8fe223eb410a86ef",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.38.tgz",
+				"fileCount": 15,
+				"unpackedSize": 48938,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhnBWECRA9TVsSAnZWagAAaN0P+gPikT4wrawWsvPWvPOR\nrS5hTE0+8RctAYYovlHq/rJc2W6kWvXU+vG9y4Mvv+tKKQbmcC+hsHP02I+O\nUP1gJ1nchyBqoZS/PwR6bc5H+3nuh04y2un1bQe+Xcp2+dHx62+a35sGc+RO\nQGVHxp2FAEJquc8Rl7yaX2sgr4YlH0/BBFyA8JTUnCS62XNWM8SkmJyTgUoo\n4VEo4jBO+z9EUfra+fwC1wGKStLP0TJn0c2BxVMq90M+OmrgzVswBq6nwHtN\nnvbJjMiBsLoHePf+67boLO8Z+JLn7yli5uDUqCHH/GlZe0nFE1eCqN+EviKx\nyJWdUGH/tXNuPVi/3uvBIfvDhHUAPJ5XD3j+VcUcFR/3bxkw4tRpiX4pi79O\nfrSogRstls9XSXXAA0beyChlPWhctMxdDUQXgOlHBE+psbEYAMo4oX6HckaV\n4djS9+/MYmjJrNHm3XaWBCpIJF46K7G3aBZDiJFNciNdpt9zawFF+wLusiTc\nMbS8CIKe8SU8ZDtF2x8ePmatbIpYq1KAi+ci1NyuxO+3iftYrWI2ogbRB94L\nrk5T/dHFr74PsqiBHNmloAdqLnBNWdzNNQc+zA8bj4W6fNP2Y/QjB+5Ecnst\nyQkL7nDyXjvg8YkWAkaqBsOKBBNDQjt4kZz44JRyI+4FQQ1QUxpw/ZDR53wY\nNWsC\r\n=FhOm\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDrKX1n28wMrU9vyguDGn+S/LmS0V5+vLb7ANxoAuRzrgIhAKY2nuTpJqD1MiETo2mlcfh/0tG2jCHBlsce8HZh1rJZ"
+					}
+				]
+			}
+		},
+		"1.2.39": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.39",
+			"dependencies": {
+				"@cloudflare/types": "^6.11.12"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-KwsjIY9nja41wUWb0XEeOy+pdd0YmFo8WhFmPi/3QNUtkuTIQYoC2OiPf+Ai6b6g7U9xLmJT77y/5Yh7tsq1rA==",
+				"shasum": "1861ac92e6ef37668483d8c5a7c9dc078d8feeec",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.39.tgz",
+				"fileCount": 15,
+				"unpackedSize": 49180,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhnDA7CRA9TVsSAnZWagAA8cIP/1qynktvsPk4khehEzr4\nxV9K94dzMD0U6rKJaZ9dyR7lPEBkD7fYYrbGrUACA/BMkheZqcaB6w3wIHj0\n3XdeJZ7cSfTsQpLAL439Q5yG6wWlDYujOhg083kj/YGoFxkQS73ueOmC6k5J\nGaafHBEwrajpAQWVQZyqYYY6/9ZVOhHKkTnFyLqIA2TQyb3S6YFEgIVoFUES\nZ6IxOdANvpymrQ3FTQI7K/oUbAK8hNE8m4MevkL6lNcaD6GSn4hwBLFHM38Q\n4Zx+iK4shFM/yQx/oKdoWjoys5NhWgc0B0O5rl6r3DU1fPZhzni1xlPVE21+\nfPa2R35bAVqZIvJSGiorXMnP9dQ76+38ANH4F6VqFLEi774/Hod7HXa51jFA\ntLF89N21VhDgNBbYqn00YOeRr2hd2K9NO8UAo0C5uZX9y7lBIKS4O2RoILGP\niLT60LeeTZ5Z95qkWklkzpb3DarYGWvuWK3M5AqbMZ+jvzzd0B3i7q9a+OV1\n1DTxwa4rjQoLdAHrFgNJ8yrEjfHtQ7wJtuqNfPnywzDVLeTQXuxtQxoWHWcy\n+eRNP9ji4JfRi1+SsApDuHB3JrX3y6/0i0nmJIi3ToUKXe9csEYu3fNr+3fZ\nV3PztdIbZmosfdBySENfCzgBE1JOUmp6lyUTpYG9+32uI6VCpdSNZE33EOeO\n0zG0\r\n=Jh1T\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCQU7n8WxqUs3R5J1mehXcMYATfE3GqXTFP6fpNsaXLMwIgNZqlKfQRnFI6K6FL9OWA4VFiM/VpsH6MkjJOD5/zEB8="
+					}
+				]
+			}
+		},
+		"1.2.40": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.40",
+			"dependencies": {
+				"@cloudflare/types": "^6.11.13"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-j39BHSamAAZKCf/FH8llGIqUeDeoiTjgu+ucm357jf15bz3c5i9Stzd6HMIxbBT9iHuM10hrjcSMgI+j0LoqiQ==",
+				"shasum": "d2bbcc47a7d7f7d7fc4656725fbe4edfefeb7598",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.40.tgz",
+				"fileCount": 15,
+				"unpackedSize": 49422,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhqodtCRA9TVsSAnZWagAAhDcP/jMpqdfckYUZiBtZgWgT\nbfQXmAKmGybJ0MlOceSu6tP+kd96i6HRKOsFzdZwMGmKpbVziEkGzVPThbca\nr8Na67EGfaE60BszQZy8f3QnOS4ndzXKgiP5rXYL6PmhuD6FCNSzqmxPJDi3\n/cVuAXI1e3FU8U5VwEqBhD0ws3S9fKLaQ629nUKKGfA3Ly7ro41lnBbcLSUz\nk/Tpzm/RxafjTEKM1Mbz89FY9EvTz8UrLrwnTKekZoW4QWCXEwT7DZ5+T1tp\n1Wi7wzGN6AE1BtCVECH17gAYw0HI1rVSq/MKeGH8q79wfynHt5xJ2TpVuyh1\nQ9VR0m3ICTSI5XLDxhQVxY1gkpNp3tBis3O5FxLWkkV9Zn3r5uABTZCcZD72\nOp+mv2PuZ0L3pyexQ951YNeJMCAI58Hbtdy6Q9t5X04rGmHvdzF1E28wpZsQ\n/Nt20aYs/Eeuo14uHR12+h0StLYhf7DwpTlPgD7oa4FDpqPFKgkxnhyhdryo\nNYEDBUl6fxPL5fseK47VXFQGxp4IZ8FhVbnJ/PI/uiN2yPoKBaGMZKgWjqGm\nTi0jKa1TzWvDsmd6pZlci4aNqsJsyPWT5eLAAhgEbw+tACQFnZ01y98GAjCR\ngwXpbGzCJJAJFFpNwvh5F5mNNdt5q2n6wY+ONSCoeRLXNGEwlAQZhsT27TUX\ny83L\r\n=vYuV\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCAiIYyXOe4DaM5SZrx0qOv/SZKwfeRRyw+wResi5LLBwIhAJLtNn3bi34BogFQ8nvq0xueVi2n9/OVBg8gYZUFwv47"
+					}
+				]
+			}
+		},
+		"1.2.41": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.41",
+			"dependencies": {
+				"@cloudflare/types": "^6.11.14"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-9FALuJ72XlNI/KOYBY2HuIE88RP9/xr2pPp3cvOitEe7QGfKpEo0eNZyvIxXVPr3bYOyR3btSswhCBsdhbuF1g==",
+				"shasum": "b1bb1495d0290997fc3fc2bacc5cd447a6ad2c74",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.41.tgz",
+				"fileCount": 15,
+				"unpackedSize": 49664,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhrm3MCRA9TVsSAnZWagAAgWgP/2CxtCqvuu4tVV+99TKP\nUQma/el6Xj9gs9e4cMZRdiqBMUaDkiROCevisLgnQXQ4lxuY49EBb87Ibr+z\nrlidmE/dfOd/mwQV6HVkSG+sZzapwg/sEJVXC+pEmJQGdaUoTVSKKi6GoBj2\nzV5oxBldaelsTTpcj2MUhL579bNUrT92SjKv8DzW+yqwPwtXmla/KGsJQauy\nS/13gRep1LFnZ8RxKE3cDuoLJUQkFvsf5ObO7s21rCjht5/v4/0wf/Ugyig/\nGU8yRrx3CJOxlZFk3an1xOUE6JCqz1jXWIQ6GnO/GZ0e2EAptJeLRmIlHv2l\nRlGelJlYy3VbVDwMy7CchqZWD/akz5/7LL1Ya2LRr0M3yYWlhat21V5fjmVA\nVvD6n7wdST70Lz3BAP2FaYQ31lhSDh7dmaAPZuPzOBE2jF4AaXyy6EfOTAnJ\nU0BUrCGeIedCzvuJ1KM9QD9cKMuwk7bsZKawbOcvxGDrNZFsrtyUqPsp69PM\nG4gKdfw9KksbWKM2L0Cdqx41QKdGAKoW9e7VdsYtM/km/d7zoT1SkvA0yQo5\nezokA/uvj5dxhkpMMaZLdW4lyQD9mVQ2HSn5P9mORmAxFLggFvIc7UnIaK9q\nRXMqlsh7f0LQ/gIOvtLz33VVh/GMbO4yLgh4z/YOZsiVlbptnZtZNYBQHKYS\nN9HR\r\n=Dt0D\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDJ+nxNjo5XErOL6GcOjJuq/sjaGpHZFluLx1SlFYVUPwIhAJiS0CAdPmRgm2LcJSMLdWL98dXY3jQaxhCVgiznrJJY"
+					}
+				]
+			}
+		},
+		"1.2.42": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.42",
+			"dependencies": {
+				"@cloudflare/types": "^6.11.15"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-ZhU4tpc0A+a3ydd/N2HSIcuzyipG4+jMaBx5Az5aYgVlhPii4IwAZkDmkAk6MWfAZnikVMitL4a3Pzc3b3Uwbg==",
+				"shasum": "604679997ed4d8af5958938ca89ec0003d182225",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.42.tgz",
+				"fileCount": 15,
+				"unpackedSize": 49906,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhr9HWCRA9TVsSAnZWagAACPgP/3GzXpkornxKo64EY7vt\nU6xYRD8p4fVmd9a7Bi6qex3xfyiENBo8lu7g6Y2VgEySUFa7bSkWEa7T7DPk\nUV2G57rkbozrVfOciJ1GgtuL6L4svkoAGEdncKl1e3GgoMr6lUH0y3k7HkdI\nuBjxckBfxl/NWXx1xGdYNrsaFb/xiTqx1HqhfCpos9MFKgP9Ag0fxRSbUQqS\nupDkWhCAWPEVXKSG5DgGGd99a0kiHISaM80o8nTKYP3tL5pfSv6mt0j+P57+\n5S5JB3iW8w9789S8a4OGw8BwUD6IRXZJ0586JNW8F67PbOmYGBA9pqV2etfx\ni8PwHFuPxrpQa/8ixCip1WT6Pbg4D21Yfb443AHIO5c8HxnnSYqRWGaVry+G\ni2JbFaYfhSH+4h3EhsOqWjARymvdrRNSaUryeW1FBJlgd4ZMwSP5P6YaEm25\njB69TWIazQDKZmBt8qpt51IP26j2RfOIKhJClmSSKN2uA8NbP7yU+/veCGvr\nnmrIPWMNsa2tdPTHUq7oAIV1/mj26tQOCqTGwgDcAyaFSGr6lBDnLuQVncDU\np9K/kyGdzqVbA6MondKLl4968x1J9UPPYAD3J9cmSmIUUK6KaVUIgG3YUn/I\nucC40PHInCk5YYRYIBoKfUJUdwL1KZrZ6POhuaVOxYz/WrGkVTYv9vtoKKqh\n4e35\r\n=wx0o\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDimUHYElPp+cTUcJY2Wbpmy5sRVNTn7dHUrH3uqC0KQgIgeFM4JJx8jqm6s8pMkny9G1aGHhlTN318HFCTmKRBPCQ="
+					}
+				]
+			}
+		},
+		"1.2.43": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.43",
+			"dependencies": {
+				"@cloudflare/types": "^6.11.16"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-LP2EvebASYvWYbbfnvnnal6fCwVtSfHAkV4JAmc/NaOJhE3HZbjjtGYLOi2MDSdbvOe5wYatp3ZkxKbQDjp4lg==",
+				"shasum": "5a3019cf144c9e318569a4e2202d7b4805c5d515",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.43.tgz",
+				"fileCount": 15,
+				"unpackedSize": 50148,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhsgniCRA9TVsSAnZWagAAlucP/2Iss3wSsoTr4POuWWFt\nM3dZmUxWKEcnHWuDiEW1cfclw7UPEnK+G5kQLLlzDQwgX1Uwa/e8VC7HxWDB\ndSR4Q0AUqL2JVF0tbA2dJAWl5vdkZy6Ya2dXibkTWsRhr6TxVzZxOh6q9aoZ\n1tlJtWv2wNlAxre51cy9hrK5c4qjP/eNR6tARN6AVsUKidgpxxRtJAaDu6W2\nnRMWjNKYi/xXK2eEZ/7CRLpvyqe0P8I2Ihvn26glrqNxhnUjVY5+uJwqoHU1\nmZh2+YjmoN9/2NYhra0ChMGcvfNAzMWng7AHbN63qR4/VmeFtuQAzKavs7Y8\nFL9OPwEdA4ZQGdxb7DFU8fW7YqFpsjJXUBGBX8Zt6dE72kAvq2sRanFbVg+N\nscw7dqZPeCNeNFKPoP5iZVgOPmOzcegr2LauT5topj4/9gbXB/NLxkDiuuJ6\nZVj2Dag/iNozSX56YWi0YrGflyN0WajvNSeeydQUs2I0pJv97/HRovSAWq3Q\nX2eT/3t++/fc6Gy7sI8WaHcDSv2yErXo5F9Y8wTw2UdyJ9cHhQRLx4zGz9bH\nNixvutm1Z03xSP/hnwQUt5M28WSRbEVl3XYUhBrrJOCpHPlIBaemxJNTM+Ir\nNGXWR65dZzKXmYMAzfSr+7wXKvG8OwruHv+tF6fj52km65aZdnQHoDThalte\nophy\r\n=gWrw\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCzwAK4OQjw1E3b1O8+UyG5YfaaL1z/elpqKRN8CBIYOwIhALuVe5zito1u2wHPf29xUjzgI/kwtspBY7n3rTCVkke8"
+					}
+				]
+			}
+		},
+		"1.2.44": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.44",
+			"dependencies": {
+				"@cloudflare/types": "^6.11.17"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-GcmHMoIAiMagzwSxOeJ62xQX1LRxYSCwdKZr+E/DWctYlZ83QXQzspBHYBTtW/3tsTDbUVWp8kUY42HqYPIL4Q==",
+				"shasum": "6c6f88dfa625966fdcd5b893f210921e837b201c",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.44.tgz",
+				"fileCount": 15,
+				"unpackedSize": 50390,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhwf15CRA9TVsSAnZWagAA3dIP/1abqKTUqTx4AZtnkr8l\nq8A3em/pUQNgvsxNuN2ni63k+P3xufBCe5GmiUn9MXJX6BYXDrus68cDCJFE\nKTyQAAByz8X5+L2tSZRgfo0dujeZe4XxFfsBImQLQNmY0/OZVPjpzFSdIQ0f\nEbyt56Alj55Po7+vnkdBStkZWfBjiZY8CvVFIZJwnYTVOVQWOmGcjE10yvKr\nyixBS9MXQLZm7xeLW6ttY3gYlXsdSPsuZnV+6qB4Lv3hMn3Ks6TN9nMDvcTb\novEmMMxNIcV6LxKvQlY26PZtQS01JK+CgGaqgJwQsMmTML6R2XECI7LnkGvp\nRGU0Y1EOH3pu9SWBuG+CnKSGyVFoDnOf3bf+8L4ISz8DrN9xG65L8Z8tGYly\n0HrGNWZrCUTYV1GEjXYLJelcd5uRogZDobcsOBZK2V+0HQwd4addXYv6N6eU\nol31Yweu3Sp9OXK4oA1LiJqg1Un59iE+r9YcOsE6VyPx77a3y/+HYAlpz0AV\nIFeNjSA9ArjsqrrEW1UABsUX06SgKbhqXLEcTNm4z6ZkvJ5vxAEwKQRsw8g1\na8y8EjumEYQX+GLZpzMLB7cZweq14CqD4H7rudRQrMQpRiCj6Kmp5+yEvpit\nFx6Gf8OPLUcvkL6zpBZvPKwdBETFPXZeDJtLESWLejMYvAtgsfZUiQSx66CY\nbuJD\r\n=yBZJ\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDP4lHdqTIiJVAmo8gzHUNQJRbPOxebNAtF8lyrz0lV9AIgXjpMk0J1S+PMUj8rhcAzA0EeZFQo/Rae1iVVf5tIc1E="
+					}
+				]
+			}
+		},
+		"1.2.45": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.45",
+			"dependencies": {
+				"@cloudflare/types": "^6.11.18"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-vBH56JtLplzhZoKpoqO/JnnxDnA49prINw14mV+1Lu90km4f8vVDdIngphqOQNK2BB6AjcXLDIuOJ4Kooys+Mw==",
+				"shasum": "dee15d11e71851a8ee562d82a936817ca4c3e403",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.45.tgz",
+				"fileCount": 15,
+				"unpackedSize": 50632,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhwgspCRA9TVsSAnZWagAA2e4P/1PVK14MxQQ0ZvL2dYLC\nMYEfhJGZKolNzjuajWaYpDmTLurWZTUVu30xfhBjnnULE7SvBhfIC4DBf7qr\ncTokmK5GjLioDFCrwUFZnncFszXZeHXF0cf88rtMEG5OCAhPJeRGtxKvOPU+\nrRNTLJ7Jiy+c2TxgJuyx2jRyOUtnKY7tZ+n+GdWxYPBe0QKaPl8B64aEQ5H+\noMgAHOq5N9eMyhDGFKzk7quGW7Sm+yURbbsu1duU1qiyY0yXiOIrBH/IDWDG\nMzS2gdYdj1P6u2zpXxpgy54tRuvYOYNs5wfKnNQzkzD2NyoLQSolEo7/dlXC\nwysWEHPeKpoOvSWQ3gKr3QqHz0BXIPTHnrhnhrrut4C92SKZtnn3hPBR88tY\nkWpcd5iY0Y/1iMBu1vbyN5rl1jvtgLb63ezBAyBqlMyci7thHcTrNathSeg8\n2LkEYyNuLCd0WkhP2pmLzu1wCMu5iwj4RW2tmoXYc/ksmpwgnWorxG2LICGa\n2q1m5wVYDAetjO5lEjJyn2PEXoN/BUDM+W+X3/OWzUGLTANvGe5dsaW4UjhO\nc4vkeGIOk5YiKZIbxHIcTQLe442qzrIiwCm8as24+x9wWJ1Gzt4YsulPgii+\nkOqGtBkB1xwHN7S63b5aRvicCPflBtbO9O4LVA1nwJMoB9CriXuWPZ8J9arZ\n+h3E\r\n=oLVM\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDyP1uZTR2GIM+BsJBV0Pgf3M4HR/v1eOzg8jf2r83RFQIgQHi22M1uzuuKnSO2YslO+MMqin8BPS2YZbJO9ee21zg="
+					}
+				]
+			}
+		},
+		"1.2.46": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.46",
+			"dependencies": {
+				"@cloudflare/types": "^6.11.19"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-6Lw2xtBoj2BM9f7b2tmXgNXNFAf77jmRbPo71wStOrlGOoMHnD/buo6ApCYvNud+3AiWTx/LeUZvgbEp9SNslw==",
+				"shasum": "ed283982b96a23de340b00b7ab181f3bbe821531",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.46.tgz",
+				"fileCount": 15,
+				"unpackedSize": 50874,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhyutVCRA9TVsSAnZWagAAKAUP/3iCXPs/rXIBVDRsSct1\nUwwD2m8ZN/Tzr7k4TsAKxK7z8h/jN72SOkfiURoNc8aHlMayHeKUU7joTArB\n+gTQIJbXQW3S9+IQ1yKpnCDYZKlKTypx9tQzUM7R0FL+AOAIIBbRMyP8U5HB\nVNpdCsb8SZ/IT55lsDXhwIftpkxgKbPjMyIVvUKkAbgZX7ve1gGow6ySApAi\nmr1crZ4LhWoTM4EXZNJor6WVSzPjvlywUh/mVxn0AcS6NTSc6ClmfwoHrnYG\np7rgUAf445BJQCUDk3KwPRa1G+L5zPSedohBIjFHR1ukTm20+3dZ58+j7qN/\n+dv+mHdo8mmXkKWDWvGIew+34zjLpxcpMPvK5JDtiDVl0EACJIy3VC6SmW6z\ndAmPsmUYhT9yz8HoG8yMfBYUzoKnbA1JTVoFW7TpBHxLgZDg3jE8lH77R7Ne\n9RvxkoN0DJ5OVTb7L1cSJKCZt6EhYZMPZSUgxwqt6JbG1iDKVIL2aVDR7t4x\ni88ADPU+FXcK8dDpSCS3BD0d8aBBGKCfdGYvgieQW9tO3X6+sdhlCizOafAn\naUCGGb6tGX78phi9XT9KfyL4c7Zoso/aDDr8X+U5X6MwBbWAyUflpL3NWFu2\nn6Ol1kD4qMvddBhjznAdE6Dr4+HAnZcdtkN2cC9H3eKl0AFGXLRk1wNu0Hdh\n66sW\r\n=KIsb\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIEIY/SJkgw9V9AbyYFZy5rOSw0X3IaEeqvH8aSdulnXwAiBzxqFFXPUD0lRr9/xm7R+ohPV2SdAkrJvolGNJ2kZ0jA=="
+					}
+				]
+			}
+		},
+		"1.2.47": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.47",
+			"dependencies": {
+				"@cloudflare/types": "^6.12.0"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-cdk7nfARvTFBqVdeMPa8zJ7Avtuw/tp/4L3jMCJktvBlOfcJr/G8HG9q6V9dK6kD+rxnY330LkxV7d6HLZI2jw==",
+				"shasum": "744806a3bf65cc1940776a44bad23c2650ea77d2",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.47.tgz",
+				"fileCount": 15,
+				"unpackedSize": 51115,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJh+Wy3CRA9TVsSAnZWagAA+csP/jf/1ybKNIeb8b2Tsz5i\nnGI7vlvv+KAo+J0HD/10/RwuBRoCjC2TYvRcFSK99ZPlxcYuCQJfxaOf79OB\ngE0kqlKq7aGjQMHNWLGp79usEFYAhr+fk8BnodBd6mGQOA1P7LY2euKc2JJt\nH3s4rvgVP1Tljoydq6MBIQkQV2BNo6LYq3intnFIUi9Y5rIk+nlV+3WiJLUw\nxRBMOQhheWUA5+L2aVrfDI8U2dt+J5NjiuRzVRLNHsisEvE9lhaW8dmF9lPA\nstCcjDrCIl/OG+un+3wIRwj82zQrHleV2H80wCV7zc0D06QdJm7sUu7ILOte\ncOE4SQh7TMqEYELsf7J8otbcku1VbG880Zm1QCyNHfNo8Hx7ITjQzbVrYGUb\nHxHjLUJU+66Ol2J3ajEOKDGHyyoX2qsGLn31q722MLb9T4pR/g/g1tnnHFsQ\nVhZOLCWVVwL6VQDVuSTCJYNFPZ0+jazycppLyMEw58AyGIlUlT/XmuUZDy5p\n/JzHzEZOmiILmYesF8QLiFhGb3x+neCtkENIX8YJoW81jk/39bSjJkhTryOB\n5lG/DPhMM0VqE2Aewsf8UHbUd5z36D7fC/7HkJVYvh+9WeV9srvcjVo0Vb2x\nZSFU//0bkX7T0ytNZr4MBje1DD8NQR6QqbdhwExMpBt3sD/695h+DS22iNaj\nM0QE\r\n=434a\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCQTgCNmM4J2xIwxRPP7npyLxPBMioWfocZx+qsRuylIwIhAJ/UanNV0aVY+fWfZTlbuq/943IH4tYmuezaQWJBI4jV"
+					}
+				]
+			}
+		},
+		"1.2.48": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.48",
+			"dependencies": {
+				"@cloudflare/types": "^6.13.0"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-YtWuAYIG5SlV4vviDuq2KF5YreNTDTshT8Bph1XNS8pvvIHsyqRsWhQ3T6M0zb1XFiem3rvNRbwNE1efoSr3Ag==",
+				"shasum": "0f1ecbf7d214c80bfe35fecb90fe7b6faab1bc55",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.48.tgz",
+				"fileCount": 15,
+				"unpackedSize": 51357,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJh/ZvgCRA9TVsSAnZWagAA5UUP/1804tCh+nDvddIvOUDj\nbtdosp0EbrTcOrf2csqmjSrfy5lXVRBrZqZ+1rx/spgE1wO6rDMlwhlg5wvS\n6c8SSJqy3SN/o5g1OY+BO5GCd0Z4OeLCDY/ZgnnInRr/R5sAzJB14jG6ABZK\n5z2ukiMHSuyzqU2ddyNZe2XhqIGe89XQf92NfIweIYa0tWzzH+ys7i8UJ6ts\nvRQ99ahbZTWoIQIQlcQzZEjMieUTzUYtlqzVzVHvz1N5P1J0TSRycMrPWCJ+\nQCqGfHLUIcq5TMC9MFPjg+Usm/cW9ugYodlIPHfDj0HiV3g62ssz4BSiceh6\nHT+0XWiUF1FKWrviJEpoVw182XNEBMbAcf0pWrKFbhU1A8htCEA+uUDBj5tN\njw9VjO7Qglls5bzR5B8WrsPUv79Rbo/8U3ToaRl0yBIDh6P/Hh1hTNtdxhlr\nQNf9CS1Ll02k4tvlpYIjouGhmycJHimyM3nMvyBMMapSGSXS5cZ4SgtksAI8\nspXMBNcQ6VzaSzIgyPpAalCA4XPwCOeAC2SCIg9s0TeRAMYUhirAbi7MzpG2\nQsB5HwQT3pesUcDq6oYbB/9QPiJqWpqDcD+Q0lsQLVSw6JV9uXJvYVxrBka0\nNJ+9M3hO7AuX/0+QLOSPYyRThlmSY3/r96/y0oUefwALTIgxuzP4NWei4xYb\nEj7w\r\n=I5nB\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCs+Ll9yD9CcdJUvnBL5xHcjqUpXByZP7z/7cixv12uNgIgfZ+xdEX23sgC+OAvLz5QNBqHcBWF78IYH3wbrLw+u1c="
+					}
+				]
+			}
+		},
+		"1.2.49": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.49",
+			"dependencies": {
+				"@cloudflare/types": "^6.13.1"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-S8nDE+CiGESOdoSjeY9ozXoplUYDmnYcYOMu5bLUSi0rZruS/32X6iftpgJ3ZA8C1ozO/FMyvxO9w/7NO2vf7g==",
+				"shasum": "472a4cf368359ab48bcc48fb9d9b25a6307ac40a",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.49.tgz",
+				"fileCount": 15,
+				"unpackedSize": 51599,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJiAk2FCRA9TVsSAnZWagAA+0UP/RV3cXjKGtwoWsJDoeym\ndFETok7ZWJIrLh6jha2fKL6qXlAP7ZyTih51bWZ/HnCkzeqgKH2cP8na7A0b\ngTUXQGrp8qY0aaVaZh/sxdz7lnmjmDebRI+lJLmXcDZc6sxllFXVoelYzFOU\npmyif3+OHyxIPBWXlUzE7V5RagPFQ1StZ25ckJkUzTS2po2bzhnlLao9EFgt\nXMeHPHKjdWKC6lKeuZlKm7Bjt0MPbGCxUA025ro64/VOlYOfG7oeQtn+Pc7k\nmZkFPcAiX8mqWZ33GvaqW1ipjk6iSvSAPiZ2MhJ6DtBTpmzaYOgoBmmdzKzF\nTOr4Q9dEY4R3Zmd8U4xqbo7H8CLxqsD28uWgoCUJXcJzbVYEPRKTTq1Cm1Zt\ny8JrU/C4273PEzTFqPmr6CXUkRwAeQzh80GRl/A2+MWZzDI6dsXrV/IVkx4s\nEaJWnklhNOk68JKkQGMVlkt3fPQDViGT1/eLcgRQK6AXlvzYhuS1HGMDrAlf\nBhpGIlAs1stPLtOI2FcjWIC8q2qRXKlTKH1Ri3iNDcg4PLlSkOVnD/e0ZiMJ\n1x+Oo/ytEOpJCrHuwEH/psBb7qKS2PtFSF/+AsgEUPeCLpcIUE6uRBROmJoi\nWVkcE0RM3FojcNobEZ9mBT03g4XG38I/OH1AiyFxB/vCTcMaRNb71zShAPpn\nWX2k\r\n=2G9j\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDkyv2+O82C/dHgcD+2497RcmVCIoVXPxthKbJtQ1hGUwIgf6h6joA8c1Ai7nChvoyGGFR5rKeAcVbw7gfqPGEjRvg="
+					}
+				]
+			}
+		},
+		"1.2.50": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.50",
+			"dependencies": {
+				"@cloudflare/types": "^6.13.2"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-kodbHs4dCJ3DY6fW5L8Vzo15TLgdgtRrD2jyeNC8di2X8eJ+f6KITxM3nFMJVSE2Q9K0XcPEwsg5ONOfylsS8w==",
+				"shasum": "9883a8870e260691e681e523cb76eec5339f4f53",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.50.tgz",
+				"fileCount": 15,
+				"unpackedSize": 51841,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJiCpdSCRA9TVsSAnZWagAA79YP/1UMvFh8fApZCerX/HvI\npymXCRgxK1GCcYjiWTFMzJyT9nv/gP5wXBcYbqh2OoPPp6GJkVOKP2oZ0l5/\nMJRWdbBGcrN7636BkYQcQpONE3WDSPZZJk8I4J/cIUjrV9zZcJPx94br45Dn\ncjeY9PBTFD9mmUWFygUN8k1BQOl08SRFgsVHijG4w81JyRCq+zbggb3QciGU\n830WXDtr8/DBFxO4CXVzMPwQYhsf0fHs+8fV1dC30e6TX1Jn112gWAlzbz0p\nxbEgmOsvCSfZt4DU0BEN1yaIc12Xtu8EEdKAktBTqogAr2r8UnIYzg1aA01P\n/idjCp1H7SrJ5Dd8YR/igFa88Y3W4XCc8VtuiBg7E6EdgSQtZoBXza/1sL6y\nGdg52EPXzebxub/sZgGbT396dypVcqAT4DXtNFE0E4TENAbv7hjSv+psTYRw\nKMmEPKqt6BvcRExQsx08NmDZSMLK8r6lKJhKbpdnzTXoN9ohCFTpo94hgVqj\n5EzWcBC1HJrRpezFUiAqlt41AwUJscPv/AeK04jjpVvLFnu3S6HnAnDaRCB5\nGA8Km40hh3G0aro29pxvywbQZ/qnCsdKZ15+cacIbB7mSTGAq8DSCMC4uYLE\nSnj3gWm4pqG5wzmdPzpG4hjlTinHEe7k+oNUn3HcQ3rgzEf+Cpud5/o1nWO0\ntURL\r\n=IpzU\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCbW7wgR2oW+llavoz6Z+kpWTpWnxcy5pRXXKqx/sKzrQIga9O+3RU7TcUDqiWGFDrvqk63TvIesmzIGjtmVBWXRyU="
+					}
+				]
+			}
+		},
+		"1.2.51": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.51",
+			"dependencies": {
+				"@cloudflare/types": "^6.13.3"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-YihMppRPXUqY4aaKC8Nr8RuaJOu2exWmE+2fr0Q5QMFtNQ8xsjUrPQp/4uPWRe8Rd+MZNV1leW5Uah3gmyA5sA==",
+				"shasum": "ad02d7feea2e3675a83ea98b93b04df346e7484b",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.51.tgz",
+				"fileCount": 15,
+				"unpackedSize": 52083,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJiDXFCCRA9TVsSAnZWagAAg/QP/3a0L+Cyvjmb+NnE0yhB\niXhh9XlwzgrIyrNWE8l07bGG18UJs2OPxIcxOF5W4rbBFXnDzEUMteQj4fAQ\ncw8qUUirJ/sUuZM9WqUVsXQIRxS13edcjksO5gZA2PmCCyKHnd/Eo6i1rOJe\nJWxLod5tR6r4pU5J8tVmQF6Y3kgOh99NxqZrptyoFSWyXFaQHz9ED4267WMy\nlGa1Fw/EpDx4rhugYxQ5vNd1l+mjjL/UWgw8NCMEEEn+OHllML9aMGgtY4y1\ngKmxR3k5mVvjdjndksxYOeJBc7Kc40Gu4LRBhbMb0AK9AO4iRsB3YsRQHTek\nYMSFMTok/R2DuD6oOneVC2+/VqIAf+f+d16IU0uBBTZiA1oy44vJb2eyKS2M\nKPkO2WddMlQZJ9LXvXem/WYLoI7QVhq8GH14OZ8/6du4M8QvCatXcEiMjdc2\n+0B7LdSq+AfrQ18s7oj1l1ufA9Aj6lAtTkcJLeky8pbim71t7hLoqBe2OnEE\nOKA4PnIhg8cOx0Lu6JtcCcv3oORkCOMPkT+68GUXxUvUbZaemjXcP+bmyy2N\nWJVD8Db2dP3lV4e9BYBi80Z+HQ27GpI7z54ZcYC+eisMoxxfpSnwjvCh+0aE\noi1leKRUXcnjqClG+j8LE4FdVTKfJpbZrmgILVSnDVlc3vcVVjNcjewRbYga\ny9tC\r\n=W1cz\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIDKIbquLT/jpu8hPiC63KFEtRzzrHnfb1CcGDVIEak/qAiBa9dZuVSLW577f5+iWahw53ilAfhm3QpPAKGKWLJ+K6A=="
+					}
+				]
+			}
+		},
+		"1.2.52": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.52",
+			"dependencies": {
+				"@cloudflare/types": "^6.13.4"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-GhAmDVymPbmUlRIC8oeQUjCNDIaNbAgnpRTZ45U7ZkgY6WkX/VQssWx7F5NctnJS47zgLd7MyKbiz0N3HBsMmQ==",
+				"shasum": "23f24324fe21f44d3a073596ba091fcd4f970721",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.52.tgz",
+				"fileCount": 15,
+				"unpackedSize": 52325,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiESjZACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpWdQ//VlrJOiXB2WpSmHYlr1/D1Vfc1PVZ6Y+ClxzyfY8MBDrDmRHw\r\np0G6sMkx8B5cYyTeBkgh+5ka6DXpwlrx1hWWQBc61sqQcrcRpy3ywU42zp7L\r\nuQ6g0mSN3S8QEIGeMetwBjWC/HLd1u4slKU55YPybjBuYBq/ss752M8ObUHH\r\nHuNxV+yey11PEXBSHRCXTHdia3BhAMDt1hhoxhX5DRCO3IXC7iwbWbNPHTBt\r\nlvzp/VbEMVOFd2LUPm2+z89L2PZoeXZaI0OW7V3lTpVeQfis7BsqZ1+y5JGL\r\np0ScBifFAsp3CJ41NNqiRu7ljSCbucARk47mZVWkyOucQRS9z3cL52OeTvrw\r\nKGTuxxr+AQlK6H2zYYQHv480++6CRC0Wunq8ODE85wJZa5J2ub1oRxlJ2OXI\r\nBTr3enx067Ph8JLkNVhEcRcuWGJLxo4V5VgA8olBs6PFi5hLXnYzJeV3i/EF\r\nvygwID/4tqBo5rRn8lr99gqf6c18rYp9D2A5Ck6wdiwgmHDyyrkmxokbKatW\r\n2l19cUqQmul0VGGoll36HjEArly8mb8BkqIVxw6Ci30ao9S88aAFS2J/hB7P\r\naxlz0itGxDlv3/XxUHJ0gPhVHZQ5tLkFgn3Fb6JL0qTpKkOdJx95njuoYyLg\r\nKb9YZ2RAvPuloJ7BHE0oE7XqVIcbwAs5S54=\r\n=fh+O\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDkeA8g4VrpQElLzJ5uJe9Y/rkF0miITqZttyHCzxqYgwIgAu2iYk/3C7CqHtvB+xr9tSflCrfvpGGCAq1jjR2bJmA="
+					}
+				]
+			}
+		},
+		"1.2.53": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.53",
+			"dependencies": {
+				"@cloudflare/types": "^6.13.5"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-7jfDB0mYwyejFpxVNq6X/dxMHkiMiFmg3uiJNkGCjeZpqSsKdA0Dt4g0gb49BDgNUFO/EvXBnhUDfKHhTkmAKA==",
+				"shasum": "bbcb7a7c668ca8de6792b520ec1e7b92d9ba9ef0",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.53.tgz",
+				"fileCount": 15,
+				"unpackedSize": 52567,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiHlNxACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpDhhAAk7i2cidhbimGsEAV+7EpCueLXUgrdUdI4IrYe7cy9BM1y3JB\r\nFfXfteiJbxFnKq2iBNOYLNKMDIT1Gg4YQ69EadvS7GIlI4YOI641Ub6y7z6s\r\n95kCzYqYh7v9wC9go/plyrFT26qsUUq+FhNILmq2m680ReJfzY3jQBWkIzQx\r\nPx+LxogOvYE1ynggCNsRPSCZaB7H/CQ/5KsCsRkzx9XXCm4T3tZRYe9KLI56\r\n+qUrjFvc+bEmlJmxIhCcATLDq+ugyDFCtvZpk5caX6WjRqjk02vSUsgNcLRn\r\n3gah92DDgG88plCkriBR+tZuhOsWrAFMwCX6gey1H2DYnyfEWqlCTyJfOSIj\r\nPeQ4KGLv1aE6kMJcPW1nmceuaVr0BGappnfaxlGe6sSJozY9GDBJMtfLBrm1\r\n+tO7rNjgV0okWV95XHyVnWstr7WMLlp0Zv/6ADjCzHtfBJ4FJq297a/7Fk1p\r\nbYWKPxV4GxejAHd/RUTVsTB8o4yQwSP0zvbZzQpddRZPbALHt7dPeu6jCD7K\r\n3kc0+Af8I+vQX9MPBQzxU0vCSqaN93YwOnB7kqljkR3LcfHOzvJEhp5gyMqT\r\nhEYo4kUY8PWNf3w027Z2quxyfWG2NzMnG49QtrT7Lzqlxjp3QGQlvOJ8iW6q\r\no8m4yCQDobgzwo8G7YGuDlHiGksrKqgBusQ=\r\n=qUub\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIHl9m9K1MeRzlgGthoiJ5c4A5+0AXV8dSKV4YROL848wAiB0Cm1rnVNLKamWuVj59bqVrAWE/o5WBOzHRvlJiZIMKA=="
+					}
+				]
+			}
+		},
+		"1.2.54": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.54",
+			"dependencies": {
+				"@cloudflare/types": "^6.13.6"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-Ce6B5FD2O6xOgwaikUih8l1iaxUxHB9DDJvH+QXAYfH76zZYkBImpgUVSVN4SbtYkTr5mGGSeyVXYEExtueS9A==",
+				"shasum": "54278e5dc3644cc11f7abe2e44ae12835efa7f1c",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.54.tgz",
+				"fileCount": 15,
+				"unpackedSize": 52809,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiHmMHACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqVcw/9E4w9OoU35n5b5gRTPXA8M8RDXXZF9yvHY0zsMR+iDMElrEUE\r\nWc1gm5slcBlTUPKhOfaY03WlfmamcAB8CAgSBVN7cpOuYby4zFVt1yy1gjIB\r\nxjnCx104nUGkxYVkrxloX0xYBIDyfrWrQ+etE8AsVbJzihvchvHDDUf7wdrs\r\naXj9Ov1C4L+KXyQOfhnoYyl/2Meu4ug185PXaqQGVa6ICgsFi+si61D0pKQt\r\nB/+HVstlhdbYY+qoXRK9fESbwT/nRmYPJjAeJ4Do1x0noL40uXfE4WHHSiFT\r\ngwwMwmbboV47K4l4ouBGYMpdv8UyKDNDqBn65+PZ7/qkhi4Y5/sHqCc92Poq\r\nG2BsQPVNi9NV/j7xLpVZ0GNb6k6gJWzkPdnzBpSG+bTO6884c7PmBkNFAKzL\r\nFumRj/ss6pw2LHeP8bLv4AR9ZQQC8mh4Ml00DwMEpWubPSEXhNNgFeJGXFik\r\nbktIV7GZsqqE6RqcJgC/R1b4Dgr8qnOW0+ZUAvFt/s3F15j1dGeNKDfK7DPn\r\nYyr6LRceNOqnmGpOz/0cvFM4YOezWL5h3WHVbked6pC9MYeHGqjI+wfHE7E7\r\nZuoVKBUSQsoJ+Pg1G26H66qJGrxlS8A/3C+gAv8536i8Lur6CWznaRlALDBO\r\nZQGMAZu0rKiKnYmNJUr+PHZUCw8dlbXgm0E=\r\n=MTTz\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQD3iFWeyVbmAuR9bsc4snonRrMm/x2l+B6uRHQnUjNg1wIgTkFfdNkAy85JMgpZRDQTkRSs9UCQCFHocJmFTakGoTk="
+					}
+				]
+			}
+		},
+		"1.2.55": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.55",
+			"dependencies": {
+				"@cloudflare/types": "^6.13.7"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-m74/elZnPVLx4jTPRxItdDTN0eLi629DXlB7fJfn4/hvQ7fx90f6/LS9LpUAbAkjat+Wd5MHtEbQ3hViLEh3Mw==",
+				"shasum": "a7638032f35cd3a00140091565323d6caf286d72",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.55.tgz",
+				"fileCount": 15,
+				"unpackedSize": 53193,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiJ+gxACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmqv3Q//efGPKjg1r5TZdkUGoww8hDwb8512TUNAsYI2b5Mdu/fJl5QA\r\nV5pqCmlucyxQryc3IdvOYLHRcdTcpOOydtCQmAvSC0H6iEjWjgVFA7NAtfNb\r\ndRrbAv1MRSfAO4p7m9YwSImBm/amNYcOkyBm2LrhmUAFiE1YZFc72wq83tNv\r\nzSK22Amv8HkVlQQLqbIhAEyGvpGXLh1QlDJW7VXL0dIDbS5Gqs7EhQt6d36W\r\nDZIaSmhYmtuPA/hSb6yHt1lBjDu+lZlIacQbEZmqEP0pU7dsZNkumiv5BNoU\r\nRY6AQJ0dc5h+UnrlnDwg8xJU5Srpbd7fyTNXT9eY6qthCLbKcqeQU/a3yW2z\r\nueSs/5fjITmzLeEyzRUyE5wCsEdufK1vnarduHpo3ogq5ujrABXOmgPmciny\r\nASk1dH+fTSlhST00n3Z31y4TBRuqvVrCcQyn577mT9s75CV2j376wQAEi/nu\r\nl5kHc3ZeSH0wqCTNaP6X3SwClRHLjUWPl3zyeAnUA5pGWuMCHIrfmF5eSTP8\r\nhSlL6+AFqlq76ChbadxBWtxPjBpx6z3RsdI1jZfxUmkUgE7y1Wmdfl4W3B6m\r\ni0r9PWv1EIIZJ0W6w8sUPMX7Oxu9Wv/AFxfsQJX/W6aRg4tJXBBWt+WhtIzf\r\nmm5weo8BbxQzBBrcJbBjzgwObWBFn3X1LOU=\r\n=z3vn\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIHUweY8pkHm7Jk18cQJTr7GTqhFe74SR+C76i9Yjw2d8AiBk0xyJuZvIMyCH/Arvc78GsM5O8p901WSTmeoUjPA0dQ=="
+					}
+				]
+			}
+		},
+		"1.2.56": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.56",
+			"dependencies": {
+				"@cloudflare/types": "^6.13.8"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-YECTnZQFwYh5OSWSxDeRCxz1n+j922F7CiYsJ5nrrGrlLGGizbwvKhpYkW9XJwgbEYtZvCJBoxgQsi+9mqxDSQ==",
+				"shasum": "8e86481b70443befc688f5cc77abdf2e230801f8",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.56.tgz",
+				"fileCount": 15,
+				"unpackedSize": 53435,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiKSYRACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqyPw//RVLQElKPLqJatotWhdskf76DO5FPNwNMtnLTYHwnQQMAKyo5\r\nFLoY57f+v3MCPPbrJXj341WWjRNbriNR7rqyngiKeN4VyOe5SROrhionz0GF\r\nK1eyZYQ6SIv1r+A6n5lYzuBGoGA0+b6J8VnCt9dZoxmr9TBjXaee9//RR+C1\r\nOLT5S6iw2hY2TYhTWvv5V/ExoeFBm4lzHc/1gfSayh0lnxZ4c/12gRhmI48F\r\nYa26RO7WCTWXtkq/CJ2F1l6VhR4BB2j18w8zJHyfwP32nOJbUpSHoVhSFA0w\r\n6jP8FunOaDX/4ojyZAF2FBCo3C+/KSMrnHfmR5DklukajY/iskkKZC/32T8B\r\nDYrkgYf+gAJNc9+vE0QA2szozvslyjmQMlxWUMmDi9eiZ6eBVj/u5xGqaFyL\r\nbLVUTe4NHXXRWgjBZNGvkLZiPXElHr+5v5Qucz6dH49SMwXqNqQJLU8jfCI9\r\nbJ7xQOR6UiMb62rPkI0x0E060R3IZFGwKAQIwgDs127LrwPFlf4dACEKejru\r\nYbrVz//vZn3XLni63BqyOxp9i+WatuR6+dy6zOk3CpM2fUG2z/UcPgOYXySc\r\ngKIx/dyfKYc/2LD8KK223OLnBbPbT0KlumVjgUpMasuLNwN7Th1bG8gyorlB\r\nnkm45iboGoD0tuX7IMkPd3LpHMzEw14pKr0=\r\n=RGoY\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDdAILWOZWg/WzgktJqB8RJlqHLpyMq32N5DII96lpn7gIhAOjPS8mUt//19nN43rVwq91ipu6d0WeWq0mTB+iIB6b+"
+					}
+				]
+			}
+		},
+		"1.2.57": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.57",
+			"dependencies": {
+				"@cloudflare/types": "^6.14.0"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-yDQsjXNSgYMLPuq/Nr+b4NVDc5DjE0qfPHZ349lg09Im4QPf8FsYN+bwVakH+t4fJ4DHx2UxjwU2bOkOY73iPA==",
+				"shasum": "f8289283617d13ab3b101dfe07c1f7c517b525c6",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.57.tgz",
+				"fileCount": 15,
+				"unpackedSize": 53677,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiK9GZACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrkQBAAk+I1QLBMPVImojseuD+LmfTKRh0hGAVJYDvQKFzUXimDh0Zr\r\n9He0NKKoPRAx4tLOSwV8UdcVpI79nco9NphCdn3n5DSX3qkjtQY9mUs8j4nc\r\nHe2cIe9669dM1U9dLrdaI4MDfb4mAVfhPmba/gz2Ho0TlY9k8iuvkuQJUw24\r\nJi1MSVmP8mV5E5xwvwc0RLwmzs64NTOimpl75U03BU7Zv1DjTe11beoJLL9S\r\niC9AVfs3gkXvX7iT8gFUcS/YP+CbCXRHrXgMhKD4f4x1FoOnMWiFprb2RrSa\r\n2EOHCeAF1JtqPuH5O96NJc4NOuE0OoHtBxJC8o711Fj7Zwy8p50GcgGzj/pZ\r\ntK1M2fGbTo6+qYxP3YDgnFTdLdfH2x8FQscSmZ/05mUxUjn1o807PipQn3ty\r\nJp3wyyhEURNp912TbwgIHdcdp0XeiOJnUUsabFHh1W8azukRPxRAEh0UjwY+\r\nwgsr83/37d3lmGzCm/1l/TU9BvqggUmt/bR6DVSf28QJACvl15smBuoJYc1d\r\nrpX6hnh1lMwCk2fBSfxIeYRH+LRw2A6zhsTHMnDARJIDkcGIE15nRl4abivp\r\nYO3IpfMZtrZt2xzMuPTwRHdx/wQ47heUE/C+j+qdFvphmvy89J0RTBdjDRDb\r\nxNa7y6tGhTjADAQj9dwva7M1RMMRsFloa48=\r\n=kuq2\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIDs9kPx3KK6+/l5HnCFwgVEvNX1amiknkAMbgrQV81JmAiBmhSCukJfD/X1d2fmaQr4KskTtnIej2Myb3uEUuoQikA=="
+					}
+				]
+			}
+		},
+		"1.2.58": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.58",
+			"dependencies": {
+				"@cloudflare/types": "^6.14.1"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-kJ3TCiQgs7gKTVPlTeDzHFatsTZfev63Z6FEmElDjr8l+k612W/wUOx12Ed/Alv8hP13ky1jiNMTSDXT59zitw==",
+				"shasum": "32fe52fc26ac5b50b4f6c1318e907c21b33323d5",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.58.tgz",
+				"fileCount": 15,
+				"unpackedSize": 54039,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiMiPqACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmos4g/9EZuo3fFXZ46biEdZdvivmc9IXtx2y5h1lrvpZ3v3irbhii51\r\nNkLnf2bItuaZE5rc1i+GiXDYJhejo8McAD9GEa+uYKvvwTzg4X7GDmopb7X0\r\nin9u9dnrUnnvAVCakhBb/oLDE3oDuMVCtEjr+9QSmygvFD5rurT0dnyUV7ft\r\nY9bPNhfNFrfCWqFO9uBekXFifOC5I/XyiH/TK1xAd66PQ0MTPs6cE9UTOT1x\r\n5M8MJNxyXh2SkpsrJOEtVtdLVhhoJdCLqup7DwW9yS7kY4GpkPqSbXRMSqUb\r\nex323F/sstnz/odFXedjCb94KLbG9CjyAH86Vaj6eQ9CGDlE0CYghJoDChLm\r\nZGi4Ava7WYZUg6kEdkQugvKHrnKOE1DEHthrLBrO7sx/P+M7baadWBFxX961\r\nCPY5qaNitM3Fs++JQJTzqR/P3k2arlCuN2z23dqHRgieZ/4UCU39Uo1879Wi\r\nwV2Mc80vWL+9G38/N8At43MQDkXLJepsUP8Jh5ETFKaOXybc+VU8F9fdLVGT\r\nlWey8DW9JixVQMNdCEhFSZfzHjLtjoaJq6QJnjXGbvHm1kXwBVINcLGvOrmh\r\nw0i3Z0Vobiwph16irH0rrMGAj1fRmujnEQHuvXNSVHEpwNOPMDv4rD2hGO+x\r\n93Yd9U+N2HfAqvhsJKbFtwZIBi80FA4AW7U=\r\n=3x2i\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIEBXsIbkseTHkGYNisQsoDaGmJSs+fypCeKHgXWhrYItAiEA3kbeQSqrEFh086ZAI0pbznWc/NRb4oa5vvNmr+QC1fU="
+					}
+				]
+			}
+		},
+		"1.2.59": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.59",
+			"dependencies": {
+				"@cloudflare/types": "^6.14.2"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-P55CDAi10IJxXyC9E4Z9pwQzolGh0eEz1D8zc+UG8/7T5fA5KiRUCIfdGGqXPVibvXNXkSrHUSO+iXUH4zt12Q==",
+				"shasum": "fa6592db8b7084483e80b0af2a28dc572b62e441",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.59.tgz",
+				"fileCount": 15,
+				"unpackedSize": 54281,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiOgKnACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpyOhAAmP31vn2TeIU2Epf0UBozJ3NS29aJwSvJAu5MFxF8SD3UfdVh\r\nJeitg/+/V3RbhVd4RT+SMr6M3usUT4//V3dlUf9KOR08uJboDCoRqhne2nM5\r\noNOUta0AXdmGJLOAgFNjo3uxIXoY51voz3ATzh8KS1zIerkGCG3/LcvfTNYi\r\nQT98P5taThreYXXa4vyAA2vqrgPHkkT2xMmDtLoM35yYiv/bOzYjF1o7ZZRK\r\niv0T7cxynfIQO7CUDJ/cqQatB59qJXSjVfa2rzmKhsrqWU/uJNtBZi+L74pA\r\nDcQcWQfI5AQFmhWCrpbxpZDMn1jVDZlB38POV9ESjMBnbMLFbkb2AcXp37n4\r\nZuQpLT21hDkNuxsaOtd3SEr5N1mo6UJvcfhl45vhS/Ns99jAuxwq6ih6L+KR\r\n7q7vl5YWdjEsnFI2LWGztrupuAg3Jk6KrruPRgJkqfQTPSj2yWrQwCW3/yh1\r\n2wsZ5OTrxef1uamiDTnDEGJhuZCejiOFMYQouYEVflJJ0KeoFjYtzFHUvd+X\r\nboLj7KJ1ueUBpizmFE9++L5a0ZEWkcg2Xq/0TNThKhUVc3g1mJpWGRjfHZsO\r\nIlrPxvLnY06VE4tNh4EsI92KZYFYDCnDHC5TLry/nBqROe+5+6ZXTVOEa/N7\r\nxMYVpmaiUgcihOeamLgvZYi+0q+SMnZ5Z14=\r\n=8D5f\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIBfzyEeUtJJyd8CcLwZmIkaoeck3ghSbBCwxr8x/hZ60AiEApgcS+GLZRKLbGjAb7W1NkxM4W3NaoHaGIYUJK+wp5Ps="
+					}
+				]
+			}
+		},
+		"1.2.60": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.60",
+			"dependencies": {
+				"@cloudflare/types": "^6.14.3"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-8bVRxhwDJ//wWkhp+quokcoMM/jjpJs8wEmCxqkdHFmToqgNgXWg0NVbxHNqxO+KllfacRxHfoLuBq0W0x5WJA==",
+				"shasum": "3887f83a20afd3b36bf661aa3394d3bf29f25c00",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.60.tgz",
+				"fileCount": 15,
+				"unpackedSize": 54523,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiO0CFACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmra8A/+NzsPQIM8YhxnLTYAlyS+CKW7t0z5sy9zVHA9u2bVKnoTvTZA\r\ntepyeT8xPQ/J/YPEBxqDnsh/DtMuKvx/x1lDaQRlX0x1brmUXSgv3eFf8+X7\r\nxHy4ic8ChKz2x8LbP9Vzv31L/9xDLBdNakYdGnmKrZpeBc8bfM36idmHs4Xj\r\nnv26gfiCr9w2y3i0IZyD6HX5ZxZxomZicpJsm2m6Yl/QFvZMIJBaO5U/2jbb\r\nbCxwny/EnRYMxD12VGjTt3VzOrd50yNVlLpL4KEf52YTvjiUZ110TtN7WiUt\r\n75rYVImw4PmV3F6s9tPf6U8JKrN55UvwGPDhenZtAP5jFXFhTYt2eB+ZA1iN\r\nrjuJkkUvL2AiZuy8R+khZPs0q62URhxUxeE8eL6E/L879MsOkj9qtlnWKZuz\r\nBkK2FQ0v9lM378E8aJhyxggXE4Xf52alDQnOO9kCOcWvRDCD9zvNlygu/Rqm\r\nJ0VaUapqV2IohA+jm95YS2UipL85GmHmuNTSUBu81T+hmqULa+6iuH7xuyjO\r\n9f3xjdyo+oEAoj3WoGaskB4vF6V38KYSeyO6YDY6JgrE08IN2z7bBV962EG4\r\njAmYGAwwsSVgOU0zbRHPKIH+ByyVQvbsjygzVZU2HSraz0twwVYHW2Sb0fTC\r\nEJxI+HLblMtzifJ1z2Eh6ZvRxOsMSpLefDg=\r\n=w8lI\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIEHqKpsC1gJRtCEozDp/c1ITEJQwcl6mMxkVGAwQfb0jAiEA82oJOQPaBfrP6Y9Hk5Jx7jkGQW52Rp6r+s++/fGZxHM="
+					}
+				]
+			}
+		},
+		"1.2.61": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.61",
+			"dependencies": {
+				"@cloudflare/types": "^6.14.4"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-E2ZZfyvckWrNo5jOix1qw3RBQN0zeaYAwyrAx5LTFBx11zgBU0dKowDMAOldYH23slPVdxggTMFjUB6s0EtfGQ==",
+				"shasum": "1aeff81afb6828c977a39affbec3897ebbd2b8d1",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.61.tgz",
+				"fileCount": 15,
+				"unpackedSize": 54765,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiO1ItACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoD8w//agnTeIJ9ZJjrnIUcS2nIKHy7nbO2TGtU3d86QHhnhukgQUxd\r\nu0blyGCGSFXnLemTJdoO/nQJfOVDYoRsbctOw3a4GVJ6rnY8d7SI+FAIf8M1\r\nZra8AUFLc7lni0ecNHxz3CnZEG1CgZtxwOXj5GaQMF9VvfqJTXJZcxRbZyRK\r\nMfMD9lqKWxOAbB+u4CcyvwwnaKUVGDB3Wk58r2Q8v4IUuqSXyMCuKzbNaVtj\r\nxD4DQTXfP2WJClesmQmAY95x38jl8IH9N9m/0TK7Ru0KAhyxMfWp2h9ZTWQn\r\nntnN0V8E5QechXRYS3pYfYfhj/+VIHETlpiNE0QT8vQfVAjm6ropZzUtLJT5\r\nxa/85WtODyzSC9zyEwA3EaEUV6EMIPXhn+kGmTdlZhOzWKBp+TISKlb+oRXZ\r\nxHK77AMLkzPrTcsAO4I81fxesbN8gMohQ3LhNYnvX9kEK9Y1I4ATwux4sxK9\r\nMmwOrOpasUGZBQ5bcyBevrjhzKigLms+oCHD4ESdCPC1V+O8MPTbYqMREF0T\r\nFrd4nbpOA73ePIs6DSZfV+k7x2PhzAaDSg9NrbBNTFbJ+R+pqLgiYU6Ij4jv\r\nrJk09Bw4oYTIJS8CBX5SolnGFuwKXEDvMCvSU3pUCfpCZ9hn6Dbj9PwgJPfY\r\nAbVFIQ/Em+PFFASadze7ytackDQLs43NpdA=\r\n=cKYO\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQC0u6lBkxFAP7MBLoIlSnEMqkAK5o4DGrxNlj9gFhVqUQIgS3M9IVNwzD12RxzTWBapNSbHPZnR0pQZpgvjiog8fFA="
+					}
+				]
+			}
+		},
+		"1.2.62": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.62",
+			"dependencies": {
+				"@cloudflare/types": "^6.14.5"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-JiLGFaCBevoNt6XWUb+RQ+BOkVHQ8M1DjXbRthZ3cQd8pJLWf9vBSOtOEe2TG/0Ivq7NeGuzLQxMLEu9MzFUAw==",
+				"shasum": "34e4e7b8d484beded84009286c4c8f46492af604",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.62.tgz",
+				"fileCount": 15,
+				"unpackedSize": 55007,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiPJK7ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmp8Jw//Z3P23c8JJowpJWNpdtOC3J3B1MWxcI38ccj30BOGwVa3cVab\r\niNZlYnewChc1iaNyU1H6CLPJsqPXGjIC6K5GR8UgsW+cqwvKrSlcwMlb9G5R\r\nAf6a7hBbDVmz4Vwk4YH4I4wqhsqMuW3+lYY6AZhB8YKC7y3MkHmAkkqWetCE\r\n/gdLzelM77Du8MOefx7W3CujABYReXp2Cn8zFL7B+JCL6qNQcHjcJFTC3WQK\r\nWf7rcya8uWkMj6jpW0eLxTnTXtVXYWKokJQ+Q9DPVW70seo5hPVbCMzffdSj\r\nNA7NXsuEykFQ5oTdzLv6JXozKhI7qQCWH4dwCvd72QDurN3v7SGDFHXGefAm\r\nD8NM9XmnvSx7Pqr7eT8xN4GsUa51RQK0dTYwfP8seEig8O6g96IGyqk5OtcL\r\nmGLt5bwxoLcRp1WEmWDhWRYbzNetkqDZaYXj2YptDFD0/MTnESl0Py/CReZC\r\njVs3sFqdhWc4qQ7MILMmAQLA6ci4JMERUrE5/sT6DeW09HSdymwj32kehyBW\r\n4TIstK6FCrfdH9mXwkHjUUxWPwxyhZGxlfx+YaQkekInJbchQh36gDdcRZHw\r\nTRPjWJJw/kdLq6Ei0NH6La40kf2tqyLC54kqBXoIhTeS+7EL5CmeGck/BgyS\r\nz5mrovOGJj9aLBfnzVKssDEqQTeXDCbwysU=\r\n=d3JE\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDy2s+u81tUeV8xBCQ5tU1I6ZhfXBNuG5o2JkAIHbnG1AIgJAHnnaFBScjjigFun5OZc6Gtp5vmwwwxwHR0PfoLIoM="
+					}
+				]
+			}
+		},
+		"1.2.63": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.63",
+			"dependencies": {
+				"@cloudflare/types": "^6.14.6"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-q2dU9pl9etQddbkaPQqKgMJT7+HibuuxnMT+S1gUKzOHFkaT5ONig+X7Q5KLxe6wrYU/S2y85AztbzQpnxHyiQ==",
+				"shasum": "7059ab73e86b30a7b5b36865c3fc086991cc37d4",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.63.tgz",
+				"fileCount": 15,
+				"unpackedSize": 55245,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiQyKKACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqoBA/+Iq7zVJM1X5V2M/bvsm08lK5XYPvyyYSA/kHE2fRaPPsh958g\r\nvPeCzQPavesJD5u3+HazvHACMWsHlo2UQQCh93zEdjDrhEKq9fvKHuLiNnMI\r\nn0jixePTvwLgIbzF+6xZrrvQoh8a36HO1GPRcIG7nm7FIlZjT0xQ8AsYY8cG\r\nUkgN1rZknwNpzXH5JY4s+JVUJy2x1YdbV0ouU3Xc+CVkV43XGLOQHpfJb5P9\r\nLyL+kSA+I6WDL4q78E3RThO5MYzDAx4lQe5789QtcQHpNKk7Dx54eVFPEP4u\r\n06b3GudJW6I/GHNTK8wF/0AQpO71k/4Aodt3sNe9/uvxnrehPpjM2B/R450w\r\nBMMpHPXmDKlE7fC4S3OFmY27Hz79BfZjs/g/BUCotnsGVO/wtHmwKqa4ZFIt\r\n74dNJhvYSUox/iv6CTjqrvtP8mEBg8lxQSNEfdqH1KOW+RnoekrkjhConLeu\r\njx9DeusGCV7xhXWJo5QbghceGg4Xrgwn5CJUuHzj+7QMM8BFNwgH4Fhyd/ao\r\nprZA1hXkd4nBl/n+dboOvzXbEIkAG7fHFCDx/0PwHmlLArYuljBrLoz4LroM\r\nCBOBUyaM/KbCwtdgYN6gc40p8+csj/r+sdfyK5UzHLjmuvIDKXp9gq78YFyO\r\nVot5v4LjcQ9gROeLG+HsHk9/JiYR+No/IUU=\r\n=wBTw\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIA8HgcvjNdXfm/O7VKvZ/ASMzeI0OV1NtQJrexmL51SIAiAvcYLFq10CSUYmPgvZ4eoErE1JT/675NwpYymgUCN5vA=="
+					}
+				]
+			}
+		},
+		"1.2.64": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.64",
+			"dependencies": {
+				"@cloudflare/types": "^6.14.7"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-8x0ZEZKQlibK/YkP3Ot+/61oTpEumklaadH5Ae6dvQSmRUvWnFyZWeVPKdsYTLFTrNRkCD7CPqV6d8WkG/JnVg==",
+				"shasum": "3edc811373c2165614e193b32c2e7ca4eaa2dd12",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.64.tgz",
+				"fileCount": 15,
+				"unpackedSize": 55487,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiQzB+ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmpf3RAAkDFo1ksVavmv4/GvW0EAiqaikDBmZFqy2wlB9eIHuh7JlNe5\r\niv/pVSVpAGPcvrZg5itafYkD3VEGVzILCsYpttSIT+Hww4oCWxr0auPDbr2i\r\nWAUXuIHZqRJyoIlIqnbxPuKHNJC23JNKosc4gp7Y1kpXYp16/8zaRIQbksq5\r\nxOAIy52vygt+h4GYbDEj6gM3YklMcozwj4/61Yw2iXM+KrMBjOMT9otfCyWD\r\nM/K/ki5yrE5vpT4RVsihkoxy3A/WDV+xU6PmR9oS7x6q2pOOwN8rsMuQxfEE\r\nvkPcTq00zaiewpFDV0IO0VLyY4vRpyX8ZoJfNCdhafrTUKvSoKlsogx/Ch64\r\nqvfqdpruNpn6Rx0cHHEYnDZVxNJ77ztiClzdNLVaR4y4rsQ7YVNgV7jAS7mm\r\nbo2kdKiuDwwqezDB5QoYCwO0e9ON3Xvo03mPvDMa8qNpVZfX2gvwp8t6bFuR\r\nG1b8OsC/Npoj83ZrPR9oHuQnIdzhaN1UZ9I1Y8Vt2q/5tKZdT2+uvJ8UZZkI\r\nxobHhr6LxbzX9Ua4XHJGKCz4VHBzW5SXuk97DwRjkyWBpdBQISpf4zCA7xK0\r\n8J+A7PYDwfudsk6wsiszHkBHdr+blx5mwvLAnDwN86t1pbWBNWHxwEbxpXvo\r\nGbbS+Oc+N4rClOmYWaQuVZxxMuh0bJTBjvo=\r\n=V1KK\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIC/OosmYhwKwPr66kqc5rGCWulYCeAj+OIJ76Ll2W7WnAiBIIEXduAtT1c4juoHPSYBkBLgBnaQh3qntCLcJX18tpQ=="
+					}
+				]
+			}
+		},
+		"1.2.65": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.65",
+			"dependencies": {
+				"@cloudflare/types": "^6.14.8"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-aUmZ+shw6TIIgaXrsHottt1obKsFed8zUs5F5PaUkSXWmCjNdiMyIRxQ0Qoivf5JHRYkomK4C8hc2nFy86TehA==",
+				"shasum": "b1668bb1af0d902eccc3a8263f2b418dd90ca616",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.65.tgz",
+				"fileCount": 15,
+				"unpackedSize": 55729,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiQznYACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmq71xAAiEo7xClYIeCVtsEGp5eYIaqpUDkKDZIw3D10z7vDWQC4TL73\r\nW645CZO7IeyDotj3NxdRgmgibtHifsHGdVE/jeCI4jirxt4gbqh1CP9fwmhu\r\nUlI/Gk83jHNBznzqVzQy2kZ4kLuUdvVHCcgiTu1eEmuWR+V8aBqDoecsRA1C\r\nCxOV7IUElWgffM1CJJwrVGVBo4CkLTLxqPhpVgX0bvyeVRP+2IbHaE6qZB0T\r\nJeSpAnfJTbaAOeO07dvzPRGZOVouLKX+kteGOiiXQdhQO21VK9LTy9XYhTxx\r\nwS9DAm+YLaIEr/C5W8rjpJF6rQxoNuQLDQevcm/ea1bSzmUmW03lxpjQPROb\r\nxLrpeFcf8lmnfNhO+K5W7PBy7Xx2I7k6ZWl6yiKA2jtoa/zcih76mvJ2M+8R\r\nKwoISwnhr4mPfP/aHQG412hJsiNxqwhwn2wdPqVWy+616ryRN8BvCXd53qN+\r\nxYTLQq7DmiUFnYv0hxLgVihiC1qiKxq54wto8eGGr2IHrcVtJ2TM+JN9+4Bl\r\n9exmoWW8grA9eTiS6X+HDvnc/arlYqTkzkY5HWBae/ECFp/cI+pKAZ7tixRS\r\nn0Af4+2VZ0akKTPPCGr72wiY4H2sZ/ez+eotU+ThGVnMb2OtmEQpEwKy7czJ\r\nvAE6pr6o26mtz7oeziBRRf8O9Y3SC1jGXh0=\r\n=xfCG\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIEEzzU5beSOIw6StyHX+IZIl3LLT1NYXgZZYztXqB1tfAiA3hg5aLucKGfuNs6srJcX5Egx7jCGZvNVn7VtoYl6/Uw=="
+					}
+				]
+			}
+		},
+		"1.2.66": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.66",
+			"dependencies": {
+				"@cloudflare/types": "^6.14.9"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-Jy7CpfRg+QHqSpzW8HCLXhrQatM48QiB533iC5V+Vx75KTVqOpw/X8k0S8cFwRnPfuD15uAviv9tQbM2ysjXBQ==",
+				"shasum": "f53645d4ebabb06f1b53644ba0178080432ca7b6",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.66.tgz",
+				"fileCount": 15,
+				"unpackedSize": 55971,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIHHJJamNIuNRcwEU+fn4xT5mvQ2Sq0CdGj1NtHXgFKSNAiAO2YA84AVIWPU+X1rcmuwn9ktktEJjHdT6zXkB/pdCgw=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiTdODACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmr5GRAAj2CoPNNuf3hJ44O/oV3nXaHq6WHc8v7iWvvRYNW54/J2o/dP\r\nLQxIErBKJNVSAjNYUHM9Q1LDtVLKvt8JXDVAc3KRDi40eTos6+LSQ1q3dmwK\r\n4clBW7LDWgT17fEdmLDxaIvhcqlw8UFddktQs9m87sPu4gzGhg1ZGZhFtm5x\r\nwCkGUHQFFqn+nX728Niw0PTMoniiqwvp3QnW52h4Yy0PTQiRvvIPHGeqxVAY\r\nJHOorpbjLbEmvbxKTP1Z0YpDhxYaJozQPukFFxqMIMcKlL5DGohWJDwEy0zG\r\nzUr9P89yJBMtayjbMqkrDGiMfoFiO7jLVCYUFNCnBGzLo1df5DrBGjHbcSBr\r\ntA0xLkpxL436giOi2XIwwJhnYm0GkQX91xdh3yc3um5Lhzz2WfALycnd/Lw4\r\ndXS33hJ4fHw5xl6TnT1xn1K7LAnQrSxASwedWWdfLE9k4FnhDduO2i+MUFdq\r\nMPMDCi89zBvdYbuIoNdmXhpgon5w6VPVngWaiuOGucHLuE+jeP1nQFfTLoOg\r\ne9pyd7aX+WiBwCde6Or4fvzpn4WFk5BRzO5HmO0CAlrLEtCmoq0xCehf0j98\r\nF/GXX/OY1qU4yGrqXiqXA8KUF+6Lh/3PD8sTGuMTpwlI3HOvAQX0yr1xPSMa\r\nZJ2C8LGgjMZiPcxS6lTvJ6FCVEEit9QBb7M=\r\n=wDq8\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.2.67": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.67",
+			"dependencies": {
+				"@cloudflare/types": "^6.14.10"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-I2xYgNMpMzM3msUK+E/oaGvuQduYC6gME5SLvF9M5/Idv6pWEclJHZEjU8h+KTiE5nwM2kg5g23EpSkhQqHRag==",
+				"shasum": "d383aba82b813d508c466e2bb472c52584fbdd3f",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.67.tgz",
+				"fileCount": 15,
+				"unpackedSize": 56214,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIGpySHnziWhiD0EWdNCmgDxnqC+dWjYafA5kbEgPO9E2AiAOqO/3WoHwx6ud+kpwFDQ0kxkKLtTpLnKWXpPCXH0wzQ=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiTd8hACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqdkxAAgxD2AsNvVn3RJs841zgPBROt87sRJT3mcNT8oO+80m9udhVa\r\nrbyLlSBWn/cslImojRWJ4oZTRdoNATzA3yG/w3urONtEt0F9ECGttifUWPK7\r\nRjOtn3N+XaWMe0x47Yp5LJa2Cwx3VxzppjWJTG674XzI69Wri68roQ2zbAOW\r\nMcvmo5Yv6dPSyIaE5FiuzW/gReF79DfsLDiXdQYt4ijBulSTx+Z+xjnbxnw6\r\nywCLOuAjdT+QtpAw7qaKjoOjFuRuaIlefjFnZlzIsjJC9sm4qSHEbbZe/+yO\r\naI5H3dTLqlAjwoIqivePKxPe6ct3eIVbRyu0X3BIYCf51aJ855wvVn8QfWCT\r\nsi3NJavV/BMBgTzr7WUN8ICWCdJbd0fm12DHUEBcIf1VJECKb85hIseGcifz\r\nkyRokY8cZwwzyvZjtloa54rJ8KVDcIMiSTOehxJUrXmBLQHPbgJZLEIILTRp\r\nBz65222EmnIvrcm36VjiU/MUSUTqOBYrw8BBURUC5X5No2INvl+zqTp7T5oe\r\ndBMzSxMSAWYMCm68/BTmRiyFk35NYhrZx7BkGVNe5wlXpHENbZpX5ck/pCDg\r\nfK+Mtk27h5pywqIBHIb8bFQJCg1nY4jS+npMEeztknOWERBKnWQDj8PqFFV1\r\nerjqAHj1tR9gmu0DhwGRQgaViXsGXkey4GA=\r\n=QVqC\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.2.68": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.68",
+			"dependencies": {
+				"@cloudflare/types": "^6.14.11"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-heWCOpLwYiic/hPVmsV6T8QMFXm19BoM4EbZiQALVtw96eTB/weyvZUlO9YNohbLdhzVVZUKqgv7ee70MKGGiA==",
+				"shasum": "b9ab91ac1c7c6176302deb6da639038f81172fd1",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.68.tgz",
+				"fileCount": 15,
+				"unpackedSize": 56456,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIGo8bWSXAR6zWWQxj+Ya2ProyRtoEfu/Oii0ECq6ZX5iAiBOdpeqSWyQmUmwxEF3ii7Rsq9nmLXujPRkTuUA3oAN+Q=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiYEISACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrtWQ//SHZDMawf0HAT2DP0mZPDwRJP7tS9/M/p0W+RT0Qw4ifbWg5E\r\n8nW9vWIG7ghP5hC+VzKUGeJ3+23EGfvqigjyH5nu6CM7hu3Kn/l1iYH+Z0i7\r\nFXoIxf+Tr+RxBCKYRFyRXwp2ZcIqfsDLUYhT6CXHTZUuEVKu12bWvDeEfZD0\r\nxUm+F1HqHSZ9K7aP8zd/Bv8701O/1mlrsmfb4ZomxLgw4NFmW/+RjY5pSo3h\r\n5b8v/2m5N2xuKyJsyH24FBARi4WlXSBMe3UBk5bWRvbS0N1LjgL9BAAlUh9D\r\n2lejwIE3x85JmfNMFTro0OWY0TwFsqcJqGZjYNiPmWqvvGr7oc7yg1peWl5x\r\nBfmdu/jXek8pIVHl0hNDKKx1ZS/Ax661d9WcQB6F0SAeWONA85SZsQGbN+2r\r\n9Jft/TE48MwDbaEzHp303yCBBwkXOa1xxs3LzcboZ3kba8RLQ0MSYhZg6wa1\r\n6EFTP/RHY9RDUnm9YWP4QL0PgB0IhSt8H5OC1zOtrvgXryJcJFgWDclg0LLY\r\nz5gbvPmiSBe3skQ3gzUYxbdUfyYzV9VbFi2ldHkGnZi2K02jd0zSVLQdgms1\r\nEry0tmo7EBOB92Cs9mdokTLXCRgGSd/PPIoW8tsRINB15k7SVsASMt2DHDIO\r\nsZaYl7TVmrXu3koP2OWP4bM+reLHdDdzTBI=\r\n=YK4T\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.2.69": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.69",
+			"dependencies": {
+				"@cloudflare/types": "^6.14.12"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-C2fZiVG9CFildTap4LMbEBh00IV4AD8k9FAwtVWtQiSkKIbmUEuOKcb6d/sHvP19nyRTAiuGZLambcDqmykMXg==",
+				"shasum": "5a4da4b088089d8648a41822ca3df3a5553dcbbe",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.69.tgz",
+				"fileCount": 15,
+				"unpackedSize": 56698,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQC1v/1i0XMIAD31/sqCzQEsFroSssi1+CK7rYgnhvMzgAIhAK6DD9asZiVH3iCJB8wE7QeZkD+KG+Mb7eLMABZhVZYA"
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiaIInACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmrygg/+Mx2BfNEI5SblxiUmkxkFbpjzBc0Y9NRg+y/Ekfukt9a+Z0CO\r\nMtHHAI+X8xdHV8tNRDYdKwcB5Bbp83m6BmnXcPW4leIZwSzBrkIUUCT2yQhl\r\nLI26FoX+Cwx2y0CYvgZkGiJyvJjYbjrl7bU0KfZt0VU9ZMcPaBp3eUmnpPmL\r\nM9EZcxZb0mBreXQnIQI98kSAXfmizOfC2QKo4m7g4p7Q4DWyVFjA6mWSIj8d\r\n0CqOaBbsFfCzXUFrHxz6TuztQUfEN1ht06R9IbWU2FQroFu7+cO6yA0OSYGg\r\nf7/E9jMK8fWs3XVjqn1FCyAScQslG669lr5NrRmf7MpbcuaJxi6A8u+gCn0+\r\nFfv2efc+kqwQKuwRA57sZU7VV9HVBNH8IkUtvzX23Jg6qTMUAjJpUMnSLPoL\r\nq3CybqRt9sqZ7nSOnwew8660QexXIYEShb/w7qb9d9ovGMzvbAaME1/l3TMo\r\nhR6Xd7Lk+OjSfJUMj02kJIcgm30O2mZK41fGA3oqWWcpwgrcCV/QVaGMoJb7\r\nwO/Q1Mz4oFAAMemxdKJ6wOQMZ8jtPgLWDnbkURtG45yGnUZQCDQKs+bsYm3Y\r\nWKFoGW1yiVkcJ1IHBTggLGFMtNTzV+344U6PNz9P6+4qdDhgkoKvXXJx1U1P\r\nE8h9Ya1x6QBTPyEsvD4jhNcJDCAnsHG5D5Q=\r\n=QEn+\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.2.70": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.70",
+			"dependencies": {
+				"@cloudflare/types": "^6.14.13"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-HpjvdJY78LQ6NBugW8gh+39RN0/7Qv6UzUvPigSAaejzY5RLUnAkysMs7PGrA/Tdzn2U5ne9+SPzMGIbvRJBaQ==",
+				"shasum": "d59cee37c3968d00b1158751779d4ae725c84499",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.70.tgz",
+				"fileCount": 15,
+				"unpackedSize": 56940,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDHtJAMl8EZiF0dhNNfsBlSG0XjWPPcxbqrAdoJWjbKUQIgTmRusiPqYGfFLHZZUsIuJXgZJ12LxIgVmnpUAbX5Lbo="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJicXGSACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmqj4RAAlLUdfu93S+IZNo3aXMI6wE9Lwl1oMDy+/Tr1JI6fYCP+Wl33\r\nC+0GwWDeF//KQCjO1pryQfxVQ+To4Ymj6rq5qxKuBBE31z1bA9PKunXIEGQk\r\nOATWPtNu48lvQeqclpCGSgiEBErmzLrAIC3x0ASoVS+gH4yma0wpV4uD/YlD\r\nsvr67JjVqxIlqGpIrLSIYAbMlcPwWHmOR/Wuobv00/2nE0bjPYIY7cRsYDym\r\nV+PEwsFgurUHhdZxgB1bNmHaJ4I0RmIc6KtA3ZsNb+UzU4RuhtjZAuf9J0nx\r\nnh7U8/Cw9mR0I/Icgc8UQLhXRd8K8/k/VcYtgXWMIfD6wkG8ipb3wwyLmOcn\r\nfyH2QNWTx9HUH5yAfEWzhUjWtmZar4mAX2RRGUJ1gXzYYCnU/XUJ7VdZwkLh\r\nQZ2C7aXS0vfZGL95LGIJg2Al8sqZV2H54ArBGkWCzmYFxspyMTapotCPmo6D\r\npyOn2fM9vCw1vG4FUhKbXP3k4EuY1jiVoc0SNjugiCSctJSi6PiWqP8G4q7i\r\nJ1lArBI5zdtgOvtHPVvPR5xEkk/h63kMD/aPl5T3wszSuNKn7YlKCZrrRnyJ\r\nt76JtrEoFFgWKcsewy12tc+AYck4/IJj6EAWOn03a23hxqz2jTyFqZ8RjngW\r\nBAV6Jq4Xj+zfVgSHfMXNU17aiXLIl+FKJb4=\r\n=wqQs\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.2.71": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.71",
+			"dependencies": {
+				"@cloudflare/types": "^6.14.14"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-G+o3NXyPMP6zZW2i27DGatC3+3eDiOmOWYZURInZexQXeCIIuVIEWsl2sCEy3F0pi2eVeIr0yrwl/WvRgHewKQ==",
+				"shasum": "f6d8a97aed600edba2ddaf28fdf814557870f1db",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.71.tgz",
+				"fileCount": 15,
+				"unpackedSize": 57182,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDBXBGTTmSgtQ6FxBkPSUtkKTmyw9cwb7OSVWduHqEViAIhAOUIrQyKNyDdXvp1epzBHYjkpgw6go/17pnD+DxXSO1l"
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJicooBACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmqqhg/+P0CJudQ1JDnIktsUVq3Q0rJGDP7aHE0Mzh8+EO4LFTyilCBu\r\npIRjXNf0TF3xODuft558IdmfaxKzOGgu8tqwrsEpKxrPxtEh0iD5GmS5fDa0\r\nwBaXxechzAfUVxCgNOO+MVbXDW3p6e/hTLuE9R5aK6p7OBK+cm9IUqQjLNE4\r\npCxkXgcoroo3GGvV0F3w9dhnhoY8acsecjaCERjlocui2zj36hqLMQ8eL1Dv\r\nzoIxVfnlANP3oMGsxx+YihmqddDZezYpHK3B9zCdNEbu+VKUyVVq5Wb+xfcs\r\nNjSyLLjxiWi62dInOOuq02abWl443zzzADm1nOAp9bvECHYCKjDUsTwJENoa\r\nSHbFbLOjnFV7k5HAM3TdrDOAg2Uj50Vc+D7PnX83h3KGu3vj0d4d2juReOlc\r\no0hqIvN9/C+giXNcBCy+NbaThhquYjYga6wq3I1UfYCOp+uzFfH5rBy7qMst\r\n6+kLR7EwUjXMiimObdn5+d+VnUOZBkHdeuj5CScB9CdMzal1h66+0lApfmef\r\nUMYPXyyv7D4owz/biaW1dBvHOE4wXxzhbm+Dp6O1PByslOXIVAtu9jYfa++h\r\nKTNDIs/0+ZVAJFGEj+XAGf/pI6sM09zz8cEWGGi7s7xqyZWlkmVU/m+R/bZD\r\nIzQdq+nduJfgaF5CaMGsWXZrBzKGnGpsX/8=\r\n=muU0\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.2.72": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.72",
+			"dependencies": {
+				"@cloudflare/types": "^6.14.15"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-RtuBFTqeN0/fadFu2IcORCHDfKf/TIfyT2ZT5PtTkqlj4pwu1GSdEcYK8tVCEFNvTEndpqSZ8NwzkAbyI5jlXA==",
+				"shasum": "4a7313aeaf68c40980f58e17d152ffa2397a92fb",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.72.tgz",
+				"fileCount": 15,
+				"unpackedSize": 57424,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQC28NZdyOCiR/wn2WaG8vSCy6pXAncQT4M5+uFNT3VOhQIhAMJ1h6SoA9c0ccaTYMduZk0D+Ydkeb+CLWedWvontddg"
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJicpZ/ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpbjA//Wkvju47IxorwA2qXGe6Y1bCpyHySBQN877JySrOS1dq+yXuQ\r\nU9nYshxs10RNIEzgsA+Y5pP6nYHbY+ZFxwb+3nQZzHs+Q9rDs6TyuLxfDLHQ\r\nXS+cBpmvGu66IKbaVkF665lsvK+7kXFd5fqlR5vvj1K+pZAJ/bA5l1KpbODy\r\nIU2UIBeHumSrMxlrUxIuiAxF5ugh0YNTCRcNGVh8jHgqGsm7H0cTtd5ZDEco\r\nl6zccD+BgbHDTsC/0VC/5//ztwegLyU9ovlY7T8TyqyvC2ZGnw8VnuFa8v6g\r\nKxZaSIdvc2o6XMiq9bHktxQ6SGacab3jaY8X6+NPn2Nbv/ARtx5bqjNGex04\r\njFXAP0Z1z5bk23tH1gfCWwUWl6p9mR8ev5P3tuUWk9nGHAjhofu5tYTMqGUs\r\nxDSrxjiJ9xWmN2WwFRA2Zyqxlqg7m8Qw5kaRBAKw48XSkMb8mOy9Kt1KNiIM\r\nSERQjyhcgPqqVjc/V0GnU9/hbPajV+I5Z00qSo735+1d2DbjQksbHVWOrQSR\r\nC/PTkvVwlY1I8GLSVudvsc6dPhktI2lk0yINw5t7CngNt+Pzhwg6D0bhDiwW\r\nIy3amaUNZACWebLRDcruEb/5T/Z0obhT0Zp1lqm9i6NJ9qNlZ+SJKxah44Cc\r\n6TjtChtc+p1ACzEYcKIGKkmNV0VbgL7/rPQ=\r\n=ylqJ\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.2.73": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.73",
+			"dependencies": {
+				"@cloudflare/types": "^6.14.16"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-v6pUEN4BVo9On0ZobDeTESg/+Q4e+1dX9Z5bxvzQ6/6qy4NPoEoySSQDsdzu6vo3ww1/lOZD6jJ7VMAMd4GPfw==",
+				"shasum": "dcc7925d2ca6123254008dec7d9028c4996dc261",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.73.tgz",
+				"fileCount": 15,
+				"unpackedSize": 57666,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQC6B7wvhos2Ze9AKKjrEoCVE0YesM9WzM2q1kqXQKmW4AIhAKY3BRATJ/+cRCFR+ykjF9OMIoCBhem0rlgv/pyty+bz"
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJicqYPACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmohng//Ydi9lEOlsYQnLwmOgxJTjq2NRVYI4yBdEFftr/WhON0hOC1U\r\nxPFnlOwrFvo8G64PIOEhn6Jd3sLtO0RfgHS04Exs99aOO56ty/s5p11JpfsF\r\n9zTpucIgu7oBKXAFyxp79CJz8Miqmo/q1tSe5emRkozAiZLWTALaqAuVaTjM\r\nQfuGqZkR8DdQWC7x/izCccWSo7ydKqOFxhq8Xz3/01LlZ2lrE5ANa4W6Znth\r\nz12/3tiCNWoqA4cEr2dCtF8hprtcAWSSXTFD36JvMCUu++BI3eytq+WJGJqO\r\nQZpqoiIpKUMXnk0x31IGi4L25TkMLk35RtjuPo53ZlrgXwxj5ZMDrEXb3mf8\r\nx2Sf9wuBzsADHObMFXmYw89FXVRmK8Up5DTWHApesdhSR2r1s0SQDFwh41eE\r\nVUJkfxEWS9/slSxmQU3Y5M/MvhXiWLbqFB0HQbdHk59Ks6JbIQpDlCnWS+8Q\r\nQ5IW8T9qUTm+CVRWxG1WunozaJui49KuzLLp+XG9xJARL17WYyNLYx651vRO\r\naqUbDg1CNS+OGuPMNfPg4LpL8Vp0fbqvWeheeX1EOqtW18l8tm+7bCRGqbTh\r\nJWNCxvzOaKM3RqUefMOBp/V0faI9EEmbtQdAj6pS/JuoM5COLzwrREDIc4p+\r\niPyVjihWD8cD9R14umzTMZw3q6dNdq5SsTs=\r\n=W/PV\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.2.74": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.74",
+			"dependencies": {
+				"@cloudflare/types": "^6.14.17"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-BgQbUqvGFzsL+5RwHnv483XKksV0IxxbJYwn/OpET1EoSx92MV6jvq7sfatYrfu4000Qvk21WSyiFLfpXWf5/g==",
+				"shasum": "f516d9ef662b36a064cf5681062e6cddc6278eba",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.74.tgz",
+				"fileCount": 15,
+				"unpackedSize": 57908,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQD6WOqT53H+hAy6sSqDAhET66B8I6C5S2UIT4mvsQtPZgIhAJ16WaPFr86oBvyrjJr55oHpGGeHwDHcTh7hAIllLusJ"
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJidD4vACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmryRg/6Ambux7EldYTrZOPn+biW/XAyXE7lWBBGHdQnnXfGoauvgTwh\r\n4JTozuigJir+PAnzhGkKSrR9Z90y0WbQD3uFqlpUCCj3KqG6gvpwjTbnuDkw\r\n4wCpN2JE9IsLM9sQjxXX9l8Glr3lJNdOeOQpOjtta8ccCzaJlGe518G8Z412\r\ns4tJgUYkQxvpq7CwqbbXsArfjuxjyxY7cXoL5Tto4wAHADwLjJZk6Fl2ndMg\r\nyJozLWBdlbgwlVMT44sgoQqbIpa8ZP4RTLnTt8sEvjEMfSivEqP/kxWqj8yt\r\nRLRg9GEQEn86I2UZGakUtQOOvKbHhIanD5Xy8Aa7J7Nxqh9tyTI9+eqYocom\r\nH5c5rvO+zNlUymnQCFCtD8wKZuhCjWJsL630p8+mOSxHboj5virwwDT77ZyA\r\nG/eBoa2DU8B3GA4itX5dGNCcRkGqL2GeVm80EjO3BU2Hw2hxvCyKKn4ERbFj\r\n2OgFyJLfYRz9tGj9itFt/988BMLkAWYdGeuDVQcAcJ4eCCk1cOHD67l4bidu\r\nSfH9l7+CuhhsEiz9syR5VGNfoT7sKvaAyU5LTyWwGh490yM3Ip1V/BuIrX8R\r\nkGTf/TjwXUZtRRDe1nqQ/av2BSW59M2u6ZV3vTvTNFEN71ZCVMRkgkS5Sev1\r\n6HAjDUc/ZmbqtUbBqs7RSpd5Y6jauoSfcP4=\r\n=vm8V\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.2.75": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.75",
+			"dependencies": {
+				"@cloudflare/types": "^6.14.18"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-KS+9T4mu98IcxDJprJYU5iwddkCN9507LR/8Qt6NIGy3KUriuQZxFq7sSXvNP6dJJvlEXrVM87f8+JIRZcAsww==",
+				"shasum": "382561527ad650be4107c0ed42a90c0f29a2970e",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.75.tgz",
+				"fileCount": 15,
+				"unpackedSize": 58150,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDlsV54d6/q+E7FYVonP/FOTgeZ4EHTUL/L0F2a9mMFegIgbrPsLtFTjgAH7O9sMn5VyJIk3OiHDgAKWVp6U8BvbBA="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJidEimACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoDvg//dvtzt2Zgz1C7lDYpJIkbCLOz5RfH5A/4mJz4uaE9um+vbCxc\r\ndlaJbXr+V71n536mKfGQyTbkHpk84ywmvsQlYTjjlCU2xT5IxXP3G2wXSQjp\r\ncmAg76AeUXwYPYjjK7V7qCK4Wr3P7VI4l5CpL2LvDqXAna1QUFsPW79WYmya\r\nle+g5XZYlg6O7OIvKt7p50kqff0YI3zttUOkHx7rJjdezA6Y2CiodrQVEs+F\r\n7aE2gxxAHVzIZL1cFxe2tzFJxXQ+ETz8uRAcdUmoJApcEx9j5FAfvZtJ+fq4\r\nkPgsc7VdqASFwERr3RWOvGIv3avPkJH48l+P+jnBOIuq3zwBpSsTAbe2H4on\r\nVWt35dvm15zrm4/1agRhKNq25ouUMGWQqEW32SswgPzd/JFyXTF+/I7LMVt8\r\ni8GlS5JCVPWLFlzXSdWR+0njS7mETZZ2zxQl8AAk9VSTCweBKD5wwdaoi69z\r\n8RA76JvGdcA1YyEyJxJNpXjNyH9uIWzdrMt9/Mto+4WEIhrKFAZd0gj1JWxh\r\neEASn2xkc499Wb/CnCi23sAwPM7Z92kSbhel5d2bz0Nm+0Iloey9/ycuwdd2\r\njSUQ6A9bhlQDnwcARw+JgZbb4r20pZtrKN8SG8C8Vu1/YOdmIAn4DU7KVjia\r\nRIWD5tEotYQ+Fxrb4QzNjVF6qmk7DJVNy2Y=\r\n=mJ30\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.2.76": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.76",
+			"dependencies": {
+				"@cloudflare/types": "^6.14.19"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-5sYbkSypi1lDmHw67TNcD3JOV2bzn2dlu2ni/+6IEEYP7tmHbn+29h6EghODUU3QYBw87dpEtjRS/BwyF47Zog==",
+				"shasum": "bfe48567e4ab83a179a2780cae7acb5475ed1f6f",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.76.tgz",
+				"fileCount": 15,
+				"unpackedSize": 58392,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIFXd3MsIXamWj3rncR29X2OjdMVrwFKsm9kMbdr5RmucAiEA4b7/GbGM5PxoaJIxqpI97EGZuGFOKkP5uGT6tIxvYxI="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJieD8BACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpKkg/+M4astwAstf4Bhq/iR/855Q3YlwFLQ7ACp3DkB6KIx2nB72Yk\r\nwzibGfQXwwYqhAo7JIzaBejnkdwFiEJGbscLpNqBGNxBOfqr8qabTzHIapqf\r\nQexFIySgmkxdC7xAJFGvT6wp+eGJGjF7WzNG36tvCQ1rilxTj9gBTC6FmHlD\r\njZt4mk9jv5bpxz++x9F94/s7vD61O/wLSDFJk/8cCV8UlOlzumOYbXS6dUk+\r\nBvytRonnJrVG6y7lMMoOClE47M0djZWjpdur6sCY5+dVlE/3+S5ai0L9dzsM\r\nfn0PilliMsZvp/NBBmMd4m+AlJp8QBgR1a4U8KwP1dynqzmIoC7NcKz7DhzZ\r\nCs5BY0zhGNVLJaWF5tKLMwM4umqqZZQ8PbhFoe8We1HDH+reM+A0AgXvEEMw\r\nAbi9VlWkURRfzU+f277B2UjPPGftg3YCtboO7z7jsGoebGmv1/Tkk794Nisi\r\nKJq9T8R6DLZ94Dlm4Fbn0jBB5x5VuUZFdHOjJ+mCqE+sJtPsqmYfq9VylWAs\r\nFFZG6BaZqswNT739AAbMQTBiEl97utmm6XYDDgGYjg/RQKaD1R3G42arzqFp\r\nyHKUnTaWI8udECFck3H7nZx3YlGVKLwHzu5MC4EJAs4ig7BCulq0icIUdSCJ\r\neuxCYQaigDSmdFUvGmFQP5CVrOCxuGWEOJQ=\r\n=XCP2\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.2.77": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.77",
+			"dependencies": {
+				"@cloudflare/types": "^6.14.20"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-C0r4PME+LzTap6w3ThJFtf4ciU3Q5BuVG4u4xPGKvn+KNKFrzZ6+nmUWybp5WOMccLKQ/ROS5ZBaP7R3aHCLBQ==",
+				"shasum": "f33b71e4d7bfabdb3415fe3b1219a776f4258a29",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.77.tgz",
+				"fileCount": 15,
+				"unpackedSize": 58634,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQC/+SZFXodFyYyzUxOprsaBZTGSY/1gnYpJAhXNwsNgBwIgUxzq7B+Rrn1TTVHcX0MJ3Zi83wQFApgqBVG47psfTkw="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJieYaeACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpC1w/9G4nl/y+fXOBtVUC8O+0NN4RIwdRPqCu0/sheAZbNv05fvYR/\r\neXyR3Dg1Qxgu9SRWbIXI8sMTD68FUt22iojCa8E5wscrjJCE29Ye+Mt8Uwx6\r\ng7n0PTJzvbEihf2GDtIvyDOlBQ1ELH2FoOwejE/tx1R5uMk2yAHBdz6Z+k6F\r\n7sZfJDcs/rurseV45kn0Jb32sGFvO03Uqk7BFh2XqlBP3xq5UZNOJOhFIe++\r\nue8iHA+4a1YgN3b2e/78wfML6lQxUIGxNn8fhTidi5H9TaJ0+W10AkwwXN2b\r\nsdLhYBN+OIMkGMPWlp6R2JI19CJajStKdaiaYUMzpMbA57zcYR4gKdEizErj\r\nNiYxXZm6OJ479MLEfDmsCnLozwcA2ooAjSYXLIySfti/SXodV/vTwo7WQB0f\r\nDKvj72dYZWYnEQidVqcpw2GqxbiFGOBRN+JblzzAbEmJVF9V1U9+8e+nrZVG\r\nZYJ6TbA/jAGCG7RO6uIlUsJEORlmVT5mwdyfqU3tqbztvQJow/DcW3YH7hZQ\r\nAtHOC6FxJ7g5S2pMgw/dmkOmA2v+HuPfhH7MGqcefGiN7SWYmlk8G10feKk9\r\nhI4+xDjod8Wu8YDyiPOjQ9d/64t/4T42i9YG8JeuY+eqfhLZtMIPXwi1xTGp\r\nTKS8RBrr/lcO3CYyYguUm/Q/5zqF5Xcethw=\r\n=YKgv\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.2.78": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.78",
+			"dependencies": {
+				"@cloudflare/types": "^6.14.21"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-x7JJb1NUYxxkZNIm0pQeTV0ggkAsKOghEqunsaTD0YBjpI+SpxB7Aob1WoBtg5yfxWxgelawJNRepAvQ8yoUcg==",
+				"shasum": "6534b21c3f0d95edda62f15fcf405e4253fb0091",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.78.tgz",
+				"fileCount": 15,
+				"unpackedSize": 58876,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIDdws44WYcgpQzAbAdqNZJ41/b+F06yLhHdvmaNIygk6AiEA/Peda/d5uM7hPAotPpqxsy1oMqiZmRjL5T2xvqxLHbI="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJieZNjACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpKeA/9F25IcKxkcjnZDu4WPdMCrVNsV6FCKzgSnWVCMCkKvajLH8e1\r\nwL6y0E+ulxKV1i83WU9tta4rC+3gnnrI6Zf8OONNZP2YnMq5iyH8M0ZlOlFN\r\ndiQPcZTwdS0eJEHBenmUHthnpLcAajBOmrB75Ifrtwuodarn81ZcSeJV1BSB\r\nXNcSxZWeIinStwaY1u0TBCq9hWtnubkZ2ua2pvn8ql9+j9d7amDi38L7w6bx\r\ntnM0KSV28bmYOoyht+yaiXO7UeP6uxvE7ym8muiu+48wHbzXNYtn6DHEcWTe\r\nUCdA3/WiK0EyRbHVQ2gRrBVp69badT2dKwHlf+XIM7hRFrkpRhnqk5fbhkZd\r\n5Hz8qMcrfwInqV2SYByRLqH5zON6uCGZ/BOHeWxQRxMxMZqSKxZlKMTCuNQ2\r\nB3IYbrGmuxlUmqtGbJuGmWQe5xkzgAdnv5SHn403/rCEMtoAWRmcJZvCxayY\r\nmKSZhsG12sVs7LPenQjE/2gXaakTys0tM9Ca4bQdM8JBzUvv7NQufg3z0HUq\r\nwnieHaWEdng6psXVI1gvSx1j68gnv7Vp7mgeawP9iu2A3YpKC6avXqOvxvV8\r\nZrLnWfj/XIf9xKWPk/60wUb08TQF8xDsTkpBnB7dJtfv4CjRui0UyDDM4lh5\r\nai7VbHaVYEuFSEQ/whTR5oF4Zg1VTaag3y4=\r\n=/85K\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.2.79": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.79",
+			"dependencies": {
+				"@cloudflare/types": "^6.14.22"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-CWdBogW+ow2rZkvJBgEXdU/+HofpC4EqufKqImN2u442t8swddBAbTbo7e6hP5NFKK9z+mvtjV26pX63UJfDeQ==",
+				"shasum": "7de25012d68735996d9cead716f7f6c6958a19ec",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.79.tgz",
+				"fileCount": 15,
+				"unpackedSize": 59118,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCu9X+SOmkIt1YKozWD+9VDWDAW7UVd0yxZqoxZKkryvAIgJIN7PaJvO06eZUrLz0LWLwX9oaQ7jdG6qBx4YK6p5rg="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJien7tACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmqu3RAAi4Z5yMtgn4vJBDhgKKEncSmNNhU3kkaBxYKzPWW4eZBEhgw4\r\ntoFWj1HltrpXwSkkS4fgwsU7aNlenuU6h9/+8ZlvFh5t3aYB7IZt1rgkU5Wu\r\nJpjWd8YFpL9RKFalGm6CHR4mA8hnY2vprGW1EeF/6MIdsf+rjrUWIOwA/16U\r\nMpGxEyRYmkPqJrpQFTY78OMRotHn4h3+jxQwBQ+wgH/DShLr2t1vK06+4Zf/\r\nIXzCGq9FEvcfH2Mx3ttmBARDJ9OrHhof4vxCZkcDlBkg1BnwurOIYIPXTI+C\r\nYG4hKm2H9+N7boWyJ0TzJxoHT2R/8gZ5LmBee9NardDZCpgrlV3TbqgO/dAf\r\nEV359naSUrYv7OSraHqmrcgw3xZrffcBe4TwXyWau9iqYitk/GCuDK4K8nH7\r\nEBJPWfOq4vrcH39XJERAPnX1BbWdCRd+i9bswsyEBqrBt+Htv0b9GybbIG3t\r\n2gMwzYX1SiIoGUvQtGDm7RbzRrV1TjgWVhAN3v1rotRyZEuqeRa8+4InbYLc\r\n/8HLv6y8UEoSBJV6sbiOaD8k8sw6MzubV8vC+MW645nhuyG2RsGqUH3E1JeS\r\nVpxt98JvDJLDbuY3fieleMdNpjSTn1VnL5blIqGcCtXk8Dg90skk7oRUsawK\r\nXog0fc5Jksh/QTXUXk4/GLEky4jPH0sA79I=\r\n=gpnU\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.2.80": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.80",
+			"dependencies": {
+				"@cloudflare/types": "^6.14.23"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-nB7rFzJJGsLAKiLRZYKJP67oCmSAhzHLtzAowKkKAuCQXEhauSqGsyNfq/oNt5+nxaTVmnPljId5i5yywSNR1Q==",
+				"shasum": "00d3168170740a393770e71f09b078a4e94ef962",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.80.tgz",
+				"fileCount": 15,
+				"unpackedSize": 59360,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIEAUcx2lE/MyXfDnZaX0RIl7SmCuFAMFh4ZTpff2qcR8AiA6vZDUaWmHGz8J1348cVLMNJ2G2sWKopHh6zlwDlFwbA=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJieojqACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoJyA/9FzaAkJADuEe7DmtBUKOkLJMYRxRGODarqUVh956oNXpk5HDw\r\nH3af0HmazXTb8thL9LuVzvudQELkDS2ZtYdPgCY6NdkIlX2v/afXIKDCtxoN\r\neAoh9YHu7C3y004qptAAsHb+aw7UoeeOsvnMCySiXKEfNQkKrA3G3wMIlc0S\r\n2ywkHP/lRbhJvm1/RZWI1Og+TnO0KQf8h3OzQHZkasfCkr4RRZDiLM77DegA\r\n2zG1h+8jwSGz+9LvvHf/iDuVOvSJh2vtxDzSCSN65leQZqtl03W2CHceveQD\r\ny5glrqTCM2dssUABxNrvQXxaMBEc0dUNdaHttcra2/PO/yfGrVBnfLdlgj8f\r\nre0XAYTM1rT+okyZE2XNq0jkL9y3X9sKL5rNVOtz7vXGZJqLelJaujqNNtg5\r\nopz/no2vpaA1wGAzzSuJcQO1tMHfSbyvSr9bom6Pxm50a7+9yIykQtsb4/tm\r\nMnJQdgelHnssi8fmiByZVVYnPNNAsPpoeEc4dfEpB2sMKI9EMev7ysirC6rX\r\npJImYVt6g+MJ7pGRXcXXPvLxfWZNB421VzbF9ZLuovisjCvaqXlC/EHbFeCs\r\nKpTHJFiqYv3mi2THygWzxMdH72kXi2hQbye8GXVJbPLsrAPpfyEo4w1oh6Z2\r\nzm5G9Q67XmDovh7A0H6qzLYFBuSeAtfB3bo=\r\n=yK3f\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.2.81": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.81",
+			"dependencies": {
+				"@cloudflare/types": "^6.14.24"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-IUd4FCgunRa0S9QwoEGhTy2pxii7TjAivPLVOzyVej5OV1pR5hmnwq8Wv5iVj0QYzbUBFfarqhqDJx1wU9eg6A==",
+				"shasum": "5bd9c7963395aa93d7620982b7ad820216000fa9",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.81.tgz",
+				"fileCount": 15,
+				"unpackedSize": 59690,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIAZVG3UoCDwargcX8d1Uv8Tp+YGkle4XCFVSVwjPhAcwAiAFSL/4ZkR0YQj/taH+CT2fv4ev4zi1wq+D22VE8qIocA=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJifPWlACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqBUxAAhm2QggOtNB1g6pRSlNtq2sDULSLvjv/i1EIjhSq/lb78syNc\r\ncYRHhQJ/t1A7kz4tAeUnwu5+HHQriOpk/Vp51KA8qIpgtl6zMeNTBTuGEWNV\r\nypY8CuGHRnohIONUUT4u3Mqez2Xj4fHS3V5hjmPUhCKAZbTAmx0ZA5Bsz7lA\r\n9VtiO3LKTZzdlOUz+Eq0YbTSOHI7PVfmPq5U3ktzN2FnAbdSSUP5Mv3a+fr3\r\nR76jeruM54XRmPVxl8+132Fl2bXf4TSmHSz/MVxJy84TczUaarEF6zSGRZZt\r\nty3PfJ+gih1Aw/VncTMQfwc3mxfykcpksA25a2TqvJYu58+rrZNPAQvqSWVg\r\nTWKlOB5/OCqR6JDmBunc53S0gUFcD0Visp5lF7en9KTigTIVRpAKA7Y+nvoQ\r\nroYhWHVdkOw0xS9/oFeiXdEUb4MLCJgHV2ZbHx1bOBojg8h4m5M+e+ShkS2F\r\n5IFAbMoA5oB2cn0NHiuN33Pq8mkUKf7btjn8twSqFKSD4fFdyPnNGh9EJxp6\r\nyW/frh7v2rRAeHKfHAxCCpbi+cpIlLF7N6Ken4WPUPMTZdjH8VrpZK6vkE+p\r\nA9nJH6Se9CcxR+Zy8pl7CBo/X1dMe8NDhiOl4JDK/yrmXS5D6fd8EwJLyuKX\r\nzSTysJ4S9Tj4rzbRGQLwNFnuel1nSI9YeII=\r\n=XfJK\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.2.82": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.82",
+			"dependencies": {
+				"@cloudflare/types": "^6.14.25"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-mq3N59njSzr8aFnm/HK0fEzYxA0ppUpM4fC5P8DcjqaUWQFJBXy9pOsj/X3eZJ5KFI2TENlgK0eX14rTP2uAPQ==",
+				"shasum": "399eab6a15cb1a8a74168258ea0770c7433556c7",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.82.tgz",
+				"fileCount": 15,
+				"unpackedSize": 59932,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQD1kXirU7ULPtqTtTd4cqVFTNMu1bA/kh5i9wRtk7fAsAIhAJZ959zbzo1P0ioJgin7delfUEELcIN2wfw1Y3ArPpx3"
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJifqyVACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmquxxAAiTdKPW87YCD5hzWms57ooxiepBXOK1aGrT4QIux2jRrAcZRl\r\nPfqbVTh0MmL3DYx8tiih/0Stb4INrRASI6LNe+A9GNU0Iva7V9ZPxAHaESVJ\r\nkRyVuTPBTyDWRe8Y2mW3bEpzWhG50pKIfzfoESm0q6LqRHgsR24mDVuo9u6h\r\njpGCdSyWfYK45yZS+jQAoKXdF3I/RLvWRj+rQDEOk4C1cle0dOUzSMYih6iL\r\nl2cr7fl2klvLOcmgiheNWwUFmyIDTzh6vaR+SHiDwTDkthn04H62V4Q/1muT\r\ndVR1gbkKcnr8cMGukHWu9m7w5gS2U/KKauSmRqaXf/0bT3zD/nDy+WBBtclp\r\nBXo8pSJGPsQGeKlyjF+hRTWdgHfWqUoe6HJdUk+ODCl1p3S5BW3SV2QoViC5\r\nphQO7Yx4Ph7UV08T5StaUjEz6V/YO0qmkhB6odrkmkwmROVf24WKPqF2X66r\r\nJ2ujWBlLWhqylRMSw6X2GWEkjIEd8VwBITa26vtMtFC/2qAVjZE2z1C/NryU\r\nvGui/R8y7J5hUBaUZF31iH583KUajoHWDSTKse3812uahKTxrl6djc82pwqm\r\noTaPU6yS86tR/zGxfMzvu5bYFACxLiHypgVA5trOR6UQB3+jetY9BYe1dS/k\r\nrKGRuYEVa/hH2zKjKJ9mRprszI8WYFx2qCc=\r\n=xOcw\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.2.83": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.83",
+			"dependencies": {
+				"@cloudflare/types": "^6.14.26"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-5DFx2FdDqz29u9Eae6zPP3WbV/+UTwmdF6p8H54rCLT6lk+ZpfhKVSRul3UXOvXfG9Qhap8vW6WNLWp4opGnzg==",
+				"shasum": "3e4e86e6a7fc6a4fff3a3c7c694a6df341529994",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.83.tgz",
+				"fileCount": 15,
+				"unpackedSize": 60174,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIGmDKnyrBHRaOjiq+4cWfI8Way9YlRkqM2Y6a4FcniK+AiEA6tLj1m+AtBhQMzfQRehPpI000hErZ2XXvnCOAZqSGoY="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJijVppACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoDWRAAkheiGl+wNDYpXQr5tdA6GFnsg52/VdlSjWRYolqi7SRbWWui\r\nOCrQrzEfFzQgVNnMId0amqOQG6MwOFF5eDXuRm6RQAzWiWCmp8MvMCPX2hBS\r\nTCYkOsE66MzLOLA798xgdj3aGCfpWm++Ktp80izVuA9fyNyV0NwH6osH9Hgi\r\nIPZYv9DeD8qa7yqiwXQpK7LunHy2wMp9k1w47g9VSLYfri+WYesCKCEfODOW\r\nCjQP1VSHzpjpguvUkz/JCacM7iRjHaLD4Qg1XJiuIpKuuAjeda2u3S926HK9\r\nibsjP1G17aWms37uALXMNPs5bo2n7bIrvy7hZKzjGcH28RODFSnoPKPyTlBx\r\nNFRQ4hXvLufIjXPUv0CGEA2coIQcziQwPga5U6M0hYvO57Yagz6aBrjPdMS1\r\n2Ja/11zqCi4MKySw/ofG4FKIxubMkSpaopWKdTCUPX/NrRcDe5FOyIT6cG/T\r\nt7/07cUt9LsiyyWv5JqpCt1So+nHewie2+YpsGdL0LP1fR3zwNv/6+pl0ECO\r\ngCRNrjSOU8TEO9vPYNUGzriUBnfuIOTBex6SIhfiWsJNv0JbovulZc+ifumS\r\nRwZz5bI7GDLJNRFZ6tem49KQJa9ZP0Ewxp+Uz31p/6VLLcfy/JEoKFC7u/v2\r\n4ruTUdjwVHQXPsJ5Dk1HCXVnRsG96tN+ObE=\r\n=CdU2\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.2.84": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.84",
+			"dependencies": {
+				"@cloudflare/types": "^6.14.27"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-YCurUOyGtAZS2m5TAl56YleOFUVXTYTDymB8ZcxST3rymMFjKX7gEz0rTh+Y6dig2YxyJc68sWDqwqWJYXHAnw==",
+				"shasum": "84453151b1d4660ab4ca804001c567ced88543f7",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.84.tgz",
+				"fileCount": 15,
+				"unpackedSize": 60416,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIBhP17izP45Eo3jtFGpL4st57kSt2KvOpRK5bM927AdeAiEAgcDflGBM+xhPUS1zXYbV/xWh64Um4hyqpunCvgh2uYQ="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJilK0LACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmrhyw/9FG/gzxoAuxyBMCvOcZNMhGGYM9ppImhn3tFoZKDMHvi+KBMB\r\nwbXQiJmAJrWl1VIUcMj8RoaOfkBH5BCD+tZ3FNI9Fj6OFypVlhAZ0WjrlaHq\r\nmM/aQKBJ4rGfvc9cBFE1VqbL0EuIw0zparCEXITjjVQ58gNOK0EonysKMDsy\r\n6rDqMQ6InLQVbWTlX66XLlYcDGDDuZ01hBl+RM0EMlCIziusv++iM/Ir13MX\r\nNGND996r/Z4ardHDjJMKF9UUPCE0aoYe1i7jxfEpsDznEt/24BAVzXH629Ew\r\nrT2t5qgvC9R2SzwGHsgcVjRuwBCI6WirHjx2aIgJeQy2psryEphoA2xOy9oP\r\nQsN0mkP0RRXiHTbkxgjlHKJpMRlezPtYP1Z3ztqKy8sziIfuYHblxWfLAPhj\r\nm8to/gbzFxRCEoDA/kV1crqrRRXYjx36zMg+IXXdLpus6Cog0oSU8o+VhHkg\r\nSznjGvfUuPE7THbJro4OODMUnaQClPQdl/eQCEAqsiDVYpxMm+ogZ6WnKFtm\r\nFngD8uLNnsQKHXJLcvky+XErT3tmmEmMM4hurXU8+blc8uXdLqb1PuHLrMO2\r\nnktThTEmegSGB+wzTvxMfitidQMMG0RqAe75XHPWvr2XZiN7DV/dTW6jSyC5\r\nFzdWyTvOqQFSxpUKDIeyLCwD792BWPD0uvY=\r\n=Q9Pn\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.2.85": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.85",
+			"dependencies": {
+				"@cloudflare/types": "^6.15.0"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-uD+a60xe+z5aG57I4uUKz++gKrlnkqp0PcPkYMQ3NyHkdxYR/0PgM5xXMyslsFr19wgLGXfbzrhtXW+BIzmBRw==",
+				"shasum": "f7ea412a3ae91a2f03e578f18638951ef1a77866",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.85.tgz",
+				"fileCount": 15,
+				"unpackedSize": 60657,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIFpKk8FDulgFAY9fT/yMQ6s7zJsAf+MiB2kkfhKO7xjsAiBw81MT3177OgaUCSCVG3xsBYBkJHVOqA8J6fpZsbLyjA=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJilOvVACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqHVA/9H/ScCpyEth7S5Fsw4DpQ/hy3dfvyvDD6gmD0TjsM8DvCel4w\r\n4I6BpXkuY9Sb93+PkdX1j3x39lT9VFB9lrB9OaUZD3BUCUzeLCRbPdmJglcm\r\ntpAVdjpGdA4Wh+hYmUPOLJmFr8EOsihzk1lYB8DOVoFbdhZlx8ZbeUpbNQ2T\r\n/rj0F/G5AU6d3/hWvg04b3pGrq/FBSjHUvC0QUzejbWkgAzaMnl+Qk5FDWJ7\r\nsibEkabuyuC4Z3xEwqINDwe9/xNNhmrk2+hdQdr/56Zsi+1N3Cybta0n4OYO\r\nxPCN69ZXSkPRX4NzBpB75TNj88Ov4E+ZM3+kAsr6zlxMQdzYRL+Pdf51f+ZX\r\nIG0ORvLMOAdLpbnfu7ChkgvzCzwR4qv+0DmU1AVe9ouItipkGvbmAeM10WMx\r\nBZPW48v7qQ0e5lh06l7zdEdYKmq4EcGZ3uFOcTYTrp34LeHNytvnA/m+7Mxt\r\nMLQiiCDP8clvql0lCv3Sbn+fPbzOlwCjAX1eFr63yhrjIZSoBsJ+Rpbi8g2Q\r\nDxcI8CGe+nUGoJyvTVVbK/ZfbzfegdPaQI10O1i9EWn8Je0AVRIiIdV88cTZ\r\nRVGOPu9tFr07aDXreos5otK/bTxWyTQ6k11MEqu1EyojT6cbAmYUWj+HQJiO\r\nFjOTzYiTTLMaep4iP0SvHTqE7is1q5AOsq4=\r\n=1PLL\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.2.86": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.86",
+			"dependencies": {
+				"@cloudflare/types": "^6.15.1"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-xCUcSz8sy0YvGLmCBBQ57cCKuUE9WBzkZF1J7faelhudGfPfsAv7plbs9MlKwPRVV1oaxnVR7RljxH8AbPU42w==",
+				"shasum": "32d48163e72b2b941240b089274eafb62d388dcc",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.86.tgz",
+				"fileCount": 15,
+				"unpackedSize": 60899,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCVoegLfiTG2gB3a1+TECb+z/qEWl7XFT7SHeOn4RIOzwIgLTaFKThV3aWkVJmLvn4ODt9GASwCZW6tEa09gT8l8XI="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJilPSDACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoINg/+PrB3beNmhRZdXJiTDj8uTw6P+FX8V1uCCEjIQbHL2BuW8mUu\r\niG77Zkv3DFWL9YHF2/IK6CZtqucw3WLzNn6CErjZQ9tmQVmcmM/Rru35pIIG\r\nGyddlD1lNAh70f0G8tFGtsrV161sykDRxbsscVCk6wXxIlKTgkmYMsFKQ8HE\r\n6lcyq8xXIdlUNfG5Vmbh1WtaK4gOS6i1/+H5R20g4WLMVprjukcmFf7KZ74w\r\nbIQ+FB28z2I921sNg3l0rnPkCivTb3Nsp4mVTzpEO+O7EQqMO9TClzD+jK5J\r\nWT99QIJgvj2e+4Z8pilgb8tRxnA396Bjvzes5vFkY/TLENpq57viq5ING6JC\r\nBr8DOLdSDEwb8OFpl5d/5OyxR+WsAJjKGiTwJ7oIzJmmKKg4nEsuzbEo5Yfx\r\n0B8NbQt3mA/gNGy1g5KvmoSrmI9oD0l/Un01ze54S71Rarj7pgnu/B2tUBdg\r\n8Z/8RF4LGCsXqk87I5hq7s9b1esq1P373s3h9L7rXB/dbJ/IZkd0th8Um0ut\r\ngd1p0OYwdjUhq6NmhBNur7ycPMdsWonxXKtQ1LRHBjQh84+xFyKOHBu2chn2\r\nU856oFcUvVhPbpYYX5z8UrQCoIYtlHs4+ICi0++AVKbaaXwAm0jlGPMOOmyJ\r\njSGksgZMWEChrpyDapNl/r2VYBHJ0GkMMhM=\r\n=SFJG\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.2.87": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.87",
+			"dependencies": {
+				"@cloudflare/types": "^6.15.2"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-zFp8eg0QRvqCplN/7w6wkx1/9Zy36OuZuy4LRLZh7oE7JPyanI7A73G5X6XV69F+sQKkz07nGaSIaDqJWG4eDA==",
+				"shasum": "ab1bdb07d14ac7a58f035a9a6d91bca4d6b455c8",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.87.tgz",
+				"fileCount": 15,
+				"unpackedSize": 61149,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIBZc1PLedwQo0YumXwUllCVuRfIA6C852a1+Sxa7qRsIAiBaIr7/su+VSYUmSpCd0e0A+QYQhQHXkRwkAn02pMkAXA=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJin42ZACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmp16hAAnXaoxW5Cjk9lclueChJCUxogfzDnaOB5kM5y5qTRTU/CHDw0\r\nxcmTvdvqRyDWmWBtF0v5RcNUhcuihwZo1xr0awVGPuL5zNYv5f5Zbq9y8eQR\r\nODJBxOm8F7UDNxUpgToPosxd6Bq4siYDUqaPsL9pG9B5fxvorb20mjrYs8sZ\r\nhF07UFJ1Pub8NqJzEGcoMwfv88t+TlCGhcLLW37RfI9kzG6zX+Uu0hYiLXjQ\r\nHTpRnRpzwvIL5I0FaliNP1lyc3V5WHGmJ9YQfHPDHbtV53dJpqPBLnBaF/+i\r\n5AMoMa5FgKGE/+Fq1U19dYO0pnguJRVQP4NgC6LtpE+2OZJfsqLGzxVl0cVc\r\nQ4vmltJPXH1d5u3Au5dTHUWhIb3M0Vn5i/oZIFS0tv9Fw5IFLhYeQBp+Iqxx\r\nKp9ELW+pghF1Usa1AHQkJcSKeMLNxNUo/OlZUEFrr2MS52+oz3xhNRurho1P\r\n9qrPnP9AJx1noal2MWWpdDzqzVQ5py2REMs1Wkr3mYxcc2oUtvYkkvErkLQy\r\nBnz08AdJoWzmn4GTSdWiQkGIl2ko9/yz1RE2B8mG8r1uoUBsKzpYgtyKsPNt\r\n3UoyC5Jr0j80VXBvUp1jofcD3LsYuTjjTmOIzkaIOMNVNmwOEDb+2R8O6qZD\r\nsEgGcv5aoJy5iNo1vLquvnjKiUWy13n8t8U=\r\n=h3/X\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.2.88": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.88",
+			"dependencies": {
+				"@cloudflare/types": "^6.15.3"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-Hji4le6FPeh6LHGpZ1KzmgoqwI9vNAfaofHju+7W1Dzmu8PlIAf3Kv9lz3oQABxUIxeqK27haZvZes8tID8s3g==",
+				"shasum": "3a8f1e6c066579fc7e6914160aeb877a921916c1",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.88.tgz",
+				"fileCount": 15,
+				"unpackedSize": 61391,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCQgRrDtJc12K3o4n6ofxbpr4PT7rXfTR2X76nX+qgWjwIgLsj1fsNhNotGMF7u9ynBFVrNKYTuwaE8/trRTG0brWk="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJin54JACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrgZxAAiI7gFIaoEl+t3O2zZQz6MpyoOoX/rEeCLw6Px5ejSRP2KuWB\r\nOaU6E4t+dlYAt1UjhtgHC6t3si0QF5caDzCHhtflyFisqogkpam2w7lYMZDB\r\ndVQUqk7RZSn30NdDq9ZWmXuEFtljhxFgZUwg8LAKTqAtkxjcvBabKkcadwfQ\r\n8bQgd8emBSqUze+Lb+6v8swg3bx9dL2P9McDetW1yUJTPmDC7q+VjvoHhUDX\r\nkRQmJU1X7IwCRc0WzKDPdfk+1S2WEt4F6jEy+YGRaAJDhY+46QoGxvpEa2OC\r\n03a56VIhmqLf4FSu0167kZYnbAFGfcsTZC2z84kBwLncCgEgQjvaTiB+xLWJ\r\n9rCJwTxl+bpDzC3xoguIXh9p6xKxR7xCNlFBWvfZ/FiFP+Xc9XeAZ32Sj4BZ\r\nHD4YrNLCyMe0apOJxMWx86K8XC6j2c/FTQYxI4UC/B+U4pvU2aN+9fMHy94k\r\nVnrSHNLPsAMwI7Ev09DXDUplo8csAqwprMdTg5Q8cbNucbrvqhRqpsHqJPO9\r\nq/f7sShhRLOTXQpKHE5HMigxrAhM3+VkW++iahSAh6WvLLKLxo72PfBuABz1\r\nlD6yIWZzuI4jj744tQpq2jsfExMA1CZ//ISj4MDqm0Ei6mAeC+Pl4ar+FL/9\r\nGPsI0oViMJ3HyFBq+Wfl3ycUVsvPT8Ief40=\r\n=l2wl\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.2.89": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.89",
+			"dependencies": {
+				"@cloudflare/types": "^6.15.4"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-po4DhR8YsP1Oxt7VMh/PFJcWvL4PntGB1Btir4NzbJw7XivF0IbEBW++sheaGOdX0xGQqjR8PPU3RkEdFeMGKQ==",
+				"shasum": "022522835391229a725f6124e12e3267e35483ab",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.89.tgz",
+				"fileCount": 15,
+				"unpackedSize": 61633,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDJ/BvMdhHtCY7T6SL37qsoVYmISRw3CCWxH1TD/uN+rQIgEFw5LsFUdqn8ugXJETmjJusZN+r8YvXQ9uHzVJPjE3E="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJin6hYACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmr18A//dKVHXK+9qLaw6fxiRAQKuGQpNWtmKPhvBEz6VLc8Eawi1Bhi\r\nhpgz4Xh84OsuM/u+L7cR7cFcQiDqCYtGiSVa0/q2vYjpXHCzpDgxcigJSGrm\r\niGgTlM0h10I+/zoc820lRf3VQyo3e2O1MIwiSuXgFJkSWZAnXkWfFpyIMM1E\r\nrRoQ8JQd+SqwTM0J5R6UzEwu9VEBu0dXvZwd+EB5k83VsXoVIA8AoOeou1fG\r\nhhcWFYy9QqKjK3ILrn3yV4M/NdYqLWUI81Irxo4i2k5MgLi5+x0GxfMhbi/B\r\nQflGNbr8Nj3Jgg6rrIpEihFjaDzGKas7d9ylyFo+u8QTfZEoXBW0xQycCZ7C\r\nUvBlNRfPVMnz8ql0P1tDSoS3eJYGqDRPISbO5wnSGM55NsvCf6YhYcZQKHgT\r\nAH/QTFZylLiVNAOU9wLmkh6OFSE3deSP5byM1JIQ/V3uvixHCFARKq02g6Nv\r\nHUJeowbr0N9hnoidxETDOTCwohg8HuV6yQDLgqZ9iMAZ+z6E2AHfGW1nyC4T\r\nlLjzwfdMrmz8RBOO+h1DxQS5UMEEgRiu9il0oQEFQU/LWRj4wOINaLKQ42gt\r\nVKazgC39dmHAeVtgS5p2dP4zbqn7+dHBuVq/lMRE7FqDVNraS/lCqOdIDzQw\r\n0V5hotFjSsn9102H7vQaL771fjD1sYG8+u8=\r\n=YJnd\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.2.90": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.90",
+			"dependencies": {
+				"@cloudflare/types": "^6.15.5"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-VYZIv85PehMMb5Fx9na1tpkfrd2KbiY0ho+N5Cs7moPFzIwHVde/x46jY51rxdqSjzFidoflO0hk8Z6V62L3Ug==",
+				"shasum": "72150d62301ee3d32f9e928a821c6869a99508db",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.90.tgz",
+				"fileCount": 15,
+				"unpackedSize": 61971,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDvMGb6JyZZKZ/o5NMLzQQNVxRfMMO5M3hn3x53/5lORgIgLjb1ugoULMYwbY9rCY4PTB1RVRRpOmbc8Zaf4CNEINY="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiqKT/ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoxAhAApJ94W6K6608kIuMq9t8DQGIPn0n2oajNLzOZVdhsyZ+2zgHA\r\nl9XmRXzHr4KjBDIgs01hHvg2r5QSQK6Sm9+MBX9vHOvgAImZU1etoFP1Gcpr\r\nKhjpRdN/j0KLRmvZUtFD8b6TxLhpPjmprgZNObyAZol6GxdFsFZBxVYdRTDH\r\nWUhu2nQjyS4gTySsGPV7yItwqEcEM3Jad5fwJtS1bNPG7+HkBBALON0lCRuH\r\nCeVOh3rSH5fvbvaViArNcx3seoU4mfzK/fvfjCOWC09m149/K10iXuOsJ4pF\r\n/VPICFAaX/nSChxYfXhBWLQstCxTb1ii3lYC7N1C9yXuCGklMo2KLGDYaXxt\r\nB5bTCoIlMuEOCqOsnT+4bW/nPJjJ+xoX4b0MBRta579fazMm/b5KrDtyoRMo\r\ngBoijOZWoRA4MYfPBGsTsj3EENjiBu6GFvNwH/JqE93DP5kCY6izabZPSJ/4\r\npxCmKFDEpgcm1KlhQRSMuxbng2MUKaM7FdvJgSfZim/wMwk4PiY1tUtevlQS\r\nYfB6tuvxfiVXOxNxygl0viS9Qi8nJ0SUVdeEtVEgwNcLCD/gBNKJfmzlPh8m\r\nwBj3zOHSZMSTMh+gWpNo7pmkCCDtS54OUKWCMl+5G9SWaEju4gf+YaRfXBe3\r\nTWBhrd+hAIM3ooTrWgYsMGX/kS0/p2AEfoE=\r\n=1FIF\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.2.91": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.91",
+			"dependencies": {
+				"@cloudflare/types": "^6.15.6"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-o1yo45oCCCBDQHYU5Nkll3dI29mDxAA8oa0fcCsJ8ZupbAtUot34YtPs+HglcXO8cZBV5xmiygbBfTdII+MH1A==",
+				"shasum": "aa08110fee3401eaee2aa8cbc26afd52bec7ac8c",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.91.tgz",
+				"fileCount": 15,
+				"unpackedSize": 62213,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQD3Hlc9wTY4cTt9ednAOHVqitJG4W8h++3MSVvBEROIhAIhAMpoe2iAvPENztkrenUo6FLEdK3zv6gYwaxVNKNzD15x"
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiqK83ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoHJA/+IEC04ZVXhHZCSE5VJktnDUKMVNWOubhsaxvU0QAlDQywrti9\r\nk0/5yk4+0ERlw8oRafXNMlq3GV2vENiVQobpdAOtq9cKV720nQIHY7P3VwEf\r\neHYVGco/fe99wPT4QLEhB9S6vd0MPDc/V8V5hfz8IBj/R/40KB5HBchr1TYN\r\nKu1QYtuPu+5luAURntLPQeO0HIcI47XKIv5AhfCTbapICt5fdaD4qNvM/BFx\r\n8PRIZ97iHnBdqKqg7vWSC/m979135oYP/UH0IscHmzW8L0u9eeaFLWJzJN8H\r\na2M3tdRFUVAJ/3EJVcrc7puFkA+uweRDuNp9bpRL6cBInSNWpPQP7mw4J12z\r\nrIBA+fOe5VNPIx+VAm4lP2RDQD8mI5iVc2AEUaVW+uErFRB5vjx3l0Zfb3QO\r\n/WDkyxQl5Pswznt/XpDl0XqNeOV6p6ISHFOKBC11o4Fq0284eC5DkI/P9aiI\r\nppJUrxoHElo9EnVmyFHtPhTs27r1PCCiPNs0XbBYjINIKCFe0/12/fTZhVFX\r\nBoymgOQXZ2S8NKsKyZzYpefbS+lacP02SSDDf6Ki3GY8K78T+2xokz2Wg9KY\r\nn17xU/w030lSagv6uxPPNS0tYFc84j5SCiwejepinSkGmPDRlFGZXf4VZBB4\r\nvXjElrxHE7oSyddUreIS2PG4nFzuLB1CKNQ=\r\n=acfL\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.2.92": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.92",
+			"dependencies": {
+				"@cloudflare/types": "^6.15.7"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-TAgnVyqdDbiLpQpUebxg3w9HUNaXB4wFJcGI0BPwtKA4CeYwWbd9xHqhKaMPcq4gRclNnhlZRmDzpEDXdxKfNw==",
+				"shasum": "2ae4eb04e34d9c92a0810a80643d4e954324b2b9",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.92.tgz",
+				"fileCount": 15,
+				"unpackedSize": 62455,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCpcXzLsf8OiMFurW7GweS2ypK1IE7NHsnDEyIkMGYrpQIhAPJNoEs3IM5a5aQ7S6AnmjuhN8XO3KfFzW56palsNeS3"
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJirI2yACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqjwQ//VaTwDpfeVpnS6OSBgrYbWGYHw9/Bc1M3H+PNCJONQy+3NyQg\r\nr9hWeaXQ+Coea3HbgIpC2k8/NEUiPg4+eIz+GMX1wEWP8NV50HdRaz1tvw8z\r\nn4TAm42b3gstCt6DMvDM/dHH7a2OGrRhKcIxBf2pEpK5O1FE8b7iJjTkaUyh\r\nCgk3sql1+wetdGGo+55B/BNfBJFLpSrdW2P/8CGI6uqSDZdAw0m5r0BlCZTU\r\n0E1imGCLQUQli4uf1Lw0GX/unx61wZGB2o6YveAJB9CaOrEfTWqwOatgj29m\r\nOBWdet/8KVQqnug4+XDdB+d4zCPzIZYoOGK+WmqtmdQHinsmFV1ZpIEBTqHd\r\nno0fwqxtCNn053kGHqoK7zz6IKphvCo3vueCtdzpSsNxQ/+kF6dhKij24dIL\r\ngzEBf32Qn/uOZVVnC9b6fcL7kMLzAU4UU8RXSYMe0mE+lrq0SVXLDmUl7Rjb\r\n/p9avY5cB4UBzxTkJH3Xyk67Gu7X5KNw7Lpfi9cmuW8CEif77BS9UmEMytoJ\r\nb2X30Gejnx+p4lOZtQ8+3e/I/2ovktcuv1FaEr/9RFfn0lhqz/epwgdPJ8xQ\r\nl9jvkmer25Ka+tMgXk4emDtiM/LoaxcLeElBJz6kAGeA4Evua8+jZ8RHp3Qt\r\n92d+o4apqXYfB3wXtmOX3YaW9RXk1AwRvYI=\r\n=dVOq\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.2.93": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.93",
+			"dependencies": {
+				"@cloudflare/types": "^6.15.8"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-WBO94NihYNopVHMJXAUyTNDr/4RvHoNkod6mNTGNm2NfnbbmPhBnymvyVGXGvQ6ImGig6ljPYtDSQmDXhtzq3w==",
+				"shasum": "7de1b1db36b506faa9041bcd86ed969e74c72280",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.93.tgz",
+				"fileCount": 15,
+				"unpackedSize": 62697,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIBhizLWbXUxdiJRQ5N3jiU94SxcLKAZgkqKRBiOKvZT8AiEAg4O6/LhqdfjRoSmh29CFvQawVJDT8YHMgc6E83uXgeY="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJisM+/ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqkRBAAgOWIxGtMCYZnCjkoZYw9K742BOmgEkfpocXwcDOaUztdVNrV\r\nR0buE6fUxUQu8bEd9L5K1WgvK/Ccz3CT+ieoDqfAlVrfPuXutoQrZAquE330\r\nk+pld9PuV78hlys1D4reeUTWjHqDxVpZmN4HugvUJ5YetlLZU7CaFR6JrfQd\r\nvfKnwLsRDyvRsOdbQQ5tG6wU0gIe/dBo7flzcT/Dm0uZIvUFA7D3WM+DLFVr\r\n6h5O6MQrZOG1E/lPZhLBtb4IjR/BCm0OdDLVKSnB9DdwO4Jk6y7PqmILQhqS\r\nIIIZes98EgAHx/sM0/eJE13T5FSbFfRGwGqpYR7eD2hGzyuRgogQ7IqfjMbt\r\nqx/8QtybxzlyXNGh1O2BKuz8547Pi2x07qob2Ehn06XX/G1Ffz5Eb5KZMF7K\r\njeqOA5fB7EwD+Zcxaqc2rnrIW1upSDOK+LPE+pIuvuVumYO5Hz009TJHBkZm\r\n40xm59OHq6GvLYPWCSAqe0M324CdnhcLKAD8ediL0JTa8XuRg+SG9b+9RIWE\r\nM7d0wzRkrNdDe3+jo5U/AXQL1gZJyz4c2s+UYMoIpb99UtCgJoUnTj3ABKS2\r\nR1iAEub01Zbg1Yca6QdCrp/UNE3ZZX+++ujZGC1vY1FImLE5ch2IBW0e4JCt\r\nub8zCTI8K8VDWkgHlb0bQ3+XqIAJEtIQ3GM=\r\n=rV0x\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.2.94": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.94",
+			"dependencies": {
+				"@cloudflare/types": "^6.15.9"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-hD+HdHCG8BkHBOv1gkFU1KXq52Pj9sMlaUUEHR7qsWZ7pOAr8KoVxVXHtcBmq2KQD1OHULPnUgRWfe0beVU7eg==",
+				"shasum": "2f59ceb0078c7f48a05cce85dbfc602e3205e268",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.94.tgz",
+				"fileCount": 15,
+				"unpackedSize": 62939,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCeA4uudeB6P+OsqTtNVNWNCqKsStXv/SvSj+bijWf0vAIhAOHGidvEe45eE1vdijlXBOjmG1qm8WA+4MaDSkUUnGOQ"
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJisc+EACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrNRA//QDUNThrIa1wch/ij1U1WlDeNCCjLTZGxpN3V/VbLN4uxlR94\r\nFjlQ9/imkj9/XLssuVVg7jKwSFDi7ALpahv9UjpnZ9t1cPzso0I6yIcwKasS\r\nSAKmwoJo59UAuwO4uSV/VotUWQWIkSITN9a3J0UeAvblm91VSGWXUEhD7xF5\r\nTsh9CqjGEGLXnZ/wyM4zn0bQ08PhTzL7TUWcXfu8oCZlNW1h88CUq70UfqeP\r\nIUR5WwXHnlzusCNNfVAZRLMtqRF1auG4dR11w7dyftBcUZQVQ8FRo4530Nkl\r\nGXOmxYD61nSME276WjBJUJW65J384cXbhyBwZE1dY+XGigOzRkvV93+A91oS\r\nv4t50MJZfl5S6EbNMldoLkKF17CnraoKCHv1COro5+Mmny/fYQaVAI5lTYRK\r\nedRasv2OsaqYBwR5malBNgsMwjNdOOiXmA9IJLHscQSMSVCxmX3CQTrh/fRV\r\nD/OdTYAZ3PkmIe7m//Qxzm+KTBMXjT/dE6bjrjZloApB22rG4BwUtUNIMlA+\r\nnXrUMi4kK61L6rLtsM8xxhb3Ngh/+bS3Y3IHqlVxRPtrYpXMi0wNCpwPDC3W\r\nbbPkZnzGRd1RJ9xneTZpA/78rcqoxcdMoYsF/46i3laH9Bvfb5R+354hvhsZ\r\nLUpBN90hc0jPOpRWKCJFUNZj/3eGL4omNQ8=\r\n=hMLK\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.2.95": {
+			"name": "@cloudflare/util-billing-calculator",
+			"version": "1.2.95",
+			"dependencies": {
+				"@cloudflare/types": "^6.15.10"
+			},
+			"devDependencies": {
+				"lodash-es": "^4.17.11"
+			},
+			"dist": {
+				"integrity": "sha512-Uknk5f5r51uT7olmBd49QbJ/bdUHUkx/IGnQtJVTsBg/IPWkjb3Z9AkptGLCuFnhPPnx1fyUiQfGbQ2ziTAyEQ==",
+				"shasum": "2dbfcc216a42fc8e6565e6bebbfcb7c21947596e",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-billing-calculator/-/util-billing-calculator-1.2.95.tgz",
+				"fileCount": 15,
+				"unpackedSize": 63182,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQD84wbeAJn2wcRv5bF4bcT7IuL6Xy30cBCR3e2084r6dwIgSyzuaUKmdsWEKeh4iGD24a6h7RRRyL6QSgZIRHZF38g="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJisdrAACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqH5w/8DgBzBdtdKriVY5Pjgsr4Hd4qEjeu7oHS7h5vzO6ng/ExPysc\r\nxIqV5D/aMy4r/6sqT4lt9byDobEKjfCIJDK4flSfigb0utYuiT1j0VKyNnMd\r\nvcwb0gHeAARADeiTvmIHKbLpzBE/s0PDGAIh8jIeTMkB266HBulVju0Y6Xn/\r\nc1f74G1U7nYcK2zbvObrxSuDTsZ52pJ1hSkIkEA8mF+bV9HDu0zQ2VjbqKIa\r\nbOs60BVFoaQzP60TRqMsF751FG/iVbs3xAOTzWa2e+6zttbhFVbyibhCSOC0\r\n2NYHFLOXURL7miK4z4pqPKX77dkrEvOZLF6x+aYANNOucmG3qrR4MiADJr0k\r\nEudvIhe6jrU69oHSZ9rpdYjNPWYWHzWf+DIYuxpAoRD3OZegBHbKMEwqlaRZ\r\n7Hk3KEwtCwwUN9UcDgXazYybpPIvb30I9nZcO4HWX7fopbEwE/ODNuQOWWz6\r\nE/rC+LEFRFDm9Ic4siTFbG0rQITbeszQwNe9fxga8kLBrtfFnqvcsys0bxrU\r\npC4uhJY0nGySPz2F1uV2kmHHRWONmrIFL9X+eJgF/6hwyug4zZZ0IKKoFzNj\r\n+CR9BQ8Up0o+54tluObchbvRdrvNDXWGY6KGXwbXUGIt6j+ZyPif/7mrAZLK\r\nkontt6kPQpxjADUWs1RhPhVdVFb3gr/NRBg=\r\n=/j3u\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		}
+	},
+	"modified": "2022-06-21T16:57:40.822Z",
+	"_cached": false,
+	"_contentLength": 160207
+}

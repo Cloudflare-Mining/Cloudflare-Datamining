@@ -1,0 +1,59 @@
+{
+	"name": "@cloudflare/util-mock-graphql",
+	"dist-tags": {
+		"latest": "1.0.4"
+	},
+	"versions": {
+		"1.0.2": {
+			"name": "@cloudflare/util-mock-graphql",
+			"version": "1.0.2",
+			"dependencies": {
+				"apollo-cache-inmemory": "^1.6.5",
+				"apollo-client": "^2.6.8",
+				"apollo-link-http": "^1.5.16",
+				"md5": "^2.2.1"
+			},
+			"dist": {
+				"integrity": "sha512-TI6KETgkyPqF9nLw2M3b1VvQqy3Kqjv/95siKfVuze0bBm3riCNv4DzSdUgdEzLLbfVQMLsGSLEBWf4Ypc80Mg==",
+				"shasum": "32f8a8c509e9b23a6f37525da107cac6dccbca2e",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-mock-graphql/-/util-mock-graphql-1.0.2.tgz",
+				"fileCount": 7,
+				"unpackedSize": 7050,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJeXW1jCRA9TVsSAnZWagAARlgP/0GReBvkKc6TpfbLkgU7\nOlqEEJp6MV4BWQoyr3m/BXD6ajr3Z/go3VK6GoimHNmmbYVw5M7FzhDPQKxH\nHdNYHFKoGQ2a98MJjEBYJH/sOCyOC/sIu/eQNh1mfFw2gq4s511tjvD2/Axq\nZYyWCyREy3zWxdpnZoAn97mNiCw13FSIPnvGqItqMgks3N6d7n5vkeFnsslB\nC91nWlMCB3MtEgXLnTC1pQ7+eIcUoz063RRqRh15BmTtLBJFy05jLqScFjto\nMejBcWr17d4+kQP1rAlBgP0QnGZreZC0UFkehqe+h90q9kkzYU9f8AEI1bGh\nlCR34MbIZ/6gSrNMbhkplSb6TxeHwR+8NkcdKTWerJDtLfH6tASgAnKcLaaR\nLoFEzE7Wo/2LKN2weIIsx/rpx3Rvps/30OWQQikpwRiX/7WtcQ9U3pWmY3kk\nZqu4+uez+nktrT9ddqhKATHlC6u199lHnsVsk+gq5zPCKsgyTdKREJaoUiZU\n3i1XFPNsyGVxVBPhkUO7P5NOaNbts65GQNND6faY7c2pyu7LEODwtRWvfgyM\nHj2Iq+xnirHzXwkiaddBK1JY2vJSZy+rqp2Rj+vRWZdGHquvh3CQzJfE4IWt\ncTj2ALeXDMvuimuLgzuPG6CcYTAsz6hhrwODPMrP1D8BACFClhsNlLbKR7da\nake0\r\n=KXCC\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDtNJ9w1h7oBhgzWQn/NVH4k0K0atXm33TUBks0n3N5hQIgCbA0YBtScXGTvHInQObdU9xaC89FHGPNBrfjENSGQ68="
+					}
+				]
+			}
+		},
+		"1.0.4": {
+			"name": "@cloudflare/util-mock-graphql",
+			"version": "1.0.4",
+			"dependencies": {
+				"apollo-cache-inmemory": "^1.6.5",
+				"apollo-client": "^2.6.8",
+				"apollo-link-http": "^1.5.16",
+				"md5": "^2.2.1"
+			},
+			"dist": {
+				"integrity": "sha512-N8i1Xg9flQDWan9JaH8+9AEYxjaRYN2cdOh94TBQqV2TwEb87S1ZidF7P1VPgkD4805LtPJL3W23zMqo7ya1Ag==",
+				"shasum": "a95d46baedcc6fd950bb9dcd9843219a109dce8d",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-mock-graphql/-/util-mock-graphql-1.0.4.tgz",
+				"fileCount": 9,
+				"unpackedSize": 7623,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJepySJCRA9TVsSAnZWagAA9K8P/Rtk+HiIv8ZAmrsQdnOt\nDu2lEQr4olwKWr3jSNgRzoU/jzF5D3anhj0kurn8H/mmFETirJNwhSRRh+pN\nHXiBoA160dkuWi3N4gWccGW0NrExo7Ue1D/bu6cT1icyYNr/P9L+AkeZg7IY\nh7aMeI2rJM4g0z3RDLD+4bf2bNDo89FVflfW2PDqeP6dW+/wDmSIy6W5ee+b\nmiXuEhq1/sNvpbBz8Fvw8VgVLUsgxZ/qaUgpuMqfJl9VTJicgP5DmedeNL6y\nTIW1Y6xb3fdItrQsJ3aioV28eK5KQsF5NEgvMaAoIYlQGbk+bvIS8hO9QGxF\nGM+zaBVvluYAryikHQul+fAzIufcPsEAQPyvzBbLcgRVq0TSBdEywYDAiA+u\nyaMmzPx3zeCiwsJcNq20EkKMg+kO2Z3P052eDRq5LCoQW1Gy95nLG9Le4oPl\nGYR6c5kgCGjxz2ThPZmw5/trzjp3ZkMAx/coDuY+vG2C9Xgfu7q3vom+E6z4\noRyfdZMHEpMpLjvbrRBriCzNhzzkJcFntqA+kjiPkyaYnaqtOEwonn+4xV2y\n+OB0huJN3B07xal1C5kZQua7Ae+XYaOcBz36w0CDxPSId76YKx227rhT1/j+\nHooCZGV5ATOiYL2x2PH0V/Y6AW0pAx3SltBeONSlpOZN0gRM3So/hF84Xm6L\nzaua\r\n=Frv1\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCaYchF2a4Ll/sDjz7WBfrq1UcWx2l8H5W3mRZOzXDJrQIgUIswiadFISLLUcg9wi/LjfMSdsKsqDMPuQ1Vi0juB2I="
+					}
+				]
+			}
+		}
+	},
+	"modified": "2022-06-21T16:57:48.182Z",
+	"_cached": false,
+	"_contentLength": 3292
+}
