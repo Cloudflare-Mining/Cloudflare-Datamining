@@ -18,7 +18,7 @@ const wantedKeys = [
 	"fork",
 	"url",
 	"created_at",
-	"updated_at",
+	// "updated_at", // This gets updated a lot, when _anything_ in the repo changes, so doesn't yield very useful information
 	"pushed_at",
 	"homepage",
 	"archived",
