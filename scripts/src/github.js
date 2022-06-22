@@ -19,7 +19,7 @@ const wantedKeys = [
 	"url",
 	"created_at",
 	// "updated_at", // This gets updated a lot, when _anything_ in the repo changes, so doesn't yield very useful information
-	"pushed_at",
+	// "pushed_at", // Also not that useful and creates a lot of noise
 	"homepage",
 	"archived",
 	"disabled",
