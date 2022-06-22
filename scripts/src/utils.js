@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/no-await-expression-member */
 import path from 'path';
 import process from 'process';
 import fetch from 'node-fetch';
@@ -26,6 +27,7 @@ export async function tryAndPush(files, commitMessage, webhookUsername, webhookM
 		return;
 	}
 	try{
+		const prevCommit = (await git.log({maxCount: 1})).latest;
 		const result = await git.status();
 		if(result.files.length === 0){
 			console.log('No changes to commit');
@@ -35,10 +37,11 @@ export async function tryAndPush(files, commitMessage, webhookUsername, webhookM
 		await git.add(files);
 		await git.commit(commitMessage);
 		await git.push('origin', 'main');
-		// eslint-disable-next-line unicorn/no-await-expression-member
 		const commit = (await git.log({maxCount: 1})).latest;
-		const commitUrl = `https://github.com/Cherry/Cloudflare-NPM-Datamining/commit/${commit.hash}`;
-		await sendToDiscord(webhookUsername, `[${webhookMessage}](${commitUrl})`);
+		if(commit.hash !== prevCommit.hash){
+			const commitUrl = `https://github.com/Cherry/Cloudflare-NPM-Datamining/commit/${commit.hash}`;
+			await sendToDiscord(webhookUsername, `[${webhookMessage}](${commitUrl})`);
+		}
 	}catch(err){
 		console.error(err);
 	}
