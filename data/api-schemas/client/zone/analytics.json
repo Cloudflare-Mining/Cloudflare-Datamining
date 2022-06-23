@@ -1,0 +1,710 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/analytics.json",
+	"title": "Zone Analytics",
+	"description": "Analytics data for a zone",
+	"cfDeprecations": {
+		"zone_analytics_deprecation": {
+			"id": "zone_analytics_deprecation",
+			"description": "Please use the new GraphQL Analytics API instead: https://developers.cloudflare.com/analytics/graphql-api/. It provides equivalent data and more features, including the ability to select only the metrics you need. Migration guide: https://developers.cloudflare.com/analytics/migration-guides/zone-analytics/.",
+			"eol": "2021-03-01",
+			"display": true
+		}
+	},
+	"type": "object",
+	"links": [
+		{
+			"title": "Dashboard",
+			"description": "The dashboard view provides both totals and timeseries data for the given zone and time period across the entire Cloudflare network.",
+			"rel": "tag:cloudflare.com,2017:analytics-dashboard",
+			"href": "zones/{#/definitions/zone_identifier}/analytics/dashboard",
+			"method": "GET",
+			"cfOwnership": "data",
+			"cfDeprecation": {
+				"id": "zone_analytics_deprecation",
+				"description": "Please use the new GraphQL Analytics API instead: https://developers.cloudflare.com/analytics/graphql-api/. It provides equivalent data and more features, including the ability to select only the metrics you need. Migration guide: https://developers.cloudflare.com/analytics/migration-guides/zone-analytics/.",
+				"eol": "2021-03-01",
+				"display": true
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#analytics:read"
+				]
+			},
+			"html_id": "zone-analytics-dashboard",
+			"uri": "zones/:zone_identifier/analytics/dashboard",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/analytics/dashboard?since=2015-01-01T12:23:00Z&until=2015-01-02T12:23:00Z&continuous=true\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"since": {
+						"type": [
+							"string",
+							"integer"
+						],
+						"example": "\"2015-01-01T12:23:00Z\"",
+						"description": "The (inclusive) beginning of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. At this point in time, it cannot exceed a time in the past greater than one year.\n\nRanges that the Cloudflare web application provides will provide the following period length for each point:\n- Last 60 minutes (from -59 to -1): 1 minute resolution\n- Last 7 hours (from -419 to -60): 15 minutes resolution\n- Last 15 hours (from -899 to -420): 30 minutes resolution\n- Last 72 hours (from -4320 to -900): 1 hour resolution\n- Older than 3 days (-525600 to -4320): 1 day resolution",
+						"default": -10080
+					},
+					"until": {
+						"type": [
+							"string",
+							"integer"
+						],
+						"example": "\"2015-01-02T12:23:00Z\"",
+						"description": "The (exclusive) end of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. If omitted, the time of the request is used.",
+						"default": 0
+					},
+					"continuous": {
+						"type": "boolean",
+						"example": "true",
+						"description": "When set to true, the API will move the requested time window backward, until it finds a region with completely aggregated data.\n\nThe API response _may not represent the requested time window_.",
+						"default": true
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"since",
+					"until",
+					"continuous"
+				],
+				"objects": [],
+				"example": "{\n  \"since\": \"2015-01-01T12:23:00Z\",\n  \"until\": \"2015-01-02T12:23:00Z\",\n  \"continuous\": true\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"totals\": {\n      \"since\": \"2015-01-01T12:23:00Z\",\n      \"until\": \"2015-01-02T12:23:00Z\",\n      \"requests\": {\n        \"all\": 1234085328,\n        \"cached\": 1234085328,\n        \"uncached\": 13876154,\n        \"content_type\": {\n          \"css\": 15343,\n          \"html\": 1234213,\n          \"javascript\": 318236,\n          \"gif\": 23178,\n          \"jpeg\": 1982048\n        },\n        \"country\": {\n          \"US\": 4181364,\n          \"AG\": 37298,\n          \"GI\": 293846\n        },\n        \"ssl\": {\n          \"encrypted\": 12978361,\n          \"unencrypted\": 781263\n        },\n        \"ssl_protocols\": {\n          \"TLSv1\": 398232,\n          \"TLSv1.1\": 12532236,\n          \"TLSv1.2\": 2447136,\n          \"TLSv1.3\": 10483332,\n          \"none\": 781263\n        },\n        \"http_status\": {\n          \"200\": 13496983,\n          \"301\": 283,\n          \"400\": 187936,\n          \"402\": 1828,\n          \"404\": 1293\n        }\n      },\n      \"bandwidth\": {\n        \"all\": 213867451,\n        \"cached\": 113205063,\n        \"uncached\": 113205063,\n        \"content_type\": {\n          \"css\": 237421,\n          \"html\": 1231290,\n          \"javascript\": 123245,\n          \"gif\": 1234242,\n          \"jpeg\": 784278\n        },\n        \"country\": {\n          \"US\": 123145433,\n          \"AG\": 2342483,\n          \"GI\": 984753\n        },\n        \"ssl\": {\n          \"encrypted\": 37592942,\n          \"unencrypted\": 237654192\n        },\n        \"ssl_protocols\": {\n          \"TLSv1\": 398232,\n          \"TLSv1.1\": 12532236,\n          \"TLSv1.2\": 2447136,\n          \"TLSv1.3\": 10483332,\n          \"none\": 781263\n        }\n      },\n      \"threats\": {\n        \"all\": 23423873,\n        \"country\": {\n          \"US\": 123,\n          \"CN\": 523423,\n          \"AU\": 91\n        },\n        \"type\": {\n          \"user.ban.ip\": 123,\n          \"hot.ban.unknown\": 5324,\n          \"macro.chl.captchaErr\": 1341,\n          \"macro.chl.jschlErr\": 5323\n        }\n      },\n      \"pageviews\": {\n        \"all\": 5724723,\n        \"search_engine\": {\n          \"googlebot\": 35272,\n          \"pingdom\": 13435,\n          \"bingbot\": 5372,\n          \"baidubot\": 1345\n        }\n      },\n      \"uniques\": {\n        \"all\": 12343\n      }\n    },\n    \"timeseries\": [\n      {\n        \"since\": \"2015-01-01T12:23:00Z\",\n        \"until\": \"2015-01-02T12:23:00Z\",\n        \"requests\": {\n          \"all\": 1234085328,\n          \"cached\": 1234085328,\n          \"uncached\": 13876154,\n          \"content_type\": {\n            \"css\": 15343,\n            \"html\": 1234213,\n            \"javascript\": 318236,\n            \"gif\": 23178,\n            \"jpeg\": 1982048\n          },\n          \"country\": {\n            \"US\": 4181364,\n            \"AG\": 37298,\n            \"GI\": 293846\n          },\n          \"ssl\": {\n            \"encrypted\": 12978361,\n            \"unencrypted\": 781263\n          },\n          \"ssl_protocols\": {\n            \"TLSv1\": 398232,\n            \"TLSv1.1\": 12532236,\n            \"TLSv1.2\": 2447136,\n            \"TLSv1.3\": 10483332,\n            \"none\": 781263\n          },\n          \"http_status\": {\n            \"200\": 13496983,\n            \"301\": 283,\n            \"400\": 187936,\n            \"402\": 1828,\n            \"404\": 1293\n          }\n        },\n        \"bandwidth\": {\n          \"all\": 213867451,\n          \"cached\": 113205063,\n          \"uncached\": 113205063,\n          \"content_type\": {\n            \"css\": 237421,\n            \"html\": 1231290,\n            \"javascript\": 123245,\n            \"gif\": 1234242,\n            \"jpeg\": 784278\n          },\n          \"country\": {\n            \"US\": 123145433,\n            \"AG\": 2342483,\n            \"GI\": 984753\n          },\n          \"ssl\": {\n            \"encrypted\": 37592942,\n            \"unencrypted\": 237654192\n          },\n          \"ssl_protocols\": {\n            \"TLSv1\": 398232,\n            \"TLSv1.1\": 12532236,\n            \"TLSv1.2\": 2447136,\n            \"TLSv1.3\": 10483332,\n            \"none\": 781263\n          }\n        },\n        \"threats\": {\n          \"all\": 23423873,\n          \"country\": {\n            \"US\": 123,\n            \"CN\": 523423,\n            \"AU\": 91\n          },\n          \"type\": {\n            \"user.ban.ip\": 123,\n            \"hot.ban.unknown\": 5324,\n            \"macro.chl.captchaErr\": 1341,\n            \"macro.chl.jschlErr\": 5323\n          }\n        },\n        \"pageviews\": {\n          \"all\": 5724723,\n          \"search_engine\": {\n            \"googlebot\": 35272,\n            \"pingdom\": 13435,\n            \"bingbot\": 5372,\n            \"baidubot\": 1345\n          }\n        },\n        \"uniques\": {\n          \"all\": 12343\n        }\n      }\n    ]\n  },\n  \"query\": {\n    \"since\": \"2015-01-01T12:23:00Z\",\n    \"until\": \"2015-01-02T12:23:00Z\",\n    \"time_delta\": 60\n  }\n}"
+		},
+		{
+			"title": "Analytics by Co-locations",
+			"description": "This view provides a breakdown of analytics data by datacenter. Note: This is available to Enterprise customers only.",
+			"rel": "tag:cloudflare.com,2017:analytics-by-colo",
+			"href": "zones/{#/definitions/zone_identifier}/analytics/colos",
+			"method": "GET",
+			"cfOwnership": "data",
+			"cfDeprecation": {
+				"id": "zone_analytics_deprecation",
+				"description": "Please use the new GraphQL Analytics API instead: https://developers.cloudflare.com/analytics/graphql-api/. It provides equivalent data and more features, including the ability to select only the metrics you need. Migration guide: https://developers.cloudflare.com/analytics/migration-guides/zone-analytics/.",
+				"eol": "2021-03-01",
+				"display": true
+			},
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#analytics:read"
+				]
+			},
+			"html_id": "zone-analytics-analytics-by-co-locations",
+			"uri": "zones/:zone_identifier/analytics/colos",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/analytics/colos?since=2015-01-01T12:23:00Z&until=2015-01-02T12:23:00Z&continuous=true\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"since": {
+						"type": [
+							"string",
+							"integer"
+						],
+						"example": "\"2015-01-01T12:23:00Z\"",
+						"description": "The (inclusive) beginning of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. At this point in time, it cannot exceed a time in the past greater than one year.\n\nRanges that the Cloudflare web application provides will provide the following period length for each point:\n- Last 60 minutes (from -59 to -1): 1 minute resolution\n- Last 7 hours (from -419 to -60): 15 minutes resolution\n- Last 15 hours (from -899 to -420): 30 minutes resolution\n- Last 72 hours (from -4320 to -900): 1 hour resolution\n- Older than 3 days (-525600 to -4320): 1 day resolution",
+						"default": -10080
+					},
+					"until": {
+						"type": [
+							"string",
+							"integer"
+						],
+						"example": "\"2015-01-02T12:23:00Z\"",
+						"description": "The (exclusive) end of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. If omitted, the time of the request is used.",
+						"default": 0
+					},
+					"continuous": {
+						"type": "boolean",
+						"example": "true",
+						"description": "When set to true, the API will move the requested time window backward, until it finds a region with completely aggregated data.\n\nThe API response _may not represent the requested time window_.",
+						"default": true
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"since",
+					"until",
+					"continuous"
+				],
+				"objects": [],
+				"example": "{\n  \"since\": \"2015-01-01T12:23:00Z\",\n  \"until\": \"2015-01-02T12:23:00Z\",\n  \"continuous\": true\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"colo_id\": \"SFO\",\n      \"timeseries\": [\n        {\n          \"since\": \"2015-01-01T12:23:00Z\",\n          \"until\": \"2015-01-02T12:23:00Z\",\n          \"requests\": {\n            \"all\": 1234085328,\n            \"cached\": 1234085328,\n            \"uncached\": 13876154,\n            \"country\": {\n              \"US\": 4181364,\n              \"AG\": 37298,\n              \"GI\": 293846\n            },\n            \"http_status\": {\n              \"200\": 13496983,\n              \"301\": 283,\n              \"400\": 187936,\n              \"402\": 1828,\n              \"404\": 1293\n            }\n          },\n          \"bandwidth\": {\n            \"all\": 213867451,\n            \"cached\": 113205063,\n            \"uncached\": 113205063\n          },\n          \"threats\": {\n            \"all\": 23423873,\n            \"country\": {\n              \"US\": 123,\n              \"CN\": 523423,\n              \"AU\": 91\n            },\n            \"type\": {\n              \"user.ban.ip\": 123,\n              \"hot.ban.unknown\": 5324,\n              \"macro.chl.captchaErr\": 1341,\n              \"macro.chl.jschlErr\": 5323\n            }\n          }\n        }\n      ],\n      \"totals\": {\n        \"since\": \"2015-01-01T12:23:00Z\",\n        \"until\": \"2015-01-02T12:23:00Z\",\n        \"requests\": {\n          \"all\": 1234085328,\n          \"cached\": 1234085328,\n          \"uncached\": 13876154,\n          \"country\": {\n            \"US\": 4181364,\n            \"AG\": 37298,\n            \"GI\": 293846\n          },\n          \"http_status\": {\n            \"200\": 13496983,\n            \"301\": 283,\n            \"400\": 187936,\n            \"402\": 1828,\n            \"404\": 1293\n          }\n        },\n        \"bandwidth\": {\n          \"all\": 213867451,\n          \"cached\": 113205063,\n          \"uncached\": 113205063\n        },\n        \"threats\": {\n          \"all\": 23423873,\n          \"country\": {\n            \"US\": 123,\n            \"CN\": 523423,\n            \"AU\": 91\n          },\n          \"type\": {\n            \"user.ban.ip\": 123,\n            \"hot.ban.unknown\": 5324,\n            \"macro.chl.captchaErr\": 1341,\n            \"macro.chl.jschlErr\": 5323\n          }\n        }\n      }\n    }\n  ],\n  \"query\": {\n    \"since\": \"2015-01-01T12:23:00Z\",\n    \"until\": \"2015-01-02T12:23:00Z\",\n    \"time_delta\": 60\n  }\n}"
+		}
+	],
+	"html_id": "zone-analytics",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {},
+		"required_props": [],
+		"optional_props": [],
+		"objects": [
+			{
+				"all_props": {
+					"totals": {
+						"type": "object",
+						"example": "{\n  \"since\": \"2015-01-01T12:23:00Z\",\n  \"until\": \"2015-01-02T12:23:00Z\",\n  \"requests\": {\n    \"all\": 1234085328,\n    \"cached\": 1234085328,\n    \"uncached\": 13876154,\n    \"content_type\": {\n      \"css\": 15343,\n      \"html\": 1234213,\n      \"javascript\": 318236,\n      \"gif\": 23178,\n      \"jpeg\": 1982048\n    },\n    \"country\": {\n      \"US\": 4181364,\n      \"AG\": 37298,\n      \"GI\": 293846\n    },\n    \"ssl\": {\n      \"encrypted\": 12978361,\n      \"unencrypted\": 781263\n    },\n    \"ssl_protocols\": {\n      \"TLSv1\": 398232,\n      \"TLSv1.1\": 12532236,\n      \"TLSv1.2\": 2447136,\n      \"TLSv1.3\": 10483332,\n      \"none\": 781263\n    },\n    \"http_status\": {\n      \"200\": 13496983,\n      \"301\": 283,\n      \"400\": 187936,\n      \"402\": 1828,\n      \"404\": 1293\n    }\n  },\n  \"bandwidth\": {\n    \"all\": 213867451,\n    \"cached\": 113205063,\n    \"uncached\": 113205063,\n    \"content_type\": {\n      \"css\": 237421,\n      \"html\": 1231290,\n      \"javascript\": 123245,\n      \"gif\": 1234242,\n      \"jpeg\": 784278\n    },\n    \"country\": {\n      \"US\": 123145433,\n      \"AG\": 2342483,\n      \"GI\": 984753\n    },\n    \"ssl\": {\n      \"encrypted\": 37592942,\n      \"unencrypted\": 237654192\n    },\n    \"ssl_protocols\": {\n      \"TLSv1\": 398232,\n      \"TLSv1.1\": 12532236,\n      \"TLSv1.2\": 2447136,\n      \"TLSv1.3\": 10483332,\n      \"none\": 781263\n    }\n  },\n  \"threats\": {\n    \"all\": 23423873,\n    \"country\": {\n      \"US\": 123,\n      \"CN\": 523423,\n      \"AU\": 91\n    },\n    \"type\": {\n      \"user.ban.ip\": 123,\n      \"hot.ban.unknown\": 5324,\n      \"macro.chl.captchaErr\": 1341,\n      \"macro.chl.jschlErr\": 5323\n    }\n  },\n  \"pageviews\": {\n    \"all\": 5724723,\n    \"search_engine\": {\n      \"googlebot\": 35272,\n      \"pingdom\": 13435,\n      \"bingbot\": 5372,\n      \"baidubot\": 1345\n    }\n  },\n  \"uniques\": {\n    \"all\": 12343\n  }\n}",
+						"properties": {
+							"since": {
+								"type": [
+									"string",
+									"integer"
+								],
+								"example": "\"2015-01-01T12:23:00Z\"",
+								"description": "The (inclusive) beginning of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. At this point in time, it cannot exceed a time in the past greater than one year.\n\nRanges that the Cloudflare web application provides will provide the following period length for each point:\n- Last 60 minutes (from -59 to -1): 1 minute resolution\n- Last 7 hours (from -419 to -60): 15 minutes resolution\n- Last 15 hours (from -899 to -420): 30 minutes resolution\n- Last 72 hours (from -4320 to -900): 1 hour resolution\n- Older than 3 days (-525600 to -4320): 1 day resolution",
+								"default": -10080
+							},
+							"until": {
+								"type": [
+									"string",
+									"integer"
+								],
+								"example": "\"2015-01-02T12:23:00Z\"",
+								"description": "The (exclusive) end of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. If omitted, the time of the request is used.",
+								"default": 0
+							},
+							"requests": {
+								"type": "object",
+								"example": "{\n  \"all\": 1234085328,\n  \"cached\": 1234085328,\n  \"uncached\": 13876154,\n  \"content_type\": {\n    \"css\": 15343,\n    \"html\": 1234213,\n    \"javascript\": 318236,\n    \"gif\": 23178,\n    \"jpeg\": 1982048\n  },\n  \"country\": {\n    \"US\": 4181364,\n    \"AG\": 37298,\n    \"GI\": 293846\n  },\n  \"ssl\": {\n    \"encrypted\": 12978361,\n    \"unencrypted\": 781263\n  },\n  \"ssl_protocols\": {\n    \"TLSv1\": 398232,\n    \"TLSv1.1\": 12532236,\n    \"TLSv1.2\": 2447136,\n    \"TLSv1.3\": 10483332,\n    \"none\": 781263\n  },\n  \"http_status\": {\n    \"200\": 13496983,\n    \"301\": 283,\n    \"400\": 187936,\n    \"402\": 1828,\n    \"404\": 1293\n  }\n}",
+								"properties": {
+									"all": {
+										"type": "integer",
+										"example": "1234085328",
+										"description": "Total number of requests served"
+									},
+									"cached": {
+										"type": "integer",
+										"example": "1234085328",
+										"description": "Total number of cached requests served"
+									},
+									"uncached": {
+										"type": "integer",
+										"example": "13876154",
+										"description": "Total number of requests served from the origin"
+									},
+									"content_type": {
+										"type": "object",
+										"example": "{\n  \"css\": 15343,\n  \"html\": 1234213,\n  \"javascript\": 318236,\n  \"gif\": 23178,\n  \"jpeg\": 1982048\n}",
+										"description": "A variable list of key/value pairs where the key represents the type of content served, and the value is the number of requests."
+									},
+									"country": {
+										"type": "object",
+										"example": "{\n  \"US\": 4181364,\n  \"AG\": 37298,\n  \"GI\": 293846\n}",
+										"description": "A variable list of key/value pairs where the key is a two-digit country code and the value is the number of requests served to that country"
+									},
+									"ssl": {
+										"type": "object",
+										"example": "{\n  \"encrypted\": 12978361,\n  \"unencrypted\": 781263\n}",
+										"properties": {
+											"encrypted": {
+												"type": "integer",
+												"example": "12978361",
+												"description": "The number of requests served over HTTPS"
+											},
+											"unencrypted": {
+												"type": "integer",
+												"example": "781263",
+												"description": "The number of requests served over HTTP"
+											}
+										},
+										"description": "A break down of requests served over HTTPS"
+									},
+									"ssl_protocols": {
+										"type": "object",
+										"example": "{\n  \"TLSv1\": 398232,\n  \"TLSv1.1\": 12532236,\n  \"TLSv1.2\": 2447136,\n  \"TLSv1.3\": 10483332,\n  \"none\": 781263\n}",
+										"properties": {
+											"TLSv1": {
+												"type": "integer",
+												"example": "398232",
+												"description": "The number of requests served over TLS v1.0"
+											},
+											"TLSv1.1": {
+												"type": "integer",
+												"example": "12532236",
+												"description": "The number of requests served over TLS v1.1"
+											},
+											"TLSv1.2": {
+												"type": "integer",
+												"example": "2447136",
+												"description": "The number of requests served over TLS v1.2"
+											},
+											"TLSv1.3": {
+												"type": "integer",
+												"example": "10483332",
+												"description": "The number of requests served over TLS v1.3"
+											},
+											"none": {
+												"type": "integer",
+												"example": "781263",
+												"description": "The number of requests served over HTTP"
+											}
+										},
+										"description": "A breakdown of requests by their SSL protocol"
+									},
+									"http_status": {
+										"type": "object",
+										"example": "{\n  \"200\": 13496983,\n  \"301\": 283,\n  \"400\": 187936,\n  \"402\": 1828,\n  \"404\": 1293\n}",
+										"description": "Key/value pairs where the key is a HTTP status code and the value is the number of requests served with that code",
+										"patternProperties": {
+											"^[1-5][0-9][0-9]$": {
+												"type": "integer",
+												"minimum": 0
+											}
+										}
+									}
+								},
+								"description": "Breakdown of totals for requests"
+							},
+							"bandwidth": {
+								"type": "object",
+								"example": "{\n  \"all\": 213867451,\n  \"cached\": 113205063,\n  \"uncached\": 113205063,\n  \"content_type\": {\n    \"css\": 237421,\n    \"html\": 1231290,\n    \"javascript\": 123245,\n    \"gif\": 1234242,\n    \"jpeg\": 784278\n  },\n  \"country\": {\n    \"US\": 123145433,\n    \"AG\": 2342483,\n    \"GI\": 984753\n  },\n  \"ssl\": {\n    \"encrypted\": 37592942,\n    \"unencrypted\": 237654192\n  },\n  \"ssl_protocols\": {\n    \"TLSv1\": 398232,\n    \"TLSv1.1\": 12532236,\n    \"TLSv1.2\": 2447136,\n    \"TLSv1.3\": 10483332,\n    \"none\": 781263\n  }\n}",
+								"properties": {
+									"all": {
+										"type": "integer",
+										"example": "213867451",
+										"description": "The total number of bytes served within the time frame"
+									},
+									"cached": {
+										"type": "integer",
+										"example": "113205063",
+										"description": "The number of bytes that were cached (and served) by Cloudflare"
+									},
+									"uncached": {
+										"type": "integer",
+										"example": "113205063",
+										"description": "The number of bytes that were fetched and served from the origin server"
+									},
+									"content_type": {
+										"type": "object",
+										"example": "{\n  \"css\": 237421,\n  \"html\": 1231290,\n  \"javascript\": 123245,\n  \"gif\": 1234242,\n  \"jpeg\": 784278\n}",
+										"description": "A variable list of key/value pairs where the key represents the type of content served, and the value is the number in bytes served."
+									},
+									"country": {
+										"type": "object",
+										"example": "{\n  \"US\": 123145433,\n  \"AG\": 2342483,\n  \"GI\": 984753\n}",
+										"description": "A variable list of key/value pairs where the key is a two-digit country code and the value is the number of bytes served to that country"
+									},
+									"ssl": {
+										"type": "object",
+										"example": "{\n  \"encrypted\": 37592942,\n  \"unencrypted\": 237654192\n}",
+										"properties": {
+											"encrypted": {
+												"type": "integer",
+												"example": "37592942",
+												"description": "The number of bytes served over HTTPS"
+											},
+											"unencrypted": {
+												"type": "integer",
+												"example": "237654192",
+												"description": "The number of bytes served over HTTP"
+											}
+										},
+										"description": "A break down of bytes served over HTTPS"
+									},
+									"ssl_protocols": {
+										"type": "object",
+										"example": "{\n  \"TLSv1\": 398232,\n  \"TLSv1.1\": 12532236,\n  \"TLSv1.2\": 2447136,\n  \"TLSv1.3\": 10483332,\n  \"none\": 781263\n}",
+										"properties": {
+											"TLSv1": {
+												"type": "integer",
+												"example": "398232",
+												"description": "The number of requests served over TLS v1.0"
+											},
+											"TLSv1.1": {
+												"type": "integer",
+												"example": "12532236",
+												"description": "The number of requests served over TLS v1.1"
+											},
+											"TLSv1.2": {
+												"type": "integer",
+												"example": "2447136",
+												"description": "The number of requests served over TLS v1.2"
+											},
+											"TLSv1.3": {
+												"type": "integer",
+												"example": "10483332",
+												"description": "The number of requests served over TLS v1.3"
+											},
+											"none": {
+												"type": "integer",
+												"example": "781263",
+												"description": "The number of requests served over HTTP"
+											}
+										},
+										"description": "A breakdown of requests by their SSL protocol"
+									}
+								},
+								"description": "Breakdown of totals for bandwidth in the form of bytes"
+							},
+							"threats": {
+								"type": "object",
+								"example": "{\n  \"all\": 23423873,\n  \"country\": {\n    \"US\": 123,\n    \"CN\": 523423,\n    \"AU\": 91\n  },\n  \"type\": {\n    \"user.ban.ip\": 123,\n    \"hot.ban.unknown\": 5324,\n    \"macro.chl.captchaErr\": 1341,\n    \"macro.chl.jschlErr\": 5323\n  }\n}",
+								"properties": {
+									"all": {
+										"type": "integer",
+										"example": "23423873",
+										"description": "The total number of identifiable threats received over the time frame"
+									},
+									"country": {
+										"type": "object",
+										"example": "{\n  \"US\": 123,\n  \"CN\": 523423,\n  \"AU\": 91\n}",
+										"description": "A list of key/value pairs where the key is a two-digit country code and the value is the number of malicious requests received from that country."
+									},
+									"type": {
+										"type": "object",
+										"example": "{\n  \"user.ban.ip\": 123,\n  \"hot.ban.unknown\": 5324,\n  \"macro.chl.captchaErr\": 1341,\n  \"macro.chl.jschlErr\": 5323\n}",
+										"description": "The list of key/value pairs where the key is a threat category and the value is the number of requests."
+									}
+								},
+								"description": "Breakdown of totals for threats"
+							},
+							"pageviews": {
+								"type": "object",
+								"example": "{\n  \"all\": 5724723,\n  \"search_engine\": {\n    \"googlebot\": 35272,\n    \"pingdom\": 13435,\n    \"bingbot\": 5372,\n    \"baidubot\": 1345\n  }\n}",
+								"properties": {
+									"all": {
+										"type": "integer",
+										"example": "5724723",
+										"description": "The total number of pageviews served within the time range"
+									},
+									"search_engine": {
+										"type": "object",
+										"example": "{\n  \"googlebot\": 35272,\n  \"pingdom\": 13435,\n  \"bingbot\": 5372,\n  \"baidubot\": 1345\n}",
+										"description": "A variable list of key/value pairs representing the search engine and number of hits"
+									}
+								},
+								"description": "Breakdown of totals for pageviews"
+							},
+							"uniques": {
+								"type": "object",
+								"example": "{\n  \"all\": 12343\n}",
+								"properties": {
+									"all": {
+										"type": "integer",
+										"example": "12343",
+										"description": "Total number of unique IP addresses within the time range"
+									}
+								}
+							}
+						},
+						"description": "Breakdown of totals by data type"
+					},
+					"timeseries": {
+						"type": "array",
+						"example": "[\n  {\n    \"since\": \"2015-01-01T12:23:00Z\",\n    \"until\": \"2015-01-02T12:23:00Z\",\n    \"requests\": {\n      \"all\": 1234085328,\n      \"cached\": 1234085328,\n      \"uncached\": 13876154,\n      \"content_type\": {\n        \"css\": 15343,\n        \"html\": 1234213,\n        \"javascript\": 318236,\n        \"gif\": 23178,\n        \"jpeg\": 1982048\n      },\n      \"country\": {\n        \"US\": 4181364,\n        \"AG\": 37298,\n        \"GI\": 293846\n      },\n      \"ssl\": {\n        \"encrypted\": 12978361,\n        \"unencrypted\": 781263\n      },\n      \"ssl_protocols\": {\n        \"TLSv1\": 398232,\n        \"TLSv1.1\": 12532236,\n        \"TLSv1.2\": 2447136,\n        \"TLSv1.3\": 10483332,\n        \"none\": 781263\n      },\n      \"http_status\": {\n        \"200\": 13496983,\n        \"301\": 283,\n        \"400\": 187936,\n        \"402\": 1828,\n        \"404\": 1293\n      }\n    },\n    \"bandwidth\": {\n      \"all\": 213867451,\n      \"cached\": 113205063,\n      \"uncached\": 113205063,\n      \"content_type\": {\n        \"css\": 237421,\n        \"html\": 1231290,\n        \"javascript\": 123245,\n        \"gif\": 1234242,\n        \"jpeg\": 784278\n      },\n      \"country\": {\n        \"US\": 123145433,\n        \"AG\": 2342483,\n        \"GI\": 984753\n      },\n      \"ssl\": {\n        \"encrypted\": 37592942,\n        \"unencrypted\": 237654192\n      },\n      \"ssl_protocols\": {\n        \"TLSv1\": 398232,\n        \"TLSv1.1\": 12532236,\n        \"TLSv1.2\": 2447136,\n        \"TLSv1.3\": 10483332,\n        \"none\": 781263\n      }\n    },\n    \"threats\": {\n      \"all\": 23423873,\n      \"country\": {\n        \"US\": 123,\n        \"CN\": 523423,\n        \"AU\": 91\n      },\n      \"type\": {\n        \"user.ban.ip\": 123,\n        \"hot.ban.unknown\": 5324,\n        \"macro.chl.captchaErr\": 1341,\n        \"macro.chl.jschlErr\": 5323\n      }\n    },\n    \"pageviews\": {\n      \"all\": 5724723,\n      \"search_engine\": {\n        \"googlebot\": 35272,\n        \"pingdom\": 13435,\n        \"bingbot\": 5372,\n        \"baidubot\": 1345\n      }\n    },\n    \"uniques\": {\n      \"all\": 12343\n    }\n  }\n]",
+						"description": "Time deltas containing metadata about each bucket of time. The number of buckets (resolution) is determined by the amount of time between the since and until parameters.",
+						"items": {
+							"type": "object",
+							"properties": {
+								"since": {
+									"type": [
+										"string",
+										"integer"
+									],
+									"description": "The (inclusive) beginning of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. At this point in time, it cannot exceed a time in the past greater than one year.\n\nRanges that the Cloudflare web application provides will provide the following period length for each point:\n- Last 60 minutes (from -59 to -1): 1 minute resolution\n- Last 7 hours (from -419 to -60): 15 minutes resolution\n- Last 15 hours (from -899 to -420): 30 minutes resolution\n- Last 72 hours (from -4320 to -900): 1 hour resolution\n- Older than 3 days (-525600 to -4320): 1 day resolution",
+									"default": -10080,
+									"example": "2015-01-01T12:23:00Z"
+								},
+								"until": {
+									"type": [
+										"string",
+										"integer"
+									],
+									"description": "The (exclusive) end of the requested time frame. This value can be a negative integer representing the number of minutes in the past relative to time the request is made, or can be an absolute timestamp that conforms to RFC 3339. If omitted, the time of the request is used.",
+									"default": 0,
+									"example": "2015-01-02T12:23:00Z"
+								},
+								"requests": {
+									"type": "object",
+									"description": "Breakdown of totals for requests",
+									"properties": {
+										"all": {
+											"type": "integer",
+											"description": "Total number of requests served",
+											"example": 1234085328
+										},
+										"cached": {
+											"type": "integer",
+											"description": "Total number of cached requests served",
+											"example": 1234085328
+										},
+										"uncached": {
+											"type": "integer",
+											"description": "Total number of requests served from the origin",
+											"example": 13876154
+										},
+										"content_type": {
+											"type": "object",
+											"description": "A variable list of key/value pairs where the key represents the type of content served, and the value is the number of requests.",
+											"example": {
+												"css": 15343,
+												"html": 1234213,
+												"javascript": 318236,
+												"gif": 23178,
+												"jpeg": 1982048
+											}
+										},
+										"country": {
+											"type": "object",
+											"description": "A variable list of key/value pairs where the key is a two-digit country code and the value is the number of requests served to that country",
+											"example": {
+												"US": 4181364,
+												"AG": 37298,
+												"GI": 293846
+											}
+										},
+										"ssl": {
+											"type": "object",
+											"description": "A break down of requests served over HTTPS",
+											"properties": {
+												"encrypted": {
+													"type": "integer",
+													"description": "The number of requests served over HTTPS",
+													"example": 12978361
+												},
+												"unencrypted": {
+													"type": "integer",
+													"description": "The number of requests served over HTTP",
+													"example": 781263
+												}
+											}
+										},
+										"ssl_protocols": {
+											"type": "object",
+											"description": "A breakdown of requests by their SSL protocol",
+											"properties": {
+												"TLSv1": {
+													"type": "integer",
+													"description": "The number of requests served over TLS v1.0",
+													"example": 398232
+												},
+												"TLSv1.1": {
+													"type": "integer",
+													"description": "The number of requests served over TLS v1.1",
+													"example": 12532236
+												},
+												"TLSv1.2": {
+													"type": "integer",
+													"description": "The number of requests served over TLS v1.2",
+													"example": 2447136
+												},
+												"TLSv1.3": {
+													"type": "integer",
+													"description": "The number of requests served over TLS v1.3",
+													"example": 10483332
+												},
+												"none": {
+													"type": "integer",
+													"description": "The number of requests served over HTTP",
+													"example": 781263
+												}
+											}
+										},
+										"http_status": {
+											"type": "object",
+											"description": "Key/value pairs where the key is a HTTP status code and the value is the number of requests served with that code",
+											"patternProperties": {
+												"^[1-5][0-9][0-9]$": {
+													"type": "integer",
+													"minimum": 0
+												}
+											},
+											"example": {
+												"200": 13496983,
+												"301": 283,
+												"400": 187936,
+												"402": 1828,
+												"404": 1293
+											}
+										}
+									}
+								},
+								"bandwidth": {
+									"type": "object",
+									"description": "Breakdown of totals for bandwidth in the form of bytes",
+									"properties": {
+										"all": {
+											"type": "integer",
+											"description": "The total number of bytes served within the time frame",
+											"example": 213867451
+										},
+										"cached": {
+											"type": "integer",
+											"description": "The number of bytes that were cached (and served) by Cloudflare",
+											"example": 113205063
+										},
+										"uncached": {
+											"type": "integer",
+											"description": "The number of bytes that were fetched and served from the origin server",
+											"example": 113205063
+										},
+										"content_type": {
+											"type": "object",
+											"description": "A variable list of key/value pairs where the key represents the type of content served, and the value is the number in bytes served.",
+											"example": {
+												"css": 237421,
+												"html": 1231290,
+												"javascript": 123245,
+												"gif": 1234242,
+												"jpeg": 784278
+											}
+										},
+										"country": {
+											"type": "object",
+											"description": "A variable list of key/value pairs where the key is a two-digit country code and the value is the number of bytes served to that country",
+											"example": {
+												"US": 123145433,
+												"AG": 2342483,
+												"GI": 984753
+											}
+										},
+										"ssl": {
+											"type": "object",
+											"description": "A break down of bytes served over HTTPS",
+											"properties": {
+												"encrypted": {
+													"type": "integer",
+													"description": "The number of bytes served over HTTPS",
+													"example": 37592942
+												},
+												"unencrypted": {
+													"type": "integer",
+													"description": "The number of bytes served over HTTP",
+													"example": 237654192
+												}
+											}
+										},
+										"ssl_protocols": {
+											"type": "object",
+											"description": "A breakdown of requests by their SSL protocol",
+											"properties": {
+												"TLSv1": {
+													"type": "integer",
+													"description": "The number of requests served over TLS v1.0",
+													"example": 398232
+												},
+												"TLSv1.1": {
+													"type": "integer",
+													"description": "The number of requests served over TLS v1.1",
+													"example": 12532236
+												},
+												"TLSv1.2": {
+													"type": "integer",
+													"description": "The number of requests served over TLS v1.2",
+													"example": 2447136
+												},
+												"TLSv1.3": {
+													"type": "integer",
+													"description": "The number of requests served over TLS v1.3",
+													"example": 10483332
+												},
+												"none": {
+													"type": "integer",
+													"description": "The number of requests served over HTTP",
+													"example": 781263
+												}
+											}
+										}
+									}
+								},
+								"threats": {
+									"type": "object",
+									"description": "Breakdown of totals for threats",
+									"properties": {
+										"all": {
+											"type": "integer",
+											"description": "The total number of identifiable threats received over the time frame",
+											"example": 23423873
+										},
+										"country": {
+											"type": "object",
+											"description": "A list of key/value pairs where the key is a two-digit country code and the value is the number of malicious requests received from that country.",
+											"example": {
+												"US": 123,
+												"CN": 523423,
+												"AU": 91
+											}
+										},
+										"type": {
+											"type": "object",
+											"description": "The list of key/value pairs where the key is a threat category and the value is the number of requests.",
+											"example": {
+												"user.ban.ip": 123,
+												"hot.ban.unknown": 5324,
+												"macro.chl.captchaErr": 1341,
+												"macro.chl.jschlErr": 5323
+											}
+										}
+									}
+								},
+								"pageviews": {
+									"type": "object",
+									"description": "Breakdown of totals for pageviews",
+									"properties": {
+										"all": {
+											"type": "integer",
+											"description": "The total number of pageviews served within the time range",
+											"example": 5724723
+										},
+										"search_engine": {
+											"type": "object",
+											"description": "A variable list of key/value pairs representing the search engine and number of hits",
+											"example": {
+												"googlebot": 35272,
+												"pingdom": 13435,
+												"bingbot": 5372,
+												"baidubot": 1345
+											}
+										}
+									}
+								},
+								"uniques": {
+									"type": "object",
+									"properties": {
+										"all": {
+											"type": "integer",
+											"description": "Total number of unique IP addresses within the time range",
+											"example": 12343
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"totals",
+					"timeseries"
+				],
+				"objects": [],
+				"example": "{\n  \"totals\": {\n    \"since\": \"2015-01-01T12:23:00Z\",\n    \"until\": \"2015-01-02T12:23:00Z\",\n    \"requests\": {\n      \"all\": 1234085328,\n      \"cached\": 1234085328,\n      \"uncached\": 13876154,\n      \"content_type\": {\n        \"css\": 15343,\n        \"html\": 1234213,\n        \"javascript\": 318236,\n        \"gif\": 23178,\n        \"jpeg\": 1982048\n      },\n      \"country\": {\n        \"US\": 4181364,\n        \"AG\": 37298,\n        \"GI\": 293846\n      },\n      \"ssl\": {\n        \"encrypted\": 12978361,\n        \"unencrypted\": 781263\n      },\n      \"ssl_protocols\": {\n        \"TLSv1\": 398232,\n        \"TLSv1.1\": 12532236,\n        \"TLSv1.2\": 2447136,\n        \"TLSv1.3\": 10483332,\n        \"none\": 781263\n      },\n      \"http_status\": {\n        \"200\": 13496983,\n        \"301\": 283,\n        \"400\": 187936,\n        \"402\": 1828,\n        \"404\": 1293\n      }\n    },\n    \"bandwidth\": {\n      \"all\": 213867451,\n      \"cached\": 113205063,\n      \"uncached\": 113205063,\n      \"content_type\": {\n        \"css\": 237421,\n        \"html\": 1231290,\n        \"javascript\": 123245,\n        \"gif\": 1234242,\n        \"jpeg\": 784278\n      },\n      \"country\": {\n        \"US\": 123145433,\n        \"AG\": 2342483,\n        \"GI\": 984753\n      },\n      \"ssl\": {\n        \"encrypted\": 37592942,\n        \"unencrypted\": 237654192\n      },\n      \"ssl_protocols\": {\n        \"TLSv1\": 398232,\n        \"TLSv1.1\": 12532236,\n        \"TLSv1.2\": 2447136,\n        \"TLSv1.3\": 10483332,\n        \"none\": 781263\n      }\n    },\n    \"threats\": {\n      \"all\": 23423873,\n      \"country\": {\n        \"US\": 123,\n        \"CN\": 523423,\n        \"AU\": 91\n      },\n      \"type\": {\n        \"user.ban.ip\": 123,\n        \"hot.ban.unknown\": 5324,\n        \"macro.chl.captchaErr\": 1341,\n        \"macro.chl.jschlErr\": 5323\n      }\n    },\n    \"pageviews\": {\n      \"all\": 5724723,\n      \"search_engine\": {\n        \"googlebot\": 35272,\n        \"pingdom\": 13435,\n        \"bingbot\": 5372,\n        \"baidubot\": 1345\n      }\n    },\n    \"uniques\": {\n      \"all\": 12343\n    }\n  },\n  \"timeseries\": [\n    {\n      \"since\": \"2015-01-01T12:23:00Z\",\n      \"until\": \"2015-01-02T12:23:00Z\",\n      \"requests\": {\n        \"all\": 1234085328,\n        \"cached\": 1234085328,\n        \"uncached\": 13876154,\n        \"content_type\": {\n          \"css\": 15343,\n          \"html\": 1234213,\n          \"javascript\": 318236,\n          \"gif\": 23178,\n          \"jpeg\": 1982048\n        },\n        \"country\": {\n          \"US\": 4181364,\n          \"AG\": 37298,\n          \"GI\": 293846\n        },\n        \"ssl\": {\n          \"encrypted\": 12978361,\n          \"unencrypted\": 781263\n        },\n        \"ssl_protocols\": {\n          \"TLSv1\": 398232,\n          \"TLSv1.1\": 12532236,\n          \"TLSv1.2\": 2447136,\n          \"TLSv1.3\": 10483332,\n          \"none\": 781263\n        },\n        \"http_status\": {\n          \"200\": 13496983,\n          \"301\": 283,\n          \"400\": 187936,\n          \"402\": 1828,\n          \"404\": 1293\n        }\n      },\n      \"bandwidth\": {\n        \"all\": 213867451,\n        \"cached\": 113205063,\n        \"uncached\": 113205063,\n        \"content_type\": {\n          \"css\": 237421,\n          \"html\": 1231290,\n          \"javascript\": 123245,\n          \"gif\": 1234242,\n          \"jpeg\": 784278\n        },\n        \"country\": {\n          \"US\": 123145433,\n          \"AG\": 2342483,\n          \"GI\": 984753\n        },\n        \"ssl\": {\n          \"encrypted\": 37592942,\n          \"unencrypted\": 237654192\n        },\n        \"ssl_protocols\": {\n          \"TLSv1\": 398232,\n          \"TLSv1.1\": 12532236,\n          \"TLSv1.2\": 2447136,\n          \"TLSv1.3\": 10483332,\n          \"none\": 781263\n        }\n      },\n      \"threats\": {\n        \"all\": 23423873,\n        \"country\": {\n          \"US\": 123,\n          \"CN\": 523423,\n          \"AU\": 91\n        },\n        \"type\": {\n          \"user.ban.ip\": 123,\n          \"hot.ban.unknown\": 5324,\n          \"macro.chl.captchaErr\": 1341,\n          \"macro.chl.jschlErr\": 5323\n        }\n      },\n      \"pageviews\": {\n        \"all\": 5724723,\n        \"search_engine\": {\n          \"googlebot\": 35272,\n          \"pingdom\": 13435,\n          \"bingbot\": 5372,\n          \"baidubot\": 1345\n        }\n      },\n      \"uniques\": {\n        \"all\": 12343\n      }\n    }\n  ]\n}",
+				"title": "Dashboard response",
+				"description": "Totals and timeseries data"
+			}
+		],
+		"example": "{\n  \"totals\": {\n    \"since\": \"2015-01-01T12:23:00Z\",\n    \"until\": \"2015-01-02T12:23:00Z\",\n    \"requests\": {\n      \"all\": 1234085328,\n      \"cached\": 1234085328,\n      \"uncached\": 13876154,\n      \"content_type\": {\n        \"css\": 15343,\n        \"html\": 1234213,\n        \"javascript\": 318236,\n        \"gif\": 23178,\n        \"jpeg\": 1982048\n      },\n      \"country\": {\n        \"US\": 4181364,\n        \"AG\": 37298,\n        \"GI\": 293846\n      },\n      \"ssl\": {\n        \"encrypted\": 12978361,\n        \"unencrypted\": 781263\n      },\n      \"ssl_protocols\": {\n        \"TLSv1\": 398232,\n        \"TLSv1.1\": 12532236,\n        \"TLSv1.2\": 2447136,\n        \"TLSv1.3\": 10483332,\n        \"none\": 781263\n      },\n      \"http_status\": {\n        \"200\": 13496983,\n        \"301\": 283,\n        \"400\": 187936,\n        \"402\": 1828,\n        \"404\": 1293\n      }\n    },\n    \"bandwidth\": {\n      \"all\": 213867451,\n      \"cached\": 113205063,\n      \"uncached\": 113205063,\n      \"content_type\": {\n        \"css\": 237421,\n        \"html\": 1231290,\n        \"javascript\": 123245,\n        \"gif\": 1234242,\n        \"jpeg\": 784278\n      },\n      \"country\": {\n        \"US\": 123145433,\n        \"AG\": 2342483,\n        \"GI\": 984753\n      },\n      \"ssl\": {\n        \"encrypted\": 37592942,\n        \"unencrypted\": 237654192\n      },\n      \"ssl_protocols\": {\n        \"TLSv1\": 398232,\n        \"TLSv1.1\": 12532236,\n        \"TLSv1.2\": 2447136,\n        \"TLSv1.3\": 10483332,\n        \"none\": 781263\n      }\n    },\n    \"threats\": {\n      \"all\": 23423873,\n      \"country\": {\n        \"US\": 123,\n        \"CN\": 523423,\n        \"AU\": 91\n      },\n      \"type\": {\n        \"user.ban.ip\": 123,\n        \"hot.ban.unknown\": 5324,\n        \"macro.chl.captchaErr\": 1341,\n        \"macro.chl.jschlErr\": 5323\n      }\n    },\n    \"pageviews\": {\n      \"all\": 5724723,\n      \"search_engine\": {\n        \"googlebot\": 35272,\n        \"pingdom\": 13435,\n        \"bingbot\": 5372,\n        \"baidubot\": 1345\n      }\n    },\n    \"uniques\": {\n      \"all\": 12343\n    }\n  },\n  \"timeseries\": [\n    {\n      \"since\": \"2015-01-01T12:23:00Z\",\n      \"until\": \"2015-01-02T12:23:00Z\",\n      \"requests\": {\n        \"all\": 1234085328,\n        \"cached\": 1234085328,\n        \"uncached\": 13876154,\n        \"content_type\": {\n          \"css\": 15343,\n          \"html\": 1234213,\n          \"javascript\": 318236,\n          \"gif\": 23178,\n          \"jpeg\": 1982048\n        },\n        \"country\": {\n          \"US\": 4181364,\n          \"AG\": 37298,\n          \"GI\": 293846\n        },\n        \"ssl\": {\n          \"encrypted\": 12978361,\n          \"unencrypted\": 781263\n        },\n        \"ssl_protocols\": {\n          \"TLSv1\": 398232,\n          \"TLSv1.1\": 12532236,\n          \"TLSv1.2\": 2447136,\n          \"TLSv1.3\": 10483332,\n          \"none\": 781263\n        },\n        \"http_status\": {\n          \"200\": 13496983,\n          \"301\": 283,\n          \"400\": 187936,\n          \"402\": 1828,\n          \"404\": 1293\n        }\n      },\n      \"bandwidth\": {\n        \"all\": 213867451,\n        \"cached\": 113205063,\n        \"uncached\": 113205063,\n        \"content_type\": {\n          \"css\": 237421,\n          \"html\": 1231290,\n          \"javascript\": 123245,\n          \"gif\": 1234242,\n          \"jpeg\": 784278\n        },\n        \"country\": {\n          \"US\": 123145433,\n          \"AG\": 2342483,\n          \"GI\": 984753\n        },\n        \"ssl\": {\n          \"encrypted\": 37592942,\n          \"unencrypted\": 237654192\n        },\n        \"ssl_protocols\": {\n          \"TLSv1\": 398232,\n          \"TLSv1.1\": 12532236,\n          \"TLSv1.2\": 2447136,\n          \"TLSv1.3\": 10483332,\n          \"none\": 781263\n        }\n      },\n      \"threats\": {\n        \"all\": 23423873,\n        \"country\": {\n          \"US\": 123,\n          \"CN\": 523423,\n          \"AU\": 91\n        },\n        \"type\": {\n          \"user.ban.ip\": 123,\n          \"hot.ban.unknown\": 5324,\n          \"macro.chl.captchaErr\": 1341,\n          \"macro.chl.jschlErr\": 5323\n        }\n      },\n      \"pageviews\": {\n        \"all\": 5724723,\n        \"search_engine\": {\n          \"googlebot\": 35272,\n          \"pingdom\": 13435,\n          \"bingbot\": 5372,\n          \"baidubot\": 1345\n        }\n      },\n      \"uniques\": {\n        \"all\": 12343\n      }\n    }\n  ]\n}",
+		"which_of": "oneOf",
+		"title": "Zone Analytics",
+		"description": "Analytics data for a zone"
+	}
+}

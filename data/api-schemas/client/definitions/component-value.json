@@ -1,0 +1,53 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/definitions/component-value.json",
+	"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+	"title": "Cloudflare A La Carte Addon",
+	"description": "Abstract Cloudflare a la carte addon",
+	"type": "object",
+	"properties": {
+		"name": {
+			"description": "The unique component",
+			"enum": [
+				"zones",
+				"page_rules",
+				"dedicated_certificates",
+				"dedicated_certificates_custom"
+			],
+			"example": "page_rules"
+		},
+		"default": {
+			"description": "The default amount allocated",
+			"type": "number",
+			"example": 5
+		},
+		"unit_price": {
+			"description": "The unit price of the addon",
+			"type": "number",
+			"readOnly": true,
+			"example": 1
+		}
+	},
+	"definitions": {
+		"name": {
+			"description": "The unique component",
+			"enum": [
+				"zones",
+				"page_rules",
+				"dedicated_certificates",
+				"dedicated_certificates_custom"
+			],
+			"example": "page_rules"
+		},
+		"default": {
+			"description": "The default amount allocated",
+			"type": "number",
+			"example": 5
+		},
+		"unit_price": {
+			"description": "The unit price of the addon",
+			"type": "number",
+			"readOnly": true,
+			"example": 1
+		}
+	}
+}

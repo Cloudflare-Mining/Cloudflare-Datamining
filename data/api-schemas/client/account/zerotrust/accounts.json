@@ -1,0 +1,397 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/zerotrust/accounts.json",
+	"title": "Zero Trust accounts",
+	"description": "Account for managing Secure Web Gateway policies.",
+	"type": "object",
+	"links": [
+		{
+			"title": "Create Zero Trust account",
+			"description": "Create Zero Trust account with existing cloudflare account",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/gateway/",
+			"method": "POST",
+			"cfOwnership": "gateway",
+			"html_id": "zero-trust-accounts-create-zero-trust-account",
+			"uri": "accounts/:identifier/gateway/",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"account_id\":\"699d98642c564d2e855e9661899b7252\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"account_id": {
+						"type": "string",
+						"example": "\"699d98642c564d2e855e9661899b7252\"",
+						"maxLength": 32,
+						"description": "Cloudflare account tag"
+					}
+				},
+				"required_props": [
+					"account_id"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"account_id\": \"699d98642c564d2e855e9661899b7252\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"699d98642c564d2e855e9661899b7252\",\n    \"gateway_tag\": \"f174e90afafe4643bbbc4a0ed4fc8415\",\n    \"provider_name\": \"Cloudflare\"\n  }\n}"
+		},
+		{
+			"title": "Get Zero Trust account information",
+			"description": "Get Zero Trust account information",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/gateway/",
+			"method": "GET",
+			"cfOwnership": "gateway",
+			"html_id": "zero-trust-accounts-get-zero-trust-account-information",
+			"uri": "accounts/:identifier/gateway/",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"699d98642c564d2e855e9661899b7252\",\n    \"gateway_tag\": \"f174e90afafe4643bbbc4a0ed4fc8415\",\n    \"provider_name\": \"Cloudflare\"\n  }\n}"
+		},
+		{
+			"title": "Update Zero Trust account configuration",
+			"description": "Updates the current Zero Trust account configuration",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/gateway/configuration",
+			"method": "PUT",
+			"cfOwnership": "gateway",
+			"html_id": "zero-trust-accounts-update-zero-trust-account-configuration",
+			"uri": "accounts/:identifier/gateway/configuration",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/configuration\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"settings\":{\"antivirus\":{\"enabled_download_phase\":false,\"enabled_upload_phase\":false,\"fail_closed\":false},\"tls_decrypt\":{\"enabled\":true},\"activity_log\":{\"enabled\":true},\"block_page\":{\"enabled\":true,\"name\":\"Cloudflare\",\"footer_text\":\"--footer--\",\"header_text\":\"--header--\",\"mailto_address\":\"admin@example.com\",\"mailto_subject\":\"Blocked User Inquiry\",\"logo_path\":\"https://logos.com/a.png\",\"background_color\":true},\"browser_isolation\":{\"url_browser_isolation_enabled\":true},\"fips\":{\"tls\":true}}}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"settings": {
+						"type": "object",
+						"example": "{\n  \"antivirus\": {\n    \"enabled_download_phase\": false,\n    \"enabled_upload_phase\": false,\n    \"fail_closed\": false\n  },\n  \"tls_decrypt\": {\n    \"enabled\": true\n  },\n  \"activity_log\": {\n    \"enabled\": true\n  },\n  \"block_page\": {\n    \"enabled\": true,\n    \"name\": \"Cloudflare\",\n    \"footer_text\": \"--footer--\",\n    \"header_text\": \"--header--\",\n    \"mailto_address\": \"admin@example.com\",\n    \"mailto_subject\": \"Blocked User Inquiry\",\n    \"logo_path\": \"https://logos.com/a.png\",\n    \"background_color\": true\n  },\n  \"browser_isolation\": {\n    \"url_browser_isolation_enabled\": true\n  },\n  \"fips\": {\n    \"tls\": true\n  }\n}",
+						"properties": {
+							"antivirus": {
+								"type": "object",
+								"example": "{\n  \"enabled_download_phase\": false,\n  \"enabled_upload_phase\": false,\n  \"fail_closed\": false\n}",
+								"properties": {
+									"enabled_download_phase": {
+										"type": "boolean",
+										"example": "false",
+										"description": "Set to enable antivirus scan on downloads"
+									},
+									"enabled_upload_phase": {
+										"type": "boolean",
+										"example": "false",
+										"description": "Set to enable antivirus scan on uploads"
+									},
+									"fail_closed": {
+										"type": "boolean",
+										"example": "false",
+										"description": "Block requests for files that cannot be scanned"
+									}
+								},
+								"description": "Anti virus settings"
+							},
+							"tls_decrypt": {
+								"type": "object",
+								"example": "{\n  \"enabled\": true\n}",
+								"properties": {
+									"enabled": {
+										"type": "boolean",
+										"example": "true",
+										"description": "Enable inspecting encrypted HTTP traffic"
+									}
+								},
+								"description": "TLS interception settings"
+							},
+							"activity_log": {
+								"type": "object",
+								"example": "{\n  \"enabled\": true\n}",
+								"properties": {
+									"enabled": {
+										"type": "boolean",
+										"example": "true",
+										"description": "Enable activity logging"
+									}
+								},
+								"description": "Activity log settings"
+							},
+							"block_page": {
+								"type": "object",
+								"example": "{\n  \"enabled\": true,\n  \"name\": \"Cloudflare\",\n  \"footer_text\": \"--footer--\",\n  \"header_text\": \"--header--\",\n  \"mailto_address\": \"admin@example.com\",\n  \"mailto_subject\": \"Blocked User Inquiry\",\n  \"logo_path\": \"https://logos.com/a.png\",\n  \"background_color\": true\n}",
+								"properties": {
+									"enabled": {
+										"type": "boolean",
+										"example": "true",
+										"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2"
+									},
+									"name": {
+										"type": "string",
+										"example": "\"Cloudflare\"",
+										"description": "Block page title"
+									},
+									"footer_text": {
+										"type": "string",
+										"example": "\"--footer--\"",
+										"description": "Block page footer text"
+									},
+									"header_text": {
+										"type": "string",
+										"example": "\"--header--\"",
+										"description": "Block page header text"
+									},
+									"mailto_address": {
+										"type": "string",
+										"example": "\"admin@example.com\"",
+										"description": "Admin email for users to contact"
+									},
+									"mailto_subject": {
+										"type": "string",
+										"example": "\"Blocked User Inquiry\"",
+										"description": "Subject line for emails created from block page"
+									},
+									"logo_path": {
+										"type": "string",
+										"example": "\"https://logos.com/a.png\"",
+										"description": "Full URL to the logo file"
+									},
+									"background_color": {
+										"type": "string",
+										"example": "true",
+										"description": "Block page background color in #rrggbb format"
+									}
+								},
+								"description": "Block page layout settings"
+							},
+							"browser_isolation": {
+								"type": "object",
+								"example": "{\n  \"url_browser_isolation_enabled\": true\n}",
+								"properties": {
+									"url_browser_isolation_enabled": {
+										"type": "boolean",
+										"example": "true",
+										"description": "Enable Browser Isolation"
+									}
+								},
+								"description": "Browser isolation settings"
+							},
+							"fips": {
+								"type": "object",
+								"example": "{\n  \"tls\": true\n}",
+								"properties": {
+									"tls": {
+										"type": "boolean",
+										"example": "true",
+										"description": "Enable only cipher suites and TLS versions compliant with FIPS 140-2"
+									}
+								},
+								"description": "FIPS settings"
+							}
+						},
+						"description": "account settings"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"settings"
+				],
+				"objects": [],
+				"example": "{\n  \"settings\": {\n    \"antivirus\": {\n      \"enabled_download_phase\": false,\n      \"enabled_upload_phase\": false,\n      \"fail_closed\": false\n    },\n    \"tls_decrypt\": {\n      \"enabled\": true\n    },\n    \"activity_log\": {\n      \"enabled\": true\n    },\n    \"block_page\": {\n      \"enabled\": true,\n      \"name\": \"Cloudflare\",\n      \"footer_text\": \"--footer--\",\n      \"header_text\": \"--header--\",\n      \"mailto_address\": \"admin@example.com\",\n      \"mailto_subject\": \"Blocked User Inquiry\",\n      \"logo_path\": \"https://logos.com/a.png\",\n      \"background_color\": true\n    },\n    \"browser_isolation\": {\n      \"url_browser_isolation_enabled\": true\n    },\n    \"fips\": {\n      \"tls\": true\n    }\n  }\n}",
+				"description": "account settings"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"settings\": {\n      \"antivirus\": {\n        \"enabled_download_phase\": false,\n        \"enabled_upload_phase\": false,\n        \"fail_closed\": false\n      },\n      \"tls_decrypt\": {\n        \"enabled\": true\n      },\n      \"activity_log\": {\n        \"enabled\": true\n      },\n      \"block_page\": {\n        \"enabled\": true,\n        \"name\": \"Cloudflare\",\n        \"footer_text\": \"--footer--\",\n        \"header_text\": \"--header--\",\n        \"mailto_address\": \"admin@example.com\",\n        \"mailto_subject\": \"Blocked User Inquiry\",\n        \"logo_path\": \"https://logos.com/a.png\",\n        \"background_color\": true\n      },\n      \"browser_isolation\": {\n        \"url_browser_isolation_enabled\": true\n      },\n      \"fips\": {\n        \"tls\": true\n      }\n    },\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
+		},
+		{
+			"title": "Get Zero Trust account configuration",
+			"description": "Describes current Zero Trust account configuration",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/gateway/configuration",
+			"method": "GET",
+			"cfOwnership": "gateway",
+			"html_id": "zero-trust-accounts-get-zero-trust-account-configuration",
+			"uri": "accounts/:identifier/gateway/configuration",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/configuration\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"settings\": {\n      \"antivirus\": {\n        \"enabled_download_phase\": false,\n        \"enabled_upload_phase\": false,\n        \"fail_closed\": false\n      },\n      \"tls_decrypt\": {\n        \"enabled\": true\n      },\n      \"activity_log\": {\n        \"enabled\": true\n      },\n      \"block_page\": {\n        \"enabled\": true,\n        \"name\": \"Cloudflare\",\n        \"footer_text\": \"--footer--\",\n        \"header_text\": \"--header--\",\n        \"mailto_address\": \"admin@example.com\",\n        \"mailto_subject\": \"Blocked User Inquiry\",\n        \"logo_path\": \"https://logos.com/a.png\",\n        \"background_color\": true\n      },\n      \"browser_isolation\": {\n        \"url_browser_isolation_enabled\": true\n      },\n      \"fips\": {\n        \"tls\": true\n      }\n    },\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
+		},
+		{
+			"title": "Update device settings for the Zero Trust account",
+			"description": "Updates the current device settings for Zero Trust account",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/devices/settings",
+			"method": "PUT",
+			"cfOwnership": "teams",
+			"html_id": "zero-trust-accounts-update-device-settings-for-the-zero-trust-account",
+			"uri": "accounts/:identifier/devices/settings",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/settings\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"gateway_proxy_enabled\":true,\"gateway_udp_proxy_enabled\":true}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"gateway_proxy_enabled": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Enable gateway proxy filtering on TCP"
+					},
+					"gateway_udp_proxy_enabled": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Enable gateway proxy filtering on UDP"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"gateway_proxy_enabled",
+					"gateway_udp_proxy_enabled"
+				],
+				"objects": [],
+				"example": "{\n  \"gateway_proxy_enabled\": true,\n  \"gateway_udp_proxy_enabled\": true\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"gateway_proxy_enabled\": true,\n    \"gateway_udp_proxy_enabled\": true\n  }\n}"
+		},
+		{
+			"title": "Get device settings for Zero Trust account",
+			"description": "Describes the current device settings Zero Trust account",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/devices/settings",
+			"method": "GET",
+			"cfOwnership": "teams",
+			"html_id": "zero-trust-accounts-get-device-settings-for-zero-trust-account",
+			"uri": "accounts/:identifier/devices/settings",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/settings\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"gateway_proxy_enabled\": true,\n    \"gateway_udp_proxy_enabled\": true\n  }\n}"
+		},
+		{
+			"title": "Update logging settings for the Zero Trust account",
+			"description": "Updates the current logging settings for the Zero Trust accounty",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/gateway/logging",
+			"method": "PUT",
+			"cfOwnership": "gateway",
+			"html_id": "zero-trust-accounts-update-logging-settings-for-the-zero-trust-account",
+			"uri": "accounts/:identifier/gateway/logging",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/logging\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"settings_by_rule_type\":{\"dns\":{\"log_all\":false,\"log_blocks\":true},\"l4\":{\"log_all\":false,\"log_blocks\":true},\"http\":{\"log_all\":false,\"log_blocks\":true}},\"redact_pii\":true}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"settings_by_rule_type": {
+						"type": "object",
+						"example": "{\n  \"dns\": {\n    \"log_all\": false,\n    \"log_blocks\": true\n  },\n  \"l4\": {\n    \"log_all\": false,\n    \"log_blocks\": true\n  },\n  \"http\": {\n    \"log_all\": false,\n    \"log_blocks\": true\n  }\n}",
+						"properties": {
+							"dns": {
+								"type": "object",
+								"example": "{\n  \"log_all\": false,\n  \"log_blocks\": true\n}",
+								"properties": {
+									"log_all": {
+										"type": "boolean",
+										"example": "false",
+										"description": "Log all requests to this service"
+									},
+									"log_blocks": {
+										"type": "boolean",
+										"example": "true",
+										"description": "Log only blocking requests to this service"
+									}
+								},
+								"description": "Logging settings for DNS firewall"
+							},
+							"l4": {
+								"type": "object",
+								"example": "{\n  \"log_all\": false,\n  \"log_blocks\": true\n}",
+								"properties": {
+									"log_all": {
+										"type": "boolean",
+										"example": "false",
+										"description": "Log all requests to this service"
+									},
+									"log_blocks": {
+										"type": "boolean",
+										"example": "true",
+										"description": "Log only blocking requests to this service"
+									}
+								},
+								"description": "Logging settings for Network firewall"
+							},
+							"http": {
+								"type": "object",
+								"example": "{\n  \"log_all\": false,\n  \"log_blocks\": true\n}",
+								"properties": {
+									"log_all": {
+										"type": "boolean",
+										"example": "false",
+										"description": "Log all requests to this service"
+									},
+									"log_blocks": {
+										"type": "boolean",
+										"example": "true",
+										"description": "Log only blocking requests to this service"
+									}
+								},
+								"description": "Logging settings for HTTP/HTTPS firewall"
+							}
+						},
+						"description": "Logging settings by rule type"
+					},
+					"redact_pii": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent)"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"settings_by_rule_type",
+					"redact_pii"
+				],
+				"objects": [],
+				"example": "{\n  \"settings_by_rule_type\": {\n    \"dns\": {\n      \"log_all\": false,\n      \"log_blocks\": true\n    },\n    \"l4\": {\n      \"log_all\": false,\n      \"log_blocks\": true\n    },\n    \"http\": {\n      \"log_all\": false,\n      \"log_blocks\": true\n    }\n  },\n  \"redact_pii\": true\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"settings_by_rule_type\": {\n      \"dns\": {\n        \"log_all\": false,\n        \"log_blocks\": true\n      },\n      \"l4\": {\n        \"log_all\": false,\n        \"log_blocks\": true\n      },\n      \"http\": {\n        \"log_all\": false,\n        \"log_blocks\": true\n      }\n    },\n    \"redact_pii\": true\n  }\n}"
+		},
+		{
+			"title": "Get logging settings for the Zero Trust account",
+			"description": "Describes the current logging settings for Zero Trust account",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/gateway/logging",
+			"method": "GET",
+			"cfOwnership": "gateway",
+			"html_id": "zero-trust-accounts-get-logging-settings-for-the-zero-trust-account",
+			"uri": "accounts/:identifier/gateway/logging",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/logging\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"settings_by_rule_type\": {\n      \"dns\": {\n        \"log_all\": false,\n        \"log_blocks\": true\n      },\n      \"l4\": {\n        \"log_all\": false,\n        \"log_blocks\": true\n      },\n      \"http\": {\n        \"log_all\": false,\n        \"log_blocks\": true\n      }\n    },\n    \"redact_pii\": true\n  }\n}"
+		}
+	],
+	"html_id": "zero-trust-accounts",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"699d98642c564d2e855e9661899b7252\"",
+				"maxLength": 32,
+				"description": "Cloudflare account tag"
+			},
+			"gateway_tag": {
+				"type": "string",
+				"example": "\"f174e90afafe4643bbbc4a0ed4fc8415\"",
+				"maxLength": 32,
+				"description": "Gateway internal id"
+			},
+			"provider_name": {
+				"type": "string",
+				"example": "\"Cloudflare\"",
+				"description": "The name of provider. Usually cloudflare."
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"gateway_tag",
+			"provider_name"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"699d98642c564d2e855e9661899b7252\",\n  \"gateway_tag\": \"f174e90afafe4643bbbc4a0ed4fc8415\",\n  \"provider_name\": \"Cloudflare\"\n}",
+		"title": "Zero Trust accounts",
+		"description": "Account for managing Secure Web Gateway policies."
+	}
+}

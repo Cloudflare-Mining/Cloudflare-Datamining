@@ -1,0 +1,64 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/ips.json",
+	"title": "Cloudflare IPs",
+	"description": "Cloudflare IP space",
+	"type": "object",
+	"links": [
+		{
+			"title": "Cloudflare IP Details",
+			"description": "Get Cloudflare IPs",
+			"rel": "self",
+			"href": "ips",
+			"method": "GET",
+			"cfRequestHeaders": {},
+			"cfOwnership": "addressing",
+			"html_id": "cloudflare-ips-cloudflare-ip-details",
+			"uri": "ips",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/ips\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"ipv4_cidrs\": [\n      \"199.27.128.0/21\"\n    ],\n    \"ipv6_cidrs\": [\n      \"2400:cb00::/32\"\n    ],\n    \"etag\": \"a8e453d9d129a3769407127936edfdb0\"\n  }\n}"
+		}
+	],
+	"html_id": "cloudflare-ips",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"ipv4_cidrs": {
+				"type": "array",
+				"example": "[\n  \"199.27.128.0/21\"\n]",
+				"description": "List of Cloudflare IPv4 CIDR addresses",
+				"items": {
+					"type": "string",
+					"description": "IPv4 CIDR",
+					"example": "199.27.128.0/21"
+				}
+			},
+			"ipv6_cidrs": {
+				"type": "array",
+				"example": "[\n  \"2400:cb00::/32\"\n]",
+				"description": "List of Cloudflare IPv6 CIDR addresses",
+				"items": {
+					"type": "string",
+					"description": "IPv6 CIDR",
+					"example": "2400:cb00::/32"
+				}
+			},
+			"etag": {
+				"type": "string",
+				"example": "\"a8e453d9d129a3769407127936edfdb0\"",
+				"description": "A digest of the IP data. Useful for determining if the data has changed"
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"ipv4_cidrs",
+			"ipv6_cidrs",
+			"etag"
+		],
+		"objects": [],
+		"example": "{\n  \"ipv4_cidrs\": [\n    \"199.27.128.0/21\"\n  ],\n  \"ipv6_cidrs\": [\n    \"2400:cb00::/32\"\n  ],\n  \"etag\": \"a8e453d9d129a3769407127936edfdb0\"\n}",
+		"title": "Cloudflare IPs",
+		"description": "Cloudflare IP space"
+	}
+}

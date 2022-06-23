@@ -1,0 +1,1459 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/waitingroom.json",
+	"title": "Waiting Room",
+	"description": "Zone-level waiting rooms",
+	"type": "object",
+	"links": [
+		{
+			"title": "List waiting rooms",
+			"description": "Lists waiting rooms.",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_identifier}/waiting_rooms",
+			"method": "GET",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": true,
+				"enterprise": true
+			},
+			"cfOwnership": "waitingroom",
+			"html_id": "waiting-room-list-waiting-rooms",
+			"uri": "zones/:zone_identifier/waiting_rooms",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/waiting_rooms?page=1&per_page=25\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"page": {
+						"type": "number",
+						"example": "1",
+						"description": "Page number of paginated results.",
+						"minimum": 1,
+						"default": 1
+					},
+					"per_page": {
+						"type": "number",
+						"example": "25",
+						"description": "Sets the number of items per page.",
+						"minimum": 5,
+						"maximum": 1000,
+						"default": 25
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"page",
+					"per_page"
+				],
+				"objects": [],
+				"example": "{\n  \"page\": 1,\n  \"per_page\": 25\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"699d98642c564d2e855e9661899b7252\",\n      \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"name\": \"production_webinar\",\n      \"description\": \"Production - DO NOT MODIFY\",\n      \"suspended\": false,\n      \"host\": \"shop.example.com\",\n      \"path\": \"/shop/checkout\",\n      \"queue_all\": true,\n      \"new_users_per_minute\": 1000,\n      \"total_active_users\": 1000,\n      \"session_duration\": 10,\n      \"disable_session_renewal\": false,\n      \"json_response_enabled\": false,\n      \"queueing_method\": \"fifo\",\n      \"cookie_attributes\": {\n        \"samesite\": \"auto\",\n        \"secure\": \"auto\"\n      },\n      \"custom_page_html\": \"{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Queue all enabled {{/waitTimeKnown}}\",\n      \"default_template_language\": \"es-ES\",\n      \"next_event_prequeue_start_time\": \"2021-09-28T15:00:00.000Z\",\n      \"next_event_start_time\": \"2021-09-28T15:00:00.000Z\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Create waiting room",
+			"description": "Creates a new waiting room.",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_identifier}/waiting_rooms",
+			"method": "POST",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": true,
+				"enterprise": true
+			},
+			"cfOwnership": "waitingroom",
+			"html_id": "waiting-room-create-waiting-room",
+			"uri": "zones/:zone_identifier/waiting_rooms",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/waiting_rooms\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"production_webinar\",\"description\":\"Production - DO NOT MODIFY\",\"suspended\":false,\"host\":\"shop.example.com\",\"path\":\"/shop/checkout\",\"queue_all\":true,\"new_users_per_minute\":1000,\"total_active_users\":1000,\"session_duration\":10,\"disable_session_renewal\":false,\"json_response_enabled\":false,\"queueing_method\":\"fifo\",\"cookie_attributes\":{\"samesite\":\"auto\",\"secure\":\"auto\"},\"custom_page_html\":\"{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Queue all enabled {{/waitTimeKnown}}\",\"default_template_language\":\"es-ES\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"production_webinar\"",
+						"description": "A unique name to identify the waiting room. Only alphanumeric characters, hyphens and underscores are allowed."
+					},
+					"description": {
+						"type": "string",
+						"example": "\"Production - DO NOT MODIFY\"",
+						"description": "A note that you can use to add more details about the waiting room.",
+						"default": ""
+					},
+					"suspended": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room.",
+						"default": false
+					},
+					"host": {
+						"type": "string",
+						"example": "\"shop.example.com\"",
+						"description": "The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique."
+					},
+					"path": {
+						"type": "string",
+						"example": "\"/shop/checkout\"",
+						"description": "Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported.",
+						"default": "/"
+					},
+					"queue_all": {
+						"type": "boolean",
+						"example": "true",
+						"description": "If queue_all is `true`, all the traffic that is coming to a route will be sent to the waiting room. No new traffic can get to the route once this field is set and estimated time will become unavailable.",
+						"default": false
+					},
+					"new_users_per_minute": {
+						"type": "integer",
+						"example": "1000",
+						"description": "Sets the number of new users that will be let into the route every minute. This value is used as baseline for the number of users that are let in per minute. So it is possible that there is a little more or little less traffic coming to the route based on the traffic patterns at that time around the world.",
+						"minimum": 200,
+						"maximum": 2147483647
+					},
+					"total_active_users": {
+						"type": "integer",
+						"example": "1000",
+						"description": "Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a baseline for the total number of active user sessions on the route. It is possible to have a situation where there are more or less active users sessions on the route based on the traffic patterns at that time around the world.",
+						"minimum": 200,
+						"maximum": 2147483647
+					},
+					"session_duration": {
+						"type": "integer",
+						"example": "10",
+						"description": "Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits the route.",
+						"minimum": 1,
+						"maximum": 30,
+						"default": 5
+					},
+					"disable_session_renewal": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an accepted user will have session_duration minutes to browse the site. After that, they will have to go through the waiting room again. If `false`, a user's session cookie will be automatically renewed on every request.",
+						"default": false
+					},
+					"json_response_enabled": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Only available for the Waiting Room Advanced subscription. If `true`, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object with information on the user's status in the waiting room as opposed to the configured static HTML page. This JSON response object has one property `cfWaitingRoom` which is an object containing the following fields:\n1. `inWaitingRoom`: Boolean indicating if the user is in the waiting room (always **true**).\n2. `waitTimeKnown`: Boolean indicating if the current estimated wait times are accurate. If **false**, they are not available.\n3. `waitTime`: Valid only when `waitTimeKnown` is **true**. Integer indicating the current estimated time in minutes the user will wait in the waiting room. When `queueingMethod` is **random**, this is set to `waitTime50Percentile`.\n4. `waitTime25Percentile`: Valid only when `queueingMethod` is **random** and `waitTimeKnown` is **true**. Integer indicating the current estimated maximum wait time for the 25% of users that gain entry the fastest (25th percentile).\n5. `waitTime50Percentile`: Valid only when `queueingMethod` is **random** and `waitTimeKnown` is **true**. Integer indicating the current estimated maximum wait time for the 50% of users that gain entry the fastest (50th percentile). In other words, half of the queued users are expected to let into the origin website before `waitTime50Percentile` and half are expected to be let in after it.\n6. `waitTime75Percentile`: Valid only when `queueingMethod` is **random** and `waitTimeKnown` is **true**. Integer indicating the current estimated maximum wait time for the 75% of users that gain entry the fastest (75th percentile).\n7. `waitTimeFormatted`: String displaying the `waitTime` formatted in English for users. If `waitTimeKnown` is **false**, `waitTimeFormatted` will display **unavailable**.\n8. `queueIsFull`: Boolean indicating if the waiting room's queue is currently full and not accepting new users at the moment.\n9. `queueAll`: Boolean indicating if all users will be queued in the waiting room and no one will be let into the origin website.\n10. `lastUpdated`: String displaying the timestamp as an ISO 8601 string of the user's last attempt to leave the waiting room and be let into the origin website. The user is able to make another attempt after `refreshIntervalSeconds` past this time. If the user makes a request too soon, it will be ignored and `lastUpdated` will not change.\n11. `refreshIntervalSeconds`: Integer indicating the number of seconds after `lastUpdated` until the user is able to make another attempt to leave the waiting room and be let into the origin website. When the `queueingMethod` is `reject`, there is no specified refresh time — it will always be **zero**.\n12. `queueingMethod`: The queueing method currently used by the waiting room. It is either **fifo**, **random**, **passthrough**, or **reject**.\n13. `isFIFOQueue`: Boolean indicating if the waiting room uses a FIFO (First-In-First-Out) queue.\n14. `isRandomQueue`: Boolean indicating if the waiting room uses a Random queue where users gain access randomly.\n15. `isPassthroughQueue`: Boolean indicating if the waiting room uses a passthrough queue. Keep in mind that when passthrough is enabled, this JSON response will only exist when `queueAll` is **true** or `isEventPrequeueing` is **true** because in all other cases requests will go directly to the origin.\n16. `isRejectQueue`: Boolean indicating if the waiting room uses a reject queue.\n17. `isEventActive`: Boolean indicating if an event is currently occurring. Events are able to change a waiting room's behavior during a specified period of time. For additional information, look at the event properties `prequeue_start_time`, `event_start_time`, and `event_end_time` in the documentation for creating waiting room events. Events are considered active between these start and end times, as well as during the prequeueing period if it exists.\n18. `isEventPrequeueing`: Valid only when `isEventActive` is **true**. Boolean indicating if an event is currently prequeueing users before it starts.\n19. `timeUntilEventStart`: Valid only when `isEventPrequeueing` is **true**. Integer indicating the number of minutes until the event starts.\n20. `timeUntilEventStartFormatted`: String displaying the `timeUntilEventStart` formatted in English for users. If `isEventPrequeueing` is **false**, `timeUntilEventStartFormatted` will display **unavailable**.\n21. `timeUntilEventEnd`: Valid only when `isEventActive` is **true**. Integer indicating the number of minutes until the event ends.\n22. `timeUntilEventEndFormatted`: String displaying the `timeUntilEventEnd` formatted in English for users. If `isEventActive` is **false**, `timeUntilEventEndFormatted` will display **unavailable**.\n23. `shuffleAtEventStart`: Valid only when `isEventActive` is **true**. Boolean indicating if the users in the prequeue are shuffled randomly when the event starts.\n\nAn example cURL to a waiting room could be:\n\n\tcurl -X GET \"https://example.com/waitingroom\" \\\n\t\t-H \"Accept: application/json\"\n\nIf `json_response_enabled` is **true** and the request hits the waiting room, an example JSON response when `queueingMethod` is **fifo** and no event is active could be:\n\n\t{\n\t\t\"cfWaitingRoom\": {\n\t\t\t\"inWaitingRoom\": true,\n\t\t\t\"waitTimeKnown\": true,\n\t\t\t\"waitTime\": 10,\n\t\t\t\"waitTime25Percentile\": 0,\n\t\t\t\"waitTime50Percentile\": 0,\n\t\t\t\"waitTime75Percentile\": 0,\n\t\t\t\"waitTimeFormatted\": \"10 minutes\",\n\t\t\t\"queueIsFull\": false,\n\t\t\t\"queueAll\": false,\n\t\t\t\"lastUpdated\": \"2020-08-03T23:46:00.000Z\",\n\t\t\t\"refreshIntervalSeconds\": 20,\n\t\t\t\"queueingMethod\": \"fifo\",\n\t\t\t\"isFIFOQueue\": true,\n\t\t\t\"isRandomQueue\": false,\n\t\t\t\"isPassthroughQueue\": false,\n\t\t\t\"isRejectQueue\": false,\n\t\t\t\"isEventActive\": false,\n\t\t\t\"isEventPrequeueing\": false,\n\t\t\t\"timeUntilEventStart\": 0,\n\t\t\t\"timeUntilEventStartFormatted\": \"unavailable\",\n\t\t\t\"timeUntilEventEnd\": 0,\n\t\t\t\"timeUntilEventEndFormatted\": \"unavailable\",\n\t\t\t\"shuffleAtEventStart\": false\n\t\t}\n\t}\n\nIf `json_response_enabled` is **true** and the request hits the waiting room, an example JSON response when `queueingMethod` is **random** and an event is active could be:\n\n\t{\n\t\t\"cfWaitingRoom\": {\n\t\t\t\"inWaitingRoom\": true,\n\t\t\t\"waitTimeKnown\": true,\n\t\t\t\"waitTime\": 10,\n\t\t\t\"waitTime25Percentile\": 5,\n\t\t\t\"waitTime50Percentile\": 10,\n\t\t\t\"waitTime75Percentile\": 15,\n\t\t\t\"waitTimeFormatted\": \"5 minutes to 15 minutes\",\n\t\t\t\"queueIsFull\": false,\n\t\t\t\"queueAll\": false,\n\t\t\t\"lastUpdated\": \"2020-08-03T23:46:00.000Z\",\n\t\t\t\"refreshIntervalSeconds\": 20,\n\t\t\t\"queueingMethod\": \"random\",\n\t\t\t\"isFIFOQueue\": false,\n\t\t\t\"isRandomQueue\": true,\n\t\t\t\"isPassthroughQueue\": false,\n\t\t\t\"isRejectQueue\": false,\n\t\t\t\"isEventActive\": true,\n\t\t\t\"isEventPrequeueing\": false,\n\t\t\t\"timeUntilEventStart\": 0,\n\t\t\t\"timeUntilEventStartFormatted\": \"unavailable\",\n\t\t\t\"timeUntilEventEnd\": 15,\n\t\t\t\"timeUntilEventEndFormatted\": \"15 minutes\",\n\t\t\t\"shuffleAtEventStart\": true\n\t\t}\n\t}",
+						"default": false
+					},
+					"queueing_method": {
+						"type": "string",
+						"example": "\"fifo\"",
+						"description": "Sets the queueing method used by the waiting room. Changing this parameter from the **default** queueing method is only available for the Waiting Room Advanced subscription. Regardless of the queueing method, if `queue_all` is enabled or an event is prequeueing, users in the waiting room will not be accepted to the origin. These users will always see a waiting room page that refreshes automatically. The valid queueing methods are:\n1. `fifo` **(default)**: First-In-First-Out queue where customers gain access in the order they arrived.\n2. `random`: Random queue where customers gain access randomly, regardless of arrival time.\n3. `passthrough`: Users will pass directly through the waiting room and into the origin website. As a result, any configured limits will not be respected while this is enabled. This method can be used as an alternative to disabling a waiting room (with `suspended`) so that analytics are still reported. This can be used if you wish to allow all traffic normally, but want to restrict traffic during a waiting room event, or vice versa.\n4. `reject`: Users will be immediately rejected from the waiting room. As a result, no users will reach the origin website while this is enabled. This can be used if you wish to reject all traffic while performing maintenance, block traffic during a specified period of time (an event), or block traffic while events are not occurring. Consider a waiting room used for vaccine distribution that only allows traffic during sign-up events, and otherwise blocks all traffic. For this case, the waiting room uses `reject`, and its events override this with `fifo`, `random`, or `passthrough`. When this queueing method is enabled and neither `queueAll` is enabled nor an event is prequeueing, the waiting room page **will not refresh automatically**.",
+						"enum": [
+							"fifo",
+							"random",
+							"passthrough",
+							"reject"
+						],
+						"default": "fifo"
+					},
+					"cookie_attributes": {
+						"type": "object",
+						"example": "{\n  \"samesite\": \"auto\",\n  \"secure\": \"auto\"\n}",
+						"properties": {
+							"samesite": {
+								"type": "string",
+								"example": "\"auto\"",
+								"description": "Configures the SameSite attribute on the waiting room cookie. Value `auto` will be translated to `lax` or `none` depending if **Always Use HTTPS** is enabled. Note that when using value `none`, the secure attribute cannot be set to `never`.",
+								"enum": [
+									"auto",
+									"lax",
+									"none",
+									"strict"
+								],
+								"default": "auto"
+							},
+							"secure": {
+								"type": "string",
+								"example": "\"auto\"",
+								"description": "Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled.",
+								"enum": [
+									"auto",
+									"always",
+									"never"
+								],
+								"default": "auto"
+							}
+						},
+						"description": "Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position."
+					},
+					"custom_page_html": {
+						"type": "string",
+						"example": "\"{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Queue all enabled {{/waitTimeKnown}}\"",
+						"description": "Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom_page_html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge:\n1. {{`waitTimeKnown`}} Acts like a boolean value that indicates the behavior to take when wait time is not available, for instance when queue_all is **true**. \n2. {{`waitTimeFormatted`}} Estimated wait time for the user. For example, five minutes. Alternatively, you can use: \n3. {{`waitTime`}} Number of minutes of estimated wait for a user.\n4. {{`waitTimeHours`}} Number of hours of estimated wait for a user (`Math.floor(waitTime/60)`). \n5. {{`waitTimeHourMinutes`}} Number of minutes above the `waitTimeHours` value (`waitTime%60`). \n6. {{`queueIsFull`}} Changes to **true** when no more people can be added to the queue.\n\nTo view the full list of variables, look at the `cfWaitingRoom` object described under the `json_response_enabled` property in other Waiting Room API calls.",
+						"default": ""
+					},
+					"default_template_language": {
+						"type": "string",
+						"example": "\"es-ES\"",
+						"description": "The language of the default page template. If no default_template_language is provided, then `en-US` (English) will be used.",
+						"enum": [
+							"en-US",
+							"es-ES",
+							"de-DE",
+							"fr-FR",
+							"it-IT",
+							"ja-JP",
+							"ko-KR",
+							"pt-BR",
+							"zh-CN",
+							"zh-TW",
+							"nl-NL",
+							"pl-PL",
+							"id-ID",
+							"tr-TR",
+							"ar-EG"
+						],
+						"default": "en-US"
+					}
+				},
+				"required_props": [
+					"name",
+					"host",
+					"new_users_per_minute",
+					"total_active_users"
+				],
+				"optional_props": [
+					"description",
+					"suspended",
+					"path",
+					"queue_all",
+					"session_duration",
+					"disable_session_renewal",
+					"json_response_enabled",
+					"queueing_method",
+					"cookie_attributes",
+					"custom_page_html",
+					"default_template_language"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": \"production_webinar\",\n  \"description\": \"Production - DO NOT MODIFY\",\n  \"suspended\": false,\n  \"host\": \"shop.example.com\",\n  \"path\": \"/shop/checkout\",\n  \"queue_all\": true,\n  \"new_users_per_minute\": 1000,\n  \"total_active_users\": 1000,\n  \"session_duration\": 10,\n  \"disable_session_renewal\": false,\n  \"json_response_enabled\": false,\n  \"queueing_method\": \"fifo\",\n  \"cookie_attributes\": {\n    \"samesite\": \"auto\",\n    \"secure\": \"auto\"\n  },\n  \"custom_page_html\": \"{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Queue all enabled {{/waitTimeKnown}}\",\n  \"default_template_language\": \"es-ES\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"699d98642c564d2e855e9661899b7252\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"production_webinar\",\n    \"description\": \"Production - DO NOT MODIFY\",\n    \"suspended\": false,\n    \"host\": \"shop.example.com\",\n    \"path\": \"/shop/checkout\",\n    \"queue_all\": true,\n    \"new_users_per_minute\": 1000,\n    \"total_active_users\": 1000,\n    \"session_duration\": 10,\n    \"disable_session_renewal\": false,\n    \"json_response_enabled\": false,\n    \"queueing_method\": \"fifo\",\n    \"cookie_attributes\": {\n      \"samesite\": \"auto\",\n      \"secure\": \"auto\"\n    },\n    \"custom_page_html\": \"{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Queue all enabled {{/waitTimeKnown}}\",\n    \"default_template_language\": \"es-ES\",\n    \"next_event_prequeue_start_time\": \"2021-09-28T15:00:00.000Z\",\n    \"next_event_start_time\": \"2021-09-28T15:00:00.000Z\"\n  }\n}"
+		},
+		{
+			"title": "Waiting room details",
+			"description": "Fetches a single configured waiting room.",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/waiting_rooms/{#/definitions/waiting_room_id}",
+			"method": "GET",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": true,
+				"enterprise": true
+			},
+			"cfOwnership": "waitingroom",
+			"html_id": "waiting-room-waiting-room-details",
+			"uri": "zones/:zone_identifier/waiting_rooms/:waiting_room_id",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/waiting_rooms/699d98642c564d2e855e9661899b7252\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"699d98642c564d2e855e9661899b7252\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"production_webinar\",\n    \"description\": \"Production - DO NOT MODIFY\",\n    \"suspended\": false,\n    \"host\": \"shop.example.com\",\n    \"path\": \"/shop/checkout\",\n    \"queue_all\": true,\n    \"new_users_per_minute\": 1000,\n    \"total_active_users\": 1000,\n    \"session_duration\": 10,\n    \"disable_session_renewal\": false,\n    \"json_response_enabled\": false,\n    \"queueing_method\": \"fifo\",\n    \"cookie_attributes\": {\n      \"samesite\": \"auto\",\n      \"secure\": \"auto\"\n    },\n    \"custom_page_html\": \"{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Queue all enabled {{/waitTimeKnown}}\",\n    \"default_template_language\": \"es-ES\",\n    \"next_event_prequeue_start_time\": \"2021-09-28T15:00:00.000Z\",\n    \"next_event_start_time\": \"2021-09-28T15:00:00.000Z\"\n  }\n}"
+		},
+		{
+			"title": "Update waiting room",
+			"description": "Updates a configured waiting room.",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/waiting_rooms/{#/definitions/waiting_room_id}",
+			"method": "PUT",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": true,
+				"enterprise": true
+			},
+			"cfOwnership": "waitingroom",
+			"html_id": "waiting-room-update-waiting-room",
+			"uri": "zones/:zone_identifier/waiting_rooms/:waiting_room_id",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/waiting_rooms/699d98642c564d2e855e9661899b7252\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"production_webinar\",\"description\":\"Production - DO NOT MODIFY\",\"suspended\":false,\"host\":\"shop.example.com\",\"path\":\"/shop/checkout\",\"queue_all\":true,\"new_users_per_minute\":1000,\"total_active_users\":1000,\"session_duration\":10,\"disable_session_renewal\":false,\"json_response_enabled\":false,\"queueing_method\":\"fifo\",\"cookie_attributes\":{\"samesite\":\"auto\",\"secure\":\"auto\"},\"custom_page_html\":\"{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Queue all enabled {{/waitTimeKnown}}\",\"default_template_language\":\"es-ES\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"production_webinar\"",
+						"description": "A unique name to identify the waiting room. Only alphanumeric characters, hyphens and underscores are allowed."
+					},
+					"description": {
+						"type": "string",
+						"example": "\"Production - DO NOT MODIFY\"",
+						"description": "A note that you can use to add more details about the waiting room.",
+						"default": ""
+					},
+					"suspended": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room.",
+						"default": false
+					},
+					"host": {
+						"type": "string",
+						"example": "\"shop.example.com\"",
+						"description": "The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique."
+					},
+					"path": {
+						"type": "string",
+						"example": "\"/shop/checkout\"",
+						"description": "Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported.",
+						"default": "/"
+					},
+					"queue_all": {
+						"type": "boolean",
+						"example": "true",
+						"description": "If queue_all is `true`, all the traffic that is coming to a route will be sent to the waiting room. No new traffic can get to the route once this field is set and estimated time will become unavailable.",
+						"default": false
+					},
+					"new_users_per_minute": {
+						"type": "integer",
+						"example": "1000",
+						"description": "Sets the number of new users that will be let into the route every minute. This value is used as baseline for the number of users that are let in per minute. So it is possible that there is a little more or little less traffic coming to the route based on the traffic patterns at that time around the world.",
+						"minimum": 200,
+						"maximum": 2147483647
+					},
+					"total_active_users": {
+						"type": "integer",
+						"example": "1000",
+						"description": "Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a baseline for the total number of active user sessions on the route. It is possible to have a situation where there are more or less active users sessions on the route based on the traffic patterns at that time around the world.",
+						"minimum": 200,
+						"maximum": 2147483647
+					},
+					"session_duration": {
+						"type": "integer",
+						"example": "10",
+						"description": "Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits the route.",
+						"minimum": 1,
+						"maximum": 30,
+						"default": 5
+					},
+					"disable_session_renewal": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an accepted user will have session_duration minutes to browse the site. After that, they will have to go through the waiting room again. If `false`, a user's session cookie will be automatically renewed on every request.",
+						"default": false
+					},
+					"json_response_enabled": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Only available for the Waiting Room Advanced subscription. If `true`, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object with information on the user's status in the waiting room as opposed to the configured static HTML page. This JSON response object has one property `cfWaitingRoom` which is an object containing the following fields:\n1. `inWaitingRoom`: Boolean indicating if the user is in the waiting room (always **true**).\n2. `waitTimeKnown`: Boolean indicating if the current estimated wait times are accurate. If **false**, they are not available.\n3. `waitTime`: Valid only when `waitTimeKnown` is **true**. Integer indicating the current estimated time in minutes the user will wait in the waiting room. When `queueingMethod` is **random**, this is set to `waitTime50Percentile`.\n4. `waitTime25Percentile`: Valid only when `queueingMethod` is **random** and `waitTimeKnown` is **true**. Integer indicating the current estimated maximum wait time for the 25% of users that gain entry the fastest (25th percentile).\n5. `waitTime50Percentile`: Valid only when `queueingMethod` is **random** and `waitTimeKnown` is **true**. Integer indicating the current estimated maximum wait time for the 50% of users that gain entry the fastest (50th percentile). In other words, half of the queued users are expected to let into the origin website before `waitTime50Percentile` and half are expected to be let in after it.\n6. `waitTime75Percentile`: Valid only when `queueingMethod` is **random** and `waitTimeKnown` is **true**. Integer indicating the current estimated maximum wait time for the 75% of users that gain entry the fastest (75th percentile).\n7. `waitTimeFormatted`: String displaying the `waitTime` formatted in English for users. If `waitTimeKnown` is **false**, `waitTimeFormatted` will display **unavailable**.\n8. `queueIsFull`: Boolean indicating if the waiting room's queue is currently full and not accepting new users at the moment.\n9. `queueAll`: Boolean indicating if all users will be queued in the waiting room and no one will be let into the origin website.\n10. `lastUpdated`: String displaying the timestamp as an ISO 8601 string of the user's last attempt to leave the waiting room and be let into the origin website. The user is able to make another attempt after `refreshIntervalSeconds` past this time. If the user makes a request too soon, it will be ignored and `lastUpdated` will not change.\n11. `refreshIntervalSeconds`: Integer indicating the number of seconds after `lastUpdated` until the user is able to make another attempt to leave the waiting room and be let into the origin website. When the `queueingMethod` is `reject`, there is no specified refresh time — it will always be **zero**.\n12. `queueingMethod`: The queueing method currently used by the waiting room. It is either **fifo**, **random**, **passthrough**, or **reject**.\n13. `isFIFOQueue`: Boolean indicating if the waiting room uses a FIFO (First-In-First-Out) queue.\n14. `isRandomQueue`: Boolean indicating if the waiting room uses a Random queue where users gain access randomly.\n15. `isPassthroughQueue`: Boolean indicating if the waiting room uses a passthrough queue. Keep in mind that when passthrough is enabled, this JSON response will only exist when `queueAll` is **true** or `isEventPrequeueing` is **true** because in all other cases requests will go directly to the origin.\n16. `isRejectQueue`: Boolean indicating if the waiting room uses a reject queue.\n17. `isEventActive`: Boolean indicating if an event is currently occurring. Events are able to change a waiting room's behavior during a specified period of time. For additional information, look at the event properties `prequeue_start_time`, `event_start_time`, and `event_end_time` in the documentation for creating waiting room events. Events are considered active between these start and end times, as well as during the prequeueing period if it exists.\n18. `isEventPrequeueing`: Valid only when `isEventActive` is **true**. Boolean indicating if an event is currently prequeueing users before it starts.\n19. `timeUntilEventStart`: Valid only when `isEventPrequeueing` is **true**. Integer indicating the number of minutes until the event starts.\n20. `timeUntilEventStartFormatted`: String displaying the `timeUntilEventStart` formatted in English for users. If `isEventPrequeueing` is **false**, `timeUntilEventStartFormatted` will display **unavailable**.\n21. `timeUntilEventEnd`: Valid only when `isEventActive` is **true**. Integer indicating the number of minutes until the event ends.\n22. `timeUntilEventEndFormatted`: String displaying the `timeUntilEventEnd` formatted in English for users. If `isEventActive` is **false**, `timeUntilEventEndFormatted` will display **unavailable**.\n23. `shuffleAtEventStart`: Valid only when `isEventActive` is **true**. Boolean indicating if the users in the prequeue are shuffled randomly when the event starts.\n\nAn example cURL to a waiting room could be:\n\n\tcurl -X GET \"https://example.com/waitingroom\" \\\n\t\t-H \"Accept: application/json\"\n\nIf `json_response_enabled` is **true** and the request hits the waiting room, an example JSON response when `queueingMethod` is **fifo** and no event is active could be:\n\n\t{\n\t\t\"cfWaitingRoom\": {\n\t\t\t\"inWaitingRoom\": true,\n\t\t\t\"waitTimeKnown\": true,\n\t\t\t\"waitTime\": 10,\n\t\t\t\"waitTime25Percentile\": 0,\n\t\t\t\"waitTime50Percentile\": 0,\n\t\t\t\"waitTime75Percentile\": 0,\n\t\t\t\"waitTimeFormatted\": \"10 minutes\",\n\t\t\t\"queueIsFull\": false,\n\t\t\t\"queueAll\": false,\n\t\t\t\"lastUpdated\": \"2020-08-03T23:46:00.000Z\",\n\t\t\t\"refreshIntervalSeconds\": 20,\n\t\t\t\"queueingMethod\": \"fifo\",\n\t\t\t\"isFIFOQueue\": true,\n\t\t\t\"isRandomQueue\": false,\n\t\t\t\"isPassthroughQueue\": false,\n\t\t\t\"isRejectQueue\": false,\n\t\t\t\"isEventActive\": false,\n\t\t\t\"isEventPrequeueing\": false,\n\t\t\t\"timeUntilEventStart\": 0,\n\t\t\t\"timeUntilEventStartFormatted\": \"unavailable\",\n\t\t\t\"timeUntilEventEnd\": 0,\n\t\t\t\"timeUntilEventEndFormatted\": \"unavailable\",\n\t\t\t\"shuffleAtEventStart\": false\n\t\t}\n\t}\n\nIf `json_response_enabled` is **true** and the request hits the waiting room, an example JSON response when `queueingMethod` is **random** and an event is active could be:\n\n\t{\n\t\t\"cfWaitingRoom\": {\n\t\t\t\"inWaitingRoom\": true,\n\t\t\t\"waitTimeKnown\": true,\n\t\t\t\"waitTime\": 10,\n\t\t\t\"waitTime25Percentile\": 5,\n\t\t\t\"waitTime50Percentile\": 10,\n\t\t\t\"waitTime75Percentile\": 15,\n\t\t\t\"waitTimeFormatted\": \"5 minutes to 15 minutes\",\n\t\t\t\"queueIsFull\": false,\n\t\t\t\"queueAll\": false,\n\t\t\t\"lastUpdated\": \"2020-08-03T23:46:00.000Z\",\n\t\t\t\"refreshIntervalSeconds\": 20,\n\t\t\t\"queueingMethod\": \"random\",\n\t\t\t\"isFIFOQueue\": false,\n\t\t\t\"isRandomQueue\": true,\n\t\t\t\"isPassthroughQueue\": false,\n\t\t\t\"isRejectQueue\": false,\n\t\t\t\"isEventActive\": true,\n\t\t\t\"isEventPrequeueing\": false,\n\t\t\t\"timeUntilEventStart\": 0,\n\t\t\t\"timeUntilEventStartFormatted\": \"unavailable\",\n\t\t\t\"timeUntilEventEnd\": 15,\n\t\t\t\"timeUntilEventEndFormatted\": \"15 minutes\",\n\t\t\t\"shuffleAtEventStart\": true\n\t\t}\n\t}",
+						"default": false
+					},
+					"queueing_method": {
+						"type": "string",
+						"example": "\"fifo\"",
+						"description": "Sets the queueing method used by the waiting room. Changing this parameter from the **default** queueing method is only available for the Waiting Room Advanced subscription. Regardless of the queueing method, if `queue_all` is enabled or an event is prequeueing, users in the waiting room will not be accepted to the origin. These users will always see a waiting room page that refreshes automatically. The valid queueing methods are:\n1. `fifo` **(default)**: First-In-First-Out queue where customers gain access in the order they arrived.\n2. `random`: Random queue where customers gain access randomly, regardless of arrival time.\n3. `passthrough`: Users will pass directly through the waiting room and into the origin website. As a result, any configured limits will not be respected while this is enabled. This method can be used as an alternative to disabling a waiting room (with `suspended`) so that analytics are still reported. This can be used if you wish to allow all traffic normally, but want to restrict traffic during a waiting room event, or vice versa.\n4. `reject`: Users will be immediately rejected from the waiting room. As a result, no users will reach the origin website while this is enabled. This can be used if you wish to reject all traffic while performing maintenance, block traffic during a specified period of time (an event), or block traffic while events are not occurring. Consider a waiting room used for vaccine distribution that only allows traffic during sign-up events, and otherwise blocks all traffic. For this case, the waiting room uses `reject`, and its events override this with `fifo`, `random`, or `passthrough`. When this queueing method is enabled and neither `queueAll` is enabled nor an event is prequeueing, the waiting room page **will not refresh automatically**.",
+						"enum": [
+							"fifo",
+							"random",
+							"passthrough",
+							"reject"
+						],
+						"default": "fifo"
+					},
+					"cookie_attributes": {
+						"type": "object",
+						"example": "{\n  \"samesite\": \"auto\",\n  \"secure\": \"auto\"\n}",
+						"properties": {
+							"samesite": {
+								"type": "string",
+								"example": "\"auto\"",
+								"description": "Configures the SameSite attribute on the waiting room cookie. Value `auto` will be translated to `lax` or `none` depending if **Always Use HTTPS** is enabled. Note that when using value `none`, the secure attribute cannot be set to `never`.",
+								"enum": [
+									"auto",
+									"lax",
+									"none",
+									"strict"
+								],
+								"default": "auto"
+							},
+							"secure": {
+								"type": "string",
+								"example": "\"auto\"",
+								"description": "Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled.",
+								"enum": [
+									"auto",
+									"always",
+									"never"
+								],
+								"default": "auto"
+							}
+						},
+						"description": "Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position."
+					},
+					"custom_page_html": {
+						"type": "string",
+						"example": "\"{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Queue all enabled {{/waitTimeKnown}}\"",
+						"description": "Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom_page_html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge:\n1. {{`waitTimeKnown`}} Acts like a boolean value that indicates the behavior to take when wait time is not available, for instance when queue_all is **true**. \n2. {{`waitTimeFormatted`}} Estimated wait time for the user. For example, five minutes. Alternatively, you can use: \n3. {{`waitTime`}} Number of minutes of estimated wait for a user.\n4. {{`waitTimeHours`}} Number of hours of estimated wait for a user (`Math.floor(waitTime/60)`). \n5. {{`waitTimeHourMinutes`}} Number of minutes above the `waitTimeHours` value (`waitTime%60`). \n6. {{`queueIsFull`}} Changes to **true** when no more people can be added to the queue.\n\nTo view the full list of variables, look at the `cfWaitingRoom` object described under the `json_response_enabled` property in other Waiting Room API calls.",
+						"default": ""
+					},
+					"default_template_language": {
+						"type": "string",
+						"example": "\"es-ES\"",
+						"description": "The language of the default page template. If no default_template_language is provided, then `en-US` (English) will be used.",
+						"enum": [
+							"en-US",
+							"es-ES",
+							"de-DE",
+							"fr-FR",
+							"it-IT",
+							"ja-JP",
+							"ko-KR",
+							"pt-BR",
+							"zh-CN",
+							"zh-TW",
+							"nl-NL",
+							"pl-PL",
+							"id-ID",
+							"tr-TR",
+							"ar-EG"
+						],
+						"default": "en-US"
+					}
+				},
+				"required_props": [
+					"name",
+					"host",
+					"new_users_per_minute",
+					"total_active_users"
+				],
+				"optional_props": [
+					"description",
+					"suspended",
+					"path",
+					"queue_all",
+					"session_duration",
+					"disable_session_renewal",
+					"json_response_enabled",
+					"queueing_method",
+					"cookie_attributes",
+					"custom_page_html",
+					"default_template_language"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": \"production_webinar\",\n  \"description\": \"Production - DO NOT MODIFY\",\n  \"suspended\": false,\n  \"host\": \"shop.example.com\",\n  \"path\": \"/shop/checkout\",\n  \"queue_all\": true,\n  \"new_users_per_minute\": 1000,\n  \"total_active_users\": 1000,\n  \"session_duration\": 10,\n  \"disable_session_renewal\": false,\n  \"json_response_enabled\": false,\n  \"queueing_method\": \"fifo\",\n  \"cookie_attributes\": {\n    \"samesite\": \"auto\",\n    \"secure\": \"auto\"\n  },\n  \"custom_page_html\": \"{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Queue all enabled {{/waitTimeKnown}}\",\n  \"default_template_language\": \"es-ES\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"699d98642c564d2e855e9661899b7252\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"production_webinar\",\n    \"description\": \"Production - DO NOT MODIFY\",\n    \"suspended\": false,\n    \"host\": \"shop.example.com\",\n    \"path\": \"/shop/checkout\",\n    \"queue_all\": true,\n    \"new_users_per_minute\": 1000,\n    \"total_active_users\": 1000,\n    \"session_duration\": 10,\n    \"disable_session_renewal\": false,\n    \"json_response_enabled\": false,\n    \"queueing_method\": \"fifo\",\n    \"cookie_attributes\": {\n      \"samesite\": \"auto\",\n      \"secure\": \"auto\"\n    },\n    \"custom_page_html\": \"{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Queue all enabled {{/waitTimeKnown}}\",\n    \"default_template_language\": \"es-ES\",\n    \"next_event_prequeue_start_time\": \"2021-09-28T15:00:00.000Z\",\n    \"next_event_start_time\": \"2021-09-28T15:00:00.000Z\"\n  }\n}"
+		},
+		{
+			"title": "Patch waiting room",
+			"description": "Patches a configured waiting room.",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/waiting_rooms/{#/definitions/waiting_room_id}",
+			"method": "PATCH",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": true,
+				"enterprise": true
+			},
+			"cfOwnership": "waitingroom",
+			"html_id": "waiting-room-patch-waiting-room",
+			"uri": "zones/:zone_identifier/waiting_rooms/:waiting_room_id",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/waiting_rooms/699d98642c564d2e855e9661899b7252\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"production_webinar\",\"description\":\"Production - DO NOT MODIFY\",\"suspended\":false,\"host\":\"shop.example.com\",\"path\":\"/shop/checkout\",\"queue_all\":true,\"new_users_per_minute\":1000,\"total_active_users\":1000,\"session_duration\":10,\"disable_session_renewal\":false,\"json_response_enabled\":false,\"queueing_method\":\"fifo\",\"cookie_attributes\":{\"samesite\":\"auto\",\"secure\":\"auto\"},\"custom_page_html\":\"{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Queue all enabled {{/waitTimeKnown}}\",\"default_template_language\":\"es-ES\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"production_webinar\"",
+						"description": "A unique name to identify the waiting room. Only alphanumeric characters, hyphens and underscores are allowed."
+					},
+					"description": {
+						"type": "string",
+						"example": "\"Production - DO NOT MODIFY\"",
+						"description": "A note that you can use to add more details about the waiting room.",
+						"default": ""
+					},
+					"suspended": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room.",
+						"default": false
+					},
+					"host": {
+						"type": "string",
+						"example": "\"shop.example.com\"",
+						"description": "The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique."
+					},
+					"path": {
+						"type": "string",
+						"example": "\"/shop/checkout\"",
+						"description": "Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported.",
+						"default": "/"
+					},
+					"queue_all": {
+						"type": "boolean",
+						"example": "true",
+						"description": "If queue_all is `true`, all the traffic that is coming to a route will be sent to the waiting room. No new traffic can get to the route once this field is set and estimated time will become unavailable.",
+						"default": false
+					},
+					"new_users_per_minute": {
+						"type": "integer",
+						"example": "1000",
+						"description": "Sets the number of new users that will be let into the route every minute. This value is used as baseline for the number of users that are let in per minute. So it is possible that there is a little more or little less traffic coming to the route based on the traffic patterns at that time around the world.",
+						"minimum": 200,
+						"maximum": 2147483647
+					},
+					"total_active_users": {
+						"type": "integer",
+						"example": "1000",
+						"description": "Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a baseline for the total number of active user sessions on the route. It is possible to have a situation where there are more or less active users sessions on the route based on the traffic patterns at that time around the world.",
+						"minimum": 200,
+						"maximum": 2147483647
+					},
+					"session_duration": {
+						"type": "integer",
+						"example": "10",
+						"description": "Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits the route.",
+						"minimum": 1,
+						"maximum": 30,
+						"default": 5
+					},
+					"disable_session_renewal": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an accepted user will have session_duration minutes to browse the site. After that, they will have to go through the waiting room again. If `false`, a user's session cookie will be automatically renewed on every request.",
+						"default": false
+					},
+					"json_response_enabled": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Only available for the Waiting Room Advanced subscription. If `true`, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object with information on the user's status in the waiting room as opposed to the configured static HTML page. This JSON response object has one property `cfWaitingRoom` which is an object containing the following fields:\n1. `inWaitingRoom`: Boolean indicating if the user is in the waiting room (always **true**).\n2. `waitTimeKnown`: Boolean indicating if the current estimated wait times are accurate. If **false**, they are not available.\n3. `waitTime`: Valid only when `waitTimeKnown` is **true**. Integer indicating the current estimated time in minutes the user will wait in the waiting room. When `queueingMethod` is **random**, this is set to `waitTime50Percentile`.\n4. `waitTime25Percentile`: Valid only when `queueingMethod` is **random** and `waitTimeKnown` is **true**. Integer indicating the current estimated maximum wait time for the 25% of users that gain entry the fastest (25th percentile).\n5. `waitTime50Percentile`: Valid only when `queueingMethod` is **random** and `waitTimeKnown` is **true**. Integer indicating the current estimated maximum wait time for the 50% of users that gain entry the fastest (50th percentile). In other words, half of the queued users are expected to let into the origin website before `waitTime50Percentile` and half are expected to be let in after it.\n6. `waitTime75Percentile`: Valid only when `queueingMethod` is **random** and `waitTimeKnown` is **true**. Integer indicating the current estimated maximum wait time for the 75% of users that gain entry the fastest (75th percentile).\n7. `waitTimeFormatted`: String displaying the `waitTime` formatted in English for users. If `waitTimeKnown` is **false**, `waitTimeFormatted` will display **unavailable**.\n8. `queueIsFull`: Boolean indicating if the waiting room's queue is currently full and not accepting new users at the moment.\n9. `queueAll`: Boolean indicating if all users will be queued in the waiting room and no one will be let into the origin website.\n10. `lastUpdated`: String displaying the timestamp as an ISO 8601 string of the user's last attempt to leave the waiting room and be let into the origin website. The user is able to make another attempt after `refreshIntervalSeconds` past this time. If the user makes a request too soon, it will be ignored and `lastUpdated` will not change.\n11. `refreshIntervalSeconds`: Integer indicating the number of seconds after `lastUpdated` until the user is able to make another attempt to leave the waiting room and be let into the origin website. When the `queueingMethod` is `reject`, there is no specified refresh time — it will always be **zero**.\n12. `queueingMethod`: The queueing method currently used by the waiting room. It is either **fifo**, **random**, **passthrough**, or **reject**.\n13. `isFIFOQueue`: Boolean indicating if the waiting room uses a FIFO (First-In-First-Out) queue.\n14. `isRandomQueue`: Boolean indicating if the waiting room uses a Random queue where users gain access randomly.\n15. `isPassthroughQueue`: Boolean indicating if the waiting room uses a passthrough queue. Keep in mind that when passthrough is enabled, this JSON response will only exist when `queueAll` is **true** or `isEventPrequeueing` is **true** because in all other cases requests will go directly to the origin.\n16. `isRejectQueue`: Boolean indicating if the waiting room uses a reject queue.\n17. `isEventActive`: Boolean indicating if an event is currently occurring. Events are able to change a waiting room's behavior during a specified period of time. For additional information, look at the event properties `prequeue_start_time`, `event_start_time`, and `event_end_time` in the documentation for creating waiting room events. Events are considered active between these start and end times, as well as during the prequeueing period if it exists.\n18. `isEventPrequeueing`: Valid only when `isEventActive` is **true**. Boolean indicating if an event is currently prequeueing users before it starts.\n19. `timeUntilEventStart`: Valid only when `isEventPrequeueing` is **true**. Integer indicating the number of minutes until the event starts.\n20. `timeUntilEventStartFormatted`: String displaying the `timeUntilEventStart` formatted in English for users. If `isEventPrequeueing` is **false**, `timeUntilEventStartFormatted` will display **unavailable**.\n21. `timeUntilEventEnd`: Valid only when `isEventActive` is **true**. Integer indicating the number of minutes until the event ends.\n22. `timeUntilEventEndFormatted`: String displaying the `timeUntilEventEnd` formatted in English for users. If `isEventActive` is **false**, `timeUntilEventEndFormatted` will display **unavailable**.\n23. `shuffleAtEventStart`: Valid only when `isEventActive` is **true**. Boolean indicating if the users in the prequeue are shuffled randomly when the event starts.\n\nAn example cURL to a waiting room could be:\n\n\tcurl -X GET \"https://example.com/waitingroom\" \\\n\t\t-H \"Accept: application/json\"\n\nIf `json_response_enabled` is **true** and the request hits the waiting room, an example JSON response when `queueingMethod` is **fifo** and no event is active could be:\n\n\t{\n\t\t\"cfWaitingRoom\": {\n\t\t\t\"inWaitingRoom\": true,\n\t\t\t\"waitTimeKnown\": true,\n\t\t\t\"waitTime\": 10,\n\t\t\t\"waitTime25Percentile\": 0,\n\t\t\t\"waitTime50Percentile\": 0,\n\t\t\t\"waitTime75Percentile\": 0,\n\t\t\t\"waitTimeFormatted\": \"10 minutes\",\n\t\t\t\"queueIsFull\": false,\n\t\t\t\"queueAll\": false,\n\t\t\t\"lastUpdated\": \"2020-08-03T23:46:00.000Z\",\n\t\t\t\"refreshIntervalSeconds\": 20,\n\t\t\t\"queueingMethod\": \"fifo\",\n\t\t\t\"isFIFOQueue\": true,\n\t\t\t\"isRandomQueue\": false,\n\t\t\t\"isPassthroughQueue\": false,\n\t\t\t\"isRejectQueue\": false,\n\t\t\t\"isEventActive\": false,\n\t\t\t\"isEventPrequeueing\": false,\n\t\t\t\"timeUntilEventStart\": 0,\n\t\t\t\"timeUntilEventStartFormatted\": \"unavailable\",\n\t\t\t\"timeUntilEventEnd\": 0,\n\t\t\t\"timeUntilEventEndFormatted\": \"unavailable\",\n\t\t\t\"shuffleAtEventStart\": false\n\t\t}\n\t}\n\nIf `json_response_enabled` is **true** and the request hits the waiting room, an example JSON response when `queueingMethod` is **random** and an event is active could be:\n\n\t{\n\t\t\"cfWaitingRoom\": {\n\t\t\t\"inWaitingRoom\": true,\n\t\t\t\"waitTimeKnown\": true,\n\t\t\t\"waitTime\": 10,\n\t\t\t\"waitTime25Percentile\": 5,\n\t\t\t\"waitTime50Percentile\": 10,\n\t\t\t\"waitTime75Percentile\": 15,\n\t\t\t\"waitTimeFormatted\": \"5 minutes to 15 minutes\",\n\t\t\t\"queueIsFull\": false,\n\t\t\t\"queueAll\": false,\n\t\t\t\"lastUpdated\": \"2020-08-03T23:46:00.000Z\",\n\t\t\t\"refreshIntervalSeconds\": 20,\n\t\t\t\"queueingMethod\": \"random\",\n\t\t\t\"isFIFOQueue\": false,\n\t\t\t\"isRandomQueue\": true,\n\t\t\t\"isPassthroughQueue\": false,\n\t\t\t\"isRejectQueue\": false,\n\t\t\t\"isEventActive\": true,\n\t\t\t\"isEventPrequeueing\": false,\n\t\t\t\"timeUntilEventStart\": 0,\n\t\t\t\"timeUntilEventStartFormatted\": \"unavailable\",\n\t\t\t\"timeUntilEventEnd\": 15,\n\t\t\t\"timeUntilEventEndFormatted\": \"15 minutes\",\n\t\t\t\"shuffleAtEventStart\": true\n\t\t}\n\t}",
+						"default": false
+					},
+					"queueing_method": {
+						"type": "string",
+						"example": "\"fifo\"",
+						"description": "Sets the queueing method used by the waiting room. Changing this parameter from the **default** queueing method is only available for the Waiting Room Advanced subscription. Regardless of the queueing method, if `queue_all` is enabled or an event is prequeueing, users in the waiting room will not be accepted to the origin. These users will always see a waiting room page that refreshes automatically. The valid queueing methods are:\n1. `fifo` **(default)**: First-In-First-Out queue where customers gain access in the order they arrived.\n2. `random`: Random queue where customers gain access randomly, regardless of arrival time.\n3. `passthrough`: Users will pass directly through the waiting room and into the origin website. As a result, any configured limits will not be respected while this is enabled. This method can be used as an alternative to disabling a waiting room (with `suspended`) so that analytics are still reported. This can be used if you wish to allow all traffic normally, but want to restrict traffic during a waiting room event, or vice versa.\n4. `reject`: Users will be immediately rejected from the waiting room. As a result, no users will reach the origin website while this is enabled. This can be used if you wish to reject all traffic while performing maintenance, block traffic during a specified period of time (an event), or block traffic while events are not occurring. Consider a waiting room used for vaccine distribution that only allows traffic during sign-up events, and otherwise blocks all traffic. For this case, the waiting room uses `reject`, and its events override this with `fifo`, `random`, or `passthrough`. When this queueing method is enabled and neither `queueAll` is enabled nor an event is prequeueing, the waiting room page **will not refresh automatically**.",
+						"enum": [
+							"fifo",
+							"random",
+							"passthrough",
+							"reject"
+						],
+						"default": "fifo"
+					},
+					"cookie_attributes": {
+						"type": "object",
+						"example": "{\n  \"samesite\": \"auto\",\n  \"secure\": \"auto\"\n}",
+						"properties": {
+							"samesite": {
+								"type": "string",
+								"example": "\"auto\"",
+								"description": "Configures the SameSite attribute on the waiting room cookie. Value `auto` will be translated to `lax` or `none` depending if **Always Use HTTPS** is enabled. Note that when using value `none`, the secure attribute cannot be set to `never`.",
+								"enum": [
+									"auto",
+									"lax",
+									"none",
+									"strict"
+								],
+								"default": "auto"
+							},
+							"secure": {
+								"type": "string",
+								"example": "\"auto\"",
+								"description": "Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled.",
+								"enum": [
+									"auto",
+									"always",
+									"never"
+								],
+								"default": "auto"
+							}
+						},
+						"description": "Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position."
+					},
+					"custom_page_html": {
+						"type": "string",
+						"example": "\"{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Queue all enabled {{/waitTimeKnown}}\"",
+						"description": "Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom_page_html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge:\n1. {{`waitTimeKnown`}} Acts like a boolean value that indicates the behavior to take when wait time is not available, for instance when queue_all is **true**. \n2. {{`waitTimeFormatted`}} Estimated wait time for the user. For example, five minutes. Alternatively, you can use: \n3. {{`waitTime`}} Number of minutes of estimated wait for a user.\n4. {{`waitTimeHours`}} Number of hours of estimated wait for a user (`Math.floor(waitTime/60)`). \n5. {{`waitTimeHourMinutes`}} Number of minutes above the `waitTimeHours` value (`waitTime%60`). \n6. {{`queueIsFull`}} Changes to **true** when no more people can be added to the queue.\n\nTo view the full list of variables, look at the `cfWaitingRoom` object described under the `json_response_enabled` property in other Waiting Room API calls.",
+						"default": ""
+					},
+					"default_template_language": {
+						"type": "string",
+						"example": "\"es-ES\"",
+						"description": "The language of the default page template. If no default_template_language is provided, then `en-US` (English) will be used.",
+						"enum": [
+							"en-US",
+							"es-ES",
+							"de-DE",
+							"fr-FR",
+							"it-IT",
+							"ja-JP",
+							"ko-KR",
+							"pt-BR",
+							"zh-CN",
+							"zh-TW",
+							"nl-NL",
+							"pl-PL",
+							"id-ID",
+							"tr-TR",
+							"ar-EG"
+						],
+						"default": "en-US"
+					}
+				},
+				"required_props": [
+					"name",
+					"host",
+					"new_users_per_minute",
+					"total_active_users"
+				],
+				"optional_props": [
+					"description",
+					"suspended",
+					"path",
+					"queue_all",
+					"session_duration",
+					"disable_session_renewal",
+					"json_response_enabled",
+					"queueing_method",
+					"cookie_attributes",
+					"custom_page_html",
+					"default_template_language"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": \"production_webinar\",\n  \"description\": \"Production - DO NOT MODIFY\",\n  \"suspended\": false,\n  \"host\": \"shop.example.com\",\n  \"path\": \"/shop/checkout\",\n  \"queue_all\": true,\n  \"new_users_per_minute\": 1000,\n  \"total_active_users\": 1000,\n  \"session_duration\": 10,\n  \"disable_session_renewal\": false,\n  \"json_response_enabled\": false,\n  \"queueing_method\": \"fifo\",\n  \"cookie_attributes\": {\n    \"samesite\": \"auto\",\n    \"secure\": \"auto\"\n  },\n  \"custom_page_html\": \"{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Queue all enabled {{/waitTimeKnown}}\",\n  \"default_template_language\": \"es-ES\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"699d98642c564d2e855e9661899b7252\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"production_webinar\",\n    \"description\": \"Production - DO NOT MODIFY\",\n    \"suspended\": false,\n    \"host\": \"shop.example.com\",\n    \"path\": \"/shop/checkout\",\n    \"queue_all\": true,\n    \"new_users_per_minute\": 1000,\n    \"total_active_users\": 1000,\n    \"session_duration\": 10,\n    \"disable_session_renewal\": false,\n    \"json_response_enabled\": false,\n    \"queueing_method\": \"fifo\",\n    \"cookie_attributes\": {\n      \"samesite\": \"auto\",\n      \"secure\": \"auto\"\n    },\n    \"custom_page_html\": \"{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Queue all enabled {{/waitTimeKnown}}\",\n    \"default_template_language\": \"es-ES\",\n    \"next_event_prequeue_start_time\": \"2021-09-28T15:00:00.000Z\",\n    \"next_event_start_time\": \"2021-09-28T15:00:00.000Z\"\n  }\n}"
+		},
+		{
+			"title": "Delete waiting room",
+			"description": "Deletes a waiting room.",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/waiting_rooms/{#/definitions/waiting_room_id}",
+			"method": "DELETE",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": true,
+				"enterprise": true
+			},
+			"cfOwnership": "waitingroom",
+			"html_id": "waiting-room-delete-waiting-room",
+			"uri": "zones/:zone_identifier/waiting_rooms/:waiting_room_id",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/waiting_rooms/699d98642c564d2e855e9661899b7252\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"699d98642c564d2e855e9661899b7252\"\n  }\n}"
+		},
+		{
+			"title": "List events",
+			"description": "Lists events for a waiting room.",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_identifier}/waiting_rooms/{#/definitions/waiting_room_id}/events",
+			"method": "GET",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfOwnership": "waitingroom",
+			"html_id": "waiting-room-list-events",
+			"uri": "zones/:zone_identifier/waiting_rooms/:waiting_room_id/events",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/waiting_rooms/699d98642c564d2e855e9661899b7252/events?page=1&per_page=25\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"page": {
+						"type": "number",
+						"example": "1",
+						"description": "Page number of paginated results.",
+						"minimum": 1,
+						"default": 1
+					},
+					"per_page": {
+						"type": "number",
+						"example": "25",
+						"description": "Sets the number of items per page.",
+						"minimum": 5,
+						"maximum": 1000,
+						"default": 25
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"page",
+					"per_page"
+				],
+				"objects": [],
+				"example": "{\n  \"page\": 1,\n  \"per_page\": 25\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"25756b2dfe6e378a06b033b670413757\",\n      \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"name\": \"production_webinar_event\",\n      \"description\": \"Production event - DO NOT MODIFY\",\n      \"suspended\": false,\n      \"prequeue_start_time\": \"2021-09-28T15:00:00.000Z\",\n      \"event_start_time\": \"2021-09-28T15:30:00.000Z\",\n      \"event_end_time\": \"2021-09-28T17:00:00.000Z\",\n      \"shuffle_at_event_start\": false,\n      \"new_users_per_minute\": 2000,\n      \"total_active_users\": 2500,\n      \"session_duration\": null,\n      \"disable_session_renewal\": null,\n      \"queueing_method\": \"random\",\n      \"custom_page_html\": \"{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Event is prequeueing / Queue all enabled {{/waitTimeKnown}}\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Create event",
+			"description": "Only available for the Waiting Room Advanced subscription. Creates an event for a waiting room. An event takes place during a specified period of time, temporarily changing the behavior of a waiting room. While the event is active, some of the properties in the event's configuration may either override or inherit from the waiting room's configuration. Note that events cannot overlap with each other, so only one event can be active at a time.",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_identifier}/waiting_rooms/{#/definitions/waiting_room_id}/events",
+			"method": "POST",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfOwnership": "waitingroom",
+			"html_id": "waiting-room-create-event",
+			"uri": "zones/:zone_identifier/waiting_rooms/:waiting_room_id/events",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/waiting_rooms/699d98642c564d2e855e9661899b7252/events\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"production_webinar_event\",\"description\":\"Production event - DO NOT MODIFY\",\"suspended\":false,\"prequeue_start_time\":\"2021-09-28T15:00:00.000Z\",\"event_start_time\":\"2021-09-28T15:30:00.000Z\",\"event_end_time\":\"2021-09-28T17:00:00.000Z\",\"shuffle_at_event_start\":false,\"new_users_per_minute\":2000,\"total_active_users\":2500,\"session_duration\":null,\"disable_session_renewal\":null,\"queueing_method\":\"random\",\"custom_page_html\":\"{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Event is prequeueing / Queue all enabled {{/waitTimeKnown}}\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"production_webinar_event\"",
+						"description": "A unique name to identify the event. Only alphanumeric characters, hyphens and underscores are allowed."
+					},
+					"description": {
+						"type": "string",
+						"example": "\"Production event - DO NOT MODIFY\"",
+						"description": "A note that you can use to add more details about the event.",
+						"default": ""
+					},
+					"suspended": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration.",
+						"default": false
+					},
+					"prequeue_start_time": {
+						"type": [
+							"string",
+							"null"
+						],
+						"example": "\"2021-09-28T15:00:00.000Z\"",
+						"description": "An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.",
+						"default": null
+					},
+					"event_start_time": {
+						"type": "string",
+						"example": "\"2021-09-28T15:30:00.000Z\"",
+						"description": "An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`."
+					},
+					"event_end_time": {
+						"type": "string",
+						"example": "\"2021-09-28T17:00:00.000Z\"",
+						"description": "An ISO 8601 timestamp that marks the end of the event."
+					},
+					"shuffle_at_event_start": {
+						"type": "boolean",
+						"example": "false",
+						"description": "If enabled, users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueing_method` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.",
+						"default": false
+					},
+					"new_users_per_minute": {
+						"type": [
+							"integer",
+							"null"
+						],
+						"example": "2000",
+						"description": "If set, the event will override the waiting room's `new_users_per_minute` property while it is active. If null, the event will inherit it. This can only be set if the event's `total_active_users` property is also set.",
+						"minimum": 200,
+						"maximum": 2147483647,
+						"default": null
+					},
+					"total_active_users": {
+						"type": [
+							"integer",
+							"null"
+						],
+						"example": "2500",
+						"description": "If set, the event will override the waiting room's `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event's `new_users_per_minute` property is also set.",
+						"minimum": 200,
+						"maximum": 2147483647,
+						"default": null
+					},
+					"session_duration": {
+						"type": [
+							"integer",
+							"null"
+						],
+						"example": "null",
+						"description": "If set, the event will override the waiting room's `session_duration` property while it is active. If null, the event will inherit it.",
+						"minimum": 1,
+						"maximum": 30,
+						"default": null
+					},
+					"disable_session_renewal": {
+						"type": [
+							"boolean",
+							"null"
+						],
+						"example": "null",
+						"description": "If set, the event will override the waiting room's `disable_session_renewal` property while it is active. If null, the event will inherit it.",
+						"default": null
+					},
+					"queueing_method": {
+						"type": [
+							"string",
+							"null"
+						],
+						"example": "\"random\"",
+						"description": "If set, the event will override the waiting room's `queueing_method` property while it is active. If null, the event will inherit it.",
+						"default": null
+					},
+					"custom_page_html": {
+						"type": [
+							"string",
+							"null"
+						],
+						"example": "\"{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Event is prequeueing / Queue all enabled {{/waitTimeKnown}}\"",
+						"description": "If set, the event will override the waiting room's `custom_page_html` property while it is active. If null, the event will inherit it.",
+						"default": null
+					}
+				},
+				"required_props": [
+					"name",
+					"event_start_time",
+					"event_end_time"
+				],
+				"optional_props": [
+					"description",
+					"suspended",
+					"prequeue_start_time",
+					"shuffle_at_event_start",
+					"new_users_per_minute",
+					"total_active_users",
+					"session_duration",
+					"disable_session_renewal",
+					"queueing_method",
+					"custom_page_html"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": \"production_webinar_event\",\n  \"description\": \"Production event - DO NOT MODIFY\",\n  \"suspended\": false,\n  \"prequeue_start_time\": \"2021-09-28T15:00:00.000Z\",\n  \"event_start_time\": \"2021-09-28T15:30:00.000Z\",\n  \"event_end_time\": \"2021-09-28T17:00:00.000Z\",\n  \"shuffle_at_event_start\": false,\n  \"new_users_per_minute\": 2000,\n  \"total_active_users\": 2500,\n  \"session_duration\": null,\n  \"disable_session_renewal\": null,\n  \"queueing_method\": \"random\",\n  \"custom_page_html\": \"{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Event is prequeueing / Queue all enabled {{/waitTimeKnown}}\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"25756b2dfe6e378a06b033b670413757\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"production_webinar_event\",\n    \"description\": \"Production event - DO NOT MODIFY\",\n    \"suspended\": false,\n    \"prequeue_start_time\": \"2021-09-28T15:00:00.000Z\",\n    \"event_start_time\": \"2021-09-28T15:30:00.000Z\",\n    \"event_end_time\": \"2021-09-28T17:00:00.000Z\",\n    \"shuffle_at_event_start\": false,\n    \"new_users_per_minute\": 2000,\n    \"total_active_users\": 2500,\n    \"session_duration\": null,\n    \"disable_session_renewal\": null,\n    \"queueing_method\": \"random\",\n    \"custom_page_html\": \"{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Event is prequeueing / Queue all enabled {{/waitTimeKnown}}\"\n  }\n}"
+		},
+		{
+			"title": "Event details",
+			"description": "Fetches a single configured event for a waiting room.",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/waiting_rooms/{#/definitions/waiting_room_id}/events/{#/definitions/event_id}",
+			"method": "GET",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfOwnership": "waitingroom",
+			"html_id": "waiting-room-event-details",
+			"uri": "zones/:zone_identifier/waiting_rooms/:waiting_room_id/events/:event_id",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/waiting_rooms/699d98642c564d2e855e9661899b7252/events/25756b2dfe6e378a06b033b670413757\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"25756b2dfe6e378a06b033b670413757\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"production_webinar_event\",\n    \"description\": \"Production event - DO NOT MODIFY\",\n    \"suspended\": false,\n    \"prequeue_start_time\": \"2021-09-28T15:00:00.000Z\",\n    \"event_start_time\": \"2021-09-28T15:30:00.000Z\",\n    \"event_end_time\": \"2021-09-28T17:00:00.000Z\",\n    \"shuffle_at_event_start\": false,\n    \"new_users_per_minute\": 2000,\n    \"total_active_users\": 2500,\n    \"session_duration\": null,\n    \"disable_session_renewal\": null,\n    \"queueing_method\": \"random\",\n    \"custom_page_html\": \"{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Event is prequeueing / Queue all enabled {{/waitTimeKnown}}\"\n  }\n}"
+		},
+		{
+			"title": "Update event",
+			"description": "Updates a configured event for a waiting room.",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/waiting_rooms/{#/definitions/waiting_room_id}/events/{#/definitions/event_id}",
+			"method": "PUT",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfOwnership": "waitingroom",
+			"html_id": "waiting-room-update-event",
+			"uri": "zones/:zone_identifier/waiting_rooms/:waiting_room_id/events/:event_id",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/waiting_rooms/699d98642c564d2e855e9661899b7252/events/25756b2dfe6e378a06b033b670413757\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"production_webinar_event\",\"description\":\"Production event - DO NOT MODIFY\",\"suspended\":false,\"prequeue_start_time\":\"2021-09-28T15:00:00.000Z\",\"event_start_time\":\"2021-09-28T15:30:00.000Z\",\"event_end_time\":\"2021-09-28T17:00:00.000Z\",\"shuffle_at_event_start\":false,\"new_users_per_minute\":2000,\"total_active_users\":2500,\"session_duration\":null,\"disable_session_renewal\":null,\"queueing_method\":\"random\",\"custom_page_html\":\"{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Event is prequeueing / Queue all enabled {{/waitTimeKnown}}\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"production_webinar_event\"",
+						"description": "A unique name to identify the event. Only alphanumeric characters, hyphens and underscores are allowed."
+					},
+					"description": {
+						"type": "string",
+						"example": "\"Production event - DO NOT MODIFY\"",
+						"description": "A note that you can use to add more details about the event.",
+						"default": ""
+					},
+					"suspended": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration.",
+						"default": false
+					},
+					"prequeue_start_time": {
+						"type": [
+							"string",
+							"null"
+						],
+						"example": "\"2021-09-28T15:00:00.000Z\"",
+						"description": "An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.",
+						"default": null
+					},
+					"event_start_time": {
+						"type": "string",
+						"example": "\"2021-09-28T15:30:00.000Z\"",
+						"description": "An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`."
+					},
+					"event_end_time": {
+						"type": "string",
+						"example": "\"2021-09-28T17:00:00.000Z\"",
+						"description": "An ISO 8601 timestamp that marks the end of the event."
+					},
+					"shuffle_at_event_start": {
+						"type": "boolean",
+						"example": "false",
+						"description": "If enabled, users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueing_method` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.",
+						"default": false
+					},
+					"new_users_per_minute": {
+						"type": [
+							"integer",
+							"null"
+						],
+						"example": "2000",
+						"description": "If set, the event will override the waiting room's `new_users_per_minute` property while it is active. If null, the event will inherit it. This can only be set if the event's `total_active_users` property is also set.",
+						"minimum": 200,
+						"maximum": 2147483647,
+						"default": null
+					},
+					"total_active_users": {
+						"type": [
+							"integer",
+							"null"
+						],
+						"example": "2500",
+						"description": "If set, the event will override the waiting room's `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event's `new_users_per_minute` property is also set.",
+						"minimum": 200,
+						"maximum": 2147483647,
+						"default": null
+					},
+					"session_duration": {
+						"type": [
+							"integer",
+							"null"
+						],
+						"example": "null",
+						"description": "If set, the event will override the waiting room's `session_duration` property while it is active. If null, the event will inherit it.",
+						"minimum": 1,
+						"maximum": 30,
+						"default": null
+					},
+					"disable_session_renewal": {
+						"type": [
+							"boolean",
+							"null"
+						],
+						"example": "null",
+						"description": "If set, the event will override the waiting room's `disable_session_renewal` property while it is active. If null, the event will inherit it.",
+						"default": null
+					},
+					"queueing_method": {
+						"type": [
+							"string",
+							"null"
+						],
+						"example": "\"random\"",
+						"description": "If set, the event will override the waiting room's `queueing_method` property while it is active. If null, the event will inherit it.",
+						"default": null
+					},
+					"custom_page_html": {
+						"type": [
+							"string",
+							"null"
+						],
+						"example": "\"{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Event is prequeueing / Queue all enabled {{/waitTimeKnown}}\"",
+						"description": "If set, the event will override the waiting room's `custom_page_html` property while it is active. If null, the event will inherit it.",
+						"default": null
+					}
+				},
+				"required_props": [
+					"name",
+					"event_start_time",
+					"event_end_time"
+				],
+				"optional_props": [
+					"description",
+					"suspended",
+					"prequeue_start_time",
+					"shuffle_at_event_start",
+					"new_users_per_minute",
+					"total_active_users",
+					"session_duration",
+					"disable_session_renewal",
+					"queueing_method",
+					"custom_page_html"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": \"production_webinar_event\",\n  \"description\": \"Production event - DO NOT MODIFY\",\n  \"suspended\": false,\n  \"prequeue_start_time\": \"2021-09-28T15:00:00.000Z\",\n  \"event_start_time\": \"2021-09-28T15:30:00.000Z\",\n  \"event_end_time\": \"2021-09-28T17:00:00.000Z\",\n  \"shuffle_at_event_start\": false,\n  \"new_users_per_minute\": 2000,\n  \"total_active_users\": 2500,\n  \"session_duration\": null,\n  \"disable_session_renewal\": null,\n  \"queueing_method\": \"random\",\n  \"custom_page_html\": \"{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Event is prequeueing / Queue all enabled {{/waitTimeKnown}}\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"25756b2dfe6e378a06b033b670413757\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"production_webinar_event\",\n    \"description\": \"Production event - DO NOT MODIFY\",\n    \"suspended\": false,\n    \"prequeue_start_time\": \"2021-09-28T15:00:00.000Z\",\n    \"event_start_time\": \"2021-09-28T15:30:00.000Z\",\n    \"event_end_time\": \"2021-09-28T17:00:00.000Z\",\n    \"shuffle_at_event_start\": false,\n    \"new_users_per_minute\": 2000,\n    \"total_active_users\": 2500,\n    \"session_duration\": null,\n    \"disable_session_renewal\": null,\n    \"queueing_method\": \"random\",\n    \"custom_page_html\": \"{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Event is prequeueing / Queue all enabled {{/waitTimeKnown}}\"\n  }\n}"
+		},
+		{
+			"title": "Patch event",
+			"description": "Patches a configured event for a waiting room.",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/waiting_rooms/{#/definitions/waiting_room_id}/events/{#/definitions/event_id}",
+			"method": "PATCH",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfOwnership": "waitingroom",
+			"html_id": "waiting-room-patch-event",
+			"uri": "zones/:zone_identifier/waiting_rooms/:waiting_room_id/events/:event_id",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/waiting_rooms/699d98642c564d2e855e9661899b7252/events/25756b2dfe6e378a06b033b670413757\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"production_webinar_event\",\"description\":\"Production event - DO NOT MODIFY\",\"suspended\":false,\"prequeue_start_time\":\"2021-09-28T15:00:00.000Z\",\"event_start_time\":\"2021-09-28T15:30:00.000Z\",\"event_end_time\":\"2021-09-28T17:00:00.000Z\",\"shuffle_at_event_start\":false,\"new_users_per_minute\":2000,\"total_active_users\":2500,\"session_duration\":null,\"disable_session_renewal\":null,\"queueing_method\":\"random\",\"custom_page_html\":\"{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Event is prequeueing / Queue all enabled {{/waitTimeKnown}}\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"production_webinar_event\"",
+						"description": "A unique name to identify the event. Only alphanumeric characters, hyphens and underscores are allowed."
+					},
+					"description": {
+						"type": "string",
+						"example": "\"Production event - DO NOT MODIFY\"",
+						"description": "A note that you can use to add more details about the event.",
+						"default": ""
+					},
+					"suspended": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration.",
+						"default": false
+					},
+					"prequeue_start_time": {
+						"type": [
+							"string",
+							"null"
+						],
+						"example": "\"2021-09-28T15:00:00.000Z\"",
+						"description": "An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.",
+						"default": null
+					},
+					"event_start_time": {
+						"type": "string",
+						"example": "\"2021-09-28T15:30:00.000Z\"",
+						"description": "An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`."
+					},
+					"event_end_time": {
+						"type": "string",
+						"example": "\"2021-09-28T17:00:00.000Z\"",
+						"description": "An ISO 8601 timestamp that marks the end of the event."
+					},
+					"shuffle_at_event_start": {
+						"type": "boolean",
+						"example": "false",
+						"description": "If enabled, users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueing_method` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.",
+						"default": false
+					},
+					"new_users_per_minute": {
+						"type": [
+							"integer",
+							"null"
+						],
+						"example": "2000",
+						"description": "If set, the event will override the waiting room's `new_users_per_minute` property while it is active. If null, the event will inherit it. This can only be set if the event's `total_active_users` property is also set.",
+						"minimum": 200,
+						"maximum": 2147483647,
+						"default": null
+					},
+					"total_active_users": {
+						"type": [
+							"integer",
+							"null"
+						],
+						"example": "2500",
+						"description": "If set, the event will override the waiting room's `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event's `new_users_per_minute` property is also set.",
+						"minimum": 200,
+						"maximum": 2147483647,
+						"default": null
+					},
+					"session_duration": {
+						"type": [
+							"integer",
+							"null"
+						],
+						"example": "null",
+						"description": "If set, the event will override the waiting room's `session_duration` property while it is active. If null, the event will inherit it.",
+						"minimum": 1,
+						"maximum": 30,
+						"default": null
+					},
+					"disable_session_renewal": {
+						"type": [
+							"boolean",
+							"null"
+						],
+						"example": "null",
+						"description": "If set, the event will override the waiting room's `disable_session_renewal` property while it is active. If null, the event will inherit it.",
+						"default": null
+					},
+					"queueing_method": {
+						"type": [
+							"string",
+							"null"
+						],
+						"example": "\"random\"",
+						"description": "If set, the event will override the waiting room's `queueing_method` property while it is active. If null, the event will inherit it.",
+						"default": null
+					},
+					"custom_page_html": {
+						"type": [
+							"string",
+							"null"
+						],
+						"example": "\"{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Event is prequeueing / Queue all enabled {{/waitTimeKnown}}\"",
+						"description": "If set, the event will override the waiting room's `custom_page_html` property while it is active. If null, the event will inherit it.",
+						"default": null
+					}
+				},
+				"required_props": [
+					"name",
+					"event_start_time",
+					"event_end_time"
+				],
+				"optional_props": [
+					"description",
+					"suspended",
+					"prequeue_start_time",
+					"shuffle_at_event_start",
+					"new_users_per_minute",
+					"total_active_users",
+					"session_duration",
+					"disable_session_renewal",
+					"queueing_method",
+					"custom_page_html"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": \"production_webinar_event\",\n  \"description\": \"Production event - DO NOT MODIFY\",\n  \"suspended\": false,\n  \"prequeue_start_time\": \"2021-09-28T15:00:00.000Z\",\n  \"event_start_time\": \"2021-09-28T15:30:00.000Z\",\n  \"event_end_time\": \"2021-09-28T17:00:00.000Z\",\n  \"shuffle_at_event_start\": false,\n  \"new_users_per_minute\": 2000,\n  \"total_active_users\": 2500,\n  \"session_duration\": null,\n  \"disable_session_renewal\": null,\n  \"queueing_method\": \"random\",\n  \"custom_page_html\": \"{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Event is prequeueing / Queue all enabled {{/waitTimeKnown}}\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"25756b2dfe6e378a06b033b670413757\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"production_webinar_event\",\n    \"description\": \"Production event - DO NOT MODIFY\",\n    \"suspended\": false,\n    \"prequeue_start_time\": \"2021-09-28T15:00:00.000Z\",\n    \"event_start_time\": \"2021-09-28T15:30:00.000Z\",\n    \"event_end_time\": \"2021-09-28T17:00:00.000Z\",\n    \"shuffle_at_event_start\": false,\n    \"new_users_per_minute\": 2000,\n    \"total_active_users\": 2500,\n    \"session_duration\": null,\n    \"disable_session_renewal\": null,\n    \"queueing_method\": \"random\",\n    \"custom_page_html\": \"{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Event is prequeueing / Queue all enabled {{/waitTimeKnown}}\"\n  }\n}"
+		},
+		{
+			"title": "Delete event",
+			"description": "Deletes an event for a waiting room.",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/waiting_rooms/{#/definitions/waiting_room_id}/events/{#/definitions/event_id}",
+			"method": "DELETE",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfOwnership": "waitingroom",
+			"html_id": "waiting-room-delete-event",
+			"uri": "zones/:zone_identifier/waiting_rooms/:waiting_room_id/events/:event_id",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/waiting_rooms/699d98642c564d2e855e9661899b7252/events/25756b2dfe6e378a06b033b670413757\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"25756b2dfe6e378a06b033b670413757\"\n  }\n}"
+		},
+		{
+			"title": "Preview active event details",
+			"description": "Previews an event's configuration as if it was active. Inherited fields from the waiting room will be displayed with their current values.",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/waiting_rooms/{#/definitions/waiting_room_id}/events/{#/definitions/event_id}/details",
+			"method": "GET",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfOwnership": "waitingroom",
+			"html_id": "waiting-room-preview-active-event-details",
+			"uri": "zones/:zone_identifier/waiting_rooms/:waiting_room_id/events/:event_id/details",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/waiting_rooms/699d98642c564d2e855e9661899b7252/events/25756b2dfe6e378a06b033b670413757/details\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"25756b2dfe6e378a06b033b670413757\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"production_webinar_event\",\n    \"description\": \"Production event - DO NOT MODIFY\",\n    \"suspended\": false,\n    \"prequeue_start_time\": \"2021-09-28T15:00:00.000Z\",\n    \"event_start_time\": \"2021-09-28T15:30:00.000Z\",\n    \"event_end_time\": \"2021-09-28T17:00:00.000Z\",\n    \"shuffle_at_event_start\": false,\n    \"new_users_per_minute\": 2000,\n    \"total_active_users\": 2500,\n    \"session_duration\": 10,\n    \"disable_session_renewal\": false,\n    \"queueing_method\": \"random\",\n    \"custom_page_html\": \"{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Event is prequeueing / Queue all enabled {{/waitTimeKnown}}\"\n  }\n}"
+		},
+		{
+			"title": "Get waiting room status",
+			"description": "Fetches the status of a configured waiting room. Response fields include:\n1. `status`: String indicating the status of the waiting room. The possible status are:\n\t- **not_queueing** indicates that the configured thresholds have not been met and all users are going through to the origin.\n\t- **queueing** indicates that the thresholds have been met and some users are held in the waiting room.\n\t- **event_prequeueing** indicates that an event is active and is currently prequeueing users before it starts.\n2. `event_id`: String of the current event's `id` if an event is active, otherwise an empty string.\n3. `estimated_queued_users`: Integer of the estimated number of users currently waiting in the queue.\n4. `estimated_total_active_users`: Integer of the estimated number of users currently active on the origin.\n5. `max_estimated_time_minutes`: Integer of the maximum estimated time currently presented to the users.",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/waiting_rooms/{#/definitions/waiting_room_id}/status",
+			"method": "GET",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": true,
+				"enterprise": true
+			},
+			"cfOwnership": "waitingroom",
+			"html_id": "waiting-room-get-waiting-room-status",
+			"uri": "zones/:zone_identifier/waiting_rooms/:waiting_room_id/status",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/waiting_rooms/699d98642c564d2e855e9661899b7252/status\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"status\": \"queueing\",\n    \"event_id\": \"25756b2dfe6e378a06b033b670413757\",\n    \"estimated_queued_users\": 10,\n    \"estimated_total_active_users\": 9,\n    \"max_estimated_time_minutes\": 5\n  }\n}"
+		},
+		{
+			"title": "Create a custom waiting room page preview",
+			"description": "Creates a waiting room page preview. Upload a custom waiting room page for preview. You will receive a preview URL in the form `http://waitingrooms.dev/preview/<uuid>`. You can use the following query parameters to change the state of the preview:\n1. `force_queue`: Boolean indicating if all users will be queued in the waiting room and no one will be let into the origin website (also known as queueAll).\n2. `queue_is_full`: Boolean indicating if the waiting room's queue is currently full and not accepting new users at the moment.\n3. `queueing_method`: The queueing method currently used by the waiting room.\n\t- **fifo** indicates a FIFO queue.\n\t- **random** indicates a Random queue.\n\t- **passthrough** indicates a Passthrough queue. Keep in mind that the waiting room page will only be displayed if `force_queue=true` or `event=prequeueing` — for other cases the request will pass through to the origin. For our preview, this will be a fake origin website returning \"Welcome\". \n\t- **reject** indicates a Reject queue.\n4. `event`: Used to preview a waiting room event.\n\t- **none** indicates no event is occurring.\n\t- **prequeueing** indicates that an event is prequeueing (between `prequeue_start_time` and `event_start_time`).\n\t- **started** indicates that an event has started (between `event_start_time` and `event_end_time`).\n5. `shuffle_at_event_start`: Boolean indicating if the event will shuffle users in the prequeue when it starts. This can only be set to **true** if an event is active (`event` is not **none**).\n\nFor example, you can make a request to `http://waitingrooms.dev/preview/<uuid>?force_queue=false&queue_is_full=false&queueing_method=random&event=started&shuffle_at_event_start=true`\n6. `waitTime`: Non-zero, positive integer indicating the estimated wait time in minutes. The default value is 10 minutes.\n\nFor example, you can make a request to `http://waitingrooms.dev/preview/<uuid>?waitTime=50` to configure the estimated wait time as 50 minutes.",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/waiting_rooms/preview",
+			"method": "POST",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfOwnership": "waitingroom",
+			"html_id": "waiting-room-create-a-custom-waiting-room-page-preview",
+			"uri": "zones/:zone_identifier/waiting_rooms/preview",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/waiting_rooms/preview\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"custom_html\":\"{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Queue all enabled {{/waitTimeKnown}}\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"custom_html": {
+						"type": "string",
+						"example": "\"{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Queue all enabled {{/waitTimeKnown}}\"",
+						"description": "Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom_page_html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge:\n1. {{`waitTimeKnown`}} Acts like a boolean value that indicates the behavior to take when wait time is not available, for instance when queue_all is **true**. \n2. {{`waitTimeFormatted`}} Estimated wait time for the user. For example, five minutes. Alternatively, you can use: \n3. {{`waitTime`}} Number of minutes of estimated wait for a user.\n4. {{`waitTimeHours`}} Number of hours of estimated wait for a user (`Math.floor(waitTime/60)`). \n5. {{`waitTimeHourMinutes`}} Number of minutes above the `waitTimeHours` value (`waitTime%60`). \n6. {{`queueIsFull`}} Changes to **true** when no more people can be added to the queue.\n\nTo view the full list of variables, look at the `cfWaitingRoom` object described under the `json_response_enabled` property in other Waiting Room API calls.",
+						"default": ""
+					}
+				},
+				"required_props": [
+					"custom_html"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"custom_html\": \"{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Queue all enabled {{/waitTimeKnown}}\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"preview_url\": \"http://waitingrooms.dev/preview/35af8c12-6d68-4608-babb-b53435a5ddfb\"\n  }\n}"
+		}
+	],
+	"html_id": "waiting-room",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"699d98642c564d2e855e9661899b7252\"",
+				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "API item identifier tag",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"created_on": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "Creation time",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"modified_on": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "Last modification time",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"name": {
+				"type": "string",
+				"example": "\"production_webinar\"",
+				"description": "A unique name to identify the waiting room. Only alphanumeric characters, hyphens and underscores are allowed."
+			},
+			"description": {
+				"type": "string",
+				"example": "\"Production - DO NOT MODIFY\"",
+				"description": "A note that you can use to add more details about the waiting room.",
+				"default": ""
+			},
+			"suspended": {
+				"type": "boolean",
+				"example": "false",
+				"description": "Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room.",
+				"default": false
+			},
+			"host": {
+				"type": "string",
+				"example": "\"shop.example.com\"",
+				"description": "The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique."
+			},
+			"path": {
+				"type": "string",
+				"example": "\"/shop/checkout\"",
+				"description": "Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported.",
+				"default": "/"
+			},
+			"queue_all": {
+				"type": "boolean",
+				"example": "true",
+				"description": "If queue_all is `true`, all the traffic that is coming to a route will be sent to the waiting room. No new traffic can get to the route once this field is set and estimated time will become unavailable.",
+				"default": false
+			},
+			"new_users_per_minute": {
+				"type": "integer",
+				"example": "1000",
+				"description": "Sets the number of new users that will be let into the route every minute. This value is used as baseline for the number of users that are let in per minute. So it is possible that there is a little more or little less traffic coming to the route based on the traffic patterns at that time around the world.",
+				"minimum": 200,
+				"maximum": 2147483647
+			},
+			"total_active_users": {
+				"type": "integer",
+				"example": "1000",
+				"description": "Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a baseline for the total number of active user sessions on the route. It is possible to have a situation where there are more or less active users sessions on the route based on the traffic patterns at that time around the world.",
+				"minimum": 200,
+				"maximum": 2147483647
+			},
+			"session_duration": {
+				"type": "integer",
+				"example": "10",
+				"description": "Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits the route.",
+				"minimum": 1,
+				"maximum": 30,
+				"default": 5
+			},
+			"disable_session_renewal": {
+				"type": "boolean",
+				"example": "false",
+				"description": "Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an accepted user will have session_duration minutes to browse the site. After that, they will have to go through the waiting room again. If `false`, a user's session cookie will be automatically renewed on every request.",
+				"default": false
+			},
+			"json_response_enabled": {
+				"type": "boolean",
+				"example": "false",
+				"description": "Only available for the Waiting Room Advanced subscription. If `true`, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object with information on the user's status in the waiting room as opposed to the configured static HTML page. This JSON response object has one property `cfWaitingRoom` which is an object containing the following fields:\n1. `inWaitingRoom`: Boolean indicating if the user is in the waiting room (always **true**).\n2. `waitTimeKnown`: Boolean indicating if the current estimated wait times are accurate. If **false**, they are not available.\n3. `waitTime`: Valid only when `waitTimeKnown` is **true**. Integer indicating the current estimated time in minutes the user will wait in the waiting room. When `queueingMethod` is **random**, this is set to `waitTime50Percentile`.\n4. `waitTime25Percentile`: Valid only when `queueingMethod` is **random** and `waitTimeKnown` is **true**. Integer indicating the current estimated maximum wait time for the 25% of users that gain entry the fastest (25th percentile).\n5. `waitTime50Percentile`: Valid only when `queueingMethod` is **random** and `waitTimeKnown` is **true**. Integer indicating the current estimated maximum wait time for the 50% of users that gain entry the fastest (50th percentile). In other words, half of the queued users are expected to let into the origin website before `waitTime50Percentile` and half are expected to be let in after it.\n6. `waitTime75Percentile`: Valid only when `queueingMethod` is **random** and `waitTimeKnown` is **true**. Integer indicating the current estimated maximum wait time for the 75% of users that gain entry the fastest (75th percentile).\n7. `waitTimeFormatted`: String displaying the `waitTime` formatted in English for users. If `waitTimeKnown` is **false**, `waitTimeFormatted` will display **unavailable**.\n8. `queueIsFull`: Boolean indicating if the waiting room's queue is currently full and not accepting new users at the moment.\n9. `queueAll`: Boolean indicating if all users will be queued in the waiting room and no one will be let into the origin website.\n10. `lastUpdated`: String displaying the timestamp as an ISO 8601 string of the user's last attempt to leave the waiting room and be let into the origin website. The user is able to make another attempt after `refreshIntervalSeconds` past this time. If the user makes a request too soon, it will be ignored and `lastUpdated` will not change.\n11. `refreshIntervalSeconds`: Integer indicating the number of seconds after `lastUpdated` until the user is able to make another attempt to leave the waiting room and be let into the origin website. When the `queueingMethod` is `reject`, there is no specified refresh time — it will always be **zero**.\n12. `queueingMethod`: The queueing method currently used by the waiting room. It is either **fifo**, **random**, **passthrough**, or **reject**.\n13. `isFIFOQueue`: Boolean indicating if the waiting room uses a FIFO (First-In-First-Out) queue.\n14. `isRandomQueue`: Boolean indicating if the waiting room uses a Random queue where users gain access randomly.\n15. `isPassthroughQueue`: Boolean indicating if the waiting room uses a passthrough queue. Keep in mind that when passthrough is enabled, this JSON response will only exist when `queueAll` is **true** or `isEventPrequeueing` is **true** because in all other cases requests will go directly to the origin.\n16. `isRejectQueue`: Boolean indicating if the waiting room uses a reject queue.\n17. `isEventActive`: Boolean indicating if an event is currently occurring. Events are able to change a waiting room's behavior during a specified period of time. For additional information, look at the event properties `prequeue_start_time`, `event_start_time`, and `event_end_time` in the documentation for creating waiting room events. Events are considered active between these start and end times, as well as during the prequeueing period if it exists.\n18. `isEventPrequeueing`: Valid only when `isEventActive` is **true**. Boolean indicating if an event is currently prequeueing users before it starts.\n19. `timeUntilEventStart`: Valid only when `isEventPrequeueing` is **true**. Integer indicating the number of minutes until the event starts.\n20. `timeUntilEventStartFormatted`: String displaying the `timeUntilEventStart` formatted in English for users. If `isEventPrequeueing` is **false**, `timeUntilEventStartFormatted` will display **unavailable**.\n21. `timeUntilEventEnd`: Valid only when `isEventActive` is **true**. Integer indicating the number of minutes until the event ends.\n22. `timeUntilEventEndFormatted`: String displaying the `timeUntilEventEnd` formatted in English for users. If `isEventActive` is **false**, `timeUntilEventEndFormatted` will display **unavailable**.\n23. `shuffleAtEventStart`: Valid only when `isEventActive` is **true**. Boolean indicating if the users in the prequeue are shuffled randomly when the event starts.\n\nAn example cURL to a waiting room could be:\n\n\tcurl -X GET \"https://example.com/waitingroom\" \\\n\t\t-H \"Accept: application/json\"\n\nIf `json_response_enabled` is **true** and the request hits the waiting room, an example JSON response when `queueingMethod` is **fifo** and no event is active could be:\n\n\t{\n\t\t\"cfWaitingRoom\": {\n\t\t\t\"inWaitingRoom\": true,\n\t\t\t\"waitTimeKnown\": true,\n\t\t\t\"waitTime\": 10,\n\t\t\t\"waitTime25Percentile\": 0,\n\t\t\t\"waitTime50Percentile\": 0,\n\t\t\t\"waitTime75Percentile\": 0,\n\t\t\t\"waitTimeFormatted\": \"10 minutes\",\n\t\t\t\"queueIsFull\": false,\n\t\t\t\"queueAll\": false,\n\t\t\t\"lastUpdated\": \"2020-08-03T23:46:00.000Z\",\n\t\t\t\"refreshIntervalSeconds\": 20,\n\t\t\t\"queueingMethod\": \"fifo\",\n\t\t\t\"isFIFOQueue\": true,\n\t\t\t\"isRandomQueue\": false,\n\t\t\t\"isPassthroughQueue\": false,\n\t\t\t\"isRejectQueue\": false,\n\t\t\t\"isEventActive\": false,\n\t\t\t\"isEventPrequeueing\": false,\n\t\t\t\"timeUntilEventStart\": 0,\n\t\t\t\"timeUntilEventStartFormatted\": \"unavailable\",\n\t\t\t\"timeUntilEventEnd\": 0,\n\t\t\t\"timeUntilEventEndFormatted\": \"unavailable\",\n\t\t\t\"shuffleAtEventStart\": false\n\t\t}\n\t}\n\nIf `json_response_enabled` is **true** and the request hits the waiting room, an example JSON response when `queueingMethod` is **random** and an event is active could be:\n\n\t{\n\t\t\"cfWaitingRoom\": {\n\t\t\t\"inWaitingRoom\": true,\n\t\t\t\"waitTimeKnown\": true,\n\t\t\t\"waitTime\": 10,\n\t\t\t\"waitTime25Percentile\": 5,\n\t\t\t\"waitTime50Percentile\": 10,\n\t\t\t\"waitTime75Percentile\": 15,\n\t\t\t\"waitTimeFormatted\": \"5 minutes to 15 minutes\",\n\t\t\t\"queueIsFull\": false,\n\t\t\t\"queueAll\": false,\n\t\t\t\"lastUpdated\": \"2020-08-03T23:46:00.000Z\",\n\t\t\t\"refreshIntervalSeconds\": 20,\n\t\t\t\"queueingMethod\": \"random\",\n\t\t\t\"isFIFOQueue\": false,\n\t\t\t\"isRandomQueue\": true,\n\t\t\t\"isPassthroughQueue\": false,\n\t\t\t\"isRejectQueue\": false,\n\t\t\t\"isEventActive\": true,\n\t\t\t\"isEventPrequeueing\": false,\n\t\t\t\"timeUntilEventStart\": 0,\n\t\t\t\"timeUntilEventStartFormatted\": \"unavailable\",\n\t\t\t\"timeUntilEventEnd\": 15,\n\t\t\t\"timeUntilEventEndFormatted\": \"15 minutes\",\n\t\t\t\"shuffleAtEventStart\": true\n\t\t}\n\t}",
+				"default": false
+			},
+			"queueing_method": {
+				"type": "string",
+				"example": "\"fifo\"",
+				"description": "Sets the queueing method used by the waiting room. Changing this parameter from the **default** queueing method is only available for the Waiting Room Advanced subscription. Regardless of the queueing method, if `queue_all` is enabled or an event is prequeueing, users in the waiting room will not be accepted to the origin. These users will always see a waiting room page that refreshes automatically. The valid queueing methods are:\n1. `fifo` **(default)**: First-In-First-Out queue where customers gain access in the order they arrived.\n2. `random`: Random queue where customers gain access randomly, regardless of arrival time.\n3. `passthrough`: Users will pass directly through the waiting room and into the origin website. As a result, any configured limits will not be respected while this is enabled. This method can be used as an alternative to disabling a waiting room (with `suspended`) so that analytics are still reported. This can be used if you wish to allow all traffic normally, but want to restrict traffic during a waiting room event, or vice versa.\n4. `reject`: Users will be immediately rejected from the waiting room. As a result, no users will reach the origin website while this is enabled. This can be used if you wish to reject all traffic while performing maintenance, block traffic during a specified period of time (an event), or block traffic while events are not occurring. Consider a waiting room used for vaccine distribution that only allows traffic during sign-up events, and otherwise blocks all traffic. For this case, the waiting room uses `reject`, and its events override this with `fifo`, `random`, or `passthrough`. When this queueing method is enabled and neither `queueAll` is enabled nor an event is prequeueing, the waiting room page **will not refresh automatically**.",
+				"enum": [
+					"fifo",
+					"random",
+					"passthrough",
+					"reject"
+				],
+				"default": "fifo"
+			},
+			"cookie_attributes": {
+				"type": "object",
+				"example": "{\n  \"samesite\": \"auto\",\n  \"secure\": \"auto\"\n}",
+				"properties": {
+					"samesite": {
+						"type": "string",
+						"example": "\"auto\"",
+						"description": "Configures the SameSite attribute on the waiting room cookie. Value `auto` will be translated to `lax` or `none` depending if **Always Use HTTPS** is enabled. Note that when using value `none`, the secure attribute cannot be set to `never`.",
+						"enum": [
+							"auto",
+							"lax",
+							"none",
+							"strict"
+						],
+						"default": "auto"
+					},
+					"secure": {
+						"type": "string",
+						"example": "\"auto\"",
+						"description": "Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled.",
+						"enum": [
+							"auto",
+							"always",
+							"never"
+						],
+						"default": "auto"
+					}
+				},
+				"description": "Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position."
+			},
+			"custom_page_html": {
+				"type": "string",
+				"example": "\"{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Queue all enabled {{/waitTimeKnown}}\"",
+				"description": "Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom_page_html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge:\n1. {{`waitTimeKnown`}} Acts like a boolean value that indicates the behavior to take when wait time is not available, for instance when queue_all is **true**. \n2. {{`waitTimeFormatted`}} Estimated wait time for the user. For example, five minutes. Alternatively, you can use: \n3. {{`waitTime`}} Number of minutes of estimated wait for a user.\n4. {{`waitTimeHours`}} Number of hours of estimated wait for a user (`Math.floor(waitTime/60)`). \n5. {{`waitTimeHourMinutes`}} Number of minutes above the `waitTimeHours` value (`waitTime%60`). \n6. {{`queueIsFull`}} Changes to **true** when no more people can be added to the queue.\n\nTo view the full list of variables, look at the `cfWaitingRoom` object described under the `json_response_enabled` property in other Waiting Room API calls.",
+				"default": ""
+			},
+			"default_template_language": {
+				"type": "string",
+				"example": "\"es-ES\"",
+				"description": "The language of the default page template. If no default_template_language is provided, then `en-US` (English) will be used.",
+				"enum": [
+					"en-US",
+					"es-ES",
+					"de-DE",
+					"fr-FR",
+					"it-IT",
+					"ja-JP",
+					"ko-KR",
+					"pt-BR",
+					"zh-CN",
+					"zh-TW",
+					"nl-NL",
+					"pl-PL",
+					"id-ID",
+					"tr-TR",
+					"ar-EG"
+				],
+				"default": "en-US"
+			},
+			"next_event_prequeue_start_time": {
+				"type": [
+					"string",
+					"null"
+				],
+				"example": "\"2021-09-28T15:00:00.000Z\"",
+				"description": "An ISO 8601 timestamp that marks when the next event will begin queueing.",
+				"default": null
+			},
+			"next_event_start_time": {
+				"type": [
+					"string",
+					"null"
+				],
+				"example": "\"2021-09-28T15:00:00.000Z\"",
+				"description": "An ISO 8601 timestamp that marks when the next event will start.",
+				"default": null
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"created_on",
+			"modified_on",
+			"name",
+			"description",
+			"suspended",
+			"host",
+			"path",
+			"queue_all",
+			"new_users_per_minute",
+			"total_active_users",
+			"session_duration",
+			"disable_session_renewal",
+			"json_response_enabled",
+			"queueing_method",
+			"cookie_attributes",
+			"custom_page_html",
+			"default_template_language",
+			"next_event_prequeue_start_time",
+			"next_event_start_time"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"699d98642c564d2e855e9661899b7252\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"name\": \"production_webinar\",\n  \"description\": \"Production - DO NOT MODIFY\",\n  \"suspended\": false,\n  \"host\": \"shop.example.com\",\n  \"path\": \"/shop/checkout\",\n  \"queue_all\": true,\n  \"new_users_per_minute\": 1000,\n  \"total_active_users\": 1000,\n  \"session_duration\": 10,\n  \"disable_session_renewal\": false,\n  \"json_response_enabled\": false,\n  \"queueing_method\": \"fifo\",\n  \"cookie_attributes\": {\n    \"samesite\": \"auto\",\n    \"secure\": \"auto\"\n  },\n  \"custom_page_html\": \"{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Queue all enabled {{/waitTimeKnown}}\",\n  \"default_template_language\": \"es-ES\",\n  \"next_event_prequeue_start_time\": \"2021-09-28T15:00:00.000Z\",\n  \"next_event_start_time\": \"2021-09-28T15:00:00.000Z\"\n}",
+		"title": "Waiting Room",
+		"description": "Zone-level waiting rooms"
+	}
+}

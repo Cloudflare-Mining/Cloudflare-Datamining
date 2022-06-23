@@ -1,0 +1,277 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/role.json",
+	"title": "Account Roles",
+	"description": "A Role defines what permissions a Member of an Account has.",
+	"links": [
+		{
+			"title": "List Roles",
+			"description": "Get all available roles for an account",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/roles",
+			"method": "GET",
+			"cfOwnership": "www",
+			"cfPermissionsRequired": {
+				"enum": [
+					"#organization:read"
+				]
+			},
+			"html_id": "account-roles-list-roles",
+			"uri": "accounts/:account_identifier/roles",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/roles\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"3536bcfad5faccb999b47003c79917fb\",\n      \"name\": \"Account Administrator\",\n      \"description\": \"Administrative access to the entire Account\",\n      \"permissions\": {\n        \"analytics\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"billing\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"cache_purge\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"dns\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"dns_records\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"lb\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"logs\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"organization\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"ssl\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"waf\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"zones\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"zone_settings\": {\n          \"read\": true,\n          \"write\": true\n        }\n      }\n    }\n  ]\n}"
+		},
+		{
+			"title": "Role Details",
+			"description": "Get information about a specific role for an account",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/roles/{#/definitions/identifier}",
+			"method": "GET",
+			"cfOwnership": "www",
+			"cfPermissionsRequired": {
+				"enum": [
+					"#organization:read"
+				]
+			},
+			"html_id": "account-roles-role-details",
+			"uri": "accounts/:account_identifier/roles/:identifier",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/roles/3536bcfad5faccb999b47003c79917fb\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"3536bcfad5faccb999b47003c79917fb\",\n    \"name\": \"Account Administrator\",\n    \"description\": \"Administrative access to the entire Account\",\n    \"permissions\": {\n      \"analytics\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"billing\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"cache_purge\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"dns\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"dns_records\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"lb\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"logs\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"organization\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"ssl\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"waf\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"zones\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"zone_settings\": {\n        \"read\": true,\n        \"write\": true\n      }\n    }\n  }\n}"
+		}
+	],
+	"html_id": "account-roles",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"3536bcfad5faccb999b47003c79917fb\"",
+				"description": "Role identifier tag",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"name": {
+				"type": "string",
+				"example": "\"Account Administrator\"",
+				"description": "Role Name",
+				"maxLength": 120,
+				"readOnly": true
+			},
+			"description": {
+				"type": "string",
+				"example": "\"Administrative access to the entire Account\"",
+				"description": "Description of role's permissions",
+				"readOnly": true
+			},
+			"permissions": {
+				"type": "object",
+				"example": "{\n  \"analytics\": {\n    \"read\": true,\n    \"write\": true\n  },\n  \"billing\": {\n    \"read\": true,\n    \"write\": true\n  },\n  \"cache_purge\": {\n    \"read\": true,\n    \"write\": true\n  },\n  \"dns\": {\n    \"read\": true,\n    \"write\": true\n  },\n  \"dns_records\": {\n    \"read\": true,\n    \"write\": true\n  },\n  \"lb\": {\n    \"read\": true,\n    \"write\": true\n  },\n  \"logs\": {\n    \"read\": true,\n    \"write\": true\n  },\n  \"organization\": {\n    \"read\": true,\n    \"write\": true\n  },\n  \"ssl\": {\n    \"read\": true,\n    \"write\": true\n  },\n  \"waf\": {\n    \"read\": true,\n    \"write\": true\n  },\n  \"zones\": {\n    \"read\": true,\n    \"write\": true\n  },\n  \"zone_settings\": {\n    \"read\": true,\n    \"write\": true\n  }\n}",
+				"properties": {
+					"analytics": {
+						"type": "object",
+						"example": "{\n  \"read\": true,\n  \"write\": true\n}",
+						"properties": {
+							"read": {
+								"type": "boolean",
+								"example": "true"
+							},
+							"write": {
+								"type": "boolean",
+								"example": "true"
+							}
+						}
+					},
+					"billing": {
+						"type": "object",
+						"example": "{\n  \"read\": true,\n  \"write\": true\n}",
+						"properties": {
+							"read": {
+								"type": "boolean",
+								"example": "true"
+							},
+							"write": {
+								"type": "boolean",
+								"example": "true"
+							}
+						}
+					},
+					"cache_purge": {
+						"type": "object",
+						"example": "{\n  \"read\": true,\n  \"write\": true\n}",
+						"properties": {
+							"read": {
+								"type": "boolean",
+								"example": "true"
+							},
+							"write": {
+								"type": "boolean",
+								"example": "true"
+							}
+						}
+					},
+					"dns": {
+						"type": "object",
+						"example": "{\n  \"read\": true,\n  \"write\": true\n}",
+						"properties": {
+							"read": {
+								"type": "boolean",
+								"example": "true"
+							},
+							"write": {
+								"type": "boolean",
+								"example": "true"
+							}
+						}
+					},
+					"dns_records": {
+						"type": "object",
+						"example": "{\n  \"read\": true,\n  \"write\": true\n}",
+						"properties": {
+							"read": {
+								"type": "boolean",
+								"example": "true"
+							},
+							"write": {
+								"type": "boolean",
+								"example": "true"
+							}
+						}
+					},
+					"lb": {
+						"type": "object",
+						"example": "{\n  \"read\": true,\n  \"write\": true\n}",
+						"properties": {
+							"read": {
+								"type": "boolean",
+								"example": "true"
+							},
+							"write": {
+								"type": "boolean",
+								"example": "true"
+							}
+						}
+					},
+					"logs": {
+						"type": "object",
+						"example": "{\n  \"read\": true,\n  \"write\": true\n}",
+						"properties": {
+							"read": {
+								"type": "boolean",
+								"example": "true"
+							},
+							"write": {
+								"type": "boolean",
+								"example": "true"
+							}
+						}
+					},
+					"organization": {
+						"type": "object",
+						"example": "{\n  \"read\": true,\n  \"write\": true\n}",
+						"properties": {
+							"read": {
+								"type": "boolean",
+								"example": "true"
+							},
+							"write": {
+								"type": "boolean",
+								"example": "true"
+							}
+						}
+					},
+					"ssl": {
+						"type": "object",
+						"example": "{\n  \"read\": true,\n  \"write\": true\n}",
+						"properties": {
+							"read": {
+								"type": "boolean",
+								"example": "true"
+							},
+							"write": {
+								"type": "boolean",
+								"example": "true"
+							}
+						}
+					},
+					"waf": {
+						"type": "object",
+						"example": "{\n  \"read\": true,\n  \"write\": true\n}",
+						"properties": {
+							"read": {
+								"type": "boolean",
+								"example": "true"
+							},
+							"write": {
+								"type": "boolean",
+								"example": "true"
+							}
+						}
+					},
+					"zones": {
+						"type": "object",
+						"example": "{\n  \"read\": true,\n  \"write\": true\n}",
+						"properties": {
+							"read": {
+								"type": "boolean",
+								"example": "true"
+							},
+							"write": {
+								"type": "boolean",
+								"example": "true"
+							}
+						}
+					},
+					"zone_settings": {
+						"type": "object",
+						"example": "{\n  \"read\": true,\n  \"write\": true\n}",
+						"properties": {
+							"read": {
+								"type": "boolean",
+								"example": "true"
+							},
+							"write": {
+								"type": "boolean",
+								"example": "true"
+							}
+						}
+					}
+				},
+				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/permissions.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"title": "Permissions Object",
+				"description": "Access permissions for a Role",
+				"definitions": {
+					"grants": {
+						"type": "object",
+						"properties": {
+							"read": {
+								"type": "boolean",
+								"example": true
+							},
+							"write": {
+								"type": "boolean",
+								"example": true
+							}
+						},
+						"example": {
+							"read": true,
+							"write": false
+						}
+					}
+				}
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"name",
+			"description",
+			"permissions"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"3536bcfad5faccb999b47003c79917fb\",\n  \"name\": \"Account Administrator\",\n  \"description\": \"Administrative access to the entire Account\",\n  \"permissions\": {\n    \"analytics\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"billing\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"cache_purge\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"dns\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"dns_records\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"lb\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"logs\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"organization\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"ssl\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"waf\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"zones\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"zone_settings\": {\n      \"read\": true,\n      \"write\": true\n    }\n  }\n}",
+		"title": "Account Roles",
+		"description": "A Role defines what permissions a Member of an Account has."
+	}
+}

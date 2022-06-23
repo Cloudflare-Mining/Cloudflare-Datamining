@@ -1,0 +1,81 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/addressing/dynamic-advertisement.json",
+	"title": "IP Address Management Dynamic Advertisement",
+	"description": "Manage the desired advertisement state of your account's IP prefixes.",
+	"type": "object",
+	"links": [
+		{
+			"title": "Get Advertisement Status",
+			"description": "List the current advertisement state for a prefix.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/addressing/prefixes/{#/definitions/prefix_identifier}/bgp/status",
+			"method": "GET",
+			"cfOwnership": "addressing",
+			"html_id": "ip-address-management-dynamic-advertisement-get-advertisement-status",
+			"uri": "accounts/:account_identifier/addressing/prefixes/:prefix_identifier/bgp/status",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/addressing/prefixes/9a7806061c88ada191ed06f989cc3dac/bgp/status\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"advertised\": true,\n    \"advertised_modified_at\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
+		},
+		{
+			"title": "Update Prefix Dynamic Advertisement Status",
+			"description": "Advertise or withdraw BGP route for a prefix.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/addressing/prefixes/{#/definitions/prefix_identifier}/bgp/status",
+			"method": "PATCH",
+			"cfOwnership": "addressing",
+			"html_id": "ip-address-management-dynamic-advertisement-update-prefix-dynamic-advertisement-status",
+			"uri": "accounts/:account_identifier/addressing/prefixes/:prefix_identifier/bgp/status",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/addressing/prefixes/9a7806061c88ada191ed06f989cc3dac/bgp/status\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"advertised\":true}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"advertised": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Enablement of prefix advertisement to the Internet."
+					}
+				},
+				"required_props": [
+					"advertised"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"advertised\": true\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"advertised\": true,\n    \"advertised_modified_at\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
+		}
+	],
+	"html_id": "ip-address-management-dynamic-advertisement",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"advertised": {
+				"type": "boolean",
+				"example": "true",
+				"description": "Enablement of prefix advertisement to the Internet."
+			},
+			"advertised_modified_at": {
+				"type": [
+					"string",
+					"null"
+				],
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.",
+				"format": "date-time"
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"advertised",
+			"advertised_modified_at"
+		],
+		"objects": [],
+		"example": "{\n  \"advertised\": true,\n  \"advertised_modified_at\": \"2014-01-01T05:20:00.12345Z\"\n}",
+		"title": "IP Address Management Dynamic Advertisement",
+		"description": "Manage the desired advertisement state of your account's IP prefixes."
+	}
+}

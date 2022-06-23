@@ -1,0 +1,60 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/pagerule-settings.json",
+	"title": "Available Page Rules for a Zone",
+	"description": "A rule describing target patterns for requests and actions to perform on matching requests",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Available Page rule setting",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_identifier}/pagerules/settings",
+			"method": "GET",
+			"cfOwnership": "www",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#zone:read"
+				]
+			},
+			"html_id": "available-page-rules-for-a-zone-list-available-page-rule-setting",
+			"uri": "zones/:zone_identifier/pagerules/settings",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/pagerules/settings\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"always_online\",\n      \"properties\": [\n        {\n          \"name\": \"value\",\n          \"type\": \"toggle\"\n        }\n      ]\n    },\n    {\n      \"id\": \"browser_cache_ttl\",\n      \"properties\": [\n        {\n          \"name\": \"value\",\n          \"type\": \"range\",\n          \"min\": 1800,\n          \"max\": 31536000,\n          \"suggested_values\": [\n            1800,\n            3600,\n            7200,\n            10800,\n            14400,\n            18000,\n            28800,\n            43200,\n            57600,\n            72000,\n            86400,\n            172800,\n            259200,\n            345600,\n            432000,\n            691200,\n            1382400,\n            2073600,\n            2678400,\n            5356800,\n            16070400,\n            31536000\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"browser_check\",\n      \"properties\": [\n        {\n          \"name\": \"value\",\n          \"type\": \"toggle\"\n        }\n      ]\n    },\n    {\n      \"id\": \"cache_key_fields\",\n      \"properties\": [\n        {\n          \"name\": \"value\",\n          \"type\": \"object\",\n          \"properties\": [\n            {\n              \"name\": \"query_string\",\n              \"type\": \"select\",\n              \"multiple\": false,\n              \"allowEmpty\": true,\n              \"choices\": [\n                \"include\",\n                \"exclude\"\n              ]\n            },\n            {\n              \"name\": \"header\",\n              \"type\": \"select\",\n              \"multiple\": true,\n              \"allowEmpty\": true,\n              \"choices\": [\n                \"include\",\n                \"exclude\",\n                \"check_presence\"\n              ]\n            },\n            {\n              \"name\": \"host\",\n              \"type\": \"select\",\n              \"multiple\": true,\n              \"allowEmpty\": false,\n              \"choices\": [\n                \"resolved\"\n              ]\n            },\n            {\n              \"name\": \"cookie\",\n              \"type\": \"select\",\n              \"multiple\": true,\n              \"allowEmpty\": true,\n              \"choices\": [\n                \"include\",\n                \"check_presence\"\n              ]\n            },\n            {\n              \"name\": \"user\",\n              \"type\": \"select\",\n              \"multiple\": true,\n              \"allowEmpty\": false,\n              \"choices\": [\n                \"device_type\",\n                \"geo\",\n                \"lang\"\n              ]\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"cache_deception_armor\",\n      \"properties\": [\n        {\n          \"name\": \"value\",\n          \"type\": \"toggle\"\n        }\n      ]\n    },\n    {\n      \"id\": \"cache_level\",\n      \"properties\": [\n        {\n          \"name\": \"value\",\n          \"type\": \"select\",\n          \"multiple\": false,\n          \"choices\": [\n            \"bypass\",\n            \"basic\",\n            \"simplified\",\n            \"aggressive\",\n            \"cache_everything\"\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"cache_ttl_by_status\",\n      \"properties\": [\n        {\n          \"name\": \"value\",\n          \"type\": \"object\",\n          \"allowEmpty\": false\n        }\n      ]\n    },\n    {\n      \"id\": \"disable_apps\",\n      \"properties\": []\n    },\n    {\n      \"id\": \"disable_performance\",\n      \"properties\": []\n    },\n    {\n      \"id\": \"disable_security\",\n      \"properties\": []\n    },\n    {\n      \"id\": \"edge_cache_ttl\",\n      \"properties\": [\n        {\n          \"name\": \"value\",\n          \"type\": \"range\",\n          \"min\": 7200,\n          \"max\": 2419200,\n          \"suggested_values\": [\n            7200,\n            10800,\n            14400,\n            18000,\n            28800,\n            43200,\n            57600,\n            72000,\n            86400,\n            172800,\n            259200,\n            345600,\n            432000,\n            518400,\n            604800,\n            1209600,\n            2419200\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"email_obfuscation\",\n      \"properties\": [\n        {\n          \"name\": \"value\",\n          \"type\": \"toggle\"\n        }\n      ]\n    },\n    {\n      \"id\": \"forwarding_url\",\n      \"properties\": [\n        {\n          \"name\": \"status_code\",\n          \"type\": \"choice\",\n          \"multiple\": false,\n          \"choices\": [\n            301,\n            302\n          ]\n        },\n        {\n          \"name\": \"url\",\n          \"type\": \"forwardingUrl\"\n        }\n      ]\n    },\n    {\n      \"id\": \"ip_geolocation\",\n      \"properties\": [\n        {\n          \"name\": \"value\",\n          \"type\": \"toggle\"\n        }\n      ]\n    },\n    {\n      \"id\": \"minify\",\n      \"properties\": [\n        {\n          \"name\": \"value\",\n          \"type\": \"select\",\n          \"multiple\": true,\n          \"allowEmpty\": true,\n          \"choices\": [\n            \"html\",\n            \"css\",\n            \"js\"\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"explicit_cache_control\",\n      \"properties\": [\n        {\n          \"name\": \"value\",\n          \"type\": \"toggle\"\n        }\n      ]\n    },\n    {\n      \"id\": \"rocket_loader\",\n      \"properties\": [\n        {\n          \"name\": \"value\",\n          \"type\": \"toggle\"\n        }\n      ]\n    },\n    {\n      \"id\": \"security_level\",\n      \"properties\": [\n        {\n          \"name\": \"value\",\n          \"type\": \"select\",\n          \"multiple\": false,\n          \"choices\": [\n            \"essentially_off\",\n            \"low\",\n            \"medium\",\n            \"high\",\n            \"under_attack\"\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"server_side_exclude\",\n      \"properties\": [\n        {\n          \"name\": \"value\",\n          \"type\": \"toggle\"\n        }\n      ]\n    },\n    {\n      \"id\": \"ssl\",\n      \"properties\": [\n        {\n          \"name\": \"value\",\n          \"type\": \"choice\",\n          \"multiple\": false,\n          \"choices\": [\n            \"off\",\n            \"flexible\",\n            \"full\",\n            \"strict\"\n          ]\n        }\n      ]\n    }\n  ]\n}"
+		}
+	],
+	"html_id": "available-page-rules-for-a-zone",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"always_online\"",
+				"description": "setting name"
+			},
+			"properties": {
+				"type": "array",
+				"example": "[\n  {\n    \"name\": \"value\",\n    \"type\": \"toggle\"\n  }\n]",
+				"description": "type of the values",
+				"items": {
+					"type": "string"
+				}
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"properties"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"always_online\",\n  \"properties\": [\n    {\n      \"name\": \"value\",\n      \"type\": \"toggle\"\n    }\n  ]\n}",
+		"title": "Available Page Rules for a Zone",
+		"description": "A rule describing target patterns for requests and actions to perform on matching requests"
+	}
+}

@@ -1,0 +1,183 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/page-shield/script-monitor.json",
+	"title": "Page Shield",
+	"description": "Page Shield monitors your zone for new JavaScript dependencies.",
+	"cfExtendedDescription": "",
+	"type": "object",
+	"links": [
+		{
+			"title": "Get Page Shield status",
+			"description": "Fetches the Page Shield status.",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_id}/script_monitor",
+			"method": "GET",
+			"cfOwnership": "page-shield",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "page-shield-get-page-shield-status",
+			"uri": "zones/:zone_id/script_monitor",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/script_monitor\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {}\n}"
+		},
+		{
+			"title": "Update Page Shield status",
+			"description": "Updates the status of Page Shield.",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_id}/script_monitor",
+			"method": "PUT",
+			"cfOwnership": "page-shield",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "page-shield-update-page-shield-status",
+			"uri": "zones/:zone_id/script_monitor",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/script_monitor\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {}\n}"
+		},
+		{
+			"title": "List Page Shield scripts",
+			"description": "Lists all scripts detected by Page Shield.",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_id}/script_monitor/scripts",
+			"method": "GET",
+			"cfOwnership": "page-shield",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "page-shield-list-page-shield-scripts",
+			"uri": "zones/:zone_id/script_monitor/scripts",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/script_monitor/scripts?exclude_script_urls=blog.cloudflare.com,www.example&script_urls=blog.cloudflare.com,www.example&hosts=blog.cloudflare.com,www.example&page=2&per_page=100&order_by=first_seen_at&direction=asc&prioritize_malicious=true&exclude_cdn_cgi=true&status=active,inactive&script_page=example.com/page\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"exclude_script_urls": {
+						"type": "string",
+						"example": "\"blog.cloudflare.com,www.example\"",
+						"description": "Excludes scripts whose URL contains one the URL-encoded URL substrings (separated by commas) from the returned scripts."
+					},
+					"script_urls": {
+						"type": "string",
+						"example": "\"blog.cloudflare.com,www.example\"",
+						"description": "Filters the returned scripts by one or more URL-encoded URL substrings separated by commas."
+					},
+					"hosts": {
+						"type": "string",
+						"example": "\"blog.cloudflare.com,www.example\"",
+						"description": "Filters the returned scripts by one or more URL-encoded hostname substrings separated by commas."
+					},
+					"page": {
+						"type": "number",
+						"example": "2",
+						"minimum": 1,
+						"description": "The current page number of the paginated results."
+					},
+					"per_page": {
+						"type": "number",
+						"example": "100",
+						"minimum": 1,
+						"maximum": 100,
+						"description": "The number of results per page."
+					},
+					"order_by": {
+						"type": "string",
+						"example": "\"first_seen_at\"",
+						"enum": [
+							"first_seen_at",
+							"last_seen_at"
+						],
+						"description": "The field used to sort returned scripts."
+					},
+					"direction": {
+						"type": "string",
+						"example": "\"asc\"",
+						"enum": [
+							"asc",
+							"desc"
+						],
+						"description": "The direction used to sort returned scripts."
+					},
+					"prioritize_malicious": {
+						"type": "boolean",
+						"example": "true",
+						"description": "When true, malicious scripts appear first in the returned scripts."
+					},
+					"exclude_cdn_cgi": {
+						"type": "boolean",
+						"example": "true",
+						"description": "When true, excludes scripts seen in a `/cdn-cgi` path from the returned scripts. The default value is true."
+					},
+					"status": {
+						"type": "string",
+						"example": "\"active,inactive\"",
+						"description": "Filters the returned scripts using a comma-separated list of script statuses. Accepted values: `active`, `infrequent`, and `inactive`. The default value is `active`."
+					},
+					"script_page": {
+						"type": "string",
+						"example": "\"example.com/page\"",
+						"description": "Filters the returned scripts by the page URL where they were last seen."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"exclude_script_urls",
+					"script_urls",
+					"hosts",
+					"page",
+					"per_page",
+					"order_by",
+					"direction",
+					"prioritize_malicious",
+					"exclude_cdn_cgi",
+					"status",
+					"script_page"
+				],
+				"objects": [],
+				"example": "{\n  \"exclude_script_urls\": \"blog.cloudflare.com,www.example\",\n  \"script_urls\": \"blog.cloudflare.com,www.example\",\n  \"hosts\": \"blog.cloudflare.com,www.example\",\n  \"page\": 2,\n  \"per_page\": 100,\n  \"order_by\": \"first_seen_at\",\n  \"direction\": \"asc\",\n  \"prioritize_malicious\": true,\n  \"exclude_cdn_cgi\": true,\n  \"status\": \"active,inactive\",\n  \"script_page\": \"example.com/page\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"script_id\": \"c9ef84a6bf5e47138c75d95e2f933e8f\",\n      \"script_url\": \"https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js\",\n      \"added_at\": \"2021-08-18T10:51:10.09615Z\",\n      \"first_seen_at\": \"2021-08-18T10:51:08Z\",\n      \"last_seen_at\": \"2021-09-02T09:57:54Z\",\n      \"host\": \"blog.cloudflare.com\",\n      \"domain_reported_malicious\": false,\n      \"seen_on_first\": \"blog.cloudflare.com/page\",\n      \"seen_on\": [\n        \"blog.cloudflare.com/page1\",\n        \"blog.cloudflare.com/page2\"\n      ],\n      \"count\": 4,\n      \"appears_in_cdn_cgi_path\": false,\n      \"hash\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\n      \"js_integrity_score\": 10,\n      \"fetched_at\": \"2021-09-02T10:17:54Z\"\n    }\n  ],\n  \"result_info\": {\n    \"page\": 1,\n    \"per_page\": 20,\n    \"count\": 1,\n    \"total_count\": 2000\n  }\n}"
+		},
+		{
+			"title": "Get a Page Shield script",
+			"description": "Fetches a script detected by Page Shield by script ID.",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_id}/script_monitor/scripts/{#/definitions/script_id}",
+			"method": "GET",
+			"cfOwnership": "page-shield",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "page-shield-get-a-page-shield-script",
+			"uri": "zones/:zone_id/script_monitor/scripts/:script_id",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/script_monitor/scripts/c9ef84a6bf5e47138c75d95e2f933e8f\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"script_id\": \"c9ef84a6bf5e47138c75d95e2f933e8f\",\n  \"script_url\": \"https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js\",\n  \"added_at\": \"2021-08-18T10:51:10.09615Z\",\n  \"first_seen_at\": \"2021-08-18T10:51:08Z\",\n  \"last_seen_at\": \"2021-09-02T09:57:54Z\",\n  \"host\": \"blog.cloudflare.com\",\n  \"domain_reported_malicious\": false,\n  \"seen_on_first\": \"blog.cloudflare.com/page\",\n  \"seen_on\": [\n    \"blog.cloudflare.com/page1\",\n    \"blog.cloudflare.com/page2\"\n  ],\n  \"count\": 4,\n  \"appears_in_cdn_cgi_path\": false,\n  \"hash\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\n  \"js_integrity_score\": 10,\n  \"fetched_at\": \"2021-09-02T10:17:54Z\",\n  \"versions\": [\n    {\n      \"hash\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b423\",\n      \"js_integrity_score\": 2,\n      \"fetched_at\": \"2021-08-18T10:51:08Z\"\n    }\n  ]\n}"
+		}
+	],
+	"html_id": "page-shield",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {},
+		"required_props": [],
+		"optional_props": [],
+		"objects": [],
+		"example": "{}",
+		"title": "Page Shield",
+		"description": "Page Shield monitors your zone for new JavaScript dependencies."
+	}
+}

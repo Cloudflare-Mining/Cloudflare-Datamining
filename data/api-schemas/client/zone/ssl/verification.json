@@ -1,0 +1,209 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/ssl/verification.json",
+	"title": "SSL Verification",
+	"description": "SSL Verification for a Zone",
+	"type": "object",
+	"links": [
+		{
+			"title": "SSL Verification Details",
+			"description": "Get SSL Verification Info for a Zone",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/ssl/verification",
+			"method": "GET",
+			"cfOwnership": "ssl",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#ssl:read"
+				]
+			},
+			"html_id": "ssl-verification-ssl-verification-details",
+			"uri": "zones/:zone_identifier/ssl/verification",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/ssl/verification?retry=true\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"retry": {
+						"example": "true",
+						"enum": [
+							true
+						],
+						"description": "Immediately retry SSL Verification"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"retry"
+				],
+				"objects": [],
+				"example": "{\n  \"retry\": true\n}"
+			},
+			"response": "{\n  \"result\": [\n    {\n      \"certificate_status\": \"active\",\n      \"verification_type\": \"cname\",\n      \"verification_status\": true,\n      \"verification_info\": {\n        \"record_name\": \"b3b90cfedd89a3e487d3e383c56c4267.example.com\",\n        \"record_target\": \"6979be7e4cfc9e5c603e31df7efac9cc60fee82d.comodoca.com\"\n      },\n      \"brand_check\": false,\n      \"validation_method\": \"txt\",\n      \"cert_pack_uuid\": \"a77f8bd7-3b47-46b4-a6f1-75cf98109948\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Edit SSL Certificate Pack Validation Method",
+			"description": "Edit SSL validation method for a certificate pack. A PATCH request will request an immediate validation check on any certificate, and return the updated status. If a validation method is provided, the validation will be immediately attempted using that method.",
+			"method": "PATCH",
+			"href": "zones/{#/definitions/zone_identifier}/ssl/verification/{#/definitions/cert_pack_uuid}",
+			"rel": "self",
+			"cfOwnership": "ssl",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#ssl:read",
+					"#ssl:edit"
+				]
+			},
+			"html_id": "ssl-verification-edit-ssl-certificate-pack-validation-method",
+			"uri": "zones/:zone_identifier/ssl/verification/:cert_pack_uuid",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/ssl/verification/a77f8bd7-3b47-46b4-a6f1-75cf98109948\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"validation_method\":\"txt\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"validation_method": {
+						"type": "string",
+						"example": "\"txt\"",
+						"description": "Desired validation method",
+						"enum": [
+							"http",
+							"cname",
+							"txt",
+							"email"
+						]
+					}
+				},
+				"required_props": [
+					"validation_method"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"validation_method\": \"txt\"\n}",
+				"description": "SSL Certificate Validation Method"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"validation_method\": \"txt\",\n    \"status\": \"pending_validation\"\n  }\n}"
+		}
+	],
+	"html_id": "ssl-verification",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"certificate_status": {
+				"type": "string",
+				"example": "\"active\"",
+				"description": "Current status of certificate",
+				"enum": [
+					"initializing",
+					"authorizing",
+					"active",
+					"expired",
+					"issuing",
+					"timing_out",
+					"pending_deployment"
+				]
+			},
+			"signature": {
+				"type": "string",
+				"description": "Certificate's signature algorithm",
+				"enum": [
+					"ECDSAWithSHA256",
+					"SHA1WithRSA",
+					"SHA256WithRSA"
+				]
+			},
+			"verification_type": {
+				"type": "string",
+				"example": "\"cname\"",
+				"description": "Method of verification",
+				"enum": [
+					"cname",
+					"meta tag"
+				]
+			},
+			"verification_status": {
+				"type": "boolean",
+				"example": "true",
+				"description": "Status of the required verification information, omitted if verification status is unknown."
+			},
+			"verification_info": {
+				"type": "object",
+				"example": "{\n  \"record_name\": \"b3b90cfedd89a3e487d3e383c56c4267.example.com\",\n  \"record_target\": \"6979be7e4cfc9e5c603e31df7efac9cc60fee82d.comodoca.com\"\n}",
+				"properties": {
+					"record_name": {
+						"type": "string",
+						"example": "\"b3b90cfedd89a3e487d3e383c56c4267.example.com\"",
+						"description": "Name of CNAME record",
+						"format": "hostname"
+					},
+					"record_target": {
+						"type": "string",
+						"example": "\"6979be7e4cfc9e5c603e31df7efac9cc60fee82d.comodoca.com\"",
+						"description": "Target of CNAME record",
+						"format": "hostname"
+					}
+				},
+				"description": "Certificate's required verification information",
+				"enum": [
+					"record_name",
+					"record_value",
+					"http_url",
+					"http_body",
+					"cname",
+					"cname_target",
+					"txt_name",
+					"txt_value"
+				]
+			},
+			"brand_check": {
+				"type": "boolean",
+				"example": "false",
+				"description": "Certificate Authority is manually reviewing the order"
+			},
+			"validation_method": {
+				"type": "string",
+				"example": "\"txt\"",
+				"description": "Validation method in use for a certificate pack order.",
+				"enum": [
+					"http",
+					"cname",
+					"txt"
+				]
+			},
+			"cert_pack_uuid": {
+				"type": "string",
+				"example": "\"a77f8bd7-3b47-46b4-a6f1-75cf98109948\"",
+				"description": "Certificate Pack UUID"
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"certificate_status",
+			"signature",
+			"verification_type",
+			"verification_status",
+			"verification_info",
+			"brand_check",
+			"validation_method",
+			"cert_pack_uuid"
+		],
+		"objects": [],
+		"example": "{\n  \"certificate_status\": \"active\",\n  \"verification_type\": \"cname\",\n  \"verification_status\": true,\n  \"verification_info\": {\n    \"record_name\": \"b3b90cfedd89a3e487d3e383c56c4267.example.com\",\n    \"record_target\": \"6979be7e4cfc9e5c603e31df7efac9cc60fee82d.comodoca.com\"\n  },\n  \"brand_check\": false,\n  \"validation_method\": \"txt\",\n  \"cert_pack_uuid\": \"a77f8bd7-3b47-46b4-a6f1-75cf98109948\"\n}",
+		"description": "SSL Verification for a Zone",
+		"title": "SSL Verification"
+	}
+}

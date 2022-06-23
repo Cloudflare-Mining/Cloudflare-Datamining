@@ -1,0 +1,445 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/firewall/lists.json",
+	"title": "Lists",
+	"description": "Lists you can use in filter and rule expressions.",
+	"cfExtendedDescription": "There are two types of lists: IP address lists and redirect lists.",
+	"type": "object",
+	"links": [
+		{
+			"title": "Get lists",
+			"description": "Fetches all lists in the account.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/rules/lists",
+			"method": "GET",
+			"cfOwnership": "firewall",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "lists-get-lists",
+			"uri": "accounts/:account_identifier/rules/lists",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/rules/lists\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"2c0fc9fa937b11eaa1b71c4d701ab86e\",\n      \"name\": \"list1\",\n      \"description\": \"This is a note.\",\n      \"kind\": \"ip\",\n      \"num_items\": 10,\n      \"num_referencing_filters\": 2,\n      \"created_on\": \"2020-01-01T08:00:00Z\",\n      \"modified_on\": \"2020-01-10T14:00:00Z\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Create a list",
+			"description": "Creates a new list of the specified type.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/rules/lists",
+			"method": "POST",
+			"cfOwnership": "firewall",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "lists-create-a-list",
+			"uri": "accounts/:account_identifier/rules/lists",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/rules/lists\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"list1\",\"description\":\"This is a note.\",\"kind\":\"ip\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"list1\"",
+						"description": "An informative name for the list. Use this name in filter and rule expressions.",
+						"maxLength": 50,
+						"pattern": "^[a-zA-Z0-9_]+$"
+					},
+					"description": {
+						"type": "string",
+						"example": "\"This is a note.\"",
+						"description": "An informative summary of the list.",
+						"maxLength": 500
+					},
+					"kind": {
+						"type": "string",
+						"example": "\"ip\"",
+						"description": "The type of the list. Each type supports specific list items (IP addresses or redirects).",
+						"enum": [
+							"ip",
+							"redirect"
+						]
+					}
+				},
+				"required_props": [
+					"name",
+					"kind"
+				],
+				"optional_props": [
+					"description"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": \"list1\",\n  \"description\": \"This is a note.\",\n  \"kind\": \"ip\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"2c0fc9fa937b11eaa1b71c4d701ab86e\",\n    \"name\": \"list1\",\n    \"description\": \"This is a note.\",\n    \"kind\": \"ip\",\n    \"num_items\": 10,\n    \"num_referencing_filters\": 2,\n    \"created_on\": \"2020-01-01T08:00:00Z\",\n    \"modified_on\": \"2020-01-10T14:00:00Z\"\n  }\n}"
+		},
+		{
+			"title": "Get a list",
+			"description": "Fetches the details of a list.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/rules/lists/{#/definitions/list_id}",
+			"method": "GET",
+			"cfOwnership": "firewall",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "lists-get-a-list",
+			"uri": "accounts/:account_identifier/rules/lists/:list_id",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/rules/lists/2c0fc9fa937b11eaa1b71c4d701ab86e\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"2c0fc9fa937b11eaa1b71c4d701ab86e\",\n    \"name\": \"list1\",\n    \"description\": \"This is a note.\",\n    \"kind\": \"ip\",\n    \"num_items\": 10,\n    \"num_referencing_filters\": 2,\n    \"created_on\": \"2020-01-01T08:00:00Z\",\n    \"modified_on\": \"2020-01-10T14:00:00Z\"\n  }\n}"
+		},
+		{
+			"title": "Update a list",
+			"description": "Updates the description of a list.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/rules/lists/{#/definitions/list_id}",
+			"method": "PUT",
+			"cfOwnership": "firewall",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "lists-update-a-list",
+			"uri": "accounts/:account_identifier/rules/lists/:list_id",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/rules/lists/2c0fc9fa937b11eaa1b71c4d701ab86e\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"description\":\"This is a note.\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"description": {
+						"type": "string",
+						"example": "\"This is a note.\"",
+						"description": "An informative summary of the list.",
+						"maxLength": 500
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"description"
+				],
+				"objects": [],
+				"example": "{\n  \"description\": \"This is a note.\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"2c0fc9fa937b11eaa1b71c4d701ab86e\",\n    \"name\": \"list1\",\n    \"description\": \"This is a note.\",\n    \"kind\": \"ip\",\n    \"num_items\": 10,\n    \"num_referencing_filters\": 2,\n    \"created_on\": \"2020-01-01T08:00:00Z\",\n    \"modified_on\": \"2020-01-10T14:00:00Z\"\n  }\n}"
+		},
+		{
+			"title": "Delete a list",
+			"description": "Deletes a specific list and all its items.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/rules/lists/{#/definitions/list_id}",
+			"method": "DELETE",
+			"cfOwnership": "firewall",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "lists-delete-a-list",
+			"uri": "accounts/:account_identifier/rules/lists/:list_id",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/rules/lists/2c0fc9fa937b11eaa1b71c4d701ab86e\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"34b12448945f11eaa1b71c4d701ab86e\"\n  }\n}"
+		},
+		{
+			"title": "Get list items",
+			"description": "Fetches all the items in the list.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/rules/lists/{#/definitions/list_id}/items",
+			"method": "GET",
+			"cfOwnership": "firewall",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "lists-get-list-items",
+			"uri": "accounts/:account_identifier/rules/lists/:list_id/items",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/rules/lists/2c0fc9fa937b11eaa1b71c4d701ab86e/items?cursor=zzz\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"cursor": {
+						"type": "string",
+						"example": "\"zzz\"",
+						"description": "The pagination cursor. An opaque string token indicating the position from which to continue when requesting the next/previous set of records. Cursor values are provided under `result_info.cursors` in the response. You should make no assumptions about a cursor's content or length."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"cursor"
+				],
+				"objects": [],
+				"example": "{\n  \"cursor\": \"zzz\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"2c0fc9fa937b11eaa1b71c4d701ab86e\",\n      \"ip\": \"10.0.0.1\",\n      \"comment\": \"Private IP address\",\n      \"created_on\": \"2020-01-01T08:00:00Z\",\n      \"modified_on\": \"2020-01-10T14:00:00Z\"\n    }\n  ],\n  \"result_info\": {\n    \"cursors\": {\n      \"before\": \"xxx\",\n      \"after\": \"yyy\"\n    }\n  }\n}"
+		},
+		{
+			"title": "Create list items",
+			"description": "Appends new items to the list.\n\nThis operation is asynchronous. To get current the operation status, invoke the [Get bulk operation status](#lists-get-bulk-operation-status) endpoint with the returned `operation_id`.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/rules/lists/{#/definitions/list_id}/items",
+			"method": "POST",
+			"cfOwnership": "firewall",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "lists-create-list-items",
+			"uri": "accounts/:account_identifier/rules/lists/:list_id/items",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/rules/lists/2c0fc9fa937b11eaa1b71c4d701ab86e/items\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '[{}]'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {},
+				"required_props": [],
+				"optional_props": [],
+				"objects": [
+					{
+						"all_props": {},
+						"required_props": [
+							"ip"
+						],
+						"optional_props": [],
+						"objects": [],
+						"example": "{}"
+					},
+					{
+						"all_props": {},
+						"required_props": [
+							"redirect"
+						],
+						"optional_props": [],
+						"objects": [],
+						"example": "{}"
+					}
+				],
+				"example": "{}",
+				"which_of": "oneOf"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"operation_id\": \"4da8780eeb215e6cb7f48dd981c4ea02\"\n  }\n}"
+		},
+		{
+			"title": "Update all list items",
+			"description": "Removes all existing items from the list and adds the provided items to the list.\n\nThis operation is asynchronous. To get current the operation status, invoke the [Get bulk operation status](#lists-get-bulk-operation-status) endpoint with the returned `operation_id`.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/rules/lists/{#/definitions/list_id}/items",
+			"method": "PUT",
+			"cfOwnership": "firewall",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "lists-update-all-list-items",
+			"uri": "accounts/:account_identifier/rules/lists/:list_id/items",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/rules/lists/2c0fc9fa937b11eaa1b71c4d701ab86e/items\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '[{}]'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {},
+				"required_props": [],
+				"optional_props": [],
+				"objects": [
+					{
+						"all_props": {},
+						"required_props": [
+							"ip"
+						],
+						"optional_props": [],
+						"objects": [],
+						"example": "{}"
+					},
+					{
+						"all_props": {},
+						"required_props": [
+							"redirect"
+						],
+						"optional_props": [],
+						"objects": [],
+						"example": "{}"
+					}
+				],
+				"example": "{}",
+				"which_of": "oneOf"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"operation_id\": \"4da8780eeb215e6cb7f48dd981c4ea02\"\n  }\n}"
+		},
+		{
+			"title": "Delete list items",
+			"description": "Removes one or more items from a list.\n\nThis operation is asynchronous. To get current the operation status, invoke the [Get bulk operation status](#lists-get-bulk-operation-status) endpoint with the returned `operation_id`.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/rules/lists/{#/definitions/list_id}/items",
+			"method": "DELETE",
+			"cfOwnership": "firewall",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "lists-delete-list-items",
+			"uri": "accounts/:account_identifier/rules/lists/:list_id/items",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/rules/lists/2c0fc9fa937b11eaa1b71c4d701ab86e/items\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"items\":[{\"id\":\"34b12448945f11eaa1b71c4d701ab86e\"}]}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"items": {
+						"type": "array",
+						"example": "[\n  {\n    \"id\": \"34b12448945f11eaa1b71c4d701ab86e\"\n  }\n]",
+						"items": {
+							"properties": {
+								"id": {
+									"type": "string",
+									"description": "The unique ID of the item in the List.",
+									"example": "34b12448945f11eaa1b71c4d701ab86e"
+								}
+							}
+						},
+						"minItems": 1
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"items"
+				],
+				"objects": [],
+				"example": "{\n  \"items\": [\n    {\n      \"id\": \"34b12448945f11eaa1b71c4d701ab86e\"\n    }\n  ]\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"operation_id\": \"4da8780eeb215e6cb7f48dd981c4ea02\"\n  }\n}"
+		},
+		{
+			"title": "Get a list item",
+			"description": "Fetches a list item in the list.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/rules/lists/{#/definitions/list_id}/items/{#/definitions/item_id}",
+			"method": "GET",
+			"cfOwnership": "firewall",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "lists-get-a-list-item",
+			"uri": "accounts/:account_identifier/rules/lists/:list_id/items/:item_id",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/rules/lists/2c0fc9fa937b11eaa1b71c4d701ab86e/items/34b12448945f11eaa1b71c4d701ab86e\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"2c0fc9fa937b11eaa1b71c4d701ab86e\",\n    \"ip\": \"10.0.0.1\",\n    \"redirect\": {\n      \"source_url\": \"example.com/arch\",\n      \"target_url\": \"https://archlinux.org/\",\n      \"status_code\": 301,\n      \"include_subdomains\": false,\n      \"subpath_matching\": false,\n      \"preserve_query_string\": false,\n      \"preserve_path_suffix\": true\n    },\n    \"comment\": \"Private IP address\",\n    \"created_on\": \"2020-01-01T08:00:00Z\",\n    \"modified_on\": \"2020-01-10T14:00:00Z\"\n  }\n}"
+		},
+		{
+			"title": "Get bulk operation status",
+			"description": "Gets the current status of an asynchronous operation on a list.\n\nThe `status` property can have one of the following values: `pending`, `running`, `completed`, or `failed`. If the status is `failed`, the `error` property will contain a message describing the error.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/rules/lists/bulk_operations/{#/definitions/operation_id}",
+			"method": "GET",
+			"cfOwnership": "firewall",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "lists-get-bulk-operation-status",
+			"uri": "accounts/:account_identifier/rules/lists/bulk_operations/:operation_id",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/rules/lists/bulk_operations/4da8780eeb215e6cb7f48dd981c4ea02\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"4da8780eeb215e6cb7f48dd981c4ea02\",\n    \"status\": \"failed\",\n    \"error\": \"This list is at the maximum number of items\",\n    \"completed\": \"2020-01-01T08:00:00Z\"\n  }\n}"
+		}
+	],
+	"cfLinkErrors": {
+		"10000": "Invalid user"
+	},
+	"html_id": "lists",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"2c0fc9fa937b11eaa1b71c4d701ab86e\"",
+				"description": "The unique ID of the list.",
+				"minLength": 32,
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"name": {
+				"type": "string",
+				"example": "\"list1\"",
+				"description": "An informative name for the list. Use this name in filter and rule expressions.",
+				"maxLength": 50,
+				"pattern": "^[a-zA-Z0-9_]+$"
+			},
+			"description": {
+				"type": "string",
+				"example": "\"This is a note.\"",
+				"description": "An informative summary of the list.",
+				"maxLength": 500
+			},
+			"kind": {
+				"type": "string",
+				"example": "\"ip\"",
+				"description": "The type of the list. Each type supports specific list items (IP addresses or redirects).",
+				"enum": [
+					"ip",
+					"redirect"
+				]
+			},
+			"num_items": {
+				"type": "number",
+				"example": "10",
+				"description": "The number of items in the list."
+			},
+			"num_referencing_filters": {
+				"type": "number",
+				"example": "2",
+				"description": "The number of [filters](#filters) referencing the list."
+			},
+			"created_on": {
+				"type": "string",
+				"example": "\"2020-01-01T08:00:00Z\"",
+				"description": "The RFC 3339 timestamp of when the list was created."
+			},
+			"modified_on": {
+				"type": "string",
+				"example": "\"2020-01-10T14:00:00Z\"",
+				"description": "The RFC 3339 timestamp of when the list was last modified."
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"name",
+			"description",
+			"kind",
+			"num_items",
+			"num_referencing_filters",
+			"created_on",
+			"modified_on"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"2c0fc9fa937b11eaa1b71c4d701ab86e\",\n  \"name\": \"list1\",\n  \"description\": \"This is a note.\",\n  \"kind\": \"ip\",\n  \"num_items\": 10,\n  \"num_referencing_filters\": 2,\n  \"created_on\": \"2020-01-01T08:00:00Z\",\n  \"modified_on\": \"2020-01-10T14:00:00Z\"\n}",
+		"title": "Lists",
+		"description": "Lists you can use in filter and rule expressions."
+	}
+}

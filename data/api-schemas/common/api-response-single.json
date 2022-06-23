@@ -1,0 +1,196 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
+	"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+	"description": "Schema for an API response from Cloudflare that contains a single result object",
+	"type": "object",
+	"allOf": [
+		{
+			"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
+			"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+			"description": "Common schema for all Cloudflare v4 API responses",
+			"type": "object",
+			"required": [
+				"success",
+				"errors",
+				"messages",
+				"result"
+			],
+			"oneOf": [
+				{
+					"$comment": "This subschema describes successful responses",
+					"properties": {
+						"success": {
+							"description": "Whether the API call was successful or not",
+							"type": "boolean",
+							"enum": [
+								true
+							],
+							"example": true
+						},
+						"errors": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"required": [
+									"code",
+									"message"
+								],
+								"properties": {
+									"code": {
+										"type": "integer",
+										"minimum": 1000
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"uniqueItems": true
+							},
+							"example": []
+						},
+						"messages": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"required": [
+									"code",
+									"message"
+								],
+								"properties": {
+									"code": {
+										"type": "integer",
+										"minimum": 1000
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"uniqueItems": true
+							},
+							"example": []
+						},
+						"result": {
+							"type": [
+								"object",
+								"array",
+								"string"
+							]
+						}
+					}
+				},
+				{
+					"$comment": "This subschema describes failure responses",
+					"properties": {
+						"success": {
+							"description": "Whether the API call was successful or not",
+							"type": "boolean",
+							"enum": [
+								false
+							],
+							"example": false
+						},
+						"errors": {
+							"allOf": [
+								{
+									"type": "array",
+									"items": {
+										"type": "object",
+										"required": [
+											"code",
+											"message"
+										],
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"uniqueItems": true
+									},
+									"example": []
+								}
+							],
+							"minLength": 1,
+							"example": [
+								{
+									"code": 7003,
+									"message": "No route for the URI"
+								}
+							]
+						},
+						"messages": {
+							"allOf": [
+								{
+									"type": "array",
+									"items": {
+										"type": "object",
+										"required": [
+											"code",
+											"message"
+										],
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"uniqueItems": true
+									},
+									"example": []
+								}
+							],
+							"example": []
+						},
+						"result": {
+							"type": "null",
+							"enum": [
+								null
+							],
+							"example": null
+						}
+					}
+				}
+			],
+			"definitions": {
+				"messages": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"code",
+							"message"
+						],
+						"properties": {
+							"code": {
+								"type": "integer",
+								"minimum": 1000
+							},
+							"message": {
+								"type": "string"
+							}
+						},
+						"uniqueItems": true
+					},
+					"example": []
+				}
+			}
+		},
+		{
+			"properties": {
+				"result": {
+					"type": [
+						"object",
+						"string",
+						"null"
+					]
+				}
+			}
+		}
+	]
+}

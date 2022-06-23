@@ -1,0 +1,125 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/argo/smart-routing-api.json",
+	"title": "Argo Smart Routing",
+	"description": "Query, enable and disable Argo smart routing for a zone.",
+	"type": "object",
+	"links": [
+		{
+			"title": "Get Argo Smart Routing setting",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/argo/smart_routing",
+			"method": "GET",
+			"cfOwnership": "argo",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#argo:read"
+				]
+			},
+			"html_id": "argo-smart-routing-get-argo-smart-routing-setting",
+			"uri": "zones/:zone_identifier/argo/smart_routing",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/argo/smart_routing\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"smart_routing\",\n    \"value\": \"on\",\n    \"editable\": true,\n    \"modified_on\": \"2019-02-20T22:37:07.107449Z\"\n  }\n}"
+		},
+		{
+			"title": "Patch Argo Smart Routing setting",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/argo/smart_routing",
+			"method": "PATCH",
+			"cfOwnership": "argo",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#argo:read",
+					"#argo:edit"
+				]
+			},
+			"html_id": "argo-smart-routing-patch-argo-smart-routing-setting",
+			"uri": "zones/:zone_identifier/argo/smart_routing",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/argo/smart_routing\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"value\":\"on\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"value": {
+						"type": "string",
+						"example": "\"on\"",
+						"description": "Enablement of Argo smart routing",
+						"enum": [
+							"on",
+							"off"
+						]
+					}
+				},
+				"required_props": [
+					"value"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"value\": \"on\"\n}",
+				"description": "Update Enablement of Argo smart routing"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"smart_routing\",\n    \"value\": \"on\",\n    \"editable\": true,\n    \"modified_on\": \"2019-02-20T22:37:07.107449Z\"\n  }\n}"
+		}
+	],
+	"html_id": "argo-smart-routing",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"smart_routing\"",
+				"description": "Identify endpoint smart_routing",
+				"enum": [
+					"smart_routing"
+				],
+				"readOnly": true
+			},
+			"value": {
+				"type": "string",
+				"example": "\"on\"",
+				"description": "Enablement of Argo smart routing",
+				"enum": [
+					"on",
+					"off"
+				]
+			},
+			"editable": {
+				"type": "boolean",
+				"example": "true",
+				"description": "Editability of smart routing setting"
+			},
+			"modified_on": {
+				"type": "string",
+				"example": "\"2019-02-20T22:37:07.107449Z\"",
+				"description": "Timestamp of last modified",
+				"format": "date-time",
+				"readOnly": true
+			}
+		},
+		"required_props": [
+			"id",
+			"value",
+			"editable",
+			"modified_on"
+		],
+		"optional_props": [],
+		"objects": [],
+		"example": "{\n  \"id\": \"smart_routing\",\n  \"value\": \"on\",\n  \"editable\": true,\n  \"modified_on\": \"2019-02-20T22:37:07.107449Z\"\n}",
+		"title": "Argo Smart Routing",
+		"description": "Query, enable and disable Argo smart routing for a zone."
+	}
+}

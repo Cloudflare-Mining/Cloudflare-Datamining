@@ -1,0 +1,164 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/workers/logs.json",
+	"title": "Worker Tail Logs",
+	"description": "Receive websocket URL of trace worker.",
+	"cfExtendedDescription": "**For more detailed documentation on using the API for Workers see the [Workers API](https://workers.cloudflare.com/docs/reference/tooling/api/).**",
+	"type": "object",
+	"links": [
+		{
+			"title": "Start Tail",
+			"description": "Starts a tail that receives logs and exception from a Worker",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/workers/scripts/{#/definitions/script_name}/tails",
+			"method": "POST",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
+			"cfOwnership": "workers",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.edge.worker.script.read",
+					"com.cloudflare.edge.worker.tail.create"
+				]
+			},
+			"html_id": "worker-tail-logs-start-tail",
+			"uri": "accounts/:account_identifier/workers/scripts/:script_name/tails",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/workers/scripts/this-is_my_script-01/tails\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"03dc9f77817b488fb26c5861ec18f791\",\n    \"url\": \"wss://tail.developers.workers.dev/03dc9f77817b488fb26c5861ec18f791\",\n    \"expires_at\": \"2021-08-20T19:15:51Z\"\n  }\n}"
+		},
+		{
+			"title": "List Tails",
+			"description": "Get list of tails currently deployed on a worker",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/workers/scripts/{#/definitions/script_name}/tails",
+			"method": "GET",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
+			"cfOwnership": "workers",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.edge.worker.script.read"
+				]
+			},
+			"html_id": "worker-tail-logs-list-tails",
+			"uri": "accounts/:account_identifier/workers/scripts/:script_name/tails",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/workers/scripts/this-is_my_script-01/tails\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"03dc9f77817b488fb26c5861ec18f791\",\n    \"url\": \"wss://tail.developers.workers.dev/03dc9f77817b488fb26c5861ec18f791\",\n    \"expires_at\": \"2021-08-20T19:15:51Z\"\n  }\n}"
+		},
+		{
+			"title": "Delete Tail",
+			"description": "Deletes a tail from a Worker",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/workers/scripts/{#/definitions/script_name}/tails/{#/definitions/id}",
+			"method": "DELETE",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
+			"cfOwnership": "workers",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.edge.worker.script.read",
+					"com.cloudflare.edge.worker.tail.create"
+				]
+			},
+			"html_id": "worker-tail-logs-delete-tail",
+			"uri": "accounts/:account_identifier/workers/scripts/:script_name/tails/:id",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/workers/scripts/this-is_my_script-01/tails/03dc9f77817b488fb26c5861ec18f791\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
+		}
+	],
+	"cfLinkErrors": {
+		"10057": "Worker has too much traffic to add a tail",
+		"10059": "Worker has too many active tails (maximum is 10)",
+		"10076": "Worker cannot be tailed due to abuse"
+	},
+	"html_id": "worker-tail-logs",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"03dc9f77817b488fb26c5861ec18f791\"",
+				"description": "Identifier for the tail"
+			},
+			"url": {
+				"type": "string",
+				"example": "\"wss://tail.developers.workers.dev/03dc9f77817b488fb26c5861ec18f791\"",
+				"description": "WebSocket URL of the tail, which clients should connect to receive log and error messages."
+			},
+			"expires_at": {
+				"type": "string",
+				"example": "\"2021-08-20T19:15:51Z\"",
+				"description": "Timestamp when the tail will be deleted",
+				"format": "date-time"
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"url",
+			"expires_at"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"03dc9f77817b488fb26c5861ec18f791\",\n  \"url\": \"wss://tail.developers.workers.dev/03dc9f77817b488fb26c5861ec18f791\",\n  \"expires_at\": \"2021-08-20T19:15:51Z\"\n}",
+		"title": "Worker Tail Logs",
+		"description": "Receive websocket URL of trace worker."
+	}
+}

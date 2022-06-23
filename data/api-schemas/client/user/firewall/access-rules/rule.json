@@ -1,0 +1,607 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/user/firewall/access-rules/rule.json",
+	"title": "User-level Firewall Access Rule",
+	"description": "A firewall access rule applied to all zones owned by the user",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Access Rules",
+			"description": "Search, sort, and filter IP/country access rules",
+			"rel": "collection",
+			"href": "user/firewall/access_rules/rules",
+			"method": "GET",
+			"cfOwnership": "firewall",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "user-level-firewall-access-rule-list-access-rules",
+			"uri": "user/firewall/access_rules/rules",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/user/firewall/access_rules/rules?page=1&per_page=20&mode=challenge&configuration.target=ip&configuration.value=198.51.100.4&notes=my note&match=all&order=mode&direction=desc\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"page": {
+						"type": "number",
+						"example": "1",
+						"description": "Page number of paginated results",
+						"minimum": 1,
+						"default": 1
+					},
+					"per_page": {
+						"type": "number",
+						"example": "20",
+						"description": "Maximum number of results per page. This can only be provided as 1 or in multiples of 5 such as 5, 10, 15 or 20",
+						"minimum": 1,
+						"maximum": 1000,
+						"default": 20
+					},
+					"mode": {
+						"type": "string",
+						"example": "\"challenge\"",
+						"enum": [
+							"block",
+							"challenge",
+							"whitelist",
+							"js_challenge",
+							"managed_challenge"
+						],
+						"description": "The action to apply to a matched request"
+					},
+					"configuration.target": {
+						"type": "string",
+						"example": "\"ip\"",
+						"enum": [
+							"ip",
+							"ip_range",
+							"asn",
+							"country"
+						],
+						"description": "Search rules by target"
+					},
+					"configuration.value": {
+						"type": "string",
+						"example": "\"198.51.100.4\"",
+						"description": "Search by IP, range, or country code",
+						"cfNotes": "IP is a single IPv4 address. IP range has a subnet of /16 or /24. Country code is an ISO 2-letter country code."
+					},
+					"notes": {
+						"type": "string",
+						"example": "\"my note\"",
+						"description": "Search in the access rules by notes.",
+						"cfNotes": "Matching any string within previously created access rules with the notes. For example, access rules with notes 'Attack 26/02' & 'Attack 27/02' would both match string 'attack'. Search is not case sensitive."
+					},
+					"match": {
+						"type": "string",
+						"example": "\"all\"",
+						"enum": [
+							"any",
+							"all"
+						],
+						"default": "all",
+						"description": "Whether to match all search requirements or at least one (any)"
+					},
+					"order": {
+						"type": "string",
+						"example": "\"mode\"",
+						"enum": [
+							"configuration.target",
+							"configuration.value",
+							"mode"
+						],
+						"description": "Field to order rules by"
+					},
+					"direction": {
+						"type": "string",
+						"example": "\"desc\"",
+						"enum": [
+							"asc",
+							"desc"
+						],
+						"description": "Direction to order rules"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"page",
+					"per_page",
+					"mode",
+					"configuration.target",
+					"configuration.value",
+					"notes",
+					"match",
+					"order",
+					"direction"
+				],
+				"objects": [],
+				"example": "{\n  \"page\": 1,\n  \"per_page\": 20,\n  \"mode\": \"challenge\",\n  \"configuration.target\": \"ip\",\n  \"configuration.value\": \"198.51.100.4\",\n  \"notes\": \"my note\",\n  \"match\": \"all\",\n  \"order\": \"mode\",\n  \"direction\": \"desc\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"92f17202ed8bd63d69a66b86a49a8f6b\",\n      \"notes\": \"This rule is on because of an event that occured on date X\",\n      \"allowed_modes\": [\n        \"whitelist\",\n        \"block\",\n        \"challenge\",\n        \"js_challenge\",\n        \"managed_challenge\"\n      ],\n      \"mode\": \"challenge\",\n      \"configuration\": {\n        \"target\": \"ip\",\n        \"value\": \"198.51.100.4\"\n      },\n      \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"scope\": {\n        \"id\": \"7c5dae5552338874e5053f2534d2767a\",\n        \"email\": \"user@example.com\",\n        \"type\": \"user\"\n      }\n    }\n  ]\n}"
+		},
+		{
+			"title": "Create Access Rule",
+			"description": "Make a new IP, IP range, or country access rule for all zones owned by the user. Note: If you would like to create an access rule that applies to a specific zone only, use the zone firewall endpoints.",
+			"rel": "collection",
+			"href": "user/firewall/access_rules/rules",
+			"method": "POST",
+			"cfOwnership": "firewall",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "user-level-firewall-access-rule-create-access-rule",
+			"uri": "user/firewall/access_rules/rules",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/user/firewall/access_rules/rules\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"mode\":\"challenge\",\"configuration\":{\"target\":\"ip\",\"value\":\"198.51.100.4\"},\"notes\":\"This rule is on because of an event that occured on date X\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"mode": {
+						"type": "string",
+						"example": "\"challenge\"",
+						"enum": [
+							"block",
+							"challenge",
+							"whitelist",
+							"js_challenge",
+							"managed_challenge"
+						],
+						"description": "The action to apply to a matched request"
+					},
+					"configuration": {
+						"type": "object",
+						"example": "{\n  \"target\": \"ip\",\n  \"value\": \"198.51.100.4\"\n}",
+						"oneOf": [
+							{
+								"all_props": {
+									"target": {
+										"example": "\"ip\"",
+										"enum": [
+											"ip"
+										],
+										"description": "The request property to target"
+									},
+									"value": {
+										"type": "string",
+										"example": "\"198.51.100.4\"",
+										"description": "The IP address to target in requests"
+									}
+								},
+								"required_props": [],
+								"optional_props": [
+									"target",
+									"value"
+								],
+								"objects": [],
+								"example": "{\n  \"target\": \"ip\",\n  \"value\": \"198.51.100.4\"\n}",
+								"title": "IP rule configuration"
+							},
+							{
+								"all_props": {
+									"target": {
+										"example": "\"ip6\"",
+										"enum": [
+											"ip6"
+										],
+										"description": "The request property to target"
+									},
+									"value": {
+										"type": "string",
+										"example": "\"2001:DB8:100::CF\"",
+										"description": "The IP address to target in requests"
+									}
+								},
+								"required_props": [],
+								"optional_props": [
+									"target",
+									"value"
+								],
+								"objects": [],
+								"example": "{\n  \"target\": \"ip6\",\n  \"value\": \"2001:DB8:100::CF\"\n}",
+								"title": "IPv6 rule configuration"
+							},
+							{
+								"all_props": {
+									"target": {
+										"example": "\"ip_range\"",
+										"enum": [
+											"ip_range"
+										],
+										"description": "The request property to target"
+									},
+									"value": {
+										"type": "string",
+										"example": "\"198.51.100.4/16\"",
+										"description": "The IP range to target in requests. Limited to /16 and /24 for IPv4 and /32, /48 and /64 for IPv6."
+									}
+								},
+								"required_props": [],
+								"optional_props": [
+									"target",
+									"value"
+								],
+								"objects": [],
+								"example": "{\n  \"target\": \"ip_range\",\n  \"value\": \"198.51.100.4/16\"\n}",
+								"title": "IP range rule configuration"
+							},
+							{
+								"all_props": {
+									"target": {
+										"example": "\"asn\"",
+										"enum": [
+											"asn"
+										],
+										"description": "The request property to target"
+									},
+									"value": {
+										"type": "string",
+										"example": "\"AS12345\"",
+										"description": "The AS number to target in requests."
+									}
+								},
+								"required_props": [],
+								"optional_props": [
+									"target",
+									"value"
+								],
+								"objects": [],
+								"example": "{\n  \"target\": \"asn\",\n  \"value\": \"AS12345\"\n}",
+								"title": "ASN rule configuration"
+							},
+							{
+								"all_props": {
+									"target": {
+										"example": "\"country\"",
+										"enum": [
+											"country"
+										],
+										"description": "The request property to target"
+									},
+									"value": {
+										"type": "string",
+										"example": "\"US\"",
+										"description": "The 2-digit country code to target in requests. The full list of valid country codes can be found [here](https://support.cloudflare.com/hc/en-us/articles/205072537)"
+									}
+								},
+								"required_props": [],
+								"optional_props": [
+									"target",
+									"value"
+								],
+								"objects": [],
+								"example": "{\n  \"target\": \"country\",\n  \"value\": \"US\"\n}",
+								"title": "Country rule configuration"
+							}
+						],
+						"description": "Rule configuration"
+					},
+					"notes": {
+						"type": "string",
+						"example": "\"This rule is on because of an event that occured on date X\"",
+						"description": "A personal note about the rule. Typically used as a reminder or explanation for the rule."
+					}
+				},
+				"required_props": [
+					"mode",
+					"configuration"
+				],
+				"optional_props": [
+					"notes"
+				],
+				"objects": [],
+				"example": "{\n  \"mode\": \"challenge\",\n  \"configuration\": {\n    \"target\": \"ip\",\n    \"value\": \"198.51.100.4\"\n  },\n  \"notes\": \"This rule is on because of an event that occured on date X\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"92f17202ed8bd63d69a66b86a49a8f6b\",\n    \"notes\": \"This rule is on because of an event that occured on date X\",\n    \"allowed_modes\": [\n      \"whitelist\",\n      \"block\",\n      \"challenge\",\n      \"js_challenge\",\n      \"managed_challenge\"\n    ],\n    \"mode\": \"challenge\",\n    \"configuration\": {\n      \"target\": \"ip\",\n      \"value\": \"198.51.100.4\"\n    },\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"scope\": {\n      \"id\": \"7c5dae5552338874e5053f2534d2767a\",\n      \"email\": \"user@example.com\",\n      \"type\": \"user\"\n    }\n  }\n}"
+		},
+		{
+			"title": "Edit Access Rule",
+			"description": "Edit rule state and/or note. This will be applied across all zones owned by the user.",
+			"rel": "self",
+			"href": "user/firewall/access_rules/rules/{#/definitions/identifier}",
+			"method": "PATCH",
+			"cfOwnership": "firewall",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "user-level-firewall-access-rule-edit-access-rule",
+			"uri": "user/firewall/access_rules/rules/:identifier",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/user/firewall/access_rules/rules/92f17202ed8bd63d69a66b86a49a8f6b\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"mode\":\"challenge\",\"notes\":\"This rule is on because of an event that occured on date X\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"mode": {
+						"type": "string",
+						"example": "\"challenge\"",
+						"enum": [
+							"block",
+							"challenge",
+							"whitelist",
+							"js_challenge",
+							"managed_challenge"
+						],
+						"description": "The action to apply to a matched request"
+					},
+					"notes": {
+						"type": "string",
+						"example": "\"This rule is on because of an event that occured on date X\"",
+						"description": "A personal note about the rule. Typically used as a reminder or explanation for the rule."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"mode",
+					"notes"
+				],
+				"objects": [],
+				"example": "{\n  \"mode\": \"challenge\",\n  \"notes\": \"This rule is on because of an event that occured on date X\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"92f17202ed8bd63d69a66b86a49a8f6b\",\n    \"notes\": \"This rule is on because of an event that occured on date X\",\n    \"allowed_modes\": [\n      \"whitelist\",\n      \"block\",\n      \"challenge\",\n      \"js_challenge\",\n      \"managed_challenge\"\n    ],\n    \"mode\": \"challenge\",\n    \"configuration\": {\n      \"target\": \"ip\",\n      \"value\": \"198.51.100.4\"\n    },\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"scope\": {\n      \"id\": \"7c5dae5552338874e5053f2534d2767a\",\n      \"email\": \"user@example.com\",\n      \"type\": \"user\"\n    }\n  }\n}"
+		},
+		{
+			"title": "Delete Access Rule",
+			"description": "Remove an access rule so it is no longer evaluated during requests. This will apply to all zones owned by the user",
+			"rel": "self",
+			"href": "user/firewall/access_rules/rules/{#/definitions/identifier}",
+			"method": "DELETE",
+			"cfOwnership": "firewall",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "user-level-firewall-access-rule-delete-access-rule",
+			"uri": "user/firewall/access_rules/rules/:identifier",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/user/firewall/access_rules/rules/92f17202ed8bd63d69a66b86a49a8f6b\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"92f17202ed8bd63d69a66b86a49a8f6b\"\n  }\n}"
+		}
+	],
+	"html_id": "user-level-firewall-access-rule",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"92f17202ed8bd63d69a66b86a49a8f6b\"",
+				"description": "Access rule identifier tag",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"notes": {
+				"type": "string",
+				"example": "\"This rule is on because of an event that occured on date X\"",
+				"description": "A personal note about the rule. Typically used as a reminder or explanation for the rule."
+			},
+			"allowed_modes": {
+				"type": "array",
+				"example": "[\n  \"whitelist\",\n  \"block\",\n  \"challenge\",\n  \"js_challenge\",\n  \"managed_challenge\"\n]",
+				"readOnly": true,
+				"description": "The possible modes the rule can be in.",
+				"items": {
+					"type": "string",
+					"enum": [
+						"block",
+						"challenge",
+						"whitelist",
+						"js_challenge",
+						"managed_challenge"
+					],
+					"example": "challenge",
+					"description": "The action to apply to a matched request"
+				}
+			},
+			"mode": {
+				"type": "string",
+				"example": "\"challenge\"",
+				"enum": [
+					"block",
+					"challenge",
+					"whitelist",
+					"js_challenge",
+					"managed_challenge"
+				],
+				"description": "The action to apply to a matched request"
+			},
+			"configuration": {
+				"type": "object",
+				"example": "{\n  \"target\": \"ip\",\n  \"value\": \"198.51.100.4\"\n}",
+				"oneOf": [
+					{
+						"all_props": {
+							"target": {
+								"example": "\"ip\"",
+								"enum": [
+									"ip"
+								],
+								"description": "The request property to target"
+							},
+							"value": {
+								"type": "string",
+								"example": "\"198.51.100.4\"",
+								"description": "The IP address to target in requests"
+							}
+						},
+						"required_props": [],
+						"optional_props": [
+							"target",
+							"value"
+						],
+						"objects": [],
+						"example": "{\n  \"target\": \"ip\",\n  \"value\": \"198.51.100.4\"\n}",
+						"title": "IP rule configuration"
+					},
+					{
+						"all_props": {
+							"target": {
+								"example": "\"ip6\"",
+								"enum": [
+									"ip6"
+								],
+								"description": "The request property to target"
+							},
+							"value": {
+								"type": "string",
+								"example": "\"2001:DB8:100::CF\"",
+								"description": "The IP address to target in requests"
+							}
+						},
+						"required_props": [],
+						"optional_props": [
+							"target",
+							"value"
+						],
+						"objects": [],
+						"example": "{\n  \"target\": \"ip6\",\n  \"value\": \"2001:DB8:100::CF\"\n}",
+						"title": "IPv6 rule configuration"
+					},
+					{
+						"all_props": {
+							"target": {
+								"example": "\"ip_range\"",
+								"enum": [
+									"ip_range"
+								],
+								"description": "The request property to target"
+							},
+							"value": {
+								"type": "string",
+								"example": "\"198.51.100.4/16\"",
+								"description": "The IP range to target in requests. Limited to /16 and /24 for IPv4 and /32, /48 and /64 for IPv6."
+							}
+						},
+						"required_props": [],
+						"optional_props": [
+							"target",
+							"value"
+						],
+						"objects": [],
+						"example": "{\n  \"target\": \"ip_range\",\n  \"value\": \"198.51.100.4/16\"\n}",
+						"title": "IP range rule configuration"
+					},
+					{
+						"all_props": {
+							"target": {
+								"example": "\"asn\"",
+								"enum": [
+									"asn"
+								],
+								"description": "The request property to target"
+							},
+							"value": {
+								"type": "string",
+								"example": "\"AS12345\"",
+								"description": "The AS number to target in requests."
+							}
+						},
+						"required_props": [],
+						"optional_props": [
+							"target",
+							"value"
+						],
+						"objects": [],
+						"example": "{\n  \"target\": \"asn\",\n  \"value\": \"AS12345\"\n}",
+						"title": "ASN rule configuration"
+					},
+					{
+						"all_props": {
+							"target": {
+								"example": "\"country\"",
+								"enum": [
+									"country"
+								],
+								"description": "The request property to target"
+							},
+							"value": {
+								"type": "string",
+								"example": "\"US\"",
+								"description": "The 2-digit country code to target in requests. The full list of valid country codes can be found [here](https://support.cloudflare.com/hc/en-us/articles/205072537)"
+							}
+						},
+						"required_props": [],
+						"optional_props": [
+							"target",
+							"value"
+						],
+						"objects": [],
+						"example": "{\n  \"target\": \"country\",\n  \"value\": \"US\"\n}",
+						"title": "Country rule configuration"
+					}
+				],
+				"description": "Rule configuration"
+			},
+			"created_on": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"description": "When the rule was created",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"modified_on": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"description": "When the rule was last modified",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"scope": {
+				"type": "object",
+				"example": "{\n  \"id\": \"7c5dae5552338874e5053f2534d2767a\",\n  \"email\": \"user@example.com\",\n  \"type\": \"user\"\n}",
+				"properties": {
+					"id": {
+						"type": "string",
+						"example": "\"7c5dae5552338874e5053f2534d2767a\"",
+						"description": "User identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"email": {
+						"type": "string",
+						"example": "\"user@example.com\"",
+						"description": "Your contact email address",
+						"maxLength": 90
+					},
+					"type": {
+						"example": "\"user\"",
+						"enum": [
+							"user"
+						],
+						"description": "The scope of the rule",
+						"readOnly": true
+					}
+				},
+				"description": "All zones owned by the user will have the rule applied.",
+				"readOnly": true
+			}
+		},
+		"required_props": [
+			"id",
+			"mode",
+			"allowed_modes",
+			"configuration",
+			"scope"
+		],
+		"optional_props": [
+			"notes",
+			"created_on",
+			"modified_on"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"92f17202ed8bd63d69a66b86a49a8f6b\",\n  \"notes\": \"This rule is on because of an event that occured on date X\",\n  \"allowed_modes\": [\n    \"whitelist\",\n    \"block\",\n    \"challenge\",\n    \"js_challenge\",\n    \"managed_challenge\"\n  ],\n  \"mode\": \"challenge\",\n  \"configuration\": {\n    \"target\": \"ip\",\n    \"value\": \"198.51.100.4\"\n  },\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"scope\": {\n    \"id\": \"7c5dae5552338874e5053f2534d2767a\",\n    \"email\": \"user@example.com\",\n    \"type\": \"user\"\n  }\n}",
+		"title": "User-level Firewall Access Rule",
+		"description": "A firewall access rule applied to all zones owned by the user"
+	}
+}

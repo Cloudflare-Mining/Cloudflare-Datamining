@@ -1,0 +1,269 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/els/logs/received.json",
+	"title": "Logs Received",
+	"description": "Edge http logs received",
+	"type": "object",
+	"links": [
+		{
+			"title": "Get log retention flag",
+			"description": "Get log retention flag for Logpull API",
+			"rel": "tag:cloudflare.com,2018:logs",
+			"href": "zones/{#/definitions/zone_identifier}/logs/control/retention/flag",
+			"method": "GET",
+			"cfOwnership": "data",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#logs:edit"
+				]
+			},
+			"html_id": "logs-received-get-log-retention-flag",
+			"uri": "zones/:zone_identifier/logs/control/retention/flag",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/logs/control/retention/flag\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"flag\": true\n  }\n}"
+		},
+		{
+			"title": "Update log retention flag",
+			"description": "Update log retention flag for Logpull API",
+			"rel": "tag:cloudflare.com,2018:logs",
+			"href": "zones/{#/definitions/zone_identifier}/logs/control/retention/flag",
+			"method": "POST",
+			"cfOwnership": "data",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#logs:edit"
+				]
+			},
+			"html_id": "logs-received-update-log-retention-flag",
+			"uri": "zones/:zone_identifier/logs/control/retention/flag",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/logs/control/retention/flag\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"flag\":true}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"flag": {
+						"type": "boolean",
+						"example": "true",
+						"description": "The log retention flag for Logpull API."
+					}
+				},
+				"required_props": [
+					"flag"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"flag\": true\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"flag\": true\n  }\n}"
+		},
+		{
+			"title": "Logs Received",
+			"description": "The `/received` api route allows customers to retrieve their edge http logs. The basic access pattern is \"give me all the logs for zone Z for minute M\" where the minute M refers to the time records were received at Cloudflare's central data center. `start` is inclusive, and `end` is exclusive. Because of that, to get all data, at minutely cadence, starting at 10AM, the proper values are: `start=2018-05-20T10:00:00Z&end=2018-05-20T10:01:00Z`, then `start=2018-05-20T10:01:00Z&end=2018-05-20T10:02:00Z` and so on; the \"overlap\" will be handled properly.",
+			"rel": "tag:cloudflare.com,2018:logs",
+			"href": "zones/{#/definitions/zone_identifier}/logs/received",
+			"method": "GET",
+			"mediaType": "text/plain",
+			"cfOwnership": "data",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#logs:read"
+				]
+			},
+			"html_id": "logs-received-logs-received",
+			"uri": "zones/:zone_identifier/logs/received",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/logs/received?start=2018-05-20T10:00:00Z&end=2018-05-20T10:01:00Z&count=7&sample=0.1&fields=ClientIP,RayID,EdgeStartTimestamp&timestamps=unixnano\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"start": {
+						"type": [
+							"string",
+							"integer"
+						],
+						"example": "\"2018-05-20T10:00:00Z\"",
+						"description": "The (inclusive) beginning of the requested time frame. This can be a unix timestamp (in seconds or nanoseconds), or an absolute timestamp that conforms to RFC 3339. At this point in time, it cannot exceed a time in the past greater than 7 days."
+					},
+					"end": {
+						"type": [
+							"string",
+							"integer"
+						],
+						"example": "\"2018-05-20T10:01:00Z\"",
+						"description": "The (exclusive) end of the requested time frame. This can be a unix timestamp (in seconds or nanoseconds), or an absolute timestamp that conforms to RFC 3339. `end` must be at least 5 minutes earlier than now and must be later than `start`. Difference between `start` and `end` must be not greater than 1h."
+					},
+					"count": {
+						"type": "integer",
+						"example": "7",
+						"minimum": 1,
+						"description": "When `?count=` is provided, the response will contain up to `count` results. Since results are not sorted, you are likely to get different data for repeated requests. `count` must be an integer > 0."
+					},
+					"sample": {
+						"type": "number",
+						"example": "\"0.1\"",
+						"minimum": 0,
+						"maximum": 1,
+						"description": "When `?sample=` is provided, a sample of matching records is returned. If `sample=0.1` then 10% of records will be returned. Sampling is random: repeated calls will not only return different records, but likely will also vary slightly in number of returned records. When `?count=` is also specified, `count` is applied to the number of returned records, not the sampled records. So, with `sample=0.05` and `count=7`, when there is a total of 100 records available, approximately 5 will be returned. When there are 1000 records, 7 will be returned. When there are 10,000 records, 7 will be returned."
+					},
+					"fields": {
+						"type": "string",
+						"example": "\"ClientIP,RayID,EdgeStartTimestamp\"",
+						"description": "The `/received` route by default returns a limited set of fields, and allows customers to override the default field set by specifying individual fields. The reasons for this are: 1. most customers require only a small subset of fields, but that subset varies from customer to customer; 2. flat schema is much easier to work with downstream (importing into BigTable etc); 3. performance (time to process, file size). If `?fields=` is not specified, default field set is returned. This default field set may change at any time. When `?fields=` is provided, each record is returned with the specified fields. `fields` must be specified as a comma separated list without any whitespaces, and all fields must exist. The order in which fields are specified doesn't matter, and the order of fields in the response is not specified."
+					},
+					"timestamps": {
+						"type": "string",
+						"example": "\"unixnano\"",
+						"default": "unixnano",
+						"enum": [
+							"unix",
+							"unixnano",
+							"rfc3339"
+						],
+						"description": "By default timestamps in responses are returned as Unix nanosecond integers. The `?timestamps=` argument can be set to change the format in which response timestamps are returned. Possible values are: `unix`, `unixnano`, `rfc3339`. Note: `unix` and `unixnano` return timestamps as integers; `rfc3339` returns timestamps as strings."
+					}
+				},
+				"required_props": [
+					"start",
+					"end"
+				],
+				"optional_props": [
+					"count",
+					"sample",
+					"fields",
+					"timestamps"
+				],
+				"objects": [],
+				"example": "{\n  \"start\": \"2018-05-20T10:00:00Z\",\n  \"end\": \"2018-05-20T10:01:00Z\",\n  \"count\": 7,\n  \"sample\": \"0.1\",\n  \"fields\": \"ClientIP,RayID,EdgeStartTimestamp\",\n  \"timestamps\": \"unixnano\"\n}"
+			},
+			"response": "{\"ClientIP\":\"192.0.2.1\",\"RayID\":\"41ddf1740f67442d\",\"EdgeStartTimestamp\":1526810289280000000}\n{\"ClientIP\":\"192.0.2.1\",\"RayID\":\"41ddf1740f67442d\",\"EdgeStartTimestamp\":1526810289280000000}\n{\"ClientIP\":\"192.0.2.1\",\"RayID\":\"41ddf1740f67442d\",\"EdgeStartTimestamp\":1526810289280000000}"
+		},
+		{
+			"title": "Logs RayIDs",
+			"description": "The `/rayids` api route allows lookups by specific rayid. The rayids route will return 0, 1, or more records (ray ids are not unique).",
+			"rel": "tag:cloudflare.com,2018:logs",
+			"href": "zones/{#/definitions/zone_identifier}/logs/rayids/{#/definitions/ray_identifier}",
+			"method": "GET",
+			"mediaType": "text/plain",
+			"cfOwnership": "data",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#logs:read"
+				]
+			},
+			"html_id": "logs-received-logs-rayids",
+			"uri": "zones/:zone_identifier/logs/rayids/:ray_identifier",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/logs/rayids/41ddf1740f67442d?fields=ClientIP,RayID,EdgeStartTimestamp&timestamps=unixnano\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"fields": {
+						"type": "string",
+						"example": "\"ClientIP,RayID,EdgeStartTimestamp\"",
+						"description": "The `/received` route by default returns a limited set of fields, and allows customers to override the default field set by specifying individual fields. The reasons for this are: 1. most customers require only a small subset of fields, but that subset varies from customer to customer; 2. flat schema is much easier to work with downstream (importing into BigTable etc); 3. performance (time to process, file size). If `?fields=` is not specified, default field set is returned. This default field set may change at any time. When `?fields=` is provided, each record is returned with the specified fields. `fields` must be specified as a comma separated list without any whitespaces, and all fields must exist. The order in which fields are specified doesn't matter, and the order of fields in the response is not specified."
+					},
+					"timestamps": {
+						"type": "string",
+						"example": "\"unixnano\"",
+						"default": "unixnano",
+						"enum": [
+							"unix",
+							"unixnano",
+							"rfc3339"
+						],
+						"description": "By default timestamps in responses are returned as Unix nanosecond integers. The `?timestamps=` argument can be set to change the format in which response timestamps are returned. Possible values are: `unix`, `unixnano`, `rfc3339`. Note: `unix` and `unixnano` return timestamps as integers; `rfc3339` returns timestamps as strings."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"fields",
+					"timestamps"
+				],
+				"objects": [],
+				"example": "{\n  \"fields\": \"ClientIP,RayID,EdgeStartTimestamp\",\n  \"timestamps\": \"unixnano\"\n}"
+			},
+			"response": "{\"ClientIP\":\"192.0.2.1\",\"RayID\":\"41ddf1740f67442d\",\"EdgeStartTimestamp\":1526810289280000000}\n{\"ClientIP\":\"192.0.2.1\",\"RayID\":\"41ddf1740f67442d\",\"EdgeStartTimestamp\":1526810289280000000}\n{\"ClientIP\":\"192.0.2.1\",\"RayID\":\"41ddf1740f67442d\",\"EdgeStartTimestamp\":1526810289280000000}"
+		},
+		{
+			"title": "Fields",
+			"description": "The list of all fields available. The response is json object with key-value pairs where keys are field names, and values are descriptions.",
+			"rel": "tag:cloudflare.com,2018:logs",
+			"href": "zones/{#/definitions/zone_identifier}/logs/received/fields",
+			"method": "GET",
+			"cfOwnership": "data",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#logs:read"
+				]
+			},
+			"html_id": "logs-received-fields",
+			"uri": "zones/:zone_identifier/logs/received/fields",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/logs/received/fields\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"key\": \"value\"\n}"
+		}
+	],
+	"cfSectionNotes": [
+		"If there is an error processing the request before any data has been sent to the client, appropriate status code will be set and error message will be sent in the response body. If there is an error after the response started then an error message will be appended to the response body and the response will be aborted (connection will be closed)."
+	],
+	"html_id": "logs-received",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {},
+		"required_props": [],
+		"optional_props": [],
+		"objects": [
+			{
+				"all_props": {
+					"key": {
+						"example": "\"value\"",
+						"description": "Logs Received response data is returned in json, 1 json object (1 log message) per line, as the responses are \"streaming\" (See \"GET Logs Received\" Response example). Each newline-delimited json object consists of key-value pairs where keys are field names, and values can be string or number depends on the field type. To transform the output into a single json array \"slurp\" it into jq: `| jq --slurp`."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"key"
+				],
+				"objects": [],
+				"example": "{\n  \"key\": \"value\"\n}"
+			}
+		],
+		"example": "{\n  \"key\": \"value\"\n}",
+		"which_of": "oneOf",
+		"title": "Logs Received",
+		"description": "Edge http logs received"
+	}
+}

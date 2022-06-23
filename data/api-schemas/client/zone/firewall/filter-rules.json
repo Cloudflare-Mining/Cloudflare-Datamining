@@ -1,0 +1,830 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/firewall/filter-rules.json",
+	"title": "Firewall rules",
+	"description": "Firewall rules allow you to create rules that inspect incoming traffic and take action on specific requests.",
+	"cfExtendedDescription": "A firewall rule uses a [filter](#filters) to select traffic. For more information, refer to [Manage firewall rules via the APIs](https://developers.cloudflare.com/firewall/api/).",
+	"type": "object",
+	"links": [
+		{
+			"title": "Get firewall rules",
+			"description": "Fetches firewall rules in a zone. You can filter the results using several optional parameters.",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_identifier}/firewall/rules",
+			"method": "GET",
+			"cfOwnership": "firewall",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "firewall-rules-get-firewall-rules",
+			"uri": "zones/:zone_identifier/firewall/rules",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/rules?id=372e67954025e0ba6aaa6d586b9e0b60&description=mir&action=block&paused=false&page=1&per_page=25\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"372e67954025e0ba6aaa6d586b9e0b60\"",
+						"description": "The unique identifier of the firewall rule.",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"description": {
+						"type": "string",
+						"example": "\"mir\"",
+						"description": "A case-insensitive string to find in the description."
+					},
+					"action": {
+						"type": "string",
+						"example": "\"block\"",
+						"description": "The action to search for. Must be an exact match."
+					},
+					"paused": {
+						"type": "boolean",
+						"example": "false",
+						"description": "When true, indicates that the firewall rule is currently paused."
+					},
+					"page": {
+						"type": "number",
+						"example": "1",
+						"description": "Page number of paginated results.",
+						"minimum": 1,
+						"default": 1
+					},
+					"per_page": {
+						"type": "number",
+						"example": "25",
+						"description": "Number of firewall rules per page.",
+						"minimum": 5,
+						"maximum": 100,
+						"default": 25
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"id",
+					"description",
+					"action",
+					"paused",
+					"page",
+					"per_page"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b60\",\n  \"description\": \"mir\",\n  \"action\": \"block\",\n  \"paused\": false,\n  \"page\": 1,\n  \"per_page\": 25\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"372e67954025e0ba6aaa6d586b9e0b60\",\n      \"action\": \"block\",\n      \"products\": [\n        \"waf\"\n      ],\n      \"priority\": 50,\n      \"paused\": false,\n      \"description\": \"Blocks traffic identified during investigation for MIR-31\",\n      \"ref\": \"MIR-31\",\n      \"filter\": {\n        \"id\": \"372e67954025e0ba6aaa6d586b9e0b61\",\n        \"expression\": \"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.addr ne 172.16.22.155\",\n        \"paused\": false,\n        \"description\": \"Restrict access from these browsers on this address range.\",\n        \"ref\": \"FIL-100\"\n      }\n    }\n  ]\n}"
+		},
+		{
+			"title": "Get a firewall rule",
+			"description": "Fetches the details of a firewall rule.",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/firewall/rules/{#/definitions/id}",
+			"method": "GET",
+			"cfOwnership": "firewall",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "firewall-rules-get-a-firewall-rule",
+			"uri": "zones/:zone_identifier/firewall/rules/:id",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/rules/372e67954025e0ba6aaa6d586b9e0b60?id=372e67954025e0ba6aaa6d586b9e0b60\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"372e67954025e0ba6aaa6d586b9e0b60\"",
+						"description": "The unique identifier of the firewall rule.",
+						"maxLength": 32,
+						"readOnly": true
+					}
+				},
+				"required_props": [
+					"id"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b60\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"372e67954025e0ba6aaa6d586b9e0b60\",\n    \"action\": \"block\",\n    \"products\": [\n      \"waf\"\n    ],\n    \"priority\": 50,\n    \"paused\": false,\n    \"description\": \"Blocks traffic identified during investigation for MIR-31\",\n    \"ref\": \"MIR-31\",\n    \"filter\": {\n      \"id\": \"372e67954025e0ba6aaa6d586b9e0b61\",\n      \"expression\": \"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.addr ne 172.16.22.155\",\n      \"paused\": false,\n      \"description\": \"Restrict access from these browsers on this address range.\",\n      \"ref\": \"FIL-100\"\n    }\n  }\n}"
+		},
+		{
+			"title": "Create firewall rules",
+			"description": "Create one or more firewall rules.",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_identifier}/firewall/rules",
+			"method": "POST",
+			"cfOwnership": "firewall",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "firewall-rules-create-firewall-rules",
+			"uri": "zones/:zone_identifier/firewall/rules",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/rules\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '[{\"id\":\"372e67954025e0ba6aaa6d586b9e0b60\",\"action\":\"block\",\"products\":[\"waf\"],\"priority\":50,\"paused\":false,\"description\":\"Blocks traffic identified during investigation for MIR-31\",\"ref\":\"MIR-31\",\"filter\":{\"id\":\"372e67954025e0ba6aaa6d586b9e0b61\",\"expression\":\"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.addr ne 172.16.22.155\",\"paused\":false,\"description\":\"Restrict access from these browsers on this address range.\",\"ref\":\"FIL-100\"}}]'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"372e67954025e0ba6aaa6d586b9e0b60\"",
+						"description": "The unique identifier of the firewall rule.",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"action": {
+						"type": "string",
+						"example": "\"block\"",
+						"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
+						"enum": [
+							"block",
+							"challenge",
+							"js_challenge",
+							"managed_challenge",
+							"allow",
+							"log",
+							"bypass"
+						]
+					},
+					"products": {
+						"type": "array",
+						"example": "[\n  \"waf\"\n]",
+						"items": {
+							"type": "string",
+							"description": "A list of products to bypass for a request when using the `bypass` action.",
+							"enum": [
+								"zoneLockdown",
+								"uaBlock",
+								"bic",
+								"hot",
+								"securityLevel",
+								"rateLimit",
+								"waf"
+							],
+							"example": "waf"
+						}
+					},
+					"priority": {
+						"type": "number",
+						"example": "50",
+						"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
+						"minimum": 0,
+						"maximum": 2147483647
+					},
+					"paused": {
+						"type": "boolean",
+						"example": "false",
+						"description": "When true, indicates that the firewall rule is currently paused."
+					},
+					"description": {
+						"type": "string",
+						"example": "\"Blocks traffic identified during investigation for MIR-31\"",
+						"description": "An informative summary of the firewall rule.",
+						"maxLength": 500
+					},
+					"ref": {
+						"type": "string",
+						"example": "\"MIR-31\"",
+						"description": "A short reference tag. Allows you to select related firewall rules.",
+						"maxLength": 50
+					},
+					"filter": {
+						"type": "object",
+						"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b61\",\n  \"expression\": \"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.addr ne 172.16.22.155\",\n  \"paused\": false,\n  \"description\": \"Restrict access from these browsers on this address range.\",\n  \"ref\": \"FIL-100\"\n}",
+						"properties": {
+							"id": {
+								"type": "string",
+								"example": "\"372e67954025e0ba6aaa6d586b9e0b61\"",
+								"description": "The unique identifier of the filter.",
+								"minLength": 32,
+								"maxLength": 32,
+								"readOnly": true
+							},
+							"expression": {
+								"type": "string",
+								"example": "\"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.addr ne 172.16.22.155\"",
+								"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/)."
+							},
+							"paused": {
+								"type": "boolean",
+								"example": "false",
+								"description": "When true, indicates that the filter is currently paused."
+							},
+							"description": {
+								"type": "string",
+								"example": "\"Restrict access from these browsers on this address range.\"",
+								"description": "An informative summary of the filter.",
+								"maxLength": 500
+							},
+							"ref": {
+								"type": "string",
+								"example": "\"FIL-100\"",
+								"description": "A short reference tag. Allows you to select related filters.",
+								"maxLength": 50
+							}
+						},
+						"additionalProperties": false
+					}
+				},
+				"required_props": [
+					"filter",
+					"action"
+				],
+				"optional_props": [
+					"id",
+					"products",
+					"priority",
+					"paused",
+					"description",
+					"ref"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b60\",\n  \"action\": \"block\",\n  \"products\": [\n    \"waf\"\n  ],\n  \"priority\": 50,\n  \"paused\": false,\n  \"description\": \"Blocks traffic identified during investigation for MIR-31\",\n  \"ref\": \"MIR-31\",\n  \"filter\": {\n    \"id\": \"372e67954025e0ba6aaa6d586b9e0b61\",\n    \"expression\": \"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.addr ne 172.16.22.155\",\n    \"paused\": false,\n    \"description\": \"Restrict access from these browsers on this address range.\",\n    \"ref\": \"FIL-100\"\n  }\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"372e67954025e0ba6aaa6d586b9e0b60\",\n      \"action\": \"block\",\n      \"products\": [\n        \"waf\"\n      ],\n      \"priority\": 50,\n      \"paused\": false,\n      \"description\": \"Blocks traffic identified during investigation for MIR-31\",\n      \"ref\": \"MIR-31\",\n      \"filter\": {\n        \"id\": \"372e67954025e0ba6aaa6d586b9e0b61\",\n        \"expression\": \"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.addr ne 172.16.22.155\",\n        \"paused\": false,\n        \"description\": \"Restrict access from these browsers on this address range.\",\n        \"ref\": \"FIL-100\"\n      }\n    }\n  ]\n}"
+		},
+		{
+			"title": "Update firewall rules",
+			"rel": "collection",
+			"description": "Updates one or more existing firewall rules.",
+			"href": "zones/{#/definitions/zone_identifier}/firewall/rules",
+			"method": "PUT",
+			"cfOwnership": "firewall",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "firewall-rules-update-firewall-rules",
+			"uri": "zones/:zone_identifier/firewall/rules",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/rules\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '[{\"id\":\"372e67954025e0ba6aaa6d586b9e0b60\",\"action\":\"block\",\"products\":[\"waf\"],\"priority\":50,\"paused\":false,\"description\":\"Blocks traffic identified during investigation for MIR-31\",\"ref\":\"MIR-31\",\"filter\":{\"id\":\"372e67954025e0ba6aaa6d586b9e0b61\",\"expression\":\"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.addr ne 172.16.22.155\",\"paused\":false,\"description\":\"Restrict access from these browsers on this address range.\",\"ref\":\"FIL-100\"}}]'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"372e67954025e0ba6aaa6d586b9e0b60\"",
+						"description": "The unique identifier of the firewall rule.",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"action": {
+						"type": "string",
+						"example": "\"block\"",
+						"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
+						"enum": [
+							"block",
+							"challenge",
+							"js_challenge",
+							"managed_challenge",
+							"allow",
+							"log",
+							"bypass"
+						]
+					},
+					"products": {
+						"type": "array",
+						"example": "[\n  \"waf\"\n]",
+						"items": {
+							"type": "string",
+							"description": "A list of products to bypass for a request when using the `bypass` action.",
+							"enum": [
+								"zoneLockdown",
+								"uaBlock",
+								"bic",
+								"hot",
+								"securityLevel",
+								"rateLimit",
+								"waf"
+							],
+							"example": "waf"
+						}
+					},
+					"priority": {
+						"type": "number",
+						"example": "50",
+						"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
+						"minimum": 0,
+						"maximum": 2147483647
+					},
+					"paused": {
+						"type": "boolean",
+						"example": "false",
+						"description": "When true, indicates that the firewall rule is currently paused."
+					},
+					"description": {
+						"type": "string",
+						"example": "\"Blocks traffic identified during investigation for MIR-31\"",
+						"description": "An informative summary of the firewall rule.",
+						"maxLength": 500
+					},
+					"ref": {
+						"type": "string",
+						"example": "\"MIR-31\"",
+						"description": "A short reference tag. Allows you to select related firewall rules.",
+						"maxLength": 50
+					},
+					"filter": {
+						"type": "object",
+						"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b61\",\n  \"expression\": \"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.addr ne 172.16.22.155\",\n  \"paused\": false,\n  \"description\": \"Restrict access from these browsers on this address range.\",\n  \"ref\": \"FIL-100\"\n}",
+						"properties": {
+							"id": {
+								"type": "string",
+								"example": "\"372e67954025e0ba6aaa6d586b9e0b61\"",
+								"description": "The unique identifier of the filter.",
+								"minLength": 32,
+								"maxLength": 32,
+								"readOnly": true
+							},
+							"expression": {
+								"type": "string",
+								"example": "\"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.addr ne 172.16.22.155\"",
+								"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/)."
+							},
+							"paused": {
+								"type": "boolean",
+								"example": "false",
+								"description": "When true, indicates that the filter is currently paused."
+							},
+							"description": {
+								"type": "string",
+								"example": "\"Restrict access from these browsers on this address range.\"",
+								"description": "An informative summary of the filter.",
+								"maxLength": 500
+							},
+							"ref": {
+								"type": "string",
+								"example": "\"FIL-100\"",
+								"description": "A short reference tag. Allows you to select related filters.",
+								"maxLength": 50
+							}
+						},
+						"additionalProperties": false
+					}
+				},
+				"required_props": [
+					"id"
+				],
+				"optional_props": [
+					"action",
+					"products",
+					"priority",
+					"paused",
+					"description",
+					"ref",
+					"filter"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b60\",\n  \"action\": \"block\",\n  \"products\": [\n    \"waf\"\n  ],\n  \"priority\": 50,\n  \"paused\": false,\n  \"description\": \"Blocks traffic identified during investigation for MIR-31\",\n  \"ref\": \"MIR-31\",\n  \"filter\": {\n    \"id\": \"372e67954025e0ba6aaa6d586b9e0b61\",\n    \"expression\": \"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.addr ne 172.16.22.155\",\n    \"paused\": false,\n    \"description\": \"Restrict access from these browsers on this address range.\",\n    \"ref\": \"FIL-100\"\n  }\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"372e67954025e0ba6aaa6d586b9e0b60\",\n      \"action\": \"block\",\n      \"products\": [\n        \"waf\"\n      ],\n      \"priority\": 50,\n      \"paused\": false,\n      \"description\": \"Blocks traffic identified during investigation for MIR-31\",\n      \"ref\": \"MIR-31\",\n      \"filter\": {\n        \"id\": \"372e67954025e0ba6aaa6d586b9e0b61\",\n        \"expression\": \"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.addr ne 172.16.22.155\",\n        \"paused\": false,\n        \"description\": \"Restrict access from these browsers on this address range.\",\n        \"ref\": \"FIL-100\"\n      }\n    }\n  ]\n}"
+		},
+		{
+			"title": "Update a firewall rule",
+			"rel": "self",
+			"description": "Updates an existing firewall rule.",
+			"href": "zones/{#/definitions/zone_identifier}/firewall/rules/{#/definitions/id}",
+			"method": "PUT",
+			"cfOwnership": "firewall",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "firewall-rules-update-a-firewall-rule",
+			"uri": "zones/:zone_identifier/firewall/rules/:id",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/rules/372e67954025e0ba6aaa6d586b9e0b60\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"id\":\"372e67954025e0ba6aaa6d586b9e0b60\",\"action\":\"block\",\"products\":[\"waf\"],\"priority\":50,\"paused\":false,\"description\":\"Blocks traffic identified during investigation for MIR-31\",\"ref\":\"MIR-31\",\"filter\":{\"id\":\"372e67954025e0ba6aaa6d586b9e0b61\",\"expression\":\"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.addr ne 172.16.22.155\",\"paused\":false,\"description\":\"Restrict access from these browsers on this address range.\",\"ref\":\"FIL-100\"}}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"372e67954025e0ba6aaa6d586b9e0b60\"",
+						"description": "The unique identifier of the firewall rule.",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"action": {
+						"type": "string",
+						"example": "\"block\"",
+						"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
+						"enum": [
+							"block",
+							"challenge",
+							"js_challenge",
+							"managed_challenge",
+							"allow",
+							"log",
+							"bypass"
+						]
+					},
+					"products": {
+						"type": "array",
+						"example": "[\n  \"waf\"\n]",
+						"items": {
+							"type": "string",
+							"description": "A list of products to bypass for a request when using the `bypass` action.",
+							"enum": [
+								"zoneLockdown",
+								"uaBlock",
+								"bic",
+								"hot",
+								"securityLevel",
+								"rateLimit",
+								"waf"
+							],
+							"example": "waf"
+						}
+					},
+					"priority": {
+						"type": "number",
+						"example": "50",
+						"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
+						"minimum": 0,
+						"maximum": 2147483647
+					},
+					"paused": {
+						"type": "boolean",
+						"example": "false",
+						"description": "When true, indicates that the firewall rule is currently paused."
+					},
+					"description": {
+						"type": "string",
+						"example": "\"Blocks traffic identified during investigation for MIR-31\"",
+						"description": "An informative summary of the firewall rule.",
+						"maxLength": 500
+					},
+					"ref": {
+						"type": "string",
+						"example": "\"MIR-31\"",
+						"description": "A short reference tag. Allows you to select related firewall rules.",
+						"maxLength": 50
+					},
+					"filter": {
+						"type": "object",
+						"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b61\",\n  \"expression\": \"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.addr ne 172.16.22.155\",\n  \"paused\": false,\n  \"description\": \"Restrict access from these browsers on this address range.\",\n  \"ref\": \"FIL-100\"\n}",
+						"properties": {
+							"id": {
+								"type": "string",
+								"example": "\"372e67954025e0ba6aaa6d586b9e0b61\"",
+								"description": "The unique identifier of the filter.",
+								"minLength": 32,
+								"maxLength": 32,
+								"readOnly": true
+							},
+							"expression": {
+								"type": "string",
+								"example": "\"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.addr ne 172.16.22.155\"",
+								"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/)."
+							},
+							"paused": {
+								"type": "boolean",
+								"example": "false",
+								"description": "When true, indicates that the filter is currently paused."
+							},
+							"description": {
+								"type": "string",
+								"example": "\"Restrict access from these browsers on this address range.\"",
+								"description": "An informative summary of the filter.",
+								"maxLength": 500
+							},
+							"ref": {
+								"type": "string",
+								"example": "\"FIL-100\"",
+								"description": "A short reference tag. Allows you to select related filters.",
+								"maxLength": 50
+							}
+						},
+						"additionalProperties": false
+					}
+				},
+				"required_props": [
+					"id",
+					"filter",
+					"action"
+				],
+				"optional_props": [
+					"products",
+					"priority",
+					"paused",
+					"description",
+					"ref"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b60\",\n  \"action\": \"block\",\n  \"products\": [\n    \"waf\"\n  ],\n  \"priority\": 50,\n  \"paused\": false,\n  \"description\": \"Blocks traffic identified during investigation for MIR-31\",\n  \"ref\": \"MIR-31\",\n  \"filter\": {\n    \"id\": \"372e67954025e0ba6aaa6d586b9e0b61\",\n    \"expression\": \"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.addr ne 172.16.22.155\",\n    \"paused\": false,\n    \"description\": \"Restrict access from these browsers on this address range.\",\n    \"ref\": \"FIL-100\"\n  }\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"372e67954025e0ba6aaa6d586b9e0b60\",\n    \"action\": \"block\",\n    \"products\": [\n      \"waf\"\n    ],\n    \"priority\": 50,\n    \"paused\": false,\n    \"description\": \"Blocks traffic identified during investigation for MIR-31\",\n    \"ref\": \"MIR-31\",\n    \"filter\": {\n      \"id\": \"372e67954025e0ba6aaa6d586b9e0b61\",\n      \"expression\": \"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.addr ne 172.16.22.155\",\n      \"paused\": false,\n      \"description\": \"Restrict access from these browsers on this address range.\",\n      \"ref\": \"FIL-100\"\n    }\n  }\n}"
+		},
+		{
+			"title": "Update priority of firewall rules ",
+			"rel": "collection",
+			"description": "Updates the priority of existing firewall rules.",
+			"href": "zones/{#/definitions/zone_identifier}/firewall/rules",
+			"method": "PATCH",
+			"cfOwnership": "firewall",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "firewall-rules-update-priority-of-firewall-rules-",
+			"uri": "zones/:zone_identifier/firewall/rules",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/rules\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '[{\"id\":\"372e67954025e0ba6aaa6d586b9e0b60\",\"priority\":50}]'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"372e67954025e0ba6aaa6d586b9e0b60\"",
+						"description": "The unique identifier of the firewall rule.",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"priority": {
+						"type": "number",
+						"example": "50",
+						"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
+						"minimum": 0,
+						"maximum": 2147483647
+					}
+				},
+				"required_props": [
+					"id"
+				],
+				"optional_props": [
+					"priority"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b60\",\n  \"priority\": 50\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"372e67954025e0ba6aaa6d586b9e0b60\",\n      \"action\": \"block\",\n      \"products\": [\n        \"waf\"\n      ],\n      \"priority\": 50,\n      \"paused\": false,\n      \"description\": \"Blocks traffic identified during investigation for MIR-31\",\n      \"ref\": \"MIR-31\",\n      \"filter\": {\n        \"id\": \"372e67954025e0ba6aaa6d586b9e0b61\",\n        \"expression\": \"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.addr ne 172.16.22.155\",\n        \"paused\": false,\n        \"description\": \"Restrict access from these browsers on this address range.\",\n        \"ref\": \"FIL-100\"\n      }\n    }\n  ]\n}"
+		},
+		{
+			"title": "Update priority of a firewall rule",
+			"rel": "self",
+			"description": "Updates the priority of an existing firewall rule.",
+			"href": "zones/{#/definitions/zone_identifier}/firewall/rules/{#/definitions/id}",
+			"method": "PATCH",
+			"cfOwnership": "firewall",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "firewall-rules-update-priority-of-a-firewall-rule",
+			"uri": "zones/:zone_identifier/firewall/rules/:id",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/rules/372e67954025e0ba6aaa6d586b9e0b60\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"id\":\"372e67954025e0ba6aaa6d586b9e0b60\",\"priority\":50}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"372e67954025e0ba6aaa6d586b9e0b60\"",
+						"description": "The unique identifier of the firewall rule.",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"priority": {
+						"type": "number",
+						"example": "50",
+						"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
+						"minimum": 0,
+						"maximum": 2147483647
+					}
+				},
+				"required_props": [
+					"id"
+				],
+				"optional_props": [
+					"priority"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b60\",\n  \"priority\": 50\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"372e67954025e0ba6aaa6d586b9e0b60\",\n      \"action\": \"block\",\n      \"products\": [\n        \"waf\"\n      ],\n      \"priority\": 50,\n      \"paused\": false,\n      \"description\": \"Blocks traffic identified during investigation for MIR-31\",\n      \"ref\": \"MIR-31\",\n      \"filter\": {\n        \"id\": \"372e67954025e0ba6aaa6d586b9e0b61\",\n        \"expression\": \"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.addr ne 172.16.22.155\",\n        \"paused\": false,\n        \"description\": \"Restrict access from these browsers on this address range.\",\n        \"ref\": \"FIL-100\"\n      }\n    }\n  ]\n}"
+		},
+		{
+			"title": "Delete firewall rules",
+			"rel": "collection",
+			"description": "Deletes existing firewall rules.",
+			"href": "zones/{#/definitions/zone_identifier}/firewall/rules",
+			"method": "DELETE",
+			"cfOwnership": "firewall",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "firewall-rules-delete-firewall-rules",
+			"uri": "zones/:zone_identifier/firewall/rules",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/rules\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"id\":\"372e67954025e0ba6aaa6d586b9e0b60\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"372e67954025e0ba6aaa6d586b9e0b60\"",
+						"description": "The unique identifier of the firewall rule.",
+						"maxLength": 32,
+						"readOnly": true
+					}
+				},
+				"required_props": [
+					"id"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b60\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"372e67954025e0ba6aaa6d586b9e0b60\",\n      \"action\": \"block\",\n      \"products\": [\n        \"waf\"\n      ],\n      \"priority\": 50,\n      \"paused\": false,\n      \"description\": \"Blocks traffic identified during investigation for MIR-31\",\n      \"ref\": \"MIR-31\",\n      \"filter\": {\n        \"id\": \"372e67954025e0ba6aaa6d586b9e0b61\",\n        \"expression\": \"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.addr ne 172.16.22.155\",\n        \"paused\": false,\n        \"description\": \"Restrict access from these browsers on this address range.\",\n        \"ref\": \"FIL-100\"\n      }\n    }\n  ]\n}"
+		},
+		{
+			"title": "Delete a firewall rule",
+			"rel": "self",
+			"description": "Deletes an existing firewall rule.",
+			"href": "zones/{#/definitions/zone_identifier}/firewall/rules/{#/definitions/id}",
+			"method": "DELETE",
+			"cfOwnership": "firewall",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "firewall-rules-delete-a-firewall-rule",
+			"uri": "zones/:zone_identifier/firewall/rules/:id",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/rules/372e67954025e0ba6aaa6d586b9e0b60\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"delete_filter_if_unused": {
+						"type": "boolean",
+						"description": "When true, indicates that Cloudflare should also delete the associated filter if there are no other firewall rules referencing the filter."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"delete_filter_if_unused"
+				],
+				"objects": [],
+				"example": "{}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"372e67954025e0ba6aaa6d586b9e0b60\",\n    \"action\": \"block\",\n    \"products\": [\n      \"waf\"\n    ],\n    \"priority\": 50,\n    \"paused\": false,\n    \"description\": \"Blocks traffic identified during investigation for MIR-31\",\n    \"ref\": \"MIR-31\",\n    \"filter\": {\n      \"id\": \"372e67954025e0ba6aaa6d586b9e0b61\",\n      \"expression\": \"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.addr ne 172.16.22.155\",\n      \"paused\": false,\n      \"description\": \"Restrict access from these browsers on this address range.\",\n      \"ref\": \"FIL-100\"\n    }\n  }\n}"
+		}
+	],
+	"cfLinkErrors": {
+		"10000": "Invalid user"
+	},
+	"html_id": "firewall-rules",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"372e67954025e0ba6aaa6d586b9e0b60\"",
+				"description": "The unique identifier of the firewall rule.",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"action": {
+				"type": "string",
+				"example": "\"block\"",
+				"description": "The action to apply to a matched request. The `log` action is only available on an Enterprise plan.",
+				"enum": [
+					"block",
+					"challenge",
+					"js_challenge",
+					"managed_challenge",
+					"allow",
+					"log",
+					"bypass"
+				]
+			},
+			"products": {
+				"type": "array",
+				"example": "[\n  \"waf\"\n]",
+				"items": {
+					"type": "string",
+					"description": "A list of products to bypass for a request when using the `bypass` action.",
+					"enum": [
+						"zoneLockdown",
+						"uaBlock",
+						"bic",
+						"hot",
+						"securityLevel",
+						"rateLimit",
+						"waf"
+					],
+					"example": "waf"
+				}
+			},
+			"priority": {
+				"type": "number",
+				"example": "50",
+				"description": "The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.",
+				"minimum": 0,
+				"maximum": 2147483647
+			},
+			"paused": {
+				"type": "boolean",
+				"example": "false",
+				"description": "When true, indicates that the firewall rule is currently paused."
+			},
+			"description": {
+				"type": "string",
+				"example": "\"Blocks traffic identified during investigation for MIR-31\"",
+				"description": "An informative summary of the firewall rule.",
+				"maxLength": 500
+			},
+			"ref": {
+				"type": "string",
+				"example": "\"MIR-31\"",
+				"description": "A short reference tag. Allows you to select related firewall rules.",
+				"maxLength": 50
+			},
+			"filter": {
+				"type": "object",
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b61\",\n  \"expression\": \"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.addr ne 172.16.22.155\",\n  \"paused\": false,\n  \"description\": \"Restrict access from these browsers on this address range.\",\n  \"ref\": \"FIL-100\"\n}",
+				"properties": {
+					"id": {
+						"type": "string",
+						"example": "\"372e67954025e0ba6aaa6d586b9e0b61\"",
+						"description": "The unique identifier of the filter.",
+						"minLength": 32,
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"expression": {
+						"type": "string",
+						"example": "\"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.addr ne 172.16.22.155\"",
+						"description": "The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/)."
+					},
+					"paused": {
+						"type": "boolean",
+						"example": "false",
+						"description": "When true, indicates that the filter is currently paused."
+					},
+					"description": {
+						"type": "string",
+						"example": "\"Restrict access from these browsers on this address range.\"",
+						"description": "An informative summary of the filter.",
+						"maxLength": 500
+					},
+					"ref": {
+						"type": "string",
+						"example": "\"FIL-100\"",
+						"description": "A short reference tag. Allows you to select related filters.",
+						"maxLength": 50
+					}
+				},
+				"additionalProperties": false
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"action",
+			"products",
+			"priority",
+			"paused",
+			"description",
+			"ref",
+			"filter"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b60\",\n  \"action\": \"block\",\n  \"products\": [\n    \"waf\"\n  ],\n  \"priority\": 50,\n  \"paused\": false,\n  \"description\": \"Blocks traffic identified during investigation for MIR-31\",\n  \"ref\": \"MIR-31\",\n  \"filter\": {\n    \"id\": \"372e67954025e0ba6aaa6d586b9e0b61\",\n    \"expression\": \"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.addr ne 172.16.22.155\",\n    \"paused\": false,\n    \"description\": \"Restrict access from these browsers on this address range.\",\n    \"ref\": \"FIL-100\"\n  }\n}",
+		"title": "Firewall rules",
+		"description": "Firewall rules allow you to create rules that inspect incoming traffic and take action on specific requests."
+	}
+}

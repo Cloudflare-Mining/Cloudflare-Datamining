@@ -1,0 +1,212 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/access/certificates.json",
+	"title": "Access Mutual TLS Authentication",
+	"description": "Mutual TLS authentication ensures that the traffic is secure and trusted in both directions between a client and server",
+	"cfExtendedDescription": "https://developers.cloudflare.com/access/service-auth/mtls/",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Access Certificates",
+			"description": "List Access Certificates",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/access/certificates",
+			"method": "GET",
+			"cfOwnership": "access",
+			"html_id": "access-mutual-tls-authentication-list-access-certificates",
+			"uri": "accounts/:identifier/access/certificates",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/access/certificates\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"expires_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"name\": \"Allow devs\",\n      \"fingerprint\": \"MD5 Fingerprint=1E:80:0F:7A:FD:31:55:96:DE:D5:CB:E2:F0:91:F6:91\",\n      \"associated_hostnames\": [\n        \"admin.example.com\"\n      ]\n    }\n  ]\n}"
+		},
+		{
+			"title": "Access Certificate Details",
+			"description": "Fetch a single Access Certificate",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/access/certificates/{#/definitions/uuid}",
+			"method": "GET",
+			"cfOwnership": "access",
+			"html_id": "access-mutual-tls-authentication-access-certificate-details",
+			"uri": "accounts/:identifier/access/certificates/:uuid",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/access/certificates/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"expires_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"Allow devs\",\n    \"fingerprint\": \"MD5 Fingerprint=1E:80:0F:7A:FD:31:55:96:DE:D5:CB:E2:F0:91:F6:91\",\n    \"associated_hostnames\": [\n      \"admin.example.com\"\n    ]\n  }\n}"
+		},
+		{
+			"title": "Create Access Certificate",
+			"description": "Create a new Access Certificate",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/access/certificates",
+			"method": "POST",
+			"cfOwnership": "access",
+			"html_id": "access-mutual-tls-authentication-create-access-certificate",
+			"uri": "accounts/:identifier/access/certificates",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/access/certificates\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"Allow devs\",\"certificate\":\"-----BEGIN CERTIFICATE-----\\nMIIGAjCCA+qgAwIBAgIJAI7kymlF7CWT...N4RI7KKB7nikiuUf8vhULKy5IX10\\nDrUtmu/B\\n-----END CERTIFICATE-----\",\"associated_hostnames\":[\"admin.example.com\"]}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"Allow devs\"",
+						"description": "The name of the Certificate. Only used in the UI."
+					},
+					"certificate": {
+						"type": "string",
+						"example": "\"-----BEGIN CERTIFICATE-----\\nMIIGAjCCA+qgAwIBAgIJAI7kymlF7CWT...N4RI7KKB7nikiuUf8vhULKy5IX10\\nDrUtmu/B\\n-----END CERTIFICATE-----\"",
+						"description": "The Root CA for your certificates"
+					},
+					"associated_hostnames": {
+						"type": "array",
+						"example": "[\n  \"admin.example.com\"\n]",
+						"description": "The hostnames that will be prompted for this certificate.",
+						"items": {
+							"type": "string",
+							"description": "Hostname",
+							"example": "admin.example.com"
+						}
+					}
+				},
+				"required_props": [
+					"name",
+					"certificate"
+				],
+				"optional_props": [
+					"associated_hostnames"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": \"Allow devs\",\n  \"certificate\": \"-----BEGIN CERTIFICATE-----\\nMIIGAjCCA+qgAwIBAgIJAI7kymlF7CWT...N4RI7KKB7nikiuUf8vhULKy5IX10\\nDrUtmu/B\\n-----END CERTIFICATE-----\",\n  \"associated_hostnames\": [\n    \"admin.example.com\"\n  ]\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"expires_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"Allow devs\",\n    \"fingerprint\": \"MD5 Fingerprint=1E:80:0F:7A:FD:31:55:96:DE:D5:CB:E2:F0:91:F6:91\",\n    \"associated_hostnames\": [\n      \"admin.example.com\"\n    ]\n  }\n}"
+		},
+		{
+			"title": "Update Access Certificate",
+			"description": "Update a configured Access Certificate",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/access/certificates/{#/definitions/uuid}",
+			"method": "PUT",
+			"cfOwnership": "access",
+			"html_id": "access-mutual-tls-authentication-update-access-certificate",
+			"uri": "accounts/:identifier/access/certificates/:uuid",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/access/certificates/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"Allow devs\",\"associated_hostnames\":[\"admin.example.com\"]}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"Allow devs\"",
+						"description": "The name of the Certificate. Only used in the UI."
+					},
+					"associated_hostnames": {
+						"type": "array",
+						"example": "[\n  \"admin.example.com\"\n]",
+						"description": "The hostnames that will be prompted for this certificate.",
+						"items": {
+							"type": "string",
+							"description": "Hostname",
+							"example": "admin.example.com"
+						}
+					}
+				},
+				"required_props": [
+					"name",
+					"associated_hostnames"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"name\": \"Allow devs\",\n  \"associated_hostnames\": [\n    \"admin.example.com\"\n  ]\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"expires_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"Allow devs\",\n    \"fingerprint\": \"MD5 Fingerprint=1E:80:0F:7A:FD:31:55:96:DE:D5:CB:E2:F0:91:F6:91\",\n    \"associated_hostnames\": [\n      \"admin.example.com\"\n    ]\n  }\n}"
+		},
+		{
+			"title": "Delete Access Certificate",
+			"description": "Delete an Access Certificate",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/access/certificates/{#/definitions/uuid}",
+			"method": "DELETE",
+			"cfOwnership": "access",
+			"html_id": "access-mutual-tls-authentication-delete-access-certificate",
+			"uri": "accounts/:identifier/access/certificates/:uuid",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/access/certificates/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"\n  }\n}"
+		}
+	],
+	"html_id": "access-mutual-tls-authentication",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"",
+				"id": "https://api.cloudflare.com/schemas/v4/common/uuid.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"readOnly": true,
+				"maxLength": 36,
+				"description": "API uuid tag"
+			},
+			"created_at": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "Creation time",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"updated_at": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "Last modification time",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"expires_on": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/expires-on.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "Expiration time",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"name": {
+				"type": "string",
+				"example": "\"Allow devs\"",
+				"description": "The name of the Certificate. Only used in the UI."
+			},
+			"fingerprint": {
+				"type": "string",
+				"example": "\"MD5 Fingerprint=1E:80:0F:7A:FD:31:55:96:DE:D5:CB:E2:F0:91:F6:91\"",
+				"description": "The MD5 fingerprint of the certificate"
+			},
+			"associated_hostnames": {
+				"type": "array",
+				"example": "[\n  \"admin.example.com\"\n]",
+				"description": "The hostnames that will be prompted for this certificate.",
+				"items": {
+					"type": "string",
+					"description": "Hostname",
+					"example": "admin.example.com"
+				}
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"created_at",
+			"updated_at",
+			"expires_on",
+			"name",
+			"fingerprint",
+			"associated_hostnames"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"expires_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"name\": \"Allow devs\",\n  \"fingerprint\": \"MD5 Fingerprint=1E:80:0F:7A:FD:31:55:96:DE:D5:CB:E2:F0:91:F6:91\",\n  \"associated_hostnames\": [\n    \"admin.example.com\"\n  ]\n}",
+		"title": "Access Mutual TLS Authentication",
+		"description": "Mutual TLS authentication ensures that the traffic is secure and trusted in both directions between a client and server"
+	}
+}

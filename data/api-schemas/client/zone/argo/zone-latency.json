@@ -1,0 +1,163 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/argo/zone-latency.json",
+	"title": "Argo Analytics for Zone",
+	"description": "Argo Smart Routing Analytics for a zone",
+	"type": "object",
+	"links": [
+		{
+			"title": "Argo Analytics for a zone",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/analytics/latency",
+			"method": "GET",
+			"cfOwnership": "argo",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#analytics:read"
+				]
+			},
+			"html_id": "argo-analytics-for-zone-argo-analytics-for-a-zone",
+			"uri": "zones/:zone_identifier/analytics/latency",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/analytics/latency?bins=3\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"bins": {
+						"type": "integer",
+						"example": "3",
+						"description": "Number of buckets latency is split into",
+						"minimum": 1,
+						"maximum": 1000
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"bins"
+				],
+				"objects": [],
+				"example": "{\n  \"bins\": 3\n}",
+				"description": "Query parameters"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"bins\": 3,\n    \"range\": {\n      \"min\": 0,\n      \"max\": 2500\n    },\n    \"time_range\": {\n      \"since\": \"2019-03-04T22:05:00Z\",\n      \"until\": \"2019-03-06T22:05:00Z\"\n    },\n    \"data\": {\n      \"labels\": [\n        \"without_argo\",\n        \"with_argo\"\n      ],\n      \"counts\": [\n        [\n          3306,\n          362,\n          1267\n        ],\n        [\n          30685,\n          11775,\n          42169\n        ]\n      ],\n      \"averages\": [\n        192,\n        120\n      ],\n      \"percent_smart_routed\": 42.5\n    }\n  }\n}"
+		}
+	],
+	"html_id": "argo-analytics-for-zone",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"bins": {
+				"type": "integer",
+				"example": "3",
+				"description": "Number of buckets latency is split into",
+				"minimum": 1,
+				"maximum": 1000
+			},
+			"range": {
+				"type": "object",
+				"example": "{\n  \"min\": 0,\n  \"max\": 2500\n}",
+				"properties": {
+					"min": {
+						"type": "integer",
+						"example": "0",
+						"minimum": 0
+					},
+					"max": {
+						"type": "integer",
+						"example": "2500",
+						"minimum": 0
+					}
+				},
+				"description": "The range of latency in milliseconds"
+			},
+			"time_range": {
+				"type": "object",
+				"example": "{\n  \"since\": \"2019-03-04T22:05:00Z\",\n  \"until\": \"2019-03-06T22:05:00Z\"\n}",
+				"properties": {
+					"since": {
+						"type": "string",
+						"example": "\"2019-03-04T22:05:00Z\"",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"until": {
+						"type": "string",
+						"example": "\"2019-03-06T22:05:00Z\"",
+						"format": "date-time",
+						"readOnly": true
+					}
+				},
+				"description": "Time range of the requests queried"
+			},
+			"data": {
+				"type": "object",
+				"example": "{\n  \"labels\": [\n    \"without_argo\",\n    \"with_argo\"\n  ],\n  \"counts\": [\n    [\n      3306,\n      362,\n      1267\n    ],\n    [\n      30685,\n      11775,\n      42169\n    ]\n  ],\n  \"averages\": [\n    192,\n    120\n  ],\n  \"percent_smart_routed\": 42.5\n}",
+				"properties": {
+					"labels": {
+						"type": "array",
+						"example": "[\n  \"without_argo\",\n  \"with_argo\"\n]",
+						"description": "Labels applied to the counts and averages",
+						"items": {
+							"type": "string"
+						},
+						"minItems": 1
+					},
+					"counts": {
+						"type": "array",
+						"example": "[\n  [\n    3306,\n    362,\n    1267\n  ],\n  [\n    30685,\n    11775,\n    42169\n  ]\n]",
+						"description": "Number of requests for each label",
+						"items": {
+							"description": "Number of requests for each bucket",
+							"type": "array",
+							"items": {
+								"type": "integer"
+							}
+						},
+						"minItems": 1
+					},
+					"averages": {
+						"type": "array",
+						"example": "[\n  192,\n  120\n]",
+						"description": "Average latency for each label",
+						"items": {
+							"type": "integer"
+						},
+						"minItems": 1
+					},
+					"percent_smart_routed": {
+						"type": "number",
+						"example": "42.5",
+						"description": "Percentage of smart routed requests",
+						"maximum": 100
+					}
+				},
+				"description": "Analytics data containing requests using argo and not using argo",
+				"required": [
+					"labels",
+					"counts",
+					"averages",
+					"percent_smart_routed"
+				]
+			}
+		},
+		"required_props": [
+			"bins",
+			"range",
+			"time_range",
+			"data"
+		],
+		"optional_props": [],
+		"objects": [],
+		"example": "{\n  \"bins\": 3,\n  \"range\": {\n    \"min\": 0,\n    \"max\": 2500\n  },\n  \"time_range\": {\n    \"since\": \"2019-03-04T22:05:00Z\",\n    \"until\": \"2019-03-06T22:05:00Z\"\n  },\n  \"data\": {\n    \"labels\": [\n      \"without_argo\",\n      \"with_argo\"\n    ],\n    \"counts\": [\n      [\n        3306,\n        362,\n        1267\n      ],\n      [\n        30685,\n        11775,\n        42169\n      ]\n    ],\n    \"averages\": [\n      192,\n      120\n    ],\n    \"percent_smart_routed\": 42.5\n  }\n}",
+		"title": "Argo Analytics for Zone",
+		"description": "Argo Smart Routing Analytics for a zone"
+	}
+}

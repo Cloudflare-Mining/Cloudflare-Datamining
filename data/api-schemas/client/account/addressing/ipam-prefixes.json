@@ -1,0 +1,316 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/addressing/ipam-prefixes.json",
+	"title": "IP Address Management Prefixes",
+	"description": "Describe and modify the account's IP prefixes.",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Prefixes",
+			"description": "List all prefixes owned by the account.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/addressing/prefixes",
+			"method": "GET",
+			"cfOwnership": "addressing",
+			"html_id": "ip-address-management-prefixes-list-prefixes",
+			"uri": "accounts/:account_identifier/addressing/prefixes",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/addressing/prefixes\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n      \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"modified_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"cidr\": \"192.0.2.0/24\",\n      \"account_id\": \"01a7362d577a6c3019a474fd6f485823\",\n      \"description\": \"Internal test prefix\",\n      \"approved\": \"P\",\n      \"loa_document_id\": \"d933b1530bc56c9953cf8ce166da8004\",\n      \"on_demand_enabled\": true,\n      \"on_demand_locked\": false,\n      \"advertised\": true,\n      \"advertised_modified_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"asn\": 13335\n    }\n  ]\n}"
+		},
+		{
+			"title": "Add Prefix",
+			"description": "Add a prefix under the account.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/addressing/prefixes",
+			"method": "POST",
+			"cfOwnership": "addressing",
+			"html_id": "ip-address-management-prefixes-add-prefix",
+			"uri": "accounts/:account_identifier/addressing/prefixes",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/addressing/prefixes\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"cidr\":\"192.0.2.0/24\",\"loa_document_id\":\"d933b1530bc56c9953cf8ce166da8004\",\"asn\":13335}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"cidr": {
+						"type": "string",
+						"example": "\"192.0.2.0/24\"",
+						"description": "IP Prefix in Classless Inter-Domain Routing format"
+					},
+					"loa_document_id": {
+						"type": [
+							"string",
+							"null"
+						],
+						"example": "\"d933b1530bc56c9953cf8ce166da8004\"",
+						"description": "Identifier for the uploaded LOA document",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"asn": {
+						"type": [
+							"integer",
+							"null"
+						],
+						"example": "13335",
+						"description": "Autonomous System Number (ASN) the prefix will be advertised under"
+					}
+				},
+				"required_props": [
+					"cidr",
+					"loa_document_id"
+				],
+				"optional_props": [
+					"asn"
+				],
+				"objects": [],
+				"example": "{\n  \"cidr\": \"192.0.2.0/24\",\n  \"loa_document_id\": \"d933b1530bc56c9953cf8ce166da8004\",\n  \"asn\": 13335\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"cidr\": \"192.0.2.0/24\",\n    \"account_id\": \"01a7362d577a6c3019a474fd6f485823\",\n    \"description\": \"Internal test prefix\",\n    \"approved\": \"P\",\n    \"loa_document_id\": \"d933b1530bc56c9953cf8ce166da8004\",\n    \"on_demand_enabled\": true,\n    \"on_demand_locked\": false,\n    \"advertised\": true,\n    \"advertised_modified_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"asn\": 13335\n  }\n}"
+		},
+		{
+			"title": "Prefix Details",
+			"description": "List a particular prefix owned by the account.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/addressing/prefixes/{#/definitions/prefix_identifier}",
+			"method": "GET",
+			"cfOwnership": "addressing",
+			"html_id": "ip-address-management-prefixes-prefix-details",
+			"uri": "accounts/:account_identifier/addressing/prefixes/:prefix_identifier",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/addressing/prefixes/9a7806061c88ada191ed06f989cc3dac\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"cidr\": \"192.0.2.0/24\",\n    \"account_id\": \"01a7362d577a6c3019a474fd6f485823\",\n    \"description\": \"Internal test prefix\",\n    \"approved\": \"P\",\n    \"loa_document_id\": \"d933b1530bc56c9953cf8ce166da8004\",\n    \"on_demand_enabled\": true,\n    \"on_demand_locked\": false,\n    \"advertised\": true,\n    \"advertised_modified_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"asn\": 13335\n  }\n}"
+		},
+		{
+			"title": "Delete Prefix",
+			"description": "Delete an unapproved prefix owned by the account.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/addressing/prefixes/{#/definitions/prefix_identifier}",
+			"method": "DELETE",
+			"cfOwnership": "addressing",
+			"html_id": "ip-address-management-prefixes-delete-prefix",
+			"uri": "accounts/:account_identifier/addressing/prefixes/:prefix_identifier",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/addressing/prefixes/9a7806061c88ada191ed06f989cc3dac\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
+		},
+		{
+			"title": "Update Prefix Description",
+			"description": "Modify the description for a prefix owned by the account.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/addressing/prefixes/{#/definitions/prefix_identifier}",
+			"method": "PATCH",
+			"cfOwnership": "addressing",
+			"html_id": "ip-address-management-prefixes-update-prefix-description",
+			"uri": "accounts/:account_identifier/addressing/prefixes/:prefix_identifier",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/addressing/prefixes/9a7806061c88ada191ed06f989cc3dac\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"description\":\"Internal test prefix\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"description": {
+						"type": "string",
+						"example": "\"Internal test prefix\"",
+						"description": "Description of the prefix",
+						"maxLength": 1000
+					}
+				},
+				"required_props": [
+					"description"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"description\": \"Internal test prefix\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"cidr\": \"192.0.2.0/24\",\n    \"account_id\": \"01a7362d577a6c3019a474fd6f485823\",\n    \"description\": \"Internal test prefix\",\n    \"approved\": \"P\",\n    \"loa_document_id\": \"d933b1530bc56c9953cf8ce166da8004\",\n    \"on_demand_enabled\": true,\n    \"on_demand_locked\": false,\n    \"advertised\": true,\n    \"advertised_modified_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"asn\": 13335\n  }\n}"
+		},
+		{
+			"title": "Upload LOA Document",
+			"description": "Submit LOA document (pdf format) under the account.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/addressing/loa_documents",
+			"method": "POST",
+			"encType": "multipart/form-data",
+			"cfRequestHeaders": {
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
+			"cfOwnership": "addressing",
+			"html_id": "ip-address-management-prefixes-upload-loa-document",
+			"uri": "accounts/:account_identifier/addressing/loa_documents",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/addressing/loa_documents\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     --form 'loa_document=@document.pdf'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"loa_document": {
+						"type": "string",
+						"example": "\"@document.pdf\"",
+						"media": {
+							"type": "application/pdf"
+						},
+						"description": "LOA document to upload"
+					}
+				},
+				"required_props": [
+					"loa_document"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"loa_document\": \"@document.pdf\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"filename\": \"document.pdf\"\n  }\n}"
+		},
+		{
+			"title": "Download LOA Document",
+			"description": "Download specified LOA document under the account.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/addressing/loa_documents/{#/definitions/loa_document_identifier}/download",
+			"method": "GET",
+			"cfOwnership": "addressing",
+			"html_id": "ip-address-management-prefixes-download-loa-document",
+			"uri": "accounts/:account_identifier/addressing/loa_documents/:loa_document_identifier/download",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/addressing/loa_documents/d933b1530bc56c9953cf8ce166da8004/download\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{}"
+		}
+	],
+	"html_id": "ip-address-management-prefixes",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"9a7806061c88ada191ed06f989cc3dac\"",
+				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "API item identifier tag",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"created_at": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "Creation time",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"modified_at": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "Last modification time",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"cidr": {
+				"type": "string",
+				"example": "\"192.0.2.0/24\"",
+				"description": "IP Prefix in Classless Inter-Domain Routing format"
+			},
+			"account_id": {
+				"type": "string",
+				"example": "\"01a7362d577a6c3019a474fd6f485823\"",
+				"description": "Account identifier tag",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"description": {
+				"type": "string",
+				"example": "\"Internal test prefix\"",
+				"description": "Description of the prefix",
+				"maxLength": 1000
+			},
+			"approved": {
+				"type": "string",
+				"example": "\"P\"",
+				"description": "Approval state of the prefix (P = pending, V = active)"
+			},
+			"loa_document_id": {
+				"type": [
+					"string",
+					"null"
+				],
+				"example": "\"d933b1530bc56c9953cf8ce166da8004\"",
+				"description": "Identifier for the uploaded LOA document",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"on_demand_enabled": {
+				"type": "boolean",
+				"example": "true",
+				"description": "Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled"
+			},
+			"on_demand_locked": {
+				"type": "boolean",
+				"example": "false",
+				"description": "Whether advertisement status of the prefix is locked, meaning it cannot be changed"
+			},
+			"advertised": {
+				"type": [
+					"boolean",
+					"null"
+				],
+				"example": "true",
+				"description": "Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled",
+				"default": null
+			},
+			"advertised_modified_at": {
+				"type": [
+					"string",
+					"null"
+				],
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"description": "Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled",
+				"format": "date-time"
+			},
+			"asn": {
+				"type": [
+					"integer",
+					"null"
+				],
+				"example": "13335",
+				"description": "Autonomous System Number (ASN) the prefix will be advertised under"
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"created_at",
+			"modified_at",
+			"cidr",
+			"account_id",
+			"description",
+			"approved",
+			"loa_document_id",
+			"on_demand_enabled",
+			"on_demand_locked",
+			"advertised",
+			"advertised_modified_at",
+			"asn"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"cidr\": \"192.0.2.0/24\",\n  \"account_id\": \"01a7362d577a6c3019a474fd6f485823\",\n  \"description\": \"Internal test prefix\",\n  \"approved\": \"P\",\n  \"loa_document_id\": \"d933b1530bc56c9953cf8ce166da8004\",\n  \"on_demand_enabled\": true,\n  \"on_demand_locked\": false,\n  \"advertised\": true,\n  \"advertised_modified_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"asn\": 13335\n}",
+		"title": "IP Address Management Prefixes",
+		"description": "Describe and modify the account's IP prefixes."
+	}
+}

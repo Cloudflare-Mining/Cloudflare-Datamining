@@ -1,0 +1,130 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/managed_headers.json",
+	"title": "Managed Transforms",
+	"description": "Managed Transforms perform common adjustments to HTTP request and response headers.",
+	"cfExtendedDescription": "",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Managed Transforms",
+			"description": "Fetches a list of all Managed Transforms.",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_id}/managed_headers",
+			"method": "GET",
+			"cfOwnership": "flprod",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "managed-transforms-list-managed-transforms",
+			"uri": "zones/:zone_id/managed_headers",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/managed_headers\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"managed_request_headers\": [\n    {\n      \"id\": \"add_cf-bot-score_header\",\n      \"enabled\": true\n    }\n  ],\n  \"managed_response_headers\": [\n    {\n      \"id\": \"add_cf-bot-score_header\",\n      \"enabled\": true\n    }\n  ]\n}"
+		},
+		{
+			"title": "Update status of Managed Transforms",
+			"description": "Updates the status of one or more Managed Transforms.",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_id}/managed_headers",
+			"method": "PATCH",
+			"cfOwnership": "flprod",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "managed-transforms-update-status-of-managed-transforms",
+			"uri": "zones/:zone_id/managed_headers",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/managed_headers\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"managed_request_headers\":[{\"id\":\"add_cf-bot-score_header\",\"enabled\":true}],\"managed_response_headers\":[{\"id\":\"add_cf-bot-score_header\",\"enabled\":true}]}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"managed_request_headers": {
+						"type": "array",
+						"example": "[\n  {\n    \"id\": \"add_cf-bot-score_header\",\n    \"enabled\": true\n  }\n]",
+						"items": {
+							"type": "object",
+							"properties": {
+								"id": {
+									"description": "Human-readable identifier of the Managed Transform.",
+									"type": "string",
+									"example": "add_cf-bot-score_header"
+								},
+								"enabled": {
+									"description": "When true, the Managed Transform is enabled.",
+									"type": "boolean",
+									"example": true
+								}
+							}
+						}
+					},
+					"managed_response_headers": {
+						"type": "array",
+						"example": "[\n  {\n    \"id\": \"add_cf-bot-score_header\",\n    \"enabled\": true\n  }\n]",
+						"items": {
+							"type": "object",
+							"properties": {
+								"id": {
+									"description": "Human-readable identifier of the Managed Transform.",
+									"type": "string",
+									"example": "add_cf-bot-score_header"
+								},
+								"enabled": {
+									"description": "When true, the Managed Transform is enabled.",
+									"type": "boolean",
+									"example": true
+								}
+							}
+						}
+					}
+				},
+				"required_props": [
+					"managed_request_headers",
+					"managed_response_headers"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"managed_request_headers\": [\n    {\n      \"id\": \"add_cf-bot-score_header\",\n      \"enabled\": true\n    }\n  ],\n  \"managed_response_headers\": [\n    {\n      \"id\": \"add_cf-bot-score_header\",\n      \"enabled\": true\n    }\n  ]\n}"
+			},
+			"response": "{\n  \"managed_request_headers\": [\n    {\n      \"id\": \"add_cf-bot-score_header\",\n      \"enabled\": true,\n      \"available\": true\n    }\n  ],\n  \"managed_response_headers\": [\n    {\n      \"id\": \"add_cf-bot-score_header\",\n      \"enabled\": true,\n      \"available\": true\n    }\n  ]\n}"
+		}
+	],
+	"html_id": "managed-transforms",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"add_cf-bot-score_header\"",
+				"description": "Human-readable identifier of the Managed Transform."
+			},
+			"available": {
+				"type": "boolean",
+				"example": "true",
+				"description": "When true, the Managed Transform is available in the current Cloudflare plan."
+			},
+			"enabled": {
+				"type": "boolean",
+				"example": "true",
+				"description": "When true, the Managed Transform is enabled."
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"available",
+			"enabled"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"add_cf-bot-score_header\",\n  \"available\": true,\n  \"enabled\": true\n}",
+		"title": "Managed Transforms",
+		"description": "Managed Transforms perform common adjustments to HTTP request and response headers."
+	}
+}

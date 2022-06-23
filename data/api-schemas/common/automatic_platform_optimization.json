@@ -1,0 +1,64 @@
+{
+	"type": [
+		"string",
+		"number",
+		"object",
+		"array",
+		"object"
+	],
+	"example": "{\n  \"enabled\": true,\n  \"cf\": true,\n  \"wordpress\": true,\n  \"wp_plugin\": true,\n  \"hostnames\": [\n    \"www.example.com\",\n    \"example.com\",\n    \"shop.example.com\"\n  ],\n  \"cache_by_device_type\": false\n}",
+	"description": "[Automatic Platform Optimization for WordPress](https://developers.cloudflare.com/automatic-platform-optimization/) serves your WordPress site from Cloudflare's edge network and caches third-party fonts.",
+	"properties": {
+		"enabled": {
+			"type": "boolean",
+			"example": "true",
+			"description": "Indicates whether or not Automatic Platform Optimization is enabled.",
+			"default": false
+		},
+		"cf": {
+			"type": "boolean",
+			"example": "true",
+			"description": "Indicates whether or not Cloudflare proxy is enabled.",
+			"default": false
+		},
+		"wordpress": {
+			"type": "boolean",
+			"example": "true",
+			"description": "Indicates whether or not site is powered by WordPress.",
+			"default": false
+		},
+		"wp_plugin": {
+			"type": "boolean",
+			"example": "true",
+			"description": "Indicates whether or not [Cloudflare for WordPress plugin](https://wordpress.org/plugins/cloudflare/) is installed.",
+			"default": false
+		},
+		"hostnames": {
+			"type": "array",
+			"example": "[\n  \"www.example.com\",\n  \"example.com\",\n  \"shop.example.com\"\n]",
+			"description": "An array of hostnames where Automatic Platform Optimization for WordPress is activated.",
+			"items": {
+				"type": "string",
+				"format": "hostname"
+			},
+			"default": null
+		},
+		"cache_by_device_type": {
+			"type": "boolean",
+			"example": "false",
+			"description": "Indicates whether or not [cache by device type](https://developers.cloudflare.com/automatic-platform-optimization/reference/cache-device-type/) is enabled.",
+			"default": null
+		}
+	},
+	"id": "https://api.cloudflare.com/schemas/v4/common/automatic_platform_optimization.json",
+	"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+	"title": "Automatic Platform Optimization for WordPress",
+	"required": [
+		"enabled",
+		"cf",
+		"wordpress",
+		"wp_plugin",
+		"hostnames",
+		"cache_by_device_type"
+	]
+}

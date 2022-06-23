@@ -1,0 +1,100 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/intel/whois.json",
+	"title": "WHOIS Record",
+	"description": "WHOIS (Beta)",
+	"links": [
+		{
+			"title": "Get WHOIS Record",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/intel/whois",
+			"method": "GET",
+			"cfOwnership": "intel",
+			"html_id": "whois-record-get-whois-record",
+			"uri": "accounts/:account_identifier/intel/whois",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/intel/whois?domain=cloudflare.com\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"domain": {
+						"type": "string",
+						"example": "\"cloudflare.com\""
+					}
+				},
+				"required_props": [
+					"domain"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"domain\": \"cloudflare.com\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"domain\": \"cloudflare.com\",\n    \"created_date\": \"2009-02-17\",\n    \"updated_date\": \"2017-05-24\",\n    \"registrant\": \"DATA REDACTED\",\n    \"registrant_org\": \"DATA REDACTED\",\n    \"registrant_country\": \"United States\",\n    \"registrant_email\": \"https://domaincontact.cloudflareregistrar.com/cloudflare.com\",\n    \"registrar\": \"Cloudflare, Inc.\",\n    \"nameservers\": [\n      \"ns3.cloudflare.com\",\n      \"ns4.cloudflare.com\",\n      \"ns5.cloudflare.com\",\n      \"ns6.cloudflare.com\",\n      \"ns7.cloudflare.com\"\n    ]\n  }\n}"
+		}
+	],
+	"html_id": "whois-record",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"domain": {
+				"type": "string",
+				"example": "\"cloudflare.com\""
+			},
+			"created_date": {
+				"type": "string",
+				"example": "\"2009-02-17\"",
+				"format": "date"
+			},
+			"updated_date": {
+				"type": "string",
+				"example": "\"2017-05-24\"",
+				"format": "date"
+			},
+			"registrant": {
+				"type": "string",
+				"example": "\"DATA REDACTED\""
+			},
+			"registrant_org": {
+				"type": "string",
+				"example": "\"DATA REDACTED\""
+			},
+			"registrant_country": {
+				"type": "string",
+				"example": "\"United States\""
+			},
+			"registrant_email": {
+				"type": "string",
+				"example": "\"https://domaincontact.cloudflareregistrar.com/cloudflare.com\""
+			},
+			"registrar": {
+				"type": "string",
+				"example": "\"Cloudflare, Inc.\""
+			},
+			"nameservers": {
+				"type": "array",
+				"example": "[\n  \"ns3.cloudflare.com\",\n  \"ns4.cloudflare.com\",\n  \"ns5.cloudflare.com\",\n  \"ns6.cloudflare.com\",\n  \"ns7.cloudflare.com\"\n]",
+				"items": {
+					"type": "string"
+				}
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"domain",
+			"created_date",
+			"updated_date",
+			"registrant",
+			"registrant_org",
+			"registrant_country",
+			"registrant_email",
+			"registrar",
+			"nameservers"
+		],
+		"objects": [],
+		"example": "{\n  \"domain\": \"cloudflare.com\",\n  \"created_date\": \"2009-02-17\",\n  \"updated_date\": \"2017-05-24\",\n  \"registrant\": \"DATA REDACTED\",\n  \"registrant_org\": \"DATA REDACTED\",\n  \"registrant_country\": \"United States\",\n  \"registrant_email\": \"https://domaincontact.cloudflareregistrar.com/cloudflare.com\",\n  \"registrar\": \"Cloudflare, Inc.\",\n  \"nameservers\": [\n    \"ns3.cloudflare.com\",\n    \"ns4.cloudflare.com\",\n    \"ns5.cloudflare.com\",\n    \"ns6.cloudflare.com\",\n    \"ns7.cloudflare.com\"\n  ]\n}",
+		"title": "WHOIS Record",
+		"description": "WHOIS (Beta)"
+	}
+}

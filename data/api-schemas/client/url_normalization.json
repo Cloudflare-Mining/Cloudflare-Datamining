@@ -1,0 +1,96 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/url_normalization.json",
+	"title": "URL Normalization",
+	"description": "The URL normalization settings of a zone.",
+	"cfExtendedDescription": "",
+	"type": "object",
+	"links": [
+		{
+			"title": "Get URL normalization settings",
+			"description": "Fetches the current URL normalization settings.",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_id}/url_normalization",
+			"method": "GET",
+			"cfOwnership": "flprod",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "url-normalization-get-url-normalization-settings",
+			"uri": "zones/:zone_id/url_normalization",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/url_normalization\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"type\": \"cloudflare\",\n  \"scope\": \"incoming\"\n}"
+		},
+		{
+			"title": "Update URL normalization settings",
+			"description": "Updates the URL normalization settings.",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_id}/url_normalization",
+			"method": "PUT",
+			"cfOwnership": "flprod",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "url-normalization-update-url-normalization-settings",
+			"uri": "zones/:zone_id/url_normalization",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/url_normalization\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"cloudflare\",\"scope\":\"incoming\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"type": {
+						"type": "string",
+						"example": "\"cloudflare\"",
+						"description": "The type of URL normalization performed by Cloudflare."
+					},
+					"scope": {
+						"type": "string",
+						"example": "\"incoming\"",
+						"description": "The scope of the URL normalization."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"type",
+					"scope"
+				],
+				"objects": [],
+				"example": "{\n  \"type\": \"cloudflare\",\n  \"scope\": \"incoming\"\n}"
+			},
+			"response": "{\n  \"type\": \"cloudflare\",\n  \"scope\": \"incoming\"\n}"
+		}
+	],
+	"html_id": "url-normalization",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"type": {
+				"type": "string",
+				"example": "\"cloudflare\"",
+				"description": "The type of URL normalization performed by Cloudflare."
+			},
+			"scope": {
+				"type": "string",
+				"example": "\"incoming\"",
+				"description": "The scope of the URL normalization."
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"type",
+			"scope"
+		],
+		"objects": [],
+		"example": "{\n  \"type\": \"cloudflare\",\n  \"scope\": \"incoming\"\n}",
+		"title": "URL Normalization",
+		"description": "The URL normalization settings of a zone."
+	}
+}

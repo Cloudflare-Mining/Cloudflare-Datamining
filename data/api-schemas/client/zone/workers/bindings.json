@@ -1,0 +1,115 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/workers/bindings.json",
+	"title": "Worker Binding (Deprecated)",
+	"description": "A worker binding is a resource made available to a worker via a JavaScript variable name.",
+	"cfExtendedDescription": "**NOTE**: This API is **deprecated**, please use equivalent `/accounts` API endpoints where possible. These APIs are for use with the previously limited single-script zones.",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Bindings",
+			"description": "List the bindings for a Workers script.",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/workers/script/bindings",
+			"method": "GET",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
+			"cfOwnership": "workers",
+			"html_id": "worker-binding-deprecated--list-bindings",
+			"uri": "zones/:zone_identifier/workers/script/bindings",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/workers/script/bindings\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"name\": \"myBinding\",\n      \"type\": \"kv_namespace\",\n      \"namespace_id\": \"0f2ac74b498b48028cb68387c421e279\"\n    }\n  ]\n}"
+		}
+	],
+	"html_id": "worker-binding-deprecated-",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {},
+		"required_props": [],
+		"optional_props": [],
+		"objects": [
+			{
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"myBinding\"",
+						"description": "A JavaScript variable name for the binding.",
+						"readOnly": true
+					},
+					"type": {
+						"type": "string",
+						"example": "\"kv_namespace\"",
+						"description": "The class of resource that the binding provides.",
+						"enum": [
+							"kv_namespace"
+						]
+					},
+					"namespace_id": {
+						"type": "string",
+						"example": "\"0f2ac74b498b48028cb68387c421e279\"",
+						"description": "Namespace identifier tag.",
+						"maxLength": 32,
+						"readOnly": true
+					}
+				},
+				"required_props": [
+					"name",
+					"type",
+					"namespace_id"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"name\": \"myBinding\",\n  \"type\": \"kv_namespace\",\n  \"namespace_id\": \"0f2ac74b498b48028cb68387c421e279\"\n}"
+			},
+			{
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"myBinding\"",
+						"description": "A JavaScript variable name for the binding.",
+						"readOnly": true
+					},
+					"type": {
+						"type": "string",
+						"example": "\"wasm_module\"",
+						"description": "The class of resource that the binding provides.",
+						"enum": [
+							"wasm_module"
+						]
+					}
+				},
+				"required_props": [
+					"name",
+					"type"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"name\": \"myBinding\",\n  \"type\": \"wasm_module\"\n}"
+			}
+		],
+		"example": "{\n  \"name\": \"myBinding\",\n  \"type\": \"kv_namespace\",\n  \"namespace_id\": \"0f2ac74b498b48028cb68387c421e279\"\n}",
+		"which_of": "oneOf",
+		"title": "Worker Binding (Deprecated)",
+		"description": "A worker binding is a resource made available to a worker via a JavaScript variable name."
+	}
+}

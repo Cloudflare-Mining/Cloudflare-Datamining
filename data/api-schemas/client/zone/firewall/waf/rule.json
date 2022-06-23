@@ -1,0 +1,484 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/firewall/waf/rule.json",
+	"title": "WAF Rules",
+	"description": "A firewall rule for a zone",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Rules",
+			"description": "Search, sort, and filter rules within a package",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_id}/firewall/waf/packages/{#/definitions/package_id}/rules",
+			"method": "GET",
+			"cfOwnership": "managed-rules",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "waf-rules-list-rules",
+			"uri": "zones/:zone_id/firewall/waf/packages/:package_id/rules",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/waf/packages/a25a9a7e9c00afc1fb2e0245519d725b/rules?description=SQL injection prevention for SELECT statements&mode=CHL&priority=5&group_id=de677e5818985db1285d0e80225f06e5&page=1&per_page=50&order=status&direction=desc&match=all\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"description": {
+						"type": "string",
+						"example": "\"SQL injection prevention for SELECT statements\"",
+						"description": "Public description of the rule",
+						"readOnly": true
+					},
+					"mode": {
+						"type": "string",
+						"example": "\"CHL\"",
+						"description": "The setting a rule has been overridden to",
+						"enum": [
+							"DIS",
+							"CHL",
+							"BLK",
+							"SIM"
+						]
+					},
+					"priority": {
+						"type": "string",
+						"example": "5",
+						"description": "The order in which the individual rule is executed within the related group",
+						"readOnly": true
+					},
+					"group_id": {
+						"type": "string",
+						"example": "\"de677e5818985db1285d0e80225f06e5\"",
+						"description": "WAF group identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"page": {
+						"type": "number",
+						"example": "1",
+						"minimum": 1,
+						"default": 1,
+						"description": "Page number of paginated results"
+					},
+					"per_page": {
+						"type": "number",
+						"example": "50",
+						"minimum": 5,
+						"maximum": 100,
+						"default": 50,
+						"description": "Number of rules per page"
+					},
+					"order": {
+						"type": "string",
+						"example": "\"status\"",
+						"enum": [
+							"priority",
+							"group_id",
+							"description"
+						],
+						"description": "Field to order rules by"
+					},
+					"direction": {
+						"type": "string",
+						"example": "\"desc\"",
+						"enum": [
+							"asc",
+							"desc"
+						],
+						"description": "Direction to order rules"
+					},
+					"match": {
+						"type": "string",
+						"example": "\"all\"",
+						"enum": [
+							"any",
+							"all"
+						],
+						"default": "all",
+						"description": "Whether to match all search requirements or at least one (any)"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"description",
+					"mode",
+					"priority",
+					"group_id",
+					"page",
+					"per_page",
+					"order",
+					"direction",
+					"match"
+				],
+				"objects": [],
+				"example": "{\n  \"description\": \"SQL injection prevention for SELECT statements\",\n  \"mode\": \"CHL\",\n  \"priority\": 5,\n  \"group_id\": \"de677e5818985db1285d0e80225f06e5\",\n  \"page\": 1,\n  \"per_page\": 50,\n  \"order\": \"status\",\n  \"direction\": \"desc\",\n  \"match\": \"all\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"f939de3be84e66e757adcdcb87908023\",\n      \"description\": \"SQL injection prevention for SELECT statements\",\n      \"priority\": 5,\n      \"group\": {\n        \"id\": \"de677e5818985db1285d0e80225f06e5\",\n        \"name\": \"Project Honey Pot\"\n      },\n      \"package_id\": \"a25a9a7e9c00afc1fb2e0245519d725b\",\n      \"allowed_modes\": [\n        \"on\",\n        \"off\"\n      ],\n      \"mode\": \"on\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Rule Details",
+			"description": "Individual information about a rule",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_id}/firewall/waf/packages/{#/definitions/package_id}/rules/{#/definitions/identifier}",
+			"method": "GET",
+			"cfOwnership": "managed-rules",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "waf-rules-rule-details",
+			"uri": "zones/:zone_id/firewall/waf/packages/:package_id/rules/:identifier",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/waf/packages/a25a9a7e9c00afc1fb2e0245519d725b/rules/f939de3be84e66e757adcdcb87908023\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f939de3be84e66e757adcdcb87908023\",\n    \"description\": \"SQL injection prevention for SELECT statements\",\n    \"priority\": 5,\n    \"group\": {\n      \"id\": \"de677e5818985db1285d0e80225f06e5\",\n      \"name\": \"Project Honey Pot\"\n    },\n    \"package_id\": \"a25a9a7e9c00afc1fb2e0245519d725b\",\n    \"allowed_modes\": [\n      \"on\",\n      \"off\"\n    ],\n    \"mode\": \"on\"\n  }\n}"
+		},
+		{
+			"title": "Edit Rule",
+			"description": "Update the action the rule will perform if triggered on the zone",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_id}/firewall/waf/packages/{#/definitions/package_id}/rules/{#/definitions/identifier}",
+			"method": "PATCH",
+			"cfOwnership": "managed-rules",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "waf-rules-edit-rule",
+			"uri": "zones/:zone_id/firewall/waf/packages/:package_id/rules/:identifier",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/waf/packages/a25a9a7e9c00afc1fb2e0245519d725b/rules/f939de3be84e66e757adcdcb87908023\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"mode\":\"on\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"mode": {
+						"example": "\"on\"",
+						"enum": [
+							"default",
+							"disable",
+							"simulate",
+							"block",
+							"challenge",
+							"on",
+							"off"
+						],
+						"description": "The mode to use when the rule is triggered. Value is restricted based on the allowed_modes of the rule"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"mode"
+				],
+				"objects": [],
+				"example": "{\n  \"mode\": \"on\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f939de3be84e66e757adcdcb87908023\",\n    \"description\": \"SQL injection prevention for SELECT statements\",\n    \"priority\": 5,\n    \"group\": {\n      \"id\": \"de677e5818985db1285d0e80225f06e5\",\n      \"name\": \"Project Honey Pot\"\n    },\n    \"package_id\": \"a25a9a7e9c00afc1fb2e0245519d725b\",\n    \"allowed_modes\": [\n      \"on\",\n      \"off\"\n    ],\n    \"mode\": \"on\"\n  }\n}"
+		}
+	],
+	"html_id": "waf-rules",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {},
+		"required_props": [],
+		"optional_props": [],
+		"objects": [
+			{
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"f939de3be84e66e757adcdcb87908023\"",
+						"description": "WAF rule identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"description": {
+						"type": "string",
+						"example": "\"SQL injection prevention for SELECT statements\"",
+						"description": "Public description of the rule",
+						"readOnly": true
+					},
+					"priority": {
+						"type": "string",
+						"example": "5",
+						"description": "The order in which the individual rule is executed within the related group",
+						"readOnly": true
+					},
+					"group": {
+						"type": "object",
+						"example": "{\n  \"id\": \"de677e5818985db1285d0e80225f06e5\",\n  \"name\": \"Project Honey Pot\"\n}",
+						"properties": {
+							"id": {
+								"type": "string",
+								"example": "\"de677e5818985db1285d0e80225f06e5\"",
+								"description": "WAF group identifier tag",
+								"maxLength": 32,
+								"readOnly": true
+							},
+							"name": {
+								"type": "string",
+								"example": "\"Project Honey Pot\"",
+								"description": "Name of the firewall rule group",
+								"readOnly": true
+							}
+						},
+						"description": "The group in which the rule belongs",
+						"readOnly": true
+					},
+					"package_id": {
+						"type": "string",
+						"example": "\"a25a9a7e9c00afc1fb2e0245519d725b\"",
+						"description": "WAF package identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"allowed_modes": {
+						"type": "array",
+						"example": "[\n  \"on\",\n  \"off\"\n]",
+						"description": "Defines the available modes of how the rule interacts when it is triggered.",
+						"items": {
+							"description": "Whether or not the anomaly-based rule will be used when evaluating the request.",
+							"type": "string",
+							"enum": [
+								"on",
+								"off"
+							],
+							"example": "on"
+						},
+						"readOnly": true
+					},
+					"mode": {
+						"type": "string",
+						"example": "\"on\"",
+						"description": "Whether or not the anomaly-based rule will be used when evaluating the request.",
+						"enum": [
+							"on",
+							"off"
+						]
+					}
+				},
+				"required_props": [
+					"id",
+					"description",
+					"priority",
+					"allowed_modes",
+					"mode",
+					"group",
+					"package_id"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"id\": \"f939de3be84e66e757adcdcb87908023\",\n  \"description\": \"SQL injection prevention for SELECT statements\",\n  \"priority\": 5,\n  \"group\": {\n    \"id\": \"de677e5818985db1285d0e80225f06e5\",\n    \"name\": \"Project Honey Pot\"\n  },\n  \"package_id\": \"a25a9a7e9c00afc1fb2e0245519d725b\",\n  \"allowed_modes\": [\n    \"on\",\n    \"off\"\n  ],\n  \"mode\": \"on\"\n}",
+				"title": "Anomaly rule",
+				"description": "Anomaly scoring rules (if triggered) will contribute to an overall threat score that determines if a request is detected as malicious. Users can control the total scoring threshold via the 'sensitivity' of the package."
+			},
+			{
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"f939de3be84e66e757adcdcb87908023\"",
+						"description": "WAF rule identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"description": {
+						"type": "string",
+						"example": "\"SQL injection prevention for SELECT statements\"",
+						"description": "Public description of the rule",
+						"readOnly": true
+					},
+					"priority": {
+						"type": "string",
+						"example": "5",
+						"description": "The order in which the individual rule is executed within the related group",
+						"readOnly": true
+					},
+					"group": {
+						"type": "object",
+						"example": "{\n  \"id\": \"de677e5818985db1285d0e80225f06e5\",\n  \"name\": \"Project Honey Pot\"\n}",
+						"properties": {
+							"id": {
+								"type": "string",
+								"example": "\"de677e5818985db1285d0e80225f06e5\"",
+								"description": "WAF group identifier tag",
+								"maxLength": 32,
+								"readOnly": true
+							},
+							"name": {
+								"type": "string",
+								"example": "\"Project Honey Pot\"",
+								"description": "Name of the firewall rule group",
+								"readOnly": true
+							}
+						},
+						"description": "The group in which the rule belongs",
+						"readOnly": true
+					},
+					"package_id": {
+						"type": "string",
+						"example": "\"a25a9a7e9c00afc1fb2e0245519d725b\"",
+						"description": "WAF package identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"allowed_modes": {
+						"type": "array",
+						"example": "[\n  \"default\",\n  \"disable\",\n  \"simulate\",\n  \"block\",\n  \"challenge\"\n]",
+						"description": "Defines the available modes of how the rule interacts when it is triggered.",
+						"items": {
+							"description": "The mode that the traditional firewall rule uses when triggered.",
+							"type": "string",
+							"enum": [
+								"default",
+								"disable",
+								"simulate",
+								"block",
+								"challenge"
+							],
+							"example": "block"
+						},
+						"readOnly": true
+					},
+					"mode": {
+						"type": "string",
+						"example": "\"block\"",
+						"description": "The mode that the traditional firewall rule uses when triggered.",
+						"enum": [
+							"default",
+							"disable",
+							"simulate",
+							"block",
+							"challenge"
+						]
+					},
+					"default_mode": {
+						"example": "\"block\"",
+						"enum": [
+							"disable",
+							"simulate",
+							"block",
+							"challenge"
+						],
+						"description": "The default mode that a rule uses",
+						"readOnly": true
+					}
+				},
+				"required_props": [
+					"id",
+					"description",
+					"priority",
+					"allowed_modes",
+					"default_mode",
+					"mode",
+					"group",
+					"package_id"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"id\": \"f939de3be84e66e757adcdcb87908023\",\n  \"description\": \"SQL injection prevention for SELECT statements\",\n  \"priority\": 5,\n  \"group\": {\n    \"id\": \"de677e5818985db1285d0e80225f06e5\",\n    \"name\": \"Project Honey Pot\"\n  },\n  \"package_id\": \"a25a9a7e9c00afc1fb2e0245519d725b\",\n  \"allowed_modes\": [\n    \"default\",\n    \"disable\",\n    \"simulate\",\n    \"block\",\n    \"challenge\"\n  ],\n  \"mode\": \"block\",\n  \"default_mode\": \"block\"\n}",
+				"title": "Traditional (deny) rule",
+				"description": "Traditional rules, if triggered, will cause the firewall to immediately act upon the request based on the configuration of the rule. A 'deny' rule will respond to the request based on the configuration (block, challenge, etc) and no other rule processing will occur."
+			},
+			{
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"f939de3be84e66e757adcdcb87908023\"",
+						"description": "WAF rule identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"description": {
+						"type": "string",
+						"example": "\"SQL injection prevention for SELECT statements\"",
+						"description": "Public description of the rule",
+						"readOnly": true
+					},
+					"priority": {
+						"type": "string",
+						"example": "5",
+						"description": "The order in which the individual rule is executed within the related group",
+						"readOnly": true
+					},
+					"group": {
+						"type": "object",
+						"example": "{\n  \"id\": \"de677e5818985db1285d0e80225f06e5\",\n  \"name\": \"Project Honey Pot\"\n}",
+						"properties": {
+							"id": {
+								"type": "string",
+								"example": "\"de677e5818985db1285d0e80225f06e5\"",
+								"description": "WAF group identifier tag",
+								"maxLength": 32,
+								"readOnly": true
+							},
+							"name": {
+								"type": "string",
+								"example": "\"Project Honey Pot\"",
+								"description": "Name of the firewall rule group",
+								"readOnly": true
+							}
+						},
+						"description": "The group in which the rule belongs",
+						"readOnly": true
+					},
+					"package_id": {
+						"type": "string",
+						"example": "\"a25a9a7e9c00afc1fb2e0245519d725b\"",
+						"description": "WAF package identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"allowed_modes": {
+						"type": "array",
+						"example": "[\n  \"on\",\n  \"off\"\n]",
+						"description": "Defines the available modes of how the rule interacts when it is triggered.",
+						"items": {
+							"description": "Defines whether or not the white-list rule should be allowed when matching the request.",
+							"type": "string",
+							"enum": [
+								"on",
+								"off"
+							],
+							"example": "on"
+						},
+						"readOnly": true
+					},
+					"mode": {
+						"type": "string",
+						"example": "\"on\"",
+						"description": "Defines whether or not the white-list rule should be allowed when matching the request.",
+						"enum": [
+							"on",
+							"off"
+						]
+					}
+				},
+				"required_props": [
+					"id",
+					"description",
+					"priority",
+					"allowed_modes",
+					"default_mode",
+					"mode",
+					"group",
+					"package_id"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"id\": \"f939de3be84e66e757adcdcb87908023\",\n  \"description\": \"SQL injection prevention for SELECT statements\",\n  \"priority\": 5,\n  \"group\": {\n    \"id\": \"de677e5818985db1285d0e80225f06e5\",\n    \"name\": \"Project Honey Pot\"\n  },\n  \"package_id\": \"a25a9a7e9c00afc1fb2e0245519d725b\",\n  \"allowed_modes\": [\n    \"on\",\n    \"off\"\n  ],\n  \"mode\": \"on\"\n}",
+				"title": "Traditional (allow) rule",
+				"description": "Traditional rules, if triggered, will cause the firewall to immediately act upon the request based on the configuration of the rule. An 'allow' rule will immediately allow the request and no other rule processing will occur."
+			}
+		],
+		"example": "{\n  \"id\": \"f939de3be84e66e757adcdcb87908023\",\n  \"description\": \"SQL injection prevention for SELECT statements\",\n  \"priority\": 5,\n  \"group\": {\n    \"id\": \"de677e5818985db1285d0e80225f06e5\",\n    \"name\": \"Project Honey Pot\"\n  },\n  \"package_id\": \"a25a9a7e9c00afc1fb2e0245519d725b\",\n  \"allowed_modes\": [\n    \"on\",\n    \"off\"\n  ],\n  \"mode\": \"on\"\n}",
+		"which_of": "oneOf",
+		"title": "WAF Rules",
+		"description": "A firewall rule for a zone"
+	}
+}

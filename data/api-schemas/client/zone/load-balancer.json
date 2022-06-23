@@ -1,0 +1,1828 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/load-balancer.json",
+	"title": "Load Balancers",
+	"description": "Zone-level Load Balancers",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Load Balancers",
+			"description": "List configured load balancers",
+			"rel": "collection",
+			"href": "zones/{#/definitions/identifier}/load_balancers",
+			"method": "GET",
+			"cfOwnership": "load_balancer",
+			"html_id": "load-balancers-list-load-balancers",
+			"uri": "zones/:identifier/load_balancers",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/load_balancers\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"699d98642c564d2e855e9661899b7252\",\n      \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"description\": \"Load Balancer for www.example.com\",\n      \"name\": \"www.example.com\",\n      \"enabled\": true,\n      \"ttl\": 30,\n      \"fallback_pool\": \"17b5962d775c646f3f9725cbc7a53df4\",\n      \"default_pools\": [\n        \"17b5962d775c646f3f9725cbc7a53df4\",\n        \"9290f38c5d07c2e2f4df57b1f61d4196\",\n        \"00920f38ce07c2e2f4df50b1f61d4194\"\n      ],\n      \"region_pools\": {\n        \"WNAM\": [\n          \"de90f38ced07c2e2f4df50b1f61d4194\",\n          \"9290f38c5d07c2e2f4df57b1f61d4196\"\n        ],\n        \"ENAM\": [\n          \"00920f38ce07c2e2f4df50b1f61d4194\"\n        ]\n      },\n      \"country_pools\": {\n        \"US\": [\n          \"de90f38ced07c2e2f4df50b1f61d4194\",\n          \"00920f38ce07c2e2f4df50b1f61d4194\"\n        ],\n        \"GB\": [\n          \"abd90f38ced07c2e2f4df50b1f61d4194\"\n        ]\n      },\n      \"pop_pools\": {\n        \"LAX\": [\n          \"de90f38ced07c2e2f4df50b1f61d4194\",\n          \"9290f38c5d07c2e2f4df57b1f61d4196\"\n        ],\n        \"LHR\": [\n          \"abd90f38ced07c2e2f4df50b1f61d4194\",\n          \"f9138c5d07c2e2f4df57b1f61d4196\"\n        ],\n        \"SJC\": [\n          \"00920f38ce07c2e2f4df50b1f61d4194\"\n        ]\n      },\n      \"proxied\": true,\n      \"steering_policy\": \"dynamic_latency\",\n      \"session_affinity\": \"cookie\",\n      \"session_affinity_attributes\": {\n        \"samesite\": \"Auto\",\n        \"secure\": \"Auto\",\n        \"drain_duration\": 100,\n        \"zero_downtime_failover\": \"sticky\"\n      },\n      \"session_affinity_ttl\": 5000,\n      \"random_steering\": {\n        \"pool_weights\": {\n          \"de90f38ced07c2e2f4df50b1f61d4194\": 0.3,\n          \"9290f38c5d07c2e2f4df57b1f61d4196\": 0.5\n        },\n        \"default_weight\": 0.2\n      },\n      \"rules\": [\n        {\n          \"name\": \"route the path /testing to testing datacenter.\",\n          \"condition\": \"http.request.uri.path contains \\\"/testing\\\"\",\n          \"overrides\": {\n            \"session_affinity\": \"cookie\",\n            \"session_affinity_ttl\": 5000,\n            \"session_affinity_attributes\": {\n              \"samesite\": \"Auto\",\n              \"secure\": \"Auto\",\n              \"drain_duration\": 100,\n              \"zero_downtime_failover\": \"sticky\"\n            },\n            \"ttl\": 30,\n            \"steering_policy\": \"dynamic_latency\",\n            \"fallback_pool\": \"17b5962d775c646f3f9725cbc7a53df4\",\n            \"default_pools\": [\n              \"17b5962d775c646f3f9725cbc7a53df4\",\n              \"9290f38c5d07c2e2f4df57b1f61d4196\",\n              \"00920f38ce07c2e2f4df50b1f61d4194\"\n            ],\n            \"pop_pools\": {\n              \"LAX\": [\n                \"de90f38ced07c2e2f4df50b1f61d4194\",\n                \"9290f38c5d07c2e2f4df57b1f61d4196\"\n              ],\n              \"LHR\": [\n                \"abd90f38ced07c2e2f4df50b1f61d4194\",\n                \"f9138c5d07c2e2f4df57b1f61d4196\"\n              ],\n              \"SJC\": [\n                \"00920f38ce07c2e2f4df50b1f61d4194\"\n              ]\n            },\n            \"region_pools\": {\n              \"WNAM\": [\n                \"de90f38ced07c2e2f4df50b1f61d4194\",\n                \"9290f38c5d07c2e2f4df57b1f61d4196\"\n              ],\n              \"ENAM\": [\n                \"00920f38ce07c2e2f4df50b1f61d4194\"\n              ]\n            },\n            \"country_pools\": {\n              \"US\": [\n                \"de90f38ced07c2e2f4df50b1f61d4194\",\n                \"00920f38ce07c2e2f4df50b1f61d4194\"\n              ],\n              \"GB\": [\n                \"abd90f38ced07c2e2f4df50b1f61d4194\"\n              ]\n            },\n            \"random_steering\": {\n              \"pool_weights\": {\n                \"de90f38ced07c2e2f4df50b1f61d4194\": 0.3,\n                \"9290f38c5d07c2e2f4df57b1f61d4196\": 0.5\n              },\n              \"default_weight\": 0.2\n            }\n          },\n          \"priority\": 55,\n          \"disabled\": false,\n          \"terminates\": false,\n          \"fixed_response\": {\n            \"message_body\": \"Testing Hello\",\n            \"status_code\": 200,\n            \"content_type\": \"application/json\",\n            \"location\": \"www.example.com\"\n          }\n        }\n      ]\n    }\n  ]\n}"
+		},
+		{
+			"title": "Create Load Balancer",
+			"description": "Create a new load balancer",
+			"rel": "collection",
+			"href": "zones/{#/definitions/identifier}/load_balancers",
+			"method": "POST",
+			"cfOwnership": "load_balancer",
+			"html_id": "load-balancers-create-load-balancer",
+			"uri": "zones/:identifier/load_balancers",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/load_balancers\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"description\":\"Load Balancer for www.example.com\",\"name\":\"www.example.com\",\"ttl\":30,\"fallback_pool\":\"17b5962d775c646f3f9725cbc7a53df4\",\"default_pools\":[\"17b5962d775c646f3f9725cbc7a53df4\",\"9290f38c5d07c2e2f4df57b1f61d4196\",\"00920f38ce07c2e2f4df50b1f61d4194\"],\"region_pools\":{\"WNAM\":[\"de90f38ced07c2e2f4df50b1f61d4194\",\"9290f38c5d07c2e2f4df57b1f61d4196\"],\"ENAM\":[\"00920f38ce07c2e2f4df50b1f61d4194\"]},\"country_pools\":{\"US\":[\"de90f38ced07c2e2f4df50b1f61d4194\",\"00920f38ce07c2e2f4df50b1f61d4194\"],\"GB\":[\"abd90f38ced07c2e2f4df50b1f61d4194\"]},\"pop_pools\":{\"LAX\":[\"de90f38ced07c2e2f4df50b1f61d4194\",\"9290f38c5d07c2e2f4df57b1f61d4196\"],\"LHR\":[\"abd90f38ced07c2e2f4df50b1f61d4194\",\"f9138c5d07c2e2f4df57b1f61d4196\"],\"SJC\":[\"00920f38ce07c2e2f4df50b1f61d4194\"]},\"proxied\":true,\"steering_policy\":\"dynamic_latency\",\"session_affinity\":\"cookie\",\"session_affinity_attributes\":{\"samesite\":\"Auto\",\"secure\":\"Auto\",\"drain_duration\":100,\"zero_downtime_failover\":\"sticky\"},\"session_affinity_ttl\":5000,\"random_steering\":{\"pool_weights\":{\"de90f38ced07c2e2f4df50b1f61d4194\":0.3,\"9290f38c5d07c2e2f4df57b1f61d4196\":0.5},\"default_weight\":0.2},\"rules\":[{\"name\":\"route the path /testing to testing datacenter.\",\"condition\":\"http.request.uri.path contains \\\"/testing\\\"\",\"overrides\":{\"session_affinity\":\"cookie\",\"session_affinity_ttl\":5000,\"session_affinity_attributes\":{\"samesite\":\"Auto\",\"secure\":\"Auto\",\"drain_duration\":100,\"zero_downtime_failover\":\"sticky\"},\"ttl\":30,\"steering_policy\":\"dynamic_latency\",\"fallback_pool\":\"17b5962d775c646f3f9725cbc7a53df4\",\"default_pools\":[\"17b5962d775c646f3f9725cbc7a53df4\",\"9290f38c5d07c2e2f4df57b1f61d4196\",\"00920f38ce07c2e2f4df50b1f61d4194\"],\"pop_pools\":{\"LAX\":[\"de90f38ced07c2e2f4df50b1f61d4194\",\"9290f38c5d07c2e2f4df57b1f61d4196\"],\"LHR\":[\"abd90f38ced07c2e2f4df50b1f61d4194\",\"f9138c5d07c2e2f4df57b1f61d4196\"],\"SJC\":[\"00920f38ce07c2e2f4df50b1f61d4194\"]},\"region_pools\":{\"WNAM\":[\"de90f38ced07c2e2f4df50b1f61d4194\",\"9290f38c5d07c2e2f4df57b1f61d4196\"],\"ENAM\":[\"00920f38ce07c2e2f4df50b1f61d4194\"]},\"country_pools\":{\"US\":[\"de90f38ced07c2e2f4df50b1f61d4194\",\"00920f38ce07c2e2f4df50b1f61d4194\"],\"GB\":[\"abd90f38ced07c2e2f4df50b1f61d4194\"]},\"random_steering\":{\"pool_weights\":{\"de90f38ced07c2e2f4df50b1f61d4194\":0.3,\"9290f38c5d07c2e2f4df57b1f61d4196\":0.5},\"default_weight\":0.2}},\"priority\":55,\"disabled\":false,\"terminates\":false,\"fixed_response\":{\"message_body\":\"Testing Hello\",\"status_code\":200,\"content_type\":\"application/json\",\"location\":\"www.example.com\"}}]}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"description": {
+						"type": "string",
+						"example": "\"Load Balancer for www.example.com\"",
+						"description": "Object description"
+					},
+					"name": {
+						"type": "string",
+						"example": "\"www.example.com\"",
+						"description": "The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used."
+					},
+					"ttl": {
+						"type": "number",
+						"example": "30",
+						"description": "Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers."
+					},
+					"fallback_pool": {
+						"type": "string",
+						"example": "\"17b5962d775c646f3f9725cbc7a53df4\"",
+						"description": "The pool ID to use when all other pools are detected as unhealthy.",
+						"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"default_pools": {
+						"type": "array",
+						"example": "[\n  \"17b5962d775c646f3f9725cbc7a53df4\",\n  \"9290f38c5d07c2e2f4df57b1f61d4196\",\n  \"00920f38ce07c2e2f4df50b1f61d4194\"\n]",
+						"items": {
+							"type": "string",
+							"description": "A pool ID"
+						},
+						"description": "A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region."
+					},
+					"region_pools": {
+						"type": "object",
+						"example": "{\n  \"WNAM\": [\n    \"de90f38ced07c2e2f4df50b1f61d4194\",\n    \"9290f38c5d07c2e2f4df57b1f61d4196\"\n  ],\n  \"ENAM\": [\n    \"00920f38ce07c2e2f4df50b1f61d4194\"\n  ]\n}",
+						"description": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools."
+					},
+					"country_pools": {
+						"type": "object",
+						"example": "{\n  \"US\": [\n    \"de90f38ced07c2e2f4df50b1f61d4194\",\n    \"00920f38ce07c2e2f4df50b1f61d4194\"\n  ],\n  \"GB\": [\n    \"abd90f38ced07c2e2f4df50b1f61d4194\"\n  ]\n}",
+						"description": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools."
+					},
+					"pop_pools": {
+						"type": "object",
+						"example": "{\n  \"LAX\": [\n    \"de90f38ced07c2e2f4df50b1f61d4194\",\n    \"9290f38c5d07c2e2f4df57b1f61d4196\"\n  ],\n  \"LHR\": [\n    \"abd90f38ced07c2e2f4df50b1f61d4194\",\n    \"f9138c5d07c2e2f4df57b1f61d4196\"\n  ],\n  \"SJC\": [\n    \"00920f38ce07c2e2f4df50b1f61d4194\"\n  ]\n}",
+						"description": "(Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools."
+					},
+					"proxied": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether the hostname should be gray clouded (false) or orange clouded (true).",
+						"default": false
+					},
+					"steering_policy": {
+						"type": "string",
+						"example": "\"dynamic_latency\"",
+						"description": "Steering Policy for this load balancer. \"off\": use default_pools, \"geo\": use region_pools/country_pools/pop_pools, \"random\": select a pool randomly, \"dynamic_latency\": use round trip time to select the closest pool in default_pools (requires pool health checks), \n\"proximity\": use the pools latitude and longitude to select the closest pool using the cloudflare pop location for proxied requests or geoip / edns0-client-subnet for non-proxied, \"\": will map to \"geo\" if you use region_pools/country_pools/pop_pools otherwise \"off\"",
+						"enum": [
+							"off",
+							"geo",
+							"random",
+							"dynamic_latency",
+							"proximity",
+							"\"\""
+						],
+						"default": "\"\""
+					},
+					"session_affinity": {
+						"type": "string",
+						"example": "\"cookie\"",
+						"description": "The session_affinity specifies the type of session affinity the loadbalancer should use unless specified as \"none\" or \"\"(default). The supported types are \"cookie\" and \"ip_cookie\". \"cookie\" - On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. \"ip_cookie\" behaves the same as \"cookie\" except the initial origin selection is stable and based on the client’s ip address.",
+						"enum": [
+							"none",
+							"cookie",
+							"ip_cookie",
+							"\"\""
+						],
+						"default": "\"\""
+					},
+					"session_affinity_attributes": {
+						"type": "object",
+						"example": "{\n  \"samesite\": \"Auto\",\n  \"secure\": \"Auto\",\n  \"drain_duration\": 100,\n  \"zero_downtime_failover\": \"sticky\"\n}",
+						"properties": {
+							"samesite": {
+								"type": "string",
+								"example": "\"Auto\"",
+								"description": "Configures the SameSite attribute on session affinity cookie. Value \"Auto\" will be translated to \"Lax\" or \"None\" depending if Always Use HTTPS is enabled. Note: when using value \"None\", the secure attribute can not be set to \"Never\".",
+								"enum": [
+									"Auto",
+									"Lax",
+									"None",
+									"Strict"
+								],
+								"default": "Auto"
+							},
+							"secure": {
+								"type": "string",
+								"example": "\"Auto\"",
+								"description": "Configures the Secure attribute on session affinity cookie. Value \"Always\" indicates the Secure attribute will be set in the Set-Cookie header, \"Never\" indicates the Secure attribute will not be set, and \"Auto\" will set the Secure attribute depending if Always Use HTTPS is enabled.",
+								"enum": [
+									"Auto",
+									"Always",
+									"Never"
+								],
+								"default": "Auto"
+							},
+							"drain_duration": {
+								"type": "number",
+								"example": "100",
+								"description": "Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer."
+							},
+							"zero_downtime_failover": {
+								"type": "string",
+								"example": "\"sticky\"",
+								"description": "Configures the zero downtime failover between origins within a pool when session affinity is enabled. Value \"none\" means no failover takes place for sessions pinned to the origin (default). Value \"temporary\" means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value \"sticky\" means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance.",
+								"enum": [
+									"none",
+									"temporary",
+									"sticky"
+								],
+								"default": "none"
+							}
+						},
+						"description": "Configure cookie attributes for session affinity cookie."
+					},
+					"session_affinity_ttl": {
+						"type": "number",
+						"example": "5000",
+						"description": "Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless session_affinity_ttl is explicitly set. The accepted range of values is between [1800, 604800]. Once the expiry time has been reached, subsequent requests may get sent to a different origin server."
+					},
+					"random_steering": {
+						"type": "object",
+						"example": "{\n  \"pool_weights\": {\n    \"de90f38ced07c2e2f4df50b1f61d4194\": 0.3,\n    \"9290f38c5d07c2e2f4df57b1f61d4196\": 0.5\n  },\n  \"default_weight\": 0.2\n}",
+						"properties": {
+							"pool_weights": {
+								"type": "object",
+								"example": "{\n  \"de90f38ced07c2e2f4df50b1f61d4194\": 0.3,\n  \"9290f38c5d07c2e2f4df57b1f61d4196\": 0.5\n}",
+								"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer."
+							},
+							"default_weight": {
+								"type": "number",
+								"example": "0.2",
+								"minimum": 0,
+								"maximum": 1,
+								"multipleOfPrecision": 0.1,
+								"description": "The default weight for pools in the load balancer that are not specified in the pool_weights map.",
+								"default": 1
+							}
+						},
+						"description": "Configure pool weights for random steering. When steering_policy is 'random', a random pool is selected with probability proportional to these pool weights."
+					},
+					"rules": {
+						"type": "array",
+						"example": "[\n  {\n    \"name\": \"route the path /testing to testing datacenter.\",\n    \"condition\": \"http.request.uri.path contains \\\"/testing\\\"\",\n    \"overrides\": {\n      \"session_affinity\": \"cookie\",\n      \"session_affinity_ttl\": 5000,\n      \"session_affinity_attributes\": {\n        \"samesite\": \"Auto\",\n        \"secure\": \"Auto\",\n        \"drain_duration\": 100,\n        \"zero_downtime_failover\": \"sticky\"\n      },\n      \"ttl\": 30,\n      \"steering_policy\": \"dynamic_latency\",\n      \"fallback_pool\": \"17b5962d775c646f3f9725cbc7a53df4\",\n      \"default_pools\": [\n        \"17b5962d775c646f3f9725cbc7a53df4\",\n        \"9290f38c5d07c2e2f4df57b1f61d4196\",\n        \"00920f38ce07c2e2f4df50b1f61d4194\"\n      ],\n      \"pop_pools\": {\n        \"LAX\": [\n          \"de90f38ced07c2e2f4df50b1f61d4194\",\n          \"9290f38c5d07c2e2f4df57b1f61d4196\"\n        ],\n        \"LHR\": [\n          \"abd90f38ced07c2e2f4df50b1f61d4194\",\n          \"f9138c5d07c2e2f4df57b1f61d4196\"\n        ],\n        \"SJC\": [\n          \"00920f38ce07c2e2f4df50b1f61d4194\"\n        ]\n      },\n      \"region_pools\": {\n        \"WNAM\": [\n          \"de90f38ced07c2e2f4df50b1f61d4194\",\n          \"9290f38c5d07c2e2f4df57b1f61d4196\"\n        ],\n        \"ENAM\": [\n          \"00920f38ce07c2e2f4df50b1f61d4194\"\n        ]\n      },\n      \"country_pools\": {\n        \"US\": [\n          \"de90f38ced07c2e2f4df50b1f61d4194\",\n          \"00920f38ce07c2e2f4df50b1f61d4194\"\n        ],\n        \"GB\": [\n          \"abd90f38ced07c2e2f4df50b1f61d4194\"\n        ]\n      },\n      \"random_steering\": {\n        \"pool_weights\": {\n          \"de90f38ced07c2e2f4df50b1f61d4194\": 0.3,\n          \"9290f38c5d07c2e2f4df57b1f61d4196\": 0.5\n        },\n        \"default_weight\": 0.2\n      }\n    },\n    \"priority\": 55,\n    \"disabled\": false,\n    \"terminates\": false,\n    \"fixed_response\": {\n      \"message_body\": \"Testing Hello\",\n      \"status_code\": 200,\n      \"content_type\": \"application/json\",\n      \"location\": \"www.example.com\"\n    }\n  }\n]",
+						"description": "BETA Field Not General Access: A list of rules for this load balancer to execute.",
+						"items": {
+							"description": "A rule object containing conditions and overrides for this load balancer to evaluate.",
+							"type": "object",
+							"additionalProperties": false,
+							"properties": {
+								"name": {
+									"type": "string",
+									"maxLength": 200,
+									"description": "Name of this rule. Only used for human readability.",
+									"example": "route the path /testing to testing datacenter."
+								},
+								"condition": {
+									"type": "string",
+									"description": "The condition expressions to evaluate. If the condition evaluates to true the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions",
+									"example": "http.request.uri.path contains \"/testing\""
+								},
+								"overrides": {
+									"type": "object",
+									"description": "A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional.",
+									"properties": {
+										"session_affinity": {
+											"type": "string",
+											"description": "The session_affinity specifies the type of session affinity the loadbalancer should use unless specified as \"none\" or \"\"(default). The supported types are \"cookie\" and \"ip_cookie\". \"cookie\" - On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. \"ip_cookie\" behaves the same as \"cookie\" except the initial origin selection is stable and based on the client’s ip address.",
+											"enum": [
+												"none",
+												"cookie",
+												"ip_cookie",
+												"\"\""
+											],
+											"example": "cookie",
+											"default": "\"\""
+										},
+										"session_affinity_ttl": {
+											"type": "number",
+											"description": "Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless session_affinity_ttl is explicitly set. The accepted range of values is between [1800, 604800]. Once the expiry time has been reached, subsequent requests may get sent to a different origin server.",
+											"example": 5000
+										},
+										"session_affinity_attributes": {
+											"type": "object",
+											"description": "Configure cookie attributes for session affinity cookie.",
+											"properties": {
+												"samesite": {
+													"type": "string",
+													"description": "Configures the SameSite attribute on session affinity cookie. Value \"Auto\" will be translated to \"Lax\" or \"None\" depending if Always Use HTTPS is enabled. Note: when using value \"None\", the secure attribute can not be set to \"Never\".",
+													"enum": [
+														"Auto",
+														"Lax",
+														"None",
+														"Strict"
+													],
+													"example": "Auto",
+													"default": "Auto"
+												},
+												"secure": {
+													"type": "string",
+													"description": "Configures the Secure attribute on session affinity cookie. Value \"Always\" indicates the Secure attribute will be set in the Set-Cookie header, \"Never\" indicates the Secure attribute will not be set, and \"Auto\" will set the Secure attribute depending if Always Use HTTPS is enabled.",
+													"enum": [
+														"Auto",
+														"Always",
+														"Never"
+													],
+													"example": "Auto",
+													"default": "Auto"
+												},
+												"drain_duration": {
+													"type": "number",
+													"description": "Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer.",
+													"example": 100
+												},
+												"zero_downtime_failover": {
+													"type": "string",
+													"description": "Configures the zero downtime failover between origins within a pool when session affinity is enabled. Value \"none\" means no failover takes place for sessions pinned to the origin (default). Value \"temporary\" means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value \"sticky\" means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance.",
+													"enum": [
+														"none",
+														"temporary",
+														"sticky"
+													],
+													"example": "sticky",
+													"default": "none"
+												}
+											}
+										},
+										"ttl": {
+											"type": "number",
+											"description": "Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.",
+											"example": 30
+										},
+										"steering_policy": {
+											"type": "string",
+											"description": "Steering Policy for this load balancer. \"off\": use default_pools, \"geo\": use region_pools/country_pools/pop_pools, \"random\": select a pool randomly, \"dynamic_latency\": use round trip time to select the closest pool in default_pools (requires pool health checks), \n\"proximity\": use the pools latitude and longitude to select the closest pool using the cloudflare pop location for proxied requests or geoip / edns0-client-subnet for non-proxied, \"\": will map to \"geo\" if you use region_pools/country_pools/pop_pools otherwise \"off\"",
+											"enum": [
+												"off",
+												"geo",
+												"random",
+												"dynamic_latency",
+												"proximity",
+												"\"\""
+											],
+											"example": "dynamic_latency",
+											"default": "\"\""
+										},
+										"fallback_pool": {
+											"description": "The pool ID to use when all other pools are detected as unhealthy.",
+											"example": "17b5962d775c646f3f9725cbc7a53df4",
+											"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+											"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+											"type": "string",
+											"maxLength": 32,
+											"readOnly": true
+										},
+										"default_pools": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"description": "A pool ID"
+											},
+											"description": "A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.",
+											"example": [
+												"17b5962d775c646f3f9725cbc7a53df4",
+												"9290f38c5d07c2e2f4df57b1f61d4196",
+												"00920f38ce07c2e2f4df50b1f61d4194"
+											]
+										},
+										"pop_pools": {
+											"type": "object",
+											"description": "(Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.",
+											"example": {
+												"LAX": [
+													"de90f38ced07c2e2f4df50b1f61d4194",
+													"9290f38c5d07c2e2f4df57b1f61d4196"
+												],
+												"LHR": [
+													"abd90f38ced07c2e2f4df50b1f61d4194",
+													"f9138c5d07c2e2f4df57b1f61d4196"
+												],
+												"SJC": [
+													"00920f38ce07c2e2f4df50b1f61d4194"
+												]
+											}
+										},
+										"region_pools": {
+											"type": "object",
+											"description": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.",
+											"example": {
+												"WNAM": [
+													"de90f38ced07c2e2f4df50b1f61d4194",
+													"9290f38c5d07c2e2f4df57b1f61d4196"
+												],
+												"ENAM": [
+													"00920f38ce07c2e2f4df50b1f61d4194"
+												]
+											}
+										},
+										"country_pools": {
+											"type": "object",
+											"description": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.",
+											"example": {
+												"US": [
+													"de90f38ced07c2e2f4df50b1f61d4194",
+													"00920f38ce07c2e2f4df50b1f61d4194"
+												],
+												"GB": [
+													"abd90f38ced07c2e2f4df50b1f61d4194"
+												]
+											}
+										},
+										"random_steering": {
+											"type": "object",
+											"description": "Configure pool weights for random steering. When steering_policy is 'random', a random pool is selected with probability proportional to these pool weights.",
+											"properties": {
+												"pool_weights": {
+													"type": "object",
+													"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
+													"example": {
+														"de90f38ced07c2e2f4df50b1f61d4194": 0.3,
+														"9290f38c5d07c2e2f4df57b1f61d4196": 0.5
+													}
+												},
+												"default_weight": {
+													"type": "number",
+													"minimum": 0,
+													"maximum": 1,
+													"multipleOfPrecision": 0.1,
+													"description": "The default weight for pools in the load balancer that are not specified in the pool_weights map.",
+													"example": 0.2,
+													"default": 1
+												}
+											}
+										}
+									}
+								},
+								"priority": {
+									"type": "integer",
+									"description": "The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.",
+									"example": 55,
+									"default": 0
+								},
+								"disabled": {
+									"type": "boolean",
+									"description": "Disable this specific rule. It will no longer be evaluated by this load balancer.",
+									"default": false
+								},
+								"terminates": {
+									"type": "boolean",
+									"description": "If this rule's condition is true, terminates causes rule evaluation to stop after processing this rule.",
+									"default": false
+								},
+								"fixed_response": {
+									"type": "object",
+									"description": "A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed_response is supplied the rule will be marked as terminates.",
+									"properties": {
+										"message_body": {
+											"type": "string",
+											"description": "Text to include as the http body.",
+											"maxLength": 1024,
+											"example": "Testing Hello"
+										},
+										"status_code": {
+											"type": "integer",
+											"description": "The http status code to respond with.",
+											"example": 200
+										},
+										"content_type": {
+											"type": "string",
+											"description": "The http 'Content-Type' header to include in the response.",
+											"maxLength": 32,
+											"example": "application/json"
+										},
+										"location": {
+											"type": "string",
+											"description": "The http 'Location' header to include in the response.",
+											"maxLength": 2048,
+											"example": "www.example.com"
+										}
+									}
+								}
+							}
+						},
+						"additionalItems": false
+					}
+				},
+				"required_props": [
+					"name",
+					"default_pools",
+					"fallback_pool"
+				],
+				"optional_props": [
+					"description",
+					"ttl",
+					"region_pools",
+					"country_pools",
+					"pop_pools",
+					"proxied",
+					"steering_policy",
+					"session_affinity",
+					"session_affinity_attributes",
+					"session_affinity_ttl",
+					"random_steering",
+					"rules"
+				],
+				"objects": [],
+				"example": "{\n  \"description\": \"Load Balancer for www.example.com\",\n  \"name\": \"www.example.com\",\n  \"ttl\": 30,\n  \"fallback_pool\": \"17b5962d775c646f3f9725cbc7a53df4\",\n  \"default_pools\": [\n    \"17b5962d775c646f3f9725cbc7a53df4\",\n    \"9290f38c5d07c2e2f4df57b1f61d4196\",\n    \"00920f38ce07c2e2f4df50b1f61d4194\"\n  ],\n  \"region_pools\": {\n    \"WNAM\": [\n      \"de90f38ced07c2e2f4df50b1f61d4194\",\n      \"9290f38c5d07c2e2f4df57b1f61d4196\"\n    ],\n    \"ENAM\": [\n      \"00920f38ce07c2e2f4df50b1f61d4194\"\n    ]\n  },\n  \"country_pools\": {\n    \"US\": [\n      \"de90f38ced07c2e2f4df50b1f61d4194\",\n      \"00920f38ce07c2e2f4df50b1f61d4194\"\n    ],\n    \"GB\": [\n      \"abd90f38ced07c2e2f4df50b1f61d4194\"\n    ]\n  },\n  \"pop_pools\": {\n    \"LAX\": [\n      \"de90f38ced07c2e2f4df50b1f61d4194\",\n      \"9290f38c5d07c2e2f4df57b1f61d4196\"\n    ],\n    \"LHR\": [\n      \"abd90f38ced07c2e2f4df50b1f61d4194\",\n      \"f9138c5d07c2e2f4df57b1f61d4196\"\n    ],\n    \"SJC\": [\n      \"00920f38ce07c2e2f4df50b1f61d4194\"\n    ]\n  },\n  \"proxied\": true,\n  \"steering_policy\": \"dynamic_latency\",\n  \"session_affinity\": \"cookie\",\n  \"session_affinity_attributes\": {\n    \"samesite\": \"Auto\",\n    \"secure\": \"Auto\",\n    \"drain_duration\": 100,\n    \"zero_downtime_failover\": \"sticky\"\n  },\n  \"session_affinity_ttl\": 5000,\n  \"random_steering\": {\n    \"pool_weights\": {\n      \"de90f38ced07c2e2f4df50b1f61d4194\": 0.3,\n      \"9290f38c5d07c2e2f4df57b1f61d4196\": 0.5\n    },\n    \"default_weight\": 0.2\n  },\n  \"rules\": [\n    {\n      \"name\": \"route the path /testing to testing datacenter.\",\n      \"condition\": \"http.request.uri.path contains \\\"/testing\\\"\",\n      \"overrides\": {\n        \"session_affinity\": \"cookie\",\n        \"session_affinity_ttl\": 5000,\n        \"session_affinity_attributes\": {\n          \"samesite\": \"Auto\",\n          \"secure\": \"Auto\",\n          \"drain_duration\": 100,\n          \"zero_downtime_failover\": \"sticky\"\n        },\n        \"ttl\": 30,\n        \"steering_policy\": \"dynamic_latency\",\n        \"fallback_pool\": \"17b5962d775c646f3f9725cbc7a53df4\",\n        \"default_pools\": [\n          \"17b5962d775c646f3f9725cbc7a53df4\",\n          \"9290f38c5d07c2e2f4df57b1f61d4196\",\n          \"00920f38ce07c2e2f4df50b1f61d4194\"\n        ],\n        \"pop_pools\": {\n          \"LAX\": [\n            \"de90f38ced07c2e2f4df50b1f61d4194\",\n            \"9290f38c5d07c2e2f4df57b1f61d4196\"\n          ],\n          \"LHR\": [\n            \"abd90f38ced07c2e2f4df50b1f61d4194\",\n            \"f9138c5d07c2e2f4df57b1f61d4196\"\n          ],\n          \"SJC\": [\n            \"00920f38ce07c2e2f4df50b1f61d4194\"\n          ]\n        },\n        \"region_pools\": {\n          \"WNAM\": [\n            \"de90f38ced07c2e2f4df50b1f61d4194\",\n            \"9290f38c5d07c2e2f4df57b1f61d4196\"\n          ],\n          \"ENAM\": [\n            \"00920f38ce07c2e2f4df50b1f61d4194\"\n          ]\n        },\n        \"country_pools\": {\n          \"US\": [\n            \"de90f38ced07c2e2f4df50b1f61d4194\",\n            \"00920f38ce07c2e2f4df50b1f61d4194\"\n          ],\n          \"GB\": [\n            \"abd90f38ced07c2e2f4df50b1f61d4194\"\n          ]\n        },\n        \"random_steering\": {\n          \"pool_weights\": {\n            \"de90f38ced07c2e2f4df50b1f61d4194\": 0.3,\n            \"9290f38c5d07c2e2f4df57b1f61d4196\": 0.5\n          },\n          \"default_weight\": 0.2\n        }\n      },\n      \"priority\": 55,\n      \"disabled\": false,\n      \"terminates\": false,\n      \"fixed_response\": {\n        \"message_body\": \"Testing Hello\",\n        \"status_code\": 200,\n        \"content_type\": \"application/json\",\n        \"location\": \"www.example.com\"\n      }\n    }\n  ]\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"699d98642c564d2e855e9661899b7252\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"description\": \"Load Balancer for www.example.com\",\n    \"name\": \"www.example.com\",\n    \"enabled\": true,\n    \"ttl\": 30,\n    \"fallback_pool\": \"17b5962d775c646f3f9725cbc7a53df4\",\n    \"default_pools\": [\n      \"17b5962d775c646f3f9725cbc7a53df4\",\n      \"9290f38c5d07c2e2f4df57b1f61d4196\",\n      \"00920f38ce07c2e2f4df50b1f61d4194\"\n    ],\n    \"region_pools\": {\n      \"WNAM\": [\n        \"de90f38ced07c2e2f4df50b1f61d4194\",\n        \"9290f38c5d07c2e2f4df57b1f61d4196\"\n      ],\n      \"ENAM\": [\n        \"00920f38ce07c2e2f4df50b1f61d4194\"\n      ]\n    },\n    \"country_pools\": {\n      \"US\": [\n        \"de90f38ced07c2e2f4df50b1f61d4194\",\n        \"00920f38ce07c2e2f4df50b1f61d4194\"\n      ],\n      \"GB\": [\n        \"abd90f38ced07c2e2f4df50b1f61d4194\"\n      ]\n    },\n    \"pop_pools\": {\n      \"LAX\": [\n        \"de90f38ced07c2e2f4df50b1f61d4194\",\n        \"9290f38c5d07c2e2f4df57b1f61d4196\"\n      ],\n      \"LHR\": [\n        \"abd90f38ced07c2e2f4df50b1f61d4194\",\n        \"f9138c5d07c2e2f4df57b1f61d4196\"\n      ],\n      \"SJC\": [\n        \"00920f38ce07c2e2f4df50b1f61d4194\"\n      ]\n    },\n    \"proxied\": true,\n    \"steering_policy\": \"dynamic_latency\",\n    \"session_affinity\": \"cookie\",\n    \"session_affinity_attributes\": {\n      \"samesite\": \"Auto\",\n      \"secure\": \"Auto\",\n      \"drain_duration\": 100,\n      \"zero_downtime_failover\": \"sticky\"\n    },\n    \"session_affinity_ttl\": 5000,\n    \"random_steering\": {\n      \"pool_weights\": {\n        \"de90f38ced07c2e2f4df50b1f61d4194\": 0.3,\n        \"9290f38c5d07c2e2f4df57b1f61d4196\": 0.5\n      },\n      \"default_weight\": 0.2\n    },\n    \"rules\": [\n      {\n        \"name\": \"route the path /testing to testing datacenter.\",\n        \"condition\": \"http.request.uri.path contains \\\"/testing\\\"\",\n        \"overrides\": {\n          \"session_affinity\": \"cookie\",\n          \"session_affinity_ttl\": 5000,\n          \"session_affinity_attributes\": {\n            \"samesite\": \"Auto\",\n            \"secure\": \"Auto\",\n            \"drain_duration\": 100,\n            \"zero_downtime_failover\": \"sticky\"\n          },\n          \"ttl\": 30,\n          \"steering_policy\": \"dynamic_latency\",\n          \"fallback_pool\": \"17b5962d775c646f3f9725cbc7a53df4\",\n          \"default_pools\": [\n            \"17b5962d775c646f3f9725cbc7a53df4\",\n            \"9290f38c5d07c2e2f4df57b1f61d4196\",\n            \"00920f38ce07c2e2f4df50b1f61d4194\"\n          ],\n          \"pop_pools\": {\n            \"LAX\": [\n              \"de90f38ced07c2e2f4df50b1f61d4194\",\n              \"9290f38c5d07c2e2f4df57b1f61d4196\"\n            ],\n            \"LHR\": [\n              \"abd90f38ced07c2e2f4df50b1f61d4194\",\n              \"f9138c5d07c2e2f4df57b1f61d4196\"\n            ],\n            \"SJC\": [\n              \"00920f38ce07c2e2f4df50b1f61d4194\"\n            ]\n          },\n          \"region_pools\": {\n            \"WNAM\": [\n              \"de90f38ced07c2e2f4df50b1f61d4194\",\n              \"9290f38c5d07c2e2f4df57b1f61d4196\"\n            ],\n            \"ENAM\": [\n              \"00920f38ce07c2e2f4df50b1f61d4194\"\n            ]\n          },\n          \"country_pools\": {\n            \"US\": [\n              \"de90f38ced07c2e2f4df50b1f61d4194\",\n              \"00920f38ce07c2e2f4df50b1f61d4194\"\n            ],\n            \"GB\": [\n              \"abd90f38ced07c2e2f4df50b1f61d4194\"\n            ]\n          },\n          \"random_steering\": {\n            \"pool_weights\": {\n              \"de90f38ced07c2e2f4df50b1f61d4194\": 0.3,\n              \"9290f38c5d07c2e2f4df57b1f61d4196\": 0.5\n            },\n            \"default_weight\": 0.2\n          }\n        },\n        \"priority\": 55,\n        \"disabled\": false,\n        \"terminates\": false,\n        \"fixed_response\": {\n          \"message_body\": \"Testing Hello\",\n          \"status_code\": 200,\n          \"content_type\": \"application/json\",\n          \"location\": \"www.example.com\"\n        }\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Load Balancer Details",
+			"description": "Fetch a single configured load balancer",
+			"rel": "self",
+			"href": "zones/{#/definitions/identifier}/load_balancers/{#/definitions/identifier}",
+			"method": "GET",
+			"cfOwnership": "load_balancer",
+			"html_id": "load-balancers-load-balancer-details",
+			"uri": "zones/:identifier/load_balancers/:identifier",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/load_balancers/699d98642c564d2e855e9661899b7252\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"699d98642c564d2e855e9661899b7252\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"description\": \"Load Balancer for www.example.com\",\n    \"name\": \"www.example.com\",\n    \"enabled\": true,\n    \"ttl\": 30,\n    \"fallback_pool\": \"17b5962d775c646f3f9725cbc7a53df4\",\n    \"default_pools\": [\n      \"17b5962d775c646f3f9725cbc7a53df4\",\n      \"9290f38c5d07c2e2f4df57b1f61d4196\",\n      \"00920f38ce07c2e2f4df50b1f61d4194\"\n    ],\n    \"region_pools\": {\n      \"WNAM\": [\n        \"de90f38ced07c2e2f4df50b1f61d4194\",\n        \"9290f38c5d07c2e2f4df57b1f61d4196\"\n      ],\n      \"ENAM\": [\n        \"00920f38ce07c2e2f4df50b1f61d4194\"\n      ]\n    },\n    \"country_pools\": {\n      \"US\": [\n        \"de90f38ced07c2e2f4df50b1f61d4194\",\n        \"00920f38ce07c2e2f4df50b1f61d4194\"\n      ],\n      \"GB\": [\n        \"abd90f38ced07c2e2f4df50b1f61d4194\"\n      ]\n    },\n    \"pop_pools\": {\n      \"LAX\": [\n        \"de90f38ced07c2e2f4df50b1f61d4194\",\n        \"9290f38c5d07c2e2f4df57b1f61d4196\"\n      ],\n      \"LHR\": [\n        \"abd90f38ced07c2e2f4df50b1f61d4194\",\n        \"f9138c5d07c2e2f4df57b1f61d4196\"\n      ],\n      \"SJC\": [\n        \"00920f38ce07c2e2f4df50b1f61d4194\"\n      ]\n    },\n    \"proxied\": true,\n    \"steering_policy\": \"dynamic_latency\",\n    \"session_affinity\": \"cookie\",\n    \"session_affinity_attributes\": {\n      \"samesite\": \"Auto\",\n      \"secure\": \"Auto\",\n      \"drain_duration\": 100,\n      \"zero_downtime_failover\": \"sticky\"\n    },\n    \"session_affinity_ttl\": 5000,\n    \"random_steering\": {\n      \"pool_weights\": {\n        \"de90f38ced07c2e2f4df50b1f61d4194\": 0.3,\n        \"9290f38c5d07c2e2f4df57b1f61d4196\": 0.5\n      },\n      \"default_weight\": 0.2\n    },\n    \"rules\": [\n      {\n        \"name\": \"route the path /testing to testing datacenter.\",\n        \"condition\": \"http.request.uri.path contains \\\"/testing\\\"\",\n        \"overrides\": {\n          \"session_affinity\": \"cookie\",\n          \"session_affinity_ttl\": 5000,\n          \"session_affinity_attributes\": {\n            \"samesite\": \"Auto\",\n            \"secure\": \"Auto\",\n            \"drain_duration\": 100,\n            \"zero_downtime_failover\": \"sticky\"\n          },\n          \"ttl\": 30,\n          \"steering_policy\": \"dynamic_latency\",\n          \"fallback_pool\": \"17b5962d775c646f3f9725cbc7a53df4\",\n          \"default_pools\": [\n            \"17b5962d775c646f3f9725cbc7a53df4\",\n            \"9290f38c5d07c2e2f4df57b1f61d4196\",\n            \"00920f38ce07c2e2f4df50b1f61d4194\"\n          ],\n          \"pop_pools\": {\n            \"LAX\": [\n              \"de90f38ced07c2e2f4df50b1f61d4194\",\n              \"9290f38c5d07c2e2f4df57b1f61d4196\"\n            ],\n            \"LHR\": [\n              \"abd90f38ced07c2e2f4df50b1f61d4194\",\n              \"f9138c5d07c2e2f4df57b1f61d4196\"\n            ],\n            \"SJC\": [\n              \"00920f38ce07c2e2f4df50b1f61d4194\"\n            ]\n          },\n          \"region_pools\": {\n            \"WNAM\": [\n              \"de90f38ced07c2e2f4df50b1f61d4194\",\n              \"9290f38c5d07c2e2f4df57b1f61d4196\"\n            ],\n            \"ENAM\": [\n              \"00920f38ce07c2e2f4df50b1f61d4194\"\n            ]\n          },\n          \"country_pools\": {\n            \"US\": [\n              \"de90f38ced07c2e2f4df50b1f61d4194\",\n              \"00920f38ce07c2e2f4df50b1f61d4194\"\n            ],\n            \"GB\": [\n              \"abd90f38ced07c2e2f4df50b1f61d4194\"\n            ]\n          },\n          \"random_steering\": {\n            \"pool_weights\": {\n              \"de90f38ced07c2e2f4df50b1f61d4194\": 0.3,\n              \"9290f38c5d07c2e2f4df57b1f61d4196\": 0.5\n            },\n            \"default_weight\": 0.2\n          }\n        },\n        \"priority\": 55,\n        \"disabled\": false,\n        \"terminates\": false,\n        \"fixed_response\": {\n          \"message_body\": \"Testing Hello\",\n          \"status_code\": 200,\n          \"content_type\": \"application/json\",\n          \"location\": \"www.example.com\"\n        }\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Update Load Balancer",
+			"description": "Update a configured load balancer",
+			"rel": "self",
+			"href": "zones/{#/definitions/identifier}/load_balancers/{#/definitions/identifier}",
+			"method": "PUT",
+			"cfOwnership": "load_balancer",
+			"html_id": "load-balancers-update-load-balancer",
+			"uri": "zones/:identifier/load_balancers/:identifier",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/load_balancers/699d98642c564d2e855e9661899b7252\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"description\":\"Load Balancer for www.example.com\",\"name\":\"www.example.com\",\"ttl\":30,\"fallback_pool\":\"17b5962d775c646f3f9725cbc7a53df4\",\"default_pools\":[\"17b5962d775c646f3f9725cbc7a53df4\",\"9290f38c5d07c2e2f4df57b1f61d4196\",\"00920f38ce07c2e2f4df50b1f61d4194\"],\"region_pools\":{\"WNAM\":[\"de90f38ced07c2e2f4df50b1f61d4194\",\"9290f38c5d07c2e2f4df57b1f61d4196\"],\"ENAM\":[\"00920f38ce07c2e2f4df50b1f61d4194\"]},\"country_pools\":{\"US\":[\"de90f38ced07c2e2f4df50b1f61d4194\",\"00920f38ce07c2e2f4df50b1f61d4194\"],\"GB\":[\"abd90f38ced07c2e2f4df50b1f61d4194\"]},\"pop_pools\":{\"LAX\":[\"de90f38ced07c2e2f4df50b1f61d4194\",\"9290f38c5d07c2e2f4df57b1f61d4196\"],\"LHR\":[\"abd90f38ced07c2e2f4df50b1f61d4194\",\"f9138c5d07c2e2f4df57b1f61d4196\"],\"SJC\":[\"00920f38ce07c2e2f4df50b1f61d4194\"]},\"proxied\":true,\"enabled\":true,\"steering_policy\":\"dynamic_latency\",\"session_affinity\":\"cookie\",\"session_affinity_attributes\":{\"samesite\":\"Auto\",\"secure\":\"Auto\",\"drain_duration\":100,\"zero_downtime_failover\":\"sticky\"},\"session_affinity_ttl\":5000,\"random_steering\":{\"pool_weights\":{\"de90f38ced07c2e2f4df50b1f61d4194\":0.3,\"9290f38c5d07c2e2f4df57b1f61d4196\":0.5},\"default_weight\":0.2},\"rules\":[{\"name\":\"route the path /testing to testing datacenter.\",\"condition\":\"http.request.uri.path contains \\\"/testing\\\"\",\"overrides\":{\"session_affinity\":\"cookie\",\"session_affinity_ttl\":5000,\"session_affinity_attributes\":{\"samesite\":\"Auto\",\"secure\":\"Auto\",\"drain_duration\":100,\"zero_downtime_failover\":\"sticky\"},\"ttl\":30,\"steering_policy\":\"dynamic_latency\",\"fallback_pool\":\"17b5962d775c646f3f9725cbc7a53df4\",\"default_pools\":[\"17b5962d775c646f3f9725cbc7a53df4\",\"9290f38c5d07c2e2f4df57b1f61d4196\",\"00920f38ce07c2e2f4df50b1f61d4194\"],\"pop_pools\":{\"LAX\":[\"de90f38ced07c2e2f4df50b1f61d4194\",\"9290f38c5d07c2e2f4df57b1f61d4196\"],\"LHR\":[\"abd90f38ced07c2e2f4df50b1f61d4194\",\"f9138c5d07c2e2f4df57b1f61d4196\"],\"SJC\":[\"00920f38ce07c2e2f4df50b1f61d4194\"]},\"region_pools\":{\"WNAM\":[\"de90f38ced07c2e2f4df50b1f61d4194\",\"9290f38c5d07c2e2f4df57b1f61d4196\"],\"ENAM\":[\"00920f38ce07c2e2f4df50b1f61d4194\"]},\"country_pools\":{\"US\":[\"de90f38ced07c2e2f4df50b1f61d4194\",\"00920f38ce07c2e2f4df50b1f61d4194\"],\"GB\":[\"abd90f38ced07c2e2f4df50b1f61d4194\"]},\"random_steering\":{\"pool_weights\":{\"de90f38ced07c2e2f4df50b1f61d4194\":0.3,\"9290f38c5d07c2e2f4df57b1f61d4196\":0.5},\"default_weight\":0.2}},\"priority\":55,\"disabled\":false,\"terminates\":false,\"fixed_response\":{\"message_body\":\"Testing Hello\",\"status_code\":200,\"content_type\":\"application/json\",\"location\":\"www.example.com\"}}]}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"description": {
+						"type": "string",
+						"example": "\"Load Balancer for www.example.com\"",
+						"description": "Object description"
+					},
+					"name": {
+						"type": "string",
+						"example": "\"www.example.com\"",
+						"description": "The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used."
+					},
+					"ttl": {
+						"type": "number",
+						"example": "30",
+						"description": "Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers."
+					},
+					"fallback_pool": {
+						"type": "string",
+						"example": "\"17b5962d775c646f3f9725cbc7a53df4\"",
+						"description": "The pool ID to use when all other pools are detected as unhealthy.",
+						"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"default_pools": {
+						"type": "array",
+						"example": "[\n  \"17b5962d775c646f3f9725cbc7a53df4\",\n  \"9290f38c5d07c2e2f4df57b1f61d4196\",\n  \"00920f38ce07c2e2f4df50b1f61d4194\"\n]",
+						"items": {
+							"type": "string",
+							"description": "A pool ID"
+						},
+						"description": "A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region."
+					},
+					"region_pools": {
+						"type": "object",
+						"example": "{\n  \"WNAM\": [\n    \"de90f38ced07c2e2f4df50b1f61d4194\",\n    \"9290f38c5d07c2e2f4df57b1f61d4196\"\n  ],\n  \"ENAM\": [\n    \"00920f38ce07c2e2f4df50b1f61d4194\"\n  ]\n}",
+						"description": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools."
+					},
+					"country_pools": {
+						"type": "object",
+						"example": "{\n  \"US\": [\n    \"de90f38ced07c2e2f4df50b1f61d4194\",\n    \"00920f38ce07c2e2f4df50b1f61d4194\"\n  ],\n  \"GB\": [\n    \"abd90f38ced07c2e2f4df50b1f61d4194\"\n  ]\n}",
+						"description": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools."
+					},
+					"pop_pools": {
+						"type": "object",
+						"example": "{\n  \"LAX\": [\n    \"de90f38ced07c2e2f4df50b1f61d4194\",\n    \"9290f38c5d07c2e2f4df57b1f61d4196\"\n  ],\n  \"LHR\": [\n    \"abd90f38ced07c2e2f4df50b1f61d4194\",\n    \"f9138c5d07c2e2f4df57b1f61d4196\"\n  ],\n  \"SJC\": [\n    \"00920f38ce07c2e2f4df50b1f61d4194\"\n  ]\n}",
+						"description": "(Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools."
+					},
+					"proxied": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether the hostname should be gray clouded (false) or orange clouded (true).",
+						"default": false
+					},
+					"enabled": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether to enable (the default) this load balancer.",
+						"default": true
+					},
+					"steering_policy": {
+						"type": "string",
+						"example": "\"dynamic_latency\"",
+						"description": "Steering Policy for this load balancer. \"off\": use default_pools, \"geo\": use region_pools/country_pools/pop_pools, \"random\": select a pool randomly, \"dynamic_latency\": use round trip time to select the closest pool in default_pools (requires pool health checks), \n\"proximity\": use the pools latitude and longitude to select the closest pool using the cloudflare pop location for proxied requests or geoip / edns0-client-subnet for non-proxied, \"\": will map to \"geo\" if you use region_pools/country_pools/pop_pools otherwise \"off\"",
+						"enum": [
+							"off",
+							"geo",
+							"random",
+							"dynamic_latency",
+							"proximity",
+							"\"\""
+						],
+						"default": "\"\""
+					},
+					"session_affinity": {
+						"type": "string",
+						"example": "\"cookie\"",
+						"description": "The session_affinity specifies the type of session affinity the loadbalancer should use unless specified as \"none\" or \"\"(default). The supported types are \"cookie\" and \"ip_cookie\". \"cookie\" - On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. \"ip_cookie\" behaves the same as \"cookie\" except the initial origin selection is stable and based on the client’s ip address.",
+						"enum": [
+							"none",
+							"cookie",
+							"ip_cookie",
+							"\"\""
+						],
+						"default": "\"\""
+					},
+					"session_affinity_attributes": {
+						"type": "object",
+						"example": "{\n  \"samesite\": \"Auto\",\n  \"secure\": \"Auto\",\n  \"drain_duration\": 100,\n  \"zero_downtime_failover\": \"sticky\"\n}",
+						"properties": {
+							"samesite": {
+								"type": "string",
+								"example": "\"Auto\"",
+								"description": "Configures the SameSite attribute on session affinity cookie. Value \"Auto\" will be translated to \"Lax\" or \"None\" depending if Always Use HTTPS is enabled. Note: when using value \"None\", the secure attribute can not be set to \"Never\".",
+								"enum": [
+									"Auto",
+									"Lax",
+									"None",
+									"Strict"
+								],
+								"default": "Auto"
+							},
+							"secure": {
+								"type": "string",
+								"example": "\"Auto\"",
+								"description": "Configures the Secure attribute on session affinity cookie. Value \"Always\" indicates the Secure attribute will be set in the Set-Cookie header, \"Never\" indicates the Secure attribute will not be set, and \"Auto\" will set the Secure attribute depending if Always Use HTTPS is enabled.",
+								"enum": [
+									"Auto",
+									"Always",
+									"Never"
+								],
+								"default": "Auto"
+							},
+							"drain_duration": {
+								"type": "number",
+								"example": "100",
+								"description": "Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer."
+							},
+							"zero_downtime_failover": {
+								"type": "string",
+								"example": "\"sticky\"",
+								"description": "Configures the zero downtime failover between origins within a pool when session affinity is enabled. Value \"none\" means no failover takes place for sessions pinned to the origin (default). Value \"temporary\" means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value \"sticky\" means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance.",
+								"enum": [
+									"none",
+									"temporary",
+									"sticky"
+								],
+								"default": "none"
+							}
+						},
+						"description": "Configure cookie attributes for session affinity cookie."
+					},
+					"session_affinity_ttl": {
+						"type": "number",
+						"example": "5000",
+						"description": "Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless session_affinity_ttl is explicitly set. The accepted range of values is between [1800, 604800]. Once the expiry time has been reached, subsequent requests may get sent to a different origin server."
+					},
+					"random_steering": {
+						"type": "object",
+						"example": "{\n  \"pool_weights\": {\n    \"de90f38ced07c2e2f4df50b1f61d4194\": 0.3,\n    \"9290f38c5d07c2e2f4df57b1f61d4196\": 0.5\n  },\n  \"default_weight\": 0.2\n}",
+						"properties": {
+							"pool_weights": {
+								"type": "object",
+								"example": "{\n  \"de90f38ced07c2e2f4df50b1f61d4194\": 0.3,\n  \"9290f38c5d07c2e2f4df57b1f61d4196\": 0.5\n}",
+								"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer."
+							},
+							"default_weight": {
+								"type": "number",
+								"example": "0.2",
+								"minimum": 0,
+								"maximum": 1,
+								"multipleOfPrecision": 0.1,
+								"description": "The default weight for pools in the load balancer that are not specified in the pool_weights map.",
+								"default": 1
+							}
+						},
+						"description": "Configure pool weights for random steering. When steering_policy is 'random', a random pool is selected with probability proportional to these pool weights."
+					},
+					"rules": {
+						"type": "array",
+						"example": "[\n  {\n    \"name\": \"route the path /testing to testing datacenter.\",\n    \"condition\": \"http.request.uri.path contains \\\"/testing\\\"\",\n    \"overrides\": {\n      \"session_affinity\": \"cookie\",\n      \"session_affinity_ttl\": 5000,\n      \"session_affinity_attributes\": {\n        \"samesite\": \"Auto\",\n        \"secure\": \"Auto\",\n        \"drain_duration\": 100,\n        \"zero_downtime_failover\": \"sticky\"\n      },\n      \"ttl\": 30,\n      \"steering_policy\": \"dynamic_latency\",\n      \"fallback_pool\": \"17b5962d775c646f3f9725cbc7a53df4\",\n      \"default_pools\": [\n        \"17b5962d775c646f3f9725cbc7a53df4\",\n        \"9290f38c5d07c2e2f4df57b1f61d4196\",\n        \"00920f38ce07c2e2f4df50b1f61d4194\"\n      ],\n      \"pop_pools\": {\n        \"LAX\": [\n          \"de90f38ced07c2e2f4df50b1f61d4194\",\n          \"9290f38c5d07c2e2f4df57b1f61d4196\"\n        ],\n        \"LHR\": [\n          \"abd90f38ced07c2e2f4df50b1f61d4194\",\n          \"f9138c5d07c2e2f4df57b1f61d4196\"\n        ],\n        \"SJC\": [\n          \"00920f38ce07c2e2f4df50b1f61d4194\"\n        ]\n      },\n      \"region_pools\": {\n        \"WNAM\": [\n          \"de90f38ced07c2e2f4df50b1f61d4194\",\n          \"9290f38c5d07c2e2f4df57b1f61d4196\"\n        ],\n        \"ENAM\": [\n          \"00920f38ce07c2e2f4df50b1f61d4194\"\n        ]\n      },\n      \"country_pools\": {\n        \"US\": [\n          \"de90f38ced07c2e2f4df50b1f61d4194\",\n          \"00920f38ce07c2e2f4df50b1f61d4194\"\n        ],\n        \"GB\": [\n          \"abd90f38ced07c2e2f4df50b1f61d4194\"\n        ]\n      },\n      \"random_steering\": {\n        \"pool_weights\": {\n          \"de90f38ced07c2e2f4df50b1f61d4194\": 0.3,\n          \"9290f38c5d07c2e2f4df57b1f61d4196\": 0.5\n        },\n        \"default_weight\": 0.2\n      }\n    },\n    \"priority\": 55,\n    \"disabled\": false,\n    \"terminates\": false,\n    \"fixed_response\": {\n      \"message_body\": \"Testing Hello\",\n      \"status_code\": 200,\n      \"content_type\": \"application/json\",\n      \"location\": \"www.example.com\"\n    }\n  }\n]",
+						"description": "BETA Field Not General Access: A list of rules for this load balancer to execute.",
+						"items": {
+							"description": "A rule object containing conditions and overrides for this load balancer to evaluate.",
+							"type": "object",
+							"additionalProperties": false,
+							"properties": {
+								"name": {
+									"type": "string",
+									"maxLength": 200,
+									"description": "Name of this rule. Only used for human readability.",
+									"example": "route the path /testing to testing datacenter."
+								},
+								"condition": {
+									"type": "string",
+									"description": "The condition expressions to evaluate. If the condition evaluates to true the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions",
+									"example": "http.request.uri.path contains \"/testing\""
+								},
+								"overrides": {
+									"type": "object",
+									"description": "A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional.",
+									"properties": {
+										"session_affinity": {
+											"type": "string",
+											"description": "The session_affinity specifies the type of session affinity the loadbalancer should use unless specified as \"none\" or \"\"(default). The supported types are \"cookie\" and \"ip_cookie\". \"cookie\" - On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. \"ip_cookie\" behaves the same as \"cookie\" except the initial origin selection is stable and based on the client’s ip address.",
+											"enum": [
+												"none",
+												"cookie",
+												"ip_cookie",
+												"\"\""
+											],
+											"example": "cookie",
+											"default": "\"\""
+										},
+										"session_affinity_ttl": {
+											"type": "number",
+											"description": "Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless session_affinity_ttl is explicitly set. The accepted range of values is between [1800, 604800]. Once the expiry time has been reached, subsequent requests may get sent to a different origin server.",
+											"example": 5000
+										},
+										"session_affinity_attributes": {
+											"type": "object",
+											"description": "Configure cookie attributes for session affinity cookie.",
+											"properties": {
+												"samesite": {
+													"type": "string",
+													"description": "Configures the SameSite attribute on session affinity cookie. Value \"Auto\" will be translated to \"Lax\" or \"None\" depending if Always Use HTTPS is enabled. Note: when using value \"None\", the secure attribute can not be set to \"Never\".",
+													"enum": [
+														"Auto",
+														"Lax",
+														"None",
+														"Strict"
+													],
+													"example": "Auto",
+													"default": "Auto"
+												},
+												"secure": {
+													"type": "string",
+													"description": "Configures the Secure attribute on session affinity cookie. Value \"Always\" indicates the Secure attribute will be set in the Set-Cookie header, \"Never\" indicates the Secure attribute will not be set, and \"Auto\" will set the Secure attribute depending if Always Use HTTPS is enabled.",
+													"enum": [
+														"Auto",
+														"Always",
+														"Never"
+													],
+													"example": "Auto",
+													"default": "Auto"
+												},
+												"drain_duration": {
+													"type": "number",
+													"description": "Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer.",
+													"example": 100
+												},
+												"zero_downtime_failover": {
+													"type": "string",
+													"description": "Configures the zero downtime failover between origins within a pool when session affinity is enabled. Value \"none\" means no failover takes place for sessions pinned to the origin (default). Value \"temporary\" means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value \"sticky\" means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance.",
+													"enum": [
+														"none",
+														"temporary",
+														"sticky"
+													],
+													"example": "sticky",
+													"default": "none"
+												}
+											}
+										},
+										"ttl": {
+											"type": "number",
+											"description": "Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.",
+											"example": 30
+										},
+										"steering_policy": {
+											"type": "string",
+											"description": "Steering Policy for this load balancer. \"off\": use default_pools, \"geo\": use region_pools/country_pools/pop_pools, \"random\": select a pool randomly, \"dynamic_latency\": use round trip time to select the closest pool in default_pools (requires pool health checks), \n\"proximity\": use the pools latitude and longitude to select the closest pool using the cloudflare pop location for proxied requests or geoip / edns0-client-subnet for non-proxied, \"\": will map to \"geo\" if you use region_pools/country_pools/pop_pools otherwise \"off\"",
+											"enum": [
+												"off",
+												"geo",
+												"random",
+												"dynamic_latency",
+												"proximity",
+												"\"\""
+											],
+											"example": "dynamic_latency",
+											"default": "\"\""
+										},
+										"fallback_pool": {
+											"description": "The pool ID to use when all other pools are detected as unhealthy.",
+											"example": "17b5962d775c646f3f9725cbc7a53df4",
+											"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+											"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+											"type": "string",
+											"maxLength": 32,
+											"readOnly": true
+										},
+										"default_pools": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"description": "A pool ID"
+											},
+											"description": "A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.",
+											"example": [
+												"17b5962d775c646f3f9725cbc7a53df4",
+												"9290f38c5d07c2e2f4df57b1f61d4196",
+												"00920f38ce07c2e2f4df50b1f61d4194"
+											]
+										},
+										"pop_pools": {
+											"type": "object",
+											"description": "(Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.",
+											"example": {
+												"LAX": [
+													"de90f38ced07c2e2f4df50b1f61d4194",
+													"9290f38c5d07c2e2f4df57b1f61d4196"
+												],
+												"LHR": [
+													"abd90f38ced07c2e2f4df50b1f61d4194",
+													"f9138c5d07c2e2f4df57b1f61d4196"
+												],
+												"SJC": [
+													"00920f38ce07c2e2f4df50b1f61d4194"
+												]
+											}
+										},
+										"region_pools": {
+											"type": "object",
+											"description": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.",
+											"example": {
+												"WNAM": [
+													"de90f38ced07c2e2f4df50b1f61d4194",
+													"9290f38c5d07c2e2f4df57b1f61d4196"
+												],
+												"ENAM": [
+													"00920f38ce07c2e2f4df50b1f61d4194"
+												]
+											}
+										},
+										"country_pools": {
+											"type": "object",
+											"description": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.",
+											"example": {
+												"US": [
+													"de90f38ced07c2e2f4df50b1f61d4194",
+													"00920f38ce07c2e2f4df50b1f61d4194"
+												],
+												"GB": [
+													"abd90f38ced07c2e2f4df50b1f61d4194"
+												]
+											}
+										},
+										"random_steering": {
+											"type": "object",
+											"description": "Configure pool weights for random steering. When steering_policy is 'random', a random pool is selected with probability proportional to these pool weights.",
+											"properties": {
+												"pool_weights": {
+													"type": "object",
+													"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
+													"example": {
+														"de90f38ced07c2e2f4df50b1f61d4194": 0.3,
+														"9290f38c5d07c2e2f4df57b1f61d4196": 0.5
+													}
+												},
+												"default_weight": {
+													"type": "number",
+													"minimum": 0,
+													"maximum": 1,
+													"multipleOfPrecision": 0.1,
+													"description": "The default weight for pools in the load balancer that are not specified in the pool_weights map.",
+													"example": 0.2,
+													"default": 1
+												}
+											}
+										}
+									}
+								},
+								"priority": {
+									"type": "integer",
+									"description": "The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.",
+									"example": 55,
+									"default": 0
+								},
+								"disabled": {
+									"type": "boolean",
+									"description": "Disable this specific rule. It will no longer be evaluated by this load balancer.",
+									"default": false
+								},
+								"terminates": {
+									"type": "boolean",
+									"description": "If this rule's condition is true, terminates causes rule evaluation to stop after processing this rule.",
+									"default": false
+								},
+								"fixed_response": {
+									"type": "object",
+									"description": "A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed_response is supplied the rule will be marked as terminates.",
+									"properties": {
+										"message_body": {
+											"type": "string",
+											"description": "Text to include as the http body.",
+											"maxLength": 1024,
+											"example": "Testing Hello"
+										},
+										"status_code": {
+											"type": "integer",
+											"description": "The http status code to respond with.",
+											"example": 200
+										},
+										"content_type": {
+											"type": "string",
+											"description": "The http 'Content-Type' header to include in the response.",
+											"maxLength": 32,
+											"example": "application/json"
+										},
+										"location": {
+											"type": "string",
+											"description": "The http 'Location' header to include in the response.",
+											"maxLength": 2048,
+											"example": "www.example.com"
+										}
+									}
+								}
+							}
+						},
+						"additionalItems": false
+					}
+				},
+				"required_props": [
+					"name",
+					"default_pools",
+					"fallback_pool"
+				],
+				"optional_props": [
+					"description",
+					"ttl",
+					"region_pools",
+					"country_pools",
+					"pop_pools",
+					"proxied",
+					"enabled",
+					"steering_policy",
+					"session_affinity",
+					"session_affinity_attributes",
+					"session_affinity_ttl",
+					"random_steering",
+					"rules"
+				],
+				"objects": [],
+				"example": "{\n  \"description\": \"Load Balancer for www.example.com\",\n  \"name\": \"www.example.com\",\n  \"ttl\": 30,\n  \"fallback_pool\": \"17b5962d775c646f3f9725cbc7a53df4\",\n  \"default_pools\": [\n    \"17b5962d775c646f3f9725cbc7a53df4\",\n    \"9290f38c5d07c2e2f4df57b1f61d4196\",\n    \"00920f38ce07c2e2f4df50b1f61d4194\"\n  ],\n  \"region_pools\": {\n    \"WNAM\": [\n      \"de90f38ced07c2e2f4df50b1f61d4194\",\n      \"9290f38c5d07c2e2f4df57b1f61d4196\"\n    ],\n    \"ENAM\": [\n      \"00920f38ce07c2e2f4df50b1f61d4194\"\n    ]\n  },\n  \"country_pools\": {\n    \"US\": [\n      \"de90f38ced07c2e2f4df50b1f61d4194\",\n      \"00920f38ce07c2e2f4df50b1f61d4194\"\n    ],\n    \"GB\": [\n      \"abd90f38ced07c2e2f4df50b1f61d4194\"\n    ]\n  },\n  \"pop_pools\": {\n    \"LAX\": [\n      \"de90f38ced07c2e2f4df50b1f61d4194\",\n      \"9290f38c5d07c2e2f4df57b1f61d4196\"\n    ],\n    \"LHR\": [\n      \"abd90f38ced07c2e2f4df50b1f61d4194\",\n      \"f9138c5d07c2e2f4df57b1f61d4196\"\n    ],\n    \"SJC\": [\n      \"00920f38ce07c2e2f4df50b1f61d4194\"\n    ]\n  },\n  \"proxied\": true,\n  \"enabled\": true,\n  \"steering_policy\": \"dynamic_latency\",\n  \"session_affinity\": \"cookie\",\n  \"session_affinity_attributes\": {\n    \"samesite\": \"Auto\",\n    \"secure\": \"Auto\",\n    \"drain_duration\": 100,\n    \"zero_downtime_failover\": \"sticky\"\n  },\n  \"session_affinity_ttl\": 5000,\n  \"random_steering\": {\n    \"pool_weights\": {\n      \"de90f38ced07c2e2f4df50b1f61d4194\": 0.3,\n      \"9290f38c5d07c2e2f4df57b1f61d4196\": 0.5\n    },\n    \"default_weight\": 0.2\n  },\n  \"rules\": [\n    {\n      \"name\": \"route the path /testing to testing datacenter.\",\n      \"condition\": \"http.request.uri.path contains \\\"/testing\\\"\",\n      \"overrides\": {\n        \"session_affinity\": \"cookie\",\n        \"session_affinity_ttl\": 5000,\n        \"session_affinity_attributes\": {\n          \"samesite\": \"Auto\",\n          \"secure\": \"Auto\",\n          \"drain_duration\": 100,\n          \"zero_downtime_failover\": \"sticky\"\n        },\n        \"ttl\": 30,\n        \"steering_policy\": \"dynamic_latency\",\n        \"fallback_pool\": \"17b5962d775c646f3f9725cbc7a53df4\",\n        \"default_pools\": [\n          \"17b5962d775c646f3f9725cbc7a53df4\",\n          \"9290f38c5d07c2e2f4df57b1f61d4196\",\n          \"00920f38ce07c2e2f4df50b1f61d4194\"\n        ],\n        \"pop_pools\": {\n          \"LAX\": [\n            \"de90f38ced07c2e2f4df50b1f61d4194\",\n            \"9290f38c5d07c2e2f4df57b1f61d4196\"\n          ],\n          \"LHR\": [\n            \"abd90f38ced07c2e2f4df50b1f61d4194\",\n            \"f9138c5d07c2e2f4df57b1f61d4196\"\n          ],\n          \"SJC\": [\n            \"00920f38ce07c2e2f4df50b1f61d4194\"\n          ]\n        },\n        \"region_pools\": {\n          \"WNAM\": [\n            \"de90f38ced07c2e2f4df50b1f61d4194\",\n            \"9290f38c5d07c2e2f4df57b1f61d4196\"\n          ],\n          \"ENAM\": [\n            \"00920f38ce07c2e2f4df50b1f61d4194\"\n          ]\n        },\n        \"country_pools\": {\n          \"US\": [\n            \"de90f38ced07c2e2f4df50b1f61d4194\",\n            \"00920f38ce07c2e2f4df50b1f61d4194\"\n          ],\n          \"GB\": [\n            \"abd90f38ced07c2e2f4df50b1f61d4194\"\n          ]\n        },\n        \"random_steering\": {\n          \"pool_weights\": {\n            \"de90f38ced07c2e2f4df50b1f61d4194\": 0.3,\n            \"9290f38c5d07c2e2f4df57b1f61d4196\": 0.5\n          },\n          \"default_weight\": 0.2\n        }\n      },\n      \"priority\": 55,\n      \"disabled\": false,\n      \"terminates\": false,\n      \"fixed_response\": {\n        \"message_body\": \"Testing Hello\",\n        \"status_code\": 200,\n        \"content_type\": \"application/json\",\n        \"location\": \"www.example.com\"\n      }\n    }\n  ]\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"699d98642c564d2e855e9661899b7252\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"description\": \"Load Balancer for www.example.com\",\n    \"name\": \"www.example.com\",\n    \"enabled\": true,\n    \"ttl\": 30,\n    \"fallback_pool\": \"17b5962d775c646f3f9725cbc7a53df4\",\n    \"default_pools\": [\n      \"17b5962d775c646f3f9725cbc7a53df4\",\n      \"9290f38c5d07c2e2f4df57b1f61d4196\",\n      \"00920f38ce07c2e2f4df50b1f61d4194\"\n    ],\n    \"region_pools\": {\n      \"WNAM\": [\n        \"de90f38ced07c2e2f4df50b1f61d4194\",\n        \"9290f38c5d07c2e2f4df57b1f61d4196\"\n      ],\n      \"ENAM\": [\n        \"00920f38ce07c2e2f4df50b1f61d4194\"\n      ]\n    },\n    \"country_pools\": {\n      \"US\": [\n        \"de90f38ced07c2e2f4df50b1f61d4194\",\n        \"00920f38ce07c2e2f4df50b1f61d4194\"\n      ],\n      \"GB\": [\n        \"abd90f38ced07c2e2f4df50b1f61d4194\"\n      ]\n    },\n    \"pop_pools\": {\n      \"LAX\": [\n        \"de90f38ced07c2e2f4df50b1f61d4194\",\n        \"9290f38c5d07c2e2f4df57b1f61d4196\"\n      ],\n      \"LHR\": [\n        \"abd90f38ced07c2e2f4df50b1f61d4194\",\n        \"f9138c5d07c2e2f4df57b1f61d4196\"\n      ],\n      \"SJC\": [\n        \"00920f38ce07c2e2f4df50b1f61d4194\"\n      ]\n    },\n    \"proxied\": true,\n    \"steering_policy\": \"dynamic_latency\",\n    \"session_affinity\": \"cookie\",\n    \"session_affinity_attributes\": {\n      \"samesite\": \"Auto\",\n      \"secure\": \"Auto\",\n      \"drain_duration\": 100,\n      \"zero_downtime_failover\": \"sticky\"\n    },\n    \"session_affinity_ttl\": 5000,\n    \"random_steering\": {\n      \"pool_weights\": {\n        \"de90f38ced07c2e2f4df50b1f61d4194\": 0.3,\n        \"9290f38c5d07c2e2f4df57b1f61d4196\": 0.5\n      },\n      \"default_weight\": 0.2\n    },\n    \"rules\": [\n      {\n        \"name\": \"route the path /testing to testing datacenter.\",\n        \"condition\": \"http.request.uri.path contains \\\"/testing\\\"\",\n        \"overrides\": {\n          \"session_affinity\": \"cookie\",\n          \"session_affinity_ttl\": 5000,\n          \"session_affinity_attributes\": {\n            \"samesite\": \"Auto\",\n            \"secure\": \"Auto\",\n            \"drain_duration\": 100,\n            \"zero_downtime_failover\": \"sticky\"\n          },\n          \"ttl\": 30,\n          \"steering_policy\": \"dynamic_latency\",\n          \"fallback_pool\": \"17b5962d775c646f3f9725cbc7a53df4\",\n          \"default_pools\": [\n            \"17b5962d775c646f3f9725cbc7a53df4\",\n            \"9290f38c5d07c2e2f4df57b1f61d4196\",\n            \"00920f38ce07c2e2f4df50b1f61d4194\"\n          ],\n          \"pop_pools\": {\n            \"LAX\": [\n              \"de90f38ced07c2e2f4df50b1f61d4194\",\n              \"9290f38c5d07c2e2f4df57b1f61d4196\"\n            ],\n            \"LHR\": [\n              \"abd90f38ced07c2e2f4df50b1f61d4194\",\n              \"f9138c5d07c2e2f4df57b1f61d4196\"\n            ],\n            \"SJC\": [\n              \"00920f38ce07c2e2f4df50b1f61d4194\"\n            ]\n          },\n          \"region_pools\": {\n            \"WNAM\": [\n              \"de90f38ced07c2e2f4df50b1f61d4194\",\n              \"9290f38c5d07c2e2f4df57b1f61d4196\"\n            ],\n            \"ENAM\": [\n              \"00920f38ce07c2e2f4df50b1f61d4194\"\n            ]\n          },\n          \"country_pools\": {\n            \"US\": [\n              \"de90f38ced07c2e2f4df50b1f61d4194\",\n              \"00920f38ce07c2e2f4df50b1f61d4194\"\n            ],\n            \"GB\": [\n              \"abd90f38ced07c2e2f4df50b1f61d4194\"\n            ]\n          },\n          \"random_steering\": {\n            \"pool_weights\": {\n              \"de90f38ced07c2e2f4df50b1f61d4194\": 0.3,\n              \"9290f38c5d07c2e2f4df57b1f61d4196\": 0.5\n            },\n            \"default_weight\": 0.2\n          }\n        },\n        \"priority\": 55,\n        \"disabled\": false,\n        \"terminates\": false,\n        \"fixed_response\": {\n          \"message_body\": \"Testing Hello\",\n          \"status_code\": 200,\n          \"content_type\": \"application/json\",\n          \"location\": \"www.example.com\"\n        }\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Patch Load Balancer",
+			"description": "Apply changes to an existing load balancer, overwriting the supplied properties.",
+			"rel": "self",
+			"href": "zones/{#/definitions/identifier}/load_balancers/{#/definitions/identifier}",
+			"method": "PATCH",
+			"cfOwnership": "load_balancer",
+			"html_id": "load-balancers-patch-load-balancer",
+			"uri": "zones/:identifier/load_balancers/:identifier",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/load_balancers/699d98642c564d2e855e9661899b7252\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"description\":\"Load Balancer for www.example.com\",\"name\":\"www.example.com\",\"ttl\":30,\"fallback_pool\":\"17b5962d775c646f3f9725cbc7a53df4\",\"default_pools\":[\"17b5962d775c646f3f9725cbc7a53df4\",\"9290f38c5d07c2e2f4df57b1f61d4196\",\"00920f38ce07c2e2f4df50b1f61d4194\"],\"region_pools\":{\"WNAM\":[\"de90f38ced07c2e2f4df50b1f61d4194\",\"9290f38c5d07c2e2f4df57b1f61d4196\"],\"ENAM\":[\"00920f38ce07c2e2f4df50b1f61d4194\"]},\"country_pools\":{\"US\":[\"de90f38ced07c2e2f4df50b1f61d4194\",\"00920f38ce07c2e2f4df50b1f61d4194\"],\"GB\":[\"abd90f38ced07c2e2f4df50b1f61d4194\"]},\"pop_pools\":{\"LAX\":[\"de90f38ced07c2e2f4df50b1f61d4194\",\"9290f38c5d07c2e2f4df57b1f61d4196\"],\"LHR\":[\"abd90f38ced07c2e2f4df50b1f61d4194\",\"f9138c5d07c2e2f4df57b1f61d4196\"],\"SJC\":[\"00920f38ce07c2e2f4df50b1f61d4194\"]},\"proxied\":true,\"enabled\":true,\"steering_policy\":\"dynamic_latency\",\"session_affinity\":\"cookie\",\"session_affinity_attributes\":{\"samesite\":\"Auto\",\"secure\":\"Auto\",\"drain_duration\":100,\"zero_downtime_failover\":\"sticky\"},\"session_affinity_ttl\":5000,\"random_steering\":{\"pool_weights\":{\"de90f38ced07c2e2f4df50b1f61d4194\":0.3,\"9290f38c5d07c2e2f4df57b1f61d4196\":0.5},\"default_weight\":0.2},\"rules\":[{\"name\":\"route the path /testing to testing datacenter.\",\"condition\":\"http.request.uri.path contains \\\"/testing\\\"\",\"overrides\":{\"session_affinity\":\"cookie\",\"session_affinity_ttl\":5000,\"session_affinity_attributes\":{\"samesite\":\"Auto\",\"secure\":\"Auto\",\"drain_duration\":100,\"zero_downtime_failover\":\"sticky\"},\"ttl\":30,\"steering_policy\":\"dynamic_latency\",\"fallback_pool\":\"17b5962d775c646f3f9725cbc7a53df4\",\"default_pools\":[\"17b5962d775c646f3f9725cbc7a53df4\",\"9290f38c5d07c2e2f4df57b1f61d4196\",\"00920f38ce07c2e2f4df50b1f61d4194\"],\"pop_pools\":{\"LAX\":[\"de90f38ced07c2e2f4df50b1f61d4194\",\"9290f38c5d07c2e2f4df57b1f61d4196\"],\"LHR\":[\"abd90f38ced07c2e2f4df50b1f61d4194\",\"f9138c5d07c2e2f4df57b1f61d4196\"],\"SJC\":[\"00920f38ce07c2e2f4df50b1f61d4194\"]},\"region_pools\":{\"WNAM\":[\"de90f38ced07c2e2f4df50b1f61d4194\",\"9290f38c5d07c2e2f4df57b1f61d4196\"],\"ENAM\":[\"00920f38ce07c2e2f4df50b1f61d4194\"]},\"country_pools\":{\"US\":[\"de90f38ced07c2e2f4df50b1f61d4194\",\"00920f38ce07c2e2f4df50b1f61d4194\"],\"GB\":[\"abd90f38ced07c2e2f4df50b1f61d4194\"]},\"random_steering\":{\"pool_weights\":{\"de90f38ced07c2e2f4df50b1f61d4194\":0.3,\"9290f38c5d07c2e2f4df57b1f61d4196\":0.5},\"default_weight\":0.2}},\"priority\":55,\"disabled\":false,\"terminates\":false,\"fixed_response\":{\"message_body\":\"Testing Hello\",\"status_code\":200,\"content_type\":\"application/json\",\"location\":\"www.example.com\"}}]}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"description": {
+						"type": "string",
+						"example": "\"Load Balancer for www.example.com\"",
+						"description": "Object description"
+					},
+					"name": {
+						"type": "string",
+						"example": "\"www.example.com\"",
+						"description": "The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used."
+					},
+					"ttl": {
+						"type": "number",
+						"example": "30",
+						"description": "Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers."
+					},
+					"fallback_pool": {
+						"type": "string",
+						"example": "\"17b5962d775c646f3f9725cbc7a53df4\"",
+						"description": "The pool ID to use when all other pools are detected as unhealthy.",
+						"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"default_pools": {
+						"type": "array",
+						"example": "[\n  \"17b5962d775c646f3f9725cbc7a53df4\",\n  \"9290f38c5d07c2e2f4df57b1f61d4196\",\n  \"00920f38ce07c2e2f4df50b1f61d4194\"\n]",
+						"items": {
+							"type": "string",
+							"description": "A pool ID"
+						},
+						"description": "A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region."
+					},
+					"region_pools": {
+						"type": "object",
+						"example": "{\n  \"WNAM\": [\n    \"de90f38ced07c2e2f4df50b1f61d4194\",\n    \"9290f38c5d07c2e2f4df57b1f61d4196\"\n  ],\n  \"ENAM\": [\n    \"00920f38ce07c2e2f4df50b1f61d4194\"\n  ]\n}",
+						"description": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools."
+					},
+					"country_pools": {
+						"type": "object",
+						"example": "{\n  \"US\": [\n    \"de90f38ced07c2e2f4df50b1f61d4194\",\n    \"00920f38ce07c2e2f4df50b1f61d4194\"\n  ],\n  \"GB\": [\n    \"abd90f38ced07c2e2f4df50b1f61d4194\"\n  ]\n}",
+						"description": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools."
+					},
+					"pop_pools": {
+						"type": "object",
+						"example": "{\n  \"LAX\": [\n    \"de90f38ced07c2e2f4df50b1f61d4194\",\n    \"9290f38c5d07c2e2f4df57b1f61d4196\"\n  ],\n  \"LHR\": [\n    \"abd90f38ced07c2e2f4df50b1f61d4194\",\n    \"f9138c5d07c2e2f4df57b1f61d4196\"\n  ],\n  \"SJC\": [\n    \"00920f38ce07c2e2f4df50b1f61d4194\"\n  ]\n}",
+						"description": "(Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools."
+					},
+					"proxied": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether the hostname should be gray clouded (false) or orange clouded (true).",
+						"default": false
+					},
+					"enabled": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether to enable (the default) this load balancer.",
+						"default": true
+					},
+					"steering_policy": {
+						"type": "string",
+						"example": "\"dynamic_latency\"",
+						"description": "Steering Policy for this load balancer. \"off\": use default_pools, \"geo\": use region_pools/country_pools/pop_pools, \"random\": select a pool randomly, \"dynamic_latency\": use round trip time to select the closest pool in default_pools (requires pool health checks), \n\"proximity\": use the pools latitude and longitude to select the closest pool using the cloudflare pop location for proxied requests or geoip / edns0-client-subnet for non-proxied, \"\": will map to \"geo\" if you use region_pools/country_pools/pop_pools otherwise \"off\"",
+						"enum": [
+							"off",
+							"geo",
+							"random",
+							"dynamic_latency",
+							"proximity",
+							"\"\""
+						],
+						"default": "\"\""
+					},
+					"session_affinity": {
+						"type": "string",
+						"example": "\"cookie\"",
+						"description": "The session_affinity specifies the type of session affinity the loadbalancer should use unless specified as \"none\" or \"\"(default). The supported types are \"cookie\" and \"ip_cookie\". \"cookie\" - On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. \"ip_cookie\" behaves the same as \"cookie\" except the initial origin selection is stable and based on the client’s ip address.",
+						"enum": [
+							"none",
+							"cookie",
+							"ip_cookie",
+							"\"\""
+						],
+						"default": "\"\""
+					},
+					"session_affinity_attributes": {
+						"type": "object",
+						"example": "{\n  \"samesite\": \"Auto\",\n  \"secure\": \"Auto\",\n  \"drain_duration\": 100,\n  \"zero_downtime_failover\": \"sticky\"\n}",
+						"properties": {
+							"samesite": {
+								"type": "string",
+								"example": "\"Auto\"",
+								"description": "Configures the SameSite attribute on session affinity cookie. Value \"Auto\" will be translated to \"Lax\" or \"None\" depending if Always Use HTTPS is enabled. Note: when using value \"None\", the secure attribute can not be set to \"Never\".",
+								"enum": [
+									"Auto",
+									"Lax",
+									"None",
+									"Strict"
+								],
+								"default": "Auto"
+							},
+							"secure": {
+								"type": "string",
+								"example": "\"Auto\"",
+								"description": "Configures the Secure attribute on session affinity cookie. Value \"Always\" indicates the Secure attribute will be set in the Set-Cookie header, \"Never\" indicates the Secure attribute will not be set, and \"Auto\" will set the Secure attribute depending if Always Use HTTPS is enabled.",
+								"enum": [
+									"Auto",
+									"Always",
+									"Never"
+								],
+								"default": "Auto"
+							},
+							"drain_duration": {
+								"type": "number",
+								"example": "100",
+								"description": "Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer."
+							},
+							"zero_downtime_failover": {
+								"type": "string",
+								"example": "\"sticky\"",
+								"description": "Configures the zero downtime failover between origins within a pool when session affinity is enabled. Value \"none\" means no failover takes place for sessions pinned to the origin (default). Value \"temporary\" means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value \"sticky\" means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance.",
+								"enum": [
+									"none",
+									"temporary",
+									"sticky"
+								],
+								"default": "none"
+							}
+						},
+						"description": "Configure cookie attributes for session affinity cookie."
+					},
+					"session_affinity_ttl": {
+						"type": "number",
+						"example": "5000",
+						"description": "Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless session_affinity_ttl is explicitly set. The accepted range of values is between [1800, 604800]. Once the expiry time has been reached, subsequent requests may get sent to a different origin server."
+					},
+					"random_steering": {
+						"type": "object",
+						"example": "{\n  \"pool_weights\": {\n    \"de90f38ced07c2e2f4df50b1f61d4194\": 0.3,\n    \"9290f38c5d07c2e2f4df57b1f61d4196\": 0.5\n  },\n  \"default_weight\": 0.2\n}",
+						"properties": {
+							"pool_weights": {
+								"type": "object",
+								"example": "{\n  \"de90f38ced07c2e2f4df50b1f61d4194\": 0.3,\n  \"9290f38c5d07c2e2f4df57b1f61d4196\": 0.5\n}",
+								"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer."
+							},
+							"default_weight": {
+								"type": "number",
+								"example": "0.2",
+								"minimum": 0,
+								"maximum": 1,
+								"multipleOfPrecision": 0.1,
+								"description": "The default weight for pools in the load balancer that are not specified in the pool_weights map.",
+								"default": 1
+							}
+						},
+						"description": "Configure pool weights for random steering. When steering_policy is 'random', a random pool is selected with probability proportional to these pool weights."
+					},
+					"rules": {
+						"type": "array",
+						"example": "[\n  {\n    \"name\": \"route the path /testing to testing datacenter.\",\n    \"condition\": \"http.request.uri.path contains \\\"/testing\\\"\",\n    \"overrides\": {\n      \"session_affinity\": \"cookie\",\n      \"session_affinity_ttl\": 5000,\n      \"session_affinity_attributes\": {\n        \"samesite\": \"Auto\",\n        \"secure\": \"Auto\",\n        \"drain_duration\": 100,\n        \"zero_downtime_failover\": \"sticky\"\n      },\n      \"ttl\": 30,\n      \"steering_policy\": \"dynamic_latency\",\n      \"fallback_pool\": \"17b5962d775c646f3f9725cbc7a53df4\",\n      \"default_pools\": [\n        \"17b5962d775c646f3f9725cbc7a53df4\",\n        \"9290f38c5d07c2e2f4df57b1f61d4196\",\n        \"00920f38ce07c2e2f4df50b1f61d4194\"\n      ],\n      \"pop_pools\": {\n        \"LAX\": [\n          \"de90f38ced07c2e2f4df50b1f61d4194\",\n          \"9290f38c5d07c2e2f4df57b1f61d4196\"\n        ],\n        \"LHR\": [\n          \"abd90f38ced07c2e2f4df50b1f61d4194\",\n          \"f9138c5d07c2e2f4df57b1f61d4196\"\n        ],\n        \"SJC\": [\n          \"00920f38ce07c2e2f4df50b1f61d4194\"\n        ]\n      },\n      \"region_pools\": {\n        \"WNAM\": [\n          \"de90f38ced07c2e2f4df50b1f61d4194\",\n          \"9290f38c5d07c2e2f4df57b1f61d4196\"\n        ],\n        \"ENAM\": [\n          \"00920f38ce07c2e2f4df50b1f61d4194\"\n        ]\n      },\n      \"country_pools\": {\n        \"US\": [\n          \"de90f38ced07c2e2f4df50b1f61d4194\",\n          \"00920f38ce07c2e2f4df50b1f61d4194\"\n        ],\n        \"GB\": [\n          \"abd90f38ced07c2e2f4df50b1f61d4194\"\n        ]\n      },\n      \"random_steering\": {\n        \"pool_weights\": {\n          \"de90f38ced07c2e2f4df50b1f61d4194\": 0.3,\n          \"9290f38c5d07c2e2f4df57b1f61d4196\": 0.5\n        },\n        \"default_weight\": 0.2\n      }\n    },\n    \"priority\": 55,\n    \"disabled\": false,\n    \"terminates\": false,\n    \"fixed_response\": {\n      \"message_body\": \"Testing Hello\",\n      \"status_code\": 200,\n      \"content_type\": \"application/json\",\n      \"location\": \"www.example.com\"\n    }\n  }\n]",
+						"description": "BETA Field Not General Access: A list of rules for this load balancer to execute.",
+						"items": {
+							"description": "A rule object containing conditions and overrides for this load balancer to evaluate.",
+							"type": "object",
+							"additionalProperties": false,
+							"properties": {
+								"name": {
+									"type": "string",
+									"maxLength": 200,
+									"description": "Name of this rule. Only used for human readability.",
+									"example": "route the path /testing to testing datacenter."
+								},
+								"condition": {
+									"type": "string",
+									"description": "The condition expressions to evaluate. If the condition evaluates to true the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions",
+									"example": "http.request.uri.path contains \"/testing\""
+								},
+								"overrides": {
+									"type": "object",
+									"description": "A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional.",
+									"properties": {
+										"session_affinity": {
+											"type": "string",
+											"description": "The session_affinity specifies the type of session affinity the loadbalancer should use unless specified as \"none\" or \"\"(default). The supported types are \"cookie\" and \"ip_cookie\". \"cookie\" - On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. \"ip_cookie\" behaves the same as \"cookie\" except the initial origin selection is stable and based on the client’s ip address.",
+											"enum": [
+												"none",
+												"cookie",
+												"ip_cookie",
+												"\"\""
+											],
+											"example": "cookie",
+											"default": "\"\""
+										},
+										"session_affinity_ttl": {
+											"type": "number",
+											"description": "Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless session_affinity_ttl is explicitly set. The accepted range of values is between [1800, 604800]. Once the expiry time has been reached, subsequent requests may get sent to a different origin server.",
+											"example": 5000
+										},
+										"session_affinity_attributes": {
+											"type": "object",
+											"description": "Configure cookie attributes for session affinity cookie.",
+											"properties": {
+												"samesite": {
+													"type": "string",
+													"description": "Configures the SameSite attribute on session affinity cookie. Value \"Auto\" will be translated to \"Lax\" or \"None\" depending if Always Use HTTPS is enabled. Note: when using value \"None\", the secure attribute can not be set to \"Never\".",
+													"enum": [
+														"Auto",
+														"Lax",
+														"None",
+														"Strict"
+													],
+													"example": "Auto",
+													"default": "Auto"
+												},
+												"secure": {
+													"type": "string",
+													"description": "Configures the Secure attribute on session affinity cookie. Value \"Always\" indicates the Secure attribute will be set in the Set-Cookie header, \"Never\" indicates the Secure attribute will not be set, and \"Auto\" will set the Secure attribute depending if Always Use HTTPS is enabled.",
+													"enum": [
+														"Auto",
+														"Always",
+														"Never"
+													],
+													"example": "Auto",
+													"default": "Auto"
+												},
+												"drain_duration": {
+													"type": "number",
+													"description": "Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer.",
+													"example": 100
+												},
+												"zero_downtime_failover": {
+													"type": "string",
+													"description": "Configures the zero downtime failover between origins within a pool when session affinity is enabled. Value \"none\" means no failover takes place for sessions pinned to the origin (default). Value \"temporary\" means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value \"sticky\" means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance.",
+													"enum": [
+														"none",
+														"temporary",
+														"sticky"
+													],
+													"example": "sticky",
+													"default": "none"
+												}
+											}
+										},
+										"ttl": {
+											"type": "number",
+											"description": "Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.",
+											"example": 30
+										},
+										"steering_policy": {
+											"type": "string",
+											"description": "Steering Policy for this load balancer. \"off\": use default_pools, \"geo\": use region_pools/country_pools/pop_pools, \"random\": select a pool randomly, \"dynamic_latency\": use round trip time to select the closest pool in default_pools (requires pool health checks), \n\"proximity\": use the pools latitude and longitude to select the closest pool using the cloudflare pop location for proxied requests or geoip / edns0-client-subnet for non-proxied, \"\": will map to \"geo\" if you use region_pools/country_pools/pop_pools otherwise \"off\"",
+											"enum": [
+												"off",
+												"geo",
+												"random",
+												"dynamic_latency",
+												"proximity",
+												"\"\""
+											],
+											"example": "dynamic_latency",
+											"default": "\"\""
+										},
+										"fallback_pool": {
+											"description": "The pool ID to use when all other pools are detected as unhealthy.",
+											"example": "17b5962d775c646f3f9725cbc7a53df4",
+											"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+											"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+											"type": "string",
+											"maxLength": 32,
+											"readOnly": true
+										},
+										"default_pools": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"description": "A pool ID"
+											},
+											"description": "A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.",
+											"example": [
+												"17b5962d775c646f3f9725cbc7a53df4",
+												"9290f38c5d07c2e2f4df57b1f61d4196",
+												"00920f38ce07c2e2f4df50b1f61d4194"
+											]
+										},
+										"pop_pools": {
+											"type": "object",
+											"description": "(Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.",
+											"example": {
+												"LAX": [
+													"de90f38ced07c2e2f4df50b1f61d4194",
+													"9290f38c5d07c2e2f4df57b1f61d4196"
+												],
+												"LHR": [
+													"abd90f38ced07c2e2f4df50b1f61d4194",
+													"f9138c5d07c2e2f4df57b1f61d4196"
+												],
+												"SJC": [
+													"00920f38ce07c2e2f4df50b1f61d4194"
+												]
+											}
+										},
+										"region_pools": {
+											"type": "object",
+											"description": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.",
+											"example": {
+												"WNAM": [
+													"de90f38ced07c2e2f4df50b1f61d4194",
+													"9290f38c5d07c2e2f4df57b1f61d4196"
+												],
+												"ENAM": [
+													"00920f38ce07c2e2f4df50b1f61d4194"
+												]
+											}
+										},
+										"country_pools": {
+											"type": "object",
+											"description": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.",
+											"example": {
+												"US": [
+													"de90f38ced07c2e2f4df50b1f61d4194",
+													"00920f38ce07c2e2f4df50b1f61d4194"
+												],
+												"GB": [
+													"abd90f38ced07c2e2f4df50b1f61d4194"
+												]
+											}
+										},
+										"random_steering": {
+											"type": "object",
+											"description": "Configure pool weights for random steering. When steering_policy is 'random', a random pool is selected with probability proportional to these pool weights.",
+											"properties": {
+												"pool_weights": {
+													"type": "object",
+													"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
+													"example": {
+														"de90f38ced07c2e2f4df50b1f61d4194": 0.3,
+														"9290f38c5d07c2e2f4df57b1f61d4196": 0.5
+													}
+												},
+												"default_weight": {
+													"type": "number",
+													"minimum": 0,
+													"maximum": 1,
+													"multipleOfPrecision": 0.1,
+													"description": "The default weight for pools in the load balancer that are not specified in the pool_weights map.",
+													"example": 0.2,
+													"default": 1
+												}
+											}
+										}
+									}
+								},
+								"priority": {
+									"type": "integer",
+									"description": "The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.",
+									"example": 55,
+									"default": 0
+								},
+								"disabled": {
+									"type": "boolean",
+									"description": "Disable this specific rule. It will no longer be evaluated by this load balancer.",
+									"default": false
+								},
+								"terminates": {
+									"type": "boolean",
+									"description": "If this rule's condition is true, terminates causes rule evaluation to stop after processing this rule.",
+									"default": false
+								},
+								"fixed_response": {
+									"type": "object",
+									"description": "A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed_response is supplied the rule will be marked as terminates.",
+									"properties": {
+										"message_body": {
+											"type": "string",
+											"description": "Text to include as the http body.",
+											"maxLength": 1024,
+											"example": "Testing Hello"
+										},
+										"status_code": {
+											"type": "integer",
+											"description": "The http status code to respond with.",
+											"example": 200
+										},
+										"content_type": {
+											"type": "string",
+											"description": "The http 'Content-Type' header to include in the response.",
+											"maxLength": 32,
+											"example": "application/json"
+										},
+										"location": {
+											"type": "string",
+											"description": "The http 'Location' header to include in the response.",
+											"maxLength": 2048,
+											"example": "www.example.com"
+										}
+									}
+								}
+							}
+						},
+						"additionalItems": false
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"description",
+					"name",
+					"ttl",
+					"fallback_pool",
+					"default_pools",
+					"region_pools",
+					"country_pools",
+					"pop_pools",
+					"proxied",
+					"enabled",
+					"steering_policy",
+					"session_affinity",
+					"session_affinity_attributes",
+					"session_affinity_ttl",
+					"random_steering",
+					"rules"
+				],
+				"objects": [],
+				"example": "{\n  \"description\": \"Load Balancer for www.example.com\",\n  \"name\": \"www.example.com\",\n  \"ttl\": 30,\n  \"fallback_pool\": \"17b5962d775c646f3f9725cbc7a53df4\",\n  \"default_pools\": [\n    \"17b5962d775c646f3f9725cbc7a53df4\",\n    \"9290f38c5d07c2e2f4df57b1f61d4196\",\n    \"00920f38ce07c2e2f4df50b1f61d4194\"\n  ],\n  \"region_pools\": {\n    \"WNAM\": [\n      \"de90f38ced07c2e2f4df50b1f61d4194\",\n      \"9290f38c5d07c2e2f4df57b1f61d4196\"\n    ],\n    \"ENAM\": [\n      \"00920f38ce07c2e2f4df50b1f61d4194\"\n    ]\n  },\n  \"country_pools\": {\n    \"US\": [\n      \"de90f38ced07c2e2f4df50b1f61d4194\",\n      \"00920f38ce07c2e2f4df50b1f61d4194\"\n    ],\n    \"GB\": [\n      \"abd90f38ced07c2e2f4df50b1f61d4194\"\n    ]\n  },\n  \"pop_pools\": {\n    \"LAX\": [\n      \"de90f38ced07c2e2f4df50b1f61d4194\",\n      \"9290f38c5d07c2e2f4df57b1f61d4196\"\n    ],\n    \"LHR\": [\n      \"abd90f38ced07c2e2f4df50b1f61d4194\",\n      \"f9138c5d07c2e2f4df57b1f61d4196\"\n    ],\n    \"SJC\": [\n      \"00920f38ce07c2e2f4df50b1f61d4194\"\n    ]\n  },\n  \"proxied\": true,\n  \"enabled\": true,\n  \"steering_policy\": \"dynamic_latency\",\n  \"session_affinity\": \"cookie\",\n  \"session_affinity_attributes\": {\n    \"samesite\": \"Auto\",\n    \"secure\": \"Auto\",\n    \"drain_duration\": 100,\n    \"zero_downtime_failover\": \"sticky\"\n  },\n  \"session_affinity_ttl\": 5000,\n  \"random_steering\": {\n    \"pool_weights\": {\n      \"de90f38ced07c2e2f4df50b1f61d4194\": 0.3,\n      \"9290f38c5d07c2e2f4df57b1f61d4196\": 0.5\n    },\n    \"default_weight\": 0.2\n  },\n  \"rules\": [\n    {\n      \"name\": \"route the path /testing to testing datacenter.\",\n      \"condition\": \"http.request.uri.path contains \\\"/testing\\\"\",\n      \"overrides\": {\n        \"session_affinity\": \"cookie\",\n        \"session_affinity_ttl\": 5000,\n        \"session_affinity_attributes\": {\n          \"samesite\": \"Auto\",\n          \"secure\": \"Auto\",\n          \"drain_duration\": 100,\n          \"zero_downtime_failover\": \"sticky\"\n        },\n        \"ttl\": 30,\n        \"steering_policy\": \"dynamic_latency\",\n        \"fallback_pool\": \"17b5962d775c646f3f9725cbc7a53df4\",\n        \"default_pools\": [\n          \"17b5962d775c646f3f9725cbc7a53df4\",\n          \"9290f38c5d07c2e2f4df57b1f61d4196\",\n          \"00920f38ce07c2e2f4df50b1f61d4194\"\n        ],\n        \"pop_pools\": {\n          \"LAX\": [\n            \"de90f38ced07c2e2f4df50b1f61d4194\",\n            \"9290f38c5d07c2e2f4df57b1f61d4196\"\n          ],\n          \"LHR\": [\n            \"abd90f38ced07c2e2f4df50b1f61d4194\",\n            \"f9138c5d07c2e2f4df57b1f61d4196\"\n          ],\n          \"SJC\": [\n            \"00920f38ce07c2e2f4df50b1f61d4194\"\n          ]\n        },\n        \"region_pools\": {\n          \"WNAM\": [\n            \"de90f38ced07c2e2f4df50b1f61d4194\",\n            \"9290f38c5d07c2e2f4df57b1f61d4196\"\n          ],\n          \"ENAM\": [\n            \"00920f38ce07c2e2f4df50b1f61d4194\"\n          ]\n        },\n        \"country_pools\": {\n          \"US\": [\n            \"de90f38ced07c2e2f4df50b1f61d4194\",\n            \"00920f38ce07c2e2f4df50b1f61d4194\"\n          ],\n          \"GB\": [\n            \"abd90f38ced07c2e2f4df50b1f61d4194\"\n          ]\n        },\n        \"random_steering\": {\n          \"pool_weights\": {\n            \"de90f38ced07c2e2f4df50b1f61d4194\": 0.3,\n            \"9290f38c5d07c2e2f4df57b1f61d4196\": 0.5\n          },\n          \"default_weight\": 0.2\n        }\n      },\n      \"priority\": 55,\n      \"disabled\": false,\n      \"terminates\": false,\n      \"fixed_response\": {\n        \"message_body\": \"Testing Hello\",\n        \"status_code\": 200,\n        \"content_type\": \"application/json\",\n        \"location\": \"www.example.com\"\n      }\n    }\n  ]\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"699d98642c564d2e855e9661899b7252\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"description\": \"Load Balancer for www.example.com\",\n    \"name\": \"www.example.com\",\n    \"enabled\": true,\n    \"ttl\": 30,\n    \"fallback_pool\": \"17b5962d775c646f3f9725cbc7a53df4\",\n    \"default_pools\": [\n      \"17b5962d775c646f3f9725cbc7a53df4\",\n      \"9290f38c5d07c2e2f4df57b1f61d4196\",\n      \"00920f38ce07c2e2f4df50b1f61d4194\"\n    ],\n    \"region_pools\": {\n      \"WNAM\": [\n        \"de90f38ced07c2e2f4df50b1f61d4194\",\n        \"9290f38c5d07c2e2f4df57b1f61d4196\"\n      ],\n      \"ENAM\": [\n        \"00920f38ce07c2e2f4df50b1f61d4194\"\n      ]\n    },\n    \"country_pools\": {\n      \"US\": [\n        \"de90f38ced07c2e2f4df50b1f61d4194\",\n        \"00920f38ce07c2e2f4df50b1f61d4194\"\n      ],\n      \"GB\": [\n        \"abd90f38ced07c2e2f4df50b1f61d4194\"\n      ]\n    },\n    \"pop_pools\": {\n      \"LAX\": [\n        \"de90f38ced07c2e2f4df50b1f61d4194\",\n        \"9290f38c5d07c2e2f4df57b1f61d4196\"\n      ],\n      \"LHR\": [\n        \"abd90f38ced07c2e2f4df50b1f61d4194\",\n        \"f9138c5d07c2e2f4df57b1f61d4196\"\n      ],\n      \"SJC\": [\n        \"00920f38ce07c2e2f4df50b1f61d4194\"\n      ]\n    },\n    \"proxied\": true,\n    \"steering_policy\": \"dynamic_latency\",\n    \"session_affinity\": \"cookie\",\n    \"session_affinity_attributes\": {\n      \"samesite\": \"Auto\",\n      \"secure\": \"Auto\",\n      \"drain_duration\": 100,\n      \"zero_downtime_failover\": \"sticky\"\n    },\n    \"session_affinity_ttl\": 5000,\n    \"random_steering\": {\n      \"pool_weights\": {\n        \"de90f38ced07c2e2f4df50b1f61d4194\": 0.3,\n        \"9290f38c5d07c2e2f4df57b1f61d4196\": 0.5\n      },\n      \"default_weight\": 0.2\n    },\n    \"rules\": [\n      {\n        \"name\": \"route the path /testing to testing datacenter.\",\n        \"condition\": \"http.request.uri.path contains \\\"/testing\\\"\",\n        \"overrides\": {\n          \"session_affinity\": \"cookie\",\n          \"session_affinity_ttl\": 5000,\n          \"session_affinity_attributes\": {\n            \"samesite\": \"Auto\",\n            \"secure\": \"Auto\",\n            \"drain_duration\": 100,\n            \"zero_downtime_failover\": \"sticky\"\n          },\n          \"ttl\": 30,\n          \"steering_policy\": \"dynamic_latency\",\n          \"fallback_pool\": \"17b5962d775c646f3f9725cbc7a53df4\",\n          \"default_pools\": [\n            \"17b5962d775c646f3f9725cbc7a53df4\",\n            \"9290f38c5d07c2e2f4df57b1f61d4196\",\n            \"00920f38ce07c2e2f4df50b1f61d4194\"\n          ],\n          \"pop_pools\": {\n            \"LAX\": [\n              \"de90f38ced07c2e2f4df50b1f61d4194\",\n              \"9290f38c5d07c2e2f4df57b1f61d4196\"\n            ],\n            \"LHR\": [\n              \"abd90f38ced07c2e2f4df50b1f61d4194\",\n              \"f9138c5d07c2e2f4df57b1f61d4196\"\n            ],\n            \"SJC\": [\n              \"00920f38ce07c2e2f4df50b1f61d4194\"\n            ]\n          },\n          \"region_pools\": {\n            \"WNAM\": [\n              \"de90f38ced07c2e2f4df50b1f61d4194\",\n              \"9290f38c5d07c2e2f4df57b1f61d4196\"\n            ],\n            \"ENAM\": [\n              \"00920f38ce07c2e2f4df50b1f61d4194\"\n            ]\n          },\n          \"country_pools\": {\n            \"US\": [\n              \"de90f38ced07c2e2f4df50b1f61d4194\",\n              \"00920f38ce07c2e2f4df50b1f61d4194\"\n            ],\n            \"GB\": [\n              \"abd90f38ced07c2e2f4df50b1f61d4194\"\n            ]\n          },\n          \"random_steering\": {\n            \"pool_weights\": {\n              \"de90f38ced07c2e2f4df50b1f61d4194\": 0.3,\n              \"9290f38c5d07c2e2f4df57b1f61d4196\": 0.5\n            },\n            \"default_weight\": 0.2\n          }\n        },\n        \"priority\": 55,\n        \"disabled\": false,\n        \"terminates\": false,\n        \"fixed_response\": {\n          \"message_body\": \"Testing Hello\",\n          \"status_code\": 200,\n          \"content_type\": \"application/json\",\n          \"location\": \"www.example.com\"\n        }\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Delete Load Balancer",
+			"description": "Delete a configured load balancer",
+			"rel": "self",
+			"href": "zones/{#/definitions/identifier}/load_balancers/{#/definitions/identifier}",
+			"method": "DELETE",
+			"cfOwnership": "load_balancer",
+			"html_id": "load-balancers-delete-load-balancer",
+			"uri": "zones/:identifier/load_balancers/:identifier",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/load_balancers/699d98642c564d2e855e9661899b7252\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"699d98642c564d2e855e9661899b7252\"\n  }\n}"
+		}
+	],
+	"html_id": "load-balancers",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"699d98642c564d2e855e9661899b7252\"",
+				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "API item identifier tag",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"created_on": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "Creation time",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"modified_on": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "Last modification time",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"description": {
+				"type": "string",
+				"example": "\"Load Balancer for www.example.com\"",
+				"description": "Object description"
+			},
+			"name": {
+				"type": "string",
+				"example": "\"www.example.com\"",
+				"description": "The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used."
+			},
+			"enabled": {
+				"type": "boolean",
+				"example": "true",
+				"description": "Whether to enable (the default) this load balancer.",
+				"default": true
+			},
+			"ttl": {
+				"type": "number",
+				"example": "30",
+				"description": "Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers."
+			},
+			"fallback_pool": {
+				"type": "string",
+				"example": "\"17b5962d775c646f3f9725cbc7a53df4\"",
+				"description": "The pool ID to use when all other pools are detected as unhealthy.",
+				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"default_pools": {
+				"type": "array",
+				"example": "[\n  \"17b5962d775c646f3f9725cbc7a53df4\",\n  \"9290f38c5d07c2e2f4df57b1f61d4196\",\n  \"00920f38ce07c2e2f4df50b1f61d4194\"\n]",
+				"items": {
+					"type": "string",
+					"description": "A pool ID"
+				},
+				"description": "A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region."
+			},
+			"region_pools": {
+				"type": "object",
+				"example": "{\n  \"WNAM\": [\n    \"de90f38ced07c2e2f4df50b1f61d4194\",\n    \"9290f38c5d07c2e2f4df57b1f61d4196\"\n  ],\n  \"ENAM\": [\n    \"00920f38ce07c2e2f4df50b1f61d4194\"\n  ]\n}",
+				"description": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools."
+			},
+			"country_pools": {
+				"type": "object",
+				"example": "{\n  \"US\": [\n    \"de90f38ced07c2e2f4df50b1f61d4194\",\n    \"00920f38ce07c2e2f4df50b1f61d4194\"\n  ],\n  \"GB\": [\n    \"abd90f38ced07c2e2f4df50b1f61d4194\"\n  ]\n}",
+				"description": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools."
+			},
+			"pop_pools": {
+				"type": "object",
+				"example": "{\n  \"LAX\": [\n    \"de90f38ced07c2e2f4df50b1f61d4194\",\n    \"9290f38c5d07c2e2f4df57b1f61d4196\"\n  ],\n  \"LHR\": [\n    \"abd90f38ced07c2e2f4df50b1f61d4194\",\n    \"f9138c5d07c2e2f4df57b1f61d4196\"\n  ],\n  \"SJC\": [\n    \"00920f38ce07c2e2f4df50b1f61d4194\"\n  ]\n}",
+				"description": "(Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools."
+			},
+			"proxied": {
+				"type": "boolean",
+				"example": "true",
+				"description": "Whether the hostname should be gray clouded (false) or orange clouded (true).",
+				"default": false
+			},
+			"steering_policy": {
+				"type": "string",
+				"example": "\"dynamic_latency\"",
+				"description": "Steering Policy for this load balancer. \"off\": use default_pools, \"geo\": use region_pools/country_pools/pop_pools, \"random\": select a pool randomly, \"dynamic_latency\": use round trip time to select the closest pool in default_pools (requires pool health checks), \n\"proximity\": use the pools latitude and longitude to select the closest pool using the cloudflare pop location for proxied requests or geoip / edns0-client-subnet for non-proxied, \"\": will map to \"geo\" if you use region_pools/country_pools/pop_pools otherwise \"off\"",
+				"enum": [
+					"off",
+					"geo",
+					"random",
+					"dynamic_latency",
+					"proximity",
+					"\"\""
+				],
+				"default": "\"\""
+			},
+			"session_affinity": {
+				"type": "string",
+				"example": "\"cookie\"",
+				"description": "The session_affinity specifies the type of session affinity the loadbalancer should use unless specified as \"none\" or \"\"(default). The supported types are \"cookie\" and \"ip_cookie\". \"cookie\" - On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. \"ip_cookie\" behaves the same as \"cookie\" except the initial origin selection is stable and based on the client’s ip address.",
+				"enum": [
+					"none",
+					"cookie",
+					"ip_cookie",
+					"\"\""
+				],
+				"default": "\"\""
+			},
+			"session_affinity_attributes": {
+				"type": "object",
+				"example": "{\n  \"samesite\": \"Auto\",\n  \"secure\": \"Auto\",\n  \"drain_duration\": 100,\n  \"zero_downtime_failover\": \"sticky\"\n}",
+				"properties": {
+					"samesite": {
+						"type": "string",
+						"example": "\"Auto\"",
+						"description": "Configures the SameSite attribute on session affinity cookie. Value \"Auto\" will be translated to \"Lax\" or \"None\" depending if Always Use HTTPS is enabled. Note: when using value \"None\", the secure attribute can not be set to \"Never\".",
+						"enum": [
+							"Auto",
+							"Lax",
+							"None",
+							"Strict"
+						],
+						"default": "Auto"
+					},
+					"secure": {
+						"type": "string",
+						"example": "\"Auto\"",
+						"description": "Configures the Secure attribute on session affinity cookie. Value \"Always\" indicates the Secure attribute will be set in the Set-Cookie header, \"Never\" indicates the Secure attribute will not be set, and \"Auto\" will set the Secure attribute depending if Always Use HTTPS is enabled.",
+						"enum": [
+							"Auto",
+							"Always",
+							"Never"
+						],
+						"default": "Auto"
+					},
+					"drain_duration": {
+						"type": "number",
+						"example": "100",
+						"description": "Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer."
+					},
+					"zero_downtime_failover": {
+						"type": "string",
+						"example": "\"sticky\"",
+						"description": "Configures the zero downtime failover between origins within a pool when session affinity is enabled. Value \"none\" means no failover takes place for sessions pinned to the origin (default). Value \"temporary\" means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value \"sticky\" means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance.",
+						"enum": [
+							"none",
+							"temporary",
+							"sticky"
+						],
+						"default": "none"
+					}
+				},
+				"description": "Configure cookie attributes for session affinity cookie."
+			},
+			"session_affinity_ttl": {
+				"type": "number",
+				"example": "5000",
+				"description": "Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless session_affinity_ttl is explicitly set. The accepted range of values is between [1800, 604800]. Once the expiry time has been reached, subsequent requests may get sent to a different origin server."
+			},
+			"random_steering": {
+				"type": "object",
+				"example": "{\n  \"pool_weights\": {\n    \"de90f38ced07c2e2f4df50b1f61d4194\": 0.3,\n    \"9290f38c5d07c2e2f4df57b1f61d4196\": 0.5\n  },\n  \"default_weight\": 0.2\n}",
+				"properties": {
+					"pool_weights": {
+						"type": "object",
+						"example": "{\n  \"de90f38ced07c2e2f4df50b1f61d4194\": 0.3,\n  \"9290f38c5d07c2e2f4df57b1f61d4196\": 0.5\n}",
+						"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer."
+					},
+					"default_weight": {
+						"type": "number",
+						"example": "0.2",
+						"minimum": 0,
+						"maximum": 1,
+						"multipleOfPrecision": 0.1,
+						"description": "The default weight for pools in the load balancer that are not specified in the pool_weights map.",
+						"default": 1
+					}
+				},
+				"description": "Configure pool weights for random steering. When steering_policy is 'random', a random pool is selected with probability proportional to these pool weights."
+			},
+			"rules": {
+				"type": "array",
+				"example": "[\n  {\n    \"name\": \"route the path /testing to testing datacenter.\",\n    \"condition\": \"http.request.uri.path contains \\\"/testing\\\"\",\n    \"overrides\": {\n      \"session_affinity\": \"cookie\",\n      \"session_affinity_ttl\": 5000,\n      \"session_affinity_attributes\": {\n        \"samesite\": \"Auto\",\n        \"secure\": \"Auto\",\n        \"drain_duration\": 100,\n        \"zero_downtime_failover\": \"sticky\"\n      },\n      \"ttl\": 30,\n      \"steering_policy\": \"dynamic_latency\",\n      \"fallback_pool\": \"17b5962d775c646f3f9725cbc7a53df4\",\n      \"default_pools\": [\n        \"17b5962d775c646f3f9725cbc7a53df4\",\n        \"9290f38c5d07c2e2f4df57b1f61d4196\",\n        \"00920f38ce07c2e2f4df50b1f61d4194\"\n      ],\n      \"pop_pools\": {\n        \"LAX\": [\n          \"de90f38ced07c2e2f4df50b1f61d4194\",\n          \"9290f38c5d07c2e2f4df57b1f61d4196\"\n        ],\n        \"LHR\": [\n          \"abd90f38ced07c2e2f4df50b1f61d4194\",\n          \"f9138c5d07c2e2f4df57b1f61d4196\"\n        ],\n        \"SJC\": [\n          \"00920f38ce07c2e2f4df50b1f61d4194\"\n        ]\n      },\n      \"region_pools\": {\n        \"WNAM\": [\n          \"de90f38ced07c2e2f4df50b1f61d4194\",\n          \"9290f38c5d07c2e2f4df57b1f61d4196\"\n        ],\n        \"ENAM\": [\n          \"00920f38ce07c2e2f4df50b1f61d4194\"\n        ]\n      },\n      \"country_pools\": {\n        \"US\": [\n          \"de90f38ced07c2e2f4df50b1f61d4194\",\n          \"00920f38ce07c2e2f4df50b1f61d4194\"\n        ],\n        \"GB\": [\n          \"abd90f38ced07c2e2f4df50b1f61d4194\"\n        ]\n      },\n      \"random_steering\": {\n        \"pool_weights\": {\n          \"de90f38ced07c2e2f4df50b1f61d4194\": 0.3,\n          \"9290f38c5d07c2e2f4df57b1f61d4196\": 0.5\n        },\n        \"default_weight\": 0.2\n      }\n    },\n    \"priority\": 55,\n    \"disabled\": false,\n    \"terminates\": false,\n    \"fixed_response\": {\n      \"message_body\": \"Testing Hello\",\n      \"status_code\": 200,\n      \"content_type\": \"application/json\",\n      \"location\": \"www.example.com\"\n    }\n  }\n]",
+				"description": "BETA Field Not General Access: A list of rules for this load balancer to execute.",
+				"items": {
+					"description": "A rule object containing conditions and overrides for this load balancer to evaluate.",
+					"type": "object",
+					"additionalProperties": false,
+					"properties": {
+						"name": {
+							"type": "string",
+							"maxLength": 200,
+							"description": "Name of this rule. Only used for human readability.",
+							"example": "route the path /testing to testing datacenter."
+						},
+						"condition": {
+							"type": "string",
+							"description": "The condition expressions to evaluate. If the condition evaluates to true the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions",
+							"example": "http.request.uri.path contains \"/testing\""
+						},
+						"overrides": {
+							"type": "object",
+							"description": "A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional.",
+							"properties": {
+								"session_affinity": {
+									"type": "string",
+									"description": "The session_affinity specifies the type of session affinity the loadbalancer should use unless specified as \"none\" or \"\"(default). The supported types are \"cookie\" and \"ip_cookie\". \"cookie\" - On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. \"ip_cookie\" behaves the same as \"cookie\" except the initial origin selection is stable and based on the client’s ip address.",
+									"enum": [
+										"none",
+										"cookie",
+										"ip_cookie",
+										"\"\""
+									],
+									"example": "cookie",
+									"default": "\"\""
+								},
+								"session_affinity_ttl": {
+									"type": "number",
+									"description": "Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless session_affinity_ttl is explicitly set. The accepted range of values is between [1800, 604800]. Once the expiry time has been reached, subsequent requests may get sent to a different origin server.",
+									"example": 5000
+								},
+								"session_affinity_attributes": {
+									"type": "object",
+									"description": "Configure cookie attributes for session affinity cookie.",
+									"properties": {
+										"samesite": {
+											"type": "string",
+											"description": "Configures the SameSite attribute on session affinity cookie. Value \"Auto\" will be translated to \"Lax\" or \"None\" depending if Always Use HTTPS is enabled. Note: when using value \"None\", the secure attribute can not be set to \"Never\".",
+											"enum": [
+												"Auto",
+												"Lax",
+												"None",
+												"Strict"
+											],
+											"example": "Auto",
+											"default": "Auto"
+										},
+										"secure": {
+											"type": "string",
+											"description": "Configures the Secure attribute on session affinity cookie. Value \"Always\" indicates the Secure attribute will be set in the Set-Cookie header, \"Never\" indicates the Secure attribute will not be set, and \"Auto\" will set the Secure attribute depending if Always Use HTTPS is enabled.",
+											"enum": [
+												"Auto",
+												"Always",
+												"Never"
+											],
+											"example": "Auto",
+											"default": "Auto"
+										},
+										"drain_duration": {
+											"type": "number",
+											"description": "Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer.",
+											"example": 100
+										},
+										"zero_downtime_failover": {
+											"type": "string",
+											"description": "Configures the zero downtime failover between origins within a pool when session affinity is enabled. Value \"none\" means no failover takes place for sessions pinned to the origin (default). Value \"temporary\" means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value \"sticky\" means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance.",
+											"enum": [
+												"none",
+												"temporary",
+												"sticky"
+											],
+											"example": "sticky",
+											"default": "none"
+										}
+									}
+								},
+								"ttl": {
+									"type": "number",
+									"description": "Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.",
+									"example": 30
+								},
+								"steering_policy": {
+									"type": "string",
+									"description": "Steering Policy for this load balancer. \"off\": use default_pools, \"geo\": use region_pools/country_pools/pop_pools, \"random\": select a pool randomly, \"dynamic_latency\": use round trip time to select the closest pool in default_pools (requires pool health checks), \n\"proximity\": use the pools latitude and longitude to select the closest pool using the cloudflare pop location for proxied requests or geoip / edns0-client-subnet for non-proxied, \"\": will map to \"geo\" if you use region_pools/country_pools/pop_pools otherwise \"off\"",
+									"enum": [
+										"off",
+										"geo",
+										"random",
+										"dynamic_latency",
+										"proximity",
+										"\"\""
+									],
+									"example": "dynamic_latency",
+									"default": "\"\""
+								},
+								"fallback_pool": {
+									"description": "The pool ID to use when all other pools are detected as unhealthy.",
+									"example": "17b5962d775c646f3f9725cbc7a53df4",
+									"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+									"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+									"type": "string",
+									"maxLength": 32,
+									"readOnly": true
+								},
+								"default_pools": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"description": "A pool ID"
+									},
+									"description": "A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.",
+									"example": [
+										"17b5962d775c646f3f9725cbc7a53df4",
+										"9290f38c5d07c2e2f4df57b1f61d4196",
+										"00920f38ce07c2e2f4df50b1f61d4194"
+									]
+								},
+								"pop_pools": {
+									"type": "object",
+									"description": "(Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools.",
+									"example": {
+										"LAX": [
+											"de90f38ced07c2e2f4df50b1f61d4194",
+											"9290f38c5d07c2e2f4df57b1f61d4196"
+										],
+										"LHR": [
+											"abd90f38ced07c2e2f4df50b1f61d4194",
+											"f9138c5d07c2e2f4df57b1f61d4196"
+										],
+										"SJC": [
+											"00920f38ce07c2e2f4df50b1f61d4194"
+										]
+									}
+								},
+								"region_pools": {
+									"type": "object",
+									"description": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.",
+									"example": {
+										"WNAM": [
+											"de90f38ced07c2e2f4df50b1f61d4194",
+											"9290f38c5d07c2e2f4df57b1f61d4196"
+										],
+										"ENAM": [
+											"00920f38ce07c2e2f4df50b1f61d4194"
+										]
+									}
+								},
+								"country_pools": {
+									"type": "object",
+									"description": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools.",
+									"example": {
+										"US": [
+											"de90f38ced07c2e2f4df50b1f61d4194",
+											"00920f38ce07c2e2f4df50b1f61d4194"
+										],
+										"GB": [
+											"abd90f38ced07c2e2f4df50b1f61d4194"
+										]
+									}
+								},
+								"random_steering": {
+									"type": "object",
+									"description": "Configure pool weights for random steering. When steering_policy is 'random', a random pool is selected with probability proportional to these pool weights.",
+									"properties": {
+										"pool_weights": {
+											"type": "object",
+											"description": "A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer.",
+											"example": {
+												"de90f38ced07c2e2f4df50b1f61d4194": 0.3,
+												"9290f38c5d07c2e2f4df57b1f61d4196": 0.5
+											}
+										},
+										"default_weight": {
+											"type": "number",
+											"minimum": 0,
+											"maximum": 1,
+											"multipleOfPrecision": 0.1,
+											"description": "The default weight for pools in the load balancer that are not specified in the pool_weights map.",
+											"example": 0.2,
+											"default": 1
+										}
+									}
+								}
+							}
+						},
+						"priority": {
+							"type": "integer",
+							"description": "The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.",
+							"example": 55,
+							"default": 0
+						},
+						"disabled": {
+							"type": "boolean",
+							"description": "Disable this specific rule. It will no longer be evaluated by this load balancer.",
+							"default": false
+						},
+						"terminates": {
+							"type": "boolean",
+							"description": "If this rule's condition is true, terminates causes rule evaluation to stop after processing this rule.",
+							"default": false
+						},
+						"fixed_response": {
+							"type": "object",
+							"description": "A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed_response is supplied the rule will be marked as terminates.",
+							"properties": {
+								"message_body": {
+									"type": "string",
+									"description": "Text to include as the http body.",
+									"maxLength": 1024,
+									"example": "Testing Hello"
+								},
+								"status_code": {
+									"type": "integer",
+									"description": "The http status code to respond with.",
+									"example": 200
+								},
+								"content_type": {
+									"type": "string",
+									"description": "The http 'Content-Type' header to include in the response.",
+									"maxLength": 32,
+									"example": "application/json"
+								},
+								"location": {
+									"type": "string",
+									"description": "The http 'Location' header to include in the response.",
+									"maxLength": 2048,
+									"example": "www.example.com"
+								}
+							}
+						}
+					}
+				},
+				"additionalItems": false
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"created_on",
+			"modified_on",
+			"description",
+			"name",
+			"enabled",
+			"ttl",
+			"fallback_pool",
+			"default_pools",
+			"region_pools",
+			"country_pools",
+			"pop_pools",
+			"proxied",
+			"steering_policy",
+			"session_affinity",
+			"session_affinity_attributes",
+			"session_affinity_ttl",
+			"random_steering",
+			"rules"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"699d98642c564d2e855e9661899b7252\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"description\": \"Load Balancer for www.example.com\",\n  \"name\": \"www.example.com\",\n  \"enabled\": true,\n  \"ttl\": 30,\n  \"fallback_pool\": \"17b5962d775c646f3f9725cbc7a53df4\",\n  \"default_pools\": [\n    \"17b5962d775c646f3f9725cbc7a53df4\",\n    \"9290f38c5d07c2e2f4df57b1f61d4196\",\n    \"00920f38ce07c2e2f4df50b1f61d4194\"\n  ],\n  \"region_pools\": {\n    \"WNAM\": [\n      \"de90f38ced07c2e2f4df50b1f61d4194\",\n      \"9290f38c5d07c2e2f4df57b1f61d4196\"\n    ],\n    \"ENAM\": [\n      \"00920f38ce07c2e2f4df50b1f61d4194\"\n    ]\n  },\n  \"country_pools\": {\n    \"US\": [\n      \"de90f38ced07c2e2f4df50b1f61d4194\",\n      \"00920f38ce07c2e2f4df50b1f61d4194\"\n    ],\n    \"GB\": [\n      \"abd90f38ced07c2e2f4df50b1f61d4194\"\n    ]\n  },\n  \"pop_pools\": {\n    \"LAX\": [\n      \"de90f38ced07c2e2f4df50b1f61d4194\",\n      \"9290f38c5d07c2e2f4df57b1f61d4196\"\n    ],\n    \"LHR\": [\n      \"abd90f38ced07c2e2f4df50b1f61d4194\",\n      \"f9138c5d07c2e2f4df57b1f61d4196\"\n    ],\n    \"SJC\": [\n      \"00920f38ce07c2e2f4df50b1f61d4194\"\n    ]\n  },\n  \"proxied\": true,\n  \"steering_policy\": \"dynamic_latency\",\n  \"session_affinity\": \"cookie\",\n  \"session_affinity_attributes\": {\n    \"samesite\": \"Auto\",\n    \"secure\": \"Auto\",\n    \"drain_duration\": 100,\n    \"zero_downtime_failover\": \"sticky\"\n  },\n  \"session_affinity_ttl\": 5000,\n  \"random_steering\": {\n    \"pool_weights\": {\n      \"de90f38ced07c2e2f4df50b1f61d4194\": 0.3,\n      \"9290f38c5d07c2e2f4df57b1f61d4196\": 0.5\n    },\n    \"default_weight\": 0.2\n  },\n  \"rules\": [\n    {\n      \"name\": \"route the path /testing to testing datacenter.\",\n      \"condition\": \"http.request.uri.path contains \\\"/testing\\\"\",\n      \"overrides\": {\n        \"session_affinity\": \"cookie\",\n        \"session_affinity_ttl\": 5000,\n        \"session_affinity_attributes\": {\n          \"samesite\": \"Auto\",\n          \"secure\": \"Auto\",\n          \"drain_duration\": 100,\n          \"zero_downtime_failover\": \"sticky\"\n        },\n        \"ttl\": 30,\n        \"steering_policy\": \"dynamic_latency\",\n        \"fallback_pool\": \"17b5962d775c646f3f9725cbc7a53df4\",\n        \"default_pools\": [\n          \"17b5962d775c646f3f9725cbc7a53df4\",\n          \"9290f38c5d07c2e2f4df57b1f61d4196\",\n          \"00920f38ce07c2e2f4df50b1f61d4194\"\n        ],\n        \"pop_pools\": {\n          \"LAX\": [\n            \"de90f38ced07c2e2f4df50b1f61d4194\",\n            \"9290f38c5d07c2e2f4df57b1f61d4196\"\n          ],\n          \"LHR\": [\n            \"abd90f38ced07c2e2f4df50b1f61d4194\",\n            \"f9138c5d07c2e2f4df57b1f61d4196\"\n          ],\n          \"SJC\": [\n            \"00920f38ce07c2e2f4df50b1f61d4194\"\n          ]\n        },\n        \"region_pools\": {\n          \"WNAM\": [\n            \"de90f38ced07c2e2f4df50b1f61d4194\",\n            \"9290f38c5d07c2e2f4df57b1f61d4196\"\n          ],\n          \"ENAM\": [\n            \"00920f38ce07c2e2f4df50b1f61d4194\"\n          ]\n        },\n        \"country_pools\": {\n          \"US\": [\n            \"de90f38ced07c2e2f4df50b1f61d4194\",\n            \"00920f38ce07c2e2f4df50b1f61d4194\"\n          ],\n          \"GB\": [\n            \"abd90f38ced07c2e2f4df50b1f61d4194\"\n          ]\n        },\n        \"random_steering\": {\n          \"pool_weights\": {\n            \"de90f38ced07c2e2f4df50b1f61d4194\": 0.3,\n            \"9290f38c5d07c2e2f4df57b1f61d4196\": 0.5\n          },\n          \"default_weight\": 0.2\n        }\n      },\n      \"priority\": 55,\n      \"disabled\": false,\n      \"terminates\": false,\n      \"fixed_response\": {\n        \"message_body\": \"Testing Hello\",\n        \"status_code\": 200,\n        \"content_type\": \"application/json\",\n        \"location\": \"www.example.com\"\n      }\n    }\n  ]\n}",
+		"title": "Load Balancers",
+		"description": "Zone-level Load Balancers"
+	}
+}

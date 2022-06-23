@@ -1,0 +1,723 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/teams/rules.json",
+	"title": "Zero Trust Gateway Rules",
+	"description": "Secure Web Gateway rules are a set of expressions(conditions) that evaluate at various phases of your internet traffic, to determine if a specific action has to be performed. These expressions can be evaluated to a true/false value and based on the evaluation result, an associated action, like whether to reject the request, or allow it, or override it, or browser isolate it is applied.",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Zero Trust Gateway Rules",
+			"description": "List Zero Trust Gateway Rules for an account",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/gateway/rules",
+			"method": "GET",
+			"cfOwnership": "gateway",
+			"html_id": "zero-trust-gateway-rules-list-zero-trust-gateway-rules",
+			"uri": "accounts/:identifier/gateway/rules",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/rules\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"name\": \"block bad websites\",\n      \"description\": \"Block the bad websites based on host name\",\n      \"precedence\": 1,\n      \"enabled\": true,\n      \"action\": \"allow\",\n      \"filters\": \"[\\\"http\\\"]\",\n      \"traffic\": \"http.request.host == \\\"example.com\\\"\",\n      \"identity\": \"any(identity.groups.name[*] in {\\\"finance\\\"})\",\n      \"device_posture\": \"any(device_posture.checks.passed[*] in {\\\"1308749e-fcfb-4ebc-b051-fe022b632644\\\"})\",\n      \"rule_settings\": {\n        \"block_page_enabled\": \"true\",\n        \"block_reason\": \"This website is a security risk\",\n        \"override_host\": \"example.com\",\n        \"override_ips\": \"[1.1.1.1, 2.2.2.2]\",\n        \"l4override\": {\n          \"ip\": \"1.1.1.1\",\n          \"port\": \"80\"\n        },\n        \"add_headers\": {\n          \"X-Custom-Header-Name\": [\n            \"somecustomvalue\"\n          ],\n          \"My-Next-Header\": [\n            \"foo\",\n            \"bar\"\n          ]\n        },\n        \"ip_categories\": true,\n        \"biso_admin_controls\": {\n          \"dp\": false,\n          \"dcp\": false,\n          \"dd\": false,\n          \"du\": false,\n          \"dk\": false\n        },\n        \"check_session\": {\n          \"enforce\": true,\n          \"duration\": \"300s\"\n        },\n        \"insecure_disable_dnssec_validation\": false\n      },\n      \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"deleted_at\": null\n    }\n  ]\n}"
+		},
+		{
+			"title": "Zero Trust Gateway Rule Details",
+			"description": "Fetch a single Zero Trust Gateway Rule",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/gateway/rules/{#/definitions/uuid}",
+			"method": "GET",
+			"cfOwnership": "gateway",
+			"html_id": "zero-trust-gateway-rules-zero-trust-gateway-rule-details",
+			"uri": "accounts/:identifier/gateway/rules/:uuid",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/rules/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"name\": \"block bad websites\",\n    \"description\": \"Block the bad websites based on host name\",\n    \"precedence\": 1,\n    \"enabled\": true,\n    \"action\": \"allow\",\n    \"filters\": \"[\\\"http\\\"]\",\n    \"traffic\": \"http.request.host == \\\"example.com\\\"\",\n    \"identity\": \"any(identity.groups.name[*] in {\\\"finance\\\"})\",\n    \"device_posture\": \"any(device_posture.checks.passed[*] in {\\\"1308749e-fcfb-4ebc-b051-fe022b632644\\\"})\",\n    \"rule_settings\": {\n      \"block_page_enabled\": \"true\",\n      \"block_reason\": \"This website is a security risk\",\n      \"override_host\": \"example.com\",\n      \"override_ips\": \"[1.1.1.1, 2.2.2.2]\",\n      \"l4override\": {\n        \"ip\": \"1.1.1.1\",\n        \"port\": \"80\"\n      },\n      \"add_headers\": {\n        \"X-Custom-Header-Name\": [\n          \"somecustomvalue\"\n        ],\n        \"My-Next-Header\": [\n          \"foo\",\n          \"bar\"\n        ]\n      },\n      \"ip_categories\": true,\n      \"biso_admin_controls\": {\n        \"dp\": false,\n        \"dcp\": false,\n        \"dd\": false,\n        \"du\": false,\n        \"dk\": false\n      },\n      \"check_session\": {\n        \"enforce\": true,\n        \"duration\": \"300s\"\n      },\n      \"insecure_disable_dnssec_validation\": false\n    },\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"deleted_at\": null\n  }\n}"
+		},
+		{
+			"title": "Create Zero Trust Gateway Rule",
+			"description": "Create a new Zero Trust Gateway Rule",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/gateway/rules",
+			"method": "POST",
+			"cfOwnership": "gateway",
+			"html_id": "zero-trust-gateway-rules-create-zero-trust-gateway-rule",
+			"uri": "accounts/:identifier/gateway/rules",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/rules\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"block bad websites\",\"description\":\"Block the bad websites based on host name\",\"action\":\"allow\",\"filters\":\"[\\\"http\\\"]\",\"enabled\":true,\"precedence\":1,\"traffic\":\"http.request.host == \\\"example.com\\\"\",\"identity\":\"any(identity.groups.name[*] in {\\\"finance\\\"})\",\"device_posture\":\"any(device_posture.checks.passed[*] in {\\\"1308749e-fcfb-4ebc-b051-fe022b632644\\\"})\",\"rule_settings\":{\"block_page_enabled\":\"true\",\"block_reason\":\"This website is a security risk\",\"override_host\":\"example.com\",\"override_ips\":\"[1.1.1.1, 2.2.2.2]\",\"l4override\":{\"ip\":\"1.1.1.1\",\"port\":\"80\"},\"add_headers\":{\"X-Custom-Header-Name\":[\"somecustomvalue\"],\"My-Next-Header\":[\"foo\",\"bar\"]},\"ip_categories\":true,\"biso_admin_controls\":{\"dp\":false,\"dcp\":false,\"dd\":false,\"du\":false,\"dk\":false},\"check_session\":{\"enforce\":true,\"duration\":\"300s\"},\"insecure_disable_dnssec_validation\":false}}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"block bad websites\"",
+						"description": "The name of the Rule."
+					},
+					"description": {
+						"type": "string",
+						"example": "\"Block the bad websites based on host name\"",
+						"description": "The description of the Rule"
+					},
+					"action": {
+						"type": "string",
+						"example": "\"allow\"",
+						"description": "The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to 'true'",
+						"enum": [
+							"on",
+							"off",
+							"allow",
+							"block",
+							"scan",
+							"noscan",
+							"safesearch",
+							"ytrestricted",
+							"isolate",
+							"noisolate",
+							"override",
+							"l4_override"
+						]
+					},
+					"filters": {
+						"type": "array",
+						"example": "\"[\\\"http\\\"]\"",
+						"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions",
+						"items": {
+							"type": "string",
+							"enum": [
+								"http",
+								"dns",
+								"l4"
+							],
+							"example": "http",
+							"description": "The protocol or layer to use"
+						}
+					},
+					"enabled": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Set if the rule is enabled"
+					},
+					"precedence": {
+						"type": "integer",
+						"example": "1",
+						"description": "Precedence sets the ordering of the rules. Lower values indicate higher precedence. At each processing phase, applicable rules are evaluated in ascending order of this value."
+					},
+					"traffic": {
+						"type": "string",
+						"example": "\"http.request.host == \\\"example.com\\\"\"",
+						"description": "The wirefilter expression to be used for traffic matching"
+					},
+					"identity": {
+						"type": "string",
+						"example": "\"any(identity.groups.name[*] in {\\\"finance\\\"})\"",
+						"description": "The wirefilter expression to be used for identity matching"
+					},
+					"device_posture": {
+						"type": "string",
+						"example": "\"any(device_posture.checks.passed[*] in {\\\"1308749e-fcfb-4ebc-b051-fe022b632644\\\"})\"",
+						"description": "The wirefilter expression to be used for device posture check matching"
+					},
+					"rule_settings": {
+						"type": "object",
+						"example": "{\n  \"block_page_enabled\": \"true\",\n  \"block_reason\": \"This website is a security risk\",\n  \"override_host\": \"example.com\",\n  \"override_ips\": \"[1.1.1.1, 2.2.2.2]\",\n  \"l4override\": {\n    \"ip\": \"1.1.1.1\",\n    \"port\": \"80\"\n  },\n  \"add_headers\": {\n    \"X-Custom-Header-Name\": [\n      \"somecustomvalue\"\n    ],\n    \"My-Next-Header\": [\n      \"foo\",\n      \"bar\"\n    ]\n  },\n  \"ip_categories\": true,\n  \"biso_admin_controls\": {\n    \"dp\": false,\n    \"dcp\": false,\n    \"dd\": false,\n    \"du\": false,\n    \"dk\": false\n  },\n  \"check_session\": {\n    \"enforce\": true,\n    \"duration\": \"300s\"\n  },\n  \"insecure_disable_dnssec_validation\": false\n}",
+						"properties": {
+							"block_page_enabled": {
+								"type": "boolean",
+								"example": "\"true\"",
+								"description": "Enable the custom block page"
+							},
+							"block_reason": {
+								"type": "string",
+								"example": "\"This website is a security risk\"",
+								"description": "The text describing why this block occurred that will be displayed on the custom block page (if enabled)"
+							},
+							"override_host": {
+								"type": "string",
+								"example": "\"example.com\"",
+								"description": "Override matching DNS queries with this"
+							},
+							"override_ips": {
+								"type": "array",
+								"example": "\"[1.1.1.1, 2.2.2.2]\"",
+								"description": "Override matching DNS queries with this",
+								"items": {
+									"type": "string",
+									"example": "1.1.1.1",
+									"description": "IPv4 or IPv6 address"
+								}
+							},
+							"l4override": {
+								"type": "object",
+								"example": "{\n  \"ip\": \"1.1.1.1\",\n  \"port\": \"80\"\n}",
+								"properties": {
+									"ip": {
+										"type": "string",
+										"example": "\"1.1.1.1\"",
+										"description": "IPv4 or IPv6 address"
+									},
+									"port": {
+										"type": "integer",
+										"example": "\"80\"",
+										"description": "A port number to use for TCP/UDP overrides"
+									}
+								},
+								"description": "Send matching traffic to the supplied destination IP address and port."
+							},
+							"add_headers": {
+								"type": "object",
+								"example": "{\n  \"X-Custom-Header-Name\": [\n    \"somecustomvalue\"\n  ],\n  \"My-Next-Header\": [\n    \"foo\",\n    \"bar\"\n  ]\n}",
+								"description": "Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s)."
+							},
+							"ip_categories": {
+								"type": "boolean",
+								"example": "true",
+								"description": "Include IPs in DNS resolver category blocks. By default categories only block on domain names."
+							},
+							"biso_admin_controls": {
+								"type": "object",
+								"example": "{\n  \"dp\": false,\n  \"dcp\": false,\n  \"dd\": false,\n  \"du\": false,\n  \"dk\": false\n}",
+								"properties": {
+									"dp": {
+										"type": "boolean",
+										"example": "false",
+										"description": "Disable printing"
+									},
+									"dcp": {
+										"type": "boolean",
+										"example": "false",
+										"description": "Disable copy-paste"
+									},
+									"dd": {
+										"type": "boolean",
+										"example": "false",
+										"description": "Disable download"
+									},
+									"du": {
+										"type": "boolean",
+										"example": "false",
+										"description": "Disable upload"
+									},
+									"dk": {
+										"type": "boolean",
+										"example": "false",
+										"description": "Disable keyboard usage"
+									}
+								},
+								"description": "Configure how browser isolation behaves"
+							},
+							"check_session": {
+								"type": "object",
+								"example": "{\n  \"enforce\": true,\n  \"duration\": \"300s\"\n}",
+								"properties": {
+									"enforce": {
+										"type": "boolean",
+										"example": "true",
+										"description": "Enable session enforcement for this fule"
+									},
+									"duration": {
+										"type": "string",
+										"example": "\"300s\"",
+										"description": "Configure how fresh the session needs to be to be considered valid"
+									}
+								},
+								"description": "Configure how session check behaves"
+							},
+							"insecure_disable_dnssec_validation": {
+								"type": "boolean",
+								"example": "false",
+								"description": "INSECURE - disable DNSSEC validation (for allow actions)"
+							}
+						},
+						"description": "Additional settings that modify the rule's action"
+					}
+				},
+				"required_props": [
+					"name",
+					"action"
+				],
+				"optional_props": [
+					"description",
+					"filters",
+					"enabled",
+					"precedence",
+					"traffic",
+					"identity",
+					"device_posture",
+					"rule_settings"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": \"block bad websites\",\n  \"description\": \"Block the bad websites based on host name\",\n  \"action\": \"allow\",\n  \"filters\": \"[\\\"http\\\"]\",\n  \"enabled\": true,\n  \"precedence\": 1,\n  \"traffic\": \"http.request.host == \\\"example.com\\\"\",\n  \"identity\": \"any(identity.groups.name[*] in {\\\"finance\\\"})\",\n  \"device_posture\": \"any(device_posture.checks.passed[*] in {\\\"1308749e-fcfb-4ebc-b051-fe022b632644\\\"})\",\n  \"rule_settings\": {\n    \"block_page_enabled\": \"true\",\n    \"block_reason\": \"This website is a security risk\",\n    \"override_host\": \"example.com\",\n    \"override_ips\": \"[1.1.1.1, 2.2.2.2]\",\n    \"l4override\": {\n      \"ip\": \"1.1.1.1\",\n      \"port\": \"80\"\n    },\n    \"add_headers\": {\n      \"X-Custom-Header-Name\": [\n        \"somecustomvalue\"\n      ],\n      \"My-Next-Header\": [\n        \"foo\",\n        \"bar\"\n      ]\n    },\n    \"ip_categories\": true,\n    \"biso_admin_controls\": {\n      \"dp\": false,\n      \"dcp\": false,\n      \"dd\": false,\n      \"du\": false,\n      \"dk\": false\n    },\n    \"check_session\": {\n      \"enforce\": true,\n      \"duration\": \"300s\"\n    },\n    \"insecure_disable_dnssec_validation\": false\n  }\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"name\": \"block bad websites\",\n    \"description\": \"Block the bad websites based on host name\",\n    \"precedence\": 1,\n    \"enabled\": true,\n    \"action\": \"allow\",\n    \"filters\": \"[\\\"http\\\"]\",\n    \"traffic\": \"http.request.host == \\\"example.com\\\"\",\n    \"identity\": \"any(identity.groups.name[*] in {\\\"finance\\\"})\",\n    \"device_posture\": \"any(device_posture.checks.passed[*] in {\\\"1308749e-fcfb-4ebc-b051-fe022b632644\\\"})\",\n    \"rule_settings\": {\n      \"block_page_enabled\": \"true\",\n      \"block_reason\": \"This website is a security risk\",\n      \"override_host\": \"example.com\",\n      \"override_ips\": \"[1.1.1.1, 2.2.2.2]\",\n      \"l4override\": {\n        \"ip\": \"1.1.1.1\",\n        \"port\": \"80\"\n      },\n      \"add_headers\": {\n        \"X-Custom-Header-Name\": [\n          \"somecustomvalue\"\n        ],\n        \"My-Next-Header\": [\n          \"foo\",\n          \"bar\"\n        ]\n      },\n      \"ip_categories\": true,\n      \"biso_admin_controls\": {\n        \"dp\": false,\n        \"dcp\": false,\n        \"dd\": false,\n        \"du\": false,\n        \"dk\": false\n      },\n      \"check_session\": {\n        \"enforce\": true,\n        \"duration\": \"300s\"\n      },\n      \"insecure_disable_dnssec_validation\": false\n    },\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"deleted_at\": null\n  }\n}"
+		},
+		{
+			"title": "Update Zero Trust Gateway Rule",
+			"description": "Update a configured Zero Trust Gateway Rule",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/gateway/rules/{#/definitions/uuid}",
+			"method": "PUT",
+			"cfOwnership": "gateway",
+			"html_id": "zero-trust-gateway-rules-update-zero-trust-gateway-rule",
+			"uri": "accounts/:identifier/gateway/rules/:uuid",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/rules/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"block bad websites\",\"description\":\"Block the bad websites based on host name\",\"action\":\"allow\",\"filters\":\"[\\\"http\\\"]\",\"enabled\":true,\"precedence\":1,\"traffic\":\"http.request.host == \\\"example.com\\\"\",\"identity\":\"any(identity.groups.name[*] in {\\\"finance\\\"})\",\"device_posture\":\"any(device_posture.checks.passed[*] in {\\\"1308749e-fcfb-4ebc-b051-fe022b632644\\\"})\",\"rule_settings\":{\"block_page_enabled\":\"true\",\"block_reason\":\"This website is a security risk\",\"override_host\":\"example.com\",\"override_ips\":\"[1.1.1.1, 2.2.2.2]\",\"l4override\":{\"ip\":\"1.1.1.1\",\"port\":\"80\"},\"add_headers\":{\"X-Custom-Header-Name\":[\"somecustomvalue\"],\"My-Next-Header\":[\"foo\",\"bar\"]},\"ip_categories\":true,\"biso_admin_controls\":{\"dp\":false,\"dcp\":false,\"dd\":false,\"du\":false,\"dk\":false},\"check_session\":{\"enforce\":true,\"duration\":\"300s\"},\"insecure_disable_dnssec_validation\":false}}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"block bad websites\"",
+						"description": "The name of the Rule."
+					},
+					"description": {
+						"type": "string",
+						"example": "\"Block the bad websites based on host name\"",
+						"description": "The description of the Rule"
+					},
+					"action": {
+						"type": "string",
+						"example": "\"allow\"",
+						"description": "The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to 'true'",
+						"enum": [
+							"on",
+							"off",
+							"allow",
+							"block",
+							"scan",
+							"noscan",
+							"safesearch",
+							"ytrestricted",
+							"isolate",
+							"noisolate",
+							"override",
+							"l4_override"
+						]
+					},
+					"filters": {
+						"type": "array",
+						"example": "\"[\\\"http\\\"]\"",
+						"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions",
+						"items": {
+							"type": "string",
+							"enum": [
+								"http",
+								"dns",
+								"l4"
+							],
+							"example": "http",
+							"description": "The protocol or layer to use"
+						}
+					},
+					"enabled": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Set if the rule is enabled"
+					},
+					"precedence": {
+						"type": "integer",
+						"example": "1",
+						"description": "Precedence sets the ordering of the rules. Lower values indicate higher precedence. At each processing phase, applicable rules are evaluated in ascending order of this value."
+					},
+					"traffic": {
+						"type": "string",
+						"example": "\"http.request.host == \\\"example.com\\\"\"",
+						"description": "The wirefilter expression to be used for traffic matching"
+					},
+					"identity": {
+						"type": "string",
+						"example": "\"any(identity.groups.name[*] in {\\\"finance\\\"})\"",
+						"description": "The wirefilter expression to be used for identity matching"
+					},
+					"device_posture": {
+						"type": "string",
+						"example": "\"any(device_posture.checks.passed[*] in {\\\"1308749e-fcfb-4ebc-b051-fe022b632644\\\"})\"",
+						"description": "The wirefilter expression to be used for device posture check matching"
+					},
+					"rule_settings": {
+						"type": "object",
+						"example": "{\n  \"block_page_enabled\": \"true\",\n  \"block_reason\": \"This website is a security risk\",\n  \"override_host\": \"example.com\",\n  \"override_ips\": \"[1.1.1.1, 2.2.2.2]\",\n  \"l4override\": {\n    \"ip\": \"1.1.1.1\",\n    \"port\": \"80\"\n  },\n  \"add_headers\": {\n    \"X-Custom-Header-Name\": [\n      \"somecustomvalue\"\n    ],\n    \"My-Next-Header\": [\n      \"foo\",\n      \"bar\"\n    ]\n  },\n  \"ip_categories\": true,\n  \"biso_admin_controls\": {\n    \"dp\": false,\n    \"dcp\": false,\n    \"dd\": false,\n    \"du\": false,\n    \"dk\": false\n  },\n  \"check_session\": {\n    \"enforce\": true,\n    \"duration\": \"300s\"\n  },\n  \"insecure_disable_dnssec_validation\": false\n}",
+						"properties": {
+							"block_page_enabled": {
+								"type": "boolean",
+								"example": "\"true\"",
+								"description": "Enable the custom block page"
+							},
+							"block_reason": {
+								"type": "string",
+								"example": "\"This website is a security risk\"",
+								"description": "The text describing why this block occurred that will be displayed on the custom block page (if enabled)"
+							},
+							"override_host": {
+								"type": "string",
+								"example": "\"example.com\"",
+								"description": "Override matching DNS queries with this"
+							},
+							"override_ips": {
+								"type": "array",
+								"example": "\"[1.1.1.1, 2.2.2.2]\"",
+								"description": "Override matching DNS queries with this",
+								"items": {
+									"type": "string",
+									"example": "1.1.1.1",
+									"description": "IPv4 or IPv6 address"
+								}
+							},
+							"l4override": {
+								"type": "object",
+								"example": "{\n  \"ip\": \"1.1.1.1\",\n  \"port\": \"80\"\n}",
+								"properties": {
+									"ip": {
+										"type": "string",
+										"example": "\"1.1.1.1\"",
+										"description": "IPv4 or IPv6 address"
+									},
+									"port": {
+										"type": "integer",
+										"example": "\"80\"",
+										"description": "A port number to use for TCP/UDP overrides"
+									}
+								},
+								"description": "Send matching traffic to the supplied destination IP address and port."
+							},
+							"add_headers": {
+								"type": "object",
+								"example": "{\n  \"X-Custom-Header-Name\": [\n    \"somecustomvalue\"\n  ],\n  \"My-Next-Header\": [\n    \"foo\",\n    \"bar\"\n  ]\n}",
+								"description": "Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s)."
+							},
+							"ip_categories": {
+								"type": "boolean",
+								"example": "true",
+								"description": "Include IPs in DNS resolver category blocks. By default categories only block on domain names."
+							},
+							"biso_admin_controls": {
+								"type": "object",
+								"example": "{\n  \"dp\": false,\n  \"dcp\": false,\n  \"dd\": false,\n  \"du\": false,\n  \"dk\": false\n}",
+								"properties": {
+									"dp": {
+										"type": "boolean",
+										"example": "false",
+										"description": "Disable printing"
+									},
+									"dcp": {
+										"type": "boolean",
+										"example": "false",
+										"description": "Disable copy-paste"
+									},
+									"dd": {
+										"type": "boolean",
+										"example": "false",
+										"description": "Disable download"
+									},
+									"du": {
+										"type": "boolean",
+										"example": "false",
+										"description": "Disable upload"
+									},
+									"dk": {
+										"type": "boolean",
+										"example": "false",
+										"description": "Disable keyboard usage"
+									}
+								},
+								"description": "Configure how browser isolation behaves"
+							},
+							"check_session": {
+								"type": "object",
+								"example": "{\n  \"enforce\": true,\n  \"duration\": \"300s\"\n}",
+								"properties": {
+									"enforce": {
+										"type": "boolean",
+										"example": "true",
+										"description": "Enable session enforcement for this fule"
+									},
+									"duration": {
+										"type": "string",
+										"example": "\"300s\"",
+										"description": "Configure how fresh the session needs to be to be considered valid"
+									}
+								},
+								"description": "Configure how session check behaves"
+							},
+							"insecure_disable_dnssec_validation": {
+								"type": "boolean",
+								"example": "false",
+								"description": "INSECURE - disable DNSSEC validation (for allow actions)"
+							}
+						},
+						"description": "Additional settings that modify the rule's action"
+					}
+				},
+				"required_props": [
+					"name",
+					"action"
+				],
+				"optional_props": [
+					"description",
+					"filters",
+					"enabled",
+					"precedence",
+					"traffic",
+					"identity",
+					"device_posture",
+					"rule_settings"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": \"block bad websites\",\n  \"description\": \"Block the bad websites based on host name\",\n  \"action\": \"allow\",\n  \"filters\": \"[\\\"http\\\"]\",\n  \"enabled\": true,\n  \"precedence\": 1,\n  \"traffic\": \"http.request.host == \\\"example.com\\\"\",\n  \"identity\": \"any(identity.groups.name[*] in {\\\"finance\\\"})\",\n  \"device_posture\": \"any(device_posture.checks.passed[*] in {\\\"1308749e-fcfb-4ebc-b051-fe022b632644\\\"})\",\n  \"rule_settings\": {\n    \"block_page_enabled\": \"true\",\n    \"block_reason\": \"This website is a security risk\",\n    \"override_host\": \"example.com\",\n    \"override_ips\": \"[1.1.1.1, 2.2.2.2]\",\n    \"l4override\": {\n      \"ip\": \"1.1.1.1\",\n      \"port\": \"80\"\n    },\n    \"add_headers\": {\n      \"X-Custom-Header-Name\": [\n        \"somecustomvalue\"\n      ],\n      \"My-Next-Header\": [\n        \"foo\",\n        \"bar\"\n      ]\n    },\n    \"ip_categories\": true,\n    \"biso_admin_controls\": {\n      \"dp\": false,\n      \"dcp\": false,\n      \"dd\": false,\n      \"du\": false,\n      \"dk\": false\n    },\n    \"check_session\": {\n      \"enforce\": true,\n      \"duration\": \"300s\"\n    },\n    \"insecure_disable_dnssec_validation\": false\n  }\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"name\": \"block bad websites\",\n    \"description\": \"Block the bad websites based on host name\",\n    \"precedence\": 1,\n    \"enabled\": true,\n    \"action\": \"allow\",\n    \"filters\": \"[\\\"http\\\"]\",\n    \"traffic\": \"http.request.host == \\\"example.com\\\"\",\n    \"identity\": \"any(identity.groups.name[*] in {\\\"finance\\\"})\",\n    \"device_posture\": \"any(device_posture.checks.passed[*] in {\\\"1308749e-fcfb-4ebc-b051-fe022b632644\\\"})\",\n    \"rule_settings\": {\n      \"block_page_enabled\": \"true\",\n      \"block_reason\": \"This website is a security risk\",\n      \"override_host\": \"example.com\",\n      \"override_ips\": \"[1.1.1.1, 2.2.2.2]\",\n      \"l4override\": {\n        \"ip\": \"1.1.1.1\",\n        \"port\": \"80\"\n      },\n      \"add_headers\": {\n        \"X-Custom-Header-Name\": [\n          \"somecustomvalue\"\n        ],\n        \"My-Next-Header\": [\n          \"foo\",\n          \"bar\"\n        ]\n      },\n      \"ip_categories\": true,\n      \"biso_admin_controls\": {\n        \"dp\": false,\n        \"dcp\": false,\n        \"dd\": false,\n        \"du\": false,\n        \"dk\": false\n      },\n      \"check_session\": {\n        \"enforce\": true,\n        \"duration\": \"300s\"\n      },\n      \"insecure_disable_dnssec_validation\": false\n    },\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"deleted_at\": null\n  }\n}"
+		},
+		{
+			"title": "Delete Zero Trust Gateway Rule",
+			"description": "Delete a Zero Trust Gateway Rule",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/gateway/rules/{#/definitions/uuid}",
+			"method": "DELETE",
+			"cfOwnership": "gateway",
+			"html_id": "zero-trust-gateway-rules-delete-zero-trust-gateway-rule",
+			"uri": "accounts/:identifier/gateway/rules/:uuid",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/rules/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {}\n}"
+		}
+	],
+	"html_id": "zero-trust-gateway-rules",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"",
+				"maxLength": 36,
+				"description": "API Resource UUID tag"
+			},
+			"name": {
+				"type": "string",
+				"example": "\"block bad websites\"",
+				"description": "The name of the Rule."
+			},
+			"description": {
+				"type": "string",
+				"example": "\"Block the bad websites based on host name\"",
+				"description": "The description of the Rule"
+			},
+			"precedence": {
+				"type": "integer",
+				"example": "1",
+				"description": "Precedence sets the ordering of the rules. Lower values indicate higher precedence. At each processing phase, applicable rules are evaluated in ascending order of this value."
+			},
+			"enabled": {
+				"type": "boolean",
+				"example": "true",
+				"description": "Set if the rule is enabled"
+			},
+			"action": {
+				"type": "string",
+				"example": "\"allow\"",
+				"description": "The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to 'true'",
+				"enum": [
+					"on",
+					"off",
+					"allow",
+					"block",
+					"scan",
+					"noscan",
+					"safesearch",
+					"ytrestricted",
+					"isolate",
+					"noisolate",
+					"override",
+					"l4_override"
+				]
+			},
+			"filters": {
+				"type": "array",
+				"example": "\"[\\\"http\\\"]\"",
+				"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions",
+				"items": {
+					"type": "string",
+					"enum": [
+						"http",
+						"dns",
+						"l4"
+					],
+					"example": "http",
+					"description": "The protocol or layer to use"
+				}
+			},
+			"traffic": {
+				"type": "string",
+				"example": "\"http.request.host == \\\"example.com\\\"\"",
+				"description": "The wirefilter expression to be used for traffic matching"
+			},
+			"identity": {
+				"type": "string",
+				"example": "\"any(identity.groups.name[*] in {\\\"finance\\\"})\"",
+				"description": "The wirefilter expression to be used for identity matching"
+			},
+			"device_posture": {
+				"type": "string",
+				"example": "\"any(device_posture.checks.passed[*] in {\\\"1308749e-fcfb-4ebc-b051-fe022b632644\\\"})\"",
+				"description": "The wirefilter expression to be used for device posture check matching"
+			},
+			"rule_settings": {
+				"type": "object",
+				"example": "{\n  \"block_page_enabled\": \"true\",\n  \"block_reason\": \"This website is a security risk\",\n  \"override_host\": \"example.com\",\n  \"override_ips\": \"[1.1.1.1, 2.2.2.2]\",\n  \"l4override\": {\n    \"ip\": \"1.1.1.1\",\n    \"port\": \"80\"\n  },\n  \"add_headers\": {\n    \"X-Custom-Header-Name\": [\n      \"somecustomvalue\"\n    ],\n    \"My-Next-Header\": [\n      \"foo\",\n      \"bar\"\n    ]\n  },\n  \"ip_categories\": true,\n  \"biso_admin_controls\": {\n    \"dp\": false,\n    \"dcp\": false,\n    \"dd\": false,\n    \"du\": false,\n    \"dk\": false\n  },\n  \"check_session\": {\n    \"enforce\": true,\n    \"duration\": \"300s\"\n  },\n  \"insecure_disable_dnssec_validation\": false\n}",
+				"properties": {
+					"block_page_enabled": {
+						"type": "boolean",
+						"example": "\"true\"",
+						"description": "Enable the custom block page"
+					},
+					"block_reason": {
+						"type": "string",
+						"example": "\"This website is a security risk\"",
+						"description": "The text describing why this block occurred that will be displayed on the custom block page (if enabled)"
+					},
+					"override_host": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "Override matching DNS queries with this"
+					},
+					"override_ips": {
+						"type": "array",
+						"example": "\"[1.1.1.1, 2.2.2.2]\"",
+						"description": "Override matching DNS queries with this",
+						"items": {
+							"type": "string",
+							"example": "1.1.1.1",
+							"description": "IPv4 or IPv6 address"
+						}
+					},
+					"l4override": {
+						"type": "object",
+						"example": "{\n  \"ip\": \"1.1.1.1\",\n  \"port\": \"80\"\n}",
+						"properties": {
+							"ip": {
+								"type": "string",
+								"example": "\"1.1.1.1\"",
+								"description": "IPv4 or IPv6 address"
+							},
+							"port": {
+								"type": "integer",
+								"example": "\"80\"",
+								"description": "A port number to use for TCP/UDP overrides"
+							}
+						},
+						"description": "Send matching traffic to the supplied destination IP address and port."
+					},
+					"add_headers": {
+						"type": "object",
+						"example": "{\n  \"X-Custom-Header-Name\": [\n    \"somecustomvalue\"\n  ],\n  \"My-Next-Header\": [\n    \"foo\",\n    \"bar\"\n  ]\n}",
+						"description": "Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s)."
+					},
+					"ip_categories": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Include IPs in DNS resolver category blocks. By default categories only block on domain names."
+					},
+					"biso_admin_controls": {
+						"type": "object",
+						"example": "{\n  \"dp\": false,\n  \"dcp\": false,\n  \"dd\": false,\n  \"du\": false,\n  \"dk\": false\n}",
+						"properties": {
+							"dp": {
+								"type": "boolean",
+								"example": "false",
+								"description": "Disable printing"
+							},
+							"dcp": {
+								"type": "boolean",
+								"example": "false",
+								"description": "Disable copy-paste"
+							},
+							"dd": {
+								"type": "boolean",
+								"example": "false",
+								"description": "Disable download"
+							},
+							"du": {
+								"type": "boolean",
+								"example": "false",
+								"description": "Disable upload"
+							},
+							"dk": {
+								"type": "boolean",
+								"example": "false",
+								"description": "Disable keyboard usage"
+							}
+						},
+						"description": "Configure how browser isolation behaves"
+					},
+					"check_session": {
+						"type": "object",
+						"example": "{\n  \"enforce\": true,\n  \"duration\": \"300s\"\n}",
+						"properties": {
+							"enforce": {
+								"type": "boolean",
+								"example": "true",
+								"description": "Enable session enforcement for this fule"
+							},
+							"duration": {
+								"type": "string",
+								"example": "\"300s\"",
+								"description": "Configure how fresh the session needs to be to be considered valid"
+							}
+						},
+						"description": "Configure how session check behaves"
+					},
+					"insecure_disable_dnssec_validation": {
+						"type": "boolean",
+						"example": "false",
+						"description": "INSECURE - disable DNSSEC validation (for allow actions)"
+					}
+				},
+				"description": "Additional settings that modify the rule's action"
+			},
+			"created_at": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "Creation time",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"updated_at": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "Last modification time",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"deleted_at": {
+				"type": [
+					"string",
+					"null"
+				],
+				"example": "null",
+				"description": "Date of deletion, if any",
+				"format": "date-time",
+				"readOnly": true
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"name",
+			"description",
+			"precedence",
+			"enabled",
+			"action",
+			"filters",
+			"traffic",
+			"identity",
+			"device_posture",
+			"rule_settings",
+			"created_at",
+			"updated_at",
+			"deleted_at"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n  \"name\": \"block bad websites\",\n  \"description\": \"Block the bad websites based on host name\",\n  \"precedence\": 1,\n  \"enabled\": true,\n  \"action\": \"allow\",\n  \"filters\": \"[\\\"http\\\"]\",\n  \"traffic\": \"http.request.host == \\\"example.com\\\"\",\n  \"identity\": \"any(identity.groups.name[*] in {\\\"finance\\\"})\",\n  \"device_posture\": \"any(device_posture.checks.passed[*] in {\\\"1308749e-fcfb-4ebc-b051-fe022b632644\\\"})\",\n  \"rule_settings\": {\n    \"block_page_enabled\": \"true\",\n    \"block_reason\": \"This website is a security risk\",\n    \"override_host\": \"example.com\",\n    \"override_ips\": \"[1.1.1.1, 2.2.2.2]\",\n    \"l4override\": {\n      \"ip\": \"1.1.1.1\",\n      \"port\": \"80\"\n    },\n    \"add_headers\": {\n      \"X-Custom-Header-Name\": [\n        \"somecustomvalue\"\n      ],\n      \"My-Next-Header\": [\n        \"foo\",\n        \"bar\"\n      ]\n    },\n    \"ip_categories\": true,\n    \"biso_admin_controls\": {\n      \"dp\": false,\n      \"dcp\": false,\n      \"dd\": false,\n      \"du\": false,\n      \"dk\": false\n    },\n    \"check_session\": {\n      \"enforce\": true,\n      \"duration\": \"300s\"\n    },\n    \"insecure_disable_dnssec_validation\": false\n  },\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"deleted_at\": null\n}",
+		"title": "Zero Trust Gateway Rules",
+		"description": "Secure Web Gateway rules are a set of expressions(conditions) that evaluate at various phases of your internet traffic, to determine if a specific action has to be performed. These expressions can be evaluated to a true/false value and based on the evaluation result, an associated action, like whether to reject the request, or allow it, or override it, or browser isolate it is applied."
+	}
+}

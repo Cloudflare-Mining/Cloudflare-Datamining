@@ -1,0 +1,298 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/rulesets-rules.json",
+	"title": "Rules for Rulesets",
+	"description": "",
+	"cfExtendedDescription": "",
+	"type": "object",
+	"html_id": "rules-for-rulesets",
+	"links": [],
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"3a03d665bac047339bb530ecb439a90d\"",
+				"description": "The ID of the rule"
+			},
+			"version": {
+				"type": "string",
+				"example": "\"1\"",
+				"description": "The version of the rule"
+			},
+			"action": {
+				"type": "string",
+				"example": "\"block\"",
+				"description": "The action to take when the expression matches",
+				"enum": [
+					"block",
+					"challenge",
+					"ddos_dynamic",
+					"execute",
+					"force_connection_close",
+					"js_challenge",
+					"managed_challenge",
+					"log",
+					"score",
+					"skip",
+					"rewrite",
+					"redirect"
+				]
+			},
+			"expression": {
+				"type": "string",
+				"example": "\"not ip.src in {10.20.30.40}\"",
+				"description": "The expression"
+			},
+			"description": {
+				"type": "string",
+				"example": "\"Block all traffic except 10.20.30.40\"",
+				"description": "The description of the rule"
+			},
+			"action_parameters": {
+				"type": "object",
+				"example": "{\n  \"products\": []\n}",
+				"oneOf": [
+					{
+						"all_props": {
+							"products": {
+								"type": "array",
+								"example": "[]",
+								"description": "Bypass one or more of the following products",
+								"default": [],
+								"minLength": 1,
+								"items": {
+									"type": "string",
+									"enum": [
+										"bic",
+										"hot",
+										"ratelimit",
+										"securityLevel",
+										"uablock",
+										"waf",
+										"zonelockdown"
+									]
+								}
+							}
+						},
+						"required_props": [],
+						"optional_props": [
+							"products"
+						],
+						"objects": [],
+						"example": "{\n  \"products\": []\n}",
+						"description": "The action parameters for the bypass action"
+					},
+					{
+						"all_props": {
+							"id": {
+								"type": "string",
+								"description": "The ID of the ruleset to execute"
+							}
+						},
+						"required_props": [],
+						"optional_props": [
+							"id"
+						],
+						"objects": [],
+						"example": "{}",
+						"description": "The action parameters for the execute action"
+					},
+					{
+						"all_props": {
+							"uri": {
+								"type": "object",
+								"example": "{\n  \"path\": {\n    \"expression\": \"concat(\\\"/new/\\\", http.request.uri)\"\n  },\n  \"query\": {\n    \"expression\": \"concat(\\\"/new/\\\", http.request.uri)\"\n  }\n}",
+								"properties": {
+									"path": {
+										"example": "{\n  \"expression\": \"concat(\\\"/new/\\\", http.request.uri)\"\n}",
+										"oneOf": [
+											{
+												"all_props": {
+													"expression": {
+														"type": "string",
+														"example": "\"concat(\\\"/new/\\\", http.request.uri)\"",
+														"description": "Wirefilter expression to compute a new path or query string"
+													}
+												},
+												"required_props": [],
+												"optional_props": [
+													"expression"
+												],
+												"objects": [],
+												"example": "{\n  \"expression\": \"concat(\\\"/new/\\\", http.request.uri)\"\n}"
+											},
+											{
+												"all_props": {
+													"value": {
+														"type": "string",
+														"example": "\"/\"",
+														"description": "The new value of the path or query string"
+													}
+												},
+												"required_props": [],
+												"optional_props": [
+													"value"
+												],
+												"objects": [],
+												"example": "{\n  \"value\": \"/\"\n}"
+											}
+										],
+										"description": "The new path for the origin"
+									},
+									"query": {
+										"example": "{\n  \"expression\": \"concat(\\\"/new/\\\", http.request.uri)\"\n}",
+										"oneOf": [
+											{
+												"all_props": {
+													"expression": {
+														"type": "string",
+														"example": "\"concat(\\\"/new/\\\", http.request.uri)\"",
+														"description": "Wirefilter expression to compute a new path or query string"
+													}
+												},
+												"required_props": [],
+												"optional_props": [
+													"expression"
+												],
+												"objects": [],
+												"example": "{\n  \"expression\": \"concat(\\\"/new/\\\", http.request.uri)\"\n}"
+											},
+											{
+												"all_props": {
+													"value": {
+														"type": "string",
+														"example": "\"/\"",
+														"description": "The new value of the path or query string"
+													}
+												},
+												"required_props": [],
+												"optional_props": [
+													"value"
+												],
+												"objects": [],
+												"example": "{\n  \"value\": \"/\"\n}"
+											}
+										],
+										"description": "The new query string for the origin"
+									}
+								},
+								"description": "Rewrite the path, query string, or both for the origin"
+							}
+						},
+						"required_props": [],
+						"optional_props": [
+							"uri"
+						],
+						"objects": [],
+						"example": "{\n  \"uri\": {\n    \"path\": {\n      \"expression\": \"concat(\\\"/new/\\\", http.request.uri)\"\n    },\n    \"query\": {\n      \"expression\": \"concat(\\\"/new/\\\", http.request.uri)\"\n    }\n  }\n}",
+						"description": "The action parameters for the rewrite action"
+					},
+					{
+						"all_props": {
+							"increment": {
+								"type": "number",
+								"description": "The score increment"
+							},
+							"id": {
+								"type": "string",
+								"description": "The ID of the rule"
+							},
+							"version": {
+								"type": "string",
+								"description": "The version of the rule"
+							}
+						},
+						"required_props": [],
+						"optional_props": [
+							"increment",
+							"id",
+							"version"
+						],
+						"objects": [],
+						"example": "{}",
+						"description": "The action parameters for the score action"
+					},
+					{
+						"all_props": {
+							"ruleset": {
+								"type": "string",
+								"description": "Skip execution of these rulesets",
+								"enum": [
+									"current"
+								]
+							}
+						},
+						"required_props": [],
+						"optional_props": [
+							"ruleset"
+						],
+						"objects": [],
+						"example": "{}",
+						"description": "The action parameters for the skip action"
+					},
+					{
+						"all_props": {
+							"from_list": {
+								"type": "object",
+								"example": "{\n  \"name\": \"my_redirect_list\",\n  \"key\": \"http.request.full_uri\"\n}",
+								"properties": {
+									"name": {
+										"type": "string",
+										"example": "\"my_redirect_list\"",
+										"description": "The name of the redirect list"
+									},
+									"key": {
+										"type": "string",
+										"example": "\"http.request.full_uri\"",
+										"description": "Key to use to lookup the redirect in the list"
+									}
+								},
+								"description": "Applies a redirect based on a redirect list"
+							}
+						},
+						"required_props": [],
+						"optional_props": [
+							"from_list"
+						],
+						"objects": [],
+						"example": "{\n  \"from_list\": {\n    \"name\": \"my_redirect_list\",\n    \"key\": \"http.request.full_uri\"\n  }\n}",
+						"description": "The action parameters for the redirect action"
+					}
+				],
+				"description": "The parameters to configure the action"
+			},
+			"score_threshold": {
+				"type": "number",
+				"description": "Rule score threshold"
+			},
+			"logging": {
+				"type": "object",
+				"example": "{}",
+				"properties": {
+					"enabled": {
+						"type": "boolean",
+						"description": "Override the default logging behavior when a rule is matched"
+					}
+				},
+				"description": "The parameters to configure how the rule generates logs"
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"version",
+			"action",
+			"expression",
+			"description",
+			"action_parameters",
+			"score_threshold",
+			"logging"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"3a03d665bac047339bb530ecb439a90d\",\n  \"version\": \"1\",\n  \"action\": \"block\",\n  \"expression\": \"not ip.src in {10.20.30.40}\",\n  \"description\": \"Block all traffic except 10.20.30.40\",\n  \"action_parameters\": {\n    \"products\": []\n  },\n  \"logging\": {}\n}",
+		"title": "Rules for Rulesets",
+		"description": ""
+	}
+}

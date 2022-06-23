@@ -1,0 +1,518 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/teams/devices.json",
+	"title": "Devices",
+	"description": "Manage devices enrolled in Cloudflare for Teams.",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Devices",
+			"description": "List Enrolled Devices",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/devices",
+			"method": "GET",
+			"cfOwnership": "teams",
+			"html_id": "devices-list-devices",
+			"uri": "accounts/:identifier/devices",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices?limit=20&cursor=MjAyMS0xMC0xOVQyMDo1MDoyNS41NDU5NDda.L2KKczEeEeynSvpH_4kcCQ&start_date=2017-06-14T00:00:00Z&end_date=2017-06-14T00:00:00Z&order_by=created&direction=desc&deviceName=MyPhone&userName=John&email=user@example.com&type=windows&version=1.0.0&match=any\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"limit": {
+						"type": "number",
+						"example": "20",
+						"maximum": 100,
+						"default": 20,
+						"description": "The number of keys to return. The cursor attribute may be used to iterate over the next batch of keys if there are more than the limit."
+					},
+					"cursor": {
+						"type": "string",
+						"example": "\"MjAyMS0xMC0xOVQyMDo1MDoyNS41NDU5NDda.L2KKczEeEeynSvpH_4kcCQ\"",
+						"description": "Opaque token indicating the position from which to continue when requesting the next set of records if the amount of list results was limited by the limit parameter. A valid value for the cursor can be obtained from the cursors object in the result_info structure."
+					},
+					"start_date": {
+						"type": "string",
+						"example": "\"2017-06-14T00:00:00Z\"",
+						"format": "date-time",
+						"description": "The earliest date used to find devices whose last_seen field falls within that date range."
+					},
+					"end_date": {
+						"type": "string",
+						"example": "\"2017-06-14T00:00:00Z\"",
+						"format": "date-time",
+						"description": "The latest date used to find devices whose last_seen field falls within that date range."
+					},
+					"order_by": {
+						"example": "\"created\"",
+						"enum": [
+							"id",
+							"userName",
+							"deviceName",
+							"email",
+							"type",
+							"version",
+							"updated",
+							"created",
+							"last_seen"
+						],
+						"description": "The device field to order by.",
+						"default": "created"
+					},
+					"direction": {
+						"example": "\"desc\"",
+						"description": "The direction to sort device results.",
+						"default": "desc",
+						"enum": [
+							"asc",
+							"desc"
+						]
+					},
+					"deviceName": {
+						"type": "string",
+						"example": "\"MyPhone\"",
+						"description": "The device name."
+					},
+					"userName": {
+						"type": "string",
+						"example": "\"John\"",
+						"description": "The device user's name as defined by the configured Access IDP."
+					},
+					"email": {
+						"type": "string",
+						"example": "\"user@example.com\"",
+						"description": "Your contact email address",
+						"maxLength": 90
+					},
+					"type": {
+						"type": "string",
+						"example": "\"windows\"",
+						"enum": [
+							"windows",
+							"mac",
+							"linux",
+							"android",
+							"ios"
+						]
+					},
+					"version": {
+						"type": "string",
+						"example": "\"1.0.0\"",
+						"description": "The WARP client version."
+					},
+					"match": {
+						"example": "\"any\"",
+						"description": "Return results matching any or all of the provided search parameters.",
+						"enum": [
+							"any",
+							"all"
+						],
+						"default": "any"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"limit",
+					"cursor",
+					"start_date",
+					"end_date",
+					"order_by",
+					"direction",
+					"deviceName",
+					"userName",
+					"email",
+					"type",
+					"version",
+					"match"
+				],
+				"objects": [],
+				"example": "{\n  \"limit\": 20,\n  \"cursor\": \"MjAyMS0xMC0xOVQyMDo1MDoyNS41NDU5NDda.L2KKczEeEeynSvpH_4kcCQ\",\n  \"start_date\": \"2017-06-14T00:00:00Z\",\n  \"end_date\": \"2017-06-14T00:00:00Z\",\n  \"order_by\": \"created\",\n  \"direction\": \"desc\",\n  \"deviceName\": \"MyPhone\",\n  \"userName\": \"John\",\n  \"email\": \"user@example.com\",\n  \"type\": \"windows\",\n  \"version\": \"1.0.0\",\n  \"match\": \"any\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"user\": {\n        \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n        \"name\": \"John Appleseed\",\n        \"email\": \"user@example.com\"\n      },\n      \"key\": \"yek0SUYoOQ10vMGsIYAevozXUQpQtNFJFfFGqER/BGc=\",\n      \"device_type\": \"windows\",\n      \"name\": \"My mobile device\",\n      \"model\": \"MyPhone(pro-X)\",\n      \"manufacturer\": \"My phone corp\",\n      \"deleted\": true,\n      \"version\": \"1.0.0\",\n      \"serial_number\": \"EXAMPLEHMD6R\",\n      \"os_version\": \"10.0.0\",\n      \"mac_address\": \"00-00-5E-00-53-00\",\n      \"ip\": \"1.1.1.1\",\n      \"created\": \"2017-06-14T00:00:00Z\",\n      \"updated\": \"2017-06-14T00:00:00Z\",\n      \"last_seen\": \"2017-06-14T00:00:00Z\",\n      \"revoked_at\": \"2017-06-14T00:00:00Z\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Device Details",
+			"description": "Fetch a single Device",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/devices/{#/definitions/uuid}",
+			"method": "GET",
+			"cfOwnership": "teams",
+			"html_id": "devices-device-details",
+			"uri": "accounts/:identifier/devices/:uuid",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"user\": {\n      \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"name\": \"John Appleseed\",\n      \"email\": \"user@example.com\"\n    },\n    \"key\": \"yek0SUYoOQ10vMGsIYAevozXUQpQtNFJFfFGqER/BGc=\",\n    \"device_type\": \"windows\",\n    \"name\": \"My mobile device\",\n    \"model\": \"MyPhone(pro-X)\",\n    \"manufacturer\": \"My phone corp\",\n    \"deleted\": true,\n    \"version\": \"1.0.0\",\n    \"serial_number\": \"EXAMPLEHMD6R\",\n    \"os_version\": \"10.0.0\",\n    \"mac_address\": \"00-00-5E-00-53-00\",\n    \"ip\": \"1.1.1.1\",\n    \"created\": \"2017-06-14T00:00:00Z\",\n    \"updated\": \"2017-06-14T00:00:00Z\",\n    \"last_seen\": \"2017-06-14T00:00:00Z\",\n    \"revoked_at\": \"2017-06-14T00:00:00Z\"\n  }\n}"
+		},
+		{
+			"title": "Revoke Devices",
+			"description": "Revoke a list of devices",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/devices/revoke",
+			"method": "POST",
+			"cfOwnership": "teams",
+			"html_id": "devices-revoke-devices",
+			"uri": "accounts/:identifier/devices/revoke",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/revoke\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '[\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"]'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {},
+				"required_props": [],
+				"optional_props": [],
+				"objects": [],
+				"example": "\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"",
+				"description": "Device ID"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
+		},
+		{
+			"title": "Unrevoke Devices",
+			"description": "Unrevoke a list of devices",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/devices/unrevoke",
+			"method": "POST",
+			"cfOwnership": "teams",
+			"html_id": "devices-unrevoke-devices",
+			"uri": "accounts/:identifier/devices/unrevoke",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/unrevoke\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '[\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"]'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {},
+				"required_props": [],
+				"optional_props": [],
+				"objects": [],
+				"example": "\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"",
+				"description": "Device ID"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
+		},
+		{
+			"title": "List Admin Override code for device",
+			"description": "Fetch one-time use admin override code for a device. This relies on the Admin Override setting being enabled in your device configuration.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/devices/{#/definitions/uuid}/override_codes",
+			"method": "GET",
+			"cfOwnership": "teams",
+			"html_id": "devices-list-admin-override-code-for-device",
+			"uri": "accounts/:identifier/devices/:uuid/override_codes",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/f174e90a-fafe-4643-bbbc-4a0ed4fc8415/override_codes\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"disable_for_time\": {\n      \"1\": \"9106681\",\n      \"3\": \"5356247\",\n      \"6\": \"9478972\",\n      \"12\": \"3424359\",\n      \"24\": \"2887634\"\n    }\n  }\n}"
+		},
+		{
+			"title": "Set Local Domain Fallback List",
+			"description": "Set the list of domains resolved locally by WARP clients",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/devices/policy/fallback_domains",
+			"method": "PUT",
+			"cfOwnership": "teams",
+			"html_id": "devices-set-local-domain-fallback-list",
+			"uri": "accounts/:identifier/devices/policy/fallback_domains",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/policy/fallback_domains\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '[{\"suffix\":\"example.com\",\"description\":\"Domain bypass for local development\",\"dns_server\":\"['192.168.0.1', '10.1.1.1']\"}]'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"suffix": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "The domain suffix to match when resolving locally."
+					},
+					"description": {
+						"type": "string",
+						"example": "\"Domain bypass for local development\"",
+						"maxLength": 100,
+						"description": "A description of the fallback domain, displayed in the client UI"
+					},
+					"dns_server": {
+						"type": "array",
+						"example": "\"['192.168.0.1', '10.1.1.1']\"",
+						"description": "A list of IP addresses to handle domain resolution."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"suffix",
+					"description",
+					"dns_server"
+				],
+				"objects": [],
+				"example": "{\n  \"suffix\": \"example.com\",\n  \"description\": \"Domain bypass for local development\",\n  \"dns_server\": \"['192.168.0.1', '10.1.1.1']\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"suffix\": \"example.com\",\n      \"description\": \"Domain bypass for local development\",\n      \"dns_server\": \"['192.168.0.1', '10.1.1.1']\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Get Local Domain Fallback List",
+			"description": "Get the list of domains resolved locally by WARP clients",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/devices/policy/fallback_domains",
+			"method": "GET",
+			"cfOwnership": "teams",
+			"html_id": "devices-get-local-domain-fallback-list",
+			"uri": "accounts/:identifier/devices/policy/fallback_domains",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/policy/fallback_domains\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"suffix\": \"example.com\",\n      \"description\": \"Domain bypass for local development\",\n      \"dns_server\": \"['192.168.0.1', '10.1.1.1']\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Set Split Tunnel Exclude List",
+			"description": "Set the list of routes excluded from the WARP client's tunnel",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/devices/policy/exclude",
+			"method": "PUT",
+			"cfOwnership": "teams",
+			"html_id": "devices-set-split-tunnel-exclude-list",
+			"uri": "accounts/:identifier/devices/policy/exclude",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/policy/exclude\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '[{\"address\":\"192.0.2.0/24\",\"description\":\"Exclude testing domains from the tunnel\"}]'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"address": {
+						"type": "string",
+						"example": "\"192.0.2.0/24\"",
+						"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present."
+					},
+					"description": {
+						"type": "string",
+						"example": "\"Exclude testing domains from the tunnel\"",
+						"maxLength": 100,
+						"description": "A description of the split tunnel item, displayed in the client UI."
+					},
+					"host": {
+						"type": "string",
+						"example": "\"*.example.com\"",
+						"description": "The domain name to exclude from the tunnel. If host is present, address must not be present."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"address",
+					"description",
+					"host"
+				],
+				"objects": [],
+				"example": "{\n  \"address\": \"192.0.2.0/24\",\n  \"description\": \"Exclude testing domains from the tunnel\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"address\": \"192.0.2.0/24\",\n      \"description\": \"Exclude testing domains from the tunnel\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Get Split Tunnel Exclude List",
+			"description": "Get the list of routes excluded from the WARP client's tunnel",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/devices/policy/exclude",
+			"method": "GET",
+			"cfOwnership": "teams",
+			"html_id": "devices-get-split-tunnel-exclude-list",
+			"uri": "accounts/:identifier/devices/policy/exclude",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/policy/exclude\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"address\": \"192.0.2.0/24\",\n      \"description\": \"Exclude testing domains from the tunnel\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Set Split Tunnel Include List",
+			"description": "Set the list of routes included in the WARP client's tunnel",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/devices/policy/include",
+			"method": "PUT",
+			"cfOwnership": "teams",
+			"html_id": "devices-set-split-tunnel-include-list",
+			"uri": "accounts/:identifier/devices/policy/include",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/policy/include\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '[{\"address\":\"192.0.2.0/24\",\"description\":\"Include testing domains from the tunnel\"}]'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"address": {
+						"type": "string",
+						"example": "\"192.0.2.0/24\"",
+						"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present."
+					},
+					"description": {
+						"type": "string",
+						"example": "\"Include testing domains from the tunnel\"",
+						"maxLength": 100,
+						"description": "A description of the split tunnel item, displayed in the client UI"
+					},
+					"host": {
+						"type": "string",
+						"example": "\"*.example.com\"",
+						"description": "The domain name to include in the tunnel. If host is present, address must not be present."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"address",
+					"description",
+					"host"
+				],
+				"objects": [],
+				"example": "{\n  \"address\": \"192.0.2.0/24\",\n  \"description\": \"Include testing domains from the tunnel\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"address\": \"192.0.2.0/24\",\n      \"description\": \"Include testing domains from the tunnel\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Get Split Tunnel Include List",
+			"description": "Get the list of routes included in the WARP client's tunnel",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/devices/policy/include",
+			"method": "GET",
+			"cfOwnership": "teams",
+			"html_id": "devices-get-split-tunnel-include-list",
+			"uri": "accounts/:identifier/devices/policy/include",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/policy/include\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"address\": \"192.0.2.0/24\",\n      \"description\": \"Include testing domains from the tunnel\"\n    }\n  ]\n}"
+		}
+	],
+	"html_id": "devices",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"",
+				"maxLength": 36,
+				"description": "Device ID"
+			},
+			"user": {
+				"type": "object",
+				"example": "{\n  \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n  \"name\": \"John Appleseed\",\n  \"email\": \"user@example.com\"\n}",
+				"properties": {
+					"id": {
+						"type": "string",
+						"example": "\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"",
+						"id": "https://api.cloudflare.com/schemas/v4/common/uuid.json",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"readOnly": true,
+						"maxLength": 36,
+						"description": "API uuid tag"
+					},
+					"name": {
+						"type": "string",
+						"example": "\"John Appleseed\"",
+						"description": "The enrolled device user's name."
+					},
+					"email": {
+						"type": "string",
+						"example": "\"user@example.com\"",
+						"description": "Your contact email address",
+						"maxLength": 90
+					}
+				}
+			},
+			"key": {
+				"type": "string",
+				"example": "\"yek0SUYoOQ10vMGsIYAevozXUQpQtNFJFfFGqER/BGc=\"",
+				"description": "The device's public key."
+			},
+			"device_type": {
+				"type": "string",
+				"example": "\"windows\"",
+				"enum": [
+					"windows",
+					"mac",
+					"linux",
+					"android",
+					"ios"
+				]
+			},
+			"name": {
+				"type": "string",
+				"example": "\"My mobile device\"",
+				"description": "The device name"
+			},
+			"model": {
+				"type": "string",
+				"example": "\"MyPhone(pro-X)\"",
+				"description": "The device model name"
+			},
+			"manufacturer": {
+				"type": "string",
+				"example": "\"My phone corp\"",
+				"description": "The device manufacturer name"
+			},
+			"deleted": {
+				"type": "boolean",
+				"example": "true",
+				"description": "True if the device was deleted"
+			},
+			"version": {
+				"type": "string",
+				"example": "\"1.0.0\"",
+				"description": "The WARP client version."
+			},
+			"serial_number": {
+				"type": "string",
+				"example": "\"EXAMPLEHMD6R\"",
+				"description": "The device serial number"
+			},
+			"os_version": {
+				"type": "string",
+				"example": "\"10.0.0\"",
+				"description": "The operating system version"
+			},
+			"mac_address": {
+				"type": "string",
+				"example": "\"00-00-5E-00-53-00\"",
+				"description": "The device mac address"
+			},
+			"ip": {
+				"type": "string",
+				"example": "\"1.1.1.1\"",
+				"description": "IPv4 or IPv6 address"
+			},
+			"created": {
+				"type": "string",
+				"example": "\"2017-06-14T00:00:00Z\"",
+				"format": "date-time",
+				"description": "When the device was created"
+			},
+			"updated": {
+				"type": "string",
+				"example": "\"2017-06-14T00:00:00Z\"",
+				"format": "date-time",
+				"description": "When the device was updated"
+			},
+			"last_seen": {
+				"type": "string",
+				"example": "\"2017-06-14T00:00:00Z\"",
+				"format": "date-time",
+				"description": "When the device last connected to Cloudflare services."
+			},
+			"revoked_at": {
+				"type": "string",
+				"example": "\"2017-06-14T00:00:00Z\"",
+				"format": "date-time",
+				"description": "When the device was revoked."
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"user",
+			"key",
+			"device_type",
+			"name",
+			"model",
+			"manufacturer",
+			"deleted",
+			"version",
+			"serial_number",
+			"os_version",
+			"mac_address",
+			"ip",
+			"created",
+			"updated",
+			"last_seen",
+			"revoked_at"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n  \"user\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"name\": \"John Appleseed\",\n    \"email\": \"user@example.com\"\n  },\n  \"key\": \"yek0SUYoOQ10vMGsIYAevozXUQpQtNFJFfFGqER/BGc=\",\n  \"device_type\": \"windows\",\n  \"name\": \"My mobile device\",\n  \"model\": \"MyPhone(pro-X)\",\n  \"manufacturer\": \"My phone corp\",\n  \"deleted\": true,\n  \"version\": \"1.0.0\",\n  \"serial_number\": \"EXAMPLEHMD6R\",\n  \"os_version\": \"10.0.0\",\n  \"mac_address\": \"00-00-5E-00-53-00\",\n  \"ip\": \"1.1.1.1\",\n  \"created\": \"2017-06-14T00:00:00Z\",\n  \"updated\": \"2017-06-14T00:00:00Z\",\n  \"last_seen\": \"2017-06-14T00:00:00Z\",\n  \"revoked_at\": \"2017-06-14T00:00:00Z\"\n}",
+		"title": "Devices",
+		"description": "Manage devices enrolled in Cloudflare for Teams."
+	}
+}

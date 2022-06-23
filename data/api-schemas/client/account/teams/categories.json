@@ -1,0 +1,116 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/teams/categories.json",
+	"title": "Zero Trust Gateway Categories",
+	"description": "Categories are a way of classifying domains and IP addresses into semantic groups. Category IDs can be matched on as part of the 'traffic' wirefilter expression in Secure Web Gateway Rules.",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Categories",
+			"description": "List all Categories",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_id}/gateway/categories",
+			"method": "GET",
+			"cfOwnership": "gateway",
+			"html_id": "zero-trust-gateway-categories-list-categories",
+			"uri": "accounts/:account_id/gateway/categories",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/gateway/categories\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"name\": \"Education\",\n      \"id\": 90,\n      \"description\": \"Sites related to educational content that are not included in other categories like Science, Technology or Educational institutions.\",\n      \"class\": \"premium\",\n      \"beta\": false,\n      \"subcategories\": [\n        {\n          \"name\": \"Education\",\n          \"id\": 90,\n          \"description\": \"Sites related to educational content that are not included in other categories like Science, Technology or Educational institutions.\",\n          \"class\": \"premium\",\n          \"beta\": false\n        }\n      ]\n    }\n  ]\n}"
+		}
+	],
+	"readOnly": true,
+	"html_id": "zero-trust-gateway-categories",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"name": {
+				"type": "string",
+				"example": "\"Education\"",
+				"description": "The name of the category."
+			},
+			"id": {
+				"type": "integer",
+				"example": "90",
+				"description": "The identifier for this category. There is only one category per id."
+			},
+			"description": {
+				"type": "string",
+				"example": "\"Sites related to educational content that are not included in other categories like Science, Technology or Educational institutions.\"",
+				"description": "A short summary of domains in the category."
+			},
+			"class": {
+				"type": "string",
+				"example": "\"premium\"",
+				"enum": [
+					"free",
+					"premium",
+					"blocked",
+					"removalPending",
+					"noBlock"
+				],
+				"description": "Which account types are allowed to create policies based on this categories. `blocked` categories are blocked unconditionally for all accounts. `removalPending` categories can be removed from policies but not added. `noBlock` categories cannot be blocked."
+			},
+			"beta": {
+				"type": "boolean",
+				"example": "false",
+				"description": "Whether the category is in beta and subject to change."
+			},
+			"subcategories": {
+				"type": "array",
+				"example": "[\n  {\n    \"name\": \"Education\",\n    \"id\": 90,\n    \"description\": \"Sites related to educational content that are not included in other categories like Science, Technology or Educational institutions.\",\n    \"class\": \"premium\",\n    \"beta\": false\n  }\n]",
+				"items": {
+					"type": "object",
+					"properties": {
+						"name": {
+							"type": "string",
+							"description": "The name of the category.",
+							"example": "Education"
+						},
+						"id": {
+							"type": "integer",
+							"description": "The identifier for this category. There is only one category per id.",
+							"example": 90
+						},
+						"description": {
+							"type": "string",
+							"description": "A short summary of domains in the category.",
+							"example": "Sites related to educational content that are not included in other categories like Science, Technology or Educational institutions."
+						},
+						"class": {
+							"type": "string",
+							"enum": [
+								"free",
+								"premium",
+								"blocked",
+								"removalPending",
+								"noBlock"
+							],
+							"description": "Which account types are allowed to create policies based on this categories. `blocked` categories are blocked unconditionally for all accounts. `removalPending` categories can be removed from policies but not added. `noBlock` categories cannot be blocked.",
+							"example": "premium"
+						},
+						"beta": {
+							"type": "boolean",
+							"description": "Whether the category is in beta and subject to change.",
+							"example": false
+						}
+					}
+				},
+				"description": "All subcategories for this category."
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"name",
+			"id",
+			"description",
+			"class",
+			"beta",
+			"subcategories"
+		],
+		"objects": [],
+		"example": "{\n  \"name\": \"Education\",\n  \"id\": 90,\n  \"description\": \"Sites related to educational content that are not included in other categories like Science, Technology or Educational institutions.\",\n  \"class\": \"premium\",\n  \"beta\": false,\n  \"subcategories\": [\n    {\n      \"name\": \"Education\",\n      \"id\": 90,\n      \"description\": \"Sites related to educational content that are not included in other categories like Science, Technology or Educational institutions.\",\n      \"class\": \"premium\",\n      \"beta\": false\n    }\n  ]\n}",
+		"title": "Zero Trust Gateway Categories",
+		"description": "Categories are a way of classifying domains and IP addresses into semantic groups. Category IDs can be matched on as part of the 'traffic' wirefilter expression in Secure Web Gateway Rules."
+	}
+}

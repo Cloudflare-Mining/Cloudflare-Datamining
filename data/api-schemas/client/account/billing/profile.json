@@ -1,0 +1,412 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/billing/profile.json",
+	"title": "Account Billing Profile",
+	"description": "Account's billing profile",
+	"type": "object",
+	"links": [
+		{
+			"title": "Billing Profile Details",
+			"description": "Get the current billing profile for the account",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/billing/profile",
+			"method": "GET",
+			"cfOwnership": "billing",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#billing:read"
+				]
+			},
+			"html_id": "account-billing-profile-billing-profile-details",
+			"uri": "accounts/:account_identifier/billing/profile",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/billing/profile\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"0020c268dbf54e975e7fe8563df49d52\",\n    \"first_name\": \"Bob\",\n    \"last_name\": \"Smith\",\n    \"address\": \"123 3rd St.\",\n    \"address2\": \"Apt 123\",\n    \"company\": \"Cloudflare\",\n    \"city\": \"San Francisco\",\n    \"state\": \"CA\",\n    \"zipcode\": \"12345\",\n    \"country\": \"US\",\n    \"telephone\": \"+1 111-867-5309\",\n    \"card_number\": \"xxxx-xxxx-xxxx-1234\",\n    \"card_expiry_year\": 2015,\n    \"card_expiry_month\": 4,\n    \"vat\": \"aaa-123-987\",\n    \"edited_on\": \"2014-03-01T12:21:02.0000Z\",\n    \"created_on\": \"2014-03-01T12:21:02.0000Z\"\n  }\n}"
+		},
+		{
+			"title": "Create or Update Billing Profile",
+			"description": "Update the billing profile for an account",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/billing/profile",
+			"method": "PUT",
+			"cfPrivate": true,
+			"cfOwnership": "billing",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#billing:edit"
+				]
+			},
+			"html_id": "account-billing-profile-create-or-update-billing-profile",
+			"uri": "accounts/:account_identifier/billing/profile",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/billing/profile\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"id\":\"0020c268dbf54e975e7fe8563df49d52\",\"first_name\":\"Bob\",\"last_name\":\"Smith\",\"address\":\"123 3rd St.\",\"address2\":\"Apt 123\",\"company\":\"Cloudflare\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zipcode\":\"12345\",\"country\":\"US\",\"telephone\":\"+1 111-867-5309\",\"card_number\":\"xxxx-xxxx-xxxx-1234\",\"card_expiry_year\":2015,\"card_expiry_month\":4,\"vat\":\"aaa-123-987\",\"edited_on\":\"2014-03-01T12:21:02.0000Z\",\"created_on\":\"2014-03-01T12:21:02.0000Z\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"0020c268dbf54e975e7fe8563df49d52\"",
+						"description": "Billing profile identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"first_name": {
+						"type": "string",
+						"example": "\"Bob\"",
+						"description": "The first name on the billing profile",
+						"maxLength": 50
+					},
+					"last_name": {
+						"type": "string",
+						"example": "\"Smith\"",
+						"description": "The last name on the billing profile",
+						"maxLength": 90
+					},
+					"address": {
+						"type": "string",
+						"example": "\"123 3rd St.\"",
+						"description": "Street address on the billing profile",
+						"maxLength": 100
+					},
+					"address2": {
+						"type": "string",
+						"example": "\"Apt 123\"",
+						"description": "Street address continued, apartment/suite, etc (optional)",
+						"maxLength": 100
+					},
+					"company": {
+						"type": "string",
+						"example": "\"Cloudflare\"",
+						"description": "The company name on the billing profile",
+						"maxLength": 100
+					},
+					"city": {
+						"type": "string",
+						"example": "\"San Francisco\"",
+						"description": "The city on the billing profile",
+						"maxLength": 80
+					},
+					"state": {
+						"type": "string",
+						"example": "\"CA\"",
+						"description": "the state/province on the billing profile",
+						"maxLength": 40
+					},
+					"zipcode": {
+						"type": "string",
+						"example": "\"12345\"",
+						"description": "The zipcode on the billing profile",
+						"maxLength": 25
+					},
+					"country": {
+						"type": "string",
+						"example": "\"US\"",
+						"description": "the country of the address on the billing profile",
+						"maxLength": 50
+					},
+					"telephone": {
+						"type": "string",
+						"example": "\"+1 111-867-5309\"",
+						"description": "The telephone associated with the billing profile",
+						"maxLength": 20
+					},
+					"card_number": {
+						"type": "string",
+						"example": "\"xxxx-xxxx-xxxx-1234\"",
+						"description": "The last four digits of the credit card on file",
+						"maxLength": 19,
+						"readOnly": true
+					},
+					"card_expiry_year": {
+						"type": "integer",
+						"example": "2015",
+						"description": "The year when the credit card on file expires"
+					},
+					"card_expiry_month": {
+						"type": "integer",
+						"example": "4",
+						"description": "The month number (1-12) of when the credit card on file expires",
+						"minimum": 1,
+						"maximum": 12
+					},
+					"vat": {
+						"type": "string",
+						"example": "\"aaa-123-987\"",
+						"description": "Value Added Tax ID",
+						"maxLength": 255
+					},
+					"edited_on": {
+						"type": "string",
+						"example": "\"2014-03-01T12:21:02.0000Z\"",
+						"description": "When the profile was last modified",
+						"format": "date-time"
+					},
+					"created_on": {
+						"type": "string",
+						"example": "\"2014-03-01T12:21:02.0000Z\"",
+						"description": "When the profile was created",
+						"format": "date-time"
+					},
+					"payment_nonce": {
+						"type": "string",
+						"example": "\"5b134599-c975-026b-73b7-2653b7e59a11\"",
+						"maxLength": 50,
+						"description": "The string returned by the client SDK to represent a payment method"
+					},
+					"payment_gateway": {
+						"type": "string",
+						"example": "\"paypal\"",
+						"enum": [
+							"braintree",
+							"paypal"
+						],
+						"description": "The gateway which was used to tokenize the payment method"
+					},
+					"payment_email": {
+						"type": "string",
+						"example": "\"user@example.com\"",
+						"maxLength": 90,
+						"description": "The email address associated with this payment type"
+					},
+					"device_data": {
+						"type": "string",
+						"example": "\"{\\\"device_session_id\\\":\\\"8e0aac030264413d91344beb9612e326\\\",\\\"fraud_merchant_id\\\":\\\"600000\\\",\\\"correlation_id\\\":\\\"8c161a2dfcfa940b2069596335081174\\\"}\"",
+						"description": "Information about a customer's device collected by client SDK"
+					}
+				},
+				"required_props": [
+					"id",
+					"first_name",
+					"last_name",
+					"address",
+					"city",
+					"state",
+					"zipcode",
+					"country",
+					"telephone",
+					"edited_on",
+					"created_on"
+				],
+				"optional_props": [
+					"address2",
+					"company",
+					"card_number",
+					"card_expiry_year",
+					"card_expiry_month",
+					"vat",
+					"payment_nonce",
+					"payment_gateway",
+					"payment_email",
+					"device_data"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"0020c268dbf54e975e7fe8563df49d52\",\n  \"first_name\": \"Bob\",\n  \"last_name\": \"Smith\",\n  \"address\": \"123 3rd St.\",\n  \"address2\": \"Apt 123\",\n  \"company\": \"Cloudflare\",\n  \"city\": \"San Francisco\",\n  \"state\": \"CA\",\n  \"zipcode\": \"12345\",\n  \"country\": \"US\",\n  \"telephone\": \"+1 111-867-5309\",\n  \"card_number\": \"xxxx-xxxx-xxxx-1234\",\n  \"card_expiry_year\": 2015,\n  \"card_expiry_month\": 4,\n  \"vat\": \"aaa-123-987\",\n  \"edited_on\": \"2014-03-01T12:21:02.0000Z\",\n  \"created_on\": \"2014-03-01T12:21:02.0000Z\"\n}",
+				"title": "Account Billing Profile",
+				"description": "Account's billing profile"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"0020c268dbf54e975e7fe8563df49d52\",\n    \"first_name\": \"Bob\",\n    \"last_name\": \"Smith\",\n    \"address\": \"123 3rd St.\",\n    \"address2\": \"Apt 123\",\n    \"company\": \"Cloudflare\",\n    \"city\": \"San Francisco\",\n    \"state\": \"CA\",\n    \"zipcode\": \"12345\",\n    \"country\": \"US\",\n    \"telephone\": \"+1 111-867-5309\",\n    \"card_number\": \"xxxx-xxxx-xxxx-1234\",\n    \"card_expiry_year\": 2015,\n    \"card_expiry_month\": 4,\n    \"vat\": \"aaa-123-987\",\n    \"edited_on\": \"2014-03-01T12:21:02.0000Z\",\n    \"created_on\": \"2014-03-01T12:21:02.0000Z\"\n  }\n}"
+		},
+		{
+			"title": "Delete Billing Profile",
+			"description": "Delete billing profile. Note: You must cancel all subscriptions to delete billing information.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/billing/profile",
+			"method": "DELETE",
+			"cfPrivate": true,
+			"cfOwnership": "billing",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#billing:edit"
+				]
+			},
+			"html_id": "account-billing-profile-delete-billing-profile",
+			"uri": "accounts/:account_identifier/billing/profile",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/billing/profile\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"0020c268dbf54e975e7fe8563df49d52\"\n  }\n}"
+		}
+	],
+	"html_id": "account-billing-profile",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"0020c268dbf54e975e7fe8563df49d52\"",
+				"description": "Billing profile identifier tag",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"first_name": {
+				"type": "string",
+				"example": "\"Bob\"",
+				"description": "The first name on the billing profile",
+				"maxLength": 50
+			},
+			"last_name": {
+				"type": "string",
+				"example": "\"Smith\"",
+				"description": "The last name on the billing profile",
+				"maxLength": 90
+			},
+			"address": {
+				"type": "string",
+				"example": "\"123 3rd St.\"",
+				"description": "Street address on the billing profile",
+				"maxLength": 100
+			},
+			"address2": {
+				"type": "string",
+				"example": "\"Apt 123\"",
+				"description": "Street address continued, apartment/suite, etc (optional)",
+				"maxLength": 100
+			},
+			"company": {
+				"type": "string",
+				"example": "\"Cloudflare\"",
+				"description": "The company name on the billing profile",
+				"maxLength": 100
+			},
+			"city": {
+				"type": "string",
+				"example": "\"San Francisco\"",
+				"description": "The city on the billing profile",
+				"maxLength": 80
+			},
+			"state": {
+				"type": "string",
+				"example": "\"CA\"",
+				"description": "the state/province on the billing profile",
+				"maxLength": 40
+			},
+			"zipcode": {
+				"type": "string",
+				"example": "\"12345\"",
+				"description": "The zipcode on the billing profile",
+				"maxLength": 25
+			},
+			"country": {
+				"type": "string",
+				"example": "\"US\"",
+				"description": "the country of the address on the billing profile",
+				"maxLength": 50
+			},
+			"telephone": {
+				"type": "string",
+				"example": "\"+1 111-867-5309\"",
+				"description": "The telephone associated with the billing profile",
+				"maxLength": 20
+			},
+			"card_number": {
+				"type": "string",
+				"example": "\"xxxx-xxxx-xxxx-1234\"",
+				"description": "The last four digits of the credit card on file",
+				"maxLength": 19,
+				"readOnly": true
+			},
+			"card_expiry_year": {
+				"type": "integer",
+				"example": "2015",
+				"description": "The year when the credit card on file expires"
+			},
+			"card_expiry_month": {
+				"type": "integer",
+				"example": "4",
+				"description": "The month number (1-12) of when the credit card on file expires",
+				"minimum": 1,
+				"maximum": 12
+			},
+			"vat": {
+				"type": "string",
+				"example": "\"aaa-123-987\"",
+				"description": "Value Added Tax ID",
+				"maxLength": 255
+			},
+			"edited_on": {
+				"type": "string",
+				"example": "\"2014-03-01T12:21:02.0000Z\"",
+				"description": "When the profile was last modified",
+				"format": "date-time"
+			},
+			"created_on": {
+				"type": "string",
+				"example": "\"2014-03-01T12:21:02.0000Z\"",
+				"description": "When the profile was created",
+				"format": "date-time"
+			},
+			"payment_nonce": {
+				"type": "string",
+				"example": "\"5b134599-c975-026b-73b7-2653b7e59a11\"",
+				"maxLength": 50,
+				"description": "The string returned by the client SDK to represent a payment method"
+			},
+			"payment_gateway": {
+				"type": "string",
+				"example": "\"paypal\"",
+				"enum": [
+					"braintree",
+					"paypal"
+				],
+				"description": "The gateway which was used to tokenize the payment method"
+			},
+			"payment_email": {
+				"type": "string",
+				"example": "\"user@example.com\"",
+				"maxLength": 90,
+				"description": "The email address associated with this payment type"
+			},
+			"device_data": {
+				"type": "string",
+				"example": "\"{\\\"device_session_id\\\":\\\"8e0aac030264413d91344beb9612e326\\\",\\\"fraud_merchant_id\\\":\\\"600000\\\",\\\"correlation_id\\\":\\\"8c161a2dfcfa940b2069596335081174\\\"}\"",
+				"description": "Information about a customer's device collected by client SDK"
+			}
+		},
+		"required_props": [
+			"id",
+			"first_name",
+			"last_name",
+			"address",
+			"city",
+			"state",
+			"zipcode",
+			"country",
+			"telephone",
+			"edited_on",
+			"created_on"
+		],
+		"optional_props": [
+			"address2",
+			"company",
+			"card_number",
+			"card_expiry_year",
+			"card_expiry_month",
+			"vat",
+			"payment_nonce",
+			"payment_gateway",
+			"payment_email",
+			"device_data"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"0020c268dbf54e975e7fe8563df49d52\",\n  \"first_name\": \"Bob\",\n  \"last_name\": \"Smith\",\n  \"address\": \"123 3rd St.\",\n  \"address2\": \"Apt 123\",\n  \"company\": \"Cloudflare\",\n  \"city\": \"San Francisco\",\n  \"state\": \"CA\",\n  \"zipcode\": \"12345\",\n  \"country\": \"US\",\n  \"telephone\": \"+1 111-867-5309\",\n  \"card_number\": \"xxxx-xxxx-xxxx-1234\",\n  \"card_expiry_year\": 2015,\n  \"card_expiry_month\": 4,\n  \"vat\": \"aaa-123-987\",\n  \"edited_on\": \"2014-03-01T12:21:02.0000Z\",\n  \"created_on\": \"2014-03-01T12:21:02.0000Z\"\n}",
+		"title": "Account Billing Profile",
+		"description": "Account's billing profile"
+	}
+}

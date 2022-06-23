@@ -1,0 +1,219 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/teams/virtual-network.json",
+	"title": "Tunnel Virtual Network",
+	"description": "Segregation of Tunnel IP Routes via Virtualized Networks to handle overlapping private IPs in your origins.",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Virtual Networks",
+			"description": "List, search and filter an account's virtual networks",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/teamnet/virtual_networks",
+			"method": "GET",
+			"cfOwnership": "argo_tunnel",
+			"html_id": "tunnel-virtual-network-list-virtual-networks",
+			"uri": "accounts/:account_identifier/teamnet/virtual_networks",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/teamnet/virtual_networks?id=f70ff985-a4ef-4643-bbbc-4a0ed4fc8415&name=us-east-1-vpc&is_default=true&is_deleted=true\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"",
+						"description": "UUID of the virtual network",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"readOnly": true,
+						"format": "uuid",
+						"maxLength": 36
+					},
+					"name": {
+						"type": "string",
+						"example": "\"us-east-1-vpc\"",
+						"description": "A user-friendly name chosen when the virtual network is created. Cannot be empty"
+					},
+					"is_default": {
+						"type": "boolean",
+						"example": "true",
+						"description": "If true, return the default virtual network only. If false, return all other virtual networks. If not provided, then consider all virtual networks."
+					},
+					"is_deleted": {
+						"type": "boolean",
+						"example": "true",
+						"description": "If true, only include deleted virtual networks. If false, exclude deleted virtual networks. If not provided, all virtual networks will be included"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"id",
+					"name",
+					"is_default",
+					"is_deleted"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n  \"name\": \"us-east-1-vpc\",\n  \"is_default\": true,\n  \"is_deleted\": true\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n      \"name\": \"us-east-1-vpc\",\n      \"is_default_network\": true,\n      \"comment\": \"Staging VPC for data science\",\n      \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n      \"deleted_at\": \"2021-01-25T18:22:34.317854Z\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Create Virtual Network",
+			"description": "Add a new virtual network to the account",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/teamnet/virtual_networks",
+			"method": "POST",
+			"cfOwnership": "argo_tunnel",
+			"html_id": "tunnel-virtual-network-create-virtual-network",
+			"uri": "accounts/:account_identifier/teamnet/virtual_networks",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/teamnet/virtual_networks\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"us-east-1-vpc\",\"comment\":\"Staging VPC for data science\",\"is_default\":true}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"us-east-1-vpc\"",
+						"description": "A user-friendly name chosen when the virtual network is created. Cannot be empty"
+					},
+					"comment": {
+						"type": "string",
+						"example": "\"Staging VPC for data science\"",
+						"description": "Optional remark describing the virtual network. Empty if none"
+					},
+					"is_default": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case."
+					}
+				},
+				"required_props": [
+					"name"
+				],
+				"optional_props": [
+					"comment",
+					"is_default"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": \"us-east-1-vpc\",\n  \"comment\": \"Staging VPC for data science\",\n  \"is_default\": true\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n    \"name\": \"us-east-1-vpc\",\n    \"is_default_network\": true,\n    \"comment\": \"Staging VPC for data science\",\n    \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"deleted_at\": \"2021-01-25T18:22:34.317854Z\"\n  }\n}"
+		},
+		{
+			"title": "Update Virtual Network",
+			"description": "Update an existing virtual network in the account",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/teamnet/virtual_networks/{#/definitions/vnet_id}",
+			"method": "PATCH",
+			"cfOwnership": "argo_tunnel",
+			"html_id": "tunnel-virtual-network-update-virtual-network",
+			"uri": "accounts/:account_identifier/teamnet/virtual_networks/:vnet_id",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/teamnet/virtual_networks/f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"us-east-1-vpc\",\"comment\":\"Staging VPC for data science\",\"is_default_network\":true}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"us-east-1-vpc\"",
+						"description": "A user-friendly name chosen when the virtual network is created. Cannot be empty"
+					},
+					"comment": {
+						"type": "string",
+						"example": "\"Staging VPC for data science\"",
+						"description": "Optional remark describing the virtual network. Empty if none"
+					},
+					"is_default_network": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"name",
+					"comment",
+					"is_default_network"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": \"us-east-1-vpc\",\n  \"comment\": \"Staging VPC for data science\",\n  \"is_default_network\": true\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n    \"name\": \"us-east-1-vpc\",\n    \"is_default_network\": true,\n    \"comment\": \"Staging VPC for data science\",\n    \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"deleted_at\": \"2021-01-25T18:22:34.317854Z\"\n  }\n}"
+		},
+		{
+			"title": "Delete Virtual Network",
+			"description": "Delete an existing virtual network from the account",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/teamnet/virtual_networks/{#/definitions/vnet_id}",
+			"method": "DELETE",
+			"cfOwnership": "argo_tunnel",
+			"html_id": "tunnel-virtual-network-delete-virtual-network",
+			"uri": "accounts/:account_identifier/teamnet/virtual_networks/:vnet_id",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/teamnet/virtual_networks/f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n    \"name\": \"us-east-1-vpc\",\n    \"is_default_network\": true,\n    \"comment\": \"Staging VPC for data science\",\n    \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"deleted_at\": \"2021-01-25T18:22:34.317854Z\"\n  }\n}"
+		}
+	],
+	"html_id": "tunnel-virtual-network",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"",
+				"description": "UUID of the virtual network",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"readOnly": true,
+				"format": "uuid",
+				"maxLength": 36
+			},
+			"name": {
+				"type": "string",
+				"example": "\"us-east-1-vpc\"",
+				"description": "A user-friendly name chosen when the virtual network is created. Cannot be empty"
+			},
+			"is_default_network": {
+				"type": "boolean",
+				"example": "true",
+				"description": "Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case."
+			},
+			"comment": {
+				"type": "string",
+				"example": "\"Staging VPC for data science\"",
+				"description": "Optional remark describing the virtual network. Empty if none"
+			},
+			"created_at": {
+				"type": "string",
+				"example": "\"2021-01-25T18:22:34.317854Z\"",
+				"description": "Timestamp of when the virtual network was created, formatted in RFC 3339",
+				"format": "date-time"
+			},
+			"deleted_at": {
+				"type": [
+					"string",
+					"null"
+				],
+				"example": "\"2021-01-25T18:22:34.317854Z\"",
+				"description": "If present, indicates that the virtual network was deleted at the given date (formatted in RFC 3339). If absent, the virtual network has not been deleted",
+				"format": "date-time",
+				"readOnly": true
+			}
+		},
+		"required_props": [
+			"id",
+			"name",
+			"is_default_network",
+			"comment",
+			"created_at"
+		],
+		"optional_props": [
+			"deleted_at"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n  \"name\": \"us-east-1-vpc\",\n  \"is_default_network\": true,\n  \"comment\": \"Staging VPC for data science\",\n  \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n  \"deleted_at\": \"2021-01-25T18:22:34.317854Z\"\n}",
+		"title": "Tunnel Virtual Network",
+		"description": "Segregation of Tunnel IP Routes via Virtualized Networks to handle overlapping private IPs in your origins."
+	}
+}

@@ -1,0 +1,149 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/loadbalancing/search.json",
+	"title": "Account Load Balancer Search",
+	"description": "Account-level Load Balancer Search",
+	"type": "object",
+	"links": [
+		{
+			"title": "Search Resources",
+			"description": "Search for Load Balancing resources",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/load_balancers/search",
+			"method": "GET",
+			"cfOwnership": "load_balancer",
+			"html_id": "account-load-balancer-search-search-resources",
+			"uri": "accounts/:account_identifier/load_balancers/search",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/load_balancers/search?page=undefined&per_page=25&query=primary&references=*\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"page": {
+						"type": "number",
+						"example": "1",
+						"description": "Requested page within paginated list of results",
+						"minimum": 1
+					},
+					"per_page": {
+						"type": "number",
+						"example": "25",
+						"description": "Maximum number of results requested",
+						"minimum": 1,
+						"maximum": 1000,
+						"default": 25
+					},
+					"query": {
+						"type": "string",
+						"example": "\"primary\"",
+						"description": "Search query term",
+						"default": ""
+					},
+					"references": {
+						"type": "string",
+						"example": "\"*\"",
+						"description": "The type of references to include (\"*\" for all).",
+						"enum": [
+							"",
+							"*",
+							"referral",
+							"referrer"
+						],
+						"default": ""
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"page",
+					"per_page",
+					"query",
+					"references"
+				],
+				"objects": [],
+				"example": "{\n  \"per_page\": 25,\n  \"query\": \"primary\",\n  \"references\": \"*\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"resources\": [\n      {\n        \"resource_id\": \"17b5962d775c646f3f9725cbc7a53df4\",\n        \"resource_name\": \"primary-dc-1\",\n        \"resource_type\": \"pool\",\n        \"references\": [\n          {\n            \"resource_id\": \"699d98642c564d2e855e9661899b7252\",\n            \"resource_name\": \"www.example.com\",\n            \"resource_type\": \"load_balancer\",\n            \"reference_type\": \"referrer\"\n          },\n          {\n            \"resource_id\": \"f1aba936b94213e5b8dca0c0dbf1f9cc\",\n            \"resource_name\": \"Login page monitor\",\n            \"resource_type\": \"monitor\",\n            \"reference_type\": \"referral\"\n          }\n        ]\n      }\n    ]\n  }\n}"
+		}
+	],
+	"html_id": "account-load-balancer-search",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"resources": {
+				"type": "array",
+				"example": "[\n  {\n    \"resource_id\": \"17b5962d775c646f3f9725cbc7a53df4\",\n    \"resource_name\": \"primary-dc-1\",\n    \"resource_type\": \"pool\",\n    \"references\": [\n      {\n        \"resource_id\": \"699d98642c564d2e855e9661899b7252\",\n        \"resource_name\": \"www.example.com\",\n        \"resource_type\": \"load_balancer\",\n        \"reference_type\": \"referrer\"\n      },\n      {\n        \"resource_id\": \"f1aba936b94213e5b8dca0c0dbf1f9cc\",\n        \"resource_name\": \"Login page monitor\",\n        \"resource_type\": \"monitor\",\n        \"reference_type\": \"referral\"\n      }\n    ]\n  }\n]",
+				"description": "A list of resources matching the search query.",
+				"items": {
+					"type": "object",
+					"description": "A reference to a load balancer resource.",
+					"properties": {
+						"resource_id": {
+							"example": "17b5962d775c646f3f9725cbc7a53df4",
+							"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+							"description": "API item identifier tag",
+							"type": "string",
+							"maxLength": 32,
+							"readOnly": true
+						},
+						"resource_name": {
+							"type": "string",
+							"description": "The human-identifiable name of the resource.",
+							"example": "primary-dc-1"
+						},
+						"resource_type": {
+							"type": "string",
+							"description": "The type of the resource.",
+							"enum": [
+								"load_balancer",
+								"monitor",
+								"pool"
+							],
+							"example": "pool"
+						},
+						"reference_type": {
+							"type": "string",
+							"description": "When listed as a reference, the type (direction) of the reference.",
+							"enum": [
+								"referral",
+								"referrer"
+							]
+						},
+						"references": {
+							"type": "array",
+							"description": "A list of references to (referrer) or from (referral) this resource.",
+							"example": [
+								{
+									"resource_id": "699d98642c564d2e855e9661899b7252",
+									"resource_name": "www.example.com",
+									"resource_type": "load_balancer",
+									"reference_type": "referrer"
+								},
+								{
+									"resource_id": "f1aba936b94213e5b8dca0c0dbf1f9cc",
+									"resource_name": "Login page monitor",
+									"resource_type": "monitor",
+									"reference_type": "referral"
+								}
+							],
+							"items": {
+								"type": "object",
+								"description": "A reference to a load balancer resource."
+							}
+						}
+					}
+				}
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"resources"
+		],
+		"objects": [],
+		"example": "{\n  \"resources\": [\n    {\n      \"resource_id\": \"17b5962d775c646f3f9725cbc7a53df4\",\n      \"resource_name\": \"primary-dc-1\",\n      \"resource_type\": \"pool\",\n      \"references\": [\n        {\n          \"resource_id\": \"699d98642c564d2e855e9661899b7252\",\n          \"resource_name\": \"www.example.com\",\n          \"resource_type\": \"load_balancer\",\n          \"reference_type\": \"referrer\"\n        },\n        {\n          \"resource_id\": \"f1aba936b94213e5b8dca0c0dbf1f9cc\",\n          \"resource_name\": \"Login page monitor\",\n          \"resource_type\": \"monitor\",\n          \"reference_type\": \"referral\"\n        }\n      ]\n    }\n  ]\n}",
+		"title": "Account Load Balancer Search",
+		"description": "Account-level Load Balancer Search"
+	}
+}

@@ -1,0 +1,333 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/railgun/connection.json",
+	"title": "Railgun Connections",
+	"description": "A Railgun connection associates a zone with the Railgun.",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Connections",
+			"description": "List connections associated with the Railgun.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/railguns/{#/definitions/railgun_identifier}/connections",
+			"method": "GET",
+			"cfOwnership": "railgun",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#organization:read"
+				]
+			},
+			"trakalIgnore": true,
+			"html_id": "railgun-connections-list-connections",
+			"uri": "accounts/:account_identifier/railguns/:railgun_identifier/connections",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/railguns/e928d310693a83094309acf9ead50448/connections?page=1&per_page=20&enabled=true\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"page": {
+						"type": "number",
+						"example": "1",
+						"description": "Requested page within paginated list of results"
+					},
+					"per_page": {
+						"type": "number",
+						"example": "20",
+						"description": "Maximum number of results requested"
+					},
+					"enabled": {
+						"type": "boolean",
+						"example": "true",
+						"description": "A value indicating whether the connection is enabled or not.",
+						"default": false
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"page",
+					"per_page",
+					"enabled"
+				],
+				"objects": [],
+				"example": "{\n  \"page\": 1,\n  \"per_page\": 20,\n  \"enabled\": true\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n      \"zone\": {\n        \"id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n        \"name\": \"example.com\"\n      },\n      \"enabled\": true,\n      \"created_on\": \"2017-06-14T00:00:00Z\",\n      \"modified_on\": \"2017-06-14T05:20:00Z\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Connection details",
+			"description": "Get a connection by ID.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/railguns/{#/definitions/railgun_identifier}/connections/{#/definitions/identifier}",
+			"method": "GET",
+			"cfOwnership": "railgun",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#organization:read"
+				]
+			},
+			"trakalIgnore": true,
+			"html_id": "railgun-connections-connection-details",
+			"uri": "accounts/:account_identifier/railguns/:railgun_identifier/connections/:identifier",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/railguns/e928d310693a83094309acf9ead50448/connections/c4a7362d577a6c3019a474fd6f485821\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n    \"zone\": {\n      \"id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n      \"name\": \"example.com\"\n    },\n    \"enabled\": true,\n    \"created_on\": \"2017-06-14T00:00:00Z\",\n    \"modified_on\": \"2017-06-14T05:20:00Z\"\n  }\n}"
+		},
+		{
+			"title": "Update connection",
+			"description": "Enable or disable a connection.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/railguns/{#/definitions/railgun_identifier}/connections/{#/definitions/identifier}",
+			"method": "PUT",
+			"cfOwnership": "railgun",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#organization:edit"
+				]
+			},
+			"trakalIgnore": true,
+			"html_id": "railgun-connections-update-connection",
+			"uri": "accounts/:account_identifier/railguns/:railgun_identifier/connections/:identifier",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/railguns/e928d310693a83094309acf9ead50448/connections/c4a7362d577a6c3019a474fd6f485821\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"id\":\"c4a7362d577a6c3019a474fd6f485821\",\"zone\":{\"id\":\"023e105f4ecef8ad9ca31a8372d0c353\",\"name\":\"example.com\"},\"enabled\":true,\"created_on\":\"2017-06-14T00:00:00Z\",\"modified_on\":\"2017-06-14T05:20:00Z\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"c4a7362d577a6c3019a474fd6f485821\"",
+						"readOnly": true,
+						"maxLength": 32,
+						"description": "Connection identifier tag."
+					},
+					"zone": {
+						"type": "object",
+						"example": "{\n  \"id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"name\": \"example.com\"\n}",
+						"properties": {
+							"id": {
+								"type": "string",
+								"example": "\"023e105f4ecef8ad9ca31a8372d0c353\"",
+								"$comment": "Must be present as a definition for URI Templating",
+								"description": "Zone identifier tag",
+								"maxLength": 32,
+								"readOnly": true
+							},
+							"name": {
+								"type": "string",
+								"example": "\"example.com\"",
+								"description": "The domain name",
+								"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
+								"maxLength": 253,
+								"readOnly": true
+							}
+						}
+					},
+					"enabled": {
+						"type": "boolean",
+						"example": "true",
+						"description": "A value indicating whether the connection is enabled or not.",
+						"default": false
+					},
+					"created_on": {
+						"type": "string",
+						"example": "\"2017-06-14T00:00:00Z\"",
+						"readOnly": true,
+						"format": "date-time",
+						"description": "When the connection was created."
+					},
+					"modified_on": {
+						"type": "string",
+						"example": "\"2017-06-14T05:20:00Z\"",
+						"readOnly": true,
+						"format": "date-time",
+						"description": "When the connection was last modified."
+					}
+				},
+				"required_props": [
+					"id",
+					"zone",
+					"enabled"
+				],
+				"optional_props": [
+					"created_on",
+					"modified_on"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n  \"zone\": {\n    \"id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"name\": \"example.com\"\n  },\n  \"enabled\": true,\n  \"created_on\": \"2017-06-14T00:00:00Z\",\n  \"modified_on\": \"2017-06-14T05:20:00Z\"\n}",
+				"title": "Railgun Connections",
+				"description": "A Railgun connection associates a zone with the Railgun."
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n    \"zone\": {\n      \"id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n      \"name\": \"example.com\"\n    },\n    \"enabled\": true,\n    \"created_on\": \"2017-06-14T00:00:00Z\",\n    \"modified_on\": \"2017-06-14T05:20:00Z\"\n  }\n}"
+		},
+		{
+			"title": "Delete connection",
+			"description": "Disable and remove the connection to a zone.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/railguns/{#/definitions/railgun_identifier}/connections/{#/definitions/identifier}",
+			"method": "DELETE",
+			"cfOwnership": "railgun",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#organization:edit"
+				]
+			},
+			"trakalIgnore": true,
+			"html_id": "railgun-connections-delete-connection",
+			"uri": "accounts/:account_identifier/railguns/:railgun_identifier/connections/:identifier",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/railguns/e928d310693a83094309acf9ead50448/connections/c4a7362d577a6c3019a474fd6f485821\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"c4a7362d577a6c3019a474fd6f485821\"\n  }\n}"
+		},
+		{
+			"title": "Create connection",
+			"description": "Associates a zone to the Railgun.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/railguns/{#/definitions/railgun_identifier}/connections",
+			"method": "POST",
+			"cfOwnership": "railgun",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#organization:edit"
+				]
+			},
+			"trakalIgnore": true,
+			"html_id": "railgun-connections-create-connection",
+			"uri": "accounts/:account_identifier/railguns/:railgun_identifier/connections",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/railguns/e928d310693a83094309acf9ead50448/connections\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"zone\":{\"id\":\"023e105f4ecef8ad9ca31a8372d0c353\"},\"enabled\":true}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"zone": {
+						"example": "{\n  \"id\": \"023e105f4ecef8ad9ca31a8372d0c353\"\n}",
+						"properties": {
+							"id": {
+								"type": "string",
+								"example": "\"023e105f4ecef8ad9ca31a8372d0c353\"",
+								"$comment": "Must be present as a definition for URI Templating",
+								"description": "Zone identifier tag",
+								"maxLength": 32,
+								"readOnly": true
+							}
+						}
+					},
+					"enabled": {
+						"type": "boolean",
+						"example": "true",
+						"description": "A value indicating whether the connection is enabled or not.",
+						"default": false
+					}
+				},
+				"required_props": [
+					"zone"
+				],
+				"optional_props": [
+					"enabled"
+				],
+				"objects": [],
+				"example": "{\n  \"zone\": {\n    \"id\": \"023e105f4ecef8ad9ca31a8372d0c353\"\n  },\n  \"enabled\": true\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n    \"zone\": {\n      \"id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n      \"name\": \"example.com\"\n    },\n    \"enabled\": true,\n    \"created_on\": \"2017-06-14T00:00:00Z\",\n    \"modified_on\": \"2017-06-14T05:20:00Z\"\n  }\n}"
+		}
+	],
+	"cfLinkErrors": {},
+	"html_id": "railgun-connections",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"c4a7362d577a6c3019a474fd6f485821\"",
+				"readOnly": true,
+				"maxLength": 32,
+				"description": "Connection identifier tag."
+			},
+			"zone": {
+				"type": "object",
+				"example": "{\n  \"id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"name\": \"example.com\"\n}",
+				"properties": {
+					"id": {
+						"type": "string",
+						"example": "\"023e105f4ecef8ad9ca31a8372d0c353\"",
+						"$comment": "Must be present as a definition for URI Templating",
+						"description": "Zone identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "The domain name",
+						"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
+						"maxLength": 253,
+						"readOnly": true
+					}
+				}
+			},
+			"enabled": {
+				"type": "boolean",
+				"example": "true",
+				"description": "A value indicating whether the connection is enabled or not.",
+				"default": false
+			},
+			"created_on": {
+				"type": "string",
+				"example": "\"2017-06-14T00:00:00Z\"",
+				"readOnly": true,
+				"format": "date-time",
+				"description": "When the connection was created."
+			},
+			"modified_on": {
+				"type": "string",
+				"example": "\"2017-06-14T05:20:00Z\"",
+				"readOnly": true,
+				"format": "date-time",
+				"description": "When the connection was last modified."
+			}
+		},
+		"required_props": [
+			"id",
+			"zone",
+			"enabled"
+		],
+		"optional_props": [
+			"created_on",
+			"modified_on"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n  \"zone\": {\n    \"id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"name\": \"example.com\"\n  },\n  \"enabled\": true,\n  \"created_on\": \"2017-06-14T00:00:00Z\",\n  \"modified_on\": \"2017-06-14T05:20:00Z\"\n}",
+		"title": "Railgun Connections",
+		"description": "A Railgun connection associates a zone with the Railgun."
+	}
+}

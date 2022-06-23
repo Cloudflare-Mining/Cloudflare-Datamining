@@ -1,0 +1,194 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/workers/filters.json",
+	"title": "Worker Filters (Deprecated)",
+	"description": "Filters are basic patterns used to enable or disable workers that match requests.",
+	"cfExtendedDescription": "**NOTE**: This API is **deprecated**, please use equivalent `/routes` API endpoints where possible. These APIs are for use with the previously limited single-script zones.",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Filters",
+			"description": "",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_id}/workers/filters",
+			"method": "GET",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
+			"cfOwnership": "workers",
+			"html_id": "worker-filters-deprecated--list-filters",
+			"uri": "zones/:zone_id/workers/filters",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/workers/filters\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n      \"pattern\": \"example.net/*\",\n      \"enabled\": true\n    }\n  ]\n}"
+		},
+		{
+			"title": "Update Filter",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_id}/workers/filters/{#/definitions/filter_id}",
+			"method": "PUT",
+			"cfOwnership": "workers",
+			"html_id": "worker-filters-deprecated--update-filter",
+			"uri": "zones/:zone_id/workers/filters/:filter_id",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/workers/filters/9a7806061c88ada191ed06f989cc3dac\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"pattern\":\"example.net/*\",\"enabled\":true}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"pattern": {
+						"type": "string",
+						"example": "\"example.net/*\"",
+						"title": "Filter pattern"
+					},
+					"enabled": {
+						"type": "boolean",
+						"example": "true",
+						"title": "Whether or not this filter will run a script"
+					}
+				},
+				"required_props": [
+					"pattern",
+					"enabled"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"pattern\": \"example.net/*\",\n  \"enabled\": true\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n    \"pattern\": \"example.net/*\",\n    \"enabled\": true\n  }\n}"
+		},
+		{
+			"title": "Delete Filter",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_id}/workers/filters/{#/definitions/filter_id}",
+			"method": "DELETE",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
+			"cfOwnership": "workers",
+			"html_id": "worker-filters-deprecated--delete-filter",
+			"uri": "zones/:zone_id/workers/filters/:filter_id",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/workers/filters/9a7806061c88ada191ed06f989cc3dac\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\"\n  }\n}"
+		},
+		{
+			"title": "Create Filter",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_id}/workers/filters",
+			"method": "POST",
+			"cfOwnership": "workers",
+			"html_id": "worker-filters-deprecated--create-filter",
+			"uri": "zones/:zone_id/workers/filters",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/workers/filters\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"pattern\":\"example.net/*\",\"enabled\":true}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"pattern": {
+						"type": "string",
+						"example": "\"example.net/*\"",
+						"title": "Filter pattern"
+					},
+					"enabled": {
+						"type": "boolean",
+						"example": "true",
+						"title": "Whether or not this filter will run a script"
+					}
+				},
+				"required_props": [
+					"pattern",
+					"enabled"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"pattern\": \"example.net/*\",\n  \"enabled\": true\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\"\n  }\n}"
+		}
+	],
+	"cfLinkErrors": {
+		"10001": "Unsupported or unexpected Content Type",
+		"10002": "Unexpected internal server error",
+		"10003": "Missing required URL parameter",
+		"10004": "Malformed URL parameter",
+		"10007": "Resource not found (similar to HTTP 404)",
+		"10014": "Internal error while attempting authorization checks",
+		"10015": "The current account is not authorized to use workers",
+		"10020": "Attempted to create a filter for a pattern that already exists",
+		"10022": "Filter pattern was invalid",
+		"10023": "Unauthorized access attempt",
+		"10026": "Filter pattern was unparseable"
+	},
+	"html_id": "worker-filters-deprecated-",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"9a7806061c88ada191ed06f989cc3dac\"",
+				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "API item identifier tag",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"pattern": {
+				"type": "string",
+				"example": "\"example.net/*\"",
+				"title": "Filter pattern"
+			},
+			"enabled": {
+				"type": "boolean",
+				"example": "true",
+				"title": "Whether or not this filter will run a script"
+			}
+		},
+		"required_props": [
+			"id",
+			"pattern",
+			"enabled"
+		],
+		"optional_props": [],
+		"objects": [],
+		"example": "{\n  \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n  \"pattern\": \"example.net/*\",\n  \"enabled\": true\n}",
+		"title": "Worker Filters (Deprecated)",
+		"description": "Filters are basic patterns used to enable or disable workers that match requests."
+	}
+}

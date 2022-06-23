@@ -1,0 +1,104 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/spectrum/analytics-aggregate.json",
+	"title": "Spectrum Aggregate Analytics",
+	"description": "Aggregated Analytics for Spectrum in real time.",
+	"type": "object",
+	"links": [
+		{
+			"title": "Get Current Aggregate Analytics",
+			"description": "Retrieves analytics aggregated from the last minute of usage on Spectrum Applications underneath a given zone.",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone}/spectrum/analytics/aggregate/current",
+			"hrefSchema": {},
+			"method": "GET",
+			"cfOwnership": "spectrum",
+			"html_id": "spectrum-aggregate-analytics-get-current-aggregate-analytics",
+			"uri": "zones/:zone/spectrum/analytics/aggregate/current",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/spectrum/analytics/aggregate/current?coloName=PDX&appID=ea95132c15732412d22c1476fa83f27a,d122c5f4bb71e25cc9e86ab43b142e2f\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"coloName": {
+						"type": "string",
+						"example": "\"PDX\"",
+						"description": "Co-location Identifier.",
+						"maxLength": 3
+					},
+					"appID": {
+						"type": "string",
+						"example": "\"ea95132c15732412d22c1476fa83f27a,d122c5f4bb71e25cc9e86ab43b142e2f\"",
+						"description": "Comma-delimited list of Spectrum Application Id(s). If provided, the response will be limited to Spectrum Application Id(s) that match."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"coloName",
+					"appID"
+				],
+				"objects": [],
+				"example": "{\n  \"coloName\": \"PDX\",\n  \"appID\": \"ea95132c15732412d22c1476fa83f27a,d122c5f4bb71e25cc9e86ab43b142e2f\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"appID\": \"ea95132c15732412d22c1476fa83f27a\",\n      \"bytesIngress\": 500,\n      \"bytesEgress\": 500,\n      \"connections\": 10,\n      \"durationAvg\": 10000\n    }\n  ]\n}"
+		}
+	],
+	"html_id": "spectrum-aggregate-analytics",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {},
+		"required_props": [],
+		"optional_props": [],
+		"objects": [
+			{
+				"all_props": {
+					"appID": {
+						"type": "string",
+						"example": "\"ea95132c15732412d22c1476fa83f27a\"",
+						"description": "Spectrum Application Identifier."
+					},
+					"bytesIngress": {
+						"type": "integer",
+						"example": "500",
+						"description": "The number of bytes read in from the edge to the origin in the last minute.",
+						"minimum": 0
+					},
+					"bytesEgress": {
+						"type": "integer",
+						"example": "500",
+						"description": "The number of bytes read out from the origin to the edge in the last minute.",
+						"minimum": 0
+					},
+					"connections": {
+						"type": "integer",
+						"example": "10",
+						"description": "The number of active connections to the Spectrum Application within the last minute.",
+						"minimum": 0
+					},
+					"durationAvg": {
+						"type": "number",
+						"example": "10000",
+						"description": "The average connection duration (in milliseconds).",
+						"minimum": 0
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"appID",
+					"bytesIngress",
+					"bytesEgress",
+					"connections",
+					"durationAvg"
+				],
+				"objects": [],
+				"example": "{\n  \"appID\": \"ea95132c15732412d22c1476fa83f27a\",\n  \"bytesIngress\": 500,\n  \"bytesEgress\": 500,\n  \"connections\": 10,\n  \"durationAvg\": 10000\n}"
+			}
+		],
+		"example": "{\n  \"appID\": \"ea95132c15732412d22c1476fa83f27a\",\n  \"bytesIngress\": 500,\n  \"bytesEgress\": 500,\n  \"connections\": 10,\n  \"durationAvg\": 10000\n}",
+		"which_of": "oneOf",
+		"title": "Spectrum Aggregate Analytics",
+		"description": "Aggregated Analytics for Spectrum in real time."
+	}
+}

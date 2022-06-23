@@ -1,0 +1,146 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/loadbalancing/region.json",
+	"title": "Load Balancer Regions",
+	"description": "Region-Country geographic mappings for load balancers",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Regions",
+			"description": "List all region mappings",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/load_balancers/regions",
+			"method": "GET",
+			"cfOwnership": "load_balancer",
+			"html_id": "load-balancer-regions-list-regions",
+			"uri": "accounts/:account_identifier/load_balancers/regions",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/load_balancers/regions?country_code=US&subdivision_code=CA\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"country_code": {
+						"type": "string",
+						"example": "\"US\"",
+						"description": "Two-letter alpha-2 country code followed in ISO 3166-1."
+					},
+					"subdivision_code": {
+						"type": "string",
+						"example": "\"CA\"",
+						"description": "Two-letter subdivision code followed in ISO 3166-2."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"country_code",
+					"subdivision_code"
+				],
+				"objects": [],
+				"example": "{\n  \"country_code\": \"US\",\n  \"subdivision_code\": \"CA\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"iso_standard\": \"Country and subdivision codes follow ISO 3166-1 alpha-2 and ISO 3166-2\",\n    \"regions\": [\n      {\n        \"region_code\": \"WNAM\",\n        \"countries\": [\n          {\n            \"country_code_a2\": \"US\",\n            \"country_name\": \"United States\",\n            \"country_subdivisions\": [\n              {\n                \"subdivision_code_a2\": \"CA\",\n                \"subdivision_name\": \"California\"\n              }\n            ]\n          }\n        ]\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Get Region",
+			"description": "Get a single region mapping",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/load_balancers/regions/{#/definitions/region_code}",
+			"method": "GET",
+			"cfOwnership": "load_balancer",
+			"html_id": "load-balancer-regions-get-region",
+			"uri": "accounts/:account_identifier/load_balancers/regions/:region_code",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/load_balancers/regions/WNAM\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"iso_standard\": \"Country and subdivision codes follow ISO 3166-1 alpha-2 and ISO 3166-2\",\n    \"regions\": [\n      {\n        \"region_code\": \"WNAM\",\n        \"countries\": [\n          {\n            \"country_code_a2\": \"CA\",\n            \"country_name\": \"Canada\",\n            \"country_subdivisions\": [\n              {\n                \"subdivision_code_a2\": \"AB\",\n                \"subdivision_name\": \"Alberta\"\n              },\n              {\n                \"subdivision_code_a2\": \"BC\",\n                \"subdivision_name\": \"British Columbia\"\n              }\n            ]\n          },\n          {\n            \"country_code_a2\": \"HT\",\n            \"country_name\": \"Haiti\"\n          },\n          {\n            \"country_code_a2\": \"MX\",\n            \"country_name\": \"Mexico\"\n          },\n          {\n            \"country_code_a2\": \"US\",\n            \"country_name\": \"United States\",\n            \"country_subdivisions\": [\n              {\n                \"subdivision_code_a2\": \"AZ\",\n                \"subdivision_name\": \"Arizona\"\n              },\n              {\n                \"subdivision_code_a2\": \"CA\",\n                \"subdivision_name\": \"California\"\n              },\n              {\n                \"subdivision_code_a2\": \"CO\",\n                \"subdivision_name\": \"Colorado\"\n              },\n              {\n                \"subdivision_code_a2\": \"HI\",\n                \"subdivision_name\": \"Hawaii\"\n              },\n              {\n                \"subdivision_code_a2\": \"MN\",\n                \"subdivision_name\": \"Minnesota\"\n              },\n              {\n                \"subdivision_code_a2\": \"MO\",\n                \"subdivision_name\": \"Missouri\"\n              },\n              {\n                \"subdivision_code_a2\": \"NV\",\n                \"subdivision_name\": \"Nevada\"\n              },\n              {\n                \"subdivision_code_a2\": \"OR\",\n                \"subdivision_name\": \"Oregon\"\n              },\n              {\n                \"subdivision_code_a2\": \"TX\",\n                \"subdivision_name\": \"Texas\"\n              },\n              {\n                \"subdivision_code_a2\": \"UT\",\n                \"subdivision_name\": \"Utah\"\n              },\n              {\n                \"subdivision_code_a2\": \"WA\",\n                \"subdivision_name\": \"Washington\"\n              }\n            ]\n          }\n        ]\n      }\n    ]\n  }\n}"
+		}
+	],
+	"html_id": "load-balancer-regions",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"iso_standard": {
+				"type": "string",
+				"example": "\"Country and subdivision codes follow ISO 3166-1 alpha-2 and ISO 3166-2\"",
+				"description": "The ISO standard followed in the API"
+			},
+			"regions": {
+				"type": "array",
+				"example": "[\n  {\n    \"region_code\": \"WNAM\",\n    \"countries\": [\n      {\n        \"country_code_a2\": \"US\",\n        \"country_name\": \"United States\",\n        \"country_subdivisions\": [\n          {\n            \"subdivision_code_a2\": \"CA\",\n            \"subdivision_name\": \"California\"\n          }\n        ]\n      }\n    ]\n  }\n]",
+				"items": {
+					"type": "object",
+					"description": "Region code and associated country information.",
+					"properties": {
+						"region_code": {
+							"type": "string",
+							"description": "A list of Cloudflare regions. WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, SAS: Southern Asia, SEAS: South East Asia, NEAS: North East Asia)",
+							"enum": [
+								"WNAM",
+								"ENAM",
+								"WEU",
+								"EEU",
+								"NSAM",
+								"SSAM",
+								"OC",
+								"ME",
+								"NAF",
+								"SAF",
+								"SAS",
+								"SEAS",
+								"NEAS"
+							],
+							"example": "WNAM"
+						},
+						"countries": {
+							"type": "array",
+							"items": {
+								"description": "An array of region-country mappings.",
+								"type": "object",
+								"properties": {
+									"country_code_a2": {
+										"type": "string",
+										"description": "Two-letter alpha-2 country code followed in ISO 3166-1.",
+										"example": "US"
+									},
+									"country_name": {
+										"type": "string",
+										"description": "Country name.",
+										"example": "United States"
+									},
+									"country_subdivisions": {
+										"type": "array",
+										"items": {
+											"description": "An array of country-subdivision mappings.",
+											"type": "object",
+											"properties": {
+												"subdivision_code_a2": {
+													"type": "string",
+													"description": "Two-letter subdivision code followed in ISO 3166-2.",
+													"example": "CA"
+												},
+												"subdivision_name": {
+													"type": "string",
+													"description": "Subdivision name.",
+													"example": "California"
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"iso_standard",
+			"regions"
+		],
+		"objects": [],
+		"example": "{\n  \"iso_standard\": \"Country and subdivision codes follow ISO 3166-1 alpha-2 and ISO 3166-2\",\n  \"regions\": [\n    {\n      \"region_code\": \"WNAM\",\n      \"countries\": [\n        {\n          \"country_code_a2\": \"US\",\n          \"country_name\": \"United States\",\n          \"country_subdivisions\": [\n            {\n              \"subdivision_code_a2\": \"CA\",\n              \"subdivision_name\": \"California\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+		"title": "Load Balancer Regions",
+		"description": "Region-Country geographic mappings for load balancers"
+	}
+}

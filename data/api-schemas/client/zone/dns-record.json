@@ -1,0 +1,3978 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/dns-record.json",
+	"title": "DNS Records for a Zone",
+	"description": "Documentation for Cloudflare DNS records",
+	"type": "object",
+	"links": [
+		{
+			"title": "List DNS Records",
+			"description": "List, search, sort, and filter a zones' DNS records.",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_identifier}/dns_records",
+			"method": "GET",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:read"
+				]
+			},
+			"html_id": "dns-records-for-a-zone-list-dns-records",
+			"uri": "zones/:zone_identifier/dns_records",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/dns_records?type=A&name=example.com&content=127.0.0.1&proxied=false&page=1&per_page=100&order=type&direction=desc&match=all\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"type": {
+						"type": "string",
+						"example": "\"A\"",
+						"enum": [
+							"A",
+							"AAAA",
+							"CNAME",
+							"HTTPS",
+							"TXT",
+							"SRV",
+							"LOC",
+							"MX",
+							"NS",
+							"CERT",
+							"DNSKEY",
+							"DS",
+							"NAPTR",
+							"SMIMEA",
+							"SSHFP",
+							"SVCB",
+							"TLSA",
+							"URI"
+						],
+						"description": "DNS record type",
+						"readOnly": true
+					},
+					"name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "DNS record name (or @ for the zone apex)",
+						"maxLength": 255
+					},
+					"content": {
+						"type": "string",
+						"example": "\"127.0.0.1\"",
+						"description": "DNS record content"
+					},
+					"proxied": {
+						"type": "boolean",
+						"example": "false",
+						"description": "DNS record proxied status"
+					},
+					"page": {
+						"type": "number",
+						"example": "1",
+						"description": "Page number of paginated results",
+						"minimum": 1,
+						"default": 1
+					},
+					"per_page": {
+						"type": "number",
+						"example": "100",
+						"description": "Number of DNS records per page",
+						"minimum": 5,
+						"maximum": 5000,
+						"default": 100
+					},
+					"order": {
+						"type": "string",
+						"example": "\"type\"",
+						"enum": [
+							"type",
+							"name",
+							"content",
+							"ttl",
+							"proxied"
+						],
+						"description": "Field to order records by"
+					},
+					"direction": {
+						"type": "string",
+						"example": "\"desc\"",
+						"enum": [
+							"asc",
+							"desc"
+						],
+						"description": "Direction to order domains"
+					},
+					"match": {
+						"type": "string",
+						"example": "\"all\"",
+						"enum": [
+							"any",
+							"all"
+						],
+						"default": "all",
+						"description": "Whether to match all search requirements or at least one (any)"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"type",
+					"name",
+					"content",
+					"proxied",
+					"page",
+					"per_page",
+					"order",
+					"direction",
+					"match"
+				],
+				"objects": [],
+				"example": "{\n  \"type\": \"A\",\n  \"name\": \"example.com\",\n  \"content\": \"127.0.0.1\",\n  \"proxied\": false,\n  \"page\": 1,\n  \"per_page\": 100,\n  \"order\": \"type\",\n  \"direction\": \"desc\",\n  \"match\": \"all\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n      \"type\": \"A\",\n      \"name\": \"example.com\",\n      \"content\": \"198.51.100.4\",\n      \"proxiable\": true,\n      \"proxied\": false,\n      \"ttl\": 3600,\n      \"locked\": false,\n      \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n      \"zone_name\": \"example.com\",\n      \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"data\": {},\n      \"meta\": {\n        \"auto_added\": true,\n        \"source\": \"primary\"\n      }\n    }\n  ]\n}"
+		},
+		{
+			"title": "Create DNS Record",
+			"description": "Create a new DNS record for a zone. See the record object definitions for required attributes for each record type",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_identifier}/dns_records",
+			"method": "POST",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:edit"
+				]
+			},
+			"html_id": "dns-records-for-a-zone-create-dns-record",
+			"uri": "zones/:zone_identifier/dns_records",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/dns_records\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"A\",\"name\":\"example.com\",\"content\":\"127.0.0.1\",\"ttl\":3600,\"priority\":10,\"proxied\":false}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"type": {
+						"type": "string",
+						"example": "\"A\"",
+						"enum": [
+							"A",
+							"AAAA",
+							"CNAME",
+							"HTTPS",
+							"TXT",
+							"SRV",
+							"LOC",
+							"MX",
+							"NS",
+							"CERT",
+							"DNSKEY",
+							"DS",
+							"NAPTR",
+							"SMIMEA",
+							"SSHFP",
+							"SVCB",
+							"TLSA",
+							"URI"
+						],
+						"description": "DNS record type",
+						"readOnly": true
+					},
+					"name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "DNS record name (or @ for the zone apex)",
+						"maxLength": 255
+					},
+					"content": {
+						"type": "string",
+						"example": "\"127.0.0.1\"",
+						"description": "DNS record content"
+					},
+					"ttl": {
+						"type": "number",
+						"example": "3600",
+						"anyOf": [
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "3600"
+							},
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "{}"
+							}
+						],
+						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'"
+					},
+					"priority": {
+						"type": "number",
+						"example": "10",
+						"minimum": 0,
+						"maximum": 65535,
+						"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred"
+					},
+					"proxied": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Whether the record is receiving the performance and security benefits of Cloudflare"
+					}
+				},
+				"required_props": [
+					"type",
+					"name",
+					"content",
+					"ttl"
+				],
+				"optional_props": [
+					"priority",
+					"proxied"
+				],
+				"objects": [],
+				"example": "{\n  \"type\": \"A\",\n  \"name\": \"example.com\",\n  \"content\": \"127.0.0.1\",\n  \"ttl\": 3600,\n  \"priority\": 10,\n  \"proxied\": false\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n    \"type\": \"A\",\n    \"name\": \"example.com\",\n    \"content\": \"198.51.100.4\",\n    \"proxiable\": true,\n    \"proxied\": false,\n    \"ttl\": 3600,\n    \"locked\": false,\n    \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"zone_name\": \"example.com\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"data\": {},\n    \"meta\": {\n      \"auto_added\": true,\n      \"source\": \"primary\"\n    }\n  }\n}"
+		},
+		{
+			"title": "DNS Record Details",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/dns_records/{#/definitions/identifier}",
+			"method": "GET",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:read"
+				]
+			},
+			"html_id": "dns-records-for-a-zone-dns-record-details",
+			"uri": "zones/:zone_identifier/dns_records/:identifier",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/dns_records/372e67954025e0ba6aaa6d586b9e0b59\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n    \"type\": \"A\",\n    \"name\": \"example.com\",\n    \"content\": \"198.51.100.4\",\n    \"proxiable\": true,\n    \"proxied\": false,\n    \"ttl\": 3600,\n    \"locked\": false,\n    \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"zone_name\": \"example.com\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"data\": {},\n    \"meta\": {\n      \"auto_added\": true,\n      \"source\": \"primary\"\n    }\n  }\n}"
+		},
+		{
+			"title": "Update DNS Record",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/dns_records/{#/definitions/identifier}",
+			"method": "PUT",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:edit"
+				]
+			},
+			"html_id": "dns-records-for-a-zone-update-dns-record",
+			"uri": "zones/:zone_identifier/dns_records/:identifier",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/dns_records/372e67954025e0ba6aaa6d586b9e0b59\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"A\",\"name\":\"example.com\",\"content\":\"127.0.0.1\",\"ttl\":3600,\"proxied\":false}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"type": {
+						"type": "string",
+						"example": "\"A\"",
+						"enum": [
+							"A",
+							"AAAA",
+							"CNAME",
+							"HTTPS",
+							"TXT",
+							"SRV",
+							"LOC",
+							"MX",
+							"NS",
+							"CERT",
+							"DNSKEY",
+							"DS",
+							"NAPTR",
+							"SMIMEA",
+							"SSHFP",
+							"SVCB",
+							"TLSA",
+							"URI"
+						],
+						"description": "DNS record type",
+						"readOnly": true
+					},
+					"name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "DNS record name (or @ for the zone apex)",
+						"maxLength": 255
+					},
+					"content": {
+						"type": "string",
+						"example": "\"127.0.0.1\"",
+						"description": "DNS record content"
+					},
+					"ttl": {
+						"type": "number",
+						"example": "3600",
+						"anyOf": [
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "3600"
+							},
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "{}"
+							}
+						],
+						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'"
+					},
+					"proxied": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Whether the record is receiving the performance and security benefits of Cloudflare"
+					}
+				},
+				"required_props": [
+					"type",
+					"name",
+					"content",
+					"ttl"
+				],
+				"optional_props": [
+					"proxied"
+				],
+				"objects": [],
+				"example": "{\n  \"type\": \"A\",\n  \"name\": \"example.com\",\n  \"content\": \"127.0.0.1\",\n  \"ttl\": 3600,\n  \"proxied\": false\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n    \"type\": \"A\",\n    \"name\": \"example.com\",\n    \"content\": \"198.51.100.4\",\n    \"proxiable\": true,\n    \"proxied\": false,\n    \"ttl\": 3600,\n    \"locked\": false,\n    \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"zone_name\": \"example.com\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"data\": {},\n    \"meta\": {\n      \"auto_added\": true,\n      \"source\": \"primary\"\n    }\n  }\n}"
+		},
+		{
+			"title": "Patch DNS Record",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/dns_records/{#/definitions/identifier}",
+			"method": "PATCH",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:edit"
+				]
+			},
+			"html_id": "dns-records-for-a-zone-patch-dns-record",
+			"uri": "zones/:zone_identifier/dns_records/:identifier",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/dns_records/372e67954025e0ba6aaa6d586b9e0b59\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"A\",\"name\":\"example.com\",\"content\":\"127.0.0.1\",\"ttl\":3600,\"proxied\":false}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"type": {
+						"type": "string",
+						"example": "\"A\"",
+						"enum": [
+							"A",
+							"AAAA",
+							"CNAME",
+							"HTTPS",
+							"TXT",
+							"SRV",
+							"LOC",
+							"MX",
+							"NS",
+							"CERT",
+							"DNSKEY",
+							"DS",
+							"NAPTR",
+							"SMIMEA",
+							"SSHFP",
+							"SVCB",
+							"TLSA",
+							"URI"
+						],
+						"description": "DNS record type",
+						"readOnly": true
+					},
+					"name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "DNS record name (or @ for the zone apex)",
+						"maxLength": 255
+					},
+					"content": {
+						"type": "string",
+						"example": "\"127.0.0.1\"",
+						"description": "DNS record content"
+					},
+					"ttl": {
+						"type": "number",
+						"example": "3600",
+						"anyOf": [
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "3600"
+							},
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "{}"
+							}
+						],
+						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'"
+					},
+					"proxied": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Whether the record is receiving the performance and security benefits of Cloudflare"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"type",
+					"name",
+					"content",
+					"ttl",
+					"proxied"
+				],
+				"objects": [],
+				"example": "{\n  \"type\": \"A\",\n  \"name\": \"example.com\",\n  \"content\": \"127.0.0.1\",\n  \"ttl\": 3600,\n  \"proxied\": false\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n    \"type\": \"A\",\n    \"name\": \"example.com\",\n    \"content\": \"198.51.100.4\",\n    \"proxiable\": true,\n    \"proxied\": false,\n    \"ttl\": 3600,\n    \"locked\": false,\n    \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"zone_name\": \"example.com\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"data\": {},\n    \"meta\": {\n      \"auto_added\": true,\n      \"source\": \"primary\"\n    }\n  }\n}"
+		},
+		{
+			"title": "Delete DNS Record",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/dns_records/{#/definitions/identifier}",
+			"method": "DELETE",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:edit"
+				]
+			},
+			"html_id": "dns-records-for-a-zone-delete-dns-record",
+			"uri": "zones/:zone_identifier/dns_records/:identifier",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/dns_records/372e67954025e0ba6aaa6d586b9e0b59\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"result\": {\n    \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\"\n  }\n}"
+		},
+		{
+			"title": "Scan DNS Records",
+			"description": "Scan for common DNS records on your domain and automatically add them to your zone. Useful if you haven't updated your nameservers yet.",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/dns_records/scan",
+			"method": "POST",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:edit"
+				]
+			},
+			"html_id": "dns-records-for-a-zone-scan-dns-records",
+			"uri": "zones/:zone_identifier/dns_records/scan",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/dns_records/scan\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"recs_added\": 5,\n    \"total_records_parsed\": 5\n  },\n  \"timing\": {\n    \"start_time\": \"2014-03-01T12:20:00Z\",\n    \"end_time\": \"2014-03-01T12:20:01Z\",\n    \"process_time\": 1\n  }\n}"
+		},
+		{
+			"title": "Import DNS Records",
+			"description": "You can upload your [BIND config](https://en.wikipedia.org/wiki/Zone_file \"Zone file\") through this endpoint. It assumes that cURL is called from a location with bind_config.txt (valid BIND config) present.",
+			"rel": "tag:cloudflare.com,2017:bind-config",
+			"href": "zones/{#/definitions/zone_identifier}/dns_records/import",
+			"method": "POST",
+			"cfRequestHeaders": {
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
+			"encType": "multipart/form-data",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:edit"
+				]
+			},
+			"html_id": "dns-records-for-a-zone-import-dns-records",
+			"uri": "zones/:zone_identifier/dns_records/import",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/dns_records/import\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     --form 'file=@bind_config.txt' \\\n     --form 'proxied=false'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"file": {
+						"type": "string",
+						"example": "\"@bind_config.txt\"",
+						"media": {
+							"type": "text/plain; charset=UTF-8"
+						},
+						"description": "BIND config to upload"
+					},
+					"proxied": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Whether or not proxiable records should receive the performance and security benefits of Cloudflare"
+					}
+				},
+				"required_props": [
+					"file"
+				],
+				"optional_props": [
+					"proxied"
+				],
+				"objects": [],
+				"example": "{\n  \"file\": \"@bind_config.txt\",\n  \"proxied\": false\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"recs_added\": 5,\n    \"total_records_parsed\": 5\n  },\n  \"timing\": {\n    \"start_time\": \"2014-03-01T12:20:00Z\",\n    \"end_time\": \"2014-03-01T12:20:01Z\",\n    \"process_time\": 1\n  }\n}"
+		},
+		{
+			"title": "Export DNS Records",
+			"description": "You can export your [BIND config](https://en.wikipedia.org/wiki/Zone_file \"Zone file\") through this endpoint.",
+			"rel": "tag:cloudflare.com,2017:bind-config",
+			"href": "zones/{#/definitions/zone_identifier}/dns_records/export",
+			"method": "GET",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:read"
+				]
+			},
+			"html_id": "dns-records-for-a-zone-export-dns-records",
+			"uri": "zones/:zone_identifier/dns_records/export",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/dns_records/export\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{}"
+		}
+	],
+	"cfLinkErrors": {
+		"1000": "Invalid user",
+		"1002": "Invalid or missing zone_id",
+		"1003": "per_page must be a positive integer",
+		"1004": "Invalid or missing zone",
+		"1005": "Invalid or missing record",
+		"1007": "name required",
+		"1008": "content required",
+		"1009": "Invalid or missing record id",
+		"1010": "Invalid or missing record",
+		"1011": "Zone file for '<domain name>' could not be found",
+		"1012": "Zone file for '<domain name>' is not modifiable",
+		"1013": "The record could not be found",
+		"1014": "You do not have permission to modify this zone",
+		"1015": "Unknown error",
+		"1017": "Content for A record is invalid. Must be a valid IPv4 address",
+		"1018": "Content for AAAA record is invalid. Must be a valid IPv6 address",
+		"1019": "Content for CNAME record is invalid",
+		"1024": "Invalid priority, priority must be set and be between 0 and 65535",
+		"1025": "Invalid content for an MX record",
+		"1027": "Invalid service value",
+		"1028": "Invalid service value. Must be less than 100 characters",
+		"1029": "Invalid protocol value",
+		"1030": "Invalid protocol value. Must be less than 12 characters",
+		"1031": "Invalid SRV name",
+		"1032": "Invalid SRV name. Must be less than 90 characters",
+		"1033": "Invalid weight value. Must be between 0 and 65,535",
+		"1034": "Invalid port value. Must be between 0 and 65,535",
+		"1037": "Invalid domain name for a SRV target host",
+		"1038": "Invalid DNS record type",
+		"1039": "Invalid TTL. Must be between 60 and 86400 seconds, or 1 for automatic",
+		"1041": "Priority must be set for SRV record",
+		"1042": "Zone file for '<domain name>' could not be found",
+		"1043": "Zone file for '<domain name>' is not editable",
+		"1044": "A record with these exact values already exists. Please modify or remove this record",
+		"1045": "The record could not be found",
+		"1046": "A record with these exact values already exists. Please modify or cancel this edit",
+		"1047": "You do not have permission to modify this zone",
+		"1048": "You have reached the record limit for this zone",
+		"1049": "The record content is missing",
+		"1050": "Could not find record",
+		"1052": "You can not point a CNAME to itself",
+		"1053": "Invalid lat_degrees, must be an integer between 0 and 90 inclusive",
+		"1054": "Invalid lat_minutes, must be an integer between 0 and 59 inclusive",
+		"1055": "Invalid lat_seconds, must be a floating point number between 0 and 60, including 0 but not including 60",
+		"1056": "Invalid or missing lat_direction. Values must be N or S",
+		"1057": "Invalid long_degrees, must be an integer between 0 and 180",
+		"1058": "Invalid long_minutes, must be an integer between 0 and 59",
+		"1059": "Invalid long_seconds, must be a floating point number between 0 and 60, including 0 but not including 60",
+		"1060": "Invalid or missing long_direction. Values must be E or S",
+		"1061": "Invalid altitude, must be a floating point number between -100000.00 and 42849672.95",
+		"1062": "Invalid size, must be a floating point number between 0 and 90000000.00",
+		"1063": "Invalid precision_horz, must be a floating point number between 0 and 90000000.00",
+		"1064": "Invalid precision_vert, must be a floating point number between 0 and 90000000.00",
+		"1065": "Invalid or missing data for <type> record",
+		"1067": "Invalid content for a NS record",
+		"1068": "Target cannot be an IP address",
+		"1069": "CNAME content cannot reference itself",
+		"1070": "CNAME content cannot be an IP",
+		"1071": "Invalid proxied mode. Record cannot be proxied",
+		"1072": "Invalid record identifier",
+		"1073": "Invalid TXT record. Must be less than 255 characters",
+		"1074": "Invalid TXT record. Record may only contain printable ASCII!"
+	},
+	"cfSectionNotes": [
+		"If a zone's cname_setup_status is TRUE, you may only add A/AAAA and CNAME records for that zone",
+		"When adding a CNAME record, it will not be added if there is an A or AAAA record with the same name",
+		"When adding a A or AAAA record, it will not be added if there is an CNAME record with the same name",
+		"A CNAME record's name may not match it's content",
+		"You cannot add an NS record with the same name as any other record type",
+		"You cannot add a record with the same name as any NS record",
+		"Cloudflare will not begin serving DNS for a zone until the zone's nameservers are switched to Cloudflare nameservers at the zone's registrar",
+		"DNS will continue to be served by Cloudflare for 20 days after a zone's nameservers are switched away from Cloudflare namservers",
+		"When using unicode characters in domain names, they will be translated to punycode and as such, the length may end up being larger than what is passed into the API"
+	],
+	"html_id": "dns-records-for-a-zone",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {},
+		"required_props": [
+			"id",
+			"type",
+			"name",
+			"content",
+			"proxiable",
+			"proxied",
+			"ttl",
+			"locked",
+			"zone_name",
+			"created_on",
+			"modified_on"
+		],
+		"optional_props": [],
+		"objects": [
+			{
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"372e67954025e0ba6aaa6d586b9e0b59\"",
+						"description": "DNS record identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"type": {
+						"type": "string",
+						"example": "\"A\"",
+						"enum": [
+							"A",
+							"AAAA",
+							"CNAME",
+							"HTTPS",
+							"TXT",
+							"SRV",
+							"LOC",
+							"MX",
+							"NS",
+							"CERT",
+							"DNSKEY",
+							"DS",
+							"NAPTR",
+							"SMIMEA",
+							"SSHFP",
+							"SVCB",
+							"TLSA",
+							"URI",
+							"A"
+						],
+						"description": "Record type",
+						"readOnly": true
+					},
+					"name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "DNS record name (or @ for the zone apex)",
+						"maxLength": 255
+					},
+					"content": {
+						"type": "string",
+						"example": "\"198.51.100.4\"",
+						"description": "A valid IPv4 address",
+						"format": "ipv4"
+					},
+					"proxiable": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether the record can be proxied by Cloudflare or not",
+						"readOnly": true
+					},
+					"proxied": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Whether the record is receiving the performance and security benefits of Cloudflare"
+					},
+					"ttl": {
+						"type": "number",
+						"example": "3600",
+						"anyOf": [
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "3600"
+							},
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "{}"
+							}
+						],
+						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'"
+					},
+					"locked": {
+						"type": "boolean",
+						"example": "false",
+						"readOnly": true,
+						"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare)"
+					},
+					"zone_id": {
+						"type": "string",
+						"example": "\"023e105f4ecef8ad9ca31a8372d0c353\"",
+						"description": "Zone identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"zone_name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "The domain of the record",
+						"format": "hostname",
+						"readOnly": true
+					},
+					"created_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"description": "When the record was created",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"modified_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"description": "When the record was last modified",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"data": {
+						"type": "object",
+						"example": "{}",
+						"description": "Metadata about the record"
+					},
+					"meta": {
+						"type": "object",
+						"example": "{\n  \"auto_added\": true,\n  \"source\": \"primary\"\n}",
+						"properties": {
+							"auto_added": {
+								"type": "boolean",
+								"example": "true",
+								"description": "Will exist if Cloudflare automatically added this DNS record during initial setup."
+							},
+							"source": {
+								"type": "string",
+								"example": "\"primary\"",
+								"description": "Where the record originated from"
+							}
+						},
+						"description": "Extra Cloudflare-specific information about the record"
+					}
+				},
+				"required_props": [
+					"type",
+					"name",
+					"content"
+				],
+				"optional_props": [
+					"id",
+					"proxiable",
+					"proxied",
+					"ttl",
+					"locked",
+					"zone_id",
+					"zone_name",
+					"created_on",
+					"modified_on",
+					"data",
+					"meta"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"A\",\n  \"name\": \"example.com\",\n  \"content\": \"198.51.100.4\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {},\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
+				"title": "A Record"
+			},
+			{
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"372e67954025e0ba6aaa6d586b9e0b59\"",
+						"description": "DNS record identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"type": {
+						"type": "string",
+						"example": "\"AAAA\"",
+						"enum": [
+							"A",
+							"AAAA",
+							"CNAME",
+							"HTTPS",
+							"TXT",
+							"SRV",
+							"LOC",
+							"MX",
+							"NS",
+							"CERT",
+							"DNSKEY",
+							"DS",
+							"NAPTR",
+							"SMIMEA",
+							"SSHFP",
+							"SVCB",
+							"TLSA",
+							"URI",
+							"AAAA"
+						],
+						"description": "Record type",
+						"readOnly": true
+					},
+					"name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "DNS record name (or @ for the zone apex)",
+						"maxLength": 255
+					},
+					"content": {
+						"type": "string",
+						"example": "\"2400:cb00:2049:1::173.245.59.16\"",
+						"description": "A valid IPv6 address",
+						"format": "ipv6"
+					},
+					"proxiable": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether the record can be proxied by Cloudflare or not",
+						"readOnly": true
+					},
+					"proxied": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Whether the record is receiving the performance and security benefits of Cloudflare"
+					},
+					"ttl": {
+						"type": "number",
+						"example": "3600",
+						"anyOf": [
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "3600"
+							},
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "{}"
+							}
+						],
+						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'"
+					},
+					"locked": {
+						"type": "boolean",
+						"example": "false",
+						"readOnly": true,
+						"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare)"
+					},
+					"zone_id": {
+						"type": "string",
+						"example": "\"023e105f4ecef8ad9ca31a8372d0c353\"",
+						"description": "Zone identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"zone_name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "The domain of the record",
+						"format": "hostname",
+						"readOnly": true
+					},
+					"created_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"description": "When the record was created",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"modified_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"description": "When the record was last modified",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"data": {
+						"type": "object",
+						"example": "{}",
+						"description": "Metadata about the record"
+					},
+					"meta": {
+						"type": "object",
+						"example": "{\n  \"auto_added\": true,\n  \"source\": \"primary\"\n}",
+						"properties": {
+							"auto_added": {
+								"type": "boolean",
+								"example": "true",
+								"description": "Will exist if Cloudflare automatically added this DNS record during initial setup."
+							},
+							"source": {
+								"type": "string",
+								"example": "\"primary\"",
+								"description": "Where the record originated from"
+							}
+						},
+						"description": "Extra Cloudflare-specific information about the record"
+					}
+				},
+				"required_props": [
+					"type",
+					"name",
+					"content"
+				],
+				"optional_props": [
+					"id",
+					"proxiable",
+					"proxied",
+					"ttl",
+					"locked",
+					"zone_id",
+					"zone_name",
+					"created_on",
+					"modified_on",
+					"data",
+					"meta"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"AAAA\",\n  \"name\": \"example.com\",\n  \"content\": \"2400:cb00:2049:1::173.245.59.16\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {},\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
+				"title": "AAAA Record"
+			},
+			{
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"372e67954025e0ba6aaa6d586b9e0b59\"",
+						"description": "DNS record identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"type": {
+						"type": "string",
+						"example": "\"CNAME\"",
+						"enum": [
+							"A",
+							"AAAA",
+							"CNAME",
+							"HTTPS",
+							"TXT",
+							"SRV",
+							"LOC",
+							"MX",
+							"NS",
+							"CERT",
+							"DNSKEY",
+							"DS",
+							"NAPTR",
+							"SMIMEA",
+							"SSHFP",
+							"SVCB",
+							"TLSA",
+							"URI",
+							"CNAME"
+						],
+						"description": "Record type",
+						"readOnly": true
+					},
+					"name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "DNS record name (or @ for the zone apex)",
+						"maxLength": 255
+					},
+					"content": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "A valid hostname",
+						"maxLength": 255
+					},
+					"proxiable": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether the record can be proxied by Cloudflare or not",
+						"readOnly": true
+					},
+					"proxied": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Whether the record is receiving the performance and security benefits of Cloudflare"
+					},
+					"ttl": {
+						"type": "number",
+						"example": "3600",
+						"anyOf": [
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "3600"
+							},
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "{}"
+							}
+						],
+						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'"
+					},
+					"locked": {
+						"type": "boolean",
+						"example": "false",
+						"readOnly": true,
+						"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare)"
+					},
+					"zone_id": {
+						"type": "string",
+						"example": "\"023e105f4ecef8ad9ca31a8372d0c353\"",
+						"description": "Zone identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"zone_name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "The domain of the record",
+						"format": "hostname",
+						"readOnly": true
+					},
+					"created_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"description": "When the record was created",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"modified_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"description": "When the record was last modified",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"data": {
+						"type": "object",
+						"example": "{}",
+						"description": "Metadata about the record"
+					},
+					"meta": {
+						"type": "object",
+						"example": "{\n  \"auto_added\": true,\n  \"source\": \"primary\"\n}",
+						"properties": {
+							"auto_added": {
+								"type": "boolean",
+								"example": "true",
+								"description": "Will exist if Cloudflare automatically added this DNS record during initial setup."
+							},
+							"source": {
+								"type": "string",
+								"example": "\"primary\"",
+								"description": "Where the record originated from"
+							}
+						},
+						"description": "Extra Cloudflare-specific information about the record"
+					}
+				},
+				"required_props": [
+					"type",
+					"name",
+					"content"
+				],
+				"optional_props": [
+					"id",
+					"proxiable",
+					"proxied",
+					"ttl",
+					"locked",
+					"zone_id",
+					"zone_name",
+					"created_on",
+					"modified_on",
+					"data",
+					"meta"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"CNAME\",\n  \"name\": \"example.com\",\n  \"content\": \"example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {},\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
+				"title": "CNAME Record"
+			},
+			{
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"372e67954025e0ba6aaa6d586b9e0b59\"",
+						"description": "DNS record identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"type": {
+						"type": "string",
+						"example": "\"HTTPS\"",
+						"enum": [
+							"A",
+							"AAAA",
+							"CNAME",
+							"HTTPS",
+							"TXT",
+							"SRV",
+							"LOC",
+							"MX",
+							"NS",
+							"CERT",
+							"DNSKEY",
+							"DS",
+							"NAPTR",
+							"SMIMEA",
+							"SSHFP",
+							"SVCB",
+							"TLSA",
+							"URI",
+							"HTTPS"
+						],
+						"description": "Record type",
+						"readOnly": true
+					},
+					"name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "DNS record name (or @ for the zone apex)",
+						"maxLength": 255
+					},
+					"content": {
+						"type": "string",
+						"example": "\"127.0.0.1\"",
+						"description": "Formatted HTTPS content. See 'data' to set HTTPS properties",
+						"readOnly": true
+					},
+					"proxiable": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether the record can be proxied by Cloudflare or not",
+						"readOnly": true
+					},
+					"proxied": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Whether the record is receiving the performance and security benefits of Cloudflare"
+					},
+					"ttl": {
+						"type": "number",
+						"example": "3600",
+						"anyOf": [
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "3600"
+							},
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "{}"
+							}
+						],
+						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'"
+					},
+					"locked": {
+						"type": "boolean",
+						"example": "false",
+						"readOnly": true,
+						"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare)"
+					},
+					"zone_id": {
+						"type": "string",
+						"example": "\"023e105f4ecef8ad9ca31a8372d0c353\"",
+						"description": "Zone identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"zone_name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "The domain of the record",
+						"format": "hostname",
+						"readOnly": true
+					},
+					"created_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"description": "When the record was created",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"modified_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"description": "When the record was last modified",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"data": {
+						"type": "object",
+						"example": "{\n  \"priority\": 1,\n  \"target\": \".\",\n  \"value\": \"alpn=\\\"h3,h2\\\" ipv4hint=\\\"127.0.0.1\\\" ipv6hint=\\\"::1\\\"\"\n}",
+						"description": "Components of a HTTPS record",
+						"properties": {
+							"priority": {
+								"type": "number",
+								"example": "1",
+								"description": "priority",
+								"minimum": 0,
+								"maximum": 65535
+							},
+							"target": {
+								"type": "string",
+								"example": "\".\"",
+								"description": "target"
+							},
+							"value": {
+								"type": "string",
+								"example": "\"alpn=\\\"h3,h2\\\" ipv4hint=\\\"127.0.0.1\\\" ipv6hint=\\\"::1\\\"\"",
+								"description": "value"
+							}
+						}
+					},
+					"meta": {
+						"type": "object",
+						"example": "{\n  \"auto_added\": true,\n  \"source\": \"primary\"\n}",
+						"properties": {
+							"auto_added": {
+								"type": "boolean",
+								"example": "true",
+								"description": "Will exist if Cloudflare automatically added this DNS record during initial setup."
+							},
+							"source": {
+								"type": "string",
+								"example": "\"primary\"",
+								"description": "Where the record originated from"
+							}
+						},
+						"description": "Extra Cloudflare-specific information about the record"
+					}
+				},
+				"required_props": [
+					"type",
+					"name",
+					"data"
+				],
+				"optional_props": [
+					"id",
+					"content",
+					"proxiable",
+					"proxied",
+					"ttl",
+					"locked",
+					"zone_id",
+					"zone_name",
+					"created_on",
+					"modified_on",
+					"meta"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"HTTPS\",\n  \"name\": \"example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {\n    \"priority\": 1,\n    \"target\": \".\",\n    \"value\": \"alpn=\\\"h3,h2\\\" ipv4hint=\\\"127.0.0.1\\\" ipv6hint=\\\"::1\\\"\"\n  },\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
+				"title": "HTTPS Record"
+			},
+			{
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"372e67954025e0ba6aaa6d586b9e0b59\"",
+						"description": "DNS record identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"type": {
+						"type": "string",
+						"example": "\"NS\"",
+						"enum": [
+							"A",
+							"AAAA",
+							"CNAME",
+							"HTTPS",
+							"TXT",
+							"SRV",
+							"LOC",
+							"MX",
+							"NS",
+							"CERT",
+							"DNSKEY",
+							"DS",
+							"NAPTR",
+							"SMIMEA",
+							"SSHFP",
+							"SVCB",
+							"TLSA",
+							"URI",
+							"NS"
+						],
+						"description": "Record type",
+						"readOnly": true
+					},
+					"name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "DNS record name (or @ for the zone apex)",
+						"maxLength": 255
+					},
+					"content": {
+						"type": "string",
+						"example": "\"ns1.example.com\"",
+						"description": "A valid name server host name",
+						"maxLength": 255
+					},
+					"proxiable": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether the record can be proxied by Cloudflare or not",
+						"readOnly": true
+					},
+					"proxied": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Whether the record is receiving the performance and security benefits of Cloudflare"
+					},
+					"ttl": {
+						"type": "number",
+						"example": "3600",
+						"anyOf": [
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "3600"
+							},
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "{}"
+							}
+						],
+						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'"
+					},
+					"locked": {
+						"type": "boolean",
+						"example": "false",
+						"readOnly": true,
+						"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare)"
+					},
+					"zone_id": {
+						"type": "string",
+						"example": "\"023e105f4ecef8ad9ca31a8372d0c353\"",
+						"description": "Zone identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"zone_name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "The domain of the record",
+						"format": "hostname",
+						"readOnly": true
+					},
+					"created_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"description": "When the record was created",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"modified_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"description": "When the record was last modified",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"data": {
+						"type": "object",
+						"example": "{}",
+						"description": "Metadata about the record"
+					},
+					"meta": {
+						"type": "object",
+						"example": "{\n  \"auto_added\": true,\n  \"source\": \"primary\"\n}",
+						"properties": {
+							"auto_added": {
+								"type": "boolean",
+								"example": "true",
+								"description": "Will exist if Cloudflare automatically added this DNS record during initial setup."
+							},
+							"source": {
+								"type": "string",
+								"example": "\"primary\"",
+								"description": "Where the record originated from"
+							}
+						},
+						"description": "Extra Cloudflare-specific information about the record"
+					}
+				},
+				"required_props": [
+					"type",
+					"name",
+					"content"
+				],
+				"optional_props": [
+					"id",
+					"proxiable",
+					"proxied",
+					"ttl",
+					"locked",
+					"zone_id",
+					"zone_name",
+					"created_on",
+					"modified_on",
+					"data",
+					"meta"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"NS\",\n  \"name\": \"example.com\",\n  \"content\": \"ns1.example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {},\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
+				"title": "NS Record"
+			},
+			{
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"372e67954025e0ba6aaa6d586b9e0b59\"",
+						"description": "DNS record identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"type": {
+						"type": "string",
+						"example": "\"MX\"",
+						"enum": [
+							"A",
+							"AAAA",
+							"CNAME",
+							"HTTPS",
+							"TXT",
+							"SRV",
+							"LOC",
+							"MX",
+							"NS",
+							"CERT",
+							"DNSKEY",
+							"DS",
+							"NAPTR",
+							"SMIMEA",
+							"SSHFP",
+							"SVCB",
+							"TLSA",
+							"URI",
+							"MX"
+						],
+						"description": "Record type",
+						"readOnly": true
+					},
+					"name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "DNS record name (or @ for the zone apex)",
+						"maxLength": 255
+					},
+					"content": {
+						"type": "string",
+						"example": "\"mx.example.com\"",
+						"description": "A valid mail server hostname",
+						"format": "hostname"
+					},
+					"proxiable": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether the record can be proxied by Cloudflare or not",
+						"readOnly": true
+					},
+					"proxied": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Whether the record is receiving the performance and security benefits of Cloudflare"
+					},
+					"ttl": {
+						"type": "number",
+						"example": "3600",
+						"anyOf": [
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "3600"
+							},
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "{}"
+							}
+						],
+						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'"
+					},
+					"locked": {
+						"type": "boolean",
+						"example": "false",
+						"readOnly": true,
+						"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare)"
+					},
+					"zone_id": {
+						"type": "string",
+						"example": "\"023e105f4ecef8ad9ca31a8372d0c353\"",
+						"description": "Zone identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"zone_name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "The domain of the record",
+						"format": "hostname",
+						"readOnly": true
+					},
+					"created_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"description": "When the record was created",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"modified_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"description": "When the record was last modified",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"data": {
+						"type": "object",
+						"example": "{}",
+						"description": "Metadata about the record"
+					},
+					"meta": {
+						"type": "object",
+						"example": "{\n  \"auto_added\": true,\n  \"source\": \"primary\"\n}",
+						"properties": {
+							"auto_added": {
+								"type": "boolean",
+								"example": "true",
+								"description": "Will exist if Cloudflare automatically added this DNS record during initial setup."
+							},
+							"source": {
+								"type": "string",
+								"example": "\"primary\"",
+								"description": "Where the record originated from"
+							}
+						},
+						"description": "Extra Cloudflare-specific information about the record"
+					},
+					"priority": {
+						"type": "number",
+						"example": "10",
+						"minimum": 0,
+						"maximum": 65535,
+						"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred"
+					}
+				},
+				"required_props": [
+					"type",
+					"name",
+					"content",
+					"priority"
+				],
+				"optional_props": [
+					"id",
+					"proxiable",
+					"proxied",
+					"ttl",
+					"locked",
+					"zone_id",
+					"zone_name",
+					"created_on",
+					"modified_on",
+					"data",
+					"meta"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"MX\",\n  \"name\": \"example.com\",\n  \"content\": \"mx.example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {},\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  },\n  \"priority\": 10\n}",
+				"title": "MX Record"
+			},
+			{
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"372e67954025e0ba6aaa6d586b9e0b59\"",
+						"description": "DNS record identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"type": {
+						"type": "string",
+						"example": "\"TXT\"",
+						"enum": [
+							"A",
+							"AAAA",
+							"CNAME",
+							"HTTPS",
+							"TXT",
+							"SRV",
+							"LOC",
+							"MX",
+							"NS",
+							"CERT",
+							"DNSKEY",
+							"DS",
+							"NAPTR",
+							"SMIMEA",
+							"SSHFP",
+							"SVCB",
+							"TLSA",
+							"URI",
+							"TXT"
+						],
+						"description": "Record type",
+						"readOnly": true
+					},
+					"name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "DNS record name (or @ for the zone apex)",
+						"maxLength": 255
+					},
+					"content": {
+						"type": "string",
+						"example": "\"example text content\"",
+						"description": "Text content for the record"
+					},
+					"proxiable": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether the record can be proxied by Cloudflare or not",
+						"readOnly": true
+					},
+					"proxied": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Whether the record is receiving the performance and security benefits of Cloudflare"
+					},
+					"ttl": {
+						"type": "number",
+						"example": "3600",
+						"anyOf": [
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "3600"
+							},
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "{}"
+							}
+						],
+						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'"
+					},
+					"locked": {
+						"type": "boolean",
+						"example": "false",
+						"readOnly": true,
+						"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare)"
+					},
+					"zone_id": {
+						"type": "string",
+						"example": "\"023e105f4ecef8ad9ca31a8372d0c353\"",
+						"description": "Zone identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"zone_name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "The domain of the record",
+						"format": "hostname",
+						"readOnly": true
+					},
+					"created_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"description": "When the record was created",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"modified_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"description": "When the record was last modified",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"data": {
+						"type": "object",
+						"example": "{}",
+						"description": "Metadata about the record"
+					},
+					"meta": {
+						"type": "object",
+						"example": "{\n  \"auto_added\": true,\n  \"source\": \"primary\"\n}",
+						"properties": {
+							"auto_added": {
+								"type": "boolean",
+								"example": "true",
+								"description": "Will exist if Cloudflare automatically added this DNS record during initial setup."
+							},
+							"source": {
+								"type": "string",
+								"example": "\"primary\"",
+								"description": "Where the record originated from"
+							}
+						},
+						"description": "Extra Cloudflare-specific information about the record"
+					}
+				},
+				"required_props": [
+					"type",
+					"name",
+					"content"
+				],
+				"optional_props": [
+					"id",
+					"proxiable",
+					"proxied",
+					"ttl",
+					"locked",
+					"zone_id",
+					"zone_name",
+					"created_on",
+					"modified_on",
+					"data",
+					"meta"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"TXT\",\n  \"name\": \"example.com\",\n  \"content\": \"example text content\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {},\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
+				"title": "TXT Record"
+			},
+			{
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"372e67954025e0ba6aaa6d586b9e0b59\"",
+						"description": "DNS record identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"type": {
+						"type": "string",
+						"example": "\"LOC\"",
+						"enum": [
+							"A",
+							"AAAA",
+							"CNAME",
+							"HTTPS",
+							"TXT",
+							"SRV",
+							"LOC",
+							"MX",
+							"NS",
+							"CERT",
+							"DNSKEY",
+							"DS",
+							"NAPTR",
+							"SMIMEA",
+							"SSHFP",
+							"SVCB",
+							"TLSA",
+							"URI",
+							"LOC"
+						],
+						"description": "Record type",
+						"readOnly": true
+					},
+					"name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "DNS record name (or @ for the zone apex)",
+						"maxLength": 255
+					},
+					"content": {
+						"type": "string",
+						"example": "\"IN LOC 37 46 46 N 122 23 35 W 0m 100m 0m 0m\"",
+						"description": "Formatted LOC content. See 'data' to set LOC properties",
+						"readOnly": true
+					},
+					"proxiable": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether the record can be proxied by Cloudflare or not",
+						"readOnly": true
+					},
+					"proxied": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Whether the record is receiving the performance and security benefits of Cloudflare"
+					},
+					"ttl": {
+						"type": "number",
+						"example": "3600",
+						"anyOf": [
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "3600"
+							},
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "{}"
+							}
+						],
+						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'"
+					},
+					"locked": {
+						"type": "boolean",
+						"example": "false",
+						"readOnly": true,
+						"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare)"
+					},
+					"zone_id": {
+						"type": "string",
+						"example": "\"023e105f4ecef8ad9ca31a8372d0c353\"",
+						"description": "Zone identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"zone_name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "The domain of the record",
+						"format": "hostname",
+						"readOnly": true
+					},
+					"created_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"description": "When the record was created",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"modified_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"description": "When the record was last modified",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"data": {
+						"type": "object",
+						"example": "{\n  \"lat_degrees\": 37,\n  \"lat_minutes\": 46,\n  \"lat_seconds\": 46,\n  \"lat_direction\": \"N\",\n  \"long_degrees\": 122,\n  \"long_minutes\": 23,\n  \"long_seconds\": 35,\n  \"long_direction\": \"W\",\n  \"altitude\": 0,\n  \"size\": 100,\n  \"precision_horz\": 0,\n  \"precision_vert\": 0\n}",
+						"description": "Components of a LOC record",
+						"properties": {
+							"lat_degrees": {
+								"type": "number",
+								"example": "37",
+								"description": "Degrees of latitude",
+								"minimum": 0,
+								"maximum": 90
+							},
+							"lat_minutes": {
+								"type": "number",
+								"example": "46",
+								"description": "Minutes of latitude",
+								"default": 0,
+								"minimum": 0,
+								"maximum": 59
+							},
+							"lat_seconds": {
+								"type": "number",
+								"example": "46",
+								"description": "Seconds of latitude",
+								"default": 0,
+								"minimum": 0,
+								"maximum": 59.999
+							},
+							"lat_direction": {
+								"example": "\"N\"",
+								"enum": [
+									"N",
+									"S"
+								],
+								"description": "Latitude direction"
+							},
+							"long_degrees": {
+								"type": "number",
+								"example": "122",
+								"description": "Degrees of longitude",
+								"minimum": 0,
+								"maximum": 180
+							},
+							"long_minutes": {
+								"type": "number",
+								"example": "23",
+								"description": "Minutes of longitude",
+								"default": 0,
+								"minimum": 0,
+								"maximum": 59
+							},
+							"long_seconds": {
+								"type": "number",
+								"example": "35",
+								"description": "Seconds of longitude",
+								"default": 0,
+								"minimum": 0,
+								"maximum": 59.999
+							},
+							"long_direction": {
+								"example": "\"W\"",
+								"enum": [
+									"E",
+									"W"
+								],
+								"description": "Longitude direction"
+							},
+							"altitude": {
+								"type": "number",
+								"example": "0",
+								"description": "Altitude of location in meters",
+								"minimum": -100000,
+								"maximum": 42849672.95
+							},
+							"size": {
+								"type": "number",
+								"example": "100",
+								"description": "Size of location in meters",
+								"minimum": 0,
+								"maximum": 90000000,
+								"default": 0
+							},
+							"precision_horz": {
+								"type": "number",
+								"example": "0",
+								"description": "Horizontal precision of location",
+								"minimum": 0,
+								"maximum": 90000000,
+								"default": 0
+							},
+							"precision_vert": {
+								"type": "number",
+								"example": "0",
+								"description": "Vertical precision of location",
+								"minimum": 0,
+								"maximum": 90000000,
+								"default": 0
+							}
+						}
+					},
+					"meta": {
+						"type": "object",
+						"example": "{\n  \"auto_added\": true,\n  \"source\": \"primary\"\n}",
+						"properties": {
+							"auto_added": {
+								"type": "boolean",
+								"example": "true",
+								"description": "Will exist if Cloudflare automatically added this DNS record during initial setup."
+							},
+							"source": {
+								"type": "string",
+								"example": "\"primary\"",
+								"description": "Where the record originated from"
+							}
+						},
+						"description": "Extra Cloudflare-specific information about the record"
+					}
+				},
+				"required_props": [
+					"type",
+					"name",
+					"data"
+				],
+				"optional_props": [
+					"id",
+					"content",
+					"proxiable",
+					"proxied",
+					"ttl",
+					"locked",
+					"zone_id",
+					"zone_name",
+					"created_on",
+					"modified_on",
+					"meta"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"LOC\",\n  \"name\": \"example.com\",\n  \"content\": \"IN LOC 37 46 46 N 122 23 35 W 0m 100m 0m 0m\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {\n    \"lat_degrees\": 37,\n    \"lat_minutes\": 46,\n    \"lat_seconds\": 46,\n    \"lat_direction\": \"N\",\n    \"long_degrees\": 122,\n    \"long_minutes\": 23,\n    \"long_seconds\": 35,\n    \"long_direction\": \"W\",\n    \"altitude\": 0,\n    \"size\": 100,\n    \"precision_horz\": 0,\n    \"precision_vert\": 0\n  },\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
+				"title": "LOC Record"
+			},
+			{
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"372e67954025e0ba6aaa6d586b9e0b59\"",
+						"description": "DNS record identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"type": {
+						"type": "string",
+						"example": "\"SRV\"",
+						"enum": [
+							"A",
+							"AAAA",
+							"CNAME",
+							"HTTPS",
+							"TXT",
+							"SRV",
+							"LOC",
+							"MX",
+							"NS",
+							"CERT",
+							"DNSKEY",
+							"DS",
+							"NAPTR",
+							"SMIMEA",
+							"SSHFP",
+							"SVCB",
+							"TLSA",
+							"URI",
+							"SRV"
+						],
+						"description": "Record type",
+						"readOnly": true
+					},
+					"name": {
+						"type": "string",
+						"example": "\"_sip._tcp.example.com\"",
+						"description": "Service, protocol, and SRV name content. See 'data' for setting the individual component values",
+						"maxLength": 255,
+						"readOnly": true
+					},
+					"content": {
+						"type": "string",
+						"example": "\"10 IN SRV 5 8806 example.com.\"",
+						"description": "Priority, weight, port, and SRV target. See 'data' for setting the individual component values",
+						"readOnly": true
+					},
+					"proxiable": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether the record can be proxied by Cloudflare or not",
+						"readOnly": true
+					},
+					"proxied": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Whether the record is receiving the performance and security benefits of Cloudflare"
+					},
+					"ttl": {
+						"type": "number",
+						"example": "3600",
+						"anyOf": [
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "3600"
+							},
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "{}"
+							}
+						],
+						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'"
+					},
+					"locked": {
+						"type": "boolean",
+						"example": "false",
+						"readOnly": true,
+						"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare)"
+					},
+					"zone_id": {
+						"type": "string",
+						"example": "\"023e105f4ecef8ad9ca31a8372d0c353\"",
+						"description": "Zone identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"zone_name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "The domain of the record",
+						"format": "hostname",
+						"readOnly": true
+					},
+					"created_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"description": "When the record was created",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"modified_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"description": "When the record was last modified",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"data": {
+						"type": "object",
+						"example": "{\n  \"service\": \"_sip\",\n  \"proto\": \"_tcp\",\n  \"name\": \"example.com\",\n  \"priority\": 10,\n  \"weight\": 5,\n  \"port\": 8806,\n  \"target\": \"example.com\"\n}",
+						"description": "Components of a SRV record",
+						"properties": {
+							"service": {
+								"type": "string",
+								"example": "\"_sip\"",
+								"description": "A service type, prefixed with an underscore"
+							},
+							"proto": {
+								"type": "string",
+								"example": "\"_tcp\"",
+								"description": "A valid protocol"
+							},
+							"name": {
+								"type": "string",
+								"example": "\"example.com\"",
+								"description": "A valid hostname",
+								"format": "hostname"
+							},
+							"priority": {
+								"type": "number",
+								"example": "10",
+								"minimum": 0,
+								"maximum": 65535,
+								"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred"
+							},
+							"weight": {
+								"type": "number",
+								"example": "5",
+								"description": "The record weight",
+								"minimum": 0,
+								"maximum": 65535
+							},
+							"port": {
+								"type": "number",
+								"example": "8806",
+								"description": "The port of the service",
+								"minimum": 0,
+								"maximum": 65535
+							},
+							"target": {
+								"type": "string",
+								"example": "\"example.com\"",
+								"description": "A valid hostname",
+								"format": "hostname"
+							}
+						}
+					},
+					"meta": {
+						"type": "object",
+						"example": "{\n  \"auto_added\": true,\n  \"source\": \"primary\"\n}",
+						"properties": {
+							"auto_added": {
+								"type": "boolean",
+								"example": "true",
+								"description": "Will exist if Cloudflare automatically added this DNS record during initial setup."
+							},
+							"source": {
+								"type": "string",
+								"example": "\"primary\"",
+								"description": "Where the record originated from"
+							}
+						},
+						"description": "Extra Cloudflare-specific information about the record"
+					}
+				},
+				"required_props": [
+					"type",
+					"data"
+				],
+				"optional_props": [
+					"id",
+					"name",
+					"content",
+					"proxiable",
+					"proxied",
+					"ttl",
+					"locked",
+					"zone_id",
+					"zone_name",
+					"created_on",
+					"modified_on",
+					"meta"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"SRV\",\n  \"name\": \"_sip._tcp.example.com\",\n  \"content\": \"10 IN SRV 5 8806 example.com.\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {\n    \"service\": \"_sip\",\n    \"proto\": \"_tcp\",\n    \"name\": \"example.com\",\n    \"priority\": 10,\n    \"weight\": 5,\n    \"port\": 8806,\n    \"target\": \"example.com\"\n  },\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
+				"title": "SRV Record"
+			},
+			{
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"372e67954025e0ba6aaa6d586b9e0b59\"",
+						"description": "DNS record identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"type": {
+						"type": "string",
+						"example": "\"CERT\"",
+						"enum": [
+							"A",
+							"AAAA",
+							"CNAME",
+							"HTTPS",
+							"TXT",
+							"SRV",
+							"LOC",
+							"MX",
+							"NS",
+							"CERT",
+							"DNSKEY",
+							"DS",
+							"NAPTR",
+							"SMIMEA",
+							"SSHFP",
+							"SVCB",
+							"TLSA",
+							"URI",
+							"CERT"
+						],
+						"description": "Record type",
+						"readOnly": true
+					},
+					"name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "DNS record name (or @ for the zone apex)",
+						"maxLength": 255
+					},
+					"content": {
+						"type": "string",
+						"example": "\"127.0.0.1\"",
+						"description": "Formatted CERT content. See 'data' to set CERT properties",
+						"readOnly": true
+					},
+					"proxiable": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether the record can be proxied by Cloudflare or not",
+						"readOnly": true
+					},
+					"proxied": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Whether the record is receiving the performance and security benefits of Cloudflare"
+					},
+					"ttl": {
+						"type": "number",
+						"example": "3600",
+						"anyOf": [
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "3600"
+							},
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "{}"
+							}
+						],
+						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'"
+					},
+					"locked": {
+						"type": "boolean",
+						"example": "false",
+						"readOnly": true,
+						"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare)"
+					},
+					"zone_id": {
+						"type": "string",
+						"example": "\"023e105f4ecef8ad9ca31a8372d0c353\"",
+						"description": "Zone identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"zone_name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "The domain of the record",
+						"format": "hostname",
+						"readOnly": true
+					},
+					"created_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"description": "When the record was created",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"modified_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"description": "When the record was last modified",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"data": {
+						"type": "object",
+						"example": "{\n  \"type\": 9,\n  \"key_tag\": 1,\n  \"algorithm\": 8\n}",
+						"description": "Components of a CERT record",
+						"properties": {
+							"type": {
+								"type": "number",
+								"example": "9",
+								"description": "Type",
+								"minimum": 0,
+								"maximum": 65535
+							},
+							"key_tag": {
+								"type": "number",
+								"example": "1",
+								"description": "Key Tag",
+								"minimum": 0,
+								"maximum": 65535
+							},
+							"algorithm": {
+								"type": "number",
+								"example": "8",
+								"description": "Algorithm",
+								"minimum": 0,
+								"maximum": 255
+							},
+							"certificate": {
+								"type": "string",
+								"description": "Certificate"
+							}
+						}
+					},
+					"meta": {
+						"type": "object",
+						"example": "{\n  \"auto_added\": true,\n  \"source\": \"primary\"\n}",
+						"properties": {
+							"auto_added": {
+								"type": "boolean",
+								"example": "true",
+								"description": "Will exist if Cloudflare automatically added this DNS record during initial setup."
+							},
+							"source": {
+								"type": "string",
+								"example": "\"primary\"",
+								"description": "Where the record originated from"
+							}
+						},
+						"description": "Extra Cloudflare-specific information about the record"
+					}
+				},
+				"required_props": [
+					"type",
+					"name",
+					"data"
+				],
+				"optional_props": [
+					"id",
+					"content",
+					"proxiable",
+					"proxied",
+					"ttl",
+					"locked",
+					"zone_id",
+					"zone_name",
+					"created_on",
+					"modified_on",
+					"meta"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"CERT\",\n  \"name\": \"example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {\n    \"type\": 9,\n    \"key_tag\": 1,\n    \"algorithm\": 8\n  },\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
+				"title": "CERT Record"
+			},
+			{
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"372e67954025e0ba6aaa6d586b9e0b59\"",
+						"description": "DNS record identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"type": {
+						"type": "string",
+						"example": "\"DNSKEY\"",
+						"enum": [
+							"A",
+							"AAAA",
+							"CNAME",
+							"HTTPS",
+							"TXT",
+							"SRV",
+							"LOC",
+							"MX",
+							"NS",
+							"CERT",
+							"DNSKEY",
+							"DS",
+							"NAPTR",
+							"SMIMEA",
+							"SSHFP",
+							"SVCB",
+							"TLSA",
+							"URI",
+							"DNSKEY"
+						],
+						"description": "Record type",
+						"readOnly": true
+					},
+					"name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "DNS record name (or @ for the zone apex)",
+						"maxLength": 255
+					},
+					"content": {
+						"type": "string",
+						"example": "\"127.0.0.1\"",
+						"description": "Formatted DNSKEY content. See 'data' to set DNSKEY properties",
+						"readOnly": true
+					},
+					"proxiable": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether the record can be proxied by Cloudflare or not",
+						"readOnly": true
+					},
+					"proxied": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Whether the record is receiving the performance and security benefits of Cloudflare"
+					},
+					"ttl": {
+						"type": "number",
+						"example": "3600",
+						"anyOf": [
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "3600"
+							},
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "{}"
+							}
+						],
+						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'"
+					},
+					"locked": {
+						"type": "boolean",
+						"example": "false",
+						"readOnly": true,
+						"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare)"
+					},
+					"zone_id": {
+						"type": "string",
+						"example": "\"023e105f4ecef8ad9ca31a8372d0c353\"",
+						"description": "Zone identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"zone_name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "The domain of the record",
+						"format": "hostname",
+						"readOnly": true
+					},
+					"created_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"description": "When the record was created",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"modified_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"description": "When the record was last modified",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"data": {
+						"type": "object",
+						"example": "{\n  \"flags\": 1,\n  \"protocol\": 3,\n  \"algorithm\": 5\n}",
+						"description": "Components of a DNSKEY record",
+						"properties": {
+							"flags": {
+								"type": "number",
+								"example": "1",
+								"description": "Flags",
+								"minimum": 0,
+								"maximum": 65535
+							},
+							"protocol": {
+								"type": "number",
+								"example": "3",
+								"description": "Protocol",
+								"minimum": 0,
+								"maximum": 255
+							},
+							"algorithm": {
+								"type": "number",
+								"example": "5",
+								"description": "Algorithm",
+								"minimum": 0,
+								"maximum": 255
+							},
+							"public_key": {
+								"type": "string",
+								"description": "Public Key"
+							}
+						}
+					},
+					"meta": {
+						"type": "object",
+						"example": "{\n  \"auto_added\": true,\n  \"source\": \"primary\"\n}",
+						"properties": {
+							"auto_added": {
+								"type": "boolean",
+								"example": "true",
+								"description": "Will exist if Cloudflare automatically added this DNS record during initial setup."
+							},
+							"source": {
+								"type": "string",
+								"example": "\"primary\"",
+								"description": "Where the record originated from"
+							}
+						},
+						"description": "Extra Cloudflare-specific information about the record"
+					}
+				},
+				"required_props": [
+					"type",
+					"name",
+					"data"
+				],
+				"optional_props": [
+					"id",
+					"content",
+					"proxiable",
+					"proxied",
+					"ttl",
+					"locked",
+					"zone_id",
+					"zone_name",
+					"created_on",
+					"modified_on",
+					"meta"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"DNSKEY\",\n  \"name\": \"example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {\n    \"flags\": 1,\n    \"protocol\": 3,\n    \"algorithm\": 5\n  },\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
+				"title": "DNSKEY Record"
+			},
+			{
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"372e67954025e0ba6aaa6d586b9e0b59\"",
+						"description": "DNS record identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"type": {
+						"type": "string",
+						"example": "\"DS\"",
+						"enum": [
+							"A",
+							"AAAA",
+							"CNAME",
+							"HTTPS",
+							"TXT",
+							"SRV",
+							"LOC",
+							"MX",
+							"NS",
+							"CERT",
+							"DNSKEY",
+							"DS",
+							"NAPTR",
+							"SMIMEA",
+							"SSHFP",
+							"SVCB",
+							"TLSA",
+							"URI",
+							"DS"
+						],
+						"description": "Record type",
+						"readOnly": true
+					},
+					"name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "DNS record name (or @ for the zone apex)",
+						"maxLength": 255
+					},
+					"content": {
+						"type": "string",
+						"example": "\"127.0.0.1\"",
+						"description": "Formatted DS content. See 'data' to set DS properties",
+						"readOnly": true
+					},
+					"proxiable": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether the record can be proxied by Cloudflare or not",
+						"readOnly": true
+					},
+					"proxied": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Whether the record is receiving the performance and security benefits of Cloudflare"
+					},
+					"ttl": {
+						"type": "number",
+						"example": "3600",
+						"anyOf": [
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "3600"
+							},
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "{}"
+							}
+						],
+						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'"
+					},
+					"locked": {
+						"type": "boolean",
+						"example": "false",
+						"readOnly": true,
+						"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare)"
+					},
+					"zone_id": {
+						"type": "string",
+						"example": "\"023e105f4ecef8ad9ca31a8372d0c353\"",
+						"description": "Zone identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"zone_name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "The domain of the record",
+						"format": "hostname",
+						"readOnly": true
+					},
+					"created_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"description": "When the record was created",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"modified_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"description": "When the record was last modified",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"data": {
+						"type": "object",
+						"example": "{\n  \"key_tag\": 1,\n  \"algorithm\": 3,\n  \"digest_type\": 1\n}",
+						"description": "Components of a DS record",
+						"properties": {
+							"key_tag": {
+								"type": "number",
+								"example": "1",
+								"description": "Key Tag",
+								"minimum": 0,
+								"maximum": 65535
+							},
+							"algorithm": {
+								"type": "number",
+								"example": "3",
+								"description": "Algorithm",
+								"minimum": 0,
+								"maximum": 255
+							},
+							"digest_type": {
+								"type": "number",
+								"example": "1",
+								"description": "Digest Type",
+								"minimum": 0,
+								"maximum": 255
+							},
+							"digest": {
+								"type": "string",
+								"description": "Digest"
+							}
+						}
+					},
+					"meta": {
+						"type": "object",
+						"example": "{\n  \"auto_added\": true,\n  \"source\": \"primary\"\n}",
+						"properties": {
+							"auto_added": {
+								"type": "boolean",
+								"example": "true",
+								"description": "Will exist if Cloudflare automatically added this DNS record during initial setup."
+							},
+							"source": {
+								"type": "string",
+								"example": "\"primary\"",
+								"description": "Where the record originated from"
+							}
+						},
+						"description": "Extra Cloudflare-specific information about the record"
+					}
+				},
+				"required_props": [
+					"type",
+					"name",
+					"data"
+				],
+				"optional_props": [
+					"id",
+					"content",
+					"proxiable",
+					"proxied",
+					"ttl",
+					"locked",
+					"zone_id",
+					"zone_name",
+					"created_on",
+					"modified_on",
+					"meta"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"DS\",\n  \"name\": \"example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {\n    \"key_tag\": 1,\n    \"algorithm\": 3,\n    \"digest_type\": 1\n  },\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
+				"title": "DS Record"
+			},
+			{
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"372e67954025e0ba6aaa6d586b9e0b59\"",
+						"description": "DNS record identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"type": {
+						"type": "string",
+						"example": "\"NAPTR\"",
+						"enum": [
+							"A",
+							"AAAA",
+							"CNAME",
+							"HTTPS",
+							"TXT",
+							"SRV",
+							"LOC",
+							"MX",
+							"NS",
+							"CERT",
+							"DNSKEY",
+							"DS",
+							"NAPTR",
+							"SMIMEA",
+							"SSHFP",
+							"SVCB",
+							"TLSA",
+							"URI",
+							"NAPTR"
+						],
+						"description": "Record type",
+						"readOnly": true
+					},
+					"name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "DNS record name (or @ for the zone apex)",
+						"maxLength": 255
+					},
+					"content": {
+						"type": "string",
+						"example": "\"127.0.0.1\"",
+						"description": "Formatted NAPTR content. See 'data' to set NAPTR properties",
+						"readOnly": true
+					},
+					"proxiable": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether the record can be proxied by Cloudflare or not",
+						"readOnly": true
+					},
+					"proxied": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Whether the record is receiving the performance and security benefits of Cloudflare"
+					},
+					"ttl": {
+						"type": "number",
+						"example": "3600",
+						"anyOf": [
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "3600"
+							},
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "{}"
+							}
+						],
+						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'"
+					},
+					"locked": {
+						"type": "boolean",
+						"example": "false",
+						"readOnly": true,
+						"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare)"
+					},
+					"zone_id": {
+						"type": "string",
+						"example": "\"023e105f4ecef8ad9ca31a8372d0c353\"",
+						"description": "Zone identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"zone_name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "The domain of the record",
+						"format": "hostname",
+						"readOnly": true
+					},
+					"created_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"description": "When the record was created",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"modified_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"description": "When the record was last modified",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"data": {
+						"type": "object",
+						"example": "{\n  \"order\": 100,\n  \"preference\": 10\n}",
+						"description": "Components of a NAPTR record",
+						"properties": {
+							"order": {
+								"type": "number",
+								"example": "100",
+								"description": "Order",
+								"minimum": 0,
+								"maximum": 65535
+							},
+							"preference": {
+								"type": "number",
+								"example": "10",
+								"description": "Preference",
+								"minimum": 0,
+								"maximum": 65535
+							},
+							"flags": {
+								"type": "string",
+								"description": "Flags"
+							},
+							"service": {
+								"type": "string",
+								"description": "Service"
+							},
+							"regex": {
+								"type": "string",
+								"description": "Regex"
+							},
+							"replacement": {
+								"type": "string",
+								"description": "Replacement"
+							}
+						}
+					},
+					"meta": {
+						"type": "object",
+						"example": "{\n  \"auto_added\": true,\n  \"source\": \"primary\"\n}",
+						"properties": {
+							"auto_added": {
+								"type": "boolean",
+								"example": "true",
+								"description": "Will exist if Cloudflare automatically added this DNS record during initial setup."
+							},
+							"source": {
+								"type": "string",
+								"example": "\"primary\"",
+								"description": "Where the record originated from"
+							}
+						},
+						"description": "Extra Cloudflare-specific information about the record"
+					}
+				},
+				"required_props": [
+					"type",
+					"name",
+					"data"
+				],
+				"optional_props": [
+					"id",
+					"content",
+					"proxiable",
+					"proxied",
+					"ttl",
+					"locked",
+					"zone_id",
+					"zone_name",
+					"created_on",
+					"modified_on",
+					"meta"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"NAPTR\",\n  \"name\": \"example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {\n    \"order\": 100,\n    \"preference\": 10\n  },\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
+				"title": "NAPTR Record"
+			},
+			{
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"372e67954025e0ba6aaa6d586b9e0b59\"",
+						"description": "DNS record identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"type": {
+						"type": "string",
+						"example": "\"SMIMEA\"",
+						"enum": [
+							"A",
+							"AAAA",
+							"CNAME",
+							"HTTPS",
+							"TXT",
+							"SRV",
+							"LOC",
+							"MX",
+							"NS",
+							"CERT",
+							"DNSKEY",
+							"DS",
+							"NAPTR",
+							"SMIMEA",
+							"SSHFP",
+							"SVCB",
+							"TLSA",
+							"URI",
+							"SMIMEA"
+						],
+						"description": "Record type",
+						"readOnly": true
+					},
+					"name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "DNS record name (or @ for the zone apex)",
+						"maxLength": 255
+					},
+					"content": {
+						"type": "string",
+						"example": "\"127.0.0.1\"",
+						"description": "Formatted SMIMEA content. See 'data' to set SMIMEA properties",
+						"readOnly": true
+					},
+					"proxiable": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether the record can be proxied by Cloudflare or not",
+						"readOnly": true
+					},
+					"proxied": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Whether the record is receiving the performance and security benefits of Cloudflare"
+					},
+					"ttl": {
+						"type": "number",
+						"example": "3600",
+						"anyOf": [
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "3600"
+							},
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "{}"
+							}
+						],
+						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'"
+					},
+					"locked": {
+						"type": "boolean",
+						"example": "false",
+						"readOnly": true,
+						"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare)"
+					},
+					"zone_id": {
+						"type": "string",
+						"example": "\"023e105f4ecef8ad9ca31a8372d0c353\"",
+						"description": "Zone identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"zone_name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "The domain of the record",
+						"format": "hostname",
+						"readOnly": true
+					},
+					"created_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"description": "When the record was created",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"modified_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"description": "When the record was last modified",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"data": {
+						"type": "object",
+						"example": "{\n  \"usage\": 3,\n  \"selector\": 0,\n  \"matching_type\": 0\n}",
+						"description": "Components of a SMIMEA record",
+						"properties": {
+							"usage": {
+								"type": "number",
+								"example": "3",
+								"description": "Usage",
+								"minimum": 0,
+								"maximum": 255
+							},
+							"selector": {
+								"type": "number",
+								"example": "0",
+								"description": "Selector",
+								"minimum": 0,
+								"maximum": 255
+							},
+							"matching_type": {
+								"type": "number",
+								"example": "0",
+								"description": "Matching Type",
+								"minimum": 0,
+								"maximum": 255
+							},
+							"certificate": {
+								"type": "string",
+								"description": "Certificate"
+							}
+						}
+					},
+					"meta": {
+						"type": "object",
+						"example": "{\n  \"auto_added\": true,\n  \"source\": \"primary\"\n}",
+						"properties": {
+							"auto_added": {
+								"type": "boolean",
+								"example": "true",
+								"description": "Will exist if Cloudflare automatically added this DNS record during initial setup."
+							},
+							"source": {
+								"type": "string",
+								"example": "\"primary\"",
+								"description": "Where the record originated from"
+							}
+						},
+						"description": "Extra Cloudflare-specific information about the record"
+					}
+				},
+				"required_props": [
+					"type",
+					"name",
+					"data"
+				],
+				"optional_props": [
+					"id",
+					"content",
+					"proxiable",
+					"proxied",
+					"ttl",
+					"locked",
+					"zone_id",
+					"zone_name",
+					"created_on",
+					"modified_on",
+					"meta"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"SMIMEA\",\n  \"name\": \"example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {\n    \"usage\": 3,\n    \"selector\": 0,\n    \"matching_type\": 0\n  },\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
+				"title": "SMIMEA Record"
+			},
+			{
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"372e67954025e0ba6aaa6d586b9e0b59\"",
+						"description": "DNS record identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"type": {
+						"type": "string",
+						"example": "\"SSHFP\"",
+						"enum": [
+							"A",
+							"AAAA",
+							"CNAME",
+							"HTTPS",
+							"TXT",
+							"SRV",
+							"LOC",
+							"MX",
+							"NS",
+							"CERT",
+							"DNSKEY",
+							"DS",
+							"NAPTR",
+							"SMIMEA",
+							"SSHFP",
+							"SVCB",
+							"TLSA",
+							"URI",
+							"SSHFP"
+						],
+						"description": "Record type",
+						"readOnly": true
+					},
+					"name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "DNS record name (or @ for the zone apex)",
+						"maxLength": 255
+					},
+					"content": {
+						"type": "string",
+						"example": "\"127.0.0.1\"",
+						"description": "Formatted SSHFP content. See 'data' to set SSHFP properties",
+						"readOnly": true
+					},
+					"proxiable": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether the record can be proxied by Cloudflare or not",
+						"readOnly": true
+					},
+					"proxied": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Whether the record is receiving the performance and security benefits of Cloudflare"
+					},
+					"ttl": {
+						"type": "number",
+						"example": "3600",
+						"anyOf": [
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "3600"
+							},
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "{}"
+							}
+						],
+						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'"
+					},
+					"locked": {
+						"type": "boolean",
+						"example": "false",
+						"readOnly": true,
+						"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare)"
+					},
+					"zone_id": {
+						"type": "string",
+						"example": "\"023e105f4ecef8ad9ca31a8372d0c353\"",
+						"description": "Zone identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"zone_name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "The domain of the record",
+						"format": "hostname",
+						"readOnly": true
+					},
+					"created_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"description": "When the record was created",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"modified_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"description": "When the record was last modified",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"data": {
+						"type": "object",
+						"example": "{\n  \"algorithm\": 2,\n  \"type\": 1\n}",
+						"description": "Components of a SSHFP record",
+						"properties": {
+							"algorithm": {
+								"type": "number",
+								"example": "2",
+								"description": "algorithm",
+								"minimum": 0,
+								"maximum": 255
+							},
+							"type": {
+								"type": "number",
+								"example": "1",
+								"description": "type",
+								"minimum": 0,
+								"maximum": 255
+							},
+							"fingerprint": {
+								"type": "string",
+								"description": "fingerprint"
+							}
+						}
+					},
+					"meta": {
+						"type": "object",
+						"example": "{\n  \"auto_added\": true,\n  \"source\": \"primary\"\n}",
+						"properties": {
+							"auto_added": {
+								"type": "boolean",
+								"example": "true",
+								"description": "Will exist if Cloudflare automatically added this DNS record during initial setup."
+							},
+							"source": {
+								"type": "string",
+								"example": "\"primary\"",
+								"description": "Where the record originated from"
+							}
+						},
+						"description": "Extra Cloudflare-specific information about the record"
+					}
+				},
+				"required_props": [
+					"type",
+					"name",
+					"data"
+				],
+				"optional_props": [
+					"id",
+					"content",
+					"proxiable",
+					"proxied",
+					"ttl",
+					"locked",
+					"zone_id",
+					"zone_name",
+					"created_on",
+					"modified_on",
+					"meta"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"SSHFP\",\n  \"name\": \"example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {\n    \"algorithm\": 2,\n    \"type\": 1\n  },\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
+				"title": "SSHFP Record"
+			},
+			{
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"372e67954025e0ba6aaa6d586b9e0b59\"",
+						"description": "DNS record identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"type": {
+						"type": "string",
+						"example": "\"SVCB\"",
+						"enum": [
+							"A",
+							"AAAA",
+							"CNAME",
+							"HTTPS",
+							"TXT",
+							"SRV",
+							"LOC",
+							"MX",
+							"NS",
+							"CERT",
+							"DNSKEY",
+							"DS",
+							"NAPTR",
+							"SMIMEA",
+							"SSHFP",
+							"SVCB",
+							"TLSA",
+							"URI",
+							"SVCB"
+						],
+						"description": "Record type",
+						"readOnly": true
+					},
+					"name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "DNS record name (or @ for the zone apex)",
+						"maxLength": 255
+					},
+					"content": {
+						"type": "string",
+						"example": "\"127.0.0.1\"",
+						"description": "Formatted SVCB content. See 'data' to set SVCB properties",
+						"readOnly": true
+					},
+					"proxiable": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether the record can be proxied by Cloudflare or not",
+						"readOnly": true
+					},
+					"proxied": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Whether the record is receiving the performance and security benefits of Cloudflare"
+					},
+					"ttl": {
+						"type": "number",
+						"example": "3600",
+						"anyOf": [
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "3600"
+							},
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "{}"
+							}
+						],
+						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'"
+					},
+					"locked": {
+						"type": "boolean",
+						"example": "false",
+						"readOnly": true,
+						"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare)"
+					},
+					"zone_id": {
+						"type": "string",
+						"example": "\"023e105f4ecef8ad9ca31a8372d0c353\"",
+						"description": "Zone identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"zone_name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "The domain of the record",
+						"format": "hostname",
+						"readOnly": true
+					},
+					"created_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"description": "When the record was created",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"modified_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"description": "When the record was last modified",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"data": {
+						"type": "object",
+						"example": "{\n  \"priority\": 1,\n  \"target\": \".\",\n  \"value\": \"alpn=\\\"h3,h2\\\" ipv4hint=\\\"127.0.0.1\\\" ipv6hint=\\\"::1\\\"\"\n}",
+						"description": "Components of a SVCB record",
+						"properties": {
+							"priority": {
+								"type": "number",
+								"example": "1",
+								"description": "priority",
+								"minimum": 0,
+								"maximum": 65535
+							},
+							"target": {
+								"type": "string",
+								"example": "\".\"",
+								"description": "target"
+							},
+							"value": {
+								"type": "string",
+								"example": "\"alpn=\\\"h3,h2\\\" ipv4hint=\\\"127.0.0.1\\\" ipv6hint=\\\"::1\\\"\"",
+								"description": "value"
+							}
+						}
+					},
+					"meta": {
+						"type": "object",
+						"example": "{\n  \"auto_added\": true,\n  \"source\": \"primary\"\n}",
+						"properties": {
+							"auto_added": {
+								"type": "boolean",
+								"example": "true",
+								"description": "Will exist if Cloudflare automatically added this DNS record during initial setup."
+							},
+							"source": {
+								"type": "string",
+								"example": "\"primary\"",
+								"description": "Where the record originated from"
+							}
+						},
+						"description": "Extra Cloudflare-specific information about the record"
+					}
+				},
+				"required_props": [
+					"type",
+					"name",
+					"data"
+				],
+				"optional_props": [
+					"id",
+					"content",
+					"proxiable",
+					"proxied",
+					"ttl",
+					"locked",
+					"zone_id",
+					"zone_name",
+					"created_on",
+					"modified_on",
+					"meta"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"SVCB\",\n  \"name\": \"example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {\n    \"priority\": 1,\n    \"target\": \".\",\n    \"value\": \"alpn=\\\"h3,h2\\\" ipv4hint=\\\"127.0.0.1\\\" ipv6hint=\\\"::1\\\"\"\n  },\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
+				"title": "SVCB Record"
+			},
+			{
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"372e67954025e0ba6aaa6d586b9e0b59\"",
+						"description": "DNS record identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"type": {
+						"type": "string",
+						"example": "\"TLSA\"",
+						"enum": [
+							"A",
+							"AAAA",
+							"CNAME",
+							"HTTPS",
+							"TXT",
+							"SRV",
+							"LOC",
+							"MX",
+							"NS",
+							"CERT",
+							"DNSKEY",
+							"DS",
+							"NAPTR",
+							"SMIMEA",
+							"SSHFP",
+							"SVCB",
+							"TLSA",
+							"URI",
+							"TLSA"
+						],
+						"description": "Record type",
+						"readOnly": true
+					},
+					"name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "DNS record name (or @ for the zone apex)",
+						"maxLength": 255
+					},
+					"content": {
+						"type": "string",
+						"example": "\"127.0.0.1\"",
+						"description": "Formatted TLSA content. See 'data' to set TLSA properties",
+						"readOnly": true
+					},
+					"proxiable": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether the record can be proxied by Cloudflare or not",
+						"readOnly": true
+					},
+					"proxied": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Whether the record is receiving the performance and security benefits of Cloudflare"
+					},
+					"ttl": {
+						"type": "number",
+						"example": "3600",
+						"anyOf": [
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "3600"
+							},
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "{}"
+							}
+						],
+						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'"
+					},
+					"locked": {
+						"type": "boolean",
+						"example": "false",
+						"readOnly": true,
+						"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare)"
+					},
+					"zone_id": {
+						"type": "string",
+						"example": "\"023e105f4ecef8ad9ca31a8372d0c353\"",
+						"description": "Zone identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"zone_name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "The domain of the record",
+						"format": "hostname",
+						"readOnly": true
+					},
+					"created_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"description": "When the record was created",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"modified_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"description": "When the record was last modified",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"data": {
+						"type": "object",
+						"example": "{\n  \"usage\": 0,\n  \"selector\": 0,\n  \"matching_type\": 1\n}",
+						"description": "Components of a TLSA record",
+						"properties": {
+							"usage": {
+								"type": "number",
+								"example": "0",
+								"description": "Usage",
+								"minimum": 0,
+								"maximum": 255
+							},
+							"selector": {
+								"type": "number",
+								"example": "0",
+								"description": "Selector",
+								"minimum": 0,
+								"maximum": 255
+							},
+							"matching_type": {
+								"type": "number",
+								"example": "1",
+								"description": "Matching Type",
+								"minimum": 0,
+								"maximum": 255
+							},
+							"certificate": {
+								"type": "string",
+								"description": "certificate"
+							}
+						}
+					},
+					"meta": {
+						"type": "object",
+						"example": "{\n  \"auto_added\": true,\n  \"source\": \"primary\"\n}",
+						"properties": {
+							"auto_added": {
+								"type": "boolean",
+								"example": "true",
+								"description": "Will exist if Cloudflare automatically added this DNS record during initial setup."
+							},
+							"source": {
+								"type": "string",
+								"example": "\"primary\"",
+								"description": "Where the record originated from"
+							}
+						},
+						"description": "Extra Cloudflare-specific information about the record"
+					}
+				},
+				"required_props": [
+					"type",
+					"name",
+					"data"
+				],
+				"optional_props": [
+					"id",
+					"content",
+					"proxiable",
+					"proxied",
+					"ttl",
+					"locked",
+					"zone_id",
+					"zone_name",
+					"created_on",
+					"modified_on",
+					"meta"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"TLSA\",\n  \"name\": \"example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {\n    \"usage\": 0,\n    \"selector\": 0,\n    \"matching_type\": 1\n  },\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
+				"title": "TLSA Record"
+			},
+			{
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"372e67954025e0ba6aaa6d586b9e0b59\"",
+						"description": "DNS record identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"type": {
+						"type": "string",
+						"example": "\"URI\"",
+						"enum": [
+							"A",
+							"AAAA",
+							"CNAME",
+							"HTTPS",
+							"TXT",
+							"SRV",
+							"LOC",
+							"MX",
+							"NS",
+							"CERT",
+							"DNSKEY",
+							"DS",
+							"NAPTR",
+							"SMIMEA",
+							"SSHFP",
+							"SVCB",
+							"TLSA",
+							"URI",
+							"URI"
+						],
+						"description": "Record type",
+						"readOnly": true
+					},
+					"name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "DNS record name (or @ for the zone apex)",
+						"maxLength": 255
+					},
+					"content": {
+						"type": "string",
+						"example": "\"127.0.0.1\"",
+						"description": "Formatted URI content. See 'data' to set URI properties",
+						"readOnly": true
+					},
+					"proxiable": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether the record can be proxied by Cloudflare or not",
+						"readOnly": true
+					},
+					"proxied": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Whether the record is receiving the performance and security benefits of Cloudflare"
+					},
+					"ttl": {
+						"type": "number",
+						"example": "3600",
+						"anyOf": [
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "3600"
+							},
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "{}"
+							}
+						],
+						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'"
+					},
+					"locked": {
+						"type": "boolean",
+						"example": "false",
+						"readOnly": true,
+						"description": "Whether this record can be modified/deleted (true means it's managed by Cloudflare)"
+					},
+					"zone_id": {
+						"type": "string",
+						"example": "\"023e105f4ecef8ad9ca31a8372d0c353\"",
+						"description": "Zone identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"zone_name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "The domain of the record",
+						"format": "hostname",
+						"readOnly": true
+					},
+					"created_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"description": "When the record was created",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"modified_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"description": "When the record was last modified",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"data": {
+						"type": "object",
+						"example": "{\n  \"weight\": 20,\n  \"content\": \"http://example.com/example.html\"\n}",
+						"description": "Components of a URI record",
+						"properties": {
+							"weight": {
+								"type": "number",
+								"example": "20",
+								"description": "The record weight",
+								"minimum": 0,
+								"maximum": 65535
+							},
+							"content": {
+								"type": "string",
+								"example": "\"http://example.com/example.html\"",
+								"description": "The record content"
+							}
+						}
+					},
+					"meta": {
+						"type": "object",
+						"example": "{\n  \"auto_added\": true,\n  \"source\": \"primary\"\n}",
+						"properties": {
+							"auto_added": {
+								"type": "boolean",
+								"example": "true",
+								"description": "Will exist if Cloudflare automatically added this DNS record during initial setup."
+							},
+							"source": {
+								"type": "string",
+								"example": "\"primary\"",
+								"description": "Where the record originated from"
+							}
+						},
+						"description": "Extra Cloudflare-specific information about the record"
+					},
+					"priority": {
+						"type": "number",
+						"example": "10",
+						"minimum": 0,
+						"maximum": 65535,
+						"description": "Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred"
+					}
+				},
+				"required_props": [
+					"type",
+					"name",
+					"data",
+					"priority"
+				],
+				"optional_props": [
+					"id",
+					"content",
+					"proxiable",
+					"proxied",
+					"ttl",
+					"locked",
+					"zone_id",
+					"zone_name",
+					"created_on",
+					"modified_on",
+					"meta"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"URI\",\n  \"name\": \"example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {\n    \"weight\": 20,\n    \"content\": \"http://example.com/example.html\"\n  },\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  },\n  \"priority\": 10\n}",
+				"title": "URI Record"
+			}
+		],
+		"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"A\",\n  \"name\": \"example.com\",\n  \"content\": \"198.51.100.4\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {},\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
+		"which_of": "oneOf",
+		"title": "DNS Records for a Zone",
+		"description": "Documentation for Cloudflare DNS records"
+	}
+}

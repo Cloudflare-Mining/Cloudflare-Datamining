@@ -1,0 +1,341 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/stream/connect.json",
+	"title": "Stream Live Inputs",
+	"description": "Push live video to the Cloudflare edge and let your users watch the live stream from your app or on 3rd party platforms like Twitch.",
+	"type": "object",
+	"links": [
+		{
+			"title": "Create a live input",
+			"description": "Create a live input that can be streamed to. Add an output in order to direct traffic.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/stream/live_inputs",
+			"method": "POST",
+			"cfOwnership": "stream",
+			"html_id": "stream-live-inputs-create-a-live-input",
+			"uri": "accounts/:account_identifier/stream/live_inputs",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/stream/live_inputs\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"meta\":{\"name\":\"test stream 1\"},\"recording\":{\"mode\":\"automatic\",\"requireSignedURLs\":true,\"allowedOrigins\":[\"example.com\"],\"timeoutSeconds\":0}}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"meta": {
+						"type": "object",
+						"example": "{\n  \"name\": \"test stream 1\"\n}",
+						"description": "User modifyable key-value store. Can use used for keeping references to another system of record for managing live inputs."
+					},
+					"recording": {
+						"type": "object",
+						"example": "{\n  \"mode\": \"automatic\",\n  \"requireSignedURLs\": true,\n  \"allowedOrigins\": [\n    \"example.com\"\n  ],\n  \"timeoutSeconds\": 0\n}",
+						"properties": {
+							"mode": {
+								"type": "string",
+								"example": "\"automatic\"",
+								"description": "Specifies the recording behavior of the live input. 'off' indicates no recording will be made. 'automatic' indicates a recording should be made, and that the recording should transition to on-demand after Stream Live stops receiving input.",
+								"enum": [
+									"off",
+									"automatic"
+								],
+								"default": "off"
+							},
+							"requireSignedURLs": {
+								"type": "boolean",
+								"example": "true",
+								"description": "Indicates whether videos created using this Live Input has the requireSignedURLs property set. This enforces access controls on any video created with the live input.",
+								"default": false
+							},
+							"allowedOrigins": {
+								"type": "array",
+								"example": "[\n  \"example.com\"\n]",
+								"description": "List of which origins should be allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty array will allow the video to be viewed on any origin.",
+								"items": {
+									"type": "string"
+								}
+							},
+							"timeoutSeconds": {
+								"type": "integer",
+								"example": "0",
+								"description": "Duration a live input configured in 'automatic' mode waits before determining a recording should transition from live to on-demand. A value of 0 indicates the platform default should be used. 0 is recommended for most use cases.",
+								"default": 0
+							}
+						},
+						"description": "Control recording the input to a Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"meta",
+					"recording"
+				],
+				"objects": [],
+				"example": "{\n  \"meta\": {\n    \"name\": \"test stream 1\"\n  },\n  \"recording\": {\n    \"mode\": \"automatic\",\n    \"requireSignedURLs\": true,\n    \"allowedOrigins\": [\n      \"example.com\"\n    ],\n    \"timeoutSeconds\": 0\n  }\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"uid\": \"66be4bf738797e01e1fca35a7bdecdcd\",\n    \"meta\": {\n      \"name\": \"test stream 1\"\n    },\n    \"created\": \"2014-01-02T02:20:00Z\",\n    \"modified\": \"2014-01-02T02:20:00Z\",\n    \"rtmps\": {\n      \"url\": \"rtmps://live.cloudflare.com:443/live/\",\n      \"streamKey\": \"MjE2OTAxNzQyMjQxNDkyNDYyNTAxNjc3MzE3NzY4MjAwMTYxODMxMjMxOTc66be4bf738797e01e1fca35a7bdecdcd\"\n    },\n    \"recording\": {\n      \"mode\": \"automatic\",\n      \"requireSignedURLs\": true,\n      \"allowedOrigins\": [\n        \"example.com\"\n      ],\n      \"timeoutSeconds\": 0\n    }\n  }\n}"
+		},
+		{
+			"title": "List live inputs",
+			"description": "View the live inputs that have been created on this account. Some information is not included on list requests, such as the URL to stream to. To get that information, request a single live input.",
+			"href": "accounts/{#/definitions/account_identifier}/stream/live_inputs",
+			"method": "GET",
+			"rel": "collection",
+			"cfOwnership": "stream",
+			"html_id": "stream-live-inputs-list-live-inputs",
+			"uri": "accounts/:account_identifier/stream/live_inputs",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/stream/live_inputs\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"uid\": \"66be4bf738797e01e1fca35a7bdecdcd\",\n      \"meta\": {\n        \"name\": \"test stream 1\"\n      },\n      \"created\": \"2014-01-02T02:20:00Z\",\n      \"modified\": \"2014-01-02T02:20:00Z\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Live input details",
+			"description": "Fetch details about a single live input",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/stream/live_inputs/{#/definitions/live_input_identifier}",
+			"method": "GET",
+			"cfOwnership": "stream",
+			"html_id": "stream-live-inputs-live-input-details",
+			"uri": "accounts/:account_identifier/stream/live_inputs/:live_input_identifier",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/stream/live_inputs/66be4bf738797e01e1fca35a7bdecdcd\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"uid\": \"66be4bf738797e01e1fca35a7bdecdcd\",\n    \"meta\": {\n      \"name\": \"test stream 1\"\n    },\n    \"created\": \"2014-01-02T02:20:00Z\",\n    \"modified\": \"2014-01-02T02:20:00Z\",\n    \"rtmps\": {\n      \"url\": \"rtmps://live.cloudflare.com:443/live/\",\n      \"streamKey\": \"MjE2OTAxNzQyMjQxNDkyNDYyNTAxNjc3MzE3NzY4MjAwMTYxODMxMjMxOTc66be4bf738797e01e1fca35a7bdecdcd\"\n    },\n    \"recording\": {\n      \"mode\": \"automatic\",\n      \"requireSignedURLs\": true,\n      \"allowedOrigins\": [\n        \"example.com\"\n      ],\n      \"timeoutSeconds\": 0\n    }\n  }\n}"
+		},
+		{
+			"title": "Update live input details",
+			"description": "Update details about a single live input",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/stream/live_inputs/{#/definitions/live_input_identifier}",
+			"method": "PUT",
+			"cfOwnership": "stream",
+			"html_id": "stream-live-inputs-update-live-input-details",
+			"uri": "accounts/:account_identifier/stream/live_inputs/:live_input_identifier",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/stream/live_inputs/66be4bf738797e01e1fca35a7bdecdcd\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"meta\":{\"name\":\"test stream 1\"},\"recording\":{\"mode\":\"automatic\",\"requireSignedURLs\":true,\"allowedOrigins\":[\"example.com\"],\"timeoutSeconds\":0}}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"meta": {
+						"type": "object",
+						"example": "{\n  \"name\": \"test stream 1\"\n}",
+						"description": "User modifyable key-value store. Can use used for keeping references to another system of record for managing live inputs."
+					},
+					"recording": {
+						"type": "object",
+						"example": "{\n  \"mode\": \"automatic\",\n  \"requireSignedURLs\": true,\n  \"allowedOrigins\": [\n    \"example.com\"\n  ],\n  \"timeoutSeconds\": 0\n}",
+						"properties": {
+							"mode": {
+								"type": "string",
+								"example": "\"automatic\"",
+								"description": "Specifies the recording behavior of the live input. 'off' indicates no recording will be made. 'automatic' indicates a recording should be made, and that the recording should transition to on-demand after Stream Live stops receiving input.",
+								"enum": [
+									"off",
+									"automatic"
+								],
+								"default": "off"
+							},
+							"requireSignedURLs": {
+								"type": "boolean",
+								"example": "true",
+								"description": "Indicates whether videos created using this Live Input has the requireSignedURLs property set. This enforces access controls on any video created with the live input.",
+								"default": false
+							},
+							"allowedOrigins": {
+								"type": "array",
+								"example": "[\n  \"example.com\"\n]",
+								"description": "List of which origins should be allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty array will allow the video to be viewed on any origin.",
+								"items": {
+									"type": "string"
+								}
+							},
+							"timeoutSeconds": {
+								"type": "integer",
+								"example": "0",
+								"description": "Duration a live input configured in 'automatic' mode waits before determining a recording should transition from live to on-demand. A value of 0 indicates the platform default should be used. 0 is recommended for most use cases.",
+								"default": 0
+							}
+						},
+						"description": "Control recording the input to a Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"meta",
+					"recording"
+				],
+				"objects": [],
+				"example": "{\n  \"meta\": {\n    \"name\": \"test stream 1\"\n  },\n  \"recording\": {\n    \"mode\": \"automatic\",\n    \"requireSignedURLs\": true,\n    \"allowedOrigins\": [\n      \"example.com\"\n    ],\n    \"timeoutSeconds\": 0\n  }\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"uid\": \"66be4bf738797e01e1fca35a7bdecdcd\",\n    \"meta\": {\n      \"name\": \"test stream 1\"\n    },\n    \"created\": \"2014-01-02T02:20:00Z\",\n    \"modified\": \"2014-01-02T02:20:00Z\",\n    \"rtmps\": {\n      \"url\": \"rtmps://live.cloudflare.com:443/live/\",\n      \"streamKey\": \"MjE2OTAxNzQyMjQxNDkyNDYyNTAxNjc3MzE3NzY4MjAwMTYxODMxMjMxOTc66be4bf738797e01e1fca35a7bdecdcd\"\n    },\n    \"recording\": {\n      \"mode\": \"automatic\",\n      \"requireSignedURLs\": true,\n      \"allowedOrigins\": [\n        \"example.com\"\n      ],\n      \"timeoutSeconds\": 0\n    }\n  }\n}"
+		},
+		{
+			"title": "Delete live input",
+			"description": "Prevent a live input from being streamed to. This makes the live input inaccessible to any future API calls or RTMPS transmission",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/stream/live_inputs/{#/definitions/live_input_identifier}",
+			"method": "DELETE",
+			"cfOwnership": "stream",
+			"html_id": "stream-live-inputs-delete-live-input",
+			"uri": "accounts/:account_identifier/stream/live_inputs/:live_input_identifier",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/stream/live_inputs/66be4bf738797e01e1fca35a7bdecdcd\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\""
+		},
+		{
+			"title": "Add an output to a live input",
+			"description": "Create a new output which will be restreamed to by a live input",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/stream/live_inputs/{#/definitions/live_input_identifier}/outputs",
+			"method": "POST",
+			"cfOwnership": "stream",
+			"html_id": "stream-live-inputs-add-an-output-to-a-live-input",
+			"uri": "accounts/:account_identifier/stream/live_inputs/:live_input_identifier/outputs",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/stream/live_inputs/66be4bf738797e01e1fca35a7bdecdcd/outputs\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"url\":\"rtmp://a.rtmp.youtube.com/live2\",\"streamKey\":\"uzya-f19y-g2g9-a2ee-51j2\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"url": {
+						"type": "string",
+						"example": "\"rtmp://a.rtmp.youtube.com/live2\"",
+						"description": "The URL a output will restream to",
+						"readOnly": true
+					},
+					"streamKey": {
+						"type": "string",
+						"example": "\"uzya-f19y-g2g9-a2ee-51j2\"",
+						"description": "The streamKey used to authenticate against a output's target",
+						"readOnly": true
+					}
+				},
+				"required_props": [
+					"url",
+					"streamKey"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"url\": \"rtmp://a.rtmp.youtube.com/live2\",\n  \"streamKey\": \"uzya-f19y-g2g9-a2ee-51j2\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"uid\": \"baea4d9c515887b80289d5c33cf01145\",\n    \"url\": \"rtmp://a.rtmp.youtube.com/live2\",\n    \"streamKey\": \"uzya-f19y-g2g9-a2ee-51j2\"\n  }\n}"
+		},
+		{
+			"title": "List outputs associated with a live input",
+			"description": "Create a new output to restream to when a live input receives data",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/stream/live_inputs/{#/definitions/live_input_identifier}/outputs",
+			"method": "GET",
+			"cfOwnership": "stream",
+			"html_id": "stream-live-inputs-list-outputs-associated-with-a-live-input",
+			"uri": "accounts/:account_identifier/stream/live_inputs/:live_input_identifier/outputs",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/stream/live_inputs/66be4bf738797e01e1fca35a7bdecdcd/outputs\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"uid\": \"baea4d9c515887b80289d5c33cf01145\",\n      \"url\": \"rtmp://a.rtmp.youtube.com/live2\",\n      \"streamKey\": \"uzya-f19y-g2g9-a2ee-51j2\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Remove an output from a live input",
+			"description": "Remove an output from a live input",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/stream/live_inputs/{#/definitions/live_input_identifier}/outputs/{#/definitions/output_identifier}",
+			"method": "DELETE",
+			"cfOwnership": "stream",
+			"html_id": "stream-live-inputs-remove-an-output-from-a-live-input",
+			"uri": "accounts/:account_identifier/stream/live_inputs/:live_input_identifier/outputs/:output_identifier",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/stream/live_inputs/66be4bf738797e01e1fca35a7bdecdcd/outputs/baea4d9c515887b80289d5c33cf01145\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\""
+		}
+	],
+	"html_id": "stream-live-inputs",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"uid": {
+				"type": "string",
+				"example": "\"66be4bf738797e01e1fca35a7bdecdcd\"",
+				"description": "Live input unique identifier",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"meta": {
+				"type": "object",
+				"example": "{\n  \"name\": \"test stream 1\"\n}",
+				"description": "User modifyable key-value store. Can use used for keeping references to another system of record for managing live inputs."
+			},
+			"created": {
+				"type": "string",
+				"example": "\"2014-01-02T02:20:00Z\"",
+				"description": "When the live input was created.",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"modified": {
+				"type": "string",
+				"example": "\"2014-01-02T02:20:00Z\"",
+				"description": "When the live input was last modified.",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"rtmps": {
+				"example": "{\n  \"url\": \"rtmps://live.cloudflare.com:443/live/\",\n  \"streamKey\": \"MjE2OTAxNzQyMjQxNDkyNDYyNTAxNjc3MzE3NzY4MjAwMTYxODMxMjMxOTc66be4bf738797e01e1fca35a7bdecdcd\"\n}",
+				"properties": {
+					"url": {
+						"type": "string",
+						"example": "\"rtmps://live.cloudflare.com:443/live/\"",
+						"description": "The URL the live input can be sent RTMPS data",
+						"readOnly": true
+					},
+					"streamKey": {
+						"type": "string",
+						"example": "\"MjE2OTAxNzQyMjQxNDkyNDYyNTAxNjc3MzE3NzY4MjAwMTYxODMxMjMxOTc66be4bf738797e01e1fca35a7bdecdcd\"",
+						"description": "The stream key used to authenticate received RTMPS data",
+						"readOnly": true
+					}
+				}
+			},
+			"recording": {
+				"type": "object",
+				"example": "{\n  \"mode\": \"automatic\",\n  \"requireSignedURLs\": true,\n  \"allowedOrigins\": [\n    \"example.com\"\n  ],\n  \"timeoutSeconds\": 0\n}",
+				"properties": {
+					"mode": {
+						"type": "string",
+						"example": "\"automatic\"",
+						"description": "Specifies the recording behavior of the live input. 'off' indicates no recording will be made. 'automatic' indicates a recording should be made, and that the recording should transition to on-demand after Stream Live stops receiving input.",
+						"enum": [
+							"off",
+							"automatic"
+						],
+						"default": "off"
+					},
+					"requireSignedURLs": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Indicates whether videos created using this Live Input has the requireSignedURLs property set. This enforces access controls on any video created with the live input.",
+						"default": false
+					},
+					"allowedOrigins": {
+						"type": "array",
+						"example": "[\n  \"example.com\"\n]",
+						"description": "List of which origins should be allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty array will allow the video to be viewed on any origin.",
+						"items": {
+							"type": "string"
+						}
+					},
+					"timeoutSeconds": {
+						"type": "integer",
+						"example": "0",
+						"description": "Duration a live input configured in 'automatic' mode waits before determining a recording should transition from live to on-demand. A value of 0 indicates the platform default should be used. 0 is recommended for most use cases.",
+						"default": 0
+					}
+				},
+				"description": "Control recording the input to a Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied."
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"uid",
+			"meta",
+			"created",
+			"modified",
+			"rtmps",
+			"recording"
+		],
+		"objects": [],
+		"example": "{\n  \"uid\": \"66be4bf738797e01e1fca35a7bdecdcd\",\n  \"meta\": {\n    \"name\": \"test stream 1\"\n  },\n  \"created\": \"2014-01-02T02:20:00Z\",\n  \"modified\": \"2014-01-02T02:20:00Z\",\n  \"rtmps\": {\n    \"url\": \"rtmps://live.cloudflare.com:443/live/\",\n    \"streamKey\": \"MjE2OTAxNzQyMjQxNDkyNDYyNTAxNjc3MzE3NzY4MjAwMTYxODMxMjMxOTc66be4bf738797e01e1fca35a7bdecdcd\"\n  },\n  \"recording\": {\n    \"mode\": \"automatic\",\n    \"requireSignedURLs\": true,\n    \"allowedOrigins\": [\n      \"example.com\"\n    ],\n    \"timeoutSeconds\": 0\n  }\n}",
+		"title": "Stream Live Inputs",
+		"description": "Push live video to the Cloudflare edge and let your users watch the live stream from your app or on 3rd party platforms like Twitch."
+	}
+}

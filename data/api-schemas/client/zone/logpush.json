@@ -1,0 +1,616 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/logpush.json",
+	"title": "Logpush Jobs",
+	"description": "Logpush jobs",
+	"type": [
+		"object",
+		"null"
+	],
+	"links": [
+		{
+			"title": "List Logpush Jobs",
+			"description": "List Logpush Jobs for a zone",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_identifier}/logpush/jobs",
+			"method": "GET",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#logs:edit"
+				]
+			},
+			"cfOwnership": "data",
+			"html_id": "logpush-jobs-list-logpush-jobs",
+			"uri": "zones/:zone_identifier/logpush/jobs",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/logpush/jobs\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": 1,\n      \"enabled\": false,\n      \"name\": \"example.com\",\n      \"dataset\": \"http_requests\",\n      \"logpull_options\": \"fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339\",\n      \"destination_conf\": \"s3://mybucket/logs?region=us-west-2\",\n      \"last_complete\": null,\n      \"last_error\": null,\n      \"error_message\": null,\n      \"frequency\": \"high\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "List Logpush Jobs for a dataset",
+			"description": "List Logpush Jobs for a zone for a dataset",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_identifier}/logpush/datasets/{#/definitions/dataset}/jobs",
+			"method": "GET",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#logs:edit"
+				]
+			},
+			"cfOwnership": "data",
+			"html_id": "logpush-jobs-list-logpush-jobs-for-a-dataset",
+			"uri": "zones/:zone_identifier/logpush/datasets/:dataset/jobs",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/logpush/datasets/http_requests/jobs\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": 1,\n      \"enabled\": false,\n      \"name\": \"example.com\",\n      \"dataset\": \"http_requests\",\n      \"logpull_options\": \"fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339\",\n      \"destination_conf\": \"s3://mybucket/logs?region=us-west-2\",\n      \"last_complete\": null,\n      \"last_error\": null,\n      \"error_message\": null,\n      \"frequency\": \"high\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Fields",
+			"description": "The list of all fields available for a dataset. The response result is an object with key-value pairs where keys are field names, and values are descriptions.",
+			"rel": "tag:cloudflare.com,2018:logs",
+			"href": "zones/{#/definitions/zone_identifier}/logpush/datasets/{#/definitions/dataset}/fields",
+			"method": "GET",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#logs:edit"
+				]
+			},
+			"cfOwnership": "data",
+			"html_id": "logpush-jobs-fields",
+			"uri": "zones/:zone_identifier/logpush/datasets/:dataset/fields",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/logpush/datasets/http_requests/fields\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
+		},
+		{
+			"title": "Get Ownership Challenge",
+			"description": "Get a new ownership challenge sent to your destination",
+			"rel": "tag:cloudflare.com,2018:logpush-get-ownership-result",
+			"href": "zones/{#/definitions/zone_identifier}/logpush/ownership",
+			"method": "POST",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#logs:edit"
+				]
+			},
+			"cfOwnership": "data",
+			"html_id": "logpush-jobs-get-ownership-challenge",
+			"uri": "zones/:zone_identifier/logpush/ownership",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/logpush/ownership\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"destination_conf\":\"s3://mybucket/logs?region=us-west-2\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"destination_conf": {
+						"type": "string",
+						"example": "\"s3://mybucket/logs?region=us-west-2\"",
+						"description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.",
+						"format": "uri",
+						"maxLength": 4096
+					}
+				},
+				"required_props": [
+					"destination_conf"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"destination_conf\": \"s3://mybucket/logs?region=us-west-2\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"filename\": \"logs/challenge-filename.txt\",\n    \"valid\": true,\n    \"message\": \"\"\n  }\n}"
+		},
+		{
+			"title": "Validate Ownership Challenge",
+			"description": "Validate ownership challenge of the destination",
+			"rel": "tag:cloudflare.com,2018:logpush-validate-ownership-result",
+			"href": "zones/{#/definitions/zone_identifier}/logpush/ownership/validate",
+			"method": "POST",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#logs:edit"
+				]
+			},
+			"cfOwnership": "data",
+			"html_id": "logpush-jobs-validate-ownership-challenge",
+			"uri": "zones/:zone_identifier/logpush/ownership/validate",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/logpush/ownership/validate\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"destination_conf\":\"s3://mybucket/logs?region=us-west-2\",\"ownership_challenge\":\"00000000000000000000\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"destination_conf": {
+						"type": "string",
+						"example": "\"s3://mybucket/logs?region=us-west-2\"",
+						"description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.",
+						"format": "uri",
+						"maxLength": 4096
+					},
+					"ownership_challenge": {
+						"type": "string",
+						"example": "\"00000000000000000000\"",
+						"description": "Ownership challenge token to prove destination ownership.",
+						"pattern": "^[a-zA-Z0-9/\\+\\.\\-_]*$",
+						"maxLength": 4096
+					}
+				},
+				"required_props": [
+					"destination_conf",
+					"ownership_challenge"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"destination_conf\": \"s3://mybucket/logs?region=us-west-2\",\n  \"ownership_challenge\": \"00000000000000000000\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"valid\": true\n  }\n}"
+		},
+		{
+			"title": "Validate Origin",
+			"description": "Validate logpull origin with logpull_options",
+			"rel": "tag:cloudflare.com,2018:logpush-validate-result",
+			"href": "zones/{#/definitions/zone_identifier}/logpush/validate/origin",
+			"method": "POST",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#logs:edit"
+				]
+			},
+			"cfOwnership": "data",
+			"html_id": "logpush-jobs-validate-origin",
+			"uri": "zones/:zone_identifier/logpush/validate/origin",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/logpush/validate/origin\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"logpull_options\":\"fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"logpull_options": {
+						"type": [
+							"string",
+							"null"
+						],
+						"example": "\"fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339\"",
+						"description": "Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
+						"format": "uri",
+						"maxLength": 4096
+					}
+				},
+				"required_props": [
+					"logpull_options"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"logpull_options\": \"fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"valid\": true,\n    \"message\": \"\"\n  }\n}"
+		},
+		{
+			"title": "Create Logpush Job",
+			"description": "Create a new Logpush Job for a zone",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_identifier}/logpush/jobs",
+			"method": "POST",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#logs:edit"
+				]
+			},
+			"cfOwnership": "data",
+			"html_id": "logpush-jobs-create-logpush-job",
+			"uri": "zones/:zone_identifier/logpush/jobs",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/logpush/jobs\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"example.com\",\"enabled\":false,\"dataset\":\"http_requests\",\"logpull_options\":\"fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339\",\"destination_conf\":\"s3://mybucket/logs?region=us-west-2\",\"ownership_challenge\":\"00000000000000000000\",\"frequency\":\"high\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": [
+							"string",
+							"null"
+						],
+						"example": "\"example.com\"",
+						"description": "Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
+						"pattern": "^[a-zA-Z0-9\\-\\.]*$",
+						"maxLength": 512
+					},
+					"enabled": {
+						"type": "boolean",
+						"example": "false",
+						"description": ""
+					},
+					"dataset": {
+						"type": [
+							"string",
+							"null"
+						],
+						"example": "\"http_requests\"",
+						"description": "Dataset to be pulled.",
+						"pattern": "^[a-zA-Z0-9_\\-]*$",
+						"maxLength": 256
+					},
+					"logpull_options": {
+						"type": [
+							"string",
+							"null"
+						],
+						"example": "\"fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339\"",
+						"description": "Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
+						"format": "uri",
+						"maxLength": 4096
+					},
+					"destination_conf": {
+						"type": "string",
+						"example": "\"s3://mybucket/logs?region=us-west-2\"",
+						"description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.",
+						"format": "uri",
+						"maxLength": 4096
+					},
+					"ownership_challenge": {
+						"type": "string",
+						"example": "\"00000000000000000000\"",
+						"description": "Ownership challenge token to prove destination ownership.",
+						"pattern": "^[a-zA-Z0-9/\\+\\.\\-_]*$",
+						"maxLength": 4096
+					},
+					"frequency": {
+						"type": [
+							"string",
+							"null"
+						],
+						"example": "\"high\"",
+						"description": "The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
+						"enum": [
+							"high",
+							"low"
+						],
+						"default": "high"
+					}
+				},
+				"required_props": [
+					"destination_conf"
+				],
+				"optional_props": [
+					"name",
+					"enabled",
+					"dataset",
+					"logpull_options",
+					"ownership_challenge",
+					"frequency"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": \"example.com\",\n  \"enabled\": false,\n  \"dataset\": \"http_requests\",\n  \"logpull_options\": \"fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339\",\n  \"destination_conf\": \"s3://mybucket/logs?region=us-west-2\",\n  \"ownership_challenge\": \"00000000000000000000\",\n  \"frequency\": \"high\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": 1,\n    \"enabled\": false,\n    \"name\": \"example.com\",\n    \"dataset\": \"http_requests\",\n    \"logpull_options\": \"fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339\",\n    \"destination_conf\": \"s3://mybucket/logs?region=us-west-2\",\n    \"last_complete\": null,\n    \"last_error\": null,\n    \"error_message\": null,\n    \"frequency\": \"high\"\n  }\n}"
+		},
+		{
+			"title": "Logpush Job Details",
+			"description": "Get the details of a Logpush Job",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/logpush/jobs/{#/definitions/job_identifier}",
+			"method": "GET",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#logs:edit"
+				]
+			},
+			"cfOwnership": "data",
+			"html_id": "logpush-jobs-logpush-job-details",
+			"uri": "zones/:zone_identifier/logpush/jobs/:job_identifier",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/logpush/jobs/1\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": 1,\n    \"enabled\": false,\n    \"name\": \"example.com\",\n    \"dataset\": \"http_requests\",\n    \"logpull_options\": \"fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339\",\n    \"destination_conf\": \"s3://mybucket/logs?region=us-west-2\",\n    \"last_complete\": null,\n    \"last_error\": null,\n    \"error_message\": null,\n    \"frequency\": \"high\"\n  }\n}"
+		},
+		{
+			"title": "Update Logpush Job",
+			"description": "Update a Logpush Job",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/logpush/jobs/{#/definitions/job_identifier}",
+			"method": "PUT",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#logs:edit"
+				]
+			},
+			"cfOwnership": "data",
+			"html_id": "logpush-jobs-update-logpush-job",
+			"uri": "zones/:zone_identifier/logpush/jobs/:job_identifier",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/logpush/jobs/1\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"enabled\":false,\"logpull_options\":\"fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339\",\"destination_conf\":\"s3://mybucket/logs?region=us-west-2\",\"ownership_challenge\":\"00000000000000000000\",\"frequency\":\"high\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"enabled": {
+						"type": "boolean",
+						"example": "false",
+						"description": ""
+					},
+					"logpull_options": {
+						"type": [
+							"string",
+							"null"
+						],
+						"example": "\"fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339\"",
+						"description": "Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
+						"format": "uri",
+						"maxLength": 4096
+					},
+					"destination_conf": {
+						"type": "string",
+						"example": "\"s3://mybucket/logs?region=us-west-2\"",
+						"description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.",
+						"format": "uri",
+						"maxLength": 4096
+					},
+					"ownership_challenge": {
+						"type": "string",
+						"example": "\"00000000000000000000\"",
+						"description": "Ownership challenge token to prove destination ownership.",
+						"pattern": "^[a-zA-Z0-9/\\+\\.\\-_]*$",
+						"maxLength": 4096
+					},
+					"frequency": {
+						"type": [
+							"string",
+							"null"
+						],
+						"example": "\"high\"",
+						"description": "The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
+						"enum": [
+							"high",
+							"low"
+						],
+						"default": "high"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"enabled",
+					"logpull_options",
+					"destination_conf",
+					"ownership_challenge",
+					"frequency"
+				],
+				"objects": [],
+				"example": "{\n  \"enabled\": false,\n  \"logpull_options\": \"fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339\",\n  \"destination_conf\": \"s3://mybucket/logs?region=us-west-2\",\n  \"ownership_challenge\": \"00000000000000000000\",\n  \"frequency\": \"high\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": 1,\n    \"enabled\": false,\n    \"name\": \"example.com\",\n    \"dataset\": \"http_requests\",\n    \"logpull_options\": \"fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339\",\n    \"destination_conf\": \"s3://mybucket/logs?region=us-west-2\",\n    \"last_complete\": null,\n    \"last_error\": null,\n    \"error_message\": null,\n    \"frequency\": \"high\"\n  }\n}"
+		},
+		{
+			"title": "Delete Logpush Job",
+			"description": "Delete a Logpush Job",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/logpush/jobs/{#/definitions/job_identifier}",
+			"method": "DELETE",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#logs:edit"
+				]
+			},
+			"cfOwnership": "data",
+			"html_id": "logpush-jobs-delete-logpush-job",
+			"uri": "zones/:zone_identifier/logpush/jobs/:job_identifier",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/logpush/jobs/1\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {}\n}"
+		},
+		{
+			"title": "Check Destination Exists",
+			"description": "Check if there is an existing job with a destination",
+			"rel": "tag:cloudflare.com,2018:logpush-job-destination-status",
+			"href": "zones/{#/definitions/zone_identifier}/logpush/validate/destination/exists",
+			"method": "POST",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#logs:edit"
+				]
+			},
+			"cfOwnership": "data",
+			"html_id": "logpush-jobs-check-destination-exists",
+			"uri": "zones/:zone_identifier/logpush/validate/destination/exists",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/logpush/validate/destination/exists\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"destination_conf\":\"s3://mybucket/logs?region=us-west-2\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"destination_conf": {
+						"type": "string",
+						"example": "\"s3://mybucket/logs?region=us-west-2\"",
+						"description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.",
+						"format": "uri",
+						"maxLength": 4096
+					}
+				},
+				"required_props": [
+					"destination_conf"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"destination_conf\": \"s3://mybucket/logs?region=us-west-2\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"exists\": false\n  }\n}"
+		}
+	],
+	"cfLinkErrors": {
+		"1000": "Not Found",
+		"1001": "Internal Server Error",
+		"1002": "Bad Request",
+		"1003": "Request Entity Too Large",
+		"1004": "Forbidden"
+	},
+	"html_id": "logpush-jobs",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "integer",
+				"example": "1",
+				"description": "Unique id of the job.",
+				"minimum": 1
+			},
+			"enabled": {
+				"type": "boolean",
+				"example": "false",
+				"description": ""
+			},
+			"name": {
+				"type": [
+					"string",
+					"null"
+				],
+				"example": "\"example.com\"",
+				"description": "Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
+				"pattern": "^[a-zA-Z0-9\\-\\.]*$",
+				"maxLength": 512
+			},
+			"dataset": {
+				"type": [
+					"string",
+					"null"
+				],
+				"example": "\"http_requests\"",
+				"description": "Dataset to be pulled.",
+				"pattern": "^[a-zA-Z0-9_\\-]*$",
+				"maxLength": 256
+			},
+			"logpull_options": {
+				"type": [
+					"string",
+					"null"
+				],
+				"example": "\"fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339\"",
+				"description": "Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.",
+				"format": "uri",
+				"maxLength": 4096
+			},
+			"destination_conf": {
+				"type": "string",
+				"example": "\"s3://mybucket/logs?region=us-west-2\"",
+				"description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.",
+				"format": "uri",
+				"maxLength": 4096
+			},
+			"last_complete": {
+				"type": [
+					"string",
+					"null"
+				],
+				"example": "null",
+				"description": "Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.",
+				"format": "date-time"
+			},
+			"last_error": {
+				"type": [
+					"string",
+					"null"
+				],
+				"example": "null",
+				"description": "Records the last time the job failed. If not null, the job is currently failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.",
+				"format": "date-time"
+			},
+			"error_message": {
+				"type": [
+					"string",
+					"null"
+				],
+				"example": "null",
+				"description": "If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null.",
+				"format": "date-time"
+			},
+			"frequency": {
+				"type": [
+					"string",
+					"null"
+				],
+				"example": "\"high\"",
+				"description": "The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
+				"enum": [
+					"high",
+					"low"
+				],
+				"default": "high"
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"enabled",
+			"name",
+			"dataset",
+			"logpull_options",
+			"destination_conf",
+			"last_complete",
+			"last_error",
+			"error_message",
+			"frequency"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": 1,\n  \"enabled\": false,\n  \"name\": \"example.com\",\n  \"dataset\": \"http_requests\",\n  \"logpull_options\": \"fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339\",\n  \"destination_conf\": \"s3://mybucket/logs?region=us-west-2\",\n  \"last_complete\": null,\n  \"last_error\": null,\n  \"error_message\": null,\n  \"frequency\": \"high\"\n}",
+		"title": "Logpush Jobs",
+		"description": "Logpush jobs"
+	}
+}

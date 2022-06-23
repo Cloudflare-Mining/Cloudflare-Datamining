@@ -1,0 +1,49 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/images/keys.json",
+	"title": "Cloudflare Images Keys",
+	"description": "Keys are used to generate signature tokens required for accessing images marked as private.",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Signing Keys",
+			"description": "Lists your signing keys. These can be found on your Cloudflare Images dashboard.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/images/v1/keys",
+			"method": "GET",
+			"cfOwnership": "images",
+			"html_id": "cloudflare-images-keys-list-signing-keys",
+			"uri": "accounts/:account_identifier/images/v1/keys",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/images/v1/keys\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"name\": \"default\",\n      \"value\": \"Oix0bbNaT8Rge9PuyxUBrjI6zrgnsyJ5=\"\n    }\n  ]\n}"
+		}
+	],
+	"html_id": "cloudflare-images-keys",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"name": {
+				"type": "string",
+				"example": "\"default\"",
+				"description": "Key name",
+				"readOnly": true
+			},
+			"value": {
+				"type": "string",
+				"example": "\"Oix0bbNaT8Rge9PuyxUBrjI6zrgnsyJ5=\"",
+				"description": "Key value",
+				"readOnly": true
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"name",
+			"value"
+		],
+		"objects": [],
+		"example": "{\n  \"name\": \"default\",\n  \"value\": \"Oix0bbNaT8Rge9PuyxUBrjI6zrgnsyJ5=\"\n}",
+		"title": "Cloudflare Images Keys",
+		"description": "Keys are used to generate signature tokens required for accessing images marked as private."
+	}
+}

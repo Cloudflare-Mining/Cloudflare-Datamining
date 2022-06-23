@@ -1,0 +1,111 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/access/seats.json",
+	"title": "Zero Trust Seats",
+	"description": "Zero Trust seats will allow a user to manage the seat allocation for their account",
+	"type": "object",
+	"links": [
+		{
+			"title": "Update User Seats",
+			"description": "Manage seats for gateway and access accounts",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/access/seats",
+			"method": "PATCH",
+			"cfOwnership": "access",
+			"html_id": "zero-trust-seats-update-user-seats",
+			"uri": "accounts/:identifier/access/seats",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/access/seats\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '[{\"seat_uid\":\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\"access_seat\":false,\"gateway_seat\":false}]'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"seat_uid": {
+						"type": "string",
+						"example": "\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"",
+						"description": "Seat UUID",
+						"id": "https://api.cloudflare.com/schemas/v4/common/uuid.json",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"readOnly": true,
+						"maxLength": 36
+					},
+					"access_seat": {
+						"type": "boolean",
+						"example": "false",
+						"description": "user seat is part of access"
+					},
+					"gateway_seat": {
+						"type": "boolean",
+						"example": "false",
+						"description": "user seat is part of gateway"
+					}
+				},
+				"required_props": [
+					"seat_uid",
+					"gateway_seat",
+					"access_seat"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"seat_uid\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n  \"access_seat\": false,\n  \"gateway_seat\": false\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"seat_uid\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"access_seat\": false,\n      \"gateway_seat\": false\n    }\n  ]\n}"
+		}
+	],
+	"html_id": "zero-trust-seats",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"seat_uid": {
+				"type": "string",
+				"example": "\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"",
+				"description": "Seat UUID",
+				"id": "https://api.cloudflare.com/schemas/v4/common/uuid.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"readOnly": true,
+				"maxLength": 36
+			},
+			"created_at": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "Creation time",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"updated_at": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "Last modification time",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"access_seat": {
+				"type": "boolean",
+				"example": "false",
+				"description": "user seat is part of access"
+			},
+			"gateway_seat": {
+				"type": "boolean",
+				"example": "false",
+				"description": "user seat is part of gateway"
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"seat_uid",
+			"created_at",
+			"updated_at",
+			"access_seat",
+			"gateway_seat"
+		],
+		"objects": [],
+		"example": "{\n  \"seat_uid\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"access_seat\": false,\n  \"gateway_seat\": false\n}",
+		"title": "Zero Trust Seats",
+		"description": "Zero Trust seats will allow a user to manage the seat allocation for their account"
+	}
+}

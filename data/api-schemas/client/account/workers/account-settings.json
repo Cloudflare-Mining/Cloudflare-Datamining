@@ -1,0 +1,155 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/workers/account-settings.json",
+	"title": "Worker Account Settings",
+	"description": "Worker Account Settings specify account-level configurations for a Workers account.",
+	"cfExtendedDescription": "**For more detailed documentation on using the API for Workers see the [Workers API](https://workers.cloudflare.com/docs/reference/tooling/api/).**",
+	"type": "object",
+	"links": [
+		{
+			"title": "Create Worker Account Settings",
+			"description": "Creates Worker Account Settings for an account.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/workers/account-settings",
+			"method": "PUT",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key",
+					"Content-Type"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					},
+					"Content-Type": {
+						"type": "string",
+						"enum": [
+							"application/json"
+						],
+						"example": "application/json"
+					}
+				}
+			},
+			"encType": "application/json",
+			"cfOwnership": "workers",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.account.update"
+				]
+			},
+			"html_id": "worker-account-settings-create-worker-account-settings",
+			"uri": "accounts/:account_identifier/workers/account-settings",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/workers/account-settings\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '\"{'default_usage_model': 'unbound'}\"'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {},
+				"required_props": [],
+				"optional_props": [],
+				"objects": [],
+				"example": "\"{'default_usage_model': 'unbound'}\""
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"default_usage_model\": \"unbound\"\n  }\n}"
+		},
+		{
+			"title": "Fetch Worker Account Settings",
+			"description": "Fetches Worker Account Settings for an account.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/workers/account-settings",
+			"method": "GET",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key",
+					"Content-Type"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					},
+					"Content-Type": {
+						"type": "string",
+						"enum": [
+							"application/json"
+						],
+						"example": "application/json"
+					}
+				}
+			},
+			"encType": "application/json",
+			"cfOwnership": "workers",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.account.read"
+				]
+			},
+			"html_id": "worker-account-settings-fetch-worker-account-settings",
+			"uri": "accounts/:account_identifier/workers/account-settings",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/workers/account-settings\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"default_usage_model\": \"unbound\"\n  }\n}"
+		}
+	],
+	"cfLinkErrors": {
+		"10001": "Unsupported or unexpected Content Type",
+		"10002": "Unexpected internal server error",
+		"10003": "Missing required URL parameter",
+		"10004": "Malformed URL parameter",
+		"10007": "Resource not found (similar to HTTP 404)",
+		"10014": "Internal error while attempting authorization checks",
+		"10015": "The current account is not authorized to use workers",
+		"10023": "Unauthorized access attempt",
+		"10026": "Unable to parse request body",
+		"10075": "Requires a Workers Paid plan",
+		"10080": "The current account is not authorized to use green compute"
+	},
+	"html_id": "worker-account-settings",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"default_usage_model": {
+				"type": "string",
+				"example": "\"unbound\"",
+				"readOnly": false,
+				"description": "Specifies the default usage model when creating new Workers within an account (e.g. 'bundled' or 'unbound').",
+				"pattern": "^(bundled|unbound)$"
+			},
+			"green_compute": {
+				"type": "boolean",
+				"readOnly": false,
+				"description": "Specifies whenever workers should be scheduled on facilities that operate on 100 percent renewable energy. This feature is currently in beta, you will need to sign up before you can use it."
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"default_usage_model",
+			"green_compute"
+		],
+		"objects": [],
+		"example": "{\n  \"default_usage_model\": \"unbound\"\n}",
+		"title": "Worker Account Settings",
+		"description": "Worker Account Settings specify account-level configurations for a Workers account."
+	}
+}

@@ -1,0 +1,418 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/images/images.json",
+	"title": "Cloudflare Images",
+	"description": "Upload images to Cloudflare Images for fast image processing and delivery.",
+	"type": "object",
+	"cfDeprecations": {
+		"direct_upload_v1_deprecation": {
+			"id": "direct_upload_v1_deprecation",
+			"description": "Use direct_upload v2 instead: https://api.cloudflare.com/#cloudflare-images-create-authenticated-direct-upload-url-v2. It allows you to control metadata, access policy, and returns the same image ID an image will be accessible with.",
+			"eol": "2022-07-01",
+			"display": true
+		}
+	},
+	"links": [
+		{
+			"title": "Upload an image using a single HTTP request",
+			"description": "Upload an image with up to 10 Megabytes using a single HTTP POST (multipart/form-data) request.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/images/v1",
+			"method": "POST",
+			"cfOwnership": "images",
+			"encType": "multipart/form-data",
+			"cfRequestHeaders": {
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
+			"html_id": "cloudflare-images-upload-an-image-using-a-single-http-request",
+			"uri": "accounts/:account_identifier/images/v1",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/images/v1\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     --form 'file=@/Users/kyle/Desktop/logo.png' \\\n     --form 'requireSignedURLs=true' \\\n     --form 'metadata={\"meta\": \"metaID\"}' \\\n     --form 'url=https://example.com/path/to/image.jpeg'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"file": {
+						"type": "string",
+						"example": "\"@/Users/kyle/Desktop/logo.png\"",
+						"description": "Image file to upload."
+					},
+					"requireSignedURLs": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Indicates whether the image requires a signature token for the access.",
+						"default": false
+					},
+					"metadata": {
+						"type": "object",
+						"example": "\"{\\\"meta\\\": \\\"metaID\\\"}\"",
+						"description": "User modifyable key-value store. Can use used for keeping references to another system of record for managing images."
+					},
+					"url": {
+						"type": "string",
+						"example": "\"https://example.com/path/to/image.jpeg\"",
+						"description": "A URL to fetch an image from origin. Mutually exclusive with `file` parameter.",
+						"default": false
+					}
+				},
+				"required_props": [
+					"file"
+				],
+				"optional_props": [
+					"requireSignedURLs",
+					"metadata",
+					"url"
+				],
+				"objects": [],
+				"example": "{\n  \"file\": \"@/Users/kyle/Desktop/logo.png\",\n  \"requireSignedURLs\": true,\n  \"metadata\": \"{\\\"meta\\\": \\\"metaID\\\"}\",\n  \"url\": \"https://example.com/path/to/image.jpeg\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"ZxR0pLaXRldlBtaFhhO2FiZGVnaA\",\n      \"filename\": \"avatar.png\",\n      \"metadata\": {\n        \"meta\": \"metaID\"\n      },\n      \"requireSignedURLs\": true,\n      \"variants\": {\n        \"thumbnail\": \"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/thumbnail\",\n        \"hero\": \"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/hero\",\n        \"original\": \"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/original\"\n      },\n      \"uploaded\": \"2014-01-02T02:20:00Z\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Update image",
+			"description": "Update image access control. On access control change, all copies of the image are purged from cache.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/images/v1/{#/definitions/identifier}",
+			"method": "PATCH",
+			"cfOwnership": "images",
+			"html_id": "cloudflare-images-update-image",
+			"uri": "accounts/:account_identifier/images/v1/:identifier",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/images/v1/ZxR0pLaXRldlBtaFhhO2FiZGVnaA\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"requireSignedURLs\":true,\"metadata\":\"{\\\"meta\\\": \\\"metaID\\\"}\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"requireSignedURLs": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Indicates whether the image can be accessed using only its UID. If set to `true`, a signed token needs to be generated with a signing key to view the image. Returns a new UID on a change. No change if not specified."
+					},
+					"metadata": {
+						"type": "object",
+						"example": "\"{\\\"meta\\\": \\\"metaID\\\"}\"",
+						"description": "User modifiable key-value store. Can be used for keeping references to another system of record for managing images. No change if not specified."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"requireSignedURLs",
+					"metadata"
+				],
+				"objects": [],
+				"example": "{\n  \"requireSignedURLs\": true,\n  \"metadata\": \"{\\\"meta\\\": \\\"metaID\\\"}\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"ZxR0pLaXRldlBtaFhhO2FiZGVnaA\",\n    \"filename\": \"avatar.png\",\n    \"metadata\": {\n      \"meta\": \"metaID\"\n    },\n    \"requireSignedURLs\": true,\n    \"variants\": {\n      \"thumbnail\": \"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/thumbnail\",\n      \"hero\": \"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/hero\",\n      \"original\": \"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/original\"\n    },\n    \"uploaded\": \"2014-01-02T02:20:00Z\"\n  }\n}"
+		},
+		{
+			"title": "Create authenticated direct upload URL",
+			"description": "Direct uploads allow users to upload images without API keys. A common use case are web apps, client-side applications, or mobile devices where users upload content directly to Cloudflare Images.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/images/v1/direct_upload",
+			"method": "POST",
+			"cfOwnership": "images",
+			"cfDeprecation": {
+				"id": "direct_upload_v1_deprecation",
+				"description": "Use direct_upload v2 instead: https://api.cloudflare.com/#cloudflare-images-create-authenticated-direct-upload-url-v2. It allows you to control metadata, access policy, and returns the same image ID an image will be accessible with.",
+				"eol": "2022-07-01",
+				"display": true
+			},
+			"html_id": "cloudflare-images-create-authenticated-direct-upload-url",
+			"uri": "accounts/:account_identifier/images/v1/direct_upload",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/images/v1/direct_upload\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"expiry\":\"2021-01-02T02:20:00Z\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"expiry": {
+						"type": "string",
+						"example": "\"2021-01-02T02:20:00Z\"",
+						"description": "The date after which the upload will not be accepted. Minimum: Now + 2 minutes. Maximum: Now + 6 hours.",
+						"format": "date-time",
+						"default": "Now + 30 minutes"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"expiry"
+				],
+				"objects": [],
+				"example": "{\n  \"expiry\": \"2021-01-02T02:20:00Z\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"uploadURL\": \"https://upload.imagedelivery.net/e22e9e6b-c02b-42fd-c405-6c32af5fe623\",\n    \"id\": \"ZxR0pLaXRldlBtaFhhO2FiZGVnaA\"\n  }\n}"
+		},
+		{
+			"title": "Create authenticated direct upload URL V2",
+			"description": "Direct uploads allow users to upload images without API keys. A common use case are web apps, client-side applications, or mobile devices where users upload content directly to Cloudflare Images. This method creates a draft record for a future image. It returns an upload URL and an image identifier. To verify if the image itself has been uploaded, send an image details request (accounts/:account_identifier/images/v1/:identifier), and check that the `draft: true` property is not present.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/images/v2/direct_upload",
+			"method": "POST",
+			"cfOwnership": "images",
+			"html_id": "cloudflare-images-create-authenticated-direct-upload-url-v2",
+			"uri": "accounts/:account_identifier/images/v2/direct_upload",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/images/v2/direct_upload\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"requireSignedURLs\":true,\"metadata\":\"{\\\"meta\\\": \\\"metaID\\\"}\",\"expiry\":\"2021-01-02T02:20:00Z\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"requireSignedURLs": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Indicates whether the image requires a signature token to be accessed.",
+						"default": false
+					},
+					"metadata": {
+						"type": "object",
+						"example": "\"{\\\"meta\\\": \\\"metaID\\\"}\"",
+						"description": "User modifiable key-value store. Can be used for keeping references to another system of record, for managing images."
+					},
+					"expiry": {
+						"type": "string",
+						"example": "\"2021-01-02T02:20:00Z\"",
+						"description": "The date after which the upload will not be accepted. Minimum: Now + 2 minutes. Maximum: Now + 6 hours.",
+						"format": "date-time",
+						"default": "Now + 30 minutes"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"requireSignedURLs",
+					"metadata",
+					"expiry"
+				],
+				"objects": [],
+				"example": "{\n  \"requireSignedURLs\": true,\n  \"metadata\": \"{\\\"meta\\\": \\\"metaID\\\"}\",\n  \"expiry\": \"2021-01-02T02:20:00Z\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"uploadURL\": \"https://upload.imagedelivery.net/FxUufywByo0m2v3xhKSiU8/e22e9e6b-c02b-42fd-c405-6c32af5fe600\",\n    \"id\": \"e22e9e6b-c02b-42fd-c405-6c32af5fe600\"\n  }\n}"
+		},
+		{
+			"title": "List images",
+			"description": "List up to 100 images with one request. Use the optional parameters below to get a specific range of images.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/images/v1",
+			"method": "GET",
+			"cfOwnership": "images",
+			"html_id": "cloudflare-images-list-images",
+			"uri": "accounts/:account_identifier/images/v1",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/images/v1?page=1&per_page=50\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"page": {
+						"type": "number",
+						"example": "1",
+						"minimum": 1,
+						"default": 1,
+						"description": "Page number of paginated results."
+					},
+					"per_page": {
+						"type": "number",
+						"example": "50",
+						"minimum": 10,
+						"maximum": 100,
+						"default": 50,
+						"description": "Number of items per page."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"page",
+					"per_page"
+				],
+				"objects": [],
+				"example": "{\n  \"page\": 1,\n  \"per_page\": 50\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"ZxR0pLaXRldlBtaFhhO2FiZGVnaA\",\n      \"filename\": \"avatar.png\",\n      \"metadata\": {\n        \"meta\": \"metaID\"\n      },\n      \"requireSignedURLs\": true,\n      \"variants\": {\n        \"thumbnail\": \"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/thumbnail\",\n        \"hero\": \"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/hero\",\n        \"original\": \"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/original\"\n      },\n      \"uploaded\": \"2014-01-02T02:20:00Z\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Image details",
+			"description": "Fetch details for a single image.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/images/v1/{#/definitions/identifier}",
+			"method": "GET",
+			"cfOwnership": "images",
+			"html_id": "cloudflare-images-image-details",
+			"uri": "accounts/:account_identifier/images/v1/:identifier",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/images/v1/ZxR0pLaXRldlBtaFhhO2FiZGVnaA\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"ZxR0pLaXRldlBtaFhhO2FiZGVnaA\",\n    \"filename\": \"avatar.png\",\n    \"metadata\": {\n      \"meta\": \"metaID\"\n    },\n    \"requireSignedURLs\": true,\n    \"variants\": {\n      \"thumbnail\": \"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/thumbnail\",\n      \"hero\": \"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/hero\",\n      \"original\": \"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/original\"\n    },\n    \"uploaded\": \"2014-01-02T02:20:00Z\"\n  }\n}"
+		},
+		{
+			"title": "Base image",
+			"description": "Fetch base image. For most images this will be the originally uploaded file. For larger images it can be a near-lossless version of the original.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/images/v1/{#/definitions/identifier}/blob",
+			"method": "GET",
+			"cfOwnership": "images",
+			"mediaType": "image/*,application/octet-stream",
+			"cfRequestHeaders": {
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
+			"html_id": "cloudflare-images-base-image",
+			"uri": "accounts/:account_identifier/images/v1/:identifier/blob",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/images/v1/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/blob\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
+			"response": "<image blob data>"
+		},
+		{
+			"title": "Delete image",
+			"description": "Delete an image on Cloudflare Images. On success, all copies of the image are deleted and purged from cache.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/images/v1/{#/definitions/identifier}",
+			"cfOwnership": "images",
+			"method": "DELETE",
+			"html_id": "cloudflare-images-delete-image",
+			"uri": "accounts/:account_identifier/images/v1/:identifier",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/images/v1/ZxR0pLaXRldlBtaFhhO2FiZGVnaA\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\""
+		},
+		{
+			"title": "Images usage statistics",
+			"description": "Fetch usage statistics details for Cloudflare Images.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/images/v1/stats",
+			"method": "GET",
+			"cfOwnership": "images",
+			"html_id": "cloudflare-images-images-usage-statistics",
+			"uri": "accounts/:account_identifier/images/v1/stats",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/images/v1/stats\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"count\": {\n    \"current\": 1000,\n    \"allowed\": 100000\n  }\n}"
+		}
+	],
+	"cfLinkErrors": {
+		"5400": "Bad Request.",
+		"5401": "Variant <name> not found.",
+		"5403": "The given account is not valid or is not authorized to access this service.",
+		"5404": "Image not found.",
+		"5408": "Client was sending upload too slowly.",
+		"5413": "Maximum image size of 10 MB is reached",
+		"5415": "Images must be uploaded as a form, not as raw image data. Please use multipart/form-data format.",
+		"5433": "Request has been aborted by the client.",
+		"5450": "Error while receiving upload.",
+		"5453": "The given account has reached a service limit.",
+		"5455": "Unsupported image format.",
+		"5500": "Internal Server Error.",
+		"5503": "Server Unavailable.",
+		"5540": "Error received from the storage.",
+		"5541": "Error while purging cache.",
+		"5542": "Error while loading account.",
+		"5543": "Error during audit.",
+		"5544": "Error during abuse operation.",
+		"5550": "Internal Server Error."
+	},
+	"html_id": "cloudflare-images",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"ZxR0pLaXRldlBtaFhhO2FiZGVnaA\"",
+				"description": "Image unique identifier",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"filename": {
+				"type": "string",
+				"example": "\"avatar.png\"",
+				"description": "Image file name",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"metadata": {
+				"type": "object",
+				"example": "{\n  \"meta\": \"metaID\"\n}",
+				"description": "User modifyable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes."
+			},
+			"requireSignedURLs": {
+				"type": "boolean",
+				"example": "true",
+				"description": "Indicates whether the image can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the image.",
+				"default": false
+			},
+			"variants": {
+				"example": "{\n  \"thumbnail\": \"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/thumbnail\",\n  \"hero\": \"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/hero\",\n  \"original\": \"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/original\"\n}",
+				"properties": {
+					"thumbnail": {
+						"type": "string",
+						"example": "\"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/thumbnail\"",
+						"description": "URI to thumbnail variant for an image.",
+						"format": "uri",
+						"readOnly": true
+					},
+					"hero": {
+						"type": "string",
+						"example": "\"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/hero\"",
+						"description": "URI to hero variant for an image.",
+						"format": "uri",
+						"readOnly": true
+					},
+					"original": {
+						"type": "string",
+						"example": "\"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/original\"",
+						"description": "URI to original variant for an image.",
+						"format": "uri",
+						"readOnly": true
+					}
+				},
+				"description": "Object specifying available variants for an image.",
+				"readOnly": true
+			},
+			"uploaded": {
+				"type": "string",
+				"example": "\"2014-01-02T02:20:00Z\"",
+				"description": "When the media item was uploaded.",
+				"format": "date-time",
+				"readOnly": true
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"filename",
+			"metadata",
+			"requireSignedURLs",
+			"variants",
+			"uploaded"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"ZxR0pLaXRldlBtaFhhO2FiZGVnaA\",\n  \"filename\": \"avatar.png\",\n  \"metadata\": {\n    \"meta\": \"metaID\"\n  },\n  \"requireSignedURLs\": true,\n  \"variants\": {\n    \"thumbnail\": \"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/thumbnail\",\n    \"hero\": \"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/hero\",\n    \"original\": \"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/original\"\n  },\n  \"uploaded\": \"2014-01-02T02:20:00Z\"\n}",
+		"title": "Cloudflare Images",
+		"description": "Upload images to Cloudflare Images for fast image processing and delivery."
+	}
+}

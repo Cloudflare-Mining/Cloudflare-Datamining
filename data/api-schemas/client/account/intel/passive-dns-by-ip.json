@@ -1,0 +1,123 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/intel/passive-dns-by-ip.json",
+	"title": "Passive DNS by IP",
+	"description": "Passive DNS by IP (Beta)",
+	"links": [
+		{
+			"title": "Get Passive DNS by IP",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/intel/dns",
+			"method": "GET",
+			"cfOwnership": "intel",
+			"html_id": "passive-dns-by-ip-get-passive-dns-by-ip",
+			"uri": "accounts/:account_identifier/intel/dns",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/intel/dns?ipv4=192.0.2.0&start=2021-04-01&end=2021-04-30&page=1&per_page=20\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"ipv4": {
+						"type": "string",
+						"example": "\"192.0.2.0\"",
+						"format": "ipv4"
+					},
+					"start": {
+						"type": "string",
+						"example": "\"2021-04-01\"",
+						"description": "Defaults to 30 days before the end parameter value",
+						"format": "date"
+					},
+					"end": {
+						"type": "string",
+						"example": "\"2021-04-30\"",
+						"description": "Defaults to the current date",
+						"format": "date"
+					},
+					"page": {
+						"type": "number",
+						"example": "1",
+						"description": "Requested page within paginated list of results"
+					},
+					"per_page": {
+						"type": "number",
+						"example": "20",
+						"description": "Maximum number of results requested"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"ipv4",
+					"start",
+					"end",
+					"page",
+					"per_page"
+				],
+				"objects": [],
+				"example": "{\n  \"ipv4\": \"192.0.2.0\",\n  \"start\": \"2021-04-01\",\n  \"end\": \"2021-04-30\",\n  \"page\": 1,\n  \"per_page\": 20\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"reverse_records\": [\n      {\n        \"first_seen\": \"2021-04-01\",\n        \"last_seen\": \"2021-04-30\",\n        \"hostname\": \"cloudflare.com\"\n      }\n    ],\n    \"count\": 1,\n    \"page\": 1,\n    \"per_page\": 20\n  }\n}"
+		}
+	],
+	"html_id": "passive-dns-by-ip",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"reverse_records": {
+				"type": "array",
+				"example": "[\n  {\n    \"first_seen\": \"2021-04-01\",\n    \"last_seen\": \"2021-04-30\",\n    \"hostname\": \"cloudflare.com\"\n  }\n]",
+				"description": "Reverse DNS look-ups observed during the time period",
+				"items": {
+					"type": "object",
+					"properties": {
+						"first_seen": {
+							"description": "First seen date of the DNS record during the time period",
+							"type": "string",
+							"format": "date",
+							"example": "2021-04-01"
+						},
+						"last_seen": {
+							"description": "Last seen date of the DNS record during the time period",
+							"type": "string",
+							"format": "date",
+							"example": "2021-04-30"
+						},
+						"hostname": {
+							"description": "Hostname that the IP was observed resolving to",
+							"type": "string",
+							"example": "cloudflare.com"
+						}
+					}
+				}
+			},
+			"count": {
+				"type": "number",
+				"example": "1",
+				"description": "Total results returned based on your search parameters"
+			},
+			"page": {
+				"type": "number",
+				"example": "1",
+				"description": "Current page within paginated list of results"
+			},
+			"per_page": {
+				"type": "number",
+				"example": "20",
+				"description": "Number of results per page of results"
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"reverse_records",
+			"count",
+			"page",
+			"per_page"
+		],
+		"objects": [],
+		"example": "{\n  \"reverse_records\": [\n    {\n      \"first_seen\": \"2021-04-01\",\n      \"last_seen\": \"2021-04-30\",\n      \"hostname\": \"cloudflare.com\"\n    }\n  ],\n  \"count\": 1,\n  \"page\": 1,\n  \"per_page\": 20\n}",
+		"title": "Passive DNS by IP",
+		"description": "Passive DNS by IP (Beta)"
+	}
+}

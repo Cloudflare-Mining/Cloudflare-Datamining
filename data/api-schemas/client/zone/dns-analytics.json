@@ -1,0 +1,206 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/dns-analytics.json",
+	"title": "DNS Analytics",
+	"description": "Analytics data for a zone.",
+	"type": "object",
+	"links": [
+		{
+			"title": "Table",
+			"description": "Retrieves a list of summarised aggregate metrics over a given time period.",
+			"rel": "tag:cloudflare.com,2017:analytics-report",
+			"href": "zones/{#/definitions/identifier}/dns_analytics/report",
+			"method": "GET",
+			"cfOwnership": "dns",
+			"html_id": "dns-analytics-table",
+			"uri": "zones/:identifier/dns_analytics/report",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/dns_analytics/report?dimensions=responseCode,queryName&metrics=queryCount,responseTimeAvg&sort=+responseCode,-queryName&filters=responseCode==NOERROR&since=2016-11-11T12:00:00Z&until=2016-11-11T13:00:00Z&limit=100\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"dimensions": {
+						"type": "array",
+						"example": "[\n  \"responseCode\",\n  \"queryName\"\n]",
+						"description": "Array of dimensions",
+						"items": {
+							"description": "Dimension name",
+							"type": "string",
+							"example": "responseCode"
+						}
+					},
+					"metrics": {
+						"type": "array",
+						"example": "[\n  \"queryCount\",\n  \"responseTimeAvg\"\n]",
+						"description": "Array of metrics",
+						"items": {
+							"description": "Metric name",
+							"type": "string",
+							"example": "queries"
+						}
+					},
+					"sort": {
+						"type": "array",
+						"example": "[\n  \"+responseCode\",\n  \"-queryName\"\n]",
+						"description": "Array of dimensions to sort by, each dimension may be prefixed by - (descending) or + (ascending)",
+						"items": {
+							"description": "Dimension name (may be prefixed by - (descending) or + (ascending)",
+							"type": "string",
+							"example": "+responseCode"
+						}
+					},
+					"filters": {
+						"type": "string",
+						"example": "\"responseCode==NOERROR\"",
+						"description": "Segmentation filter in 'attribute operator value' format"
+					},
+					"since": {
+						"type": "string",
+						"example": "\"2016-11-11T12:00:00Z\"",
+						"description": "Start date and time of requesting data period in the ISO8601 format",
+						"format": "date-time"
+					},
+					"until": {
+						"type": "string",
+						"example": "\"2016-11-11T13:00:00Z\"",
+						"description": "End date and time of requesting data period in the ISO8601 format",
+						"format": "date-time"
+					},
+					"limit": {
+						"type": "integer",
+						"example": "100",
+						"description": "Limit number of returned metrics, default is 100"
+					}
+				},
+				"required_props": [
+					"dimensions",
+					"metrics",
+					"since",
+					"until"
+				],
+				"optional_props": [
+					"sort",
+					"filters",
+					"limit"
+				],
+				"objects": [],
+				"example": "{\n  \"dimensions\": [\n    \"responseCode\",\n    \"queryName\"\n  ],\n  \"metrics\": [\n    \"queryCount\",\n    \"responseTimeAvg\"\n  ],\n  \"sort\": [\n    \"+responseCode\",\n    \"-queryName\"\n  ],\n  \"filters\": \"responseCode==NOERROR\",\n  \"since\": \"2016-11-11T12:00:00Z\",\n  \"until\": \"2016-11-11T13:00:00Z\",\n  \"limit\": 100\n}",
+				"description": "Report query metadata"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"rows\": 100,\n    \"totals\": {\n      \"queryCount\": 1000,\n      \"responseTimeAvg\": 1\n    },\n    \"min\": {\n      \"queryCount\": 1000,\n      \"responseTimeAvg\": 1\n    },\n    \"max\": {\n      \"queryCount\": 1000,\n      \"responseTimeAvg\": 1\n    },\n    \"data_lag\": 60\n  }\n}"
+		},
+		{
+			"title": "By Time",
+			"description": "Retrieves a list of aggregate metrics grouped by time interval.",
+			"rel": "tag:cloudflare.com,2017:analytics-by-time",
+			"href": "zones/{#/definitions/identifier}/dns_analytics/report/bytime",
+			"method": "GET",
+			"cfOwnership": "dns",
+			"html_id": "dns-analytics-by-time",
+			"uri": "zones/:identifier/dns_analytics/report/bytime",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/dns_analytics/report/bytime?dimensions=responseCode,queryName&metrics=queryCount,responseTimeAvg&sort=+responseCode,-queryName&filters=responseCode==NOERROR&since=2016-11-11T12:00:00Z&until=2016-11-11T13:00:00Z&limit=100&time_delta=hour\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"dimensions": {
+						"type": "array",
+						"example": "[\n  \"responseCode\",\n  \"queryName\"\n]",
+						"description": "Array of dimensions",
+						"items": {
+							"description": "Dimension name",
+							"type": "string",
+							"example": "responseCode"
+						}
+					},
+					"metrics": {
+						"type": "array",
+						"example": "[\n  \"queryCount\",\n  \"responseTimeAvg\"\n]",
+						"description": "Array of metrics",
+						"items": {
+							"description": "Metric name",
+							"type": "string",
+							"example": "queries"
+						}
+					},
+					"sort": {
+						"type": "array",
+						"example": "[\n  \"+responseCode\",\n  \"-queryName\"\n]",
+						"description": "Array of dimensions to sort by, each dimension may be prefixed by - (descending) or + (ascending)",
+						"items": {
+							"description": "Dimension name (may be prefixed by - (descending) or + (ascending)",
+							"type": "string",
+							"example": "+responseCode"
+						}
+					},
+					"filters": {
+						"type": "string",
+						"example": "\"responseCode==NOERROR\"",
+						"description": "Segmentation filter in 'attribute operator value' format"
+					},
+					"since": {
+						"type": "string",
+						"example": "\"2016-11-11T12:00:00Z\"",
+						"description": "Start date and time of requesting data period in the ISO8601 format",
+						"format": "date-time"
+					},
+					"until": {
+						"type": "string",
+						"example": "\"2016-11-11T13:00:00Z\"",
+						"description": "End date and time of requesting data period in the ISO8601 format",
+						"format": "date-time"
+					},
+					"limit": {
+						"type": "integer",
+						"example": "100",
+						"description": "Limit number of returned metrics, default is 100"
+					},
+					"time_delta": {
+						"example": "\"hour\"",
+						"description": "Unit of time to group data by",
+						"enum": [
+							"all",
+							"auto",
+							"year",
+							"quarter",
+							"month",
+							"week",
+							"day",
+							"hour",
+							"dekaminute",
+							"minute"
+						]
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"dimensions",
+					"metrics",
+					"sort",
+					"filters",
+					"since",
+					"until",
+					"limit",
+					"time_delta"
+				],
+				"objects": [],
+				"example": "{\n  \"dimensions\": [\n    \"responseCode\",\n    \"queryName\"\n  ],\n  \"metrics\": [\n    \"queryCount\",\n    \"responseTimeAvg\"\n  ],\n  \"sort\": [\n    \"+responseCode\",\n    \"-queryName\"\n  ],\n  \"filters\": \"responseCode==NOERROR\",\n  \"since\": \"2016-11-11T12:00:00Z\",\n  \"until\": \"2016-11-11T13:00:00Z\",\n  \"limit\": 100,\n  \"time_delta\": \"hour\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"rows\": 100,\n    \"totals\": {\n      \"queryCount\": 1000,\n      \"responseTimeAvg\": 1\n    },\n    \"min\": {\n      \"queryCount\": 1000,\n      \"responseTimeAvg\": 1\n    },\n    \"max\": {\n      \"queryCount\": 1000,\n      \"responseTimeAvg\": 1\n    },\n    \"data_lag\": 60\n  }\n}"
+		}
+	],
+	"html_id": "dns-analytics",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {},
+		"required_props": [],
+		"optional_props": [],
+		"objects": [],
+		"example": "{}",
+		"title": "DNS Analytics",
+		"description": "Analytics data for a zone."
+	}
+}

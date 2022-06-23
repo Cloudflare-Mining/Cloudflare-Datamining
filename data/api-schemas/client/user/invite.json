@@ -1,0 +1,750 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/user/invite.json",
+	"title": "User's Invites",
+	"description": "Your pending invitations to organizations",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Invitations",
+			"description": "List all invitations associated with my user",
+			"rel": "collection",
+			"href": "user/invites",
+			"method": "GET",
+			"cfOwnership": "iam",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"html_id": "user-s-invites-list-invitations",
+			"uri": "user/invites",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/user/invites\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"4f5f0c14a2a41d5063dd301b2f829f04\",\n      \"invited_member_id\": \"5a7805061c76ada191ed06f989cc3dac\",\n      \"invited_member_email\": \"user@example.com\",\n      \"organization_id\": \"5a7805061c76ada191ed06f989cc3dac\",\n      \"organization_name\": \"Cloudflare, Inc.\",\n      \"roles\": [\n        {\n          \"id\": \"3536bcfad5faccb999b47003c79917fb\",\n          \"name\": \"Organization Admin\",\n          \"description\": \"Administrative access to the entire Organization\",\n          \"permissions\": [\n            \"#zones:read\"\n          ]\n        }\n      ],\n      \"invited_by\": \"user@example.com\",\n      \"invited_on\": \"2014-01-01T05:20:00Z\",\n      \"expires_on\": \"2014-01-01T05:20:00Z\",\n      \"status\": \"accepted\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Invitation Details",
+			"description": "Get the details of an invitation",
+			"rel": "self",
+			"href": "user/invites/{#/definitions/identifier}",
+			"method": "GET",
+			"cfOwnership": "iam",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"html_id": "user-s-invites-invitation-details",
+			"uri": "user/invites/:identifier",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/user/invites/4f5f0c14a2a41d5063dd301b2f829f04\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"4f5f0c14a2a41d5063dd301b2f829f04\",\n    \"invited_member_id\": \"5a7805061c76ada191ed06f989cc3dac\",\n    \"invited_member_email\": \"user@example.com\",\n    \"organization_id\": \"5a7805061c76ada191ed06f989cc3dac\",\n    \"organization_name\": \"Cloudflare, Inc.\",\n    \"roles\": [\n      {\n        \"id\": \"3536bcfad5faccb999b47003c79917fb\",\n        \"name\": \"Organization Admin\",\n        \"description\": \"Administrative access to the entire Organization\",\n        \"permissions\": [\n          \"#zones:read\"\n        ]\n      }\n    ],\n    \"invited_by\": \"user@example.com\",\n    \"invited_on\": \"2014-01-01T05:20:00Z\",\n    \"expires_on\": \"2014-01-01T05:20:00Z\",\n    \"status\": \"accepted\"\n  }\n}"
+		},
+		{
+			"title": "Respond to Invitation",
+			"description": "Respond to an invitation",
+			"rel": "self",
+			"href": "user/invites/{#/definitions/identifier}",
+			"method": "PATCH",
+			"cfOwnership": "iam",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"html_id": "user-s-invites-respond-to-invitation",
+			"uri": "user/invites/:identifier",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/user/invites/4f5f0c14a2a41d5063dd301b2f829f04\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"status\":\"accepted\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"status": {
+						"example": "\"accepted\"",
+						"enum": [
+							"accepted",
+							"rejected"
+						],
+						"description": "Status of your response to the invitation (rejected or accepted)"
+					}
+				},
+				"required_props": [
+					"status"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"status\": \"accepted\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"4f5f0c14a2a41d5063dd301b2f829f04\",\n    \"invited_member_id\": \"5a7805061c76ada191ed06f989cc3dac\",\n    \"invited_member_email\": \"user@example.com\",\n    \"organization_id\": \"5a7805061c76ada191ed06f989cc3dac\",\n    \"organization_name\": \"Cloudflare, Inc.\",\n    \"roles\": [\n      {\n        \"id\": \"3536bcfad5faccb999b47003c79917fb\",\n        \"name\": \"Organization Admin\",\n        \"description\": \"Administrative access to the entire Organization\",\n        \"permissions\": [\n          \"#zones:read\"\n        ]\n      }\n    ],\n    \"invited_by\": \"user@example.com\",\n    \"invited_on\": \"2014-01-01T05:20:00Z\",\n    \"expires_on\": \"2014-01-01T05:20:00Z\",\n    \"status\": \"accepted\"\n  }\n}"
+		}
+	],
+	"html_id": "user-s-invites",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"4f5f0c14a2a41d5063dd301b2f829f04\"",
+				"description": "Invite identifier tag",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"invited_member_id": {
+				"type": [
+					"string",
+					"null"
+				],
+				"example": "\"5a7805061c76ada191ed06f989cc3dac\"",
+				"description": "Id of the user to be added to the Organization",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"invited_member_email": {
+				"type": "string",
+				"example": "\"user@example.com\"",
+				"description": "Email address of the user to be added to the Organization",
+				"maxLength": 90
+			},
+			"organization_id": {
+				"type": "string",
+				"example": "\"5a7805061c76ada191ed06f989cc3dac\"",
+				"description": "ID of the Organization the user will be added to",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"organization_name": {
+				"type": "string",
+				"example": "\"Cloudflare, Inc.\"",
+				"description": "Organization Name",
+				"maxLength": 100,
+				"readOnly": true
+			},
+			"roles": {
+				"type": "array",
+				"example": "[\n  {\n    \"id\": \"3536bcfad5faccb999b47003c79917fb\",\n    \"name\": \"Organization Admin\",\n    \"description\": \"Administrative access to the entire Organization\",\n    \"permissions\": [\n      \"#zones:read\"\n    ]\n  }\n]",
+				"description": "Roles to be assigned to this Member",
+				"items": {
+					"id": "https://api.cloudflare.com/schemas/v4/client/definitions/organization/role.json",
+					"title": "Organization Roles",
+					"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+					"description": "A role defines what permissions a Member of an Organization has.",
+					"type": "object",
+					"required": [
+						"id",
+						"name",
+						"description",
+						"permissions"
+					],
+					"properties": {
+						"id": {
+							"description": "Role identifier tag",
+							"type": "string",
+							"maxLength": 32,
+							"readOnly": true,
+							"example": "3536bcfad5faccb999b47003c79917fb"
+						},
+						"name": {
+							"type": "string",
+							"description": "Role Name",
+							"maxLength": 120,
+							"readOnly": true,
+							"example": "Organization Admin"
+						},
+						"description": {
+							"type": "string",
+							"description": "Description of role's permissions",
+							"readOnly": true,
+							"example": "Administrative access to the entire Organization"
+						},
+						"permissions": {
+							"type": "array",
+							"description": "Access permissions for this User",
+							"readOnly": true,
+							"items": {
+								"type": "string",
+								"maxLength": 160,
+								"example": "#zones:read"
+							}
+						}
+					},
+					"definitions": {
+						"identifier": {
+							"description": "Role identifier tag",
+							"type": "string",
+							"maxLength": 32,
+							"readOnly": true,
+							"example": "3536bcfad5faccb999b47003c79917fb"
+						},
+						"name": {
+							"type": "string",
+							"description": "Role Name",
+							"maxLength": 120,
+							"readOnly": true,
+							"example": "Organization Admin"
+						},
+						"description": {
+							"type": "string",
+							"description": "Description of role's permissions",
+							"readOnly": true,
+							"example": "Administrative access to the entire Organization"
+						},
+						"permissions": {
+							"type": "array",
+							"description": "Access permissions for this User",
+							"readOnly": true,
+							"items": {
+								"type": "string",
+								"maxLength": 160,
+								"example": "#zones:read"
+							}
+						},
+						"organization_identifier": {
+							"description": "Organization identifier tag",
+							"type": "string",
+							"maxLength": 32,
+							"readOnly": true,
+							"example": "01a7362d577a6c3019a474fd6f485823"
+						},
+						"single_role_response": {
+							"allOf": [
+								{
+									"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
+									"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+									"description": "Schema for an API response from Cloudflare that contains a single result object",
+									"type": "object",
+									"allOf": [
+										{
+											"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
+											"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+											"description": "Common schema for all Cloudflare v4 API responses",
+											"type": "object",
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"oneOf": [
+												{
+													"$comment": "This subschema describes successful responses",
+													"properties": {
+														"success": {
+															"description": "Whether the API call was successful or not",
+															"type": "boolean",
+															"enum": [
+																true
+															],
+															"example": true
+														},
+														"errors": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"required": [
+																	"code",
+																	"message"
+																],
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"required": [
+																	"code",
+																	"message"
+																],
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"result": {
+															"type": [
+																"object",
+																"array",
+																"string"
+															]
+														}
+													}
+												},
+												{
+													"$comment": "This subschema describes failure responses",
+													"properties": {
+														"success": {
+															"description": "Whether the API call was successful or not",
+															"type": "boolean",
+															"enum": [
+																false
+															],
+															"example": false
+														},
+														"errors": {
+															"allOf": [
+																{
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"required": [
+																			"code",
+																			"message"
+																		],
+																		"properties": {
+																			"code": {
+																				"type": "integer",
+																				"minimum": 1000
+																			},
+																			"message": {
+																				"type": "string"
+																			}
+																		},
+																		"uniqueItems": true
+																	},
+																	"example": []
+																}
+															],
+															"minLength": 1,
+															"example": [
+																{
+																	"code": 7003,
+																	"message": "No route for the URI"
+																}
+															]
+														},
+														"messages": {
+															"allOf": [
+																{
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"required": [
+																			"code",
+																			"message"
+																		],
+																		"properties": {
+																			"code": {
+																				"type": "integer",
+																				"minimum": 1000
+																			},
+																			"message": {
+																				"type": "string"
+																			}
+																		},
+																		"uniqueItems": true
+																	},
+																	"example": []
+																}
+															],
+															"example": []
+														},
+														"result": {
+															"type": "null",
+															"enum": [
+																null
+															],
+															"example": null
+														}
+													}
+												}
+											],
+											"definitions": {
+												"messages": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"required": [
+															"code",
+															"message"
+														],
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											}
+										},
+										{
+											"properties": {
+												"result": {
+													"type": [
+														"object",
+														"string",
+														"null"
+													]
+												}
+											}
+										}
+									]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"result": {
+											"type": "object",
+											"cfRecurse": ""
+										}
+									}
+								}
+							]
+						},
+						"collection_role_response": {
+							"allOf": [
+								{
+									"id": "https://api.cloudflare.com/schemas/v4/common/api-response-collection.json",
+									"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+									"description": "Schema for an API response from Cloudflare that contains multiple result objects",
+									"type": "object",
+									"anyOf": [
+										{
+											"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
+											"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+											"description": "Common schema for all Cloudflare v4 API responses",
+											"type": "object",
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"oneOf": [
+												{
+													"$comment": "This subschema describes successful responses",
+													"properties": {
+														"success": {
+															"description": "Whether the API call was successful or not",
+															"type": "boolean",
+															"enum": [
+																true
+															],
+															"example": true
+														},
+														"errors": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"required": [
+																	"code",
+																	"message"
+																],
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"required": [
+																	"code",
+																	"message"
+																],
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"result": {
+															"type": [
+																"object",
+																"array",
+																"string"
+															]
+														}
+													}
+												},
+												{
+													"$comment": "This subschema describes failure responses",
+													"properties": {
+														"success": {
+															"description": "Whether the API call was successful or not",
+															"type": "boolean",
+															"enum": [
+																false
+															],
+															"example": false
+														},
+														"errors": {
+															"allOf": [
+																{
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"required": [
+																			"code",
+																			"message"
+																		],
+																		"properties": {
+																			"code": {
+																				"type": "integer",
+																				"minimum": 1000
+																			},
+																			"message": {
+																				"type": "string"
+																			}
+																		},
+																		"uniqueItems": true
+																	},
+																	"example": []
+																}
+															],
+															"minLength": 1,
+															"example": [
+																{
+																	"code": 7003,
+																	"message": "No route for the URI"
+																}
+															]
+														},
+														"messages": {
+															"allOf": [
+																{
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"required": [
+																			"code",
+																			"message"
+																		],
+																		"properties": {
+																			"code": {
+																				"type": "integer",
+																				"minimum": 1000
+																			},
+																			"message": {
+																				"type": "string"
+																			}
+																		},
+																		"uniqueItems": true
+																	},
+																	"example": []
+																}
+															],
+															"example": []
+														},
+														"result": {
+															"type": "null",
+															"enum": [
+																null
+															],
+															"example": null
+														}
+													}
+												}
+											],
+											"definitions": {
+												"messages": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"required": [
+															"code",
+															"message"
+														],
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											}
+										},
+										{
+											"properties": {
+												"result": {
+													"type": [
+														"array",
+														"null"
+													]
+												},
+												"result_info": {
+													"type": "object",
+													"properties": {
+														"page": {
+															"description": "Current page within paginated list of results",
+															"type": "number",
+															"example": 1
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"type": "number",
+															"example": 20
+														},
+														"count": {
+															"description": "Total results returned based on your search parameters",
+															"type": "number",
+															"example": 1
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"type": "number",
+															"example": 2000
+														}
+													}
+												}
+											}
+										}
+									],
+									"definitions": {
+										"params": {
+											"type": "object",
+											"properties": {
+												"page": {
+													"description": "Requested page within paginated list of results",
+													"type": "number",
+													"example": 1
+												},
+												"per_page": {
+													"description": "Maximum number of results requested",
+													"type": "number",
+													"example": 20
+												}
+											}
+										},
+										"result_info": {
+											"type": "object",
+											"properties": {
+												"page": {
+													"description": "Current page within paginated list of results",
+													"type": "number",
+													"example": 1
+												},
+												"per_page": {
+													"description": "Number of results per page of results",
+													"type": "number",
+													"example": 20
+												},
+												"count": {
+													"description": "Total results returned based on your search parameters",
+													"type": "number",
+													"example": 1
+												},
+												"total_count": {
+													"description": "Total results available without any search parameters",
+													"type": "number",
+													"example": 2000
+												}
+											}
+										}
+									}
+								},
+								{
+									"type": "object",
+									"properties": {
+										"result": {
+											"type": "array",
+											"items": {
+												"cfRecurse": ""
+											}
+										}
+									}
+								}
+							]
+						}
+					}
+				}
+			},
+			"invited_by": {
+				"type": "string",
+				"example": "\"user@example.com\"",
+				"description": "The email address of the user who created the invite",
+				"maxLength": 90
+			},
+			"invited_on": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00Z\"",
+				"description": "When the invite was sent",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"expires_on": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00Z\"",
+				"description": "When the invite is no longer active",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"status": {
+				"example": "\"accepted\"",
+				"description": "Current status of the invitation",
+				"enum": [
+					"pending",
+					"accepted",
+					"rejected",
+					"expired"
+				]
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"invited_member_id",
+			"invited_member_email",
+			"organization_id",
+			"organization_name",
+			"roles",
+			"invited_by",
+			"invited_on",
+			"expires_on",
+			"status"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"4f5f0c14a2a41d5063dd301b2f829f04\",\n  \"invited_member_id\": \"5a7805061c76ada191ed06f989cc3dac\",\n  \"invited_member_email\": \"user@example.com\",\n  \"organization_id\": \"5a7805061c76ada191ed06f989cc3dac\",\n  \"organization_name\": \"Cloudflare, Inc.\",\n  \"roles\": [\n    {\n      \"id\": \"3536bcfad5faccb999b47003c79917fb\",\n      \"name\": \"Organization Admin\",\n      \"description\": \"Administrative access to the entire Organization\",\n      \"permissions\": [\n        \"#zones:read\"\n      ]\n    }\n  ],\n  \"invited_by\": \"user@example.com\",\n  \"invited_on\": \"2014-01-01T05:20:00Z\",\n  \"expires_on\": \"2014-01-01T05:20:00Z\",\n  \"status\": \"accepted\"\n}",
+		"title": "User's Invites",
+		"description": "Your pending invitations to organizations"
+	}
+}

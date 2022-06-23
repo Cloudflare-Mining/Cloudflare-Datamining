@@ -1,0 +1,485 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/magic/route.json",
+	"title": "Magic Static Routes",
+	"description": "Used to route traffic through GRE tunnels for Magic Transit and Magic WAN.",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Routes",
+			"description": "List all Magic static routes",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/magic/routes",
+			"method": "GET",
+			"cfOwnership": "magic-on-ramps",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"html_id": "magic-static-routes-list-routes",
+			"uri": "accounts/:account_identifier/magic/routes",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/magic/routes\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"routes\": [\n      {\n        \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n        \"created_on\": \"2017-06-14T00:00:00Z\",\n        \"modified_on\": \"2017-06-14T05:20:00Z\",\n        \"prefix\": \"192.0.2.0/24\",\n        \"nexthop\": \"203.0.113.1\",\n        \"priority\": 100,\n        \"description\": \"New route for new prefix 203.0.113.1\",\n        \"weight\": 100,\n        \"scope\": {\n          \"colo_regions\": [\n            \"APAC\"\n          ],\n          \"colo_names\": [\n            \"den01\"\n          ]\n        }\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Route Details",
+			"description": "Get a specific Magic static route",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/magic/routes/{#/definitions/route_identifier}",
+			"method": "GET",
+			"cfOwnership": "magic-on-ramps",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#organization:read"
+				]
+			},
+			"html_id": "magic-static-routes-route-details",
+			"uri": "accounts/:account_identifier/magic/routes/:route_identifier",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/magic/routes/01a7362d577a6c3019a474fd6f485823\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"route\": {\n      \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n      \"created_on\": \"2017-06-14T00:00:00Z\",\n      \"modified_on\": \"2017-06-14T05:20:00Z\",\n      \"prefix\": \"192.0.2.0/24\",\n      \"nexthop\": \"203.0.113.1\",\n      \"priority\": 100,\n      \"description\": \"New route for new prefix 203.0.113.1\",\n      \"weight\": 100,\n      \"scope\": {\n        \"colo_regions\": [\n          \"APAC\"\n        ],\n        \"colo_names\": [\n          \"den01\"\n        ]\n      }\n    }\n  }\n}"
+		},
+		{
+			"title": "Create Routes",
+			"description": "Creates a new Magic static route. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/magic/routes?validate_only={#/definitions/validate_only}",
+			"method": "POST",
+			"cfOwnership": "magic-on-ramps",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#organization:edit"
+				]
+			},
+			"html_id": "magic-static-routes-create-routes",
+			"uri": "accounts/:account_identifier/magic/routes?validate_only=:validate_only",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/magic/routes?validate_only=true\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"routes\":[{\"prefix\":\"192.0.2.0/24\",\"nexthop\":\"203.0.113.1\",\"priority\":100,\"description\":\"New route for new prefix 203.0.113.1\",\"weight\":100,\"scope\":{\"colo_regions\":[\"APAC\"],\"colo_names\":[\"den01\"]}}]}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"routes": {
+						"type": "array",
+						"example": "[\n  {\n    \"prefix\": \"192.0.2.0/24\",\n    \"nexthop\": \"203.0.113.1\",\n    \"priority\": 100,\n    \"description\": \"New route for new prefix 203.0.113.1\",\n    \"weight\": 100,\n    \"scope\": {\n      \"colo_regions\": [\n        \"APAC\"\n      ],\n      \"colo_names\": [\n        \"den01\"\n      ]\n    }\n  }\n]",
+						"items": {
+							"type": "object",
+							"required": [
+								"prefix",
+								"nexthop",
+								"priority"
+							],
+							"properties": {
+								"prefix": {
+									"type": "string",
+									"description": "IP Prefix in Classless Inter-Domain Routing format",
+									"example": "192.0.2.0/24"
+								},
+								"nexthop": {
+									"type": "string",
+									"description": "The next-hop IP Address for the static route",
+									"example": "203.0.113.1"
+								},
+								"priority": {
+									"type": "integer",
+									"description": "Priority of the static route",
+									"example": 100
+								},
+								"description": {
+									"type": "string",
+									"description": "An optional human provided description of the static route",
+									"example": "New route for new prefix 203.0.113.1"
+								},
+								"weight": {
+									"type": "integer",
+									"description": "Optional weight of the ECMP scope - if provided",
+									"example": 100
+								},
+								"scope": {
+									"type": "object",
+									"description": "Used only for ECMP routes",
+									"properties": {
+										"colo_regions": {
+											"type": "array",
+											"description": "List of colo regions for the ECMP scope",
+											"items": {
+												"type": "string",
+												"description": "Scope colo region",
+												"example": "APAC"
+											}
+										},
+										"colo_names": {
+											"type": "array",
+											"description": "List of colo names for the ECMP scope",
+											"items": {
+												"type": "string",
+												"description": "Scope colo name",
+												"example": "den01"
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"required_props": [
+					"prefix",
+					"nexthop",
+					"priority"
+				],
+				"optional_props": [
+					"routes"
+				],
+				"objects": [],
+				"example": "{\n  \"routes\": [\n    {\n      \"prefix\": \"192.0.2.0/24\",\n      \"nexthop\": \"203.0.113.1\",\n      \"priority\": 100,\n      \"description\": \"New route for new prefix 203.0.113.1\",\n      \"weight\": 100,\n      \"scope\": {\n        \"colo_regions\": [\n          \"APAC\"\n        ],\n        \"colo_names\": [\n          \"den01\"\n        ]\n      }\n    }\n  ]\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"routes\": [\n      {\n        \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n        \"created_on\": \"2017-06-14T00:00:00Z\",\n        \"modified_on\": \"2017-06-14T05:20:00Z\",\n        \"prefix\": \"192.0.2.0/24\",\n        \"nexthop\": \"203.0.113.1\",\n        \"priority\": 100,\n        \"description\": \"New route for new prefix 203.0.113.1\",\n        \"weight\": 100,\n        \"scope\": {\n          \"colo_regions\": [\n            \"APAC\"\n          ],\n          \"colo_names\": [\n            \"den01\"\n          ]\n        }\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Update Route",
+			"description": "Update a specific Magic static route. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/magic/routes/{#/definitions/route_identifier}?validate_only={#/definitions/validate_only}",
+			"method": "PUT",
+			"cfOwnership": "magic-on-ramps",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#organization:edit"
+				]
+			},
+			"html_id": "magic-static-routes-update-route",
+			"uri": "accounts/:account_identifier/magic/routes/:route_identifier?validate_only=:validate_only",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/magic/routes/01a7362d577a6c3019a474fd6f485823?validate_only=true\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"prefix\":\"192.0.2.0/24\",\"nexthop\":\"203.0.113.1\",\"priority\":100,\"description\":\"New route for new prefix 203.0.113.1\",\"weight\":100,\"scope\":{\"colo_regions\":[\"APAC\"],\"colo_names\":[\"den01\"]}}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"prefix": {
+						"type": "string",
+						"example": "\"192.0.2.0/24\"",
+						"description": "IP Prefix in Classless Inter-Domain Routing format"
+					},
+					"nexthop": {
+						"type": "string",
+						"example": "\"203.0.113.1\"",
+						"description": "The next-hop IP Address for the static route"
+					},
+					"priority": {
+						"type": "integer",
+						"example": "100",
+						"description": "Priority of the static route"
+					},
+					"description": {
+						"type": "string",
+						"example": "\"New route for new prefix 203.0.113.1\"",
+						"description": "An optional human provided description of the static route"
+					},
+					"weight": {
+						"type": "integer",
+						"example": "100",
+						"description": "Optional weight of the ECMP scope - if provided"
+					},
+					"scope": {
+						"type": "object",
+						"example": "{\n  \"colo_regions\": [\n    \"APAC\"\n  ],\n  \"colo_names\": [\n    \"den01\"\n  ]\n}",
+						"properties": {
+							"colo_regions": {
+								"type": "array",
+								"example": "[\n  \"APAC\"\n]",
+								"description": "List of colo regions for the ECMP scope",
+								"items": {
+									"type": "string",
+									"description": "Scope colo region",
+									"example": "APAC"
+								}
+							},
+							"colo_names": {
+								"type": "array",
+								"example": "[\n  \"den01\"\n]",
+								"description": "List of colo names for the ECMP scope",
+								"items": {
+									"type": "string",
+									"description": "Scope colo name",
+									"example": "den01"
+								}
+							}
+						},
+						"description": "Used only for ECMP routes"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"prefix",
+					"nexthop",
+					"priority",
+					"description",
+					"weight",
+					"scope"
+				],
+				"objects": [],
+				"example": "{\n  \"prefix\": \"192.0.2.0/24\",\n  \"nexthop\": \"203.0.113.1\",\n  \"priority\": 100,\n  \"description\": \"New route for new prefix 203.0.113.1\",\n  \"weight\": 100,\n  \"scope\": {\n    \"colo_regions\": [\n      \"APAC\"\n    ],\n    \"colo_names\": [\n      \"den01\"\n    ]\n  }\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"modified\": true,\n    \"modified_route\": {\n      \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n      \"created_on\": \"2017-06-14T00:00:00Z\",\n      \"modified_on\": \"2017-06-14T05:20:00Z\",\n      \"prefix\": \"192.0.2.0/24\",\n      \"nexthop\": \"203.0.113.1\",\n      \"priority\": 100,\n      \"description\": \"New route for new prefix 203.0.113.1\",\n      \"weight\": 100,\n      \"scope\": {\n        \"colo_regions\": [\n          \"APAC\"\n        ],\n        \"colo_names\": [\n          \"den01\"\n        ]\n      }\n    }\n  }\n}"
+		},
+		{
+			"title": "Update Many Routes",
+			"description": "Update multiple Magic static routes. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes. Only fields for a route that need to be changed need be provided.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/magic/routes?validate_only={#/definitions/validate_only}",
+			"method": "PUT",
+			"cfOwnership": "magic-on-ramps",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#organization:edit"
+				]
+			},
+			"html_id": "magic-static-routes-update-many-routes",
+			"uri": "accounts/:account_identifier/magic/routes?validate_only=:validate_only",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/magic/routes?validate_only=true\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"routes\":[{\"id\":\"01a7362d577a6c3019a474fd6f485823\",\"prefix\":\"192.0.2.0/24\",\"nexthop\":\"203.0.113.1\",\"priority\":100,\"description\":\"New route for new prefix 203.0.113.1\",\"weight\":100,\"scope\":{\"colo_regions\":[\"APAC\"],\"colo_names\":[\"den01\"]}}]}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"routes": {
+						"type": "array",
+						"example": "[\n  {\n    \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n    \"prefix\": \"192.0.2.0/24\",\n    \"nexthop\": \"203.0.113.1\",\n    \"priority\": 100,\n    \"description\": \"New route for new prefix 203.0.113.1\",\n    \"weight\": 100,\n    \"scope\": {\n      \"colo_regions\": [\n        \"APAC\"\n      ],\n      \"colo_names\": [\n        \"den01\"\n      ]\n    }\n  }\n]",
+						"items": {
+							"allOf": [
+								{
+									"required": [
+										"id"
+									],
+									"properties": {
+										"id": {
+											"$comment": "Must be present as a definition for URI Templating",
+											"description": "Account identifier tag",
+											"type": "string",
+											"maxLength": 32,
+											"readOnly": true,
+											"example": "01a7362d577a6c3019a474fd6f485823"
+										}
+									}
+								},
+								{
+									"type": "object",
+									"required": [
+										"prefix",
+										"nexthop",
+										"priority"
+									],
+									"properties": {
+										"prefix": {
+											"type": "string",
+											"description": "IP Prefix in Classless Inter-Domain Routing format",
+											"example": "192.0.2.0/24"
+										},
+										"nexthop": {
+											"type": "string",
+											"description": "The next-hop IP Address for the static route",
+											"example": "203.0.113.1"
+										},
+										"priority": {
+											"type": "integer",
+											"description": "Priority of the static route",
+											"example": 100
+										},
+										"description": {
+											"type": "string",
+											"description": "An optional human provided description of the static route",
+											"example": "New route for new prefix 203.0.113.1"
+										},
+										"weight": {
+											"type": "integer",
+											"description": "Optional weight of the ECMP scope - if provided",
+											"example": 100
+										},
+										"scope": {
+											"type": "object",
+											"description": "Used only for ECMP routes",
+											"properties": {
+												"colo_regions": {
+													"type": "array",
+													"description": "List of colo regions for the ECMP scope",
+													"items": {
+														"type": "string",
+														"description": "Scope colo region",
+														"example": "APAC"
+													}
+												},
+												"colo_names": {
+													"type": "array",
+													"description": "List of colo names for the ECMP scope",
+													"items": {
+														"type": "string",
+														"description": "Scope colo name",
+														"example": "den01"
+													}
+												}
+											}
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"required_props": [
+					"routes"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"routes\": [\n    {\n      \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n      \"prefix\": \"192.0.2.0/24\",\n      \"nexthop\": \"203.0.113.1\",\n      \"priority\": 100,\n      \"description\": \"New route for new prefix 203.0.113.1\",\n      \"weight\": 100,\n      \"scope\": {\n        \"colo_regions\": [\n          \"APAC\"\n        ],\n        \"colo_names\": [\n          \"den01\"\n        ]\n      }\n    }\n  ]\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"modified\": true,\n    \"modified_routes\": [\n      {\n        \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n        \"created_on\": \"2017-06-14T00:00:00Z\",\n        \"modified_on\": \"2017-06-14T05:20:00Z\",\n        \"prefix\": \"192.0.2.0/24\",\n        \"nexthop\": \"203.0.113.1\",\n        \"priority\": 100,\n        \"description\": \"New route for new prefix 203.0.113.1\",\n        \"weight\": 100,\n        \"scope\": {\n          \"colo_regions\": [\n            \"APAC\"\n          ],\n          \"colo_names\": [\n            \"den01\"\n          ]\n        }\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Delete Route",
+			"description": "Disable and remove a specific Magic static route",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/magic/routes/{#/definitions/route_identifier}",
+			"method": "DELETE",
+			"cfOwnership": "magic-on-ramps",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#organization:edit"
+				]
+			},
+			"html_id": "magic-static-routes-delete-route",
+			"uri": "accounts/:account_identifier/magic/routes/:route_identifier",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/magic/routes/01a7362d577a6c3019a474fd6f485823\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"deleted\": true,\n    \"deleted_route\": {\n      \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n      \"created_on\": \"2017-06-14T00:00:00Z\",\n      \"modified_on\": \"2017-06-14T05:20:00Z\",\n      \"prefix\": \"192.0.2.0/24\",\n      \"nexthop\": \"203.0.113.1\",\n      \"priority\": 100,\n      \"description\": \"New route for new prefix 203.0.113.1\",\n      \"weight\": 100,\n      \"scope\": {\n        \"colo_regions\": [\n          \"APAC\"\n        ],\n        \"colo_names\": [\n          \"den01\"\n        ]\n      }\n    }\n  }\n}"
+		}
+	],
+	"cfLinkErrors": {},
+	"html_id": "magic-static-routes",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"c4a7362d577a6c3019a474fd6f485821\"",
+				"readOnly": true,
+				"maxLength": 32,
+				"description": "Route identifier tag"
+			},
+			"created_on": {
+				"type": "string",
+				"example": "\"2017-06-14T00:00:00Z\"",
+				"readOnly": true,
+				"format": "date-time",
+				"description": "When the route was created"
+			},
+			"modified_on": {
+				"type": "string",
+				"example": "\"2017-06-14T05:20:00Z\"",
+				"readOnly": true,
+				"format": "date-time",
+				"description": "When the route was last modified"
+			},
+			"prefix": {
+				"type": "string",
+				"example": "\"192.0.2.0/24\"",
+				"description": "IP Prefix in Classless Inter-Domain Routing format"
+			},
+			"nexthop": {
+				"type": "string",
+				"example": "\"203.0.113.1\"",
+				"description": "The next-hop IP Address for the static route"
+			},
+			"priority": {
+				"type": "integer",
+				"example": "100",
+				"description": "Priority of the static route"
+			},
+			"description": {
+				"type": "string",
+				"example": "\"New route for new prefix 203.0.113.1\"",
+				"description": "An optional human provided description of the static route"
+			},
+			"weight": {
+				"type": "integer",
+				"example": "100",
+				"description": "Optional weight of the ECMP scope - if provided"
+			},
+			"scope": {
+				"type": "object",
+				"example": "{\n  \"colo_regions\": [\n    \"APAC\"\n  ],\n  \"colo_names\": [\n    \"den01\"\n  ]\n}",
+				"properties": {
+					"colo_regions": {
+						"type": "array",
+						"example": "[\n  \"APAC\"\n]",
+						"description": "List of colo regions for the ECMP scope",
+						"items": {
+							"type": "string",
+							"description": "Scope colo region",
+							"example": "APAC"
+						}
+					},
+					"colo_names": {
+						"type": "array",
+						"example": "[\n  \"den01\"\n]",
+						"description": "List of colo names for the ECMP scope",
+						"items": {
+							"type": "string",
+							"description": "Scope colo name",
+							"example": "den01"
+						}
+					}
+				},
+				"description": "Used only for ECMP routes"
+			}
+		},
+		"required_props": [
+			"prefix",
+			"nexthop",
+			"priority"
+		],
+		"optional_props": [
+			"id",
+			"created_on",
+			"modified_on",
+			"description",
+			"weight",
+			"scope"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n  \"created_on\": \"2017-06-14T00:00:00Z\",\n  \"modified_on\": \"2017-06-14T05:20:00Z\",\n  \"prefix\": \"192.0.2.0/24\",\n  \"nexthop\": \"203.0.113.1\",\n  \"priority\": 100,\n  \"description\": \"New route for new prefix 203.0.113.1\",\n  \"weight\": 100,\n  \"scope\": {\n    \"colo_regions\": [\n      \"APAC\"\n    ],\n    \"colo_names\": [\n      \"den01\"\n    ]\n  }\n}",
+		"title": "Magic Static Routes",
+		"description": "Used to route traffic through GRE tunnels for Magic Transit and Magic WAN."
+	}
+}

@@ -1,0 +1,347 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/firewall/ua-rules.json",
+	"title": "User-Agent Blocking Rules",
+	"description": "Perform access control when matching the exact UserAgent reported by the client",
+	"cfExtendedDescription": "The access control mechanisms can be defined within a rule to help manage traffic from particular clients.\nThis will enable you to customise the access to your site. The mechanisms are: -\n\n`block` - Blocks the request immediately\n\n`challenge` - Send a challenge to the originator of the request\n\n`js_challenge` - Send a JavaScript based challenge to the originator of the request\n\n`managed_challenge` - Send a Managed Challenge to the originator of the request\n\n",
+	"type": "object",
+	"links": [
+		{
+			"title": "List UserAgent Rules",
+			"description": "List the UserAgent rules on a zone.",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_identifier}/firewall/ua_rules",
+			"method": "GET",
+			"cfOwnership": "firewall",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "user-agent-blocking-rules-list-useragent-rules",
+			"uri": "zones/:zone_identifier/firewall/ua_rules",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/ua_rules?page=1&per_page=20&description=abusive&user_agent=Safari\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"page": {
+						"type": "number",
+						"example": "1",
+						"description": "Page number of paginated results",
+						"minimum": 1,
+						"default": 1
+					},
+					"per_page": {
+						"type": "number",
+						"example": "20",
+						"minimum": 1,
+						"maximum": 1000,
+						"default": 20,
+						"description": "Maximum number of results per page. This can only be provided as 1 or in multiples of 5 such as 5, 10, 15 or 20"
+					},
+					"description": {
+						"type": "string",
+						"example": "\"abusive\"",
+						"description": "A single string to search for in the description"
+					},
+					"user_agent": {
+						"type": "string",
+						"example": "\"Safari\"",
+						"description": "A single UserAgent string to search for"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"page",
+					"per_page",
+					"description",
+					"user_agent"
+				],
+				"objects": [],
+				"example": "{\n  \"page\": 1,\n  \"per_page\": 20,\n  \"description\": \"abusive\",\n  \"user_agent\": \"Safari\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n      \"paused\": false,\n      \"description\": \"Prevent access from abusive clients identified by this UserAgent to mitigate DDoS attack\",\n      \"mode\": \"js_challenge\",\n      \"configuration\": {\n        \"target\": \"ua\",\n        \"value\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4\"\n      }\n    }\n  ]\n}"
+		},
+		{
+			"title": "Create UserAgent Rule",
+			"description": "Create a new UserAgent rule for a zone. See the record object definitions for required attributes for each record type",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_identifier}/firewall/ua_rules",
+			"method": "POST",
+			"cfOwnership": "firewall",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "user-agent-blocking-rules-create-useragent-rule",
+			"uri": "zones/:zone_identifier/firewall/ua_rules",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/ua_rules\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"id\":\"372e67954025e0ba6aaa6d586b9e0b59\",\"paused\":false,\"description\":\"Prevent access from abusive clients identified by this UserAgent to mitigate DDoS attack\",\"mode\":\"js_challenge\",\"configuration\":{\"target\":\"ua\",\"value\":\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4\"}}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"372e67954025e0ba6aaa6d586b9e0b59\"",
+						"description": "UA rule identifier",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"paused": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Whether this UA rule is currently paused"
+					},
+					"description": {
+						"type": "string",
+						"example": "\"Prevent access from abusive clients identified by this UserAgent to mitigate DDoS attack\"",
+						"description": "Some useful information about this rule to help identify the purpose of it.",
+						"maxLength": 1024
+					},
+					"mode": {
+						"example": "\"js_challenge\"",
+						"enum": [
+							"block",
+							"challenge",
+							"js_challenge",
+							"managed_challenge"
+						],
+						"description": "The type of action to perform.",
+						"maxLength": 12
+					},
+					"configuration": {
+						"type": "object",
+						"example": "{\n  \"target\": \"ua\",\n  \"value\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4\"\n}",
+						"properties": {
+							"target": {
+								"type": "string",
+								"example": "\"ua\"",
+								"description": "Specify the configuration target for this rule. For UserAgent rules this is `ua`"
+							},
+							"value": {
+								"type": "string",
+								"example": "\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4\"",
+								"description": "The exact UserAgent string to match with this rule."
+							}
+						},
+						"description": "Target/Value pair to use for this rule. The value is the exact UserAgent to match"
+					}
+				},
+				"required_props": [
+					"mode",
+					"configuration"
+				],
+				"optional_props": [
+					"id",
+					"paused",
+					"description"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"paused\": false,\n  \"description\": \"Prevent access from abusive clients identified by this UserAgent to mitigate DDoS attack\",\n  \"mode\": \"js_challenge\",\n  \"configuration\": {\n    \"target\": \"ua\",\n    \"value\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4\"\n  }\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n    \"paused\": false,\n    \"description\": \"Prevent access from abusive clients identified by this UserAgent to mitigate DDoS attack\",\n    \"mode\": \"js_challenge\",\n    \"configuration\": {\n      \"target\": \"ua\",\n      \"value\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4\"\n    }\n  }\n}"
+		},
+		{
+			"title": "UserAgent Rule Details",
+			"description": "List one user agent rule",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/firewall/ua_rules/{#/definitions/id}",
+			"method": "GET",
+			"cfOwnership": "firewall",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "user-agent-blocking-rules-useragent-rule-details",
+			"uri": "zones/:zone_identifier/firewall/ua_rules/:id",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/ua_rules/372e67954025e0ba6aaa6d586b9e0b59\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n    \"paused\": false,\n    \"description\": \"Prevent access from abusive clients identified by this UserAgent to mitigate DDoS attack\",\n    \"mode\": \"js_challenge\",\n    \"configuration\": {\n      \"target\": \"ua\",\n      \"value\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4\"\n    }\n  }\n}"
+		},
+		{
+			"title": "Update UserAgent Rule",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/firewall/ua_rules/{#/definitions/id}",
+			"method": "PUT",
+			"cfOwnership": "firewall",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "user-agent-blocking-rules-update-useragent-rule",
+			"uri": "zones/:zone_identifier/firewall/ua_rules/:id",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/ua_rules/372e67954025e0ba6aaa6d586b9e0b59\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"id\":\"372e67954025e0ba6aaa6d586b9e0b59\",\"paused\":false,\"description\":\"Prevent access from abusive clients identified by this UserAgent to mitigate DDoS attack\",\"mode\":\"js_challenge\",\"configuration\":{\"target\":\"ua\",\"value\":\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4\"}}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"372e67954025e0ba6aaa6d586b9e0b59\"",
+						"description": "UA rule identifier",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"paused": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Whether this UA rule is currently paused"
+					},
+					"description": {
+						"type": "string",
+						"example": "\"Prevent access from abusive clients identified by this UserAgent to mitigate DDoS attack\"",
+						"description": "Some useful information about this rule to help identify the purpose of it.",
+						"maxLength": 1024
+					},
+					"mode": {
+						"example": "\"js_challenge\"",
+						"enum": [
+							"block",
+							"challenge",
+							"js_challenge",
+							"managed_challenge"
+						],
+						"description": "The type of action to perform.",
+						"maxLength": 12
+					},
+					"configuration": {
+						"type": "object",
+						"example": "{\n  \"target\": \"ua\",\n  \"value\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4\"\n}",
+						"properties": {
+							"target": {
+								"type": "string",
+								"example": "\"ua\"",
+								"description": "Specify the configuration target for this rule. For UserAgent rules this is `ua`"
+							},
+							"value": {
+								"type": "string",
+								"example": "\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4\"",
+								"description": "The exact UserAgent string to match with this rule."
+							}
+						},
+						"description": "Target/Value pair to use for this rule. The value is the exact UserAgent to match"
+					}
+				},
+				"required_props": [
+					"id",
+					"mode",
+					"configuration"
+				],
+				"optional_props": [
+					"paused",
+					"description"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"paused\": false,\n  \"description\": \"Prevent access from abusive clients identified by this UserAgent to mitigate DDoS attack\",\n  \"mode\": \"js_challenge\",\n  \"configuration\": {\n    \"target\": \"ua\",\n    \"value\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4\"\n  }\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n    \"paused\": false,\n    \"description\": \"Prevent access from abusive clients identified by this UserAgent to mitigate DDoS attack\",\n    \"mode\": \"js_challenge\",\n    \"configuration\": {\n      \"target\": \"ua\",\n      \"value\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4\"\n    }\n  }\n}"
+		},
+		{
+			"title": "Delete UserAgent Rule",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/firewall/ua_rules/{#/definitions/id}",
+			"method": "DELETE",
+			"cfOwnership": "firewall",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "user-agent-blocking-rules-delete-useragent-rule",
+			"uri": "zones/:zone_identifier/firewall/ua_rules/:id",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/ua_rules/372e67954025e0ba6aaa6d586b9e0b59\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\"\n  }\n}"
+		}
+	],
+	"cfLinkErrors": {
+		"10000": "Invalid user",
+		"10001": "UserAgent rule not found",
+		"10002": "UserAgent rule not unique (edit the existing rather than adding a new)",
+		"10004": "Invalid data submitted",
+		"10006": "Auth missing",
+		"10007": "Auth corrupt",
+		"10008": "Auth expired",
+		"10009": "Unauthorized",
+		"10011": "Pagination results in empty page",
+		"10013": "Patch values not valid",
+		"10014": "Patch operation not valid",
+		"10015": "Patch value not valid for given context",
+		"10016": "Patch not valid"
+	},
+	"html_id": "user-agent-blocking-rules",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"372e67954025e0ba6aaa6d586b9e0b59\"",
+				"description": "UA rule identifier",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"paused": {
+				"type": "boolean",
+				"example": "false",
+				"description": "Whether this UA rule is currently paused"
+			},
+			"description": {
+				"type": "string",
+				"example": "\"Prevent access from abusive clients identified by this UserAgent to mitigate DDoS attack\"",
+				"description": "Some useful information about this rule to help identify the purpose of it.",
+				"maxLength": 1024
+			},
+			"mode": {
+				"example": "\"js_challenge\"",
+				"enum": [
+					"block",
+					"challenge",
+					"js_challenge",
+					"managed_challenge"
+				],
+				"description": "The type of action to perform.",
+				"maxLength": 12
+			},
+			"configuration": {
+				"type": "object",
+				"example": "{\n  \"target\": \"ua\",\n  \"value\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4\"\n}",
+				"properties": {
+					"target": {
+						"type": "string",
+						"example": "\"ua\"",
+						"description": "Specify the configuration target for this rule. For UserAgent rules this is `ua`"
+					},
+					"value": {
+						"type": "string",
+						"example": "\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4\"",
+						"description": "The exact UserAgent string to match with this rule."
+					}
+				},
+				"description": "Target/Value pair to use for this rule. The value is the exact UserAgent to match"
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"paused",
+			"description",
+			"mode",
+			"configuration"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"paused\": false,\n  \"description\": \"Prevent access from abusive clients identified by this UserAgent to mitigate DDoS attack\",\n  \"mode\": \"js_challenge\",\n  \"configuration\": {\n    \"target\": \"ua\",\n    \"value\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4\"\n  }\n}",
+		"title": "User-Agent Blocking Rules",
+		"description": "Perform access control when matching the exact UserAgent reported by the client"
+	}
+}

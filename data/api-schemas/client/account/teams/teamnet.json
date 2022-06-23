@@ -1,0 +1,286 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/teams/teamnet.json",
+	"title": "Tunnel Route",
+	"description": "A network address range that the Tunnel connects.",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Tunnel Routes",
+			"description": "List, search and filter an account's tunnel routes",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/teamnet/routes",
+			"method": "GET",
+			"cfOwnership": "argo_tunnel",
+			"html_id": "tunnel-route-list-tunnel-routes",
+			"uri": "accounts/:account_identifier/teamnet/routes",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/teamnet/routes?tunnel_id=f70ff985-a4ef-4643-bbbc-4a0ed4fc8415&comment=Example comment for this route&is_deleted=true&network_subset=ff01::/32&network_superset=ff01::/32&existed_at=2019-10-12T07:20:50.52Z&virtual_network_id=f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"tunnel_id": {
+						"type": "string",
+						"example": "\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"",
+						"description": "UUID of the tunnel",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"readOnly": true,
+						"format": "uuid",
+						"maxLength": 36
+					},
+					"comment": {
+						"type": "string",
+						"example": "\"Example comment for this route\"",
+						"description": "Optional remark describing the route. Empty if none"
+					},
+					"is_deleted": {
+						"type": "boolean",
+						"example": "true",
+						"description": "If true, only include deleted routes. If false, exclude deleted routes. If not provided, all routes will be included"
+					},
+					"network_subset": {
+						"type": "string",
+						"example": "\"ff01::/32\"",
+						"description": "If set, only list routes that are a subset of this network"
+					},
+					"network_superset": {
+						"type": "string",
+						"example": "\"ff01::/32\"",
+						"description": "If set, only list routes that are a superset of this network"
+					},
+					"existed_at": {
+						"type": "string",
+						"example": "\"2019-10-12T07:20:50.52Z\"",
+						"description": "If provided, include only routes that were created before this time and not deleted at this time",
+						"format": "date-time"
+					},
+					"virtual_network_id": {
+						"type": "string",
+						"example": "\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"",
+						"description": "UUID of the virtual network",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"readOnly": true,
+						"format": "uuid",
+						"maxLength": 36
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"tunnel_id",
+					"comment",
+					"is_deleted",
+					"network_subset",
+					"network_superset",
+					"existed_at",
+					"virtual_network_id"
+				],
+				"objects": [],
+				"example": "{\n  \"tunnel_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n  \"comment\": \"Example comment for this route\",\n  \"is_deleted\": true,\n  \"network_subset\": \"ff01::/32\",\n  \"network_superset\": \"ff01::/32\",\n  \"existed_at\": \"2019-10-12T07:20:50.52Z\",\n  \"virtual_network_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"network\": \"ff01::/32\",\n      \"tunnel_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n      \"tunnel_name\": \"blog\",\n      \"comment\": \"Example comment for this route\",\n      \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n      \"deleted_at\": \"2021-01-25T18:22:34.317854Z\",\n      \"virtual_network_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Get Tunnel Route by IP",
+			"description": "Find the Tunnel Route that encompasses the given IP",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/teamnet/routes/ip/{#/definitions/ip}",
+			"method": "GET",
+			"cfOwnership": "argo_tunnel",
+			"html_id": "tunnel-route-get-tunnel-route-by-ip",
+			"uri": "accounts/:account_identifier/teamnet/routes/ip/:ip",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/teamnet/routes/ip/10.1.0.137\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"network\": \"ff01::/32\",\n    \"tunnel_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n    \"tunnel_name\": \"blog\",\n    \"comment\": \"Example comment for this route\",\n    \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"deleted_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"virtual_network_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"\n  }\n}"
+		},
+		{
+			"title": "Create Route",
+			"description": "Add a new route to the account's routing table for the given tunnel",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/teamnet/routes/network/{#/definitions/ip_network}",
+			"method": "POST",
+			"cfOwnership": "argo_tunnel",
+			"html_id": "tunnel-route-create-route",
+			"uri": "accounts/:account_identifier/teamnet/routes/network/:ip_network",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/teamnet/routes/network/ff01::/32\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"tunnel_id\":\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\"comment\":\"Example comment for this route\",\"virtual_network_id\":\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"tunnel_id": {
+						"type": "string",
+						"example": "\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"",
+						"description": "UUID of the tunnel for which this route is being added",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"readOnly": true,
+						"format": "uuid",
+						"maxLength": 36
+					},
+					"comment": {
+						"type": "string",
+						"example": "\"Example comment for this route\"",
+						"description": "Optional remark describing the route. Empty if none"
+					},
+					"virtual_network_id": {
+						"type": "string",
+						"example": "\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"",
+						"description": "optional UUID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"readOnly": true,
+						"format": "uuid",
+						"maxLength": 36
+					}
+				},
+				"required_props": [
+					"tunnel_id"
+				],
+				"optional_props": [
+					"comment",
+					"virtual_network_id"
+				],
+				"objects": [],
+				"example": "{\n  \"tunnel_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n  \"comment\": \"Example comment for this route\",\n  \"virtual_network_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"network\": \"ff01::/32\",\n    \"tunnel_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n    \"tunnel_name\": \"blog\",\n    \"comment\": \"Example comment for this route\",\n    \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"deleted_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"virtual_network_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"\n  }\n}"
+		},
+		{
+			"title": "Update Route",
+			"description": "Update an existing route in the account's routing table for the given tunnel",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/teamnet/routes/network/{#/definitions/ip_network}",
+			"method": "PATCH",
+			"cfOwnership": "argo_tunnel",
+			"html_id": "tunnel-route-update-route",
+			"uri": "accounts/:account_identifier/teamnet/routes/network/:ip_network",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/teamnet/routes/network/ff01::/32\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"tunnel_id\":\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\"comment\":\"Example comment for this route\",\"network\":\"ff01::/32\",\"virtual_network_id\":\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"tunnel_id": {
+						"type": "string",
+						"example": "\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"",
+						"description": "UUID of the tunnel this route should belong to",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"readOnly": true,
+						"format": "uuid",
+						"maxLength": 36
+					},
+					"comment": {
+						"type": "string",
+						"example": "\"Example comment for this route\"",
+						"description": "Optional remark describing the route. Empty if none"
+					},
+					"network": {
+						"type": "string",
+						"example": "\"ff01::/32\"",
+						"description": "New CIDR of this route"
+					},
+					"virtual_network_id": {
+						"type": "string",
+						"example": "\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"",
+						"description": "UUID of the virtual network to which this route belongs to",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"readOnly": true,
+						"format": "uuid",
+						"maxLength": 36
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"tunnel_id",
+					"comment",
+					"network",
+					"virtual_network_id"
+				],
+				"objects": [],
+				"example": "{\n  \"tunnel_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n  \"comment\": \"Example comment for this route\",\n  \"network\": \"ff01::/32\",\n  \"virtual_network_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"network\": \"ff01::/32\",\n    \"tunnel_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n    \"tunnel_name\": \"blog\",\n    \"comment\": \"Example comment for this route\",\n    \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"deleted_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"virtual_network_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"\n  }\n}"
+		},
+		{
+			"title": "Delete Route",
+			"description": "Delete an existing route from the account's routing table",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/teamnet/routes/network/{#/definitions/ip_network}",
+			"method": "DELETE",
+			"cfOwnership": "argo_tunnel",
+			"html_id": "tunnel-route-delete-route",
+			"uri": "accounts/:account_identifier/teamnet/routes/network/:ip_network",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/teamnet/routes/network/ff01::/32\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"network\": \"ff01::/32\",\n    \"tunnel_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n    \"tunnel_name\": \"blog\",\n    \"comment\": \"Example comment for this route\",\n    \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"deleted_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"virtual_network_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"\n  }\n}"
+		}
+	],
+	"html_id": "tunnel-route",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"network": {
+				"type": "string",
+				"example": "\"ff01::/32\"",
+				"description": "CIDR notation of the IPv4 or IPv6 range of the network the route connects to"
+			},
+			"tunnel_id": {
+				"type": "string",
+				"example": "\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"",
+				"description": "UUID of the Tunnel the route belongs to",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"readOnly": true,
+				"format": "uuid",
+				"maxLength": 36
+			},
+			"tunnel_name": {
+				"type": "string",
+				"example": "\"blog\"",
+				"description": "User-friendly name of the Tunnel the route belongs to"
+			},
+			"comment": {
+				"type": "string",
+				"example": "\"Example comment for this route\"",
+				"description": "Optional remark describing the route. Empty if none"
+			},
+			"created_at": {
+				"type": "string",
+				"example": "\"2021-01-25T18:22:34.317854Z\"",
+				"description": "Timestamps when the route was created, formatted in RFC 3339",
+				"format": "date-time"
+			},
+			"deleted_at": {
+				"type": [
+					"string",
+					"null"
+				],
+				"example": "\"2021-01-25T18:22:34.317854Z\"",
+				"description": "If present, indicates route was deleted at the given date (formatted in RFC 3339). If absent, route has not been deleted",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"virtual_network_id": {
+				"type": "string",
+				"example": "\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"",
+				"description": "UUID of the virtual network this route belongs to",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"readOnly": true,
+				"format": "uuid",
+				"maxLength": 36
+			}
+		},
+		"required_props": [
+			"network",
+			"tunnel_id",
+			"comment",
+			"created_at"
+		],
+		"optional_props": [
+			"tunnel_name",
+			"deleted_at",
+			"virtual_network_id"
+		],
+		"objects": [],
+		"example": "{\n  \"network\": \"ff01::/32\",\n  \"tunnel_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n  \"tunnel_name\": \"blog\",\n  \"comment\": \"Example comment for this route\",\n  \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n  \"deleted_at\": \"2021-01-25T18:22:34.317854Z\",\n  \"virtual_network_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"\n}",
+		"title": "Tunnel Route",
+		"description": "A network address range that the Tunnel connects."
+	}
+}

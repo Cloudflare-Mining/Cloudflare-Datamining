@@ -1,0 +1,284 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/diagnostics/traceroute.json",
+	"title": "Diagnostics",
+	"description": "Run diagnostics tools from Cloudflare's colos.",
+	"type": "object",
+	"links": [
+		{
+			"title": "Traceroute",
+			"description": "Run traceroutes from Cloudflare colos.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/diagnostics/traceroute",
+			"method": "POST",
+			"cfOwnership": "magic-transit",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"html_id": "diagnostics-traceroute",
+			"uri": "accounts/:account_identifier/diagnostics/traceroute",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/diagnostics/traceroute\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"targets\":[\"203.0.113.1\",\"cloudflare.com\"],\"colos\":[\"den\",\"sin\"],\"options\":{\"packets_per_ttl\":10,\"packet_type\":\"icmp\",\"max_ttl\":5,\"wait_time\":1,\"port\":0}}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"targets": {
+						"type": "array",
+						"example": "[\n  \"203.0.113.1\",\n  \"cloudflare.com\"\n]",
+						"items": {
+							"description": "Hosts as a hostname or IPv4/IPv6 address represented by strings",
+							"type": "string",
+							"example": "203.0.113.1"
+						},
+						"maxLength": 10
+					},
+					"colos": {
+						"type": "array",
+						"example": "[\n  \"den\",\n  \"sin\"\n]",
+						"description": "If no source colo names specified, all colos will be used. China colos are unavailable for traceroutes",
+						"items": {
+							"description": "Source colo name",
+							"type": "string"
+						}
+					},
+					"options": {
+						"example": "{\n  \"packets_per_ttl\": 10,\n  \"packet_type\": \"icmp\",\n  \"max_ttl\": 5,\n  \"wait_time\": 1,\n  \"port\": 0\n}",
+						"properties": {
+							"packets_per_ttl": {
+								"type": "integer",
+								"example": "10",
+								"description": "Number of packets sent at each TTL",
+								"default": 3,
+								"minimum": 0,
+								"maximum": 10
+							},
+							"packet_type": {
+								"type": "string",
+								"example": "\"icmp\"",
+								"description": "Type of packet sent",
+								"default": "icmp",
+								"enum": [
+									"icmp",
+									"tcp",
+									"udp",
+									"gre",
+									"gre+icmp"
+								]
+							},
+							"max_ttl": {
+								"type": "integer",
+								"example": "5",
+								"description": "Max TTL",
+								"default": 15,
+								"minimum": 0,
+								"maximum": 64
+							},
+							"wait_time": {
+								"type": "integer",
+								"example": "1",
+								"description": "Set the time (in seconds) to wait for a response to a probe",
+								"default": 1,
+								"minimum": 1,
+								"maximum": 5
+							},
+							"port": {
+								"type": "integer",
+								"example": "0",
+								"description": "For UDP and TCP, specifies the destination port. For ICMP, specifies the initial ICMP sequence value. Default value 0 will choose the best value to use for each protocol",
+								"default": 0,
+								"minimum": 0,
+								"maximum": 65535
+							}
+						}
+					}
+				},
+				"required_props": [
+					"targets"
+				],
+				"optional_props": [
+					"colos",
+					"options"
+				],
+				"objects": [],
+				"example": "{\n  \"targets\": [\n    \"203.0.113.1\",\n    \"cloudflare.com\"\n  ],\n  \"colos\": [\n    \"den\",\n    \"sin\"\n  ],\n  \"options\": {\n    \"packets_per_ttl\": 10,\n    \"packet_type\": \"icmp\",\n    \"max_ttl\": 5,\n    \"wait_time\": 1,\n    \"port\": 0\n  }\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"target\": \"1.1.1.1\",\n      \"colos\": [\n        {\n          \"error\": \"\",\n          \"colo\": {\n            \"name\": \"den01\",\n            \"city\": \"Denver, CO, US\"\n          },\n          \"traceroute_time_ms\": 969,\n          \"target_summary\": {\n            \"asn\": \"\",\n            \"ip\": \"1.1.1.1\",\n            \"name\": \"1.1.1.1\",\n            \"packet_count\": 3,\n            \"mean_latency_ms\": 0.021,\n            \"std_dev_latency_ms\": 0.011269427669584647,\n            \"min_latency_ms\": 0.014,\n            \"max_latency_ms\": 0.034\n          },\n          \"hops\": [\n            {\n              \"packets_ttl\": 1,\n              \"packets_sent\": 3,\n              \"packets_lost\": 0,\n              \"nodes\": [\n                {\n                  \"asn\": \"AS13335\",\n                  \"ip\": \"1.1.1.1\",\n                  \"name\": \"one.one.one.one\",\n                  \"packet_count\": 3,\n                  \"mean_latency_ms\": 0.021,\n                  \"std_dev_latency_ms\": 0.011269427669584647,\n                  \"min_latency_ms\": 0.014,\n                  \"max_latency_ms\": 0.034\n                }\n              ]\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}"
+		}
+	],
+	"cfLinkErrors": {
+		"1000": "Empty request body",
+		"1001": "Invalid request",
+		"1002": "No targets were specified",
+		"1003": "Could not gather all colos",
+		"1004": "Target is not a valid address",
+		"1005": "Colo is not a valid colo",
+		"1006": "Invalid packet_type",
+		"1007": "Invalid ttl_end",
+		"1008": "Invalid num_packets",
+		"1009": "Invalid wait_time",
+		"1010": "Account does not have permission",
+		"1011": "Too many targets specified",
+		"1012": "Invalid port"
+	},
+	"html_id": "diagnostics",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"target": {
+				"type": "string",
+				"example": "\"1.1.1.1\"",
+				"description": "The target hostname, IPv6, or IPv6 address"
+			},
+			"colos": {
+				"type": "array",
+				"example": "[\n  {\n    \"error\": \"\",\n    \"colo\": {\n      \"name\": \"den01\",\n      \"city\": \"Denver, CO, US\"\n    },\n    \"traceroute_time_ms\": 969,\n    \"target_summary\": {\n      \"asn\": \"\",\n      \"ip\": \"1.1.1.1\",\n      \"name\": \"1.1.1.1\",\n      \"packet_count\": 3,\n      \"mean_latency_ms\": 0.021,\n      \"std_dev_latency_ms\": 0.011269427669584647,\n      \"min_latency_ms\": 0.014,\n      \"max_latency_ms\": 0.034\n    },\n    \"hops\": [\n      {\n        \"packets_ttl\": 1,\n        \"packets_sent\": 3,\n        \"packets_lost\": 0,\n        \"nodes\": [\n          {\n            \"asn\": \"AS13335\",\n            \"ip\": \"1.1.1.1\",\n            \"name\": \"one.one.one.one\",\n            \"packet_count\": 3,\n            \"mean_latency_ms\": 0.021,\n            \"std_dev_latency_ms\": 0.011269427669584647,\n            \"min_latency_ms\": 0.014,\n            \"max_latency_ms\": 0.034\n          }\n        ]\n      }\n    ]\n  }\n]",
+				"items": {
+					"type": "object",
+					"properties": {
+						"error": {
+							"type": "string",
+							"description": "Errors resulting from collecting traceroute from colo to target",
+							"enum": [
+								"",
+								"Could not gather traceroute data: Code 1",
+								"Could not gather traceroute data: Code 2",
+								"Could not gather traceroute data: Code 3",
+								"Could not gather traceroute data: Code 4"
+							],
+							"example": ""
+						},
+						"colo": {
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string",
+									"description": "Source colo name",
+									"example": "den01"
+								},
+								"city": {
+									"type": "string",
+									"description": "Source colo city",
+									"example": "Denver, CO, US"
+								}
+							}
+						},
+						"traceroute_time_ms": {
+							"type": "integer",
+							"description": "Total time of traceroute in ms",
+							"example": 969
+						},
+						"target_summary": {
+							"type": "object",
+							"description": "Aggregated statistics from all hops about the target",
+							"example": {
+								"asn": "",
+								"ip": "1.1.1.1",
+								"name": "1.1.1.1",
+								"packet_count": 3,
+								"mean_latency_ms": 0.021,
+								"std_dev_latency_ms": 0.011269427669584647,
+								"min_latency_ms": 0.014,
+								"max_latency_ms": 0.034
+							}
+						},
+						"hops": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"packets_ttl": {
+										"type": "integer",
+										"description": "The time to live (TTL)",
+										"example": 1
+									},
+									"packets_sent": {
+										"type": "integer",
+										"description": "Number of packets sent with specified TTL",
+										"example": 3
+									},
+									"packets_lost": {
+										"type": "integer",
+										"description": "Number of packets where no response was received",
+										"example": 0
+									},
+									"nodes": {
+										"type": "array",
+										"description": "An array of node objects",
+										"items": {
+											"type": "object",
+											"properties": {
+												"labels": {
+													"type": "array",
+													"description": "Field appears if there is an additional annotation printed when the probe returns. Field also appears when running a GRE+ICMP traceroute to denote which traceroute a node comes from.",
+													"items": {
+														"type": "string"
+													}
+												},
+												"asn": {
+													"type": "string",
+													"description": "AS number associated with the node object"
+												},
+												"ip": {
+													"type": "string",
+													"description": "IP address of the node"
+												},
+												"name": {
+													"type": "string",
+													"description": "Host name of the address, this may be the same as the IP address"
+												},
+												"packet_count": {
+													"type": "integer",
+													"description": "Number of packets with a response from this node"
+												},
+												"mean_rtt_ms": {
+													"type": "number",
+													"description": "Mean RTT in ms"
+												},
+												"std_dev_rtt_ms": {
+													"type": "number",
+													"description": "Standard deviation of the RTTs in ms"
+												},
+												"min_rtt_ms": {
+													"type": "number",
+													"description": "Minimum RTT in ms"
+												},
+												"max_rtt_ms": {
+													"type": "number",
+													"description": "Maximum RTT in ms"
+												}
+											},
+											"example": {
+												"asn": "AS13335",
+												"ip": "1.1.1.1",
+												"name": "one.one.one.one",
+												"packet_count": 3,
+												"mean_latency_ms": 0.021,
+												"std_dev_latency_ms": 0.011269427669584647,
+												"min_latency_ms": 0.014,
+												"max_latency_ms": 0.034
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"target",
+			"colos"
+		],
+		"objects": [],
+		"example": "{\n  \"target\": \"1.1.1.1\",\n  \"colos\": [\n    {\n      \"error\": \"\",\n      \"colo\": {\n        \"name\": \"den01\",\n        \"city\": \"Denver, CO, US\"\n      },\n      \"traceroute_time_ms\": 969,\n      \"target_summary\": {\n        \"asn\": \"\",\n        \"ip\": \"1.1.1.1\",\n        \"name\": \"1.1.1.1\",\n        \"packet_count\": 3,\n        \"mean_latency_ms\": 0.021,\n        \"std_dev_latency_ms\": 0.011269427669584647,\n        \"min_latency_ms\": 0.014,\n        \"max_latency_ms\": 0.034\n      },\n      \"hops\": [\n        {\n          \"packets_ttl\": 1,\n          \"packets_sent\": 3,\n          \"packets_lost\": 0,\n          \"nodes\": [\n            {\n              \"asn\": \"AS13335\",\n              \"ip\": \"1.1.1.1\",\n              \"name\": \"one.one.one.one\",\n              \"packet_count\": 3,\n              \"mean_latency_ms\": 0.021,\n              \"std_dev_latency_ms\": 0.011269427669584647,\n              \"min_latency_ms\": 0.014,\n              \"max_latency_ms\": 0.034\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+		"title": "Diagnostics",
+		"description": "Run diagnostics tools from Cloudflare's colos."
+	}
+}

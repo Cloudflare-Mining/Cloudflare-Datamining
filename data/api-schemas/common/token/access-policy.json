@@ -1,0 +1,286 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/common/token/access-policy.json",
+	"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+	"title": "Access Policy",
+	"description": "Describes what operations against which resources are allowed or denied",
+	"type": "object",
+	"oneOf": [
+		{
+			"title": "policy_with_permission_groups",
+			"required": [
+				"id",
+				"effect",
+				"resources",
+				"permission_groups"
+			],
+			"properties": {
+				"id": {
+					"description": "Policy identifier",
+					"type": "string",
+					"readOnly": true,
+					"example": "f267e341f3dd4697bd3b9f71dd96247f"
+				},
+				"effect": {
+					"description": "Allow or deny operations against the resources",
+					"type": "string",
+					"enum": [
+						"allow",
+						"deny"
+					],
+					"example": "allow"
+				},
+				"resources": {
+					"description": "A list of resource names that the policy applies to",
+					"type": "object",
+					"example": {
+						"com.cloudflare.api.account.zone.eb78d65290b24279ba6f44721b3ea3c4": "*",
+						"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
+					}
+				},
+				"permission_groups": {
+					"description": "A set of permission groups that are specified to the policy",
+					"type": "array",
+					"items": {
+						"description": "A named group of permissions that map to a group of operations against resources",
+						"type": "object",
+						"required": [
+							"id"
+						],
+						"properties": {
+							"id": {
+								"description": "Identifier of the group",
+								"type": "string",
+								"readOnly": true,
+								"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1"
+							},
+							"name": {
+								"description": "Name of the group",
+								"type": "string",
+								"readOnly": true,
+								"example": "Load Balancers Write"
+							}
+						}
+					},
+					"example": [
+						{
+							"id": "c8fed203ed3043cba015a93ad1616f1f",
+							"name": "Zone Read"
+						},
+						{
+							"id": "82e64a83756745bbbb1c9c2701bf816b",
+							"name": "DNS Read"
+						}
+					]
+				}
+			}
+		}
+	],
+	"definitions": {
+		"identifier": {
+			"description": "Policy identifier",
+			"type": "string",
+			"readOnly": true,
+			"example": "f267e341f3dd4697bd3b9f71dd96247f"
+		},
+		"effect": {
+			"description": "Allow or deny operations against the resources",
+			"type": "string",
+			"enum": [
+				"allow",
+				"deny"
+			],
+			"example": "allow"
+		},
+		"resources": {
+			"description": "A list of resource names that the policy applies to",
+			"type": "object",
+			"example": {
+				"com.cloudflare.api.account.zone.eb78d65290b24279ba6f44721b3ea3c4": "*",
+				"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
+			}
+		},
+		"permissions": {
+			"description": "A set of permissions that are specified to the policy. Each of them maps to specific operation(s) against APIs",
+			"type": "array",
+			"items": {
+				"type": "string",
+				"readOnly": true
+			},
+			"example": [
+				"com.cloudflare.api.account.zone.read",
+				"com.cloudflare.api.account.zone.update"
+			]
+		},
+		"permission_group": {
+			"description": "A named group of permissions that map to a group of operations against resources",
+			"type": "object",
+			"required": [
+				"id"
+			],
+			"properties": {
+				"id": {
+					"description": "Identifier of the group",
+					"type": "string",
+					"readOnly": true,
+					"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1"
+				},
+				"name": {
+					"description": "Name of the group",
+					"type": "string",
+					"readOnly": true,
+					"example": "Load Balancers Write"
+				}
+			}
+		},
+		"permission_groups": {
+			"description": "A set of permission groups that are specified to the policy",
+			"type": "array",
+			"items": {
+				"description": "A named group of permissions that map to a group of operations against resources",
+				"type": "object",
+				"required": [
+					"id"
+				],
+				"properties": {
+					"id": {
+						"description": "Identifier of the group",
+						"type": "string",
+						"readOnly": true,
+						"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1"
+					},
+					"name": {
+						"description": "Name of the group",
+						"type": "string",
+						"readOnly": true,
+						"example": "Load Balancers Write"
+					}
+				}
+			},
+			"example": [
+				{
+					"id": "c8fed203ed3043cba015a93ad1616f1f",
+					"name": "Zone Read"
+				},
+				{
+					"id": "82e64a83756745bbbb1c9c2701bf816b",
+					"name": "DNS Read"
+				}
+			]
+		},
+		"policy_with_permissions": {
+			"title": "policy_with_permissions",
+			"required": [
+				"id",
+				"effect",
+				"resources",
+				"permissions"
+			],
+			"properties": {
+				"id": {
+					"description": "Policy identifier",
+					"type": "string",
+					"readOnly": true,
+					"example": "f267e341f3dd4697bd3b9f71dd96247f"
+				},
+				"effect": {
+					"description": "Allow or deny operations against the resources",
+					"type": "string",
+					"enum": [
+						"allow",
+						"deny"
+					],
+					"example": "allow"
+				},
+				"resources": {
+					"description": "A list of resource names that the policy applies to",
+					"type": "object",
+					"example": {
+						"com.cloudflare.api.account.zone.eb78d65290b24279ba6f44721b3ea3c4": "*",
+						"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
+					}
+				},
+				"permissions": {
+					"description": "A set of permissions that are specified to the policy. Each of them maps to specific operation(s) against APIs",
+					"type": "array",
+					"items": {
+						"type": "string",
+						"readOnly": true
+					},
+					"example": [
+						"com.cloudflare.api.account.zone.read",
+						"com.cloudflare.api.account.zone.update"
+					]
+				}
+			}
+		},
+		"policy_with_permission_groups": {
+			"title": "policy_with_permission_groups",
+			"required": [
+				"id",
+				"effect",
+				"resources",
+				"permission_groups"
+			],
+			"properties": {
+				"id": {
+					"description": "Policy identifier",
+					"type": "string",
+					"readOnly": true,
+					"example": "f267e341f3dd4697bd3b9f71dd96247f"
+				},
+				"effect": {
+					"description": "Allow or deny operations against the resources",
+					"type": "string",
+					"enum": [
+						"allow",
+						"deny"
+					],
+					"example": "allow"
+				},
+				"resources": {
+					"description": "A list of resource names that the policy applies to",
+					"type": "object",
+					"example": {
+						"com.cloudflare.api.account.zone.eb78d65290b24279ba6f44721b3ea3c4": "*",
+						"com.cloudflare.api.account.zone.22b1de5f1c0e4b3ea97bb1e963b06a43": "*"
+					}
+				},
+				"permission_groups": {
+					"description": "A set of permission groups that are specified to the policy",
+					"type": "array",
+					"items": {
+						"description": "A named group of permissions that map to a group of operations against resources",
+						"type": "object",
+						"required": [
+							"id"
+						],
+						"properties": {
+							"id": {
+								"description": "Identifier of the group",
+								"type": "string",
+								"readOnly": true,
+								"example": "6d7f2f5f5b1d4a0e9081fdc98d432fd1"
+							},
+							"name": {
+								"description": "Name of the group",
+								"type": "string",
+								"readOnly": true,
+								"example": "Load Balancers Write"
+							}
+						}
+					},
+					"example": [
+						{
+							"id": "c8fed203ed3043cba015a93ad1616f1f",
+							"name": "Zone Read"
+						},
+						{
+							"id": "82e64a83756745bbbb1c9c2701bf816b",
+							"name": "DNS Read"
+						}
+					]
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,57 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/alert-notifications/pagerduty.json",
+	"title": "Notification destinations with PagerDuty",
+	"description": "Configure a policy to dispatch via PagerDuty.",
+	"type": "object",
+	"links": [
+		{
+			"title": "List PagerDuty services",
+			"description": "Get a list of all configured PagerDuty services",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/alerting/v3/destinations/pagerduty",
+			"method": "GET",
+			"cfOwnership": "app-services",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "notification-destinations-with-pagerduty-list-pagerduty-services",
+			"uri": "accounts/:identifier/alerting/v3/destinations/pagerduty",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/alerting/v3/destinations/pagerduty\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"name\": \"My PagerDuty Service\"\n    }\n  ]\n}"
+		}
+	],
+	"html_id": "notification-destinations-with-pagerduty",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"",
+				"id": "https://api.cloudflare.com/schemas/v4/common/uuid.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"readOnly": true,
+				"maxLength": 36,
+				"description": "API uuid tag"
+			},
+			"name": {
+				"type": "string",
+				"example": "\"My PagerDuty Service\"",
+				"description": "The name of the pagerduty service"
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"name"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n  \"name\": \"My PagerDuty Service\"\n}",
+		"title": "Notification destinations with PagerDuty",
+		"description": "Configure a policy to dispatch via PagerDuty."
+	}
+}

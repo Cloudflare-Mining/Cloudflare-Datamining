@@ -1,0 +1,477 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/railgun.json",
+	"title": "Account Railguns",
+	"description": "Cloudflare Railguns available to accounts.",
+	"type": "object",
+	"extraProperties": {
+		"upgrade_info": {
+			"description": "Defined when the Railgun version is out of date from the latest release from Cloudflare.",
+			"type": "object",
+			"properties": {
+				"latest_version": {
+					"description": "Latest version of the Railgun receiver available to install.",
+					"type": "string",
+					"example": "1.0.0"
+				},
+				"download_link": {
+					"description": "An HTTP link to download the latest Railgun binary.",
+					"type": "string",
+					"example": "https://www.cloudflare.com/downloads/railgun"
+				}
+			}
+		}
+	},
+	"links": [
+		{
+			"title": "List Railguns",
+			"description": "List, search, sort and filter your Railguns.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/railguns",
+			"method": "GET",
+			"cfOwnership": "railgun",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#organization:read"
+				]
+			},
+			"trakalIgnore": true,
+			"html_id": "account-railguns-list-railguns",
+			"uri": "accounts/:account_identifier/railguns",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/railguns?page=1&per_page=20&direction=desc\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"page": {
+						"type": "number",
+						"example": "1",
+						"minimum": 1,
+						"default": 1,
+						"description": "Page number of paginated results."
+					},
+					"per_page": {
+						"type": "number",
+						"example": "20",
+						"minimum": 5,
+						"maximum": 50,
+						"default": 20,
+						"description": "Number of items per page."
+					},
+					"direction": {
+						"example": "\"desc\"",
+						"enum": [
+							"asc",
+							"desc"
+						],
+						"description": "Sort Railguns in ascending or descending order."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"page",
+					"per_page",
+					"direction"
+				],
+				"objects": [],
+				"example": "{\n  \"page\": 1,\n  \"per_page\": 20,\n  \"direction\": \"desc\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"e928d310693a83094309acf9ead50448\",\n      \"name\": \"My Railgun.\",\n      \"status\": \"active\",\n      \"enabled\": true,\n      \"zones_connected\": 2,\n      \"created_on\": \"2014-01-01T05:20:00Z\",\n      \"modified_on\": \"2014-01-01T05:20:00Z\",\n      \"activation\": {\n        \"key\": \"e4edc00281cb56ebac22c81be9bac8f3\",\n        \"activated_on\": \"2014-01-02T02:20:00Z\",\n        \"version\": {\n          \"number\": \"2.1\",\n          \"build\": \"b1234\",\n          \"revision\": \"123\"\n        }\n      }\n    }\n  ]\n}"
+		},
+		{
+			"title": "Create Railgun",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/railguns",
+			"method": "POST",
+			"cfOwnership": "railgun",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": true,
+				"enterprise": true
+			},
+			"trakalIgnore": true,
+			"html_id": "account-railguns-create-railgun",
+			"uri": "accounts/:account_identifier/railguns",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/railguns\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"My Railgun.\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"My Railgun.\"",
+						"description": "Readable identifier of the Railgun.",
+						"maxLength": 160
+					}
+				},
+				"required_props": [
+					"name"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"name\": \"My Railgun.\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
+		},
+		{
+			"title": "Railgun details",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/railguns/{#/definitions/identifier}",
+			"method": "GET",
+			"cfOwnership": "railgun",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#organization:read"
+				]
+			},
+			"trakalIgnore": true,
+			"html_id": "account-railguns-railgun-details",
+			"uri": "accounts/:account_identifier/railguns/:identifier",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/railguns/e928d310693a83094309acf9ead50448\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
+		},
+		{
+			"title": "Update Railgun",
+			"description": "Update a Railgun.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/railguns/{#/definitions/identifier}",
+			"method": "PUT",
+			"cfOwnership": "railgun",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#organization:edit"
+				]
+			},
+			"trakalIgnore": true,
+			"html_id": "account-railguns-update-railgun",
+			"uri": "accounts/:account_identifier/railguns/:identifier",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/railguns/e928d310693a83094309acf9ead50448\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"id\":\"e928d310693a83094309acf9ead50448\",\"name\":\"My Railgun.\",\"status\":\"active\",\"enabled\":true,\"zones_connected\":2,\"created_on\":\"2014-01-01T05:20:00Z\",\"modified_on\":\"2014-01-01T05:20:00Z\",\"activation\":{\"key\":\"e4edc00281cb56ebac22c81be9bac8f3\",\"activated_on\":\"2014-01-02T02:20:00Z\",\"version\":{\"number\":\"2.1\",\"build\":\"b1234\",\"revision\":\"123\"}}}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"e928d310693a83094309acf9ead50448\"",
+						"description": "Railgun identifier tag.",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"name": {
+						"type": "string",
+						"example": "\"My Railgun.\"",
+						"description": "Readable identifier of the Railgun.",
+						"maxLength": 160
+					},
+					"status": {
+						"type": "string",
+						"example": "\"active\"",
+						"description": "Status of the Railgun.",
+						"enum": [
+							"initializing",
+							"active"
+						],
+						"readOnly": true
+					},
+					"enabled": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Flag to determine if the Railgun is accepting connections.",
+						"default": false
+					},
+					"zones_connected": {
+						"type": "number",
+						"example": "2",
+						"description": "The number of zones using this Railgun.",
+						"readOnly": true
+					},
+					"created_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00Z\"",
+						"description": "When the Railgun was created.",
+						"readOnly": true,
+						"format": "date-time"
+					},
+					"modified_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00Z\"",
+						"description": "When the Railgun was last modified.",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"activation": {
+						"type": "object",
+						"example": "{\n  \"key\": \"e4edc00281cb56ebac22c81be9bac8f3\",\n  \"activated_on\": \"2014-01-02T02:20:00Z\",\n  \"version\": {\n    \"number\": \"2.1\",\n    \"build\": \"b1234\",\n    \"revision\": \"123\"\n  }\n}",
+						"properties": {
+							"key": {
+								"type": "string",
+								"example": "\"e4edc00281cb56ebac22c81be9bac8f3\"",
+								"maxLength": 32,
+								"readOnly": true
+							},
+							"activated_on": {
+								"type": "string",
+								"example": "\"2014-01-02T02:20:00Z\"",
+								"description": "When the Railgun was activated.",
+								"format": "date-time",
+								"readOnly": true
+							},
+							"version": {
+								"type": "object",
+								"example": "{\n  \"number\": \"2.1\",\n  \"build\": \"b1234\",\n  \"revision\": \"123\"\n}",
+								"properties": {
+									"number": {
+										"type": "string",
+										"example": "\"2.1\"",
+										"description": "The version of the Railgun receiver.",
+										"readOnly": true
+									},
+									"build": {
+										"type": "string",
+										"example": "\"b1234\"",
+										"description": "The build identifier for the Railgun receiver.",
+										"readOnly": true
+									},
+									"revision": {
+										"type": "string",
+										"example": "\"123\"",
+										"description": "The revision of the Railgun receiver.",
+										"readOnly": true
+									}
+								},
+								"required": [
+									"number"
+								]
+							}
+						},
+						"readOnly": true,
+						"required": [
+							"key"
+						]
+					},
+					"upgrade_info": {
+						"type": "object",
+						"example": "{\n  \"latest_version\": \"1.0.0\",\n  \"download_link\": \"https://www.cloudflare.com/downloads/railgun\"\n}",
+						"properties": {
+							"latest_version": {
+								"type": "string",
+								"example": "\"1.0.0\"",
+								"description": "Latest version of the Railgun receiver available to install."
+							},
+							"download_link": {
+								"type": "string",
+								"example": "\"https://www.cloudflare.com/downloads/railgun\"",
+								"description": "An HTTP link to download the latest Railgun binary."
+							}
+						},
+						"description": "Defined when the Railgun version is out of date from the latest release from Cloudflare."
+					}
+				},
+				"required_props": [
+					"id",
+					"name",
+					"status",
+					"enabled",
+					"zones_connected",
+					"activation"
+				],
+				"optional_props": [
+					"created_on",
+					"modified_on",
+					"upgrade_info"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"e928d310693a83094309acf9ead50448\",\n  \"name\": \"My Railgun.\",\n  \"status\": \"active\",\n  \"enabled\": true,\n  \"zones_connected\": 2,\n  \"created_on\": \"2014-01-01T05:20:00Z\",\n  \"modified_on\": \"2014-01-01T05:20:00Z\",\n  \"activation\": {\n    \"key\": \"e4edc00281cb56ebac22c81be9bac8f3\",\n    \"activated_on\": \"2014-01-02T02:20:00Z\",\n    \"version\": {\n      \"number\": \"2.1\",\n      \"build\": \"b1234\",\n      \"revision\": \"123\"\n    }\n  }\n}",
+				"title": "Account Railguns",
+				"description": "Cloudflare Railguns available to accounts."
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
+		},
+		{
+			"title": "Delete a Railgun",
+			"description": "Disable and delete a Railgun. This will immediately disable the Railgun for any connected zones.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/railguns/{#/definitions/identifier}",
+			"method": "DELETE",
+			"cfOwnership": "railgun",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#organization:edit"
+				]
+			},
+			"trakalIgnore": true,
+			"html_id": "account-railguns-delete-a-railgun",
+			"uri": "accounts/:account_identifier/railguns/:identifier",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/railguns/e928d310693a83094309acf9ead50448\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"e928d310693a83094309acf9ead50448\"\n  }\n}"
+		}
+	],
+	"html_id": "account-railguns",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"e928d310693a83094309acf9ead50448\"",
+				"description": "Railgun identifier tag.",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"name": {
+				"type": "string",
+				"example": "\"My Railgun.\"",
+				"description": "Readable identifier of the Railgun.",
+				"maxLength": 160
+			},
+			"status": {
+				"type": "string",
+				"example": "\"active\"",
+				"description": "Status of the Railgun.",
+				"enum": [
+					"initializing",
+					"active"
+				],
+				"readOnly": true
+			},
+			"enabled": {
+				"type": "boolean",
+				"example": "true",
+				"description": "Flag to determine if the Railgun is accepting connections.",
+				"default": false
+			},
+			"zones_connected": {
+				"type": "number",
+				"example": "2",
+				"description": "The number of zones using this Railgun.",
+				"readOnly": true
+			},
+			"created_on": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00Z\"",
+				"description": "When the Railgun was created.",
+				"readOnly": true,
+				"format": "date-time"
+			},
+			"modified_on": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00Z\"",
+				"description": "When the Railgun was last modified.",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"activation": {
+				"type": "object",
+				"example": "{\n  \"key\": \"e4edc00281cb56ebac22c81be9bac8f3\",\n  \"activated_on\": \"2014-01-02T02:20:00Z\",\n  \"version\": {\n    \"number\": \"2.1\",\n    \"build\": \"b1234\",\n    \"revision\": \"123\"\n  }\n}",
+				"properties": {
+					"key": {
+						"type": "string",
+						"example": "\"e4edc00281cb56ebac22c81be9bac8f3\"",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"activated_on": {
+						"type": "string",
+						"example": "\"2014-01-02T02:20:00Z\"",
+						"description": "When the Railgun was activated.",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"version": {
+						"type": "object",
+						"example": "{\n  \"number\": \"2.1\",\n  \"build\": \"b1234\",\n  \"revision\": \"123\"\n}",
+						"properties": {
+							"number": {
+								"type": "string",
+								"example": "\"2.1\"",
+								"description": "The version of the Railgun receiver.",
+								"readOnly": true
+							},
+							"build": {
+								"type": "string",
+								"example": "\"b1234\"",
+								"description": "The build identifier for the Railgun receiver.",
+								"readOnly": true
+							},
+							"revision": {
+								"type": "string",
+								"example": "\"123\"",
+								"description": "The revision of the Railgun receiver.",
+								"readOnly": true
+							}
+						},
+						"required": [
+							"number"
+						]
+					}
+				},
+				"readOnly": true,
+				"required": [
+					"key"
+				]
+			},
+			"upgrade_info": {
+				"type": "object",
+				"example": "{\n  \"latest_version\": \"1.0.0\",\n  \"download_link\": \"https://www.cloudflare.com/downloads/railgun\"\n}",
+				"properties": {
+					"latest_version": {
+						"type": "string",
+						"example": "\"1.0.0\"",
+						"description": "Latest version of the Railgun receiver available to install."
+					},
+					"download_link": {
+						"type": "string",
+						"example": "\"https://www.cloudflare.com/downloads/railgun\"",
+						"description": "An HTTP link to download the latest Railgun binary."
+					}
+				},
+				"description": "Defined when the Railgun version is out of date from the latest release from Cloudflare."
+			}
+		},
+		"required_props": [
+			"id",
+			"name",
+			"status",
+			"enabled",
+			"zones_connected",
+			"activation"
+		],
+		"optional_props": [
+			"created_on",
+			"modified_on",
+			"upgrade_info"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"e928d310693a83094309acf9ead50448\",\n  \"name\": \"My Railgun.\",\n  \"status\": \"active\",\n  \"enabled\": true,\n  \"zones_connected\": 2,\n  \"created_on\": \"2014-01-01T05:20:00Z\",\n  \"modified_on\": \"2014-01-01T05:20:00Z\",\n  \"activation\": {\n    \"key\": \"e4edc00281cb56ebac22c81be9bac8f3\",\n    \"activated_on\": \"2014-01-02T02:20:00Z\",\n    \"version\": {\n      \"number\": \"2.1\",\n      \"build\": \"b1234\",\n      \"revision\": \"123\"\n    }\n  }\n}",
+		"title": "Account Railguns",
+		"description": "Cloudflare Railguns available to accounts."
+	}
+}

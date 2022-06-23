@@ -1,0 +1,235 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/dns-secondary/acl.json",
+	"title": "Secondary DNS (ACL)",
+	"description": "Access Control List (ACL) management for secondary DNS",
+	"type": "object",
+	"links": [
+		{
+			"title": "List ACLs",
+			"description": "List ACLs",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/secondary_dns/acls",
+			"method": "GET",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#organization:read"
+				]
+			},
+			"html_id": "secondary-dns-acl--list-acls",
+			"uri": "accounts/:account_identifier/secondary_dns/acls",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/secondary_dns/acls\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"23ff594956f20c2a721606e94745a8aa\",\n      \"ip_range\": \"192.0.2.53/28\",\n      \"name\": \"my-acl-1\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "ACL Details",
+			"description": "Get ACL",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/secondary_dns/acls/{#/definitions/identifier}",
+			"method": "GET",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#organization:read"
+				]
+			},
+			"html_id": "secondary-dns-acl--acl-details",
+			"uri": "accounts/:account_identifier/secondary_dns/acls/:identifier",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/secondary_dns/acls/23ff594956f20c2a721606e94745a8aa\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"23ff594956f20c2a721606e94745a8aa\",\n    \"ip_range\": \"192.0.2.53/28\",\n    \"name\": \"my-acl-1\"\n  }\n}"
+		},
+		{
+			"title": "Update ACL",
+			"description": "Modify ACL",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/secondary_dns/acls/{#/definitions/identifier}",
+			"method": "PUT",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:edit",
+					"#organization:read"
+				]
+			},
+			"html_id": "secondary-dns-acl--update-acl",
+			"uri": "accounts/:account_identifier/secondary_dns/acls/:identifier",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/secondary_dns/acls/23ff594956f20c2a721606e94745a8aa\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"id\":\"23ff594956f20c2a721606e94745a8aa\",\"ip_range\":\"192.0.2.53/28\",\"name\":\"my-acl-1\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"23ff594956f20c2a721606e94745a8aa\"",
+						"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"description": "API item identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"ip_range": {
+						"type": "string",
+						"example": "\"192.0.2.53/28\"",
+						"description": "Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively."
+					},
+					"name": {
+						"type": "string",
+						"example": "\"my-acl-1\"",
+						"description": "The name of the acl"
+					}
+				},
+				"required_props": [
+					"id",
+					"name",
+					"ip_range"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"id\": \"23ff594956f20c2a721606e94745a8aa\",\n  \"ip_range\": \"192.0.2.53/28\",\n  \"name\": \"my-acl-1\"\n}",
+				"title": "Secondary DNS (ACL)",
+				"description": "Access Control List (ACL) management for secondary DNS"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"23ff594956f20c2a721606e94745a8aa\",\n    \"ip_range\": \"192.0.2.53/28\",\n    \"name\": \"my-acl-1\"\n  }\n}"
+		},
+		{
+			"title": "Delete ACL",
+			"description": "Delete ACL",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/secondary_dns/acls/{#/definitions/identifier}",
+			"method": "DELETE",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:edit",
+					"#organization:read"
+				]
+			},
+			"html_id": "secondary-dns-acl--delete-acl",
+			"uri": "accounts/:account_identifier/secondary_dns/acls/:identifier",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/secondary_dns/acls/23ff594956f20c2a721606e94745a8aa\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"23ff594956f20c2a721606e94745a8aa\"\n  }\n}"
+		},
+		{
+			"title": "Create ACL",
+			"description": "Create ACL",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/secondary_dns/acls",
+			"method": "POST",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:edit",
+					"#organization:read"
+				]
+			},
+			"html_id": "secondary-dns-acl--create-acl",
+			"uri": "accounts/:account_identifier/secondary_dns/acls",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/secondary_dns/acls\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"id\":\"23ff594956f20c2a721606e94745a8aa\",\"ip_range\":\"192.0.2.53/28\",\"name\":\"my-acl-1\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"23ff594956f20c2a721606e94745a8aa\"",
+						"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"description": "API item identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"ip_range": {
+						"type": "string",
+						"example": "\"192.0.2.53/28\"",
+						"description": "Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively."
+					},
+					"name": {
+						"type": "string",
+						"example": "\"my-acl-1\"",
+						"description": "The name of the acl"
+					}
+				},
+				"required_props": [
+					"id",
+					"name",
+					"ip_range"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"id\": \"23ff594956f20c2a721606e94745a8aa\",\n  \"ip_range\": \"192.0.2.53/28\",\n  \"name\": \"my-acl-1\"\n}",
+				"title": "Secondary DNS (ACL)",
+				"description": "Access Control List (ACL) management for secondary DNS"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"23ff594956f20c2a721606e94745a8aa\",\n    \"ip_range\": \"192.0.2.53/28\",\n    \"name\": \"my-acl-1\"\n  }\n}"
+		}
+	],
+	"html_id": "secondary-dns-acl-",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"23ff594956f20c2a721606e94745a8aa\"",
+				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "API item identifier tag",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"ip_range": {
+				"type": "string",
+				"example": "\"192.0.2.53/28\"",
+				"description": "Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively."
+			},
+			"name": {
+				"type": "string",
+				"example": "\"my-acl-1\"",
+				"description": "The name of the acl"
+			}
+		},
+		"required_props": [
+			"id",
+			"name",
+			"ip_range"
+		],
+		"optional_props": [],
+		"objects": [],
+		"example": "{\n  \"id\": \"23ff594956f20c2a721606e94745a8aa\",\n  \"ip_range\": \"192.0.2.53/28\",\n  \"name\": \"my-acl-1\"\n}",
+		"title": "Secondary DNS (ACL)",
+		"description": "Access Control List (ACL) management for secondary DNS"
+	}
+}

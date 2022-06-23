@@ -1,0 +1,562 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/dns-firewall.json",
+	"title": "DNS Firewall",
+	"description": "DNS Firewall cluster management",
+	"type": "object",
+	"links": [
+		{
+			"title": "List DNS Firewall Clusters",
+			"description": "List configured DNS Firewall clusters for an account",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/dns_firewall",
+			"method": "GET",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:read"
+				]
+			},
+			"html_id": "dns-firewall-list-dns-firewall-clusters",
+			"uri": "accounts/:account_identifier/dns_firewall",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/dns_firewall?page=1&per_page=20\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"page": {
+						"type": "number",
+						"example": "1",
+						"description": "Page number of paginated results",
+						"minimum": 1,
+						"default": 1
+					},
+					"per_page": {
+						"type": "number",
+						"example": "20",
+						"description": "Number of DNS records per page",
+						"minimum": 5,
+						"maximum": 100,
+						"default": 20
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"page",
+					"per_page"
+				],
+				"objects": [],
+				"example": "{\n  \"page\": 1,\n  \"per_page\": 20\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n      \"name\": \"My Awesome DNS Firewall cluster\",\n      \"origin_ips\": [\n        \"192.0.2.1\",\n        \"198.51.100.1\",\n        \"2001:DB8:100::CF\"\n      ],\n      \"dns_firewall_ips\": [\n        \"203.0.113.1\",\n        \"203.0.113.254\",\n        \"2001:DB8:AB::CF\",\n        \"2001:DB8:CD::CF\"\n      ],\n      \"minimum_cache_ttl\": 60,\n      \"maximum_cache_ttl\": 900,\n      \"negative_cache_ttl\": 900,\n      \"deprecate_any_requests\": true,\n      \"ecs_fallback\": false,\n      \"ratelimit\": 600,\n      \"attack_mitigation\": {\n        \"enabled\": true,\n        \"only_when_origin_unhealthy\": false\n      },\n      \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "DNS Firewall Cluster Details",
+			"description": "Show a single configured DNS Firewall cluster for an account",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/dns_firewall/{#/definitions/identifier}",
+			"method": "GET",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:read"
+				]
+			},
+			"html_id": "dns-firewall-dns-firewall-cluster-details",
+			"uri": "accounts/:account_identifier/dns_firewall/:identifier",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/dns_firewall/9a7806061c88ada191ed06f989cc3dac\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n    \"name\": \"My Awesome DNS Firewall cluster\",\n    \"origin_ips\": [\n      \"192.0.2.1\",\n      \"198.51.100.1\",\n      \"2001:DB8:100::CF\"\n    ],\n    \"dns_firewall_ips\": [\n      \"203.0.113.1\",\n      \"203.0.113.254\",\n      \"2001:DB8:AB::CF\",\n      \"2001:DB8:CD::CF\"\n    ],\n    \"minimum_cache_ttl\": 60,\n    \"maximum_cache_ttl\": 900,\n    \"negative_cache_ttl\": 900,\n    \"deprecate_any_requests\": true,\n    \"ecs_fallback\": false,\n    \"ratelimit\": 600,\n    \"attack_mitigation\": {\n      \"enabled\": true,\n      \"only_when_origin_unhealthy\": false\n    },\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
+		},
+		{
+			"title": "Update DNS Firewall Cluster",
+			"description": "Modify a DNS Firewall Cluster configuration",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/dns_firewall/{#/definitions/identifier}",
+			"method": "PATCH",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:edit"
+				]
+			},
+			"html_id": "dns-firewall-update-dns-firewall-cluster",
+			"uri": "accounts/:account_identifier/dns_firewall/:identifier",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/dns_firewall/9a7806061c88ada191ed06f989cc3dac\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"id\":\"9a7806061c88ada191ed06f989cc3dac\",\"name\":\"My Awesome DNS Firewall cluster\",\"origin_ips\":[\"192.0.2.1\",\"198.51.100.1\",\"2001:DB8:100::CF\"],\"dns_firewall_ips\":[\"203.0.113.1\",\"203.0.113.254\",\"2001:DB8:AB::CF\",\"2001:DB8:CD::CF\"],\"minimum_cache_ttl\":60,\"maximum_cache_ttl\":900,\"negative_cache_ttl\":900,\"deprecate_any_requests\":true,\"ecs_fallback\":false,\"ratelimit\":600,\"attack_mitigation\":{\"enabled\":true,\"only_when_origin_unhealthy\":false},\"modified_on\":\"2014-01-01T05:20:00.12345Z\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"9a7806061c88ada191ed06f989cc3dac\"",
+						"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"description": "API item identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"name": {
+						"type": "string",
+						"example": "\"My Awesome DNS Firewall cluster\"",
+						"description": "DNS Firewall Cluster Name",
+						"maxLength": 160
+					},
+					"origin_ips": {
+						"type": "array",
+						"example": "[\n  \"192.0.2.1\",\n  \"198.51.100.1\",\n  \"2001:DB8:100::CF\"\n]",
+						"items": {
+							"anyOf": [
+								{
+									"description": "Origin DNS Server IPv4 Address",
+									"type": "string",
+									"format": "ipv4",
+									"example": "192.0.2.1"
+								},
+								{
+									"description": "Origin DNS Server IPv6 Address",
+									"type": "string",
+									"format": "ipv6",
+									"example": "2001:DB8:100::CF"
+								}
+							]
+						}
+					},
+					"dns_firewall_ips": {
+						"type": "array",
+						"example": "[\n  \"203.0.113.1\",\n  \"203.0.113.254\",\n  \"2001:DB8:AB::CF\",\n  \"2001:DB8:CD::CF\"\n]",
+						"items": {
+							"anyOf": [
+								{
+									"description": "Origin DNS Server IPv4 Address",
+									"type": "string",
+									"format": "ipv4",
+									"example": "203.0.113.1"
+								},
+								{
+									"description": "Origin DNS Server IPv6 Address",
+									"type": "string",
+									"format": "ipv6",
+									"example": "2001:DB8:ab::CF"
+								}
+							]
+						}
+					},
+					"minimum_cache_ttl": {
+						"type": "number",
+						"example": "60",
+						"description": "Minimum DNS Cache TTL",
+						"minimum": 30,
+						"maximum": 36000,
+						"default": 60
+					},
+					"maximum_cache_ttl": {
+						"type": "number",
+						"example": "900",
+						"description": "Maximum DNS Cache TTL",
+						"minimum": 30,
+						"maximum": 36000,
+						"default": 900
+					},
+					"negative_cache_ttl": {
+						"type": [
+							"number",
+							"null"
+						],
+						"example": "900",
+						"description": "Negative DNS Cache TTL",
+						"minimum": 30,
+						"maximum": 36000,
+						"default": null
+					},
+					"deprecate_any_requests": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Deprecate the response to ANY requests"
+					},
+					"ecs_fallback": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Forward client IP (resolver) subnet if no EDNS Client Subnet is sent"
+					},
+					"ratelimit": {
+						"type": [
+							"number",
+							"null"
+						],
+						"example": "600",
+						"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the origin nameservers configured on the cluster).",
+						"minimum": 100,
+						"maximum": 1000000000,
+						"default": null
+					},
+					"attack_mitigation": {
+						"type": [
+							"object",
+							"null"
+						],
+						"example": "{\n  \"enabled\": true,\n  \"only_when_origin_unhealthy\": false\n}",
+						"properties": {
+							"enabled": {
+								"type": "boolean",
+								"example": "true",
+								"description": "When enabled, random-prefix attacks are automatically mitigated and the origin DNS servers protected."
+							},
+							"only_when_origin_unhealthy": {
+								"type": "boolean",
+								"example": "false",
+								"description": "Only mitigate attacks when origin servers seem unhealthy.",
+								"default": true
+							}
+						},
+						"description": "Attack mitigation settings"
+					},
+					"modified_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"description": "Last modification of DNS Firewall cluster",
+						"format": "date-time",
+						"readOnly": true
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"id",
+					"name",
+					"origin_ips",
+					"dns_firewall_ips",
+					"minimum_cache_ttl",
+					"maximum_cache_ttl",
+					"negative_cache_ttl",
+					"deprecate_any_requests",
+					"ecs_fallback",
+					"ratelimit",
+					"attack_mitigation",
+					"modified_on"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n  \"name\": \"My Awesome DNS Firewall cluster\",\n  \"origin_ips\": [\n    \"192.0.2.1\",\n    \"198.51.100.1\",\n    \"2001:DB8:100::CF\"\n  ],\n  \"dns_firewall_ips\": [\n    \"203.0.113.1\",\n    \"203.0.113.254\",\n    \"2001:DB8:AB::CF\",\n    \"2001:DB8:CD::CF\"\n  ],\n  \"minimum_cache_ttl\": 60,\n  \"maximum_cache_ttl\": 900,\n  \"negative_cache_ttl\": 900,\n  \"deprecate_any_requests\": true,\n  \"ecs_fallback\": false,\n  \"ratelimit\": 600,\n  \"attack_mitigation\": {\n    \"enabled\": true,\n    \"only_when_origin_unhealthy\": false\n  },\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
+				"description": "DNS Firewall cluster management",
+				"title": "DNS Firewall"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n    \"name\": \"My Awesome DNS Firewall cluster\",\n    \"origin_ips\": [\n      \"192.0.2.1\",\n      \"198.51.100.1\",\n      \"2001:DB8:100::CF\"\n    ],\n    \"dns_firewall_ips\": [\n      \"203.0.113.1\",\n      \"203.0.113.254\",\n      \"2001:DB8:AB::CF\",\n      \"2001:DB8:CD::CF\"\n    ],\n    \"minimum_cache_ttl\": 60,\n    \"maximum_cache_ttl\": 900,\n    \"negative_cache_ttl\": 900,\n    \"deprecate_any_requests\": true,\n    \"ecs_fallback\": false,\n    \"ratelimit\": 600,\n    \"attack_mitigation\": {\n      \"enabled\": true,\n      \"only_when_origin_unhealthy\": false\n    },\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
+		},
+		{
+			"title": "Delete DNS Firewall Cluster",
+			"description": "Delete a configured DNS Firewall Cluster",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/dns_firewall/{#/definitions/identifier}",
+			"method": "DELETE",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:edit"
+				]
+			},
+			"html_id": "dns-firewall-delete-dns-firewall-cluster",
+			"uri": "accounts/:account_identifier/dns_firewall/:identifier",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/dns_firewall/9a7806061c88ada191ed06f989cc3dac\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\"\n  }\n}"
+		},
+		{
+			"title": "Create DNS Firewall Cluster",
+			"description": "Create a configured DNS Firewall Cluster",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/dns_firewall",
+			"method": "POST",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:edit"
+				]
+			},
+			"html_id": "dns-firewall-create-dns-firewall-cluster",
+			"uri": "accounts/:account_identifier/dns_firewall",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/dns_firewall\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"My Awesome DNS Firewall cluster\",\"origin_ips\":[\"192.0.2.1\",\"198.51.100.1\",\"2001:DB8:100::CF\"],\"minimum_cache_ttl\":60,\"maximum_cache_ttl\":900,\"negative_cache_ttl\":900,\"deprecate_any_requests\":true,\"ecs_fallback\":false,\"ratelimit\":600}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"My Awesome DNS Firewall cluster\"",
+						"description": "DNS Firewall Cluster Name",
+						"maxLength": 160
+					},
+					"origin_ips": {
+						"type": "array",
+						"example": "[\n  \"192.0.2.1\",\n  \"198.51.100.1\",\n  \"2001:DB8:100::CF\"\n]",
+						"items": {
+							"anyOf": [
+								{
+									"description": "Origin DNS Server IPv4 Address",
+									"type": "string",
+									"format": "ipv4",
+									"example": "192.0.2.1"
+								},
+								{
+									"description": "Origin DNS Server IPv6 Address",
+									"type": "string",
+									"format": "ipv6",
+									"example": "2001:DB8:100::CF"
+								}
+							]
+						}
+					},
+					"minimum_cache_ttl": {
+						"type": "number",
+						"example": "60",
+						"description": "Minimum DNS Cache TTL",
+						"minimum": 30,
+						"maximum": 36000,
+						"default": 60
+					},
+					"maximum_cache_ttl": {
+						"type": "number",
+						"example": "900",
+						"description": "Maximum DNS Cache TTL",
+						"minimum": 30,
+						"maximum": 36000,
+						"default": 900
+					},
+					"negative_cache_ttl": {
+						"type": [
+							"number",
+							"null"
+						],
+						"example": "900",
+						"description": "Negative DNS Cache TTL",
+						"minimum": 30,
+						"maximum": 36000,
+						"default": null
+					},
+					"deprecate_any_requests": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Deprecate the response to ANY requests"
+					},
+					"ecs_fallback": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Forward client IP (resolver) subnet if no EDNS Client Subnet is sent"
+					},
+					"ratelimit": {
+						"type": [
+							"number",
+							"null"
+						],
+						"example": "600",
+						"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the origin nameservers configured on the cluster).",
+						"minimum": 100,
+						"maximum": 1000000000,
+						"default": null
+					}
+				},
+				"required_props": [
+					"name",
+					"origin_ips"
+				],
+				"optional_props": [
+					"minimum_cache_ttl",
+					"maximum_cache_ttl",
+					"negative_cache_ttl",
+					"deprecate_any_requests",
+					"ecs_fallback",
+					"ratelimit"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": \"My Awesome DNS Firewall cluster\",\n  \"origin_ips\": [\n    \"192.0.2.1\",\n    \"198.51.100.1\",\n    \"2001:DB8:100::CF\"\n  ],\n  \"minimum_cache_ttl\": 60,\n  \"maximum_cache_ttl\": 900,\n  \"negative_cache_ttl\": 900,\n  \"deprecate_any_requests\": true,\n  \"ecs_fallback\": false,\n  \"ratelimit\": 600\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n    \"name\": \"My Awesome DNS Firewall cluster\",\n    \"origin_ips\": [\n      \"192.0.2.1\",\n      \"198.51.100.1\",\n      \"2001:DB8:100::CF\"\n    ],\n    \"dns_firewall_ips\": [\n      \"203.0.113.1\",\n      \"203.0.113.254\",\n      \"2001:DB8:AB::CF\",\n      \"2001:DB8:CD::CF\"\n    ],\n    \"minimum_cache_ttl\": 60,\n    \"maximum_cache_ttl\": 900,\n    \"negative_cache_ttl\": 900,\n    \"deprecate_any_requests\": true,\n    \"ecs_fallback\": false,\n    \"ratelimit\": 600,\n    \"attack_mitigation\": {\n      \"enabled\": true,\n      \"only_when_origin_unhealthy\": false\n    },\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
+		}
+	],
+	"html_id": "dns-firewall",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"9a7806061c88ada191ed06f989cc3dac\"",
+				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "API item identifier tag",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"name": {
+				"type": "string",
+				"example": "\"My Awesome DNS Firewall cluster\"",
+				"description": "DNS Firewall Cluster Name",
+				"maxLength": 160
+			},
+			"origin_ips": {
+				"type": "array",
+				"example": "[\n  \"192.0.2.1\",\n  \"198.51.100.1\",\n  \"2001:DB8:100::CF\"\n]",
+				"items": {
+					"anyOf": [
+						{
+							"description": "Origin DNS Server IPv4 Address",
+							"type": "string",
+							"format": "ipv4",
+							"example": "192.0.2.1"
+						},
+						{
+							"description": "Origin DNS Server IPv6 Address",
+							"type": "string",
+							"format": "ipv6",
+							"example": "2001:DB8:100::CF"
+						}
+					]
+				}
+			},
+			"dns_firewall_ips": {
+				"type": "array",
+				"example": "[\n  \"203.0.113.1\",\n  \"203.0.113.254\",\n  \"2001:DB8:AB::CF\",\n  \"2001:DB8:CD::CF\"\n]",
+				"items": {
+					"anyOf": [
+						{
+							"description": "Origin DNS Server IPv4 Address",
+							"type": "string",
+							"format": "ipv4",
+							"example": "203.0.113.1"
+						},
+						{
+							"description": "Origin DNS Server IPv6 Address",
+							"type": "string",
+							"format": "ipv6",
+							"example": "2001:DB8:ab::CF"
+						}
+					]
+				}
+			},
+			"minimum_cache_ttl": {
+				"type": "number",
+				"example": "60",
+				"description": "Minimum DNS Cache TTL",
+				"minimum": 30,
+				"maximum": 36000,
+				"default": 60
+			},
+			"maximum_cache_ttl": {
+				"type": "number",
+				"example": "900",
+				"description": "Maximum DNS Cache TTL",
+				"minimum": 30,
+				"maximum": 36000,
+				"default": 900
+			},
+			"negative_cache_ttl": {
+				"type": [
+					"number",
+					"null"
+				],
+				"example": "900",
+				"description": "Negative DNS Cache TTL",
+				"minimum": 30,
+				"maximum": 36000,
+				"default": null
+			},
+			"deprecate_any_requests": {
+				"type": "boolean",
+				"example": "true",
+				"description": "Deprecate the response to ANY requests"
+			},
+			"ecs_fallback": {
+				"type": "boolean",
+				"example": "false",
+				"description": "Forward client IP (resolver) subnet if no EDNS Client Subnet is sent"
+			},
+			"ratelimit": {
+				"type": [
+					"number",
+					"null"
+				],
+				"example": "600",
+				"description": "Ratelimit in queries per second per datacenter (applies to DNS queries sent to the origin nameservers configured on the cluster).",
+				"minimum": 100,
+				"maximum": 1000000000,
+				"default": null
+			},
+			"attack_mitigation": {
+				"type": [
+					"object",
+					"null"
+				],
+				"example": "{\n  \"enabled\": true,\n  \"only_when_origin_unhealthy\": false\n}",
+				"properties": {
+					"enabled": {
+						"type": "boolean",
+						"example": "true",
+						"description": "When enabled, random-prefix attacks are automatically mitigated and the origin DNS servers protected."
+					},
+					"only_when_origin_unhealthy": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Only mitigate attacks when origin servers seem unhealthy.",
+						"default": true
+					}
+				},
+				"description": "Attack mitigation settings"
+			},
+			"modified_on": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"description": "Last modification of DNS Firewall cluster",
+				"format": "date-time",
+				"readOnly": true
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"name",
+			"origin_ips",
+			"dns_firewall_ips",
+			"minimum_cache_ttl",
+			"maximum_cache_ttl",
+			"negative_cache_ttl",
+			"deprecate_any_requests",
+			"ecs_fallback",
+			"ratelimit",
+			"attack_mitigation",
+			"modified_on"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n  \"name\": \"My Awesome DNS Firewall cluster\",\n  \"origin_ips\": [\n    \"192.0.2.1\",\n    \"198.51.100.1\",\n    \"2001:DB8:100::CF\"\n  ],\n  \"dns_firewall_ips\": [\n    \"203.0.113.1\",\n    \"203.0.113.254\",\n    \"2001:DB8:AB::CF\",\n    \"2001:DB8:CD::CF\"\n  ],\n  \"minimum_cache_ttl\": 60,\n  \"maximum_cache_ttl\": 900,\n  \"negative_cache_ttl\": 900,\n  \"deprecate_any_requests\": true,\n  \"ecs_fallback\": false,\n  \"ratelimit\": 600,\n  \"attack_mitigation\": {\n    \"enabled\": true,\n    \"only_when_origin_unhealthy\": false\n  },\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
+		"description": "DNS Firewall cluster management",
+		"title": "DNS Firewall"
+	}
+}

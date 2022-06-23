@@ -1,0 +1,2234 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/keyless-certificate.json",
+	"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+	"title": "Keyless SSL for a Zone",
+	"description": "A Keyless certificate is an SSL certificate where the SSL private key is not stored on Cloudflare",
+	"type": "object",
+	"allOf": [
+		{
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"host",
+				"port",
+				"status",
+				"enabled",
+				"permissions",
+				"created_on",
+				"modified_on"
+			],
+			"properties": {
+				"id": {
+					"description": "Keyless certificate identifier tag",
+					"type": "string",
+					"maxLength": 32,
+					"readOnly": true,
+					"example": "4d2844d2ce78891c34d0b6c0535a291e"
+				},
+				"name": {
+					"type": "string",
+					"description": "The keyless SSL name",
+					"maxLength": 180,
+					"readOnly": true,
+					"example": "example.com Keyless SSL"
+				},
+				"host": {
+					"type": "string",
+					"pattern": "hostname_or_ip",
+					"description": "The keyless SSL name",
+					"maxLength": 253,
+					"example": "example.com"
+				},
+				"port": {
+					"type": "number",
+					"description": "The keyless SSL port used to commmunicate between Cloudflare and the client's Keyless SSL server",
+					"maxLength": 65535,
+					"default": 24008,
+					"example": 24008
+				},
+				"status": {
+					"type": "string",
+					"enum": [
+						"active",
+						"deleted"
+					],
+					"description": "Status of the Keyless SSL",
+					"readOnly": true,
+					"example": "active"
+				},
+				"enabled": {
+					"type": "boolean",
+					"description": "Whether or not the Keyless SSL is on or off",
+					"readOnly": true,
+					"example": false
+				},
+				"permissions": {
+					"description": "Available permissions for the Keyless SSL for the current user requesting the item",
+					"readOnly": true,
+					"type": "array",
+					"example": [
+						"#ssl:read",
+						"#ssl:edit"
+					]
+				},
+				"created_on": {
+					"readOnly": true,
+					"type": "string",
+					"format": "date-time",
+					"example": "2014-01-01T05:20:00Z",
+					"description": "When the Keyless SSL was created"
+				},
+				"modified_on": {
+					"readOnly": true,
+					"type": "string",
+					"format": "date-time",
+					"example": "2014-01-01T05:20:00Z",
+					"description": "When the Keyless SSL was last modified"
+				}
+			}
+		}
+	],
+	"definitions": {
+		"identifier": {
+			"description": "Keyless certificate identifier tag",
+			"type": "string",
+			"maxLength": 32,
+			"readOnly": true,
+			"example": "4d2844d2ce78891c34d0b6c0535a291e"
+		},
+		"name": {
+			"type": "string",
+			"description": "The keyless SSL name",
+			"maxLength": 180,
+			"readOnly": true,
+			"example": "example.com Keyless SSL"
+		},
+		"host": {
+			"type": "string",
+			"pattern": "hostname_or_ip",
+			"description": "The keyless SSL name",
+			"maxLength": 253,
+			"example": "example.com"
+		},
+		"port": {
+			"type": "number",
+			"description": "The keyless SSL port used to commmunicate between Cloudflare and the client's Keyless SSL server",
+			"maxLength": 65535,
+			"default": 24008,
+			"example": 24008
+		},
+		"status": {
+			"type": "string",
+			"enum": [
+				"active",
+				"deleted"
+			],
+			"description": "Status of the Keyless SSL",
+			"readOnly": true,
+			"example": "active"
+		},
+		"enabled": {
+			"type": "boolean",
+			"description": "Whether or not the Keyless SSL is on or off",
+			"readOnly": true,
+			"example": false
+		},
+		"certificate": {
+			"type": "string",
+			"description": "The zone's SSL certificate or SSL certificate and intermediate(s)",
+			"example": "-----BEGIN CERTIFICATE----- MIIDtTCCAp2gAwIBAgIJAM15n7fdxhRtMA0GCSqGSIb3DQEBBQUAMEUxCzAJBgNV BAYTAlVTMRMwEQYDVQQIEwpTb21lLVN0YXRlMSEwHwYDVQQKExhJbnRlcm5ldCBX aWRnaXRzIFB0eSBMdGQwHhcNMTQwMzExMTkyMTU5WhcNMTQwNDEwMTkyMTU5WjBF MQswCQYDVQQGEwJVUzETMBEGA1UECBMKU29tZS1TdGF0ZTEhMB8GA1UEChMYSW50 ZXJuZXQgV2lkZ2l0cyBQdHkgTHRkMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB CgKCAQEAvq3sKsHpeduJHimOK+fvQdKsI8z8A05MZyyLp2/R/GE8FjNv+hkVY1WQ LIyTNNQH7CJecE1nbTfo8Y56S7x/rhxC6/DJ8MIulapFPnorq46KU6yRxiM0MQ3N nTJHlHA2ozZta6YBBfVfhHWl1F0IfNbXCLKvGwWWMbCx43OfW6KTkbRnE6gFWKuO fSO5h2u5TaWVuSIzBvYs7Vza6m+gtYAvKAJV2nSZ+eSEFPDo29corOy8+huEOUL8 5FAw4BFPsr1TlrlGPFitduQUHGrSL7skk1ESGza0to3bOtrodKei2s9bk5MXm7lZ qI+WZJX4Zu9+mzZhc9pCVi8r/qlXuQIDAQABo4GnMIGkMB0GA1UdDgQWBBRvavf+ sWM4IwKiH9X9w1vl6nUVRDB1BgNVHSMEbjBsgBRvavf+sWM4IwKiH9X9w1vl6nUV RKFJpEcwRTELMAkGA1UEBhMCVVMxEzARBgNVBAgTClNvbWUtU3RhdGUxITAfBgNV BAoTGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZIIJAM15n7fdxhRtMAwGA1UdEwQF MAMBAf8wDQYJKoZIhvcNAQEFBQADggEBABY2ZzBaW0dMsAAT7tPJzrVWVzQx6KU4 UEBLudIlWPlkAwTnINCWR/8eNjCCmGA4heUdHmazdpPa8RzwOmc0NT1NQqzSyktt vTqb4iHD7+8f9MqJ9/FssCfTtqr/Qst/hGH4Wmdf1EJ/6FqYAAb5iRlPgshFZxU8 uXtA8hWn6fK6eISD9HBdcAFToUvKNZ1BIDPvh9f95Ine8ar6yGd56TUNrHR8eHBs ESxz5ddVR/oWRysNJ+aGAyYqHS8S/ttmC7r4XCAHqXptkHPCGRqkAhsterYhd4I8 /cBzejUobNCjjHFbtkAL/SjxZOLW+pNkZwfeYdM8iPkD54Uua1v2tdw= -----END CERTIFICATE-----"
+		},
+		"bundle_method": {
+			"type": "string",
+			"enum": [
+				"ubiquitous",
+				"optimal",
+				"force"
+			],
+			"description": "A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.",
+			"example": "ubiquitous",
+			"default": "ubiquitous"
+		},
+		"base": {
+			"type": "object",
+			"required": [
+				"id",
+				"name",
+				"host",
+				"port",
+				"status",
+				"enabled",
+				"permissions",
+				"created_on",
+				"modified_on"
+			],
+			"properties": {
+				"id": {
+					"description": "Keyless certificate identifier tag",
+					"type": "string",
+					"maxLength": 32,
+					"readOnly": true,
+					"example": "4d2844d2ce78891c34d0b6c0535a291e"
+				},
+				"name": {
+					"type": "string",
+					"description": "The keyless SSL name",
+					"maxLength": 180,
+					"readOnly": true,
+					"example": "example.com Keyless SSL"
+				},
+				"host": {
+					"type": "string",
+					"pattern": "hostname_or_ip",
+					"description": "The keyless SSL name",
+					"maxLength": 253,
+					"example": "example.com"
+				},
+				"port": {
+					"type": "number",
+					"description": "The keyless SSL port used to commmunicate between Cloudflare and the client's Keyless SSL server",
+					"maxLength": 65535,
+					"default": 24008,
+					"example": 24008
+				},
+				"status": {
+					"type": "string",
+					"enum": [
+						"active",
+						"deleted"
+					],
+					"description": "Status of the Keyless SSL",
+					"readOnly": true,
+					"example": "active"
+				},
+				"enabled": {
+					"type": "boolean",
+					"description": "Whether or not the Keyless SSL is on or off",
+					"readOnly": true,
+					"example": false
+				},
+				"permissions": {
+					"description": "Available permissions for the Keyless SSL for the current user requesting the item",
+					"readOnly": true,
+					"type": "array",
+					"example": [
+						"#ssl:read",
+						"#ssl:edit"
+					]
+				},
+				"created_on": {
+					"readOnly": true,
+					"type": "string",
+					"format": "date-time",
+					"example": "2014-01-01T05:20:00Z",
+					"description": "When the Keyless SSL was created"
+				},
+				"modified_on": {
+					"readOnly": true,
+					"type": "string",
+					"format": "date-time",
+					"example": "2014-01-01T05:20:00Z",
+					"description": "When the Keyless SSL was last modified"
+				}
+			}
+		},
+		"keyless_response_single": {
+			"allOf": [
+				{
+					"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
+					"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+					"description": "Schema for an API response from Cloudflare that contains a single result object",
+					"type": "object",
+					"allOf": [
+						{
+							"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
+							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+							"description": "Common schema for all Cloudflare v4 API responses",
+							"type": "object",
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"oneOf": [
+								{
+									"$comment": "This subschema describes successful responses",
+									"properties": {
+										"success": {
+											"description": "Whether the API call was successful or not",
+											"type": "boolean",
+											"enum": [
+												true
+											],
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"required": [
+													"code",
+													"message"
+												],
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"required": [
+													"code",
+													"message"
+												],
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"result": {
+											"type": [
+												"object",
+												"array",
+												"string"
+											]
+										}
+									}
+								},
+								{
+									"$comment": "This subschema describes failure responses",
+									"properties": {
+										"success": {
+											"description": "Whether the API call was successful or not",
+											"type": "boolean",
+											"enum": [
+												false
+											],
+											"example": false
+										},
+										"errors": {
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"type": "object",
+														"required": [
+															"code",
+															"message"
+														],
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1,
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											]
+										},
+										"messages": {
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"type": "object",
+														"required": [
+															"code",
+															"message"
+														],
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"type": "null",
+											"enum": [
+												null
+											],
+											"example": null
+										}
+									}
+								}
+							],
+							"definitions": {
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"required": [
+											"code",
+											"message"
+										],
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"uniqueItems": true
+									},
+									"example": []
+								}
+							}
+						},
+						{
+							"properties": {
+								"result": {
+									"type": [
+										"object",
+										"string",
+										"null"
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"properties": {
+						"result": {
+							"type": "object",
+							"cfRecurse": ""
+						}
+					}
+				}
+			]
+		},
+		"keyless_response_single_id": {
+			"allOf": [
+				{
+					"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
+					"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+					"description": "Schema for an API response from Cloudflare that contains a single result object",
+					"type": "object",
+					"allOf": [
+						{
+							"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
+							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+							"description": "Common schema for all Cloudflare v4 API responses",
+							"type": "object",
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"oneOf": [
+								{
+									"$comment": "This subschema describes successful responses",
+									"properties": {
+										"success": {
+											"description": "Whether the API call was successful or not",
+											"type": "boolean",
+											"enum": [
+												true
+											],
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"required": [
+													"code",
+													"message"
+												],
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"required": [
+													"code",
+													"message"
+												],
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"result": {
+											"type": [
+												"object",
+												"array",
+												"string"
+											]
+										}
+									}
+								},
+								{
+									"$comment": "This subschema describes failure responses",
+									"properties": {
+										"success": {
+											"description": "Whether the API call was successful or not",
+											"type": "boolean",
+											"enum": [
+												false
+											],
+											"example": false
+										},
+										"errors": {
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"type": "object",
+														"required": [
+															"code",
+															"message"
+														],
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1,
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											]
+										},
+										"messages": {
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"type": "object",
+														"required": [
+															"code",
+															"message"
+														],
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"type": "null",
+											"enum": [
+												null
+											],
+											"example": null
+										}
+									}
+								}
+							],
+							"definitions": {
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"required": [
+											"code",
+											"message"
+										],
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"uniqueItems": true
+									},
+									"example": []
+								}
+							}
+						},
+						{
+							"properties": {
+								"result": {
+									"type": [
+										"object",
+										"string",
+										"null"
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"properties": {
+						"result": {
+							"type": "object",
+							"properties": {
+								"id": {
+									"description": "Keyless certificate identifier tag",
+									"type": "string",
+									"maxLength": 32,
+									"readOnly": true,
+									"example": "4d2844d2ce78891c34d0b6c0535a291e"
+								}
+							}
+						}
+					}
+				}
+			]
+		},
+		"keyless_response_collection": {
+			"allOf": [
+				{
+					"id": "https://api.cloudflare.com/schemas/v4/common/api-response-collection.json",
+					"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+					"description": "Schema for an API response from Cloudflare that contains multiple result objects",
+					"type": "object",
+					"anyOf": [
+						{
+							"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
+							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+							"description": "Common schema for all Cloudflare v4 API responses",
+							"type": "object",
+							"required": [
+								"success",
+								"errors",
+								"messages",
+								"result"
+							],
+							"oneOf": [
+								{
+									"$comment": "This subschema describes successful responses",
+									"properties": {
+										"success": {
+											"description": "Whether the API call was successful or not",
+											"type": "boolean",
+											"enum": [
+												true
+											],
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"required": [
+													"code",
+													"message"
+												],
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"messages": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"required": [
+													"code",
+													"message"
+												],
+												"properties": {
+													"code": {
+														"type": "integer",
+														"minimum": 1000
+													},
+													"message": {
+														"type": "string"
+													}
+												},
+												"uniqueItems": true
+											},
+											"example": []
+										},
+										"result": {
+											"type": [
+												"object",
+												"array",
+												"string"
+											]
+										}
+									}
+								},
+								{
+									"$comment": "This subschema describes failure responses",
+									"properties": {
+										"success": {
+											"description": "Whether the API call was successful or not",
+											"type": "boolean",
+											"enum": [
+												false
+											],
+											"example": false
+										},
+										"errors": {
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"type": "object",
+														"required": [
+															"code",
+															"message"
+														],
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"minLength": 1,
+											"example": [
+												{
+													"code": 7003,
+													"message": "No route for the URI"
+												}
+											]
+										},
+										"messages": {
+											"allOf": [
+												{
+													"type": "array",
+													"items": {
+														"type": "object",
+														"required": [
+															"code",
+															"message"
+														],
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											],
+											"example": []
+										},
+										"result": {
+											"type": "null",
+											"enum": [
+												null
+											],
+											"example": null
+										}
+									}
+								}
+							],
+							"definitions": {
+								"messages": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"required": [
+											"code",
+											"message"
+										],
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"uniqueItems": true
+									},
+									"example": []
+								}
+							}
+						},
+						{
+							"properties": {
+								"result": {
+									"type": [
+										"array",
+										"null"
+									]
+								},
+								"result_info": {
+									"type": "object",
+									"properties": {
+										"page": {
+											"description": "Current page within paginated list of results",
+											"type": "number",
+											"example": 1
+										},
+										"per_page": {
+											"description": "Number of results per page of results",
+											"type": "number",
+											"example": 20
+										},
+										"count": {
+											"description": "Total results returned based on your search parameters",
+											"type": "number",
+											"example": 1
+										},
+										"total_count": {
+											"description": "Total results available without any search parameters",
+											"type": "number",
+											"example": 2000
+										}
+									}
+								}
+							}
+						}
+					],
+					"definitions": {
+						"params": {
+							"type": "object",
+							"properties": {
+								"page": {
+									"description": "Requested page within paginated list of results",
+									"type": "number",
+									"example": 1
+								},
+								"per_page": {
+									"description": "Maximum number of results requested",
+									"type": "number",
+									"example": 20
+								}
+							}
+						},
+						"result_info": {
+							"type": "object",
+							"properties": {
+								"page": {
+									"description": "Current page within paginated list of results",
+									"type": "number",
+									"example": 1
+								},
+								"per_page": {
+									"description": "Number of results per page of results",
+									"type": "number",
+									"example": 20
+								},
+								"count": {
+									"description": "Total results returned based on your search parameters",
+									"type": "number",
+									"example": 1
+								},
+								"total_count": {
+									"description": "Total results available without any search parameters",
+									"type": "number",
+									"example": 2000
+								}
+							}
+						}
+					}
+				},
+				{
+					"properties": {
+						"result": {
+							"type": "array",
+							"items": {
+								"cfRecurse": ""
+							}
+						}
+					}
+				}
+			]
+		},
+		"zone_identifier": {
+			"description": "Zone identifier tag",
+			"type": "string",
+			"maxLength": 32,
+			"readOnly": true,
+			"example": "023e105f4ecef8ad9ca31a8372d0c353"
+		}
+	},
+	"links": [
+		{
+			"title": "List Keyless SSL Configurations",
+			"description": "List all Keyless SSL configurations for a given zone",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_identifier}/keyless_certificates",
+			"method": "GET",
+			"targetSchema": {
+				"allOf": [
+					{
+						"id": "https://api.cloudflare.com/schemas/v4/common/api-response-collection.json",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"description": "Schema for an API response from Cloudflare that contains multiple result objects",
+						"type": "object",
+						"anyOf": [
+							{
+								"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
+								"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+								"description": "Common schema for all Cloudflare v4 API responses",
+								"type": "object",
+								"required": [
+									"success",
+									"errors",
+									"messages",
+									"result"
+								],
+								"oneOf": [
+									{
+										"$comment": "This subschema describes successful responses",
+										"properties": {
+											"success": {
+												"description": "Whether the API call was successful or not",
+												"type": "boolean",
+												"enum": [
+													true
+												],
+												"example": true
+											},
+											"errors": {
+												"type": "array",
+												"items": {
+													"type": "object",
+													"required": [
+														"code",
+														"message"
+													],
+													"properties": {
+														"code": {
+															"type": "integer",
+															"minimum": 1000
+														},
+														"message": {
+															"type": "string"
+														}
+													},
+													"uniqueItems": true
+												},
+												"example": []
+											},
+											"messages": {
+												"type": "array",
+												"items": {
+													"type": "object",
+													"required": [
+														"code",
+														"message"
+													],
+													"properties": {
+														"code": {
+															"type": "integer",
+															"minimum": 1000
+														},
+														"message": {
+															"type": "string"
+														}
+													},
+													"uniqueItems": true
+												},
+												"example": []
+											},
+											"result": {
+												"type": [
+													"object",
+													"array",
+													"string"
+												]
+											}
+										}
+									},
+									{
+										"$comment": "This subschema describes failure responses",
+										"properties": {
+											"success": {
+												"description": "Whether the API call was successful or not",
+												"type": "boolean",
+												"enum": [
+													false
+												],
+												"example": false
+											},
+											"errors": {
+												"allOf": [
+													{
+														"type": "array",
+														"items": {
+															"type": "object",
+															"required": [
+																"code",
+																"message"
+															],
+															"properties": {
+																"code": {
+																	"type": "integer",
+																	"minimum": 1000
+																},
+																"message": {
+																	"type": "string"
+																}
+															},
+															"uniqueItems": true
+														},
+														"example": []
+													}
+												],
+												"minLength": 1,
+												"example": [
+													{
+														"code": 7003,
+														"message": "No route for the URI"
+													}
+												]
+											},
+											"messages": {
+												"allOf": [
+													{
+														"type": "array",
+														"items": {
+															"type": "object",
+															"required": [
+																"code",
+																"message"
+															],
+															"properties": {
+																"code": {
+																	"type": "integer",
+																	"minimum": 1000
+																},
+																"message": {
+																	"type": "string"
+																}
+															},
+															"uniqueItems": true
+														},
+														"example": []
+													}
+												],
+												"example": []
+											},
+											"result": {
+												"type": "null",
+												"enum": [
+													null
+												],
+												"example": null
+											}
+										}
+									}
+								],
+								"definitions": {
+									"messages": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"required": [
+												"code",
+												"message"
+											],
+											"properties": {
+												"code": {
+													"type": "integer",
+													"minimum": 1000
+												},
+												"message": {
+													"type": "string"
+												}
+											},
+											"uniqueItems": true
+										},
+										"example": []
+									}
+								}
+							},
+							{
+								"properties": {
+									"result": {
+										"type": [
+											"array",
+											"null"
+										]
+									},
+									"result_info": {
+										"type": "object",
+										"properties": {
+											"page": {
+												"description": "Current page within paginated list of results",
+												"type": "number",
+												"example": 1
+											},
+											"per_page": {
+												"description": "Number of results per page of results",
+												"type": "number",
+												"example": 20
+											},
+											"count": {
+												"description": "Total results returned based on your search parameters",
+												"type": "number",
+												"example": 1
+											},
+											"total_count": {
+												"description": "Total results available without any search parameters",
+												"type": "number",
+												"example": 2000
+											}
+										}
+									}
+								}
+							}
+						],
+						"definitions": {
+							"params": {
+								"type": "object",
+								"properties": {
+									"page": {
+										"description": "Requested page within paginated list of results",
+										"type": "number",
+										"example": 1
+									},
+									"per_page": {
+										"description": "Maximum number of results requested",
+										"type": "number",
+										"example": 20
+									}
+								}
+							},
+							"result_info": {
+								"type": "object",
+								"properties": {
+									"page": {
+										"description": "Current page within paginated list of results",
+										"type": "number",
+										"example": 1
+									},
+									"per_page": {
+										"description": "Number of results per page of results",
+										"type": "number",
+										"example": 20
+									},
+									"count": {
+										"description": "Total results returned based on your search parameters",
+										"type": "number",
+										"example": 1
+									},
+									"total_count": {
+										"description": "Total results available without any search parameters",
+										"type": "number",
+										"example": 2000
+									}
+								}
+							}
+						}
+					},
+					{
+						"properties": {
+							"result": {
+								"type": "array",
+								"items": {
+									"cfRecurse": ""
+								}
+							}
+						}
+					}
+				]
+			},
+			"cfOwnership": "ssl",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#ssl:read"
+				]
+			}
+		},
+		{
+			"title": "Create Keyless SSL Configuration",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_identifier}/keyless_certificates",
+			"method": "POST",
+			"schema": {
+				"type": "object",
+				"required": [
+					"host",
+					"port",
+					"certificate"
+				],
+				"properties": {
+					"host": {
+						"type": "string",
+						"pattern": "hostname_or_ip",
+						"description": "The keyless SSL name",
+						"maxLength": 253,
+						"example": "example.com"
+					},
+					"port": {
+						"type": "number",
+						"description": "The keyless SSL port used to commmunicate between Cloudflare and the client's Keyless SSL server",
+						"maxLength": 65535,
+						"default": 24008,
+						"example": 24008
+					},
+					"name": {
+						"type": "string",
+						"description": "The keyless SSL name",
+						"maxLength": 180,
+						"readOnly": true,
+						"example": "example.com Keyless SSL"
+					},
+					"certificate": {
+						"type": "string",
+						"description": "The zone's SSL certificate or SSL certificate and intermediate(s)",
+						"example": "-----BEGIN CERTIFICATE----- MIIDtTCCAp2gAwIBAgIJAM15n7fdxhRtMA0GCSqGSIb3DQEBBQUAMEUxCzAJBgNV BAYTAlVTMRMwEQYDVQQIEwpTb21lLVN0YXRlMSEwHwYDVQQKExhJbnRlcm5ldCBX aWRnaXRzIFB0eSBMdGQwHhcNMTQwMzExMTkyMTU5WhcNMTQwNDEwMTkyMTU5WjBF MQswCQYDVQQGEwJVUzETMBEGA1UECBMKU29tZS1TdGF0ZTEhMB8GA1UEChMYSW50 ZXJuZXQgV2lkZ2l0cyBQdHkgTHRkMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB CgKCAQEAvq3sKsHpeduJHimOK+fvQdKsI8z8A05MZyyLp2/R/GE8FjNv+hkVY1WQ LIyTNNQH7CJecE1nbTfo8Y56S7x/rhxC6/DJ8MIulapFPnorq46KU6yRxiM0MQ3N nTJHlHA2ozZta6YBBfVfhHWl1F0IfNbXCLKvGwWWMbCx43OfW6KTkbRnE6gFWKuO fSO5h2u5TaWVuSIzBvYs7Vza6m+gtYAvKAJV2nSZ+eSEFPDo29corOy8+huEOUL8 5FAw4BFPsr1TlrlGPFitduQUHGrSL7skk1ESGza0to3bOtrodKei2s9bk5MXm7lZ qI+WZJX4Zu9+mzZhc9pCVi8r/qlXuQIDAQABo4GnMIGkMB0GA1UdDgQWBBRvavf+ sWM4IwKiH9X9w1vl6nUVRDB1BgNVHSMEbjBsgBRvavf+sWM4IwKiH9X9w1vl6nUV RKFJpEcwRTELMAkGA1UEBhMCVVMxEzARBgNVBAgTClNvbWUtU3RhdGUxITAfBgNV BAoTGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZIIJAM15n7fdxhRtMAwGA1UdEwQF MAMBAf8wDQYJKoZIhvcNAQEFBQADggEBABY2ZzBaW0dMsAAT7tPJzrVWVzQx6KU4 UEBLudIlWPlkAwTnINCWR/8eNjCCmGA4heUdHmazdpPa8RzwOmc0NT1NQqzSyktt vTqb4iHD7+8f9MqJ9/FssCfTtqr/Qst/hGH4Wmdf1EJ/6FqYAAb5iRlPgshFZxU8 uXtA8hWn6fK6eISD9HBdcAFToUvKNZ1BIDPvh9f95Ine8ar6yGd56TUNrHR8eHBs ESxz5ddVR/oWRysNJ+aGAyYqHS8S/ttmC7r4XCAHqXptkHPCGRqkAhsterYhd4I8 /cBzejUobNCjjHFbtkAL/SjxZOLW+pNkZwfeYdM8iPkD54Uua1v2tdw= -----END CERTIFICATE-----"
+					},
+					"bundle_method": {
+						"type": "string",
+						"enum": [
+							"ubiquitous",
+							"optimal",
+							"force"
+						],
+						"description": "A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.",
+						"example": "ubiquitous",
+						"default": "ubiquitous"
+					}
+				}
+			},
+			"targetSchema": {
+				"allOf": [
+					{
+						"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"description": "Schema for an API response from Cloudflare that contains a single result object",
+						"type": "object",
+						"allOf": [
+							{
+								"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
+								"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+								"description": "Common schema for all Cloudflare v4 API responses",
+								"type": "object",
+								"required": [
+									"success",
+									"errors",
+									"messages",
+									"result"
+								],
+								"oneOf": [
+									{
+										"$comment": "This subschema describes successful responses",
+										"properties": {
+											"success": {
+												"description": "Whether the API call was successful or not",
+												"type": "boolean",
+												"enum": [
+													true
+												],
+												"example": true
+											},
+											"errors": {
+												"type": "array",
+												"items": {
+													"type": "object",
+													"required": [
+														"code",
+														"message"
+													],
+													"properties": {
+														"code": {
+															"type": "integer",
+															"minimum": 1000
+														},
+														"message": {
+															"type": "string"
+														}
+													},
+													"uniqueItems": true
+												},
+												"example": []
+											},
+											"messages": {
+												"type": "array",
+												"items": {
+													"type": "object",
+													"required": [
+														"code",
+														"message"
+													],
+													"properties": {
+														"code": {
+															"type": "integer",
+															"minimum": 1000
+														},
+														"message": {
+															"type": "string"
+														}
+													},
+													"uniqueItems": true
+												},
+												"example": []
+											},
+											"result": {
+												"type": [
+													"object",
+													"array",
+													"string"
+												]
+											}
+										}
+									},
+									{
+										"$comment": "This subschema describes failure responses",
+										"properties": {
+											"success": {
+												"description": "Whether the API call was successful or not",
+												"type": "boolean",
+												"enum": [
+													false
+												],
+												"example": false
+											},
+											"errors": {
+												"allOf": [
+													{
+														"type": "array",
+														"items": {
+															"type": "object",
+															"required": [
+																"code",
+																"message"
+															],
+															"properties": {
+																"code": {
+																	"type": "integer",
+																	"minimum": 1000
+																},
+																"message": {
+																	"type": "string"
+																}
+															},
+															"uniqueItems": true
+														},
+														"example": []
+													}
+												],
+												"minLength": 1,
+												"example": [
+													{
+														"code": 7003,
+														"message": "No route for the URI"
+													}
+												]
+											},
+											"messages": {
+												"allOf": [
+													{
+														"type": "array",
+														"items": {
+															"type": "object",
+															"required": [
+																"code",
+																"message"
+															],
+															"properties": {
+																"code": {
+																	"type": "integer",
+																	"minimum": 1000
+																},
+																"message": {
+																	"type": "string"
+																}
+															},
+															"uniqueItems": true
+														},
+														"example": []
+													}
+												],
+												"example": []
+											},
+											"result": {
+												"type": "null",
+												"enum": [
+													null
+												],
+												"example": null
+											}
+										}
+									}
+								],
+								"definitions": {
+									"messages": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"required": [
+												"code",
+												"message"
+											],
+											"properties": {
+												"code": {
+													"type": "integer",
+													"minimum": 1000
+												},
+												"message": {
+													"type": "string"
+												}
+											},
+											"uniqueItems": true
+										},
+										"example": []
+									}
+								}
+							},
+							{
+								"properties": {
+									"result": {
+										"type": [
+											"object",
+											"string",
+											"null"
+										]
+									}
+								}
+							}
+						]
+					},
+					{
+						"properties": {
+							"result": {
+								"type": "object",
+								"cfRecurse": ""
+							}
+						}
+					}
+				]
+			},
+			"cfOwnership": "ssl",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#ssl:edit"
+				]
+			}
+		},
+		{
+			"title": "Get Keyless SSL Configuration",
+			"description": "Get details for one Keyless SSL configuration",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/keyless_certificates/{#/definitions/identifier}",
+			"method": "GET",
+			"targetSchema": {
+				"allOf": [
+					{
+						"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"description": "Schema for an API response from Cloudflare that contains a single result object",
+						"type": "object",
+						"allOf": [
+							{
+								"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
+								"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+								"description": "Common schema for all Cloudflare v4 API responses",
+								"type": "object",
+								"required": [
+									"success",
+									"errors",
+									"messages",
+									"result"
+								],
+								"oneOf": [
+									{
+										"$comment": "This subschema describes successful responses",
+										"properties": {
+											"success": {
+												"description": "Whether the API call was successful or not",
+												"type": "boolean",
+												"enum": [
+													true
+												],
+												"example": true
+											},
+											"errors": {
+												"type": "array",
+												"items": {
+													"type": "object",
+													"required": [
+														"code",
+														"message"
+													],
+													"properties": {
+														"code": {
+															"type": "integer",
+															"minimum": 1000
+														},
+														"message": {
+															"type": "string"
+														}
+													},
+													"uniqueItems": true
+												},
+												"example": []
+											},
+											"messages": {
+												"type": "array",
+												"items": {
+													"type": "object",
+													"required": [
+														"code",
+														"message"
+													],
+													"properties": {
+														"code": {
+															"type": "integer",
+															"minimum": 1000
+														},
+														"message": {
+															"type": "string"
+														}
+													},
+													"uniqueItems": true
+												},
+												"example": []
+											},
+											"result": {
+												"type": [
+													"object",
+													"array",
+													"string"
+												]
+											}
+										}
+									},
+									{
+										"$comment": "This subschema describes failure responses",
+										"properties": {
+											"success": {
+												"description": "Whether the API call was successful or not",
+												"type": "boolean",
+												"enum": [
+													false
+												],
+												"example": false
+											},
+											"errors": {
+												"allOf": [
+													{
+														"type": "array",
+														"items": {
+															"type": "object",
+															"required": [
+																"code",
+																"message"
+															],
+															"properties": {
+																"code": {
+																	"type": "integer",
+																	"minimum": 1000
+																},
+																"message": {
+																	"type": "string"
+																}
+															},
+															"uniqueItems": true
+														},
+														"example": []
+													}
+												],
+												"minLength": 1,
+												"example": [
+													{
+														"code": 7003,
+														"message": "No route for the URI"
+													}
+												]
+											},
+											"messages": {
+												"allOf": [
+													{
+														"type": "array",
+														"items": {
+															"type": "object",
+															"required": [
+																"code",
+																"message"
+															],
+															"properties": {
+																"code": {
+																	"type": "integer",
+																	"minimum": 1000
+																},
+																"message": {
+																	"type": "string"
+																}
+															},
+															"uniqueItems": true
+														},
+														"example": []
+													}
+												],
+												"example": []
+											},
+											"result": {
+												"type": "null",
+												"enum": [
+													null
+												],
+												"example": null
+											}
+										}
+									}
+								],
+								"definitions": {
+									"messages": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"required": [
+												"code",
+												"message"
+											],
+											"properties": {
+												"code": {
+													"type": "integer",
+													"minimum": 1000
+												},
+												"message": {
+													"type": "string"
+												}
+											},
+											"uniqueItems": true
+										},
+										"example": []
+									}
+								}
+							},
+							{
+								"properties": {
+									"result": {
+										"type": [
+											"object",
+											"string",
+											"null"
+										]
+									}
+								}
+							}
+						]
+					},
+					{
+						"properties": {
+							"result": {
+								"type": "object",
+								"cfRecurse": ""
+							}
+						}
+					}
+				]
+			},
+			"cfOwnership": "ssl",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#ssl:read"
+				]
+			}
+		},
+		{
+			"title": "Edit Keyless SSL Configuration",
+			"description": "This will update attributes of a Keyless SSL. Consists of one or more of the following:  host,name,port,certificate,enabled",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/keyless_certificates/{#/definitions/identifier}",
+			"method": "PATCH",
+			"schema": {
+				"type": "object",
+				"properties": {
+					"host": {
+						"type": "string",
+						"pattern": "hostname_or_ip",
+						"description": "The keyless SSL name",
+						"maxLength": 253,
+						"example": "example.com"
+					},
+					"name": {
+						"type": "string",
+						"description": "The keyless SSL name",
+						"maxLength": 180,
+						"readOnly": true,
+						"example": "example.com Keyless SSL"
+					},
+					"port": {
+						"type": "number",
+						"description": "The keyless SSL port used to commmunicate between Cloudflare and the client's Keyless SSL server",
+						"maxLength": 65535,
+						"default": 24008,
+						"example": 24008
+					},
+					"enabled": {
+						"type": "boolean",
+						"description": "Whether or not the Keyless SSL is on or off",
+						"readOnly": true,
+						"example": false
+					}
+				}
+			},
+			"targetSchema": {
+				"allOf": [
+					{
+						"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"description": "Schema for an API response from Cloudflare that contains a single result object",
+						"type": "object",
+						"allOf": [
+							{
+								"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
+								"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+								"description": "Common schema for all Cloudflare v4 API responses",
+								"type": "object",
+								"required": [
+									"success",
+									"errors",
+									"messages",
+									"result"
+								],
+								"oneOf": [
+									{
+										"$comment": "This subschema describes successful responses",
+										"properties": {
+											"success": {
+												"description": "Whether the API call was successful or not",
+												"type": "boolean",
+												"enum": [
+													true
+												],
+												"example": true
+											},
+											"errors": {
+												"type": "array",
+												"items": {
+													"type": "object",
+													"required": [
+														"code",
+														"message"
+													],
+													"properties": {
+														"code": {
+															"type": "integer",
+															"minimum": 1000
+														},
+														"message": {
+															"type": "string"
+														}
+													},
+													"uniqueItems": true
+												},
+												"example": []
+											},
+											"messages": {
+												"type": "array",
+												"items": {
+													"type": "object",
+													"required": [
+														"code",
+														"message"
+													],
+													"properties": {
+														"code": {
+															"type": "integer",
+															"minimum": 1000
+														},
+														"message": {
+															"type": "string"
+														}
+													},
+													"uniqueItems": true
+												},
+												"example": []
+											},
+											"result": {
+												"type": [
+													"object",
+													"array",
+													"string"
+												]
+											}
+										}
+									},
+									{
+										"$comment": "This subschema describes failure responses",
+										"properties": {
+											"success": {
+												"description": "Whether the API call was successful or not",
+												"type": "boolean",
+												"enum": [
+													false
+												],
+												"example": false
+											},
+											"errors": {
+												"allOf": [
+													{
+														"type": "array",
+														"items": {
+															"type": "object",
+															"required": [
+																"code",
+																"message"
+															],
+															"properties": {
+																"code": {
+																	"type": "integer",
+																	"minimum": 1000
+																},
+																"message": {
+																	"type": "string"
+																}
+															},
+															"uniqueItems": true
+														},
+														"example": []
+													}
+												],
+												"minLength": 1,
+												"example": [
+													{
+														"code": 7003,
+														"message": "No route for the URI"
+													}
+												]
+											},
+											"messages": {
+												"allOf": [
+													{
+														"type": "array",
+														"items": {
+															"type": "object",
+															"required": [
+																"code",
+																"message"
+															],
+															"properties": {
+																"code": {
+																	"type": "integer",
+																	"minimum": 1000
+																},
+																"message": {
+																	"type": "string"
+																}
+															},
+															"uniqueItems": true
+														},
+														"example": []
+													}
+												],
+												"example": []
+											},
+											"result": {
+												"type": "null",
+												"enum": [
+													null
+												],
+												"example": null
+											}
+										}
+									}
+								],
+								"definitions": {
+									"messages": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"required": [
+												"code",
+												"message"
+											],
+											"properties": {
+												"code": {
+													"type": "integer",
+													"minimum": 1000
+												},
+												"message": {
+													"type": "string"
+												}
+											},
+											"uniqueItems": true
+										},
+										"example": []
+									}
+								}
+							},
+							{
+								"properties": {
+									"result": {
+										"type": [
+											"object",
+											"string",
+											"null"
+										]
+									}
+								}
+							}
+						]
+					},
+					{
+						"properties": {
+							"result": {
+								"type": "object",
+								"cfRecurse": ""
+							}
+						}
+					}
+				]
+			},
+			"cfOwnership": "ssl",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#ssl:edit"
+				]
+			}
+		},
+		{
+			"title": "Delete Keyless SSL Configuration",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/keyless_certificates/{#/definitions/identifier}",
+			"method": "DELETE",
+			"targetSchema": {
+				"allOf": [
+					{
+						"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"description": "Schema for an API response from Cloudflare that contains a single result object",
+						"type": "object",
+						"allOf": [
+							{
+								"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
+								"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+								"description": "Common schema for all Cloudflare v4 API responses",
+								"type": "object",
+								"required": [
+									"success",
+									"errors",
+									"messages",
+									"result"
+								],
+								"oneOf": [
+									{
+										"$comment": "This subschema describes successful responses",
+										"properties": {
+											"success": {
+												"description": "Whether the API call was successful or not",
+												"type": "boolean",
+												"enum": [
+													true
+												],
+												"example": true
+											},
+											"errors": {
+												"type": "array",
+												"items": {
+													"type": "object",
+													"required": [
+														"code",
+														"message"
+													],
+													"properties": {
+														"code": {
+															"type": "integer",
+															"minimum": 1000
+														},
+														"message": {
+															"type": "string"
+														}
+													},
+													"uniqueItems": true
+												},
+												"example": []
+											},
+											"messages": {
+												"type": "array",
+												"items": {
+													"type": "object",
+													"required": [
+														"code",
+														"message"
+													],
+													"properties": {
+														"code": {
+															"type": "integer",
+															"minimum": 1000
+														},
+														"message": {
+															"type": "string"
+														}
+													},
+													"uniqueItems": true
+												},
+												"example": []
+											},
+											"result": {
+												"type": [
+													"object",
+													"array",
+													"string"
+												]
+											}
+										}
+									},
+									{
+										"$comment": "This subschema describes failure responses",
+										"properties": {
+											"success": {
+												"description": "Whether the API call was successful or not",
+												"type": "boolean",
+												"enum": [
+													false
+												],
+												"example": false
+											},
+											"errors": {
+												"allOf": [
+													{
+														"type": "array",
+														"items": {
+															"type": "object",
+															"required": [
+																"code",
+																"message"
+															],
+															"properties": {
+																"code": {
+																	"type": "integer",
+																	"minimum": 1000
+																},
+																"message": {
+																	"type": "string"
+																}
+															},
+															"uniqueItems": true
+														},
+														"example": []
+													}
+												],
+												"minLength": 1,
+												"example": [
+													{
+														"code": 7003,
+														"message": "No route for the URI"
+													}
+												]
+											},
+											"messages": {
+												"allOf": [
+													{
+														"type": "array",
+														"items": {
+															"type": "object",
+															"required": [
+																"code",
+																"message"
+															],
+															"properties": {
+																"code": {
+																	"type": "integer",
+																	"minimum": 1000
+																},
+																"message": {
+																	"type": "string"
+																}
+															},
+															"uniqueItems": true
+														},
+														"example": []
+													}
+												],
+												"example": []
+											},
+											"result": {
+												"type": "null",
+												"enum": [
+													null
+												],
+												"example": null
+											}
+										}
+									}
+								],
+								"definitions": {
+									"messages": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"required": [
+												"code",
+												"message"
+											],
+											"properties": {
+												"code": {
+													"type": "integer",
+													"minimum": 1000
+												},
+												"message": {
+													"type": "string"
+												}
+											},
+											"uniqueItems": true
+										},
+										"example": []
+									}
+								}
+							},
+							{
+								"properties": {
+									"result": {
+										"type": [
+											"object",
+											"string",
+											"null"
+										]
+									}
+								}
+							}
+						]
+					},
+					{
+						"properties": {
+							"result": {
+								"type": "object",
+								"properties": {
+									"id": {
+										"description": "Keyless certificate identifier tag",
+										"type": "string",
+										"maxLength": 32,
+										"readOnly": true,
+										"example": "4d2844d2ce78891c34d0b6c0535a291e"
+									}
+								}
+							}
+						}
+					}
+				]
+			},
+			"cfOwnership": "ssl",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#ssl:edit"
+				]
+			}
+		}
+	]
+}

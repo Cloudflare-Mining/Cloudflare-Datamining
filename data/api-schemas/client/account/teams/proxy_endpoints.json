@@ -1,0 +1,207 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/teams/proxy_endpoints.json",
+	"title": "Zero Trust Gateway Proxy Endpoints",
+	"description": "Proxy Endpoints are domains that HTTPS proxy clients can be pointed at to secure traffic.",
+	"type": "object",
+	"links": [
+		{
+			"title": "Proxy Endpoint Details",
+			"description": "List Zero Trust Gateway Proxy Endpoints for an account",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/gateway/proxy_endpoints/{#/definitions/uuid}",
+			"method": "GET",
+			"cfOwnership": "gateway",
+			"html_id": "zero-trust-gateway-proxy-endpoints-proxy-endpoint-details",
+			"uri": "accounts/:identifier/gateway/proxy_endpoints/:uuid",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/proxy_endpoints/ed35569b41ce4d1facfe683550f54086\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"ed35569b41ce4d1facfe683550f54086\",\n    \"name\": \"Devops team\",\n    \"ips\": [\n      \"192.0.2.1/32\"\n    ],\n    \"subdomain\": \"oli3n9zkz5.proxy.cloudflare-gateway.com\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
+		},
+		{
+			"title": "List Proxy Endpoints",
+			"description": "Fetch a single Zero Trust Gateway Proxy Endpoint",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/gateway/proxy_endpoints",
+			"method": "GET",
+			"cfOwnership": "gateway",
+			"html_id": "zero-trust-gateway-proxy-endpoints-list-proxy-endpoints",
+			"uri": "accounts/:identifier/gateway/proxy_endpoints",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/proxy_endpoints\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"ed35569b41ce4d1facfe683550f54086\",\n      \"name\": \"Devops team\",\n      \"ips\": [\n        \"192.0.2.1/32\"\n      ],\n      \"subdomain\": \"oli3n9zkz5.proxy.cloudflare-gateway.com\",\n      \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Create Proxy Endpoint",
+			"description": "Create a new Zero Trust Gateway Proxy Endpoint",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/gateway/proxy_endpoints",
+			"method": "POST",
+			"cfOwnership": "gateway",
+			"html_id": "zero-trust-gateway-proxy-endpoints-create-proxy-endpoint",
+			"uri": "accounts/:identifier/gateway/proxy_endpoints",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/proxy_endpoints\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"Devops team\",\"ips\":[\"192.0.2.1/32\"],\"subdomain\":\"oli3n9zkz5.proxy.cloudflare-gateway.com\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"Devops team\"",
+						"description": "The name of the Proxy Endpoint"
+					},
+					"ips": {
+						"type": "array",
+						"example": "[\n  \"192.0.2.1/32\"\n]",
+						"description": "A list of CIDRs to restrict ingress connections",
+						"items": {
+							"type": "string",
+							"description": "The IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /109. IPv4 CIDRs are limited to a maximum of /25",
+							"example": "192.0.2.1/32"
+						}
+					},
+					"subdomain": {
+						"type": "string",
+						"example": "\"oli3n9zkz5.proxy.cloudflare-gateway.com\"",
+						"description": "The subdomain to be used as the destination in the proxy client."
+					}
+				},
+				"required_props": [
+					"name",
+					"ips"
+				],
+				"optional_props": [
+					"subdomain"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": \"Devops team\",\n  \"ips\": [\n    \"192.0.2.1/32\"\n  ],\n  \"subdomain\": \"oli3n9zkz5.proxy.cloudflare-gateway.com\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"ed35569b41ce4d1facfe683550f54086\",\n    \"name\": \"Devops team\",\n    \"ips\": [\n      \"192.0.2.1/32\"\n    ],\n    \"subdomain\": \"oli3n9zkz5.proxy.cloudflare-gateway.com\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
+		},
+		{
+			"title": "Update Proxy Endpoint",
+			"description": "Update a new Zero Trust Gateway Proxy Endpoint",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/gateway/proxy_endpoints/{#/definitions/uuid}",
+			"method": "PATCH",
+			"cfOwnership": "gateway",
+			"html_id": "zero-trust-gateway-proxy-endpoints-update-proxy-endpoint",
+			"uri": "accounts/:identifier/gateway/proxy_endpoints/:uuid",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/proxy_endpoints/ed35569b41ce4d1facfe683550f54086\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"Devops team\",\"ips\":[\"192.0.2.1/32\"],\"subdomain\":\"oli3n9zkz5.proxy.cloudflare-gateway.com\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"Devops team\"",
+						"description": "The name of the Proxy Endpoint"
+					},
+					"ips": {
+						"type": "array",
+						"example": "[\n  \"192.0.2.1/32\"\n]",
+						"description": "A list of CIDRs to restrict ingress connections",
+						"items": {
+							"type": "string",
+							"description": "The IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /109. IPv4 CIDRs are limited to a maximum of /25",
+							"example": "192.0.2.1/32"
+						}
+					},
+					"subdomain": {
+						"type": "string",
+						"example": "\"oli3n9zkz5.proxy.cloudflare-gateway.com\"",
+						"description": "The subdomain to be used as the destination in the proxy client."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"name",
+					"ips",
+					"subdomain"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": \"Devops team\",\n  \"ips\": [\n    \"192.0.2.1/32\"\n  ],\n  \"subdomain\": \"oli3n9zkz5.proxy.cloudflare-gateway.com\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"ed35569b41ce4d1facfe683550f54086\",\n    \"name\": \"Devops team\",\n    \"ips\": [\n      \"192.0.2.1/32\"\n    ],\n    \"subdomain\": \"oli3n9zkz5.proxy.cloudflare-gateway.com\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
+		},
+		{
+			"title": "Delete Proxy Endpoint",
+			"description": "Delete a Zero Trust Gateway Proxy Endpoint",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/gateway/proxy_endpoints/{#/definitions/uuid}",
+			"method": "DELETE",
+			"cfOwnership": "gateway",
+			"html_id": "zero-trust-gateway-proxy-endpoints-delete-proxy-endpoint",
+			"uri": "accounts/:identifier/gateway/proxy_endpoints/:uuid",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/proxy_endpoints/ed35569b41ce4d1facfe683550f54086\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {}\n}"
+		}
+	],
+	"html_id": "zero-trust-gateway-proxy-endpoints",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"ed35569b41ce4d1facfe683550f54086\"",
+				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "API item identifier tag",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"name": {
+				"type": "string",
+				"example": "\"Devops team\"",
+				"description": "The name of the Proxy Endpoint"
+			},
+			"ips": {
+				"type": "array",
+				"example": "[\n  \"192.0.2.1/32\"\n]",
+				"description": "A list of CIDRs to restrict ingress connections",
+				"items": {
+					"type": "string",
+					"description": "The IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /109. IPv4 CIDRs are limited to a maximum of /25",
+					"example": "192.0.2.1/32"
+				}
+			},
+			"subdomain": {
+				"type": "string",
+				"example": "\"oli3n9zkz5.proxy.cloudflare-gateway.com\"",
+				"description": "The subdomain to be used as the destination in the proxy client."
+			},
+			"created_at": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "Creation time",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"updated_at": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "Last modification time",
+				"format": "date-time",
+				"readOnly": true
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"name",
+			"ips",
+			"subdomain",
+			"created_at",
+			"updated_at"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"ed35569b41ce4d1facfe683550f54086\",\n  \"name\": \"Devops team\",\n  \"ips\": [\n    \"192.0.2.1/32\"\n  ],\n  \"subdomain\": \"oli3n9zkz5.proxy.cloudflare-gateway.com\",\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n}",
+		"title": "Zero Trust Gateway Proxy Endpoints",
+		"description": "Proxy Endpoints are domains that HTTPS proxy clients can be pointed at to secure traffic."
+	}
+}

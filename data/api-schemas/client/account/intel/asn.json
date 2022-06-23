@@ -1,0 +1,83 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/intel/asn.json",
+	"title": "ASN Intelligence",
+	"description": "Autonomous system overview (Beta)",
+	"links": [
+		{
+			"title": "Get ASN Overview",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/intel/asn/{#/definitions/asn}",
+			"method": "GET",
+			"cfOwnership": "intel",
+			"html_id": "asn-intelligence-get-asn-overview",
+			"uri": "accounts/:account_identifier/intel/asn/:asn",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/intel/asn/13335\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"asn\": 13335,\n      \"description\": \"CLOUDFLARENET\",\n      \"country\": \"US\",\n      \"type\": \"hosting_provider\",\n      \"domain_count\": 1,\n      \"top_domains\": [\n        \"example.com\"\n      ]\n    }\n  ]\n}"
+		},
+		{
+			"title": "Get ASN Subnets",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/intel/asn/{#/definitions/asn}/subnets",
+			"method": "GET",
+			"cfOwnership": "intel",
+			"html_id": "asn-intelligence-get-asn-subnets",
+			"uri": "accounts/:account_identifier/intel/asn/:asn/subnets",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/intel/asn/13335/subnets\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"asn\": 13335,\n  \"ip_count_total\": 1,\n  \"subnets\": [\n    \"192.0.2.0/24\",\n    \"2001:DB8::/32\"\n  ],\n  \"count\": 1,\n  \"page\": 1,\n  \"per_page\": 20\n}"
+		}
+	],
+	"html_id": "asn-intelligence",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"asn": {
+				"type": "integer",
+				"example": "13335"
+			},
+			"description": {
+				"type": "string",
+				"example": "\"CLOUDFLARENET\""
+			},
+			"country": {
+				"type": "string",
+				"example": "\"US\""
+			},
+			"type": {
+				"type": "string",
+				"example": "\"hosting_provider\"",
+				"enum": [
+					"hosting_provider",
+					"isp",
+					"organization"
+				],
+				"description": "Infrastructure type of this ASN"
+			},
+			"domain_count": {
+				"type": "integer",
+				"example": "1"
+			},
+			"top_domains": {
+				"type": "array",
+				"example": "[\n  \"example.com\"\n]",
+				"items": {
+					"type": "string"
+				}
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"asn",
+			"description",
+			"country",
+			"type",
+			"domain_count",
+			"top_domains"
+		],
+		"objects": [],
+		"example": "{\n  \"asn\": 13335,\n  \"description\": \"CLOUDFLARENET\",\n  \"country\": \"US\",\n  \"type\": \"hosting_provider\",\n  \"domain_count\": 1,\n  \"top_domains\": [\n    \"example.com\"\n  ]\n}",
+		"title": "ASN Intelligence",
+		"description": "Autonomous system overview (Beta)"
+	}
+}

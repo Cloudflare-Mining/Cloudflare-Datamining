@@ -1,0 +1,136 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/alert-notifications/history.json",
+	"title": "Notification History",
+	"description": "History of notifications sent to users.",
+	"type": "object",
+	"links": [
+		{
+			"title": "List History",
+			"description": "Gets a list of history records for notifications sent to an account. The records are displayed for last `x` number of days based on the zone plan (free = 30, pro = 30, biz = 30, ent = 90).",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/alerting/v3/history",
+			"method": "GET",
+			"cfOwnership": "app-services",
+			"html_id": "notification-history-list-history",
+			"uri": "accounts/:identifier/alerting/v3/history",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/alerting/v3/history?page=1&per_page=25&since=2022-05-19T20:29:58.679897Z&before=2022-05-20T20:29:58.679897Z\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"page": {
+						"type": "number",
+						"example": "1",
+						"minimum": 1,
+						"default": 1,
+						"description": "Page number of paginated results."
+					},
+					"per_page": {
+						"type": "number",
+						"example": "25",
+						"minimum": 5,
+						"maximum": 1000,
+						"default": 25,
+						"description": "Number of items per page."
+					},
+					"since": {
+						"type": "string",
+						"example": "\"2022-05-19T20:29:58.679897Z\"",
+						"description": "Limit the returned results to history records newer than the specified date. This must be a timestamp that conforms to RFC3339",
+						"format": "date-time"
+					},
+					"before": {
+						"type": "string",
+						"example": "\"2022-05-20T20:29:58.679897Z\"",
+						"description": "Limit the returned results to history records older than the specified date. This must be a timestamp that conforms to RFC3339",
+						"format": "date-time"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"page",
+					"per_page",
+					"since",
+					"before"
+				],
+				"objects": [],
+				"example": "{\n  \"page\": 1,\n  \"per_page\": 25,\n  \"since\": \"2022-05-19T20:29:58.679897Z\",\n  \"before\": \"2022-05-20T20:29:58.679897Z\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"name\": \"SSL Notification Event Policy\",\n      \"description\": \"Universal Certificate validation status, issuance, renewal, and expiration notices\",\n      \"alert_body\": \"SSL certificate has expired\",\n      \"alert_type\": \"universal_ssl_event_type\",\n      \"mechanism\": \"test@example.com\",\n      \"mechanism_type\": \"email\",\n      \"sent\": \"2021-10-08T17:52:17.571336Z\"\n    }\n  ],\n  \"result_info\": {\n    \"page\": 1,\n    \"per_page\": 20,\n    \"count\": 1\n  }\n}"
+		}
+	],
+	"html_id": "notification-history",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"",
+				"id": "https://api.cloudflare.com/schemas/v4/common/uuid.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"readOnly": true,
+				"maxLength": 36,
+				"description": "API uuid tag"
+			},
+			"name": {
+				"type": "string",
+				"example": "\"SSL Notification Event Policy\"",
+				"description": "Name of the policy."
+			},
+			"description": {
+				"type": "string",
+				"example": "\"Universal Certificate validation status, issuance, renewal, and expiration notices\"",
+				"description": "Description of the notification policy (if present)."
+			},
+			"alert_body": {
+				"type": "string",
+				"example": "\"SSL certificate has expired\"",
+				"description": "Message body included in the notification sent."
+			},
+			"alert_type": {
+				"type": "string",
+				"example": "\"universal_ssl_event_type\"",
+				"description": "Type of notification that has been dispatched."
+			},
+			"mechanism": {
+				"type": "string",
+				"example": "\"test@example.com\"",
+				"description": "The mechanism to which the notification has been dispatched."
+			},
+			"mechanism_type": {
+				"type": "string",
+				"example": "\"email\"",
+				"description": "The type of mechanism to which the notification has been dispatched. This can be email/pagerduty/webhook based on the mechanism configured.",
+				"enum": [
+					"email",
+					"pagerduty",
+					"webhook"
+				]
+			},
+			"sent": {
+				"type": "string",
+				"example": "\"2021-10-08T17:52:17.571336Z\"",
+				"description": "Timestamp of when the notification was dispatched in ISO 8601 format.",
+				"format": "date-time"
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"name",
+			"description",
+			"alert_body",
+			"alert_type",
+			"mechanism",
+			"mechanism_type",
+			"sent"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n  \"name\": \"SSL Notification Event Policy\",\n  \"description\": \"Universal Certificate validation status, issuance, renewal, and expiration notices\",\n  \"alert_body\": \"SSL certificate has expired\",\n  \"alert_type\": \"universal_ssl_event_type\",\n  \"mechanism\": \"test@example.com\",\n  \"mechanism_type\": \"email\",\n  \"sent\": \"2021-10-08T17:52:17.571336Z\"\n}",
+		"title": "Notification History",
+		"description": "History of notifications sent to users."
+	}
+}

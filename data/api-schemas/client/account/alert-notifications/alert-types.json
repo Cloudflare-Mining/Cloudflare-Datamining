@@ -1,0 +1,59 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/alert-notifications/alert-types.json",
+	"title": "Notification Alert Types",
+	"description": "Products and events for which users can receive notifications.",
+	"type": "object",
+	"links": [
+		{
+			"title": "Get Alert Types",
+			"description": "Gets a list of all alert types for which an account is eligible.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/alerting/v3/available_alerts",
+			"method": "GET",
+			"cfOwnership": "app-services",
+			"html_id": "notification-alert-types-get-alert-types",
+			"uri": "accounts/:identifier/alerting/v3/available_alerts",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/alerting/v3/available_alerts\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"Origin Monitoring\": [\n      {\n        \"display_name\": \"Origin Error Rate Alert\",\n        \"type\": \"http_alert_origin_error\",\n        \"description\": \"High levels of 5xx HTTP errors at your origin\",\n        \"filter_options\": [\n          {\n            \"Key\": \"zones\",\n            \"ComparisonOperator\": \"==\",\n            \"Optional\": false\n          },\n          {\n            \"Key\": \"slo\",\n            \"ComparisonOperator\": \">=\",\n            \"Optional\": true\n          }\n        ]\n      }\n    ]\n  }\n}"
+		}
+	],
+	"html_id": "notification-alert-types",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"display_name": {
+				"type": "string",
+				"example": "\"Origin Error Rate Alert\"",
+				"description": "Alert type name"
+			},
+			"type": {
+				"type": "string",
+				"example": "\"http_alert_origin_error\"",
+				"description": "Use this value when creating and updating a notification policy."
+			},
+			"description": {
+				"type": "string",
+				"example": "\"High levels of 5xx HTTP errors at your origin\"",
+				"description": "Describes the alert type"
+			},
+			"filter_options": {
+				"type": "array",
+				"example": "[\n  {\n    \"Key\": \"zones\",\n    \"ComparisonOperator\": \"==\",\n    \"Optional\": false\n  },\n  {\n    \"Key\": \"slo\",\n    \"ComparisonOperator\": \">=\",\n    \"Optional\": true\n  }\n]",
+				"description": "Format of additional configuration options (filters) for the alert type. Data type of filters during policy creation: Array of strings."
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"display_name",
+			"type",
+			"description",
+			"filter_options"
+		],
+		"objects": [],
+		"example": "{\n  \"display_name\": \"Origin Error Rate Alert\",\n  \"type\": \"http_alert_origin_error\",\n  \"description\": \"High levels of 5xx HTTP errors at your origin\",\n  \"filter_options\": [\n    {\n      \"Key\": \"zones\",\n      \"ComparisonOperator\": \"==\",\n      \"Optional\": false\n    },\n    {\n      \"Key\": \"slo\",\n      \"ComparisonOperator\": \">=\",\n      \"Optional\": true\n    }\n  ]\n}",
+		"title": "Notification Alert Types",
+		"description": "Products and events for which users can receive notifications."
+	}
+}

@@ -1,0 +1,89 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/common/plan.json",
+	"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+	"title": "Cloudflare Plan",
+	"description": "Abstract Cloudflare plan",
+	"type": "object",
+	"properties": {
+		"id": {
+			"description": "Plan identifier tag",
+			"type": "string",
+			"maxLength": 32,
+			"readOnly": true,
+			"example": "e592fd9519420ba7405e1307bff33214"
+		},
+		"name": {
+			"description": "The plan name",
+			"type": "string",
+			"maxLength": 80,
+			"readOnly": true,
+			"example": "Pro Plan"
+		},
+		"price": {
+			"description": "The price of the subscription that will be billed, in US dollars",
+			"type": "number",
+			"readOnly": true,
+			"example": 20
+		},
+		"currency": {
+			"description": "The monetary unit in which pricing information is displayed",
+			"type": "string",
+			"readOnly": true,
+			"example": "USD"
+		},
+		"frequency": {
+			"description": "The frequency at which you will be billed for this plan",
+			"type": "string",
+			"enum": [
+				"weekly",
+				"monthly",
+				"quarterly",
+				"yearly",
+				""
+			],
+			"readOnly": true,
+			"example": "monthly"
+		}
+	},
+	"definitions": {
+		"identifier": {
+			"description": "Plan identifier tag",
+			"type": "string",
+			"maxLength": 32,
+			"readOnly": true,
+			"example": "e592fd9519420ba7405e1307bff33214"
+		},
+		"name": {
+			"description": "The plan name",
+			"type": "string",
+			"maxLength": 80,
+			"readOnly": true,
+			"example": "Pro Plan"
+		},
+		"price": {
+			"description": "The price of the subscription that will be billed, in US dollars",
+			"type": "number",
+			"readOnly": true,
+			"example": 20
+		},
+		"currency": {
+			"description": "The monetary unit in which pricing information is displayed",
+			"type": "string",
+			"readOnly": true,
+			"example": "USD"
+		},
+		"frequency": {
+			"description": "The frequency at which you will be billed for this plan",
+			"type": "string",
+			"enum": [
+				"weekly",
+				"monthly",
+				"quarterly",
+				"yearly",
+				""
+			],
+			"readOnly": true,
+			"example": "monthly"
+		}
+	}
+}

@@ -1,0 +1,244 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/dns-secondary/tsig.json",
+	"title": "Secondary DNS (TSIG)",
+	"description": "TSIG key management for secondary DNS",
+	"type": "object",
+	"links": [
+		{
+			"title": "List TSIGs",
+			"description": "List TSIGs",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/secondary_dns/tsigs",
+			"method": "GET",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:read",
+					"#organization:read"
+				]
+			},
+			"html_id": "secondary-dns-tsig--list-tsigs",
+			"uri": "accounts/:account_identifier/secondary_dns/tsigs",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/secondary_dns/tsigs\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"69cd1e104af3e6ed3cb344f263fd0d5a\",\n      \"name\": \"tsig.customer.cf.\",\n      \"secret\": \"caf79a7804b04337c9c66ccd7bef9190a1e1679b5dd03d8aa10f7ad45e1a9dab92b417896c15d4d007c7c14194538d2a5d0feffdecc5a7f0e1c570cfa700837c\",\n      \"algo\": \"hmac-sha512.\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "TSIG Details",
+			"description": "Get TSIG",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/secondary_dns/tsigs/{#/definitions/identifier}",
+			"method": "GET",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:read",
+					"#organization:read"
+				]
+			},
+			"html_id": "secondary-dns-tsig--tsig-details",
+			"uri": "accounts/:account_identifier/secondary_dns/tsigs/:identifier",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/secondary_dns/tsigs/69cd1e104af3e6ed3cb344f263fd0d5a\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"69cd1e104af3e6ed3cb344f263fd0d5a\",\n    \"name\": \"tsig.customer.cf.\",\n    \"secret\": \"caf79a7804b04337c9c66ccd7bef9190a1e1679b5dd03d8aa10f7ad45e1a9dab92b417896c15d4d007c7c14194538d2a5d0feffdecc5a7f0e1c570cfa700837c\",\n    \"algo\": \"hmac-sha512.\"\n  }\n}"
+		},
+		{
+			"title": "Update TSIG",
+			"description": "Modify TSIG",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/secondary_dns/tsigs/{#/definitions/identifier}",
+			"method": "PUT",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:edit",
+					"#organization:read"
+				]
+			},
+			"html_id": "secondary-dns-tsig--update-tsig",
+			"uri": "accounts/:account_identifier/secondary_dns/tsigs/:identifier",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/secondary_dns/tsigs/69cd1e104af3e6ed3cb344f263fd0d5a\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"id\":\"69cd1e104af3e6ed3cb344f263fd0d5a\",\"name\":\"tsig.customer.cf.\",\"secret\":\"caf79a7804b04337c9c66ccd7bef9190a1e1679b5dd03d8aa10f7ad45e1a9dab92b417896c15d4d007c7c14194538d2a5d0feffdecc5a7f0e1c570cfa700837c\",\"algo\":\"hmac-sha512.\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"69cd1e104af3e6ed3cb344f263fd0d5a\"",
+						"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"description": "API item identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"name": {
+						"type": "string",
+						"example": "\"tsig.customer.cf.\"",
+						"description": "TSIG key name"
+					},
+					"secret": {
+						"type": "string",
+						"example": "\"caf79a7804b04337c9c66ccd7bef9190a1e1679b5dd03d8aa10f7ad45e1a9dab92b417896c15d4d007c7c14194538d2a5d0feffdecc5a7f0e1c570cfa700837c\"",
+						"description": "TSIG secret. "
+					},
+					"algo": {
+						"type": "string",
+						"example": "\"hmac-sha512.\"",
+						"description": "TSIG algorithm"
+					}
+				},
+				"required_props": [
+					"id",
+					"name",
+					"secret",
+					"algo"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"id\": \"69cd1e104af3e6ed3cb344f263fd0d5a\",\n  \"name\": \"tsig.customer.cf.\",\n  \"secret\": \"caf79a7804b04337c9c66ccd7bef9190a1e1679b5dd03d8aa10f7ad45e1a9dab92b417896c15d4d007c7c14194538d2a5d0feffdecc5a7f0e1c570cfa700837c\",\n  \"algo\": \"hmac-sha512.\"\n}",
+				"title": "Secondary DNS (TSIG)",
+				"description": "TSIG key management for secondary DNS"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"69cd1e104af3e6ed3cb344f263fd0d5a\",\n    \"name\": \"tsig.customer.cf.\",\n    \"secret\": \"caf79a7804b04337c9c66ccd7bef9190a1e1679b5dd03d8aa10f7ad45e1a9dab92b417896c15d4d007c7c14194538d2a5d0feffdecc5a7f0e1c570cfa700837c\",\n    \"algo\": \"hmac-sha512.\"\n  }\n}"
+		},
+		{
+			"title": "Delete TSIG",
+			"description": "Delete TSIG",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/secondary_dns/tsigs/{#/definitions/identifier}",
+			"method": "DELETE",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:edit",
+					"#organization:read"
+				]
+			},
+			"html_id": "secondary-dns-tsig--delete-tsig",
+			"uri": "accounts/:account_identifier/secondary_dns/tsigs/:identifier",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/secondary_dns/tsigs/69cd1e104af3e6ed3cb344f263fd0d5a\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"69cd1e104af3e6ed3cb344f263fd0d5a\"\n  }\n}"
+		},
+		{
+			"title": "Create TSIG",
+			"description": "Create TSIG",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/secondary_dns/tsigs",
+			"method": "POST",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:edit",
+					"#organization:read"
+				]
+			},
+			"html_id": "secondary-dns-tsig--create-tsig",
+			"uri": "accounts/:account_identifier/secondary_dns/tsigs",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/secondary_dns/tsigs\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"tsig.customer.cf.\",\"secret\":\"caf79a7804b04337c9c66ccd7bef9190a1e1679b5dd03d8aa10f7ad45e1a9dab92b417896c15d4d007c7c14194538d2a5d0feffdecc5a7f0e1c570cfa700837c\",\"algo\":\"hmac-sha512.\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"tsig.customer.cf.\"",
+						"description": "TSIG key name"
+					},
+					"secret": {
+						"type": "string",
+						"example": "\"caf79a7804b04337c9c66ccd7bef9190a1e1679b5dd03d8aa10f7ad45e1a9dab92b417896c15d4d007c7c14194538d2a5d0feffdecc5a7f0e1c570cfa700837c\"",
+						"description": "TSIG secret. If none specified a new one will be generated at create time."
+					},
+					"algo": {
+						"type": "string",
+						"example": "\"hmac-sha512.\"",
+						"description": "TSIG algorithm"
+					}
+				},
+				"required_props": [
+					"name",
+					"algo"
+				],
+				"optional_props": [
+					"secret"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": \"tsig.customer.cf.\",\n  \"secret\": \"caf79a7804b04337c9c66ccd7bef9190a1e1679b5dd03d8aa10f7ad45e1a9dab92b417896c15d4d007c7c14194538d2a5d0feffdecc5a7f0e1c570cfa700837c\",\n  \"algo\": \"hmac-sha512.\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"69cd1e104af3e6ed3cb344f263fd0d5a\",\n    \"name\": \"tsig.customer.cf.\",\n    \"secret\": \"caf79a7804b04337c9c66ccd7bef9190a1e1679b5dd03d8aa10f7ad45e1a9dab92b417896c15d4d007c7c14194538d2a5d0feffdecc5a7f0e1c570cfa700837c\",\n    \"algo\": \"hmac-sha512.\"\n  }\n}"
+		}
+	],
+	"html_id": "secondary-dns-tsig-",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"69cd1e104af3e6ed3cb344f263fd0d5a\"",
+				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "API item identifier tag",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"name": {
+				"type": "string",
+				"example": "\"tsig.customer.cf.\"",
+				"description": "TSIG key name"
+			},
+			"secret": {
+				"type": "string",
+				"example": "\"caf79a7804b04337c9c66ccd7bef9190a1e1679b5dd03d8aa10f7ad45e1a9dab92b417896c15d4d007c7c14194538d2a5d0feffdecc5a7f0e1c570cfa700837c\"",
+				"description": "TSIG secret. "
+			},
+			"algo": {
+				"type": "string",
+				"example": "\"hmac-sha512.\"",
+				"description": "TSIG algorithm"
+			}
+		},
+		"required_props": [
+			"id",
+			"name",
+			"secret",
+			"algo"
+		],
+		"optional_props": [],
+		"objects": [],
+		"example": "{\n  \"id\": \"69cd1e104af3e6ed3cb344f263fd0d5a\",\n  \"name\": \"tsig.customer.cf.\",\n  \"secret\": \"caf79a7804b04337c9c66ccd7bef9190a1e1679b5dd03d8aa10f7ad45e1a9dab92b417896c15d4d007c7c14194538d2a5d0feffdecc5a7f0e1c570cfa700837c\",\n  \"algo\": \"hmac-sha512.\"\n}",
+		"title": "Secondary DNS (TSIG)",
+		"description": "TSIG key management for secondary DNS"
+	}
+}

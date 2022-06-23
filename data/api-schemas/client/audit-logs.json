@@ -1,0 +1,501 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/audit-logs.json",
+	"title": "Audit Logs",
+	"description": "A log of changes made to your Cloudflare account",
+	"cfDeprecations": {
+		"id": "org_deprecation",
+		"description": "This endpoint and its related APIs are deprecated in favor of the `/accounts` equivalent APIs, which have a broader range of features and are backwards compatible with these API.",
+		"eol": "2020-02-04",
+		"display": true
+	},
+	"type": "object",
+	"links": [
+		{
+			"title": "List User Audit Logs",
+			"description": "Get audit logs for a user account, filter by who made the change, which zone was the change was made on, and the timeframe of the change",
+			"rel": "collection",
+			"href": "user/audit_logs",
+			"method": "GET",
+			"cfOwnership": "app-services",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "audit-logs-list-user-audit-logs",
+			"uri": "user/audit_logs",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/user/audit_logs?id=f174be97-19b1-40d6-954d-70cd5fbd52db&export=true&action.type=add&actor.ip=17.168.228.63&actor.email=alice@example.com&since=2019-04-30T01:12:20Z&before=2019-04-30T01:12:20Z&zone.name=example.com&direction=desc&per_page=25&page=50&hide_user_logs=false\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"f174be97-19b1-40d6-954d-70cd5fbd52db\"",
+						"description": "Find a specific log by its ID."
+					},
+					"export": {
+						"type": "boolean",
+						"example": "\"true\"",
+						"description": "Indicates that this request is an export of logs in CSV format"
+					},
+					"action.type": {
+						"type": "string",
+						"example": "\"add\"",
+						"description": "Filter by the action type."
+					},
+					"actor.ip": {
+						"type": "string",
+						"example": "\"17.168.228.63\"",
+						"description": "Filter by the IP address of the request that made the change by specific IP address or valid CIDR Range"
+					},
+					"actor.email": {
+						"type": "string",
+						"example": "\"alice@example.com\"",
+						"description": "Filter by the email address of the actor that made the change",
+						"format": "email"
+					},
+					"since": {
+						"type": "string",
+						"example": "\"2019-04-30T01:12:20Z\"",
+						"description": "Limit the returned results to logs newer than the specified date. This can be a date string `2019-04-30` or an absolute timestamp that conforms to RFC3339",
+						"format": "date-time"
+					},
+					"before": {
+						"type": "string",
+						"example": "\"2019-04-30T01:12:20Z\"",
+						"description": "Limit the returned results to logs older than the specified date. This can be a date string `2019-04-30` or an absolute timestamp that conforms to RFC3339",
+						"format": "date-time"
+					},
+					"zone.name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "Filter by the name of the zone associated to the change."
+					},
+					"direction": {
+						"type": "string",
+						"example": "\"desc\"",
+						"description": "Change the direction of the chronological sorting.",
+						"default": "desc",
+						"enum": [
+							"desc",
+							"asc"
+						]
+					},
+					"per_page": {
+						"type": "number",
+						"example": "25",
+						"description": "How many results to return per page.",
+						"minimum": 1,
+						"maximum": 1000,
+						"default": 100
+					},
+					"page": {
+						"type": "number",
+						"example": "50",
+						"description": "Which page of results to return.",
+						"minimum": 1,
+						"default": 1
+					},
+					"hide_user_logs": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Indicates whether or not to hide user level audit logs.",
+						"default": false
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"id",
+					"export",
+					"action.type",
+					"actor.ip",
+					"actor.email",
+					"since",
+					"before",
+					"zone.name",
+					"direction",
+					"per_page",
+					"page",
+					"hide_user_logs"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"f174be97-19b1-40d6-954d-70cd5fbd52db\",\n  \"export\": \"true\",\n  \"action.type\": \"add\",\n  \"actor.ip\": \"17.168.228.63\",\n  \"actor.email\": \"alice@example.com\",\n  \"since\": \"2019-04-30T01:12:20Z\",\n  \"before\": \"2019-04-30T01:12:20Z\",\n  \"zone.name\": \"example.com\",\n  \"direction\": \"desc\",\n  \"per_page\": 25,\n  \"page\": 50,\n  \"hide_user_logs\": false\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": null,\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"d5b0f326-1232-4452-8858-1089bd7168ef\",\n      \"action\": {\n        \"type\": \"change_setting\",\n        \"result\": true\n      },\n      \"actor\": {\n        \"id\": \"f6b5de0326bb5182b8a4840ee01ec774\",\n        \"email\": \"michelle@example.com\",\n        \"type\": \"user\",\n        \"ip\": \"198.41.129.166\"\n      },\n      \"newValue\": \"low\",\n      \"oldValue\": \"high\",\n      \"owner\": {\n        \"id\": \"7c5dae5552338874e5053f2534d2767a\"\n      },\n      \"resource\": {\n        \"type\": \"zone\",\n        \"id\": \"023e105f4ecef8ad9ca31a8372d0c353\"\n      },\n      \"interface\": \"API\",\n      \"metadata\": {\n        \"zone_name\": \"example.com\",\n        \"type\": \"firewall\",\n        \"name\": \"security_level\",\n        \"value\": \"high\"\n      },\n      \"when\": \"2017-04-26T17:31:07Z\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "List Account Audit Logs",
+			"description": "Get audit logs for an account, filter by who made the change, which zone was the change was made on, and the timeframe of the change",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/audit_logs",
+			"method": "GET",
+			"cfOwnership": "app-services",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "audit-logs-list-account-audit-logs",
+			"uri": "accounts/:account_identifier/audit_logs",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/audit_logs?id=f174be97-19b1-40d6-954d-70cd5fbd52db&export=true&action.type=add&actor.ip=17.168.228.63&actor.email=alice@example.com&since=2019-04-30T01:12:20Z&before=2019-04-30T01:12:20Z&zone.name=example.com&direction=desc&per_page=25&page=50&hide_user_logs=false\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"f174be97-19b1-40d6-954d-70cd5fbd52db\"",
+						"description": "Find a specific log by its ID."
+					},
+					"export": {
+						"type": "boolean",
+						"example": "\"true\"",
+						"description": "Indicates that this request is an export of logs in CSV format"
+					},
+					"action.type": {
+						"type": "string",
+						"example": "\"add\"",
+						"description": "Filter by the action type."
+					},
+					"actor.ip": {
+						"type": "string",
+						"example": "\"17.168.228.63\"",
+						"description": "Filter by the IP address of the request that made the change by specific IP address or valid CIDR Range"
+					},
+					"actor.email": {
+						"type": "string",
+						"example": "\"alice@example.com\"",
+						"description": "Filter by the email address of the actor that made the change",
+						"format": "email"
+					},
+					"since": {
+						"type": "string",
+						"example": "\"2019-04-30T01:12:20Z\"",
+						"description": "Limit the returned results to logs newer than the specified date. This can be a date string `2019-04-30` or an absolute timestamp that conforms to RFC3339",
+						"format": "date-time"
+					},
+					"before": {
+						"type": "string",
+						"example": "\"2019-04-30T01:12:20Z\"",
+						"description": "Limit the returned results to logs older than the specified date. This can be a date string `2019-04-30` or an absolute timestamp that conforms to RFC3339",
+						"format": "date-time"
+					},
+					"zone.name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "Filter by the name of the zone associated to the change."
+					},
+					"direction": {
+						"type": "string",
+						"example": "\"desc\"",
+						"description": "Change the direction of the chronological sorting.",
+						"default": "desc",
+						"enum": [
+							"desc",
+							"asc"
+						]
+					},
+					"per_page": {
+						"type": "number",
+						"example": "25",
+						"description": "How many results to return per page.",
+						"minimum": 1,
+						"maximum": 1000,
+						"default": 100
+					},
+					"page": {
+						"type": "number",
+						"example": "50",
+						"description": "Which page of results to return.",
+						"minimum": 1,
+						"default": 1
+					},
+					"hide_user_logs": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Indicates whether or not to hide user level audit logs.",
+						"default": false
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"id",
+					"export",
+					"action.type",
+					"actor.ip",
+					"actor.email",
+					"since",
+					"before",
+					"zone.name",
+					"direction",
+					"per_page",
+					"page",
+					"hide_user_logs"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"f174be97-19b1-40d6-954d-70cd5fbd52db\",\n  \"export\": \"true\",\n  \"action.type\": \"add\",\n  \"actor.ip\": \"17.168.228.63\",\n  \"actor.email\": \"alice@example.com\",\n  \"since\": \"2019-04-30T01:12:20Z\",\n  \"before\": \"2019-04-30T01:12:20Z\",\n  \"zone.name\": \"example.com\",\n  \"direction\": \"desc\",\n  \"per_page\": 25,\n  \"page\": 50,\n  \"hide_user_logs\": false\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": null,\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"d5b0f326-1232-4452-8858-1089bd7168ef\",\n      \"action\": {\n        \"type\": \"change_setting\",\n        \"result\": true\n      },\n      \"actor\": {\n        \"id\": \"f6b5de0326bb5182b8a4840ee01ec774\",\n        \"email\": \"michelle@example.com\",\n        \"type\": \"user\",\n        \"ip\": \"198.41.129.166\"\n      },\n      \"newValue\": \"low\",\n      \"oldValue\": \"high\",\n      \"owner\": {\n        \"id\": \"7c5dae5552338874e5053f2534d2767a\"\n      },\n      \"resource\": {\n        \"type\": \"zone\",\n        \"id\": \"023e105f4ecef8ad9ca31a8372d0c353\"\n      },\n      \"interface\": \"API\",\n      \"metadata\": {\n        \"zone_name\": \"example.com\",\n        \"type\": \"firewall\",\n        \"name\": \"security_level\",\n        \"value\": \"high\"\n      },\n      \"when\": \"2017-04-26T17:31:07Z\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "List Organization Audit Logs",
+			"description": "Get audit logs for an organization, filter by who made the change, which zone was the change was made on, and the timeframe of the change",
+			"rel": "collection",
+			"href": "organizations/{#/definitions/organization_identifier}/audit_logs",
+			"method": "GET",
+			"cfDeprecation": {
+				"id": "org_deprecation",
+				"description": "This endpoint and its related APIs are deprecated in favor of the `/accounts` equivalent APIs, which have a broader range of features and are backwards compatible with these API.",
+				"eol": "2020-02-04",
+				"display": true
+			},
+			"cfOwnership": "app-services",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"html_id": "audit-logs-list-organization-audit-logs",
+			"uri": "organizations/:organization_identifier/audit_logs",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/organizations/01a7362d577a6c3019a474fd6f485823/audit_logs?id=f174be97-19b1-40d6-954d-70cd5fbd52db&export=true&action.type=add&actor.ip=17.168.228.63&actor.email=alice@example.com&since=2019-04-30T01:12:20Z&before=2019-04-30T01:12:20Z&zone.name=example.com&direction=desc&per_page=25&page=50&hide_user_logs=false\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"f174be97-19b1-40d6-954d-70cd5fbd52db\"",
+						"description": "Find a specific log by its ID."
+					},
+					"export": {
+						"type": "boolean",
+						"example": "\"true\"",
+						"description": "Indicates that this request is an export of logs in CSV format"
+					},
+					"action.type": {
+						"type": "string",
+						"example": "\"add\"",
+						"description": "Filter by the action type."
+					},
+					"actor.ip": {
+						"type": "string",
+						"example": "\"17.168.228.63\"",
+						"description": "Filter by the IP address of the request that made the change by specific IP address or valid CIDR Range"
+					},
+					"actor.email": {
+						"type": "string",
+						"example": "\"alice@example.com\"",
+						"description": "Filter by the email address of the actor that made the change",
+						"format": "email"
+					},
+					"since": {
+						"type": "string",
+						"example": "\"2019-04-30T01:12:20Z\"",
+						"description": "Limit the returned results to logs newer than the specified date. This can be a date string `2019-04-30` or an absolute timestamp that conforms to RFC3339",
+						"format": "date-time"
+					},
+					"before": {
+						"type": "string",
+						"example": "\"2019-04-30T01:12:20Z\"",
+						"description": "Limit the returned results to logs older than the specified date. This can be a date string `2019-04-30` or an absolute timestamp that conforms to RFC3339",
+						"format": "date-time"
+					},
+					"zone.name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "Filter by the name of the zone associated to the change."
+					},
+					"direction": {
+						"type": "string",
+						"example": "\"desc\"",
+						"description": "Change the direction of the chronological sorting.",
+						"default": "desc",
+						"enum": [
+							"desc",
+							"asc"
+						]
+					},
+					"per_page": {
+						"type": "number",
+						"example": "25",
+						"description": "How many results to return per page.",
+						"minimum": 1,
+						"maximum": 1000,
+						"default": 100
+					},
+					"page": {
+						"type": "number",
+						"example": "50",
+						"description": "Which page of results to return.",
+						"minimum": 1,
+						"default": 1
+					},
+					"hide_user_logs": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Indicates whether or not to hide user level audit logs.",
+						"default": false
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"id",
+					"export",
+					"action.type",
+					"actor.ip",
+					"actor.email",
+					"since",
+					"before",
+					"zone.name",
+					"direction",
+					"per_page",
+					"page",
+					"hide_user_logs"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"f174be97-19b1-40d6-954d-70cd5fbd52db\",\n  \"export\": \"true\",\n  \"action.type\": \"add\",\n  \"actor.ip\": \"17.168.228.63\",\n  \"actor.email\": \"alice@example.com\",\n  \"since\": \"2019-04-30T01:12:20Z\",\n  \"before\": \"2019-04-30T01:12:20Z\",\n  \"zone.name\": \"example.com\",\n  \"direction\": \"desc\",\n  \"per_page\": 25,\n  \"page\": 50,\n  \"hide_user_logs\": false\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": null,\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"d5b0f326-1232-4452-8858-1089bd7168ef\",\n      \"action\": {\n        \"type\": \"change_setting\",\n        \"result\": true\n      },\n      \"actor\": {\n        \"id\": \"f6b5de0326bb5182b8a4840ee01ec774\",\n        \"email\": \"michelle@example.com\",\n        \"type\": \"user\",\n        \"ip\": \"198.41.129.166\"\n      },\n      \"newValue\": \"low\",\n      \"oldValue\": \"high\",\n      \"owner\": {\n        \"id\": \"7c5dae5552338874e5053f2534d2767a\"\n      },\n      \"resource\": {\n        \"type\": \"zone\",\n        \"id\": \"023e105f4ecef8ad9ca31a8372d0c353\"\n      },\n      \"interface\": \"API\",\n      \"metadata\": {\n        \"zone_name\": \"example.com\",\n        \"type\": \"firewall\",\n        \"name\": \"security_level\",\n        \"value\": \"high\"\n      },\n      \"when\": \"2017-04-26T17:31:07Z\"\n    }\n  ]\n}"
+		}
+	],
+	"html_id": "audit-logs",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"d5b0f326-1232-4452-8858-1089bd7168ef\"",
+				"description": "A string that uniquely identifies the Audit Log"
+			},
+			"action": {
+				"type": "object",
+				"example": "{\n  \"type\": \"change_setting\",\n  \"result\": true\n}",
+				"properties": {
+					"type": {
+						"type": "string",
+						"example": "\"change_setting\"",
+						"description": "A short string that describes the action that was performed"
+					},
+					"result": {
+						"type": "boolean",
+						"example": "true",
+						"description": "A boolean that indicates if the action attempted was successful"
+					}
+				}
+			},
+			"actor": {
+				"type": "object",
+				"example": "{\n  \"id\": \"f6b5de0326bb5182b8a4840ee01ec774\",\n  \"email\": \"michelle@example.com\",\n  \"type\": \"user\",\n  \"ip\": \"198.41.129.166\"\n}",
+				"properties": {
+					"id": {
+						"type": "string",
+						"example": "\"f6b5de0326bb5182b8a4840ee01ec774\"",
+						"description": "The ID of the actor that performed the action. If a user performed the action, this will be their User ID."
+					},
+					"email": {
+						"type": "string",
+						"example": "\"michelle@example.com\"",
+						"format": "email",
+						"description": "The email of the user that performed the action."
+					},
+					"type": {
+						"type": "string",
+						"example": "\"user\"",
+						"description": "The type of actor, whether a User, Cloudflare Admin, or an Automated System",
+						"enum": [
+							"user",
+							"admin",
+							"Cloudflare"
+						]
+					},
+					"ip": {
+						"type": "string",
+						"example": "\"198.41.129.166\"",
+						"description": "The IP address of the request that performed the action"
+					}
+				}
+			},
+			"newValue": {
+				"type": "string",
+				"example": "\"low\"",
+				"description": "The new value of the resource that was modified"
+			},
+			"oldValue": {
+				"type": "string",
+				"example": "\"high\"",
+				"description": "The value of the resource before it was modified"
+			},
+			"owner": {
+				"type": "object",
+				"example": "{\n  \"id\": \"7c5dae5552338874e5053f2534d2767a\"\n}",
+				"properties": {
+					"id": {
+						"type": "string",
+						"example": "\"7c5dae5552338874e5053f2534d2767a\"",
+						"description": "User identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					}
+				}
+			},
+			"resource": {
+				"type": "object",
+				"example": "{\n  \"type\": \"zone\",\n  \"id\": \"023e105f4ecef8ad9ca31a8372d0c353\"\n}",
+				"properties": {
+					"type": {
+						"type": "string",
+						"example": "\"zone\"",
+						"description": "A short string that describes the resource that was affected by the action"
+					},
+					"id": {
+						"type": "string",
+						"example": "\"023e105f4ecef8ad9ca31a8372d0c353\"",
+						"description": "An identifier for the resource that was affected by the action"
+					}
+				}
+			},
+			"interface": {
+				"type": "string",
+				"example": "\"API\"",
+				"description": "The source of the event"
+			},
+			"metadata": {
+				"type": "object",
+				"example": "{\n  \"zone_name\": \"example.com\",\n  \"type\": \"firewall\",\n  \"name\": \"security_level\",\n  \"value\": \"high\"\n}",
+				"description": "An object which can lend more context to the action being logged. This is a flexible value and varies between different actions."
+			},
+			"when": {
+				"type": "string",
+				"example": "\"2017-04-26T17:31:07Z\"",
+				"description": "A UTC RFC3339 timestamp that specifies when the action being logged occured",
+				"format": "date-time"
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"action",
+			"actor",
+			"newValue",
+			"oldValue",
+			"owner",
+			"resource",
+			"interface",
+			"metadata",
+			"when"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"d5b0f326-1232-4452-8858-1089bd7168ef\",\n  \"action\": {\n    \"type\": \"change_setting\",\n    \"result\": true\n  },\n  \"actor\": {\n    \"id\": \"f6b5de0326bb5182b8a4840ee01ec774\",\n    \"email\": \"michelle@example.com\",\n    \"type\": \"user\",\n    \"ip\": \"198.41.129.166\"\n  },\n  \"newValue\": \"low\",\n  \"oldValue\": \"high\",\n  \"owner\": {\n    \"id\": \"7c5dae5552338874e5053f2534d2767a\"\n  },\n  \"resource\": {\n    \"type\": \"zone\",\n    \"id\": \"023e105f4ecef8ad9ca31a8372d0c353\"\n  },\n  \"interface\": \"API\",\n  \"metadata\": {\n    \"zone_name\": \"example.com\",\n    \"type\": \"firewall\",\n    \"name\": \"security_level\",\n    \"value\": \"high\"\n  },\n  \"when\": \"2017-04-26T17:31:07Z\"\n}",
+		"title": "Audit Logs",
+		"description": "A log of changes made to your Cloudflare account"
+	}
+}

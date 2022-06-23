@@ -1,0 +1,166 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/workers/durable_objects/namespaces.json",
+	"title": "Durable Objects Namespace",
+	"description": "A Namespace is a collection of Durable Objects of the same class",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Namespaces",
+			"description": "Returns the namespaces owned by an account",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/workers/durable_objects/namespaces",
+			"method": "GET",
+			"cfOwnership": "workers",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.edge.worker.durable-object.class.list"
+				]
+			},
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
+			"html_id": "durable-objects-namespace-list-namespaces",
+			"uri": "accounts/:account_identifier/workers/durable_objects/namespaces",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/workers/durable_objects/namespaces\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"5fd1cafff895419c8bcc647fc64ab8f0\",\n      \"name\": \"some_namespace_name\",\n      \"script\": \"some_script_name\",\n      \"class\": \"SomeClass\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "List Objects",
+			"description": "Returns the Durable Objects in a given namespace",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/workers/durable_objects/namespaces/{#/definitions/id}/objects",
+			"method": "GET",
+			"cfOwnership": "workers",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.edge.worker.durable-object.class.read"
+				]
+			},
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
+			"html_id": "durable-objects-namespace-list-objects",
+			"uri": "accounts/:account_identifier/workers/durable_objects/namespaces/:id/objects",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/workers/durable_objects/namespaces/5fd1cafff895419c8bcc647fc64ab8f0/objects?limit=1000&cursor=AAAAANuhDN7SjacTnSVsDu3WW1Lvst6dxJGTjRY5BhxPXdf6L6uTcpd_NVtjhn11OUYRsVEykxoUwF-JQU4dn6QylZSKTOJuG0indrdn_MlHpMRtsxgXjs-RPdHYIVm3odE_uvEQ_dTQGFm8oikZMohns34DLBgrQpc\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"limit": {
+						"type": "number",
+						"example": "1000",
+						"minimum": 10,
+						"maximum": 10000,
+						"default": 1000,
+						"description": "The number of objects to return. The cursor attribute may be used to iterate over the next batch of objects if there are more than the limit."
+					},
+					"cursor": {
+						"type": "string",
+						"example": "\"AAAAANuhDN7SjacTnSVsDu3WW1Lvst6dxJGTjRY5BhxPXdf6L6uTcpd_NVtjhn11OUYRsVEykxoUwF-JQU4dn6QylZSKTOJuG0indrdn_MlHpMRtsxgXjs-RPdHYIVm3odE_uvEQ_dTQGFm8oikZMohns34DLBgrQpc\"",
+						"description": "Opaque token indicating the position from which to continue when requesting the next set of records. A valid value for the cursor can be obtained from the cursors object in the result_info structure."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"limit",
+					"cursor"
+				],
+				"objects": [],
+				"example": "{\n  \"limit\": 1000,\n  \"cursor\": \"AAAAANuhDN7SjacTnSVsDu3WW1Lvst6dxJGTjRY5BhxPXdf6L6uTcpd_NVtjhn11OUYRsVEykxoUwF-JQU4dn6QylZSKTOJuG0indrdn_MlHpMRtsxgXjs-RPdHYIVm3odE_uvEQ_dTQGFm8oikZMohns34DLBgrQpc\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"fe7803fc55b964e09d94666545aab688d360c6bda69ba349ced1e5f28d2fc2c8\",\n      \"hasStoredData\": true\n    }\n  ],\n  \"result_info\": {\n    \"count\": 1,\n    \"cursor\": \"AAAAANuhDN7SjacTnSVsDu3WW1Lvst6dxJGTjRY5BhxPXdf6L6uTcpd_NVtjhn11OUYRsVEykxoUwF-JQU4dn6QylZSKTOJuG0indrdn_MlHpMRtsxgXjs-RPdHYIVm3odE_uvEQ_dTQGFm8oikZMohns34DLBgrQpc\"\n  }\n}"
+		}
+	],
+	"cfLinkErrors": {
+		"10001": "Unsupported or unexpected Content Type",
+		"10002": "Unexpected internal server error",
+		"10003": "Missing required URL parameter",
+		"10004": "Malformed URL parameter",
+		"10007": "Resource not found (similar to HTTP 404)",
+		"10014": "Internal error while attempting authorization checks",
+		"10015": "The current account is not authorized to use workers",
+		"10023": "Unauthorized access attempt",
+		"10066": "Durable Object namespace not found",
+		"10075": "Requires a Workers Paid plan"
+	},
+	"html_id": "durable-objects-namespace",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"5fd1cafff895419c8bcc647fc64ab8f0\"",
+				"readOnly": true,
+				"description": "ID of the namespace"
+			},
+			"name": {
+				"type": "string",
+				"example": "\"some_namespace_name\"",
+				"readOnly": true,
+				"description": "Name of the namespace"
+			},
+			"script": {
+				"type": "string",
+				"example": "\"some_script_name\"",
+				"readOnly": true,
+				"description": "Name of the script implementing the namespace"
+			},
+			"class": {
+				"type": "string",
+				"example": "\"SomeClass\"",
+				"readOnly": true,
+				"description": "Name of the class implementing the namespace"
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"name",
+			"script",
+			"class"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"5fd1cafff895419c8bcc647fc64ab8f0\",\n  \"name\": \"some_namespace_name\",\n  \"script\": \"some_script_name\",\n  \"class\": \"SomeClass\"\n}",
+		"title": "Durable Objects Namespace",
+		"description": "A Namespace is a collection of Durable Objects of the same class"
+	}
+}

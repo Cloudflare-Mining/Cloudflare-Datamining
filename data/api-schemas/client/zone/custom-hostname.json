@@ -1,0 +1,905 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/custom-hostname.json",
+	"title": "Custom Hostname for a Zone",
+	"description": "Manage hostnames for your zone that are routed via CNAME.",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Custom Hostnames",
+			"description": "List, search, sort, and filter all of your custom hostnames",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_identifier}/custom_hostnames",
+			"method": "GET",
+			"cfOwnership": "ssl",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#ssl:read"
+				]
+			},
+			"html_id": "custom-hostname-for-a-zone-list-custom-hostnames",
+			"uri": "zones/:zone_identifier/custom_hostnames",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/custom_hostnames?hostname=app.example.com&id=0d89c70d-ad9f-4843-b99f-6cc0252067e9&page=1&per_page=20&order=ssl&direction=desc&ssl=0\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"hostname": {
+						"type": "string",
+						"example": "\"app.example.com\"",
+						"maxLength": 255,
+						"description": "Fully qualified domain name to match against. This parameter cannot be used with the 'id' parameter."
+					},
+					"id": {
+						"type": "string",
+						"example": "\"0d89c70d-ad9f-4843-b99f-6cc0252067e9\"",
+						"minLength": 36,
+						"maxLength": 36,
+						"description": "Hostname ID to match against. This ID was generated and returned during the initial custom_hostname creation. This parameter cannot be used with the 'hostname' parameter."
+					},
+					"page": {
+						"type": "number",
+						"example": "1",
+						"minimum": 1,
+						"default": 1,
+						"description": "Page number of paginated results"
+					},
+					"per_page": {
+						"type": "number",
+						"example": "20",
+						"minimum": 5,
+						"maximum": 50,
+						"default": 20,
+						"description": "Number of hostnames per page"
+					},
+					"order": {
+						"example": "\"ssl\"",
+						"enum": [
+							"ssl",
+							"ssl_status"
+						],
+						"description": "Field to order hostnames by",
+						"default": "ssl"
+					},
+					"direction": {
+						"example": "\"desc\"",
+						"enum": [
+							"asc",
+							"desc"
+						],
+						"description": "Direction to order hostnames"
+					},
+					"ssl": {
+						"example": "\"0\"",
+						"enum": [
+							0,
+							1
+						],
+						"default": "0",
+						"description": "Whether to filter hostnames based on if they have SSL enabled"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"hostname",
+					"id",
+					"page",
+					"per_page",
+					"order",
+					"direction",
+					"ssl"
+				],
+				"objects": [],
+				"example": "{\n  \"hostname\": \"app.example.com\",\n  \"id\": \"0d89c70d-ad9f-4843-b99f-6cc0252067e9\",\n  \"page\": 1,\n  \"per_page\": 20,\n  \"order\": \"ssl\",\n  \"direction\": \"desc\",\n  \"ssl\": \"0\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"0d89c70d-ad9f-4843-b99f-6cc0252067e9\",\n      \"hostname\": \"app.example.com\",\n      \"ssl\": {\n        \"id\": \"0d89c70d-ad9f-4843-b99f-6cc0252067e9\",\n        \"status\": \"pending_validation\",\n        \"method\": \"txt\",\n        \"type\": \"dv\",\n        \"validation_records\": [\n          {\n            \"txt_name\": \"_acme-challenge.app.example.com\",\n            \"txt_value\": \"810b7d5f01154524b961ba0cd578acc2\",\n            \"http_url\": \"http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt\",\n            \"http_body\": \"ca3-574923932a82475cb8592200f1a2a23d\",\n            \"emails\": [\n              \"administrator@example.com\",\n              \"webmaster@example.com\"\n            ]\n          }\n        ],\n        \"validation_errors\": [\n          {\n            \"message\": \"SERVFAIL looking up CAA for app.example.com\"\n          }\n        ],\n        \"hosts\": [\n          \"app.example.com\",\n          \"*.app.example.com\"\n        ],\n        \"issuer\": \"DigiCertInc\",\n        \"serial_number\": \"6743787633689793699141714808227354901\",\n        \"signature\": \"SHA256WithRSA\",\n        \"uploaded_on\": \"2020-02-06T18:11:23.531995Z\",\n        \"expires_on\": \"2021-02-06T18:11:23.531995Z\",\n        \"custom_csr_id\": \"7b163417-1d2b-4c84-a38a-2fb7a0cd7752\",\n        \"settings\": {\n          \"http2\": \"on\",\n          \"min_tls_version\": \"1.2\",\n          \"tls_1_3\": \"on\",\n          \"ciphers\": [\n            \"ECDHE-RSA-AES128-GCM-SHA256\",\n            \"AES128-SHA\"\n          ],\n          \"early_hints\": \"on\"\n        },\n        \"bundle_method\": \"ubiquitous\",\n        \"wildcard\": false,\n        \"certificate_authority\": \"digicert\",\n        \"custom_certificate\": \"-----BEGIN CERTIFICATE-----\\\\nMIIFJDCCBAygAwIBAgIQD0ifmj/Yi5NP/2gdUySbfzANBgkqhkiG9w0BAQsFADBN\\\\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMScwJQYDVQQDEx5E...SzSHfXp5lnu/3V08I72q1QNzOCgY1XeL4GKVcj4or6cT6tX6oJH7ePPmfrBfqI/O\\\\nOeH8gMJ+FuwtXYEPa4hBf38M5eU5xWG7\\\\n-----END CERTIFICATE-----\\\\n\",\n        \"custom_key\": \"-----BEGIN RSA PRIVATE KEY-----\\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\\ntnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\\nFxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\\newooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\\nHBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\\naxiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\\n+ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\\n+j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\\nPG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\\nfhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\\nqu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\\nlv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\\n-----END RSA PRIVATE KEY-----\\n\"\n      },\n      \"custom_metadata\": {\n        \"key\": \"value\"\n      },\n      \"custom_origin_server\": \"origin2.example.com\",\n      \"custom_origin_sni\": \"sni.example.com\",\n      \"status\": \"pending\",\n      \"verification_errors\": [\n        \"None of the A or AAAA records are owned by this account and the pre-generated ownership verification token was not found.\"\n      ],\n      \"ownership_verification\": {\n        \"type\": \"txt\",\n        \"name\": \"_cf-custom-hostname.app.example.com\",\n        \"value\": \"5cc07c04-ea62-4a5a-95f0-419334a875a4\"\n      },\n      \"ownership_verification_http\": {\n        \"http_url\": \"http://custom.test.com/.well-known/cf-custom-hostname-challenge/0d89c70d-ad9f-4843-b99f-6cc0252067e9\",\n        \"http_body\": \"5cc07c04-ea62-4a5a-95f0-419334a875a4\"\n      },\n      \"created_at\": \"2020-02-06T18:11:23.531995Z\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Create Custom Hostname",
+			"description": "Add a new custom hostname and request that an SSL certificate be issued for it. One of three validation methods—http, txt, email—should be used, with 'http' recommended if the CNAME is already in place (or will be soon). Specifying 'email' will send an email to the WHOIS contacts on file for the base domain plus hostmaster, postmaster, webmaster, admin, administrator. If http is used and the domain is not already pointing to the Managed CNAME host, the PATCH method must be used once it is (to complete validation).",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_identifier}/custom_hostnames",
+			"method": "POST",
+			"cfOwnership": "ssl",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#ssl:edit"
+				]
+			},
+			"html_id": "custom-hostname-for-a-zone-create-custom-hostname",
+			"uri": "zones/:zone_identifier/custom_hostnames",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/custom_hostnames\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"hostname\":\"app.example.com\",\"ssl\":{\"method\":\"http\",\"type\":\"dv\",\"settings\":{\"http2\":\"on\",\"min_tls_version\":\"1.2\",\"tls_1_3\":\"on\",\"ciphers\":[\"ECDHE-RSA-AES128-GCM-SHA256\",\"AES128-SHA\"],\"early_hints\":\"on\"},\"bundle_method\":\"ubiquitous\",\"wildcard\":false,\"custom_certificate\":\"-----BEGIN CERTIFICATE-----\\\\nMIIFJDCCBAygAwIBAgIQD0ifmj/Yi5NP/2gdUySbfzANBgkqhkiG9w0BAQsFADBN\\\\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMScwJQYDVQQDEx5E...SzSHfXp5lnu/3V08I72q1QNzOCgY1XeL4GKVcj4or6cT6tX6oJH7ePPmfrBfqI/O\\\\nOeH8gMJ+FuwtXYEPa4hBf38M5eU5xWG7\\\\n-----END CERTIFICATE-----\\\\n\",\"custom_key\":\"-----BEGIN RSA PRIVATE KEY-----\\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\\ntnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\\nFxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\\newooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\\nHBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\\naxiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\\n+ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\\n+j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\\nPG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\\nfhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\\nqu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\\nlv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\\n-----END RSA PRIVATE KEY-----\\n\"}}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"hostname": {
+						"type": "string",
+						"example": "\"app.example.com\"",
+						"readOnly": true,
+						"maxLength": 255,
+						"description": "The custom hostname that will point to your hostname via CNAME."
+					},
+					"ssl": {
+						"type": "object",
+						"example": "{\n  \"method\": \"http\",\n  \"type\": \"dv\",\n  \"settings\": {\n    \"http2\": \"on\",\n    \"min_tls_version\": \"1.2\",\n    \"tls_1_3\": \"on\",\n    \"ciphers\": [\n      \"ECDHE-RSA-AES128-GCM-SHA256\",\n      \"AES128-SHA\"\n    ],\n    \"early_hints\": \"on\"\n  },\n  \"bundle_method\": \"ubiquitous\",\n  \"wildcard\": false,\n  \"custom_certificate\": \"-----BEGIN CERTIFICATE-----\\\\nMIIFJDCCBAygAwIBAgIQD0ifmj/Yi5NP/2gdUySbfzANBgkqhkiG9w0BAQsFADBN\\\\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMScwJQYDVQQDEx5E...SzSHfXp5lnu/3V08I72q1QNzOCgY1XeL4GKVcj4or6cT6tX6oJH7ePPmfrBfqI/O\\\\nOeH8gMJ+FuwtXYEPa4hBf38M5eU5xWG7\\\\n-----END CERTIFICATE-----\\\\n\",\n  \"custom_key\": \"-----BEGIN RSA PRIVATE KEY-----\\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\\ntnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\\nFxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\\newooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\\nHBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\\naxiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\\n+ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\\n+j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\\nPG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\\nfhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\\nqu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\\nlv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\\n-----END RSA PRIVATE KEY-----\\n\"\n}",
+						"oneOf": [
+							{
+								"all_props": {
+									"method": {
+										"example": "\"http\"",
+										"enum": [
+											"http",
+											"txt",
+											"email"
+										],
+										"readOnly": false,
+										"description": "Domain control validation (DCV) method used for this hostname."
+									},
+									"type": {
+										"example": "\"dv\"",
+										"enum": [
+											"dv"
+										],
+										"readOnly": true,
+										"description": "Level of validation to be used for this hostname. Domain validation (dv) must be used."
+									},
+									"settings": {
+										"type": "object",
+										"example": "{\n  \"http2\": \"on\",\n  \"min_tls_version\": \"1.2\",\n  \"tls_1_3\": \"on\",\n  \"ciphers\": [\n    \"ECDHE-RSA-AES128-GCM-SHA256\",\n    \"AES128-SHA\"\n  ],\n  \"early_hints\": \"on\"\n}",
+										"properties": {
+											"http2": {
+												"example": "\"on\"",
+												"enum": [
+													"on",
+													"off"
+												],
+												"description": "Whether or not HTTP2 is enabled."
+											},
+											"min_tls_version": {
+												"example": "\"1.2\"",
+												"enum": [
+													"1.0",
+													"1.1",
+													"1.2",
+													"1.3"
+												],
+												"description": "The minimum TLS version supported."
+											},
+											"tls_1_3": {
+												"example": "\"on\"",
+												"enum": [
+													"on",
+													"off"
+												],
+												"description": "Whether or not TLS 1.3 is enabled."
+											},
+											"ciphers": {
+												"type": "array",
+												"example": "[\n  \"ECDHE-RSA-AES128-GCM-SHA256\",\n  \"AES128-SHA\"\n]",
+												"description": "An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.",
+												"uniqueItems": true,
+												"items": {
+													"type": "string"
+												}
+											},
+											"early_hints": {
+												"example": "\"on\"",
+												"enum": [
+													"on",
+													"off"
+												],
+												"description": "Whether or not Early Hints is enabled."
+											}
+										},
+										"description": "SSL specific settings"
+									},
+									"bundle_method": {
+										"type": "string",
+										"example": "\"ubiquitous\"",
+										"enum": [
+											"ubiquitous",
+											"optimal",
+											"force"
+										],
+										"description": "A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.",
+										"default": "ubiquitous"
+									},
+									"wildcard": {
+										"type": "boolean",
+										"example": "false",
+										"description": "Indicates whether the certificate covers a wildcard."
+									},
+									"custom_certificate": {
+										"type": "string",
+										"example": "\"-----BEGIN CERTIFICATE-----\\\\nMIIFJDCCBAygAwIBAgIQD0ifmj/Yi5NP/2gdUySbfzANBgkqhkiG9w0BAQsFADBN\\\\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMScwJQYDVQQDEx5E...SzSHfXp5lnu/3V08I72q1QNzOCgY1XeL4GKVcj4or6cT6tX6oJH7ePPmfrBfqI/O\\\\nOeH8gMJ+FuwtXYEPa4hBf38M5eU5xWG7\\\\n-----END CERTIFICATE-----\\\\n\"",
+										"description": "If a custom uploaded certificate is used"
+									},
+									"custom_key": {
+										"type": "string",
+										"example": "\"-----BEGIN RSA PRIVATE KEY-----\\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\\ntnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\\nFxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\\newooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\\nHBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\\naxiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\\n+ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\\n+j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\\nPG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\\nfhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\\nqu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\\nlv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\\n-----END RSA PRIVATE KEY-----\\n\"",
+										"description": "The key for a custom uploaded certificate"
+									}
+								},
+								"required_props": [],
+								"optional_props": [
+									"method",
+									"type",
+									"settings",
+									"bundle_method",
+									"wildcard",
+									"custom_certificate",
+									"custom_key"
+								],
+								"objects": [],
+								"example": "{\n  \"method\": \"http\",\n  \"type\": \"dv\",\n  \"settings\": {\n    \"http2\": \"on\",\n    \"min_tls_version\": \"1.2\",\n    \"tls_1_3\": \"on\",\n    \"ciphers\": [\n      \"ECDHE-RSA-AES128-GCM-SHA256\",\n      \"AES128-SHA\"\n    ],\n    \"early_hints\": \"on\"\n  },\n  \"bundle_method\": \"ubiquitous\",\n  \"wildcard\": false,\n  \"custom_certificate\": \"-----BEGIN CERTIFICATE-----\\\\nMIIFJDCCBAygAwIBAgIQD0ifmj/Yi5NP/2gdUySbfzANBgkqhkiG9w0BAQsFADBN\\\\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMScwJQYDVQQDEx5E...SzSHfXp5lnu/3V08I72q1QNzOCgY1XeL4GKVcj4or6cT6tX6oJH7ePPmfrBfqI/O\\\\nOeH8gMJ+FuwtXYEPa4hBf38M5eU5xWG7\\\\n-----END CERTIFICATE-----\\\\n\",\n  \"custom_key\": \"-----BEGIN RSA PRIVATE KEY-----\\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\\ntnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\\nFxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\\newooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\\nHBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\\naxiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\\n+ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\\n+j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\\nPG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\\nfhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\\nqu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\\nlv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\\n-----END RSA PRIVATE KEY-----\\n\"\n}"
+							}
+						],
+						"description": "SSL properties used when creating the custom hostname"
+					}
+				},
+				"required_props": [
+					"hostname",
+					"ssl"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"hostname\": \"app.example.com\",\n  \"ssl\": {\n    \"method\": \"http\",\n    \"type\": \"dv\",\n    \"settings\": {\n      \"http2\": \"on\",\n      \"min_tls_version\": \"1.2\",\n      \"tls_1_3\": \"on\",\n      \"ciphers\": [\n        \"ECDHE-RSA-AES128-GCM-SHA256\",\n        \"AES128-SHA\"\n      ],\n      \"early_hints\": \"on\"\n    },\n    \"bundle_method\": \"ubiquitous\",\n    \"wildcard\": false,\n    \"custom_certificate\": \"-----BEGIN CERTIFICATE-----\\\\nMIIFJDCCBAygAwIBAgIQD0ifmj/Yi5NP/2gdUySbfzANBgkqhkiG9w0BAQsFADBN\\\\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMScwJQYDVQQDEx5E...SzSHfXp5lnu/3V08I72q1QNzOCgY1XeL4GKVcj4or6cT6tX6oJH7ePPmfrBfqI/O\\\\nOeH8gMJ+FuwtXYEPa4hBf38M5eU5xWG7\\\\n-----END CERTIFICATE-----\\\\n\",\n    \"custom_key\": \"-----BEGIN RSA PRIVATE KEY-----\\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\\ntnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\\nFxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\\newooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\\nHBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\\naxiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\\n+ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\\n+j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\\nPG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\\nfhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\\nqu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\\nlv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\\n-----END RSA PRIVATE KEY-----\\n\"\n  }\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"0d89c70d-ad9f-4843-b99f-6cc0252067e9\",\n    \"hostname\": \"app.example.com\",\n    \"ssl\": {\n      \"id\": \"0d89c70d-ad9f-4843-b99f-6cc0252067e9\",\n      \"status\": \"pending_validation\",\n      \"method\": \"txt\",\n      \"type\": \"dv\",\n      \"validation_records\": [\n        {\n          \"txt_name\": \"_acme-challenge.app.example.com\",\n          \"txt_value\": \"810b7d5f01154524b961ba0cd578acc2\",\n          \"http_url\": \"http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt\",\n          \"http_body\": \"ca3-574923932a82475cb8592200f1a2a23d\",\n          \"emails\": [\n            \"administrator@example.com\",\n            \"webmaster@example.com\"\n          ]\n        }\n      ],\n      \"validation_errors\": [\n        {\n          \"message\": \"SERVFAIL looking up CAA for app.example.com\"\n        }\n      ],\n      \"hosts\": [\n        \"app.example.com\",\n        \"*.app.example.com\"\n      ],\n      \"issuer\": \"DigiCertInc\",\n      \"serial_number\": \"6743787633689793699141714808227354901\",\n      \"signature\": \"SHA256WithRSA\",\n      \"uploaded_on\": \"2020-02-06T18:11:23.531995Z\",\n      \"expires_on\": \"2021-02-06T18:11:23.531995Z\",\n      \"custom_csr_id\": \"7b163417-1d2b-4c84-a38a-2fb7a0cd7752\",\n      \"settings\": {\n        \"http2\": \"on\",\n        \"min_tls_version\": \"1.2\",\n        \"tls_1_3\": \"on\",\n        \"ciphers\": [\n          \"ECDHE-RSA-AES128-GCM-SHA256\",\n          \"AES128-SHA\"\n        ],\n        \"early_hints\": \"on\"\n      },\n      \"bundle_method\": \"ubiquitous\",\n      \"wildcard\": false,\n      \"certificate_authority\": \"digicert\",\n      \"custom_certificate\": \"-----BEGIN CERTIFICATE-----\\\\nMIIFJDCCBAygAwIBAgIQD0ifmj/Yi5NP/2gdUySbfzANBgkqhkiG9w0BAQsFADBN\\\\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMScwJQYDVQQDEx5E...SzSHfXp5lnu/3V08I72q1QNzOCgY1XeL4GKVcj4or6cT6tX6oJH7ePPmfrBfqI/O\\\\nOeH8gMJ+FuwtXYEPa4hBf38M5eU5xWG7\\\\n-----END CERTIFICATE-----\\\\n\",\n      \"custom_key\": \"-----BEGIN RSA PRIVATE KEY-----\\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\\ntnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\\nFxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\\newooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\\nHBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\\naxiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\\n+ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\\n+j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\\nPG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\\nfhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\\nqu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\\nlv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\\n-----END RSA PRIVATE KEY-----\\n\"\n    },\n    \"custom_metadata\": {\n      \"key\": \"value\"\n    },\n    \"custom_origin_server\": \"origin2.example.com\",\n    \"custom_origin_sni\": \"sni.example.com\",\n    \"status\": \"pending\",\n    \"verification_errors\": [\n      \"None of the A or AAAA records are owned by this account and the pre-generated ownership verification token was not found.\"\n    ],\n    \"ownership_verification\": {\n      \"type\": \"txt\",\n      \"name\": \"_cf-custom-hostname.app.example.com\",\n      \"value\": \"5cc07c04-ea62-4a5a-95f0-419334a875a4\"\n    },\n    \"ownership_verification_http\": {\n      \"http_url\": \"http://custom.test.com/.well-known/cf-custom-hostname-challenge/0d89c70d-ad9f-4843-b99f-6cc0252067e9\",\n      \"http_body\": \"5cc07c04-ea62-4a5a-95f0-419334a875a4\"\n    },\n    \"created_at\": \"2020-02-06T18:11:23.531995Z\"\n  }\n}"
+		},
+		{
+			"title": "Custom Hostname Details",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/custom_hostnames/{#/definitions/identifier}",
+			"method": "GET",
+			"cfOwnership": "ssl",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#ssl:read"
+				]
+			},
+			"html_id": "custom-hostname-for-a-zone-custom-hostname-details",
+			"uri": "zones/:zone_identifier/custom_hostnames/:identifier",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/custom_hostnames/0d89c70d-ad9f-4843-b99f-6cc0252067e9\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"0d89c70d-ad9f-4843-b99f-6cc0252067e9\",\n    \"hostname\": \"app.example.com\",\n    \"ssl\": {\n      \"id\": \"0d89c70d-ad9f-4843-b99f-6cc0252067e9\",\n      \"status\": \"pending_validation\",\n      \"method\": \"txt\",\n      \"type\": \"dv\",\n      \"validation_records\": [\n        {\n          \"txt_name\": \"_acme-challenge.app.example.com\",\n          \"txt_value\": \"810b7d5f01154524b961ba0cd578acc2\",\n          \"http_url\": \"http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt\",\n          \"http_body\": \"ca3-574923932a82475cb8592200f1a2a23d\",\n          \"emails\": [\n            \"administrator@example.com\",\n            \"webmaster@example.com\"\n          ]\n        }\n      ],\n      \"validation_errors\": [\n        {\n          \"message\": \"SERVFAIL looking up CAA for app.example.com\"\n        }\n      ],\n      \"hosts\": [\n        \"app.example.com\",\n        \"*.app.example.com\"\n      ],\n      \"issuer\": \"DigiCertInc\",\n      \"serial_number\": \"6743787633689793699141714808227354901\",\n      \"signature\": \"SHA256WithRSA\",\n      \"uploaded_on\": \"2020-02-06T18:11:23.531995Z\",\n      \"expires_on\": \"2021-02-06T18:11:23.531995Z\",\n      \"custom_csr_id\": \"7b163417-1d2b-4c84-a38a-2fb7a0cd7752\",\n      \"settings\": {\n        \"http2\": \"on\",\n        \"min_tls_version\": \"1.2\",\n        \"tls_1_3\": \"on\",\n        \"ciphers\": [\n          \"ECDHE-RSA-AES128-GCM-SHA256\",\n          \"AES128-SHA\"\n        ],\n        \"early_hints\": \"on\"\n      },\n      \"bundle_method\": \"ubiquitous\",\n      \"wildcard\": false,\n      \"certificate_authority\": \"digicert\",\n      \"custom_certificate\": \"-----BEGIN CERTIFICATE-----\\\\nMIIFJDCCBAygAwIBAgIQD0ifmj/Yi5NP/2gdUySbfzANBgkqhkiG9w0BAQsFADBN\\\\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMScwJQYDVQQDEx5E...SzSHfXp5lnu/3V08I72q1QNzOCgY1XeL4GKVcj4or6cT6tX6oJH7ePPmfrBfqI/O\\\\nOeH8gMJ+FuwtXYEPa4hBf38M5eU5xWG7\\\\n-----END CERTIFICATE-----\\\\n\",\n      \"custom_key\": \"-----BEGIN RSA PRIVATE KEY-----\\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\\ntnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\\nFxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\\newooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\\nHBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\\naxiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\\n+ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\\n+j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\\nPG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\\nfhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\\nqu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\\nlv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\\n-----END RSA PRIVATE KEY-----\\n\"\n    },\n    \"custom_metadata\": {\n      \"key\": \"value\"\n    },\n    \"custom_origin_server\": \"origin2.example.com\",\n    \"custom_origin_sni\": \"sni.example.com\",\n    \"status\": \"pending\",\n    \"verification_errors\": [\n      \"None of the A or AAAA records are owned by this account and the pre-generated ownership verification token was not found.\"\n    ],\n    \"ownership_verification\": {\n      \"type\": \"txt\",\n      \"name\": \"_cf-custom-hostname.app.example.com\",\n      \"value\": \"5cc07c04-ea62-4a5a-95f0-419334a875a4\"\n    },\n    \"ownership_verification_http\": {\n      \"http_url\": \"http://custom.test.com/.well-known/cf-custom-hostname-challenge/0d89c70d-ad9f-4843-b99f-6cc0252067e9\",\n      \"http_body\": \"5cc07c04-ea62-4a5a-95f0-419334a875a4\"\n    },\n    \"created_at\": \"2020-02-06T18:11:23.531995Z\"\n  }\n}"
+		},
+		{
+			"title": "Edit Custom Hostname",
+			"description": "Modify SSL configuration for a custom hostname. When sent with SSL config that matches existing config, used to indicate that hostname should pass domain control validation (DCV). Can also be used to change validation type, e.g., from 'http' to 'email'.",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/custom_hostnames/{#/definitions/identifier}",
+			"method": "PATCH",
+			"cfOwnership": "ssl",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#ssl:edit"
+				]
+			},
+			"html_id": "custom-hostname-for-a-zone-edit-custom-hostname",
+			"uri": "zones/:zone_identifier/custom_hostnames/:identifier",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/custom_hostnames/0d89c70d-ad9f-4843-b99f-6cc0252067e9\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"ssl\":{\"method\":\"http\",\"type\":\"dv\",\"settings\":{\"http2\":\"on\",\"min_tls_version\":\"1.2\",\"tls_1_3\":\"on\",\"ciphers\":[\"ECDHE-RSA-AES128-GCM-SHA256\",\"AES128-SHA\"],\"early_hints\":\"on\"},\"bundle_method\":\"ubiquitous\",\"wildcard\":false,\"custom_certificate\":\"-----BEGIN CERTIFICATE-----\\\\nMIIFJDCCBAygAwIBAgIQD0ifmj/Yi5NP/2gdUySbfzANBgkqhkiG9w0BAQsFADBN\\\\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMScwJQYDVQQDEx5E...SzSHfXp5lnu/3V08I72q1QNzOCgY1XeL4GKVcj4or6cT6tX6oJH7ePPmfrBfqI/O\\\\nOeH8gMJ+FuwtXYEPa4hBf38M5eU5xWG7\\\\n-----END CERTIFICATE-----\\\\n\",\"custom_key\":\"-----BEGIN RSA PRIVATE KEY-----\\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\\ntnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\\nFxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\\newooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\\nHBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\\naxiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\\n+ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\\n+j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\\nPG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\\nfhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\\nqu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\\nlv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\\n-----END RSA PRIVATE KEY-----\\n\"},\"custom_metadata\":{\"key\":\"value\"},\"custom_origin_server\":\"origin2.example.com\",\"custom_origin_sni\":\"sni.example.com\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"ssl": {
+						"type": "object",
+						"example": "{\n  \"method\": \"http\",\n  \"type\": \"dv\",\n  \"settings\": {\n    \"http2\": \"on\",\n    \"min_tls_version\": \"1.2\",\n    \"tls_1_3\": \"on\",\n    \"ciphers\": [\n      \"ECDHE-RSA-AES128-GCM-SHA256\",\n      \"AES128-SHA\"\n    ],\n    \"early_hints\": \"on\"\n  },\n  \"bundle_method\": \"ubiquitous\",\n  \"wildcard\": false,\n  \"custom_certificate\": \"-----BEGIN CERTIFICATE-----\\\\nMIIFJDCCBAygAwIBAgIQD0ifmj/Yi5NP/2gdUySbfzANBgkqhkiG9w0BAQsFADBN\\\\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMScwJQYDVQQDEx5E...SzSHfXp5lnu/3V08I72q1QNzOCgY1XeL4GKVcj4or6cT6tX6oJH7ePPmfrBfqI/O\\\\nOeH8gMJ+FuwtXYEPa4hBf38M5eU5xWG7\\\\n-----END CERTIFICATE-----\\\\n\",\n  \"custom_key\": \"-----BEGIN RSA PRIVATE KEY-----\\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\\ntnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\\nFxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\\newooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\\nHBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\\naxiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\\n+ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\\n+j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\\nPG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\\nfhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\\nqu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\\nlv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\\n-----END RSA PRIVATE KEY-----\\n\"\n}",
+						"oneOf": [
+							{
+								"all_props": {
+									"method": {
+										"example": "\"http\"",
+										"enum": [
+											"http",
+											"txt",
+											"email"
+										],
+										"readOnly": false,
+										"description": "Domain control validation (DCV) method used for this hostname."
+									},
+									"type": {
+										"example": "\"dv\"",
+										"enum": [
+											"dv"
+										],
+										"readOnly": true,
+										"description": "Level of validation to be used for this hostname. Domain validation (dv) must be used."
+									},
+									"settings": {
+										"type": "object",
+										"example": "{\n  \"http2\": \"on\",\n  \"min_tls_version\": \"1.2\",\n  \"tls_1_3\": \"on\",\n  \"ciphers\": [\n    \"ECDHE-RSA-AES128-GCM-SHA256\",\n    \"AES128-SHA\"\n  ],\n  \"early_hints\": \"on\"\n}",
+										"properties": {
+											"http2": {
+												"example": "\"on\"",
+												"enum": [
+													"on",
+													"off"
+												],
+												"description": "Whether or not HTTP2 is enabled."
+											},
+											"min_tls_version": {
+												"example": "\"1.2\"",
+												"enum": [
+													"1.0",
+													"1.1",
+													"1.2",
+													"1.3"
+												],
+												"description": "The minimum TLS version supported."
+											},
+											"tls_1_3": {
+												"example": "\"on\"",
+												"enum": [
+													"on",
+													"off"
+												],
+												"description": "Whether or not TLS 1.3 is enabled."
+											},
+											"ciphers": {
+												"type": "array",
+												"example": "[\n  \"ECDHE-RSA-AES128-GCM-SHA256\",\n  \"AES128-SHA\"\n]",
+												"description": "An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.",
+												"uniqueItems": true,
+												"items": {
+													"type": "string"
+												}
+											},
+											"early_hints": {
+												"example": "\"on\"",
+												"enum": [
+													"on",
+													"off"
+												],
+												"description": "Whether or not Early Hints is enabled."
+											}
+										},
+										"description": "SSL specific settings"
+									},
+									"bundle_method": {
+										"type": "string",
+										"example": "\"ubiquitous\"",
+										"enum": [
+											"ubiquitous",
+											"optimal",
+											"force"
+										],
+										"description": "A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.",
+										"default": "ubiquitous"
+									},
+									"wildcard": {
+										"type": "boolean",
+										"example": "false",
+										"description": "Indicates whether the certificate covers a wildcard."
+									},
+									"custom_certificate": {
+										"type": "string",
+										"example": "\"-----BEGIN CERTIFICATE-----\\\\nMIIFJDCCBAygAwIBAgIQD0ifmj/Yi5NP/2gdUySbfzANBgkqhkiG9w0BAQsFADBN\\\\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMScwJQYDVQQDEx5E...SzSHfXp5lnu/3V08I72q1QNzOCgY1XeL4GKVcj4or6cT6tX6oJH7ePPmfrBfqI/O\\\\nOeH8gMJ+FuwtXYEPa4hBf38M5eU5xWG7\\\\n-----END CERTIFICATE-----\\\\n\"",
+										"description": "If a custom uploaded certificate is used"
+									},
+									"custom_key": {
+										"type": "string",
+										"example": "\"-----BEGIN RSA PRIVATE KEY-----\\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\\ntnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\\nFxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\\newooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\\nHBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\\naxiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\\n+ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\\n+j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\\nPG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\\nfhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\\nqu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\\nlv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\\n-----END RSA PRIVATE KEY-----\\n\"",
+										"description": "The key for a custom uploaded certificate"
+									}
+								},
+								"required_props": [],
+								"optional_props": [
+									"method",
+									"type",
+									"settings",
+									"bundle_method",
+									"wildcard",
+									"custom_certificate",
+									"custom_key"
+								],
+								"objects": [],
+								"example": "{\n  \"method\": \"http\",\n  \"type\": \"dv\",\n  \"settings\": {\n    \"http2\": \"on\",\n    \"min_tls_version\": \"1.2\",\n    \"tls_1_3\": \"on\",\n    \"ciphers\": [\n      \"ECDHE-RSA-AES128-GCM-SHA256\",\n      \"AES128-SHA\"\n    ],\n    \"early_hints\": \"on\"\n  },\n  \"bundle_method\": \"ubiquitous\",\n  \"wildcard\": false,\n  \"custom_certificate\": \"-----BEGIN CERTIFICATE-----\\\\nMIIFJDCCBAygAwIBAgIQD0ifmj/Yi5NP/2gdUySbfzANBgkqhkiG9w0BAQsFADBN\\\\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMScwJQYDVQQDEx5E...SzSHfXp5lnu/3V08I72q1QNzOCgY1XeL4GKVcj4or6cT6tX6oJH7ePPmfrBfqI/O\\\\nOeH8gMJ+FuwtXYEPa4hBf38M5eU5xWG7\\\\n-----END CERTIFICATE-----\\\\n\",\n  \"custom_key\": \"-----BEGIN RSA PRIVATE KEY-----\\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\\ntnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\\nFxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\\newooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\\nHBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\\naxiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\\n+ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\\n+j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\\nPG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\\nfhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\\nqu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\\nlv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\\n-----END RSA PRIVATE KEY-----\\n\"\n}"
+							}
+						],
+						"description": "SSL properties used when creating the custom hostname"
+					},
+					"custom_metadata": {
+						"type": "object",
+						"example": "{\n  \"key\": \"value\"\n}",
+						"anyOf": [
+							{
+								"all_props": {
+									"key": {
+										"type": "string",
+										"example": "\"value\"",
+										"description": "Unique metadata for this hostname"
+									}
+								},
+								"required_props": [],
+								"optional_props": [
+									"key"
+								],
+								"objects": [],
+								"example": "{\n  \"key\": \"value\"\n}"
+							}
+						],
+						"description": "These are per-hostname (customer) settings."
+					},
+					"custom_origin_server": {
+						"type": "string",
+						"example": "\"origin2.example.com\"",
+						"description": "a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record."
+					},
+					"custom_origin_sni": {
+						"type": "string",
+						"example": "\"sni.example.com\"",
+						"description": "A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string ':request_host_header:' which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"ssl",
+					"custom_metadata",
+					"custom_origin_server",
+					"custom_origin_sni"
+				],
+				"objects": [],
+				"example": "{\n  \"ssl\": {\n    \"method\": \"http\",\n    \"type\": \"dv\",\n    \"settings\": {\n      \"http2\": \"on\",\n      \"min_tls_version\": \"1.2\",\n      \"tls_1_3\": \"on\",\n      \"ciphers\": [\n        \"ECDHE-RSA-AES128-GCM-SHA256\",\n        \"AES128-SHA\"\n      ],\n      \"early_hints\": \"on\"\n    },\n    \"bundle_method\": \"ubiquitous\",\n    \"wildcard\": false,\n    \"custom_certificate\": \"-----BEGIN CERTIFICATE-----\\\\nMIIFJDCCBAygAwIBAgIQD0ifmj/Yi5NP/2gdUySbfzANBgkqhkiG9w0BAQsFADBN\\\\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMScwJQYDVQQDEx5E...SzSHfXp5lnu/3V08I72q1QNzOCgY1XeL4GKVcj4or6cT6tX6oJH7ePPmfrBfqI/O\\\\nOeH8gMJ+FuwtXYEPa4hBf38M5eU5xWG7\\\\n-----END CERTIFICATE-----\\\\n\",\n    \"custom_key\": \"-----BEGIN RSA PRIVATE KEY-----\\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\\ntnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\\nFxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\\newooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\\nHBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\\naxiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\\n+ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\\n+j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\\nPG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\\nfhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\\nqu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\\nlv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\\n-----END RSA PRIVATE KEY-----\\n\"\n  },\n  \"custom_metadata\": {\n    \"key\": \"value\"\n  },\n  \"custom_origin_server\": \"origin2.example.com\",\n  \"custom_origin_sni\": \"sni.example.com\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"0d89c70d-ad9f-4843-b99f-6cc0252067e9\",\n    \"hostname\": \"app.example.com\",\n    \"ssl\": {\n      \"id\": \"0d89c70d-ad9f-4843-b99f-6cc0252067e9\",\n      \"status\": \"pending_validation\",\n      \"method\": \"txt\",\n      \"type\": \"dv\",\n      \"validation_records\": [\n        {\n          \"txt_name\": \"_acme-challenge.app.example.com\",\n          \"txt_value\": \"810b7d5f01154524b961ba0cd578acc2\",\n          \"http_url\": \"http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt\",\n          \"http_body\": \"ca3-574923932a82475cb8592200f1a2a23d\",\n          \"emails\": [\n            \"administrator@example.com\",\n            \"webmaster@example.com\"\n          ]\n        }\n      ],\n      \"validation_errors\": [\n        {\n          \"message\": \"SERVFAIL looking up CAA for app.example.com\"\n        }\n      ],\n      \"hosts\": [\n        \"app.example.com\",\n        \"*.app.example.com\"\n      ],\n      \"issuer\": \"DigiCertInc\",\n      \"serial_number\": \"6743787633689793699141714808227354901\",\n      \"signature\": \"SHA256WithRSA\",\n      \"uploaded_on\": \"2020-02-06T18:11:23.531995Z\",\n      \"expires_on\": \"2021-02-06T18:11:23.531995Z\",\n      \"custom_csr_id\": \"7b163417-1d2b-4c84-a38a-2fb7a0cd7752\",\n      \"settings\": {\n        \"http2\": \"on\",\n        \"min_tls_version\": \"1.2\",\n        \"tls_1_3\": \"on\",\n        \"ciphers\": [\n          \"ECDHE-RSA-AES128-GCM-SHA256\",\n          \"AES128-SHA\"\n        ],\n        \"early_hints\": \"on\"\n      },\n      \"bundle_method\": \"ubiquitous\",\n      \"wildcard\": false,\n      \"certificate_authority\": \"digicert\",\n      \"custom_certificate\": \"-----BEGIN CERTIFICATE-----\\\\nMIIFJDCCBAygAwIBAgIQD0ifmj/Yi5NP/2gdUySbfzANBgkqhkiG9w0BAQsFADBN\\\\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMScwJQYDVQQDEx5E...SzSHfXp5lnu/3V08I72q1QNzOCgY1XeL4GKVcj4or6cT6tX6oJH7ePPmfrBfqI/O\\\\nOeH8gMJ+FuwtXYEPa4hBf38M5eU5xWG7\\\\n-----END CERTIFICATE-----\\\\n\",\n      \"custom_key\": \"-----BEGIN RSA PRIVATE KEY-----\\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\\ntnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\\nFxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\\newooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\\nHBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\\naxiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\\n+ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\\n+j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\\nPG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\\nfhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\\nqu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\\nlv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\\n-----END RSA PRIVATE KEY-----\\n\"\n    },\n    \"custom_metadata\": {\n      \"key\": \"value\"\n    },\n    \"custom_origin_server\": \"origin2.example.com\",\n    \"custom_origin_sni\": \"sni.example.com\",\n    \"status\": \"pending\",\n    \"verification_errors\": [\n      \"None of the A or AAAA records are owned by this account and the pre-generated ownership verification token was not found.\"\n    ],\n    \"ownership_verification\": {\n      \"type\": \"txt\",\n      \"name\": \"_cf-custom-hostname.app.example.com\",\n      \"value\": \"5cc07c04-ea62-4a5a-95f0-419334a875a4\"\n    },\n    \"ownership_verification_http\": {\n      \"http_url\": \"http://custom.test.com/.well-known/cf-custom-hostname-challenge/0d89c70d-ad9f-4843-b99f-6cc0252067e9\",\n      \"http_body\": \"5cc07c04-ea62-4a5a-95f0-419334a875a4\"\n    },\n    \"created_at\": \"2020-02-06T18:11:23.531995Z\"\n  }\n}"
+		},
+		{
+			"title": "Delete Custom Hostname (and any issued SSL certificates)",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/custom_hostnames/{#/definitions/identifier}",
+			"method": "DELETE",
+			"cfOwnership": "ssl",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#ssl:edit"
+				]
+			},
+			"html_id": "custom-hostname-for-a-zone-delete-custom-hostname-and-any-issued-ssl-certificates-",
+			"uri": "zones/:zone_identifier/custom_hostnames/:identifier",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/custom_hostnames/0d89c70d-ad9f-4843-b99f-6cc0252067e9\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"id\": \"0d89c70d-ad9f-4843-b99f-6cc0252067e9\"\n}"
+		}
+	],
+	"html_id": "custom-hostname-for-a-zone",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"0d89c70d-ad9f-4843-b99f-6cc0252067e9\"",
+				"description": "Custom hostname identifier tag",
+				"minLength": 36,
+				"maxLength": 36,
+				"readOnly": true
+			},
+			"hostname": {
+				"type": "string",
+				"example": "\"app.example.com\"",
+				"readOnly": true,
+				"maxLength": 255,
+				"description": "The custom hostname that will point to your hostname via CNAME."
+			},
+			"ssl": {
+				"type": "object",
+				"example": "{\n  \"id\": \"0d89c70d-ad9f-4843-b99f-6cc0252067e9\",\n  \"status\": \"pending_validation\",\n  \"method\": \"txt\",\n  \"type\": \"dv\",\n  \"validation_records\": [\n    {\n      \"txt_name\": \"_acme-challenge.app.example.com\",\n      \"txt_value\": \"810b7d5f01154524b961ba0cd578acc2\",\n      \"http_url\": \"http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt\",\n      \"http_body\": \"ca3-574923932a82475cb8592200f1a2a23d\",\n      \"emails\": [\n        \"administrator@example.com\",\n        \"webmaster@example.com\"\n      ]\n    }\n  ],\n  \"validation_errors\": [\n    {\n      \"message\": \"SERVFAIL looking up CAA for app.example.com\"\n    }\n  ],\n  \"hosts\": [\n    \"app.example.com\",\n    \"*.app.example.com\"\n  ],\n  \"issuer\": \"DigiCertInc\",\n  \"serial_number\": \"6743787633689793699141714808227354901\",\n  \"signature\": \"SHA256WithRSA\",\n  \"uploaded_on\": \"2020-02-06T18:11:23.531995Z\",\n  \"expires_on\": \"2021-02-06T18:11:23.531995Z\",\n  \"custom_csr_id\": \"7b163417-1d2b-4c84-a38a-2fb7a0cd7752\",\n  \"settings\": {\n    \"http2\": \"on\",\n    \"min_tls_version\": \"1.2\",\n    \"tls_1_3\": \"on\",\n    \"ciphers\": [\n      \"ECDHE-RSA-AES128-GCM-SHA256\",\n      \"AES128-SHA\"\n    ],\n    \"early_hints\": \"on\"\n  },\n  \"bundle_method\": \"ubiquitous\",\n  \"wildcard\": false,\n  \"certificate_authority\": \"digicert\",\n  \"custom_certificate\": \"-----BEGIN CERTIFICATE-----\\\\nMIIFJDCCBAygAwIBAgIQD0ifmj/Yi5NP/2gdUySbfzANBgkqhkiG9w0BAQsFADBN\\\\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMScwJQYDVQQDEx5E...SzSHfXp5lnu/3V08I72q1QNzOCgY1XeL4GKVcj4or6cT6tX6oJH7ePPmfrBfqI/O\\\\nOeH8gMJ+FuwtXYEPa4hBf38M5eU5xWG7\\\\n-----END CERTIFICATE-----\\\\n\",\n  \"custom_key\": \"-----BEGIN RSA PRIVATE KEY-----\\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\\ntnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\\nFxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\\newooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\\nHBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\\naxiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\\n+ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\\n+j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\\nPG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\\nfhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\\nqu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\\nlv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\\n-----END RSA PRIVATE KEY-----\\n\"\n}",
+				"oneOf": [
+					{
+						"all_props": {
+							"id": {
+								"type": "string",
+								"example": "\"0d89c70d-ad9f-4843-b99f-6cc0252067e9\"",
+								"description": "Custom hostname SSL identifier tag",
+								"minLength": 36,
+								"maxLength": 36
+							},
+							"status": {
+								"example": "\"pending_validation\"",
+								"enum": [
+									"initializing",
+									"pending_validation",
+									"pending_issuance",
+									"pending_deployment",
+									"active",
+									"pending_deletion",
+									"deleted"
+								],
+								"readOnly": true,
+								"description": "Status of the hostname's SSL certificates"
+							},
+							"method": {
+								"example": "\"txt\"",
+								"enum": [
+									"http",
+									"txt",
+									"email"
+								],
+								"readOnly": false,
+								"description": "Domain control validation (DCV) method used for this hostname."
+							},
+							"type": {
+								"example": "\"dv\"",
+								"enum": [
+									"dv"
+								],
+								"readOnly": true,
+								"description": "Level of validation to be used for this hostname. Domain validation (dv) must be used."
+							},
+							"validation_records": {
+								"type": "array",
+								"example": "[\n  {\n    \"txt_name\": \"_acme-challenge.app.example.com\",\n    \"txt_value\": \"810b7d5f01154524b961ba0cd578acc2\",\n    \"http_url\": \"http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt\",\n    \"http_body\": \"ca3-574923932a82475cb8592200f1a2a23d\",\n    \"emails\": [\n      \"administrator@example.com\",\n      \"webmaster@example.com\"\n    ]\n  }\n]",
+								"items": {
+									"description": "Certificate's required validation record",
+									"type": "object",
+									"properties": {
+										"txt_name": {
+											"type": "string",
+											"description": "The hostname that the certificate authority (CA) will check for a TXT record during domain validation ",
+											"example": "_acme-challenge.app.example.com"
+										},
+										"txt_value": {
+											"type": "string",
+											"description": "The TXT record that the certificate authority (CA) will check during domain validation.",
+											"example": "810b7d5f01154524b961ba0cd578acc2"
+										},
+										"http_url": {
+											"type": "string",
+											"description": "The url that will be checked during domain validation.",
+											"example": "http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt"
+										},
+										"http_body": {
+											"type": "string",
+											"description": "The content that the certificate authority (CA) will expect to find at the http_url during the domain validation.",
+											"example": "ca3-574923932a82475cb8592200f1a2a23d"
+										},
+										"emails": {
+											"type": "array",
+											"description": "The set of email addresses that the certificate authority (CA) will use to complete domain validation",
+											"example": [
+												"administrator@example.com",
+												"webmaster@example.com"
+											]
+										}
+									}
+								}
+							},
+							"validation_errors": {
+								"type": "array",
+								"example": "[\n  {\n    \"message\": \"SERVFAIL looking up CAA for app.example.com\"\n  }\n]",
+								"description": "Domain validation errors that have been received by the certificate authority (CA).",
+								"items": {
+									"type": "object",
+									"properties": {
+										"message": {
+											"type": "string",
+											"description": "A domain validation error",
+											"example": "SERVFAIL looking up CAA for app.example.com"
+										}
+									}
+								}
+							},
+							"hosts": {
+								"type": "array",
+								"example": "[\n  \"app.example.com\",\n  \"*.app.example.com\"\n]",
+								"description": "A list of Hostnames on a custom uploaded certificate"
+							},
+							"issuer": {
+								"type": "string",
+								"example": "\"DigiCertInc\"",
+								"description": "The issuer on a custom uploaded certificate"
+							},
+							"serial_number": {
+								"type": "string",
+								"example": "\"6743787633689793699141714808227354901\"",
+								"description": "The serial number on a custom uploaded certificate."
+							},
+							"signature": {
+								"type": "string",
+								"example": "\"SHA256WithRSA\"",
+								"description": "The signature on a custom uploaded certificate"
+							},
+							"uploaded_on": {
+								"type": "string",
+								"example": "\"2020-02-06T18:11:23.531995Z\"",
+								"format": "date-time",
+								"description": "The time the custom certificate was uploaded."
+							},
+							"expires_on": {
+								"type": "string",
+								"example": "\"2021-02-06T18:11:23.531995Z\"",
+								"format": "date-time",
+								"description": "The time the custom certificate expires on."
+							},
+							"custom_csr_id": {
+								"type": "string",
+								"example": "\"7b163417-1d2b-4c84-a38a-2fb7a0cd7752\"",
+								"description": "The identifier for the Custom CSR that was used"
+							},
+							"settings": {
+								"type": "object",
+								"example": "{\n  \"http2\": \"on\",\n  \"min_tls_version\": \"1.2\",\n  \"tls_1_3\": \"on\",\n  \"ciphers\": [\n    \"ECDHE-RSA-AES128-GCM-SHA256\",\n    \"AES128-SHA\"\n  ],\n  \"early_hints\": \"on\"\n}",
+								"properties": {
+									"http2": {
+										"example": "\"on\"",
+										"enum": [
+											"on",
+											"off"
+										],
+										"description": "Whether or not HTTP2 is enabled."
+									},
+									"min_tls_version": {
+										"example": "\"1.2\"",
+										"enum": [
+											"1.0",
+											"1.1",
+											"1.2",
+											"1.3"
+										],
+										"description": "The minimum TLS version supported."
+									},
+									"tls_1_3": {
+										"example": "\"on\"",
+										"enum": [
+											"on",
+											"off"
+										],
+										"description": "Whether or not TLS 1.3 is enabled."
+									},
+									"ciphers": {
+										"type": "array",
+										"example": "[\n  \"ECDHE-RSA-AES128-GCM-SHA256\",\n  \"AES128-SHA\"\n]",
+										"description": "An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.",
+										"uniqueItems": true,
+										"items": {
+											"type": "string"
+										}
+									},
+									"early_hints": {
+										"example": "\"on\"",
+										"enum": [
+											"on",
+											"off"
+										],
+										"description": "Whether or not Early Hints is enabled."
+									}
+								},
+								"description": "SSL specific settings"
+							},
+							"bundle_method": {
+								"type": "string",
+								"example": "\"ubiquitous\"",
+								"enum": [
+									"ubiquitous",
+									"optimal",
+									"force"
+								],
+								"description": "A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.",
+								"default": "ubiquitous"
+							},
+							"wildcard": {
+								"type": "boolean",
+								"example": "false",
+								"description": "Indicates whether the certificate covers a wildcard."
+							},
+							"certificate_authority": {
+								"type": "string",
+								"example": "\"digicert\"",
+								"enum": [
+									"digicert",
+									"lets_encrypt"
+								],
+								"description": "The Certificate Authority that has issued this certificate."
+							},
+							"custom_certificate": {
+								"type": "string",
+								"example": "\"-----BEGIN CERTIFICATE-----\\\\nMIIFJDCCBAygAwIBAgIQD0ifmj/Yi5NP/2gdUySbfzANBgkqhkiG9w0BAQsFADBN\\\\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMScwJQYDVQQDEx5E...SzSHfXp5lnu/3V08I72q1QNzOCgY1XeL4GKVcj4or6cT6tX6oJH7ePPmfrBfqI/O\\\\nOeH8gMJ+FuwtXYEPa4hBf38M5eU5xWG7\\\\n-----END CERTIFICATE-----\\\\n\"",
+								"description": "If a custom uploaded certificate is used"
+							},
+							"custom_key": {
+								"type": "string",
+								"example": "\"-----BEGIN RSA PRIVATE KEY-----\\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\\ntnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\\nFxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\\newooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\\nHBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\\naxiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\\n+ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\\n+j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\\nPG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\\nfhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\\nqu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\\nlv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\\n-----END RSA PRIVATE KEY-----\\n\"",
+								"description": "The key for a custom uploaded certificate"
+							}
+						},
+						"required_props": [],
+						"optional_props": [
+							"id",
+							"status",
+							"method",
+							"type",
+							"validation_records",
+							"validation_errors",
+							"hosts",
+							"issuer",
+							"serial_number",
+							"signature",
+							"uploaded_on",
+							"expires_on",
+							"custom_csr_id",
+							"settings",
+							"bundle_method",
+							"wildcard",
+							"certificate_authority",
+							"custom_certificate",
+							"custom_key"
+						],
+						"objects": [],
+						"example": "{\n  \"id\": \"0d89c70d-ad9f-4843-b99f-6cc0252067e9\",\n  \"status\": \"pending_validation\",\n  \"method\": \"txt\",\n  \"type\": \"dv\",\n  \"validation_records\": [\n    {\n      \"txt_name\": \"_acme-challenge.app.example.com\",\n      \"txt_value\": \"810b7d5f01154524b961ba0cd578acc2\",\n      \"http_url\": \"http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt\",\n      \"http_body\": \"ca3-574923932a82475cb8592200f1a2a23d\",\n      \"emails\": [\n        \"administrator@example.com\",\n        \"webmaster@example.com\"\n      ]\n    }\n  ],\n  \"validation_errors\": [\n    {\n      \"message\": \"SERVFAIL looking up CAA for app.example.com\"\n    }\n  ],\n  \"hosts\": [\n    \"app.example.com\",\n    \"*.app.example.com\"\n  ],\n  \"issuer\": \"DigiCertInc\",\n  \"serial_number\": \"6743787633689793699141714808227354901\",\n  \"signature\": \"SHA256WithRSA\",\n  \"uploaded_on\": \"2020-02-06T18:11:23.531995Z\",\n  \"expires_on\": \"2021-02-06T18:11:23.531995Z\",\n  \"custom_csr_id\": \"7b163417-1d2b-4c84-a38a-2fb7a0cd7752\",\n  \"settings\": {\n    \"http2\": \"on\",\n    \"min_tls_version\": \"1.2\",\n    \"tls_1_3\": \"on\",\n    \"ciphers\": [\n      \"ECDHE-RSA-AES128-GCM-SHA256\",\n      \"AES128-SHA\"\n    ],\n    \"early_hints\": \"on\"\n  },\n  \"bundle_method\": \"ubiquitous\",\n  \"wildcard\": false,\n  \"certificate_authority\": \"digicert\",\n  \"custom_certificate\": \"-----BEGIN CERTIFICATE-----\\\\nMIIFJDCCBAygAwIBAgIQD0ifmj/Yi5NP/2gdUySbfzANBgkqhkiG9w0BAQsFADBN\\\\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMScwJQYDVQQDEx5E...SzSHfXp5lnu/3V08I72q1QNzOCgY1XeL4GKVcj4or6cT6tX6oJH7ePPmfrBfqI/O\\\\nOeH8gMJ+FuwtXYEPa4hBf38M5eU5xWG7\\\\n-----END CERTIFICATE-----\\\\n\",\n  \"custom_key\": \"-----BEGIN RSA PRIVATE KEY-----\\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\\ntnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\\nFxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\\newooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\\nHBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\\naxiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\\n+ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\\n+j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\\nPG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\\nfhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\\nqu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\\nlv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\\n-----END RSA PRIVATE KEY-----\\n\"\n}"
+					}
+				],
+				"description": "SSL properties for the custom hostname"
+			},
+			"custom_metadata": {
+				"type": "object",
+				"example": "{\n  \"key\": \"value\"\n}",
+				"anyOf": [
+					{
+						"all_props": {
+							"key": {
+								"type": "string",
+								"example": "\"value\"",
+								"description": "Unique metadata for this hostname"
+							}
+						},
+						"required_props": [],
+						"optional_props": [
+							"key"
+						],
+						"objects": [],
+						"example": "{\n  \"key\": \"value\"\n}"
+					}
+				],
+				"description": "These are per-hostname (customer) settings."
+			},
+			"custom_origin_server": {
+				"type": "string",
+				"example": "\"origin2.example.com\"",
+				"description": "a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record."
+			},
+			"custom_origin_sni": {
+				"type": "string",
+				"example": "\"sni.example.com\"",
+				"description": "A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string ':request_host_header:' which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server."
+			},
+			"status": {
+				"example": "\"pending\"",
+				"enum": [
+					"pending",
+					"active",
+					"moved",
+					"deleted"
+				],
+				"description": "Status of the hostname's activation."
+			},
+			"verification_errors": {
+				"type": "array",
+				"example": "[\n  \"None of the A or AAAA records are owned by this account and the pre-generated ownership verification token was not found.\"\n]",
+				"description": "These are errors that were encountered while trying to activate a hostname."
+			},
+			"ownership_verification": {
+				"type": "object",
+				"example": "{\n  \"type\": \"txt\",\n  \"name\": \"_cf-custom-hostname.app.example.com\",\n  \"value\": \"5cc07c04-ea62-4a5a-95f0-419334a875a4\"\n}",
+				"oneOf": [
+					{
+						"all_props": {
+							"type": {
+								"example": "\"txt\"",
+								"enum": [
+									"txt"
+								],
+								"description": "DNS Record type"
+							},
+							"name": {
+								"type": "string",
+								"example": "\"_cf-custom-hostname.app.example.com\"",
+								"description": "DNS Name for record."
+							},
+							"value": {
+								"type": "string",
+								"example": "\"5cc07c04-ea62-4a5a-95f0-419334a875a4\"",
+								"description": "Content for the record."
+							}
+						},
+						"required_props": [],
+						"optional_props": [
+							"type",
+							"name",
+							"value"
+						],
+						"objects": [],
+						"example": "{\n  \"type\": \"txt\",\n  \"name\": \"_cf-custom-hostname.app.example.com\",\n  \"value\": \"5cc07c04-ea62-4a5a-95f0-419334a875a4\"\n}"
+					}
+				],
+				"description": "This is a record which can be placed to activate a hostname."
+			},
+			"ownership_verification_http": {
+				"type": "object",
+				"example": "{\n  \"http_url\": \"http://custom.test.com/.well-known/cf-custom-hostname-challenge/0d89c70d-ad9f-4843-b99f-6cc0252067e9\",\n  \"http_body\": \"5cc07c04-ea62-4a5a-95f0-419334a875a4\"\n}",
+				"oneOf": [
+					{
+						"all_props": {
+							"http_url": {
+								"type": "string",
+								"example": "\"http://custom.test.com/.well-known/cf-custom-hostname-challenge/0d89c70d-ad9f-4843-b99f-6cc0252067e9\"",
+								"description": "The HTTP URL that will be checked during custom hostname verification and where the customer should host the token."
+							},
+							"http_body": {
+								"type": "string",
+								"example": "\"5cc07c04-ea62-4a5a-95f0-419334a875a4\"",
+								"description": "Token to be served."
+							}
+						},
+						"required_props": [],
+						"optional_props": [
+							"http_url",
+							"http_body"
+						],
+						"objects": [],
+						"example": "{\n  \"http_url\": \"http://custom.test.com/.well-known/cf-custom-hostname-challenge/0d89c70d-ad9f-4843-b99f-6cc0252067e9\",\n  \"http_body\": \"5cc07c04-ea62-4a5a-95f0-419334a875a4\"\n}"
+					}
+				],
+				"description": "This presents the token to be served by the given http url to activate a hostname."
+			},
+			"created_at": {
+				"type": "string",
+				"example": "\"2020-02-06T18:11:23.531995Z\"",
+				"format": "date-time",
+				"description": "This is the time the hostname was created."
+			}
+		},
+		"required_props": [
+			"id",
+			"hostname",
+			"ssl"
+		],
+		"optional_props": [
+			"custom_metadata",
+			"custom_origin_server",
+			"custom_origin_sni",
+			"status",
+			"verification_errors",
+			"ownership_verification",
+			"ownership_verification_http",
+			"created_at"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"0d89c70d-ad9f-4843-b99f-6cc0252067e9\",\n  \"hostname\": \"app.example.com\",\n  \"ssl\": {\n    \"id\": \"0d89c70d-ad9f-4843-b99f-6cc0252067e9\",\n    \"status\": \"pending_validation\",\n    \"method\": \"txt\",\n    \"type\": \"dv\",\n    \"validation_records\": [\n      {\n        \"txt_name\": \"_acme-challenge.app.example.com\",\n        \"txt_value\": \"810b7d5f01154524b961ba0cd578acc2\",\n        \"http_url\": \"http://app.example.com/.well-known/pki-validation/ca3-da12a1c25e7b48cf80408c6c1763b8a2.txt\",\n        \"http_body\": \"ca3-574923932a82475cb8592200f1a2a23d\",\n        \"emails\": [\n          \"administrator@example.com\",\n          \"webmaster@example.com\"\n        ]\n      }\n    ],\n    \"validation_errors\": [\n      {\n        \"message\": \"SERVFAIL looking up CAA for app.example.com\"\n      }\n    ],\n    \"hosts\": [\n      \"app.example.com\",\n      \"*.app.example.com\"\n    ],\n    \"issuer\": \"DigiCertInc\",\n    \"serial_number\": \"6743787633689793699141714808227354901\",\n    \"signature\": \"SHA256WithRSA\",\n    \"uploaded_on\": \"2020-02-06T18:11:23.531995Z\",\n    \"expires_on\": \"2021-02-06T18:11:23.531995Z\",\n    \"custom_csr_id\": \"7b163417-1d2b-4c84-a38a-2fb7a0cd7752\",\n    \"settings\": {\n      \"http2\": \"on\",\n      \"min_tls_version\": \"1.2\",\n      \"tls_1_3\": \"on\",\n      \"ciphers\": [\n        \"ECDHE-RSA-AES128-GCM-SHA256\",\n        \"AES128-SHA\"\n      ],\n      \"early_hints\": \"on\"\n    },\n    \"bundle_method\": \"ubiquitous\",\n    \"wildcard\": false,\n    \"certificate_authority\": \"digicert\",\n    \"custom_certificate\": \"-----BEGIN CERTIFICATE-----\\\\nMIIFJDCCBAygAwIBAgIQD0ifmj/Yi5NP/2gdUySbfzANBgkqhkiG9w0BAQsFADBN\\\\nMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMScwJQYDVQQDEx5E...SzSHfXp5lnu/3V08I72q1QNzOCgY1XeL4GKVcj4or6cT6tX6oJH7ePPmfrBfqI/O\\\\nOeH8gMJ+FuwtXYEPa4hBf38M5eU5xWG7\\\\n-----END CERTIFICATE-----\\\\n\",\n    \"custom_key\": \"-----BEGIN RSA PRIVATE KEY-----\\nMIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\\ndtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\\nabIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\\ntnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\\nFxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\\newooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\\nHBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\\naxiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\\n+ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\\n+j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\\nKLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\\n9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\\n/WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\\niacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\\nN2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\\nVAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\\nvULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\\nlySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\\n9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\\nmEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\\ndFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\\nPG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\\nfhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\\nqu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\\nlv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\\n-----END RSA PRIVATE KEY-----\\n\"\n  },\n  \"custom_metadata\": {\n    \"key\": \"value\"\n  },\n  \"custom_origin_server\": \"origin2.example.com\",\n  \"custom_origin_sni\": \"sni.example.com\",\n  \"status\": \"pending\",\n  \"verification_errors\": [\n    \"None of the A or AAAA records are owned by this account and the pre-generated ownership verification token was not found.\"\n  ],\n  \"ownership_verification\": {\n    \"type\": \"txt\",\n    \"name\": \"_cf-custom-hostname.app.example.com\",\n    \"value\": \"5cc07c04-ea62-4a5a-95f0-419334a875a4\"\n  },\n  \"ownership_verification_http\": {\n    \"http_url\": \"http://custom.test.com/.well-known/cf-custom-hostname-challenge/0d89c70d-ad9f-4843-b99f-6cc0252067e9\",\n    \"http_body\": \"5cc07c04-ea62-4a5a-95f0-419334a875a4\"\n  },\n  \"created_at\": \"2020-02-06T18:11:23.531995Z\"\n}",
+		"title": "Custom Hostname for a Zone",
+		"description": "Manage hostnames for your zone that are routed via CNAME."
+	}
+}

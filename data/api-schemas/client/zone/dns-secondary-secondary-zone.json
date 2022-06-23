@@ -1,0 +1,250 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/dns-secondary-secondary-zone.json",
+	"title": "Secondary DNS (Secondary Zone)",
+	"description": "Configure Secondary DNS for the Secondary Zone (Cloudflare as Secondary).",
+	"type": "object",
+	"links": [
+		{
+			"title": "Secondary Zone Configuration Details",
+			"description": "Get secondary zone configuration for incoming zone transfers",
+			"rel": "self",
+			"href": "zones/{#/definitions/identifier}/secondary_dns/incoming",
+			"method": "GET",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:read"
+				]
+			},
+			"html_id": "secondary-dns-secondary-zone--secondary-zone-configuration-details",
+			"uri": "zones/:identifier/secondary_dns/incoming",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/269d8f4853475ca241c4e730be286b20/secondary_dns/incoming\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"269d8f4853475ca241c4e730be286b20\",\n    \"name\": \"www.example.com.\",\n    \"peers\": [\n      \"23ff594956f20c2a721606e94745a8aa\",\n      \"00920f38ce07c2e2f4df50b1f61d4194\"\n    ],\n    \"auto_refresh_seconds\": 86400,\n    \"soa_serial\": 2019102400,\n    \"created_time\": \"2019-10-24T17:09:42.883908+01:00\",\n    \"checked_time\": \"2019-10-24T17:09:42.883908+01:00\",\n    \"modified_time\": \"2019-10-24T17:09:42.883908+01:00\"\n  }\n}"
+		},
+		{
+			"title": "Update Secondary Zone Configuration",
+			"description": "Update secondary zone configuration for incoming zone transfers",
+			"rel": "self",
+			"href": "zones/{#/definitions/identifier}/secondary_dns/incoming",
+			"method": "PUT",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:edit"
+				]
+			},
+			"html_id": "secondary-dns-secondary-zone--update-secondary-zone-configuration",
+			"uri": "zones/:identifier/secondary_dns/incoming",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/269d8f4853475ca241c4e730be286b20/secondary_dns/incoming\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"id\":\"269d8f4853475ca241c4e730be286b20\",\"name\":\"www.example.com.\",\"peers\":[\"23ff594956f20c2a721606e94745a8aa\",\"00920f38ce07c2e2f4df50b1f61d4194\"],\"auto_refresh_seconds\":86400}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"269d8f4853475ca241c4e730be286b20\"",
+						"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"description": "API item identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"name": {
+						"type": "string",
+						"example": "\"www.example.com.\"",
+						"description": "Zone name"
+					},
+					"peers": {
+						"type": "array",
+						"example": "[\n  \"23ff594956f20c2a721606e94745a8aa\",\n  \"00920f38ce07c2e2f4df50b1f61d4194\"\n]",
+						"description": "A list of peer tags"
+					},
+					"auto_refresh_seconds": {
+						"type": "number",
+						"example": "86400",
+						"description": "How often should a secondary zone auto refresh regardless of DNS NOTIFY.\nNot applicable for primary zones."
+					}
+				},
+				"required_props": [
+					"id",
+					"name",
+					"peers",
+					"auto_refresh_seconds"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"id\": \"269d8f4853475ca241c4e730be286b20\",\n  \"name\": \"www.example.com.\",\n  \"peers\": [\n    \"23ff594956f20c2a721606e94745a8aa\",\n    \"00920f38ce07c2e2f4df50b1f61d4194\"\n  ],\n  \"auto_refresh_seconds\": 86400\n}",
+				"title": "Secondary DNS (Secondary Zone)",
+				"description": "Configure Secondary DNS for the Secondary Zone (Cloudflare as Secondary)."
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"269d8f4853475ca241c4e730be286b20\",\n    \"name\": \"www.example.com.\",\n    \"peers\": [\n      \"23ff594956f20c2a721606e94745a8aa\",\n      \"00920f38ce07c2e2f4df50b1f61d4194\"\n    ],\n    \"auto_refresh_seconds\": 86400,\n    \"soa_serial\": 2019102400,\n    \"created_time\": \"2019-10-24T17:09:42.883908+01:00\",\n    \"checked_time\": \"2019-10-24T17:09:42.883908+01:00\",\n    \"modified_time\": \"2019-10-24T17:09:42.883908+01:00\"\n  }\n}"
+		},
+		{
+			"title": "Delete Secondary Zone Configuration",
+			"description": "Delete secondary zone configuration for incoming zone transfers",
+			"rel": "self",
+			"href": "zones/{#/definitions/identifier}/secondary_dns/incoming",
+			"method": "DELETE",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:edit"
+				]
+			},
+			"html_id": "secondary-dns-secondary-zone--delete-secondary-zone-configuration",
+			"uri": "zones/:identifier/secondary_dns/incoming",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/269d8f4853475ca241c4e730be286b20/secondary_dns/incoming\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"269d8f4853475ca241c4e730be286b20\"\n  }\n}"
+		},
+		{
+			"title": "Create Secondary Zone Configuration",
+			"description": "Create secondary zone configuration for incoming zone transfers",
+			"rel": "self",
+			"href": "zones/{#/definitions/identifier}/secondary_dns/incoming",
+			"method": "POST",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:edit"
+				]
+			},
+			"html_id": "secondary-dns-secondary-zone--create-secondary-zone-configuration",
+			"uri": "zones/:identifier/secondary_dns/incoming",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/269d8f4853475ca241c4e730be286b20/secondary_dns/incoming\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"id\":\"269d8f4853475ca241c4e730be286b20\",\"name\":\"www.example.com.\",\"peers\":[\"23ff594956f20c2a721606e94745a8aa\",\"00920f38ce07c2e2f4df50b1f61d4194\"],\"auto_refresh_seconds\":86400}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"269d8f4853475ca241c4e730be286b20\"",
+						"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"description": "API item identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"name": {
+						"type": "string",
+						"example": "\"www.example.com.\"",
+						"description": "Zone name"
+					},
+					"peers": {
+						"type": "array",
+						"example": "[\n  \"23ff594956f20c2a721606e94745a8aa\",\n  \"00920f38ce07c2e2f4df50b1f61d4194\"\n]",
+						"description": "A list of peer tags"
+					},
+					"auto_refresh_seconds": {
+						"type": "number",
+						"example": "86400",
+						"description": "How often should a secondary zone auto refresh regardless of DNS NOTIFY.\nNot applicable for primary zones."
+					}
+				},
+				"required_props": [
+					"id",
+					"name",
+					"peers",
+					"auto_refresh_seconds"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"id\": \"269d8f4853475ca241c4e730be286b20\",\n  \"name\": \"www.example.com.\",\n  \"peers\": [\n    \"23ff594956f20c2a721606e94745a8aa\",\n    \"00920f38ce07c2e2f4df50b1f61d4194\"\n  ],\n  \"auto_refresh_seconds\": 86400\n}",
+				"title": "Secondary DNS (Secondary Zone)",
+				"description": "Configure Secondary DNS for the Secondary Zone (Cloudflare as Secondary)."
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"269d8f4853475ca241c4e730be286b20\",\n    \"name\": \"www.example.com.\",\n    \"peers\": [\n      \"23ff594956f20c2a721606e94745a8aa\",\n      \"00920f38ce07c2e2f4df50b1f61d4194\"\n    ],\n    \"auto_refresh_seconds\": 86400,\n    \"soa_serial\": 2019102400,\n    \"created_time\": \"2019-10-24T17:09:42.883908+01:00\",\n    \"checked_time\": \"2019-10-24T17:09:42.883908+01:00\",\n    \"modified_time\": \"2019-10-24T17:09:42.883908+01:00\"\n  }\n}"
+		},
+		{
+			"title": "Force AXFR",
+			"description": "Sends AXFR zone transfer request to primary nameserver(s).",
+			"rel": "self",
+			"href": "zones/{#/definitions/identifier}/secondary_dns/force_axfr",
+			"method": "POST",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:edit"
+				]
+			},
+			"html_id": "secondary-dns-secondary-zone--force-axfr",
+			"uri": "zones/:identifier/secondary_dns/force_axfr",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/269d8f4853475ca241c4e730be286b20/secondary_dns/force_axfr\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": \"OK\"\n}"
+		}
+	],
+	"html_id": "secondary-dns-secondary-zone-",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"269d8f4853475ca241c4e730be286b20\"",
+				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "API item identifier tag",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"name": {
+				"type": "string",
+				"example": "\"www.example.com.\"",
+				"description": "Zone name"
+			},
+			"peers": {
+				"type": "array",
+				"example": "[\n  \"23ff594956f20c2a721606e94745a8aa\",\n  \"00920f38ce07c2e2f4df50b1f61d4194\"\n]",
+				"description": "A list of peer tags"
+			},
+			"auto_refresh_seconds": {
+				"type": "number",
+				"example": "86400",
+				"description": "How often should a secondary zone auto refresh regardless of DNS NOTIFY.\nNot applicable for primary zones."
+			}
+		},
+		"required_props": [
+			"id",
+			"name",
+			"peers",
+			"auto_refresh_seconds"
+		],
+		"optional_props": [],
+		"objects": [],
+		"example": "{\n  \"id\": \"269d8f4853475ca241c4e730be286b20\",\n  \"name\": \"www.example.com.\",\n  \"peers\": [\n    \"23ff594956f20c2a721606e94745a8aa\",\n    \"00920f38ce07c2e2f4df50b1f61d4194\"\n  ],\n  \"auto_refresh_seconds\": 86400\n}",
+		"title": "Secondary DNS (Secondary Zone)",
+		"description": "Configure Secondary DNS for the Secondary Zone (Cloudflare as Secondary)."
+	}
+}

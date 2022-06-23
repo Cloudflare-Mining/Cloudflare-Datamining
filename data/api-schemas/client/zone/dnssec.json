@@ -1,0 +1,226 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/dnssec.json",
+	"title": "DNSSEC",
+	"description": "Manage DNSSEC for a zone",
+	"type": "object",
+	"links": [
+		{
+			"title": "DNSSEC Details",
+			"description": "Details about DNSSEC status and configuration",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/dnssec",
+			"method": "GET",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#zone_settings:read"
+				]
+			},
+			"html_id": "dnssec-dnssec-details",
+			"uri": "zones/:zone_identifier/dnssec",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/dnssec\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"status\": \"active\",\n    \"flags\": 257,\n    \"algorithm\": \"13\",\n    \"key_type\": \"ECDSAP256SHA256\",\n    \"digest_type\": \"2\",\n    \"digest_algorithm\": \"SHA256\",\n    \"digest\": \"48E939042E82C22542CB377B580DFDC52A361CEFDC72E7F9107E2B6BD9306A45\",\n    \"ds\": \"example.com. 3600 IN DS 16953 13 2 48E939042E82C22542CB377B580DFDC52A361CEFDC72E7F9107E2B6BD9306A45\",\n    \"key_tag\": 42,\n    \"public_key\": \"oXiGYrSTO+LSCJ3mohc8EP+CzF9KxBj8/ydXJ22pKuZP3VAC3/Md/k7xZfz470CoRyZJ6gV6vml07IC3d8xqhA==\",\n    \"modified_on\": \"2014-01-01T05:20:00Z\"\n  }\n}"
+		},
+		{
+			"title": "Edit DNSSEC Status",
+			"description": "Enable or disable DNSSEC",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/dnssec",
+			"method": "PATCH",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#zone_settings:edit"
+				]
+			},
+			"html_id": "dnssec-edit-dnssec-status",
+			"uri": "zones/:zone_identifier/dnssec",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/dnssec\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"status\":\"active\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"status": {
+						"example": "\"active\"",
+						"enum": [
+							"active",
+							"disabled"
+						],
+						"description": "Status of DNSSEC, based on user-desired state and presence of necessary records"
+					}
+				},
+				"required_props": [
+					"status"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"status\": \"active\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"status\": \"active\",\n    \"flags\": 257,\n    \"algorithm\": \"13\",\n    \"key_type\": \"ECDSAP256SHA256\",\n    \"digest_type\": \"2\",\n    \"digest_algorithm\": \"SHA256\",\n    \"digest\": \"48E939042E82C22542CB377B580DFDC52A361CEFDC72E7F9107E2B6BD9306A45\",\n    \"ds\": \"example.com. 3600 IN DS 16953 13 2 48E939042E82C22542CB377B580DFDC52A361CEFDC72E7F9107E2B6BD9306A45\",\n    \"key_tag\": 42,\n    \"public_key\": \"oXiGYrSTO+LSCJ3mohc8EP+CzF9KxBj8/ydXJ22pKuZP3VAC3/Md/k7xZfz470CoRyZJ6gV6vml07IC3d8xqhA==\",\n    \"modified_on\": \"2014-01-01T05:20:00Z\"\n  }\n}"
+		},
+		{
+			"title": "Delete DNSSEC records",
+			"description": "Delete DNSSEC",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/dnssec",
+			"method": "DELETE",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#zone_settings:edit"
+				]
+			},
+			"html_id": "dnssec-delete-dnssec-records",
+			"uri": "zones/:zone_identifier/dnssec",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/dnssec\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": \"\"\n}"
+		}
+	],
+	"html_id": "dnssec",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"status": {
+				"example": "\"active\"",
+				"enum": [
+					"active",
+					"pending",
+					"disabled",
+					"pending-disabled",
+					"error"
+				],
+				"description": "Status of DNSSEC, based on user-desired state and presence of necessary records"
+			},
+			"flags": {
+				"type": [
+					"number",
+					"null"
+				],
+				"example": "257",
+				"description": "Flag for DNSSEC record",
+				"readOnly": true
+			},
+			"algorithm": {
+				"type": [
+					"string",
+					"null"
+				],
+				"example": "\"13\"",
+				"description": "Algorithm key code",
+				"readOnly": true
+			},
+			"key_type": {
+				"type": [
+					"string",
+					"null"
+				],
+				"example": "\"ECDSAP256SHA256\"",
+				"description": "Algorithm key type",
+				"readOnly": true
+			},
+			"digest_type": {
+				"type": [
+					"string",
+					"null"
+				],
+				"example": "\"2\"",
+				"description": "Coded type for digest algorithm",
+				"readOnly": true
+			},
+			"digest_algorithm": {
+				"type": [
+					"string",
+					"null"
+				],
+				"example": "\"SHA256\"",
+				"description": "Type of digest algorithm",
+				"readOnly": true
+			},
+			"digest": {
+				"type": [
+					"string",
+					"null"
+				],
+				"example": "\"48E939042E82C22542CB377B580DFDC52A361CEFDC72E7F9107E2B6BD9306A45\"",
+				"description": "Digest hash",
+				"readOnly": true
+			},
+			"ds": {
+				"type": [
+					"string",
+					"null"
+				],
+				"example": "\"example.com. 3600 IN DS 16953 13 2 48E939042E82C22542CB377B580DFDC52A361CEFDC72E7F9107E2B6BD9306A45\"",
+				"description": "Full DS record",
+				"readOnly": true
+			},
+			"key_tag": {
+				"type": [
+					"number",
+					"null"
+				],
+				"example": "42",
+				"description": "Code for key tag",
+				"readOnly": true
+			},
+			"public_key": {
+				"type": [
+					"string",
+					"null"
+				],
+				"example": "\"oXiGYrSTO+LSCJ3mohc8EP+CzF9KxBj8/ydXJ22pKuZP3VAC3/Md/k7xZfz470CoRyZJ6gV6vml07IC3d8xqhA==\"",
+				"description": "Public key for DS record",
+				"readOnly": true
+			},
+			"modified_on": {
+				"type": [
+					"string",
+					"null"
+				],
+				"example": "\"2014-01-01T05:20:00Z\"",
+				"format": "date-time",
+				"readOnly": true,
+				"description": "When DNSSEC was last modified"
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"status",
+			"flags",
+			"algorithm",
+			"key_type",
+			"digest_type",
+			"digest_algorithm",
+			"digest",
+			"ds",
+			"key_tag",
+			"public_key",
+			"modified_on"
+		],
+		"objects": [],
+		"example": "{\n  \"status\": \"active\",\n  \"flags\": 257,\n  \"algorithm\": \"13\",\n  \"key_type\": \"ECDSAP256SHA256\",\n  \"digest_type\": \"2\",\n  \"digest_algorithm\": \"SHA256\",\n  \"digest\": \"48E939042E82C22542CB377B580DFDC52A361CEFDC72E7F9107E2B6BD9306A45\",\n  \"ds\": \"example.com. 3600 IN DS 16953 13 2 48E939042E82C22542CB377B580DFDC52A361CEFDC72E7F9107E2B6BD9306A45\",\n  \"key_tag\": 42,\n  \"public_key\": \"oXiGYrSTO+LSCJ3mohc8EP+CzF9KxBj8/ydXJ22pKuZP3VAC3/Md/k7xZfz470CoRyZJ6gV6vml07IC3d8xqhA==\",\n  \"modified_on\": \"2014-01-01T05:20:00Z\"\n}",
+		"title": "DNSSEC",
+		"description": "Manage DNSSEC for a zone"
+	}
+}

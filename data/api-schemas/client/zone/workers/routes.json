@@ -1,0 +1,257 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/workers/routes.json",
+	"title": "Worker Routes",
+	"description": "Routes are basic patterns used to enable or disable workers that match requests.",
+	"cfExtendedDescription": "**For more detailed documentation on using the API for Workers see the [Workers API](https://workers.cloudflare.com/docs/reference/tooling/api/).**",
+	"type": "object",
+	"links": [
+		{
+			"title": "Create Route",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_id}/workers/routes",
+			"method": "POST",
+			"cfOwnership": "workers",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.edge.worker.route.create"
+				]
+			},
+			"html_id": "worker-routes-create-route",
+			"uri": "zones/:zone_id/workers/routes",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/workers/routes\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"pattern\":\"example.net/*\",\"script\":\"this-is_my_script-01\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"pattern": {
+						"type": "string",
+						"example": "\"example.net/*\"",
+						"title": "Route pattern"
+					},
+					"script": {
+						"type": "string",
+						"example": "\"this-is_my_script-01\"",
+						"description": "Name of the script to apply when the route is matched. The route is skipped when this is blank/missing.",
+						"pattern": "^[a-z0-9_][a-z0-9-_]*$"
+					}
+				},
+				"required_props": [
+					"pattern"
+				],
+				"optional_props": [
+					"script"
+				],
+				"objects": [],
+				"example": "{\n  \"pattern\": \"example.net/*\",\n  \"script\": \"this-is_my_script-01\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\"\n  }\n}"
+		},
+		{
+			"title": "List Routes",
+			"description": "",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_id}/workers/routes",
+			"method": "GET",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
+			"cfOwnership": "workers",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.edge.worker.route.list"
+				]
+			},
+			"html_id": "worker-routes-list-routes",
+			"uri": "zones/:zone_id/workers/routes",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/workers/routes\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n      \"pattern\": \"example.net/*\",\n      \"script\": \"this-is_my_script-01\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Get Route",
+			"description": "",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_id}/workers/routes/{#/definitions/route_id}",
+			"method": "GET",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
+			"cfOwnership": "workers",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.edge.worker.route.read"
+				]
+			},
+			"html_id": "worker-routes-get-route",
+			"uri": "zones/:zone_id/workers/routes/:route_id",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/workers/routes/9a7806061c88ada191ed06f989cc3dac\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n    \"pattern\": \"example.net/*\",\n    \"script\": \"this-is_my_script-01\"\n  }\n}"
+		},
+		{
+			"title": "Update Route",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_id}/workers/routes/{#/definitions/route_id}",
+			"method": "PUT",
+			"cfOwnership": "workers",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.edge.worker.route.update"
+				]
+			},
+			"html_id": "worker-routes-update-route",
+			"uri": "zones/:zone_id/workers/routes/:route_id",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/workers/routes/9a7806061c88ada191ed06f989cc3dac\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"pattern\":\"example.net/*\",\"script\":\"this-is_my_script-01\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"pattern": {
+						"type": "string",
+						"example": "\"example.net/*\"",
+						"title": "Route pattern"
+					},
+					"script": {
+						"type": "string",
+						"example": "\"this-is_my_script-01\"",
+						"description": "Name of the script to apply when the route is matched. The route is skipped when this is blank/missing.",
+						"pattern": "^[a-z0-9_][a-z0-9-_]*$"
+					}
+				},
+				"required_props": [
+					"pattern"
+				],
+				"optional_props": [
+					"script"
+				],
+				"objects": [],
+				"example": "{\n  \"pattern\": \"example.net/*\",\n  \"script\": \"this-is_my_script-01\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n    \"pattern\": \"example.net/*\",\n    \"script\": \"this-is_my_script-01\"\n  }\n}"
+		},
+		{
+			"title": "Delete Route",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_id}/workers/routes/{#/definitions/route_id}",
+			"method": "DELETE",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
+			"cfOwnership": "workers",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.edge.worker.route.delete"
+				]
+			},
+			"html_id": "worker-routes-delete-route",
+			"uri": "zones/:zone_id/workers/routes/:route_id",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/workers/routes/9a7806061c88ada191ed06f989cc3dac\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\"\n  }\n}"
+		}
+	],
+	"cfLinkErrors": {
+		"10001": "Unsupported or unexpected Content Type",
+		"10002": "Unexpected internal server error",
+		"10003": "Missing required URL parameter",
+		"10004": "Malformed URL parameter",
+		"10007": "Resource not found (similar to HTTP 404)",
+		"10014": "Internal error while attempting authorization checks",
+		"10015": "The current account is not authorized to use workers",
+		"10020": "Attempted to create a route for a pattern that already exists",
+		"10022": "Route pattern was invalid",
+		"10023": "Unauthorized access attempt",
+		"10026": "Route pattern was unparseable"
+	},
+	"html_id": "worker-routes",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"9a7806061c88ada191ed06f989cc3dac\"",
+				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "API item identifier tag",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"pattern": {
+				"type": "string",
+				"example": "\"example.net/*\"",
+				"title": "Route pattern"
+			},
+			"script": {
+				"type": "string",
+				"example": "\"this-is_my_script-01\"",
+				"description": "Name of the script to apply when the route is matched. The route is skipped when this is blank/missing.",
+				"pattern": "^[a-z0-9_][a-z0-9-_]*$"
+			}
+		},
+		"required_props": [
+			"id",
+			"pattern",
+			"script"
+		],
+		"optional_props": [],
+		"objects": [],
+		"example": "{\n  \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n  \"pattern\": \"example.net/*\",\n  \"script\": \"this-is_my_script-01\"\n}",
+		"title": "Worker Routes",
+		"description": "Routes are basic patterns used to enable or disable workers that match requests."
+	}
+}

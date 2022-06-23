@@ -1,0 +1,240 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/alert-notifications/policies.json",
+	"title": "Notification policies",
+	"description": "Notification policies control which notifications you receive for your account.",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Notification policies",
+			"description": "Get a list of all Notification policies.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/alerting/v3/policies",
+			"method": "GET",
+			"cfOwnership": "app-services",
+			"html_id": "notification-policies-list-notification-policies",
+			"uri": "accounts/:identifier/alerting/v3/policies",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/alerting/v3/policies\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"name\": \"SSL Notification Event Policy\",\n      \"description\": \"Something describing the policy.\",\n      \"enabled\": true,\n      \"alert_type\": \"universal_ssl_event_type\",\n      \"mechanisms\": {\n        \"email\": [\n          {\n            \"id\": \"test@example.com\"\n          }\n        ],\n        \"pagerduty\": [\n          {\n            \"id\": \"e8133a15-00a4-4d69-aec1-32f70c51f6e5\"\n          }\n        ],\n        \"webhooks\": [\n          {\n            \"id\": \"14cc1190-5d2b-4b98-a696-c424cb2ad05f\"\n          }\n        ]\n      },\n      \"filters\": {\n        \"slo\": [\n          \"99.9\"\n        ]\n      },\n      \"created\": \"2014-01-01T05:20:00.12345Z\",\n      \"modified\": \"2014-01-01T05:20:00.12345Z\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Get a Notification policy",
+			"description": "Get details for a single policy.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/alerting/v3/policies/{#/definitions/uuid}",
+			"method": "GET",
+			"cfOwnership": "app-services",
+			"html_id": "notification-policies-get-a-notification-policy",
+			"uri": "accounts/:identifier/alerting/v3/policies/:uuid",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/alerting/v3/policies/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"name\": \"SSL Notification Event Policy\",\n    \"description\": \"Something describing the policy.\",\n    \"enabled\": true,\n    \"alert_type\": \"universal_ssl_event_type\",\n    \"mechanisms\": {\n      \"email\": [\n        {\n          \"id\": \"test@example.com\"\n        }\n      ],\n      \"pagerduty\": [\n        {\n          \"id\": \"e8133a15-00a4-4d69-aec1-32f70c51f6e5\"\n        }\n      ],\n      \"webhooks\": [\n        {\n          \"id\": \"14cc1190-5d2b-4b98-a696-c424cb2ad05f\"\n        }\n      ]\n    },\n    \"filters\": {\n      \"slo\": [\n        \"99.9\"\n      ]\n    },\n    \"created\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
+		},
+		{
+			"title": "Create a Notification policy",
+			"description": "Creates a new Notification policy.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/alerting/v3/policies",
+			"method": "POST",
+			"cfOwnership": "app-services",
+			"html_id": "notification-policies-create-a-notification-policy",
+			"uri": "accounts/:identifier/alerting/v3/policies",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/alerting/v3/policies\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"SSL Notification Event Policy\",\"description\":\"Something describing the policy.\",\"enabled\":true,\"alert_type\":\"universal_ssl_event_type\",\"mechanisms\":{\"email\":[{\"id\":\"test@example.com\"}],\"pagerduty\":[{\"id\":\"e8133a15-00a4-4d69-aec1-32f70c51f6e5\"}],\"webhooks\":[{\"id\":\"14cc1190-5d2b-4b98-a696-c424cb2ad05f\"}]},\"filters\":{\"slo\":[\"99.9\"]}}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"SSL Notification Event Policy\"",
+						"description": "Name of the policy."
+					},
+					"description": {
+						"type": "string",
+						"example": "\"Something describing the policy.\"",
+						"description": "Optional description for the Notification policy."
+					},
+					"enabled": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether or not the Notification policy is enabled.",
+						"default": true
+					},
+					"alert_type": {
+						"type": "string",
+						"example": "\"universal_ssl_event_type\"",
+						"description": "Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values."
+					},
+					"mechanisms": {
+						"type": "object",
+						"example": "{\n  \"email\": [\n    {\n      \"id\": \"test@example.com\"\n    }\n  ],\n  \"pagerduty\": [\n    {\n      \"id\": \"e8133a15-00a4-4d69-aec1-32f70c51f6e5\"\n    }\n  ],\n  \"webhooks\": [\n    {\n      \"id\": \"14cc1190-5d2b-4b98-a696-c424cb2ad05f\"\n    }\n  ]\n}",
+						"description": "List of IDs that will be used when dispatching a notification. IDs for email type will be the email address.",
+						"additionalProperties": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"id": {
+										"id": "https://api.cloudflare.com/schemas/v4/common/uuid.json",
+										"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+										"readOnly": true,
+										"type": "string",
+										"maxLength": 36,
+										"description": "API uuid tag",
+										"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+									}
+								}
+							}
+						}
+					},
+					"filters": {
+						"type": "object",
+						"example": "{\n  \"slo\": [\n    \"99.9\"\n  ]\n}",
+						"additionalProperties": {
+							"type": "array",
+							"description": "Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details."
+						}
+					}
+				},
+				"required_props": [
+					"name",
+					"alert_type",
+					"enabled",
+					"mechanisms"
+				],
+				"optional_props": [
+					"description",
+					"filters"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": \"SSL Notification Event Policy\",\n  \"description\": \"Something describing the policy.\",\n  \"enabled\": true,\n  \"alert_type\": \"universal_ssl_event_type\",\n  \"mechanisms\": {\n    \"email\": [\n      {\n        \"id\": \"test@example.com\"\n      }\n    ],\n    \"pagerduty\": [\n      {\n        \"id\": \"e8133a15-00a4-4d69-aec1-32f70c51f6e5\"\n      }\n    ],\n    \"webhooks\": [\n      {\n        \"id\": \"14cc1190-5d2b-4b98-a696-c424cb2ad05f\"\n      }\n    ]\n  },\n  \"filters\": {\n    \"slo\": [\n      \"99.9\"\n    ]\n  }\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"\n  }\n}"
+		},
+		{
+			"title": "Update a Notification policy",
+			"description": "Update a Notification policy.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/alerting/v3/policies/{#/definitions/uuid}",
+			"method": "PUT",
+			"cfOwnership": "app-services",
+			"html_id": "notification-policies-update-a-notification-policy",
+			"uri": "accounts/:identifier/alerting/v3/policies/:uuid",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/alerting/v3/policies/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"\n  }\n}"
+		},
+		{
+			"title": "Delete a Notification policy",
+			"description": "Delete a Notification policy.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/alerting/v3/policies/{#/definitions/uuid}",
+			"method": "DELETE",
+			"cfOwnership": "app-services",
+			"html_id": "notification-policies-delete-a-notification-policy",
+			"uri": "accounts/:identifier/alerting/v3/policies/:uuid",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/alerting/v3/policies/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
+		}
+	],
+	"html_id": "notification-policies",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"",
+				"id": "https://api.cloudflare.com/schemas/v4/common/uuid.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"readOnly": true,
+				"maxLength": 36,
+				"description": "API uuid tag"
+			},
+			"name": {
+				"type": "string",
+				"example": "\"SSL Notification Event Policy\"",
+				"description": "Name of the policy."
+			},
+			"description": {
+				"type": "string",
+				"example": "\"Something describing the policy.\"",
+				"description": "Optional description for the Notification policy."
+			},
+			"enabled": {
+				"type": "boolean",
+				"example": "true",
+				"description": "Whether or not the Notification policy is enabled.",
+				"default": true
+			},
+			"alert_type": {
+				"type": "string",
+				"example": "\"universal_ssl_event_type\"",
+				"description": "Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values."
+			},
+			"mechanisms": {
+				"type": "object",
+				"example": "{\n  \"email\": [\n    {\n      \"id\": \"test@example.com\"\n    }\n  ],\n  \"pagerduty\": [\n    {\n      \"id\": \"e8133a15-00a4-4d69-aec1-32f70c51f6e5\"\n    }\n  ],\n  \"webhooks\": [\n    {\n      \"id\": \"14cc1190-5d2b-4b98-a696-c424cb2ad05f\"\n    }\n  ]\n}",
+				"description": "List of IDs that will be used when dispatching a notification. IDs for email type will be the email address.",
+				"additionalProperties": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"id": {
+								"id": "https://api.cloudflare.com/schemas/v4/common/uuid.json",
+								"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+								"readOnly": true,
+								"type": "string",
+								"maxLength": 36,
+								"description": "API uuid tag",
+								"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+							}
+						}
+					}
+				}
+			},
+			"filters": {
+				"type": "object",
+				"example": "{\n  \"slo\": [\n    \"99.9\"\n  ]\n}",
+				"additionalProperties": {
+					"type": "array",
+					"description": "Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details."
+				}
+			},
+			"created": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "Creation time",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"modified": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "Last modification time",
+				"format": "date-time",
+				"readOnly": true
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"name",
+			"description",
+			"enabled",
+			"alert_type",
+			"mechanisms",
+			"filters",
+			"created",
+			"modified"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n  \"name\": \"SSL Notification Event Policy\",\n  \"description\": \"Something describing the policy.\",\n  \"enabled\": true,\n  \"alert_type\": \"universal_ssl_event_type\",\n  \"mechanisms\": {\n    \"email\": [\n      {\n        \"id\": \"test@example.com\"\n      }\n    ],\n    \"pagerduty\": [\n      {\n        \"id\": \"e8133a15-00a4-4d69-aec1-32f70c51f6e5\"\n      }\n    ],\n    \"webhooks\": [\n      {\n        \"id\": \"14cc1190-5d2b-4b98-a696-c424cb2ad05f\"\n      }\n    ]\n  },\n  \"filters\": {\n    \"slo\": [\n      \"99.9\"\n    ]\n  },\n  \"created\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified\": \"2014-01-01T05:20:00.12345Z\"\n}",
+		"title": "Notification policies",
+		"description": "Notification policies control which notifications you receive for your account."
+	}
+}

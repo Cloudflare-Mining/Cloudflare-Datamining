@@ -1,0 +1,251 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/web3-hostname.json",
+	"title": "Web3 Hostname",
+	"description": "Manage hostnames for your zone that are routed to Web3 gateways via CNAME.",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Web3 Hostnames",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_identifier}/web3/hostnames",
+			"method": "GET",
+			"cfOwnership": "web3",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "web3-hostname-list-web3-hostnames",
+			"uri": "zones/:zone_identifier/web3/hostnames",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/web3/hostnames\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n      \"name\": \"gateway.example.com\",\n      \"description\": \"This is my IPFS gateway.\",\n      \"status\": \"active\",\n      \"target\": \"ipfs\",\n      \"dnslink\": \"/ipns/onboarding.ipfs.cloudflare.com\",\n      \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Create Web3 Hostname",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_identifier}/web3/hostnames",
+			"method": "POST",
+			"cfOwnership": "web3",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "web3-hostname-create-web3-hostname",
+			"uri": "zones/:zone_identifier/web3/hostnames",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/web3/hostnames\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"gateway.example.com\",\"description\":\"This is my IPFS gateway.\",\"target\":\"ipfs\",\"dnslink\":\"/ipns/onboarding.ipfs.cloudflare.com\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"gateway.example.com\"",
+						"readOnly": true,
+						"maxLength": 255,
+						"description": "The hostname that will point to the target gateway via CNAME."
+					},
+					"description": {
+						"type": "string",
+						"example": "\"This is my IPFS gateway.\"",
+						"maxLength": 500,
+						"description": "An optional description of the hostname."
+					},
+					"target": {
+						"type": "string",
+						"example": "\"ipfs\"",
+						"description": "Target gateway of the hostname.",
+						"enum": [
+							"ethereum",
+							"ipfs"
+						]
+					},
+					"dnslink": {
+						"type": "string",
+						"example": "\"/ipns/onboarding.ipfs.cloudflare.com\"",
+						"description": "DNSLink value used if the target is ipfs."
+					}
+				},
+				"required_props": [
+					"name",
+					"target"
+				],
+				"optional_props": [
+					"description",
+					"dnslink"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": \"gateway.example.com\",\n  \"description\": \"This is my IPFS gateway.\",\n  \"target\": \"ipfs\",\n  \"dnslink\": \"/ipns/onboarding.ipfs.cloudflare.com\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n    \"name\": \"gateway.example.com\",\n    \"description\": \"This is my IPFS gateway.\",\n    \"status\": \"active\",\n    \"target\": \"ipfs\",\n    \"dnslink\": \"/ipns/onboarding.ipfs.cloudflare.com\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
+		},
+		{
+			"title": "Web3 Hostname Details",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/web3/hostnames/{#/definitions/identifier}",
+			"method": "GET",
+			"cfOwnership": "web3",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "web3-hostname-web3-hostname-details",
+			"uri": "zones/:zone_identifier/web3/hostnames/:identifier",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/web3/hostnames/9a7806061c88ada191ed06f989cc3dac\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n    \"name\": \"gateway.example.com\",\n    \"description\": \"This is my IPFS gateway.\",\n    \"status\": \"active\",\n    \"target\": \"ipfs\",\n    \"dnslink\": \"/ipns/onboarding.ipfs.cloudflare.com\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
+		},
+		{
+			"title": "Edit Web3 Hostname",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/web3/hostnames/{#/definitions/identifier}",
+			"method": "PATCH",
+			"cfOwnership": "web3",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "web3-hostname-edit-web3-hostname",
+			"uri": "zones/:zone_identifier/web3/hostnames/:identifier",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/web3/hostnames/9a7806061c88ada191ed06f989cc3dac\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"description\":\"This is my IPFS gateway.\",\"dnslink\":\"/ipns/onboarding.ipfs.cloudflare.com\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"description": {
+						"type": "string",
+						"example": "\"This is my IPFS gateway.\"",
+						"maxLength": 500,
+						"description": "An optional description of the hostname."
+					},
+					"dnslink": {
+						"type": "string",
+						"example": "\"/ipns/onboarding.ipfs.cloudflare.com\"",
+						"description": "DNSLink value used if the target is ipfs."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"description",
+					"dnslink"
+				],
+				"objects": [],
+				"example": "{\n  \"description\": \"This is my IPFS gateway.\",\n  \"dnslink\": \"/ipns/onboarding.ipfs.cloudflare.com\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n    \"name\": \"gateway.example.com\",\n    \"description\": \"This is my IPFS gateway.\",\n    \"status\": \"active\",\n    \"target\": \"ipfs\",\n    \"dnslink\": \"/ipns/onboarding.ipfs.cloudflare.com\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
+		},
+		{
+			"title": "Delete Web3 Hostname",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/web3/hostnames/{#/definitions/identifier}",
+			"method": "DELETE",
+			"cfOwnership": "web3",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "web3-hostname-delete-web3-hostname",
+			"uri": "zones/:zone_identifier/web3/hostnames/:identifier",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/web3/hostnames/9a7806061c88ada191ed06f989cc3dac\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\"\n  }\n}"
+		}
+	],
+	"html_id": "web3-hostname",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"9a7806061c88ada191ed06f989cc3dac\"",
+				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "API item identifier tag",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"name": {
+				"type": "string",
+				"example": "\"gateway.example.com\"",
+				"readOnly": true,
+				"maxLength": 255,
+				"description": "The hostname that will point to the target gateway via CNAME."
+			},
+			"description": {
+				"type": "string",
+				"example": "\"This is my IPFS gateway.\"",
+				"maxLength": 500,
+				"description": "An optional description of the hostname."
+			},
+			"status": {
+				"type": "string",
+				"example": "\"active\"",
+				"readOnly": true,
+				"description": "Status of the hostname's activation.",
+				"enum": [
+					"active",
+					"pending",
+					"deleting",
+					"error"
+				]
+			},
+			"target": {
+				"type": "string",
+				"example": "\"ipfs\"",
+				"description": "Target gateway of the hostname.",
+				"enum": [
+					"ethereum",
+					"ipfs"
+				]
+			},
+			"dnslink": {
+				"type": "string",
+				"example": "\"/ipns/onboarding.ipfs.cloudflare.com\"",
+				"description": "DNSLink value used if the target is ipfs."
+			},
+			"created_on": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "Creation time",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"modified_on": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "Last modification time",
+				"format": "date-time",
+				"readOnly": true
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"name",
+			"description",
+			"status",
+			"target",
+			"dnslink",
+			"created_on",
+			"modified_on"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n  \"name\": \"gateway.example.com\",\n  \"description\": \"This is my IPFS gateway.\",\n  \"status\": \"active\",\n  \"target\": \"ipfs\",\n  \"dnslink\": \"/ipns/onboarding.ipfs.cloudflare.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
+		"title": "Web3 Hostname",
+		"description": "Manage hostnames for your zone that are routed to Web3 gateways via CNAME."
+	}
+}

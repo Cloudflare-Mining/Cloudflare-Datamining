@@ -1,0 +1,95 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/ssl/universal.json",
+	"title": "Universal SSL Settings for a Zone",
+	"description": "Universal SSL Settings for a Zone",
+	"type": "object",
+	"links": [
+		{
+			"title": "Universal SSL Settings Details",
+			"description": "Get Universal SSL Settings for a Zone",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/ssl/universal/settings",
+			"method": "GET",
+			"cfOwnership": "ssl",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#ssl:read"
+				]
+			},
+			"html_id": "universal-ssl-settings-for-a-zone-universal-ssl-settings-details",
+			"uri": "zones/:zone_identifier/ssl/universal/settings",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/ssl/universal/settings\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"enabled\": true\n  }\n}"
+		},
+		{
+			"title": "Edit Universal SSL Settings",
+			"description": "Patch Universal SSL Settings for a Zone",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/ssl/universal/settings",
+			"method": "PATCH",
+			"cfOwnership": "ssl",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#ssl:read",
+					"#ssl:edit"
+				]
+			},
+			"html_id": "universal-ssl-settings-for-a-zone-edit-universal-ssl-settings",
+			"uri": "zones/:zone_identifier/ssl/universal/settings",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/ssl/universal/settings\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"enabled\":true}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"enabled": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Disabling Universal SSL removes any currently active Universal SSL certificates for your zone from the edge and prevents any future Universal SSL certificates from being ordered. If there are no dedicated certificates or custom certificates uploaded for the domain, visitors will be unable to access the domain over HTTPS.\n\nBy disabling Universal SSL, you understand that the following Cloudflare settings and preferences will result in visitors being unable to visit your domain unless you have uploaded a custom certificate or purchased a dedicated certificate.\n\n* HSTS\n* Always Use HTTPS\n* Opportunistic Encryption\n* Onion Routing\n* Any Page Rules redirecting traffic to HTTPS\n\nSimilarly, any HTTP redirect to HTTPS at the origin while the Cloudflare proxy is enabled will result in users being unable to visit your site without a valid certificate at Cloudflare's edge.\n\nIf you do not have a valid custom or dedicated certificate at Cloudflare's edge and are unsure if any of the above Cloudflare settings are enabled, or if any HTTP redirects exist at your origin, we advise leaving Universal SSL enabled for your domain."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"enabled"
+				],
+				"objects": [],
+				"example": "{\n  \"enabled\": true\n}",
+				"description": "Universal SSL Settings"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"enabled\": true\n  }\n}"
+		}
+	],
+	"html_id": "universal-ssl-settings-for-a-zone",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"enabled": {
+				"type": "boolean",
+				"example": "true",
+				"description": "Disabling Universal SSL removes any currently active Universal SSL certificates for your zone from the edge and prevents any future Universal SSL certificates from being ordered. If there are no dedicated certificates or custom certificates uploaded for the domain, visitors will be unable to access the domain over HTTPS.\n\nBy disabling Universal SSL, you understand that the following Cloudflare settings and preferences will result in visitors being unable to visit your domain unless you have uploaded a custom certificate or purchased a dedicated certificate.\n\n* HSTS\n* Always Use HTTPS\n* Opportunistic Encryption\n* Onion Routing\n* Any Page Rules redirecting traffic to HTTPS\n\nSimilarly, any HTTP redirect to HTTPS at the origin while the Cloudflare proxy is enabled will result in users being unable to visit your site without a valid certificate at Cloudflare's edge.\n\nIf you do not have a valid custom or dedicated certificate at Cloudflare's edge and are unsure if any of the above Cloudflare settings are enabled, or if any HTTP redirects exist at your origin, we advise leaving Universal SSL enabled for your domain."
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"enabled"
+		],
+		"objects": [],
+		"example": "{\n  \"enabled\": true\n}",
+		"description": "Universal SSL Settings for a Zone",
+		"title": "Universal SSL Settings for a Zone"
+	}
+}

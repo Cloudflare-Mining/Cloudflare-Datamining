@@ -1,0 +1,443 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/magic/ipsec-tunnel.json",
+	"title": "Magic IPsec tunnels",
+	"description": "IPsec tunnels that connect Cloudflare with your endpoints",
+	"type": "object",
+	"links": [
+		{
+			"title": "List IPsec tunnels",
+			"description": "List IPsec tunnels associated with an account's Magic setup",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/magic/ipsec_tunnels",
+			"method": "GET",
+			"cfOwnership": "magic-on-ramps",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"html_id": "magic-ipsec-tunnels-list-ipsec-tunnels",
+			"uri": "accounts/:account_identifier/magic/ipsec_tunnels",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/magic/ipsec_tunnels\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"ipsec_tunnels\": [\n      {\n        \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n        \"created_on\": \"2017-06-14T00:00:00Z\",\n        \"modified_on\": \"2017-06-14T05:20:00Z\",\n        \"name\": \"IPsec_1\",\n        \"customer_endpoint\": \"203.0.113.1\",\n        \"cloudflare_endpoint\": \"203.0.113.1\",\n        \"interface_address\": \"192.0.2.0/31\",\n        \"description\": \"Tunnel for ISP X\",\n        \"psk_metadata\": {\n          \"last_generated_on\": \"2017-06-14T05:20:00Z\"\n        },\n        \"tunnel_health_check\": {\n          \"enabled\": true,\n          \"target\": \"203.0.113.1\",\n          \"type\": \"request\"\n        },\n        \"allow_null_cipher\": \"true\"\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "IPsec Tunnel Details",
+			"description": "Get a specific IPsec tunnel for an account's Magic setup",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/magic/ipsec_tunnels/{#/definitions/tunnel_identifier}",
+			"method": "GET",
+			"cfOwnership": "magic-on-ramps",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"html_id": "magic-ipsec-tunnels-ipsec-tunnel-details",
+			"uri": "accounts/:account_identifier/magic/ipsec_tunnels/:tunnel_identifier",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/magic/ipsec_tunnels/01a7362d577a6c3019a474fd6f485823\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"ipsec_tunnel\": {\n      \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n      \"created_on\": \"2017-06-14T00:00:00Z\",\n      \"modified_on\": \"2017-06-14T05:20:00Z\",\n      \"name\": \"IPsec_1\",\n      \"customer_endpoint\": \"203.0.113.1\",\n      \"cloudflare_endpoint\": \"203.0.113.1\",\n      \"interface_address\": \"192.0.2.0/31\",\n      \"description\": \"Tunnel for ISP X\",\n      \"psk_metadata\": {\n        \"last_generated_on\": \"2017-06-14T05:20:00Z\"\n      },\n      \"tunnel_health_check\": {\n        \"enabled\": true,\n        \"target\": \"203.0.113.1\",\n        \"type\": \"request\"\n      },\n      \"allow_null_cipher\": \"true\"\n    }\n  }\n}"
+		},
+		{
+			"title": "Create IPsec tunnels",
+			"description": "Creates new IPsec tunnels associated with an account's Magic setup. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/magic/ipsec_tunnels?validate_only={#/definitions/validate_only}",
+			"method": "POST",
+			"cfOwnership": "magic-on-ramps",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"html_id": "magic-ipsec-tunnels-create-ipsec-tunnels",
+			"uri": "accounts/:account_identifier/magic/ipsec_tunnels?validate_only=:validate_only",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/magic/ipsec_tunnels?validate_only=true\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"ipsec_tunnels\":[{\"name\":\"IPsec_1\",\"customer_endpoint\":\"203.0.113.1\",\"cloudflare_endpoint\":\"203.0.113.1\",\"interface_address\":\"192.0.2.0/31\",\"description\":\"Tunnel for ISP X\",\"psk\":\"O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy\"}]}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"ipsec_tunnels": {
+						"type": "array",
+						"example": "[\n  {\n    \"name\": \"IPsec_1\",\n    \"customer_endpoint\": \"203.0.113.1\",\n    \"cloudflare_endpoint\": \"203.0.113.1\",\n    \"interface_address\": \"192.0.2.0/31\",\n    \"description\": \"Tunnel for ISP X\",\n    \"psk\": \"O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy\"\n  }\n]",
+						"items": {
+							"type": "object",
+							"required": [
+								"name",
+								"cloudflare_endpoint",
+								"interface_address"
+							],
+							"properties": {
+								"name": {
+									"type": "string",
+									"description": "Name for the IPsec tunnel. It cannot share a name with other tunnels",
+									"example": "IPsec_1"
+								},
+								"customer_endpoint": {
+									"type": "string",
+									"description": "The IP address assigned to the customer side of the IPsec tunnel",
+									"example": "203.0.113.1"
+								},
+								"cloudflare_endpoint": {
+									"type": "string",
+									"description": "The IP address assigned to the Cloudflare side of the IPsec tunnel",
+									"example": "203.0.113.1"
+								},
+								"interface_address": {
+									"type": "string",
+									"description": "A 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
+									"example": "192.0.2.0/31"
+								},
+								"description": {
+									"type": "string",
+									"description": "An optional description of the IPsec tunnel",
+									"example": "Tunnel for ISP X"
+								},
+								"psk": {
+									"type": "string",
+									"description": "A randomly generated or provided string for use in the IPsec tunnel",
+									"example": "O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy"
+								}
+							}
+						}
+					}
+				},
+				"required_props": [
+					"name",
+					"customer_ipsec_endpoint",
+					"cloudflare_ipsec_endpoint",
+					"interface_address"
+				],
+				"optional_props": [
+					"ipsec_tunnels"
+				],
+				"objects": [],
+				"example": "{\n  \"ipsec_tunnels\": [\n    {\n      \"name\": \"IPsec_1\",\n      \"customer_endpoint\": \"203.0.113.1\",\n      \"cloudflare_endpoint\": \"203.0.113.1\",\n      \"interface_address\": \"192.0.2.0/31\",\n      \"description\": \"Tunnel for ISP X\",\n      \"psk\": \"O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy\"\n    }\n  ]\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"ipsec_tunnels\": [\n      {\n        \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n        \"created_on\": \"2017-06-14T00:00:00Z\",\n        \"modified_on\": \"2017-06-14T05:20:00Z\",\n        \"name\": \"IPsec_1\",\n        \"customer_endpoint\": \"203.0.113.1\",\n        \"cloudflare_endpoint\": \"203.0.113.1\",\n        \"interface_address\": \"192.0.2.0/31\",\n        \"description\": \"Tunnel for ISP X\",\n        \"psk_metadata\": {\n          \"last_generated_on\": \"2017-06-14T05:20:00Z\"\n        },\n        \"tunnel_health_check\": {\n          \"enabled\": true,\n          \"target\": \"203.0.113.1\",\n          \"type\": \"request\"\n        },\n        \"allow_null_cipher\": \"true\"\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Generate Pre Shared Key (PSK) for IPsec tunnels",
+			"description": "Generates a Pre Shared Key for a particular IPsec tunnel that is used in the IKE session. Use `?validate_only=true` as an optional query parameter to run validation only without actually generating PSK. Please note that the PSK generated is immediately persisted to Cloudflare's Edge and not stored in a fashion that is retrievable later. As such the PSK should be noted down in a safe place.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/magic/ipsec_tunnels/{#/definitions/tunnel_identifier}/psk_generate?validate_only={#/definitions/validate_only}",
+			"method": "POST",
+			"cfOwnership": "magic-on-ramps",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"html_id": "magic-ipsec-tunnels-generate-pre-shared-key-psk-for-ipsec-tunnels",
+			"uri": "accounts/:account_identifier/magic/ipsec_tunnels/:tunnel_identifier/psk_generate?validate_only=:validate_only",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/magic/ipsec_tunnels/01a7362d577a6c3019a474fd6f485823/psk_generate?validate_only=true\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"psk_metadata\": {\n      \"last_generated_on\": \"2017-06-14T05:20:00Z\"\n    },\n    \"psk\": \"O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy\",\n    \"ipsec_tunnel_id\": \"01a7362d577a6c3019a474fd6f485823\"\n  }\n}"
+		},
+		{
+			"title": "Update IPsec Tunnel",
+			"description": "Update a specific IPsec tunnel for an account's Magic setup. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/magic/ipsec_tunnels/{#/definitions/tunnel_identifier}?validate_only={#/definitions/validate_only}",
+			"method": "PUT",
+			"cfOwnership": "magic-on-ramps",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"html_id": "magic-ipsec-tunnels-update-ipsec-tunnel",
+			"uri": "accounts/:account_identifier/magic/ipsec_tunnels/:tunnel_identifier?validate_only=:validate_only",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/magic/ipsec_tunnels/01a7362d577a6c3019a474fd6f485823?validate_only=true\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"IPsec_1\",\"customer_endpoint\":\"203.0.113.1\",\"cloudflare_endpoint\":\"203.0.113.1\",\"interface_address\":\"192.0.2.0/31\",\"description\":\"Tunnel for ISP X\",\"psk\":\"O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"IPsec_1\"",
+						"description": "Name for the IPsec tunnel. It cannot share a name with other tunnels"
+					},
+					"customer_endpoint": {
+						"type": "string",
+						"example": "\"203.0.113.1\"",
+						"description": "The IP address assigned to the customer side of the IPsec tunnel"
+					},
+					"cloudflare_endpoint": {
+						"type": "string",
+						"example": "\"203.0.113.1\"",
+						"description": "The IP address assigned to the Cloudflare side of the IPsec tunnel"
+					},
+					"interface_address": {
+						"type": "string",
+						"example": "\"192.0.2.0/31\"",
+						"description": "A 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255."
+					},
+					"description": {
+						"type": "string",
+						"example": "\"Tunnel for ISP X\"",
+						"description": "An optional description of the IPsec tunnel"
+					},
+					"psk": {
+						"type": "string",
+						"example": "\"O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy\"",
+						"description": "A randomly generated or provided string for use in the IPsec tunnel"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"name",
+					"customer_endpoint",
+					"cloudflare_endpoint",
+					"interface_address",
+					"description",
+					"psk"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": \"IPsec_1\",\n  \"customer_endpoint\": \"203.0.113.1\",\n  \"cloudflare_endpoint\": \"203.0.113.1\",\n  \"interface_address\": \"192.0.2.0/31\",\n  \"description\": \"Tunnel for ISP X\",\n  \"psk\": \"O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"modified\": true,\n    \"modified_ipsec_tunnel\": {\n      \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n      \"created_on\": \"2017-06-14T00:00:00Z\",\n      \"modified_on\": \"2017-06-14T05:20:00Z\",\n      \"name\": \"IPsec_1\",\n      \"customer_endpoint\": \"203.0.113.1\",\n      \"cloudflare_endpoint\": \"203.0.113.1\",\n      \"interface_address\": \"192.0.2.0/31\",\n      \"description\": \"Tunnel for ISP X\",\n      \"psk_metadata\": {\n        \"last_generated_on\": \"2017-06-14T05:20:00Z\"\n      },\n      \"tunnel_health_check\": {\n        \"enabled\": true,\n        \"target\": \"203.0.113.1\",\n        \"type\": \"request\"\n      },\n      \"allow_null_cipher\": \"true\"\n    }\n  }\n}"
+		},
+		{
+			"title": "Update Many IPsec tunnels",
+			"description": "Update many IPsec tunnels for an account's Magic setup. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/magic/ipsec_tunnels?validate_only={#/definitions/validate_only}",
+			"method": "PUT",
+			"cfOwnership": "magic-on-ramps",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"html_id": "magic-ipsec-tunnels-update-many-ipsec-tunnels",
+			"uri": "accounts/:account_identifier/magic/ipsec_tunnels?validate_only=:validate_only",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/magic/ipsec_tunnels?validate_only=true\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"ipsec_tunnels\":[{\"id\":\"01a7362d577a6c3019a474fd6f485823\",\"name\":\"IPsec_1\",\"customer_endpoint\":\"203.0.113.1\",\"cloudflare_endpoint\":\"203.0.113.1\",\"interface_address\":\"192.0.2.0/31\",\"description\":\"Tunnel for ISP X\",\"psk\":\"O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy\"}]}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"ipsec_tunnels": {
+						"type": "array",
+						"example": "[\n  {\n    \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n    \"name\": \"IPsec_1\",\n    \"customer_endpoint\": \"203.0.113.1\",\n    \"cloudflare_endpoint\": \"203.0.113.1\",\n    \"interface_address\": \"192.0.2.0/31\",\n    \"description\": \"Tunnel for ISP X\",\n    \"psk\": \"O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy\"\n  }\n]",
+						"items": {
+							"allOf": [
+								{
+									"properties": {
+										"id": {
+											"$comment": "Must be present as a definition for URI Templating",
+											"description": "Account identifier tag",
+											"type": "string",
+											"maxLength": 32,
+											"readOnly": true,
+											"example": "01a7362d577a6c3019a474fd6f485823"
+										}
+									}
+								},
+								{
+									"allOf": [
+										{
+											"type": "object",
+											"required": [
+												"name",
+												"cloudflare_endpoint",
+												"interface_address"
+											],
+											"properties": {
+												"name": {
+													"type": "string",
+													"description": "Name for the IPsec tunnel. It cannot share a name with other tunnels",
+													"example": "IPsec_1"
+												},
+												"customer_endpoint": {
+													"type": "string",
+													"description": "The IP address assigned to the customer side of the IPsec tunnel",
+													"example": "203.0.113.1"
+												},
+												"cloudflare_endpoint": {
+													"type": "string",
+													"description": "The IP address assigned to the Cloudflare side of the IPsec tunnel",
+													"example": "203.0.113.1"
+												},
+												"interface_address": {
+													"type": "string",
+													"description": "A 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
+													"example": "192.0.2.0/31"
+												},
+												"description": {
+													"type": "string",
+													"description": "An optional description of the IPsec tunnel",
+													"example": "Tunnel for ISP X"
+												},
+												"psk": {
+													"type": "string",
+													"description": "A randomly generated or provided string for use in the IPsec tunnel",
+													"example": "O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy"
+												}
+											}
+										}
+									]
+								}
+							]
+						}
+					}
+				},
+				"required_props": [
+					"id"
+				],
+				"optional_props": [
+					"ipsec_tunnels"
+				],
+				"objects": [],
+				"example": "{\n  \"ipsec_tunnels\": [\n    {\n      \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n      \"name\": \"IPsec_1\",\n      \"customer_endpoint\": \"203.0.113.1\",\n      \"cloudflare_endpoint\": \"203.0.113.1\",\n      \"interface_address\": \"192.0.2.0/31\",\n      \"description\": \"Tunnel for ISP X\",\n      \"psk\": \"O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy\"\n    }\n  ]\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"modified\": true,\n    \"modified_ipsec_tunnels\": [\n      {\n        \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n        \"created_on\": \"2017-06-14T00:00:00Z\",\n        \"modified_on\": \"2017-06-14T05:20:00Z\",\n        \"name\": \"IPsec_1\",\n        \"customer_endpoint\": \"203.0.113.1\",\n        \"cloudflare_endpoint\": \"203.0.113.1\",\n        \"interface_address\": \"192.0.2.0/31\",\n        \"description\": \"Tunnel for ISP X\",\n        \"psk_metadata\": {\n          \"last_generated_on\": \"2017-06-14T05:20:00Z\"\n        },\n        \"tunnel_health_check\": {\n          \"enabled\": true,\n          \"target\": \"203.0.113.1\",\n          \"type\": \"request\"\n        },\n        \"allow_null_cipher\": \"true\"\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Delete IPsec Tunnel",
+			"description": "Disable and remove a specific static IPsec Tunnel for an account's Magic setup. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/magic/ipsec_tunnels/{#/definitions/tunnel_identifier}?validate_only={#/definitions/validate_only}",
+			"method": "DELETE",
+			"cfOwnership": "magic-on-ramps",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"html_id": "magic-ipsec-tunnels-delete-ipsec-tunnel",
+			"uri": "accounts/:account_identifier/magic/ipsec_tunnels/:tunnel_identifier?validate_only=:validate_only",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/magic/ipsec_tunnels/01a7362d577a6c3019a474fd6f485823?validate_only=true\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"deleted\": true,\n    \"deleted_ipsec_tunnel\": {\n      \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n      \"created_on\": \"2017-06-14T00:00:00Z\",\n      \"modified_on\": \"2017-06-14T05:20:00Z\",\n      \"name\": \"IPsec_1\",\n      \"customer_endpoint\": \"203.0.113.1\",\n      \"cloudflare_endpoint\": \"203.0.113.1\",\n      \"interface_address\": \"192.0.2.0/31\",\n      \"description\": \"Tunnel for ISP X\",\n      \"psk_metadata\": {\n        \"last_generated_on\": \"2017-06-14T05:20:00Z\"\n      },\n      \"tunnel_health_check\": {\n        \"enabled\": true,\n        \"target\": \"203.0.113.1\",\n        \"type\": \"request\"\n      },\n      \"allow_null_cipher\": \"true\"\n    }\n  }\n}"
+		}
+	],
+	"cfLinkErrors": {},
+	"html_id": "magic-ipsec-tunnels",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"c4a7362d577a6c3019a474fd6f485821\"",
+				"readOnly": true,
+				"maxLength": 32,
+				"description": "Tunnel identifier tag"
+			},
+			"created_on": {
+				"type": "string",
+				"example": "\"2017-06-14T00:00:00Z\"",
+				"readOnly": true,
+				"format": "date-time",
+				"description": "When the tunnel was created"
+			},
+			"modified_on": {
+				"type": "string",
+				"example": "\"2017-06-14T05:20:00Z\"",
+				"readOnly": true,
+				"format": "date-time",
+				"description": "When the tunnel was last modified"
+			},
+			"name": {
+				"type": "string",
+				"example": "\"IPsec_1\"",
+				"description": "Name for the IPsec tunnel. It cannot share a name with other tunnels"
+			},
+			"customer_endpoint": {
+				"type": "string",
+				"example": "\"203.0.113.1\"",
+				"description": "The IP address assigned to the customer side of the IPsec tunnel"
+			},
+			"cloudflare_endpoint": {
+				"type": "string",
+				"example": "\"203.0.113.1\"",
+				"description": "The IP address assigned to the Cloudflare side of the IPsec tunnel"
+			},
+			"interface_address": {
+				"type": "string",
+				"example": "\"192.0.2.0/31\"",
+				"description": "A 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255."
+			},
+			"description": {
+				"type": "string",
+				"example": "\"Tunnel for ISP X\"",
+				"description": "An optional description of the IPsec tunnel"
+			},
+			"psk_metadata": {
+				"type": "object",
+				"example": "{\n  \"last_generated_on\": \"2017-06-14T05:20:00Z\"\n}",
+				"properties": {
+					"last_generated_on": {
+						"type": "string",
+						"example": "\"2017-06-14T05:20:00Z\"",
+						"readOnly": true,
+						"format": "date-time",
+						"description": "When the tunnel was last modified"
+					}
+				},
+				"description": "Metadata about the PSK such as when it was generated."
+			},
+			"tunnel_health_check": {
+				"type": "object",
+				"example": "{\n  \"enabled\": true,\n  \"target\": \"203.0.113.1\",\n  \"type\": \"request\"\n}",
+				"properties": {
+					"enabled": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Flag to run healthchecks for this tunnel (defaults to true)",
+						"default": true
+					},
+					"target": {
+						"type": "string",
+						"example": "\"203.0.113.1\"",
+						"description": "Address to run healthchecks against (defaults to customer_gre_endpoint address)"
+					},
+					"type": {
+						"type": "string",
+						"example": "\"request\"",
+						"description": "Type of healthcheck to run (reply or request). Defaults to reply.",
+						"default": "reply",
+						"enum": [
+							"reply",
+							"request"
+						]
+					}
+				}
+			},
+			"allow_null_cipher": {
+				"type": "boolean",
+				"example": "\"true\"",
+				"description": "When true, this tunnel can use a null-cipher (ENCR_NULL) in the ESP tunnel (Phase 2)"
+			}
+		},
+		"required_props": [
+			"name",
+			"cloudflare_endpoint",
+			"interface_address"
+		],
+		"optional_props": [
+			"id",
+			"created_on",
+			"modified_on",
+			"customer_endpoint",
+			"description",
+			"psk_metadata",
+			"tunnel_health_check",
+			"allow_null_cipher"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n  \"created_on\": \"2017-06-14T00:00:00Z\",\n  \"modified_on\": \"2017-06-14T05:20:00Z\",\n  \"name\": \"IPsec_1\",\n  \"customer_endpoint\": \"203.0.113.1\",\n  \"cloudflare_endpoint\": \"203.0.113.1\",\n  \"interface_address\": \"192.0.2.0/31\",\n  \"description\": \"Tunnel for ISP X\",\n  \"psk_metadata\": {\n    \"last_generated_on\": \"2017-06-14T05:20:00Z\"\n  },\n  \"tunnel_health_check\": {\n    \"enabled\": true,\n    \"target\": \"203.0.113.1\",\n    \"type\": \"request\"\n  },\n  \"allow_null_cipher\": \"true\"\n}",
+		"title": "Magic IPsec tunnels",
+		"description": "IPsec tunnels that connect Cloudflare with your endpoints"
+	}
+}

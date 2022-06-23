@@ -1,0 +1,151 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/custom-hostname-fallback-origin.json",
+	"title": "Custom Hostname Fallback Origin for a Zone",
+	"description": "Setup Fallback Origin for all Custom Hostnames for your zone.",
+	"type": "object",
+	"links": [
+		{
+			"title": "Get Fallback Origin for Custom Hostnames",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/custom_hostnames/fallback_origin",
+			"method": "GET",
+			"cfOwnership": "ssl",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#ssl:read"
+				]
+			},
+			"html_id": "custom-hostname-fallback-origin-for-a-zone-get-fallback-origin-for-custom-hostnames",
+			"uri": "zones/:zone_identifier/custom_hostnames/fallback_origin",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/custom_hostnames/fallback_origin\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"origin\": \"fallback.example.com\",\n    \"status\": \"pending_deployment\",\n    \"errors\": [\n      \"DNS records are not setup correctly. Origin should be a proxied A/AAAA/CNAME dns record\"\n    ],\n    \"created_at\": \"2019-10-28T18:11:23.37411Z\",\n    \"updated_at\": \"2020-03-16T18:11:23.531995Z\"\n  }\n}"
+		},
+		{
+			"title": "Update Fallback Origin for Custom Hostnames",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/custom_hostnames/fallback_origin",
+			"method": "PUT",
+			"cfOwnership": "ssl",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#ssl:edit"
+				]
+			},
+			"html_id": "custom-hostname-fallback-origin-for-a-zone-update-fallback-origin-for-custom-hostnames",
+			"uri": "zones/:zone_identifier/custom_hostnames/fallback_origin",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/custom_hostnames/fallback_origin\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"origin\":\"fallback.example.com\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"origin": {
+						"type": "string",
+						"example": "\"fallback.example.com\"",
+						"readOnly": false,
+						"maxLength": 255,
+						"description": "Your origin hostname that requests to your custom hostnames will be sent to."
+					}
+				},
+				"required_props": [
+					"origin"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"origin\": \"fallback.example.com\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"origin\": \"fallback.example.com\",\n    \"status\": \"pending_deployment\",\n    \"errors\": [\n      \"DNS records are not setup correctly. Origin should be a proxied A/AAAA/CNAME dns record\"\n    ],\n    \"created_at\": \"2019-10-28T18:11:23.37411Z\",\n    \"updated_at\": \"2020-03-16T18:11:23.531995Z\"\n  }\n}"
+		},
+		{
+			"title": "Delete Fallback Origin for Custom Hostnames",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/custom_hostnames/fallback_origin",
+			"method": "DELETE",
+			"cfOwnership": "ssl",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#ssl:edit"
+				]
+			},
+			"html_id": "custom-hostname-fallback-origin-for-a-zone-delete-fallback-origin-for-custom-hostnames",
+			"uri": "zones/:zone_identifier/custom_hostnames/fallback_origin",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/custom_hostnames/fallback_origin\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"origin\": \"fallback.example.com\",\n    \"status\": \"pending_deployment\",\n    \"errors\": [\n      \"DNS records are not setup correctly. Origin should be a proxied A/AAAA/CNAME dns record\"\n    ],\n    \"created_at\": \"2019-10-28T18:11:23.37411Z\",\n    \"updated_at\": \"2020-03-16T18:11:23.531995Z\"\n  }\n}"
+		}
+	],
+	"html_id": "custom-hostname-fallback-origin-for-a-zone",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"origin": {
+				"type": "string",
+				"example": "\"fallback.example.com\"",
+				"readOnly": false,
+				"maxLength": 255,
+				"description": "Your origin hostname that requests to your custom hostnames will be sent to."
+			},
+			"status": {
+				"example": "\"pending_deployment\"",
+				"enum": [
+					"initializing",
+					"pending_deployment",
+					"pending_deletion",
+					"active",
+					"deployment_timed_out",
+					"deletion_timed_out"
+				],
+				"description": "Status of the fallback origin's activation."
+			},
+			"errors": {
+				"type": "array",
+				"example": "[\n  \"DNS records are not setup correctly. Origin should be a proxied A/AAAA/CNAME dns record\"\n]",
+				"description": "These are errors that were encountered while trying to activate a fallback origin."
+			},
+			"created_at": {
+				"type": "string",
+				"example": "\"2019-10-28T18:11:23.37411Z\"",
+				"format": "date-time",
+				"description": "This is the time the fallback origin was created."
+			},
+			"updated_at": {
+				"type": "string",
+				"example": "\"2020-03-16T18:11:23.531995Z\"",
+				"format": "date-time",
+				"description": "This is the time the fallback origin was updated."
+			}
+		},
+		"required_props": [
+			"origin"
+		],
+		"optional_props": [
+			"status",
+			"errors",
+			"created_at",
+			"updated_at"
+		],
+		"objects": [],
+		"example": "{\n  \"origin\": \"fallback.example.com\",\n  \"status\": \"pending_deployment\",\n  \"errors\": [\n    \"DNS records are not setup correctly. Origin should be a proxied A/AAAA/CNAME dns record\"\n  ],\n  \"created_at\": \"2019-10-28T18:11:23.37411Z\",\n  \"updated_at\": \"2020-03-16T18:11:23.531995Z\"\n}",
+		"title": "Custom Hostname Fallback Origin for a Zone",
+		"description": "Setup Fallback Origin for all Custom Hostnames for your zone."
+	}
+}

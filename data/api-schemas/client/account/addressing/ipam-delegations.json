@@ -1,0 +1,137 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/addressing/ipam-delegations.json",
+	"title": "IP Address Management Prefix Delegation",
+	"description": "Describe and modify delegations for the account's IP prefixes.",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Prefix Delegations",
+			"description": "List all delegations for a given account IP prefix.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/addressing/prefixes/{#/definitions/prefix_identifier}/delegations",
+			"method": "GET",
+			"cfOwnership": "addressing",
+			"html_id": "ip-address-management-prefix-delegation-list-prefix-delegations",
+			"uri": "accounts/:account_identifier/addressing/prefixes/:prefix_identifier/delegations",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/addressing/prefixes/9a7806061c88ada191ed06f989cc3dac/delegations\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"d933b1530bc56c9953cf8ce166da8004\",\n      \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"modified_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"cidr\": \"192.0.2.0/24\",\n      \"delegated_account_id\": \"b1946ac92492d2347c6235b4d2611184\",\n      \"parent_prefix_id\": \"9a7806061c88ada191ed06f989cc3dac\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Create Prefix Delegation",
+			"description": "Create a new account delegation for a given IP prefix.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/addressing/prefixes/{#/definitions/prefix_identifier}/delegations",
+			"method": "POST",
+			"cfOwnership": "addressing",
+			"html_id": "ip-address-management-prefix-delegation-create-prefix-delegation",
+			"uri": "accounts/:account_identifier/addressing/prefixes/:prefix_identifier/delegations",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/addressing/prefixes/9a7806061c88ada191ed06f989cc3dac/delegations\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"cidr\":\"192.0.2.0/24\",\"delegated_account_id\":\"b1946ac92492d2347c6235b4d2611184\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"cidr": {
+						"type": "string",
+						"example": "\"192.0.2.0/24\"",
+						"description": "IP Prefix in Classless Inter-Domain Routing format"
+					},
+					"delegated_account_id": {
+						"type": "string",
+						"example": "\"b1946ac92492d2347c6235b4d2611184\"",
+						"description": "Account identifier for the account to which prefix is being delegated",
+						"maxLength": 32,
+						"readOnly": true
+					}
+				},
+				"required_props": [
+					"cidr",
+					"delegated_account_id"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"cidr\": \"192.0.2.0/24\",\n  \"delegated_account_id\": \"b1946ac92492d2347c6235b4d2611184\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"d933b1530bc56c9953cf8ce166da8004\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"cidr\": \"192.0.2.0/24\",\n    \"delegated_account_id\": \"b1946ac92492d2347c6235b4d2611184\",\n    \"parent_prefix_id\": \"9a7806061c88ada191ed06f989cc3dac\"\n  }\n}"
+		},
+		{
+			"title": "Delete Prefix Delegation",
+			"description": "Delete an account delegation for a given IP prefix.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/addressing/prefixes/{#/definitions/prefix_identifier}/delegations/{#/definitions/delegation_identifier}",
+			"method": "DELETE",
+			"cfOwnership": "addressing",
+			"html_id": "ip-address-management-prefix-delegation-delete-prefix-delegation",
+			"uri": "accounts/:account_identifier/addressing/prefixes/:prefix_identifier/delegations/:delegation_identifier",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/addressing/prefixes/9a7806061c88ada191ed06f989cc3dac/delegations/d933b1530bc56c9953cf8ce166da8004\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"d933b1530bc56c9953cf8ce166da8004\"\n  }\n}"
+		}
+	],
+	"html_id": "ip-address-management-prefix-delegation",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"d933b1530bc56c9953cf8ce166da8004\"",
+				"description": "Delegation identifier tag",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"created_at": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "Creation time",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"modified_at": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "Last modification time",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"cidr": {
+				"type": "string",
+				"example": "\"192.0.2.0/24\"",
+				"description": "IP Prefix in Classless Inter-Domain Routing format"
+			},
+			"delegated_account_id": {
+				"type": "string",
+				"example": "\"b1946ac92492d2347c6235b4d2611184\"",
+				"description": "Account identifier for the account to which prefix is being delegated",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"parent_prefix_id": {
+				"type": "string",
+				"example": "\"9a7806061c88ada191ed06f989cc3dac\"",
+				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "API item identifier tag",
+				"maxLength": 32,
+				"readOnly": true
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"created_at",
+			"modified_at",
+			"cidr",
+			"delegated_account_id",
+			"parent_prefix_id"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"d933b1530bc56c9953cf8ce166da8004\",\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"cidr\": \"192.0.2.0/24\",\n  \"delegated_account_id\": \"b1946ac92492d2347c6235b4d2611184\",\n  \"parent_prefix_id\": \"9a7806061c88ada191ed06f989cc3dac\"\n}",
+		"title": "IP Address Management Prefix Delegation",
+		"description": "Describe and modify delegations for the account's IP prefixes."
+	}
+}

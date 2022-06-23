@@ -1,0 +1,235 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/alert-notifications/webhooks.json",
+	"title": "Notification webhooks",
+	"description": "Notification webhooks are destination mechanisms that can be used in notification policies.",
+	"type": "object",
+	"links": [
+		{
+			"title": "List webhooks",
+			"description": "Gets a list of all configured webhook destinations.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/alerting/v3/destinations/webhooks",
+			"method": "GET",
+			"cfOwnership": "app-services",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "notification-webhooks-list-webhooks",
+			"uri": "accounts/:identifier/alerting/v3/destinations/webhooks",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/alerting/v3/destinations/webhooks\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"name\": \"Slack Webhook\",\n      \"url\": \"https://hooks.slack.com/services/Ds3fdBFbV/456464Gdd\",\n      \"type\": \"slack\",\n      \"created_at\": \"2020-10-26T18:25:04.532316Z\",\n      \"last_success\": \"2020-10-26T18:25:04.532316Z\",\n      \"last_failure\": \"2020-10-26T18:25:04.532316Z\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Get a webhook",
+			"description": "Get details for a single webhooks destination.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/alerting/v3/destinations/webhooks/{#/definitions/uuid}",
+			"method": "GET",
+			"cfOwnership": "app-services",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "notification-webhooks-get-a-webhook",
+			"uri": "accounts/:identifier/alerting/v3/destinations/webhooks/:uuid",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/alerting/v3/destinations/webhooks/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"name\": \"Slack Webhook\",\n    \"url\": \"https://hooks.slack.com/services/Ds3fdBFbV/456464Gdd\",\n    \"type\": \"slack\",\n    \"created_at\": \"2020-10-26T18:25:04.532316Z\",\n    \"last_success\": \"2020-10-26T18:25:04.532316Z\",\n    \"last_failure\": \"2020-10-26T18:25:04.532316Z\"\n  }\n}"
+		},
+		{
+			"title": "Create a webhook",
+			"description": "Creates a new webhook destination.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/alerting/v3/destinations/webhooks",
+			"method": "POST",
+			"cfOwnership": "app-services",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "notification-webhooks-create-a-webhook",
+			"uri": "accounts/:identifier/alerting/v3/destinations/webhooks",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/alerting/v3/destinations/webhooks\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"Slack Webhook\",\"url\":\"https://hooks.slack.com/services/Ds3fdBFbV/456464Gdd\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"Slack Webhook\"",
+						"description": "The name of the webhook destination. This will be included in the request body when you receive a webhook notification."
+					},
+					"url": {
+						"type": "string",
+						"example": "\"https://hooks.slack.com/services/Ds3fdBFbV/456464Gdd\"",
+						"description": "The POST endpoint to call when dispatching a notification."
+					},
+					"secret": {
+						"type": "string",
+						"description": "Optional secret that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body."
+					}
+				},
+				"required_props": [
+					"name",
+					"url"
+				],
+				"optional_props": [
+					"secret"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": \"Slack Webhook\",\n  \"url\": \"https://hooks.slack.com/services/Ds3fdBFbV/456464Gdd\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"\n  }\n}"
+		},
+		{
+			"title": "Update a webhook",
+			"description": "Update a webhook destination.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/alerting/v3/destinations/webhooks/{#/definitions/uuid}",
+			"method": "PUT",
+			"cfOwnership": "app-services",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "notification-webhooks-update-a-webhook",
+			"uri": "accounts/:identifier/alerting/v3/destinations/webhooks/:uuid",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/alerting/v3/destinations/webhooks/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"Slack Webhook\",\"url\":\"https://hooks.slack.com/services/Ds3fdBFbV/456464Gdd\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"Slack Webhook\"",
+						"description": "The name of the webhook destination. This will be included in the request body when you receive a webhook notification."
+					},
+					"url": {
+						"type": "string",
+						"example": "\"https://hooks.slack.com/services/Ds3fdBFbV/456464Gdd\"",
+						"description": "The POST endpoint to call when dispatching a notification."
+					},
+					"secret": {
+						"type": "string",
+						"description": "Optional secret that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body."
+					}
+				},
+				"required_props": [
+					"name",
+					"url"
+				],
+				"optional_props": [
+					"secret"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": \"Slack Webhook\",\n  \"url\": \"https://hooks.slack.com/services/Ds3fdBFbV/456464Gdd\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"\n  }\n}"
+		},
+		{
+			"title": "Delete a webhook",
+			"description": "Delete a configured webhook destination.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/alerting/v3/destinations/webhooks/{#/definitions/uuid}",
+			"method": "DELETE",
+			"cfOwnership": "app-services",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "notification-webhooks-delete-a-webhook",
+			"uri": "accounts/:identifier/alerting/v3/destinations/webhooks/:uuid",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/alerting/v3/destinations/webhooks/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
+		}
+	],
+	"html_id": "notification-webhooks",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"",
+				"id": "https://api.cloudflare.com/schemas/v4/common/uuid.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"readOnly": true,
+				"maxLength": 36,
+				"description": "API uuid tag"
+			},
+			"name": {
+				"type": "string",
+				"example": "\"Slack Webhook\"",
+				"description": "The name of the webhook destination. This will be included in the request body when you receive a webhook notification."
+			},
+			"url": {
+				"type": "string",
+				"example": "\"https://hooks.slack.com/services/Ds3fdBFbV/456464Gdd\"",
+				"description": "The POST endpoint to call when dispatching a notification."
+			},
+			"secret": {
+				"type": "string",
+				"description": "Optional secret that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body."
+			},
+			"type": {
+				"type": "string",
+				"example": "\"slack\"",
+				"description": "Type of webhook endpoint.",
+				"enum": [
+					"slack",
+					"generic",
+					"gchat"
+				]
+			},
+			"created_at": {
+				"type": "string",
+				"example": "\"2020-10-26T18:25:04.532316Z\"",
+				"description": "Timestamp of when the webhook destination was created.",
+				"readOnly": true,
+				"format": "date-time"
+			},
+			"last_success": {
+				"type": "string",
+				"example": "\"2020-10-26T18:25:04.532316Z\"",
+				"description": "Timestamp of the last time Cloudflare was able to successfully dispatch a notification using this webhook.",
+				"readOnly": true,
+				"format": "date-time"
+			},
+			"last_failure": {
+				"type": "string",
+				"example": "\"2020-10-26T18:25:04.532316Z\"",
+				"description": "Timestamp of the last time an attempt to dispatch a notification to this webhook failed.",
+				"readOnly": true,
+				"format": "date-time"
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"name",
+			"url",
+			"secret",
+			"type",
+			"created_at",
+			"last_success",
+			"last_failure"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n  \"name\": \"Slack Webhook\",\n  \"url\": \"https://hooks.slack.com/services/Ds3fdBFbV/456464Gdd\",\n  \"type\": \"slack\",\n  \"created_at\": \"2020-10-26T18:25:04.532316Z\",\n  \"last_success\": \"2020-10-26T18:25:04.532316Z\",\n  \"last_failure\": \"2020-10-26T18:25:04.532316Z\"\n}",
+		"title": "Notification webhooks",
+		"description": "Notification webhooks are destination mechanisms that can be used in notification policies."
+	}
+}

@@ -1,0 +1,88 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/intel/phishing.json",
+	"title": "Phishing URL Scanner",
+	"description": "Phishing URL Scanner (Beta)",
+	"links": [
+		{
+			"title": "Scan suspicious url",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/intel-phishing/predict",
+			"method": "GET",
+			"cfOwnership": "intel",
+			"html_id": "phishing-url-scanner-scan-suspicious-url",
+			"uri": "accounts/:account_identifier/intel-phishing/predict",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/intel-phishing/predict?url=https://www.cloudflare.com&skip=true\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"url": {
+						"type": "string",
+						"example": "\"https://www.cloudflare.com\"",
+						"format": "url"
+					},
+					"skip": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether to skip the initial URL scanner and require a full HTML scan",
+						"default": false
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"url",
+					"skip"
+				],
+				"objects": [],
+				"example": "{\n  \"url\": \"https://www.cloudflare.com\",\n  \"skip\": true\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"url\": \"https://www.cloudflare.com\",\n    \"phishing\": false,\n    \"verified\": false,\n    \"score\": 0.99,\n    \"classifier\": \"MACHINE_LEARNING_v2\"\n  }\n}"
+		}
+	],
+	"html_id": "phishing-url-scanner",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"url": {
+				"type": "string",
+				"example": "\"https://www.cloudflare.com\"",
+				"description": "URL that was scanned"
+			},
+			"phishing": {
+				"type": "boolean",
+				"example": "false",
+				"description": "Whether the URL has been classified as phishing"
+			},
+			"verified": {
+				"type": "boolean",
+				"example": "false",
+				"description": "Whether the URL has been hand verified"
+			},
+			"score": {
+				"type": "number",
+				"example": "0.99",
+				"description": "Score reported from the classifer for the given URL"
+			},
+			"classifier": {
+				"type": "string",
+				"example": "\"MACHINE_LEARNING_v2\"",
+				"description": "Type of classifier that labelled this URL"
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"url",
+			"phishing",
+			"verified",
+			"score",
+			"classifier"
+		],
+		"objects": [],
+		"example": "{\n  \"url\": \"https://www.cloudflare.com\",\n  \"phishing\": false,\n  \"verified\": false,\n  \"score\": 0.99,\n  \"classifier\": \"MACHINE_LEARNING_v2\"\n}",
+		"title": "Phishing URL Scanner",
+		"description": "Phishing URL Scanner (Beta)"
+	}
+}

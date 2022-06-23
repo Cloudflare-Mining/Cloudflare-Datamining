@@ -1,0 +1,380 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/storage/analytics.json",
+	"title": "Workers KV Request Analytics",
+	"description": "Metrics on Workers KV requests.",
+	"type": "object",
+	"links": [
+		{
+			"title": "Query Request Analytics",
+			"description": "Retrieves Workers KV request metrics for the given account.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/storage/analytics",
+			"method": "GET",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
+			"cfOwnership": "storage",
+			"html_id": "workers-kv-request-analytics-query-request-analytics",
+			"uri": "accounts/:account_identifier/storage/analytics",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/storage/analytics?limit=10000&since=2019-01-02T02:20:00Z&until=2019-01-02T03:20:00Z&metrics=requests,readKiB&dimensions=accountId,responseCode&sort=+requests,-responseCode&filters=requestType==read AND responseCode!=200\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"limit": {
+						"type": "integer",
+						"example": "10000",
+						"description": "Limit number of returned metrics.",
+						"default": 10000
+					},
+					"since": {
+						"type": "string",
+						"example": "\"2019-01-02T02:20:00Z\"",
+						"description": "Start of time interval to query, defaults to 6 hours before request received.",
+						"default": "<6 hours ago>",
+						"format": "date-time"
+					},
+					"until": {
+						"type": "string",
+						"example": "\"2019-01-02T03:20:00Z\"",
+						"description": "End of time interval to query, defaults to current time.",
+						"default": "<now>",
+						"format": "date-time"
+					},
+					"metrics": {
+						"type": "array",
+						"example": "[\n  \"requests\",\n  \"readKiB\"\n]",
+						"description": "One or more metrics to compute.",
+						"items": {
+							"description": "A quantitative measurement of KV usage.",
+							"type": "string",
+							"enum": [
+								"requests",
+								"writeKiB",
+								"readKiB"
+							]
+						},
+						"default": "[\"requests\"]"
+					},
+					"dimensions": {
+						"type": "array",
+						"example": "[\n  \"accountId\",\n  \"responseCode\"\n]",
+						"description": "Can be used to break down the data by given attributes.",
+						"items": {
+							"description": "For drilling down on metrics.",
+							"type": "string",
+							"enum": [
+								"accountId",
+								"responseCode",
+								"requestType"
+							]
+						},
+						"default": "[]"
+					},
+					"sort": {
+						"type": "array",
+						"example": "[\n  \"+requests\",\n  \"-responseCode\"\n]",
+						"description": "Array of dimensions or metrics to sort by, each dimension/metric may be prefixed by - (descending) or + (ascending)",
+						"default": "[]"
+					},
+					"filters": {
+						"type": "string",
+						"example": "\"requestType==read AND responseCode!=200\"",
+						"description": "Used to filter rows by one or more dimensions. Filters can be combined using OR and AND boolean logic. AND takes precedence over OR in all the expressions. The OR operator is defined using a comma (,) or OR keyword surrounded by whitespace. The AND operator is defined using a semicolon (;) or AND keyword surrounded by whitespace. Note that the semicolon is a reserved character in URLs (rfc1738) and needs to be percent-encoded as %3B. Comparison options are: \n\nOperator                  | Name                            | URL Encoded\n--------------------------|---------------------------------|--------------------------\n==                        | Equals                          | %3D%3D\n!=                        | Does not equals                 | !%3D\n>                        | Greater Than                    | %3E\n<                         | Less Than                       | %3C\n>=                       | Greater than or equal to        | %3E%3D\n<=                        | Less than or equal to           | %3C%3D     ",
+						"default": "\"\""
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"limit",
+					"since",
+					"until",
+					"metrics",
+					"dimensions",
+					"sort",
+					"filters"
+				],
+				"objects": [],
+				"example": "{\n  \"limit\": 10000,\n  \"since\": \"2019-01-02T02:20:00Z\",\n  \"until\": \"2019-01-02T03:20:00Z\",\n  \"metrics\": [\n    \"requests\",\n    \"readKiB\"\n  ],\n  \"dimensions\": [\n    \"accountId\",\n    \"responseCode\"\n  ],\n  \"sort\": [\n    \"+requests\",\n    \"-responseCode\"\n  ],\n  \"filters\": \"requestType==read AND responseCode!=200\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"rows\": 2,\n    \"data\": [\n      {\n        \"metrics\": [\n          [\n            2,\n            4\n          ],\n          [\n            16,\n            32\n          ]\n        ]\n      }\n    ],\n    \"data_lag\": 0,\n    \"min\": {\n      \"requests\": 2,\n      \"readKiB\": 16\n    },\n    \"max\": {\n      \"requests\": 4,\n      \"readKiB\": 32\n    },\n    \"totals\": {\n      \"requests\": 6,\n      \"readKiB\": 48\n    },\n    \"query\": {\n      \"limit\": 10000,\n      \"since\": \"2019-01-02T02:20:00Z\",\n      \"until\": \"2019-01-02T03:20:00Z\",\n      \"metrics\": [\n        \"requests\",\n        \"readKiB\"\n      ],\n      \"dimensions\": [\n        \"accountId\",\n        \"responseCode\"\n      ],\n      \"sort\": [\n        \"+requests\",\n        \"-responseCode\"\n      ],\n      \"filters\": \"requestType==read AND responseCode!=200\"\n    }\n  }\n}"
+		}
+	],
+	"cfLinkErrors": {
+		"10001": "missing CF-Ray header",
+		"10002": "missing account ID",
+		"10003": "malformed account ID",
+		"10004": "malformed query",
+		"10005": "unauthorized method",
+		"10006": "time range too large",
+		"10007": "bad namespace ID",
+		"10008": "missing account tag"
+	},
+	"html_id": "workers-kv-request-analytics",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"rows": {
+				"type": "number",
+				"example": "2",
+				"description": "Total number of rows in the result",
+				"minimum": 0
+			},
+			"data": {
+				"type": [
+					"array",
+					"null",
+					null
+				],
+				"items": {
+					"type": "object",
+					"required": [
+						"metrics"
+					],
+					"properties": {
+						"metrics": {
+							"type": "array",
+							"description": "List of metrics returned by the query."
+						}
+					}
+				},
+				"example": "[\n  {\n    \"metrics\": [\n      [\n        2,\n        4\n      ],\n      [\n        16,\n        32\n      ]\n    ]\n  }\n]"
+			},
+			"data_lag": {
+				"type": "number",
+				"example": "0",
+				"description": "Number of seconds between current time and last processed event, i.e. how many seconds of data could be missing.",
+				"minimum": 0
+			},
+			"min": {
+				"type": "object",
+				"description": "Minimum results for each metric.",
+				"patternProperties": {
+					".*": {
+						"type": "number"
+					}
+				},
+				"example": "{\n  \"requests\": 2,\n  \"readKiB\": 16\n}"
+			},
+			"max": {
+				"type": "object",
+				"description": "Maximum results for each metric.",
+				"patternProperties": {
+					".*": {
+						"type": "number"
+					}
+				},
+				"example": "{\n  \"requests\": 4,\n  \"readKiB\": 32\n}"
+			},
+			"totals": {
+				"type": "object",
+				"description": "Total results for metrics across all data.",
+				"patternProperties": {
+					".*": {
+						"type": "number"
+					}
+				},
+				"example": "{\n  \"requests\": 6,\n  \"readKiB\": 48\n}"
+			},
+			"query": {
+				"type": "object",
+				"example": "{\n  \"limit\": 10000,\n  \"since\": \"2019-01-02T02:20:00Z\",\n  \"until\": \"2019-01-02T03:20:00Z\",\n  \"metrics\": [\n    \"requests\",\n    \"readKiB\"\n  ],\n  \"dimensions\": [\n    \"accountId\",\n    \"responseCode\"\n  ],\n  \"sort\": [\n    \"+requests\",\n    \"-responseCode\"\n  ],\n  \"filters\": \"requestType==read AND responseCode!=200\"\n}",
+				"properties": {
+					"limit": {
+						"type": "integer",
+						"example": "10000",
+						"description": "Limit number of returned metrics.",
+						"default": 10000
+					},
+					"since": {
+						"type": "string",
+						"example": "\"2019-01-02T02:20:00Z\"",
+						"description": "Start of time interval to query, defaults to 6 hours before request received.",
+						"default": "<6 hours ago>",
+						"format": "date-time"
+					},
+					"until": {
+						"type": "string",
+						"example": "\"2019-01-02T03:20:00Z\"",
+						"description": "End of time interval to query, defaults to current time.",
+						"default": "<now>",
+						"format": "date-time"
+					},
+					"metrics": {
+						"type": "array",
+						"example": "[\n  \"requests\",\n  \"readKiB\"\n]",
+						"description": "One or more metrics to compute.",
+						"items": {
+							"description": "A quantitative measurement of KV usage.",
+							"type": "string",
+							"enum": [
+								"requests",
+								"writeKiB",
+								"readKiB"
+							]
+						},
+						"default": "[\"requests\"]"
+					},
+					"dimensions": {
+						"type": "array",
+						"example": "[\n  \"accountId\",\n  \"responseCode\"\n]",
+						"description": "Can be used to break down the data by given attributes.",
+						"items": {
+							"description": "For drilling down on metrics.",
+							"type": "string",
+							"enum": [
+								"accountId",
+								"responseCode",
+								"requestType"
+							]
+						},
+						"default": "[]"
+					},
+					"sort": {
+						"type": "array",
+						"example": "[\n  \"+requests\",\n  \"-responseCode\"\n]",
+						"description": "Array of dimensions or metrics to sort by, each dimension/metric may be prefixed by - (descending) or + (ascending)",
+						"default": "[]"
+					},
+					"filters": {
+						"type": "string",
+						"example": "\"requestType==read AND responseCode!=200\"",
+						"description": "Used to filter rows by one or more dimensions. Filters can be combined using OR and AND boolean logic. AND takes precedence over OR in all the expressions. The OR operator is defined using a comma (,) or OR keyword surrounded by whitespace. The AND operator is defined using a semicolon (;) or AND keyword surrounded by whitespace. Note that the semicolon is a reserved character in URLs (rfc1738) and needs to be percent-encoded as %3B. Comparison options are: \n\nOperator                  | Name                            | URL Encoded\n--------------------------|---------------------------------|--------------------------\n==                        | Equals                          | %3D%3D\n!=                        | Does not equals                 | !%3D\n>                        | Greater Than                    | %3E\n<                         | Less Than                       | %3C\n>=                       | Greater than or equal to        | %3E%3D\n<=                        | Less than or equal to           | %3C%3D     ",
+						"default": "\"\""
+					}
+				},
+				"description": "For specifying result metrics.",
+				"allOf": [
+					{
+						"description": "For specifying result metrics.",
+						"type": "object",
+						"properties": {
+							"limit": {
+								"description": "Limit number of returned metrics.",
+								"type": "integer",
+								"default": 10000,
+								"example": 10000
+							},
+							"since": {
+								"description": "Start of time interval to query, defaults to 6 hours before request received.",
+								"default": "<6 hours ago>",
+								"example": "2019-01-02T02:20:00Z",
+								"format": "date-time",
+								"type": "string"
+							},
+							"until": {
+								"description": "End of time interval to query, defaults to current time.",
+								"default": "<now>",
+								"example": "2019-01-02T03:20:00Z",
+								"format": "date-time",
+								"type": "string"
+							},
+							"metrics": {
+								"description": "One or more metrics to compute.",
+								"items": {
+									"description": "A quantitative measurement of KV usage.",
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"dimensions": {
+								"description": "Can be used to break down the data by given attributes.",
+								"items": {
+									"description": "For drilling down on metrics.",
+									"type": "string"
+								},
+								"type": "array",
+								"default": "[]"
+							},
+							"sort": {
+								"description": "Array of dimensions or metrics to sort by, each dimension/metric may be prefixed by - (descending) or + (ascending)",
+								"type": "array",
+								"default": "[]"
+							},
+							"filters": {
+								"description": "Used to filter rows by one or more dimensions. Filters can be combined using OR and AND boolean logic. AND takes precedence over OR in all the expressions. The OR operator is defined using a comma (,) or OR keyword surrounded by whitespace. The AND operator is defined using a semicolon (;) or AND keyword surrounded by whitespace. Note that the semicolon is a reserved character in URLs (rfc1738) and needs to be percent-encoded as %3B. Comparison options are: \n\nOperator                  | Name                            | URL Encoded\n--------------------------|---------------------------------|--------------------------\n==                        | Equals                          | %3D%3D\n!=                        | Does not equals                 | !%3D\n>                        | Greater Than                    | %3E\n<                         | Less Than                       | %3C\n>=                       | Greater than or equal to        | %3E%3D\n<=                        | Less than or equal to           | %3C%3D     ",
+								"type": "string",
+								"default": "\"\""
+							}
+						}
+					},
+					{
+						"properties": {
+							"metrics": {
+								"default": "[\"requests\"]",
+								"example": [
+									"requests",
+									"readKiB"
+								],
+								"items": {
+									"enum": [
+										"requests",
+										"writeKiB",
+										"readKiB"
+									]
+								}
+							},
+							"dimensions": {
+								"example": [
+									"accountId",
+									"responseCode"
+								],
+								"items": {
+									"enum": [
+										"accountId",
+										"responseCode",
+										"requestType"
+									]
+								}
+							},
+							"sort": {
+								"example": [
+									"+requests",
+									"-responseCode"
+								]
+							},
+							"filters": {
+								"example": "requestType==read AND responseCode!=200"
+							}
+						}
+					}
+				]
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"rows",
+			"data",
+			"data_lag",
+			"min",
+			"max",
+			"totals",
+			"query"
+		],
+		"objects": [],
+		"example": "{\n  \"rows\": 2,\n  \"data\": [\n    {\n      \"metrics\": [\n        [\n          2,\n          4\n        ],\n        [\n          16,\n          32\n        ]\n      ]\n    }\n  ],\n  \"data_lag\": 0,\n  \"min\": {\n    \"requests\": 2,\n    \"readKiB\": 16\n  },\n  \"max\": {\n    \"requests\": 4,\n    \"readKiB\": 32\n  },\n  \"totals\": {\n    \"requests\": 6,\n    \"readKiB\": 48\n  },\n  \"query\": {\n    \"limit\": 10000,\n    \"since\": \"2019-01-02T02:20:00Z\",\n    \"until\": \"2019-01-02T03:20:00Z\",\n    \"metrics\": [\n      \"requests\",\n      \"readKiB\"\n    ],\n    \"dimensions\": [\n      \"accountId\",\n      \"responseCode\"\n    ],\n    \"sort\": [\n      \"+requests\",\n      \"-responseCode\"\n    ],\n    \"filters\": \"requestType==read AND responseCode!=200\"\n  }\n}",
+		"title": "Workers KV Request Analytics",
+		"description": "Metrics on Workers KV requests."
+	}
+}

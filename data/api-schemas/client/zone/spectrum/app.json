@@ -1,0 +1,1367 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/spectrum/app.json",
+	"title": "Spectrum Applications",
+	"description": "You can extend the power of Cloudflare's DDoS, TLS, and IP Firewall to your other TCP-based services.",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Spectrum Applications",
+			"description": "Retrieve a list of currently existing Spectrum Applications inside a zone.",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone}/spectrum/apps",
+			"method": "GET",
+			"cfOwnership": "spectrum",
+			"html_id": "spectrum-applications-list-spectrum-applications",
+			"uri": "zones/:zone/spectrum/apps",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/spectrum/apps?page=1&per_page=20&direction=desc&order=protocol\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"page": {
+						"type": "number",
+						"example": "1",
+						"minimum": 1,
+						"description": "Page number of paginated results. This parameter is required in order to use other pagination parameters. If included in the query, `result_info` will be present in the response."
+					},
+					"per_page": {
+						"type": "number",
+						"example": "20",
+						"minimum": 1,
+						"maximum": 100,
+						"default": 20,
+						"description": "Maximum number of results per page"
+					},
+					"direction": {
+						"type": "string",
+						"example": "\"desc\"",
+						"enum": [
+							"asc",
+							"desc"
+						],
+						"default": "asc",
+						"description": "Direction to order results"
+					},
+					"order": {
+						"type": "string",
+						"example": "\"protocol\"",
+						"enum": [
+							"protocol",
+							"app_id",
+							"created_on",
+							"modified_on",
+							"dns"
+						],
+						"description": "Application field to order results by",
+						"default": "dns"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"page",
+					"per_page",
+					"direction",
+					"order"
+				],
+				"objects": [],
+				"example": "{\n  \"page\": 1,\n  \"per_page\": 20,\n  \"direction\": \"desc\",\n  \"order\": \"protocol\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"ea95132c15732412d22c1476fa83f27a\",\n      \"protocol\": \"tcp/22\",\n      \"dns\": {\n        \"type\": \"CNAME\",\n        \"name\": \"ssh.example.com\"\n      },\n      \"origin_direct\": [\n        \"tcp://192.0.2.1:22\"\n      ],\n      \"proxy_protocol\": \"off\",\n      \"ip_firewall\": true,\n      \"tls\": \"full\",\n      \"edge_ips\": {\n        \"type\": \"dynamic\",\n        \"connectivity\": \"all\"\n      },\n      \"traffic_type\": \"direct\",\n      \"argo_smart_routing\": true,\n      \"created_on\": \"2014-01-02T02:20:00Z\",\n      \"modified_on\": \"2014-01-02T02:20:00Z\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Create Spectrum Application using an IP address for the origin",
+			"description": "Create a new Spectrum Application from a configuration using an IP address for the origin.",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone}/spectrum/apps",
+			"method": "POST",
+			"cfOwnership": "spectrum",
+			"html_id": "spectrum-applications-create-spectrum-application-using-an-ip-address-for-the-origin",
+			"uri": "zones/:zone/spectrum/apps",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/spectrum/apps\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"protocol\":\"tcp/22\",\"dns\":{\"type\":\"CNAME\",\"name\":\"ssh.example.com\"},\"origin_direct\":[\"tcp://192.0.2.1:22\"],\"proxy_protocol\":\"off\",\"ip_firewall\":true,\"tls\":\"full\",\"edge_ips\":{\"type\":\"dynamic\",\"connectivity\":\"all\"},\"traffic_type\":\"direct\",\"argo_smart_routing\":true}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"protocol": {
+						"type": "string",
+						"example": "\"tcp/22\"",
+						"description": "Port configuration at Cloudflare’s edge. May specify a single port, e.g. `\"tcp/1000\"`, or a range of ports, e.g. `\"tcp/1000-2000\"`."
+					},
+					"dns": {
+						"type": "object",
+						"example": "{\n  \"type\": \"CNAME\",\n  \"name\": \"ssh.example.com\"\n}",
+						"properties": {
+							"type": {
+								"type": "string",
+								"example": "\"CNAME\"",
+								"description": "The type of DNS record associated with the application.",
+								"enum": [
+									"CNAME",
+									"ADDRESS"
+								]
+							},
+							"name": {
+								"type": "string",
+								"example": "\"ssh.example.com\"",
+								"description": "The name of the DNS record associated with the application.",
+								"format": "hostname"
+							}
+						},
+						"description": "The name and type of DNS record for the Spectrum application."
+					},
+					"origin_direct": {
+						"type": "array",
+						"example": "[\n  \"tcp://192.0.2.1:22\"\n]",
+						"description": "A list of destination addresses to the origin.",
+						"items": {
+							"description": "Destination origin URI. May specify a single origin port, e.g. `\"tcp://192.0.2.1:1000\"`, or a range of origin ports, e.g. `\"tcp://192.0.2.1:1000-2000\"`.",
+							"example": "tcp://192.0.2.1:22",
+							"type": "string",
+							"cfNotes": "If specifying a port range, the number of ports in the range must match the number of ports specified in the \"protocol\" field."
+						}
+					},
+					"proxy_protocol": {
+						"type": "string",
+						"example": "\"off\"",
+						"description": "Enables Proxy Protocol to the origin. See [the developer documentation](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.",
+						"default": "off",
+						"enum": [
+							"off",
+							"v1",
+							"v2",
+							"simple"
+						]
+					},
+					"ip_firewall": {
+						"type": "boolean",
+						"example": "true",
+						"cfNotes": "Only available for TCP applications.",
+						"description": "Enables IP Access Rules for this application."
+					},
+					"tls": {
+						"type": "string",
+						"example": "\"full\"",
+						"description": "The type of TLS termination associated with the application.",
+						"enum": [
+							"off",
+							"flexible",
+							"full",
+							"strict"
+						]
+					},
+					"edge_ips": {
+						"example": "{\n  \"type\": \"dynamic\",\n  \"connectivity\": \"all\"\n}",
+						"oneOf": [
+							{
+								"all_props": {
+									"type": {
+										"type": "string",
+										"example": "\"dynamic\"",
+										"description": "The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.",
+										"enum": [
+											"dynamic"
+										]
+									},
+									"connectivity": {
+										"type": "string",
+										"example": "\"all\"",
+										"description": "The IP versions supported for inbound connections on Spectrum anycast IPs.",
+										"enum": [
+											"all",
+											"ipv4",
+											"ipv6"
+										]
+									}
+								},
+								"required_props": [],
+								"optional_props": [
+									"type",
+									"connectivity"
+								],
+								"objects": [],
+								"example": "{\n  \"type\": \"dynamic\",\n  \"connectivity\": \"all\"\n}"
+							},
+							{
+								"all_props": {
+									"type": {
+										"type": "string",
+										"example": "\"static\"",
+										"description": "The type of edge IP configuration specified. Statically allocated edge IPs use customer IPs in accordance with the ips array you specify. Only valid with ADDRESS DNS names.",
+										"enum": [
+											"static"
+										]
+									},
+									"ips": {
+										"type": "array",
+										"example": "[\n  \"192.0.2.1\"\n]",
+										"description": "The array of customer owned IPs we broadcast via anycast for this hostname and application.",
+										"items": {
+											"description": "Edge anycast IPs",
+											"example": "192.0.2.1",
+											"type": "string"
+										}
+									}
+								},
+								"required_props": [],
+								"optional_props": [
+									"type",
+									"ips"
+								],
+								"objects": [],
+								"example": "{\n  \"type\": \"static\",\n  \"ips\": [\n    \"192.0.2.1\"\n  ]\n}"
+							}
+						],
+						"description": "The anycast edge IP configuration for the hostname of this application.",
+						"default": {
+							"type": "dynamic",
+							"connectivity": "all"
+						}
+					},
+					"traffic_type": {
+						"type": "string",
+						"example": "\"direct\"",
+						"description": "Determines how data travels from the edge to your origin. When set to \"direct\", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to \"http\" or \"https\", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.",
+						"default": "direct",
+						"enum": [
+							"direct",
+							"http",
+							"https"
+						]
+					},
+					"argo_smart_routing": {
+						"type": "boolean",
+						"example": "true",
+						"cfNotes": "Only available for TCP applications with traffic_type set to \"direct\".",
+						"description": "Enables Argo Smart Routing for this application.",
+						"default": false
+					}
+				},
+				"required_props": [
+					"protocol",
+					"dns",
+					"origin_direct"
+				],
+				"optional_props": [
+					"proxy_protocol",
+					"ip_firewall",
+					"tls",
+					"edge_ips",
+					"traffic_type",
+					"argo_smart_routing"
+				],
+				"objects": [],
+				"example": "{\n  \"protocol\": \"tcp/22\",\n  \"dns\": {\n    \"type\": \"CNAME\",\n    \"name\": \"ssh.example.com\"\n  },\n  \"origin_direct\": [\n    \"tcp://192.0.2.1:22\"\n  ],\n  \"proxy_protocol\": \"off\",\n  \"ip_firewall\": true,\n  \"tls\": \"full\",\n  \"edge_ips\": {\n    \"type\": \"dynamic\",\n    \"connectivity\": \"all\"\n  },\n  \"traffic_type\": \"direct\",\n  \"argo_smart_routing\": true\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"ea95132c15732412d22c1476fa83f27a\",\n    \"protocol\": \"tcp/22\",\n    \"dns\": {\n      \"type\": \"CNAME\",\n      \"name\": \"ssh.example.com\"\n    },\n    \"origin_direct\": [\n      \"tcp://192.0.2.1:22\"\n    ],\n    \"proxy_protocol\": \"off\",\n    \"ip_firewall\": true,\n    \"tls\": \"full\",\n    \"edge_ips\": {\n      \"type\": \"dynamic\",\n      \"connectivity\": \"all\"\n    },\n    \"traffic_type\": \"direct\",\n    \"argo_smart_routing\": true,\n    \"created_on\": \"2014-01-02T02:20:00Z\",\n    \"modified_on\": \"2014-01-02T02:20:00Z\"\n  }\n}"
+		},
+		{
+			"title": "Create Spectrum Application using a name for the origin",
+			"description": "Create a new Spectrum Application from a configuration using a name for the origin.",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone}/spectrum/apps",
+			"method": "POST",
+			"cfOwnership": "spectrum",
+			"html_id": "spectrum-applications-create-spectrum-application-using-a-name-for-the-origin",
+			"uri": "zones/:zone/spectrum/apps",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/spectrum/apps\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"protocol\":\"tcp/22\",\"dns\":{\"type\":\"CNAME\",\"name\":\"ssh.example.com\"},\"origin_dns\":{\"type\":\"\",\"name\":\"origin.example.com\",\"ttl\":600},\"origin_port\":22,\"proxy_protocol\":\"off\",\"ip_firewall\":true,\"tls\":\"full\",\"edge_ips\":{\"type\":\"dynamic\",\"connectivity\":\"all\"},\"traffic_type\":\"direct\",\"argo_smart_routing\":true}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"protocol": {
+						"type": "string",
+						"example": "\"tcp/22\"",
+						"description": "Port configuration at Cloudflare’s edge. May specify a single port, e.g. `\"tcp/1000\"`, or a range of ports, e.g. `\"tcp/1000-2000\"`."
+					},
+					"dns": {
+						"type": "object",
+						"example": "{\n  \"type\": \"CNAME\",\n  \"name\": \"ssh.example.com\"\n}",
+						"properties": {
+							"type": {
+								"type": "string",
+								"example": "\"CNAME\"",
+								"description": "The type of DNS record associated with the application.",
+								"enum": [
+									"CNAME",
+									"ADDRESS"
+								]
+							},
+							"name": {
+								"type": "string",
+								"example": "\"ssh.example.com\"",
+								"description": "The name of the DNS record associated with the application.",
+								"format": "hostname"
+							}
+						},
+						"description": "The name and type of DNS record for the Spectrum application."
+					},
+					"origin_dns": {
+						"type": "object",
+						"example": "{\n  \"type\": \"\",\n  \"name\": \"origin.example.com\",\n  \"ttl\": 600\n}",
+						"properties": {
+							"type": {
+								"type": "string",
+								"example": "\"\"",
+								"description": "The type of DNS record associated with the origin. \"\" is used to specify a combination of A/AAAA records.",
+								"enum": [
+									"",
+									"A",
+									"AAAA",
+									"SRV"
+								]
+							},
+							"name": {
+								"type": "string",
+								"example": "\"origin.example.com\"",
+								"description": "The name of the DNS record associated with the origin.",
+								"format": "hostname"
+							},
+							"ttl": {
+								"type": "integer",
+								"example": "600",
+								"description": "The TTL of our resolution of your DNS record in seconds.",
+								"minimum": 600
+							}
+						},
+						"description": "The name and type of DNS record for the Spectrum application."
+					},
+					"origin_port": {
+						"type": [
+							"integer",
+							"string"
+						],
+						"example": "22",
+						"description": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, e.g. `1000`, or a string to specify a range of origin ports, e.g. `\"1000-2000\"`",
+						"minimum": 1,
+						"maximum": 65535,
+						"cfNotes": "If specifying a port range, the number of ports in the range must match the number of ports specified in the \"protocol\" field."
+					},
+					"proxy_protocol": {
+						"type": "string",
+						"example": "\"off\"",
+						"description": "Enables Proxy Protocol to the origin. See [the developer documentation](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.",
+						"default": "off",
+						"enum": [
+							"off",
+							"v1",
+							"v2",
+							"simple"
+						]
+					},
+					"ip_firewall": {
+						"type": "boolean",
+						"example": "true",
+						"cfNotes": "Only available for TCP applications.",
+						"description": "Enables IP Access Rules for this application."
+					},
+					"tls": {
+						"type": "string",
+						"example": "\"full\"",
+						"description": "The type of TLS termination associated with the application.",
+						"enum": [
+							"off",
+							"flexible",
+							"full",
+							"strict"
+						]
+					},
+					"edge_ips": {
+						"example": "{\n  \"type\": \"dynamic\",\n  \"connectivity\": \"all\"\n}",
+						"oneOf": [
+							{
+								"all_props": {
+									"type": {
+										"type": "string",
+										"example": "\"dynamic\"",
+										"description": "The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.",
+										"enum": [
+											"dynamic"
+										]
+									},
+									"connectivity": {
+										"type": "string",
+										"example": "\"all\"",
+										"description": "The IP versions supported for inbound connections on Spectrum anycast IPs.",
+										"enum": [
+											"all",
+											"ipv4",
+											"ipv6"
+										]
+									}
+								},
+								"required_props": [],
+								"optional_props": [
+									"type",
+									"connectivity"
+								],
+								"objects": [],
+								"example": "{\n  \"type\": \"dynamic\",\n  \"connectivity\": \"all\"\n}"
+							},
+							{
+								"all_props": {
+									"type": {
+										"type": "string",
+										"example": "\"static\"",
+										"description": "The type of edge IP configuration specified. Statically allocated edge IPs use customer IPs in accordance with the ips array you specify. Only valid with ADDRESS DNS names.",
+										"enum": [
+											"static"
+										]
+									},
+									"ips": {
+										"type": "array",
+										"example": "[\n  \"192.0.2.1\"\n]",
+										"description": "The array of customer owned IPs we broadcast via anycast for this hostname and application.",
+										"items": {
+											"description": "Edge anycast IPs",
+											"example": "192.0.2.1",
+											"type": "string"
+										}
+									}
+								},
+								"required_props": [],
+								"optional_props": [
+									"type",
+									"ips"
+								],
+								"objects": [],
+								"example": "{\n  \"type\": \"static\",\n  \"ips\": [\n    \"192.0.2.1\"\n  ]\n}"
+							}
+						],
+						"description": "The anycast edge IP configuration for the hostname of this application.",
+						"default": {
+							"type": "dynamic",
+							"connectivity": "all"
+						}
+					},
+					"traffic_type": {
+						"type": "string",
+						"example": "\"direct\"",
+						"description": "Determines how data travels from the edge to your origin. When set to \"direct\", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to \"http\" or \"https\", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.",
+						"default": "direct",
+						"enum": [
+							"direct",
+							"http",
+							"https"
+						]
+					},
+					"argo_smart_routing": {
+						"type": "boolean",
+						"example": "true",
+						"cfNotes": "Only available for TCP applications with traffic_type set to \"direct\".",
+						"description": "Enables Argo Smart Routing for this application.",
+						"default": false
+					}
+				},
+				"required_props": [
+					"protocol",
+					"dns",
+					"origin_dns",
+					"origin_port"
+				],
+				"optional_props": [
+					"proxy_protocol",
+					"ip_firewall",
+					"tls",
+					"edge_ips",
+					"traffic_type",
+					"argo_smart_routing"
+				],
+				"objects": [],
+				"example": "{\n  \"protocol\": \"tcp/22\",\n  \"dns\": {\n    \"type\": \"CNAME\",\n    \"name\": \"ssh.example.com\"\n  },\n  \"origin_dns\": {\n    \"type\": \"\",\n    \"name\": \"origin.example.com\",\n    \"ttl\": 600\n  },\n  \"origin_port\": 22,\n  \"proxy_protocol\": \"off\",\n  \"ip_firewall\": true,\n  \"tls\": \"full\",\n  \"edge_ips\": {\n    \"type\": \"dynamic\",\n    \"connectivity\": \"all\"\n  },\n  \"traffic_type\": \"direct\",\n  \"argo_smart_routing\": true\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"ea95132c15732412d22c1476fa83f27a\",\n    \"protocol\": \"tcp/22\",\n    \"dns\": {\n      \"type\": \"CNAME\",\n      \"name\": \"ssh.example.com\"\n    },\n    \"origin_dns\": {\n      \"type\": \"\",\n      \"name\": \"origin.example.com\",\n      \"ttl\": 600\n    },\n    \"origin_port\": 22,\n    \"proxy_protocol\": \"off\",\n    \"ip_firewall\": true,\n    \"tls\": \"full\",\n    \"edge_ips\": {\n      \"type\": \"dynamic\",\n      \"connectivity\": \"all\"\n    },\n    \"traffic_type\": \"direct\",\n    \"argo_smart_routing\": true,\n    \"created_on\": \"2014-01-02T02:20:00Z\",\n    \"modified_on\": \"2014-01-02T02:20:00Z\"\n  }\n}"
+		},
+		{
+			"title": "Get Spectrum Application Configuration",
+			"description": "Get the application configuration of a specific application inside a zone.",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone}/spectrum/apps/{#/definitions/app_id}",
+			"method": "GET",
+			"cfOwnership": "spectrum",
+			"html_id": "spectrum-applications-get-spectrum-application-configuration",
+			"uri": "zones/:zone/spectrum/apps/:app_id",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/spectrum/apps/ea95132c15732412d22c1476fa83f27a\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"ea95132c15732412d22c1476fa83f27a\",\n    \"protocol\": \"tcp/22\",\n    \"dns\": {\n      \"type\": \"CNAME\",\n      \"name\": \"ssh.example.com\"\n    },\n    \"origin_direct\": [\n      \"tcp://192.0.2.1:22\"\n    ],\n    \"proxy_protocol\": \"off\",\n    \"ip_firewall\": true,\n    \"tls\": \"full\",\n    \"edge_ips\": {\n      \"type\": \"dynamic\",\n      \"connectivity\": \"all\"\n    },\n    \"traffic_type\": \"direct\",\n    \"argo_smart_routing\": true,\n    \"created_on\": \"2014-01-02T02:20:00Z\",\n    \"modified_on\": \"2014-01-02T02:20:00Z\"\n  }\n}"
+		},
+		{
+			"title": "Update Spectrum Application Configuration using an IP address for the origin",
+			"description": "Update a previously existing application's configuration that uses an IP address for the origin.",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone}/spectrum/apps/{#/definitions/app_id}",
+			"method": "PUT",
+			"cfOwnership": "spectrum",
+			"html_id": "spectrum-applications-update-spectrum-application-configuration-using-an-ip-address-for-the-origin",
+			"uri": "zones/:zone/spectrum/apps/:app_id",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/spectrum/apps/ea95132c15732412d22c1476fa83f27a\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"protocol\":\"tcp/22\",\"dns\":{\"type\":\"CNAME\",\"name\":\"ssh.example.com\"},\"origin_direct\":[\"tcp://192.0.2.1:22\"],\"proxy_protocol\":\"off\",\"ip_firewall\":true,\"tls\":\"full\",\"edge_ips\":{\"type\":\"dynamic\",\"connectivity\":\"all\"},\"traffic_type\":\"direct\",\"argo_smart_routing\":true}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"protocol": {
+						"type": "string",
+						"example": "\"tcp/22\"",
+						"description": "Port configuration at Cloudflare’s edge. May specify a single port, e.g. `\"tcp/1000\"`, or a range of ports, e.g. `\"tcp/1000-2000\"`."
+					},
+					"dns": {
+						"type": "object",
+						"example": "{\n  \"type\": \"CNAME\",\n  \"name\": \"ssh.example.com\"\n}",
+						"properties": {
+							"type": {
+								"type": "string",
+								"example": "\"CNAME\"",
+								"description": "The type of DNS record associated with the application.",
+								"enum": [
+									"CNAME",
+									"ADDRESS"
+								]
+							},
+							"name": {
+								"type": "string",
+								"example": "\"ssh.example.com\"",
+								"description": "The name of the DNS record associated with the application.",
+								"format": "hostname"
+							}
+						},
+						"description": "The name and type of DNS record for the Spectrum application."
+					},
+					"origin_direct": {
+						"type": "array",
+						"example": "[\n  \"tcp://192.0.2.1:22\"\n]",
+						"description": "A list of destination addresses to the origin.",
+						"items": {
+							"description": "Destination origin URI. May specify a single origin port, e.g. `\"tcp://192.0.2.1:1000\"`, or a range of origin ports, e.g. `\"tcp://192.0.2.1:1000-2000\"`.",
+							"example": "tcp://192.0.2.1:22",
+							"type": "string",
+							"cfNotes": "If specifying a port range, the number of ports in the range must match the number of ports specified in the \"protocol\" field."
+						}
+					},
+					"proxy_protocol": {
+						"type": "string",
+						"example": "\"off\"",
+						"description": "Enables Proxy Protocol to the origin. See [the developer documentation](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.",
+						"default": "off",
+						"enum": [
+							"off",
+							"v1",
+							"v2",
+							"simple"
+						]
+					},
+					"ip_firewall": {
+						"type": "boolean",
+						"example": "true",
+						"cfNotes": "Only available for TCP applications.",
+						"description": "Enables IP Access Rules for this application."
+					},
+					"tls": {
+						"type": "string",
+						"example": "\"full\"",
+						"description": "The type of TLS termination associated with the application.",
+						"enum": [
+							"off",
+							"flexible",
+							"full",
+							"strict"
+						]
+					},
+					"edge_ips": {
+						"example": "{\n  \"type\": \"dynamic\",\n  \"connectivity\": \"all\"\n}",
+						"oneOf": [
+							{
+								"all_props": {
+									"type": {
+										"type": "string",
+										"example": "\"dynamic\"",
+										"description": "The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.",
+										"enum": [
+											"dynamic"
+										]
+									},
+									"connectivity": {
+										"type": "string",
+										"example": "\"all\"",
+										"description": "The IP versions supported for inbound connections on Spectrum anycast IPs.",
+										"enum": [
+											"all",
+											"ipv4",
+											"ipv6"
+										]
+									}
+								},
+								"required_props": [],
+								"optional_props": [
+									"type",
+									"connectivity"
+								],
+								"objects": [],
+								"example": "{\n  \"type\": \"dynamic\",\n  \"connectivity\": \"all\"\n}"
+							},
+							{
+								"all_props": {
+									"type": {
+										"type": "string",
+										"example": "\"static\"",
+										"description": "The type of edge IP configuration specified. Statically allocated edge IPs use customer IPs in accordance with the ips array you specify. Only valid with ADDRESS DNS names.",
+										"enum": [
+											"static"
+										]
+									},
+									"ips": {
+										"type": "array",
+										"example": "[\n  \"192.0.2.1\"\n]",
+										"description": "The array of customer owned IPs we broadcast via anycast for this hostname and application.",
+										"items": {
+											"description": "Edge anycast IPs",
+											"example": "192.0.2.1",
+											"type": "string"
+										}
+									}
+								},
+								"required_props": [],
+								"optional_props": [
+									"type",
+									"ips"
+								],
+								"objects": [],
+								"example": "{\n  \"type\": \"static\",\n  \"ips\": [\n    \"192.0.2.1\"\n  ]\n}"
+							}
+						],
+						"description": "The anycast edge IP configuration for the hostname of this application.",
+						"default": {
+							"type": "dynamic",
+							"connectivity": "all"
+						}
+					},
+					"traffic_type": {
+						"type": "string",
+						"example": "\"direct\"",
+						"description": "Determines how data travels from the edge to your origin. When set to \"direct\", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to \"http\" or \"https\", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.",
+						"default": "direct",
+						"enum": [
+							"direct",
+							"http",
+							"https"
+						]
+					},
+					"argo_smart_routing": {
+						"type": "boolean",
+						"example": "true",
+						"cfNotes": "Only available for TCP applications with traffic_type set to \"direct\".",
+						"description": "Enables Argo Smart Routing for this application.",
+						"default": false
+					}
+				},
+				"required_props": [
+					"protocol",
+					"dns",
+					"origin_direct"
+				],
+				"optional_props": [
+					"proxy_protocol",
+					"ip_firewall",
+					"tls",
+					"edge_ips",
+					"traffic_type",
+					"argo_smart_routing"
+				],
+				"objects": [],
+				"example": "{\n  \"protocol\": \"tcp/22\",\n  \"dns\": {\n    \"type\": \"CNAME\",\n    \"name\": \"ssh.example.com\"\n  },\n  \"origin_direct\": [\n    \"tcp://192.0.2.1:22\"\n  ],\n  \"proxy_protocol\": \"off\",\n  \"ip_firewall\": true,\n  \"tls\": \"full\",\n  \"edge_ips\": {\n    \"type\": \"dynamic\",\n    \"connectivity\": \"all\"\n  },\n  \"traffic_type\": \"direct\",\n  \"argo_smart_routing\": true\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"ea95132c15732412d22c1476fa83f27a\",\n    \"protocol\": \"tcp/22\",\n    \"dns\": {\n      \"type\": \"CNAME\",\n      \"name\": \"ssh.example.com\"\n    },\n    \"origin_direct\": [\n      \"tcp://192.0.2.1:22\"\n    ],\n    \"proxy_protocol\": \"off\",\n    \"ip_firewall\": true,\n    \"tls\": \"full\",\n    \"edge_ips\": {\n      \"type\": \"dynamic\",\n      \"connectivity\": \"all\"\n    },\n    \"traffic_type\": \"direct\",\n    \"argo_smart_routing\": true,\n    \"created_on\": \"2014-01-02T02:20:00Z\",\n    \"modified_on\": \"2014-01-02T02:20:00Z\"\n  }\n}"
+		},
+		{
+			"title": "Update Spectrum Application Configuration using a name for the origin",
+			"description": "Update a previously existing application's configuration that uses a name for the origin.",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone}/spectrum/apps/{#/definitions/app_id}",
+			"method": "PUT",
+			"cfOwnership": "spectrum",
+			"html_id": "spectrum-applications-update-spectrum-application-configuration-using-a-name-for-the-origin",
+			"uri": "zones/:zone/spectrum/apps/:app_id",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/spectrum/apps/ea95132c15732412d22c1476fa83f27a\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"protocol\":\"tcp/22\",\"dns\":{\"type\":\"CNAME\",\"name\":\"ssh.example.com\"},\"origin_dns\":{\"type\":\"\",\"name\":\"origin.example.com\",\"ttl\":600},\"origin_port\":22,\"proxy_protocol\":\"off\",\"ip_firewall\":true,\"tls\":\"full\",\"edge_ips\":{\"type\":\"dynamic\",\"connectivity\":\"all\"},\"traffic_type\":\"direct\",\"argo_smart_routing\":true}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"protocol": {
+						"type": "string",
+						"example": "\"tcp/22\"",
+						"description": "Port configuration at Cloudflare’s edge. May specify a single port, e.g. `\"tcp/1000\"`, or a range of ports, e.g. `\"tcp/1000-2000\"`."
+					},
+					"dns": {
+						"type": "object",
+						"example": "{\n  \"type\": \"CNAME\",\n  \"name\": \"ssh.example.com\"\n}",
+						"properties": {
+							"type": {
+								"type": "string",
+								"example": "\"CNAME\"",
+								"description": "The type of DNS record associated with the application.",
+								"enum": [
+									"CNAME",
+									"ADDRESS"
+								]
+							},
+							"name": {
+								"type": "string",
+								"example": "\"ssh.example.com\"",
+								"description": "The name of the DNS record associated with the application.",
+								"format": "hostname"
+							}
+						},
+						"description": "The name and type of DNS record for the Spectrum application."
+					},
+					"origin_dns": {
+						"type": "object",
+						"example": "{\n  \"type\": \"\",\n  \"name\": \"origin.example.com\",\n  \"ttl\": 600\n}",
+						"properties": {
+							"type": {
+								"type": "string",
+								"example": "\"\"",
+								"description": "The type of DNS record associated with the origin. \"\" is used to specify a combination of A/AAAA records.",
+								"enum": [
+									"",
+									"A",
+									"AAAA",
+									"SRV"
+								]
+							},
+							"name": {
+								"type": "string",
+								"example": "\"origin.example.com\"",
+								"description": "The name of the DNS record associated with the origin.",
+								"format": "hostname"
+							},
+							"ttl": {
+								"type": "integer",
+								"example": "600",
+								"description": "The TTL of our resolution of your DNS record in seconds.",
+								"minimum": 600
+							}
+						},
+						"description": "The name and type of DNS record for the Spectrum application."
+					},
+					"origin_port": {
+						"type": [
+							"integer",
+							"string"
+						],
+						"example": "22",
+						"description": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, e.g. `1000`, or a string to specify a range of origin ports, e.g. `\"1000-2000\"`",
+						"minimum": 1,
+						"maximum": 65535,
+						"cfNotes": "If specifying a port range, the number of ports in the range must match the number of ports specified in the \"protocol\" field."
+					},
+					"proxy_protocol": {
+						"type": "string",
+						"example": "\"off\"",
+						"description": "Enables Proxy Protocol to the origin. See [the developer documentation](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.",
+						"default": "off",
+						"enum": [
+							"off",
+							"v1",
+							"v2",
+							"simple"
+						]
+					},
+					"ip_firewall": {
+						"type": "boolean",
+						"example": "true",
+						"cfNotes": "Only available for TCP applications.",
+						"description": "Enables IP Access Rules for this application."
+					},
+					"tls": {
+						"type": "string",
+						"example": "\"full\"",
+						"description": "The type of TLS termination associated with the application.",
+						"enum": [
+							"off",
+							"flexible",
+							"full",
+							"strict"
+						]
+					},
+					"edge_ips": {
+						"example": "{\n  \"type\": \"dynamic\",\n  \"connectivity\": \"all\"\n}",
+						"oneOf": [
+							{
+								"all_props": {
+									"type": {
+										"type": "string",
+										"example": "\"dynamic\"",
+										"description": "The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.",
+										"enum": [
+											"dynamic"
+										]
+									},
+									"connectivity": {
+										"type": "string",
+										"example": "\"all\"",
+										"description": "The IP versions supported for inbound connections on Spectrum anycast IPs.",
+										"enum": [
+											"all",
+											"ipv4",
+											"ipv6"
+										]
+									}
+								},
+								"required_props": [],
+								"optional_props": [
+									"type",
+									"connectivity"
+								],
+								"objects": [],
+								"example": "{\n  \"type\": \"dynamic\",\n  \"connectivity\": \"all\"\n}"
+							},
+							{
+								"all_props": {
+									"type": {
+										"type": "string",
+										"example": "\"static\"",
+										"description": "The type of edge IP configuration specified. Statically allocated edge IPs use customer IPs in accordance with the ips array you specify. Only valid with ADDRESS DNS names.",
+										"enum": [
+											"static"
+										]
+									},
+									"ips": {
+										"type": "array",
+										"example": "[\n  \"192.0.2.1\"\n]",
+										"description": "The array of customer owned IPs we broadcast via anycast for this hostname and application.",
+										"items": {
+											"description": "Edge anycast IPs",
+											"example": "192.0.2.1",
+											"type": "string"
+										}
+									}
+								},
+								"required_props": [],
+								"optional_props": [
+									"type",
+									"ips"
+								],
+								"objects": [],
+								"example": "{\n  \"type\": \"static\",\n  \"ips\": [\n    \"192.0.2.1\"\n  ]\n}"
+							}
+						],
+						"description": "The anycast edge IP configuration for the hostname of this application.",
+						"default": {
+							"type": "dynamic",
+							"connectivity": "all"
+						}
+					},
+					"traffic_type": {
+						"type": "string",
+						"example": "\"direct\"",
+						"description": "Determines how data travels from the edge to your origin. When set to \"direct\", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to \"http\" or \"https\", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.",
+						"default": "direct",
+						"enum": [
+							"direct",
+							"http",
+							"https"
+						]
+					},
+					"argo_smart_routing": {
+						"type": "boolean",
+						"example": "true",
+						"cfNotes": "Only available for TCP applications with traffic_type set to \"direct\".",
+						"description": "Enables Argo Smart Routing for this application.",
+						"default": false
+					}
+				},
+				"required_props": [
+					"protocol",
+					"dns",
+					"origin_dns",
+					"origin_port"
+				],
+				"optional_props": [
+					"proxy_protocol",
+					"ip_firewall",
+					"tls",
+					"edge_ips",
+					"traffic_type",
+					"argo_smart_routing"
+				],
+				"objects": [],
+				"example": "{\n  \"protocol\": \"tcp/22\",\n  \"dns\": {\n    \"type\": \"CNAME\",\n    \"name\": \"ssh.example.com\"\n  },\n  \"origin_dns\": {\n    \"type\": \"\",\n    \"name\": \"origin.example.com\",\n    \"ttl\": 600\n  },\n  \"origin_port\": 22,\n  \"proxy_protocol\": \"off\",\n  \"ip_firewall\": true,\n  \"tls\": \"full\",\n  \"edge_ips\": {\n    \"type\": \"dynamic\",\n    \"connectivity\": \"all\"\n  },\n  \"traffic_type\": \"direct\",\n  \"argo_smart_routing\": true\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"ea95132c15732412d22c1476fa83f27a\",\n    \"protocol\": \"tcp/22\",\n    \"dns\": {\n      \"type\": \"CNAME\",\n      \"name\": \"ssh.example.com\"\n    },\n    \"origin_dns\": {\n      \"type\": \"\",\n      \"name\": \"origin.example.com\",\n      \"ttl\": 600\n    },\n    \"origin_port\": 22,\n    \"proxy_protocol\": \"off\",\n    \"ip_firewall\": true,\n    \"tls\": \"full\",\n    \"edge_ips\": {\n      \"type\": \"dynamic\",\n      \"connectivity\": \"all\"\n    },\n    \"traffic_type\": \"direct\",\n    \"argo_smart_routing\": true,\n    \"created_on\": \"2014-01-02T02:20:00Z\",\n    \"modified_on\": \"2014-01-02T02:20:00Z\"\n  }\n}"
+		},
+		{
+			"title": "Delete Spectrum Application",
+			"description": "Delete a previously existing application.",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone}/spectrum/apps/{#/definitions/app_id}",
+			"method": "DELETE",
+			"cfOwnership": "spectrum",
+			"html_id": "spectrum-applications-delete-spectrum-application",
+			"uri": "zones/:zone/spectrum/apps/:app_id",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/spectrum/apps/ea95132c15732412d22c1476fa83f27a\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"ea95132c15732412d22c1476fa83f27a\"\n  }\n}"
+		}
+	],
+	"cfLinkErrors": {
+		"1402": "DNS Validation Error",
+		"10000": "Unknown Error",
+		"10001": "Unexpected Content Type",
+		"10002": "Internal Server Error",
+		"10003": "Missing Required URL Param",
+		"10004": "Malformed URL Param",
+		"10005": "JSON Parsing Error",
+		"10006": "Resource Not Found",
+		"10007": "Forbidden",
+		"11000": "Invalid Origin Configuration",
+		"11002": "Invalid Origin Address",
+		"11003": "Invalid Edge Port",
+		"11004": "Invalid DNS Configuration",
+		"11005": "Proxy Protocol v1 Not Supported for non TCP Applications",
+		"11006": "TLS Termination Not Supported for non TCP Applications",
+		"11007": "Origin/Edge Transport Mismatch",
+		"11008": "UDP Not Enabled",
+		"12000": "No Address Available",
+		"13000": "Protocol Not Found",
+		"13002": "Protocol Not Available",
+		"14002": "Port Conflict",
+		"81053": "DNS Record Exists Error"
+	},
+	"html_id": "spectrum-applications",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {},
+		"required_props": [],
+		"optional_props": [],
+		"objects": [
+			{
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"ea95132c15732412d22c1476fa83f27a\"",
+						"description": "Application identifier.",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"protocol": {
+						"type": "string",
+						"example": "\"tcp/22\"",
+						"description": "Port configuration at Cloudflare’s edge. May specify a single port, e.g. `\"tcp/1000\"`, or a range of ports, e.g. `\"tcp/1000-2000\"`."
+					},
+					"dns": {
+						"type": "object",
+						"example": "{\n  \"type\": \"CNAME\",\n  \"name\": \"ssh.example.com\"\n}",
+						"properties": {
+							"type": {
+								"type": "string",
+								"example": "\"CNAME\"",
+								"description": "The type of DNS record associated with the application.",
+								"enum": [
+									"CNAME",
+									"ADDRESS"
+								]
+							},
+							"name": {
+								"type": "string",
+								"example": "\"ssh.example.com\"",
+								"description": "The name of the DNS record associated with the application.",
+								"format": "hostname"
+							}
+						},
+						"description": "The name and type of DNS record for the Spectrum application."
+					},
+					"origin_direct": {
+						"type": "array",
+						"example": "[\n  \"tcp://192.0.2.1:22\"\n]",
+						"description": "A list of destination addresses to the origin.",
+						"items": {
+							"description": "Destination origin URI. May specify a single origin port, e.g. `\"tcp://192.0.2.1:1000\"`, or a range of origin ports, e.g. `\"tcp://192.0.2.1:1000-2000\"`.",
+							"example": "tcp://192.0.2.1:22",
+							"type": "string",
+							"cfNotes": "If specifying a port range, the number of ports in the range must match the number of ports specified in the \"protocol\" field."
+						}
+					},
+					"proxy_protocol": {
+						"type": "string",
+						"example": "\"off\"",
+						"description": "Enables Proxy Protocol to the origin. See [the developer documentation](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.",
+						"default": "off",
+						"enum": [
+							"off",
+							"v1",
+							"v2",
+							"simple"
+						]
+					},
+					"ip_firewall": {
+						"type": "boolean",
+						"example": "true",
+						"cfNotes": "Only available for TCP applications.",
+						"description": "Enables IP Access Rules for this application."
+					},
+					"tls": {
+						"type": "string",
+						"example": "\"full\"",
+						"description": "The type of TLS termination associated with the application.",
+						"enum": [
+							"off",
+							"flexible",
+							"full",
+							"strict"
+						]
+					},
+					"edge_ips": {
+						"example": "{\n  \"type\": \"dynamic\",\n  \"connectivity\": \"all\"\n}",
+						"oneOf": [
+							{
+								"all_props": {
+									"type": {
+										"type": "string",
+										"example": "\"dynamic\"",
+										"description": "The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.",
+										"enum": [
+											"dynamic"
+										]
+									},
+									"connectivity": {
+										"type": "string",
+										"example": "\"all\"",
+										"description": "The IP versions supported for inbound connections on Spectrum anycast IPs.",
+										"enum": [
+											"all",
+											"ipv4",
+											"ipv6"
+										]
+									}
+								},
+								"required_props": [],
+								"optional_props": [
+									"type",
+									"connectivity"
+								],
+								"objects": [],
+								"example": "{\n  \"type\": \"dynamic\",\n  \"connectivity\": \"all\"\n}"
+							},
+							{
+								"all_props": {
+									"type": {
+										"type": "string",
+										"example": "\"static\"",
+										"description": "The type of edge IP configuration specified. Statically allocated edge IPs use customer IPs in accordance with the ips array you specify. Only valid with ADDRESS DNS names.",
+										"enum": [
+											"static"
+										]
+									},
+									"ips": {
+										"type": "array",
+										"example": "[\n  \"192.0.2.1\"\n]",
+										"description": "The array of customer owned IPs we broadcast via anycast for this hostname and application.",
+										"items": {
+											"description": "Edge anycast IPs",
+											"example": "192.0.2.1",
+											"type": "string"
+										}
+									}
+								},
+								"required_props": [],
+								"optional_props": [
+									"type",
+									"ips"
+								],
+								"objects": [],
+								"example": "{\n  \"type\": \"static\",\n  \"ips\": [\n    \"192.0.2.1\"\n  ]\n}"
+							}
+						],
+						"description": "The anycast edge IP configuration for the hostname of this application.",
+						"default": {
+							"type": "dynamic",
+							"connectivity": "all"
+						}
+					},
+					"traffic_type": {
+						"type": "string",
+						"example": "\"direct\"",
+						"description": "Determines how data travels from the edge to your origin. When set to \"direct\", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to \"http\" or \"https\", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.",
+						"default": "direct",
+						"enum": [
+							"direct",
+							"http",
+							"https"
+						]
+					},
+					"argo_smart_routing": {
+						"type": "boolean",
+						"example": "true",
+						"cfNotes": "Only available for TCP applications with traffic_type set to \"direct\".",
+						"description": "Enables Argo Smart Routing for this application.",
+						"default": false
+					},
+					"created_on": {
+						"type": "string",
+						"example": "\"2014-01-02T02:20:00Z\"",
+						"description": "When the Application was created.",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"modified_on": {
+						"type": "string",
+						"example": "\"2014-01-02T02:20:00Z\"",
+						"description": "When the Application was last modified.",
+						"format": "date-time",
+						"readOnly": true
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"id",
+					"protocol",
+					"dns",
+					"origin_direct",
+					"proxy_protocol",
+					"ip_firewall",
+					"tls",
+					"edge_ips",
+					"traffic_type",
+					"argo_smart_routing",
+					"created_on",
+					"modified_on"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"ea95132c15732412d22c1476fa83f27a\",\n  \"protocol\": \"tcp/22\",\n  \"dns\": {\n    \"type\": \"CNAME\",\n    \"name\": \"ssh.example.com\"\n  },\n  \"origin_direct\": [\n    \"tcp://192.0.2.1:22\"\n  ],\n  \"proxy_protocol\": \"off\",\n  \"ip_firewall\": true,\n  \"tls\": \"full\",\n  \"edge_ips\": {\n    \"type\": \"dynamic\",\n    \"connectivity\": \"all\"\n  },\n  \"traffic_type\": \"direct\",\n  \"argo_smart_routing\": true,\n  \"created_on\": \"2014-01-02T02:20:00Z\",\n  \"modified_on\": \"2014-01-02T02:20:00Z\"\n}"
+			},
+			{
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"ea95132c15732412d22c1476fa83f27a\"",
+						"description": "Application identifier.",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"protocol": {
+						"type": "string",
+						"example": "\"tcp/22\"",
+						"description": "Port configuration at Cloudflare’s edge. May specify a single port, e.g. `\"tcp/1000\"`, or a range of ports, e.g. `\"tcp/1000-2000\"`."
+					},
+					"dns": {
+						"type": "object",
+						"example": "{\n  \"type\": \"CNAME\",\n  \"name\": \"ssh.example.com\"\n}",
+						"properties": {
+							"type": {
+								"type": "string",
+								"example": "\"CNAME\"",
+								"description": "The type of DNS record associated with the application.",
+								"enum": [
+									"CNAME",
+									"ADDRESS"
+								]
+							},
+							"name": {
+								"type": "string",
+								"example": "\"ssh.example.com\"",
+								"description": "The name of the DNS record associated with the application.",
+								"format": "hostname"
+							}
+						},
+						"description": "The name and type of DNS record for the Spectrum application."
+					},
+					"origin_dns": {
+						"type": "object",
+						"example": "{\n  \"type\": \"\",\n  \"name\": \"origin.example.com\",\n  \"ttl\": 600\n}",
+						"properties": {
+							"type": {
+								"type": "string",
+								"example": "\"\"",
+								"description": "The type of DNS record associated with the origin. \"\" is used to specify a combination of A/AAAA records.",
+								"enum": [
+									"",
+									"A",
+									"AAAA",
+									"SRV"
+								]
+							},
+							"name": {
+								"type": "string",
+								"example": "\"origin.example.com\"",
+								"description": "The name of the DNS record associated with the origin.",
+								"format": "hostname"
+							},
+							"ttl": {
+								"type": "integer",
+								"example": "600",
+								"description": "The TTL of our resolution of your DNS record in seconds.",
+								"minimum": 600
+							}
+						},
+						"description": "The name and type of DNS record for the Spectrum application."
+					},
+					"origin_port": {
+						"type": [
+							"integer",
+							"string"
+						],
+						"example": "22",
+						"description": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, e.g. `1000`, or a string to specify a range of origin ports, e.g. `\"1000-2000\"`",
+						"minimum": 1,
+						"maximum": 65535,
+						"cfNotes": "If specifying a port range, the number of ports in the range must match the number of ports specified in the \"protocol\" field."
+					},
+					"proxy_protocol": {
+						"type": "string",
+						"example": "\"off\"",
+						"description": "Enables Proxy Protocol to the origin. See [the developer documentation](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.",
+						"default": "off",
+						"enum": [
+							"off",
+							"v1",
+							"v2",
+							"simple"
+						]
+					},
+					"ip_firewall": {
+						"type": "boolean",
+						"example": "true",
+						"cfNotes": "Only available for TCP applications.",
+						"description": "Enables IP Access Rules for this application."
+					},
+					"tls": {
+						"type": "string",
+						"example": "\"full\"",
+						"description": "The type of TLS termination associated with the application.",
+						"enum": [
+							"off",
+							"flexible",
+							"full",
+							"strict"
+						]
+					},
+					"edge_ips": {
+						"example": "{\n  \"type\": \"dynamic\",\n  \"connectivity\": \"all\"\n}",
+						"oneOf": [
+							{
+								"all_props": {
+									"type": {
+										"type": "string",
+										"example": "\"dynamic\"",
+										"description": "The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.",
+										"enum": [
+											"dynamic"
+										]
+									},
+									"connectivity": {
+										"type": "string",
+										"example": "\"all\"",
+										"description": "The IP versions supported for inbound connections on Spectrum anycast IPs.",
+										"enum": [
+											"all",
+											"ipv4",
+											"ipv6"
+										]
+									}
+								},
+								"required_props": [],
+								"optional_props": [
+									"type",
+									"connectivity"
+								],
+								"objects": [],
+								"example": "{\n  \"type\": \"dynamic\",\n  \"connectivity\": \"all\"\n}"
+							},
+							{
+								"all_props": {
+									"type": {
+										"type": "string",
+										"example": "\"static\"",
+										"description": "The type of edge IP configuration specified. Statically allocated edge IPs use customer IPs in accordance with the ips array you specify. Only valid with ADDRESS DNS names.",
+										"enum": [
+											"static"
+										]
+									},
+									"ips": {
+										"type": "array",
+										"example": "[\n  \"192.0.2.1\"\n]",
+										"description": "The array of customer owned IPs we broadcast via anycast for this hostname and application.",
+										"items": {
+											"description": "Edge anycast IPs",
+											"example": "192.0.2.1",
+											"type": "string"
+										}
+									}
+								},
+								"required_props": [],
+								"optional_props": [
+									"type",
+									"ips"
+								],
+								"objects": [],
+								"example": "{\n  \"type\": \"static\",\n  \"ips\": [\n    \"192.0.2.1\"\n  ]\n}"
+							}
+						],
+						"description": "The anycast edge IP configuration for the hostname of this application.",
+						"default": {
+							"type": "dynamic",
+							"connectivity": "all"
+						}
+					},
+					"traffic_type": {
+						"type": "string",
+						"example": "\"direct\"",
+						"description": "Determines how data travels from the edge to your origin. When set to \"direct\", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to \"http\" or \"https\", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.",
+						"default": "direct",
+						"enum": [
+							"direct",
+							"http",
+							"https"
+						]
+					},
+					"argo_smart_routing": {
+						"type": "boolean",
+						"example": "true",
+						"cfNotes": "Only available for TCP applications with traffic_type set to \"direct\".",
+						"description": "Enables Argo Smart Routing for this application.",
+						"default": false
+					},
+					"created_on": {
+						"type": "string",
+						"example": "\"2014-01-02T02:20:00Z\"",
+						"description": "When the Application was created.",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"modified_on": {
+						"type": "string",
+						"example": "\"2014-01-02T02:20:00Z\"",
+						"description": "When the Application was last modified.",
+						"format": "date-time",
+						"readOnly": true
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"id",
+					"protocol",
+					"dns",
+					"origin_dns",
+					"origin_port",
+					"proxy_protocol",
+					"ip_firewall",
+					"tls",
+					"edge_ips",
+					"traffic_type",
+					"argo_smart_routing",
+					"created_on",
+					"modified_on"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"ea95132c15732412d22c1476fa83f27a\",\n  \"protocol\": \"tcp/22\",\n  \"dns\": {\n    \"type\": \"CNAME\",\n    \"name\": \"ssh.example.com\"\n  },\n  \"origin_dns\": {\n    \"type\": \"\",\n    \"name\": \"origin.example.com\",\n    \"ttl\": 600\n  },\n  \"origin_port\": 22,\n  \"proxy_protocol\": \"off\",\n  \"ip_firewall\": true,\n  \"tls\": \"full\",\n  \"edge_ips\": {\n    \"type\": \"dynamic\",\n    \"connectivity\": \"all\"\n  },\n  \"traffic_type\": \"direct\",\n  \"argo_smart_routing\": true,\n  \"created_on\": \"2014-01-02T02:20:00Z\",\n  \"modified_on\": \"2014-01-02T02:20:00Z\"\n}"
+			}
+		],
+		"example": "{\n  \"id\": \"ea95132c15732412d22c1476fa83f27a\",\n  \"protocol\": \"tcp/22\",\n  \"dns\": {\n    \"type\": \"CNAME\",\n    \"name\": \"ssh.example.com\"\n  },\n  \"origin_direct\": [\n    \"tcp://192.0.2.1:22\"\n  ],\n  \"proxy_protocol\": \"off\",\n  \"ip_firewall\": true,\n  \"tls\": \"full\",\n  \"edge_ips\": {\n    \"type\": \"dynamic\",\n    \"connectivity\": \"all\"\n  },\n  \"traffic_type\": \"direct\",\n  \"argo_smart_routing\": true,\n  \"created_on\": \"2014-01-02T02:20:00Z\",\n  \"modified_on\": \"2014-01-02T02:20:00Z\"\n}",
+		"which_of": "oneOf",
+		"title": "Spectrum Applications",
+		"description": "You can extend the power of Cloudflare's DDoS, TLS, and IP Firewall to your other TCP-based services."
+	}
+}

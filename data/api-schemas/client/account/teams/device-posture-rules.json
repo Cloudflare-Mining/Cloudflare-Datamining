@@ -1,0 +1,338 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/teams/device-posture-rules.json",
+	"title": "Device Posture Rules",
+	"description": "Device posture rules configure security policies for device posture checks.",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Device Posture Rules",
+			"description": "List Device Posture Rules for an account",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/devices/posture",
+			"method": "GET",
+			"cfOwnership": "teams",
+			"html_id": "device-posture-rules-list-device-posture-rules",
+			"uri": "accounts/:identifier/devices/posture",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/posture\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"type\": \"file\",\n      \"name\": \"Admin Serial Numbers\",\n      \"description\": \"The rule for admin serial numbers\",\n      \"schedule\": \"1h\",\n      \"match\": [\n        {\n          \"platform\": \"windows\"\n        }\n      ],\n      \"input\": {\n        \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"\n      },\n      \"expiration\": \"1h\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Device Posture Rules Details",
+			"description": "Fetch a single Device Posture Rule",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/devices/posture/{#/definitions/uuid}",
+			"method": "GET",
+			"cfOwnership": "teams",
+			"html_id": "device-posture-rules-device-posture-rules-details",
+			"uri": "accounts/:identifier/devices/posture/:uuid",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/posture/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"type\": \"file\",\n    \"name\": \"Admin Serial Numbers\",\n    \"description\": \"The rule for admin serial numbers\",\n    \"schedule\": \"1h\",\n    \"match\": [\n      {\n        \"platform\": \"windows\"\n      }\n    ],\n    \"input\": {\n      \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"\n    },\n    \"expiration\": \"1h\"\n  }\n}"
+		},
+		{
+			"title": "Create Device Posture Rule",
+			"description": "Create a new Device Posture Rule",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/devices/posture",
+			"method": "POST",
+			"cfOwnership": "teams",
+			"html_id": "device-posture-rules-create-device-posture-rule",
+			"uri": "accounts/:identifier/devices/posture",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/posture\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"file\",\"name\":\"Admin Serial Numbers\",\"description\":\"The rule for admin serial numbers\",\"schedule\":\"1h\",\"match\":[{\"platform\":\"windows\"}],\"input\":{\"id\":\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"},\"expiration\":\"1h\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"type": {
+						"type": "string",
+						"example": "\"file\"",
+						"description": "The type of Device Posture Rule.",
+						"enum": [
+							"file",
+							"application",
+							"serial_number",
+							"tanium",
+							"gateway",
+							"warp"
+						]
+					},
+					"name": {
+						"type": "string",
+						"example": "\"Admin Serial Numbers\"",
+						"description": "The name of the Device Posture Rule."
+					},
+					"description": {
+						"type": "string",
+						"example": "\"The rule for admin serial numbers\"",
+						"description": "The description of the Device Posture Rule"
+					},
+					"schedule": {
+						"type": "string",
+						"example": "\"1h\"",
+						"description": "Tells the client when to run the device posture check."
+					},
+					"match": {
+						"type": "array",
+						"example": "[\n  {\n    \"platform\": \"windows\"\n  }\n]",
+						"description": "The conditions that the client must match to run the rule.",
+						"items": {
+							"type": "object",
+							"properties": {
+								"platform": {
+									"type": "string",
+									"enum": [
+										"windows",
+										"mac",
+										"linux",
+										"android",
+										"ios"
+									],
+									"example": "windows"
+								}
+							}
+						}
+					},
+					"input": {
+						"type": "object",
+						"example": "{\n  \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"\n}",
+						"properties": {
+							"id": {
+								"type": "string",
+								"example": "\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"",
+								"maxLength": 36,
+								"description": "API uuid tag"
+							}
+						},
+						"description": "The value to be checked against."
+					},
+					"expiration": {
+						"type": "string",
+						"example": "\"1h\"",
+						"description": "Expire posture results after the specified amount of time."
+					}
+				},
+				"required_props": [
+					"name",
+					"type"
+				],
+				"optional_props": [
+					"description",
+					"schedule",
+					"match",
+					"input",
+					"expiration"
+				],
+				"objects": [],
+				"example": "{\n  \"type\": \"file\",\n  \"name\": \"Admin Serial Numbers\",\n  \"description\": \"The rule for admin serial numbers\",\n  \"schedule\": \"1h\",\n  \"match\": [\n    {\n      \"platform\": \"windows\"\n    }\n  ],\n  \"input\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"\n  },\n  \"expiration\": \"1h\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"type\": \"file\",\n    \"name\": \"Admin Serial Numbers\",\n    \"description\": \"The rule for admin serial numbers\",\n    \"schedule\": \"1h\",\n    \"match\": [\n      {\n        \"platform\": \"windows\"\n      }\n    ],\n    \"input\": {\n      \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"\n    },\n    \"expiration\": \"1h\"\n  }\n}"
+		},
+		{
+			"title": "Update Device Posture Rule",
+			"description": "Update a Device Posture Rule",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/devices/posture/{#/definitions/uuid}",
+			"method": "PUT",
+			"cfOwnership": "teams",
+			"html_id": "device-posture-rules-update-device-posture-rule",
+			"uri": "accounts/:identifier/devices/posture/:uuid",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/posture/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"file\",\"name\":\"Admin Serial Numbers\",\"description\":\"The rule for admin serial numbers\",\"schedule\":\"1h\",\"match\":[{\"platform\":\"windows\"}],\"input\":{\"id\":\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"},\"expiration\":\"1h\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"type": {
+						"type": "string",
+						"example": "\"file\"",
+						"description": "The type of Device Posture Rule.",
+						"enum": [
+							"file",
+							"application",
+							"serial_number",
+							"tanium",
+							"gateway",
+							"warp"
+						]
+					},
+					"name": {
+						"type": "string",
+						"example": "\"Admin Serial Numbers\"",
+						"description": "The name of the Device Posture Rule."
+					},
+					"description": {
+						"type": "string",
+						"example": "\"The rule for admin serial numbers\"",
+						"description": "The description of the Device Posture Rule"
+					},
+					"schedule": {
+						"type": "string",
+						"example": "\"1h\"",
+						"description": "Tells the client when to run the device posture check."
+					},
+					"match": {
+						"type": "array",
+						"example": "[\n  {\n    \"platform\": \"windows\"\n  }\n]",
+						"description": "The conditions that the client must match to run the rule.",
+						"items": {
+							"type": "object",
+							"properties": {
+								"platform": {
+									"type": "string",
+									"enum": [
+										"windows",
+										"mac",
+										"linux",
+										"android",
+										"ios"
+									],
+									"example": "windows"
+								}
+							}
+						}
+					},
+					"input": {
+						"type": "object",
+						"example": "{\n  \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"\n}",
+						"properties": {
+							"id": {
+								"type": "string",
+								"example": "\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"",
+								"maxLength": 36,
+								"description": "API uuid tag"
+							}
+						},
+						"description": "The value to be checked against."
+					},
+					"expiration": {
+						"type": "string",
+						"example": "\"1h\"",
+						"description": "Expire posture results after the specified amount of time."
+					}
+				},
+				"required_props": [
+					"name",
+					"type"
+				],
+				"optional_props": [
+					"description",
+					"schedule",
+					"match",
+					"input",
+					"expiration"
+				],
+				"objects": [],
+				"example": "{\n  \"type\": \"file\",\n  \"name\": \"Admin Serial Numbers\",\n  \"description\": \"The rule for admin serial numbers\",\n  \"schedule\": \"1h\",\n  \"match\": [\n    {\n      \"platform\": \"windows\"\n    }\n  ],\n  \"input\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"\n  },\n  \"expiration\": \"1h\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"type\": \"file\",\n    \"name\": \"Admin Serial Numbers\",\n    \"description\": \"The rule for admin serial numbers\",\n    \"schedule\": \"1h\",\n    \"match\": [\n      {\n        \"platform\": \"windows\"\n      }\n    ],\n    \"input\": {\n      \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"\n    },\n    \"expiration\": \"1h\"\n  }\n}"
+		},
+		{
+			"title": "Delete Device Posture Rule",
+			"description": "Delete a Device Posture Rule",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/devices/posture/{#/definitions/uuid}",
+			"method": "DELETE",
+			"cfOwnership": "teams",
+			"html_id": "device-posture-rules-delete-device-posture-rule",
+			"uri": "accounts/:identifier/devices/posture/:uuid",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/posture/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"\n  }\n}"
+		}
+	],
+	"html_id": "device-posture-rules",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"",
+				"maxLength": 36,
+				"description": "API uuid tag"
+			},
+			"type": {
+				"type": "string",
+				"example": "\"file\"",
+				"description": "The type of Device Posture Rule.",
+				"enum": [
+					"file",
+					"application",
+					"serial_number",
+					"tanium",
+					"gateway",
+					"warp"
+				]
+			},
+			"name": {
+				"type": "string",
+				"example": "\"Admin Serial Numbers\"",
+				"description": "The name of the Device Posture Rule."
+			},
+			"description": {
+				"type": "string",
+				"example": "\"The rule for admin serial numbers\"",
+				"description": "The description of the Device Posture Rule"
+			},
+			"schedule": {
+				"type": "string",
+				"example": "\"1h\"",
+				"description": "Tells the client when to run the device posture check."
+			},
+			"match": {
+				"type": "array",
+				"example": "[\n  {\n    \"platform\": \"windows\"\n  }\n]",
+				"description": "The conditions that the client must match to run the rule.",
+				"items": {
+					"type": "object",
+					"properties": {
+						"platform": {
+							"type": "string",
+							"enum": [
+								"windows",
+								"mac",
+								"linux",
+								"android",
+								"ios"
+							],
+							"example": "windows"
+						}
+					}
+				}
+			},
+			"input": {
+				"type": "object",
+				"example": "{\n  \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"\n}",
+				"properties": {
+					"id": {
+						"type": "string",
+						"example": "\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"",
+						"maxLength": 36,
+						"description": "API uuid tag"
+					}
+				},
+				"description": "The value to be checked against."
+			},
+			"expiration": {
+				"type": "string",
+				"example": "\"1h\"",
+				"description": "Expire posture results after the specified amount of time."
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"type",
+			"name",
+			"description",
+			"schedule",
+			"match",
+			"input",
+			"expiration"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n  \"type\": \"file\",\n  \"name\": \"Admin Serial Numbers\",\n  \"description\": \"The rule for admin serial numbers\",\n  \"schedule\": \"1h\",\n  \"match\": [\n    {\n      \"platform\": \"windows\"\n    }\n  ],\n  \"input\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"\n  },\n  \"expiration\": \"1h\"\n}",
+		"title": "Device Posture Rules",
+		"description": "Device posture rules configure security policies for device posture checks."
+	}
+}

@@ -1,0 +1,97 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/access/keys.json",
+	"title": "Access Keys Configuration",
+	"description": "Access Keys Configuration defines the rotation policy for the keys that access will use to sign data.",
+	"type": "object",
+	"links": [
+		{
+			"title": "Get Access Keys Configuration",
+			"description": "Get the Keys Configuration for an account",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/access/keys",
+			"method": "GET",
+			"cfOwnership": "access",
+			"html_id": "access-keys-configuration-get-access-keys-configuration",
+			"uri": "accounts/:identifier/access/keys",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/access/keys\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"key_rotation_interval_days\": 30,\n  \"last_key_rotation_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"days_until_next_rotation\": 1\n}"
+		},
+		{
+			"title": "Update Access Keys Configuration",
+			"description": "Update the Keys Configuration for an account",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/access/keys",
+			"method": "PUT",
+			"cfOwnership": "access",
+			"html_id": "access-keys-configuration-update-access-keys-configuration",
+			"uri": "accounts/:identifier/access/keys",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/access/keys\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"key_rotation_interval_days\":30}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"key_rotation_interval_days": {
+						"type": "number",
+						"example": "30",
+						"minimum": 21,
+						"maximum": 365
+					}
+				},
+				"required_props": [
+					"key_rotation_interval_days"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"key_rotation_interval_days\": 30\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"key_rotation_interval_days\": 30,\n  \"last_key_rotation_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"days_until_next_rotation\": 1\n}"
+		},
+		{
+			"title": "Rotate Access Keys",
+			"description": "Perfoms a key rotation for an account",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/access/keys/rotate",
+			"method": "POST",
+			"cfOwnership": "access",
+			"html_id": "access-keys-configuration-rotate-access-keys",
+			"uri": "accounts/:identifier/access/keys/rotate",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/access/keys/rotate\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"key_rotation_interval_days\": 30,\n  \"last_key_rotation_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"days_until_next_rotation\": 1\n}"
+		}
+	],
+	"html_id": "access-keys-configuration",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"key_rotation_interval_days": {
+				"type": "number",
+				"example": "30",
+				"minimum": 21,
+				"maximum": 365
+			},
+			"last_key_rotation_at": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"format": "date-time"
+			},
+			"days_until_next_rotation": {
+				"type": "number",
+				"example": "1",
+				"readOnly": true
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"key_rotation_interval_days",
+			"last_key_rotation_at",
+			"days_until_next_rotation"
+		],
+		"objects": [],
+		"example": "{\n  \"key_rotation_interval_days\": 30,\n  \"last_key_rotation_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"days_until_next_rotation\": 1\n}",
+		"title": "Access Keys Configuration",
+		"description": "Access Keys Configuration defines the rotation policy for the keys that access will use to sign data."
+	}
+}

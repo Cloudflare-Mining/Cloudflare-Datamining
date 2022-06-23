@@ -1,0 +1,265 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/spectrum/analytics-summary.json",
+	"title": "Spectrum Analytics (Summary)",
+	"description": "Summarized analytics data for Spectrum applications.",
+	"type": "object",
+	"links": [
+		{
+			"title": "Get Analytics Summary",
+			"description": "Retrieves a list of summarised aggregate metrics over a given time period.",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone}/spectrum/analytics/events/summary",
+			"method": "GET",
+			"cfOwnership": "spectrum",
+			"html_id": "spectrum-analytics-summary--get-analytics-summary",
+			"uri": "zones/:zone/spectrum/analytics/events/summary",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/spectrum/analytics/events/summary?metrics=count,bytesIngress&dimensions=event,appID&filters=event==disconnect%20AND%20coloName!=SFO&sort=+count,-bytesIngress&since=2014-01-02T02:20:00Z&until=2014-01-02T03:20:00Z\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"metrics": {
+						"type": "array",
+						"example": "[\n  \"count\",\n  \"bytesIngress\"\n]",
+						"description": "One or more metrics to compute. Options are: \n\nMetric                    | Name                                | Example                  | Unit\n--------------------------|-------------------------------------|--------------------------|--------------------------\ncount                     | Count of total events               | 1000                     | Count\nbytesIngress              | Sum of ingress bytes                | 1000                     | Sum\nbytesEgress               | Sum of egress bytes                 | 1000                     | Sum\ndurationAvg               | Average connection duration         | 1.0                      | Time in milliseconds\ndurationMedian            | Median connection duration          | 1.0                      | Time in milliseconds\nduration90th              | 90th percentile connection duration | 1.0                      | Time in milliseconds\nduration99th              | 99th percentile connection duration | 1.0                      | Time in milliseconds",
+						"items": {
+							"type": "string",
+							"enum": [
+								"count",
+								"bytesIngress",
+								"bytesEgress",
+								"durationAvg",
+								"durationMedian",
+								"duration90th",
+								"duration99th"
+							]
+						}
+					},
+					"dimensions": {
+						"type": "array",
+						"example": "[\n  \"event\",\n  \"appID\"\n]",
+						"description": "Can be used to break down the data by given attributes. Options are: \n\nDimension                 | Name                            | Example\n--------------------------|---------------------------------|--------------------------\nevent                     | Connection Event                | connect, progress, disconnect, originError, clientFiltered\nappID                     | Application ID                  | 40d67c87c6cd4b889a4fd57805225e85\ncoloName                  | Colo Name                       | SFO\nipVersion                 | IP version used by the client   | 4, 6",
+						"items": {
+							"type": "string",
+							"enum": [
+								"event",
+								"appID",
+								"coloName",
+								"ipVersion"
+							]
+						}
+					},
+					"filters": {
+						"type": "string",
+						"example": "\"event==disconnect%20AND%20coloName!=SFO\"",
+						"description": "Used to filter rows by one or more dimensions. Filters can be combined using OR and AND boolean logic. AND takes precedence over OR in all the expressions. The OR operator is defined using a comma (,) or OR keyword surrounded by whitespace. The AND operator is defined using a semicolon (;) or AND keyword surrounded by whitespace. Note that the semicolon is a reserved character in URLs (rfc1738) and needs to be percent-encoded as %3B. Comparison options are: \n\nOperator                  | Name                            | URL Encoded\n--------------------------|---------------------------------|--------------------------\n==                        | Equals                          | %3D%3D\n!=                        | Does not equals                 | !%3D\n>                        | Greater Than                    | %3E\n<                         | Less Than                       | %3C\n>=                       | Greater than or equal to        | %3E%3D\n<=                        | Less than or equal to           | %3C%3D     "
+					},
+					"sort": {
+						"type": "array",
+						"example": "[\n  \"+count\",\n  \"-bytesIngress\"\n]",
+						"description": "The sort order for the result set; sort fields must be included in `metrics` or `dimensions`."
+					},
+					"since": {
+						"type": "string",
+						"example": "\"2014-01-02T02:20:00Z\"",
+						"description": "Start of time interval to query, defaults to `until` - 6 hours. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified.",
+						"format": "date-time"
+					},
+					"until": {
+						"type": "string",
+						"example": "\"2014-01-02T03:20:00Z\"",
+						"description": "End of time interval to query, defaults to current time. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified.",
+						"format": "date-time"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"metrics",
+					"dimensions",
+					"filters",
+					"sort",
+					"since",
+					"until"
+				],
+				"objects": [],
+				"example": "{\n  \"metrics\": [\n    \"count\",\n    \"bytesIngress\"\n  ],\n  \"dimensions\": [\n    \"event\",\n    \"appID\"\n  ],\n  \"filters\": \"event==disconnect%20AND%20coloName!=SFO\",\n  \"sort\": [\n    \"+count\",\n    \"-bytesIngress\"\n  ],\n  \"since\": \"2014-01-02T02:20:00Z\",\n  \"until\": \"2014-01-02T03:20:00Z\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
+		}
+	],
+	"html_id": "spectrum-analytics-summary-",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"rows": {
+				"type": "number",
+				"example": "2",
+				"description": "Total number of rows in the result",
+				"minimum": 0
+			},
+			"data": {
+				"type": [
+					"array",
+					"null"
+				],
+				"example": "[\n  {\n    \"dimensions\": [\n      \"connect\",\n      \"42aea0b453934875a216920f1ec8f074\"\n    ],\n    \"metrics\": [\n      2,\n      1\n    ]\n  },\n  {\n    \"dimensions\": [\n      \"disconnect\",\n      \"42aea0b453934875a216920f1ec8f074\"\n    ],\n    \"metrics\": [\n      2,\n      2\n    ]\n  }\n]",
+				"items": {
+					"type": "object",
+					"required": [
+						"metrics"
+					],
+					"properties": {
+						"metrics": {
+							"type": "array",
+							"description": "List of metrics returned by the query.",
+							"example": [
+								[
+									4,
+									3
+								]
+							]
+						},
+						"dimensions": {
+							"type": "array",
+							"description": "List of dimensions the results are grouped by.",
+							"example": [
+								"event",
+								"appID"
+							]
+						}
+					}
+				}
+			},
+			"totals": {
+				"type": "object",
+				"example": "{\n  \"count\": 4,\n  \"bytesIngress\": 3\n}",
+				"description": "Total results for metrics across all data.",
+				"patternProperties": {
+					".*": {
+						"type": "number"
+					}
+				}
+			},
+			"min": {
+				"type": "object",
+				"example": "{\n  \"count\": 2,\n  \"bytesIngress\": 1\n}",
+				"description": "Minimum results for each metric.",
+				"patternProperties": {
+					".*": {
+						"type": "number"
+					}
+				}
+			},
+			"max": {
+				"type": "object",
+				"example": "{\n  \"count\": 2,\n  \"bytesIngress\": 2\n}",
+				"description": "Maximum results for each metric.",
+				"patternProperties": {
+					".*": {
+						"type": "number"
+					}
+				}
+			},
+			"data_lag": {
+				"type": "number",
+				"example": "60",
+				"description": "Number of seconds between current time and last processed event, i.e. how many seconds of data could be missing.",
+				"minimum": 0
+			},
+			"query": {
+				"type": "object",
+				"example": "{\n  \"metrics\": [\n    \"count\",\n    \"bytesIngress\"\n  ],\n  \"dimensions\": [\n    \"event\",\n    \"appID\"\n  ],\n  \"filters\": \"event==disconnect%20AND%20coloName!=SFO\",\n  \"sort\": [\n    {\n      \"Id\": \"count\",\n      \"Desc\": false\n    },\n    {\n      \"Id\": \"bytesIngress\",\n      \"Desc\": true\n    }\n  ],\n  \"since\": \"2014-01-02T02:20:00Z\",\n  \"until\": \"2014-01-02T03:20:00Z\",\n  \"limit\": 10000\n}",
+				"properties": {
+					"metrics": {
+						"type": "array",
+						"example": "[\n  \"count\",\n  \"bytesIngress\"\n]",
+						"description": "Metrics included in the query.",
+						"items": {
+							"type": "string",
+							"enum": [
+								"count",
+								"bytesIngress",
+								"bytesEgress",
+								"durationAvg",
+								"durationMedian",
+								"duration90th",
+								"duration99th"
+							]
+						}
+					},
+					"dimensions": {
+						"type": "array",
+						"example": "[\n  \"event\",\n  \"appID\"\n]",
+						"description": "Dimensions included in the query.",
+						"items": {
+							"type": "string",
+							"enum": [
+								"event",
+								"appID",
+								"coloName",
+								"ipVersion"
+							]
+						}
+					},
+					"filters": {
+						"type": "string",
+						"example": "\"event==disconnect%20AND%20coloName!=SFO\"",
+						"description": "Filter string included in the query."
+					},
+					"sort": {
+						"type": "array",
+						"example": "[\n  {\n    \"Id\": \"count\",\n    \"Desc\": false\n  },\n  {\n    \"Id\": \"bytesIngress\",\n    \"Desc\": true\n  }\n]",
+						"description": "The sort order for the result set.",
+						"items": {
+							"type": "object",
+							"properties": {
+								"Id": {
+									"type": "string",
+									"description": "Name of the sort parameter."
+								},
+								"Desc": {
+									"type": "boolean",
+									"description": "Flag indicating if the sort was ascending or descending."
+								}
+							}
+						}
+					},
+					"since": {
+						"type": "string",
+						"example": "\"2014-01-02T02:20:00Z\"",
+						"description": "Start of time interval to query, defaults to `until` - 6 hours. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified.",
+						"format": "date-time"
+					},
+					"until": {
+						"type": "string",
+						"example": "\"2014-01-02T03:20:00Z\"",
+						"description": "End of time interval to query, defaults to current time. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified.",
+						"format": "date-time"
+					},
+					"limit": {
+						"type": "integer",
+						"example": "10000",
+						"description": "Limit number of returned metrics, default is 10000"
+					}
+				}
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"rows",
+			"data",
+			"totals",
+			"min",
+			"max",
+			"data_lag",
+			"query"
+		],
+		"objects": [],
+		"example": "{\n  \"rows\": 2,\n  \"data\": [\n    {\n      \"dimensions\": [\n        \"connect\",\n        \"42aea0b453934875a216920f1ec8f074\"\n      ],\n      \"metrics\": [\n        2,\n        1\n      ]\n    },\n    {\n      \"dimensions\": [\n        \"disconnect\",\n        \"42aea0b453934875a216920f1ec8f074\"\n      ],\n      \"metrics\": [\n        2,\n        2\n      ]\n    }\n  ],\n  \"totals\": {\n    \"count\": 4,\n    \"bytesIngress\": 3\n  },\n  \"min\": {\n    \"count\": 2,\n    \"bytesIngress\": 1\n  },\n  \"max\": {\n    \"count\": 2,\n    \"bytesIngress\": 2\n  },\n  \"data_lag\": 60,\n  \"query\": {\n    \"metrics\": [\n      \"count\",\n      \"bytesIngress\"\n    ],\n    \"dimensions\": [\n      \"event\",\n      \"appID\"\n    ],\n    \"filters\": \"event==disconnect%20AND%20coloName!=SFO\",\n    \"sort\": [\n      {\n        \"Id\": \"count\",\n        \"Desc\": false\n      },\n      {\n        \"Id\": \"bytesIngress\",\n        \"Desc\": true\n      }\n    ],\n    \"since\": \"2014-01-02T02:20:00Z\",\n    \"until\": \"2014-01-02T03:20:00Z\",\n    \"limit\": 10000\n  }\n}",
+		"title": "Spectrum Analytics (Summary)",
+		"description": "Summarized analytics data for Spectrum applications."
+	}
+}

@@ -1,0 +1,58 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/alert-notifications/eligibility.json",
+	"title": "Notification Mechanism Eligibility",
+	"description": "Delivery mechanism availability.",
+	"type": "object",
+	"links": [
+		{
+			"title": "Get delivery mechanism eligibility",
+			"description": "Get a list of all delivery mechanism types for which an account is eligible.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/alerting/v3/destinations/eligible",
+			"method": "GET",
+			"cfOwnership": "app-services",
+			"html_id": "notification-mechanism-eligibility-get-delivery-mechanism-eligibility",
+			"uri": "accounts/:identifier/alerting/v3/destinations/eligible",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/alerting/v3/destinations/eligible\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"email\": {\n      \"eligible\": true,\n      \"ready\": true,\n      \"type\": \"email\"\n    }\n  }\n}"
+		}
+	],
+	"html_id": "notification-mechanism-eligibility",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"eligible": {
+				"type": "boolean",
+				"example": "true",
+				"description": "Determines whether or not the account is eligible for the delivery mechanism."
+			},
+			"ready": {
+				"type": "boolean",
+				"example": "true",
+				"description": "Beta flag. Users can create a policy with a mechanism that is not ready, but we cannot guarantee successful delivery of notifications."
+			},
+			"type": {
+				"type": "string",
+				"example": "\"email\"",
+				"description": "Determines type of delivery mechanism.",
+				"enum": [
+					"email",
+					"pagerduty",
+					"webhook"
+				]
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"eligible",
+			"ready",
+			"type"
+		],
+		"objects": [],
+		"example": "{\n  \"eligible\": true,\n  \"ready\": true,\n  \"type\": \"email\"\n}",
+		"title": "Notification Mechanism Eligibility",
+		"description": "Delivery mechanism availability."
+	}
+}

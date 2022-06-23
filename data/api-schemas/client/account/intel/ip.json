@@ -1,0 +1,131 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/intel/ip.json",
+	"title": "IP Intelligence",
+	"description": "IP overview (Beta)",
+	"links": [
+		{
+			"title": "Get IP Overview",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/intel/ip",
+			"method": "GET",
+			"cfOwnership": "intel",
+			"html_id": "ip-intelligence-get-ip-overview",
+			"uri": "accounts/:account_identifier/intel/ip",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/intel/ip?ipv4=192.0.2.0&ipv6=2001:0DB8::\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"ipv4": {
+						"type": "string",
+						"example": "\"192.0.2.0\"",
+						"format": "ipv4"
+					},
+					"ipv6": {
+						"type": "string",
+						"example": "\"2001:0DB8::\"",
+						"format": "ipv6"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"ipv4",
+					"ipv6"
+				],
+				"objects": [],
+				"example": "{\n  \"ipv4\": \"192.0.2.0\",\n  \"ipv6\": \"2001:0DB8::\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"ip\": \"192.0.2.0\",\n      \"belongs_to_ref\": {\n        \"id\": \"autonomous-system--2fa28d71-3549-5a38-af05-770b79ad6ea8\",\n        \"value\": 13335,\n        \"type\": \"hosting_provider\",\n        \"country\": \"US\",\n        \"description\": \"CLOUDFLARENET\"\n      },\n      \"risk_types\": [\n        {\n          \"id\": 131,\n          \"super_category_id\": 21,\n          \"name\": \"Phishing\"\n        }\n      ]\n    }\n  ]\n}"
+		}
+	],
+	"html_id": "ip-intelligence",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"ip": {
+				"example": "\"192.0.2.0\"",
+				"anyOf": [
+					{
+						"all_props": {},
+						"required_props": [],
+						"optional_props": [],
+						"objects": [],
+						"example": "\"192.0.2.0\""
+					},
+					{
+						"all_props": {},
+						"required_props": [],
+						"optional_props": [],
+						"objects": [],
+						"example": "\"2001:0DB8::\""
+					}
+				]
+			},
+			"belongs_to_ref": {
+				"type": "object",
+				"example": "{\n  \"id\": \"autonomous-system--2fa28d71-3549-5a38-af05-770b79ad6ea8\",\n  \"value\": 13335,\n  \"type\": \"hosting_provider\",\n  \"country\": \"US\",\n  \"description\": \"CLOUDFLARENET\"\n}",
+				"properties": {
+					"id": {
+						"type": "string",
+						"example": "\"autonomous-system--2fa28d71-3549-5a38-af05-770b79ad6ea8\"",
+						"description": "STIX 2.1 identifier: https://docs.oasis-open.org/cti/stix/v2.1/cs02/stix-v2.1-cs02.html#_64yvzeku5a5c"
+					},
+					"value": {
+						"type": "string",
+						"example": "13335"
+					},
+					"type": {
+						"type": "string",
+						"example": "\"hosting_provider\"",
+						"enum": [
+							"hosting_provider",
+							"isp",
+							"organization"
+						],
+						"description": "Infrastructure type of this ASN"
+					},
+					"country": {
+						"type": "string",
+						"example": "\"US\""
+					},
+					"description": {
+						"type": "string",
+						"example": "\"CLOUDFLARENET\""
+					}
+				},
+				"description": "Specifies a reference to the autonomous systems (AS) that the IP address belongs to"
+			},
+			"risk_types": {
+				"type": "array",
+				"example": "[\n  {\n    \"id\": 131,\n    \"super_category_id\": 21,\n    \"name\": \"Phishing\"\n  }\n]",
+				"items": {
+					"type": "object",
+					"properties": {
+						"id": {
+							"type": "integer"
+						},
+						"super_category_id": {
+							"type": "integer"
+						},
+						"name": {
+							"type": "string"
+						}
+					}
+				}
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"ip",
+			"belongs_to_ref",
+			"risk_types"
+		],
+		"objects": [],
+		"example": "{\n  \"ip\": \"192.0.2.0\",\n  \"belongs_to_ref\": {\n    \"id\": \"autonomous-system--2fa28d71-3549-5a38-af05-770b79ad6ea8\",\n    \"value\": 13335,\n    \"type\": \"hosting_provider\",\n    \"country\": \"US\",\n    \"description\": \"CLOUDFLARENET\"\n  },\n  \"risk_types\": [\n    {\n      \"id\": 131,\n      \"super_category_id\": 21,\n      \"name\": \"Phishing\"\n    }\n  ]\n}",
+		"title": "IP Intelligence",
+		"description": "IP overview (Beta)"
+	}
+}

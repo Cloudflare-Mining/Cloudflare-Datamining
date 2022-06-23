@@ -1,0 +1,94 @@
+{
+	"type": "object",
+	"example": "{\n  \"request.ip\": {\n    \"in\": [\n      \"199.27.128.0/21\",\n      \"2400:cb00::/32\"\n    ],\n    \"not_in\": [\n      \"199.27.128.0/21\",\n      \"2400:cb00::/32\"\n    ]\n  }\n}",
+	"properties": {
+		"request.ip": {
+			"type": "object",
+			"example": "{\n  \"in\": [\n    \"199.27.128.0/21\",\n    \"2400:cb00::/32\"\n  ],\n  \"not_in\": [\n    \"199.27.128.0/21\",\n    \"2400:cb00::/32\"\n  ]\n}",
+			"properties": {
+				"in": {
+					"type": "array",
+					"example": "[\n  \"199.27.128.0/21\",\n  \"2400:cb00::/32\"\n]",
+					"description": "List of IPv4/IPv6 CIDR addresses",
+					"items": {
+						"type": "string",
+						"description": "IPv4/IPv6 CIDR",
+						"example": "199.27.128.0/21"
+					}
+				},
+				"not_in": {
+					"type": "array",
+					"example": "[\n  \"199.27.128.0/21\",\n  \"2400:cb00::/32\"\n]",
+					"description": "List of IPv4/IPv6 CIDR addresses",
+					"items": {
+						"type": "string",
+						"description": "IPv4/IPv6 CIDR",
+						"example": "199.27.128.0/21"
+					}
+				}
+			},
+			"description": "Client IP restrictions"
+		}
+	},
+	"id": "https://api.cloudflare.com/schemas/v4/common/token/condition.json",
+	"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+	"title": "Conditional, attribute-based restrictions",
+	"description": "Defines the extra limitation on how and/or where the token can be used",
+	"definitions": {
+		"request.ip": {
+			"description": "Client IP restrictions",
+			"type": "object",
+			"properties": {
+				"in": {
+					"description": "List of IPv4/IPv6 CIDR addresses",
+					"type": "array",
+					"items": {
+						"type": "string",
+						"description": "IPv4/IPv6 CIDR",
+						"example": "199.27.128.0/21"
+					},
+					"example": [
+						"199.27.128.0/21",
+						"2400:cb00::/32"
+					]
+				},
+				"not_in": {
+					"description": "List of IPv4/IPv6 CIDR addresses",
+					"type": "array",
+					"items": {
+						"type": "string",
+						"description": "IPv4/IPv6 CIDR",
+						"example": "199.27.128.0/21"
+					},
+					"example": [
+						"199.27.128.0/21",
+						"2400:cb00::/32"
+					]
+				}
+			},
+			"example": {
+				"in": [
+					"123.123.123.0/24",
+					"2606:4700::/32"
+				],
+				"not_in": [
+					"123.123.123.100/24",
+					"2606:4700:4700::/48"
+				]
+			}
+		},
+		"cidr_list": {
+			"description": "List of IPv4/IPv6 CIDR addresses",
+			"type": "array",
+			"items": {
+				"type": "string",
+				"description": "IPv4/IPv6 CIDR",
+				"example": "199.27.128.0/21"
+			},
+			"example": [
+				"199.27.128.0/21",
+				"2400:cb00::/32"
+			]
+		}
+	}
+}

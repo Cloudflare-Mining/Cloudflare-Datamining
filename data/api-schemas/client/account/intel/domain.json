@@ -1,0 +1,185 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/intel/domain.json",
+	"title": "Domain Intelligence",
+	"description": "Domain overview (Beta)",
+	"links": [
+		{
+			"title": "Get Domain Details",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/intel/domain",
+			"method": "GET",
+			"cfOwnership": "intel",
+			"html_id": "domain-intelligence-get-domain-details",
+			"uri": "accounts/:account_identifier/intel/domain",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/intel/domain?domain=cloudflare.com\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"domain": {
+						"type": "string",
+						"example": "\"cloudflare.com\""
+					}
+				},
+				"required_props": [
+					"domain"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"domain\": \"cloudflare.com\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"domain\": \"cloudflare.com\",\n    \"resolves_to_refs\": [\n      {\n        \"id\": \"ipv4-addr--baa568ec-6efe-5902-be55-0663833db537\",\n        \"value\": \"192.0.2.0\"\n      }\n    ],\n    \"popularity_rank\": 18,\n    \"application\": {\n      \"id\": 1370,\n      \"name\": \"CLOUDFLARE\"\n    },\n    \"risk_types\": [],\n    \"content_categories\": [\n      {\n        \"id\": 155,\n        \"super_category_id\": 26,\n        \"name\": \"Technology\"\n      }\n    ],\n    \"additional_information\": {\n      \"suspected_malware_family\": \"\"\n    }\n  }\n}"
+		},
+		{
+			"title": "Get Multiple Domain Details",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/intel/domain/bulk",
+			"method": "GET",
+			"cfOwnership": "intel",
+			"html_id": "domain-intelligence-get-multiple-domain-details",
+			"uri": "accounts/:account_identifier/intel/domain/bulk",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/intel/domain/bulk?domain=cloudflare.com\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"domain": {
+						"type": "string",
+						"example": "\"cloudflare.com\"",
+						"description": "Accepts multiple values, i.e. `?domain=cloudflare.com&domain=example.com`"
+					}
+				},
+				"required_props": [
+					"domain"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"domain\": \"cloudflare.com\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"domain\": \"cloudflare.com\",\n      \"popularity_rank\": 18,\n      \"application\": {\n        \"id\": 1370,\n        \"name\": \"CLOUDFLARE\"\n      },\n      \"risk_types\": [],\n      \"content_categories\": [\n        {\n          \"id\": 155,\n          \"super_category_id\": 26,\n          \"name\": \"Technology\"\n        }\n      ],\n      \"additional_information\": {\n        \"suspected_malware_family\": \"\"\n      }\n    }\n  ]\n}"
+		}
+	],
+	"html_id": "domain-intelligence",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"domain": {
+				"type": "string",
+				"example": "\"cloudflare.com\""
+			},
+			"resolves_to_refs": {
+				"type": "array",
+				"example": "[\n  {\n    \"id\": \"ipv4-addr--baa568ec-6efe-5902-be55-0663833db537\",\n    \"value\": \"192.0.2.0\"\n  }\n]",
+				"description": "Specifies a list of references to one or more IP addresses or domain names that the domain name currently resolves to",
+				"items": {
+					"type": "object",
+					"properties": {
+						"id": {
+							"description": "STIX 2.1 identifier: https://docs.oasis-open.org/cti/stix/v2.1/cs02/stix-v2.1-cs02.html#_64yvzeku5a5c",
+							"type": "string",
+							"example": "ipv4-addr--baa568ec-6efe-5902-be55-0663833db537"
+						},
+						"value": {
+							"description": "IP address or domain name",
+							"type": "string",
+							"example": "192.0.2.0"
+						}
+					}
+				}
+			},
+			"popularity_rank": {
+				"type": "integer",
+				"example": "18",
+				"description": "Global Cloudflare 100k ranking for the last 30 days, if available for the hostname. The top ranked domain is 1, the lowest ranked domain is 100,000"
+			},
+			"risk_score": {
+				"type": "number",
+				"description": "Hostname risk score, which is a value between 0 (lowest risk) to 1 (highest risk)"
+			},
+			"application": {
+				"type": "object",
+				"example": "{\n  \"id\": 1370,\n  \"name\": \"CLOUDFLARE\"\n}",
+				"properties": {
+					"id": {
+						"type": "integer",
+						"example": "1370"
+					},
+					"name": {
+						"type": "string",
+						"example": "\"CLOUDFLARE\""
+					}
+				},
+				"description": "Application that the hostname belongs to"
+			},
+			"risk_types": {
+				"type": "array",
+				"example": "[]",
+				"description": "A subset of the following security risk categories: `[{\"id\": 68, \"super_category_id\": 21, \"name\": \"Anonymizer\"}, {\"id\": 117, \"super_category_id\": 21, \"name\": \"Malware\"}, {\"id\": 131, \"super_category_id\": 21, \"name\": \"Phishing\"}, {\"id\": 169, \"super_category_id\": 21, \"name\": \"New Domains\"}, {\"id\": 175, \"super_category_id\": 21, \"name\": \"DNS Tunneling (Beta)\"}, {\"id\": 176, \"super_category_id\": 21, \"name\": \"DGA Domains (Beta)\"}]`",
+				"items": {
+					"type": "object",
+					"properties": {
+						"id": {
+							"type": "integer"
+						},
+						"super_category_id": {
+							"type": "integer"
+						},
+						"name": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"content_categories": {
+				"type": "array",
+				"example": "[\n  {\n    \"id\": 155,\n    \"super_category_id\": 26,\n    \"name\": \"Technology\"\n  }\n]",
+				"description": "Current content categories",
+				"items": {
+					"type": "object",
+					"properties": {
+						"id": {
+							"type": "integer"
+						},
+						"super_category_id": {
+							"type": "integer"
+						},
+						"name": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"additional_information": {
+				"type": "object",
+				"example": "{\n  \"suspected_malware_family\": \"\"\n}",
+				"properties": {
+					"suspected_malware_family": {
+						"type": "string",
+						"example": "\"\"",
+						"description": "Suspected DGA malware family"
+					}
+				},
+				"description": "Additional information related to the host name"
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"domain",
+			"resolves_to_refs",
+			"popularity_rank",
+			"risk_score",
+			"application",
+			"risk_types",
+			"content_categories",
+			"additional_information"
+		],
+		"objects": [],
+		"example": "{\n  \"domain\": \"cloudflare.com\",\n  \"resolves_to_refs\": [\n    {\n      \"id\": \"ipv4-addr--baa568ec-6efe-5902-be55-0663833db537\",\n      \"value\": \"192.0.2.0\"\n    }\n  ],\n  \"popularity_rank\": 18,\n  \"application\": {\n    \"id\": 1370,\n    \"name\": \"CLOUDFLARE\"\n  },\n  \"risk_types\": [],\n  \"content_categories\": [\n    {\n      \"id\": 155,\n      \"super_category_id\": 26,\n      \"name\": \"Technology\"\n    }\n  ],\n  \"additional_information\": {\n    \"suspected_malware_family\": \"\"\n  }\n}",
+		"title": "Domain Intelligence",
+		"description": "Domain overview (Beta)"
+	}
+}

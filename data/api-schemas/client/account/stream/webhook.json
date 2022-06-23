@@ -1,0 +1,104 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/stream/webhook.json",
+	"title": "Stream Webhook",
+	"description": "Create a webhook to notify your service when videos are ready to stream.",
+	"type": "object",
+	"links": [
+		{
+			"title": "Create a webhook",
+			"description": "",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/stream/webhook",
+			"method": "PUT",
+			"cfOwnership": "stream",
+			"html_id": "stream-webhook-create-a-webhook",
+			"uri": "accounts/:account_identifier/stream/webhook",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/stream/webhook\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"notificationUrl\":\"https://example.com\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"notificationUrl": {
+						"type": "string",
+						"example": "\"https://example.com\"",
+						"description": "The URL the webhooks will be sent to",
+						"format": "url"
+					}
+				},
+				"required_props": [
+					"notificationUrl"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"notificationUrl\": \"https://example.com\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"notificationUrl\": \"https://example.com\",\n    \"modified\": \"2014-01-02T02:20:00Z\",\n    \"secret\": \"0b1c2423aa030a11583c6ffadda57fad681d00cd\"\n  }\n}"
+		},
+		{
+			"title": "View the webhook",
+			"description": "",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/stream/webhook",
+			"method": "GET",
+			"cfOwnership": "stream",
+			"html_id": "stream-webhook-view-the-webhook",
+			"uri": "accounts/:account_identifier/stream/webhook",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/stream/webhook\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"notificationUrl\": \"https://example.com\",\n    \"modified\": \"2014-01-02T02:20:00Z\",\n    \"secret\": \"0b1c2423aa030a11583c6ffadda57fad681d00cd\"\n  }\n}"
+		},
+		{
+			"title": "Delete the webhook",
+			"description": "",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/stream/webhook",
+			"method": "DELETE",
+			"cfOwnership": "stream",
+			"html_id": "stream-webhook-delete-the-webhook",
+			"uri": "accounts/:account_identifier/stream/webhook",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/stream/webhook\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": \"\"\n}"
+		}
+	],
+	"cfLinkErrors": {
+		"10000": "Internal Server Error",
+		"10001": "Authentication Failure"
+	},
+	"html_id": "stream-webhook",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"notificationUrl": {
+				"type": "string",
+				"example": "\"https://example.com\"",
+				"description": "The URL the webhooks will be sent to",
+				"format": "url"
+			},
+			"modified": {
+				"type": "string",
+				"example": "\"2014-01-02T02:20:00Z\"",
+				"description": "When the webhook item was last modified.",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"secret": {
+				"type": "string",
+				"example": "\"0b1c2423aa030a11583c6ffadda57fad681d00cd\"",
+				"description": "The secret the request is signed with",
+				"readOnly": true
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"notificationUrl",
+			"modified",
+			"secret"
+		],
+		"objects": [],
+		"example": "{\n  \"notificationUrl\": \"https://example.com\",\n  \"modified\": \"2014-01-02T02:20:00Z\",\n  \"secret\": \"0b1c2423aa030a11583c6ffadda57fad681d00cd\"\n}",
+		"title": "Stream Webhook",
+		"description": "Create a webhook to notify your service when videos are ready to stream."
+	}
+}

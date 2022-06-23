@@ -1,0 +1,973 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/member.json",
+	"title": "Account Members",
+	"description": "An association between a Cloudflare user and an account",
+	"links": [
+		{
+			"title": "List Members",
+			"description": "List all members of an account",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/members",
+			"method": "GET",
+			"cfOwnership": "iam",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#organization:read"
+				]
+			},
+			"html_id": "account-members-list-members",
+			"uri": "accounts/:account_identifier/members",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/members?page=1&per_page=20&direction=desc\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"page": {
+						"type": "number",
+						"example": "1",
+						"minimum": 1,
+						"default": 1,
+						"description": "Page number of paginated results"
+					},
+					"per_page": {
+						"type": "number",
+						"example": "20",
+						"minimum": 5,
+						"maximum": 50,
+						"default": 20,
+						"description": "Maximum number of results per page"
+					},
+					"direction": {
+						"type": "string",
+						"example": "\"desc\"",
+						"enum": [
+							"asc",
+							"desc"
+						],
+						"description": "Direction to order results"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"page",
+					"per_page",
+					"direction"
+				],
+				"objects": [],
+				"example": "{\n  \"page\": 1,\n  \"per_page\": 20,\n  \"direction\": \"desc\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"4536bcfad5faccb111b47003c79917fa\",\n      \"code\": \"05dd05cce12bbed97c0d87cd78e89bc2fd41a6cee72f27f6fc84af2e45c0fac0\",\n      \"user\": {\n        \"id\": \"7c5dae5552338874e5053f2534d2767a\",\n        \"first_name\": \"John\",\n        \"last_name\": \"Appleseed\",\n        \"email\": \"user@example.com\",\n        \"two_factor_authentication_enabled\": false\n      },\n      \"status\": \"accepted\",\n      \"roles\": [\n        {\n          \"id\": \"3536bcfad5faccb999b47003c79917fb\",\n          \"name\": \"Account Administrator\",\n          \"description\": \"Administrative access to the entire Account\",\n          \"permissions\": {\n            \"analytics\": {\n              \"read\": true,\n              \"write\": true\n            },\n            \"billing\": {\n              \"read\": true,\n              \"write\": true\n            },\n            \"cache_purge\": {\n              \"read\": true,\n              \"write\": true\n            },\n            \"dns\": {\n              \"read\": true,\n              \"write\": true\n            },\n            \"dns_records\": {\n              \"read\": true,\n              \"write\": true\n            },\n            \"lb\": {\n              \"read\": true,\n              \"write\": true\n            },\n            \"logs\": {\n              \"read\": true,\n              \"write\": true\n            },\n            \"organization\": {\n              \"read\": true,\n              \"write\": true\n            },\n            \"ssl\": {\n              \"read\": true,\n              \"write\": true\n            },\n            \"waf\": {\n              \"read\": true,\n              \"write\": true\n            },\n            \"zones\": {\n              \"read\": true,\n              \"write\": true\n            },\n            \"zone_settings\": {\n              \"read\": true,\n              \"write\": true\n            }\n          }\n        }\n      ]\n    }\n  ]\n}"
+		},
+		{
+			"title": "Add Member",
+			"description": "Add a user to the list of members for this account",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/members",
+			"method": "POST",
+			"cfOwnership": "iam",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#organization:edit"
+				]
+			},
+			"html_id": "account-members-add-member",
+			"uri": "accounts/:account_identifier/members",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/members\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"email\":\"user@example.com\",\"status\":\"accepted\",\"roles\":[\"3536bcfad5faccb999b47003c79917fb\"]}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"email": {
+						"type": "string",
+						"example": "\"user@example.com\"",
+						"description": "Your contact email address",
+						"maxLength": 90
+					},
+					"status": {
+						"type": "string",
+						"example": "\"accepted\"",
+						"enum": [
+							"accepted",
+							"pending"
+						],
+						"readOnly": false,
+						"default": "pending",
+						"description": "A member's status in the account"
+					},
+					"roles": {
+						"type": "array",
+						"example": "[\n  \"3536bcfad5faccb999b47003c79917fb\"\n]",
+						"description": "Array of roles associated with this member",
+						"items": {
+							"description": "Role identifier tag",
+							"type": "string",
+							"maxLength": 32,
+							"readOnly": true,
+							"example": "3536bcfad5faccb999b47003c79917fb"
+						}
+					}
+				},
+				"required_props": [
+					"email",
+					"roles"
+				],
+				"optional_props": [
+					"status"
+				],
+				"objects": [],
+				"example": "{\n  \"email\": \"user@example.com\",\n  \"status\": \"accepted\",\n  \"roles\": [\n    \"3536bcfad5faccb999b47003c79917fb\"\n  ]\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"4536bcfad5faccb111b47003c79917fa\",\n    \"code\": \"05dd05cce12bbed97c0d87cd78e89bc2fd41a6cee72f27f6fc84af2e45c0fac0\",\n    \"user\": {\n      \"id\": \"7c5dae5552338874e5053f2534d2767a\",\n      \"first_name\": \"John\",\n      \"last_name\": \"Appleseed\",\n      \"email\": \"user@example.com\",\n      \"two_factor_authentication_enabled\": false\n    },\n    \"status\": \"accepted\",\n    \"roles\": [\n      {\n        \"id\": \"3536bcfad5faccb999b47003c79917fb\",\n        \"name\": \"Account Administrator\",\n        \"description\": \"Administrative access to the entire Account\",\n        \"permissions\": {\n          \"analytics\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"billing\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"cache_purge\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"dns\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"dns_records\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"lb\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"logs\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"organization\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"ssl\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"waf\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"zones\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"zone_settings\": {\n            \"read\": true,\n            \"write\": true\n          }\n        }\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Member Details",
+			"description": "Get information about a specific member of an account",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/members/{#/definitions/identifier}",
+			"method": "GET",
+			"cfOwnership": "iam",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#organization:read"
+				]
+			},
+			"html_id": "account-members-member-details",
+			"uri": "accounts/:account_identifier/members/:identifier",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/members/4536bcfad5faccb111b47003c79917fa\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"4536bcfad5faccb111b47003c79917fa\",\n    \"code\": \"05dd05cce12bbed97c0d87cd78e89bc2fd41a6cee72f27f6fc84af2e45c0fac0\",\n    \"user\": {\n      \"id\": \"7c5dae5552338874e5053f2534d2767a\",\n      \"first_name\": \"John\",\n      \"last_name\": \"Appleseed\",\n      \"email\": \"user@example.com\",\n      \"two_factor_authentication_enabled\": false\n    },\n    \"status\": \"accepted\",\n    \"roles\": [\n      {\n        \"id\": \"3536bcfad5faccb999b47003c79917fb\",\n        \"name\": \"Account Administrator\",\n        \"description\": \"Administrative access to the entire Account\",\n        \"permissions\": {\n          \"analytics\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"billing\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"cache_purge\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"dns\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"dns_records\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"lb\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"logs\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"organization\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"ssl\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"waf\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"zones\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"zone_settings\": {\n            \"read\": true,\n            \"write\": true\n          }\n        }\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Update Member",
+			"description": "Modify an account member",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/members/{#/definitions/identifier}",
+			"method": "PUT",
+			"cfOwnership": "iam",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#organization:edit"
+				]
+			},
+			"html_id": "account-members-update-member",
+			"uri": "accounts/:account_identifier/members/:identifier",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/members/4536bcfad5faccb111b47003c79917fa\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"id\":\"4536bcfad5faccb111b47003c79917fa\",\"code\":\"05dd05cce12bbed97c0d87cd78e89bc2fd41a6cee72f27f6fc84af2e45c0fac0\",\"user\":{\"id\":\"7c5dae5552338874e5053f2534d2767a\",\"first_name\":\"John\",\"last_name\":\"Appleseed\",\"email\":\"user@example.com\",\"two_factor_authentication_enabled\":false},\"status\":\"accepted\",\"roles\":[{\"id\":\"3536bcfad5faccb999b47003c79917fb\",\"name\":\"Account Administrator\",\"description\":\"Administrative access to the entire Account\",\"permissions\":{\"analytics\":{\"read\":true,\"write\":true},\"billing\":{\"read\":true,\"write\":true},\"cache_purge\":{\"read\":true,\"write\":true},\"dns\":{\"read\":true,\"write\":true},\"dns_records\":{\"read\":true,\"write\":true},\"lb\":{\"read\":true,\"write\":true},\"logs\":{\"read\":true,\"write\":true},\"organization\":{\"read\":true,\"write\":true},\"ssl\":{\"read\":true,\"write\":true},\"waf\":{\"read\":true,\"write\":true},\"zones\":{\"read\":true,\"write\":true},\"zone_settings\":{\"read\":true,\"write\":true}}}]}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"4536bcfad5faccb111b47003c79917fa\"",
+						"description": "Membership identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"code": {
+						"type": "string",
+						"example": "\"05dd05cce12bbed97c0d87cd78e89bc2fd41a6cee72f27f6fc84af2e45c0fac0\"",
+						"description": "The unique activation code for the account membership",
+						"maxLength": 64,
+						"readOnly": true
+					},
+					"user": {
+						"type": "object",
+						"example": "{\n  \"id\": \"7c5dae5552338874e5053f2534d2767a\",\n  \"first_name\": \"John\",\n  \"last_name\": \"Appleseed\",\n  \"email\": \"user@example.com\",\n  \"two_factor_authentication_enabled\": false\n}",
+						"properties": {
+							"id": {
+								"type": "string",
+								"example": "\"7c5dae5552338874e5053f2534d2767a\"",
+								"description": "User identifier tag",
+								"maxLength": 32,
+								"readOnly": true
+							},
+							"first_name": {
+								"type": [
+									"string",
+									"null"
+								],
+								"example": "\"John\"",
+								"description": "User's first name",
+								"maxLength": 60
+							},
+							"last_name": {
+								"type": [
+									"string",
+									"null"
+								],
+								"example": "\"Appleseed\"",
+								"description": "User's last name",
+								"maxLength": 60
+							},
+							"email": {
+								"type": "string",
+								"example": "\"user@example.com\"",
+								"description": "Your contact email address",
+								"maxLength": 90
+							},
+							"two_factor_authentication_enabled": {
+								"type": "boolean",
+								"example": "false",
+								"description": "Whether two-factor authentication is enabled for the user account. This does not apply to API authentication",
+								"readOnly": true,
+								"default": false
+							}
+						},
+						"readOnly": true,
+						"required": [
+							"email"
+						]
+					},
+					"status": {
+						"type": "string",
+						"example": "\"accepted\"",
+						"readOnly": true,
+						"enum": [
+							"accepted",
+							"pending",
+							"rejected"
+						],
+						"description": "A member's status in the account"
+					},
+					"roles": {
+						"type": "array",
+						"example": "[\n  {\n    \"id\": \"3536bcfad5faccb999b47003c79917fb\",\n    \"name\": \"Account Administrator\",\n    \"description\": \"Administrative access to the entire Account\",\n    \"permissions\": {\n      \"analytics\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"billing\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"cache_purge\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"dns\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"dns_records\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"lb\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"logs\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"organization\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"ssl\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"waf\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"zones\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"zone_settings\": {\n        \"read\": true,\n        \"write\": true\n      }\n    }\n  }\n]",
+						"description": "Roles assigned to this member",
+						"items": {
+							"id": "https://api.cloudflare.com/schemas/v4/client/definitions/account/role.json",
+							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+							"title": "Account Roles",
+							"description": "A Role defines what permissions a Member of an Account has.",
+							"type": "object",
+							"required": [
+								"id",
+								"name",
+								"description",
+								"permissions"
+							],
+							"properties": {
+								"id": {
+									"description": "Role identifier tag",
+									"type": "string",
+									"maxLength": 32,
+									"readOnly": true,
+									"example": "3536bcfad5faccb999b47003c79917fb"
+								},
+								"name": {
+									"type": "string",
+									"description": "Role Name",
+									"maxLength": 120,
+									"readOnly": true,
+									"example": "Account Administrator"
+								},
+								"description": {
+									"type": "string",
+									"description": "Description of role's permissions",
+									"readOnly": true,
+									"example": "Administrative access to the entire Account"
+								},
+								"permissions": {
+									"id": "https://api.cloudflare.com/schemas/v4/client/definitions/permissions.json",
+									"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+									"title": "Permissions Object",
+									"description": "Access permissions for a Role",
+									"type": "object",
+									"properties": {
+										"analytics": {
+											"type": "object",
+											"properties": {
+												"read": {
+													"type": "boolean",
+													"example": true
+												},
+												"write": {
+													"type": "boolean",
+													"example": true
+												}
+											},
+											"example": {
+												"read": true,
+												"write": false
+											}
+										},
+										"billing": {
+											"type": "object",
+											"properties": {
+												"read": {
+													"type": "boolean",
+													"example": true
+												},
+												"write": {
+													"type": "boolean",
+													"example": true
+												}
+											},
+											"example": {
+												"read": true,
+												"write": false
+											}
+										},
+										"cache_purge": {
+											"type": "object",
+											"properties": {
+												"read": {
+													"type": "boolean",
+													"example": true
+												},
+												"write": {
+													"type": "boolean",
+													"example": true
+												}
+											},
+											"example": {
+												"read": true,
+												"write": false
+											}
+										},
+										"dns": {
+											"type": "object",
+											"properties": {
+												"read": {
+													"type": "boolean",
+													"example": true
+												},
+												"write": {
+													"type": "boolean",
+													"example": true
+												}
+											},
+											"example": {
+												"read": true,
+												"write": false
+											}
+										},
+										"dns_records": {
+											"type": "object",
+											"properties": {
+												"read": {
+													"type": "boolean",
+													"example": true
+												},
+												"write": {
+													"type": "boolean",
+													"example": true
+												}
+											},
+											"example": {
+												"read": true,
+												"write": false
+											}
+										},
+										"lb": {
+											"type": "object",
+											"properties": {
+												"read": {
+													"type": "boolean",
+													"example": true
+												},
+												"write": {
+													"type": "boolean",
+													"example": true
+												}
+											},
+											"example": {
+												"read": true,
+												"write": false
+											}
+										},
+										"logs": {
+											"type": "object",
+											"properties": {
+												"read": {
+													"type": "boolean",
+													"example": true
+												},
+												"write": {
+													"type": "boolean",
+													"example": true
+												}
+											},
+											"example": {
+												"read": true,
+												"write": false
+											}
+										},
+										"organization": {
+											"type": "object",
+											"properties": {
+												"read": {
+													"type": "boolean",
+													"example": true
+												},
+												"write": {
+													"type": "boolean",
+													"example": true
+												}
+											},
+											"example": {
+												"read": true,
+												"write": false
+											}
+										},
+										"ssl": {
+											"type": "object",
+											"properties": {
+												"read": {
+													"type": "boolean",
+													"example": true
+												},
+												"write": {
+													"type": "boolean",
+													"example": true
+												}
+											},
+											"example": {
+												"read": true,
+												"write": false
+											}
+										},
+										"waf": {
+											"type": "object",
+											"properties": {
+												"read": {
+													"type": "boolean",
+													"example": true
+												},
+												"write": {
+													"type": "boolean",
+													"example": true
+												}
+											},
+											"example": {
+												"read": true,
+												"write": false
+											}
+										},
+										"zones": {
+											"type": "object",
+											"properties": {
+												"read": {
+													"type": "boolean",
+													"example": true
+												},
+												"write": {
+													"type": "boolean",
+													"example": true
+												}
+											},
+											"example": {
+												"read": true,
+												"write": false
+											}
+										},
+										"zone_settings": {
+											"type": "object",
+											"properties": {
+												"read": {
+													"type": "boolean",
+													"example": true
+												},
+												"write": {
+													"type": "boolean",
+													"example": true
+												}
+											},
+											"example": {
+												"read": true,
+												"write": false
+											}
+										}
+									},
+									"example": {
+										"zones": {
+											"read": true,
+											"write": true
+										},
+										"analytics": {
+											"read": true,
+											"write": false
+										}
+									},
+									"definitions": {
+										"grants": {
+											"type": "object",
+											"properties": {
+												"read": {
+													"type": "boolean",
+													"example": true
+												},
+												"write": {
+													"type": "boolean",
+													"example": true
+												}
+											},
+											"example": {
+												"read": true,
+												"write": false
+											}
+										}
+									}
+								}
+							},
+							"definitions": {
+								"identifier": {
+									"description": "Role identifier tag",
+									"type": "string",
+									"maxLength": 32,
+									"readOnly": true,
+									"example": "3536bcfad5faccb999b47003c79917fb"
+								}
+							}
+						}
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"id",
+					"code",
+					"user",
+					"status",
+					"roles"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"4536bcfad5faccb111b47003c79917fa\",\n  \"code\": \"05dd05cce12bbed97c0d87cd78e89bc2fd41a6cee72f27f6fc84af2e45c0fac0\",\n  \"user\": {\n    \"id\": \"7c5dae5552338874e5053f2534d2767a\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Appleseed\",\n    \"email\": \"user@example.com\",\n    \"two_factor_authentication_enabled\": false\n  },\n  \"status\": \"accepted\",\n  \"roles\": [\n    {\n      \"id\": \"3536bcfad5faccb999b47003c79917fb\",\n      \"name\": \"Account Administrator\",\n      \"description\": \"Administrative access to the entire Account\",\n      \"permissions\": {\n        \"analytics\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"billing\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"cache_purge\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"dns\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"dns_records\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"lb\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"logs\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"organization\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"ssl\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"waf\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"zones\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"zone_settings\": {\n          \"read\": true,\n          \"write\": true\n        }\n      }\n    }\n  ]\n}",
+				"title": "Account Members",
+				"description": "An association between a Cloudflare user and an account"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"4536bcfad5faccb111b47003c79917fa\",\n    \"code\": \"05dd05cce12bbed97c0d87cd78e89bc2fd41a6cee72f27f6fc84af2e45c0fac0\",\n    \"user\": {\n      \"id\": \"7c5dae5552338874e5053f2534d2767a\",\n      \"first_name\": \"John\",\n      \"last_name\": \"Appleseed\",\n      \"email\": \"user@example.com\",\n      \"two_factor_authentication_enabled\": false\n    },\n    \"status\": \"accepted\",\n    \"roles\": [\n      {\n        \"id\": \"3536bcfad5faccb999b47003c79917fb\",\n        \"name\": \"Account Administrator\",\n        \"description\": \"Administrative access to the entire Account\",\n        \"permissions\": {\n          \"analytics\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"billing\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"cache_purge\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"dns\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"dns_records\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"lb\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"logs\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"organization\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"ssl\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"waf\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"zones\": {\n            \"read\": true,\n            \"write\": true\n          },\n          \"zone_settings\": {\n            \"read\": true,\n            \"write\": true\n          }\n        }\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Remove Member",
+			"description": "Remove a member from an account",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/members/{#/definitions/identifier}",
+			"method": "DELETE",
+			"cfOwnership": "iam",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#organization:edit"
+				]
+			},
+			"html_id": "account-members-remove-member",
+			"uri": "accounts/:account_identifier/members/:identifier",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/members/4536bcfad5faccb111b47003c79917fa\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\"\n  }\n}"
+		}
+	],
+	"html_id": "account-members",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"4536bcfad5faccb111b47003c79917fa\"",
+				"description": "Membership identifier tag",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"code": {
+				"type": "string",
+				"example": "\"05dd05cce12bbed97c0d87cd78e89bc2fd41a6cee72f27f6fc84af2e45c0fac0\"",
+				"description": "The unique activation code for the account membership",
+				"maxLength": 64,
+				"readOnly": true
+			},
+			"user": {
+				"type": "object",
+				"example": "{\n  \"id\": \"7c5dae5552338874e5053f2534d2767a\",\n  \"first_name\": \"John\",\n  \"last_name\": \"Appleseed\",\n  \"email\": \"user@example.com\",\n  \"two_factor_authentication_enabled\": false\n}",
+				"properties": {
+					"id": {
+						"type": "string",
+						"example": "\"7c5dae5552338874e5053f2534d2767a\"",
+						"description": "User identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"first_name": {
+						"type": [
+							"string",
+							"null"
+						],
+						"example": "\"John\"",
+						"description": "User's first name",
+						"maxLength": 60
+					},
+					"last_name": {
+						"type": [
+							"string",
+							"null"
+						],
+						"example": "\"Appleseed\"",
+						"description": "User's last name",
+						"maxLength": 60
+					},
+					"email": {
+						"type": "string",
+						"example": "\"user@example.com\"",
+						"description": "Your contact email address",
+						"maxLength": 90
+					},
+					"two_factor_authentication_enabled": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Whether two-factor authentication is enabled for the user account. This does not apply to API authentication",
+						"readOnly": true,
+						"default": false
+					}
+				},
+				"readOnly": true,
+				"required": [
+					"email"
+				]
+			},
+			"status": {
+				"type": "string",
+				"example": "\"accepted\"",
+				"readOnly": true,
+				"enum": [
+					"accepted",
+					"pending",
+					"rejected"
+				],
+				"description": "A member's status in the account"
+			},
+			"roles": {
+				"type": "array",
+				"example": "[\n  {\n    \"id\": \"3536bcfad5faccb999b47003c79917fb\",\n    \"name\": \"Account Administrator\",\n    \"description\": \"Administrative access to the entire Account\",\n    \"permissions\": {\n      \"analytics\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"billing\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"cache_purge\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"dns\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"dns_records\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"lb\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"logs\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"organization\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"ssl\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"waf\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"zones\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"zone_settings\": {\n        \"read\": true,\n        \"write\": true\n      }\n    }\n  }\n]",
+				"description": "Roles assigned to this member",
+				"items": {
+					"id": "https://api.cloudflare.com/schemas/v4/client/definitions/account/role.json",
+					"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+					"title": "Account Roles",
+					"description": "A Role defines what permissions a Member of an Account has.",
+					"type": "object",
+					"required": [
+						"id",
+						"name",
+						"description",
+						"permissions"
+					],
+					"properties": {
+						"id": {
+							"description": "Role identifier tag",
+							"type": "string",
+							"maxLength": 32,
+							"readOnly": true,
+							"example": "3536bcfad5faccb999b47003c79917fb"
+						},
+						"name": {
+							"type": "string",
+							"description": "Role Name",
+							"maxLength": 120,
+							"readOnly": true,
+							"example": "Account Administrator"
+						},
+						"description": {
+							"type": "string",
+							"description": "Description of role's permissions",
+							"readOnly": true,
+							"example": "Administrative access to the entire Account"
+						},
+						"permissions": {
+							"id": "https://api.cloudflare.com/schemas/v4/client/definitions/permissions.json",
+							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+							"title": "Permissions Object",
+							"description": "Access permissions for a Role",
+							"type": "object",
+							"properties": {
+								"analytics": {
+									"type": "object",
+									"properties": {
+										"read": {
+											"type": "boolean",
+											"example": true
+										},
+										"write": {
+											"type": "boolean",
+											"example": true
+										}
+									},
+									"example": {
+										"read": true,
+										"write": false
+									}
+								},
+								"billing": {
+									"type": "object",
+									"properties": {
+										"read": {
+											"type": "boolean",
+											"example": true
+										},
+										"write": {
+											"type": "boolean",
+											"example": true
+										}
+									},
+									"example": {
+										"read": true,
+										"write": false
+									}
+								},
+								"cache_purge": {
+									"type": "object",
+									"properties": {
+										"read": {
+											"type": "boolean",
+											"example": true
+										},
+										"write": {
+											"type": "boolean",
+											"example": true
+										}
+									},
+									"example": {
+										"read": true,
+										"write": false
+									}
+								},
+								"dns": {
+									"type": "object",
+									"properties": {
+										"read": {
+											"type": "boolean",
+											"example": true
+										},
+										"write": {
+											"type": "boolean",
+											"example": true
+										}
+									},
+									"example": {
+										"read": true,
+										"write": false
+									}
+								},
+								"dns_records": {
+									"type": "object",
+									"properties": {
+										"read": {
+											"type": "boolean",
+											"example": true
+										},
+										"write": {
+											"type": "boolean",
+											"example": true
+										}
+									},
+									"example": {
+										"read": true,
+										"write": false
+									}
+								},
+								"lb": {
+									"type": "object",
+									"properties": {
+										"read": {
+											"type": "boolean",
+											"example": true
+										},
+										"write": {
+											"type": "boolean",
+											"example": true
+										}
+									},
+									"example": {
+										"read": true,
+										"write": false
+									}
+								},
+								"logs": {
+									"type": "object",
+									"properties": {
+										"read": {
+											"type": "boolean",
+											"example": true
+										},
+										"write": {
+											"type": "boolean",
+											"example": true
+										}
+									},
+									"example": {
+										"read": true,
+										"write": false
+									}
+								},
+								"organization": {
+									"type": "object",
+									"properties": {
+										"read": {
+											"type": "boolean",
+											"example": true
+										},
+										"write": {
+											"type": "boolean",
+											"example": true
+										}
+									},
+									"example": {
+										"read": true,
+										"write": false
+									}
+								},
+								"ssl": {
+									"type": "object",
+									"properties": {
+										"read": {
+											"type": "boolean",
+											"example": true
+										},
+										"write": {
+											"type": "boolean",
+											"example": true
+										}
+									},
+									"example": {
+										"read": true,
+										"write": false
+									}
+								},
+								"waf": {
+									"type": "object",
+									"properties": {
+										"read": {
+											"type": "boolean",
+											"example": true
+										},
+										"write": {
+											"type": "boolean",
+											"example": true
+										}
+									},
+									"example": {
+										"read": true,
+										"write": false
+									}
+								},
+								"zones": {
+									"type": "object",
+									"properties": {
+										"read": {
+											"type": "boolean",
+											"example": true
+										},
+										"write": {
+											"type": "boolean",
+											"example": true
+										}
+									},
+									"example": {
+										"read": true,
+										"write": false
+									}
+								},
+								"zone_settings": {
+									"type": "object",
+									"properties": {
+										"read": {
+											"type": "boolean",
+											"example": true
+										},
+										"write": {
+											"type": "boolean",
+											"example": true
+										}
+									},
+									"example": {
+										"read": true,
+										"write": false
+									}
+								}
+							},
+							"example": {
+								"zones": {
+									"read": true,
+									"write": true
+								},
+								"analytics": {
+									"read": true,
+									"write": false
+								}
+							},
+							"definitions": {
+								"grants": {
+									"type": "object",
+									"properties": {
+										"read": {
+											"type": "boolean",
+											"example": true
+										},
+										"write": {
+											"type": "boolean",
+											"example": true
+										}
+									},
+									"example": {
+										"read": true,
+										"write": false
+									}
+								}
+							}
+						}
+					},
+					"definitions": {
+						"identifier": {
+							"description": "Role identifier tag",
+							"type": "string",
+							"maxLength": 32,
+							"readOnly": true,
+							"example": "3536bcfad5faccb999b47003c79917fb"
+						}
+					}
+				}
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"code",
+			"user",
+			"status",
+			"roles"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"4536bcfad5faccb111b47003c79917fa\",\n  \"code\": \"05dd05cce12bbed97c0d87cd78e89bc2fd41a6cee72f27f6fc84af2e45c0fac0\",\n  \"user\": {\n    \"id\": \"7c5dae5552338874e5053f2534d2767a\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Appleseed\",\n    \"email\": \"user@example.com\",\n    \"two_factor_authentication_enabled\": false\n  },\n  \"status\": \"accepted\",\n  \"roles\": [\n    {\n      \"id\": \"3536bcfad5faccb999b47003c79917fb\",\n      \"name\": \"Account Administrator\",\n      \"description\": \"Administrative access to the entire Account\",\n      \"permissions\": {\n        \"analytics\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"billing\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"cache_purge\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"dns\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"dns_records\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"lb\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"logs\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"organization\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"ssl\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"waf\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"zones\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"zone_settings\": {\n          \"read\": true,\n          \"write\": true\n        }\n      }\n    }\n  ]\n}",
+		"title": "Account Members",
+		"description": "An association between a Cloudflare user and an account"
+	}
+}

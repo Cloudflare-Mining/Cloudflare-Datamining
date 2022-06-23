@@ -1,0 +1,670 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/subscription.json",
+	"title": "Account Subscriptions",
+	"description": "Listing of an account's subscriptions",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Subscriptions",
+			"description": "Lists all an account's subscriptions",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/subscriptions",
+			"method": "GET",
+			"cfOwnership": "billing",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#billing:read"
+				]
+			},
+			"html_id": "account-subscriptions-list-subscriptions",
+			"uri": "accounts/:account_identifier/subscriptions",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/subscriptions\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"app\": {\n        \"install_id\": null\n      },\n      \"id\": \"506e3185e9c882d175a2d0cb0093d9f2\",\n      \"state\": \"Paid\",\n      \"price\": 20,\n      \"currency\": \"USD\",\n      \"component_values\": [\n        {\n          \"name\": \"page_rules\",\n          \"value\": 20,\n          \"default\": 5,\n          \"price\": 5\n        }\n      ],\n      \"zone\": {\n        \"id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n        \"name\": \"example.com\"\n      },\n      \"frequency\": \"monthly\",\n      \"rate_plan\": {\n        \"id\": \"free\",\n        \"public_name\": \"Business Plan\",\n        \"currency\": \"USD\",\n        \"scope\": \"zone\",\n        \"sets\": [\n          {}\n        ],\n        \"is_contract\": false,\n        \"externally_managed\": false\n      },\n      \"current_period_end\": \"2014-03-31T12:20:00Z\",\n      \"current_period_start\": \"2014-05-11T12:20:00Z\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Create Subscription",
+			"description": "Create an account subscription.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/subscriptions",
+			"method": "POST",
+			"cfOwnership": "billing",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#billing:read",
+					"#billing:edit"
+				]
+			},
+			"html_id": "account-subscriptions-create-subscription",
+			"uri": "accounts/:account_identifier/subscriptions",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/subscriptions\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"app\":{\"install_id\":null},\"id\":\"506e3185e9c882d175a2d0cb0093d9f2\",\"state\":\"Paid\",\"price\":20,\"currency\":\"USD\",\"component_values\":[{\"name\":\"page_rules\",\"value\":20,\"default\":5,\"price\":5}],\"zone\":{\"id\":\"023e105f4ecef8ad9ca31a8372d0c353\",\"name\":\"example.com\"},\"frequency\":\"monthly\",\"rate_plan\":{\"id\":\"free\",\"public_name\":\"Business Plan\",\"currency\":\"USD\",\"scope\":\"zone\",\"sets\":[{}],\"is_contract\":false,\"externally_managed\":false},\"current_period_end\":\"2014-03-31T12:20:00Z\",\"current_period_start\":\"2014-05-11T12:20:00Z\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"app": {
+						"example": "{\n  \"install_id\": null\n}",
+						"properties": {
+							"install_id": {
+								"type": "string",
+								"example": "null",
+								"description": "app install id"
+							}
+						}
+					},
+					"id": {
+						"type": "string",
+						"example": "\"506e3185e9c882d175a2d0cb0093d9f2\"",
+						"description": "Subscription identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"state": {
+						"type": "string",
+						"example": "\"Paid\"",
+						"description": "The state that the subscription is in",
+						"enum": [
+							"Trial",
+							"Provisioned",
+							"Paid",
+							"AwaitingPayment",
+							"Cancelled",
+							"Failed",
+							"Expired"
+						],
+						"readOnly": true
+					},
+					"price": {
+						"type": "number",
+						"example": "20",
+						"description": "The price of the subscription that will be billed, in US dollars",
+						"readOnly": true
+					},
+					"currency": {
+						"type": "string",
+						"example": "\"USD\"",
+						"description": "The monetary unit in which pricing information is displayed",
+						"readOnly": true
+					},
+					"component_values": {
+						"type": "array",
+						"example": "[\n  {\n    \"name\": \"page_rules\",\n    \"value\": 20,\n    \"default\": 5,\n    \"price\": 5\n  }\n]",
+						"description": "The list of add-ons subscribed to",
+						"items": {
+							"description": "A component value for a subscription",
+							"type": "object",
+							"properties": {
+								"name": {
+									"description": "The name of the component_value",
+									"type": "string",
+									"example": "page_rules"
+								},
+								"value": {
+									"description": "The amount of the component value assigned",
+									"type": "number",
+									"example": 20
+								},
+								"default": {
+									"description": "The default amount assigned.",
+									"type": "number",
+									"example": 5
+								},
+								"price": {
+									"description": "The unit price for the component value",
+									"type": "number",
+									"example": 5
+								}
+							}
+						}
+					},
+					"zone": {
+						"type": "object",
+						"example": "{\n  \"id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"name\": \"example.com\"\n}",
+						"properties": {
+							"id": {
+								"type": "string",
+								"example": "\"023e105f4ecef8ad9ca31a8372d0c353\"",
+								"description": "Zone identifier tag",
+								"maxLength": 32,
+								"readOnly": true
+							},
+							"name": {
+								"type": "string",
+								"example": "\"example.com\"",
+								"description": "The domain name",
+								"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
+								"maxLength": 253,
+								"readOnly": true
+							}
+						},
+						"description": "A simple zone object. May have null properties if not a zone subscription."
+					},
+					"frequency": {
+						"type": "string",
+						"example": "\"monthly\"",
+						"description": "How often the subscription is renewed automatically",
+						"enum": [
+							"weekly",
+							"monthly",
+							"quarterly",
+							"yearly"
+						]
+					},
+					"rate_plan": {
+						"type": "object",
+						"example": "{\n  \"id\": \"free\",\n  \"public_name\": \"Business Plan\",\n  \"currency\": \"USD\",\n  \"scope\": \"zone\",\n  \"sets\": [\n    {}\n  ],\n  \"is_contract\": false,\n  \"externally_managed\": false\n}",
+						"properties": {
+							"id": {
+								"example": "\"free\"",
+								"description": "The ID of the rate_plan"
+							},
+							"public_name": {
+								"type": "string",
+								"example": "\"Business Plan\"",
+								"description": "The full name of the rate plan"
+							},
+							"currency": {
+								"type": "string",
+								"example": "\"USD\"",
+								"description": "The currency applied to the rate_plan subscription"
+							},
+							"scope": {
+								"type": "string",
+								"example": "\"zone\"",
+								"description": "The scope that this rate_plan applies to"
+							},
+							"sets": {
+								"type": "array",
+								"example": "[\n  {}\n]",
+								"description": "The list of sets this rate_plan applies to",
+								"items": {
+									"type": "string"
+								}
+							},
+							"is_contract": {
+								"type": "boolean",
+								"example": "false",
+								"description": "Whether or not a rate_plan is enterprise-based (or newly adopted term contract)"
+							},
+							"externally_managed": {
+								"type": "boolean",
+								"example": "false",
+								"description": "Whether this rate_plan is managed externally from Cloudflare"
+							}
+						},
+						"description": "The rate plan applied to the subscription"
+					},
+					"current_period_end": {
+						"type": "string",
+						"example": "\"2014-03-31T12:20:00Z\"",
+						"description": "The end of the current period, and also when the next billing is due",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"current_period_start": {
+						"type": "string",
+						"example": "\"2014-05-11T12:20:00Z\"",
+						"description": "When the current billing period started, may be the same as InitialPeriodStart if this is the first period",
+						"format": "date-time",
+						"readOnly": true
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"app",
+					"id",
+					"state",
+					"price",
+					"currency",
+					"component_values",
+					"zone",
+					"frequency",
+					"rate_plan",
+					"current_period_end",
+					"current_period_start"
+				],
+				"objects": [],
+				"example": "{\n  \"app\": {\n    \"install_id\": null\n  },\n  \"id\": \"506e3185e9c882d175a2d0cb0093d9f2\",\n  \"state\": \"Paid\",\n  \"price\": 20,\n  \"currency\": \"USD\",\n  \"component_values\": [\n    {\n      \"name\": \"page_rules\",\n      \"value\": 20,\n      \"default\": 5,\n      \"price\": 5\n    }\n  ],\n  \"zone\": {\n    \"id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"name\": \"example.com\"\n  },\n  \"frequency\": \"monthly\",\n  \"rate_plan\": {\n    \"id\": \"free\",\n    \"public_name\": \"Business Plan\",\n    \"currency\": \"USD\",\n    \"scope\": \"zone\",\n    \"sets\": [\n      {}\n    ],\n    \"is_contract\": false,\n    \"externally_managed\": false\n  },\n  \"current_period_end\": \"2014-03-31T12:20:00Z\",\n  \"current_period_start\": \"2014-05-11T12:20:00Z\"\n}",
+				"title": "Subscription",
+				"description": "A base subscription object now with A la carte subscriptions"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"app\": {\n      \"install_id\": null\n    },\n    \"id\": \"506e3185e9c882d175a2d0cb0093d9f2\",\n    \"state\": \"Paid\",\n    \"price\": 20,\n    \"currency\": \"USD\",\n    \"component_values\": [\n      {\n        \"name\": \"page_rules\",\n        \"value\": 20,\n        \"default\": 5,\n        \"price\": 5\n      }\n    ],\n    \"zone\": {\n      \"id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n      \"name\": \"example.com\"\n    },\n    \"frequency\": \"monthly\",\n    \"rate_plan\": {\n      \"id\": \"free\",\n      \"public_name\": \"Business Plan\",\n      \"currency\": \"USD\",\n      \"scope\": \"zone\",\n      \"sets\": [\n        {}\n      ],\n      \"is_contract\": false,\n      \"externally_managed\": false\n    },\n    \"current_period_end\": \"2014-03-31T12:20:00Z\",\n    \"current_period_start\": \"2014-05-11T12:20:00Z\"\n  }\n}"
+		},
+		{
+			"title": "Update Subscription",
+			"description": "Update an account subscriptions.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/subscriptions/{#/definitions/subscription_identifier}",
+			"method": "PUT",
+			"cfOwnership": "billing",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#billing:read",
+					"#billing:edit"
+				]
+			},
+			"html_id": "account-subscriptions-update-subscription",
+			"uri": "accounts/:account_identifier/subscriptions/:subscription_identifier",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/subscriptions/506e3185e9c882d175a2d0cb0093d9f2\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"app\":{\"install_id\":null},\"id\":\"506e3185e9c882d175a2d0cb0093d9f2\",\"state\":\"Paid\",\"price\":20,\"currency\":\"USD\",\"component_values\":[{\"name\":\"page_rules\",\"value\":20,\"default\":5,\"price\":5}],\"zone\":{\"id\":\"023e105f4ecef8ad9ca31a8372d0c353\",\"name\":\"example.com\"},\"frequency\":\"monthly\",\"rate_plan\":{\"id\":\"free\",\"public_name\":\"Business Plan\",\"currency\":\"USD\",\"scope\":\"zone\",\"sets\":[{}],\"is_contract\":false,\"externally_managed\":false},\"current_period_end\":\"2014-03-31T12:20:00Z\",\"current_period_start\":\"2014-05-11T12:20:00Z\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"app": {
+						"example": "{\n  \"install_id\": null\n}",
+						"properties": {
+							"install_id": {
+								"type": "string",
+								"example": "null",
+								"description": "app install id"
+							}
+						}
+					},
+					"id": {
+						"type": "string",
+						"example": "\"506e3185e9c882d175a2d0cb0093d9f2\"",
+						"description": "Subscription identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"state": {
+						"type": "string",
+						"example": "\"Paid\"",
+						"description": "The state that the subscription is in",
+						"enum": [
+							"Trial",
+							"Provisioned",
+							"Paid",
+							"AwaitingPayment",
+							"Cancelled",
+							"Failed",
+							"Expired"
+						],
+						"readOnly": true
+					},
+					"price": {
+						"type": "number",
+						"example": "20",
+						"description": "The price of the subscription that will be billed, in US dollars",
+						"readOnly": true
+					},
+					"currency": {
+						"type": "string",
+						"example": "\"USD\"",
+						"description": "The monetary unit in which pricing information is displayed",
+						"readOnly": true
+					},
+					"component_values": {
+						"type": "array",
+						"example": "[\n  {\n    \"name\": \"page_rules\",\n    \"value\": 20,\n    \"default\": 5,\n    \"price\": 5\n  }\n]",
+						"description": "The list of add-ons subscribed to",
+						"items": {
+							"description": "A component value for a subscription",
+							"type": "object",
+							"properties": {
+								"name": {
+									"description": "The name of the component_value",
+									"type": "string",
+									"example": "page_rules"
+								},
+								"value": {
+									"description": "The amount of the component value assigned",
+									"type": "number",
+									"example": 20
+								},
+								"default": {
+									"description": "The default amount assigned.",
+									"type": "number",
+									"example": 5
+								},
+								"price": {
+									"description": "The unit price for the component value",
+									"type": "number",
+									"example": 5
+								}
+							}
+						}
+					},
+					"zone": {
+						"type": "object",
+						"example": "{\n  \"id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"name\": \"example.com\"\n}",
+						"properties": {
+							"id": {
+								"type": "string",
+								"example": "\"023e105f4ecef8ad9ca31a8372d0c353\"",
+								"description": "Zone identifier tag",
+								"maxLength": 32,
+								"readOnly": true
+							},
+							"name": {
+								"type": "string",
+								"example": "\"example.com\"",
+								"description": "The domain name",
+								"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
+								"maxLength": 253,
+								"readOnly": true
+							}
+						},
+						"description": "A simple zone object. May have null properties if not a zone subscription."
+					},
+					"frequency": {
+						"type": "string",
+						"example": "\"monthly\"",
+						"description": "How often the subscription is renewed automatically",
+						"enum": [
+							"weekly",
+							"monthly",
+							"quarterly",
+							"yearly"
+						]
+					},
+					"rate_plan": {
+						"type": "object",
+						"example": "{\n  \"id\": \"free\",\n  \"public_name\": \"Business Plan\",\n  \"currency\": \"USD\",\n  \"scope\": \"zone\",\n  \"sets\": [\n    {}\n  ],\n  \"is_contract\": false,\n  \"externally_managed\": false\n}",
+						"properties": {
+							"id": {
+								"example": "\"free\"",
+								"description": "The ID of the rate_plan"
+							},
+							"public_name": {
+								"type": "string",
+								"example": "\"Business Plan\"",
+								"description": "The full name of the rate plan"
+							},
+							"currency": {
+								"type": "string",
+								"example": "\"USD\"",
+								"description": "The currency applied to the rate_plan subscription"
+							},
+							"scope": {
+								"type": "string",
+								"example": "\"zone\"",
+								"description": "The scope that this rate_plan applies to"
+							},
+							"sets": {
+								"type": "array",
+								"example": "[\n  {}\n]",
+								"description": "The list of sets this rate_plan applies to",
+								"items": {
+									"type": "string"
+								}
+							},
+							"is_contract": {
+								"type": "boolean",
+								"example": "false",
+								"description": "Whether or not a rate_plan is enterprise-based (or newly adopted term contract)"
+							},
+							"externally_managed": {
+								"type": "boolean",
+								"example": "false",
+								"description": "Whether this rate_plan is managed externally from Cloudflare"
+							}
+						},
+						"description": "The rate plan applied to the subscription"
+					},
+					"current_period_end": {
+						"type": "string",
+						"example": "\"2014-03-31T12:20:00Z\"",
+						"description": "The end of the current period, and also when the next billing is due",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"current_period_start": {
+						"type": "string",
+						"example": "\"2014-05-11T12:20:00Z\"",
+						"description": "When the current billing period started, may be the same as InitialPeriodStart if this is the first period",
+						"format": "date-time",
+						"readOnly": true
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"app",
+					"id",
+					"state",
+					"price",
+					"currency",
+					"component_values",
+					"zone",
+					"frequency",
+					"rate_plan",
+					"current_period_end",
+					"current_period_start"
+				],
+				"objects": [],
+				"example": "{\n  \"app\": {\n    \"install_id\": null\n  },\n  \"id\": \"506e3185e9c882d175a2d0cb0093d9f2\",\n  \"state\": \"Paid\",\n  \"price\": 20,\n  \"currency\": \"USD\",\n  \"component_values\": [\n    {\n      \"name\": \"page_rules\",\n      \"value\": 20,\n      \"default\": 5,\n      \"price\": 5\n    }\n  ],\n  \"zone\": {\n    \"id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"name\": \"example.com\"\n  },\n  \"frequency\": \"monthly\",\n  \"rate_plan\": {\n    \"id\": \"free\",\n    \"public_name\": \"Business Plan\",\n    \"currency\": \"USD\",\n    \"scope\": \"zone\",\n    \"sets\": [\n      {}\n    ],\n    \"is_contract\": false,\n    \"externally_managed\": false\n  },\n  \"current_period_end\": \"2014-03-31T12:20:00Z\",\n  \"current_period_start\": \"2014-05-11T12:20:00Z\"\n}",
+				"title": "Subscription",
+				"description": "A base subscription object now with A la carte subscriptions"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"app\": {\n      \"install_id\": null\n    },\n    \"id\": \"506e3185e9c882d175a2d0cb0093d9f2\",\n    \"state\": \"Paid\",\n    \"price\": 20,\n    \"currency\": \"USD\",\n    \"component_values\": [\n      {\n        \"name\": \"page_rules\",\n        \"value\": 20,\n        \"default\": 5,\n        \"price\": 5\n      }\n    ],\n    \"zone\": {\n      \"id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n      \"name\": \"example.com\"\n    },\n    \"frequency\": \"monthly\",\n    \"rate_plan\": {\n      \"id\": \"free\",\n      \"public_name\": \"Business Plan\",\n      \"currency\": \"USD\",\n      \"scope\": \"zone\",\n      \"sets\": [\n        {}\n      ],\n      \"is_contract\": false,\n      \"externally_managed\": false\n    },\n    \"current_period_end\": \"2014-03-31T12:20:00Z\",\n    \"current_period_start\": \"2014-05-11T12:20:00Z\"\n  }\n}"
+		},
+		{
+			"title": "Delete Subscription",
+			"description": "Deletes an account's subscription",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/subscriptions/{#/definitions/subscription_identifier}",
+			"method": "DELETE",
+			"cfOwnership": "billing",
+			"cfPermissionsRequired": {
+				"enum": [
+					"#billing:edit"
+				]
+			},
+			"html_id": "account-subscriptions-delete-subscription",
+			"uri": "accounts/:account_identifier/subscriptions/:subscription_identifier",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/subscriptions/506e3185e9c882d175a2d0cb0093d9f2\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"subscription_id\": \"506e3185e9c882d175a2d0cb0093d9f2\"\n  }\n}"
+		}
+	],
+	"html_id": "account-subscriptions",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"app": {
+				"example": "{\n  \"install_id\": null\n}",
+				"properties": {
+					"install_id": {
+						"type": "string",
+						"example": "null",
+						"description": "app install id"
+					}
+				}
+			},
+			"id": {
+				"type": "string",
+				"example": "\"506e3185e9c882d175a2d0cb0093d9f2\"",
+				"description": "Subscription identifier tag",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"state": {
+				"type": "string",
+				"example": "\"Paid\"",
+				"description": "The state that the subscription is in",
+				"enum": [
+					"Trial",
+					"Provisioned",
+					"Paid",
+					"AwaitingPayment",
+					"Cancelled",
+					"Failed",
+					"Expired"
+				],
+				"readOnly": true
+			},
+			"price": {
+				"type": "number",
+				"example": "20",
+				"description": "The price of the subscription that will be billed, in US dollars",
+				"readOnly": true
+			},
+			"currency": {
+				"type": "string",
+				"example": "\"USD\"",
+				"description": "The monetary unit in which pricing information is displayed",
+				"readOnly": true
+			},
+			"component_values": {
+				"type": "array",
+				"example": "[\n  {\n    \"name\": \"page_rules\",\n    \"value\": 20,\n    \"default\": 5,\n    \"price\": 5\n  }\n]",
+				"description": "The list of add-ons subscribed to",
+				"items": {
+					"description": "A component value for a subscription",
+					"type": "object",
+					"properties": {
+						"name": {
+							"description": "The name of the component_value",
+							"type": "string",
+							"example": "page_rules"
+						},
+						"value": {
+							"description": "The amount of the component value assigned",
+							"type": "number",
+							"example": 20
+						},
+						"default": {
+							"description": "The default amount assigned.",
+							"type": "number",
+							"example": 5
+						},
+						"price": {
+							"description": "The unit price for the component value",
+							"type": "number",
+							"example": 5
+						}
+					}
+				}
+			},
+			"zone": {
+				"type": "object",
+				"example": "{\n  \"id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"name\": \"example.com\"\n}",
+				"properties": {
+					"id": {
+						"type": "string",
+						"example": "\"023e105f4ecef8ad9ca31a8372d0c353\"",
+						"description": "Zone identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "The domain name",
+						"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
+						"maxLength": 253,
+						"readOnly": true
+					}
+				},
+				"description": "A simple zone object. May have null properties if not a zone subscription."
+			},
+			"frequency": {
+				"type": "string",
+				"example": "\"monthly\"",
+				"description": "How often the subscription is renewed automatically",
+				"enum": [
+					"weekly",
+					"monthly",
+					"quarterly",
+					"yearly"
+				]
+			},
+			"rate_plan": {
+				"type": "object",
+				"example": "{\n  \"id\": \"free\",\n  \"public_name\": \"Business Plan\",\n  \"currency\": \"USD\",\n  \"scope\": \"zone\",\n  \"sets\": [\n    {}\n  ],\n  \"is_contract\": false,\n  \"externally_managed\": false\n}",
+				"properties": {
+					"id": {
+						"example": "\"free\"",
+						"description": "The ID of the rate_plan"
+					},
+					"public_name": {
+						"type": "string",
+						"example": "\"Business Plan\"",
+						"description": "The full name of the rate plan"
+					},
+					"currency": {
+						"type": "string",
+						"example": "\"USD\"",
+						"description": "The currency applied to the rate_plan subscription"
+					},
+					"scope": {
+						"type": "string",
+						"example": "\"zone\"",
+						"description": "The scope that this rate_plan applies to"
+					},
+					"sets": {
+						"type": "array",
+						"example": "[\n  {}\n]",
+						"description": "The list of sets this rate_plan applies to",
+						"items": {
+							"type": "string"
+						}
+					},
+					"is_contract": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Whether or not a rate_plan is enterprise-based (or newly adopted term contract)"
+					},
+					"externally_managed": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Whether this rate_plan is managed externally from Cloudflare"
+					}
+				},
+				"description": "The rate plan applied to the subscription"
+			},
+			"current_period_end": {
+				"type": "string",
+				"example": "\"2014-03-31T12:20:00Z\"",
+				"description": "The end of the current period, and also when the next billing is due",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"current_period_start": {
+				"type": "string",
+				"example": "\"2014-05-11T12:20:00Z\"",
+				"description": "When the current billing period started, may be the same as InitialPeriodStart if this is the first period",
+				"format": "date-time",
+				"readOnly": true
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"app",
+			"id",
+			"state",
+			"price",
+			"currency",
+			"component_values",
+			"zone",
+			"frequency",
+			"rate_plan",
+			"current_period_end",
+			"current_period_start"
+		],
+		"objects": [],
+		"example": "{\n  \"app\": {\n    \"install_id\": null\n  },\n  \"id\": \"506e3185e9c882d175a2d0cb0093d9f2\",\n  \"state\": \"Paid\",\n  \"price\": 20,\n  \"currency\": \"USD\",\n  \"component_values\": [\n    {\n      \"name\": \"page_rules\",\n      \"value\": 20,\n      \"default\": 5,\n      \"price\": 5\n    }\n  ],\n  \"zone\": {\n    \"id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"name\": \"example.com\"\n  },\n  \"frequency\": \"monthly\",\n  \"rate_plan\": {\n    \"id\": \"free\",\n    \"public_name\": \"Business Plan\",\n    \"currency\": \"USD\",\n    \"scope\": \"zone\",\n    \"sets\": [\n      {}\n    ],\n    \"is_contract\": false,\n    \"externally_managed\": false\n  },\n  \"current_period_end\": \"2014-03-31T12:20:00Z\",\n  \"current_period_start\": \"2014-05-11T12:20:00Z\"\n}",
+		"title": "Account Subscriptions",
+		"description": "Listing of an account's subscriptions"
+	}
+}

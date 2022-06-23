@@ -1,0 +1,257 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/dns-secondary-primary-zone.json",
+	"title": "Secondary DNS (Primary Zone)",
+	"description": "Configure Secondary DNS for the Primary Zone (Cloudflare as Primary).",
+	"type": "object",
+	"links": [
+		{
+			"title": "Primary Zone Configuration Details",
+			"description": "Get primary zone configuration for outgoing zone transfers",
+			"rel": "self",
+			"href": "zones/{#/definitions/identifier}/secondary_dns/outgoing",
+			"method": "GET",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"html_id": "secondary-dns-primary-zone--primary-zone-configuration-details",
+			"uri": "zones/:identifier/secondary_dns/outgoing",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/269d8f4853475ca241c4e730be286b20/secondary_dns/outgoing\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"269d8f4853475ca241c4e730be286b20\",\n    \"name\": \"www.example.com.\",\n    \"peers\": [\n      \"23ff594956f20c2a721606e94745a8aa\",\n      \"00920f38ce07c2e2f4df50b1f61d4194\"\n    ],\n    \"soa_serial\": 2019102400,\n    \"created_time\": \"2019-10-24T17:09:42.883908+01:00\",\n    \"checked_time\": \"2019-10-24T17:09:42.883908+01:00\",\n    \"last_transferred_time\": \"2019-10-24T17:09:42.883908+01:00\"\n  }\n}"
+		},
+		{
+			"title": "Update Primary Zone Configuration",
+			"description": "Update primary zone configuration for outgoing zone transfers",
+			"rel": "self",
+			"href": "zones/{#/definitions/identifier}/secondary_dns/outgoing",
+			"method": "PUT",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"html_id": "secondary-dns-primary-zone--update-primary-zone-configuration",
+			"uri": "zones/:identifier/secondary_dns/outgoing",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/269d8f4853475ca241c4e730be286b20/secondary_dns/outgoing\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"id\":\"269d8f4853475ca241c4e730be286b20\",\"name\":\"www.example.com.\",\"peers\":[\"23ff594956f20c2a721606e94745a8aa\",\"00920f38ce07c2e2f4df50b1f61d4194\"]}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"269d8f4853475ca241c4e730be286b20\"",
+						"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"description": "API item identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"name": {
+						"type": "string",
+						"example": "\"www.example.com.\"",
+						"description": "Zone name"
+					},
+					"peers": {
+						"type": "array",
+						"example": "[\n  \"23ff594956f20c2a721606e94745a8aa\",\n  \"00920f38ce07c2e2f4df50b1f61d4194\"\n]",
+						"description": "A list of peer tags"
+					}
+				},
+				"required_props": [
+					"id",
+					"name",
+					"peers"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"id\": \"269d8f4853475ca241c4e730be286b20\",\n  \"name\": \"www.example.com.\",\n  \"peers\": [\n    \"23ff594956f20c2a721606e94745a8aa\",\n    \"00920f38ce07c2e2f4df50b1f61d4194\"\n  ]\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"269d8f4853475ca241c4e730be286b20\",\n    \"name\": \"www.example.com.\",\n    \"peers\": [\n      \"23ff594956f20c2a721606e94745a8aa\",\n      \"00920f38ce07c2e2f4df50b1f61d4194\"\n    ],\n    \"soa_serial\": 2019102400,\n    \"created_time\": \"2019-10-24T17:09:42.883908+01:00\",\n    \"checked_time\": \"2019-10-24T17:09:42.883908+01:00\",\n    \"last_transferred_time\": \"2019-10-24T17:09:42.883908+01:00\"\n  }\n}"
+		},
+		{
+			"title": "Delete Primary Zone Configuration",
+			"description": "Delete primary zone configuration for outgoing zone transfers",
+			"rel": "self",
+			"href": "zones/{#/definitions/identifier}/secondary_dns/outgoing",
+			"method": "DELETE",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"html_id": "secondary-dns-primary-zone--delete-primary-zone-configuration",
+			"uri": "zones/:identifier/secondary_dns/outgoing",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/269d8f4853475ca241c4e730be286b20/secondary_dns/outgoing\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"269d8f4853475ca241c4e730be286b20\"\n  }\n}"
+		},
+		{
+			"title": "Create Primary Zone Configuration",
+			"description": "Create primary zone configuration for outgoing zone transfers",
+			"rel": "self",
+			"href": "zones/{#/definitions/identifier}/secondary_dns/outgoing",
+			"method": "POST",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"html_id": "secondary-dns-primary-zone--create-primary-zone-configuration",
+			"uri": "zones/:identifier/secondary_dns/outgoing",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/269d8f4853475ca241c4e730be286b20/secondary_dns/outgoing\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"id\":\"269d8f4853475ca241c4e730be286b20\",\"name\":\"www.example.com.\",\"peers\":[\"23ff594956f20c2a721606e94745a8aa\",\"00920f38ce07c2e2f4df50b1f61d4194\"]}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"269d8f4853475ca241c4e730be286b20\"",
+						"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"description": "API item identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"name": {
+						"type": "string",
+						"example": "\"www.example.com.\"",
+						"description": "Zone name"
+					},
+					"peers": {
+						"type": "array",
+						"example": "[\n  \"23ff594956f20c2a721606e94745a8aa\",\n  \"00920f38ce07c2e2f4df50b1f61d4194\"\n]",
+						"description": "A list of peer tags"
+					}
+				},
+				"required_props": [
+					"id",
+					"name",
+					"peers"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"id\": \"269d8f4853475ca241c4e730be286b20\",\n  \"name\": \"www.example.com.\",\n  \"peers\": [\n    \"23ff594956f20c2a721606e94745a8aa\",\n    \"00920f38ce07c2e2f4df50b1f61d4194\"\n  ]\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"269d8f4853475ca241c4e730be286b20\",\n    \"name\": \"www.example.com.\",\n    \"peers\": [\n      \"23ff594956f20c2a721606e94745a8aa\",\n      \"00920f38ce07c2e2f4df50b1f61d4194\"\n    ],\n    \"soa_serial\": 2019102400,\n    \"created_time\": \"2019-10-24T17:09:42.883908+01:00\",\n    \"checked_time\": \"2019-10-24T17:09:42.883908+01:00\",\n    \"last_transferred_time\": \"2019-10-24T17:09:42.883908+01:00\"\n  }\n}"
+		},
+		{
+			"title": "Enable Outgoing Zone Transfers",
+			"description": "Enable outgoing zone transfers for primary zone",
+			"rel": "self",
+			"href": "zones/{#/definitions/identifier}/secondary_dns/outgoing/enable",
+			"method": "POST",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"html_id": "secondary-dns-primary-zone--enable-outgoing-zone-transfers",
+			"uri": "zones/:identifier/secondary_dns/outgoing/enable",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/269d8f4853475ca241c4e730be286b20/secondary_dns/outgoing/enable\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": \"Enabled\"\n}"
+		},
+		{
+			"title": "Disable Outgoing Zone Transfers",
+			"description": "Disable outgoing zone transfers for primary zone and clears IXFR backlog of primary zone.",
+			"rel": "self",
+			"href": "zones/{#/definitions/identifier}/secondary_dns/outgoing/disable",
+			"method": "POST",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"html_id": "secondary-dns-primary-zone--disable-outgoing-zone-transfers",
+			"uri": "zones/:identifier/secondary_dns/outgoing/disable",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/269d8f4853475ca241c4e730be286b20/secondary_dns/outgoing/disable\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": \"Disabled\"\n}"
+		},
+		{
+			"title": "Get Outgoing Zone Transfer Status",
+			"description": "Get primary zone transfer status",
+			"rel": "self",
+			"href": "zones/{#/definitions/identifier}/secondary_dns/outgoing/status",
+			"method": "GET",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"html_id": "secondary-dns-primary-zone--get-outgoing-zone-transfer-status",
+			"uri": "zones/:identifier/secondary_dns/outgoing/status",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/269d8f4853475ca241c4e730be286b20/secondary_dns/outgoing/status\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": \"Enabled\"\n}"
+		},
+		{
+			"title": "Force DNS NOTIFY",
+			"description": "Notifies the secondary nameserver(s) and clears IXFR backlog of primary zone.",
+			"rel": "self",
+			"href": "zones/{#/definitions/identifier}/secondary_dns/outgoing/force_notify",
+			"method": "POST",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"html_id": "secondary-dns-primary-zone--force-dns-notify",
+			"uri": "zones/:identifier/secondary_dns/outgoing/force_notify",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/269d8f4853475ca241c4e730be286b20/secondary_dns/outgoing/force_notify\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": \"OK\"\n}"
+		}
+	],
+	"html_id": "secondary-dns-primary-zone-",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"269d8f4853475ca241c4e730be286b20\"",
+				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "API item identifier tag",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"name": {
+				"type": "string",
+				"example": "\"www.example.com.\"",
+				"description": "Zone name"
+			},
+			"peers": {
+				"type": "array",
+				"example": "[\n  \"23ff594956f20c2a721606e94745a8aa\",\n  \"00920f38ce07c2e2f4df50b1f61d4194\"\n]",
+				"description": "A list of peer tags"
+			}
+		},
+		"required_props": [
+			"id",
+			"name",
+			"peers"
+		],
+		"optional_props": [],
+		"objects": [],
+		"example": "{\n  \"id\": \"269d8f4853475ca241c4e730be286b20\",\n  \"name\": \"www.example.com.\",\n  \"peers\": [\n    \"23ff594956f20c2a721606e94745a8aa\",\n    \"00920f38ce07c2e2f4df50b1f61d4194\"\n  ]\n}",
+		"title": "Secondary DNS (Primary Zone)",
+		"description": "Configure Secondary DNS for the Primary Zone (Cloudflare as Primary)."
+	}
+}

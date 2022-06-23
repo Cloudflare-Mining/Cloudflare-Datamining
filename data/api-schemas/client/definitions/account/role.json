@@ -1,0 +1,286 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/definitions/account/role.json",
+	"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+	"title": "Account Roles",
+	"description": "A Role defines what permissions a Member of an Account has.",
+	"type": "object",
+	"required": [
+		"id",
+		"name",
+		"description",
+		"permissions"
+	],
+	"properties": {
+		"id": {
+			"description": "Role identifier tag",
+			"type": "string",
+			"maxLength": 32,
+			"readOnly": true,
+			"example": "3536bcfad5faccb999b47003c79917fb"
+		},
+		"name": {
+			"type": "string",
+			"description": "Role Name",
+			"maxLength": 120,
+			"readOnly": true,
+			"example": "Account Administrator"
+		},
+		"description": {
+			"type": "string",
+			"description": "Description of role's permissions",
+			"readOnly": true,
+			"example": "Administrative access to the entire Account"
+		},
+		"permissions": {
+			"id": "https://api.cloudflare.com/schemas/v4/client/definitions/permissions.json",
+			"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+			"title": "Permissions Object",
+			"description": "Access permissions for a Role",
+			"type": "object",
+			"properties": {
+				"analytics": {
+					"type": "object",
+					"properties": {
+						"read": {
+							"type": "boolean",
+							"example": true
+						},
+						"write": {
+							"type": "boolean",
+							"example": true
+						}
+					},
+					"example": {
+						"read": true,
+						"write": false
+					}
+				},
+				"billing": {
+					"type": "object",
+					"properties": {
+						"read": {
+							"type": "boolean",
+							"example": true
+						},
+						"write": {
+							"type": "boolean",
+							"example": true
+						}
+					},
+					"example": {
+						"read": true,
+						"write": false
+					}
+				},
+				"cache_purge": {
+					"type": "object",
+					"properties": {
+						"read": {
+							"type": "boolean",
+							"example": true
+						},
+						"write": {
+							"type": "boolean",
+							"example": true
+						}
+					},
+					"example": {
+						"read": true,
+						"write": false
+					}
+				},
+				"dns": {
+					"type": "object",
+					"properties": {
+						"read": {
+							"type": "boolean",
+							"example": true
+						},
+						"write": {
+							"type": "boolean",
+							"example": true
+						}
+					},
+					"example": {
+						"read": true,
+						"write": false
+					}
+				},
+				"dns_records": {
+					"type": "object",
+					"properties": {
+						"read": {
+							"type": "boolean",
+							"example": true
+						},
+						"write": {
+							"type": "boolean",
+							"example": true
+						}
+					},
+					"example": {
+						"read": true,
+						"write": false
+					}
+				},
+				"lb": {
+					"type": "object",
+					"properties": {
+						"read": {
+							"type": "boolean",
+							"example": true
+						},
+						"write": {
+							"type": "boolean",
+							"example": true
+						}
+					},
+					"example": {
+						"read": true,
+						"write": false
+					}
+				},
+				"logs": {
+					"type": "object",
+					"properties": {
+						"read": {
+							"type": "boolean",
+							"example": true
+						},
+						"write": {
+							"type": "boolean",
+							"example": true
+						}
+					},
+					"example": {
+						"read": true,
+						"write": false
+					}
+				},
+				"organization": {
+					"type": "object",
+					"properties": {
+						"read": {
+							"type": "boolean",
+							"example": true
+						},
+						"write": {
+							"type": "boolean",
+							"example": true
+						}
+					},
+					"example": {
+						"read": true,
+						"write": false
+					}
+				},
+				"ssl": {
+					"type": "object",
+					"properties": {
+						"read": {
+							"type": "boolean",
+							"example": true
+						},
+						"write": {
+							"type": "boolean",
+							"example": true
+						}
+					},
+					"example": {
+						"read": true,
+						"write": false
+					}
+				},
+				"waf": {
+					"type": "object",
+					"properties": {
+						"read": {
+							"type": "boolean",
+							"example": true
+						},
+						"write": {
+							"type": "boolean",
+							"example": true
+						}
+					},
+					"example": {
+						"read": true,
+						"write": false
+					}
+				},
+				"zones": {
+					"type": "object",
+					"properties": {
+						"read": {
+							"type": "boolean",
+							"example": true
+						},
+						"write": {
+							"type": "boolean",
+							"example": true
+						}
+					},
+					"example": {
+						"read": true,
+						"write": false
+					}
+				},
+				"zone_settings": {
+					"type": "object",
+					"properties": {
+						"read": {
+							"type": "boolean",
+							"example": true
+						},
+						"write": {
+							"type": "boolean",
+							"example": true
+						}
+					},
+					"example": {
+						"read": true,
+						"write": false
+					}
+				}
+			},
+			"example": {
+				"zones": {
+					"read": true,
+					"write": true
+				},
+				"analytics": {
+					"read": true,
+					"write": false
+				}
+			},
+			"definitions": {
+				"grants": {
+					"type": "object",
+					"properties": {
+						"read": {
+							"type": "boolean",
+							"example": true
+						},
+						"write": {
+							"type": "boolean",
+							"example": true
+						}
+					},
+					"example": {
+						"read": true,
+						"write": false
+					}
+				}
+			}
+		}
+	},
+	"definitions": {
+		"identifier": {
+			"description": "Role identifier tag",
+			"type": "string",
+			"maxLength": 32,
+			"readOnly": true,
+			"example": "3536bcfad5faccb999b47003c79917fb"
+		}
+	}
+}

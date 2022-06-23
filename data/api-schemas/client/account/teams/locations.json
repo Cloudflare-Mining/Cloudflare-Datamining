@@ -1,0 +1,220 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/teams/locations.json",
+	"title": "Zero Trust Gateway Locations",
+	"description": "Locations are a collection of resources like network ranges or destination IPs that can map to a physical location like an office and are used when creating Zero Trust Gateway Resolver DNS policies",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Zero Trust Gateway Locations",
+			"description": "List Zero Trust Gateway Locations for an account",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/gateway/locations",
+			"method": "GET",
+			"cfOwnership": "gateway",
+			"html_id": "zero-trust-gateway-locations-list-zero-trust-gateway-locations",
+			"uri": "accounts/:identifier/gateway/locations",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/locations\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"ed35569b41ce4d1facfe683550f54086\",\n      \"name\": \"Austin Office Location\",\n      \"ip\": \"2001:0db8:85a3:0000:0000:8a2e:0370:7334\",\n      \"networks\": [\n        \"192.0.2.1\"\n      ],\n      \"doh_subdomain\": \"oli3n9zkz5\",\n      \"client_default\": \"false\",\n      \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Zero Trust Gateway Location Details",
+			"description": "Fetch a single Zero Trust Gateway Location",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/gateway/locations/{#/definitions/uuid}",
+			"method": "GET",
+			"cfOwnership": "gateway",
+			"html_id": "zero-trust-gateway-locations-zero-trust-gateway-location-details",
+			"uri": "accounts/:identifier/gateway/locations/:uuid",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/locations/ed35569b41ce4d1facfe683550f54086\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"ed35569b41ce4d1facfe683550f54086\",\n    \"name\": \"Austin Office Location\",\n    \"ip\": \"2001:0db8:85a3:0000:0000:8a2e:0370:7334\",\n    \"networks\": [\n      \"192.0.2.1\"\n    ],\n    \"doh_subdomain\": \"oli3n9zkz5\",\n    \"client_default\": \"false\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
+		},
+		{
+			"title": "Create Zero Trust Gateway Location",
+			"description": "Create a new Zero Trust Gateway Location",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/gateway/locations",
+			"method": "POST",
+			"cfOwnership": "gateway",
+			"html_id": "zero-trust-gateway-locations-create-zero-trust-gateway-location",
+			"uri": "accounts/:identifier/gateway/locations",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/locations\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"Austin Office Location\",\"networks\":[\"192.0.2.1\"],\"client_default\":\"false\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"Austin Office Location\"",
+						"description": "The name of the Location"
+					},
+					"networks": {
+						"type": "array",
+						"example": "[\n  \"192.0.2.1\"\n]",
+						"description": "A list of network ranges that requests from this location would originate from",
+						"items": {
+							"type": "string",
+							"description": "The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /16",
+							"example": "192.0.2.1"
+						}
+					},
+					"client_default": {
+						"type": "boolean",
+						"example": "\"false\"",
+						"description": "Set if the location is the default one"
+					}
+				},
+				"required_props": [
+					"name"
+				],
+				"optional_props": [
+					"networks",
+					"client_default"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": \"Austin Office Location\",\n  \"networks\": [\n    \"192.0.2.1\"\n  ],\n  \"client_default\": \"false\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"ed35569b41ce4d1facfe683550f54086\",\n    \"name\": \"Austin Office Location\",\n    \"ip\": \"2001:0db8:85a3:0000:0000:8a2e:0370:7334\",\n    \"networks\": [\n      \"192.0.2.1\"\n    ],\n    \"doh_subdomain\": \"oli3n9zkz5\",\n    \"client_default\": \"false\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
+		},
+		{
+			"title": "Update Zero Trust Gateway Location",
+			"description": "Update a configured Zero Trust Gateway Location",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/gateway/locations/{#/definitions/uuid}",
+			"method": "PUT",
+			"cfOwnership": "gateway",
+			"html_id": "zero-trust-gateway-locations-update-zero-trust-gateway-location",
+			"uri": "accounts/:identifier/gateway/locations/:uuid",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/locations/ed35569b41ce4d1facfe683550f54086\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"Austin Office Location\",\"networks\":[\"192.0.2.1\"],\"client_default\":\"false\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"Austin Office Location\"",
+						"description": "The name of the Location"
+					},
+					"networks": {
+						"type": "array",
+						"example": "[\n  \"192.0.2.1\"\n]",
+						"description": "A list of network ranges that requests from this location would originate from",
+						"items": {
+							"type": "string",
+							"description": "The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /16",
+							"example": "192.0.2.1"
+						}
+					},
+					"client_default": {
+						"type": "boolean",
+						"example": "\"false\"",
+						"description": "Set if the location is the default one"
+					}
+				},
+				"required_props": [
+					"name"
+				],
+				"optional_props": [
+					"networks",
+					"client_default"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": \"Austin Office Location\",\n  \"networks\": [\n    \"192.0.2.1\"\n  ],\n  \"client_default\": \"false\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"ed35569b41ce4d1facfe683550f54086\",\n    \"name\": \"Austin Office Location\",\n    \"ip\": \"2001:0db8:85a3:0000:0000:8a2e:0370:7334\",\n    \"networks\": [\n      \"192.0.2.1\"\n    ],\n    \"doh_subdomain\": \"oli3n9zkz5\",\n    \"client_default\": \"false\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
+		},
+		{
+			"title": "Delete Zero Trust Gateway Location",
+			"description": "Delete a Zero Trust Gateway Location",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/gateway/locations/{#/definitions/uuid}",
+			"method": "DELETE",
+			"cfOwnership": "gateway",
+			"html_id": "zero-trust-gateway-locations-delete-zero-trust-gateway-location",
+			"uri": "accounts/:identifier/gateway/locations/:uuid",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/locations/ed35569b41ce4d1facfe683550f54086\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {}\n}"
+		}
+	],
+	"html_id": "zero-trust-gateway-locations",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"ed35569b41ce4d1facfe683550f54086\"",
+				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "API item identifier tag",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"name": {
+				"type": "string",
+				"example": "\"Austin Office Location\"",
+				"description": "The name of the Location"
+			},
+			"ip": {
+				"type": "string",
+				"example": "\"2001:0db8:85a3:0000:0000:8a2e:0370:7334\"",
+				"description": "IPV6 destination ip assigned to this location. DNS requests sent to this IP will counted as the request under this location. (auto-generated)"
+			},
+			"networks": {
+				"type": "array",
+				"example": "[\n  \"192.0.2.1\"\n]",
+				"description": "A list of network ranges that requests from this location would originate from",
+				"items": {
+					"type": "string",
+					"description": "The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /16",
+					"example": "192.0.2.1"
+				}
+			},
+			"doh_subdomain": {
+				"type": "string",
+				"example": "\"oli3n9zkz5\"",
+				"description": "The DNS Over HTTPS domain to send DNS requests to. (auto-generated)"
+			},
+			"client_default": {
+				"type": "boolean",
+				"example": "\"false\"",
+				"description": "Set if the location is the default one"
+			},
+			"created_at": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "Creation time",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"updated_at": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "Last modification time",
+				"format": "date-time",
+				"readOnly": true
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"name",
+			"ip",
+			"networks",
+			"doh_subdomain",
+			"client_default",
+			"created_at",
+			"updated_at"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"ed35569b41ce4d1facfe683550f54086\",\n  \"name\": \"Austin Office Location\",\n  \"ip\": \"2001:0db8:85a3:0000:0000:8a2e:0370:7334\",\n  \"networks\": [\n    \"192.0.2.1\"\n  ],\n  \"doh_subdomain\": \"oli3n9zkz5\",\n  \"client_default\": \"false\",\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n}",
+		"title": "Zero Trust Gateway Locations",
+		"description": "Locations are a collection of resources like network ranges or destination IPs that can map to a physical location like an office and are used when creating Zero Trust Gateway Resolver DNS policies"
+	}
+}

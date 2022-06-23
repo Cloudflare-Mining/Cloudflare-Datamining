@@ -1,0 +1,91 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/user/token/permission-group.json",
+	"title": "Permission Groups",
+	"description": "Named groups of permissions used for creating API Tokens access policies",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Permission Groups",
+			"description": "Find all available permission groups",
+			"rel": "self",
+			"href": "user/tokens/permission_groups",
+			"method": "GET",
+			"cfRequestHeaders": {
+				"description": "Headers for Client API requests using API Tokens without payload",
+				"type": "object",
+				"required": [
+					"Authorization"
+				],
+				"properties": {
+					"Authorization": {
+						"description": "API Token of \"bearer\" token type",
+						"type": "string",
+						"minLength": 47,
+						"maxLength": 87,
+						"example": "Bearer 8M7wS6hCpXVc-DoRnPPY_UCWPgy8aea4Wy6kCe5T"
+					}
+				}
+			},
+			"cfOwnership": "www",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.token.read"
+				]
+			},
+			"html_id": "permission-groups-list-permission-groups",
+			"uri": "user/tokens/permission_groups",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/user/tokens/permission_groups\" \\\n     -H \"Authorization: Bearer 8M7wS6hCpXVc-DoRnPPY_UCWPgy8aea4Wy6kCe5T\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"7cf72faf220841aabcfdfab81c43c4f6\",\n      \"name\": \"Billing Read\",\n      \"scopes\": [\n        \"com.cloudflare.api.account\"\n      ]\n    },\n    {\n      \"id\": \"9d24387c6e8544e2bc4024a03991339f\",\n      \"name\": \"Load Balancing: Monitors and Pools Read\",\n      \"scopes\": [\n        \"com.cloudflare.api.account\"\n      ]\n    },\n    {\n      \"id\": \"d2a1802cc9a34e30852f8b33869b2f3c\",\n      \"name\": \"Load Balancing: Monitors and Pools Write\",\n      \"scopes\": [\n        \"com.cloudflare.api.account\"\n      ]\n    },\n    {\n      \"id\": \"8b47d2786a534c08a1f94ee8f9f599ef\",\n      \"name\": \"Workers KV Storage Read\",\n      \"scopes\": [\n        \"com.cloudflare.api.account\"\n      ]\n    },\n    {\n      \"id\": \"f7f0eda5697f475c90846e879bab8666\",\n      \"name\": \"Workers KV Storage Write\",\n      \"scopes\": [\n        \"com.cloudflare.api.account\"\n      ]\n    },\n    {\n      \"id\": \"1a71c399035b4950a1bd1466bbe4f420\",\n      \"name\": \"Workers Scripts Read\",\n      \"scopes\": [\n        \"com.cloudflare.api.account\"\n      ]\n    },\n    {\n      \"id\": \"e086da7e2179491d91ee5f35b3ca210a\",\n      \"name\": \"Workers Scripts Write\",\n      \"scopes\": [\n        \"com.cloudflare.api.account\"\n      ]\n    }\n  ]\n}"
+		}
+	],
+	"html_id": "permission-groups",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"5f48a472240a4b489a21d43bd19a06e1\"",
+				"description": "Identifier of the group",
+				"readOnly": true
+			},
+			"name": {
+				"type": "string",
+				"example": "\"DNS Firewall Read\"",
+				"description": "Name of the group",
+				"readOnly": true
+			},
+			"scopes": {
+				"type": "array",
+				"example": "[\n  \"com.cloudflare.api.account\"\n]",
+				"description": "Scopes the permission group is applicable for",
+				"readOnly": true,
+				"items": {
+					"type": "string",
+					"enum": [
+						"com.cloudflare.api.user",
+						"com.cloudflare.api.account",
+						"com.cloudflare.api.account.zone"
+					]
+				}
+			}
+		},
+		"required_props": [
+			"id",
+			"name",
+			"scopes"
+		],
+		"optional_props": [],
+		"objects": [],
+		"example": "{\n  \"id\": \"5f48a472240a4b489a21d43bd19a06e1\",\n  \"name\": \"DNS Firewall Read\",\n  \"scopes\": [\n    \"com.cloudflare.api.account\"\n  ]\n}",
+		"title": "Permission Groups",
+		"description": "Named groups of permissions used for creating API Tokens access policies"
+	}
+}

@@ -1,0 +1,426 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/workers/scripts.json",
+	"title": "Worker Script",
+	"description": "A Worker script is a single script that is executed on matching routes in the Cloudflare edge",
+	"cfExtendedDescription": "**For more detailed documentation on using the API for Workers see the [Workers API](https://workers.cloudflare.com/docs/reference/tooling/api/).**",
+	"type": "object",
+	"links": [
+		{
+			"title": "Upload Worker",
+			"description": "Upload a worker, or a new version of a worker.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/workers/scripts/{#/definitions/script_name}",
+			"method": "PUT",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key",
+					"Content-Type"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					},
+					"Content-Type": {
+						"type": "string",
+						"enum": [
+							"application/javascript"
+						],
+						"example": "application/javascript"
+					}
+				}
+			},
+			"encType": "application/javascript",
+			"cfOwnership": "workers",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.edge.worker.script.create"
+				]
+			},
+			"html_id": "worker-script-upload-worker",
+			"uri": "accounts/:account_identifier/workers/scripts/:script_name",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/workers/scripts/this-is_my_script-01\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/javascript\" \\\n--data \"addEventListener('fetch', event => { event.respondWith(fetch(event.request)) })\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {},
+				"required_props": [],
+				"optional_props": [],
+				"objects": [],
+				"example": "\"addEventListener('fetch', event => { event.respondWith(fetch(event.request)) })\""
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"script\": \"addEventListener('fetch', event => { event.respondWith(fetch(event.request)) })\",\n    \"etag\": \"ea95132c15732412d22c1476fa83f27a\",\n    \"size\": 1024,\n    \"usage_model\": \"unbound\",\n    \"modified_on\": \"2017-01-01T00:00:00Z\"\n  }\n}"
+		},
+		{
+			"title": "Upload Worker Module",
+			"description": "Upload a worker module.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/workers/scripts/{#/definitions/script_name}",
+			"method": "PUT",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key",
+					"Content-Type"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					},
+					"Content-Type": {
+						"type": "string",
+						"enum": [
+							"multipart/form-data"
+						],
+						"example": "multipart/form-data"
+					}
+				}
+			},
+			"encType": "multipart/form-data",
+			"cfOwnership": "workers",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.edge.worker.script.create"
+				]
+			},
+			"html_id": "worker-script-upload-worker-module",
+			"uri": "accounts/:account_identifier/workers/scripts/:script_name",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/workers/scripts/this-is_my_script-01\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: multipart/form-data\" \\\n     --form 'metadata={\"main_module\": \"worker.js\", \"some_binding\": \"stuff\"}' \\\n     --form '\"worker.js\"=@worker.js;type=application/javascript+module' \\\n     --form '\"second-file.js\"=@second-file.js;type=application/javascript+module'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"metadata": {
+						"type": "string",
+						"example": "\"{\\\"main_module\\\": \\\"worker.js\\\", \\\"some_binding\\\": \\\"stuff\\\"}\"",
+						"description": "Metadata for script such as bindings. Main module needs to be specified with `main_module`."
+					},
+					"\"worker.js\"": {
+						"type": "string",
+						"example": "\"@worker.js;type=application/javascript+module\"",
+						"media": {
+							"type": "application/json"
+						},
+						"description": "Worker script"
+					},
+					"\"second-file.js\"": {
+						"type": "string",
+						"example": "\"@second-file.js;type=application/javascript+module\"",
+						"media": {
+							"type": "application/json"
+						},
+						"description": "Worker script"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"metadata",
+					"\"worker.js\"",
+					"\"second-file.js\""
+				],
+				"objects": [],
+				"example": "{\n  \"metadata\": \"{\\\"main_module\\\": \\\"worker.js\\\", \\\"some_binding\\\": \\\"stuff\\\"}\",\n  \"\\\"worker.js\\\"\": \"@worker.js;type=application/javascript+module\",\n  \"\\\"second-file.js\\\"\": \"@second-file.js;type=application/javascript+module\"\n}"
+			},
+			"response": "{\n  \"result\": {\n    \"id\": \"this-is_my_script-01\",\n    \"etag\": \"777f24a43bef5f69174aa69ceaf1dea67968d510a31d1vw3e49d34a0187c06d1\",\n    \"handlers\": [\n      \"fetch\"\n    ],\n    \"modified_on\": \"2022-05-20T19:02:56.446492Z\",\n    \"created_on\": \"2022-05-05T05:15:11.602148Z\",\n    \"usage_model\": \"bundled\"\n  },\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
+		},
+		{
+			"title": "List Workers",
+			"description": "Fetch a list of uploaded workers.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/workers/scripts",
+			"method": "GET",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
+			"cfOwnership": "workers",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.edge.worker.script.list"
+				]
+			},
+			"html_id": "worker-script-list-workers",
+			"uri": "accounts/:account_identifier/workers/scripts",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/workers/scripts\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"this-is_my_script-01\",\n      \"etag\": \"ea95132c15732412d22c1476fa83f27a\",\n      \"usage_model\": \"unbound\",\n      \"created_on\": \"2017-01-01T00:00:00Z\",\n      \"modified_on\": \"2017-01-01T00:00:00Z\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Download Worker",
+			"description": "Fetch raw script content for your worker. Note this is the original script content, not JSON encoded.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/workers/scripts/{#/definitions/script_name}",
+			"method": "GET",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key",
+					"Accept"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					},
+					"Accept": {
+						"type": "string",
+						"enum": [
+							"application/javascript"
+						],
+						"example": "application/javascript"
+					}
+				}
+			},
+			"mediaType": "application/javascript",
+			"cfOwnership": "workers",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.edge.worker.script.read"
+				]
+			},
+			"html_id": "worker-script-download-worker",
+			"uri": "accounts/:account_identifier/workers/scripts/:script_name",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/workers/scripts/this-is_my_script-01\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Accept: application/javascript\"",
+			"response": "addEventListener('fetch', event => { event.respondWith(fetch(event.request)) })"
+		},
+		{
+			"title": "Delete Worker",
+			"description": "Delete your worker. This call has no response body on a successful delete.\n\n**Query paramaters**:\n\n1.  `force`: boolean;   If set to true, delete will not be stopped by associated service binding, durable object, or other binding. Any of these associated bindings/durable objects will be deleted along with the script.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/workers/scripts/{#/definitions/script_name}",
+			"method": "DELETE",
+			"cfOwnership": "workers",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.edge.worker.script.delete"
+				]
+			},
+			"html_id": "worker-script-delete-worker",
+			"uri": "accounts/:account_identifier/workers/scripts/:script_name",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/workers/scripts/this-is_my_script-01\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\""
+		},
+		{
+			"title": "Update Usage Model",
+			"description": "Updates the Usage Model for a given Worker. Requires a Workers Paid subscription.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/workers/scripts/{#/definitions/script_name}/usage-model",
+			"method": "PUT",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
+			"cfOwnership": "workers",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.edge.worker.script.create"
+				]
+			},
+			"html_id": "worker-script-update-usage-model",
+			"uri": "accounts/:account_identifier/workers/scripts/:script_name/usage-model",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/workers/scripts/this-is_my_script-01/usage-model\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     --data '\"{'usage_model': 'unbound'}\"'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {},
+				"required_props": [],
+				"optional_props": [],
+				"objects": [],
+				"example": "\"{'usage_model': 'unbound'}\""
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"usage_model\": \"unbound\"\n  }\n}"
+		},
+		{
+			"title": "Fetch Usage Model",
+			"description": "Fetches the Usage Model for a given Worker.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/workers/scripts/{#/definitions/script_name}/usage-model",
+			"method": "GET",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
+			"cfOwnership": "workers",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.edge.worker.script.read"
+				]
+			},
+			"html_id": "worker-script-fetch-usage-model",
+			"uri": "accounts/:account_identifier/workers/scripts/:script_name/usage-model",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/workers/scripts/this-is_my_script-01/usage-model\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"usage_model\": \"unbound\"\n  }\n}"
+		}
+	],
+	"cfLinkErrors": {
+		"10001": "Unsupported or unexpected Content Type",
+		"10002": "Unexpected internal server error",
+		"10003": "Missing required URL parameter",
+		"10004": "Malformed URL parameter",
+		"10006": "Unparseable script body",
+		"10007": "Resource not found (similar to HTTP 404)",
+		"10014": "Internal error while attempting authorization checks",
+		"10015": "The current account is not authorized to use workers",
+		"10018": "Attempted to update a script where the e-tag does not match",
+		"10021": "Script content failed validation checks, but was otherwise parseable",
+		"10023": "Unauthorized access attempt",
+		"10027": "Script body was too large",
+		"10075": "Requires a Workers Paid plan"
+	},
+	"html_id": "worker-script",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"script": {
+				"type": "string",
+				"example": "\"addEventListener('fetch', event => { event.respondWith(fetch(event.request)) })\"",
+				"readOnly": true,
+				"description": "Raw script content, as a string",
+				"media": {
+					"type": "application/javascript"
+				}
+			},
+			"etag": {
+				"type": "string",
+				"example": "\"ea95132c15732412d22c1476fa83f27a\"",
+				"readOnly": true,
+				"description": "Hashed script content, can be used in a If-None-Match header when updating"
+			},
+			"size": {
+				"type": "number",
+				"example": "1024",
+				"description": "Size of the script, in bytes",
+				"readOnly": true
+			},
+			"usage_model": {
+				"type": "string",
+				"example": "\"unbound\"",
+				"description": "Specifies the usage model for the Worker (e.g. 'bundled' or 'unbound').",
+				"pattern": "^(bundled|unbound)$"
+			},
+			"modified_on": {
+				"type": "string",
+				"example": "\"2017-01-01T00:00:00Z\"",
+				"readOnly": true,
+				"description": "When the script was last modified",
+				"format": "date-time"
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"script",
+			"etag",
+			"size",
+			"usage_model",
+			"modified_on"
+		],
+		"objects": [],
+		"example": "{\n  \"script\": \"addEventListener('fetch', event => { event.respondWith(fetch(event.request)) })\",\n  \"etag\": \"ea95132c15732412d22c1476fa83f27a\",\n  \"size\": 1024,\n  \"usage_model\": \"unbound\",\n  \"modified_on\": \"2017-01-01T00:00:00Z\"\n}",
+		"title": "Worker Script",
+		"description": "A Worker script is a single script that is executed on matching routes in the Cloudflare edge"
+	}
+}

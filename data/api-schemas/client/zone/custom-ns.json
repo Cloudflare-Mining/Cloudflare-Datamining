@@ -1,0 +1,108 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/custom-ns.json",
+	"title": "Account-Level Custom Nameservers Usage for a Zone",
+	"description": "Per-zone usage of Cloudflare account-level custom nameservers",
+	"type": "object",
+	"links": [
+		{
+			"title": "Get Account Custom Nameserver Related Zone Metadata",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/custom_ns",
+			"method": "GET",
+			"cfOwnership": "www",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:read",
+					"#organization:read"
+				]
+			},
+			"html_id": "account-level-custom-nameservers-usage-for-a-zone-get-account-custom-nameserver-related-zone-metadata",
+			"uri": "zones/:zone_identifier/custom_ns",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/custom_ns\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"enabled\": true\n}"
+		},
+		{
+			"title": "Set Account Custom Nameserver Related Zone Metadata",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/custom_ns",
+			"method": "PUT",
+			"cfOwnership": "www",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:edit",
+					"#organization:edit"
+				]
+			},
+			"html_id": "account-level-custom-nameservers-usage-for-a-zone-set-account-custom-nameserver-related-zone-metadata",
+			"uri": "zones/:zone_identifier/custom_ns",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/custom_ns\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"enabled\":true}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"enabled": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether zone uses account-level custom nameservers"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"enabled"
+				],
+				"objects": [],
+				"example": "{\n  \"enabled\": true\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
+		}
+	],
+	"cfLinkErrors": {
+		"1000": "Unknown error",
+		"1001": "Invalid request",
+		"1002": "Account does not have access to this feature",
+		"1003": "Not found"
+	},
+	"html_id": "account-level-custom-nameservers-usage-for-a-zone",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {},
+		"required_props": [],
+		"optional_props": [],
+		"objects": [
+			{
+				"all_props": {
+					"enabled": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether zone uses account-level custom nameservers"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"enabled"
+				],
+				"objects": [],
+				"example": "{\n  \"enabled\": true\n}"
+			}
+		],
+		"example": "{\n  \"enabled\": true\n}",
+		"which_of": "oneOf",
+		"title": "Account-Level Custom Nameservers Usage for a Zone",
+		"description": "Per-zone usage of Cloudflare account-level custom nameservers"
+	}
+}

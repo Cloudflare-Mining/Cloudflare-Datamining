@@ -1,0 +1,478 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/teams/device-posture-integrations.json",
+	"title": "Device Posture Integrations",
+	"description": "Device posture integrations allow third party APIs to act as device posture providers",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Device Posture Integrations",
+			"description": "List Device Posture Integrations for an account",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/devices/posture/integration",
+			"method": "GET",
+			"cfOwnership": "teams",
+			"html_id": "device-posture-integrations-list-device-posture-integrations",
+			"uri": "accounts/:identifier/devices/posture/integration",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/posture/integration\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"type\": \"workspace_one\",\n      \"name\": \"My Workspace One Integration\",\n      \"interval\": \"10m\",\n      \"config\": {\n        \"api_url\": \"https://as123.awmdm.com/API\",\n        \"auth_url\": \"https://na.uemauth.vmwservices.com/connect/token\",\n        \"client_id\": \"example client id\"\n      }\n    }\n  ]\n}"
+		},
+		{
+			"title": "Device Posture Integration Details",
+			"description": "Fetch a single Device Posture Integration",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/devices/posture/integration/{#/definitions/uuid}",
+			"method": "GET",
+			"cfOwnership": "teams",
+			"html_id": "device-posture-integrations-device-posture-integration-details",
+			"uri": "accounts/:identifier/devices/posture/integration/:uuid",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/posture/integration/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"type\": \"workspace_one\",\n    \"name\": \"My Workspace One Integration\",\n    \"interval\": \"10m\",\n    \"config\": {\n      \"api_url\": \"https://as123.awmdm.com/API\",\n      \"auth_url\": \"https://na.uemauth.vmwservices.com/connect/token\",\n      \"client_id\": \"example client id\"\n    }\n  }\n}"
+		},
+		{
+			"title": "Create Device Posture Integration",
+			"description": "Create a new Device Posture Integration",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/devices/posture/integration",
+			"method": "POST",
+			"cfOwnership": "teams",
+			"html_id": "device-posture-integrations-create-device-posture-integration",
+			"uri": "accounts/:identifier/devices/posture/integration",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/posture/integration\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"workspace_one\",\"name\":\"My Workspace One Integration\",\"interval\":\"10m\",\"config\":{\"api_url\":\"https://as123.awmdm.com/API\",\"auth_url\":\"https://na.uemauth.vmwservices.com/connect/token\",\"client_id\":\"example client id\",\"client_secret\":\"example client secret\"}}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"type": {
+						"type": "string",
+						"example": "\"workspace_one\"",
+						"description": "The type of Device Posture Integration.",
+						"enum": [
+							"workspace_one",
+							"crowdstrike_s2s",
+							"uptycs",
+							"intune"
+						]
+					},
+					"name": {
+						"type": "string",
+						"example": "\"My Workspace One Integration\"",
+						"description": "The name of the Device Posture Integration."
+					},
+					"interval": {
+						"type": "string",
+						"example": "\"10m\"",
+						"description": "The interval between each posture check with the third party API. Use \"m\" for minutes (e.g. \"5m\") and \"h\" for hours (e.g. \"12h\")"
+					},
+					"config": {
+						"type": "object",
+						"example": "{\n  \"api_url\": \"https://as123.awmdm.com/API\",\n  \"auth_url\": \"https://na.uemauth.vmwservices.com/connect/token\",\n  \"client_id\": \"example client id\",\n  \"client_secret\": \"example client secret\"\n}",
+						"oneOf": [
+							{
+								"all_props": {
+									"api_url": {
+										"type": "string",
+										"example": "\"https://as123.awmdm.com/API\"",
+										"description": "The Workspace One API URL provided in the Workspace One Admin Dashboard"
+									},
+									"auth_url": {
+										"type": "string",
+										"example": "\"https://na.uemauth.vmwservices.com/connect/token\"",
+										"description": "The Workspace One Authorization URL depending on your region"
+									},
+									"client_id": {
+										"type": "string",
+										"example": "\"example client id\"",
+										"description": "The Workspace One client ID provided in the Workspace One Admin Dashboard"
+									},
+									"client_secret": {
+										"type": "string",
+										"example": "\"example client secret\"",
+										"description": "The Workspace One client secret provided in the Workspace One Admin Dashboard"
+									}
+								},
+								"required_props": [
+									"api_url",
+									"auth_url",
+									"client_id",
+									"client_secret"
+								],
+								"optional_props": [],
+								"objects": [],
+								"example": "{\n  \"api_url\": \"https://as123.awmdm.com/API\",\n  \"auth_url\": \"https://na.uemauth.vmwservices.com/connect/token\",\n  \"client_id\": \"example client id\",\n  \"client_secret\": \"example client secret\"\n}"
+							},
+							{
+								"all_props": {
+									"api_url": {
+										"type": "string",
+										"example": "\"https://api.us-2.crowdstrike.com\"",
+										"description": "The Crowdstrike API URL"
+									},
+									"customer_id": {
+										"type": "string",
+										"example": "\"example customer id\"",
+										"description": "The Crowdstrike customer ID"
+									},
+									"client_id": {
+										"type": "string",
+										"example": "\"example client id\"",
+										"description": "The Crowdstrike client ID"
+									},
+									"client_secret": {
+										"type": "string",
+										"example": "\"example client secret\"",
+										"description": "The Crowdstrike client secret"
+									}
+								},
+								"required_props": [
+									"api_url",
+									"customer_id",
+									"client_id",
+									"client_secret"
+								],
+								"optional_props": [],
+								"objects": [],
+								"example": "{\n  \"api_url\": \"https://api.us-2.crowdstrike.com\",\n  \"customer_id\": \"example customer id\",\n  \"client_id\": \"example client id\",\n  \"client_secret\": \"example client secret\"\n}"
+							},
+							{
+								"all_props": {
+									"client_key": {
+										"type": "string",
+										"example": "\"example client key\"",
+										"description": "The Uptycs client secret"
+									},
+									"customer_id": {
+										"type": "string",
+										"example": "\"example customer id\"",
+										"description": "The Uptycs customer ID"
+									},
+									"client_secret": {
+										"type": "string",
+										"example": "\"example client secret\"",
+										"description": "The Uptycs client secret"
+									}
+								},
+								"required_props": [
+									"client_key",
+									"customer_id",
+									"client_secret"
+								],
+								"optional_props": [],
+								"objects": [],
+								"example": "{\n  \"client_key\": \"example client key\",\n  \"customer_id\": \"example customer id\",\n  \"client_secret\": \"example client secret\"\n}"
+							},
+							{
+								"all_props": {
+									"customer_id": {
+										"type": "string",
+										"example": "\"example customer id\"",
+										"description": "The Intune customer ID"
+									},
+									"client_id": {
+										"type": "string",
+										"example": "\"example client id\"",
+										"description": "The Intune client ID"
+									},
+									"client_secret": {
+										"type": "string",
+										"example": "\"example client secret\"",
+										"description": "The Intune client secret"
+									}
+								},
+								"required_props": [
+									"customer_id",
+									"client_id",
+									"client_secret"
+								],
+								"optional_props": [],
+								"objects": [],
+								"example": "{\n  \"customer_id\": \"example customer id\",\n  \"client_id\": \"example client id\",\n  \"client_secret\": \"example client secret\"\n}"
+							}
+						],
+						"description": "The configuration object containing third party integration information"
+					}
+				},
+				"required_props": [
+					"name",
+					"type",
+					"interval",
+					"config"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"type\": \"workspace_one\",\n  \"name\": \"My Workspace One Integration\",\n  \"interval\": \"10m\",\n  \"config\": {\n    \"api_url\": \"https://as123.awmdm.com/API\",\n    \"auth_url\": \"https://na.uemauth.vmwservices.com/connect/token\",\n    \"client_id\": \"example client id\",\n    \"client_secret\": \"example client secret\"\n  }\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"type\": \"workspace_one\",\n    \"name\": \"My Workspace One Integration\",\n    \"interval\": \"10m\",\n    \"config\": {\n      \"api_url\": \"https://as123.awmdm.com/API\",\n      \"auth_url\": \"https://na.uemauth.vmwservices.com/connect/token\",\n      \"client_id\": \"example client id\"\n    }\n  }\n}"
+		},
+		{
+			"title": "Update Device Posture Integration",
+			"description": "Update a Device Posture Integration",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/devices/posture/integration/{#/definitions/uuid}",
+			"method": "PATCH",
+			"cfOwnership": "teams",
+			"html_id": "device-posture-integrations-update-device-posture-integration",
+			"uri": "accounts/:identifier/devices/posture/integration/:uuid",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/posture/integration/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"workspace_one\",\"name\":\"My Workspace One Integration\",\"interval\":\"10m\",\"config\":{\"api_url\":\"https://as123.awmdm.com/API\",\"auth_url\":\"https://na.uemauth.vmwservices.com/connect/token\",\"client_id\":\"example client id\",\"client_secret\":\"example client secret\"}}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"type": {
+						"type": "string",
+						"example": "\"workspace_one\"",
+						"description": "The type of Device Posture Integration.",
+						"enum": [
+							"workspace_one",
+							"crowdstrike_s2s",
+							"uptycs",
+							"intune"
+						]
+					},
+					"name": {
+						"type": "string",
+						"example": "\"My Workspace One Integration\"",
+						"description": "The name of the Device Posture Integration."
+					},
+					"interval": {
+						"type": "string",
+						"example": "\"10m\"",
+						"description": "The interval between each posture check with the third party API. Use \"m\" for minutes (e.g. \"5m\") and \"h\" for hours (e.g. \"12h\")"
+					},
+					"config": {
+						"type": "object",
+						"example": "{\n  \"api_url\": \"https://as123.awmdm.com/API\",\n  \"auth_url\": \"https://na.uemauth.vmwservices.com/connect/token\",\n  \"client_id\": \"example client id\",\n  \"client_secret\": \"example client secret\"\n}",
+						"oneOf": [
+							{
+								"all_props": {
+									"api_url": {
+										"type": "string",
+										"example": "\"https://as123.awmdm.com/API\"",
+										"description": "The Workspace One API URL provided in the Workspace One Admin Dashboard"
+									},
+									"auth_url": {
+										"type": "string",
+										"example": "\"https://na.uemauth.vmwservices.com/connect/token\"",
+										"description": "The Workspace One Authorization URL depending on your region"
+									},
+									"client_id": {
+										"type": "string",
+										"example": "\"example client id\"",
+										"description": "The Workspace One client ID provided in the Workspace One Admin Dashboard"
+									},
+									"client_secret": {
+										"type": "string",
+										"example": "\"example client secret\"",
+										"description": "The Workspace One client secret provided in the Workspace One Admin Dashboard"
+									}
+								},
+								"required_props": [
+									"api_url",
+									"auth_url",
+									"client_id",
+									"client_secret"
+								],
+								"optional_props": [],
+								"objects": [],
+								"example": "{\n  \"api_url\": \"https://as123.awmdm.com/API\",\n  \"auth_url\": \"https://na.uemauth.vmwservices.com/connect/token\",\n  \"client_id\": \"example client id\",\n  \"client_secret\": \"example client secret\"\n}"
+							},
+							{
+								"all_props": {
+									"api_url": {
+										"type": "string",
+										"example": "\"https://api.us-2.crowdstrike.com\"",
+										"description": "The Crowdstrike API URL"
+									},
+									"customer_id": {
+										"type": "string",
+										"example": "\"example customer id\"",
+										"description": "The Crowdstrike customer ID"
+									},
+									"client_id": {
+										"type": "string",
+										"example": "\"example client id\"",
+										"description": "The Crowdstrike client ID"
+									},
+									"client_secret": {
+										"type": "string",
+										"example": "\"example client secret\"",
+										"description": "The Crowdstrike client secret"
+									}
+								},
+								"required_props": [
+									"api_url",
+									"customer_id",
+									"client_id",
+									"client_secret"
+								],
+								"optional_props": [],
+								"objects": [],
+								"example": "{\n  \"api_url\": \"https://api.us-2.crowdstrike.com\",\n  \"customer_id\": \"example customer id\",\n  \"client_id\": \"example client id\",\n  \"client_secret\": \"example client secret\"\n}"
+							},
+							{
+								"all_props": {
+									"client_key": {
+										"type": "string",
+										"example": "\"example client key\"",
+										"description": "The Uptycs client secret"
+									},
+									"customer_id": {
+										"type": "string",
+										"example": "\"example customer id\"",
+										"description": "The Uptycs customer ID"
+									},
+									"client_secret": {
+										"type": "string",
+										"example": "\"example client secret\"",
+										"description": "The Uptycs client secret"
+									}
+								},
+								"required_props": [
+									"client_key",
+									"customer_id",
+									"client_secret"
+								],
+								"optional_props": [],
+								"objects": [],
+								"example": "{\n  \"client_key\": \"example client key\",\n  \"customer_id\": \"example customer id\",\n  \"client_secret\": \"example client secret\"\n}"
+							},
+							{
+								"all_props": {
+									"customer_id": {
+										"type": "string",
+										"example": "\"example customer id\"",
+										"description": "The Intune customer ID"
+									},
+									"client_id": {
+										"type": "string",
+										"example": "\"example client id\"",
+										"description": "The Intune client ID"
+									},
+									"client_secret": {
+										"type": "string",
+										"example": "\"example client secret\"",
+										"description": "The Intune client secret"
+									}
+								},
+								"required_props": [
+									"customer_id",
+									"client_id",
+									"client_secret"
+								],
+								"optional_props": [],
+								"objects": [],
+								"example": "{\n  \"customer_id\": \"example customer id\",\n  \"client_id\": \"example client id\",\n  \"client_secret\": \"example client secret\"\n}"
+							}
+						],
+						"description": "The configuration object containing third party integration information"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"type",
+					"name",
+					"interval",
+					"config"
+				],
+				"objects": [],
+				"example": "{\n  \"type\": \"workspace_one\",\n  \"name\": \"My Workspace One Integration\",\n  \"interval\": \"10m\",\n  \"config\": {\n    \"api_url\": \"https://as123.awmdm.com/API\",\n    \"auth_url\": \"https://na.uemauth.vmwservices.com/connect/token\",\n    \"client_id\": \"example client id\",\n    \"client_secret\": \"example client secret\"\n  }\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"type\": \"workspace_one\",\n    \"name\": \"My Workspace One Integration\",\n    \"interval\": \"10m\",\n    \"config\": {\n      \"api_url\": \"https://as123.awmdm.com/API\",\n      \"auth_url\": \"https://na.uemauth.vmwservices.com/connect/token\",\n      \"client_id\": \"example client id\"\n    }\n  }\n}"
+		},
+		{
+			"title": "Delete Device Posture Integration",
+			"description": "Delete a Device Posture Integration",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/devices/posture/integration/{#/definitions/uuid}",
+			"method": "DELETE",
+			"cfOwnership": "teams",
+			"html_id": "device-posture-integrations-delete-device-posture-integration",
+			"uri": "accounts/:identifier/devices/posture/integration/:uuid",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/posture/integration/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
+		}
+	],
+	"html_id": "device-posture-integrations",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"",
+				"maxLength": 36,
+				"description": "API uuid tag"
+			},
+			"type": {
+				"type": "string",
+				"example": "\"workspace_one\"",
+				"description": "The type of Device Posture Integration.",
+				"enum": [
+					"workspace_one",
+					"crowdstrike_s2s",
+					"uptycs",
+					"intune"
+				]
+			},
+			"name": {
+				"type": "string",
+				"example": "\"My Workspace One Integration\"",
+				"description": "The name of the Device Posture Integration."
+			},
+			"interval": {
+				"type": "string",
+				"example": "\"10m\"",
+				"description": "The interval between each posture check with the third party API. Use \"m\" for minutes (e.g. \"5m\") and \"h\" for hours (e.g. \"12h\")"
+			},
+			"config": {
+				"type": "object",
+				"example": "{\n  \"api_url\": \"https://as123.awmdm.com/API\",\n  \"auth_url\": \"https://na.uemauth.vmwservices.com/connect/token\",\n  \"client_id\": \"example client id\"\n}",
+				"oneOf": [
+					{
+						"all_props": {
+							"api_url": {
+								"type": "string",
+								"example": "\"https://as123.awmdm.com/API\"",
+								"description": "The Workspace One API URL provided in the Workspace One Admin Dashboard"
+							},
+							"auth_url": {
+								"type": "string",
+								"example": "\"https://na.uemauth.vmwservices.com/connect/token\"",
+								"description": "The Workspace One Authorization URL depending on your region"
+							},
+							"client_id": {
+								"type": "string",
+								"example": "\"example client id\"",
+								"description": "The Workspace One client ID provided in the Workspace One Admin Dashboard"
+							}
+						},
+						"required_props": [
+							"api_url",
+							"auth_url",
+							"client_id"
+						],
+						"optional_props": [],
+						"objects": [],
+						"example": "{\n  \"api_url\": \"https://as123.awmdm.com/API\",\n  \"auth_url\": \"https://na.uemauth.vmwservices.com/connect/token\",\n  \"client_id\": \"example client id\"\n}",
+						"description": "The Workspace One Config Response"
+					}
+				],
+				"description": "The configuration object containing third party integration information"
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"type",
+			"name",
+			"interval",
+			"config"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n  \"type\": \"workspace_one\",\n  \"name\": \"My Workspace One Integration\",\n  \"interval\": \"10m\",\n  \"config\": {\n    \"api_url\": \"https://as123.awmdm.com/API\",\n    \"auth_url\": \"https://na.uemauth.vmwservices.com/connect/token\",\n    \"client_id\": \"example client id\"\n  }\n}",
+		"title": "Device Posture Integrations",
+		"description": "Device posture integrations allow third party APIs to act as device posture providers"
+	}
+}

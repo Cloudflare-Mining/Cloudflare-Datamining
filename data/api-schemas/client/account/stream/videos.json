@@ -1,0 +1,2883 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/stream/videos.json",
+	"title": "Stream Videos",
+	"description": "You can upload videos to Cloudflare Stream for fast video processing and delivery.",
+	"type": "object",
+	"links": [
+		{
+			"title": "Upload a video from a URL",
+			"description": "Link to a video and it will be downloaded and made available on Stream.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/stream/copy",
+			"method": "POST",
+			"cfOwnership": "stream",
+			"html_id": "stream-videos-upload-a-video-from-a-url",
+			"uri": "accounts/:account_identifier/stream/copy",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/stream/copy\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"url\":\"https://example.com/myvideo.mp4\",\"creator\":\"creator-id_abcde12345\",\"thumbnailTimestampPct\":0.529241,\"allowedOrigins\":[\"example.com\"],\"requireSignedURLs\":true,\"watermark\":{\"uid\":\"ea95132c15732412d22c1476fa83f27a\"}}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"url": {
+						"type": "string",
+						"example": "\"https://example.com/myvideo.mp4\"",
+						"description": "URL to the video. Server must be publicly routable and support HTTP HEAD requests and HTTP GET range requests. Server should respond to HTTP HEAD requests with a content-range header with the size of the file.",
+						"format": "uri"
+					},
+					"creator": {
+						"type": "string",
+						"example": "\"creator-id_abcde12345\"",
+						"description": "User-defined identifier of the media creator",
+						"maxLength": 64
+					},
+					"thumbnailTimestampPct": {
+						"type": "number",
+						"example": "0.529241",
+						"description": "Timestamp location of thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image will be from 0s of the video.",
+						"default": 0,
+						"minimum": 0,
+						"maximum": 1
+					},
+					"allowedOrigins": {
+						"type": "array",
+						"example": "[\n  \"example.com\"\n]",
+						"description": "List which origins should be allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty array will allow the video to be viewed on any origin.",
+						"items": {
+							"type": "string"
+						}
+					},
+					"requireSignedURLs": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Indicates whether the video can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the video.",
+						"readOnly": true,
+						"default": false
+					},
+					"watermark": {
+						"type": "object",
+						"example": "{\n  \"uid\": \"ea95132c15732412d22c1476fa83f27a\"\n}",
+						"properties": {
+							"uid": {
+								"type": "string",
+								"example": "\"ea95132c15732412d22c1476fa83f27a\"",
+								"description": "Watermark profile unique identifier.",
+								"maxLength": 32
+							}
+						}
+					}
+				},
+				"required_props": [
+					"url"
+				],
+				"optional_props": [
+					"creator",
+					"thumbnailTimestampPct",
+					"allowedOrigins",
+					"requireSignedURLs",
+					"watermark"
+				],
+				"objects": [],
+				"example": "{\n  \"url\": \"https://example.com/myvideo.mp4\",\n  \"creator\": \"creator-id_abcde12345\",\n  \"thumbnailTimestampPct\": 0.529241,\n  \"allowedOrigins\": [\n    \"example.com\"\n  ],\n  \"requireSignedURLs\": true,\n  \"watermark\": {\n    \"uid\": \"ea95132c15732412d22c1476fa83f27a\"\n  }\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"allowedOrigins\": [\n      \"example.com\"\n    ],\n    \"created\": \"2014-01-02T02:20:00Z\",\n    \"duration\": 300,\n    \"input\": {\n      \"height\": 1080,\n      \"width\": 1920\n    },\n    \"maxDurationSeconds\": 300,\n    \"meta\": {},\n    \"modified\": \"2014-01-02T02:20:00Z\",\n    \"uploadExpiry\": \"2014-01-02T02:20:00Z\",\n    \"playback\": {\n      \"hls\": \"https://videodelivery.net/ea95132c15732412d22c1476fa83f27a/manifest/video.m3u8\",\n      \"dash\": \"https://videodelivery.net/ea95132c15732412d22c1476fa83f27a/manifest/video.mpd\"\n    },\n    \"preview\": \"https://watch.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a\",\n    \"readyToStream\": true,\n    \"requireSignedURLs\": true,\n    \"size\": 4190963,\n    \"status\": {\n      \"state\": \"inprogress\",\n      \"pctComplete\": 51,\n      \"errorReasonCode\": \"ERR_NON_VIDEO\",\n      \"errorReasonText\": \"The file was not recognized as a valid video file.\"\n    },\n    \"thumbnail\": \"https://videodelivery.net/ea95132c15732412d22c1476fa83f27a/thumbnails/thumbnail.jpg\",\n    \"thumbnailTimestampPct\": 0.529241,\n    \"uid\": \"ea95132c15732412d22c1476fa83f27a\",\n    \"creator\": \"creator-id_abcde12345\",\n    \"liveInput\": \"fc0a8dc887b16759bfd9ad922230a014\",\n    \"uploaded\": \"2014-01-02T02:20:00Z\",\n    \"watermark\": {\n      \"uid\": \"ea95132c15732412d22c1476fa83f27a\",\n      \"size\": 29472,\n      \"height\": 600,\n      \"width\": 400,\n      \"created\": \"2014-01-02T02:20:00Z\",\n      \"downloadedFrom\": \"https://company.com/logo.png\",\n      \"name\": \"Marketing Videos\",\n      \"opacity\": 0.75,\n      \"padding\": 0.1,\n      \"scale\": 0.1,\n      \"position\": \"center\"\n    },\n    \"nft\": {\n      \"contract\": \"0x57f1887a8bf19b14fc0d912b9b2acc9af147ea85\",\n      \"token\": 5\n    }\n  }\n}"
+		},
+		{
+			"title": "Upload a video using a single HTTP request",
+			"description": "You can upload a video up to 200 Megabytes using a single HTTP POST (multipart/form-data) request. For larger file sizes, please upload using the TUS protocol.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/stream",
+			"method": "POST",
+			"cfOwnership": "stream",
+			"encType": "multipart/form-data",
+			"cfRequestHeaders": {
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
+			"html_id": "stream-videos-upload-a-video-using-a-single-http-request",
+			"uri": "accounts/:account_identifier/stream",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/stream\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     --form 'file=@/Users/kyle/Desktop/skiing.mp4'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"file": {
+						"type": "string",
+						"example": "\"@/Users/kyle/Desktop/skiing.mp4\"",
+						"description": "Video file to upload"
+					}
+				},
+				"required_props": [
+					"file"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"file\": \"@/Users/kyle/Desktop/skiing.mp4\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"allowedOrigins\": [\n        \"example.com\"\n      ],\n      \"created\": \"2014-01-02T02:20:00Z\",\n      \"duration\": 300,\n      \"input\": {\n        \"height\": 1080,\n        \"width\": 1920\n      },\n      \"maxDurationSeconds\": 300,\n      \"meta\": {},\n      \"modified\": \"2014-01-02T02:20:00Z\",\n      \"uploadExpiry\": \"2014-01-02T02:20:00Z\",\n      \"playback\": {\n        \"hls\": \"https://videodelivery.net/ea95132c15732412d22c1476fa83f27a/manifest/video.m3u8\",\n        \"dash\": \"https://videodelivery.net/ea95132c15732412d22c1476fa83f27a/manifest/video.mpd\"\n      },\n      \"preview\": \"https://watch.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a\",\n      \"readyToStream\": true,\n      \"requireSignedURLs\": true,\n      \"size\": 4190963,\n      \"status\": {\n        \"state\": \"inprogress\",\n        \"pctComplete\": 51,\n        \"errorReasonCode\": \"ERR_NON_VIDEO\",\n        \"errorReasonText\": \"The file was not recognized as a valid video file.\"\n      },\n      \"thumbnail\": \"https://videodelivery.net/ea95132c15732412d22c1476fa83f27a/thumbnails/thumbnail.jpg\",\n      \"thumbnailTimestampPct\": 0.529241,\n      \"uid\": \"ea95132c15732412d22c1476fa83f27a\",\n      \"creator\": \"creator-id_abcde12345\",\n      \"liveInput\": \"fc0a8dc887b16759bfd9ad922230a014\",\n      \"uploaded\": \"2014-01-02T02:20:00Z\",\n      \"watermark\": null,\n      \"nft\": {\n        \"contract\": \"0x57f1887a8bf19b14fc0d912b9b2acc9af147ea85\",\n        \"token\": 5\n      }\n    }\n  ]\n}"
+		},
+		{
+			"title": "Create a video and get authenticated direct upload URL",
+			"description": "Direct uploads allow users to upload videos without API keys. A common place to use direct uploads is on web apps, client side applications, or on mobile devices where users upload content directly to Stream.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/stream/direct_upload",
+			"method": "POST",
+			"cfOwnership": "stream",
+			"html_id": "stream-videos-create-a-video-and-get-authenticated-direct-upload-url",
+			"uri": "accounts/:account_identifier/stream/direct_upload",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/stream/direct_upload\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"maxDurationSeconds\":300,\"expiry\":\"2021-01-02T02:20:00Z\",\"creator\":\"creator-id_abcde12345\",\"thumbnailTimestampPct\":0.529241,\"allowedOrigins\":[\"example.com\"],\"requireSignedURLs\":true,\"watermark\":{\"uid\":\"ea95132c15732412d22c1476fa83f27a\"}}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"maxDurationSeconds": {
+						"type": "integer",
+						"example": "300",
+						"description": "Direct uploads occupy minutes of videos on your Stream account until they are expired. This value will be used to calculate the duration the video will occupy before the video is uploaded. After upload, the duration of the uploaded will be used instead. If a video longer than this value is uploaded, the video will result in an error.",
+						"minimum": 1,
+						"maximum": 21600
+					},
+					"expiry": {
+						"type": "string",
+						"example": "\"2021-01-02T02:20:00Z\"",
+						"description": "The date after upload will not be accepted",
+						"format": "date-time",
+						"default": "Now + 30 minutes"
+					},
+					"creator": {
+						"type": "string",
+						"example": "\"creator-id_abcde12345\"",
+						"description": "User-defined identifier of the media creator",
+						"maxLength": 64
+					},
+					"thumbnailTimestampPct": {
+						"type": "number",
+						"example": "0.529241",
+						"description": "Timestamp location of thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image will be from 0s of the video.",
+						"default": 0,
+						"minimum": 0,
+						"maximum": 1
+					},
+					"allowedOrigins": {
+						"type": "array",
+						"example": "[\n  \"example.com\"\n]",
+						"description": "List which origins should be allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty array will allow the video to be viewed on any origin.",
+						"items": {
+							"type": "string"
+						}
+					},
+					"requireSignedURLs": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Indicates whether the video can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the video.",
+						"readOnly": true,
+						"default": false
+					},
+					"watermark": {
+						"type": "object",
+						"example": "{\n  \"uid\": \"ea95132c15732412d22c1476fa83f27a\"\n}",
+						"properties": {
+							"uid": {
+								"type": "string",
+								"example": "\"ea95132c15732412d22c1476fa83f27a\"",
+								"description": "Watermark profile unique identifier.",
+								"maxLength": 32
+							}
+						}
+					}
+				},
+				"required_props": [
+					"maxDurationSeconds"
+				],
+				"optional_props": [
+					"expiry",
+					"creator",
+					"thumbnailTimestampPct",
+					"allowedOrigins",
+					"requireSignedURLs",
+					"watermark"
+				],
+				"objects": [],
+				"example": "{\n  \"maxDurationSeconds\": 300,\n  \"expiry\": \"2021-01-02T02:20:00Z\",\n  \"creator\": \"creator-id_abcde12345\",\n  \"thumbnailTimestampPct\": 0.529241,\n  \"allowedOrigins\": [\n    \"example.com\"\n  ],\n  \"requireSignedURLs\": true,\n  \"watermark\": {\n    \"uid\": \"ea95132c15732412d22c1476fa83f27a\"\n  }\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"uploadURL\": \"www.example.com/samplepath\",\n    \"uid\": \"ea95132c15732412d22c1476fa83f27a\",\n    \"watermark\": {\n      \"uid\": \"ea95132c15732412d22c1476fa83f27a\",\n      \"size\": 29472,\n      \"height\": 600,\n      \"width\": 400,\n      \"created\": \"2014-01-02T02:20:00Z\",\n      \"downloadedFrom\": \"https://company.com/logo.png\",\n      \"name\": \"Marketing Videos\",\n      \"opacity\": 0.75,\n      \"padding\": 0.1,\n      \"scale\": 0.1,\n      \"position\": \"center\"\n    }\n  }\n}"
+		},
+		{
+			"title": "List videos",
+			"description": "Up to 1000 videos can be listed with one request, use optional parameters below to get a specific range of videos.\n\nPlease note that Cloudflare Stream does not use pagination, instead it uses a cursor pattern to list more than 1000 videos. In order to list all videos, make multiple requests to the API using the created date-time of the last item in the previous request as the `before` or `after` parameter.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/stream",
+			"method": "GET",
+			"cfOwnership": "stream",
+			"html_id": "stream-videos-list-videos",
+			"uri": "accounts/:account_identifier/stream",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/stream?after=2014-01-02T02:20:00Z&before=2014-01-02T02:20:00Z&creator=creator-id_abcde12345&include_counts=false&search=puppy.mp4&limit=undefined&asc=false&status=downloading,queued,inprogress,ready,error\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"after": {
+						"type": "string",
+						"example": "\"2014-01-02T02:20:00Z\"",
+						"description": "Show videos created after this date-time",
+						"format": "date-time"
+					},
+					"before": {
+						"type": "string",
+						"example": "\"2014-01-02T02:20:00Z\"",
+						"description": "Show videos created before this time",
+						"format": "date-time"
+					},
+					"creator": {
+						"type": "string",
+						"example": "\"creator-id_abcde12345\"",
+						"description": "Filter by user-defined identifier of the media creator",
+						"maxLength": 64
+					},
+					"include_counts": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Include stats in the response about the number of videos in response range and total number of videos available",
+						"default": false
+					},
+					"search": {
+						"type": "string",
+						"example": "\"puppy.mp4\"",
+						"description": "A string provided in this field will be used to search over the 'name' key in meta field, which can be set with the upload request of after."
+					},
+					"limit": {
+						"type": "integer",
+						"description": "Number of videos to include in the response",
+						"minimum": 0,
+						"maximum": 1000
+					},
+					"asc": {
+						"type": "boolean",
+						"example": "false",
+						"description": "List videos in ascending order of creation",
+						"default": false
+					},
+					"status": {
+						"type": "string",
+						"example": "\"downloading,queued,inprogress,ready,error\"",
+						"description": "Filter by statuses",
+						"default": "downloading,queued,inprogress,ready,error",
+						"enum": [
+							"pendingupload",
+							"downloading",
+							"queued",
+							"inprogress",
+							"ready",
+							"error"
+						]
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"after",
+					"before",
+					"creator",
+					"include_counts",
+					"search",
+					"limit",
+					"asc",
+					"status"
+				],
+				"objects": [],
+				"example": "{\n  \"after\": \"2014-01-02T02:20:00Z\",\n  \"before\": \"2014-01-02T02:20:00Z\",\n  \"creator\": \"creator-id_abcde12345\",\n  \"include_counts\": false,\n  \"search\": \"puppy.mp4\",\n  \"asc\": false,\n  \"status\": \"downloading,queued,inprogress,ready,error\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"allowedOrigins\": [\n        \"example.com\"\n      ],\n      \"created\": \"2014-01-02T02:20:00Z\",\n      \"duration\": 300,\n      \"input\": {\n        \"height\": 1080,\n        \"width\": 1920\n      },\n      \"maxDurationSeconds\": 300,\n      \"meta\": {},\n      \"modified\": \"2014-01-02T02:20:00Z\",\n      \"uploadExpiry\": \"2014-01-02T02:20:00Z\",\n      \"playback\": {\n        \"hls\": \"https://videodelivery.net/ea95132c15732412d22c1476fa83f27a/manifest/video.m3u8\",\n        \"dash\": \"https://videodelivery.net/ea95132c15732412d22c1476fa83f27a/manifest/video.mpd\"\n      },\n      \"preview\": \"https://watch.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a\",\n      \"readyToStream\": true,\n      \"requireSignedURLs\": true,\n      \"size\": 4190963,\n      \"status\": {\n        \"state\": \"inprogress\",\n        \"pctComplete\": 51,\n        \"errorReasonCode\": \"ERR_NON_VIDEO\",\n        \"errorReasonText\": \"The file was not recognized as a valid video file.\"\n      },\n      \"thumbnail\": \"https://videodelivery.net/ea95132c15732412d22c1476fa83f27a/thumbnails/thumbnail.jpg\",\n      \"thumbnailTimestampPct\": 0.529241,\n      \"uid\": \"ea95132c15732412d22c1476fa83f27a\",\n      \"creator\": \"creator-id_abcde12345\",\n      \"liveInput\": \"fc0a8dc887b16759bfd9ad922230a014\",\n      \"uploaded\": \"2014-01-02T02:20:00Z\",\n      \"watermark\": {\n        \"uid\": \"ea95132c15732412d22c1476fa83f27a\",\n        \"size\": 29472,\n        \"height\": 600,\n        \"width\": 400,\n        \"created\": \"2014-01-02T02:20:00Z\",\n        \"downloadedFrom\": \"https://company.com/logo.png\",\n        \"name\": \"Marketing Videos\",\n        \"opacity\": 0.75,\n        \"padding\": 0.1,\n        \"scale\": 0.1,\n        \"position\": \"center\"\n      },\n      \"nft\": {\n        \"contract\": \"0x57f1887a8bf19b14fc0d912b9b2acc9af147ea85\",\n        \"token\": 5\n      }\n    }\n  ],\n  \"total\": \"35586\",\n  \"range\": \"1000\"\n}"
+		},
+		{
+			"title": "Initiate a Video Upload using TUS",
+			"description": "Initiate a video upload using the TUS protocol. On success, server will response with status code 201 (Created) and include a 'location' header indicating where the video content should be uploaded to. See https://tus.io for protocol details.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/stream",
+			"method": "POST",
+			"cfOwnership": "stream",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key",
+					"Tus-Resumable",
+					"Upload-Length"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					},
+					"Tus-Resumable": {
+						"description": "This header specifies the TUS protocol version. This header must be included in every upload request.",
+						"type": "string",
+						"enum": [
+							"1.0.0"
+						],
+						"example": "1.0.0",
+						"cfNotes": "The only supported version of TUS protocol is 1.0.0."
+					},
+					"Upload-Creator": {
+						"description": "User-defined identifier of the media creator",
+						"example": "creator-id_abcde12345",
+						"maxLength": 64,
+						"type": "string"
+					},
+					"Upload-Length": {
+						"description": "Indicates the size of the entire upload in bytes. The value must be a non-negative integer.",
+						"type": "integer",
+						"minimum": 0,
+						"example": 900000000
+					}
+				}
+			},
+			"html_id": "stream-videos-initiate-a-video-upload-using-tus",
+			"uri": "accounts/:account_identifier/stream",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/stream\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Tus-Resumable: 1.0.0\" \\\n     -H \"Upload-Creator: creator-id_abcde12345\" \\\n     -H \"Upload-Length: 900000000\""
+		},
+		{
+			"title": "Video details",
+			"description": "Fetch details of a single video.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/stream/{#/definitions/identifier}",
+			"method": "GET",
+			"cfOwnership": "stream",
+			"html_id": "stream-videos-video-details",
+			"uri": "accounts/:account_identifier/stream/:identifier",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/stream/ea95132c15732412d22c1476fa83f27a\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"allowedOrigins\": [\n      \"example.com\"\n    ],\n    \"created\": \"2014-01-02T02:20:00Z\",\n    \"duration\": 300,\n    \"input\": {\n      \"height\": 1080,\n      \"width\": 1920\n    },\n    \"maxDurationSeconds\": 300,\n    \"meta\": {},\n    \"modified\": \"2014-01-02T02:20:00Z\",\n    \"uploadExpiry\": \"2014-01-02T02:20:00Z\",\n    \"playback\": {\n      \"hls\": \"https://videodelivery.net/ea95132c15732412d22c1476fa83f27a/manifest/video.m3u8\",\n      \"dash\": \"https://videodelivery.net/ea95132c15732412d22c1476fa83f27a/manifest/video.mpd\"\n    },\n    \"preview\": \"https://watch.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a\",\n    \"readyToStream\": true,\n    \"requireSignedURLs\": true,\n    \"size\": 4190963,\n    \"status\": {\n      \"state\": \"inprogress\",\n      \"pctComplete\": 51,\n      \"errorReasonCode\": \"ERR_NON_VIDEO\",\n      \"errorReasonText\": \"The file was not recognized as a valid video file.\"\n    },\n    \"thumbnail\": \"https://videodelivery.net/ea95132c15732412d22c1476fa83f27a/thumbnails/thumbnail.jpg\",\n    \"thumbnailTimestampPct\": 0.529241,\n    \"uid\": \"ea95132c15732412d22c1476fa83f27a\",\n    \"creator\": \"creator-id_abcde12345\",\n    \"liveInput\": \"fc0a8dc887b16759bfd9ad922230a014\",\n    \"uploaded\": \"2014-01-02T02:20:00Z\",\n    \"watermark\": {\n      \"uid\": \"ea95132c15732412d22c1476fa83f27a\",\n      \"size\": 29472,\n      \"height\": 600,\n      \"width\": 400,\n      \"created\": \"2014-01-02T02:20:00Z\",\n      \"downloadedFrom\": \"https://company.com/logo.png\",\n      \"name\": \"Marketing Videos\",\n      \"opacity\": 0.75,\n      \"padding\": 0.1,\n      \"scale\": 0.1,\n      \"position\": \"center\"\n    },\n    \"nft\": {\n      \"contract\": \"0x57f1887a8bf19b14fc0d912b9b2acc9af147ea85\",\n      \"token\": 5\n    }\n  }\n}"
+		},
+		{
+			"title": "Embed Code HTML",
+			"description": "Fetch an HTML code snippet that can be used to embed the video in a web page that is delivered through Cloudflare. On success returns an HTML fragment (not a full document) that can be included on a web page to display the video. On failure returns a JSON response body (see Error Response) above.",
+			"rel": "tag:cloudflare.com,2018:embed-code",
+			"href": "accounts/{#/definitions/account_identifier}/stream/{#/definitions/identifier}/embed",
+			"mediaType": "text/html",
+			"method": "GET",
+			"cfOwnership": "stream",
+			"html_id": "stream-videos-embed-code-html",
+			"uri": "accounts/:account_identifier/stream/:identifier/embed",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/stream/ea95132c15732412d22c1476fa83f27a/embed\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "<stream id=\"ea95132c15732412d22c1476fa83f27a\"></stream><script data-cfasync=\"false\" defer type=\"text/javascript\" src=\"https://embed.cloudflarestream.com/embed/we4g.fla9.latest.js\"></script>"
+		},
+		{
+			"title": "Delete video",
+			"description": "Delete a video on Cloudflare Stream. On success, all copies of the video are deleted.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/stream/{#/definitions/identifier}",
+			"cfOwnership": "stream",
+			"method": "DELETE",
+			"html_id": "stream-videos-delete-video",
+			"uri": "accounts/:account_identifier/stream/:identifier",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/stream/ea95132c15732412d22c1476fa83f27a\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\""
+		},
+		{
+			"title": "Associate video to an NFT",
+			"description": "By associating a token ID and contract address on Stream videos, you make it possible to transfer admin rights on a video. If a change in ownership of the ERC-721 token happens on the Ethereum blockchain, the new owner of the token may claim control over of the video.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/stream/{#/definitions/identifier}",
+			"cfOwnership": "stream",
+			"method": "POST",
+			"html_id": "stream-videos-associate-video-to-an-nft",
+			"uri": "accounts/:account_identifier/stream/:identifier",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/stream/ea95132c15732412d22c1476fa83f27a\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"contract\":\"0x57f1887a8bf19b14fc0d912b9b2acc9af147ea85\",\"token\":5}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"contract": {
+						"type": "string",
+						"example": "\"0x57f1887a8bf19b14fc0d912b9b2acc9af147ea85\"",
+						"readOnly": true,
+						"description": "ERC-721 compatible contract address",
+						"maxLength": 42,
+						"minLength": 42
+					},
+					"token": {
+						"type": "integer",
+						"example": "5",
+						"readOnly": true,
+						"description": "Token ID for the NFT"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"contract",
+					"token"
+				],
+				"objects": [],
+				"example": "{\n  \"contract\": \"0x57f1887a8bf19b14fc0d912b9b2acc9af147ea85\",\n  \"token\": 5\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"allowedOrigins\": [\n        \"example.com\"\n      ],\n      \"created\": \"2014-01-02T02:20:00Z\",\n      \"duration\": 300,\n      \"input\": {\n        \"height\": 1080,\n        \"width\": 1920\n      },\n      \"maxDurationSeconds\": 300,\n      \"meta\": {},\n      \"modified\": \"2014-01-02T02:20:00Z\",\n      \"uploadExpiry\": \"2014-01-02T02:20:00Z\",\n      \"playback\": {\n        \"hls\": \"https://videodelivery.net/ea95132c15732412d22c1476fa83f27a/manifest/video.m3u8\",\n        \"dash\": \"https://videodelivery.net/ea95132c15732412d22c1476fa83f27a/manifest/video.mpd\"\n      },\n      \"preview\": \"https://watch.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a\",\n      \"readyToStream\": true,\n      \"requireSignedURLs\": true,\n      \"size\": 4190963,\n      \"status\": {\n        \"state\": \"inprogress\",\n        \"pctComplete\": 51,\n        \"errorReasonCode\": \"ERR_NON_VIDEO\",\n        \"errorReasonText\": \"The file was not recognized as a valid video file.\"\n      },\n      \"thumbnail\": \"https://videodelivery.net/ea95132c15732412d22c1476fa83f27a/thumbnails/thumbnail.jpg\",\n      \"thumbnailTimestampPct\": 0.529241,\n      \"uid\": \"ea95132c15732412d22c1476fa83f27a\",\n      \"creator\": \"creator-id_abcde12345\",\n      \"liveInput\": \"fc0a8dc887b16759bfd9ad922230a014\",\n      \"uploaded\": \"2014-01-02T02:20:00Z\",\n      \"watermark\": {\n        \"uid\": \"ea95132c15732412d22c1476fa83f27a\",\n        \"size\": 29472,\n        \"height\": 600,\n        \"width\": 400,\n        \"created\": \"2014-01-02T02:20:00Z\",\n        \"downloadedFrom\": \"https://company.com/logo.png\",\n        \"name\": \"Marketing Videos\",\n        \"opacity\": 0.75,\n        \"padding\": 0.1,\n        \"scale\": 0.1,\n        \"position\": \"center\"\n      },\n      \"nft\": {\n        \"contract\": \"0x57f1887a8bf19b14fc0d912b9b2acc9af147ea85\",\n        \"token\": 5\n      }\n    }\n  ],\n  \"total\": \"35586\",\n  \"range\": \"1000\"\n}"
+		},
+		{
+			"title": "Create a signed URL token for a video",
+			"description": "Create a signed URL token for a video. If no body is provided in the request, a token will be created with default values.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/stream/{#/definitions/identifier}/token",
+			"cfOwnership": "stream",
+			"method": "POST",
+			"html_id": "stream-videos-create-a-signed-url-token-for-a-video",
+			"uri": "accounts/:account_identifier/stream/:identifier/token",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/stream/ea95132c15732412d22c1476fa83f27a/token\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"id\":\"ab0d4ef71g4425f8dcba9041231813000\",\"pem\":\"LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFcEFJQkFBS0NBUUVBc284dnBvOFpEWXRkOUgzbWlPaW1qYXAzVXlVM0oyZ3kwTUYvN1R4blJuRnkwRHpDCkxqUk9naFZsQ0hPQmxsd3NVaE9GU0lyYnN4K05tUTdBeS90TFpXSGxuVGF3UWJ5WGZGOStJeDhVSnNlSHBGV1oKNVF5Z1JYd2liSjh1MVVsZ2xlcmZHMkpueldjVXpZTzEySktZN3doSkw1ajROMWgxZFJNUXQ5Q1pkZFlCQWRzOQpCdk02cjRFMDcxQkhQekhWeDMrUTI1VWtubGdUNXIwS3FiM1E1Y0dlTlBXY1JreW1ybkJEWWR0OXR4eFFMb1dPCllzNXdsMnVYWFVYL0VGcDMwajU0Nmp6czllWExLYlNDbjJjTDZFVE96Y2x3aG9DRGx2a2VQT05rUE9LMDVKNUMKTm1TdFdhMG9hV1VGRzM0MFl3cVVrWGt4OU9tNndXd1JldU1uU1FJREFRQUJBb0lCQUFJOHo1ck5kOEdtOGJBMgo1S3pxQjI1R2lOVENwbUNJeW53NXRJWHZTQmNHcEdydUcvdlN2WG9kVlFVSVY0TWdHQkVXUEFrVzdsNWVBcHI4CnA1ZFd5SkRXYTNkdklFSE9vSEpYU3dBYksxZzZEMTNVa2NkZ1EyRGpoNVhuWDhHZCtBY2c2SmRTQWgxOWtYSHEKMk54RUtBVDB6Ri83a1g2MkRkREFBcWxmQkpGSXJodVIvZUdEVWh4L2piTTRhQ2JCcFdiM0pnRE9OYm5tS1ZoMwpxS2ZwZmRZZENZU1lzWUxrNTlxRDF2VFNwUVFUQ0VadW9VKzNzRVNhdkJzaUs1bU0vTzY5ZkRMRXNURG1MeTVQCmhEK3BMQXI0SlhNNjFwRGVBS0l3cUVqWWJybXlDRHRXTUdJNnZzZ0E1eXQzUUJaME9vV2w5QUkwdWxoZ3p4dXQKZ2ZFNTRRRUNnWUVBN0F3a0lhVEEzYmQ4Nk9jSVZnNFlrWGk1cm5aNDdsM1k4V24zcjIzUmVISXhLdkllRUtSbgp5bUlFNDFtRVBBSmlGWFpLK1VPTXdkeS9EcnFJUithT1JiT2NiV01jWUg2QzgvbG1wdVJFaXE3SW1Ub3VWcnA4CnlnUkprMWprVDA4cTIvNmg4eTBEdjJqMitsaHFXNzRNOUt0cmwxcTRlWmZRUFREL01tR1NnTWtDZ1lFQXdhY04KaSttN1p6dnJtL3NuekF2VlZ5SEtwZHVUUjNERk1naC9maC9tZ0ZHZ1RwZWtUOVV5b3FleGNYQXdwMVlhL01iQQoyNTVJVDZRbXZZTm5yNXp6Wmxic2tMV0hsYllvbWhmWnVXTHhXR3hRaEFORWdaMFVVdUVTRGMvbWx2UXZHbEtSCkZoaGhBUWlVSmdDamhPaHk1SlBiNGFldGRKd0UxK09lVWRFaE1vRUNnWUVBNG8yZ25CM1o4ck5xa3NzemlBek4KYmNuMlJVbDJOaW9pejBwS3JMaDFaT29NNE5BekpQdjJsaHRQMzdtS0htS1hLMHczRjFqTEgwSTBxZmxFVmVZbQpSU1huakdHazJjUnpBYUVzOGgrQzNheDE0Z01pZUtGU3BqNUpNOEFNbVVZOXQ1cUVhN2FYc3o0V1ZoOUlMYmVTCkRiNzlhKzVwd21LQVBrcnBsTHhyZFdrQ2dZQlNNSHVBWVdBbmJYZ1BDS2FZWklGVWJNUWNacmY0ZnpWQ2lmYksKYWZHampvRlNPZXdEOGdGK3BWdWJRTGwxbkFieU44ek1xVDRaaHhybUhpcFlqMjJDaHV2NmN3RXJtbGRiSnpwQwpBMnRaVXdkTk1ESFlMUG5lUHlZeGRJWnlsUXFVeW14SGkydElUQUxNcWtLOGV3ZWdXZHpkeGhQSlJScU5JazhrCmZIVHhnUUtCZ1FEUFc2UXIxY3F3QjNUdnVWdWR4WGRqUTdIcDFodXhrNEVWaEFJZllKNFhSTW1NUE5YS28wdHUKdUt6LzE0QW14R0dvSWJxYVc1bDMzeFNteUxhem84clNUN0tSTjVKME9JSHcrZkR5SFgxdHpVSjZCTldDcEFTcwpjbWdNK0htSzVON0w2bkNaZFJQY2IwU1hGaVRQUGhCUG1PVWFDUnpER0ZMK2JYM1VwajJKbWc9PQotLS0tLUVORCBSU0EgUFJJVkFURSBLRVktLS0tLQo=\",\"exp\":1621555515,\"nbf\":1621548315,\"downloadable\":false,\"accessRules\":[{\"type\":\"ip.geoip.country\",\"country\":[\"US\",\"MX\"],\"action\":\"block\"},{\"type\":\"ip.src\",\"ip\":[\"93.184.216.0/24\",\"2400:cb00::/32\"],\"action\":\"allow\"},{\"type\":\"any\",\"action\":\"block\"}]}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"ab0d4ef71g4425f8dcba9041231813000\"",
+						"readOnly": true,
+						"description": "Optional id of a Stream signing key. If present, the 'pem' field is also required."
+					},
+					"pem": {
+						"type": "string",
+						"example": "\"LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFcEFJQkFBS0NBUUVBc284dnBvOFpEWXRkOUgzbWlPaW1qYXAzVXlVM0oyZ3kwTUYvN1R4blJuRnkwRHpDCkxqUk9naFZsQ0hPQmxsd3NVaE9GU0lyYnN4K05tUTdBeS90TFpXSGxuVGF3UWJ5WGZGOStJeDhVSnNlSHBGV1oKNVF5Z1JYd2liSjh1MVVsZ2xlcmZHMkpueldjVXpZTzEySktZN3doSkw1ajROMWgxZFJNUXQ5Q1pkZFlCQWRzOQpCdk02cjRFMDcxQkhQekhWeDMrUTI1VWtubGdUNXIwS3FiM1E1Y0dlTlBXY1JreW1ybkJEWWR0OXR4eFFMb1dPCllzNXdsMnVYWFVYL0VGcDMwajU0Nmp6czllWExLYlNDbjJjTDZFVE96Y2x3aG9DRGx2a2VQT05rUE9LMDVKNUMKTm1TdFdhMG9hV1VGRzM0MFl3cVVrWGt4OU9tNndXd1JldU1uU1FJREFRQUJBb0lCQUFJOHo1ck5kOEdtOGJBMgo1S3pxQjI1R2lOVENwbUNJeW53NXRJWHZTQmNHcEdydUcvdlN2WG9kVlFVSVY0TWdHQkVXUEFrVzdsNWVBcHI4CnA1ZFd5SkRXYTNkdklFSE9vSEpYU3dBYksxZzZEMTNVa2NkZ1EyRGpoNVhuWDhHZCtBY2c2SmRTQWgxOWtYSHEKMk54RUtBVDB6Ri83a1g2MkRkREFBcWxmQkpGSXJodVIvZUdEVWh4L2piTTRhQ2JCcFdiM0pnRE9OYm5tS1ZoMwpxS2ZwZmRZZENZU1lzWUxrNTlxRDF2VFNwUVFUQ0VadW9VKzNzRVNhdkJzaUs1bU0vTzY5ZkRMRXNURG1MeTVQCmhEK3BMQXI0SlhNNjFwRGVBS0l3cUVqWWJybXlDRHRXTUdJNnZzZ0E1eXQzUUJaME9vV2w5QUkwdWxoZ3p4dXQKZ2ZFNTRRRUNnWUVBN0F3a0lhVEEzYmQ4Nk9jSVZnNFlrWGk1cm5aNDdsM1k4V24zcjIzUmVISXhLdkllRUtSbgp5bUlFNDFtRVBBSmlGWFpLK1VPTXdkeS9EcnFJUithT1JiT2NiV01jWUg2QzgvbG1wdVJFaXE3SW1Ub3VWcnA4CnlnUkprMWprVDA4cTIvNmg4eTBEdjJqMitsaHFXNzRNOUt0cmwxcTRlWmZRUFREL01tR1NnTWtDZ1lFQXdhY04KaSttN1p6dnJtL3NuekF2VlZ5SEtwZHVUUjNERk1naC9maC9tZ0ZHZ1RwZWtUOVV5b3FleGNYQXdwMVlhL01iQQoyNTVJVDZRbXZZTm5yNXp6Wmxic2tMV0hsYllvbWhmWnVXTHhXR3hRaEFORWdaMFVVdUVTRGMvbWx2UXZHbEtSCkZoaGhBUWlVSmdDamhPaHk1SlBiNGFldGRKd0UxK09lVWRFaE1vRUNnWUVBNG8yZ25CM1o4ck5xa3NzemlBek4KYmNuMlJVbDJOaW9pejBwS3JMaDFaT29NNE5BekpQdjJsaHRQMzdtS0htS1hLMHczRjFqTEgwSTBxZmxFVmVZbQpSU1huakdHazJjUnpBYUVzOGgrQzNheDE0Z01pZUtGU3BqNUpNOEFNbVVZOXQ1cUVhN2FYc3o0V1ZoOUlMYmVTCkRiNzlhKzVwd21LQVBrcnBsTHhyZFdrQ2dZQlNNSHVBWVdBbmJYZ1BDS2FZWklGVWJNUWNacmY0ZnpWQ2lmYksKYWZHampvRlNPZXdEOGdGK3BWdWJRTGwxbkFieU44ek1xVDRaaHhybUhpcFlqMjJDaHV2NmN3RXJtbGRiSnpwQwpBMnRaVXdkTk1ESFlMUG5lUHlZeGRJWnlsUXFVeW14SGkydElUQUxNcWtLOGV3ZWdXZHpkeGhQSlJScU5JazhrCmZIVHhnUUtCZ1FEUFc2UXIxY3F3QjNUdnVWdWR4WGRqUTdIcDFodXhrNEVWaEFJZllKNFhSTW1NUE5YS28wdHUKdUt6LzE0QW14R0dvSWJxYVc1bDMzeFNteUxhem84clNUN0tSTjVKME9JSHcrZkR5SFgxdHpVSjZCTldDcEFTcwpjbWdNK0htSzVON0w2bkNaZFJQY2IwU1hGaVRQUGhCUG1PVWFDUnpER0ZMK2JYM1VwajJKbWc9PQotLS0tLUVORCBSU0EgUFJJVkFURSBLRVktLS0tLQo=\"",
+						"readOnly": true,
+						"description": "Optional base64 encoded private key in PEM format associated with a Stream signing key. If present, the 'id' field is also required."
+					},
+					"exp": {
+						"type": "integer",
+						"example": "1621555515",
+						"readOnly": true,
+						"description": "Optional unix epoch timestamp after which the token will not be accepted, up to a maximum of 24 hours from issuing time. If not set, defaults to one hour after issuing."
+					},
+					"nbf": {
+						"type": "integer",
+						"example": "1621548315",
+						"readOnly": true,
+						"description": "Optional unix epoch timestamp before which the token will not be accepted.  If not set, defaults to one hour before issuing."
+					},
+					"downloadable": {
+						"type": "boolean",
+						"example": "false",
+						"readOnly": true,
+						"description": "Optional boolean value which enables the signed token to be used to access mp4 download links for the video.",
+						"default": false
+					},
+					"accessRules": {
+						"type": "array",
+						"example": "[\n  {\n    \"type\": \"ip.geoip.country\",\n    \"country\": [\n      \"US\",\n      \"MX\"\n    ],\n    \"action\": \"block\"\n  },\n  {\n    \"type\": \"ip.src\",\n    \"ip\": [\n      \"93.184.216.0/24\",\n      \"2400:cb00::/32\"\n    ],\n    \"action\": \"allow\"\n  },\n  {\n    \"type\": \"any\",\n    \"action\": \"block\"\n  }\n]",
+						"readOnly": true,
+						"description": "Optional list of access rule constraints on the token. Access can be blocked or allowed based on an IP, IP range, or by country. Access Rules are evaluated first-to-last. If a Rule matches, the associated action is applied and no further rules are evaluated.",
+						"items": {
+							"type": "object",
+							"readOnly": true,
+							"description": "Access Rules allow you to define rules to have finer-grained control over your content than signed URL tokens alone. They are primarily aimed at making tokens conditionally valid based on user information. Access Rules are specified on token payloads as the accessRules property containing an array of Rule objects.",
+							"properties": {
+								"action": {
+									"readOnly": true,
+									"description": "Action to take if a request matches a rule. If the action is 'block', the signed token will block views for viewers that match this rule.",
+									"type": "string",
+									"enum": [
+										"allow",
+										"block"
+									],
+									"example": "allow"
+								},
+								"type": {
+									"readOnly": true,
+									"description": "Available rule types to match requests on. Type 'any' matches all requests, and may be used as a wildcard to apply a default action after other rules.",
+									"type": "string",
+									"enum": [
+										"any",
+										"ip.src",
+										"ip.geoip.country"
+									],
+									"example": "ip.src"
+								},
+								"ip": {
+									"readOnly": true,
+									"description": "Array of IPv4 or IPV6 addresses or CIDRs to match requests on.",
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"example": "[\"1.2.3.4\",\"93.184.216.0/24\",\"2400:cb00::/32\"]"
+								},
+								"country": {
+									"readOnly": true,
+									"description": "Array of 2-letter country codes in ISO 3166-1 Alpha-2 format to match requests on.",
+									"type": "array",
+									"items": {
+										"type": "string"
+									},
+									"example": "[\"GB\", \"IE\"]"
+								}
+							}
+						}
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"id",
+					"pem",
+					"exp",
+					"nbf",
+					"downloadable",
+					"accessRules"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"ab0d4ef71g4425f8dcba9041231813000\",\n  \"pem\": \"LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFcEFJQkFBS0NBUUVBc284dnBvOFpEWXRkOUgzbWlPaW1qYXAzVXlVM0oyZ3kwTUYvN1R4blJuRnkwRHpDCkxqUk9naFZsQ0hPQmxsd3NVaE9GU0lyYnN4K05tUTdBeS90TFpXSGxuVGF3UWJ5WGZGOStJeDhVSnNlSHBGV1oKNVF5Z1JYd2liSjh1MVVsZ2xlcmZHMkpueldjVXpZTzEySktZN3doSkw1ajROMWgxZFJNUXQ5Q1pkZFlCQWRzOQpCdk02cjRFMDcxQkhQekhWeDMrUTI1VWtubGdUNXIwS3FiM1E1Y0dlTlBXY1JreW1ybkJEWWR0OXR4eFFMb1dPCllzNXdsMnVYWFVYL0VGcDMwajU0Nmp6czllWExLYlNDbjJjTDZFVE96Y2x3aG9DRGx2a2VQT05rUE9LMDVKNUMKTm1TdFdhMG9hV1VGRzM0MFl3cVVrWGt4OU9tNndXd1JldU1uU1FJREFRQUJBb0lCQUFJOHo1ck5kOEdtOGJBMgo1S3pxQjI1R2lOVENwbUNJeW53NXRJWHZTQmNHcEdydUcvdlN2WG9kVlFVSVY0TWdHQkVXUEFrVzdsNWVBcHI4CnA1ZFd5SkRXYTNkdklFSE9vSEpYU3dBYksxZzZEMTNVa2NkZ1EyRGpoNVhuWDhHZCtBY2c2SmRTQWgxOWtYSHEKMk54RUtBVDB6Ri83a1g2MkRkREFBcWxmQkpGSXJodVIvZUdEVWh4L2piTTRhQ2JCcFdiM0pnRE9OYm5tS1ZoMwpxS2ZwZmRZZENZU1lzWUxrNTlxRDF2VFNwUVFUQ0VadW9VKzNzRVNhdkJzaUs1bU0vTzY5ZkRMRXNURG1MeTVQCmhEK3BMQXI0SlhNNjFwRGVBS0l3cUVqWWJybXlDRHRXTUdJNnZzZ0E1eXQzUUJaME9vV2w5QUkwdWxoZ3p4dXQKZ2ZFNTRRRUNnWUVBN0F3a0lhVEEzYmQ4Nk9jSVZnNFlrWGk1cm5aNDdsM1k4V24zcjIzUmVISXhLdkllRUtSbgp5bUlFNDFtRVBBSmlGWFpLK1VPTXdkeS9EcnFJUithT1JiT2NiV01jWUg2QzgvbG1wdVJFaXE3SW1Ub3VWcnA4CnlnUkprMWprVDA4cTIvNmg4eTBEdjJqMitsaHFXNzRNOUt0cmwxcTRlWmZRUFREL01tR1NnTWtDZ1lFQXdhY04KaSttN1p6dnJtL3NuekF2VlZ5SEtwZHVUUjNERk1naC9maC9tZ0ZHZ1RwZWtUOVV5b3FleGNYQXdwMVlhL01iQQoyNTVJVDZRbXZZTm5yNXp6Wmxic2tMV0hsYllvbWhmWnVXTHhXR3hRaEFORWdaMFVVdUVTRGMvbWx2UXZHbEtSCkZoaGhBUWlVSmdDamhPaHk1SlBiNGFldGRKd0UxK09lVWRFaE1vRUNnWUVBNG8yZ25CM1o4ck5xa3NzemlBek4KYmNuMlJVbDJOaW9pejBwS3JMaDFaT29NNE5BekpQdjJsaHRQMzdtS0htS1hLMHczRjFqTEgwSTBxZmxFVmVZbQpSU1huakdHazJjUnpBYUVzOGgrQzNheDE0Z01pZUtGU3BqNUpNOEFNbVVZOXQ1cUVhN2FYc3o0V1ZoOUlMYmVTCkRiNzlhKzVwd21LQVBrcnBsTHhyZFdrQ2dZQlNNSHVBWVdBbmJYZ1BDS2FZWklGVWJNUWNacmY0ZnpWQ2lmYksKYWZHampvRlNPZXdEOGdGK3BWdWJRTGwxbkFieU44ek1xVDRaaHhybUhpcFlqMjJDaHV2NmN3RXJtbGRiSnpwQwpBMnRaVXdkTk1ESFlMUG5lUHlZeGRJWnlsUXFVeW14SGkydElUQUxNcWtLOGV3ZWdXZHpkeGhQSlJScU5JazhrCmZIVHhnUUtCZ1FEUFc2UXIxY3F3QjNUdnVWdWR4WGRqUTdIcDFodXhrNEVWaEFJZllKNFhSTW1NUE5YS28wdHUKdUt6LzE0QW14R0dvSWJxYVc1bDMzeFNteUxhem84clNUN0tSTjVKME9JSHcrZkR5SFgxdHpVSjZCTldDcEFTcwpjbWdNK0htSzVON0w2bkNaZFJQY2IwU1hGaVRQUGhCUG1PVWFDUnpER0ZMK2JYM1VwajJKbWc9PQotLS0tLUVORCBSU0EgUFJJVkFURSBLRVktLS0tLQo=\",\n  \"exp\": 1621555515,\n  \"nbf\": 1621548315,\n  \"downloadable\": false,\n  \"accessRules\": [\n    {\n      \"type\": \"ip.geoip.country\",\n      \"country\": [\n        \"US\",\n        \"MX\"\n      ],\n      \"action\": \"block\"\n    },\n    {\n      \"type\": \"ip.src\",\n      \"ip\": [\n        \"93.184.216.0/24\",\n        \"2400:cb00::/32\"\n      ],\n      \"action\": \"allow\"\n    },\n    {\n      \"type\": \"any\",\n      \"action\": \"block\"\n    }\n  ]\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"token\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6ImU5ZGI5OTBhODI2NjZkZDU3MWM3N2Y5NDRhNWM1YzhkIn0.eyJzdWIiOiJlYTk1MTMyYzE1NzMyNDEyZDIyYzE0NzZmYTgzZjI3YSIsImtpZCI6ImU5ZGI5OTBhODI2NjZkZDU3MWM3N2Y5NDRhNWM1YzhkIiwiZXhwIjoiMTUzNzQ2MDM2NSIsIm5iZiI6IjE1Mzc0NTMxNjUifQ.OZhqOARADn1iubK6GKcn25hN3nU-hCFF5q9w2C4yup0C4diG7aMIowiRpP-eDod8dbAJubsiFuTKrqPcmyCKWYsiv0TQueukqbQlF7HCO1TV-oF6El5-7ldJ46eD-ZQ0XgcIYEKrQOYFF8iDQbqPm3REWd6BnjKZdeVrLzuRaiSnZ9qqFpGu5dfxIY9-nZKDubJHqCr3Imtb211VIG_b9MdtO92JjvkDS-rxT_pkEfTZSafl1OU-98A7KBGtPSJHz2dHORIrUiTA6on4eIXTj9aFhGiir4rSn-rn0OjPRTtJMWIDMoQyE_fwrSYzB7MPuzL2t82BWaEbHZTfixBm5A\"\n  }\n}"
+		}
+	],
+	"cfLinkErrors": {
+		"10000": "Internal Server Error",
+		"10001": "Authentication Failure",
+		"10002": "Authorization Failure: Credential not authorized",
+		"10003": "Not Found: Resource not found",
+		"10004": "Decoding Error: Cannot decode request body",
+		"10005": "Bad Request",
+		"10006": "Beta Access Error",
+		"10007": "Forbidden: Copy upload not enabled",
+		"10008": "Invalid Duration",
+		"10009": "Forbidden: Allowed key count exceeded",
+		"10010": "Invalid URL",
+		"10011": "File size too large",
+		"10012": "Forbidden: Webhook feature not enabled",
+		"10014": "File size too large",
+		"10015": "Chunk size is too small",
+		"10016": "Too Many Requests",
+		"10017": "Expiration for upload has passed",
+		"10018": "Video already uploaded",
+		"10019": "Invalid Percentage Range",
+		"100013": "Conflict: Media has been modified since last request"
+	},
+	"html_id": "stream-videos",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"allowedOrigins": {
+				"type": "array",
+				"example": "[\n  \"example.com\"\n]",
+				"description": "List which origins should be allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty array will allow the video to be viewed on any origin.",
+				"items": {
+					"type": "string"
+				}
+			},
+			"created": {
+				"type": "string",
+				"example": "\"2014-01-02T02:20:00Z\"",
+				"description": "When the media item was created.",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"duration": {
+				"type": "integer",
+				"example": "300",
+				"description": "Duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload, before the video is ready.",
+				"readOnly": true
+			},
+			"input": {
+				"type": "object",
+				"example": "{\n  \"height\": 1080,\n  \"width\": 1920\n}",
+				"properties": {
+					"height": {
+						"type": "integer",
+						"example": "1080",
+						"description": "Height of the video in pixels. A value of `-1` means the height is unknown. Value becomes available after the upload, before the video is ready.",
+						"readOnly": true
+					},
+					"width": {
+						"type": "integer",
+						"example": "1920",
+						"description": "Width of the video in seconds. A value of `-1` means the width is unknown. Value becomes available after the upload, before the video is ready.",
+						"readOnly": true
+					}
+				},
+				"readOnly": true
+			},
+			"maxDurationSeconds": {
+				"type": "integer",
+				"example": "300",
+				"description": "Maximum duration for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploaded that exceed this duration will fail during processing. A value of `-1` means the value is unknown."
+			},
+			"meta": {
+				"type": "object",
+				"example": "{}",
+				"description": "User modifyable key-value store. Can use used for keeping references to another system of record for managing videos."
+			},
+			"modified": {
+				"type": "string",
+				"example": "\"2014-01-02T02:20:00Z\"",
+				"description": "When the media item was last modified.",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"uploadExpiry": {
+				"type": "string",
+				"example": "\"2014-01-02T02:20:00Z\"",
+				"description": "Date at which the video upload URL is no longer valid for direct user uploads.",
+				"format": "date-time"
+			},
+			"playback": {
+				"type": "object",
+				"example": "{\n  \"hls\": \"https://videodelivery.net/ea95132c15732412d22c1476fa83f27a/manifest/video.m3u8\",\n  \"dash\": \"https://videodelivery.net/ea95132c15732412d22c1476fa83f27a/manifest/video.mpd\"\n}",
+				"properties": {
+					"hls": {
+						"type": "string",
+						"example": "\"https://videodelivery.net/ea95132c15732412d22c1476fa83f27a/manifest/video.m3u8\"",
+						"readOnly": true,
+						"description": "HLS manifest for the video"
+					},
+					"dash": {
+						"type": "string",
+						"example": "\"https://videodelivery.net/ea95132c15732412d22c1476fa83f27a/manifest/video.mpd\"",
+						"readOnly": true,
+						"description": "DASH Media Presentation Description for the video"
+					}
+				},
+				"readOnly": true
+			},
+			"preview": {
+				"type": "string",
+				"example": "\"https://watch.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a\"",
+				"description": "URI of preview page for video. Omitted until encoding is complete.",
+				"format": "uri",
+				"readOnly": true
+			},
+			"readyToStream": {
+				"type": "boolean",
+				"example": "true",
+				"description": "Indicates whether the video is ready for viewing.",
+				"readOnly": true
+			},
+			"requireSignedURLs": {
+				"type": "boolean",
+				"example": "true",
+				"description": "Indicates whether the video can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the video.",
+				"readOnly": true,
+				"default": false
+			},
+			"size": {
+				"type": "number",
+				"example": "4190963",
+				"description": "Size of the media item in bytes.",
+				"readOnly": true
+			},
+			"status": {
+				"example": "{\n  \"state\": \"inprogress\",\n  \"pctComplete\": 51,\n  \"errorReasonCode\": \"ERR_NON_VIDEO\",\n  \"errorReasonText\": \"The file was not recognized as a valid video file.\"\n}",
+				"properties": {
+					"state": {
+						"type": "string",
+						"example": "\"inprogress\"",
+						"description": "Specifies the processing status of the video.",
+						"enum": [
+							"pendingupload",
+							"downloading",
+							"queued",
+							"inprogress",
+							"ready",
+							"error"
+						],
+						"readOnly": true
+					},
+					"pctComplete": {
+						"type": "integer",
+						"example": "51",
+						"description": "Indicates the size of the entire upload in bytes. The value must be a non-negative integer.",
+						"minimum": 0,
+						"maximum": 100,
+						"readOnly": true
+					},
+					"errorReasonCode": {
+						"type": "string",
+						"example": "\"ERR_NON_VIDEO\"",
+						"description": "Provides an error code on why this video failed to encode. Empty if the state is not in \"error\". This field should be preferred for programmatic use.",
+						"readOnly": true
+					},
+					"errorReasonText": {
+						"type": "string",
+						"example": "\"The file was not recognized as a valid video file.\"",
+						"description": "Provides a reason in English on why this video failed to encode. Empty if the state is not in \"error\".",
+						"readOnly": true
+					}
+				},
+				"description": "Object specifying more fine-grained status for this video item. If \"state\" is \"inprogress\" or \"error\", \"step\" will be one of \"encoding\" or \"manifest\". When \"state\" is \"inprogress\", \"pctComplete\" will be a number between 0 and 100 indicating the approximate percent of that step that has been completed. If the \"state\" is \"error\", \"errorReasonCode\" and \"errorReasonText\" will contain additional details.",
+				"readOnly": true
+			},
+			"thumbnail": {
+				"type": "string",
+				"example": "\"https://videodelivery.net/ea95132c15732412d22c1476fa83f27a/thumbnails/thumbnail.jpg\"",
+				"description": "URI to thumbnail for a media item. Omitted until encoding is complete.",
+				"format": "uri",
+				"readOnly": true
+			},
+			"thumbnailTimestampPct": {
+				"type": "number",
+				"example": "0.529241",
+				"description": "Timestamp location of thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image will be from 0s of the video.",
+				"default": 0,
+				"minimum": 0,
+				"maximum": 1
+			},
+			"uid": {
+				"type": "string",
+				"example": "\"ea95132c15732412d22c1476fa83f27a\"",
+				"description": "Media item unique identifier",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"creator": {
+				"type": "string",
+				"example": "\"creator-id_abcde12345\"",
+				"description": "User-defined identifier of the media creator",
+				"maxLength": 64
+			},
+			"liveInput": {
+				"type": "string",
+				"example": "\"fc0a8dc887b16759bfd9ad922230a014\"",
+				"description": "Live input ID that was used to upload this video with Stream Live.",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"uploaded": {
+				"type": "string",
+				"example": "\"2014-01-02T02:20:00Z\"",
+				"description": "When the media item was uploaded.",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"watermark": {
+				"type": "object",
+				"example": "{\n  \"uid\": \"ea95132c15732412d22c1476fa83f27a\",\n  \"size\": 29472,\n  \"height\": 600,\n  \"width\": 400,\n  \"created\": \"2014-01-02T02:20:00Z\",\n  \"downloadedFrom\": \"https://company.com/logo.png\",\n  \"name\": \"Marketing Videos\",\n  \"opacity\": 0.75,\n  \"padding\": 0.1,\n  \"scale\": 0.1,\n  \"position\": \"center\"\n}",
+				"properties": {
+					"uid": {
+						"type": "string",
+						"example": "\"ea95132c15732412d22c1476fa83f27a\"",
+						"description": "Watermark profile unique identifier.",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"size": {
+						"type": "number",
+						"example": "29472",
+						"description": "The size of the image in bytes.",
+						"readOnly": true
+					},
+					"height": {
+						"type": "integer",
+						"example": "600",
+						"description": "Height of the image in pixels.",
+						"readOnly": true
+					},
+					"width": {
+						"type": "integer",
+						"example": "400",
+						"description": "Width of the image in pixels.",
+						"readOnly": true
+					},
+					"created": {
+						"type": "string",
+						"example": "\"2014-01-02T02:20:00Z\"",
+						"description": "When the watermark profile was created.",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"downloadedFrom": {
+						"type": "string",
+						"example": "\"https://company.com/logo.png\"",
+						"description": "The source URL to the image where it was downloaded from. If the watermark profile was created via direct upload, this field will be null.",
+						"readOnly": true
+					},
+					"name": {
+						"type": "string",
+						"example": "\"Marketing Videos\"",
+						"description": "A short description for the profile.",
+						"default": "",
+						"readOnly": true
+					},
+					"opacity": {
+						"type": "number",
+						"example": "0.75",
+						"description": "Translucency of the image. 0.0 means completely transparent, and 1.0 means completely opaque. Note that if the image is already semi-transparent, setting this to 1.0 will not make it completely opaque.",
+						"default": 1,
+						"minimum": 0,
+						"maximum": 1,
+						"readOnly": true
+					},
+					"padding": {
+						"type": "number",
+						"example": "0.1",
+						"description": "Whitespace between the adjacent edges (determined by position) of the video and the image. 0.0 means no padding, and 1.0 means padded full video width or length, determined by the algorithm.",
+						"default": 0.05,
+						"minimum": 0,
+						"maximum": 1,
+						"readOnly": true
+					},
+					"scale": {
+						"type": "number",
+						"example": "0.1",
+						"description": "The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. 0.0 means no scaling (use the size of the image as-is), and 1.0 fills the entire video.",
+						"default": 0.15,
+						"minimum": 0,
+						"maximum": 1,
+						"readOnly": true
+					},
+					"position": {
+						"type": "string",
+						"example": "\"center\"",
+						"description": "Location of the image. Valid positions are: \"upperRight\", \"upperLeft\", \"lowerLeft\", \"lowerRight\", and \"center\". Note that \"center\" will ignore the \"padding\" parameter. ",
+						"default": "upperRight",
+						"readOnly": true
+					}
+				},
+				"id": "https://api.cloudflare.com/schemas/v4/client/account/stream/watermarks.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"title": "Stream Watermark Profile",
+				"description": "You can create watermark profile for different videos.",
+				"links": [
+					{
+						"title": "Create a Watermark Profile from an URL",
+						"description": "You can create a watermark profile by specifying the URL to the image.",
+						"rel": "collection",
+						"href": "accounts/{#/definitions/account_identifier}/stream/watermarks",
+						"method": "POST",
+						"cfOwnership": "stream",
+						"schema": {
+							"type": "object",
+							"required": [
+								"url"
+							],
+							"properties": {
+								"url": {
+									"description": "The source URL to the image where it was downloaded from. If the watermark profile was created via direct upload, this field will be null.",
+									"example": "https://company.com/logo.png",
+									"readOnly": true,
+									"type": "string"
+								},
+								"name": {
+									"description": "A short description for the profile.",
+									"default": "",
+									"example": "Marketing Videos",
+									"readOnly": true,
+									"type": "string"
+								},
+								"opacity": {
+									"description": "Translucency of the image. 0.0 means completely transparent, and 1.0 means completely opaque. Note that if the image is already semi-transparent, setting this to 1.0 will not make it completely opaque.",
+									"default": 1,
+									"example": 0.75,
+									"minimum": 0,
+									"maximum": 1,
+									"readOnly": true,
+									"type": "number"
+								},
+								"padding": {
+									"description": "Whitespace between the adjacent edges (determined by position) of the video and the image. 0.0 means no padding, and 1.0 means padded full video width or length, determined by the algorithm.",
+									"default": 0.05,
+									"example": 0.1,
+									"minimum": 0,
+									"maximum": 1,
+									"readOnly": true,
+									"type": "number"
+								},
+								"scale": {
+									"description": "The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. 0.0 means no scaling (use the size of the image as-is), and 1.0 fills the entire video.",
+									"default": 0.15,
+									"example": 0.1,
+									"minimum": 0,
+									"maximum": 1,
+									"readOnly": true,
+									"type": "number"
+								},
+								"position": {
+									"description": "Location of the image. Valid positions are: \"upperRight\", \"upperLeft\", \"lowerLeft\", \"lowerRight\", and \"center\". Note that \"center\" will ignore the \"padding\" parameter. ",
+									"default": "upperRight",
+									"example": "center",
+									"readOnly": true,
+									"type": "string"
+								}
+							}
+						},
+						"targetSchema": {
+							"allOf": [
+								{
+									"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
+									"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+									"description": "Schema for an API response from Cloudflare that contains a single result object",
+									"type": "object",
+									"allOf": [
+										{
+											"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
+											"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+											"description": "Common schema for all Cloudflare v4 API responses",
+											"type": "object",
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"oneOf": [
+												{
+													"$comment": "This subschema describes successful responses",
+													"properties": {
+														"success": {
+															"description": "Whether the API call was successful or not",
+															"type": "boolean",
+															"enum": [
+																true
+															],
+															"example": true
+														},
+														"errors": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"required": [
+																	"code",
+																	"message"
+																],
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"required": [
+																	"code",
+																	"message"
+																],
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"result": {
+															"type": [
+																"object",
+																"array",
+																"string"
+															]
+														}
+													}
+												},
+												{
+													"$comment": "This subschema describes failure responses",
+													"properties": {
+														"success": {
+															"description": "Whether the API call was successful or not",
+															"type": "boolean",
+															"enum": [
+																false
+															],
+															"example": false
+														},
+														"errors": {
+															"allOf": [
+																{
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"required": [
+																			"code",
+																			"message"
+																		],
+																		"properties": {
+																			"code": {
+																				"type": "integer",
+																				"minimum": 1000
+																			},
+																			"message": {
+																				"type": "string"
+																			}
+																		},
+																		"uniqueItems": true
+																	},
+																	"example": []
+																}
+															],
+															"minLength": 1,
+															"example": [
+																{
+																	"code": 7003,
+																	"message": "No route for the URI"
+																}
+															]
+														},
+														"messages": {
+															"allOf": [
+																{
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"required": [
+																			"code",
+																			"message"
+																		],
+																		"properties": {
+																			"code": {
+																				"type": "integer",
+																				"minimum": 1000
+																			},
+																			"message": {
+																				"type": "string"
+																			}
+																		},
+																		"uniqueItems": true
+																	},
+																	"example": []
+																}
+															],
+															"example": []
+														},
+														"result": {
+															"type": "null",
+															"enum": [
+																null
+															],
+															"example": null
+														}
+													}
+												}
+											],
+											"definitions": {
+												"messages": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"required": [
+															"code",
+															"message"
+														],
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											}
+										},
+										{
+											"properties": {
+												"result": {
+													"type": [
+														"object",
+														"string",
+														"null"
+													]
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"cfRecurse": "",
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					},
+					{
+						"title": "Create a Watermark Profile via Basic Upload",
+						"description": "You can create a watermark profile using a single HTTP POST (multipart/form-data) request.",
+						"rel": "collection",
+						"href": "accounts/{#/definitions/account_identifier}/stream/watermarks",
+						"method": "POST",
+						"encType": "multipart/form-data",
+						"cfOwnership": "stream",
+						"cfRequestHeaders": {
+							"required": [
+								"X-Auth-Email",
+								"X-Auth-Key"
+							],
+							"properties": {
+								"X-Auth-Email": {
+									"description": "Your Cloudflare email",
+									"type": "string",
+									"example": "user@example.com"
+								},
+								"X-Auth-Key": {
+									"description": "Your Cloudflare API key",
+									"type": "string",
+									"minLength": 45,
+									"maxLength": 45,
+									"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+								}
+							}
+						},
+						"schema": {
+							"type": "object",
+							"required": [
+								"file"
+							],
+							"properties": {
+								"file": {
+									"type": "string",
+									"description": "Image file to upload",
+									"example": "@/Users/rchen/Downloads/watermark.png"
+								},
+								"name": {
+									"description": "A short description for the profile.",
+									"default": "",
+									"example": "Marketing Videos",
+									"readOnly": true,
+									"type": "string"
+								},
+								"opacity": {
+									"description": "Translucency of the image. 0.0 means completely transparent, and 1.0 means completely opaque. Note that if the image is already semi-transparent, setting this to 1.0 will not make it completely opaque.",
+									"default": 1,
+									"example": 0.75,
+									"minimum": 0,
+									"maximum": 1,
+									"readOnly": true,
+									"type": "number"
+								},
+								"padding": {
+									"description": "Whitespace between the adjacent edges (determined by position) of the video and the image. 0.0 means no padding, and 1.0 means padded full video width or length, determined by the algorithm.",
+									"default": 0.05,
+									"example": 0.1,
+									"minimum": 0,
+									"maximum": 1,
+									"readOnly": true,
+									"type": "number"
+								},
+								"scale": {
+									"description": "The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. 0.0 means no scaling (use the size of the image as-is), and 1.0 fills the entire video.",
+									"default": 0.15,
+									"example": 0.1,
+									"minimum": 0,
+									"maximum": 1,
+									"readOnly": true,
+									"type": "number"
+								},
+								"position": {
+									"description": "Location of the image. Valid positions are: \"upperRight\", \"upperLeft\", \"lowerLeft\", \"lowerRight\", and \"center\". Note that \"center\" will ignore the \"padding\" parameter. ",
+									"default": "upperRight",
+									"example": "center",
+									"readOnly": true,
+									"type": "string"
+								}
+							}
+						},
+						"targetSchema": {
+							"allOf": [
+								{
+									"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
+									"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+									"description": "Schema for an API response from Cloudflare that contains a single result object",
+									"type": "object",
+									"allOf": [
+										{
+											"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
+											"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+											"description": "Common schema for all Cloudflare v4 API responses",
+											"type": "object",
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"oneOf": [
+												{
+													"$comment": "This subschema describes successful responses",
+													"properties": {
+														"success": {
+															"description": "Whether the API call was successful or not",
+															"type": "boolean",
+															"enum": [
+																true
+															],
+															"example": true
+														},
+														"errors": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"required": [
+																	"code",
+																	"message"
+																],
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"required": [
+																	"code",
+																	"message"
+																],
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"result": {
+															"type": [
+																"object",
+																"array",
+																"string"
+															]
+														}
+													}
+												},
+												{
+													"$comment": "This subschema describes failure responses",
+													"properties": {
+														"success": {
+															"description": "Whether the API call was successful or not",
+															"type": "boolean",
+															"enum": [
+																false
+															],
+															"example": false
+														},
+														"errors": {
+															"allOf": [
+																{
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"required": [
+																			"code",
+																			"message"
+																		],
+																		"properties": {
+																			"code": {
+																				"type": "integer",
+																				"minimum": 1000
+																			},
+																			"message": {
+																				"type": "string"
+																			}
+																		},
+																		"uniqueItems": true
+																	},
+																	"example": []
+																}
+															],
+															"minLength": 1,
+															"example": [
+																{
+																	"code": 7003,
+																	"message": "No route for the URI"
+																}
+															]
+														},
+														"messages": {
+															"allOf": [
+																{
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"required": [
+																			"code",
+																			"message"
+																		],
+																		"properties": {
+																			"code": {
+																				"type": "integer",
+																				"minimum": 1000
+																			},
+																			"message": {
+																				"type": "string"
+																			}
+																		},
+																		"uniqueItems": true
+																	},
+																	"example": []
+																}
+															],
+															"example": []
+														},
+														"result": {
+															"type": "null",
+															"enum": [
+																null
+															],
+															"example": null
+														}
+													}
+												}
+											],
+											"definitions": {
+												"messages": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"required": [
+															"code",
+															"message"
+														],
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											}
+										},
+										{
+											"properties": {
+												"result": {
+													"type": [
+														"object",
+														"string",
+														"null"
+													]
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"cfRecurse": "",
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					},
+					{
+						"title": "List Watermark Profiles",
+						"description": "List all the watermark profiles under your account.",
+						"rel": "collection",
+						"href": "accounts/{#/definitions/account_identifier}/stream/watermarks",
+						"method": "GET",
+						"cfOwnership": "stream",
+						"targetSchema": {
+							"allOf": [
+								{
+									"id": "https://api.cloudflare.com/schemas/v4/common/api-response-collection.json",
+									"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+									"description": "Schema for an API response from Cloudflare that contains multiple result objects",
+									"type": "object",
+									"anyOf": [
+										{
+											"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
+											"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+											"description": "Common schema for all Cloudflare v4 API responses",
+											"type": "object",
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"oneOf": [
+												{
+													"$comment": "This subschema describes successful responses",
+													"properties": {
+														"success": {
+															"description": "Whether the API call was successful or not",
+															"type": "boolean",
+															"enum": [
+																true
+															],
+															"example": true
+														},
+														"errors": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"required": [
+																	"code",
+																	"message"
+																],
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"required": [
+																	"code",
+																	"message"
+																],
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"result": {
+															"type": [
+																"object",
+																"array",
+																"string"
+															]
+														}
+													}
+												},
+												{
+													"$comment": "This subschema describes failure responses",
+													"properties": {
+														"success": {
+															"description": "Whether the API call was successful or not",
+															"type": "boolean",
+															"enum": [
+																false
+															],
+															"example": false
+														},
+														"errors": {
+															"allOf": [
+																{
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"required": [
+																			"code",
+																			"message"
+																		],
+																		"properties": {
+																			"code": {
+																				"type": "integer",
+																				"minimum": 1000
+																			},
+																			"message": {
+																				"type": "string"
+																			}
+																		},
+																		"uniqueItems": true
+																	},
+																	"example": []
+																}
+															],
+															"minLength": 1,
+															"example": [
+																{
+																	"code": 7003,
+																	"message": "No route for the URI"
+																}
+															]
+														},
+														"messages": {
+															"allOf": [
+																{
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"required": [
+																			"code",
+																			"message"
+																		],
+																		"properties": {
+																			"code": {
+																				"type": "integer",
+																				"minimum": 1000
+																			},
+																			"message": {
+																				"type": "string"
+																			}
+																		},
+																		"uniqueItems": true
+																	},
+																	"example": []
+																}
+															],
+															"example": []
+														},
+														"result": {
+															"type": "null",
+															"enum": [
+																null
+															],
+															"example": null
+														}
+													}
+												}
+											],
+											"definitions": {
+												"messages": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"required": [
+															"code",
+															"message"
+														],
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											}
+										},
+										{
+											"properties": {
+												"result": {
+													"type": [
+														"array",
+														"null"
+													]
+												},
+												"result_info": {
+													"type": "object",
+													"properties": {
+														"page": {
+															"description": "Current page within paginated list of results",
+															"type": "number",
+															"example": 1
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"type": "number",
+															"example": 20
+														},
+														"count": {
+															"description": "Total results returned based on your search parameters",
+															"type": "number",
+															"example": 1
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"type": "number",
+															"example": 2000
+														}
+													}
+												}
+											}
+										}
+									],
+									"definitions": {
+										"params": {
+											"type": "object",
+											"properties": {
+												"page": {
+													"description": "Requested page within paginated list of results",
+													"type": "number",
+													"example": 1
+												},
+												"per_page": {
+													"description": "Maximum number of results requested",
+													"type": "number",
+													"example": 20
+												}
+											}
+										},
+										"result_info": {
+											"type": "object",
+											"properties": {
+												"page": {
+													"description": "Current page within paginated list of results",
+													"type": "number",
+													"example": 1
+												},
+												"per_page": {
+													"description": "Number of results per page of results",
+													"type": "number",
+													"example": 20
+												},
+												"count": {
+													"description": "Total results returned based on your search parameters",
+													"type": "number",
+													"example": 1
+												},
+												"total_count": {
+													"description": "Total results available without any search parameters",
+													"type": "number",
+													"example": 2000
+												}
+											}
+										}
+									}
+								},
+								{
+									"properties": {
+										"result": {
+											"items": {
+												"cfRecurse": ""
+											},
+											"type": "array"
+										}
+									}
+								}
+							]
+						}
+					},
+					{
+						"title": "Watermark Profile Details",
+						"description": "Fetch details of a single watermark profile.",
+						"rel": "self",
+						"href": "accounts/{#/definitions/account_identifier}/stream/watermarks/{#/definitions/identifier}",
+						"method": "GET",
+						"cfOwnership": "stream",
+						"targetSchema": {
+							"allOf": [
+								{
+									"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
+									"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+									"description": "Schema for an API response from Cloudflare that contains a single result object",
+									"type": "object",
+									"allOf": [
+										{
+											"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
+											"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+											"description": "Common schema for all Cloudflare v4 API responses",
+											"type": "object",
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"oneOf": [
+												{
+													"$comment": "This subschema describes successful responses",
+													"properties": {
+														"success": {
+															"description": "Whether the API call was successful or not",
+															"type": "boolean",
+															"enum": [
+																true
+															],
+															"example": true
+														},
+														"errors": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"required": [
+																	"code",
+																	"message"
+																],
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"required": [
+																	"code",
+																	"message"
+																],
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"result": {
+															"type": [
+																"object",
+																"array",
+																"string"
+															]
+														}
+													}
+												},
+												{
+													"$comment": "This subschema describes failure responses",
+													"properties": {
+														"success": {
+															"description": "Whether the API call was successful or not",
+															"type": "boolean",
+															"enum": [
+																false
+															],
+															"example": false
+														},
+														"errors": {
+															"allOf": [
+																{
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"required": [
+																			"code",
+																			"message"
+																		],
+																		"properties": {
+																			"code": {
+																				"type": "integer",
+																				"minimum": 1000
+																			},
+																			"message": {
+																				"type": "string"
+																			}
+																		},
+																		"uniqueItems": true
+																	},
+																	"example": []
+																}
+															],
+															"minLength": 1,
+															"example": [
+																{
+																	"code": 7003,
+																	"message": "No route for the URI"
+																}
+															]
+														},
+														"messages": {
+															"allOf": [
+																{
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"required": [
+																			"code",
+																			"message"
+																		],
+																		"properties": {
+																			"code": {
+																				"type": "integer",
+																				"minimum": 1000
+																			},
+																			"message": {
+																				"type": "string"
+																			}
+																		},
+																		"uniqueItems": true
+																	},
+																	"example": []
+																}
+															],
+															"example": []
+														},
+														"result": {
+															"type": "null",
+															"enum": [
+																null
+															],
+															"example": null
+														}
+													}
+												}
+											],
+											"definitions": {
+												"messages": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"required": [
+															"code",
+															"message"
+														],
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											}
+										},
+										{
+											"properties": {
+												"result": {
+													"type": [
+														"object",
+														"string",
+														"null"
+													]
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"cfRecurse": "",
+											"type": "object"
+										}
+									}
+								}
+							]
+						}
+					},
+					{
+						"title": "Delete Watermark Profile",
+						"description": "Mark a watermark profile as deleted",
+						"rel": "self",
+						"href": "accounts/{#/definitions/account_identifier}/stream/watermarks/{#/definitions/identifier}",
+						"cfOwnership": "stream",
+						"method": "DELETE",
+						"targetSchema": {
+							"allOf": [
+								{
+									"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
+									"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+									"description": "Schema for an API response from Cloudflare that contains a single result object",
+									"type": "object",
+									"allOf": [
+										{
+											"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
+											"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+											"description": "Common schema for all Cloudflare v4 API responses",
+											"type": "object",
+											"required": [
+												"success",
+												"errors",
+												"messages",
+												"result"
+											],
+											"oneOf": [
+												{
+													"$comment": "This subschema describes successful responses",
+													"properties": {
+														"success": {
+															"description": "Whether the API call was successful or not",
+															"type": "boolean",
+															"enum": [
+																true
+															],
+															"example": true
+														},
+														"errors": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"required": [
+																	"code",
+																	"message"
+																],
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"messages": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"required": [
+																	"code",
+																	"message"
+																],
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"uniqueItems": true
+															},
+															"example": []
+														},
+														"result": {
+															"type": [
+																"object",
+																"array",
+																"string"
+															]
+														}
+													}
+												},
+												{
+													"$comment": "This subschema describes failure responses",
+													"properties": {
+														"success": {
+															"description": "Whether the API call was successful or not",
+															"type": "boolean",
+															"enum": [
+																false
+															],
+															"example": false
+														},
+														"errors": {
+															"allOf": [
+																{
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"required": [
+																			"code",
+																			"message"
+																		],
+																		"properties": {
+																			"code": {
+																				"type": "integer",
+																				"minimum": 1000
+																			},
+																			"message": {
+																				"type": "string"
+																			}
+																		},
+																		"uniqueItems": true
+																	},
+																	"example": []
+																}
+															],
+															"minLength": 1,
+															"example": [
+																{
+																	"code": 7003,
+																	"message": "No route for the URI"
+																}
+															]
+														},
+														"messages": {
+															"allOf": [
+																{
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"required": [
+																			"code",
+																			"message"
+																		],
+																		"properties": {
+																			"code": {
+																				"type": "integer",
+																				"minimum": 1000
+																			},
+																			"message": {
+																				"type": "string"
+																			}
+																		},
+																		"uniqueItems": true
+																	},
+																	"example": []
+																}
+															],
+															"example": []
+														},
+														"result": {
+															"type": "null",
+															"enum": [
+																null
+															],
+															"example": null
+														}
+													}
+												}
+											],
+											"definitions": {
+												"messages": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"required": [
+															"code",
+															"message"
+														],
+														"properties": {
+															"code": {
+																"type": "integer",
+																"minimum": 1000
+															},
+															"message": {
+																"type": "string"
+															}
+														},
+														"uniqueItems": true
+													},
+													"example": []
+												}
+											}
+										},
+										{
+											"properties": {
+												"result": {
+													"type": [
+														"object",
+														"string",
+														"null"
+													]
+												}
+											}
+										}
+									]
+								},
+								{
+									"properties": {
+										"result": {
+											"type": "string",
+											"example": ""
+										}
+									}
+								}
+							]
+						}
+					}
+				],
+				"cfLinkErrors": {
+					"10020": "Invalid Percentage Range for Opacity",
+					"10021": "Invalid Percentage Range for Padding",
+					"10022": "Invalid Percentage Range for Scale",
+					"10023": "Invalid Value for Position",
+					"10024": "Forbidden: Allowed watermark count exceeded"
+				},
+				"definitions": {
+					"watermark_basic_upload": {
+						"type": "object",
+						"required": [
+							"file"
+						],
+						"properties": {
+							"file": {
+								"type": "string",
+								"description": "Image file to upload",
+								"example": "@/Users/rchen/Downloads/watermark.png"
+							},
+							"name": {
+								"description": "A short description for the profile.",
+								"default": "",
+								"example": "Marketing Videos",
+								"readOnly": true,
+								"type": "string"
+							},
+							"opacity": {
+								"description": "Translucency of the image. 0.0 means completely transparent, and 1.0 means completely opaque. Note that if the image is already semi-transparent, setting this to 1.0 will not make it completely opaque.",
+								"default": 1,
+								"example": 0.75,
+								"minimum": 0,
+								"maximum": 1,
+								"readOnly": true,
+								"type": "number"
+							},
+							"padding": {
+								"description": "Whitespace between the adjacent edges (determined by position) of the video and the image. 0.0 means no padding, and 1.0 means padded full video width or length, determined by the algorithm.",
+								"default": 0.05,
+								"example": 0.1,
+								"minimum": 0,
+								"maximum": 1,
+								"readOnly": true,
+								"type": "number"
+							},
+							"scale": {
+								"description": "The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. 0.0 means no scaling (use the size of the image as-is), and 1.0 fills the entire video.",
+								"default": 0.15,
+								"example": 0.1,
+								"minimum": 0,
+								"maximum": 1,
+								"readOnly": true,
+								"type": "number"
+							},
+							"position": {
+								"description": "Location of the image. Valid positions are: \"upperRight\", \"upperLeft\", \"lowerLeft\", \"lowerRight\", and \"center\". Note that \"center\" will ignore the \"padding\" parameter. ",
+								"default": "upperRight",
+								"example": "center",
+								"readOnly": true,
+								"type": "string"
+							}
+						}
+					},
+					"watermark_copy_upload": {
+						"type": "object",
+						"required": [
+							"url"
+						],
+						"properties": {
+							"url": {
+								"description": "The source URL to the image where it was downloaded from. If the watermark profile was created via direct upload, this field will be null.",
+								"example": "https://company.com/logo.png",
+								"readOnly": true,
+								"type": "string"
+							},
+							"name": {
+								"description": "A short description for the profile.",
+								"default": "",
+								"example": "Marketing Videos",
+								"readOnly": true,
+								"type": "string"
+							},
+							"opacity": {
+								"description": "Translucency of the image. 0.0 means completely transparent, and 1.0 means completely opaque. Note that if the image is already semi-transparent, setting this to 1.0 will not make it completely opaque.",
+								"default": 1,
+								"example": 0.75,
+								"minimum": 0,
+								"maximum": 1,
+								"readOnly": true,
+								"type": "number"
+							},
+							"padding": {
+								"description": "Whitespace between the adjacent edges (determined by position) of the video and the image. 0.0 means no padding, and 1.0 means padded full video width or length, determined by the algorithm.",
+								"default": 0.05,
+								"example": 0.1,
+								"minimum": 0,
+								"maximum": 1,
+								"readOnly": true,
+								"type": "number"
+							},
+							"scale": {
+								"description": "The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. 0.0 means no scaling (use the size of the image as-is), and 1.0 fills the entire video.",
+								"default": 0.15,
+								"example": 0.1,
+								"minimum": 0,
+								"maximum": 1,
+								"readOnly": true,
+								"type": "number"
+							},
+							"position": {
+								"description": "Location of the image. Valid positions are: \"upperRight\", \"upperLeft\", \"lowerLeft\", \"lowerRight\", and \"center\". Note that \"center\" will ignore the \"padding\" parameter. ",
+								"default": "upperRight",
+								"example": "center",
+								"readOnly": true,
+								"type": "string"
+							}
+						}
+					},
+					"watermark_response_single": {
+						"allOf": [
+							{
+								"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
+								"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+								"description": "Schema for an API response from Cloudflare that contains a single result object",
+								"type": "object",
+								"allOf": [
+									{
+										"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
+										"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+										"description": "Common schema for all Cloudflare v4 API responses",
+										"type": "object",
+										"required": [
+											"success",
+											"errors",
+											"messages",
+											"result"
+										],
+										"oneOf": [
+											{
+												"$comment": "This subschema describes successful responses",
+												"properties": {
+													"success": {
+														"description": "Whether the API call was successful or not",
+														"type": "boolean",
+														"enum": [
+															true
+														],
+														"example": true
+													},
+													"errors": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"required": [
+																"code",
+																"message"
+															],
+															"properties": {
+																"code": {
+																	"type": "integer",
+																	"minimum": 1000
+																},
+																"message": {
+																	"type": "string"
+																}
+															},
+															"uniqueItems": true
+														},
+														"example": []
+													},
+													"messages": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"required": [
+																"code",
+																"message"
+															],
+															"properties": {
+																"code": {
+																	"type": "integer",
+																	"minimum": 1000
+																},
+																"message": {
+																	"type": "string"
+																}
+															},
+															"uniqueItems": true
+														},
+														"example": []
+													},
+													"result": {
+														"type": [
+															"object",
+															"array",
+															"string"
+														]
+													}
+												}
+											},
+											{
+												"$comment": "This subschema describes failure responses",
+												"properties": {
+													"success": {
+														"description": "Whether the API call was successful or not",
+														"type": "boolean",
+														"enum": [
+															false
+														],
+														"example": false
+													},
+													"errors": {
+														"allOf": [
+															{
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"required": [
+																		"code",
+																		"message"
+																	],
+																	"properties": {
+																		"code": {
+																			"type": "integer",
+																			"minimum": 1000
+																		},
+																		"message": {
+																			"type": "string"
+																		}
+																	},
+																	"uniqueItems": true
+																},
+																"example": []
+															}
+														],
+														"minLength": 1,
+														"example": [
+															{
+																"code": 7003,
+																"message": "No route for the URI"
+															}
+														]
+													},
+													"messages": {
+														"allOf": [
+															{
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"required": [
+																		"code",
+																		"message"
+																	],
+																	"properties": {
+																		"code": {
+																			"type": "integer",
+																			"minimum": 1000
+																		},
+																		"message": {
+																			"type": "string"
+																		}
+																	},
+																	"uniqueItems": true
+																},
+																"example": []
+															}
+														],
+														"example": []
+													},
+													"result": {
+														"type": "null",
+														"enum": [
+															null
+														],
+														"example": null
+													}
+												}
+											}
+										],
+										"definitions": {
+											"messages": {
+												"type": "array",
+												"items": {
+													"type": "object",
+													"required": [
+														"code",
+														"message"
+													],
+													"properties": {
+														"code": {
+															"type": "integer",
+															"minimum": 1000
+														},
+														"message": {
+															"type": "string"
+														}
+													},
+													"uniqueItems": true
+												},
+												"example": []
+											}
+										}
+									},
+									{
+										"properties": {
+											"result": {
+												"type": [
+													"object",
+													"string",
+													"null"
+												]
+											}
+										}
+									}
+								]
+							},
+							{
+								"properties": {
+									"result": {
+										"cfRecurse": "",
+										"type": "object"
+									}
+								}
+							}
+						]
+					},
+					"watermark_response_collection": {
+						"allOf": [
+							{
+								"id": "https://api.cloudflare.com/schemas/v4/common/api-response-collection.json",
+								"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+								"description": "Schema for an API response from Cloudflare that contains multiple result objects",
+								"type": "object",
+								"anyOf": [
+									{
+										"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
+										"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+										"description": "Common schema for all Cloudflare v4 API responses",
+										"type": "object",
+										"required": [
+											"success",
+											"errors",
+											"messages",
+											"result"
+										],
+										"oneOf": [
+											{
+												"$comment": "This subschema describes successful responses",
+												"properties": {
+													"success": {
+														"description": "Whether the API call was successful or not",
+														"type": "boolean",
+														"enum": [
+															true
+														],
+														"example": true
+													},
+													"errors": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"required": [
+																"code",
+																"message"
+															],
+															"properties": {
+																"code": {
+																	"type": "integer",
+																	"minimum": 1000
+																},
+																"message": {
+																	"type": "string"
+																}
+															},
+															"uniqueItems": true
+														},
+														"example": []
+													},
+													"messages": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"required": [
+																"code",
+																"message"
+															],
+															"properties": {
+																"code": {
+																	"type": "integer",
+																	"minimum": 1000
+																},
+																"message": {
+																	"type": "string"
+																}
+															},
+															"uniqueItems": true
+														},
+														"example": []
+													},
+													"result": {
+														"type": [
+															"object",
+															"array",
+															"string"
+														]
+													}
+												}
+											},
+											{
+												"$comment": "This subschema describes failure responses",
+												"properties": {
+													"success": {
+														"description": "Whether the API call was successful or not",
+														"type": "boolean",
+														"enum": [
+															false
+														],
+														"example": false
+													},
+													"errors": {
+														"allOf": [
+															{
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"required": [
+																		"code",
+																		"message"
+																	],
+																	"properties": {
+																		"code": {
+																			"type": "integer",
+																			"minimum": 1000
+																		},
+																		"message": {
+																			"type": "string"
+																		}
+																	},
+																	"uniqueItems": true
+																},
+																"example": []
+															}
+														],
+														"minLength": 1,
+														"example": [
+															{
+																"code": 7003,
+																"message": "No route for the URI"
+															}
+														]
+													},
+													"messages": {
+														"allOf": [
+															{
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"required": [
+																		"code",
+																		"message"
+																	],
+																	"properties": {
+																		"code": {
+																			"type": "integer",
+																			"minimum": 1000
+																		},
+																		"message": {
+																			"type": "string"
+																		}
+																	},
+																	"uniqueItems": true
+																},
+																"example": []
+															}
+														],
+														"example": []
+													},
+													"result": {
+														"type": "null",
+														"enum": [
+															null
+														],
+														"example": null
+													}
+												}
+											}
+										],
+										"definitions": {
+											"messages": {
+												"type": "array",
+												"items": {
+													"type": "object",
+													"required": [
+														"code",
+														"message"
+													],
+													"properties": {
+														"code": {
+															"type": "integer",
+															"minimum": 1000
+														},
+														"message": {
+															"type": "string"
+														}
+													},
+													"uniqueItems": true
+												},
+												"example": []
+											}
+										}
+									},
+									{
+										"properties": {
+											"result": {
+												"type": [
+													"array",
+													"null"
+												]
+											},
+											"result_info": {
+												"type": "object",
+												"properties": {
+													"page": {
+														"description": "Current page within paginated list of results",
+														"type": "number",
+														"example": 1
+													},
+													"per_page": {
+														"description": "Number of results per page of results",
+														"type": "number",
+														"example": 20
+													},
+													"count": {
+														"description": "Total results returned based on your search parameters",
+														"type": "number",
+														"example": 1
+													},
+													"total_count": {
+														"description": "Total results available without any search parameters",
+														"type": "number",
+														"example": 2000
+													}
+												}
+											}
+										}
+									}
+								],
+								"definitions": {
+									"params": {
+										"type": "object",
+										"properties": {
+											"page": {
+												"description": "Requested page within paginated list of results",
+												"type": "number",
+												"example": 1
+											},
+											"per_page": {
+												"description": "Maximum number of results requested",
+												"type": "number",
+												"example": 20
+											}
+										}
+									},
+									"result_info": {
+										"type": "object",
+										"properties": {
+											"page": {
+												"description": "Current page within paginated list of results",
+												"type": "number",
+												"example": 1
+											},
+											"per_page": {
+												"description": "Number of results per page of results",
+												"type": "number",
+												"example": 20
+											},
+											"count": {
+												"description": "Total results returned based on your search parameters",
+												"type": "number",
+												"example": 1
+											},
+											"total_count": {
+												"description": "Total results available without any search parameters",
+												"type": "number",
+												"example": 2000
+											}
+										}
+									}
+								}
+							},
+							{
+								"properties": {
+									"result": {
+										"items": {
+											"cfRecurse": ""
+										},
+										"type": "array"
+									}
+								}
+							}
+						]
+					},
+					"account_identifier": {
+						"description": "Account identifier tag",
+						"example": "023e105f4ecef8ad9ca31a8372d0c353",
+						"maxLength": 32,
+						"readOnly": true,
+						"type": "string"
+					},
+					"identifier": {
+						"description": "Watermark profile unique identifier.",
+						"example": "ea95132c15732412d22c1476fa83f27a",
+						"maxLength": 32,
+						"readOnly": true,
+						"type": "string"
+					},
+					"size": {
+						"description": "The size of the image in bytes.",
+						"example": 29472,
+						"readOnly": true,
+						"type": "number"
+					},
+					"height": {
+						"description": "Height of the image in pixels.",
+						"type": "integer",
+						"readOnly": true,
+						"example": 600
+					},
+					"width": {
+						"description": "Width of the image in pixels.",
+						"type": "integer",
+						"readOnly": true,
+						"example": 400
+					},
+					"created": {
+						"description": "When the watermark profile was created.",
+						"example": "2014-01-02T02:20:00Z",
+						"format": "date-time",
+						"readOnly": true,
+						"type": "string"
+					},
+					"downloadedFrom": {
+						"description": "The source URL to the image where it was downloaded from. If the watermark profile was created via direct upload, this field will be null.",
+						"example": "https://company.com/logo.png",
+						"readOnly": true,
+						"type": "string"
+					},
+					"name": {
+						"description": "A short description for the profile.",
+						"default": "",
+						"example": "Marketing Videos",
+						"readOnly": true,
+						"type": "string"
+					},
+					"opacity": {
+						"description": "Translucency of the image. 0.0 means completely transparent, and 1.0 means completely opaque. Note that if the image is already semi-transparent, setting this to 1.0 will not make it completely opaque.",
+						"default": 1,
+						"example": 0.75,
+						"minimum": 0,
+						"maximum": 1,
+						"readOnly": true,
+						"type": "number"
+					},
+					"padding": {
+						"description": "Whitespace between the adjacent edges (determined by position) of the video and the image. 0.0 means no padding, and 1.0 means padded full video width or length, determined by the algorithm.",
+						"default": 0.05,
+						"example": 0.1,
+						"minimum": 0,
+						"maximum": 1,
+						"readOnly": true,
+						"type": "number"
+					},
+					"scale": {
+						"description": "The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. 0.0 means no scaling (use the size of the image as-is), and 1.0 fills the entire video.",
+						"default": 0.15,
+						"example": 0.1,
+						"minimum": 0,
+						"maximum": 1,
+						"readOnly": true,
+						"type": "number"
+					},
+					"position": {
+						"description": "Location of the image. Valid positions are: \"upperRight\", \"upperLeft\", \"lowerLeft\", \"lowerRight\", and \"center\". Note that \"center\" will ignore the \"padding\" parameter. ",
+						"default": "upperRight",
+						"example": "center",
+						"readOnly": true,
+						"type": "string"
+					}
+				}
+			},
+			"nft": {
+				"type": "object",
+				"example": "{\n  \"contract\": \"0x57f1887a8bf19b14fc0d912b9b2acc9af147ea85\",\n  \"token\": 5\n}",
+				"properties": {
+					"contract": {
+						"type": "string",
+						"example": "\"0x57f1887a8bf19b14fc0d912b9b2acc9af147ea85\"",
+						"readOnly": true,
+						"description": "ERC-721 compatible contract address",
+						"maxLength": 42,
+						"minLength": 42
+					},
+					"token": {
+						"type": "integer",
+						"example": "5",
+						"readOnly": true,
+						"description": "Token ID for the NFT"
+					}
+				},
+				"readOnly": true
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"allowedOrigins",
+			"created",
+			"duration",
+			"input",
+			"maxDurationSeconds",
+			"meta",
+			"modified",
+			"uploadExpiry",
+			"playback",
+			"preview",
+			"readyToStream",
+			"requireSignedURLs",
+			"size",
+			"status",
+			"thumbnail",
+			"thumbnailTimestampPct",
+			"uid",
+			"creator",
+			"liveInput",
+			"uploaded",
+			"watermark",
+			"nft"
+		],
+		"objects": [],
+		"example": "{\n  \"allowedOrigins\": [\n    \"example.com\"\n  ],\n  \"created\": \"2014-01-02T02:20:00Z\",\n  \"duration\": 300,\n  \"input\": {\n    \"height\": 1080,\n    \"width\": 1920\n  },\n  \"maxDurationSeconds\": 300,\n  \"meta\": {},\n  \"modified\": \"2014-01-02T02:20:00Z\",\n  \"uploadExpiry\": \"2014-01-02T02:20:00Z\",\n  \"playback\": {\n    \"hls\": \"https://videodelivery.net/ea95132c15732412d22c1476fa83f27a/manifest/video.m3u8\",\n    \"dash\": \"https://videodelivery.net/ea95132c15732412d22c1476fa83f27a/manifest/video.mpd\"\n  },\n  \"preview\": \"https://watch.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a\",\n  \"readyToStream\": true,\n  \"requireSignedURLs\": true,\n  \"size\": 4190963,\n  \"status\": {\n    \"state\": \"inprogress\",\n    \"pctComplete\": 51,\n    \"errorReasonCode\": \"ERR_NON_VIDEO\",\n    \"errorReasonText\": \"The file was not recognized as a valid video file.\"\n  },\n  \"thumbnail\": \"https://videodelivery.net/ea95132c15732412d22c1476fa83f27a/thumbnails/thumbnail.jpg\",\n  \"thumbnailTimestampPct\": 0.529241,\n  \"uid\": \"ea95132c15732412d22c1476fa83f27a\",\n  \"creator\": \"creator-id_abcde12345\",\n  \"liveInput\": \"fc0a8dc887b16759bfd9ad922230a014\",\n  \"uploaded\": \"2014-01-02T02:20:00Z\",\n  \"watermark\": {\n    \"uid\": \"ea95132c15732412d22c1476fa83f27a\",\n    \"size\": 29472,\n    \"height\": 600,\n    \"width\": 400,\n    \"created\": \"2014-01-02T02:20:00Z\",\n    \"downloadedFrom\": \"https://company.com/logo.png\",\n    \"name\": \"Marketing Videos\",\n    \"opacity\": 0.75,\n    \"padding\": 0.1,\n    \"scale\": 0.1,\n    \"position\": \"center\"\n  },\n  \"nft\": {\n    \"contract\": \"0x57f1887a8bf19b14fc0d912b9b2acc9af147ea85\",\n    \"token\": 5\n  }\n}",
+		"title": "Stream Videos",
+		"description": "You can upload videos to Cloudflare Stream for fast video processing and delivery."
+	}
+}

@@ -1,0 +1,192 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/rate-plan.json",
+	"title": "Zone Rate Plan",
+	"description": "A zone rate plan from the billing service",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Available Rate Plans",
+			"description": "List all rate plans the zone can subscribe to.",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_identifier}/available_rate_plans",
+			"method": "GET",
+			"cfOwnership": "billing",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#billing:read"
+				]
+			},
+			"html_id": "zone-rate-plan-list-available-rate-plans",
+			"uri": "zones/:zone_identifier/available_rate_plans",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/available_rate_plans\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"free\",\n      \"name\": \"Free Plan\",\n      \"currency\": \"USD\",\n      \"duration\": 1,\n      \"frequency\": \"monthly\",\n      \"components\": [\n        {\n          \"name\": \"page_rules\",\n          \"default\": 5,\n          \"unit_price\": 1\n        }\n      ]\n    }\n  ]\n}"
+		},
+		{
+			"title": "List Available Plans",
+			"description": "List available plans the zone can subscribe to.",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_identifier}/available_plans",
+			"method": "GET",
+			"cfOwnership": "billing",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#billing:read"
+				]
+			},
+			"html_id": "zone-rate-plan-list-available-plans",
+			"uri": "zones/:zone_identifier/available_plans",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/available_plans\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n      \"name\": \"Free Plan\",\n      \"currency\": \"USD\",\n      \"frequency\": \"monthly\",\n      \"price\": 0,\n      \"is_subscribed\": false,\n      \"can_subscribe\": true,\n      \"legacy_id\": \"free\",\n      \"legacy_discount\": false,\n      \"externally_managed\": false\n    }\n  ]\n}"
+		},
+		{
+			"title": "Available Plan Details",
+			"description": "Details of an available plan that the zone can subscribe to.",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_identifier}/available_plans/{#/definitions/plan_identifier}",
+			"method": "GET",
+			"cfOwnership": "billing",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#billing:read"
+				]
+			},
+			"html_id": "zone-rate-plan-available-plan-details",
+			"uri": "zones/:zone_identifier/available_plans/:plan_identifier",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/available_plans/9a7806061c88ada191ed06f989cc3dac\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n    \"name\": \"Free Plan\",\n    \"currency\": \"USD\",\n    \"frequency\": \"monthly\",\n    \"price\": 0,\n    \"is_subscribed\": false,\n    \"can_subscribe\": true,\n    \"legacy_id\": \"free\",\n    \"legacy_discount\": false,\n    \"externally_managed\": false\n  }\n}"
+		}
+	],
+	"html_id": "zone-rate-plan",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"free\"",
+				"description": "Plan identifier tag",
+				"readOnly": true
+			},
+			"name": {
+				"type": "string",
+				"example": "\"Free Plan\"",
+				"description": "The plan name",
+				"maxLength": 80,
+				"readOnly": true
+			},
+			"currency": {
+				"type": "string",
+				"example": "\"USD\"",
+				"description": "The monetary unit in which pricing information is displayed",
+				"readOnly": true
+			},
+			"duration": {
+				"type": "number",
+				"example": "1",
+				"description": "The duration of the plan subscription"
+			},
+			"frequency": {
+				"type": "string",
+				"example": "\"monthly\"",
+				"description": "The frequency at which you will be billed for this plan",
+				"enum": [
+					"weekly",
+					"monthly",
+					"quarterly",
+					"yearly"
+				],
+				"readOnly": true
+			},
+			"components": {
+				"type": "array",
+				"example": "[\n  {\n    \"name\": \"page_rules\",\n    \"default\": 5,\n    \"unit_price\": 1\n  }\n]",
+				"description": "Array of available components values for the plan",
+				"items": {
+					"id": "https://api.cloudflare.com/schemas/v4/client/definitions/component-value.json",
+					"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+					"title": "Cloudflare A La Carte Addon",
+					"description": "Abstract Cloudflare a la carte addon",
+					"type": "object",
+					"properties": {
+						"name": {
+							"description": "The unique component",
+							"enum": [
+								"zones",
+								"page_rules",
+								"dedicated_certificates",
+								"dedicated_certificates_custom"
+							],
+							"example": "page_rules"
+						},
+						"default": {
+							"description": "The default amount allocated",
+							"type": "number",
+							"example": 5
+						},
+						"unit_price": {
+							"description": "The unit price of the addon",
+							"type": "number",
+							"readOnly": true,
+							"example": 1
+						}
+					},
+					"definitions": {
+						"name": {
+							"description": "The unique component",
+							"enum": [
+								"zones",
+								"page_rules",
+								"dedicated_certificates",
+								"dedicated_certificates_custom"
+							],
+							"example": "page_rules"
+						},
+						"default": {
+							"description": "The default amount allocated",
+							"type": "number",
+							"example": 5
+						},
+						"unit_price": {
+							"description": "The unit price of the addon",
+							"type": "number",
+							"readOnly": true,
+							"example": 1
+						}
+					}
+				}
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"name",
+			"currency",
+			"duration",
+			"frequency",
+			"components"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"free\",\n  \"name\": \"Free Plan\",\n  \"currency\": \"USD\",\n  \"duration\": 1,\n  \"frequency\": \"monthly\",\n  \"components\": [\n    {\n      \"name\": \"page_rules\",\n      \"default\": 5,\n      \"unit_price\": 1\n    }\n  ]\n}",
+		"title": "Zone Rate Plan",
+		"description": "A zone rate plan from the billing service"
+	}
+}

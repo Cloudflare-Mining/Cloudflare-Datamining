@@ -1,0 +1,229 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/custom-ns.json",
+	"title": "Account-Level Custom Nameservers",
+	"description": "Configure custom nameservers that can be used by multiple zones in the account",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Account Custom Nameservers",
+			"description": "List an account's custom nameservers",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/custom_ns",
+			"method": "GET",
+			"cfOwnership": "www",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:read",
+					"#organization:read"
+				]
+			},
+			"html_id": "account-level-custom-nameservers-list-account-custom-nameservers",
+			"uri": "accounts/:identifier/custom_ns",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/372e67954025e0ba6aaa6d586b9e0b59/custom_ns\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"dns_records\": [\n        {\n          \"type\": \"A\",\n          \"value\": \"1.1.1.1\"\n        }\n      ],\n      \"ns_name\": \"ns1.example.com\",\n      \"status\": \"verified\",\n      \"zone_tag\": \"023e105f4ecef8ad9ca31a8372d0c353\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Add Account Custom Nameserver",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/custom_ns",
+			"method": "POST",
+			"cfOwnership": "www",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:edit",
+					"#organization:edit"
+				]
+			},
+			"html_id": "account-level-custom-nameservers-add-account-custom-nameserver",
+			"uri": "accounts/:identifier/custom_ns",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/372e67954025e0ba6aaa6d586b9e0b59/custom_ns\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"ns_name\":\"ns1.example.com\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"ns_name": {
+						"type": "string",
+						"example": "\"ns1.example.com\"",
+						"description": "The FQDN of the name server",
+						"format": "hostname"
+					}
+				},
+				"required_props": [
+					"ns_name"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"ns_name\": \"ns1.example.com\"\n}",
+				"title": "Custom NS Input"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"dns_records\": [\n      {\n        \"type\": \"A\",\n        \"value\": \"1.1.1.1\"\n      }\n    ],\n    \"ns_name\": \"ns1.example.com\",\n    \"status\": \"verified\",\n    \"zone_tag\": \"023e105f4ecef8ad9ca31a8372d0c353\"\n  }\n}"
+		},
+		{
+			"title": "Verify Account Custom Nameserver Glue Records",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/custom_ns/verify",
+			"method": "POST",
+			"cfOwnership": "www",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:edit",
+					"#organization:edit"
+				]
+			},
+			"html_id": "account-level-custom-nameservers-verify-account-custom-nameserver-glue-records",
+			"uri": "accounts/:identifier/custom_ns/verify",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/372e67954025e0ba6aaa6d586b9e0b59/custom_ns/verify\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"dns_records\": [\n        {\n          \"type\": \"A\",\n          \"value\": \"1.1.1.1\"\n        }\n      ],\n      \"ns_name\": \"ns1.example.com\",\n      \"status\": \"verified\",\n      \"zone_tag\": \"023e105f4ecef8ad9ca31a8372d0c353\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Delete Account Custom Nameserver",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/custom_ns/{#/definitions/ns_name}",
+			"method": "DELETE",
+			"cfOwnership": "www",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:edit",
+					"#organization:edit"
+				]
+			},
+			"html_id": "account-level-custom-nameservers-delete-account-custom-nameserver",
+			"uri": "accounts/:identifier/custom_ns/:ns_name",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/372e67954025e0ba6aaa6d586b9e0b59/custom_ns/ns1.example.com\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
+		},
+		{
+			"title": "Get Eligible Zones for Account Custom Nameservers",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/custom_ns/availability",
+			"method": "GET",
+			"cfOwnership": "www",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:read",
+					"#organization:read"
+				]
+			},
+			"html_id": "account-level-custom-nameservers-get-eligible-zones-for-account-custom-nameservers",
+			"uri": "accounts/:identifier/custom_ns/availability",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/372e67954025e0ba6aaa6d586b9e0b59/custom_ns/availability\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    \"example.com\"\n  ]\n}"
+		}
+	],
+	"cfLinkErrors": {
+		"1000": "Unknown error",
+		"1001": "Invalid request",
+		"1002": "Account does not have access to this feature",
+		"1003": "Not found"
+	},
+	"cfSectionNotes": [
+		"If you want new zones in the account to use account custom nameservers by default, use PUT /accounts/:identifier to set the account setting use_account_custom_ns_by_default to true."
+	],
+	"html_id": "account-level-custom-nameservers",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {},
+		"required_props": [],
+		"optional_props": [],
+		"objects": [
+			{
+				"all_props": {
+					"dns_records": {
+						"type": "array",
+						"example": "[\n  {\n    \"type\": \"A\",\n    \"value\": \"1.1.1.1\"\n  }\n]",
+						"description": "A and AAAA records associated with the nameserver",
+						"items": {
+							"properties": {
+								"type": {
+									"type": "string",
+									"description": "DNS record type",
+									"enum": [
+										"A",
+										"AAAA"
+									],
+									"example": "A"
+								},
+								"value": {
+									"type": "string",
+									"description": "DNS record contents (an IPv4 or IPv6 address)",
+									"example": "1.1.1.1"
+								}
+							}
+						}
+					},
+					"ns_name": {
+						"type": "string",
+						"example": "\"ns1.example.com\"",
+						"description": "The FQDN of the name server",
+						"format": "hostname"
+					},
+					"status": {
+						"type": "string",
+						"example": "\"verified\"",
+						"description": "Verification status of the nameserver",
+						"enum": [
+							"moved",
+							"pending",
+							"verified"
+						]
+					},
+					"zone_tag": {
+						"type": "string",
+						"example": "\"023e105f4ecef8ad9ca31a8372d0c353\"",
+						"description": "Zone identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					}
+				},
+				"required_props": [
+					"dns_records",
+					"ns_name",
+					"status",
+					"zone_tag"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"dns_records\": [\n    {\n      \"type\": \"A\",\n      \"value\": \"1.1.1.1\"\n    }\n  ],\n  \"ns_name\": \"ns1.example.com\",\n  \"status\": \"verified\",\n  \"zone_tag\": \"023e105f4ecef8ad9ca31a8372d0c353\"\n}",
+				"title": "Custom NS",
+				"description": "A single account custom nameserver"
+			}
+		],
+		"example": "{\n  \"dns_records\": [\n    {\n      \"type\": \"A\",\n      \"value\": \"1.1.1.1\"\n    }\n  ],\n  \"ns_name\": \"ns1.example.com\",\n  \"status\": \"verified\",\n  \"zone_tag\": \"023e105f4ecef8ad9ca31a8372d0c353\"\n}",
+		"which_of": "oneOf",
+		"title": "Account-Level Custom Nameservers",
+		"description": "Configure custom nameservers that can be used by multiple zones in the account"
+	}
+}

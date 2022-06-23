@@ -1,0 +1,294 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/images/variants.json",
+	"title": "Cloudflare Images Variants",
+	"description": "Cloudflare Images supports variants that specify different image sizes for different use cases. You can configure up to 20 variants.",
+	"type": "object",
+	"links": [
+		{
+			"title": "Create a variant",
+			"description": "Specify variants that allow you to resize images for different use cases.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/images/v1/variants",
+			"method": "POST",
+			"cfOwnership": "images",
+			"html_id": "cloudflare-images-variants-create-a-variant",
+			"uri": "accounts/:account_identifier/images/v1/variants",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/images/v1/variants\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"id\":\"name-of-the-variant\",\"options\":{\"fit\":\"scale-down\",\"metadata\":\"none\",\"width\":1366,\"height\":768},\"neverRequireSignedURLs\":true}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"name-of-the-variant\"",
+						"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"description": "API item identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"options": {
+						"type": "object",
+						"example": "{\n  \"fit\": \"scale-down\",\n  \"metadata\": \"none\",\n  \"width\": 1366,\n  \"height\": 768\n}",
+						"properties": {
+							"fit": {
+								"type": "string",
+								"example": "\"scale-down\"",
+								"description": "The fit property describes how the width and height dimensions should be interpreted.",
+								"enum": [
+									"scale-down",
+									"contain",
+									"cover",
+									"crop",
+									"pad"
+								]
+							},
+							"metadata": {
+								"type": "string",
+								"example": "\"none\"",
+								"description": "What EXIF data should be preserved in the output image.",
+								"enum": [
+									"keep",
+									"copyright",
+									"none"
+								]
+							},
+							"width": {
+								"type": "number",
+								"example": "1366",
+								"minimum": 1,
+								"description": "Maximum width in image pixels."
+							},
+							"height": {
+								"type": "number",
+								"example": "768",
+								"minimum": 1,
+								"description": "Maximum height in image pixels."
+							}
+						},
+						"description": "Allows you to define image resizing sizes for different use cases.",
+						"required": [
+							"fit",
+							"metadata",
+							"width",
+							"height"
+						]
+					},
+					"neverRequireSignedURLs": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Indicates whether the variant can access an image without a signature, regardless of image access control.",
+						"default": false
+					}
+				},
+				"required_props": [
+					"id",
+					"options"
+				],
+				"optional_props": [
+					"neverRequireSignedURLs"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"name-of-the-variant\",\n  \"options\": {\n    \"fit\": \"scale-down\",\n    \"metadata\": \"none\",\n    \"width\": 1366,\n    \"height\": 768\n  },\n  \"neverRequireSignedURLs\": true\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"name-of-the-variant\",\n    \"options\": {\n      \"fit\": \"scale-down\",\n      \"metadata\": \"none\",\n      \"width\": 1366,\n      \"height\": 768\n    },\n    \"neverRequireSignedURLs\": true\n  }\n}"
+		},
+		{
+			"title": "List variants",
+			"description": "Lists existing variants.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/images/v1/variants",
+			"method": "GET",
+			"cfOwnership": "images",
+			"html_id": "cloudflare-images-variants-list-variants",
+			"uri": "accounts/:account_identifier/images/v1/variants",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/images/v1/variants\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"variants\": {\n    \"name-of-the-variant\": {\n      \"id\": \"name-of-the-variant\",\n      \"options\": {\n        \"fit\": \"scale-down\",\n        \"metadata\": \"none\",\n        \"width\": 1366,\n        \"height\": 768\n      },\n      \"neverRequireSignedURLs\": true\n    }\n  }\n}"
+		},
+		{
+			"title": "Variant details",
+			"description": "Fetch details for a single variant.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/images/v1/variants/{#/definitions/identifier}",
+			"cfOwnership": "images",
+			"method": "GET",
+			"html_id": "cloudflare-images-variants-variant-details",
+			"uri": "accounts/:account_identifier/images/v1/variants/:identifier",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/images/v1/variants/name-of-the-variant\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"variant\": {\n    \"id\": \"name-of-the-variant\",\n    \"options\": {\n      \"fit\": \"scale-down\",\n      \"metadata\": \"none\",\n      \"width\": 1366,\n      \"height\": 768\n    },\n    \"neverRequireSignedURLs\": true\n  }\n}"
+		},
+		{
+			"title": "Update a variant",
+			"description": "Updating a variant purges the cache for all images associated with the variant.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/images/v1/variants/{#/definitions/identifier}",
+			"method": "PATCH",
+			"cfOwnership": "images",
+			"html_id": "cloudflare-images-variants-update-a-variant",
+			"uri": "accounts/:account_identifier/images/v1/variants/:identifier",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/images/v1/variants/name-of-the-variant\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"options\":{\"fit\":\"scale-down\",\"metadata\":\"none\",\"width\":1366,\"height\":768},\"neverRequireSignedURLs\":true}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"options": {
+						"type": "object",
+						"example": "{\n  \"fit\": \"scale-down\",\n  \"metadata\": \"none\",\n  \"width\": 1366,\n  \"height\": 768\n}",
+						"properties": {
+							"fit": {
+								"type": "string",
+								"example": "\"scale-down\"",
+								"description": "The fit property describes how the width and height dimensions should be interpreted.",
+								"enum": [
+									"scale-down",
+									"contain",
+									"cover",
+									"crop",
+									"pad"
+								]
+							},
+							"metadata": {
+								"type": "string",
+								"example": "\"none\"",
+								"description": "What EXIF data should be preserved in the output image.",
+								"enum": [
+									"keep",
+									"copyright",
+									"none"
+								]
+							},
+							"width": {
+								"type": "number",
+								"example": "1366",
+								"minimum": 1,
+								"description": "Maximum width in image pixels."
+							},
+							"height": {
+								"type": "number",
+								"example": "768",
+								"minimum": 1,
+								"description": "Maximum height in image pixels."
+							}
+						},
+						"description": "Allows you to define image resizing sizes for different use cases.",
+						"required": [
+							"fit",
+							"metadata",
+							"width",
+							"height"
+						]
+					},
+					"neverRequireSignedURLs": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Indicates whether the variant can access an image without a signature, regardless of image access control.",
+						"default": false
+					}
+				},
+				"required_props": [
+					"options"
+				],
+				"optional_props": [
+					"neverRequireSignedURLs"
+				],
+				"objects": [],
+				"example": "{\n  \"options\": {\n    \"fit\": \"scale-down\",\n    \"metadata\": \"none\",\n    \"width\": 1366,\n    \"height\": 768\n  },\n  \"neverRequireSignedURLs\": true\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"name-of-the-variant\",\n    \"options\": {\n      \"fit\": \"scale-down\",\n      \"metadata\": \"none\",\n      \"width\": 1366,\n      \"height\": 768\n    },\n    \"neverRequireSignedURLs\": true\n  }\n}"
+		},
+		{
+			"title": "Delete a variant",
+			"description": "Deleting a variant purges the cache for all images associated with the variant.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/images/v1/variants/{#/definitions/identifier}",
+			"cfOwnership": "images",
+			"method": "DELETE",
+			"html_id": "cloudflare-images-variants-delete-a-variant",
+			"uri": "accounts/:account_identifier/images/v1/variants/:identifier",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/images/v1/variants/name-of-the-variant\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": \"\"\n}"
+		}
+	],
+	"html_id": "cloudflare-images-variants",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"name-of-the-variant\"",
+				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "API item identifier tag",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"options": {
+				"type": "object",
+				"example": "{\n  \"fit\": \"scale-down\",\n  \"metadata\": \"none\",\n  \"width\": 1366,\n  \"height\": 768\n}",
+				"properties": {
+					"fit": {
+						"type": "string",
+						"example": "\"scale-down\"",
+						"description": "The fit property describes how the width and height dimensions should be interpreted.",
+						"enum": [
+							"scale-down",
+							"contain",
+							"cover",
+							"crop",
+							"pad"
+						]
+					},
+					"metadata": {
+						"type": "string",
+						"example": "\"none\"",
+						"description": "What EXIF data should be preserved in the output image.",
+						"enum": [
+							"keep",
+							"copyright",
+							"none"
+						]
+					},
+					"width": {
+						"type": "number",
+						"example": "1366",
+						"minimum": 1,
+						"description": "Maximum width in image pixels."
+					},
+					"height": {
+						"type": "number",
+						"example": "768",
+						"minimum": 1,
+						"description": "Maximum height in image pixels."
+					}
+				},
+				"description": "Allows you to define image resizing sizes for different use cases.",
+				"required": [
+					"fit",
+					"metadata",
+					"width",
+					"height"
+				]
+			},
+			"neverRequireSignedURLs": {
+				"type": "boolean",
+				"example": "true",
+				"description": "Indicates whether the variant can access an image without a signature, regardless of image access control.",
+				"default": false
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"options",
+			"neverRequireSignedURLs"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"name-of-the-variant\",\n  \"options\": {\n    \"fit\": \"scale-down\",\n    \"metadata\": \"none\",\n    \"width\": 1366,\n    \"height\": 768\n  },\n  \"neverRequireSignedURLs\": true\n}",
+		"title": "Cloudflare Images Variants",
+		"description": "Cloudflare Images supports variants that specify different image sizes for different use cases. You can configure up to 20 variants."
+	}
+}

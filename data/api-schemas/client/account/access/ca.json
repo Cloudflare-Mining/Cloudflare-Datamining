@@ -1,0 +1,95 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/access/ca.json",
+	"title": "Access Short-Lived Certificates",
+	"description": "Short-lived certificates improve access security to infrastructure with ephemeral certificates. Serves as a replacement to traditional SSH key models.",
+	"cfExtendedDescription": "https://developers.cloudflare.com/access/ssh/short-live-cert-server/",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Short-Lived Certificates",
+			"description": "List Short-Lived Certificates",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/access/apps/ca",
+			"method": "GET",
+			"cfOwnership": "access",
+			"html_id": "access-short-lived-certificates-list-short-lived-certificates",
+			"uri": "accounts/:identifier/access/apps/ca",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/access/apps/ca\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"7eddae4619b50ab1361ba8ae9bd72269a432fea041529ed9\",\n      \"aud\": \"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\",\n      \"public_key\": \"ecdsa-sha2-nistp256 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/xxxxxxxxxxxxxxxxxxxxx/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx= open-ssh-ca@cloudflareaccess.org\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Short-Lived Certificate Details",
+			"description": "Fetch a single short-lived certificate",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/access/apps/{#/definitions/uuid}/ca",
+			"method": "GET",
+			"cfOwnership": "access",
+			"html_id": "access-short-lived-certificates-short-lived-certificate-details",
+			"uri": "accounts/:identifier/access/apps/:uuid/ca",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/access/apps/f174e90a-fafe-4643-bbbc-4a0ed4fc8415/ca\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
+		},
+		{
+			"title": "Create Short-Lived Certificate",
+			"description": "Create a new short-lived certificate",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/access/apps/{#/definitions/uuid}/ca",
+			"method": "POST",
+			"cfOwnership": "access",
+			"html_id": "access-short-lived-certificates-create-short-lived-certificate",
+			"uri": "accounts/:identifier/access/apps/:uuid/ca",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/access/apps/f174e90a-fafe-4643-bbbc-4a0ed4fc8415/ca\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
+		},
+		{
+			"title": "Delete Access Certificate",
+			"description": "Delete an Access Certificate",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/access/apps/{#/definitions/uuid}/ca",
+			"method": "DELETE",
+			"cfOwnership": "access",
+			"html_id": "access-short-lived-certificates-delete-access-certificate",
+			"uri": "accounts/:identifier/access/apps/:uuid/ca",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/access/apps/f174e90a-fafe-4643-bbbc-4a0ed4fc8415/ca\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"7eddae4619b50ab1361ba8ae9bd72269a432fea041529ed9\"\n  }\n}"
+		}
+	],
+	"html_id": "access-short-lived-certificates",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"7eddae4619b50ab1361ba8ae9bd72269a432fea041529ed9\"",
+				"description": "Short-lived certificate id",
+				"maxLength": 48,
+				"readOnly": true
+			},
+			"aud": {
+				"type": "string",
+				"example": "\"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\"",
+				"description": "Audience tag",
+				"maxLength": 64,
+				"readOnly": true
+			},
+			"public_key": {
+				"type": "string",
+				"example": "\"ecdsa-sha2-nistp256 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/xxxxxxxxxxxxxxxxxxxxx/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx= open-ssh-ca@cloudflareaccess.org\"",
+				"description": "Public key for DS record",
+				"readOnly": true
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"aud",
+			"public_key"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"7eddae4619b50ab1361ba8ae9bd72269a432fea041529ed9\",\n  \"aud\": \"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\",\n  \"public_key\": \"ecdsa-sha2-nistp256 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/xxxxxxxxxxxxxxxxxxxxx/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx= open-ssh-ca@cloudflareaccess.org\"\n}",
+		"title": "Access Short-Lived Certificates",
+		"description": "Short-lived certificates improve access security to infrastructure with ephemeral certificates. Serves as a replacement to traditional SSH key models."
+	}
+}

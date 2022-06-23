@@ -1,0 +1,232 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/pages/domains.json",
+	"title": "Pages Domains",
+	"description": "A domain represents a custom domain tied to a Pages project.",
+	"cfExtendedDescription": "**For more detailed documentation on using the API for Pages see the [Pages docs](https://developers.cloudflare.com/pages/).**",
+	"type": "object",
+	"links": [
+		{
+			"title": "Get domains",
+			"description": "Fetch a list of all domains",
+			"rel": "self",
+			"href": "accounts/:account_id/pages/projects/:project_name/domains",
+			"method": "GET",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
+			"html_id": "pages-domains-get-domains",
+			"uri": "accounts/:account_id/pages/projects/:project_name/domains",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/:account_id/pages/projects/:project_name/domains\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"8232210c-6818-4e34-8d95-cc386874b8d2\",\n      \"name\": \"helloworld.com\",\n      \"status\": \"pending\",\n      \"verification_data\": {\n        \"status\": \"active\"\n      },\n      \"validation_data\": {\n        \"status\": \"active\",\n        \"method\": \"http\"\n      },\n      \"zone_tag\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n      \"created_on\": \"2017-01-01T00:00:00Z\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Get domain",
+			"description": "Fetch a single domain",
+			"rel": "self",
+			"href": "accounts/:account_id/pages/projects/:project_name/domains/:domain_name",
+			"method": "GET",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
+			"html_id": "pages-domains-get-domain",
+			"uri": "accounts/:account_id/pages/projects/:project_name/domains/:domain_name",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/:account_id/pages/projects/:project_name/domains/:domain_name\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"8232210c-6818-4e34-8d95-cc386874b8d2\",\n    \"name\": \"helloworld.com\",\n    \"status\": \"pending\",\n    \"verification_data\": {\n      \"status\": \"active\"\n    },\n    \"validation_data\": {\n      \"status\": \"active\",\n      \"method\": \"http\"\n    },\n    \"zone_tag\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"created_on\": \"2017-01-01T00:00:00Z\"\n  }\n}"
+		},
+		{
+			"title": "Patch domain",
+			"description": "Retry the validation status of a single domain",
+			"rel": "self",
+			"href": "accounts/:account_id/pages/projects/:project_name/domains/:domain_name",
+			"method": "PATCH",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
+			"html_id": "pages-domains-patch-domain",
+			"uri": "accounts/:account_id/pages/projects/:project_name/domains/:domain_name",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/accounts/:account_id/pages/projects/:project_name/domains/:domain_name\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"8232210c-6818-4e34-8d95-cc386874b8d2\",\n    \"name\": \"helloworld.com\",\n    \"status\": \"pending\",\n    \"verification_data\": {\n      \"status\": \"active\"\n    },\n    \"validation_data\": {\n      \"status\": \"active\",\n      \"method\": \"http\"\n    },\n    \"zone_tag\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"created_on\": \"2017-01-01T00:00:00Z\"\n  }\n}"
+		}
+	],
+	"cfLinkErrors": {
+		"8000000": "An unknown error occurred",
+		"8000001": "A project already exists for this repo",
+		"8000002": "A project with this name already exists",
+		"8000003": "Invalid project name",
+		"8000004": "Account not authorized for the requested repo",
+		"8000005": "Required field missing",
+		"8000006": "Unable to parse request",
+		"8000007": "Project not found",
+		"8000008": "No installation found",
+		"8000009": "Deployment not found",
+		"8000010": "User is not authorized for provided GitHub Installation ID",
+		"8000011": "User has no linked GitHub accounts matching the provided username",
+		"8000012": "User has no linked GitHub repositories matching the provided name",
+		"8000013": "Authorization failed",
+		"8000014": "Deployment type not found",
+		"8000015": "Domain is invalid",
+		"8000016": "Unicode domains are not supported",
+		"8000017": "An operation is already in progress for this domain",
+		"8000018": "Domain is unavailable",
+		"8000019": "Project has reached the maximum number of allowed domains",
+		"8000020": "No deployment stage found for the provided name",
+		"8000021": "Domain not found",
+		"8000022": "Invalid PATCH operation requested",
+		"8000023": "Attempt to add duplicate environment variable, or replace or delete nonexistent variable",
+		"8000024": "Invalid list options provided",
+		"8000025": "Domain is not registered",
+		"8000026": "Coming soon",
+		"8000027": "Too many projects",
+		"8000028": "Must delete custom domains before deleting project",
+		"8000029": "Subdomain is unavailable",
+		"8000030": "Subdomain is blocked",
+		"8000031": "Unable to cancel completed deployment",
+		"8000032": "Unable to find a branch with the provided name",
+		"8000033": "Production branch must be set",
+		"8000034": "Cannot delete active production deployment",
+		"8000035": "Cannot delete aliased deployment",
+		"8000036": "Account has been blocked"
+	},
+	"html_id": "pages-domains",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"8232210c-6818-4e34-8d95-cc386874b8d2\"",
+				"description": "Id of the domain",
+				"readOnly": true
+			},
+			"name": {
+				"type": "string",
+				"example": "\"helloworld.com\"",
+				"description": "Custom domain",
+				"readOnly": true
+			},
+			"status": {
+				"type": "string",
+				"example": "\"pending\"",
+				"description": "Status of the custom domain",
+				"readOnly": true
+			},
+			"verification_data": {
+				"type": "object",
+				"example": "{\n  \"status\": \"active\"\n}",
+				"properties": {
+					"status": {
+						"type": "string",
+						"example": "\"active\"",
+						"description": "Status of the stage",
+						"readOnly": true
+					}
+				},
+				"description": "",
+				"readOnly": true
+			},
+			"validation_data": {
+				"type": "object",
+				"example": "{\n  \"status\": \"active\",\n  \"method\": \"http\"\n}",
+				"properties": {
+					"status": {
+						"type": "string",
+						"example": "\"active\"",
+						"description": "Status of the stage",
+						"readOnly": true
+					},
+					"method": {
+						"type": "string",
+						"example": "\"http\"",
+						"description": "Method of validation",
+						"readOnly": true
+					}
+				},
+				"description": "",
+				"readOnly": true
+			},
+			"zone_tag": {
+				"type": "string",
+				"example": "\"023e105f4ecef8ad9ca31a8372d0c353\"",
+				"description": "Zone identifier tag",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"created_on": {
+				"type": "string",
+				"example": "\"2017-01-01T00:00:00Z\"",
+				"description": "When the domain was added",
+				"format": "date-time",
+				"readOnly": true
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"name",
+			"status",
+			"verification_data",
+			"validation_data",
+			"zone_tag",
+			"created_on"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"8232210c-6818-4e34-8d95-cc386874b8d2\",\n  \"name\": \"helloworld.com\",\n  \"status\": \"pending\",\n  \"verification_data\": {\n    \"status\": \"active\"\n  },\n  \"validation_data\": {\n    \"status\": \"active\",\n    \"method\": \"http\"\n  },\n  \"zone_tag\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"created_on\": \"2017-01-01T00:00:00Z\"\n}",
+		"title": "Pages Domains",
+		"description": "A domain represents a custom domain tied to a Pages project."
+	}
+}

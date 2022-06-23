@@ -1,0 +1,2468 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/registrar/domains.json",
+	"title": "Registrar Domains",
+	"description": "Manage domains names with Cloudflare Registrar.",
+	"type": "object",
+	"links": [
+		{
+			"title": "List domains",
+			"description": "List domains handled by Registrar.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/registrar/domains",
+			"method": "POST",
+			"cfOwnership": "registrar",
+			"html_id": "registrar-domains-list-domains",
+			"uri": "accounts/:account_identifier/registrar/domains",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/registrar/domains\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"id\":[\"cloudflare.com\",\"cloudflare.net\"]}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"id": {
+						"type": "array",
+						"example": "[\n  \"cloudflare.com\",\n  \"cloudflare.net\"\n]",
+						"description": "List of domain names.",
+						"items": {
+							"type": "string"
+						}
+					}
+				},
+				"required_props": [
+					"id"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"id\": [\n    \"cloudflare.com\",\n    \"cloudflare.net\"\n  ]\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"ea95132c15732412d22c1476fa83f27a\",\n      \"available\": false,\n      \"supported_tld\": true,\n      \"can_register\": false,\n      \"transfer_in\": {\n        \"unlock_domain\": \"ok\",\n        \"disable_privacy\": \"ok\",\n        \"enter_auth_code\": \"needed\",\n        \"approve_transfer\": \"unknown\",\n        \"accept_foa\": \"needed\",\n        \"can_cancel_transfer\": true\n      },\n      \"current_registrar\": \"Cloudflare\",\n      \"expires_at\": \"2019-08-28T23:59:59Z\",\n      \"registry_statuses\": \"ok,serverTransferProhibited\",\n      \"locked\": false,\n      \"created_at\": \"2018-08-28T17:26:26Z\",\n      \"updated_at\": \"2018-08-28T17:26:26Z\",\n      \"registrant_contact\": {\n        \"id\": \"ea95132c15732412d22c1476fa83f27a\",\n        \"first_name\": \"John\",\n        \"last_name\": \"Appleseed\",\n        \"organization\": \"Cloudflare, Inc.\",\n        \"address\": \"123 Sesame St.\",\n        \"address2\": \"Suite 430\",\n        \"city\": \"Austin\",\n        \"state\": \"TX\",\n        \"zip\": \"12345\",\n        \"country\": \"US\",\n        \"phone\": \"+1 123-123-1234\",\n        \"email\": \"user@example.com\",\n        \"fax\": \"123-867-5309\"\n      }\n    }\n  ]\n}"
+		},
+		{
+			"title": "Get domain",
+			"description": "Show individual domain.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/registrar/domains/{#/definitions/domain_name}",
+			"method": "GET",
+			"cfOwnership": "registrar",
+			"html_id": "registrar-domains-get-domain",
+			"uri": "accounts/:account_identifier/registrar/domains/:domain_name",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/registrar/domains/cloudflare.com\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"ea95132c15732412d22c1476fa83f27a\",\n    \"available\": false,\n    \"supported_tld\": true,\n    \"can_register\": false,\n    \"transfer_in\": {\n      \"unlock_domain\": \"ok\",\n      \"disable_privacy\": \"ok\",\n      \"enter_auth_code\": \"needed\",\n      \"approve_transfer\": \"unknown\",\n      \"accept_foa\": \"needed\",\n      \"can_cancel_transfer\": true\n    },\n    \"current_registrar\": \"Cloudflare\",\n    \"expires_at\": \"2019-08-28T23:59:59Z\",\n    \"registry_statuses\": \"ok,serverTransferProhibited\",\n    \"locked\": false,\n    \"created_at\": \"2018-08-28T17:26:26Z\",\n    \"updated_at\": \"2018-08-28T17:26:26Z\",\n    \"registrant_contact\": {\n      \"id\": \"ea95132c15732412d22c1476fa83f27a\",\n      \"first_name\": \"John\",\n      \"last_name\": \"Appleseed\",\n      \"organization\": \"Cloudflare, Inc.\",\n      \"address\": \"123 Sesame St.\",\n      \"address2\": \"Suite 430\",\n      \"city\": \"Austin\",\n      \"state\": \"TX\",\n      \"zip\": \"12345\",\n      \"country\": \"US\",\n      \"phone\": \"+1 123-123-1234\",\n      \"email\": \"user@example.com\",\n      \"fax\": \"123-867-5309\"\n    }\n  }\n}"
+		},
+		{
+			"title": "Update domain",
+			"description": "Update individual domain.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/registrar/domains/{#/definitions/domain_name}",
+			"method": "PUT",
+			"cfOwnership": "registrar",
+			"html_id": "registrar-domains-update-domain",
+			"uri": "accounts/:account_identifier/registrar/domains/:domain_name",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/registrar/domains/cloudflare.com\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name_servers\":[\"preston.ns.cloudflare.com\",\"oli.ns.cloudflare.com\"],\"privacy\":true,\"locked\":false,\"auto_renew\":true}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name_servers": {
+						"type": "array",
+						"example": "[\n  \"preston.ns.cloudflare.com\",\n  \"oli.ns.cloudflare.com\"\n]",
+						"description": "List of name servers.",
+						"items": {
+							"type": "string"
+						}
+					},
+					"privacy": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Privacy option controls redacting WHOIS information."
+					},
+					"locked": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Shows whether a registrar lock is in place for a domain."
+					},
+					"auto_renew": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Auto-renew controls whether subscription is automatically renewed upon domain expiration."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"name_servers",
+					"privacy",
+					"locked",
+					"auto_renew"
+				],
+				"objects": [],
+				"example": "{\n  \"name_servers\": [\n    \"preston.ns.cloudflare.com\",\n    \"oli.ns.cloudflare.com\"\n  ],\n  \"privacy\": true,\n  \"locked\": false,\n  \"auto_renew\": true\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"ea95132c15732412d22c1476fa83f27a\",\n    \"available\": false,\n    \"supported_tld\": true,\n    \"can_register\": false,\n    \"transfer_in\": {\n      \"unlock_domain\": \"ok\",\n      \"disable_privacy\": \"ok\",\n      \"enter_auth_code\": \"needed\",\n      \"approve_transfer\": \"unknown\",\n      \"accept_foa\": \"needed\",\n      \"can_cancel_transfer\": true\n    },\n    \"current_registrar\": \"Cloudflare\",\n    \"expires_at\": \"2019-08-28T23:59:59Z\",\n    \"registry_statuses\": \"ok,serverTransferProhibited\",\n    \"locked\": false,\n    \"created_at\": \"2018-08-28T17:26:26Z\",\n    \"updated_at\": \"2018-08-28T17:26:26Z\",\n    \"registrant_contact\": {\n      \"id\": \"ea95132c15732412d22c1476fa83f27a\",\n      \"first_name\": \"John\",\n      \"last_name\": \"Appleseed\",\n      \"organization\": \"Cloudflare, Inc.\",\n      \"address\": \"123 Sesame St.\",\n      \"address2\": \"Suite 430\",\n      \"city\": \"Austin\",\n      \"state\": \"TX\",\n      \"zip\": \"12345\",\n      \"country\": \"US\",\n      \"phone\": \"+1 123-123-1234\",\n      \"email\": \"user@example.com\",\n      \"fax\": \"123-867-5309\"\n    }\n  }\n}"
+		}
+	],
+	"cfLinkErrors": {
+		"10000": "Internal server error.",
+		"10001": "Authentication failure."
+	},
+	"html_id": "registrar-domains",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"ea95132c15732412d22c1476fa83f27a\"",
+				"description": "Domain identifier.",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"available": {
+				"type": "boolean",
+				"example": "false",
+				"description": "Shows if a domain is available for transferring into Cloudflare Registrar."
+			},
+			"supported_tld": {
+				"type": "boolean",
+				"example": "true",
+				"description": "Whether a particular TLD is currently supported by Cloudflare Registrar. Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list of supported TLDs."
+			},
+			"can_register": {
+				"type": "boolean",
+				"example": "false",
+				"description": "Indicates if the domain can be registered as a new domain."
+			},
+			"transfer_in": {
+				"example": "{\n  \"unlock_domain\": \"ok\",\n  \"disable_privacy\": \"ok\",\n  \"enter_auth_code\": \"needed\",\n  \"approve_transfer\": \"unknown\",\n  \"accept_foa\": \"needed\",\n  \"can_cancel_transfer\": true\n}",
+				"properties": {
+					"unlock_domain": {
+						"type": "string",
+						"example": "\"ok\"",
+						"description": "Domain is unlocked at the foreign registrar.",
+						"enum": [
+							"ok",
+							"needed",
+							"pending",
+							"trying",
+							"unknown",
+							"rejected"
+						]
+					},
+					"disable_privacy": {
+						"type": "string",
+						"example": "\"ok\"",
+						"description": "Privacy guards are disabled at the foreign registrar.",
+						"enum": [
+							"ok",
+							"needed",
+							"pending",
+							"trying",
+							"unknown",
+							"rejected"
+						]
+					},
+					"enter_auth_code": {
+						"type": "string",
+						"example": "\"needed\"",
+						"description": "Auth code has been entered and verified.",
+						"enum": [
+							"ok",
+							"needed",
+							"pending",
+							"trying",
+							"unknown",
+							"rejected"
+						]
+					},
+					"approve_transfer": {
+						"type": "string",
+						"example": "\"unknown\"",
+						"description": "Shows transfer status with the registry.",
+						"enum": [
+							"ok",
+							"needed",
+							"pending",
+							"trying",
+							"unknown",
+							"rejected"
+						]
+					},
+					"accept_foa": {
+						"type": "string",
+						"example": "\"needed\"",
+						"description": "Form of authorization has been accepted by the registrant.",
+						"enum": [
+							"ok",
+							"needed",
+							"pending",
+							"trying",
+							"unknown",
+							"rejected"
+						]
+					},
+					"can_cancel_transfer": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Indicates if cancellation is still possible."
+					}
+				},
+				"description": "Statuses for domain transfers into Cloudflare Registrar."
+			},
+			"current_registrar": {
+				"type": "string",
+				"example": "\"Cloudflare\"",
+				"description": "Shows name of current registrar."
+			},
+			"expires_at": {
+				"type": "string",
+				"example": "\"2019-08-28T23:59:59Z\"",
+				"description": "Shows when domain name registration expires.",
+				"format": "date-time"
+			},
+			"registry_statuses": {
+				"type": "string",
+				"example": "\"ok,serverTransferProhibited\"",
+				"description": "A comma-separated list of registry status codes. A full list of status codes can be found at [EPP Status Codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en)."
+			},
+			"locked": {
+				"type": "boolean",
+				"example": "false",
+				"description": "Shows whether a registrar lock is in place for a domain."
+			},
+			"created_at": {
+				"type": "string",
+				"example": "\"2018-08-28T17:26:26Z\"",
+				"description": "Shows time of creation.",
+				"format": "date-time"
+			},
+			"updated_at": {
+				"type": "string",
+				"example": "\"2018-08-28T17:26:26Z\"",
+				"description": "Last updated.",
+				"format": "date-time"
+			},
+			"registrant_contact": {
+				"example": "{\n  \"id\": \"ea95132c15732412d22c1476fa83f27a\",\n  \"first_name\": \"John\",\n  \"last_name\": \"Appleseed\",\n  \"organization\": \"Cloudflare, Inc.\",\n  \"address\": \"123 Sesame St.\",\n  \"address2\": \"Suite 430\",\n  \"city\": \"Austin\",\n  \"state\": \"TX\",\n  \"zip\": \"12345\",\n  \"country\": \"US\",\n  \"phone\": \"+1 123-123-1234\",\n  \"email\": \"user@example.com\",\n  \"fax\": \"123-867-5309\"\n}",
+				"properties": {
+					"id": {
+						"type": "string",
+						"example": "\"ea95132c15732412d22c1476fa83f27a\"",
+						"description": "Contact Identifier",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"first_name": {
+						"type": [
+							"string",
+							"null"
+						],
+						"example": "\"John\"",
+						"description": "User's first name",
+						"maxLength": 60
+					},
+					"last_name": {
+						"type": [
+							"string",
+							"null"
+						],
+						"example": "\"Appleseed\"",
+						"description": "User's last name",
+						"maxLength": 60
+					},
+					"organization": {
+						"type": "string",
+						"example": "\"Cloudflare, Inc.\"",
+						"description": "Name of organization"
+					},
+					"address": {
+						"type": "string",
+						"example": "\"123 Sesame St.\"",
+						"description": "Address"
+					},
+					"address2": {
+						"type": "string",
+						"example": "\"Suite 430\"",
+						"description": "Optional address line for unit, floor, suite, etc."
+					},
+					"city": {
+						"type": "string",
+						"example": "\"Austin\"",
+						"description": "City"
+					},
+					"state": {
+						"type": "string",
+						"example": "\"TX\"",
+						"description": "State"
+					},
+					"zip": {
+						"type": [
+							"string",
+							"null"
+						],
+						"example": "\"12345\"",
+						"description": "The zipcode or postal code where the user lives.",
+						"maxLength": 20
+					},
+					"country": {
+						"type": [
+							"string",
+							"null"
+						],
+						"example": "\"US\"",
+						"description": "The country in which the user lives.",
+						"maxLength": 30
+					},
+					"phone": {
+						"type": [
+							"string",
+							"null"
+						],
+						"example": "\"+1 123-123-1234\"",
+						"description": "User's telephone number",
+						"maxLength": 20
+					},
+					"email": {
+						"type": "string",
+						"example": "\"user@example.com\"",
+						"description": "Your contact email address",
+						"maxLength": 90
+					},
+					"fax": {
+						"type": "string",
+						"example": "\"123-867-5309\"",
+						"description": "Contact fax number"
+					}
+				},
+				"description": "Shows contact information for domain registrant.",
+				"allOf": [
+					{
+						"id": "https://api.cloudflare.com/schemas/v4/client/account/registrar/contacts.json",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"title": "Registrar Contacts",
+						"description": "Manage registrant contact info for WHOIS and RDAP",
+						"type": "object",
+						"allOf": [
+							{
+								"type": "object",
+								"required": [
+									"first_name",
+									"last_name",
+									"address",
+									"city",
+									"state",
+									"zip",
+									"country",
+									"phone",
+									"organization"
+								],
+								"properties": {
+									"id": {
+										"description": "Contact Identifier",
+										"example": "ea95132c15732412d22c1476fa83f27a",
+										"maxLength": 32,
+										"readOnly": true,
+										"type": "string"
+									},
+									"first_name": {
+										"description": "User's first name",
+										"type": [
+											"string",
+											"null"
+										],
+										"maxLength": 60,
+										"example": "John"
+									},
+									"last_name": {
+										"description": "User's last name",
+										"type": [
+											"string",
+											"null"
+										],
+										"maxLength": 60,
+										"example": "Appleseed"
+									},
+									"organization": {
+										"description": "Name of organization",
+										"example": "Cloudflare, Inc.",
+										"type": "string"
+									},
+									"address": {
+										"description": "Address",
+										"example": "123 Sesame St.",
+										"type": "string"
+									},
+									"address2": {
+										"description": "Optional address line for unit, floor, suite, etc.",
+										"example": "Suite 430",
+										"type": "string"
+									},
+									"city": {
+										"description": "City",
+										"example": "Austin",
+										"type": "string"
+									},
+									"state": {
+										"description": "State",
+										"example": "TX",
+										"type": "string"
+									},
+									"zip": {
+										"description": "The zipcode or postal code where the user lives.",
+										"type": [
+											"string",
+											"null"
+										],
+										"maxLength": 20,
+										"example": "12345"
+									},
+									"country": {
+										"description": "The country in which the user lives.",
+										"type": [
+											"string",
+											"null"
+										],
+										"maxLength": 30,
+										"example": "US"
+									},
+									"phone": {
+										"description": "User's telephone number",
+										"type": [
+											"string",
+											"null"
+										],
+										"maxLength": 20,
+										"example": "+1 123-123-1234"
+									},
+									"email": {
+										"description": "Your contact email address",
+										"type": "string",
+										"maxLength": 90,
+										"example": "user@example.com"
+									},
+									"fax": {
+										"description": "Contact fax number",
+										"type": "string",
+										"example": "123-867-5309"
+									}
+								}
+							}
+						],
+						"links": [
+							{
+								"title": "Create contact",
+								"description": "",
+								"rel": "collection",
+								"href": "accounts/{#/definitions/account_identifier}/registrar/contacts",
+								"method": "POST",
+								"schema": {
+									"type": "object",
+									"required": [
+										"first_name",
+										"last_name",
+										"address",
+										"city",
+										"state",
+										"zip",
+										"country",
+										"phone",
+										"organization"
+									],
+									"properties": {
+										"id": {
+											"description": "Contact Identifier",
+											"example": "ea95132c15732412d22c1476fa83f27a",
+											"maxLength": 32,
+											"readOnly": true,
+											"type": "string"
+										},
+										"first_name": {
+											"description": "User's first name",
+											"type": [
+												"string",
+												"null"
+											],
+											"maxLength": 60,
+											"example": "John"
+										},
+										"last_name": {
+											"description": "User's last name",
+											"type": [
+												"string",
+												"null"
+											],
+											"maxLength": 60,
+											"example": "Appleseed"
+										},
+										"organization": {
+											"description": "Name of organization",
+											"example": "Cloudflare, Inc.",
+											"type": "string"
+										},
+										"address": {
+											"description": "Address",
+											"example": "123 Sesame St.",
+											"type": "string"
+										},
+										"address2": {
+											"description": "Optional address line for unit, floor, suite, etc.",
+											"example": "Suite 430",
+											"type": "string"
+										},
+										"city": {
+											"description": "City",
+											"example": "Austin",
+											"type": "string"
+										},
+										"state": {
+											"description": "State",
+											"example": "TX",
+											"type": "string"
+										},
+										"zip": {
+											"description": "The zipcode or postal code where the user lives.",
+											"type": [
+												"string",
+												"null"
+											],
+											"maxLength": 20,
+											"example": "12345"
+										},
+										"country": {
+											"description": "The country in which the user lives.",
+											"type": [
+												"string",
+												"null"
+											],
+											"maxLength": 30,
+											"example": "US"
+										},
+										"phone": {
+											"description": "User's telephone number",
+											"type": [
+												"string",
+												"null"
+											],
+											"maxLength": 20,
+											"example": "+1 123-123-1234"
+										},
+										"email": {
+											"description": "Your contact email address",
+											"type": "string",
+											"maxLength": 90,
+											"example": "user@example.com"
+										},
+										"fax": {
+											"description": "Contact fax number",
+											"type": "string",
+											"example": "123-867-5309"
+										}
+									}
+								},
+								"cfOwnership": "registrar",
+								"targetSchema": {
+									"allOf": [
+										{
+											"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
+											"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+											"description": "Schema for an API response from Cloudflare that contains a single result object",
+											"type": "object",
+											"allOf": [
+												{
+													"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
+													"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+													"description": "Common schema for all Cloudflare v4 API responses",
+													"type": "object",
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"oneOf": [
+														{
+															"$comment": "This subschema describes successful responses",
+															"properties": {
+																"success": {
+																	"description": "Whether the API call was successful or not",
+																	"type": "boolean",
+																	"enum": [
+																		true
+																	],
+																	"example": true
+																},
+																"errors": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"required": [
+																			"code",
+																			"message"
+																		],
+																		"properties": {
+																			"code": {
+																				"type": "integer",
+																				"minimum": 1000
+																			},
+																			"message": {
+																				"type": "string"
+																			}
+																		},
+																		"uniqueItems": true
+																	},
+																	"example": []
+																},
+																"messages": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"required": [
+																			"code",
+																			"message"
+																		],
+																		"properties": {
+																			"code": {
+																				"type": "integer",
+																				"minimum": 1000
+																			},
+																			"message": {
+																				"type": "string"
+																			}
+																		},
+																		"uniqueItems": true
+																	},
+																	"example": []
+																},
+																"result": {
+																	"type": [
+																		"object",
+																		"array",
+																		"string"
+																	]
+																}
+															}
+														},
+														{
+															"$comment": "This subschema describes failure responses",
+															"properties": {
+																"success": {
+																	"description": "Whether the API call was successful or not",
+																	"type": "boolean",
+																	"enum": [
+																		false
+																	],
+																	"example": false
+																},
+																"errors": {
+																	"allOf": [
+																		{
+																			"type": "array",
+																			"items": {
+																				"type": "object",
+																				"required": [
+																					"code",
+																					"message"
+																				],
+																				"properties": {
+																					"code": {
+																						"type": "integer",
+																						"minimum": 1000
+																					},
+																					"message": {
+																						"type": "string"
+																					}
+																				},
+																				"uniqueItems": true
+																			},
+																			"example": []
+																		}
+																	],
+																	"minLength": 1,
+																	"example": [
+																		{
+																			"code": 7003,
+																			"message": "No route for the URI"
+																		}
+																	]
+																},
+																"messages": {
+																	"allOf": [
+																		{
+																			"type": "array",
+																			"items": {
+																				"type": "object",
+																				"required": [
+																					"code",
+																					"message"
+																				],
+																				"properties": {
+																					"code": {
+																						"type": "integer",
+																						"minimum": 1000
+																					},
+																					"message": {
+																						"type": "string"
+																					}
+																				},
+																				"uniqueItems": true
+																			},
+																			"example": []
+																		}
+																	],
+																	"example": []
+																},
+																"result": {
+																	"type": "null",
+																	"enum": [
+																		null
+																	],
+																	"example": null
+																}
+															}
+														}
+													],
+													"definitions": {
+														"messages": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"required": [
+																	"code",
+																	"message"
+																],
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"uniqueItems": true
+															},
+															"example": []
+														}
+													}
+												},
+												{
+													"properties": {
+														"result": {
+															"type": [
+																"object",
+																"string",
+																"null"
+															]
+														}
+													}
+												}
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"cfRecurse": "",
+													"type": "object"
+												}
+											}
+										}
+									]
+								}
+							},
+							{
+								"title": "Get contact",
+								"description": "",
+								"rel": "collection",
+								"href": "accounts/{#/definitions/account_identifier}/registrar/contacts/{#/definitions/contact_identifier}",
+								"method": "GET",
+								"cfOwnership": "registrar",
+								"targetSchema": {
+									"allOf": [
+										{
+											"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
+											"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+											"description": "Schema for an API response from Cloudflare that contains a single result object",
+											"type": "object",
+											"allOf": [
+												{
+													"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
+													"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+													"description": "Common schema for all Cloudflare v4 API responses",
+													"type": "object",
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"oneOf": [
+														{
+															"$comment": "This subschema describes successful responses",
+															"properties": {
+																"success": {
+																	"description": "Whether the API call was successful or not",
+																	"type": "boolean",
+																	"enum": [
+																		true
+																	],
+																	"example": true
+																},
+																"errors": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"required": [
+																			"code",
+																			"message"
+																		],
+																		"properties": {
+																			"code": {
+																				"type": "integer",
+																				"minimum": 1000
+																			},
+																			"message": {
+																				"type": "string"
+																			}
+																		},
+																		"uniqueItems": true
+																	},
+																	"example": []
+																},
+																"messages": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"required": [
+																			"code",
+																			"message"
+																		],
+																		"properties": {
+																			"code": {
+																				"type": "integer",
+																				"minimum": 1000
+																			},
+																			"message": {
+																				"type": "string"
+																			}
+																		},
+																		"uniqueItems": true
+																	},
+																	"example": []
+																},
+																"result": {
+																	"type": [
+																		"object",
+																		"array",
+																		"string"
+																	]
+																}
+															}
+														},
+														{
+															"$comment": "This subschema describes failure responses",
+															"properties": {
+																"success": {
+																	"description": "Whether the API call was successful or not",
+																	"type": "boolean",
+																	"enum": [
+																		false
+																	],
+																	"example": false
+																},
+																"errors": {
+																	"allOf": [
+																		{
+																			"type": "array",
+																			"items": {
+																				"type": "object",
+																				"required": [
+																					"code",
+																					"message"
+																				],
+																				"properties": {
+																					"code": {
+																						"type": "integer",
+																						"minimum": 1000
+																					},
+																					"message": {
+																						"type": "string"
+																					}
+																				},
+																				"uniqueItems": true
+																			},
+																			"example": []
+																		}
+																	],
+																	"minLength": 1,
+																	"example": [
+																		{
+																			"code": 7003,
+																			"message": "No route for the URI"
+																		}
+																	]
+																},
+																"messages": {
+																	"allOf": [
+																		{
+																			"type": "array",
+																			"items": {
+																				"type": "object",
+																				"required": [
+																					"code",
+																					"message"
+																				],
+																				"properties": {
+																					"code": {
+																						"type": "integer",
+																						"minimum": 1000
+																					},
+																					"message": {
+																						"type": "string"
+																					}
+																				},
+																				"uniqueItems": true
+																			},
+																			"example": []
+																		}
+																	],
+																	"example": []
+																},
+																"result": {
+																	"type": "null",
+																	"enum": [
+																		null
+																	],
+																	"example": null
+																}
+															}
+														}
+													],
+													"definitions": {
+														"messages": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"required": [
+																	"code",
+																	"message"
+																],
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"uniqueItems": true
+															},
+															"example": []
+														}
+													}
+												},
+												{
+													"properties": {
+														"result": {
+															"type": [
+																"object",
+																"string",
+																"null"
+															]
+														}
+													}
+												}
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"cfRecurse": "",
+													"type": "object"
+												}
+											}
+										}
+									]
+								}
+							},
+							{
+								"title": "Update contact",
+								"description": "",
+								"rel": "collection",
+								"href": "accounts/{#/definitions/account_identifier}/registrar/contacts/{#/definitions/contact_identifier}",
+								"method": "PUT",
+								"schema": {
+									"type": "object",
+									"required": [
+										"first_name",
+										"last_name",
+										"address",
+										"city",
+										"state",
+										"zip",
+										"country",
+										"phone",
+										"organization"
+									],
+									"properties": {
+										"id": {
+											"description": "Contact Identifier",
+											"example": "ea95132c15732412d22c1476fa83f27a",
+											"maxLength": 32,
+											"readOnly": true,
+											"type": "string"
+										},
+										"first_name": {
+											"description": "User's first name",
+											"type": [
+												"string",
+												"null"
+											],
+											"maxLength": 60,
+											"example": "John"
+										},
+										"last_name": {
+											"description": "User's last name",
+											"type": [
+												"string",
+												"null"
+											],
+											"maxLength": 60,
+											"example": "Appleseed"
+										},
+										"organization": {
+											"description": "Name of organization",
+											"example": "Cloudflare, Inc.",
+											"type": "string"
+										},
+										"address": {
+											"description": "Address",
+											"example": "123 Sesame St.",
+											"type": "string"
+										},
+										"address2": {
+											"description": "Optional address line for unit, floor, suite, etc.",
+											"example": "Suite 430",
+											"type": "string"
+										},
+										"city": {
+											"description": "City",
+											"example": "Austin",
+											"type": "string"
+										},
+										"state": {
+											"description": "State",
+											"example": "TX",
+											"type": "string"
+										},
+										"zip": {
+											"description": "The zipcode or postal code where the user lives.",
+											"type": [
+												"string",
+												"null"
+											],
+											"maxLength": 20,
+											"example": "12345"
+										},
+										"country": {
+											"description": "The country in which the user lives.",
+											"type": [
+												"string",
+												"null"
+											],
+											"maxLength": 30,
+											"example": "US"
+										},
+										"phone": {
+											"description": "User's telephone number",
+											"type": [
+												"string",
+												"null"
+											],
+											"maxLength": 20,
+											"example": "+1 123-123-1234"
+										},
+										"email": {
+											"description": "Your contact email address",
+											"type": "string",
+											"maxLength": 90,
+											"example": "user@example.com"
+										},
+										"fax": {
+											"description": "Contact fax number",
+											"type": "string",
+											"example": "123-867-5309"
+										}
+									}
+								},
+								"cfOwnership": "registrar",
+								"targetSchema": {
+									"allOf": [
+										{
+											"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
+											"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+											"description": "Schema for an API response from Cloudflare that contains a single result object",
+											"type": "object",
+											"allOf": [
+												{
+													"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
+													"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+													"description": "Common schema for all Cloudflare v4 API responses",
+													"type": "object",
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"oneOf": [
+														{
+															"$comment": "This subschema describes successful responses",
+															"properties": {
+																"success": {
+																	"description": "Whether the API call was successful or not",
+																	"type": "boolean",
+																	"enum": [
+																		true
+																	],
+																	"example": true
+																},
+																"errors": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"required": [
+																			"code",
+																			"message"
+																		],
+																		"properties": {
+																			"code": {
+																				"type": "integer",
+																				"minimum": 1000
+																			},
+																			"message": {
+																				"type": "string"
+																			}
+																		},
+																		"uniqueItems": true
+																	},
+																	"example": []
+																},
+																"messages": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"required": [
+																			"code",
+																			"message"
+																		],
+																		"properties": {
+																			"code": {
+																				"type": "integer",
+																				"minimum": 1000
+																			},
+																			"message": {
+																				"type": "string"
+																			}
+																		},
+																		"uniqueItems": true
+																	},
+																	"example": []
+																},
+																"result": {
+																	"type": [
+																		"object",
+																		"array",
+																		"string"
+																	]
+																}
+															}
+														},
+														{
+															"$comment": "This subschema describes failure responses",
+															"properties": {
+																"success": {
+																	"description": "Whether the API call was successful or not",
+																	"type": "boolean",
+																	"enum": [
+																		false
+																	],
+																	"example": false
+																},
+																"errors": {
+																	"allOf": [
+																		{
+																			"type": "array",
+																			"items": {
+																				"type": "object",
+																				"required": [
+																					"code",
+																					"message"
+																				],
+																				"properties": {
+																					"code": {
+																						"type": "integer",
+																						"minimum": 1000
+																					},
+																					"message": {
+																						"type": "string"
+																					}
+																				},
+																				"uniqueItems": true
+																			},
+																			"example": []
+																		}
+																	],
+																	"minLength": 1,
+																	"example": [
+																		{
+																			"code": 7003,
+																			"message": "No route for the URI"
+																		}
+																	]
+																},
+																"messages": {
+																	"allOf": [
+																		{
+																			"type": "array",
+																			"items": {
+																				"type": "object",
+																				"required": [
+																					"code",
+																					"message"
+																				],
+																				"properties": {
+																					"code": {
+																						"type": "integer",
+																						"minimum": 1000
+																					},
+																					"message": {
+																						"type": "string"
+																					}
+																				},
+																				"uniqueItems": true
+																			},
+																			"example": []
+																		}
+																	],
+																	"example": []
+																},
+																"result": {
+																	"type": "null",
+																	"enum": [
+																		null
+																	],
+																	"example": null
+																}
+															}
+														}
+													],
+													"definitions": {
+														"messages": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"required": [
+																	"code",
+																	"message"
+																],
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"uniqueItems": true
+															},
+															"example": []
+														}
+													}
+												},
+												{
+													"properties": {
+														"result": {
+															"type": [
+																"object",
+																"string",
+																"null"
+															]
+														}
+													}
+												}
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"cfRecurse": "",
+													"type": "object"
+												}
+											}
+										}
+									]
+								}
+							},
+							{
+								"title": "Remove contact",
+								"description": "",
+								"rel": "collection",
+								"href": "accounts/{#/definitions/account_identifier}/registrar/contacts/{#/definitions/contact_identifier}",
+								"method": "DELETE",
+								"cfOwnership": "registrar",
+								"targetSchema": {
+									"allOf": [
+										{
+											"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
+											"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+											"description": "Schema for an API response from Cloudflare that contains a single result object",
+											"type": "object",
+											"allOf": [
+												{
+													"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
+													"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+													"description": "Common schema for all Cloudflare v4 API responses",
+													"type": "object",
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"oneOf": [
+														{
+															"$comment": "This subschema describes successful responses",
+															"properties": {
+																"success": {
+																	"description": "Whether the API call was successful or not",
+																	"type": "boolean",
+																	"enum": [
+																		true
+																	],
+																	"example": true
+																},
+																"errors": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"required": [
+																			"code",
+																			"message"
+																		],
+																		"properties": {
+																			"code": {
+																				"type": "integer",
+																				"minimum": 1000
+																			},
+																			"message": {
+																				"type": "string"
+																			}
+																		},
+																		"uniqueItems": true
+																	},
+																	"example": []
+																},
+																"messages": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"required": [
+																			"code",
+																			"message"
+																		],
+																		"properties": {
+																			"code": {
+																				"type": "integer",
+																				"minimum": 1000
+																			},
+																			"message": {
+																				"type": "string"
+																			}
+																		},
+																		"uniqueItems": true
+																	},
+																	"example": []
+																},
+																"result": {
+																	"type": [
+																		"object",
+																		"array",
+																		"string"
+																	]
+																}
+															}
+														},
+														{
+															"$comment": "This subschema describes failure responses",
+															"properties": {
+																"success": {
+																	"description": "Whether the API call was successful or not",
+																	"type": "boolean",
+																	"enum": [
+																		false
+																	],
+																	"example": false
+																},
+																"errors": {
+																	"allOf": [
+																		{
+																			"type": "array",
+																			"items": {
+																				"type": "object",
+																				"required": [
+																					"code",
+																					"message"
+																				],
+																				"properties": {
+																					"code": {
+																						"type": "integer",
+																						"minimum": 1000
+																					},
+																					"message": {
+																						"type": "string"
+																					}
+																				},
+																				"uniqueItems": true
+																			},
+																			"example": []
+																		}
+																	],
+																	"minLength": 1,
+																	"example": [
+																		{
+																			"code": 7003,
+																			"message": "No route for the URI"
+																		}
+																	]
+																},
+																"messages": {
+																	"allOf": [
+																		{
+																			"type": "array",
+																			"items": {
+																				"type": "object",
+																				"required": [
+																					"code",
+																					"message"
+																				],
+																				"properties": {
+																					"code": {
+																						"type": "integer",
+																						"minimum": 1000
+																					},
+																					"message": {
+																						"type": "string"
+																					}
+																				},
+																				"uniqueItems": true
+																			},
+																			"example": []
+																		}
+																	],
+																	"example": []
+																},
+																"result": {
+																	"type": "null",
+																	"enum": [
+																		null
+																	],
+																	"example": null
+																}
+															}
+														}
+													],
+													"definitions": {
+														"messages": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"required": [
+																	"code",
+																	"message"
+																],
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"uniqueItems": true
+															},
+															"example": []
+														}
+													}
+												},
+												{
+													"properties": {
+														"result": {
+															"type": [
+																"object",
+																"string",
+																"null"
+															]
+														}
+													}
+												}
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"cfRecurse": "",
+													"type": "object"
+												}
+											}
+										}
+									]
+								}
+							},
+							{
+								"title": "List contacts",
+								"description": "",
+								"rel": "collection",
+								"href": "accounts/{#/definitions/account_identifier}/registrar/contacts",
+								"method": "GET",
+								"cfOwnership": "registrar",
+								"targetSchema": {
+									"allOf": [
+										{
+											"id": "https://api.cloudflare.com/schemas/v4/common/api-response-collection.json",
+											"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+											"description": "Schema for an API response from Cloudflare that contains multiple result objects",
+											"type": "object",
+											"anyOf": [
+												{
+													"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
+													"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+													"description": "Common schema for all Cloudflare v4 API responses",
+													"type": "object",
+													"required": [
+														"success",
+														"errors",
+														"messages",
+														"result"
+													],
+													"oneOf": [
+														{
+															"$comment": "This subschema describes successful responses",
+															"properties": {
+																"success": {
+																	"description": "Whether the API call was successful or not",
+																	"type": "boolean",
+																	"enum": [
+																		true
+																	],
+																	"example": true
+																},
+																"errors": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"required": [
+																			"code",
+																			"message"
+																		],
+																		"properties": {
+																			"code": {
+																				"type": "integer",
+																				"minimum": 1000
+																			},
+																			"message": {
+																				"type": "string"
+																			}
+																		},
+																		"uniqueItems": true
+																	},
+																	"example": []
+																},
+																"messages": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"required": [
+																			"code",
+																			"message"
+																		],
+																		"properties": {
+																			"code": {
+																				"type": "integer",
+																				"minimum": 1000
+																			},
+																			"message": {
+																				"type": "string"
+																			}
+																		},
+																		"uniqueItems": true
+																	},
+																	"example": []
+																},
+																"result": {
+																	"type": [
+																		"object",
+																		"array",
+																		"string"
+																	]
+																}
+															}
+														},
+														{
+															"$comment": "This subschema describes failure responses",
+															"properties": {
+																"success": {
+																	"description": "Whether the API call was successful or not",
+																	"type": "boolean",
+																	"enum": [
+																		false
+																	],
+																	"example": false
+																},
+																"errors": {
+																	"allOf": [
+																		{
+																			"type": "array",
+																			"items": {
+																				"type": "object",
+																				"required": [
+																					"code",
+																					"message"
+																				],
+																				"properties": {
+																					"code": {
+																						"type": "integer",
+																						"minimum": 1000
+																					},
+																					"message": {
+																						"type": "string"
+																					}
+																				},
+																				"uniqueItems": true
+																			},
+																			"example": []
+																		}
+																	],
+																	"minLength": 1,
+																	"example": [
+																		{
+																			"code": 7003,
+																			"message": "No route for the URI"
+																		}
+																	]
+																},
+																"messages": {
+																	"allOf": [
+																		{
+																			"type": "array",
+																			"items": {
+																				"type": "object",
+																				"required": [
+																					"code",
+																					"message"
+																				],
+																				"properties": {
+																					"code": {
+																						"type": "integer",
+																						"minimum": 1000
+																					},
+																					"message": {
+																						"type": "string"
+																					}
+																				},
+																				"uniqueItems": true
+																			},
+																			"example": []
+																		}
+																	],
+																	"example": []
+																},
+																"result": {
+																	"type": "null",
+																	"enum": [
+																		null
+																	],
+																	"example": null
+																}
+															}
+														}
+													],
+													"definitions": {
+														"messages": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"required": [
+																	"code",
+																	"message"
+																],
+																"properties": {
+																	"code": {
+																		"type": "integer",
+																		"minimum": 1000
+																	},
+																	"message": {
+																		"type": "string"
+																	}
+																},
+																"uniqueItems": true
+															},
+															"example": []
+														}
+													}
+												},
+												{
+													"properties": {
+														"result": {
+															"type": [
+																"array",
+																"null"
+															]
+														},
+														"result_info": {
+															"type": "object",
+															"properties": {
+																"page": {
+																	"description": "Current page within paginated list of results",
+																	"type": "number",
+																	"example": 1
+																},
+																"per_page": {
+																	"description": "Number of results per page of results",
+																	"type": "number",
+																	"example": 20
+																},
+																"count": {
+																	"description": "Total results returned based on your search parameters",
+																	"type": "number",
+																	"example": 1
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters",
+																	"type": "number",
+																	"example": 2000
+																}
+															}
+														}
+													}
+												}
+											],
+											"definitions": {
+												"params": {
+													"type": "object",
+													"properties": {
+														"page": {
+															"description": "Requested page within paginated list of results",
+															"type": "number",
+															"example": 1
+														},
+														"per_page": {
+															"description": "Maximum number of results requested",
+															"type": "number",
+															"example": 20
+														}
+													}
+												},
+												"result_info": {
+													"type": "object",
+													"properties": {
+														"page": {
+															"description": "Current page within paginated list of results",
+															"type": "number",
+															"example": 1
+														},
+														"per_page": {
+															"description": "Number of results per page of results",
+															"type": "number",
+															"example": 20
+														},
+														"count": {
+															"description": "Total results returned based on your search parameters",
+															"type": "number",
+															"example": 1
+														},
+														"total_count": {
+															"description": "Total results available without any search parameters",
+															"type": "number",
+															"example": 2000
+														}
+													}
+												}
+											}
+										},
+										{
+											"properties": {
+												"result": {
+													"cfRecurse": "",
+													"type": "object"
+												}
+											}
+										}
+									]
+								}
+							}
+						],
+						"cfLinkErrors": {
+							"10000": "Internal Server Error",
+							"10001": "Authentication Failure"
+						},
+						"definitions": {
+							"account_identifier": {
+								"$comment": "Must be present as a definition for URI Templating",
+								"description": "Account identifier tag",
+								"type": "string",
+								"maxLength": 32,
+								"readOnly": true,
+								"example": "01a7362d577a6c3019a474fd6f485823"
+							},
+							"contact_identifier": {
+								"description": "Contact Identifier",
+								"example": "ea95132c15732412d22c1476fa83f27a",
+								"maxLength": 32,
+								"readOnly": true,
+								"type": "string"
+							},
+							"organization": {
+								"description": "Name of organization",
+								"example": "Cloudflare, Inc.",
+								"type": "string"
+							},
+							"address": {
+								"description": "Address",
+								"example": "123 Sesame St.",
+								"type": "string"
+							},
+							"address2": {
+								"description": "Optional address line for unit, floor, suite, etc.",
+								"example": "Suite 430",
+								"type": "string"
+							},
+							"city": {
+								"description": "City",
+								"example": "Austin",
+								"type": "string"
+							},
+							"state": {
+								"description": "State",
+								"example": "TX",
+								"type": "string"
+							},
+							"fax": {
+								"description": "Contact fax number",
+								"type": "string",
+								"example": "123-867-5309"
+							},
+							"contact_properties": {
+								"type": "object",
+								"required": [
+									"first_name",
+									"last_name",
+									"address",
+									"city",
+									"state",
+									"zip",
+									"country",
+									"phone",
+									"organization"
+								],
+								"properties": {
+									"id": {
+										"description": "Contact Identifier",
+										"example": "ea95132c15732412d22c1476fa83f27a",
+										"maxLength": 32,
+										"readOnly": true,
+										"type": "string"
+									},
+									"first_name": {
+										"description": "User's first name",
+										"type": [
+											"string",
+											"null"
+										],
+										"maxLength": 60,
+										"example": "John"
+									},
+									"last_name": {
+										"description": "User's last name",
+										"type": [
+											"string",
+											"null"
+										],
+										"maxLength": 60,
+										"example": "Appleseed"
+									},
+									"organization": {
+										"description": "Name of organization",
+										"example": "Cloudflare, Inc.",
+										"type": "string"
+									},
+									"address": {
+										"description": "Address",
+										"example": "123 Sesame St.",
+										"type": "string"
+									},
+									"address2": {
+										"description": "Optional address line for unit, floor, suite, etc.",
+										"example": "Suite 430",
+										"type": "string"
+									},
+									"city": {
+										"description": "City",
+										"example": "Austin",
+										"type": "string"
+									},
+									"state": {
+										"description": "State",
+										"example": "TX",
+										"type": "string"
+									},
+									"zip": {
+										"description": "The zipcode or postal code where the user lives.",
+										"type": [
+											"string",
+											"null"
+										],
+										"maxLength": 20,
+										"example": "12345"
+									},
+									"country": {
+										"description": "The country in which the user lives.",
+										"type": [
+											"string",
+											"null"
+										],
+										"maxLength": 30,
+										"example": "US"
+									},
+									"phone": {
+										"description": "User's telephone number",
+										"type": [
+											"string",
+											"null"
+										],
+										"maxLength": 20,
+										"example": "+1 123-123-1234"
+									},
+									"email": {
+										"description": "Your contact email address",
+										"type": "string",
+										"maxLength": 90,
+										"example": "user@example.com"
+									},
+									"fax": {
+										"description": "Contact fax number",
+										"type": "string",
+										"example": "123-867-5309"
+									}
+								}
+							},
+							"contact_response_single": {
+								"allOf": [
+									{
+										"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
+										"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+										"description": "Schema for an API response from Cloudflare that contains a single result object",
+										"type": "object",
+										"allOf": [
+											{
+												"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
+												"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+												"description": "Common schema for all Cloudflare v4 API responses",
+												"type": "object",
+												"required": [
+													"success",
+													"errors",
+													"messages",
+													"result"
+												],
+												"oneOf": [
+													{
+														"$comment": "This subschema describes successful responses",
+														"properties": {
+															"success": {
+																"description": "Whether the API call was successful or not",
+																"type": "boolean",
+																"enum": [
+																	true
+																],
+																"example": true
+															},
+															"errors": {
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"required": [
+																		"code",
+																		"message"
+																	],
+																	"properties": {
+																		"code": {
+																			"type": "integer",
+																			"minimum": 1000
+																		},
+																		"message": {
+																			"type": "string"
+																		}
+																	},
+																	"uniqueItems": true
+																},
+																"example": []
+															},
+															"messages": {
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"required": [
+																		"code",
+																		"message"
+																	],
+																	"properties": {
+																		"code": {
+																			"type": "integer",
+																			"minimum": 1000
+																		},
+																		"message": {
+																			"type": "string"
+																		}
+																	},
+																	"uniqueItems": true
+																},
+																"example": []
+															},
+															"result": {
+																"type": [
+																	"object",
+																	"array",
+																	"string"
+																]
+															}
+														}
+													},
+													{
+														"$comment": "This subschema describes failure responses",
+														"properties": {
+															"success": {
+																"description": "Whether the API call was successful or not",
+																"type": "boolean",
+																"enum": [
+																	false
+																],
+																"example": false
+															},
+															"errors": {
+																"allOf": [
+																	{
+																		"type": "array",
+																		"items": {
+																			"type": "object",
+																			"required": [
+																				"code",
+																				"message"
+																			],
+																			"properties": {
+																				"code": {
+																					"type": "integer",
+																					"minimum": 1000
+																				},
+																				"message": {
+																					"type": "string"
+																				}
+																			},
+																			"uniqueItems": true
+																		},
+																		"example": []
+																	}
+																],
+																"minLength": 1,
+																"example": [
+																	{
+																		"code": 7003,
+																		"message": "No route for the URI"
+																	}
+																]
+															},
+															"messages": {
+																"allOf": [
+																	{
+																		"type": "array",
+																		"items": {
+																			"type": "object",
+																			"required": [
+																				"code",
+																				"message"
+																			],
+																			"properties": {
+																				"code": {
+																					"type": "integer",
+																					"minimum": 1000
+																				},
+																				"message": {
+																					"type": "string"
+																				}
+																			},
+																			"uniqueItems": true
+																		},
+																		"example": []
+																	}
+																],
+																"example": []
+															},
+															"result": {
+																"type": "null",
+																"enum": [
+																	null
+																],
+																"example": null
+															}
+														}
+													}
+												],
+												"definitions": {
+													"messages": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"required": [
+																"code",
+																"message"
+															],
+															"properties": {
+																"code": {
+																	"type": "integer",
+																	"minimum": 1000
+																},
+																"message": {
+																	"type": "string"
+																}
+															},
+															"uniqueItems": true
+														},
+														"example": []
+													}
+												}
+											},
+											{
+												"properties": {
+													"result": {
+														"type": [
+															"object",
+															"string",
+															"null"
+														]
+													}
+												}
+											}
+										]
+									},
+									{
+										"properties": {
+											"result": {
+												"cfRecurse": "",
+												"type": "object"
+											}
+										}
+									}
+								]
+							},
+							"contact_response_collection": {
+								"allOf": [
+									{
+										"id": "https://api.cloudflare.com/schemas/v4/common/api-response-collection.json",
+										"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+										"description": "Schema for an API response from Cloudflare that contains multiple result objects",
+										"type": "object",
+										"anyOf": [
+											{
+												"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
+												"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+												"description": "Common schema for all Cloudflare v4 API responses",
+												"type": "object",
+												"required": [
+													"success",
+													"errors",
+													"messages",
+													"result"
+												],
+												"oneOf": [
+													{
+														"$comment": "This subschema describes successful responses",
+														"properties": {
+															"success": {
+																"description": "Whether the API call was successful or not",
+																"type": "boolean",
+																"enum": [
+																	true
+																],
+																"example": true
+															},
+															"errors": {
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"required": [
+																		"code",
+																		"message"
+																	],
+																	"properties": {
+																		"code": {
+																			"type": "integer",
+																			"minimum": 1000
+																		},
+																		"message": {
+																			"type": "string"
+																		}
+																	},
+																	"uniqueItems": true
+																},
+																"example": []
+															},
+															"messages": {
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"required": [
+																		"code",
+																		"message"
+																	],
+																	"properties": {
+																		"code": {
+																			"type": "integer",
+																			"minimum": 1000
+																		},
+																		"message": {
+																			"type": "string"
+																		}
+																	},
+																	"uniqueItems": true
+																},
+																"example": []
+															},
+															"result": {
+																"type": [
+																	"object",
+																	"array",
+																	"string"
+																]
+															}
+														}
+													},
+													{
+														"$comment": "This subschema describes failure responses",
+														"properties": {
+															"success": {
+																"description": "Whether the API call was successful or not",
+																"type": "boolean",
+																"enum": [
+																	false
+																],
+																"example": false
+															},
+															"errors": {
+																"allOf": [
+																	{
+																		"type": "array",
+																		"items": {
+																			"type": "object",
+																			"required": [
+																				"code",
+																				"message"
+																			],
+																			"properties": {
+																				"code": {
+																					"type": "integer",
+																					"minimum": 1000
+																				},
+																				"message": {
+																					"type": "string"
+																				}
+																			},
+																			"uniqueItems": true
+																		},
+																		"example": []
+																	}
+																],
+																"minLength": 1,
+																"example": [
+																	{
+																		"code": 7003,
+																		"message": "No route for the URI"
+																	}
+																]
+															},
+															"messages": {
+																"allOf": [
+																	{
+																		"type": "array",
+																		"items": {
+																			"type": "object",
+																			"required": [
+																				"code",
+																				"message"
+																			],
+																			"properties": {
+																				"code": {
+																					"type": "integer",
+																					"minimum": 1000
+																				},
+																				"message": {
+																					"type": "string"
+																				}
+																			},
+																			"uniqueItems": true
+																		},
+																		"example": []
+																	}
+																],
+																"example": []
+															},
+															"result": {
+																"type": "null",
+																"enum": [
+																	null
+																],
+																"example": null
+															}
+														}
+													}
+												],
+												"definitions": {
+													"messages": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"required": [
+																"code",
+																"message"
+															],
+															"properties": {
+																"code": {
+																	"type": "integer",
+																	"minimum": 1000
+																},
+																"message": {
+																	"type": "string"
+																}
+															},
+															"uniqueItems": true
+														},
+														"example": []
+													}
+												}
+											},
+											{
+												"properties": {
+													"result": {
+														"type": [
+															"array",
+															"null"
+														]
+													},
+													"result_info": {
+														"type": "object",
+														"properties": {
+															"page": {
+																"description": "Current page within paginated list of results",
+																"type": "number",
+																"example": 1
+															},
+															"per_page": {
+																"description": "Number of results per page of results",
+																"type": "number",
+																"example": 20
+															},
+															"count": {
+																"description": "Total results returned based on your search parameters",
+																"type": "number",
+																"example": 1
+															},
+															"total_count": {
+																"description": "Total results available without any search parameters",
+																"type": "number",
+																"example": 2000
+															}
+														}
+													}
+												}
+											}
+										],
+										"definitions": {
+											"params": {
+												"type": "object",
+												"properties": {
+													"page": {
+														"description": "Requested page within paginated list of results",
+														"type": "number",
+														"example": 1
+													},
+													"per_page": {
+														"description": "Maximum number of results requested",
+														"type": "number",
+														"example": 20
+													}
+												}
+											},
+											"result_info": {
+												"type": "object",
+												"properties": {
+													"page": {
+														"description": "Current page within paginated list of results",
+														"type": "number",
+														"example": 1
+													},
+													"per_page": {
+														"description": "Number of results per page of results",
+														"type": "number",
+														"example": 20
+													},
+													"count": {
+														"description": "Total results returned based on your search parameters",
+														"type": "number",
+														"example": 1
+													},
+													"total_count": {
+														"description": "Total results available without any search parameters",
+														"type": "number",
+														"example": 2000
+													}
+												}
+											}
+										}
+									},
+									{
+										"properties": {
+											"result": {
+												"cfRecurse": "",
+												"type": "object"
+											}
+										}
+									}
+								]
+							}
+						}
+					}
+				]
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"available",
+			"supported_tld",
+			"can_register",
+			"transfer_in",
+			"current_registrar",
+			"expires_at",
+			"registry_statuses",
+			"locked",
+			"created_at",
+			"updated_at",
+			"registrant_contact"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"ea95132c15732412d22c1476fa83f27a\",\n  \"available\": false,\n  \"supported_tld\": true,\n  \"can_register\": false,\n  \"transfer_in\": {\n    \"unlock_domain\": \"ok\",\n    \"disable_privacy\": \"ok\",\n    \"enter_auth_code\": \"needed\",\n    \"approve_transfer\": \"unknown\",\n    \"accept_foa\": \"needed\",\n    \"can_cancel_transfer\": true\n  },\n  \"current_registrar\": \"Cloudflare\",\n  \"expires_at\": \"2019-08-28T23:59:59Z\",\n  \"registry_statuses\": \"ok,serverTransferProhibited\",\n  \"locked\": false,\n  \"created_at\": \"2018-08-28T17:26:26Z\",\n  \"updated_at\": \"2018-08-28T17:26:26Z\",\n  \"registrant_contact\": {\n    \"id\": \"ea95132c15732412d22c1476fa83f27a\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Appleseed\",\n    \"organization\": \"Cloudflare, Inc.\",\n    \"address\": \"123 Sesame St.\",\n    \"address2\": \"Suite 430\",\n    \"city\": \"Austin\",\n    \"state\": \"TX\",\n    \"zip\": \"12345\",\n    \"country\": \"US\",\n    \"phone\": \"+1 123-123-1234\",\n    \"email\": \"user@example.com\",\n    \"fax\": \"123-867-5309\"\n  }\n}",
+		"title": "Registrar Domains",
+		"description": "Manage domains names with Cloudflare Registrar."
+	}
+}

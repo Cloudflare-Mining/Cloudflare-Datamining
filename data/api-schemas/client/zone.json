@@ -1,0 +1,4637 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone.json",
+	"title": "Zone",
+	"description": "A Zone is a domain name along with its subdomains and other identities",
+	"cfDeprecations": {
+		"zone_request_id_deprecation": {
+			"id": "zone_request_id_deprecation",
+			"description": "In mid 2020, we introduced cf-request-id, an experimental HTTP header. This header was present on requests sent to origins and returned in responses to eyeballs (users). After careful evaluation, we decided to remove the cf-request-id header.\n\nEffective today, cf-request-id is deprecated but will remain in place until July 1, 2021. After this date, the header will no longer be present on requests and responses. If you require an identifier for requests, we recommend using the CF-RAY header.\n\nIn preparation of the header’s removal, we will perform a test-run on June 15, 2021. The cf-request-id header will not be present from 15:00 UTC to 23:00 UTC. After this time, it will be present until its full removal on July 1.",
+			"eol": "2021-07-01",
+			"display": true
+		}
+	},
+	"type": "object",
+	"links": [
+		{
+			"title": "List Zones",
+			"description": "List, search, sort, and filter your zones",
+			"rel": "collection",
+			"href": "zones",
+			"method": "GET",
+			"cfOwnership": "www",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#zone:read"
+				]
+			},
+			"html_id": "zone-list-zones",
+			"uri": "zones",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones?name=example.com&status=active&account.id=01a7362d577a6c3019a474fd6f485823&account.name=Demo Account&page=1&per_page=20&order=status&direction=desc&match=all\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"format": "hostname",
+						"description": "A domain name",
+						"maxLength": 253
+					},
+					"status": {
+						"type": "string",
+						"example": "\"active\"",
+						"description": "Status of the zone",
+						"enum": [
+							"active",
+							"pending",
+							"initializing",
+							"moved",
+							"deleted",
+							"deactivated"
+						],
+						"readOnly": true
+					},
+					"account.id": {
+						"type": "string",
+						"example": "\"01a7362d577a6c3019a474fd6f485823\"",
+						"description": "Account identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"account.name": {
+						"type": "string",
+						"example": "\"Demo Account\"",
+						"description": "Account name",
+						"maxLength": 100
+					},
+					"page": {
+						"type": "number",
+						"example": "1",
+						"minimum": 1,
+						"default": 1,
+						"description": "Page number of paginated results"
+					},
+					"per_page": {
+						"type": "number",
+						"example": "20",
+						"minimum": 5,
+						"maximum": 50,
+						"default": 20,
+						"description": "Number of zones per page"
+					},
+					"order": {
+						"type": "string",
+						"example": "\"status\"",
+						"enum": [
+							"name",
+							"status",
+							"account.id",
+							"account.name"
+						],
+						"description": "Field to order zones by"
+					},
+					"direction": {
+						"type": "string",
+						"example": "\"desc\"",
+						"enum": [
+							"asc",
+							"desc"
+						],
+						"description": "Direction to order zones"
+					},
+					"match": {
+						"type": "string",
+						"example": "\"all\"",
+						"enum": [
+							"any",
+							"all"
+						],
+						"default": "all",
+						"description": "Whether to match all search requirements or at least one (any)"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"name",
+					"status",
+					"account.id",
+					"account.name",
+					"page",
+					"per_page",
+					"order",
+					"direction",
+					"match"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": \"example.com\",\n  \"status\": \"active\",\n  \"account.id\": \"01a7362d577a6c3019a474fd6f485823\",\n  \"account.name\": \"Demo Account\",\n  \"page\": 1,\n  \"per_page\": 20,\n  \"order\": \"status\",\n  \"direction\": \"desc\",\n  \"match\": \"all\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n      \"name\": \"example.com\",\n      \"development_mode\": 7200,\n      \"original_name_servers\": [\n        \"ns1.originaldnshost.com\",\n        \"ns2.originaldnshost.com\"\n      ],\n      \"original_registrar\": \"GoDaddy\",\n      \"original_dnshost\": \"NameCheap\",\n      \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"activated_on\": \"2014-01-02T00:01:00.12345Z\",\n      \"owner\": {\n        \"id\": {},\n        \"email\": {},\n        \"type\": \"user\"\n      },\n      \"account\": {\n        \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n        \"name\": \"Demo Account\"\n      },\n      \"permissions\": [\n        \"#zone:read\",\n        \"#zone:edit\"\n      ],\n      \"plan\": {\n        \"id\": \"e592fd9519420ba7405e1307bff33214\",\n        \"name\": \"Pro Plan\",\n        \"price\": 20,\n        \"currency\": \"USD\",\n        \"frequency\": \"monthly\",\n        \"legacy_id\": \"pro\",\n        \"is_subscribed\": true,\n        \"can_subscribe\": true\n      },\n      \"plan_pending\": {\n        \"id\": \"e592fd9519420ba7405e1307bff33214\",\n        \"name\": \"Pro Plan\",\n        \"price\": 20,\n        \"currency\": \"USD\",\n        \"frequency\": \"monthly\",\n        \"legacy_id\": \"pro\",\n        \"is_subscribed\": true,\n        \"can_subscribe\": true\n      },\n      \"status\": \"active\",\n      \"paused\": false,\n      \"type\": \"full\",\n      \"name_servers\": [\n        \"tony.ns.cloudflare.com\",\n        \"woz.ns.cloudflare.com\"\n      ]\n    }\n  ]\n}"
+		},
+		{
+			"title": "Create Zone",
+			"rel": "collection",
+			"href": "zones",
+			"method": "POST",
+			"cfOwnership": "www",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#zone:edit"
+				]
+			},
+			"html_id": "zone-create-zone",
+			"uri": "zones",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"example.com\",\"account\":{\"id\":\"01a7362d577a6c3019a474fd6f485823\"},\"jump_start\":true,\"type\":\"full\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "The domain name",
+						"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
+						"maxLength": 253,
+						"readOnly": true
+					},
+					"account": {
+						"type": "object",
+						"example": "{\n  \"id\": \"01a7362d577a6c3019a474fd6f485823\"\n}",
+						"properties": {
+							"id": {
+								"type": "string",
+								"example": "\"01a7362d577a6c3019a474fd6f485823\"",
+								"description": "Account identifier tag",
+								"maxLength": 32,
+								"readOnly": true
+							}
+						},
+						"description": "Account of which the zone is created in"
+					},
+					"jump_start": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Automatically attempt to fetch existing DNS records",
+						"default": false
+					},
+					"type": {
+						"type": "string",
+						"example": "\"full\"",
+						"description": "A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.",
+						"enum": [
+							"full",
+							"partial"
+						]
+					}
+				},
+				"required_props": [
+					"name",
+					"account"
+				],
+				"optional_props": [
+					"jump_start",
+					"type"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": \"example.com\",\n  \"account\": {\n    \"id\": \"01a7362d577a6c3019a474fd6f485823\"\n  },\n  \"jump_start\": true,\n  \"type\": \"full\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"name\": \"example.com\",\n    \"development_mode\": 7200,\n    \"original_name_servers\": [\n      \"ns1.originaldnshost.com\",\n      \"ns2.originaldnshost.com\"\n    ],\n    \"original_registrar\": \"GoDaddy\",\n    \"original_dnshost\": \"NameCheap\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"activated_on\": \"2014-01-02T00:01:00.12345Z\",\n    \"owner\": {\n      \"id\": {},\n      \"email\": {},\n      \"type\": \"user\"\n    },\n    \"account\": {\n      \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n      \"name\": \"Demo Account\"\n    },\n    \"permissions\": [\n      \"#zone:read\",\n      \"#zone:edit\"\n    ],\n    \"plan\": {\n      \"id\": \"e592fd9519420ba7405e1307bff33214\",\n      \"name\": \"Pro Plan\",\n      \"price\": 20,\n      \"currency\": \"USD\",\n      \"frequency\": \"monthly\",\n      \"legacy_id\": \"pro\",\n      \"is_subscribed\": true,\n      \"can_subscribe\": true\n    },\n    \"plan_pending\": {\n      \"id\": \"e592fd9519420ba7405e1307bff33214\",\n      \"name\": \"Pro Plan\",\n      \"price\": 20,\n      \"currency\": \"USD\",\n      \"frequency\": \"monthly\",\n      \"legacy_id\": \"pro\",\n      \"is_subscribed\": true,\n      \"can_subscribe\": true\n    },\n    \"status\": \"active\",\n    \"paused\": false,\n    \"type\": \"full\",\n    \"name_servers\": [\n      \"tony.ns.cloudflare.com\",\n      \"woz.ns.cloudflare.com\"\n    ]\n  }\n}"
+		},
+		{
+			"title": "Zone Details",
+			"rel": "self",
+			"href": "zones/{#/definitions/identifier}",
+			"method": "GET",
+			"cfOwnership": "www",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#zone:read"
+				]
+			},
+			"html_id": "zone-zone-details",
+			"uri": "zones/:identifier",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"name\": \"example.com\",\n    \"development_mode\": 7200,\n    \"original_name_servers\": [\n      \"ns1.originaldnshost.com\",\n      \"ns2.originaldnshost.com\"\n    ],\n    \"original_registrar\": \"GoDaddy\",\n    \"original_dnshost\": \"NameCheap\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"activated_on\": \"2014-01-02T00:01:00.12345Z\",\n    \"owner\": {\n      \"id\": {},\n      \"email\": {},\n      \"type\": \"user\"\n    },\n    \"account\": {\n      \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n      \"name\": \"Demo Account\"\n    },\n    \"permissions\": [\n      \"#zone:read\",\n      \"#zone:edit\"\n    ],\n    \"plan\": {\n      \"id\": \"e592fd9519420ba7405e1307bff33214\",\n      \"name\": \"Pro Plan\",\n      \"price\": 20,\n      \"currency\": \"USD\",\n      \"frequency\": \"monthly\",\n      \"legacy_id\": \"pro\",\n      \"is_subscribed\": true,\n      \"can_subscribe\": true\n    },\n    \"plan_pending\": {\n      \"id\": \"e592fd9519420ba7405e1307bff33214\",\n      \"name\": \"Pro Plan\",\n      \"price\": 20,\n      \"currency\": \"USD\",\n      \"frequency\": \"monthly\",\n      \"legacy_id\": \"pro\",\n      \"is_subscribed\": true,\n      \"can_subscribe\": true\n    },\n    \"status\": \"active\",\n    \"paused\": false,\n    \"type\": \"full\",\n    \"name_servers\": [\n      \"tony.ns.cloudflare.com\",\n      \"woz.ns.cloudflare.com\"\n    ]\n  }\n}"
+		},
+		{
+			"title": "Edit Zone",
+			"description": "Only one zone property can be changed at a time",
+			"rel": "self",
+			"href": "zones/{#/definitions/identifier}",
+			"method": "PATCH",
+			"cfOwnership": "www",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "zone-edit-zone",
+			"uri": "zones/:identifier",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"paused\":false,\"vanity_name_servers\":[\"ns1.example.com\",\"ns2.example.com\"],\"plan\":{\"id\":\"e592fd9519420ba7405e1307bff33214\"},\"type\":\"full\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"paused": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Indicates if the zone is only using Cloudflare DNS services. A true value means the zone will not receive security or performance benefits.",
+						"readOnly": true,
+						"default": false
+					},
+					"vanity_name_servers": {
+						"type": "array",
+						"example": "[\n  \"ns1.example.com\",\n  \"ns2.example.com\"\n]",
+						"description": "An array of domains used for custom name servers. This is only available for Business and Enterprise plans.",
+						"items": {
+							"type": "string",
+							"format": "hostname",
+							"maxLength": 253
+						}
+					},
+					"plan": {
+						"type": "object",
+						"example": "{\n  \"id\": \"e592fd9519420ba7405e1307bff33214\"\n}",
+						"properties": {
+							"id": {
+								"type": "string",
+								"example": "\"e592fd9519420ba7405e1307bff33214\"",
+								"description": "Plan identifier tag",
+								"maxLength": 32,
+								"readOnly": true
+							}
+						},
+						"description": "The desired plan for the zone. Changing this value will create/cancel associated subscriptions. To view available plans for this zone, see Zone Plans"
+					},
+					"type": {
+						"type": "string",
+						"example": "\"full\"",
+						"description": "A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. This parameter is only available to Enterprise customers or if it has been explicitly enabled on a zone.",
+						"enum": [
+							"full",
+							"partial"
+						]
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"paused",
+					"vanity_name_servers",
+					"plan",
+					"type"
+				],
+				"objects": [],
+				"example": "{\n  \"paused\": false,\n  \"vanity_name_servers\": [\n    \"ns1.example.com\",\n    \"ns2.example.com\"\n  ],\n  \"plan\": {\n    \"id\": \"e592fd9519420ba7405e1307bff33214\"\n  },\n  \"type\": \"full\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"name\": \"example.com\",\n    \"development_mode\": 7200,\n    \"original_name_servers\": [\n      \"ns1.originaldnshost.com\",\n      \"ns2.originaldnshost.com\"\n    ],\n    \"original_registrar\": \"GoDaddy\",\n    \"original_dnshost\": \"NameCheap\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"activated_on\": \"2014-01-02T00:01:00.12345Z\",\n    \"owner\": {\n      \"id\": {},\n      \"email\": {},\n      \"type\": \"user\"\n    },\n    \"account\": {\n      \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n      \"name\": \"Demo Account\"\n    },\n    \"permissions\": [\n      \"#zone:read\",\n      \"#zone:edit\"\n    ],\n    \"plan\": {\n      \"id\": \"e592fd9519420ba7405e1307bff33214\",\n      \"name\": \"Pro Plan\",\n      \"price\": 20,\n      \"currency\": \"USD\",\n      \"frequency\": \"monthly\",\n      \"legacy_id\": \"pro\",\n      \"is_subscribed\": true,\n      \"can_subscribe\": true\n    },\n    \"plan_pending\": {\n      \"id\": \"e592fd9519420ba7405e1307bff33214\",\n      \"name\": \"Pro Plan\",\n      \"price\": 20,\n      \"currency\": \"USD\",\n      \"frequency\": \"monthly\",\n      \"legacy_id\": \"pro\",\n      \"is_subscribed\": true,\n      \"can_subscribe\": true\n    },\n    \"status\": \"active\",\n    \"paused\": false,\n    \"type\": \"full\",\n    \"name_servers\": [\n      \"tony.ns.cloudflare.com\",\n      \"woz.ns.cloudflare.com\"\n    ]\n  }\n}"
+		},
+		{
+			"title": "Delete Zone",
+			"description": "Delete an existing zone.",
+			"rel": "self",
+			"href": "zones/{#/definitions/identifier}",
+			"method": "DELETE",
+			"cfOwnership": "www",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#zone:edit"
+				]
+			},
+			"html_id": "zone-delete-zone",
+			"uri": "zones/:identifier",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\"\n  }\n}"
+		},
+		{
+			"title": "Zone Activation Check",
+			"description": "Initiate another zone activation check",
+			"rel": "tag:cloudflare.com,2017:status",
+			"href": "zones/{#/definitions/identifier}/activation_check",
+			"method": "PUT",
+			"cfOwnership": "www",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#zone:edit"
+				]
+			},
+			"html_id": "zone-zone-activation-check",
+			"uri": "zones/:identifier/activation_check",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/activation_check\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\"\n  }\n}"
+		},
+		{
+			"title": "Zone to Pending State",
+			"rel": "tag:cloudflare.com,2017:status",
+			"href": "zones/{#/definitions/identifier}/pending",
+			"method": "PATCH",
+			"cfOwnership": "www",
+			"cfPrivate": true,
+			"html_id": "zone-zone-to-pending-state",
+			"uri": "zones/:identifier/pending",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/pending\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"make_pending\":true}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"make_pending": {
+						"example": "true",
+						"description": "A flag that indicates that a zone should be in a pending mode",
+						"enum": [
+							true
+						]
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"make_pending"
+				],
+				"objects": [],
+				"example": "{\n  \"make_pending\": true\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"name\": \"example.com\",\n    \"development_mode\": 7200,\n    \"original_name_servers\": [\n      \"ns1.originaldnshost.com\",\n      \"ns2.originaldnshost.com\"\n    ],\n    \"original_registrar\": \"GoDaddy\",\n    \"original_dnshost\": \"NameCheap\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"activated_on\": \"2014-01-02T00:01:00.12345Z\",\n    \"owner\": {\n      \"id\": {},\n      \"email\": {},\n      \"type\": \"user\"\n    },\n    \"account\": {\n      \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n      \"name\": \"Demo Account\"\n    },\n    \"permissions\": [\n      \"#zone:read\",\n      \"#zone:edit\"\n    ],\n    \"plan\": {\n      \"id\": \"e592fd9519420ba7405e1307bff33214\",\n      \"name\": \"Pro Plan\",\n      \"price\": 20,\n      \"currency\": \"USD\",\n      \"frequency\": \"monthly\",\n      \"legacy_id\": \"pro\",\n      \"is_subscribed\": true,\n      \"can_subscribe\": true\n    },\n    \"plan_pending\": {\n      \"id\": \"e592fd9519420ba7405e1307bff33214\",\n      \"name\": \"Pro Plan\",\n      \"price\": 20,\n      \"currency\": \"USD\",\n      \"frequency\": \"monthly\",\n      \"legacy_id\": \"pro\",\n      \"is_subscribed\": true,\n      \"can_subscribe\": true\n    },\n    \"status\": \"active\",\n    \"paused\": false,\n    \"type\": \"full\",\n    \"name_servers\": [\n      \"tony.ns.cloudflare.com\",\n      \"woz.ns.cloudflare.com\"\n    ]\n  }\n}"
+		},
+		{
+			"title": "Zone to Step 3",
+			"rel": "tag:cloudflare.com,2017:status",
+			"href": "zones/{#/definitions/identifier}/step3",
+			"method": "PATCH",
+			"cfOwnership": "www",
+			"cfPrivate": true,
+			"html_id": "zone-zone-to-step-3",
+			"uri": "zones/:identifier/step3",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/step3\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"zone_to_step3\":true}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"zone_to_step3": {
+						"example": "true",
+						"description": "A flag that indicates that a zone should be step 3 of the signup process",
+						"enum": [
+							true
+						]
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"zone_to_step3"
+				],
+				"objects": [],
+				"example": "{\n  \"zone_to_step3\": true\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"name\": \"example.com\",\n    \"development_mode\": 7200,\n    \"original_name_servers\": [\n      \"ns1.originaldnshost.com\",\n      \"ns2.originaldnshost.com\"\n    ],\n    \"original_registrar\": \"GoDaddy\",\n    \"original_dnshost\": \"NameCheap\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"activated_on\": \"2014-01-02T00:01:00.12345Z\",\n    \"owner\": {\n      \"id\": {},\n      \"email\": {},\n      \"type\": \"user\"\n    },\n    \"account\": {\n      \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n      \"name\": \"Demo Account\"\n    },\n    \"permissions\": [\n      \"#zone:read\",\n      \"#zone:edit\"\n    ],\n    \"plan\": {\n      \"id\": \"e592fd9519420ba7405e1307bff33214\",\n      \"name\": \"Pro Plan\",\n      \"price\": 20,\n      \"currency\": \"USD\",\n      \"frequency\": \"monthly\",\n      \"legacy_id\": \"pro\",\n      \"is_subscribed\": true,\n      \"can_subscribe\": true\n    },\n    \"plan_pending\": {\n      \"id\": \"e592fd9519420ba7405e1307bff33214\",\n      \"name\": \"Pro Plan\",\n      \"price\": 20,\n      \"currency\": \"USD\",\n      \"frequency\": \"monthly\",\n      \"legacy_id\": \"pro\",\n      \"is_subscribed\": true,\n      \"can_subscribe\": true\n    },\n    \"status\": \"active\",\n    \"paused\": false,\n    \"type\": \"full\",\n    \"name_servers\": [\n      \"tony.ns.cloudflare.com\",\n      \"woz.ns.cloudflare.com\"\n    ]\n  }\n}"
+		},
+		{
+			"title": "Purge All Files",
+			"description": "Remove ALL files from Cloudflare's cache",
+			"rel": "tag:cloudflare.com,2017:cache",
+			"href": "zones/{#/definitions/identifier}/purge_cache",
+			"method": "POST",
+			"cfOwnership": "cache",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#cache_purge:edit"
+				]
+			},
+			"html_id": "zone-purge-all-files",
+			"uri": "zones/:identifier/purge_cache",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/purge_cache\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"purge_everything\":true}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"purge_everything": {
+						"example": "true",
+						"description": "A flag that indicates all resources in Cloudflare's cache should be removed. Note: This may have dramatic affects on your origin server load after performing this action.",
+						"enum": [
+							true
+						]
+					}
+				},
+				"required_props": [
+					"purge_everything"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"purge_everything\": true\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\"\n  }\n}"
+		},
+		{
+			"title": "Purge Files by URL",
+			"description": "Granularly remove one or more files from Cloudflare's cache either by specifying URLs. All tiers can purge by URL, however, FREE can only purge 1000 URLs per minute.\n\nTo purge files with custom cache keys, include the headers used to compute the cache key as in the example. To purge files with ${geo} or ${devicetype} in their cache keys, include the CF-Device-Type or CF-IPCountry headers.\n\n**NB:** When including the Origin header, be sure to include the **scheme** and **hostname**. The port number can be omitted if it is the default port (80 for http, 443 for https), but must be included otherwise.",
+			"rel": "tag:cloudflare.com,2017:cache",
+			"href": "zones/{#/definitions/identifier}/purge_cache",
+			"method": "POST",
+			"cfOwnership": "cache",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#cache_purge:edit"
+				]
+			},
+			"html_id": "zone-purge-files-by-url",
+			"uri": "zones/:identifier/purge_cache",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/purge_cache\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"files\":[\"http://www.example.com/css/styles.css\",{\"url\":\"http://www.example.com/cat_picture.jpg\",\"headers\":{\"Origin\":\"https://www.cloudflare.com\",\"CF-IPCountry\":\"US\",\"CF-Device-Type\":\"desktop\"}}]}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"files": {
+						"type": "array",
+						"example": "[\n  \"http://www.example.com/css/styles.css\",\n  {\n    \"url\": \"http://www.example.com/cat_picture.jpg\",\n    \"headers\": {\n      \"Origin\": \"https://www.cloudflare.com\",\n      \"CF-IPCountry\": \"US\",\n      \"CF-Device-Type\": \"desktop\"\n    }\n  }\n]",
+						"description": "An array of URLs that should be removed from cache",
+						"items": {
+							"type": "string",
+							"format": "url"
+						},
+						"maxLength": 30
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"files"
+				],
+				"objects": [],
+				"example": "{\n  \"files\": [\n    \"http://www.example.com/css/styles.css\",\n    {\n      \"url\": \"http://www.example.com/cat_picture.jpg\",\n      \"headers\": {\n        \"Origin\": \"https://www.cloudflare.com\",\n        \"CF-IPCountry\": \"US\",\n        \"CF-Device-Type\": \"desktop\"\n      }\n    }\n  ]\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\"\n  }\n}"
+		},
+		{
+			"title": "Purge Files by Cache-Tags, Host or Prefix",
+			"description": "Granularly remove one or more files from Cloudflare's cache either by specifying the host, the associated Cache-Tag, or a Prefix.\n\n**NB:** Cache-Tag, host and prefix purging each have a rate limit of 30,000 purge API calls in every 24 hour period. You may purge up to 30 tags, hosts, or prefixes in one API call. This rate limit can be raised for customers who need to purge at higher volume.",
+			"rel": "tag:cloudflare.com,2017:cache",
+			"href": "zones/{#/definitions/identifier}/purge_cache",
+			"method": "POST",
+			"cfOwnership": "cache",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#cache_purge:edit"
+				]
+			},
+			"html_id": "zone-purge-files-by-cache-tags,-host-or-prefix",
+			"uri": "zones/:identifier/purge_cache",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/purge_cache\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"tags\":[\"some-tag\",\"another-tag\"],\"hosts\":[\"www.example.com\",\"images.example.com\"],\"prefixes\":[\"www.example.com/foo\",\"images.example.com/bar/baz\"]}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"tags": {
+						"type": "array",
+						"example": "[\n  \"some-tag\",\n  \"another-tag\"\n]",
+						"description": "Any assets served with a Cache-Tag header that matches one of the provided values will be purged from the Cloudflare cache",
+						"items": {
+							"type": "string"
+						},
+						"maxLength": 30
+					},
+					"hosts": {
+						"type": "array",
+						"example": "[\n  \"www.example.com\",\n  \"images.example.com\"\n]",
+						"description": "Any assets at URLs with a host that matches one of the provided values will be purged from the Cloudflare cache",
+						"items": {
+							"type": "string"
+						},
+						"maxLength": 30
+					},
+					"prefixes": {
+						"type": "array",
+						"example": "[\n  \"www.example.com/foo\",\n  \"images.example.com/bar/baz\"\n]",
+						"description": "Any assets at URLs that match the prefix will be purged from the Cloudflare cache. For instance, a.com/b will purge a.com/b/c/d.png but not a.com/bc.png. The prefixes a.com/b and a.com/b/c are redundant.",
+						"items": {
+							"type": "string"
+						},
+						"maxLength": 30
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"tags",
+					"hosts",
+					"prefixes"
+				],
+				"objects": [],
+				"example": "{\n  \"tags\": [\n    \"some-tag\",\n    \"another-tag\"\n  ],\n  \"hosts\": [\n    \"www.example.com\",\n    \"images.example.com\"\n  ],\n  \"prefixes\": [\n    \"www.example.com/foo\",\n    \"images.example.com/bar/baz\"\n  ]\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\"\n  }\n}"
+		}
+	],
+	"cfLinkErrors": {
+		"1000": "Invalid or missing user",
+		"1001": "Invalid zone identifier",
+		"1002": "Invalid domain",
+		"1003": "'jump_start' must be boolean",
+		"1006": "Invalid or missing zone",
+		"1008": "Invalid or missing Zone id",
+		"1010": "Bulk deal limit reached",
+		"1012": "Request must contain one of 'purge_everything', 'files', 'tags', 'hosts' or 'prefixes'",
+		"1013": "'purge_everything' must be true",
+		"1014": "'files', 'tags', 'hosts' or 'prefixes' must be an array",
+		"1015": "Unable to purge <url>",
+		"1016": "Unable to purge any urls",
+		"1017": "Unable to purge all",
+		"1018": "Invalid zone status",
+		"1019": "Zone is already paused",
+		"1020": "Invalid or missing zone",
+		"1021": "Invalid zone status",
+		"1022": "Zone is already unpaused",
+		"1023": "Invalid or missing zone",
+		"1049": "<domain> is not a registered domain",
+		"1050": "<domain> is currently being tasted. It is not currently a registered domain",
+		"1051": "Cloudflare is already hosting <domain>",
+		"1052": "An error has occurred and it has been logged. We will fix this problem promptly. We apologize for the inconvenience",
+		"1055": "Failed to disable <domain>",
+		"1056": "preserve_ini must be a boolean",
+		"1057": "Zone must be in 'initializing' status",
+		"1059": "Unable to delete zone",
+		"1061": "<domain> already exists",
+		"1064": "Not allowed to update zone step. Bad zone status",
+		"1065": "Not allowed to update zone step. Zone has already been set up",
+		"1066": "Could not promote zone to step 3",
+		"1067": "Invalid organization identifier passed in your organization variable",
+		"1068": "Permission denied",
+		"1069": "organization variable should be an organization object",
+		"1070": "This operation requires a Business or Enterprise account.",
+		"1071": "Vanity name server array expected.",
+		"1073": "A name server provided is in the wrong format.",
+		"1074": "Could not find a valid zone.",
+		"1075": "Vanity name server array count is invalid",
+		"1076": "Name servers have invalid IP addresses",
+		"1077": "Could not find a valid zone.",
+		"1078": "This zone has no valid vanity IPs.",
+		"1079": "This zone has no valid vanity name servers.",
+		"1080": "There is a conflict with one of the name servers.",
+		"1081": "There are no valid vanity name servers to disable.",
+		"1082": "Unable to purge '<url>'. You can only purge files for this zone",
+		"1083": "Unable to purge '<url>'. Rate limit reached. Please wait if you need to perform more operations",
+		"1084": "Unable to purge '<url>', which is an invalid URL.",
+		"1085": "Only one property can be updated at a time",
+		"1086": "Invalid property",
+		"1088": "Invalid/Missing Zone plan ID",
+		"1089": "Invalid/Missing Zone plan ID",
+		"1092": "Request cannot contain 'purge_everything' and any of 'files', 'tags', 'hosts' or 'prefixes'",
+		"1094": "Exceeded maximum amount of files that can be purged on a single request for your plan type.",
+		"1095": "Sorry, you do not have access to purge cache for that zone id or that zone id is invalid",
+		"1096": "This action is not available as your zone has been deactivated for a possible Terms of Service violation",
+		"1097": "This web property cannot be added to Cloudflare at this time. If you are an Enterprise customer, please contact your Customer Success Manager. Otherwise, please email abusereply@cloudflare.com with the name of the web property and a detailed explanation of your association with this web property.",
+		"1098": "This web property is temporarily restricted from being added to Cloudflare at this time. Please try again later, or contact Cloudflare Support with any questions.",
+		"1099": "We were unable to identify <domain> as a registered domain. Please ensure you are providing the root domain and not any subdomains (e.g., example.com, not subdomain.example.com)",
+		"1100": "Tag exceeds maximum length of 1024 characters",
+		"1101": "Exceeded maximum amount of 30 tags that can be purged on a single request",
+		"1102": "Unable to purge by tag, rate limit reached. Please wait if you need to perform more",
+		"1104": "Partial zone signup not allowed",
+		"1105": "This web property is temporarily restricted from being added to Cloudflare at this time. Please try again later, or contact Cloudflare Support with any questions.",
+		"1106": "Sorry, you are not allowed to create new zones. Please contact support.",
+		"1107": "Only enterprise zones can purge by tag.",
+		"1108": "Unable to update domain subscription. Please contact support for assistance.",
+		"1109": "Unable to update domain subscription. Please contact support for assistance.",
+		"1110": "Failed to lookup registrar and hosting information of <domain> at this time. Please contact Cloudflare Support or try again later.",
+		"1111": "Exceeded maximum amount of 30 hosts that can be purged on a single request",
+		"1112": "Only enterprise zones can purge by host",
+		"1113": "Unable to purge by host, rate limit reached. Please wait if you need to perform more operations.",
+		"1114": "Host exceeds maximum length of 200 characters",
+		"1115": "Invalid host",
+		"1116": "No prefixes were provided in the request. Must provide at least 1 prefixes.",
+		"1117": "Exceeded maximum amount of 30 prefixes that can be purged on a single request.",
+		"1118": "Empty prefix provided. Prefixes must not be empty.",
+		"1119": "URI scheme provided in prefix '<prefix>'. URI schemes must not be provided.",
+		"1120": "URI host was not provided in prefix '<prefix>'. Host must be provided in each prefix.",
+		"1121": "URI host in prefix '<prefix>' exceeds maximum length of 200 characters.",
+		"1122": "URI host in prefix '<prefix>' has a segment exceeding maximum length of 63 characters.",
+		"1123": "URI Query string was provided in prefix '<prefix>'. Query strings must not be provided.",
+		"1124": "URI fragment was provided in prefix '<prefix>'. Fragments must not be provided.",
+		"1125": "URI host in prefix '<prefix>' is not a domain. Host must be a valid domain or IPV4 address.",
+		"1126": "URI host in prefix '<prefix>' contains an invalid top level domain.",
+		"1127": "Invalid prefix '<prefix>'. Invalid Url.",
+		"1128": "Prefix '<prefix>' overlaps with another prefix. Prefixes must not be redundant.",
+		"1129": "Could not purge prefix '<prefix>'. Internal error.",
+		"1130": "Only enterprise zones can purge by prefix.",
+		"1131": "Unable to purge by prefix, rate limit reached. Please wait if you need to perform more operations",
+		"1132": "Unable to purge '<url>'. Resized images cannot be purged. Purge the original image instead.",
+		"1133": "Path too deep in '<prefix>', maximum path depth is 31.",
+		"1134": "Unable to purge '<url>'. URL headers must not contain reserved cf header: '<header name>'.",
+		"1135": "Unable to purge: '<url>'. URL contains a newline.",
+		"1136": "Unable to purge: '<url>'. URL has invalid scheme \"<scheme>\".",
+		"1137": "Unable to purge: '<url>'. URL host is too long.",
+		"1138": "Unable to purge: '<url>'. URL host has a zero-length label.",
+		"1139": "Unable to purge: '<url>'. Host has a label exceeding '<max host label length>' characters.",
+		"1140": "Unable to purge: '<url>'. Host contains invalid top level domain: '<top level domain>'.",
+		"1141": "Unable to purge: '<url>'. Host is an invalid domain.",
+		"1142": "Unable to purge '<url>', cdn-cgi endpoints cannot be purged."
+	},
+	"html_id": "zone",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"023e105f4ecef8ad9ca31a8372d0c353\"",
+				"description": "Zone identifier tag",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"name": {
+				"type": "string",
+				"example": "\"example.com\"",
+				"description": "The domain name",
+				"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
+				"maxLength": 253,
+				"readOnly": true
+			},
+			"development_mode": {
+				"type": "number",
+				"example": "7200",
+				"description": "The interval (in seconds) from when development mode expires (positive integer) or last expired (negative integer) for the domain. If development mode has never been enabled, this value is 0.",
+				"readOnly": true
+			},
+			"original_name_servers": {
+				"type": [
+					"array",
+					"null"
+				],
+				"example": "[\n  \"ns1.originaldnshost.com\",\n  \"ns2.originaldnshost.com\"\n]",
+				"cfNotes": "Is this only available for full zones?",
+				"description": "Original name servers before moving to Cloudflare",
+				"items": {
+					"type": "string",
+					"format": "hostname"
+				},
+				"readOnly": true
+			},
+			"original_registrar": {
+				"type": [
+					"string",
+					"null"
+				],
+				"example": "\"GoDaddy\"",
+				"description": "Registrar for the domain at the time of switching to Cloudflare",
+				"readOnly": true
+			},
+			"original_dnshost": {
+				"type": [
+					"string",
+					"null"
+				],
+				"example": "\"NameCheap\"",
+				"description": "DNS host at the time of switching to Cloudflare",
+				"maxLength": 50,
+				"readOnly": true
+			},
+			"created_on": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"description": "When the zone was created",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"modified_on": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"description": "When the zone was last modified",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"activated_on": {
+				"type": [
+					"string",
+					"null"
+				],
+				"example": "\"2014-01-02T00:01:00.12345Z\"",
+				"description": "The last time proof of ownership was detected and the zone was made active",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"owner": {
+				"type": "object",
+				"example": "{\n  \"id\": {},\n  \"email\": {},\n  \"type\": \"user\"\n}",
+				"oneOf": [
+					{
+						"all_props": {
+							"id": {
+								"example": "{}",
+								"oneOf": [
+									{
+										"all_props": {},
+										"required_props": [],
+										"optional_props": [],
+										"objects": [],
+										"example": "{}"
+									},
+									{
+										"all_props": {},
+										"required_props": [],
+										"optional_props": [],
+										"objects": [],
+										"example": "\"7c5dae5552338874e5053f2534d2767a\"",
+										"description": "User identifier tag"
+									}
+								]
+							},
+							"email": {
+								"example": "{}",
+								"oneOf": [
+									{
+										"all_props": {},
+										"required_props": [],
+										"optional_props": [],
+										"objects": [],
+										"example": "{}"
+									},
+									{
+										"all_props": {},
+										"required_props": [],
+										"optional_props": [],
+										"objects": [],
+										"example": "\"user@example.com\"",
+										"description": "Your contact email address"
+									}
+								]
+							},
+							"type": {
+								"example": "\"user\"",
+								"description": "The type of owner of the zone",
+								"enum": [
+									"user"
+								],
+								"readOnly": true
+							}
+						},
+						"required_props": [],
+						"optional_props": [
+							"id",
+							"email",
+							"type"
+						],
+						"objects": [],
+						"example": "{\n  \"id\": {},\n  \"email\": {},\n  \"type\": \"user\"\n}",
+						"description": "A user that owns the zone"
+					},
+					{
+						"all_props": {
+							"id": {
+								"type": "string",
+								"example": "\"01a7362d577a6c3019a474fd6f485823\"",
+								"description": "Organization identifier tag",
+								"maxLength": 32,
+								"readOnly": true
+							},
+							"name": {
+								"type": "string",
+								"example": "\"Cloudflare, Inc.\"",
+								"description": "Organization Name",
+								"maxLength": 100
+							},
+							"type": {
+								"example": "\"organization\"",
+								"description": "The type of owner of the zone",
+								"enum": [
+									"organization"
+								],
+								"readOnly": true
+							}
+						},
+						"required_props": [],
+						"optional_props": [
+							"id",
+							"name",
+							"type"
+						],
+						"objects": [],
+						"example": "{\n  \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n  \"name\": \"Cloudflare, Inc.\",\n  \"type\": \"organization\"\n}",
+						"description": "An organization that owns the zone"
+					}
+				],
+				"description": "Information about the owner of the zone"
+			},
+			"account": {
+				"type": "object",
+				"example": "{\n  \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n  \"name\": \"Demo Account\"\n}",
+				"properties": {
+					"id": {
+						"type": "string",
+						"example": "\"01a7362d577a6c3019a474fd6f485823\"",
+						"description": "Account identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"name": {
+						"type": "string",
+						"example": "\"Demo Account\"",
+						"description": "Account name",
+						"maxLength": 100
+					}
+				},
+				"description": "Information about the account the zone belongs to"
+			},
+			"permissions": {
+				"type": "array",
+				"example": "[\n  \"#zone:read\",\n  \"#zone:edit\"\n]",
+				"description": "Available permissions on the zone for the current user requesting the item",
+				"items": {
+					"type": "string"
+				},
+				"readOnly": true
+			},
+			"plan": {
+				"type": "object",
+				"example": "{\n  \"id\": \"e592fd9519420ba7405e1307bff33214\",\n  \"name\": \"Pro Plan\",\n  \"price\": 20,\n  \"currency\": \"USD\",\n  \"frequency\": \"monthly\",\n  \"legacy_id\": \"pro\",\n  \"is_subscribed\": true,\n  \"can_subscribe\": true\n}",
+				"properties": {
+					"id": {
+						"type": "string",
+						"example": "\"e592fd9519420ba7405e1307bff33214\"",
+						"description": "Plan identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"name": {
+						"type": "string",
+						"example": "\"Pro Plan\"",
+						"description": "The plan name",
+						"maxLength": 80,
+						"readOnly": true
+					},
+					"price": {
+						"type": "number",
+						"example": "20",
+						"description": "The price of the subscription that will be billed, in US dollars",
+						"readOnly": true
+					},
+					"currency": {
+						"type": "string",
+						"example": "\"USD\"",
+						"description": "The monetary unit in which pricing information is displayed",
+						"readOnly": true
+					},
+					"frequency": {
+						"type": "string",
+						"example": "\"monthly\"",
+						"description": "The frequency at which you will be billed for this plan",
+						"enum": [
+							"weekly",
+							"monthly",
+							"quarterly",
+							"yearly",
+							""
+						],
+						"readOnly": true
+					},
+					"legacy_id": {
+						"example": "\"pro\"",
+						"description": "A 'friendly' identifier to indicate to the UI what plan the object is",
+						"enum": [
+							"free",
+							"pro",
+							"business",
+							"enterprise"
+						]
+					},
+					"is_subscribed": {
+						"type": "boolean",
+						"example": "true",
+						"description": "If the zone is subscribed to this plan"
+					},
+					"can_subscribe": {
+						"type": "boolean",
+						"example": "true",
+						"description": "If the zone is allowed to subscribe to this plan"
+					}
+				},
+				"id": "https://api.cloudflare.com/schemas/v4/common/zone/plan.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"title": "Zone Plan",
+				"description": "A zone plan",
+				"allOf": [
+					{
+						"id": "https://api.cloudflare.com/schemas/v4/common/plan.json",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"title": "Cloudflare Plan",
+						"description": "Abstract Cloudflare plan",
+						"type": "object",
+						"properties": {
+							"id": {
+								"description": "Plan identifier tag",
+								"type": "string",
+								"maxLength": 32,
+								"readOnly": true,
+								"example": "e592fd9519420ba7405e1307bff33214"
+							},
+							"name": {
+								"description": "The plan name",
+								"type": "string",
+								"maxLength": 80,
+								"readOnly": true,
+								"example": "Pro Plan"
+							},
+							"price": {
+								"description": "The price of the subscription that will be billed, in US dollars",
+								"type": "number",
+								"readOnly": true,
+								"example": 20
+							},
+							"currency": {
+								"description": "The monetary unit in which pricing information is displayed",
+								"type": "string",
+								"readOnly": true,
+								"example": "USD"
+							},
+							"frequency": {
+								"description": "The frequency at which you will be billed for this plan",
+								"type": "string",
+								"enum": [
+									"weekly",
+									"monthly",
+									"quarterly",
+									"yearly",
+									""
+								],
+								"readOnly": true,
+								"example": "monthly"
+							}
+						},
+						"definitions": {
+							"identifier": {
+								"description": "Plan identifier tag",
+								"type": "string",
+								"maxLength": 32,
+								"readOnly": true,
+								"example": "e592fd9519420ba7405e1307bff33214"
+							},
+							"name": {
+								"description": "The plan name",
+								"type": "string",
+								"maxLength": 80,
+								"readOnly": true,
+								"example": "Pro Plan"
+							},
+							"price": {
+								"description": "The price of the subscription that will be billed, in US dollars",
+								"type": "number",
+								"readOnly": true,
+								"example": 20
+							},
+							"currency": {
+								"description": "The monetary unit in which pricing information is displayed",
+								"type": "string",
+								"readOnly": true,
+								"example": "USD"
+							},
+							"frequency": {
+								"description": "The frequency at which you will be billed for this plan",
+								"type": "string",
+								"enum": [
+									"weekly",
+									"monthly",
+									"quarterly",
+									"yearly",
+									""
+								],
+								"readOnly": true,
+								"example": "monthly"
+							}
+						}
+					},
+					{
+						"type": "object",
+						"properties": {
+							"legacy_id": {
+								"description": "A 'friendly' identifier to indicate to the UI what plan the object is",
+								"enum": [
+									"free",
+									"pro",
+									"business",
+									"enterprise"
+								],
+								"example": "pro"
+							},
+							"is_subscribed": {
+								"description": "If the zone is subscribed to this plan",
+								"type": "boolean",
+								"example": true
+							},
+							"can_subscribe": {
+								"description": "If the zone is allowed to subscribe to this plan",
+								"type": "boolean",
+								"example": true
+							}
+						}
+					}
+				],
+				"definitions": {
+					"identifier": {
+						"description": "Plan identifier tag",
+						"type": "string",
+						"maxLength": 32,
+						"readOnly": true,
+						"example": "e592fd9519420ba7405e1307bff33214"
+					},
+					"zone_identifier": {
+						"description": "Zone identifier tag",
+						"type": "string",
+						"maxLength": 32,
+						"readOnly": true,
+						"example": "023e105f4ecef8ad9ca31a8372d0c353"
+					},
+					"base": {
+						"type": "object",
+						"properties": {
+							"legacy_id": {
+								"description": "A 'friendly' identifier to indicate to the UI what plan the object is",
+								"enum": [
+									"free",
+									"pro",
+									"business",
+									"enterprise"
+								],
+								"example": "pro"
+							},
+							"is_subscribed": {
+								"description": "If the zone is subscribed to this plan",
+								"type": "boolean",
+								"example": true
+							},
+							"can_subscribe": {
+								"description": "If the zone is allowed to subscribe to this plan",
+								"type": "boolean",
+								"example": true
+							}
+						}
+					},
+					"plan_response_single": {
+						"allOf": [
+							{
+								"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
+								"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+								"description": "Schema for an API response from Cloudflare that contains a single result object",
+								"type": "object",
+								"allOf": [
+									{
+										"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
+										"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+										"description": "Common schema for all Cloudflare v4 API responses",
+										"type": "object",
+										"required": [
+											"success",
+											"errors",
+											"messages",
+											"result"
+										],
+										"oneOf": [
+											{
+												"$comment": "This subschema describes successful responses",
+												"properties": {
+													"success": {
+														"description": "Whether the API call was successful or not",
+														"type": "boolean",
+														"enum": [
+															true
+														],
+														"example": true
+													},
+													"errors": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"required": [
+																"code",
+																"message"
+															],
+															"properties": {
+																"code": {
+																	"type": "integer",
+																	"minimum": 1000
+																},
+																"message": {
+																	"type": "string"
+																}
+															},
+															"uniqueItems": true
+														},
+														"example": []
+													},
+													"messages": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"required": [
+																"code",
+																"message"
+															],
+															"properties": {
+																"code": {
+																	"type": "integer",
+																	"minimum": 1000
+																},
+																"message": {
+																	"type": "string"
+																}
+															},
+															"uniqueItems": true
+														},
+														"example": []
+													},
+													"result": {
+														"type": [
+															"object",
+															"array",
+															"string"
+														]
+													}
+												}
+											},
+											{
+												"$comment": "This subschema describes failure responses",
+												"properties": {
+													"success": {
+														"description": "Whether the API call was successful or not",
+														"type": "boolean",
+														"enum": [
+															false
+														],
+														"example": false
+													},
+													"errors": {
+														"allOf": [
+															{
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"required": [
+																		"code",
+																		"message"
+																	],
+																	"properties": {
+																		"code": {
+																			"type": "integer",
+																			"minimum": 1000
+																		},
+																		"message": {
+																			"type": "string"
+																		}
+																	},
+																	"uniqueItems": true
+																},
+																"example": []
+															}
+														],
+														"minLength": 1,
+														"example": [
+															{
+																"code": 7003,
+																"message": "No route for the URI"
+															}
+														]
+													},
+													"messages": {
+														"allOf": [
+															{
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"required": [
+																		"code",
+																		"message"
+																	],
+																	"properties": {
+																		"code": {
+																			"type": "integer",
+																			"minimum": 1000
+																		},
+																		"message": {
+																			"type": "string"
+																		}
+																	},
+																	"uniqueItems": true
+																},
+																"example": []
+															}
+														],
+														"example": []
+													},
+													"result": {
+														"type": "null",
+														"enum": [
+															null
+														],
+														"example": null
+													}
+												}
+											}
+										],
+										"definitions": {
+											"messages": {
+												"type": "array",
+												"items": {
+													"type": "object",
+													"required": [
+														"code",
+														"message"
+													],
+													"properties": {
+														"code": {
+															"type": "integer",
+															"minimum": 1000
+														},
+														"message": {
+															"type": "string"
+														}
+													},
+													"uniqueItems": true
+												},
+												"example": []
+											}
+										}
+									},
+									{
+										"properties": {
+											"result": {
+												"type": [
+													"object",
+													"string",
+													"null"
+												]
+											}
+										}
+									}
+								]
+							},
+							{
+								"type": "object",
+								"properties": {
+									"result": {
+										"type": "object",
+										"cfRecurse": ""
+									}
+								}
+							}
+						]
+					},
+					"plan_change_response_single": {
+						"allOf": [
+							{
+								"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
+								"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+								"description": "Schema for an API response from Cloudflare that contains a single result object",
+								"type": "object",
+								"allOf": [
+									{
+										"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
+										"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+										"description": "Common schema for all Cloudflare v4 API responses",
+										"type": "object",
+										"required": [
+											"success",
+											"errors",
+											"messages",
+											"result"
+										],
+										"oneOf": [
+											{
+												"$comment": "This subschema describes successful responses",
+												"properties": {
+													"success": {
+														"description": "Whether the API call was successful or not",
+														"type": "boolean",
+														"enum": [
+															true
+														],
+														"example": true
+													},
+													"errors": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"required": [
+																"code",
+																"message"
+															],
+															"properties": {
+																"code": {
+																	"type": "integer",
+																	"minimum": 1000
+																},
+																"message": {
+																	"type": "string"
+																}
+															},
+															"uniqueItems": true
+														},
+														"example": []
+													},
+													"messages": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"required": [
+																"code",
+																"message"
+															],
+															"properties": {
+																"code": {
+																	"type": "integer",
+																	"minimum": 1000
+																},
+																"message": {
+																	"type": "string"
+																}
+															},
+															"uniqueItems": true
+														},
+														"example": []
+													},
+													"result": {
+														"type": [
+															"object",
+															"array",
+															"string"
+														]
+													}
+												}
+											},
+											{
+												"$comment": "This subschema describes failure responses",
+												"properties": {
+													"success": {
+														"description": "Whether the API call was successful or not",
+														"type": "boolean",
+														"enum": [
+															false
+														],
+														"example": false
+													},
+													"errors": {
+														"allOf": [
+															{
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"required": [
+																		"code",
+																		"message"
+																	],
+																	"properties": {
+																		"code": {
+																			"type": "integer",
+																			"minimum": 1000
+																		},
+																		"message": {
+																			"type": "string"
+																		}
+																	},
+																	"uniqueItems": true
+																},
+																"example": []
+															}
+														],
+														"minLength": 1,
+														"example": [
+															{
+																"code": 7003,
+																"message": "No route for the URI"
+															}
+														]
+													},
+													"messages": {
+														"allOf": [
+															{
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"required": [
+																		"code",
+																		"message"
+																	],
+																	"properties": {
+																		"code": {
+																			"type": "integer",
+																			"minimum": 1000
+																		},
+																		"message": {
+																			"type": "string"
+																		}
+																	},
+																	"uniqueItems": true
+																},
+																"example": []
+															}
+														],
+														"example": []
+													},
+													"result": {
+														"type": "null",
+														"enum": [
+															null
+														],
+														"example": null
+													}
+												}
+											}
+										],
+										"definitions": {
+											"messages": {
+												"type": "array",
+												"items": {
+													"type": "object",
+													"required": [
+														"code",
+														"message"
+													],
+													"properties": {
+														"code": {
+															"type": "integer",
+															"minimum": 1000
+														},
+														"message": {
+															"type": "string"
+														}
+													},
+													"uniqueItems": true
+												},
+												"example": []
+											}
+										}
+									},
+									{
+										"properties": {
+											"result": {
+												"type": [
+													"object",
+													"string",
+													"null"
+												]
+											}
+										}
+									}
+								]
+							},
+							{
+								"type": "object",
+								"properties": {
+									"result": {
+										"type": "object",
+										"cfRecurse": ""
+									},
+									"subscriptions": {
+										"type": "array",
+										"items": {
+											"id": "https://api.cloudflare.com/schemas/v4/common/user/billing/subscription/zone.json",
+											"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+											"title": "Zone Subscription",
+											"description": "A plan subscription associated with a zone",
+											"type": "object",
+											"allOf": [
+												{
+													"id": "https://api.cloudflare.com/schemas/v4/common/subscription.json",
+													"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+													"title": "Subscription",
+													"description": "A base subscription object",
+													"type": "object",
+													"required": [
+														"id",
+														"name",
+														"status",
+														"price",
+														"currency",
+														"frequency",
+														"activated_on",
+														"created_on"
+													],
+													"properties": {
+														"id": {
+															"description": "Subscription identifier tag",
+															"type": "string",
+															"maxLength": 32,
+															"readOnly": true,
+															"example": "506e3185e9c882d175a2d0cb0093d9f2"
+														},
+														"status": {
+															"description": "The state of the subscription",
+															"enum": [
+																"active",
+																"expired",
+																"cancelled"
+															],
+															"readOnly": true,
+															"example": "active"
+														},
+														"price": {
+															"description": "The price of the subscription that will be billed, in US dollars",
+															"type": "number",
+															"readOnly": true,
+															"example": 20
+														},
+														"currency": {
+															"description": "The monetary unit in which pricing information is displayed",
+															"type": "string",
+															"readOnly": true,
+															"example": "USD"
+														},
+														"frequency": {
+															"description": "How often the subscription is renewed automatically",
+															"enum": [
+																"weeks",
+																"months",
+																"years"
+															],
+															"readOnly": true,
+															"example": "months"
+														},
+														"plan": {
+															"id": "https://api.cloudflare.com/schemas/v4/common/plan.json",
+															"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+															"title": "Cloudflare Plan",
+															"description": "Abstract Cloudflare plan",
+															"type": "object",
+															"properties": {
+																"id": {
+																	"description": "Plan identifier tag",
+																	"type": "string",
+																	"maxLength": 32,
+																	"readOnly": true,
+																	"example": "e592fd9519420ba7405e1307bff33214"
+																},
+																"name": {
+																	"description": "The plan name",
+																	"type": "string",
+																	"maxLength": 80,
+																	"readOnly": true,
+																	"example": "Pro Plan"
+																},
+																"price": {
+																	"description": "The price of the subscription that will be billed, in US dollars",
+																	"type": "number",
+																	"readOnly": true,
+																	"example": 20
+																},
+																"currency": {
+																	"description": "The monetary unit in which pricing information is displayed",
+																	"type": "string",
+																	"readOnly": true,
+																	"example": "USD"
+																},
+																"frequency": {
+																	"description": "The frequency at which you will be billed for this plan",
+																	"type": "string",
+																	"enum": [
+																		"weekly",
+																		"monthly",
+																		"quarterly",
+																		"yearly",
+																		""
+																	],
+																	"readOnly": true,
+																	"example": "monthly"
+																}
+															},
+															"definitions": {
+																"identifier": {
+																	"description": "Plan identifier tag",
+																	"type": "string",
+																	"maxLength": 32,
+																	"readOnly": true,
+																	"example": "e592fd9519420ba7405e1307bff33214"
+																},
+																"name": {
+																	"description": "The plan name",
+																	"type": "string",
+																	"maxLength": 80,
+																	"readOnly": true,
+																	"example": "Pro Plan"
+																},
+																"price": {
+																	"description": "The price of the subscription that will be billed, in US dollars",
+																	"type": "number",
+																	"readOnly": true,
+																	"example": 20
+																},
+																"currency": {
+																	"description": "The monetary unit in which pricing information is displayed",
+																	"type": "string",
+																	"readOnly": true,
+																	"example": "USD"
+																},
+																"frequency": {
+																	"description": "The frequency at which you will be billed for this plan",
+																	"type": "string",
+																	"enum": [
+																		"weekly",
+																		"monthly",
+																		"quarterly",
+																		"yearly",
+																		""
+																	],
+																	"readOnly": true,
+																	"example": "monthly"
+																}
+															}
+														},
+														"activated_on": {
+															"description": "When the subscription was activated",
+															"type": "string",
+															"format": "date-time",
+															"readOnly": true,
+															"example": "2014-03-01T12:20:00Z"
+														},
+														"cancelled_on": {
+															"description": "When the subscription was cancelled",
+															"type": "string",
+															"format": "date-time",
+															"readOnly": true,
+															"example": "2014-04-01T12:20:00Z"
+														},
+														"expired_on": {
+															"description": "When the subscription expired",
+															"type": "string",
+															"format": "date-time",
+															"readOnly": true,
+															"example": "2014-04-02T12:20:00Z"
+														},
+														"expires_on": {
+															"description": "When the subscription will expire",
+															"type": "string",
+															"format": "date-time",
+															"readOnly": true,
+															"example": "2014-03-31T12:20:00Z"
+														},
+														"renewed_on": {
+															"description": "When the subscription was renewed",
+															"type": "string",
+															"format": "date-time",
+															"readOnly": true,
+															"example": "2014-05-11T12:20:00Z"
+														},
+														"created_on": {
+															"description": "When the subscription was initially created",
+															"type": "string",
+															"format": "date-time",
+															"readOnly": true,
+															"example": "2014-05-11T12:20:00Z"
+														}
+													},
+													"definitions": {
+														"identifier": {
+															"description": "Subscription identifier tag",
+															"type": "string",
+															"maxLength": 32,
+															"readOnly": true,
+															"example": "506e3185e9c882d175a2d0cb0093d9f2"
+														},
+														"label": {
+															"description": "The label for the subscription type",
+															"type": "string",
+															"maxLength": 80,
+															"example": "business"
+														},
+														"name": {
+															"description": "Name of the subscription",
+															"type": "string",
+															"maxLength": 80,
+															"readOnly": true,
+															"example": "Business Account"
+														},
+														"status": {
+															"description": "The state of the subscription",
+															"enum": [
+																"active",
+																"expired",
+																"cancelled"
+															],
+															"readOnly": true,
+															"example": "active"
+														},
+														"plan": {
+															"id": "https://api.cloudflare.com/schemas/v4/common/plan.json",
+															"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+															"title": "Cloudflare Plan",
+															"description": "Abstract Cloudflare plan",
+															"type": "object",
+															"properties": {
+																"id": {
+																	"description": "Plan identifier tag",
+																	"type": "string",
+																	"maxLength": 32,
+																	"readOnly": true,
+																	"example": "e592fd9519420ba7405e1307bff33214"
+																},
+																"name": {
+																	"description": "The plan name",
+																	"type": "string",
+																	"maxLength": 80,
+																	"readOnly": true,
+																	"example": "Pro Plan"
+																},
+																"price": {
+																	"description": "The price of the subscription that will be billed, in US dollars",
+																	"type": "number",
+																	"readOnly": true,
+																	"example": 20
+																},
+																"currency": {
+																	"description": "The monetary unit in which pricing information is displayed",
+																	"type": "string",
+																	"readOnly": true,
+																	"example": "USD"
+																},
+																"frequency": {
+																	"description": "The frequency at which you will be billed for this plan",
+																	"type": "string",
+																	"enum": [
+																		"weekly",
+																		"monthly",
+																		"quarterly",
+																		"yearly",
+																		""
+																	],
+																	"readOnly": true,
+																	"example": "monthly"
+																}
+															},
+															"definitions": {
+																"identifier": {
+																	"description": "Plan identifier tag",
+																	"type": "string",
+																	"maxLength": 32,
+																	"readOnly": true,
+																	"example": "e592fd9519420ba7405e1307bff33214"
+																},
+																"name": {
+																	"description": "The plan name",
+																	"type": "string",
+																	"maxLength": 80,
+																	"readOnly": true,
+																	"example": "Pro Plan"
+																},
+																"price": {
+																	"description": "The price of the subscription that will be billed, in US dollars",
+																	"type": "number",
+																	"readOnly": true,
+																	"example": 20
+																},
+																"currency": {
+																	"description": "The monetary unit in which pricing information is displayed",
+																	"type": "string",
+																	"readOnly": true,
+																	"example": "USD"
+																},
+																"frequency": {
+																	"description": "The frequency at which you will be billed for this plan",
+																	"type": "string",
+																	"enum": [
+																		"weekly",
+																		"monthly",
+																		"quarterly",
+																		"yearly",
+																		""
+																	],
+																	"readOnly": true,
+																	"example": "monthly"
+																}
+															}
+														},
+														"price": {
+															"description": "The price of the subscription that will be billed, in US dollars",
+															"type": "number",
+															"readOnly": true,
+															"example": 20
+														},
+														"currency": {
+															"description": "The monetary unit in which pricing information is displayed",
+															"type": "string",
+															"readOnly": true,
+															"example": "USD"
+														},
+														"frequency": {
+															"description": "How often the subscription is renewed automatically",
+															"enum": [
+																"weeks",
+																"months",
+																"years"
+															],
+															"readOnly": true,
+															"example": "months"
+														},
+														"activated_on": {
+															"description": "When the subscription was activated",
+															"type": "string",
+															"format": "date-time",
+															"readOnly": true,
+															"example": "2014-03-01T12:20:00Z"
+														},
+														"cancelled_on": {
+															"description": "When the subscription was cancelled",
+															"type": "string",
+															"format": "date-time",
+															"readOnly": true,
+															"example": "2014-04-01T12:20:00Z"
+														},
+														"expired_on": {
+															"description": "When the subscription expired",
+															"type": "string",
+															"format": "date-time",
+															"readOnly": true,
+															"example": "2014-04-02T12:20:00Z"
+														},
+														"expires_on": {
+															"description": "When the subscription will expire",
+															"type": "string",
+															"format": "date-time",
+															"readOnly": true,
+															"example": "2014-03-31T12:20:00Z"
+														},
+														"renewed_on": {
+															"description": "When the subscription was renewed",
+															"type": "string",
+															"format": "date-time",
+															"readOnly": true,
+															"example": "2014-05-11T12:20:00Z"
+														},
+														"created_on": {
+															"description": "When the subscription was initially created",
+															"type": "string",
+															"format": "date-time",
+															"readOnly": true,
+															"example": "2014-05-11T12:20:00Z"
+														}
+													}
+												},
+												{
+													"properties": {
+														"zone_id": {
+															"description": "Zone identifier tag",
+															"type": "string",
+															"maxLength": 32,
+															"readOnly": true,
+															"example": "023e105f4ecef8ad9ca31a8372d0c353"
+														},
+														"zone_name": {
+															"description": "The domain name",
+															"type": "string",
+															"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
+															"maxLength": 253,
+															"readOnly": true,
+															"example": "example.com"
+														}
+													}
+												}
+											],
+											"definitions": {
+												"identifier": {
+													"description": "Subscription identifier tag",
+													"type": "string",
+													"maxLength": 32,
+													"readOnly": true,
+													"example": "506e3185e9c882d175a2d0cb0093d9f2"
+												},
+												"base": {
+													"properties": {
+														"zone_id": {
+															"description": "Zone identifier tag",
+															"type": "string",
+															"maxLength": 32,
+															"readOnly": true,
+															"example": "023e105f4ecef8ad9ca31a8372d0c353"
+														},
+														"zone_name": {
+															"description": "The domain name",
+															"type": "string",
+															"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
+															"maxLength": 253,
+															"readOnly": true,
+															"example": "example.com"
+														}
+													}
+												},
+												"zone_subscription_response_single": {
+													"allOf": [
+														{
+															"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
+															"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+															"description": "Schema for an API response from Cloudflare that contains a single result object",
+															"type": "object",
+															"allOf": [
+																{
+																	"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
+																	"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+																	"description": "Common schema for all Cloudflare v4 API responses",
+																	"type": "object",
+																	"required": [
+																		"success",
+																		"errors",
+																		"messages",
+																		"result"
+																	],
+																	"oneOf": [
+																		{
+																			"$comment": "This subschema describes successful responses",
+																			"properties": {
+																				"success": {
+																					"description": "Whether the API call was successful or not",
+																					"type": "boolean",
+																					"enum": [
+																						true
+																					],
+																					"example": true
+																				},
+																				"errors": {
+																					"type": "array",
+																					"items": {
+																						"type": "object",
+																						"required": [
+																							"code",
+																							"message"
+																						],
+																						"properties": {
+																							"code": {
+																								"type": "integer",
+																								"minimum": 1000
+																							},
+																							"message": {
+																								"type": "string"
+																							}
+																						},
+																						"uniqueItems": true
+																					},
+																					"example": []
+																				},
+																				"messages": {
+																					"type": "array",
+																					"items": {
+																						"type": "object",
+																						"required": [
+																							"code",
+																							"message"
+																						],
+																						"properties": {
+																							"code": {
+																								"type": "integer",
+																								"minimum": 1000
+																							},
+																							"message": {
+																								"type": "string"
+																							}
+																						},
+																						"uniqueItems": true
+																					},
+																					"example": []
+																				},
+																				"result": {
+																					"type": [
+																						"object",
+																						"array",
+																						"string"
+																					]
+																				}
+																			}
+																		},
+																		{
+																			"$comment": "This subschema describes failure responses",
+																			"properties": {
+																				"success": {
+																					"description": "Whether the API call was successful or not",
+																					"type": "boolean",
+																					"enum": [
+																						false
+																					],
+																					"example": false
+																				},
+																				"errors": {
+																					"allOf": [
+																						{
+																							"type": "array",
+																							"items": {
+																								"type": "object",
+																								"required": [
+																									"code",
+																									"message"
+																								],
+																								"properties": {
+																									"code": {
+																										"type": "integer",
+																										"minimum": 1000
+																									},
+																									"message": {
+																										"type": "string"
+																									}
+																								},
+																								"uniqueItems": true
+																							},
+																							"example": []
+																						}
+																					],
+																					"minLength": 1,
+																					"example": [
+																						{
+																							"code": 7003,
+																							"message": "No route for the URI"
+																						}
+																					]
+																				},
+																				"messages": {
+																					"allOf": [
+																						{
+																							"type": "array",
+																							"items": {
+																								"type": "object",
+																								"required": [
+																									"code",
+																									"message"
+																								],
+																								"properties": {
+																									"code": {
+																										"type": "integer",
+																										"minimum": 1000
+																									},
+																									"message": {
+																										"type": "string"
+																									}
+																								},
+																								"uniqueItems": true
+																							},
+																							"example": []
+																						}
+																					],
+																					"example": []
+																				},
+																				"result": {
+																					"type": "null",
+																					"enum": [
+																						null
+																					],
+																					"example": null
+																				}
+																			}
+																		}
+																	],
+																	"definitions": {
+																		"messages": {
+																			"type": "array",
+																			"items": {
+																				"type": "object",
+																				"required": [
+																					"code",
+																					"message"
+																				],
+																				"properties": {
+																					"code": {
+																						"type": "integer",
+																						"minimum": 1000
+																					},
+																					"message": {
+																						"type": "string"
+																					}
+																				},
+																				"uniqueItems": true
+																			},
+																			"example": []
+																		}
+																	}
+																},
+																{
+																	"properties": {
+																		"result": {
+																			"type": [
+																				"object",
+																				"string",
+																				"null"
+																			]
+																		}
+																	}
+																}
+															]
+														},
+														{
+															"type": "object",
+															"properties": {
+																"result": {
+																	"type": "object",
+																	"cfRecurse": ""
+																}
+															}
+														}
+													]
+												},
+												"zone_subscription_response_collection": {
+													"allOf": [
+														{
+															"id": "https://api.cloudflare.com/schemas/v4/common/api-response-collection.json",
+															"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+															"description": "Schema for an API response from Cloudflare that contains multiple result objects",
+															"type": "object",
+															"anyOf": [
+																{
+																	"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
+																	"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+																	"description": "Common schema for all Cloudflare v4 API responses",
+																	"type": "object",
+																	"required": [
+																		"success",
+																		"errors",
+																		"messages",
+																		"result"
+																	],
+																	"oneOf": [
+																		{
+																			"$comment": "This subschema describes successful responses",
+																			"properties": {
+																				"success": {
+																					"description": "Whether the API call was successful or not",
+																					"type": "boolean",
+																					"enum": [
+																						true
+																					],
+																					"example": true
+																				},
+																				"errors": {
+																					"type": "array",
+																					"items": {
+																						"type": "object",
+																						"required": [
+																							"code",
+																							"message"
+																						],
+																						"properties": {
+																							"code": {
+																								"type": "integer",
+																								"minimum": 1000
+																							},
+																							"message": {
+																								"type": "string"
+																							}
+																						},
+																						"uniqueItems": true
+																					},
+																					"example": []
+																				},
+																				"messages": {
+																					"type": "array",
+																					"items": {
+																						"type": "object",
+																						"required": [
+																							"code",
+																							"message"
+																						],
+																						"properties": {
+																							"code": {
+																								"type": "integer",
+																								"minimum": 1000
+																							},
+																							"message": {
+																								"type": "string"
+																							}
+																						},
+																						"uniqueItems": true
+																					},
+																					"example": []
+																				},
+																				"result": {
+																					"type": [
+																						"object",
+																						"array",
+																						"string"
+																					]
+																				}
+																			}
+																		},
+																		{
+																			"$comment": "This subschema describes failure responses",
+																			"properties": {
+																				"success": {
+																					"description": "Whether the API call was successful or not",
+																					"type": "boolean",
+																					"enum": [
+																						false
+																					],
+																					"example": false
+																				},
+																				"errors": {
+																					"allOf": [
+																						{
+																							"type": "array",
+																							"items": {
+																								"type": "object",
+																								"required": [
+																									"code",
+																									"message"
+																								],
+																								"properties": {
+																									"code": {
+																										"type": "integer",
+																										"minimum": 1000
+																									},
+																									"message": {
+																										"type": "string"
+																									}
+																								},
+																								"uniqueItems": true
+																							},
+																							"example": []
+																						}
+																					],
+																					"minLength": 1,
+																					"example": [
+																						{
+																							"code": 7003,
+																							"message": "No route for the URI"
+																						}
+																					]
+																				},
+																				"messages": {
+																					"allOf": [
+																						{
+																							"type": "array",
+																							"items": {
+																								"type": "object",
+																								"required": [
+																									"code",
+																									"message"
+																								],
+																								"properties": {
+																									"code": {
+																										"type": "integer",
+																										"minimum": 1000
+																									},
+																									"message": {
+																										"type": "string"
+																									}
+																								},
+																								"uniqueItems": true
+																							},
+																							"example": []
+																						}
+																					],
+																					"example": []
+																				},
+																				"result": {
+																					"type": "null",
+																					"enum": [
+																						null
+																					],
+																					"example": null
+																				}
+																			}
+																		}
+																	],
+																	"definitions": {
+																		"messages": {
+																			"type": "array",
+																			"items": {
+																				"type": "object",
+																				"required": [
+																					"code",
+																					"message"
+																				],
+																				"properties": {
+																					"code": {
+																						"type": "integer",
+																						"minimum": 1000
+																					},
+																					"message": {
+																						"type": "string"
+																					}
+																				},
+																				"uniqueItems": true
+																			},
+																			"example": []
+																		}
+																	}
+																},
+																{
+																	"properties": {
+																		"result": {
+																			"type": [
+																				"array",
+																				"null"
+																			]
+																		},
+																		"result_info": {
+																			"type": "object",
+																			"properties": {
+																				"page": {
+																					"description": "Current page within paginated list of results",
+																					"type": "number",
+																					"example": 1
+																				},
+																				"per_page": {
+																					"description": "Number of results per page of results",
+																					"type": "number",
+																					"example": 20
+																				},
+																				"count": {
+																					"description": "Total results returned based on your search parameters",
+																					"type": "number",
+																					"example": 1
+																				},
+																				"total_count": {
+																					"description": "Total results available without any search parameters",
+																					"type": "number",
+																					"example": 2000
+																				}
+																			}
+																		}
+																	}
+																}
+															],
+															"definitions": {
+																"params": {
+																	"type": "object",
+																	"properties": {
+																		"page": {
+																			"description": "Requested page within paginated list of results",
+																			"type": "number",
+																			"example": 1
+																		},
+																		"per_page": {
+																			"description": "Maximum number of results requested",
+																			"type": "number",
+																			"example": 20
+																		}
+																	}
+																},
+																"result_info": {
+																	"type": "object",
+																	"properties": {
+																		"page": {
+																			"description": "Current page within paginated list of results",
+																			"type": "number",
+																			"example": 1
+																		},
+																		"per_page": {
+																			"description": "Number of results per page of results",
+																			"type": "number",
+																			"example": 20
+																		},
+																		"count": {
+																			"description": "Total results returned based on your search parameters",
+																			"type": "number",
+																			"example": 1
+																		},
+																		"total_count": {
+																			"description": "Total results available without any search parameters",
+																			"type": "number",
+																			"example": 2000
+																		}
+																	}
+																}
+															}
+														},
+														{
+															"properties": {
+																"result": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"cfRecurse": ""
+																	}
+																}
+															}
+														}
+													]
+												}
+											}
+										}
+									}
+								}
+							}
+						]
+					},
+					"plan_response_collection": {
+						"allOf": [
+							{
+								"id": "https://api.cloudflare.com/schemas/v4/common/api-response-collection.json",
+								"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+								"description": "Schema for an API response from Cloudflare that contains multiple result objects",
+								"type": "object",
+								"anyOf": [
+									{
+										"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
+										"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+										"description": "Common schema for all Cloudflare v4 API responses",
+										"type": "object",
+										"required": [
+											"success",
+											"errors",
+											"messages",
+											"result"
+										],
+										"oneOf": [
+											{
+												"$comment": "This subschema describes successful responses",
+												"properties": {
+													"success": {
+														"description": "Whether the API call was successful or not",
+														"type": "boolean",
+														"enum": [
+															true
+														],
+														"example": true
+													},
+													"errors": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"required": [
+																"code",
+																"message"
+															],
+															"properties": {
+																"code": {
+																	"type": "integer",
+																	"minimum": 1000
+																},
+																"message": {
+																	"type": "string"
+																}
+															},
+															"uniqueItems": true
+														},
+														"example": []
+													},
+													"messages": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"required": [
+																"code",
+																"message"
+															],
+															"properties": {
+																"code": {
+																	"type": "integer",
+																	"minimum": 1000
+																},
+																"message": {
+																	"type": "string"
+																}
+															},
+															"uniqueItems": true
+														},
+														"example": []
+													},
+													"result": {
+														"type": [
+															"object",
+															"array",
+															"string"
+														]
+													}
+												}
+											},
+											{
+												"$comment": "This subschema describes failure responses",
+												"properties": {
+													"success": {
+														"description": "Whether the API call was successful or not",
+														"type": "boolean",
+														"enum": [
+															false
+														],
+														"example": false
+													},
+													"errors": {
+														"allOf": [
+															{
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"required": [
+																		"code",
+																		"message"
+																	],
+																	"properties": {
+																		"code": {
+																			"type": "integer",
+																			"minimum": 1000
+																		},
+																		"message": {
+																			"type": "string"
+																		}
+																	},
+																	"uniqueItems": true
+																},
+																"example": []
+															}
+														],
+														"minLength": 1,
+														"example": [
+															{
+																"code": 7003,
+																"message": "No route for the URI"
+															}
+														]
+													},
+													"messages": {
+														"allOf": [
+															{
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"required": [
+																		"code",
+																		"message"
+																	],
+																	"properties": {
+																		"code": {
+																			"type": "integer",
+																			"minimum": 1000
+																		},
+																		"message": {
+																			"type": "string"
+																		}
+																	},
+																	"uniqueItems": true
+																},
+																"example": []
+															}
+														],
+														"example": []
+													},
+													"result": {
+														"type": "null",
+														"enum": [
+															null
+														],
+														"example": null
+													}
+												}
+											}
+										],
+										"definitions": {
+											"messages": {
+												"type": "array",
+												"items": {
+													"type": "object",
+													"required": [
+														"code",
+														"message"
+													],
+													"properties": {
+														"code": {
+															"type": "integer",
+															"minimum": 1000
+														},
+														"message": {
+															"type": "string"
+														}
+													},
+													"uniqueItems": true
+												},
+												"example": []
+											}
+										}
+									},
+									{
+										"properties": {
+											"result": {
+												"type": [
+													"array",
+													"null"
+												]
+											},
+											"result_info": {
+												"type": "object",
+												"properties": {
+													"page": {
+														"description": "Current page within paginated list of results",
+														"type": "number",
+														"example": 1
+													},
+													"per_page": {
+														"description": "Number of results per page of results",
+														"type": "number",
+														"example": 20
+													},
+													"count": {
+														"description": "Total results returned based on your search parameters",
+														"type": "number",
+														"example": 1
+													},
+													"total_count": {
+														"description": "Total results available without any search parameters",
+														"type": "number",
+														"example": 2000
+													}
+												}
+											}
+										}
+									}
+								],
+								"definitions": {
+									"params": {
+										"type": "object",
+										"properties": {
+											"page": {
+												"description": "Requested page within paginated list of results",
+												"type": "number",
+												"example": 1
+											},
+											"per_page": {
+												"description": "Maximum number of results requested",
+												"type": "number",
+												"example": 20
+											}
+										}
+									},
+									"result_info": {
+										"type": "object",
+										"properties": {
+											"page": {
+												"description": "Current page within paginated list of results",
+												"type": "number",
+												"example": 1
+											},
+											"per_page": {
+												"description": "Number of results per page of results",
+												"type": "number",
+												"example": 20
+											},
+											"count": {
+												"description": "Total results returned based on your search parameters",
+												"type": "number",
+												"example": 1
+											},
+											"total_count": {
+												"description": "Total results available without any search parameters",
+												"type": "number",
+												"example": 2000
+											}
+										}
+									}
+								}
+							},
+							{
+								"properties": {
+									"result": {
+										"type": "array",
+										"items": {
+											"cfRecurse": ""
+										}
+									}
+								}
+							}
+						]
+					}
+				}
+			},
+			"plan_pending": {
+				"type": "object",
+				"example": "{\n  \"id\": \"e592fd9519420ba7405e1307bff33214\",\n  \"name\": \"Pro Plan\",\n  \"price\": 20,\n  \"currency\": \"USD\",\n  \"frequency\": \"monthly\",\n  \"legacy_id\": \"pro\",\n  \"is_subscribed\": true,\n  \"can_subscribe\": true\n}",
+				"properties": {
+					"id": {
+						"type": "string",
+						"example": "\"e592fd9519420ba7405e1307bff33214\"",
+						"description": "Plan identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"name": {
+						"type": "string",
+						"example": "\"Pro Plan\"",
+						"description": "The plan name",
+						"maxLength": 80,
+						"readOnly": true
+					},
+					"price": {
+						"type": "number",
+						"example": "20",
+						"description": "The price of the subscription that will be billed, in US dollars",
+						"readOnly": true
+					},
+					"currency": {
+						"type": "string",
+						"example": "\"USD\"",
+						"description": "The monetary unit in which pricing information is displayed",
+						"readOnly": true
+					},
+					"frequency": {
+						"type": "string",
+						"example": "\"monthly\"",
+						"description": "The frequency at which you will be billed for this plan",
+						"enum": [
+							"weekly",
+							"monthly",
+							"quarterly",
+							"yearly",
+							""
+						],
+						"readOnly": true
+					},
+					"legacy_id": {
+						"example": "\"pro\"",
+						"description": "A 'friendly' identifier to indicate to the UI what plan the object is",
+						"enum": [
+							"free",
+							"pro",
+							"business",
+							"enterprise"
+						]
+					},
+					"is_subscribed": {
+						"type": "boolean",
+						"example": "true",
+						"description": "If the zone is subscribed to this plan"
+					},
+					"can_subscribe": {
+						"type": "boolean",
+						"example": "true",
+						"description": "If the zone is allowed to subscribe to this plan"
+					}
+				},
+				"id": "https://api.cloudflare.com/schemas/v4/common/zone/plan.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"title": "Zone Plan",
+				"description": "A zone plan",
+				"allOf": [
+					{
+						"id": "https://api.cloudflare.com/schemas/v4/common/plan.json",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"title": "Cloudflare Plan",
+						"description": "Abstract Cloudflare plan",
+						"type": "object",
+						"properties": {
+							"id": {
+								"description": "Plan identifier tag",
+								"type": "string",
+								"maxLength": 32,
+								"readOnly": true,
+								"example": "e592fd9519420ba7405e1307bff33214"
+							},
+							"name": {
+								"description": "The plan name",
+								"type": "string",
+								"maxLength": 80,
+								"readOnly": true,
+								"example": "Pro Plan"
+							},
+							"price": {
+								"description": "The price of the subscription that will be billed, in US dollars",
+								"type": "number",
+								"readOnly": true,
+								"example": 20
+							},
+							"currency": {
+								"description": "The monetary unit in which pricing information is displayed",
+								"type": "string",
+								"readOnly": true,
+								"example": "USD"
+							},
+							"frequency": {
+								"description": "The frequency at which you will be billed for this plan",
+								"type": "string",
+								"enum": [
+									"weekly",
+									"monthly",
+									"quarterly",
+									"yearly",
+									""
+								],
+								"readOnly": true,
+								"example": "monthly"
+							}
+						},
+						"definitions": {
+							"identifier": {
+								"description": "Plan identifier tag",
+								"type": "string",
+								"maxLength": 32,
+								"readOnly": true,
+								"example": "e592fd9519420ba7405e1307bff33214"
+							},
+							"name": {
+								"description": "The plan name",
+								"type": "string",
+								"maxLength": 80,
+								"readOnly": true,
+								"example": "Pro Plan"
+							},
+							"price": {
+								"description": "The price of the subscription that will be billed, in US dollars",
+								"type": "number",
+								"readOnly": true,
+								"example": 20
+							},
+							"currency": {
+								"description": "The monetary unit in which pricing information is displayed",
+								"type": "string",
+								"readOnly": true,
+								"example": "USD"
+							},
+							"frequency": {
+								"description": "The frequency at which you will be billed for this plan",
+								"type": "string",
+								"enum": [
+									"weekly",
+									"monthly",
+									"quarterly",
+									"yearly",
+									""
+								],
+								"readOnly": true,
+								"example": "monthly"
+							}
+						}
+					},
+					{
+						"type": "object",
+						"properties": {
+							"legacy_id": {
+								"description": "A 'friendly' identifier to indicate to the UI what plan the object is",
+								"enum": [
+									"free",
+									"pro",
+									"business",
+									"enterprise"
+								],
+								"example": "pro"
+							},
+							"is_subscribed": {
+								"description": "If the zone is subscribed to this plan",
+								"type": "boolean",
+								"example": true
+							},
+							"can_subscribe": {
+								"description": "If the zone is allowed to subscribe to this plan",
+								"type": "boolean",
+								"example": true
+							}
+						}
+					}
+				],
+				"definitions": {
+					"identifier": {
+						"description": "Plan identifier tag",
+						"type": "string",
+						"maxLength": 32,
+						"readOnly": true,
+						"example": "e592fd9519420ba7405e1307bff33214"
+					},
+					"zone_identifier": {
+						"description": "Zone identifier tag",
+						"type": "string",
+						"maxLength": 32,
+						"readOnly": true,
+						"example": "023e105f4ecef8ad9ca31a8372d0c353"
+					},
+					"base": {
+						"type": "object",
+						"properties": {
+							"legacy_id": {
+								"description": "A 'friendly' identifier to indicate to the UI what plan the object is",
+								"enum": [
+									"free",
+									"pro",
+									"business",
+									"enterprise"
+								],
+								"example": "pro"
+							},
+							"is_subscribed": {
+								"description": "If the zone is subscribed to this plan",
+								"type": "boolean",
+								"example": true
+							},
+							"can_subscribe": {
+								"description": "If the zone is allowed to subscribe to this plan",
+								"type": "boolean",
+								"example": true
+							}
+						}
+					},
+					"plan_response_single": {
+						"allOf": [
+							{
+								"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
+								"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+								"description": "Schema for an API response from Cloudflare that contains a single result object",
+								"type": "object",
+								"allOf": [
+									{
+										"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
+										"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+										"description": "Common schema for all Cloudflare v4 API responses",
+										"type": "object",
+										"required": [
+											"success",
+											"errors",
+											"messages",
+											"result"
+										],
+										"oneOf": [
+											{
+												"$comment": "This subschema describes successful responses",
+												"properties": {
+													"success": {
+														"description": "Whether the API call was successful or not",
+														"type": "boolean",
+														"enum": [
+															true
+														],
+														"example": true
+													},
+													"errors": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"required": [
+																"code",
+																"message"
+															],
+															"properties": {
+																"code": {
+																	"type": "integer",
+																	"minimum": 1000
+																},
+																"message": {
+																	"type": "string"
+																}
+															},
+															"uniqueItems": true
+														},
+														"example": []
+													},
+													"messages": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"required": [
+																"code",
+																"message"
+															],
+															"properties": {
+																"code": {
+																	"type": "integer",
+																	"minimum": 1000
+																},
+																"message": {
+																	"type": "string"
+																}
+															},
+															"uniqueItems": true
+														},
+														"example": []
+													},
+													"result": {
+														"type": [
+															"object",
+															"array",
+															"string"
+														]
+													}
+												}
+											},
+											{
+												"$comment": "This subschema describes failure responses",
+												"properties": {
+													"success": {
+														"description": "Whether the API call was successful or not",
+														"type": "boolean",
+														"enum": [
+															false
+														],
+														"example": false
+													},
+													"errors": {
+														"allOf": [
+															{
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"required": [
+																		"code",
+																		"message"
+																	],
+																	"properties": {
+																		"code": {
+																			"type": "integer",
+																			"minimum": 1000
+																		},
+																		"message": {
+																			"type": "string"
+																		}
+																	},
+																	"uniqueItems": true
+																},
+																"example": []
+															}
+														],
+														"minLength": 1,
+														"example": [
+															{
+																"code": 7003,
+																"message": "No route for the URI"
+															}
+														]
+													},
+													"messages": {
+														"allOf": [
+															{
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"required": [
+																		"code",
+																		"message"
+																	],
+																	"properties": {
+																		"code": {
+																			"type": "integer",
+																			"minimum": 1000
+																		},
+																		"message": {
+																			"type": "string"
+																		}
+																	},
+																	"uniqueItems": true
+																},
+																"example": []
+															}
+														],
+														"example": []
+													},
+													"result": {
+														"type": "null",
+														"enum": [
+															null
+														],
+														"example": null
+													}
+												}
+											}
+										],
+										"definitions": {
+											"messages": {
+												"type": "array",
+												"items": {
+													"type": "object",
+													"required": [
+														"code",
+														"message"
+													],
+													"properties": {
+														"code": {
+															"type": "integer",
+															"minimum": 1000
+														},
+														"message": {
+															"type": "string"
+														}
+													},
+													"uniqueItems": true
+												},
+												"example": []
+											}
+										}
+									},
+									{
+										"properties": {
+											"result": {
+												"type": [
+													"object",
+													"string",
+													"null"
+												]
+											}
+										}
+									}
+								]
+							},
+							{
+								"type": "object",
+								"properties": {
+									"result": {
+										"type": "object",
+										"cfRecurse": ""
+									}
+								}
+							}
+						]
+					},
+					"plan_change_response_single": {
+						"allOf": [
+							{
+								"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
+								"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+								"description": "Schema for an API response from Cloudflare that contains a single result object",
+								"type": "object",
+								"allOf": [
+									{
+										"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
+										"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+										"description": "Common schema for all Cloudflare v4 API responses",
+										"type": "object",
+										"required": [
+											"success",
+											"errors",
+											"messages",
+											"result"
+										],
+										"oneOf": [
+											{
+												"$comment": "This subschema describes successful responses",
+												"properties": {
+													"success": {
+														"description": "Whether the API call was successful or not",
+														"type": "boolean",
+														"enum": [
+															true
+														],
+														"example": true
+													},
+													"errors": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"required": [
+																"code",
+																"message"
+															],
+															"properties": {
+																"code": {
+																	"type": "integer",
+																	"minimum": 1000
+																},
+																"message": {
+																	"type": "string"
+																}
+															},
+															"uniqueItems": true
+														},
+														"example": []
+													},
+													"messages": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"required": [
+																"code",
+																"message"
+															],
+															"properties": {
+																"code": {
+																	"type": "integer",
+																	"minimum": 1000
+																},
+																"message": {
+																	"type": "string"
+																}
+															},
+															"uniqueItems": true
+														},
+														"example": []
+													},
+													"result": {
+														"type": [
+															"object",
+															"array",
+															"string"
+														]
+													}
+												}
+											},
+											{
+												"$comment": "This subschema describes failure responses",
+												"properties": {
+													"success": {
+														"description": "Whether the API call was successful or not",
+														"type": "boolean",
+														"enum": [
+															false
+														],
+														"example": false
+													},
+													"errors": {
+														"allOf": [
+															{
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"required": [
+																		"code",
+																		"message"
+																	],
+																	"properties": {
+																		"code": {
+																			"type": "integer",
+																			"minimum": 1000
+																		},
+																		"message": {
+																			"type": "string"
+																		}
+																	},
+																	"uniqueItems": true
+																},
+																"example": []
+															}
+														],
+														"minLength": 1,
+														"example": [
+															{
+																"code": 7003,
+																"message": "No route for the URI"
+															}
+														]
+													},
+													"messages": {
+														"allOf": [
+															{
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"required": [
+																		"code",
+																		"message"
+																	],
+																	"properties": {
+																		"code": {
+																			"type": "integer",
+																			"minimum": 1000
+																		},
+																		"message": {
+																			"type": "string"
+																		}
+																	},
+																	"uniqueItems": true
+																},
+																"example": []
+															}
+														],
+														"example": []
+													},
+													"result": {
+														"type": "null",
+														"enum": [
+															null
+														],
+														"example": null
+													}
+												}
+											}
+										],
+										"definitions": {
+											"messages": {
+												"type": "array",
+												"items": {
+													"type": "object",
+													"required": [
+														"code",
+														"message"
+													],
+													"properties": {
+														"code": {
+															"type": "integer",
+															"minimum": 1000
+														},
+														"message": {
+															"type": "string"
+														}
+													},
+													"uniqueItems": true
+												},
+												"example": []
+											}
+										}
+									},
+									{
+										"properties": {
+											"result": {
+												"type": [
+													"object",
+													"string",
+													"null"
+												]
+											}
+										}
+									}
+								]
+							},
+							{
+								"type": "object",
+								"properties": {
+									"result": {
+										"type": "object",
+										"cfRecurse": ""
+									},
+									"subscriptions": {
+										"type": "array",
+										"items": {
+											"id": "https://api.cloudflare.com/schemas/v4/common/user/billing/subscription/zone.json",
+											"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+											"title": "Zone Subscription",
+											"description": "A plan subscription associated with a zone",
+											"type": "object",
+											"allOf": [
+												{
+													"id": "https://api.cloudflare.com/schemas/v4/common/subscription.json",
+													"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+													"title": "Subscription",
+													"description": "A base subscription object",
+													"type": "object",
+													"required": [
+														"id",
+														"name",
+														"status",
+														"price",
+														"currency",
+														"frequency",
+														"activated_on",
+														"created_on"
+													],
+													"properties": {
+														"id": {
+															"description": "Subscription identifier tag",
+															"type": "string",
+															"maxLength": 32,
+															"readOnly": true,
+															"example": "506e3185e9c882d175a2d0cb0093d9f2"
+														},
+														"status": {
+															"description": "The state of the subscription",
+															"enum": [
+																"active",
+																"expired",
+																"cancelled"
+															],
+															"readOnly": true,
+															"example": "active"
+														},
+														"price": {
+															"description": "The price of the subscription that will be billed, in US dollars",
+															"type": "number",
+															"readOnly": true,
+															"example": 20
+														},
+														"currency": {
+															"description": "The monetary unit in which pricing information is displayed",
+															"type": "string",
+															"readOnly": true,
+															"example": "USD"
+														},
+														"frequency": {
+															"description": "How often the subscription is renewed automatically",
+															"enum": [
+																"weeks",
+																"months",
+																"years"
+															],
+															"readOnly": true,
+															"example": "months"
+														},
+														"plan": {
+															"id": "https://api.cloudflare.com/schemas/v4/common/plan.json",
+															"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+															"title": "Cloudflare Plan",
+															"description": "Abstract Cloudflare plan",
+															"type": "object",
+															"properties": {
+																"id": {
+																	"description": "Plan identifier tag",
+																	"type": "string",
+																	"maxLength": 32,
+																	"readOnly": true,
+																	"example": "e592fd9519420ba7405e1307bff33214"
+																},
+																"name": {
+																	"description": "The plan name",
+																	"type": "string",
+																	"maxLength": 80,
+																	"readOnly": true,
+																	"example": "Pro Plan"
+																},
+																"price": {
+																	"description": "The price of the subscription that will be billed, in US dollars",
+																	"type": "number",
+																	"readOnly": true,
+																	"example": 20
+																},
+																"currency": {
+																	"description": "The monetary unit in which pricing information is displayed",
+																	"type": "string",
+																	"readOnly": true,
+																	"example": "USD"
+																},
+																"frequency": {
+																	"description": "The frequency at which you will be billed for this plan",
+																	"type": "string",
+																	"enum": [
+																		"weekly",
+																		"monthly",
+																		"quarterly",
+																		"yearly",
+																		""
+																	],
+																	"readOnly": true,
+																	"example": "monthly"
+																}
+															},
+															"definitions": {
+																"identifier": {
+																	"description": "Plan identifier tag",
+																	"type": "string",
+																	"maxLength": 32,
+																	"readOnly": true,
+																	"example": "e592fd9519420ba7405e1307bff33214"
+																},
+																"name": {
+																	"description": "The plan name",
+																	"type": "string",
+																	"maxLength": 80,
+																	"readOnly": true,
+																	"example": "Pro Plan"
+																},
+																"price": {
+																	"description": "The price of the subscription that will be billed, in US dollars",
+																	"type": "number",
+																	"readOnly": true,
+																	"example": 20
+																},
+																"currency": {
+																	"description": "The monetary unit in which pricing information is displayed",
+																	"type": "string",
+																	"readOnly": true,
+																	"example": "USD"
+																},
+																"frequency": {
+																	"description": "The frequency at which you will be billed for this plan",
+																	"type": "string",
+																	"enum": [
+																		"weekly",
+																		"monthly",
+																		"quarterly",
+																		"yearly",
+																		""
+																	],
+																	"readOnly": true,
+																	"example": "monthly"
+																}
+															}
+														},
+														"activated_on": {
+															"description": "When the subscription was activated",
+															"type": "string",
+															"format": "date-time",
+															"readOnly": true,
+															"example": "2014-03-01T12:20:00Z"
+														},
+														"cancelled_on": {
+															"description": "When the subscription was cancelled",
+															"type": "string",
+															"format": "date-time",
+															"readOnly": true,
+															"example": "2014-04-01T12:20:00Z"
+														},
+														"expired_on": {
+															"description": "When the subscription expired",
+															"type": "string",
+															"format": "date-time",
+															"readOnly": true,
+															"example": "2014-04-02T12:20:00Z"
+														},
+														"expires_on": {
+															"description": "When the subscription will expire",
+															"type": "string",
+															"format": "date-time",
+															"readOnly": true,
+															"example": "2014-03-31T12:20:00Z"
+														},
+														"renewed_on": {
+															"description": "When the subscription was renewed",
+															"type": "string",
+															"format": "date-time",
+															"readOnly": true,
+															"example": "2014-05-11T12:20:00Z"
+														},
+														"created_on": {
+															"description": "When the subscription was initially created",
+															"type": "string",
+															"format": "date-time",
+															"readOnly": true,
+															"example": "2014-05-11T12:20:00Z"
+														}
+													},
+													"definitions": {
+														"identifier": {
+															"description": "Subscription identifier tag",
+															"type": "string",
+															"maxLength": 32,
+															"readOnly": true,
+															"example": "506e3185e9c882d175a2d0cb0093d9f2"
+														},
+														"label": {
+															"description": "The label for the subscription type",
+															"type": "string",
+															"maxLength": 80,
+															"example": "business"
+														},
+														"name": {
+															"description": "Name of the subscription",
+															"type": "string",
+															"maxLength": 80,
+															"readOnly": true,
+															"example": "Business Account"
+														},
+														"status": {
+															"description": "The state of the subscription",
+															"enum": [
+																"active",
+																"expired",
+																"cancelled"
+															],
+															"readOnly": true,
+															"example": "active"
+														},
+														"plan": {
+															"id": "https://api.cloudflare.com/schemas/v4/common/plan.json",
+															"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+															"title": "Cloudflare Plan",
+															"description": "Abstract Cloudflare plan",
+															"type": "object",
+															"properties": {
+																"id": {
+																	"description": "Plan identifier tag",
+																	"type": "string",
+																	"maxLength": 32,
+																	"readOnly": true,
+																	"example": "e592fd9519420ba7405e1307bff33214"
+																},
+																"name": {
+																	"description": "The plan name",
+																	"type": "string",
+																	"maxLength": 80,
+																	"readOnly": true,
+																	"example": "Pro Plan"
+																},
+																"price": {
+																	"description": "The price of the subscription that will be billed, in US dollars",
+																	"type": "number",
+																	"readOnly": true,
+																	"example": 20
+																},
+																"currency": {
+																	"description": "The monetary unit in which pricing information is displayed",
+																	"type": "string",
+																	"readOnly": true,
+																	"example": "USD"
+																},
+																"frequency": {
+																	"description": "The frequency at which you will be billed for this plan",
+																	"type": "string",
+																	"enum": [
+																		"weekly",
+																		"monthly",
+																		"quarterly",
+																		"yearly",
+																		""
+																	],
+																	"readOnly": true,
+																	"example": "monthly"
+																}
+															},
+															"definitions": {
+																"identifier": {
+																	"description": "Plan identifier tag",
+																	"type": "string",
+																	"maxLength": 32,
+																	"readOnly": true,
+																	"example": "e592fd9519420ba7405e1307bff33214"
+																},
+																"name": {
+																	"description": "The plan name",
+																	"type": "string",
+																	"maxLength": 80,
+																	"readOnly": true,
+																	"example": "Pro Plan"
+																},
+																"price": {
+																	"description": "The price of the subscription that will be billed, in US dollars",
+																	"type": "number",
+																	"readOnly": true,
+																	"example": 20
+																},
+																"currency": {
+																	"description": "The monetary unit in which pricing information is displayed",
+																	"type": "string",
+																	"readOnly": true,
+																	"example": "USD"
+																},
+																"frequency": {
+																	"description": "The frequency at which you will be billed for this plan",
+																	"type": "string",
+																	"enum": [
+																		"weekly",
+																		"monthly",
+																		"quarterly",
+																		"yearly",
+																		""
+																	],
+																	"readOnly": true,
+																	"example": "monthly"
+																}
+															}
+														},
+														"price": {
+															"description": "The price of the subscription that will be billed, in US dollars",
+															"type": "number",
+															"readOnly": true,
+															"example": 20
+														},
+														"currency": {
+															"description": "The monetary unit in which pricing information is displayed",
+															"type": "string",
+															"readOnly": true,
+															"example": "USD"
+														},
+														"frequency": {
+															"description": "How often the subscription is renewed automatically",
+															"enum": [
+																"weeks",
+																"months",
+																"years"
+															],
+															"readOnly": true,
+															"example": "months"
+														},
+														"activated_on": {
+															"description": "When the subscription was activated",
+															"type": "string",
+															"format": "date-time",
+															"readOnly": true,
+															"example": "2014-03-01T12:20:00Z"
+														},
+														"cancelled_on": {
+															"description": "When the subscription was cancelled",
+															"type": "string",
+															"format": "date-time",
+															"readOnly": true,
+															"example": "2014-04-01T12:20:00Z"
+														},
+														"expired_on": {
+															"description": "When the subscription expired",
+															"type": "string",
+															"format": "date-time",
+															"readOnly": true,
+															"example": "2014-04-02T12:20:00Z"
+														},
+														"expires_on": {
+															"description": "When the subscription will expire",
+															"type": "string",
+															"format": "date-time",
+															"readOnly": true,
+															"example": "2014-03-31T12:20:00Z"
+														},
+														"renewed_on": {
+															"description": "When the subscription was renewed",
+															"type": "string",
+															"format": "date-time",
+															"readOnly": true,
+															"example": "2014-05-11T12:20:00Z"
+														},
+														"created_on": {
+															"description": "When the subscription was initially created",
+															"type": "string",
+															"format": "date-time",
+															"readOnly": true,
+															"example": "2014-05-11T12:20:00Z"
+														}
+													}
+												},
+												{
+													"properties": {
+														"zone_id": {
+															"description": "Zone identifier tag",
+															"type": "string",
+															"maxLength": 32,
+															"readOnly": true,
+															"example": "023e105f4ecef8ad9ca31a8372d0c353"
+														},
+														"zone_name": {
+															"description": "The domain name",
+															"type": "string",
+															"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
+															"maxLength": 253,
+															"readOnly": true,
+															"example": "example.com"
+														}
+													}
+												}
+											],
+											"definitions": {
+												"identifier": {
+													"description": "Subscription identifier tag",
+													"type": "string",
+													"maxLength": 32,
+													"readOnly": true,
+													"example": "506e3185e9c882d175a2d0cb0093d9f2"
+												},
+												"base": {
+													"properties": {
+														"zone_id": {
+															"description": "Zone identifier tag",
+															"type": "string",
+															"maxLength": 32,
+															"readOnly": true,
+															"example": "023e105f4ecef8ad9ca31a8372d0c353"
+														},
+														"zone_name": {
+															"description": "The domain name",
+															"type": "string",
+															"pattern": "^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$",
+															"maxLength": 253,
+															"readOnly": true,
+															"example": "example.com"
+														}
+													}
+												},
+												"zone_subscription_response_single": {
+													"allOf": [
+														{
+															"id": "https://api.cloudflare.com/schemas/v4/common/api-response-single.json",
+															"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+															"description": "Schema for an API response from Cloudflare that contains a single result object",
+															"type": "object",
+															"allOf": [
+																{
+																	"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
+																	"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+																	"description": "Common schema for all Cloudflare v4 API responses",
+																	"type": "object",
+																	"required": [
+																		"success",
+																		"errors",
+																		"messages",
+																		"result"
+																	],
+																	"oneOf": [
+																		{
+																			"$comment": "This subschema describes successful responses",
+																			"properties": {
+																				"success": {
+																					"description": "Whether the API call was successful or not",
+																					"type": "boolean",
+																					"enum": [
+																						true
+																					],
+																					"example": true
+																				},
+																				"errors": {
+																					"type": "array",
+																					"items": {
+																						"type": "object",
+																						"required": [
+																							"code",
+																							"message"
+																						],
+																						"properties": {
+																							"code": {
+																								"type": "integer",
+																								"minimum": 1000
+																							},
+																							"message": {
+																								"type": "string"
+																							}
+																						},
+																						"uniqueItems": true
+																					},
+																					"example": []
+																				},
+																				"messages": {
+																					"type": "array",
+																					"items": {
+																						"type": "object",
+																						"required": [
+																							"code",
+																							"message"
+																						],
+																						"properties": {
+																							"code": {
+																								"type": "integer",
+																								"minimum": 1000
+																							},
+																							"message": {
+																								"type": "string"
+																							}
+																						},
+																						"uniqueItems": true
+																					},
+																					"example": []
+																				},
+																				"result": {
+																					"type": [
+																						"object",
+																						"array",
+																						"string"
+																					]
+																				}
+																			}
+																		},
+																		{
+																			"$comment": "This subschema describes failure responses",
+																			"properties": {
+																				"success": {
+																					"description": "Whether the API call was successful or not",
+																					"type": "boolean",
+																					"enum": [
+																						false
+																					],
+																					"example": false
+																				},
+																				"errors": {
+																					"allOf": [
+																						{
+																							"type": "array",
+																							"items": {
+																								"type": "object",
+																								"required": [
+																									"code",
+																									"message"
+																								],
+																								"properties": {
+																									"code": {
+																										"type": "integer",
+																										"minimum": 1000
+																									},
+																									"message": {
+																										"type": "string"
+																									}
+																								},
+																								"uniqueItems": true
+																							},
+																							"example": []
+																						}
+																					],
+																					"minLength": 1,
+																					"example": [
+																						{
+																							"code": 7003,
+																							"message": "No route for the URI"
+																						}
+																					]
+																				},
+																				"messages": {
+																					"allOf": [
+																						{
+																							"type": "array",
+																							"items": {
+																								"type": "object",
+																								"required": [
+																									"code",
+																									"message"
+																								],
+																								"properties": {
+																									"code": {
+																										"type": "integer",
+																										"minimum": 1000
+																									},
+																									"message": {
+																										"type": "string"
+																									}
+																								},
+																								"uniqueItems": true
+																							},
+																							"example": []
+																						}
+																					],
+																					"example": []
+																				},
+																				"result": {
+																					"type": "null",
+																					"enum": [
+																						null
+																					],
+																					"example": null
+																				}
+																			}
+																		}
+																	],
+																	"definitions": {
+																		"messages": {
+																			"type": "array",
+																			"items": {
+																				"type": "object",
+																				"required": [
+																					"code",
+																					"message"
+																				],
+																				"properties": {
+																					"code": {
+																						"type": "integer",
+																						"minimum": 1000
+																					},
+																					"message": {
+																						"type": "string"
+																					}
+																				},
+																				"uniqueItems": true
+																			},
+																			"example": []
+																		}
+																	}
+																},
+																{
+																	"properties": {
+																		"result": {
+																			"type": [
+																				"object",
+																				"string",
+																				"null"
+																			]
+																		}
+																	}
+																}
+															]
+														},
+														{
+															"type": "object",
+															"properties": {
+																"result": {
+																	"type": "object",
+																	"cfRecurse": ""
+																}
+															}
+														}
+													]
+												},
+												"zone_subscription_response_collection": {
+													"allOf": [
+														{
+															"id": "https://api.cloudflare.com/schemas/v4/common/api-response-collection.json",
+															"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+															"description": "Schema for an API response from Cloudflare that contains multiple result objects",
+															"type": "object",
+															"anyOf": [
+																{
+																	"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
+																	"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+																	"description": "Common schema for all Cloudflare v4 API responses",
+																	"type": "object",
+																	"required": [
+																		"success",
+																		"errors",
+																		"messages",
+																		"result"
+																	],
+																	"oneOf": [
+																		{
+																			"$comment": "This subschema describes successful responses",
+																			"properties": {
+																				"success": {
+																					"description": "Whether the API call was successful or not",
+																					"type": "boolean",
+																					"enum": [
+																						true
+																					],
+																					"example": true
+																				},
+																				"errors": {
+																					"type": "array",
+																					"items": {
+																						"type": "object",
+																						"required": [
+																							"code",
+																							"message"
+																						],
+																						"properties": {
+																							"code": {
+																								"type": "integer",
+																								"minimum": 1000
+																							},
+																							"message": {
+																								"type": "string"
+																							}
+																						},
+																						"uniqueItems": true
+																					},
+																					"example": []
+																				},
+																				"messages": {
+																					"type": "array",
+																					"items": {
+																						"type": "object",
+																						"required": [
+																							"code",
+																							"message"
+																						],
+																						"properties": {
+																							"code": {
+																								"type": "integer",
+																								"minimum": 1000
+																							},
+																							"message": {
+																								"type": "string"
+																							}
+																						},
+																						"uniqueItems": true
+																					},
+																					"example": []
+																				},
+																				"result": {
+																					"type": [
+																						"object",
+																						"array",
+																						"string"
+																					]
+																				}
+																			}
+																		},
+																		{
+																			"$comment": "This subschema describes failure responses",
+																			"properties": {
+																				"success": {
+																					"description": "Whether the API call was successful or not",
+																					"type": "boolean",
+																					"enum": [
+																						false
+																					],
+																					"example": false
+																				},
+																				"errors": {
+																					"allOf": [
+																						{
+																							"type": "array",
+																							"items": {
+																								"type": "object",
+																								"required": [
+																									"code",
+																									"message"
+																								],
+																								"properties": {
+																									"code": {
+																										"type": "integer",
+																										"minimum": 1000
+																									},
+																									"message": {
+																										"type": "string"
+																									}
+																								},
+																								"uniqueItems": true
+																							},
+																							"example": []
+																						}
+																					],
+																					"minLength": 1,
+																					"example": [
+																						{
+																							"code": 7003,
+																							"message": "No route for the URI"
+																						}
+																					]
+																				},
+																				"messages": {
+																					"allOf": [
+																						{
+																							"type": "array",
+																							"items": {
+																								"type": "object",
+																								"required": [
+																									"code",
+																									"message"
+																								],
+																								"properties": {
+																									"code": {
+																										"type": "integer",
+																										"minimum": 1000
+																									},
+																									"message": {
+																										"type": "string"
+																									}
+																								},
+																								"uniqueItems": true
+																							},
+																							"example": []
+																						}
+																					],
+																					"example": []
+																				},
+																				"result": {
+																					"type": "null",
+																					"enum": [
+																						null
+																					],
+																					"example": null
+																				}
+																			}
+																		}
+																	],
+																	"definitions": {
+																		"messages": {
+																			"type": "array",
+																			"items": {
+																				"type": "object",
+																				"required": [
+																					"code",
+																					"message"
+																				],
+																				"properties": {
+																					"code": {
+																						"type": "integer",
+																						"minimum": 1000
+																					},
+																					"message": {
+																						"type": "string"
+																					}
+																				},
+																				"uniqueItems": true
+																			},
+																			"example": []
+																		}
+																	}
+																},
+																{
+																	"properties": {
+																		"result": {
+																			"type": [
+																				"array",
+																				"null"
+																			]
+																		},
+																		"result_info": {
+																			"type": "object",
+																			"properties": {
+																				"page": {
+																					"description": "Current page within paginated list of results",
+																					"type": "number",
+																					"example": 1
+																				},
+																				"per_page": {
+																					"description": "Number of results per page of results",
+																					"type": "number",
+																					"example": 20
+																				},
+																				"count": {
+																					"description": "Total results returned based on your search parameters",
+																					"type": "number",
+																					"example": 1
+																				},
+																				"total_count": {
+																					"description": "Total results available without any search parameters",
+																					"type": "number",
+																					"example": 2000
+																				}
+																			}
+																		}
+																	}
+																}
+															],
+															"definitions": {
+																"params": {
+																	"type": "object",
+																	"properties": {
+																		"page": {
+																			"description": "Requested page within paginated list of results",
+																			"type": "number",
+																			"example": 1
+																		},
+																		"per_page": {
+																			"description": "Maximum number of results requested",
+																			"type": "number",
+																			"example": 20
+																		}
+																	}
+																},
+																"result_info": {
+																	"type": "object",
+																	"properties": {
+																		"page": {
+																			"description": "Current page within paginated list of results",
+																			"type": "number",
+																			"example": 1
+																		},
+																		"per_page": {
+																			"description": "Number of results per page of results",
+																			"type": "number",
+																			"example": 20
+																		},
+																		"count": {
+																			"description": "Total results returned based on your search parameters",
+																			"type": "number",
+																			"example": 1
+																		},
+																		"total_count": {
+																			"description": "Total results available without any search parameters",
+																			"type": "number",
+																			"example": 2000
+																		}
+																	}
+																}
+															}
+														},
+														{
+															"properties": {
+																"result": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"cfRecurse": ""
+																	}
+																}
+															}
+														}
+													]
+												}
+											}
+										}
+									}
+								}
+							}
+						]
+					},
+					"plan_response_collection": {
+						"allOf": [
+							{
+								"id": "https://api.cloudflare.com/schemas/v4/common/api-response-collection.json",
+								"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+								"description": "Schema for an API response from Cloudflare that contains multiple result objects",
+								"type": "object",
+								"anyOf": [
+									{
+										"id": "https://api.cloudflare.com/schemas/v4/common/api-response-common.json",
+										"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+										"description": "Common schema for all Cloudflare v4 API responses",
+										"type": "object",
+										"required": [
+											"success",
+											"errors",
+											"messages",
+											"result"
+										],
+										"oneOf": [
+											{
+												"$comment": "This subschema describes successful responses",
+												"properties": {
+													"success": {
+														"description": "Whether the API call was successful or not",
+														"type": "boolean",
+														"enum": [
+															true
+														],
+														"example": true
+													},
+													"errors": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"required": [
+																"code",
+																"message"
+															],
+															"properties": {
+																"code": {
+																	"type": "integer",
+																	"minimum": 1000
+																},
+																"message": {
+																	"type": "string"
+																}
+															},
+															"uniqueItems": true
+														},
+														"example": []
+													},
+													"messages": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"required": [
+																"code",
+																"message"
+															],
+															"properties": {
+																"code": {
+																	"type": "integer",
+																	"minimum": 1000
+																},
+																"message": {
+																	"type": "string"
+																}
+															},
+															"uniqueItems": true
+														},
+														"example": []
+													},
+													"result": {
+														"type": [
+															"object",
+															"array",
+															"string"
+														]
+													}
+												}
+											},
+											{
+												"$comment": "This subschema describes failure responses",
+												"properties": {
+													"success": {
+														"description": "Whether the API call was successful or not",
+														"type": "boolean",
+														"enum": [
+															false
+														],
+														"example": false
+													},
+													"errors": {
+														"allOf": [
+															{
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"required": [
+																		"code",
+																		"message"
+																	],
+																	"properties": {
+																		"code": {
+																			"type": "integer",
+																			"minimum": 1000
+																		},
+																		"message": {
+																			"type": "string"
+																		}
+																	},
+																	"uniqueItems": true
+																},
+																"example": []
+															}
+														],
+														"minLength": 1,
+														"example": [
+															{
+																"code": 7003,
+																"message": "No route for the URI"
+															}
+														]
+													},
+													"messages": {
+														"allOf": [
+															{
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"required": [
+																		"code",
+																		"message"
+																	],
+																	"properties": {
+																		"code": {
+																			"type": "integer",
+																			"minimum": 1000
+																		},
+																		"message": {
+																			"type": "string"
+																		}
+																	},
+																	"uniqueItems": true
+																},
+																"example": []
+															}
+														],
+														"example": []
+													},
+													"result": {
+														"type": "null",
+														"enum": [
+															null
+														],
+														"example": null
+													}
+												}
+											}
+										],
+										"definitions": {
+											"messages": {
+												"type": "array",
+												"items": {
+													"type": "object",
+													"required": [
+														"code",
+														"message"
+													],
+													"properties": {
+														"code": {
+															"type": "integer",
+															"minimum": 1000
+														},
+														"message": {
+															"type": "string"
+														}
+													},
+													"uniqueItems": true
+												},
+												"example": []
+											}
+										}
+									},
+									{
+										"properties": {
+											"result": {
+												"type": [
+													"array",
+													"null"
+												]
+											},
+											"result_info": {
+												"type": "object",
+												"properties": {
+													"page": {
+														"description": "Current page within paginated list of results",
+														"type": "number",
+														"example": 1
+													},
+													"per_page": {
+														"description": "Number of results per page of results",
+														"type": "number",
+														"example": 20
+													},
+													"count": {
+														"description": "Total results returned based on your search parameters",
+														"type": "number",
+														"example": 1
+													},
+													"total_count": {
+														"description": "Total results available without any search parameters",
+														"type": "number",
+														"example": 2000
+													}
+												}
+											}
+										}
+									}
+								],
+								"definitions": {
+									"params": {
+										"type": "object",
+										"properties": {
+											"page": {
+												"description": "Requested page within paginated list of results",
+												"type": "number",
+												"example": 1
+											},
+											"per_page": {
+												"description": "Maximum number of results requested",
+												"type": "number",
+												"example": 20
+											}
+										}
+									},
+									"result_info": {
+										"type": "object",
+										"properties": {
+											"page": {
+												"description": "Current page within paginated list of results",
+												"type": "number",
+												"example": 1
+											},
+											"per_page": {
+												"description": "Number of results per page of results",
+												"type": "number",
+												"example": 20
+											},
+											"count": {
+												"description": "Total results returned based on your search parameters",
+												"type": "number",
+												"example": 1
+											},
+											"total_count": {
+												"description": "Total results available without any search parameters",
+												"type": "number",
+												"example": 2000
+											}
+										}
+									}
+								}
+							},
+							{
+								"properties": {
+									"result": {
+										"type": "array",
+										"items": {
+											"cfRecurse": ""
+										}
+									}
+								}
+							}
+						]
+					}
+				}
+			},
+			"status": {
+				"type": "string",
+				"example": "\"active\"",
+				"description": "Status of the zone",
+				"enum": [
+					"active",
+					"pending",
+					"initializing",
+					"moved",
+					"deleted",
+					"deactivated"
+				],
+				"readOnly": true
+			},
+			"paused": {
+				"type": "boolean",
+				"example": "false",
+				"description": "Indicates if the zone is only using Cloudflare DNS services. A true value means the zone will not receive security or performance benefits.",
+				"readOnly": true,
+				"default": false
+			},
+			"type": {
+				"type": "string",
+				"example": "\"full\"",
+				"description": "A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.",
+				"enum": [
+					"full",
+					"partial"
+				]
+			},
+			"name_servers": {
+				"type": "array",
+				"example": "[\n  \"tony.ns.cloudflare.com\",\n  \"woz.ns.cloudflare.com\"\n]",
+				"description": "Cloudflare-assigned name servers. This is only populated for zones that use Cloudflare DNS",
+				"items": {
+					"type": "string",
+					"format": "hostname"
+				}
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"name",
+			"development_mode",
+			"original_name_servers",
+			"original_registrar",
+			"original_dnshost",
+			"created_on",
+			"modified_on",
+			"activated_on",
+			"owner",
+			"account",
+			"permissions",
+			"plan",
+			"plan_pending",
+			"status",
+			"paused",
+			"type",
+			"name_servers"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"name\": \"example.com\",\n  \"development_mode\": 7200,\n  \"original_name_servers\": [\n    \"ns1.originaldnshost.com\",\n    \"ns2.originaldnshost.com\"\n  ],\n  \"original_registrar\": \"GoDaddy\",\n  \"original_dnshost\": \"NameCheap\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"activated_on\": \"2014-01-02T00:01:00.12345Z\",\n  \"owner\": {\n    \"id\": {},\n    \"email\": {},\n    \"type\": \"user\"\n  },\n  \"account\": {\n    \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n    \"name\": \"Demo Account\"\n  },\n  \"permissions\": [\n    \"#zone:read\",\n    \"#zone:edit\"\n  ],\n  \"plan\": {\n    \"id\": \"e592fd9519420ba7405e1307bff33214\",\n    \"name\": \"Pro Plan\",\n    \"price\": 20,\n    \"currency\": \"USD\",\n    \"frequency\": \"monthly\",\n    \"legacy_id\": \"pro\",\n    \"is_subscribed\": true,\n    \"can_subscribe\": true\n  },\n  \"plan_pending\": {\n    \"id\": \"e592fd9519420ba7405e1307bff33214\",\n    \"name\": \"Pro Plan\",\n    \"price\": 20,\n    \"currency\": \"USD\",\n    \"frequency\": \"monthly\",\n    \"legacy_id\": \"pro\",\n    \"is_subscribed\": true,\n    \"can_subscribe\": true\n  },\n  \"status\": \"active\",\n  \"paused\": false,\n  \"type\": \"full\",\n  \"name_servers\": [\n    \"tony.ns.cloudflare.com\",\n    \"woz.ns.cloudflare.com\"\n  ]\n}",
+		"title": "Zone",
+		"description": "A Zone is a domain name along with its subdomains and other identities"
+	}
+}

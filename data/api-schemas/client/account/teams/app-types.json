@@ -1,0 +1,110 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/teams/app-types.json",
+	"title": "Zero Trust Gateway Application and Application Type mappings",
+	"description": "Applications are a way to group domains, IP CIDRs, and port numbers under a single identifier. This applies operations performed on network traffic to all application members. Application Types are a way to group different Applications together. Application IDs and Application Type IDs can be provided as part of the 'traffic' wirefilter expression in Secure Web Gateway rules.",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Application and Application Type mappings",
+			"description": "List all Application and Application Type mappings",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/gateway/app_types",
+			"method": "GET",
+			"cfOwnership": "gateway",
+			"html_id": "zero-trust-gateway-application-and-application-type-mappings-list-application-and-application-type-mappings",
+			"uri": "accounts/:identifier/gateway/app_types",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/gateway/app_types\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": 554,\n      \"name\": \"Facebook\",\n      \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"application_type_id\": 11\n    }\n  ]\n}"
+		}
+	],
+	"readOnly": true,
+	"html_id": "zero-trust-gateway-application-and-application-type-mappings",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {},
+		"required_props": [],
+		"optional_props": [],
+		"objects": [
+			{
+				"all_props": {
+					"id": {
+						"type": "integer",
+						"example": "554",
+						"description": "The identifier for this application. There is only one application per id."
+					},
+					"name": {
+						"type": "string",
+						"example": "\"Facebook\"",
+						"description": "The name of the application or application type."
+					},
+					"created_at": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"description": "Creation time",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"application_type_id": {
+						"type": "integer",
+						"example": "11",
+						"description": "The identifier for the type of this application. There can be many applications with the same type. This refers to the `id` of an Application Type that has been returned."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"id",
+					"name",
+					"created_at",
+					"application_type_id"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": 554,\n  \"name\": \"Facebook\",\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"application_type_id\": 11\n}"
+			},
+			{
+				"all_props": {
+					"id": {
+						"type": "integer",
+						"example": "11",
+						"description": "The identifier for the type of this application. There can be many applications with the same type. This refers to the `id` of an Application Type that has been returned."
+					},
+					"name": {
+						"type": "string",
+						"example": "\"Facebook\"",
+						"description": "The name of the application or application type."
+					},
+					"created_at": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"description": "Creation time",
+						"format": "date-time",
+						"readOnly": true
+					},
+					"description": {
+						"type": "string",
+						"example": "\"Applications used to communicate or collaborate in a business setting.\"",
+						"description": "A short summary of applications with this type."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"id",
+					"name",
+					"created_at",
+					"description"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": 11,\n  \"name\": \"Facebook\",\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"description\": \"Applications used to communicate or collaborate in a business setting.\"\n}"
+			}
+		],
+		"example": "{\n  \"id\": 554,\n  \"name\": \"Facebook\",\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"application_type_id\": 11\n}",
+		"which_of": "oneOf",
+		"title": "Zero Trust Gateway Application and Application Type mappings",
+		"description": "Applications are a way to group domains, IP CIDRs, and port numbers under a single identifier. This applies operations performed on network traffic to all application members. Application Types are a way to group different Applications together. Application IDs and Application Type IDs can be provided as part of the 'traffic' wirefilter expression in Secure Web Gateway rules."
+	}
+}

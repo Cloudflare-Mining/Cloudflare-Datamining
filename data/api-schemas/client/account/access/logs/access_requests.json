@@ -1,0 +1,145 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/access/logs/access_requests.json",
+	"title": "Access Requests",
+	"description": "Access Requests returns user login and logout audit logs.",
+	"type": "object",
+	"links": [
+		{
+			"title": "Access Requests Audit",
+			"description": "Audit log of all authentication attempts. Details include the identity provider or login method and the IP address of the user.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/access/logs/access_requests",
+			"method": "GET",
+			"cfOwnership": "access",
+			"html_id": "access-requests-access-requests-audit",
+			"uri": "accounts/:identifier/access/logs/access_requests",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/access/logs/access_requests?limit=25&direction=desc&since=2020-07-01T05:20:00Z&until=2020-10-01T05:20:00Z\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"limit": {
+						"type": "number",
+						"example": "25",
+						"description": "Limit the number of results"
+					},
+					"direction": {
+						"type": "string",
+						"example": "\"desc\"",
+						"description": "Change the direction of the chronological sorting.",
+						"default": "desc",
+						"enum": [
+							"desc",
+							"asc"
+						]
+					},
+					"since": {
+						"type": "string",
+						"example": "\"2020-07-01T05:20:00Z\"",
+						"description": "The time on which to begin query",
+						"readOnly": true,
+						"format": "date-time"
+					},
+					"until": {
+						"type": "string",
+						"example": "\"2020-10-01T05:20:00Z\"",
+						"description": "The time on which to end qeury",
+						"readOnly": true,
+						"format": "date-time"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"limit",
+					"direction",
+					"since",
+					"until"
+				],
+				"objects": [],
+				"example": "{\n  \"limit\": 25,\n  \"direction\": \"desc\",\n  \"since\": \"2020-07-01T05:20:00Z\",\n  \"until\": \"2020-10-01T05:20:00Z\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"user_email\": \"michelle@example.com\",\n      \"ip_address\": \"198.41.129.166\",\n      \"app_uid\": \"df7e2w5f-02b7-4d9d-af26-8d1988fca630\",\n      \"app_domain\": \"test.example.com/admin\",\n      \"action\": \"login\",\n      \"connection\": \"saml\",\n      \"allowed\": false,\n      \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"ray_id\": \"187d944c61940c77\"\n    }\n  ]\n}"
+		}
+	],
+	"html_id": "access-requests",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"user_email": {
+				"type": "string",
+				"example": "\"michelle@example.com\"",
+				"format": "email",
+				"description": "The email of the user that performed the action."
+			},
+			"ip_address": {
+				"type": "string",
+				"example": "\"198.41.129.166\"",
+				"description": "The IP address of the authenticating user."
+			},
+			"app_uid": {
+				"type": "string",
+				"example": "\"df7e2w5f-02b7-4d9d-af26-8d1988fca630\"",
+				"description": "The unique identifier for the protected application.",
+				"id": "https://api.cloudflare.com/schemas/v4/common/uuid.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"readOnly": true,
+				"maxLength": 36
+			},
+			"app_domain": {
+				"type": "string",
+				"example": "\"test.example.com/admin\"",
+				"description": "The URL of the protected application."
+			},
+			"action": {
+				"type": "string",
+				"example": "\"login\"",
+				"description": "The event that occurred, such as a login attempt."
+			},
+			"connection": {
+				"type": "string",
+				"example": "\"saml\"",
+				"description": "The IDP used the authenticate."
+			},
+			"allowed": {
+				"type": "boolean",
+				"example": "false",
+				"description": "The result of the authentication event.",
+				"default": false
+			},
+			"created_at": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "Creation time",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"ray_id": {
+				"type": "string",
+				"example": "\"187d944c61940c77\"",
+				"maxLength": 16,
+				"description": "Ray ID of the request. For more information on what a Ray ID is, please refer to: https://support.cloudflare.com/hc/en-us/articles/200169746-What-is-the-CF-RAY-header-"
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"user_email",
+			"ip_address",
+			"app_uid",
+			"app_domain",
+			"action",
+			"connection",
+			"allowed",
+			"created_at",
+			"ray_id"
+		],
+		"objects": [],
+		"example": "{\n  \"user_email\": \"michelle@example.com\",\n  \"ip_address\": \"198.41.129.166\",\n  \"app_uid\": \"df7e2w5f-02b7-4d9d-af26-8d1988fca630\",\n  \"app_domain\": \"test.example.com/admin\",\n  \"action\": \"login\",\n  \"connection\": \"saml\",\n  \"allowed\": false,\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"ray_id\": \"187d944c61940c77\"\n}",
+		"title": "Access Requests",
+		"description": "Access Requests returns user login and logout audit logs."
+	}
+}

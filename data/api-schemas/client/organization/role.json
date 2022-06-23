@@ -1,0 +1,123 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/organization/role.json",
+	"title": "Organization Roles",
+	"description": "A role defines what permissions a Member of an Organization has.",
+	"cfExtendedDescription": "Please use equivalent `/accounts` API endpoints. Account APIs provide a broader range of features and are backwards-compatible to organization APIs.",
+	"cfDeprecations": {
+		"id": "org_deprecation",
+		"description": "This endpoint and its related APIs are deprecated in favor of the `/accounts` equivalent APIs, which have a broader range of features and are backwards compatible with these API.",
+		"eol": "2020-02-04",
+		"display": true
+	},
+	"type": "object",
+	"links": [
+		{
+			"cfDeprecation": {
+				"id": "org_deprecation",
+				"description": "This endpoint and its related APIs are deprecated in favor of the `/accounts` equivalent APIs, which have a broader range of features and are backwards compatible with these API.",
+				"eol": "2020-02-04",
+				"display": true
+			},
+			"title": "List Roles",
+			"description": "Get all available roles for an organization",
+			"rel": "collection",
+			"href": "organizations/{#/definitions/organization_identifier}/roles",
+			"method": "GET",
+			"cfOwnership": "iam",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#organization:read"
+				]
+			},
+			"html_id": "organization-roles-list-roles",
+			"uri": "organizations/:organization_identifier/roles",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/organizations/01a7362d577a6c3019a474fd6f485823/roles\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"3536bcfad5faccb999b47003c79917fb\",\n      \"name\": \"Organization Admin\",\n      \"description\": \"Administrative access to the entire Organization\",\n      \"permissions\": [\n        \"#zones:read\"\n      ]\n    }\n  ]\n}"
+		},
+		{
+			"cfDeprecation": {
+				"id": "org_deprecation",
+				"description": "This endpoint and its related APIs are deprecated in favor of the `/accounts` equivalent APIs, which have a broader range of features and are backwards compatible with these API.",
+				"eol": "2020-02-04",
+				"display": true
+			},
+			"title": "Role Details",
+			"description": "Get information about a specific role for an organization",
+			"rel": "self",
+			"href": "organizations/{#/definitions/organization_identifier}/roles/{#/definitions/identifier}",
+			"method": "GET",
+			"cfOwnership": "iam",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#organization:read"
+				]
+			},
+			"html_id": "organization-roles-role-details",
+			"uri": "organizations/:organization_identifier/roles/:identifier",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/organizations/01a7362d577a6c3019a474fd6f485823/roles/3536bcfad5faccb999b47003c79917fb\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"3536bcfad5faccb999b47003c79917fb\",\n    \"name\": \"Organization Admin\",\n    \"description\": \"Administrative access to the entire Organization\",\n    \"permissions\": [\n      \"#zones:read\"\n    ]\n  }\n}"
+		}
+	],
+	"html_id": "organization-roles",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"3536bcfad5faccb999b47003c79917fb\"",
+				"description": "Role identifier tag",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"name": {
+				"type": "string",
+				"example": "\"Organization Admin\"",
+				"description": "Role Name",
+				"maxLength": 120,
+				"readOnly": true
+			},
+			"description": {
+				"type": "string",
+				"example": "\"Administrative access to the entire Organization\"",
+				"description": "Description of role's permissions",
+				"readOnly": true
+			},
+			"permissions": {
+				"type": "array",
+				"example": "[\n  \"#zones:read\"\n]",
+				"description": "Access permissions for this User",
+				"readOnly": true,
+				"items": {
+					"type": "string",
+					"maxLength": 160,
+					"example": "#zones:read"
+				}
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"name",
+			"description",
+			"permissions"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"3536bcfad5faccb999b47003c79917fb\",\n  \"name\": \"Organization Admin\",\n  \"description\": \"Administrative access to the entire Organization\",\n  \"permissions\": [\n    \"#zones:read\"\n  ]\n}",
+		"title": "Organization Roles",
+		"description": "A role defines what permissions a Member of an Organization has."
+	}
+}

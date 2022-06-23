@@ -1,0 +1,243 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account.json",
+	"title": "Accounts",
+	"description": "An Account is the root object which owns other resources such as zones, load balancers and billing details.",
+	"links": [
+		{
+			"title": "List Accounts",
+			"description": "List all accounts you have ownership or verified access to",
+			"rel": "collection",
+			"href": "accounts",
+			"method": "GET",
+			"cfOwnership": "iam",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#organization:read"
+				]
+			},
+			"html_id": "accounts-list-accounts",
+			"uri": "accounts",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts?page=1&per_page=20&direction=desc&name=example.com\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"page": {
+						"type": "number",
+						"example": "1",
+						"minimum": 1,
+						"default": 1,
+						"description": "Page number of paginated results"
+					},
+					"per_page": {
+						"type": "number",
+						"example": "20",
+						"minimum": 5,
+						"maximum": 50,
+						"default": 20,
+						"description": "Maximum number of results per page"
+					},
+					"direction": {
+						"type": "string",
+						"example": "\"desc\"",
+						"enum": [
+							"asc",
+							"desc"
+						],
+						"description": "Direction to order results"
+					},
+					"name": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "Name of the account",
+						"readOnly": true
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"page",
+					"per_page",
+					"direction",
+					"name"
+				],
+				"objects": [],
+				"example": "{\n  \"page\": 1,\n  \"per_page\": 20,\n  \"direction\": \"desc\",\n  \"name\": \"example.com\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n      \"name\": \"Demo Account\",\n      \"settings\": {\n        \"enforce_twofactor\": false,\n        \"use_account_custom_ns_by_default\": false\n      },\n      \"created_on\": \"2014-03-01T12:21:02.0000Z\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Account Details",
+			"description": "Get information about a specific account that you are a member of",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}",
+			"method": "GET",
+			"cfOwnership": "iam",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#organization:read"
+				]
+			},
+			"html_id": "accounts-account-details",
+			"uri": "accounts/:identifier",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n    \"name\": \"Demo Account\",\n    \"settings\": {\n      \"enforce_twofactor\": false,\n      \"use_account_custom_ns_by_default\": false\n    },\n    \"created_on\": \"2014-03-01T12:21:02.0000Z\"\n  }\n}"
+		},
+		{
+			"title": "Update Account",
+			"description": "Update an existing Account",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}",
+			"method": "PUT",
+			"cfOwnership": "iam",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#organization:edit"
+				]
+			},
+			"html_id": "accounts-update-account",
+			"uri": "accounts/:identifier",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"id\":\"01a7362d577a6c3019a474fd6f485823\",\"name\":\"Demo Account\",\"settings\":{\"enforce_twofactor\":false,\"use_account_custom_ns_by_default\":false},\"created_on\":\"2014-03-01T12:21:02.0000Z\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"01a7362d577a6c3019a474fd6f485823\"",
+						"description": "Account identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"name": {
+						"type": "string",
+						"example": "\"Demo Account\"",
+						"description": "Account name",
+						"maxLength": 100
+					},
+					"settings": {
+						"type": "object",
+						"example": "{\n  \"enforce_twofactor\": false,\n  \"use_account_custom_ns_by_default\": false\n}",
+						"properties": {
+							"enforce_twofactor": {
+								"type": "boolean",
+								"example": "false",
+								"description": "Indicates whether or not membership in this account requires that Two-Factor Authentication is enabled",
+								"default": false
+							},
+							"use_account_custom_ns_by_default": {
+								"type": "boolean",
+								"example": "false",
+								"description": "Indicates whether new zones should use the account-level custom nameservers by default",
+								"default": false
+							}
+						},
+						"description": "Account settings"
+					},
+					"created_on": {
+						"type": "string",
+						"example": "\"2014-03-01T12:21:02.0000Z\"",
+						"description": "describes when account was created",
+						"format": "date-time",
+						"readOnly": true
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"id",
+					"name",
+					"settings",
+					"created_on"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n  \"name\": \"Demo Account\",\n  \"settings\": {\n    \"enforce_twofactor\": false,\n    \"use_account_custom_ns_by_default\": false\n  },\n  \"created_on\": \"2014-03-01T12:21:02.0000Z\"\n}",
+				"title": "Accounts",
+				"description": "An Account is the root object which owns other resources such as zones, load balancers and billing details."
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n    \"name\": \"Demo Account\",\n    \"settings\": {\n      \"enforce_twofactor\": false,\n      \"use_account_custom_ns_by_default\": false\n    },\n    \"created_on\": \"2014-03-01T12:21:02.0000Z\"\n  }\n}"
+		}
+	],
+	"cfLinkErrors": {
+		"1000": "An unknown error(<CODE>) has occurred",
+		"1001": "Invalid request",
+		"1002": "Forbidden",
+		"1003": "Account not found"
+	},
+	"html_id": "accounts",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"01a7362d577a6c3019a474fd6f485823\"",
+				"description": "Account identifier tag",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"name": {
+				"type": "string",
+				"example": "\"Demo Account\"",
+				"description": "Account name",
+				"maxLength": 100
+			},
+			"settings": {
+				"type": "object",
+				"example": "{\n  \"enforce_twofactor\": false,\n  \"use_account_custom_ns_by_default\": false\n}",
+				"properties": {
+					"enforce_twofactor": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Indicates whether or not membership in this account requires that Two-Factor Authentication is enabled",
+						"default": false
+					},
+					"use_account_custom_ns_by_default": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Indicates whether new zones should use the account-level custom nameservers by default",
+						"default": false
+					}
+				},
+				"description": "Account settings"
+			},
+			"created_on": {
+				"type": "string",
+				"example": "\"2014-03-01T12:21:02.0000Z\"",
+				"description": "describes when account was created",
+				"format": "date-time",
+				"readOnly": true
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"name",
+			"settings",
+			"created_on"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n  \"name\": \"Demo Account\",\n  \"settings\": {\n    \"enforce_twofactor\": false,\n    \"use_account_custom_ns_by_default\": false\n  },\n  \"created_on\": \"2014-03-01T12:21:02.0000Z\"\n}",
+		"title": "Accounts",
+		"description": "An Account is the root object which owns other resources such as zones, load balancers and billing details."
+	}
+}

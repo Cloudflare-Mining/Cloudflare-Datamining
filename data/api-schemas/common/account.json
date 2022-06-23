@@ -1,0 +1,91 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/common/account.json",
+	"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+	"type": "object",
+	"required": [
+		"id",
+		"name"
+	],
+	"properties": {
+		"id": {
+			"description": "Account identifier tag",
+			"type": "string",
+			"maxLength": 32,
+			"readOnly": true,
+			"example": "01a7362d577a6c3019a474fd6f485823"
+		},
+		"name": {
+			"description": "Account name",
+			"type": "string",
+			"maxLength": 100,
+			"example": "Demo Account"
+		},
+		"settings": {
+			"type": "object",
+			"description": "Account settings",
+			"properties": {
+				"enforce_twofactor": {
+					"type": "boolean",
+					"description": "Indicates whether or not membership in this account requires that Two-Factor Authentication is enabled",
+					"default": false
+				},
+				"use_account_custom_ns_by_default": {
+					"type": "boolean",
+					"description": "Indicates whether new zones should use the account-level custom nameservers by default",
+					"default": false
+				}
+			}
+		},
+		"created_on": {
+			"description": "describes when account was created",
+			"type": "string",
+			"format": "date-time",
+			"readOnly": true,
+			"example": "2014-03-01T12:21:02.0000Z"
+		}
+	},
+	"definitions": {
+		"identifier": {
+			"description": "Account identifier tag",
+			"type": "string",
+			"maxLength": 32,
+			"readOnly": true,
+			"example": "01a7362d577a6c3019a474fd6f485823"
+		},
+		"name": {
+			"description": "Account name",
+			"type": "string",
+			"maxLength": 100,
+			"example": "Demo Account"
+		},
+		"scope": {
+			"$comment": "Defined here for use by account-related rule systems",
+			"description": "All zones owned by the account will have the rule applied.",
+			"type": "object",
+			"properties": {
+				"id": {
+					"description": "Account identifier tag",
+					"type": "string",
+					"maxLength": 32,
+					"readOnly": true,
+					"example": "01a7362d577a6c3019a474fd6f485823"
+				},
+				"name": {
+					"description": "Account name",
+					"type": "string",
+					"maxLength": 100,
+					"example": "Demo Account"
+				},
+				"type": {
+					"type": "string",
+					"enum": [
+						"account"
+					],
+					"description": "The scope of the rule",
+					"readOnly": true,
+					"example": "account"
+				}
+			}
+		}
+	}
+}

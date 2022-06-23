@@ -1,0 +1,852 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/custom-pages.json",
+	"title": "Custom pages for an account",
+	"description": "Custom pages configuration at the account level.",
+	"type": "object",
+	"links": [
+		{
+			"title": "Get custom pages",
+			"description": "Fetches all the custom pages at the account level.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/custom_pages",
+			"method": "GET",
+			"cfOwnership": "www",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#organization:read"
+				]
+			},
+			"html_id": "custom-pages-for-an-account-get-custom-pages",
+			"uri": "accounts/:account_identifier/custom_pages",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/custom_pages\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"basic_challenge\",\n      \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"url\": \"http://www.example.com\",\n      \"state\": \"default\",\n      \"required_tokens\": [\n        \"::CAPTCHA_BOX::\"\n      ],\n      \"preview_target\": \"preview:target\",\n      \"description\": true\n    }\n  ]\n}"
+		},
+		{
+			"title": "Get a custom page",
+			"description": "Fetches the details of a custom page.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/custom_pages/{#/definitions/identifier}",
+			"method": "GET",
+			"cfOwnership": "www",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#organization:read"
+				]
+			},
+			"html_id": "custom-pages-for-an-account-get-a-custom-page",
+			"uri": "accounts/:account_identifier/custom_pages/:identifier",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/custom_pages/basic_challenge\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"basic_challenge\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"url\": \"http://www.example.com\",\n    \"state\": \"default\",\n    \"required_tokens\": [\n      \"::CAPTCHA_BOX::\"\n    ],\n    \"preview_target\": \"preview:target\",\n    \"description\": true\n  }\n}"
+		},
+		{
+			"title": "Update a custom page",
+			"description": "Updates the configuration of an existing custom page.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/custom_pages/{#/definitions/identifier}",
+			"method": "PUT",
+			"cfOwnership": "www",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#organization:edit"
+				]
+			},
+			"html_id": "custom-pages-for-an-account-update-a-custom-page",
+			"uri": "accounts/:account_identifier/custom_pages/:identifier",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/custom_pages/basic_challenge\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"url\":\"http://www.example.com\",\"state\":\"default\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"url": {
+						"type": "string",
+						"example": "\"http://www.example.com\"",
+						"format": "url",
+						"description": "The URL associated with the custom page.",
+						"default": ""
+					},
+					"state": {
+						"example": "\"default\"",
+						"enum": [
+							"default",
+							"customized"
+						],
+						"description": "The custom page state."
+					}
+				},
+				"required_props": [
+					"url",
+					"state"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"url\": \"http://www.example.com\",\n  \"state\": \"default\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"basic_challenge\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"url\": \"http://www.example.com\",\n    \"state\": \"default\",\n    \"required_tokens\": [\n      \"::CAPTCHA_BOX::\"\n    ],\n    \"preview_target\": \"preview:target\",\n    \"description\": true\n  }\n}"
+		}
+	],
+	"cfLinkErrors": {
+		"1000": "Invalid user",
+		"1001": "Invalid request. Could not connect to database",
+		"1002": "Validator dispatcher expects an array",
+		"1006": "Cannot find a valid customization page",
+		"1007": "Invalid validation method being called",
+		"1200": "A URL is required",
+		"1201": "The URL provided seems to be irregular",
+		"1202": "Unable to grab the content for the URL provided. Please try again.",
+		"1203": "Your custom page must be larger than <characters> characters",
+		"1204": "Your custom page must be smaller than <characters> characters",
+		"1205": "A <token> token was not detected on the error page, and must be added before this page can be integrated into Cloudflare. The default error page will show until this is corrected and rescanned.",
+		"1206": "Could not find a valid zone",
+		"1207": "That customization page is not modifiable",
+		"1208": "An unknown error has occurred and has been logged. We will fix this problem promptly. We apologize for the inconvenience.",
+		"1209": "Could not find a valid customization page for this operation",
+		"1210": "That operation is no longer allowed for that domain.",
+		"1211": "Could not find a valid customization page to disable",
+		"1212": "An undocumented error has occurred and has been logged.",
+		"1213": "That operation has already been performed for this challenge/error.",
+		"1214": "Rate limit reached for this operation.  Please try again in a minute",
+		"1215": "Rate limit reached for this operation.  Please try again in a minute",
+		"1217": "Invalid state passed",
+		"1218": "Missing Custom Page state",
+		"1219": "Please upgrade to access this feature",
+		"1220": "We were unable to scan the page provided. Please ensure it is accessible publicly and is larger than 100 characters"
+	},
+	"html_id": "custom-pages-for-an-account",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {},
+		"required_props": [],
+		"optional_props": [],
+		"objects": [
+			{
+				"all_props": {
+					"id": {
+						"example": "\"basic_challenge\"",
+						"enum": [
+							"basic_challenge",
+							"managed_challenge",
+							"waf_block",
+							"country_challenge",
+							"ip_block",
+							"under_attack",
+							"500_errors",
+							"1000_errors",
+							"basic_challenge"
+						],
+						"readOnly": true,
+						"description": "The name of the custom page type.",
+						"type": "string"
+					},
+					"created_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"readOnly": true,
+						"format": "date-time",
+						"description": "The timestamp of when the custom page was created."
+					},
+					"modified_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"readOnly": true,
+						"format": "date-time",
+						"description": "The timestamp of when the custom page was last modified."
+					},
+					"url": {
+						"type": "string",
+						"example": "\"http://www.example.com\"",
+						"format": "url",
+						"description": "The URL associated with the custom page.",
+						"default": ""
+					},
+					"state": {
+						"example": "\"default\"",
+						"enum": [
+							"default",
+							"customized"
+						],
+						"description": "The custom page state."
+					},
+					"required_tokens": {
+						"type": "array",
+						"example": "[\n  \"::CAPTCHA_BOX::\"\n]",
+						"description": "The string tokens that must be present in your custom HTML page.",
+						"readOnly": true,
+						"uniqueItems": true,
+						"default": [],
+						"items": {
+							"type": "string",
+							"description": "A string token."
+						}
+					},
+					"preview_target": {
+						"type": "string",
+						"example": "\"preview:target\"",
+						"description": "The 'target' query string parameter which is required when previewing the custom page at cloudflarepreview.com.",
+						"cfNotes": "The full preview URL is similar to the following: \"cloudflarepreview.com/preview-cpage?act=preview&target=preview:target&url=<YOUR_URL>\"."
+					},
+					"description": {
+						"type": "string",
+						"example": "true",
+						"description": "A short description of the custom page.",
+						"default": ""
+					}
+				},
+				"required_props": [
+					"url"
+				],
+				"optional_props": [
+					"id",
+					"created_on",
+					"modified_on",
+					"state",
+					"required_tokens",
+					"preview_target",
+					"description"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"basic_challenge\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"url\": \"http://www.example.com\",\n  \"state\": \"default\",\n  \"required_tokens\": [\n    \"::CAPTCHA_BOX::\"\n  ],\n  \"preview_target\": \"preview:target\",\n  \"description\": true\n}",
+				"title": "Legacy CAPTCHA Challenge"
+			},
+			{
+				"all_props": {
+					"id": {
+						"example": "\"managed_challenge\"",
+						"enum": [
+							"basic_challenge",
+							"managed_challenge",
+							"waf_block",
+							"country_challenge",
+							"ip_block",
+							"under_attack",
+							"500_errors",
+							"1000_errors",
+							"managed_challenge"
+						],
+						"readOnly": true,
+						"description": "The name of the custom page type.",
+						"type": "string"
+					},
+					"created_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"readOnly": true,
+						"format": "date-time",
+						"description": "The timestamp of when the custom page was created."
+					},
+					"modified_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"readOnly": true,
+						"format": "date-time",
+						"description": "The timestamp of when the custom page was last modified."
+					},
+					"url": {
+						"type": "string",
+						"example": "\"http://www.example.com\"",
+						"format": "url",
+						"description": "The URL associated with the custom page.",
+						"default": ""
+					},
+					"state": {
+						"example": "\"default\"",
+						"enum": [
+							"default",
+							"customized"
+						],
+						"description": "The custom page state."
+					},
+					"required_tokens": {
+						"type": "array",
+						"example": "[\n  \"::CAPTCHA_BOX::\"\n]",
+						"description": "The string tokens that must be present in your custom HTML page.",
+						"readOnly": true,
+						"uniqueItems": true,
+						"default": [],
+						"items": {
+							"type": "string",
+							"description": "A string token."
+						}
+					},
+					"preview_target": {
+						"type": "string",
+						"example": "\"preview:target\"",
+						"description": "The 'target' query string parameter which is required when previewing the custom page at cloudflarepreview.com.",
+						"cfNotes": "The full preview URL is similar to the following: \"cloudflarepreview.com/preview-cpage?act=preview&target=preview:target&url=<YOUR_URL>\"."
+					},
+					"description": {
+						"type": "string",
+						"example": "true",
+						"description": "A short description of the custom page.",
+						"default": ""
+					}
+				},
+				"required_props": [
+					"url"
+				],
+				"optional_props": [
+					"id",
+					"created_on",
+					"modified_on",
+					"state",
+					"required_tokens",
+					"preview_target",
+					"description"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"managed_challenge\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"url\": \"http://www.example.com\",\n  \"state\": \"default\",\n  \"required_tokens\": [\n    \"::CAPTCHA_BOX::\"\n  ],\n  \"preview_target\": \"preview:target\",\n  \"description\": true\n}",
+				"title": "Managed Challenge"
+			},
+			{
+				"all_props": {
+					"id": {
+						"example": "\"waf_block\"",
+						"enum": [
+							"basic_challenge",
+							"managed_challenge",
+							"waf_block",
+							"country_challenge",
+							"ip_block",
+							"under_attack",
+							"500_errors",
+							"1000_errors",
+							"waf_block"
+						],
+						"readOnly": true,
+						"description": "The name of the custom page type.",
+						"type": "string"
+					},
+					"created_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"readOnly": true,
+						"format": "date-time",
+						"description": "The timestamp of when the custom page was created."
+					},
+					"modified_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"readOnly": true,
+						"format": "date-time",
+						"description": "The timestamp of when the custom page was last modified."
+					},
+					"url": {
+						"type": "string",
+						"example": "\"http://www.example.com\"",
+						"format": "url",
+						"description": "The URL associated with the custom page.",
+						"default": ""
+					},
+					"state": {
+						"example": "\"default\"",
+						"enum": [
+							"default",
+							"customized"
+						],
+						"description": "The custom page state."
+					},
+					"required_tokens": {
+						"type": "array",
+						"example": "[]",
+						"description": "The string tokens that must be present in the custom page.",
+						"readOnly": true,
+						"uniqueItems": true,
+						"default": []
+					},
+					"preview_target": {
+						"type": "string",
+						"example": "\"preview:target\"",
+						"description": "The 'target' query string parameter which is required when previewing the custom page at cloudflarepreview.com.",
+						"cfNotes": "The full preview URL is similar to the following: \"cloudflarepreview.com/preview-cpage?act=preview&target=preview:target&url=<YOUR_URL>\"."
+					},
+					"description": {
+						"type": "string",
+						"example": "true",
+						"description": "A short description of the custom page.",
+						"default": ""
+					}
+				},
+				"required_props": [
+					"url"
+				],
+				"optional_props": [
+					"id",
+					"created_on",
+					"modified_on",
+					"state",
+					"required_tokens",
+					"preview_target",
+					"description"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"waf_block\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"url\": \"http://www.example.com\",\n  \"state\": \"default\",\n  \"required_tokens\": [],\n  \"preview_target\": \"preview:target\",\n  \"description\": true\n}",
+				"title": "WAF Block"
+			},
+			{
+				"all_props": {
+					"id": {
+						"example": "\"country_challenge\"",
+						"enum": [
+							"basic_challenge",
+							"managed_challenge",
+							"waf_block",
+							"country_challenge",
+							"ip_block",
+							"under_attack",
+							"500_errors",
+							"1000_errors",
+							"country_challenge"
+						],
+						"readOnly": true,
+						"description": "The name of the custom page type.",
+						"type": "string"
+					},
+					"created_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"readOnly": true,
+						"format": "date-time",
+						"description": "The timestamp of when the custom page was created."
+					},
+					"modified_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"readOnly": true,
+						"format": "date-time",
+						"description": "The timestamp of when the custom page was last modified."
+					},
+					"url": {
+						"type": "string",
+						"example": "\"http://www.example.com\"",
+						"format": "url",
+						"description": "The URL associated with the custom page.",
+						"default": ""
+					},
+					"state": {
+						"example": "\"default\"",
+						"enum": [
+							"default",
+							"customized"
+						],
+						"description": "The custom page state."
+					},
+					"required_tokens": {
+						"type": "array",
+						"example": "[\n  \"::CAPTCHA_BOX::\"\n]",
+						"description": "The string tokens that must be present in your custom HTML page.",
+						"readOnly": true,
+						"uniqueItems": true,
+						"default": [],
+						"items": {
+							"type": "string",
+							"description": "A string token."
+						}
+					},
+					"preview_target": {
+						"type": "string",
+						"example": "\"preview:target\"",
+						"description": "The 'target' query string parameter which is required when previewing the custom page at cloudflarepreview.com.",
+						"cfNotes": "The full preview URL is similar to the following: \"cloudflarepreview.com/preview-cpage?act=preview&target=preview:target&url=<YOUR_URL>\"."
+					},
+					"description": {
+						"type": "string",
+						"example": "true",
+						"description": "A short description of the custom page.",
+						"default": ""
+					}
+				},
+				"required_props": [
+					"url"
+				],
+				"optional_props": [
+					"id",
+					"created_on",
+					"modified_on",
+					"state",
+					"required_tokens",
+					"preview_target",
+					"description"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"country_challenge\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"url\": \"http://www.example.com\",\n  \"state\": \"default\",\n  \"required_tokens\": [\n    \"::CAPTCHA_BOX::\"\n  ],\n  \"preview_target\": \"preview:target\",\n  \"description\": true\n}",
+				"title": "Country Challenge"
+			},
+			{
+				"all_props": {
+					"id": {
+						"example": "\"ip_block\"",
+						"enum": [
+							"basic_challenge",
+							"managed_challenge",
+							"waf_block",
+							"country_challenge",
+							"ip_block",
+							"under_attack",
+							"500_errors",
+							"1000_errors",
+							"ip_block"
+						],
+						"readOnly": true,
+						"description": "The name of the custom page type.",
+						"type": "string"
+					},
+					"created_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"readOnly": true,
+						"format": "date-time",
+						"description": "The timestamp of when the custom page was created."
+					},
+					"modified_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"readOnly": true,
+						"format": "date-time",
+						"description": "The timestamp of when the custom page was last modified."
+					},
+					"url": {
+						"type": "string",
+						"example": "\"http://www.example.com\"",
+						"format": "url",
+						"description": "The URL associated with the custom page.",
+						"default": ""
+					},
+					"state": {
+						"example": "\"default\"",
+						"enum": [
+							"default",
+							"customized"
+						],
+						"description": "The custom page state."
+					},
+					"required_tokens": {
+						"type": "array",
+						"example": "[]",
+						"description": "The string tokens that must be present in the custom page.",
+						"readOnly": true,
+						"uniqueItems": true,
+						"default": []
+					},
+					"preview_target": {
+						"type": "string",
+						"example": "\"preview:target\"",
+						"description": "The 'target' query string parameter which is required when previewing the custom page at cloudflarepreview.com.",
+						"cfNotes": "The full preview URL is similar to the following: \"cloudflarepreview.com/preview-cpage?act=preview&target=preview:target&url=<YOUR_URL>\"."
+					},
+					"description": {
+						"type": "string",
+						"example": "true",
+						"description": "A short description of the custom page.",
+						"default": ""
+					}
+				},
+				"required_props": [
+					"url"
+				],
+				"optional_props": [
+					"id",
+					"created_on",
+					"modified_on",
+					"state",
+					"required_tokens",
+					"preview_target",
+					"description"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"ip_block\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"url\": \"http://www.example.com\",\n  \"state\": \"default\",\n  \"required_tokens\": [],\n  \"preview_target\": \"preview:target\",\n  \"description\": true\n}",
+				"title": "IP Block"
+			},
+			{
+				"all_props": {
+					"id": {
+						"example": "\"under_attack\"",
+						"enum": [
+							"basic_challenge",
+							"managed_challenge",
+							"waf_block",
+							"country_challenge",
+							"ip_block",
+							"under_attack",
+							"500_errors",
+							"1000_errors",
+							"under_attack"
+						],
+						"readOnly": true,
+						"description": "The name of the custom page type.",
+						"type": "string"
+					},
+					"created_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"readOnly": true,
+						"format": "date-time",
+						"description": "The timestamp of when the custom page was created."
+					},
+					"modified_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"readOnly": true,
+						"format": "date-time",
+						"description": "The timestamp of when the custom page was last modified."
+					},
+					"url": {
+						"type": "string",
+						"example": "\"http://www.example.com\"",
+						"format": "url",
+						"description": "The URL associated with the custom page.",
+						"default": ""
+					},
+					"state": {
+						"example": "\"default\"",
+						"enum": [
+							"default",
+							"customized"
+						],
+						"description": "The custom page state."
+					},
+					"required_tokens": {
+						"type": "array",
+						"example": "[\n  \"::IM_UNDER_ATTACK_BOX::\"\n]",
+						"description": "The string tokens that must be present in your custom HTML page.",
+						"readOnly": true,
+						"uniqueItems": true,
+						"default": [],
+						"items": {
+							"type": "string",
+							"description": "A string token."
+						}
+					},
+					"preview_target": {
+						"type": "string",
+						"example": "\"preview:target\"",
+						"description": "The 'target' query string parameter which is required when previewing the custom page at cloudflarepreview.com.",
+						"cfNotes": "The full preview URL is similar to the following: \"cloudflarepreview.com/preview-cpage?act=preview&target=preview:target&url=<YOUR_URL>\"."
+					},
+					"description": {
+						"type": "string",
+						"example": "true",
+						"description": "A short description of the custom page.",
+						"default": ""
+					}
+				},
+				"required_props": [
+					"url"
+				],
+				"optional_props": [
+					"id",
+					"created_on",
+					"modified_on",
+					"state",
+					"required_tokens",
+					"preview_target",
+					"description"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"under_attack\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"url\": \"http://www.example.com\",\n  \"state\": \"default\",\n  \"required_tokens\": [\n    \"::IM_UNDER_ATTACK_BOX::\"\n  ],\n  \"preview_target\": \"preview:target\",\n  \"description\": true\n}",
+				"title": "I'm Under Attack Mode / JavaScript Challenge"
+			},
+			{
+				"all_props": {
+					"id": {
+						"example": "\"500_errors\"",
+						"enum": [
+							"basic_challenge",
+							"managed_challenge",
+							"waf_block",
+							"country_challenge",
+							"ip_block",
+							"under_attack",
+							"500_errors",
+							"1000_errors",
+							"500_errors"
+						],
+						"readOnly": true,
+						"description": "The name of the custom page type.",
+						"type": "string"
+					},
+					"created_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"readOnly": true,
+						"format": "date-time",
+						"description": "The timestamp of when the custom page was created."
+					},
+					"modified_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"readOnly": true,
+						"format": "date-time",
+						"description": "The timestamp of when the custom page was last modified."
+					},
+					"url": {
+						"type": "string",
+						"example": "\"http://www.example.com\"",
+						"format": "url",
+						"description": "The URL associated with the custom page.",
+						"default": ""
+					},
+					"state": {
+						"example": "\"default\"",
+						"enum": [
+							"default",
+							"customized"
+						],
+						"description": "The custom page state."
+					},
+					"required_tokens": {
+						"type": "array",
+						"example": "[\n  \"::CLOUDFLARE_ERROR_500S_BOX::\"\n]",
+						"description": "The string tokens that must be present in your custom HTML page.",
+						"readOnly": true,
+						"uniqueItems": true,
+						"default": [],
+						"items": {
+							"type": "string",
+							"description": "A string token."
+						}
+					},
+					"preview_target": {
+						"type": "string",
+						"example": "\"preview:target\"",
+						"description": "The 'target' query string parameter which is required when previewing the custom page at cloudflarepreview.com.",
+						"cfNotes": "The full preview URL is similar to the following: \"cloudflarepreview.com/preview-cpage?act=preview&target=preview:target&url=<YOUR_URL>\"."
+					},
+					"description": {
+						"type": "string",
+						"example": "true",
+						"description": "A short description of the custom page.",
+						"default": ""
+					}
+				},
+				"required_props": [
+					"url"
+				],
+				"optional_props": [
+					"id",
+					"created_on",
+					"modified_on",
+					"state",
+					"required_tokens",
+					"preview_target",
+					"description"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"500_errors\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"url\": \"http://www.example.com\",\n  \"state\": \"default\",\n  \"required_tokens\": [\n    \"::CLOUDFLARE_ERROR_500S_BOX::\"\n  ],\n  \"preview_target\": \"preview:target\",\n  \"description\": true\n}",
+				"title": "500 Class Errors"
+			},
+			{
+				"all_props": {
+					"id": {
+						"example": "\"1000_errors\"",
+						"enum": [
+							"basic_challenge",
+							"managed_challenge",
+							"waf_block",
+							"country_challenge",
+							"ip_block",
+							"under_attack",
+							"500_errors",
+							"1000_errors",
+							"1000_errors"
+						],
+						"readOnly": true,
+						"description": "The name of the custom page type.",
+						"type": "string"
+					},
+					"created_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"readOnly": true,
+						"format": "date-time",
+						"description": "The timestamp of when the custom page was created."
+					},
+					"modified_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"readOnly": true,
+						"format": "date-time",
+						"description": "The timestamp of when the custom page was last modified."
+					},
+					"url": {
+						"type": "string",
+						"example": "\"http://www.example.com\"",
+						"format": "url",
+						"description": "The URL associated with the custom page.",
+						"default": ""
+					},
+					"state": {
+						"example": "\"default\"",
+						"enum": [
+							"default",
+							"customized"
+						],
+						"description": "The custom page state."
+					},
+					"required_tokens": {
+						"type": "array",
+						"example": "[\n  \"::CLOUDFLARE_ERROR_1000S_BOX::\"\n]",
+						"description": "The string tokens that must be present in your custom HTML page.",
+						"readOnly": true,
+						"uniqueItems": true,
+						"default": [],
+						"items": {
+							"type": "string",
+							"description": "A string token."
+						}
+					},
+					"preview_target": {
+						"type": "string",
+						"example": "\"preview:target\"",
+						"description": "The 'target' query string parameter which is required when previewing the custom page at cloudflarepreview.com.",
+						"cfNotes": "The full preview URL is similar to the following: \"cloudflarepreview.com/preview-cpage?act=preview&target=preview:target&url=<YOUR_URL>\"."
+					},
+					"description": {
+						"type": "string",
+						"example": "true",
+						"description": "A short description of the custom page.",
+						"default": ""
+					}
+				},
+				"required_props": [
+					"url"
+				],
+				"optional_props": [
+					"id",
+					"created_on",
+					"modified_on",
+					"state",
+					"required_tokens",
+					"preview_target",
+					"description"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"1000_errors\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"url\": \"http://www.example.com\",\n  \"state\": \"default\",\n  \"required_tokens\": [\n    \"::CLOUDFLARE_ERROR_1000S_BOX::\"\n  ],\n  \"preview_target\": \"preview:target\",\n  \"description\": true\n}",
+				"title": "1000 Class Errors"
+			}
+		],
+		"example": "{\n  \"id\": \"basic_challenge\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"url\": \"http://www.example.com\",\n  \"state\": \"default\",\n  \"required_tokens\": [\n    \"::CAPTCHA_BOX::\"\n  ],\n  \"preview_target\": \"preview:target\",\n  \"description\": true\n}",
+		"which_of": "oneOf",
+		"title": "Custom pages for an account",
+		"description": "Custom pages configuration at the account level."
+	}
+}

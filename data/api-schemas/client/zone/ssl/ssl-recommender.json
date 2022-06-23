@@ -1,0 +1,128 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/ssl/ssl-recommender.json",
+	"title": "SSL/TLS Mode Recommendation",
+	"description": "SSL/TLS Recommendation for a zone",
+	"type": "object",
+	"links": [
+		{
+			"title": "SSL/TLS Recommendation",
+			"description": "Retrieve the SSL/TLS Recommender's recommendation for a zone",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/ssl/recommendation",
+			"method": "GET",
+			"cfOwnership": "rtg",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#ssl:read"
+				]
+			},
+			"html_id": "ssl/tls-mode-recommendation-ssl/tls-recommendation",
+			"uri": "zones/:zone_identifier/ssl/recommendation",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/ssl/recommendation\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"ssl_recommendation\",\n    \"value\": \"strict\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
+		}
+	],
+	"html_id": "ssl/tls-mode-recommendation",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"success": {
+				"type": "boolean",
+				"example": "true",
+				"description": "Whether the API call was successful or not",
+				"enum": [
+					true
+				]
+			},
+			"errors": {
+				"type": "array",
+				"example": "[]",
+				"items": {
+					"type": "object",
+					"required": [
+						"code",
+						"message"
+					],
+					"properties": {
+						"code": {
+							"type": "integer",
+							"minimum": 1000
+						},
+						"message": {
+							"type": "string"
+						}
+					},
+					"uniqueItems": true
+				}
+			},
+			"messages": {
+				"type": "array",
+				"example": "[]",
+				"items": {
+					"type": "object",
+					"required": [
+						"code",
+						"message"
+					],
+					"properties": {
+						"code": {
+							"type": "integer",
+							"minimum": 1000
+						},
+						"message": {
+							"type": "string"
+						}
+					},
+					"uniqueItems": true
+				}
+			},
+			"result": {
+				"example": "{\n  \"id\": \"ssl_recommendation\",\n  \"value\": \"strict\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
+				"properties": {
+					"id": {
+						"type": "string",
+						"example": "\"ssl_recommendation\"",
+						"description": "Identifier of a recommedation result"
+					},
+					"value": {
+						"type": "string",
+						"example": "\"strict\"",
+						"enum": [
+							"flexible",
+							"full",
+							"strict"
+						]
+					},
+					"modified_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"description": "Last modification time",
+						"format": "date-time",
+						"readOnly": true
+					}
+				}
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"success",
+			"errors",
+			"messages",
+			"result"
+		],
+		"objects": [],
+		"example": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"ssl_recommendation\",\n    \"value\": \"strict\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}",
+		"title": "SSL/TLS Mode Recommendation",
+		"description": "SSL/TLS Recommendation for a zone"
+	}
+}

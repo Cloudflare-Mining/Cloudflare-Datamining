@@ -1,0 +1,331 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/teams/lists.json",
+	"title": "Zero Trust Lists",
+	"description": "Lists are referenced when creating Secure Web Gateway policies.",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Zero Trust Lists",
+			"description": "List Zero Trust Lists for an account",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/gateway/lists",
+			"method": "GET",
+			"cfOwnership": "gateway",
+			"html_id": "zero-trust-lists-list-zero-trust-lists",
+			"uri": "accounts/:identifier/gateway/lists",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/lists\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"name\": \"Admin Serial Numbers\",\n      \"description\": \"The serial numbers for administrators\",\n      \"type\": \"SERIAL\",\n      \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"count\": 20\n    }\n  ]\n}"
+		},
+		{
+			"title": "Zero Trust List Details",
+			"description": "Fetch a single Zero Trust List",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/gateway/lists/{#/definitions/uuid}",
+			"method": "GET",
+			"cfOwnership": "gateway",
+			"html_id": "zero-trust-lists-zero-trust-list-details",
+			"uri": "accounts/:identifier/gateway/lists/:uuid",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/lists/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"name\": \"Admin Serial Numbers\",\n    \"description\": \"The serial numbers for administrators\",\n    \"type\": \"SERIAL\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"count\": 20\n  }\n}"
+		},
+		{
+			"title": "Zero Trust List Items",
+			"description": "Fetch all items of a single Zero Trust List",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/gateway/lists/{#/definitions/uuid}/items",
+			"method": "GET",
+			"cfOwnership": "gateway",
+			"html_id": "zero-trust-lists-zero-trust-list-items",
+			"uri": "accounts/:identifier/gateway/lists/:uuid/items",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/lists/f174e90a-fafe-4643-bbbc-4a0ed4fc8415/items?page=1&per_page=50\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"page": {
+						"type": "number",
+						"example": "1",
+						"description": "Page number of paginated results",
+						"minimum": 1,
+						"default": 1
+					},
+					"per_page": {
+						"type": "number",
+						"example": "50",
+						"description": "Number of items per page",
+						"minimum": 5,
+						"maximum": 1000,
+						"default": 50
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"page",
+					"per_page"
+				],
+				"objects": [],
+				"example": "{\n  \"page\": 1,\n  \"per_page\": 50\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    [\n      {\n        \"value\": \"8GE8721REF\",\n        \"created_at\": \"2014-01-01T05:20:00.12345Z\"\n      }\n    ]\n  ],\n  \"result_info\": {\n    \"page\": 1,\n    \"per_page\": 20,\n    \"count\": 1,\n    \"total_count\": 2000\n  }\n}"
+		},
+		{
+			"title": "Create Zero Trust List",
+			"description": "Create a new Zero Trust List",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/gateway/lists",
+			"method": "POST",
+			"cfOwnership": "gateway",
+			"html_id": "zero-trust-lists-create-zero-trust-list",
+			"uri": "accounts/:identifier/gateway/lists",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/lists\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"Admin Serial Numbers\",\"description\":\"The serial numbers for administrators\",\"type\":\"SERIAL\",\"items\":[{\"value\":\"8GE8721REF\",\"created_at\":\"2014-01-01T05:20:00.12345Z\"}]}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"Admin Serial Numbers\"",
+						"description": "The name of the List."
+					},
+					"description": {
+						"type": "string",
+						"example": "\"The serial numbers for administrators\"",
+						"description": "The description of the List"
+					},
+					"type": {
+						"type": "string",
+						"example": "\"SERIAL\"",
+						"description": "The type of List.",
+						"enum": [
+							"SERIAL",
+							"URL",
+							"DOMAIN",
+							"EMAIL",
+							"IP"
+						]
+					},
+					"items": {
+						"type": "array",
+						"example": "[\n  {\n    \"value\": \"8GE8721REF\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\"\n  }\n]",
+						"description": "The items in the List.",
+						"items": {
+							"type": "object",
+							"properties": {
+								"value": {
+									"type": "string",
+									"description": "The value of the item in a List.",
+									"example": "8GE8721REF"
+								},
+								"created_at": {
+									"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
+									"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+									"description": "Creation time",
+									"type": "string",
+									"format": "date-time",
+									"readOnly": true,
+									"example": "2014-01-01T05:20:00.12345Z"
+								}
+							}
+						}
+					}
+				},
+				"required_props": [
+					"name",
+					"type"
+				],
+				"optional_props": [
+					"description",
+					"items"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": \"Admin Serial Numbers\",\n  \"description\": \"The serial numbers for administrators\",\n  \"type\": \"SERIAL\",\n  \"items\": [\n    {\n      \"value\": \"8GE8721REF\",\n      \"created_at\": \"2014-01-01T05:20:00.12345Z\"\n    }\n  ]\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"name\": \"Admin Serial Numbers\",\n    \"description\": \"The serial numbers for administrators\",\n    \"type\": \"SERIAL\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"items\": [\n      {\n        \"value\": \"8GE8721REF\",\n        \"created_at\": \"2014-01-01T05:20:00.12345Z\"\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Update Zero Trust List",
+			"description": "Update a configured Zero Trust List",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/gateway/lists/{#/definitions/uuid}",
+			"method": "PUT",
+			"cfOwnership": "gateway",
+			"html_id": "zero-trust-lists-update-zero-trust-list",
+			"uri": "accounts/:identifier/gateway/lists/:uuid",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/lists/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"Admin Serial Numbers\",\"description\":\"The serial numbers for administrators\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"Admin Serial Numbers\"",
+						"description": "The name of the List."
+					},
+					"description": {
+						"type": "string",
+						"example": "\"The serial numbers for administrators\"",
+						"description": "The description of the List"
+					}
+				},
+				"required_props": [
+					"name"
+				],
+				"optional_props": [
+					"description"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": \"Admin Serial Numbers\",\n  \"description\": \"The serial numbers for administrators\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"name\": \"Admin Serial Numbers\",\n    \"description\": \"The serial numbers for administrators\",\n    \"type\": \"SERIAL\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"count\": 20\n  }\n}"
+		},
+		{
+			"title": "Patch Zero Trust List",
+			"description": "Append or remove an item from a configured Zero Trust List",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/gateway/lists/{#/definitions/uuid}",
+			"method": "PATCH",
+			"cfOwnership": "gateway",
+			"html_id": "zero-trust-lists-patch-zero-trust-list",
+			"uri": "accounts/:identifier/gateway/lists/:uuid",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/lists/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"append\":[{\"value\":\"8GE8721REF\",\"created_at\":\"2014-01-01T05:20:00.12345Z\"}],\"remove\":[\"8GE8721REF\"]}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"append": {
+						"type": "array",
+						"example": "[\n  {\n    \"value\": \"8GE8721REF\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\"\n  }\n]",
+						"description": "The items in the List.",
+						"items": {
+							"type": "object",
+							"properties": {
+								"value": {
+									"type": "string",
+									"description": "The value of the item in a List.",
+									"example": "8GE8721REF"
+								},
+								"created_at": {
+									"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
+									"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+									"description": "Creation time",
+									"type": "string",
+									"format": "date-time",
+									"readOnly": true,
+									"example": "2014-01-01T05:20:00.12345Z"
+								}
+							}
+						}
+					},
+					"remove": {
+						"type": "array",
+						"example": "[\n  \"8GE8721REF\"\n]",
+						"description": "A list of the item values you want to remove.",
+						"items": {
+							"type": "string",
+							"description": "The value of the item in a List.",
+							"example": "8GE8721REF"
+						}
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"append",
+					"remove"
+				],
+				"objects": [],
+				"example": "{\n  \"append\": [\n    {\n      \"value\": \"8GE8721REF\",\n      \"created_at\": \"2014-01-01T05:20:00.12345Z\"\n    }\n  ],\n  \"remove\": [\n    \"8GE8721REF\"\n  ]\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"name\": \"Admin Serial Numbers\",\n    \"description\": \"The serial numbers for administrators\",\n    \"type\": \"SERIAL\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"count\": 20\n  }\n}"
+		},
+		{
+			"title": "Delete Zero Trust List",
+			"description": "Delete a Zero Trust List",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/gateway/lists/{#/definitions/uuid}",
+			"method": "DELETE",
+			"cfOwnership": "gateway",
+			"html_id": "zero-trust-lists-delete-zero-trust-list",
+			"uri": "accounts/:identifier/gateway/lists/:uuid",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/lists/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {}\n}"
+		}
+	],
+	"html_id": "zero-trust-lists",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"",
+				"maxLength": 36,
+				"description": "API Resource UUID tag"
+			},
+			"name": {
+				"type": "string",
+				"example": "\"Admin Serial Numbers\"",
+				"description": "The name of the List."
+			},
+			"description": {
+				"type": "string",
+				"example": "\"The serial numbers for administrators\"",
+				"description": "The description of the List"
+			},
+			"type": {
+				"type": "string",
+				"example": "\"SERIAL\"",
+				"description": "The type of List.",
+				"enum": [
+					"SERIAL",
+					"URL",
+					"DOMAIN",
+					"EMAIL",
+					"IP"
+				]
+			},
+			"created_at": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "Creation time",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"updated_at": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "Last modification time",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"count": {
+				"type": "number",
+				"example": "20",
+				"description": "The number of items in the List.",
+				"readOnly": true
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"name",
+			"description",
+			"type",
+			"created_at",
+			"updated_at",
+			"count"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n  \"name\": \"Admin Serial Numbers\",\n  \"description\": \"The serial numbers for administrators\",\n  \"type\": \"SERIAL\",\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"count\": 20\n}",
+		"title": "Zero Trust Lists",
+		"description": "Lists are referenced when creating Secure Web Gateway policies."
+	}
+}

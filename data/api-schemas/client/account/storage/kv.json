@@ -1,0 +1,807 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/storage/kv.json",
+	"title": "Workers KV Namespace",
+	"description": "A Namespace is a collection of key-value pairs stored in Workers KV.",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Namespaces",
+			"description": "Returns the namespaces owned by an account",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/storage/kv/namespaces",
+			"method": "GET",
+			"cfOwnership": "storage",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.edge.storage.kv.namespace.list"
+				]
+			},
+			"html_id": "workers-kv-namespace-list-namespaces",
+			"uri": "accounts/:account_identifier/storage/kv/namespaces",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/storage/kv/namespaces?page=1&per_page=20&order=id&direction=asc\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"page": {
+						"type": "number",
+						"example": "1",
+						"minimum": 1,
+						"default": 1,
+						"description": "Page number of paginated results"
+					},
+					"per_page": {
+						"type": "number",
+						"example": "20",
+						"minimum": 5,
+						"maximum": 100,
+						"default": 20,
+						"description": "Maximum number of results per page"
+					},
+					"order": {
+						"example": "\"id\"",
+						"enum": [
+							"id",
+							"title"
+						],
+						"description": "Field to order results by"
+					},
+					"direction": {
+						"example": "\"asc\"",
+						"enum": [
+							"asc",
+							"desc"
+						],
+						"description": "Direction to order namespaces"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"page",
+					"per_page",
+					"order",
+					"direction"
+				],
+				"objects": [],
+				"example": "{\n  \"page\": 1,\n  \"per_page\": 20,\n  \"order\": \"id\",\n  \"direction\": \"asc\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"0f2ac74b498b48028cb68387c421e279\",\n      \"title\": \"My Own Namespace\",\n      \"supports_url_encoding\": true\n    }\n  ]\n}"
+		},
+		{
+			"title": "Create a Namespace",
+			"description": "Creates a namespace under the given title. A 400 is returned if the account already owns a namespace with this title. A namespace must be explicitly deleted to be replaced.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/storage/kv/namespaces",
+			"method": "POST",
+			"cfOwnership": "storage",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key",
+					"Content-Type"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					},
+					"Content-Type": {
+						"type": "string",
+						"enum": [
+							"application/json"
+						],
+						"example": "application/json"
+					}
+				}
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.edge.storage.kv.namespace.create"
+				]
+			},
+			"html_id": "workers-kv-namespace-create-a-namespace",
+			"uri": "accounts/:account_identifier/storage/kv/namespaces",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/storage/kv/namespaces\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"title\":\"My Own Namespace\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"title": {
+						"type": "string",
+						"example": "\"My Own Namespace\"",
+						"description": "A human-readable string name for a Namespace."
+					}
+				},
+				"required_props": [
+					"title"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"title\": \"My Own Namespace\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"0f2ac74b498b48028cb68387c421e279\",\n    \"title\": \"My Own Namespace\",\n    \"supports_url_encoding\": true\n  }\n}"
+		},
+		{
+			"title": "Remove a Namespace",
+			"description": "Deletes the namespace corresponding to the given ID.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/storage/kv/namespaces/{#/definitions/namespace_identifier}",
+			"method": "DELETE",
+			"cfOwnership": "storage",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.edge.storage.kv.namespace.delete"
+				]
+			},
+			"html_id": "workers-kv-namespace-remove-a-namespace",
+			"uri": "accounts/:account_identifier/storage/kv/namespaces/:namespace_identifier",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/storage/kv/namespaces/0f2ac74b498b48028cb68387c421e279\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
+		},
+		{
+			"title": "Rename a Namespace",
+			"description": "Modifies a namespace's title.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/storage/kv/namespaces/{#/definitions/namespace_identifier}",
+			"method": "PUT",
+			"cfOwnership": "storage",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key",
+					"Content-Type"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					},
+					"Content-Type": {
+						"type": "string",
+						"enum": [
+							"application/json"
+						],
+						"example": "application/json"
+					}
+				}
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.edge.storage.kv.namespace.delete"
+				]
+			},
+			"html_id": "workers-kv-namespace-rename-a-namespace",
+			"uri": "accounts/:account_identifier/storage/kv/namespaces/:namespace_identifier",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/storage/kv/namespaces/0f2ac74b498b48028cb68387c421e279\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"title\":\"My Own Namespace\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"title": {
+						"type": "string",
+						"example": "\"My Own Namespace\"",
+						"description": "A human-readable string name for a Namespace."
+					}
+				},
+				"required_props": [
+					"title"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"title\": \"My Own Namespace\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
+		},
+		{
+			"title": "List a Namespace's Keys",
+			"description": "Lists a namespace's keys.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/storage/kv/namespaces/{#/definitions/namespace_identifier}/keys",
+			"method": "GET",
+			"cfOwnership": "storage",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.edge.storage.kv.key.list"
+				]
+			},
+			"html_id": "workers-kv-namespace-list-a-namespace-s-keys",
+			"uri": "accounts/:account_identifier/storage/kv/namespaces/:namespace_identifier/keys",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/storage/kv/namespaces/0f2ac74b498b48028cb68387c421e279/keys?limit=1000&cursor=6Ck1la0VxJ0djhidm1MdX2FyDGxLKVeeHZZmORS_8XeSuhz9SjIJRaSa2lnsF01tQOHrfTGAP3R5X1Kv5iVUuMbNKhWNAXHOl6ePB0TUL8nw&prefix=My-Prefix\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"limit": {
+						"type": "number",
+						"example": "1000",
+						"minimum": 10,
+						"maximum": 1000,
+						"default": 1000,
+						"description": "The number of keys to return. The cursor attribute may be used to iterate over the next batch of keys if there are more than the limit."
+					},
+					"cursor": {
+						"type": "string",
+						"example": "\"6Ck1la0VxJ0djhidm1MdX2FyDGxLKVeeHZZmORS_8XeSuhz9SjIJRaSa2lnsF01tQOHrfTGAP3R5X1Kv5iVUuMbNKhWNAXHOl6ePB0TUL8nw\"",
+						"description": "Opaque token indicating the position from which to continue when requesting the next set of records if the amount of list results was limited by the limit parameter. A valid value for the cursor can be obtained from the cursors object in the result_info structure."
+					},
+					"prefix": {
+						"type": "string",
+						"example": "\"My-Prefix\"",
+						"description": "A string prefix used to filter down which keys will be returned. Exact matches and any key names that begin with the prefix will be returned."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"limit",
+					"cursor",
+					"prefix"
+				],
+				"objects": [],
+				"example": "{\n  \"limit\": 1000,\n  \"cursor\": \"6Ck1la0VxJ0djhidm1MdX2FyDGxLKVeeHZZmORS_8XeSuhz9SjIJRaSa2lnsF01tQOHrfTGAP3R5X1Kv5iVUuMbNKhWNAXHOl6ePB0TUL8nw\",\n  \"prefix\": \"My-Prefix\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"name\": \"My-Key\",\n      \"expiration\": 1577836800,\n      \"metadata\": {\n        \"someMetadataKey\": \"someMetadataValue\"\n      }\n    }\n  ],\n  \"result_info\": {\n    \"count\": 1,\n    \"cursor\": \"6Ck1la0VxJ0djhidm1MdX2FyDGxLKVeeHZZmORS_8XeSuhz9SjIJRaSa2lnsF01tQOHrfTGAP3R5X1Kv5iVUuMbNKhWNAXHOl6ePB0TUL8nw\"\n  }\n}"
+		},
+		{
+			"title": "Read key-value pair",
+			"description": "Returns the value associated with the given key in the given namespace. Use URL-encoding to use special characters (e.g. :, !, %) in the key name. If the KV-pair is set to expire at some point, the expiration time as measured in seconds since the UNIX epoch will be returned in the \"Expiration\" response header.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/storage/kv/namespaces/{#/definitions/namespace_identifier}/values/{#/definitions/key_name}",
+			"method": "GET",
+			"cfOwnership": "storage",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.edge.storage.kv.key.read"
+				]
+			},
+			"html_id": "workers-kv-namespace-read-key-value-pair",
+			"uri": "accounts/:account_identifier/storage/kv/namespaces/:namespace_identifier/values/:key_name",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/storage/kv/namespaces/0f2ac74b498b48028cb68387c421e279/values/My-Key\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
+			"response": "\"Some Value\""
+		},
+		{
+			"title": "Read the metadata for a key",
+			"description": "Returns the metadata associated with the given key in the given namespace. Use URL-encoding to use special characters (e.g. :, !, %) in the key name.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/storage/kv/namespaces/{#/definitions/namespace_identifier}/metadata/{#/definitions/key_name}",
+			"method": "GET",
+			"cfOwnership": "storage",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.edge.storage.kv.key.read"
+				]
+			},
+			"html_id": "workers-kv-namespace-read-the-metadata-for-a-key",
+			"uri": "accounts/:account_identifier/storage/kv/namespaces/:namespace_identifier/metadata/:key_name",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/storage/kv/namespaces/0f2ac74b498b48028cb68387c421e279/metadata/My-Key\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"someMetadataKey\": \"someMetadataValue\"\n  }\n}"
+		},
+		{
+			"title": "Write key-value pair",
+			"description": "Write a value identified by a key. Use URL-encoding to use special characters (e.g. :, !, %) in the key name. Body should be the value to be stored. Existing values and expirations will be overwritten. If neither `expiration` nor `expiration_ttl` is specified, the key-value pair will never expire. If both are set, `expiration_ttl` is used and `expiration` is ignored.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/storage/kv/namespaces/{#/definitions/namespace_identifier}/values/{#/definitions/key_name}?expiration={#/definitions/expiration}&expiration_ttl={#/definitions/expiration_ttl}",
+			"method": "PUT",
+			"cfOwnership": "storage",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key",
+					"Content-Type"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					},
+					"Content-Type": {
+						"type": "string",
+						"enum": [
+							"text/plain"
+						],
+						"example": "text/plain"
+					}
+				}
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.edge.storage.kv.key.update"
+				]
+			},
+			"html_id": "workers-kv-namespace-write-key-value-pair",
+			"uri": "accounts/:account_identifier/storage/kv/namespaces/:namespace_identifier/values/:key_name?expiration=:expiration&expiration_ttl=:expiration_ttl",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/storage/kv/namespaces/0f2ac74b498b48028cb68387c421e279/values/My-Key?expiration=1578435000&expiration_ttl=300\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: text/plain\" \\\n     --data '\"Some Value\"'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {},
+				"required_props": [],
+				"optional_props": [],
+				"objects": [],
+				"example": "\"Some Value\"",
+				"description": "A byte sequence to be stored, up to 10 MB in length."
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
+		},
+		{
+			"title": "Write key-value pair with metadata",
+			"description": "Write a value identified by a key. Use URL-encoding to use special characters (e.g. :, !, %) in the key name. Body should be the value to be stored along with json metadata to be associated with the key/value pair. Existing values, expirations and metadata will be overwritten. If neither `expiration` nor `expiration_ttl` is specified, the key-value pair will never expire. If both are set, `expiration_ttl` is used and `expiration` is ignored.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/storage/kv/namespaces/{#/definitions/namespace_identifier}/values/{#/definitions/key_name}?expiration={#/definitions/expiration}&expiration_ttl={#/definitions/expiration_ttl}",
+			"method": "PUT",
+			"encType": "multipart/form-data",
+			"cfOwnership": "storage",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key",
+					"Content-Type"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					},
+					"Content-Type": {
+						"type": "string",
+						"enum": [
+							"multipart/form-data"
+						],
+						"example": "multipart/form-data"
+					}
+				}
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.edge.storage.kv.key.update"
+				]
+			},
+			"html_id": "workers-kv-namespace-write-key-value-pair-with-metadata",
+			"uri": "accounts/:account_identifier/storage/kv/namespaces/:namespace_identifier/values/:key_name?expiration=:expiration&expiration_ttl=:expiration_ttl",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/storage/kv/namespaces/0f2ac74b498b48028cb68387c421e279/values/My-Key?expiration=1578435000&expiration_ttl=300\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: multipart/form-data\" \\\n     --form 'value=Some Value' \\\n     --form 'metadata={\"someMetadataKey\": \"someMetadataValue\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"value": {
+						"type": "string",
+						"example": "\"Some Value\"",
+						"description": "A byte sequence to be stored, up to 10 MB in length."
+					},
+					"metadata": {
+						"type": "string",
+						"example": "\"{\\\"someMetadataKey\\\": \\\"someMetadataValue\\\"}\"",
+						"media": {
+							"type": "application/json"
+						},
+						"description": "Arbitrary JSON to be associated with a key/value pair"
+					}
+				},
+				"required_props": [
+					"value",
+					"metadata"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"value\": \"Some Value\",\n  \"metadata\": \"{\\\"someMetadataKey\\\": \\\"someMetadataValue\\\"}\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
+		},
+		{
+			"title": "Write multiple key-value pairs",
+			"description": "Write multiple keys and values at once. Body should be an array of up to 10,000 key-value pairs to be stored, along with optional expiration information. Existing values and expirations will be overwritten. If neither expiration nor expiration_ttl is specified, the key-value pair will never expire. If both are set, `expiration_ttl` is used and `expiration` is ignored. The entire request size must be 100 megabytes or less.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/storage/kv/namespaces/{#/definitions/namespace_identifier}/bulk",
+			"method": "PUT",
+			"cfOwnership": "storage",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key",
+					"Content-Type"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					},
+					"Content-Type": {
+						"type": "string",
+						"enum": [
+							"application/json"
+						],
+						"example": "application/json"
+					}
+				}
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.edge.storage.kv.key.update"
+				]
+			},
+			"html_id": "workers-kv-namespace-write-multiple-key-value-pairs",
+			"uri": "accounts/:account_identifier/storage/kv/namespaces/:namespace_identifier/bulk",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/storage/kv/namespaces/0f2ac74b498b48028cb68387c421e279/bulk\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '[{\"key\":\"My-Key\",\"value\":\"Some string\",\"expiration\":1578435000,\"expiration_ttl\":300,\"metadata\":{\"someMetadataKey\":\"someMetadataValue\"},\"base64\":false}]'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"key": {
+						"type": "string",
+						"example": "\"My-Key\"",
+						"description": "A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid.",
+						"maxLength": 512
+					},
+					"value": {
+						"type": "string",
+						"example": "\"Some string\"",
+						"description": "A UTF-8 encoded string to be stored, up to 10 MB in length.",
+						"maxLength": 10485760
+					},
+					"expiration": {
+						"type": "number",
+						"example": "1578435000",
+						"description": "The time, measured in number of seconds since the UNIX epoch, at which the key should expire."
+					},
+					"expiration_ttl": {
+						"type": "number",
+						"example": "300",
+						"description": "The number of seconds for which the key should be visible before it expires. At least 60."
+					},
+					"metadata": {
+						"type": "object",
+						"example": "{\n  \"someMetadataKey\": \"someMetadataValue\"\n}",
+						"description": "Arbitrary JSON that is associated with a key"
+					},
+					"base64": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Whether or not the server should base64 decode the value before storing it. Useful for writing values that wouldn't otherwise be valid JSON strings, such as images.",
+						"default": false
+					}
+				},
+				"required_props": [
+					"key",
+					"value"
+				],
+				"optional_props": [
+					"expiration",
+					"expiration_ttl",
+					"metadata",
+					"base64"
+				],
+				"objects": [],
+				"example": "{\n  \"key\": \"My-Key\",\n  \"value\": \"Some string\",\n  \"expiration\": 1578435000,\n  \"expiration_ttl\": 300,\n  \"metadata\": {\n    \"someMetadataKey\": \"someMetadataValue\"\n  },\n  \"base64\": false\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
+		},
+		{
+			"title": "Delete key-value pair",
+			"description": "Remove a KV pair from the Namespace. Use URL-encoding to use special characters (e.g. :, !, %) in the key name.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/storage/kv/namespaces/{#/definitions/namespace_identifier}/values/{#/definitions/key_name}",
+			"method": "DELETE",
+			"cfOwnership": "storage",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.edge.storage.kv.key.delete"
+				]
+			},
+			"html_id": "workers-kv-namespace-delete-key-value-pair",
+			"uri": "accounts/:account_identifier/storage/kv/namespaces/:namespace_identifier/values/:key_name",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/storage/kv/namespaces/0f2ac74b498b48028cb68387c421e279/values/My-Key\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
+		},
+		{
+			"title": "Delete multiple key-value pairs",
+			"description": "Remove multiple KV pairs from the Namespace. Body should be an array of up to 10,000 keys to be removed.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/storage/kv/namespaces/{#/definitions/namespace_identifier}/bulk",
+			"method": "DELETE",
+			"cfOwnership": "storage",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key",
+					"Content-Type"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					},
+					"Content-Type": {
+						"type": "string",
+						"enum": [
+							"application/json"
+						],
+						"example": "application/json"
+					}
+				}
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.edge.storage.kv.key.delete"
+				]
+			},
+			"html_id": "workers-kv-namespace-delete-multiple-key-value-pairs",
+			"uri": "accounts/:account_identifier/storage/kv/namespaces/:namespace_identifier/bulk",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/storage/kv/namespaces/0f2ac74b498b48028cb68387c421e279/bulk\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '[\"My-Key\"]'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {},
+				"required_props": [],
+				"optional_props": [],
+				"objects": [],
+				"example": "\"My-Key\"",
+				"description": "A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid."
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
+		}
+	],
+	"cfLinkErrors": {
+		"10001": "service temporarily unavailable",
+		"10002": "missing CF-Ray header",
+		"10003": "missing account public ID",
+		"10004": "missing account tag",
+		"10005": "URL parameter account tag does not match JWT account tag",
+		"10006": "malformed account tag",
+		"10007": "malformed page argument",
+		"10008": "malformed per_page argument",
+		"10009": "key not found",
+		"10010": "malformed namespace",
+		"10011": "malformed namespace ID",
+		"10012": "malformed value",
+		"10013": "namespace not found",
+		"10014": "namespace already exists",
+		"10015": "missing account internal ID",
+		"10016": "malformed account internal ID",
+		"10018": "too many namespaces in this account",
+		"10019": "missing title",
+		"10021": "this namespace does not support the list-keys endpoint",
+		"10022": "too many requests",
+		"10024": "payload too large",
+		"10025": "endpoint does not exist",
+		"10026": "not entitled",
+		"10028": "invalid limit argument",
+		"10029": "invalid request",
+		"10030": "key too long",
+		"10033": "invalid expiration",
+		"10034": "invalid expiration ttl",
+		"10035": "this namespace does not support the bulk endpoint",
+		"10037": "the user lacks the permissions to perform this operation",
+		"10038": "this namespace does not support the list-keys prefix parameter",
+		"10041": "invalid \"list keys\" cursor",
+		"10042": "illegal key name",
+		"10043": "invalid order",
+		"10044": "invalid direction",
+		"10045": "deprecated endpoint",
+		"10046": "too many bulk requests",
+		"10047": "invalid metadata",
+		"10048": "free limit reached"
+	},
+	"html_id": "workers-kv-namespace",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"0f2ac74b498b48028cb68387c421e279\"",
+				"description": "Namespace identifier tag.",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"title": {
+				"type": "string",
+				"example": "\"My Own Namespace\"",
+				"description": "A human-readable string name for a Namespace."
+			},
+			"supports_url_encoding": {
+				"type": "boolean",
+				"example": "true",
+				"description": "True if keys written on the URL will be URL-decoded before storing. For example, if set to \"true\", a key written on the URL as \"%3F\" will be stored as \"?\".",
+				"readOnly": true
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"title",
+			"supports_url_encoding"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"0f2ac74b498b48028cb68387c421e279\",\n  \"title\": \"My Own Namespace\",\n  \"supports_url_encoding\": true\n}",
+		"title": "Workers KV Namespace",
+		"description": "A Namespace is a collection of key-value pairs stored in Workers KV."
+	}
+}

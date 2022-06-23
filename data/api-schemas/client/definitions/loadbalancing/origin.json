@@ -1,0 +1,109 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/definitions/loadbalancing/origin.json",
+	"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+	"title": "Load Balancer origin",
+	"description": "Load Balancer Origin",
+	"type": "object",
+	"definitions": {
+		"name": {
+			"type": "string",
+			"description": "A human-identifiable name for the origin.",
+			"example": "app-server-1"
+		},
+		"address": {
+			"type": "string",
+			"description": "The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare.",
+			"example": "0.0.0.0"
+		},
+		"enabled": {
+			"type": "boolean",
+			"description": "Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.",
+			"example": true,
+			"default": true
+		},
+		"weight": {
+			"type": "number",
+			"minimum": 0,
+			"maximum": 1,
+			"multipleOfPrecision": 0.01,
+			"description": "The weight of this origin relative to other origins in the Pool. Based on the configured weight the total traffic is distributed among origins within the Pool.",
+			"example": 0.56,
+			"default": 1
+		},
+		"disabled_at": {
+			"type": "string",
+			"description": "This field shows up only if the origin is disabled. This field is set with the time the origin was disabled at.",
+			"format": "date-time",
+			"readOnly": true
+		},
+		"Host": {
+			"type": "array",
+			"description": "The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin.",
+			"items": {
+				"type": "string",
+				"example": "example.com"
+			}
+		},
+		"header": {
+			"type": "object",
+			"description": "The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'.",
+			"properties": {
+				"Host": {
+					"type": "array",
+					"description": "The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin.",
+					"items": {
+						"type": "string",
+						"example": "example.com"
+					}
+				}
+			}
+		}
+	},
+	"properties": {
+		"name": {
+			"type": "string",
+			"description": "A human-identifiable name for the origin.",
+			"example": "app-server-1"
+		},
+		"address": {
+			"type": "string",
+			"description": "The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare.",
+			"example": "0.0.0.0"
+		},
+		"enabled": {
+			"type": "boolean",
+			"description": "Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.",
+			"example": true,
+			"default": true
+		},
+		"weight": {
+			"type": "number",
+			"minimum": 0,
+			"maximum": 1,
+			"multipleOfPrecision": 0.01,
+			"description": "The weight of this origin relative to other origins in the Pool. Based on the configured weight the total traffic is distributed among origins within the Pool.",
+			"example": 0.56,
+			"default": 1
+		},
+		"disabled_at": {
+			"type": "string",
+			"description": "This field shows up only if the origin is disabled. This field is set with the time the origin was disabled at.",
+			"format": "date-time",
+			"readOnly": true
+		},
+		"header": {
+			"type": "object",
+			"description": "The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'.",
+			"properties": {
+				"Host": {
+					"type": "array",
+					"description": "The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin.",
+					"items": {
+						"type": "string",
+						"example": "example.com"
+					}
+				}
+			}
+		}
+	}
+}

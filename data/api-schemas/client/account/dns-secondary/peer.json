@@ -1,0 +1,282 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/dns-secondary/peer.json",
+	"title": "Secondary DNS (Peer)",
+	"description": "Peer nameservers for secondary DNS",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Peers",
+			"description": "List Peers",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/secondary_dns/peers",
+			"method": "GET",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:read",
+					"#organization:read"
+				]
+			},
+			"html_id": "secondary-dns-peer--list-peers",
+			"uri": "accounts/:account_identifier/secondary_dns/peers",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/secondary_dns/peers\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"23ff594956f20c2a721606e94745a8aa\",\n      \"ip\": \"192.0.2.53\",\n      \"port\": 53,\n      \"ixfr_enable\": false,\n      \"tsig_id\": \"69cd1e104af3e6ed3cb344f263fd0d5a\",\n      \"name\": \"my-peer-1\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Peer Details",
+			"description": "Get Peer",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/secondary_dns/peers/{#/definitions/identifier}",
+			"method": "GET",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:read",
+					"#organization:read"
+				]
+			},
+			"html_id": "secondary-dns-peer--peer-details",
+			"uri": "accounts/:account_identifier/secondary_dns/peers/:identifier",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/secondary_dns/peers/23ff594956f20c2a721606e94745a8aa\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"23ff594956f20c2a721606e94745a8aa\",\n    \"ip\": \"192.0.2.53\",\n    \"port\": 53,\n    \"ixfr_enable\": false,\n    \"tsig_id\": \"69cd1e104af3e6ed3cb344f263fd0d5a\",\n    \"name\": \"my-peer-1\"\n  }\n}"
+		},
+		{
+			"title": "Update Peer",
+			"description": "Modify Peer",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/secondary_dns/peers/{#/definitions/identifier}",
+			"method": "PUT",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:edit",
+					"#organization:read"
+				]
+			},
+			"html_id": "secondary-dns-peer--update-peer",
+			"uri": "accounts/:account_identifier/secondary_dns/peers/:identifier",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/secondary_dns/peers/23ff594956f20c2a721606e94745a8aa\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"id\":\"23ff594956f20c2a721606e94745a8aa\",\"ip\":\"192.0.2.53\",\"port\":53,\"ixfr_enable\":false,\"tsig_id\":\"69cd1e104af3e6ed3cb344f263fd0d5a\",\"name\":\"my-peer-1\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"23ff594956f20c2a721606e94745a8aa\"",
+						"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"description": "API item identifier tag",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"ip": {
+						"type": "string",
+						"example": "\"192.0.2.53\"",
+						"description": "IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to."
+					},
+					"port": {
+						"type": "number",
+						"example": "53",
+						"description": "DNS port of primary or secondary nameserver, depending on what zone this peer is linked to."
+					},
+					"ixfr_enable": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones."
+					},
+					"tsig_id": {
+						"type": "string",
+						"example": "\"69cd1e104af3e6ed3cb344f263fd0d5a\"",
+						"description": "TSIG authentication will be used for zone transfer if configured"
+					},
+					"name": {
+						"type": "string",
+						"example": "\"my-peer-1\"",
+						"description": "The name of the peer"
+					}
+				},
+				"required_props": [
+					"id",
+					"name"
+				],
+				"optional_props": [
+					"ip",
+					"port",
+					"ixfr_enable",
+					"tsig_id"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"23ff594956f20c2a721606e94745a8aa\",\n  \"ip\": \"192.0.2.53\",\n  \"port\": 53,\n  \"ixfr_enable\": false,\n  \"tsig_id\": \"69cd1e104af3e6ed3cb344f263fd0d5a\",\n  \"name\": \"my-peer-1\"\n}",
+				"title": "Secondary DNS (Peer)",
+				"description": "Peer nameservers for secondary DNS"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"23ff594956f20c2a721606e94745a8aa\",\n    \"ip\": \"192.0.2.53\",\n    \"port\": 53,\n    \"ixfr_enable\": false,\n    \"tsig_id\": \"69cd1e104af3e6ed3cb344f263fd0d5a\",\n    \"name\": \"my-peer-1\"\n  }\n}"
+		},
+		{
+			"title": "Delete Peer",
+			"description": "Delete Peer",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/secondary_dns/peers/{#/definitions/identifier}",
+			"method": "DELETE",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:edit",
+					"#organization:read"
+				]
+			},
+			"html_id": "secondary-dns-peer--delete-peer",
+			"uri": "accounts/:account_identifier/secondary_dns/peers/:identifier",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/secondary_dns/peers/23ff594956f20c2a721606e94745a8aa\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"23ff594956f20c2a721606e94745a8aa\"\n  }\n}"
+		},
+		{
+			"title": "Create Peer",
+			"description": "Create Peer",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/secondary_dns/peers",
+			"method": "POST",
+			"cfOwnership": "dns",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#dns_records:edit",
+					"#organization:read"
+				]
+			},
+			"html_id": "secondary-dns-peer--create-peer",
+			"uri": "accounts/:account_identifier/secondary_dns/peers",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/secondary_dns/peers\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"ip\":\"192.0.2.53\",\"port\":53,\"ixfr_enable\":false,\"tsig_id\":\"69cd1e104af3e6ed3cb344f263fd0d5a\",\"name\":\"my-peer-1\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"ip": {
+						"type": "string",
+						"example": "\"192.0.2.53\"",
+						"description": "IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to."
+					},
+					"port": {
+						"type": "number",
+						"example": "53",
+						"description": "DNS port of primary or secondary nameserver, depending on what zone this peer is linked to."
+					},
+					"ixfr_enable": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones."
+					},
+					"tsig_id": {
+						"type": "string",
+						"example": "\"69cd1e104af3e6ed3cb344f263fd0d5a\"",
+						"description": "TSIG authentication will be used for zone transfer if configured"
+					},
+					"name": {
+						"type": "string",
+						"example": "\"my-peer-1\"",
+						"description": "The name of the peer"
+					}
+				},
+				"required_props": [
+					"name"
+				],
+				"optional_props": [
+					"ip",
+					"port",
+					"ixfr_enable",
+					"tsig_id"
+				],
+				"objects": [],
+				"example": "{\n  \"ip\": \"192.0.2.53\",\n  \"port\": 53,\n  \"ixfr_enable\": false,\n  \"tsig_id\": \"69cd1e104af3e6ed3cb344f263fd0d5a\",\n  \"name\": \"my-peer-1\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"23ff594956f20c2a721606e94745a8aa\",\n    \"ip\": \"192.0.2.53\",\n    \"port\": 53,\n    \"ixfr_enable\": false,\n    \"tsig_id\": \"69cd1e104af3e6ed3cb344f263fd0d5a\",\n    \"name\": \"my-peer-1\"\n  }\n}"
+		}
+	],
+	"html_id": "secondary-dns-peer-",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"23ff594956f20c2a721606e94745a8aa\"",
+				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "API item identifier tag",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"ip": {
+				"type": "string",
+				"example": "\"192.0.2.53\"",
+				"description": "IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to."
+			},
+			"port": {
+				"type": "number",
+				"example": "53",
+				"description": "DNS port of primary or secondary nameserver, depending on what zone this peer is linked to."
+			},
+			"ixfr_enable": {
+				"type": "boolean",
+				"example": "false",
+				"description": "Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones."
+			},
+			"tsig_id": {
+				"type": "string",
+				"example": "\"69cd1e104af3e6ed3cb344f263fd0d5a\"",
+				"description": "TSIG authentication will be used for zone transfer if configured"
+			},
+			"name": {
+				"type": "string",
+				"example": "\"my-peer-1\"",
+				"description": "The name of the peer"
+			}
+		},
+		"required_props": [
+			"id",
+			"name"
+		],
+		"optional_props": [
+			"ip",
+			"port",
+			"ixfr_enable",
+			"tsig_id"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"23ff594956f20c2a721606e94745a8aa\",\n  \"ip\": \"192.0.2.53\",\n  \"port\": 53,\n  \"ixfr_enable\": false,\n  \"tsig_id\": \"69cd1e104af3e6ed3cb344f263fd0d5a\",\n  \"name\": \"my-peer-1\"\n}",
+		"title": "Secondary DNS (Peer)",
+		"description": "Peer nameservers for secondary DNS"
+	}
+}

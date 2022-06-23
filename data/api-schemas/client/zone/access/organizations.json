@@ -1,0 +1,278 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/access/organizations.json",
+	"title": "Zone-Level Access Organizations",
+	"description": "Access Organizations control the look and feel of your login page and the authentication domain it is located at. (NOTE: it's recommended that the account route namespace is used instead: https://api.cloudflare.com/#access-organizations-properties.)",
+	"type": "object",
+	"links": [
+		{
+			"title": "Access Organization Details",
+			"description": "Fetch your Access Organization details",
+			"rel": "self",
+			"href": "zones/{#/definitions/identifier}/access/organizations",
+			"method": "GET",
+			"cfOwnership": "access",
+			"html_id": "zone-level-access-organizations-access-organization-details",
+			"uri": "zones/:identifier/access/organizations",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/organizations\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"Widget Corps Internal Applications\",\n    \"auth_domain\": \"test.cloudflareaccess.com\",\n    \"login_design\": {\n      \"background_color\": \"#c5ed1b\",\n      \"text_color\": \"#c5ed1b\",\n      \"logo_path\": \"https://example.com/logo.png\",\n      \"header_text\": \"This is an example description.\",\n      \"footer_text\": \"This is an example description.\"\n    }\n  }\n}"
+		},
+		{
+			"title": "Create Access Organization",
+			"description": "Create a new Access Organization",
+			"rel": "collection",
+			"href": "zones/{#/definitions/identifier}/access/organizations",
+			"method": "POST",
+			"cfOwnership": "access",
+			"trakalIgnore": true,
+			"html_id": "zone-level-access-organizations-create-access-organization",
+			"uri": "zones/:identifier/access/organizations",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/organizations\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"Widget Corps Internal Applications\",\"auth_domain\":\"test.cloudflareaccess.com\",\"login_design\":{\"background_color\":\"#c5ed1b\",\"text_color\":\"#c5ed1b\",\"logo_path\":\"https://example.com/logo.png\",\"header_text\":\"This is an example description.\",\"footer_text\":\"This is an example description.\"}}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"Widget Corps Internal Applications\"",
+						"description": "The name of your Access Organization."
+					},
+					"auth_domain": {
+						"type": "string",
+						"example": "\"test.cloudflareaccess.com\"",
+						"description": "The domain that you will be redirected to on Access login attempts"
+					},
+					"login_design": {
+						"example": "{\n  \"background_color\": \"#c5ed1b\",\n  \"text_color\": \"#c5ed1b\",\n  \"logo_path\": \"https://example.com/logo.png\",\n  \"header_text\": \"This is an example description.\",\n  \"footer_text\": \"This is an example description.\"\n}",
+						"properties": {
+							"background_color": {
+								"type": "string",
+								"example": "\"#c5ed1b\"",
+								"description": "The background color on your login page"
+							},
+							"text_color": {
+								"type": "string",
+								"example": "\"#c5ed1b\"",
+								"description": "The text color on your login page"
+							},
+							"logo_path": {
+								"type": "string",
+								"example": "\"https://example.com/logo.png\"",
+								"description": "The URL of the logo you want to display to users logging in"
+							},
+							"header_text": {
+								"type": "string",
+								"example": "\"This is an example description.\"",
+								"description": "The header description on the team domain login page."
+							},
+							"footer_text": {
+								"type": "string",
+								"example": "\"This is an example description.\"",
+								"description": "The footer description on the team domain login page."
+							}
+						}
+					}
+				},
+				"required_props": [
+					"name",
+					"auth_domain"
+				],
+				"optional_props": [
+					"login_design"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": \"Widget Corps Internal Applications\",\n  \"auth_domain\": \"test.cloudflareaccess.com\",\n  \"login_design\": {\n    \"background_color\": \"#c5ed1b\",\n    \"text_color\": \"#c5ed1b\",\n    \"logo_path\": \"https://example.com/logo.png\",\n    \"header_text\": \"This is an example description.\",\n    \"footer_text\": \"This is an example description.\"\n  }\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"Widget Corps Internal Applications\",\n    \"auth_domain\": \"test.cloudflareaccess.com\",\n    \"login_design\": {\n      \"background_color\": \"#c5ed1b\",\n      \"text_color\": \"#c5ed1b\",\n      \"logo_path\": \"https://example.com/logo.png\",\n      \"header_text\": \"This is an example description.\",\n      \"footer_text\": \"This is an example description.\"\n    }\n  }\n}"
+		},
+		{
+			"title": "Update Access Organization",
+			"description": "Update a configured Access Organization",
+			"rel": "self",
+			"href": "zones/{#/definitions/identifier}/access/organizations",
+			"method": "PUT",
+			"cfOwnership": "access",
+			"html_id": "zone-level-access-organizations-update-access-organization",
+			"uri": "zones/:identifier/access/organizations",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/organizations\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"Widget Corps Internal Applications\",\"auth_domain\":\"test.cloudflareaccess.com\",\"login_design\":{\"background_color\":\"#c5ed1b\",\"text_color\":\"#c5ed1b\",\"logo_path\":\"https://example.com/logo.png\",\"header_text\":\"This is an example description.\",\"footer_text\":\"This is an example description.\"}}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"Widget Corps Internal Applications\"",
+						"description": "The name of your Access Organization."
+					},
+					"auth_domain": {
+						"type": "string",
+						"example": "\"test.cloudflareaccess.com\"",
+						"description": "The domain that you will be redirected to on Access login attempts"
+					},
+					"login_design": {
+						"example": "{\n  \"background_color\": \"#c5ed1b\",\n  \"text_color\": \"#c5ed1b\",\n  \"logo_path\": \"https://example.com/logo.png\",\n  \"header_text\": \"This is an example description.\",\n  \"footer_text\": \"This is an example description.\"\n}",
+						"properties": {
+							"background_color": {
+								"type": "string",
+								"example": "\"#c5ed1b\"",
+								"description": "The background color on your login page"
+							},
+							"text_color": {
+								"type": "string",
+								"example": "\"#c5ed1b\"",
+								"description": "The text color on your login page"
+							},
+							"logo_path": {
+								"type": "string",
+								"example": "\"https://example.com/logo.png\"",
+								"description": "The URL of the logo you want to display to users logging in"
+							},
+							"header_text": {
+								"type": "string",
+								"example": "\"This is an example description.\"",
+								"description": "The header description on the team domain login page."
+							},
+							"footer_text": {
+								"type": "string",
+								"example": "\"This is an example description.\"",
+								"description": "The footer description on the team domain login page."
+							}
+						}
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"name",
+					"auth_domain",
+					"login_design"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": \"Widget Corps Internal Applications\",\n  \"auth_domain\": \"test.cloudflareaccess.com\",\n  \"login_design\": {\n    \"background_color\": \"#c5ed1b\",\n    \"text_color\": \"#c5ed1b\",\n    \"logo_path\": \"https://example.com/logo.png\",\n    \"header_text\": \"This is an example description.\",\n    \"footer_text\": \"This is an example description.\"\n  }\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"Widget Corps Internal Applications\",\n    \"auth_domain\": \"test.cloudflareaccess.com\",\n    \"login_design\": {\n      \"background_color\": \"#c5ed1b\",\n      \"text_color\": \"#c5ed1b\",\n      \"logo_path\": \"https://example.com/logo.png\",\n      \"header_text\": \"This is an example description.\",\n      \"footer_text\": \"This is an example description.\"\n    }\n  }\n}"
+		},
+		{
+			"title": "Delete Access Organization",
+			"description": "Delete an Access Organization.",
+			"rel": "self",
+			"href": "zones/{#/definitions/identifier}/access/organizations",
+			"method": "DELETE",
+			"cfOwnership": "access",
+			"cfPrivate": true,
+			"trakalIgnore": true,
+			"html_id": "zone-level-access-organizations-delete-access-organization",
+			"uri": "zones/:identifier/access/organizations",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/organizations\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"result\": true\n}"
+		},
+		{
+			"title": "Revoke all Access Tokens for a user",
+			"description": "Revoke any outstanding tokens issued for a specific user",
+			"rel": "self",
+			"href": "zones/{#/definitions/identifier}/access/organizations/revoke_user",
+			"method": "POST",
+			"cfOwnership": "access",
+			"html_id": "zone-level-access-organizations-revoke-all-access-tokens-for-a-user",
+			"uri": "zones/:identifier/access/organizations/revoke_user",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/organizations/revoke_user\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"email\":\"test@example.com\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"email": {
+						"type": "string",
+						"example": "\"test@example.com\"",
+						"description": "The email of the user to revoke"
+					}
+				},
+				"required_props": [
+					"email"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"email\": \"test@example.com\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"result\": true\n}"
+		}
+	],
+	"html_id": "zone-level-access-organizations",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"created_at": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "Creation time",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"updated_at": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "Last modification time",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"name": {
+				"type": "string",
+				"example": "\"Widget Corps Internal Applications\"",
+				"description": "The name of your Access Organization."
+			},
+			"auth_domain": {
+				"type": "string",
+				"example": "\"test.cloudflareaccess.com\"",
+				"description": "The domain that you will be redirected to on Access login attempts"
+			},
+			"login_design": {
+				"example": "{\n  \"background_color\": \"#c5ed1b\",\n  \"text_color\": \"#c5ed1b\",\n  \"logo_path\": \"https://example.com/logo.png\",\n  \"header_text\": \"This is an example description.\",\n  \"footer_text\": \"This is an example description.\"\n}",
+				"properties": {
+					"background_color": {
+						"type": "string",
+						"example": "\"#c5ed1b\"",
+						"description": "The background color on your login page"
+					},
+					"text_color": {
+						"type": "string",
+						"example": "\"#c5ed1b\"",
+						"description": "The text color on your login page"
+					},
+					"logo_path": {
+						"type": "string",
+						"example": "\"https://example.com/logo.png\"",
+						"description": "The URL of the logo you want to display to users logging in"
+					},
+					"header_text": {
+						"type": "string",
+						"example": "\"This is an example description.\"",
+						"description": "The header description on the team domain login page."
+					},
+					"footer_text": {
+						"type": "string",
+						"example": "\"This is an example description.\"",
+						"description": "The footer description on the team domain login page."
+					}
+				}
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"created_at",
+			"updated_at",
+			"name",
+			"auth_domain",
+			"login_design"
+		],
+		"objects": [],
+		"example": "{\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"name\": \"Widget Corps Internal Applications\",\n  \"auth_domain\": \"test.cloudflareaccess.com\",\n  \"login_design\": {\n    \"background_color\": \"#c5ed1b\",\n    \"text_color\": \"#c5ed1b\",\n    \"logo_path\": \"https://example.com/logo.png\",\n    \"header_text\": \"This is an example description.\",\n    \"footer_text\": \"This is an example description.\"\n  }\n}",
+		"title": "Zone-Level Access Organizations",
+		"description": "Access Organizations control the look and feel of your login page and the authentication domain it is located at. (NOTE: it's recommended that the account route namespace is used instead: https://api.cloudflare.com/#access-organizations-properties.)"
+	}
+}

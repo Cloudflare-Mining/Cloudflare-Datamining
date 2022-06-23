@@ -1,0 +1,218 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/access/users.json",
+	"title": "Zero Trust Users",
+	"description": "Users that are part of an account's organization",
+	"type": "object",
+	"links": [
+		{
+			"title": "Get Users",
+			"Description": "Get all the users associated with an account",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/access/users",
+			"method": "GET",
+			"cfOwnership": "access",
+			"html_id": "zero-trust-users-get-users",
+			"uri": "accounts/:identifier/access/users",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/access/users?seat_type=any&since=2020-07-01T05:20:00Z&until=2020-10-01T05:20:00Z&offset=1&per_page=20&direction=desc&match=all\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"seat_type": {
+						"example": "\"any\"",
+						"enum": [
+							"access",
+							"gateway",
+							"any",
+							"all",
+							"none"
+						],
+						"description": "The plan type to filter user seats by"
+					},
+					"since": {
+						"type": "string",
+						"example": "\"2020-07-01T05:20:00Z\"",
+						"description": "The time on which to begin query",
+						"readOnly": true,
+						"format": "date-time"
+					},
+					"until": {
+						"type": "string",
+						"example": "\"2020-10-01T05:20:00Z\"",
+						"description": "The time on which to end qeury",
+						"readOnly": true,
+						"format": "date-time"
+					},
+					"offset": {
+						"type": "number",
+						"example": "1",
+						"minimum": 1,
+						"default": 1,
+						"description": "Offset number of paginated results"
+					},
+					"per_page": {
+						"type": "number",
+						"example": "20",
+						"minimum": 5,
+						"maximum": 50,
+						"default": 20,
+						"description": "Number of users per page"
+					},
+					"direction": {
+						"example": "\"desc\"",
+						"enum": [
+							"asc",
+							"desc"
+						],
+						"description": "Direction to order users"
+					},
+					"match": {
+						"example": "\"all\"",
+						"enum": [
+							"any",
+							"all"
+						],
+						"default": "all",
+						"description": "Whether to match all search requirements or at least one (any)"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"seat_type",
+					"since",
+					"until",
+					"offset",
+					"per_page",
+					"direction",
+					"match"
+				],
+				"objects": [],
+				"example": "{\n  \"seat_type\": \"any\",\n  \"since\": \"2020-07-01T05:20:00Z\",\n  \"until\": \"2020-10-01T05:20:00Z\",\n  \"offset\": 1,\n  \"per_page\": 20,\n  \"direction\": \"desc\",\n  \"match\": \"all\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"name\": \"russell@example.com\",\n      \"uid\": \"9a7806061c88ada191ed06f989cc3dac\",\n      \"email\": \"russell@example.com\",\n      \"org_id\": \"700d98642c564d2e855e9661899b7252\",\n      \"app_count\": 2,\n      \"last_successful_login\": \"2020-07-01T05:20:00Z\",\n      \"used_warp\": false,\n      \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"seat_uid\": \"699d98642c564d2e855e9661899b7252\",\n      \"access_seat\": false,\n      \"gateway_seat\": false\n    }\n  ],\n  \"result_info\": {\n    \"page\": 1,\n    \"per_page\": 100,\n    \"count\": 1,\n    \"total_count\": 1\n  }\n}"
+		},
+		{
+			"title": "Get Failed Logins",
+			"Description": "Get all the failed login attempts for a given user",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/access/users/{#/definitions/user_id}/failed_logins",
+			"method": "GET",
+			"cfOwnership": "access",
+			"html_id": "zero-trust-users-get-failed-logins",
+			"uri": "accounts/:identifier/access/users/:user_id/failed_logins",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/access/users/700d98642c564d2e855e9661899b7111/failed_logins\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"expiration\": 1644507248,\n      \"metadata\": {\n        \"app_name\": \"Test App\",\n        \"aud\": \"39691c1480a2352a18ece567debc2b32552686cbd38eec0887aa18d5d3f00c04\",\n        \"datetime\": \"2022-02-02T21:54:34.914Z\",\n        \"ray_id\": \"6d76a8a42ead4133\",\n        \"user_email\": \"test@cloudflare.com\",\n        \"user_uuid\": \"57171132-e453-4ee8-b2a5-8cbaad333207\"\n      }\n    }\n  ]\n}"
+		}
+	],
+	"html_id": "zero-trust-users",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"name": {
+				"type": "string",
+				"example": "\"russell@example.com\"",
+				"format": "email",
+				"description": "The email of the user that performed the action."
+			},
+			"uid": {
+				"type": "string",
+				"example": "\"9a7806061c88ada191ed06f989cc3dac\"",
+				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "API item identifier tag",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"email": {
+				"type": "string",
+				"example": "\"russell@example.com\"",
+				"format": "email",
+				"description": "The email of the user that performed the action."
+			},
+			"org_id": {
+				"type": "string",
+				"example": "\"700d98642c564d2e855e9661899b7252\"",
+				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "API item identifier tag",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"app_count": {
+				"type": "number",
+				"example": "2",
+				"description": "The email of the user that performed the action."
+			},
+			"last_successful_login": {
+				"type": "string",
+				"example": "\"2020-07-01T05:20:00Z\"",
+				"description": "The time at which the user last successfully logged in",
+				"format": "date-time"
+			},
+			"used_warp": {
+				"type": "boolean",
+				"example": "false",
+				"description": "the user used the warp client"
+			},
+			"created_at": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "Creation time",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"updated_at": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "Last modification time",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"seat_uid": {
+				"type": "string",
+				"example": "\"699d98642c564d2e855e9661899b7252\"",
+				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "API item identifier tag",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"access_seat": {
+				"type": "boolean",
+				"example": "false",
+				"description": "user seat is part of access"
+			},
+			"gateway_seat": {
+				"type": "boolean",
+				"example": "false",
+				"description": "user seat is part of gateway"
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"name",
+			"uid",
+			"email",
+			"org_id",
+			"app_count",
+			"last_successful_login",
+			"used_warp",
+			"created_at",
+			"updated_at",
+			"seat_uid",
+			"access_seat",
+			"gateway_seat"
+		],
+		"objects": [],
+		"example": "{\n  \"name\": \"russell@example.com\",\n  \"uid\": \"9a7806061c88ada191ed06f989cc3dac\",\n  \"email\": \"russell@example.com\",\n  \"org_id\": \"700d98642c564d2e855e9661899b7252\",\n  \"app_count\": 2,\n  \"last_successful_login\": \"2020-07-01T05:20:00Z\",\n  \"used_warp\": false,\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"seat_uid\": \"699d98642c564d2e855e9661899b7252\",\n  \"access_seat\": false,\n  \"gateway_seat\": false\n}",
+		"title": "Zero Trust Users",
+		"description": "Users that are part of an account's organization"
+	}
+}

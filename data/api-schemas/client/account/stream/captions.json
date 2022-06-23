@@ -1,0 +1,112 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/stream/captions.json",
+	"title": "Stream Subtitles/Captions",
+	"description": "Add subtitles or captions to Stream videos for any language.",
+	"type": "object",
+	"links": [
+		{
+			"title": "Upload a caption/subtitle",
+			"description": "Upload the file to the endpoint for a specific BCP47 language. One caption/subtitle per language is allowed.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/stream/{#/definitions/video_identifier}/captions/{#/definitions/language}",
+			"method": "PUT",
+			"cfOwnership": "stream",
+			"encType": "multipart/form-data",
+			"cfRequestHeaders": {
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
+			"html_id": "stream-subtitles/captions-upload-a-caption/subtitle",
+			"uri": "accounts/:account_identifier/stream/:video_identifier/captions/:language",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/stream/ea95132c15732412d22c1476fa83f27a/captions/tr\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     --form 'file=@/Users/kyle/Desktop/tr.vtt'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"file": {
+						"type": "string",
+						"example": "\"@/Users/kyle/Desktop/tr.vtt\"",
+						"description": "WebVTT file to upload"
+					}
+				},
+				"required_props": [
+					"file"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"file\": \"@/Users/kyle/Desktop/tr.vtt\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"label\": \"Türkçe\",\n    \"language\": \"tr\"\n  }\n}"
+		},
+		{
+			"title": "List captions/subtitles",
+			"description": "View the currently available captions for a specific video.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/stream/{#/definitions/video_identifier}/captions",
+			"method": "GET",
+			"cfOwnership": "stream",
+			"html_id": "stream-subtitles/captions-list-captions/subtitles",
+			"uri": "accounts/:account_identifier/stream/:video_identifier/captions",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/stream/ea95132c15732412d22c1476fa83f27a/captions\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"label\": \"Türkçe\",\n      \"language\": \"tr\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Delete a caption/subtitle",
+			"description": "Remove the caption or subtitle from a video",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/stream/{#/definitions/video_identifier}/captions/{#/definitions/language}",
+			"cfOwnership": "stream",
+			"method": "DELETE",
+			"html_id": "stream-subtitles/captions-delete-a-caption/subtitle",
+			"uri": "accounts/:account_identifier/stream/:video_identifier/captions/:language",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/stream/ea95132c15732412d22c1476fa83f27a/captions/tr\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": \"\"\n}"
+		}
+	],
+	"html_id": "stream-subtitles/captions",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"label": {
+				"type": "string",
+				"example": "\"Türkçe\"",
+				"description": "Language label in the native language to be displayed to the user",
+				"readOnly": true
+			},
+			"language": {
+				"type": "string",
+				"example": "\"tr\"",
+				"description": "Language in BCP 47 format",
+				"readOnly": true
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"label",
+			"language"
+		],
+		"objects": [],
+		"example": "{\n  \"label\": \"Türkçe\",\n  \"language\": \"tr\"\n}",
+		"title": "Stream Subtitles/Captions",
+		"description": "Add subtitles or captions to Stream videos for any language."
+	}
+}

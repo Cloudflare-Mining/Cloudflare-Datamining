@@ -1,0 +1,260 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/firewall/waf/group.json",
+	"title": "WAF Rule Groups",
+	"description": "A group of web application firewall rules that share common functionality and traits",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Rule Groups",
+			"description": "Search, list, and sort rule groups contained within a package",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_identifier}/firewall/waf/packages/{#/definitions/package_identifier}/groups",
+			"method": "GET",
+			"cfOwnership": "managed-rules",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "waf-rule-groups-list-rule-groups",
+			"uri": "zones/:zone_identifier/firewall/waf/packages/:package_identifier/groups",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/waf/packages/a25a9a7e9c00afc1fb2e0245519d725b/groups?name=Project Honey Pot&mode=on&rules_count=10&page=1&per_page=50&order=mode&direction=desc&match=all\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"Project Honey Pot\"",
+						"description": "Name of the firewall rule group",
+						"readOnly": true
+					},
+					"mode": {
+						"type": "string",
+						"example": "\"on\"",
+						"enum": [
+							"on",
+							"off"
+						],
+						"default": "on",
+						"description": "Whether or not the rules contained within this group are configurable/usable"
+					},
+					"rules_count": {
+						"type": "number",
+						"example": "10",
+						"description": "How many rules are contained within this group",
+						"readOnly": true,
+						"default": 0
+					},
+					"page": {
+						"type": "number",
+						"example": "1",
+						"minimum": 1,
+						"default": 1,
+						"description": "Page number of paginated results"
+					},
+					"per_page": {
+						"type": "number",
+						"example": "50",
+						"minimum": 5,
+						"maximum": 100,
+						"default": 50,
+						"description": "Number of groups per page"
+					},
+					"order": {
+						"example": "\"mode\"",
+						"enum": [
+							"mode",
+							"rules_count"
+						],
+						"description": "Field to order groups by"
+					},
+					"direction": {
+						"example": "\"desc\"",
+						"enum": [
+							"asc",
+							"desc"
+						],
+						"description": "Direction to order groups"
+					},
+					"match": {
+						"example": "\"all\"",
+						"enum": [
+							"any",
+							"all"
+						],
+						"default": "all",
+						"description": "Whether to match all search requirements or at least one (any)"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"name",
+					"mode",
+					"rules_count",
+					"page",
+					"per_page",
+					"order",
+					"direction",
+					"match"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": \"Project Honey Pot\",\n  \"mode\": \"on\",\n  \"rules_count\": 10,\n  \"page\": 1,\n  \"per_page\": 50,\n  \"order\": \"mode\",\n  \"direction\": \"desc\",\n  \"match\": \"all\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"de677e5818985db1285d0e80225f06e5\",\n      \"name\": \"Project Honey Pot\",\n      \"description\": \"Group designed to protect against IP addresses that are a threat and typically used to launch DDoS attacks\",\n      \"rules_count\": 10,\n      \"modified_rules_count\": 2,\n      \"package_id\": \"a25a9a7e9c00afc1fb2e0245519d725b\",\n      \"mode\": \"on\",\n      \"allowed_modes\": [\n        \"on\",\n        \"off\"\n      ]\n    }\n  ]\n}"
+		},
+		{
+			"title": "Rule Group Details",
+			"description": "Get a single rule group",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/firewall/waf/packages/{#/definitions/package_identifier}/groups/{#/definitions/identifier}",
+			"method": "GET",
+			"cfOwnership": "managed-rules",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "waf-rule-groups-rule-group-details",
+			"uri": "zones/:zone_identifier/firewall/waf/packages/:package_identifier/groups/:identifier",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/waf/packages/a25a9a7e9c00afc1fb2e0245519d725b/groups/de677e5818985db1285d0e80225f06e5\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"de677e5818985db1285d0e80225f06e5\",\n    \"name\": \"Project Honey Pot\",\n    \"description\": \"Group designed to protect against IP addresses that are a threat and typically used to launch DDoS attacks\",\n    \"rules_count\": 10,\n    \"modified_rules_count\": 2,\n    \"package_id\": \"a25a9a7e9c00afc1fb2e0245519d725b\",\n    \"mode\": \"on\",\n    \"allowed_modes\": [\n      \"on\",\n      \"off\"\n    ]\n  }\n}"
+		},
+		{
+			"title": "Edit Rule Group",
+			"description": "Update the state of a rule group",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/firewall/waf/packages/{#/definitions/package_identifier}/groups/{#/definitions/identifier}",
+			"method": "PATCH",
+			"cfOwnership": "managed-rules",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "waf-rule-groups-edit-rule-group",
+			"uri": "zones/:zone_identifier/firewall/waf/packages/:package_identifier/groups/:identifier",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/waf/packages/a25a9a7e9c00afc1fb2e0245519d725b/groups/de677e5818985db1285d0e80225f06e5\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"mode\":\"on\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"mode": {
+						"type": "string",
+						"example": "\"on\"",
+						"enum": [
+							"on",
+							"off"
+						],
+						"default": "on",
+						"description": "Whether or not the rules contained within this group are configurable/usable"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"mode"
+				],
+				"objects": [],
+				"example": "{\n  \"mode\": \"on\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"de677e5818985db1285d0e80225f06e5\",\n    \"name\": \"Project Honey Pot\",\n    \"description\": \"Group designed to protect against IP addresses that are a threat and typically used to launch DDoS attacks\",\n    \"rules_count\": 10,\n    \"modified_rules_count\": 2,\n    \"package_id\": \"a25a9a7e9c00afc1fb2e0245519d725b\",\n    \"mode\": \"on\",\n    \"allowed_modes\": [\n      \"on\",\n      \"off\"\n    ]\n  }\n}"
+		}
+	],
+	"html_id": "waf-rule-groups",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"de677e5818985db1285d0e80225f06e5\"",
+				"description": "WAF group identifier tag",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"name": {
+				"type": "string",
+				"example": "\"Project Honey Pot\"",
+				"description": "Name of the firewall rule group",
+				"readOnly": true
+			},
+			"description": {
+				"type": [
+					"string",
+					"null"
+				],
+				"example": "\"Group designed to protect against IP addresses that are a threat and typically used to launch DDoS attacks\"",
+				"description": "Summary of what the WAF Rule Set does",
+				"readOnly": true
+			},
+			"rules_count": {
+				"type": "number",
+				"example": "10",
+				"description": "How many rules are contained within this group",
+				"readOnly": true,
+				"default": 0
+			},
+			"modified_rules_count": {
+				"type": "number",
+				"example": "2",
+				"description": "How many rules have been modified from their default within the group",
+				"readOnly": true,
+				"default": 0
+			},
+			"package_id": {
+				"type": "string",
+				"example": "\"a25a9a7e9c00afc1fb2e0245519d725b\"",
+				"description": "WAF package identifier tag",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"mode": {
+				"type": "string",
+				"example": "\"on\"",
+				"enum": [
+					"on",
+					"off"
+				],
+				"default": "on",
+				"description": "Whether or not the rules contained within this group are configurable/usable"
+			},
+			"allowed_modes": {
+				"type": "array",
+				"example": "[\n  \"on\",\n  \"off\"\n]",
+				"description": "The available states the group can have. This will affect the state of rules within this group.",
+				"readOnly": true,
+				"items": {
+					"type": "string",
+					"enum": [
+						"on",
+						"off"
+					],
+					"default": "on",
+					"description": "Whether or not the rules contained within this group are configurable/usable"
+				}
+			}
+		},
+		"required_props": [
+			"id",
+			"name",
+			"description",
+			"mode",
+			"rules_count"
+		],
+		"optional_props": [
+			"modified_rules_count",
+			"package_id",
+			"allowed_modes"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"de677e5818985db1285d0e80225f06e5\",\n  \"name\": \"Project Honey Pot\",\n  \"description\": \"Group designed to protect against IP addresses that are a threat and typically used to launch DDoS attacks\",\n  \"rules_count\": 10,\n  \"modified_rules_count\": 2,\n  \"package_id\": \"a25a9a7e9c00afc1fb2e0245519d725b\",\n  \"mode\": \"on\",\n  \"allowed_modes\": [\n    \"on\",\n    \"off\"\n  ]\n}",
+		"title": "WAF Rule Groups",
+		"description": "A group of web application firewall rules that share common functionality and traits"
+	}
+}
