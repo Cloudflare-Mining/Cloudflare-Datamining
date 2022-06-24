@@ -18,6 +18,7 @@ const SCHEMAS_URL = `${API_DOCS_URL}schemas/v4/`;
 async function run(){
 	console.log('Fetching API Schemas...');
 
+	// first do it the hacky way
 	const docs = await fetch(API_DOCS_URL);
 	const html = await docs.text();
 	const parsed = new parseDocument(html);
@@ -52,6 +53,12 @@ async function run(){
 		await fs.ensureFile(filename);
 		await fs.writeFile(filename, JSON.stringify(schema, null, '\t'));
 	}
+
+
+	// then query the schemas endpoint
+	const schemasReq = await fetch('https://api.cloudflare.com/schemas.json');
+	const schemasJson = await schemasReq.json();
+	await fs.writeFile(path.resolve(`../data/api-schemas/schemas.json`), JSON.stringify(schemasJson, null, '\t'));
 
 	console.log('Pushing!');
 	const prefix = dateFormat(new Date(), 'd mmmm yyyy');
