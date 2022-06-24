@@ -5016,7 +5016,7 @@
 																"type": "object",
 																"properties": {
 																	"id": {
-																		"description": "User identifier tag",
+																		"description": "The unique identifier of the user.",
 																		"type": "string",
 																		"maxLength": 32,
 																		"readOnly": true,
@@ -45600,12 +45600,12 @@
 		},
 		"/user/firewall/access_rules/rules": {
 			"get": {
-				"summary": "List Access Rules",
-				"description": "Search, sort, and filter IP/country access rules",
+				"summary": "Get IP Access rules",
+				"description": "Fetches IP Access rules of the user. You can filter the results using several optional parameters.",
 				"parameters": [],
 				"responses": {
 					"200": {
-						"description": "List Access Rules response",
+						"description": "Get IP Access rules response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -45627,7 +45627,7 @@
 														],
 														"properties": {
 															"id": {
-																"description": "Access rule identifier tag",
+																"description": "The unique identifier of the IP Access rule.",
 																"type": "string",
 																"maxLength": 32,
 																"readOnly": true,
@@ -45635,13 +45635,13 @@
 															},
 															"notes": {
 																"type": "string",
-																"description": "A personal note about the rule. Typically used as a reminder or explanation for the rule.",
-																"example": "This rule is on because of an event that occured on date X"
+																"description": "An informative summary of the rule, typically used as a reminder or explanation.",
+																"example": "This rule is enabled because of an event that occurred on date X."
 															},
 															"allowed_modes": {
 																"type": "array",
 																"readOnly": true,
-																"description": "The possible modes the rule can be in.",
+																"description": "The available actions that a rule can apply to a matched request.",
 																"example": [
 																	"whitelist",
 																	"block",
@@ -45659,7 +45659,7 @@
 																		"managed_challenge"
 																	],
 																	"example": "challenge",
-																	"description": "The action to apply to a matched request"
+																	"description": "The action to apply to a matched request."
 																}
 															},
 															"mode": {
@@ -45667,89 +45667,89 @@
 															},
 															"configuration": {
 																"type": "object",
-																"description": "Rule configuration",
+																"description": "The rule configuration.",
 																"oneOf": [
 																	{
-																		"title": "IP rule configuration",
+																		"title": "An IP address configuration.",
 																		"properties": {
 																			"target": {
 																				"enum": [
 																					"ip"
 																				],
-																				"description": "The request property to target",
+																				"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the rule.",
 																				"example": "ip"
 																			},
 																			"value": {
 																				"type": "string",
-																				"description": "The IP address to target in requests",
+																				"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
 																				"example": "198.51.100.4"
 																			}
 																		}
 																	},
 																	{
-																		"title": "IPv6 rule configuration",
+																		"title": "An IPv6 address configuration.",
 																		"properties": {
 																			"target": {
 																				"enum": [
 																					"ip6"
 																				],
-																				"description": "The request property to target",
+																				"description": "The configuration target. You must set the target to `ip6` when specifying an IPv6 address in the rule.",
 																				"example": "ip6"
 																			},
 																			"value": {
 																				"type": "string",
-																				"description": "The IP address to target in requests",
+																				"description": "The IPv6 address to match.",
 																				"example": "2001:DB8:100::CF"
 																			}
 																		}
 																	},
 																	{
-																		"title": "IP range rule configuration",
+																		"title": "An IP address range configuration.",
 																		"properties": {
 																			"target": {
 																				"enum": [
 																					"ip_range"
 																				],
-																				"description": "The request property to target",
+																				"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the rule.",
 																				"example": "ip_range"
 																			},
 																			"value": {
 																				"type": "string",
-																				"description": "The IP range to target in requests. Limited to /16 and /24 for IPv4 and /32, /48 and /64 for IPv6.",
+																				"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24` for IPv4 ranges, and prefix lengths `/32`, `/48`, and `/64` for IPv6 ranges.",
 																				"example": "198.51.100.4/16"
 																			}
 																		}
 																	},
 																	{
-																		"title": "ASN rule configuration",
+																		"title": "An ASN configuration.",
 																		"properties": {
 																			"target": {
 																				"enum": [
 																					"asn"
 																				],
-																				"description": "The request property to target",
+																				"description": "The configuration target. You must set the target to `asn` when specifying an Autonomous System Number (ASN) in the rule.",
 																				"example": "asn"
 																			},
 																			"value": {
 																				"type": "string",
-																				"description": "The AS number to target in requests.",
+																				"description": "The AS number to match.",
 																				"example": "AS12345"
 																			}
 																		}
 																	},
 																	{
-																		"title": "Country rule configuration",
+																		"title": "A country configuration.",
 																		"properties": {
 																			"target": {
 																				"enum": [
 																					"country"
 																				],
-																				"description": "The request property to target",
+																				"description": "The configuration target. You must set the target to `country` when specifying a country code in the rule.",
 																				"example": "country"
 																			},
 																			"value": {
 																				"type": "string",
-																				"description": "The 2-digit country code to target in requests. The full list of valid country codes can be found [here](https://support.cloudflare.com/hc/en-us/articles/205072537)",
+																				"description": "The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).",
 																				"example": "US"
 																			}
 																		}
@@ -45758,14 +45758,14 @@
 															},
 															"created_on": {
 																"type": "string",
-																"description": "When the rule was created",
+																"description": "The timestamp of when the rule was created.",
 																"format": "date-time",
 																"readOnly": true,
 																"example": "2014-01-01T05:20:00.123450+00:00"
 															},
 															"modified_on": {
 																"type": "string",
-																"description": "When the rule was last modified",
+																"description": "The timestamp of when the rule was last modified.",
 																"format": "date-time",
 																"readOnly": true,
 																"example": "2014-01-01T05:20:00.123450+00:00"
@@ -45795,12 +45795,12 @@
 				}
 			},
 			"post": {
-				"summary": "Create Access Rule",
-				"description": "Make a new IP, IP range, or country access rule for all zones owned by the user. Note: If you would like to create an access rule that applies to a specific zone only, use the zone firewall endpoints.",
+				"summary": "Create an IP Access rule",
+				"description": "Creates a new IP Access rule for all zones owned by the current user.\n\nNote: To create an IP Access rule that applies to a specific zone, refer to the [IP Access rules for a zone](#ip-access-rules-for-a-zone) endpoints.",
 				"parameters": [],
 				"responses": {
 					"200": {
-						"description": "Create Access Rule response",
+						"description": "Create an IP Access rule response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -45820,7 +45820,7 @@
 													],
 													"properties": {
 														"id": {
-															"description": "Access rule identifier tag",
+															"description": "The unique identifier of the IP Access rule.",
 															"type": "string",
 															"maxLength": 32,
 															"readOnly": true,
@@ -45828,13 +45828,13 @@
 														},
 														"notes": {
 															"type": "string",
-															"description": "A personal note about the rule. Typically used as a reminder or explanation for the rule.",
-															"example": "This rule is on because of an event that occured on date X"
+															"description": "An informative summary of the rule, typically used as a reminder or explanation.",
+															"example": "This rule is enabled because of an event that occurred on date X."
 														},
 														"allowed_modes": {
 															"type": "array",
 															"readOnly": true,
-															"description": "The possible modes the rule can be in.",
+															"description": "The available actions that a rule can apply to a matched request.",
 															"example": [
 																"whitelist",
 																"block",
@@ -45852,7 +45852,7 @@
 																	"managed_challenge"
 																],
 																"example": "challenge",
-																"description": "The action to apply to a matched request"
+																"description": "The action to apply to a matched request."
 															}
 														},
 														"mode": {
@@ -45860,89 +45860,89 @@
 														},
 														"configuration": {
 															"type": "object",
-															"description": "Rule configuration",
+															"description": "The rule configuration.",
 															"oneOf": [
 																{
-																	"title": "IP rule configuration",
+																	"title": "An IP address configuration.",
 																	"properties": {
 																		"target": {
 																			"enum": [
 																				"ip"
 																			],
-																			"description": "The request property to target",
+																			"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the rule.",
 																			"example": "ip"
 																		},
 																		"value": {
 																			"type": "string",
-																			"description": "The IP address to target in requests",
+																			"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
 																			"example": "198.51.100.4"
 																		}
 																	}
 																},
 																{
-																	"title": "IPv6 rule configuration",
+																	"title": "An IPv6 address configuration.",
 																	"properties": {
 																		"target": {
 																			"enum": [
 																				"ip6"
 																			],
-																			"description": "The request property to target",
+																			"description": "The configuration target. You must set the target to `ip6` when specifying an IPv6 address in the rule.",
 																			"example": "ip6"
 																		},
 																		"value": {
 																			"type": "string",
-																			"description": "The IP address to target in requests",
+																			"description": "The IPv6 address to match.",
 																			"example": "2001:DB8:100::CF"
 																		}
 																	}
 																},
 																{
-																	"title": "IP range rule configuration",
+																	"title": "An IP address range configuration.",
 																	"properties": {
 																		"target": {
 																			"enum": [
 																				"ip_range"
 																			],
-																			"description": "The request property to target",
+																			"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the rule.",
 																			"example": "ip_range"
 																		},
 																		"value": {
 																			"type": "string",
-																			"description": "The IP range to target in requests. Limited to /16 and /24 for IPv4 and /32, /48 and /64 for IPv6.",
+																			"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24` for IPv4 ranges, and prefix lengths `/32`, `/48`, and `/64` for IPv6 ranges.",
 																			"example": "198.51.100.4/16"
 																		}
 																	}
 																},
 																{
-																	"title": "ASN rule configuration",
+																	"title": "An ASN configuration.",
 																	"properties": {
 																		"target": {
 																			"enum": [
 																				"asn"
 																			],
-																			"description": "The request property to target",
+																			"description": "The configuration target. You must set the target to `asn` when specifying an Autonomous System Number (ASN) in the rule.",
 																			"example": "asn"
 																		},
 																		"value": {
 																			"type": "string",
-																			"description": "The AS number to target in requests.",
+																			"description": "The AS number to match.",
 																			"example": "AS12345"
 																		}
 																	}
 																},
 																{
-																	"title": "Country rule configuration",
+																	"title": "A country configuration.",
 																	"properties": {
 																		"target": {
 																			"enum": [
 																				"country"
 																			],
-																			"description": "The request property to target",
+																			"description": "The configuration target. You must set the target to `country` when specifying a country code in the rule.",
 																			"example": "country"
 																		},
 																		"value": {
 																			"type": "string",
-																			"description": "The 2-digit country code to target in requests. The full list of valid country codes can be found [here](https://support.cloudflare.com/hc/en-us/articles/205072537)",
+																			"description": "The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).",
 																			"example": "US"
 																		}
 																	}
@@ -45951,14 +45951,14 @@
 														},
 														"created_on": {
 															"type": "string",
-															"description": "When the rule was created",
+															"description": "The timestamp of when the rule was created.",
 															"format": "date-time",
 															"readOnly": true,
 															"example": "2014-01-01T05:20:00.123450+00:00"
 														},
 														"modified_on": {
 															"type": "string",
-															"description": "When the rule was last modified",
+															"description": "The timestamp of when the rule was last modified.",
 															"format": "date-time",
 															"readOnly": true,
 															"example": "2014-01-01T05:20:00.123450+00:00"
@@ -46005,93 +46005,93 @@
 											"managed_challenge"
 										],
 										"example": "challenge",
-										"description": "The action to apply to a matched request"
+										"description": "The action to apply to a matched request."
 									},
 									"configuration": {
 										"type": "object",
-										"description": "Rule configuration",
+										"description": "The rule configuration.",
 										"oneOf": [
 											{
-												"title": "IP rule configuration",
+												"title": "An IP address configuration.",
 												"properties": {
 													"target": {
 														"enum": [
 															"ip"
 														],
-														"description": "The request property to target",
+														"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the rule.",
 														"example": "ip"
 													},
 													"value": {
 														"type": "string",
-														"description": "The IP address to target in requests",
+														"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
 														"example": "198.51.100.4"
 													}
 												}
 											},
 											{
-												"title": "IPv6 rule configuration",
+												"title": "An IPv6 address configuration.",
 												"properties": {
 													"target": {
 														"enum": [
 															"ip6"
 														],
-														"description": "The request property to target",
+														"description": "The configuration target. You must set the target to `ip6` when specifying an IPv6 address in the rule.",
 														"example": "ip6"
 													},
 													"value": {
 														"type": "string",
-														"description": "The IP address to target in requests",
+														"description": "The IPv6 address to match.",
 														"example": "2001:DB8:100::CF"
 													}
 												}
 											},
 											{
-												"title": "IP range rule configuration",
+												"title": "An IP address range configuration.",
 												"properties": {
 													"target": {
 														"enum": [
 															"ip_range"
 														],
-														"description": "The request property to target",
+														"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the rule.",
 														"example": "ip_range"
 													},
 													"value": {
 														"type": "string",
-														"description": "The IP range to target in requests. Limited to /16 and /24 for IPv4 and /32, /48 and /64 for IPv6.",
+														"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24` for IPv4 ranges, and prefix lengths `/32`, `/48`, and `/64` for IPv6 ranges.",
 														"example": "198.51.100.4/16"
 													}
 												}
 											},
 											{
-												"title": "ASN rule configuration",
+												"title": "An ASN configuration.",
 												"properties": {
 													"target": {
 														"enum": [
 															"asn"
 														],
-														"description": "The request property to target",
+														"description": "The configuration target. You must set the target to `asn` when specifying an Autonomous System Number (ASN) in the rule.",
 														"example": "asn"
 													},
 													"value": {
 														"type": "string",
-														"description": "The AS number to target in requests.",
+														"description": "The AS number to match.",
 														"example": "AS12345"
 													}
 												}
 											},
 											{
-												"title": "Country rule configuration",
+												"title": "A country configuration.",
 												"properties": {
 													"target": {
 														"enum": [
 															"country"
 														],
-														"description": "The request property to target",
+														"description": "The configuration target. You must set the target to `country` when specifying a country code in the rule.",
 														"example": "country"
 													},
 													"value": {
 														"type": "string",
-														"description": "The 2-digit country code to target in requests. The full list of valid country codes can be found [here](https://support.cloudflare.com/hc/en-us/articles/205072537)",
+														"description": "The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).",
 														"example": "US"
 													}
 												}
@@ -46100,8 +46100,8 @@
 									},
 									"notes": {
 										"type": "string",
-										"description": "A personal note about the rule. Typically used as a reminder or explanation for the rule.",
-										"example": "This rule is on because of an event that occured on date X"
+										"description": "An informative summary of the rule, typically used as a reminder or explanation.",
+										"example": "This rule is enabled because of an event that occurred on date X."
 									}
 								}
 							}
@@ -46112,15 +46112,15 @@
 		},
 		"/user/firewall/access_rules/rules/{identifier}": {
 			"patch": {
-				"summary": "Edit Access Rule",
-				"description": "Edit rule state and/or note. This will be applied across all zones owned by the user.",
+				"summary": "Update an IP Access rule",
+				"description": "Updates an IP Access rule defined at the user level. You can only update the rule action (`mode` parameter) and notes.",
 				"parameters": [
 					{
 						"name": "identifier",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "Access rule identifier tag",
+							"description": "The unique identifier of the IP Access rule.",
 							"type": "string",
 							"maxLength": 32,
 							"readOnly": true,
@@ -46130,7 +46130,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Edit Access Rule response",
+						"description": "Update an IP Access rule response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -46171,8 +46171,8 @@
 				}
 			},
 			"delete": {
-				"summary": "Delete Access Rule",
-				"description": "Remove an access rule so it is no longer evaluated during requests. This will apply to all zones owned by the user",
+				"summary": "Delete an IP Access rule",
+				"description": "Deletes an IP Access rule at the user level.\n\nNote: Deleting a user-level rule will affect all zones owned by the user.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -46185,7 +46185,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete Access Rule response",
+						"description": "Delete an IP Access rule response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -46199,7 +46199,7 @@
 													"type": "object",
 													"properties": {
 														"id": {
-															"description": "Access rule identifier tag",
+															"description": "The unique identifier of the IP Access rule.",
 															"type": "string",
 															"maxLength": 32,
 															"readOnly": true,
@@ -46237,8 +46237,8 @@
 		},
 		"/accounts/{account_identifier}/firewall/access_rules/rules": {
 			"get": {
-				"summary": "List Access Rules",
-				"description": "Search, sort, and filter IP/country access rules",
+				"summary": "Get IP Access rules",
+				"description": "Fetches IP Access rules of an account. These rules apply to all the zones in the account. You can filter the results using several optional parameters.",
 				"parameters": [
 					{
 						"name": "account_identifier",
@@ -46251,7 +46251,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "List Access Rules response",
+						"description": "Get IP Access rules response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -46295,8 +46295,8 @@
 				}
 			},
 			"post": {
-				"summary": "Create Access Rule",
-				"description": "Make a new IP, IP range, or country access rule for all zones owned by the account. Note: If you would like to create an access rule that applies to a specific zone only, use the zone firewall endpoints.",
+				"summary": "Create an IP Access rule",
+				"description": "Creates a new IP Access rule for an account. The rule will apply to all zones in the account.\n\nNote: To create an IP Access rule that applies to a single zone, refer to the [IP Access rules for a zone](#ip-access-rules-for-a-zone) endpoints.",
 				"parameters": [
 					{
 						"name": "account_identifier",
@@ -46309,7 +46309,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create Access Rule response",
+						"description": "Create an IP Access rule response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -46376,8 +46376,8 @@
 		},
 		"/accounts/{account_identifier}/firewall/access_rules/rules/{identifier}": {
 			"get": {
-				"summary": "Access Rule Details",
-				"description": "Get the details of an access rule",
+				"summary": "Get an IP Access rule",
+				"description": "Fetches the details of an IP Access rule defined at the account level.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -46398,7 +46398,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Access Rule Details response",
+						"description": "Get an IP Access rule response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -46439,8 +46439,8 @@
 				}
 			},
 			"patch": {
-				"summary": "Update Access Rule",
-				"description": "Update rule state and/or configuration. This will be applied across all zones owned by the account.",
+				"summary": "Update an IP Access rule",
+				"description": "Updates an IP Access rule defined at the account level.\n\nNote: This operation will affect all zones in the account.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -46461,7 +46461,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update Access Rule response",
+						"description": "Update an IP Access rule response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -46512,7 +46512,7 @@
 										],
 										"properties": {
 											"id": {
-												"description": "Access rule identifier tag",
+												"description": "The unique identifier of the IP Access rule.",
 												"type": "string",
 												"maxLength": 32,
 												"readOnly": true,
@@ -46520,13 +46520,13 @@
 											},
 											"notes": {
 												"type": "string",
-												"description": "A personal note about the rule. Typically used as a reminder or explanation for the rule.",
-												"example": "This rule is on because of an event that occured on date X"
+												"description": "An informative summary of the rule, typically used as a reminder or explanation.",
+												"example": "This rule is enabled because of an event that occurred on date X."
 											},
 											"allowed_modes": {
 												"type": "array",
 												"readOnly": true,
-												"description": "The possible modes the rule can be in.",
+												"description": "The available actions that a rule can apply to a matched request.",
 												"example": [
 													"whitelist",
 													"block",
@@ -46544,7 +46544,7 @@
 														"managed_challenge"
 													],
 													"example": "challenge",
-													"description": "The action to apply to a matched request"
+													"description": "The action to apply to a matched request."
 												}
 											},
 											"mode": {
@@ -46552,89 +46552,89 @@
 											},
 											"configuration": {
 												"type": "object",
-												"description": "Rule configuration",
+												"description": "The rule configuration.",
 												"oneOf": [
 													{
-														"title": "IP rule configuration",
+														"title": "An IP address configuration.",
 														"properties": {
 															"target": {
 																"enum": [
 																	"ip"
 																],
-																"description": "The request property to target",
+																"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the rule.",
 																"example": "ip"
 															},
 															"value": {
 																"type": "string",
-																"description": "The IP address to target in requests",
+																"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
 																"example": "198.51.100.4"
 															}
 														}
 													},
 													{
-														"title": "IPv6 rule configuration",
+														"title": "An IPv6 address configuration.",
 														"properties": {
 															"target": {
 																"enum": [
 																	"ip6"
 																],
-																"description": "The request property to target",
+																"description": "The configuration target. You must set the target to `ip6` when specifying an IPv6 address in the rule.",
 																"example": "ip6"
 															},
 															"value": {
 																"type": "string",
-																"description": "The IP address to target in requests",
+																"description": "The IPv6 address to match.",
 																"example": "2001:DB8:100::CF"
 															}
 														}
 													},
 													{
-														"title": "IP range rule configuration",
+														"title": "An IP address range configuration.",
 														"properties": {
 															"target": {
 																"enum": [
 																	"ip_range"
 																],
-																"description": "The request property to target",
+																"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the rule.",
 																"example": "ip_range"
 															},
 															"value": {
 																"type": "string",
-																"description": "The IP range to target in requests. Limited to /16 and /24 for IPv4 and /32, /48 and /64 for IPv6.",
+																"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24` for IPv4 ranges, and prefix lengths `/32`, `/48`, and `/64` for IPv6 ranges.",
 																"example": "198.51.100.4/16"
 															}
 														}
 													},
 													{
-														"title": "ASN rule configuration",
+														"title": "An ASN configuration.",
 														"properties": {
 															"target": {
 																"enum": [
 																	"asn"
 																],
-																"description": "The request property to target",
+																"description": "The configuration target. You must set the target to `asn` when specifying an Autonomous System Number (ASN) in the rule.",
 																"example": "asn"
 															},
 															"value": {
 																"type": "string",
-																"description": "The AS number to target in requests.",
+																"description": "The AS number to match.",
 																"example": "AS12345"
 															}
 														}
 													},
 													{
-														"title": "Country rule configuration",
+														"title": "A country configuration.",
 														"properties": {
 															"target": {
 																"enum": [
 																	"country"
 																],
-																"description": "The request property to target",
+																"description": "The configuration target. You must set the target to `country` when specifying a country code in the rule.",
 																"example": "country"
 															},
 															"value": {
 																"type": "string",
-																"description": "The 2-digit country code to target in requests. The full list of valid country codes can be found [here](https://support.cloudflare.com/hc/en-us/articles/205072537)",
+																"description": "The two-letter ISO-3166-1 alpha-2 code to match. For more information, refer to [IP Access rules: Parameters](https://developers.cloudflare.com/waf/tools/ip-access-rules/parameters/#country).",
 																"example": "US"
 															}
 														}
@@ -46643,14 +46643,14 @@
 											},
 											"created_on": {
 												"type": "string",
-												"description": "When the rule was created",
+												"description": "The timestamp of when the rule was created.",
 												"format": "date-time",
 												"readOnly": true,
 												"example": "2014-01-01T05:20:00.123450+00:00"
 											},
 											"modified_on": {
 												"type": "string",
-												"description": "When the rule was last modified",
+												"description": "The timestamp of when the rule was last modified.",
 												"format": "date-time",
 												"readOnly": true,
 												"example": "2014-01-01T05:20:00.123450+00:00"
@@ -46666,7 +46666,7 @@
 														"$ref": "#/paths/~1user~1audit_logs/get/responses/200/content/application~1json/schema/oneOf/0/properties/result/items/properties/owner/properties/id"
 													},
 													"email": {
-														"description": "Your contact email address",
+														"description": "The contact email address of the user.",
 														"type": "string",
 														"maxLength": 90,
 														"example": "user@example.com"
@@ -46676,7 +46676,7 @@
 															"user",
 															"organization"
 														],
-														"description": "The scope of the rule",
+														"description": "The scope of the rule.",
 														"readOnly": true,
 														"example": "user"
 													}
@@ -46693,8 +46693,8 @@
 				}
 			},
 			"delete": {
-				"summary": "Delete Access Rule",
-				"description": "Remove an access rule so it is no longer evaluated during requests. This will apply to all zones owned by the account",
+				"summary": "Delete an IP Access rule",
+				"description": "Deletes an existing IP Access rule defined at the account level.\n\nNote: This operation will affect all zones in the account.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -46715,7 +46715,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete Access Rule response",
+						"description": "Delete an IP Access rule response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -46752,8 +46752,8 @@
 		},
 		"/zones/{zone_id}/firewall/access_rules/rules": {
 			"get": {
-				"summary": "List Access Rules",
-				"description": "Search, sort, and filter IP/country access rules",
+				"summary": "Get IP Access rules",
+				"description": "Fetches IP Access rules of a zone. You can filter the results using several optional parameters.",
 				"parameters": [
 					{
 						"name": "zone_id",
@@ -46766,7 +46766,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "List Access Rules response",
+						"description": "Get IP Access rules response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -46790,8 +46790,8 @@
 				}
 			},
 			"post": {
-				"summary": "Create Access Rule",
-				"description": "Make a new IP, IP range, or country access rule for the zone. Note: If you would like to create an access rule that applies across all of your owned zones, use the user or account firewall endpoints as appropriate.",
+				"summary": "Create an IP Access rule",
+				"description": "Creates a new IP Access rule for a zone.\n\nNote: To create an IP Access rule that applies to multiple zones, refer to [IP Access rules for a user](#ip-access-rules-for-a-user) or [IP Access rules for an account](#ip-access-rules-for-an-account) as appropriate.",
 				"parameters": [
 					{
 						"name": "zone_id",
@@ -46804,7 +46804,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create Access Rule response",
+						"description": "Create an IP Access rule response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -46855,8 +46855,8 @@
 		},
 		"/zones/{zone_id}/firewall/access_rules/rules/{identifier}": {
 			"patch": {
-				"summary": "Edit Access Rule",
-				"description": "Update rule state and/or note for the zone. Note: you can only edit rules in the 'zone' group via this endpoint. Use the appropriate owner rules endpoint if trying to manage owner-level rules",
+				"summary": "Update an IP Access rule",
+				"description": "Updates an IP Access rule defined at the zone level. You can only update the rule action (`mode` parameter) and notes.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -46877,7 +46877,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Edit Access Rule response",
+						"description": "Update an IP Access rule response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -46918,8 +46918,8 @@
 				}
 			},
 			"delete": {
-				"summary": "Delete Access Rule",
-				"description": "Remove an access rule so it is no longer evaluated during requests. Optionally, specify how to delete rules that match the mode and configuration across all other zones that this zone owner manages. 'none' is the default, and will only delete this rule. 'basic' will delete rules that match the same mode and configuration. 'aggressive' will delete rules that match the same configuration.",
+				"summary": "Delete an IP Access rule",
+				"description": "Deletes an IP Access rule defined at the zone level.\n\nOptionally, you can use the `cascade` property to specify that you wish to delete similar rules in other zones managed by the same zone owner. ",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -46940,7 +46940,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete Access Rule response",
+						"description": "Delete an IP Access rule response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -46975,7 +46975,7 @@
 											"basic",
 											"aggressive"
 										],
-										"description": "The level to attempt to delete rules defined on other zones that are similar to this rule",
+										"description": "The level to attempt to delete similar rules defined for other zones with the same owner. The default value is `none`, which will only delete the current rule. Using `basic` will delete rules that match the same action (mode) and configuration, while using `aggressive` will delete rules that match the same configuration.",
 										"default": "none"
 									}
 								}
