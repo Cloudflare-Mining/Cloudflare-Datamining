@@ -33,33 +33,38 @@ async function run(){
 	const octokit = new Octokit();
 	console.log('Fetching GitHub Data...');
 
-	const repos = await octokit.paginate(octokit.rest.repos.listForOrg, {
-		org: 'cloudflare',
-	});
-	const getDataAndWriteFiles = [];
-	for(const repo of repos){
-		const filename = filenamify(repo.name, {replacement: '__'});
-		getDataAndWriteFiles.push(async () => {
-			await fs.ensureDir(path.resolve('../data/github-repos/' + filename));
-			const info = pick(repo, wantedKeys);
-			fs.writeFile(
-				path.resolve(`../data/github-repos/${filename}/info.json`),
-				JSON.stringify(info, null, '\t'),
-			);
+	try{
+		const repos = await octokit.paginate(octokit.rest.repos.listForOrg, {
+			org: 'cloudflare',
 		});
+		const getDataAndWriteFiles = [];
+		for(const repo of repos){
+			const filename = filenamify(repo.name, {replacement: '__'});
+			getDataAndWriteFiles.push(async () => {
+				await fs.ensureDir(path.resolve('../data/github-repos/' + filename));
+				const info = pick(repo, wantedKeys);
+				fs.writeFile(
+					path.resolve(`../data/github-repos/${filename}/info.json`),
+					JSON.stringify(info, null, '\t'),
+				);
+			});
+		}
+		await Promise.all(getDataAndWriteFiles.map(fn => fn()));
+
+		console.log('Pushing!');
+		const prefix = dateFormat(new Date(), 'd mmmm yyyy');
+		await tryAndPush(
+			['data/github-repos/*.json'],
+			`${prefix} - GitHub Data was updated!`,
+			'CFData - GitHub Data Update',
+			'Pushed GitHub Data: ' + prefix,
+		);
+
+		console.log('Done! :)');
+	}catch(err){
+		console.error('Failed to fetch GitHub data');
+		console.error(err);
 	}
-	await Promise.all(getDataAndWriteFiles.map(fn => fn()));
-
-	console.log('Pushing!');
-	const prefix = dateFormat(new Date(), 'd mmmm yyyy');
-	await tryAndPush(
-		['data/github-repos/*.json'],
-		`${prefix} - GitHub Data was updated!`,
-		'CFData - GitHub Data Update',
-		'Pushed GitHub Data: ' + prefix,
-	);
-
-	console.log('Done! :)');
 }
 
 run();
