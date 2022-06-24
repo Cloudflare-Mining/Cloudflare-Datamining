@@ -58,7 +58,10 @@ async function run(){
 	// then query the schemas endpoint
 	const schemasReq = await fetch('https://api.cloudflare.com/schemas.json');
 	const schemasJson = await schemasReq.json();
-	await fs.writeFile(path.resolve(`../data/api-schemas/schemas.json`), JSON.stringify(schemasJson, null, '\t'));
+	if(schemasJson?.info){
+		delete schemasJson.info['x-buildDate']; // changes frequently even without any functional changes. Remove to generate more useful diffs
+		await fs.writeFile(path.resolve(`../data/api-schemas/schemas.json`), JSON.stringify(schemasJson, null, '\t'));
+	}
 
 	console.log('Pushing!');
 	const prefix = dateFormat(new Date(), 'd mmmm yyyy');
