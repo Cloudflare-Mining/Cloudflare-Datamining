@@ -6,6 +6,7 @@ import jsBeautify from 'js-beautify';
 import {parse} from 'acorn';
 import {full} from 'acorn-walk';
 import {generate} from 'astring';
+import filenamify from 'filenamify';
 
 import {tryAndPush, removeSlashes} from './utils.js';
 
@@ -16,22 +17,26 @@ const dashVersion = /dashVersion: ?"([\da-f]+)",/;
 const translationsSnippet = 'dash/intl/intl-translations/src/locale/en-US/';
 const navigationSnippet = 'components/SidebarNav/index.ts":';
 
-async function writeJS(filename, data){
-	const file = path.resolve(`../data/dashboard/${filename}`);
-	fs.ensureDir(path.dirname(file));
-	await fs.writeFile(file, jsBeautify.js(data,
+function beautify(data){
+	return jsBeautify.js(data,
 		{
 			indent_size: 4,
 			indent_char: '\t',
 			indent_with_tabs: true,
 		},
-	));
+	);
+}
+async function writeJS(filename, data){
+	const file = path.resolve(`../data/dashboard/${filename}`);
+	fs.ensureDir(path.dirname(file));
+	await fs.writeFile(file, beautify(data));
 }
 
 async function findWantedChunks(chunks){
 	const results = {
 		main: null,
 		translations: [],
+		chunks: [],
 	};
 	const getChunks = [];
 	for(const chunk of chunks){
@@ -59,6 +64,14 @@ async function findWantedChunks(chunks){
 					code: text,
 					chunk,
 				};
+			}
+
+			// other generic chunks
+			if(text.startsWith('(self.webpackChunk=self.webpackChunk||[])')){
+				results.chunks.push({
+					code: text,
+					chunk,
+				});
 			}
 			//await writeJS(chunk + '.js', text);
 		});
@@ -105,6 +118,86 @@ async function getChunks(){
 	return Object.values(chunksObj);
 }
 
+async function generateDashboardStructure(wantedChunks, write = false){
+	// parse each chunk to generate filesystem
+	// this is definitely not perfect and very loose, but it works for now
+	const files = {};
+	for(const chunk of wantedChunks.chunks){
+		const ast = parse(chunk.code, {
+			sourceType: 'script',
+			ecmaVersion: 2020,
+		});
+		// find webpack chunks
+		full(ast, (node) => {
+			// first find the webpack chunk assignment
+			if(
+				node.type === 'CallExpression' &&
+				node?.callee?.type === 'MemberExpression' &&
+				node?.callee?.object?.type === 'AssignmentExpression' &&
+				node?.callee?.object?.left?.type === 'MemberExpression' &&
+				node?.callee?.object?.left?.object?.type === 'Identifier' &&
+				node?.callee?.object?.left?.object?.name === 'self' &&
+				node?.callee?.object?.left?.property?.type === 'Identifier' &&
+				node?.callee?.object?.left?.property?.name === 'webpackChunk'
+			){
+				// then get the files and their contents from the webpack chunk
+				const buildFiles = node?.arguments?.[0]?.elements?.[1]?.properties ?? [];
+				for(const buildFile of buildFiles){
+					if(
+						(buildFile.type === 'ObjectProperty' || buildFile.type === 'Property') &&
+						(buildFile.key.type === 'StringLiteral' || buildFile.key.type === 'Literal') &&
+						buildFile.value.type === 'FunctionExpression' && buildFile.value.params?.length > 0
+					){
+						const file = buildFile.key.value;
+						if(files[file]){
+							files[file].push(generate(buildFile.value));
+						}else{
+							files[file] = [generate(buildFile.value)];
+						}
+					}
+				}
+			}
+		});
+	}
+	// figure out max up dir count
+	let maxDepth = 0;
+	for(const file in files){
+		const depth = /^(\.\.\/)+/.exec(file)?.[0].split('../').length ?? 0;
+		console.log('depth', depth, file);
+		if(depth > maxDepth){
+			maxDepth = depth;
+		}
+	}
+	// create folder structure up to maxDepth
+	let rootDir = path.resolve(`../data/dashboard-extracted/`);
+	if(write){
+		await fs.ensureDir(rootDir);
+		await fs.emptyDir(rootDir);
+	}
+	for(let i = 1; i < maxDepth; i++){
+		rootDir += `/${i}`;
+	}
+	rootDir = path.normalize(rootDir);
+	if(write){
+		await fs.ensureDir(rootDir);
+	}
+	const tree = [];
+	// and then finally handle writing
+	for(const file in files){
+		const filePath = path.resolve(rootDir, file);
+		if(write){
+			try{
+				await fs.ensureDir(path.dirname(filePath));
+				await fs.writeFile(filePath, files[file].map(code => beautify(code)).join('\n\n'));
+			}catch(err){
+				console.error('Error writing file', filePath, err);
+			}
+		}
+		tree.push(file);
+	}
+	return tree.sort();
+}
+
 async function run(){
 	console.log('Fetching chunks...');
 	const chunks = await getChunks();
@@ -118,6 +211,11 @@ async function run(){
 	}
 
 	await writeJS('dashboard.js', wantedChunks.dashboard.code);
+
+	// generate app structure
+	const tree = await generateDashboardStructure(wantedChunks, true);
+	const treeFile = path.resolve(`../data/dashboard/files.json`);
+	await fs.writeFile(treeFile, JSON.stringify(tree, null, 4));
 
 	// parse tranlsations
 	const translations = {};
