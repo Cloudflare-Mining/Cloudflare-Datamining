@@ -3,6 +3,9 @@ import fs from 'fs-extra';
 import dateFormat from 'dateformat';
 import fetch from 'node-fetch';
 import jsBeautify from 'js-beautify';
+import {parse} from 'acorn';
+import {full} from 'acorn-walk';
+import {generate} from 'astring';
 
 import {tryAndPush, removeSlashes} from './utils.js';
 
@@ -11,8 +14,8 @@ const chunkIds = /(?:\w+\.\w+\((\d+)\)(?:, )?)/g;
 const chunks = /{(?:"\d+":"[\da-f]+",)+"\d+":"[\da-f]+"}/;
 const dashVersion = /dashVersion: ?"([\da-f]+)",/;
 const translationsSnippet = 'dash/intl/intl-translations/src/locale/en-US/';
+const navigationSnippet = 'components/SidebarNav/index.ts":';
 
-// eslint-disable-next-line no-unused-vars
 async function writeJS(filename, data){
 	const file = path.resolve(`../data/dashboard/${filename}`);
 	fs.ensureDir(path.dirname(file));
@@ -49,7 +52,15 @@ async function findWantedChunks(chunks){
 					chunk,
 				});
 			}
-			// await writeJS(chunk + '.js', text);
+
+			// find navigation
+			if(text.includes(navigationSnippet)){
+				results.navigation = {
+					code: text,
+					chunk,
+				};
+			}
+			//await writeJS(chunk + '.js', text);
 		});
 	}
 	await Promise.all(getChunks.map(func => func()));
@@ -106,6 +117,8 @@ async function run(){
 		return;
 	}
 
+	await writeJS('dashboard.js', wantedChunks.dashboard.code);
+
 	// parse tranlsations
 	const translations = {};
 	for(const translation of wantedChunks.translations){
@@ -126,13 +139,71 @@ async function run(){
 		fs.ensureDir(path.dirname(file));
 		await fs.writeFile(file, JSON.stringify(translation, null, 4));
 	}
+
+	// parse navigation
+	let navigation = null;
+	if(wantedChunks.navigation){
+		const ast = parse(wantedChunks.navigation.code, {
+			sourceType: 'script',
+			ecmaVersion: 2020,
+		});
+		full(ast, (node) => {
+			if(node.type === 'ObjectExpression'){
+				const hasRoot = node.properties?.some?.(prop => prop.key.name === 'root');
+				// this is probably our navigation
+				if(hasRoot){
+					navigation = node;
+				}
+			}
+		});
+		if(navigation){
+			console.log('Found navigation');
+			const rawNavigation = generate(navigation);
+			// eslint-disable-next-line no-eval
+			const realNavigation = eval('(function run(){return ' + rawNavigation + '})()');
+			// write raw JS version
+			await writeJS('navigation.js', 'const navigation = ' + rawNavigation);
+
+			// write serialised version
+			const file = path.resolve(`../data/dashboard/navigation.json`);
+			fs.ensureDir(path.dirname(file));
+			await fs.writeFile(file, JSON.stringify(realNavigation, null, '\t'));
+		}
+	}
+
+	// parse main dash version, etc.
+	let dashInfo = null;
+	const ast = parse(wantedChunks.dashboard.code, {
+		sourceType: 'script',
+		ecmaVersion: 2020,
+	});
+	full(ast, (node) => {
+		if(node.type === 'ObjectExpression'){
+			const hasRoot = node.properties?.some?.(prop => prop.key.name === 'dashVersion');
+			// this is probably the dash info payload
+			if(hasRoot){
+				dashInfo = node;
+			}
+		}
+	});
+	if(dashInfo){
+		console.log('Found dashboard info');
+		const rawDashInfo = generate(dashInfo);
+		// eslint-disable-next-line no-eval
+		const realDashInfo = eval('(function run(){return ' + rawDashInfo + '})()');
+		// write serialised version
+		const file = path.resolve(`../data/dashboard/info.json`);
+		fs.ensureDir(path.dirname(file));
+		await fs.writeFile(file, JSON.stringify(realDashInfo, null, '\t'));
+	}
+
 	console.log('Pushing!');
 	const prefix = dateFormat(new Date(), 'd mmmm yyyy');
 	await tryAndPush(
-		['data/dashboard-translations/*.json'],
-		`${prefix} - Dashboard Translations Data was updated!`,
-		'CFData - Dashboard Translations Update',
-		'PushedDashboard Translations: ' + prefix,
+		['data/dashboard-translations/*.json', 'data/dashboard/*.json', 'data/dashboard/*.js'],
+		`${prefix} - Dashboard Data was updated!`,
+		'CFData - Dashboard Update',
+		'PushedDashboard  ' + prefix,
 	);
 }
 

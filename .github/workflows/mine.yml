@@ -15,7 +15,7 @@ jobs:
         continue-on-error: true
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          key: ${{ runner.os }}-node-${{ hashFiles('scripts/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
       - name: Setup node
