@@ -8,7 +8,6 @@ import {parseDocument} from 'htmlparser2';
 import {selectOne} from 'css-select';
 import {parse} from 'acorn';
 import {fullAncestor} from 'acorn-walk';
-import {generate} from 'astring';
 
 import {tryAndPush} from './utils.js';
 
@@ -41,7 +40,7 @@ async function run(){
 			if(!schema || schema.type !== 'ObjectExpression'){ return; }
 			// this is a massive hack. TODO: find a better way to do this
 			// eslint-disable-next-line no-eval
-			const realschema = eval('(function run(){return ' + generate(schema) + '})()');
+			const realschema = eval('(function run(){return ' + docsScript.slice(schema.start, schema.end) + '})()');
 			schemas[node.value] = realschema;
 		}
 	});

@@ -5,8 +5,9 @@ import fetch from 'node-fetch';
 import jsBeautify from 'js-beautify';
 import {parse} from 'acorn';
 import {full} from 'acorn-walk';
-import {generate} from 'astring';
+import isValidFilename from 'valid-filename';
 import filenamify from 'filenamify';
+import dataUriToBuffer from 'data-uri-to-buffer';
 
 import {tryAndPush, removeSlashes} from './utils.js';
 
@@ -14,8 +15,10 @@ const appScript = /(app\.[\da-z]+\.js)/;
 const chunkIds = /(?:\w+\.\w+\((\d+)\)(?:, )?)/g;
 const chunks = /{(?:"\d+":"[\da-f]+",)+"\d+":"[\da-f]+"}/;
 const dashVersion = /dashVersion: ?"([\da-f]+)",/;
+const likelyFiles = /\.(png|ico|svg)$/; // static assets that we want to extract properly
 const translationsSnippet = 'dash/intl/intl-translations/src/locale/en-US/';
 const navigationSnippet = 'components/SidebarNav/index.ts":';
+const staticDashURL = 'https://static.dash.cloudflare.com/';
 
 function beautify(data){
 	return jsBeautify.js(data,
@@ -41,7 +44,7 @@ async function findWantedChunks(chunks){
 	const getChunks = [];
 	for(const chunk of chunks){
 		getChunks.push(async function(){
-			const res = await fetch(`https://static.dash.cloudflare.com/${chunk}.js`);
+			const res = await fetch(`${staticDashURL}${chunk}.js`);
 			const text = await res.text();
 
 			// get main chunk
@@ -81,7 +84,7 @@ async function findWantedChunks(chunks){
 }
 
 async function getChunks(){
-	const response = await fetch('https://static.dash.cloudflare.com/');
+	const response = await fetch(staticDashURL);
 	const text = await response.text();
 
 	// Find `app.js` bundle
@@ -92,7 +95,7 @@ async function getChunks(){
 
 	const appFile = match[1];
 
-	const appRes = await fetch(`https://static.dash.cloudflare.com/${appFile}`);
+	const appRes = await fetch(`${staticDashURL}${appFile}`);
 	const appJs = await appRes.text();
 
 	// Trim this down to only the part we need right now
@@ -118,10 +121,87 @@ async function getChunks(){
 	return Object.values(chunksObj);
 }
 
+async function prepareWriteDir(files, directory = 'dashboard-extracted', write){
+	let maxDepth = 0;
+	for(const file in files){
+		const depth = /^(\.\.\/)+/.exec(file)?.[0].split('../').length - 1;
+		if(depth > maxDepth){
+			maxDepth = depth;
+		}
+	}
+	let rootDir = path.resolve(`../data/${directory}/`);
+	if(write){
+		await fs.ensureDir(rootDir);
+		await fs.emptyDir(rootDir);
+	}
+	for(let i = 1; i < maxDepth; i++){
+		rootDir += `/${i}`;
+	}
+	rootDir = path.normalize(rootDir);
+	if(write){
+		await fs.ensureDir(rootDir);
+	}
+	return rootDir;
+}
+
+async function writeFile(file, data, rootDir){
+	let filePath = path.resolve(rootDir, file);
+	let fileName = path.basename(filePath);
+	if(!isValidFilename(fileName)){
+		console.log(`Invalid filename: ${fileName}`);
+		fileName = filenamify(fileName);
+		console.log(`Using filename: ${fileName}`);
+		filePath = path.resolve(rootDir, fileName);
+	}
+	await fs.ensureDir(path.dirname(filePath));
+	if(Buffer.isBuffer(data) || ArrayBuffer.isView(data)){
+		await fs.writeFile(filePath, data);
+	}else if(Array.isArray(data)){
+		await fs.writeFile(filePath, data.map(code => beautify(code)).join('\n\n'));
+	}else{
+		await fs.writeFile(filePath, data);
+	}
+}
+
+async function writeFiles(files, write){
+	const rootDir = await prepareWriteDir(files, 'dashboard-extracted', write);
+	const tree = [];
+	for(const file in files){
+		if(write){
+			try{
+				await writeFile(file, files[file], rootDir);
+			}catch(err){
+				console.error('Error writing file', file, err);
+			}
+		}
+		tree.push(file);
+	}
+	return tree.sort();
+}
+
+async function writeAssets(files, write){
+	// like above, but let's check this one in
+	const rootDir = await prepareWriteDir(files, 'dashboard-assets', write);
+	for(const file in files){
+		if(!likelyFiles.test(file)){
+			continue;
+		}
+		if(write){
+			try{
+				await writeFile(file, files[file], rootDir);
+			}catch(err){
+				console.error('Error writing file', file, err);
+			}
+		}
+	}
+}
+
 async function generateDashboardStructure(wantedChunks, write = false){
 	// parse each chunk to generate filesystem
 	// this is definitely not perfect and very loose, but it works for now
+
 	const files = {};
+	const getRemoteFiles = [];
 	for(const chunk of wantedChunks.chunks){
 		const ast = parse(chunk.code, {
 			sourceType: 'script',
@@ -149,53 +229,52 @@ async function generateDashboardStructure(wantedChunks, write = false){
 						buildFile.value.type === 'FunctionExpression' && buildFile.value.params?.length > 0
 					){
 						const file = buildFile.key.value;
-						if(files[file]){
-							files[file].push(generate(buildFile.value));
+						const code = chunk.code.slice(buildFile.value.start, buildFile.value.end);
+						// get static files like imags
+						if(likelyFiles.test(file) && buildFile.value?.body?.body?.[1]?.expression?.right){
+							const fileData = buildFile.value?.body?.body?.[1]?.expression?.right;
+							if(fileData.type === 'BinaryExpression'){
+								// something like this: `i.p + "e42997c2963d927d6ba5.png"`
+								// remote file, go get it
+								const remoteFile = buildFile.value?.body?.body?.[1]?.expression?.right?.right?.value;
+								getRemoteFiles.push(async function(){
+									const fileRes = await fetch(`${staticDashURL}${remoteFile}`);
+									if(!fileRes.ok){
+										console.error('Failure fetching remote file', remoteFile);
+										return;
+									}
+									console.log('Fetched remote file', file, remoteFile);
+									const fileBuffer = await fileRes.arrayBuffer();
+									files[file] = Buffer.from(fileBuffer);
+								});
+							}else if(
+								(fileData.type === 'Literal' || fileData.type === 'StringLiteral') &&
+								fileData.value.startsWith('data:')
+							){
+								// base64 encoded file, decode it
+								const fileBuffer = dataUriToBuffer(fileData.value);
+								if(fileBuffer){
+									files[file] = fileBuffer;
+								}
+							}else{
+								// no match?
+								console.log('Unhandled file data', fileData);
+							}
+						// else handle code
+						}else if(files[file]){
+							files[file].push(code);
 						}else{
-							files[file] = [generate(buildFile.value)];
+							files[file] = [code];
 						}
 					}
 				}
 			}
 		});
 	}
-	// figure out max up dir count
-	let maxDepth = 0;
-	for(const file in files){
-		const depth = /^(\.\.\/)+/.exec(file)?.[0].split('../').length ?? 0;
-		console.log('depth', depth, file);
-		if(depth > maxDepth){
-			maxDepth = depth;
-		}
-	}
-	// create folder structure up to maxDepth
-	let rootDir = path.resolve(`../data/dashboard-extracted/`);
-	if(write){
-		await fs.ensureDir(rootDir);
-		await fs.emptyDir(rootDir);
-	}
-	for(let i = 1; i < maxDepth; i++){
-		rootDir += `/${i}`;
-	}
-	rootDir = path.normalize(rootDir);
-	if(write){
-		await fs.ensureDir(rootDir);
-	}
-	const tree = [];
-	// and then finally handle writing
-	for(const file in files){
-		const filePath = path.resolve(rootDir, file);
-		if(write){
-			try{
-				await fs.ensureDir(path.dirname(filePath));
-				await fs.writeFile(filePath, files[file].map(code => beautify(code)).join('\n\n'));
-			}catch(err){
-				console.error('Error writing file', filePath, err);
-			}
-		}
-		tree.push(file);
-	}
-	return tree.sort();
+	await Promise.all(getRemoteFiles.map(func => func()));
+	await writeAssets(files, write);
+	const tree = await writeFiles(files, write);
+	return tree;
 }
 
 async function run(){
@@ -256,7 +335,7 @@ async function run(){
 		});
 		if(navigation){
 			console.log('Found navigation');
-			const rawNavigation = generate(navigation);
+			const rawNavigation = wantedChunks.navigation.code.slice(navigation.start, navigation.end);
 			// eslint-disable-next-line no-eval
 			const realNavigation = eval('(function run(){return ' + rawNavigation + '})()');
 			// write raw JS version
@@ -286,7 +365,7 @@ async function run(){
 	});
 	if(dashInfo){
 		console.log('Found dashboard info');
-		const rawDashInfo = generate(dashInfo);
+		const rawDashInfo = wantedChunks.dashboard.code.slice(dashInfo.start, dashInfo.end);
 		// eslint-disable-next-line no-eval
 		const realDashInfo = eval('(function run(){return ' + rawDashInfo + '})()');
 		// write serialised version
@@ -298,7 +377,11 @@ async function run(){
 	console.log('Pushing!');
 	const prefix = dateFormat(new Date(), 'd mmmm yyyy');
 	await tryAndPush(
-		['data/dashboard-translations/*.json', 'data/dashboard/*.json', 'data/dashboard/*.js'],
+		[
+			'data/dashboard-translations/*.json',
+			'data/dashboard/*.json',
+			'data/dashboard/*.js',
+		],
 		`${prefix} - Dashboard Data was updated!`,
 		'CFData - Dashboard Update',
 		'PushedDashboard  ' + prefix,
