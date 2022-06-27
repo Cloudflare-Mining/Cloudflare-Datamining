@@ -28,7 +28,7 @@ jobs:
           git config user.email "<>"
           cd scripts
           npm ci
-          npm run mine:dashboard
+          npm run mine:dashboard -- --no-write
         env:
           CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
           CLOUDFLARE_PASSWORD: ${{ secrets.CLOUDFLARE_PASSWORD }}

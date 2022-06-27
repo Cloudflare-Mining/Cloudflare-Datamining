@@ -237,9 +237,13 @@ async function generateDashboardStructure(wantedChunks, write = false){
 								// something like this: `i.p + "e42997c2963d927d6ba5.png"`
 								// remote file, go get it
 								const remoteFile = buildFile.value?.body?.body?.[1]?.expression?.right?.right?.value;
+								files[file] = ''; // add to list of files so it's still included in our manifest
 								getRemoteFiles.push(async function(){
-									const fileRes = await fetch(`${staticDashURL}${remoteFile}`);
-									if(!fileRes.ok){
+									let fileRes = null;
+									try{
+										fileRes = await fetch(`${staticDashURL}${remoteFile}`);
+									}catch{}
+									if(!fileRes?.ok){
 										console.error('Failure fetching remote file', remoteFile);
 										return;
 									}
@@ -271,7 +275,12 @@ async function generateDashboardStructure(wantedChunks, write = false){
 			}
 		});
 	}
-	await Promise.all(getRemoteFiles.map(func => func()));
+	if(write){
+		while(getRemoteFiles.length > 0){
+			// 10 at a time
+			await Promise.all(getRemoteFiles.splice(0, 10).map(func => func()));
+		}
+	}
 	await writeAssets(files, write);
 	const tree = await writeFiles(files, write);
 	return tree;
@@ -292,7 +301,13 @@ async function run(){
 	await writeJS('dashboard.js', wantedChunks.dashboard.code);
 
 	// generate app structure
-	const tree = await generateDashboardStructure(wantedChunks, true);
+	let writeAssets = true;
+	if(process.argv.includes('--no-write')){
+		console.log('Not writing assets');
+		writeAssets = false;
+	}
+
+	const tree = await generateDashboardStructure(wantedChunks, writeAssets);
 	const treeFile = path.resolve(`../data/dashboard/files.json`);
 	await fs.writeFile(treeFile, JSON.stringify(tree, null, 4));
 
