@@ -47,6 +47,9 @@ async function findWantedChunks(chunks){
 			const res = await fetch(`${staticDashURL}${chunk}.js`);
 			const text = await res.text();
 
+			// next do some very lazy parsing to match what we need
+			// TODO: switch this to AST parsing?
+
 			// get main chunk
 			const match = dashVersion.exec(text);
 			if(match !== null){
@@ -79,7 +82,10 @@ async function findWantedChunks(chunks){
 			//await writeJS(chunk + '.js', text);
 		});
 	}
-	await Promise.all(getChunks.map(func => func()));
+	while(getChunks.length > 0){
+		// 10 at a time
+		await Promise.all(getChunks.splice(0, 10).map(func => func()));
+	}
 	return results;
 }
 
