@@ -86702,6 +86702,91 @@
 				]
 			}
 		},
+		"/accounts/{account_identifier}/intel/miscategorization": {
+			"post": {
+				"summary": "Create Miscategorization",
+				"parameters": [
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1audit_logs/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Create Miscategorization response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"indicator_type": {
+										"enum": [
+											"domain",
+											"ipv4",
+											"ipv6",
+											"url"
+										],
+										"example": "domain"
+									},
+									"ip": {
+										"description": "Provide only if indicator_type is `ipv4` or `ipv6`"
+									},
+									"url": {
+										"type": "string",
+										"description": "Provide only if indicator_type is `domain` or `url`. Example if indicator_type is `domain`: `example.com`. Example if indicator_type is `url`: `https://example.com/news/`"
+									},
+									"content_adds": {
+										"description": "Content category IDs to add",
+										"example": [
+											82
+										]
+									},
+									"content_removes": {
+										"description": "Content category IDs to remove",
+										"example": [
+											155
+										]
+									},
+									"security_adds": {
+										"description": "Security category IDs to add",
+										"example": [
+											117,
+											131
+										]
+									},
+									"security_removes": {
+										"description": "Security category IDs to remove",
+										"example": [
+											83
+										]
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
 		"/accounts/{identifier}/alerting/v3/available_alerts": {
 			"get": {
 				"summary": "Get Alert Types",
