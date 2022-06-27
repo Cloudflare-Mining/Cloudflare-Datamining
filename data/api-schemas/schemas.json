@@ -54217,75 +54217,6 @@
 											"description": "The rules in the ruleset.",
 											"type": "array",
 											"items": {
-												"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1rulesets~1phases~1%7Bphase%7D~1entrypoint/put/responses/200/content/application~1json/schema/properties/rules/items"
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"api_key": [],
-						"api_email": []
-					}
-				],
-				"x-cfPlanAvailability": {
-					"free": true,
-					"pro": true,
-					"business": true,
-					"enterprise": true
-				}
-			},
-			"put": {
-				"summary": "Update Transform Rules",
-				"description": "Updates the Transform Rules of a zone.",
-				"parameters": [
-					{
-						"name": "phase",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1rulesets~1phases~1%7Bphase%7D~1entrypoint/get/parameters/0/schema"
-						}
-					},
-					{
-						"name": "zone_id",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1rulesets~1phases~1%7Bphase%7D~1entrypoint/get/parameters/1/schema"
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "Update Transform Rules response",
-						"content": {
-							"application/json": {
-								"schema": {
-									"properties": {
-										"id": {
-											"example": "2f2feab2026849078ba485f918791bdc"
-										},
-										"name": {
-											"example": "default"
-										},
-										"description": {
-											"example": ""
-										},
-										"kind": {
-											"example": "zone"
-										},
-										"phase": {
-											"example": "http_request_transform"
-										},
-										"rules": {
-											"description": "The rules in the ruleset.",
-											"type": "array",
-											"items": {
 												"properties": {
 													"id": {
 														"example": "3a03d665bac047339bb530ecb439a90d"
@@ -54345,52 +54276,66 @@
 					"pro": true,
 					"business": true,
 					"enterprise": true
+				}
+			},
+			"put": {
+				"summary": "Update Transform Rules",
+				"description": "Updates the Transform Rules of a zone.",
+				"parameters": [
+					{
+						"name": "phase",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1rulesets~1phases~1%7Bphase%7D~1entrypoint/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "zone_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1rulesets~1phases~1%7Bphase%7D~1entrypoint/get/parameters/1/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Update Transform Rules response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
 				},
 				"requestBody": {
 					"required": true,
 					"content": {
 						"application/json": {
 							"schema": {
-								"type": "array",
-								"items": {
-									"properties": {
-										"id": {
-											"example": "3a03d665bac047339bb530ecb439a90d"
-										},
-										"version": {
-											"example": "1"
-										},
-										"action": {
-											"example": "rewrite"
-										},
-										"expression": {
-											"example": "ip.geoip.country eq \"AL\""
-										},
-										"description": {
-											"example": "change request based on ip location"
-										},
-										"action_parameters": {
-											"description": "The parameters configuring the action.",
-											"type": "object",
-											"oneOf": [
-												{
-													"description": "The configuration parameters for the rewrite action.",
-													"properties": {
-														"uri": {
-															"description": "The URI rewrite configuration to rewrite the URI path, the query string, or both.",
-															"type": "object",
-															"properties": {
-																"path": {
-																	"description": "The new URI path sent to the origin."
-																},
-																"query": {
-																	"description": "The new query string sent to the origin."
-																}
-															}
-														}
-													}
-												}
-											]
+								"properties": {
+									"description": {
+										"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/description"
+									},
+									"rules": {
+										"type": "array",
+										"items": {
+											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D/put/responses/200/content/application~1json/schema/properties/rules/items"
 										}
 									}
 								}
