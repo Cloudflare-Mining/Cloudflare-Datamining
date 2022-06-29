@@ -64669,6 +64669,29 @@
 													}
 												},
 												{
+													"title": "Access IP List Rule",
+													"description": "Match an IP from a list.",
+													"type": "object",
+													"required": [
+														"ip_list"
+													],
+													"properties": {
+														"ip_list": {
+															"type": "object",
+															"required": [
+																"id"
+															],
+															"properties": {
+																"id": {
+																	"type": "string",
+																	"description": "The ID of a previously created IP List.",
+																	"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
+																}
+															}
+														}
+													}
+												},
+												{
 													"title": "Certificate Rule",
 													"description": "Match any valid certificate.",
 													"type": "object",
