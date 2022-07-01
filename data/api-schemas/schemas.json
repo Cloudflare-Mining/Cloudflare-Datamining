@@ -45067,8 +45067,8 @@
 		},
 		"/zones/{zone_identifier}/rate_limits": {
 			"get": {
-				"summary": "List Rate Limits",
-				"description": "List the rate limits on a zone.",
+				"summary": "Get rate limits",
+				"description": "Fetches the rate limits for a zone.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -45081,7 +45081,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "List Rate Limits response",
+						"description": "Get rate limits response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -45100,7 +45100,7 @@
 															{
 																"properties": {
 																	"id": {
-																		"description": "Ratelimit identifier",
+																		"description": "The unique identifier of the rate limit.",
 																		"type": "string",
 																		"maxLength": 32,
 																		"readOnly": true,
@@ -45108,18 +45108,18 @@
 																	},
 																	"disabled": {
 																		"type": "boolean",
-																		"description": "Whether this ratelimit is currently disabled",
+																		"description": "When true, indicates that the rate limit is currently disabled.",
 																		"example": false
 																	},
 																	"description": {
 																		"type": "string",
-																		"description": "A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed",
+																		"description": "An informative summary of the rate limit. This value is sanitized and any tags will be removed.",
 																		"maxLength": 1024,
 																		"example": "Prevent multiple login failures to mitigate brute force attacks"
 																	},
 																	"match": {
 																		"type": "object",
-																		"description": "Determines which traffic the rate limit counts towards the threshold",
+																		"description": "Determines which traffic the rate limit counts towards the threshold.",
 																		"oneOf": [
 																			{
 																				"type": "object",
@@ -45129,10 +45129,10 @@
 																						"properties": {
 																							"methods": {
 																								"type": "array",
-																								"description": "HTTP Methods, can be a subset ['POST','PUT'] or all ['&#95;ALL&#95;'].  This field is not required to create a rate limit rule.",
+																								"description": "The HTTP methods to match. You can specify a subset (for example, `['POST','PUT']`) or all methods (`['_ALL_']`). This field is optional when creating a rate limit.",
 																								"items": {
 																									"type": "string",
-																									"description": "HTTP Method, or '_ALL_' to indicate all methods",
+																									"description": "An HTTP method or `_ALL_` to indicate all methods.",
 																									"example": "GET",
 																									"enum": [
 																										"GET",
@@ -45151,10 +45151,10 @@
 																							},
 																							"schemes": {
 																								"type": "array",
-																								"description": "HTTP Schemes, can be one ['HTTPS'], both ['HTTP','HTTPS'] or all ['&#95;ALL&#95;'].  This field is not required.",
+																								"description": "The HTTP schemes to match. You can specify one scheme (`['HTTPS']`), both schemes (`['HTTP','HTTPS']`), or all schemes (`['_ALL_']`). This field is optional.",
 																								"items": {
 																									"type": "string",
-																									"description": "HTTP Scheme, or '_ALL_' to indicate all schemes",
+																									"description": "An HTTP scheme or `_ALL_` to indicate all schemes.",
 																									"example": "HTTPS"
 																								},
 																								"example": [
@@ -45164,7 +45164,7 @@
 																							},
 																							"url": {
 																								"type": "string",
-																								"description": "The URL pattern to match comprised of the host and path, i.e. example.org/path*. Normalisation is applied before the pattern is matched. Wildcard * are expanded to match applicable traffic, query strings are not matched. Use `*` for all traffic to your zone.",
+																								"description": "The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone.",
 																								"maxLength": 1024,
 																								"example": "*.example.org/path*"
 																							}
@@ -45175,7 +45175,7 @@
 																						"properties": {
 																							"origin_traffic": {
 																								"type": "boolean",
-																								"description": "Only count traffic that has come from your origin servers. If `true`, cached items that Cloudflare serve will not count towards rate limiting.  This field is not required.\nNotes: Deprecated, please use response headers instead and also provide `origin_traffic:false` to avoid legacy behaviour interacting with the response.headers property."
+																								"description": "When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional.\nNotes: This field is deprecated. Instead, use response headers and set \"origin_traffic\" to \"false\" to avoid legacy behaviour interacting with the \"response_headers\" property."
 																							}
 																						}
 																					},
@@ -45186,12 +45186,12 @@
 																							"properties": {
 																								"name": {
 																									"type": "string",
-																									"description": "The name of the response header to match",
+																									"description": "The name of the response header to match.",
 																									"example": "Cf-Cache-Status"
 																								},
 																								"op": {
 																									"type": "string",
-																									"description": "The operator when matching, eq means equals, ne means not equals",
+																									"description": "The operator used when matching: `eq` means \"equal\" and `ne` means \"not equal\".",
 																									"example": "ne",
 																									"enum": [
 																										"eq",
@@ -45200,7 +45200,7 @@
 																								},
 																								"value": {
 																									"type": "string",
-																									"description": "The value of the header, which will be exactly matched",
+																									"description": "The value of the response header, which must match exactly.",
 																									"example": "HIT"
 																								}
 																							}
@@ -45212,8 +45212,7 @@
 																	},
 																	"bypass": {
 																		"type": "array",
-																		"title": "Bypass rate limit when",
-																		"description": "Criteria that would allow the rate limit to be bypassed, for example to express that you shouldn't apply a rate limit to a given set of URLs",
+																		"description": "Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.",
 																		"items": {
 																			"type": "object",
 																			"properties": {
@@ -45226,7 +45225,7 @@
 																				},
 																				"value": {
 																					"type": "string",
-																					"description": "The url to bypass",
+																					"description": "The URL to bypass.",
 																					"example": "api.example.com/*"
 																				}
 																			}
@@ -45234,27 +45233,27 @@
 																	},
 																	"threshold": {
 																		"type": "number",
-																		"description": "The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period",
+																		"description": "The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.",
 																		"minimum": 1,
 																		"example": 60
 																	},
 																	"period": {
 																		"type": "number",
-																		"description": "The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed",
+																		"description": "The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.",
 																		"minimum": 10,
 																		"maximum": 86400,
 																		"example": 900
 																	},
 																	"action": {
 																		"type": "object",
-																		"description": "The action to be performed when the threshold of matched traffic within the period defined is exceeded",
+																		"description": "The action to perform when the threshold of matched traffic within the configured period is exceeded.",
 																		"anyOf": [
 																			{
 																				"type": "object",
 																				"properties": {
 																					"mode": {
 																						"type": "string",
-																						"description": "The type of action to perform.",
+																						"description": "The action to perform.",
 																						"example": "challenge",
 																						"enum": [
 																							"simulate",
@@ -45266,27 +45265,27 @@
 																					},
 																					"timeout": {
 																						"type": "number",
-																						"description": "The time in seconds as an integer to perform the mitigation action. Must be the same or greater than the period.\nNotes: If `mode` is `challenge`, `managed_challenge` or `js_challenge` then the Zone Challenge Passage time is used and this value should not be supplied.",
+																						"description": "The time in seconds during which Cloudflare will perform the mitigation action. Must be an integer value greater than or equal to the period.\nNotes: If \"mode\" is \"challenge\", \"managed_challenge\", or \"js_challenge\", Cloudflare will use the zone's Challenge Passage time and you should not provide this value.",
 																						"minimum": 1,
 																						"maximum": 86400,
 																						"example": 86400
 																					},
 																					"response": {
 																						"type": "object",
-																						"description": "Custom content-type and body to return, this overrides the custom error for the zone.  This field is not required.  Omission will result in default HTML error page.\nNotes: If `mode` is `challenge`, `managed_challenge` or `js_challenge` then the Zone challenge pages are used and this object should not be supplied.",
+																						"description": "A custom content type and reponse to return when the threshold is exceeded. The custom response configured in this object will override the custom error for the zone. This object is optional.\nNotes: If you omit this object, Cloudflare will use the default HTML error page. If \"mode\" is \"challenge\", \"managed_challenge\", or \"js_challenge\", Cloudflare will use the zone challenge pages and you should not provide the \"response\" object.",
 																						"anyOf": [
 																							{
 																								"type": "object",
 																								"properties": {
 																									"content_type": {
 																										"type": "string",
-																										"description": "The content-type of the body, must be one of: `text/plain`, `text/xml`, `application/json`",
+																										"description": "The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`.",
 																										"maxLength": 50,
 																										"example": "text/xml"
 																									},
 																									"body": {
 																										"type": "string",
-																										"description": "The body to return, the content here should conform to the content_type",
+																										"description": "The response body to return. The value must conform to the configured content type.",
 																										"maxLength": 10240,
 																										"example": "<error>This request has been rate-limited.</error>"
 																									}
@@ -45342,8 +45341,8 @@
 				}
 			},
 			"post": {
-				"summary": "Create Rate Limit",
-				"description": "Create a new rate limit for a zone. See the record object definitions for required attributes for each record type",
+				"summary": "Create a rate limit",
+				"description": "Creates a new rate limit for a zone. Refer to the object definition for a list of required attributes.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -45356,7 +45355,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create Rate Limit response",
+						"description": "Create a rate limit response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -45409,14 +45408,15 @@
 		},
 		"/zones/{zone_identifier}/rate_limits/{id}": {
 			"get": {
-				"summary": "Rate Limit Details",
+				"summary": "Get a rate limit",
+				"description": "Fetches the details of a rate limit.",
 				"parameters": [
 					{
 						"name": "id",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "Ratelimit identifier",
+							"description": "The unique identifier of the rate limit.",
 							"type": "string",
 							"maxLength": 32,
 							"readOnly": true,
@@ -45434,7 +45434,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Rate Limit Details response",
+						"description": "Get a rate limit response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -45470,7 +45470,8 @@
 				}
 			},
 			"put": {
-				"summary": "Update Rate Limit",
+				"summary": "Update a rate limit",
+				"description": "Updates an existing rate limit.",
 				"parameters": [
 					{
 						"name": "id",
@@ -45491,7 +45492,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update Rate Limit response",
+						"description": "Update a rate limit response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -45531,7 +45532,8 @@
 				}
 			},
 			"delete": {
-				"summary": "Delete Rate Limit",
+				"summary": "Delete a rate limit",
+				"description": "Deletes an existing rate limit.",
 				"parameters": [
 					{
 						"name": "id",
@@ -45552,7 +45554,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete Rate Limit response",
+						"description": "Delete a rate limit response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -46987,8 +46989,8 @@
 		},
 		"/zones/{zone_identifier}/firewall/waf/packages": {
 			"get": {
-				"summary": "List Firewall Packages",
-				"description": "Retrieve firewall packages for a zone",
+				"summary": "Get WAF packages",
+				"description": "Fetches WAF packages for a zone.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -47001,7 +47003,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "List Firewall Packages response",
+						"description": "Get WAF packages response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -47017,7 +47019,7 @@
 														"type": "object",
 														"oneOf": [
 															{
-																"title": "Traditional firewall package",
+																"title": "Traditional WAF package",
 																"required": [
 																	"id",
 																	"name",
@@ -47027,26 +47029,26 @@
 																],
 																"properties": {
 																	"id": {
-																		"description": "WAF package identifier tag",
+																		"description": "The unique identifier of a WAF package.",
 																		"type": "string",
 																		"maxLength": 32,
 																		"readOnly": true,
 																		"example": "a25a9a7e9c00afc1fb2e0245519d725b"
 																	},
 																	"name": {
-																		"description": "Name of the firewall package",
+																		"description": "The name of the WAF package.",
 																		"type": "string",
 																		"readOnly": true,
 																		"example": "USER"
 																	},
 																	"description": {
-																		"description": "Summary of the purpose/function of the firewall package",
+																		"description": "A summary of the purpose/function of the WAF package.",
 																		"type": "string",
 																		"readOnly": true,
 																		"example": "null"
 																	},
 																	"detection_mode": {
-																		"description": "How the rules within the package are evaluated during the course of a request. When a package uses anomaly detection each rule is given a score when triggered. If the total score of all triggered rules exceeds the sensitivity defined on the package, the action defined on the package will be taken. Traditional detection will decide the action to take when it is triggered by the request. If multiple rules are triggered, the action with highest protection will be used (i.e., a block action will beat a challenge).",
+																		"description": "The mode that defines how rules within the package are evaluated during the course of a request. When a package uses anomaly detection mode (`anomaly` value), each rule is given a score when triggered. If the total score of all triggered rules exceeds the sensitivity defined in the WAF package, the action configured in the package will be performed. Traditional detection mode (`traditional` value) will decide the action to take when it is triggered by the request. If multiple rules are triggered, the action providing the highest protection will be applied (for example, a 'block' action will win over a 'challenge' action).",
 																		"type": "string",
 																		"enum": [
 																			"anomaly",
@@ -47063,14 +47065,14 @@
 																		"enum": [
 																			"active"
 																		],
-																		"description": "Indicates the package's application to the zone.",
+																		"description": "When set to `active`, indicates that the WAF package will be applied to the zone.",
 																		"default": "active",
 																		"readOnly": true
 																	}
 																}
 															},
 															{
-																"title": "Anomaly firewall package (OWASP)",
+																"title": "Anomaly detection WAF package (OWASP)",
 																"required": [
 																	"id",
 																	"name",
@@ -47087,19 +47089,19 @@
 																	{
 																		"properties": {
 																			"name": {
-																				"description": "Name of the firewall package",
+																				"description": "The name of the WAF package.",
 																				"type": "string",
 																				"readOnly": true,
 																				"example": "OWASP ModSecurity Core Rule Set"
 																			},
 																			"description": {
-																				"description": "Summary of the purpose/function of the firewall package",
+																				"description": "A summary of the purpose/function of the WAF package.",
 																				"type": "string",
 																				"readOnly": true,
-																				"example": "Covers OWASP Top 10 vulnerabilities, and more."
+																				"example": "Covers OWASP Top 10 vulnerabilities and more."
 																			},
 																			"detection_mode": {
-																				"description": "When a package uses anomaly detection each rule is given a score when triggered. If the total score of all triggered rules exceeds the sensitivity defined on the package, the action defined on the package will be taken.",
+																				"description": "When a WAF package uses anomaly detection, each rule is given a score when triggered. If the total score of all triggered rules exceeds the sensitivity defined on the WAF package, the action defined on the package will be taken.",
 																				"type": "string",
 																				"readOnly": true,
 																				"example": "anomaly"
@@ -47112,7 +47114,7 @@
 																					"low",
 																					false
 																				],
-																				"description": "The sensitivity of the firewall package.",
+																				"description": "The sensitivity of the WAF package.",
 																				"default": "high"
 																			},
 																			"action_mode": {
@@ -47122,7 +47124,7 @@
 																					"block",
 																					"challenge"
 																				],
-																				"description": "The default action that will be taken for rules under the firewall package.",
+																				"description": "The default action performed by the rules in the WAF package.",
 																				"default": "challenge"
 																			}
 																		}
@@ -47156,8 +47158,8 @@
 		},
 		"/zones/{zone_identifier}/firewall/waf/packages/{identifier}": {
 			"get": {
-				"summary": "Firewall Package Details",
-				"description": "Get information about a single firewall package",
+				"summary": "Get a WAF package",
+				"description": "Fetches the details of a WAF package.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -47178,7 +47180,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Firewall Package Details response",
+						"description": "Get a WAF package response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -47213,8 +47215,8 @@
 				}
 			},
 			"patch": {
-				"summary": "Edit Firewall Package",
-				"description": "Change the sensitivity and action for an anomaly detection type WAF rule package",
+				"summary": "Update a WAF package",
+				"description": "Updates a WAF package. You can update the sensitivity and the action of an anomaly detection WAF package.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -47235,7 +47237,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Edit Firewall Package response",
+						"description": "Update a WAF package response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -47246,7 +47248,7 @@
 										{
 											"properties": {
 												"result": {
-													"title": "Anomaly firewall package (OWASP)",
+													"title": "Anomaly detection WAF package (OWASP)",
 													"required": [
 														"id",
 														"name",
@@ -47258,7 +47260,7 @@
 													],
 													"allOf": [
 														{
-															"title": "Traditional firewall package",
+															"title": "Traditional WAF package",
 															"required": [
 																"id",
 																"name",
@@ -47287,7 +47289,7 @@
 																	"enum": [
 																		"active"
 																	],
-																	"description": "Indicates the package's application to the zone.",
+																	"description": "When set to `active`, indicates that the WAF package will be applied to the zone.",
 																	"default": "active",
 																	"readOnly": true
 																}
@@ -47349,7 +47351,7 @@
 											"low",
 											false
 										],
-										"description": "The sensitivity of the firewall package.",
+										"description": "The sensitivity of the WAF package.",
 										"default": "high"
 									},
 									"action_mode": {
@@ -47359,7 +47361,7 @@
 											"block",
 											"challenge"
 										],
-										"description": "The default action that will be taken for rules under the firewall package.",
+										"description": "The default action performed by the rules in the WAF package.",
 										"default": "challenge"
 									}
 								}
@@ -47371,8 +47373,8 @@
 		},
 		"/zones/{zone_identifier}/firewall/waf/packages/{package_identifier}/groups": {
 			"get": {
-				"summary": "List Rule Groups",
-				"description": "Search, list, and sort rule groups contained within a package",
+				"summary": "Get WAF rule groups",
+				"description": "Fetches the WAF rule groups in a WAF package.",
 				"parameters": [
 					{
 						"name": "package_identifier",
@@ -47393,7 +47395,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "List Rule Groups response",
+						"description": "Get WAF rule groups response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -47419,34 +47421,34 @@
 																"type": "object",
 																"properties": {
 																	"id": {
-																		"description": "WAF group identifier tag",
+																		"description": "The unique identifier of the rule group.",
 																		"type": "string",
 																		"maxLength": 32,
 																		"readOnly": true,
 																		"example": "de677e5818985db1285d0e80225f06e5"
 																	},
 																	"name": {
-																		"description": "Name of the firewall rule group",
+																		"description": "The name of the rule group.",
 																		"type": "string",
 																		"readOnly": true,
 																		"example": "Project Honey Pot"
 																	},
 																	"description": {
-																		"description": "Summary of what the WAF Rule Set does",
+																		"description": "An informative summary of what the rule group does.",
 																		"type": "string",
 																		"readOnly": true,
 																		"example": "Group designed to protect against IP addresses that are a threat and typically used to launch DDoS attacks",
 																		"nullable": true
 																	},
 																	"rules_count": {
-																		"description": "How many rules are contained within this group",
+																		"description": "The number of rules in the current rule group.",
 																		"type": "number",
 																		"readOnly": true,
 																		"default": 0,
 																		"example": 10
 																	},
 																	"modified_rules_count": {
-																		"description": "How many rules have been modified from their default within the group",
+																		"description": "The number of rules within the group that have been modified from their default configuration.",
 																		"type": "number",
 																		"readOnly": true,
 																		"default": 0,
@@ -47466,11 +47468,11 @@
 																			false
 																		],
 																		"default": true,
-																		"description": "Whether or not the rules contained within this group are configurable/usable"
+																		"description": "The state of the rules contained in the rule group. When `on`, the rules in the group are configurable/usable."
 																	},
 																	"allowed_modes": {
 																		"type": "array",
-																		"description": "The available states the group can have. This will affect the state of rules within this group.",
+																		"description": "The available states for the rule group.",
 																		"readOnly": true,
 																		"example": [
 																			true,
@@ -47509,15 +47511,15 @@
 		},
 		"/zones/{zone_identifier}/firewall/waf/packages/{package_identifier}/groups/{identifier}": {
 			"get": {
-				"summary": "Rule Group Details",
-				"description": "Get a single rule group",
+				"summary": "Get a WAF rule group",
+				"description": "Fetches the details of a WAF rule group.",
 				"parameters": [
 					{
 						"name": "identifier",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "WAF group identifier tag",
+							"description": "The unique identifier of the rule group.",
 							"type": "string",
 							"maxLength": 32,
 							"readOnly": true,
@@ -47543,7 +47545,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Rule Group Details response",
+						"description": "Get a WAF rule group response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -47578,8 +47580,8 @@
 				}
 			},
 			"patch": {
-				"summary": "Edit Rule Group",
-				"description": "Update the state of a rule group",
+				"summary": "Update a WAF rule group",
+				"description": "Updates a WAF rule group. You can update the state (`mode` parameter) of a rule group.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -47608,7 +47610,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Edit Rule Group response",
+						"description": "Update a WAF rule group response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -47643,7 +47645,7 @@
 											false
 										],
 										"default": true,
-										"description": "Whether or not the rules contained within this group are configurable/usable"
+										"description": "The state of the rules contained in the rule group. When `on`, the rules in the group are configurable/usable."
 									}
 								}
 							}
@@ -47654,8 +47656,8 @@
 		},
 		"/zones/{zone_id}/firewall/waf/packages/{package_id}/rules": {
 			"get": {
-				"summary": "List Rules",
-				"description": "Search, sort, and filter rules within a package",
+				"summary": "Get WAF rules",
+				"description": "Fetches WAF rules in a WAF package.",
 				"parameters": [
 					{
 						"name": "package_id",
@@ -47676,7 +47678,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "List Rules response",
+						"description": "Get WAF rules response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -47692,8 +47694,8 @@
 														"type": "object",
 														"oneOf": [
 															{
-																"title": "Anomaly rule",
-																"description": "Anomaly scoring rules (if triggered) will contribute to an overall threat score that determines if a request is detected as malicious. Users can control the total scoring threshold via the 'sensitivity' of the package.",
+																"title": "Anomaly detection WAF rule",
+																"description": "When triggered, anomaly detection WAF rules contribute to an overall threat score that will determine if a request is considered malicious. You can configure the total scoring threshold through the 'sensitivity' property of the WAF package.",
 																"required": [
 																	"id",
 																	"description",
@@ -47709,32 +47711,32 @@
 																			{
 																				"properties": {
 																					"id": {
-																						"description": "WAF rule identifier tag",
+																						"description": "The unique identifier of the WAF rule.",
 																						"type": "string",
 																						"maxLength": 32,
 																						"readOnly": true,
 																						"example": "f939de3be84e66e757adcdcb87908023"
 																					},
 																					"description": {
-																						"description": "Public description of the rule",
+																						"description": "The public description of the WAF rule.",
 																						"type": "string",
 																						"readOnly": true,
 																						"example": "SQL injection prevention for SELECT statements"
 																					},
 																					"priority": {
-																						"description": "The order in which the individual rule is executed within the related group",
+																						"description": "The order in which the individual WAF rule is executed within its rule group.",
 																						"type": "string",
 																						"readOnly": true
 																					},
 																					"group": {
-																						"description": "The group in which the rule belongs",
+																						"description": "The rule group to which the current WAF rule belongs.",
 																						"type": "object",
 																						"properties": {
 																							"id": {
 																								"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1firewall~1waf~1packages~1%7Bpackage_identifier%7D~1groups~1%7Bidentifier%7D/get/parameters/0/schema"
 																							},
 																							"name": {
-																								"description": "Name of the firewall rule group",
+																								"description": "The name of the rule group.",
 																								"type": "string",
 																								"readOnly": true,
 																								"example": "Project Honey Pot"
@@ -47752,10 +47754,10 @@
 																	{
 																		"properties": {
 																			"allowed_modes": {
-																				"description": "Defines the available modes of how the rule interacts when it is triggered.",
+																				"description": "Defines the available modes for the current WAF rule. Applies to anomaly detection WAF rules.",
 																				"type": "array",
 																				"items": {
-																					"description": "Whether or not the anomaly-based rule will be used when evaluating the request.",
+																					"description": "When set to `on`, the current WAF rule will be used when evaluating the request. Applies to anomaly detection WAF rules.",
 																					"type": "string",
 																					"enum": [
 																						true,
@@ -47770,7 +47772,7 @@
 																				]
 																			},
 																			"mode": {
-																				"description": "Whether or not the anomaly-based rule will be used when evaluating the request.",
+																				"description": "When set to `on`, the current WAF rule will be used when evaluating the request. Applies to anomaly detection WAF rules.",
 																				"type": "string",
 																				"enum": [
 																					true,
@@ -47783,8 +47785,8 @@
 																]
 															},
 															{
-																"title": "Traditional (deny) rule",
-																"description": "Traditional rules, if triggered, will cause the firewall to immediately act upon the request based on the configuration of the rule. A 'deny' rule will respond to the request based on the configuration (block, challenge, etc) and no other rule processing will occur.",
+																"title": "Traditional (deny) WAF rule",
+																"description": "When triggered, traditional WAF rules cause the firewall to immediately act upon the request based on the configuration of the rule. A 'deny' rule will immediately respond to the request based on the configured rule action/mode (for example, 'block') and no other rules will be processed.",
 																"required": [
 																	"id",
 																	"description",
@@ -47802,10 +47804,10 @@
 																	{
 																		"properties": {
 																			"allowed_modes": {
-																				"description": "Defines the available modes of how the rule interacts when it is triggered.",
+																				"description": "The list of possible actions of the WAF rule when it is triggered.",
 																				"type": "array",
 																				"items": {
-																					"description": "The mode that the traditional firewall rule uses when triggered.",
+																					"description": "The action that the current WAF rule will perform when triggered. Applies to traditional (deny) WAF rules.",
 																					"type": "string",
 																					"enum": [
 																						"default",
@@ -47826,7 +47828,7 @@
 																				]
 																			},
 																			"mode": {
-																				"description": "The mode that the traditional firewall rule uses when triggered.",
+																				"description": "The action that the current WAF rule will perform when triggered. Applies to traditional (deny) WAF rules.",
 																				"type": "string",
 																				"enum": [
 																					"default",
@@ -47845,7 +47847,7 @@
 																					"challenge"
 																				],
 																				"example": "block",
-																				"description": "The default mode that a rule uses",
+																				"description": "The default action/mode of a rule.",
 																				"readOnly": true
 																			}
 																		}
@@ -47853,8 +47855,8 @@
 																]
 															},
 															{
-																"title": "Traditional (allow) rule",
-																"description": "Traditional rules, if triggered, will cause the firewall to immediately act upon the request based on the configuration of the rule. An 'allow' rule will immediately allow the request and no other rule processing will occur.",
+																"title": "Traditional (allow) WAF rule",
+																"description": "When triggered, traditional WAF rules cause the firewall to immediately act on the request based on the rule configuration. An 'allow' rule will immediately allow the request and no other rules will be processed.",
 																"required": [
 																	"id",
 																	"description",
@@ -47872,10 +47874,10 @@
 																	{
 																		"properties": {
 																			"allowed_modes": {
-																				"description": "Defines the available modes of how the rule interacts when it is triggered.",
+																				"description": "Defines the available modes for the current WAF rule.",
 																				"type": "array",
 																				"items": {
-																					"description": "Defines whether or not the white-list rule should be allowed when matching the request.",
+																					"description": "When set to `on`, the current rule will be used when evaluating the request. Applies to traditional (allow) WAF rules.",
 																					"type": "string",
 																					"enum": [
 																						true,
@@ -47890,7 +47892,7 @@
 																				]
 																			},
 																			"mode": {
-																				"description": "Defines whether or not the white-list rule should be allowed when matching the request.",
+																				"description": "When set to `on`, the current rule will be used when evaluating the request. Applies to traditional (allow) WAF rules.",
 																				"type": "string",
 																				"enum": [
 																					true,
@@ -47929,15 +47931,15 @@
 		},
 		"/zones/{zone_id}/firewall/waf/packages/{package_id}/rules/{identifier}": {
 			"get": {
-				"summary": "Rule Details",
-				"description": "Individual information about a rule",
+				"summary": "Get a WAF rule",
+				"description": "Fetches the details of a WAF rule in a WAF package.",
 				"parameters": [
 					{
 						"name": "identifier",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "WAF rule identifier tag",
+							"description": "The unique identifier of the WAF rule.",
 							"type": "string",
 							"maxLength": 32,
 							"readOnly": true,
@@ -47963,7 +47965,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Rule Details response",
+						"description": "Get a WAF rule response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -47998,8 +48000,8 @@
 				}
 			},
 			"patch": {
-				"summary": "Edit Rule",
-				"description": "Update the action the rule will perform if triggered on the zone",
+				"summary": "Update a WAF rule",
+				"description": "Updates a WAF rule. You can only update the mode/action of the rule.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -48028,7 +48030,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Edit Rule response",
+						"description": "Update a WAF rule response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -48041,8 +48043,8 @@
 												"result": {
 													"oneOf": [
 														{
-															"title": "Anomaly rule",
-															"description": "Anomaly scoring rules (if triggered) will contribute to an overall threat score that determines if a request is detected as malicious. Users can control the total scoring threshold via the 'sensitivity' of the package.",
+															"title": "Anomaly detection WAF rule",
+															"description": "When triggered, anomaly detection WAF rules contribute to an overall threat score that will determine if a request is considered malicious. You can configure the total scoring threshold through the 'sensitivity' property of the WAF package.",
 															"required": [
 																"id",
 																"description",
@@ -48073,8 +48075,8 @@
 															]
 														},
 														{
-															"title": "Traditional (deny) rule",
-															"description": "Traditional rules, if triggered, will cause the firewall to immediately act upon the request based on the configuration of the rule. A 'deny' rule will respond to the request based on the configuration (block, challenge, etc) and no other rule processing will occur.",
+															"title": "Traditional (deny) WAF rule",
+															"description": "When triggered, traditional WAF rules cause the firewall to immediately act upon the request based on the configuration of the rule. A 'deny' rule will immediately respond to the request based on the configured rule action/mode (for example, 'block') and no other rules will be processed.",
 															"required": [
 																"id",
 																"description",
@@ -48105,7 +48107,7 @@
 																				"challenge"
 																			],
 																			"example": "block",
-																			"description": "The default mode that a rule uses",
+																			"description": "The default action/mode of a rule.",
 																			"readOnly": true
 																		}
 																	}
@@ -48113,8 +48115,8 @@
 															]
 														},
 														{
-															"title": "Traditional (allow) rule",
-															"description": "Traditional rules, if triggered, will cause the firewall to immediately act upon the request based on the configuration of the rule. An 'allow' rule will immediately allow the request and no other rule processing will occur.",
+															"title": "Traditional (allow) WAF rule",
+															"description": "When triggered, traditional WAF rules cause the firewall to immediately act on the request based on the rule configuration. An 'allow' rule will immediately allow the request and no other rules will be processed.",
 															"required": [
 																"id",
 																"description",
@@ -48179,7 +48181,7 @@
 											true,
 											false
 										],
-										"description": "The mode to use when the rule is triggered. Value is restricted based on the allowed_modes of the rule",
+										"description": "The mode/action of the rule when triggered. You must use a value from the `allowed_modes` array of the current rule.",
 										"example": true
 									}
 								}
@@ -48191,8 +48193,8 @@
 		},
 		"/zones/{zone_identifier}/firewall/waf/overrides": {
 			"get": {
-				"summary": "List URI-controlled WAF configurations",
-				"description": "List the WAF configurations on a zone.",
+				"summary": "Get WAF overrides",
+				"description": "Fetches the URI-based WAF overrides in a zone.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -48205,7 +48207,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "List URI-controlled WAF configurations response",
+						"description": "Get WAF overrides response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -48226,7 +48228,7 @@
 															{
 																"properties": {
 																	"id": {
-																		"description": "WAF configuration identifier",
+																		"description": "The unique identifier of the WAF override.",
 																		"type": "string",
 																		"maxLength": 32,
 																		"readOnly": true,
@@ -48234,18 +48236,18 @@
 																	},
 																	"paused": {
 																		"type": "boolean",
-																		"description": "Whether this package is currently paused"
+																		"description": "When true, indicates that the WAF package is currently paused."
 																	},
 																	"description": {
 																		"type": "string",
-																		"description": "A note that you can use to describe the purpose of this configuration.",
+																		"description": "An informative summary of the current URI-based WAF override.",
 																		"maxLength": 1024,
 																		"example": "Enable Cloudflare Magento ruleset for shop.example.com",
 																		"nullable": true
 																	},
 																	"urls": {
 																		"type": "array",
-																		"description": "URLs to be included in this rule definition. Wildcards are permitted. The URL pattern entered here will be escaped before use. This limits the URL to just simple wildcard patterns.",
+																		"description": "The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
 																		"items": {
 																			"type": "string",
 																			"example": "shop.example.com/*"
@@ -48255,12 +48257,12 @@
 																		"type": "number",
 																		"minimum": -1000000000,
 																		"maximum": 1000000000,
-																		"description": "Relative priority of this configuration when multiple configurations match a single URL. Higher priority configurations may overwrite values set by lower priority configurations.",
+																		"description": "The relative priority of the current URI-based WAF override when multiple overrides match a single URL. A lower number indicates higher priority. Higher priority overrides may overwrite values set by lower priority overrides.",
 																		"example": 1
 																	},
 																	"groups": {
 																		"type": "object",
-																		"description": "Enable or disable WAF rule groups. The keys of this object are WAF rule group IDs and the values must be a valid WAF action (usually default or disable). When creating a new URI-controlled WAF configuration either `groups` or `rules` must be provided at a minimum.",
+																		"description": "An object that allows you to enable or disable WAF rule groups for the current WAF override. Each key of this object must be the ID of a WAF rule group, and each value must be a valid WAF action (usually `default` or `disable`). When creating a new URI-based WAF override, you must provide a `groups` object or a `rules` object.",
 																		"example": {
 																			"ea8687e59929c1fd05ba97574ad43f77": "default"
 																		},
@@ -48268,7 +48270,7 @@
 																			"^[0-9a-f]{32}$": {
 																				"allOf": [
 																					{
-																						"description": "WAF rule action to apply",
+																						"description": "The WAF rule action to apply.",
 																						"enum": [
 																							"challenge",
 																							"block",
@@ -48285,7 +48287,7 @@
 																	},
 																	"rules": {
 																		"type": "object",
-																		"description": "Change the action assigned to a WAF rule. The keys of this object are WAF rule IDs and the values must be a valid WAF action. Unless disabling the rule, ensure that you also enable the rule group that this WAF rule belongs to. When creating a new URI-controlled WAF configuration either `groups` or `rules` must be provided at a minimum.",
+																		"description": "An object that allows you to override the action of specific WAF rules. Each key of this object must be the ID of a WAF rule, and each value must be a valid WAF action. Unless you are disabling a rule, ensure that you also enable the rule group that this WAF rule belongs to. When creating a new URI-based WAF override, you must provide a `groups` object or a `rules` object.",
 																		"additionalProperties": {
 																			"allOf": [
 																				{
@@ -48300,7 +48302,7 @@
 																	},
 																	"rewrite_action": {
 																		"type": "object",
-																		"description": "When a WAF rule matches, substitute its configured action for a different action specified by this object.",
+																		"description": "Specifies that, when a WAF rule matches, its configured action will be replaced by the action configured in this object.",
 																		"properties": {
 																			"default": {
 																				"example": "block"
@@ -48309,7 +48311,7 @@
 																				"example": "block"
 																			},
 																			"block": {
-																				"description": "WAF rule action to apply",
+																				"description": "The WAF rule action to apply.",
 																				"enum": [
 																					"challenge",
 																					"block",
@@ -48362,8 +48364,8 @@
 				}
 			},
 			"post": {
-				"summary": "Create a URI-controlled WAF configuration",
-				"description": "Create a new WAF configuration for a zone. See the record object definitions for required attributes for each record type.",
+				"summary": "Create a WAF override",
+				"description": "Creates a URI-based WAF override for a zone.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -48376,7 +48378,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create a URI-controlled WAF configuration response",
+						"description": "Create a WAF override response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -48429,14 +48431,15 @@
 		},
 		"/zones/{zone_identifier}/firewall/waf/overrides/{id}": {
 			"get": {
-				"summary": "URI-controlled WAF configuration details",
+				"summary": "Get a WAF override",
+				"description": "Fetches the details of a URI-based WAF override.",
 				"parameters": [
 					{
 						"name": "id",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "WAF configuration identifier",
+							"description": "The unique identifier of the WAF override.",
 							"type": "string",
 							"maxLength": 32,
 							"readOnly": true,
@@ -48454,7 +48457,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "URI-controlled WAF configuration details response",
+						"description": "Get a WAF override response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -48475,18 +48478,18 @@
 														},
 														"paused": {
 															"type": "boolean",
-															"description": "Whether this package is currently paused"
+															"description": "When true, indicates that the WAF package is currently paused."
 														},
 														"description": {
 															"type": "string",
-															"description": "A note that you can use to describe the purpose of this configuration.",
+															"description": "An informative summary of the current URI-based WAF override.",
 															"maxLength": 1024,
 															"example": "Enable Cloudflare Magento ruleset for shop.example.com",
 															"nullable": true
 														},
 														"urls": {
 															"type": "array",
-															"description": "URLs to be included in this rule definition. Wildcards are permitted. The URL pattern entered here will be escaped before use. This limits the URL to just simple wildcard patterns.",
+															"description": "The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
 															"items": {
 																"type": "string",
 																"example": "shop.example.com/*"
@@ -48496,12 +48499,12 @@
 															"type": "number",
 															"minimum": -1000000000,
 															"maximum": 1000000000,
-															"description": "Relative priority of this configuration when multiple configurations match a single URL. Higher priority configurations may overwrite values set by lower priority configurations.",
+															"description": "The relative priority of the current URI-based WAF override when multiple overrides match a single URL. A lower number indicates higher priority. Higher priority overrides may overwrite values set by lower priority overrides.",
 															"example": 1
 														},
 														"groups": {
 															"type": "object",
-															"description": "Enable or disable WAF rule groups. The keys of this object are WAF rule group IDs and the values must be a valid WAF action (usually default or disable). When creating a new URI-controlled WAF configuration either `groups` or `rules` must be provided at a minimum.",
+															"description": "An object that allows you to enable or disable WAF rule groups for the current WAF override. Each key of this object must be the ID of a WAF rule group, and each value must be a valid WAF action (usually `default` or `disable`). When creating a new URI-based WAF override, you must provide a `groups` object or a `rules` object.",
 															"example": {
 																"ea8687e59929c1fd05ba97574ad43f77": "default"
 															},
@@ -48509,7 +48512,7 @@
 																"^[0-9a-f]{32}$": {
 																	"allOf": [
 																		{
-																			"description": "WAF rule action to apply",
+																			"description": "The WAF rule action to apply.",
 																			"enum": [
 																				"challenge",
 																				"block",
@@ -48526,7 +48529,7 @@
 														},
 														"rules": {
 															"type": "object",
-															"description": "Change the action assigned to a WAF rule. The keys of this object are WAF rule IDs and the values must be a valid WAF action. Unless disabling the rule, ensure that you also enable the rule group that this WAF rule belongs to. When creating a new URI-controlled WAF configuration either `groups` or `rules` must be provided at a minimum.",
+															"description": "An object that allows you to override the action of specific WAF rules. Each key of this object must be the ID of a WAF rule, and each value must be a valid WAF action. Unless you are disabling a rule, ensure that you also enable the rule group that this WAF rule belongs to. When creating a new URI-based WAF override, you must provide a `groups` object or a `rules` object.",
 															"additionalProperties": {
 																"allOf": [
 																	{
@@ -48541,7 +48544,7 @@
 														},
 														"rewrite_action": {
 															"type": "object",
-															"description": "When a WAF rule matches, substitute its configured action for a different action specified by this object.",
+															"description": "Specifies that, when a WAF rule matches, its configured action will be replaced by the action configured in this object.",
 															"properties": {
 																"default": {
 																	"example": "block"
@@ -48550,7 +48553,7 @@
 																	"example": "block"
 																},
 																"block": {
-																	"description": "WAF rule action to apply",
+																	"description": "The WAF rule action to apply.",
 																	"enum": [
 																		"challenge",
 																		"block",
@@ -48591,7 +48594,8 @@
 				}
 			},
 			"put": {
-				"summary": "Update URI-controlled WAF configuration",
+				"summary": "Update WAF override",
+				"description": "Updates an existing URI-based WAF override.",
 				"parameters": [
 					{
 						"name": "id",
@@ -48612,7 +48616,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update URI-controlled WAF configuration response",
+						"description": "Update WAF override response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -48651,7 +48655,8 @@
 				}
 			},
 			"delete": {
-				"summary": "Delete URI-controlled WAF configuration",
+				"summary": "Delete a WAF override",
+				"description": "Deletes an existing URI-based WAF override.",
 				"parameters": [
 					{
 						"name": "id",
@@ -48672,7 +48677,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete URI-controlled WAF configuration response",
+						"description": "Delete a WAF override response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -48713,8 +48718,8 @@
 		},
 		"/zones/{zone_identifier}/firewall/ua_rules": {
 			"get": {
-				"summary": "List UserAgent Rules",
-				"description": "List the UserAgent rules on a zone.",
+				"summary": "Get User Agent Blocking rules",
+				"description": "Fetches User Agent Blocking rules in a zone. You can filter the results using several optional parameters.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -48727,7 +48732,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "List UserAgent Rules response",
+						"description": "Get User Agent Blocking rules response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -48746,7 +48751,7 @@
 															{
 																"properties": {
 																	"id": {
-																		"description": "UA rule identifier",
+																		"description": "The unique identifier of the User Agent Blocking rule.",
 																		"type": "string",
 																		"maxLength": 32,
 																		"readOnly": true,
@@ -48754,14 +48759,14 @@
 																	},
 																	"paused": {
 																		"type": "boolean",
-																		"description": "Whether this UA rule is currently paused",
+																		"description": "When true, indicates that the rule is currently paused.",
 																		"example": false
 																	},
 																	"description": {
 																		"type": "string",
-																		"description": "Some useful information about this rule to help identify the purpose of it.",
+																		"description": "An informative summary of the rule.",
 																		"maxLength": 1024,
-																		"example": "Prevent access from abusive clients identified by this UserAgent to mitigate DDoS attack"
+																		"example": "Prevent access from abusive clients identified by this User Agent to mitigate a DDoS attack"
 																	},
 																	"mode": {
 																		"enum": [
@@ -48770,22 +48775,22 @@
 																			"js_challenge",
 																			"managed_challenge"
 																		],
-																		"description": "The type of action to perform.",
+																		"description": "The action to apply to a matched request.",
 																		"maxLength": 12,
 																		"example": "js_challenge"
 																	},
 																	"configuration": {
 																		"type": "object",
-																		"description": "Target/Value pair to use for this rule. The value is the exact UserAgent to match",
+																		"description": "The configuration object for the current rule.",
 																		"properties": {
 																			"target": {
 																				"type": "string",
-																				"description": "Specify the configuration target for this rule. For UserAgent rules this is `ua`",
+																				"description": "The configuration target for this rule. You must set the target to `ua` for User Agent Blocking rules.",
 																				"example": "ua"
 																			},
 																			"value": {
 																				"type": "string",
-																				"description": "The exact UserAgent string to match with this rule.",
+																				"description": "The exact user agent string to match. This value will be compared to the received `User-Agent` HTTP header value.",
 																				"example": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4"
 																			}
 																		}
@@ -48832,8 +48837,8 @@
 				}
 			},
 			"post": {
-				"summary": "Create UserAgent Rule",
-				"description": "Create a new UserAgent rule for a zone. See the record object definitions for required attributes for each record type",
+				"summary": "Create a User Agent Blocking rule",
+				"description": "Creates a new User Agent Blocking rule in a zone.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -48846,7 +48851,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create UserAgent Rule response",
+						"description": "Create a User Agent Blocking rule response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -48897,15 +48902,15 @@
 		},
 		"/zones/{zone_identifier}/firewall/ua_rules/{id}": {
 			"get": {
-				"summary": "UserAgent Rule Details",
-				"description": "List one user agent rule",
+				"summary": "Get a User Agent Blocking rule",
+				"description": "Fetches the details of a User Agent Blocking rule.",
 				"parameters": [
 					{
 						"name": "id",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "UA rule identifier",
+							"description": "The unique identifier of the User Agent Blocking rule.",
 							"type": "string",
 							"maxLength": 32,
 							"readOnly": true,
@@ -48923,7 +48928,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "UserAgent Rule Details response",
+						"description": "Get a User Agent Blocking rule response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -48959,7 +48964,8 @@
 				}
 			},
 			"put": {
-				"summary": "Update UserAgent Rule",
+				"summary": "Update a User Agent Blocking rule",
+				"description": "Updates an existing User Agent Blocking rule.",
 				"parameters": [
 					{
 						"name": "id",
@@ -48980,7 +48986,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update UserAgent Rule response",
+						"description": "Update a User Agent Blocking rule response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -49018,7 +49024,8 @@
 				}
 			},
 			"delete": {
-				"summary": "Delete UserAgent Rule",
+				"summary": "Delete a User Agent Blocking rule",
+				"description": "Deletes an existing User Agent Blocking rule.",
 				"parameters": [
 					{
 						"name": "id",
@@ -49039,7 +49046,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete UserAgent Rule response",
+						"description": "Delete a User Agent Blocking rule response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -49087,8 +49094,8 @@
 		},
 		"/zones/{zone_identifier}/firewall/lockdowns": {
 			"get": {
-				"summary": "List Lockdown Rules",
-				"description": "List the lockdown rules on a zone.",
+				"summary": "Get Zone Lockdown rules",
+				"description": "Fetches Zone Lockdown rules. You can filter the results using several optional parameters.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -49101,7 +49108,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "List Lockdown Rules response",
+						"description": "Get Zone Lockdown rules response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -49120,21 +49127,21 @@
 													"items": {
 														"properties": {
 															"id": {
-																"description": "Lockdown rule identifier",
+																"description": "The unique identifier of the Zone Lockdown rule.",
 																"type": "string",
 																"maxLength": 32,
 																"readOnly": true,
 																"example": "372e67954025e0ba6aaa6d586b9e0b59"
 															},
 															"created_on": {
-																"description": "When the lockdown rule was created",
+																"description": "The timestamp of when the rule was created.",
 																"type": "string",
 																"format": "date-time",
 																"readOnly": true,
 																"example": "2014-01-01T05:20:00.123450+00:00"
 															},
 															"modified_on": {
-																"description": "When the lockdown rule was modified",
+																"description": "The timestamp of when the rule was last modified.",
 																"type": "string",
 																"format": "date-time",
 																"readOnly": true,
@@ -49142,18 +49149,18 @@
 															},
 															"paused": {
 																"type": "boolean",
-																"description": "Whether this zone lockdown is currently paused",
+																"description": "When true, indicates that the rule is currently paused.",
 																"example": false
 															},
 															"description": {
 																"type": "string",
-																"description": "A note that you can use to describe the reason for a Lockdown rule.",
+																"description": "An informative summary of the rule.",
 																"maxLength": 1024,
 																"example": "Restrict access to these endpoints to requests from a known IP address"
 															},
 															"urls": {
 																"type": "array",
-																"description": "URLs to be included in this rule definition. Wildcards are permitted. The URL pattern entered here will be escaped before use. This limits the URL to just simple wildcard patterns. ",
+																"description": "The URLs to include in the rule definition. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
 																"items": {
 																	"type": "string",
 																	"example": "api.mysite.com/some/endpoint*"
@@ -49161,39 +49168,39 @@
 															},
 															"configurations": {
 																"type": "array",
-																"description": "List of IP addresses or CIDR ranges to use for this rule. This can include any number of `ip` or `ip_range` configurations that can access the provided URLs.",
+																"description": "A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.",
 																"items": {
 																	"anyOf": [
 																		{
-																			"title": "IP rule configuration",
+																			"title": "An IP address configuration.",
 																			"properties": {
 																				"target": {
 																					"enum": [
 																						"ip"
 																					],
-																					"description": "The request property to target",
+																					"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.",
 																					"example": "ip"
 																				},
 																				"value": {
 																					"type": "string",
-																					"description": "The IP address to target in requests",
+																					"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
 																					"example": "198.51.100.4"
 																				}
 																			}
 																		},
 																		{
-																			"title": "IP range rule configuration",
+																			"title": "An IP address range configuration.",
 																			"properties": {
 																				"target": {
 																					"enum": [
 																						"ip_range"
 																					],
-																					"description": "The request property to target",
+																					"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule.",
 																					"example": "ip_range"
 																				},
 																				"value": {
 																					"type": "string",
-																					"description": "The IP range to target in requests. Limited to /16 and /24",
+																					"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
 																					"example": "198.51.100.4/16"
 																				}
 																			}
@@ -49244,8 +49251,8 @@
 				}
 			},
 			"post": {
-				"summary": "Create Lockdown Rule",
-				"description": "Create a new lockdown rule for a zone. See the record object definitions for required attributes for each record type",
+				"summary": "Create a Zone Lockdown rule",
+				"description": "Creates a new Zone Lockdown rule.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -49258,7 +49265,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create Lockdown Rule response",
+						"description": "Create a Zone Lockdown rule response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -49312,14 +49319,15 @@
 		},
 		"/zones/{zone_identifier}/firewall/lockdowns/{id}": {
 			"get": {
-				"summary": "Lockdown Rule Details",
+				"summary": "Get a Zone Lockdown rule",
+				"description": "Fetches the details of a Zone Lockdown rule.",
 				"parameters": [
 					{
 						"name": "id",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "Lockdown rule identifier",
+							"description": "The unique identifier of the Zone Lockdown rule.",
 							"type": "string",
 							"maxLength": 32,
 							"readOnly": true,
@@ -49337,7 +49345,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Lockdown Rule Details response",
+						"description": "Get a Zone Lockdown rule response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -49357,14 +49365,14 @@
 															"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1firewall~1lockdowns~1%7Bid%7D/get/parameters/0/schema"
 														},
 														"created_on": {
-															"description": "When the lockdown rule was created",
+															"description": "The timestamp of when the rule was created.",
 															"type": "string",
 															"format": "date-time",
 															"readOnly": true,
 															"example": "2014-01-01T05:20:00.123450+00:00"
 														},
 														"modified_on": {
-															"description": "When the lockdown rule was modified",
+															"description": "The timestamp of when the rule was last modified.",
 															"type": "string",
 															"format": "date-time",
 															"readOnly": true,
@@ -49372,18 +49380,18 @@
 														},
 														"paused": {
 															"type": "boolean",
-															"description": "Whether this zone lockdown is currently paused",
+															"description": "When true, indicates that the rule is currently paused.",
 															"example": false
 														},
 														"description": {
 															"type": "string",
-															"description": "A note that you can use to describe the reason for a Lockdown rule.",
+															"description": "An informative summary of the rule.",
 															"maxLength": 1024,
 															"example": "Restrict access to these endpoints to requests from a known IP address"
 														},
 														"urls": {
 															"type": "array",
-															"description": "URLs to be included in this rule definition. Wildcards are permitted. The URL pattern entered here will be escaped before use. This limits the URL to just simple wildcard patterns. ",
+															"description": "The URLs to include in the rule definition. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
 															"items": {
 																"type": "string",
 																"example": "api.mysite.com/some/endpoint*"
@@ -49391,39 +49399,39 @@
 														},
 														"configurations": {
 															"type": "array",
-															"description": "List of IP addresses or CIDR ranges to use for this rule. This can include any number of `ip` or `ip_range` configurations that can access the provided URLs.",
+															"description": "A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.",
 															"items": {
 																"anyOf": [
 																	{
-																		"title": "IP rule configuration",
+																		"title": "An IP address configuration.",
 																		"properties": {
 																			"target": {
 																				"enum": [
 																					"ip"
 																				],
-																				"description": "The request property to target",
+																				"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.",
 																				"example": "ip"
 																			},
 																			"value": {
 																				"type": "string",
-																				"description": "The IP address to target in requests",
+																				"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
 																				"example": "198.51.100.4"
 																			}
 																		}
 																	},
 																	{
-																		"title": "IP range rule configuration",
+																		"title": "An IP address range configuration.",
 																		"properties": {
 																			"target": {
 																				"enum": [
 																					"ip_range"
 																				],
-																				"description": "The request property to target",
+																				"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule.",
 																				"example": "ip_range"
 																			},
 																			"value": {
 																				"type": "string",
-																				"description": "The IP range to target in requests. Limited to /16 and /24",
+																				"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
 																				"example": "198.51.100.4/16"
 																			}
 																		}
@@ -49473,7 +49481,8 @@
 				}
 			},
 			"put": {
-				"summary": "Update Lockdown Rule",
+				"summary": "Update a Zone Lockdown rule",
+				"description": "Updates an existing Zone Lockdown rule.",
 				"parameters": [
 					{
 						"name": "id",
@@ -49494,7 +49503,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update Lockdown Rule response",
+						"description": "Update a Zone Lockdown rule response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -49531,7 +49540,8 @@
 				}
 			},
 			"delete": {
-				"summary": "Delete Lockdown Rule",
+				"summary": "Delete a Zone Lockdown rule",
+				"description": "Deletes an existing Zone Lockdown rule.",
 				"parameters": [
 					{
 						"name": "id",
@@ -49552,7 +49562,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete Lockdown Rule response",
+						"description": "Delete a Zone Lockdown rule response",
 						"content": {
 							"application/json": {
 								"schema": {
