@@ -257,7 +257,7 @@
     "zoneless_workers.sidepanel.links.feedback.text": "Give feedback",
     "zoneless_workers.sidepanel.links.community.text": "Community",
     "zoneless_workers.sidepanel.links.survey.text": "Feedback Survey",
-    "zoneless_workers.sidepanel.notifications": "Manage Notifications",
+    "zoneless_workers.sidepanel.notifications": "Notifications & Alerts",
     "zoneless_workers.workers_table.column_workers_dev": "Workers.dev route",
     "zoneless_workers.workers_table.column_workers_dev.toggle_label.deployed": "Deployed",
     "zoneless_workers.workers_table.column_workers_dev.toggle_label.undeployed": "Not deployed",
@@ -843,5 +843,14 @@
     "zoneless_workers.services.details.deployments.promote_description": "Deploy this environmentu2019s script by promoting it to use another environmentu2019s configuration.",
     "zoneless_workers.services.details.deployments.no_other_env": "There are no other environments to deploy to. Create an environment from your Service's environment selector.",
     "zoneless_workers.services.details.deployments.no_other_env.tooltip": "There are no other environments to promote to. Create an environment from your environment selector.",
-    "zoneless_workers.services.details.deployments.success_notification": "Your deployment was successfully promoted from your %{environmentName} environment."
+    "zoneless_workers.services.details.deployments.success_notification": "Your deployment was successfully promoted from your %{environmentName} environment.",
+    "zoneless_workers.analytics_engine": "Analytics Engine",
+    "zoneless_workers.analytics_engine.description": "Quickly get visibility into additional analytics important to your Workers.",
+    "zoneless_workers.view_analytics_engine": "View Analytics Engine",
+    "zoneless_workers.analytics_engine.datasets": "%{smart_count} dataset |||| %{smart_count} datasets",
+    "zoneless_workers.analytics_engine.get_started.title": "Observability from Cloudflare Workers.",
+    "zoneless_workers.analytics_engine.get_started.cli_note": "Using Analytics Engine requires the <0>Wrangler CLI</0>.",
+    "zoneless_workers.analytics_engine.get_started.description": "Analytics Engine provides time series analytics for you and for your customers. To set up Analytics Engine, youu2019ll need to specify which events youu2019d like to be logged and displayed.",
+    "zoneless_workers.analytics_engine.get_started.description_continued": "Read the <0>Analytics Engine documentation</0> to get started. Once the Analytics Engine binding is configured for your Workers, logged events will be displayed here.",
+    "zoneless_workers.analytics_engine.get_started.documentation": "Read documentation"
 }
