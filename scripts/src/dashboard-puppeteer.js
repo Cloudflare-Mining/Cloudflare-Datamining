@@ -6,7 +6,7 @@ It turns out it's easier to just get every chunk and parse it that way - see das
 */
 
 import 'dotenv/config';
-import path from 'path';
+import path from 'node:path';
 
 import fs from 'fs-extra';
 import dateFormat from 'dateformat';

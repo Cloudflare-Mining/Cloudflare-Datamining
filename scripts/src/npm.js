@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import search from 'libnpmsearch';
-import path from 'path';
+import path from 'node:path';
 import fs from 'fs-extra';
 import dateFormat from 'dateformat';
 import filenamify from 'filenamify';

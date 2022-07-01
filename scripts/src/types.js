@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import pacote from 'pacote';
-import path from 'path';
+import path from 'node:path';
 import dateFormat from 'dateformat';
 import del from 'del';
 

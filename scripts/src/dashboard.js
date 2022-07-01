@@ -1,4 +1,4 @@
-import path from 'path';
+import path from 'node:path';
 import fs from 'fs-extra';
 import dateFormat from 'dateformat';
 import fetch from 'node-fetch';
@@ -18,7 +18,10 @@ const dashVersion = /dashVersion: ?"([\da-f]+)",/;
 const likelyFiles = /\.(png|ico|svg)$/; // static assets that we want to extract properly
 const translationsSnippet = 'dash/intl/intl-translations/src/locale/en-US/';
 const navigationSnippet = 'components/SidebarNav/index.ts":';
+const subRoutesSnippet = 'util-routes/src/index.ts';
 const staticDashURL = 'https://static.dash.cloudflare.com/';
+
+// TODO: tidy up this file
 
 function beautify(data){
 	return jsBeautify.js(data,
@@ -42,9 +45,11 @@ async function findWantedChunks(chunks){
 		chunks: [],
 	};
 	const getChunks = [];
+	let fetched = 0;
 	for(const chunk of chunks){
 		getChunks.push(async function(){
 			const res = await fetch(`${staticDashURL}${chunk}.js`);
+			fetched++;
 			const text = await res.text();
 
 			// next do some very lazy parsing to match what we need
@@ -82,10 +87,15 @@ async function findWantedChunks(chunks){
 			//await writeJS(chunk + '.js', text);
 		});
 	}
+	const logProgress = setInterval(() => {
+		console.log(`Fetched ${fetched}/${chunks.length} chunks`);
+	}, 1000);
 	while(getChunks.length > 0){
 		// 10 at a time
 		await Promise.all(getChunks.splice(0, 10).map(func => func()));
 	}
+	clearInterval(logProgress);
+	console.log(`Fetched ${fetched}/${chunks.length} chunks`);
 	return results;
 }
 
@@ -202,17 +212,32 @@ async function writeAssets(files, write){
 	}
 }
 
+async function writeSubRoutes(files, write){
+	const rootDir = await prepareWriteDir(files, 'dashboard-subroutes', write);
+	for(const file in files){
+		if(write){
+			try{
+				await writeFile(file + '.json', JSON.stringify([...files[file]].sort(), null, '\t'), rootDir);
+			}catch(err){
+				console.error('Error writing file', file, err);
+			}
+		}
+	}
+}
+
 async function generateDashboardStructure(wantedChunks, write = false){
 	// parse each chunk to generate filesystem
 	// this is definitely not perfect and very loose, but it works for now
 
 	const files = {};
 	const getRemoteFiles = [];
+	const subRoutes = {};
 	for(const chunk of wantedChunks.chunks){
 		const ast = parse(chunk.code, {
 			sourceType: 'script',
 			ecmaVersion: 2020,
 		});
+		const recursiveImports = []; // sometimes things are imported recursively
 		// find webpack chunks
 		full(ast, (node) => {
 			// first find the webpack chunk assignment
@@ -236,6 +261,13 @@ async function generateDashboardStructure(wantedChunks, write = false){
 					){
 						const file = buildFile.key.value;
 						const code = chunk.code.slice(buildFile.value.start, buildFile.value.end);
+						if(file?.includes('recursive ')){
+							recursiveImports.push({
+								code,
+								file,
+							});
+							continue;
+						}
 						// get static files like imags
 						if(likelyFiles.test(file) && buildFile.value?.body?.body?.[1]?.expression?.right){
 							const fileData = buildFile.value?.body?.body?.[1]?.expression?.right;
@@ -276,10 +308,57 @@ async function generateDashboardStructure(wantedChunks, write = false){
 						}else{
 							files[file] = [code];
 						}
+
+						// handle subroutes
+						if(
+							buildFile.value.body?.type === 'BlockStatement' &&
+							buildFile.value.body?.body?.length > 0
+						){
+							// only care if this file includes the util-routes helper
+							let includesRoutesHelper = false;
+							for(const bodyItem of buildFile.value.body.body){
+								if(
+									bodyItem.type === 'VariableDeclaration' &&
+									bodyItem.declarations?.length > 0 &&
+									bodyItem.declarations[0]?.init?.arguments?.[0]?.value?.includes?.(subRoutesSnippet)
+								){
+									includesRoutesHelper = true;
+									break;
+								}
+							}
+							if(!includesRoutesHelper){
+								continue;
+							}
+							for(const bodyItem of buildFile.value.body.body){
+								if(
+									bodyItem.type === 'FunctionDeclaration' &&
+									bodyItem.body?.body?.length === 2 &&
+									bodyItem.body.body[0]?.type === 'VariableDeclaration' &&
+									bodyItem.body.body[1]?.type === 'ReturnStatement' &&
+									bodyItem.body.body[1]?.argument?.type === 'SequenceExpression' &&
+									bodyItem.body.body[1]?.argument?.expressions?.length === 2 &&
+									bodyItem.body.body[0].declarations[0]?.type === 'VariableDeclarator' &&
+									bodyItem.body.body[0].declarations[0]?.init?.arguments?.length === 1 &&
+									bodyItem.body.body[0].declarations[0]?.init?.arguments?.[0]?.type === 'ArrayExpression' &&
+									bodyItem.body.body[0].declarations[0]?.init.arguments[0].elements?.every(ele => ele.type === 'Literal')
+								){
+									const routes = bodyItem.body.body[0].declarations[0].init.arguments[0].elements.map(ele => ele.value);
+									const realPage = /react\/pages\/(.*)/.exec(file);
+									if(realPage){
+										const page = realPage[1];
+										subRoutes[page] ??= new Set();
+										subRoutes[page].add(routes);
+									}
+								}
+							}
+						}
 					}
 				}
 			}
 		});
+
+		// TODO: maybe do something with `recursiveImports`?
+		// We already have the files these reference, so they're probably not useful
 	}
 	if(write){
 		while(getRemoteFiles.length > 0){
@@ -288,15 +367,16 @@ async function generateDashboardStructure(wantedChunks, write = false){
 		}
 	}
 	await writeAssets(files, write);
+	await writeSubRoutes(subRoutes, write);
 	const tree = await writeFiles(files, write);
 	return tree;
 }
 
 async function run(){
-	console.log('Fetching chunks...');
+	console.log('Fetching main chunk...');
 	const chunks = await getChunks();
 
-	console.log('Finding wanted chunk...');
+	console.log('Fetching and analysing additional chunks...');
 	const wantedChunks = await findWantedChunks(chunks);
 
 	if(!wantedChunks || wantedChunks.dashboard === null){
@@ -315,7 +395,7 @@ async function run(){
 
 	const tree = await generateDashboardStructure(wantedChunks, writeAssets);
 	const treeFile = path.resolve(`../data/dashboard/files.json`);
-	await fs.writeFile(treeFile, JSON.stringify(tree, null, 4));
+	await fs.writeFile(treeFile, JSON.stringify(tree, null, '\t'));
 
 	// parse tranlsations
 	const translations = {};
@@ -335,7 +415,7 @@ async function run(){
 	for(const [translationName, translation] of Object.entries(translations)){
 		const file = path.resolve(`../data/dashboard-translations/${translationName}.json`);
 		fs.ensureDir(path.dirname(file));
-		await fs.writeFile(file, JSON.stringify(translation, null, 4));
+		await fs.writeFile(file, JSON.stringify(translation, null, '\t'));
 	}
 
 	// parse navigation
@@ -400,6 +480,7 @@ async function run(){
 	await tryAndPush(
 		[
 			'data/dashboard-translations/*.json',
+			'data/dashboard-subroutes/*.json',
 			'data/dashboard/*.json',
 			'data/dashboard/*.js',
 		],

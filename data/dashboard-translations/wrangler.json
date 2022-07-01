@@ -1,15 +1,15 @@
 {
-    "wrangler.title": "Wrangler Login",
-    "wrangler.subtitle": "Set up <0>%{email}</0> to manage Workers with Wrangler",
-    "wrangler.card.title.initial": "Authorizing Wrangler",
-    "wrangler.card.description.initial": "Please keep this page open.",
-    "wrangler.card.body": "An API token for <0>%{email}</0> will be generated and passed to Wrangler to grant the following permissions:",
-    "wrangler.card.cta": "Authorize Wrangler",
-    "wrangler.card.edit_permissions": "<0>Edit</0>: Workers Scripts, Workers Routes, Workers KV Storage",
-    "wrangler.card.read_permissions": "<0>Read</0>: Account Settings, User Details",
-    "wrangler.card.warning": "If you did not run <0>wrangler login</0>, you should not authorize this request.",
-    "wrangler.card.title.loggedin": "Wrangler is now authorized with a new <0>API Token</0>",
-    "wrangler.card.description.loggedin": "You can now close this page.",
-    "wrangler.card.title.failed": "Failed to create API Token for Wrangler",
-    "wrangler.card.description.failed": "Only a maximum of 50 tokens can be created. Remove an <0>API Token</0>, and try again or use `wrangler config`."
+	"wrangler.title": "Wrangler Login",
+	"wrangler.subtitle": "Set up <0>%{email}</0> to manage Workers with Wrangler",
+	"wrangler.card.title.initial": "Authorizing Wrangler",
+	"wrangler.card.description.initial": "Please keep this page open.",
+	"wrangler.card.body": "An API token for <0>%{email}</0> will be generated and passed to Wrangler to grant the following permissions:",
+	"wrangler.card.cta": "Authorize Wrangler",
+	"wrangler.card.edit_permissions": "<0>Edit</0>: Workers Scripts, Workers Routes, Workers KV Storage",
+	"wrangler.card.read_permissions": "<0>Read</0>: Account Settings, User Details",
+	"wrangler.card.warning": "If you did not run <0>wrangler login</0>, you should not authorize this request.",
+	"wrangler.card.title.loggedin": "Wrangler is now authorized with a new <0>API Token</0>",
+	"wrangler.card.description.loggedin": "You can now close this page.",
+	"wrangler.card.title.failed": "Failed to create API Token for Wrangler",
+	"wrangler.card.description.failed": "Only a maximum of 50 tokens can be created. Remove an <0>API Token</0>, and try again or use `wrangler config`."
 }

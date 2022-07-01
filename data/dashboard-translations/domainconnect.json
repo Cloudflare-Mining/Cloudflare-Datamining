@@ -1,11 +1,11 @@
 {
-    "domainconnect.success": "Success! You can now close this page.",
-    "domainconnect.dialog.title": "Authorize DNS records from %{providerName}",
-    "domainconnect.dialog.subtitle": "This is a one-time authorization. It does not grant %{providerName} permission to make future changes.",
-    "domainconnect.dialog.authorize": "Authorize",
-    "domainconnect.dialog.add_following_records": "%{providerName} will add the following Cloudflare DNS records for %{hostName}",
-    "domainconnect.dialog.delete_conflicting_records": "The records added will replace the following records that already exist",
-    "domainconnect.error.signature_validation_failure": "Cloudflare cannot proceed with applying new DNS records for %{providerName} because this URL is not verified.",
-    "domainconnect.unauthorized.description": "You are not authorized to make changes to %{zoneName}",
-    "domainconnect.unauthorized.new_login_link": "Log in to another Cloudflare account to try again"
+	"domainconnect.success": "Success! You can now close this page.",
+	"domainconnect.dialog.title": "Authorize DNS records from %{providerName}",
+	"domainconnect.dialog.subtitle": "This is a one-time authorization. It does not grant %{providerName} permission to make future changes.",
+	"domainconnect.dialog.authorize": "Authorize",
+	"domainconnect.dialog.add_following_records": "%{providerName} will add the following Cloudflare DNS records for %{hostName}",
+	"domainconnect.dialog.delete_conflicting_records": "The records added will replace the following records that already exist",
+	"domainconnect.error.signature_validation_failure": "Cloudflare cannot proceed with applying new DNS records for %{providerName} because this URL is not verified.",
+	"domainconnect.unauthorized.description": "You are not authorized to make changes to %{zoneName}",
+	"domainconnect.unauthorized.new_login_link": "Log in to another Cloudflare account to try again"
 }
