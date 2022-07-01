@@ -344,10 +344,20 @@ async function generateDashboardStructure(wantedChunks, write = false){
 								){
 									const routes = bodyItem.body.body[0].declarations[0].init.arguments[0].elements.map(ele => ele.value);
 									const realPage = /react\/pages\/(.*)/.exec(file);
-									if(realPage){
-										const page = realPage[1];
-										subRoutes[page] ??= new Set();
-										subRoutes[page].add(routes);
+									if(!realPage){
+										continue;
+									}
+									const page = realPage[1];
+									subRoutes[page] ??= [];
+									let hasExisting = false;
+									for(const existingRoute of subRoutes[page]){
+										if(existingRoute.length === routes.length && existingRoute.every((ele, i) => ele === routes[i])){
+											hasExisting = true;
+											break;
+										}
+									}
+									if(!hasExisting){
+										subRoutes[page].push(routes);
 									}
 								}
 							}
