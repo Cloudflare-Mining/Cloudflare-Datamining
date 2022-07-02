@@ -1,0 +1,12 @@
+[
+	"/accounts/[id]/billing/rate_plans",
+	"/accounts/[id]/bulk/subscriptions",
+	"/accounts/[id]/subscriptions",
+	"/accounts/[id]/subscriptions/[id]/*",
+	"/accounts/[id]/subscriptions/[id]/action/append",
+	"/accounts/[id]/subscriptions/[id]/cancel-reason",
+	"/accounts/[id]/subscriptions?package=prod_rate_limiting",
+	"/accounts/[id]/subscriptions?product=load_balancing",
+	"/zones/[id]/subscription",
+	"/zones/[id]/subscriptions"
+]

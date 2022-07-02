@@ -19,6 +19,7 @@ const likelyFiles = /\.(png|ico|svg)$/; // static assets that we want to extract
 const translationsSnippet = 'dash/intl/intl-translations/src/locale/en-US/';
 const navigationSnippet = 'components/SidebarNav/index.ts":';
 const subRoutesSnippet = 'util-routes/src/index.ts';
+const actionSnippet = 'app/redux/makeActionCreator.ts';
 const staticDashURL = 'https://static.dash.cloudflare.com/';
 
 // TODO: tidy up this file
@@ -241,7 +242,7 @@ async function generateDashboardStructure(wantedChunks, write = false){
 					url.pathname = url.pathname.replace(/\/\/+/g, '/');
 					links.add(url.toString());
 				}catch{
-					console.warn('Found a bad link', match[1]);
+					//console.warn('Found a bad link', match[1]);
 				}
 			}
 		}
@@ -331,11 +332,17 @@ async function generateDashboardStructure(wantedChunks, write = false){
 							for(const bodyItem of buildFile.value.body.body){
 								if(
 									bodyItem.type === 'VariableDeclaration' &&
-									bodyItem.declarations?.length > 0 &&
-									bodyItem.declarations[0]?.init?.arguments?.[0]?.value?.includes?.(subRoutesSnippet)
+									bodyItem.declarations?.length > 0
 								){
-									includesRoutesHelper = true;
-									break;
+									for(const decl of bodyItem.declarations){
+										if(decl?.init?.arguments?.[0]?.value?.includes?.(subRoutesSnippet) || decl?.init?.arguments?.[0]?.value?.includes?.(actionSnippet)){
+											includesRoutesHelper = true;
+											break;
+										}
+									}
+									if(includesRoutesHelper){
+										break;
+									}
 								}
 							}
 							if(!includesRoutesHelper){
@@ -356,12 +363,21 @@ async function generateDashboardStructure(wantedChunks, write = false){
 								){
 									const routeParts = bodyItem.body.body[0].declarations[0].init.arguments[0].elements.map(ele => ele.value);
 									const realPage = /react\/pages\/(.*)/.exec(file);
-									if(!realPage){
+									const commonAction = /react\/common\/actions\/(.*)/.exec(file);
+									let page = null;
+									if(realPage){
+										page = realPage[1];
+									}else if(commonAction){
+										page = '_common/' + commonAction[1];
+									}else if(file.includes('microfrontends/index.ts')){
+										page = '_common/_index';
+									}
+									if(!page){
+										console.error('Could not determine page for subroutes', file);
 										continue;
 									}
 
 									// making some wild assumptions here, but good enough
-									const page = realPage[1];
 									subRoutes[page] ??= new Set();
 									let route = '';
 									for(const [index, routePart] of routeParts.entries()){
