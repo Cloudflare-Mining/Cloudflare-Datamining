@@ -232,7 +232,19 @@ async function generateDashboardStructure(wantedChunks, write = false){
 	const files = {};
 	const getRemoteFiles = [];
 	const subRoutes = {};
+	const links = new Set();
 	for(const chunk of wantedChunks.chunks){
+		for(const match of chunk.code.matchAll(/["'](https:\/\/[^"']*)["']/g)){
+			if(match && match[1] && !match[1].includes('`')){
+				try{
+					const url = new URL(match[1]);
+					url.pathname = url.pathname.replace(/\/\/+/g, '/');
+					links.add(url.toString());
+				}catch{
+					console.warn('Found a bad link', match[1]);
+				}
+			}
+		}
 		const ast = parse(chunk.code, {
 			sourceType: 'script',
 			ecmaVersion: 2020,
@@ -381,6 +393,9 @@ async function generateDashboardStructure(wantedChunks, write = false){
 	}
 	await writeAssets(files, write);
 	await writeSubRoutes(subRoutes, write);
+	const linksFile = path.resolve(`../data/dashboard/links.json`);
+	await fs.writeFile(linksFile, JSON.stringify([...links].sort(), null, '\t'));
+
 	const tree = await writeFiles(files, write);
 	return tree;
 }
