@@ -1,15 +1,5 @@
 [
-	[
-		"",
-		"/webhook/create"
-	],
-	[
-		"",
-		"/webhook/edit/",
-		""
-	],
-	[
-		"/",
-		"/notifications"
-	]
+	"/[id]/notifications",
+	"/webhook/create",
+	"/webhook/edit/[id]/*"
 ]

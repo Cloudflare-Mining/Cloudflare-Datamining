@@ -1,21 +1,7 @@
 [
-	[
-		"",
-		"/",
-		""
-	],
-	[
-		"create-exception"
-	],
-	[
-		"rule/",
-		""
-	],
-	[
-		"ruleset/",
-		""
-	],
-	[
-		"select-ruleset"
-	]
+	"/[id]/*",
+	"create-exception",
+	"rule/[id]/*",
+	"ruleset/[id]/*",
+	"select-ruleset"
 ]

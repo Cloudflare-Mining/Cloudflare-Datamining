@@ -342,23 +342,26 @@ async function generateDashboardStructure(wantedChunks, write = false){
 									bodyItem.body.body[0].declarations[0]?.init?.arguments?.[0]?.type === 'ArrayExpression' &&
 									bodyItem.body.body[0].declarations[0]?.init.arguments[0].elements?.every(ele => ele.type === 'Literal')
 								){
-									const routes = bodyItem.body.body[0].declarations[0].init.arguments[0].elements.map(ele => ele.value);
+									const routeParts = bodyItem.body.body[0].declarations[0].init.arguments[0].elements.map(ele => ele.value);
 									const realPage = /react\/pages\/(.*)/.exec(file);
 									if(!realPage){
 										continue;
 									}
+
+									// making some wild assumptions here, but good enough
 									const page = realPage[1];
-									subRoutes[page] ??= [];
-									let hasExisting = false;
-									for(const existingRoute of subRoutes[page]){
-										if(existingRoute.length === routes.length && existingRoute.every((ele, i) => ele === routes[i])){
-											hasExisting = true;
-											break;
+									subRoutes[page] ??= new Set();
+									let route = '';
+									for(const [index, routePart] of routeParts.entries()){
+										if(routePart.endsWith('/')){
+											route += `${routePart}[id]`;
+										}else if(routePart === '' && index !== 0){
+											route += '/*';
+										}else{
+											route += routePart;
 										}
 									}
-									if(!hasExisting){
-										subRoutes[page].push(routes);
-									}
+									subRoutes[page].add(route);
 								}
 							}
 						}

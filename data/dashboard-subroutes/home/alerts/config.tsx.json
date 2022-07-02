@@ -1,23 +1,7 @@
 [
-	[
-		"",
-		"/create"
-	],
-	[
-		"",
-		"/destinations"
-	],
-	[
-		"",
-		"/edit/",
-		""
-	],
-	[
-		"",
-		"/notifications"
-	],
-	[
-		"/",
-		""
-	]
+	"/[id]/*",
+	"/create",
+	"/destinations",
+	"/edit/[id]/*",
+	"/notifications"
 ]
