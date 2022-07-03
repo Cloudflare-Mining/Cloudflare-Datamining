@@ -4,7 +4,7 @@ import dateFormat from 'dateformat';
 import fetch from 'node-fetch';
 import jsBeautify from 'js-beautify';
 import {parse} from 'acorn';
-import {full} from 'acorn-walk';
+import {full, fullAncestor} from 'acorn-walk';
 import isValidFilename from 'valid-filename';
 import filenamify from 'filenamify';
 import dataUriToBuffer from 'data-uri-to-buffer';
@@ -234,6 +234,7 @@ async function generateDashboardStructure(wantedChunks, write = false){
 	const getRemoteFiles = [];
 	const subRoutes = {};
 	const links = new Set();
+	const apiReqs = [];
 	for(const chunk of wantedChunks.chunks){
 		for(const match of chunk.code.matchAll(/["'](https:\/\/[^"']*)["']/g)){
 			if(match && match[1] && !match[1].includes('`')){
@@ -252,7 +253,7 @@ async function generateDashboardStructure(wantedChunks, write = false){
 		});
 		const recursiveImports = []; // sometimes things are imported recursively
 		// find webpack chunks
-		full(ast, (node) => {
+		fullAncestor(ast, (node, ancestors) => {
 			// first find the webpack chunk assignment
 			if(
 				node.type === 'CallExpression' &&
@@ -393,11 +394,64 @@ async function generateDashboardStructure(wantedChunks, write = false){
 								}
 							}
 						}
+
 					}
 				}
 			}
-		});
+			// handle other generic API requests
+			if(
+				node.type === 'ObjectExpression' &&
+				node.properties?.length >= 3 &&
+				(node.properties?.some(prop => prop?.key?.name === 'uri') || node.properties?.some(prop => prop?.key?.name === 'url')) &&
+				node.properties?.some(prop => prop?.key?.name === 'method')
+			){
+				const apiReq = {
+					uri: null,
+					method: null,
+				};
+				for(const property of node.properties){
+					switch(property?.key?.name){
+						case 'url': {
+							let url = property.value.value?.trim();
+							// fix old style urls
+							if(url?.includes?.('(zoneId)')){
+								url = url.replace('(zoneId)', ':zone_identifier');
+							}
+							apiReq.uri = url;
+							break;
+						}
+						case 'uri':{
+							apiReq.uri = property.value.value?.trim();
+							break;
+						}
+						case 'method':{
+							apiReq.method = property.value.value?.toUpperCase?.();
+							break;
+						}
+						case 'name':{
+							apiReq.name = property.value.value?.trim();
+							break;
+						}
+						case 'id':{
+							apiReq.id = property.value.value?.trim();
+							break;
+						}
+						case 'transKey':{
+							apiReq.id = property.value.value?.trim();
+							break;
+						}
+					}
+				}
+				// try to find in ancestor
+				if(!apiReq.id && ancestors.at(-2)?.key?.value){
+					apiReq.id = ancestors.at(-2)?.key?.value;
+				}
 
+				if(apiReq.uri && apiReq.method && (apiReq.id || apiReq.name)){
+					apiReqs.push(apiReq);
+				}
+			}
+		});
 		// TODO: maybe do something with `recursiveImports`?
 		// We already have the files these reference, so they're probably not useful
 	}
@@ -411,6 +465,10 @@ async function generateDashboardStructure(wantedChunks, write = false){
 	await writeSubRoutes(subRoutes, write);
 	const linksFile = path.resolve(`../data/dashboard/links.json`);
 	await fs.writeFile(linksFile, JSON.stringify([...links].sort(), null, '\t'));
+
+	apiReqs.sort((reqA, reqB) => reqA.uri.localeCompare(reqB.uri));
+	const apiReqsFile = path.resolve(`../data/dashboard/api-requests.json`);
+	await fs.writeFile(apiReqsFile, JSON.stringify([...apiReqs].sort(), null, '\t'));
 
 	const tree = await writeFiles(files, write);
 	return tree;

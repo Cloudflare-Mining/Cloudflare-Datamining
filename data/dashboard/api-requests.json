@@ -1,0 +1,937 @@
+[
+	{
+		"uri": "/certificates",
+		"method": "GET",
+		"id": "cloudflare-ca-list-certificates"
+	},
+	{
+		"uri": "/certificates",
+		"method": "POST",
+		"id": "cloudflare-ca-create-certificate"
+	},
+	{
+		"uri": "/certificates/:identifier",
+		"method": "GET",
+		"id": "cloudflare-ca-certificate-details"
+	},
+	{
+		"uri": "/certificates/:identifier",
+		"method": "DELETE",
+		"id": "cloudflare-ca-revoke-certificate"
+	},
+	{
+		"uri": "/railguns",
+		"method": "POST",
+		"id": "railgun.api.title.create"
+	},
+	{
+		"uri": "/railguns",
+		"method": "GET",
+		"id": "railgun.api.title.get_list"
+	},
+	{
+		"uri": "/railguns/:identifier",
+		"method": "GET",
+		"id": "railgun.api.title.get_details"
+	},
+	{
+		"uri": "/railguns/:identifier",
+		"method": "PATCH",
+		"id": "railgun.api.title.turn_on_off"
+	},
+	{
+		"uri": "/railguns/:identifier",
+		"method": "DELETE",
+		"id": "railgun.api.title.delete"
+	},
+	{
+		"uri": "/railguns/:identifier/zones",
+		"method": "GET",
+		"id": "railgun.api.title.get_zones"
+	},
+	{
+		"uri": "/user",
+		"method": "GET",
+		"id": "user-user-details"
+	},
+	{
+		"uri": "/zones/:identifier/purge_cache",
+		"method": "POST",
+		"id": "purge_cache.api.title.purge_all"
+	},
+	{
+		"uri": "/zones/:identifier/purge_cache",
+		"method": "POST",
+		"id": "purge_cache.api.title.purge_files_by_url"
+	},
+	{
+		"uri": "/zones/:identifier/purge_cache",
+		"method": "POST",
+		"id": "purge_cache.api.title.purge_files_by_tag_or_host"
+	},
+	{
+		"uri": "/zones/:zone_identifier/access/analytics/logins",
+		"method": "GET",
+		"name": "accessLogins"
+	},
+	{
+		"uri": "/zones/:zone_identifier/access/app_launcher",
+		"method": "GET",
+		"name": "accessAppLauncher"
+	},
+	{
+		"uri": "/zones/:zone_identifier/access/app_launcher",
+		"method": "POST",
+		"name": "accessAppLauncher"
+	},
+	{
+		"uri": "/zones/:zone_identifier/access/app_launcher",
+		"method": "PUT",
+		"name": "accessAppLauncher"
+	},
+	{
+		"uri": "/zones/:zone_identifier/access/app_launcher",
+		"method": "DELETE",
+		"name": "accessAppLauncher"
+	},
+	{
+		"uri": "/zones/:zone_identifier/access/apps",
+		"method": "GET",
+		"name": "accessPolicies"
+	},
+	{
+		"uri": "/zones/:zone_identifier/access/apps",
+		"method": "POST",
+		"name": "accessPolicy"
+	},
+	{
+		"uri": "/zones/:zone_identifier/access/apps/(appId)",
+		"method": "PUT",
+		"name": "accessPolicy"
+	},
+	{
+		"uri": "/zones/:zone_identifier/access/apps/(appId)",
+		"method": "DELETE",
+		"name": "accessPolicy"
+	},
+	{
+		"uri": "/zones/:zone_identifier/access/apps/(appId)/ca",
+		"method": "POST",
+		"name": "shortLivedCertificate"
+	},
+	{
+		"uri": "/zones/:zone_identifier/access/apps/(appId)/ca",
+		"method": "DELETE",
+		"name": "shortLivedCertificate"
+	},
+	{
+		"uri": "/zones/:zone_identifier/access/apps/(appId)/revoke-tokens",
+		"method": "POST",
+		"name": "revoke-tokens"
+	},
+	{
+		"uri": "/zones/:zone_identifier/access/apps/ca",
+		"method": "GET",
+		"name": "shortLivedCertificates"
+	},
+	{
+		"uri": "/zones/:zone_identifier/access/certificates",
+		"method": "GET",
+		"name": "certificates"
+	},
+	{
+		"uri": "/zones/:zone_identifier/access/certificates",
+		"method": "POST",
+		"name": "certificate"
+	},
+	{
+		"uri": "/zones/:zone_identifier/access/certificates/(id)",
+		"method": "PUT",
+		"name": "certificate"
+	},
+	{
+		"uri": "/zones/:zone_identifier/access/certificates/(id)",
+		"method": "DELETE",
+		"name": "certificate"
+	},
+	{
+		"uri": "/zones/:zone_identifier/access/connections",
+		"method": "GET",
+		"name": "identityProviders"
+	},
+	{
+		"uri": "/zones/:zone_identifier/access/connections",
+		"method": "POST",
+		"name": "identityProvider"
+	},
+	{
+		"uri": "/zones/:zone_identifier/access/connections/(connId)",
+		"method": "PUT",
+		"name": "identityProvider"
+	},
+	{
+		"uri": "/zones/:zone_identifier/access/connections/(connId)",
+		"method": "DELETE",
+		"name": "identityProvider"
+	},
+	{
+		"uri": "/zones/:zone_identifier/access/groups",
+		"method": "GET",
+		"name": "accessGroups"
+	},
+	{
+		"uri": "/zones/:zone_identifier/access/groups",
+		"method": "POST",
+		"name": "accessGroup"
+	},
+	{
+		"uri": "/zones/:zone_identifier/access/groups/(groupId)",
+		"method": "PUT",
+		"name": "accessGroup"
+	},
+	{
+		"uri": "/zones/:zone_identifier/access/groups/(groupId)",
+		"method": "DELETE",
+		"name": "accessGroup"
+	},
+	{
+		"uri": "/zones/:zone_identifier/access/logs/access_requests?(filterQuery)",
+		"method": "GET",
+		"name": "accessRequests"
+	},
+	{
+		"uri": "/zones/:zone_identifier/access/logs/users?(filterQuery)",
+		"method": "GET",
+		"name": "users"
+	},
+	{
+		"uri": "/zones/:zone_identifier/access/organizations",
+		"method": "GET",
+		"name": "organizations"
+	},
+	{
+		"uri": "/zones/:zone_identifier/access/organizations",
+		"method": "POST",
+		"name": "organizations"
+	},
+	{
+		"uri": "/zones/:zone_identifier/access/organizations",
+		"method": "PUT",
+		"name": "organizations"
+	},
+	{
+		"uri": "/zones/:zone_identifier/access/organizations",
+		"method": "DELETE",
+		"name": "organizations"
+	},
+	{
+		"uri": "/zones/:zone_identifier/access/organizations/revokeUser",
+		"method": "POST",
+		"name": "access-temp-data"
+	},
+	{
+		"uri": "/zones/:zone_identifier/access/request-beta-access",
+		"method": "POST",
+		"name": "betaAccess"
+	},
+	{
+		"uri": "/zones/:zone_identifier/access/service_tokens",
+		"method": "GET",
+		"name": "serviceTokens"
+	},
+	{
+		"uri": "/zones/:zone_identifier/access/service_tokens",
+		"method": "POST",
+		"name": "serviceToken"
+	},
+	{
+		"uri": "/zones/:zone_identifier/access/service_tokens/(id)",
+		"method": "PUT",
+		"name": "serviceToken"
+	},
+	{
+		"uri": "/zones/:zone_identifier/access/service_tokens/(id)",
+		"method": "DELETE",
+		"name": "serviceToken"
+	},
+	{
+		"uri": "/zones/:zone_identifier/access/service_tokens/(id)/refresh",
+		"method": "POST",
+		"name": "serviceToken"
+	},
+	{
+		"uri": "/zones/:zone_identifier/acm/custom_trust_store",
+		"method": "GET",
+		"id": "ssl_tls.custom_origin_trust_store_drawer_api_get_list"
+	},
+	{
+		"uri": "/zones/:zone_identifier/acm/custom_trust_store",
+		"method": "POST",
+		"id": "ssl_tls.custom_origin_trust_store_drawer_api_post"
+	},
+	{
+		"uri": "/zones/:zone_identifier/acm/custom_trust_store/:identifier",
+		"method": "GET",
+		"id": "ssl_tls.custom_origin_trust_store_drawer_api_get"
+	},
+	{
+		"uri": "/zones/:zone_identifier/acm/custom_trust_store/:identifier",
+		"method": "DELETE",
+		"id": "ssl_tls.custom_origin_trust_store_drawer_api_delete"
+	},
+	{
+		"uri": "/zones/:zone_identifier/custom_certificates",
+		"method": "POST",
+		"id": "custom-ssl-for-a-zone-create-ssl-configuration"
+	},
+	{
+		"uri": "/zones/:zone_identifier/custom_certificates",
+		"method": "GET",
+		"id": "custom-ssl-for-a-zone-list-ssl-configurations"
+	},
+	{
+		"uri": "/zones/:zone_identifier/custom_certificates/:identifier",
+		"method": "GET",
+		"id": "custom-ssl-for-a-zone-ssl-configuration-details"
+	},
+	{
+		"uri": "/zones/:zone_identifier/custom_certificates/:identifier",
+		"method": "PATCH",
+		"id": "custom-ssl-for-a-zone-update-ssl-configuration"
+	},
+	{
+		"uri": "/zones/:zone_identifier/custom_certificates/:identifier",
+		"method": "DELETE",
+		"id": "custom-ssl-for-a-zone-delete-an-ssl-certificate"
+	},
+	{
+		"uri": "/zones/:zone_identifier/custom_certificates/prioritize",
+		"method": "PUT",
+		"id": "custom-ssl-for-a-zone-re-prioritize-ssl-certificates"
+	},
+	{
+		"uri": "/zones/:zone_identifier/custom_csrs",
+		"method": "POST",
+		"id": "custom-csr-for-a-zone-create-custom-csr"
+	},
+	{
+		"uri": "/zones/:zone_identifier/custom_csrs",
+		"method": "GET",
+		"id": "custom-csr-for-a-zone-list-custom-csr"
+	},
+	{
+		"uri": "/zones/:zone_identifier/custom_csrs/:identifier",
+		"method": "GET",
+		"id": "custom-csr-for-a-zone-custom-csr-details"
+	},
+	{
+		"uri": "/zones/:zone_identifier/custom_csrs/:identifier",
+		"method": "DELETE",
+		"id": "custom-csr-for-a-zone-delete-custom-csr"
+	},
+	{
+		"uri": "/zones/:zone_identifier/custom_hostnames",
+		"method": "POST",
+		"id": "custom-hostname-for-a-zone-create-custom-hostname"
+	},
+	{
+		"uri": "/zones/:zone_identifier/custom_hostnames",
+		"method": "GET",
+		"id": "custom-hostname-for-a-zone-list-custom-hostnames"
+	},
+	{
+		"uri": "/zones/:zone_identifier/custom_hostnames/:identifier",
+		"method": "GET",
+		"id": "custom-hostname-for-a-zone-custom-hostname-details"
+	},
+	{
+		"uri": "/zones/:zone_identifier/custom_hostnames/:identifier",
+		"method": "PATCH",
+		"id": "custom-hostname-for-a-zone-edit-custom-hostname"
+	},
+	{
+		"uri": "/zones/:zone_identifier/custom_hostnames/:identifier",
+		"method": "DELETE",
+		"id": "custom-hostname-for-a-zone-delete-custom-hostname-and-any-issued-ssl-certificates-"
+	},
+	{
+		"uri": "/zones/:zone_identifier/custom_pages",
+		"method": "GET",
+		"id": "custom-pages-for-a-zone-available-custom-pages"
+	},
+	{
+		"uri": "/zones/:zone_identifier/custom_pages/:identifier",
+		"method": "GET",
+		"id": "custom-pages-for-a-zone-custom-page-details"
+	},
+	{
+		"uri": "/zones/:zone_identifier/custom_pages/:identifier",
+		"method": "PUT",
+		"id": "custom-pages-for-a-zone-update-custom-page-url"
+	},
+	{
+		"uri": "/zones/:zone_identifier/dns_records",
+		"method": "POST",
+		"id": "dns.records.api.title.create"
+	},
+	{
+		"uri": "/zones/:zone_identifier/dns_records",
+		"method": "GET",
+		"id": "dns.records.api.title.get_list"
+	},
+	{
+		"uri": "/zones/:zone_identifier/dns_records/:identifier",
+		"method": "GET",
+		"id": "dns.records.api.title.get_details"
+	},
+	{
+		"uri": "/zones/:zone_identifier/dns_records/:identifier",
+		"method": "PUT",
+		"id": "dns.records.api.title.update"
+	},
+	{
+		"uri": "/zones/:zone_identifier/dns_records/:identifier",
+		"method": "DELETE",
+		"id": "dns.records.api.title.delete"
+	},
+	{
+		"uri": "/zones/:zone_identifier/firewall/lockdowns",
+		"method": "GET",
+		"id": "zone-lockdown-list-lockdown-rules"
+	},
+	{
+		"uri": "/zones/:zone_identifier/firewall/lockdowns",
+		"method": "POST",
+		"id": "zone-lockdown-create-a-lockdown-rule"
+	},
+	{
+		"uri": "/zones/:zone_identifier/firewall/lockdowns/:id",
+		"method": "GET",
+		"id": "zone-lockdown-lockdown-rule-details"
+	},
+	{
+		"uri": "/zones/:zone_identifier/firewall/lockdowns/:id",
+		"method": "PUT",
+		"id": "zone-lockdown-update-lockdown-rule"
+	},
+	{
+		"uri": "/zones/:zone_identifier/firewall/lockdowns/:id",
+		"method": "DELETE",
+		"id": "zone-lockdown-delete-lockdown-rule"
+	},
+	{
+		"uri": "/zones/:zone_identifier/firewall/ua_rules",
+		"method": "GET",
+		"id": "user-agent-blocking-rules-list-useragent-rules"
+	},
+	{
+		"uri": "/zones/:zone_identifier/firewall/ua_rules",
+		"method": "POST",
+		"id": "user-agent-blocking-rules-create-a-useragent-rule"
+	},
+	{
+		"uri": "/zones/:zone_identifier/firewall/ua_rules/:id",
+		"method": "GET",
+		"id": "user-agent-blocking-rules-useragent-rule-details"
+	},
+	{
+		"uri": "/zones/:zone_identifier/firewall/ua_rules/:id",
+		"method": "PUT",
+		"id": "user-agent-blocking-rules-update-useragent-rule"
+	},
+	{
+		"uri": "/zones/:zone_identifier/firewall/ua_rules/:id",
+		"method": "DELETE",
+		"id": "user-agent-blocking-rules-delete-useragent-rule"
+	},
+	{
+		"uri": "/zones/:zone_identifier/keyless_certificates",
+		"method": "POST",
+		"id": "keyless-ssl-for-a-zone-create-a-keyless-ssl-configuration"
+	},
+	{
+		"uri": "/zones/:zone_identifier/keyless_certificates",
+		"method": "GET",
+		"id": "keyless-ssl-for-a-zone-list-keyless-ssl-configurations"
+	},
+	{
+		"uri": "/zones/:zone_identifier/keyless_certificates/:identifier",
+		"method": "GET",
+		"id": "keyless-ssl-for-a-zone-keyless-ssl-details"
+	},
+	{
+		"uri": "/zones/:zone_identifier/keyless_certificates/:identifier",
+		"method": "PATCH",
+		"id": "keyless-ssl-for-a-zone-update-keyless-configuration"
+	},
+	{
+		"uri": "/zones/:zone_identifier/keyless_certificates/:identifier",
+		"method": "DELETE",
+		"id": "keyless-ssl-for-a-zone-delete-keyless-configuration"
+	},
+	{
+		"uri": "/zones/:zone_identifier/pagerules",
+		"method": "GET",
+		"id": "page-rules-for-a-zone-list-page-rules"
+	},
+	{
+		"uri": "/zones/:zone_identifier/pagerules",
+		"method": "POST",
+		"id": "page-rules-for-a-zone-create-page-rule"
+	},
+	{
+		"uri": "/zones/:zone_identifier/pagerules/:identifier",
+		"method": "GET",
+		"id": "page-rules-for-a-zone-page-rule-details"
+	},
+	{
+		"uri": "/zones/:zone_identifier/pagerules/:identifier",
+		"method": "PUT",
+		"id": "page-rules-for-a-zone-update-page-rule"
+	},
+	{
+		"uri": "/zones/:zone_identifier/pagerules/:identifier",
+		"method": "PATCH",
+		"id": "page-rules-for-a-zone-edit-page-rule"
+	},
+	{
+		"uri": "/zones/:zone_identifier/pagerules/:identifier",
+		"method": "DELETE",
+		"id": "page-rules-for-a-zone-delete-page-rule"
+	},
+	{
+		"uri": "/zones/:zone_identifier/rate_limits",
+		"method": "GET",
+		"id": "rate-limits-for-a-zone-list-rate-limits"
+	},
+	{
+		"uri": "/zones/:zone_identifier/rate_limits",
+		"method": "POST",
+		"id": "rate-limits-for-a-zone-create-rate-limit"
+	},
+	{
+		"uri": "/zones/:zone_identifier/rate_limits/:id",
+		"method": "GET",
+		"id": "rate-limits-for-a-zone-rate-limit-details"
+	},
+	{
+		"uri": "/zones/:zone_identifier/rate_limits/:id",
+		"method": "PUT",
+		"id": "rate-limits-for-a-zone-update-rate-limit"
+	},
+	{
+		"uri": "/zones/:zone_identifier/rate_limits/:id",
+		"method": "DELETE",
+		"id": "rate-limits-for-a-zone-delete-rate-limit"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings",
+		"method": "PATCH",
+		"id": "zone-settings-edit-zone-settings-info"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/always_online",
+		"method": "GET",
+		"id": "always_online.api.title.get"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/always_online",
+		"method": "PATCH",
+		"id": "always_online.api.title.patch"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/always_use_https",
+		"method": "GET",
+		"id": "zone-settings-get-always-use-https-setting"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/always_use_https",
+		"method": "PATCH",
+		"id": "zone-settings-change-always-use-https-setting"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/automatic_https_rewrites",
+		"method": "GET",
+		"id": "ssl_tls.automatic_https_rewrites_api_title_get"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/automatic_https_rewrites",
+		"method": "PATCH",
+		"id": "ssl_tls.automatic_https_rewrites_api_title_patch"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/brotli",
+		"method": "GET",
+		"id": "brotli.api.title.get"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/brotli",
+		"method": "PATCH",
+		"id": "brotli.api.title.patch"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/browser_cache_ttl",
+		"method": "GET",
+		"id": "browser_cache_ttl.api.title.get"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/browser_cache_ttl",
+		"method": "PATCH",
+		"id": "browser_cache_ttl.api.title.patch"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/browser_check",
+		"method": "GET",
+		"id": "bic.api.title.get"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/browser_check",
+		"method": "PATCH",
+		"id": "bic.api.title.update"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/cache_level",
+		"method": "GET",
+		"id": "caching_level.api.title.get"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/cache_level",
+		"method": "PATCH",
+		"id": "caching_level.api.title.patch"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/challenge_ttl",
+		"method": "GET",
+		"id": "challenge_ttl.api.title.get"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/challenge_ttl",
+		"method": "PATCH",
+		"id": "challenge_ttl.api.title.update"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/ciphers",
+		"method": "GET",
+		"id": "ssl_tls.ciphers_api_title_get"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/ciphers",
+		"method": "PATCH",
+		"id": "ssl_tls.ciphers_api_title_patch"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/development_mode",
+		"method": "GET",
+		"id": "development_mode.api.title.get"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/development_mode",
+		"method": "PATCH",
+		"id": "development_mode.api.title.patch"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/early_hints",
+		"method": "GET",
+		"id": "speed.earlyhints.zone_api.title.get"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/early_hints",
+		"method": "PATCH",
+		"id": "speed.earlyhints.zone_api.title.patch"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/email_obfuscation",
+		"method": "GET",
+		"id": "email_filter.api.title.get"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/email_obfuscation",
+		"method": "PATCH",
+		"id": "email_filter.api.title.patch"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/hotlink_protection",
+		"method": "GET",
+		"id": "hotlink.api.title.get"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/hotlink_protection",
+		"method": "PATCH",
+		"id": "hotlink.api.title.patch"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/image_resizing",
+		"method": "GET",
+		"id": "image_resize.card.api.title.get"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/image_resizing",
+		"method": "PATCH",
+		"id": "image_resize.card.api.title.patch"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/ip_geolocation",
+		"method": "GET",
+		"id": "zone-settings-get-ip-geolocation-setting"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/ip_geolocation",
+		"method": "PATCH",
+		"id": "zone-settings-change-ip-geolocation-setting"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/ipv6",
+		"method": "GET",
+		"id": "zone-settings-get-ipv6-setting"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/ipv6",
+		"method": "PATCH",
+		"id": "zone-settings-change-ipv6-setting"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/min_tls_version",
+		"method": "GET",
+		"id": "ssl_tls.min_tls_api_title_get"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/min_tls_version",
+		"method": "PATCH",
+		"id": "ssl_tls.min_tls_api_title_patch"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/minify",
+		"method": "GET",
+		"id": "minify.api.title.get"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/minify",
+		"method": "PATCH",
+		"id": "minify.api.title.patch"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/mirage",
+		"method": "GET",
+		"id": "mirage2.api.title.get"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/mirage",
+		"method": "PATCH",
+		"id": "mirage2.api.title.patch"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/mobile_redirect",
+		"method": "GET",
+		"id": "zone-settings-get-mobile-redirect-setting"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/mobile_redirect",
+		"method": "PATCH",
+		"id": "zone-settings-change-mobile-redirect-setting"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/opportunistic_encryption",
+		"method": "GET",
+		"id": "zone-settings-get-opportunistic-encryption-setting"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/opportunistic_encryption",
+		"method": "PATCH",
+		"id": "zone-settings-change-opportunistic-encryption-setting"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/opportunistic_onion",
+		"method": "GET",
+		"id": "zone-settings-get-opportunistic-onion-setting"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/opportunistic_onion",
+		"method": "PATCH",
+		"id": "zone-settings-change-opportunistic-onion-setting"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/origin_error_page_pass_thru",
+		"method": "GET",
+		"id": "zone-settings-get-enable-error-pages-on-setting"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/origin_error_page_pass_thru",
+		"method": "PATCH",
+		"id": "zone-settings-change-enable-error-pages-on-setting"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/polish",
+		"method": "GET",
+		"id": "polish.api.title.get"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/polish",
+		"method": "PATCH",
+		"id": "polish.api.title.patch"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/prefetch_preload",
+		"method": "GET",
+		"id": "zone-settings-get-prefetch-preload-setting"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/prefetch_preload",
+		"method": "PATCH",
+		"id": "zone-settings-change-prefetch-preload-setting"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/pseudo_ipv4",
+		"method": "GET",
+		"id": "zone-settings-get-pseudo-ipv4-setting"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/pseudo_ipv4",
+		"method": "PATCH",
+		"id": "zone-settings-change-pseudo-ipv4-setting"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/response_buffering",
+		"method": "GET",
+		"id": "zone-settings-get-response-buffering-setting"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/response_buffering",
+		"method": "PATCH",
+		"id": "zone-settings-change-response-buffering-setting"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/rocket_loader",
+		"method": "GET",
+		"id": "rocket_loader.api.title.get"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/rocket_loader",
+		"method": "PATCH",
+		"id": "rocket_loader.api.title.patch"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/security_header",
+		"method": "GET",
+		"id": "ssl_tls.hsts_api_title_get"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/security_header",
+		"method": "PATCH",
+		"id": "ssl_tls.hsts_api_title_patch"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/security_level",
+		"method": "GET",
+		"id": "zone-settings-get-security-level-setting"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/security_level",
+		"method": "PATCH",
+		"id": "zone-settings-change-security-level-setting"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/server_side_exclude",
+		"method": "GET",
+		"id": "sse.api.title.get"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/server_side_exclude",
+		"method": "PATCH",
+		"id": "sse.api.title.patch"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/sort_query_string_for_cache",
+		"method": "GET",
+		"id": "zone-settings-get-enable-query-string-sort-setting"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/sort_query_string_for_cache",
+		"method": "PATCH",
+		"id": "zone-settings-change-enable-query-string-sort-setting"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/ssl",
+		"method": "GET",
+		"id": "ssl_tls.ssl_api_title_get_setting"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/ssl",
+		"method": "PATCH",
+		"id": "ssl_tls.ssl_api_title_patch"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/tls_1_2_only",
+		"method": "GET",
+		"id": "zone-settings-get-zone-enable-tls-1-2-setting"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/tls_1_2_only",
+		"method": "PATCH",
+		"id": "zone-settings-change-tls-1-2-setting"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/tls_1_3",
+		"method": "GET",
+		"id": "ssl_tls.tls_1_3_api_title_get"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/tls_client_auth",
+		"method": "GET",
+		"id": "zone-settings-get-tls-client-auth-setting"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/tls_client_auth",
+		"method": "PATCH",
+		"id": "zone-settings-change-tls-client-auth-setting"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/true_client_ip_header",
+		"method": "GET",
+		"id": "zone-settings-get-true-client-ip-setting"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/true_client_ip_header",
+		"method": "PATCH",
+		"id": "zone-settings-change-true-client-ip-setting"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/visitor_ip",
+		"method": "GET",
+		"id": "zone-settings-get-visitor-ip-setting"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/visitor_ip",
+		"method": "PATCH",
+		"id": "zone-settings-change-visitor-ip-setting"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/waf",
+		"method": "GET",
+		"id": "zone-settings-get-web-application-firewall-waf-setting"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/waf",
+		"method": "PATCH",
+		"id": "zone-settings-change-web-application-firewall-waf-setting"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/websockets",
+		"method": "GET",
+		"id": "zone-settings-get-websockets-setting"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/websockets",
+		"method": "PATCH",
+		"id": "zone-settings-change-websockets-setting"
+	},
+	{
+		"uri": "/zones/:zone_identifier/ssl/certificate_packs",
+		"method": "GET",
+		"id": "ssl_tls.api.get_certificate_packs"
+	},
+	{
+		"uri": "/zones/:zone_identifier/ssl/verification",
+		"method": "GET",
+		"id": "ssl-verification-ssl-verification-details"
+	}
+]
