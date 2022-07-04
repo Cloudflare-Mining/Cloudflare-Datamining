@@ -588,7 +588,7 @@ async function run(){
 		],
 		`${prefix} - Dashboard Data was updated!`,
 		'CFData - Dashboard Update',
-		'PushedDashboard  ' + prefix,
+		'Pushed Dashboard: ' + prefix,
 	);
 }
 
