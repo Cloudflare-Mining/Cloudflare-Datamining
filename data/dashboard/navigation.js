@@ -85,7 +85,7 @@ const navigation = {
 			title: "navigation.account.network_analytics",
 			url: "/network-analytics",
 			hasPermission: function(n) {
-				return te(n) && !!(0, b.getAccountFlipperFlag)(n, "account_analytics", "dos_analytics")
+				return te(n) && !!(0, g.getAccountFlipperFlag)(n, "account_analytics", "dos_analytics")
 			}
 		}, {
 			title: "navigation.account.web_analytics",
@@ -97,7 +97,7 @@ const navigation = {
 			title: "navigation.account.carbon",
 			url: "/carbon",
 			hasPermission: function(n) {
-				return te(n) && !!(0, b.getAccountFlipperFlag)(n, "account_analytics", "carbon_dashboard")
+				return te(n) && !!(0, g.getAccountFlipperFlag)(n, "account_analytics", "carbon_dashboard")
 			}
 		}]
 	}, {
@@ -129,7 +129,7 @@ const navigation = {
 			title: "navigation.account.workers.custom_domains",
 			url: "/workers/custom-domains",
 			hasPermission: function(n) {
-				return !!(0, b.getAccountFlipperFlag)(n, "workers", "origin_workers") && !!(0, b.getAccountFlipperFlag)(n, "workers", "triggers_ui")
+				return !!(0, g.getAccountFlipperFlag)(n, "workers", "origin_workers") && !!(0, g.getAccountFlipperFlag)(n, "workers", "triggers_ui")
 			}
 		}, {
 			title: "navigation.account.workers.kv",
@@ -152,19 +152,19 @@ const navigation = {
 		url: "/rulesets",
 		iconType: "shield",
 		hasPermission: function(n) {
-			return te(n) && !!(Ce(n) || re(n))
+			return te(n) && !!(Ce(n) || ne(n))
 		},
 		pages: [{
 			title: "navigation.account.firewall_rulesets.ddos",
 			url: "/rulesets",
 			hasPermission: function(n) {
-				var X = !!we(n) && !!xe(n);
+				var X = !!Te(n) && !!De(n);
 				return !!se(n) || X
 			}
 		}, {
 			title: "navigation.account.firewall_rulesets.application_firewall",
 			url: function(n) {
-				var X = !!se(n) || !!we(n) && !!xe(n);
+				var X = !!se(n) || !!Te(n) && !!De(n);
 				return X ? "/rulesets/managed" : "/rulesets"
 			},
 			hasPermission: function(n) {
@@ -175,7 +175,7 @@ const navigation = {
 			url: "/rulesets/magic_firewall",
 			testId: "account-magic-firewall-rules",
 			hasPermission: function(n) {
-				return !!re(n)
+				return !!ne(n)
 			}
 		}, {
 			title: "navigation.account.firewall_rulesets.browse_rulesets",
@@ -214,7 +214,7 @@ const navigation = {
 		iconType: "image",
 		labels: ["new"],
 		hasPermission: function(n) {
-			return te(n) && !!(0, b.getAccountFlipperFlag)(n, "cloudflare_images", "early_release_access")
+			return te(n) && !!(0, g.getAccountFlipperFlag)(n, "cloudflare_images", "early_release_access")
 		}
 	}, {
 		title: "navigation.account.security_center",
@@ -268,14 +268,14 @@ const navigation = {
 		iconType: "network",
 		labels: ["new"],
 		hasPermission: function(n) {
-			return te(n) && !!(0, b.getAccountFlipperFlag)(n, "addressing", "ip_prefixes")
+			return te(n) && !!(0, g.getAccountFlipperFlag)(n, "addressing", "ip_prefixes")
 		}
 	}, {
 		title: "navigation.account.magic_transit",
 		url: "/magic-transit",
 		iconType: "magic-transit-logo",
 		hasPermission: function(n) {
-			return te(n) && !!(0, b.getAccountFlipperFlag)(n, "magic_transit", "mt_home")
+			return te(n) && !!(0, g.getAccountFlipperFlag)(n, "magic_transit", "mt_home")
 		}
 	}, {
 		title: "navigation.account.magic_wan",
@@ -283,7 +283,7 @@ const navigation = {
 		iconType: "cloudflare-magic-wan",
 		labels: ["new"],
 		hasPermission: function(n) {
-			return te(n) && !!(0, b.getAccountFlipperFlag)(n, "magic_wan", "mw_home")
+			return te(n) && !!(0, g.getAccountFlipperFlag)(n, "magic_wan", "mw_home")
 		}
 	}, {
 		title: "account.bulk_redirects.title",
@@ -318,7 +318,7 @@ const navigation = {
 			url: "/audit-log",
 			testId: "account-homepage-audit-logs",
 			hasPermission: function(n) {
-				return (0, ce.b)(n) ? te(n) : (0, b.getPermission)(n)("auditlogs").read
+				return (0, ce.b)(n) ? te(n) : (0, g.getPermission)(n)("auditlogs").read
 			}
 		}, {
 			title: "navigation.account.billing",
@@ -427,7 +427,7 @@ const navigation = {
 		testId: "zone-navigation-link-spectrum",
 		hasPermission: function(n) {
 			var X = (0, p.getZone)(n);
-			if ((0, _.zoneIsDNSOnly)(n) || !Te(n, "zone_settings", "spectrum.app") || !X) return !1;
+			if ((0, _.zoneIsDNSOnly)(n) || !xe(n, "zone_settings", "spectrum.app") || !X) return !1;
 			var Se = !!((0, Be.userHasEntZones)(n) || (0, p.userHasDelegatedEntZones)(n)),
 				Re = !!(0, p.getZoneFlipperFlag)(n, "spectrum", "enabled"),
 				He = !!(0, p.isFree)(X);
@@ -503,7 +503,7 @@ const navigation = {
 			title: "navigation.zone.firewall.bots",
 			url: "/security/bots",
 			hasPermission: function(n) {
-				return !!(0, b.getAccountFlipperFlag)(n, "bots", "paygo")
+				return !!(0, g.getAccountFlipperFlag)(n, "bots", "paygo")
 			}
 		}, {
 			title: "navigation.zone.firewall.data",
@@ -538,7 +538,7 @@ const navigation = {
 		iconType: "cloudflare-access",
 		testId: "zone-navigation-link-access",
 		hasPermission: function(n) {
-			return !(0, _.zoneIsDNSOnly)(n) && (Te(n, "access", "access.app") || Te(n, "access", "access.zone.app"))
+			return !(0, _.zoneIsDNSOnly)(n) && (xe(n, "access", "access.app") || xe(n, "access", "access.zone.app"))
 		}
 	}, {
 		title: "navigation.zone.speed",
@@ -592,7 +592,7 @@ const navigation = {
 		iconType: "edgeworker",
 		testId: "zone-navigation-link-workers",
 		hasPermission: function(n) {
-			return !(0, _.zoneIsDNSOnly)(n) && Te(n, "worker", "worker.route")
+			return !(0, _.zoneIsDNSOnly)(n) && xe(n, "worker", "worker.route")
 		}
 	}, {
 		title: "navigation.zone.rules",
@@ -612,7 +612,7 @@ const navigation = {
 			title: "account.bulk_redirects.title",
 			labels: ["beta", "absolute"],
 			url: function(n) {
-				var X = (0, b.getAccount)(n);
+				var X = (0, g.getAccount)(n);
 				return "/".concat(X == null ? void 0 : X.id, "/bulk-redirects")
 			},
 			hasPermission: function(n) {
@@ -773,7 +773,7 @@ const navigation = {
 			title: "navigation.zone.firewall.bots",
 			url: "/firewall/bots",
 			hasPermission: function(n) {
-				return !!(0, b.getAccountFlipperFlag)(n, "bots", "paygo")
+				return !!(0, g.getAccountFlipperFlag)(n, "bots", "paygo")
 			}
 		}, {
 			title: "navigation.zone.firewall.ddos",
