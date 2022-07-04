@@ -32,3 +32,4 @@ jobs:
         env:
           CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
           CLOUDFLARE_PASSWORD: ${{ secrets.CLOUDFLARE_PASSWORD }}
+          DISCORD_URL: ${{ secrets.DISCORD_URL }}
