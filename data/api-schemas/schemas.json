@@ -20200,7 +20200,7 @@
 		"/zones/{zone_identifier}/logs/control/retention/flag": {
 			"get": {
 				"summary": "Get log retention flag",
-				"description": "Get log retention flag for Logpull API",
+				"description": "Gets log retention flag for Logpull API.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -20260,7 +20260,7 @@
 			},
 			"post": {
 				"summary": "Update log retention flag",
-				"description": "Update log retention flag for Logpull API",
+				"description": "Updates log retention flag for Logpull API.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -20324,8 +20324,8 @@
 		},
 		"/zones/{zone_identifier}/logs/received": {
 			"get": {
-				"summary": "Logs Received",
-				"description": "The `/received` api route allows customers to retrieve their edge http logs. The basic access pattern is \"give me all the logs for zone Z for minute M\" where the minute M refers to the time records were received at Cloudflare's central data center. `start` is inclusive, and `end` is exclusive. Because of that, to get all data, at minutely cadence, starting at 10AM, the proper values are: `start=2018-05-20T10:00:00Z&end=2018-05-20T10:01:00Z`, then `start=2018-05-20T10:01:00Z&end=2018-05-20T10:02:00Z` and so on; the \"overlap\" will be handled properly.",
+				"summary": "Logs received",
+				"description": "The `/received` api route allows customers to retrieve their edge HTTP logs. The basic access pattern is \"give me all the logs for zone Z for minute M\", where the minute M refers to the time records were received at Cloudflare's central data center. `start` is inclusive, and `end` is exclusive. Because of that, to get all data, at minutely cadence, starting at 10AM, the proper values are: `start=2018-05-20T10:00:00Z&end=2018-05-20T10:01:00Z`, then `start=2018-05-20T10:01:00Z&end=2018-05-20T10:02:00Z` and so on; the overlap will be handled properly.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -20338,7 +20338,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Logs Received response",
+						"description": "Logs received response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -20378,7 +20378,7 @@
 		"/zones/{zone_identifier}/logs/rayids/{ray_identifier}": {
 			"get": {
 				"summary": "Logs RayIDs",
-				"description": "The `/rayids` api route allows lookups by specific rayid. The rayids route will return 0, 1, or more records (ray ids are not unique).",
+				"description": "The `/rayids` api route allows lookups by specific rayid. The rayids route will return zero, one, or more records (ray ids are not unique).",
 				"parameters": [
 					{
 						"name": "ray_identifier",
@@ -20443,7 +20443,7 @@
 		"/zones/{zone_identifier}/logs/received/fields": {
 			"get": {
 				"summary": "Fields",
-				"description": "The list of all fields available. The response is json object with key-value pairs where keys are field names, and values are descriptions.",
+				"description": "Lists all fields available. The response is json object with key-value pairs, where keys are field names, and values are descriptions.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -20493,8 +20493,8 @@
 		},
 		"/zones/{zone_identifier}/logpush/jobs": {
 			"get": {
-				"summary": "List Logpush Jobs",
-				"description": "List Logpush Jobs for a zone",
+				"summary": "Logpush jobs",
+				"description": "Lists Logpush jobs for a zone.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -20507,7 +20507,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "List Logpush Jobs response",
+						"description": "Logpush jobs response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -20551,8 +20551,8 @@
 				}
 			},
 			"post": {
-				"summary": "Create Logpush Job",
-				"description": "Create a new Logpush Job for a zone",
+				"summary": "Create Logpush job",
+				"description": "Creates a new Logpush job for a zone.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -20565,7 +20565,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create Logpush Job response",
+						"description": "Create Logpush job response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -20676,8 +20676,8 @@
 		},
 		"/zones/{zone_identifier}/logpush/datasets/{dataset}/jobs": {
 			"get": {
-				"summary": "List Logpush Jobs for a dataset",
-				"description": "List Logpush Jobs for a zone for a dataset",
+				"summary": "Logpush jobs for a dataset",
+				"description": "Lists Logpush jobs for a zone for a dataset.",
 				"parameters": [
 					{
 						"name": "dataset",
@@ -20703,7 +20703,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "List Logpush Jobs for a dataset response",
+						"description": "Logpush jobs for a dataset response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -20750,7 +20750,7 @@
 		"/zones/{zone_identifier}/logpush/datasets/{dataset}/fields": {
 			"get": {
 				"summary": "Fields",
-				"description": "The list of all fields available for a dataset. The response result is an object with key-value pairs where keys are field names, and values are descriptions.",
+				"description": "Lists all fields available for a dataset. The response result is an object with key-value pairs, where keys are field names, and values are descriptions.",
 				"parameters": [
 					{
 						"name": "dataset",
@@ -20828,8 +20828,8 @@
 		},
 		"/zones/{zone_identifier}/logpush/ownership": {
 			"post": {
-				"summary": "Get Ownership Challenge",
-				"description": "Get a new ownership challenge sent to your destination",
+				"summary": "Get ownership challenge",
+				"description": "Gets a new ownership challenge sent to your destination.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -20842,7 +20842,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get Ownership Challenge response",
+						"description": "Get ownership challenge response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -20920,8 +20920,8 @@
 		},
 		"/zones/{zone_identifier}/logpush/ownership/validate": {
 			"post": {
-				"summary": "Validate Ownership Challenge",
-				"description": "Validate ownership challenge of the destination",
+				"summary": "Validate ownership challenge",
+				"description": "Validates ownership challenge of the destination.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -20934,7 +20934,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Validate Ownership Challenge response",
+						"description": "Validate ownership challenge response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -21012,8 +21012,8 @@
 		},
 		"/zones/{zone_identifier}/logpush/validate/origin": {
 			"post": {
-				"summary": "Validate Origin",
-				"description": "Validate logpull origin with logpull_options",
+				"summary": "Validate origin",
+				"description": "Validates logpull origin with logpull_options.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -21026,7 +21026,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Validate Origin response",
+						"description": "Validate origin response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -21101,8 +21101,8 @@
 		},
 		"/zones/{zone_identifier}/logpush/jobs/{job_identifier}": {
 			"get": {
-				"summary": "Logpush Job Details",
-				"description": "Get the details of a Logpush Job",
+				"summary": "Logpush job details",
+				"description": "Gets the details of a Logpush job.",
 				"parameters": [
 					{
 						"name": "job_identifier",
@@ -21125,7 +21125,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Logpush Job Details response",
+						"description": "Logpush job details response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -21166,8 +21166,8 @@
 				}
 			},
 			"put": {
-				"summary": "Update Logpush Job",
-				"description": "Update a Logpush Job",
+				"summary": "Update Logpush job",
+				"description": "Updates a Logpush job.",
 				"parameters": [
 					{
 						"name": "job_identifier",
@@ -21188,7 +21188,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update Logpush Job response",
+						"description": "Update Logpush job response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -21266,8 +21266,8 @@
 				}
 			},
 			"delete": {
-				"summary": "Delete Logpush Job",
-				"description": "Delete a Logpush Job",
+				"summary": "Delete Logpush job",
+				"description": "Deletes a Logpush job.",
 				"parameters": [
 					{
 						"name": "job_identifier",
@@ -21288,7 +21288,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete Logpush Job response",
+						"description": "Delete Logpush job response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -21338,8 +21338,8 @@
 		},
 		"/zones/{zone_identifier}/logpush/validate/destination/exists": {
 			"post": {
-				"summary": "Check Destination Exists",
-				"description": "Check if there is an existing job with a destination",
+				"summary": "Check destination exists",
+				"description": "Checks if there is an existing job with a destination.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -21352,7 +21352,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Check Destination Exists response",
+						"description": "Check destination exists response",
 						"content": {
 							"application/json": {
 								"schema": {
