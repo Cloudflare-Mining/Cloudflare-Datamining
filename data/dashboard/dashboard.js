@@ -1458,14 +1458,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				n.g.build = Dt({}, {
-					branch: "nick/LOUI-3471",
+					branch: "release-1657029845",
 					isReleaseCandidate: "true",
-					commit: "ea30835b489d95f0df3ba87c17d4c2ae21b51fe8",
+					commit: "845d7e4db226b303212bd62bc981d8dbcf1c1873",
 					env: "production",
-					builtAt: 1656951970583,
-					dashVersion: "3b28bbc1fcf59d0d4afa98fbfa83aae9ba3ee466",
+					builtAt: 1657053179398,
+					dashVersion: "c26a7699b01c8684c5892149c869b69e5c46ae8e",
 					versions: {
-						"@cloudflare/app-dash": "25.50.19",
+						"@cloudflare/app-dash": "25.50.23",
 						node: "14.18.3",
 						yarn: "1.18.0",
 						webpack: "5.38.1"
@@ -28264,7 +28264,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			})(P || (P = {}));
 			var M;
 			(function(v) {
-				v.Disabled = "disabled", v.Misconfigured = "misconfigured", v.Unlocked = "unlocked", v.Locked = "locked", v.Incompatible = "incompatible", v.Loading = "loading", v.Unknown = "unknown", v.Error = "error"
+				v.Disabled = "disabled", v.Misconfigured = "misconfigured", v.MisconfiguredLocked = "misconfigured/locked", v.Unlocked = "unlocked", v.Locked = "locked", v.Incompatible = "incompatible", v.Loading = "loading", v.Unknown = "unknown", v.Error = "error"
 			})(M || (M = {}));
 
 			function R() {
@@ -28328,6 +28328,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 								case "misconfigured":
 									y.routing.status = M.Misconfigured;
 									break;
+								case "misconfigured/locked":
+									y.routing.status = M.MisconfiguredLocked;
+									break;
 								case "unlocked":
 									y.routing.status = M.Unlocked;
 									break;
@@ -28343,7 +28346,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 								disabled: !1
 							}, y.records = {
 								conflicting: [],
-								expected: []
+								expected: [],
+								multiple: []
 							}, y.records.expected = h.map(function(ye) {
 								return w({}, ye, {
 									added: !0
@@ -28360,6 +28364,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 											case "spf.foreign":
 											case "mx.foreign":
 												y.dns.conflict = !0, y.records.conflicting.push(re.existing);
+												break;
+											case "spf.multiple":
+												y.dns.misconfigured = !0, y.records.multiple = re.multiple;
 												break;
 											case "spf.missing":
 											case "mx.missing":
@@ -28382,7 +28389,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 									if (f) throw T
 								}
 							}
-							y.dns.misconfigured = y.routing.status === M.Disabled || y.routing.status === M.Misconfigured, y.routing.enabled = y.routing.status !== M.Disabled
+							y.dns.misconfigured = y.routing.status === M.Disabled || y.routing.status === M.Misconfigured || y.routing.status === M.MisconfiguredLocked, y.routing.enabled = y.routing.status !== M.Disabled
 						}
 						d(y)
 					}
@@ -59984,4 +59991,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=e8e23c4a76b4847dac17.js.map
+//# sourceMappingURL=7f4dac01ec85e1dfa1ea.js.map
