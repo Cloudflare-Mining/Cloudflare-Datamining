@@ -1,12 +1,12 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/firewall/waf/overrides.json",
-	"title": "Waf Overrides",
-	"description": "Overrides for turning WAF packages on or off",
+	"title": "WAF overrides",
+	"description": "WAF configuration overrides allow you to enable or disable WAF packages for specific URL patterns.",
 	"type": "object",
 	"links": [
 		{
-			"title": "List URI-controlled WAF configurations",
-			"description": "List the WAF configurations on a zone.",
+			"title": "Get WAF overrides",
+			"description": "Fetches the URI-based WAF overrides in a zone.",
 			"href": "zones/{#/definitions/zone_identifier}/firewall/waf/overrides",
 			"method": "GET",
 			"cfPlanAvailability": {
@@ -17,7 +17,7 @@
 			},
 			"rel": "collection",
 			"cfOwnership": "firewall",
-			"html_id": "waf-overrides-list-uri-controlled-waf-configurations",
+			"html_id": "waf-overrides-get-waf-overrides",
 			"uri": "zones/:zone_identifier/firewall/waf/overrides",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/waf/overrides?page=1&per_page=50\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {
@@ -28,7 +28,7 @@
 					"page": {
 						"type": "number",
 						"example": "1",
-						"description": "Page number of paginated results",
+						"description": "The page number of paginated results.",
 						"minimum": 1,
 						"default": 1
 					},
@@ -38,7 +38,7 @@
 						"minimum": 5,
 						"maximum": 100,
 						"default": 50,
-						"description": "Number of WAF configurations per page"
+						"description": "The number of WAF overrides per page."
 					}
 				},
 				"required_props": [],
@@ -52,8 +52,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"de677e5818985db1285d0e80225f06e5\",\n      \"description\": \"Enable Cloudflare Magento ruleset for shop.example.com\",\n      \"urls\": [\n        \"shop.example.com/*\"\n      ],\n      \"priority\": 1,\n      \"groups\": {\n        \"ea8687e59929c1fd05ba97574ad43f77\": \"default\"\n      },\n      \"rules\": {\n        \"100015\": \"disable\"\n      },\n      \"rewrite_action\": {\n        \"default\": \"block\",\n        \"challenge\": \"block\",\n        \"simulate\": \"disable\"\n      }\n    }\n  ]\n}"
 		},
 		{
-			"title": "Create a URI-controlled WAF configuration",
-			"description": "Create a new WAF configuration for a zone. See the record object definitions for required attributes for each record type.",
+			"title": "Create a WAF override",
+			"description": "Creates a URI-based WAF override for a zone.",
 			"href": "zones/{#/definitions/zone_identifier}/firewall/waf/overrides",
 			"method": "POST",
 			"rel": "collection",
@@ -64,7 +64,7 @@
 				"business": false,
 				"enterprise": true
 			},
-			"html_id": "waf-overrides-create-a-uri-controlled-waf-configuration",
+			"html_id": "waf-overrides-create-a-waf-override",
 			"uri": "zones/:zone_identifier/firewall/waf/overrides",
 			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/waf/overrides\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"description\":\"Enable Cloudflare Magento ruleset for shop.example.com\",\"urls\":[\"shop.example.com/*\"],\"priority\":1,\"groups\":{\"ea8687e59929c1fd05ba97574ad43f77\":\"default\"},\"rules\":{\"100015\":\"disable\"},\"rewrite_action\":{\"default\":\"block\",\"challenge\":\"block\",\"simulate\":\"disable\"}}'",
 			"parameters": {
@@ -74,7 +74,7 @@
 				"all_props": {
 					"paused": {
 						"type": "boolean",
-						"description": "Whether this package is currently paused"
+						"description": "When true, indicates that the WAF package is currently paused."
 					},
 					"description": {
 						"type": [
@@ -82,13 +82,13 @@
 							"null"
 						],
 						"example": "\"Enable Cloudflare Magento ruleset for shop.example.com\"",
-						"description": "A note that you can use to describe the purpose of this configuration.",
+						"description": "An informative summary of the current URI-based WAF override.",
 						"maxLength": 1024
 					},
 					"urls": {
 						"type": "array",
 						"example": "[\n  \"shop.example.com/*\"\n]",
-						"description": "URLs to be included in this rule definition. Wildcards are permitted. The URL pattern entered here will be escaped before use. This limits the URL to just simple wildcard patterns.",
+						"description": "The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
 						"items": {
 							"type": "string",
 							"example": "shop.example.com/*"
@@ -99,17 +99,17 @@
 						"example": "1",
 						"minimum": -1000000000,
 						"maximum": 1000000000,
-						"description": "Relative priority of this configuration when multiple configurations match a single URL. Higher priority configurations may overwrite values set by lower priority configurations."
+						"description": "The relative priority of the current URI-based WAF override when multiple overrides match a single URL. A lower number indicates higher priority. Higher priority overrides may overwrite values set by lower priority overrides."
 					},
 					"groups": {
 						"type": "object",
 						"example": "{\n  \"ea8687e59929c1fd05ba97574ad43f77\": \"default\"\n}",
-						"description": "Enable or disable WAF rule groups. The keys of this object are WAF rule group IDs and the values must be a valid WAF action (usually default or disable). When creating a new URI-controlled WAF configuration either `groups` or `rules` must be provided at a minimum.",
+						"description": "An object that allows you to enable or disable WAF rule groups for the current WAF override. Each key of this object must be the ID of a WAF rule group, and each value must be a valid WAF action (usually `default` or `disable`). When creating a new URI-based WAF override, you must provide a `groups` object or a `rules` object.",
 						"patternProperties": {
 							"^[0-9a-f]{32}$": {
 								"allOf": [
 									{
-										"description": "WAF rule action to apply",
+										"description": "The WAF rule action to apply.",
 										"enum": [
 											"challenge",
 											"block",
@@ -126,11 +126,11 @@
 					"rules": {
 						"type": "object",
 						"example": "{\n  \"100015\": \"disable\"\n}",
-						"description": "Change the action assigned to a WAF rule. The keys of this object are WAF rule IDs and the values must be a valid WAF action. Unless disabling the rule, ensure that you also enable the rule group that this WAF rule belongs to. When creating a new URI-controlled WAF configuration either `groups` or `rules` must be provided at a minimum.",
+						"description": "An object that allows you to override the action of specific WAF rules. Each key of this object must be the ID of a WAF rule, and each value must be a valid WAF action. Unless you are disabling a rule, ensure that you also enable the rule group that this WAF rule belongs to. When creating a new URI-based WAF override, you must provide a `groups` object or a `rules` object.",
 						"additionalProperties": {
 							"allOf": [
 								{
-									"description": "WAF rule action to apply",
+									"description": "The WAF rule action to apply.",
 									"enum": [
 										"challenge",
 										"block",
@@ -149,7 +149,7 @@
 						"properties": {
 							"default": {
 								"example": "\"block\"",
-								"description": "WAF rule action to apply",
+								"description": "The WAF rule action to apply.",
 								"enum": [
 									"challenge",
 									"block",
@@ -160,7 +160,7 @@
 							},
 							"challenge": {
 								"example": "\"block\"",
-								"description": "WAF rule action to apply",
+								"description": "The WAF rule action to apply.",
 								"enum": [
 									"challenge",
 									"block",
@@ -170,7 +170,7 @@
 								]
 							},
 							"block": {
-								"description": "WAF rule action to apply",
+								"description": "The WAF rule action to apply.",
 								"enum": [
 									"challenge",
 									"block",
@@ -181,7 +181,7 @@
 							},
 							"simulate": {
 								"example": "\"disable\"",
-								"description": "WAF rule action to apply",
+								"description": "The WAF rule action to apply.",
 								"enum": [
 									"challenge",
 									"block",
@@ -191,7 +191,7 @@
 								]
 							},
 							"disable": {
-								"description": "WAF rule action to apply",
+								"description": "The WAF rule action to apply.",
 								"enum": [
 									"challenge",
 									"block",
@@ -201,7 +201,7 @@
 								]
 							}
 						},
-						"description": "When a WAF rule matches, substitute its configured action for a different action specified by this object."
+						"description": "Specifies that, when a WAF rule matches, its configured action will be replaced by the action configured in this object."
 					}
 				},
 				"required_props": [
@@ -221,7 +221,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"de677e5818985db1285d0e80225f06e5\",\n    \"description\": \"Enable Cloudflare Magento ruleset for shop.example.com\",\n    \"urls\": [\n      \"shop.example.com/*\"\n    ],\n    \"priority\": 1,\n    \"groups\": {\n      \"ea8687e59929c1fd05ba97574ad43f77\": \"default\"\n    },\n    \"rules\": {\n      \"100015\": \"disable\"\n    },\n    \"rewrite_action\": {\n      \"default\": \"block\",\n      \"challenge\": \"block\",\n      \"simulate\": \"disable\"\n    }\n  }\n}"
 		},
 		{
-			"title": "URI-controlled WAF configuration details",
+			"title": "Get a WAF override",
+			"description": "Fetches the details of a URI-based WAF override.",
 			"href": "zones/{#/definitions/zone_identifier}/firewall/waf/overrides/{#/definitions/id}",
 			"method": "GET",
 			"rel": "self",
@@ -232,13 +233,14 @@
 				"business": false,
 				"enterprise": true
 			},
-			"html_id": "waf-overrides-uri-controlled-waf-configuration-details",
+			"html_id": "waf-overrides-get-a-waf-override",
 			"uri": "zones/:zone_identifier/firewall/waf/overrides/:id",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/waf/overrides/de677e5818985db1285d0e80225f06e5\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"de677e5818985db1285d0e80225f06e5\",\n    \"description\": \"Enable Cloudflare Magento ruleset for shop.example.com\",\n    \"urls\": [\n      \"shop.example.com/*\"\n    ],\n    \"priority\": 1,\n    \"groups\": {\n      \"ea8687e59929c1fd05ba97574ad43f77\": \"default\"\n    },\n    \"rules\": {\n      \"100015\": \"disable\"\n    },\n    \"rewrite_action\": {\n      \"default\": \"block\",\n      \"challenge\": \"block\",\n      \"simulate\": \"disable\"\n    }\n  }\n}"
 		},
 		{
-			"title": "Update URI-controlled WAF configuration",
+			"title": "Update WAF override",
+			"description": "Updates an existing URI-based WAF override.",
 			"href": "zones/{#/definitions/zone_identifier}/firewall/waf/overrides/{#/definitions/id}",
 			"method": "PUT",
 			"rel": "self",
@@ -249,7 +251,7 @@
 				"business": false,
 				"enterprise": true
 			},
-			"html_id": "waf-overrides-update-uri-controlled-waf-configuration",
+			"html_id": "waf-overrides-update-waf-override",
 			"uri": "zones/:zone_identifier/firewall/waf/overrides/:id",
 			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/waf/overrides/de677e5818985db1285d0e80225f06e5\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"description\":\"Enable Cloudflare Magento ruleset for shop.example.com\",\"urls\":[\"shop.example.com/*\"],\"priority\":1,\"groups\":{\"ea8687e59929c1fd05ba97574ad43f77\":\"default\"},\"rules\":{\"100015\":\"disable\"},\"rewrite_action\":{\"default\":\"block\",\"challenge\":\"block\",\"simulate\":\"disable\"}}'",
 			"parameters": {
@@ -259,7 +261,7 @@
 				"all_props": {
 					"paused": {
 						"type": "boolean",
-						"description": "Whether this package is currently paused"
+						"description": "When true, indicates that the WAF package is currently paused."
 					},
 					"description": {
 						"type": [
@@ -267,13 +269,13 @@
 							"null"
 						],
 						"example": "\"Enable Cloudflare Magento ruleset for shop.example.com\"",
-						"description": "A note that you can use to describe the purpose of this configuration.",
+						"description": "An informative summary of the current URI-based WAF override.",
 						"maxLength": 1024
 					},
 					"urls": {
 						"type": "array",
 						"example": "[\n  \"shop.example.com/*\"\n]",
-						"description": "URLs to be included in this rule definition. Wildcards are permitted. The URL pattern entered here will be escaped before use. This limits the URL to just simple wildcard patterns.",
+						"description": "The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
 						"items": {
 							"type": "string",
 							"example": "shop.example.com/*"
@@ -284,17 +286,17 @@
 						"example": "1",
 						"minimum": -1000000000,
 						"maximum": 1000000000,
-						"description": "Relative priority of this configuration when multiple configurations match a single URL. Higher priority configurations may overwrite values set by lower priority configurations."
+						"description": "The relative priority of the current URI-based WAF override when multiple overrides match a single URL. A lower number indicates higher priority. Higher priority overrides may overwrite values set by lower priority overrides."
 					},
 					"groups": {
 						"type": "object",
 						"example": "{\n  \"ea8687e59929c1fd05ba97574ad43f77\": \"default\"\n}",
-						"description": "Enable or disable WAF rule groups. The keys of this object are WAF rule group IDs and the values must be a valid WAF action (usually default or disable). When creating a new URI-controlled WAF configuration either `groups` or `rules` must be provided at a minimum.",
+						"description": "An object that allows you to enable or disable WAF rule groups for the current WAF override. Each key of this object must be the ID of a WAF rule group, and each value must be a valid WAF action (usually `default` or `disable`). When creating a new URI-based WAF override, you must provide a `groups` object or a `rules` object.",
 						"patternProperties": {
 							"^[0-9a-f]{32}$": {
 								"allOf": [
 									{
-										"description": "WAF rule action to apply",
+										"description": "The WAF rule action to apply.",
 										"enum": [
 											"challenge",
 											"block",
@@ -311,11 +313,11 @@
 					"rules": {
 						"type": "object",
 						"example": "{\n  \"100015\": \"disable\"\n}",
-						"description": "Change the action assigned to a WAF rule. The keys of this object are WAF rule IDs and the values must be a valid WAF action. Unless disabling the rule, ensure that you also enable the rule group that this WAF rule belongs to. When creating a new URI-controlled WAF configuration either `groups` or `rules` must be provided at a minimum.",
+						"description": "An object that allows you to override the action of specific WAF rules. Each key of this object must be the ID of a WAF rule, and each value must be a valid WAF action. Unless you are disabling a rule, ensure that you also enable the rule group that this WAF rule belongs to. When creating a new URI-based WAF override, you must provide a `groups` object or a `rules` object.",
 						"additionalProperties": {
 							"allOf": [
 								{
-									"description": "WAF rule action to apply",
+									"description": "The WAF rule action to apply.",
 									"enum": [
 										"challenge",
 										"block",
@@ -334,7 +336,7 @@
 						"properties": {
 							"default": {
 								"example": "\"block\"",
-								"description": "WAF rule action to apply",
+								"description": "The WAF rule action to apply.",
 								"enum": [
 									"challenge",
 									"block",
@@ -345,7 +347,7 @@
 							},
 							"challenge": {
 								"example": "\"block\"",
-								"description": "WAF rule action to apply",
+								"description": "The WAF rule action to apply.",
 								"enum": [
 									"challenge",
 									"block",
@@ -355,7 +357,7 @@
 								]
 							},
 							"block": {
-								"description": "WAF rule action to apply",
+								"description": "The WAF rule action to apply.",
 								"enum": [
 									"challenge",
 									"block",
@@ -366,7 +368,7 @@
 							},
 							"simulate": {
 								"example": "\"disable\"",
-								"description": "WAF rule action to apply",
+								"description": "The WAF rule action to apply.",
 								"enum": [
 									"challenge",
 									"block",
@@ -376,7 +378,7 @@
 								]
 							},
 							"disable": {
-								"description": "WAF rule action to apply",
+								"description": "The WAF rule action to apply.",
 								"enum": [
 									"challenge",
 									"block",
@@ -386,7 +388,7 @@
 								]
 							}
 						},
-						"description": "When a WAF rule matches, substitute its configured action for a different action specified by this object."
+						"description": "Specifies that, when a WAF rule matches, its configured action will be replaced by the action configured in this object."
 					}
 				},
 				"required_props": [
@@ -407,7 +409,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"de677e5818985db1285d0e80225f06e5\",\n    \"description\": \"Enable Cloudflare Magento ruleset for shop.example.com\",\n    \"urls\": [\n      \"shop.example.com/*\"\n    ],\n    \"priority\": 1,\n    \"groups\": {\n      \"ea8687e59929c1fd05ba97574ad43f77\": \"default\"\n    },\n    \"rules\": {\n      \"100015\": \"disable\"\n    },\n    \"rewrite_action\": {\n      \"default\": \"block\",\n      \"challenge\": \"block\",\n      \"simulate\": \"disable\"\n    }\n  }\n}"
 		},
 		{
-			"title": "Delete URI-controlled WAF configuration",
+			"title": "Delete a WAF override",
+			"description": "Deletes an existing URI-based WAF override.",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_identifier}/firewall/waf/overrides/{#/definitions/id}",
 			"method": "DELETE",
@@ -418,7 +421,7 @@
 				"business": false,
 				"enterprise": true
 			},
-			"html_id": "waf-overrides-delete-uri-controlled-waf-configuration",
+			"html_id": "waf-overrides-delete-a-waf-override",
 			"uri": "zones/:zone_identifier/firewall/waf/overrides/:id",
 			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/waf/overrides/de677e5818985db1285d0e80225f06e5\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"result\": {\n    \"id\": \"de677e5818985db1285d0e80225f06e5\"\n  }\n}"
@@ -448,13 +451,13 @@
 			"id": {
 				"type": "string",
 				"example": "\"de677e5818985db1285d0e80225f06e5\"",
-				"description": "WAF configuration identifier",
+				"description": "The unique identifier of the WAF override.",
 				"maxLength": 32,
 				"readOnly": true
 			},
 			"paused": {
 				"type": "boolean",
-				"description": "Whether this package is currently paused"
+				"description": "When true, indicates that the WAF package is currently paused."
 			},
 			"description": {
 				"type": [
@@ -462,13 +465,13 @@
 					"null"
 				],
 				"example": "\"Enable Cloudflare Magento ruleset for shop.example.com\"",
-				"description": "A note that you can use to describe the purpose of this configuration.",
+				"description": "An informative summary of the current URI-based WAF override.",
 				"maxLength": 1024
 			},
 			"urls": {
 				"type": "array",
 				"example": "[\n  \"shop.example.com/*\"\n]",
-				"description": "URLs to be included in this rule definition. Wildcards are permitted. The URL pattern entered here will be escaped before use. This limits the URL to just simple wildcard patterns.",
+				"description": "The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
 				"items": {
 					"type": "string",
 					"example": "shop.example.com/*"
@@ -479,17 +482,17 @@
 				"example": "1",
 				"minimum": -1000000000,
 				"maximum": 1000000000,
-				"description": "Relative priority of this configuration when multiple configurations match a single URL. Higher priority configurations may overwrite values set by lower priority configurations."
+				"description": "The relative priority of the current URI-based WAF override when multiple overrides match a single URL. A lower number indicates higher priority. Higher priority overrides may overwrite values set by lower priority overrides."
 			},
 			"groups": {
 				"type": "object",
 				"example": "{\n  \"ea8687e59929c1fd05ba97574ad43f77\": \"default\"\n}",
-				"description": "Enable or disable WAF rule groups. The keys of this object are WAF rule group IDs and the values must be a valid WAF action (usually default or disable). When creating a new URI-controlled WAF configuration either `groups` or `rules` must be provided at a minimum.",
+				"description": "An object that allows you to enable or disable WAF rule groups for the current WAF override. Each key of this object must be the ID of a WAF rule group, and each value must be a valid WAF action (usually `default` or `disable`). When creating a new URI-based WAF override, you must provide a `groups` object or a `rules` object.",
 				"patternProperties": {
 					"^[0-9a-f]{32}$": {
 						"allOf": [
 							{
-								"description": "WAF rule action to apply",
+								"description": "The WAF rule action to apply.",
 								"enum": [
 									"challenge",
 									"block",
@@ -506,11 +509,11 @@
 			"rules": {
 				"type": "object",
 				"example": "{\n  \"100015\": \"disable\"\n}",
-				"description": "Change the action assigned to a WAF rule. The keys of this object are WAF rule IDs and the values must be a valid WAF action. Unless disabling the rule, ensure that you also enable the rule group that this WAF rule belongs to. When creating a new URI-controlled WAF configuration either `groups` or `rules` must be provided at a minimum.",
+				"description": "An object that allows you to override the action of specific WAF rules. Each key of this object must be the ID of a WAF rule, and each value must be a valid WAF action. Unless you are disabling a rule, ensure that you also enable the rule group that this WAF rule belongs to. When creating a new URI-based WAF override, you must provide a `groups` object or a `rules` object.",
 				"additionalProperties": {
 					"allOf": [
 						{
-							"description": "WAF rule action to apply",
+							"description": "The WAF rule action to apply.",
 							"enum": [
 								"challenge",
 								"block",
@@ -529,7 +532,7 @@
 				"properties": {
 					"default": {
 						"example": "\"block\"",
-						"description": "WAF rule action to apply",
+						"description": "The WAF rule action to apply.",
 						"enum": [
 							"challenge",
 							"block",
@@ -540,7 +543,7 @@
 					},
 					"challenge": {
 						"example": "\"block\"",
-						"description": "WAF rule action to apply",
+						"description": "The WAF rule action to apply.",
 						"enum": [
 							"challenge",
 							"block",
@@ -550,7 +553,7 @@
 						]
 					},
 					"block": {
-						"description": "WAF rule action to apply",
+						"description": "The WAF rule action to apply.",
 						"enum": [
 							"challenge",
 							"block",
@@ -561,7 +564,7 @@
 					},
 					"simulate": {
 						"example": "\"disable\"",
-						"description": "WAF rule action to apply",
+						"description": "The WAF rule action to apply.",
 						"enum": [
 							"challenge",
 							"block",
@@ -571,7 +574,7 @@
 						]
 					},
 					"disable": {
-						"description": "WAF rule action to apply",
+						"description": "The WAF rule action to apply.",
 						"enum": [
 							"challenge",
 							"block",
@@ -581,7 +584,7 @@
 						]
 					}
 				},
-				"description": "When a WAF rule matches, substitute its configured action for a different action specified by this object."
+				"description": "Specifies that, when a WAF rule matches, its configured action will be replaced by the action configured in this object."
 			}
 		},
 		"required_props": [],
@@ -597,7 +600,7 @@
 		],
 		"objects": [],
 		"example": "{\n  \"id\": \"de677e5818985db1285d0e80225f06e5\",\n  \"description\": \"Enable Cloudflare Magento ruleset for shop.example.com\",\n  \"urls\": [\n    \"shop.example.com/*\"\n  ],\n  \"priority\": 1,\n  \"groups\": {\n    \"ea8687e59929c1fd05ba97574ad43f77\": \"default\"\n  },\n  \"rules\": {\n    \"100015\": \"disable\"\n  },\n  \"rewrite_action\": {\n    \"default\": \"block\",\n    \"challenge\": \"block\",\n    \"simulate\": \"disable\"\n  }\n}",
-		"title": "Waf Overrides",
-		"description": "Overrides for turning WAF packages on or off"
+		"title": "WAF overrides",
+		"description": "WAF configuration overrides allow you to enable or disable WAF packages for specific URL patterns."
 	}
 }

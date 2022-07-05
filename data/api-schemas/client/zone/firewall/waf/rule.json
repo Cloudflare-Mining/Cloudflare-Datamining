@@ -1,12 +1,12 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/firewall/waf/rule.json",
-	"title": "WAF Rules",
-	"description": "A firewall rule for a zone",
+	"title": "WAF rules",
+	"description": "Web Application Firewall (WAF) rules of a WAF package applied to a zone.",
 	"type": "object",
 	"links": [
 		{
-			"title": "List Rules",
-			"description": "Search, sort, and filter rules within a package",
+			"title": "Get WAF rules",
+			"description": "Fetches WAF rules in a WAF package.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone_id}/firewall/waf/packages/{#/definitions/package_id}/rules",
 			"method": "GET",
@@ -17,7 +17,7 @@
 				"business": true,
 				"enterprise": true
 			},
-			"html_id": "waf-rules-list-rules",
+			"html_id": "waf-rules-get-waf-rules",
 			"uri": "zones/:zone_id/firewall/waf/packages/:package_id/rules",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/waf/packages/a25a9a7e9c00afc1fb2e0245519d725b/rules?description=SQL injection prevention for SELECT statements&mode=CHL&priority=5&group_id=de677e5818985db1285d0e80225f06e5&page=1&per_page=50&order=status&direction=desc&match=all\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {
@@ -28,13 +28,13 @@
 					"description": {
 						"type": "string",
 						"example": "\"SQL injection prevention for SELECT statements\"",
-						"description": "Public description of the rule",
+						"description": "The public description of the WAF rule.",
 						"readOnly": true
 					},
 					"mode": {
 						"type": "string",
 						"example": "\"CHL\"",
-						"description": "The setting a rule has been overridden to",
+						"description": "The action/mode a rule has been overridden to perform.",
 						"enum": [
 							"DIS",
 							"CHL",
@@ -45,13 +45,13 @@
 					"priority": {
 						"type": "string",
 						"example": "5",
-						"description": "The order in which the individual rule is executed within the related group",
+						"description": "The order in which the individual WAF rule is executed within its rule group.",
 						"readOnly": true
 					},
 					"group_id": {
 						"type": "string",
 						"example": "\"de677e5818985db1285d0e80225f06e5\"",
-						"description": "WAF group identifier tag",
+						"description": "The unique identifier of the rule group.",
 						"maxLength": 32,
 						"readOnly": true
 					},
@@ -60,7 +60,7 @@
 						"example": "1",
 						"minimum": 1,
 						"default": 1,
-						"description": "Page number of paginated results"
+						"description": "The page number of paginated results."
 					},
 					"per_page": {
 						"type": "number",
@@ -68,7 +68,7 @@
 						"minimum": 5,
 						"maximum": 100,
 						"default": 50,
-						"description": "Number of rules per page"
+						"description": "The number of rules per page."
 					},
 					"order": {
 						"type": "string",
@@ -78,7 +78,7 @@
 							"group_id",
 							"description"
 						],
-						"description": "Field to order rules by"
+						"description": "The field used to sort returned rules."
 					},
 					"direction": {
 						"type": "string",
@@ -87,7 +87,7 @@
 							"asc",
 							"desc"
 						],
-						"description": "Direction to order rules"
+						"description": "The direction used to sort returned rules."
 					},
 					"match": {
 						"type": "string",
@@ -97,7 +97,7 @@
 							"all"
 						],
 						"default": "all",
-						"description": "Whether to match all search requirements or at least one (any)"
+						"description": "When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match."
 					}
 				},
 				"required_props": [],
@@ -118,8 +118,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"f939de3be84e66e757adcdcb87908023\",\n      \"description\": \"SQL injection prevention for SELECT statements\",\n      \"priority\": 5,\n      \"group\": {\n        \"id\": \"de677e5818985db1285d0e80225f06e5\",\n        \"name\": \"Project Honey Pot\"\n      },\n      \"package_id\": \"a25a9a7e9c00afc1fb2e0245519d725b\",\n      \"allowed_modes\": [\n        \"on\",\n        \"off\"\n      ],\n      \"mode\": \"on\"\n    }\n  ]\n}"
 		},
 		{
-			"title": "Rule Details",
-			"description": "Individual information about a rule",
+			"title": "Get a WAF rule",
+			"description": "Fetches the details of a WAF rule in a WAF package.",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_id}/firewall/waf/packages/{#/definitions/package_id}/rules/{#/definitions/identifier}",
 			"method": "GET",
@@ -130,14 +130,14 @@
 				"business": true,
 				"enterprise": true
 			},
-			"html_id": "waf-rules-rule-details",
+			"html_id": "waf-rules-get-a-waf-rule",
 			"uri": "zones/:zone_id/firewall/waf/packages/:package_id/rules/:identifier",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/waf/packages/a25a9a7e9c00afc1fb2e0245519d725b/rules/f939de3be84e66e757adcdcb87908023\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f939de3be84e66e757adcdcb87908023\",\n    \"description\": \"SQL injection prevention for SELECT statements\",\n    \"priority\": 5,\n    \"group\": {\n      \"id\": \"de677e5818985db1285d0e80225f06e5\",\n      \"name\": \"Project Honey Pot\"\n    },\n    \"package_id\": \"a25a9a7e9c00afc1fb2e0245519d725b\",\n    \"allowed_modes\": [\n      \"on\",\n      \"off\"\n    ],\n    \"mode\": \"on\"\n  }\n}"
 		},
 		{
-			"title": "Edit Rule",
-			"description": "Update the action the rule will perform if triggered on the zone",
+			"title": "Update a WAF rule",
+			"description": "Updates a WAF rule. You can only update the mode/action of the rule.",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_id}/firewall/waf/packages/{#/definitions/package_id}/rules/{#/definitions/identifier}",
 			"method": "PATCH",
@@ -148,7 +148,7 @@
 				"business": true,
 				"enterprise": true
 			},
-			"html_id": "waf-rules-edit-rule",
+			"html_id": "waf-rules-update-a-waf-rule",
 			"uri": "zones/:zone_id/firewall/waf/packages/:package_id/rules/:identifier",
 			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/waf/packages/a25a9a7e9c00afc1fb2e0245519d725b/rules/f939de3be84e66e757adcdcb87908023\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"mode\":\"on\"}'",
 			"parameters": {
@@ -167,7 +167,7 @@
 							"on",
 							"off"
 						],
-						"description": "The mode to use when the rule is triggered. Value is restricted based on the allowed_modes of the rule"
+						"description": "The mode/action of the rule when triggered. You must use a value from the `allowed_modes` array of the current rule."
 					}
 				},
 				"required_props": [],
@@ -194,20 +194,20 @@
 					"id": {
 						"type": "string",
 						"example": "\"f939de3be84e66e757adcdcb87908023\"",
-						"description": "WAF rule identifier tag",
+						"description": "The unique identifier of the WAF rule.",
 						"maxLength": 32,
 						"readOnly": true
 					},
 					"description": {
 						"type": "string",
 						"example": "\"SQL injection prevention for SELECT statements\"",
-						"description": "Public description of the rule",
+						"description": "The public description of the WAF rule.",
 						"readOnly": true
 					},
 					"priority": {
 						"type": "string",
 						"example": "5",
-						"description": "The order in which the individual rule is executed within the related group",
+						"description": "The order in which the individual WAF rule is executed within its rule group.",
 						"readOnly": true
 					},
 					"group": {
@@ -217,33 +217,33 @@
 							"id": {
 								"type": "string",
 								"example": "\"de677e5818985db1285d0e80225f06e5\"",
-								"description": "WAF group identifier tag",
+								"description": "The unique identifier of the rule group.",
 								"maxLength": 32,
 								"readOnly": true
 							},
 							"name": {
 								"type": "string",
 								"example": "\"Project Honey Pot\"",
-								"description": "Name of the firewall rule group",
+								"description": "The name of the rule group.",
 								"readOnly": true
 							}
 						},
-						"description": "The group in which the rule belongs",
+						"description": "The rule group to which the current WAF rule belongs.",
 						"readOnly": true
 					},
 					"package_id": {
 						"type": "string",
 						"example": "\"a25a9a7e9c00afc1fb2e0245519d725b\"",
-						"description": "WAF package identifier tag",
+						"description": "The unique identifier of a WAF package.",
 						"maxLength": 32,
 						"readOnly": true
 					},
 					"allowed_modes": {
 						"type": "array",
 						"example": "[\n  \"on\",\n  \"off\"\n]",
-						"description": "Defines the available modes of how the rule interacts when it is triggered.",
+						"description": "Defines the available modes for the current WAF rule. Applies to anomaly detection WAF rules.",
 						"items": {
-							"description": "Whether or not the anomaly-based rule will be used when evaluating the request.",
+							"description": "When set to `on`, the current WAF rule will be used when evaluating the request. Applies to anomaly detection WAF rules.",
 							"type": "string",
 							"enum": [
 								"on",
@@ -256,7 +256,7 @@
 					"mode": {
 						"type": "string",
 						"example": "\"on\"",
-						"description": "Whether or not the anomaly-based rule will be used when evaluating the request.",
+						"description": "When set to `on`, the current WAF rule will be used when evaluating the request. Applies to anomaly detection WAF rules.",
 						"enum": [
 							"on",
 							"off"
@@ -275,28 +275,28 @@
 				"optional_props": [],
 				"objects": [],
 				"example": "{\n  \"id\": \"f939de3be84e66e757adcdcb87908023\",\n  \"description\": \"SQL injection prevention for SELECT statements\",\n  \"priority\": 5,\n  \"group\": {\n    \"id\": \"de677e5818985db1285d0e80225f06e5\",\n    \"name\": \"Project Honey Pot\"\n  },\n  \"package_id\": \"a25a9a7e9c00afc1fb2e0245519d725b\",\n  \"allowed_modes\": [\n    \"on\",\n    \"off\"\n  ],\n  \"mode\": \"on\"\n}",
-				"title": "Anomaly rule",
-				"description": "Anomaly scoring rules (if triggered) will contribute to an overall threat score that determines if a request is detected as malicious. Users can control the total scoring threshold via the 'sensitivity' of the package."
+				"title": "Anomaly detection WAF rule",
+				"description": "When triggered, anomaly detection WAF rules contribute to an overall threat score that will determine if a request is considered malicious. You can configure the total scoring threshold through the 'sensitivity' property of the WAF package."
 			},
 			{
 				"all_props": {
 					"id": {
 						"type": "string",
 						"example": "\"f939de3be84e66e757adcdcb87908023\"",
-						"description": "WAF rule identifier tag",
+						"description": "The unique identifier of the WAF rule.",
 						"maxLength": 32,
 						"readOnly": true
 					},
 					"description": {
 						"type": "string",
 						"example": "\"SQL injection prevention for SELECT statements\"",
-						"description": "Public description of the rule",
+						"description": "The public description of the WAF rule.",
 						"readOnly": true
 					},
 					"priority": {
 						"type": "string",
 						"example": "5",
-						"description": "The order in which the individual rule is executed within the related group",
+						"description": "The order in which the individual WAF rule is executed within its rule group.",
 						"readOnly": true
 					},
 					"group": {
@@ -306,33 +306,33 @@
 							"id": {
 								"type": "string",
 								"example": "\"de677e5818985db1285d0e80225f06e5\"",
-								"description": "WAF group identifier tag",
+								"description": "The unique identifier of the rule group.",
 								"maxLength": 32,
 								"readOnly": true
 							},
 							"name": {
 								"type": "string",
 								"example": "\"Project Honey Pot\"",
-								"description": "Name of the firewall rule group",
+								"description": "The name of the rule group.",
 								"readOnly": true
 							}
 						},
-						"description": "The group in which the rule belongs",
+						"description": "The rule group to which the current WAF rule belongs.",
 						"readOnly": true
 					},
 					"package_id": {
 						"type": "string",
 						"example": "\"a25a9a7e9c00afc1fb2e0245519d725b\"",
-						"description": "WAF package identifier tag",
+						"description": "The unique identifier of a WAF package.",
 						"maxLength": 32,
 						"readOnly": true
 					},
 					"allowed_modes": {
 						"type": "array",
 						"example": "[\n  \"default\",\n  \"disable\",\n  \"simulate\",\n  \"block\",\n  \"challenge\"\n]",
-						"description": "Defines the available modes of how the rule interacts when it is triggered.",
+						"description": "The list of possible actions of the WAF rule when it is triggered.",
 						"items": {
-							"description": "The mode that the traditional firewall rule uses when triggered.",
+							"description": "The action that the current WAF rule will perform when triggered. Applies to traditional (deny) WAF rules.",
 							"type": "string",
 							"enum": [
 								"default",
@@ -348,7 +348,7 @@
 					"mode": {
 						"type": "string",
 						"example": "\"block\"",
-						"description": "The mode that the traditional firewall rule uses when triggered.",
+						"description": "The action that the current WAF rule will perform when triggered. Applies to traditional (deny) WAF rules.",
 						"enum": [
 							"default",
 							"disable",
@@ -365,7 +365,7 @@
 							"block",
 							"challenge"
 						],
-						"description": "The default mode that a rule uses",
+						"description": "The default action/mode of a rule.",
 						"readOnly": true
 					}
 				},
@@ -382,28 +382,28 @@
 				"optional_props": [],
 				"objects": [],
 				"example": "{\n  \"id\": \"f939de3be84e66e757adcdcb87908023\",\n  \"description\": \"SQL injection prevention for SELECT statements\",\n  \"priority\": 5,\n  \"group\": {\n    \"id\": \"de677e5818985db1285d0e80225f06e5\",\n    \"name\": \"Project Honey Pot\"\n  },\n  \"package_id\": \"a25a9a7e9c00afc1fb2e0245519d725b\",\n  \"allowed_modes\": [\n    \"default\",\n    \"disable\",\n    \"simulate\",\n    \"block\",\n    \"challenge\"\n  ],\n  \"mode\": \"block\",\n  \"default_mode\": \"block\"\n}",
-				"title": "Traditional (deny) rule",
-				"description": "Traditional rules, if triggered, will cause the firewall to immediately act upon the request based on the configuration of the rule. A 'deny' rule will respond to the request based on the configuration (block, challenge, etc) and no other rule processing will occur."
+				"title": "Traditional (deny) WAF rule",
+				"description": "When triggered, traditional WAF rules cause the firewall to immediately act upon the request based on the configuration of the rule. A 'deny' rule will immediately respond to the request based on the configured rule action/mode (for example, 'block') and no other rules will be processed."
 			},
 			{
 				"all_props": {
 					"id": {
 						"type": "string",
 						"example": "\"f939de3be84e66e757adcdcb87908023\"",
-						"description": "WAF rule identifier tag",
+						"description": "The unique identifier of the WAF rule.",
 						"maxLength": 32,
 						"readOnly": true
 					},
 					"description": {
 						"type": "string",
 						"example": "\"SQL injection prevention for SELECT statements\"",
-						"description": "Public description of the rule",
+						"description": "The public description of the WAF rule.",
 						"readOnly": true
 					},
 					"priority": {
 						"type": "string",
 						"example": "5",
-						"description": "The order in which the individual rule is executed within the related group",
+						"description": "The order in which the individual WAF rule is executed within its rule group.",
 						"readOnly": true
 					},
 					"group": {
@@ -413,33 +413,33 @@
 							"id": {
 								"type": "string",
 								"example": "\"de677e5818985db1285d0e80225f06e5\"",
-								"description": "WAF group identifier tag",
+								"description": "The unique identifier of the rule group.",
 								"maxLength": 32,
 								"readOnly": true
 							},
 							"name": {
 								"type": "string",
 								"example": "\"Project Honey Pot\"",
-								"description": "Name of the firewall rule group",
+								"description": "The name of the rule group.",
 								"readOnly": true
 							}
 						},
-						"description": "The group in which the rule belongs",
+						"description": "The rule group to which the current WAF rule belongs.",
 						"readOnly": true
 					},
 					"package_id": {
 						"type": "string",
 						"example": "\"a25a9a7e9c00afc1fb2e0245519d725b\"",
-						"description": "WAF package identifier tag",
+						"description": "The unique identifier of a WAF package.",
 						"maxLength": 32,
 						"readOnly": true
 					},
 					"allowed_modes": {
 						"type": "array",
 						"example": "[\n  \"on\",\n  \"off\"\n]",
-						"description": "Defines the available modes of how the rule interacts when it is triggered.",
+						"description": "Defines the available modes for the current WAF rule.",
 						"items": {
-							"description": "Defines whether or not the white-list rule should be allowed when matching the request.",
+							"description": "When set to `on`, the current rule will be used when evaluating the request. Applies to traditional (allow) WAF rules.",
 							"type": "string",
 							"enum": [
 								"on",
@@ -452,7 +452,7 @@
 					"mode": {
 						"type": "string",
 						"example": "\"on\"",
-						"description": "Defines whether or not the white-list rule should be allowed when matching the request.",
+						"description": "When set to `on`, the current rule will be used when evaluating the request. Applies to traditional (allow) WAF rules.",
 						"enum": [
 							"on",
 							"off"
@@ -472,13 +472,13 @@
 				"optional_props": [],
 				"objects": [],
 				"example": "{\n  \"id\": \"f939de3be84e66e757adcdcb87908023\",\n  \"description\": \"SQL injection prevention for SELECT statements\",\n  \"priority\": 5,\n  \"group\": {\n    \"id\": \"de677e5818985db1285d0e80225f06e5\",\n    \"name\": \"Project Honey Pot\"\n  },\n  \"package_id\": \"a25a9a7e9c00afc1fb2e0245519d725b\",\n  \"allowed_modes\": [\n    \"on\",\n    \"off\"\n  ],\n  \"mode\": \"on\"\n}",
-				"title": "Traditional (allow) rule",
-				"description": "Traditional rules, if triggered, will cause the firewall to immediately act upon the request based on the configuration of the rule. An 'allow' rule will immediately allow the request and no other rule processing will occur."
+				"title": "Traditional (allow) WAF rule",
+				"description": "When triggered, traditional WAF rules cause the firewall to immediately act on the request based on the rule configuration. An 'allow' rule will immediately allow the request and no other rules will be processed."
 			}
 		],
 		"example": "{\n  \"id\": \"f939de3be84e66e757adcdcb87908023\",\n  \"description\": \"SQL injection prevention for SELECT statements\",\n  \"priority\": 5,\n  \"group\": {\n    \"id\": \"de677e5818985db1285d0e80225f06e5\",\n    \"name\": \"Project Honey Pot\"\n  },\n  \"package_id\": \"a25a9a7e9c00afc1fb2e0245519d725b\",\n  \"allowed_modes\": [\n    \"on\",\n    \"off\"\n  ],\n  \"mode\": \"on\"\n}",
 		"which_of": "oneOf",
-		"title": "WAF Rules",
-		"description": "A firewall rule for a zone"
+		"title": "WAF rules",
+		"description": "Web Application Firewall (WAF) rules of a WAF package applied to a zone."
 	}
 }

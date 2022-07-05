@@ -38,153 +38,213 @@
 			},
 			"html_id": "transform-rules-update-transform-rules",
 			"uri": "zones/:zone_id/rulesets/phases/:phase/entrypoint",
-			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/rulesets/phases/undefined/entrypoint\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '[{\"id\":\"3a03d665bac047339bb530ecb439a90d\",\"version\":\"1\",\"action\":\"rewrite\",\"expression\":\"ip.geoip.country eq \\\"AL\\\"\",\"description\":\"change request based on ip location\",\"action_parameters\":{\"uri\":{\"path\":{\"expression\":\"concat(\\\"/new/\\\", http.request.uri)\"},\"query\":{\"expression\":\"concat(\\\"/new/\\\", http.request.uri)\"}}}}]'",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/rulesets/phases/undefined/entrypoint\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"rules\":[{\"action_parameters\":{\"products\":[]}}]}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
 				},
 				"all_props": {
-					"id": {
-						"type": "string",
-						"example": "\"3a03d665bac047339bb530ecb439a90d\"",
-						"description": "The ID of the ruleset.",
-						"minLength": 32,
-						"maxLength": 32
-					},
-					"version": {
-						"type": "string",
-						"example": "\"1\"",
-						"description": "The version of the rule."
-					},
-					"action": {
-						"type": "string",
-						"example": "\"rewrite\"",
-						"description": "The action to perform when the rule expression matches.",
-						"enum": [
-							"rewrite"
-						]
-					},
-					"expression": {
-						"type": "string",
-						"example": "\"ip.geoip.country eq \\\"AL\\\"\"",
-						"description": "The rule expression."
-					},
 					"description": {
 						"type": "string",
-						"example": "\"change request based on ip location\"",
-						"description": "The description of the ruleset."
+						"description": "The description of the ruleset"
 					},
-					"action_parameters": {
-						"type": "object",
-						"example": "{\n  \"uri\": {\n    \"path\": {\n      \"expression\": \"concat(\\\"/new/\\\", http.request.uri)\"\n    },\n    \"query\": {\n      \"expression\": \"concat(\\\"/new/\\\", http.request.uri)\"\n    }\n  }\n}",
-						"oneOf": [
-							{
-								"all_props": {
-									"uri": {
-										"type": "object",
-										"example": "{\n  \"path\": {\n    \"expression\": \"concat(\\\"/new/\\\", http.request.uri)\"\n  },\n  \"query\": {\n    \"expression\": \"concat(\\\"/new/\\\", http.request.uri)\"\n  }\n}",
-										"properties": {
-											"path": {
-												"example": "{\n  \"expression\": \"concat(\\\"/new/\\\", http.request.uri)\"\n}",
-												"oneOf": [
-													{
-														"all_props": {
-															"expression": {
-																"type": "string",
-																"example": "\"concat(\\\"/new/\\\", http.request.uri)\"",
-																"description": "An expression defining a dynamic value for the URI path or query string."
-															}
-														},
-														"required_props": [],
-														"optional_props": [
-															"expression"
-														],
-														"objects": [],
-														"example": "{\n  \"expression\": \"concat(\\\"/new/\\\", http.request.uri)\"\n}"
-													},
-													{
-														"all_props": {
-															"value": {
-																"type": "string",
-																"example": "\"/\"",
-																"description": "The new static value of the URI path or query string."
-															}
-														},
-														"required_props": [],
-														"optional_props": [
-															"value"
-														],
-														"objects": [],
-														"example": "{\n  \"value\": \"/\"\n}"
+					"rules": {
+						"type": "array",
+						"example": "[\n  {\n    \"action_parameters\": {\n      \"products\": []\n    }\n  }\n]",
+						"items": {
+							"properties": {
+								"id": {
+									"description": "The ID of the rule",
+									"type": "string"
+								},
+								"action": {
+									"description": "The action to take when the expression matches",
+									"type": "string",
+									"enum": [
+										"block",
+										"challenge",
+										"ddos_dynamic",
+										"execute",
+										"force_connection_close",
+										"js_challenge",
+										"managed_challenge",
+										"log",
+										"score",
+										"skip",
+										"rewrite",
+										"redirect"
+									]
+								},
+								"expression": {
+									"description": "The expression",
+									"type": "string"
+								},
+								"description": {
+									"description": "The description of the rule",
+									"type": "string"
+								},
+								"action_parameters": {
+									"description": "The parameters to configure the action",
+									"type": "object",
+									"oneOf": [
+										{
+											"description": "The action parameters for the bypass action",
+											"properties": {
+												"products": {
+													"description": "Bypass one or more of the following products",
+													"type": "array",
+													"default": [],
+													"minLength": 1,
+													"items": {
+														"type": "string",
+														"enum": [
+															"bic",
+															"hot",
+															"ratelimit",
+															"securityLevel",
+															"uablock",
+															"waf",
+															"zonelockdown"
+														]
 													}
-												],
-												"description": "The new URI path sent to the origin."
-											},
-											"query": {
-												"example": "{\n  \"expression\": \"concat(\\\"/new/\\\", http.request.uri)\"\n}",
-												"oneOf": [
-													{
-														"all_props": {
-															"expression": {
-																"type": "string",
-																"example": "\"concat(\\\"/new/\\\", http.request.uri)\"",
-																"description": "An expression defining a dynamic value for the URI path or query string."
-															}
-														},
-														"required_props": [],
-														"optional_props": [
-															"expression"
-														],
-														"objects": [],
-														"example": "{\n  \"expression\": \"concat(\\\"/new/\\\", http.request.uri)\"\n}"
-													},
-													{
-														"all_props": {
-															"value": {
-																"type": "string",
-																"example": "\"/\"",
-																"description": "The new static value of the URI path or query string."
-															}
-														},
-														"required_props": [],
-														"optional_props": [
-															"value"
-														],
-														"objects": [],
-														"example": "{\n  \"value\": \"/\"\n}"
-													}
-												],
-												"description": "The new query string sent to the origin."
+												}
 											}
 										},
-										"description": "The URI rewrite configuration to rewrite the URI path, the query string, or both."
-									}
-								},
-								"required_props": [],
-								"optional_props": [
-									"uri"
-								],
-								"objects": [],
-								"example": "{\n  \"uri\": {\n    \"path\": {\n      \"expression\": \"concat(\\\"/new/\\\", http.request.uri)\"\n    },\n    \"query\": {\n      \"expression\": \"concat(\\\"/new/\\\", http.request.uri)\"\n    }\n  }\n}",
-								"description": "The configuration parameters for the rewrite action."
+										{
+											"description": "The action parameters for the execute action",
+											"properties": {
+												"id": {
+													"description": "The ID of the ruleset to execute",
+													"type": "string"
+												}
+											}
+										},
+										{
+											"description": "The action parameters for the rewrite action",
+											"properties": {
+												"uri": {
+													"description": "Rewrite the path, query string, or both for the origin",
+													"type": "object",
+													"properties": {
+														"path": {
+															"description": "The new path for the origin",
+															"oneOf": [
+																{
+																	"type": "object",
+																	"properties": {
+																		"expression": {
+																			"type": "string",
+																			"description": "Wirefilter expression to compute a new path or query string",
+																			"example": "concat(\"/new/\", http.request.uri)"
+																		}
+																	}
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"value": {
+																			"type": "string",
+																			"description": "The new value of the path or query string",
+																			"example": "/"
+																		}
+																	}
+																}
+															]
+														},
+														"query": {
+															"description": "The new query string for the origin",
+															"oneOf": [
+																{
+																	"type": "object",
+																	"properties": {
+																		"expression": {
+																			"type": "string",
+																			"description": "Wirefilter expression to compute a new path or query string",
+																			"example": "concat(\"/new/\", http.request.uri)"
+																		}
+																	}
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"value": {
+																			"type": "string",
+																			"description": "The new value of the path or query string",
+																			"example": "/"
+																		}
+																	}
+																}
+															]
+														}
+													}
+												}
+											}
+										},
+										{
+											"description": "The action parameters for the score action",
+											"properties": {
+												"increment": {
+													"description": "The score increment",
+													"type": "number"
+												},
+												"id": {
+													"description": "The ID of the rule",
+													"type": "string"
+												},
+												"version": {
+													"description": "The version of the rule",
+													"type": "string"
+												}
+											}
+										},
+										{
+											"description": "The action parameters for the skip action",
+											"properties": {
+												"ruleset": {
+													"description": "Skip execution of these rulesets",
+													"enum": [
+														"current"
+													],
+													"type": "string"
+												}
+											}
+										},
+										{
+											"description": "The action parameters for the redirect action",
+											"properties": {
+												"from_list": {
+													"description": "Applies a redirect based on a redirect list",
+													"type": "object",
+													"properties": {
+														"name": {
+															"type": "string",
+															"description": "The name of the redirect list",
+															"example": "my_redirect_list"
+														},
+														"key": {
+															"type": "string",
+															"description": "Key to use to lookup the redirect in the list",
+															"example": "http.request.full_uri"
+														}
+													}
+												}
+											}
+										}
+									]
+								}
 							}
-						],
-						"description": "The parameters configuring the action."
+						}
 					}
 				},
 				"required_props": [],
 				"optional_props": [
-					"id",
-					"version",
-					"action",
-					"expression",
 					"description",
-					"action_parameters"
+					"rules"
 				],
 				"objects": [],
-				"example": "{\n  \"id\": \"3a03d665bac047339bb530ecb439a90d\",\n  \"version\": \"1\",\n  \"action\": \"rewrite\",\n  \"expression\": \"ip.geoip.country eq \\\"AL\\\"\",\n  \"description\": \"change request based on ip location\",\n  \"action_parameters\": {\n    \"uri\": {\n      \"path\": {\n        \"expression\": \"concat(\\\"/new/\\\", http.request.uri)\"\n      },\n      \"query\": {\n        \"expression\": \"concat(\\\"/new/\\\", http.request.uri)\"\n      }\n    }\n  }\n}"
+				"example": "{\n  \"rules\": [\n    {\n      \"action_parameters\": {\n        \"products\": []\n      }\n    }\n  ]\n}"
 			},
-			"response": "{\n  \"id\": \"2f2feab2026849078ba485f918791bdc\",\n  \"name\": \"default\",\n  \"description\": \"\",\n  \"kind\": \"zone\",\n  \"phase\": \"http_request_transform\",\n  \"rules\": [\n    {\n      \"id\": \"3a03d665bac047339bb530ecb439a90d\",\n      \"version\": \"1\",\n      \"action\": \"rewrite\",\n      \"expression\": \"ip.geoip.country eq \\\"AL\\\"\",\n      \"description\": \"change request based on ip location\",\n      \"action_parameters\": {\n        \"uri\": {\n          \"path\": {\n            \"expression\": \"concat(\\\"/new/\\\", http.request.uri)\"\n          },\n          \"query\": {\n            \"expression\": \"concat(\\\"/new/\\\", http.request.uri)\"\n          }\n        }\n      }\n    }\n  ]\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
 		}
 	],
 	"html_id": "transform-rules",

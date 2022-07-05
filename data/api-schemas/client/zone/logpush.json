@@ -8,8 +8,8 @@
 	],
 	"links": [
 		{
-			"title": "List Logpush Jobs",
-			"description": "List Logpush Jobs for a zone",
+			"title": "Logpush jobs",
+			"description": "Lists Logpush jobs for a zone.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone_identifier}/logpush/jobs",
 			"method": "GET",
@@ -25,14 +25,14 @@
 				]
 			},
 			"cfOwnership": "data",
-			"html_id": "logpush-jobs-list-logpush-jobs",
+			"html_id": "logpush-jobs-logpush-jobs",
 			"uri": "zones/:zone_identifier/logpush/jobs",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/logpush/jobs\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": 1,\n      \"enabled\": false,\n      \"name\": \"example.com\",\n      \"dataset\": \"http_requests\",\n      \"logpull_options\": \"fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339\",\n      \"destination_conf\": \"s3://mybucket/logs?region=us-west-2\",\n      \"last_complete\": null,\n      \"last_error\": null,\n      \"error_message\": null,\n      \"frequency\": \"high\"\n    }\n  ]\n}"
 		},
 		{
-			"title": "List Logpush Jobs for a dataset",
-			"description": "List Logpush Jobs for a zone for a dataset",
+			"title": "Logpush jobs for a dataset",
+			"description": "Lists Logpush jobs for a zone for a dataset.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone_identifier}/logpush/datasets/{#/definitions/dataset}/jobs",
 			"method": "GET",
@@ -48,14 +48,14 @@
 				]
 			},
 			"cfOwnership": "data",
-			"html_id": "logpush-jobs-list-logpush-jobs-for-a-dataset",
+			"html_id": "logpush-jobs-logpush-jobs-for-a-dataset",
 			"uri": "zones/:zone_identifier/logpush/datasets/:dataset/jobs",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/logpush/datasets/http_requests/jobs\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": 1,\n      \"enabled\": false,\n      \"name\": \"example.com\",\n      \"dataset\": \"http_requests\",\n      \"logpull_options\": \"fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339\",\n      \"destination_conf\": \"s3://mybucket/logs?region=us-west-2\",\n      \"last_complete\": null,\n      \"last_error\": null,\n      \"error_message\": null,\n      \"frequency\": \"high\"\n    }\n  ]\n}"
 		},
 		{
 			"title": "Fields",
-			"description": "The list of all fields available for a dataset. The response result is an object with key-value pairs where keys are field names, and values are descriptions.",
+			"description": "Lists all fields available for a dataset. The response result is an object with key-value pairs, where keys are field names, and values are descriptions.",
 			"rel": "tag:cloudflare.com,2018:logs",
 			"href": "zones/{#/definitions/zone_identifier}/logpush/datasets/{#/definitions/dataset}/fields",
 			"method": "GET",
@@ -77,8 +77,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
 		},
 		{
-			"title": "Get Ownership Challenge",
-			"description": "Get a new ownership challenge sent to your destination",
+			"title": "Get ownership challenge",
+			"description": "Gets a new ownership challenge sent to your destination.",
 			"rel": "tag:cloudflare.com,2018:logpush-get-ownership-result",
 			"href": "zones/{#/definitions/zone_identifier}/logpush/ownership",
 			"method": "POST",
@@ -120,8 +120,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"filename\": \"logs/challenge-filename.txt\",\n    \"valid\": true,\n    \"message\": \"\"\n  }\n}"
 		},
 		{
-			"title": "Validate Ownership Challenge",
-			"description": "Validate ownership challenge of the destination",
+			"title": "Validate ownership challenge",
+			"description": "Validates ownership challenge of the destination.",
 			"rel": "tag:cloudflare.com,2018:logpush-validate-ownership-result",
 			"href": "zones/{#/definitions/zone_identifier}/logpush/ownership/validate",
 			"method": "POST",
@@ -171,8 +171,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"valid\": true\n  }\n}"
 		},
 		{
-			"title": "Validate Origin",
-			"description": "Validate logpull origin with logpull_options",
+			"title": "Validate origin",
+			"description": "Validates logpull origin with logpull_options.",
 			"rel": "tag:cloudflare.com,2018:logpush-validate-result",
 			"href": "zones/{#/definitions/zone_identifier}/logpush/validate/origin",
 			"method": "POST",
@@ -217,8 +217,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"valid\": true,\n    \"message\": \"\"\n  }\n}"
 		},
 		{
-			"title": "Create Logpush Job",
-			"description": "Create a new Logpush Job for a zone",
+			"title": "Create Logpush job",
+			"description": "Creates a new Logpush job for a zone.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone_identifier}/logpush/jobs",
 			"method": "POST",
@@ -322,8 +322,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": 1,\n    \"enabled\": false,\n    \"name\": \"example.com\",\n    \"dataset\": \"http_requests\",\n    \"logpull_options\": \"fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339\",\n    \"destination_conf\": \"s3://mybucket/logs?region=us-west-2\",\n    \"last_complete\": null,\n    \"last_error\": null,\n    \"error_message\": null,\n    \"frequency\": \"high\"\n  }\n}"
 		},
 		{
-			"title": "Logpush Job Details",
-			"description": "Get the details of a Logpush Job",
+			"title": "Logpush job details",
+			"description": "Gets the details of a Logpush job.",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_identifier}/logpush/jobs/{#/definitions/job_identifier}",
 			"method": "GET",
@@ -345,8 +345,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": 1,\n    \"enabled\": false,\n    \"name\": \"example.com\",\n    \"dataset\": \"http_requests\",\n    \"logpull_options\": \"fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339\",\n    \"destination_conf\": \"s3://mybucket/logs?region=us-west-2\",\n    \"last_complete\": null,\n    \"last_error\": null,\n    \"error_message\": null,\n    \"frequency\": \"high\"\n  }\n}"
 		},
 		{
-			"title": "Update Logpush Job",
-			"description": "Update a Logpush Job",
+			"title": "Update Logpush job",
+			"description": "Updates a Logpush job.",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_identifier}/logpush/jobs/{#/definitions/job_identifier}",
 			"method": "PUT",
@@ -427,8 +427,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": 1,\n    \"enabled\": false,\n    \"name\": \"example.com\",\n    \"dataset\": \"http_requests\",\n    \"logpull_options\": \"fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339\",\n    \"destination_conf\": \"s3://mybucket/logs?region=us-west-2\",\n    \"last_complete\": null,\n    \"last_error\": null,\n    \"error_message\": null,\n    \"frequency\": \"high\"\n  }\n}"
 		},
 		{
-			"title": "Delete Logpush Job",
-			"description": "Delete a Logpush Job",
+			"title": "Delete Logpush job",
+			"description": "Deletes a Logpush job.",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_identifier}/logpush/jobs/{#/definitions/job_identifier}",
 			"method": "DELETE",
@@ -450,8 +450,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {}\n}"
 		},
 		{
-			"title": "Check Destination Exists",
-			"description": "Check if there is an existing job with a destination",
+			"title": "Check destination exists",
+			"description": "Checks if there is an existing job with a destination.",
 			"rel": "tag:cloudflare.com,2018:logpush-job-destination-status",
 			"href": "zones/{#/definitions/zone_identifier}/logpush/validate/destination/exists",
 			"method": "POST",

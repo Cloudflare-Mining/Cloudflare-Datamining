@@ -1,13 +1,13 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/firewall/waf/package.json",
-	"title": "WAF Rule Packages",
-	"description": "Web application firewall rule package applied to a zone",
-	"cfExtendedDescription": "Web application firewall rule packages are collections of rule groups.",
+	"title": "WAF packages",
+	"description": "Web Application Firewall (WAF) rule packages applied to a zone.",
+	"cfExtendedDescription": "WAF packages are collections of WAF rule groups.",
 	"type": "object",
 	"links": [
 		{
-			"title": "List Firewall Packages",
-			"description": "Retrieve firewall packages for a zone",
+			"title": "Get WAF packages",
+			"description": "Fetches WAF packages for a zone.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone_identifier}/firewall/waf/packages",
 			"method": "GET",
@@ -18,7 +18,7 @@
 				"business": true,
 				"enterprise": true
 			},
-			"html_id": "waf-rule-packages-list-firewall-packages",
+			"html_id": "waf-packages-get-waf-packages",
 			"uri": "zones/:zone_identifier/firewall/waf/packages",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/waf/packages?name=USER&page=1&per_page=50&order=status&direction=desc&match=all\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {
@@ -29,7 +29,7 @@
 					"name": {
 						"type": "string",
 						"example": "\"USER\"",
-						"description": "Name of the firewall package",
+						"description": "The name of the WAF package.",
 						"readOnly": true
 					},
 					"page": {
@@ -37,7 +37,7 @@
 						"example": "1",
 						"minimum": 1,
 						"default": 1,
-						"description": "Page number of paginated results"
+						"description": "The page number of paginated results."
 					},
 					"per_page": {
 						"type": "number",
@@ -45,7 +45,7 @@
 						"minimum": 5,
 						"maximum": 100,
 						"default": 50,
-						"description": "Number of packages per page"
+						"description": "The number of packages per page."
 					},
 					"order": {
 						"type": "string",
@@ -53,7 +53,7 @@
 						"enum": [
 							"name"
 						],
-						"description": "Field to order packages by"
+						"description": "The field used to sort returned packages."
 					},
 					"direction": {
 						"type": "string",
@@ -62,7 +62,7 @@
 							"asc",
 							"desc"
 						],
-						"description": "Direction to order packages"
+						"description": "The direction used to sort returned packages."
 					},
 					"match": {
 						"type": "string",
@@ -72,7 +72,7 @@
 							"all"
 						],
 						"default": "all",
-						"description": "Whether to match all search requirements or at least one (any)"
+						"description": "When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match."
 					}
 				},
 				"required_props": [],
@@ -90,8 +90,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
 		},
 		{
-			"title": "Firewall Package Details",
-			"description": "Get information about a single firewall package",
+			"title": "Get a WAF package",
+			"description": "Fetches the details of a WAF package.",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_identifier}/firewall/waf/packages/{#/definitions/identifier}",
 			"method": "GET",
@@ -102,14 +102,14 @@
 				"business": true,
 				"enterprise": true
 			},
-			"html_id": "waf-rule-packages-firewall-package-details",
+			"html_id": "waf-packages-get-a-waf-package",
 			"uri": "zones/:zone_identifier/firewall/waf/packages/:identifier",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/waf/packages/a25a9a7e9c00afc1fb2e0245519d725b\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
 		},
 		{
-			"title": "Edit Firewall Package",
-			"description": "Change the sensitivity and action for an anomaly detection type WAF rule package",
+			"title": "Update a WAF package",
+			"description": "Updates a WAF package. You can update the sensitivity and the action of an anomaly detection WAF package.",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_identifier}/firewall/waf/packages/{#/definitions/identifier}",
 			"method": "PATCH",
@@ -120,7 +120,7 @@
 				"business": true,
 				"enterprise": true
 			},
-			"html_id": "waf-rule-packages-edit-firewall-package",
+			"html_id": "waf-packages-update-a-waf-package",
 			"uri": "zones/:zone_identifier/firewall/waf/packages/:identifier",
 			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/waf/packages/a25a9a7e9c00afc1fb2e0245519d725b\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"sensitivity\":\"high\",\"action_mode\":\"challenge\"}'",
 			"parameters": {
@@ -137,7 +137,7 @@
 							"low",
 							"off"
 						],
-						"description": "The sensitivity of the firewall package.",
+						"description": "The sensitivity of the WAF package.",
 						"default": "high"
 					},
 					"action_mode": {
@@ -148,7 +148,7 @@
 							"block",
 							"challenge"
 						],
-						"description": "The default action that will be taken for rules under the firewall package.",
+						"description": "The default action performed by the rules in the WAF package.",
 						"default": "challenge"
 					}
 				},
@@ -160,10 +160,10 @@
 				"objects": [],
 				"example": "{\n  \"sensitivity\": \"high\",\n  \"action_mode\": \"challenge\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"a25a9a7e9c00afc1fb2e0245519d725b\",\n    \"name\": \"OWASP ModSecurity Core Rule Set\",\n    \"description\": \"Covers OWASP Top 10 vulnerabilities, and more.\",\n    \"detection_mode\": \"anomaly\",\n    \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"status\": \"active\",\n    \"sensitivity\": \"high\",\n    \"action_mode\": \"challenge\"\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"a25a9a7e9c00afc1fb2e0245519d725b\",\n    \"name\": \"OWASP ModSecurity Core Rule Set\",\n    \"description\": \"Covers OWASP Top 10 vulnerabilities and more.\",\n    \"detection_mode\": \"anomaly\",\n    \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"status\": \"active\",\n    \"sensitivity\": \"high\",\n    \"action_mode\": \"challenge\"\n  }\n}"
 		}
 	],
-	"html_id": "waf-rule-packages",
+	"html_id": "waf-packages",
 	"object_definition": {
 		"_formatter": {
 			"jsonMediaType": {}
@@ -177,26 +177,26 @@
 					"id": {
 						"type": "string",
 						"example": "\"a25a9a7e9c00afc1fb2e0245519d725b\"",
-						"description": "WAF package identifier tag",
+						"description": "The unique identifier of a WAF package.",
 						"maxLength": 32,
 						"readOnly": true
 					},
 					"name": {
 						"type": "string",
 						"example": "\"USER\"",
-						"description": "Name of the firewall package",
+						"description": "The name of the WAF package.",
 						"readOnly": true
 					},
 					"description": {
 						"type": "string",
 						"example": "\"null\"",
-						"description": "Summary of the purpose/function of the firewall package",
+						"description": "A summary of the purpose/function of the WAF package.",
 						"readOnly": true
 					},
 					"detection_mode": {
 						"type": "string",
 						"example": "\"traditional\"",
-						"description": "How the rules within the package are evaluated during the course of a request. When a package uses anomaly detection each rule is given a score when triggered. If the total score of all triggered rules exceeds the sensitivity defined on the package, the action defined on the package will be taken. Traditional detection will decide the action to take when it is triggered by the request. If multiple rules are triggered, the action with highest protection will be used (i.e., a block action will beat a challenge).",
+						"description": "The mode that defines how rules within the package are evaluated during the course of a request. When a package uses anomaly detection mode (`anomaly` value), each rule is given a score when triggered. If the total score of all triggered rules exceeds the sensitivity defined in the WAF package, the action configured in the package will be performed. Traditional detection mode (`traditional` value) will decide the action to take when it is triggered by the request. If multiple rules are triggered, the action providing the highest protection will be applied (for example, a 'block' action will win over a 'challenge' action).",
 						"enum": [
 							"anomaly",
 							"traditional"
@@ -216,7 +216,7 @@
 						"enum": [
 							"active"
 						],
-						"description": "Indicates the package's application to the zone.",
+						"description": "When set to `active`, indicates that the WAF package will be applied to the zone.",
 						"default": "active",
 						"readOnly": true
 					}
@@ -233,33 +233,33 @@
 				],
 				"objects": [],
 				"example": "{\n  \"id\": \"a25a9a7e9c00afc1fb2e0245519d725b\",\n  \"name\": \"USER\",\n  \"description\": \"null\",\n  \"detection_mode\": \"traditional\",\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"status\": \"active\"\n}",
-				"title": "Traditional firewall package"
+				"title": "Traditional WAF package"
 			},
 			{
 				"all_props": {
 					"id": {
 						"type": "string",
 						"example": "\"a25a9a7e9c00afc1fb2e0245519d725b\"",
-						"description": "WAF package identifier tag",
+						"description": "The unique identifier of a WAF package.",
 						"maxLength": 32,
 						"readOnly": true
 					},
 					"name": {
 						"type": "string",
 						"example": "\"OWASP ModSecurity Core Rule Set\"",
-						"description": "Name of the firewall package",
+						"description": "The name of the WAF package.",
 						"readOnly": true
 					},
 					"description": {
 						"type": "string",
-						"example": "\"Covers OWASP Top 10 vulnerabilities, and more.\"",
-						"description": "Summary of the purpose/function of the firewall package",
+						"example": "\"Covers OWASP Top 10 vulnerabilities and more.\"",
+						"description": "A summary of the purpose/function of the WAF package.",
 						"readOnly": true
 					},
 					"detection_mode": {
 						"type": "string",
 						"example": "\"anomaly\"",
-						"description": "When a package uses anomaly detection each rule is given a score when triggered. If the total score of all triggered rules exceeds the sensitivity defined on the package, the action defined on the package will be taken.",
+						"description": "When a WAF package uses anomaly detection, each rule is given a score when triggered. If the total score of all triggered rules exceeds the sensitivity defined on the WAF package, the action defined on the package will be taken.",
 						"enum": [
 							"anomaly",
 							"traditional"
@@ -279,7 +279,7 @@
 						"enum": [
 							"active"
 						],
-						"description": "Indicates the package's application to the zone.",
+						"description": "When set to `active`, indicates that the WAF package will be applied to the zone.",
 						"default": "active",
 						"readOnly": true
 					},
@@ -292,7 +292,7 @@
 							"low",
 							"off"
 						],
-						"description": "The sensitivity of the firewall package.",
+						"description": "The sensitivity of the WAF package.",
 						"default": "high"
 					},
 					"action_mode": {
@@ -303,7 +303,7 @@
 							"block",
 							"challenge"
 						],
-						"description": "The default action that will be taken for rules under the firewall package.",
+						"description": "The default action performed by the rules in the WAF package.",
 						"default": "challenge"
 					}
 				},
@@ -320,13 +320,13 @@
 					"status"
 				],
 				"objects": [],
-				"example": "{\n  \"id\": \"a25a9a7e9c00afc1fb2e0245519d725b\",\n  \"name\": \"OWASP ModSecurity Core Rule Set\",\n  \"description\": \"Covers OWASP Top 10 vulnerabilities, and more.\",\n  \"detection_mode\": \"anomaly\",\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"status\": \"active\",\n  \"sensitivity\": \"high\",\n  \"action_mode\": \"challenge\"\n}",
-				"title": "Anomaly firewall package (OWASP)"
+				"example": "{\n  \"id\": \"a25a9a7e9c00afc1fb2e0245519d725b\",\n  \"name\": \"OWASP ModSecurity Core Rule Set\",\n  \"description\": \"Covers OWASP Top 10 vulnerabilities and more.\",\n  \"detection_mode\": \"anomaly\",\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"status\": \"active\",\n  \"sensitivity\": \"high\",\n  \"action_mode\": \"challenge\"\n}",
+				"title": "Anomaly detection WAF package (OWASP)"
 			}
 		],
 		"example": "{\n  \"id\": \"a25a9a7e9c00afc1fb2e0245519d725b\",\n  \"name\": \"USER\",\n  \"description\": \"null\",\n  \"detection_mode\": \"traditional\",\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"status\": \"active\"\n}",
 		"which_of": "oneOf",
-		"title": "WAF Rule Packages",
-		"description": "Web application firewall rule package applied to a zone"
+		"title": "WAF packages",
+		"description": "Web Application Firewall (WAF) rule packages applied to a zone."
 	}
 }

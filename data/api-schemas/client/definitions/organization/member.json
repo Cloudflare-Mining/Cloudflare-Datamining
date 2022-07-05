@@ -13,7 +13,7 @@
 	],
 	"properties": {
 		"id": {
-			"description": "User identifier tag",
+			"description": "The unique identifier of the user.",
 			"type": "string",
 			"maxLength": 32,
 			"readOnly": true,
@@ -29,7 +29,7 @@
 			"example": "John Smith"
 		},
 		"email": {
-			"description": "Your contact email address",
+			"description": "The contact email address of the user.",
 			"type": "string",
 			"maxLength": 90,
 			"example": "user@example.com"
@@ -635,7 +635,7 @@
 			"example": "01a7362d577a6c3019a474fd6f485823"
 		},
 		"identifier": {
-			"description": "User identifier tag",
+			"description": "The unique identifier of the user.",
 			"type": "string",
 			"maxLength": 32,
 			"readOnly": true,

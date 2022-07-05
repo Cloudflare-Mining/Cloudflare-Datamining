@@ -35,7 +35,50 @@
 			"html_id": "pages-domains-get-domains",
 			"uri": "accounts/:account_id/pages/projects/:project_name/domains",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/:account_id/pages/projects/:project_name/domains\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"8232210c-6818-4e34-8d95-cc386874b8d2\",\n      \"name\": \"helloworld.com\",\n      \"status\": \"pending\",\n      \"verification_data\": {\n        \"status\": \"active\"\n      },\n      \"validation_data\": {\n        \"status\": \"active\",\n        \"method\": \"http\"\n      },\n      \"zone_tag\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n      \"created_on\": \"2017-01-01T00:00:00Z\"\n    }\n  ]\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"8232210c-6818-4e34-8d95-cc386874b8d2\",\n      \"name\": \"example.com\",\n      \"status\": \"pending\",\n      \"verification_data\": {\n        \"status\": \"active\"\n      },\n      \"validation_data\": {\n        \"status\": \"active\",\n        \"method\": \"http\"\n      },\n      \"zone_tag\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n      \"created_on\": \"2017-01-01T00:00:00Z\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Add domain",
+			"description": "Add a new domain for the Pages project",
+			"rel": "self",
+			"href": "accounts/:account_id/pages/projects/:project_name/domains",
+			"method": "POST",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
+			"encType": "application/json",
+			"html_id": "pages-domains-add-domain",
+			"uri": "accounts/:account_id/pages/projects/:project_name/domains",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/:account_id/pages/projects/:project_name/domains\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     --data '{\"name\":\"example.com\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {},
+				"required_props": [],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"name\": \"example.com\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"8232210c-6818-4e34-8d95-cc386874b8d2\",\n    \"name\": \"example.com\",\n    \"status\": \"pending\",\n    \"verification_data\": {\n      \"status\": \"active\"\n    },\n    \"validation_data\": {\n      \"status\": \"active\",\n      \"method\": \"http\"\n    },\n    \"zone_tag\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"created_on\": \"2017-01-01T00:00:00Z\"\n  }\n}"
 		},
 		{
 			"title": "Get domain",
@@ -67,7 +110,7 @@
 			"html_id": "pages-domains-get-domain",
 			"uri": "accounts/:account_id/pages/projects/:project_name/domains/:domain_name",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/:account_id/pages/projects/:project_name/domains/:domain_name\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"8232210c-6818-4e34-8d95-cc386874b8d2\",\n    \"name\": \"helloworld.com\",\n    \"status\": \"pending\",\n    \"verification_data\": {\n      \"status\": \"active\"\n    },\n    \"validation_data\": {\n      \"status\": \"active\",\n      \"method\": \"http\"\n    },\n    \"zone_tag\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"created_on\": \"2017-01-01T00:00:00Z\"\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"8232210c-6818-4e34-8d95-cc386874b8d2\",\n    \"name\": \"example.com\",\n    \"status\": \"pending\",\n    \"verification_data\": {\n      \"status\": \"active\"\n    },\n    \"validation_data\": {\n      \"status\": \"active\",\n      \"method\": \"http\"\n    },\n    \"zone_tag\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"created_on\": \"2017-01-01T00:00:00Z\"\n  }\n}"
 		},
 		{
 			"title": "Patch domain",
@@ -99,7 +142,39 @@
 			"html_id": "pages-domains-patch-domain",
 			"uri": "accounts/:account_id/pages/projects/:project_name/domains/:domain_name",
 			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/accounts/:account_id/pages/projects/:project_name/domains/:domain_name\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"8232210c-6818-4e34-8d95-cc386874b8d2\",\n    \"name\": \"helloworld.com\",\n    \"status\": \"pending\",\n    \"verification_data\": {\n      \"status\": \"active\"\n    },\n    \"validation_data\": {\n      \"status\": \"active\",\n      \"method\": \"http\"\n    },\n    \"zone_tag\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"created_on\": \"2017-01-01T00:00:00Z\"\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"8232210c-6818-4e34-8d95-cc386874b8d2\",\n    \"name\": \"example.com\",\n    \"status\": \"pending\",\n    \"verification_data\": {\n      \"status\": \"active\"\n    },\n    \"validation_data\": {\n      \"status\": \"active\",\n      \"method\": \"http\"\n    },\n    \"zone_tag\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"created_on\": \"2017-01-01T00:00:00Z\"\n  }\n}"
+		},
+		{
+			"title": "Delete domain",
+			"description": "Delete a domain",
+			"rel": "self",
+			"href": "accounts/:account_id/pages/projects/:project_name/domains/:domain_name",
+			"method": "DELETE",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
+			"html_id": "pages-domains-delete-domain",
+			"uri": "accounts/:account_id/pages/projects/:project_name/domains/:domain_name",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/:account_id/pages/projects/:project_name/domains/:domain_name\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
 		}
 	],
 	"cfLinkErrors": {
@@ -155,7 +230,7 @@
 			},
 			"name": {
 				"type": "string",
-				"example": "\"helloworld.com\"",
+				"example": "\"example.com\"",
 				"description": "Custom domain",
 				"readOnly": true
 			},
@@ -225,7 +300,7 @@
 			"created_on"
 		],
 		"objects": [],
-		"example": "{\n  \"id\": \"8232210c-6818-4e34-8d95-cc386874b8d2\",\n  \"name\": \"helloworld.com\",\n  \"status\": \"pending\",\n  \"verification_data\": {\n    \"status\": \"active\"\n  },\n  \"validation_data\": {\n    \"status\": \"active\",\n    \"method\": \"http\"\n  },\n  \"zone_tag\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"created_on\": \"2017-01-01T00:00:00Z\"\n}",
+		"example": "{\n  \"id\": \"8232210c-6818-4e34-8d95-cc386874b8d2\",\n  \"name\": \"example.com\",\n  \"status\": \"pending\",\n  \"verification_data\": {\n    \"status\": \"active\"\n  },\n  \"validation_data\": {\n    \"status\": \"active\",\n    \"method\": \"http\"\n  },\n  \"zone_tag\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"created_on\": \"2017-01-01T00:00:00Z\"\n}",
 		"title": "Pages Domains",
 		"description": "A domain represents a custom domain tied to a Pages project."
 	}

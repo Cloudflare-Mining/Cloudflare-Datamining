@@ -1,0 +1,191 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/intel/miscategorization.json",
+	"title": "Miscategorization",
+	"description": "Miscategorization",
+	"links": [
+		{
+			"title": "Create Miscategorization",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/intel/miscategorization",
+			"method": "POST",
+			"cfOwnership": "intel",
+			"html_id": "miscategorization-create-miscategorization",
+			"uri": "accounts/:account_identifier/intel/miscategorization",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/intel/miscategorization\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"indicator_type\":\"domain\",\"ip\":\"192.0.2.0\",\"content_adds\":[82],\"content_removes\":[155],\"security_adds\":[117,131],\"security_removes\":[83]}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"indicator_type": {
+						"example": "\"domain\"",
+						"enum": [
+							"domain",
+							"ipv4",
+							"ipv6",
+							"url"
+						]
+					},
+					"ip": {
+						"example": "\"192.0.2.0\"",
+						"anyOf": [
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "\"192.0.2.0\""
+							},
+							{
+								"all_props": {},
+								"required_props": [],
+								"optional_props": [],
+								"objects": [],
+								"example": "\"2001:0DB8::\""
+							}
+						],
+						"description": "Provide only if indicator_type is `ipv4` or `ipv6`"
+					},
+					"url": {
+						"type": "string",
+						"description": "Provide only if indicator_type is `domain` or `url`. Example if indicator_type is `domain`: `example.com`. Example if indicator_type is `url`: `https://example.com/news/`"
+					},
+					"content_adds": {
+						"type": "array",
+						"example": "[\n  82\n]",
+						"description": "Content category IDs to add",
+						"items": {
+							"type": "integer"
+						}
+					},
+					"content_removes": {
+						"type": "array",
+						"example": "[\n  155\n]",
+						"description": "Content category IDs to remove",
+						"items": {
+							"type": "integer"
+						}
+					},
+					"security_adds": {
+						"type": "array",
+						"example": "[\n  117,\n  131\n]",
+						"description": "Security category IDs to add",
+						"items": {
+							"type": "integer"
+						}
+					},
+					"security_removes": {
+						"type": "array",
+						"example": "[\n  83\n]",
+						"description": "Security category IDs to remove",
+						"items": {
+							"type": "integer"
+						}
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"indicator_type",
+					"ip",
+					"url",
+					"content_adds",
+					"content_removes",
+					"security_adds",
+					"security_removes"
+				],
+				"objects": [],
+				"example": "{\n  \"indicator_type\": \"domain\",\n  \"ip\": \"192.0.2.0\",\n  \"content_adds\": [\n    82\n  ],\n  \"content_removes\": [\n    155\n  ],\n  \"security_adds\": [\n    117,\n    131\n  ],\n  \"security_removes\": [\n    83\n  ]\n}",
+				"title": "Miscategorization",
+				"description": "Miscategorization"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
+		}
+	],
+	"html_id": "miscategorization",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"indicator_type": {
+				"example": "\"domain\"",
+				"enum": [
+					"domain",
+					"ipv4",
+					"ipv6",
+					"url"
+				]
+			},
+			"ip": {
+				"example": "\"192.0.2.0\"",
+				"anyOf": [
+					{
+						"all_props": {},
+						"required_props": [],
+						"optional_props": [],
+						"objects": [],
+						"example": "\"192.0.2.0\""
+					},
+					{
+						"all_props": {},
+						"required_props": [],
+						"optional_props": [],
+						"objects": [],
+						"example": "\"2001:0DB8::\""
+					}
+				],
+				"description": "Provide only if indicator_type is `ipv4` or `ipv6`"
+			},
+			"url": {
+				"type": "string",
+				"description": "Provide only if indicator_type is `domain` or `url`. Example if indicator_type is `domain`: `example.com`. Example if indicator_type is `url`: `https://example.com/news/`"
+			},
+			"content_adds": {
+				"type": "array",
+				"example": "[\n  82\n]",
+				"description": "Content category IDs to add",
+				"items": {
+					"type": "integer"
+				}
+			},
+			"content_removes": {
+				"type": "array",
+				"example": "[\n  155\n]",
+				"description": "Content category IDs to remove",
+				"items": {
+					"type": "integer"
+				}
+			},
+			"security_adds": {
+				"type": "array",
+				"example": "[\n  117,\n  131\n]",
+				"description": "Security category IDs to add",
+				"items": {
+					"type": "integer"
+				}
+			},
+			"security_removes": {
+				"type": "array",
+				"example": "[\n  83\n]",
+				"description": "Security category IDs to remove",
+				"items": {
+					"type": "integer"
+				}
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"indicator_type",
+			"ip",
+			"url",
+			"content_adds",
+			"content_removes",
+			"security_adds",
+			"security_removes"
+		],
+		"objects": [],
+		"example": "{\n  \"indicator_type\": \"domain\",\n  \"ip\": \"192.0.2.0\",\n  \"content_adds\": [\n    82\n  ],\n  \"content_removes\": [\n    155\n  ],\n  \"security_adds\": [\n    117,\n    131\n  ],\n  \"security_removes\": [\n    83\n  ]\n}",
+		"title": "Miscategorization",
+		"description": "Miscategorization"
+	}
+}

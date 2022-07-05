@@ -150,6 +150,7 @@
 							"country_challenge",
 							"ip_block",
 							"under_attack",
+							"ratelimit_block",
 							"500_errors",
 							"1000_errors",
 							"basic_challenge"
@@ -239,6 +240,7 @@
 							"country_challenge",
 							"ip_block",
 							"under_attack",
+							"ratelimit_block",
 							"500_errors",
 							"1000_errors",
 							"managed_challenge"
@@ -328,6 +330,7 @@
 							"country_challenge",
 							"ip_block",
 							"under_attack",
+							"ratelimit_block",
 							"500_errors",
 							"1000_errors",
 							"waf_block"
@@ -405,6 +408,95 @@
 			{
 				"all_props": {
 					"id": {
+						"example": "\"ratelimit_block\"",
+						"enum": [
+							"basic_challenge",
+							"managed_challenge",
+							"waf_block",
+							"country_challenge",
+							"ip_block",
+							"under_attack",
+							"ratelimit_block",
+							"500_errors",
+							"1000_errors"
+						],
+						"readOnly": true,
+						"description": "The name of the custom page type.",
+						"type": "string"
+					},
+					"created_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"readOnly": true,
+						"format": "date-time",
+						"description": "The timestamp of when the custom page was created."
+					},
+					"modified_on": {
+						"type": "string",
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"readOnly": true,
+						"format": "date-time",
+						"description": "The timestamp of when the custom page was last modified."
+					},
+					"url": {
+						"type": "string",
+						"example": "\"http://www.example.com\"",
+						"format": "url",
+						"description": "The URL associated with the custom page.",
+						"default": ""
+					},
+					"state": {
+						"example": "\"default\"",
+						"enum": [
+							"default",
+							"customized"
+						],
+						"description": "The custom page state."
+					},
+					"required_tokens": {
+						"type": "array",
+						"example": "[\n  \"::CAPTCHA_BOX::\"\n]",
+						"description": "The string tokens that must be present in your custom HTML page.",
+						"readOnly": true,
+						"uniqueItems": true,
+						"default": [],
+						"items": {
+							"type": "string",
+							"description": "A string token."
+						}
+					},
+					"preview_target": {
+						"type": "string",
+						"example": "\"preview:target\"",
+						"description": "The 'target' query string parameter which is required when previewing the custom page at cloudflarepreview.com.",
+						"cfNotes": "The full preview URL is similar to the following: \"cloudflarepreview.com/preview-cpage?act=preview&target=preview:target&url=<YOUR_URL>\"."
+					},
+					"description": {
+						"type": "string",
+						"example": "true",
+						"description": "A short description of the custom page.",
+						"default": ""
+					}
+				},
+				"required_props": [
+					"url"
+				],
+				"optional_props": [
+					"id",
+					"created_on",
+					"modified_on",
+					"state",
+					"required_tokens",
+					"preview_target",
+					"description"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"ratelimit_block\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"url\": \"http://www.example.com\",\n  \"state\": \"default\",\n  \"required_tokens\": [\n    \"::CAPTCHA_BOX::\"\n  ],\n  \"preview_target\": \"preview:target\",\n  \"description\": true\n}",
+				"title": "Ratelimit Block"
+			},
+			{
+				"all_props": {
+					"id": {
 						"example": "\"country_challenge\"",
 						"enum": [
 							"basic_challenge",
@@ -413,6 +505,7 @@
 							"country_challenge",
 							"ip_block",
 							"under_attack",
+							"ratelimit_block",
 							"500_errors",
 							"1000_errors",
 							"country_challenge"
@@ -502,6 +595,7 @@
 							"country_challenge",
 							"ip_block",
 							"under_attack",
+							"ratelimit_block",
 							"500_errors",
 							"1000_errors",
 							"ip_block"
@@ -587,6 +681,7 @@
 							"country_challenge",
 							"ip_block",
 							"under_attack",
+							"ratelimit_block",
 							"500_errors",
 							"1000_errors",
 							"under_attack"
@@ -676,6 +771,7 @@
 							"country_challenge",
 							"ip_block",
 							"under_attack",
+							"ratelimit_block",
 							"500_errors",
 							"1000_errors",
 							"500_errors"
@@ -765,6 +861,7 @@
 							"country_challenge",
 							"ip_block",
 							"under_attack",
+							"ratelimit_block",
 							"500_errors",
 							"1000_errors",
 							"1000_errors"

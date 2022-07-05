@@ -1,12 +1,13 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/rate-limits.json",
-	"title": "Rate Limits for a Zone",
-	"description": "Documentation for Cloudflare Rate Limits",
+	"title": "Rate limits for a zone",
+	"description": "Rate limits configured for a zone.",
+	"cfExtendedDescription": "Note: To configure the new rate limiting rules based on the Ruleset Engine you must use the [Account rulesets](#account-rulesets) or [Zone rulesets](#zone-rulesets) API endpoints. For more information, refer to [Rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/) in Developer Docs.",
 	"type": "object",
 	"links": [
 		{
-			"title": "List Rate Limits",
-			"description": "List the rate limits on a zone.",
+			"title": "Get rate limits",
+			"description": "Fetches the rate limits for a zone.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone_identifier}/rate_limits",
 			"method": "GET",
@@ -17,7 +18,7 @@
 				"business": true,
 				"enterprise": true
 			},
-			"html_id": "rate-limits-for-a-zone-list-rate-limits",
+			"html_id": "rate-limits-for-a-zone-get-rate-limits",
 			"uri": "zones/:zone_identifier/rate_limits",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/rate_limits?page=1&per_page=20\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {
@@ -30,7 +31,7 @@
 						"example": "1",
 						"minimum": 1,
 						"default": 1,
-						"description": "Page number of paginated results"
+						"description": "The page number of paginated results."
 					},
 					"per_page": {
 						"type": "number",
@@ -38,7 +39,7 @@
 						"minimum": 1,
 						"maximum": 1000,
 						"default": 20,
-						"description": "Maximum number of results per page. This can only be provided as 1 or in multiples of 5 such as 5, 10, 15 or 20"
+						"description": "The maximum number of results per page. You can only set the value to `1` or to a multiple of 5 such as `5`, `10`, `15`, or `20`."
 					}
 				},
 				"required_props": [],
@@ -52,8 +53,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n      \"disabled\": false,\n      \"description\": \"Prevent multiple login failures to mitigate brute force attacks\",\n      \"match\": {\n        \"request\": {\n          \"methods\": [\n            \"GET\",\n            \"POST\"\n          ],\n          \"schemes\": [\n            \"HTTP\",\n            \"HTTPS\"\n          ],\n          \"url\": \"*.example.org/path*\"\n        },\n        \"response\": {},\n        \"headers\": [\n          {\n            \"name\": \"Cf-Cache-Status\",\n            \"op\": \"ne\",\n            \"value\": \"HIT\"\n          }\n        ]\n      },\n      \"bypass\": [\n        {\n          \"name\": \"url\",\n          \"value\": \"api.example.com/*\"\n        }\n      ],\n      \"threshold\": 60,\n      \"period\": 900,\n      \"action\": {\n        \"mode\": \"challenge\",\n        \"timeout\": 86400,\n        \"response\": {\n          \"content_type\": \"text/xml\",\n          \"body\": \"<error>This request has been rate-limited.</error>\"\n        }\n      }\n    }\n  ]\n}"
 		},
 		{
-			"title": "Create Rate Limit",
-			"description": "Create a new rate limit for a zone. See the record object definitions for required attributes for each record type",
+			"title": "Create a rate limit",
+			"description": "Creates a new rate limit for a zone. Refer to the object definition for a list of required attributes.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone_identifier}/rate_limits",
 			"method": "POST",
@@ -64,7 +65,7 @@
 				"business": true,
 				"enterprise": true
 			},
-			"html_id": "rate-limits-for-a-zone-create-rate-limit",
+			"html_id": "rate-limits-for-a-zone-create-a-rate-limit",
 			"uri": "zones/:zone_identifier/rate_limits",
 			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/rate_limits\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"id\":\"372e67954025e0ba6aaa6d586b9e0b59\",\"disabled\":false,\"description\":\"Prevent multiple login failures to mitigate brute force attacks\",\"match\":{\"request\":{\"methods\":[\"GET\",\"POST\"],\"schemes\":[\"HTTP\",\"HTTPS\"],\"url\":\"*.example.org/path*\"},\"response\":{},\"headers\":[{\"name\":\"Cf-Cache-Status\",\"op\":\"ne\",\"value\":\"HIT\"}]},\"bypass\":[{\"name\":\"url\",\"value\":\"api.example.com/*\"}],\"threshold\":60,\"period\":900,\"action\":{\"mode\":\"challenge\",\"timeout\":86400,\"response\":{\"content_type\":\"text/xml\",\"body\":\"<error>This request has been rate-limited.</error>\"}}}'",
 			"parameters": {
@@ -75,19 +76,19 @@
 					"id": {
 						"type": "string",
 						"example": "\"372e67954025e0ba6aaa6d586b9e0b59\"",
-						"description": "Ratelimit identifier",
+						"description": "The unique identifier of the rate limit.",
 						"maxLength": 32,
 						"readOnly": true
 					},
 					"disabled": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Whether this ratelimit is currently disabled"
+						"description": "When true, indicates that the rate limit is currently disabled."
 					},
 					"description": {
 						"type": "string",
 						"example": "\"Prevent multiple login failures to mitigate brute force attacks\"",
-						"description": "A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed",
+						"description": "An informative summary of the rate limit. This value is sanitized and any tags will be removed.",
 						"maxLength": 1024
 					},
 					"match": {
@@ -103,10 +104,10 @@
 											"methods": {
 												"type": "array",
 												"example": "[\n  \"GET\",\n  \"POST\"\n]",
-												"description": "HTTP Methods, can be a subset ['POST','PUT'] or all ['&#95;ALL&#95;'].  This field is not required to create a rate limit rule.",
+												"description": "The HTTP methods to match. You can specify a subset (for example, `['POST','PUT']`) or all methods (`['_ALL_']`). This field is optional when creating a rate limit.",
 												"items": {
 													"type": "string",
-													"description": "HTTP Method, or '_ALL_' to indicate all methods",
+													"description": "An HTTP method or `_ALL_` to indicate all methods.",
 													"example": "GET",
 													"enum": [
 														"GET",
@@ -122,17 +123,17 @@
 											"schemes": {
 												"type": "array",
 												"example": "[\n  \"HTTP\",\n  \"HTTPS\"\n]",
-												"description": "HTTP Schemes, can be one ['HTTPS'], both ['HTTP','HTTPS'] or all ['&#95;ALL&#95;'].  This field is not required.",
+												"description": "The HTTP schemes to match. You can specify one scheme (`['HTTPS']`), both schemes (`['HTTP','HTTPS']`), or all schemes (`['_ALL_']`). This field is optional.",
 												"items": {
 													"type": "string",
-													"description": "HTTP Scheme, or '_ALL_' to indicate all schemes",
+													"description": "An HTTP scheme or `_ALL_` to indicate all schemes.",
 													"example": "HTTPS"
 												}
 											},
 											"url": {
 												"type": "string",
 												"example": "\"*.example.org/path*\"",
-												"description": "The URL pattern to match comprised of the host and path, i.e. example.org/path*. Normalisation is applied before the pattern is matched. Wildcard * are expanded to match applicable traffic, query strings are not matched. Use `*` for all traffic to your zone.",
+												"description": "The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone.",
 												"maxLength": 1024
 											}
 										}
@@ -143,8 +144,8 @@
 										"properties": {
 											"origin_traffic": {
 												"type": "boolean",
-												"description": "Only count traffic that has come from your origin servers. If `true`, cached items that Cloudflare serve will not count towards rate limiting.  This field is not required.",
-												"cfNotes": "Deprecated, please use response headers instead and also provide `origin_traffic:false` to avoid legacy behaviour interacting with the response.headers property."
+												"description": "When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional.",
+												"cfNotes": "This field is deprecated. Instead, use response headers and set \"origin_traffic\" to \"false\" to avoid legacy behaviour interacting with the \"response_headers\" property."
 											}
 										}
 									},
@@ -156,12 +157,12 @@
 											"properties": {
 												"name": {
 													"type": "string",
-													"description": "The name of the response header to match",
+													"description": "The name of the response header to match.",
 													"example": "Cf-Cache-Status"
 												},
 												"op": {
 													"type": "string",
-													"description": "The operator when matching, eq means equals, ne means not equals",
+													"description": "The operator used when matching: `eq` means \"equal\" and `ne` means \"not equal\".",
 													"example": "ne",
 													"enum": [
 														"eq",
@@ -170,7 +171,7 @@
 												},
 												"value": {
 													"type": "string",
-													"description": "The value of the header, which will be exactly matched",
+													"description": "The value of the response header, which must match exactly.",
 													"example": "HIT"
 												}
 											}
@@ -187,13 +188,12 @@
 								"example": "{\n  \"request\": {\n    \"methods\": [\n      \"GET\",\n      \"POST\"\n    ],\n    \"schemes\": [\n      \"HTTP\",\n      \"HTTPS\"\n    ],\n    \"url\": \"*.example.org/path*\"\n  },\n  \"response\": {},\n  \"headers\": [\n    {\n      \"name\": \"Cf-Cache-Status\",\n      \"op\": \"ne\",\n      \"value\": \"HIT\"\n    }\n  ]\n}"
 							}
 						],
-						"description": "Determines which traffic the rate limit counts towards the threshold"
+						"description": "Determines which traffic the rate limit counts towards the threshold."
 					},
 					"bypass": {
 						"type": "array",
 						"example": "[\n  {\n    \"name\": \"url\",\n    \"value\": \"api.example.com/*\"\n  }\n]",
-						"title": "Bypass rate limit when",
-						"description": "Criteria that would allow the rate limit to be bypassed, for example to express that you shouldn't apply a rate limit to a given set of URLs",
+						"description": "Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.",
 						"items": {
 							"type": "object",
 							"properties": {
@@ -206,7 +206,7 @@
 								},
 								"value": {
 									"type": "string",
-									"description": "The url to bypass",
+									"description": "The URL to bypass.",
 									"example": "api.example.com/*"
 								}
 							}
@@ -215,13 +215,13 @@
 					"threshold": {
 						"type": "number",
 						"example": "60",
-						"description": "The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period",
+						"description": "The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.",
 						"minimum": 1
 					},
 					"period": {
 						"type": "number",
 						"example": "900",
-						"description": "The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed",
+						"description": "The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.",
 						"minimum": 10,
 						"maximum": 86400
 					},
@@ -234,7 +234,7 @@
 									"mode": {
 										"type": "string",
 										"example": "\"challenge\"",
-										"description": "The type of action to perform.",
+										"description": "The action to perform.",
 										"enum": [
 											"simulate",
 											"ban",
@@ -246,10 +246,10 @@
 									"timeout": {
 										"type": "number",
 										"example": "86400",
-										"description": "The time in seconds as an integer to perform the mitigation action. Must be the same or greater than the period.",
+										"description": "The time in seconds during which Cloudflare will perform the mitigation action. Must be an integer value greater than or equal to the period.",
 										"minimum": 1,
 										"maximum": 86400,
-										"cfNotes": "If `mode` is `challenge`, `managed_challenge` or `js_challenge` then the Zone Challenge Passage time is used and this value should not be supplied."
+										"cfNotes": "If \"mode\" is \"challenge\", \"managed_challenge\", or \"js_challenge\", Cloudflare will use the zone's Challenge Passage time and you should not provide this value."
 									},
 									"response": {
 										"type": "object",
@@ -260,13 +260,13 @@
 													"content_type": {
 														"type": "string",
 														"example": "\"text/xml\"",
-														"description": "The content-type of the body, must be one of: `text/plain`, `text/xml`, `application/json`",
+														"description": "The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`.",
 														"maxLength": 50
 													},
 													"body": {
 														"type": "string",
 														"example": "\"<error>This request has been rate-limited.</error>\"",
-														"description": "The body to return, the content here should conform to the content_type",
+														"description": "The response body to return. The value must conform to the configured content type.",
 														"maxLength": 10240
 													}
 												},
@@ -279,8 +279,8 @@
 												"example": "{\n  \"content_type\": \"text/xml\",\n  \"body\": \"<error>This request has been rate-limited.</error>\"\n}"
 											}
 										],
-										"description": "Custom content-type and body to return, this overrides the custom error for the zone.  This field is not required.  Omission will result in default HTML error page.",
-										"cfNotes": "If `mode` is `challenge`, `managed_challenge` or `js_challenge` then the Zone challenge pages are used and this object should not be supplied."
+										"description": "A custom content type and reponse to return when the threshold is exceeded. The custom response configured in this object will override the custom error for the zone. This object is optional.",
+										"cfNotes": "If you omit this object, Cloudflare will use the default HTML error page. If \"mode\" is \"challenge\", \"managed_challenge\", or \"js_challenge\", Cloudflare will use the zone challenge pages and you should not provide the \"response\" object."
 									}
 								},
 								"required_props": [],
@@ -293,7 +293,7 @@
 								"example": "{\n  \"mode\": \"challenge\",\n  \"timeout\": 86400,\n  \"response\": {\n    \"content_type\": \"text/xml\",\n    \"body\": \"<error>This request has been rate-limited.</error>\"\n  }\n}"
 							}
 						],
-						"description": "The action to be performed when the threshold of matched traffic within the period defined is exceeded"
+						"description": "The action to perform when the threshold of matched traffic within the configured period is exceeded."
 					}
 				},
 				"required_props": [
@@ -314,7 +314,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n    \"disabled\": false,\n    \"description\": \"Prevent multiple login failures to mitigate brute force attacks\",\n    \"match\": {\n      \"request\": {\n        \"methods\": [\n          \"GET\",\n          \"POST\"\n        ],\n        \"schemes\": [\n          \"HTTP\",\n          \"HTTPS\"\n        ],\n        \"url\": \"*.example.org/path*\"\n      },\n      \"response\": {},\n      \"headers\": [\n        {\n          \"name\": \"Cf-Cache-Status\",\n          \"op\": \"ne\",\n          \"value\": \"HIT\"\n        }\n      ]\n    },\n    \"bypass\": [\n      {\n        \"name\": \"url\",\n        \"value\": \"api.example.com/*\"\n      }\n    ],\n    \"threshold\": 60,\n    \"period\": 900,\n    \"action\": {\n      \"mode\": \"challenge\",\n      \"timeout\": 86400,\n      \"response\": {\n        \"content_type\": \"text/xml\",\n        \"body\": \"<error>This request has been rate-limited.</error>\"\n      }\n    }\n  }\n}"
 		},
 		{
-			"title": "Rate Limit Details",
+			"title": "Get a rate limit",
+			"description": "Fetches the details of a rate limit.",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_identifier}/rate_limits/{#/definitions/id}",
 			"method": "GET",
@@ -325,13 +326,14 @@
 				"business": true,
 				"enterprise": true
 			},
-			"html_id": "rate-limits-for-a-zone-rate-limit-details",
+			"html_id": "rate-limits-for-a-zone-get-a-rate-limit",
 			"uri": "zones/:zone_identifier/rate_limits/:id",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/rate_limits/372e67954025e0ba6aaa6d586b9e0b59\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n    \"disabled\": false,\n    \"description\": \"Prevent multiple login failures to mitigate brute force attacks\",\n    \"match\": {\n      \"request\": {\n        \"methods\": [\n          \"GET\",\n          \"POST\"\n        ],\n        \"schemes\": [\n          \"HTTP\",\n          \"HTTPS\"\n        ],\n        \"url\": \"*.example.org/path*\"\n      },\n      \"response\": {},\n      \"headers\": [\n        {\n          \"name\": \"Cf-Cache-Status\",\n          \"op\": \"ne\",\n          \"value\": \"HIT\"\n        }\n      ]\n    },\n    \"bypass\": [\n      {\n        \"name\": \"url\",\n        \"value\": \"api.example.com/*\"\n      }\n    ],\n    \"threshold\": 60,\n    \"period\": 900,\n    \"action\": {\n      \"mode\": \"challenge\",\n      \"timeout\": 86400,\n      \"response\": {\n        \"content_type\": \"text/xml\",\n        \"body\": \"<error>This request has been rate-limited.</error>\"\n      }\n    }\n  }\n}"
 		},
 		{
-			"title": "Update Rate Limit",
+			"title": "Update a rate limit",
+			"description": "Updates an existing rate limit.",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_identifier}/rate_limits/{#/definitions/id}",
 			"method": "PUT",
@@ -342,7 +344,7 @@
 				"business": true,
 				"enterprise": true
 			},
-			"html_id": "rate-limits-for-a-zone-update-rate-limit",
+			"html_id": "rate-limits-for-a-zone-update-a-rate-limit",
 			"uri": "zones/:zone_identifier/rate_limits/:id",
 			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/rate_limits/372e67954025e0ba6aaa6d586b9e0b59\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"id\":\"372e67954025e0ba6aaa6d586b9e0b59\",\"disabled\":false,\"description\":\"Prevent multiple login failures to mitigate brute force attacks\",\"match\":{\"request\":{\"methods\":[\"GET\",\"POST\"],\"schemes\":[\"HTTP\",\"HTTPS\"],\"url\":\"*.example.org/path*\"},\"response\":{},\"headers\":[{\"name\":\"Cf-Cache-Status\",\"op\":\"ne\",\"value\":\"HIT\"}]},\"bypass\":[{\"name\":\"url\",\"value\":\"api.example.com/*\"}],\"threshold\":60,\"period\":900,\"action\":{\"mode\":\"challenge\",\"timeout\":86400,\"response\":{\"content_type\":\"text/xml\",\"body\":\"<error>This request has been rate-limited.</error>\"}}}'",
 			"parameters": {
@@ -353,19 +355,19 @@
 					"id": {
 						"type": "string",
 						"example": "\"372e67954025e0ba6aaa6d586b9e0b59\"",
-						"description": "Ratelimit identifier",
+						"description": "The unique identifier of the rate limit.",
 						"maxLength": 32,
 						"readOnly": true
 					},
 					"disabled": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Whether this ratelimit is currently disabled"
+						"description": "When true, indicates that the rate limit is currently disabled."
 					},
 					"description": {
 						"type": "string",
 						"example": "\"Prevent multiple login failures to mitigate brute force attacks\"",
-						"description": "A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed",
+						"description": "An informative summary of the rate limit. This value is sanitized and any tags will be removed.",
 						"maxLength": 1024
 					},
 					"match": {
@@ -381,10 +383,10 @@
 											"methods": {
 												"type": "array",
 												"example": "[\n  \"GET\",\n  \"POST\"\n]",
-												"description": "HTTP Methods, can be a subset ['POST','PUT'] or all ['&#95;ALL&#95;'].  This field is not required to create a rate limit rule.",
+												"description": "The HTTP methods to match. You can specify a subset (for example, `['POST','PUT']`) or all methods (`['_ALL_']`). This field is optional when creating a rate limit.",
 												"items": {
 													"type": "string",
-													"description": "HTTP Method, or '_ALL_' to indicate all methods",
+													"description": "An HTTP method or `_ALL_` to indicate all methods.",
 													"example": "GET",
 													"enum": [
 														"GET",
@@ -400,17 +402,17 @@
 											"schemes": {
 												"type": "array",
 												"example": "[\n  \"HTTP\",\n  \"HTTPS\"\n]",
-												"description": "HTTP Schemes, can be one ['HTTPS'], both ['HTTP','HTTPS'] or all ['&#95;ALL&#95;'].  This field is not required.",
+												"description": "The HTTP schemes to match. You can specify one scheme (`['HTTPS']`), both schemes (`['HTTP','HTTPS']`), or all schemes (`['_ALL_']`). This field is optional.",
 												"items": {
 													"type": "string",
-													"description": "HTTP Scheme, or '_ALL_' to indicate all schemes",
+													"description": "An HTTP scheme or `_ALL_` to indicate all schemes.",
 													"example": "HTTPS"
 												}
 											},
 											"url": {
 												"type": "string",
 												"example": "\"*.example.org/path*\"",
-												"description": "The URL pattern to match comprised of the host and path, i.e. example.org/path*. Normalisation is applied before the pattern is matched. Wildcard * are expanded to match applicable traffic, query strings are not matched. Use `*` for all traffic to your zone.",
+												"description": "The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone.",
 												"maxLength": 1024
 											}
 										}
@@ -421,8 +423,8 @@
 										"properties": {
 											"origin_traffic": {
 												"type": "boolean",
-												"description": "Only count traffic that has come from your origin servers. If `true`, cached items that Cloudflare serve will not count towards rate limiting.  This field is not required.",
-												"cfNotes": "Deprecated, please use response headers instead and also provide `origin_traffic:false` to avoid legacy behaviour interacting with the response.headers property."
+												"description": "When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional.",
+												"cfNotes": "This field is deprecated. Instead, use response headers and set \"origin_traffic\" to \"false\" to avoid legacy behaviour interacting with the \"response_headers\" property."
 											}
 										}
 									},
@@ -434,12 +436,12 @@
 											"properties": {
 												"name": {
 													"type": "string",
-													"description": "The name of the response header to match",
+													"description": "The name of the response header to match.",
 													"example": "Cf-Cache-Status"
 												},
 												"op": {
 													"type": "string",
-													"description": "The operator when matching, eq means equals, ne means not equals",
+													"description": "The operator used when matching: `eq` means \"equal\" and `ne` means \"not equal\".",
 													"example": "ne",
 													"enum": [
 														"eq",
@@ -448,7 +450,7 @@
 												},
 												"value": {
 													"type": "string",
-													"description": "The value of the header, which will be exactly matched",
+													"description": "The value of the response header, which must match exactly.",
 													"example": "HIT"
 												}
 											}
@@ -465,13 +467,12 @@
 								"example": "{\n  \"request\": {\n    \"methods\": [\n      \"GET\",\n      \"POST\"\n    ],\n    \"schemes\": [\n      \"HTTP\",\n      \"HTTPS\"\n    ],\n    \"url\": \"*.example.org/path*\"\n  },\n  \"response\": {},\n  \"headers\": [\n    {\n      \"name\": \"Cf-Cache-Status\",\n      \"op\": \"ne\",\n      \"value\": \"HIT\"\n    }\n  ]\n}"
 							}
 						],
-						"description": "Determines which traffic the rate limit counts towards the threshold"
+						"description": "Determines which traffic the rate limit counts towards the threshold."
 					},
 					"bypass": {
 						"type": "array",
 						"example": "[\n  {\n    \"name\": \"url\",\n    \"value\": \"api.example.com/*\"\n  }\n]",
-						"title": "Bypass rate limit when",
-						"description": "Criteria that would allow the rate limit to be bypassed, for example to express that you shouldn't apply a rate limit to a given set of URLs",
+						"description": "Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.",
 						"items": {
 							"type": "object",
 							"properties": {
@@ -484,7 +485,7 @@
 								},
 								"value": {
 									"type": "string",
-									"description": "The url to bypass",
+									"description": "The URL to bypass.",
 									"example": "api.example.com/*"
 								}
 							}
@@ -493,13 +494,13 @@
 					"threshold": {
 						"type": "number",
 						"example": "60",
-						"description": "The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period",
+						"description": "The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.",
 						"minimum": 1
 					},
 					"period": {
 						"type": "number",
 						"example": "900",
-						"description": "The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed",
+						"description": "The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.",
 						"minimum": 10,
 						"maximum": 86400
 					},
@@ -512,7 +513,7 @@
 									"mode": {
 										"type": "string",
 										"example": "\"challenge\"",
-										"description": "The type of action to perform.",
+										"description": "The action to perform.",
 										"enum": [
 											"simulate",
 											"ban",
@@ -524,10 +525,10 @@
 									"timeout": {
 										"type": "number",
 										"example": "86400",
-										"description": "The time in seconds as an integer to perform the mitigation action. Must be the same or greater than the period.",
+										"description": "The time in seconds during which Cloudflare will perform the mitigation action. Must be an integer value greater than or equal to the period.",
 										"minimum": 1,
 										"maximum": 86400,
-										"cfNotes": "If `mode` is `challenge`, `managed_challenge` or `js_challenge` then the Zone Challenge Passage time is used and this value should not be supplied."
+										"cfNotes": "If \"mode\" is \"challenge\", \"managed_challenge\", or \"js_challenge\", Cloudflare will use the zone's Challenge Passage time and you should not provide this value."
 									},
 									"response": {
 										"type": "object",
@@ -538,13 +539,13 @@
 													"content_type": {
 														"type": "string",
 														"example": "\"text/xml\"",
-														"description": "The content-type of the body, must be one of: `text/plain`, `text/xml`, `application/json`",
+														"description": "The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`.",
 														"maxLength": 50
 													},
 													"body": {
 														"type": "string",
 														"example": "\"<error>This request has been rate-limited.</error>\"",
-														"description": "The body to return, the content here should conform to the content_type",
+														"description": "The response body to return. The value must conform to the configured content type.",
 														"maxLength": 10240
 													}
 												},
@@ -557,8 +558,8 @@
 												"example": "{\n  \"content_type\": \"text/xml\",\n  \"body\": \"<error>This request has been rate-limited.</error>\"\n}"
 											}
 										],
-										"description": "Custom content-type and body to return, this overrides the custom error for the zone.  This field is not required.  Omission will result in default HTML error page.",
-										"cfNotes": "If `mode` is `challenge`, `managed_challenge` or `js_challenge` then the Zone challenge pages are used and this object should not be supplied."
+										"description": "A custom content type and reponse to return when the threshold is exceeded. The custom response configured in this object will override the custom error for the zone. This object is optional.",
+										"cfNotes": "If you omit this object, Cloudflare will use the default HTML error page. If \"mode\" is \"challenge\", \"managed_challenge\", or \"js_challenge\", Cloudflare will use the zone challenge pages and you should not provide the \"response\" object."
 									}
 								},
 								"required_props": [],
@@ -571,7 +572,7 @@
 								"example": "{\n  \"mode\": \"challenge\",\n  \"timeout\": 86400,\n  \"response\": {\n    \"content_type\": \"text/xml\",\n    \"body\": \"<error>This request has been rate-limited.</error>\"\n  }\n}"
 							}
 						],
-						"description": "The action to be performed when the threshold of matched traffic within the period defined is exceeded"
+						"description": "The action to perform when the threshold of matched traffic within the configured period is exceeded."
 					}
 				},
 				"required_props": [
@@ -592,7 +593,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n    \"disabled\": false,\n    \"description\": \"Prevent multiple login failures to mitigate brute force attacks\",\n    \"match\": {\n      \"request\": {\n        \"methods\": [\n          \"GET\",\n          \"POST\"\n        ],\n        \"schemes\": [\n          \"HTTP\",\n          \"HTTPS\"\n        ],\n        \"url\": \"*.example.org/path*\"\n      },\n      \"response\": {},\n      \"headers\": [\n        {\n          \"name\": \"Cf-Cache-Status\",\n          \"op\": \"ne\",\n          \"value\": \"HIT\"\n        }\n      ]\n    },\n    \"bypass\": [\n      {\n        \"name\": \"url\",\n        \"value\": \"api.example.com/*\"\n      }\n    ],\n    \"threshold\": 60,\n    \"period\": 900,\n    \"action\": {\n      \"mode\": \"challenge\",\n      \"timeout\": 86400,\n      \"response\": {\n        \"content_type\": \"text/xml\",\n        \"body\": \"<error>This request has been rate-limited.</error>\"\n      }\n    }\n  }\n}"
 		},
 		{
-			"title": "Delete Rate Limit",
+			"title": "Delete a rate limit",
+			"description": "Deletes an existing rate limit.",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_identifier}/rate_limits/{#/definitions/id}",
 			"method": "DELETE",
@@ -603,7 +605,7 @@
 				"business": true,
 				"enterprise": true
 			},
-			"html_id": "rate-limits-for-a-zone-delete-rate-limit",
+			"html_id": "rate-limits-for-a-zone-delete-a-rate-limit",
 			"uri": "zones/:zone_identifier/rate_limits/:id",
 			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/rate_limits/372e67954025e0ba6aaa6d586b9e0b59\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\"\n  }\n}"
@@ -635,19 +637,19 @@
 			"id": {
 				"type": "string",
 				"example": "\"372e67954025e0ba6aaa6d586b9e0b59\"",
-				"description": "Ratelimit identifier",
+				"description": "The unique identifier of the rate limit.",
 				"maxLength": 32,
 				"readOnly": true
 			},
 			"disabled": {
 				"type": "boolean",
 				"example": "false",
-				"description": "Whether this ratelimit is currently disabled"
+				"description": "When true, indicates that the rate limit is currently disabled."
 			},
 			"description": {
 				"type": "string",
 				"example": "\"Prevent multiple login failures to mitigate brute force attacks\"",
-				"description": "A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed",
+				"description": "An informative summary of the rate limit. This value is sanitized and any tags will be removed.",
 				"maxLength": 1024
 			},
 			"match": {
@@ -663,10 +665,10 @@
 									"methods": {
 										"type": "array",
 										"example": "[\n  \"GET\",\n  \"POST\"\n]",
-										"description": "HTTP Methods, can be a subset ['POST','PUT'] or all ['&#95;ALL&#95;'].  This field is not required to create a rate limit rule.",
+										"description": "The HTTP methods to match. You can specify a subset (for example, `['POST','PUT']`) or all methods (`['_ALL_']`). This field is optional when creating a rate limit.",
 										"items": {
 											"type": "string",
-											"description": "HTTP Method, or '_ALL_' to indicate all methods",
+											"description": "An HTTP method or `_ALL_` to indicate all methods.",
 											"example": "GET",
 											"enum": [
 												"GET",
@@ -682,17 +684,17 @@
 									"schemes": {
 										"type": "array",
 										"example": "[\n  \"HTTP\",\n  \"HTTPS\"\n]",
-										"description": "HTTP Schemes, can be one ['HTTPS'], both ['HTTP','HTTPS'] or all ['&#95;ALL&#95;'].  This field is not required.",
+										"description": "The HTTP schemes to match. You can specify one scheme (`['HTTPS']`), both schemes (`['HTTP','HTTPS']`), or all schemes (`['_ALL_']`). This field is optional.",
 										"items": {
 											"type": "string",
-											"description": "HTTP Scheme, or '_ALL_' to indicate all schemes",
+											"description": "An HTTP scheme or `_ALL_` to indicate all schemes.",
 											"example": "HTTPS"
 										}
 									},
 									"url": {
 										"type": "string",
 										"example": "\"*.example.org/path*\"",
-										"description": "The URL pattern to match comprised of the host and path, i.e. example.org/path*. Normalisation is applied before the pattern is matched. Wildcard * are expanded to match applicable traffic, query strings are not matched. Use `*` for all traffic to your zone.",
+										"description": "The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone.",
 										"maxLength": 1024
 									}
 								}
@@ -703,8 +705,8 @@
 								"properties": {
 									"origin_traffic": {
 										"type": "boolean",
-										"description": "Only count traffic that has come from your origin servers. If `true`, cached items that Cloudflare serve will not count towards rate limiting.  This field is not required.",
-										"cfNotes": "Deprecated, please use response headers instead and also provide `origin_traffic:false` to avoid legacy behaviour interacting with the response.headers property."
+										"description": "When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional.",
+										"cfNotes": "This field is deprecated. Instead, use response headers and set \"origin_traffic\" to \"false\" to avoid legacy behaviour interacting with the \"response_headers\" property."
 									}
 								}
 							},
@@ -716,12 +718,12 @@
 									"properties": {
 										"name": {
 											"type": "string",
-											"description": "The name of the response header to match",
+											"description": "The name of the response header to match.",
 											"example": "Cf-Cache-Status"
 										},
 										"op": {
 											"type": "string",
-											"description": "The operator when matching, eq means equals, ne means not equals",
+											"description": "The operator used when matching: `eq` means \"equal\" and `ne` means \"not equal\".",
 											"example": "ne",
 											"enum": [
 												"eq",
@@ -730,7 +732,7 @@
 										},
 										"value": {
 											"type": "string",
-											"description": "The value of the header, which will be exactly matched",
+											"description": "The value of the response header, which must match exactly.",
 											"example": "HIT"
 										}
 									}
@@ -747,13 +749,12 @@
 						"example": "{\n  \"request\": {\n    \"methods\": [\n      \"GET\",\n      \"POST\"\n    ],\n    \"schemes\": [\n      \"HTTP\",\n      \"HTTPS\"\n    ],\n    \"url\": \"*.example.org/path*\"\n  },\n  \"response\": {},\n  \"headers\": [\n    {\n      \"name\": \"Cf-Cache-Status\",\n      \"op\": \"ne\",\n      \"value\": \"HIT\"\n    }\n  ]\n}"
 					}
 				],
-				"description": "Determines which traffic the rate limit counts towards the threshold"
+				"description": "Determines which traffic the rate limit counts towards the threshold."
 			},
 			"bypass": {
 				"type": "array",
 				"example": "[\n  {\n    \"name\": \"url\",\n    \"value\": \"api.example.com/*\"\n  }\n]",
-				"title": "Bypass rate limit when",
-				"description": "Criteria that would allow the rate limit to be bypassed, for example to express that you shouldn't apply a rate limit to a given set of URLs",
+				"description": "Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.",
 				"items": {
 					"type": "object",
 					"properties": {
@@ -766,7 +767,7 @@
 						},
 						"value": {
 							"type": "string",
-							"description": "The url to bypass",
+							"description": "The URL to bypass.",
 							"example": "api.example.com/*"
 						}
 					}
@@ -775,13 +776,13 @@
 			"threshold": {
 				"type": "number",
 				"example": "60",
-				"description": "The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period",
+				"description": "The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.",
 				"minimum": 1
 			},
 			"period": {
 				"type": "number",
 				"example": "900",
-				"description": "The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed",
+				"description": "The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.",
 				"minimum": 10,
 				"maximum": 86400
 			},
@@ -794,7 +795,7 @@
 							"mode": {
 								"type": "string",
 								"example": "\"challenge\"",
-								"description": "The type of action to perform.",
+								"description": "The action to perform.",
 								"enum": [
 									"simulate",
 									"ban",
@@ -806,10 +807,10 @@
 							"timeout": {
 								"type": "number",
 								"example": "86400",
-								"description": "The time in seconds as an integer to perform the mitigation action. Must be the same or greater than the period.",
+								"description": "The time in seconds during which Cloudflare will perform the mitigation action. Must be an integer value greater than or equal to the period.",
 								"minimum": 1,
 								"maximum": 86400,
-								"cfNotes": "If `mode` is `challenge`, `managed_challenge` or `js_challenge` then the Zone Challenge Passage time is used and this value should not be supplied."
+								"cfNotes": "If \"mode\" is \"challenge\", \"managed_challenge\", or \"js_challenge\", Cloudflare will use the zone's Challenge Passage time and you should not provide this value."
 							},
 							"response": {
 								"type": "object",
@@ -820,13 +821,13 @@
 											"content_type": {
 												"type": "string",
 												"example": "\"text/xml\"",
-												"description": "The content-type of the body, must be one of: `text/plain`, `text/xml`, `application/json`",
+												"description": "The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`.",
 												"maxLength": 50
 											},
 											"body": {
 												"type": "string",
 												"example": "\"<error>This request has been rate-limited.</error>\"",
-												"description": "The body to return, the content here should conform to the content_type",
+												"description": "The response body to return. The value must conform to the configured content type.",
 												"maxLength": 10240
 											}
 										},
@@ -839,8 +840,8 @@
 										"example": "{\n  \"content_type\": \"text/xml\",\n  \"body\": \"<error>This request has been rate-limited.</error>\"\n}"
 									}
 								],
-								"description": "Custom content-type and body to return, this overrides the custom error for the zone.  This field is not required.  Omission will result in default HTML error page.",
-								"cfNotes": "If `mode` is `challenge`, `managed_challenge` or `js_challenge` then the Zone challenge pages are used and this object should not be supplied."
+								"description": "A custom content type and reponse to return when the threshold is exceeded. The custom response configured in this object will override the custom error for the zone. This object is optional.",
+								"cfNotes": "If you omit this object, Cloudflare will use the default HTML error page. If \"mode\" is \"challenge\", \"managed_challenge\", or \"js_challenge\", Cloudflare will use the zone challenge pages and you should not provide the \"response\" object."
 							}
 						},
 						"required_props": [],
@@ -853,7 +854,7 @@
 						"example": "{\n  \"mode\": \"challenge\",\n  \"timeout\": 86400,\n  \"response\": {\n    \"content_type\": \"text/xml\",\n    \"body\": \"<error>This request has been rate-limited.</error>\"\n  }\n}"
 					}
 				],
-				"description": "The action to be performed when the threshold of matched traffic within the period defined is exceeded"
+				"description": "The action to perform when the threshold of matched traffic within the configured period is exceeded."
 			}
 		},
 		"required_props": [],
@@ -869,7 +870,7 @@
 		],
 		"objects": [],
 		"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"disabled\": false,\n  \"description\": \"Prevent multiple login failures to mitigate brute force attacks\",\n  \"match\": {\n    \"request\": {\n      \"methods\": [\n        \"GET\",\n        \"POST\"\n      ],\n      \"schemes\": [\n        \"HTTP\",\n        \"HTTPS\"\n      ],\n      \"url\": \"*.example.org/path*\"\n    },\n    \"response\": {},\n    \"headers\": [\n      {\n        \"name\": \"Cf-Cache-Status\",\n        \"op\": \"ne\",\n        \"value\": \"HIT\"\n      }\n    ]\n  },\n  \"bypass\": [\n    {\n      \"name\": \"url\",\n      \"value\": \"api.example.com/*\"\n    }\n  ],\n  \"threshold\": 60,\n  \"period\": 900,\n  \"action\": {\n    \"mode\": \"challenge\",\n    \"timeout\": 86400,\n    \"response\": {\n      \"content_type\": \"text/xml\",\n      \"body\": \"<error>This request has been rate-limited.</error>\"\n    }\n  }\n}",
-		"title": "Rate Limits for a Zone",
-		"description": "Documentation for Cloudflare Rate Limits"
+		"title": "Rate limits for a zone",
+		"description": "Rate limits configured for a zone."
 	}
 }

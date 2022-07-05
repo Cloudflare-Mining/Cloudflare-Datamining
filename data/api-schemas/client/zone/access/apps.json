@@ -78,7 +78,7 @@
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application",
+						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -261,7 +261,7 @@
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application",
+						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -443,7 +443,7 @@
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application",
+						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -709,7 +709,7 @@
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application",
+						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -793,7 +793,7 @@
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application",
+						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -874,7 +874,7 @@
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application",
+						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -955,7 +955,7 @@
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application",
+						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -1091,7 +1091,7 @@
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application",
+						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -1274,7 +1274,7 @@
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application",
+						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -1456,7 +1456,7 @@
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application",
+						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -1722,7 +1722,7 @@
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application",
+						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -1806,7 +1806,7 @@
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application",
+						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -1887,7 +1887,7 @@
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application",
+						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -1968,7 +1968,7 @@
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application",
+						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -2208,7 +2208,7 @@
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application",
+						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -2497,7 +2497,7 @@
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application",
+						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -2601,7 +2601,7 @@
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application",
+						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -2806,7 +2806,7 @@
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application",
+						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -3013,7 +3013,7 @@
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application",
+						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -3117,7 +3117,7 @@
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application",
+						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -3221,7 +3221,7 @@
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application",
+						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",

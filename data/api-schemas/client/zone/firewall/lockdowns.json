@@ -1,13 +1,13 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/firewall/lockdowns.json",
 	"title": "Zone Lockdown",
-	"description": "Lock access to URLs in this zone to only permitted addresses or address ranges.",
-	"cfExtendedDescription": "Ensure that part(s) of your site can only be accessed from permitted IP addresses or IP ranges. Zone Lockdown allows you to define one or more URLs (with wildcard matching on the domain or path) that will only permit access if the request originates from an IP address that matches a safelist of one or more IP addresses and/or IP ranges.",
+	"description": "Zone Lockdown allows you to restrict access to URLs in a zone to specific IP addresses and IP address ranges.",
+	"cfExtendedDescription": "The URLs configured in a Zone Lockdown rule support wildcard matching on the domain or path.",
 	"type": "object",
 	"links": [
 		{
-			"title": "List Lockdown Rules",
-			"description": "List the lockdown rules on a zone.",
+			"title": "Get Zone Lockdown rules",
+			"description": "Fetches Zone Lockdown rules. You can filter the results using several optional parameters.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone_identifier}/firewall/lockdowns",
 			"method": "GET",
@@ -18,7 +18,7 @@
 				"business": true,
 				"enterprise": true
 			},
-			"html_id": "zone-lockdown-list-lockdown-rules",
+			"html_id": "zone-lockdown-get-zone-lockdown-rules",
 			"uri": "zones/:zone_identifier/firewall/lockdowns",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/lockdowns?page=1&per_page=20&description=endpoints&created_on=2014-01-01T05:20:00.12345Z&modified_on=2014-01-01T05:20:00.12345Z&uri=/some/path&ip=1.2.3.4&ip_range=1.2.3.0/16&priority=5\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {
@@ -29,7 +29,7 @@
 					"page": {
 						"type": "number",
 						"example": "1",
-						"description": "Page number of paginated results",
+						"description": "Page number of paginated results.",
 						"minimum": 1,
 						"default": 1
 					},
@@ -39,46 +39,46 @@
 						"minimum": 1,
 						"maximum": 1000,
 						"default": 20,
-						"description": "Maximum number of results per page. This can only be provided as 1 or in multiples of 5 such as 5, 10, 15 or 20"
+						"description": "The maximum number of results per page. You can only set the value to `1` or to a multiple of 5 such as `5`, `10`, `15`, or `20`."
 					},
 					"description": {
 						"type": "string",
 						"example": "\"endpoints\"",
-						"description": "A single string to search for in the description"
+						"description": "A string to search for in the description of existing rules."
 					},
 					"created_on": {
 						"type": "string",
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
-						"description": "When the lockdown rule was created",
+						"description": "The timestamp of when the rule was created.",
 						"format": "date-time",
 						"readOnly": true
 					},
 					"modified_on": {
 						"type": "string",
 						"example": "\"2014-01-01T05:20:00.12345Z\"",
-						"description": "When the lockdown rule was modified",
+						"description": "The timestamp of when the rule was last modified.",
 						"format": "date-time",
 						"readOnly": true
 					},
 					"uri": {
 						"type": "string",
 						"example": "\"/some/path\"",
-						"description": "A single URI to search for in the list of URLs"
+						"description": "A single URI to search for in the list of URLs of existing rules."
 					},
 					"ip": {
 						"type": "string",
 						"example": "\"1.2.3.4\"",
-						"description": "A single IP address to search for"
+						"description": "A single IP address to search for in existing rules."
 					},
 					"ip_range": {
 						"type": "string",
 						"example": "\"1.2.3.0/16\"",
-						"description": "A single IP range to search for"
+						"description": "A single IP address range to search for in existing rules."
 					},
 					"priority": {
 						"type": "number",
 						"example": "\"5\"",
-						"description": "The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without."
+						"description": "The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority."
 					}
 				},
 				"required_props": [],
@@ -99,8 +99,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n      \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"paused\": false,\n      \"description\": \"Restrict access to these endpoints to requests from a known IP address\",\n      \"urls\": [\n        \"api.mysite.com/some/endpoint*\"\n      ],\n      \"configurations\": [\n        {\n          \"target\": \"ip\",\n          \"value\": \"198.51.100.4\"\n        }\n      ]\n    }\n  ]\n}"
 		},
 		{
-			"title": "Create Lockdown Rule",
-			"description": "Create a new lockdown rule for a zone. See the record object definitions for required attributes for each record type",
+			"title": "Create a Zone Lockdown rule",
+			"description": "Creates a new Zone Lockdown rule.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone_identifier}/firewall/lockdowns",
 			"method": "POST",
@@ -111,7 +111,7 @@
 				"business": true,
 				"enterprise": true
 			},
-			"html_id": "zone-lockdown-create-lockdown-rule",
+			"html_id": "zone-lockdown-create-a-zone-lockdown-rule",
 			"uri": "zones/:zone_identifier/firewall/lockdowns",
 			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/lockdowns\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"paused\":false,\"description\":\"Restrict access to these endpoints to requests from a known IP address\",\"urls\":[\"api.mysite.com/some/endpoint*\"],\"configurations\":[{\"target\":\"ip\",\"value\":\"198.51.100.4\"}]}'",
 			"parameters": {
@@ -122,18 +122,18 @@
 					"paused": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Whether this zone lockdown is currently paused"
+						"description": "When true, indicates that the rule is currently paused."
 					},
 					"description": {
 						"type": "string",
 						"example": "\"Restrict access to these endpoints to requests from a known IP address\"",
-						"description": "A note that you can use to describe the reason for a Lockdown rule.",
+						"description": "An informative summary of the rule.",
 						"maxLength": 1024
 					},
 					"urls": {
 						"type": "array",
 						"example": "[\n  \"api.mysite.com/some/endpoint*\"\n]",
-						"description": "URLs to be included in this rule definition. Wildcards are permitted. The URL pattern entered here will be escaped before use. This limits the URL to just simple wildcard patterns. ",
+						"description": "The URLs to include in the rule definition. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
 						"items": {
 							"type": "string",
 							"example": "api.mysite.com/some/endpoint*"
@@ -150,12 +150,12 @@
 										"enum": [
 											"ip"
 										],
-										"description": "The request property to target"
+										"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule."
 									},
 									"value": {
 										"type": "string",
 										"example": "\"198.51.100.4\"",
-										"description": "The IP address to target in requests"
+										"description": "The IP address to match. This address will be compared to the IP address of incoming requests."
 									}
 								},
 								"required_props": [],
@@ -165,7 +165,7 @@
 								],
 								"objects": [],
 								"example": "{\n  \"target\": \"ip\",\n  \"value\": \"198.51.100.4\"\n}",
-								"title": "IP rule configuration"
+								"title": "An IP address configuration."
 							},
 							{
 								"all_props": {
@@ -174,12 +174,12 @@
 										"enum": [
 											"ip_range"
 										],
-										"description": "The request property to target"
+										"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule."
 									},
 									"value": {
 										"type": "string",
 										"example": "\"198.51.100.4/16\"",
-										"description": "The IP range to target in requests. Limited to /16 and /24"
+										"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`."
 									}
 								},
 								"required_props": [],
@@ -189,42 +189,42 @@
 								],
 								"objects": [],
 								"example": "{\n  \"target\": \"ip_range\",\n  \"value\": \"198.51.100.4/16\"\n}",
-								"title": "IP range rule configuration"
+								"title": "An IP address range configuration."
 							}
 						],
-						"description": "List of IP addresses or CIDR ranges to use for this rule. This can include any number of `ip` or `ip_range` configurations that can access the provided URLs.",
+						"description": "A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.",
 						"items": {
 							"anyOf": [
 								{
-									"title": "IP rule configuration",
+									"title": "An IP address configuration.",
 									"properties": {
 										"target": {
 											"enum": [
 												"ip"
 											],
-											"description": "The request property to target",
+											"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.",
 											"example": "ip"
 										},
 										"value": {
 											"type": "string",
-											"description": "The IP address to target in requests",
+											"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
 											"example": "198.51.100.4"
 										}
 									}
 								},
 								{
-									"title": "IP range rule configuration",
+									"title": "An IP address range configuration.",
 									"properties": {
 										"target": {
 											"enum": [
 												"ip_range"
 											],
-											"description": "The request property to target",
+											"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule.",
 											"example": "ip_range"
 										},
 										"value": {
 											"type": "string",
-											"description": "The IP range to target in requests. Limited to /16 and /24",
+											"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
 											"example": "198.51.100.4/16"
 										}
 									}
@@ -247,7 +247,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"paused\": false,\n    \"description\": \"Restrict access to these endpoints to requests from a known IP address\",\n    \"urls\": [\n      \"api.mysite.com/some/endpoint*\"\n    ],\n    \"configurations\": [\n      {\n        \"target\": \"ip\",\n        \"value\": \"198.51.100.4\"\n      }\n    ]\n  }\n}"
 		},
 		{
-			"title": "Lockdown Rule Details",
+			"title": "Get a Zone Lockdown rule",
+			"description": "Fetches the details of a Zone Lockdown rule.",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_identifier}/firewall/lockdowns/{#/definitions/id}",
 			"method": "GET",
@@ -258,13 +259,14 @@
 				"business": true,
 				"enterprise": true
 			},
-			"html_id": "zone-lockdown-lockdown-rule-details",
+			"html_id": "zone-lockdown-get-a-zone-lockdown-rule",
 			"uri": "zones/:zone_identifier/firewall/lockdowns/:id",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/lockdowns/372e67954025e0ba6aaa6d586b9e0b59\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"paused\": false,\n    \"description\": \"Restrict access to these endpoints to requests from a known IP address\",\n    \"urls\": [\n      \"api.mysite.com/some/endpoint*\"\n    ],\n    \"configurations\": [\n      {\n        \"target\": \"ip\",\n        \"value\": \"198.51.100.4\"\n      }\n    ]\n  }\n}"
 		},
 		{
-			"title": "Update Lockdown Rule",
+			"title": "Update a Zone Lockdown rule",
+			"description": "Updates an existing Zone Lockdown rule.",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_identifier}/firewall/lockdowns/{#/definitions/id}",
 			"method": "PUT",
@@ -275,7 +277,7 @@
 				"business": true,
 				"enterprise": true
 			},
-			"html_id": "zone-lockdown-update-lockdown-rule",
+			"html_id": "zone-lockdown-update-a-zone-lockdown-rule",
 			"uri": "zones/:zone_identifier/firewall/lockdowns/:id",
 			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/lockdowns/372e67954025e0ba6aaa6d586b9e0b59\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"paused\":false,\"description\":\"Restrict access to these endpoints to requests from a known IP address\",\"urls\":[\"api.mysite.com/some/endpoint*\"],\"configurations\":[{\"target\":\"ip\",\"value\":\"198.51.100.4\"}]}'",
 			"parameters": {
@@ -286,18 +288,18 @@
 					"paused": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Whether this zone lockdown is currently paused"
+						"description": "When true, indicates that the rule is currently paused."
 					},
 					"description": {
 						"type": "string",
 						"example": "\"Restrict access to these endpoints to requests from a known IP address\"",
-						"description": "A note that you can use to describe the reason for a Lockdown rule.",
+						"description": "An informative summary of the rule.",
 						"maxLength": 1024
 					},
 					"urls": {
 						"type": "array",
 						"example": "[\n  \"api.mysite.com/some/endpoint*\"\n]",
-						"description": "URLs to be included in this rule definition. Wildcards are permitted. The URL pattern entered here will be escaped before use. This limits the URL to just simple wildcard patterns. ",
+						"description": "The URLs to include in the rule definition. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
 						"items": {
 							"type": "string",
 							"example": "api.mysite.com/some/endpoint*"
@@ -314,12 +316,12 @@
 										"enum": [
 											"ip"
 										],
-										"description": "The request property to target"
+										"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule."
 									},
 									"value": {
 										"type": "string",
 										"example": "\"198.51.100.4\"",
-										"description": "The IP address to target in requests"
+										"description": "The IP address to match. This address will be compared to the IP address of incoming requests."
 									}
 								},
 								"required_props": [],
@@ -329,7 +331,7 @@
 								],
 								"objects": [],
 								"example": "{\n  \"target\": \"ip\",\n  \"value\": \"198.51.100.4\"\n}",
-								"title": "IP rule configuration"
+								"title": "An IP address configuration."
 							},
 							{
 								"all_props": {
@@ -338,12 +340,12 @@
 										"enum": [
 											"ip_range"
 										],
-										"description": "The request property to target"
+										"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule."
 									},
 									"value": {
 										"type": "string",
 										"example": "\"198.51.100.4/16\"",
-										"description": "The IP range to target in requests. Limited to /16 and /24"
+										"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`."
 									}
 								},
 								"required_props": [],
@@ -353,42 +355,42 @@
 								],
 								"objects": [],
 								"example": "{\n  \"target\": \"ip_range\",\n  \"value\": \"198.51.100.4/16\"\n}",
-								"title": "IP range rule configuration"
+								"title": "An IP address range configuration."
 							}
 						],
-						"description": "List of IP addresses or CIDR ranges to use for this rule. This can include any number of `ip` or `ip_range` configurations that can access the provided URLs.",
+						"description": "A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.",
 						"items": {
 							"anyOf": [
 								{
-									"title": "IP rule configuration",
+									"title": "An IP address configuration.",
 									"properties": {
 										"target": {
 											"enum": [
 												"ip"
 											],
-											"description": "The request property to target",
+											"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.",
 											"example": "ip"
 										},
 										"value": {
 											"type": "string",
-											"description": "The IP address to target in requests",
+											"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
 											"example": "198.51.100.4"
 										}
 									}
 								},
 								{
-									"title": "IP range rule configuration",
+									"title": "An IP address range configuration.",
 									"properties": {
 										"target": {
 											"enum": [
 												"ip_range"
 											],
-											"description": "The request property to target",
+											"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule.",
 											"example": "ip_range"
 										},
 										"value": {
 											"type": "string",
-											"description": "The IP range to target in requests. Limited to /16 and /24",
+											"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
 											"example": "198.51.100.4/16"
 										}
 									}
@@ -411,7 +413,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"paused\": false,\n    \"description\": \"Restrict access to these endpoints to requests from a known IP address\",\n    \"urls\": [\n      \"api.mysite.com/some/endpoint*\"\n    ],\n    \"configurations\": [\n      {\n        \"target\": \"ip\",\n        \"value\": \"198.51.100.4\"\n      }\n    ]\n  }\n}"
 		},
 		{
-			"title": "Delete Lockdown Rule",
+			"title": "Delete a Zone Lockdown rule",
+			"description": "Deletes an existing Zone Lockdown rule.",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_identifier}/firewall/lockdowns/{#/definitions/id}",
 			"method": "DELETE",
@@ -422,7 +425,7 @@
 				"business": true,
 				"enterprise": true
 			},
-			"html_id": "zone-lockdown-delete-lockdown-rule",
+			"html_id": "zone-lockdown-delete-a-zone-lockdown-rule",
 			"uri": "zones/:zone_identifier/firewall/lockdowns/:id",
 			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/lockdowns/372e67954025e0ba6aaa6d586b9e0b59\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"result\": {\n    \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\"\n  }\n}"
@@ -452,39 +455,39 @@
 			"id": {
 				"type": "string",
 				"example": "\"372e67954025e0ba6aaa6d586b9e0b59\"",
-				"description": "Lockdown rule identifier",
+				"description": "The unique identifier of the Zone Lockdown rule.",
 				"maxLength": 32,
 				"readOnly": true
 			},
 			"created_on": {
 				"type": "string",
 				"example": "\"2014-01-01T05:20:00.12345Z\"",
-				"description": "When the lockdown rule was created",
+				"description": "The timestamp of when the rule was created.",
 				"format": "date-time",
 				"readOnly": true
 			},
 			"modified_on": {
 				"type": "string",
 				"example": "\"2014-01-01T05:20:00.12345Z\"",
-				"description": "When the lockdown rule was modified",
+				"description": "The timestamp of when the rule was last modified.",
 				"format": "date-time",
 				"readOnly": true
 			},
 			"paused": {
 				"type": "boolean",
 				"example": "false",
-				"description": "Whether this zone lockdown is currently paused"
+				"description": "When true, indicates that the rule is currently paused."
 			},
 			"description": {
 				"type": "string",
 				"example": "\"Restrict access to these endpoints to requests from a known IP address\"",
-				"description": "A note that you can use to describe the reason for a Lockdown rule.",
+				"description": "An informative summary of the rule.",
 				"maxLength": 1024
 			},
 			"urls": {
 				"type": "array",
 				"example": "[\n  \"api.mysite.com/some/endpoint*\"\n]",
-				"description": "URLs to be included in this rule definition. Wildcards are permitted. The URL pattern entered here will be escaped before use. This limits the URL to just simple wildcard patterns. ",
+				"description": "The URLs to include in the rule definition. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
 				"items": {
 					"type": "string",
 					"example": "api.mysite.com/some/endpoint*"
@@ -501,12 +504,12 @@
 								"enum": [
 									"ip"
 								],
-								"description": "The request property to target"
+								"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule."
 							},
 							"value": {
 								"type": "string",
 								"example": "\"198.51.100.4\"",
-								"description": "The IP address to target in requests"
+								"description": "The IP address to match. This address will be compared to the IP address of incoming requests."
 							}
 						},
 						"required_props": [],
@@ -516,7 +519,7 @@
 						],
 						"objects": [],
 						"example": "{\n  \"target\": \"ip\",\n  \"value\": \"198.51.100.4\"\n}",
-						"title": "IP rule configuration"
+						"title": "An IP address configuration."
 					},
 					{
 						"all_props": {
@@ -525,12 +528,12 @@
 								"enum": [
 									"ip_range"
 								],
-								"description": "The request property to target"
+								"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule."
 							},
 							"value": {
 								"type": "string",
 								"example": "\"198.51.100.4/16\"",
-								"description": "The IP range to target in requests. Limited to /16 and /24"
+								"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`."
 							}
 						},
 						"required_props": [],
@@ -540,42 +543,42 @@
 						],
 						"objects": [],
 						"example": "{\n  \"target\": \"ip_range\",\n  \"value\": \"198.51.100.4/16\"\n}",
-						"title": "IP range rule configuration"
+						"title": "An IP address range configuration."
 					}
 				],
-				"description": "List of IP addresses or CIDR ranges to use for this rule. This can include any number of `ip` or `ip_range` configurations that can access the provided URLs.",
+				"description": "A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.",
 				"items": {
 					"anyOf": [
 						{
-							"title": "IP rule configuration",
+							"title": "An IP address configuration.",
 							"properties": {
 								"target": {
 									"enum": [
 										"ip"
 									],
-									"description": "The request property to target",
+									"description": "The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.",
 									"example": "ip"
 								},
 								"value": {
 									"type": "string",
-									"description": "The IP address to target in requests",
+									"description": "The IP address to match. This address will be compared to the IP address of incoming requests.",
 									"example": "198.51.100.4"
 								}
 							}
 						},
 						{
-							"title": "IP range rule configuration",
+							"title": "An IP address range configuration.",
 							"properties": {
 								"target": {
 									"enum": [
 										"ip_range"
 									],
-									"description": "The request property to target",
+									"description": "The configuration target. You must set the target to `ip_range` when specifying an IP address range in the Zone Lockdown rule.",
 									"example": "ip_range"
 								},
 								"value": {
 									"type": "string",
-									"description": "The IP range to target in requests. Limited to /16 and /24",
+									"description": "The IP address range to match. You can only use prefix lengths `/16` and `/24`.",
 									"example": "198.51.100.4/16"
 								}
 							}
@@ -597,6 +600,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"paused\": false,\n  \"description\": \"Restrict access to these endpoints to requests from a known IP address\",\n  \"urls\": [\n    \"api.mysite.com/some/endpoint*\"\n  ],\n  \"configurations\": [\n    {\n      \"target\": \"ip\",\n      \"value\": \"198.51.100.4\"\n    }\n  ]\n}",
 		"title": "Zone Lockdown",
-		"description": "Lock access to URLs in this zone to only permitted addresses or address ranges."
+		"description": "Zone Lockdown allows you to restrict access to URLs in a zone to specific IP addresses and IP address ranges."
 	}
 }
