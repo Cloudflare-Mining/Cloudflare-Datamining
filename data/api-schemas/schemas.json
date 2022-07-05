@@ -39507,7 +39507,7 @@
 																"description": "Custom domain",
 																"type": "string",
 																"readOnly": true,
-																"example": "helloworld.com"
+																"example": "example.com"
 															},
 															"status": {
 																"description": "Status of the custom domain",
@@ -39613,6 +39613,52 @@
 						"api_email": []
 					}
 				]
+			},
+			"post": {
+				"summary": "Add domain",
+				"description": "Add a new domain for the Pages project",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Add domain response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"example": {
+									"name": "example.com"
+								}
+							}
+						}
+					}
+				}
 			}
 		},
 		"/accounts/:account_id/pages/projects/:project_name/domains/:domain_name": {
@@ -39661,6 +39707,46 @@
 							"application/json": {
 								"schema": {
 									"$ref": "#/paths/~1accounts~1%3Aaccount_id~1pages~1projects~1%3Aproject_name~1domains~1%3Adomain_name/get/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {}
+					}
+				}
+			},
+			"delete": {
+				"summary": "Delete domain",
+				"description": "Delete a domain",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Delete domain response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"nullable": true
+												}
+											}
+										}
+									]
 								}
 							}
 						}
