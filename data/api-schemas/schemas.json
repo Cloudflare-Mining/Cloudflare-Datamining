@@ -77799,9 +77799,6 @@
 															"suspended": {
 																"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1healthchecks/post/requestBody/content/application~1json/schema/properties/suspended"
 															},
-															"notification": {
-																"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1healthchecks/post/requestBody/content/application~1json/schema/properties/notification"
-															},
 															"check_regions": {
 																"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1healthchecks/post/requestBody/content/application~1json/schema/properties/check_regions"
 															},
@@ -77943,41 +77940,6 @@
 										"type": "boolean",
 										"description": "If suspended, no health checks are sent to the origin.",
 										"default": false
-									},
-									"notification": {
-										"type": "object",
-										"description": "Notifications are sent when the status of a health check changes. Deprecated, use the notification API instead: https://api.cloudflare.com/#notification-policies-create-notification-policy.\nNotes: Deprecated",
-										"properties": {
-											"suspended": {
-												"type": "boolean",
-												"description": "Whether the notifications are suspended or not. Useful for maintenance periods.",
-												"default": false
-											},
-											"email_addresses": {
-												"type": "array",
-												"description": "A list of email addresses we want to send the notifications to.",
-												"items": {
-													"type": "string"
-												},
-												"example": [
-													"alert@example.com",
-													"oncall@example.com"
-												],
-												"nullable": true
-											},
-											"trigger": {
-												"type": "string",
-												"description": "Which events should trigger a notification. Supported values are 'FAIL' for failing health checks only, 'SUCCESS' for passing ones only, and 'ALL' (default).",
-												"enum": [
-													"ALL",
-													"SUCCESS",
-													"FAIL"
-												],
-												"example": "FAIL",
-												"default": "ALL"
-											}
-										},
-										"nullable": true
 									},
 									"check_regions": {
 										"type": "array",
@@ -78198,9 +78160,6 @@
 														"suspended": {
 															"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1healthchecks~1%7Bidentifier%7D/put/requestBody/content/application~1json/schema/properties/suspended"
 														},
-														"notification": {
-															"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1healthchecks~1%7Bidentifier%7D/put/requestBody/content/application~1json/schema/properties/notification"
-														},
 														"check_regions": {
 															"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1healthchecks~1%7Bidentifier%7D/put/requestBody/content/application~1json/schema/properties/check_regions"
 														},
@@ -78338,41 +78297,6 @@
 										"type": "boolean",
 										"description": "If suspended, no health checks are sent to the origin.",
 										"default": false
-									},
-									"notification": {
-										"type": "object",
-										"description": "Notifications are sent when the status of a health check changes. Deprecated, use the notification API instead: https://api.cloudflare.com/#notification-policies-create-notification-policy.\nNotes: Deprecated",
-										"properties": {
-											"suspended": {
-												"type": "boolean",
-												"description": "Whether the notifications are suspended or not. Useful for maintenance periods.",
-												"default": false
-											},
-											"email_addresses": {
-												"type": "array",
-												"description": "A list of email addresses we want to send the notifications to.",
-												"items": {
-													"type": "string"
-												},
-												"example": [
-													"alert@example.com",
-													"oncall@example.com"
-												],
-												"nullable": true
-											},
-											"trigger": {
-												"type": "string",
-												"description": "Which events should trigger a notification. Supported values are 'FAIL' for failing health checks only, 'SUCCESS' for passing ones only, and 'ALL' (default).",
-												"enum": [
-													"ALL",
-													"SUCCESS",
-													"FAIL"
-												],
-												"example": "FAIL",
-												"default": "ALL"
-											}
-										},
-										"nullable": true
 									},
 									"check_regions": {
 										"type": "array",
@@ -78709,9 +78633,6 @@
 														"suspended": {
 															"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1healthchecks~1preview/post/requestBody/content/application~1json/schema/properties/suspended"
 														},
-														"notification": {
-															"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1healthchecks~1preview/post/requestBody/content/application~1json/schema/properties/notification"
-														},
 														"check_regions": {
 															"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1healthchecks~1preview/post/requestBody/content/application~1json/schema/properties/check_regions"
 														},
@@ -78803,41 +78724,6 @@
 										"type": "boolean",
 										"description": "If suspended, no health checks are sent to the origin.",
 										"default": false
-									},
-									"notification": {
-										"type": "object",
-										"description": "Notifications are sent when the status of a health check changes. Deprecated, use the notification API instead: https://api.cloudflare.com/#notification-policies-create-notification-policy.\nNotes: Deprecated",
-										"properties": {
-											"suspended": {
-												"type": "boolean",
-												"description": "Whether the notifications are suspended or not. Useful for maintenance periods.",
-												"default": false
-											},
-											"email_addresses": {
-												"type": "array",
-												"description": "A list of email addresses we want to send the notifications to.",
-												"items": {
-													"type": "string"
-												},
-												"example": [
-													"alert@example.com",
-													"oncall@example.com"
-												],
-												"nullable": true
-											},
-											"trigger": {
-												"type": "string",
-												"description": "Which events should trigger a notification. Supported values are 'FAIL' for failing health checks only, 'SUCCESS' for passing ones only, and 'ALL' (default).",
-												"enum": [
-													"ALL",
-													"SUCCESS",
-													"FAIL"
-												],
-												"example": "FAIL",
-												"default": "ALL"
-											}
-										},
-										"nullable": true
 									},
 									"check_regions": {
 										"type": "array",
@@ -79063,41 +78949,6 @@
 															"type": "boolean",
 															"description": "If suspended, no health checks are sent to the origin.",
 															"default": false
-														},
-														"notification": {
-															"type": "object",
-															"description": "Notifications are sent when the status of a health check changes. Deprecated, use the notification API instead: https://api.cloudflare.com/#notification-policies-create-notification-policy.\nNotes: Deprecated",
-															"properties": {
-																"suspended": {
-																	"type": "boolean",
-																	"description": "Whether the notifications are suspended or not. Useful for maintenance periods.",
-																	"default": false
-																},
-																"email_addresses": {
-																	"type": "array",
-																	"description": "A list of email addresses we want to send the notifications to.",
-																	"items": {
-																		"type": "string"
-																	},
-																	"example": [
-																		"alert@example.com",
-																		"oncall@example.com"
-																	],
-																	"nullable": true
-																},
-																"trigger": {
-																	"type": "string",
-																	"description": "Which events should trigger a notification. Supported values are 'FAIL' for failing health checks only, 'SUCCESS' for passing ones only, and 'ALL' (default).",
-																	"enum": [
-																		"ALL",
-																		"SUCCESS",
-																		"FAIL"
-																	],
-																	"example": "FAIL",
-																	"default": "ALL"
-																}
-															},
-															"nullable": true
 														},
 														"check_regions": {
 															"type": "array",
