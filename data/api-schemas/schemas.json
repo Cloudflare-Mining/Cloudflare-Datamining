@@ -66300,9 +66300,6 @@
 																			"name": {
 																				"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1apps/post/responses/200/content/application~1json/schema/allOf/1/properties/result/allOf/1/properties/name"
 																			},
-																			"domain": {
-																				"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1apps/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/anyOf/0/allOf/1/properties/domain"
-																			},
 																			"logo_url": {
 																				"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1apps/post/responses/200/content/application~1json/schema/allOf/1/properties/result/allOf/1/properties/logo_url"
 																			},
@@ -66936,9 +66933,6 @@
 																		"name": {
 																			"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1apps~1%7Bapp_id%7D/put/responses/200/content/application~1json/schema/allOf/1/properties/result/allOf/1/properties/name"
 																		},
-																		"domain": {
-																			"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1apps~1%7Bapp_id%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/result/anyOf/0/allOf/1/properties/domain"
-																		},
 																		"logo_url": {
 																			"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1apps~1%7Bapp_id%7D/put/responses/200/content/application~1json/schema/allOf/1/properties/result/allOf/1/properties/logo_url"
 																		},
@@ -67245,7 +67239,7 @@
 			},
 			"put": {
 				"summary": "Update Bookmark Access Application",
-				"description": "Create a new Bookmark Access Application",
+				"description": "Update a Bookmark Access Application",
 				"parameters": [
 					{
 						"name": "app_id",
@@ -68650,11 +68644,6 @@
 															"id": {
 																"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1identity_providers/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/id"
 															},
-															"type": {
-																"description": "The application type",
-																"type": "string",
-																"example": "bookmark"
-															},
 															"domain": {
 																"type": "string",
 																"description": "The domain of the bookmark application.",
@@ -68698,55 +68687,6 @@
 						"api_email": []
 					}
 				]
-			},
-			"post": {
-				"summary": "Create Bookmark Application",
-				"description": "Create a new bookmark application",
-				"parameters": [
-					{
-						"name": "identifier",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1bookmarks/get/parameters/0/schema"
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "Create Bookmark Application response",
-						"content": {
-							"application/json": {
-								"schema": {
-									"allOf": [
-										{
-											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
-										},
-										{
-											"properties": {
-												"result": {
-													"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1bookmarks/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items"
-												}
-											}
-										}
-									]
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"api_key": [],
-						"api_email": []
-					}
-				],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {}
-					}
-				}
 			}
 		},
 		"/accounts/{identifier}/access/bookmarks/{uuid}": {
@@ -68788,11 +68728,6 @@
 													"properties": {
 														"id": {
 															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1identity_providers/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/id"
-														},
-														"type": {
-															"description": "The application type",
-															"type": "string",
-															"example": "bookmark"
 														},
 														"domain": {
 															"type": "string",
@@ -68836,6 +68771,52 @@
 						"api_email": []
 					}
 				]
+			},
+			"post": {
+				"summary": "Create Bookmark Application",
+				"description": "Create a new bookmark application",
+				"parameters": [
+					{
+						"name": "uuid",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1bookmarks~1%7Buuid%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1bookmarks~1%7Buuid%7D/get/parameters/1/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Create Bookmark Application response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1bookmarks~1%7Buuid%7D/get/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {}
+					}
+				}
 			},
 			"put": {
 				"summary": "Update Bookmark Application",
@@ -70996,9 +70977,6 @@
 																			"name": {
 																				"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1access~1apps/post/responses/200/content/application~1json/schema/allOf/1/properties/result/allOf/1/properties/name"
 																			},
-																			"domain": {
-																				"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1access~1apps/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/anyOf/0/allOf/1/properties/domain"
-																			},
 																			"logo_url": {
 																				"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1access~1apps/post/responses/200/content/application~1json/schema/allOf/1/properties/result/allOf/1/properties/logo_url"
 																			},
@@ -71633,9 +71611,6 @@
 																		"name": {
 																			"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1access~1apps~1%7Bapp_id%7D/put/responses/200/content/application~1json/schema/allOf/1/properties/result/allOf/1/properties/name"
 																		},
-																		"domain": {
-																			"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1access~1apps~1%7Bapp_id%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/result/anyOf/0/allOf/1/properties/domain"
-																		},
 																		"logo_url": {
 																			"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1access~1apps~1%7Bapp_id%7D/put/responses/200/content/application~1json/schema/allOf/1/properties/result/allOf/1/properties/logo_url"
 																		},
@@ -71942,7 +71917,7 @@
 			},
 			"put": {
 				"summary": "Update Bookmark Access Application",
-				"description": "Create a new Bookmark Access Application",
+				"description": "Update a Bookmark Access Application",
 				"parameters": [
 					{
 						"name": "app_id",
