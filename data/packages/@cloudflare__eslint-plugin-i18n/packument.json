@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/eslint-plugin-i18n",
 	"dist-tags": {
-		"latest": "0.0.23"
+		"latest": "0.0.24"
 	},
 	"versions": {
 		"0.0.1": {
@@ -378,9 +378,30 @@
 					}
 				]
 			}
+		},
+		"0.0.24": {
+			"name": "@cloudflare/eslint-plugin-i18n",
+			"version": "0.0.24",
+			"dependencies": {
+				"babel-eslint": "^8.2.5"
+			},
+			"dist": {
+				"integrity": "sha512-OfYdba/4G/u/C3YEYBVMcfjvIwAly1ubO0HNvQZ9InjW8pyqtzHF3SIlh297wJLkWR3GR2yU3IXganbiSvg09Q==",
+				"shasum": "2d830e468b775269bc8a19010406381f73befc9d",
+				"tarball": "https://registry.npmjs.org/@cloudflare/eslint-plugin-i18n/-/eslint-plugin-i18n-0.0.24.tgz",
+				"fileCount": 8,
+				"unpackedSize": 18104,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIFpb/rDti1W07zs6Rf9gj8ueDTDENs/z/TLniRVawLIjAiARyU67hUdYMitvWfyOtsoq/etDB0RNSY4/2anm9j/7/A=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJixhWHACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmquiBAAoXq9Z2uivo5CeQhs3gm5/dNx7FCmpg82FSs8Fy2tXzkWIaSq\r\ncp8/+Aol+tfdUAYJXJyrh1k/yhfwAe/Uadts29dYlWmZpCkKO28B5T8IdAFt\r\nGjG/dzHo255drmKnnftI+chbAdN2uLF6gw9dwP3ZeaVBjC4+QchfjBGQgEZF\r\nO4SYdA5BZGxslSyWnt2xOJcreMWtXGmhE+VQz5g3UxWtLKicdwnFS8Erwt3B\r\n9ZiDZHDfDTYuItbDoScGL2WOehi/iHFns85o9VsBjSlN+jKRxXkUtpOMJLK7\r\nlMkkAR3pVZ69xVW4BrkDfX3j+fGTJ39OO8163k0z3HKOSId+qkIq9cWgc97s\r\nwDw+M0F0WQ/XOrSXpFUIc+AgbKiEjDkCURAjes5dcg+kRBSe0uFU//ufAcKY\r\nHxxYQCBkl3qHAJxN9EICPT64Z88JynGjZw5D0gKZRxkfVhovNVzmX+y4eHL7\r\n+nz6uBbatBbYimMGEcC5vPxAd9q2QgCu3q6FJICmYQsB/86RWJHZM3MnACfd\r\nIOd49pzTjo0W39rkzG5T0rt/NhW6QCuDh5dAtmSZKTJDLHGsT7v8vmQ1aChE\r\n/cI/OVS4na55LKuzZxNWOoCJTXddW8UpwhVEetbEzMeTxv+sUUHBIFxGHkKZ\r\n7wBcCn29FMCkgNEyL93xS7IiS+6EjNsQrmc=\r\n=fsDk\r\n-----END PGP SIGNATURE-----\r\n"
+			}
 		}
 	},
-	"modified": "2022-06-21T16:56:56.898Z",
+	"modified": "2022-07-06T23:06:47.768Z",
 	"_cached": false,
-	"_contentLength": 28301
+	"_contentLength": 29873
 }
