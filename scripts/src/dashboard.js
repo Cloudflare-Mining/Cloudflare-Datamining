@@ -529,9 +529,9 @@ async function run(){
 		});
 		full(ast, (node) => {
 			if(node.type === 'ObjectExpression'){
-				const hasRoot = node.properties?.some?.(prop => prop.key.name === 'root');
+				const hasRoot = node.properties?.find?.(prop => prop.key.name === 'root');
 				// this is probably our navigation
-				if(hasRoot){
+				if(hasRoot && hasRoot.value.type === 'ArrayExpression'){
 					navigation = node;
 				}
 			}
@@ -559,9 +559,9 @@ async function run(){
 	});
 	full(ast, (node) => {
 		if(node.type === 'ObjectExpression'){
-			const hasRoot = node.properties?.some?.(prop => prop.key.name === 'dashVersion');
+			const hasDashVersion = node.properties?.find?.(prop => prop.key.name === 'dashVersion');
 			// this is probably the dash info payload
-			if(hasRoot){
+			if(hasDashVersion && (hasDashVersion.value.type === 'Literal' || hasDashVersion.value.type === 'StringLiteral')){
 				dashInfo = node;
 			}
 		}
