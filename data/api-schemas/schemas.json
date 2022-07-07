@@ -19582,7 +19582,7 @@
 		},
 		"/zones/{zone_identifier}/analytics/dashboard": {
 			"get": {
-				"summary": "Dashboard",
+				"summary": "Get dashboard",
 				"description": "The dashboard view provides both totals and timeseries data for the given zone and time period across the entire Cloudflare network.",
 				"parameters": [
 					{
@@ -19596,7 +19596,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Dashboard response",
+						"description": "Get dashboard response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -19960,7 +19960,7 @@
 		},
 		"/zones/{zone_identifier}/analytics/colos": {
 			"get": {
-				"summary": "Analytics by Co-locations",
+				"summary": "Get analytics by Co-locations",
 				"description": "This view provides a breakdown of analytics data by datacenter. Note: This is available to Enterprise customers only.",
 				"parameters": [
 					{
@@ -19974,7 +19974,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Analytics by Co-locations response",
+						"description": "Get analytics by Co-locations response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -20324,7 +20324,7 @@
 		},
 		"/zones/{zone_identifier}/logs/received": {
 			"get": {
-				"summary": "Logs received",
+				"summary": "Get logs received",
 				"description": "The `/received` api route allows customers to retrieve their edge HTTP logs. The basic access pattern is \"give me all the logs for zone Z for minute M\", where the minute M refers to the time records were received at Cloudflare's central data center. `start` is inclusive, and `end` is exclusive. Because of that, to get all data, at minutely cadence, starting at 10AM, the proper values are: `start=2018-05-20T10:00:00Z&end=2018-05-20T10:01:00Z`, then `start=2018-05-20T10:01:00Z&end=2018-05-20T10:02:00Z` and so on; the overlap will be handled properly.",
 				"parameters": [
 					{
@@ -20338,7 +20338,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Logs received response",
+						"description": "Get logs received response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -20377,7 +20377,7 @@
 		},
 		"/zones/{zone_identifier}/logs/rayids/{ray_identifier}": {
 			"get": {
-				"summary": "Logs RayIDs",
+				"summary": "Get logs RayIDs",
 				"description": "The `/rayids` api route allows lookups by specific rayid. The rayids route will return zero, one, or more records (ray ids are not unique).",
 				"parameters": [
 					{
@@ -20403,7 +20403,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Logs RayIDs response",
+						"description": "Get logs RayIDs response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -20442,7 +20442,7 @@
 		},
 		"/zones/{zone_identifier}/logs/received/fields": {
 			"get": {
-				"summary": "Fields",
+				"summary": "List fields",
 				"description": "Lists all fields available. The response is json object with key-value pairs, where keys are field names, and values are descriptions.",
 				"parameters": [
 					{
@@ -20456,7 +20456,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Fields response",
+						"description": "List fields response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -20493,7 +20493,7 @@
 		},
 		"/zones/{zone_identifier}/logpush/jobs": {
 			"get": {
-				"summary": "Logpush jobs",
+				"summary": "List Logpush jobs",
 				"description": "Lists Logpush jobs for a zone.",
 				"parameters": [
 					{
@@ -20507,7 +20507,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Logpush jobs response",
+						"description": "List Logpush jobs response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -20622,7 +20622,7 @@
 										"nullable": true
 									},
 									"enabled": {
-										"description": "",
+										"description": "Flag that indicates if the job was enabled.",
 										"type": "boolean",
 										"example": false
 									},
@@ -20676,7 +20676,7 @@
 		},
 		"/zones/{zone_identifier}/logpush/datasets/{dataset}/jobs": {
 			"get": {
-				"summary": "Logpush jobs for a dataset",
+				"summary": "List Logpush jobs for a dataset",
 				"description": "Lists Logpush jobs for a zone for a dataset.",
 				"parameters": [
 					{
@@ -20703,7 +20703,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Logpush jobs for a dataset response",
+						"description": "List Logpush jobs for a dataset response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -20749,7 +20749,7 @@
 		},
 		"/zones/{zone_identifier}/logpush/datasets/{dataset}/fields": {
 			"get": {
-				"summary": "Fields",
+				"summary": "List fields",
 				"description": "Lists all fields available for a dataset. The response result is an object with key-value pairs, where keys are field names, and values are descriptions.",
 				"parameters": [
 					{
@@ -20776,7 +20776,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Fields response",
+						"description": "List fields response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -21101,7 +21101,7 @@
 		},
 		"/zones/{zone_identifier}/logpush/jobs/{job_identifier}": {
 			"get": {
-				"summary": "Logpush job details",
+				"summary": "Get Logpush job details",
 				"description": "Gets the details of a Logpush job.",
 				"parameters": [
 					{
@@ -21125,7 +21125,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Logpush job details response",
+						"description": "Get Logpush job details response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -21222,7 +21222,7 @@
 							"schema": {
 								"properties": {
 									"enabled": {
-										"description": "",
+										"description": "Flag that indicates if the job was enabled.",
 										"type": "boolean",
 										"example": false
 									},
