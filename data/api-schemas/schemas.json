@@ -73109,7 +73109,7 @@
 				]
 			}
 		},
-		"/accounts/{identifier}/gateway/": {
+		"/accounts/{identifier}/gateway": {
 			"post": {
 				"summary": "Create Zero Trust account",
 				"description": "Create Zero Trust account with existing cloudflare account",
@@ -73140,7 +73140,7 @@
 													"type": "object",
 													"properties": {
 														"id": {
-															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1gateway~1/post/requestBody/content/application~1json/schema/properties/account_id"
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1gateway/post/requestBody/content/application~1json/schema/properties/account_id"
 														},
 														"gateway_tag": {
 															"type": "string",
@@ -73199,7 +73199,7 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1gateway~1/post/parameters/0/schema"
+							"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1gateway/post/parameters/0/schema"
 						}
 					}
 				],
@@ -73209,7 +73209,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1gateway~1/post/responses/200/content/application~1json/schema"
+									"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1gateway/post/responses/200/content/application~1json/schema"
 								}
 							}
 						}
