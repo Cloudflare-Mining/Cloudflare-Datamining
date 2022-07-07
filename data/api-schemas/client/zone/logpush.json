@@ -8,7 +8,7 @@
 	],
 	"links": [
 		{
-			"title": "Logpush jobs",
+			"title": "List Logpush jobs",
 			"description": "Lists Logpush jobs for a zone.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone_identifier}/logpush/jobs",
@@ -25,13 +25,13 @@
 				]
 			},
 			"cfOwnership": "data",
-			"html_id": "logpush-jobs-logpush-jobs",
+			"html_id": "logpush-jobs-list-logpush-jobs",
 			"uri": "zones/:zone_identifier/logpush/jobs",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/logpush/jobs\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": 1,\n      \"enabled\": false,\n      \"name\": \"example.com\",\n      \"dataset\": \"http_requests\",\n      \"logpull_options\": \"fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339\",\n      \"destination_conf\": \"s3://mybucket/logs?region=us-west-2\",\n      \"last_complete\": null,\n      \"last_error\": null,\n      \"error_message\": null,\n      \"frequency\": \"high\"\n    }\n  ]\n}"
 		},
 		{
-			"title": "Logpush jobs for a dataset",
+			"title": "List Logpush jobs for a dataset",
 			"description": "Lists Logpush jobs for a zone for a dataset.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone_identifier}/logpush/datasets/{#/definitions/dataset}/jobs",
@@ -48,13 +48,13 @@
 				]
 			},
 			"cfOwnership": "data",
-			"html_id": "logpush-jobs-logpush-jobs-for-a-dataset",
+			"html_id": "logpush-jobs-list-logpush-jobs-for-a-dataset",
 			"uri": "zones/:zone_identifier/logpush/datasets/:dataset/jobs",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/logpush/datasets/http_requests/jobs\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": 1,\n      \"enabled\": false,\n      \"name\": \"example.com\",\n      \"dataset\": \"http_requests\",\n      \"logpull_options\": \"fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339\",\n      \"destination_conf\": \"s3://mybucket/logs?region=us-west-2\",\n      \"last_complete\": null,\n      \"last_error\": null,\n      \"error_message\": null,\n      \"frequency\": \"high\"\n    }\n  ]\n}"
 		},
 		{
-			"title": "Fields",
+			"title": "List fields",
 			"description": "Lists all fields available for a dataset. The response result is an object with key-value pairs, where keys are field names, and values are descriptions.",
 			"rel": "tag:cloudflare.com,2018:logs",
 			"href": "zones/{#/definitions/zone_identifier}/logpush/datasets/{#/definitions/dataset}/fields",
@@ -71,7 +71,7 @@
 				]
 			},
 			"cfOwnership": "data",
-			"html_id": "logpush-jobs-fields",
+			"html_id": "logpush-jobs-list-fields",
 			"uri": "zones/:zone_identifier/logpush/datasets/:dataset/fields",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/logpush/datasets/http_requests/fields\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
@@ -255,7 +255,7 @@
 					"enabled": {
 						"type": "boolean",
 						"example": "false",
-						"description": ""
+						"description": "Flag that indicates if the job was enabled."
 					},
 					"dataset": {
 						"type": [
@@ -322,7 +322,7 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": 1,\n    \"enabled\": false,\n    \"name\": \"example.com\",\n    \"dataset\": \"http_requests\",\n    \"logpull_options\": \"fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339\",\n    \"destination_conf\": \"s3://mybucket/logs?region=us-west-2\",\n    \"last_complete\": null,\n    \"last_error\": null,\n    \"error_message\": null,\n    \"frequency\": \"high\"\n  }\n}"
 		},
 		{
-			"title": "Logpush job details",
+			"title": "Get Logpush job details",
 			"description": "Gets the details of a Logpush job.",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_identifier}/logpush/jobs/{#/definitions/job_identifier}",
@@ -339,7 +339,7 @@
 				]
 			},
 			"cfOwnership": "data",
-			"html_id": "logpush-jobs-logpush-job-details",
+			"html_id": "logpush-jobs-get-logpush-job-details",
 			"uri": "zones/:zone_identifier/logpush/jobs/:job_identifier",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/logpush/jobs/1\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": 1,\n    \"enabled\": false,\n    \"name\": \"example.com\",\n    \"dataset\": \"http_requests\",\n    \"logpull_options\": \"fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339\",\n    \"destination_conf\": \"s3://mybucket/logs?region=us-west-2\",\n    \"last_complete\": null,\n    \"last_error\": null,\n    \"error_message\": null,\n    \"frequency\": \"high\"\n  }\n}"
@@ -373,7 +373,7 @@
 					"enabled": {
 						"type": "boolean",
 						"example": "false",
-						"description": ""
+						"description": "Flag that indicates if the job was enabled."
 					},
 					"logpull_options": {
 						"type": [
@@ -515,7 +515,7 @@
 			"enabled": {
 				"type": "boolean",
 				"example": "false",
-				"description": ""
+				"description": "Flag that indicates if the job was enabled."
 			},
 			"name": {
 				"type": [

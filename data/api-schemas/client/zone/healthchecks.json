@@ -55,7 +55,7 @@
 				"objects": [],
 				"example": "{\n  \"page\": 1,\n  \"per_page\": 25,\n  \"name\": \"server-1\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"699d98642c564d2e855e9661899b7252\",\n      \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"name\": \"server-1\",\n      \"description\": \"Health check for www.example.com\",\n      \"suspended\": false,\n      \"notification\": {\n        \"suspended\": false,\n        \"email_addresses\": [\n          \"alert@example.com\",\n          \"oncall@example.com\"\n        ],\n        \"trigger\": \"FAIL\"\n      },\n      \"check_regions\": [\n        \"WEU\",\n        \"ENAM\"\n      ],\n      \"type\": \"HTTPS\",\n      \"consecutive_successes\": 1,\n      \"consecutive_fails\": 1,\n      \"http_config\": {\n        \"method\": \"GET\",\n        \"port\": 80,\n        \"path\": \"/health\",\n        \"expected_codes\": [\n          \"2xx\",\n          \"302\"\n        ],\n        \"expected_body\": \"success\",\n        \"follow_redirects\": false,\n        \"allow_insecure\": false,\n        \"header\": {\n          \"Host\": [\n            \"example.com\"\n          ],\n          \"X-App-ID\": [\n            \"abc123\"\n          ]\n        }\n      },\n      \"tcp_config\": {\n        \"method\": \"connection_established\",\n        \"port\": 80\n      },\n      \"timeout\": 5,\n      \"retries\": 2,\n      \"interval\": 60,\n      \"address\": \"www.example.com\",\n      \"status\": \"healthy\",\n      \"failure_reason\": \"\"\n    }\n  ]\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"699d98642c564d2e855e9661899b7252\",\n      \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"name\": \"server-1\",\n      \"description\": \"Health check for www.example.com\",\n      \"suspended\": false,\n      \"check_regions\": [\n        \"WEU\",\n        \"ENAM\"\n      ],\n      \"type\": \"HTTPS\",\n      \"consecutive_successes\": 1,\n      \"consecutive_fails\": 1,\n      \"http_config\": {\n        \"method\": \"GET\",\n        \"port\": 80,\n        \"path\": \"/health\",\n        \"expected_codes\": [\n          \"2xx\",\n          \"302\"\n        ],\n        \"expected_body\": \"success\",\n        \"follow_redirects\": false,\n        \"allow_insecure\": false,\n        \"header\": {\n          \"Host\": [\n            \"example.com\"\n          ],\n          \"X-App-ID\": [\n            \"abc123\"\n          ]\n        }\n      },\n      \"tcp_config\": {\n        \"method\": \"connection_established\",\n        \"port\": 80\n      },\n      \"timeout\": 5,\n      \"retries\": 2,\n      \"interval\": 60,\n      \"address\": \"www.example.com\",\n      \"status\": \"healthy\",\n      \"failure_reason\": \"\"\n    }\n  ]\n}"
 		},
 		{
 			"title": "Create Health Check",
@@ -72,7 +72,7 @@
 			"cfOwnership": "healthchecks",
 			"html_id": "health-checks-create-health-check",
 			"uri": "zones/:zone_identifier/healthchecks",
-			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/healthchecks\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"server-1\",\"description\":\"Health check for www.example.com\",\"suspended\":false,\"notification\":{\"suspended\":false,\"email_addresses\":[\"alert@example.com\",\"oncall@example.com\"],\"trigger\":\"FAIL\"},\"check_regions\":[\"WEU\",\"ENAM\"],\"type\":\"HTTPS\",\"consecutive_successes\":1,\"consecutive_fails\":1,\"http_config\":{\"method\":\"GET\",\"port\":80,\"path\":\"/health\",\"expected_codes\":[\"2xx\",\"302\"],\"expected_body\":\"success\",\"follow_redirects\":false,\"allow_insecure\":false,\"header\":{\"Host\":[\"example.com\"],\"X-App-ID\":[\"abc123\"]}},\"tcp_config\":{\"method\":\"connection_established\",\"port\":80},\"timeout\":5,\"retries\":2,\"interval\":60,\"address\":\"www.example.com\"}'",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/healthchecks\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"server-1\",\"description\":\"Health check for www.example.com\",\"suspended\":false,\"check_regions\":[\"WEU\",\"ENAM\"],\"type\":\"HTTPS\",\"consecutive_successes\":1,\"consecutive_fails\":1,\"http_config\":{\"method\":\"GET\",\"port\":80,\"path\":\"/health\",\"expected_codes\":[\"2xx\",\"302\"],\"expected_body\":\"success\",\"follow_redirects\":false,\"allow_insecure\":false,\"header\":{\"Host\":[\"example.com\"],\"X-App-ID\":[\"abc123\"]}},\"tcp_config\":{\"method\":\"connection_established\",\"port\":80},\"timeout\":5,\"retries\":2,\"interval\":60,\"address\":\"www.example.com\"}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -93,45 +93,6 @@
 						"example": "false",
 						"description": "If suspended, no health checks are sent to the origin.",
 						"default": false
-					},
-					"notification": {
-						"type": [
-							"object",
-							"null"
-						],
-						"example": "{\n  \"suspended\": false,\n  \"email_addresses\": [\n    \"alert@example.com\",\n    \"oncall@example.com\"\n  ],\n  \"trigger\": \"FAIL\"\n}",
-						"properties": {
-							"suspended": {
-								"type": "boolean",
-								"example": "false",
-								"description": "Whether the notifications are suspended or not. Useful for maintenance periods.",
-								"default": false
-							},
-							"email_addresses": {
-								"type": [
-									"array",
-									"null"
-								],
-								"example": "[\n  \"alert@example.com\",\n  \"oncall@example.com\"\n]",
-								"description": "A list of email addresses we want to send the notifications to.",
-								"items": {
-									"type": "string"
-								}
-							},
-							"trigger": {
-								"type": "string",
-								"example": "\"FAIL\"",
-								"description": "Which events should trigger a notification. Supported values are 'FAIL' for failing health checks only, 'SUCCESS' for passing ones only, and 'ALL' (default).",
-								"enum": [
-									"ALL",
-									"SUCCESS",
-									"FAIL"
-								],
-								"default": "ALL"
-							}
-						},
-						"description": "Notifications are sent when the status of a health check changes. Deprecated, use the notification API instead: https://api.cloudflare.com/#notification-policies-create-notification-policy.",
-						"cfNotes": "Deprecated"
 					},
 					"check_regions": {
 						"type": [
@@ -304,7 +265,6 @@
 				"optional_props": [
 					"description",
 					"suspended",
-					"notification",
 					"check_regions",
 					"type",
 					"consecutive_successes",
@@ -316,9 +276,9 @@
 					"interval"
 				],
 				"objects": [],
-				"example": "{\n  \"name\": \"server-1\",\n  \"description\": \"Health check for www.example.com\",\n  \"suspended\": false,\n  \"notification\": {\n    \"suspended\": false,\n    \"email_addresses\": [\n      \"alert@example.com\",\n      \"oncall@example.com\"\n    ],\n    \"trigger\": \"FAIL\"\n  },\n  \"check_regions\": [\n    \"WEU\",\n    \"ENAM\"\n  ],\n  \"type\": \"HTTPS\",\n  \"consecutive_successes\": 1,\n  \"consecutive_fails\": 1,\n  \"http_config\": {\n    \"method\": \"GET\",\n    \"port\": 80,\n    \"path\": \"/health\",\n    \"expected_codes\": [\n      \"2xx\",\n      \"302\"\n    ],\n    \"expected_body\": \"success\",\n    \"follow_redirects\": false,\n    \"allow_insecure\": false,\n    \"header\": {\n      \"Host\": [\n        \"example.com\"\n      ],\n      \"X-App-ID\": [\n        \"abc123\"\n      ]\n    }\n  },\n  \"tcp_config\": {\n    \"method\": \"connection_established\",\n    \"port\": 80\n  },\n  \"timeout\": 5,\n  \"retries\": 2,\n  \"interval\": 60,\n  \"address\": \"www.example.com\"\n}"
+				"example": "{\n  \"name\": \"server-1\",\n  \"description\": \"Health check for www.example.com\",\n  \"suspended\": false,\n  \"check_regions\": [\n    \"WEU\",\n    \"ENAM\"\n  ],\n  \"type\": \"HTTPS\",\n  \"consecutive_successes\": 1,\n  \"consecutive_fails\": 1,\n  \"http_config\": {\n    \"method\": \"GET\",\n    \"port\": 80,\n    \"path\": \"/health\",\n    \"expected_codes\": [\n      \"2xx\",\n      \"302\"\n    ],\n    \"expected_body\": \"success\",\n    \"follow_redirects\": false,\n    \"allow_insecure\": false,\n    \"header\": {\n      \"Host\": [\n        \"example.com\"\n      ],\n      \"X-App-ID\": [\n        \"abc123\"\n      ]\n    }\n  },\n  \"tcp_config\": {\n    \"method\": \"connection_established\",\n    \"port\": 80\n  },\n  \"timeout\": 5,\n  \"retries\": 2,\n  \"interval\": 60,\n  \"address\": \"www.example.com\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"699d98642c564d2e855e9661899b7252\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"server-1\",\n    \"description\": \"Health check for www.example.com\",\n    \"suspended\": false,\n    \"notification\": {\n      \"suspended\": false,\n      \"email_addresses\": [\n        \"alert@example.com\",\n        \"oncall@example.com\"\n      ],\n      \"trigger\": \"FAIL\"\n    },\n    \"check_regions\": [\n      \"WEU\",\n      \"ENAM\"\n    ],\n    \"type\": \"HTTPS\",\n    \"consecutive_successes\": 1,\n    \"consecutive_fails\": 1,\n    \"http_config\": {\n      \"method\": \"GET\",\n      \"port\": 80,\n      \"path\": \"/health\",\n      \"expected_codes\": [\n        \"2xx\",\n        \"302\"\n      ],\n      \"expected_body\": \"success\",\n      \"follow_redirects\": false,\n      \"allow_insecure\": false,\n      \"header\": {\n        \"Host\": [\n          \"example.com\"\n        ],\n        \"X-App-ID\": [\n          \"abc123\"\n        ]\n      }\n    },\n    \"tcp_config\": {\n      \"method\": \"connection_established\",\n      \"port\": 80\n    },\n    \"timeout\": 5,\n    \"retries\": 2,\n    \"interval\": 60,\n    \"address\": \"www.example.com\",\n    \"status\": \"healthy\",\n    \"failure_reason\": \"\"\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"699d98642c564d2e855e9661899b7252\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"server-1\",\n    \"description\": \"Health check for www.example.com\",\n    \"suspended\": false,\n    \"check_regions\": [\n      \"WEU\",\n      \"ENAM\"\n    ],\n    \"type\": \"HTTPS\",\n    \"consecutive_successes\": 1,\n    \"consecutive_fails\": 1,\n    \"http_config\": {\n      \"method\": \"GET\",\n      \"port\": 80,\n      \"path\": \"/health\",\n      \"expected_codes\": [\n        \"2xx\",\n        \"302\"\n      ],\n      \"expected_body\": \"success\",\n      \"follow_redirects\": false,\n      \"allow_insecure\": false,\n      \"header\": {\n        \"Host\": [\n          \"example.com\"\n        ],\n        \"X-App-ID\": [\n          \"abc123\"\n        ]\n      }\n    },\n    \"tcp_config\": {\n      \"method\": \"connection_established\",\n      \"port\": 80\n    },\n    \"timeout\": 5,\n    \"retries\": 2,\n    \"interval\": 60,\n    \"address\": \"www.example.com\",\n    \"status\": \"healthy\",\n    \"failure_reason\": \"\"\n  }\n}"
 		},
 		{
 			"title": "Health Check Details",
@@ -336,7 +296,7 @@
 			"html_id": "health-checks-health-check-details",
 			"uri": "zones/:zone_identifier/healthchecks/:identifier",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/healthchecks/699d98642c564d2e855e9661899b7252\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"699d98642c564d2e855e9661899b7252\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"server-1\",\n    \"description\": \"Health check for www.example.com\",\n    \"suspended\": false,\n    \"notification\": {\n      \"suspended\": false,\n      \"email_addresses\": [\n        \"alert@example.com\",\n        \"oncall@example.com\"\n      ],\n      \"trigger\": \"FAIL\"\n    },\n    \"check_regions\": [\n      \"WEU\",\n      \"ENAM\"\n    ],\n    \"type\": \"HTTPS\",\n    \"consecutive_successes\": 1,\n    \"consecutive_fails\": 1,\n    \"http_config\": {\n      \"method\": \"GET\",\n      \"port\": 80,\n      \"path\": \"/health\",\n      \"expected_codes\": [\n        \"2xx\",\n        \"302\"\n      ],\n      \"expected_body\": \"success\",\n      \"follow_redirects\": false,\n      \"allow_insecure\": false,\n      \"header\": {\n        \"Host\": [\n          \"example.com\"\n        ],\n        \"X-App-ID\": [\n          \"abc123\"\n        ]\n      }\n    },\n    \"tcp_config\": {\n      \"method\": \"connection_established\",\n      \"port\": 80\n    },\n    \"timeout\": 5,\n    \"retries\": 2,\n    \"interval\": 60,\n    \"address\": \"www.example.com\",\n    \"status\": \"healthy\",\n    \"failure_reason\": \"\"\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"699d98642c564d2e855e9661899b7252\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"server-1\",\n    \"description\": \"Health check for www.example.com\",\n    \"suspended\": false,\n    \"check_regions\": [\n      \"WEU\",\n      \"ENAM\"\n    ],\n    \"type\": \"HTTPS\",\n    \"consecutive_successes\": 1,\n    \"consecutive_fails\": 1,\n    \"http_config\": {\n      \"method\": \"GET\",\n      \"port\": 80,\n      \"path\": \"/health\",\n      \"expected_codes\": [\n        \"2xx\",\n        \"302\"\n      ],\n      \"expected_body\": \"success\",\n      \"follow_redirects\": false,\n      \"allow_insecure\": false,\n      \"header\": {\n        \"Host\": [\n          \"example.com\"\n        ],\n        \"X-App-ID\": [\n          \"abc123\"\n        ]\n      }\n    },\n    \"tcp_config\": {\n      \"method\": \"connection_established\",\n      \"port\": 80\n    },\n    \"timeout\": 5,\n    \"retries\": 2,\n    \"interval\": 60,\n    \"address\": \"www.example.com\",\n    \"status\": \"healthy\",\n    \"failure_reason\": \"\"\n  }\n}"
 		},
 		{
 			"title": "Update Health Check",
@@ -353,7 +313,7 @@
 			"cfOwnership": "healthchecks",
 			"html_id": "health-checks-update-health-check",
 			"uri": "zones/:zone_identifier/healthchecks/:identifier",
-			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/healthchecks/699d98642c564d2e855e9661899b7252\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"server-1\",\"description\":\"Health check for www.example.com\",\"suspended\":false,\"notification\":{\"suspended\":false,\"email_addresses\":[\"alert@example.com\",\"oncall@example.com\"],\"trigger\":\"FAIL\"},\"check_regions\":[\"WEU\",\"ENAM\"],\"type\":\"HTTPS\",\"consecutive_successes\":1,\"consecutive_fails\":1,\"http_config\":{\"method\":\"GET\",\"port\":80,\"path\":\"/health\",\"expected_codes\":[\"2xx\",\"302\"],\"expected_body\":\"success\",\"follow_redirects\":false,\"allow_insecure\":false,\"header\":{\"Host\":[\"example.com\"],\"X-App-ID\":[\"abc123\"]}},\"tcp_config\":{\"method\":\"connection_established\",\"port\":80},\"timeout\":5,\"retries\":2,\"interval\":60,\"address\":\"www.example.com\"}'",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/healthchecks/699d98642c564d2e855e9661899b7252\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"server-1\",\"description\":\"Health check for www.example.com\",\"suspended\":false,\"check_regions\":[\"WEU\",\"ENAM\"],\"type\":\"HTTPS\",\"consecutive_successes\":1,\"consecutive_fails\":1,\"http_config\":{\"method\":\"GET\",\"port\":80,\"path\":\"/health\",\"expected_codes\":[\"2xx\",\"302\"],\"expected_body\":\"success\",\"follow_redirects\":false,\"allow_insecure\":false,\"header\":{\"Host\":[\"example.com\"],\"X-App-ID\":[\"abc123\"]}},\"tcp_config\":{\"method\":\"connection_established\",\"port\":80},\"timeout\":5,\"retries\":2,\"interval\":60,\"address\":\"www.example.com\"}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -374,45 +334,6 @@
 						"example": "false",
 						"description": "If suspended, no health checks are sent to the origin.",
 						"default": false
-					},
-					"notification": {
-						"type": [
-							"object",
-							"null"
-						],
-						"example": "{\n  \"suspended\": false,\n  \"email_addresses\": [\n    \"alert@example.com\",\n    \"oncall@example.com\"\n  ],\n  \"trigger\": \"FAIL\"\n}",
-						"properties": {
-							"suspended": {
-								"type": "boolean",
-								"example": "false",
-								"description": "Whether the notifications are suspended or not. Useful for maintenance periods.",
-								"default": false
-							},
-							"email_addresses": {
-								"type": [
-									"array",
-									"null"
-								],
-								"example": "[\n  \"alert@example.com\",\n  \"oncall@example.com\"\n]",
-								"description": "A list of email addresses we want to send the notifications to.",
-								"items": {
-									"type": "string"
-								}
-							},
-							"trigger": {
-								"type": "string",
-								"example": "\"FAIL\"",
-								"description": "Which events should trigger a notification. Supported values are 'FAIL' for failing health checks only, 'SUCCESS' for passing ones only, and 'ALL' (default).",
-								"enum": [
-									"ALL",
-									"SUCCESS",
-									"FAIL"
-								],
-								"default": "ALL"
-							}
-						},
-						"description": "Notifications are sent when the status of a health check changes. Deprecated, use the notification API instead: https://api.cloudflare.com/#notification-policies-create-notification-policy.",
-						"cfNotes": "Deprecated"
 					},
 					"check_regions": {
 						"type": [
@@ -585,7 +506,6 @@
 				"optional_props": [
 					"description",
 					"suspended",
-					"notification",
 					"check_regions",
 					"type",
 					"consecutive_successes",
@@ -597,9 +517,9 @@
 					"interval"
 				],
 				"objects": [],
-				"example": "{\n  \"name\": \"server-1\",\n  \"description\": \"Health check for www.example.com\",\n  \"suspended\": false,\n  \"notification\": {\n    \"suspended\": false,\n    \"email_addresses\": [\n      \"alert@example.com\",\n      \"oncall@example.com\"\n    ],\n    \"trigger\": \"FAIL\"\n  },\n  \"check_regions\": [\n    \"WEU\",\n    \"ENAM\"\n  ],\n  \"type\": \"HTTPS\",\n  \"consecutive_successes\": 1,\n  \"consecutive_fails\": 1,\n  \"http_config\": {\n    \"method\": \"GET\",\n    \"port\": 80,\n    \"path\": \"/health\",\n    \"expected_codes\": [\n      \"2xx\",\n      \"302\"\n    ],\n    \"expected_body\": \"success\",\n    \"follow_redirects\": false,\n    \"allow_insecure\": false,\n    \"header\": {\n      \"Host\": [\n        \"example.com\"\n      ],\n      \"X-App-ID\": [\n        \"abc123\"\n      ]\n    }\n  },\n  \"tcp_config\": {\n    \"method\": \"connection_established\",\n    \"port\": 80\n  },\n  \"timeout\": 5,\n  \"retries\": 2,\n  \"interval\": 60,\n  \"address\": \"www.example.com\"\n}"
+				"example": "{\n  \"name\": \"server-1\",\n  \"description\": \"Health check for www.example.com\",\n  \"suspended\": false,\n  \"check_regions\": [\n    \"WEU\",\n    \"ENAM\"\n  ],\n  \"type\": \"HTTPS\",\n  \"consecutive_successes\": 1,\n  \"consecutive_fails\": 1,\n  \"http_config\": {\n    \"method\": \"GET\",\n    \"port\": 80,\n    \"path\": \"/health\",\n    \"expected_codes\": [\n      \"2xx\",\n      \"302\"\n    ],\n    \"expected_body\": \"success\",\n    \"follow_redirects\": false,\n    \"allow_insecure\": false,\n    \"header\": {\n      \"Host\": [\n        \"example.com\"\n      ],\n      \"X-App-ID\": [\n        \"abc123\"\n      ]\n    }\n  },\n  \"tcp_config\": {\n    \"method\": \"connection_established\",\n    \"port\": 80\n  },\n  \"timeout\": 5,\n  \"retries\": 2,\n  \"interval\": 60,\n  \"address\": \"www.example.com\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"699d98642c564d2e855e9661899b7252\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"server-1\",\n    \"description\": \"Health check for www.example.com\",\n    \"suspended\": false,\n    \"notification\": {\n      \"suspended\": false,\n      \"email_addresses\": [\n        \"alert@example.com\",\n        \"oncall@example.com\"\n      ],\n      \"trigger\": \"FAIL\"\n    },\n    \"check_regions\": [\n      \"WEU\",\n      \"ENAM\"\n    ],\n    \"type\": \"HTTPS\",\n    \"consecutive_successes\": 1,\n    \"consecutive_fails\": 1,\n    \"http_config\": {\n      \"method\": \"GET\",\n      \"port\": 80,\n      \"path\": \"/health\",\n      \"expected_codes\": [\n        \"2xx\",\n        \"302\"\n      ],\n      \"expected_body\": \"success\",\n      \"follow_redirects\": false,\n      \"allow_insecure\": false,\n      \"header\": {\n        \"Host\": [\n          \"example.com\"\n        ],\n        \"X-App-ID\": [\n          \"abc123\"\n        ]\n      }\n    },\n    \"tcp_config\": {\n      \"method\": \"connection_established\",\n      \"port\": 80\n    },\n    \"timeout\": 5,\n    \"retries\": 2,\n    \"interval\": 60,\n    \"address\": \"www.example.com\",\n    \"status\": \"healthy\",\n    \"failure_reason\": \"\"\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"699d98642c564d2e855e9661899b7252\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"server-1\",\n    \"description\": \"Health check for www.example.com\",\n    \"suspended\": false,\n    \"check_regions\": [\n      \"WEU\",\n      \"ENAM\"\n    ],\n    \"type\": \"HTTPS\",\n    \"consecutive_successes\": 1,\n    \"consecutive_fails\": 1,\n    \"http_config\": {\n      \"method\": \"GET\",\n      \"port\": 80,\n      \"path\": \"/health\",\n      \"expected_codes\": [\n        \"2xx\",\n        \"302\"\n      ],\n      \"expected_body\": \"success\",\n      \"follow_redirects\": false,\n      \"allow_insecure\": false,\n      \"header\": {\n        \"Host\": [\n          \"example.com\"\n        ],\n        \"X-App-ID\": [\n          \"abc123\"\n        ]\n      }\n    },\n    \"tcp_config\": {\n      \"method\": \"connection_established\",\n      \"port\": 80\n    },\n    \"timeout\": 5,\n    \"retries\": 2,\n    \"interval\": 60,\n    \"address\": \"www.example.com\",\n    \"status\": \"healthy\",\n    \"failure_reason\": \"\"\n  }\n}"
 		},
 		{
 			"title": "Patch Health Check",
@@ -616,7 +536,7 @@
 			"cfOwnership": "healthchecks",
 			"html_id": "health-checks-patch-health-check",
 			"uri": "zones/:zone_identifier/healthchecks/:identifier",
-			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/healthchecks/699d98642c564d2e855e9661899b7252\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"server-1\",\"description\":\"Health check for www.example.com\",\"suspended\":false,\"notification\":{\"suspended\":false,\"email_addresses\":[\"alert@example.com\",\"oncall@example.com\"],\"trigger\":\"FAIL\"},\"check_regions\":[\"WEU\",\"ENAM\"],\"type\":\"HTTPS\",\"consecutive_successes\":1,\"consecutive_fails\":1,\"http_config\":{\"method\":\"GET\",\"port\":80,\"path\":\"/health\",\"expected_codes\":[\"2xx\",\"302\"],\"expected_body\":\"success\",\"follow_redirects\":false,\"allow_insecure\":false,\"header\":{\"Host\":[\"example.com\"],\"X-App-ID\":[\"abc123\"]}},\"tcp_config\":{\"method\":\"connection_established\",\"port\":80},\"timeout\":5,\"retries\":2,\"interval\":60,\"address\":\"www.example.com\"}'",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/healthchecks/699d98642c564d2e855e9661899b7252\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"server-1\",\"description\":\"Health check for www.example.com\",\"suspended\":false,\"check_regions\":[\"WEU\",\"ENAM\"],\"type\":\"HTTPS\",\"consecutive_successes\":1,\"consecutive_fails\":1,\"http_config\":{\"method\":\"GET\",\"port\":80,\"path\":\"/health\",\"expected_codes\":[\"2xx\",\"302\"],\"expected_body\":\"success\",\"follow_redirects\":false,\"allow_insecure\":false,\"header\":{\"Host\":[\"example.com\"],\"X-App-ID\":[\"abc123\"]}},\"tcp_config\":{\"method\":\"connection_established\",\"port\":80},\"timeout\":5,\"retries\":2,\"interval\":60,\"address\":\"www.example.com\"}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -637,45 +557,6 @@
 						"example": "false",
 						"description": "If suspended, no health checks are sent to the origin.",
 						"default": false
-					},
-					"notification": {
-						"type": [
-							"object",
-							"null"
-						],
-						"example": "{\n  \"suspended\": false,\n  \"email_addresses\": [\n    \"alert@example.com\",\n    \"oncall@example.com\"\n  ],\n  \"trigger\": \"FAIL\"\n}",
-						"properties": {
-							"suspended": {
-								"type": "boolean",
-								"example": "false",
-								"description": "Whether the notifications are suspended or not. Useful for maintenance periods.",
-								"default": false
-							},
-							"email_addresses": {
-								"type": [
-									"array",
-									"null"
-								],
-								"example": "[\n  \"alert@example.com\",\n  \"oncall@example.com\"\n]",
-								"description": "A list of email addresses we want to send the notifications to.",
-								"items": {
-									"type": "string"
-								}
-							},
-							"trigger": {
-								"type": "string",
-								"example": "\"FAIL\"",
-								"description": "Which events should trigger a notification. Supported values are 'FAIL' for failing health checks only, 'SUCCESS' for passing ones only, and 'ALL' (default).",
-								"enum": [
-									"ALL",
-									"SUCCESS",
-									"FAIL"
-								],
-								"default": "ALL"
-							}
-						},
-						"description": "Notifications are sent when the status of a health check changes. Deprecated, use the notification API instead: https://api.cloudflare.com/#notification-policies-create-notification-policy.",
-						"cfNotes": "Deprecated"
 					},
 					"check_regions": {
 						"type": [
@@ -848,7 +729,6 @@
 				"optional_props": [
 					"description",
 					"suspended",
-					"notification",
 					"check_regions",
 					"type",
 					"consecutive_successes",
@@ -860,9 +740,9 @@
 					"interval"
 				],
 				"objects": [],
-				"example": "{\n  \"name\": \"server-1\",\n  \"description\": \"Health check for www.example.com\",\n  \"suspended\": false,\n  \"notification\": {\n    \"suspended\": false,\n    \"email_addresses\": [\n      \"alert@example.com\",\n      \"oncall@example.com\"\n    ],\n    \"trigger\": \"FAIL\"\n  },\n  \"check_regions\": [\n    \"WEU\",\n    \"ENAM\"\n  ],\n  \"type\": \"HTTPS\",\n  \"consecutive_successes\": 1,\n  \"consecutive_fails\": 1,\n  \"http_config\": {\n    \"method\": \"GET\",\n    \"port\": 80,\n    \"path\": \"/health\",\n    \"expected_codes\": [\n      \"2xx\",\n      \"302\"\n    ],\n    \"expected_body\": \"success\",\n    \"follow_redirects\": false,\n    \"allow_insecure\": false,\n    \"header\": {\n      \"Host\": [\n        \"example.com\"\n      ],\n      \"X-App-ID\": [\n        \"abc123\"\n      ]\n    }\n  },\n  \"tcp_config\": {\n    \"method\": \"connection_established\",\n    \"port\": 80\n  },\n  \"timeout\": 5,\n  \"retries\": 2,\n  \"interval\": 60,\n  \"address\": \"www.example.com\"\n}"
+				"example": "{\n  \"name\": \"server-1\",\n  \"description\": \"Health check for www.example.com\",\n  \"suspended\": false,\n  \"check_regions\": [\n    \"WEU\",\n    \"ENAM\"\n  ],\n  \"type\": \"HTTPS\",\n  \"consecutive_successes\": 1,\n  \"consecutive_fails\": 1,\n  \"http_config\": {\n    \"method\": \"GET\",\n    \"port\": 80,\n    \"path\": \"/health\",\n    \"expected_codes\": [\n      \"2xx\",\n      \"302\"\n    ],\n    \"expected_body\": \"success\",\n    \"follow_redirects\": false,\n    \"allow_insecure\": false,\n    \"header\": {\n      \"Host\": [\n        \"example.com\"\n      ],\n      \"X-App-ID\": [\n        \"abc123\"\n      ]\n    }\n  },\n  \"tcp_config\": {\n    \"method\": \"connection_established\",\n    \"port\": 80\n  },\n  \"timeout\": 5,\n  \"retries\": 2,\n  \"interval\": 60,\n  \"address\": \"www.example.com\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"699d98642c564d2e855e9661899b7252\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"server-1\",\n    \"description\": \"Health check for www.example.com\",\n    \"suspended\": false,\n    \"notification\": {\n      \"suspended\": false,\n      \"email_addresses\": [\n        \"alert@example.com\",\n        \"oncall@example.com\"\n      ],\n      \"trigger\": \"FAIL\"\n    },\n    \"check_regions\": [\n      \"WEU\",\n      \"ENAM\"\n    ],\n    \"type\": \"HTTPS\",\n    \"consecutive_successes\": 1,\n    \"consecutive_fails\": 1,\n    \"http_config\": {\n      \"method\": \"GET\",\n      \"port\": 80,\n      \"path\": \"/health\",\n      \"expected_codes\": [\n        \"2xx\",\n        \"302\"\n      ],\n      \"expected_body\": \"success\",\n      \"follow_redirects\": false,\n      \"allow_insecure\": false,\n      \"header\": {\n        \"Host\": [\n          \"example.com\"\n        ],\n        \"X-App-ID\": [\n          \"abc123\"\n        ]\n      }\n    },\n    \"tcp_config\": {\n      \"method\": \"connection_established\",\n      \"port\": 80\n    },\n    \"timeout\": 5,\n    \"retries\": 2,\n    \"interval\": 60,\n    \"address\": \"www.example.com\",\n    \"status\": \"healthy\",\n    \"failure_reason\": \"\"\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"699d98642c564d2e855e9661899b7252\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"server-1\",\n    \"description\": \"Health check for www.example.com\",\n    \"suspended\": false,\n    \"check_regions\": [\n      \"WEU\",\n      \"ENAM\"\n    ],\n    \"type\": \"HTTPS\",\n    \"consecutive_successes\": 1,\n    \"consecutive_fails\": 1,\n    \"http_config\": {\n      \"method\": \"GET\",\n      \"port\": 80,\n      \"path\": \"/health\",\n      \"expected_codes\": [\n        \"2xx\",\n        \"302\"\n      ],\n      \"expected_body\": \"success\",\n      \"follow_redirects\": false,\n      \"allow_insecure\": false,\n      \"header\": {\n        \"Host\": [\n          \"example.com\"\n        ],\n        \"X-App-ID\": [\n          \"abc123\"\n        ]\n      }\n    },\n    \"tcp_config\": {\n      \"method\": \"connection_established\",\n      \"port\": 80\n    },\n    \"timeout\": 5,\n    \"retries\": 2,\n    \"interval\": 60,\n    \"address\": \"www.example.com\",\n    \"status\": \"healthy\",\n    \"failure_reason\": \"\"\n  }\n}"
 		},
 		{
 			"title": "Delete Health Check",
@@ -897,7 +777,7 @@
 			"cfOwnership": "healthchecks",
 			"html_id": "health-checks-create-preview-health-check",
 			"uri": "zones/:zone_identifier/healthchecks/preview",
-			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/healthchecks/preview\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"server-1\",\"description\":\"Health check for www.example.com\",\"suspended\":false,\"notification\":{\"suspended\":false,\"email_addresses\":[\"alert@example.com\",\"oncall@example.com\"],\"trigger\":\"FAIL\"},\"check_regions\":[\"WEU\",\"ENAM\"],\"type\":\"HTTPS\",\"consecutive_successes\":1,\"consecutive_fails\":1,\"http_config\":{\"method\":\"GET\",\"port\":80,\"path\":\"/health\",\"expected_codes\":[\"2xx\",\"302\"],\"expected_body\":\"success\",\"follow_redirects\":false,\"allow_insecure\":false,\"header\":{\"Host\":[\"example.com\"],\"X-App-ID\":[\"abc123\"]}},\"tcp_config\":{\"method\":\"connection_established\",\"port\":80},\"timeout\":5,\"retries\":2,\"interval\":60,\"address\":\"www.example.com\"}'",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/healthchecks/preview\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"server-1\",\"description\":\"Health check for www.example.com\",\"suspended\":false,\"check_regions\":[\"WEU\",\"ENAM\"],\"type\":\"HTTPS\",\"consecutive_successes\":1,\"consecutive_fails\":1,\"http_config\":{\"method\":\"GET\",\"port\":80,\"path\":\"/health\",\"expected_codes\":[\"2xx\",\"302\"],\"expected_body\":\"success\",\"follow_redirects\":false,\"allow_insecure\":false,\"header\":{\"Host\":[\"example.com\"],\"X-App-ID\":[\"abc123\"]}},\"tcp_config\":{\"method\":\"connection_established\",\"port\":80},\"timeout\":5,\"retries\":2,\"interval\":60,\"address\":\"www.example.com\"}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -918,45 +798,6 @@
 						"example": "false",
 						"description": "If suspended, no health checks are sent to the origin.",
 						"default": false
-					},
-					"notification": {
-						"type": [
-							"object",
-							"null"
-						],
-						"example": "{\n  \"suspended\": false,\n  \"email_addresses\": [\n    \"alert@example.com\",\n    \"oncall@example.com\"\n  ],\n  \"trigger\": \"FAIL\"\n}",
-						"properties": {
-							"suspended": {
-								"type": "boolean",
-								"example": "false",
-								"description": "Whether the notifications are suspended or not. Useful for maintenance periods.",
-								"default": false
-							},
-							"email_addresses": {
-								"type": [
-									"array",
-									"null"
-								],
-								"example": "[\n  \"alert@example.com\",\n  \"oncall@example.com\"\n]",
-								"description": "A list of email addresses we want to send the notifications to.",
-								"items": {
-									"type": "string"
-								}
-							},
-							"trigger": {
-								"type": "string",
-								"example": "\"FAIL\"",
-								"description": "Which events should trigger a notification. Supported values are 'FAIL' for failing health checks only, 'SUCCESS' for passing ones only, and 'ALL' (default).",
-								"enum": [
-									"ALL",
-									"SUCCESS",
-									"FAIL"
-								],
-								"default": "ALL"
-							}
-						},
-						"description": "Notifications are sent when the status of a health check changes. Deprecated, use the notification API instead: https://api.cloudflare.com/#notification-policies-create-notification-policy.",
-						"cfNotes": "Deprecated"
 					},
 					"check_regions": {
 						"type": [
@@ -1129,7 +970,6 @@
 				"optional_props": [
 					"description",
 					"suspended",
-					"notification",
 					"check_regions",
 					"type",
 					"consecutive_successes",
@@ -1141,9 +981,9 @@
 					"interval"
 				],
 				"objects": [],
-				"example": "{\n  \"name\": \"server-1\",\n  \"description\": \"Health check for www.example.com\",\n  \"suspended\": false,\n  \"notification\": {\n    \"suspended\": false,\n    \"email_addresses\": [\n      \"alert@example.com\",\n      \"oncall@example.com\"\n    ],\n    \"trigger\": \"FAIL\"\n  },\n  \"check_regions\": [\n    \"WEU\",\n    \"ENAM\"\n  ],\n  \"type\": \"HTTPS\",\n  \"consecutive_successes\": 1,\n  \"consecutive_fails\": 1,\n  \"http_config\": {\n    \"method\": \"GET\",\n    \"port\": 80,\n    \"path\": \"/health\",\n    \"expected_codes\": [\n      \"2xx\",\n      \"302\"\n    ],\n    \"expected_body\": \"success\",\n    \"follow_redirects\": false,\n    \"allow_insecure\": false,\n    \"header\": {\n      \"Host\": [\n        \"example.com\"\n      ],\n      \"X-App-ID\": [\n        \"abc123\"\n      ]\n    }\n  },\n  \"tcp_config\": {\n    \"method\": \"connection_established\",\n    \"port\": 80\n  },\n  \"timeout\": 5,\n  \"retries\": 2,\n  \"interval\": 60,\n  \"address\": \"www.example.com\"\n}"
+				"example": "{\n  \"name\": \"server-1\",\n  \"description\": \"Health check for www.example.com\",\n  \"suspended\": false,\n  \"check_regions\": [\n    \"WEU\",\n    \"ENAM\"\n  ],\n  \"type\": \"HTTPS\",\n  \"consecutive_successes\": 1,\n  \"consecutive_fails\": 1,\n  \"http_config\": {\n    \"method\": \"GET\",\n    \"port\": 80,\n    \"path\": \"/health\",\n    \"expected_codes\": [\n      \"2xx\",\n      \"302\"\n    ],\n    \"expected_body\": \"success\",\n    \"follow_redirects\": false,\n    \"allow_insecure\": false,\n    \"header\": {\n      \"Host\": [\n        \"example.com\"\n      ],\n      \"X-App-ID\": [\n        \"abc123\"\n      ]\n    }\n  },\n  \"tcp_config\": {\n    \"method\": \"connection_established\",\n    \"port\": 80\n  },\n  \"timeout\": 5,\n  \"retries\": 2,\n  \"interval\": 60,\n  \"address\": \"www.example.com\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"699d98642c564d2e855e9661899b7252\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"server-1\",\n    \"description\": \"Health check for www.example.com\",\n    \"suspended\": false,\n    \"notification\": {\n      \"suspended\": false,\n      \"email_addresses\": [\n        \"alert@example.com\",\n        \"oncall@example.com\"\n      ],\n      \"trigger\": \"FAIL\"\n    },\n    \"check_regions\": [\n      \"WEU\",\n      \"ENAM\"\n    ],\n    \"type\": \"HTTPS\",\n    \"consecutive_successes\": 1,\n    \"consecutive_fails\": 1,\n    \"http_config\": {\n      \"method\": \"GET\",\n      \"port\": 80,\n      \"path\": \"/health\",\n      \"expected_codes\": [\n        \"2xx\",\n        \"302\"\n      ],\n      \"expected_body\": \"success\",\n      \"follow_redirects\": false,\n      \"allow_insecure\": false,\n      \"header\": {\n        \"Host\": [\n          \"example.com\"\n        ],\n        \"X-App-ID\": [\n          \"abc123\"\n        ]\n      }\n    },\n    \"tcp_config\": {\n      \"method\": \"connection_established\",\n      \"port\": 80\n    },\n    \"timeout\": 5,\n    \"retries\": 2,\n    \"interval\": 60,\n    \"address\": \"www.example.com\",\n    \"status\": \"healthy\",\n    \"failure_reason\": \"\"\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"699d98642c564d2e855e9661899b7252\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"server-1\",\n    \"description\": \"Health check for www.example.com\",\n    \"suspended\": false,\n    \"check_regions\": [\n      \"WEU\",\n      \"ENAM\"\n    ],\n    \"type\": \"HTTPS\",\n    \"consecutive_successes\": 1,\n    \"consecutive_fails\": 1,\n    \"http_config\": {\n      \"method\": \"GET\",\n      \"port\": 80,\n      \"path\": \"/health\",\n      \"expected_codes\": [\n        \"2xx\",\n        \"302\"\n      ],\n      \"expected_body\": \"success\",\n      \"follow_redirects\": false,\n      \"allow_insecure\": false,\n      \"header\": {\n        \"Host\": [\n          \"example.com\"\n        ],\n        \"X-App-ID\": [\n          \"abc123\"\n        ]\n      }\n    },\n    \"tcp_config\": {\n      \"method\": \"connection_established\",\n      \"port\": 80\n    },\n    \"timeout\": 5,\n    \"retries\": 2,\n    \"interval\": 60,\n    \"address\": \"www.example.com\",\n    \"status\": \"healthy\",\n    \"failure_reason\": \"\"\n  }\n}"
 		},
 		{
 			"title": "Health Check Preview Details",
@@ -1161,7 +1001,7 @@
 			"html_id": "health-checks-health-check-preview-details",
 			"uri": "zones/:zone_identifier/healthchecks/preview/:identifier",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/healthchecks/preview/699d98642c564d2e855e9661899b7252\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"699d98642c564d2e855e9661899b7252\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"server-1\",\n    \"description\": \"Health check for www.example.com\",\n    \"suspended\": false,\n    \"notification\": {\n      \"suspended\": false,\n      \"email_addresses\": [\n        \"alert@example.com\",\n        \"oncall@example.com\"\n      ],\n      \"trigger\": \"FAIL\"\n    },\n    \"check_regions\": [\n      \"WEU\",\n      \"ENAM\"\n    ],\n    \"type\": \"HTTPS\",\n    \"consecutive_successes\": 1,\n    \"consecutive_fails\": 1,\n    \"http_config\": {\n      \"method\": \"GET\",\n      \"port\": 80,\n      \"path\": \"/health\",\n      \"expected_codes\": [\n        \"2xx\",\n        \"302\"\n      ],\n      \"expected_body\": \"success\",\n      \"follow_redirects\": false,\n      \"allow_insecure\": false,\n      \"header\": {\n        \"Host\": [\n          \"example.com\"\n        ],\n        \"X-App-ID\": [\n          \"abc123\"\n        ]\n      }\n    },\n    \"tcp_config\": {\n      \"method\": \"connection_established\",\n      \"port\": 80\n    },\n    \"timeout\": 5,\n    \"retries\": 2,\n    \"interval\": 60,\n    \"address\": \"www.example.com\",\n    \"status\": \"healthy\",\n    \"failure_reason\": \"\"\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"699d98642c564d2e855e9661899b7252\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"server-1\",\n    \"description\": \"Health check for www.example.com\",\n    \"suspended\": false,\n    \"check_regions\": [\n      \"WEU\",\n      \"ENAM\"\n    ],\n    \"type\": \"HTTPS\",\n    \"consecutive_successes\": 1,\n    \"consecutive_fails\": 1,\n    \"http_config\": {\n      \"method\": \"GET\",\n      \"port\": 80,\n      \"path\": \"/health\",\n      \"expected_codes\": [\n        \"2xx\",\n        \"302\"\n      ],\n      \"expected_body\": \"success\",\n      \"follow_redirects\": false,\n      \"allow_insecure\": false,\n      \"header\": {\n        \"Host\": [\n          \"example.com\"\n        ],\n        \"X-App-ID\": [\n          \"abc123\"\n        ]\n      }\n    },\n    \"tcp_config\": {\n      \"method\": \"connection_established\",\n      \"port\": 80\n    },\n    \"timeout\": 5,\n    \"retries\": 2,\n    \"interval\": 60,\n    \"address\": \"www.example.com\",\n    \"status\": \"healthy\",\n    \"failure_reason\": \"\"\n  }\n}"
 		},
 		{
 			"title": "Delete Preview Health Check",
@@ -1230,45 +1070,6 @@
 				"example": "false",
 				"description": "If suspended, no health checks are sent to the origin.",
 				"default": false
-			},
-			"notification": {
-				"type": [
-					"object",
-					"null"
-				],
-				"example": "{\n  \"suspended\": false,\n  \"email_addresses\": [\n    \"alert@example.com\",\n    \"oncall@example.com\"\n  ],\n  \"trigger\": \"FAIL\"\n}",
-				"properties": {
-					"suspended": {
-						"type": "boolean",
-						"example": "false",
-						"description": "Whether the notifications are suspended or not. Useful for maintenance periods.",
-						"default": false
-					},
-					"email_addresses": {
-						"type": [
-							"array",
-							"null"
-						],
-						"example": "[\n  \"alert@example.com\",\n  \"oncall@example.com\"\n]",
-						"description": "A list of email addresses we want to send the notifications to.",
-						"items": {
-							"type": "string"
-						}
-					},
-					"trigger": {
-						"type": "string",
-						"example": "\"FAIL\"",
-						"description": "Which events should trigger a notification. Supported values are 'FAIL' for failing health checks only, 'SUCCESS' for passing ones only, and 'ALL' (default).",
-						"enum": [
-							"ALL",
-							"SUCCESS",
-							"FAIL"
-						],
-						"default": "ALL"
-					}
-				},
-				"description": "Notifications are sent when the status of a health check changes. Deprecated, use the notification API instead: https://api.cloudflare.com/#notification-policies-create-notification-policy.",
-				"cfNotes": "Deprecated"
 			},
 			"check_regions": {
 				"type": [
@@ -1460,7 +1261,6 @@
 			"name",
 			"description",
 			"suspended",
-			"notification",
 			"check_regions",
 			"type",
 			"consecutive_successes",
@@ -1475,7 +1275,7 @@
 			"failure_reason"
 		],
 		"objects": [],
-		"example": "{\n  \"id\": \"699d98642c564d2e855e9661899b7252\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"name\": \"server-1\",\n  \"description\": \"Health check for www.example.com\",\n  \"suspended\": false,\n  \"notification\": {\n    \"suspended\": false,\n    \"email_addresses\": [\n      \"alert@example.com\",\n      \"oncall@example.com\"\n    ],\n    \"trigger\": \"FAIL\"\n  },\n  \"check_regions\": [\n    \"WEU\",\n    \"ENAM\"\n  ],\n  \"type\": \"HTTPS\",\n  \"consecutive_successes\": 1,\n  \"consecutive_fails\": 1,\n  \"http_config\": {\n    \"method\": \"GET\",\n    \"port\": 80,\n    \"path\": \"/health\",\n    \"expected_codes\": [\n      \"2xx\",\n      \"302\"\n    ],\n    \"expected_body\": \"success\",\n    \"follow_redirects\": false,\n    \"allow_insecure\": false,\n    \"header\": {\n      \"Host\": [\n        \"example.com\"\n      ],\n      \"X-App-ID\": [\n        \"abc123\"\n      ]\n    }\n  },\n  \"tcp_config\": {\n    \"method\": \"connection_established\",\n    \"port\": 80\n  },\n  \"timeout\": 5,\n  \"retries\": 2,\n  \"interval\": 60,\n  \"address\": \"www.example.com\",\n  \"status\": \"healthy\",\n  \"failure_reason\": \"\"\n}",
+		"example": "{\n  \"id\": \"699d98642c564d2e855e9661899b7252\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"name\": \"server-1\",\n  \"description\": \"Health check for www.example.com\",\n  \"suspended\": false,\n  \"check_regions\": [\n    \"WEU\",\n    \"ENAM\"\n  ],\n  \"type\": \"HTTPS\",\n  \"consecutive_successes\": 1,\n  \"consecutive_fails\": 1,\n  \"http_config\": {\n    \"method\": \"GET\",\n    \"port\": 80,\n    \"path\": \"/health\",\n    \"expected_codes\": [\n      \"2xx\",\n      \"302\"\n    ],\n    \"expected_body\": \"success\",\n    \"follow_redirects\": false,\n    \"allow_insecure\": false,\n    \"header\": {\n      \"Host\": [\n        \"example.com\"\n      ],\n      \"X-App-ID\": [\n        \"abc123\"\n      ]\n    }\n  },\n  \"tcp_config\": {\n    \"method\": \"connection_established\",\n    \"port\": 80\n  },\n  \"timeout\": 5,\n  \"retries\": 2,\n  \"interval\": 60,\n  \"address\": \"www.example.com\",\n  \"status\": \"healthy\",\n  \"failure_reason\": \"\"\n}",
 		"title": "Health Checks",
 		"description": "Zone-level stand-alone health checks"
 	}

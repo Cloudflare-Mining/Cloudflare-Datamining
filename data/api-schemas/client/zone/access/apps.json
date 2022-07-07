@@ -584,7 +584,7 @@
 			"cfOwnership": "access",
 			"html_id": "zone-level-access-applications-create-saas-access-application",
 			"uri": "zones/:identifier/access/apps",
-			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/apps\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"saas\",\"name\":\"Admin Site\",\"domain\":\"test.example.com/admin\",\"logo_url\":\"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\"app_launcher_visible\":true,\"saas_app\":{\"consumer_service_url\":\"https://example.com\",\"sp_entity_id\":\"example unique name\",\"public_key\":\"example unique name\",\"idp_entity_id\":\"https://example.cloudflareaccess.com\",\"name_id_format\":\"id\",\"sso_endpoint\":\"https://example.cloudflareaccess.com/cdn-cgi/access/sso/saml/b3f58a2b414e0b51d45c8c2af26fccca0e27c63763c426fa52f98dcf0b3b3bfd\",\"custom_attributes\":{\"name\":\"family_name\",\"name_format\":\"urn:oasis:names:tc:SAML:2.0:attrname-format:basic\",\"source\":{\"name\":\"last_name\"}},\"created_at\":\"2014-01-01T05:20:00.12345Z\",\"updated_at\":\"2014-01-01T05:20:00.12345Z\"},\"allowed_idps\":[\"699d98642c564d2e855e9661899b7252\"],\"auto_redirect_to_identity\":false}'",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/apps\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"saas\",\"name\":\"Admin Site\",\"logo_url\":\"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\"app_launcher_visible\":true,\"saas_app\":{\"consumer_service_url\":\"https://example.com\",\"sp_entity_id\":\"example unique name\",\"public_key\":\"example unique name\",\"idp_entity_id\":\"https://example.cloudflareaccess.com\",\"name_id_format\":\"id\",\"sso_endpoint\":\"https://example.cloudflareaccess.com/cdn-cgi/access/sso/saml/b3f58a2b414e0b51d45c8c2af26fccca0e27c63763c426fa52f98dcf0b3b3bfd\",\"custom_attributes\":{\"name\":\"family_name\",\"name_format\":\"urn:oasis:names:tc:SAML:2.0:attrname-format:basic\",\"source\":{\"name\":\"last_name\"}},\"created_at\":\"2014-01-01T05:20:00.12345Z\",\"updated_at\":\"2014-01-01T05:20:00.12345Z\"},\"allowed_idps\":[\"699d98642c564d2e855e9661899b7252\"],\"auto_redirect_to_identity\":false}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -599,11 +599,6 @@
 						"type": "string",
 						"example": "\"Admin Site\"",
 						"description": "The name of the Application."
-					},
-					"domain": {
-						"type": "string",
-						"example": "\"test.example.com/admin\"",
-						"description": "The domain and path that Access will block"
 					},
 					"logo_url": {
 						"type": "string",
@@ -726,7 +721,6 @@
 				"required_props": [
 					"name",
 					"type",
-					"domain",
 					"saas_app"
 				],
 				"optional_props": [
@@ -736,10 +730,10 @@
 					"auto_redirect_to_identity"
 				],
 				"objects": [],
-				"example": "{\n  \"type\": \"saas\",\n  \"name\": \"Admin Site\",\n  \"domain\": \"test.example.com/admin\",\n  \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n  \"app_launcher_visible\": true,\n  \"saas_app\": {\n    \"consumer_service_url\": \"https://example.com\",\n    \"sp_entity_id\": \"example unique name\",\n    \"public_key\": \"example unique name\",\n    \"idp_entity_id\": \"https://example.cloudflareaccess.com\",\n    \"name_id_format\": \"id\",\n    \"sso_endpoint\": \"https://example.cloudflareaccess.com/cdn-cgi/access/sso/saml/b3f58a2b414e0b51d45c8c2af26fccca0e27c63763c426fa52f98dcf0b3b3bfd\",\n    \"custom_attributes\": {\n      \"name\": \"family_name\",\n      \"name_format\": \"urn:oasis:names:tc:SAML:2.0:attrname-format:basic\",\n      \"source\": {\n        \"name\": \"last_name\"\n      }\n    },\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n  },\n  \"allowed_idps\": [\n    \"699d98642c564d2e855e9661899b7252\"\n  ],\n  \"auto_redirect_to_identity\": false\n}",
+				"example": "{\n  \"type\": \"saas\",\n  \"name\": \"Admin Site\",\n  \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n  \"app_launcher_visible\": true,\n  \"saas_app\": {\n    \"consumer_service_url\": \"https://example.com\",\n    \"sp_entity_id\": \"example unique name\",\n    \"public_key\": \"example unique name\",\n    \"idp_entity_id\": \"https://example.cloudflareaccess.com\",\n    \"name_id_format\": \"id\",\n    \"sso_endpoint\": \"https://example.cloudflareaccess.com/cdn-cgi/access/sso/saml/b3f58a2b414e0b51d45c8c2af26fccca0e27c63763c426fa52f98dcf0b3b3bfd\",\n    \"custom_attributes\": {\n      \"name\": \"family_name\",\n      \"name_format\": \"urn:oasis:names:tc:SAML:2.0:attrname-format:basic\",\n      \"source\": {\n        \"name\": \"last_name\"\n      }\n    },\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n  },\n  \"allowed_idps\": [\n    \"699d98642c564d2e855e9661899b7252\"\n  ],\n  \"auto_redirect_to_identity\": false\n}",
 				"title": "SaaS Application"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"aud\": \"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\",\n    \"type\": \"saas\",\n    \"name\": \"Admin Site\",\n    \"domain\": \"test.example.com/admin\",\n    \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n    \"app_launcher_visible\": true,\n    \"saas_app\": {\n      \"consumer_service_url\": \"https://example.com\",\n      \"sp_entity_id\": \"example unique name\",\n      \"public_key\": \"example unique name\",\n      \"idp_entity_id\": \"https://example.cloudflareaccess.com\",\n      \"name_id_format\": \"id\",\n      \"sso_endpoint\": \"https://example.cloudflareaccess.com/cdn-cgi/access/sso/saml/b3f58a2b414e0b51d45c8c2af26fccca0e27c63763c426fa52f98dcf0b3b3bfd\",\n      \"custom_attributes\": {\n        \"name\": \"family_name\",\n        \"name_format\": \"urn:oasis:names:tc:SAML:2.0:attrname-format:basic\",\n        \"source\": {\n          \"name\": \"last_name\"\n        }\n      },\n      \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n    },\n    \"allowed_idps\": [\n      \"699d98642c564d2e855e9661899b7252\"\n    ],\n    \"auto_redirect_to_identity\": false\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"aud\": \"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\",\n    \"type\": \"saas\",\n    \"name\": \"Admin Site\",\n    \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n    \"app_launcher_visible\": true,\n    \"saas_app\": {\n      \"consumer_service_url\": \"https://example.com\",\n      \"sp_entity_id\": \"example unique name\",\n      \"public_key\": \"example unique name\",\n      \"idp_entity_id\": \"https://example.cloudflareaccess.com\",\n      \"name_id_format\": \"id\",\n      \"sso_endpoint\": \"https://example.cloudflareaccess.com/cdn-cgi/access/sso/saml/b3f58a2b414e0b51d45c8c2af26fccca0e27c63763c426fa52f98dcf0b3b3bfd\",\n      \"custom_attributes\": {\n        \"name\": \"family_name\",\n        \"name_format\": \"urn:oasis:names:tc:SAML:2.0:attrname-format:basic\",\n        \"source\": {\n          \"name\": \"last_name\"\n        }\n      },\n      \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n    },\n    \"allowed_idps\": [\n      \"699d98642c564d2e855e9661899b7252\"\n    ],\n    \"auto_redirect_to_identity\": false\n  }\n}"
 		},
 		{
 			"title": "Create App Launcher Access Application",
@@ -1043,7 +1037,7 @@
 		},
 		{
 			"title": "Update Self Hosted Access Application",
-			"description": "Create a new Self Hosted Access Application",
+			"description": "Update a Self Hosted Access Application",
 			"rel": "collection",
 			"href": "zones/{#/definitions/identifier}/access/apps/{#/definitions/app_id}",
 			"method": "PUT",
@@ -1226,7 +1220,7 @@
 		},
 		{
 			"title": "Update Browser SSH Access Application",
-			"description": "Create a new Browser SSH Access Application",
+			"description": "Update a Browser SSH Access Application",
 			"rel": "collection",
 			"href": "zones/{#/definitions/identifier}/access/apps/{#/definitions/app_id}",
 			"method": "PUT",
@@ -1408,7 +1402,7 @@
 		},
 		{
 			"title": "Update VNC Access Application",
-			"description": "Create a new VNC Access Application",
+			"description": "Update a VNC Access Application",
 			"rel": "collection",
 			"href": "zones/{#/definitions/identifier}/access/apps/{#/definitions/app_id}",
 			"method": "PUT",
@@ -1590,14 +1584,14 @@
 		},
 		{
 			"title": "Update SaaS Access Application",
-			"description": "Create a new SaaS Access Application",
+			"description": "Update a new SaaS Access Application",
 			"rel": "collection",
 			"href": "zones/{#/definitions/identifier}/access/apps/{#/definitions/app_id}",
 			"method": "PUT",
 			"cfOwnership": "access",
 			"html_id": "zone-level-access-applications-update-saas-access-application",
 			"uri": "zones/:identifier/access/apps/:app_id",
-			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/apps/699d98642c564d2e855e9661899b7252\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"saas\",\"name\":\"Admin Site\",\"domain\":\"test.example.com/admin\",\"logo_url\":\"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\"app_launcher_visible\":true,\"saas_app\":{\"consumer_service_url\":\"https://example.com\",\"sp_entity_id\":\"example unique name\",\"public_key\":\"example unique name\",\"idp_entity_id\":\"https://example.cloudflareaccess.com\",\"name_id_format\":\"id\",\"sso_endpoint\":\"https://example.cloudflareaccess.com/cdn-cgi/access/sso/saml/b3f58a2b414e0b51d45c8c2af26fccca0e27c63763c426fa52f98dcf0b3b3bfd\",\"custom_attributes\":{\"name\":\"family_name\",\"name_format\":\"urn:oasis:names:tc:SAML:2.0:attrname-format:basic\",\"source\":{\"name\":\"last_name\"}},\"created_at\":\"2014-01-01T05:20:00.12345Z\",\"updated_at\":\"2014-01-01T05:20:00.12345Z\"},\"allowed_idps\":[\"699d98642c564d2e855e9661899b7252\"],\"auto_redirect_to_identity\":false}'",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/apps/699d98642c564d2e855e9661899b7252\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"saas\",\"name\":\"Admin Site\",\"logo_url\":\"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\"app_launcher_visible\":true,\"saas_app\":{\"consumer_service_url\":\"https://example.com\",\"sp_entity_id\":\"example unique name\",\"public_key\":\"example unique name\",\"idp_entity_id\":\"https://example.cloudflareaccess.com\",\"name_id_format\":\"id\",\"sso_endpoint\":\"https://example.cloudflareaccess.com/cdn-cgi/access/sso/saml/b3f58a2b414e0b51d45c8c2af26fccca0e27c63763c426fa52f98dcf0b3b3bfd\",\"custom_attributes\":{\"name\":\"family_name\",\"name_format\":\"urn:oasis:names:tc:SAML:2.0:attrname-format:basic\",\"source\":{\"name\":\"last_name\"}},\"created_at\":\"2014-01-01T05:20:00.12345Z\",\"updated_at\":\"2014-01-01T05:20:00.12345Z\"},\"allowed_idps\":[\"699d98642c564d2e855e9661899b7252\"],\"auto_redirect_to_identity\":false}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -1612,11 +1606,6 @@
 						"type": "string",
 						"example": "\"Admin Site\"",
 						"description": "The name of the Application."
-					},
-					"domain": {
-						"type": "string",
-						"example": "\"test.example.com/admin\"",
-						"description": "The domain and path that Access will block"
 					},
 					"logo_url": {
 						"type": "string",
@@ -1739,7 +1728,6 @@
 				"required_props": [
 					"name",
 					"type",
-					"domain",
 					"saas_app"
 				],
 				"optional_props": [
@@ -1749,14 +1737,14 @@
 					"auto_redirect_to_identity"
 				],
 				"objects": [],
-				"example": "{\n  \"type\": \"saas\",\n  \"name\": \"Admin Site\",\n  \"domain\": \"test.example.com/admin\",\n  \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n  \"app_launcher_visible\": true,\n  \"saas_app\": {\n    \"consumer_service_url\": \"https://example.com\",\n    \"sp_entity_id\": \"example unique name\",\n    \"public_key\": \"example unique name\",\n    \"idp_entity_id\": \"https://example.cloudflareaccess.com\",\n    \"name_id_format\": \"id\",\n    \"sso_endpoint\": \"https://example.cloudflareaccess.com/cdn-cgi/access/sso/saml/b3f58a2b414e0b51d45c8c2af26fccca0e27c63763c426fa52f98dcf0b3b3bfd\",\n    \"custom_attributes\": {\n      \"name\": \"family_name\",\n      \"name_format\": \"urn:oasis:names:tc:SAML:2.0:attrname-format:basic\",\n      \"source\": {\n        \"name\": \"last_name\"\n      }\n    },\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n  },\n  \"allowed_idps\": [\n    \"699d98642c564d2e855e9661899b7252\"\n  ],\n  \"auto_redirect_to_identity\": false\n}",
+				"example": "{\n  \"type\": \"saas\",\n  \"name\": \"Admin Site\",\n  \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n  \"app_launcher_visible\": true,\n  \"saas_app\": {\n    \"consumer_service_url\": \"https://example.com\",\n    \"sp_entity_id\": \"example unique name\",\n    \"public_key\": \"example unique name\",\n    \"idp_entity_id\": \"https://example.cloudflareaccess.com\",\n    \"name_id_format\": \"id\",\n    \"sso_endpoint\": \"https://example.cloudflareaccess.com/cdn-cgi/access/sso/saml/b3f58a2b414e0b51d45c8c2af26fccca0e27c63763c426fa52f98dcf0b3b3bfd\",\n    \"custom_attributes\": {\n      \"name\": \"family_name\",\n      \"name_format\": \"urn:oasis:names:tc:SAML:2.0:attrname-format:basic\",\n      \"source\": {\n        \"name\": \"last_name\"\n      }\n    },\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n  },\n  \"allowed_idps\": [\n    \"699d98642c564d2e855e9661899b7252\"\n  ],\n  \"auto_redirect_to_identity\": false\n}",
 				"title": "SaaS Application"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"aud\": \"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\",\n    \"type\": \"saas\",\n    \"name\": \"Admin Site\",\n    \"domain\": \"test.example.com/admin\",\n    \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n    \"app_launcher_visible\": true,\n    \"saas_app\": {\n      \"consumer_service_url\": \"https://example.com\",\n      \"sp_entity_id\": \"example unique name\",\n      \"public_key\": \"example unique name\",\n      \"idp_entity_id\": \"https://example.cloudflareaccess.com\",\n      \"name_id_format\": \"id\",\n      \"sso_endpoint\": \"https://example.cloudflareaccess.com/cdn-cgi/access/sso/saml/b3f58a2b414e0b51d45c8c2af26fccca0e27c63763c426fa52f98dcf0b3b3bfd\",\n      \"custom_attributes\": {\n        \"name\": \"family_name\",\n        \"name_format\": \"urn:oasis:names:tc:SAML:2.0:attrname-format:basic\",\n        \"source\": {\n          \"name\": \"last_name\"\n        }\n      },\n      \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n    },\n    \"allowed_idps\": [\n      \"699d98642c564d2e855e9661899b7252\"\n    ],\n    \"auto_redirect_to_identity\": false\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"aud\": \"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\",\n    \"type\": \"saas\",\n    \"name\": \"Admin Site\",\n    \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n    \"app_launcher_visible\": true,\n    \"saas_app\": {\n      \"consumer_service_url\": \"https://example.com\",\n      \"sp_entity_id\": \"example unique name\",\n      \"public_key\": \"example unique name\",\n      \"idp_entity_id\": \"https://example.cloudflareaccess.com\",\n      \"name_id_format\": \"id\",\n      \"sso_endpoint\": \"https://example.cloudflareaccess.com/cdn-cgi/access/sso/saml/b3f58a2b414e0b51d45c8c2af26fccca0e27c63763c426fa52f98dcf0b3b3bfd\",\n      \"custom_attributes\": {\n        \"name\": \"family_name\",\n        \"name_format\": \"urn:oasis:names:tc:SAML:2.0:attrname-format:basic\",\n        \"source\": {\n          \"name\": \"last_name\"\n        }\n      },\n      \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n    },\n    \"allowed_idps\": [\n      \"699d98642c564d2e855e9661899b7252\"\n    ],\n    \"auto_redirect_to_identity\": false\n  }\n}"
 		},
 		{
 			"title": "Update App Launcher Access Application",
-			"description": "Create a new App Launcher Access Application",
+			"description": "Update an App Launcher Access Application",
 			"rel": "collection",
 			"href": "zones/{#/definitions/identifier}/access/apps/{#/definitions/app_id}",
 			"method": "PUT",
@@ -1837,7 +1825,7 @@
 		},
 		{
 			"title": "Update Device Enrollment Permissions Access Application",
-			"description": "Create a new Device Enrollment Permissions Application",
+			"description": "Update a Device Enrollment Permissions Application",
 			"rel": "collection",
 			"href": "zones/{#/definitions/identifier}/access/apps/{#/definitions/app_id}",
 			"method": "PUT",
@@ -1918,7 +1906,7 @@
 		},
 		{
 			"title": "Update Browser Isolation Permissions Access Application",
-			"description": "Create a new Browser Isolation Permissions Application",
+			"description": "Update a Browser Isolation Permissions Application",
 			"rel": "collection",
 			"href": "zones/{#/definitions/identifier}/access/apps/{#/definitions/app_id}",
 			"method": "PUT",
@@ -1999,7 +1987,7 @@
 		},
 		{
 			"title": "Update Bookmark Access Application",
-			"description": "Create a new Bookmark Access Application",
+			"description": "Update a Bookmark Access Application",
 			"rel": "collection",
 			"href": "zones/{#/definitions/identifier}/access/apps/{#/definitions/app_id}",
 			"method": "PUT",
@@ -2388,11 +2376,6 @@
 						"example": "\"Admin Site\"",
 						"description": "The name of the Application."
 					},
-					"domain": {
-						"type": "string",
-						"example": "\"test.example.com/admin\"",
-						"description": "The domain and path that Access will block"
-					},
 					"logo_url": {
 						"type": "string",
 						"example": "\"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\"",
@@ -2519,7 +2502,6 @@
 					"aud",
 					"type",
 					"name",
-					"domain",
 					"logo_url",
 					"app_launcher_visible",
 					"saas_app",
@@ -2527,7 +2509,7 @@
 					"auto_redirect_to_identity"
 				],
 				"objects": [],
-				"example": "{\n  \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"aud\": \"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\",\n  \"type\": \"saas\",\n  \"name\": \"Admin Site\",\n  \"domain\": \"test.example.com/admin\",\n  \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n  \"app_launcher_visible\": true,\n  \"saas_app\": {\n    \"consumer_service_url\": \"https://example.com\",\n    \"sp_entity_id\": \"example unique name\",\n    \"public_key\": \"example unique name\",\n    \"idp_entity_id\": \"https://example.cloudflareaccess.com\",\n    \"name_id_format\": \"id\",\n    \"sso_endpoint\": \"https://example.cloudflareaccess.com/cdn-cgi/access/sso/saml/b3f58a2b414e0b51d45c8c2af26fccca0e27c63763c426fa52f98dcf0b3b3bfd\",\n    \"custom_attributes\": {\n      \"name\": \"family_name\",\n      \"name_format\": \"urn:oasis:names:tc:SAML:2.0:attrname-format:basic\",\n      \"source\": {\n        \"name\": \"last_name\"\n      }\n    },\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n  },\n  \"allowed_idps\": [\n    \"699d98642c564d2e855e9661899b7252\"\n  ],\n  \"auto_redirect_to_identity\": false\n}",
+				"example": "{\n  \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"aud\": \"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\",\n  \"type\": \"saas\",\n  \"name\": \"Admin Site\",\n  \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n  \"app_launcher_visible\": true,\n  \"saas_app\": {\n    \"consumer_service_url\": \"https://example.com\",\n    \"sp_entity_id\": \"example unique name\",\n    \"public_key\": \"example unique name\",\n    \"idp_entity_id\": \"https://example.cloudflareaccess.com\",\n    \"name_id_format\": \"id\",\n    \"sso_endpoint\": \"https://example.cloudflareaccess.com/cdn-cgi/access/sso/saml/b3f58a2b414e0b51d45c8c2af26fccca0e27c63763c426fa52f98dcf0b3b3bfd\",\n    \"custom_attributes\": {\n      \"name\": \"family_name\",\n      \"name_format\": \"urn:oasis:names:tc:SAML:2.0:attrname-format:basic\",\n      \"source\": {\n        \"name\": \"last_name\"\n      }\n    },\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n  },\n  \"allowed_idps\": [\n    \"699d98642c564d2e855e9661899b7252\"\n  ],\n  \"auto_redirect_to_identity\": false\n}",
 				"title": "SaaS Application"
 			},
 			{

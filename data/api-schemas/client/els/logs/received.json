@@ -69,7 +69,7 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"flag\": true\n  }\n}"
 		},
 		{
-			"title": "Logs received",
+			"title": "Get logs received",
 			"description": "The `/received` api route allows customers to retrieve their edge HTTP logs. The basic access pattern is \"give me all the logs for zone Z for minute M\", where the minute M refers to the time records were received at Cloudflare's central data center. `start` is inclusive, and `end` is exclusive. Because of that, to get all data, at minutely cadence, starting at 10AM, the proper values are: `start=2018-05-20T10:00:00Z&end=2018-05-20T10:01:00Z`, then `start=2018-05-20T10:01:00Z&end=2018-05-20T10:02:00Z` and so on; the overlap will be handled properly.",
 			"rel": "tag:cloudflare.com,2018:logs",
 			"href": "zones/{#/definitions/zone_identifier}/logs/received",
@@ -87,7 +87,7 @@
 					"#logs:read"
 				]
 			},
-			"html_id": "logs-received-logs-received",
+			"html_id": "logs-received-get-logs-received",
 			"uri": "zones/:zone_identifier/logs/received",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/logs/received?start=2018-05-20T10:00:00Z&end=2018-05-20T10:01:00Z&count=7&sample=0.1&fields=ClientIP,RayID,EdgeStartTimestamp&timestamps=unixnano\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {
@@ -157,7 +157,7 @@
 			"response": "{\"ClientIP\":\"192.0.2.1\",\"RayID\":\"41ddf1740f67442d\",\"EdgeStartTimestamp\":1526810289280000000}\n{\"ClientIP\":\"192.0.2.1\",\"RayID\":\"41ddf1740f67442d\",\"EdgeStartTimestamp\":1526810289280000000}\n{\"ClientIP\":\"192.0.2.1\",\"RayID\":\"41ddf1740f67442d\",\"EdgeStartTimestamp\":1526810289280000000}"
 		},
 		{
-			"title": "Logs RayIDs",
+			"title": "Get logs RayIDs",
 			"description": "The `/rayids` api route allows lookups by specific rayid. The rayids route will return zero, one, or more records (ray ids are not unique).",
 			"rel": "tag:cloudflare.com,2018:logs",
 			"href": "zones/{#/definitions/zone_identifier}/logs/rayids/{#/definitions/ray_identifier}",
@@ -175,7 +175,7 @@
 					"#logs:read"
 				]
 			},
-			"html_id": "logs-received-logs-rayids",
+			"html_id": "logs-received-get-logs-rayids",
 			"uri": "zones/:zone_identifier/logs/rayids/:ray_identifier",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/logs/rayids/41ddf1740f67442d?fields=ClientIP,RayID,EdgeStartTimestamp&timestamps=unixnano\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {
@@ -211,7 +211,7 @@
 			"response": "{\"ClientIP\":\"192.0.2.1\",\"RayID\":\"41ddf1740f67442d\",\"EdgeStartTimestamp\":1526810289280000000}\n{\"ClientIP\":\"192.0.2.1\",\"RayID\":\"41ddf1740f67442d\",\"EdgeStartTimestamp\":1526810289280000000}\n{\"ClientIP\":\"192.0.2.1\",\"RayID\":\"41ddf1740f67442d\",\"EdgeStartTimestamp\":1526810289280000000}"
 		},
 		{
-			"title": "Fields",
+			"title": "List fields",
 			"description": "Lists all fields available. The response is json object with key-value pairs, where keys are field names, and values are descriptions.",
 			"rel": "tag:cloudflare.com,2018:logs",
 			"href": "zones/{#/definitions/zone_identifier}/logs/received/fields",
@@ -228,7 +228,7 @@
 					"#logs:read"
 				]
 			},
-			"html_id": "logs-received-fields",
+			"html_id": "logs-received-list-fields",
 			"uri": "zones/:zone_identifier/logs/received/fields",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/logs/received/fields\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"key\": \"value\"\n}"

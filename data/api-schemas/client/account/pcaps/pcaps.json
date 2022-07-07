@@ -357,6 +357,23 @@
 			"uri": "accounts/:account_identifier/pcaps/ownership/validate",
 			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/pcaps/ownership/validate\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"destination_conf\": \"s3://pcaps-bucket?region=us-east-1\",\n  \"ownership_challenge\": \"ownership-challenge-9883874ecac311ec8475433579a6bf5f.txt\"\n}"
+		},
+		{
+			"title": "Delete Bucket for Use with PCAPs",
+			"description": "Delete bucket that has been added to PCAPs API.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/pcaps/ownership/{#/definitions/ownership_identifier}",
+			"method": "DELETE",
+			"cfOwnership": "magic-firewall",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"html_id": "magic-pcap-collection-delete-bucket-for-use-with-pcaps",
+			"uri": "accounts/:account_identifier/pcaps/ownership/:ownership_identifier",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/pcaps/ownership/b2df3c4fcfc84ea49a28df6d55ce16cb\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\""
 		}
 	],
 	"html_id": "magic-pcap-collection",

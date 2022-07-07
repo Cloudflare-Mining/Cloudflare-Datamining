@@ -8,12 +8,12 @@
 			"title": "Create Zero Trust account",
 			"description": "Create Zero Trust account with existing cloudflare account",
 			"rel": "self",
-			"href": "accounts/{#/definitions/identifier}/gateway/",
+			"href": "accounts/{#/definitions/identifier}/gateway",
 			"method": "POST",
 			"cfOwnership": "gateway",
 			"html_id": "zero-trust-accounts-create-zero-trust-account",
-			"uri": "accounts/:identifier/gateway/",
-			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"account_id\":\"699d98642c564d2e855e9661899b7252\"}'",
+			"uri": "accounts/:identifier/gateway",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"account_id\":\"699d98642c564d2e855e9661899b7252\"}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -39,12 +39,12 @@
 			"title": "Get Zero Trust account information",
 			"description": "Get Zero Trust account information",
 			"rel": "self",
-			"href": "accounts/{#/definitions/identifier}/gateway/",
+			"href": "accounts/{#/definitions/identifier}/gateway",
 			"method": "GET",
 			"cfOwnership": "gateway",
 			"html_id": "zero-trust-accounts-get-zero-trust-account-information",
-			"uri": "accounts/:identifier/gateway/",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"uri": "accounts/:identifier/gateway",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"699d98642c564d2e855e9661899b7252\",\n    \"gateway_tag\": \"f174e90afafe4643bbbc4a0ed4fc8415\",\n    \"provider_name\": \"Cloudflare\"\n  }\n}"
 		},
 		{
