@@ -583,8 +583,8 @@ async function run(){
 	const prefix = dateFormat(new Date(), 'd mmmm yyyy');
 	await tryAndPush(
 		[
-			'data/dashboard-translations/*.json',
-			'data/dashboard-subroutes/*.json',
+			'data/dashboard-translations/*',
+			'data/dashboard-subroutes/*',
 			'data/dashboard/*.json',
 			'data/dashboard/*.js',
 		],

@@ -52,7 +52,7 @@ async function run(){
 	console.log('Pushing!');
 	const prefix = dateFormat(new Date(), 'd mmmm yyyy');
 	await tryAndPush(
-		['data/packages/*.json', 'data/maintainers.json'],
+		['data/packages/*', 'data/maintainers.json'],
 		`${prefix} - NPM Package Data was updated!`,
 		'CFData - NPM Package Data Update',
 		'Pushed NPM Package Data: ' + prefix,
