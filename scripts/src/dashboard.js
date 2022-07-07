@@ -372,6 +372,8 @@ async function generateDashboardStructure(wantedChunks, write = false){
 										page = '_common/' + commonAction[1];
 									}else if(file.includes('microfrontends/index.ts')){
 										page = '_common/_index';
+									}else if(file.includes('../init.ts')){
+										page = '_common/_init';
 									}
 									if(!page){
 										console.error('Could not determine page for subroutes', file);
