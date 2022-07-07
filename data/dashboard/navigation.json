@@ -52,9 +52,6 @@
 		{
 			"url": "",
 			"iconType": "registrar-logo",
-			"labels": [
-				"new"
-			],
 			"pages": [
 				{
 					"title": "navigation.account.registrar.manage_domains",
@@ -413,62 +410,31 @@
 					"url": "/security"
 				},
 				{
-					"title": "navigation.zone.firewall.waf",
-					"url": "/security/waf",
-					"labels": [
-						"new"
-					]
+					"title": "navigation.zone.security.waf",
+					"url": "/security/waf"
 				},
 				{
-					"title": "navigation.zone.firewall.managed_rules",
-					"url": "/firewall/managed-rules",
-					"labels": [
-						"moved"
-					]
-				},
-				{
-					"title": "navigation.zone.firewall.custom_rules",
-					"url": "/firewall/custom-rules",
-					"labels": [
-						"moved"
-					]
-				},
-				{
-					"title": "navigation.zone.firewall.firewall_rules",
-					"url": "/firewall/firewall-rules",
-					"labels": [
-						"moved"
-					]
-				},
-				{
-					"title": "navigation.zone.firewall.page_shield",
+					"title": "navigation.zone.security.page_shield",
 					"url": "/security/page-shield"
 				},
 				{
-					"title": "navigation.zone.firewall.bots",
+					"title": "navigation.zone.security.bots",
 					"url": "/security/bots"
 				},
 				{
-					"title": "navigation.zone.firewall.data",
+					"title": "navigation.zone.security.data",
 					"url": "/security/data"
 				},
 				{
-					"title": "navigation.zone.firewall.api_shield",
+					"title": "navigation.zone.security.api_shield",
 					"url": "/security/api-shield"
 				},
 				{
-					"title": "navigation.zone.firewall.ddos",
+					"title": "navigation.zone.security.ddos",
 					"url": "/security/ddos"
 				},
 				{
-					"title": "navigation.zone.firewall.tools",
-					"url": "/firewall/tools",
-					"labels": [
-						"moved"
-					]
-				},
-				{
-					"title": "navigation.zone.firewall.settings",
+					"title": "navigation.zone.security.settings",
 					"url": "/security/settings"
 				}
 			]
@@ -665,32 +631,25 @@
 			]
 		},
 		{
-			"title": "navigation.zone.firewall",
-			"url": "/firewall/managed-rules",
+			"title": "navigation.zone.security",
+			"url": "/security/waf",
 			"iconType": "shield",
 			"pages": [
 				{
-					"url": "/firewall/managed-rules"
+					"title": "navigation.zone.security.waf",
+					"url": "/security/waf"
 				},
 				{
-					"title": "navigation.zone.firewall.firewall_rules",
-					"url": "/firewall/firewall-rules"
+					"title": "navigation.zone.security.bots",
+					"url": "/security/bots"
 				},
 				{
-					"title": "navigation.zone.firewall.bots",
-					"url": "/firewall/bots"
+					"title": "navigation.zone.security.ddos",
+					"url": "/security/ddos"
 				},
 				{
-					"title": "navigation.zone.firewall.ddos",
-					"url": "/firewall/ddos"
-				},
-				{
-					"title": "navigation.zone.firewall.tools",
-					"url": "/firewall/tools"
-				},
-				{
-					"title": "navigation.zone.firewall.settings",
-					"url": "/firewall/settings"
+					"title": "navigation.zone.security.settings",
+					"url": "/security/settings"
 				}
 			]
 		},
