@@ -236,7 +236,7 @@ async function generateDashboardStructure(wantedChunks, write = false){
 	const links = new Set();
 	const apiReqs = [];
 	for(const chunk of wantedChunks.chunks){
-		for(const match of chunk.code.matchAll(/["'](https:\/\/[^"']*)["']/g)){
+		for(const match of chunk.code.matchAll(/["'](https?:\/\/[^"']*)["']/g)){
 			if(match && match[1] && !match[1].includes('`')){
 				try{
 					const url = new URL(match[1]);
