@@ -1,0 +1,131 @@
+{
+	"name": "@cfpreview/pages-plugins-graphql",
+	"dist-tags": {
+		"latest": "0.1.1"
+	},
+	"versions": {
+		"0.0.1": {
+			"name": "@cfpreview/pages-plugins-graphql",
+			"version": "0.0.1",
+			"peerDependencies": {
+				"graphql": "^16.2.0"
+			},
+			"directories": {
+				"assets": "static"
+			},
+			"dist": {
+				"integrity": "sha512-/VpayYFGmlQUZszP8j7ZWslSphyIEWqpODcyEuKYuYA4GRmOB86YkoJdYIm3wkKongyWve0hjfCS2j0UV2xZsw==",
+				"shasum": "86bc4c4983d410891ddf1c97e9f33b29c3f08d3e",
+				"tarball": "https://registry.npmjs.org/@cfpreview/pages-plugins-graphql/-/pages-plugins-graphql-0.0.1.tgz",
+				"fileCount": 5,
+				"unpackedSize": 14980,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJh9uBRCRA9TVsSAnZWagAAd8YQAJ0risZS+LfhFT+M1kLN\nc8INLfk1o6Dr1fuIAizUv/GELMEMCgUWVBW13ubtwYKGIfhfGLfS5ncHFK8+\nNEUrP+FoP2lSjSGgaLh7HlC2Ehc49nfTFxK03YvuzszRPvMRKsBOfbzMjPuv\nVonkZ0V7HDjiMB37ZHpM4As+8lxPD1IA4WpnFwaKCdEDNnPHLMdOp5YvwyMs\niuligGBeWpcrfjJxDIR/9K9XLr3qLvOaXoNFeXz7NUyX12PoLuyqjMXtFIvW\nqBSuD3X716XIVScry7aH2v+wSH+1xB4jSdL+R0njvjYMkF8IqMDIsK/6TLKU\nY9KQjlntRsHa3Z6ohN5q9+lgD9U8nXkZZoQi/08Za63Bmpp+mmEkS1S6lAuE\nufeELE3pTGX0LP6JMpo15bYiQAkzHpm8q/0wKGb6zjlBEQ5/MGyFrs2i0/vX\n9MMmf573ihHjRYhirQFR8c+IwoVcgjyiC8YxHk2CcuGQyyuCkB4beLiO2t5F\n0BmD1bLtvwMzc7PqDstb8LRDfMREPktnsY4Pqxw1yRRzEwfGpbglQAtEXTpy\niuot1LvIeSNZF6+PGzyGEZKj2rkz0AL7qB1v2qeXQHlfpHMzS8YNKE5FuVlQ\nvah9WR44zzkdvcOTxdQpdrpB536CS8IUwu/egTOpbHvNiTDOaxiOhDHqKqYV\nJxVm\r\n=brV7\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQC7W7a3c5NJ/23wTQwPQEpA9+IGD5DtQ/Ex7xteCIi8EwIgDmbHofPT3ouEBcI89QtNAdfWXG+URu8nJxXArArqORU="
+					}
+				]
+			}
+		},
+		"0.0.3": {
+			"name": "@cfpreview/pages-plugins-graphql",
+			"version": "0.0.3",
+			"devDependencies": {
+				"graphql": "^16.2.0"
+			},
+			"directories": {
+				"assets": "static"
+			},
+			"dist": {
+				"integrity": "sha512-WuA+TyndYdcQ0AFD+0vHQ0SzrFpsdIGJ7Yn9pxgUC1x/8dUJ/O42blCsErXjgbQsi4e5FYnNCWG/nnS5Ri4j/Q==",
+				"shasum": "8c563fd1fdecae71e1872c58bab4bbadbbd4f9d7",
+				"tarball": "https://registry.npmjs.org/@cfpreview/pages-plugins-graphql/-/pages-plugins-graphql-0.0.3.tgz",
+				"fileCount": 6,
+				"unpackedSize": 16641,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJh9vUZCRA9TVsSAnZWagAAURwP/iBXIzr4eveBOSnUa8jl\ncuVBYJdIBSsLyJjvVSLaLcZh1StJZKXb0VIVO8wPUah0mDi+95+IG1ZDhd5Y\nfsncyO4bel4GdYwwTea0dqKnAywxjDdLGohHTJhejyCGfnJ0XLRYR9orIkrJ\nkhEJb2lSwLyKyyDAyI3IBkRsOyIhq9fHhcQ983RRlZ4WDp2vhH2yEpfiYOFg\n3qp3P0MmynEE6ZuyPkBiYhVsdn/tv6tn4kMzTUSQrVLlNeczozAI6vEZuYBy\npCw8/kWZe8oOe0p4eWxlM2x2LuUba50UnHRPsJ0qYLjWhlA1byVHCprD9hng\n1YzOeQQuVyUk0IHRgj5IRh/zvVdpm6LyX3qAtFrnBsZrFaFmJXMqoGBP0/Lt\nSspcjf72xrozXAnT0OKdnELBvpND3ZsRmWt9UJsc75rmSxxdlSWoWhGs+5vs\nM7ZthbLYp70MK+TruxgCR7uvdd2tFdtzgThvJUh3s7cFxUxryfWDwHkgI/gS\nH0BGeJY8P6zUoQIP2w25x8I6VqVBkLldg82DBX5laOHap4WBF6vgbul1sLPR\nGLaIZ6ghG+LPZA7lEvvcb/69DC52xd5MTMSUMeUs6clW6vPhMfuyoQT5331B\nGUAQKeV05PUyT8qdY+mqPwQYvY1+GpCTohi0UgJoT0fxfOG0Em0kNVVEHZ5c\nw1Ss\r\n=1n8C\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIHcNsrDzluJM4LUhn6xgynGHMeaHzwkHMYwCyMpoBjiiAiAhGl5aWoC0J78JNEJsXfc1YTW3OU8o85hnQK/N8mgNAg=="
+					}
+				]
+			}
+		},
+		"0.0.4": {
+			"name": "@cfpreview/pages-plugins-graphql",
+			"version": "0.0.4",
+			"peerDependencies": {
+				"graphql": "^16.2.0"
+			},
+			"directories": {
+				"assets": "static"
+			},
+			"dist": {
+				"integrity": "sha512-BHuMS2RQmVK9HXYFfspW+kRQqzqzBXCQvk86uUeNwTGCQNvlfKAn7eGkym7HrFafQQLiVA0ReJKuXt5lK2RfZw==",
+				"shasum": "4ac1817c0efa5c4ea0629b16461d81aaa3a9d1d4",
+				"tarball": "https://registry.npmjs.org/@cfpreview/pages-plugins-graphql/-/pages-plugins-graphql-0.0.4.tgz",
+				"fileCount": 8,
+				"unpackedSize": 17615,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJh9zUCCRA9TVsSAnZWagAAQwoP/0NffOXn6qiuoec4vbxN\ntxESocUVrNhPzoZDGR6ka4fRQyqaiFKZLNGZb7d3hWM9aFZj/etCIp1F7YRO\ntuC4m1Nc9Ah2djgblRQ4YW9u77YWkaROeojzIGr81Vzer+ayVmSkfQ+AOBR+\nGNie+nUuaBHeyvAKrV7muqkP6MbB7lq6whvs+zCgifIwMuFvhkeycjqisXVl\nF4xTjCiTRVV0LuPIEK6Z2etQQa1eU9NGWQv/fWWauoxB7IAYy4/+Uea8YhsV\nh2d4VdQQyN0Ze1nakNP7az5bMijBYVkekvnurWRuZyzRr9innno0cI+u8mGD\nx4njoANM4jJ6/hRlE73ASmTj6N8Ekcij57UO9BwEcZpITHDAaJ4QetPMnCNe\ndeLtgOx/YTIeRSU+TDKEWI0W7fTH3pQFTyiyWKD7ICNR+LCWvjmElXayGHyS\nTq+GXW531LH4ZQU0HoH4ir7ghz796p0ZumWBrhfx9C+aXrC5mYDLjN5EiEsy\nWwq8rlHB0uJR/n44itc6KFaQSQYC8ZokwsTNo1x3bJuvwPLEWfmklJEzQN3r\n3NiL3OsUw4jrszADok/LQFWOlvl9i1iPk0c/OLESagjJVFbeecBbzbsV+JrU\nWkdOg3pvv105mZzRP3MQbxMQd2lahO2AqkOEdmI/2aU2DRWRMjMtUm/JhQp+\n3Gqv\r\n=1Ore\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQD34366vqETW5ZitwDexWy/OLQlqUzgOE4TbEVdza/r7gIgb3dSYS8t4e5x+55dVRYJipDgN9atfF72U7f/awOsTmQ="
+					}
+				]
+			}
+		},
+		"0.1.0": {
+			"name": "@cfpreview/pages-plugins-graphql",
+			"version": "0.1.0",
+			"peerDependencies": {
+				"graphql": "^16.2.0"
+			},
+			"directories": {
+				"assets": "static"
+			},
+			"dist": {
+				"integrity": "sha512-zT9RHEd9OaXkOT8dIQSaQRkAILyPPamKL0EOJ1n7Ssb4uPSjolaDKBIwc8grKBYqkIn3jRPsz2nPS1E315rkMg==",
+				"shasum": "ffcd9816f1cdf51968e6d2f90efca639a7f66fce",
+				"tarball": "https://registry.npmjs.org/@cfpreview/pages-plugins-graphql/-/pages-plugins-graphql-0.1.0.tgz",
+				"fileCount": 8,
+				"unpackedSize": 17723,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJh9zarCRA9TVsSAnZWagAAzIwQAKL8PaN6um8uR36y3qed\nZp+cGC+JBGxEsJht9M0snovxGo8YOeHi5X5GLMagm/Cm6yFNPL8CSIzpeBJ4\ne46qG99zTjT1HCbWvf5yBd0AO9YlE4+SCwNybk7CTp1eHHzjS+ZIKtCGS04N\ntRFPt9Z0oGTuKU+B/zZmhoZ17gRfJdYg4F5uYs24GQNPwME91D9sTvO3gBTr\ncgwgxdRnfFC3tzXqZZmTrRMY9H66uCDHdIOL3bgFv8Ftu0/shDv/UZQUANBs\ng6pwNTx0Cp1LGDHAJIBiSu4tnqjdEVm2SYM5Wzn0An1rRWkMmhzy3XrFjert\n/X43si/WZUnDXrj/X1yApStZq8AzWKCd+pVGxkzKvhjM5yG2VUpwHmXeP4ic\nSAmp4HiaJlY9IANSU9Vbet85GErIuxPdB4lpAlmOwB6YgMkWu7+GH8hP+dJc\n9c9pyqzzh7zRLLMILO0uHRsxOpNEubXwxsy/TXinDG7+4MFrAVqHu7GwA+7j\nY3ZDNanA+bRW66roQF9cyikhaW4eLTzFeXd0t04riZPeCIAWpebJdCsyR3t1\nD676XP+IqlZjdkoywVpjJ1c87OHyQCQGwm37nSbdJ1jcsW+Kous2q79LhAuP\n+uuWUBjjscENrxexjYbb42YCqR3XNBleLXIs+nWCSPjPSgmmy6sqK5lbD9sW\nLgwU\r\n=JKn/\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDbXPIt0TCweF5bmUe87eAOKEcN8xdUiSGlNe/O3jjFIAIgTAWtCyNhF3MPnpMifV722F79FgV7ThrvRdtMBNTB+hI="
+					}
+				]
+			}
+		},
+		"0.1.1": {
+			"name": "@cfpreview/pages-plugins-graphql",
+			"version": "0.1.1",
+			"devDependencies": {
+				"graphql": "^16.2.0"
+			},
+			"directories": {
+				"assets": "static"
+			},
+			"dist": {
+				"integrity": "sha512-ggYdgC/KAgOAOMHEgmrlCjamt4+mG909DUpboGtewaW1nWiwiZM4o7BwrC5xqYbp5yyb2ChmP2POqCQQPa7jWw==",
+				"shasum": "8c27c91cf16a4112c6aca1bb15e8fc4316b7b39e",
+				"tarball": "https://registry.npmjs.org/@cfpreview/pages-plugins-graphql/-/pages-plugins-graphql-0.1.1.tgz",
+				"fileCount": 6,
+				"unpackedSize": 15805,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJiBphXCRA9TVsSAnZWagAAztoP/06qLO0fm73OU184T9WA\neLZwNEpgFNztwooTil8qeUbnzuDFnMnqdsEufwKehIJCbbOd3uxJgg/cB3Ur\nT3vno95ytCKbi3rUYSG8JdkacWj9DAZ5012ZhDavbqML+a4ihkEPbZfr/t6o\nzNFfE0O7nvXuNPeQeImjop2qQGWjTo6xgHQ76/71ap7LqdGjSp669cHFjyQB\n1g0ufuPP/SQ0KeUaFnkZHHbZTzO9jdkA4eP2Vs7vbDh/kXZCSCZeUz5/JSUR\nPFFLDEhb8w83M0vLjrAOF4X7HjGdBGxVbbQzLbJPWNgr2HO3wKPejIrn8ipb\nPTrDxYuf7zCzrh2q6VmkYHfsF7LJzkYb6NY8IWJVGP++L4vcJlUjp9IKpFQ1\nFLsfsR4vhaVBIo3L5IwMf5M3s7zzRcUb8ZgG3lgPqB8zzmA1q8wMaaP6JVmM\nvGmwDNdi9L4LsB/EE18EU2XqK9+aCtz+BVlYOwn8UlwCsqCZ+PpBF56JyNZ1\n3zQhWrew4kKol+K6ag9PEmkxeAIItcKOa8ul6ZyxIYUOIq+UTasHiRxMhcKx\npnpuMxKjB9gzeewjtodAMoFhv0YQC+FFtzO3SXgS39HHUDrBywvYcNEDX5b8\nPjOtLHzfM41Br8KDDGvocSyfwMrdfTK4SS0PulhDcWgDTZDDhgyEPZsUz2J/\nXxiM\r\n=wY+1\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIDe3C2Q/OM/fCIjzSC6tD6WwyfMGj6isTdpc95ft41UtAiA0GZttCt3Xm07qD1A9zzRHicwNl/err3vjVucA11ugIw=="
+					}
+				]
+			}
+		}
+	},
+	"modified": "2022-04-04T22:24:38.978Z",
+	"_cached": false,
+	"_contentLength": 7888
+}

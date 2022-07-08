@@ -1,0 +1,501 @@
+{
+	"name": "serverless-cloudflare-workers",
+	"dist-tags": {
+		"latest": "1.2.0"
+	},
+	"versions": {
+		"0.1.0": {
+			"name": "serverless-cloudflare-workers",
+			"version": "0.1.0",
+			"dependencies": {
+				"bluebird": "^3.4.7",
+				"node-fetch": "^2.2.0"
+			},
+			"devDependencies": {
+				"eslint": "^5.3.0",
+				"eslint-config-prettier": "^2.9.0",
+				"eslint-plugin-prettier": "^2.6.2",
+				"prettier": "^1.14.0"
+			},
+			"dist": {
+				"integrity": "sha512-zy1uoNcjfrkXrUJ9FR+YfI2pk8aEMslqM8yN1kBkaeHrlQioauwA5sV4JX2+/AYQF6RoP5stSBvKyVbZz+gc8g==",
+				"shasum": "3fd8085b3bd064fde4fcf20392af5c80d6d6f904",
+				"tarball": "https://registry.npmjs.org/serverless-cloudflare-workers/-/serverless-cloudflare-workers-0.1.0.tgz",
+				"fileCount": 21,
+				"unpackedSize": 54196,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJblqe7CRA9TVsSAnZWagAAfpAP/Rk54vKAclJUCGHHlV/3\nWkS3ik1PCEvoBJeQ2+iDvKx/gsWqdXWPGs4Qp4MtXxkvPO80ZLtLTfEnQMzJ\nHQ6gats9LtopCRJxLhuQ2ciGFMi98QscUg+zqbWvyH7EaQ+9m4BzOJhaE8Pp\nUy+JF0z1SVRq5N9Uxm70lU0PBAnj/rcmGlIzZbigYHuD9EEZWaaMNBtCUW2k\nuxseHfcyj8JmaTDE29y+ESVXuoCzdK/q5lbpjO3um75psg83fc0Xo31sBp36\nMGOe3npz0sM3lIcG0hehDUQFa86oAr5lcgiuPNo5MFwBaRmjLCHf0vxPmvVO\nPiB5g69TeVovy/rAZtOPB2cXjUO9hmIcE7xyapjTAMgxOfb4O1fjYnUSORLA\nXVaaZ/dKW0WcVZOoxqWnVPNYZmUajzjd02bDlGFd7+KyTzZ1x4gLhHlMj+0p\nhCZrJe8seMpm6tOBicNIzxQitTLoHiiKnC1WoRsmhSTN5XzxBaM2VjMp0bi+\nALTJzqhMYpvjzj7e42LTQuGIvAnm54hHf00XyvGTh9A0l7tYpmtwvMo0OJ7U\nyl6tCOkz1aBsswMjg2fHe4gF1zw8xka2ej08IXYACjDjCVYzvUEh9iBKptpm\nAqDF9VRZkrDZjizk5LCZCCvnmVr7jSkuVbBETizyx0Wmy25yDxxDiYTxYlBH\nY1LV\r\n=qwoI\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCeGNwmqPG9K3StZmEnOKk9HMD3/79j15jyHS7RenTtAwIgVqdBiyrD0G2bFdFHlwUYQugtQaPE6qTexAr/NXJZ0JA="
+					}
+				]
+			}
+		},
+		"0.1.1": {
+			"name": "serverless-cloudflare-workers",
+			"version": "0.1.1",
+			"dependencies": {
+				"bluebird": "^3.4.7",
+				"node-fetch": "^2.2.0"
+			},
+			"devDependencies": {
+				"eslint": "^5.3.0",
+				"eslint-config-prettier": "^2.9.0",
+				"eslint-plugin-prettier": "^2.6.2",
+				"prettier": "^1.14.0"
+			},
+			"dist": {
+				"integrity": "sha512-OJcUm/ryoyDKjoBWgfNt9fxl4V3LmNdSLne5IjF7Lwy7WjhnDbMBvoMUG6+liyHggyCr5Rh4znLsFlsUNn7g1g==",
+				"shasum": "a751eab0873082dd17f9f801a53d1882c5e3eab9",
+				"tarball": "https://registry.npmjs.org/serverless-cloudflare-workers/-/serverless-cloudflare-workers-0.1.1.tgz",
+				"fileCount": 21,
+				"unpackedSize": 54239,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbmubiCRA9TVsSAnZWagAAZ/sP/1j2AfMG/g40sff9qHvv\nRgjGrVF/ZCt8JFyPCstCpCr9G97WVKx/TFA83UYoeb8oXZKC4wl/oWOk7D6P\n4ONmol5/cHKtzC3+/QskJa12/qqdzHnM+0FB/AG5hgd4PrRUQYIp0Fi2CPF8\n2W1UbOPM+qo9UwklCD8CTSBehrI5kftRNbbxCHJmtYA0n3Qk09H0HPg0EiBj\nYoDBS0u1sJw8OVLWr5ngigADi0QJvWMBWnJ12KkudJ9jNFq0McYKXK2q4uyy\nq0twbCZO+55k1Mc8wK7YIao/mTxm10F/cghCyP2r1BHX4sEvsgvE2DmSvo6o\nS5cOlAKG+IhngoMpPnXfOyOrWdPoDs8QYB+dWdrsnXHKN9s3B+vaLX9O9VQ9\njbKW0zPnj5lNbT0ZYCN9Pf5GeZf3h7K03+ObhTyZhdKach6pKTCczkV2QJUS\nbVPaMLbwcakDfsRiuEab4BKeRHDg80ysTa7TqdNDxKf7DH6Cvd4IVJ7sDk2S\n+yNyq4f/o+H7bj6qx+IhA+SMnkJZiYM9v8IjcaQ229erxDrMUwZYUNUCkdyc\nRB5g3ZMMIQINL3jqr54LUylF6QKM026aW5lF0Kr25Sjgw/jKRKXwSSp8+XWk\nSBcVl9BtY0ZjP62XPZHf+P0WylHv62r806SwPFB4Q/mFDbnqEQW+aM1Xxfbl\ncHUe\r\n=mcRO\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIGgFQZ5Fiotcu6jrXKeSVBXTtky7L60/BzMBj13lLYQFAiEArif2JdajSI4l0QuVviGQpBe/JNHHGPGoJTRsjxGSYJo="
+					}
+				]
+			}
+		},
+		"1.0.1": {
+			"name": "serverless-cloudflare-workers",
+			"version": "1.0.1",
+			"dependencies": {
+				"bluebird": "^3.4.7",
+				"fs-extra": "^7.0.1",
+				"webpack": "^4.25.1"
+			},
+			"devDependencies": {
+				"eslint": "^5.3.0",
+				"eslint-config-prettier": "^2.9.0",
+				"eslint-plugin-prettier": "^2.6.2",
+				"mocha": "^5.2.0",
+				"node-fetch": "^2.3.0",
+				"nyc": "^13.1.0",
+				"prettier": "^1.14.0",
+				"proxyquire": "^2.1.0"
+			},
+			"dist": {
+				"integrity": "sha512-EUNdZVQ6wsZem7d/hkWnc1APsfoISdQZFDSVXUYeMuCyetnk7qrK1CLtit3BtmngphobyhMOa7c5OKbBZpynJg==",
+				"shasum": "eae7226f784aa5726ad1407ed22077f4779d9d69",
+				"tarball": "https://registry.npmjs.org/serverless-cloudflare-workers/-/serverless-cloudflare-workers-1.0.1.tgz",
+				"fileCount": 26,
+				"unpackedSize": 60956,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJb/uysCRA9TVsSAnZWagAA1wIQAI7OJYSfNruV/1W7Un65\nebkn45MQmq37DOJJmU1tT5O1/5C34v1yzAyR94gA53MEn0x6LyJjzV7vZ/Lq\nFT5xJ3/OjjWqxkUQ9miJqBXkPjipj93RKtFCNomgZD4oP2MKVsGDleDa+la+\n6Ga11Luk8LRFHKOkByAaGXwbuEVIcTurXKWKf3n7VZkgGDbK+m0MFrqZw9r9\n/ZfcCrU2rsOBm+i6AX8pDYXoAhEaj/hyJ81IIUObVXno4xawvTdascNVJRR6\nPUglmxXmO+fM2KezJci5xJqIkTDQ/NEA5cSGVJ0jF0kv0ibUN82qEGxQe/xN\nQi+4HVDyPV+MHVEOH0pXvCUOPZvK5O6nNa0l021jRmkouCBLWdFSHHGBVIRg\nGL5kVM8aGZaZWMn52xXmioW7OWflAS8d/gOR9whAnC0J7117syBCNJ4x0BPa\nApE1Pqa10GG+G69tv6vSGnehqQrFQbjyLeor2CvB2eIn+TNIOSFAvd5ZGXfn\n8pYqwXvBLznkf9lyknixPY8XKY5779clkNOTo/3SCGqPxktxdqHQzPKWgSwc\nCwEyxsh1l6x27lofj1GdQPKctJK7j7ktGtPunTkhVaROzUOB/RLAzDFuUFWf\nhPS4at49S0dJHcofHw/0TEN9vHpWOPu4qT5mbvbjUostFuaSzPMNFgbZjQ+k\nBztA\r\n=CTwZ\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCgdD2OXhckfzNKlTLUVtMm+sK4VfjNwzcD0c9yhU+hcQIhAPcExQLhUAG5kElW8sg2JXyP96+OUx15AO7cQjU9T0qX"
+					}
+				]
+			}
+		},
+		"1.0.2": {
+			"name": "serverless-cloudflare-workers",
+			"version": "1.0.2",
+			"dependencies": {
+				"bluebird": "^3.4.7",
+				"cloudflare-workers-toolkit": "0.0.4",
+				"form-data": "^2.3.3",
+				"fs-extra": "^7.0.1",
+				"node-fetch": "^2.3.0",
+				"webpack": "^4.25.1"
+			},
+			"devDependencies": {
+				"eslint": "^5.3.0",
+				"eslint-config-prettier": "^2.9.0",
+				"eslint-plugin-prettier": "^2.6.2",
+				"mocha": "^5.2.0",
+				"nyc": "^13.1.0",
+				"proxyquire": "^2.1.0"
+			},
+			"dist": {
+				"integrity": "sha512-Saz3Uy0LTEyp0LM0cc9nLKLXR5iiP45NLfexBoqrH0qIxWXP+/8jebP0u9ua0vqzs+sPt8n5KQvtg8dQSPn6CA==",
+				"shasum": "e0298f81c235593f829dd4f4714ab7a878aef101",
+				"tarball": "https://registry.npmjs.org/serverless-cloudflare-workers/-/serverless-cloudflare-workers-1.0.2.tgz",
+				"fileCount": 26,
+				"unpackedSize": 62570,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcAU9wCRA9TVsSAnZWagAAGAgP/iKqkbVTCCiO9Dpcq6do\niKoXO3ZtzuMiJynDIzmny2CO1+r3RyPkPVFNhRE6ChHE5txkkmH5nkV7jFoZ\nQzta+2KLSpOeptheOfNOVmrvBU0ayKgEVY9zKV8CqNK3hGG+Zq8ZaNUyPJ+0\n/Ap2HIk0Dn76jYud9Mymh95G9DqvP1wCUgw2AmdflwqK9EzNbhmFn+tn0dPL\n/fhVPYslSaNlPK8kdM7HYV3WzEIdwgyDOchb/iaz7HxAZlR0Tk0hXP2NU+RG\nqmD+0nITz79z7eJ1s4fuvEggDEsbQWUyB27lMjuw58wTeLJUPegSIMtm22WG\nccVD0qPCqQVKigFLaSaSP+bSeAKLKr/WbNKxGzNJNRy+dyQWkjaYeL0k3JNg\ncL4Wdn+keyiJgc4MJ9IedcbrB0tbmWwyeeoMiPfJp4FGgydhB+Vt2BAaq4sx\nL+5ZZ/tb1kZYsKUVIyVcIg+UtC1Y/RI8d+wx4P336zdaJ67G8qtlxttejNQR\nOS7KpgMVA7DjajUJEvrCnTuj8IBC3eFDA98KOOO5ksRqqgpfISp3Jr8Z0IZ7\nOuHIxLTmAlfQ1TiQ0aB/xvmCey8NJ7ne268bo7GMgdIG+RY6MguGBHDqXsrb\nRjmbFW3u2SoImzsXLo2D3QAgKGhl+j1oypMvKLC7+3tgHlRxQo5wUsfEGskd\nUg8b\r\n=ydK2\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIH482ci0I/yIGQyTmU36DEdkXntFPFZVp4yksax8Osj7AiEAhOAO32TK3TBTj/0fplYIsG5KGFArrDkhJwiRsgvO4h8="
+					}
+				]
+			}
+		},
+		"1.0.3": {
+			"name": "serverless-cloudflare-workers",
+			"version": "1.0.3",
+			"dependencies": {
+				"bluebird": "^3.4.7",
+				"cloudflare-workers-toolkit": "0.0.6",
+				"form-data": "^2.3.3",
+				"fs-extra": "^7.0.1",
+				"node-fetch": "^2.3.0",
+				"webpack": "^4.25.1"
+			},
+			"devDependencies": {
+				"eslint": "^5.3.0",
+				"eslint-config-prettier": "^2.9.0",
+				"eslint-plugin-prettier": "^2.6.2",
+				"mocha": "^5.2.0",
+				"nyc": "^13.1.0",
+				"proxyquire": "^2.1.0"
+			},
+			"dist": {
+				"integrity": "sha512-e9qjNh6Je+Gx5ICB3KMDf8G2JPj7mll3z8DvxWOek24IPQz0f/Nc8Xw013VvtVpZSGValZdxBTllQMTKyQ6dHA==",
+				"shasum": "ae61d980381475b5d8f45e4cdc8bbd765aeddd9a",
+				"tarball": "https://registry.npmjs.org/serverless-cloudflare-workers/-/serverless-cloudflare-workers-1.0.3.tgz",
+				"fileCount": 25,
+				"unpackedSize": 60135,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcBpVRCRA9TVsSAnZWagAAlgQP/0HgWIexDGgxYe6+yO+a\nYIYaBeGPZ9QkjPTdywJunofKJH/vUPkRoYASAGPpSaNCSPV1b1AsKhDs8Fer\npEftnZQSoDYMzEKXpP6Uz6BTDvz1h+Ub7BY1VxP45mJKaNGWb3WE7X43FsAi\nh1HgnruYodEpoTlWrBDIdvSkeQvrEMyhom1LdQ5Z6qOPkLMBvOLV0dSzisVq\nUCw0QDH8CTOIS/3LnoFFXMppI1VhJRLwqLg3cUURRNPer+qJIEUMXAs38hjT\nqpN72bMny0YKENt6+XCJ/tkJMvDN5s4NfbK9fp0tbB8vD6eVW0Hksp/PRKrc\ne52/8z1TI5LXLx206up3rpIcGrtJGozUjbsWxWkIcLRzxe9Mw1OY/fsoCrq+\n/fLWvoM0uupyy0YVpazQ24U5KhdsaMn/XcplyFkVGlxYJC9D8SR221LHZ/y7\n922jFvlmaSjc9m+KKsXuVfDLDTJlojWr/HHAi4EjsaST0U4BKUE+I97TgpwK\nWnox5T05/jcrALzy2CcW8+eC2HSKdQZ6oxn4BtDpULDPGl//HY+qCmpEaV22\ndlBTjw4pgp/XQ0ZDa6cwVc7bPb48XeO6dXTffz1VHKr98F8hsM0KXqY43XeC\nyMS6NDfGzMc8C/wnM6uEwX/CfbpOpJtA6ub19OvklVUXi8WSvtuYZY7+Y/pe\nHbvo\r\n=ZOU/\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQD2LlnztYFhbARu5U/vqU3D3DXGWK7j0RQXISDXS38YNAIhANvoo6AZzw6qbXTefYo4thSQ0qFTDzoPeOwwvWaH5fxY"
+					}
+				]
+			}
+		},
+		"1.0.4": {
+			"name": "serverless-cloudflare-workers",
+			"version": "1.0.4",
+			"dependencies": {
+				"bluebird": "^3.4.7",
+				"cloudflare-workers-toolkit": "0.0.6",
+				"form-data": "^2.3.3",
+				"fs-extra": "^7.0.1",
+				"node-fetch": "^2.3.0",
+				"webpack": "^4.25.1"
+			},
+			"devDependencies": {
+				"eslint": "^5.3.0",
+				"eslint-config-prettier": "^2.9.0",
+				"eslint-plugin-prettier": "^2.6.2",
+				"mocha": "^5.2.0",
+				"nyc": "^13.1.0",
+				"proxyquire": "^2.1.0"
+			},
+			"dist": {
+				"integrity": "sha512-7r0A55IutjyxM3LzosHu3S/5RoiAR+n0EMywcwJGvPe1eeslT3aPT0qdAdx/mJbYSC7QeJ0SYwAoF/xJOzJfRQ==",
+				"shasum": "262e8847933fb38ca88abae9a32d54e48d016d96",
+				"tarball": "https://registry.npmjs.org/serverless-cloudflare-workers/-/serverless-cloudflare-workers-1.0.4.tgz",
+				"fileCount": 25,
+				"unpackedSize": 60105,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcCrwICRA9TVsSAnZWagAAokgP/isA/AEBYKMuFD6+4wRw\nCpHzpUDjB/Dpt+LOVhtHD0RRpeYzN7BfAado+CzfaCp0YKhS47qXy/CUk3vX\nOzwbFkK67f2HvW77zSLmf/HXy2yjBKWCLFCkNES19VMh3YUPLerxsqvcdLLM\n9WPSNIaX7tOQ7B222h7hb2scNFDvMsL5xVOMM4jlsfmLShfIFW6vVZigqpaJ\nbxV7IlsiQxKTplbPKOW0qfXBIQgmoOrLFeU25mzj5rCumWXf575iEWQV9wR4\n97ecEwMSspAC9fikXaZ2ACyF1RuMbZ3LK9BBhYhIaCjaHzMrio+ptlEjbDC8\ncKqt6oPodOoz2wyUYtHiS8n52ancGRssUzqn+nj/IweeXT8rrEEzO/JeXbYW\nlazLDqSYJpJqVY9yz30VMfCQZ+yABXd/ucBUjHYqdAUk9AABnkmLoZJMlZYx\njUfHTzieF7IwaKboxM4Yw66QgDs01l8HWhWuwYVXpldrYpQZC3T/0TfLVmX7\nx8BKUaNKhKK4QBN+6dBsRWm+cDfi7LufvHBJdwXQyaeikoS9MVq0BuQrM26k\n9NK8T+LL0K01+LvqTlBQmgnjMboYbQiBguHs8S7lK/KFm/idFDo76ReVK3V3\nMrfe6Or2wxTyEbnBqg5Y2C+Hrv1oJir8eOmZRIJqP+UGAiLQdg8rjAdTTY8v\nH3do\r\n=W17E\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIEHJPkNFhLFMeOI6XG221nvo6xP3fBTGz1vRH20aNyrPAiAKW9gEjvP/3JuvqS76XFeBzluqw8tcm0lKtShVJ+4x1Q=="
+					}
+				]
+			}
+		},
+		"1.0.5": {
+			"name": "serverless-cloudflare-workers",
+			"version": "1.0.5",
+			"dependencies": {
+				"bluebird": "^3.4.7",
+				"cloudflare-workers-toolkit": "0.0.6",
+				"form-data": "^2.3.3",
+				"fs-extra": "^7.0.1",
+				"node-fetch": "^2.3.0",
+				"webpack": "^4.25.1"
+			},
+			"devDependencies": {
+				"eslint": "^5.3.0",
+				"eslint-config-prettier": "^2.9.0",
+				"eslint-plugin-prettier": "^2.6.2",
+				"mocha": "^5.2.0",
+				"nyc": "^13.1.0",
+				"proxyquire": "^2.1.0"
+			},
+			"dist": {
+				"integrity": "sha512-fDZWkqM0EFRyr5AZwTd1Ot8Iu+pKrbZcmGPi13WzxrlZheXNqoYoMC6vDFSvZ5axTre0WH812Pmg+/n8KiOHKQ==",
+				"shasum": "6714d7366bc54386e9f9d14951aaaac4a340ac63",
+				"tarball": "https://registry.npmjs.org/serverless-cloudflare-workers/-/serverless-cloudflare-workers-1.0.5.tgz",
+				"fileCount": 25,
+				"unpackedSize": 60445,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcGpf3CRA9TVsSAnZWagAAjq0P/iq/ombvKCo1g9Cq8Gru\n15+22Ca1xT/2rh8dTPS6AzDYw/TYjcHz5afurKmhqyKQK1dBOm1XEfhye98n\niKc8RDQL75+iOaGZufiaiJin9S2DCNaktk9ipmhAfI/1n+jYwddSTukSmqW5\nbKGipuRA+oRyS0xRVZDfohZ0UwdvuOPgHKAAdZMd1sfHGYfJdiy1R4CuTGH2\nWYORxDZIqPbnnxKPk2T6jkjfWPJcv37HCrARFaOuk3UF0rdFi5LUGq2qAOJn\n+/2WdXHFWV9xzB/RrKvOHoawXRSiy3ePnRgIEBbZYqzDCydSuk1xous1MU65\nYKe8e3xD6XwWO5lIm37knBKsHsTbhVOEbhgrO2jG4DnC2ExobJ41MTIhcd/7\ne0ckJ9BBnpw0ze+gz6neHUp7/5F3bSvuusoydUDFPGnhDek6Z4oD39x+3map\n77uN1IlI10o/uG7Te75tEz4VnK4pealZMHtybcQkMftu3gmNc01OUencmex6\nZGPN35oh23Ubn4YlqzUhLCc37M/jvLjix40r5y1fIGSZ4x++KcUi8gCQsnCS\n4QkzXQf3Rh/HK2970+FAEHm7sScTT6etZKpWK7kyAQkrtdDIKgqntdWRC9DL\n26WwuHuQMwWBvEbShFR0AKUGiRnxqlUQn1R3UVPXq2VshFnjJVi2QZnNJ0Dw\n5V5C\r\n=B2WA\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIAErvMQVAa/I9MDzI+lwuSEcObMAL7nBb3jAwzJMM1D4AiEA+3d3cULaYk6uAyOPyZEJz1hyx7JC3ft3VcHhSlmXz1Q="
+					}
+				]
+			}
+		},
+		"1.0.6": {
+			"name": "serverless-cloudflare-workers",
+			"version": "1.0.6",
+			"dependencies": {
+				"bluebird": "^3.4.7",
+				"cloudflare-workers-toolkit": "0.0.6",
+				"form-data": "^2.3.3",
+				"fs-extra": "^7.0.1",
+				"node-fetch": "^2.3.0",
+				"webpack": "^4.25.1"
+			},
+			"devDependencies": {
+				"eslint": "^5.3.0",
+				"eslint-config-prettier": "^2.9.0",
+				"eslint-plugin-prettier": "^2.6.2",
+				"mocha": "^5.2.0",
+				"nyc": "^13.1.0",
+				"proxyquire": "^2.1.0"
+			},
+			"dist": {
+				"integrity": "sha512-vzU7ZndnFZ2BDB0tQMorhmSaBW1qjIGJI5dZes/FOOyItB1n1PZAcDuKzKTs9omfFkCwJ+bDLNC4ILMbihrGTA==",
+				"shasum": "2d0770545ae22895178eb0bbadf4cad46f282272",
+				"tarball": "https://registry.npmjs.org/serverless-cloudflare-workers/-/serverless-cloudflare-workers-1.0.6.tgz",
+				"fileCount": 25,
+				"unpackedSize": 60422,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcG/NrCRA9TVsSAnZWagAAV4UP/3iazpQMUv8j7lgykG5p\nLejC16pixJsB/pgBvVuvAu2GxYcscqGDEsyV7g6u41FGaO1SrS1JLqDuXVP6\nXH1+BH0E72py3fVCgbq5rHPqyyEtbr3QhmH/fuDvX7eRmrbJ4dOD7orXgXIU\nYPTXKFwu1dU5kWwdA4R571NMDSOgEFChxlT6LI1EfRQt/CW4zWYedMlLf9Fr\nGS+CYD1zD8MyhJKh/d3jCpx1Gq6bDgQyGaM0PFBP2RTfP3lT3mqSBOTa2/5e\n+tURJaPzcnKsBWa7wkomOhLjoYk2qulqgBN4NLrNIRy8uRyohh9BNDSj90QF\nurGWN1tWbNhSGDkv13i6upnhTN4ltAZY4uhlHKzXMNhcolKZf0zFbwcOAJ2q\nGjzlCON+FhXSyCZFMkMDdPpc8pihAwN+Xtyo87+n8Q40oV4ciMxKshCBfSkx\nJJZuRhnGBPEvhc1rg8qJsThypwUBRpVhicjR5LLVEScEvgHjct2Jz13UojzY\nwpJcbyE1bCi0LKIyDy8aXL0aIFn79mMCqYhPzdlNVrOSJ7WsyoCJwZons6jL\nt4OG52smB1/oDcZnYsyQPqFyGBrrqBsa0af8p60tihkPrI69rU230Lmq0J1B\n7EFeGwv2Q4KAYfipg6bIve8uvm7Hj2FtvY89C/nog+q8KvZyEoXEF6GYE7ov\ni/Ce\r\n=YYYu\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCKWCd18unesySAW7KV6F+i4uhWybO35udHL6gmwsu09wIgY8uIjlA2t/7O4HbU+pFZypvG/xv1SUa82otJ65NR2JU="
+					}
+				]
+			}
+		},
+		"1.0.7": {
+			"name": "serverless-cloudflare-workers",
+			"version": "1.0.7",
+			"dependencies": {
+				"bluebird": "^3.4.7",
+				"cloudflare-workers-toolkit": "0.0.7",
+				"fs-extra": "^7.0.1",
+				"node-fetch": "^2.3.0",
+				"webpack": "^4.25.1"
+			},
+			"devDependencies": {
+				"eslint": "^5.3.0",
+				"eslint-config-prettier": "^2.9.0",
+				"eslint-plugin-prettier": "^2.6.2",
+				"mocha": "^5.2.0",
+				"nyc": "^13.1.0",
+				"proxyquire": "^2.1.0"
+			},
+			"dist": {
+				"integrity": "sha512-8A8kCxWLn/eXjpZmyad1kghjvVPZffQSS+ZZ4jWE/G+dCirWcb/66y6wL05MgHBxHjw8R5wtMSLfhhuO977qkw==",
+				"shasum": "914997c944c0eca3711f0fd6ae4bdde3888f525e",
+				"tarball": "https://registry.npmjs.org/serverless-cloudflare-workers/-/serverless-cloudflare-workers-1.0.7.tgz",
+				"fileCount": 25,
+				"unpackedSize": 61446,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcUgUYCRA9TVsSAnZWagAAOdsQAKOw8tSI7E+1FvA4HDHl\nCPjgfqqlYkMyc0uh0fVgJPIT/11JVE42FAoPCCKoYQtPHBo/Mu9tQmRRQmIn\n+/Eyam5q6LINhyBp9xanOgPNvI0BOTBT0mHYmQT77BXV/FuhHOolEOJSPwuP\nRjmZwZLTb3AqdnadjLEK18kHj2y4Sk7oWwKUom8Vz7LAcQVFqwrQMaptAnCk\nucPRUFBW6qxpe8NWiT4k32Sz+wavVxaKTkAlZNXytuvpuygc4n92lDHZr25l\nZQIWXJmjJp6SJh8wZxHd06VKsLYWNucCed8zd/BNUkayD7FFCIt5PERZfO+l\n54VsQb3vD32G6oyiNtKP1neBGfkR9aOSFE53PWYDTgx+lYDyGGzzZ6sULJHX\nYrdwvS+FL+EK5gyeNHBd6K8ounFDhx1flChEdnhMlvNh9CwiZ5Jm4pHiExRY\nsnaBdtAaxabaPHDb0yjw9/AA3zf8vnh8W6xPyQBAiGPbuVMj4Q5dCz8pIhxl\nr9aT+Dq8kB5KH3zb6N/Tbd8yBModV0PVDZUZoBlgi9v5beyLuO6BCnAtp+W/\n2RYq3h71xZcz0rrDyYqa23op6TQPEwKtIJW9S3EP4rrLnCAEio4fvgorDRcX\n0gSlJ5daUVTGRxyKH5myy041kOm1m57NgPsmN8yB6sVLQOd2v+xDS0JfeWp1\nM5R6\r\n=4Z3n\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIG2zHJvO5XeqeGgEUlHENlyxtpnzglj0t+YYskCN1jhsAiB4KODSL9ULiqSUc+FCzfLJ7Kg6oMuP2pCRfcvjFODd/Q=="
+					}
+				]
+			}
+		},
+		"1.0.8": {
+			"name": "serverless-cloudflare-workers",
+			"version": "1.0.8",
+			"dependencies": {
+				"bluebird": "^3.4.7",
+				"cloudflare-workers-toolkit": "0.0.10",
+				"fs-extra": "^7.0.1",
+				"node-fetch": "^2.3.0",
+				"webpack": "^4.25.1"
+			},
+			"devDependencies": {
+				"eslint": "^5.13.0",
+				"eslint-config-prettier": "^2.9.0",
+				"eslint-plugin-prettier": "^2.6.2",
+				"mocha": "^5.2.0",
+				"nyc": "^13.3.0",
+				"proxyquire": "^2.1.0"
+			},
+			"dist": {
+				"integrity": "sha512-izQ9JDda02/w6NXO83kavPiNG1sVCyRUgrON2M3NC2I9uG7qOcp2AJwhg09+KrTlh4h6j4POy4WknJTBUaufvQ==",
+				"shasum": "341948d4becf6ef8252f993366c8c70cca456061",
+				"tarball": "https://registry.npmjs.org/serverless-cloudflare-workers/-/serverless-cloudflare-workers-1.0.8.tgz",
+				"fileCount": 25,
+				"unpackedSize": 62604,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcbBL2CRA9TVsSAnZWagAAhzQP/RLH6ZnDTH/I7GNp1NnD\nNjQoylYOveKDDVLvCMII3RalspUSeS7Pn+M0eJ0k6x0bHYqEZDNoCI9Z/VfA\ncujfsLBTaMUitEYwu4OrS7dHmuNuHOIh7lXdmK3ELwxonM5w2qI8Och3Du8V\nLGi6LiwIsIWviYY1ZnxoWKWb9oAE6yXfqjj/2bV2oOfVa8DroJll+Ny8Bm2i\n4+ygVHUM9snExgOMB4u25xRqtZ/b8IefI0RrR7ucRgzNcQ8xAQsUKZOhhLcV\nZpi3wL2tOrsuiP7fjSMjaIZt8oNSBUQQx1oqnO2hEloyHbpcWIMFP/RSfqgH\nlc7jLIzfnZkamBVQGAlwoX4yzanUzl+xnXQdttEbUQuRJ/Td1ty82fKRPOxw\nUA1YmPkfhG4QIKpNjFPmkrNqp14WfoSijkgMtYsOej3ZrQ6yMk5BaKZydkCM\nZtmQCfKZNN5T81ZhlebPZhzsIj5LfB5p8ESnLi3cXRCApr1WmXWqXT2Drssv\nj+iKHyVainE+uJQc7RSHa0SnTMxEslG67Osfehxq+vTRCTJxRkd59N6NbvpQ\nRP+8c9P3JIwl+CjUUWtS/L86bpcvFgTZyb5Jx33ahTRINuuZ3vPPimdC4l3N\nZRwx0z2eABVaGHeuPIZY2r2dp/hBUv5TfcSl3A7z3eLSycGpae6GhgblgCQM\nfYOI\r\n=Awib\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIBFnqkuX3rubwjHaKIPMXQ5XOB7chbrqSaR8+mM7R1thAiA+I4i+1UJMUV5qr0Wu2e55ixZuzCVgxqiTJWUaMPuU1w=="
+					}
+				]
+			}
+		},
+		"1.0.9": {
+			"name": "serverless-cloudflare-workers",
+			"version": "1.0.9",
+			"dependencies": {
+				"bluebird": "^3.4.7",
+				"cloudflare-workers-toolkit": "0.0.10",
+				"fs-extra": "^7.0.1",
+				"node-fetch": "^2.3.0",
+				"webpack": "^4.25.1"
+			},
+			"devDependencies": {
+				"eslint": "^5.13.0",
+				"eslint-config-prettier": "^2.9.0",
+				"eslint-plugin-prettier": "^2.6.2",
+				"mocha": "^5.2.0",
+				"nyc": "^13.3.0",
+				"proxyquire": "^2.1.0"
+			},
+			"dist": {
+				"integrity": "sha512-GAqvg1edwnTSt1WgDHfZcIZZq4+xZ1dy1Avqa98LTuwdsatqM1uFMzKeR3vN6vzAmkeTDdfQOR8VvEpi3wUScA==",
+				"shasum": "ca53bc93a9ff11c2c725820e48a78740a23d0f35",
+				"tarball": "https://registry.npmjs.org/serverless-cloudflare-workers/-/serverless-cloudflare-workers-1.0.9.tgz",
+				"fileCount": 25,
+				"unpackedSize": 62619,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcbgyCCRA9TVsSAnZWagAAMXkQAJkkzNzjOidA1heZs1vf\nVbF+smmt8QMgRywd7OSMnQ7fwKcM1X07givPN4uQzlC2GegWljre8LB23TIh\nttRk4pkq2r5dV28OnYZMrV68pjshTdasoQOQpHVuLw743uRKLOpO7QFrqi2C\nKlDMulXO/GQ4qQLjq+ZPSyKdWC4oT3nVES5A+igxnUfcT6XywMM/fW8wESgj\n2HfHIR74R/yP3kXkavlmEy3wGNL1WO5+zlP53yzfFlDLYe6Rx29L6PQYuBt+\nPTkS4iHYYEf3/Ln+r1v8WOlcLuZd4LxQg3/svMv84+/fsCXydZEmMnHEo49n\n0+hqlwwxjaBNfbuPuwm8C/mJIvXX+fv2TV06RgHS20ZAVQ0zAuKqN1HykxS/\nCXFGSIrXyrodVF72WjLtEXX7vXGxxNmyVJ4r4gT55nPNiGyIUmybQqwQ0+NN\nHSZQmk5J7XfnBE/KAW7D/n7S16R7idr20AJED9C2ke01PQx7npD4Axog99y5\nbFBGpGggnlttPysM5y63KNQh+jf0LQBiyEm1JIk8UAHRyBmJNkU65jIuKK3g\nQLSxyTF3Edxwv5esIUMmgGuyti35jsgE1IiBFJ21E8KRdm+S92FliHpkIB9G\n3h3PawFZiuERl2Sw65GvBNF1EI6EGlDaVl+2AcNSiSDtajd6GMCXYTPiYcvV\nOGl6\r\n=L/WQ\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIEUgXiinTboJKC5xu8uVfo4klGKXFigRcDiVP3Eu46K4AiBTpTPdqjQZHJ1yLpo664TA3YSXTswGVHQ+hy4vHqm1CA=="
+					}
+				]
+			}
+		},
+		"1.0.10": {
+			"name": "serverless-cloudflare-workers",
+			"version": "1.0.10",
+			"dependencies": {
+				"bluebird": "^3.4.7",
+				"cloudflare-workers-toolkit": "0.0.11",
+				"fs-extra": "^7.0.1",
+				"node-fetch": "^2.3.0",
+				"webpack": "^4.25.1"
+			},
+			"devDependencies": {
+				"eslint": "^5.13.0",
+				"eslint-config-prettier": "^2.9.0",
+				"eslint-plugin-prettier": "^2.6.2",
+				"mocha": "^5.2.0",
+				"nyc": "^13.3.0",
+				"proxyquire": "^2.1.0"
+			},
+			"dist": {
+				"integrity": "sha512-9V4NxqwtOXkLGTEQkTrKIAmT8vWvxHaGS0oQwJcK2tHzLjiejmDxjMy0ki0MWiiGNdh4BXmPMw+Zt00J/vk4iw==",
+				"shasum": "8c6d6b5ea881d3d48136fcaafa5c408e1fbf6dc1",
+				"tarball": "https://registry.npmjs.org/serverless-cloudflare-workers/-/serverless-cloudflare-workers-1.0.10.tgz",
+				"fileCount": 25,
+				"unpackedSize": 62839,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcdqZUCRA9TVsSAnZWagAAuR0QAJWc0apmiaKyCIXQqR+0\njasW4aIgKsYMX7anAvYfpM8dcPPEjSQunj6Zw58syXhlJzZCf0QLPbORZBHa\n3dptIA2sZx8s4S5PBQuhChjFP7mKym1Os/yq0RqegWQz75+qOu9LlckXrKCF\nmP8Yb+D/FJYeE/fVGTV7keKgE7y9Blz8EybqxnsW2Drwh5OjNs2zni0jP3lO\nrjG8+vVDMTQV5DcwXCPuBeTDOiDX94isAljSYt+iOD1+ha5Y+VDzaoH9HWEG\n93RQXOjoo2cn5KvKqWY67amfJOmOh88y1gVf/EAvgfiWe8a86aLheB0xlgI2\nbt9laZqAjIf0pOuxDdtY13SKiZZidpgHD7PUA1d0i4NGqJjsBXM33qj61V8U\n5Nch4q7N3Z1kw2gJLT+Xaa6wa+dhq9wWx/KOjYMyoOowrnn267hw57Uk3z+/\nwwZMAhIg3pqUsQ31UKbJB3NqPgVHmpaEf8mYuXGyJIBG/O5V5le31Epf7JTX\ncNBmVlIwstbHu9GuaE71skiEckO96dF4ttw0tCe68TKlgsZfB8hfxvTbL9ZI\nyiWfajaDdilg8tmp6qKCzEJLPsTx4P7HfnGpLjQ1EntEMXF3in1FCwFnVfJ8\n6wRh7jkRXjSyjSZzGBdMHx0AS9RKOSzFLmEV134Z8hOdV/m5ru4bxCFMleeY\n/ZlN\r\n=pyFa\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIDajW0ArLfd9TT2d/+rAkRv09Ca/Ux4vb/zReMeL/vc8AiBAEtdEWZ8yFcN5GizQavuac4WUc4IjjJllLZ7HE0QcHw=="
+					}
+				]
+			}
+		},
+		"1.1.0": {
+			"name": "serverless-cloudflare-workers",
+			"version": "1.1.0",
+			"dependencies": {
+				"bluebird": "^3.4.7",
+				"cloudflare-workers-toolkit": "0.0.11",
+				"fs-extra": "^7.0.1",
+				"node-fetch": "^2.3.0",
+				"webpack": "^4.25.1"
+			},
+			"devDependencies": {
+				"eslint": "^5.13.0",
+				"eslint-config-prettier": "^2.9.0",
+				"eslint-plugin-prettier": "^2.6.2",
+				"mocha": "^5.2.0",
+				"nyc": "^13.3.0",
+				"proxyquire": "^2.1.0"
+			},
+			"dist": {
+				"integrity": "sha512-kiYJKGhqaIbiRL8WLJBTOBUFiDw9ysSgu5Fbf+u0Hik86rTyBxYah5Z1mDy0hOOFRZC3pVhpgU51j1Tc1Dn8yg==",
+				"shasum": "aec31f8c6aa4aae651ea3423a40459d7c6b07696",
+				"tarball": "https://registry.npmjs.org/serverless-cloudflare-workers/-/serverless-cloudflare-workers-1.1.0.tgz",
+				"fileCount": 25,
+				"unpackedSize": 67473,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJciAz6CRA9TVsSAnZWagAAMm0P/1jPcukhV1y03DgbQGBO\n7KgHr8SQITJNsVRMwqRxvanRu59y3QPx9qZ1VspOrKG9nIJcb14HUTtUl6vg\nHpvcIuxv8FCEwhtpQrUWWAkYn4cjRQsC63BeA++7YywEcQCkcQYck/b6Muhl\nkBMRVxLvw5rQh2RUNnF2ExCKHeUuxOBzlU+xJpWmMRLiG3v2Cenen+srBIAV\noaEIbEL6niUIAGBwfeQ6yjDBThcomA41hf8qN82hsjOyj+ThqzWDbzhlkYtp\n13dcY6fSMJMJtBQNEMBuheDTkkpaYn6JovZP1us7T5Xq4jFJk5WtuPGMYT4r\n7N6NAqXmX4omkAuYkfxMzxlKkPS3eyfwQ8GIPdExQXov/oDRQMPitE5XbQUH\noUkPYgBX886YVpoWM5ofTKjdO9GkUoi4vaO23rU5k3PUpr/g8deGZ/salnnt\nb0acXasXAYGx43m9QOOYgUx6lwwFtl/ZTqnAgfUjiJNoCnd+Vf3dyemP8Gz8\nSHpkJVWwx/bChvqrBOMqK36y4jbOlxLHGF85PxO0+K0YRuWMes4rB7883EHF\npW8lPIm4e8Lj4ApZuv7a5FO1sXYApxDRtXqbf2RVM0B+wefoLyP3s+F5m3Or\nAk+wgczDt4C8+l/xWhbEhCHE8OyD3+Ju4O0cnaPUQ944fcMza+qlBtDdcIys\njSgn\r\n=qwtA\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQC4h7TlWeYoFnLsYkeH2xP5F5yA5c0wICL9eCgxp2xLUwIhAMG2HkGxxOMKyEP4jGfZF41U2uHVTyK1c95iWsn3rjeP"
+					}
+				]
+			}
+		},
+		"1.1.1": {
+			"name": "serverless-cloudflare-workers",
+			"version": "1.1.1",
+			"dependencies": {
+				"bluebird": "^3.4.7",
+				"cloudflare-workers-toolkit": "0.0.11",
+				"fs-extra": "^7.0.1",
+				"node-fetch": "^2.3.0",
+				"webpack": "^4.25.1"
+			},
+			"devDependencies": {
+				"eslint": "^5.13.0",
+				"eslint-config-prettier": "^2.9.0",
+				"eslint-plugin-prettier": "^2.6.2",
+				"mocha": "^5.2.0",
+				"nyc": "^13.3.0",
+				"proxyquire": "^2.1.0"
+			},
+			"dist": {
+				"integrity": "sha512-ea1zJ3INbSZLeBevjDC+Qfd1I1F0tdn4vgEI7ueIs8dBBuZX7cgACd8G/4lH+928wvl21tl96BWhfirOSP2sXQ==",
+				"shasum": "6d045e8f9e0502356a857363ef7f89a26d9aa4da",
+				"tarball": "https://registry.npmjs.org/serverless-cloudflare-workers/-/serverless-cloudflare-workers-1.1.1.tgz",
+				"fileCount": 25,
+				"unpackedSize": 67581,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcmO0sCRA9TVsSAnZWagAANL4P/Run2feWRkWDOpgNEMFR\ndYOeLAaG3arY9XNJN4zQYNhuFy7ev0KkRmahm/5neC18oXSoSXgwUL3BdBEG\nrkx8BJ4bWcHhe5RQTx+HZ0b8HpSM33AWaT9MUltTC1/QznloUoIFmClqAp2H\nvqpKKaeK2Dq7ZDmZJ45lmXBU0f3hT7dE8+JnkNp06T/wkBhRDqePnavtJGc7\naxYUNMLibdGVU6JTmhtHEjCcOJkktqmUDiDwBQKHMxvhAoxkA0+Dinfjo0AA\n8CUWQSHcMAjYurYxIaoEQPGd9Y0/HJ+qictrlBo0sD549v61mOqrFztUuog+\nAgrD2yOt5xuqLAKVUh9MbtiBE/klMcCtLEGvBm4IeXmIsJlchCXnNrAs687m\nxW+ZpbptwyJGneFUDCM1TD8wLGVGFS/eOrvHfMp9bv5X6CHGGGfTuo6PJka0\naFq3+Xd4TS24WCqRXwbBx/P3b6A9XrySmoJ5L30iC7l5aw93GZNJ4b89+Gf9\n8E3N7F/jHOSs4eLK4s4N09jlgp3hqw/JVEpf5VHfREbI1hQDMA5KRKKjfJxq\nHCga0taL97HB2WeuPTYuzloBUOgPyad04eM8UYCHfC/LKYOFJZvtDITLyNxH\nW7nW6cjEPjxe7ki1w7IiXk9V7IU3GEV3/QeWrcLYbP5XwzL5EIVkVqI+MfGf\nIZqY\r\n=KLtt\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCsx7B4ElNJhIXcmUSCO/SWutz7bOodcoPhsrCJPauadwIgFK5k/LJ7VAk+kYuPZGy+7/sUVueggOQE3ifyRK3PWbE="
+					}
+				]
+			}
+		},
+		"1.2.0": {
+			"name": "serverless-cloudflare-workers",
+			"version": "1.2.0",
+			"dependencies": {
+				"bluebird": "^3.4.7",
+				"cloudflare-workers-toolkit": "^0.1.0",
+				"fs-extra": "^7.0.1",
+				"node-fetch": "^2.3.0",
+				"webpack": "^4.25.1"
+			},
+			"devDependencies": {
+				"eslint": "^5.13.0",
+				"eslint-config-prettier": "^2.9.0",
+				"eslint-plugin-prettier": "^2.6.2",
+				"mocha": "^5.2.0",
+				"nyc": "^13.3.0",
+				"proxyquire": "^2.1.0"
+			},
+			"dist": {
+				"integrity": "sha512-tvMb7kPNIc9UVXc9d9C77ZgRGEHhAL73wXq3KFHzhDS8K/4mJbZ9tZ4BkcSs5FZWc3Z5tuuTgn/vlLjn6p5jbw==",
+				"shasum": "300927bdac5a9ea319fc5d16a842e8d74ad260d9",
+				"tarball": "https://registry.npmjs.org/serverless-cloudflare-workers/-/serverless-cloudflare-workers-1.2.0.tgz",
+				"fileCount": 25,
+				"unpackedSize": 69104,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcmlPPCRA9TVsSAnZWagAAEc0P/2idtKWHm7jMiv3+Pv5L\n4QHgjC4LqkDIuACS33t1FVRWjnrqbPV/lC++QB9pn2mACOtOS6wuGZbszJLm\nZMd76x6bxQDFrug+GS0Yur9DbG7sp0Ta8kPLrBSuMy/tRXoX5T7rjVE3OVPL\nmCLIyOPAe5tVj7ppnYdVMB5Q7bBoGKSCRIvI3VrzAaJb9gdoyVMbgo77flPr\nVI545wYEqG3Ev5aXfkJOt6sqTzKasJSLNpLF1DBLehYODa4sM+jKdSg5FhqD\nLQXQZsap35WADqHHe447zD8ui9W9Gd21dBlox8odBw6TDKTyjT9S+aPzyf2o\nrPpC0U69emvB+vkbPLjTqy8VgLhcfI8jw6rGyXsWPtGm19Jk32eUHpiz9Tdt\nG5uFLOhFJt+Dj9gEYgTgq4N+C7Lu1/Gy93t2NAcGR75swrYGL8bUbDtLbVpZ\n57GX1GAIDVwdsuw1/fGDlj5dQXDL0Kmh9sc0P4QoHwwJt8E6A0/CNPCaRx7r\nAA+I24NTDN4dXVdqvDv9ArMyHfOo08djsPZqkQpIIGdqINkJzeKi2QQCJ3Ph\n4+FR7/GuKcgaYpD6pig9Xt1+UKWuKog1zbBMdH0fZVVgipVJ1gt3k+rTYSnv\nbQ0l/sqLotGikP0TWMBlAIUqahj5bHLbGev4HnBlqgx48/nta9bRvacnvZID\nqo3p\r\n=rpSE\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCICpy2OdTdABm9vNZCKuKmHPEwZaKgF+7IuhXdyxXgzQqAiBhntjphSVgmaAy3jAW55Dc+2qmCOnddLmruu9LKoIvyw=="
+					}
+				]
+			}
+		}
+	},
+	"modified": "2022-06-21T16:58:20.928Z",
+	"_cached": false,
+	"_contentLength": 26659
+}

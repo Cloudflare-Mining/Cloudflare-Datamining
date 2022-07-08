@@ -1,0 +1,167 @@
+{
+	"name": "@cfpreview/pages-cli",
+	"dist-tags": {
+		"latest": "0.0.4"
+	},
+	"versions": {
+		"0.0.1": {
+			"name": "@cfpreview/pages-cli",
+			"version": "0.0.1",
+			"dependencies": {
+				"@cfpreview/plinko": "0.2.1",
+				"cross-fetch": "3.1.4",
+				"express": "4.17.1",
+				"http-proxy": "1.18.1",
+				"http-proxy-middleware": "2.0.1",
+				"miniflare": "2.0.0-next.2",
+				"yargs": "17.2.1"
+			},
+			"devDependencies": {
+				"@types/express": "4.17.13",
+				"@types/node": "16",
+				"@types/yargs": "17.0.5",
+				"tsc": "2.0.3",
+				"typescript": "4.4"
+			},
+			"bin": {
+				"pages": "lib/index.js"
+			},
+			"dist": {
+				"shasum": "6d11ddda23d99ca84d7ea150df7d42f42621508c",
+				"integrity": "sha512-5UGngoGu4Pz6kmojV/f5HwOylXSUSOcq5A0MboVPD+7eDhd1s2IuGu7aEvL3caGB6ev7rW+Q+hQcpIKiM/fBhQ==",
+				"tarball": "https://registry.npmjs.org/@cfpreview/pages-cli/-/pages-cli-0.0.1.tgz",
+				"fileCount": 6,
+				"unpackedSize": 7409,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDzuCz9Xk2PQKscS2ACbLVaX92/CtL5v9YAE139DUxOygIhAM4mD0SMfH0zzyOMBzyn+2krZdGR8tZzzvG6l063JQk/"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=16.0.0"
+			}
+		},
+		"0.0.2": {
+			"name": "@cfpreview/pages-cli",
+			"version": "0.0.2",
+			"dependencies": {
+				"@cfpreview/plinko": "0.2.1",
+				"cross-fetch": "3.1.4",
+				"express": "4.17.1",
+				"http-proxy": "1.18.1",
+				"http-proxy-middleware": "2.0.1",
+				"miniflare": "2.0.0-next.2",
+				"yargs": "17.2.1"
+			},
+			"devDependencies": {
+				"@types/express": "4.17.13",
+				"@types/node": "16",
+				"@types/yargs": "17.0.5",
+				"tsc": "2.0.3",
+				"typescript": "4.4"
+			},
+			"bin": {
+				"pages": "lib/index.js"
+			},
+			"dist": {
+				"shasum": "e2001ecefd4f98a822ccfc6e722dfcd1262a099d",
+				"integrity": "sha512-a7w7J+qfaTflFrQefDKoHLLrfknqmSFgwNMA7VJef1M3qEsz4k11p+Y8+r9CTZsJiKjmAx1UMhyJx9LpUNMz1g==",
+				"tarball": "https://registry.npmjs.org/@cfpreview/pages-cli/-/pages-cli-0.0.2.tgz",
+				"fileCount": 15,
+				"unpackedSize": 10242,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCICpUtkTjZTHRESGrPv2ylNxGOE2CyJV1RL6R3eR6SlKjAiEAjGwaXl0y3juteCdqxDeNLbZCxd4SCjOnEBjdU65wXdg="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=16.7.0"
+			}
+		},
+		"0.0.3": {
+			"name": "@cfpreview/pages-cli",
+			"version": "0.0.3",
+			"dependencies": {
+				"@cfpreview/plinko": "0.2.1",
+				"cross-fetch": "3.1.4",
+				"express": "4.17.1",
+				"http-proxy": "1.18.1",
+				"http-proxy-middleware": "2.0.1",
+				"miniflare": "2.0.0-next.2",
+				"yargs": "17.2.1"
+			},
+			"devDependencies": {
+				"@types/express": "4.17.13",
+				"@types/node": "16",
+				"@types/yargs": "17.0.5",
+				"tsc": "2.0.3",
+				"typescript": "4.4"
+			},
+			"bin": {
+				"pages": "lib/index.js"
+			},
+			"dist": {
+				"shasum": "5b4d847af22c26aa247f35e3ca3fb5b4770f9cdd",
+				"integrity": "sha512-KuNWIPfN06mKISJuLIjike5D7zpvKngRjoyCM63fe+jz+CPqTNvvLhL4rSLhrCaai72jzhvKuOx8Wcq95P7jpg==",
+				"tarball": "https://registry.npmjs.org/@cfpreview/pages-cli/-/pages-cli-0.0.3.tgz",
+				"fileCount": 17,
+				"unpackedSize": 10554,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIFWs344ioqP/xzFm+n6kq5D1dqVatxYjeh1kSGxwT3rZAiEAgeK5W3+xasu8PQluM7MlwmXN1vpJhz76glofAtHSL0g="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=16.7.0"
+			}
+		},
+		"0.0.4": {
+			"name": "@cfpreview/pages-cli",
+			"version": "0.0.4",
+			"dependencies": {
+				"@cfpreview/plinko": "0.2.1",
+				"cross-fetch": "3.1.4",
+				"express": "4.17.1",
+				"http-proxy": "1.18.1",
+				"http-proxy-middleware": "2.0.1",
+				"miniflare": "2.0.0-next.2",
+				"yargs": "17.2.1"
+			},
+			"devDependencies": {
+				"@types/express": "4.17.13",
+				"@types/node": "16",
+				"@types/yargs": "17.0.5",
+				"typescript": "4.4"
+			},
+			"bin": {
+				"pages": "lib/index.js"
+			},
+			"dist": {
+				"shasum": "307fe1463524561dc121c965a6a3d53a888a45e4",
+				"integrity": "sha512-Tefty4sz7epMX2a4ptf3uySm6JGhF+ekCt9+4gYldKVjAvvZyemE/eRQGpYzFEN1jS6t38YLZfEKV0IuSw7abA==",
+				"tarball": "https://registry.npmjs.org/@cfpreview/pages-cli/-/pages-cli-0.0.4.tgz",
+				"fileCount": 17,
+				"unpackedSize": 12283,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhzcTLCRA9TVsSAnZWagAAKVgP/AjMa1Eb9zlV7Kgo0+32\nrYP1x4xRSefcRP8c77+3h8jlPypDrOyXHBYw05r1JwVtmwU3Uj0pkwZ17vO0\nLcaEuCpuZgAdMYxF6Mh+4Cis0zvfRPknEwqHQvF4oDZj5VJ+soRRCh7saio/\nWAgWccm5jQpQe7Y9gqCrQrCAgTHBvvxNTI8p4lvxQe/VIde8ia0btwYqMs7Q\n00jggLJjGnCfZesarffCebWogrI74G8q6DhB94kk4W0XHpKli2BBux0XWx3b\nIsOzCc/j31IEyCQrgmkZaj1QzJS5v35cQAli9HWJpA2i4xp6FiTniZf7q9Lj\nnj6ozoIeQ7/onbGTsUj13prTaz7UDsgEs9gzMBJSXHQUNrWCRCzHAG4RTp04\nRou5ZAlHB9Cx83A6pK98CGU8UBu0p9EiVtWv4D5bc1KJeWduzoPruiSsLpL1\nBXq+W3SNEn5vAck5Koa1dUO6MrbiDH6IhuuKn6XbuUx1FefKM1FArAyJrXQq\nDwuAcbZ88TJrg7UgFOp3zCdVOIcq++nywAD78a2wsDuF/hostQwIq+ZCl42h\nJRcqPFJQ36jpxBE1OuuotDh64B4snKoVpZkavXDMX/6654l5+rnbBsgTdTw9\nq+i1DTaLoKi3gQv80C4BdZMj/swfFIkrID7uJnXU7eJ/XHKJf9nL3VfjifEX\nHQYE\r\n=kHGy\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIFaEFlHpq7cDeCoHKSFhk1acuW8u4CB+5iLApBeEHfaWAiEA98DT0xFqeCeMU+0tA4TtEY+NokDr5hkym+FVsFBg9Do="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=16.7.0"
+			}
+		}
+	},
+	"modified": "2022-04-04T22:24:38.610Z",
+	"_cached": false,
+	"_contentLength": 4602
+}

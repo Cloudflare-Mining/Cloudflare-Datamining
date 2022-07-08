@@ -10,9 +10,26 @@ import {tryAndPush} from './utils.js';
 
 async function run(){
 	console.log('Fetching NPM Data...');
-	const rawData = await search('@cloudflare', {
-		limit: 1000,
-	});
+	const rawData = [
+		...await search('@cloudflare', {
+			limit: 1000,
+		}),
+		...await search('@miniflare', {
+			limit: 1000,
+		}),
+		...await search('@cfpreview', {
+			limit: 1000,
+		}),
+		...await search('maintainer:cf-ci-write', {
+			limit: 1000,
+		}),
+		...await search('maintainer:cf-ci2', {
+			limit: 1000,
+		}),
+		...await search('maintainer:wrangler-publisher', {
+			limit: 1000,
+		}),
+	];
 
 	const rawMaintainers = rawData.flatMap(pkg => pkg.maintainers);
 	const uniqueMaintainers = [];
@@ -23,15 +40,26 @@ async function run(){
 			});
 		}
 	}
-	await fs.writeFile(path.resolve('../data/maintainers.json'), JSON.stringify(uniqueMaintainers, null, '\t'));
+	await fs.ensureDir(path.resolve('../data/packages'));
+	await fs.emptyDir(path.resolve('../data/packages'));
+	await fs.writeFile(path.resolve('../data/packages/maintainers.json'), JSON.stringify(uniqueMaintainers, null, '\t'));
 
 	const getDataAndWriteFiles = [];
 	for(const packageInfo of rawData){
-		const filename = filenamify(packageInfo.name, {replacement: '__'});
+		let name = filenamify(packageInfo.name, {replacement: '__'});
+		if(packageInfo.scope){
+			const nameWithoutScope = filenamify(packageInfo.name.replace(`@${packageInfo.scope}/`, ''));
+			if(packageInfo.scope === 'unscoped'){
+				name = `_unscoped/${nameWithoutScope}`;
+			}else{
+				name = `@${packageInfo.scope}/${nameWithoutScope}`;
+			}
+		}
 		getDataAndWriteFiles.push(async () => {
-			await fs.ensureDir(path.resolve('../data/packages/' + filename));
+			const dir = `../data/packages/${name}`;
+			await fs.ensureDir(path.resolve(dir));
 			fs.writeFile(
-				path.resolve(`../data/packages/${filename}/info.json`),
+				path.resolve(`${dir}/info.json`),
 				JSON.stringify({
 					name: packageInfo.name,
 					description: packageInfo.description,
@@ -42,7 +70,7 @@ async function run(){
 			);
 			const packument = await pacote.packument(packageInfo.name);
 			fs.writeFile(
-				path.resolve(`../data/packages/${filename}/packument.json`),
+				path.resolve(`${dir}/packument.json`),
 				JSON.stringify(packument, null, '\t'),
 			);
 		});
@@ -52,7 +80,7 @@ async function run(){
 	console.log('Pushing!');
 	const prefix = dateFormat(new Date(), 'd mmmm yyyy');
 	await tryAndPush(
-		['data/packages/*', 'data/maintainers.json'],
+		['data/packages/*'],
 		`${prefix} - NPM Package Data was updated!`,
 		'CFData - NPM Package Data Update',
 		'Pushed NPM Package Data: ' + prefix,

@@ -1,0 +1,159 @@
+{
+	"name": "@cfpreview/plinko",
+	"dist-tags": {
+		"latest": "0.3.4"
+	},
+	"versions": {
+		"0.2.0": {
+			"name": "@cfpreview/plinko",
+			"version": "0.2.0",
+			"dependencies": {
+				"@types/acorn": "^4.0.6",
+				"@types/jest": "^27.0.2",
+				"acorn": "^8.4.1",
+				"acorn-walk": "^8.1.1",
+				"commander": "^8.1.0",
+				"esbuild": "^0.12.15",
+				"esbuild-jest": "^0.5.0",
+				"jest": "^27.2.2",
+				"path-to-regexp": "^6.2.0"
+			},
+			"bin": {
+				"plinko": "dist/cli.js"
+			},
+			"directories": {
+				"examples": "examples"
+			},
+			"dist": {
+				"integrity": "sha512-WXjpfSrTZfttLM/lN0fwc5HCZ3jfznNb+oH6Im6v2pdWDbFgupCNNmqwLlFm53FUdmEaIEzvU//S+9oXU4CMrg==",
+				"shasum": "c955cfb2dea33b5d3addbc420d8f8c2855034432",
+				"tarball": "https://registry.npmjs.org/@cfpreview/plinko/-/plinko-0.2.0.tgz",
+				"fileCount": 27,
+				"unpackedSize": 224207,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCtuGjT9ARijiPwLyes+AUYdu+iV7jBxXuAEFedaaXtGwIhAKh8AYzD7Sd+ksfuLiNY9L/MTVKGMnAdM2dPeqX+Ny7b"
+					}
+				]
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"0.2.1": {
+			"name": "@cfpreview/plinko",
+			"version": "0.2.1",
+			"dependencies": {
+				"@types/acorn": "^4.0.6",
+				"@types/jest": "^27.0.2",
+				"acorn": "^8.4.1",
+				"acorn-walk": "^8.1.1",
+				"commander": "^8.1.0",
+				"esbuild": "^0.12.15",
+				"esbuild-jest": "^0.5.0",
+				"jest": "^27.2.2",
+				"path-to-regexp": "^6.2.0"
+			},
+			"bin": {
+				"plinko": "bin/plinko.mjs"
+			},
+			"directories": {
+				"examples": "examples"
+			},
+			"dist": {
+				"integrity": "sha512-5Egfypy8ly8uCP9SLEFzOLnyXJCfYNICUOp5PW5fg77c9QKdjvvZlM5AIWd0a9rNqRHPSSnguTfjUxpt6FEDDw==",
+				"shasum": "1849ce2446b731a4f7b454cf4cfa2ac7e99d82b1",
+				"tarball": "https://registry.npmjs.org/@cfpreview/plinko/-/plinko-0.2.1.tgz",
+				"fileCount": 4,
+				"unpackedSize": 196003,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCBvRXUaJm7IaguSuR0VqBeIePseNlfqYWOr9yyUiAKBgIgN004yoDf3N9NrCpOpG52o9gd6HFqzbvBckU71qKbSts="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"0.3.0": {
+			"name": "@cfpreview/plinko",
+			"version": "0.3.0",
+			"dependencies": {
+				"@types/acorn": "^4.0.6",
+				"@types/jest": "^27.0.2",
+				"acorn": "^8.4.1",
+				"acorn-walk": "^8.1.1",
+				"commander": "^8.1.0",
+				"esbuild": "^0.12.15",
+				"esbuild-jest": "^0.5.0",
+				"jest": "^27.2.2",
+				"path-to-regexp": "^6.2.0"
+			},
+			"bin": {
+				"plinko": "bin/plinko.mjs"
+			},
+			"directories": {
+				"examples": "examples"
+			},
+			"dist": {
+				"integrity": "sha512-Ml13cObciwVCndt/1sM5wIAahh5dwmcyOoAjCQ9CM0poKzfE5dddZrazfznp1nHu4IlHA10DNKxIXoCrFdyMAA==",
+				"shasum": "05c9b7763146cf80545f9c2ee96ab7ed48ef3759",
+				"tarball": "https://registry.npmjs.org/@cfpreview/plinko/-/plinko-0.3.0.tgz",
+				"fileCount": 4,
+				"unpackedSize": 196144,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIBPXLTDi2AsCDqwvCMAh/lZiIfa6OeikOocMNOoApzTQAiALjpEl+msMxwV9IOwaHs8h68+hpipLWpIV327z80OpIQ=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		},
+		"0.3.4": {
+			"name": "@cfpreview/plinko",
+			"version": "0.3.4",
+			"dependencies": {
+				"acorn": "^8.4.1",
+				"acorn-walk": "^8.1.1",
+				"commander": "^8.1.0",
+				"esbuild": "0.13.12",
+				"path-to-regexp": "^6.2.0"
+			},
+			"devDependencies": {
+				"@types/acorn": "^4.0.6",
+				"@types/jest": "^27.0.2",
+				"esbuild-jest": "^0.5.0",
+				"jest": "^27.2.2"
+			},
+			"bin": {
+				"plinko": "bin/plinko.mjs"
+			},
+			"dist": {
+				"shasum": "0cb2f5b27cd7cbd45f51aac11ac374be6c7224aa",
+				"integrity": "sha512-Ilyw3BxyHhrQTi4FmaQ2Tg+6xA6N4J8WFdm5uHrzwysjX7+gewI2VaqSfTbpt+mX5/NI/avvMi1WCLP8CNIJzw==",
+				"tarball": "https://registry.npmjs.org/@cfpreview/plinko/-/plinko-0.3.4.tgz",
+				"fileCount": 7,
+				"unpackedSize": 196374,
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJhm/DsCRA9TVsSAnZWagAA/osP/AsVN54sRo/wkM8wEKdH\nfcqsRoLKZn2a/QnueXVitISwhlbCq3It+MwAvhjbMhzMmXEGLilXbnBdSSVd\nDSmWDvf32znFZLnHMFSvo5QN2vZHDsNb5d+9xxcjWnBuD+Assg7zxG/cQsZe\n2kzpyXGnBSWftiJWz2PwYyortYoC8iINyh1CFpOkGpwXwJpT63mat5yU+ijT\nkhLpDBtk1j0/IQAO4N4ClibHJsHl6QlAGyKg9yCrgnH1C2HDHuJCbs5HUsAR\n++D3lccaEd4MCa+fIPMoRV8XzpjbBQ59TOUPtdm/QwBXMG0sW3ueZj3VSLTF\nsqARiAToiIq3m7IjewNHprUHR+DbtkBFiCs5Njk0N4peZdPgCgdICHwO4faZ\nMh/51sPOsL39kWY3epwaHepdd9Vo5uP04W3AemeoTJkhp/nrQRFJ/rLd4bZ/\ns8hXY/8kGQRjUM+ATbAuLu3d6PituAXdWQy39fMaIOM+quOVetIS1ePgU6mX\n3PNV3+8GcbPDsZvmqfFUf64CIetVhgkU/S7BZUDLYd2objoXqKyYt2QWAyD0\n5KRLeGaa2dhKW4RjoyQjs90tudhkNNorHwBKhXTfU2yXjZPiDNMuPVtyy0Xf\nqdaV1QIe3EHEHjkrN0Do9iMG9BGS9Xh46IecHGOuoDUqkIwCBQr6+ywcx5hY\nqDXF\r\n=Z+wF\r\n-----END PGP SIGNATURE-----\r\n",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIEHIaPgkyZsHlkUMl2386OJQU1LUYSaEL1uEB2+GV+n4AiA4U3N97bwaGZF4420jkw1EhOg2+HQq8m+5sWP2wwXNrQ=="
+					}
+				]
+			},
+			"engines": {
+				"node": ">=14"
+			}
+		}
+	},
+	"modified": "2022-04-04T22:24:39.620Z",
+	"_cached": false,
+	"_contentLength": 4330
+}

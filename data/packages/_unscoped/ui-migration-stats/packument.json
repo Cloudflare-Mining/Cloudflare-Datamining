@@ -1,0 +1,134 @@
+{
+	"name": "ui-migration-stats",
+	"dist-tags": {
+		"latest": "2.0.0"
+	},
+	"versions": {
+		"1.0.0": {
+			"name": "ui-migration-stats",
+			"version": "1.0.0",
+			"dependencies": {
+				"chalk": "^1.1.3",
+				"commander": "^2.9.0",
+				"directory-tree": "^1.2.1",
+				"prettyjson": "^1.2.1",
+				"sloc": "^0.2.0"
+			},
+			"devDependencies": {
+				"babel-cli": "^6.24.1",
+				"babel-preset-es2015": "^6.24.1",
+				"eslint": "^3.19.0",
+				"eslint-plugin-cflint": "^1.0.0",
+				"eslint-plugin-compat": "^1.0.2",
+				"eslint-plugin-import": "^2.2.0",
+				"eslint-plugin-json": "^1.2.0",
+				"eslint-plugin-prettier": "^2.0.1",
+				"eslint-plugin-react": "^6.10.3",
+				"husky": "^0.13.3",
+				"jest": "^19.0.2",
+				"prettier": "^1.1.0",
+				"shelljs": "^0.7.7",
+				"watch": "^1.0.2"
+			},
+			"bin": {
+				"stats": "./lib/stats.js"
+			},
+			"dist": {
+				"shasum": "8a5e07664ae8b48cdc92c138b88c14cd90144ec8",
+				"tarball": "https://registry.npmjs.org/ui-migration-stats/-/ui-migration-stats-1.0.0.tgz",
+				"integrity": "sha512-9Hnc1GZsYT0Uw0J6IODhqJ4rsVaVxBkuyh96gbQ/oRqLvyNmh4MzQy8WB7n26RH9ytc8WN9kGXNacYoPKBRFFg==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCdNzis/eEGOq3jIjTQFQ0xraZxvk17XfTNaH78NCZwSgIgKpvVClPprlP+5F+spcU4uMzvU9Kl4exosxmC0GKyED0="
+					}
+				]
+			}
+		},
+		"1.0.2": {
+			"name": "ui-migration-stats",
+			"version": "1.0.2",
+			"dependencies": {
+				"chalk": "^1.1.3",
+				"commander": "^2.9.0",
+				"directory-tree": "^1.2.1",
+				"prettyjson": "^1.2.1",
+				"sloc": "^0.2.0"
+			},
+			"devDependencies": {
+				"babel-cli": "^6.24.1",
+				"babel-preset-es2015": "^6.24.1",
+				"eslint": "^3.19.0",
+				"eslint-plugin-cflint": "^1.0.0",
+				"eslint-plugin-compat": "^1.0.2",
+				"eslint-plugin-import": "^2.2.0",
+				"eslint-plugin-json": "^1.2.0",
+				"eslint-plugin-prettier": "^2.0.1",
+				"eslint-plugin-react": "^6.10.3",
+				"husky": "^0.13.3",
+				"jest": "^19.0.2",
+				"prettier": "^1.1.0",
+				"shelljs": "^0.7.7",
+				"watch": "^1.0.2"
+			},
+			"bin": {
+				"stats": "./lib/stats.js"
+			},
+			"dist": {
+				"shasum": "8ca170c8f9fb84ea56355420ca4b43fc98efda98",
+				"tarball": "https://registry.npmjs.org/ui-migration-stats/-/ui-migration-stats-1.0.2.tgz",
+				"integrity": "sha512-eum4y6/gWWI/oXyjIJGhGASnt9uNIYBfpiikw2ug0MOUZgbKdVOoV+l+sL8b/VejLj/R/tZhyMFFM40H5+7obQ==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCpW0jkAzq9hV6MCByJz1NkQ3QdmEeQQoi2RuqNsMrIMQIhANqfcYiCF5eO+eb9ovY8I2PFaWVfOXRDRgy1sl+TZ5tA"
+					}
+				]
+			}
+		},
+		"2.0.0": {
+			"name": "ui-migration-stats",
+			"version": "2.0.0",
+			"dependencies": {
+				"chalk": "^1.1.3",
+				"commander": "^2.9.0",
+				"directory-tree": "^2.0.0",
+				"prettyjson": "^1.2.1",
+				"sloc": "^0.2.0"
+			},
+			"devDependencies": {
+				"babel-cli": "^6.24.1",
+				"babel-preset-es2015": "^6.24.1",
+				"eslint": "^3.19.0",
+				"eslint-plugin-cflint": "^1.0.0",
+				"eslint-plugin-compat": "^1.0.2",
+				"eslint-plugin-import": "^2.2.0",
+				"eslint-plugin-json": "^1.2.0",
+				"eslint-plugin-prettier": "^2.0.1",
+				"eslint-plugin-react": "^7.0.1",
+				"husky": "^0.13.3",
+				"jest": "^20.0.1",
+				"prettier": "^1.1.0",
+				"shelljs": "^0.7.7",
+				"watch": "^1.0.2"
+			},
+			"bin": {
+				"stats": "./lib/stats.js"
+			},
+			"dist": {
+				"shasum": "5e6d0bb46f3589f53f122f524a7abcc13967183e",
+				"tarball": "https://registry.npmjs.org/ui-migration-stats/-/ui-migration-stats-2.0.0.tgz",
+				"integrity": "sha512-V/3k/r0zqWH1fkb751rANGa/rarFGaeI6XrzQq+zUQm94AUIYyno8Jh8Xps9sbvnsW9I2F96hpvwMyVDQncJGw==",
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIDhKoqwyKM0A1r51AECc+WHrxIvjv28/auAjlytV+P1sAiBFvw+RSASMoxTsIk6aOjS/TcQW+67+aDxLsZbVzrQIgQ=="
+					}
+				]
+			}
+		}
+	},
+	"modified": "2022-06-28T03:19:31.950Z",
+	"_cached": false,
+	"_contentLength": 3191
+}
