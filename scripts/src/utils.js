@@ -3,6 +3,7 @@ import path from 'node:path';
 import process from 'node:process';
 import fetch from 'node-fetch';
 import simpleGit from 'simple-git';
+import jsBeautify from 'js-beautify';
 
 // We want it to be ran from root not scripts
 const git = simpleGit({baseDir: path.resolve('..')});
@@ -100,4 +101,14 @@ export function removeSlashes(source){
 		}
 	}
 	return result;
+}
+
+export function beautify(data){
+	return jsBeautify.js(data,
+		{
+			indent_size: 4,
+			indent_char: '\t',
+			indent_with_tabs: true,
+		},
+	);
 }

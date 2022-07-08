@@ -2,14 +2,13 @@ import path from 'node:path';
 import fs from 'fs-extra';
 import dateFormat from 'dateformat';
 import fetch from 'node-fetch';
-import jsBeautify from 'js-beautify';
 import {parse} from 'acorn';
 import {full, fullAncestor} from 'acorn-walk';
 import isValidFilename from 'valid-filename';
 import filenamify from 'filenamify';
 import dataUriToBuffer from 'data-uri-to-buffer';
 
-import {tryAndPush, removeSlashes} from './utils.js';
+import {tryAndPush, removeSlashes, beautify} from './utils.js';
 
 const appScript = /(app\.[\da-z]+\.js)/;
 const chunkIds = /(?:\w+\.\w+\((\d+)\)(?:, )?)/g;
@@ -24,18 +23,9 @@ const staticDashURL = 'https://static.dash.cloudflare.com/';
 
 // TODO: tidy up this file
 
-function beautify(data){
-	return jsBeautify.js(data,
-		{
-			indent_size: 4,
-			indent_char: '\t',
-			indent_with_tabs: true,
-		},
-	);
-}
 async function writeJS(filename, data){
 	const file = path.resolve(`../data/dashboard/${filename}`);
-	fs.ensureDir(path.dirname(file));
+	await fs.ensureDir(path.dirname(file));
 	await fs.writeFile(file, beautify(data));
 }
 
@@ -51,6 +41,11 @@ async function findWantedChunks(chunks){
 		getChunks.push(async function(){
 			const res = await fetch(`${staticDashURL}${chunk}.js`);
 			fetched++;
+			// 404s are okay, but nothing else
+			if(!res.ok && res.status !== 404){
+				console.error('Received non-200 response:', res.status);
+				throw new Error('Failed to fetch chunk ' + chunk);
+			}
 			const text = await res.text();
 
 			// next do some very lazy parsing to match what we need
@@ -518,7 +513,7 @@ async function run(){
 	console.log('Writing translations...');
 	for(const [translationName, translation] of Object.entries(translations)){
 		const file = path.resolve(`../data/dashboard-translations/${translationName}.json`);
-		fs.ensureDir(path.dirname(file));
+		await fs.ensureDir(path.dirname(file));
 		await fs.writeFile(file, JSON.stringify(translation, null, '\t'));
 	}
 
