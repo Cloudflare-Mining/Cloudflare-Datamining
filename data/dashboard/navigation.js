@@ -21,14 +21,14 @@ const navigation = {
 		url: "/access-management",
 		iconType: "lock",
 		hasPermission: function(Se) {
-			return !!(0, me.z1)("oauth-access-management")(Se)
+			return !!(0, fe.z1)("oauth-access-management")(Se)
 		}
 	}, {
 		title: "navigation.profile.authentication",
 		url: "/authentication",
 		iconType: "key",
 		hasPermission: function(Se) {
-			return !(0, V.n3)() && !(0, me.z1)("oauth-access-management")(Se)
+			return !(0, V.n3)() && !(0, fe.z1)("oauth-access-management")(Se)
 		}
 	}, {
 		title: "navigation.profile.api_tokens",
@@ -39,7 +39,7 @@ const navigation = {
 		url: "/sessions",
 		iconType: "time",
 		hasPermission: function(Se) {
-			return !(0, me.z1)("oauth-access-management")(Se)
+			return !(0, fe.z1)("oauth-access-management")(Se)
 		}
 	}],
 	account: [{
@@ -48,7 +48,7 @@ const navigation = {
 		iconType: "internet-browser"
 	}, {
 		title: function(Se) {
-			return (0, me.z1)("registrar-account-home-copy-experiment")(Se) === "registrar" ? "navigation.account.registrar" : "navigation.account.registrar.buy_domains"
+			return (0, fe.z1)("registrar-account-home-copy-experiment")(Se) === "registrar" ? "navigation.account.registrar" : "navigation.account.registrar.buy_domains"
 		},
 		url: "",
 		iconType: "registrar-logo",
@@ -105,7 +105,7 @@ const navigation = {
 		iconType: "applications",
 		labels: ["beta"],
 		hasPermission: function(Se) {
-			return I(Se) && (0, ue.dU)(Se)
+			return I(Se) && (0, ce.dU)(Se)
 		}
 	}, {
 		title: "navigation.account.pages",
@@ -371,14 +371,14 @@ const navigation = {
 			url: "/analytics/originReachability",
 			hasPermission: function(Se) {
 				var Tt = (0, f.getZone)(Se);
-				return Tt ? !!(!(0, a.zoneIsDNSOnly)(Se) && !!(0, f.getZoneFlipperFlag)(Se, "origin_reachability_dash", "dash_view") && (0, f.isPlanAtLeast)(Tt, "enterprise") && !!(0, Y.getZoneGraphQLSettingEnabled)(Se, "httpRequestsAdaptiveGroups")) : !1
+				return Tt ? !!(!(0, a.zoneIsDNSOnly)(Se) && !!(0, f.getZoneFlipperFlag)(Se, "origin_reachability_dash", "dash_view") && (0, f.isPlanAtLeast)(Tt, "enterprise") && !!(0, H.getZoneGraphQLSettingEnabled)(Se, "httpRequestsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.edge_reachability",
 			url: "/analytics/edgeReachability",
 			hasPermission: function(Se) {
 				var Tt = (0, f.getZone)(Se);
-				return Tt ? !!(!(0, a.zoneIsDNSOnly)(Se) && !!(0, f.getZoneFlipperFlag)(Se, "edge_reachability_dash", "dash_view") && (0, f.isPlanAtLeast)(Tt, "enterprise") && !!(0, Y.getZoneGraphQLSettingEnabled)(Se, "nelReportsAdaptiveGroups")) : !1
+				return Tt ? !!(!(0, a.zoneIsDNSOnly)(Se) && !!(0, f.getZoneFlipperFlag)(Se, "edge_reachability_dash", "dash_view") && (0, f.isPlanAtLeast)(Tt, "enterprise") && !!(0, H.getZoneGraphQLSettingEnabled)(Se, "nelReportsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.dns",
@@ -456,7 +456,7 @@ const navigation = {
 			title: "navigation.zone.ssl-tls.client_certs",
 			url: "/ssl-tls/client-certificates",
 			hasPermission: function(Se) {
-				return !!(0, me.z1)("client-certificates")(Se) || !!(0, f.getZoneFlipperFlag)(Se, "ssl", "client_certificates")
+				return !!(0, fe.z1)("client-certificates")(Se) || !!(0, f.getZoneFlipperFlag)(Se, "ssl", "client_certificates")
 			}
 		}, {
 			title: "navigation.zone.ssl-tls.origin_server",
@@ -651,7 +651,7 @@ const navigation = {
 			title: "navigation.zone.traffic.health_check_analytics",
 			url: "/traffic/health-check-analytics",
 			hasPermission: function(Se) {
-				return !(0, a.zoneIsDNSOnly)(Se) && !!(0, Y.getZoneGraphQLSettingEnabled)(Se, "healthCheckEventsAdaptiveGroups")
+				return !(0, a.zoneIsDNSOnly)(Se) && !!(0, H.getZoneGraphQLSettingEnabled)(Se, "healthCheckEventsAdaptiveGroups")
 			}
 		}, {
 			title: "navigation.zone.traffic.waiting_rooms",
