@@ -4,7 +4,7 @@
 		"title": "Cloudflare Client API",
 		"description": "The Cloudflare Client API",
 		"version": "4.0.0",
-		"x-revision": "149-d263494"
+		"x-revision": "155-be4778d"
 	},
 	"servers": [
 		{
@@ -82058,6 +82058,7 @@
 												"result": {
 													"type": "array",
 													"items": {
+														"description": "Indicates the cloudflared enabled features for this Cloudflare Tunnel connection",
 														"type": "object",
 														"properties": {
 															"id": {
@@ -82069,11 +82070,14 @@
 																"pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
 																"minLength": 36
 															},
-															"name": {
-																"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1cfd_tunnel/post/requestBody/content/application~1json/schema/properties/name"
+															"account_tag": {
+																"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1cfd_tunnel/get/parameters/0/schema"
 															},
 															"created_at": {
-																"description": "Timestamps when the tunnel was created, formatted in RFC 3339"
+																"type": "string",
+																"format": "date-time",
+																"example": "2021-01-25T18:22:34.317854+00:00",
+																"description": "Timestamps when the resource was created, formatted in RFC 3339"
 															},
 															"deleted_at": {
 																"description": "If present, indicates tunnel was deleted at the given date (formatted in RFC 3339). If absent, tunnel has not been deleted",
@@ -82082,28 +82086,53 @@
 																"example": "2009-11-10T23:00:00+00:00",
 																"nullable": true
 															},
-															"run_at": {
-																"description": "Indicates when the tunnel connection was started (formatted in RFC 3339)",
-																"type": "string",
-																"format": "date-time",
-																"example": "2009-11-10T23:00:00+00:00",
-																"nullable": true
+															"name": {
+																"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1cfd_tunnel/post/requestBody/content/application~1json/schema/properties/name"
 															},
-															"arch": {
-																"description": "Indicates the cloudflared OS architecture used to establish this Cloudflare Tunnel connection",
-																"type": "string",
-																"example": "linux_amd64"
-															},
-															"version": {
-																"description": "Indicates the cloudflared version used to establish this Cloudflare Tunnel connection",
-																"type": "string",
-																"example": "2022.7.1"
-															},
-															"features": {
-																"description": "Indicates the cloudflared enabled features for this Cloudflare Tunnel connection",
+															"connections": {
+																"description": "Connections between cloudflared and the Cloudflare edge that are serving this tunnel",
 																"type": "array",
 																"items": {
-																	"type": "string"
+																	"properties": {
+																		"colo_name": {
+																			"description": "Short ID for the colo this connection is connected to",
+																			"type": "string",
+																			"example": "DFW"
+																		},
+																		"id": {
+																			"description": "UUID of the tunnel's connection",
+																			"readOnly": true,
+																			"type": "string",
+																			"maxLength": 36,
+																			"example": "1bedc50d-42b3-473c-b108-ff3d10c0d925",
+																			"pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+																			"minLength": 36
+																		},
+																		"is_pending_reconnect": {
+																			"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting. If this field is true, the connection has disconnected but is still being tracked for these optimized reconnects. If false, the connection is still actively serving",
+																			"type": "boolean",
+																			"example": false
+																		},
+																		"client_id": {
+																			"description": "UUID of the cloudflared instance"
+																		},
+																		"client_version": {
+																			"description": "Indicates the cloudflared version used to establish this Cloudflare Tunnel connection",
+																			"type": "string",
+																			"example": "2022.7.1"
+																		},
+																		"opened_at": {
+																			"type": "string",
+																			"format": "date-time",
+																			"example": "2021-01-25T18:22:34.317854+00:00",
+																			"description": "Timestamp when the connection was established, formatted in RFC 3339"
+																		},
+																		"origin_ip": {
+																			"description": "The publicly perceived IP of the host running the cloudflared instance",
+																			"type": "string",
+																			"example": "85.12.78.6"
+																		}
+																	}
 																}
 															},
 															"conns_active_at": {
@@ -82121,69 +82150,16 @@
 																"nullable": true
 															},
 															"status": {
-																"description": "The status of the tunnel. Could be \"Active\", \"Inactive\" or \"Degraded\" (Active but not all connectors have 4 connections to the edge)",
+																"description": "The status of the tunnel. Could be \"active\", \"inactive\" or \"degraded\" (Active but not all connectors have 4 connections to the edge)",
 																"type": "string",
-																"example": "Active"
+																"example": "active"
 															},
-															"connections": {
-																"description": "Connections between cloudflared and the Cloudflare edge that are serving this tunnel",
-																"type": "array",
-																"items": {
-																	"properties": {
-																		"colo_name": {
-																			"description": "Short ID for the colo this connection is connected to",
-																			"type": "string",
-																			"example": "DFW"
-																		},
-																		"id": {
-																			"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1identity_providers/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/id"
-																		},
-																		"is_pending_reconnect": {
-																			"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting. If this field is true, the connection has disconnected but is still being tracked for these optimized reconnects. If false, the connection is still actively serving",
-																			"type": "boolean",
-																			"example": false
-																		},
-																		"client_id": {
-																			"description": "The UUID of the cloudflared instance",
-																			"type": "string",
-																			"maxLength": 36,
-																			"example": "dc6472cc-f1ae-44a0-b795-6b8a0ce29f90",
-																			"pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-																			"minLength": 36
-																		},
-																		"client_version": {
-																			"description": "The version of the cloudflared instance",
-																			"type": "string",
-																			"example": "2022.2.0"
-																		},
-																		"opened_at": {
-																			"type": "string",
-																			"format": "date-time",
-																			"example": "2021-01-25T18:22:34.317854+00:00",
-																			"description": "Timestamp when the connection was established, formatted in RFC 3339"
-																		},
-																		"origin_ip": {
-																			"description": "The publicly perceived IP of the host running the cloudflared instance",
-																			"type": "string",
-																			"example": "85.12.78.6"
-																		}
-																	}
-																}
-															},
-															"conns": {
-																"description": "Connections between cloudflared and the Cloudflare edge that are serving this tunnel",
-																"type": "array",
-																"items": {
-																	"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1cfd_tunnel/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/connections/items"
-																}
+															"remote_config": {
+																"description": "If the Cloudflare Tunnel's configuration is configured remotely (true) or locally on the origin machine (false)",
+																"type": "boolean",
+																"example": true
 															}
-														},
-														"required": [
-															"id",
-															"name",
-															"created_at",
-															"connections"
-														]
+														}
 													}
 												}
 											}
@@ -82228,7 +82204,7 @@
 											"type": "object",
 											"properties": {
 												"result": {
-													"type": "object"
+													"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1cfd_tunnel/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items"
 												}
 											}
 										}
@@ -82314,7 +82290,102 @@
 											"type": "object",
 											"properties": {
 												"result": {
-													"type": "object"
+													"description": "Indicates the cloudflared enabled features for this Cloudflare Tunnel connection",
+													"type": "object",
+													"properties": {
+														"id": {
+															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1cfd_tunnel~1%7Btunnel_id%7D/patch/parameters/0/schema"
+														},
+														"account_tag": {
+															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1cfd_tunnel~1%7Btunnel_id%7D/patch/parameters/1/schema"
+														},
+														"created_at": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2021-01-25T18:22:34.317854+00:00",
+															"description": "Timestamps when the resource was created, formatted in RFC 3339"
+														},
+														"deleted_at": {
+															"description": "If present, indicates tunnel was deleted at the given date (formatted in RFC 3339). If absent, tunnel has not been deleted",
+															"type": "string",
+															"format": "date-time",
+															"example": "2009-11-10T23:00:00+00:00",
+															"nullable": true
+														},
+														"name": {
+															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1cfd_tunnel~1%7Btunnel_id%7D/patch/requestBody/content/application~1json/schema/properties/name"
+														},
+														"connections": {
+															"description": "Connections between cloudflared and the Cloudflare edge that are serving this tunnel",
+															"type": "array",
+															"items": {
+																"properties": {
+																	"colo_name": {
+																		"description": "Short ID for the colo this connection is connected to",
+																		"type": "string",
+																		"example": "DFW"
+																	},
+																	"id": {
+																		"description": "UUID of the tunnel's connection",
+																		"readOnly": true,
+																		"type": "string",
+																		"maxLength": 36,
+																		"example": "1bedc50d-42b3-473c-b108-ff3d10c0d925",
+																		"pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+																		"minLength": 36
+																	},
+																	"is_pending_reconnect": {
+																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting. If this field is true, the connection has disconnected but is still being tracked for these optimized reconnects. If false, the connection is still actively serving",
+																		"type": "boolean",
+																		"example": false
+																	},
+																	"client_id": {
+																		"description": "UUID of the cloudflared instance"
+																	},
+																	"client_version": {
+																		"description": "Indicates the cloudflared version used to establish this Cloudflare Tunnel connection",
+																		"type": "string",
+																		"example": "2022.7.1"
+																	},
+																	"opened_at": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2021-01-25T18:22:34.317854+00:00",
+																		"description": "Timestamp when the connection was established, formatted in RFC 3339"
+																	},
+																	"origin_ip": {
+																		"description": "The publicly perceived IP of the host running the cloudflared instance",
+																		"type": "string",
+																		"example": "85.12.78.6"
+																	}
+																}
+															}
+														},
+														"conns_active_at": {
+															"description": "If present, indicates the timestamp since the tunnel had at least 1 connection active (formatted in RFC 3339). If absent, tunnel is inactive",
+															"type": "string",
+															"format": "date-time",
+															"example": "2009-11-10T23:00:00+00:00",
+															"nullable": true
+														},
+														"conns_inactive_at": {
+															"description": "If present, indicates since when the tunnel is without any connection established to the edge (formatted in RFC 3339). If absent, tunnel is active",
+															"type": "string",
+															"format": "date-time",
+															"example": "2009-11-10T23:00:00+00:00",
+															"nullable": true
+														},
+														"status": {
+															"description": "The status of the tunnel. Could be \"active\", \"inactive\" or \"degraded\" (Active but not all connectors have 4 connections to the edge)",
+															"type": "string",
+															"example": "active"
+														},
+														"remote_config": {
+															"description": "If the Cloudflare Tunnel's configuration is configured remotely (true) or locally on the origin machine (false)",
+															"type": "boolean",
+															"example": true
+														}
+													}
 												}
 											}
 										}
@@ -82489,70 +82560,37 @@
 												"result": {
 													"type": "array",
 													"items": {
+														"description": "Indicates the cloudflared enabled features for this Cloudflare Tunnel connection",
 														"type": "object",
 														"properties": {
 															"id": {
-																"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1cfd_tunnel~1%7Btunnel_id%7D~1connections/get/parameters/0/schema"
-															},
-															"name": {
-																"description": "A user-friendly name chosen when the tunnel is created. Cannot be empty",
+																"description": "UUID of the tunnel's connection",
+																"readOnly": true,
 																"type": "string",
-																"example": "blog"
+																"maxLength": 36,
+																"example": "1bedc50d-42b3-473c-b108-ff3d10c0d925",
+																"pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+																"minLength": 36
 															},
-															"created_at": {
-																"description": "Timestamps when the tunnel was created, formatted in RFC 3339"
-															},
-															"deleted_at": {
-																"description": "If present, indicates tunnel was deleted at the given date (formatted in RFC 3339). If absent, tunnel has not been deleted",
-																"type": "string",
-																"format": "date-time",
-																"example": "2009-11-10T23:00:00+00:00",
-																"nullable": true
-															},
-															"run_at": {
-																"description": "Indicates when the tunnel connection was started (formatted in RFC 3339)",
-																"type": "string",
-																"format": "date-time",
-																"example": "2009-11-10T23:00:00+00:00",
-																"nullable": true
-															},
-															"arch": {
-																"description": "Indicates the cloudflared OS architecture used to establish this Cloudflare Tunnel connection",
-																"type": "string",
-																"example": "linux_amd64"
+															"features": {
+																"description": "Contents of a Cloudflare Tunnel",
+																"type": "array",
+																"items": {
+																	"type": "string",
+																	"example": "ha-origin"
+																}
 															},
 															"version": {
 																"description": "Indicates the cloudflared version used to establish this Cloudflare Tunnel connection",
 																"type": "string",
 																"example": "2022.7.1"
 															},
-															"features": {
-																"description": "Indicates the cloudflared enabled features for this Cloudflare Tunnel connection",
-																"type": "array",
-																"items": {
-																	"type": "string"
-																}
-															},
-															"conns_active_at": {
-																"description": "If present, indicates the timestamp since the tunnel had at least 1 connection active (formatted in RFC 3339). If absent, tunnel is inactive",
+															"arch": {
+																"description": "Indicates the cloudflared OS architecture used to establish this Cloudflare Tunnel connection",
 																"type": "string",
-																"format": "date-time",
-																"example": "2009-11-10T23:00:00+00:00",
-																"nullable": true
+																"example": "linux_amd64"
 															},
-															"conns_inactive_at": {
-																"description": "If present, indicates since when the tunnel is without any connection established to the edge (formatted in RFC 3339). If absent, tunnel is active",
-																"type": "string",
-																"format": "date-time",
-																"example": "2009-11-10T23:00:00+00:00",
-																"nullable": true
-															},
-															"status": {
-																"description": "The status of the tunnel. Could be \"Active\", \"Inactive\" or \"Degraded\" (Active but not all connectors have 4 connections to the edge)",
-																"type": "string",
-																"example": "Active"
-															},
-															"connections": {
+															"conns": {
 																"description": "Connections between cloudflared and the Cloudflare edge that are serving this tunnel",
 																"type": "array",
 																"items": {
@@ -82563,7 +82601,7 @@
 																			"example": "DFW"
 																		},
 																		"id": {
-																			"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1identity_providers/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/id"
+																			"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1cfd_tunnel~1%7Btunnel_id%7D~1connections/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/id"
 																		},
 																		"is_pending_reconnect": {
 																			"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting. If this field is true, the connection has disconnected but is still being tracked for these optimized reconnects. If false, the connection is still actively serving",
@@ -82571,17 +82609,10 @@
 																			"example": false
 																		},
 																		"client_id": {
-																			"description": "The UUID of the cloudflared instance",
-																			"type": "string",
-																			"maxLength": 36,
-																			"example": "dc6472cc-f1ae-44a0-b795-6b8a0ce29f90",
-																			"pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-																			"minLength": 36
+																			"description": "UUID of the cloudflared instance"
 																		},
 																		"client_version": {
-																			"description": "The version of the cloudflared instance",
-																			"type": "string",
-																			"example": "2022.2.0"
+																			"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1cfd_tunnel~1%7Btunnel_id%7D~1connections/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/version"
 																		},
 																		"opened_at": {
 																			"type": "string",
@@ -82597,20 +82628,13 @@
 																	}
 																}
 															},
-															"conns": {
-																"description": "Connections between cloudflared and the Cloudflare edge that are serving this tunnel",
-																"type": "array",
-																"items": {
-																	"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1cfd_tunnel~1%7Btunnel_id%7D~1connections/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/connections/items"
-																}
+															"run_at": {
+																"description": "Indicates when the tunnel connection was started (formatted in RFC 3339)",
+																"type": "string",
+																"format": "date-time",
+																"example": "2009-11-10T23:00:00+00:00"
 															}
-														},
-														"required": [
-															"id",
-															"name",
-															"created_at",
-															"connections"
-														]
+														}
 													}
 												}
 											}
