@@ -1,6 +1,6 @@
 on:
   schedule:
-    - cron:  '30 * * * *'
+    - cron:  '45 * * * *'
   workflow_dispatch: {}
 
 name: Mine CF Zero Trust Dashboard
