@@ -125,13 +125,13 @@ async function getChunks(){
 				if(!property.key?.value || property?.key?.value?.startsWith?.('/')){
 					continue;
 				}
+				console.log('Found translation', property.key.value);
 				const split = property.key.value.split('.');
 				const namespace = split[0];
 				if(!namespace){
 					console.warn('No namespace found for', property.key.value);
 					continue;
 				}
-				console.log('Found translation', namespace);
 				const key = split.slice(1).join('.');
 				translations[namespace] ??= {};
 				translations[namespace][key] = property.value.value;
@@ -212,9 +212,7 @@ async function run(){
 	await tryAndPush(
 		[
 			'data/zt-dashboard-translations/*',
-			'data/zt-dashboard-subroutes/*',
-			'data/zt-dashboard/*.json',
-			'data/zt-dashboard/*.js',
+			//'data/zt-dashboard/*.json',
 		],
 		`${prefix} - Zero Trust Dashboard Data was updated!`,
 		'CFData - ZT Dashboard Update',
