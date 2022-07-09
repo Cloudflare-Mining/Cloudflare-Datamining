@@ -230,7 +230,7 @@ async function generateDashboardStructure(wantedChunks, write = false){
 	const subRoutes = {};
 	const links = new Set();
 	const apiReqs = [];
-	for(const chunk of wantedChunks.chunks){
+	for(const chunk of wantedChunks){
 		for(const match of chunk.code.matchAll(/["'](https?:\/\/[^"']*)["']/g)){
 			if(match && match[1] && !match[1].includes('`')){
 				try{
@@ -492,7 +492,10 @@ async function run(){
 		writeAssets = false;
 	}
 
-	const tree = await generateDashboardStructure(wantedChunks, writeAssets);
+	const tree = await generateDashboardStructure([
+		...wantedChunks.chunks,
+		wantedChunks.dashboard,
+	], writeAssets);
 	const treeFile = path.resolve(`../data/dashboard/files.json`);
 	await fs.writeFile(treeFile, JSON.stringify(tree, null, '\t'));
 

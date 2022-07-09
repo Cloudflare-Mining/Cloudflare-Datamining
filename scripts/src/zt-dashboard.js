@@ -142,12 +142,33 @@ async function getChunks(){
 	return {
 		chunks,
 		app: {
-			file: appFile,
-			js: appJs,
+			name: appFile,
+			code: appJs,
 			translations,
 		},
 	};
 }
+
+async function generateDashboardStructure(wantedChunks){
+	const links = new Set();
+	for(const chunk of wantedChunks){
+		for(const match of chunk.code.matchAll(/["'](https?:\/\/[^"']*)["']/g)){
+			if(match && match[1] && !match[1].includes('`')){
+				try{
+					const url = new URL(match[1]);
+					url.pathname = url.pathname.replace(/\/\/+/g, '/');
+					links.add(url.toString());
+				}catch{
+					//console.warn('Found a bad link', match[1]);
+				}
+			}
+		}
+	}
+
+	const linksFile = path.resolve(`../data/zt-dashboard/links.json`);
+	await fs.writeFile(linksFile, JSON.stringify([...links].sort(), null, '\t'));
+}
+
 async function run(){
 	console.log('Fetching main chunk...');
 	const chunks = await getChunks();
@@ -159,6 +180,11 @@ async function run(){
 		console.error('Failed to find main chunk!');
 		return;
 	}
+
+	await generateDashboardStructure([
+		...wantedChunks.chunks,
+		chunks.app,
+	]);
 
 	console.log('Writing translations...');
 	const translationsDir = path.resolve('../data/zt-dashboard-translations/');
@@ -212,7 +238,7 @@ async function run(){
 	await tryAndPush(
 		[
 			'data/zt-dashboard-translations/*',
-			//'data/zt-dashboard/*.json',
+			'data/zt-dashboard/*.json',
 		],
 		`${prefix} - Zero Trust Dashboard Data was updated!`,
 		'CFData - ZT Dashboard Update',
