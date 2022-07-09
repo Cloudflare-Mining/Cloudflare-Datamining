@@ -54,7 +54,10 @@ async function run(){
 		console.log('Pushing!');
 		const prefix = dateFormat(new Date(), 'd mmmm yyyy');
 		await tryAndPush(
-			['data/github-repos/*'],
+			[
+				'data/github-repos/*',
+				'data/github-repos/**/*.json',
+			],
 			`${prefix} - GitHub Data was updated!`,
 			'CFData - GitHub Data Update',
 			'Pushed GitHub Data: ' + prefix,

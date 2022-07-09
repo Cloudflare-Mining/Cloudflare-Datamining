@@ -583,6 +583,7 @@ async function run(){
 		[
 			'data/dashboard-translations/*',
 			'data/dashboard-subroutes/*',
+			'data/dashboard-subroutes/**/*.json',
 			'data/dashboard/*.json',
 			'data/dashboard/*.js',
 		],
