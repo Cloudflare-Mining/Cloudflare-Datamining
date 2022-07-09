@@ -2,7 +2,7 @@
 	"name": "@miniflare/cache",
 	"dist-tags": {
 		"next": "2.0.0-rc.5",
-		"latest": "2.5.1",
+		"latest": "2.6.0",
 		"d1": "2.6.0-d1.1"
 	},
 	"versions": {
@@ -507,9 +507,41 @@
 			"engines": {
 				"node": ">=16.7"
 			}
+		},
+		"2.6.0": {
+			"name": "@miniflare/cache",
+			"version": "2.6.0",
+			"dependencies": {
+				"@miniflare/core": "2.6.0",
+				"@miniflare/shared": "2.6.0",
+				"http-cache-semantics": "^4.1.0",
+				"undici": "5.5.1"
+			},
+			"devDependencies": {
+				"@miniflare/shared-test": "2.6.0",
+				"@miniflare/web-sockets": "2.6.0",
+				"@types/http-cache-semantics": "^4.0.1"
+			},
+			"dist": {
+				"integrity": "sha512-4oh8MgpquoxaslI7Z8sMzmEZR0Dc+L3aEh69o9d8ZCs4nUdOENnfKlY50O5nEnL7nhhyAljkMBaXD2wAH2DLeQ==",
+				"shasum": "d048c88db573c361ce76a41471ce7ffcee5a99a5",
+				"tarball": "https://registry.npmjs.org/@miniflare/cache/-/cache-2.6.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 21684,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCeMhSOtLU0s+ce1/GECnJ+URbP5uNRgscSlpUNkCtl4AIgRDqs6Whbte/Q9o13Rt+kKROSwKDHqwlAiThVOPFAaYk="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiyVYuACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoAzQ//Z7AzmR1CrDXGI7ZMJkW+KKf/4q7NeT14jZKF+PZYINJn7Du5\r\nMPyHUSgzZgzBsPtJXBkv3yB8uQAOZJjIFvogWUNV4NzmdenOA2277U8/LCIe\r\nldCosV/B9Yk1rIzMCHOhEQ5HNsKd93SY5fIYPcrfTt/Q5zKQzU+U8hctX+gQ\r\nbpgSkDJlJQMmRatUnYppYmur/Xz6nTxI46M+XBFhpAtafmIZ4381PvPeMuj6\r\nLZONvQgy1xhuHY7B2C+NKJKLOe7wHp2sMe6bXkOuRFt/qZjr7izagQIOmtkk\r\nW6aglIv4Q4qTtFB9rg5d+PWqJjEJ78FNdtL9ljqVRyTkM/tO4xb4SK3HzjrA\r\n/LmpGMXZiKg5t1mlkD1f3rRMicz7eTJMNKXvHfFrRhH90GU9jAYWsWgEcnsh\r\n+RwVoLzFi3bl66aC7yRkaGr5+P0siB4HlEFdHvalTxR7KVeKZhFO0RDCzxdL\r\nJZBIUa9VjNNzW8PdKk9Z+KoDmLp1qwBx5o2zU8KzgEzU/qqwDVrzhRnbV8QH\r\niSb9IuSvOJZweW6y1/Rv1QtOWso0S5bkZne9JQs3Zzy+H57etYZv9d5SKDuC\r\nNxxol8Q9x4N2fmEAlIO8uUbFMz1WgIe+vWM2OmtEv9zEaxg06ns31h414+WN\r\nYbczMjSDQhFHIFuT4a0HiKLenxKqdGDhzWI=\r\n=sSXL\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=16.7"
+			}
 		}
 	},
-	"modified": "2022-06-29T15:47:13.712Z",
+	"modified": "2022-07-09T10:19:26.448Z",
 	"_cached": false,
-	"_contentLength": 24289
+	"_contentLength": 26049
 }

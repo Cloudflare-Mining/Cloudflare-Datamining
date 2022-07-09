@@ -2,7 +2,7 @@
 	"name": "@miniflare/durable-objects",
 	"dist-tags": {
 		"next": "2.0.0-rc.5",
-		"latest": "2.5.1",
+		"latest": "2.6.0",
 		"d1": "2.6.0-d1.1"
 	},
 	"versions": {
@@ -489,9 +489,41 @@
 			"engines": {
 				"node": ">=16.7"
 			}
+		},
+		"2.6.0": {
+			"name": "@miniflare/durable-objects",
+			"version": "2.6.0",
+			"dependencies": {
+				"@miniflare/core": "2.6.0",
+				"@miniflare/shared": "2.6.0",
+				"@miniflare/storage-memory": "2.6.0",
+				"undici": "5.5.1"
+			},
+			"devDependencies": {
+				"@miniflare/cache": "2.6.0",
+				"@miniflare/runner-vm": "2.6.0",
+				"@miniflare/shared-test": "2.6.0"
+			},
+			"dist": {
+				"integrity": "sha512-uzWoGFtkIIh3m3HAzqd5f86nOSC0xFli6dq2q7ilE3UjgouOcLqObxJyE/IzvSwsj4DUWFv6//YDfHihK2fGAA==",
+				"shasum": "72e58a118c56e6119597d31e52b8fd59c6ff2121",
+				"tarball": "https://registry.npmjs.org/@miniflare/durable-objects/-/durable-objects-2.6.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 72796,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDdu91QEDR812rJP9cZmkyyWEidTVDS35rhugGE6UtFcgIhAM7SaH87sVBwxD67qZmdtEZqAbgXt7ftVMsgPt/HdwXW"
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiyVYxACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpBixAAoB0QLWkhb7LF1mGkZgGagnpVZKBMIbfo9Y4qCtfLjtd62r9j\r\nb5W07rkGg5+UcTknvh0hc9nI0vxOqE98yKE+YnNKZjXx7uQnrRcDuwug/n5y\r\nwVh5ATJiMCcbdOEsTCAuhqNJAsj4KmU4rdUvDzbbyC9hBz1Pe874ghwi5cqE\r\nCoVtSqgysB2uA56LDXehryMbKETV1BsJlzuSxKMUvJ7dEAtw6RmOAPKt2CwE\r\ngA91bWWRQL0th6zbEGgFM4O0HblIGs2Rx4N2OAugd+qXF5uNcp4kXWo0T9Nz\r\ndC16fscMoCqFre+WXlZx81M1cc1i1DnTlvKvQqs6JYOyZQIxkBYQv2gkR3fp\r\nOA4ke1o5SK2aFCNWo4VdbCIfzLwFG2ANl2FnNY4+l2iRt5MJ0onppftsF6Di\r\nIX1yWGVuEmlYpa83fUWtKuBmF8BFxuhsd2UdzVTL9vnsSm00CAeXd4eiAs3f\r\nKi5p1bN6968GCMbVmQ7ADHf2KCaGs6QVqLv/0NnPzQdK8Rahx+5iwAELPwu7\r\nBljzWWbZdXJS00APVACmorgs7GNePED/VjJaAsBRf5F1CXyyi7O4TwwOmHBd\r\nksPxeBTEHjymyXhoFm2A8rLX2nlaD2ZcIa3MKwh0UfD5RE683zTrd+2u533k\r\nep2dduy2japnepqCVQtyvp15FWLTJmZLyeo=\r\n=Dekw\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=16.7"
+			}
 		}
 	},
-	"modified": "2022-06-29T15:47:17.749Z",
+	"modified": "2022-07-09T10:19:29.704Z",
 	"_cached": false,
-	"_contentLength": 24148
+	"_contentLength": 25928
 }

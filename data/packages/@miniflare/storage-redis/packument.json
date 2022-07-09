@@ -2,7 +2,7 @@
 	"name": "@miniflare/storage-redis",
 	"dist-tags": {
 		"next": "2.0.0-rc.5",
-		"latest": "2.5.1",
+		"latest": "2.6.0",
 		"d1": "2.6.0-d1.1"
 	},
 	"versions": {
@@ -475,9 +475,39 @@
 			"engines": {
 				"node": ">=16.7"
 			}
+		},
+		"2.6.0": {
+			"name": "@miniflare/storage-redis",
+			"version": "2.6.0",
+			"dependencies": {
+				"@miniflare/shared": "2.6.0",
+				"@miniflare/storage-memory": "2.6.0",
+				"ioredis": "^4.27.9"
+			},
+			"devDependencies": {
+				"@miniflare/shared-test": "2.6.0",
+				"@types/ioredis": "^4.27.2"
+			},
+			"dist": {
+				"integrity": "sha512-jMKp/sHRbYs0F04nHWZIhBwFEYm4WO+DThRwpk+JnFDP23yLE4i20SahfaFp6OjCQFPt6rFigoDEMjFV6BXISA==",
+				"shasum": "3ca2225fc038b7a93eb88d9226c3394fd2455017",
+				"tarball": "https://registry.npmjs.org/@miniflare/storage-redis/-/storage-redis-2.6.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 19167,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDHQMbhInIQNvmGn6s+XrTqFziGODaFHORxTtms+gSqwQIgQ1vibZy4kvP8gpqb2TDuor/zgKmG0wMjLQlgvzNASB4="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiyVZAACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoTSBAAk8GWqJ04ykuM62nL97S0koiQU31bvURya89jQ6kQD40qpIjZ\r\nyi8P1whqYzseQ8QZtGYuzz5mjhgEf3b6OAaxmSEQrsHcpYS7yaOF5dFEpbUO\r\n6FXFbwIVdCzQ2rudTVtekk7fD4TzFG5MoqjvlAlXr2RBUx/fC97uF+ru9752\r\nWMNIg/Mky+54ooIU3E3NtZwLHjmVflRt5TWM0xpoMkmpl4m7H/SPC2RxHzo1\r\nUzhDB/A5vRpZB2uNbDYynhsmK1awWPuVKLPzBsTiDwZoZ2li3MK1V5GVwuQF\r\nF9ZRPZOOJvBNhbkgYGLSdK/764pQUigBlwfeHsriEEenavlfxG6Xv9ymjcfd\r\nvsXmK8Dzr8BG1qfVcI2GqmjneU8bdtuNU60QEFvgG5TsdDOJA24TsbpAv/PV\r\na4S5e5mt2rFt26g3fTPNFjfCRb3QSrPI/leZtUOQ2lbM706pq0wRHFxTgaYL\r\nIz8rZKFAWID2SJUn9usHtbWvf8sk0F2MBJeaIikTQxkZ/evQSdCBUxX3ThJZ\r\niovbA7l4Oto4ORZSYC/zprVahaXYCOeDHeh8b+1TERGYGMDXwsytFKX7+5Rn\r\nR6O8WTmeriyks1MNfJCmhh4lFGZfCUMclevYDpc786uWd/l5hPN4DYv3TM6J\r\nFv2doD2UTAsar2d8wytUXmdx1pKJ5JiwgcM=\r\n=z+6Q\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=16.7"
+			}
 		}
 	},
-	"modified": "2022-06-29T15:47:31.964Z",
+	"modified": "2022-07-09T10:19:44.394Z",
 	"_cached": false,
-	"_contentLength": 23589
+	"_contentLength": 25309
 }

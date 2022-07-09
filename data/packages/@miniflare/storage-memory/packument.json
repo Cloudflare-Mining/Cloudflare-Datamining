@@ -2,7 +2,7 @@
 	"name": "@miniflare/storage-memory",
 	"dist-tags": {
 		"next": "2.0.0-rc.5",
-		"latest": "2.5.1",
+		"latest": "2.6.0",
 		"d1": "2.6.0-d1.1"
 	},
 	"versions": {
@@ -427,9 +427,36 @@
 			"engines": {
 				"node": ">=16.7"
 			}
+		},
+		"2.6.0": {
+			"name": "@miniflare/storage-memory",
+			"version": "2.6.0",
+			"dependencies": {
+				"@miniflare/shared": "2.6.0"
+			},
+			"devDependencies": {
+				"@miniflare/shared-test": "2.6.0"
+			},
+			"dist": {
+				"integrity": "sha512-0EwELTG2r6IC4AMlQv0YXRZdw9g/lCydceuGKeFkWAVb55pY+yMBxkJO9VV7QOrEx8MLsR8tsfl5SBK3AkfLtA==",
+				"shasum": "c9bf16719d4eb0dbe6dd6ea344a4d106b3fc384b",
+				"tarball": "https://registry.npmjs.org/@miniflare/storage-memory/-/storage-memory-2.6.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 16901,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQDsALNo8u0+Fyi9OO1e6MmuGI4snUTPgZ+m7BuITgO4NAIgJNkZ4+hEzPBQaG8X5kVvu4sp4nKjqN4NGezSBPx6AMU="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiyVY/ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmq1eBAAiIl70qs8ZW11gadECOlqSfTK0OjEKDNcFLvRX06z+QoVpqMv\r\nueUjC2pRP05FNbptL8HWMz/KBox54QkIYQU5CpN2yAXQTMagV/Fng84rNIkW\r\nY/OrEf4Zw0QvWAe0rcL5zqD09EdYSoBIm9m0IAhIOiyAKfrPxrZEivMKLGVj\r\nrtHm3+n6ecB6M+BqhyttXdjNMPsYenJqIXQKi1ZacYiXJaT3wMkSOFgszOIF\r\nl0P0jHlOKYBBS7/KLeDd9CB/juQNI6UyCBzk9xl2kKMxPrapGt9gudkmW1+9\r\nmv3T2V9WUYmR8YJd8BCFw9a3CuhvRjJMdBwZ/lT1N1Jb5n8Yrf8qWzO/RhQX\r\nvcw8z6xNmLu2YvU5DUXcufZIUX9/TGV8zfx26nLHKQvXTsHUQRhYzWHot1gm\r\ngSyvwmDE7iT3Ut183ahhTS5CZTLJbfdVR6dEj5PmjxIOnrU/Nf6cjCXBz9hY\r\nAYnPV+w/W52ElzJp7gyYKusgRCsI+Oeh8vMR+/RslObTd8CLC5cWe1vsEG2w\r\ni98N0QSqdVKd108bkqmlKCtorY1X1G/JdpLr23xtibl9sN9RSqMaQ5E591C0\r\nmcDqnpkU3LCuCY4vDUwMSX2r5Q7P8Bp4U+UyvrOBg7fYfeFyKOBAqJlMPsbG\r\nfyhD2OG9BFXJGhZ6wbdBXKD5i2MbANvTz1I=\r\n=5+vF\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=16.7"
+			}
 		}
 	},
-	"modified": "2022-06-29T15:47:30.948Z",
+	"modified": "2022-07-09T10:19:43.287Z",
 	"_cached": false,
-	"_contentLength": 22255
+	"_contentLength": 23895
 }

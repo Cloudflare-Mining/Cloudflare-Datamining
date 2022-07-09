@@ -2,7 +2,7 @@
 	"name": "@miniflare/scheduler",
 	"dist-tags": {
 		"next": "2.0.0-rc.5",
-		"latest": "2.5.1",
+		"latest": "2.6.0",
 		"d1": "2.6.0-d1.1"
 	},
 	"versions": {
@@ -462,9 +462,38 @@
 			"engines": {
 				"node": ">=16.7"
 			}
+		},
+		"2.6.0": {
+			"name": "@miniflare/scheduler",
+			"version": "2.6.0",
+			"dependencies": {
+				"@miniflare/core": "2.6.0",
+				"@miniflare/shared": "2.6.0",
+				"cron-schedule": "^3.0.4"
+			},
+			"devDependencies": {
+				"@miniflare/shared-test": "2.6.0"
+			},
+			"dist": {
+				"integrity": "sha512-BM+RDF+8twkTCOb7Oz0NIs5phzAVJ/Gx7tFZR23fGsZjWRnE3TBeqfzaNutU9pcoWDZtBQqEJMeTeb0KZTo75Q==",
+				"shasum": "2911f50b7005dc98eec1d3030367f8475f12469d",
+				"tarball": "https://registry.npmjs.org/@miniflare/scheduler/-/scheduler-2.6.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 11070,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCoHxpJ2se78uarBMm0MlXkBQGV3ekz7jCPy6CIMZCAewIhAIsLS72qDInnXLxo63x+DZyHGa3izOR9GfgPaR4IqqeL"
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiyVY6ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpOMBAAmE7dqfN/YDdv1YGS5CMMt7fq5WZBId+BFa/2wIuR4qPvOcCs\r\nHud3AMhoR6X2uE3d+AirFanYYRMpzFjQrJzSpg1l7QmbQICjvmnSp19rAn9X\r\nre8mPXNWyf6D3lCeFhzRo0jGAPTCZF6mEkVRqxz3+yffF7sGifE7glAcwLDx\r\nvAydCNP90rgJOvn8FNKlnQXr87gsZMavBbHJuyLp2Hal8vh8YbOQXjJf4tjv\r\nVNmihgeG+sdeh/l0WUE6wbaKkUjX4FvjIb+VTSscvIMFO9FBbJwzqhp0OwgS\r\nIwRcf3fUAed5IZw4W7R5SLVoUCZ0YGdIV+GNO9Z1CLifHdkyp4LtU+qu8m6a\r\nJoBRb7yhit7BVIS5w99u7JdVb5SnUxmfoc2nvSUvNvcLZ1Uk9VpxJf5jMtnQ\r\ngzdEFByUrG7wQkwy/eYKFiKwOwIAYYbyVVzzfVH9XUW0VImYJTRS6UTY7nwt\r\nZ805UkNlCj95bO+WAw8OUvQzkTDgYJbk0Akt/ntcpW6fFDam9hTpsdpGpE72\r\n8UXdqragV+mTRtOck155H28TeHq9NvbOtML4kHzbwGPyC3imydJ4Gdw6sGkM\r\n7GtdEhqXU+CUIpXf9BQuCqhrAXkRnjP8Fb8wY0zePrViG7TwbwJBnucYQBr0\r\nbGwnOxqaJ12FIs9DL/A0yqDVU9KytUFqGWA=\r\n=cGp8\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=16.7"
+			}
 		}
 	},
-	"modified": "2022-06-29T15:47:26.940Z",
+	"modified": "2022-07-09T10:19:38.233Z",
 	"_cached": false,
-	"_contentLength": 22947
+	"_contentLength": 24623
 }

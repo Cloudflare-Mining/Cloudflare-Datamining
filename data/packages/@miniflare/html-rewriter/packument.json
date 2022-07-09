@@ -2,7 +2,7 @@
 	"name": "@miniflare/html-rewriter",
 	"dist-tags": {
 		"next": "2.0.0-rc.5",
-		"latest": "2.5.1",
+		"latest": "2.6.0",
 		"d1": "2.6.0-d1.1"
 	},
 	"versions": {
@@ -475,9 +475,39 @@
 			"engines": {
 				"node": ">=16.7"
 			}
+		},
+		"2.6.0": {
+			"name": "@miniflare/html-rewriter",
+			"version": "2.6.0",
+			"dependencies": {
+				"@miniflare/core": "2.6.0",
+				"@miniflare/shared": "2.6.0",
+				"html-rewriter-wasm": "^0.4.1",
+				"undici": "5.5.1"
+			},
+			"devDependencies": {
+				"@miniflare/shared-test": "2.6.0"
+			},
+			"dist": {
+				"integrity": "sha512-+JqFlIDLzstb/Spj+j/kI6uHzolrqjsMks3Tf24Q4YFo9YYdZguqUFcDz2yr79ZTP/SKXaZH+AYqosnJps4dHQ==",
+				"shasum": "027039e53f0911ea12b6617c52354136effbc23c",
+				"tarball": "https://registry.npmjs.org/@miniflare/html-rewriter/-/html-rewriter-2.6.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 8319,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIHIi69TeJKh4BB4bhPciKwZUNrCS4cru7nQEvc+JP4MDAiAcMJ+ZPN7su76SwlzfhytAvFvvGkl6qth+wqBRDBDg+A=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiyVYyACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmr/KQ//eyfrwTbF58hWsWZAc8zFxdq2rj1/h/YX5dGGynUVQvRtKLLQ\r\nO9KNRgrBUH+W5j2tkDTuID8CpJFRmVFIBhLot3b0BZoB4hV6CQ3PalM7+G7t\r\niIf48ESqejnh6cKHgjT0BX7DKiyly5pIqrGWk6M+ladv2ZVDGuFks1aKxnuf\r\n7DxyPaYgg1I2xDBjKGzN7Bu12XC3oH9kVsaZJRkK6/0npO6/hQ9cO1rizyBd\r\nQiXsYd9Gi4IBSknwlYjqfQJsDI8IZsKK1o5V3dEJzMXu1A0hQphyWhCDPYv/\r\nle/mOtBRZruDmdg2ZklpuAQvyMq5Kxdw6DukZAt8veJ83/37S8tyI9ewPMzJ\r\n6CX4x2lN4qEL29VeunGuUPzEyjshSOqWvZKkj/wEBKNsyOVTttGNsLXomIwj\r\nFVavgbu6BRrbrcHdSml+fL7KIuboNZL3pNJDRkyYKFBq8Hyd1xxZiWHL5S7V\r\nf+rDTw+A+o9FHrquVCliF/5zHlsD9maL9Rtl1l56VmjgzR8KoGQeB4ueVF0w\r\n8DvHbRBe+bURYI2okr0wKvtc6rULHZbWDO6Vqp8XXOxwpvnVGlTrT0uImwjA\r\nyn8xvy0TuutrmIyzMKm1TwP+aKNjyXuuBJZ/f+Etv3O3uM5+Al0YiEwPoo/s\r\nXIlg78inME1jobVCv+sIehBnZLtzVeEG0UQ=\r\n=CtD9\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=16.7"
+			}
 		}
 	},
-	"modified": "2022-06-29T15:47:18.568Z",
+	"modified": "2022-07-09T10:19:30.885Z",
 	"_cached": false,
-	"_contentLength": 23430
+	"_contentLength": 25139
 }

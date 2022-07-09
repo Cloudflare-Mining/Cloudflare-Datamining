@@ -2,7 +2,7 @@
 	"name": "@miniflare/sites",
 	"dist-tags": {
 		"next": "2.0.0-rc.5",
-		"latest": "2.5.1",
+		"latest": "2.6.0",
 		"d1": "2.6.0-d1.1"
 	},
 	"versions": {
@@ -490,9 +490,40 @@
 			"engines": {
 				"node": ">=16.7"
 			}
+		},
+		"2.6.0": {
+			"name": "@miniflare/sites",
+			"version": "2.6.0",
+			"dependencies": {
+				"@miniflare/kv": "2.6.0",
+				"@miniflare/shared": "2.6.0",
+				"@miniflare/storage-file": "2.6.0"
+			},
+			"devDependencies": {
+				"@cloudflare/kv-asset-handler": "^0.1.3",
+				"@miniflare/core": "2.6.0",
+				"@miniflare/shared-test": "2.6.0"
+			},
+			"dist": {
+				"integrity": "sha512-XfWhpREC638LOGNmuHaPn1MAz1sh2mz+VdMsjRCzUo6NwPl4IcUhnorJR62Xr0qmI/RqVMTZbvzrChXio4Bi4A==",
+				"shasum": "3bb45e78a9e9a6e2bce6a14b7a07ab345ed580da",
+				"tarball": "https://registry.npmjs.org/@miniflare/sites/-/sites-2.6.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 11935,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIAv1NjkmC19oo65F+w7BAAq8vEZJ6NeZW0tBVgnieIqjAiEAnRBnA/lNocfjisDD+x2Otz2UwEUIK2BmXIhVedDeauM="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiyVY8ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmocQRAAhMf9JfRlktOwqjguPMC1RxRbrezn4qFHeUGjGS92FSv0ByJ4\r\nsEMl+6835XuYn9kz1Vf+5fIX3HogYcUZiAc00RcW/wwWqMjvnA5vS7YyBcfD\r\nIDFEASyafGZI+qZby8XUV6KpQKb7/3IHWFr4hcclKjmMd9YV604/6aZhlH6R\r\nej8SFZPiUxBKeCryD4XJMRssYnl5n5rI40Bf8W/YOVeyHUDIc8D3JAtJJ343\r\nyXALbeEk5k/efpLwJ54jCFc+WW7yWHAW2/u4br0f26GMsOiY8z8c03rKNdGL\r\njcSxklAWMI6XZ0pLXD5xTzc002txcDm7fP2IAYTsH9iVzcgsUlcftQNdF0xb\r\ndMg0ZUJvNSz65pd5WgaHnx+OonrGeQFNI8l9h3KUohZtdNIbuHrTJ1xjjdxf\r\ncWp2hYCHuSqnBHGUtgYDu93YJVEDncwwCvVq5w2c13zOaJxgrmuRIqtTBIlK\r\nQwz3zcMLnAYWkbred8bkHStmDBARfkQuTvu9rmC7MDIm427rxsox3BFgjht6\r\n+xvWRgVEiNuIB6DHpf1MX5EWdlGuAsRyMjbUlqgOKrTEGrteoshfU/hg8gh3\r\nmi10+F4Qz/rINOQcDSGZqVj497EZMJW7iywOR7sLhU+EE6bKaSCFVgfTBY3A\r\nF25ycwz7CNJw8nJ6afOcUshMWoc9My8NvX8=\r\n=jK41\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=16.7"
+			}
 		}
 	},
-	"modified": "2022-06-29T15:47:28.999Z",
+	"modified": "2022-07-09T10:19:40.276Z",
 	"_cached": false,
-	"_contentLength": 23038
+	"_contentLength": 24775
 }

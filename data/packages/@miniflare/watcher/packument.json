@@ -2,7 +2,7 @@
 	"name": "@miniflare/watcher",
 	"dist-tags": {
 		"next": "2.0.0-rc.5",
-		"latest": "2.5.1",
+		"latest": "2.6.0",
 		"d1": "2.6.0-d1.1"
 	},
 	"versions": {
@@ -427,9 +427,36 @@
 			"engines": {
 				"node": ">=16.7"
 			}
+		},
+		"2.6.0": {
+			"name": "@miniflare/watcher",
+			"version": "2.6.0",
+			"dependencies": {
+				"@miniflare/shared": "2.6.0"
+			},
+			"devDependencies": {
+				"@miniflare/shared-test": "2.6.0"
+			},
+			"dist": {
+				"integrity": "sha512-mttfhNDmEIFo2rWF73JeWj1TLN+3cQC1TFhbtLApz9bXilLywArXMYqDJGA8PUnJCFM/8k2FDjaFNiPy6ggIJw==",
+				"shasum": "afa60800f14b7232355e0bde98952951d03e3a9d",
+				"tarball": "https://registry.npmjs.org/@miniflare/watcher/-/watcher-2.6.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 15413,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCID86Vi4zikTgltXaXLSoBmhpXMqOaWw3hKRLMjpu2OrFAiBe3kaMJIMiv/XZc9x+K6uLBeqowoV3PKBr5Qv4wnq2nA=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiyVZBACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrxDBAAmXPF8ctZV3ZSedylDhzVzA3CxIhnbY8N8m+ZeQbXMpFQFsub\r\nHcqxmoStalYVYhNUQ95V7eJBhzEQnQRQQKazfAItyWzN/SPeSHPv8Bt0nEmk\r\nkmU9H/sxJOcQFAB8RDyyGlypWCU1CumDwzbuoDIIFA7YkR76Egy3KrsMD3qj\r\nMzvxzuyOTXOPFv9Nd01od1E5JJZCzMIxU9yvF4fUpz08ptnVm7xbgCz7kinj\r\nuk/EaRaR3d/6Nxom11LFq2b+sEUTKGcNUIxa9u9wBiZ1J+cxri6Mo8Aahd+E\r\nxqGpSUqi6IUK1YxCF55lGn9T4mi2EpDsDH6gfQm5vhgkI6543wR/S8HP0EfV\r\nS3n9GEeuSeAWjNcUv5jI5l0yU6TRtNwt1nl2t1HYHer5BaeVBxMNLQ0AT38Q\r\nodIKzC0IWlF3PpP66DN8tm9b0xA+ZWpW37qnnsGXc6oxszZcuzTH/Voy5tHt\r\nOP/nQTVMqTSqpAF+u2PCv/1bEabfzzM2yClVeUftfN9yllJUkyFfSniPUPIf\r\nBSPiIQ9qKBxm4PGlG6iTeLSdbILv6YgzNaaaWsEh6xXsXs6glnGGxY8iZR1G\r\nCtw/9bKuycMXxFnfTe5Zn0re1x/0vON7Sch0boJaf/ScjOsInRA2TeuQOEf/\r\nqSFjPmtUW934PtY2BQ25JfBKGzbvRZIORcU=\r\n=/pKF\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=16.7"
+			}
 		}
 	},
-	"modified": "2022-06-29T15:47:32.956Z",
+	"modified": "2022-07-09T10:19:45.383Z",
 	"_cached": false,
-	"_contentLength": 21916
+	"_contentLength": 23535
 }

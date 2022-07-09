@@ -2,7 +2,7 @@
 	"name": "@miniflare/web-sockets",
 	"dist-tags": {
 		"next": "2.0.0-rc.5",
-		"latest": "2.5.1",
+		"latest": "2.6.0",
 		"d1": "2.6.0-d1.1"
 	},
 	"versions": {
@@ -491,9 +491,40 @@
 			"engines": {
 				"node": ">=16.7"
 			}
+		},
+		"2.6.0": {
+			"name": "@miniflare/web-sockets",
+			"version": "2.6.0",
+			"dependencies": {
+				"@miniflare/core": "2.6.0",
+				"@miniflare/shared": "2.6.0",
+				"ws": "^8.2.2",
+				"undici": "5.5.1"
+			},
+			"devDependencies": {
+				"@miniflare/shared-test": "2.6.0",
+				"@types/ws": "^8.2.0"
+			},
+			"dist": {
+				"integrity": "sha512-ePbcuP9LrStVTllZzqx2oNVoOpceyU3jJF3nGDMNW5+bqB+BdeTggSF8rhER7omcSCswCMY2Do6VelIcAXHkXA==",
+				"shasum": "44c8bf58854ed45c05435119edd45311643ad3fa",
+				"tarball": "https://registry.npmjs.org/@miniflare/web-sockets/-/web-sockets-2.6.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 20122,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQDIQhMR6R+qG77HzZ43Aq/lq/ryO+7AO4JkXBsFm2peWwIhAJgFSUeCB8dNXTsco0wLaRD/LS0cRu1BHm9nUuGp+IId"
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiyVZCACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmonERAAlwrpZbg3SmBpTrczOWL/g0J7mgwju9mhY1dRV7f1SAxfAme1\r\nhrwXhPe9+IrahdIZN6yu68d13Jcy3gUG0rzNFv8hp3lu9w1/d+XG7BAircMJ\r\nr5kICHLaFdxpaDBgORBY/pOruQcOoUZycqFaYd+KRNl1kD0n6umRomJZUwBA\r\nuN8JSBWnN67OXHz476tHeSbbieNIo0eALkrjpIc9ogGgzHnKm7PWnXejRuDb\r\nK1keQ2RwZPaTuyEix8oYgqvynEyT6+cF7KUT+dK3p6xC8refnqsoLCqJVnyc\r\ngA1vvY1kUqDskqFKw8sfO3i3Ygbg7rSacn98HzKzP8DHw4Uy7IY45bppiXlQ\r\nCdZQQDmCsfT5yn4ftzXkoQlByW6NUsyc8u9ytehQRUKzEfMFvaAed7MKJol8\r\n7o/3zkRYjeZNGo2Y/SLNAenzt2KeRN9MYZlJf+Z2Bx7PN8BtZUI1k4CO5Zdn\r\nPWurHANbrNGxgoSchScSDtrKkaU8+pGpccBwRvF0ewwqQ1ev70iv3Y9wPpME\r\nngj+xMvz4Q3UwMQd2EPyP/4sY0P7SeNEvLZFg7YlVhXp8fkO4XKXHkJFn/R7\r\n9XRWu3xpHgTnsumeGHV/k0oda3LIVpkgQNyunDiOaV9pqiUajl0mD1m0xInG\r\npy22AVETXIT4FpFoWnbaASJWaOQNewjArMA=\r\n=92WB\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=16.7"
+			}
 		}
 	},
-	"modified": "2022-06-29T15:47:33.856Z",
+	"modified": "2022-07-09T10:19:46.488Z",
 	"_cached": false,
-	"_contentLength": 23428
+	"_contentLength": 25137
 }

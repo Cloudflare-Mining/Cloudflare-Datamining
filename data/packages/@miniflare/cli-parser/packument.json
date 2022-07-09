@@ -2,7 +2,7 @@
 	"name": "@miniflare/cli-parser",
 	"dist-tags": {
 		"next": "2.0.0-rc.5",
-		"latest": "2.5.1",
+		"latest": "2.6.0",
 		"d1": "2.6.0-d1.1"
 	},
 	"versions": {
@@ -491,9 +491,40 @@
 			"engines": {
 				"node": ">=16.7"
 			}
+		},
+		"2.6.0": {
+			"name": "@miniflare/cli-parser",
+			"version": "2.6.0",
+			"dependencies": {
+				"@miniflare/shared": "2.6.0",
+				"kleur": "^4.1.4"
+			},
+			"devDependencies": {
+				"@miniflare/core": "2.6.0",
+				"@miniflare/shared-test": "2.6.0",
+				"@types/mri": "^1.1.1",
+				"mri": "^1.1.6"
+			},
+			"dist": {
+				"integrity": "sha512-dJDoIPAUqWhzvBHHyqyhobdzDedBYRWZ4yItBi9m4MTU/EneLJ5jryB340SwUnmtBMZxUh/LWdAuUEkKpdVNyA==",
+				"shasum": "8a628c5f8d9ff63f9e77463064d3b337f62af162",
+				"tarball": "https://registry.npmjs.org/@miniflare/cli-parser/-/cli-parser-2.6.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 23457,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIDQuKE/QkgV2iVegMOVHAO4nckk96yT0P0oVA/deTHtVAiBfomxBAC6h/95X6Vc89hZIg5IECOEc+PfB1J4vpc7cGQ=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJiyVYvACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmrh8g/9FAp+e5FzwzF0cIaK7AIEVTEA/N/7SOTsZLbjZ+8Xbn5Siwe/\r\nWDZ1gWk4PvZWWgv9tYgsXQzejpPordqo3nv178gQej5uyyq7ssdBTKrFCSYf\r\nqouBmze1jjMNBBjseViEfR4u/8RtrwQZuM/mCaGRubBOeBdUiaRH2efwb51q\r\nyarmmfh2e/QGPlurvCxTrfqnsdvEQ6BOn7MnxotZuK3tsLW1d5qi9TgATuAt\r\nKZbMRHSDRcVZLNhLOwFhJ9GAg6ZDkADAMs4xmUBC7i6E30OCiJwgjmn9q5ic\r\nVq3mVX0NfLeG5AU0dm06E/r+mB6B9JgGEy3FXBUIJ/k8TcN2JstleWtXgPKs\r\nXzg+6nKDI6UsbRFr8uQ8HDuagcqbHX08hrbUadxj4lSuGDt4Dt/5wgED/EBk\r\nrLOPiEPfLvqFeIHAJsacXN/kiyYeIBVSLnzh2Q2f8cNWKYoBJc9LbxfP2A0l\r\nb2ql8ukSDVU9Ni0DzrkcQqGZ+y1vYXgpjj9B0Jd+XhQ3DZZReENFuPi+qbQv\r\n4iFPMRntrl/q+mcoqNbnYo2ASIkG/XT1MpFAwxYyFAhNuiQm1FOUzKnSdxzG\r\nhpgYbASje4rI9IFvaj2fuZ1lndsz+UdlPBX3mxF0AxzbPlrxAf/2la383Meh\r\nvvqYLNfMvB3y9cZrOxVPjA3sVSjn8PmFRpY=\r\n=PT6I\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=16.7"
+			}
 		}
 	},
-	"modified": "2022-06-29T15:47:14.639Z",
+	"modified": "2022-07-09T10:19:27.335Z",
 	"_cached": false,
-	"_contentLength": 23394
+	"_contentLength": 25102
 }
