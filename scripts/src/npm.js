@@ -5,6 +5,7 @@ import fs from 'fs-extra';
 import dateFormat from 'dateformat';
 import filenamify from 'filenamify';
 import pacote from 'pacote';
+import getUrls from 'get-urls';
 
 import {tryAndPush} from './utils.js';
 
@@ -46,6 +47,7 @@ async function run(){
 
 	const getDataAndWriteFiles = [];
 	for(const packageInfo of rawData){
+
 		let name = filenamify(packageInfo.name, {replacement: '__'});
 		if(packageInfo.scope){
 			const nameWithoutScope = filenamify(packageInfo.name.replace(`@${packageInfo.scope}/`, ''));
@@ -56,6 +58,10 @@ async function run(){
 			}
 		}
 		getDataAndWriteFiles.push(async () => {
+			console.log('Processing', name);
+			const extractDir = path.resolve(`../data/packages-extracted/${name}`);
+			await fs.ensureDir(extractDir);
+			await pacote.extract(packageInfo.name, extractDir);
 			const dir = `../data/packages/${name}`;
 			await fs.ensureDir(path.resolve(dir));
 			fs.writeFile(
@@ -76,6 +82,57 @@ async function run(){
 		});
 	}
 	await Promise.all(getDataAndWriteFiles.map(fn => fn()));
+
+	// scan all packages for links
+	async function* getFiles(dir){
+		const dirents = await fs.readdir(dir, {withFileTypes: true});
+		for(const dirent of dirents){
+			const res = path.resolve(dir, dirent.name);
+			if(dirent.isDirectory()){
+				yield* getFiles(res);
+			}else{
+				yield res;
+			}
+		}
+	}
+	const ignoreURLs = [
+		'registry.npmjs.org',
+		'registry.yarnpkg.com',
+		'stash.cfops.it:7999/fe/stratus/compare',
+		'/commits/',
+		'/commit/',
+		'/compare/@cloudflare/',
+		'/compare/cf-',
+	];
+	const links = new Set();
+	for await(const file of getFiles('../data/packages-extracted')){
+		const newLinks = [];
+		const data = await fs.readFile(file, 'utf8');
+		const urls = getUrls(data, {
+			requireSchemeOrWww: true,
+		});
+		if(urls){
+			newLinks.push(...urls);
+		}
+		for(const match of data.matchAll(/["'](https?:\/\/[^"']*)["']/g)){
+			if(match && match[1] && !match[1].includes('`')){
+				newLinks.push(match[1]);
+			}
+		}
+		for(const link of newLinks){
+			try{
+				const url = new URL(link);
+				url.pathname = url.pathname.replace(/\/\/+/g, '/');
+				if(!ignoreURLs.some(str => url.href.includes(str))){
+					links.add(url.href);
+				}
+			}catch{
+				//console.warn('Found a bad link', match[1]);
+			}
+		}
+	}
+	const linksFile = path.resolve(`../data/packages/links.json`);
+	await fs.writeFile(linksFile, JSON.stringify([...links].sort(), null, '\t'));
 
 	console.log('Pushing!');
 	const prefix = dateFormat(new Date(), 'd mmmm yyyy');
