@@ -7415,7 +7415,7 @@
 												},
 												{
 													"title": "WebSockets",
-													"description": "WebSockets are open connections sustained between the client and the origin server. Inside a WebSockets connection, the client and the origin can pass data back and forth without having to reestablish sessions. This makes exchanging data within a WebSockets connection fast. WebSockets are often used for real-time applications such as live chat and gaming.  (https://support.cloudflare.com/hc/en-us/articles/200169466-Can-I-use-Cloudflare-with-WebSockets-)",
+													"description": "WebSockets are open connections sustained between the client and the origin server. Inside a WebSockets connection, the client and the origin can pass data back and forth without having to reestablish sessions. This makes exchanging data within a WebSockets connection fast. WebSockets are often used for real-time applications such as live chat and gaming. For more information refer to [Can I use Cloudflare with Websockets](https://support.cloudflare.com/hc/en-us/articles/200169466-Can-I-use-Cloudflare-with-WebSockets-)",
 													"allOf": [
 														{
 															"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1settings/patch/requestBody/content/application~1json/schema/properties/items/items/oneOf/0/allOf/0"
@@ -7427,7 +7427,7 @@
 																		"websockets"
 																	],
 																	"example": "websockets",
-																	"description": "ID of the zone setting"
+																	"description": "ID of the zone setting."
 																},
 																"value": {
 																	"type": "string",
@@ -7435,7 +7435,7 @@
 																		false,
 																		true
 																	],
-																	"description": "Value of the zone setting",
+																	"description": "Value of the zone setting.",
 																	"default": false
 																}
 															}
@@ -7472,8 +7472,8 @@
 													]
 												},
 												{
-													"title": "TLS1.2 Only",
-													"description": "Only allow TLS1.2",
+													"title": "TLS1.2 only",
+													"description": "Only allows TLS1.2.",
 													"allOf": [
 														{
 															"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1settings/patch/requestBody/content/application~1json/schema/properties/items/items/oneOf/0/allOf/0"
@@ -7485,7 +7485,7 @@
 																		"tls_1_2_only"
 																	],
 																	"example": "tls_1_2_only",
-																	"description": "Zone setting identifier"
+																	"description": "Zone setting identifier."
 																},
 																"value": {
 																	"type": "string",
@@ -7493,7 +7493,7 @@
 																		false,
 																		true
 																	],
-																	"description": "Value of the zone setting",
+																	"description": "Value of the zone setting.",
 																	"default": false
 																}
 															}
@@ -8135,8 +8135,8 @@
 													]
 												},
 												{
-													"title": "Zone Minimum TLS Version Value",
-													"description": "Only accept HTTPS requests that use at least the TLS protocol version specified. For example, if TLS 1.1 is selected, TLS 1.0 connections will be rejected, while 1.1, 1.2, and 1.3 (if enabled) will be permitted.",
+													"title": "Zone Minimum TLS Version value",
+													"description": "Only accepts HTTPS requests that use at least the TLS protocol version specified. For example, if TLS 1.1 is selected, TLS 1.0 connections will be rejected, while 1.1, 1.2, and 1.3 (if enabled) will be permitted.",
 													"default": "1.0",
 													"allOf": [
 														{
@@ -8149,7 +8149,7 @@
 																		"min_tls_version"
 																	],
 																	"example": "min_tls_version",
-																	"description": "ID of the zone setting"
+																	"description": "ID of the zone setting."
 																},
 																"value": {
 																	"type": "string",
@@ -8159,7 +8159,7 @@
 																		"1.2",
 																		"1.3"
 																	],
-																	"description": "Value of the zone setting",
+																	"description": "Value of the zone setting.",
 																	"default": "1.0"
 																}
 															}
@@ -8167,7 +8167,7 @@
 													]
 												},
 												{
-													"title": "Zone Ciphers allowed for TLS termination",
+													"title": "Zone ciphers allowed for TLS termination",
 													"description": "An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.",
 													"default": [],
 													"allOf": [
@@ -8181,11 +8181,11 @@
 																		"ciphers"
 																	],
 																	"example": "ciphers",
-																	"description": "ID of the zone setting"
+																	"description": "ID of the zone setting."
 																},
 																"value": {
 																	"type": "array",
-																	"description": "Value of the zone setting",
+																	"description": "Value of the zone setting.",
 																	"default": [],
 																	"uniqueItems": true,
 																	"items": {
@@ -8201,8 +8201,8 @@
 													]
 												},
 												{
-													"title": "Zone Enable TLS 1.3 Value",
-													"description": "Enable Crypto TLS 1.3 feature for this zone.",
+													"title": "Enable TLS 1.3 value for a zone",
+													"description": "Enables Crypto TLS 1.3 feature for a zone.",
 													"default": false,
 													"allOf": [
 														{
@@ -8215,7 +8215,7 @@
 																		"tls_1_3"
 																	],
 																	"example": "tls_1_3",
-																	"description": "ID of the zone setting"
+																	"description": "ID of the zone setting."
 																},
 																"value": {
 																	"type": "string",
@@ -8224,7 +8224,7 @@
 																		false,
 																		"zrt"
 																	],
-																	"description": "Value of the zone setting\nNotes: Default value depends on the zone's plan level.",
+																	"description": "Value of the zone setting.\nNotes: Default value depends on the zone's plan level.",
 																	"default": false
 																}
 															}
@@ -8232,8 +8232,8 @@
 													]
 												},
 												{
-													"title": "Zone Enable Opportunistic Encryption",
-													"description": "Enable the Opportunistic Encryption feature for this zone.",
+													"title": "Enable Opportunistic Encryption for a zone",
+													"description": "Enables the Opportunistic Encryption feature for a zone.",
 													"allOf": [
 														{
 															"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1settings/patch/requestBody/content/application~1json/schema/properties/items/items/oneOf/0/allOf/0"
@@ -8245,7 +8245,7 @@
 																		"opportunistic_encryption"
 																	],
 																	"example": "opportunistic_encryption",
-																	"description": "ID of the zone setting"
+																	"description": "ID of the zone setting."
 																},
 																"value": {
 																	"type": "string",
@@ -8253,7 +8253,7 @@
 																		true,
 																		false
 																	],
-																	"description": "Value of the zone setting\nNotes: Default value depends on the zone's plan level.",
+																	"description": "Value of the zone setting.\nNotes: Default value depends on the zone's plan level.",
 																	"default": true
 																}
 															}
@@ -8304,7 +8304,7 @@
 																		"http2"
 																	],
 																	"example": "http2",
-																	"description": "ID of the zone setting"
+																	"description": "ID of the zone setting."
 																},
 																"value": {
 																	"type": "string",
@@ -8312,7 +8312,7 @@
 																		true,
 																		false
 																	],
-																	"description": "Value of the HTTP2 setting",
+																	"description": "Value of the HTTP2 setting.",
 																	"default": false
 																}
 															}
@@ -8333,7 +8333,7 @@
 																		"http3"
 																	],
 																	"example": "http3",
-																	"description": "ID of the zone setting"
+																	"description": "ID of the zone setting."
 																},
 																"value": {
 																	"type": "string",
@@ -8341,7 +8341,7 @@
 																		true,
 																		false
 																	],
-																	"description": "Value of the HTTP3 setting",
+																	"description": "Value of the HTTP3 setting.",
 																	"default": false
 																}
 															}
@@ -8390,7 +8390,7 @@
 																		"0rtt"
 																	],
 																	"example": "0rtt",
-																	"description": "ID of the zone setting"
+																	"description": "ID of the zone setting."
 																},
 																"value": {
 																	"type": "string",
@@ -8398,7 +8398,7 @@
 																		true,
 																		false
 																	],
-																	"description": "Value of the 0-RTT setting",
+																	"description": "Value of the 0-RTT setting.",
 																	"default": false
 																}
 															}
@@ -12925,7 +12925,7 @@
 		"/zones/{zone_identifier}/settings/opportunistic_encryption": {
 			"get": {
 				"summary": "Get Opportunistic Encryption setting",
-				"description": "Enable the Opportunistic Encryption feature for this zone.",
+				"description": "Gets Opportunistic Encryption setting.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -12960,8 +12960,8 @@
 										{
 											"properties": {
 												"result": {
-													"title": "Zone Enable Opportunistic Encryption",
-													"description": "Enable the Opportunistic Encryption feature for this zone.",
+													"title": "Enable Opportunistic Encryption for a zone",
+													"description": "Enables the Opportunistic Encryption feature for a zone.",
 													"allOf": [
 														{
 															"properties": {
@@ -13020,7 +13020,7 @@
 																		"opportunistic_encryption"
 																	],
 																	"example": "opportunistic_encryption",
-																	"description": "ID of the zone setting"
+																	"description": "ID of the zone setting."
 																},
 																"value": {
 																	"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1settings~1opportunistic_encryption/patch/requestBody/content/application~1json/schema/properties/value"
@@ -13057,7 +13057,7 @@
 			},
 			"patch": {
 				"summary": "Change Opportunistic Encryption setting",
-				"description": "Enable the Opportunistic Encryption feature for this zone.",
+				"description": "Changes Opportunistic Encryption setting.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -13123,7 +13123,7 @@
 											true,
 											false
 										],
-										"description": "Value of the zone setting\nNotes: Default value depends on the zone's plan level.",
+										"description": "Value of the zone setting.\nNotes: Default value depends on the zone's plan level.",
 										"default": true
 									}
 								}
@@ -15879,7 +15879,7 @@
 		"/zones/{zone_identifier}/settings/min_tls_version": {
 			"get": {
 				"summary": "Get Minimum TLS Version setting",
-				"description": "Only accept HTTPS requests that use at least the TLS protocol version specified. For example, if TLS 1.1 is selected, TLS 1.0 connections will be rejected, while 1.1, 1.2, and 1.3 (if enabled) will be permitted.",
+				"description": "Gets Minimum TLS Version setting.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -15914,8 +15914,8 @@
 										{
 											"properties": {
 												"result": {
-													"title": "Zone Minimum TLS Version Value",
-													"description": "Only accept HTTPS requests that use at least the TLS protocol version specified. For example, if TLS 1.1 is selected, TLS 1.0 connections will be rejected, while 1.1, 1.2, and 1.3 (if enabled) will be permitted.",
+													"title": "Zone Minimum TLS Version value",
+													"description": "Only accepts HTTPS requests that use at least the TLS protocol version specified. For example, if TLS 1.1 is selected, TLS 1.0 connections will be rejected, while 1.1, 1.2, and 1.3 (if enabled) will be permitted.",
 													"default": "1.0",
 													"allOf": [
 														{
@@ -15975,7 +15975,7 @@
 																		"min_tls_version"
 																	],
 																	"example": "min_tls_version",
-																	"description": "ID of the zone setting"
+																	"description": "ID of the zone setting."
 																},
 																"value": {
 																	"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1settings~1min_tls_version/patch/requestBody/content/application~1json/schema/properties/value"
@@ -16012,7 +16012,7 @@
 			},
 			"patch": {
 				"summary": "Change Minimum TLS Version setting",
-				"description": "Only accept HTTPS requests that use at least the TLS protocol version specified. For example, if TLS 1.1 is selected, TLS 1.0 connections will be rejected, while 1.1, 1.2, and 1.3 (if enabled) will be permitted.",
+				"description": "Changes Minimum TLS Version setting.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -16080,7 +16080,7 @@
 											"1.2",
 											"1.3"
 										],
-										"description": "Value of the zone setting",
+										"description": "Value of the zone setting.",
 										"default": "1.0"
 									}
 								}
@@ -16092,8 +16092,8 @@
 		},
 		"/zones/{zone_identifier}/settings/ciphers": {
 			"get": {
-				"summary": "Get Ciphers setting",
-				"description": "An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.",
+				"summary": "Get ciphers setting",
+				"description": "Gets ciphers setting.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -16106,7 +16106,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get Ciphers setting response",
+						"description": "Get ciphers setting response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -16128,7 +16128,7 @@
 										{
 											"properties": {
 												"result": {
-													"title": "Zone Ciphers allowed for TLS termination",
+													"title": "Zone ciphers allowed for TLS termination",
 													"description": "An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.",
 													"default": [],
 													"allOf": [
@@ -16189,7 +16189,7 @@
 																		"ciphers"
 																	],
 																	"example": "ciphers",
-																	"description": "ID of the zone setting"
+																	"description": "ID of the zone setting."
 																},
 																"value": {
 																	"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1settings~1ciphers/patch/requestBody/content/application~1json/schema/properties/value"
@@ -16225,8 +16225,8 @@
 				}
 			},
 			"patch": {
-				"summary": "Change Ciphers setting",
-				"description": "An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.",
+				"summary": "Change ciphers setting",
+				"description": "Changes ciphers setting.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -16239,7 +16239,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Change Ciphers setting response",
+						"description": "Change ciphers setting response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -16288,7 +16288,7 @@
 								"properties": {
 									"value": {
 										"type": "array",
-										"description": "Value of the zone setting",
+										"description": "Value of the zone setting.",
 										"default": [],
 										"uniqueItems": true,
 										"items": {
@@ -16308,8 +16308,8 @@
 		},
 		"/zones/{zone_identifier}/settings/tls_1_3": {
 			"get": {
-				"summary": "Get Zone Enable TLS 1.3 setting",
-				"description": "Enable Crypto TLS 1.3 feature for this zone.",
+				"summary": "Get TLS 1.3 setting enabled for a zone",
+				"description": "Gets TLS 1.3 setting enabled for a zone.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -16322,7 +16322,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get Zone Enable TLS 1.3 setting response",
+						"description": "Get TLS 1.3 setting enabled for a zone response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -16344,8 +16344,8 @@
 										{
 											"properties": {
 												"result": {
-													"title": "Zone Enable TLS 1.3 Value",
-													"description": "Enable Crypto TLS 1.3 feature for this zone.",
+													"title": "Enable TLS 1.3 value for a zone",
+													"description": "Enables Crypto TLS 1.3 feature for a zone.",
 													"default": false,
 													"allOf": [
 														{
@@ -16405,7 +16405,7 @@
 																		"tls_1_3"
 																	],
 																	"example": "tls_1_3",
-																	"description": "ID of the zone setting"
+																	"description": "ID of the zone setting."
 																},
 																"value": {
 																	"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1settings~1tls_1_3/patch/requestBody/content/application~1json/schema/properties/value"
@@ -16442,7 +16442,7 @@
 			},
 			"patch": {
 				"summary": "Change TLS 1.3 setting",
-				"description": "Enable Crypto TLS 1.3 feature for this zone.",
+				"description": "Changes TLS 1.3 setting.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -16509,7 +16509,7 @@
 											false,
 											"zrt"
 										],
-										"description": "Value of the zone setting\nNotes: Default value depends on the zone's plan level.",
+										"description": "Value of the zone setting.\nNotes: Default value depends on the zone's plan level.",
 										"default": false
 									}
 								}
@@ -17363,7 +17363,7 @@
 		"/zones/{zone_identifier}/settings/http2": {
 			"get": {
 				"summary": "Get HTTP2 setting",
-				"description": "Value of the HTTP2 setting",
+				"description": "Value of the HTTP2 setting.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -17458,7 +17458,7 @@
 																		"http2"
 																	],
 																	"example": "http2",
-																	"description": "ID of the zone setting"
+																	"description": "ID of the zone setting."
 																},
 																"value": {
 																	"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1settings~1http2/patch/requestBody/content/application~1json/schema/properties/value"
@@ -17495,7 +17495,7 @@
 			},
 			"patch": {
 				"summary": "Change HTTP2 setting",
-				"description": "Value of the HTTP2 setting",
+				"description": "Value of the HTTP2 setting.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -17561,7 +17561,7 @@
 											true,
 											false
 										],
-										"description": "Value of the HTTP2 setting",
+										"description": "Value of the HTTP2 setting.",
 										"default": false
 									}
 								}
@@ -17574,7 +17574,7 @@
 		"/zones/{zone_identifier}/settings/http3": {
 			"get": {
 				"summary": "Get HTTP3 setting",
-				"description": "Value of the HTTP3 setting",
+				"description": "Value of the HTTP3 setting.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -17669,7 +17669,7 @@
 																		"http3"
 																	],
 																	"example": "http3",
-																	"description": "ID of the zone setting"
+																	"description": "ID of the zone setting."
 																},
 																"value": {
 																	"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1settings~1http3/patch/requestBody/content/application~1json/schema/properties/value"
@@ -17706,7 +17706,7 @@
 			},
 			"patch": {
 				"summary": "Change HTTP3 setting",
-				"description": "Value of the HTTP3 setting",
+				"description": "Value of the HTTP3 setting.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -17772,7 +17772,7 @@
 											true,
 											false
 										],
-										"description": "Value of the HTTP3 setting",
+										"description": "Value of the HTTP3 setting.",
 										"default": false
 									}
 								}
@@ -17964,7 +17964,7 @@
 		"/zones/{zone_identifier}/settings/0rtt": {
 			"get": {
 				"summary": "Get 0-RTT session resumption setting",
-				"description": "Value of the 0-RTT setting",
+				"description": "Gets 0-RTT session resumption setting.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -18059,7 +18059,7 @@
 																		"0rtt"
 																	],
 																	"example": "0rtt",
-																	"description": "ID of the zone setting"
+																	"description": "ID of the zone setting."
 																},
 																"value": {
 																	"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1settings~10rtt/patch/requestBody/content/application~1json/schema/properties/value"
@@ -18096,7 +18096,7 @@
 			},
 			"patch": {
 				"summary": "Change 0-RTT session resumption setting",
-				"description": "Value of the 0-RTT setting",
+				"description": "Changes the 0-RTT session resumption setting.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -18162,7 +18162,7 @@
 											true,
 											false
 										],
-										"description": "Value of the 0-RTT setting",
+										"description": "Value of the 0-RTT setting.",
 										"default": false
 									}
 								}
@@ -18387,7 +18387,7 @@
 		"/zones/{zone_identifier}/settings/websockets": {
 			"get": {
 				"summary": "Get WebSockets setting",
-				"description": "WebSockets are open connections sustained between the client and the origin server. Inside a WebSockets connection, the client and the origin can pass data back and forth without having to reestablish sessions. This makes exchanging data within a WebSockets connection fast. WebSockets are often used for real-time applications such as live chat and gaming.  (https://support.cloudflare.com/hc/en-us/articles/200169466-Can-I-use-Cloudflare-with-WebSockets-)",
+				"description": "Gets Websockets setting. For more information about Websockets, please refer to [Using Cloudflare with WebSockets](https://support.cloudflare.com/hc/en-us/articles/200169466-Using-Cloudflare-with-WebSockets).",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -18423,7 +18423,7 @@
 											"properties": {
 												"result": {
 													"title": "WebSockets",
-													"description": "WebSockets are open connections sustained between the client and the origin server. Inside a WebSockets connection, the client and the origin can pass data back and forth without having to reestablish sessions. This makes exchanging data within a WebSockets connection fast. WebSockets are often used for real-time applications such as live chat and gaming.  (https://support.cloudflare.com/hc/en-us/articles/200169466-Can-I-use-Cloudflare-with-WebSockets-)",
+													"description": "WebSockets are open connections sustained between the client and the origin server. Inside a WebSockets connection, the client and the origin can pass data back and forth without having to reestablish sessions. This makes exchanging data within a WebSockets connection fast. WebSockets are often used for real-time applications such as live chat and gaming. For more information refer to [Can I use Cloudflare with Websockets](https://support.cloudflare.com/hc/en-us/articles/200169466-Can-I-use-Cloudflare-with-WebSockets-)",
 													"allOf": [
 														{
 															"properties": {
@@ -18482,7 +18482,7 @@
 																		"websockets"
 																	],
 																	"example": "websockets",
-																	"description": "ID of the zone setting"
+																	"description": "ID of the zone setting."
 																},
 																"value": {
 																	"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1settings~1websockets/patch/requestBody/content/application~1json/schema/properties/value"
@@ -18519,7 +18519,7 @@
 			},
 			"patch": {
 				"summary": "Change WebSockets setting",
-				"description": "WebSockets are open connections sustained between the client and the origin server. Inside a WebSockets connection, the client and the origin can pass data back and forth without having to reestablish sessions. This makes exchanging data within a WebSockets connection fast. WebSockets are often used for real-time applications such as live chat and gaming.  (https://support.cloudflare.com/hc/en-us/articles/200169466-Can-I-use-Cloudflare-with-WebSockets-)",
+				"description": "Changes Websockets setting. For more information about Websockets, please refer to [Using Cloudflare with WebSockets](https://support.cloudflare.com/hc/en-us/articles/200169466-Using-Cloudflare-with-WebSockets).",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -18585,7 +18585,7 @@
 											false,
 											true
 										],
-										"description": "Value of the zone setting",
+										"description": "Value of the zone setting.",
 										"default": false
 									}
 								}
@@ -18810,7 +18810,7 @@
 		"/zones/{zone_identifier}/settings/h2_prioritization": {
 			"get": {
 				"summary": "Get HTTP/2 Edge Prioritization setting",
-				"description": "HTTP/2 Edge Prioritization optimises the delivery of resources served through HTTP/2 to improve page load performance. It also supports fine control of content delivery when used in conjunction with Workers.",
+				"description": "Gets HTTP/2 Edge Prioritization setting.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -18942,7 +18942,7 @@
 			},
 			"patch": {
 				"summary": "Change HTTP/2 Edge Prioritization setting",
-				"description": "HTTP/2 Edge Prioritization optimises the delivery of resources served through HTTP/2 to improve page load performance. It also supports fine control of content delivery when used in conjunction with Workers.",
+				"description": "Changes HTTP/2 Edge Prioritization setting.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
