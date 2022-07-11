@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/util-http-poll",
 	"dist-tags": {
-		"latest": "1.2.30"
+		"latest": "1.3.0"
 	},
 	"versions": {
 		"1.0.1": {
@@ -1088,9 +1088,31 @@
 					}
 				]
 			}
+		},
+		"1.3.0": {
+			"name": "@cloudflare/util-http-poll",
+			"version": "1.3.0",
+			"dependencies": {
+				"@cloudflare/util-http": "^2.0.16",
+				"@cloudflare/util-logger": "^1.0.32"
+			},
+			"dist": {
+				"integrity": "sha512-GfpgjoRzuaLlCiQtuTLD3YSupBX7q9eO3JWz9YonqeTEprzq4OLumDJ+vA7JdSRg5VCmP5mqT/TjFbPDm9lWzw==",
+				"shasum": "a7e776c5e7d2e1786109bb0ef53d918c5cf57c50",
+				"tarball": "https://registry.npmjs.org/@cloudflare/util-http-poll/-/util-http-poll-1.3.0.tgz",
+				"fileCount": 9,
+				"unpackedSize": 30653,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCKqZBl4lf2rnaDKBAxiF7Yiy0+9fQL0No2Qsk1en6stQIgKArH3m/mhYmL3PKbv6o4WbdJ7QoSgMA0DzsHhKJRORw="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJizAbgACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoaQg/+Kx0J+XYJDcR4svUCbYoBpoHScERwQ1vc4+HwX/0USccu69R2\r\nApc5Nr8320sphPaZaB41jyg+9e0CbwzsQnkTr43bJPUxENQ+FWtLSQksu99p\r\nF8uAIjTDxPfW72s4KabJGmpkUnQwFgPwNMeQiXYFyFQAuPFgpnTb2GKNQHhs\r\ntTFGyOx6loAGX95L1nJ9IOmkI++saxQHRCs5JXTycWmXNn6KIlx1COEBOQDd\r\nU+iY+2CJZnPCHsaAJqBzi3WfmlOQ9/VzjRY/Bn6rvbWxpdkygXyZ3vlWt/la\r\nKWe13Z9w5svxk+/MFbXpPlIC5/c6VCz5D8PKu4mU9KAg8zVWeRQMhLzr+hWM\r\nxm2U3dUyhqfmgEcBu/tw4b6UzBrRKoqp48hIw6r9sVAucxNqT5OqkL0GUrXZ\r\nji5n0Dw6o5Jz0O+ab67mFA5dVcP1aKz0T5vdb5oKSceDBtb3ZdpK3GMGboA0\r\nOqbSFZnRwpcuTj5wQD7STGhmF21fCciVlOJPnZPvZ6z/ngO6MA+jL2X9zViz\r\nW6ptOE6xljtI7a7KRfkqbGZS+hhH3vBk9rRuSxUf9pIEN56FMutZOiWUar22\r\nzywCcPnl349/229AHVCnRXEJenLgDFFklZbou61Z6vUi8TUKGv65yxQJiyCR\r\npnxJKXCvAv9siIaetzEE09Jei6v7iGWKOAU=\r\n=jBQL\r\n-----END PGP SIGNATURE-----\r\n"
+			}
 		}
 	},
-	"modified": "2022-06-21T16:57:46.721Z",
+	"modified": "2022-07-11T11:17:53.389Z",
 	"_cached": false,
-	"_contentLength": 71656
+	"_contentLength": 73258
 }
