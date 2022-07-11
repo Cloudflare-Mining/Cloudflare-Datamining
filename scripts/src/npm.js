@@ -99,6 +99,7 @@ async function run(){
 		categories: new Set(),
 		packages: [],
 	};
+	const knownCFPackages = new Set();
 	const ignoreURLs = [
 		'registry.npmjs.org',
 		'registry.yarnpkg.com',
@@ -142,10 +143,25 @@ async function run(){
 		if(file.endsWith('package.json')){
 			try{
 				const packageData = JSON.parse(data);
-				if(packageData.stratus){
+				if(packageData?.stratus){
 					stratus.packages.push(packageData.name);
 					if(packageData.stratus.category){
 						stratus.categories.add(packageData.stratus.category);
+					}
+				}
+				if(packageData?.name?.startsWith?.('@cloudflare/')){
+					knownCFPackages.add(packageData.name);
+				}
+				const deps = [];
+				if(packageData.dependencies){
+					deps.push(...Object.keys(packageData.dependencies));
+				}
+				if(packageData.devDependencies){
+					deps.push(...Object.keys(packageData.devDependencies));
+				}
+				for(const dep of deps){
+					if(dep.startsWith('@cloudflare/')){
+						knownCFPackages.add(dep);
 					}
 				}
 			}catch(err){
@@ -161,6 +177,20 @@ async function run(){
 		categories: [...stratus.categories].sort(),
 		packages: stratus.packages.sort(),
 	}, null, '\t'));
+
+	const privatePackages = [];
+	for(const npmPackage of knownCFPackages){
+		try{
+			await pacote.packument(npmPackage);
+		}catch(error){
+			if(error.statusCode === 404){
+				// safe to assume this is private
+				privatePackages.push(npmPackage);
+			}
+		}
+	}
+	const priatePackagesFile = path.resolve(`../data/packages/cf-packages-private.json`);
+	await fs.writeFile(priatePackagesFile, JSON.stringify([...privatePackages].sort(), null, '\t'));
 
 	console.log('Pushing!');
 	const prefix = dateFormat(new Date(), 'd mmmm yyyy');
