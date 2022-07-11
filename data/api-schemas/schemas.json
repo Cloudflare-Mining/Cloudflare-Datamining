@@ -39766,6 +39766,129 @@
 				}
 			}
 		},
+		"/accounts/{account_identifier}/r2/buckets/{bucket_name}": {
+			"post": {
+				"summary": "Create Bucket",
+				"description": "Creates a new R2 bucket.",
+				"parameters": [
+					{
+						"name": "bucket_name",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"description": "Name of the bucket. The name must be greater than 2 and less than 64 characters.",
+							"type": "string",
+							"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
+							"example": "example-bucket"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1available_plans~1%7Bplan_identifier%7D/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Create Bucket response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user~1audit_logs/get/responses/200/content/application~1json/schema/oneOf/1"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object",
+													"properties": {}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.edge.r2.bucket.create"
+					]
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"example": "{'name': 'example-bucket'}"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"summary": "Delete Bucket",
+				"description": "Deletes an existing R2 bucket.",
+				"parameters": [
+					{
+						"name": "bucket_name",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1r2~1buckets~1%7Bbucket_name%7D/post/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1r2~1buckets~1%7Bbucket_name%7D/post/parameters/1/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Delete Bucket response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1r2~1buckets~1%7Bbucket_name%7D/post/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.edge.r2.bucket.delete"
+					]
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {}
+					}
+				}
+			}
+		},
 		"/accounts/{account_identifier}/workers/scripts/{script_name}": {
 			"put": {
 				"summary": "Upload Worker Module",
@@ -44100,7 +44223,8 @@
 		},
 		"/zones/{zone_identifier}/pagerules": {
 			"get": {
-				"summary": "List Page Rules",
+				"summary": "Get Page Rules",
+				"description": "Fetches Page Rules in a zone.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -44113,7 +44237,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "List Page Rules response",
+						"description": "Get Page Rules response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -44157,14 +44281,14 @@
 																"type": "string",
 																"format": "date-time",
 																"example": "2014-01-01T05:20:00.123450+00:00",
-																"description": "When the page rule was last modified"
+																"description": "The timestamp of when the Page Rule was last modified."
 															},
 															"created_on": {
 																"readOnly": true,
 																"type": "string",
 																"format": "date-time",
 																"example": "2014-01-01T05:20:00.123450+00:00",
-																"description": "When the page rule was created"
+																"description": "The timestamp of when the Page Rule was created."
 															}
 														}
 													}
@@ -44196,7 +44320,8 @@
 				}
 			},
 			"post": {
-				"summary": "Create Page Rule",
+				"summary": "Create a Page Rule",
+				"description": "Creates a new Page Rule.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -44209,7 +44334,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create Page Rule response",
+						"description": "Create a Page Rule response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -44260,9 +44385,9 @@
 								"properties": {
 									"targets": {
 										"type": "array",
-										"description": "Targets to evaluate on a request",
+										"description": "The rule targets to evaluate on each request.",
 										"items": {
-											"description": "A request condition target",
+											"description": "A request condition target.",
 											"required": [
 												"target",
 												"constraint"
@@ -44270,18 +44395,18 @@
 											"oneOf": [
 												{
 													"type": "object",
-													"description": "URL Target",
+													"description": "URL target",
 													"properties": {
 														"target": {
 															"enum": [
 																"url"
 															],
-															"description": "Target the URL of the request",
+															"description": "A target based on the URL of the request.",
 															"example": "url"
 														},
 														"constraint": {
 															"type": "object",
-															"description": "A target constraint",
+															"description": "The constraint of a target.",
 															"allOf": [
 																{
 																	"description": "String constraint",
@@ -44313,7 +44438,7 @@
 																		"value": {
 																			"type": "string",
 																			"pattern": "^(https?://)?(([-a-zA-Z0-9*]*\\.)+[-a-zA-Z0-9]{2,20})(:(8080|8443|443|80))?(/[\\S]+)?$",
-																			"description": "URL match to test the request against. Use up to four asterisks as placeholders",
+																			"description": "The URL pattern to match against the current request. The pattern may contain up to four asterisks ('*') as placeholders.",
 																			"example": "*example.com/images/*"
 																		}
 																	}
@@ -44336,7 +44461,7 @@
 									},
 									"actions": {
 										"type": "array",
-										"description": "The set of actions to perform if the targets of this rule match the request. Actions can redirect the url to another url or override settings (but not both)",
+										"description": "The set of actions to perform if the targets of this rule match the request. Actions can redirect to another URL or override settings, but not both.",
 										"items": {
 											"oneOf": [
 												{
@@ -44346,7 +44471,7 @@
 															"enum": [
 																"forward_url"
 															],
-															"description": "The type of route",
+															"description": "The type of route.",
 															"example": "forward_url"
 														},
 														"value": {
@@ -44356,12 +44481,12 @@
 																		"temporary",
 																		"permanent"
 																	],
-																	"description": "The response type for the redirect",
+																	"description": "The response type for the URL redirect.",
 																	"example": "temporary"
 																},
 																"url": {
 																	"type": "string",
-																	"description": "The URL to redirect the request to\nNotes: {$num} refers to the position of '*' in a constraint value",
+																	"description": "The URL to redirect the request to.\nNotes: ${num} refers to the position of '*' in the constraint value.",
 																	"example": "http://www.example.com/somewhere/$1/astring/$2/anotherstring/$3"
 																}
 															}
@@ -44370,7 +44495,7 @@
 															"type": "string",
 															"readOnly": true,
 															"format": "date-time",
-															"description": "last time this override was modified",
+															"description": "The timestamp of when the override was last modified.",
 															"example": "2014-01-01T05:20:00.123450+00:00"
 														}
 													}
@@ -44386,7 +44511,7 @@
 									},
 									"priority": {
 										"type": "integer",
-										"description": "A number that indicates the preference for a page rule over another. In the case where you may have a catch-all page rule (e.g., #1: '/images/*') but want a rule that is more specific to take precedence (e.g., #2: '/images/special/*'), you'll want to specify a higher priority on the latter (#2) so it will override the first.",
+										"description": "The priority of the rule, used to define which Page Rule is processed over another. A higher number indicates a higher priority. For example, if you have a catch-all Page Rule (rule A: `/images/*`) but want a more specific Page Rule to take precedence (rule B: `/images/special/*`), specify a higher priority for rule B so it overrides rule A.",
 										"default": 1
 									},
 									"status": {
@@ -44395,7 +44520,7 @@
 											"active",
 											"disabled"
 										],
-										"description": "Status of the page rule",
+										"description": "The status of the Page Rule.",
 										"example": "active",
 										"default": "disabled"
 									}
@@ -44408,7 +44533,8 @@
 		},
 		"/zones/{zone_identifier}/pagerules/{identifier}": {
 			"get": {
-				"summary": "Page Rule Details",
+				"summary": "Get a Page Rule",
+				"description": "Fetches the details of a Page Rule.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -44429,7 +44555,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Page Rule Details response",
+						"description": "Get a Page Rule response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -44469,8 +44595,8 @@
 				}
 			},
 			"put": {
-				"summary": "Update Page Rule",
-				"description": "Replace a page rule. The final rule will exactly match the data passed with this request.",
+				"summary": "Update a Page Rule",
+				"description": "Replaces the configuration of an existing Page Rule. The configuration of the updated Page Rule will exactly match the data passed in the API request.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -44491,7 +44617,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update Page Rule response",
+						"description": "Update a Page Rule response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -44531,9 +44657,9 @@
 								"properties": {
 									"targets": {
 										"type": "array",
-										"description": "Targets to evaluate on a request",
+										"description": "The rule targets to evaluate on each request.",
 										"items": {
-											"description": "A request condition target",
+											"description": "A request condition target.",
 											"required": [
 												"target",
 												"constraint"
@@ -44541,18 +44667,18 @@
 											"oneOf": [
 												{
 													"type": "object",
-													"description": "URL Target",
+													"description": "URL target",
 													"properties": {
 														"target": {
 															"enum": [
 																"url"
 															],
-															"description": "Target the URL of the request",
+															"description": "A target based on the URL of the request.",
 															"example": "url"
 														},
 														"constraint": {
 															"type": "object",
-															"description": "A target constraint",
+															"description": "The constraint of a target.",
 															"allOf": [
 																{
 																	"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1pagerules/post/requestBody/content/application~1json/schema/properties/targets/items/oneOf/0/properties/constraint/allOf/0"
@@ -44562,7 +44688,7 @@
 																		"value": {
 																			"type": "string",
 																			"pattern": "^(https?://)?(([-a-zA-Z0-9*]*\\.)+[-a-zA-Z0-9]{2,20})(:(8080|8443|443|80))?(/[\\S]+)?$",
-																			"description": "URL match to test the request against. Use up to four asterisks as placeholders",
+																			"description": "The URL pattern to match against the current request. The pattern may contain up to four asterisks ('*') as placeholders.",
 																			"example": "*example.com/images/*"
 																		}
 																	}
@@ -44585,7 +44711,7 @@
 									},
 									"actions": {
 										"type": "array",
-										"description": "The set of actions to perform if the targets of this rule match the request. Actions can redirect the url to another url or override settings (but not both)",
+										"description": "The set of actions to perform if the targets of this rule match the request. Actions can redirect to another URL or override settings, but not both.",
 										"items": {
 											"oneOf": [
 												{
@@ -44595,7 +44721,7 @@
 															"enum": [
 																"forward_url"
 															],
-															"description": "The type of route",
+															"description": "The type of route.",
 															"example": "forward_url"
 														},
 														"value": {
@@ -44605,12 +44731,12 @@
 																		"temporary",
 																		"permanent"
 																	],
-																	"description": "The response type for the redirect",
+																	"description": "The response type for the URL redirect.",
 																	"example": "temporary"
 																},
 																"url": {
 																	"type": "string",
-																	"description": "The URL to redirect the request to\nNotes: {$num} refers to the position of '*' in a constraint value",
+																	"description": "The URL to redirect the request to.\nNotes: ${num} refers to the position of '*' in the constraint value.",
 																	"example": "http://www.example.com/somewhere/$1/astring/$2/anotherstring/$3"
 																}
 															}
@@ -44619,7 +44745,7 @@
 															"type": "string",
 															"readOnly": true,
 															"format": "date-time",
-															"description": "last time this override was modified",
+															"description": "The timestamp of when the override was last modified.",
 															"example": "2014-01-01T05:20:00.123450+00:00"
 														}
 													}
@@ -44635,7 +44761,7 @@
 									},
 									"priority": {
 										"type": "integer",
-										"description": "A number that indicates the preference for a page rule over another. In the case where you may have a catch-all page rule (e.g., #1: '/images/*') but want a rule that is more specific to take precedence (e.g., #2: '/images/special/*'), you'll want to specify a higher priority on the latter (#2) so it will override the first.",
+										"description": "The priority of the rule, used to define which Page Rule is processed over another. A higher number indicates a higher priority. For example, if you have a catch-all Page Rule (rule A: `/images/*`) but want a more specific Page Rule to take precedence (rule B: `/images/special/*`), specify a higher priority for rule B so it overrides rule A.",
 										"default": 1
 									},
 									"status": {
@@ -44644,7 +44770,7 @@
 											"active",
 											"disabled"
 										],
-										"description": "Status of the page rule",
+										"description": "The status of the Page Rule.",
 										"example": "active",
 										"default": "disabled"
 									}
@@ -44655,7 +44781,8 @@
 				}
 			},
 			"patch": {
-				"summary": "Edit Page Rule",
+				"summary": "Edit a Page Rule",
+				"description": "Updates one or more fields of an existing Page Rule.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -44676,7 +44803,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Edit Page Rule response",
+						"description": "Edit a Page Rule response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -44729,7 +44856,8 @@
 				}
 			},
 			"delete": {
-				"summary": "Delete Page Rule",
+				"summary": "Delete a Page Rule",
+				"description": "Deletes an existing Page Rule.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -44750,7 +44878,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete Page Rule response",
+						"description": "Delete a Page Rule response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -44787,7 +44915,8 @@
 		},
 		"/zones/{zone_identifier}/pagerules/settings": {
 			"get": {
-				"summary": "List Available Page rule setting",
+				"summary": "Get available Page Rules settings",
+				"description": "Returns a list of settings (and their details) that Page Rules can apply to matching requests.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -44800,7 +44929,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "List Available Page rule setting response",
+						"description": "Get available Page Rules settings response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -44812,7 +44941,7 @@
 											"properties": {
 												"result": {
 													"type": "array",
-													"description": "Settings available for the zone",
+													"description": "Settings available for the zone.",
 													"items": {
 														"type": "object"
 													},
