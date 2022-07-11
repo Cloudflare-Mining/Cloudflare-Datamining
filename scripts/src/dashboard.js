@@ -133,6 +133,7 @@ async function getChunks(){
 	return Object.values(chunksObj);
 }
 
+const dashStructure = ['src', 'apps', 'dash'];
 async function prepareWriteDir(files, directory = 'dashboard-extracted', write){
 	let maxDepth = 0;
 	for(const file in files){
@@ -146,8 +147,12 @@ async function prepareWriteDir(files, directory = 'dashboard-extracted', write){
 		await fs.ensureDir(rootDir);
 		await fs.emptyDir(rootDir);
 	}
-	for(let i = 1; i < maxDepth; i++){
-		rootDir += `/${i}`;
+	for(let i = 1; i <= maxDepth; i++){
+		if(directory === 'dashboard-extracted' && dashStructure[i - 1]){
+			rootDir += `/${dashStructure[i - 1]}`;
+		}else{
+			rootDir += `/${i}`;
+		}
 	}
 	rootDir = path.normalize(rootDir);
 	if(write){
