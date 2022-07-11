@@ -95,6 +95,10 @@ async function run(){
 			}
 		}
 	}
+	const stratus = {
+		categories: new Set(),
+		packages: [],
+	};
 	const ignoreURLs = [
 		'registry.npmjs.org',
 		'registry.yarnpkg.com',
@@ -107,7 +111,12 @@ async function run(){
 	const links = new Set();
 	for await(const file of getFiles('../data/packages-extracted')){
 		const newLinks = [];
-		const data = await fs.readFile(file, 'utf8');
+		let data;
+		try{
+			data = await fs.readFile(file, 'utf8');
+		}catch{
+			continue;
+		}
 		const urls = getUrls(data, {
 			requireSchemeOrWww: true,
 		});
@@ -130,9 +139,28 @@ async function run(){
 				//console.warn('Found a bad link', match[1]);
 			}
 		}
+		if(file.endsWith('package.json')){
+			try{
+				const packageData = JSON.parse(data);
+				if(packageData.stratus){
+					stratus.packages.push(packageData.name);
+					if(packageData.stratus.category){
+						stratus.categories.add(packageData.stratus.category);
+					}
+				}
+			}catch(err){
+				console.warn('Found a bad package.json', err);
+			}
+		}
 	}
 	const linksFile = path.resolve(`../data/packages/links.json`);
 	await fs.writeFile(linksFile, JSON.stringify([...links].sort(), null, '\t'));
+
+	const stratusFile = path.resolve(`../data/packages/stratus.json`);
+	await fs.writeFile(stratusFile, JSON.stringify({
+		categories: [...stratus.categories].sort(),
+		packages: stratus.packages.sort(),
+	}, null, '\t'));
 
 	console.log('Pushing!');
 	const prefix = dateFormat(new Date(), 'd mmmm yyyy');
