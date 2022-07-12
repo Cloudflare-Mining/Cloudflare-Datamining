@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/component-payment-form",
 	"dist-tags": {
-		"latest": "2.0.70"
+		"latest": "2.0.71"
 	},
 	"versions": {
 		"1.1.0": {
@@ -8155,9 +8155,60 @@
 				],
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJizAbrACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrCJQ//ZGkmiUWE5f9ViApt+ITFcD/Hp9Hqan6qV763UWNFXirnBLAz\r\nUXTPAlP7HE2LVLWpLYgmQAvqoYMCUjYQ9WNb4Nn3XX6S3HMHM25+QIaeD+Ce\r\n7veZS8sG/Wd/FjPESgPQgYCpDNd+XYlfWKGYuRkad/fT7/4TdmqDFfPkOPzk\r\nzmsNN+ShfdN11ZD/ESUP+jXCX7ptM+UfFV2gRpmOwnj+OL5jyisXHJIXSYoF\r\no5jiuP+y94pGEuU1J4WAkXV5rDKSuIgVJWxaOiRkydPq3RtF3N1yr/HQ90vf\r\n2hrhEBppdUHCd3lzFLJUeHiAQJJbjjCxYHVR4/RAbzshwvZdDJKBey5qKnB/\r\nZ931nFu+7yYp3KHSNKjUOZo9vknhQ6T2RF757EuwvB8gv9MpOU2vh4oLya+p\r\nzdS0LmCRB2NVyydijQTu9moHvEFb5ra73zL+re6nHc7yCezhbtv4rtuD8pTa\r\nst3Eg/x8VvJgYXUERhA2nRyjCIxdYdXpeZoVDL4zeOQTijNKkWsW4EKoCaZL\r\nHYe3UOagRA71ZtPfnyrTtNCH19L+a9Lc61zVjZcJLpLMXfR+ey3GEglcrI/Q\r\nF/M4NnIhpue/jyxPeAvChADyDhsyx5EtBnR3ZrrvCkcG0/7xQWtL6nUWxue1\r\narlG6ihH3vAZgrny/wbNx22+tOx0RF1oGj4=\r\n=Yi7b\r\n-----END PGP SIGNATURE-----\r\n"
 			}
+		},
+		"2.0.71": {
+			"name": "@cloudflare/component-payment-form",
+			"version": "2.0.71",
+			"dependencies": {
+				"@cloudflare/cf.datasets": "^2.6.6",
+				"@cloudflare/component-box": "^2.4.0",
+				"@cloudflare/component-button": "^3.2.1",
+				"@cloudflare/component-form": "^3.0.351",
+				"@cloudflare/component-icon": "^7.2.18",
+				"@cloudflare/component-input": "^3.3.54",
+				"@cloudflare/component-link": "^5.1.1",
+				"@cloudflare/component-loading": "^4.1.384",
+				"@cloudflare/component-select-2": "^2.3.3",
+				"@cloudflare/component-tooltip": "^2.7.173",
+				"@cloudflare/elements": "^1.12.1",
+				"@cloudflare/redux-fields": "^2.2.4",
+				"@cloudflare/style-container": "^7.8.39",
+				"@cloudflare/style-provider": "^1.4.1",
+				"@cloudflare/types": "^6.15.10",
+				"@cloudflare/util-exhausted-reducers": "^1.2.330",
+				"@cloudflare/util-http": "^2.0.16",
+				"@cloudflare/util-sparrow": "^5.3.36",
+				"@hcaptcha/react-hcaptcha": "^0.1.8",
+				"@stripe/react-stripe-js": "^1.6.0",
+				"@stripe/stripe-js": "^1.21.1",
+				"@types/braintree-web": "^3.75.3",
+				"@types/stripe-v3": "^3.1.26",
+				"braintree-web": "^3.78.3",
+				"lodash-es": "^4.17.11",
+				"redux-thunk": "^2.3.0"
+			},
+			"peerDependencies": {
+				"react": ">= 16.8.0 < 17",
+				"react-redux": ">= 7.1.0 < 8",
+				"redux": "^4.0.0"
+			},
+			"dist": {
+				"integrity": "sha512-U+NAWCkcKPDBuj8T828fk8Lmo+jAvy7ykSBmyvPFOJWW2ogiJBX4JpQx30dRYm1LJN2r08bEsmNU4YoK9nZZHA==",
+				"shasum": "ee5e200799ca34897524d007de5ee264b4e884c3",
+				"tarball": "https://registry.npmjs.org/@cloudflare/component-payment-form/-/component-payment-form-2.0.71.tgz",
+				"fileCount": 111,
+				"unpackedSize": 782525,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCd1vk4AlSxajcgOpvMMpxZqUQClpGKRGM56u6taO+WtgIhAM0tPD9Knh3EcWSuRN0NgLHhrBqgvfDJoc30D8QodY04"
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJizaWhACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmrfdw/9GcXbfCyQcst4HTwGmAWYiM5p7ghpMKnu9LMIJi8q3EOC8ujr\r\nd0ML2LCI+Lx1CIoPrcRIgyi6kgRF5DO4uSubzC0jH8zBjEHtNKXJeqBSvsPs\r\n3dZ/sa5V2/is+VS/P/g5L13m0CFTzDCgXMMueeYjh+SB4iTDEJ4ZYafYY/Na\r\nlkQ1LTkJPslBXGqLncgQLKTFMREll+me1qDDGt7P58xzpLwJrJdno1EoID73\r\nSC0+6o/7/2xAuDFYFOF+ZNjXmdo0yVs3RWD9yn4hEpKM+XTTABdDNNGzhpSF\r\nCwBF4rY8Y042VRF4f04re197RHpE9Qo97OL5CkwrT3I3zueGwY8I3vwwOB4F\r\n/CICy0iU9xi2bfsAdJ3U6i2mRDFcCzAFswJduE2E/eEUQc+yFM0LaoDYamNc\r\nedDU5e7/N2WWYH6nhzgVxnfIyhcRBJIprrIuKGHv1Wps19KhNgSmIRgQjKaN\r\nU9O6PDJinFdhPG9zID860I8QkOsGdxCKQSdqD+Buh9oO90+l/gyxedgIiQbI\r\nymCJ+wkN9RSU2aFBFNTZ9UIqgGiF7JH0+MJ8TyM/16HrBqqOYZO9VTv5+7O2\r\n6jX51Prr745oV10lig7eY4gNQdFL2AlsySW2Z1yoaCGkGbSXDbcRFjE5Hlr9\r\nhK7Y65vpZyV+/C+nxVu028kCiI3OtgEiLwk=\r\n=6Ekf\r\n-----END PGP SIGNATURE-----\r\n"
+			}
 		}
 	},
-	"modified": "2022-07-11T11:18:03.845Z",
+	"modified": "2022-07-12T16:47:29.376Z",
 	"_cached": false,
-	"_contentLength": 387000
+	"_contentLength": 389585
 }
