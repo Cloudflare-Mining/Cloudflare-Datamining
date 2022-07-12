@@ -66228,8 +66228,8 @@
 		},
 		"/accounts/{identifier}/access/apps": {
 			"get": {
-				"summary": "List Access Applications",
-				"description": "List Access Applications for an account",
+				"summary": "List Access applications",
+				"description": "Lists all Access applications in an account.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -66242,7 +66242,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "List Access Applications response",
+						"description": "List Access applications response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -66277,27 +66277,27 @@
 																			},
 																			"domain": {
 																				"type": "string",
-																				"description": "The domain and path that Access will block",
+																				"description": "The domain and path that Access will secure.",
 																				"example": "test.example.com/admin"
 																			},
 																			"logo_url": {
 																				"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1apps/post/responses/200/content/application~1json/schema/allOf/1/properties/result/allOf/1/properties/logo_url"
 																			},
 																			"app_launcher_visible": {
-																				"description": "Defines whether or not an app is displayed in the App Launcher.",
+																				"description": "Displays the application in the App Launcher.",
 																				"type": "boolean",
 																				"default": true,
 																				"example": true
 																			},
 																			"session_duration": {
-																				"description": "Defines the amount of time that the tokens issued for this application will be valid. Must be in the format '300ms' or '2h45m'. Valid time units are 'ns', 'us' (or 'µs'), 'ms', 's', 'm', 'h'.",
+																				"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																				"default": "24h",
 																				"type": "string",
 																				"example": "24h"
 																			},
 																			"allowed_idps": {
 																				"type": "array",
-																				"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
+																				"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																				"items": {
 																					"type": "string",
 																					"description": "The identity providers selected for application",
@@ -66305,31 +66305,31 @@
 																				}
 																			},
 																			"auto_redirect_to_identity": {
-																				"description": "Option to skip identity provider selection if only one is configured in allowed_idps.",
+																				"description": "When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.",
 																				"type": "boolean",
 																				"default": false
 																			},
 																			"enable_binding_cookie": {
-																				"description": "Option that provides increased security against compromised authorization tokens and CSRF attacks.",
+																				"description": "Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.",
 																				"type": "boolean",
 																				"default": false
 																			},
 																			"custom_deny_message": {
-																				"description": "Option that returns a custom error message when a user is denied access to the application.",
+																				"description": "The custom error message shown to a user when they are denied access to the application.",
 																				"type": "string"
 																			},
 																			"custom_deny_url": {
-																				"description": "Option that redirects to a custom URL when a user is denied access to the application.",
+																				"description": "The custom URL a user is redirected to when they are denied access to the application.",
 																				"type": "string"
 																			},
 																			"http_only_cookie_attribute": {
-																				"description": "Defines whether or not access tokens will be set as http_only cookies. Increases security against XSS attacks.",
+																				"description": "Enables the HttpOnly cookie attribute, which increases security against XSS attacks.",
 																				"type": "boolean",
 																				"default": true,
 																				"example": true
 																			},
 																			"same_site_cookie_attribute": {
-																				"description": "Defines the same-site cookie setting for access tokens. Increases security against CSRF attacks.",
+																				"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks.",
 																				"type": "string",
 																				"example": "strict"
 																			},
@@ -66384,11 +66384,11 @@
 																						"example": true
 																					},
 																					"allow_credentials": {
-																						"description": "Include credentials (cookies, authorization headers, or TLS client certificates) with requests.",
+																						"description": "When set to `true`, includes credentials (cookies, authorization headers, or TLS client certificates) with requests.",
 																						"type": "boolean"
 																					},
 																					"max_age": {
-																						"description": "The max age that preflight requests can be cached.",
+																						"description": "The maximum number of seconds the results of a preflight request can be cached.",
 																						"type": "number",
 																						"maximum": 86400,
 																						"minimum": -1,
@@ -66397,12 +66397,12 @@
 																				}
 																			},
 																			"skip_interstitial": {
-																				"description": "Defines whether or not access to skip the authorization interstitial when using the cli.",
+																				"description": "Enables automatic authentication through cloudflared.",
 																				"type": "boolean",
 																				"example": true
 																			},
 																			"service_auth_401_redirect": {
-																				"description": "Returns a 401 status code in service authentication rules on failed requests.",
+																				"description": "Returns a 401 status code when the request is blocked by a Service Auth policy.",
 																				"type": "boolean",
 																				"example": true
 																			}
@@ -66439,7 +66439,7 @@
 																				"type": "object",
 																				"properties": {
 																					"consumer_service_url": {
-																						"description": "The service provider's endpoint (URL) that is responsible for receiving and parsing a SAML assertion.",
+																						"description": "The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.",
 																						"type": "string",
 																						"example": "https://example.com"
 																					},
@@ -66449,17 +66449,17 @@
 																						"example": "example unique name"
 																					},
 																					"public_key": {
-																						"description": "The Access Public Certificate that will be used to verify your identity.",
+																						"description": "The Access public certificate that will be used to verify your identity.",
 																						"type": "string",
 																						"example": "example unique name"
 																					},
 																					"idp_entity_id": {
-																						"description": "The unique identifier of your SaaS application. Sometimes referred to as the IDP Entity ID.",
+																						"description": "The unique identifier for your SaaS application.",
 																						"type": "string",
 																						"example": "https://example.cloudflareaccess.com"
 																					},
 																					"name_id_format": {
-																						"description": "The value we provide to the SaaS application in the subject field.",
+																						"description": "The format of the name identifier sent to the SaaS application.",
 																						"type": "string",
 																						"enum": [
 																							"id",
@@ -66735,8 +66735,8 @@
 				]
 			},
 			"post": {
-				"summary": "Create Bookmark Access Application",
-				"description": "Create a new Bookmark Access Application",
+				"summary": "Add the Bookmark application",
+				"description": "Adds the Bookmark application to Access, which allows you to add custom links to the App Launcher portal.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -66749,7 +66749,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create Bookmark Access Application response",
+						"description": "Add the Bookmark application response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -66804,7 +66804,7 @@
 																},
 																"name": {
 																	"type": "string",
-																	"description": "The name of the Application.",
+																	"description": "The name of the application.",
 																	"example": "Admin Site"
 																},
 																"domain": {
@@ -66812,7 +66812,7 @@
 																	"example": "https://mybookmark.com"
 																},
 																"logo_url": {
-																	"description": "Defines the image URL for the logo shown in the app launcher dashboard.",
+																	"description": "The image URL for the logo shown in the App Launcher dashboard.",
 																	"type": "string",
 																	"example": "https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg"
 																},
@@ -66855,8 +66855,8 @@
 		},
 		"/accounts/{identifier}/access/apps/{app_id}": {
 			"get": {
-				"summary": "Access Applications Details",
-				"description": "Fetch a single Access Application",
+				"summary": "Get an Access application",
+				"description": "Fetches information about an Access application.",
 				"parameters": [
 					{
 						"name": "app_id",
@@ -66877,7 +66877,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Access Applications Details response",
+						"description": "Get an Access application response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -66910,27 +66910,27 @@
 																		},
 																		"domain": {
 																			"type": "string",
-																			"description": "The domain and path that Access will block",
+																			"description": "The domain and path that Access will secure.",
 																			"example": "test.example.com/admin"
 																		},
 																		"logo_url": {
 																			"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1apps~1%7Bapp_id%7D/put/responses/200/content/application~1json/schema/allOf/1/properties/result/allOf/1/properties/logo_url"
 																		},
 																		"app_launcher_visible": {
-																			"description": "Defines whether or not an app is displayed in the App Launcher.",
+																			"description": "Displays the application in the App Launcher.",
 																			"type": "boolean",
 																			"default": true,
 																			"example": true
 																		},
 																		"session_duration": {
-																			"description": "Defines the amount of time that the tokens issued for this application will be valid. Must be in the format '300ms' or '2h45m'. Valid time units are 'ns', 'us' (or 'µs'), 'ms', 's', 'm', 'h'.",
+																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																			"default": "24h",
 																			"type": "string",
 																			"example": "24h"
 																		},
 																		"allowed_idps": {
 																			"type": "array",
-																			"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
+																			"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																			"items": {
 																				"type": "string",
 																				"description": "The identity providers selected for application",
@@ -66938,31 +66938,31 @@
 																			}
 																		},
 																		"auto_redirect_to_identity": {
-																			"description": "Option to skip identity provider selection if only one is configured in allowed_idps.",
+																			"description": "When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.",
 																			"type": "boolean",
 																			"default": false
 																		},
 																		"enable_binding_cookie": {
-																			"description": "Option that provides increased security against compromised authorization tokens and CSRF attacks.",
+																			"description": "Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.",
 																			"type": "boolean",
 																			"default": false
 																		},
 																		"custom_deny_message": {
-																			"description": "Option that returns a custom error message when a user is denied access to the application.",
+																			"description": "The custom error message shown to a user when they are denied access to the application.",
 																			"type": "string"
 																		},
 																		"custom_deny_url": {
-																			"description": "Option that redirects to a custom URL when a user is denied access to the application.",
+																			"description": "The custom URL a user is redirected to when they are denied access to the application.",
 																			"type": "string"
 																		},
 																		"http_only_cookie_attribute": {
-																			"description": "Defines whether or not access tokens will be set as http_only cookies. Increases security against XSS attacks.",
+																			"description": "Enables the HttpOnly cookie attribute, which increases security against XSS attacks.",
 																			"type": "boolean",
 																			"default": true,
 																			"example": true
 																		},
 																		"same_site_cookie_attribute": {
-																			"description": "Defines the same-site cookie setting for access tokens. Increases security against CSRF attacks.",
+																			"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks.",
 																			"type": "string",
 																			"example": "strict"
 																		},
@@ -67017,11 +67017,11 @@
 																					"example": true
 																				},
 																				"allow_credentials": {
-																					"description": "Include credentials (cookies, authorization headers, or TLS client certificates) with requests.",
+																					"description": "When set to `true`, includes credentials (cookies, authorization headers, or TLS client certificates) with requests.",
 																					"type": "boolean"
 																				},
 																				"max_age": {
-																					"description": "The max age that preflight requests can be cached.",
+																					"description": "The maximum number of seconds the results of a preflight request can be cached.",
 																					"type": "number",
 																					"maximum": 86400,
 																					"minimum": -1,
@@ -67030,12 +67030,12 @@
 																			}
 																		},
 																		"skip_interstitial": {
-																			"description": "Defines whether or not access to skip the authorization interstitial when using the cli.",
+																			"description": "Enables automatic authentication through cloudflared.",
 																			"type": "boolean",
 																			"example": true
 																		},
 																		"service_auth_401_redirect": {
-																			"description": "Returns a 401 status code in service authentication rules on failed requests.",
+																			"description": "Returns a 401 status code when the request is blocked by a Service Auth policy.",
 																			"type": "boolean",
 																			"example": true
 																		}
@@ -67072,7 +67072,7 @@
 																			"type": "object",
 																			"properties": {
 																				"consumer_service_url": {
-																					"description": "The service provider's endpoint (URL) that is responsible for receiving and parsing a SAML assertion.",
+																					"description": "The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.",
 																					"type": "string",
 																					"example": "https://example.com"
 																				},
@@ -67082,17 +67082,17 @@
 																					"example": "example unique name"
 																				},
 																				"public_key": {
-																					"description": "The Access Public Certificate that will be used to verify your identity.",
+																					"description": "The Access public certificate that will be used to verify your identity.",
 																					"type": "string",
 																					"example": "example unique name"
 																				},
 																				"idp_entity_id": {
-																					"description": "The unique identifier of your SaaS application. Sometimes referred to as the IDP Entity ID.",
+																					"description": "The unique identifier for your SaaS application.",
 																					"type": "string",
 																					"example": "https://example.cloudflareaccess.com"
 																				},
 																				"name_id_format": {
-																					"description": "The value we provide to the SaaS application in the subject field.",
+																					"description": "The format of the name identifier sent to the SaaS application.",
 																					"type": "string",
 																					"enum": [
 																						"id",
@@ -67367,8 +67367,8 @@
 				]
 			},
 			"put": {
-				"summary": "Update Bookmark Access Application",
-				"description": "Update a Bookmark Access Application",
+				"summary": "Update the Bookmark application",
+				"description": "Updates the Bookmark application.",
 				"parameters": [
 					{
 						"name": "app_id",
@@ -67389,7 +67389,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update Bookmark Access Application response",
+						"description": "Update the Bookmark application response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -67433,7 +67433,7 @@
 																},
 																"name": {
 																	"type": "string",
-																	"description": "The name of the Application.",
+																	"description": "The name of the application.",
 																	"example": "Admin Site"
 																},
 																"domain": {
@@ -67441,7 +67441,7 @@
 																	"example": "https://mybookmark.com"
 																},
 																"logo_url": {
-																	"description": "Defines the image URL for the logo shown in the app launcher dashboard.",
+																	"description": "The image URL for the logo shown in the App Launcher dashboard.",
 																	"type": "string",
 																	"example": "https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg"
 																},
@@ -67482,8 +67482,8 @@
 				}
 			},
 			"delete": {
-				"summary": "Delete Access Application",
-				"description": "Delete an Access Application",
+				"summary": "Delete an Access application",
+				"description": "Deletes an application from Access.",
 				"parameters": [
 					{
 						"name": "app_id",
@@ -67504,7 +67504,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete Access Application response",
+						"description": "Delete an Access application response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -67546,8 +67546,8 @@
 		},
 		"/accounts/{identifier}/access/apps/{app_id}/revoke_tokens": {
 			"post": {
-				"summary": "Revoke Access Tokens",
-				"description": "Revoke any outstanding tokens issued for the Application.",
+				"summary": "Revoke service tokens",
+				"description": "Revokes all service tokens used by an application.",
 				"parameters": [
 					{
 						"name": "app_id",
@@ -67568,7 +67568,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Revoke Access Tokens response",
+						"description": "Revoke service tokens response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -67610,8 +67610,8 @@
 		},
 		"/accounts/{identifier}/access/apps/{app_id}/user_policy_checks": {
 			"get": {
-				"summary": "User Policy Check",
-				"description": "Check a user's identity against the state of an application's policy",
+				"summary": "Test Access policies",
+				"description": "Tests if a specific user has permission to access an application.",
 				"parameters": [
 					{
 						"name": "app_id",
@@ -67632,7 +67632,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "User Policy Check response",
+						"description": "Test Access policies response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -70905,7 +70905,7 @@
 		"/zones/{identifier}/access/apps": {
 			"get": {
 				"summary": "List Access Applications",
-				"description": "List Access Applications for an account",
+				"description": "List all Access Applications in a zone.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -70954,27 +70954,27 @@
 																			},
 																			"domain": {
 																				"type": "string",
-																				"description": "The domain and path that Access will block",
+																				"description": "The domain and path that Access will secure.",
 																				"example": "test.example.com/admin"
 																			},
 																			"logo_url": {
 																				"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1access~1apps/post/responses/200/content/application~1json/schema/allOf/1/properties/result/allOf/1/properties/logo_url"
 																			},
 																			"app_launcher_visible": {
-																				"description": "Defines whether or not an app is displayed in the App Launcher.",
+																				"description": "Displays the application in the App Launcher.",
 																				"type": "boolean",
 																				"default": true,
 																				"example": true
 																			},
 																			"session_duration": {
-																				"description": "Defines the amount of time that the tokens issued for this application will be valid. Must be in the format '300ms' or '2h45m'. Valid time units are 'ns', 'us' (or 'µs'), 'ms', 's', 'm', 'h'.",
+																				"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																				"default": "24h",
 																				"type": "string",
 																				"example": "24h"
 																			},
 																			"allowed_idps": {
 																				"type": "array",
-																				"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
+																				"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																				"items": {
 																					"type": "string",
 																					"description": "The identity providers selected for application",
@@ -70982,31 +70982,31 @@
 																				}
 																			},
 																			"auto_redirect_to_identity": {
-																				"description": "Option to skip identity provider selection if only one is configured in allowed_idps.",
+																				"description": "When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.",
 																				"type": "boolean",
 																				"default": false
 																			},
 																			"enable_binding_cookie": {
-																				"description": "Option that provides increased security against compromised authorization tokens and CSRF attacks.",
+																				"description": "Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.",
 																				"type": "boolean",
 																				"default": false
 																			},
 																			"custom_deny_message": {
-																				"description": "Option that returns a custom error message when a user is denied access to the application.",
+																				"description": "The custom error message shown to a user when they are denied access to the application.",
 																				"type": "string"
 																			},
 																			"custom_deny_url": {
-																				"description": "Option that redirects to a custom URL when a user is denied access to the application.",
+																				"description": "The custom URL a user is redirected to when they are denied access to the application.",
 																				"type": "string"
 																			},
 																			"http_only_cookie_attribute": {
-																				"description": "Defines whether or not access tokens will be set as http_only cookies. Increases security against XSS attacks.",
+																				"description": "Enables the HttpOnly cookie attribute, which increases security against XSS attacks.",
 																				"type": "boolean",
 																				"default": true,
 																				"example": true
 																			},
 																			"same_site_cookie_attribute": {
-																				"description": "Defines the same-site cookie setting for access tokens. Increases security against CSRF attacks.",
+																				"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks.",
 																				"type": "string",
 																				"example": "strict"
 																			},
@@ -71061,11 +71061,11 @@
 																						"example": true
 																					},
 																					"allow_credentials": {
-																						"description": "Include credentials (cookies, authorization headers, or TLS client certificates) with requests.",
+																						"description": "When set to `true`, includes credentials (cookies, authorization headers, or TLS client certificates) with requests.",
 																						"type": "boolean"
 																					},
 																					"max_age": {
-																						"description": "The max age that preflight requests can be cached.",
+																						"description": "The maximum number of seconds the results of a preflight request can be cached.",
 																						"type": "number",
 																						"maximum": 86400,
 																						"minimum": -1,
@@ -71074,12 +71074,12 @@
 																				}
 																			},
 																			"skip_interstitial": {
-																				"description": "Defines whether or not access to skip the authorization interstitial when using the cli.",
+																				"description": "Enables automatic authentication through cloudflared.",
 																				"type": "boolean",
 																				"example": true
 																			},
 																			"service_auth_401_redirect": {
-																				"description": "Returns a 401 status code in service authentication rules on failed requests.",
+																				"description": "Returns a 401 status code when the request is blocked by a Service Auth policy.",
 																				"type": "boolean",
 																				"example": true
 																			}
@@ -71116,7 +71116,7 @@
 																				"type": "object",
 																				"properties": {
 																					"consumer_service_url": {
-																						"description": "The service provider's endpoint (URL) that is responsible for receiving and parsing a SAML assertion.",
+																						"description": "The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.",
 																						"type": "string",
 																						"example": "https://example.com"
 																					},
@@ -71126,17 +71126,17 @@
 																						"example": "example unique name"
 																					},
 																					"public_key": {
-																						"description": "The Access Public Certificate that will be used to verify your identity.",
+																						"description": "The Access public certificate that will be used to verify your identity.",
 																						"type": "string",
 																						"example": "example unique name"
 																					},
 																					"idp_entity_id": {
-																						"description": "The unique identifier of your SaaS application. Sometimes referred to as the IDP Entity ID.",
+																						"description": "The unique identifier for your SaaS application.",
 																						"type": "string",
 																						"example": "https://example.cloudflareaccess.com"
 																					},
 																					"name_id_format": {
-																						"description": "The value we provide to the SaaS application in the subject field.",
+																						"description": "The format of the name identifier sent to the SaaS application.",
 																						"type": "string",
 																						"enum": [
 																							"id",
@@ -71412,8 +71412,8 @@
 				]
 			},
 			"post": {
-				"summary": "Create Bookmark Access Application",
-				"description": "Create a new Bookmark Access Application",
+				"summary": "Add the Bookmark application",
+				"description": "Adds the Bookmark application to Access, which allows you to add custom links to the App Launcher portal.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -71426,7 +71426,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create Bookmark Access Application response",
+						"description": "Add the Bookmark application response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -71481,7 +71481,7 @@
 																},
 																"name": {
 																	"type": "string",
-																	"description": "The name of the Application.",
+																	"description": "The name of the application.",
 																	"example": "Admin Site"
 																},
 																"domain": {
@@ -71489,7 +71489,7 @@
 																	"example": "https://mybookmark.com"
 																},
 																"logo_url": {
-																	"description": "Defines the image URL for the logo shown in the app launcher dashboard.",
+																	"description": "The image URL for the logo shown in the App Launcher dashboard.",
 																	"type": "string",
 																	"example": "https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg"
 																},
@@ -71532,8 +71532,8 @@
 		},
 		"/zones/{identifier}/access/apps/{app_id}": {
 			"get": {
-				"summary": "Access Applications Details",
-				"description": "Fetch a single Access Application",
+				"summary": "Get an Access application",
+				"description": "Fetches information about an Access application.",
 				"parameters": [
 					{
 						"name": "app_id",
@@ -71554,7 +71554,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Access Applications Details response",
+						"description": "Get an Access application response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -71588,27 +71588,27 @@
 																		},
 																		"domain": {
 																			"type": "string",
-																			"description": "The domain and path that Access will block",
+																			"description": "The domain and path that Access will secure.",
 																			"example": "test.example.com/admin"
 																		},
 																		"logo_url": {
 																			"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1access~1apps~1%7Bapp_id%7D/put/responses/200/content/application~1json/schema/allOf/1/properties/result/allOf/1/properties/logo_url"
 																		},
 																		"app_launcher_visible": {
-																			"description": "Defines whether or not an app is displayed in the App Launcher.",
+																			"description": "Displays the application in the App Launcher.",
 																			"type": "boolean",
 																			"default": true,
 																			"example": true
 																		},
 																		"session_duration": {
-																			"description": "Defines the amount of time that the tokens issued for this application will be valid. Must be in the format '300ms' or '2h45m'. Valid time units are 'ns', 'us' (or 'µs'), 'ms', 's', 'm', 'h'.",
+																			"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 																			"default": "24h",
 																			"type": "string",
 																			"example": "24h"
 																		},
 																		"allowed_idps": {
 																			"type": "array",
-																			"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
+																			"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 																			"items": {
 																				"type": "string",
 																				"description": "The identity providers selected for application",
@@ -71616,31 +71616,31 @@
 																			}
 																		},
 																		"auto_redirect_to_identity": {
-																			"description": "Option to skip identity provider selection if only one is configured in allowed_idps.",
+																			"description": "When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.",
 																			"type": "boolean",
 																			"default": false
 																		},
 																		"enable_binding_cookie": {
-																			"description": "Option that provides increased security against compromised authorization tokens and CSRF attacks.",
+																			"description": "Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.",
 																			"type": "boolean",
 																			"default": false
 																		},
 																		"custom_deny_message": {
-																			"description": "Option that returns a custom error message when a user is denied access to the application.",
+																			"description": "The custom error message shown to a user when they are denied access to the application.",
 																			"type": "string"
 																		},
 																		"custom_deny_url": {
-																			"description": "Option that redirects to a custom URL when a user is denied access to the application.",
+																			"description": "The custom URL a user is redirected to when they are denied access to the application.",
 																			"type": "string"
 																		},
 																		"http_only_cookie_attribute": {
-																			"description": "Defines whether or not access tokens will be set as http_only cookies. Increases security against XSS attacks.",
+																			"description": "Enables the HttpOnly cookie attribute, which increases security against XSS attacks.",
 																			"type": "boolean",
 																			"default": true,
 																			"example": true
 																		},
 																		"same_site_cookie_attribute": {
-																			"description": "Defines the same-site cookie setting for access tokens. Increases security against CSRF attacks.",
+																			"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks.",
 																			"type": "string",
 																			"example": "strict"
 																		},
@@ -71695,11 +71695,11 @@
 																					"example": true
 																				},
 																				"allow_credentials": {
-																					"description": "Include credentials (cookies, authorization headers, or TLS client certificates) with requests.",
+																					"description": "When set to `true`, includes credentials (cookies, authorization headers, or TLS client certificates) with requests.",
 																					"type": "boolean"
 																				},
 																				"max_age": {
-																					"description": "The max age that preflight requests can be cached.",
+																					"description": "The maximum number of seconds the results of a preflight request can be cached.",
 																					"type": "number",
 																					"maximum": 86400,
 																					"minimum": -1,
@@ -71708,12 +71708,12 @@
 																			}
 																		},
 																		"skip_interstitial": {
-																			"description": "Defines whether or not access to skip the authorization interstitial when using the cli.",
+																			"description": "Enables automatic authentication through cloudflared.",
 																			"type": "boolean",
 																			"example": true
 																		},
 																		"service_auth_401_redirect": {
-																			"description": "Returns a 401 status code in service authentication rules on failed requests.",
+																			"description": "Returns a 401 status code when the request is blocked by a Service Auth policy.",
 																			"type": "boolean",
 																			"example": true
 																		}
@@ -71750,7 +71750,7 @@
 																			"type": "object",
 																			"properties": {
 																				"consumer_service_url": {
-																					"description": "The service provider's endpoint (URL) that is responsible for receiving and parsing a SAML assertion.",
+																					"description": "The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.",
 																					"type": "string",
 																					"example": "https://example.com"
 																				},
@@ -71760,17 +71760,17 @@
 																					"example": "example unique name"
 																				},
 																				"public_key": {
-																					"description": "The Access Public Certificate that will be used to verify your identity.",
+																					"description": "The Access public certificate that will be used to verify your identity.",
 																					"type": "string",
 																					"example": "example unique name"
 																				},
 																				"idp_entity_id": {
-																					"description": "The unique identifier of your SaaS application. Sometimes referred to as the IDP Entity ID.",
+																					"description": "The unique identifier for your SaaS application.",
 																					"type": "string",
 																					"example": "https://example.cloudflareaccess.com"
 																				},
 																				"name_id_format": {
-																					"description": "The value we provide to the SaaS application in the subject field.",
+																					"description": "The format of the name identifier sent to the SaaS application.",
 																					"type": "string",
 																					"enum": [
 																						"id",
@@ -72045,8 +72045,8 @@
 				]
 			},
 			"put": {
-				"summary": "Update Bookmark Access Application",
-				"description": "Update a Bookmark Access Application",
+				"summary": "Update the Bookmark application",
+				"description": "Updates the Bookmark application.",
 				"parameters": [
 					{
 						"name": "app_id",
@@ -72067,7 +72067,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update Bookmark Access Application response",
+						"description": "Update the Bookmark application response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -72111,7 +72111,7 @@
 																},
 																"name": {
 																	"type": "string",
-																	"description": "The name of the Application.",
+																	"description": "The name of the application.",
 																	"example": "Admin Site"
 																},
 																"domain": {
@@ -72119,7 +72119,7 @@
 																	"example": "https://mybookmark.com"
 																},
 																"logo_url": {
-																	"description": "Defines the image URL for the logo shown in the app launcher dashboard.",
+																	"description": "The image URL for the logo shown in the App Launcher dashboard.",
 																	"type": "string",
 																	"example": "https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg"
 																},
@@ -72160,8 +72160,8 @@
 				}
 			},
 			"delete": {
-				"summary": "Delete Access Application",
-				"description": "Delete an Access Application",
+				"summary": "Delete an Access application",
+				"description": "Deletes an application from Access.",
 				"parameters": [
 					{
 						"name": "app_id",
@@ -72182,7 +72182,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete Access Application response",
+						"description": "Delete an Access application response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -72224,8 +72224,8 @@
 		},
 		"/zones/{identifier}/access/apps/{app_id}/revoke_tokens": {
 			"post": {
-				"summary": "Revoke Access Tokens",
-				"description": "Revoke any outstanding tokens issued for the Application.",
+				"summary": "Revoke service tokens",
+				"description": "Revokes all service tokens used by an application.",
 				"parameters": [
 					{
 						"name": "app_id",
@@ -72246,7 +72246,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Revoke Access Tokens response",
+						"description": "Revoke service tokens response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -72288,8 +72288,8 @@
 		},
 		"/zones/{identifier}/access/apps/{app_id}/user_policy_checks": {
 			"get": {
-				"summary": "User Policy Check",
-				"description": "Check a user's identity against the state of an application's policy",
+				"summary": "Test Access policies",
+				"description": "Tests if a specific user has permission to access an application.",
 				"parameters": [
 					{
 						"name": "app_id",
@@ -72310,7 +72310,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "User Policy Check response",
+						"description": "Test Access policies response",
 						"content": {
 							"application/json": {
 								"schema": {
