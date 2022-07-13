@@ -1,0 +1,140 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/r2/buckets.json",
+	"title": "R2 Bucket",
+	"description": "A bucket is a container for objects stored in R2 Storage.",
+	"cfExtendedDescription": "**For more detailed documentation on using the In-Worker API or S3 Compatible APIs for R2 see the [Runtime APIs](https://workers.cloudflare.com/docs/reference/tooling/api/) or [S3 Compatibility APIs](https://developers.cloudflare.com/r2/platform/s3-compatibility/).**",
+	"type": "object",
+	"links": [
+		{
+			"title": "Create Bucket",
+			"description": "Creates a new R2 bucket.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/r2/buckets/{#/definitions/bucket_name}",
+			"method": "POST",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key",
+					"Content-Type"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					},
+					"Content-Type": {
+						"type": "string",
+						"enum": [
+							"application/json"
+						],
+						"example": "application/json"
+					}
+				}
+			},
+			"encType": "application/json",
+			"cfOwnership": "workers",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.edge.r2.bucket.create"
+				]
+			},
+			"html_id": "r2-bucket-create-bucket",
+			"uri": "accounts/:account_identifier/r2/buckets/:bucket_name",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/r2/buckets/example-bucket\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '\"{'name': 'example-bucket'}\"'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {},
+				"required_props": [],
+				"optional_props": [],
+				"objects": [],
+				"example": "\"{'name': 'example-bucket'}\""
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {}\n}"
+		},
+		{
+			"title": "Delete Bucket",
+			"description": "Deletes an existing R2 bucket.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/r2/buckets/{#/definitions/bucket_name}",
+			"method": "DELETE",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
+			"cfOwnership": "workers",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.edge.r2.bucket.delete"
+				]
+			},
+			"html_id": "r2-bucket-delete-bucket",
+			"uri": "accounts/:account_identifier/r2/buckets/:bucket_name",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/r2/buckets/example-bucket\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {}\n}"
+		}
+	],
+	"cfLinkErrors": {
+		"10001": "An unknown internal error occurred.",
+		"10002": "The user is unauthorized to perform this operation.",
+		"10003": "The user does not have permissions to perform this operation.",
+		"10004": "The bucket already exists.",
+		"10005": "The bucket name is invalid.",
+		"10006": "The bucket does not exist.",
+		"10008": "The bucket is not empty.",
+		"10009": "The user has hit the maximum number of buckets for their account.",
+		"10017": "The account specified is not valid.",
+		"10042": "The account is not entitled to use R2.",
+		"10043": "The service is unavailable."
+	},
+	"html_id": "r2-bucket",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"bucket_name": {
+				"type": "string",
+				"example": "\"example-bucket\"",
+				"readOnly": false,
+				"description": "Name of the bucket. The name must be greater than 2 and less than 64 characters.",
+				"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]"
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"bucket_name"
+		],
+		"objects": [],
+		"example": "{\n  \"bucket_name\": \"example-bucket\"\n}",
+		"title": "R2 Bucket",
+		"description": "A bucket is a container for objects stored in R2 Storage."
+	}
+}

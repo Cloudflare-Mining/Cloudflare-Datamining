@@ -65,7 +65,10 @@ async function run(){
 	console.log('Pushing!');
 	const prefix = dateFormat(new Date(), 'd mmmm yyyy');
 	await tryAndPush(
-		['data/api-schemas/*'],
+		[
+			'data/api-schemas/*.json',
+			'data/api-schemas/**/*.json',
+		],
 		`${prefix} - API Schemas were updated!`,
 		'CFData - API Schema Data Update',
 		'Pushed API Schema Data: ' + prefix,

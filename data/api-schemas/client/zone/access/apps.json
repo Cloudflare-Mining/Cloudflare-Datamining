@@ -1,12 +1,12 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/access/apps.json",
-	"title": "Zone-Level Access Applications",
-	"description": "Access Applications define the routes that Access will block. (NOTE: it's recommended that the account route namespace is used instead: https://api.cloudflare.com/#access-applications-properties.)",
+	"title": "Zone-Level Access applications",
+	"description": "Applications secured behind Cloudflare Access for a specific zone. (Note: We recommend configuring settings by account rather than by zone. Refer to https://api.cloudflare.com/#access-applications-properties.)",
 	"type": "object",
 	"links": [
 		{
 			"title": "List Access Applications",
-			"description": "List Access Applications for an account",
+			"description": "List all Access Applications in a zone.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/identifier}/access/apps",
 			"method": "GET",
@@ -17,25 +17,25 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"aud\": \"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\",\n      \"type\": \"self_hosted\",\n      \"name\": \"Admin Site\",\n      \"domain\": \"test.example.com/admin\",\n      \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n      \"app_launcher_visible\": true,\n      \"session_duration\": \"24h\",\n      \"allowed_idps\": [\n        \"699d98642c564d2e855e9661899b7252\"\n      ],\n      \"auto_redirect_to_identity\": false,\n      \"enable_binding_cookie\": false,\n      \"http_only_cookie_attribute\": true,\n      \"same_site_cookie_attribute\": \"strict\",\n      \"cors_headers\": {\n        \"allowed_methods\": [\n          \"GET\"\n        ],\n        \"allowed_origins\": [\n          \"https://example.com\"\n        ],\n        \"allow_all_headers\": true,\n        \"max_age\": -1\n      },\n      \"skip_interstitial\": true,\n      \"service_auth_401_redirect\": true\n    }\n  ]\n}"
 		},
 		{
-			"title": "Access Applications Details",
-			"description": "Fetch a single Access Application",
+			"title": "Get an Access application",
+			"description": "Fetches information about an Access application.",
 			"rel": "self",
 			"href": "zones/{#/definitions/identifier}/access/apps/{#/definitions/app_id}",
 			"method": "GET",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-applications-access-applications-details",
+			"html_id": "zone-level-access-applications-get-an-access-application",
 			"uri": "zones/:identifier/access/apps/:app_id",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/apps/699d98642c564d2e855e9661899b7252\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"aud\": \"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\",\n    \"type\": \"self_hosted\",\n    \"name\": \"Admin Site\",\n    \"domain\": \"test.example.com/admin\",\n    \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n    \"app_launcher_visible\": true,\n    \"session_duration\": \"24h\",\n    \"allowed_idps\": [\n      \"699d98642c564d2e855e9661899b7252\"\n    ],\n    \"auto_redirect_to_identity\": false,\n    \"enable_binding_cookie\": false,\n    \"http_only_cookie_attribute\": true,\n    \"same_site_cookie_attribute\": \"strict\",\n    \"cors_headers\": {\n      \"allowed_methods\": [\n        \"GET\"\n      ],\n      \"allowed_origins\": [\n        \"https://example.com\"\n      ],\n      \"allow_all_headers\": true,\n      \"max_age\": -1\n    },\n    \"skip_interstitial\": true,\n    \"service_auth_401_redirect\": true\n  }\n}"
 		},
 		{
-			"title": "Create Self Hosted Access Application",
-			"description": "Create a new Self Hosted Access Application",
+			"title": "Add a self-hosted application",
+			"description": "Adds a self-hosted application to Access.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/identifier}/access/apps",
 			"method": "POST",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-applications-create-self-hosted-access-application",
+			"html_id": "zone-level-access-applications-add-a-self-hosted-application",
 			"uri": "zones/:identifier/access/apps",
 			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/apps\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"self_hosted\",\"name\":\"Admin Site\",\"domain\":\"test.example.com/admin\",\"logo_url\":\"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\"app_launcher_visible\":true,\"session_duration\":\"24h\",\"allowed_idps\":[\"699d98642c564d2e855e9661899b7252\"],\"auto_redirect_to_identity\":false,\"enable_binding_cookie\":false,\"http_only_cookie_attribute\":true,\"same_site_cookie_attribute\":\"strict\",\"cors_headers\":{\"allowed_methods\":[\"GET\"],\"allowed_origins\":[\"https://example.com\"],\"allow_all_headers\":true,\"max_age\":-1},\"skip_interstitial\":true,\"service_auth_401_redirect\":true}'",
 			"parameters": {
@@ -51,34 +51,34 @@
 					"name": {
 						"type": "string",
 						"example": "\"Admin Site\"",
-						"description": "The name of the Application."
+						"description": "The name of the application."
 					},
 					"domain": {
 						"type": "string",
 						"example": "\"test.example.com/admin\"",
-						"description": "The domain and path that Access will block"
+						"description": "The domain and path that Access will secure."
 					},
 					"logo_url": {
 						"type": "string",
 						"example": "\"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\"",
-						"description": "Defines the image URL for the logo shown in the app launcher dashboard."
+						"description": "The image URL for the logo shown in the App Launcher dashboard."
 					},
 					"app_launcher_visible": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Defines whether or not an app is displayed in the App Launcher.",
+						"description": "Displays the application in the App Launcher.",
 						"default": true
 					},
 					"session_duration": {
 						"type": "string",
 						"example": "\"24h\"",
-						"description": "Defines the amount of time that the tokens issued for this application will be valid. Must be in the format '300ms' or '2h45m'. Valid time units are 'ns', 'us' (or 'µs'), 'ms', 's', 'm', 'h'.",
+						"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 						"default": "24h"
 					},
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
+						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -88,33 +88,33 @@
 					"auto_redirect_to_identity": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Option to skip identity provider selection if only one is configured in allowed_idps.",
+						"description": "When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.",
 						"default": false
 					},
 					"enable_binding_cookie": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Option that provides increased security against compromised authorization tokens and CSRF attacks.",
+						"description": "Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.",
 						"default": false
 					},
 					"custom_deny_message": {
 						"type": "string",
-						"description": "Option that returns a custom error message when a user is denied access to the application."
+						"description": "The custom error message shown to a user when they are denied access to the application."
 					},
 					"custom_deny_url": {
 						"type": "string",
-						"description": "Option that redirects to a custom URL when a user is denied access to the application."
+						"description": "The custom URL a user is redirected to when they are denied access to the application."
 					},
 					"http_only_cookie_attribute": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Defines whether or not access tokens will be set as http_only cookies. Increases security against XSS attacks.",
+						"description": "Enables the HttpOnly cookie attribute, which increases security against XSS attacks.",
 						"default": true
 					},
 					"same_site_cookie_attribute": {
 						"type": "string",
 						"example": "\"strict\"",
-						"description": "Defines the same-site cookie setting for access tokens. Increases security against CSRF attacks."
+						"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks."
 					},
 					"cors_headers": {
 						"type": "object",
@@ -163,12 +163,12 @@
 							},
 							"allow_credentials": {
 								"type": "boolean",
-								"description": "Include credentials (cookies, authorization headers, or TLS client certificates) with requests."
+								"description": "When set to `true`, includes credentials (cookies, authorization headers, or TLS client certificates) with requests."
 							},
 							"max_age": {
 								"type": "number",
 								"example": "-1",
-								"description": "The max age that preflight requests can be cached.",
+								"description": "The maximum number of seconds the results of a preflight request can be cached.",
 								"maximum": 86400,
 								"minimum": -1
 							}
@@ -177,12 +177,12 @@
 					"skip_interstitial": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Defines whether or not access to skip the authorization interstitial when using the cli."
+						"description": "Enables automatic authentication through cloudflared."
 					},
 					"service_auth_401_redirect": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Returns a 401 status code in service authentication rules on failed requests."
+						"description": "Returns a 401 status code when the request is blocked by a Service Auth policy."
 					}
 				},
 				"required_props": [
@@ -212,13 +212,13 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"aud\": \"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\",\n    \"type\": \"self_hosted\",\n    \"name\": \"Admin Site\",\n    \"domain\": \"test.example.com/admin\",\n    \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n    \"app_launcher_visible\": true,\n    \"session_duration\": \"24h\",\n    \"allowed_idps\": [\n      \"699d98642c564d2e855e9661899b7252\"\n    ],\n    \"auto_redirect_to_identity\": false,\n    \"enable_binding_cookie\": false,\n    \"http_only_cookie_attribute\": true,\n    \"same_site_cookie_attribute\": \"strict\",\n    \"cors_headers\": {\n      \"allowed_methods\": [\n        \"GET\"\n      ],\n      \"allowed_origins\": [\n        \"https://example.com\"\n      ],\n      \"allow_all_headers\": true,\n      \"max_age\": -1\n    },\n    \"skip_interstitial\": true,\n    \"service_auth_401_redirect\": true\n  }\n}"
 		},
 		{
-			"title": "Create Browser SSH Access Application",
-			"description": "Create a new Browser SSH Access Application",
+			"title": "Add an SSH application",
+			"description": "Adds a new SSH application to Access. The SSH terminal will render in the user's browser.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/identifier}/access/apps",
 			"method": "POST",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-applications-create-browser-ssh-access-application",
+			"html_id": "zone-level-access-applications-add-an-ssh-application",
 			"uri": "zones/:identifier/access/apps",
 			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/apps\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"ssh\",\"name\":\"Admin Site\",\"domain\":\"test.example.com/admin\",\"logo_url\":\"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\"app_launcher_visible\":true,\"session_duration\":\"24h\",\"allowed_idps\":[\"699d98642c564d2e855e9661899b7252\"],\"auto_redirect_to_identity\":false,\"enable_binding_cookie\":false,\"http_only_cookie_attribute\":true,\"same_site_cookie_attribute\":\"strict\",\"cors_headers\":{\"allowed_methods\":[\"GET\"],\"allowed_origins\":[\"https://example.com\"],\"allow_all_headers\":true,\"max_age\":-1},\"skip_interstitial\":true,\"service_auth_401_redirect\":true}'",
 			"parameters": {
@@ -234,34 +234,34 @@
 					"name": {
 						"type": "string",
 						"example": "\"Admin Site\"",
-						"description": "The name of the Application."
+						"description": "The name of the application."
 					},
 					"domain": {
 						"type": "string",
 						"example": "\"test.example.com/admin\"",
-						"description": "The domain and path that Access will block"
+						"description": "The domain and path that Access will secure."
 					},
 					"logo_url": {
 						"type": "string",
 						"example": "\"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\"",
-						"description": "Defines the image URL for the logo shown in the app launcher dashboard."
+						"description": "The image URL for the logo shown in the App Launcher dashboard."
 					},
 					"app_launcher_visible": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Defines whether or not an app is displayed in the App Launcher.",
+						"description": "Displays the application in the App Launcher.",
 						"default": true
 					},
 					"session_duration": {
 						"type": "string",
 						"example": "\"24h\"",
-						"description": "Defines the amount of time that the tokens issued for this application will be valid. Must be in the format '300ms' or '2h45m'. Valid time units are 'ns', 'us' (or 'µs'), 'ms', 's', 'm', 'h'.",
+						"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 						"default": "24h"
 					},
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
+						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -271,33 +271,33 @@
 					"auto_redirect_to_identity": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Option to skip identity provider selection if only one is configured in allowed_idps.",
+						"description": "When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.",
 						"default": false
 					},
 					"enable_binding_cookie": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Option that provides increased security against compromised authorization tokens and CSRF attacks.",
+						"description": "Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.",
 						"default": false
 					},
 					"custom_deny_message": {
 						"type": "string",
-						"description": "Option that returns a custom error message when a user is denied access to the application."
+						"description": "The custom error message shown to a user when they are denied access to the application."
 					},
 					"custom_deny_url": {
 						"type": "string",
-						"description": "Option that redirects to a custom URL when a user is denied access to the application."
+						"description": "The custom URL a user is redirected to when they are denied access to the application."
 					},
 					"http_only_cookie_attribute": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Defines whether or not access tokens will be set as http_only cookies. Increases security against XSS attacks.",
+						"description": "Enables the HttpOnly cookie attribute, which increases security against XSS attacks.",
 						"default": true
 					},
 					"same_site_cookie_attribute": {
 						"type": "string",
 						"example": "\"strict\"",
-						"description": "Defines the same-site cookie setting for access tokens. Increases security against CSRF attacks."
+						"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks."
 					},
 					"cors_headers": {
 						"type": "object",
@@ -346,12 +346,12 @@
 							},
 							"allow_credentials": {
 								"type": "boolean",
-								"description": "Include credentials (cookies, authorization headers, or TLS client certificates) with requests."
+								"description": "When set to `true`, includes credentials (cookies, authorization headers, or TLS client certificates) with requests."
 							},
 							"max_age": {
 								"type": "number",
 								"example": "-1",
-								"description": "The max age that preflight requests can be cached.",
+								"description": "The maximum number of seconds the results of a preflight request can be cached.",
 								"maximum": 86400,
 								"minimum": -1
 							}
@@ -360,12 +360,12 @@
 					"skip_interstitial": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Defines whether or not access to skip the authorization interstitial when using the cli."
+						"description": "Enables automatic authentication through cloudflared."
 					},
 					"service_auth_401_redirect": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Returns a 401 status code in service authentication rules on failed requests."
+						"description": "Returns a 401 status code when the request is blocked by a Service Auth policy."
 					}
 				},
 				"required_props": [
@@ -394,13 +394,13 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"type\": \"ssh\",\n    \"name\": \"Admin Site\",\n    \"domain\": \"test.example.com/admin\",\n    \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n    \"app_launcher_visible\": true,\n    \"session_duration\": \"24h\",\n    \"allowed_idps\": [\n      \"699d98642c564d2e855e9661899b7252\"\n    ],\n    \"auto_redirect_to_identity\": false,\n    \"enable_binding_cookie\": false,\n    \"http_only_cookie_attribute\": true,\n    \"same_site_cookie_attribute\": \"strict\",\n    \"cors_headers\": {\n      \"allowed_methods\": [\n        \"GET\"\n      ],\n      \"allowed_origins\": [\n        \"https://example.com\"\n      ],\n      \"allow_all_headers\": true,\n      \"max_age\": -1\n    },\n    \"skip_interstitial\": true,\n    \"service_auth_401_redirect\": true,\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"aud\": \"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\"\n  }\n}"
 		},
 		{
-			"title": "Create VNC Access Application",
-			"description": "Create a new VNC Access Application",
+			"title": "Add a VNC application",
+			"description": "Adds a new VNC application to Access. The VNC terminal will render in the user's browser.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/identifier}/access/apps",
 			"method": "POST",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-applications-create-vnc-access-application",
+			"html_id": "zone-level-access-applications-add-a-vnc-application",
 			"uri": "zones/:identifier/access/apps",
 			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/apps\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"vnc\",\"name\":\"Admin Site\",\"domain\":\"test.example.com/admin\",\"logo_url\":\"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\"app_launcher_visible\":true,\"session_duration\":\"24h\",\"allowed_idps\":[\"699d98642c564d2e855e9661899b7252\"],\"auto_redirect_to_identity\":false,\"enable_binding_cookie\":false,\"http_only_cookie_attribute\":true,\"same_site_cookie_attribute\":\"strict\",\"cors_headers\":{\"allowed_methods\":[\"GET\"],\"allowed_origins\":[\"https://example.com\"],\"allow_all_headers\":true,\"max_age\":-1},\"skip_interstitial\":true,\"service_auth_401_redirect\":true}'",
 			"parameters": {
@@ -416,34 +416,34 @@
 					"name": {
 						"type": "string",
 						"example": "\"Admin Site\"",
-						"description": "The name of the Application."
+						"description": "The name of the application."
 					},
 					"domain": {
 						"type": "string",
 						"example": "\"test.example.com/admin\"",
-						"description": "The domain and path that Access will block"
+						"description": "The domain and path that Access will secure."
 					},
 					"logo_url": {
 						"type": "string",
 						"example": "\"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\"",
-						"description": "Defines the image URL for the logo shown in the app launcher dashboard."
+						"description": "The image URL for the logo shown in the App Launcher dashboard."
 					},
 					"app_launcher_visible": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Defines whether or not an app is displayed in the App Launcher.",
+						"description": "Displays the application in the App Launcher.",
 						"default": true
 					},
 					"session_duration": {
 						"type": "string",
 						"example": "\"24h\"",
-						"description": "Defines the amount of time that the tokens issued for this application will be valid. Must be in the format '300ms' or '2h45m'. Valid time units are 'ns', 'us' (or 'µs'), 'ms', 's', 'm', 'h'.",
+						"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 						"default": "24h"
 					},
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
+						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -453,33 +453,33 @@
 					"auto_redirect_to_identity": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Option to skip identity provider selection if only one is configured in allowed_idps.",
+						"description": "When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.",
 						"default": false
 					},
 					"enable_binding_cookie": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Option that provides increased security against compromised authorization tokens and CSRF attacks.",
+						"description": "Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.",
 						"default": false
 					},
 					"custom_deny_message": {
 						"type": "string",
-						"description": "Option that returns a custom error message when a user is denied access to the application."
+						"description": "The custom error message shown to a user when they are denied access to the application."
 					},
 					"custom_deny_url": {
 						"type": "string",
-						"description": "Option that redirects to a custom URL when a user is denied access to the application."
+						"description": "The custom URL a user is redirected to when they are denied access to the application."
 					},
 					"http_only_cookie_attribute": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Defines whether or not access tokens will be set as http_only cookies. Increases security against XSS attacks.",
+						"description": "Enables the HttpOnly cookie attribute, which increases security against XSS attacks.",
 						"default": true
 					},
 					"same_site_cookie_attribute": {
 						"type": "string",
 						"example": "\"strict\"",
-						"description": "Defines the same-site cookie setting for access tokens. Increases security against CSRF attacks."
+						"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks."
 					},
 					"cors_headers": {
 						"type": "object",
@@ -528,12 +528,12 @@
 							},
 							"allow_credentials": {
 								"type": "boolean",
-								"description": "Include credentials (cookies, authorization headers, or TLS client certificates) with requests."
+								"description": "When set to `true`, includes credentials (cookies, authorization headers, or TLS client certificates) with requests."
 							},
 							"max_age": {
 								"type": "number",
 								"example": "-1",
-								"description": "The max age that preflight requests can be cached.",
+								"description": "The maximum number of seconds the results of a preflight request can be cached.",
 								"maximum": 86400,
 								"minimum": -1
 							}
@@ -542,12 +542,12 @@
 					"skip_interstitial": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Defines whether or not access to skip the authorization interstitial when using the cli."
+						"description": "Enables automatic authentication through cloudflared."
 					},
 					"service_auth_401_redirect": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Returns a 401 status code in service authentication rules on failed requests."
+						"description": "Returns a 401 status code when the request is blocked by a Service Auth policy."
 					}
 				},
 				"required_props": [
@@ -576,13 +576,13 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"type\": \"vnc\",\n    \"name\": \"Admin Site\",\n    \"domain\": \"test.example.com/admin\",\n    \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n    \"app_launcher_visible\": true,\n    \"session_duration\": \"24h\",\n    \"allowed_idps\": [\n      \"699d98642c564d2e855e9661899b7252\"\n    ],\n    \"auto_redirect_to_identity\": false,\n    \"enable_binding_cookie\": false,\n    \"http_only_cookie_attribute\": true,\n    \"same_site_cookie_attribute\": \"strict\",\n    \"cors_headers\": {\n      \"allowed_methods\": [\n        \"GET\"\n      ],\n      \"allowed_origins\": [\n        \"https://example.com\"\n      ],\n      \"allow_all_headers\": true,\n      \"max_age\": -1\n    },\n    \"skip_interstitial\": true,\n    \"service_auth_401_redirect\": true,\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"aud\": \"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\"\n  }\n}"
 		},
 		{
-			"title": "Create SaaS Access Application",
-			"description": "Create a new SaaS Access Application",
+			"title": "Add a SaaS application",
+			"description": "Adds a new SaaS application to Access.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/identifier}/access/apps",
 			"method": "POST",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-applications-create-saas-access-application",
+			"html_id": "zone-level-access-applications-add-a-saas-application",
 			"uri": "zones/:identifier/access/apps",
 			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/apps\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"saas\",\"name\":\"Admin Site\",\"logo_url\":\"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\"app_launcher_visible\":true,\"saas_app\":{\"consumer_service_url\":\"https://example.com\",\"sp_entity_id\":\"example unique name\",\"public_key\":\"example unique name\",\"idp_entity_id\":\"https://example.cloudflareaccess.com\",\"name_id_format\":\"id\",\"sso_endpoint\":\"https://example.cloudflareaccess.com/cdn-cgi/access/sso/saml/b3f58a2b414e0b51d45c8c2af26fccca0e27c63763c426fa52f98dcf0b3b3bfd\",\"custom_attributes\":{\"name\":\"family_name\",\"name_format\":\"urn:oasis:names:tc:SAML:2.0:attrname-format:basic\",\"source\":{\"name\":\"last_name\"}},\"created_at\":\"2014-01-01T05:20:00.12345Z\",\"updated_at\":\"2014-01-01T05:20:00.12345Z\"},\"allowed_idps\":[\"699d98642c564d2e855e9661899b7252\"],\"auto_redirect_to_identity\":false}'",
 			"parameters": {
@@ -598,17 +598,17 @@
 					"name": {
 						"type": "string",
 						"example": "\"Admin Site\"",
-						"description": "The name of the Application."
+						"description": "The name of the application."
 					},
 					"logo_url": {
 						"type": "string",
 						"example": "\"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\"",
-						"description": "Defines the image URL for the logo shown in the app launcher dashboard."
+						"description": "The image URL for the logo shown in the App Launcher dashboard."
 					},
 					"app_launcher_visible": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Defines whether or not an app is displayed in the App Launcher.",
+						"description": "Displays the application in the App Launcher.",
 						"default": true
 					},
 					"saas_app": {
@@ -618,7 +618,7 @@
 							"consumer_service_url": {
 								"type": "string",
 								"example": "\"https://example.com\"",
-								"description": "The service provider's endpoint (URL) that is responsible for receiving and parsing a SAML assertion."
+								"description": "The service provider's endpoint that is responsible for receiving and parsing a SAML assertion."
 							},
 							"sp_entity_id": {
 								"type": "string",
@@ -628,17 +628,17 @@
 							"public_key": {
 								"type": "string",
 								"example": "\"example unique name\"",
-								"description": "The Access Public Certificate that will be used to verify your identity."
+								"description": "The Access public certificate that will be used to verify your identity."
 							},
 							"idp_entity_id": {
 								"type": "string",
 								"example": "\"https://example.cloudflareaccess.com\"",
-								"description": "The unique identifier of your SaaS application. Sometimes referred to as the IDP Entity ID."
+								"description": "The unique identifier for your SaaS application."
 							},
 							"name_id_format": {
 								"type": "string",
 								"example": "\"id\"",
-								"description": "The value we provide to the SaaS application in the subject field.",
+								"description": "The format of the name identifier sent to the SaaS application.",
 								"enum": [
 									"id",
 									"email"
@@ -704,7 +704,7 @@
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
+						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -714,7 +714,7 @@
 					"auto_redirect_to_identity": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Option to skip identity provider selection if only one is configured in allowed_idps.",
+						"description": "When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.",
 						"default": false
 					}
 				},
@@ -736,13 +736,13 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"aud\": \"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\",\n    \"type\": \"saas\",\n    \"name\": \"Admin Site\",\n    \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n    \"app_launcher_visible\": true,\n    \"saas_app\": {\n      \"consumer_service_url\": \"https://example.com\",\n      \"sp_entity_id\": \"example unique name\",\n      \"public_key\": \"example unique name\",\n      \"idp_entity_id\": \"https://example.cloudflareaccess.com\",\n      \"name_id_format\": \"id\",\n      \"sso_endpoint\": \"https://example.cloudflareaccess.com/cdn-cgi/access/sso/saml/b3f58a2b414e0b51d45c8c2af26fccca0e27c63763c426fa52f98dcf0b3b3bfd\",\n      \"custom_attributes\": {\n        \"name\": \"family_name\",\n        \"name_format\": \"urn:oasis:names:tc:SAML:2.0:attrname-format:basic\",\n        \"source\": {\n          \"name\": \"last_name\"\n        }\n      },\n      \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n    },\n    \"allowed_idps\": [\n      \"699d98642c564d2e855e9661899b7252\"\n    ],\n    \"auto_redirect_to_identity\": false\n  }\n}"
 		},
 		{
-			"title": "Create App Launcher Access Application",
-			"description": "Create a new App Launcher Access Application",
+			"title": "Add the Access App Launcher",
+			"description": "Adds the App Launcher application to Access, allowing you to define which users can access the App Launcher portal.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/identifier}/access/apps",
 			"method": "POST",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-applications-create-app-launcher-access-application",
+			"html_id": "zone-level-access-applications-add-the-access-app-launcher",
 			"uri": "zones/:identifier/access/apps",
 			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/apps\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"app_launcher\",\"name\":\"App Launcher\",\"domain\":\"authdomain.cloudflareaccess.com\",\"session_duration\":\"24h\",\"allowed_idps\":[\"699d98642c564d2e855e9661899b7252\"],\"auto_redirect_to_identity\":false}'",
 			"parameters": {
@@ -768,26 +768,26 @@
 					"name": {
 						"type": "string",
 						"example": "\"App Launcher\"",
-						"description": "The name of the Application.",
+						"description": "The name of the application.",
 						"default": "App Launcher",
 						"readOnly": true
 					},
 					"domain": {
 						"type": "string",
 						"example": "\"authdomain.cloudflareaccess.com\"",
-						"description": "The name of the Application.",
+						"description": "The domain and path that Access will secure.",
 						"readOnly": true
 					},
 					"session_duration": {
 						"type": "string",
 						"example": "\"24h\"",
-						"description": "Defines the amount of time that the tokens issued for this application will be valid. Must be in the format '300ms' or '2h45m'. Valid time units are 'ns', 'us' (or 'µs'), 'ms', 's', 'm', 'h'.",
+						"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 						"default": "24h"
 					},
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
+						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -797,7 +797,7 @@
 					"auto_redirect_to_identity": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Option to skip identity provider selection if only one is configured in allowed_idps.",
+						"description": "When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.",
 						"default": false
 					}
 				},
@@ -817,13 +817,13 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"type\": \"app_launcher\",\n    \"name\": \"App Launcher\",\n    \"domain\": \"authdomain.cloudflareaccess.com\",\n    \"session_duration\": \"24h\",\n    \"allowed_idps\": [\n      \"699d98642c564d2e855e9661899b7252\"\n    ],\n    \"auto_redirect_to_identity\": false,\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"aud\": \"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\"\n  }\n}"
 		},
 		{
-			"title": "Create Device Enrollment Permissions Access Application",
-			"description": "Create a new Device Enrollment Permissions Application",
+			"title": "Add the WARP login application",
+			"description": "Adds the WARP login application to Access, allowing you to define which users can enroll devices.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/identifier}/access/apps",
 			"method": "POST",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-applications-create-device-enrollment-permissions-access-application",
+			"html_id": "zone-level-access-applications-add-the-warp-login-application",
 			"uri": "zones/:identifier/access/apps",
 			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/apps\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"warp\",\"name\":\"Warp Login App\",\"domain\":\"authdomain.cloudflareaccess.com/warp\",\"session_duration\":\"24h\",\"allowed_idps\":[\"699d98642c564d2e855e9661899b7252\"],\"auto_redirect_to_identity\":false}'",
 			"parameters": {
@@ -849,26 +849,26 @@
 					"name": {
 						"type": "string",
 						"example": "\"Warp Login App\"",
-						"description": "The name of the Application.",
+						"description": "The name of the application.",
 						"default": "Warp Login App",
 						"readOnly": true
 					},
 					"domain": {
 						"type": "string",
 						"example": "\"authdomain.cloudflareaccess.com/warp\"",
-						"description": "The name of the Application.",
+						"description": "The domain and path that Access will secure.",
 						"readOnly": true
 					},
 					"session_duration": {
 						"type": "string",
 						"example": "\"24h\"",
-						"description": "Defines the amount of time that the tokens issued for this application will be valid. Must be in the format '300ms' or '2h45m'. Valid time units are 'ns', 'us' (or 'µs'), 'ms', 's', 'm', 'h'.",
+						"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 						"default": "24h"
 					},
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
+						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -878,7 +878,7 @@
 					"auto_redirect_to_identity": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Option to skip identity provider selection if only one is configured in allowed_idps.",
+						"description": "When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.",
 						"default": false
 					}
 				},
@@ -898,13 +898,13 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"type\": \"warp\",\n    \"name\": \"Warp Login App\",\n    \"domain\": \"authdomain.cloudflareaccess.com/warp\",\n    \"session_duration\": \"24h\",\n    \"allowed_idps\": [\n      \"699d98642c564d2e855e9661899b7252\"\n    ],\n    \"auto_redirect_to_identity\": false,\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"aud\": \"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\"\n  }\n}"
 		},
 		{
-			"title": "Create Browser Isolation Permissions Access Application",
-			"description": "Create a new Browser Isolation Permissions Application",
+			"title": "Add the Clientless Web Isolation application",
+			"description": "Adds the Clientless Web Isolation application to Access, allowing you to define which users can access the clientless remote browser.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/identifier}/access/apps",
 			"method": "POST",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-applications-create-browser-isolation-permissions-access-application",
+			"html_id": "zone-level-access-applications-add-the-clientless-web-isolation-application",
 			"uri": "zones/:identifier/access/apps",
 			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/apps\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"biso\",\"name\":\"Clientless Web Isolation\",\"domain\":\"authdomain.cloudflareaccess.com/browser\",\"session_duration\":\"24h\",\"allowed_idps\":[\"699d98642c564d2e855e9661899b7252\"],\"auto_redirect_to_identity\":false}'",
 			"parameters": {
@@ -930,26 +930,26 @@
 					"name": {
 						"type": "string",
 						"example": "\"Clientless Web Isolation\"",
-						"description": "The name of the Application.",
+						"description": "The name of the application.",
 						"default": "Clientless Web Isolation",
 						"readOnly": true
 					},
 					"domain": {
 						"type": "string",
 						"example": "\"authdomain.cloudflareaccess.com/browser\"",
-						"description": "The name of the Application.",
+						"description": "The domain and path that Access will secure.",
 						"readOnly": true
 					},
 					"session_duration": {
 						"type": "string",
 						"example": "\"24h\"",
-						"description": "Defines the amount of time that the tokens issued for this application will be valid. Must be in the format '300ms' or '2h45m'. Valid time units are 'ns', 'us' (or 'µs'), 'ms', 's', 'm', 'h'.",
+						"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 						"default": "24h"
 					},
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
+						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -959,7 +959,7 @@
 					"auto_redirect_to_identity": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Option to skip identity provider selection if only one is configured in allowed_idps.",
+						"description": "When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.",
 						"default": false
 					}
 				},
@@ -979,13 +979,13 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"type\": \"biso\",\n    \"name\": \"Clientless Web Isolation\",\n    \"domain\": \"authdomain.cloudflareaccess.com/browser\",\n    \"session_duration\": \"24h\",\n    \"allowed_idps\": [\n      \"699d98642c564d2e855e9661899b7252\"\n    ],\n    \"auto_redirect_to_identity\": false,\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"aud\": \"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\"\n  }\n}"
 		},
 		{
-			"title": "Create Bookmark Access Application",
-			"description": "Create a new Bookmark Access Application",
+			"title": "Add the Bookmark application",
+			"description": "Adds the Bookmark application to Access, which allows you to add custom links to the App Launcher portal.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/identifier}/access/apps",
 			"method": "POST",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-applications-create-bookmark-access-application",
+			"html_id": "zone-level-access-applications-add-the-bookmark-application",
 			"uri": "zones/:identifier/access/apps",
 			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/apps\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"bookmark\",\"name\":\"Admin Site\",\"domain\":\"https://mybookmark.com\",\"logo_url\":\"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\"app_launcher_visible\":true}'",
 			"parameters": {
@@ -1001,7 +1001,7 @@
 					"name": {
 						"type": "string",
 						"example": "\"Admin Site\"",
-						"description": "The name of the Application."
+						"description": "The name of the application."
 					},
 					"domain": {
 						"type": "string",
@@ -1011,13 +1011,13 @@
 					"logo_url": {
 						"type": "string",
 						"example": "\"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\"",
-						"description": "Defines the image URL for the logo shown in the app launcher dashboard."
+						"description": "The image URL for the logo shown in the App Launcher dashboard."
 					},
 					"app_launcher_visible": {
 						"type": "boolean",
 						"example": "true",
 						"default": true,
-						"description": "Defines whether or not an app is displayed in the App Launcher."
+						"description": "Displays the application in the App Launcher."
 					}
 				},
 				"required_props": [
@@ -1036,13 +1036,13 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"aud\": \"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\",\n    \"type\": \"bookmark\",\n    \"name\": \"Admin Site\",\n    \"domain\": \"https://mybookmark.com\",\n    \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n    \"app_launcher_visible\": true\n  }\n}"
 		},
 		{
-			"title": "Update Self Hosted Access Application",
-			"description": "Update a Self Hosted Access Application",
+			"title": "Update a self-hosted application",
+			"description": "Updates the configuration for a self-hosted Access application.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/identifier}/access/apps/{#/definitions/app_id}",
 			"method": "PUT",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-applications-update-self-hosted-access-application",
+			"html_id": "zone-level-access-applications-update-a-self-hosted-application",
 			"uri": "zones/:identifier/access/apps/:app_id",
 			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/apps/699d98642c564d2e855e9661899b7252\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"self_hosted\",\"name\":\"Admin Site\",\"domain\":\"test.example.com/admin\",\"logo_url\":\"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\"app_launcher_visible\":true,\"session_duration\":\"24h\",\"allowed_idps\":[\"699d98642c564d2e855e9661899b7252\"],\"auto_redirect_to_identity\":false,\"enable_binding_cookie\":false,\"http_only_cookie_attribute\":true,\"same_site_cookie_attribute\":\"strict\",\"cors_headers\":{\"allowed_methods\":[\"GET\"],\"allowed_origins\":[\"https://example.com\"],\"allow_all_headers\":true,\"max_age\":-1},\"skip_interstitial\":true,\"service_auth_401_redirect\":true}'",
 			"parameters": {
@@ -1058,34 +1058,34 @@
 					"name": {
 						"type": "string",
 						"example": "\"Admin Site\"",
-						"description": "The name of the Application."
+						"description": "The name of the application."
 					},
 					"domain": {
 						"type": "string",
 						"example": "\"test.example.com/admin\"",
-						"description": "The domain and path that Access will block"
+						"description": "The domain and path that Access will secure."
 					},
 					"logo_url": {
 						"type": "string",
 						"example": "\"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\"",
-						"description": "Defines the image URL for the logo shown in the app launcher dashboard."
+						"description": "The image URL for the logo shown in the App Launcher dashboard."
 					},
 					"app_launcher_visible": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Defines whether or not an app is displayed in the App Launcher.",
+						"description": "Displays the application in the App Launcher.",
 						"default": true
 					},
 					"session_duration": {
 						"type": "string",
 						"example": "\"24h\"",
-						"description": "Defines the amount of time that the tokens issued for this application will be valid. Must be in the format '300ms' or '2h45m'. Valid time units are 'ns', 'us' (or 'µs'), 'ms', 's', 'm', 'h'.",
+						"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 						"default": "24h"
 					},
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
+						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -1095,33 +1095,33 @@
 					"auto_redirect_to_identity": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Option to skip identity provider selection if only one is configured in allowed_idps.",
+						"description": "When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.",
 						"default": false
 					},
 					"enable_binding_cookie": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Option that provides increased security against compromised authorization tokens and CSRF attacks.",
+						"description": "Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.",
 						"default": false
 					},
 					"custom_deny_message": {
 						"type": "string",
-						"description": "Option that returns a custom error message when a user is denied access to the application."
+						"description": "The custom error message shown to a user when they are denied access to the application."
 					},
 					"custom_deny_url": {
 						"type": "string",
-						"description": "Option that redirects to a custom URL when a user is denied access to the application."
+						"description": "The custom URL a user is redirected to when they are denied access to the application."
 					},
 					"http_only_cookie_attribute": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Defines whether or not access tokens will be set as http_only cookies. Increases security against XSS attacks.",
+						"description": "Enables the HttpOnly cookie attribute, which increases security against XSS attacks.",
 						"default": true
 					},
 					"same_site_cookie_attribute": {
 						"type": "string",
 						"example": "\"strict\"",
-						"description": "Defines the same-site cookie setting for access tokens. Increases security against CSRF attacks."
+						"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks."
 					},
 					"cors_headers": {
 						"type": "object",
@@ -1170,12 +1170,12 @@
 							},
 							"allow_credentials": {
 								"type": "boolean",
-								"description": "Include credentials (cookies, authorization headers, or TLS client certificates) with requests."
+								"description": "When set to `true`, includes credentials (cookies, authorization headers, or TLS client certificates) with requests."
 							},
 							"max_age": {
 								"type": "number",
 								"example": "-1",
-								"description": "The max age that preflight requests can be cached.",
+								"description": "The maximum number of seconds the results of a preflight request can be cached.",
 								"maximum": 86400,
 								"minimum": -1
 							}
@@ -1184,12 +1184,12 @@
 					"skip_interstitial": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Defines whether or not access to skip the authorization interstitial when using the cli."
+						"description": "Enables automatic authentication through cloudflared."
 					},
 					"service_auth_401_redirect": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Returns a 401 status code in service authentication rules on failed requests."
+						"description": "Returns a 401 status code when the request is blocked by a Service Auth policy."
 					}
 				},
 				"required_props": [
@@ -1219,13 +1219,13 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"aud\": \"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\",\n    \"type\": \"self_hosted\",\n    \"name\": \"Admin Site\",\n    \"domain\": \"test.example.com/admin\",\n    \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n    \"app_launcher_visible\": true,\n    \"session_duration\": \"24h\",\n    \"allowed_idps\": [\n      \"699d98642c564d2e855e9661899b7252\"\n    ],\n    \"auto_redirect_to_identity\": false,\n    \"enable_binding_cookie\": false,\n    \"http_only_cookie_attribute\": true,\n    \"same_site_cookie_attribute\": \"strict\",\n    \"cors_headers\": {\n      \"allowed_methods\": [\n        \"GET\"\n      ],\n      \"allowed_origins\": [\n        \"https://example.com\"\n      ],\n      \"allow_all_headers\": true,\n      \"max_age\": -1\n    },\n    \"skip_interstitial\": true,\n    \"service_auth_401_redirect\": true\n  }\n}"
 		},
 		{
-			"title": "Update Browser SSH Access Application",
-			"description": "Update a Browser SSH Access Application",
+			"title": "Update an SSH application",
+			"description": "Updates the configuration for an SSH Access application.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/identifier}/access/apps/{#/definitions/app_id}",
 			"method": "PUT",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-applications-update-browser-ssh-access-application",
+			"html_id": "zone-level-access-applications-update-an-ssh-application",
 			"uri": "zones/:identifier/access/apps/:app_id",
 			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/apps/699d98642c564d2e855e9661899b7252\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"ssh\",\"name\":\"Admin Site\",\"domain\":\"test.example.com/admin\",\"logo_url\":\"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\"app_launcher_visible\":true,\"session_duration\":\"24h\",\"allowed_idps\":[\"699d98642c564d2e855e9661899b7252\"],\"auto_redirect_to_identity\":false,\"enable_binding_cookie\":false,\"http_only_cookie_attribute\":true,\"same_site_cookie_attribute\":\"strict\",\"cors_headers\":{\"allowed_methods\":[\"GET\"],\"allowed_origins\":[\"https://example.com\"],\"allow_all_headers\":true,\"max_age\":-1},\"skip_interstitial\":true,\"service_auth_401_redirect\":true}'",
 			"parameters": {
@@ -1241,34 +1241,34 @@
 					"name": {
 						"type": "string",
 						"example": "\"Admin Site\"",
-						"description": "The name of the Application."
+						"description": "The name of the application."
 					},
 					"domain": {
 						"type": "string",
 						"example": "\"test.example.com/admin\"",
-						"description": "The domain and path that Access will block"
+						"description": "The domain and path that Access will secure."
 					},
 					"logo_url": {
 						"type": "string",
 						"example": "\"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\"",
-						"description": "Defines the image URL for the logo shown in the app launcher dashboard."
+						"description": "The image URL for the logo shown in the App Launcher dashboard."
 					},
 					"app_launcher_visible": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Defines whether or not an app is displayed in the App Launcher.",
+						"description": "Displays the application in the App Launcher.",
 						"default": true
 					},
 					"session_duration": {
 						"type": "string",
 						"example": "\"24h\"",
-						"description": "Defines the amount of time that the tokens issued for this application will be valid. Must be in the format '300ms' or '2h45m'. Valid time units are 'ns', 'us' (or 'µs'), 'ms', 's', 'm', 'h'.",
+						"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 						"default": "24h"
 					},
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
+						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -1278,33 +1278,33 @@
 					"auto_redirect_to_identity": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Option to skip identity provider selection if only one is configured in allowed_idps.",
+						"description": "When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.",
 						"default": false
 					},
 					"enable_binding_cookie": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Option that provides increased security against compromised authorization tokens and CSRF attacks.",
+						"description": "Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.",
 						"default": false
 					},
 					"custom_deny_message": {
 						"type": "string",
-						"description": "Option that returns a custom error message when a user is denied access to the application."
+						"description": "The custom error message shown to a user when they are denied access to the application."
 					},
 					"custom_deny_url": {
 						"type": "string",
-						"description": "Option that redirects to a custom URL when a user is denied access to the application."
+						"description": "The custom URL a user is redirected to when they are denied access to the application."
 					},
 					"http_only_cookie_attribute": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Defines whether or not access tokens will be set as http_only cookies. Increases security against XSS attacks.",
+						"description": "Enables the HttpOnly cookie attribute, which increases security against XSS attacks.",
 						"default": true
 					},
 					"same_site_cookie_attribute": {
 						"type": "string",
 						"example": "\"strict\"",
-						"description": "Defines the same-site cookie setting for access tokens. Increases security against CSRF attacks."
+						"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks."
 					},
 					"cors_headers": {
 						"type": "object",
@@ -1353,12 +1353,12 @@
 							},
 							"allow_credentials": {
 								"type": "boolean",
-								"description": "Include credentials (cookies, authorization headers, or TLS client certificates) with requests."
+								"description": "When set to `true`, includes credentials (cookies, authorization headers, or TLS client certificates) with requests."
 							},
 							"max_age": {
 								"type": "number",
 								"example": "-1",
-								"description": "The max age that preflight requests can be cached.",
+								"description": "The maximum number of seconds the results of a preflight request can be cached.",
 								"maximum": 86400,
 								"minimum": -1
 							}
@@ -1367,12 +1367,12 @@
 					"skip_interstitial": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Defines whether or not access to skip the authorization interstitial when using the cli."
+						"description": "Enables automatic authentication through cloudflared."
 					},
 					"service_auth_401_redirect": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Returns a 401 status code in service authentication rules on failed requests."
+						"description": "Returns a 401 status code when the request is blocked by a Service Auth policy."
 					}
 				},
 				"required_props": [
@@ -1401,13 +1401,13 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"type\": \"ssh\",\n    \"name\": \"Admin Site\",\n    \"domain\": \"test.example.com/admin\",\n    \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n    \"app_launcher_visible\": true,\n    \"session_duration\": \"24h\",\n    \"allowed_idps\": [\n      \"699d98642c564d2e855e9661899b7252\"\n    ],\n    \"auto_redirect_to_identity\": false,\n    \"enable_binding_cookie\": false,\n    \"http_only_cookie_attribute\": true,\n    \"same_site_cookie_attribute\": \"strict\",\n    \"cors_headers\": {\n      \"allowed_methods\": [\n        \"GET\"\n      ],\n      \"allowed_origins\": [\n        \"https://example.com\"\n      ],\n      \"allow_all_headers\": true,\n      \"max_age\": -1\n    },\n    \"skip_interstitial\": true,\n    \"service_auth_401_redirect\": true,\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"aud\": \"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\"\n  }\n}"
 		},
 		{
-			"title": "Update VNC Access Application",
-			"description": "Update a VNC Access Application",
+			"title": "Update a VNC application",
+			"description": "Updates the configuration for a VNC Access application.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/identifier}/access/apps/{#/definitions/app_id}",
 			"method": "PUT",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-applications-update-vnc-access-application",
+			"html_id": "zone-level-access-applications-update-a-vnc-application",
 			"uri": "zones/:identifier/access/apps/:app_id",
 			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/apps/699d98642c564d2e855e9661899b7252\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"vnc\",\"name\":\"Admin Site\",\"domain\":\"test.example.com/admin\",\"logo_url\":\"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\"app_launcher_visible\":true,\"session_duration\":\"24h\",\"allowed_idps\":[\"699d98642c564d2e855e9661899b7252\"],\"auto_redirect_to_identity\":false,\"enable_binding_cookie\":false,\"http_only_cookie_attribute\":true,\"same_site_cookie_attribute\":\"strict\",\"cors_headers\":{\"allowed_methods\":[\"GET\"],\"allowed_origins\":[\"https://example.com\"],\"allow_all_headers\":true,\"max_age\":-1},\"skip_interstitial\":true,\"service_auth_401_redirect\":true}'",
 			"parameters": {
@@ -1423,34 +1423,34 @@
 					"name": {
 						"type": "string",
 						"example": "\"Admin Site\"",
-						"description": "The name of the Application."
+						"description": "The name of the application."
 					},
 					"domain": {
 						"type": "string",
 						"example": "\"test.example.com/admin\"",
-						"description": "The domain and path that Access will block"
+						"description": "The domain and path that Access will secure."
 					},
 					"logo_url": {
 						"type": "string",
 						"example": "\"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\"",
-						"description": "Defines the image URL for the logo shown in the app launcher dashboard."
+						"description": "The image URL for the logo shown in the App Launcher dashboard."
 					},
 					"app_launcher_visible": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Defines whether or not an app is displayed in the App Launcher.",
+						"description": "Displays the application in the App Launcher.",
 						"default": true
 					},
 					"session_duration": {
 						"type": "string",
 						"example": "\"24h\"",
-						"description": "Defines the amount of time that the tokens issued for this application will be valid. Must be in the format '300ms' or '2h45m'. Valid time units are 'ns', 'us' (or 'µs'), 'ms', 's', 'm', 'h'.",
+						"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 						"default": "24h"
 					},
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
+						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -1460,33 +1460,33 @@
 					"auto_redirect_to_identity": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Option to skip identity provider selection if only one is configured in allowed_idps.",
+						"description": "When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.",
 						"default": false
 					},
 					"enable_binding_cookie": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Option that provides increased security against compromised authorization tokens and CSRF attacks.",
+						"description": "Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.",
 						"default": false
 					},
 					"custom_deny_message": {
 						"type": "string",
-						"description": "Option that returns a custom error message when a user is denied access to the application."
+						"description": "The custom error message shown to a user when they are denied access to the application."
 					},
 					"custom_deny_url": {
 						"type": "string",
-						"description": "Option that redirects to a custom URL when a user is denied access to the application."
+						"description": "The custom URL a user is redirected to when they are denied access to the application."
 					},
 					"http_only_cookie_attribute": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Defines whether or not access tokens will be set as http_only cookies. Increases security against XSS attacks.",
+						"description": "Enables the HttpOnly cookie attribute, which increases security against XSS attacks.",
 						"default": true
 					},
 					"same_site_cookie_attribute": {
 						"type": "string",
 						"example": "\"strict\"",
-						"description": "Defines the same-site cookie setting for access tokens. Increases security against CSRF attacks."
+						"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks."
 					},
 					"cors_headers": {
 						"type": "object",
@@ -1535,12 +1535,12 @@
 							},
 							"allow_credentials": {
 								"type": "boolean",
-								"description": "Include credentials (cookies, authorization headers, or TLS client certificates) with requests."
+								"description": "When set to `true`, includes credentials (cookies, authorization headers, or TLS client certificates) with requests."
 							},
 							"max_age": {
 								"type": "number",
 								"example": "-1",
-								"description": "The max age that preflight requests can be cached.",
+								"description": "The maximum number of seconds the results of a preflight request can be cached.",
 								"maximum": 86400,
 								"minimum": -1
 							}
@@ -1549,12 +1549,12 @@
 					"skip_interstitial": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Defines whether or not access to skip the authorization interstitial when using the cli."
+						"description": "Enables automatic authentication through cloudflared."
 					},
 					"service_auth_401_redirect": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Returns a 401 status code in service authentication rules on failed requests."
+						"description": "Returns a 401 status code when the request is blocked by a Service Auth policy."
 					}
 				},
 				"required_props": [
@@ -1583,13 +1583,13 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"type\": \"vnc\",\n    \"name\": \"Admin Site\",\n    \"domain\": \"test.example.com/admin\",\n    \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n    \"app_launcher_visible\": true,\n    \"session_duration\": \"24h\",\n    \"allowed_idps\": [\n      \"699d98642c564d2e855e9661899b7252\"\n    ],\n    \"auto_redirect_to_identity\": false,\n    \"enable_binding_cookie\": false,\n    \"http_only_cookie_attribute\": true,\n    \"same_site_cookie_attribute\": \"strict\",\n    \"cors_headers\": {\n      \"allowed_methods\": [\n        \"GET\"\n      ],\n      \"allowed_origins\": [\n        \"https://example.com\"\n      ],\n      \"allow_all_headers\": true,\n      \"max_age\": -1\n    },\n    \"skip_interstitial\": true,\n    \"service_auth_401_redirect\": true,\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"aud\": \"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\"\n  }\n}"
 		},
 		{
-			"title": "Update SaaS Access Application",
-			"description": "Update a new SaaS Access Application",
+			"title": "Update a SaaS application",
+			"description": "Updates the configuration for a SaaS Access application.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/identifier}/access/apps/{#/definitions/app_id}",
 			"method": "PUT",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-applications-update-saas-access-application",
+			"html_id": "zone-level-access-applications-update-a-saas-application",
 			"uri": "zones/:identifier/access/apps/:app_id",
 			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/apps/699d98642c564d2e855e9661899b7252\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"saas\",\"name\":\"Admin Site\",\"logo_url\":\"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\"app_launcher_visible\":true,\"saas_app\":{\"consumer_service_url\":\"https://example.com\",\"sp_entity_id\":\"example unique name\",\"public_key\":\"example unique name\",\"idp_entity_id\":\"https://example.cloudflareaccess.com\",\"name_id_format\":\"id\",\"sso_endpoint\":\"https://example.cloudflareaccess.com/cdn-cgi/access/sso/saml/b3f58a2b414e0b51d45c8c2af26fccca0e27c63763c426fa52f98dcf0b3b3bfd\",\"custom_attributes\":{\"name\":\"family_name\",\"name_format\":\"urn:oasis:names:tc:SAML:2.0:attrname-format:basic\",\"source\":{\"name\":\"last_name\"}},\"created_at\":\"2014-01-01T05:20:00.12345Z\",\"updated_at\":\"2014-01-01T05:20:00.12345Z\"},\"allowed_idps\":[\"699d98642c564d2e855e9661899b7252\"],\"auto_redirect_to_identity\":false}'",
 			"parameters": {
@@ -1605,17 +1605,17 @@
 					"name": {
 						"type": "string",
 						"example": "\"Admin Site\"",
-						"description": "The name of the Application."
+						"description": "The name of the application."
 					},
 					"logo_url": {
 						"type": "string",
 						"example": "\"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\"",
-						"description": "Defines the image URL for the logo shown in the app launcher dashboard."
+						"description": "The image URL for the logo shown in the App Launcher dashboard."
 					},
 					"app_launcher_visible": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Defines whether or not an app is displayed in the App Launcher.",
+						"description": "Displays the application in the App Launcher.",
 						"default": true
 					},
 					"saas_app": {
@@ -1625,7 +1625,7 @@
 							"consumer_service_url": {
 								"type": "string",
 								"example": "\"https://example.com\"",
-								"description": "The service provider's endpoint (URL) that is responsible for receiving and parsing a SAML assertion."
+								"description": "The service provider's endpoint that is responsible for receiving and parsing a SAML assertion."
 							},
 							"sp_entity_id": {
 								"type": "string",
@@ -1635,17 +1635,17 @@
 							"public_key": {
 								"type": "string",
 								"example": "\"example unique name\"",
-								"description": "The Access Public Certificate that will be used to verify your identity."
+								"description": "The Access public certificate that will be used to verify your identity."
 							},
 							"idp_entity_id": {
 								"type": "string",
 								"example": "\"https://example.cloudflareaccess.com\"",
-								"description": "The unique identifier of your SaaS application. Sometimes referred to as the IDP Entity ID."
+								"description": "The unique identifier for your SaaS application."
 							},
 							"name_id_format": {
 								"type": "string",
 								"example": "\"id\"",
-								"description": "The value we provide to the SaaS application in the subject field.",
+								"description": "The format of the name identifier sent to the SaaS application.",
 								"enum": [
 									"id",
 									"email"
@@ -1711,7 +1711,7 @@
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
+						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -1721,7 +1721,7 @@
 					"auto_redirect_to_identity": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Option to skip identity provider selection if only one is configured in allowed_idps.",
+						"description": "When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.",
 						"default": false
 					}
 				},
@@ -1743,13 +1743,13 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"aud\": \"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\",\n    \"type\": \"saas\",\n    \"name\": \"Admin Site\",\n    \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n    \"app_launcher_visible\": true,\n    \"saas_app\": {\n      \"consumer_service_url\": \"https://example.com\",\n      \"sp_entity_id\": \"example unique name\",\n      \"public_key\": \"example unique name\",\n      \"idp_entity_id\": \"https://example.cloudflareaccess.com\",\n      \"name_id_format\": \"id\",\n      \"sso_endpoint\": \"https://example.cloudflareaccess.com/cdn-cgi/access/sso/saml/b3f58a2b414e0b51d45c8c2af26fccca0e27c63763c426fa52f98dcf0b3b3bfd\",\n      \"custom_attributes\": {\n        \"name\": \"family_name\",\n        \"name_format\": \"urn:oasis:names:tc:SAML:2.0:attrname-format:basic\",\n        \"source\": {\n          \"name\": \"last_name\"\n        }\n      },\n      \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n    },\n    \"allowed_idps\": [\n      \"699d98642c564d2e855e9661899b7252\"\n    ],\n    \"auto_redirect_to_identity\": false\n  }\n}"
 		},
 		{
-			"title": "Update App Launcher Access Application",
-			"description": "Update an App Launcher Access Application",
+			"title": "Update the Access App Launcher",
+			"description": "Updates the App Launcher portal.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/identifier}/access/apps/{#/definitions/app_id}",
 			"method": "PUT",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-applications-update-app-launcher-access-application",
+			"html_id": "zone-level-access-applications-update-the-access-app-launcher",
 			"uri": "zones/:identifier/access/apps/:app_id",
 			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/apps/699d98642c564d2e855e9661899b7252\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"app_launcher\",\"name\":\"App Launcher\",\"domain\":\"authdomain.cloudflareaccess.com\",\"session_duration\":\"24h\",\"allowed_idps\":[\"699d98642c564d2e855e9661899b7252\"],\"auto_redirect_to_identity\":false}'",
 			"parameters": {
@@ -1775,26 +1775,26 @@
 					"name": {
 						"type": "string",
 						"example": "\"App Launcher\"",
-						"description": "The name of the Application.",
+						"description": "The name of the application.",
 						"default": "App Launcher",
 						"readOnly": true
 					},
 					"domain": {
 						"type": "string",
 						"example": "\"authdomain.cloudflareaccess.com\"",
-						"description": "The name of the Application.",
+						"description": "The domain and path that Access will secure.",
 						"readOnly": true
 					},
 					"session_duration": {
 						"type": "string",
 						"example": "\"24h\"",
-						"description": "Defines the amount of time that the tokens issued for this application will be valid. Must be in the format '300ms' or '2h45m'. Valid time units are 'ns', 'us' (or 'µs'), 'ms', 's', 'm', 'h'.",
+						"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 						"default": "24h"
 					},
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
+						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -1804,7 +1804,7 @@
 					"auto_redirect_to_identity": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Option to skip identity provider selection if only one is configured in allowed_idps.",
+						"description": "When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.",
 						"default": false
 					}
 				},
@@ -1824,13 +1824,13 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"type\": \"app_launcher\",\n    \"name\": \"App Launcher\",\n    \"domain\": \"authdomain.cloudflareaccess.com\",\n    \"session_duration\": \"24h\",\n    \"allowed_idps\": [\n      \"699d98642c564d2e855e9661899b7252\"\n    ],\n    \"auto_redirect_to_identity\": false,\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"aud\": \"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\"\n  }\n}"
 		},
 		{
-			"title": "Update Device Enrollment Permissions Access Application",
-			"description": "Update a Device Enrollment Permissions Application",
+			"title": "Update the WARP login application",
+			"description": "Updates the WARP device enrollment application.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/identifier}/access/apps/{#/definitions/app_id}",
 			"method": "PUT",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-applications-update-device-enrollment-permissions-access-application",
+			"html_id": "zone-level-access-applications-update-the-warp-login-application",
 			"uri": "zones/:identifier/access/apps/:app_id",
 			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/apps/699d98642c564d2e855e9661899b7252\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"warp\",\"name\":\"Warp Login App\",\"domain\":\"authdomain.cloudflareaccess.com/warp\",\"session_duration\":\"24h\",\"allowed_idps\":[\"699d98642c564d2e855e9661899b7252\"],\"auto_redirect_to_identity\":false}'",
 			"parameters": {
@@ -1856,26 +1856,26 @@
 					"name": {
 						"type": "string",
 						"example": "\"Warp Login App\"",
-						"description": "The name of the Application.",
+						"description": "The name of the application.",
 						"default": "Warp Login App",
 						"readOnly": true
 					},
 					"domain": {
 						"type": "string",
 						"example": "\"authdomain.cloudflareaccess.com/warp\"",
-						"description": "The name of the Application.",
+						"description": "The domain and path that Access will secure.",
 						"readOnly": true
 					},
 					"session_duration": {
 						"type": "string",
 						"example": "\"24h\"",
-						"description": "Defines the amount of time that the tokens issued for this application will be valid. Must be in the format '300ms' or '2h45m'. Valid time units are 'ns', 'us' (or 'µs'), 'ms', 's', 'm', 'h'.",
+						"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 						"default": "24h"
 					},
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
+						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -1885,7 +1885,7 @@
 					"auto_redirect_to_identity": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Option to skip identity provider selection if only one is configured in allowed_idps.",
+						"description": "When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.",
 						"default": false
 					}
 				},
@@ -1905,13 +1905,13 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"type\": \"warp\",\n    \"name\": \"Warp Login App\",\n    \"domain\": \"authdomain.cloudflareaccess.com/warp\",\n    \"session_duration\": \"24h\",\n    \"allowed_idps\": [\n      \"699d98642c564d2e855e9661899b7252\"\n    ],\n    \"auto_redirect_to_identity\": false,\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"aud\": \"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\"\n  }\n}"
 		},
 		{
-			"title": "Update Browser Isolation Permissions Access Application",
-			"description": "Update a Browser Isolation Permissions Application",
+			"title": "Update the Clientless Web Isolation application",
+			"description": "Updates the Clientless Web Isolation application.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/identifier}/access/apps/{#/definitions/app_id}",
 			"method": "PUT",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-applications-update-browser-isolation-permissions-access-application",
+			"html_id": "zone-level-access-applications-update-the-clientless-web-isolation-application",
 			"uri": "zones/:identifier/access/apps/:app_id",
 			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/apps/699d98642c564d2e855e9661899b7252\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"biso\",\"name\":\"Clientless Web Isolation\",\"domain\":\"authdomain.cloudflareaccess.com/browser\",\"session_duration\":\"24h\",\"allowed_idps\":[\"699d98642c564d2e855e9661899b7252\"],\"auto_redirect_to_identity\":false}'",
 			"parameters": {
@@ -1937,26 +1937,26 @@
 					"name": {
 						"type": "string",
 						"example": "\"Clientless Web Isolation\"",
-						"description": "The name of the Application.",
+						"description": "The name of the application.",
 						"default": "Clientless Web Isolation",
 						"readOnly": true
 					},
 					"domain": {
 						"type": "string",
 						"example": "\"authdomain.cloudflareaccess.com/browser\"",
-						"description": "The name of the Application.",
+						"description": "The domain and path that Access will secure.",
 						"readOnly": true
 					},
 					"session_duration": {
 						"type": "string",
 						"example": "\"24h\"",
-						"description": "Defines the amount of time that the tokens issued for this application will be valid. Must be in the format '300ms' or '2h45m'. Valid time units are 'ns', 'us' (or 'µs'), 'ms', 's', 'm', 'h'.",
+						"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 						"default": "24h"
 					},
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
+						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -1966,7 +1966,7 @@
 					"auto_redirect_to_identity": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Option to skip identity provider selection if only one is configured in allowed_idps.",
+						"description": "When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.",
 						"default": false
 					}
 				},
@@ -1986,13 +1986,13 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"type\": \"biso\",\n    \"name\": \"Clientless Web Isolation\",\n    \"domain\": \"authdomain.cloudflareaccess.com/browser\",\n    \"session_duration\": \"24h\",\n    \"allowed_idps\": [\n      \"699d98642c564d2e855e9661899b7252\"\n    ],\n    \"auto_redirect_to_identity\": false,\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"aud\": \"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\"\n  }\n}"
 		},
 		{
-			"title": "Update Bookmark Access Application",
-			"description": "Update a Bookmark Access Application",
+			"title": "Update the Bookmark application",
+			"description": "Updates the Bookmark application.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/identifier}/access/apps/{#/definitions/app_id}",
 			"method": "PUT",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-applications-update-bookmark-access-application",
+			"html_id": "zone-level-access-applications-update-the-bookmark-application",
 			"uri": "zones/:identifier/access/apps/:app_id",
 			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/apps/699d98642c564d2e855e9661899b7252\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"bookmark\",\"name\":\"Admin Site\",\"domain\":\"https://mybookmark.com\",\"logo_url\":\"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\"app_launcher_visible\":true}'",
 			"parameters": {
@@ -2008,7 +2008,7 @@
 					"name": {
 						"type": "string",
 						"example": "\"Admin Site\"",
-						"description": "The name of the Application."
+						"description": "The name of the application."
 					},
 					"domain": {
 						"type": "string",
@@ -2018,13 +2018,13 @@
 					"logo_url": {
 						"type": "string",
 						"example": "\"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\"",
-						"description": "Defines the image URL for the logo shown in the app launcher dashboard."
+						"description": "The image URL for the logo shown in the App Launcher dashboard."
 					},
 					"app_launcher_visible": {
 						"type": "boolean",
 						"example": "true",
 						"default": true,
-						"description": "Defines whether or not an app is displayed in the App Launcher."
+						"description": "Displays the application in the App Launcher."
 					}
 				},
 				"required_props": [
@@ -2043,37 +2043,37 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"aud\": \"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\",\n    \"type\": \"bookmark\",\n    \"name\": \"Admin Site\",\n    \"domain\": \"https://mybookmark.com\",\n    \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n    \"app_launcher_visible\": true\n  }\n}"
 		},
 		{
-			"title": "Delete Access Application",
-			"description": "Delete an Access Application",
+			"title": "Delete an Access application",
+			"description": "Deletes an application from Access.",
 			"rel": "self",
 			"href": "zones/{#/definitions/identifier}/access/apps/{#/definitions/app_id}",
 			"method": "DELETE",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-applications-delete-access-application",
+			"html_id": "zone-level-access-applications-delete-an-access-application",
 			"uri": "zones/:identifier/access/apps/:app_id",
 			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/apps/699d98642c564d2e855e9661899b7252\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"\n  }\n}"
 		},
 		{
-			"title": "Revoke Access Tokens",
-			"description": "Revoke any outstanding tokens issued for the Application.",
+			"title": "Revoke service tokens",
+			"description": "Revokes all service tokens used by an application.",
 			"rel": "self",
 			"href": "zones/{#/definitions/identifier}/access/apps/{#/definitions/app_id}/revoke_tokens",
 			"method": "POST",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-applications-revoke-access-tokens",
+			"html_id": "zone-level-access-applications-revoke-service-tokens",
 			"uri": "zones/:identifier/access/apps/:app_id/revoke_tokens",
 			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/apps/699d98642c564d2e855e9661899b7252/revoke_tokens\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true\n}"
 		},
 		{
-			"title": "User Policy Check",
-			"description": "Check a user's identity against the state of an application's policy",
+			"title": "Test Access policies",
+			"description": "Tests if a specific user has permission to access an application.",
 			"rel": "self",
 			"href": "zones/{#/definitions/identifier}/access/apps/{#/definitions/app_id}/user_policy_checks",
 			"method": "GET",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-applications-user-policy-check",
+			"html_id": "zone-level-access-applications-test-access-policies",
 			"uri": "zones/:identifier/access/apps/:app_id/user_policy_checks",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/apps/699d98642c564d2e855e9661899b7252/user_policy_checks?user_id=f174e90a-fafe-4643-bbbc-4a0ed4fc8415&ray_id=6d76a8a42ead4133&user_email=test@email.com\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {
@@ -2084,22 +2084,22 @@
 					"user_id": {
 						"type": "string",
 						"example": "\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"",
+						"description": "The ID of the user that you want to test with.",
 						"id": "https://api.cloudflare.com/schemas/v4/common/uuid.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 						"readOnly": true,
-						"maxLength": 36,
-						"description": "API uuid tag"
+						"maxLength": 36
 					},
 					"ray_id": {
 						"type": "string",
 						"example": "\"6d76a8a42ead4133\"",
-						"description": "The ray_id of the request for the failed login attempt",
+						"description": "The unique identifier for a failed login attempt. The user identity attributes from the request will be added to the test.",
 						"readOnly": true
 					},
 					"user_email": {
 						"type": "string",
 						"example": "\"test@email.com\"",
-						"description": "The email of the user that you want to test with",
+						"description": "The email of the user that you want to test with.",
 						"readOnly": true
 					}
 				},
@@ -2169,34 +2169,34 @@
 					"name": {
 						"type": "string",
 						"example": "\"Admin Site\"",
-						"description": "The name of the Application."
+						"description": "The name of the application."
 					},
 					"domain": {
 						"type": "string",
 						"example": "\"test.example.com/admin\"",
-						"description": "The domain and path that Access will block"
+						"description": "The domain and path that Access will secure."
 					},
 					"logo_url": {
 						"type": "string",
 						"example": "\"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\"",
-						"description": "Defines the image URL for the logo shown in the app launcher dashboard."
+						"description": "The image URL for the logo shown in the App Launcher dashboard."
 					},
 					"app_launcher_visible": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Defines whether or not an app is displayed in the App Launcher.",
+						"description": "Displays the application in the App Launcher.",
 						"default": true
 					},
 					"session_duration": {
 						"type": "string",
 						"example": "\"24h\"",
-						"description": "Defines the amount of time that the tokens issued for this application will be valid. Must be in the format '300ms' or '2h45m'. Valid time units are 'ns', 'us' (or 'µs'), 'ms', 's', 'm', 'h'.",
+						"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 						"default": "24h"
 					},
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
+						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -2206,33 +2206,33 @@
 					"auto_redirect_to_identity": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Option to skip identity provider selection if only one is configured in allowed_idps.",
+						"description": "When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.",
 						"default": false
 					},
 					"enable_binding_cookie": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Option that provides increased security against compromised authorization tokens and CSRF attacks.",
+						"description": "Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.",
 						"default": false
 					},
 					"custom_deny_message": {
 						"type": "string",
-						"description": "Option that returns a custom error message when a user is denied access to the application."
+						"description": "The custom error message shown to a user when they are denied access to the application."
 					},
 					"custom_deny_url": {
 						"type": "string",
-						"description": "Option that redirects to a custom URL when a user is denied access to the application."
+						"description": "The custom URL a user is redirected to when they are denied access to the application."
 					},
 					"http_only_cookie_attribute": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Defines whether or not access tokens will be set as http_only cookies. Increases security against XSS attacks.",
+						"description": "Enables the HttpOnly cookie attribute, which increases security against XSS attacks.",
 						"default": true
 					},
 					"same_site_cookie_attribute": {
 						"type": "string",
 						"example": "\"strict\"",
-						"description": "Defines the same-site cookie setting for access tokens. Increases security against CSRF attacks."
+						"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks."
 					},
 					"cors_headers": {
 						"type": "object",
@@ -2281,12 +2281,12 @@
 							},
 							"allow_credentials": {
 								"type": "boolean",
-								"description": "Include credentials (cookies, authorization headers, or TLS client certificates) with requests."
+								"description": "When set to `true`, includes credentials (cookies, authorization headers, or TLS client certificates) with requests."
 							},
 							"max_age": {
 								"type": "number",
 								"example": "-1",
-								"description": "The max age that preflight requests can be cached.",
+								"description": "The maximum number of seconds the results of a preflight request can be cached.",
 								"maximum": 86400,
 								"minimum": -1
 							}
@@ -2295,12 +2295,12 @@
 					"skip_interstitial": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Defines whether or not access to skip the authorization interstitial when using the cli."
+						"description": "Enables automatic authentication through cloudflared."
 					},
 					"service_auth_401_redirect": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Returns a 401 status code in service authentication rules on failed requests."
+						"description": "Returns a 401 status code when the request is blocked by a Service Auth policy."
 					}
 				},
 				"required_props": [],
@@ -2374,17 +2374,17 @@
 					"name": {
 						"type": "string",
 						"example": "\"Admin Site\"",
-						"description": "The name of the Application."
+						"description": "The name of the application."
 					},
 					"logo_url": {
 						"type": "string",
 						"example": "\"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\"",
-						"description": "Defines the image URL for the logo shown in the app launcher dashboard."
+						"description": "The image URL for the logo shown in the App Launcher dashboard."
 					},
 					"app_launcher_visible": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Defines whether or not an app is displayed in the App Launcher.",
+						"description": "Displays the application in the App Launcher.",
 						"default": true
 					},
 					"saas_app": {
@@ -2394,7 +2394,7 @@
 							"consumer_service_url": {
 								"type": "string",
 								"example": "\"https://example.com\"",
-								"description": "The service provider's endpoint (URL) that is responsible for receiving and parsing a SAML assertion."
+								"description": "The service provider's endpoint that is responsible for receiving and parsing a SAML assertion."
 							},
 							"sp_entity_id": {
 								"type": "string",
@@ -2404,17 +2404,17 @@
 							"public_key": {
 								"type": "string",
 								"example": "\"example unique name\"",
-								"description": "The Access Public Certificate that will be used to verify your identity."
+								"description": "The Access public certificate that will be used to verify your identity."
 							},
 							"idp_entity_id": {
 								"type": "string",
 								"example": "\"https://example.cloudflareaccess.com\"",
-								"description": "The unique identifier of your SaaS application. Sometimes referred to as the IDP Entity ID."
+								"description": "The unique identifier for your SaaS application."
 							},
 							"name_id_format": {
 								"type": "string",
 								"example": "\"id\"",
-								"description": "The value we provide to the SaaS application in the subject field.",
+								"description": "The format of the name identifier sent to the SaaS application.",
 								"enum": [
 									"id",
 									"email"
@@ -2480,7 +2480,7 @@
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
+						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -2490,7 +2490,7 @@
 					"auto_redirect_to_identity": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Option to skip identity provider selection if only one is configured in allowed_idps.",
+						"description": "When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.",
 						"default": false
 					}
 				},
@@ -2556,34 +2556,34 @@
 					"name": {
 						"type": "string",
 						"example": "\"Admin Site\"",
-						"description": "The name of the Application."
+						"description": "The name of the application."
 					},
 					"domain": {
 						"type": "string",
 						"example": "\"test.example.com/admin\"",
-						"description": "The domain and path that Access will block"
+						"description": "The domain and path that Access will secure."
 					},
 					"logo_url": {
 						"type": "string",
 						"example": "\"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\"",
-						"description": "Defines the image URL for the logo shown in the app launcher dashboard."
+						"description": "The image URL for the logo shown in the App Launcher dashboard."
 					},
 					"app_launcher_visible": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Defines whether or not an app is displayed in the App Launcher.",
+						"description": "Displays the application in the App Launcher.",
 						"default": true
 					},
 					"session_duration": {
 						"type": "string",
 						"example": "\"24h\"",
-						"description": "Defines the amount of time that the tokens issued for this application will be valid. Must be in the format '300ms' or '2h45m'. Valid time units are 'ns', 'us' (or 'µs'), 'ms', 's', 'm', 'h'.",
+						"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 						"default": "24h"
 					},
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
+						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -2593,33 +2593,33 @@
 					"auto_redirect_to_identity": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Option to skip identity provider selection if only one is configured in allowed_idps.",
+						"description": "When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.",
 						"default": false
 					},
 					"enable_binding_cookie": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Option that provides increased security against compromised authorization tokens and CSRF attacks.",
+						"description": "Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.",
 						"default": false
 					},
 					"custom_deny_message": {
 						"type": "string",
-						"description": "Option that returns a custom error message when a user is denied access to the application."
+						"description": "The custom error message shown to a user when they are denied access to the application."
 					},
 					"custom_deny_url": {
 						"type": "string",
-						"description": "Option that redirects to a custom URL when a user is denied access to the application."
+						"description": "The custom URL a user is redirected to when they are denied access to the application."
 					},
 					"http_only_cookie_attribute": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Defines whether or not access tokens will be set as http_only cookies. Increases security against XSS attacks.",
+						"description": "Enables the HttpOnly cookie attribute, which increases security against XSS attacks.",
 						"default": true
 					},
 					"same_site_cookie_attribute": {
 						"type": "string",
 						"example": "\"strict\"",
-						"description": "Defines the same-site cookie setting for access tokens. Increases security against CSRF attacks."
+						"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks."
 					},
 					"cors_headers": {
 						"type": "object",
@@ -2668,12 +2668,12 @@
 							},
 							"allow_credentials": {
 								"type": "boolean",
-								"description": "Include credentials (cookies, authorization headers, or TLS client certificates) with requests."
+								"description": "When set to `true`, includes credentials (cookies, authorization headers, or TLS client certificates) with requests."
 							},
 							"max_age": {
 								"type": "number",
 								"example": "-1",
-								"description": "The max age that preflight requests can be cached.",
+								"description": "The maximum number of seconds the results of a preflight request can be cached.",
 								"maximum": 86400,
 								"minimum": -1
 							}
@@ -2682,12 +2682,12 @@
 					"skip_interstitial": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Defines whether or not access to skip the authorization interstitial when using the cli."
+						"description": "Enables automatic authentication through cloudflared."
 					},
 					"service_auth_401_redirect": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Returns a 401 status code in service authentication rules on failed requests."
+						"description": "Returns a 401 status code when the request is blocked by a Service Auth policy."
 					}
 				},
 				"required_props": [],
@@ -2761,34 +2761,34 @@
 					"name": {
 						"type": "string",
 						"example": "\"Admin Site\"",
-						"description": "The name of the Application."
+						"description": "The name of the application."
 					},
 					"domain": {
 						"type": "string",
 						"example": "\"test.example.com/admin\"",
-						"description": "The domain and path that Access will block"
+						"description": "The domain and path that Access will secure."
 					},
 					"logo_url": {
 						"type": "string",
 						"example": "\"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\"",
-						"description": "Defines the image URL for the logo shown in the app launcher dashboard."
+						"description": "The image URL for the logo shown in the App Launcher dashboard."
 					},
 					"app_launcher_visible": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Defines whether or not an app is displayed in the App Launcher.",
+						"description": "Displays the application in the App Launcher.",
 						"default": true
 					},
 					"session_duration": {
 						"type": "string",
 						"example": "\"24h\"",
-						"description": "Defines the amount of time that the tokens issued for this application will be valid. Must be in the format '300ms' or '2h45m'. Valid time units are 'ns', 'us' (or 'µs'), 'ms', 's', 'm', 'h'.",
+						"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 						"default": "24h"
 					},
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
+						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -2798,33 +2798,33 @@
 					"auto_redirect_to_identity": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Option to skip identity provider selection if only one is configured in allowed_idps.",
+						"description": "When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.",
 						"default": false
 					},
 					"enable_binding_cookie": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Option that provides increased security against compromised authorization tokens and CSRF attacks.",
+						"description": "Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.",
 						"default": false
 					},
 					"custom_deny_message": {
 						"type": "string",
-						"description": "Option that returns a custom error message when a user is denied access to the application."
+						"description": "The custom error message shown to a user when they are denied access to the application."
 					},
 					"custom_deny_url": {
 						"type": "string",
-						"description": "Option that redirects to a custom URL when a user is denied access to the application."
+						"description": "The custom URL a user is redirected to when they are denied access to the application."
 					},
 					"http_only_cookie_attribute": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Defines whether or not access tokens will be set as http_only cookies. Increases security against XSS attacks.",
+						"description": "Enables the HttpOnly cookie attribute, which increases security against XSS attacks.",
 						"default": true
 					},
 					"same_site_cookie_attribute": {
 						"type": "string",
 						"example": "\"strict\"",
-						"description": "Defines the same-site cookie setting for access tokens. Increases security against CSRF attacks."
+						"description": "Sets the SameSite cookie setting, which provides increased security against CSRF attacks."
 					},
 					"cors_headers": {
 						"type": "object",
@@ -2873,12 +2873,12 @@
 							},
 							"allow_credentials": {
 								"type": "boolean",
-								"description": "Include credentials (cookies, authorization headers, or TLS client certificates) with requests."
+								"description": "When set to `true`, includes credentials (cookies, authorization headers, or TLS client certificates) with requests."
 							},
 							"max_age": {
 								"type": "number",
 								"example": "-1",
-								"description": "The max age that preflight requests can be cached.",
+								"description": "The maximum number of seconds the results of a preflight request can be cached.",
 								"maximum": 86400,
 								"minimum": -1
 							}
@@ -2887,12 +2887,12 @@
 					"skip_interstitial": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Defines whether or not access to skip the authorization interstitial when using the cli."
+						"description": "Enables automatic authentication through cloudflared."
 					},
 					"service_auth_401_redirect": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Returns a 401 status code in service authentication rules on failed requests."
+						"description": "Returns a 401 status code when the request is blocked by a Service Auth policy."
 					}
 				},
 				"required_props": [],
@@ -2976,26 +2976,26 @@
 					"name": {
 						"type": "string",
 						"example": "\"App Launcher\"",
-						"description": "The name of the Application.",
+						"description": "The name of the application.",
 						"default": "App Launcher",
 						"readOnly": true
 					},
 					"domain": {
 						"type": "string",
 						"example": "\"authdomain.cloudflareaccess.com\"",
-						"description": "The name of the Application.",
+						"description": "The domain and path that Access will secure.",
 						"readOnly": true
 					},
 					"session_duration": {
 						"type": "string",
 						"example": "\"24h\"",
-						"description": "Defines the amount of time that the tokens issued for this application will be valid. Must be in the format '300ms' or '2h45m'. Valid time units are 'ns', 'us' (or 'µs'), 'ms', 's', 'm', 'h'.",
+						"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 						"default": "24h"
 					},
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
+						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -3005,7 +3005,7 @@
 					"auto_redirect_to_identity": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Option to skip identity provider selection if only one is configured in allowed_idps.",
+						"description": "When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.",
 						"default": false
 					}
 				},
@@ -3080,26 +3080,26 @@
 					"name": {
 						"type": "string",
 						"example": "\"Warp Login App\"",
-						"description": "The name of the Application.",
+						"description": "The name of the application.",
 						"default": "Warp Login App",
 						"readOnly": true
 					},
 					"domain": {
 						"type": "string",
 						"example": "\"authdomain.cloudflareaccess.com/warp\"",
-						"description": "The name of the Application.",
+						"description": "The domain and path that Access will secure.",
 						"readOnly": true
 					},
 					"session_duration": {
 						"type": "string",
 						"example": "\"24h\"",
-						"description": "Defines the amount of time that the tokens issued for this application will be valid. Must be in the format '300ms' or '2h45m'. Valid time units are 'ns', 'us' (or 'µs'), 'ms', 's', 'm', 'h'.",
+						"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 						"default": "24h"
 					},
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
+						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -3109,7 +3109,7 @@
 					"auto_redirect_to_identity": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Option to skip identity provider selection if only one is configured in allowed_idps.",
+						"description": "When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.",
 						"default": false
 					}
 				},
@@ -3184,26 +3184,26 @@
 					"name": {
 						"type": "string",
 						"example": "\"Clientless Web Isolation\"",
-						"description": "The name of the Application.",
+						"description": "The name of the application.",
 						"default": "Clientless Web Isolation",
 						"readOnly": true
 					},
 					"domain": {
 						"type": "string",
 						"example": "\"authdomain.cloudflareaccess.com/browser\"",
-						"description": "The name of the Application.",
+						"description": "The domain and path that Access will secure.",
 						"readOnly": true
 					},
 					"session_duration": {
 						"type": "string",
 						"example": "\"24h\"",
-						"description": "Defines the amount of time that the tokens issued for this application will be valid. Must be in the format '300ms' or '2h45m'. Valid time units are 'ns', 'us' (or 'µs'), 'ms', 's', 'm', 'h'.",
+						"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 						"default": "24h"
 					},
 					"allowed_idps": {
 						"type": "array",
 						"example": "[\n  \"699d98642c564d2e855e9661899b7252\"\n]",
-						"description": "The identity providers selected for application. Defaults to all IDPs if empty.",
+						"description": "The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.",
 						"items": {
 							"type": "string",
 							"description": "The identity providers selected for application",
@@ -3213,7 +3213,7 @@
 					"auto_redirect_to_identity": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Option to skip identity provider selection if only one is configured in allowed_idps.",
+						"description": "When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.",
 						"default": false
 					}
 				},
@@ -3278,7 +3278,7 @@
 					"name": {
 						"type": "string",
 						"example": "\"Admin Site\"",
-						"description": "The name of the Application."
+						"description": "The name of the application."
 					},
 					"domain": {
 						"type": "string",
@@ -3288,13 +3288,13 @@
 					"logo_url": {
 						"type": "string",
 						"example": "\"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\"",
-						"description": "Defines the image URL for the logo shown in the app launcher dashboard."
+						"description": "The image URL for the logo shown in the App Launcher dashboard."
 					},
 					"app_launcher_visible": {
 						"type": "boolean",
 						"example": "true",
 						"default": true,
-						"description": "Defines whether or not an app is displayed in the App Launcher."
+						"description": "Displays the application in the App Launcher."
 					}
 				},
 				"required_props": [],
@@ -3316,7 +3316,7 @@
 		],
 		"example": "{\n  \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"aud\": \"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\",\n  \"type\": \"self_hosted\",\n  \"name\": \"Admin Site\",\n  \"domain\": \"test.example.com/admin\",\n  \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n  \"app_launcher_visible\": true,\n  \"session_duration\": \"24h\",\n  \"allowed_idps\": [\n    \"699d98642c564d2e855e9661899b7252\"\n  ],\n  \"auto_redirect_to_identity\": false,\n  \"enable_binding_cookie\": false,\n  \"http_only_cookie_attribute\": true,\n  \"same_site_cookie_attribute\": \"strict\",\n  \"cors_headers\": {\n    \"allowed_methods\": [\n      \"GET\"\n    ],\n    \"allowed_origins\": [\n      \"https://example.com\"\n    ],\n    \"allow_all_headers\": true,\n    \"max_age\": -1\n  },\n  \"skip_interstitial\": true,\n  \"service_auth_401_redirect\": true\n}",
 		"which_of": "anyOf",
-		"title": "Zone-Level Access Applications",
-		"description": "Access Applications define the routes that Access will block. (NOTE: it's recommended that the account route namespace is used instead: https://api.cloudflare.com/#access-applications-properties.)"
+		"title": "Zone-Level Access applications",
+		"description": "Applications secured behind Cloudflare Access for a specific zone. (Note: We recommend configuring settings by account rather than by zone. Refer to https://api.cloudflare.com/#access-applications-properties.)"
 	}
 }

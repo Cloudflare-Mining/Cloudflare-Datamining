@@ -1,11 +1,12 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/page-rule.json",
-	"title": "Page Rules for a Zone",
-	"description": "A rule describing target patterns for requests and actions to perform on matching requests",
+	"title": "Page Rules",
+	"description": "Page Rules allow you to perform one or more actions on requests matching target patterns.",
 	"type": "object",
 	"links": [
 		{
-			"title": "List Page Rules",
+			"title": "Get Page Rules",
+			"description": "Fetches Page Rules in a zone.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone_identifier}/pagerules",
 			"method": "GET",
@@ -21,7 +22,7 @@
 					"#zone:read"
 				]
 			},
-			"html_id": "page-rules-for-a-zone-list-page-rules",
+			"html_id": "page-rules-get-page-rules",
 			"uri": "zones/:zone_identifier/pagerules",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/pagerules?status=active&order=status&direction=desc&match=all\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {
@@ -36,7 +37,7 @@
 							"active",
 							"disabled"
 						],
-						"description": "Status of the page rule",
+						"description": "The status of the Page Rule.",
 						"default": "disabled"
 					},
 					"order": {
@@ -46,7 +47,7 @@
 							"status",
 							"priority"
 						],
-						"description": "Field to order page rules by",
+						"description": "The field used to sort returned Page Rules.",
 						"default": "priority"
 					},
 					"direction": {
@@ -56,7 +57,7 @@
 							"asc",
 							"desc"
 						],
-						"description": "Direction to order page rules",
+						"description": "The direction used to sort returned Page Rules.",
 						"default": "desc"
 					},
 					"match": {
@@ -67,7 +68,7 @@
 							"all"
 						],
 						"default": "all",
-						"description": "Whether to match all search requirements or at least one (any)"
+						"description": "When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match."
 					}
 				},
 				"required_props": [],
@@ -83,7 +84,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n      \"targets\": [\n        {\n          \"target\": \"url\",\n          \"constraint\": {\n            \"operator\": \"matches\",\n            \"value\": \"*example.com/images/*\"\n          }\n        }\n      ],\n      \"actions\": [\n        {\n          \"id\": \"always_online\",\n          \"value\": \"on\"\n        }\n      ],\n      \"priority\": 1,\n      \"status\": \"active\",\n      \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"created_on\": \"2014-01-01T05:20:00.12345Z\"\n    }\n  ]\n}"
 		},
 		{
-			"title": "Create Page Rule",
+			"title": "Create a Page Rule",
+			"description": "Creates a new Page Rule.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone_identifier}/pagerules",
 			"method": "POST",
@@ -99,7 +101,7 @@
 					"#zone:edit"
 				]
 			},
-			"html_id": "page-rules-for-a-zone-create-page-rule",
+			"html_id": "page-rules-create-a-page-rule",
 			"uri": "zones/:zone_identifier/pagerules",
 			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/pagerules\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"targets\":[{\"target\":\"url\",\"constraint\":{\"operator\":\"matches\",\"value\":\"*example.com/images/*\"}}],\"actions\":[{\"id\":\"always_online\",\"value\":\"on\"}],\"priority\":1,\"status\":\"active\"}'",
 			"parameters": {
@@ -110,9 +112,9 @@
 					"targets": {
 						"type": "array",
 						"example": "[\n  {\n    \"target\": \"url\",\n    \"constraint\": {\n      \"operator\": \"matches\",\n      \"value\": \"*example.com/images/*\"\n    }\n  }\n]",
-						"description": "Targets to evaluate on a request",
+						"description": "The rule targets to evaluate on each request.",
 						"items": {
-							"description": "A request condition target",
+							"description": "A request condition target.",
 							"required": [
 								"target",
 								"constraint"
@@ -120,18 +122,18 @@
 							"oneOf": [
 								{
 									"type": "object",
-									"description": "URL Target",
+									"description": "URL target",
 									"properties": {
 										"target": {
 											"enum": [
 												"url"
 											],
-											"description": "Target the URL of the request",
+											"description": "A target based on the URL of the request.",
 											"example": "url"
 										},
 										"constraint": {
 											"type": "object",
-											"description": "A target constraint",
+											"description": "The constraint of a target.",
 											"allOf": [
 												{
 													"description": "String constraint",
@@ -163,7 +165,7 @@
 														"value": {
 															"type": "string",
 															"pattern": "^(https?://)?(([-a-zA-Z0-9*]*\\.)+[-a-zA-Z0-9]{2,20})(:(8080|8443|443|80))?(/[\\S]+)?$",
-															"description": "URL match to test the request against. Use up to four asterisks as placeholders",
+															"description": "The URL pattern to match against the current request. The pattern may contain up to four asterisks ('*') as placeholders.",
 															"example": "*example.com/images/*"
 														}
 													}
@@ -178,7 +180,7 @@
 					"actions": {
 						"type": "array",
 						"example": "[\n  {\n    \"id\": \"always_online\",\n    \"value\": \"on\"\n  }\n]",
-						"description": "The set of actions to perform if the targets of this rule match the request. Actions can redirect the url to another url or override settings (but not both)",
+						"description": "The set of actions to perform if the targets of this rule match the request. Actions can redirect to another URL or override settings, but not both.",
 						"items": {
 							"oneOf": [
 								{
@@ -188,7 +190,7 @@
 											"enum": [
 												"forward_url"
 											],
-											"description": "The type of route",
+											"description": "The type of route.",
 											"example": "forward_url"
 										},
 										"value": {
@@ -198,14 +200,14 @@
 														"temporary",
 														"permanent"
 													],
-													"description": "The response type for the redirect",
+													"description": "The response type for the URL redirect.",
 													"example": "temporary"
 												},
 												"url": {
 													"type": "string",
-													"description": "The URL to redirect the request to",
+													"description": "The URL to redirect the request to.",
 													"example": "http://www.example.com/somewhere/$1/astring/$2/anotherstring/$3",
-													"cfNotes": "{$num} refers to the position of '*' in a constraint value"
+													"cfNotes": "${num} refers to the position of '*' in the constraint value."
 												}
 											}
 										},
@@ -213,7 +215,7 @@
 											"type": "string",
 											"readOnly": true,
 											"format": "date-time",
-											"description": "last time this override was modified",
+											"description": "The timestamp of when the override was last modified.",
 											"example": "2014-01-01T05:20:00.12345Z"
 										}
 									}
@@ -224,7 +226,7 @@
 					"priority": {
 						"type": "integer",
 						"example": "1",
-						"description": "A number that indicates the preference for a page rule over another. In the case where you may have a catch-all page rule (e.g., #1: '/images/*') but want a rule that is more specific to take precedence (e.g., #2: '/images/special/*'), you'll want to specify a higher priority on the latter (#2) so it will override the first.",
+						"description": "The priority of the rule, used to define which Page Rule is processed over another. A higher number indicates a higher priority. For example, if you have a catch-all Page Rule (rule A: `/images/*`) but want a more specific Page Rule to take precedence (rule B: `/images/special/*`), specify a higher priority for rule B so it overrides rule A.",
 						"default": 1
 					},
 					"status": {
@@ -234,7 +236,7 @@
 							"active",
 							"disabled"
 						],
-						"description": "Status of the page rule",
+						"description": "The status of the Page Rule.",
 						"default": "disabled"
 					}
 				},
@@ -252,7 +254,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n    \"targets\": [\n      {\n        \"target\": \"url\",\n        \"constraint\": {\n          \"operator\": \"matches\",\n          \"value\": \"*example.com/images/*\"\n        }\n      }\n    ],\n    \"actions\": [\n      {\n        \"id\": \"always_online\",\n        \"value\": \"on\"\n      }\n    ],\n    \"priority\": 1,\n    \"status\": \"active\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
 		},
 		{
-			"title": "Page Rule Details",
+			"title": "Get a Page Rule",
+			"description": "Fetches the details of a Page Rule.",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_identifier}/pagerules/{#/definitions/identifier}",
 			"method": "GET",
@@ -268,14 +271,14 @@
 					"#zone:read"
 				]
 			},
-			"html_id": "page-rules-for-a-zone-page-rule-details",
+			"html_id": "page-rules-get-a-page-rule",
 			"uri": "zones/:zone_identifier/pagerules/:identifier",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/pagerules/9a7806061c88ada191ed06f989cc3dac\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n    \"targets\": [\n      {\n        \"target\": \"url\",\n        \"constraint\": {\n          \"operator\": \"matches\",\n          \"value\": \"*example.com/images/*\"\n        }\n      }\n    ],\n    \"actions\": [\n      {\n        \"id\": \"always_online\",\n        \"value\": \"on\"\n      }\n    ],\n    \"priority\": 1,\n    \"status\": \"active\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
 		},
 		{
-			"title": "Update Page Rule",
-			"description": "Replace a page rule. The final rule will exactly match the data passed with this request.",
+			"title": "Update a Page Rule",
+			"description": "Replaces the configuration of an existing Page Rule. The configuration of the updated Page Rule will exactly match the data passed in the API request.",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_identifier}/pagerules/{#/definitions/identifier}",
 			"method": "PUT",
@@ -291,7 +294,7 @@
 					"#zone:edit"
 				]
 			},
-			"html_id": "page-rules-for-a-zone-update-page-rule",
+			"html_id": "page-rules-update-a-page-rule",
 			"uri": "zones/:zone_identifier/pagerules/:identifier",
 			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/pagerules/9a7806061c88ada191ed06f989cc3dac\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"targets\":[{\"target\":\"url\",\"constraint\":{\"operator\":\"matches\",\"value\":\"*example.com/images/*\"}}],\"actions\":[{\"id\":\"always_online\",\"value\":\"on\"}],\"priority\":1,\"status\":\"active\"}'",
 			"parameters": {
@@ -302,9 +305,9 @@
 					"targets": {
 						"type": "array",
 						"example": "[\n  {\n    \"target\": \"url\",\n    \"constraint\": {\n      \"operator\": \"matches\",\n      \"value\": \"*example.com/images/*\"\n    }\n  }\n]",
-						"description": "Targets to evaluate on a request",
+						"description": "The rule targets to evaluate on each request.",
 						"items": {
-							"description": "A request condition target",
+							"description": "A request condition target.",
 							"required": [
 								"target",
 								"constraint"
@@ -312,18 +315,18 @@
 							"oneOf": [
 								{
 									"type": "object",
-									"description": "URL Target",
+									"description": "URL target",
 									"properties": {
 										"target": {
 											"enum": [
 												"url"
 											],
-											"description": "Target the URL of the request",
+											"description": "A target based on the URL of the request.",
 											"example": "url"
 										},
 										"constraint": {
 											"type": "object",
-											"description": "A target constraint",
+											"description": "The constraint of a target.",
 											"allOf": [
 												{
 													"description": "String constraint",
@@ -355,7 +358,7 @@
 														"value": {
 															"type": "string",
 															"pattern": "^(https?://)?(([-a-zA-Z0-9*]*\\.)+[-a-zA-Z0-9]{2,20})(:(8080|8443|443|80))?(/[\\S]+)?$",
-															"description": "URL match to test the request against. Use up to four asterisks as placeholders",
+															"description": "The URL pattern to match against the current request. The pattern may contain up to four asterisks ('*') as placeholders.",
 															"example": "*example.com/images/*"
 														}
 													}
@@ -370,7 +373,7 @@
 					"actions": {
 						"type": "array",
 						"example": "[\n  {\n    \"id\": \"always_online\",\n    \"value\": \"on\"\n  }\n]",
-						"description": "The set of actions to perform if the targets of this rule match the request. Actions can redirect the url to another url or override settings (but not both)",
+						"description": "The set of actions to perform if the targets of this rule match the request. Actions can redirect to another URL or override settings, but not both.",
 						"items": {
 							"oneOf": [
 								{
@@ -380,7 +383,7 @@
 											"enum": [
 												"forward_url"
 											],
-											"description": "The type of route",
+											"description": "The type of route.",
 											"example": "forward_url"
 										},
 										"value": {
@@ -390,14 +393,14 @@
 														"temporary",
 														"permanent"
 													],
-													"description": "The response type for the redirect",
+													"description": "The response type for the URL redirect.",
 													"example": "temporary"
 												},
 												"url": {
 													"type": "string",
-													"description": "The URL to redirect the request to",
+													"description": "The URL to redirect the request to.",
 													"example": "http://www.example.com/somewhere/$1/astring/$2/anotherstring/$3",
-													"cfNotes": "{$num} refers to the position of '*' in a constraint value"
+													"cfNotes": "${num} refers to the position of '*' in the constraint value."
 												}
 											}
 										},
@@ -405,7 +408,7 @@
 											"type": "string",
 											"readOnly": true,
 											"format": "date-time",
-											"description": "last time this override was modified",
+											"description": "The timestamp of when the override was last modified.",
 											"example": "2014-01-01T05:20:00.12345Z"
 										}
 									}
@@ -416,7 +419,7 @@
 					"priority": {
 						"type": "integer",
 						"example": "1",
-						"description": "A number that indicates the preference for a page rule over another. In the case where you may have a catch-all page rule (e.g., #1: '/images/*') but want a rule that is more specific to take precedence (e.g., #2: '/images/special/*'), you'll want to specify a higher priority on the latter (#2) so it will override the first.",
+						"description": "The priority of the rule, used to define which Page Rule is processed over another. A higher number indicates a higher priority. For example, if you have a catch-all Page Rule (rule A: `/images/*`) but want a more specific Page Rule to take precedence (rule B: `/images/special/*`), specify a higher priority for rule B so it overrides rule A.",
 						"default": 1
 					},
 					"status": {
@@ -426,7 +429,7 @@
 							"active",
 							"disabled"
 						],
-						"description": "Status of the page rule",
+						"description": "The status of the Page Rule.",
 						"default": "disabled"
 					}
 				},
@@ -444,7 +447,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n    \"targets\": [\n      {\n        \"target\": \"url\",\n        \"constraint\": {\n          \"operator\": \"matches\",\n          \"value\": \"*example.com/images/*\"\n        }\n      }\n    ],\n    \"actions\": [\n      {\n        \"id\": \"always_online\",\n        \"value\": \"on\"\n      }\n    ],\n    \"priority\": 1,\n    \"status\": \"active\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
 		},
 		{
-			"title": "Edit Page Rule",
+			"title": "Edit a Page Rule",
+			"description": "Updates one or more fields of an existing Page Rule.",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_identifier}/pagerules/{#/definitions/identifier}",
 			"method": "PATCH",
@@ -460,7 +464,7 @@
 					"#zone:edit"
 				]
 			},
-			"html_id": "page-rules-for-a-zone-edit-page-rule",
+			"html_id": "page-rules-edit-a-page-rule",
 			"uri": "zones/:zone_identifier/pagerules/:identifier",
 			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/pagerules/9a7806061c88ada191ed06f989cc3dac\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"targets\":[{\"target\":\"url\",\"constraint\":{\"operator\":\"matches\",\"value\":\"*example.com/images/*\"}}],\"actions\":[{\"id\":\"always_online\",\"value\":\"on\"}],\"priority\":1,\"status\":\"active\"}'",
 			"parameters": {
@@ -471,9 +475,9 @@
 					"targets": {
 						"type": "array",
 						"example": "[\n  {\n    \"target\": \"url\",\n    \"constraint\": {\n      \"operator\": \"matches\",\n      \"value\": \"*example.com/images/*\"\n    }\n  }\n]",
-						"description": "Targets to evaluate on a request",
+						"description": "The rule targets to evaluate on each request.",
 						"items": {
-							"description": "A request condition target",
+							"description": "A request condition target.",
 							"required": [
 								"target",
 								"constraint"
@@ -481,18 +485,18 @@
 							"oneOf": [
 								{
 									"type": "object",
-									"description": "URL Target",
+									"description": "URL target",
 									"properties": {
 										"target": {
 											"enum": [
 												"url"
 											],
-											"description": "Target the URL of the request",
+											"description": "A target based on the URL of the request.",
 											"example": "url"
 										},
 										"constraint": {
 											"type": "object",
-											"description": "A target constraint",
+											"description": "The constraint of a target.",
 											"allOf": [
 												{
 													"description": "String constraint",
@@ -524,7 +528,7 @@
 														"value": {
 															"type": "string",
 															"pattern": "^(https?://)?(([-a-zA-Z0-9*]*\\.)+[-a-zA-Z0-9]{2,20})(:(8080|8443|443|80))?(/[\\S]+)?$",
-															"description": "URL match to test the request against. Use up to four asterisks as placeholders",
+															"description": "The URL pattern to match against the current request. The pattern may contain up to four asterisks ('*') as placeholders.",
 															"example": "*example.com/images/*"
 														}
 													}
@@ -539,7 +543,7 @@
 					"actions": {
 						"type": "array",
 						"example": "[\n  {\n    \"id\": \"always_online\",\n    \"value\": \"on\"\n  }\n]",
-						"description": "The set of actions to perform if the targets of this rule match the request. Actions can redirect the url to another url or override settings (but not both)",
+						"description": "The set of actions to perform if the targets of this rule match the request. Actions can redirect to another URL or override settings, but not both.",
 						"items": {
 							"oneOf": [
 								{
@@ -549,7 +553,7 @@
 											"enum": [
 												"forward_url"
 											],
-											"description": "The type of route",
+											"description": "The type of route.",
 											"example": "forward_url"
 										},
 										"value": {
@@ -559,14 +563,14 @@
 														"temporary",
 														"permanent"
 													],
-													"description": "The response type for the redirect",
+													"description": "The response type for the URL redirect.",
 													"example": "temporary"
 												},
 												"url": {
 													"type": "string",
-													"description": "The URL to redirect the request to",
+													"description": "The URL to redirect the request to.",
 													"example": "http://www.example.com/somewhere/$1/astring/$2/anotherstring/$3",
-													"cfNotes": "{$num} refers to the position of '*' in a constraint value"
+													"cfNotes": "${num} refers to the position of '*' in the constraint value."
 												}
 											}
 										},
@@ -574,7 +578,7 @@
 											"type": "string",
 											"readOnly": true,
 											"format": "date-time",
-											"description": "last time this override was modified",
+											"description": "The timestamp of when the override was last modified.",
 											"example": "2014-01-01T05:20:00.12345Z"
 										}
 									}
@@ -585,7 +589,7 @@
 					"priority": {
 						"type": "integer",
 						"example": "1",
-						"description": "A number that indicates the preference for a page rule over another. In the case where you may have a catch-all page rule (e.g., #1: '/images/*') but want a rule that is more specific to take precedence (e.g., #2: '/images/special/*'), you'll want to specify a higher priority on the latter (#2) so it will override the first.",
+						"description": "The priority of the rule, used to define which Page Rule is processed over another. A higher number indicates a higher priority. For example, if you have a catch-all Page Rule (rule A: `/images/*`) but want a more specific Page Rule to take precedence (rule B: `/images/special/*`), specify a higher priority for rule B so it overrides rule A.",
 						"default": 1
 					},
 					"status": {
@@ -595,7 +599,7 @@
 							"active",
 							"disabled"
 						],
-						"description": "Status of the page rule",
+						"description": "The status of the Page Rule.",
 						"default": "disabled"
 					}
 				},
@@ -612,7 +616,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n    \"targets\": [\n      {\n        \"target\": \"url\",\n        \"constraint\": {\n          \"operator\": \"matches\",\n          \"value\": \"*example.com/images/*\"\n        }\n      }\n    ],\n    \"actions\": [\n      {\n        \"id\": \"always_online\",\n        \"value\": \"on\"\n      }\n    ],\n    \"priority\": 1,\n    \"status\": \"active\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
 		},
 		{
-			"title": "Delete Page Rule",
+			"title": "Delete a Page Rule",
+			"description": "Deletes an existing Page Rule.",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_identifier}/pagerules/{#/definitions/identifier}",
 			"method": "DELETE",
@@ -628,13 +633,13 @@
 					"#zone:edit"
 				]
 			},
-			"html_id": "page-rules-for-a-zone-delete-page-rule",
+			"html_id": "page-rules-delete-a-page-rule",
 			"uri": "zones/:zone_identifier/pagerules/:identifier",
 			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/pagerules/9a7806061c88ada191ed06f989cc3dac\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\"\n  }\n}"
 		}
 	],
-	"html_id": "page-rules-for-a-zone",
+	"html_id": "page-rules",
 	"object_definition": {
 		"_formatter": {
 			"jsonMediaType": {}
@@ -652,9 +657,9 @@
 			"targets": {
 				"type": "array",
 				"example": "[\n  {\n    \"target\": \"url\",\n    \"constraint\": {\n      \"operator\": \"matches\",\n      \"value\": \"*example.com/images/*\"\n    }\n  }\n]",
-				"description": "Targets to evaluate on a request",
+				"description": "The rule targets to evaluate on each request.",
 				"items": {
-					"description": "A request condition target",
+					"description": "A request condition target.",
 					"required": [
 						"target",
 						"constraint"
@@ -662,18 +667,18 @@
 					"oneOf": [
 						{
 							"type": "object",
-							"description": "URL Target",
+							"description": "URL target",
 							"properties": {
 								"target": {
 									"enum": [
 										"url"
 									],
-									"description": "Target the URL of the request",
+									"description": "A target based on the URL of the request.",
 									"example": "url"
 								},
 								"constraint": {
 									"type": "object",
-									"description": "A target constraint",
+									"description": "The constraint of a target.",
 									"allOf": [
 										{
 											"description": "String constraint",
@@ -705,7 +710,7 @@
 												"value": {
 													"type": "string",
 													"pattern": "^(https?://)?(([-a-zA-Z0-9*]*\\.)+[-a-zA-Z0-9]{2,20})(:(8080|8443|443|80))?(/[\\S]+)?$",
-													"description": "URL match to test the request against. Use up to four asterisks as placeholders",
+													"description": "The URL pattern to match against the current request. The pattern may contain up to four asterisks ('*') as placeholders.",
 													"example": "*example.com/images/*"
 												}
 											}
@@ -720,7 +725,7 @@
 			"actions": {
 				"type": "array",
 				"example": "[\n  {\n    \"id\": \"always_online\",\n    \"value\": \"on\"\n  }\n]",
-				"description": "The set of actions to perform if the targets of this rule match the request. Actions can redirect the url to another url or override settings (but not both)",
+				"description": "The set of actions to perform if the targets of this rule match the request. Actions can redirect to another URL or override settings, but not both.",
 				"items": {
 					"oneOf": [
 						{
@@ -730,7 +735,7 @@
 									"enum": [
 										"forward_url"
 									],
-									"description": "The type of route",
+									"description": "The type of route.",
 									"example": "forward_url"
 								},
 								"value": {
@@ -740,14 +745,14 @@
 												"temporary",
 												"permanent"
 											],
-											"description": "The response type for the redirect",
+											"description": "The response type for the URL redirect.",
 											"example": "temporary"
 										},
 										"url": {
 											"type": "string",
-											"description": "The URL to redirect the request to",
+											"description": "The URL to redirect the request to.",
 											"example": "http://www.example.com/somewhere/$1/astring/$2/anotherstring/$3",
-											"cfNotes": "{$num} refers to the position of '*' in a constraint value"
+											"cfNotes": "${num} refers to the position of '*' in the constraint value."
 										}
 									}
 								},
@@ -755,7 +760,7 @@
 									"type": "string",
 									"readOnly": true,
 									"format": "date-time",
-									"description": "last time this override was modified",
+									"description": "The timestamp of when the override was last modified.",
 									"example": "2014-01-01T05:20:00.12345Z"
 								}
 							}
@@ -766,7 +771,7 @@
 			"priority": {
 				"type": "integer",
 				"example": "1",
-				"description": "A number that indicates the preference for a page rule over another. In the case where you may have a catch-all page rule (e.g., #1: '/images/*') but want a rule that is more specific to take precedence (e.g., #2: '/images/special/*'), you'll want to specify a higher priority on the latter (#2) so it will override the first.",
+				"description": "The priority of the rule, used to define which Page Rule is processed over another. A higher number indicates a higher priority. For example, if you have a catch-all Page Rule (rule A: `/images/*`) but want a more specific Page Rule to take precedence (rule B: `/images/special/*`), specify a higher priority for rule B so it overrides rule A.",
 				"default": 1
 			},
 			"status": {
@@ -776,7 +781,7 @@
 					"active",
 					"disabled"
 				],
-				"description": "Status of the page rule",
+				"description": "The status of the Page Rule.",
 				"default": "disabled"
 			},
 			"modified_on": {
@@ -784,14 +789,14 @@
 				"example": "\"2014-01-01T05:20:00.12345Z\"",
 				"readOnly": true,
 				"format": "date-time",
-				"description": "When the page rule was last modified"
+				"description": "The timestamp of when the Page Rule was last modified."
 			},
 			"created_on": {
 				"type": "string",
 				"example": "\"2014-01-01T05:20:00.12345Z\"",
 				"readOnly": true,
 				"format": "date-time",
-				"description": "When the page rule was created"
+				"description": "The timestamp of when the Page Rule was created."
 			}
 		},
 		"required_props": [
@@ -806,7 +811,7 @@
 		"optional_props": [],
 		"objects": [],
 		"example": "{\n  \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n  \"targets\": [\n    {\n      \"target\": \"url\",\n      \"constraint\": {\n        \"operator\": \"matches\",\n        \"value\": \"*example.com/images/*\"\n      }\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"always_online\",\n      \"value\": \"on\"\n    }\n  ],\n  \"priority\": 1,\n  \"status\": \"active\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
-		"title": "Page Rules for a Zone",
-		"description": "A rule describing target patterns for requests and actions to perform on matching requests"
+		"title": "Page Rules",
+		"description": "Page Rules allow you to perform one or more actions on requests matching target patterns."
 	}
 }

@@ -497,7 +497,7 @@
 		},
 		{
 			"title": "Get Opportunistic Encryption setting",
-			"description": "Enable the Opportunistic Encryption feature for this zone.",
+			"description": "Gets Opportunistic Encryption setting.",
 			"rel": "tag:cloudflare.com,2017:setting-opportunistic-encryption",
 			"href": "zones/{#/definitions/zone_identifier}/settings/opportunistic_encryption",
 			"method": "GET",
@@ -819,7 +819,7 @@
 		},
 		{
 			"title": "Get Minimum TLS Version setting",
-			"description": "Only accept HTTPS requests that use at least the TLS protocol version specified. For example, if TLS 1.1 is selected, TLS 1.0 connections will be rejected, while 1.1, 1.2, and 1.3 (if enabled) will be permitted.",
+			"description": "Gets Minimum TLS Version setting.",
 			"rel": "tag:cloudflare.com,2017:setting-min-tls-version",
 			"href": "zones/{#/definitions/zone_identifier}/settings/min_tls_version",
 			"method": "GET",
@@ -841,8 +841,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": \"1.0\"\n}"
 		},
 		{
-			"title": "Get Ciphers setting",
-			"description": "An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.",
+			"title": "Get ciphers setting",
+			"description": "Gets ciphers setting.",
 			"rel": "tag:cloudflare.com,2019:setting-ciphers",
 			"href": "zones/{#/definitions/zone_identifier}/settings/ciphers",
 			"method": "GET",
@@ -864,8 +864,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": []\n}"
 		},
 		{
-			"title": "Get Zone Enable TLS 1.3 setting",
-			"description": "Enable Crypto TLS 1.3 feature for this zone.",
+			"title": "Get TLS 1.3 setting enabled for a zone",
+			"description": "Gets TLS 1.3 setting enabled for a zone.",
 			"rel": "tag:cloudflare.com,2017:setting-tls-1.3",
 			"href": "zones/{#/definitions/zone_identifier}/settings/tls_1_3",
 			"method": "GET",
@@ -881,7 +881,7 @@
 					"#zone_settings:edit"
 				]
 			},
-			"html_id": "zone-settings-get-zone-enable-tls-1.3-setting",
+			"html_id": "zone-settings-get-tls-1.3-setting-enabled-for-a-zone",
 			"uri": "zones/:zone_identifier/settings/tls_1_3",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/settings/tls_1_3\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": \"off\"\n}"
@@ -980,7 +980,7 @@
 		},
 		{
 			"title": "Get HTTP2 setting",
-			"description": "Value of the HTTP2 setting",
+			"description": "Value of the HTTP2 setting.",
 			"rel": "tag:cloudflare.com,2017:setting-http2",
 			"href": "zones/{#/definitions/zone_identifier}/settings/http2",
 			"method": "GET",
@@ -1003,7 +1003,7 @@
 		},
 		{
 			"title": "Get HTTP3 setting",
-			"description": "Value of the HTTP3 setting",
+			"description": "Value of the HTTP3 setting.",
 			"rel": "tag:cloudflare.com,2019:setting-http3",
 			"href": "zones/{#/definitions/zone_identifier}/settings/http3",
 			"method": "GET",
@@ -1049,7 +1049,7 @@
 		},
 		{
 			"title": "Get 0-RTT session resumption setting",
-			"description": "Value of the 0-RTT setting",
+			"description": "Gets 0-RTT session resumption setting.",
 			"rel": "tag:cloudflare.com,2019:setting-0rtt",
 			"href": "zones/{#/definitions/zone_identifier}/settings/0rtt",
 			"method": "GET",
@@ -1095,7 +1095,7 @@
 		},
 		{
 			"title": "Get WebSockets setting",
-			"description": "WebSockets are open connections sustained between the client and the origin server. Inside a WebSockets connection, the client and the origin can pass data back and forth without having to reestablish sessions. This makes exchanging data within a WebSockets connection fast. WebSockets are often used for real-time applications such as live chat and gaming.  (https://support.cloudflare.com/hc/en-us/articles/200169466-Can-I-use-Cloudflare-with-WebSockets-)",
+			"description": "Gets Websockets setting. For more information about Websockets, please refer to [Using Cloudflare with WebSockets](https://support.cloudflare.com/hc/en-us/articles/200169466-Using-Cloudflare-with-WebSockets).",
 			"rel": "tag:cloudflare.com,2017:setting-websockets",
 			"href": "zones/{#/definitions/zone_identifier}/settings/websockets",
 			"method": "GET",
@@ -1141,7 +1141,7 @@
 		},
 		{
 			"title": "Get HTTP/2 Edge Prioritization setting",
-			"description": "HTTP/2 Edge Prioritization optimises the delivery of resources served through HTTP/2 to improve page load performance. It also supports fine control of content delivery when used in conjunction with Workers.",
+			"description": "Gets HTTP/2 Edge Prioritization setting.",
 			"rel": "tag:cloudflare.com,2019:setting-h2-prioritization",
 			"href": "zones/{#/definitions/zone_identifier}/settings/h2_prioritization",
 			"method": "GET",
@@ -2239,7 +2239,7 @@
 		},
 		{
 			"title": "Change Opportunistic Encryption setting",
-			"description": "Enable the Opportunistic Encryption feature for this zone.",
+			"description": "Changes Opportunistic Encryption setting.",
 			"rel": "tag:cloudflare.com,2017:setting-opportunistic-encryption",
 			"href": "zones/{#/definitions/zone_identifier}/settings/opportunistic_encryption",
 			"method": "PATCH",
@@ -2270,7 +2270,7 @@
 							"on",
 							"off"
 						],
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"default": "on",
 						"cfNotes": "Default value depends on the zone's plan level."
 					}
@@ -3000,7 +3000,7 @@
 		},
 		{
 			"title": "Change Minimum TLS Version setting",
-			"description": "Only accept HTTPS requests that use at least the TLS protocol version specified. For example, if TLS 1.1 is selected, TLS 1.0 connections will be rejected, while 1.1, 1.2, and 1.3 (if enabled) will be permitted.",
+			"description": "Changes Minimum TLS Version setting.",
 			"rel": "tag:cloudflare.com,2017:setting-min-tls-version",
 			"href": "zones/{#/definitions/zone_identifier}/settings/min_tls_version",
 			"method": "PATCH",
@@ -3033,7 +3033,7 @@
 							"1.2",
 							"1.3"
 						],
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"default": "1.0"
 					}
 				},
@@ -3047,8 +3047,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": \"1.0\"\n}"
 		},
 		{
-			"title": "Change Ciphers setting",
-			"description": "An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.",
+			"title": "Change ciphers setting",
+			"description": "Changes ciphers setting.",
 			"rel": "tag:cloudflare.com,2019:setting-ciphers",
 			"href": "zones/{#/definitions/zone_identifier}/settings/ciphers",
 			"method": "PATCH",
@@ -3075,7 +3075,7 @@
 					"value": {
 						"type": "array",
 						"example": "[\n  \"ECDHE-RSA-AES128-GCM-SHA256\",\n  \"AES128-SHA\"\n]",
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"default": [],
 						"uniqueItems": true,
 						"items": {
@@ -3094,7 +3094,7 @@
 		},
 		{
 			"title": "Change TLS 1.3 setting",
-			"description": "Enable Crypto TLS 1.3 feature for this zone.",
+			"description": "Changes TLS 1.3 setting.",
 			"rel": "tag:cloudflare.com,2017:setting-tls-1.3",
 			"href": "zones/{#/definitions/zone_identifier}/settings/tls_1_3",
 			"method": "PATCH",
@@ -3126,7 +3126,7 @@
 							"off",
 							"zrt"
 						],
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"default": "off",
 						"cfNotes": "Default value depends on the zone's plan level."
 					}
@@ -3188,7 +3188,7 @@
 		},
 		{
 			"title": "Change HTTP2 setting",
-			"description": "Value of the HTTP2 setting",
+			"description": "Value of the HTTP2 setting.",
 			"rel": "tag:cloudflare.com,2017:setting-http2",
 			"href": "zones/{#/definitions/zone_identifier}/settings/http2",
 			"method": "PATCH",
@@ -3219,7 +3219,7 @@
 							"on",
 							"off"
 						],
-						"description": "Value of the HTTP2 setting",
+						"description": "Value of the HTTP2 setting.",
 						"default": "off"
 					}
 				},
@@ -3234,7 +3234,7 @@
 		},
 		{
 			"title": "Change HTTP3 setting",
-			"description": "Value of the HTTP3 setting",
+			"description": "Value of the HTTP3 setting.",
 			"rel": "tag:cloudflare.com,2019:setting-http3",
 			"href": "zones/{#/definitions/zone_identifier}/settings/http3",
 			"method": "PATCH",
@@ -3265,7 +3265,7 @@
 							"on",
 							"off"
 						],
-						"description": "Value of the HTTP3 setting",
+						"description": "Value of the HTTP3 setting.",
 						"default": "off"
 					}
 				},
@@ -3326,7 +3326,7 @@
 		},
 		{
 			"title": "Change 0-RTT session resumption setting",
-			"description": "Value of the 0-RTT setting",
+			"description": "Changes the 0-RTT session resumption setting.",
 			"rel": "tag:cloudflare.com,2019:setting-0rtt",
 			"href": "zones/{#/definitions/zone_identifier}/settings/0rtt",
 			"method": "PATCH",
@@ -3357,7 +3357,7 @@
 							"on",
 							"off"
 						],
-						"description": "Value of the 0-RTT setting",
+						"description": "Value of the 0-RTT setting.",
 						"default": "off"
 					}
 				},
@@ -3419,7 +3419,7 @@
 		},
 		{
 			"title": "Change WebSockets setting",
-			"description": "WebSockets are open connections sustained between the client and the origin server. Inside a WebSockets connection, the client and the origin can pass data back and forth without having to reestablish sessions. This makes exchanging data within a WebSockets connection fast. WebSockets are often used for real-time applications such as live chat and gaming.  (https://support.cloudflare.com/hc/en-us/articles/200169466-Can-I-use-Cloudflare-with-WebSockets-)",
+			"description": "Changes Websockets setting. For more information about Websockets, please refer to [Using Cloudflare with WebSockets](https://support.cloudflare.com/hc/en-us/articles/200169466-Using-Cloudflare-with-WebSockets).",
 			"rel": "tag:cloudflare.com,2017:setting-websockets",
 			"href": "zones/{#/definitions/zone_identifier}/settings/websockets",
 			"method": "PATCH",
@@ -3450,7 +3450,7 @@
 							"off",
 							"on"
 						],
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"default": "off"
 					}
 				},
@@ -3512,7 +3512,7 @@
 		},
 		{
 			"title": "Change HTTP/2 Edge Prioritization setting",
-			"description": "HTTP/2 Edge Prioritization optimises the delivery of resources served through HTTP/2 to improve page load performance. It also supports fine control of content delivery when used in conjunction with Workers.",
+			"description": "Changes HTTP/2 Edge Prioritization setting.",
 			"rel": "tag:cloudflare.com,2019:setting-h2-prioritization",
 			"href": "zones/{#/definitions/zone_identifier}/settings/h2_prioritization",
 			"method": "PATCH",
@@ -4755,7 +4755,7 @@
 					"id": {
 						"type": "string",
 						"example": "\"websockets\"",
-						"description": "ID of the zone setting",
+						"description": "ID of the zone setting.",
 						"enum": [
 							"websockets"
 						]
@@ -4769,7 +4769,7 @@
 							"string"
 						],
 						"example": "\"off\"",
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"enum": [
 							"off",
 							"on"
@@ -4808,7 +4808,7 @@
 				"objects": [],
 				"example": "{\n  \"id\": \"websockets\",\n  \"value\": \"off\",\n  \"editable\": true,\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
 				"title": "WebSockets",
-				"description": "WebSockets are open connections sustained between the client and the origin server. Inside a WebSockets connection, the client and the origin can pass data back and forth without having to reestablish sessions. This makes exchanging data within a WebSockets connection fast. WebSockets are often used for real-time applications such as live chat and gaming.  (https://support.cloudflare.com/hc/en-us/articles/200169466-Can-I-use-Cloudflare-with-WebSockets-)"
+				"description": "WebSockets are open connections sustained between the client and the origin server. Inside a WebSockets connection, the client and the origin can pass data back and forth without having to reestablish sessions. This makes exchanging data within a WebSockets connection fast. WebSockets are often used for real-time applications such as live chat and gaming. For more information refer to [Can I use Cloudflare with Websockets](https://support.cloudflare.com/hc/en-us/articles/200169466-Can-I-use-Cloudflare-with-WebSockets-)"
 			},
 			{
 				"all_props": {
@@ -4875,7 +4875,7 @@
 					"id": {
 						"type": "string",
 						"example": "\"tls_1_2_only\"",
-						"description": "Zone setting identifier",
+						"description": "Zone setting identifier.",
 						"enum": [
 							"tls_1_2_only"
 						]
@@ -4889,7 +4889,7 @@
 							"string"
 						],
 						"example": "\"off\"",
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"enum": [
 							"off",
 							"on"
@@ -4927,8 +4927,8 @@
 				],
 				"objects": [],
 				"example": "{\n  \"id\": \"tls_1_2_only\",\n  \"value\": \"off\",\n  \"editable\": true,\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
-				"title": "TLS1.2 Only",
-				"description": "Only allow TLS1.2"
+				"title": "TLS1.2 only",
+				"description": "Only allows TLS1.2."
 			},
 			{
 				"all_props": {
@@ -6140,7 +6140,7 @@
 					"id": {
 						"type": "string",
 						"example": "\"min_tls_version\"",
-						"description": "ID of the zone setting",
+						"description": "ID of the zone setting.",
 						"enum": [
 							"min_tls_version"
 						]
@@ -6154,7 +6154,7 @@
 							"string"
 						],
 						"example": "\"1.0\"",
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"enum": [
 							"1.0",
 							"1.1",
@@ -6194,15 +6194,15 @@
 				],
 				"objects": [],
 				"example": "{\n  \"id\": \"min_tls_version\",\n  \"value\": \"1.0\",\n  \"editable\": true,\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
-				"title": "Zone Minimum TLS Version Value",
-				"description": "Only accept HTTPS requests that use at least the TLS protocol version specified. For example, if TLS 1.1 is selected, TLS 1.0 connections will be rejected, while 1.1, 1.2, and 1.3 (if enabled) will be permitted."
+				"title": "Zone Minimum TLS Version value",
+				"description": "Only accepts HTTPS requests that use at least the TLS protocol version specified. For example, if TLS 1.1 is selected, TLS 1.0 connections will be rejected, while 1.1, 1.2, and 1.3 (if enabled) will be permitted."
 			},
 			{
 				"all_props": {
 					"id": {
 						"type": "string",
 						"example": "\"ciphers\"",
-						"description": "ID of the zone setting",
+						"description": "ID of the zone setting.",
 						"enum": [
 							"ciphers"
 						]
@@ -6216,7 +6216,7 @@
 							"array"
 						],
 						"example": "[\n  \"ECDHE-RSA-AES128-GCM-SHA256\",\n  \"AES128-SHA\"\n]",
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"default": [],
 						"uniqueItems": true,
 						"items": {
@@ -6254,7 +6254,7 @@
 				],
 				"objects": [],
 				"example": "{\n  \"id\": \"ciphers\",\n  \"value\": [\n    \"ECDHE-RSA-AES128-GCM-SHA256\",\n    \"AES128-SHA\"\n  ],\n  \"editable\": true,\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
-				"title": "Zone Ciphers allowed for TLS termination",
+				"title": "Zone ciphers allowed for TLS termination",
 				"description": "An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format."
 			},
 			{
@@ -6262,7 +6262,7 @@
 					"id": {
 						"type": "string",
 						"example": "\"tls_1_3\"",
-						"description": "ID of the zone setting",
+						"description": "ID of the zone setting.",
 						"enum": [
 							"tls_1_3"
 						]
@@ -6276,7 +6276,7 @@
 							"string"
 						],
 						"example": "\"off\"",
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"enum": [
 							"on",
 							"off",
@@ -6316,15 +6316,15 @@
 				],
 				"objects": [],
 				"example": "{\n  \"id\": \"tls_1_3\",\n  \"value\": \"off\",\n  \"editable\": true,\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
-				"title": "Zone Enable TLS 1.3 Value",
-				"description": "Enable Crypto TLS 1.3 feature for this zone."
+				"title": "Enable TLS 1.3 value for a zone",
+				"description": "Enables Crypto TLS 1.3 feature for a zone."
 			},
 			{
 				"all_props": {
 					"id": {
 						"type": "string",
 						"example": "\"opportunistic_encryption\"",
-						"description": "ID of the zone setting",
+						"description": "ID of the zone setting.",
 						"enum": [
 							"opportunistic_encryption"
 						]
@@ -6338,7 +6338,7 @@
 							"string"
 						],
 						"example": "\"on\"",
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"enum": [
 							"on",
 							"off"
@@ -6377,8 +6377,8 @@
 				],
 				"objects": [],
 				"example": "{\n  \"id\": \"opportunistic_encryption\",\n  \"value\": \"on\",\n  \"editable\": true,\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
-				"title": "Zone Enable Opportunistic Encryption",
-				"description": "Enable the Opportunistic Encryption feature for this zone."
+				"title": "Enable Opportunistic Encryption for a zone",
+				"description": "Enables the Opportunistic Encryption feature for a zone."
 			},
 			{
 				"all_props": {
@@ -6446,7 +6446,7 @@
 					"id": {
 						"type": "string",
 						"example": "\"http2\"",
-						"description": "ID of the zone setting",
+						"description": "ID of the zone setting.",
 						"enum": [
 							"http2"
 						]
@@ -6460,7 +6460,7 @@
 							"string"
 						],
 						"example": "\"off\"",
-						"description": "Value of the HTTP2 setting",
+						"description": "Value of the HTTP2 setting.",
 						"enum": [
 							"on",
 							"off"
@@ -6506,7 +6506,7 @@
 					"id": {
 						"type": "string",
 						"example": "\"http3\"",
-						"description": "ID of the zone setting",
+						"description": "ID of the zone setting.",
 						"enum": [
 							"http3"
 						]
@@ -6520,7 +6520,7 @@
 							"string"
 						],
 						"example": "\"off\"",
-						"description": "Value of the HTTP3 setting",
+						"description": "Value of the HTTP3 setting.",
 						"enum": [
 							"on",
 							"off"
@@ -6596,7 +6596,7 @@
 					"id": {
 						"type": "string",
 						"example": "\"0rtt\"",
-						"description": "ID of the zone setting",
+						"description": "ID of the zone setting.",
 						"enum": [
 							"0rtt"
 						]
@@ -6610,7 +6610,7 @@
 							"string"
 						],
 						"example": "\"off\"",
-						"description": "Value of the 0-RTT setting",
+						"description": "Value of the 0-RTT setting.",
 						"enum": [
 							"on",
 							"off"

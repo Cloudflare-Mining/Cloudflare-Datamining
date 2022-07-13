@@ -55,7 +55,7 @@
 				"objects": [],
 				"example": "{\n  \"name\": \"blog\",\n  \"uuid\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n  \"is_deleted\": true,\n  \"existed_at\": \"2019-10-12T07:20:50.52Z\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n      \"name\": \"blog\",\n      \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n      \"deleted_at\": \"2009-11-10T23:00:00Z\",\n      \"run_at\": \"2009-11-10T23:00:00Z\",\n      \"arch\": \"linux_amd64\",\n      \"version\": \"2022.7.1\",\n      \"features\": [\n        {}\n      ],\n      \"conns_active_at\": \"2009-11-10T23:00:00Z\",\n      \"conns_inactive_at\": \"2009-11-10T23:00:00Z\",\n      \"status\": \"Active\",\n      \"connections\": [\n        {\n          \"colo_name\": \"DFW\",\n          \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n          \"is_pending_reconnect\": false,\n          \"client_id\": \"dc6472cc-f1ae-44a0-b795-6b8a0ce29f90\",\n          \"client_version\": \"2022.2.0\",\n          \"opened_at\": \"2021-01-25T18:22:34.317854Z\",\n          \"origin_ip\": \"85.12.78.6\"\n        }\n      ],\n      \"conns\": [\n        {\n          \"colo_name\": \"DFW\",\n          \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n          \"is_pending_reconnect\": false,\n          \"client_id\": \"dc6472cc-f1ae-44a0-b795-6b8a0ce29f90\",\n          \"client_version\": \"2022.2.0\",\n          \"opened_at\": \"2021-01-25T18:22:34.317854Z\",\n          \"origin_ip\": \"85.12.78.6\"\n        }\n      ]\n    }\n  ]\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n      \"account_tag\": \"01a7362d577a6c3019a474fd6f485823\",\n      \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n      \"deleted_at\": \"2009-11-10T23:00:00Z\",\n      \"name\": \"blog\",\n      \"connections\": [\n        {\n          \"colo_name\": \"DFW\",\n          \"id\": \"1bedc50d-42b3-473c-b108-ff3d10c0d925\",\n          \"is_pending_reconnect\": false,\n          \"client_id\": \"1bedc50d-42b3-473c-b108-ff3d10c0d925\",\n          \"client_version\": \"2022.7.1\",\n          \"opened_at\": \"2021-01-25T18:22:34.317854Z\",\n          \"origin_ip\": \"85.12.78.6\"\n        }\n      ],\n      \"conns_active_at\": \"2009-11-10T23:00:00Z\",\n      \"conns_inactive_at\": \"2009-11-10T23:00:00Z\",\n      \"status\": \"active\",\n      \"remote_config\": true\n    }\n  ]\n}"
 		},
 		{
 			"title": "Create Cloudflare Tunnel",
@@ -91,7 +91,7 @@
 				"objects": [],
 				"example": "{\n  \"name\": \"blog\",\n  \"tunnel_secret\": \"AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n    \"name\": \"blog\",\n    \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"deleted_at\": \"2009-11-10T23:00:00Z\",\n    \"run_at\": \"2009-11-10T23:00:00Z\",\n    \"arch\": \"linux_amd64\",\n    \"version\": \"2022.7.1\",\n    \"features\": [\n      {}\n    ],\n    \"conns_active_at\": \"2009-11-10T23:00:00Z\",\n    \"conns_inactive_at\": \"2009-11-10T23:00:00Z\",\n    \"status\": \"Active\",\n    \"connections\": [\n      {\n        \"colo_name\": \"DFW\",\n        \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n        \"is_pending_reconnect\": false,\n        \"client_id\": \"dc6472cc-f1ae-44a0-b795-6b8a0ce29f90\",\n        \"client_version\": \"2022.2.0\",\n        \"opened_at\": \"2021-01-25T18:22:34.317854Z\",\n        \"origin_ip\": \"85.12.78.6\"\n      }\n    ],\n    \"conns\": [\n      {\n        \"colo_name\": \"DFW\",\n        \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n        \"is_pending_reconnect\": false,\n        \"client_id\": \"dc6472cc-f1ae-44a0-b795-6b8a0ce29f90\",\n        \"client_version\": \"2022.2.0\",\n        \"opened_at\": \"2021-01-25T18:22:34.317854Z\",\n        \"origin_ip\": \"85.12.78.6\"\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n    \"account_tag\": \"01a7362d577a6c3019a474fd6f485823\",\n    \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"deleted_at\": \"2009-11-10T23:00:00Z\",\n    \"name\": \"blog\",\n    \"connections\": [\n      {\n        \"colo_name\": \"DFW\",\n        \"id\": \"1bedc50d-42b3-473c-b108-ff3d10c0d925\",\n        \"is_pending_reconnect\": false,\n        \"client_id\": \"1bedc50d-42b3-473c-b108-ff3d10c0d925\",\n        \"client_version\": \"2022.7.1\",\n        \"opened_at\": \"2021-01-25T18:22:34.317854Z\",\n        \"origin_ip\": \"85.12.78.6\"\n      }\n    ],\n    \"conns_active_at\": \"2009-11-10T23:00:00Z\",\n    \"conns_inactive_at\": \"2009-11-10T23:00:00Z\",\n    \"status\": \"active\",\n    \"remote_config\": true\n  }\n}"
 		},
 		{
 			"title": "Update Cloudflare Tunnel",
@@ -127,7 +127,7 @@
 				"objects": [],
 				"example": "{\n  \"name\": \"blog\",\n  \"tunnel_secret\": \"AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n    \"name\": \"blog\",\n    \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"deleted_at\": \"2009-11-10T23:00:00Z\",\n    \"run_at\": \"2009-11-10T23:00:00Z\",\n    \"arch\": \"linux_amd64\",\n    \"version\": \"2022.7.1\",\n    \"features\": [\n      {}\n    ],\n    \"conns_active_at\": \"2009-11-10T23:00:00Z\",\n    \"conns_inactive_at\": \"2009-11-10T23:00:00Z\",\n    \"status\": \"Active\",\n    \"connections\": [\n      {\n        \"colo_name\": \"DFW\",\n        \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n        \"is_pending_reconnect\": false,\n        \"client_id\": \"dc6472cc-f1ae-44a0-b795-6b8a0ce29f90\",\n        \"client_version\": \"2022.2.0\",\n        \"opened_at\": \"2021-01-25T18:22:34.317854Z\",\n        \"origin_ip\": \"85.12.78.6\"\n      }\n    ],\n    \"conns\": [\n      {\n        \"colo_name\": \"DFW\",\n        \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n        \"is_pending_reconnect\": false,\n        \"client_id\": \"dc6472cc-f1ae-44a0-b795-6b8a0ce29f90\",\n        \"client_version\": \"2022.2.0\",\n        \"opened_at\": \"2021-01-25T18:22:34.317854Z\",\n        \"origin_ip\": \"85.12.78.6\"\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n    \"account_tag\": \"01a7362d577a6c3019a474fd6f485823\",\n    \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"deleted_at\": \"2009-11-10T23:00:00Z\",\n    \"name\": \"blog\",\n    \"connections\": [\n      {\n        \"colo_name\": \"DFW\",\n        \"id\": \"1bedc50d-42b3-473c-b108-ff3d10c0d925\",\n        \"is_pending_reconnect\": false,\n        \"client_id\": \"1bedc50d-42b3-473c-b108-ff3d10c0d925\",\n        \"client_version\": \"2022.7.1\",\n        \"opened_at\": \"2021-01-25T18:22:34.317854Z\",\n        \"origin_ip\": \"85.12.78.6\"\n      }\n    ],\n    \"conns_active_at\": \"2009-11-10T23:00:00Z\",\n    \"conns_inactive_at\": \"2009-11-10T23:00:00Z\",\n    \"status\": \"active\",\n    \"remote_config\": true\n  }\n}"
 		},
 		{
 			"title": "Get Cloudflare Tunnel",
@@ -149,7 +149,7 @@
 				"objects": [],
 				"example": "{}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n    \"name\": \"blog\",\n    \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"deleted_at\": \"2009-11-10T23:00:00Z\",\n    \"run_at\": \"2009-11-10T23:00:00Z\",\n    \"arch\": \"linux_amd64\",\n    \"version\": \"2022.7.1\",\n    \"features\": [\n      {}\n    ],\n    \"conns_active_at\": \"2009-11-10T23:00:00Z\",\n    \"conns_inactive_at\": \"2009-11-10T23:00:00Z\",\n    \"status\": \"Active\",\n    \"connections\": [\n      {\n        \"colo_name\": \"DFW\",\n        \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n        \"is_pending_reconnect\": false,\n        \"client_id\": \"dc6472cc-f1ae-44a0-b795-6b8a0ce29f90\",\n        \"client_version\": \"2022.2.0\",\n        \"opened_at\": \"2021-01-25T18:22:34.317854Z\",\n        \"origin_ip\": \"85.12.78.6\"\n      }\n    ],\n    \"conns\": [\n      {\n        \"colo_name\": \"DFW\",\n        \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n        \"is_pending_reconnect\": false,\n        \"client_id\": \"dc6472cc-f1ae-44a0-b795-6b8a0ce29f90\",\n        \"client_version\": \"2022.2.0\",\n        \"opened_at\": \"2021-01-25T18:22:34.317854Z\",\n        \"origin_ip\": \"85.12.78.6\"\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n    \"account_tag\": \"01a7362d577a6c3019a474fd6f485823\",\n    \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"deleted_at\": \"2009-11-10T23:00:00Z\",\n    \"name\": \"blog\",\n    \"connections\": [\n      {\n        \"colo_name\": \"DFW\",\n        \"id\": \"1bedc50d-42b3-473c-b108-ff3d10c0d925\",\n        \"is_pending_reconnect\": false,\n        \"client_id\": \"1bedc50d-42b3-473c-b108-ff3d10c0d925\",\n        \"client_version\": \"2022.7.1\",\n        \"opened_at\": \"2021-01-25T18:22:34.317854Z\",\n        \"origin_ip\": \"85.12.78.6\"\n      }\n    ],\n    \"conns_active_at\": \"2009-11-10T23:00:00Z\",\n    \"conns_inactive_at\": \"2009-11-10T23:00:00Z\",\n    \"status\": \"active\",\n    \"remote_config\": true\n  }\n}"
 		},
 		{
 			"title": "Delete Cloudflare Tunnel",
@@ -171,7 +171,7 @@
 				"objects": [],
 				"example": "{}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n    \"name\": \"blog\",\n    \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"deleted_at\": \"2009-11-10T23:00:00Z\",\n    \"run_at\": \"2009-11-10T23:00:00Z\",\n    \"arch\": \"linux_amd64\",\n    \"version\": \"2022.7.1\",\n    \"features\": [\n      {}\n    ],\n    \"conns_active_at\": \"2009-11-10T23:00:00Z\",\n    \"conns_inactive_at\": \"2009-11-10T23:00:00Z\",\n    \"status\": \"Active\",\n    \"connections\": [\n      {\n        \"colo_name\": \"DFW\",\n        \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n        \"is_pending_reconnect\": false,\n        \"client_id\": \"dc6472cc-f1ae-44a0-b795-6b8a0ce29f90\",\n        \"client_version\": \"2022.2.0\",\n        \"opened_at\": \"2021-01-25T18:22:34.317854Z\",\n        \"origin_ip\": \"85.12.78.6\"\n      }\n    ],\n    \"conns\": [\n      {\n        \"colo_name\": \"DFW\",\n        \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n        \"is_pending_reconnect\": false,\n        \"client_id\": \"dc6472cc-f1ae-44a0-b795-6b8a0ce29f90\",\n        \"client_version\": \"2022.2.0\",\n        \"opened_at\": \"2021-01-25T18:22:34.317854Z\",\n        \"origin_ip\": \"85.12.78.6\"\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n    \"account_tag\": \"01a7362d577a6c3019a474fd6f485823\",\n    \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"deleted_at\": \"2009-11-10T23:00:00Z\",\n    \"name\": \"blog\",\n    \"connections\": [\n      {\n        \"colo_name\": \"DFW\",\n        \"id\": \"1bedc50d-42b3-473c-b108-ff3d10c0d925\",\n        \"is_pending_reconnect\": false,\n        \"client_id\": \"1bedc50d-42b3-473c-b108-ff3d10c0d925\",\n        \"client_version\": \"2022.7.1\",\n        \"opened_at\": \"2021-01-25T18:22:34.317854Z\",\n        \"origin_ip\": \"85.12.78.6\"\n      }\n    ],\n    \"conns_active_at\": \"2009-11-10T23:00:00Z\",\n    \"conns_inactive_at\": \"2009-11-10T23:00:00Z\",\n    \"status\": \"active\",\n    \"remote_config\": true\n  }\n}"
 		},
 		{
 			"title": "List Cloudflare Tunnel Connections",
@@ -193,7 +193,7 @@
 				"objects": [],
 				"example": "{}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n      \"name\": \"blog\",\n      \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n      \"deleted_at\": \"2009-11-10T23:00:00Z\",\n      \"run_at\": \"2009-11-10T23:00:00Z\",\n      \"arch\": \"linux_amd64\",\n      \"version\": \"2022.7.1\",\n      \"features\": [\n        {}\n      ],\n      \"conns_active_at\": \"2009-11-10T23:00:00Z\",\n      \"conns_inactive_at\": \"2009-11-10T23:00:00Z\",\n      \"status\": \"Active\",\n      \"connections\": [\n        {\n          \"colo_name\": \"DFW\",\n          \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n          \"is_pending_reconnect\": false,\n          \"client_id\": \"dc6472cc-f1ae-44a0-b795-6b8a0ce29f90\",\n          \"client_version\": \"2022.2.0\",\n          \"opened_at\": \"2021-01-25T18:22:34.317854Z\",\n          \"origin_ip\": \"85.12.78.6\"\n        }\n      ],\n      \"conns\": [\n        {\n          \"colo_name\": \"DFW\",\n          \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n          \"is_pending_reconnect\": false,\n          \"client_id\": \"dc6472cc-f1ae-44a0-b795-6b8a0ce29f90\",\n          \"client_version\": \"2022.2.0\",\n          \"opened_at\": \"2021-01-25T18:22:34.317854Z\",\n          \"origin_ip\": \"85.12.78.6\"\n        }\n      ]\n    }\n  ]\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"1bedc50d-42b3-473c-b108-ff3d10c0d925\",\n      \"features\": [\n        \"ha-origin\"\n      ],\n      \"version\": \"2022.7.1\",\n      \"arch\": \"linux_amd64\",\n      \"conns\": [\n        {\n          \"colo_name\": \"DFW\",\n          \"id\": \"1bedc50d-42b3-473c-b108-ff3d10c0d925\",\n          \"is_pending_reconnect\": false,\n          \"client_id\": \"1bedc50d-42b3-473c-b108-ff3d10c0d925\",\n          \"client_version\": \"2022.7.1\",\n          \"opened_at\": \"2021-01-25T18:22:34.317854Z\",\n          \"origin_ip\": \"85.12.78.6\"\n        }\n      ],\n      \"run_at\": \"2009-11-10T23:00:00Z\"\n    }\n  ]\n}"
 		},
 		{
 			"title": "Clean Up Cloudflare Tunnel Connections",
@@ -263,8 +263,8 @@
 			"created_at": {
 				"type": "string",
 				"example": "\"2021-01-25T18:22:34.317854Z\"",
-				"description": "Timestamps when the tunnel was created, formatted in RFC 3339",
-				"format": "date-time"
+				"format": "date-time",
+				"description": "Timestamps when the resource was created, formatted in RFC 3339"
 			},
 			"deleted_at": {
 				"type": [
@@ -274,33 +274,6 @@
 				"example": "\"2009-11-10T23:00:00Z\"",
 				"description": "If present, indicates tunnel was deleted at the given date (formatted in RFC 3339). If absent, tunnel has not been deleted",
 				"format": "date-time"
-			},
-			"run_at": {
-				"type": [
-					"string",
-					"null"
-				],
-				"example": "\"2009-11-10T23:00:00Z\"",
-				"description": "Indicates when the tunnel connection was started (formatted in RFC 3339)",
-				"format": "date-time"
-			},
-			"arch": {
-				"type": "string",
-				"example": "\"linux_amd64\"",
-				"description": "Indicates the cloudflared OS architecture used to establish this Cloudflare Tunnel connection"
-			},
-			"version": {
-				"type": "string",
-				"example": "\"2022.7.1\"",
-				"description": "Indicates the cloudflared version used to establish this Cloudflare Tunnel connection"
-			},
-			"features": {
-				"type": "array",
-				"example": "[\n  {}\n]",
-				"description": "Indicates the cloudflared enabled features for this Cloudflare Tunnel connection",
-				"items": {
-					"type": "string"
-				}
 			},
 			"conns_active_at": {
 				"type": [
@@ -322,12 +295,12 @@
 			},
 			"status": {
 				"type": "string",
-				"example": "\"Active\"",
-				"description": "The status of the tunnel. Could be \"Active\", \"Inactive\" or \"Degraded\" (Active but not all connectors have 4 connections to the edge)"
+				"example": "\"active\"",
+				"description": "The status of the tunnel. Could be \"active\", \"inactive\" or \"degraded\" (Active but not all connectors have 4 connections to the edge)"
 			},
 			"connections": {
 				"type": "array",
-				"example": "[\n  {\n    \"colo_name\": \"DFW\",\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"is_pending_reconnect\": false,\n    \"client_id\": \"dc6472cc-f1ae-44a0-b795-6b8a0ce29f90\",\n    \"client_version\": \"2022.2.0\",\n    \"opened_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"origin_ip\": \"85.12.78.6\"\n  }\n]",
+				"example": "[\n  {\n    \"colo_name\": \"DFW\",\n    \"id\": \"1bedc50d-42b3-473c-b108-ff3d10c0d925\",\n    \"is_pending_reconnect\": false,\n    \"client_id\": \"1bedc50d-42b3-473c-b108-ff3d10c0d925\",\n    \"client_version\": \"2022.7.1\",\n    \"opened_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"origin_ip\": \"85.12.78.6\"\n  }\n]",
 				"description": "Connections between cloudflared and the Cloudflare edge that are serving this tunnel",
 				"items": {
 					"properties": {
@@ -337,13 +310,13 @@
 							"example": "DFW"
 						},
 						"id": {
-							"id": "https://api.cloudflare.com/schemas/v4/common/uuid.json",
+							"description": "UUID of the tunnel's connection",
 							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 							"readOnly": true,
 							"type": "string",
+							"format": "uuid",
 							"maxLength": 36,
-							"description": "API uuid tag",
-							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+							"example": "1bedc50d-42b3-473c-b108-ff3d10c0d925"
 						},
 						"is_pending_reconnect": {
 							"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting. If this field is true, the connection has disconnected but is still being tracked for these optimized reconnects. If false, the connection is still actively serving",
@@ -351,67 +324,18 @@
 							"example": false
 						},
 						"client_id": {
-							"description": "The UUID of the cloudflared instance",
-							"type": "string",
-							"format": "uuid",
-							"maxLength": 36,
-							"example": "dc6472cc-f1ae-44a0-b795-6b8a0ce29f90"
-						},
-						"client_version": {
-							"description": "The version of the cloudflared instance",
-							"type": "string",
-							"example": "2022.2.0"
-						},
-						"opened_at": {
-							"type": "string",
-							"format": "date-time",
-							"example": "2021-01-25T18:22:34.317854Z",
-							"description": "Timestamp when the connection was established, formatted in RFC 3339"
-						},
-						"origin_ip": {
-							"description": "The publicly perceived IP of the host running the cloudflared instance",
-							"type": "string",
-							"example": "85.12.78.6"
-						}
-					}
-				}
-			},
-			"conns": {
-				"type": "array",
-				"example": "[\n  {\n    \"colo_name\": \"DFW\",\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"is_pending_reconnect\": false,\n    \"client_id\": \"dc6472cc-f1ae-44a0-b795-6b8a0ce29f90\",\n    \"client_version\": \"2022.2.0\",\n    \"opened_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"origin_ip\": \"85.12.78.6\"\n  }\n]",
-				"description": "Connections between cloudflared and the Cloudflare edge that are serving this tunnel",
-				"items": {
-					"properties": {
-						"colo_name": {
-							"description": "Short ID for the colo this connection is connected to",
-							"type": "string",
-							"example": "DFW"
-						},
-						"id": {
-							"id": "https://api.cloudflare.com/schemas/v4/common/uuid.json",
+							"description": "UUID of the cloudflared instance",
 							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 							"readOnly": true,
 							"type": "string",
-							"maxLength": 36,
-							"description": "API uuid tag",
-							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
-						},
-						"is_pending_reconnect": {
-							"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting. If this field is true, the connection has disconnected but is still being tracked for these optimized reconnects. If false, the connection is still actively serving",
-							"type": "boolean",
-							"example": false
-						},
-						"client_id": {
-							"description": "The UUID of the cloudflared instance",
-							"type": "string",
 							"format": "uuid",
 							"maxLength": 36,
-							"example": "dc6472cc-f1ae-44a0-b795-6b8a0ce29f90"
+							"example": "1bedc50d-42b3-473c-b108-ff3d10c0d925"
 						},
 						"client_version": {
-							"description": "The version of the cloudflared instance",
+							"description": "Indicates the cloudflared version used to establish this Cloudflare Tunnel connection",
 							"type": "string",
-							"example": "2022.2.0"
+							"example": "2022.7.1"
 						},
 						"opened_at": {
 							"type": "string",
@@ -431,22 +355,17 @@
 		"required_props": [
 			"id",
 			"name",
-			"created_at",
-			"connections"
+			"created_at"
 		],
 		"optional_props": [
 			"deleted_at",
-			"run_at",
-			"arch",
-			"version",
-			"features",
 			"conns_active_at",
 			"conns_inactive_at",
 			"status",
-			"conns"
+			"connections"
 		],
 		"objects": [],
-		"example": "{\n  \"id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n  \"name\": \"blog\",\n  \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n  \"deleted_at\": \"2009-11-10T23:00:00Z\",\n  \"run_at\": \"2009-11-10T23:00:00Z\",\n  \"arch\": \"linux_amd64\",\n  \"version\": \"2022.7.1\",\n  \"features\": [\n    {}\n  ],\n  \"conns_active_at\": \"2009-11-10T23:00:00Z\",\n  \"conns_inactive_at\": \"2009-11-10T23:00:00Z\",\n  \"status\": \"Active\",\n  \"connections\": [\n    {\n      \"colo_name\": \"DFW\",\n      \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"is_pending_reconnect\": false,\n      \"client_id\": \"dc6472cc-f1ae-44a0-b795-6b8a0ce29f90\",\n      \"client_version\": \"2022.2.0\",\n      \"opened_at\": \"2021-01-25T18:22:34.317854Z\",\n      \"origin_ip\": \"85.12.78.6\"\n    }\n  ],\n  \"conns\": [\n    {\n      \"colo_name\": \"DFW\",\n      \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"is_pending_reconnect\": false,\n      \"client_id\": \"dc6472cc-f1ae-44a0-b795-6b8a0ce29f90\",\n      \"client_version\": \"2022.2.0\",\n      \"opened_at\": \"2021-01-25T18:22:34.317854Z\",\n      \"origin_ip\": \"85.12.78.6\"\n    }\n  ]\n}",
+		"example": "{\n  \"id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n  \"name\": \"blog\",\n  \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n  \"deleted_at\": \"2009-11-10T23:00:00Z\",\n  \"conns_active_at\": \"2009-11-10T23:00:00Z\",\n  \"conns_inactive_at\": \"2009-11-10T23:00:00Z\",\n  \"status\": \"active\",\n  \"connections\": [\n    {\n      \"colo_name\": \"DFW\",\n      \"id\": \"1bedc50d-42b3-473c-b108-ff3d10c0d925\",\n      \"is_pending_reconnect\": false,\n      \"client_id\": \"1bedc50d-42b3-473c-b108-ff3d10c0d925\",\n      \"client_version\": \"2022.7.1\",\n      \"opened_at\": \"2021-01-25T18:22:34.317854Z\",\n      \"origin_ip\": \"85.12.78.6\"\n    }\n  ]\n}",
 		"title": "Cloudflare Tunnel",
 		"description": "A tunnel that can route traffic to a user origin"
 	}
