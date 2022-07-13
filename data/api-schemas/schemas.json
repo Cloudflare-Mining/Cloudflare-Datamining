@@ -43368,8 +43368,8 @@
 		},
 		"/zones/{zone}/spectrum/apps": {
 			"get": {
-				"summary": "List Spectrum Applications",
-				"description": "Retrieve a list of currently existing Spectrum Applications inside a zone.",
+				"summary": "List Spectrum applications",
+				"description": "Retrieves a list of currently existing Spectrum applications inside a zone.",
 				"parameters": [
 					{
 						"name": "zone",
@@ -43382,7 +43382,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "List Spectrum Applications response",
+						"description": "List Spectrum applications response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -43414,8 +43414,8 @@
 				]
 			},
 			"post": {
-				"summary": "Create Spectrum Application using a name for the origin",
-				"description": "Create a new Spectrum Application from a configuration using a name for the origin.",
+				"summary": "Create Spectrum application using a name for the origin",
+				"description": "Creates a new Spectrum application from a configuration using a name for the origin.",
 				"parameters": [
 					{
 						"name": "zone",
@@ -43428,7 +43428,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create Spectrum Application using a name for the origin response",
+						"description": "Create Spectrum application using a name for the origin response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -43521,7 +43521,7 @@
 								],
 								"properties": {
 									"protocol": {
-										"description": "Port configuration at Cloudflare’s edge. May specify a single port, e.g. `\"tcp/1000\"`, or a range of ports, e.g. `\"tcp/1000-2000\"`.",
+										"description": "The port configuration at Cloudflare’s edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`.",
 										"example": "tcp/22",
 										"type": "string"
 									},
@@ -43575,7 +43575,7 @@
 										"type": "object"
 									},
 									"origin_port": {
-										"description": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, e.g. `1000`, or a string to specify a range of origin ports, e.g. `\"1000-2000\"`\nNotes: If specifying a port range, the number of ports in the range must match the number of ports specified in the \"protocol\" field.",
+										"description": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `\"1000-2000\"`\nNotes: If specifying a port range, the number of ports in the range must match the number of ports specified in the \"protocol\" field.",
 										"example": 22,
 										"minimum": 1,
 										"maximum": 65535,
@@ -43589,7 +43589,7 @@
 										]
 									},
 									"proxy_protocol": {
-										"description": "Enables Proxy Protocol to the origin. See [the developer documentation](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.",
+										"description": "Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.",
 										"type": "string",
 										"example": false,
 										"default": false,
@@ -43699,8 +43699,8 @@
 		},
 		"/zones/{zone}/spectrum/apps/{app_id}": {
 			"get": {
-				"summary": "Get Spectrum Application Configuration",
-				"description": "Get the application configuration of a specific application inside a zone.",
+				"summary": "Get Spectrum application configuration",
+				"description": "Gets the application configuration of a specific application inside a zone.",
 				"parameters": [
 					{
 						"name": "app_id",
@@ -43725,7 +43725,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get Spectrum Application Configuration response",
+						"description": "Get Spectrum application configuration response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -43755,8 +43755,8 @@
 				]
 			},
 			"put": {
-				"summary": "Update Spectrum Application Configuration using a name for the origin",
-				"description": "Update a previously existing application's configuration that uses a name for the origin.",
+				"summary": "Update Spectrum application configuration using a name for the origin",
+				"description": "Updates a previously existing application's configuration that uses a name for the origin.",
 				"parameters": [
 					{
 						"name": "app_id",
@@ -43777,7 +43777,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update Spectrum Application Configuration using a name for the origin response",
+						"description": "Update Spectrum application configuration using a name for the origin response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -43866,7 +43866,7 @@
 								],
 								"properties": {
 									"protocol": {
-										"description": "Port configuration at Cloudflare’s edge. May specify a single port, e.g. `\"tcp/1000\"`, or a range of ports, e.g. `\"tcp/1000-2000\"`.",
+										"description": "The port configuration at Cloudflare’s edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`.",
 										"example": "tcp/22",
 										"type": "string"
 									},
@@ -43920,7 +43920,7 @@
 										"type": "object"
 									},
 									"origin_port": {
-										"description": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, e.g. `1000`, or a string to specify a range of origin ports, e.g. `\"1000-2000\"`\nNotes: If specifying a port range, the number of ports in the range must match the number of ports specified in the \"protocol\" field.",
+										"description": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `\"1000-2000\"`\nNotes: If specifying a port range, the number of ports in the range must match the number of ports specified in the \"protocol\" field.",
 										"example": 22,
 										"minimum": 1,
 										"maximum": 65535,
@@ -43934,7 +43934,7 @@
 										]
 									},
 									"proxy_protocol": {
-										"description": "Enables Proxy Protocol to the origin. See [the developer documentation](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.",
+										"description": "Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.",
 										"type": "string",
 										"example": false,
 										"default": false,
@@ -44042,8 +44042,8 @@
 				}
 			},
 			"delete": {
-				"summary": "Delete Spectrum Application",
-				"description": "Delete a previously existing application.",
+				"summary": "Delete Spectrum application",
+				"description": "Deletes a previously existing application.",
 				"parameters": [
 					{
 						"name": "app_id",
@@ -44064,7 +44064,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete Spectrum Application response",
+						"description": "Delete Spectrum application response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -44107,7 +44107,7 @@
 		},
 		"/zones/{zone}/spectrum/analytics/events/summary": {
 			"get": {
-				"summary": "Get Analytics Summary",
+				"summary": "Get analytics summary",
 				"description": "Retrieves a list of summarised aggregate metrics over a given time period.",
 				"parameters": [
 					{
@@ -44121,7 +44121,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get Analytics Summary response",
+						"description": "Get analytics summary response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -44141,7 +44141,7 @@
 		},
 		"/zones/{zone}/spectrum/analytics/events/bytime": {
 			"get": {
-				"summary": "Get Analytics By Time",
+				"summary": "Get analytics by time",
 				"description": "Retrieves a list of aggregate metrics grouped by time interval.",
 				"parameters": [
 					{
@@ -44155,7 +44155,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get Analytics By Time response",
+						"description": "Get analytics by time response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -44175,8 +44175,8 @@
 		},
 		"/zones/{zone}/spectrum/analytics/aggregate/current": {
 			"get": {
-				"summary": "Get Current Aggregate Analytics",
-				"description": "Retrieves analytics aggregated from the last minute of usage on Spectrum Applications underneath a given zone.",
+				"summary": "Get current aggregated analytics",
+				"description": "Retrieves analytics aggregated from the last minute of usage on Spectrum applications underneath a given zone.",
 				"parameters": [
 					{
 						"name": "zone",
@@ -44189,7 +44189,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get Current Aggregate Analytics response",
+						"description": "Get current aggregated analytics response",
 						"content": {
 							"application/json": {
 								"schema": {
