@@ -67759,8 +67759,8 @@
 		},
 		"/accounts/{identifier}/access/apps/{uuid}/policies": {
 			"get": {
-				"summary": "List Access Policies",
-				"description": "List Access Policies for an Access Application",
+				"summary": "List Access policies",
+				"description": "Lists Access policies configured for an application.",
 				"parameters": [
 					{
 						"name": "uuid",
@@ -67769,7 +67769,7 @@
 						"schema": {
 							"type": "string",
 							"maxLength": 36,
-							"description": "API uuid tag",
+							"description": "The policy ID.",
 							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 						}
 					},
@@ -67784,7 +67784,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "List Access Policies response",
+						"description": "List Access policies response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -67857,8 +67857,8 @@
 				]
 			},
 			"post": {
-				"summary": "Create Access Policy",
-				"description": "Create a new Access Policy",
+				"summary": "Create an Access policy",
+				"description": "Create a new Access policy for an application.",
 				"parameters": [
 					{
 						"name": "uuid",
@@ -67879,7 +67879,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create Access Policy response",
+						"description": "Create an Access policy response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -67919,10 +67919,10 @@
 								"properties": {
 									"precedence": {
 										"type": "integer",
-										"description": "The unique precedence for policies on a single application"
+										"description": "The order of execution for this policy. Must be unique for each policy."
 									},
 									"decision": {
-										"description": "Defines the action Access will take if the policy matches the user.",
+										"description": "The action Access will take if a user matches this policy.",
 										"type": "string",
 										"enum": [
 											"allow",
@@ -67934,64 +67934,64 @@
 									},
 									"name": {
 										"type": "string",
-										"description": "The name of the policy. Only used in the UI.",
+										"description": "The name of the Access policy.",
 										"example": "Allow devs"
 									},
 									"include": {
 										"type": "array",
-										"description": "The include policy works like an OR logical operator. The user must satisfy one of the rules in includes.",
+										"description": "Rules evaluated with an OR logical operator. To match the policy, a user needs to meet only one of the Include rules.",
 										"items": {
 											"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1groups/post/requestBody/content/application~1json/schema/properties/include/items"
 										}
 									},
 									"exclude": {
 										"type": "array",
-										"description": "The exclude policy works like a NOT logical operator. The user must not satisfy all of the rules in exclude.",
+										"description": "Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.",
 										"items": {
 											"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1apps~1%7Buuid%7D~1policies/post/requestBody/content/application~1json/schema/properties/include/items"
 										}
 									},
 									"require": {
 										"type": "array",
-										"description": "The require policy works like a AND logical operator. The user must satisfy all of the rules in require.",
+										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 										"items": {
 											"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1apps~1%7Buuid%7D~1policies/post/requestBody/content/application~1json/schema/properties/include/items"
 										}
 									},
 									"purpose_justification_required": {
-										"description": "Defines whether or not the user is prompted for a justification when this policy is applied.",
+										"description": "Require users to enter a justification when they log in to the application.",
 										"type": "boolean",
 										"default": false,
 										"example": true
 									},
 									"purpose_justification_prompt": {
-										"description": "The text the user will be prompted with when a purpose justification is required.",
+										"description": "A custom message that will appear on the purpose justification screen.",
 										"type": "string",
-										"example": "Please enter a justification for entering this protected domain"
+										"example": "Please enter a justification for entering this protected domain."
 									},
 									"approval_required": {
-										"description": "Defines whether or not the user needs to request approval when this policy is applied.",
+										"description": "Requires the user to request access from an administrator at the start of each session.",
 										"type": "boolean",
 										"default": false,
 										"example": true
 									},
 									"approval_groups": {
 										"type": "array",
-										"description": "The list of approval groups that must approve the access request.",
+										"description": "Administrators who can approve a temporary authentication request.",
 										"items": {
 											"type": "object",
-											"description": "A group of emails that can approve the access request",
+											"description": "A group of email addresses that can approve a temporary authentication request.",
 											"required": [
 												"approvals_needed"
 											],
 											"properties": {
 												"email_list_uuid": {
 													"type": "string",
-													"description": "UUID of an re-usable email list"
+													"description": "The UUID of an re-usable email list."
 												},
 												"email_addresses": {
 													"type": "array",
-													"description": "list of emails that can approve the access request",
+													"description": "A list of emails that can approve the access request.",
 													"example": [
 														"test@cloudflare.com",
 														"test2@cloudflare.com"
@@ -67999,7 +67999,7 @@
 													"items": {}
 												},
 												"approvals_needed": {
-													"description": "number of approvals needed to be granted access",
+													"description": "The number of approvals needed to obtain access.",
 													"type": "number",
 													"minimum": 0,
 													"example": 1
@@ -68029,8 +68029,8 @@
 		},
 		"/accounts/{identifier}/access/apps/{uuid1}/policies/{uuid}": {
 			"get": {
-				"summary": "Access Policy Details",
-				"description": "Fetch a single Access Policy",
+				"summary": "Get an Access policy",
+				"description": "Fetches a single Access policy.",
 				"parameters": [
 					{
 						"name": "uuid",
@@ -68039,7 +68039,7 @@
 						"schema": {
 							"type": "string",
 							"maxLength": 36,
-							"description": "API uuid tag",
+							"description": "The policy ID.",
 							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 						}
 					},
@@ -68062,7 +68062,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Access Policy Details response",
+						"description": "Get an Access policy response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -68132,8 +68132,8 @@
 				]
 			},
 			"put": {
-				"summary": "Update Access Policy",
-				"description": "Update a configured Access Policy",
+				"summary": "Update an Access policy",
+				"description": "Update a configured Access policy.",
 				"parameters": [
 					{
 						"name": "uuid",
@@ -68162,7 +68162,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update Access Policy response",
+						"description": "Update an Access policy response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -68191,10 +68191,10 @@
 								"properties": {
 									"precedence": {
 										"type": "integer",
-										"description": "The unique precedence for policies on a single application"
+										"description": "The order of execution for this policy. Must be unique for each policy."
 									},
 									"decision": {
-										"description": "Defines the action Access will take if the policy matches the user.",
+										"description": "The action Access will take if a user matches this policy.",
 										"type": "string",
 										"enum": [
 											"allow",
@@ -68206,64 +68206,64 @@
 									},
 									"name": {
 										"type": "string",
-										"description": "The name of the policy. Only used in the UI.",
+										"description": "The name of the Access policy.",
 										"example": "Allow devs"
 									},
 									"include": {
 										"type": "array",
-										"description": "The include policy works like an OR logical operator. The user must satisfy one of the rules in includes.",
+										"description": "Rules evaluated with an OR logical operator. To match the policy, a user needs to meet only one of the Include rules.",
 										"items": {
 											"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1groups/post/requestBody/content/application~1json/schema/properties/include/items"
 										}
 									},
 									"exclude": {
 										"type": "array",
-										"description": "The exclude policy works like a NOT logical operator. The user must not satisfy all of the rules in exclude.",
+										"description": "Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.",
 										"items": {
 											"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1apps~1%7Buuid1%7D~1policies~1%7Buuid%7D/put/requestBody/content/application~1json/schema/properties/include/items"
 										}
 									},
 									"require": {
 										"type": "array",
-										"description": "The require policy works like a AND logical operator. The user must satisfy all of the rules in require.",
+										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 										"items": {
 											"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1apps~1%7Buuid1%7D~1policies~1%7Buuid%7D/put/requestBody/content/application~1json/schema/properties/include/items"
 										}
 									},
 									"purpose_justification_required": {
-										"description": "Defines whether or not the user is prompted for a justification when this policy is applied.",
+										"description": "Require users to enter a justification when they log in to the application.",
 										"type": "boolean",
 										"default": false,
 										"example": true
 									},
 									"purpose_justification_prompt": {
-										"description": "The text the user will be prompted with when a purpose justification is required.",
+										"description": "A custom message that will appear on the purpose justification screen.",
 										"type": "string",
-										"example": "Please enter a justification for entering this protected domain"
+										"example": "Please enter a justification for entering this protected domain."
 									},
 									"approval_required": {
-										"description": "Defines whether or not the user needs to request approval when this policy is applied.",
+										"description": "Requires the user to request access from an administrator at the start of each session.",
 										"type": "boolean",
 										"default": false,
 										"example": true
 									},
 									"approval_groups": {
 										"type": "array",
-										"description": "The list of approval groups that must approve the access request.",
+										"description": "Administrators who can approve a temporary authentication request.",
 										"items": {
 											"type": "object",
-											"description": "A group of emails that can approve the access request",
+											"description": "A group of email addresses that can approve a temporary authentication request.",
 											"required": [
 												"approvals_needed"
 											],
 											"properties": {
 												"email_list_uuid": {
 													"type": "string",
-													"description": "UUID of an re-usable email list"
+													"description": "The UUID of an re-usable email list."
 												},
 												"email_addresses": {
 													"type": "array",
-													"description": "list of emails that can approve the access request",
+													"description": "A list of emails that can approve the access request.",
 													"example": [
 														"test@cloudflare.com",
 														"test2@cloudflare.com"
@@ -68271,7 +68271,7 @@
 													"items": {}
 												},
 												"approvals_needed": {
-													"description": "number of approvals needed to be granted access",
+													"description": "The number of approvals needed to obtain access.",
 													"type": "number",
 													"minimum": 0,
 													"example": 1
@@ -68299,8 +68299,8 @@
 				}
 			},
 			"delete": {
-				"summary": "Delete Access Policy",
-				"description": "Delete an Access Policy",
+				"summary": "Delete an Access policy",
+				"description": "Delete an Access policy.",
 				"parameters": [
 					{
 						"name": "uuid",
@@ -68329,7 +68329,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete Access Policy response",
+						"description": "Delete an Access policy response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -72437,8 +72437,8 @@
 		},
 		"/zones/{identifier}/access/apps/{uuid}/policies": {
 			"get": {
-				"summary": "List Access Policies",
-				"description": "List Access Policies for an Access Application",
+				"summary": "List Access policies",
+				"description": "Lists Access policies configured for an application.",
 				"parameters": [
 					{
 						"name": "uuid",
@@ -72447,7 +72447,7 @@
 						"schema": {
 							"type": "string",
 							"maxLength": 36,
-							"description": "API uuid tag",
+							"description": "The policy ID.",
 							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 						}
 					},
@@ -72462,7 +72462,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "List Access Policies response",
+						"description": "List Access policies response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -72535,8 +72535,8 @@
 				]
 			},
 			"post": {
-				"summary": "Create Access Policy",
-				"description": "Create a new Access Policy",
+				"summary": "Create an Access policy",
+				"description": "Create a new Access policy for an application.",
 				"parameters": [
 					{
 						"name": "uuid",
@@ -72557,7 +72557,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create Access Policy response",
+						"description": "Create an Access policy response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -72597,10 +72597,10 @@
 								"properties": {
 									"precedence": {
 										"type": "integer",
-										"description": "The unique precedence for policies on a single application"
+										"description": "The order of execution for this policy. Must be unique for each policy."
 									},
 									"decision": {
-										"description": "Defines the action Access will take if the policy matches the user.",
+										"description": "The action Access will take if a user matches this policy.",
 										"type": "string",
 										"enum": [
 											"allow",
@@ -72612,64 +72612,64 @@
 									},
 									"name": {
 										"type": "string",
-										"description": "The name of the policy. Only used in the UI.",
+										"description": "The name of the Access policy.",
 										"example": "Allow devs"
 									},
 									"include": {
 										"type": "array",
-										"description": "The include policy works like an OR logical operator. The user must satisfy one of the rules in includes.",
+										"description": "Rules evaluated with an OR logical operator. To match the policy, a user needs to meet only one of the Include rules.",
 										"items": {
 											"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1groups/post/requestBody/content/application~1json/schema/properties/include/items"
 										}
 									},
 									"exclude": {
 										"type": "array",
-										"description": "The exclude policy works like a NOT logical operator. The user must not satisfy all of the rules in exclude.",
+										"description": "Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.",
 										"items": {
 											"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1access~1apps~1%7Buuid%7D~1policies/post/requestBody/content/application~1json/schema/properties/include/items"
 										}
 									},
 									"require": {
 										"type": "array",
-										"description": "The require policy works like a AND logical operator. The user must satisfy all of the rules in require.",
+										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 										"items": {
 											"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1access~1apps~1%7Buuid%7D~1policies/post/requestBody/content/application~1json/schema/properties/include/items"
 										}
 									},
 									"purpose_justification_required": {
-										"description": "Defines whether or not the user is prompted for a justification when this policy is applied.",
+										"description": "Require users to enter a justification when they log in to the application.",
 										"type": "boolean",
 										"default": false,
 										"example": true
 									},
 									"purpose_justification_prompt": {
-										"description": "The text the user will be prompted with when a purpose justification is required.",
+										"description": "A custom message that will appear on the purpose justification screen.",
 										"type": "string",
-										"example": "Please enter a justification for entering this protected domain"
+										"example": "Please enter a justification for entering this protected domain."
 									},
 									"approval_required": {
-										"description": "Defines whether or not the user needs to request approval when this policy is applied.",
+										"description": "Requires the user to request access from an administrator at the start of each session.",
 										"type": "boolean",
 										"default": false,
 										"example": true
 									},
 									"approval_groups": {
 										"type": "array",
-										"description": "The list of approval groups that must approve the access request.",
+										"description": "Administrators who can approve a temporary authentication request.",
 										"items": {
 											"type": "object",
-											"description": "A group of emails that can approve the access request",
+											"description": "A group of email addresses that can approve a temporary authentication request.",
 											"required": [
 												"approvals_needed"
 											],
 											"properties": {
 												"email_list_uuid": {
 													"type": "string",
-													"description": "UUID of an re-usable email list"
+													"description": "The UUID of an re-usable email list."
 												},
 												"email_addresses": {
 													"type": "array",
-													"description": "list of emails that can approve the access request",
+													"description": "A list of emails that can approve the access request.",
 													"example": [
 														"test@cloudflare.com",
 														"test2@cloudflare.com"
@@ -72677,7 +72677,7 @@
 													"items": {}
 												},
 												"approvals_needed": {
-													"description": "number of approvals needed to be granted access",
+													"description": "The number of approvals needed to obtain access.",
 													"type": "number",
 													"minimum": 0,
 													"example": 1
@@ -72707,8 +72707,8 @@
 		},
 		"/zones/{identifier}/access/apps/{uuid1}/policies/{uuid}": {
 			"get": {
-				"summary": "Access Policy Details",
-				"description": "Fetch a single Access Policy",
+				"summary": "Get an Access policy",
+				"description": "Fetches a single Access policy.",
 				"parameters": [
 					{
 						"name": "uuid",
@@ -72717,7 +72717,7 @@
 						"schema": {
 							"type": "string",
 							"maxLength": 36,
-							"description": "API uuid tag",
+							"description": "The policy ID.",
 							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 						}
 					},
@@ -72740,7 +72740,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Access Policy Details response",
+						"description": "Get an Access policy response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -72810,8 +72810,8 @@
 				]
 			},
 			"put": {
-				"summary": "Update Access Policy",
-				"description": "Update a configured Access Policy",
+				"summary": "Update an Access policy",
+				"description": "Update a configured Access policy.",
 				"parameters": [
 					{
 						"name": "uuid",
@@ -72840,7 +72840,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update Access Policy response",
+						"description": "Update an Access policy response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -72869,10 +72869,10 @@
 								"properties": {
 									"precedence": {
 										"type": "integer",
-										"description": "The unique precedence for policies on a single application"
+										"description": "The order of execution for this policy. Must be unique for each policy."
 									},
 									"decision": {
-										"description": "Defines the action Access will take if the policy matches the user.",
+										"description": "The action Access will take if a user matches this policy.",
 										"type": "string",
 										"enum": [
 											"allow",
@@ -72884,64 +72884,64 @@
 									},
 									"name": {
 										"type": "string",
-										"description": "The name of the policy. Only used in the UI.",
+										"description": "The name of the Access policy.",
 										"example": "Allow devs"
 									},
 									"include": {
 										"type": "array",
-										"description": "The include policy works like an OR logical operator. The user must satisfy one of the rules in includes.",
+										"description": "Rules evaluated with an OR logical operator. To match the policy, a user needs to meet only one of the Include rules.",
 										"items": {
 											"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1groups/post/requestBody/content/application~1json/schema/properties/include/items"
 										}
 									},
 									"exclude": {
 										"type": "array",
-										"description": "The exclude policy works like a NOT logical operator. The user must not satisfy all of the rules in exclude.",
+										"description": "Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.",
 										"items": {
 											"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1access~1apps~1%7Buuid1%7D~1policies~1%7Buuid%7D/put/requestBody/content/application~1json/schema/properties/include/items"
 										}
 									},
 									"require": {
 										"type": "array",
-										"description": "The require policy works like a AND logical operator. The user must satisfy all of the rules in require.",
+										"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 										"items": {
 											"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1access~1apps~1%7Buuid1%7D~1policies~1%7Buuid%7D/put/requestBody/content/application~1json/schema/properties/include/items"
 										}
 									},
 									"purpose_justification_required": {
-										"description": "Defines whether or not the user is prompted for a justification when this policy is applied.",
+										"description": "Require users to enter a justification when they log in to the application.",
 										"type": "boolean",
 										"default": false,
 										"example": true
 									},
 									"purpose_justification_prompt": {
-										"description": "The text the user will be prompted with when a purpose justification is required.",
+										"description": "A custom message that will appear on the purpose justification screen.",
 										"type": "string",
-										"example": "Please enter a justification for entering this protected domain"
+										"example": "Please enter a justification for entering this protected domain."
 									},
 									"approval_required": {
-										"description": "Defines whether or not the user needs to request approval when this policy is applied.",
+										"description": "Requires the user to request access from an administrator at the start of each session.",
 										"type": "boolean",
 										"default": false,
 										"example": true
 									},
 									"approval_groups": {
 										"type": "array",
-										"description": "The list of approval groups that must approve the access request.",
+										"description": "Administrators who can approve a temporary authentication request.",
 										"items": {
 											"type": "object",
-											"description": "A group of emails that can approve the access request",
+											"description": "A group of email addresses that can approve a temporary authentication request.",
 											"required": [
 												"approvals_needed"
 											],
 											"properties": {
 												"email_list_uuid": {
 													"type": "string",
-													"description": "UUID of an re-usable email list"
+													"description": "The UUID of an re-usable email list."
 												},
 												"email_addresses": {
 													"type": "array",
-													"description": "list of emails that can approve the access request",
+													"description": "A list of emails that can approve the access request.",
 													"example": [
 														"test@cloudflare.com",
 														"test2@cloudflare.com"
@@ -72949,7 +72949,7 @@
 													"items": {}
 												},
 												"approvals_needed": {
-													"description": "number of approvals needed to be granted access",
+													"description": "The number of approvals needed to obtain access.",
 													"type": "number",
 													"minimum": 0,
 													"example": 1
@@ -72977,8 +72977,8 @@
 				}
 			},
 			"delete": {
-				"summary": "Delete Access Policy",
-				"description": "Delete an Access Policy",
+				"summary": "Delete an Access policy",
+				"description": "Delete an Access policy.",
 				"parameters": [
 					{
 						"name": "uuid",
@@ -73007,7 +73007,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete Access Policy response",
+						"description": "Delete an Access policy response",
 						"content": {
 							"application/json": {
 								"schema": {
