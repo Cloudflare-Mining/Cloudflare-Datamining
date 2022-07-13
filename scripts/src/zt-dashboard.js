@@ -5,10 +5,12 @@ import fetch from 'node-fetch';
 import {parse} from 'acorn';
 import {full} from 'acorn-walk';
 
-import {tryAndPush, beautify} from './utils.js';
+import {tryAndPush, beautify, getHttpsAgent} from './utils.js';
 
 const mainScript = /(main\.bundle\.[\da-z]+\.js)/;
 const staticDashURL = 'https://dash.teams.cloudflare.com/';
+
+const agent = getHttpsAgent();
 
 async function writeJS(filename, data){
 	const file = path.resolve(`../data/zt-dashboard/${filename}`);
@@ -26,7 +28,7 @@ async function findWantedChunks(chunks){
 	let fetched = 0;
 	for(const chunk of chunks){
 		getChunks.push(async function(){
-			const res = await fetch(`${staticDashURL}${chunk}`);
+			const res = await fetch(`${staticDashURL}${chunk}`, {agent});
 			fetched++;
 			if(!res.ok){
 				throw new Error('Failed to fetch chunk ' + chunk);
@@ -55,7 +57,7 @@ async function findWantedChunks(chunks){
 }
 
 async function getChunks(){
-	const response = await fetch(staticDashURL);
+	const response = await fetch(staticDashURL, {agent});
 	const text = await response.text();
 
 	// Find `main.js` bundle
@@ -66,7 +68,7 @@ async function getChunks(){
 
 	const appFile = match[1];
 
-	const appRes = await fetch(`${staticDashURL}${appFile}`);
+	const appRes = await fetch(`${staticDashURL}${appFile}`, {agent});
 	const appJs = await appRes.text();
 
 	// get chunks from AST

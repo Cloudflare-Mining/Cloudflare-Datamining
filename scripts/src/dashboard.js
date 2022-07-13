@@ -8,7 +8,7 @@ import isValidFilename from 'valid-filename';
 import filenamify from 'filenamify';
 import dataUriToBuffer from 'data-uri-to-buffer';
 
-import {tryAndPush, removeSlashes, beautify} from './utils.js';
+import {tryAndPush, removeSlashes, beautify, getHttpsAgent} from './utils.js';
 
 const appScript = /(app\.[\da-z]+\.js)/;
 const chunkIds = /(?:\w+\.\w+\((\d+)\)(?:, )?)/g;
@@ -20,6 +20,8 @@ const navigationSnippet = 'components/SidebarNav/index.ts":';
 const subRoutesSnippet = 'util-routes/src/index.ts';
 const actionSnippet = 'app/redux/makeActionCreator.ts';
 const staticDashURL = 'https://static.dash.cloudflare.com/';
+
+const agent = getHttpsAgent();
 
 // TODO: tidy up this file
 
@@ -39,7 +41,7 @@ async function findWantedChunks(chunks){
 	let fetched = 0;
 	for(const chunk of chunks){
 		getChunks.push(async function(){
-			const res = await fetch(`${staticDashURL}${chunk}.js`);
+			const res = await fetch(`${staticDashURL}${chunk}.js`, {agent});
 			fetched++;
 			// 404s are okay, but nothing else
 			if(!res.ok && res.status !== 404){
@@ -96,7 +98,7 @@ async function findWantedChunks(chunks){
 }
 
 async function getChunks(){
-	const response = await fetch(staticDashURL);
+	const response = await fetch(staticDashURL, {agent});
 	const text = await response.text();
 
 	// Find `app.js` bundle
@@ -107,7 +109,7 @@ async function getChunks(){
 
 	const appFile = match[1];
 
-	const appRes = await fetch(`${staticDashURL}${appFile}`);
+	const appRes = await fetch(`${staticDashURL}${appFile}`, {agent});
 	const appJs = await appRes.text();
 
 	// Trim this down to only the part we need right now
@@ -293,7 +295,7 @@ async function generateDashboardStructure(wantedChunks, write = false){
 								getRemoteFiles.push(async function(){
 									let fileRes = null;
 									try{
-										fileRes = await fetch(`${staticDashURL}${remoteFile}`);
+										fileRes = await fetch(`${staticDashURL}${remoteFile}`, {agent});
 									}catch{}
 									if(!fileRes?.ok){
 										console.error('Failure fetching remote file', remoteFile);

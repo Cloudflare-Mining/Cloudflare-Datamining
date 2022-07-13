@@ -5,6 +5,16 @@ import fetch from 'node-fetch';
 import simpleGit from 'simple-git';
 import jsBeautify from 'js-beautify';
 
+// enablle keepalives for faster fetching
+import https from 'node:https';
+export function getHttpsAgent(){
+	const agent = new https.Agent({
+		keepAlive: true,
+	});
+	return agent;
+}
+https.globalAgent = getHttpsAgent();
+
 // We want it to be ran from root not scripts
 const git = simpleGit({baseDir: path.resolve('..')});
 
