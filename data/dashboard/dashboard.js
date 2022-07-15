@@ -7104,12 +7104,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				e.g.build = Bu({}, {
-					branch: "release-1657893907",
+					branch: "nick/LOUI-3490",
 					isReleaseCandidate: "true",
-					commit: "b92effab1f300779aa0c74507db6268d75eab628",
+					commit: "d1a02744d65bf50672f678c4bc3451c586e05ce9",
 					env: "production",
-					builtAt: 1657894264508,
-					dashVersion: "addbf72fcf79fe0ca9a9fdf55ad031f646aead14",
+					builtAt: 1657913342344,
+					dashVersion: "f197d3f21c95adaaa6fd326c1a3bea27715ba4e3",
 					versions: {
 						"@cloudflare/app-dash": "25.52.21",
 						node: "14.18.3",
@@ -90924,4 +90924,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=dd4a3e51cf613d39dbfe.js.map
+//# sourceMappingURL=ea04bdefc744d39cc26f.js.map
