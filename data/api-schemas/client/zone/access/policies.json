@@ -1,44 +1,44 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/access/policies.json",
-	"title": "Zone-Level Access Policy",
-	"description": "Access Policies define the users or groups who can, or cannot, reach the Application Resource. (NOTE: it's recommended that the account route namespace is used instead: https://api.cloudflare.com/#access-policy-properties.)",
+	"title": "Zone-Level Access policies",
+	"description": "Access policies define the users or groups who can reach an Access application.  (Note: We recommend configuring settings by account rather than by zone. Refer to https://api.cloudflare.com/#access-policies-properties.)",
 	"cfExtendedDescription": "https://developers.cloudflare.com/access/setting-up-access/configuring-access-policies/",
 	"type": "object",
 	"links": [
 		{
-			"title": "List Access Policies",
-			"description": "List Access Policies for an Access Application",
+			"title": "List Access policies",
+			"description": "Lists Access policies configured for an application.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/identifier}/access/apps/{#/definitions/uuid}/policies",
 			"method": "GET",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-policy-list-access-policies",
+			"html_id": "zone-level-access-policies-list-access-policies",
 			"uri": "zones/:identifier/access/apps/:uuid/policies",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/apps/f174e90a-fafe-4643-bbbc-4a0ed4fc8415/policies\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"precedence\": 1,\n      \"decision\": \"allow\",\n      \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"name\": \"Allow devs\",\n      \"include\": [\n        {\n          \"email\": {\n            \"email\": \"test@example.com\"\n          }\n        }\n      ],\n      \"exclude\": [\n        {\n          \"email\": {\n            \"email\": \"test@example.com\"\n          }\n        }\n      ],\n      \"require\": [\n        {\n          \"email\": {\n            \"email\": \"test@example.com\"\n          }\n        }\n      ],\n      \"purpose_justification_required\": true,\n      \"purpose_justification_prompt\": \"Please enter a justification for entering this protected domain\",\n      \"approval_required\": true,\n      \"approval_groups\": [\n        {\n          \"email_addresses\": [\n            \"test1@cloudflare.com\",\n            \"test2@cloudflare.com\"\n          ],\n          \"approvals_needed\": 1\n        },\n        {\n          \"email_list_uuid\": \"597147a1-976b-4ef2-9af0-81d5d007fc34\",\n          \"approvals_needed\": 3\n        }\n      ]\n    }\n  ]\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"precedence\": 1,\n      \"decision\": \"allow\",\n      \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"name\": \"Allow devs\",\n      \"include\": [\n        {\n          \"email\": {\n            \"email\": \"test@example.com\"\n          }\n        }\n      ],\n      \"exclude\": [\n        {\n          \"email\": {\n            \"email\": \"test@example.com\"\n          }\n        }\n      ],\n      \"require\": [\n        {\n          \"email\": {\n            \"email\": \"test@example.com\"\n          }\n        }\n      ],\n      \"purpose_justification_required\": true,\n      \"purpose_justification_prompt\": \"Please enter a justification for entering this protected domain.\",\n      \"approval_required\": true,\n      \"approval_groups\": [\n        {\n          \"email_addresses\": [\n            \"test1@cloudflare.com\",\n            \"test2@cloudflare.com\"\n          ],\n          \"approvals_needed\": 1\n        },\n        {\n          \"email_list_uuid\": \"597147a1-976b-4ef2-9af0-81d5d007fc34\",\n          \"approvals_needed\": 3\n        }\n      ]\n    }\n  ]\n}"
 		},
 		{
-			"title": "Access Policy Details",
-			"description": "Fetch a single Access Policy",
+			"title": "Get an Access policy",
+			"description": "Fetches a single Access policy.",
 			"rel": "self",
 			"href": "zones/{#/definitions/identifier}/access/apps/{#/definitions/uuid}/policies/{#/definitions/uuid}",
 			"method": "GET",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-policy-access-policy-details",
+			"html_id": "zone-level-access-policies-get-an-access-policy",
 			"uri": "zones/:identifier/access/apps/:uuid/policies/:uuid",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/apps/f174e90a-fafe-4643-bbbc-4a0ed4fc8415/policies/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"precedence\": 1,\n    \"decision\": \"allow\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"Allow devs\",\n    \"include\": [\n      {\n        \"email\": {\n          \"email\": \"test@example.com\"\n        }\n      }\n    ],\n    \"exclude\": [\n      {\n        \"email\": {\n          \"email\": \"test@example.com\"\n        }\n      }\n    ],\n    \"require\": [\n      {\n        \"email\": {\n          \"email\": \"test@example.com\"\n        }\n      }\n    ],\n    \"purpose_justification_required\": true,\n    \"purpose_justification_prompt\": \"Please enter a justification for entering this protected domain\",\n    \"approval_required\": true,\n    \"approval_groups\": [\n      {\n        \"email_addresses\": [\n          \"test1@cloudflare.com\",\n          \"test2@cloudflare.com\"\n        ],\n        \"approvals_needed\": 1\n      },\n      {\n        \"email_list_uuid\": \"597147a1-976b-4ef2-9af0-81d5d007fc34\",\n        \"approvals_needed\": 3\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"precedence\": 1,\n    \"decision\": \"allow\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"Allow devs\",\n    \"include\": [\n      {\n        \"email\": {\n          \"email\": \"test@example.com\"\n        }\n      }\n    ],\n    \"exclude\": [\n      {\n        \"email\": {\n          \"email\": \"test@example.com\"\n        }\n      }\n    ],\n    \"require\": [\n      {\n        \"email\": {\n          \"email\": \"test@example.com\"\n        }\n      }\n    ],\n    \"purpose_justification_required\": true,\n    \"purpose_justification_prompt\": \"Please enter a justification for entering this protected domain.\",\n    \"approval_required\": true,\n    \"approval_groups\": [\n      {\n        \"email_addresses\": [\n          \"test1@cloudflare.com\",\n          \"test2@cloudflare.com\"\n        ],\n        \"approvals_needed\": 1\n      },\n      {\n        \"email_list_uuid\": \"597147a1-976b-4ef2-9af0-81d5d007fc34\",\n        \"approvals_needed\": 3\n      }\n    ]\n  }\n}"
 		},
 		{
-			"title": "Create Access Policy",
-			"description": "Create a new Access Policy",
+			"title": "Create an Access policy",
+			"description": "Create a new Access policy for an application.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/identifier}/access/apps/{#/definitions/uuid}/policies",
 			"method": "POST",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-policy-create-access-policy",
+			"html_id": "zone-level-access-policies-create-an-access-policy",
 			"uri": "zones/:identifier/access/apps/:uuid/policies",
-			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/apps/f174e90a-fafe-4643-bbbc-4a0ed4fc8415/policies\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"precedence\":1,\"decision\":\"allow\",\"name\":\"Allow devs\",\"include\":[{\"email\":{\"email\":\"test@example.com\"}}],\"exclude\":[{\"email\":{\"email\":\"test@example.com\"}}],\"require\":[{\"email\":{\"email\":\"test@example.com\"}}],\"purpose_justification_required\":true,\"purpose_justification_prompt\":\"Please enter a justification for entering this protected domain\",\"approval_required\":true,\"approval_groups\":[{\"email_addresses\":[\"test1@cloudflare.com\",\"test2@cloudflare.com\"],\"approvals_needed\":1},{\"email_list_uuid\":\"597147a1-976b-4ef2-9af0-81d5d007fc34\",\"approvals_needed\":3}]}'",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/apps/f174e90a-fafe-4643-bbbc-4a0ed4fc8415/policies\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"precedence\":1,\"decision\":\"allow\",\"name\":\"Allow devs\",\"include\":[{\"email\":{\"email\":\"test@example.com\"}}],\"exclude\":[{\"email\":{\"email\":\"test@example.com\"}}],\"require\":[{\"email\":{\"email\":\"test@example.com\"}}],\"purpose_justification_required\":true,\"purpose_justification_prompt\":\"Please enter a justification for entering this protected domain.\",\"approval_required\":true,\"approval_groups\":[{\"email_addresses\":[\"test1@cloudflare.com\",\"test2@cloudflare.com\"],\"approvals_needed\":1},{\"email_list_uuid\":\"597147a1-976b-4ef2-9af0-81d5d007fc34\",\"approvals_needed\":3}]}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -47,12 +47,12 @@
 					"precedence": {
 						"type": "integer",
 						"example": "1",
-						"description": "The unique precedence for policies on a single application"
+						"description": "The order of execution for this policy. Must be unique for each policy."
 					},
 					"decision": {
 						"type": "string",
 						"example": "\"allow\"",
-						"description": "Defines the action Access will take if the policy matches the user.",
+						"description": "The action Access will take if a user matches this policy.",
 						"enum": [
 							"allow",
 							"deny",
@@ -63,12 +63,12 @@
 					"name": {
 						"type": "string",
 						"example": "\"Allow devs\"",
-						"description": "The name of the policy. Only used in the UI."
+						"description": "The name of the Access policy."
 					},
 					"include": {
 						"type": "array",
 						"example": "[\n  {\n    \"email\": {\n      \"email\": \"test@example.com\"\n    }\n  }\n]",
-						"description": "The include policy works like an OR logical operator. The user must satisfy one of the rules in includes.",
+						"description": "Rules evaluated with an OR logical operator. To match the policy, a user needs to meet only one of the Include rules.",
 						"items": {
 							"id": "https://api.cloudflare.com/schemas/v4/client/definitions/access/rule.json",
 							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
@@ -681,7 +681,7 @@
 					"exclude": {
 						"type": "array",
 						"example": "[\n  {\n    \"email\": {\n      \"email\": \"test@example.com\"\n    }\n  }\n]",
-						"description": "The exclude policy works like a NOT logical operator. The user must not satisfy all of the rules in exclude.",
+						"description": "Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.",
 						"items": {
 							"id": "https://api.cloudflare.com/schemas/v4/client/definitions/access/rule.json",
 							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
@@ -1294,7 +1294,7 @@
 					"require": {
 						"type": "array",
 						"example": "[\n  {\n    \"email\": {\n      \"email\": \"test@example.com\"\n    }\n  }\n]",
-						"description": "The require policy works like a AND logical operator. The user must satisfy all of the rules in require.",
+						"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 						"items": {
 							"id": "https://api.cloudflare.com/schemas/v4/client/definitions/access/rule.json",
 							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
@@ -1907,45 +1907,45 @@
 					"purpose_justification_required": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Defines whether or not the user is prompted for a justification when this policy is applied.",
+						"description": "Require users to enter a justification when they log in to the application.",
 						"default": false
 					},
 					"purpose_justification_prompt": {
 						"type": "string",
-						"example": "\"Please enter a justification for entering this protected domain\"",
-						"description": "The text the user will be prompted with when a purpose justification is required."
+						"example": "\"Please enter a justification for entering this protected domain.\"",
+						"description": "A custom message that will appear on the purpose justification screen."
 					},
 					"approval_required": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Defines whether or not the user needs to request approval when this policy is applied.",
+						"description": "Requires the user to request access from an administrator at the start of each session.",
 						"default": false
 					},
 					"approval_groups": {
 						"type": "array",
 						"example": "[\n  {\n    \"email_addresses\": [\n      \"test1@cloudflare.com\",\n      \"test2@cloudflare.com\"\n    ],\n    \"approvals_needed\": 1\n  },\n  {\n    \"email_list_uuid\": \"597147a1-976b-4ef2-9af0-81d5d007fc34\",\n    \"approvals_needed\": 3\n  }\n]",
-						"description": "The list of approval groups that must approve the access request.",
+						"description": "Administrators who can approve a temporary authentication request.",
 						"items": {
 							"type": "object",
-							"description": "A group of emails that can approve the access request",
+							"description": "A group of email addresses that can approve a temporary authentication request.",
 							"required": [
 								"approvals_needed"
 							],
 							"properties": {
 								"email_list_uuid": {
 									"type": "string",
-									"description": "UUID of an re-usable email list"
+									"description": "The UUID of an re-usable email list."
 								},
 								"email_addresses": {
 									"type": "array",
-									"description": "list of emails that can approve the access request",
+									"description": "A list of emails that can approve the access request.",
 									"example": [
 										"test@cloudflare.com",
 										"test2@cloudflare.com"
 									]
 								},
 								"approvals_needed": {
-									"description": "number of approvals needed to be granted access",
+									"description": "The number of approvals needed to obtain access.",
 									"type": "number",
 									"minimum": 0,
 									"example": 1
@@ -1969,20 +1969,20 @@
 					"approval_groups"
 				],
 				"objects": [],
-				"example": "{\n  \"precedence\": 1,\n  \"decision\": \"allow\",\n  \"name\": \"Allow devs\",\n  \"include\": [\n    {\n      \"email\": {\n        \"email\": \"test@example.com\"\n      }\n    }\n  ],\n  \"exclude\": [\n    {\n      \"email\": {\n        \"email\": \"test@example.com\"\n      }\n    }\n  ],\n  \"require\": [\n    {\n      \"email\": {\n        \"email\": \"test@example.com\"\n      }\n    }\n  ],\n  \"purpose_justification_required\": true,\n  \"purpose_justification_prompt\": \"Please enter a justification for entering this protected domain\",\n  \"approval_required\": true,\n  \"approval_groups\": [\n    {\n      \"email_addresses\": [\n        \"test1@cloudflare.com\",\n        \"test2@cloudflare.com\"\n      ],\n      \"approvals_needed\": 1\n    },\n    {\n      \"email_list_uuid\": \"597147a1-976b-4ef2-9af0-81d5d007fc34\",\n      \"approvals_needed\": 3\n    }\n  ]\n}"
+				"example": "{\n  \"precedence\": 1,\n  \"decision\": \"allow\",\n  \"name\": \"Allow devs\",\n  \"include\": [\n    {\n      \"email\": {\n        \"email\": \"test@example.com\"\n      }\n    }\n  ],\n  \"exclude\": [\n    {\n      \"email\": {\n        \"email\": \"test@example.com\"\n      }\n    }\n  ],\n  \"require\": [\n    {\n      \"email\": {\n        \"email\": \"test@example.com\"\n      }\n    }\n  ],\n  \"purpose_justification_required\": true,\n  \"purpose_justification_prompt\": \"Please enter a justification for entering this protected domain.\",\n  \"approval_required\": true,\n  \"approval_groups\": [\n    {\n      \"email_addresses\": [\n        \"test1@cloudflare.com\",\n        \"test2@cloudflare.com\"\n      ],\n      \"approvals_needed\": 1\n    },\n    {\n      \"email_list_uuid\": \"597147a1-976b-4ef2-9af0-81d5d007fc34\",\n      \"approvals_needed\": 3\n    }\n  ]\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"precedence\": 1,\n    \"decision\": \"allow\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"Allow devs\",\n    \"include\": [\n      {\n        \"email\": {\n          \"email\": \"test@example.com\"\n        }\n      }\n    ],\n    \"exclude\": [\n      {\n        \"email\": {\n          \"email\": \"test@example.com\"\n        }\n      }\n    ],\n    \"require\": [\n      {\n        \"email\": {\n          \"email\": \"test@example.com\"\n        }\n      }\n    ],\n    \"purpose_justification_required\": true,\n    \"purpose_justification_prompt\": \"Please enter a justification for entering this protected domain\",\n    \"approval_required\": true,\n    \"approval_groups\": [\n      {\n        \"email_addresses\": [\n          \"test1@cloudflare.com\",\n          \"test2@cloudflare.com\"\n        ],\n        \"approvals_needed\": 1\n      },\n      {\n        \"email_list_uuid\": \"597147a1-976b-4ef2-9af0-81d5d007fc34\",\n        \"approvals_needed\": 3\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"precedence\": 1,\n    \"decision\": \"allow\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"Allow devs\",\n    \"include\": [\n      {\n        \"email\": {\n          \"email\": \"test@example.com\"\n        }\n      }\n    ],\n    \"exclude\": [\n      {\n        \"email\": {\n          \"email\": \"test@example.com\"\n        }\n      }\n    ],\n    \"require\": [\n      {\n        \"email\": {\n          \"email\": \"test@example.com\"\n        }\n      }\n    ],\n    \"purpose_justification_required\": true,\n    \"purpose_justification_prompt\": \"Please enter a justification for entering this protected domain.\",\n    \"approval_required\": true,\n    \"approval_groups\": [\n      {\n        \"email_addresses\": [\n          \"test1@cloudflare.com\",\n          \"test2@cloudflare.com\"\n        ],\n        \"approvals_needed\": 1\n      },\n      {\n        \"email_list_uuid\": \"597147a1-976b-4ef2-9af0-81d5d007fc34\",\n        \"approvals_needed\": 3\n      }\n    ]\n  }\n}"
 		},
 		{
-			"title": "Update Access Policy",
-			"description": "Update a configured Access Policy",
+			"title": "Update an Access policy",
+			"description": "Update a configured Access policy.",
 			"rel": "self",
 			"href": "zones/{#/definitions/identifier}/access/apps/{#/definitions/uuid}/policies/{#/definitions/uuid}",
 			"method": "PUT",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-policy-update-access-policy",
+			"html_id": "zone-level-access-policies-update-an-access-policy",
 			"uri": "zones/:identifier/access/apps/:uuid/policies/:uuid",
-			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/apps/f174e90a-fafe-4643-bbbc-4a0ed4fc8415/policies/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"precedence\":1,\"decision\":\"allow\",\"name\":\"Allow devs\",\"include\":[{\"email\":{\"email\":\"test@example.com\"}}],\"exclude\":[{\"email\":{\"email\":\"test@example.com\"}}],\"require\":[{\"email\":{\"email\":\"test@example.com\"}}],\"purpose_justification_required\":true,\"purpose_justification_prompt\":\"Please enter a justification for entering this protected domain\",\"approval_required\":true,\"approval_groups\":[{\"email_addresses\":[\"test1@cloudflare.com\",\"test2@cloudflare.com\"],\"approvals_needed\":1},{\"email_list_uuid\":\"597147a1-976b-4ef2-9af0-81d5d007fc34\",\"approvals_needed\":3}]}'",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/apps/f174e90a-fafe-4643-bbbc-4a0ed4fc8415/policies/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"precedence\":1,\"decision\":\"allow\",\"name\":\"Allow devs\",\"include\":[{\"email\":{\"email\":\"test@example.com\"}}],\"exclude\":[{\"email\":{\"email\":\"test@example.com\"}}],\"require\":[{\"email\":{\"email\":\"test@example.com\"}}],\"purpose_justification_required\":true,\"purpose_justification_prompt\":\"Please enter a justification for entering this protected domain.\",\"approval_required\":true,\"approval_groups\":[{\"email_addresses\":[\"test1@cloudflare.com\",\"test2@cloudflare.com\"],\"approvals_needed\":1},{\"email_list_uuid\":\"597147a1-976b-4ef2-9af0-81d5d007fc34\",\"approvals_needed\":3}]}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -1991,12 +1991,12 @@
 					"precedence": {
 						"type": "integer",
 						"example": "1",
-						"description": "The unique precedence for policies on a single application"
+						"description": "The order of execution for this policy. Must be unique for each policy."
 					},
 					"decision": {
 						"type": "string",
 						"example": "\"allow\"",
-						"description": "Defines the action Access will take if the policy matches the user.",
+						"description": "The action Access will take if a user matches this policy.",
 						"enum": [
 							"allow",
 							"deny",
@@ -2007,12 +2007,12 @@
 					"name": {
 						"type": "string",
 						"example": "\"Allow devs\"",
-						"description": "The name of the policy. Only used in the UI."
+						"description": "The name of the Access policy."
 					},
 					"include": {
 						"type": "array",
 						"example": "[\n  {\n    \"email\": {\n      \"email\": \"test@example.com\"\n    }\n  }\n]",
-						"description": "The include policy works like an OR logical operator. The user must satisfy one of the rules in includes.",
+						"description": "Rules evaluated with an OR logical operator. To match the policy, a user needs to meet only one of the Include rules.",
 						"items": {
 							"id": "https://api.cloudflare.com/schemas/v4/client/definitions/access/rule.json",
 							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
@@ -2625,7 +2625,7 @@
 					"exclude": {
 						"type": "array",
 						"example": "[\n  {\n    \"email\": {\n      \"email\": \"test@example.com\"\n    }\n  }\n]",
-						"description": "The exclude policy works like a NOT logical operator. The user must not satisfy all of the rules in exclude.",
+						"description": "Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.",
 						"items": {
 							"id": "https://api.cloudflare.com/schemas/v4/client/definitions/access/rule.json",
 							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
@@ -3238,7 +3238,7 @@
 					"require": {
 						"type": "array",
 						"example": "[\n  {\n    \"email\": {\n      \"email\": \"test@example.com\"\n    }\n  }\n]",
-						"description": "The require policy works like a AND logical operator. The user must satisfy all of the rules in require.",
+						"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 						"items": {
 							"id": "https://api.cloudflare.com/schemas/v4/client/definitions/access/rule.json",
 							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
@@ -3851,45 +3851,45 @@
 					"purpose_justification_required": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Defines whether or not the user is prompted for a justification when this policy is applied.",
+						"description": "Require users to enter a justification when they log in to the application.",
 						"default": false
 					},
 					"purpose_justification_prompt": {
 						"type": "string",
-						"example": "\"Please enter a justification for entering this protected domain\"",
-						"description": "The text the user will be prompted with when a purpose justification is required."
+						"example": "\"Please enter a justification for entering this protected domain.\"",
+						"description": "A custom message that will appear on the purpose justification screen."
 					},
 					"approval_required": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Defines whether or not the user needs to request approval when this policy is applied.",
+						"description": "Requires the user to request access from an administrator at the start of each session.",
 						"default": false
 					},
 					"approval_groups": {
 						"type": "array",
 						"example": "[\n  {\n    \"email_addresses\": [\n      \"test1@cloudflare.com\",\n      \"test2@cloudflare.com\"\n    ],\n    \"approvals_needed\": 1\n  },\n  {\n    \"email_list_uuid\": \"597147a1-976b-4ef2-9af0-81d5d007fc34\",\n    \"approvals_needed\": 3\n  }\n]",
-						"description": "The list of approval groups that must approve the access request.",
+						"description": "Administrators who can approve a temporary authentication request.",
 						"items": {
 							"type": "object",
-							"description": "A group of emails that can approve the access request",
+							"description": "A group of email addresses that can approve a temporary authentication request.",
 							"required": [
 								"approvals_needed"
 							],
 							"properties": {
 								"email_list_uuid": {
 									"type": "string",
-									"description": "UUID of an re-usable email list"
+									"description": "The UUID of an re-usable email list."
 								},
 								"email_addresses": {
 									"type": "array",
-									"description": "list of emails that can approve the access request",
+									"description": "A list of emails that can approve the access request.",
 									"example": [
 										"test@cloudflare.com",
 										"test2@cloudflare.com"
 									]
 								},
 								"approvals_needed": {
-									"description": "number of approvals needed to be granted access",
+									"description": "The number of approvals needed to obtain access.",
 									"type": "number",
 									"minimum": 0,
 									"example": 1
@@ -3913,24 +3913,24 @@
 					"approval_groups"
 				],
 				"objects": [],
-				"example": "{\n  \"precedence\": 1,\n  \"decision\": \"allow\",\n  \"name\": \"Allow devs\",\n  \"include\": [\n    {\n      \"email\": {\n        \"email\": \"test@example.com\"\n      }\n    }\n  ],\n  \"exclude\": [\n    {\n      \"email\": {\n        \"email\": \"test@example.com\"\n      }\n    }\n  ],\n  \"require\": [\n    {\n      \"email\": {\n        \"email\": \"test@example.com\"\n      }\n    }\n  ],\n  \"purpose_justification_required\": true,\n  \"purpose_justification_prompt\": \"Please enter a justification for entering this protected domain\",\n  \"approval_required\": true,\n  \"approval_groups\": [\n    {\n      \"email_addresses\": [\n        \"test1@cloudflare.com\",\n        \"test2@cloudflare.com\"\n      ],\n      \"approvals_needed\": 1\n    },\n    {\n      \"email_list_uuid\": \"597147a1-976b-4ef2-9af0-81d5d007fc34\",\n      \"approvals_needed\": 3\n    }\n  ]\n}"
+				"example": "{\n  \"precedence\": 1,\n  \"decision\": \"allow\",\n  \"name\": \"Allow devs\",\n  \"include\": [\n    {\n      \"email\": {\n        \"email\": \"test@example.com\"\n      }\n    }\n  ],\n  \"exclude\": [\n    {\n      \"email\": {\n        \"email\": \"test@example.com\"\n      }\n    }\n  ],\n  \"require\": [\n    {\n      \"email\": {\n        \"email\": \"test@example.com\"\n      }\n    }\n  ],\n  \"purpose_justification_required\": true,\n  \"purpose_justification_prompt\": \"Please enter a justification for entering this protected domain.\",\n  \"approval_required\": true,\n  \"approval_groups\": [\n    {\n      \"email_addresses\": [\n        \"test1@cloudflare.com\",\n        \"test2@cloudflare.com\"\n      ],\n      \"approvals_needed\": 1\n    },\n    {\n      \"email_list_uuid\": \"597147a1-976b-4ef2-9af0-81d5d007fc34\",\n      \"approvals_needed\": 3\n    }\n  ]\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"precedence\": 1,\n    \"decision\": \"allow\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"Allow devs\",\n    \"include\": [\n      {\n        \"email\": {\n          \"email\": \"test@example.com\"\n        }\n      }\n    ],\n    \"exclude\": [\n      {\n        \"email\": {\n          \"email\": \"test@example.com\"\n        }\n      }\n    ],\n    \"require\": [\n      {\n        \"email\": {\n          \"email\": \"test@example.com\"\n        }\n      }\n    ],\n    \"purpose_justification_required\": true,\n    \"purpose_justification_prompt\": \"Please enter a justification for entering this protected domain\",\n    \"approval_required\": true,\n    \"approval_groups\": [\n      {\n        \"email_addresses\": [\n          \"test1@cloudflare.com\",\n          \"test2@cloudflare.com\"\n        ],\n        \"approvals_needed\": 1\n      },\n      {\n        \"email_list_uuid\": \"597147a1-976b-4ef2-9af0-81d5d007fc34\",\n        \"approvals_needed\": 3\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"precedence\": 1,\n    \"decision\": \"allow\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"Allow devs\",\n    \"include\": [\n      {\n        \"email\": {\n          \"email\": \"test@example.com\"\n        }\n      }\n    ],\n    \"exclude\": [\n      {\n        \"email\": {\n          \"email\": \"test@example.com\"\n        }\n      }\n    ],\n    \"require\": [\n      {\n        \"email\": {\n          \"email\": \"test@example.com\"\n        }\n      }\n    ],\n    \"purpose_justification_required\": true,\n    \"purpose_justification_prompt\": \"Please enter a justification for entering this protected domain.\",\n    \"approval_required\": true,\n    \"approval_groups\": [\n      {\n        \"email_addresses\": [\n          \"test1@cloudflare.com\",\n          \"test2@cloudflare.com\"\n        ],\n        \"approvals_needed\": 1\n      },\n      {\n        \"email_list_uuid\": \"597147a1-976b-4ef2-9af0-81d5d007fc34\",\n        \"approvals_needed\": 3\n      }\n    ]\n  }\n}"
 		},
 		{
-			"title": "Delete Access Policy",
-			"description": "Delete an Access Policy",
+			"title": "Delete an Access policy",
+			"description": "Delete an Access policy.",
 			"rel": "self",
 			"href": "zones/{#/definitions/identifier}/access/apps/{#/definitions/uuid}/policies/{#/definitions/uuid}",
 			"method": "DELETE",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-policy-delete-access-policy",
+			"html_id": "zone-level-access-policies-delete-an-access-policy",
 			"uri": "zones/:identifier/access/apps/:uuid/policies/:uuid",
 			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/apps/f174e90a-fafe-4643-bbbc-4a0ed4fc8415/policies/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"\n  }\n}"
 		}
 	],
-	"html_id": "zone-level-access-policy",
+	"html_id": "zone-level-access-policies",
 	"object_definition": {
 		"_formatter": {
 			"jsonMediaType": {}
@@ -3940,17 +3940,17 @@
 				"type": "string",
 				"example": "\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"",
 				"maxLength": 36,
-				"description": "API uuid tag"
+				"description": "The policy ID."
 			},
 			"precedence": {
 				"type": "integer",
 				"example": "1",
-				"description": "The unique precedence for policies on a single application"
+				"description": "The order of execution for this policy. Must be unique for each policy."
 			},
 			"decision": {
 				"type": "string",
 				"example": "\"allow\"",
-				"description": "Defines the action Access will take if the policy matches the user.",
+				"description": "The action Access will take if a user matches this policy.",
 				"enum": [
 					"allow",
 					"deny",
@@ -3979,12 +3979,12 @@
 			"name": {
 				"type": "string",
 				"example": "\"Allow devs\"",
-				"description": "The name of the policy. Only used in the UI."
+				"description": "The name of the Access policy."
 			},
 			"include": {
 				"type": "array",
 				"example": "[\n  {\n    \"email\": {\n      \"email\": \"test@example.com\"\n    }\n  }\n]",
-				"description": "The include policy works like an OR logical operator. The user must satisfy one of the rules in includes.",
+				"description": "Rules evaluated with an OR logical operator. To match the policy, a user needs to meet only one of the Include rules.",
 				"items": {
 					"id": "https://api.cloudflare.com/schemas/v4/client/definitions/access/rule.json",
 					"$schema": "http://json-schema.org/draft-04/hyper-schema#",
@@ -4597,7 +4597,7 @@
 			"exclude": {
 				"type": "array",
 				"example": "[\n  {\n    \"email\": {\n      \"email\": \"test@example.com\"\n    }\n  }\n]",
-				"description": "The exclude policy works like a NOT logical operator. The user must not satisfy all of the rules in exclude.",
+				"description": "Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.",
 				"items": {
 					"id": "https://api.cloudflare.com/schemas/v4/client/definitions/access/rule.json",
 					"$schema": "http://json-schema.org/draft-04/hyper-schema#",
@@ -5210,7 +5210,7 @@
 			"require": {
 				"type": "array",
 				"example": "[\n  {\n    \"email\": {\n      \"email\": \"test@example.com\"\n    }\n  }\n]",
-				"description": "The require policy works like a AND logical operator. The user must satisfy all of the rules in require.",
+				"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
 				"items": {
 					"id": "https://api.cloudflare.com/schemas/v4/client/definitions/access/rule.json",
 					"$schema": "http://json-schema.org/draft-04/hyper-schema#",
@@ -5823,45 +5823,45 @@
 			"purpose_justification_required": {
 				"type": "boolean",
 				"example": "true",
-				"description": "Defines whether or not the user is prompted for a justification when this policy is applied.",
+				"description": "Require users to enter a justification when they log in to the application.",
 				"default": false
 			},
 			"purpose_justification_prompt": {
 				"type": "string",
-				"example": "\"Please enter a justification for entering this protected domain\"",
-				"description": "The text the user will be prompted with when a purpose justification is required."
+				"example": "\"Please enter a justification for entering this protected domain.\"",
+				"description": "A custom message that will appear on the purpose justification screen."
 			},
 			"approval_required": {
 				"type": "boolean",
 				"example": "true",
-				"description": "Defines whether or not the user needs to request approval when this policy is applied.",
+				"description": "Requires the user to request access from an administrator at the start of each session.",
 				"default": false
 			},
 			"approval_groups": {
 				"type": "array",
 				"example": "[\n  {\n    \"email_addresses\": [\n      \"test1@cloudflare.com\",\n      \"test2@cloudflare.com\"\n    ],\n    \"approvals_needed\": 1\n  },\n  {\n    \"email_list_uuid\": \"597147a1-976b-4ef2-9af0-81d5d007fc34\",\n    \"approvals_needed\": 3\n  }\n]",
-				"description": "The list of approval groups that must approve the access request.",
+				"description": "Administrators who can approve a temporary authentication request.",
 				"items": {
 					"type": "object",
-					"description": "A group of emails that can approve the access request",
+					"description": "A group of email addresses that can approve a temporary authentication request.",
 					"required": [
 						"approvals_needed"
 					],
 					"properties": {
 						"email_list_uuid": {
 							"type": "string",
-							"description": "UUID of an re-usable email list"
+							"description": "The UUID of an re-usable email list."
 						},
 						"email_addresses": {
 							"type": "array",
-							"description": "list of emails that can approve the access request",
+							"description": "A list of emails that can approve the access request.",
 							"example": [
 								"test@cloudflare.com",
 								"test2@cloudflare.com"
 							]
 						},
 						"approvals_needed": {
-							"description": "number of approvals needed to be granted access",
+							"description": "The number of approvals needed to obtain access.",
 							"type": "number",
 							"minimum": 0,
 							"example": 1
@@ -5887,8 +5887,8 @@
 			"approval_groups"
 		],
 		"objects": [],
-		"example": "{\n  \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n  \"precedence\": 1,\n  \"decision\": \"allow\",\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"name\": \"Allow devs\",\n  \"include\": [\n    {\n      \"email\": {\n        \"email\": \"test@example.com\"\n      }\n    }\n  ],\n  \"exclude\": [\n    {\n      \"email\": {\n        \"email\": \"test@example.com\"\n      }\n    }\n  ],\n  \"require\": [\n    {\n      \"email\": {\n        \"email\": \"test@example.com\"\n      }\n    }\n  ],\n  \"purpose_justification_required\": true,\n  \"purpose_justification_prompt\": \"Please enter a justification for entering this protected domain\",\n  \"approval_required\": true,\n  \"approval_groups\": [\n    {\n      \"email_addresses\": [\n        \"test1@cloudflare.com\",\n        \"test2@cloudflare.com\"\n      ],\n      \"approvals_needed\": 1\n    },\n    {\n      \"email_list_uuid\": \"597147a1-976b-4ef2-9af0-81d5d007fc34\",\n      \"approvals_needed\": 3\n    }\n  ]\n}",
-		"title": "Zone-Level Access Policy",
-		"description": "Access Policies define the users or groups who can, or cannot, reach the Application Resource. (NOTE: it's recommended that the account route namespace is used instead: https://api.cloudflare.com/#access-policy-properties.)"
+		"example": "{\n  \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n  \"precedence\": 1,\n  \"decision\": \"allow\",\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"name\": \"Allow devs\",\n  \"include\": [\n    {\n      \"email\": {\n        \"email\": \"test@example.com\"\n      }\n    }\n  ],\n  \"exclude\": [\n    {\n      \"email\": {\n        \"email\": \"test@example.com\"\n      }\n    }\n  ],\n  \"require\": [\n    {\n      \"email\": {\n        \"email\": \"test@example.com\"\n      }\n    }\n  ],\n  \"purpose_justification_required\": true,\n  \"purpose_justification_prompt\": \"Please enter a justification for entering this protected domain.\",\n  \"approval_required\": true,\n  \"approval_groups\": [\n    {\n      \"email_addresses\": [\n        \"test1@cloudflare.com\",\n        \"test2@cloudflare.com\"\n      ],\n      \"approvals_needed\": 1\n    },\n    {\n      \"email_list_uuid\": \"597147a1-976b-4ef2-9af0-81d5d007fc34\",\n      \"approvals_needed\": 3\n    }\n  ]\n}",
+		"title": "Zone-Level Access policies",
+		"description": "Access policies define the users or groups who can reach an Access application.  (Note: We recommend configuring settings by account rather than by zone. Refer to https://api.cloudflare.com/#access-policies-properties.)"
 	}
 }

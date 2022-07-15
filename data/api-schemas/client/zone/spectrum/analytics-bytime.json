@@ -5,7 +5,7 @@
 	"type": "object",
 	"links": [
 		{
-			"title": "Get Analytics By Time",
+			"title": "Get analytics by time",
 			"description": "Retrieves a list of aggregate metrics grouped by time interval.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone}/spectrum/analytics/events/bytime",
@@ -113,7 +113,7 @@
 			"rows": {
 				"type": "number",
 				"example": "2",
-				"description": "Total number of rows in the result",
+				"description": "Total number of rows in the result.",
 				"minimum": 0
 			},
 			"data": {
@@ -144,7 +144,7 @@
 						},
 						"dimensions": {
 							"type": "array",
-							"description": "List of dimensions the results are grouped by.",
+							"description": "List of dimensions by which the results are grouped.",
 							"example": [
 								"event",
 								"appID"
@@ -156,7 +156,7 @@
 			"totals": {
 				"type": "object",
 				"example": "{\n  \"count\": 5,\n  \"bytesIngress\": 4\n}",
-				"description": "Total results for metrics across all data.",
+				"description": "Total number of results for metrics across all data.",
 				"patternProperties": {
 					".*": {
 						"type": "number"
@@ -166,7 +166,7 @@
 			"min": {
 				"type": "object",
 				"example": "{\n  \"count\": 0,\n  \"bytesIngress\": 0\n}",
-				"description": "Minimum results for each metric.",
+				"description": "Minimum number of results for each metric.",
 				"patternProperties": {
 					".*": {
 						"type": "number"
@@ -176,7 +176,7 @@
 			"max": {
 				"type": "object",
 				"example": "{\n  \"count\": 3,\n  \"bytesIngress\": 2\n}",
-				"description": "Maximum results for each metric.",
+				"description": "Maximum number of results for each metric.",
 				"patternProperties": {
 					".*": {
 						"type": "number"
@@ -186,7 +186,7 @@
 			"data_lag": {
 				"type": "number",
 				"example": "60",
-				"description": "Number of seconds between current time and last processed event, i.e. how many seconds of data could be missing.",
+				"description": "Number of seconds between current time and last processed event, for example how many seconds of data could be missing.",
 				"minimum": 0
 			},
 			"time_intervals": {
@@ -282,7 +282,7 @@
 					"limit": {
 						"type": "integer",
 						"example": "10000",
-						"description": "Limit number of returned metrics, default is 10000"
+						"description": "Limit number of returned metrics, default is 10000."
 					}
 				}
 			}
