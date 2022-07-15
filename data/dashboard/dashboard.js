@@ -7104,14 +7104,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				e.g.build = Bu({}, {
-					branch: "release-1657807463",
+					branch: "release-1657893907",
 					isReleaseCandidate: "true",
-					commit: "dedd41bd0a98dc32b26e5e7690f7867c2a9df212",
+					commit: "b92effab1f300779aa0c74507db6268d75eab628",
 					env: "production",
-					builtAt: 1657807839629,
-					dashVersion: "c69e91f80c187cd48bfcfe5d455633ad1de3f463",
+					builtAt: 1657894264508,
+					dashVersion: "addbf72fcf79fe0ca9a9fdf55ad031f646aead14",
 					versions: {
-						"@cloudflare/app-dash": "25.52.18",
+						"@cloudflare/app-dash": "25.52.21",
 						node: "14.18.3",
 						yarn: "1.18.0",
 						webpack: "5.38.1"
@@ -34310,7 +34310,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					return g(se, "zone.advanced_certificate_manager") || p(se, "zone.advanced_certificate_manager")
 				},
 				fe = function(se) {
-					return S(se, "authoritative_dns.proxy_record_allowed") === !1
+					return S(se, "authoritative_dns.proxy_record_allowed") === !1 || z(se, "authoritative_dns.proxy_record_allowed") === !1
 				},
 				te = function(se) {
 					return p(se, "authoritative_dns.outgoing_zone_transfers_allowed") === !0
@@ -90924,4 +90924,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=9657d73c4786d0e9372e.js.map
+//# sourceMappingURL=dd4a3e51cf613d39dbfe.js.map
