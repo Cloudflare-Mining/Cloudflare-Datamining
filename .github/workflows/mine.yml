@@ -31,3 +31,4 @@ jobs:
           npm run mine
         env:
           DISCORD_URL: ${{ secrets.DISCORD_URL }}
+          FETCH_FROM_COLO_URL: ${{ secrets.FETCH_FROM_COLO_URL }}
