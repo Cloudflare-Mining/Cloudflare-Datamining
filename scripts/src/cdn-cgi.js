@@ -11,18 +11,26 @@ import {tryAndPush, getHttpsAgent} from './utils.js';
 
 const agent = getHttpsAgent();
 
-// TODO: dog/lab?
+// TODO: dog, lab, mcp canary?
 const MCP_COLO = 'lhr01';
 const CANARY_COLO = 'kul01';
+const MAIN_COLO = 'dfw01';
 const buildVersions = {
-	'build-info/ssl': 'https://build-info.jross.workers.dev/?type=ssl',
-	'build-info/fl': 'https://build-info.jross.workers.dev/?type=fl',
+	// ssl
+	'build-info/ssl-main': `${process.env.FETCH_FROM_COLO_URL}colo=${MAIN_COLO}&url=https://build-info.jross.workers.dev/?type=ssl`,
+
+	// fl
+	'build-info/fl-main': `${process.env.FETCH_FROM_COLO_URL}colo=${MAIN_COLO}&url=https://build-info.jross.workers.dev/?type=fl`,
 	'build-info/fl-mcp': `${process.env.FETCH_FROM_COLO_URL}colo=${MCP_COLO}&url=https://build-info.jross.workers.dev/?type=fl`,
 	'build-info/fl-canary': `${process.env.FETCH_FROM_COLO_URL}colo=${CANARY_COLO}&url=https://build-info.jross.workers.dev/?type=fl`,
-	'build-info/cache': 'https://build-info.jross.workers.dev/?type=cache',
+
+	// cache
+	'build-info/cache-main': `${process.env.FETCH_FROM_COLO_URL}colo=${MAIN_COLO}&url=https://build-info.jross.workers.dev/?type=cache`,
 	'build-info/cache-mcp': `${process.env.FETCH_FROM_COLO_URL}colo=${MCP_COLO}&url=https://build-info.jross.workers.dev/?type=cache`,
 	'build-info/cache-canary': `${process.env.FETCH_FROM_COLO_URL}colo=${CANARY_COLO}&url=https://build-info.jross.workers.dev/?type=cache`,
-	'build-info/origin': 'https://build-info.jross.workers.dev/?type=origin',
+
+	// origin
+	'build-info/origin-main': `${process.env.FETCH_FROM_COLO_URL}colo=${MAIN_COLO}&url=https://build-info.jross.workers.dev/?type=origin`,
 	'build-info/origin-mcp': `${process.env.FETCH_FROM_COLO_URL}colo=${MCP_COLO}&url=https://build-info.jross.workers.dev/?type=origin`,
 	'build-info/origin-canary': `${process.env.FETCH_FROM_COLO_URL}colo=${CANARY_COLO}&url=https://build-info.jross.workers.dev/?type=origin`,
 };

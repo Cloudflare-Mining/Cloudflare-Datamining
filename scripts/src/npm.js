@@ -9,6 +9,25 @@ import getUrls from 'get-urls';
 
 import {tryAndPush} from './utils.js';
 
+const wantedPackumentFields = [
+	'name',
+	'dist-tags',
+	'versions',
+	'modified',
+];
+const wantedVersionFields = [
+	'name',
+	'version',
+	'dependencies',
+	'devDependencies',
+	'peerDependencies',
+	'bin',
+	'dist',
+	'engines',
+	'stratus',
+	'metadata',
+];
+
 async function run(){
 	console.log('Fetching NPM Data...');
 	const rawData = [
@@ -29,6 +48,9 @@ async function run(){
 		}),
 		...await search('maintainer:wrangler-publisher', {
 			limit: 1000,
+		}),
+		...await search('wrangler maintainer:threepointone ', {
+			limit: 1,
 		}),
 	];
 
@@ -64,6 +86,18 @@ async function run(){
 			await pacote.extract(packageInfo.name, extractDir);
 			const dir = `../data/packages/${name}`;
 			await fs.ensureDir(path.resolve(dir));
+			const packument = await pacote.packument(packageInfo.name, {
+				fullMetadata: true,
+			});
+
+			const rawTags = Object.keys(packument['dist-tags']);
+			const tags = {};
+			for(const tag of rawTags){
+				tags[tag] = {
+					version: packument['dist-tags'][tag],
+					date: packument.time?.[packument['dist-tags'][tag]],
+				};
+			}
 			fs.writeFile(
 				path.resolve(`${dir}/info.json`),
 				JSON.stringify({
@@ -72,12 +106,24 @@ async function run(){
 					version: packageInfo.version,
 					date: packageInfo.date,
 					links: packageInfo.links,
+					tags,
 				}, null, '\t'),
 			);
-			const packument = await pacote.packument(packageInfo.name);
+
+			const trimmedPackument = {};
+			for(const field of wantedPackumentFields){
+				trimmedPackument[field] = packument[field];
+			}
+			for(const version of Object.keys(trimmedPackument.versions)){
+				const trimmedVersion = {};
+				for(const field of wantedVersionFields){
+					trimmedVersion[field] = packument.versions[version][field];
+				}
+				trimmedPackument.versions[version] = trimmedVersion;
+			}
 			fs.writeFile(
 				path.resolve(`${dir}/packument.json`),
-				JSON.stringify(packument, null, '\t'),
+				JSON.stringify(trimmedPackument, null, '\t'),
 			);
 		});
 	}
