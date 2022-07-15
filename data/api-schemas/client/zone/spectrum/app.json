@@ -5,8 +5,8 @@
 	"type": "object",
 	"links": [
 		{
-			"title": "List Spectrum applications",
-			"description": "Retrieves a list of currently existing Spectrum applications inside a zone.",
+			"title": "List Spectrum Applications",
+			"description": "Retrieve a list of currently existing Spectrum Applications inside a zone.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone}/spectrum/apps",
 			"method": "GET",
@@ -31,7 +31,7 @@
 						"minimum": 1,
 						"maximum": 100,
 						"default": 20,
-						"description": "Sets the maximum number of results per page."
+						"description": "Maximum number of results per page"
 					},
 					"direction": {
 						"type": "string",
@@ -41,7 +41,7 @@
 							"desc"
 						],
 						"default": "asc",
-						"description": "Sets the direction by which results are ordered."
+						"description": "Direction to order results"
 					},
 					"order": {
 						"type": "string",
@@ -53,7 +53,7 @@
 							"modified_on",
 							"dns"
 						],
-						"description": "Application field by which results are ordered.",
+						"description": "Application field to order results by",
 						"default": "dns"
 					}
 				},
@@ -70,8 +70,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"ea95132c15732412d22c1476fa83f27a\",\n      \"protocol\": \"tcp/22\",\n      \"dns\": {\n        \"type\": \"CNAME\",\n        \"name\": \"ssh.example.com\"\n      },\n      \"origin_direct\": [\n        \"tcp://192.0.2.1:22\"\n      ],\n      \"proxy_protocol\": \"off\",\n      \"ip_firewall\": true,\n      \"tls\": \"full\",\n      \"edge_ips\": {\n        \"type\": \"dynamic\",\n        \"connectivity\": \"all\"\n      },\n      \"traffic_type\": \"direct\",\n      \"argo_smart_routing\": true,\n      \"created_on\": \"2014-01-02T02:20:00Z\",\n      \"modified_on\": \"2014-01-02T02:20:00Z\"\n    }\n  ]\n}"
 		},
 		{
-			"title": "Create Spectrum application using an IP address for the origin",
-			"description": "Creates a new Spectrum application from a configuration using an IP address for the origin.",
+			"title": "Create Spectrum Application using an IP address for the origin",
+			"description": "Create a new Spectrum Application from a configuration using an IP address for the origin.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone}/spectrum/apps",
 			"method": "POST",
@@ -87,7 +87,7 @@
 					"protocol": {
 						"type": "string",
 						"example": "\"tcp/22\"",
-						"description": "The port configuration at Cloudflare’s edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`."
+						"description": "Port configuration at Cloudflare’s edge. May specify a single port, e.g. `\"tcp/1000\"`, or a range of ports, e.g. `\"tcp/1000-2000\"`."
 					},
 					"dns": {
 						"type": "object",
@@ -116,7 +116,7 @@
 						"example": "[\n  \"tcp://192.0.2.1:22\"\n]",
 						"description": "A list of destination addresses to the origin.",
 						"items": {
-							"description": "Destination origin URI. May specify a single origin port, for example `\"tcp://192.0.2.1:1000\"`, or a range of origin ports, for example `\"tcp://192.0.2.1:1000-2000\"`.",
+							"description": "Destination origin URI. May specify a single origin port, e.g. `\"tcp://192.0.2.1:1000\"`, or a range of origin ports, e.g. `\"tcp://192.0.2.1:1000-2000\"`.",
 							"example": "tcp://192.0.2.1:22",
 							"type": "string",
 							"cfNotes": "If specifying a port range, the number of ports in the range must match the number of ports specified in the \"protocol\" field."
@@ -125,7 +125,7 @@
 					"proxy_protocol": {
 						"type": "string",
 						"example": "\"off\"",
-						"description": "Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.",
+						"description": "Enables Proxy Protocol to the origin. See [the developer documentation](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.",
 						"default": "off",
 						"enum": [
 							"off",
@@ -257,8 +257,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"ea95132c15732412d22c1476fa83f27a\",\n    \"protocol\": \"tcp/22\",\n    \"dns\": {\n      \"type\": \"CNAME\",\n      \"name\": \"ssh.example.com\"\n    },\n    \"origin_direct\": [\n      \"tcp://192.0.2.1:22\"\n    ],\n    \"proxy_protocol\": \"off\",\n    \"ip_firewall\": true,\n    \"tls\": \"full\",\n    \"edge_ips\": {\n      \"type\": \"dynamic\",\n      \"connectivity\": \"all\"\n    },\n    \"traffic_type\": \"direct\",\n    \"argo_smart_routing\": true,\n    \"created_on\": \"2014-01-02T02:20:00Z\",\n    \"modified_on\": \"2014-01-02T02:20:00Z\"\n  }\n}"
 		},
 		{
-			"title": "Create Spectrum application using a name for the origin",
-			"description": "Creates a new Spectrum application from a configuration using a name for the origin.",
+			"title": "Create Spectrum Application using a name for the origin",
+			"description": "Create a new Spectrum Application from a configuration using a name for the origin.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone}/spectrum/apps",
 			"method": "POST",
@@ -274,7 +274,7 @@
 					"protocol": {
 						"type": "string",
 						"example": "\"tcp/22\"",
-						"description": "The port configuration at Cloudflare’s edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`."
+						"description": "Port configuration at Cloudflare’s edge. May specify a single port, e.g. `\"tcp/1000\"`, or a range of ports, e.g. `\"tcp/1000-2000\"`."
 					},
 					"dns": {
 						"type": "object",
@@ -334,7 +334,7 @@
 							"string"
 						],
 						"example": "22",
-						"description": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `\"1000-2000\"`",
+						"description": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, e.g. `1000`, or a string to specify a range of origin ports, e.g. `\"1000-2000\"`",
 						"minimum": 1,
 						"maximum": 65535,
 						"cfNotes": "If specifying a port range, the number of ports in the range must match the number of ports specified in the \"protocol\" field."
@@ -342,7 +342,7 @@
 					"proxy_protocol": {
 						"type": "string",
 						"example": "\"off\"",
-						"description": "Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.",
+						"description": "Enables Proxy Protocol to the origin. See [the developer documentation](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.",
 						"default": "off",
 						"enum": [
 							"off",
@@ -475,8 +475,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"ea95132c15732412d22c1476fa83f27a\",\n    \"protocol\": \"tcp/22\",\n    \"dns\": {\n      \"type\": \"CNAME\",\n      \"name\": \"ssh.example.com\"\n    },\n    \"origin_dns\": {\n      \"type\": \"\",\n      \"name\": \"origin.example.com\",\n      \"ttl\": 600\n    },\n    \"origin_port\": 22,\n    \"proxy_protocol\": \"off\",\n    \"ip_firewall\": true,\n    \"tls\": \"full\",\n    \"edge_ips\": {\n      \"type\": \"dynamic\",\n      \"connectivity\": \"all\"\n    },\n    \"traffic_type\": \"direct\",\n    \"argo_smart_routing\": true,\n    \"created_on\": \"2014-01-02T02:20:00Z\",\n    \"modified_on\": \"2014-01-02T02:20:00Z\"\n  }\n}"
 		},
 		{
-			"title": "Get Spectrum application configuration",
-			"description": "Gets the application configuration of a specific application inside a zone.",
+			"title": "Get Spectrum Application Configuration",
+			"description": "Get the application configuration of a specific application inside a zone.",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone}/spectrum/apps/{#/definitions/app_id}",
 			"method": "GET",
@@ -487,8 +487,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"ea95132c15732412d22c1476fa83f27a\",\n    \"protocol\": \"tcp/22\",\n    \"dns\": {\n      \"type\": \"CNAME\",\n      \"name\": \"ssh.example.com\"\n    },\n    \"origin_direct\": [\n      \"tcp://192.0.2.1:22\"\n    ],\n    \"proxy_protocol\": \"off\",\n    \"ip_firewall\": true,\n    \"tls\": \"full\",\n    \"edge_ips\": {\n      \"type\": \"dynamic\",\n      \"connectivity\": \"all\"\n    },\n    \"traffic_type\": \"direct\",\n    \"argo_smart_routing\": true,\n    \"created_on\": \"2014-01-02T02:20:00Z\",\n    \"modified_on\": \"2014-01-02T02:20:00Z\"\n  }\n}"
 		},
 		{
-			"title": "Update Spectrum application configuration using an IP address for the origin",
-			"description": "Updates a previously existing application's configuration that uses an IP address for the origin.",
+			"title": "Update Spectrum Application Configuration using an IP address for the origin",
+			"description": "Update a previously existing application's configuration that uses an IP address for the origin.",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone}/spectrum/apps/{#/definitions/app_id}",
 			"method": "PUT",
@@ -504,7 +504,7 @@
 					"protocol": {
 						"type": "string",
 						"example": "\"tcp/22\"",
-						"description": "The port configuration at Cloudflare’s edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`."
+						"description": "Port configuration at Cloudflare’s edge. May specify a single port, e.g. `\"tcp/1000\"`, or a range of ports, e.g. `\"tcp/1000-2000\"`."
 					},
 					"dns": {
 						"type": "object",
@@ -533,7 +533,7 @@
 						"example": "[\n  \"tcp://192.0.2.1:22\"\n]",
 						"description": "A list of destination addresses to the origin.",
 						"items": {
-							"description": "Destination origin URI. May specify a single origin port, for example `\"tcp://192.0.2.1:1000\"`, or a range of origin ports, for example `\"tcp://192.0.2.1:1000-2000\"`.",
+							"description": "Destination origin URI. May specify a single origin port, e.g. `\"tcp://192.0.2.1:1000\"`, or a range of origin ports, e.g. `\"tcp://192.0.2.1:1000-2000\"`.",
 							"example": "tcp://192.0.2.1:22",
 							"type": "string",
 							"cfNotes": "If specifying a port range, the number of ports in the range must match the number of ports specified in the \"protocol\" field."
@@ -542,7 +542,7 @@
 					"proxy_protocol": {
 						"type": "string",
 						"example": "\"off\"",
-						"description": "Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.",
+						"description": "Enables Proxy Protocol to the origin. See [the developer documentation](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.",
 						"default": "off",
 						"enum": [
 							"off",
@@ -674,8 +674,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"ea95132c15732412d22c1476fa83f27a\",\n    \"protocol\": \"tcp/22\",\n    \"dns\": {\n      \"type\": \"CNAME\",\n      \"name\": \"ssh.example.com\"\n    },\n    \"origin_direct\": [\n      \"tcp://192.0.2.1:22\"\n    ],\n    \"proxy_protocol\": \"off\",\n    \"ip_firewall\": true,\n    \"tls\": \"full\",\n    \"edge_ips\": {\n      \"type\": \"dynamic\",\n      \"connectivity\": \"all\"\n    },\n    \"traffic_type\": \"direct\",\n    \"argo_smart_routing\": true,\n    \"created_on\": \"2014-01-02T02:20:00Z\",\n    \"modified_on\": \"2014-01-02T02:20:00Z\"\n  }\n}"
 		},
 		{
-			"title": "Update Spectrum application configuration using a name for the origin",
-			"description": "Updates a previously existing application's configuration that uses a name for the origin.",
+			"title": "Update Spectrum Application Configuration using a name for the origin",
+			"description": "Update a previously existing application's configuration that uses a name for the origin.",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone}/spectrum/apps/{#/definitions/app_id}",
 			"method": "PUT",
@@ -691,7 +691,7 @@
 					"protocol": {
 						"type": "string",
 						"example": "\"tcp/22\"",
-						"description": "The port configuration at Cloudflare’s edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`."
+						"description": "Port configuration at Cloudflare’s edge. May specify a single port, e.g. `\"tcp/1000\"`, or a range of ports, e.g. `\"tcp/1000-2000\"`."
 					},
 					"dns": {
 						"type": "object",
@@ -751,7 +751,7 @@
 							"string"
 						],
 						"example": "22",
-						"description": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `\"1000-2000\"`",
+						"description": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, e.g. `1000`, or a string to specify a range of origin ports, e.g. `\"1000-2000\"`",
 						"minimum": 1,
 						"maximum": 65535,
 						"cfNotes": "If specifying a port range, the number of ports in the range must match the number of ports specified in the \"protocol\" field."
@@ -759,7 +759,7 @@
 					"proxy_protocol": {
 						"type": "string",
 						"example": "\"off\"",
-						"description": "Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.",
+						"description": "Enables Proxy Protocol to the origin. See [the developer documentation](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.",
 						"default": "off",
 						"enum": [
 							"off",
@@ -892,8 +892,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"ea95132c15732412d22c1476fa83f27a\",\n    \"protocol\": \"tcp/22\",\n    \"dns\": {\n      \"type\": \"CNAME\",\n      \"name\": \"ssh.example.com\"\n    },\n    \"origin_dns\": {\n      \"type\": \"\",\n      \"name\": \"origin.example.com\",\n      \"ttl\": 600\n    },\n    \"origin_port\": 22,\n    \"proxy_protocol\": \"off\",\n    \"ip_firewall\": true,\n    \"tls\": \"full\",\n    \"edge_ips\": {\n      \"type\": \"dynamic\",\n      \"connectivity\": \"all\"\n    },\n    \"traffic_type\": \"direct\",\n    \"argo_smart_routing\": true,\n    \"created_on\": \"2014-01-02T02:20:00Z\",\n    \"modified_on\": \"2014-01-02T02:20:00Z\"\n  }\n}"
 		},
 		{
-			"title": "Delete Spectrum application",
-			"description": "Deletes a previously existing application.",
+			"title": "Delete Spectrum Application",
+			"description": "Delete a previously existing application.",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone}/spectrum/apps/{#/definitions/app_id}",
 			"method": "DELETE",
@@ -949,7 +949,7 @@
 					"protocol": {
 						"type": "string",
 						"example": "\"tcp/22\"",
-						"description": "The port configuration at Cloudflare’s edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`."
+						"description": "Port configuration at Cloudflare’s edge. May specify a single port, e.g. `\"tcp/1000\"`, or a range of ports, e.g. `\"tcp/1000-2000\"`."
 					},
 					"dns": {
 						"type": "object",
@@ -978,7 +978,7 @@
 						"example": "[\n  \"tcp://192.0.2.1:22\"\n]",
 						"description": "A list of destination addresses to the origin.",
 						"items": {
-							"description": "Destination origin URI. May specify a single origin port, for example `\"tcp://192.0.2.1:1000\"`, or a range of origin ports, for example `\"tcp://192.0.2.1:1000-2000\"`.",
+							"description": "Destination origin URI. May specify a single origin port, e.g. `\"tcp://192.0.2.1:1000\"`, or a range of origin ports, e.g. `\"tcp://192.0.2.1:1000-2000\"`.",
 							"example": "tcp://192.0.2.1:22",
 							"type": "string",
 							"cfNotes": "If specifying a port range, the number of ports in the range must match the number of ports specified in the \"protocol\" field."
@@ -987,7 +987,7 @@
 					"proxy_protocol": {
 						"type": "string",
 						"example": "\"off\"",
-						"description": "Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.",
+						"description": "Enables Proxy Protocol to the origin. See [the developer documentation](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.",
 						"default": "off",
 						"enum": [
 							"off",
@@ -1144,7 +1144,7 @@
 					"protocol": {
 						"type": "string",
 						"example": "\"tcp/22\"",
-						"description": "The port configuration at Cloudflare’s edge. May specify a single port, for example `\"tcp/1000\"`, or a range of ports, for example `\"tcp/1000-2000\"`."
+						"description": "Port configuration at Cloudflare’s edge. May specify a single port, e.g. `\"tcp/1000\"`, or a range of ports, e.g. `\"tcp/1000-2000\"`."
 					},
 					"dns": {
 						"type": "object",
@@ -1204,7 +1204,7 @@
 							"string"
 						],
 						"example": "22",
-						"description": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `\"1000-2000\"`",
+						"description": "The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, e.g. `1000`, or a string to specify a range of origin ports, e.g. `\"1000-2000\"`",
 						"minimum": 1,
 						"maximum": 65535,
 						"cfNotes": "If specifying a port range, the number of ports in the range must match the number of ports specified in the \"protocol\" field."
@@ -1212,7 +1212,7 @@
 					"proxy_protocol": {
 						"type": "string",
 						"example": "\"off\"",
-						"description": "Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.",
+						"description": "Enables Proxy Protocol to the origin. See [the developer documentation](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.",
 						"default": "off",
 						"enum": [
 							"off",

@@ -1,18 +1,18 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/spectrum/analytics-aggregate.json",
 	"title": "Spectrum Aggregate Analytics",
-	"description": "Aggregated analytics for Spectrum in real time.",
+	"description": "Aggregated Analytics for Spectrum in real time.",
 	"type": "object",
 	"links": [
 		{
-			"title": "Get current aggregated analytics",
-			"description": "Retrieves analytics aggregated from the last minute of usage on Spectrum applications underneath a given zone.",
+			"title": "Get Current Aggregate Analytics",
+			"description": "Retrieves analytics aggregated from the last minute of usage on Spectrum Applications underneath a given zone.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone}/spectrum/analytics/aggregate/current",
 			"hrefSchema": {},
 			"method": "GET",
 			"cfOwnership": "spectrum",
-			"html_id": "spectrum-aggregate-analytics-get-current-aggregated-analytics",
+			"html_id": "spectrum-aggregate-analytics-get-current-aggregate-analytics",
 			"uri": "zones/:zone/spectrum/analytics/aggregate/current",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/spectrum/analytics/aggregate/current?coloName=PDX&appID=ea95132c15732412d22c1476fa83f27a,d122c5f4bb71e25cc9e86ab43b142e2f\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {
@@ -23,7 +23,7 @@
 					"coloName": {
 						"type": "string",
 						"example": "\"PDX\"",
-						"description": "Co-location identifier.",
+						"description": "Co-location Identifier.",
 						"maxLength": 3
 					},
 					"appID": {
@@ -74,7 +74,7 @@
 					"connections": {
 						"type": "integer",
 						"example": "10",
-						"description": "The number of active connections to the Spectrum application within the last minute.",
+						"description": "The number of active connections to the Spectrum Application within the last minute.",
 						"minimum": 0
 					},
 					"durationAvg": {
@@ -99,6 +99,6 @@
 		"example": "{\n  \"appID\": \"ea95132c15732412d22c1476fa83f27a\",\n  \"bytesIngress\": 500,\n  \"bytesEgress\": 500,\n  \"connections\": 10,\n  \"durationAvg\": 10000\n}",
 		"which_of": "oneOf",
 		"title": "Spectrum Aggregate Analytics",
-		"description": "Aggregated analytics for Spectrum in real time."
+		"description": "Aggregated Analytics for Spectrum in real time."
 	}
 }
