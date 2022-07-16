@@ -3,10 +3,14 @@ import fs from 'fs-extra';
 import dateFormat from 'dateformat';
 import fetch from 'node-fetch';
 import {parse} from 'acorn';
+import {parse as parseLoose} from 'acorn-loose';
 import {full, fullAncestor} from 'acorn-walk';
 import isValidFilename from 'valid-filename';
 import filenamify from 'filenamify';
 import dataUriToBuffer from 'data-uri-to-buffer';
+import isValidCSSUnit from 'is-valid-css-unit';
+import hexColorRegex from 'hex-color-regex';
+import properties from 'known-css-properties';
 
 import {tryAndPush, removeSlashes, beautify, getHttpsAgent} from './utils.js';
 
@@ -215,6 +219,113 @@ async function writeAssets(files, write){
 	}
 }
 
+async function writeStrings(files, translations){
+	const strings = new Set();
+	const fileList = Object.keys(files);
+	for(const file in files){
+		if(likelyFiles.test(file)){
+			continue;
+		}
+		if(file.includes('translations')){
+			continue;
+		}
+		if(file.includes('node_modules') && !file.includes('@cloudflare')){
+			continue;
+		}
+		if(file.includes('moment')){
+			continue;
+		}
+
+		try{
+			const ast = parseLoose(files[file], {
+				sourceType: 'script',
+				ecmaVersion: 2020,
+			});
+			full(ast, (node) => {
+				// handle all strings
+				// ignore a bunch of things we don't care about or want to dupe
+				const addString = (str) => {
+					if(fileList.includes(str)){
+						return;
+					}
+					if(translations.includes(str)){
+						return;
+					}
+					if(typeof(str) !== 'string'){
+						return;
+					}
+					if(str.trim() === ''){
+						return;
+					}
+					if(str.startsWith('<html>')){
+						return;
+					}
+					if(str.startsWith('[{')){
+						return;
+					}
+					// likely SVG string
+					if(/^m\s?\d+/i.test(str)){
+						return;
+					}
+					// images and stuff
+					if(str.startsWith('data:')){
+						return;
+					}
+					if(str.startsWith('url(')){
+						return;
+					}
+					if(str.startsWith('http')){
+						return;
+					}
+					// likely CSS string
+					if(str.includes('!important')){
+						return;
+					}
+					if(str.startsWith(';\n')){
+						return;
+					}
+					if(str.startsWith('calc(')){
+						return;
+					}
+					// css units
+					if(isValidCSSUnit.default(str)){
+						return;
+					}
+					if(hexColorRegex({strict: true}).test(str)){
+						return;
+					}
+					if(properties.all.includes(str)){
+						return;
+					}
+					// number px/fr
+					if(/^\d+\s?(px|fr|rem)/i.test(str)){
+						return;
+					}
+					// likely more css/svg stuff
+					if(str.startsWith('0 ')){
+						return;
+					}
+					strings.add(str);
+				};
+				if(node.type === 'StringLiteral' || node.type === 'Literal'){
+					addString(node.value?.trim?.());
+				}
+				if(node.type === 'TemplateLiteral'){
+					addString(node.quasis[0].value.raw?.trim?.());
+				}
+				if(node.type === 'Identifier' && node.name?.length > 2){
+					addString(node.name);
+				}
+			});
+		}catch(err){
+			console.error('Error parsing file for strings', file, err);
+		}
+	}
+	const stingsFile = path.resolve(`../data/dashboard/strings.json`);
+	await fs.writeFile(stingsFile, JSON.stringify([...strings].sort(), null, '\t'));
+
+}
+
 async function writeSubRoutes(files, write){
 	const rootDir = await prepareWriteDir(files, 'dashboard-subroutes', write);
 	for(const file in files){
@@ -228,7 +339,7 @@ async function writeSubRoutes(files, write){
 	}
 }
 
-async function generateDashboardStructure(wantedChunks, write = false){
+async function generateDashboardStructure(wantedChunks, write = false, translations){
 	// parse each chunk to generate filesystem
 	// this is definitely not perfect and very loose, but it works for now
 
@@ -455,6 +566,7 @@ async function generateDashboardStructure(wantedChunks, write = false){
 					apiReqs.push(apiReq);
 				}
 			}
+
 		});
 		// TODO: maybe do something with `recursiveImports`?
 		// We already have the files these reference, so they're probably not useful
@@ -466,6 +578,7 @@ async function generateDashboardStructure(wantedChunks, write = false){
 		}
 	}
 	await writeAssets(files, write);
+	await writeStrings(files, translations);
 	await writeSubRoutes(subRoutes, write);
 	const linksFile = path.resolve(`../data/dashboard/links.json`);
 	await fs.writeFile(linksFile, JSON.stringify([...links].sort(), null, '\t'));
@@ -499,15 +612,9 @@ async function run(){
 		writeAssets = false;
 	}
 
-	const tree = await generateDashboardStructure([
-		...wantedChunks.chunks,
-		wantedChunks.dashboard,
-	], writeAssets);
-	const treeFile = path.resolve(`../data/dashboard/files.json`);
-	await fs.writeFile(treeFile, JSON.stringify(tree, null, '\t'));
-
 	// parse tranlsations
 	const translations = {};
+	const allTranslationKeys = [];
 	for(const translation of wantedChunks.translations){
 		const json = /JSON\.parse\(['`](.*)['`]\)/.exec(translation.code);
 		if(json !== null){
@@ -518,6 +625,7 @@ async function run(){
 			}
 			console.log('Found translation', translationNameParse.groups.name);
 			translations[translationNameParse.groups.name] = parsed;
+			allTranslationKeys.push(...Object.keys(parsed));
 		}
 	}
 	console.log('Writing translations...');
@@ -526,6 +634,14 @@ async function run(){
 		await fs.ensureDir(path.dirname(file));
 		await fs.writeFile(file, JSON.stringify(translation, null, '\t'));
 	}
+
+	// genrate app structure
+	const tree = await generateDashboardStructure([
+		...wantedChunks.chunks,
+		wantedChunks.dashboard,
+	], writeAssets, allTranslationKeys);
+	const treeFile = path.resolve(`../data/dashboard/files.json`);
+	await fs.writeFile(treeFile, JSON.stringify(tree, null, '\t'));
 
 	// parse navigation
 	let navigation = null;
