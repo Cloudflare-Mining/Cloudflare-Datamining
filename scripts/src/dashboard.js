@@ -10,7 +10,7 @@ import filenamify from 'filenamify';
 import dataUriToBuffer from 'data-uri-to-buffer';
 import isValidCSSUnit from 'is-valid-css-unit';
 import hexColorRegex from 'hex-color-regex';
-import properties from 'known-css-properties';
+import cssProperties from 'known-css-properties';
 
 import {tryAndPush, removeSlashes, beautify, getHttpsAgent} from './utils.js';
 
@@ -219,9 +219,84 @@ async function writeAssets(files, write){
 	}
 }
 
-async function writeStrings(files, translations){
+async function writeMeta(files, translations){
 	const strings = new Set();
+	const properties = new Set();
+	const identifiers = new Set();
 	const fileList = Object.keys(files);
+	const addString = (str, type = 'string') => {
+		// handle all strings
+		// ignore a bunch of things we don't care about or want to dupe
+		if(fileList.includes(str)){
+			return;
+		}
+		if(translations.includes(str)){
+			return;
+		}
+		if(typeof(str) !== 'string'){
+			return;
+		}
+		if(str.trim() === ''){
+			return;
+		}
+		if(str.startsWith('<html>')){
+			return;
+		}
+		if(str.startsWith('[{')){
+			return;
+		}
+		// likely SVG string
+		if(/^m\s?\d+/i.test(str)){
+			return;
+		}
+		// images and stuff
+		if(str.startsWith('data:')){
+			return;
+		}
+		if(str.startsWith('url(')){
+			return;
+		}
+		if(str.startsWith('http')){
+			return;
+		}
+		// likely CSS string
+		if(str.includes('!important')){
+			return;
+		}
+		if(str.startsWith(';\n')){
+			return;
+		}
+		if(str.startsWith('calc(')){
+			return;
+		}
+		// css units
+		if(isValidCSSUnit.default(str)){
+			return;
+		}
+		if(hexColorRegex({strict: true}).test(str)){
+			return;
+		}
+		if(cssProperties.all.includes(str)){
+			return;
+		}
+		// number px/fr
+		if(/^\d+\s?(px|fr|rem)/i.test(str)){
+			return;
+		}
+		// likely more css/svg stuff
+		if(str.startsWith('0 ')){
+			return;
+		}
+		if(type === 'string'){
+			strings.add(str?.trim?.());
+		}else if(type === 'property'){
+			properties.add(str?.trim?.());
+		}else if(type === 'identifier'){
+			identifiers.add(str?.trim?.());
+		}
+	};
+	const regexes = new Set();
+	const callees = new Set();
 	for(const file in files){
 		if(likelyFiles.test(file)){
 			continue;
@@ -242,79 +317,35 @@ async function writeStrings(files, translations){
 				ecmaVersion: 2020,
 			});
 			full(ast, (node) => {
-				// handle all strings
-				// ignore a bunch of things we don't care about or want to dupe
-				const addString = (str) => {
-					if(fileList.includes(str)){
-						return;
-					}
-					if(translations.includes(str)){
-						return;
-					}
-					if(typeof(str) !== 'string'){
-						return;
-					}
-					if(str.trim() === ''){
-						return;
-					}
-					if(str.startsWith('<html>')){
-						return;
-					}
-					if(str.startsWith('[{')){
-						return;
-					}
-					// likely SVG string
-					if(/^m\s?\d+/i.test(str)){
-						return;
-					}
-					// images and stuff
-					if(str.startsWith('data:')){
-						return;
-					}
-					if(str.startsWith('url(')){
-						return;
-					}
-					if(str.startsWith('http')){
-						return;
-					}
-					// likely CSS string
-					if(str.includes('!important')){
-						return;
-					}
-					if(str.startsWith(';\n')){
-						return;
-					}
-					if(str.startsWith('calc(')){
-						return;
-					}
-					// css units
-					if(isValidCSSUnit.default(str)){
-						return;
-					}
-					if(hexColorRegex({strict: true}).test(str)){
-						return;
-					}
-					if(properties.all.includes(str)){
-						return;
-					}
-					// number px/fr
-					if(/^\d+\s?(px|fr|rem)/i.test(str)){
-						return;
-					}
-					// likely more css/svg stuff
-					if(str.startsWith('0 ')){
-						return;
-					}
-					strings.add(str);
-				};
 				if(node.type === 'StringLiteral' || node.type === 'Literal'){
-					addString(node.value?.trim?.());
+					if(node.regex && node.raw){
+						regexes.add(node.raw?.trim?.());
+					}else if(node.value){
+						addString(node.value);
+					}
 				}
 				if(node.type === 'TemplateLiteral'){
 					addString(node.quasis[0].value.raw?.trim?.());
 				}
 				if(node.type === 'Identifier' && node.name?.length > 2){
-					addString(node.name);
+					addString(node.name, 'identifier');
+				}
+				if(node.type === 'CallExpression' && node.callee?.name && node.callee?.name.length > 2){
+					callees.add(node.callee.name);
+				}
+				if(node.type === 'Property' && node.key?.name && node.key.name.length > 2){
+					addString(node.key.name, 'property');
+				}
+				if(node.type === 'SwitchStatement'){
+					for(const switchCase of node.cases){
+						if(switchCase.test){
+							if(switchCase.test.type === 'Literal'){
+								addString(switchCase.test.value);
+							}else if(switchCase.test.type === 'MemberExpression'){
+								addString(switchCase.test.property.name);
+							}
+						}
+					}
 				}
 			});
 		}catch(err){
@@ -323,6 +354,18 @@ async function writeStrings(files, translations){
 	}
 	const stingsFile = path.resolve(`../data/dashboard/strings.json`);
 	await fs.writeFile(stingsFile, JSON.stringify([...strings].sort(), null, '\t'));
+
+	const propertiesFile = path.resolve(`../data/dashboard/properties.json`);
+	await fs.writeFile(propertiesFile, JSON.stringify([...properties].sort(), null, '\t'));
+
+	const identifiersFile = path.resolve(`../data/dashboard/identifiers.json`);
+	await fs.writeFile(identifiersFile, JSON.stringify([...identifiers].sort(), null, '\t'));
+
+	const regexesFile = path.resolve(`../data/dashboard/regexes.json`);
+	await fs.writeFile(regexesFile, JSON.stringify([...regexes].sort(), null, '\t'));
+
+	const calleesFile = path.resolve(`../data/dashboard/callees.json`);
+	await fs.writeFile(calleesFile, JSON.stringify([...callees].sort(), null, '\t'));
 
 }
 
@@ -578,7 +621,7 @@ async function generateDashboardStructure(wantedChunks, write = false, translati
 		}
 	}
 	await writeAssets(files, write);
-	await writeStrings(files, translations);
+	await writeMeta(files, translations);
 	await writeSubRoutes(subRoutes, write);
 	const linksFile = path.resolve(`../data/dashboard/links.json`);
 	await fs.writeFile(linksFile, JSON.stringify([...links].sort(), null, '\t'));
