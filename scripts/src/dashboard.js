@@ -398,6 +398,7 @@ async function generateDashboardStructure(wantedChunks, write = false, translati
 	const subRoutes = {};
 	const links = new Set();
 	const apiReqs = [];
+	const colos = new Set();
 	for(const chunk of wantedChunks){
 		for(const match of chunk.code.matchAll(/["'](https?:\/\/[^"']*)["']/g)){
 			if(match && match[1] && !match[1].includes('`')){
@@ -617,6 +618,24 @@ async function generateDashboardStructure(wantedChunks, write = false, translati
 				}
 			}
 
+			// find colos
+			if(
+				node.type === 'ArrayExpression' &&
+				node.elements?.length >= 300 &&
+				node.elements?.every(ele => ele.type === 'ObjectExpression') &&
+				node.elements?.every(ele => ele.properties?.some(prop => prop?.key?.name === 'value')) &&
+				node.elements?.every(ele => ele.properties?.some(prop => prop?.key?.name === 'label')) &&
+				node.elements?.some(ele => ele.properties?.some(prop => prop?.value?.value === 'lhr01'))
+			){
+				for(const ele of node.elements){
+					for(const prop of ele.properties){
+						if(prop?.key?.name === 'value'){
+							colos.add(prop.value.value);
+						}
+					}
+				}
+			}
+
 		});
 		// TODO: maybe do something with `recursiveImports`?
 		// We already have the files these reference, so they're probably not useful
@@ -636,6 +655,9 @@ async function generateDashboardStructure(wantedChunks, write = false, translati
 	apiReqs.sort((reqA, reqB) => reqA.uri.localeCompare(reqB.uri));
 	const apiReqsFile = path.resolve(`../data/dashboard/api-requests.json`);
 	await fs.writeFile(apiReqsFile, JSON.stringify([...apiReqs].sort(), null, '\t'));
+
+	const colosFile = path.resolve(`../data/dashboard/colos.json`);
+	await fs.writeFile(colosFile, JSON.stringify([...colos].sort(), null, '\t'));
 
 	const tree = await writeFiles(files, write);
 	return tree;
