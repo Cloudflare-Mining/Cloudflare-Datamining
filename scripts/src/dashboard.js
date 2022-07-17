@@ -14,6 +14,8 @@ import cssProperties from 'known-css-properties';
 
 import {tryAndPush, removeSlashes, beautify, getHttpsAgent} from './utils.js';
 
+const allVersions = await fs.readJson(path.resolve('../data/dashboard/versions.json'));
+
 const appScript = /(app\.[\da-z]+\.js)/;
 const chunkIds = /(?:\w+\.\w+\((\d+)\)(?:, )?)/g;
 const chunks = /{(?:"\d+":"[\da-f]+",)+"\d+":"[\da-f]+"}/;
@@ -336,6 +338,9 @@ async function writeMeta(files, translations){
 				if(node.type === 'Property' && node.key?.name && node.key.name.length > 2){
 					addString(node.key.name, 'property');
 				}
+				if(node.type === 'MemberExpression' && node.property?.name && node.property.name.length > 2){
+					addString(node.property.name, 'property');
+				}
 				if(node.type === 'SwitchStatement'){
 					for(const switchCase of node.cases){
 						if(switchCase.test){
@@ -352,11 +357,13 @@ async function writeMeta(files, translations){
 			console.error('Error parsing file for strings', file, err);
 		}
 	}
+	const stringsArray = [...strings].sort();
 	const stingsFile = path.resolve(`../data/dashboard/strings.json`);
-	await fs.writeFile(stingsFile, JSON.stringify([...strings].sort(), null, '\t'));
+	await fs.writeFile(stingsFile, JSON.stringify(stringsArray, null, '\t'));
 
+	const filteredProperties = [...properties].filter(str => !stringsArray.includes(str)).sort();
 	const propertiesFile = path.resolve(`../data/dashboard/properties.json`);
-	await fs.writeFile(propertiesFile, JSON.stringify([...properties].sort(), null, '\t'));
+	await fs.writeFile(propertiesFile, JSON.stringify(filteredProperties.sort(), null, '\t'));
 
 	const identifiersFile = path.resolve(`../data/dashboard/identifiers.json`);
 	await fs.writeFile(identifiersFile, JSON.stringify([...identifiers].sort(), null, '\t'));
@@ -741,6 +748,17 @@ async function run(){
 		const file = path.resolve(`../data/dashboard/info.json`);
 		fs.ensureDir(path.dirname(file));
 		await fs.writeFile(file, JSON.stringify(realDashInfo, null, '\t'));
+
+		// prepend to list of all dash versions
+		if(!allVersions.some(existingVersion => existingVersion.dashVersion === realDashInfo.dashVersion)){
+			allVersions.unshift({
+				dashVersion: realDashInfo.dashVersion,
+				branch: realDashInfo.branch,
+				env: realDashInfo.env,
+				date: new Date(realDashInfo.builtAt).toISOString(),
+			});
+		}
+		await fs.writeFile(path.resolve('../data/dashboard/versions.json'), JSON.stringify(allVersions, null, '\t'));
 	}
 
 	console.log('Pushing!');
