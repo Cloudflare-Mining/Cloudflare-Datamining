@@ -117,10 +117,10 @@ async function getChunks(){
 		}else if(
 			node.type === 'ObjectExpression' &&
 			node.properties?.length === 1 &&
-			node.properties[0].key.type === 'Identifier' &&
-			node.properties[0].key.name === 'translations' &&
-			node.properties[0].value.type === 'ObjectExpression' &&
-			node.properties[0].value.properties?.length > 0
+			node.properties[0]?.key?.type === 'Identifier' &&
+			node.properties[0]?.key?.name === 'translations' &&
+			node.properties[0]?.value?.type === 'ObjectExpression' &&
+			node.properties[0]?.value?.properties?.length > 0
 		){
 			// and some more translations
 			for(const property of node.properties[0].value.properties){
