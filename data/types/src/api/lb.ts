@@ -179,6 +179,10 @@ export const LoadBalancer = eg.object({
     eg.literal('gps'),
     eg.literal('proximity')
   ]).optional,
+  random_steering: eg.object({
+    default_weight: eg.number,
+    pool_weights: eg.record(eg.string, eg.number).optional
+  }).optional,
   ttl: eg.number.optional,
   check_regions: eg.array(eg.string).optional
 });
