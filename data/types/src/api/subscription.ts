@@ -121,7 +121,7 @@ export const SubscriptionProductPublicName = eg.union([
   eg.literal('Cloudflare Stream'),
   eg.literal('Cloudflare Images + Stream'),
   eg.literal('Image Resizing'),
-  eg.literal('R2'),
+  eg.literal('R2 Storage'),
   eg.literal('Cache Reserve'),
   eg.literal('web3 ETHEREUM'),
   eg.literal('web3 IPFS')
