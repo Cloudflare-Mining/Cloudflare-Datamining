@@ -64080,8 +64080,8 @@
 		},
 		"/accounts/{identifier}/access/organizations": {
 			"get": {
-				"summary": "Access Organization Details",
-				"description": "Fetch your Access Organization details",
+				"summary": "Get your Zero Trust organization",
+				"description": "Returns the configuration for your Zero Trust organization.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -64094,7 +64094,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Access Organization Details response",
+						"description": "Get your Zero Trust organization response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -64140,8 +64140,8 @@
 				]
 			},
 			"post": {
-				"summary": "Create Access Organization",
-				"description": "Create a new Access Organization",
+				"summary": "Create your Zero Trust organization",
+				"description": "Sets up a Zero Trust organization for your account.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -64154,7 +64154,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create Access Organization response",
+						"description": "Create your Zero Trust organization response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -64182,39 +64182,39 @@
 								"properties": {
 									"name": {
 										"type": "string",
-										"description": "The name of your Access Organization.",
+										"description": "The name of your Zero Trust organization.",
 										"example": "Widget Corps Internal Applications"
 									},
 									"auth_domain": {
 										"type": "string",
-										"description": "The domain that you will be redirected to on Access login attempts",
+										"description": "The unique subdomain assigned to your Zero Trust organization.",
 										"example": "test.cloudflareaccess.com"
 									},
 									"login_design": {
 										"properties": {
 											"background_color": {
 												"type": "string",
-												"description": "The background color on your login page",
+												"description": "The background color on your login page.",
 												"example": "#c5ed1b"
 											},
 											"text_color": {
 												"type": "string",
-												"description": "The text color on your login page",
+												"description": "The text color on your login page.",
 												"example": "#c5ed1b"
 											},
 											"logo_path": {
 												"type": "string",
-												"description": "The URL of the logo you want to display to users logging in",
+												"description": "The URL of the logo on your login page.",
 												"example": "https://example.com/logo.png"
 											},
 											"header_text": {
 												"type": "string",
-												"description": "The header description on the team domain login page.",
+												"description": "The text at the top of your login page.",
 												"example": "This is an example description."
 											},
 											"footer_text": {
 												"type": "string",
-												"description": "The footer description on the team domain login page.",
+												"description": "The text at the bottom of your login page.",
 												"example": "This is an example description."
 											}
 										}
@@ -64226,8 +64226,8 @@
 				}
 			},
 			"put": {
-				"summary": "Update Access Organization",
-				"description": "Update a configured Access Organization",
+				"summary": "Update your Zero Trust organization",
+				"description": "Updates the configuration for your Zero Trust organization.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -64240,7 +64240,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update Access Organization response",
+						"description": "Update your Zero Trust organization response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -64280,8 +64280,8 @@
 		},
 		"/accounts/{identifier}/access/organizations/revoke_user": {
 			"post": {
-				"summary": "Revoke all Access Tokens for a user",
-				"description": "Revoke any outstanding tokens issued for a specific user",
+				"summary": "Revoke all Access tokens for a user",
+				"description": "Revokes a user's access across all applications.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -64294,7 +64294,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Revoke all Access Tokens for a user response",
+						"description": "Revoke all Access tokens for a user response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -64342,7 +64342,7 @@
 								"properties": {
 									"email": {
 										"type": "string",
-										"description": "The email of the user to revoke",
+										"description": "The email of the user to revoke.",
 										"example": "test@example.com"
 									}
 								}
@@ -64354,8 +64354,8 @@
 		},
 		"/accounts/{identifier}/access/identity_providers": {
 			"get": {
-				"summary": "List Access Identity Providers",
-				"description": "List your Access Identity Providers",
+				"summary": "List Access identity providers",
+				"description": "Lists all configured identity providers.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -64368,7 +64368,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "List Access Identity Providers response",
+						"description": "List Access identity providers response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -64417,8 +64417,8 @@
 				]
 			},
 			"post": {
-				"summary": "Create Access Identity Provider",
-				"description": "Create a new Access Identity Provider",
+				"summary": "Add an Access identity provider",
+				"description": "Adds a new identity provider to Access.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -64431,7 +64431,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create Access Identity Provider response",
+						"description": "Add an Access identity provider response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -64471,17 +64471,17 @@
 								"properties": {
 									"name": {
 										"type": "string",
-										"description": "The name of your Access Identity Provider.",
+										"description": "The name of the identity provider, shown to users on the login page.",
 										"example": "Widget Corps OTP"
 									},
 									"type": {
 										"type": "string",
-										"description": "The type of Identity Provider",
+										"description": "The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
 										"example": "onetimepin"
 									},
 									"config": {
 										"type": "object",
-										"description": "The configuration parameters for your identity provider. Please go to https://developers.cloudflare.com/access/configuring-identity-providers/ for more detailed examples.",
+										"description": "The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
 										"properties": {}
 									}
 								}
@@ -64493,15 +64493,15 @@
 		},
 		"/accounts/{identifier}/access/identity_providers/{uuid}": {
 			"get": {
-				"summary": "Access Identity Providers Details",
-				"description": "Fetch your Access Identity Providers details",
+				"summary": "Get an Access identity provider",
+				"description": "Fetches a configured identity provider.",
 				"parameters": [
 					{
 						"name": "uuid",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1identity_providers/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/id"
+							"description": "The unique identifier for the identity provider."
 						}
 					},
 					{
@@ -64515,7 +64515,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Access Identity Providers Details response",
+						"description": "Get an Access identity provider response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -64558,8 +64558,8 @@
 				]
 			},
 			"put": {
-				"summary": "Update Access Identity Provider",
-				"description": "Update a configured Access Identity Provider",
+				"summary": "Update an Access identity provider",
+				"description": "Updates a configured identity provider.",
 				"parameters": [
 					{
 						"name": "uuid",
@@ -64580,7 +64580,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update Access Identity Provider response",
+						"description": "Update an Access identity provider response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -64609,17 +64609,17 @@
 								"properties": {
 									"name": {
 										"type": "string",
-										"description": "The name of your Access Identity Provider.",
+										"description": "The name of the identity provider, shown to users on the login page.",
 										"example": "Widget Corps OTP"
 									},
 									"type": {
 										"type": "string",
-										"description": "The type of Identity Provider",
+										"description": "The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
 										"example": "onetimepin"
 									},
 									"config": {
 										"type": "object",
-										"description": "The configuration parameters for your identity provider. Please go to https://developers.cloudflare.com/access/configuring-identity-providers/ for more detailed examples.",
+										"description": "The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
 										"properties": {}
 									}
 								}
@@ -64629,8 +64629,8 @@
 				}
 			},
 			"delete": {
-				"summary": "Delete Access Identity Provider",
-				"description": "Delete an Access Identity Provider",
+				"summary": "Delete an Access identity provider",
+				"description": "Deletes an identity provider from Access.",
 				"parameters": [
 					{
 						"name": "uuid",
@@ -64651,7 +64651,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete Access Identity Provider response",
+						"description": "Delete an Access identity provider response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -64677,8 +64677,8 @@
 		},
 		"/accounts/{identifier}/access/groups": {
 			"get": {
-				"summary": "List Access Groups",
-				"description": "List Access Groups",
+				"summary": "List Access groups",
+				"description": "Lists all Access groups.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -64691,7 +64691,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "List Access Groups response",
+						"description": "List Access groups response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -64707,7 +64707,7 @@
 														"type": "object",
 														"properties": {
 															"id": {
-																"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1identity_providers/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/id"
+																"description": "The unique identifier for the Access group."
 															},
 															"created_at": {
 																"$ref": "#/paths/~1user~1load_balancers~1monitors/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/created_on"
@@ -64746,8 +64746,8 @@
 				]
 			},
 			"post": {
-				"summary": "Create Access Group",
-				"description": "Create a new Access Group",
+				"summary": "Create an Access group",
+				"description": "Creates a new Access group.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -64760,7 +64760,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create Access Group response",
+						"description": "Create an Access group response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -64799,12 +64799,12 @@
 								"properties": {
 									"name": {
 										"type": "string",
-										"description": "The name of the group. Only used in the UI.",
+										"description": "The name of the Access group.",
 										"example": "Allow devs"
 									},
 									"include": {
 										"type": "array",
-										"description": "The include policy works like an OR logical operator. The user must satisfy one of the rules in includes.",
+										"description": "Rules evaluated with an OR logical operator. To match a policy, a user needs to meet only one of the Include rules.",
 										"items": {
 											"type": "object",
 											"oneOf": [
@@ -65107,14 +65107,14 @@
 									},
 									"exclude": {
 										"type": "array",
-										"description": "The exclude policy works like a NOT logical operator. The user must not satisfy all of the rules in exclude.",
+										"description": "Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.",
 										"items": {
 											"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1groups/post/requestBody/content/application~1json/schema/properties/include/items"
 										}
 									},
 									"require": {
 										"type": "array",
-										"description": "The require policy works like a AND logical operator. The user must satisfy all of the rules in require.",
+										"description": "Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.",
 										"items": {
 											"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1groups/post/requestBody/content/application~1json/schema/properties/include/items"
 										}
@@ -65128,15 +65128,15 @@
 		},
 		"/accounts/{identifier}/access/groups/{uuid}": {
 			"get": {
-				"summary": "Access Group Details",
-				"description": "Fetch a single Access Group",
+				"summary": "Get an Access group",
+				"description": "Fetches a single Access group.",
 				"parameters": [
 					{
 						"name": "uuid",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1identity_providers/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/id"
+							"description": "The unique identifier for the Access group."
 						}
 					},
 					{
@@ -65150,7 +65150,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Access Group Details response",
+						"description": "Get an Access group response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -65202,8 +65202,8 @@
 				]
 			},
 			"put": {
-				"summary": "Update Access Group",
-				"description": "Update a configured Access Group",
+				"summary": "Update an Access group",
+				"description": "Updates a configured Access group.",
 				"parameters": [
 					{
 						"name": "uuid",
@@ -65224,7 +65224,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update Access Group response",
+						"description": "Update an Access group response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -65252,26 +65252,26 @@
 								"properties": {
 									"name": {
 										"type": "string",
-										"description": "The name of the group. Only used in the UI.",
+										"description": "The name of the Access group.",
 										"example": "Allow devs"
 									},
 									"include": {
 										"type": "array",
-										"description": "The include policy works like an OR logical operator. The user must satisfy one of the rules in includes.",
+										"description": "Rules evaluated with an OR logical operator. To match a policy, a user needs to meet only one of the Include rules.",
 										"items": {
 											"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1groups/post/requestBody/content/application~1json/schema/properties/include/items"
 										}
 									},
 									"exclude": {
 										"type": "array",
-										"description": "The exclude policy works like a NOT logical operator. The user must not satisfy all of the rules in exclude.",
+										"description": "Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.",
 										"items": {
 											"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1groups~1%7Buuid%7D/put/requestBody/content/application~1json/schema/properties/include/items"
 										}
 									},
 									"require": {
 										"type": "array",
-										"description": "The require policy works like a AND logical operator. The user must satisfy all of the rules in require.",
+										"description": "Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.",
 										"items": {
 											"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1groups~1%7Buuid%7D/put/requestBody/content/application~1json/schema/properties/include/items"
 										}
@@ -65283,8 +65283,8 @@
 				}
 			},
 			"delete": {
-				"summary": "Delete Access Group",
-				"description": "Delete an Access Group",
+				"summary": "Delete an Access group",
+				"description": "Deletes an Access group.",
 				"parameters": [
 					{
 						"name": "uuid",
@@ -65305,7 +65305,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete Access Group response",
+						"description": "Delete an Access group response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -69058,8 +69058,8 @@
 		},
 		"/zones/{identifier}/access/organizations": {
 			"get": {
-				"summary": "Access Organization Details",
-				"description": "Fetch your Access Organization details",
+				"summary": "Get your Zero Trust organization",
+				"description": "Returns the configuration for your Zero Trust organization.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -69072,7 +69072,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Access Organization Details response",
+						"description": "Get your Zero Trust organization response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -69118,8 +69118,8 @@
 				]
 			},
 			"post": {
-				"summary": "Create Access Organization",
-				"description": "Create a new Access Organization",
+				"summary": "Create your Zero Trust organization",
+				"description": "Sets up a Zero Trust organization for your account.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -69132,7 +69132,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create Access Organization response",
+						"description": "Create your Zero Trust organization response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -69160,39 +69160,39 @@
 								"properties": {
 									"name": {
 										"type": "string",
-										"description": "The name of your Access Organization.",
+										"description": "The name of your Zero Trust organization.",
 										"example": "Widget Corps Internal Applications"
 									},
 									"auth_domain": {
 										"type": "string",
-										"description": "The domain that you will be redirected to on Access login attempts",
+										"description": "The unique subdomain assigned to your Zero Trust organization.",
 										"example": "test.cloudflareaccess.com"
 									},
 									"login_design": {
 										"properties": {
 											"background_color": {
 												"type": "string",
-												"description": "The background color on your login page",
+												"description": "The background color on your login page.",
 												"example": "#c5ed1b"
 											},
 											"text_color": {
 												"type": "string",
-												"description": "The text color on your login page",
+												"description": "The text color on your login page.",
 												"example": "#c5ed1b"
 											},
 											"logo_path": {
 												"type": "string",
-												"description": "The URL of the logo you want to display to users logging in",
+												"description": "The URL of the logo on your login page.",
 												"example": "https://example.com/logo.png"
 											},
 											"header_text": {
 												"type": "string",
-												"description": "The header description on the team domain login page.",
+												"description": "The text at the top of your login page.",
 												"example": "This is an example description."
 											},
 											"footer_text": {
 												"type": "string",
-												"description": "The footer description on the team domain login page.",
+												"description": "The text at the bottom of your login page.",
 												"example": "This is an example description."
 											}
 										}
@@ -69204,8 +69204,8 @@
 				}
 			},
 			"put": {
-				"summary": "Update Access Organization",
-				"description": "Update a configured Access Organization",
+				"summary": "Update your Zero Trust organization",
+				"description": "Updates the configuration for your Zero Trust organization.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -69218,7 +69218,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update Access Organization response",
+						"description": "Update your Zero Trust organization response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -69258,8 +69258,8 @@
 		},
 		"/zones/{identifier}/access/organizations/revoke_user": {
 			"post": {
-				"summary": "Revoke all Access Tokens for a user",
-				"description": "Revoke any outstanding tokens issued for a specific user",
+				"summary": "Revoke all Access tokens for a user",
+				"description": "Revokes a user's access across all applications.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -69272,7 +69272,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Revoke all Access Tokens for a user response",
+						"description": "Revoke all Access tokens for a user response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -69320,7 +69320,7 @@
 								"properties": {
 									"email": {
 										"type": "string",
-										"description": "The email of the user to revoke",
+										"description": "The email of the user to revoke.",
 										"example": "test@example.com"
 									}
 								}
@@ -69332,8 +69332,8 @@
 		},
 		"/zones/{identifier}/access/identity_providers": {
 			"get": {
-				"summary": "List Access Identity Providers",
-				"description": "List your Access Identity Providers",
+				"summary": "List Access identity providers",
+				"description": "Lists all configured identity providers.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -69346,7 +69346,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "List Access Identity Providers response",
+						"description": "List Access identity providers response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -69392,8 +69392,8 @@
 				]
 			},
 			"post": {
-				"summary": "Create Access Identity Provider",
-				"description": "Create a new Access Identity Provider",
+				"summary": "Add an Access identity provider",
+				"description": "Adds a new identity provider to Access.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -69406,7 +69406,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create Access Identity Provider response",
+						"description": "Add an Access identity provider response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -69446,17 +69446,17 @@
 								"properties": {
 									"name": {
 										"type": "string",
-										"description": "The name of your Access Identity Provider.",
+										"description": "The name of the identity provider, shown to users on the login page.",
 										"example": "Widget Corps OTP"
 									},
 									"type": {
 										"type": "string",
-										"description": "The type of Identity Provider",
+										"description": "The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
 										"example": "onetimepin"
 									},
 									"config": {
 										"type": "object",
-										"description": "The configuration parameters for your identity provider. Please go to https://developers.cloudflare.com/access/configuring-identity-providers/ for more detailed examples.",
+										"description": "The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
 										"properties": {}
 									}
 								}
@@ -69468,15 +69468,15 @@
 		},
 		"/zones/{identifier}/access/identity_providers/{uuid}": {
 			"get": {
-				"summary": "Access Identity Providers Details",
-				"description": "Fetch your Access Identity Providers details",
+				"summary": "Get an Access identity provider",
+				"description": "Fetches a configured identity provider.",
 				"parameters": [
 					{
 						"name": "uuid",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1identity_providers/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/id"
+							"description": "The unique identifier for the identity provider."
 						}
 					},
 					{
@@ -69490,7 +69490,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Access Identity Providers Details response",
+						"description": "Get an Access identity provider response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -69533,8 +69533,8 @@
 				]
 			},
 			"put": {
-				"summary": "Update Access Identity Provider",
-				"description": "Update a configured Access Identity Provider",
+				"summary": "Update an Access identity provider",
+				"description": "Updates a configured identity provider.",
 				"parameters": [
 					{
 						"name": "uuid",
@@ -69555,7 +69555,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update Access Identity Provider response",
+						"description": "Update an Access identity provider response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -69584,17 +69584,17 @@
 								"properties": {
 									"name": {
 										"type": "string",
-										"description": "The name of your Access Identity Provider.",
+										"description": "The name of the identity provider, shown to users on the login page.",
 										"example": "Widget Corps OTP"
 									},
 									"type": {
 										"type": "string",
-										"description": "The type of Identity Provider",
+										"description": "The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
 										"example": "onetimepin"
 									},
 									"config": {
 										"type": "object",
-										"description": "The configuration parameters for your identity provider. Please go to https://developers.cloudflare.com/access/configuring-identity-providers/ for more detailed examples.",
+										"description": "The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).",
 										"properties": {}
 									}
 								}
@@ -69604,8 +69604,8 @@
 				}
 			},
 			"delete": {
-				"summary": "Delete Access Identity Provider",
-				"description": "Delete an Access Identity Provider",
+				"summary": "Delete an Access identity provider",
+				"description": "Deletes an identity provider from Access.",
 				"parameters": [
 					{
 						"name": "uuid",
@@ -69626,7 +69626,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete Access Identity Provider response",
+						"description": "Delete an Access identity provider response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -69652,8 +69652,8 @@
 		},
 		"/zones/{identifier}/access/groups": {
 			"get": {
-				"summary": "List Access Groups",
-				"description": "List Access Groups",
+				"summary": "List Access groups",
+				"description": "Lists all Access groups.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -69666,7 +69666,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "List Access Groups response",
+						"description": "List Access groups response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -69682,7 +69682,7 @@
 														"type": "object",
 														"properties": {
 															"id": {
-																"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1identity_providers/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/id"
+																"description": "The unique identifier for the Access group."
 															},
 															"created_at": {
 																"$ref": "#/paths/~1user~1load_balancers~1monitors/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/created_on"
@@ -69721,8 +69721,8 @@
 				]
 			},
 			"post": {
-				"summary": "Create Access Group",
-				"description": "Create a new Access Group",
+				"summary": "Create an Access group",
+				"description": "Creates a new Access group.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -69735,7 +69735,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create Access Group response",
+						"description": "Create an Access group response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -69774,26 +69774,26 @@
 								"properties": {
 									"name": {
 										"type": "string",
-										"description": "The name of the group. Only used in the UI.",
+										"description": "The name of the Access group.",
 										"example": "Allow devs"
 									},
 									"include": {
 										"type": "array",
-										"description": "The include policy works like an OR logical operator. The user must satisfy one of the rules in includes.",
+										"description": "Rules evaluated with an OR logical operator. To match a policy, a user needs to meet only one of the Include rules.",
 										"items": {
 											"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1groups/post/requestBody/content/application~1json/schema/properties/include/items"
 										}
 									},
 									"exclude": {
 										"type": "array",
-										"description": "The exclude policy works like a NOT logical operator. The user must not satisfy all of the rules in exclude.",
+										"description": "Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.",
 										"items": {
 											"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1access~1groups/post/requestBody/content/application~1json/schema/properties/include/items"
 										}
 									},
 									"require": {
 										"type": "array",
-										"description": "The require policy works like a AND logical operator. The user must satisfy all of the rules in require.",
+										"description": "Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.",
 										"items": {
 											"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1access~1groups/post/requestBody/content/application~1json/schema/properties/include/items"
 										}
@@ -69807,15 +69807,15 @@
 		},
 		"/zones/{identifier}/access/groups/{uuid}": {
 			"get": {
-				"summary": "Access Group Details",
-				"description": "Fetch a single Access Group",
+				"summary": "Get an Access group",
+				"description": "Fetches a single Access group.",
 				"parameters": [
 					{
 						"name": "uuid",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1identity_providers/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/id"
+							"description": "The unique identifier for the Access group."
 						}
 					},
 					{
@@ -69829,7 +69829,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Access Group Details response",
+						"description": "Get an Access group response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -69881,8 +69881,8 @@
 				]
 			},
 			"put": {
-				"summary": "Update Access Group",
-				"description": "Update a configured Access Group",
+				"summary": "Update an Access group",
+				"description": "Updates a configured Access group.",
 				"parameters": [
 					{
 						"name": "uuid",
@@ -69903,7 +69903,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update Access Group response",
+						"description": "Update an Access group response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -69931,26 +69931,26 @@
 								"properties": {
 									"name": {
 										"type": "string",
-										"description": "The name of the group. Only used in the UI.",
+										"description": "The name of the Access group.",
 										"example": "Allow devs"
 									},
 									"include": {
 										"type": "array",
-										"description": "The include policy works like an OR logical operator. The user must satisfy one of the rules in includes.",
+										"description": "Rules evaluated with an OR logical operator. To match a policy, a user needs to meet only one of the Include rules.",
 										"items": {
 											"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1groups/post/requestBody/content/application~1json/schema/properties/include/items"
 										}
 									},
 									"exclude": {
 										"type": "array",
-										"description": "The exclude policy works like a NOT logical operator. The user must not satisfy all of the rules in exclude.",
+										"description": "Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.",
 										"items": {
 											"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1access~1groups~1%7Buuid%7D/put/requestBody/content/application~1json/schema/properties/include/items"
 										}
 									},
 									"require": {
 										"type": "array",
-										"description": "The require policy works like a AND logical operator. The user must satisfy all of the rules in require.",
+										"description": "Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.",
 										"items": {
 											"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1access~1groups~1%7Buuid%7D/put/requestBody/content/application~1json/schema/properties/include/items"
 										}
@@ -69962,8 +69962,8 @@
 				}
 			},
 			"delete": {
-				"summary": "Delete Access Group",
-				"description": "Delete an Access Group",
+				"summary": "Delete an Access group",
+				"description": "Deletes an Access group.",
 				"parameters": [
 					{
 						"name": "uuid",
@@ -69984,7 +69984,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete Access Group response",
+						"description": "Delete an Access group response",
 						"content": {
 							"application/json": {
 								"schema": {
