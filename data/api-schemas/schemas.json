@@ -4921,12 +4921,12 @@
 		},
 		"/user/audit_logs": {
 			"get": {
-				"summary": "List User Audit Logs",
-				"description": "Get audit logs for a user account, filter by who made the change, which zone was the change was made on, and the timeframe of the change",
+				"summary": "Get user audit logs",
+				"description": "Gets a list of audit logs for a user account. The list can be filtered by who made the change, which zone was the change made on, and the timeframe of the change.",
 				"parameters": [],
 				"responses": {
 					"200": {
-						"description": "List User Audit Logs response",
+						"description": "Get user audit logs response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -4952,7 +4952,7 @@
 														"type": "object",
 														"properties": {
 															"id": {
-																"description": "A string that uniquely identifies the Audit Log",
+																"description": "A string that uniquely identifies the audit log.",
 																"type": "string",
 																"example": "d5b0f326-1232-4452-8858-1089bd7168ef"
 															},
@@ -4960,12 +4960,12 @@
 																"type": "object",
 																"properties": {
 																	"type": {
-																		"description": "A short string that describes the action that was performed",
+																		"description": "A short string that describes the action that was performed.",
 																		"type": "string",
 																		"example": "change_setting"
 																	},
 																	"result": {
-																		"description": "A boolean that indicates if the action attempted was successful",
+																		"description": "A boolean that indicates if the action attempted was successful.",
 																		"type": "boolean",
 																		"example": true
 																	}
@@ -5003,12 +5003,12 @@
 																}
 															},
 															"newValue": {
-																"description": "The new value of the resource that was modified",
+																"description": "The new value of the resource that was modified.",
 																"type": "string",
 																"example": "low"
 															},
 															"oldValue": {
-																"description": "The value of the resource before it was modified",
+																"description": "The value of the resource before it was modified.",
 																"type": "string",
 																"example": "high"
 															},
@@ -5028,12 +5028,12 @@
 																"type": "object",
 																"properties": {
 																	"type": {
-																		"description": "A short string that describes the resource that was affected by the action",
+																		"description": "A short string that describes the resource that was affected by the action.",
 																		"type": "string",
 																		"example": "zone"
 																	},
 																	"id": {
-																		"description": "An identifier for the resource that was affected by the action",
+																		"description": "An identifier for the resource that was affected by the action.",
 																		"type": "string",
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353"
 																	}
@@ -5055,7 +5055,7 @@
 																}
 															},
 															"when": {
-																"description": "A UTC RFC3339 timestamp that specifies when the action being logged occured",
+																"description": "A UTC RFC3339 timestamp that specifies when the action being logged occured.",
 																"type": "string",
 																"format": "date-time",
 																"example": "2017-04-26T17:31:07+00:00"
@@ -5194,8 +5194,8 @@
 		},
 		"/accounts/{account_identifier}/audit_logs": {
 			"get": {
-				"summary": "List Account Audit Logs",
-				"description": "Get audit logs for an account, filter by who made the change, which zone was the change was made on, and the timeframe of the change",
+				"summary": "Get account audit logs",
+				"description": "Gets a list of audit logs for an account. The list can be filtered by who made the change, which zone was the change made on, and the timeframe of the change.",
 				"parameters": [
 					{
 						"name": "account_identifier",
@@ -5212,7 +5212,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "List Account Audit Logs response",
+						"description": "Get account audit logs response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -5238,7 +5238,7 @@
 														"type": "object",
 														"properties": {
 															"id": {
-																"description": "A string that uniquely identifies the Audit Log",
+																"description": "A string that uniquely identifies the audit log.",
 																"type": "string",
 																"example": "d5b0f326-1232-4452-8858-1089bd7168ef"
 															},
@@ -5246,12 +5246,12 @@
 																"type": "object",
 																"properties": {
 																	"type": {
-																		"description": "A short string that describes the action that was performed",
+																		"description": "A short string that describes the action that was performed.",
 																		"type": "string",
 																		"example": "change_setting"
 																	},
 																	"result": {
-																		"description": "A boolean that indicates if the action attempted was successful",
+																		"description": "A boolean that indicates if the action attempted was successful.",
 																		"type": "boolean",
 																		"example": true
 																	}
@@ -5289,12 +5289,12 @@
 																}
 															},
 															"newValue": {
-																"description": "The new value of the resource that was modified",
+																"description": "The new value of the resource that was modified.",
 																"type": "string",
 																"example": "low"
 															},
 															"oldValue": {
-																"description": "The value of the resource before it was modified",
+																"description": "The value of the resource before it was modified.",
 																"type": "string",
 																"example": "high"
 															},
@@ -5310,12 +5310,12 @@
 																"type": "object",
 																"properties": {
 																	"type": {
-																		"description": "A short string that describes the resource that was affected by the action",
+																		"description": "A short string that describes the resource that was affected by the action.",
 																		"type": "string",
 																		"example": "zone"
 																	},
 																	"id": {
-																		"description": "An identifier for the resource that was affected by the action",
+																		"description": "An identifier for the resource that was affected by the action.",
 																		"type": "string",
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353"
 																	}
@@ -5337,7 +5337,7 @@
 																}
 															},
 															"when": {
-																"description": "A UTC RFC3339 timestamp that specifies when the action being logged occured",
+																"description": "A UTC RFC3339 timestamp that specifies when the action being logged occured.",
 																"type": "string",
 																"format": "date-time",
 																"example": "2017-04-26T17:31:07+00:00"
@@ -5375,8 +5375,8 @@
 		},
 		"/organizations/{organization_identifier}/audit_logs": {
 			"get": {
-				"summary": "List Organization Audit Logs",
-				"description": "Get audit logs for an organization, filter by who made the change, which zone was the change was made on, and the timeframe of the change",
+				"summary": "Get organization audit logs",
+				"description": "Gets a list of audit logs for an organization. The list can be filtered by who made the change, which zone was the change made on, and the timeframe of the change.",
 				"parameters": [
 					{
 						"name": "organization_identifier",
@@ -5389,7 +5389,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "List Organization Audit Logs response",
+						"description": "Get organization audit logs response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -5415,7 +5415,7 @@
 														"type": "object",
 														"properties": {
 															"id": {
-																"description": "A string that uniquely identifies the Audit Log",
+																"description": "A string that uniquely identifies the audit log.",
 																"type": "string",
 																"example": "d5b0f326-1232-4452-8858-1089bd7168ef"
 															},
@@ -5423,12 +5423,12 @@
 																"type": "object",
 																"properties": {
 																	"type": {
-																		"description": "A short string that describes the action that was performed",
+																		"description": "A short string that describes the action that was performed.",
 																		"type": "string",
 																		"example": "change_setting"
 																	},
 																	"result": {
-																		"description": "A boolean that indicates if the action attempted was successful",
+																		"description": "A boolean that indicates if the action attempted was successful.",
 																		"type": "boolean",
 																		"example": true
 																	}
@@ -5466,12 +5466,12 @@
 																}
 															},
 															"newValue": {
-																"description": "The new value of the resource that was modified",
+																"description": "The new value of the resource that was modified.",
 																"type": "string",
 																"example": "low"
 															},
 															"oldValue": {
-																"description": "The value of the resource before it was modified",
+																"description": "The value of the resource before it was modified.",
 																"type": "string",
 																"example": "high"
 															},
@@ -5487,12 +5487,12 @@
 																"type": "object",
 																"properties": {
 																	"type": {
-																		"description": "A short string that describes the resource that was affected by the action",
+																		"description": "A short string that describes the resource that was affected by the action.",
 																		"type": "string",
 																		"example": "zone"
 																	},
 																	"id": {
-																		"description": "An identifier for the resource that was affected by the action",
+																		"description": "An identifier for the resource that was affected by the action.",
 																		"type": "string",
 																		"example": "023e105f4ecef8ad9ca31a8372d0c353"
 																	}
@@ -5514,7 +5514,7 @@
 																}
 															},
 															"when": {
-																"description": "A UTC RFC3339 timestamp that specifies when the action being logged occured",
+																"description": "A UTC RFC3339 timestamp that specifies when the action being logged occured.",
 																"type": "string",
 																"format": "date-time",
 																"example": "2017-04-26T17:31:07+00:00"
