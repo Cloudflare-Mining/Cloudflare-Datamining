@@ -1,13 +1,13 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/access/identity-providers.json",
-	"title": "Zone-Level Access Identity Providers",
-	"description": "Access identity providers are the services your user’s will login against to authenticate with your site. (NOTE: it's recommended that the account route namespace is used instead: https://api.cloudflare.com/#access-identity-providers-properties.)",
-	"cfExtendedDescription": "https://developers.cloudflare.com/access/configuring-identity-providers/",
+	"title": "Zone-Level Access identity providers",
+	"description": "Identity providers are services that authenticate users to Access applications. (Note: We recommend using the equivalent account-level endpoints at https://api.cloudflare.com/#access-identity-providers-properties. Account APIs provide a broader range of features and are backwards-compatible to zone APIs.)",
+	"cfExtendedDescription": "https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/",
 	"type": "object",
 	"links": [
 		{
-			"title": "List Access Identity Providers",
-			"description": "List your Access Identity Providers",
+			"title": "List Access identity providers",
+			"description": "Lists all configured identity providers.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/identifier}/access/identity_providers",
 			"method": "GET",
@@ -18,25 +18,25 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"name\": \"Widget Corps OTP\",\n      \"type\": \"onetimepin\",\n      \"config\": {}\n    }\n  ]\n}"
 		},
 		{
-			"title": "Access Identity Providers Details",
-			"description": "Fetch your Access Identity Providers details",
+			"title": "Get an Access identity provider",
+			"description": "Fetches a configured identity provider.",
 			"rel": "self",
 			"href": "zones/{#/definitions/identifier}/access/identity_providers/{#/definitions/uuid}",
 			"method": "GET",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-identity-providers-access-identity-providers-details",
+			"html_id": "zone-level-access-identity-providers-get-an-access-identity-provider",
 			"uri": "zones/:identifier/access/identity_providers/:uuid",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/identity_providers/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"name\": \"Widget Corps OTP\",\n    \"type\": \"onetimepin\",\n    \"config\": {}\n  }\n}"
 		},
 		{
-			"title": "Create Access Identity Provider",
-			"description": "Create a new Access Identity Provider",
+			"title": "Add an Access identity provider",
+			"description": "Adds a new identity provider to Access.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/identifier}/access/identity_providers",
 			"method": "POST",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-identity-providers-create-access-identity-provider",
+			"html_id": "zone-level-access-identity-providers-add-an-access-identity-provider",
 			"uri": "zones/:identifier/access/identity_providers",
 			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/identity_providers\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"Widget Corps OTP\",\"type\":\"onetimepin\",\"config\":{}}'",
 			"parameters": {
@@ -47,18 +47,18 @@
 					"name": {
 						"type": "string",
 						"example": "\"Widget Corps OTP\"",
-						"description": "The name of your Access Identity Provider."
+						"description": "The name of the identity provider, shown to users on the login page."
 					},
 					"type": {
 						"type": "string",
 						"example": "\"onetimepin\"",
-						"description": "The type of Identity Provider"
+						"description": "The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/)."
 					},
 					"config": {
 						"type": "object",
 						"example": "{}",
 						"properties": {},
-						"description": "The configuration parameters for your identity provider. Please go to https://developers.cloudflare.com/access/configuring-identity-providers/ for more detailed examples."
+						"description": "The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/)."
 					}
 				},
 				"required_props": [
@@ -73,13 +73,13 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"name\": \"Widget Corps OTP\",\n    \"type\": \"onetimepin\",\n    \"config\": {}\n  }\n}"
 		},
 		{
-			"title": "Update Access Identity Provider",
-			"description": "Update a configured Access Identity Provider",
+			"title": "Update an Access identity provider",
+			"description": "Updates a configured identity provider.",
 			"rel": "self",
 			"href": "zones/{#/definitions/identifier}/access/identity_providers/{#/definitions/uuid}",
 			"method": "PUT",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-identity-providers-update-access-identity-provider",
+			"html_id": "zone-level-access-identity-providers-update-an-access-identity-provider",
 			"uri": "zones/:identifier/access/identity_providers/:uuid",
 			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/identity_providers/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"Widget Corps OTP\",\"type\":\"onetimepin\",\"config\":{}}'",
 			"parameters": {
@@ -90,18 +90,18 @@
 					"name": {
 						"type": "string",
 						"example": "\"Widget Corps OTP\"",
-						"description": "The name of your Access Identity Provider."
+						"description": "The name of the identity provider, shown to users on the login page."
 					},
 					"type": {
 						"type": "string",
 						"example": "\"onetimepin\"",
-						"description": "The type of Identity Provider"
+						"description": "The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/)."
 					},
 					"config": {
 						"type": "object",
 						"example": "{}",
 						"properties": {},
-						"description": "The configuration parameters for your identity provider. Please go to https://developers.cloudflare.com/access/configuring-identity-providers/ for more detailed examples."
+						"description": "The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/)."
 					}
 				},
 				"required_props": [
@@ -116,13 +116,13 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"name\": \"Widget Corps OTP\",\n    \"type\": \"onetimepin\",\n    \"config\": {}\n  }\n}"
 		},
 		{
-			"title": "Delete Access Identity Provider",
-			"description": "Delete an Access Identity Provider",
+			"title": "Delete an Access identity provider",
+			"description": "Deletes an identity provider from Access.",
 			"rel": "self",
 			"href": "zones/{#/definitions/identifier}/access/identity_providers/{#/definitions/uuid}",
 			"method": "DELETE",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-identity-providers-delete-access-identity-provider",
+			"html_id": "zone-level-access-identity-providers-delete-an-access-identity-provider",
 			"uri": "zones/:identifier/access/identity_providers/:uuid",
 			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/identity_providers/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"name\": \"Widget Corps OTP\",\n    \"type\": \"onetimepin\",\n    \"config\": {}\n  }\n}"
@@ -146,18 +146,18 @@
 			"name": {
 				"type": "string",
 				"example": "\"Widget Corps OTP\"",
-				"description": "The name of your Access Identity Provider."
+				"description": "The name of the identity provider, shown to users on the login page."
 			},
 			"type": {
 				"type": "string",
 				"example": "\"onetimepin\"",
-				"description": "The type of Identity Provider"
+				"description": "The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/)."
 			},
 			"config": {
 				"type": "object",
 				"example": "{}",
 				"properties": {},
-				"description": "The configuration parameters for your identity provider. Please go to https://developers.cloudflare.com/access/configuring-identity-providers/ for more detailed examples."
+				"description": "The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/)."
 			}
 		},
 		"required_props": [],
@@ -169,7 +169,7 @@
 		],
 		"objects": [],
 		"example": "{\n  \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n  \"name\": \"Widget Corps OTP\",\n  \"type\": \"onetimepin\",\n  \"config\": {}\n}",
-		"title": "Zone-Level Access Identity Providers",
-		"description": "Access identity providers are the services your user’s will login against to authenticate with your site. (NOTE: it's recommended that the account route namespace is used instead: https://api.cloudflare.com/#access-identity-providers-properties.)"
+		"title": "Zone-Level Access identity providers",
+		"description": "Identity providers are services that authenticate users to Access applications. (Note: We recommend using the equivalent account-level endpoints at https://api.cloudflare.com/#access-identity-providers-properties. Account APIs provide a broader range of features and are backwards-compatible to zone APIs.)"
 	}
 }

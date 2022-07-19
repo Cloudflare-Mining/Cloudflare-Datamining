@@ -60,7 +60,7 @@
 		},
 		{
 			"title": "Get Always Online setting",
-			"description": "When enabled, Always Online will serve pages from our cache if your server is offline (https://support.cloudflare.com/hc/en-us/articles/200168006)",
+			"description": "When enabled, Cloudflare serves limited copies of web pages available from the [Internet Archive's Wayback Machine](https://archive.org/web/) if your server is offline. Refer to [Always Online](https://developers.cloudflare.com/cache/about/always-online) for more information.",
 			"rel": "tag:cloudflare.com,2017:setting-always-online",
 			"href": "zones/{#/definitions/zone_identifier}/settings/always_online",
 			"method": "GET",
@@ -1232,7 +1232,7 @@
 		},
 		{
 			"title": "Change Always Online setting",
-			"description": "When enabled, Always Online will serve pages from our cache if your server is offline (https://support.cloudflare.com/hc/en-us/articles/200168006)",
+			"description": "When enabled, Cloudflare serves limited copies of web pages available from the [Internet Archive's Wayback Machine](https://archive.org/web/) if your server is offline. Refer to [Always Online](https://developers.cloudflare.com/cache/about/always-online) for more information.",
 			"rel": "tag:cloudflare.com,2017:setting-always-online",
 			"href": "zones/{#/definitions/zone_identifier}/settings/always_online",
 			"method": "PATCH",
@@ -3719,7 +3719,7 @@
 				"objects": [],
 				"example": "{\n  \"id\": \"always_online\",\n  \"value\": \"on\",\n  \"editable\": true,\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
 				"title": "Always Online Mode",
-				"description": "When enabled, Always Online will serve pages from our cache if your server is offline (https://support.cloudflare.com/hc/en-us/articles/200168006)"
+				"description": "When enabled, Cloudflare serves limited copies of web pages available from the [Internet Archive's Wayback Machine](https://archive.org/web/) if your server is offline. Refer to [Always Online](https://developers.cloudflare.com/cache/about/always-online) for more information."
 			},
 			{
 				"all_props": {

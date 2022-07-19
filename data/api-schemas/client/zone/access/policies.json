@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/access/policies.json",
 	"title": "Zone-Level Access policies",
-	"description": "Access policies define the users or groups who can reach an Access application.  (Note: We recommend configuring settings by account rather than by zone. Refer to https://api.cloudflare.com/#access-policies-properties.)",
+	"description": "Access policies define the users or groups who can reach an Access application.  (Note: We recommend using the equivalent account-level endpoints at https://api.cloudflare.com/#access-policies-properties. Account APIs provide a broader range of features and are backwards-compatible to zone APIs.)",
 	"cfExtendedDescription": "https://developers.cloudflare.com/access/setting-up-access/configuring-access-policies/",
 	"type": "object",
 	"links": [
@@ -5889,6 +5889,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n  \"precedence\": 1,\n  \"decision\": \"allow\",\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"name\": \"Allow devs\",\n  \"include\": [\n    {\n      \"email\": {\n        \"email\": \"test@example.com\"\n      }\n    }\n  ],\n  \"exclude\": [\n    {\n      \"email\": {\n        \"email\": \"test@example.com\"\n      }\n    }\n  ],\n  \"require\": [\n    {\n      \"email\": {\n        \"email\": \"test@example.com\"\n      }\n    }\n  ],\n  \"purpose_justification_required\": true,\n  \"purpose_justification_prompt\": \"Please enter a justification for entering this protected domain.\",\n  \"approval_required\": true,\n  \"approval_groups\": [\n    {\n      \"email_addresses\": [\n        \"test1@cloudflare.com\",\n        \"test2@cloudflare.com\"\n      ],\n      \"approvals_needed\": 1\n    },\n    {\n      \"email_list_uuid\": \"597147a1-976b-4ef2-9af0-81d5d007fc34\",\n      \"approvals_needed\": 3\n    }\n  ]\n}",
 		"title": "Zone-Level Access policies",
-		"description": "Access policies define the users or groups who can reach an Access application.  (Note: We recommend configuring settings by account rather than by zone. Refer to https://api.cloudflare.com/#access-policies-properties.)"
+		"description": "Access policies define the users or groups who can reach an Access application.  (Note: We recommend using the equivalent account-level endpoints at https://api.cloudflare.com/#access-policies-properties. Account APIs provide a broader range of features and are backwards-compatible to zone APIs.)"
 	}
 }

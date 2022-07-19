@@ -1,30 +1,30 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/access/organizations.json",
-	"title": "Zone-Level Access Organizations",
-	"description": "Access Organizations control the look and feel of your login page and the authentication domain it is located at. (NOTE: it's recommended that the account route namespace is used instead: https://api.cloudflare.com/#access-organizations-properties.)",
+	"title": "Zone-Level Zero Trust organization",
+	"description": "A Zero Trust organization defines the user login experience. (Note: We recommend using the equivalent account-level endpoints at https://api.cloudflare.com/#zero-trust-organization-properties. Account APIs provide a broader range of features and are backwards-compatible to zone APIs.)",
 	"type": "object",
 	"links": [
 		{
-			"title": "Access Organization Details",
-			"description": "Fetch your Access Organization details",
+			"title": "Get your Zero Trust organization",
+			"description": "Returns the configuration for your Zero Trust organization.",
 			"rel": "self",
 			"href": "zones/{#/definitions/identifier}/access/organizations",
 			"method": "GET",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-organizations-access-organization-details",
+			"html_id": "zone-level-zero-trust-organization-get-your-zero-trust-organization",
 			"uri": "zones/:identifier/access/organizations",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/organizations\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"Widget Corps Internal Applications\",\n    \"auth_domain\": \"test.cloudflareaccess.com\",\n    \"login_design\": {\n      \"background_color\": \"#c5ed1b\",\n      \"text_color\": \"#c5ed1b\",\n      \"logo_path\": \"https://example.com/logo.png\",\n      \"header_text\": \"This is an example description.\",\n      \"footer_text\": \"This is an example description.\"\n    }\n  }\n}"
 		},
 		{
-			"title": "Create Access Organization",
-			"description": "Create a new Access Organization",
+			"title": "Create your Zero Trust organization",
+			"description": "Sets up a Zero Trust organization for your account.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/identifier}/access/organizations",
 			"method": "POST",
 			"cfOwnership": "access",
 			"trakalIgnore": true,
-			"html_id": "zone-level-access-organizations-create-access-organization",
+			"html_id": "zone-level-zero-trust-organization-create-your-zero-trust-organization",
 			"uri": "zones/:identifier/access/organizations",
 			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/organizations\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"Widget Corps Internal Applications\",\"auth_domain\":\"test.cloudflareaccess.com\",\"login_design\":{\"background_color\":\"#c5ed1b\",\"text_color\":\"#c5ed1b\",\"logo_path\":\"https://example.com/logo.png\",\"header_text\":\"This is an example description.\",\"footer_text\":\"This is an example description.\"}}'",
 			"parameters": {
@@ -35,12 +35,12 @@
 					"name": {
 						"type": "string",
 						"example": "\"Widget Corps Internal Applications\"",
-						"description": "The name of your Access Organization."
+						"description": "The name of your Zero Trust organization."
 					},
 					"auth_domain": {
 						"type": "string",
 						"example": "\"test.cloudflareaccess.com\"",
-						"description": "The domain that you will be redirected to on Access login attempts"
+						"description": "The unique subdomain assigned to your Zero Trust organization."
 					},
 					"login_design": {
 						"example": "{\n  \"background_color\": \"#c5ed1b\",\n  \"text_color\": \"#c5ed1b\",\n  \"logo_path\": \"https://example.com/logo.png\",\n  \"header_text\": \"This is an example description.\",\n  \"footer_text\": \"This is an example description.\"\n}",
@@ -48,27 +48,27 @@
 							"background_color": {
 								"type": "string",
 								"example": "\"#c5ed1b\"",
-								"description": "The background color on your login page"
+								"description": "The background color on your login page."
 							},
 							"text_color": {
 								"type": "string",
 								"example": "\"#c5ed1b\"",
-								"description": "The text color on your login page"
+								"description": "The text color on your login page."
 							},
 							"logo_path": {
 								"type": "string",
 								"example": "\"https://example.com/logo.png\"",
-								"description": "The URL of the logo you want to display to users logging in"
+								"description": "The URL of the logo on your login page."
 							},
 							"header_text": {
 								"type": "string",
 								"example": "\"This is an example description.\"",
-								"description": "The header description on the team domain login page."
+								"description": "The text at the top of your login page."
 							},
 							"footer_text": {
 								"type": "string",
 								"example": "\"This is an example description.\"",
-								"description": "The footer description on the team domain login page."
+								"description": "The text at the bottom of your login page."
 							}
 						}
 					}
@@ -86,13 +86,13 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"Widget Corps Internal Applications\",\n    \"auth_domain\": \"test.cloudflareaccess.com\",\n    \"login_design\": {\n      \"background_color\": \"#c5ed1b\",\n      \"text_color\": \"#c5ed1b\",\n      \"logo_path\": \"https://example.com/logo.png\",\n      \"header_text\": \"This is an example description.\",\n      \"footer_text\": \"This is an example description.\"\n    }\n  }\n}"
 		},
 		{
-			"title": "Update Access Organization",
-			"description": "Update a configured Access Organization",
+			"title": "Update your Zero Trust organization",
+			"description": "Updates the configuration for your Zero Trust organization.",
 			"rel": "self",
 			"href": "zones/{#/definitions/identifier}/access/organizations",
 			"method": "PUT",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-organizations-update-access-organization",
+			"html_id": "zone-level-zero-trust-organization-update-your-zero-trust-organization",
 			"uri": "zones/:identifier/access/organizations",
 			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/organizations\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"Widget Corps Internal Applications\",\"auth_domain\":\"test.cloudflareaccess.com\",\"login_design\":{\"background_color\":\"#c5ed1b\",\"text_color\":\"#c5ed1b\",\"logo_path\":\"https://example.com/logo.png\",\"header_text\":\"This is an example description.\",\"footer_text\":\"This is an example description.\"}}'",
 			"parameters": {
@@ -103,12 +103,12 @@
 					"name": {
 						"type": "string",
 						"example": "\"Widget Corps Internal Applications\"",
-						"description": "The name of your Access Organization."
+						"description": "The name of your Zero Trust organization."
 					},
 					"auth_domain": {
 						"type": "string",
 						"example": "\"test.cloudflareaccess.com\"",
-						"description": "The domain that you will be redirected to on Access login attempts"
+						"description": "The unique subdomain assigned to your Zero Trust organization."
 					},
 					"login_design": {
 						"example": "{\n  \"background_color\": \"#c5ed1b\",\n  \"text_color\": \"#c5ed1b\",\n  \"logo_path\": \"https://example.com/logo.png\",\n  \"header_text\": \"This is an example description.\",\n  \"footer_text\": \"This is an example description.\"\n}",
@@ -116,27 +116,27 @@
 							"background_color": {
 								"type": "string",
 								"example": "\"#c5ed1b\"",
-								"description": "The background color on your login page"
+								"description": "The background color on your login page."
 							},
 							"text_color": {
 								"type": "string",
 								"example": "\"#c5ed1b\"",
-								"description": "The text color on your login page"
+								"description": "The text color on your login page."
 							},
 							"logo_path": {
 								"type": "string",
 								"example": "\"https://example.com/logo.png\"",
-								"description": "The URL of the logo you want to display to users logging in"
+								"description": "The URL of the logo on your login page."
 							},
 							"header_text": {
 								"type": "string",
 								"example": "\"This is an example description.\"",
-								"description": "The header description on the team domain login page."
+								"description": "The text at the top of your login page."
 							},
 							"footer_text": {
 								"type": "string",
 								"example": "\"This is an example description.\"",
-								"description": "The footer description on the team domain login page."
+								"description": "The text at the bottom of your login page."
 							}
 						}
 					}
@@ -153,27 +153,27 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"Widget Corps Internal Applications\",\n    \"auth_domain\": \"test.cloudflareaccess.com\",\n    \"login_design\": {\n      \"background_color\": \"#c5ed1b\",\n      \"text_color\": \"#c5ed1b\",\n      \"logo_path\": \"https://example.com/logo.png\",\n      \"header_text\": \"This is an example description.\",\n      \"footer_text\": \"This is an example description.\"\n    }\n  }\n}"
 		},
 		{
-			"title": "Delete Access Organization",
-			"description": "Delete an Access Organization.",
+			"title": "Delete your Zero Trust organization",
+			"description": "Deletes your Zero Trust organization. **WARNING: This will delete everything related to Zero Trust on your account.**",
 			"rel": "self",
 			"href": "zones/{#/definitions/identifier}/access/organizations",
 			"method": "DELETE",
 			"cfOwnership": "access",
 			"cfPrivate": true,
 			"trakalIgnore": true,
-			"html_id": "zone-level-access-organizations-delete-access-organization",
+			"html_id": "zone-level-zero-trust-organization-delete-your-zero-trust-organization",
 			"uri": "zones/:identifier/access/organizations",
 			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/organizations\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"result\": true\n}"
 		},
 		{
-			"title": "Revoke all Access Tokens for a user",
-			"description": "Revoke any outstanding tokens issued for a specific user",
+			"title": "Revoke all Access tokens for a user",
+			"description": "Revokes a user's access across all applications.",
 			"rel": "self",
 			"href": "zones/{#/definitions/identifier}/access/organizations/revoke_user",
 			"method": "POST",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-organizations-revoke-all-access-tokens-for-a-user",
+			"html_id": "zone-level-zero-trust-organization-revoke-all-access-tokens-for-a-user",
 			"uri": "zones/:identifier/access/organizations/revoke_user",
 			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/699d98642c564d2e855e9661899b7252/access/organizations/revoke_user\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"email\":\"test@example.com\"}'",
 			"parameters": {
@@ -184,7 +184,7 @@
 					"email": {
 						"type": "string",
 						"example": "\"test@example.com\"",
-						"description": "The email of the user to revoke"
+						"description": "The email of the user to revoke."
 					}
 				},
 				"required_props": [
@@ -197,7 +197,7 @@
 			"response": "{\n  \"success\": true,\n  \"result\": true\n}"
 		}
 	],
-	"html_id": "zone-level-access-organizations",
+	"html_id": "zone-level-zero-trust-organization",
 	"object_definition": {
 		"_formatter": {
 			"jsonMediaType": {}
@@ -224,12 +224,12 @@
 			"name": {
 				"type": "string",
 				"example": "\"Widget Corps Internal Applications\"",
-				"description": "The name of your Access Organization."
+				"description": "The name of your Zero Trust organization."
 			},
 			"auth_domain": {
 				"type": "string",
 				"example": "\"test.cloudflareaccess.com\"",
-				"description": "The domain that you will be redirected to on Access login attempts"
+				"description": "The unique subdomain assigned to your Zero Trust organization."
 			},
 			"login_design": {
 				"example": "{\n  \"background_color\": \"#c5ed1b\",\n  \"text_color\": \"#c5ed1b\",\n  \"logo_path\": \"https://example.com/logo.png\",\n  \"header_text\": \"This is an example description.\",\n  \"footer_text\": \"This is an example description.\"\n}",
@@ -237,27 +237,27 @@
 					"background_color": {
 						"type": "string",
 						"example": "\"#c5ed1b\"",
-						"description": "The background color on your login page"
+						"description": "The background color on your login page."
 					},
 					"text_color": {
 						"type": "string",
 						"example": "\"#c5ed1b\"",
-						"description": "The text color on your login page"
+						"description": "The text color on your login page."
 					},
 					"logo_path": {
 						"type": "string",
 						"example": "\"https://example.com/logo.png\"",
-						"description": "The URL of the logo you want to display to users logging in"
+						"description": "The URL of the logo on your login page."
 					},
 					"header_text": {
 						"type": "string",
 						"example": "\"This is an example description.\"",
-						"description": "The header description on the team domain login page."
+						"description": "The text at the top of your login page."
 					},
 					"footer_text": {
 						"type": "string",
 						"example": "\"This is an example description.\"",
-						"description": "The footer description on the team domain login page."
+						"description": "The text at the bottom of your login page."
 					}
 				}
 			}
@@ -272,7 +272,7 @@
 		],
 		"objects": [],
 		"example": "{\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"name\": \"Widget Corps Internal Applications\",\n  \"auth_domain\": \"test.cloudflareaccess.com\",\n  \"login_design\": {\n    \"background_color\": \"#c5ed1b\",\n    \"text_color\": \"#c5ed1b\",\n    \"logo_path\": \"https://example.com/logo.png\",\n    \"header_text\": \"This is an example description.\",\n    \"footer_text\": \"This is an example description.\"\n  }\n}",
-		"title": "Zone-Level Access Organizations",
-		"description": "Access Organizations control the look and feel of your login page and the authentication domain it is located at. (NOTE: it's recommended that the account route namespace is used instead: https://api.cloudflare.com/#access-organizations-properties.)"
+		"title": "Zone-Level Zero Trust organization",
+		"description": "A Zero Trust organization defines the user login experience. (Note: We recommend using the equivalent account-level endpoints at https://api.cloudflare.com/#zero-trust-organization-properties. Account APIs provide a broader range of features and are backwards-compatible to zone APIs.)"
 	}
 }
