@@ -11,10 +11,46 @@ import {tryAndPush, getHttpsAgent} from './utils.js';
 
 const agent = getHttpsAgent();
 
+function propertiesToArray(obj){
+	const isObject = val => val && typeof val === 'object' && !Array.isArray(val);
+
+	const addDelimiter = (delA, delB) => (delA ? `${delA}.${delB}` : delB);
+
+	const paths = (obj = {}, head = '') => Object.entries(obj)
+		.reduce((product, [key, value]) => {
+			const fullPath = addDelimiter(head, key);
+			if(isObject(value)){
+				return [...product, ...paths(value, fullPath)];
+			}
+			return [...product, fullPath];
+		}, []);
+
+	return paths(obj);
+}
+const dir = path.resolve(`../data/cdn-cgi`);
+try{
+	await fs.rm(dir, {
+		recursive: true,
+	});
+}catch{} // we tried
+await fs.ensureDir(dir);
+
 // TODO: dog, lab, mcp canary?
 const MCP_COLO = 'lhr01';
 const CANARY_COLO = 'kul01';
 const MAIN_COLO = 'dfw01';
+
+// get keys for request.cf
+const cfJsonRes = await fetch(`https://jross.me/cf.json`);
+const cfJson = await cfJsonRes.json();
+
+const cfKeys = propertiesToArray(cfJson);
+console.log('write', cfKeys);
+if(cfKeys.length >= 0){
+	await fs.writeFile(path.resolve(dir, 'cf.json'), JSON.stringify(cfKeys, null, '\t'));
+}
+
+
 const buildVersions = {
 	// ssl
 	'build-info/ssl-main': `${process.env.FETCH_FROM_COLO_URL}colo=${MAIN_COLO}&url=https://build-info.jross.workers.dev/?type=ssl`,
@@ -35,13 +71,10 @@ const buildVersions = {
 	'build-info/origin-canary': `${process.env.FETCH_FROM_COLO_URL}colo=${CANARY_COLO}&url=https://build-info.jross.workers.dev/?type=origin`,
 };
 
-const dir = path.resolve(`../data/cdn-cgi`);
 
-await fs.rm(dir, {
-	recursive: true,
-});
 for(const [file, url] of Object.entries(buildVersions)){
 	const filePath = path.resolve(dir, file);
+	console.log('Fetching', file);
 	const dataReq = await fetch(url, {agent});
 	if(dataReq.ok){
 		const data = await dataReq.text();
