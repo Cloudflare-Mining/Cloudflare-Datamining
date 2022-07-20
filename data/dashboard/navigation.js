@@ -434,10 +434,10 @@ const navigation = {
 		hasPermission: function(Y) {
 			var Ze = (0, P.getZone)(Y);
 			if ((0, a.zoneIsDNSOnly)(Y) || !B(Y, "zone_settings", "spectrum.app") || !Ze) return !1;
-			var tt = !!((0, W.userHasEntZones)(Y) || (0, P.userHasDelegatedEntZones)(Y)),
-				mt = !!(0, P.getZoneFlipperFlag)(Y, "spectrum", "enabled"),
-				Nt = !!(0, P.isFree)(Ze);
-			return mt || tt || !Nt
+			var rt = !!((0, W.userHasEntZones)(Y) || (0, P.userHasDelegatedEntZones)(Y)),
+				ut = !!(0, P.getZoneFlipperFlag)(Y, "spectrum", "enabled"),
+				xt = !!(0, P.isFree)(Ze);
+			return ut || rt || !xt
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -696,8 +696,8 @@ const navigation = {
 		url: "/zaraz",
 		labels: function(Y) {
 			var Ze = [],
-				tt = (0, P.getZone)(Y);
-			return tt && !(0, P.isPlanAtLeast)(tt, "pro") && Ze.push("beta"), Ze
+				rt = (0, P.getZone)(Y);
+			return rt && !(0, P.isPlanAtLeast)(rt, "pro") && Ze.push("beta"), Ze
 		},
 		iconType: "zaraz",
 		testId: "zone-navigation-link-zaraz",
