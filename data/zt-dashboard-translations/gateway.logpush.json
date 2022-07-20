@@ -193,7 +193,7 @@
 	"logpush_saving_error": "There was an error saving your logpush settings. Please verify your data and try again.",
 	"logpush_send_token_azure_description": "As a security measure, we have sent a test file to your destination: %{filename}. Please open the file and enter the token it contains below. This process ensures that logs are only sent to a destination that you own.",
 	"logpush_send_token_fail_api_err": "There was an error: <br/>%{data}",
-	"logpush_send_token_fail_invalid_destination": "There was an error writing to the specified %{data} bucket. <br/>The received response code was a 404.<br/> </br/> <b>%{message}</b>.",
+	"logpush_send_token_fail_invalid_destination": "There was an error writing to the specified bucket. <br/>The received response code was a 404.<br/> </br/> <b>%{data}</b>.",
 	"logpush_send_token_generic_description": "As a security measure, we have sent a test file to your destination: <br/><b>%{filename}</b> <br/>Please open the file and enter the token it contains below. This process ensures that logs are only sent to a destination that you own.",
 	"logpush_send_token_gs_description": "As a security measure, we have sent a test file to your destination: <a target=\"_blank\" href=\"%{link}\">%{filename}</a>. Please open the file and enter the token it contains below. This process ensures that logs are only sent to a destination that you own.",
 	"logpush_send_token_s3_description": "As a security measure, we have sent a test file to your destination: <a target=\"_blank\" href=\"%{link}\">%{filename}</a>. Please open the file and enter the token it contains below. This process ensures that logs are only sent to a destination that you own.",
