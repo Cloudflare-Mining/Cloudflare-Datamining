@@ -44,10 +44,22 @@ const MAIN_COLO = 'dfw01';
 const cfJsonRes = await fetch(`https://jross.me/cf.json`);
 const cfJson = await cfJsonRes.json();
 
-const cfKeys = propertiesToArray(cfJson);
-console.log('write', cfKeys);
-if(cfKeys.length >= 0){
-	await fs.writeFile(path.resolve(dir, 'cf.json'), JSON.stringify(cfKeys, null, '\t'));
+const cfKeys = new Set(propertiesToArray(cfJson));
+// add keys that are optional, and assume they're set. This creates more stable diffs
+cfKeys.add('isEUCountry');
+cfKeys.add('country');
+cfKeys.add('city');
+cfKeys.add('continent');
+cfKeys.add('latitude');
+cfKeys.add('longitude');
+cfKeys.add('postalCode');
+cfKeys.add('metroCode');
+cfKeys.add('region');
+cfKeys.add('regionCode');
+cfKeys.add('timezone');
+console.log(cfKeys);
+if(cfKeys.size >= 0){
+	await fs.writeFile(path.resolve(dir, 'cf.json'), JSON.stringify([...cfKeys].sort(), null, '\t'));
 }
 
 
