@@ -5603,7 +5603,7 @@
 				],
 				"x-cfPermissionsRequired": {
 					"enum": [
-						"#argo:read"
+						"#zone_settings:read"
 					]
 				},
 				"x-cfPlanAvailability": {
@@ -5645,8 +5645,8 @@
 				],
 				"x-cfPermissionsRequired": {
 					"enum": [
-						"#argo:read",
-						"#argo:edit"
+						"#zone_settings:read",
+						"#zone_settings:edit"
 					]
 				},
 				"x-cfPlanAvailability": {
