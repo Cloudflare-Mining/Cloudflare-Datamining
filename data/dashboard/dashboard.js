@@ -1170,7 +1170,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				}),
 				Je = Kr,
 				et = a().lazy(function() {
-					return Promise.all([e.e(8415), e.e(43561), e.e(87122), e.e(22809), e.e(91914), e.e(70474), e.e(9373)]).then(e.bind(e, "../react/pages/domainconnect/Main.tsx"))
+					return Promise.all([e.e(8415), e.e(43561), e.e(87122), e.e(22809), e.e(91914), e.e(70474), e.e(50665)]).then(e.bind(e, "../react/pages/domainconnect/Main.tsx"))
 				}),
 				ct = function() {
 					return a().createElement(et, null)
@@ -6355,14 +6355,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				e.g.build = yu({}, {
-					branch: "release-1658325890",
+					branch: "release-1658412325",
 					isReleaseCandidate: "true",
-					commit: "989f9353e0465af9557bc287c93c22a095dba3e9",
+					commit: "f70181188745bb19e32b671ca5b2138230872908",
 					env: "production",
-					builtAt: 1658326280695,
-					dashVersion: "5a5c44b504d6acaca6172503ccf7b23bbd10d419",
+					builtAt: 1658412660910,
+					dashVersion: "01bc5269d84bf532b1b8acceae120ac020b6a92e",
 					versions: {
-						"@cloudflare/app-dash": "25.58.0",
+						"@cloudflare/app-dash": "25.59.1",
 						node: "14.18.3",
 						yarn: "1.18.0",
 						webpack: "5.38.1"
@@ -48693,14 +48693,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					redirect: {
 						source_url: "",
 						target_url: "",
-						status_code: "301",
+						status_code: 301,
 						include_subdomains: !1,
 						subpath_matching: !1,
 						preserve_query_string: !1,
 						preserve_path_suffix: !1
 					}
 				},
-				z = ["301", "302", "307", "308"]
+				z = [301, 302, 307, 308]
 		},
 		"../react/pages/home/configurations/lists/selectors.ts": function(Ve, ue, e) {
 			"use strict";
@@ -56011,7 +56011,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			})(T || (T = {}));
 			var j;
 			(function(g) {
-				g.HttpRateLimit = "http_ratelimit", g.HttpRequestMain = "http_request_main", g.HttpRequestFirewallCustom = "http_request_firewall_custom", g.HttpRequestFirewallManaged = "http_request_firewall_managed", g.HttpResponseFirewallManaged = "http_response_firewall_managed", g.HttpRequestSanitize = "http_request_sanitize", g.HttpRequestSBFM = "http_request_sbfm", g.HttpRequestTransform = "http_request_transform", g.HttpRequestLateTransform = "http_request_late_transform", g.HttpResponseTransform = "http_response_headers_transform", g.HttpLogCustomFields = "http_log_custom_fields", g.L7DDoS = "ddos_l7", g.L4DDoS = "ddos_l4"
+				g.HttpRateLimit = "http_ratelimit", g.HttpRequestMain = "http_request_main", g.HttpRequestFirewallCustom = "http_request_firewall_custom", g.HttpRequestFirewallManaged = "http_request_firewall_managed", g.HttpResponseFirewallManaged = "http_response_firewall_managed", g.HttpRequestRedirect = "http_request_redirect", g.HttpRequestSanitize = "http_request_sanitize", g.HttpRequestSBFM = "http_request_sbfm", g.HttpRequestTransform = "http_request_transform", g.HttpRequestLateTransform = "http_request_late_transform", g.HttpResponseTransform = "http_response_headers_transform", g.HttpLogCustomFields = "http_log_custom_fields", g.L7DDoS = "ddos_l7", g.L4DDoS = "ddos_l4"
 			})(j || (j = {}));
 			var z = function() {
 					var S;
@@ -88543,4 +88543,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=ae4fddf3c6a5f2e8fa68.js.map
+//# sourceMappingURL=868c961266c790b6727e.js.map
