@@ -7147,7 +7147,7 @@
 																		true,
 																		false
 																	],
-																	"description": "Value of the zone setting",
+																	"description": "Value of the zone setting.",
 																	"default": false
 																},
 																"time_remaining": {
@@ -8349,8 +8349,8 @@
 													]
 												},
 												{
-													"title": "Origin Max HTTP Version",
-													"description": "The highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (See https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/ for more information.)",
+													"title": "Origin Max HTTP version",
+													"description": "The highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.)",
 													"allOf": [
 														{
 															"properties": {
@@ -10973,7 +10973,7 @@
 											true,
 											false
 										],
-										"description": "Value of the zone setting",
+										"description": "Value of the zone setting.",
 										"default": false
 									}
 								}
@@ -17784,8 +17784,8 @@
 		},
 		"/zones/{zone_identifier}/origin_max_http_version": {
 			"get": {
-				"summary": "Get Origin Max HTTP Version setting",
-				"description": "Value of the Origin Max HTTP Version setting (Note: default for Enterprise only is \"1\")",
+				"summary": "Get Origin Max HTTP version setting",
+				"description": "Value of the Origin Max HTTP version setting (Note that the default value for Enterprise is \"1\")",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -17798,7 +17798,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get Origin Max HTTP Version setting response",
+						"description": "Get Origin Max HTTP version setting response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -17822,8 +17822,8 @@
 												"result": {
 													"allOf": [
 														{
-															"title": "Origin Max HTTP Version",
-															"description": "The highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (See https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/ for more information.)",
+															"title": "Origin Max HTTP version",
+															"description": "The highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.)",
 															"allOf": [
 																{
 																	"properties": {
@@ -17888,8 +17888,8 @@
 				}
 			},
 			"patch": {
-				"summary": "Change Origin Max HTTP Version setting",
-				"description": "The highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (See https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/ for more information.)",
+				"summary": "Change Origin Max HTTP version setting",
+				"description": "The highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.)",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -17902,7 +17902,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Change Origin Max HTTP Version setting response",
+						"description": "Change Origin Max HTTP version setting response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -17951,7 +17951,7 @@
 											"1",
 											"2"
 										],
-										"description": "Value of the Origin Max HTTP Version setting (Note: default for Enterprise only is \"1\")",
+										"description": "Value of the Origin Max HTTP version setting (Note that the default value for Enterprise is \"1\")",
 										"default": "2"
 									}
 								}
@@ -19226,7 +19226,7 @@
 		},
 		"/zones/{zone_identifier}/cache/variants": {
 			"get": {
-				"summary": "Get Variants setting",
+				"summary": "Get variants setting",
 				"description": "Variant support enables caching variants of images with certain file extensions in addition to the original. This only applies when the origin server sends the 'Vary: Accept' response header. If the origin server sends 'Vary: Accept' but does not serve the variant requested, the response will not be cached. This will be indicated with BYPASS cache status in the response headers.",
 				"parameters": [
 					{
@@ -19240,7 +19240,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get Variants setting response",
+						"description": "Get variants setting response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -19305,7 +19305,7 @@
 				}
 			},
 			"patch": {
-				"summary": "Change Variants setting",
+				"summary": "Change variants setting",
 				"description": "Variant support enables caching variants of images with certain file extensions in addition to the original. This only applies when the origin server sends the 'Vary: Accept' response header. If the origin server sends 'Vary: Accept' but does not serve the variant requested, the response will not be cached. This will be indicated with BYPASS cache status in the response headers.",
 				"parameters": [
 					{
@@ -19319,7 +19319,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Change Variants setting response",
+						"description": "Change variants setting response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -19368,7 +19368,7 @@
 										"properties": {
 											"avif": {
 												"type": "array",
-												"description": "list of strings with the MIME types of all the variants that should be served for avif",
+												"description": "List of strings with the MIME types of all the variants that should be served for avif.",
 												"uniqueItems": true,
 												"example": [
 													"image/webp",
@@ -19378,7 +19378,7 @@
 											},
 											"bmp": {
 												"type": "array",
-												"description": "list of strings with the MIME types of all the variants that should be served for bmp",
+												"description": "List of strings with the MIME types of all the variants that should be served for bmp.",
 												"uniqueItems": true,
 												"example": [
 													"image/webp",
@@ -19388,7 +19388,7 @@
 											},
 											"gif": {
 												"type": "array",
-												"description": "list of strings with the MIME types of all the variants that should be served for gif",
+												"description": "List of strings with the MIME types of all the variants that should be served for gif.",
 												"uniqueItems": true,
 												"example": [
 													"image/webp",
@@ -19398,7 +19398,7 @@
 											},
 											"jpeg": {
 												"type": "array",
-												"description": "list of strings with the MIME types of all the variants that should be served for jpeg",
+												"description": "List of strings with the MIME types of all the variants that should be served for jpeg.",
 												"uniqueItems": true,
 												"example": [
 													"image/webp",
@@ -19408,7 +19408,7 @@
 											},
 											"jpg": {
 												"type": "array",
-												"description": "list of strings with the MIME types of all the variants that should be served for jpg",
+												"description": "List of strings with the MIME types of all the variants that should be served for jpg.",
 												"uniqueItems": true,
 												"example": [
 													"image/webp",
@@ -19418,7 +19418,7 @@
 											},
 											"jpg2": {
 												"type": "array",
-												"description": "list of strings with the MIME types of all the variants that should be served for jpg2",
+												"description": "List of strings with the MIME types of all the variants that should be served for jpg2.",
 												"uniqueItems": true,
 												"example": [
 													"image/webp",
@@ -19428,7 +19428,7 @@
 											},
 											"jp2": {
 												"type": "array",
-												"description": "list of strings with the MIME types of all the variants that should be served for jp2",
+												"description": "List of strings with the MIME types of all the variants that should be served for jp2.",
 												"uniqueItems": true,
 												"example": [
 													"image/webp",
@@ -19438,7 +19438,7 @@
 											},
 											"png": {
 												"type": "array",
-												"description": "list of strings with the MIME types of all the variants that should be served for png",
+												"description": "List of strings with the MIME types of all the variants that should be served for png.",
 												"uniqueItems": true,
 												"example": [
 													"image/webp",
@@ -19448,7 +19448,7 @@
 											},
 											"tiff": {
 												"type": "array",
-												"description": "list of strings with the MIME types of all the variants that should be served for tiff",
+												"description": "List of strings with the MIME types of all the variants that should be served for tiff.",
 												"uniqueItems": true,
 												"example": [
 													"image/webp",
@@ -19458,7 +19458,7 @@
 											},
 											"tif": {
 												"type": "array",
-												"description": "list of strings with the MIME types of all the variants that should be served for tif",
+												"description": "List of strings with the MIME types of all the variants that should be served for tif.",
 												"uniqueItems": true,
 												"example": [
 													"image/webp",
@@ -19468,7 +19468,7 @@
 											},
 											"webp": {
 												"type": "array",
-												"description": "list of strings with the MIME types of all the variants that should be served for webp",
+												"description": "List of strings with the MIME types of all the variants that should be served for webp.",
 												"uniqueItems": true,
 												"example": [
 													"image/jpeg",
@@ -19485,7 +19485,7 @@
 				}
 			},
 			"delete": {
-				"summary": "Delete Variants setting",
+				"summary": "Delete variants setting",
 				"description": "Variant support enables caching variants of images with certain file extensions in addition to the original. This only applies when the origin server sends the 'Vary: Accept' response header. If the origin server sends 'Vary: Accept' but does not serve the variant requested, the response will not be cached. This will be indicated with BYPASS cache status in the response headers.",
 				"parameters": [
 					{
@@ -19499,7 +19499,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete Variants setting response",
+						"description": "Delete variants setting response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -64807,7 +64807,7 @@
 									},
 									"include": {
 										"type": "array",
-										"description": "Rules evaluated with an OR logical operator. To match a policy, a user needs to meet only one of the Include rules.",
+										"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
 										"items": {
 											"type": "object",
 											"oneOf": [
@@ -65260,7 +65260,7 @@
 									},
 									"include": {
 										"type": "array",
-										"description": "Rules evaluated with an OR logical operator. To match a policy, a user needs to meet only one of the Include rules.",
+										"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
 										"items": {
 											"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1groups/post/requestBody/content/application~1json/schema/properties/include/items"
 										}
@@ -69782,7 +69782,7 @@
 									},
 									"include": {
 										"type": "array",
-										"description": "Rules evaluated with an OR logical operator. To match a policy, a user needs to meet only one of the Include rules.",
+										"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
 										"items": {
 											"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1groups/post/requestBody/content/application~1json/schema/properties/include/items"
 										}
@@ -69939,7 +69939,7 @@
 									},
 									"include": {
 										"type": "array",
-										"description": "Rules evaluated with an OR logical operator. To match a policy, a user needs to meet only one of the Include rules.",
+										"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
 										"items": {
 											"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1groups/post/requestBody/content/application~1json/schema/properties/include/items"
 										}
