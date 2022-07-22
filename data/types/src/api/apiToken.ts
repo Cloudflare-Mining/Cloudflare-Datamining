@@ -58,6 +58,7 @@ export const ApiTokenFormValue = eg.object({
   modified_on: eg.string,
   last_used_on: eg.string || null,
   scopes: eg.array(eg.string).optional,
+  permissionGroupKeys: eg.array(eg.string).optional,
   accountResources: eg.array(AccountResource).optional,
   zoneResources: eg.array(ZoneResource).optional,
   permissionGroups: eg.array(eg.string),
