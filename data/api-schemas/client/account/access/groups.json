@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/access/groups.json",
 	"title": "Access groups",
-	"description": "An Access group is a set of reusable rules that can be quickly applied across many Access applications.",
+	"description": "An Access group is a set of reusable rules that can be quickly applied across many Access policies.",
 	"cfExtendedDescription": "https://developers.cloudflare.com/cloudflare-one/identity/users/groups/",
 	"type": "object",
 	"links": [
@@ -52,7 +52,7 @@
 					"include": {
 						"type": "array",
 						"example": "[\n  {\n    \"email\": {\n      \"email\": \"test@example.com\"\n    }\n  }\n]",
-						"description": "Rules evaluated with an OR logical operator. To match a policy, a user needs to meet only one of the Include rules.",
+						"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
 						"items": {
 							"id": "https://api.cloudflare.com/schemas/v4/client/definitions/access/rule.json",
 							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
@@ -1925,7 +1925,7 @@
 					"include": {
 						"type": "array",
 						"example": "[\n  {\n    \"email\": {\n      \"email\": \"test@example.com\"\n    }\n  }\n]",
-						"description": "Rules evaluated with an OR logical operator. To match a policy, a user needs to meet only one of the Include rules.",
+						"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
 						"items": {
 							"id": "https://api.cloudflare.com/schemas/v4/client/definitions/access/rule.json",
 							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
@@ -3829,7 +3829,7 @@
 			"include": {
 				"type": "array",
 				"example": "[\n  {\n    \"email\": {\n      \"email\": \"test@example.com\"\n    }\n  }\n]",
-				"description": "Rules evaluated with an OR logical operator. To match a policy, a user needs to meet only one of the Include rules.",
+				"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
 				"items": {
 					"id": "https://api.cloudflare.com/schemas/v4/client/definitions/access/rule.json",
 					"$schema": "http://json-schema.org/draft-04/hyper-schema#",
@@ -5679,6 +5679,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"name\": \"Allow devs\",\n  \"include\": [\n    {\n      \"email\": {\n        \"email\": \"test@example.com\"\n      }\n    }\n  ],\n  \"exclude\": [\n    {\n      \"email\": {\n        \"email\": \"test@example.com\"\n      }\n    }\n  ],\n  \"require\": [\n    {\n      \"email\": {\n        \"email\": \"test@example.com\"\n      }\n    }\n  ]\n}",
 		"title": "Access groups",
-		"description": "An Access group is a set of reusable rules that can be quickly applied across many Access applications."
+		"description": "An Access group is a set of reusable rules that can be quickly applied across many Access policies."
 	}
 }

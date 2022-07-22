@@ -18,7 +18,7 @@
 			},
 			"cfPermissionsRequired": {
 				"enum": [
-					"#argo:read"
+					"#zone_settings:read"
 				]
 			},
 			"html_id": "argo-smart-routing-get-argo-smart-routing-setting",
@@ -40,8 +40,8 @@
 			},
 			"cfPermissionsRequired": {
 				"enum": [
-					"#argo:read",
-					"#argo:edit"
+					"#zone_settings:read",
+					"#zone_settings:edit"
 				]
 			},
 			"html_id": "argo-smart-routing-patch-argo-smart-routing-setting",

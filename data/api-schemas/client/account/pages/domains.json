@@ -32,6 +32,7 @@
 					}
 				}
 			},
+			"cfOwnership": "pages",
 			"html_id": "pages-domains-get-domains",
 			"uri": "accounts/:account_id/pages/projects/:project_name/domains",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/:account_id/pages/projects/:project_name/domains\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
@@ -65,6 +66,7 @@
 				}
 			},
 			"encType": "application/json",
+			"cfOwnership": "pages",
 			"html_id": "pages-domains-add-domain",
 			"uri": "accounts/:account_id/pages/projects/:project_name/domains",
 			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/:account_id/pages/projects/:project_name/domains\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     --data '{\"name\":\"example.com\"}'",
@@ -107,6 +109,7 @@
 					}
 				}
 			},
+			"cfOwnership": "pages",
 			"html_id": "pages-domains-get-domain",
 			"uri": "accounts/:account_id/pages/projects/:project_name/domains/:domain_name",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/:account_id/pages/projects/:project_name/domains/:domain_name\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
@@ -139,6 +142,7 @@
 					}
 				}
 			},
+			"cfOwnership": "pages",
 			"html_id": "pages-domains-patch-domain",
 			"uri": "accounts/:account_id/pages/projects/:project_name/domains/:domain_name",
 			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/accounts/:account_id/pages/projects/:project_name/domains/:domain_name\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
@@ -171,6 +175,7 @@
 					}
 				}
 			},
+			"cfOwnership": "pages",
 			"html_id": "pages-domains-delete-domain",
 			"uri": "accounts/:account_id/pages/projects/:project_name/domains/:domain_name",
 			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/:account_id/pages/projects/:project_name/domains/:domain_name\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",

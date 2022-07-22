@@ -1025,8 +1025,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"http3\",\n    \"value\": \"off\",\n    \"editable\": true,\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
 		},
 		{
-			"title": "Get Origin Max HTTP Version setting",
-			"description": "Value of the Origin Max HTTP Version setting (Note: default for Enterprise only is \"1\")",
+			"title": "Get Origin Max HTTP version setting",
+			"description": "Value of the Origin Max HTTP version setting (Note that the default value for Enterprise is \"1\")",
 			"rel": "tag:cloudflare.com,2022:setting-origin-max-http-version",
 			"href": "zones/{#/definitions/zone_identifier}/origin_max_http_version",
 			"method": "GET",
@@ -1719,7 +1719,7 @@
 							"on",
 							"off"
 						],
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"default": "off"
 					}
 				},
@@ -3279,8 +3279,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"http3\",\n    \"value\": \"off\",\n    \"editable\": true,\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
 		},
 		{
-			"title": "Change Origin Max HTTP Version setting",
-			"description": "The highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (See https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/ for more information.)",
+			"title": "Change Origin Max HTTP version setting",
+			"description": "The highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.)",
 			"rel": "tag:cloudflare.com,2022:setting-origin-max-http-version",
 			"href": "zones/{#/definitions/zone_identifier}/origin_max_http_version",
 			"method": "PATCH",
@@ -3311,7 +3311,7 @@
 							"1",
 							"2"
 						],
-						"description": "Value of the Origin Max HTTP Version setting (Note: default for Enterprise only is \"1\")",
+						"description": "Value of the Origin Max HTTP version setting (Note that the default value for Enterprise is \"1\")",
 						"default": "2"
 					}
 				},
@@ -4201,7 +4201,7 @@
 							"string"
 						],
 						"example": "\"off\"",
-						"description": "Value of the zone setting",
+						"description": "Value of the zone setting.",
 						"enum": [
 							"on",
 							"off"
@@ -6588,8 +6588,8 @@
 				],
 				"objects": [],
 				"example": "{\n  \"id\": \"origin_max_http_version\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
-				"title": "Origin Max HTTP Version",
-				"description": "The highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (See https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/ for more information.)"
+				"title": "Origin Max HTTP version",
+				"description": "The highest HTTP version Cloudflare will attempt to use with your origin. This setting allows Cloudflare to make HTTP/2 requests to your origin. (Refer to [Enable HTTP/2 to Origin](https://developers.cloudflare.com/cache/how-to/enable-http2-to-origin/), for more information.)"
 			},
 			{
 				"all_props": {

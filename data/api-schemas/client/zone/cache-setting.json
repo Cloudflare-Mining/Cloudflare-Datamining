@@ -5,7 +5,7 @@
 	"type": "object",
 	"links": [
 		{
-			"title": "Get Variants setting",
+			"title": "Get variants setting",
 			"description": "Variant support enables caching variants of images with certain file extensions in addition to the original. This only applies when the origin server sends the 'Vary: Accept' response header. If the origin server sends 'Vary: Accept' but does not serve the variant requested, the response will not be cached. This will be indicated with BYPASS cache status in the response headers.",
 			"rel": "tag:cloudflare.com,2021:setting-variants",
 			"href": "zones/{#/definitions/zone_identifier}/cache/variants",
@@ -28,7 +28,7 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"variants\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"value\": {\n      \"avif\": [\n        \"image/webp\",\n        \"image/jpeg\"\n      ],\n      \"bmp\": [\n        \"image/webp\",\n        \"image/jpeg\"\n      ],\n      \"gif\": [\n        \"image/webp\",\n        \"image/jpeg\"\n      ],\n      \"jpeg\": [\n        \"image/webp\",\n        \"image/avif\"\n      ],\n      \"jpg\": [\n        \"image/webp\",\n        \"image/avif\"\n      ],\n      \"jpg2\": [\n        \"image/webp\",\n        \"image/avif\"\n      ],\n      \"jp2\": [\n        \"image/webp\",\n        \"image/avif\"\n      ],\n      \"png\": [\n        \"image/webp\",\n        \"image/avif\"\n      ],\n      \"tiff\": [\n        \"image/webp\",\n        \"image/avif\"\n      ],\n      \"tif\": [\n        \"image/webp\",\n        \"image/avif\"\n      ],\n      \"webp\": [\n        \"image/jpeg\",\n        \"image/avif\"\n      ]\n    }\n  }\n}"
 		},
 		{
-			"title": "Change Variants setting",
+			"title": "Change variants setting",
 			"description": "Variant support enables caching variants of images with certain file extensions in addition to the original. This only applies when the origin server sends the 'Vary: Accept' response header. If the origin server sends 'Vary: Accept' but does not serve the variant requested, the response will not be cached. This will be indicated with BYPASS cache status in the response headers.",
 			"rel": "tag:cloudflare.com,2021:setting-variants",
 			"href": "zones/{#/definitions/zone_identifier}/cache/variants",
@@ -60,67 +60,67 @@
 							"avif": {
 								"type": "array",
 								"example": "[\n  \"image/webp\",\n  \"image/jpeg\"\n]",
-								"description": "list of strings with the MIME types of all the variants that should be served for avif",
+								"description": "List of strings with the MIME types of all the variants that should be served for avif.",
 								"uniqueItems": true
 							},
 							"bmp": {
 								"type": "array",
 								"example": "[\n  \"image/webp\",\n  \"image/jpeg\"\n]",
-								"description": "list of strings with the MIME types of all the variants that should be served for bmp",
+								"description": "List of strings with the MIME types of all the variants that should be served for bmp.",
 								"uniqueItems": true
 							},
 							"gif": {
 								"type": "array",
 								"example": "[\n  \"image/webp\",\n  \"image/jpeg\"\n]",
-								"description": "list of strings with the MIME types of all the variants that should be served for gif",
+								"description": "List of strings with the MIME types of all the variants that should be served for gif.",
 								"uniqueItems": true
 							},
 							"jpeg": {
 								"type": "array",
 								"example": "[\n  \"image/webp\",\n  \"image/avif\"\n]",
-								"description": "list of strings with the MIME types of all the variants that should be served for jpeg",
+								"description": "List of strings with the MIME types of all the variants that should be served for jpeg.",
 								"uniqueItems": true
 							},
 							"jpg": {
 								"type": "array",
 								"example": "[\n  \"image/webp\",\n  \"image/avif\"\n]",
-								"description": "list of strings with the MIME types of all the variants that should be served for jpg",
+								"description": "List of strings with the MIME types of all the variants that should be served for jpg.",
 								"uniqueItems": true
 							},
 							"jpg2": {
 								"type": "array",
 								"example": "[\n  \"image/webp\",\n  \"image/avif\"\n]",
-								"description": "list of strings with the MIME types of all the variants that should be served for jpg2",
+								"description": "List of strings with the MIME types of all the variants that should be served for jpg2.",
 								"uniqueItems": true
 							},
 							"jp2": {
 								"type": "array",
 								"example": "[\n  \"image/webp\",\n  \"image/avif\"\n]",
-								"description": "list of strings with the MIME types of all the variants that should be served for jp2",
+								"description": "List of strings with the MIME types of all the variants that should be served for jp2.",
 								"uniqueItems": true
 							},
 							"png": {
 								"type": "array",
 								"example": "[\n  \"image/webp\",\n  \"image/avif\"\n]",
-								"description": "list of strings with the MIME types of all the variants that should be served for png",
+								"description": "List of strings with the MIME types of all the variants that should be served for png.",
 								"uniqueItems": true
 							},
 							"tiff": {
 								"type": "array",
 								"example": "[\n  \"image/webp\",\n  \"image/avif\"\n]",
-								"description": "list of strings with the MIME types of all the variants that should be served for tiff",
+								"description": "List of strings with the MIME types of all the variants that should be served for tiff.",
 								"uniqueItems": true
 							},
 							"tif": {
 								"type": "array",
 								"example": "[\n  \"image/webp\",\n  \"image/avif\"\n]",
-								"description": "list of strings with the MIME types of all the variants that should be served for tif",
+								"description": "List of strings with the MIME types of all the variants that should be served for tif.",
 								"uniqueItems": true
 							},
 							"webp": {
 								"type": "array",
 								"example": "[\n  \"image/jpeg\",\n  \"image/avif\"\n]",
-								"description": "list of strings with the MIME types of all the variants that should be served for webp",
+								"description": "List of strings with the MIME types of all the variants that should be served for webp.",
 								"uniqueItems": true
 							}
 						},
@@ -137,7 +137,7 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"variants\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"value\": {\n      \"avif\": [\n        \"image/webp\",\n        \"image/jpeg\"\n      ],\n      \"bmp\": [\n        \"image/webp\",\n        \"image/jpeg\"\n      ],\n      \"gif\": [\n        \"image/webp\",\n        \"image/jpeg\"\n      ],\n      \"jpeg\": [\n        \"image/webp\",\n        \"image/avif\"\n      ],\n      \"jpg\": [\n        \"image/webp\",\n        \"image/avif\"\n      ],\n      \"jpg2\": [\n        \"image/webp\",\n        \"image/avif\"\n      ],\n      \"jp2\": [\n        \"image/webp\",\n        \"image/avif\"\n      ],\n      \"png\": [\n        \"image/webp\",\n        \"image/avif\"\n      ],\n      \"tiff\": [\n        \"image/webp\",\n        \"image/avif\"\n      ],\n      \"tif\": [\n        \"image/webp\",\n        \"image/avif\"\n      ],\n      \"webp\": [\n        \"image/jpeg\",\n        \"image/avif\"\n      ]\n    }\n  }\n}"
 		},
 		{
-			"title": "Delete Variants setting",
+			"title": "Delete variants setting",
 			"description": "Variant support enables caching variants of images with certain file extensions in addition to the original. This only applies when the origin server sends the 'Vary: Accept' response header. If the origin server sends 'Vary: Accept' but does not serve the variant requested, the response will not be cached. This will be indicated with BYPASS cache status in the response headers.",
 			"rel": "tag:cloudflare.com,2021:setting-variants",
 			"href": "zones/{#/definitions/zone_identifier}/cache/variants",

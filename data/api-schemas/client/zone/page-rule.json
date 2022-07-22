@@ -81,7 +81,7 @@
 				"objects": [],
 				"example": "{\n  \"status\": \"active\",\n  \"order\": \"status\",\n  \"direction\": \"desc\",\n  \"match\": \"all\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n      \"targets\": [\n        {\n          \"target\": \"url\",\n          \"constraint\": {\n            \"operator\": \"matches\",\n            \"value\": \"*example.com/images/*\"\n          }\n        }\n      ],\n      \"actions\": [\n        {\n          \"id\": \"always_online\",\n          \"value\": \"on\"\n        }\n      ],\n      \"priority\": 1,\n      \"status\": \"active\",\n      \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"created_on\": \"2014-01-01T05:20:00.12345Z\"\n    }\n  ]\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n      \"targets\": [\n        {\n          \"target\": \"url\",\n          \"constraint\": {\n            \"operator\": \"matches\",\n            \"value\": \"*example.com/images/*\"\n          }\n        }\n      ],\n      \"actions\": [\n        {\n          \"id\": \"browser_check\",\n          \"value\": \"on\"\n        }\n      ],\n      \"priority\": 1,\n      \"status\": \"active\",\n      \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"created_on\": \"2014-01-01T05:20:00.12345Z\"\n    }\n  ]\n}"
 		},
 		{
 			"title": "Create a Page Rule",
@@ -103,7 +103,7 @@
 			},
 			"html_id": "page-rules-create-a-page-rule",
 			"uri": "zones/:zone_identifier/pagerules",
-			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/pagerules\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"targets\":[{\"target\":\"url\",\"constraint\":{\"operator\":\"matches\",\"value\":\"*example.com/images/*\"}}],\"actions\":[{\"id\":\"always_online\",\"value\":\"on\"}],\"priority\":1,\"status\":\"active\"}'",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/pagerules\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"targets\":[{\"target\":\"url\",\"constraint\":{\"operator\":\"matches\",\"value\":\"*example.com/images/*\"}}],\"actions\":[{\"id\":\"browser_check\",\"value\":\"on\"}],\"priority\":1,\"status\":\"active\"}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -179,7 +179,7 @@
 					},
 					"actions": {
 						"type": "array",
-						"example": "[\n  {\n    \"id\": \"always_online\",\n    \"value\": \"on\"\n  }\n]",
+						"example": "[\n  {\n    \"id\": \"browser_check\",\n    \"value\": \"on\"\n  }\n]",
 						"description": "The set of actions to perform if the targets of this rule match the request. Actions can redirect to another URL or override settings, but not both.",
 						"items": {
 							"oneOf": [
@@ -249,9 +249,9 @@
 					"status"
 				],
 				"objects": [],
-				"example": "{\n  \"targets\": [\n    {\n      \"target\": \"url\",\n      \"constraint\": {\n        \"operator\": \"matches\",\n        \"value\": \"*example.com/images/*\"\n      }\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"always_online\",\n      \"value\": \"on\"\n    }\n  ],\n  \"priority\": 1,\n  \"status\": \"active\"\n}"
+				"example": "{\n  \"targets\": [\n    {\n      \"target\": \"url\",\n      \"constraint\": {\n        \"operator\": \"matches\",\n        \"value\": \"*example.com/images/*\"\n      }\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"browser_check\",\n      \"value\": \"on\"\n    }\n  ],\n  \"priority\": 1,\n  \"status\": \"active\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n    \"targets\": [\n      {\n        \"target\": \"url\",\n        \"constraint\": {\n          \"operator\": \"matches\",\n          \"value\": \"*example.com/images/*\"\n        }\n      }\n    ],\n    \"actions\": [\n      {\n        \"id\": \"always_online\",\n        \"value\": \"on\"\n      }\n    ],\n    \"priority\": 1,\n    \"status\": \"active\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n    \"targets\": [\n      {\n        \"target\": \"url\",\n        \"constraint\": {\n          \"operator\": \"matches\",\n          \"value\": \"*example.com/images/*\"\n        }\n      }\n    ],\n    \"actions\": [\n      {\n        \"id\": \"browser_check\",\n        \"value\": \"on\"\n      }\n    ],\n    \"priority\": 1,\n    \"status\": \"active\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
 		},
 		{
 			"title": "Get a Page Rule",
@@ -274,7 +274,7 @@
 			"html_id": "page-rules-get-a-page-rule",
 			"uri": "zones/:zone_identifier/pagerules/:identifier",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/pagerules/9a7806061c88ada191ed06f989cc3dac\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n    \"targets\": [\n      {\n        \"target\": \"url\",\n        \"constraint\": {\n          \"operator\": \"matches\",\n          \"value\": \"*example.com/images/*\"\n        }\n      }\n    ],\n    \"actions\": [\n      {\n        \"id\": \"always_online\",\n        \"value\": \"on\"\n      }\n    ],\n    \"priority\": 1,\n    \"status\": \"active\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n    \"targets\": [\n      {\n        \"target\": \"url\",\n        \"constraint\": {\n          \"operator\": \"matches\",\n          \"value\": \"*example.com/images/*\"\n        }\n      }\n    ],\n    \"actions\": [\n      {\n        \"id\": \"browser_check\",\n        \"value\": \"on\"\n      }\n    ],\n    \"priority\": 1,\n    \"status\": \"active\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
 		},
 		{
 			"title": "Update a Page Rule",
@@ -296,7 +296,7 @@
 			},
 			"html_id": "page-rules-update-a-page-rule",
 			"uri": "zones/:zone_identifier/pagerules/:identifier",
-			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/pagerules/9a7806061c88ada191ed06f989cc3dac\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"targets\":[{\"target\":\"url\",\"constraint\":{\"operator\":\"matches\",\"value\":\"*example.com/images/*\"}}],\"actions\":[{\"id\":\"always_online\",\"value\":\"on\"}],\"priority\":1,\"status\":\"active\"}'",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/pagerules/9a7806061c88ada191ed06f989cc3dac\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"targets\":[{\"target\":\"url\",\"constraint\":{\"operator\":\"matches\",\"value\":\"*example.com/images/*\"}}],\"actions\":[{\"id\":\"browser_check\",\"value\":\"on\"}],\"priority\":1,\"status\":\"active\"}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -372,7 +372,7 @@
 					},
 					"actions": {
 						"type": "array",
-						"example": "[\n  {\n    \"id\": \"always_online\",\n    \"value\": \"on\"\n  }\n]",
+						"example": "[\n  {\n    \"id\": \"browser_check\",\n    \"value\": \"on\"\n  }\n]",
 						"description": "The set of actions to perform if the targets of this rule match the request. Actions can redirect to another URL or override settings, but not both.",
 						"items": {
 							"oneOf": [
@@ -442,9 +442,9 @@
 					"status"
 				],
 				"objects": [],
-				"example": "{\n  \"targets\": [\n    {\n      \"target\": \"url\",\n      \"constraint\": {\n        \"operator\": \"matches\",\n        \"value\": \"*example.com/images/*\"\n      }\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"always_online\",\n      \"value\": \"on\"\n    }\n  ],\n  \"priority\": 1,\n  \"status\": \"active\"\n}"
+				"example": "{\n  \"targets\": [\n    {\n      \"target\": \"url\",\n      \"constraint\": {\n        \"operator\": \"matches\",\n        \"value\": \"*example.com/images/*\"\n      }\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"browser_check\",\n      \"value\": \"on\"\n    }\n  ],\n  \"priority\": 1,\n  \"status\": \"active\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n    \"targets\": [\n      {\n        \"target\": \"url\",\n        \"constraint\": {\n          \"operator\": \"matches\",\n          \"value\": \"*example.com/images/*\"\n        }\n      }\n    ],\n    \"actions\": [\n      {\n        \"id\": \"always_online\",\n        \"value\": \"on\"\n      }\n    ],\n    \"priority\": 1,\n    \"status\": \"active\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n    \"targets\": [\n      {\n        \"target\": \"url\",\n        \"constraint\": {\n          \"operator\": \"matches\",\n          \"value\": \"*example.com/images/*\"\n        }\n      }\n    ],\n    \"actions\": [\n      {\n        \"id\": \"browser_check\",\n        \"value\": \"on\"\n      }\n    ],\n    \"priority\": 1,\n    \"status\": \"active\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
 		},
 		{
 			"title": "Edit a Page Rule",
@@ -466,7 +466,7 @@
 			},
 			"html_id": "page-rules-edit-a-page-rule",
 			"uri": "zones/:zone_identifier/pagerules/:identifier",
-			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/pagerules/9a7806061c88ada191ed06f989cc3dac\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"targets\":[{\"target\":\"url\",\"constraint\":{\"operator\":\"matches\",\"value\":\"*example.com/images/*\"}}],\"actions\":[{\"id\":\"always_online\",\"value\":\"on\"}],\"priority\":1,\"status\":\"active\"}'",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/pagerules/9a7806061c88ada191ed06f989cc3dac\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"targets\":[{\"target\":\"url\",\"constraint\":{\"operator\":\"matches\",\"value\":\"*example.com/images/*\"}}],\"actions\":[{\"id\":\"browser_check\",\"value\":\"on\"}],\"priority\":1,\"status\":\"active\"}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -542,7 +542,7 @@
 					},
 					"actions": {
 						"type": "array",
-						"example": "[\n  {\n    \"id\": \"always_online\",\n    \"value\": \"on\"\n  }\n]",
+						"example": "[\n  {\n    \"id\": \"browser_check\",\n    \"value\": \"on\"\n  }\n]",
 						"description": "The set of actions to perform if the targets of this rule match the request. Actions can redirect to another URL or override settings, but not both.",
 						"items": {
 							"oneOf": [
@@ -611,9 +611,9 @@
 					"status"
 				],
 				"objects": [],
-				"example": "{\n  \"targets\": [\n    {\n      \"target\": \"url\",\n      \"constraint\": {\n        \"operator\": \"matches\",\n        \"value\": \"*example.com/images/*\"\n      }\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"always_online\",\n      \"value\": \"on\"\n    }\n  ],\n  \"priority\": 1,\n  \"status\": \"active\"\n}"
+				"example": "{\n  \"targets\": [\n    {\n      \"target\": \"url\",\n      \"constraint\": {\n        \"operator\": \"matches\",\n        \"value\": \"*example.com/images/*\"\n      }\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"browser_check\",\n      \"value\": \"on\"\n    }\n  ],\n  \"priority\": 1,\n  \"status\": \"active\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n    \"targets\": [\n      {\n        \"target\": \"url\",\n        \"constraint\": {\n          \"operator\": \"matches\",\n          \"value\": \"*example.com/images/*\"\n        }\n      }\n    ],\n    \"actions\": [\n      {\n        \"id\": \"always_online\",\n        \"value\": \"on\"\n      }\n    ],\n    \"priority\": 1,\n    \"status\": \"active\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n    \"targets\": [\n      {\n        \"target\": \"url\",\n        \"constraint\": {\n          \"operator\": \"matches\",\n          \"value\": \"*example.com/images/*\"\n        }\n      }\n    ],\n    \"actions\": [\n      {\n        \"id\": \"browser_check\",\n        \"value\": \"on\"\n      }\n    ],\n    \"priority\": 1,\n    \"status\": \"active\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
 		},
 		{
 			"title": "Delete a Page Rule",
@@ -724,7 +724,7 @@
 			},
 			"actions": {
 				"type": "array",
-				"example": "[\n  {\n    \"id\": \"always_online\",\n    \"value\": \"on\"\n  }\n]",
+				"example": "[\n  {\n    \"id\": \"browser_check\",\n    \"value\": \"on\"\n  }\n]",
 				"description": "The set of actions to perform if the targets of this rule match the request. Actions can redirect to another URL or override settings, but not both.",
 				"items": {
 					"oneOf": [
@@ -810,7 +810,7 @@
 		],
 		"optional_props": [],
 		"objects": [],
-		"example": "{\n  \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n  \"targets\": [\n    {\n      \"target\": \"url\",\n      \"constraint\": {\n        \"operator\": \"matches\",\n        \"value\": \"*example.com/images/*\"\n      }\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"always_online\",\n      \"value\": \"on\"\n    }\n  ],\n  \"priority\": 1,\n  \"status\": \"active\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
+		"example": "{\n  \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n  \"targets\": [\n    {\n      \"target\": \"url\",\n      \"constraint\": {\n        \"operator\": \"matches\",\n        \"value\": \"*example.com/images/*\"\n      }\n    }\n  ],\n  \"actions\": [\n    {\n      \"id\": \"browser_check\",\n      \"value\": \"on\"\n    }\n  ],\n  \"priority\": 1,\n  \"status\": \"active\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
 		"title": "Page Rules",
 		"description": "Page Rules allow you to perform one or more actions on requests matching target patterns."
 	}

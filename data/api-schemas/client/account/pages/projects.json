@@ -32,6 +32,7 @@
 					}
 				}
 			},
+			"cfOwnership": "pages",
 			"html_id": "pages-project-get-projects",
 			"uri": "accounts/:account_id/pages/projects",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/:account_id/pages/projects\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
@@ -64,6 +65,7 @@
 					}
 				}
 			},
+			"cfOwnership": "pages",
 			"html_id": "pages-project-get-project",
 			"uri": "accounts/:account_id/pages/projects/:project_name",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/:account_id/pages/projects/:project_name\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
@@ -96,6 +98,7 @@
 					}
 				}
 			},
+			"cfOwnership": "pages",
 			"html_id": "pages-project-delete-project",
 			"uri": "accounts/:account_id/pages/projects/:project_name",
 			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/:account_id/pages/projects/:project_name\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
@@ -136,6 +139,7 @@
 				}
 			},
 			"encType": "application/json",
+			"cfOwnership": "pages",
 			"html_id": "pages-project-create-project",
 			"uri": "accounts/:account_id/pages/projects",
 			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/:account_id/pages/projects\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"NextJS Blog\",\"id\":\"7b162ea7-7367-4d67-bcde-1160995d5\",\"created_on\":\"2017-01-01T00:00:00Z\",\"subdomain\":\"helloworld.pages.dev\",\"domains\":[\"customdomain.com\",\"customdomain.org\"],\"source\":{\"type\":\"github\",\"config\":{\"owner\":\"cloudflare\",\"repo_name\":\"ninjakittens\",\"production_branch\":\"main\",\"pr_comments_enabled\":true,\"deployments_enabled\":true}},\"build_config\":{\"build_command\":\"npm run build\",\"destination_dir\":\"build\",\"root_dir\":\"/\",\"web_analytics_tag\":\"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\"web_analytics_token\":\"021e1057c18547eca7b79f2516f06o7x\"},\"deployment_configs\":{\"preview\":{\"env_vars\":{\"BUILD_VERSION\":{\"value\":\"3.3\"}}},\"production\":{\"env_vars\":{\"BUILD_VERSION\":{\"value\":\"3.3\"}}}},\"latest_deployment\":{\"id\":\"f64788e9-fccd-4d4a-a28a-cb84f88f6\",\"short_id\":\"f64788e9\",\"project_id\":\"7b162ea7-7367-4d67-bcde-1160995d5\",\"project_name\":\"ninjakittens\",\"environment\":\"preview\",\"url\":\"https://f64788e9.ninjakittens.pages.dev\",\"created_on\":\"2021-03-09T00:55:03.923456Z\",\"modified_on\":\"2021-03-09T00:58:59.045655\",\"aliases\":[\"https://branchname.projectname.pages.dev\"],\"latest_stage\":{\"name\":\"deploy\",\"started_on\":\"2021-03-09T00:55:03.923456Z\",\"ended_on\":\"2021-03-09T00:58:59.045655\",\"status\":\"success\"},\"env_vars\":{\"BUILD_VERSION\":{\"value\":\"3.3\"},\"ENV\":{\"value\":\"STAGING\"}},\"deployment_trigger\":{\"type\":\"ad_hoc\",\"metadata\":{\"branch\":\"main\",\"commit_hash\":\"ad9ccd918a81025731e10e40267e11273a263421\",\"commit_message\":\"Update index.html\"}},\"stages\":[{\"name\":\"queued\",\"started_on\":\"2021-06-03T15:38:15.608194Z\",\"ended_on\":\"2021-06-03T15:39:03.134378Z\",\"status\":\"active\"},{\"name\":\"initialize\",\"started_on\":null,\"ended_on\":null,\"status\":\"idle\"},{\"name\":\"clone_repo\",\"started_on\":null,\"ended_on\":null,\"status\":\"idle\"},{\"name\":\"build\",\"started_on\":null,\"ended_on\":null,\"status\":\"idle\"},{\"name\":\"deploy\",\"started_on\":null,\"ended_on\":null,\"status\":\"idle\"}],\"build_config\":{\"build_command\":\"npm run build\",\"destination_dir\":\"build\",\"root_dir\":\"/\",\"web_analytics_tag\":\"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\"web_analytics_token\":\"021e1057c18547eca7b79f2516f06o7x\"},\"source\":{\"type\":\"github\",\"config\":{\"owner\":\"cloudflare\",\"repo_name\":\"ninjakittens\",\"production_branch\":\"main\",\"pr_comments_enabled\":true,\"deployments_enabled\":true}}},\"canonical_deployment\":{\"id\":\"f64788e9-fccd-4d4a-a28a-cb84f88f6\",\"short_id\":\"f64788e9\",\"project_id\":\"7b162ea7-7367-4d67-bcde-1160995d5\",\"project_name\":\"ninjakittens\",\"environment\":\"preview\",\"url\":\"https://f64788e9.ninjakittens.pages.dev\",\"created_on\":\"2021-03-09T00:55:03.923456Z\",\"modified_on\":\"2021-03-09T00:58:59.045655\",\"aliases\":[\"https://branchname.projectname.pages.dev\"],\"latest_stage\":{\"name\":\"deploy\",\"started_on\":\"2021-03-09T00:55:03.923456Z\",\"ended_on\":\"2021-03-09T00:58:59.045655\",\"status\":\"success\"},\"env_vars\":{\"BUILD_VERSION\":{\"value\":\"3.3\"},\"ENV\":{\"value\":\"STAGING\"}},\"deployment_trigger\":{\"type\":\"ad_hoc\",\"metadata\":{\"branch\":\"main\",\"commit_hash\":\"ad9ccd918a81025731e10e40267e11273a263421\",\"commit_message\":\"Update index.html\"}},\"stages\":[{\"name\":\"queued\",\"started_on\":\"2021-06-03T15:38:15.608194Z\",\"ended_on\":\"2021-06-03T15:39:03.134378Z\",\"status\":\"active\"},{\"name\":\"initialize\",\"started_on\":null,\"ended_on\":null,\"status\":\"idle\"},{\"name\":\"clone_repo\",\"started_on\":null,\"ended_on\":null,\"status\":\"idle\"},{\"name\":\"build\",\"started_on\":null,\"ended_on\":null,\"status\":\"idle\"},{\"name\":\"deploy\",\"started_on\":null,\"ended_on\":null,\"status\":\"idle\"}],\"build_config\":{\"build_command\":\"npm run build\",\"destination_dir\":\"build\",\"root_dir\":\"/\",\"web_analytics_tag\":\"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\"web_analytics_token\":\"021e1057c18547eca7b79f2516f06o7x\"},\"source\":{\"type\":\"github\",\"config\":{\"owner\":\"cloudflare\",\"repo_name\":\"ninjakittens\",\"production_branch\":\"main\",\"pr_comments_enabled\":true,\"deployments_enabled\":true}}}}'",
@@ -802,7 +806,8 @@
 											}
 										}
 									]
-								}
+								},
+								"cfOwnership": "pages"
 							},
 							{
 								"title": "Get deployment info",
@@ -1018,7 +1023,8 @@
 											}
 										}
 									]
-								}
+								},
+								"cfOwnership": "pages"
 							},
 							{
 								"title": "Get deployment stage logs",
@@ -1361,7 +1367,8 @@
 											}
 										}
 									]
-								}
+								},
+								"cfOwnership": "pages"
 							},
 							{
 								"title": "Get deployment logs",
@@ -1703,7 +1710,8 @@
 											}
 										}
 									]
-								}
+								},
+								"cfOwnership": "pages"
 							},
 							{
 								"title": "Delete deployment",
@@ -1739,7 +1747,8 @@
 										"errors": [],
 										"messages": []
 									}
-								}
+								},
+								"cfOwnership": "pages"
 							},
 							{
 								"title": "Create deployment",
@@ -1955,7 +1964,8 @@
 											}
 										}
 									]
-								}
+								},
+								"cfOwnership": "pages"
 							},
 							{
 								"title": "Retry deployment",
@@ -2171,7 +2181,8 @@
 											}
 										}
 									]
-								}
+								},
+								"cfOwnership": "pages"
 							},
 							{
 								"title": "Rollback deployment",
@@ -2387,7 +2398,8 @@
 											}
 										}
 									]
-								}
+								},
+								"cfOwnership": "pages"
 							}
 						],
 						"definitions": {
@@ -4206,7 +4218,8 @@
 											}
 										}
 									]
-								}
+								},
+								"cfOwnership": "pages"
 							},
 							{
 								"title": "Get deployment info",
@@ -4422,7 +4435,8 @@
 											}
 										}
 									]
-								}
+								},
+								"cfOwnership": "pages"
 							},
 							{
 								"title": "Get deployment stage logs",
@@ -4765,7 +4779,8 @@
 											}
 										}
 									]
-								}
+								},
+								"cfOwnership": "pages"
 							},
 							{
 								"title": "Get deployment logs",
@@ -5107,7 +5122,8 @@
 											}
 										}
 									]
-								}
+								},
+								"cfOwnership": "pages"
 							},
 							{
 								"title": "Delete deployment",
@@ -5143,7 +5159,8 @@
 										"errors": [],
 										"messages": []
 									}
-								}
+								},
+								"cfOwnership": "pages"
 							},
 							{
 								"title": "Create deployment",
@@ -5359,7 +5376,8 @@
 											}
 										}
 									]
-								}
+								},
+								"cfOwnership": "pages"
 							},
 							{
 								"title": "Retry deployment",
@@ -5575,7 +5593,8 @@
 											}
 										}
 									]
-								}
+								},
+								"cfOwnership": "pages"
 							},
 							{
 								"title": "Rollback deployment",
@@ -5791,7 +5810,8 @@
 											}
 										}
 									]
-								}
+								},
+								"cfOwnership": "pages"
 							}
 						],
 						"definitions": {
@@ -7175,6 +7195,7 @@
 				}
 			},
 			"encType": "application/json",
+			"cfOwnership": "pages",
 			"html_id": "pages-project-update-project",
 			"uri": "accounts/:account_id/pages/projects/:project_name",
 			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/accounts/:account_id/pages/projects/:project_name\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"deployment_configs\":{\"production\":{\"env_vars\":{\"delete_this_env_var\":null,\"BUILD_VERSION\":{\"value\":\"3.3\"}}}}}'",
@@ -7894,7 +7915,8 @@
 									}
 								}
 							]
-						}
+						},
+						"cfOwnership": "pages"
 					},
 					{
 						"title": "Get deployment info",
@@ -8110,7 +8132,8 @@
 									}
 								}
 							]
-						}
+						},
+						"cfOwnership": "pages"
 					},
 					{
 						"title": "Get deployment stage logs",
@@ -8453,7 +8476,8 @@
 									}
 								}
 							]
-						}
+						},
+						"cfOwnership": "pages"
 					},
 					{
 						"title": "Get deployment logs",
@@ -8795,7 +8819,8 @@
 									}
 								}
 							]
-						}
+						},
+						"cfOwnership": "pages"
 					},
 					{
 						"title": "Delete deployment",
@@ -8831,7 +8856,8 @@
 								"errors": [],
 								"messages": []
 							}
-						}
+						},
+						"cfOwnership": "pages"
 					},
 					{
 						"title": "Create deployment",
@@ -9047,7 +9073,8 @@
 									}
 								}
 							]
-						}
+						},
+						"cfOwnership": "pages"
 					},
 					{
 						"title": "Retry deployment",
@@ -9263,7 +9290,8 @@
 									}
 								}
 							]
-						}
+						},
+						"cfOwnership": "pages"
 					},
 					{
 						"title": "Rollback deployment",
@@ -9479,7 +9507,8 @@
 									}
 								}
 							]
-						}
+						},
+						"cfOwnership": "pages"
 					}
 				],
 				"definitions": {
@@ -11298,7 +11327,8 @@
 									}
 								}
 							]
-						}
+						},
+						"cfOwnership": "pages"
 					},
 					{
 						"title": "Get deployment info",
@@ -11514,7 +11544,8 @@
 									}
 								}
 							]
-						}
+						},
+						"cfOwnership": "pages"
 					},
 					{
 						"title": "Get deployment stage logs",
@@ -11857,7 +11888,8 @@
 									}
 								}
 							]
-						}
+						},
+						"cfOwnership": "pages"
 					},
 					{
 						"title": "Get deployment logs",
@@ -12199,7 +12231,8 @@
 									}
 								}
 							]
-						}
+						},
+						"cfOwnership": "pages"
 					},
 					{
 						"title": "Delete deployment",
@@ -12235,7 +12268,8 @@
 								"errors": [],
 								"messages": []
 							}
-						}
+						},
+						"cfOwnership": "pages"
 					},
 					{
 						"title": "Create deployment",
@@ -12451,7 +12485,8 @@
 									}
 								}
 							]
-						}
+						},
+						"cfOwnership": "pages"
 					},
 					{
 						"title": "Retry deployment",
@@ -12667,7 +12702,8 @@
 									}
 								}
 							]
-						}
+						},
+						"cfOwnership": "pages"
 					},
 					{
 						"title": "Rollback deployment",
@@ -12883,7 +12919,8 @@
 									}
 								}
 							]
-						}
+						},
+						"cfOwnership": "pages"
 					}
 				],
 				"definitions": {
