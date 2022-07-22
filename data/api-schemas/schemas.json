@@ -54828,6 +54828,153 @@
 				}
 			}
 		},
+		"/zones/{zone_id}/rulesets/phases/http_custom_errors/entrypoint": {
+			"get": {
+				"summary": "Get Custom Error Responses",
+				"description": "Fetches all Custom Error Responses in a zone.",
+				"parameters": [
+					{
+						"name": "zone_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1argo~1smart_routing/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Get Custom Error Responses response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"id": {
+											"example": "2f2feab2026849078ba485f918791bdc"
+										},
+										"name": {
+											"example": "default"
+										},
+										"description": {
+											"example": ""
+										},
+										"kind": {
+											"example": "zone"
+										},
+										"phase": {
+											"example": "http_custom_errors"
+										},
+										"rules": {
+											"description": "The rules in the ruleset.",
+											"type": "array",
+											"items": {
+												"properties": {
+													"id": {
+														"example": "3a03d665bac047339bb530ecb439a90d"
+													},
+													"version": {
+														"example": "1"
+													},
+													"action": {
+														"example": "serve_error"
+													},
+													"expression": {
+														"example": "ip.geoip.country eq \"AL\""
+													},
+													"description": {
+														"example": "Change error response based on geolocation"
+													},
+													"action_parameters": {
+														"description": "The action parameters for the serve_error action",
+														"properties": {
+															"content": {
+																"type": "string",
+																"description": "The new content for the response error",
+																"example": "some html error page"
+															},
+															"content_type": {
+																"type": "string",
+																"description": "The content-type of the response error",
+																"example": "text/html"
+															},
+															"status_code": {
+																"type": "number",
+																"description": "The HTTP status code of the response error",
+																"example": 530
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			},
+			"put": {
+				"summary": "Update Custom Error Responses",
+				"description": "Updates the Custom Error Responses of a zone.",
+				"parameters": [
+					{
+						"name": "zone_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1rulesets~1phases~1http_custom_errors~1entrypoint/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Update Custom Error Responses response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1rulesets~1phases~1%7Bphase%7D~1entrypoint/put/requestBody/content/application~1json/schema"
+							}
+						}
+					}
+				}
+			}
+		},
 		"/zones/{zone_id}/script_monitor": {
 			"get": {
 				"summary": "Get Page Shield status",
