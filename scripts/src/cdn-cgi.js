@@ -5,6 +5,7 @@ import fetch from 'node-fetch';
 import dateFormat from 'dateformat';
 import ipRegex from 'ip-regex';
 import jsBeautify from 'js-beautify';
+import * as cheerio from 'cheerio';
 
 const ip = ipRegex();
 const isoDate = /(\d{4}-[01]\d-[0-3]\dT[0-2](?:\d:[0-5]){2}\d\.\d+([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2](?:\d:[0-5]){2}\d([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z))/g;
@@ -67,7 +68,8 @@ if(cfKeys.size >= 0){
 
 const buildVersions = {
 	// ssl
-	'build-info/ssl-main': `${process.env.FETCH_FROM_COLO_URL}colo=${MAIN_COLO}&url=https://build-info.jross.workers.dev/?type=ssl`,
+	// TODO: make this work from multiple colos
+	//'build-info/ssl-main': `${process.env.FETCH_FROM_COLO_URL}colo=${MAIN_COLO}&url=https://build-info.jross.workers.dev/?type=ssl`,
 
 	// fl
 	'build-info/fl-main': `${process.env.FETCH_FROM_COLO_URL}colo=${MAIN_COLO}&url=https://build-info.jross.workers.dev/?type=fl`,
@@ -142,10 +144,19 @@ for(let i = 100; i <= 1500; i++){
 		.replaceAll(rayID, '[ray id]')
 		.replaceAll(rayID.slice(0, -4), '[ray id]')
 		.replaceAll(isoDate, '[date]')
-		.replaceAll(niceDate, '[date]');
+		.replaceAll(niceDate, '[date]')
+		.replaceAll(/your IP address is in \((\d+)\)/g, '[asn]')
+		.replaceAll(/your IP address is in \((\w+)\)/g, '[country]');
+
+	const dom = cheerio.load(fixedData);
+	const cfCloudflareStatus = dom('#cf-cloudflare-status');
+	if(cfCloudflareStatus){
+		cfCloudflareStatus.find('span.w-full.truncate').text('[location]');
+	}
+
 	const filePath = path.resolve(dir, `error/${i}.html`);
 	await fs.ensureFile(filePath);
-	await fs.writeFile(filePath, jsBeautify.html(fixedData, {
+	await fs.writeFile(filePath, jsBeautify.html(dom.html(), {
 		indent_size: 4,
 		indent_char: '\t',
 		indent_with_tabs: true,
