@@ -104,10 +104,8 @@ await tryAndPush(
 	[
 		'data/coveo/*',
 		'data/coveo/*.json',
-		'data/coveo/**/*',
-		'data/coveo/**/*.json',
 	],
-	`${prefix} - Coveo was updated!`,
+	`${prefix} - Coveo data was updated!`,
 	'CFData - Coveo Update',
 	'Pushed Coveo: ' + prefix,
 );
