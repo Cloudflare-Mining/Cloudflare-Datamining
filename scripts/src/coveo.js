@@ -15,7 +15,6 @@ async function getCoveoResults(source){
 	console.log('Initializing Coveo search for source', source);
 	const body = new URLSearchParams({
 		actionsHistory: JSON.stringify([]),
-		referrer: 'https://blog.cloudflare.com/using-apache-kafka-to-process-1-trillion-messages/',
 		analytics: JSON.stringify({}),
 		isGuestUser: false,
 		aq: `(@customer_facing_source=="${source}") @language==English`,
