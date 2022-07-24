@@ -11,7 +11,7 @@ const agent = getHttpsAgent();
 const dir = path.resolve(`../data/coveo`);
 await fs.ensureDir(dir);
 
-async function getCoveoResults(source){
+async function getCoveoResults(source, filterNoLanguage){
 	console.log('Initializing Coveo search for source', source);
 	const body = new URLSearchParams({
 		actionsHistory: JSON.stringify([]),
@@ -26,6 +26,9 @@ async function getCoveoResults(source){
 		sortCriteria: `date descending`,
 		timezone: 'Europe/London',
 	});
+	if(filterNoLanguage){
+		body.set('aq', `(@customer_facing_source=="${source}")`);
+	}
 
 	const query = new URLSearchParams({
 		organizationId: process.env.COVEO_ORGID,
@@ -44,17 +47,19 @@ async function getCoveoResults(source){
 	const results = await response.json();
 
 	const URLs = new Set([]);
+	let queried = 0;
 	for(const result of results.results){
-		if(URLs.has(result.clickUri)){
-			console.log('URL already in list', result);
+		queried++;
+		if(filterNoLanguage && result?.raw?.language?.length > 0){
+			continue;
 		}
 		URLs.add(result.clickUri);
 	}
-	while(results.totalCount > URLs.size){
-		console.log('Fetching more results for source', source, URLs.size);
+	while(results.totalCount > queried){
+		console.log('Fetching more results for source', source, queried);
 		const nextBody = new URLSearchParams(body.toString());
-		nextBody.set('firstResult', URLs.size);
-		const nextResponse = await fetch(`https://cloudplatform.coveo.com/rest/search/v2?${nextBody.toString()}`, {
+		nextBody.set('firstResult', queried);
+		const nextResponse = await fetch(`https://cloudplatform.coveo.com/rest/search/v2?${query.toString()}`, {
 			"headers": {
 				authorization: `Bearer ${process.env.COVEO_KEY}`,
 			},
@@ -63,15 +68,16 @@ async function getCoveoResults(source){
 			agent,
 		});
 		if(!nextResponse.ok){
-			throw new Error(`Failed to get more results after ${URLs.size}: ${nextResponse.status}`);
+			throw new Error(`Failed to get more results after ${queried}: ${nextResponse.status}`);
 		}
 		const nextResults = await nextResponse.json();
 		if(nextResults.results.length === 0){
-			throw new Error(`No more results after ${URLs.length}: ${nextResponse.status}`);
+			throw new Error(`No more results after ${URLs.size}: ${nextResponse.status}`);
 		}
 		for(const result of nextResults.results){
-			if(URLs.has(result.clickUri)){
-				console.log('URL already in list', result);
+			queried++;
+			if(filterNoLanguage && result?.raw?.language?.length > 0){
+				continue;
 			}
 			URLs.add(result.clickUri);
 		}
@@ -80,6 +86,17 @@ async function getCoveoResults(source){
 }
 
 const data = [
+	{
+		source: 'Learning Center',
+		filename: 'learning-center.json',
+		filterNoLanguage: true, // english articles aren't tagged as English, they're just unset
+	},
+	// TODO: query this. Coveo stops returning results aftre the first 5000 unfortunately
+	// {
+	// 	source: 'Cloudflare.com',
+	// 	filename: 'cloudflare-com.json',
+	// 	filterNoLanguage: true, // english articles aren't tagged as English, they're just unset
+	// },
 	{
 		source: 'Blog',
 		filename: 'blog.json',
@@ -93,8 +110,8 @@ const data = [
 		filename: 'support-knowledgebase.json',
 	},
 ];
-for(const {source, filename} of data){
-	const results = await getCoveoResults(source);
+for(const {source, filename, filterNoLanguage} of data){
+	const results = await getCoveoResults(source, filterNoLanguage);
 	await fs.writeFile(path.resolve(dir, filename), JSON.stringify(results, null, '\t'));
 }
 
