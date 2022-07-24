@@ -11,8 +11,6 @@ const agent = getHttpsAgent();
 const dir = path.resolve(`../data/other`);
 await fs.ensureDir(dir);
 
-
-// get keys for request.cf
 const cfIpsv4Res = await fetch(`https://www.cloudflare.com/ips-v4`, {agent});
 const cfIpsv6Res = await fetch(`https://www.cloudflare.com/ips-v6`, {agent});
 if(cfIpsv4Res.ok && cfIpsv6Res.ok){
