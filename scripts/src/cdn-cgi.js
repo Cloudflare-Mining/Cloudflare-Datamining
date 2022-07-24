@@ -4,8 +4,11 @@ import fs from 'fs-extra';
 import fetch from 'node-fetch';
 import dateFormat from 'dateformat';
 import ipRegex from 'ip-regex';
+import jsBeautify from 'js-beautify';
 
 const ip = ipRegex();
+const isoDate = /(\d{4}-[01]\d-[0-3]\dT[0-2](?:\d:[0-5]){2}\d\.\d+([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2](?:\d:[0-5]){2}\d([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z))/g;
+const niceDate = /\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} [+A-Za-z-]+/g;
 
 import {tryAndPush, getHttpsAgent} from './utils.js';
 
@@ -57,7 +60,6 @@ cfKeys.add('metroCode');
 cfKeys.add('region');
 cfKeys.add('regionCode');
 cfKeys.add('timezone');
-console.log(cfKeys);
 if(cfKeys.size >= 0){
 	await fs.writeFile(path.resolve(dir, 'cf.json'), JSON.stringify([...cfKeys].sort(), null, '\t'));
 }
@@ -98,7 +100,6 @@ for(const [file, url] of Object.entries(buildVersions)){
 // iterate for error pages between 100 and 1500 - wide range
 const errors = {};
 for(let i = 100; i <= 1500; i++){
-	//const filePath = path.resolve(dir, `error/${i}.html`);
 	const controller = new AbortController();
 	const timeout = setTimeout(() => {
 		controller.abort();
@@ -136,12 +137,19 @@ for(let i = 100; i <= 1500; i++){
 	}
 	console.log(`Found error page ${i}, processing...`);
 	// replace IP address in error page
-	let fixedData = data.replace(ip, '[ip]');
-	fixedData = fixedData.replaceAll(rayID, '[ray id]');
-	fixedData = fixedData.replaceAll(rayID.slice(0, -4), '[ray id]');
-	// TODO: remove other parts of the HTML that'll make an unstable diff, like the timestamp
-	//await fs.ensureFile(filePath);
-	//await fs.writeFile(filePath, fixedData);
+	const fixedData = data
+		.replace(ip, '[ip]')
+		.replaceAll(rayID, '[ray id]')
+		.replaceAll(rayID.slice(0, -4), '[ray id]')
+		.replaceAll(isoDate, '[date]')
+		.replaceAll(niceDate, '[date]');
+	const filePath = path.resolve(dir, `error/${i}.html`);
+	await fs.ensureFile(filePath);
+	await fs.writeFile(filePath, jsBeautify.html(fixedData, {
+		indent_size: 4,
+		indent_char: '\t',
+		indent_with_tabs: true,
+	}));
 
 	// get meta info for error page
 	const metaPath = path.resolve(dir, `error/${i}.json`);
