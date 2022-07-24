@@ -2,7 +2,7 @@ import 'dotenv/config';
 import pacote from 'pacote';
 import path from 'node:path';
 import dateFormat from 'dateformat';
-import del from 'del';
+import {del} from 'del';
 
 import {tryAndPush} from './utils.js';
 
