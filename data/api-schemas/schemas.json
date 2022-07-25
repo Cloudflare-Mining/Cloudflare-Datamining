@@ -37577,11 +37577,20 @@
 				]
 			}
 		},
-		"/accounts/:account_id/pages/projects": {
+		"/accounts/{account_identifier}/pages/projects": {
 			"get": {
 				"summary": "Get projects",
 				"description": "Fetch a list of all user projects",
-				"parameters": [],
+				"parameters": [
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1available_plans~1%7Bplan_identifier%7D/get/parameters/0/schema"
+						}
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "Get projects response",
@@ -37617,7 +37626,9 @@
 											"properties": {
 												"result": {
 													"type": "array",
-													"items": {}
+													"items": {
+														"type": "object"
+													}
 												}
 											}
 										}
@@ -37637,7 +37648,16 @@
 			"post": {
 				"summary": "Create project",
 				"description": "Make a new project",
-				"parameters": [],
+				"parameters": [
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects/get/parameters/0/schema"
+						}
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "Create project response",
@@ -37718,27 +37738,32 @@
 											"build_command": {
 												"description": "Command used to build project",
 												"type": "string",
-												"example": "npm run build"
+												"example": "npm run build",
+												"nullable": true
 											},
 											"destination_dir": {
 												"description": "Output directory of the build",
 												"type": "string",
-												"example": "build"
+												"example": "build",
+												"nullable": true
 											},
 											"root_dir": {
 												"description": "Directory to run the command",
 												"type": "string",
-												"example": "/"
+												"example": "/",
+												"nullable": true
 											},
 											"web_analytics_tag": {
 												"description": "The classifying tag for analytics",
 												"type": "string",
-												"example": "cee1c73f6e4743d0b5e6bb1a0bcaabcc"
+												"example": "cee1c73f6e4743d0b5e6bb1a0bcaabcc",
+												"nullable": true
 											},
 											"web_analytics_token": {
 												"description": "The auth token for analytics",
 												"type": "string",
-												"example": "021e1057c18547eca7b79f2516f06o7x"
+												"example": "021e1057c18547eca7b79f2516f06o7x",
+												"nullable": true
 											}
 										}
 									},
@@ -37768,7 +37793,8 @@
 																	"value": "3.3"
 																}
 															}
-														}
+														},
+														"nullable": true
 													}
 												}
 											},
@@ -37794,17 +37820,281 @@
 																	"value": "3.3"
 																}
 															}
-														}
+														},
+														"nullable": true
 													}
 												}
 											}
 										}
 									},
 									"latest_deployment": {
+										"oneOf": [
+											{
+												"nullable": true
+											},
+											{
+												"type": "object",
+												"properties": {
+													"id": {
+														"description": "Id of the deployment",
+														"type": "string",
+														"readOnly": true,
+														"example": "f64788e9-fccd-4d4a-a28a-cb84f88f6"
+													},
+													"short_id": {
+														"description": "Short Id (8 character) of the deployment",
+														"type": "string",
+														"readOnly": true,
+														"example": "f64788e9"
+													},
+													"project_id": {
+														"description": "Id of the project",
+														"type": "string",
+														"readOnly": true,
+														"example": "7b162ea7-7367-4d67-bcde-1160995d5"
+													},
+													"project_name": {
+														"readOnly": true,
+														"description": "Name of the project",
+														"type": "string",
+														"example": "ninjakittens"
+													},
+													"environment": {
+														"description": "Type of deploy",
+														"type": "string",
+														"readOnly": true,
+														"pattern": "preview|production",
+														"example": "preview"
+													},
+													"url": {
+														"description": "The live URL to view this deployment",
+														"type": "string",
+														"readOnly": true,
+														"example": "https://f64788e9.ninjakittens.pages.dev"
+													},
+													"created_on": {
+														"description": "When the deployment was created",
+														"format": "date-time",
+														"type": "string",
+														"readOnly": true,
+														"example": "2021-03-09T00:55:03.923456+00:00"
+													},
+													"modified_on": {
+														"description": "When the deployment was last modified",
+														"format": "date-time",
+														"type": "string",
+														"readOnly": true,
+														"example": "2021-03-09T00:58:59.045655"
+													},
+													"aliases": {
+														"type": "array",
+														"description": "A list of alias URLs pointing to this deployment",
+														"readOnly": true,
+														"example": [
+															"https://branchname.projectname.pages.dev"
+														],
+														"nullable": true,
+														"items": {}
+													},
+													"is_skipped": {
+														"type": "boolean",
+														"readOnly": true
+													},
+													"latest_stage": {
+														"readOnly": true
+													},
+													"env_vars": {
+														"type": "object",
+														"description": "A dict of env variables to build this deploy",
+														"readOnly": true,
+														"example": {
+															"BUILD_VERSION": {
+																"value": "3.3"
+															},
+															"ENV": {
+																"value": "STAGING"
+															}
+														}
+													},
+													"deployment_trigger": {
+														"description": "Info about what caused the deployment",
+														"type": "object",
+														"properties": {
+															"type": {
+																"description": "What caused the deployment",
+																"type": "string",
+																"pattern": "push|ad_hoc",
+																"readOnly": true,
+																"example": "ad_hoc"
+															},
+															"metadata": {
+																"description": "Additional info about the trigger",
+																"type": "object",
+																"properties": {
+																	"branch": {
+																		"description": "Where the trigger happened",
+																		"type": "string",
+																		"readOnly": true,
+																		"example": "main"
+																	},
+																	"commit_hash": {
+																		"description": "Hash of the deployment trigger commit",
+																		"type": "string",
+																		"readOnly": true,
+																		"example": "ad9ccd918a81025731e10e40267e11273a263421"
+																	},
+																	"commit_message": {
+																		"description": "Message of the deployment trigger commit",
+																		"type": "string",
+																		"readOnly": true,
+																		"example": "Update index.html"
+																	}
+																}
+															}
+														},
+														"readOnly": true
+													},
+													"stages": {
+														"readOnly": true,
+														"description": "List of past stages",
+														"type": "array",
+														"example": [
+															{
+																"name": "queued",
+																"started_on": "2021-06-03T15:38:15.608194+00:00",
+																"ended_on": "2021-06-03T15:39:03.134378+00:00",
+																"status": "active"
+															},
+															{
+																"name": "initialize",
+																"started_on": null,
+																"ended_on": null,
+																"status": "idle"
+															},
+															{
+																"name": "clone_repo",
+																"started_on": null,
+																"ended_on": null,
+																"status": "idle"
+															},
+															{
+																"name": "build",
+																"started_on": null,
+																"ended_on": null,
+																"status": "idle"
+															},
+															{
+																"name": "deploy",
+																"started_on": null,
+																"ended_on": null,
+																"status": "idle"
+															}
+														],
+														"items": {
+															"description": "The status of the deployment",
+															"type": "object",
+															"readOnly": true,
+															"properties": {
+																"name": {
+																	"description": "The current build stage",
+																	"type": "string",
+																	"pattern": "queued|initialize|clone_repo|build|deploy",
+																	"example": "deploy"
+																},
+																"started_on": {
+																	"description": "When the stage started",
+																	"format": "date-time",
+																	"type": "string",
+																	"readOnly": true,
+																	"example": "2021-03-09T00:55:03.923456+00:00",
+																	"nullable": true
+																},
+																"ended_on": {
+																	"description": "When the stage ended",
+																	"format": "date-time",
+																	"type": "string",
+																	"readOnly": true,
+																	"example": "2021-03-09T00:58:59.045655",
+																	"nullable": true
+																},
+																"status": {
+																	"description": "State of the current stage",
+																	"type": "string",
+																	"pattern": "success|idle|active|failure|canceled",
+																	"readOnly": true,
+																	"example": "success"
+																}
+															}
+														}
+													},
+													"build_config": {
+														"readOnly": true
+													},
+													"source": {
+														"readOnly": true
+													}
+												},
+												"x-cfDeprecations": {
+													"logs_v1_deprecated": {
+														"id": "logs_v1_deprecated",
+														"description": "Use \"Get deployment logs\" instead: https://api.cloudflare.com/#pages-deployment-get-deployment-logs.",
+														"eol": "2022-09-19",
+														"display": true
+													}
+												},
+												"x-cfLinkErrors": {
+													"8000000": "An unknown error occurred",
+													"8000001": "A project already exists for this repo",
+													"8000002": "A project with this name already exists",
+													"8000003": "Invalid project name",
+													"8000004": "Account not authorized for the requested repo",
+													"8000005": "Required field missing",
+													"8000006": "Unable to parse request",
+													"8000007": "Project not found",
+													"8000008": "No installation found",
+													"8000009": "Deployment not found",
+													"8000010": "User is not authorized for provided GitHub Installation ID",
+													"8000011": "User has no linked GitHub accounts matching the provided username",
+													"8000012": "User has no linked GitHub repositories matching the provided name",
+													"8000013": "Authorization failed",
+													"8000014": "Deployment type not found",
+													"8000015": "Domain is invalid",
+													"8000016": "Unicode domains are not supported",
+													"8000017": "An operation is already in progress for this domain",
+													"8000018": "Domain is unavailable",
+													"8000019": "Project has reached the maximum number of allowed domains",
+													"8000020": "No deployment stage found for the provided name",
+													"8000021": "Domain not found",
+													"8000022": "Invalid PATCH operation requested",
+													"8000023": "Attempt to add duplicate environment variable, or replace or delete nonexistent variable",
+													"8000024": "Invalid list options provided",
+													"8000025": "Domain is not registered",
+													"8000026": "Coming soon",
+													"8000027": "Too many projects",
+													"8000028": "Must delete custom domains before deleting project",
+													"8000029": "Subdomain is unavailable",
+													"8000030": "Subdomain is blocked",
+													"8000031": "Unable to cancel completed deployment",
+													"8000032": "Unable to find a branch with the provided name",
+													"8000033": "Production branch must be set",
+													"8000034": "Cannot delete active production deployment",
+													"8000035": "Cannot delete aliased deployment",
+													"8000036": "Account has been blocked"
+												}
+											}
+										],
 										"description": "Most recent deployment to the repo",
 										"readOnly": true
 									},
 									"canonical_deployment": {
+										"oneOf": [
+											{
+												"nullable": true
+											},
+											{
+												"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects/post/requestBody/content/application~1json/schema/properties/latest_deployment/oneOf/1"
+											}
+										],
 										"description": "Most recent deployment to the repo",
 										"readOnly": true
 									}
@@ -37815,11 +38105,31 @@
 				}
 			}
 		},
-		"/accounts/:account_id/pages/projects/:project_name": {
+		"/accounts/{account_identifier}/pages/projects/{project_name}": {
 			"get": {
 				"summary": "Get project",
 				"description": "Fetch a project by name",
-				"parameters": [],
+				"parameters": [
+					{
+						"name": "project_name",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"description": "Name of the project",
+							"type": "string",
+							"pattern": "^[a-z0-9][a-z0-9-]*$",
+							"example": "this-is-my-project-01"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1available_plans~1%7Bplan_identifier%7D/get/parameters/0/schema"
+						}
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "Get project response",
@@ -37855,7 +38165,9 @@
 											"properties": {
 												"result": {
 													"type": "array",
-													"items": {}
+													"items": {
+														"type": "object"
+													}
 												}
 											}
 										}
@@ -37875,7 +38187,24 @@
 			"delete": {
 				"summary": "Delete project",
 				"description": "Destroy a project by name",
-				"parameters": [],
+				"parameters": [
+					{
+						"name": "project_name",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D/get/parameters/1/schema"
+						}
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "Delete project response",
@@ -37909,7 +38238,24 @@
 			"patch": {
 				"summary": "Update project",
 				"description": "Set new attributes for an existing project. Modify environment variables. To delete an environment variable, set the key to null.",
-				"parameters": [],
+				"parameters": [
+					{
+						"name": "project_name",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D/get/parameters/1/schema"
+						}
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "Update project response",
@@ -37962,11 +38308,31 @@
 				}
 			}
 		},
-		"/accounts/:account_id/pages/projects/:project_name/deployments": {
+		"/accounts/{account_identifier}/pages/projects/{project_name}/deployments": {
 			"get": {
 				"summary": "Get deployments",
 				"description": "Fetch a list of deployments from a project",
-				"parameters": [],
+				"parameters": [
+					{
+						"name": "project_name",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"description": "Name of the project",
+							"type": "string",
+							"pattern": "^[a-z0-9][a-z0-9-]*$",
+							"example": "this-is-my-project-01"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1available_plans~1%7Bplan_identifier%7D/get/parameters/0/schema"
+						}
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "Get deployments response",
@@ -38010,7 +38376,7 @@
 															"description": "Type of deploy",
 															"type": "string",
 															"readOnly": true,
-															"pattern": "preview|prediction",
+															"pattern": "preview|production",
 															"example": "preview"
 														},
 														"url": {
@@ -38040,7 +38406,12 @@
 															"example": [
 																"https://branchname.projectname.pages.dev"
 															],
+															"nullable": true,
 															"items": {}
+														},
+														"is_skipped": {
+															"type": "boolean",
+															"readOnly": true
 														},
 														"latest_stage": {
 															"readOnly": true
@@ -38148,14 +38519,16 @@
 																		"format": "date-time",
 																		"type": "string",
 																		"readOnly": true,
-																		"example": "2021-03-09T00:55:03.923456+00:00"
+																		"example": "2021-03-09T00:55:03.923456+00:00",
+																		"nullable": true
 																	},
 																	"ended_on": {
 																		"description": "When the stage ended",
 																		"format": "date-time",
 																		"type": "string",
 																		"readOnly": true,
-																		"example": "2021-03-09T00:58:59.045655"
+																		"example": "2021-03-09T00:58:59.045655",
+																		"nullable": true
 																	},
 																	"status": {
 																		"description": "State of the current stage",
@@ -38240,7 +38613,24 @@
 			"post": {
 				"summary": "Create deployment",
 				"description": "Start a new deployment from production. The repo/account must have been authorized through the Pages UI dash before.",
-				"parameters": [],
+				"parameters": [
+					{
+						"name": "project_name",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1deployments/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1deployments/get/parameters/1/schema"
+						}
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "Create deployment response",
@@ -38254,7 +38644,7 @@
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/paths/~1accounts~1%3Aaccount_id~1pages~1projects~1%3Aproject_name~1deployments/get/responses/200/content/application~1json/schema/allOf/1/properties/result"
+													"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1deployments/get/responses/200/content/application~1json/schema/allOf/1/properties/result"
 												}
 											}
 										}
@@ -38278,11 +38668,36 @@
 				}
 			}
 		},
-		"/accounts/:account_id/pages/projects/:project_name/deployments/:deployment_id": {
+		"/accounts/{account_identifier}/pages/projects/{project_name}/deployments/{deployment_identifier}": {
 			"get": {
 				"summary": "Get deployment info",
 				"description": "Fetch a deployment",
-				"parameters": [],
+				"parameters": [
+					{
+						"name": "deployment_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1available_plans~1%7Bplan_identifier%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "project_name",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1deployments/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1deployments/get/parameters/1/schema"
+						}
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "Get deployment info response",
@@ -38326,7 +38741,7 @@
 															"description": "Type of deploy",
 															"type": "string",
 															"readOnly": true,
-															"pattern": "preview|prediction",
+															"pattern": "preview|production",
 															"example": "preview"
 														},
 														"url": {
@@ -38356,7 +38771,12 @@
 															"example": [
 																"https://branchname.projectname.pages.dev"
 															],
+															"nullable": true,
 															"items": {}
+														},
+														"is_skipped": {
+															"type": "boolean",
+															"readOnly": true
 														},
 														"latest_stage": {
 															"readOnly": true
@@ -38464,14 +38884,16 @@
 																		"format": "date-time",
 																		"type": "string",
 																		"readOnly": true,
-																		"example": "2021-03-09T00:55:03.923456+00:00"
+																		"example": "2021-03-09T00:55:03.923456+00:00",
+																		"nullable": true
 																	},
 																	"ended_on": {
 																		"description": "When the stage ended",
 																		"format": "date-time",
 																		"type": "string",
 																		"readOnly": true,
-																		"example": "2021-03-09T00:58:59.045655"
+																		"example": "2021-03-09T00:58:59.045655",
+																		"nullable": true
 																	},
 																	"status": {
 																		"description": "State of the current stage",
@@ -38556,7 +38978,32 @@
 			"delete": {
 				"summary": "Delete deployment",
 				"description": "Destroy a deployment",
-				"parameters": [],
+				"parameters": [
+					{
+						"name": "deployment_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1deployments~1%7Bdeployment_identifier%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "project_name",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1deployments~1%7Bdeployment_identifier%7D/get/parameters/1/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1deployments~1%7Bdeployment_identifier%7D/get/parameters/2/schema"
+						}
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "Delete deployment response",
@@ -38588,11 +39035,36 @@
 				}
 			}
 		},
-		"/accounts/:account_id/pages/projects/:project_name/deployments/:deployment_id/history/:deployment_stage_name/logs": {
+		"/accounts/{account_identifier}/pages/projects/{project_name}/deployments/{deployment_identifier}/history/:deployment_stage_name/logs": {
 			"get": {
 				"summary": "Get deployment stage logs",
 				"description": "Fetch deploy logs",
-				"parameters": [],
+				"parameters": [
+					{
+						"name": "deployment_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1available_plans~1%7Bplan_identifier%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "project_name",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1deployments/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1deployments/get/parameters/1/schema"
+						}
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "Get deployment stage logs response",
@@ -38752,11 +39224,36 @@
 				}
 			}
 		},
-		"/accounts/:account_id/pages/projects/:project_name/deployments/:deployment_id/history/logs": {
+		"/accounts/{account_identifier}/pages/projects/{project_name}/deployments/{deployment_identifier}/history/logs": {
 			"get": {
 				"summary": "Get deployment logs",
 				"description": "Fetch deploy logs",
-				"parameters": [],
+				"parameters": [
+					{
+						"name": "deployment_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1available_plans~1%7Bplan_identifier%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "project_name",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1deployments/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1deployments/get/parameters/1/schema"
+						}
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "Get deployment logs response",
@@ -38914,11 +39411,36 @@
 				]
 			}
 		},
-		"/accounts/:account_id/pages/projects/:project_name/deployments/:deployment_id/retry": {
+		"/accounts/{account_identifier}/pages/projects/{project_name}/deployments/{deployment_identifier}/retry": {
 			"post": {
 				"summary": "Retry deployment",
 				"description": "Retry a previous deployment",
-				"parameters": [],
+				"parameters": [
+					{
+						"name": "deployment_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1available_plans~1%7Bplan_identifier%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "project_name",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1deployments/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1deployments/get/parameters/1/schema"
+						}
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "Retry deployment response",
@@ -38962,7 +39484,7 @@
 															"description": "Type of deploy",
 															"type": "string",
 															"readOnly": true,
-															"pattern": "preview|prediction",
+															"pattern": "preview|production",
 															"example": "preview"
 														},
 														"url": {
@@ -38992,7 +39514,12 @@
 															"example": [
 																"https://branchname.projectname.pages.dev"
 															],
+															"nullable": true,
 															"items": {}
+														},
+														"is_skipped": {
+															"type": "boolean",
+															"readOnly": true
 														},
 														"latest_stage": {
 															"readOnly": true
@@ -39100,14 +39627,16 @@
 																		"format": "date-time",
 																		"type": "string",
 																		"readOnly": true,
-																		"example": "2021-03-09T00:55:03.923456+00:00"
+																		"example": "2021-03-09T00:55:03.923456+00:00",
+																		"nullable": true
 																	},
 																	"ended_on": {
 																		"description": "When the stage ended",
 																		"format": "date-time",
 																		"type": "string",
 																		"readOnly": true,
-																		"example": "2021-03-09T00:58:59.045655"
+																		"example": "2021-03-09T00:58:59.045655",
+																		"nullable": true
 																	},
 																	"status": {
 																		"description": "State of the current stage",
@@ -39196,11 +39725,36 @@
 				}
 			}
 		},
-		"/accounts/:account_id/pages/projects/:project_name/deployments/:deployment_id/rollback": {
+		"/accounts/{account_identifier}/pages/projects/{project_name}/deployments/{deployment_identifier}/rollback": {
 			"post": {
 				"summary": "Rollback deployment",
 				"description": "Rollback the production deployment to a previous deploy. You can only rollback to succesful builds on production.",
-				"parameters": [],
+				"parameters": [
+					{
+						"name": "deployment_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1available_plans~1%7Bplan_identifier%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "project_name",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1deployments/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1deployments/get/parameters/1/schema"
+						}
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "Rollback deployment response",
@@ -39244,7 +39798,7 @@
 															"description": "Type of deploy",
 															"type": "string",
 															"readOnly": true,
-															"pattern": "preview|prediction",
+															"pattern": "preview|production",
 															"example": "preview"
 														},
 														"url": {
@@ -39274,7 +39828,12 @@
 															"example": [
 																"https://branchname.projectname.pages.dev"
 															],
+															"nullable": true,
 															"items": {}
+														},
+														"is_skipped": {
+															"type": "boolean",
+															"readOnly": true
 														},
 														"latest_stage": {
 															"readOnly": true
@@ -39382,14 +39941,16 @@
 																		"format": "date-time",
 																		"type": "string",
 																		"readOnly": true,
-																		"example": "2021-03-09T00:55:03.923456+00:00"
+																		"example": "2021-03-09T00:55:03.923456+00:00",
+																		"nullable": true
 																	},
 																	"ended_on": {
 																		"description": "When the stage ended",
 																		"format": "date-time",
 																		"type": "string",
 																		"readOnly": true,
-																		"example": "2021-03-09T00:58:59.045655"
+																		"example": "2021-03-09T00:58:59.045655",
+																		"nullable": true
 																	},
 																	"status": {
 																		"description": "State of the current stage",
@@ -39478,11 +40039,28 @@
 				}
 			}
 		},
-		"/accounts/:account_id/pages/projects/:project_name/domains": {
+		"/accounts/{account_identifier}/pages/projects/{project_name}/domains": {
 			"get": {
 				"summary": "Get domains",
 				"description": "Fetch a list of all domains",
-				"parameters": [],
+				"parameters": [
+					{
+						"name": "project_name",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1deployments/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1deployments/get/parameters/1/schema"
+						}
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "Get domains response",
@@ -39491,115 +40069,35 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+											"$ref": "#/paths/~1user~1audit_logs/get/responses/200/content/application~1json/schema/oneOf/1"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"type": "object",
+													"properties": {
+														"page": {
+															"example": 1
+														},
+														"per_page": {
+															"example": 100
+														},
+														"count": {
+															"example": 1
+														},
+														"total_count": {
+															"example": 1
+														}
+													}
+												}
+											}
 										},
 										{
 											"properties": {
 												"result": {
 													"type": "array",
 													"items": {
-														"type": "object",
-														"properties": {
-															"id": {
-																"description": "Id of the domain",
-																"type": "string",
-																"readOnly": true,
-																"example": "8232210c-6818-4e34-8d95-cc386874b8d2"
-															},
-															"name": {
-																"description": "Custom domain",
-																"type": "string",
-																"readOnly": true,
-																"example": "example.com"
-															},
-															"status": {
-																"description": "Status of the custom domain",
-																"type": "string",
-																"readOnly": true,
-																"example": "pending"
-															},
-															"verification_data": {
-																"description": "",
-																"type": "object",
-																"readOnly": true,
-																"properties": {
-																	"status": {
-																		"description": "Status of the stage",
-																		"type": "string",
-																		"readOnly": true,
-																		"example": "active"
-																	}
-																}
-															},
-															"validation_data": {
-																"description": "",
-																"type": "object",
-																"readOnly": true,
-																"properties": {
-																	"status": {
-																		"description": "Status of the stage",
-																		"type": "string",
-																		"readOnly": true,
-																		"example": "active"
-																	},
-																	"method": {
-																		"description": "Method of validation",
-																		"type": "string",
-																		"readOnly": true,
-																		"example": "http"
-																	}
-																}
-															},
-															"zone_tag": {
-																"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1argo~1smart_routing/get/parameters/0/schema"
-															},
-															"created_on": {
-																"description": "When the domain was added",
-																"type": "string",
-																"format": "date-time",
-																"readOnly": true,
-																"example": "2017-01-01T00:00:00+00:00"
-															}
-														},
-														"x-cfLinkErrors": {
-															"8000000": "An unknown error occurred",
-															"8000001": "A project already exists for this repo",
-															"8000002": "A project with this name already exists",
-															"8000003": "Invalid project name",
-															"8000004": "Account not authorized for the requested repo",
-															"8000005": "Required field missing",
-															"8000006": "Unable to parse request",
-															"8000007": "Project not found",
-															"8000008": "No installation found",
-															"8000009": "Deployment not found",
-															"8000010": "User is not authorized for provided GitHub Installation ID",
-															"8000011": "User has no linked GitHub accounts matching the provided username",
-															"8000012": "User has no linked GitHub repositories matching the provided name",
-															"8000013": "Authorization failed",
-															"8000014": "Deployment type not found",
-															"8000015": "Domain is invalid",
-															"8000016": "Unicode domains are not supported",
-															"8000017": "An operation is already in progress for this domain",
-															"8000018": "Domain is unavailable",
-															"8000019": "Project has reached the maximum number of allowed domains",
-															"8000020": "No deployment stage found for the provided name",
-															"8000021": "Domain not found",
-															"8000022": "Invalid PATCH operation requested",
-															"8000023": "Attempt to add duplicate environment variable, or replace or delete nonexistent variable",
-															"8000024": "Invalid list options provided",
-															"8000025": "Domain is not registered",
-															"8000026": "Coming soon",
-															"8000027": "Too many projects",
-															"8000028": "Must delete custom domains before deleting project",
-															"8000029": "Subdomain is unavailable",
-															"8000030": "Subdomain is blocked",
-															"8000031": "Unable to cancel completed deployment",
-															"8000032": "Unable to find a branch with the provided name",
-															"8000033": "Production branch must be set",
-															"8000034": "Cannot delete active production deployment",
-															"8000035": "Cannot delete aliased deployment",
-															"8000036": "Account has been blocked"
-														}
+														"type": "object"
 													}
 												}
 											}
@@ -39620,7 +40118,24 @@
 			"post": {
 				"summary": "Add domain",
 				"description": "Add a new domain for the Pages project",
-				"parameters": [],
+				"parameters": [
+					{
+						"name": "project_name",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1domains/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1domains/get/parameters/1/schema"
+						}
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "Add domain response",
@@ -39664,11 +40179,39 @@
 				}
 			}
 		},
-		"/accounts/:account_id/pages/projects/:project_name/domains/:domain_name": {
+		"/accounts/{account_identifier}/pages/projects/{project_name}/{domain_name}": {
 			"get": {
 				"summary": "Get domain",
 				"description": "Fetch a single domain",
-				"parameters": [],
+				"parameters": [
+					{
+						"name": "domain_name",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"description": "Name of the domain",
+							"type": "string",
+							"pattern": "^[a-z0-9][a-z0-9-]*$",
+							"example": "this-is-my-domain-01.com"
+						}
+					},
+					{
+						"name": "project_name",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1deployments/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1deployments/get/parameters/1/schema"
+						}
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "Get domain response",
@@ -39698,18 +40241,59 @@
 						"api_email": []
 					}
 				]
-			},
+			}
+		},
+		"/accounts/{account_identifier}/pages/projects/{project_name}/domains/{domain_name}": {
 			"patch": {
 				"summary": "Patch domain",
 				"description": "Retry the validation status of a single domain",
-				"parameters": [],
+				"parameters": [
+					{
+						"name": "domain_name",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"description": "Name of the domain",
+							"type": "string",
+							"pattern": "^[a-z0-9][a-z0-9-]*$",
+							"example": "this-is-my-domain-01.com"
+						}
+					},
+					{
+						"name": "project_name",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1deployments/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1deployments/get/parameters/1/schema"
+						}
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "Patch domain response",
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/paths/~1accounts~1%3Aaccount_id~1pages~1projects~1%3Aproject_name~1domains~1%3Adomain_name/get/responses/200/content/application~1json/schema"
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											}
+										}
+									]
 								}
 							}
 						}
@@ -39731,25 +40315,44 @@
 			"delete": {
 				"summary": "Delete domain",
 				"description": "Delete a domain",
-				"parameters": [],
+				"parameters": [
+					{
+						"name": "domain_name",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1domains~1%7Bdomain_name%7D/patch/parameters/0/schema"
+						}
+					},
+					{
+						"name": "project_name",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1domains~1%7Bdomain_name%7D/patch/parameters/1/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1domains~1%7Bdomain_name%7D/patch/parameters/2/schema"
+						}
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "Delete domain response",
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
-										{
-											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
-										},
-										{
-											"properties": {
-												"result": {
-													"nullable": true
-												}
-											}
-										}
-									]
+									"example": {
+										"result": null,
+										"success": true,
+										"errors": [],
+										"messages": []
+									}
 								}
 							}
 						}
