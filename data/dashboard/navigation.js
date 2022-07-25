@@ -105,7 +105,7 @@ const navigation = {
 		iconType: "applications",
 		labels: ["beta"],
 		hasPermission: function(Q) {
-			return S(Q) && (0, ae.dU)(Q)
+			return S(Q) && (0, oe.dU)(Q)
 		}
 	}, {
 		title: "navigation.account.pages",
@@ -164,14 +164,14 @@ const navigation = {
 			title: "navigation.account.firewall_rulesets.ddos",
 			url: "/rulesets",
 			hasPermission: function(Q) {
-				var Ze = !!b(Q) && !!D(Q);
-				return !!w(Q) || Ze
+				var Ue = !!b(Q) && !!D(Q);
+				return !!w(Q) || Ue
 			}
 		}, {
 			title: "navigation.account.firewall_rulesets.application_firewall",
 			url: function(Q) {
-				var Ze = !!w(Q) || !!b(Q) && !!D(Q);
-				return Ze ? "/rulesets/managed" : "/rulesets"
+				var Ue = !!w(Q) || !!b(Q) && !!D(Q);
+				return Ue ? "/rulesets/managed" : "/rulesets"
 			},
 			hasPermission: function(Q) {
 				return !!p(Q)
@@ -227,37 +227,37 @@ const navigation = {
 		url: "/security-center",
 		iconType: "product-security-center",
 		hasPermission: function(Q) {
-			return S(Q) && (0, J.sL)(Q)
+			return S(Q) && (0, X.sL)(Q)
 		},
 		pages: [{
 			title: "navigation.account.security_center.security_insights",
 			url: "/security-center",
 			hasPermission: function(Q) {
-				return S(Q) && (0, J.sL)(Q)
+				return S(Q) && (0, X.sL)(Q)
 			}
 		}, {
 			title: "navigation.account.security_center.infrastructure",
 			url: "/security-center/inventory",
 			hasPermission: function(Q) {
-				return S(Q) && (0, J.sL)(Q)
+				return S(Q) && (0, X.sL)(Q)
 			}
 		}, {
 			title: "navigation.account.security_center.investigate",
 			url: "/security-center/investigate",
 			hasPermission: function(Q) {
-				return S(Q) && (0, J.TT)(Q)
+				return S(Q) && (0, X.TT)(Q)
 			}
 		}, {
 			title: "navigation.account.security_center.reports",
 			url: "/security-center/reports",
 			hasPermission: function(Q) {
-				return S(Q) && (0, J.jD)(Q)
+				return S(Q) && (0, X.jD)(Q)
 			}
 		}, {
 			title: "navigation.account.security_center.brand_protection",
 			url: "/security-center/brand-protection",
 			hasPermission: function(Q) {
-				return S(Q) && (0, J.BU)(Q)
+				return S(Q) && (0, X.BU)(Q)
 			}
 		}]
 	}, {
@@ -377,15 +377,15 @@ const navigation = {
 			title: "navigation.zone.analytics.origin_reachability",
 			url: "/analytics/originReachability",
 			hasPermission: function(Q) {
-				var Ze = (0, P.getZone)(Q);
-				return Ze ? !!(!(0, a.zoneIsDNSOnly)(Q) && !!(0, P.getZoneFlipperFlag)(Q, "origin_reachability_dash", "dash_view") && (0, P.isPlanAtLeast)(Ze, "enterprise") && !!(0, q.getZoneGraphQLSettingEnabled)(Q, "httpRequestsAdaptiveGroups")) : !1
+				var Ue = (0, P.getZone)(Q);
+				return Ue ? !!(!(0, a.zoneIsDNSOnly)(Q) && !!(0, P.getZoneFlipperFlag)(Q, "origin_reachability_dash", "dash_view") && (0, P.isPlanAtLeast)(Ue, "enterprise") && !!(0, ee.getZoneGraphQLSettingEnabled)(Q, "httpRequestsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.edge_reachability",
 			url: "/analytics/edgeReachability",
 			hasPermission: function(Q) {
-				var Ze = (0, P.getZone)(Q);
-				return Ze ? !!(!(0, a.zoneIsDNSOnly)(Q) && !!(0, P.getZoneFlipperFlag)(Q, "edge_reachability_dash", "dash_view") && (0, P.isPlanAtLeast)(Ze, "enterprise") && !!(0, q.getZoneGraphQLSettingEnabled)(Q, "nelReportsAdaptiveGroups")) : !1
+				var Ue = (0, P.getZone)(Q);
+				return Ue ? !!(!(0, a.zoneIsDNSOnly)(Q) && !!(0, P.getZoneFlipperFlag)(Q, "edge_reachability_dash", "dash_view") && (0, P.isPlanAtLeast)(Ue, "enterprise") && !!(0, ee.getZoneGraphQLSettingEnabled)(Q, "nelReportsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.dns",
@@ -400,7 +400,7 @@ const navigation = {
 			title: "navigation.zone.analytics.logs",
 			url: "/analytics/logs",
 			hasPermission: function(Q) {
-				return Object.values((0, V.H_)(Q)).some(Boolean)
+				return Object.values((0, $.H_)(Q)).some(Boolean)
 			}
 		}, {
 			title: "navigation.zone.analytics.instant_logs",
@@ -432,12 +432,12 @@ const navigation = {
 		iconType: "spectrum",
 		testId: "zone-navigation-link-spectrum",
 		hasPermission: function(Q) {
-			var Ze = (0, P.getZone)(Q);
-			if ((0, a.zoneIsDNSOnly)(Q) || !B(Q, "zone_settings", "spectrum.app") || !Ze) return !1;
+			var Ue = (0, P.getZone)(Q);
+			if ((0, a.zoneIsDNSOnly)(Q) || !B(Q, "zone_settings", "spectrum.app") || !Ue) return !1;
 			var nt = !!((0, W.userHasEntZones)(Q) || (0, P.userHasDelegatedEntZones)(Q)),
 				ft = !!(0, P.getZoneFlipperFlag)(Q, "spectrum", "enabled"),
-				wt = !!(0, P.isFree)(Ze);
-			return ft || nt || !wt
+				xt = !!(0, P.isFree)(Ue);
+			return ft || nt || !xt
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -505,8 +505,8 @@ const navigation = {
 			title: "navigation.zone.security.api_shield",
 			url: "/security/api-shield",
 			hasPermission: function(Q) {
-				var Ze = (0, P.getZone)(Q);
-				return Ze ? !!(0, P.getZoneFlipperFlag)(Q, "firewall", "api_shield_tab") && (0, P.isPlanAtLeast)(Ze, "business") : !1
+				var Ue = (0, P.getZone)(Q);
+				return Ue ? !!(0, P.getZoneFlipperFlag)(Q, "firewall", "api_shield_tab") && (0, P.isPlanAtLeast)(Ue, "business") : !1
 			}
 		}, {
 			title: "navigation.zone.security.ddos",
@@ -595,8 +595,8 @@ const navigation = {
 			title: "account.bulk_redirects.title",
 			labels: ["beta", "absolute"],
 			url: function(Q) {
-				var Ze = (0, z.getAccount)(Q);
-				return "/".concat(Ze == null ? void 0 : Ze.id, "/bulk-redirects")
+				var Ue = (0, z.getAccount)(Q);
+				return "/".concat(Ue == null ? void 0 : Ue.id, "/bulk-redirects")
 			},
 			hasPermission: function(Q) {
 				return S(Q)
@@ -658,7 +658,7 @@ const navigation = {
 			title: "navigation.zone.traffic.health_check_analytics",
 			url: "/traffic/health-check-analytics",
 			hasPermission: function(Q) {
-				return !(0, a.zoneIsDNSOnly)(Q) && !!(0, q.getZoneGraphQLSettingEnabled)(Q, "healthCheckEventsAdaptiveGroups")
+				return !(0, a.zoneIsDNSOnly)(Q) && !!(0, ee.getZoneGraphQLSettingEnabled)(Q, "healthCheckEventsAdaptiveGroups")
 			}
 		}, {
 			title: "navigation.zone.traffic.waiting_rooms",
@@ -695,9 +695,9 @@ const navigation = {
 		title: "navigation.zone.zaraz",
 		url: "/zaraz",
 		labels: function(Q) {
-			var Ze = [],
+			var Ue = [],
 				nt = (0, P.getZone)(Q);
-			return nt && !(0, P.isPlanAtLeast)(nt, "pro") && Ze.push("beta"), Ze
+			return nt && !(0, P.isPlanAtLeast)(nt, "pro") && Ue.push("beta"), Ue
 		},
 		iconType: "zaraz",
 		testId: "zone-navigation-link-zaraz",
