@@ -4,7 +4,7 @@
 		"title": "Cloudflare Client API",
 		"description": "The Cloudflare Client API",
 		"version": "4.0.0",
-		"x-revision": "161-909e16e"
+		"x-revision": "163-ab180fe"
 	},
 	"servers": [
 		{
@@ -41685,6 +41685,69 @@
 					"enum": [
 						"com.cloudflare.edge.storage.kv.key.read"
 					]
+				}
+			},
+			"put": {
+				"summary": "Write key-value pair",
+				"description": "Write a value identified by a key. Use URL-encoding to use special characters (e.g. :, !, %) in the key name. Body should be the value to be stored. Existing values and expirations will be overwritten. If neither `expiration` nor `expiration_ttl` is specified, the key-value pair will never expire. If both are set, `expiration_ttl` is used and `expiration` is ignored.",
+				"parameters": [
+					{
+						"name": "key_name",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1storage~1kv~1namespaces~1%7Bnamespace_identifier%7D~1values~1%7Bkey_name%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "namespace_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1storage~1kv~1namespaces~1%7Bnamespace_identifier%7D~1values~1%7Bkey_name%7D/get/parameters/1/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1storage~1kv~1namespaces~1%7Bnamespace_identifier%7D~1values~1%7Bkey_name%7D/get/parameters/2/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Write key-value pair response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.edge.storage.kv.key.update"
+					]
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"text/plain": {
+							"schema": {
+								"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1storage~1kv~1namespaces~1%7Bnamespace_identifier%7D~1values~1%7Bkey_name%7D/get/responses/200/content/application~1json/schema"
+							}
+						}
+					}
 				}
 			},
 			"delete": {
@@ -85515,29 +85578,17 @@
 						}
 					}
 				}
-			}
-		},
-		"/accounts/{account_identifier}/magic/gre_tunnels/{tunnel_identifier}?validate_only={validate_only}": {
+			},
 			"delete": {
 				"summary": "Delete GRE Tunnel",
 				"description": "Disable and remove a specific static GRE Tunnel for an account's Magic setup. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes",
 				"parameters": [
 					{
-						"name": "validate_only",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"type": "boolean",
-							"description": "If provided API will only validate change without persisting them.",
-							"default": true
-						}
-					},
-					{
 						"name": "tunnel_identifier",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1gre_tunnels~1%7Btunnel_identifier%7D/get/parameters/0/schema"
 						}
 					},
 					{
@@ -85545,7 +85596,7 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1gre_tunnels~1%7Btunnel_identifier%7D/get/parameters/1/schema"
 						}
 					}
 				],
@@ -86038,23 +86089,84 @@
 						}
 					}
 				}
+			},
+			"delete": {
+				"summary": "Delete IPsec Tunnel",
+				"description": "Disable and remove a specific static IPsec Tunnel for an account's Magic setup. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes",
+				"parameters": [
+					{
+						"name": "tunnel_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1ipsec_tunnels~1%7Btunnel_identifier%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1ipsec_tunnels~1%7Btunnel_identifier%7D/get/parameters/1/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Delete IPsec Tunnel response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"deleted": {
+															"type": "boolean",
+															"example": true
+														},
+														"deleted_ipsec_tunnel": {
+															"type": "object"
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {}
+					}
+				}
 			}
 		},
-		"/accounts/{account_identifier}/magic/ipsec_tunnels/{tunnel_identifier}/psk_generate?validate_only={validate_only}": {
+		"/accounts/{account_identifier}/magic/ipsec_tunnels/{tunnel_identifier}/psk_generate": {
 			"post": {
 				"summary": "Generate Pre Shared Key (PSK) for IPsec tunnels",
 				"description": "Generates a Pre Shared Key for a particular IPsec tunnel that is used in the IKE session. Use `?validate_only=true` as an optional query parameter to run validation only without actually generating PSK. Please note that the PSK generated is immediately persisted to Cloudflare's Edge and not stored in a fashion that is retrievable later. As such the PSK should be noted down in a safe place.",
 				"parameters": [
-					{
-						"name": "validate_only",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"type": "boolean",
-							"description": "If provided API will only validate change without persisting them.",
-							"default": true
-						}
-					},
 					{
 						"name": "tunnel_identifier",
 						"in": "path",
@@ -86101,90 +86213,7 @@
 															"example": "O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy"
 														},
 														"ipsec_tunnel_id": {
-															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1ipsec_tunnels~1%7Btunnel_identifier%7D~1psk_generate%3Fvalidate_only%3D%7Bvalidate_only%7D/post/parameters/1/schema"
-														}
-													}
-												}
-											}
-										}
-									]
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"api_key": [],
-						"api_email": []
-					}
-				],
-				"x-cfPlanAvailability": {
-					"free": false,
-					"pro": false,
-					"business": false,
-					"enterprise": true
-				},
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {}
-					}
-				}
-			}
-		},
-		"/accounts/{account_identifier}/magic/ipsec_tunnels/{tunnel_identifier}?validate_only={validate_only}": {
-			"delete": {
-				"summary": "Delete IPsec Tunnel",
-				"description": "Disable and remove a specific static IPsec Tunnel for an account's Magic setup. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes",
-				"parameters": [
-					{
-						"name": "validate_only",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"type": "boolean",
-							"description": "If provided API will only validate change without persisting them.",
-							"default": true
-						}
-					},
-					{
-						"name": "tunnel_identifier",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
-						}
-					},
-					{
-						"name": "account_identifier",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "Delete IPsec Tunnel response",
-						"content": {
-							"application/json": {
-								"schema": {
-									"allOf": [
-										{
-											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
-										},
-										{
-											"properties": {
-												"result": {
-													"properties": {
-														"deleted": {
-															"type": "boolean",
-															"example": true
-														},
-														"deleted_ipsec_tunnel": {
-															"type": "object"
+															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1ipsec_tunnels~1%7Btunnel_identifier%7D~1psk_generate/post/parameters/0/schema"
 														}
 													}
 												}
