@@ -101,10 +101,11 @@ const data = [
 		source: 'Blog',
 		filename: 'blog.json',
 	},
-	{
-		source: 'Product documentation',
-		filename: 'product-documentation.json',
-	},
+	// TODO: make this more stable - does it just change too frequently?
+	// {
+	// 	source: 'Product documentation',
+	// 	filename: 'product-documentation.json',
+	// },
 	{
 		source: 'Support Knowledgebase',
 		filename: 'support-knowledgebase.json',
