@@ -1,0 +1,33 @@
+on:
+  schedule:
+    - cron:  '0 0 * * 0'
+  workflow_dispatch: {}
+
+name: Mine CF Domains
+jobs:
+  runner:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v3
+      - name: Restore NPM cache
+        uses: actions/cache@v3
+        continue-on-error: true
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('scripts/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Mine domains
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+          cd scripts
+          npm ci
+          npm run mine:domains -- --no-write
+        env:
+          WHOISXMLAPI_KEY: ${{ secrets.WHOISXMLAPI_KEY }}
