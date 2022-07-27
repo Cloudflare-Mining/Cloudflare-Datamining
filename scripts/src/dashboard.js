@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import path from 'node:path';
 import fs from 'fs-extra';
 import dateFormat from 'dateformat';
@@ -781,6 +782,38 @@ async function run(){
 			});
 		}
 		await fs.writeFile(path.resolve('../data/dashboard/versions.json'), JSON.stringify(allVersions, null, '\t'));
+	}
+
+	// get bootstrap
+	const bootstrap = await fetch("https://dash.cloudflare.com/api/v4/system/bootstrap", {
+		headers: {
+			"x-cross-site-security": "dash",
+			"Referer": "https://dash.cloudflare.com/",
+		},
+		body: null,
+		method: "GET",
+	});
+	if(bootstrap.status === 200){
+		const json = await bootstrap.json();
+		if(json.success && json?.result?.data?.sdh){
+			console.log('Writing sso domains');
+			await fs.writeFile(path.resolve('../data/dashboard/sso-domains.json'), JSON.stringify(json.result.data.sdh.sort(), null, '\t'));
+		}
+	}
+
+	// get gates
+	const gates = await fetch("https://gates.cloudflare.com/api/v1/runtime/configuration", {
+		"headers": {
+			"authorization": `Bearer ${process.env.GATES_API_KEY}`,
+			"Referer": "https://dash.cloudflare.com/",
+		},
+	});
+	if(gates.status === 200){
+		const json = await gates.json();
+		if(json.success){
+			console.log('Writing gates config');
+			await fs.writeFile(path.resolve('../data/dashboard/gates-config.json'), JSON.stringify(json.result, null, '\t'));
+		}
 	}
 
 	console.log('Pushing!');

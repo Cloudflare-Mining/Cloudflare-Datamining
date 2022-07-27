@@ -1,5 +1,6 @@
 [
 	"/[id]/[id]/dns",
+	"/[id]/[id]/ssl-tls/edge-certificates",
 	"/[id]/[id]/workers",
 	"/[id]/billing/subscriptions",
 	"/[id]/notifications",
@@ -72,5 +73,6 @@
 	"/accounts/[id]/zones/[id]/workers/domains",
 	"/profile/api-tokens",
 	"/sign-up/workers",
-	"/zones"
+	"/zones",
+	"/zones/[id]/ssl/certificate_packs/[id]/*"
 ]

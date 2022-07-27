@@ -1750,7 +1750,7 @@
 			"cfOwnership": "access",
 			"html_id": "access-applications-update-the-dashboard-sso-application",
 			"uri": "accounts/:identifier/access/apps/:app_id",
-			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/access/apps/699d98642c564d2e855e9661899b7252\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"dash_sso\",\"name\":\"Admin Site\",\"logo_url\":\"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\"app_launcher_visible\":true,\"allowed_idps\":[\"699d98642c564d2e855e9661899b7252\"],\"auto_redirect_to_identity\":false,\"session_duration\":\"24h\"}'",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/access/apps/699d98642c564d2e855e9661899b7252\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"dash_sso\",\"name\":\"Admin Site\",\"logo_url\":\"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\"app_launcher_visible\":true,\"allowed_idps\":[\"699d98642c564d2e855e9661899b7252\"],\"auto_redirect_to_identity\":false,\"session_duration\":\"24h\",\"saas_app\":{\"name_id_format\":\"id\"}}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -1798,6 +1798,21 @@
 						"example": "\"24h\"",
 						"description": "The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.",
 						"default": "24h"
+					},
+					"saas_app": {
+						"type": "object",
+						"example": "{\n  \"name_id_format\": \"id\"\n}",
+						"properties": {
+							"name_id_format": {
+								"type": "string",
+								"example": "\"id\"",
+								"description": "The format of the name identifier sent to the SaaS application.",
+								"enum": [
+									"id",
+									"email"
+								]
+							}
+						}
 					}
 				},
 				"required_props": [
@@ -1813,10 +1828,10 @@
 					"session_duration"
 				],
 				"objects": [],
-				"example": "{\n  \"type\": \"dash_sso\",\n  \"name\": \"Admin Site\",\n  \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n  \"app_launcher_visible\": true,\n  \"allowed_idps\": [\n    \"699d98642c564d2e855e9661899b7252\"\n  ],\n  \"auto_redirect_to_identity\": false,\n  \"session_duration\": \"24h\"\n}",
+				"example": "{\n  \"type\": \"dash_sso\",\n  \"name\": \"Admin Site\",\n  \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n  \"app_launcher_visible\": true,\n  \"allowed_idps\": [\n    \"699d98642c564d2e855e9661899b7252\"\n  ],\n  \"auto_redirect_to_identity\": false,\n  \"session_duration\": \"24h\",\n  \"saas_app\": {\n    \"name_id_format\": \"id\"\n  }\n}",
 				"title": "Dash SSO Application"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"aud\": \"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\",\n    \"type\": \"dash_sso\",\n    \"name\": \"Admin Site\",\n    \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n    \"app_launcher_visible\": true,\n    \"allowed_idps\": [\n      \"699d98642c564d2e855e9661899b7252\"\n    ],\n    \"auto_redirect_to_identity\": false,\n    \"session_duration\": \"24h\"\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"aud\": \"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\",\n    \"type\": \"dash_sso\",\n    \"name\": \"Admin Site\",\n    \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n    \"app_launcher_visible\": true,\n    \"allowed_idps\": [\n      \"699d98642c564d2e855e9661899b7252\"\n    ],\n    \"auto_redirect_to_identity\": false,\n    \"session_duration\": \"24h\",\n    \"saas_app\": {\n      \"name_id_format\": \"id\"\n    }\n  }\n}"
 		},
 		{
 			"title": "Update the Access App Launcher",

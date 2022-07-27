@@ -1,0 +1,363 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/custom-error-responses.json",
+	"title": "Custom Error Responses",
+	"description": "Custom Error Responses",
+	"cfExtendedDescription": "",
+	"type": "object",
+	"links": [
+		{
+			"title": "Get Custom Error Responses",
+			"description": "Fetches all Custom Error Responses in a zone.",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_id}/rulesets/phases/http_custom_errors/entrypoint",
+			"method": "GET",
+			"cfOwnership": "flprod",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "custom-error-responses-get-custom-error-responses",
+			"uri": "zones/:zone_id/rulesets/phases/http_custom_errors/entrypoint",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/rulesets/phases/http_custom_errors/entrypoint\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"id\": \"2f2feab2026849078ba485f918791bdc\",\n  \"name\": \"default\",\n  \"description\": \"\",\n  \"kind\": \"zone\",\n  \"phase\": \"http_custom_errors\",\n  \"rules\": [\n    {\n      \"id\": \"3a03d665bac047339bb530ecb439a90d\",\n      \"version\": \"1\",\n      \"action\": \"serve_error\",\n      \"expression\": \"ip.geoip.country eq \\\"AL\\\"\",\n      \"description\": \"Change error response based on geolocation\",\n      \"action_parameters\": {\n        \"content\": \"some html error page\",\n        \"content_type\": \"text/html\",\n        \"status_code\": 530\n      }\n    }\n  ]\n}"
+		},
+		{
+			"title": "Update Custom Error Responses",
+			"description": "Updates the Custom Error Responses of a zone.",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_id}/rulesets/phases/http_custom_errors/entrypoint",
+			"method": "PUT",
+			"cfOwnership": "flprod",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "custom-error-responses-update-custom-error-responses",
+			"uri": "zones/:zone_id/rulesets/phases/http_custom_errors/entrypoint",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/rulesets/phases/http_custom_errors/entrypoint\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"rules\":[{\"action_parameters\":{\"products\":[]}}]}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"description": {
+						"type": "string",
+						"description": "The description of the ruleset"
+					},
+					"rules": {
+						"type": "array",
+						"example": "[\n  {\n    \"action_parameters\": {\n      \"products\": []\n    }\n  }\n]",
+						"items": {
+							"properties": {
+								"id": {
+									"description": "The ID of the rule",
+									"type": "string"
+								},
+								"action": {
+									"description": "The action to take when the expression matches",
+									"type": "string",
+									"enum": [
+										"block",
+										"challenge",
+										"ddos_dynamic",
+										"execute",
+										"force_connection_close",
+										"js_challenge",
+										"managed_challenge",
+										"log",
+										"score",
+										"skip",
+										"rewrite",
+										"redirect"
+									]
+								},
+								"expression": {
+									"description": "The expression",
+									"type": "string"
+								},
+								"description": {
+									"description": "The description of the rule",
+									"type": "string"
+								},
+								"action_parameters": {
+									"description": "The parameters to configure the action",
+									"type": "object",
+									"oneOf": [
+										{
+											"description": "The action parameters for the bypass action",
+											"properties": {
+												"products": {
+													"description": "Bypass one or more of the following products",
+													"type": "array",
+													"default": [],
+													"minLength": 1,
+													"items": {
+														"type": "string",
+														"enum": [
+															"bic",
+															"hot",
+															"ratelimit",
+															"securityLevel",
+															"uablock",
+															"waf",
+															"zonelockdown"
+														]
+													}
+												}
+											}
+										},
+										{
+											"description": "The action parameters for the execute action",
+											"properties": {
+												"id": {
+													"description": "The ID of the ruleset to execute",
+													"type": "string"
+												}
+											}
+										},
+										{
+											"description": "The action parameters for the rewrite action",
+											"properties": {
+												"uri": {
+													"description": "Rewrite the path, query string, or both for the origin",
+													"type": "object",
+													"properties": {
+														"path": {
+															"description": "The new path for the origin",
+															"oneOf": [
+																{
+																	"type": "object",
+																	"properties": {
+																		"expression": {
+																			"type": "string",
+																			"description": "Wirefilter expression to compute a new path or query string",
+																			"example": "concat(\"/new/\", http.request.uri)"
+																		}
+																	}
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"value": {
+																			"type": "string",
+																			"description": "The new value of the path or query string",
+																			"example": "/"
+																		}
+																	}
+																}
+															]
+														},
+														"query": {
+															"description": "The new query string for the origin",
+															"oneOf": [
+																{
+																	"type": "object",
+																	"properties": {
+																		"expression": {
+																			"type": "string",
+																			"description": "Wirefilter expression to compute a new path or query string",
+																			"example": "concat(\"/new/\", http.request.uri)"
+																		}
+																	}
+																},
+																{
+																	"type": "object",
+																	"properties": {
+																		"value": {
+																			"type": "string",
+																			"description": "The new value of the path or query string",
+																			"example": "/"
+																		}
+																	}
+																}
+															]
+														}
+													}
+												}
+											}
+										},
+										{
+											"description": "The action parameters for the score action",
+											"properties": {
+												"increment": {
+													"description": "The score increment",
+													"type": "number"
+												},
+												"id": {
+													"description": "The ID of the rule",
+													"type": "string"
+												},
+												"version": {
+													"description": "The version of the rule",
+													"type": "string"
+												}
+											}
+										},
+										{
+											"description": "The action parameters for the skip action",
+											"properties": {
+												"ruleset": {
+													"description": "Skip execution of these rulesets",
+													"enum": [
+														"current"
+													],
+													"type": "string"
+												}
+											}
+										},
+										{
+											"description": "The action parameters for the redirect action",
+											"properties": {
+												"from_list": {
+													"description": "Applies a redirect based on a redirect list",
+													"type": "object",
+													"properties": {
+														"name": {
+															"type": "string",
+															"description": "The name of the redirect list",
+															"example": "my_redirect_list"
+														},
+														"key": {
+															"type": "string",
+															"description": "Key to use to lookup the redirect in the list",
+															"example": "http.request.full_uri"
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"description",
+					"rules"
+				],
+				"objects": [],
+				"example": "{\n  \"rules\": [\n    {\n      \"action_parameters\": {\n        \"products\": []\n      }\n    }\n  ]\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
+		}
+	],
+	"html_id": "custom-error-responses",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"2f2feab2026849078ba485f918791bdc\"",
+				"description": "The ID of the ruleset.",
+				"minLength": 32,
+				"maxLength": 32
+			},
+			"name": {
+				"type": "string",
+				"example": "\"default\"",
+				"description": "The human-readable name of the ruleset."
+			},
+			"description": {
+				"type": "string",
+				"example": "\"\"",
+				"description": "The description of the ruleset."
+			},
+			"kind": {
+				"type": "string",
+				"example": "\"zone\"",
+				"description": "The ruleset kind.",
+				"enum": [
+					"zone"
+				]
+			},
+			"phase": {
+				"type": "string",
+				"example": "\"http_custom_errors\"",
+				"description": "The phase where the ruleset is executed.",
+				"enum": [
+					"http_custom_errors"
+				]
+			},
+			"rules": {
+				"type": "array",
+				"example": "[\n  {\n    \"id\": \"3a03d665bac047339bb530ecb439a90d\",\n    \"version\": \"1\",\n    \"action\": \"serve_error\",\n    \"expression\": \"ip.geoip.country eq \\\"AL\\\"\",\n    \"description\": \"Change error response based on geolocation\",\n    \"action_parameters\": {\n      \"content\": \"some html error page\",\n      \"content_type\": \"text/html\",\n      \"status_code\": 530\n    }\n  }\n]",
+				"description": "The rules in the ruleset.",
+				"items": {
+					"properties": {
+						"id": {
+							"example": "3a03d665bac047339bb530ecb439a90d",
+							"description": "The ID of the ruleset.",
+							"type": "string",
+							"minLength": 32,
+							"maxLength": 32
+						},
+						"version": {
+							"example": "1",
+							"description": "The version of the rule.",
+							"type": "string"
+						},
+						"action": {
+							"example": "serve_error",
+							"description": "The action to perform when the rule expression matches.",
+							"type": "string",
+							"enum": [
+								"serve_error"
+							]
+						},
+						"expression": {
+							"example": "ip.geoip.country eq \"AL\"",
+							"description": "The rule expression.",
+							"type": "string"
+						},
+						"description": {
+							"example": "Change error response based on geolocation",
+							"description": "The description of the ruleset.",
+							"type": "string"
+						},
+						"action_parameters": {
+							"description": "The action parameters for the serve_error action",
+							"properties": {
+								"content": {
+									"type": "string",
+									"description": "The new content for the response error",
+									"example": "some html error page"
+								},
+								"content_type": {
+									"type": "string",
+									"description": "The content-type of the response error",
+									"example": "text/html"
+								},
+								"status_code": {
+									"type": "number",
+									"description": "The HTTP status code of the response error",
+									"example": 530
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"name",
+			"description",
+			"kind",
+			"phase",
+			"rules"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"2f2feab2026849078ba485f918791bdc\",\n  \"name\": \"default\",\n  \"description\": \"\",\n  \"kind\": \"zone\",\n  \"phase\": \"http_custom_errors\",\n  \"rules\": [\n    {\n      \"id\": \"3a03d665bac047339bb530ecb439a90d\",\n      \"version\": \"1\",\n      \"action\": \"serve_error\",\n      \"expression\": \"ip.geoip.country eq \\\"AL\\\"\",\n      \"description\": \"Change error response based on geolocation\",\n      \"action_parameters\": {\n        \"content\": \"some html error page\",\n        \"content_type\": \"text/html\",\n        \"status_code\": 530\n      }\n    }\n  ]\n}",
+		"title": "Custom Error Responses",
+		"description": "Custom Error Responses"
+	}
+}

@@ -1,6 +1,7 @@
 [
 	"/[id]/workers/d1",
 	"/[id]/workers/d1/databases/[id]/*",
+	"/[id]/workers/d1/databases/[id]/backups",
 	"/[id]/workers/d1/databases/[id]/console",
 	"/[id]/workers/d1/databases/[id]/createTable",
 	"/[id]/workers/d1/databases/[id]/settings",
@@ -8,7 +9,9 @@
 	"/accounts/[id]/d1/database",
 	"/accounts/[id]/d1/database/[id]/*",
 	"/accounts/[id]/d1/database/[id]/backup",
-	"/accounts/[id]/d1/database/[id]/download",
+	"/accounts/[id]/d1/database/[id]/backup/[id]/download",
+	"/accounts/[id]/d1/database/[id]/backup/[id]/restore",
 	"/accounts/[id]/d1/database/[id]/query",
-	"/accounts/[id]/d1/database/[id]/restore"
+	"/accounts/[id]/d1/database/[id]/table",
+	"/accounts/[id]/d1/database/[id]/table/[id]/*"
 ]

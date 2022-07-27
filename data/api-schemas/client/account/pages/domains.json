@@ -9,7 +9,7 @@
 			"title": "Get domains",
 			"description": "Fetch a list of all domains",
 			"rel": "self",
-			"href": "accounts/:account_id/pages/projects/:project_name/domains",
+			"href": "accounts/{#/definitions/account_identifier}/pages/projects/{#/definitions/project_name}/domains",
 			"method": "GET",
 			"cfRequestHeaders": {
 				"type": "object",
@@ -34,15 +34,15 @@
 			},
 			"cfOwnership": "pages",
 			"html_id": "pages-domains-get-domains",
-			"uri": "accounts/:account_id/pages/projects/:project_name/domains",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/:account_id/pages/projects/:project_name/domains\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"8232210c-6818-4e34-8d95-cc386874b8d2\",\n      \"name\": \"example.com\",\n      \"status\": \"pending\",\n      \"verification_data\": {\n        \"status\": \"active\"\n      },\n      \"validation_data\": {\n        \"status\": \"active\",\n        \"method\": \"http\"\n      },\n      \"zone_tag\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n      \"created_on\": \"2017-01-01T00:00:00Z\"\n    }\n  ]\n}"
+			"uri": "accounts/:account_identifier/pages/projects/:project_name/domains",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/pages/projects/this-is-my-project-01/domains\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"8232210c-6818-4e34-8d95-cc386874b8d2\",\n      \"name\": \"example.com\",\n      \"status\": \"pending\",\n      \"verification_data\": {\n        \"status\": \"active\"\n      },\n      \"validation_data\": {\n        \"status\": \"active\",\n        \"method\": \"http\"\n      },\n      \"zone_tag\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n      \"created_on\": \"2017-01-01T00:00:00Z\"\n    }\n  ],\n  \"result_info\": {\n    \"page\": 1,\n    \"per_page\": 100,\n    \"count\": 1,\n    \"total_count\": 1\n  }\n}"
 		},
 		{
 			"title": "Add domain",
 			"description": "Add a new domain for the Pages project",
 			"rel": "self",
-			"href": "accounts/:account_id/pages/projects/:project_name/domains",
+			"href": "accounts/{#/definitions/account_identifier}/pages/projects/{#/definitions/project_name}/domains",
 			"method": "POST",
 			"cfRequestHeaders": {
 				"type": "object",
@@ -68,8 +68,8 @@
 			"encType": "application/json",
 			"cfOwnership": "pages",
 			"html_id": "pages-domains-add-domain",
-			"uri": "accounts/:account_id/pages/projects/:project_name/domains",
-			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/:account_id/pages/projects/:project_name/domains\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     --data '{\"name\":\"example.com\"}'",
+			"uri": "accounts/:account_identifier/pages/projects/:project_name/domains",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/pages/projects/this-is-my-project-01/domains\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     --data '{\"name\":\"example.com\"}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -86,7 +86,7 @@
 			"title": "Get domain",
 			"description": "Fetch a single domain",
 			"rel": "self",
-			"href": "accounts/:account_id/pages/projects/:project_name/domains/:domain_name",
+			"href": "accounts/{#/definitions/account_identifier}/pages/projects/{#/definitions/project_name}/{#/definitions/domain_name}",
 			"method": "GET",
 			"cfRequestHeaders": {
 				"type": "object",
@@ -111,15 +111,15 @@
 			},
 			"cfOwnership": "pages",
 			"html_id": "pages-domains-get-domain",
-			"uri": "accounts/:account_id/pages/projects/:project_name/domains/:domain_name",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/:account_id/pages/projects/:project_name/domains/:domain_name\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
+			"uri": "accounts/:account_identifier/pages/projects/:project_name/:domain_name",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/pages/projects/this-is-my-project-01/this-is-my-domain-01.com\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"8232210c-6818-4e34-8d95-cc386874b8d2\",\n    \"name\": \"example.com\",\n    \"status\": \"pending\",\n    \"verification_data\": {\n      \"status\": \"active\"\n    },\n    \"validation_data\": {\n      \"status\": \"active\",\n      \"method\": \"http\"\n    },\n    \"zone_tag\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"created_on\": \"2017-01-01T00:00:00Z\"\n  }\n}"
 		},
 		{
 			"title": "Patch domain",
 			"description": "Retry the validation status of a single domain",
 			"rel": "self",
-			"href": "accounts/:account_id/pages/projects/:project_name/domains/:domain_name",
+			"href": "accounts/{#/definitions/account_identifier}/pages/projects/{#/definitions/project_name}/domains/{#/definitions/domain_name}",
 			"method": "PATCH",
 			"cfRequestHeaders": {
 				"type": "object",
@@ -144,15 +144,15 @@
 			},
 			"cfOwnership": "pages",
 			"html_id": "pages-domains-patch-domain",
-			"uri": "accounts/:account_id/pages/projects/:project_name/domains/:domain_name",
-			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/accounts/:account_id/pages/projects/:project_name/domains/:domain_name\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
+			"uri": "accounts/:account_identifier/pages/projects/:project_name/domains/:domain_name",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/pages/projects/this-is-my-project-01/domains/this-is-my-domain-01.com\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"8232210c-6818-4e34-8d95-cc386874b8d2\",\n    \"name\": \"example.com\",\n    \"status\": \"pending\",\n    \"verification_data\": {\n      \"status\": \"active\"\n    },\n    \"validation_data\": {\n      \"status\": \"active\",\n      \"method\": \"http\"\n    },\n    \"zone_tag\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"created_on\": \"2017-01-01T00:00:00Z\"\n  }\n}"
 		},
 		{
 			"title": "Delete domain",
 			"description": "Delete a domain",
 			"rel": "self",
-			"href": "accounts/:account_id/pages/projects/:project_name/domains/:domain_name",
+			"href": "accounts/{#/definitions/account_identifier}/pages/projects/{#/definitions/project_name}/domains/{#/definitions/domain_name}",
 			"method": "DELETE",
 			"cfRequestHeaders": {
 				"type": "object",
@@ -177,9 +177,9 @@
 			},
 			"cfOwnership": "pages",
 			"html_id": "pages-domains-delete-domain",
-			"uri": "accounts/:account_id/pages/projects/:project_name/domains/:domain_name",
-			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/:account_id/pages/projects/:project_name/domains/:domain_name\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
+			"uri": "accounts/:account_identifier/pages/projects/:project_name/domains/:domain_name",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/pages/projects/this-is-my-project-01/domains/this-is-my-domain-01.com\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
+			"response": "{\n  \"result\": null,\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
 		}
 	],
 	"cfLinkErrors": {

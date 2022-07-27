@@ -533,11 +533,25 @@
 								"enum": [
 									"initializing",
 									"pending_validation",
+									"deleted",
 									"pending_issuance",
 									"pending_deployment",
-									"active",
 									"pending_deletion",
-									"deleted"
+									"pending_expiration",
+									"expired",
+									"active",
+									"initializing_timed_out",
+									"validation_timed_out",
+									"issuance_timed_out",
+									"deployment_timed_out",
+									"deletion_timed_out",
+									"pending_cleanup",
+									"staging_deployment",
+									"staging_active",
+									"deactivating",
+									"inactive",
+									"backup_issued",
+									"holding_deployment"
 								],
 								"readOnly": true,
 								"description": "Status of the hostname's SSL certificates"
@@ -800,10 +814,22 @@
 			"status": {
 				"example": "\"pending\"",
 				"enum": [
-					"pending",
 					"active",
+					"pending",
+					"active_redeploying",
 					"moved",
-					"deleted"
+					"pending_deletion",
+					"deleted",
+					"pending_blocked",
+					"pending_migration",
+					"pending_provisioned",
+					"test_pending",
+					"test_active",
+					"test_active_apex",
+					"test_blocked",
+					"test_failed",
+					"provisioned",
+					"blocked"
 				],
 				"description": "Status of the hostname's activation."
 			},

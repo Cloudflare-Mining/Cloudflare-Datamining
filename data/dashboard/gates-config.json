@@ -1,0 +1,176 @@
+{
+	"allow-google-acm": {
+		"enabled": true
+	},
+	"allow-google-ssl-for-saas": {
+		"enabled": true
+	},
+	"argo-card-pricing-copy": {
+		"enabled": true,
+		"branches": [
+			"control",
+			"extra-pricing-details"
+		]
+	},
+	"argo-checkout-flow-experiment-test-1": {
+		"enabled": false,
+		"branches": [
+			"control",
+			"de-modal"
+		]
+	},
+	"argo-multi-sku-checkout-experiment": {
+		"enabled": true,
+		"branches": [
+			"control",
+			"multi-sku"
+		]
+	},
+	"billing-checkout-demo": {
+		"enabled": false
+	},
+	"billing-contract-self-serve-legal-agreement": {
+		"enabled": true,
+		"branches": [
+			"baseline-docusign",
+			"variant-click-through"
+		]
+	},
+	"block-digicert-acm": {
+		"enabled": false
+	},
+	"block-digicert-ssl-for-saas": {
+		"enabled": false
+	},
+	"branched-onb-flows-experiment": {
+		"enabled": true
+	},
+	"bulk-redirects-feedback-survey": {
+		"enabled": false
+	},
+	"cache-analytics-promo": {
+		"enabled": true,
+		"branches": [
+			"baseline",
+			"laptop",
+			"dashboard"
+		]
+	},
+	"client-certificates": {
+		"enabled": false
+	},
+	"custom-hostnames-acme-wildcard": {
+		"enabled": true
+	},
+	"email-routing-email-worker-maze-study": {
+		"enabled": false
+	},
+	"gates-streaming-load-test": {
+		"enabled": true
+	},
+	"google-certificate-authority": {
+		"enabled": false
+	},
+	"magic-transit-healthchecks": {
+		"enabled": false
+	},
+	"new-load-balancing-alert-types": {
+		"enabled": false
+	},
+	"new-sign-up-page": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"variant-1-exist-w-illustration",
+			"variant-2-full-illustration",
+			"variant-3-bare-new-form",
+			"variant-4-exist-new-form"
+		]
+	},
+	"new-zone-overview": {
+		"enabled": false
+	},
+	"oauth-access-management": {
+		"enabled": false
+	},
+	"onboarding-domain-registration": {
+		"enabled": true
+	},
+	"onboarding-guide-experiment": {
+		"enabled": true,
+		"branches": [
+			"milestone2",
+			"milestone3"
+		]
+	},
+	"onboarding-progress-bar": {
+		"enabled": true
+	},
+	"opaque-staging-experiment": {
+		"enabled": false
+	},
+	"pages-asset-uploading": {
+		"enabled": false
+	},
+	"password-validation": {
+		"enabled": true
+	},
+	"plan-select-optimization": {
+		"enabled": true,
+		"branches": [
+			"control",
+			"variant"
+		]
+	},
+	"registrar-account-home-copy-experiment": {
+		"enabled": true,
+		"branches": [
+			"registrar",
+			"buy-domains"
+		]
+	},
+	"registrar-tab-copy-experiment": {
+		"enabled": true,
+		"branches": [
+			"registrar",
+			"buy-domains"
+		]
+	},
+	"siwa": {
+		"enabled": true
+	},
+	"siwa-internal": {
+		"enabled": true
+	},
+	"siwa-login": {
+		"enabled": true
+	},
+	"speed-test-feedback-survey-banner": {
+		"enabled": false
+	},
+	"tsf-3-auto-optin": {
+		"enabled": false
+	},
+	"tsf-3-live-chat": {
+		"enabled": false
+	},
+	"unintended-registration": {
+		"enabled": false
+	},
+	"zone-level-access": {
+		"enabled": false
+	},
+	"zone-onboarding-copy-changes": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"variant"
+		]
+	},
+	"zone-overview-adaptive-node": {
+		"enabled": true
+	},
+	"zone-overview-promo-experiment": {
+		"enabled": false
+	}
+}

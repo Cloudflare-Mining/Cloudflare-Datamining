@@ -33,3 +33,4 @@ jobs:
           CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
           CLOUDFLARE_PASSWORD: ${{ secrets.CLOUDFLARE_PASSWORD }}
           DISCORD_URL: ${{ secrets.DISCORD_URL }}
+          GATES_API_KEY: ${{ secrets.GATES_API_KEY }}
