@@ -785,21 +785,22 @@ async function run(){
 	}
 
 	// get bootstrap
-	const bootstrap = await fetch("https://dash.cloudflare.com/api/v4/system/bootstrap", {
-		headers: {
-			"x-cross-site-security": "dash",
-			"Referer": "https://dash.cloudflare.com/",
-		},
-		body: null,
-		method: "GET",
-	});
-	if(bootstrap.status === 200){
-		const json = await bootstrap.json();
-		if(json.success && json?.result?.data?.sdh){
-			console.log('Writing sso domains');
-			await fs.writeFile(path.resolve('../data/dashboard/sso-domains.json'), JSON.stringify(json.result.data.sdh.sort(), null, '\t'));
-		}
-	}
+	// const bootstrap = await fetch("https://dash.cloudflare.com/api/v4/system/bootstrap", {
+	// 	headers: {
+	// 		"x-cross-site-security": "dash",
+	// 		"Referer": "https://dash.cloudflare.com/",
+	// 	},
+	// 	body: null,
+	// 	method: "GET",
+	// });
+	// if(bootstrap.status === 200){
+	// 	const json = await bootstrap.json();
+	// 	if(json.success && json?.result?.data?.sdh){
+	// 		console.log('Writing sso domains');
+	// 		const ssoDomains = json.result.data.sdh.map(hash => hash.slice(-20)).sort();
+	// 		await fs.writeFile(path.resolve('../data/dashboard/sso-domains.json'), JSON.stringify(ssoDomains, null, '\t'));
+	// 	}
+	// }
 
 	// get gates
 	const gates = await fetch("https://gates.cloudflare.com/api/v1/runtime/configuration", {
