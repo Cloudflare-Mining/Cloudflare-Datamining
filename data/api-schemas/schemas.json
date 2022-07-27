@@ -33514,15 +33514,15 @@
 		},
 		"/accounts/{account_identifier}/stream/copy": {
 			"post": {
-				"summary": "Upload a video from a URL",
-				"description": "Link to a video and it will be downloaded and made available on Stream.",
+				"summary": "Upload videos from a URL",
+				"description": "Uploads a video to Stream from a provided URL.",
 				"parameters": [
 					{
 						"name": "account_identifier",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "Account identifier tag",
+							"description": "The account identifier tag.",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"readOnly": true,
@@ -33532,7 +33532,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Upload a video from a URL response",
+						"description": "Upload videos from a URL response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -33569,19 +33569,19 @@
 								],
 								"properties": {
 									"url": {
-										"description": "URL to the video. Server must be publicly routable and support HTTP HEAD requests and HTTP GET range requests. Server should respond to HTTP HEAD requests with a content-range header with the size of the file.",
+										"description": "A video's URL. The server must be publicly routable and support `HTTP HEAD` requests and `HTTP GET` range requests. The server should respond to `HTTP HEAD` requests with a `content-range` header that includes the size of the file.",
 										"example": "https://example.com/myvideo.mp4",
 										"format": "uri",
 										"type": "string"
 									},
 									"creator": {
-										"description": "User-defined identifier of the media creator",
+										"description": "A user-defined identifier for the media creator.",
 										"example": "creator-id_abcde12345",
 										"maxLength": 64,
 										"type": "string"
 									},
 									"thumbnailTimestampPct": {
-										"description": "Timestamp location of thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image will be from 0s of the video.",
+										"description": "The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video.",
 										"example": 0.529241,
 										"default": 0,
 										"minimum": 0,
@@ -33589,7 +33589,7 @@
 										"type": "number"
 									},
 									"allowedOrigins": {
-										"description": "List which origins should be allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty array will allow the video to be viewed on any origin.",
+										"description": "Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.",
 										"type": "array",
 										"example": [
 											"example.com"
@@ -33599,7 +33599,7 @@
 										}
 									},
 									"requireSignedURLs": {
-										"description": "Indicates whether the video can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the video.",
+										"description": "Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.",
 										"type": "boolean",
 										"readOnly": true,
 										"default": false,
@@ -33609,7 +33609,7 @@
 										"type": "object",
 										"properties": {
 											"uid": {
-												"description": "Watermark profile unique identifier.",
+												"description": "The unique identifier for the watermark profile.",
 												"example": "ea95132c15732412d22c1476fa83f27a",
 												"maxLength": 32,
 												"type": "string"
@@ -33625,14 +33625,14 @@
 		},
 		"/accounts/{account_identifier}/stream": {
 			"post": {
-				"summary": "Initiate a Video Upload using TUS",
-				"description": "Initiate a video upload using the TUS protocol. On success, server will response with status code 201 (Created) and include a 'location' header indicating where the video content should be uploaded to. See https://tus.io for protocol details.",
+				"summary": "Initiate video uploads using TUS",
+				"description": "Initiates a video upload using the TUS protocol. On success, the server responds with a status code 201 (created) and includes a `location` header to indicate where the content should be uploaded. Refer to https://tus.io for protocol details.",
 				"parameters": [
 					{
 						"in": "header",
 						"name": "Tus-Resumable",
 						"schema": {
-							"description": "This header specifies the TUS protocol version. This header must be included in every upload request.\nNotes: The only supported version of TUS protocol is 1.0.0.",
+							"description": "Specifies the TUS protocol version. This value must be included in every upload request.\nNotes: The only supported version of TUS protocol is 1.0.0.",
 							"type": "string",
 							"enum": [
 								"1.0.0"
@@ -33645,7 +33645,7 @@
 						"in": "header",
 						"name": "Upload-Creator",
 						"schema": {
-							"description": "User-defined identifier of the media creator",
+							"description": "A user-defined identifier for the media creator.",
 							"example": "creator-id_abcde12345",
 							"maxLength": 64,
 							"type": "string"
@@ -33667,7 +33667,7 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "Account identifier tag",
+							"description": "The account identifier tag.",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"readOnly": true,
@@ -33677,7 +33677,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Initiate a Video Upload using TUS response",
+						"description": "Initiate video uploads using TUS response",
 						"content": {
 							"application/json": {}
 						}
@@ -33698,7 +33698,7 @@
 			},
 			"get": {
 				"summary": "List videos",
-				"description": "Up to 1000 videos can be listed with one request, use optional parameters below to get a specific range of videos.\n\nPlease note that Cloudflare Stream does not use pagination, instead it uses a cursor pattern to list more than 1000 videos. In order to list all videos, make multiple requests to the API using the created date-time of the last item in the previous request as the `before` or `after` parameter.",
+				"description": "Lists up to 1000 videos from a single request. For a specific range, refer to the optional parameters.",
 				"parameters": [
 					{
 						"name": "account_identifier",
@@ -33726,7 +33726,7 @@
 														"type": "object",
 														"properties": {
 															"allowedOrigins": {
-																"description": "List which origins should be allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty array will allow the video to be viewed on any origin.",
+																"description": "Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.",
 																"type": "array",
 																"example": [
 																	"example.com"
@@ -33736,14 +33736,14 @@
 																}
 															},
 															"created": {
-																"description": "When the media item was created.",
+																"description": "The date and time the media item was created.",
 																"example": "2014-01-02T02:20:00+00:00",
 																"format": "date-time",
 																"readOnly": true,
 																"type": "string"
 															},
 															"duration": {
-																"description": "Duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload, before the video is ready.",
+																"description": "The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready.",
 																"type": "integer",
 																"readOnly": true
 															},
@@ -33752,35 +33752,35 @@
 																"readOnly": true,
 																"properties": {
 																	"height": {
-																		"description": "Height of the video in pixels. A value of `-1` means the height is unknown. Value becomes available after the upload, before the video is ready.",
+																		"description": "The video height in pixels. A value of `-1` means the height is unknown. The value becomes available after the upload and before the video is ready.",
 																		"type": "integer",
 																		"readOnly": true
 																	},
 																	"width": {
-																		"description": "Width of the video in seconds. A value of `-1` means the width is unknown. Value becomes available after the upload, before the video is ready.",
+																		"description": "The video width in pixels. A value of `-1` means the width is unknown. The value becomes available after the upload and before the video is ready.",
 																		"type": "integer",
 																		"readOnly": true
 																	}
 																}
 															},
 															"maxDurationSeconds": {
-																"description": "Maximum duration for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploaded that exceed this duration will fail during processing. A value of `-1` means the value is unknown.",
+																"description": "The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.",
 																"type": "integer"
 															},
 															"meta": {
-																"description": "User modifyable key-value store. Can use used for keeping references to another system of record for managing videos.",
+																"description": "A user modifiable key-value store used to reference other systems of record for managing videos.",
 																"example": {},
 																"type": "object"
 															},
 															"modified": {
-																"description": "When the media item was last modified.",
+																"description": "The date and time the media item was last modified.",
 																"example": "2014-01-02T02:20:00+00:00",
 																"format": "date-time",
 																"readOnly": true,
 																"type": "string"
 															},
 															"uploadExpiry": {
-																"description": "Date at which the video upload URL is no longer valid for direct user uploads.",
+																"description": "The date and time when the video upload URL is no longer valid for direct user uploads.",
 																"example": "2014-01-02T02:20:00+00:00",
 																"format": "date-time",
 																"type": "string"
@@ -33792,7 +33792,7 @@
 																	"hls": {
 																		"type": "string",
 																		"readOnly": true,
-																		"description": "HLS manifest for the video",
+																		"description": "The HLS manifest for the video.",
 																		"example": "https://videodelivery.net/ea95132c15732412d22c1476fa83f27a/manifest/video.m3u8"
 																	},
 																	"dash": {
@@ -33804,7 +33804,7 @@
 																}
 															},
 															"preview": {
-																"description": "URI of preview page for video. Omitted until encoding is complete.",
+																"description": "The video's preview page URI. This field is omitted until encoding is complete.",
 																"example": "https://watch.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a",
 																"format": "uri",
 																"readOnly": true,
@@ -33817,20 +33817,20 @@
 																"example": true
 															},
 															"requireSignedURLs": {
-																"description": "Indicates whether the video can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the video.",
+																"description": "Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.",
 																"type": "boolean",
 																"readOnly": true,
 																"default": false,
 																"example": true
 															},
 															"size": {
-																"description": "Size of the media item in bytes.",
+																"description": "The size of the media item in bytes.",
 																"example": 4190963,
 																"readOnly": true,
 																"type": "number"
 															},
 															"status": {
-																"description": "Object specifying more fine-grained status for this video item. If \"state\" is \"inprogress\" or \"error\", \"step\" will be one of \"encoding\" or \"manifest\". When \"state\" is \"inprogress\", \"pctComplete\" will be a number between 0 and 100 indicating the approximate percent of that step that has been completed. If the \"state\" is \"error\", \"errorReasonCode\" and \"errorReasonText\" will contain additional details.",
+																"description": "Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number between 0 and 100 to indicate the approximate percent of completion. If the `state` is `error`, `errorReasonCode` and `errorReasonText` provide additional details.",
 																"properties": {
 																	"state": {
 																		"description": "Specifies the processing status of the video.",
@@ -33854,13 +33854,13 @@
 																		"readOnly": true
 																	},
 																	"errorReasonCode": {
-																		"description": "Provides an error code on why this video failed to encode. Empty if the state is not in \"error\". This field should be preferred for programmatic use.",
+																		"description": "Specifies why the video failed to encode. This field is empty if the video is not in an `error` state. Preferred for programmatic use.",
 																		"type": "string",
 																		"readOnly": true,
 																		"example": "ERR_NON_VIDEO"
 																	},
 																	"errorReasonText": {
-																		"description": "Provides a reason in English on why this video failed to encode. Empty if the state is not in \"error\".",
+																		"description": "Specifies why the video failed to encode using a human readable error message in English. This field is empty if the video is not in an `error` state.",
 																		"type": "string",
 																		"readOnly": true,
 																		"example": "The file was not recognized as a valid video file."
@@ -33869,14 +33869,14 @@
 																"readOnly": true
 															},
 															"thumbnail": {
-																"description": "URI to thumbnail for a media item. Omitted until encoding is complete.",
+																"description": "The media item's thumbnail URI. This field is omitted until encoding is complete.",
 																"example": "https://videodelivery.net/ea95132c15732412d22c1476fa83f27a/thumbnails/thumbnail.jpg",
 																"format": "uri",
 																"readOnly": true,
 																"type": "string"
 															},
 															"thumbnailTimestampPct": {
-																"description": "Timestamp location of thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image will be from 0s of the video.",
+																"description": "The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video.",
 																"example": 0.529241,
 																"default": 0,
 																"minimum": 0,
@@ -33884,7 +33884,7 @@
 																"type": "number"
 															},
 															"uid": {
-																"description": "Media item unique identifier",
+																"description": "A Cloudflare-generated unique identifier for a media item.",
 																"example": "ea95132c15732412d22c1476fa83f27a",
 																"maxLength": 32,
 																"readOnly": true,
@@ -33894,14 +33894,14 @@
 																"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1stream/post/parameters/1/schema"
 															},
 															"liveInput": {
-																"description": "Live input ID that was used to upload this video with Stream Live.",
+																"description": "The live input ID used to upload a video with Stream Live.",
 																"example": "fc0a8dc887b16759bfd9ad922230a014",
 																"maxLength": 32,
 																"readOnly": true,
 																"type": "string"
 															},
 															"uploaded": {
-																"description": "When the media item was uploaded.",
+																"description": "The date and time the media item was uploaded.",
 																"example": "2014-01-02T02:20:00+00:00",
 																"format": "date-time",
 																"readOnly": true,
@@ -33911,7 +33911,7 @@
 																"type": "object",
 																"properties": {
 																	"uid": {
-																		"description": "Watermark profile unique identifier.",
+																		"description": "The unique identifier for a watermark profile.",
 																		"example": "ea95132c15732412d22c1476fa83f27a",
 																		"maxLength": 32,
 																		"readOnly": true,
@@ -33924,37 +33924,37 @@
 																		"type": "number"
 																	},
 																	"height": {
-																		"description": "Height of the image in pixels.",
+																		"description": "The height of the image in pixels.",
 																		"type": "integer",
 																		"readOnly": true
 																	},
 																	"width": {
-																		"description": "Width of the image in pixels.",
+																		"description": "The width of the image in pixels.",
 																		"type": "integer",
 																		"readOnly": true
 																	},
 																	"created": {
-																		"description": "When the watermark profile was created.",
+																		"description": "The date and a time a watermark profile was created.",
 																		"example": "2014-01-02T02:20:00+00:00",
 																		"format": "date-time",
 																		"readOnly": true,
 																		"type": "string"
 																	},
 																	"downloadedFrom": {
-																		"description": "The source URL to the image where it was downloaded from. If the watermark profile was created via direct upload, this field will be null.",
+																		"description": "The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null.",
 																		"example": "https://company.com/logo.png",
 																		"readOnly": true,
 																		"type": "string"
 																	},
 																	"name": {
-																		"description": "A short description for the profile.",
+																		"description": "A short description of the watermark profile.",
 																		"default": "",
 																		"example": "Marketing Videos",
 																		"readOnly": true,
 																		"type": "string"
 																	},
 																	"opacity": {
-																		"description": "Translucency of the image. 0.0 means completely transparent, and 1.0 means completely opaque. Note that if the image is already semi-transparent, setting this to 1.0 will not make it completely opaque.",
+																		"description": "The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque.",
 																		"default": 1,
 																		"example": 0.75,
 																		"minimum": 0,
@@ -33963,7 +33963,7 @@
 																		"type": "number"
 																	},
 																	"padding": {
-																		"description": "Whitespace between the adjacent edges (determined by position) of the video and the image. 0.0 means no padding, and 1.0 means padded full video width or length, determined by the algorithm.",
+																		"description": "The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length, as determined by the algorithm.",
 																		"default": 0.05,
 																		"example": 0.1,
 																		"minimum": 0,
@@ -33972,7 +33972,7 @@
 																		"type": "number"
 																	},
 																	"scale": {
-																		"description": "The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. 0.0 means no scaling (use the size of the image as-is), and 1.0 fills the entire video.",
+																		"description": "The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0 `fills the entire video.",
 																		"default": 0.15,
 																		"example": 0.1,
 																		"minimum": 0,
@@ -33981,7 +33981,7 @@
 																		"type": "number"
 																	},
 																	"position": {
-																		"description": "Location of the image. Valid positions are: \"upperRight\", \"upperLeft\", \"lowerLeft\", \"lowerRight\", and \"center\". Note that \"center\" will ignore the \"padding\" parameter. ",
+																		"description": "The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter. ",
 																		"default": "upperRight",
 																		"example": "center",
 																		"readOnly": true,
@@ -34002,7 +34002,7 @@
 																"properties": {
 																	"contract": {
 																		"readOnly": true,
-																		"description": "ERC-721 compatible contract address",
+																		"description": "The ERC-721 compatible contract address.",
 																		"example": "0x57f1887a8bf19b14fc0d912b9b2acc9af147ea85",
 																		"maxLength": 42,
 																		"minLength": 42,
@@ -34010,7 +34010,7 @@
 																	},
 																	"token": {
 																		"readOnly": true,
-																		"description": "Token ID for the NFT",
+																		"description": "The token ID for the NFT.",
 																		"type": "integer"
 																	}
 																}
@@ -34046,13 +34046,13 @@
 										{
 											"properties": {
 												"total": {
-													"description": "Total number of videos that match the provided filters",
+													"description": "The total number of videos that match the provided filters.",
 													"example": 35586,
 													"readOnly": true,
 													"type": "integer"
 												},
 												"range": {
-													"description": "Total number of remaining videos based on cursor position",
+													"description": "The total number of remaining videos based on cursor position.",
 													"example": 1000,
 													"readOnly": true,
 													"type": "integer"
@@ -34075,15 +34075,15 @@
 		},
 		"/accounts/{account_identifier}/stream/direct_upload": {
 			"post": {
-				"summary": "Create a video and get authenticated direct upload URL",
-				"description": "Direct uploads allow users to upload videos without API keys. A common place to use direct uploads is on web apps, client side applications, or on mobile devices where users upload content directly to Stream.",
+				"summary": "Upload videos via direct upload URLs",
+				"description": "Creates a direct upload that allows video uploads without an API key.",
 				"parameters": [
 					{
 						"name": "account_identifier",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "Account identifier tag",
+							"description": "The account identifier tag.",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"readOnly": true,
@@ -34093,7 +34093,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create a video and get authenticated direct upload URL response",
+						"description": "Upload videos via direct upload URLs response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -34107,11 +34107,11 @@
 													"properties": {
 														"uploadURL": {
 															"type": "string",
-															"description": "The URL the unauthenticated upload can be performed to using a single HTTP POST (multipart/form-data) request.",
+															"description": "The URL an unauthenticated upload can use for a single `HTTP POST multipart/form-data` request.",
 															"example": "www.example.com/samplepath"
 														},
 														"uid": {
-															"description": "Media item unique identifier",
+															"description": "A Cloudflare-generated unique identifier for a media item.",
 															"example": "ea95132c15732412d22c1476fa83f27a",
 															"maxLength": 32,
 															"readOnly": true,
@@ -34148,25 +34148,25 @@
 								"properties": {
 									"maxDurationSeconds": {
 										"type": "integer",
-										"description": "Direct uploads occupy minutes of videos on your Stream account until they are expired. This value will be used to calculate the duration the video will occupy before the video is uploaded. After upload, the duration of the uploaded will be used instead. If a video longer than this value is uploaded, the video will result in an error.",
+										"description": "Calculates the amount of time a video occupies before the video is uploaded. Direct uploads occupy minutes of videos on your Stream account until they are expired. After upload, the upload duration is used instead. If a video longer than the value is uploaded, the video results in an error.",
 										"minimum": 1,
 										"maximum": 21600
 									},
 									"expiry": {
-										"description": "The date after upload will not be accepted",
+										"description": "The date and time after upload when videos will not be accepted.",
 										"example": "2021-01-02T02:20:00+00:00",
 										"format": "date-time",
 										"default": "Now + 30 minutes",
 										"type": "string"
 									},
 									"creator": {
-										"description": "User-defined identifier of the media creator",
+										"description": "A user-defined identifier for the media creator.",
 										"example": "creator-id_abcde12345",
 										"maxLength": 64,
 										"type": "string"
 									},
 									"thumbnailTimestampPct": {
-										"description": "Timestamp location of thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image will be from 0s of the video.",
+										"description": "The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video.",
 										"example": 0.529241,
 										"default": 0,
 										"minimum": 0,
@@ -34174,7 +34174,7 @@
 										"type": "number"
 									},
 									"allowedOrigins": {
-										"description": "List which origins should be allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty array will allow the video to be viewed on any origin.",
+										"description": "Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.",
 										"type": "array",
 										"example": [
 											"example.com"
@@ -34184,7 +34184,7 @@
 										}
 									},
 									"requireSignedURLs": {
-										"description": "Indicates whether the video can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the video.",
+										"description": "Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.",
 										"type": "boolean",
 										"readOnly": true,
 										"default": false,
@@ -34194,7 +34194,7 @@
 										"type": "object",
 										"properties": {
 											"uid": {
-												"description": "Watermark profile unique identifier.",
+												"description": "The unique identifier for the watermark profile.",
 												"example": "ea95132c15732412d22c1476fa83f27a",
 												"maxLength": 32,
 												"type": "string"
@@ -34210,15 +34210,15 @@
 		},
 		"/accounts/{account_identifier}/stream/{identifier}": {
 			"get": {
-				"summary": "Video details",
-				"description": "Fetch details of a single video.",
+				"summary": "Retrieve video details",
+				"description": "Fetches details for a single video.",
 				"parameters": [
 					{
 						"name": "identifier",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "Media item unique identifier",
+							"description": "A Cloudflare-generated unique identifier for a media item.",
 							"example": "ea95132c15732412d22c1476fa83f27a",
 							"maxLength": 32,
 							"readOnly": true,
@@ -34230,7 +34230,7 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "Account identifier tag",
+							"description": "The account identifier tag.",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"readOnly": true,
@@ -34240,7 +34240,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Video details response",
+						"description": "Retrieve video details response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -34270,7 +34270,7 @@
 			},
 			"delete": {
 				"summary": "Delete video",
-				"description": "Delete a video on Cloudflare Stream. On success, all copies of the video are deleted.",
+				"description": "Deletes a video and its copies from Cloudflare Stream.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -34311,8 +34311,8 @@
 				}
 			},
 			"post": {
-				"summary": "Associate video to an NFT",
-				"description": "By associating a token ID and contract address on Stream videos, you make it possible to transfer admin rights on a video. If a change in ownership of the ERC-721 token happens on the Ethereum blockchain, the new owner of the token may claim control over of the video.",
+				"summary": "Associate videos to NFTs",
+				"description": "Asssociates videos with a token ID and contract address to transfer admin rights on a video. If a change in ownership of the ERC-721 token happens on the Ethereum blockchain, the new token owner can claim control of the video.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -34333,7 +34333,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Associate video to an NFT response",
+						"description": "Associate videos to NFTs response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -34348,7 +34348,7 @@
 														"type": "object",
 														"properties": {
 															"allowedOrigins": {
-																"description": "List which origins should be allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty array will allow the video to be viewed on any origin.",
+																"description": "Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.",
 																"type": "array",
 																"example": [
 																	"example.com"
@@ -34358,14 +34358,14 @@
 																}
 															},
 															"created": {
-																"description": "When the media item was created.",
+																"description": "The date and time the media item was created.",
 																"example": "2014-01-02T02:20:00+00:00",
 																"format": "date-time",
 																"readOnly": true,
 																"type": "string"
 															},
 															"duration": {
-																"description": "Duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload, before the video is ready.",
+																"description": "The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready.",
 																"type": "integer",
 																"readOnly": true
 															},
@@ -34374,35 +34374,35 @@
 																"readOnly": true,
 																"properties": {
 																	"height": {
-																		"description": "Height of the video in pixels. A value of `-1` means the height is unknown. Value becomes available after the upload, before the video is ready.",
+																		"description": "The video height in pixels. A value of `-1` means the height is unknown. The value becomes available after the upload and before the video is ready.",
 																		"type": "integer",
 																		"readOnly": true
 																	},
 																	"width": {
-																		"description": "Width of the video in seconds. A value of `-1` means the width is unknown. Value becomes available after the upload, before the video is ready.",
+																		"description": "The video width in pixels. A value of `-1` means the width is unknown. The value becomes available after the upload and before the video is ready.",
 																		"type": "integer",
 																		"readOnly": true
 																	}
 																}
 															},
 															"maxDurationSeconds": {
-																"description": "Maximum duration for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploaded that exceed this duration will fail during processing. A value of `-1` means the value is unknown.",
+																"description": "The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.",
 																"type": "integer"
 															},
 															"meta": {
-																"description": "User modifyable key-value store. Can use used for keeping references to another system of record for managing videos.",
+																"description": "A user modifiable key-value store used to reference other systems of record for managing videos.",
 																"example": {},
 																"type": "object"
 															},
 															"modified": {
-																"description": "When the media item was last modified.",
+																"description": "The date and time the media item was last modified.",
 																"example": "2014-01-02T02:20:00+00:00",
 																"format": "date-time",
 																"readOnly": true,
 																"type": "string"
 															},
 															"uploadExpiry": {
-																"description": "Date at which the video upload URL is no longer valid for direct user uploads.",
+																"description": "The date and time when the video upload URL is no longer valid for direct user uploads.",
 																"example": "2014-01-02T02:20:00+00:00",
 																"format": "date-time",
 																"type": "string"
@@ -34414,7 +34414,7 @@
 																	"hls": {
 																		"type": "string",
 																		"readOnly": true,
-																		"description": "HLS manifest for the video",
+																		"description": "The HLS manifest for the video.",
 																		"example": "https://videodelivery.net/ea95132c15732412d22c1476fa83f27a/manifest/video.m3u8"
 																	},
 																	"dash": {
@@ -34426,7 +34426,7 @@
 																}
 															},
 															"preview": {
-																"description": "URI of preview page for video. Omitted until encoding is complete.",
+																"description": "The video's preview page URI. This field is omitted until encoding is complete.",
 																"example": "https://watch.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a",
 																"format": "uri",
 																"readOnly": true,
@@ -34439,20 +34439,20 @@
 																"example": true
 															},
 															"requireSignedURLs": {
-																"description": "Indicates whether the video can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the video.",
+																"description": "Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.",
 																"type": "boolean",
 																"readOnly": true,
 																"default": false,
 																"example": true
 															},
 															"size": {
-																"description": "Size of the media item in bytes.",
+																"description": "The size of the media item in bytes.",
 																"example": 4190963,
 																"readOnly": true,
 																"type": "number"
 															},
 															"status": {
-																"description": "Object specifying more fine-grained status for this video item. If \"state\" is \"inprogress\" or \"error\", \"step\" will be one of \"encoding\" or \"manifest\". When \"state\" is \"inprogress\", \"pctComplete\" will be a number between 0 and 100 indicating the approximate percent of that step that has been completed. If the \"state\" is \"error\", \"errorReasonCode\" and \"errorReasonText\" will contain additional details.",
+																"description": "Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number between 0 and 100 to indicate the approximate percent of completion. If the `state` is `error`, `errorReasonCode` and `errorReasonText` provide additional details.",
 																"properties": {
 																	"state": {
 																		"description": "Specifies the processing status of the video.",
@@ -34476,13 +34476,13 @@
 																		"readOnly": true
 																	},
 																	"errorReasonCode": {
-																		"description": "Provides an error code on why this video failed to encode. Empty if the state is not in \"error\". This field should be preferred for programmatic use.",
+																		"description": "Specifies why the video failed to encode. This field is empty if the video is not in an `error` state. Preferred for programmatic use.",
 																		"type": "string",
 																		"readOnly": true,
 																		"example": "ERR_NON_VIDEO"
 																	},
 																	"errorReasonText": {
-																		"description": "Provides a reason in English on why this video failed to encode. Empty if the state is not in \"error\".",
+																		"description": "Specifies why the video failed to encode using a human readable error message in English. This field is empty if the video is not in an `error` state.",
 																		"type": "string",
 																		"readOnly": true,
 																		"example": "The file was not recognized as a valid video file."
@@ -34491,14 +34491,14 @@
 																"readOnly": true
 															},
 															"thumbnail": {
-																"description": "URI to thumbnail for a media item. Omitted until encoding is complete.",
+																"description": "The media item's thumbnail URI. This field is omitted until encoding is complete.",
 																"example": "https://videodelivery.net/ea95132c15732412d22c1476fa83f27a/thumbnails/thumbnail.jpg",
 																"format": "uri",
 																"readOnly": true,
 																"type": "string"
 															},
 															"thumbnailTimestampPct": {
-																"description": "Timestamp location of thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image will be from 0s of the video.",
+																"description": "The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video.",
 																"example": 0.529241,
 																"default": 0,
 																"minimum": 0,
@@ -34509,20 +34509,20 @@
 																"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1stream~1%7Bidentifier%7D/get/parameters/0/schema"
 															},
 															"creator": {
-																"description": "User-defined identifier of the media creator",
+																"description": "A user-defined identifier for the media creator.",
 																"example": "creator-id_abcde12345",
 																"maxLength": 64,
 																"type": "string"
 															},
 															"liveInput": {
-																"description": "Live input ID that was used to upload this video with Stream Live.",
+																"description": "The live input ID used to upload a video with Stream Live.",
 																"example": "fc0a8dc887b16759bfd9ad922230a014",
 																"maxLength": 32,
 																"readOnly": true,
 																"type": "string"
 															},
 															"uploaded": {
-																"description": "When the media item was uploaded.",
+																"description": "The date and time the media item was uploaded.",
 																"example": "2014-01-02T02:20:00+00:00",
 																"format": "date-time",
 																"readOnly": true,
@@ -34565,13 +34565,13 @@
 										{
 											"properties": {
 												"total": {
-													"description": "Total number of videos that match the provided filters",
+													"description": "The total number of videos that match the provided filters.",
 													"example": 35586,
 													"readOnly": true,
 													"type": "integer"
 												},
 												"range": {
-													"description": "Total number of remaining videos based on cursor position",
+													"description": "The total number of remaining videos based on cursor position.",
 													"example": 1000,
 													"readOnly": true,
 													"type": "integer"
@@ -34600,7 +34600,7 @@
 								"properties": {
 									"contract": {
 										"readOnly": true,
-										"description": "ERC-721 compatible contract address",
+										"description": "The ERC-721 compatible contract address.",
 										"example": "0x57f1887a8bf19b14fc0d912b9b2acc9af147ea85",
 										"maxLength": 42,
 										"minLength": 42,
@@ -34608,7 +34608,7 @@
 									},
 									"token": {
 										"readOnly": true,
-										"description": "Token ID for the NFT",
+										"description": "The token ID for the NFT.",
 										"type": "integer"
 									}
 								}
@@ -34620,15 +34620,15 @@
 		},
 		"/accounts/{account_identifier}/stream/{identifier}/embed": {
 			"get": {
-				"summary": "Embed Code HTML",
-				"description": "Fetch an HTML code snippet that can be used to embed the video in a web page that is delivered through Cloudflare. On success returns an HTML fragment (not a full document) that can be included on a web page to display the video. On failure returns a JSON response body (see Error Response) above.",
+				"summary": "Retreieve embed Code HTML",
+				"description": "Fetches an HTML code snippet to embed a video in a web page delivered through Cloudflare. On success, returns an HTML fragment for use on web pages to display a video. On failure, returns a JSON response body.",
 				"parameters": [
 					{
 						"name": "identifier",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "Media item unique identifier",
+							"description": "A Cloudflare-generated unique identifier for a media item.",
 							"example": "ea95132c15732412d22c1476fa83f27a",
 							"maxLength": 32,
 							"readOnly": true,
@@ -34640,7 +34640,7 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "Account identifier tag",
+							"description": "The account identifier tag.",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"readOnly": true,
@@ -34650,7 +34650,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Embed Code HTML response",
+						"description": "Retreieve embed Code HTML response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -34670,15 +34670,15 @@
 		},
 		"/accounts/{account_identifier}/stream/{identifier}/token": {
 			"post": {
-				"summary": "Create a signed URL token for a video",
-				"description": "Create a signed URL token for a video. If no body is provided in the request, a token will be created with default values.",
+				"summary": "Create signed URL tokens for videso",
+				"description": "Creates a signed URL token for a video. If a body is not provided in the request, a token is created with default values.",
 				"parameters": [
 					{
 						"name": "identifier",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "Media item unique identifier",
+							"description": "A Cloudflare-generated unique identifier for a media item.",
 							"example": "ea95132c15732412d22c1476fa83f27a",
 							"maxLength": 32,
 							"readOnly": true,
@@ -34690,7 +34690,7 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "Account identifier tag",
+							"description": "The account identifier tag.",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"readOnly": true,
@@ -34700,7 +34700,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create a signed URL token for a video response",
+						"description": "Create signed URL tokens for videso response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -34714,7 +34714,7 @@
 													"properties": {
 														"token": {
 															"type": "string",
-															"description": "Signed token for use with the signed URLs feature.",
+															"description": "The signed token used with the signed URLs feature.",
 															"example": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImU5ZGI5OTBhODI2NjZkZDU3MWM3N2Y5NDRhNWM1YzhkIn0.eyJzdWIiOiJlYTk1MTMyYzE1NzMyNDEyZDIyYzE0NzZmYTgzZjI3YSIsImtpZCI6ImU5ZGI5OTBhODI2NjZkZDU3MWM3N2Y5NDRhNWM1YzhkIiwiZXhwIjoiMTUzNzQ2MDM2NSIsIm5iZiI6IjE1Mzc0NTMxNjUifQ.OZhqOARADn1iubK6GKcn25hN3nU-hCFF5q9w2C4yup0C4diG7aMIowiRpP-eDod8dbAJubsiFuTKrqPcmyCKWYsiv0TQueukqbQlF7HCO1TV-oF6El5-7ldJ46eD-ZQ0XgcIYEKrQOYFF8iDQbqPm3REWd6BnjKZdeVrLzuRaiSnZ9qqFpGu5dfxIY9-nZKDubJHqCr3Imtb211VIG_b9MdtO92JjvkDS-rxT_pkEfTZSafl1OU-98A7KBGtPSJHz2dHORIrUiTA6on4eIXTj9aFhGiir4rSn-rn0OjPRTtJMWIDMoQyE_fwrSYzB7MPuzL2t82BWaEbHZTfixBm5A"
 														}
 													}
@@ -34743,35 +34743,35 @@
 								"properties": {
 									"id": {
 										"readOnly": true,
-										"description": "Optional id of a Stream signing key. If present, the 'pem' field is also required.",
+										"description": "The optional ID of a Stream signing key. If present, the `pem` field is also required.",
 										"example": "ab0d4ef71g4425f8dcba9041231813000",
 										"type": "string"
 									},
 									"pem": {
 										"readOnly": true,
-										"description": "Optional base64 encoded private key in PEM format associated with a Stream signing key. If present, the 'id' field is also required.",
+										"description": "The optional base64 encoded private key in PEM format associated with a Stream signing key. If present, the `id` field is also required.",
 										"example": "LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFcEFJQkFBS0NBUUVBc284dnBvOFpEWXRkOUgzbWlPaW1qYXAzVXlVM0oyZ3kwTUYvN1R4blJuRnkwRHpDCkxqUk9naFZsQ0hPQmxsd3NVaE9GU0lyYnN4K05tUTdBeS90TFpXSGxuVGF3UWJ5WGZGOStJeDhVSnNlSHBGV1oKNVF5Z1JYd2liSjh1MVVsZ2xlcmZHMkpueldjVXpZTzEySktZN3doSkw1ajROMWgxZFJNUXQ5Q1pkZFlCQWRzOQpCdk02cjRFMDcxQkhQekhWeDMrUTI1VWtubGdUNXIwS3FiM1E1Y0dlTlBXY1JreW1ybkJEWWR0OXR4eFFMb1dPCllzNXdsMnVYWFVYL0VGcDMwajU0Nmp6czllWExLYlNDbjJjTDZFVE96Y2x3aG9DRGx2a2VQT05rUE9LMDVKNUMKTm1TdFdhMG9hV1VGRzM0MFl3cVVrWGt4OU9tNndXd1JldU1uU1FJREFRQUJBb0lCQUFJOHo1ck5kOEdtOGJBMgo1S3pxQjI1R2lOVENwbUNJeW53NXRJWHZTQmNHcEdydUcvdlN2WG9kVlFVSVY0TWdHQkVXUEFrVzdsNWVBcHI4CnA1ZFd5SkRXYTNkdklFSE9vSEpYU3dBYksxZzZEMTNVa2NkZ1EyRGpoNVhuWDhHZCtBY2c2SmRTQWgxOWtYSHEKMk54RUtBVDB6Ri83a1g2MkRkREFBcWxmQkpGSXJodVIvZUdEVWh4L2piTTRhQ2JCcFdiM0pnRE9OYm5tS1ZoMwpxS2ZwZmRZZENZU1lzWUxrNTlxRDF2VFNwUVFUQ0VadW9VKzNzRVNhdkJzaUs1bU0vTzY5ZkRMRXNURG1MeTVQCmhEK3BMQXI0SlhNNjFwRGVBS0l3cUVqWWJybXlDRHRXTUdJNnZzZ0E1eXQzUUJaME9vV2w5QUkwdWxoZ3p4dXQKZ2ZFNTRRRUNnWUVBN0F3a0lhVEEzYmQ4Nk9jSVZnNFlrWGk1cm5aNDdsM1k4V24zcjIzUmVISXhLdkllRUtSbgp5bUlFNDFtRVBBSmlGWFpLK1VPTXdkeS9EcnFJUithT1JiT2NiV01jWUg2QzgvbG1wdVJFaXE3SW1Ub3VWcnA4CnlnUkprMWprVDA4cTIvNmg4eTBEdjJqMitsaHFXNzRNOUt0cmwxcTRlWmZRUFREL01tR1NnTWtDZ1lFQXdhY04KaSttN1p6dnJtL3NuekF2VlZ5SEtwZHVUUjNERk1naC9maC9tZ0ZHZ1RwZWtUOVV5b3FleGNYQXdwMVlhL01iQQoyNTVJVDZRbXZZTm5yNXp6Wmxic2tMV0hsYllvbWhmWnVXTHhXR3hRaEFORWdaMFVVdUVTRGMvbWx2UXZHbEtSCkZoaGhBUWlVSmdDamhPaHk1SlBiNGFldGRKd0UxK09lVWRFaE1vRUNnWUVBNG8yZ25CM1o4ck5xa3NzemlBek4KYmNuMlJVbDJOaW9pejBwS3JMaDFaT29NNE5BekpQdjJsaHRQMzdtS0htS1hLMHczRjFqTEgwSTBxZmxFVmVZbQpSU1huakdHazJjUnpBYUVzOGgrQzNheDE0Z01pZUtGU3BqNUpNOEFNbVVZOXQ1cUVhN2FYc3o0V1ZoOUlMYmVTCkRiNzlhKzVwd21LQVBrcnBsTHhyZFdrQ2dZQlNNSHVBWVdBbmJYZ1BDS2FZWklGVWJNUWNacmY0ZnpWQ2lmYksKYWZHampvRlNPZXdEOGdGK3BWdWJRTGwxbkFieU44ek1xVDRaaHhybUhpcFlqMjJDaHV2NmN3RXJtbGRiSnpwQwpBMnRaVXdkTk1ESFlMUG5lUHlZeGRJWnlsUXFVeW14SGkydElUQUxNcWtLOGV3ZWdXZHpkeGhQSlJScU5JazhrCmZIVHhnUUtCZ1FEUFc2UXIxY3F3QjNUdnVWdWR4WGRqUTdIcDFodXhrNEVWaEFJZllKNFhSTW1NUE5YS28wdHUKdUt6LzE0QW14R0dvSWJxYVc1bDMzeFNteUxhem84clNUN0tSTjVKME9JSHcrZkR5SFgxdHpVSjZCTldDcEFTcwpjbWdNK0htSzVON0w2bkNaZFJQY2IwU1hGaVRQUGhCUG1PVWFDUnpER0ZMK2JYM1VwajJKbWc9PQotLS0tLUVORCBSU0EgUFJJVkFURSBLRVktLS0tLQo=",
 										"type": "string"
 									},
 									"exp": {
 										"readOnly": true,
-										"description": "Optional unix epoch timestamp after which the token will not be accepted, up to a maximum of 24 hours from issuing time. If not set, defaults to one hour after issuing.",
+										"description": "The optional unix epoch timestamp that specficies the time after a token is not accepted. The maximum time specification is 24 hours from issuing time. If this field is not set, the default is one hour after issuing.",
 										"type": "integer"
 									},
 									"nbf": {
 										"readOnly": true,
-										"description": "Optional unix epoch timestamp before which the token will not be accepted.  If not set, defaults to one hour before issuing.",
+										"description": "The optional unix epoch timestamp that specifies the time before a the token is not accepted. If this field is not set, the default is one hour before issuing.",
 										"type": "integer"
 									},
 									"downloadable": {
 										"readOnly": true,
-										"description": "Optional boolean value which enables the signed token to be used to access mp4 download links for the video.",
+										"description": "The optional boolean value that enables using signed tokens to access MP4 download links for a video.",
 										"default": false,
 										"type": "boolean"
 									},
 									"accessRules": {
 										"readOnly": true,
-										"description": "Optional list of access rule constraints on the token. Access can be blocked or allowed based on an IP, IP range, or by country. Access Rules are evaluated first-to-last. If a Rule matches, the associated action is applied and no further rules are evaluated.",
+										"description": "The optional list of access rule constraints on the token. Access can be blocked or allowed based on an IP, IP range, or by country. Access rules are evaluated from first to last. If a rule matches, the associated action is applied and no further rules are evaluated.",
 										"type": "array",
 										"example": [
 											{
@@ -34798,11 +34798,11 @@
 										"items": {
 											"type": "object",
 											"readOnly": true,
-											"description": "Access Rules allow you to define rules to have finer-grained control over your content than signed URL tokens alone. They are primarily aimed at making tokens conditionally valid based on user information. Access Rules are specified on token payloads as the accessRules property containing an array of Rule objects.",
+											"description": "Defines rules for fine-grained control over content than signed URL tokens alone. Access rules primarily make tokens conditionally valid based on user information. Access Rules are specified on token payloads as the `accessRules` property containing an array of Rule objects.",
 											"properties": {
 												"action": {
 													"readOnly": true,
-													"description": "Action to take if a request matches a rule. If the action is 'block', the signed token will block views for viewers that match this rule.",
+													"description": "The action to take when a request matches a rule. If the action is `block`, the signed token blocks views for viewers matching the rule.",
 													"type": "string",
 													"enum": [
 														"allow",
@@ -34812,7 +34812,7 @@
 												},
 												"type": {
 													"readOnly": true,
-													"description": "Available rule types to match requests on. Type 'any' matches all requests, and may be used as a wildcard to apply a default action after other rules.",
+													"description": "Lists available rule types to match for requests. An `any` type matches all requests and can be used as a wildcard to apply default actions after other rules.",
 													"type": "string",
 													"enum": [
 														"any",
@@ -34823,7 +34823,7 @@
 												},
 												"ip": {
 													"readOnly": true,
-													"description": "Array of IPv4 or IPV6 addresses or CIDRs to match requests on.",
+													"description": "An array of IPv4 or IPV6 addresses or CIDRs used to match requests.",
 													"type": "array",
 													"items": {
 														"type": "string"
@@ -34831,7 +34831,7 @@
 												},
 												"country": {
 													"readOnly": true,
-													"description": "Array of 2-letter country codes in ISO 3166-1 Alpha-2 format to match requests on.",
+													"description": "An array of 2-letter country codes in ISO 3166-1 Alpha-2 format used to match requests.",
 													"type": "array",
 													"items": {
 														"type": "string"
@@ -34849,8 +34849,8 @@
 		},
 		"/accounts/{account_identifier}/stream/keys": {
 			"post": {
-				"summary": "Create a Signing Key",
-				"description": "Upon creation you will get a RSA private key in PEM and JWK formats. Keys are created, used and deleted independently of videos. Every key can sign any of your videos. Key files are displayed only once upon creation.",
+				"summary": "Create signing keys",
+				"description": "Creates an RSA private key in PEM and JWK formats. Key files are only displayed once after creation. Keys are created, used, and deleted independently of videos, and every key can sign any video.",
 				"parameters": [
 					{
 						"name": "account_identifier",
@@ -34863,7 +34863,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create a Signing Key response",
+						"description": "Create signing keys response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -34880,13 +34880,13 @@
 															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1stream~1keys/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/id"
 														},
 														"pem": {
-															"description": "Key in PEM format",
+															"description": "The signing key in PEM format.",
 															"example": "LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFcGdJQkFBS0NBUUVBMFRqd2pPaVpXbUo0M3ZmM1RvNERvWG1YV3RKR05HeVhmaHl0dExhQmdGMStFUVdRCkRLaG9LYm9hS21xakNBc21za3V0YkxVN1BVOGRrUU5ER1p3S3VWczA4elNaNGt4aTR0RWdQUFp5dDdkWEMrbFkKUllveXJBR0Y0QVhoeTMyOWJIQ1AxSWxyQkIvQWtHZ25kTEFndW54WTByUmdjdk96aWF3NktKeEZuYzJVSzBXVQo4YjBwNEtLSEdwMUtMOWRrMFdUOGRWWXFiZVJpSmpDbFVFbWg4eXY5Q2xPVmFTNEt4aVg2eFRRNERadzZEYUpmCklWM1F0Tmd2cG1ieWxOSmFQSG5zc3JodDJHS1A5NjJlS2poUVJsaWd2SFhKTE9uSm9KZkxlSUVIWitpeFdmY1QKRE1IOTJzR3ZvdzFET2p4TGlDTjF6SEsraDdiTG9YVGlMZ2M0a3dJREFRQUJBb0lCQVFEQ0lCclNJMTlteGNkdwoycExVaUdCR0N4T3NhVDVLbGhkYUpESG9ZdzUxbEVuTWNXVGUyY01NTkdqaXdsN1NyOFlQMkxmcERaOFJtNzdMCk5rT2tGMnk3M3l5YUhFeEw5S1FyMys0Um9ubCtqTlp2YnV0QVdxSDVodEE0dER4MUd3NE85OEg4YWlTcGh1eWQKRUliTGRrQm54OGlDZUdxbFBnbHZ6Q1dLV0xVZlhGbXplMkF5UjBzaWMyYXZRLzZyclYwb3pDdGQ1T0Vod093agphaCs3N1dZV1l0bkEraDhXZVZreWcvdG44UTJJOXo5ZVJYdlZxR2sxMDZLcWRtZFdiU2tIZzA4cFRUSGhVM2paCnMvZGNjdEdOMWFFanlUQWY0QzdHT2lrcUd1MGFTaW1aeDFOM2RWQzBobngySjJtdlhNQ0VtZ0g3TjVnZUxWUFAKOWdkQjdBQkJBb0dCQU5sT2hGQVhaTHV6Y0Ftczl1K3AxM05STWRFOHpIK2ZFaFBrbk9zZ21Xb3VqUzkxQTRtZgpuK01oN3d5bTZoVU1DbDk2WUNMNGtPM0RUMmlYWlRqTXZuMHBoVEx1MXNYcGxWNDJuamRnZGd3cFBEM0FnL1Y5ClVvV2hxdVhoa1I3RFpsUGg5Nmk1aEE0M1BvbTVPQm9BektJbEcrT3ZKUkhhZEVveC9jSmZScFd2QW9HQkFQWjUKNnNmWDdESElCNEtBczRmMWRuNGZJUkMweUF2WVdCL1R3UzZHUWVoNFRFbDVuSkQwWk9ZRVdUbVVBK3pPanZTNApuM09tZ2xNQTU5SGd1ZW13QXVRcEtwWFBOcFUvTERJaThtNnpmTUpvL3E5M0NOQlFQZngzZGh4ZVh4OXE2Mzg3Cm84QWxkOE42RGs4TThjRis3SlNaeUVJODJzLzdpdGRseXA2bFdLaGRBb0dCQUtnU0VrUGYxQWxZdjA2OGVFRGwKRzc0VkRuTEdrMlFobzltKzk1N2psOFNJUEtwMzFrU2JNUTU3TUdpWXNIT1czRzc4TjE3VTRVTUR6R2NZc1RFOQpLaGVrQldGZldMMjU2OHp5Y1d4akx1bzQrbDdJaDBkWHBudTBqbms5L1AvT0lWYS9iczBRcnhKUHFBN2RNb2JxCkYxdFJXRURCTmVxWkMxaFhVZTBEdzVRQkFvR0JBSjdBQ2NNcnhKcVBycDZVakkyK1FOS2M5Q3dSZEdPRXRjWFMKR3JQL2owWE83YnZKVTFsZHYvc1N3L0U4NzRZL3lIM0F5QnF5SFhDZXZiRkZZQmt1MzczYThlM0pwK3RhNC9scQozdUVFUkEvbmxscW5mWXJHbEJZZlQzaVlKQVpWVkZiL3I4bWJtRmJVTDVFazBqV0JyWmxNcjFwU1hkRGx3QmhhCkhMWXY0em1WQW9HQkFLQmw0cFNnbkNSTEJMUU9jWjhXQmhRSjAwZDZieFNrTGNpZ0xUNFJvY3RwNTY1SHJPMDAKSVFLdElTaEg1a2s3SVRHdUYvOERXZEN2djBMYnhvZVBJc2NFaStTaXk5WDZwWENPaS8xa2FyYVU5U3BpZ3czago3YjVlUVV0UlovTkIycVJwc3EzMEdCUENqanhudEVmK2lqelhUS0xNRndyUDhBMTlQNzRONGVTMAotLS0tLUVORCBSU0EgUFJJVkFURSBLRVktLS0tLQo=",
 															"readOnly": true,
 															"type": "string"
 														},
 														"jwk": {
-															"description": "Key in JWK format",
+															"description": "The signing key in JWK format.",
 															"readOnly": true,
 															"example": "eyJ1c2UiOiJzaWciLCJrdHkiOiJSU0EiLCJraWQiOiI1MjEzY2ZhMTIxZjcwYjhjMTM4MDY4NmZmYzM3MWJhMyIsImFsZyI6IlJTMjU2IiwibiI6IjBUandqT2laV21KNDN2ZjNUbzREb1htWFd0SkdOR3lYZmh5dHRMYUJnRjEtRVFXUURLaG9LYm9hS21xakNBc21za3V0YkxVN1BVOGRrUU5ER1p3S3VWczA4elNaNGt4aTR0RWdQUFp5dDdkWEMtbFlSWW95ckFHRjRBWGh5MzI5YkhDUDFJbHJCQl9Ba0dnbmRMQWd1bnhZMHJSZ2N2T3ppYXc2S0p4Rm5jMlVLMFdVOGIwcDRLS0hHcDFLTDlkazBXVDhkVllxYmVSaUpqQ2xVRW1oOHl2OUNsT1ZhUzRLeGlYNnhUUTREWnc2RGFKZklWM1F0Tmd2cG1ieWxOSmFQSG5zc3JodDJHS1A5NjJlS2poUVJsaWd2SFhKTE9uSm9KZkxlSUVIWi1peFdmY1RETUg5MnNHdm93MURPanhMaUNOMXpISy1oN2JMb1hUaUxnYzRrdyIsImUiOiJBUUFCIiwiZCI6IndpQWEwaU5mWnNYSGNOcVMxSWhnUmdzVHJHay1TcFlYV2lReDZHTU9kWlJKekhGazN0bkRERFJvNHNKZTBxX0dEOWkzNlEyZkVadS15elpEcEJkc3U5OHNtaHhNU19Ta0s5X3VFYUo1Zm96V2IyN3JRRnFoLVliUU9MUThkUnNPRHZmQl9Hb2txWWJzblJDR3kzWkFaOGZJZ25ocXBUNEpiOHdsaWxpMUgxeFpzM3RnTWtkTEluTm1yMFAtcTYxZEtNd3JYZVRoSWNEc0kyb2Z1LTFtRm1MWndQb2ZGbmxaTW9QN1pfRU5pUGNfWGtWNzFhaHBOZE9pcW5ablZtMHBCNE5QS1UweDRWTjQyYlAzWEhMUmpkV2hJOGt3SC1BdXhqb3BLaHJ0R2tvcG1jZFRkM1ZRdElaOGRpZHByMXpBaEpvQi16ZVlIaTFUel9ZSFFld0FRUSIsInAiOiIyVTZFVUJka3U3TndDYXoyNzZuWGMxRXgwVHpNZjU4U0UtU2M2eUNaYWk2TkwzVURpWi1mNHlIdkRLYnFGUXdLWDNwZ0l2aVE3Y05QYUpkbE9NeS1mU21GTXU3V3hlbVZYamFlTjJCMkRDazhQY0NEOVgxU2hhR3E1ZUdSSHNObVUtSDNxTG1FRGpjLWliazRHZ0RNb2lVYjQ2OGxFZHAwU2pIOXdsOUdsYTgiLCJxIjoiOW5ucXg5ZnNNY2dIZ29DemhfVjJmaDhoRUxUSUM5aFlIOVBCTG9aQjZIaE1TWG1ja1BSazVnUlpPWlFEN002TzlMaWZjNmFDVXdEbjBlQzU2YkFDNUNrcWxjODJsVDhzTWlMeWJyTjh3bWotcjNjSTBGQTlfSGQySEY1ZkgycnJmenVqd0NWM3czb09Ud3p4d1g3c2xKbklRanphel91SzEyWEtucVZZcUYwIiwiZHAiOiJxQklTUTlfVUNWaV9Ucng0UU9VYnZoVU9jc2FUWkNHajJiNzNudU9YeElnOHFuZldSSnN4RG5zd2FKaXdjNWJjYnZ3M1h0VGhRd1BNWnhpeE1UMHFGNlFGWVY5WXZibnJ6UEp4YkdNdTZqajZYc2lIUjFlbWU3U09lVDM4Xzg0aFZyOXV6UkN2RWstb0R0MHlodW9YVzFGWVFNRTE2cGtMV0ZkUjdRUERsQUUiLCJkcSI6Im5zQUp3eXZFbW8tdW5wU01qYjVBMHB6MExCRjBZNFMxeGRJYXNfLVBSYzd0dThsVFdWMl8teExEOFR6dmhqX0lmY0RJR3JJZGNKNjlzVVZnR1M3ZnZkcng3Y21uNjFyai1XcmU0UVJFRC1lV1dxZDlpc2FVRmg5UGVKZ2tCbFZVVnYtdnladVlWdFF2a1NUU05ZR3RtVXl2V2xKZDBPWEFHRm9jdGlfak9aVSIsInFpIjoib0dYaWxLQ2NKRXNFdEE1eG54WUdGQW5UUjNwdkZLUXR5S0F0UGhHaHkybm5ya2VzN1RRaEFxMGhLRWZtU1RzaE1hNFhfd05aMEstX1F0dkdoNDhpeHdTTDVLTEwxZnFsY0k2TF9XUnF0cFQxS21LRERlUHR2bDVCUzFGbjgwSGFwR215cmZRWUU4S09QR2UwUl82S1BOZE1vc3dYQ3Nfd0RYMF92ZzNoNUxRIn0=",
 															"type": "string"
@@ -34918,8 +34918,8 @@
 				}
 			},
 			"get": {
-				"summary": "List Signing Keys",
-				"description": "",
+				"summary": "List signing keys",
+				"description": "Lists the video ID and creation date and time when a signing key was created.",
 				"parameters": [
 					{
 						"name": "account_identifier",
@@ -34932,7 +34932,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "List Signing Keys response",
+						"description": "List signing keys response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -34951,7 +34951,7 @@
 																"example": "5213cfa121f70b8c1380686ffc371ba3"
 															},
 															"created": {
-																"description": "When the key was created",
+																"description": "The date and time a signing key was created.",
 																"example": "2014-01-02T02:20:00+00:00",
 																"format": "date-time",
 																"readOnly": true,
@@ -34978,8 +34978,8 @@
 		},
 		"/accounts/{account_identifier}/stream/keys/{identifier}": {
 			"delete": {
-				"summary": "Delete key",
-				"description": "Deleting a key revokes all signed URLs generated with the key.",
+				"summary": "Delete signing keys",
+				"description": "Deletes signing keys and revokes all signed URLs generated with the key.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -35000,7 +35000,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete key response",
+						"description": "Delete signing keys response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -35039,14 +35039,14 @@
 		"/accounts/{account_identifier}/stream/{video_identifier}/downloads": {
 			"post": {
 				"summary": "Create downloads",
-				"description": "Create downloads for a video, this can only be done if the video is ready to view.",
+				"description": "Creates a download for a video when a video is ready to view.",
 				"parameters": [
 					{
 						"name": "video_identifier",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "Media item unique identifier",
+							"description": "A unique identifier for the MP4 file.",
 							"example": "ea95132c15732412d22c1476fa83f27a",
 							"maxLength": 32,
 							"readOnly": true,
@@ -35100,7 +35100,7 @@
 			},
 			"get": {
 				"summary": "List downloads",
-				"description": "View the downloads created for this video",
+				"description": "Lists the downloads created for a video.",
 				"parameters": [
 					{
 						"name": "video_identifier",
@@ -35141,15 +35141,15 @@
 		},
 		"/accounts/{account_identifier}/stream/{video_identifier}/captions/{language}": {
 			"put": {
-				"summary": "Upload a caption/subtitle",
-				"description": "Upload the file to the endpoint for a specific BCP47 language. One caption/subtitle per language is allowed.",
+				"summary": "Upload captions or subtitles",
+				"description": "Uploads the caption or subtitle file to the endpoint for a specific BCP47 language. One caption or subtitle file per language is allowed.",
 				"parameters": [
 					{
 						"name": "language",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "Language in BCP 47 format",
+							"description": "The language tag in BCP 47 format.",
 							"example": "tr",
 							"readOnly": true,
 							"type": "string"
@@ -35160,7 +35160,7 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "Media item unique identifier",
+							"description": "A unique identifier for the media file.",
 							"example": "ea95132c15732412d22c1476fa83f27a",
 							"maxLength": 32,
 							"readOnly": true,
@@ -35178,7 +35178,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Upload a caption/subtitle response",
+						"description": "Upload captions or subtitles response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -35217,7 +35217,7 @@
 								"properties": {
 									"file": {
 										"type": "string",
-										"description": "WebVTT file to upload",
+										"description": "The WebVTT file containing the caption or subtitle content.",
 										"example": "@/Users/kyle/Desktop/tr.vtt"
 									}
 								}
@@ -35227,8 +35227,8 @@
 				}
 			},
 			"delete": {
-				"summary": "Delete a caption/subtitle",
-				"description": "Remove the caption or subtitle from a video",
+				"summary": "Delete captions or subtitles",
+				"description": "Removes the captions or subtitles from a video.",
 				"parameters": [
 					{
 						"name": "language",
@@ -35257,7 +35257,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete a caption/subtitle response",
+						"description": "Delete captions or subtitles response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -35295,15 +35295,15 @@
 		},
 		"/accounts/{account_identifier}/stream/{video_identifier}/captions": {
 			"get": {
-				"summary": "List captions/subtitles",
-				"description": "View the currently available captions for a specific video.",
+				"summary": "List captions or subtitles",
+				"description": "Lists the available captions or subtitles for a specific video.",
 				"parameters": [
 					{
 						"name": "video_identifier",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "Media item unique identifier",
+							"description": "A unique identifier for the media file.",
 							"example": "ea95132c15732412d22c1476fa83f27a",
 							"maxLength": 32,
 							"readOnly": true,
@@ -35321,7 +35321,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "List captions/subtitles response",
+						"description": "List captions or subtitles response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -35336,13 +35336,13 @@
 														"type": "object",
 														"properties": {
 															"label": {
-																"description": "Language label in the native language to be displayed to the user",
+																"description": "The language label displayed in the native language to users.",
 																"readOnly": true,
 																"example": "Türkçe",
 																"type": "string"
 															},
 															"language": {
-																"description": "Language in BCP 47 format",
+																"description": "The language tag in BCP 47 format.",
 																"example": "tr",
 																"readOnly": true,
 																"type": "string"
@@ -35369,8 +35369,8 @@
 		},
 		"/accounts/{account_identifier}/stream/webhook": {
 			"put": {
-				"summary": "Create a webhook",
-				"description": "",
+				"summary": "Create webhooks",
+				"description": "Creates a webhook notification.",
 				"parameters": [
 					{
 						"name": "account_identifier",
@@ -35387,7 +35387,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create a webhook response",
+						"description": "Create webhooks response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -35424,7 +35424,7 @@
 								],
 								"properties": {
 									"notificationUrl": {
-										"description": "The URL the webhooks will be sent to",
+										"description": "The URL where webhooks will be sent.",
 										"example": "https://example.com",
 										"format": "uri",
 										"type": "string"
@@ -35436,8 +35436,8 @@
 				}
 			},
 			"get": {
-				"summary": "View the webhook",
-				"description": "",
+				"summary": "View webhooks",
+				"description": "Retrieves a list of webhooks.",
 				"parameters": [
 					{
 						"name": "account_identifier",
@@ -35450,7 +35450,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "View the webhook response",
+						"description": "View webhooks response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -35468,8 +35468,8 @@
 				]
 			},
 			"delete": {
-				"summary": "Delete the webhook",
-				"description": "",
+				"summary": "Delete webhooks",
+				"description": "Deletes a webhook.",
 				"parameters": [
 					{
 						"name": "account_identifier",
@@ -35482,7 +35482,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete the webhook response",
+						"description": "Delete webhooks response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -35520,15 +35520,15 @@
 		},
 		"/accounts/{account_identifier}/stream/watermarks": {
 			"post": {
-				"summary": "Create a Watermark Profile via Basic Upload",
-				"description": "You can create a watermark profile using a single HTTP POST (multipart/form-data) request.",
+				"summary": "Create watermark profiles via basic upload",
+				"description": "Creates watermark profiles using a single `HTTP POST multipart/form-data` request.",
 				"parameters": [
 					{
 						"name": "account_identifier",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "Account identifier tag",
+							"description": "The account identifier tag.",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"readOnly": true,
@@ -35538,7 +35538,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create a Watermark Profile via Basic Upload response",
+						"description": "Create watermark profiles via basic upload response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -35577,18 +35577,18 @@
 								"properties": {
 									"file": {
 										"type": "string",
-										"description": "Image file to upload",
+										"description": "The image file to upload.",
 										"example": "@/Users/rchen/Downloads/watermark.png"
 									},
 									"name": {
-										"description": "A short description for the profile.",
+										"description": "A short description of the watermark profile.",
 										"default": "",
 										"example": "Marketing Videos",
 										"readOnly": true,
 										"type": "string"
 									},
 									"opacity": {
-										"description": "Translucency of the image. 0.0 means completely transparent, and 1.0 means completely opaque. Note that if the image is already semi-transparent, setting this to 1.0 will not make it completely opaque.",
+										"description": "The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque.",
 										"default": 1,
 										"example": 0.75,
 										"minimum": 0,
@@ -35597,7 +35597,7 @@
 										"type": "number"
 									},
 									"padding": {
-										"description": "Whitespace between the adjacent edges (determined by position) of the video and the image. 0.0 means no padding, and 1.0 means padded full video width or length, determined by the algorithm.",
+										"description": "The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length, as determined by the algorithm.",
 										"default": 0.05,
 										"example": 0.1,
 										"minimum": 0,
@@ -35606,7 +35606,7 @@
 										"type": "number"
 									},
 									"scale": {
-										"description": "The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. 0.0 means no scaling (use the size of the image as-is), and 1.0 fills the entire video.",
+										"description": "The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0 `fills the entire video.",
 										"default": 0.15,
 										"example": 0.1,
 										"minimum": 0,
@@ -35615,7 +35615,7 @@
 										"type": "number"
 									},
 									"position": {
-										"description": "Location of the image. Valid positions are: \"upperRight\", \"upperLeft\", \"lowerLeft\", \"lowerRight\", and \"center\". Note that \"center\" will ignore the \"padding\" parameter. ",
+										"description": "The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter. ",
 										"default": "upperRight",
 										"example": "center",
 										"readOnly": true,
@@ -35628,8 +35628,8 @@
 				}
 			},
 			"get": {
-				"summary": "List Watermark Profiles",
-				"description": "List all the watermark profiles under your account.",
+				"summary": "List watermark profiles",
+				"description": "Lists all watermark profiles for an account.",
 				"parameters": [
 					{
 						"name": "account_identifier",
@@ -35642,7 +35642,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "List Watermark Profiles response",
+						"description": "List watermark profiles response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -35657,7 +35657,7 @@
 														"type": "object",
 														"properties": {
 															"uid": {
-																"description": "Watermark profile unique identifier.",
+																"description": "The unique identifier for a watermark profile.",
 																"example": "ea95132c15732412d22c1476fa83f27a",
 																"maxLength": 32,
 																"readOnly": true,
@@ -35670,24 +35670,24 @@
 																"type": "number"
 															},
 															"height": {
-																"description": "Height of the image in pixels.",
+																"description": "The height of the image in pixels.",
 																"type": "integer",
 																"readOnly": true
 															},
 															"width": {
-																"description": "Width of the image in pixels.",
+																"description": "The width of the image in pixels.",
 																"type": "integer",
 																"readOnly": true
 															},
 															"created": {
-																"description": "When the watermark profile was created.",
+																"description": "The date and a time a watermark profile was created.",
 																"example": "2014-01-02T02:20:00+00:00",
 																"format": "date-time",
 																"readOnly": true,
 																"type": "string"
 															},
 															"downloadedFrom": {
-																"description": "The source URL to the image where it was downloaded from. If the watermark profile was created via direct upload, this field will be null.",
+																"description": "The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null.",
 																"example": "https://company.com/logo.png",
 																"readOnly": true,
 																"type": "string"
@@ -35736,15 +35736,15 @@
 		},
 		"/accounts/{account_identifier}/stream/watermarks/{identifier}": {
 			"get": {
-				"summary": "Watermark Profile Details",
-				"description": "Fetch details of a single watermark profile.",
+				"summary": "Watermark profile details",
+				"description": "Retrieves details for a single watermark profile.",
 				"parameters": [
 					{
 						"name": "identifier",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "Watermark profile unique identifier.",
+							"description": "The unique identifier for a watermark profile.",
 							"example": "ea95132c15732412d22c1476fa83f27a",
 							"maxLength": 32,
 							"readOnly": true,
@@ -35756,7 +35756,7 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "Account identifier tag",
+							"description": "The account identifier tag.",
 							"example": "023e105f4ecef8ad9ca31a8372d0c353",
 							"maxLength": 32,
 							"readOnly": true,
@@ -35766,7 +35766,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Watermark Profile Details response",
+						"description": "Watermark profile details response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -35795,8 +35795,8 @@
 				]
 			},
 			"delete": {
-				"summary": "Delete Watermark Profile",
-				"description": "Mark a watermark profile as deleted",
+				"summary": "Delete watermark profiles",
+				"description": "Deletes a watermark profile.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -35817,7 +35817,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete Watermark Profile response",
+						"description": "Delete watermark profiles response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -35855,8 +35855,8 @@
 		},
 		"/accounts/{account_identifier}/stream/live_inputs": {
 			"post": {
-				"summary": "Create a live input",
-				"description": "Create a live input that can be streamed to. Add an output in order to direct traffic.",
+				"summary": "Create live inputs",
+				"description": "Creates a live input to use for live streaming.",
 				"parameters": [
 					{
 						"name": "account_identifier",
@@ -35869,7 +35869,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create a live input response",
+						"description": "Create live inputs response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -35903,17 +35903,17 @@
 							"schema": {
 								"properties": {
 									"meta": {
-										"description": "User modifyable key-value store. Can use used for keeping references to another system of record for managing live inputs.",
+										"description": "A user modifiable key-value store used to reference other systems of record for managing live inputs.",
 										"example": {
 											"name": "test stream 1"
 										},
 										"type": "object"
 									},
 									"recording": {
-										"description": "Control recording the input to a Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.",
+										"description": "Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.",
 										"properties": {
 											"mode": {
-												"description": "Specifies the recording behavior of the live input. 'off' indicates no recording will be made. 'automatic' indicates a recording should be made, and that the recording should transition to on-demand after Stream Live stops receiving input.",
+												"description": "Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input.",
 												"type": "string",
 												"enum": [
 													false,
@@ -35923,13 +35923,13 @@
 												"example": "automatic"
 											},
 											"requireSignedURLs": {
-												"description": "Indicates whether videos created using this Live Input has the requireSignedURLs property set. This enforces access controls on any video created with the live input.",
+												"description": "Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input.",
 												"type": "boolean",
 												"default": false,
 												"example": true
 											},
 											"allowedOrigins": {
-												"description": "List of which origins should be allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty array will allow the video to be viewed on any origin.",
+												"description": "Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin.",
 												"type": "array",
 												"example": [
 													"example.com"
@@ -35939,7 +35939,7 @@
 												}
 											},
 											"timeoutSeconds": {
-												"description": "Duration a live input configured in 'automatic' mode waits before determining a recording should transition from live to on-demand. A value of 0 indicates the platform default should be used. 0 is recommended for most use cases.",
+												"description": "Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used.",
 												"type": "integer",
 												"default": 0
 											}
@@ -35959,7 +35959,7 @@
 			},
 			"get": {
 				"summary": "List live inputs",
-				"description": "View the live inputs that have been created on this account. Some information is not included on list requests, such as the URL to stream to. To get that information, request a single live input.",
+				"description": "Lists the live inputs created for an account. To get the URL used for streaming, request a single live input.",
 				"parameters": [
 					{
 						"name": "account_identifier",
@@ -35987,7 +35987,7 @@
 													"items": {
 														"properties": {
 															"uid": {
-																"description": "Live input unique identifier",
+																"description": "A unique identifier for a live input.",
 																"example": "66be4bf738797e01e1fca35a7bdecdcd",
 																"maxLength": 32,
 																"readOnly": true,
@@ -35997,14 +35997,14 @@
 																"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1stream~1live_inputs/post/requestBody/content/application~1json/schema/properties/meta"
 															},
 															"created": {
-																"description": "When the live input was created.",
+																"description": "The date and time the live input was created.",
 																"example": "2014-01-02T02:20:00+00:00",
 																"format": "date-time",
 																"readOnly": true,
 																"type": "string"
 															},
 															"modified": {
-																"description": "When the live input was last modified.",
+																"description": "The date and time the live input was last modified.",
 																"example": "2014-01-02T02:20:00+00:00",
 																"format": "date-time",
 																"readOnly": true,
@@ -36031,15 +36031,15 @@
 		},
 		"/accounts/{account_identifier}/stream/live_inputs/{live_input_identifier}": {
 			"get": {
-				"summary": "Live input details",
-				"description": "Fetch details about a single live input",
+				"summary": "List a single live input ",
+				"description": "Lists details about a single live input.",
 				"parameters": [
 					{
 						"name": "live_input_identifier",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "Live input unique identifier",
+							"description": "A unique identifier for a live input.",
 							"example": "66be4bf738797e01e1fca35a7bdecdcd",
 							"maxLength": 32,
 							"readOnly": true,
@@ -36057,7 +36057,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Live input details response",
+						"description": "List a single live input  response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -36086,8 +36086,8 @@
 				]
 			},
 			"put": {
-				"summary": "Update live input details",
-				"description": "Update details about a single live input",
+				"summary": "Update a single live input",
+				"description": "Updates information for a single live input.",
 				"parameters": [
 					{
 						"name": "live_input_identifier",
@@ -36108,7 +36108,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update live input details response",
+						"description": "Update a single live input response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -36131,17 +36131,17 @@
 							"schema": {
 								"properties": {
 									"meta": {
-										"description": "User modifyable key-value store. Can use used for keeping references to another system of record for managing live inputs.",
+										"description": "A user modifiable key-value store used to reference other systems of record for managing live inputs.",
 										"example": {
 											"name": "test stream 1"
 										},
 										"type": "object"
 									},
 									"recording": {
-										"description": "Control recording the input to a Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.",
+										"description": "Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.",
 										"properties": {
 											"mode": {
-												"description": "Specifies the recording behavior of the live input. 'off' indicates no recording will be made. 'automatic' indicates a recording should be made, and that the recording should transition to on-demand after Stream Live stops receiving input.",
+												"description": "Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input.",
 												"type": "string",
 												"enum": [
 													false,
@@ -36151,13 +36151,13 @@
 												"example": "automatic"
 											},
 											"requireSignedURLs": {
-												"description": "Indicates whether videos created using this Live Input has the requireSignedURLs property set. This enforces access controls on any video created with the live input.",
+												"description": "Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input.",
 												"type": "boolean",
 												"default": false,
 												"example": true
 											},
 											"allowedOrigins": {
-												"description": "List of which origins should be allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty array will allow the video to be viewed on any origin.",
+												"description": "Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin.",
 												"type": "array",
 												"example": [
 													"example.com"
@@ -36167,7 +36167,7 @@
 												}
 											},
 											"timeoutSeconds": {
-												"description": "Duration a live input configured in 'automatic' mode waits before determining a recording should transition from live to on-demand. A value of 0 indicates the platform default should be used. 0 is recommended for most use cases.",
+												"description": "Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used.",
 												"type": "integer",
 												"default": 0
 											}
@@ -36186,8 +36186,8 @@
 				}
 			},
 			"delete": {
-				"summary": "Delete live input",
-				"description": "Prevent a live input from being streamed to. This makes the live input inaccessible to any future API calls or RTMPS transmission",
+				"summary": "Delete live inputs",
+				"description": "Prevents a live input from being streamed to and makes the live input inaccessible to any future API calls or RTMPS transmissions.",
 				"parameters": [
 					{
 						"name": "live_input_identifier",
@@ -36208,7 +36208,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete live input response",
+						"description": "Delete live inputs response",
 						"content": {
 							"application/json": {}
 						}
@@ -36230,15 +36230,15 @@
 		},
 		"/accounts/{account_identifier}/stream/live_inputs/{live_input_identifier}/outputs": {
 			"post": {
-				"summary": "Add an output to a live input",
-				"description": "Create a new output which will be restreamed to by a live input",
+				"summary": "Add outputs to a live input",
+				"description": "Creates a new output that a live input will use for streaming.",
 				"parameters": [
 					{
 						"name": "live_input_identifier",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "Live input unique identifier",
+							"description": "A unique identifier for a live input.",
 							"example": "66be4bf738797e01e1fca35a7bdecdcd",
 							"maxLength": 32,
 							"readOnly": true,
@@ -36256,7 +36256,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Add an output to a live input response",
+						"description": "Add outputs to a live input response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -36269,7 +36269,7 @@
 												"result": {
 													"properties": {
 														"uid": {
-															"description": "Output item unique identifier",
+															"description": "A unique identifier for the output.",
 															"example": "baea4d9c515887b80289d5c33cf01145",
 															"maxLength": 32,
 															"readOnly": true,
@@ -36308,13 +36308,13 @@
 								],
 								"properties": {
 									"url": {
-										"description": "The URL a output will restream to",
+										"description": "The URL an output uses to restream.",
 										"example": "rtmp://a.rtmp.youtube.com/live2",
 										"readOnly": true,
 										"type": "string"
 									},
 									"streamKey": {
-										"description": "The streamKey used to authenticate against a output's target",
+										"description": "The streamKey used to authenticate against an output's target.",
 										"example": "uzya-f19y-g2g9-a2ee-51j2",
 										"readOnly": true,
 										"type": "string"
@@ -36327,7 +36327,7 @@
 			},
 			"get": {
 				"summary": "List outputs associated with a live input",
-				"description": "Create a new output to restream to when a live input receives data",
+				"description": "Retrieves a list of outputs associated with a live input.",
 				"parameters": [
 					{
 						"name": "live_input_identifier",
@@ -36383,14 +36383,14 @@
 		"/accounts/{account_identifier}/stream/live_inputs/{live_input_identifier}/outputs/{output_identifier}": {
 			"delete": {
 				"summary": "Remove an output from a live input",
-				"description": "Remove an output from a live input",
+				"description": "Removes an output from a live input.",
 				"parameters": [
 					{
 						"name": "output_identifier",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "Output item unique identifier",
+							"description": "A unique identifier for the output.",
 							"example": "baea4d9c515887b80289d5c33cf01145",
 							"maxLength": 32,
 							"readOnly": true,
@@ -36402,7 +36402,7 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "Live input unique identifier",
+							"description": "A unique identifier for a live input.",
 							"example": "66be4bf738797e01e1fca35a7bdecdcd",
 							"maxLength": 32,
 							"readOnly": true,
