@@ -65656,8 +65656,8 @@
 											"type": "object",
 											"oneOf": [
 												{
-													"title": "Access Email Rule",
-													"description": "Match a specific email.",
+													"title": "Email",
+													"description": "Matches a specific email.",
 													"type": "object",
 													"required": [
 														"email"
@@ -65680,7 +65680,7 @@
 													}
 												},
 												{
-													"title": "Access Domain Rule",
+													"title": "Email domain",
 													"description": "Match an entire email domain.",
 													"type": "object",
 													"required": [
@@ -65703,8 +65703,8 @@
 													}
 												},
 												{
-													"title": "Access Everyone Rule",
-													"description": "Match everyone.",
+													"title": "Everyone",
+													"description": "Matches everyone.",
 													"type": "object",
 													"required": [
 														"everyone"
@@ -65712,14 +65712,14 @@
 													"properties": {
 														"everyone": {
 															"type": "object",
-															"description": "The everyone rule uses an empty object for the configuration. This will allow any user to reach the path of the application without authentication.",
+															"description": "An empty object which matches on all users.",
 															"example": {}
 														}
 													}
 												},
 												{
-													"title": "Access IP Rule",
-													"description": "Match an IP address block.",
+													"title": "IP ranges",
+													"description": "Matches an IP address block.",
 													"type": "object",
 													"required": [
 														"ip"
@@ -65741,8 +65741,8 @@
 													}
 												},
 												{
-													"title": "Access IP List Rule",
-													"description": "Match an IP from a list.",
+													"title": "IP list",
+													"description": "Matches an IP address from a list.",
 													"type": "object",
 													"required": [
 														"ip_list"
@@ -65756,7 +65756,7 @@
 															"properties": {
 																"id": {
 																	"type": "string",
-																	"description": "The ID of a previously created IP List.",
+																	"description": "The ID of a previously created IP list.",
 																	"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
 																}
 															}
@@ -65764,8 +65764,8 @@
 													}
 												},
 												{
-													"title": "Certificate Rule",
-													"description": "Match any valid certificate.",
+													"title": "Valid certificate",
+													"description": "Matches any valid client certificate.",
 													"type": "object",
 													"example": {
 														"certificate": {}
@@ -65782,8 +65782,8 @@
 													}
 												},
 												{
-													"title": "Access Group Rule",
-													"description": "Match an Access Group",
+													"title": "Access groups",
+													"description": "Matches an Access group",
 													"type": "object",
 													"required": [
 														"group"
@@ -65797,7 +65797,7 @@
 															"properties": {
 																"id": {
 																	"type": "string",
-																	"description": "The ID of a previously created Access Group.",
+																	"description": "The ID of a previously created Access group.",
 																	"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
 																}
 															}
@@ -65805,8 +65805,8 @@
 													}
 												},
 												{
-													"title": "Azure Group Rule",
-													"description": "Match an Azure Group\nRequires an Azure identity provider",
+													"title": "Azure group",
+													"description": "Matches an Azure group.\nRequires an Azure identity provider.",
 													"type": "object",
 													"required": [
 														"azureAD"
@@ -65834,8 +65834,8 @@
 													}
 												},
 												{
-													"title": "Github Organization Rule",
-													"description": "Match a Github Organization\nRequires a Github identity provider",
+													"title": "Github organization",
+													"description": "Matches a Github organization\nRequires a Github identity provider.",
 													"type": "object",
 													"required": [
 														"github-organization"
@@ -65863,8 +65863,8 @@
 													}
 												},
 												{
-													"title": "GSuite Group Rule",
-													"description": "Match a GSuite Group\nRequires a GSuite identity provider",
+													"title": "Google Workspace group",
+													"description": "Matches a group in Google Workspace.\nRequires a Google Workspace identity provider.",
 													"type": "object",
 													"required": [
 														"gsuite"
@@ -65879,12 +65879,12 @@
 															"properties": {
 																"email": {
 																	"type": "string",
-																	"description": "The email of the group.",
+																	"description": "The email of the Google Workspace group.",
 																	"example": "devs@cloudflare.com"
 																},
 																"connection_id": {
 																	"type": "string",
-																	"description": "The ID of your GSuite identity provider.",
+																	"description": "The ID of your Google Workspace identity provider.",
 																	"example": "ea85612a-29c8-46c2-bacb-669d65136971"
 																}
 															}
@@ -65892,8 +65892,8 @@
 													}
 												},
 												{
-													"title": "Okta Group Rule",
-													"description": "Match an Okta Group\nRequires a Okta identity provider",
+													"title": "Okta group",
+													"description": "Matches an Okta group.\nRequires an Okta identity provider.",
 													"type": "object",
 													"required": [
 														"okta"
@@ -65908,12 +65908,12 @@
 															"properties": {
 																"email": {
 																	"type": "string",
-																	"description": "The email of the group.",
+																	"description": "The email of the Okta group.",
 																	"example": "devs@cloudflare.com"
 																},
 																"connection_id": {
 																	"type": "string",
-																	"description": "The ID of your ID of your Okta identity provider.",
+																	"description": "The ID of your Okta identity provider.",
 																	"example": "ea85612a-29c8-46c2-bacb-669d65136971"
 																}
 															}
@@ -65921,8 +65921,8 @@
 													}
 												},
 												{
-													"title": "SAML Group Rule",
-													"description": "Match a SAML Group\nRequires a SAML identity provider",
+													"title": "SAML group",
+													"description": "Matches a SAML group.\nRequires a SAML identity provider.",
 													"type": "object",
 													"required": [
 														"saml"
@@ -65937,12 +65937,12 @@
 															"properties": {
 																"attribute_name": {
 																	"type": "string",
-																	"description": "The name of the attribute.",
+																	"description": "The name of the SAML attribute.",
 																	"example": "group"
 																},
 																"attribute_value": {
 																	"type": "string",
-																	"description": "The value to look for.",
+																	"description": "The SAML attribute value to look for.",
 																	"example": "devs@cloudflare.com"
 																}
 															}
@@ -66194,8 +66194,8 @@
 		},
 		"/accounts/{identifier}/access/service_tokens": {
 			"get": {
-				"summary": "List Access Service Tokens",
-				"description": "List Access Service Tokens",
+				"summary": "List service tokens",
+				"description": "Lists all service tokens.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -66208,7 +66208,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "List Access Service Tokens response",
+						"description": "List service tokens response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -66230,7 +66230,7 @@
 																"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1ssl~1recommendation/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/modified_on"
 															},
 															"id": {
-																"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1service_tokens/post/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/id"
+																"description": "The ID of the service token."
 															},
 															"name": {
 																"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1service_tokens/post/requestBody/content/application~1json/schema/properties/name"
@@ -66257,8 +66257,8 @@
 				]
 			},
 			"post": {
-				"summary": "Create Access Service Token",
-				"description": "Create a new Access Service Token. **Note:** This is the only time you can get the client secret. Please save it somewhere secure.",
+				"summary": "Create a service token",
+				"description": "Generates a new service token. **Note:** This is the only time you can get the Client Secret. If you lose the Client Secret, you will have to create a new service token.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -66271,7 +66271,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create Access Service Token response",
+						"description": "Create a service token response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -66290,19 +66290,19 @@
 															"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1ssl~1recommendation/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/modified_on"
 														},
 														"id": {
-															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1identity_providers/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/id"
+															"description": "The ID of the service token."
 														},
 														"name": {
 															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1service_tokens/post/requestBody/content/application~1json/schema/properties/name"
 														},
 														"client_id": {
 															"type": "string",
-															"description": "The service token client id you will send in on requests",
+															"description": "The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.",
 															"example": "88bf3b6d86161464f6509f7219099e57.access.example.com"
 														},
 														"client_secret": {
 															"type": "string",
-															"description": "The service token client secret you will send in on requests",
+															"description": "The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.",
 															"example": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
 														}
 													}
@@ -66332,7 +66332,7 @@
 								"properties": {
 									"name": {
 										"type": "string",
-										"description": "The name of your Access Service Token.",
+										"description": "The name of the service token.",
 										"example": "CI/CD token"
 									}
 								}
@@ -66344,8 +66344,8 @@
 		},
 		"/accounts/{identifier}/access/service_tokens/{uuid}": {
 			"put": {
-				"summary": "Update Access Service Token",
-				"description": "Update a configured Access Service Token",
+				"summary": "Update a service token",
+				"description": "Updates a configured service token.",
 				"parameters": [
 					{
 						"name": "uuid",
@@ -66366,7 +66366,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update Access Service Token response",
+						"description": "Update a service token response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -66386,14 +66386,14 @@
 															"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1ssl~1recommendation/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/modified_on"
 														},
 														"id": {
-															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1service_tokens~1%7Buuid%7D/put/parameters/0/schema"
+															"description": "The ID of the service token."
 														},
 														"name": {
 															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1service_tokens~1%7Buuid%7D/put/requestBody/content/application~1json/schema/properties/name"
 														},
 														"client_id": {
 															"type": "string",
-															"description": "The service token client id you will send in on requests",
+															"description": "The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.",
 															"example": "88bf3b6d86161464f6509f7219099e57.access.example.com"
 														}
 													}
@@ -66420,7 +66420,7 @@
 								"properties": {
 									"name": {
 										"type": "string",
-										"description": "The name of your Access Service Token.",
+										"description": "The name of the service token.",
 										"example": "CI/CD token"
 									}
 								}
@@ -66430,8 +66430,8 @@
 				}
 			},
 			"delete": {
-				"summary": "Delete Access Service Token",
-				"description": "Delete an Access Service Token",
+				"summary": "Delete a service token",
+				"description": "Deletes a service token.",
 				"parameters": [
 					{
 						"name": "uuid",
@@ -66452,7 +66452,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete Access Service Token response",
+						"description": "Delete a service token response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -66478,8 +66478,8 @@
 		},
 		"/accounts/{identifier}/access/apps/ca": {
 			"get": {
-				"summary": "List Short-Lived Certificates",
-				"description": "List Short-Lived Certificates",
+				"summary": "List short-lived certificate CAs",
+				"description": "Lists short-lived certificate CAs and their public keys.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -66492,7 +66492,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "List Short-Lived Certificates response",
+						"description": "List short-lived certificate CAs response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -66508,21 +66508,21 @@
 														"type": "object",
 														"properties": {
 															"id": {
-																"description": "Short-lived certificate id",
+																"description": "The ID of the CA.",
 																"type": "string",
 																"maxLength": 48,
 																"readOnly": true,
 																"example": "7eddae4619b50ab1361ba8ae9bd72269a432fea041529ed9"
 															},
 															"aud": {
-																"description": "Audience tag",
+																"description": "The Application Audience (AUD) tag. Identifies the application associated with the CA.",
 																"type": "string",
 																"maxLength": 64,
 																"readOnly": true,
 																"example": "737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893"
 															},
 															"public_key": {
-																"description": "Public key for DS record",
+																"description": "The public key to add to your SSH server configuration.",
 																"type": "string",
 																"readOnly": true,
 																"example": "ecdsa-sha2-nistp256 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/xxxxxxxxxxxxxxxxxxxxx/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx= open-ssh-ca@cloudflareaccess.org"
@@ -66548,8 +66548,8 @@
 		},
 		"/accounts/{identifier}/access/apps/{uuid}/ca": {
 			"get": {
-				"summary": "Short-Lived Certificate Details",
-				"description": "Fetch a single short-lived certificate",
+				"summary": "Get a short-lived certificate CA",
+				"description": "Fetches a short-lived certificate CA and its public key.",
 				"parameters": [
 					{
 						"name": "uuid",
@@ -66570,7 +66570,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Short-Lived Certificate Details response",
+						"description": "Get a short-lived certificate CA response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -66599,8 +66599,8 @@
 				]
 			},
 			"post": {
-				"summary": "Create Short-Lived Certificate",
-				"description": "Create a new short-lived certificate",
+				"summary": "Create a short-lived certificate CA",
+				"description": "Generates a new short-lived certificate CA and public key.",
 				"parameters": [
 					{
 						"name": "uuid",
@@ -66621,7 +66621,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create Short-Lived Certificate response",
+						"description": "Create a short-lived certificate CA response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -66645,8 +66645,8 @@
 				}
 			},
 			"delete": {
-				"summary": "Delete Access Certificate",
-				"description": "Delete an Access Certificate",
+				"summary": "Delete a short-lived certificate CA",
+				"description": "Deletes a short-lived certificate CA.",
 				"parameters": [
 					{
 						"name": "uuid",
@@ -66667,7 +66667,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete Access Certificate response",
+						"description": "Delete a short-lived certificate CA response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -66681,7 +66681,7 @@
 													"type": "object",
 													"properties": {
 														"id": {
-															"description": "Short-lived certificate id",
+															"description": "The ID of the CA.",
 															"type": "string",
 															"maxLength": 48,
 															"readOnly": true,
@@ -66713,8 +66713,8 @@
 		},
 		"/accounts/{identifier}/access/certificates": {
 			"get": {
-				"summary": "List Access Certificates",
-				"description": "List Access Certificates",
+				"summary": "List mTLS certificates",
+				"description": "Lists all mTLS certificates.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -66727,7 +66727,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "List Access Certificates response",
+						"description": "List mTLS certificates response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -66743,7 +66743,7 @@
 														"type": "object",
 														"properties": {
 															"id": {
-																"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1identity_providers/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/id"
+																"description": "The ID of the application that will use this certificate."
 															},
 															"created_at": {
 																"$ref": "#/paths/~1user~1load_balancers~1monitors/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/created_on"
@@ -66762,7 +66762,7 @@
 															},
 															"fingerprint": {
 																"type": "string",
-																"description": "The MD5 fingerprint of the certificate",
+																"description": "The MD5 fingerprint of the certificate.",
 																"example": "MD5 Fingerprint=1E:80:0F:7A:FD:31:55:96:DE:D5:CB:E2:F0:91:F6:91"
 															},
 															"associated_hostnames": {
@@ -66787,8 +66787,8 @@
 				]
 			},
 			"post": {
-				"summary": "Create Access Certificate",
-				"description": "Create a new Access Certificate",
+				"summary": "Add an mTLS certificate",
+				"description": "Adds a new mTLS root certificate to Access.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -66801,7 +66801,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create Access Certificate response",
+						"description": "Add an mTLS certificate response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -66840,20 +66840,20 @@
 								"properties": {
 									"name": {
 										"type": "string",
-										"description": "The name of the Certificate. Only used in the UI.",
+										"description": "The name of the certificate.",
 										"example": "Allow devs"
 									},
 									"certificate": {
 										"type": "string",
-										"description": "The Root CA for your certificates",
+										"description": "The certificate content.",
 										"example": "-----BEGIN CERTIFICATE-----\nMIIGAjCCA+qgAwIBAgIJAI7kymlF7CWT...N4RI7KKB7nikiuUf8vhULKy5IX10\nDrUtmu/B\n-----END CERTIFICATE-----"
 									},
 									"associated_hostnames": {
 										"type": "array",
-										"description": "The hostnames that will be prompted for this certificate.",
+										"description": "The hostnames of the applications that will use this certificate.",
 										"items": {
 											"type": "string",
-											"description": "Hostname",
+											"description": "A fully-qualified domain name (FQDN).",
 											"example": "admin.example.com"
 										}
 									}
@@ -66866,8 +66866,8 @@
 		},
 		"/accounts/{identifier}/access/certificates/{uuid}": {
 			"get": {
-				"summary": "Access Certificate Details",
-				"description": "Fetch a single Access Certificate",
+				"summary": "Get an mTLS certificate",
+				"description": "Fetches a single mTLS certificate.",
 				"parameters": [
 					{
 						"name": "uuid",
@@ -66888,7 +66888,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Access Certificate Details response",
+						"description": "Get an mTLS certificate response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -66902,7 +66902,7 @@
 													"type": "object",
 													"properties": {
 														"id": {
-															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1certificates~1%7Buuid%7D/get/parameters/0/schema"
+															"description": "The ID of the application that will use this certificate."
 														},
 														"created_at": {
 															"$ref": "#/paths/~1user~1load_balancers~1monitors/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/created_on"
@@ -66918,7 +66918,7 @@
 														},
 														"fingerprint": {
 															"type": "string",
-															"description": "The MD5 fingerprint of the certificate",
+															"description": "The MD5 fingerprint of the certificate.",
 															"example": "MD5 Fingerprint=1E:80:0F:7A:FD:31:55:96:DE:D5:CB:E2:F0:91:F6:91"
 														},
 														"associated_hostnames": {
@@ -66942,8 +66942,8 @@
 				]
 			},
 			"put": {
-				"summary": "Update Access Certificate",
-				"description": "Update a configured Access Certificate",
+				"summary": "Update an mTLS certificate",
+				"description": "Updates a configured mTLS certificate.",
 				"parameters": [
 					{
 						"name": "uuid",
@@ -66964,7 +66964,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update Access Certificate response",
+						"description": "Update an mTLS certificate response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -66992,15 +66992,15 @@
 								"properties": {
 									"name": {
 										"type": "string",
-										"description": "The name of the Certificate. Only used in the UI.",
+										"description": "The name of the certificate.",
 										"example": "Allow devs"
 									},
 									"associated_hostnames": {
 										"type": "array",
-										"description": "The hostnames that will be prompted for this certificate.",
+										"description": "The hostnames of the applications that will use this certificate.",
 										"items": {
 											"type": "string",
-											"description": "Hostname",
+											"description": "A fully-qualified domain name (FQDN).",
 											"example": "admin.example.com"
 										}
 									}
@@ -67011,8 +67011,8 @@
 				}
 			},
 			"delete": {
-				"summary": "Delete Access Certificate",
-				"description": "Delete an Access Certificate",
+				"summary": "Delete an mTLS certificate",
+				"description": "Deletes an mTLS certificate.",
 				"parameters": [
 					{
 						"name": "uuid",
@@ -67033,7 +67033,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete Access Certificate response",
+						"description": "Delete an mTLS certificate response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -67115,7 +67115,7 @@
 																		"title": "Self Hosted Application",
 																		"properties": {
 																			"type": {
-																				"description": "The application type",
+																				"description": "The application type.",
 																				"type": "string",
 																				"example": "self_hosted"
 																			},
@@ -67553,7 +67553,7 @@
 															},
 															{
 																"type": "object",
-																"title": "Bookmark Application",
+																"title": "Bookmark application",
 																"allOf": [
 																	{
 																		"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1apps/post/responses/200/content/application~1json/schema/allOf/1/properties/result/allOf/0"
@@ -67582,8 +67582,8 @@
 				]
 			},
 			"post": {
-				"summary": "Add the Bookmark application",
-				"description": "Adds the Bookmark application to Access, which allows you to add custom links to the App Launcher portal.",
+				"summary": "Add a Bookmark application",
+				"description": "Adds a custom link to the App Launcher. Bookmark applications are not protected by Access.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -67596,7 +67596,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Add the Bookmark application response",
+						"description": "Add a Bookmark application response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -67642,7 +67642,7 @@
 														},
 														{
 															"type": "object",
-															"title": "Bookmark Application",
+															"title": "Bookmark application",
 															"properties": {
 																"type": {
 																	"description": "The application type",
@@ -67748,7 +67748,7 @@
 																	"title": "Self Hosted Application",
 																	"properties": {
 																		"type": {
-																			"description": "The application type",
+																			"description": "The application type.",
 																			"type": "string",
 																			"example": "self_hosted"
 																		},
@@ -68186,7 +68186,7 @@
 														},
 														{
 															"type": "object",
-															"title": "Bookmark Application",
+															"title": "Bookmark application",
 															"allOf": [
 																{
 																	"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1apps~1%7Bapp_id%7D/put/responses/200/content/application~1json/schema/allOf/1/properties/result/allOf/0"
@@ -68214,8 +68214,8 @@
 				]
 			},
 			"put": {
-				"summary": "Update the Bookmark application",
-				"description": "Updates the Bookmark application.",
+				"summary": "Update a Bookmark application",
+				"description": "Updates a Bookmark application.",
 				"parameters": [
 					{
 						"name": "app_id",
@@ -68236,7 +68236,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update the Bookmark application response",
+						"description": "Update a Bookmark application response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -68271,7 +68271,7 @@
 														},
 														{
 															"type": "object",
-															"title": "Bookmark Application",
+															"title": "Bookmark application",
 															"properties": {
 																"type": {
 																	"description": "The application type",
@@ -68786,7 +68786,7 @@
 									},
 									"include": {
 										"type": "array",
-										"description": "Rules evaluated with an OR logical operator. To match the policy, a user needs to meet only one of the Include rules.",
+										"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
 										"items": {
 											"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1groups/post/requestBody/content/application~1json/schema/properties/include/items"
 										}
@@ -69058,7 +69058,7 @@
 									},
 									"include": {
 										"type": "array",
-										"description": "Rules evaluated with an OR logical operator. To match the policy, a user needs to meet only one of the Include rules.",
+										"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
 										"items": {
 											"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1groups/post/requestBody/content/application~1json/schema/properties/include/items"
 										}
@@ -69588,8 +69588,8 @@
 		},
 		"/accounts/{identifier}/access/bookmarks": {
 			"get": {
-				"summary": "List Bookmark Applications",
-				"description": "List bookmark applications",
+				"summary": "List Bookmark applications",
+				"description": "Lists Bookmark applications.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -69602,7 +69602,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "List Bookmark Applications response",
+						"description": "List Bookmark applications response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -69618,25 +69618,25 @@
 														"type": "object",
 														"properties": {
 															"id": {
-																"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1identity_providers/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/id"
+																"description": "The unique identifier for the Bookmark application."
 															},
 															"domain": {
 																"type": "string",
-																"description": "The domain of the bookmark application.",
+																"description": "The domain of the Bookmark application.",
 																"example": "example.com"
 															},
 															"name": {
 																"type": "string",
-																"description": "The name of the bookmark application.",
+																"description": "The name of the Bookmark application.",
 																"example": "My Website"
 															},
 															"logo_url": {
-																"description": "Defines the image URL for the logo shown in the app launcher dashboard.",
+																"description": "The image URL for the logo shown in the App Launcher dashboard.",
 																"type": "string",
 																"example": "https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg"
 															},
 															"app_launcher_visible": {
-																"description": "Defines whether or not the application is displayed in the App Launcher.",
+																"description": "Displays the application in the App Launcher.",
 																"type": "boolean",
 																"example": true
 															},
@@ -69667,8 +69667,8 @@
 		},
 		"/accounts/{identifier}/access/bookmarks/{uuid}": {
 			"get": {
-				"summary": "Bookmark Application Details",
-				"description": "Fetch a single bookmark application",
+				"summary": "Get a Bookmark application",
+				"description": "Fetches a single Bookmark application.",
 				"parameters": [
 					{
 						"name": "uuid",
@@ -69689,7 +69689,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Bookmark Application Details response",
+						"description": "Get a Bookmark application response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -69703,25 +69703,25 @@
 													"type": "object",
 													"properties": {
 														"id": {
-															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1identity_providers/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/id"
+															"description": "The unique identifier for the Bookmark application."
 														},
 														"domain": {
 															"type": "string",
-															"description": "The domain of the bookmark application.",
+															"description": "The domain of the Bookmark application.",
 															"example": "example.com"
 														},
 														"name": {
 															"type": "string",
-															"description": "The name of the bookmark application.",
+															"description": "The name of the Bookmark application.",
 															"example": "My Website"
 														},
 														"logo_url": {
-															"description": "Defines the image URL for the logo shown in the app launcher dashboard.",
+															"description": "The image URL for the logo shown in the App Launcher dashboard.",
 															"type": "string",
 															"example": "https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg"
 														},
 														"app_launcher_visible": {
-															"description": "Defines whether or not the application is displayed in the App Launcher.",
+															"description": "Displays the application in the App Launcher.",
 															"type": "boolean",
 															"example": true
 														},
@@ -69749,8 +69749,8 @@
 				]
 			},
 			"post": {
-				"summary": "Create Bookmark Application",
-				"description": "Create a new bookmark application",
+				"summary": "Create a Bookmark application",
+				"description": "Create a new Bookmark application.",
 				"parameters": [
 					{
 						"name": "uuid",
@@ -69771,7 +69771,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create Bookmark Application response",
+						"description": "Create a Bookmark application response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -69795,8 +69795,8 @@
 				}
 			},
 			"put": {
-				"summary": "Update Bookmark Application",
-				"description": "Update a bookmark application",
+				"summary": "Update a Bookmark application",
+				"description": "Updates a configured Bookmark application.",
 				"parameters": [
 					{
 						"name": "uuid",
@@ -69817,7 +69817,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update Bookmark Application response",
+						"description": "Update a Bookmark application response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -69841,8 +69841,8 @@
 				}
 			},
 			"delete": {
-				"summary": "Delete Bookmark Application",
-				"description": "Delete a bookmark application",
+				"summary": "Delete a Bookmark application",
+				"description": "Deletes a Bookmark application.",
 				"parameters": [
 					{
 						"name": "uuid",
@@ -69863,7 +69863,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete Bookmark Application response",
+						"description": "Delete a Bookmark application response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -70873,8 +70873,8 @@
 		},
 		"/zones/{identifier}/access/service_tokens": {
 			"get": {
-				"summary": "List Access Service Tokens",
-				"description": "List Access Service Tokens",
+				"summary": "List service tokens",
+				"description": "Lists all service tokens.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -70887,7 +70887,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "List Access Service Tokens response",
+						"description": "List service tokens response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -70909,7 +70909,7 @@
 																"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1ssl~1recommendation/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/modified_on"
 															},
 															"id": {
-																"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1access~1service_tokens/post/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/id"
+																"description": "The ID of the service token."
 															},
 															"name": {
 																"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1access~1service_tokens/post/requestBody/content/application~1json/schema/properties/name"
@@ -70936,8 +70936,8 @@
 				]
 			},
 			"post": {
-				"summary": "Create Access Service Token",
-				"description": "Create a new Access Service Token. **Note:** This is the only time you can get the client secret. Please save it somewhere secure.",
+				"summary": "Create a service token",
+				"description": "Generates a new service token. **Note:** This is the only time you can get the Client Secret. If you lose the Client Secret, you will have to create a new service token.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -70950,7 +70950,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create Access Service Token response",
+						"description": "Create a service token response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -70969,19 +70969,19 @@
 															"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1ssl~1recommendation/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/modified_on"
 														},
 														"id": {
-															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1identity_providers/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/id"
+															"description": "The ID of the service token."
 														},
 														"name": {
 															"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1access~1service_tokens/post/requestBody/content/application~1json/schema/properties/name"
 														},
 														"client_id": {
 															"type": "string",
-															"description": "The service token client id you will send in on requests",
+															"description": "The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.",
 															"example": "88bf3b6d86161464f6509f7219099e57.access.example.com"
 														},
 														"client_secret": {
 															"type": "string",
-															"description": "The service token client secret you will send in on requests",
+															"description": "The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.",
 															"example": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
 														}
 													}
@@ -71011,7 +71011,7 @@
 								"properties": {
 									"name": {
 										"type": "string",
-										"description": "The name of your Access Service Token.",
+										"description": "The name of the service token.",
 										"example": "CI/CD token"
 									}
 								}
@@ -71023,8 +71023,8 @@
 		},
 		"/zones/{identifier}/access/service_tokens/{uuid}": {
 			"put": {
-				"summary": "Update Access Service Token",
-				"description": "Update a configured Access Service Token",
+				"summary": "Update a service token",
+				"description": "Updates a configured service token.",
 				"parameters": [
 					{
 						"name": "uuid",
@@ -71045,7 +71045,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update Access Service Token response",
+						"description": "Update a service token response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -71065,14 +71065,14 @@
 															"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1ssl~1recommendation/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/modified_on"
 														},
 														"id": {
-															"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1access~1service_tokens~1%7Buuid%7D/put/parameters/0/schema"
+															"description": "The ID of the service token."
 														},
 														"name": {
 															"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1access~1service_tokens~1%7Buuid%7D/put/requestBody/content/application~1json/schema/properties/name"
 														},
 														"client_id": {
 															"type": "string",
-															"description": "The service token client id you will send in on requests",
+															"description": "The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.",
 															"example": "88bf3b6d86161464f6509f7219099e57.access.example.com"
 														}
 													}
@@ -71099,7 +71099,7 @@
 								"properties": {
 									"name": {
 										"type": "string",
-										"description": "The name of your Access Service Token.",
+										"description": "The name of the service token.",
 										"example": "CI/CD token"
 									}
 								}
@@ -71109,8 +71109,8 @@
 				}
 			},
 			"delete": {
-				"summary": "Delete Access Service Token",
-				"description": "Delete an Access Service Token",
+				"summary": "Delete a service token",
+				"description": "Deletes a service token.",
 				"parameters": [
 					{
 						"name": "uuid",
@@ -71131,7 +71131,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete Access Service Token response",
+						"description": "Delete a service token response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -71157,8 +71157,8 @@
 		},
 		"/zones/{identifier}/access/apps/ca": {
 			"get": {
-				"summary": "List Short-Lived Certificates",
-				"description": "List Short-Lived Certificates",
+				"summary": "List short-lived certificate CAs",
+				"description": "Lists short-lived certificate CAs and their public keys.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -71171,7 +71171,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "List Short-Lived Certificates response",
+						"description": "List short-lived certificate CAs response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -71187,21 +71187,21 @@
 														"type": "object",
 														"properties": {
 															"id": {
-																"description": "Short-lived certificate id",
+																"description": "The ID of the CA.",
 																"type": "string",
 																"maxLength": 48,
 																"readOnly": true,
 																"example": "7eddae4619b50ab1361ba8ae9bd72269a432fea041529ed9"
 															},
 															"aud": {
-																"description": "Audience tag",
+																"description": "The Application Audience (AUD) tag. Identifies the application associated with the CA.",
 																"type": "string",
 																"maxLength": 64,
 																"readOnly": true,
 																"example": "737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893"
 															},
 															"public_key": {
-																"description": "Public key for DS record",
+																"description": "The public key to add to your SSH server configuration.",
 																"type": "string",
 																"readOnly": true,
 																"example": "ecdsa-sha2-nistp256 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/xxxxxxxxxxxxxxxxxxxxx/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx= open-ssh-ca@cloudflareaccess.org"
@@ -71227,8 +71227,8 @@
 		},
 		"/zones/{identifier}/access/apps/{uuid}/ca": {
 			"get": {
-				"summary": "Short-Lived Certificate Details",
-				"description": "Fetch a single short-lived certificate",
+				"summary": "Get a short-lived certificate CA",
+				"description": "Fetches a short-lived certificate CA and its public key.",
 				"parameters": [
 					{
 						"name": "uuid",
@@ -71249,7 +71249,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Short-Lived Certificate Details response",
+						"description": "Get a short-lived certificate CA response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -71278,8 +71278,8 @@
 				]
 			},
 			"post": {
-				"summary": "Create Short-Lived Certificate",
-				"description": "Create a new short-lived certificate",
+				"summary": "Create a short-lived certificate CA",
+				"description": "Generates a new short-lived certificate CA and public key.",
 				"parameters": [
 					{
 						"name": "uuid",
@@ -71300,7 +71300,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create Short-Lived Certificate response",
+						"description": "Create a short-lived certificate CA response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -71324,8 +71324,8 @@
 				}
 			},
 			"delete": {
-				"summary": "Delete Access Certificate",
-				"description": "Delete an Access Certificate",
+				"summary": "Delete a short-lived certificate CA",
+				"description": "Deletes a short-lived certificate CA.",
 				"parameters": [
 					{
 						"name": "uuid",
@@ -71346,7 +71346,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete Access Certificate response",
+						"description": "Delete a short-lived certificate CA response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -71360,7 +71360,7 @@
 													"type": "object",
 													"properties": {
 														"id": {
-															"description": "Short-lived certificate id",
+															"description": "The ID of the CA.",
 															"type": "string",
 															"maxLength": 48,
 															"readOnly": true,
@@ -71392,8 +71392,8 @@
 		},
 		"/zones/{identifier}/access/certificates": {
 			"get": {
-				"summary": "List Access Certificates",
-				"description": "List Access Certificates",
+				"summary": "List mTLS certificates",
+				"description": "Lists all mTLS certificates.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -71406,7 +71406,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "List Access Certificates response",
+						"description": "List mTLS certificates response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -71422,7 +71422,7 @@
 														"type": "object",
 														"properties": {
 															"id": {
-																"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1identity_providers/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/id"
+																"description": "The ID of the application that will use this certificate."
 															},
 															"created_at": {
 																"$ref": "#/paths/~1user~1load_balancers~1monitors/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/created_on"
@@ -71438,7 +71438,7 @@
 															},
 															"fingerprint": {
 																"type": "string",
-																"description": "The MD5 fingerprint of the certificate",
+																"description": "The MD5 fingerprint of the certificate.",
 																"example": "MD5 Fingerprint=1E:80:0F:7A:FD:31:55:96:DE:D5:CB:E2:F0:91:F6:91"
 															},
 															"associated_hostnames": {
@@ -71463,8 +71463,8 @@
 				]
 			},
 			"post": {
-				"summary": "Create Access Certificate",
-				"description": "Create a new Access Certificate",
+				"summary": "Add an mTLS certificate",
+				"description": "Adds a new mTLS root certificate to Access.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -71477,7 +71477,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create Access Certificate response",
+						"description": "Add an mTLS certificate response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -71516,20 +71516,20 @@
 								"properties": {
 									"name": {
 										"type": "string",
-										"description": "The name of the Certificate. Only used in the UI.",
+										"description": "The name of the certificate.",
 										"example": "Allow devs"
 									},
 									"certificate": {
 										"type": "string",
-										"description": "The Root CA for your certificates",
+										"description": "The certificate content.",
 										"example": "-----BEGIN CERTIFICATE-----\nMIIGAjCCA+qgAwIBAgIJAI7kymlF7CWT...N4RI7KKB7nikiuUf8vhULKy5IX10\nDrUtmu/B\n-----END CERTIFICATE-----"
 									},
 									"associated_hostnames": {
 										"type": "array",
-										"description": "The hostnames that will be prompted for this certificate.",
+										"description": "The hostnames of the applications that will use this certificate.",
 										"items": {
 											"type": "string",
-											"description": "Hostname",
+											"description": "A fully-qualified domain name (FQDN).",
 											"example": "admin.example.com"
 										}
 									}
@@ -71542,8 +71542,8 @@
 		},
 		"/zones/{identifier}/access/certificates/{uuid}": {
 			"get": {
-				"summary": "Access Certificate Details",
-				"description": "Fetch a single Access Certificate",
+				"summary": "Get an mTLS certificate",
+				"description": "Fetches a single mTLS certificate.",
 				"parameters": [
 					{
 						"name": "uuid",
@@ -71564,7 +71564,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Access Certificate Details response",
+						"description": "Get an mTLS certificate response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -71578,7 +71578,7 @@
 													"type": "object",
 													"properties": {
 														"id": {
-															"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1access~1certificates~1%7Buuid%7D/get/parameters/0/schema"
+															"description": "The ID of the application that will use this certificate."
 														},
 														"created_at": {
 															"$ref": "#/paths/~1user~1load_balancers~1monitors/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/created_on"
@@ -71594,7 +71594,7 @@
 														},
 														"fingerprint": {
 															"type": "string",
-															"description": "The MD5 fingerprint of the certificate",
+															"description": "The MD5 fingerprint of the certificate.",
 															"example": "MD5 Fingerprint=1E:80:0F:7A:FD:31:55:96:DE:D5:CB:E2:F0:91:F6:91"
 														},
 														"associated_hostnames": {
@@ -71618,8 +71618,8 @@
 				]
 			},
 			"put": {
-				"summary": "Update Access Certificate",
-				"description": "Update a configured Access Certificate",
+				"summary": "Update an mTLS certificate",
+				"description": "Updates a configured mTLS certificate.",
 				"parameters": [
 					{
 						"name": "uuid",
@@ -71640,7 +71640,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update Access Certificate response",
+						"description": "Update an mTLS certificate response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -71668,15 +71668,15 @@
 								"properties": {
 									"name": {
 										"type": "string",
-										"description": "The name of the Certificate. Only used in the UI.",
+										"description": "The name of the certificate.",
 										"example": "Allow devs"
 									},
 									"associated_hostnames": {
 										"type": "array",
-										"description": "The hostnames that will be prompted for this certificate.",
+										"description": "The hostnames of the applications that will use this certificate.",
 										"items": {
 											"type": "string",
-											"description": "Hostname",
+											"description": "A fully-qualified domain name (FQDN).",
 											"example": "admin.example.com"
 										}
 									}
@@ -71687,8 +71687,8 @@
 				}
 			},
 			"delete": {
-				"summary": "Delete Access Certificate",
-				"description": "Delete an Access Certificate",
+				"summary": "Delete an mTLS certificate",
+				"description": "Deletes an mTLS certificate.",
 				"parameters": [
 					{
 						"name": "uuid",
@@ -71709,7 +71709,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete Access Certificate response",
+						"description": "Delete an mTLS certificate response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -71792,7 +71792,7 @@
 																		"title": "Self Hosted Application",
 																		"properties": {
 																			"type": {
-																				"description": "The application type",
+																				"description": "The application type.",
 																				"type": "string",
 																				"example": "self_hosted"
 																			},
@@ -72230,7 +72230,7 @@
 															},
 															{
 																"type": "object",
-																"title": "Bookmark Application",
+																"title": "Bookmark application",
 																"allOf": [
 																	{
 																		"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1access~1apps/post/responses/200/content/application~1json/schema/allOf/1/properties/result/allOf/0"
@@ -72259,8 +72259,8 @@
 				]
 			},
 			"post": {
-				"summary": "Add the Bookmark application",
-				"description": "Adds the Bookmark application to Access, which allows you to add custom links to the App Launcher portal.",
+				"summary": "Add a Bookmark application",
+				"description": "Adds a custom link to the App Launcher. Bookmark applications are not protected by Access.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -72273,7 +72273,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Add the Bookmark application response",
+						"description": "Add a Bookmark application response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -72426,7 +72426,7 @@
 																	"title": "Self Hosted Application",
 																	"properties": {
 																		"type": {
-																			"description": "The application type",
+																			"description": "The application type.",
 																			"type": "string",
 																			"example": "self_hosted"
 																		},
@@ -72864,7 +72864,7 @@
 														},
 														{
 															"type": "object",
-															"title": "Bookmark Application",
+															"title": "Bookmark application",
 															"allOf": [
 																{
 																	"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1access~1apps~1%7Bapp_id%7D/put/responses/200/content/application~1json/schema/allOf/1/properties/result/allOf/0"
@@ -72892,8 +72892,8 @@
 				]
 			},
 			"put": {
-				"summary": "Update the Bookmark application",
-				"description": "Updates the Bookmark application.",
+				"summary": "Update a Bookmark application",
+				"description": "Updates a Bookmark application.",
 				"parameters": [
 					{
 						"name": "app_id",
@@ -72914,7 +72914,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update the Bookmark application response",
+						"description": "Update a Bookmark application response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -73464,7 +73464,7 @@
 									},
 									"include": {
 										"type": "array",
-										"description": "Rules evaluated with an OR logical operator. To match the policy, a user needs to meet only one of the Include rules.",
+										"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
 										"items": {
 											"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1groups/post/requestBody/content/application~1json/schema/properties/include/items"
 										}
@@ -73736,7 +73736,7 @@
 									},
 									"include": {
 										"type": "array",
-										"description": "Rules evaluated with an OR logical operator. To match the policy, a user needs to meet only one of the Include rules.",
+										"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
 										"items": {
 											"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1groups/post/requestBody/content/application~1json/schema/properties/include/items"
 										}
