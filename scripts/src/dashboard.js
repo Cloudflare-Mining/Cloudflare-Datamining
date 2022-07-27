@@ -802,21 +802,6 @@ async function run(){
 	// 	}
 	// }
 
-	// get gates
-	const gates = await fetch("https://gates.cloudflare.com/api/v1/runtime/configuration", {
-		"headers": {
-			"authorization": `Bearer ${process.env.GATES_API_KEY}`,
-			"Referer": "https://dash.cloudflare.com/",
-		},
-	});
-	if(gates.status === 200){
-		const json = await gates.json();
-		if(json.success){
-			console.log('Writing gates config');
-			await fs.writeFile(path.resolve('../data/dashboard/gates-config.json'), JSON.stringify(json.result, null, '\t'));
-		}
-	}
-
 	console.log('Pushing!');
 	const prefix = dateFormat(new Date(), 'd mmmm yyyy');
 	await tryAndPush(
