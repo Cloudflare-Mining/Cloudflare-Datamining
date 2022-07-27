@@ -27662,7 +27662,6 @@
 				],
 				"x-cfPermissionsRequired": {
 					"enum": [
-						"#dns_records:read",
 						"#organization:read"
 					]
 				},
@@ -27717,7 +27716,6 @@
 				],
 				"x-cfPermissionsRequired": {
 					"enum": [
-						"#dns_records:edit",
 						"#organization:edit"
 					]
 				},
@@ -27852,7 +27850,6 @@
 				],
 				"x-cfPermissionsRequired": {
 					"enum": [
-						"#dns_records:edit",
 						"#organization:edit"
 					]
 				},
@@ -27932,7 +27929,6 @@
 				],
 				"x-cfPermissionsRequired": {
 					"enum": [
-						"#dns_records:edit",
 						"#organization:edit"
 					]
 				},
@@ -28006,7 +28002,6 @@
 				],
 				"x-cfPermissionsRequired": {
 					"enum": [
-						"#dns_records:read",
 						"#organization:read"
 					]
 				},
@@ -28058,8 +28053,7 @@
 				],
 				"x-cfPermissionsRequired": {
 					"enum": [
-						"#dns_records:read",
-						"#organization:read"
+						"#zone:read"
 					]
 				},
 				"x-cfPlanAvailability": {
@@ -28115,8 +28109,7 @@
 				],
 				"x-cfPermissionsRequired": {
 					"enum": [
-						"#dns_records:edit",
-						"#organization:edit"
+						"#zone:edit"
 					]
 				},
 				"x-cfPlanAvailability": {
