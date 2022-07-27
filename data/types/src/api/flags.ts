@@ -48,7 +48,8 @@ export const AccountFlags = eg.object({
     triggers_ui: eg.boolean.optional,
     same_zone_worker_on_subrequest: eg.boolean.optional,
     scripts: eg.number.optional,
-    use_pipeline: eg.boolean.optional
+    use_pipeline: eg.boolean.optional,
+    r2_publicbuckets: eg.boolean.optional
   }).optional
 });
 
