@@ -1,42 +1,42 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/access/certificates.json",
-	"title": "Zone-Level Access Mutual TLS Authentication",
-	"description": "Mutual TLS authentication ensures that the traffic is secure and trusted in both directions between a client and server. (NOTE: it's recommended that the account route namespace is used instead: https://api.cloudflare.com/#access-mutual-tls-authentication-properties.)",
+	"title": "Zone-Level Access mTLS authentication",
+	"description": "Mutual TLS (mTLS) authentication establishes trust between a client and server via a shared certificate. (Note: We recommend using the equivalent account-level endpoints at https://api.cloudflare.com/#access-mutual-tls-authentication-properties. Account APIs provide a broader range of features and are backwards-compatible to zone APIs.)",
 	"cfExtendedDescription": "https://developers.cloudflare.com/access/service-auth/mtls/",
 	"type": "object",
 	"links": [
 		{
-			"title": "List Access Certificates",
-			"description": "List Access Certificates",
+			"title": "List mTLS certificates",
+			"description": "Lists all mTLS certificates.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/identifier}/access/certificates",
 			"method": "GET",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-mutual-tls-authentication-list-access-certificates",
+			"html_id": "zone-level-access-mtls-authentication-list-mtls-certificates",
 			"uri": "zones/:identifier/access/certificates",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/access/certificates\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"expires_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"name\": \"Allow devs\",\n      \"fingerprint\": \"MD5 Fingerprint=1E:80:0F:7A:FD:31:55:96:DE:D5:CB:E2:F0:91:F6:91\",\n      \"associated_hostnames\": [\n        \"admin.example.com\"\n      ]\n    }\n  ]\n}"
 		},
 		{
-			"title": "Access Certificate Details",
-			"description": "Fetch a single Access Certificate",
+			"title": "Get an mTLS certificate",
+			"description": "Fetches a single mTLS certificate.",
 			"rel": "self",
 			"href": "zones/{#/definitions/identifier}/access/certificates/{#/definitions/uuid}",
 			"method": "GET",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-mutual-tls-authentication-access-certificate-details",
+			"html_id": "zone-level-access-mtls-authentication-get-an-mtls-certificate",
 			"uri": "zones/:identifier/access/certificates/:uuid",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/access/certificates/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"expires_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"Allow devs\",\n    \"fingerprint\": \"MD5 Fingerprint=1E:80:0F:7A:FD:31:55:96:DE:D5:CB:E2:F0:91:F6:91\",\n    \"associated_hostnames\": [\n      \"admin.example.com\"\n    ]\n  }\n}"
 		},
 		{
-			"title": "Create Access Certificate",
-			"description": "Create a new Access Certificate",
+			"title": "Add an mTLS certificate",
+			"description": "Adds a new mTLS root certificate to Access.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/identifier}/access/certificates",
 			"method": "POST",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-mutual-tls-authentication-create-access-certificate",
+			"html_id": "zone-level-access-mtls-authentication-add-an-mtls-certificate",
 			"uri": "zones/:identifier/access/certificates",
 			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/access/certificates\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"Allow devs\",\"certificate\":\"-----BEGIN CERTIFICATE-----\\nMIIGAjCCA+qgAwIBAgIJAI7kymlF7CWT...N4RI7KKB7nikiuUf8vhULKy5IX10\\nDrUtmu/B\\n-----END CERTIFICATE-----\",\"associated_hostnames\":[\"admin.example.com\"]}'",
 			"parameters": {
@@ -47,20 +47,20 @@
 					"name": {
 						"type": "string",
 						"example": "\"Allow devs\"",
-						"description": "The name of the Certificate. Only used in the UI."
+						"description": "The name of the certificate."
 					},
 					"certificate": {
 						"type": "string",
 						"example": "\"-----BEGIN CERTIFICATE-----\\nMIIGAjCCA+qgAwIBAgIJAI7kymlF7CWT...N4RI7KKB7nikiuUf8vhULKy5IX10\\nDrUtmu/B\\n-----END CERTIFICATE-----\"",
-						"description": "The Root CA for your certificates"
+						"description": "The certificate content."
 					},
 					"associated_hostnames": {
 						"type": "array",
 						"example": "[\n  \"admin.example.com\"\n]",
-						"description": "The hostnames that will be prompted for this certificate.",
+						"description": "The hostnames of the applications that will use this certificate.",
 						"items": {
 							"type": "string",
-							"description": "Hostname",
+							"description": "A fully-qualified domain name (FQDN).",
 							"example": "admin.example.com"
 						}
 					}
@@ -78,13 +78,13 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"expires_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"Allow devs\",\n    \"fingerprint\": \"MD5 Fingerprint=1E:80:0F:7A:FD:31:55:96:DE:D5:CB:E2:F0:91:F6:91\",\n    \"associated_hostnames\": [\n      \"admin.example.com\"\n    ]\n  }\n}"
 		},
 		{
-			"title": "Update Access Certificate",
-			"description": "Update a configured Access Certificate",
+			"title": "Update an mTLS certificate",
+			"description": "Updates a configured mTLS certificate.",
 			"rel": "self",
 			"href": "zones/{#/definitions/identifier}/access/certificates/{#/definitions/uuid}",
 			"method": "PUT",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-mutual-tls-authentication-update-access-certificate",
+			"html_id": "zone-level-access-mtls-authentication-update-an-mtls-certificate",
 			"uri": "zones/:identifier/access/certificates/:uuid",
 			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/access/certificates/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"Allow devs\",\"associated_hostnames\":[\"admin.example.com\"]}'",
 			"parameters": {
@@ -95,15 +95,15 @@
 					"name": {
 						"type": "string",
 						"example": "\"Allow devs\"",
-						"description": "The name of the Certificate. Only used in the UI."
+						"description": "The name of the certificate."
 					},
 					"associated_hostnames": {
 						"type": "array",
 						"example": "[\n  \"admin.example.com\"\n]",
-						"description": "The hostnames that will be prompted for this certificate.",
+						"description": "The hostnames of the applications that will use this certificate.",
 						"items": {
 							"type": "string",
-							"description": "Hostname",
+							"description": "A fully-qualified domain name (FQDN).",
 							"example": "admin.example.com"
 						}
 					}
@@ -119,19 +119,19 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"expires_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"name\": \"Allow devs\",\n    \"fingerprint\": \"MD5 Fingerprint=1E:80:0F:7A:FD:31:55:96:DE:D5:CB:E2:F0:91:F6:91\",\n    \"associated_hostnames\": [\n      \"admin.example.com\"\n    ]\n  }\n}"
 		},
 		{
-			"title": "Delete Access Certificate",
-			"description": "Delete an Access Certificate",
+			"title": "Delete an mTLS certificate",
+			"description": "Deletes an mTLS certificate.",
 			"rel": "self",
 			"href": "zones/{#/definitions/identifier}/access/certificates/{#/definitions/uuid}",
 			"method": "DELETE",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-mutual-tls-authentication-delete-access-certificate",
+			"html_id": "zone-level-access-mtls-authentication-delete-an-mtls-certificate",
 			"uri": "zones/:identifier/access/certificates/:uuid",
 			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/access/certificates/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"\n  }\n}"
 		}
 	],
-	"html_id": "zone-level-access-mutual-tls-authentication",
+	"html_id": "zone-level-access-mtls-authentication",
 	"object_definition": {
 		"_formatter": {
 			"jsonMediaType": {}
@@ -140,11 +140,11 @@
 			"id": {
 				"type": "string",
 				"example": "\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"",
+				"description": "The ID of the application that will use this certificate.",
 				"id": "https://api.cloudflare.com/schemas/v4/common/uuid.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 				"readOnly": true,
-				"maxLength": 36,
-				"description": "API uuid tag"
+				"maxLength": 36
 			},
 			"created_at": {
 				"type": "string",
@@ -176,20 +176,20 @@
 			"name": {
 				"type": "string",
 				"example": "\"Allow devs\"",
-				"description": "The name of the Certificate. Only used in the UI."
+				"description": "The name of the certificate."
 			},
 			"fingerprint": {
 				"type": "string",
 				"example": "\"MD5 Fingerprint=1E:80:0F:7A:FD:31:55:96:DE:D5:CB:E2:F0:91:F6:91\"",
-				"description": "The MD5 fingerprint of the certificate"
+				"description": "The MD5 fingerprint of the certificate."
 			},
 			"associated_hostnames": {
 				"type": "array",
 				"example": "[\n  \"admin.example.com\"\n]",
-				"description": "The hostnames that will be prompted for this certificate.",
+				"description": "The hostnames of the applications that will use this certificate.",
 				"items": {
 					"type": "string",
-					"description": "Hostname",
+					"description": "A fully-qualified domain name (FQDN).",
 					"example": "admin.example.com"
 				}
 			}
@@ -206,7 +206,7 @@
 		],
 		"objects": [],
 		"example": "{\n  \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"expires_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"name\": \"Allow devs\",\n  \"fingerprint\": \"MD5 Fingerprint=1E:80:0F:7A:FD:31:55:96:DE:D5:CB:E2:F0:91:F6:91\",\n  \"associated_hostnames\": [\n    \"admin.example.com\"\n  ]\n}",
-		"title": "Zone-Level Access Mutual TLS Authentication",
-		"description": "Mutual TLS authentication ensures that the traffic is secure and trusted in both directions between a client and server. (NOTE: it's recommended that the account route namespace is used instead: https://api.cloudflare.com/#access-mutual-tls-authentication-properties.)"
+		"title": "Zone-Level Access mTLS authentication",
+		"description": "Mutual TLS (mTLS) authentication establishes trust between a client and server via a shared certificate. (Note: We recommend using the equivalent account-level endpoints at https://api.cloudflare.com/#access-mutual-tls-authentication-properties. Account APIs provide a broader range of features and are backwards-compatible to zone APIs.)"
 	}
 }

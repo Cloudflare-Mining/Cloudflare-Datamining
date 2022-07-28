@@ -1,31 +1,31 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/access/service-tokens.json",
-	"title": "Access Service Tokens",
-	"description": "Access Service Tokens allow automated requests to reach protected domains",
-	"cfExtendedDescription": "https://developers.cloudflare.com/access/service-auth/service-token/",
+	"title": "Access service tokens",
+	"description": "Service tokens allow automated requests to reach applications protected by Access.",
+	"cfExtendedDescription": "https://developers.cloudflare.com/cloudflare-one/identity/service-tokens/",
 	"type": "object",
 	"links": [
 		{
-			"title": "List Access Service Tokens",
-			"description": "List Access Service Tokens",
+			"title": "List service tokens",
+			"description": "Lists all service tokens.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/identifier}/access/service_tokens",
 			"method": "GET",
 			"cfOwnership": "access",
-			"html_id": "access-service-tokens-list-access-service-tokens",
+			"html_id": "access-service-tokens-list-service-tokens",
 			"uri": "accounts/:identifier/access/service_tokens",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/access/service_tokens\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"name\": \"CI/CD token\",\n      \"client_id\": \"88bf3b6d86161464f6509f7219099e57.access.example.com\"\n    }\n  ]\n}"
 		},
 		{
-			"title": "Create Access Service Token",
-			"description": "Create a new Access Service Token. **Note:** This is the only time you can get the client secret. Please save it somewhere secure.",
+			"title": "Create a service token",
+			"description": "Generates a new service token. **Note:** This is the only time you can get the Client Secret. If you lose the Client Secret, you will have to create a new service token.",
 			"cfExtendedDescription": "",
 			"rel": "self",
 			"href": "accounts/{#/definitions/identifier}/access/service_tokens",
 			"method": "POST",
 			"cfOwnership": "access",
-			"html_id": "access-service-tokens-create-access-service-token",
+			"html_id": "access-service-tokens-create-a-service-token",
 			"uri": "accounts/:identifier/access/service_tokens",
 			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/access/service_tokens\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"CI/CD token\"}'",
 			"parameters": {
@@ -36,7 +36,7 @@
 					"name": {
 						"type": "string",
 						"example": "\"CI/CD token\"",
-						"description": "The name of your Access Service Token."
+						"description": "The name of the service token."
 					}
 				},
 				"required_props": [
@@ -49,13 +49,13 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"name\": \"CI/CD token\",\n    \"client_id\": \"88bf3b6d86161464f6509f7219099e57.access.example.com\",\n    \"client_secret\": \"bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5\"\n  }\n}"
 		},
 		{
-			"title": "Update Access Service Token",
-			"description": "Update a configured Access Service Token",
+			"title": "Update a service token",
+			"description": "Updates a configured service token.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/identifier}/access/service_tokens/{#/definitions/uuid}",
 			"method": "PUT",
 			"cfOwnership": "access",
-			"html_id": "access-service-tokens-update-access-service-token",
+			"html_id": "access-service-tokens-update-a-service-token",
 			"uri": "accounts/:identifier/access/service_tokens/:uuid",
 			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/access/service_tokens/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"CI/CD token\"}'",
 			"parameters": {
@@ -66,7 +66,7 @@
 					"name": {
 						"type": "string",
 						"example": "\"CI/CD token\"",
-						"description": "The name of your Access Service Token."
+						"description": "The name of the service token."
 					}
 				},
 				"required_props": [],
@@ -79,13 +79,13 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"name\": \"CI/CD token\",\n    \"client_id\": \"88bf3b6d86161464f6509f7219099e57.access.example.com\"\n  }\n}"
 		},
 		{
-			"title": "Delete Access Service Token",
-			"description": "Delete an Access Service Token",
+			"title": "Delete a service token",
+			"description": "Deletes a service token.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/identifier}/access/service_tokens/{#/definitions/uuid}",
 			"method": "DELETE",
 			"cfOwnership": "access",
-			"html_id": "access-service-tokens-delete-access-service-token",
+			"html_id": "access-service-tokens-delete-a-service-token",
 			"uri": "accounts/:identifier/access/service_tokens/:uuid",
 			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/access/service_tokens/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"name\": \"CI/CD token\",\n    \"client_id\": \"88bf3b6d86161464f6509f7219099e57.access.example.com\"\n  }\n}"
@@ -118,21 +118,21 @@
 			"id": {
 				"type": "string",
 				"example": "\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"",
+				"description": "The ID of the service token.",
 				"id": "https://api.cloudflare.com/schemas/v4/common/uuid.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 				"readOnly": true,
-				"maxLength": 36,
-				"description": "API uuid tag"
+				"maxLength": 36
 			},
 			"name": {
 				"type": "string",
 				"example": "\"CI/CD token\"",
-				"description": "The name of your Access Service Token."
+				"description": "The name of the service token."
 			},
 			"client_id": {
 				"type": "string",
 				"example": "\"88bf3b6d86161464f6509f7219099e57.access.example.com\"",
-				"description": "The service token client id you will send in on requests"
+				"description": "The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header."
 			}
 		},
 		"required_props": [],
@@ -145,7 +145,7 @@
 		],
 		"objects": [],
 		"example": "{\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n  \"name\": \"CI/CD token\",\n  \"client_id\": \"88bf3b6d86161464f6509f7219099e57.access.example.com\"\n}",
-		"title": "Access Service Tokens",
-		"description": "Access Service Tokens allow automated requests to reach protected domains"
+		"title": "Access service tokens",
+		"description": "Service tokens allow automated requests to reach applications protected by Access."
 	}
 }

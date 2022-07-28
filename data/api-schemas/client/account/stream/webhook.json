@@ -5,13 +5,13 @@
 	"type": "object",
 	"links": [
 		{
-			"title": "Create a webhook",
-			"description": "",
+			"title": "Create webhooks",
+			"description": "Creates a webhook notification.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/stream/webhook",
 			"method": "PUT",
 			"cfOwnership": "stream",
-			"html_id": "stream-webhook-create-a-webhook",
+			"html_id": "stream-webhook-create-webhooks",
 			"uri": "accounts/:account_identifier/stream/webhook",
 			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/stream/webhook\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"notificationUrl\":\"https://example.com\"}'",
 			"parameters": {
@@ -22,7 +22,7 @@
 					"notificationUrl": {
 						"type": "string",
 						"example": "\"https://example.com\"",
-						"description": "The URL the webhooks will be sent to",
+						"description": "The URL where webhooks will be sent.",
 						"format": "url"
 					}
 				},
@@ -36,25 +36,25 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"notificationUrl\": \"https://example.com\",\n    \"modified\": \"2014-01-02T02:20:00Z\",\n    \"secret\": \"0b1c2423aa030a11583c6ffadda57fad681d00cd\"\n  }\n}"
 		},
 		{
-			"title": "View the webhook",
-			"description": "",
+			"title": "View webhooks",
+			"description": "Retrieves a list of webhooks.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/stream/webhook",
 			"method": "GET",
 			"cfOwnership": "stream",
-			"html_id": "stream-webhook-view-the-webhook",
+			"html_id": "stream-webhook-view-webhooks",
 			"uri": "accounts/:account_identifier/stream/webhook",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/stream/webhook\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"notificationUrl\": \"https://example.com\",\n    \"modified\": \"2014-01-02T02:20:00Z\",\n    \"secret\": \"0b1c2423aa030a11583c6ffadda57fad681d00cd\"\n  }\n}"
 		},
 		{
-			"title": "Delete the webhook",
-			"description": "",
+			"title": "Delete webhooks",
+			"description": "Deletes a webhook.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/stream/webhook",
 			"method": "DELETE",
 			"cfOwnership": "stream",
-			"html_id": "stream-webhook-delete-the-webhook",
+			"html_id": "stream-webhook-delete-webhooks",
 			"uri": "accounts/:account_identifier/stream/webhook",
 			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/stream/webhook\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": \"\"\n}"
@@ -73,20 +73,20 @@
 			"notificationUrl": {
 				"type": "string",
 				"example": "\"https://example.com\"",
-				"description": "The URL the webhooks will be sent to",
+				"description": "The URL where webhooks will be sent.",
 				"format": "url"
 			},
 			"modified": {
 				"type": "string",
 				"example": "\"2014-01-02T02:20:00Z\"",
-				"description": "When the webhook item was last modified.",
+				"description": "The date and time the webhook was last modified.",
 				"format": "date-time",
 				"readOnly": true
 			},
 			"secret": {
 				"type": "string",
 				"example": "\"0b1c2423aa030a11583c6ffadda57fad681d00cd\"",
-				"description": "The secret the request is signed with",
+				"description": "The secret used to sign the request.",
 				"readOnly": true
 			}
 		},

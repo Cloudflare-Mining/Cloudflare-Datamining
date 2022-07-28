@@ -1,13 +1,13 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/access/bookmarks.json",
-	"title": "Access Bookmark Applications",
-	"description": "Access Bookmark Applications are applications displayed in App Launcher, but are not behind Access.",
-	"cfExtendedDescription": "https://developers.cloudflare.com/cloudflare-one/applications/bookmarks/",
+	"title": "Access Bookmark applications",
+	"description": "Access Bookmark applications are applications displayed in the App Launcher, but are not secured behind Access.",
+	"cfExtendedDescription": "We recommend using the equivalent [Access applications](https://api.cloudflare.com/#access-applications-properties) API.",
 	"type": "object",
 	"links": [
 		{
-			"title": "List Bookmark Applications",
-			"description": "List bookmark applications",
+			"title": "List Bookmark applications",
+			"description": "Lists Bookmark applications.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/identifier}/access/bookmarks",
 			"method": "GET",
@@ -18,49 +18,49 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"domain\": \"example.com\",\n      \"name\": \"My Website\",\n      \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n      \"app_launcher_visible\": true,\n      \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n    }\n  ]\n}"
 		},
 		{
-			"title": "Bookmark Application Details",
-			"description": "Fetch a single bookmark application",
+			"title": "Get a Bookmark application",
+			"description": "Fetches a single Bookmark application.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/identifier}/access/bookmarks/{#/definitions/uuid}",
 			"method": "GET",
 			"cfOwnership": "access",
-			"html_id": "access-bookmark-applications-bookmark-application-details",
+			"html_id": "access-bookmark-applications-get-a-bookmark-application",
 			"uri": "accounts/:identifier/access/bookmarks/:uuid",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/access/bookmarks/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"domain\": \"example.com\",\n    \"name\": \"My Website\",\n    \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n    \"app_launcher_visible\": true,\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
 		},
 		{
-			"title": "Create Bookmark Application",
-			"description": "Create a new bookmark application",
+			"title": "Create a Bookmark application",
+			"description": "Create a new Bookmark application.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/identifier}/access/bookmarks/{#/definitions/uuid}",
 			"method": "POST",
 			"cfOwnership": "access",
-			"html_id": "access-bookmark-applications-create-bookmark-application",
+			"html_id": "access-bookmark-applications-create-a-bookmark-application",
 			"uri": "accounts/:identifier/access/bookmarks/:uuid",
 			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/access/bookmarks/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"domain\": \"example.com\",\n    \"name\": \"My Website\",\n    \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n    \"app_launcher_visible\": true,\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
 		},
 		{
-			"title": "Update Bookmark Application",
-			"description": "Update a bookmark application",
+			"title": "Update a Bookmark application",
+			"description": "Updates a configured Bookmark application.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/identifier}/access/bookmarks/{#/definitions/uuid}",
 			"method": "PUT",
 			"cfOwnership": "access",
-			"html_id": "access-bookmark-applications-update-bookmark-application",
+			"html_id": "access-bookmark-applications-update-a-bookmark-application",
 			"uri": "accounts/:identifier/access/bookmarks/:uuid",
 			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/access/bookmarks/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"domain\": \"example.com\",\n    \"name\": \"My Website\",\n    \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n    \"app_launcher_visible\": true,\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
 		},
 		{
-			"title": "Delete Bookmark Application",
-			"description": "Delete a bookmark application",
+			"title": "Delete a Bookmark application",
+			"description": "Deletes a Bookmark application.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/identifier}/access/bookmarks/{#/definitions/uuid}",
 			"method": "DELETE",
 			"cfOwnership": "access",
-			"html_id": "access-bookmark-applications-delete-bookmark-application",
+			"html_id": "access-bookmark-applications-delete-a-bookmark-application",
 			"uri": "accounts/:identifier/access/bookmarks/:uuid",
 			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/access/bookmarks/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"\n  }\n}"
@@ -75,31 +75,31 @@
 			"id": {
 				"type": "string",
 				"example": "\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"",
+				"description": "The unique identifier for the Bookmark application.",
 				"id": "https://api.cloudflare.com/schemas/v4/common/uuid.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 				"readOnly": true,
-				"maxLength": 36,
-				"description": "API uuid tag"
+				"maxLength": 36
 			},
 			"domain": {
 				"type": "string",
 				"example": "\"example.com\"",
-				"description": "The domain of the bookmark application."
+				"description": "The domain of the Bookmark application."
 			},
 			"name": {
 				"type": "string",
 				"example": "\"My Website\"",
-				"description": "The name of the bookmark application."
+				"description": "The name of the Bookmark application."
 			},
 			"logo_url": {
 				"type": "string",
 				"example": "\"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\"",
-				"description": "Defines the image URL for the logo shown in the app launcher dashboard."
+				"description": "The image URL for the logo shown in the App Launcher dashboard."
 			},
 			"app_launcher_visible": {
 				"type": "boolean",
 				"example": "true",
-				"description": "Defines whether or not the application is displayed in the App Launcher."
+				"description": "Displays the application in the App Launcher."
 			},
 			"created_at": {
 				"type": "string",
@@ -132,7 +132,7 @@
 		],
 		"objects": [],
 		"example": "{\n  \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n  \"domain\": \"example.com\",\n  \"name\": \"My Website\",\n  \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n  \"app_launcher_visible\": true,\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n}",
-		"title": "Access Bookmark Applications",
-		"description": "Access Bookmark Applications are applications displayed in App Launcher, but are not behind Access."
+		"title": "Access Bookmark applications",
+		"description": "Access Bookmark applications are applications displayed in the App Launcher, but are not secured behind Access."
 	}
 }

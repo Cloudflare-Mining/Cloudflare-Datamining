@@ -6,7 +6,7 @@
 	"links": [
 		{
 			"title": "List Healthcheck Events",
-			"description": "List origin health changes",
+			"description": "List origin health changes.",
 			"rel": "collection",
 			"href": "user/load_balancing_analytics/events",
 			"method": "GET",
@@ -34,12 +34,12 @@
 					"origin_name": {
 						"type": "string",
 						"example": "\"primary-dc-1\"",
-						"description": "The name for the origin to filter for."
+						"description": "The name for the origin to filter."
 					},
 					"pool_name": {
 						"type": "string",
 						"example": "\"primary-dc\"",
-						"description": "The name for the pool to filter for."
+						"description": "The name for the pool to filter."
 					},
 					"pool_id": {
 						"type": "string",
@@ -53,13 +53,13 @@
 					"origin_healthy": {
 						"type": "boolean",
 						"example": "true",
-						"description": "If true, filter events where the origin status is healthy, if false, filter events where the origin status is unhealthy.",
+						"description": "If true, filter events where the origin status is healthy. If false, filter events where the origin status is unhealthy.",
 						"default": true
 					},
 					"pool_healthy": {
 						"type": "boolean",
 						"example": "true",
-						"description": "If true, filter events where the pool status is healthy, if false, filter events where the pool status is unhealthy.",
+						"description": "If true, filter events where the pool status is healthy. If false, filter events where the pool status is unhealthy.",
 						"default": true
 					}
 				},

@@ -5,8 +5,8 @@
 	"type": "object",
 	"links": [
 		{
-			"title": "Upload a caption/subtitle",
-			"description": "Upload the file to the endpoint for a specific BCP47 language. One caption/subtitle per language is allowed.",
+			"title": "Upload captions or subtitles",
+			"description": "Uploads the caption or subtitle file to the endpoint for a specific BCP47 language. One caption or subtitle file per language is allowed.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/stream/{#/definitions/video_identifier}/captions/{#/definitions/language}",
 			"method": "PUT",
@@ -32,7 +32,7 @@
 					}
 				}
 			},
-			"html_id": "stream-subtitles/captions-upload-a-caption/subtitle",
+			"html_id": "stream-subtitles/captions-upload-captions-or-subtitles",
 			"uri": "accounts/:account_identifier/stream/:video_identifier/captions/:language",
 			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/stream/ea95132c15732412d22c1476fa83f27a/captions/tr\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     --form 'file=@/Users/kyle/Desktop/tr.vtt'",
 			"parameters": {
@@ -43,7 +43,7 @@
 					"file": {
 						"type": "string",
 						"example": "\"@/Users/kyle/Desktop/tr.vtt\"",
-						"description": "WebVTT file to upload"
+						"description": "The WebVTT file containing the caption or subtitle content."
 					}
 				},
 				"required_props": [
@@ -56,25 +56,25 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"label\": \"Türkçe\",\n    \"language\": \"tr\"\n  }\n}"
 		},
 		{
-			"title": "List captions/subtitles",
-			"description": "View the currently available captions for a specific video.",
+			"title": "List captions or subtitles",
+			"description": "Lists the available captions or subtitles for a specific video.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/account_identifier}/stream/{#/definitions/video_identifier}/captions",
 			"method": "GET",
 			"cfOwnership": "stream",
-			"html_id": "stream-subtitles/captions-list-captions/subtitles",
+			"html_id": "stream-subtitles/captions-list-captions-or-subtitles",
 			"uri": "accounts/:account_identifier/stream/:video_identifier/captions",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/stream/ea95132c15732412d22c1476fa83f27a/captions\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"label\": \"Türkçe\",\n      \"language\": \"tr\"\n    }\n  ]\n}"
 		},
 		{
-			"title": "Delete a caption/subtitle",
-			"description": "Remove the caption or subtitle from a video",
+			"title": "Delete captions or subtitles",
+			"description": "Removes the captions or subtitles from a video.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/stream/{#/definitions/video_identifier}/captions/{#/definitions/language}",
 			"cfOwnership": "stream",
 			"method": "DELETE",
-			"html_id": "stream-subtitles/captions-delete-a-caption/subtitle",
+			"html_id": "stream-subtitles/captions-delete-captions-or-subtitles",
 			"uri": "accounts/:account_identifier/stream/:video_identifier/captions/:language",
 			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/stream/ea95132c15732412d22c1476fa83f27a/captions/tr\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": \"\"\n}"
@@ -89,13 +89,13 @@
 			"label": {
 				"type": "string",
 				"example": "\"Türkçe\"",
-				"description": "Language label in the native language to be displayed to the user",
+				"description": "The language label displayed in the native language to users.",
 				"readOnly": true
 			},
 			"language": {
 				"type": "string",
 				"example": "\"tr\"",
-				"description": "Language in BCP 47 format",
+				"description": "The language tag in BCP 47 format.",
 				"readOnly": true
 			}
 		},

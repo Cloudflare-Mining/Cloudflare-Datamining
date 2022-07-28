@@ -68,16 +68,16 @@
 					"include": {
 						"type": "array",
 						"example": "[\n  {\n    \"email\": {\n      \"email\": \"test@example.com\"\n    }\n  }\n]",
-						"description": "Rules evaluated with an OR logical operator. To match the policy, a user needs to meet only one of the Include rules.",
+						"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
 						"items": {
 							"id": "https://api.cloudflare.com/schemas/v4/client/definitions/access/rule.json",
 							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 							"type": "object",
-							"description": "Rule configuration. Use the rule type in the top level of the rule configuration object. In the example, the rule type is email and it wraps the email configuration.",
+							"description": "Rules in an Access policy. The rule object contains selectors at the top level, and nested inside are the values each selector will match on.",
 							"oneOf": [
 								{
-									"title": "Access Email Rule",
-									"description": "Match a specific email.",
+									"title": "Email",
+									"description": "Matches a specific email.",
 									"type": "object",
 									"required": [
 										"email"
@@ -100,7 +100,7 @@
 									}
 								},
 								{
-									"title": "Access Domain Rule",
+									"title": "Email domain",
 									"description": "Match an entire email domain.",
 									"type": "object",
 									"required": [
@@ -123,8 +123,8 @@
 									}
 								},
 								{
-									"title": "Access Everyone Rule",
-									"description": "Match everyone.",
+									"title": "Everyone",
+									"description": "Matches everyone.",
 									"type": "object",
 									"required": [
 										"everyone"
@@ -132,14 +132,14 @@
 									"properties": {
 										"everyone": {
 											"type": "object",
-											"description": "The everyone rule uses an empty object for the configuration. This will allow any user to reach the path of the application without authentication.",
+											"description": "An empty object which matches on all users.",
 											"example": {}
 										}
 									}
 								},
 								{
-									"title": "Access IP Rule",
-									"description": "Match an IP address block.",
+									"title": "IP ranges",
+									"description": "Matches an IP address block.",
 									"type": "object",
 									"required": [
 										"ip"
@@ -161,8 +161,8 @@
 									}
 								},
 								{
-									"title": "Access IP List Rule",
-									"description": "Match an IP from a list.",
+									"title": "IP list",
+									"description": "Matches an IP address from a list.",
 									"type": "object",
 									"required": [
 										"ip_list"
@@ -176,7 +176,7 @@
 											"properties": {
 												"id": {
 													"type": "string",
-													"description": "The ID of a previously created IP List.",
+													"description": "The ID of a previously created IP list.",
 													"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
 												}
 											}
@@ -184,8 +184,8 @@
 									}
 								},
 								{
-									"title": "Certificate Rule",
-									"description": "Match any valid certificate.",
+									"title": "Valid certificate",
+									"description": "Matches any valid client certificate.",
 									"type": "object",
 									"example": {
 										"certificate": {}
@@ -202,8 +202,8 @@
 									}
 								},
 								{
-									"title": "Access Group Rule",
-									"description": "Match an Access Group",
+									"title": "Access groups",
+									"description": "Matches an Access group",
 									"type": "object",
 									"required": [
 										"group"
@@ -217,7 +217,7 @@
 											"properties": {
 												"id": {
 													"type": "string",
-													"description": "The ID of a previously created Access Group.",
+													"description": "The ID of a previously created Access group.",
 													"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
 												}
 											}
@@ -225,9 +225,9 @@
 									}
 								},
 								{
-									"title": "Azure Group Rule",
-									"description": "Match an Azure Group",
-									"cfExtendedDescription": "Requires an Azure identity provider",
+									"title": "Azure group",
+									"description": "Matches an Azure group.",
+									"cfExtendedDescription": "Requires an Azure identity provider.",
 									"type": "object",
 									"required": [
 										"azureAD"
@@ -255,9 +255,9 @@
 									}
 								},
 								{
-									"title": "Github Organization Rule",
-									"description": "Match a Github Organization",
-									"cfExtendedDescription": "Requires a Github identity provider",
+									"title": "Github organization",
+									"description": "Matches a Github organization",
+									"cfExtendedDescription": "Requires a Github identity provider.",
 									"type": "object",
 									"required": [
 										"github-organization"
@@ -285,9 +285,9 @@
 									}
 								},
 								{
-									"title": "GSuite Group Rule",
-									"description": "Match a GSuite Group",
-									"cfExtendedDescription": "Requires a GSuite identity provider",
+									"title": "Google Workspace group",
+									"description": "Matches a group in Google Workspace.",
+									"cfExtendedDescription": "Requires a Google Workspace identity provider.",
 									"type": "object",
 									"required": [
 										"gsuite"
@@ -302,12 +302,12 @@
 											"properties": {
 												"email": {
 													"type": "string",
-													"description": "The email of the group.",
+													"description": "The email of the Google Workspace group.",
 													"example": "devs@cloudflare.com"
 												},
 												"connection_id": {
 													"type": "string",
-													"description": "The ID of your GSuite identity provider.",
+													"description": "The ID of your Google Workspace identity provider.",
 													"example": "ea85612a-29c8-46c2-bacb-669d65136971"
 												}
 											}
@@ -315,9 +315,9 @@
 									}
 								},
 								{
-									"title": "Okta Group Rule",
-									"description": "Match an Okta Group",
-									"cfExtendedDescription": "Requires a Okta identity provider",
+									"title": "Okta group",
+									"description": "Matches an Okta group.",
+									"cfExtendedDescription": "Requires an Okta identity provider.",
 									"type": "object",
 									"required": [
 										"okta"
@@ -332,12 +332,12 @@
 											"properties": {
 												"email": {
 													"type": "string",
-													"description": "The email of the group.",
+													"description": "The email of the Okta group.",
 													"example": "devs@cloudflare.com"
 												},
 												"connection_id": {
 													"type": "string",
-													"description": "The ID of your ID of your Okta identity provider.",
+													"description": "The ID of your Okta identity provider.",
 													"example": "ea85612a-29c8-46c2-bacb-669d65136971"
 												}
 											}
@@ -345,9 +345,9 @@
 									}
 								},
 								{
-									"title": "SAML Group Rule",
-									"description": "Match a SAML Group",
-									"cfExtendedDescription": "Requires a SAML identity provider",
+									"title": "SAML group",
+									"description": "Matches a SAML group.",
+									"cfExtendedDescription": "Requires a SAML identity provider.",
 									"type": "object",
 									"required": [
 										"saml"
@@ -362,12 +362,12 @@
 											"properties": {
 												"attribute_name": {
 													"type": "string",
-													"description": "The name of the attribute.",
+													"description": "The name of the SAML attribute.",
 													"example": "group"
 												},
 												"attribute_value": {
 													"type": "string",
-													"description": "The value to look for.",
+													"description": "The SAML attribute value to look for.",
 													"example": "devs@cloudflare.com"
 												}
 											}
@@ -377,8 +377,8 @@
 							],
 							"definitions": {
 								"email_rule": {
-									"title": "Access Email Rule",
-									"description": "Match a specific email.",
+									"title": "Email",
+									"description": "Matches a specific email.",
 									"type": "object",
 									"required": [
 										"email"
@@ -401,7 +401,7 @@
 									}
 								},
 								"domain_rule": {
-									"title": "Access Domain Rule",
+									"title": "Email domain",
 									"description": "Match an entire email domain.",
 									"type": "object",
 									"required": [
@@ -424,8 +424,8 @@
 									}
 								},
 								"everyone_rule": {
-									"title": "Access Everyone Rule",
-									"description": "Match everyone.",
+									"title": "Everyone",
+									"description": "Matches everyone.",
 									"type": "object",
 									"required": [
 										"everyone"
@@ -433,14 +433,14 @@
 									"properties": {
 										"everyone": {
 											"type": "object",
-											"description": "The everyone rule uses an empty object for the configuration. This will allow any user to reach the path of the application without authentication.",
+											"description": "An empty object which matches on all users.",
 											"example": {}
 										}
 									}
 								},
 								"ip_rule": {
-									"title": "Access IP Rule",
-									"description": "Match an IP address block.",
+									"title": "IP ranges",
+									"description": "Matches an IP address block.",
 									"type": "object",
 									"required": [
 										"ip"
@@ -462,8 +462,8 @@
 									}
 								},
 								"certificate_rule": {
-									"title": "Certificate Rule",
-									"description": "Match any valid certificate.",
+									"title": "Valid certificate",
+									"description": "Matches any valid client certificate.",
 									"type": "object",
 									"example": {
 										"certificate": {}
@@ -480,8 +480,8 @@
 									}
 								},
 								"access_group_rule": {
-									"title": "Access Group Rule",
-									"description": "Match an Access Group",
+									"title": "Access groups",
+									"description": "Matches an Access group",
 									"type": "object",
 									"required": [
 										"group"
@@ -495,7 +495,7 @@
 											"properties": {
 												"id": {
 													"type": "string",
-													"description": "The ID of a previously created Access Group.",
+													"description": "The ID of a previously created Access group.",
 													"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
 												}
 											}
@@ -503,9 +503,9 @@
 									}
 								},
 								"azure_group_rule": {
-									"title": "Azure Group Rule",
-									"description": "Match an Azure Group",
-									"cfExtendedDescription": "Requires an Azure identity provider",
+									"title": "Azure group",
+									"description": "Matches an Azure group.",
+									"cfExtendedDescription": "Requires an Azure identity provider.",
 									"type": "object",
 									"required": [
 										"azureAD"
@@ -533,9 +533,9 @@
 									}
 								},
 								"github_organization_rule": {
-									"title": "Github Organization Rule",
-									"description": "Match a Github Organization",
-									"cfExtendedDescription": "Requires a Github identity provider",
+									"title": "Github organization",
+									"description": "Matches a Github organization",
+									"cfExtendedDescription": "Requires a Github identity provider.",
 									"type": "object",
 									"required": [
 										"github-organization"
@@ -563,9 +563,9 @@
 									}
 								},
 								"gsuite_group_rule": {
-									"title": "GSuite Group Rule",
-									"description": "Match a GSuite Group",
-									"cfExtendedDescription": "Requires a GSuite identity provider",
+									"title": "Google Workspace group",
+									"description": "Matches a group in Google Workspace.",
+									"cfExtendedDescription": "Requires a Google Workspace identity provider.",
 									"type": "object",
 									"required": [
 										"gsuite"
@@ -580,12 +580,12 @@
 											"properties": {
 												"email": {
 													"type": "string",
-													"description": "The email of the group.",
+													"description": "The email of the Google Workspace group.",
 													"example": "devs@cloudflare.com"
 												},
 												"connection_id": {
 													"type": "string",
-													"description": "The ID of your GSuite identity provider.",
+													"description": "The ID of your Google Workspace identity provider.",
 													"example": "ea85612a-29c8-46c2-bacb-669d65136971"
 												}
 											}
@@ -593,9 +593,9 @@
 									}
 								},
 								"okta_group_rule": {
-									"title": "Okta Group Rule",
-									"description": "Match an Okta Group",
-									"cfExtendedDescription": "Requires a Okta identity provider",
+									"title": "Okta group",
+									"description": "Matches an Okta group.",
+									"cfExtendedDescription": "Requires an Okta identity provider.",
 									"type": "object",
 									"required": [
 										"okta"
@@ -610,12 +610,12 @@
 											"properties": {
 												"email": {
 													"type": "string",
-													"description": "The email of the group.",
+													"description": "The email of the Okta group.",
 													"example": "devs@cloudflare.com"
 												},
 												"connection_id": {
 													"type": "string",
-													"description": "The ID of your ID of your Okta identity provider.",
+													"description": "The ID of your Okta identity provider.",
 													"example": "ea85612a-29c8-46c2-bacb-669d65136971"
 												}
 											}
@@ -623,9 +623,9 @@
 									}
 								},
 								"saml_group_rule": {
-									"title": "SAML Group Rule",
-									"description": "Match a SAML Group",
-									"cfExtendedDescription": "Requires a SAML identity provider",
+									"title": "SAML group",
+									"description": "Matches a SAML group.",
+									"cfExtendedDescription": "Requires a SAML identity provider.",
 									"type": "object",
 									"required": [
 										"saml"
@@ -640,12 +640,12 @@
 											"properties": {
 												"attribute_name": {
 													"type": "string",
-													"description": "The name of the attribute.",
+													"description": "The name of the SAML attribute.",
 													"example": "group"
 												},
 												"attribute_value": {
 													"type": "string",
-													"description": "The value to look for.",
+													"description": "The SAML attribute value to look for.",
 													"example": "devs@cloudflare.com"
 												}
 											}
@@ -653,8 +653,8 @@
 									}
 								},
 								"ip_list_rule": {
-									"title": "Access IP List Rule",
-									"description": "Match an IP from a list.",
+									"title": "IP list",
+									"description": "Matches an IP address from a list.",
 									"type": "object",
 									"required": [
 										"ip_list"
@@ -668,7 +668,7 @@
 											"properties": {
 												"id": {
 													"type": "string",
-													"description": "The ID of a previously created IP List.",
+													"description": "The ID of a previously created IP list.",
 													"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
 												}
 											}
@@ -686,11 +686,11 @@
 							"id": "https://api.cloudflare.com/schemas/v4/client/definitions/access/rule.json",
 							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 							"type": "object",
-							"description": "Rule configuration. Use the rule type in the top level of the rule configuration object. In the example, the rule type is email and it wraps the email configuration.",
+							"description": "Rules in an Access policy. The rule object contains selectors at the top level, and nested inside are the values each selector will match on.",
 							"oneOf": [
 								{
-									"title": "Access Email Rule",
-									"description": "Match a specific email.",
+									"title": "Email",
+									"description": "Matches a specific email.",
 									"type": "object",
 									"required": [
 										"email"
@@ -713,7 +713,7 @@
 									}
 								},
 								{
-									"title": "Access Domain Rule",
+									"title": "Email domain",
 									"description": "Match an entire email domain.",
 									"type": "object",
 									"required": [
@@ -736,8 +736,8 @@
 									}
 								},
 								{
-									"title": "Access Everyone Rule",
-									"description": "Match everyone.",
+									"title": "Everyone",
+									"description": "Matches everyone.",
 									"type": "object",
 									"required": [
 										"everyone"
@@ -745,14 +745,14 @@
 									"properties": {
 										"everyone": {
 											"type": "object",
-											"description": "The everyone rule uses an empty object for the configuration. This will allow any user to reach the path of the application without authentication.",
+											"description": "An empty object which matches on all users.",
 											"example": {}
 										}
 									}
 								},
 								{
-									"title": "Access IP Rule",
-									"description": "Match an IP address block.",
+									"title": "IP ranges",
+									"description": "Matches an IP address block.",
 									"type": "object",
 									"required": [
 										"ip"
@@ -774,8 +774,8 @@
 									}
 								},
 								{
-									"title": "Access IP List Rule",
-									"description": "Match an IP from a list.",
+									"title": "IP list",
+									"description": "Matches an IP address from a list.",
 									"type": "object",
 									"required": [
 										"ip_list"
@@ -789,7 +789,7 @@
 											"properties": {
 												"id": {
 													"type": "string",
-													"description": "The ID of a previously created IP List.",
+													"description": "The ID of a previously created IP list.",
 													"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
 												}
 											}
@@ -797,8 +797,8 @@
 									}
 								},
 								{
-									"title": "Certificate Rule",
-									"description": "Match any valid certificate.",
+									"title": "Valid certificate",
+									"description": "Matches any valid client certificate.",
 									"type": "object",
 									"example": {
 										"certificate": {}
@@ -815,8 +815,8 @@
 									}
 								},
 								{
-									"title": "Access Group Rule",
-									"description": "Match an Access Group",
+									"title": "Access groups",
+									"description": "Matches an Access group",
 									"type": "object",
 									"required": [
 										"group"
@@ -830,7 +830,7 @@
 											"properties": {
 												"id": {
 													"type": "string",
-													"description": "The ID of a previously created Access Group.",
+													"description": "The ID of a previously created Access group.",
 													"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
 												}
 											}
@@ -838,9 +838,9 @@
 									}
 								},
 								{
-									"title": "Azure Group Rule",
-									"description": "Match an Azure Group",
-									"cfExtendedDescription": "Requires an Azure identity provider",
+									"title": "Azure group",
+									"description": "Matches an Azure group.",
+									"cfExtendedDescription": "Requires an Azure identity provider.",
 									"type": "object",
 									"required": [
 										"azureAD"
@@ -868,9 +868,9 @@
 									}
 								},
 								{
-									"title": "Github Organization Rule",
-									"description": "Match a Github Organization",
-									"cfExtendedDescription": "Requires a Github identity provider",
+									"title": "Github organization",
+									"description": "Matches a Github organization",
+									"cfExtendedDescription": "Requires a Github identity provider.",
 									"type": "object",
 									"required": [
 										"github-organization"
@@ -898,9 +898,9 @@
 									}
 								},
 								{
-									"title": "GSuite Group Rule",
-									"description": "Match a GSuite Group",
-									"cfExtendedDescription": "Requires a GSuite identity provider",
+									"title": "Google Workspace group",
+									"description": "Matches a group in Google Workspace.",
+									"cfExtendedDescription": "Requires a Google Workspace identity provider.",
 									"type": "object",
 									"required": [
 										"gsuite"
@@ -915,12 +915,12 @@
 											"properties": {
 												"email": {
 													"type": "string",
-													"description": "The email of the group.",
+													"description": "The email of the Google Workspace group.",
 													"example": "devs@cloudflare.com"
 												},
 												"connection_id": {
 													"type": "string",
-													"description": "The ID of your GSuite identity provider.",
+													"description": "The ID of your Google Workspace identity provider.",
 													"example": "ea85612a-29c8-46c2-bacb-669d65136971"
 												}
 											}
@@ -928,9 +928,9 @@
 									}
 								},
 								{
-									"title": "Okta Group Rule",
-									"description": "Match an Okta Group",
-									"cfExtendedDescription": "Requires a Okta identity provider",
+									"title": "Okta group",
+									"description": "Matches an Okta group.",
+									"cfExtendedDescription": "Requires an Okta identity provider.",
 									"type": "object",
 									"required": [
 										"okta"
@@ -945,12 +945,12 @@
 											"properties": {
 												"email": {
 													"type": "string",
-													"description": "The email of the group.",
+													"description": "The email of the Okta group.",
 													"example": "devs@cloudflare.com"
 												},
 												"connection_id": {
 													"type": "string",
-													"description": "The ID of your ID of your Okta identity provider.",
+													"description": "The ID of your Okta identity provider.",
 													"example": "ea85612a-29c8-46c2-bacb-669d65136971"
 												}
 											}
@@ -958,9 +958,9 @@
 									}
 								},
 								{
-									"title": "SAML Group Rule",
-									"description": "Match a SAML Group",
-									"cfExtendedDescription": "Requires a SAML identity provider",
+									"title": "SAML group",
+									"description": "Matches a SAML group.",
+									"cfExtendedDescription": "Requires a SAML identity provider.",
 									"type": "object",
 									"required": [
 										"saml"
@@ -975,12 +975,12 @@
 											"properties": {
 												"attribute_name": {
 													"type": "string",
-													"description": "The name of the attribute.",
+													"description": "The name of the SAML attribute.",
 													"example": "group"
 												},
 												"attribute_value": {
 													"type": "string",
-													"description": "The value to look for.",
+													"description": "The SAML attribute value to look for.",
 													"example": "devs@cloudflare.com"
 												}
 											}
@@ -990,8 +990,8 @@
 							],
 							"definitions": {
 								"email_rule": {
-									"title": "Access Email Rule",
-									"description": "Match a specific email.",
+									"title": "Email",
+									"description": "Matches a specific email.",
 									"type": "object",
 									"required": [
 										"email"
@@ -1014,7 +1014,7 @@
 									}
 								},
 								"domain_rule": {
-									"title": "Access Domain Rule",
+									"title": "Email domain",
 									"description": "Match an entire email domain.",
 									"type": "object",
 									"required": [
@@ -1037,8 +1037,8 @@
 									}
 								},
 								"everyone_rule": {
-									"title": "Access Everyone Rule",
-									"description": "Match everyone.",
+									"title": "Everyone",
+									"description": "Matches everyone.",
 									"type": "object",
 									"required": [
 										"everyone"
@@ -1046,14 +1046,14 @@
 									"properties": {
 										"everyone": {
 											"type": "object",
-											"description": "The everyone rule uses an empty object for the configuration. This will allow any user to reach the path of the application without authentication.",
+											"description": "An empty object which matches on all users.",
 											"example": {}
 										}
 									}
 								},
 								"ip_rule": {
-									"title": "Access IP Rule",
-									"description": "Match an IP address block.",
+									"title": "IP ranges",
+									"description": "Matches an IP address block.",
 									"type": "object",
 									"required": [
 										"ip"
@@ -1075,8 +1075,8 @@
 									}
 								},
 								"certificate_rule": {
-									"title": "Certificate Rule",
-									"description": "Match any valid certificate.",
+									"title": "Valid certificate",
+									"description": "Matches any valid client certificate.",
 									"type": "object",
 									"example": {
 										"certificate": {}
@@ -1093,8 +1093,8 @@
 									}
 								},
 								"access_group_rule": {
-									"title": "Access Group Rule",
-									"description": "Match an Access Group",
+									"title": "Access groups",
+									"description": "Matches an Access group",
 									"type": "object",
 									"required": [
 										"group"
@@ -1108,7 +1108,7 @@
 											"properties": {
 												"id": {
 													"type": "string",
-													"description": "The ID of a previously created Access Group.",
+													"description": "The ID of a previously created Access group.",
 													"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
 												}
 											}
@@ -1116,9 +1116,9 @@
 									}
 								},
 								"azure_group_rule": {
-									"title": "Azure Group Rule",
-									"description": "Match an Azure Group",
-									"cfExtendedDescription": "Requires an Azure identity provider",
+									"title": "Azure group",
+									"description": "Matches an Azure group.",
+									"cfExtendedDescription": "Requires an Azure identity provider.",
 									"type": "object",
 									"required": [
 										"azureAD"
@@ -1146,9 +1146,9 @@
 									}
 								},
 								"github_organization_rule": {
-									"title": "Github Organization Rule",
-									"description": "Match a Github Organization",
-									"cfExtendedDescription": "Requires a Github identity provider",
+									"title": "Github organization",
+									"description": "Matches a Github organization",
+									"cfExtendedDescription": "Requires a Github identity provider.",
 									"type": "object",
 									"required": [
 										"github-organization"
@@ -1176,9 +1176,9 @@
 									}
 								},
 								"gsuite_group_rule": {
-									"title": "GSuite Group Rule",
-									"description": "Match a GSuite Group",
-									"cfExtendedDescription": "Requires a GSuite identity provider",
+									"title": "Google Workspace group",
+									"description": "Matches a group in Google Workspace.",
+									"cfExtendedDescription": "Requires a Google Workspace identity provider.",
 									"type": "object",
 									"required": [
 										"gsuite"
@@ -1193,12 +1193,12 @@
 											"properties": {
 												"email": {
 													"type": "string",
-													"description": "The email of the group.",
+													"description": "The email of the Google Workspace group.",
 													"example": "devs@cloudflare.com"
 												},
 												"connection_id": {
 													"type": "string",
-													"description": "The ID of your GSuite identity provider.",
+													"description": "The ID of your Google Workspace identity provider.",
 													"example": "ea85612a-29c8-46c2-bacb-669d65136971"
 												}
 											}
@@ -1206,9 +1206,9 @@
 									}
 								},
 								"okta_group_rule": {
-									"title": "Okta Group Rule",
-									"description": "Match an Okta Group",
-									"cfExtendedDescription": "Requires a Okta identity provider",
+									"title": "Okta group",
+									"description": "Matches an Okta group.",
+									"cfExtendedDescription": "Requires an Okta identity provider.",
 									"type": "object",
 									"required": [
 										"okta"
@@ -1223,12 +1223,12 @@
 											"properties": {
 												"email": {
 													"type": "string",
-													"description": "The email of the group.",
+													"description": "The email of the Okta group.",
 													"example": "devs@cloudflare.com"
 												},
 												"connection_id": {
 													"type": "string",
-													"description": "The ID of your ID of your Okta identity provider.",
+													"description": "The ID of your Okta identity provider.",
 													"example": "ea85612a-29c8-46c2-bacb-669d65136971"
 												}
 											}
@@ -1236,9 +1236,9 @@
 									}
 								},
 								"saml_group_rule": {
-									"title": "SAML Group Rule",
-									"description": "Match a SAML Group",
-									"cfExtendedDescription": "Requires a SAML identity provider",
+									"title": "SAML group",
+									"description": "Matches a SAML group.",
+									"cfExtendedDescription": "Requires a SAML identity provider.",
 									"type": "object",
 									"required": [
 										"saml"
@@ -1253,12 +1253,12 @@
 											"properties": {
 												"attribute_name": {
 													"type": "string",
-													"description": "The name of the attribute.",
+													"description": "The name of the SAML attribute.",
 													"example": "group"
 												},
 												"attribute_value": {
 													"type": "string",
-													"description": "The value to look for.",
+													"description": "The SAML attribute value to look for.",
 													"example": "devs@cloudflare.com"
 												}
 											}
@@ -1266,8 +1266,8 @@
 									}
 								},
 								"ip_list_rule": {
-									"title": "Access IP List Rule",
-									"description": "Match an IP from a list.",
+									"title": "IP list",
+									"description": "Matches an IP address from a list.",
 									"type": "object",
 									"required": [
 										"ip_list"
@@ -1281,7 +1281,7 @@
 											"properties": {
 												"id": {
 													"type": "string",
-													"description": "The ID of a previously created IP List.",
+													"description": "The ID of a previously created IP list.",
 													"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
 												}
 											}
@@ -1299,11 +1299,11 @@
 							"id": "https://api.cloudflare.com/schemas/v4/client/definitions/access/rule.json",
 							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 							"type": "object",
-							"description": "Rule configuration. Use the rule type in the top level of the rule configuration object. In the example, the rule type is email and it wraps the email configuration.",
+							"description": "Rules in an Access policy. The rule object contains selectors at the top level, and nested inside are the values each selector will match on.",
 							"oneOf": [
 								{
-									"title": "Access Email Rule",
-									"description": "Match a specific email.",
+									"title": "Email",
+									"description": "Matches a specific email.",
 									"type": "object",
 									"required": [
 										"email"
@@ -1326,7 +1326,7 @@
 									}
 								},
 								{
-									"title": "Access Domain Rule",
+									"title": "Email domain",
 									"description": "Match an entire email domain.",
 									"type": "object",
 									"required": [
@@ -1349,8 +1349,8 @@
 									}
 								},
 								{
-									"title": "Access Everyone Rule",
-									"description": "Match everyone.",
+									"title": "Everyone",
+									"description": "Matches everyone.",
 									"type": "object",
 									"required": [
 										"everyone"
@@ -1358,14 +1358,14 @@
 									"properties": {
 										"everyone": {
 											"type": "object",
-											"description": "The everyone rule uses an empty object for the configuration. This will allow any user to reach the path of the application without authentication.",
+											"description": "An empty object which matches on all users.",
 											"example": {}
 										}
 									}
 								},
 								{
-									"title": "Access IP Rule",
-									"description": "Match an IP address block.",
+									"title": "IP ranges",
+									"description": "Matches an IP address block.",
 									"type": "object",
 									"required": [
 										"ip"
@@ -1387,8 +1387,8 @@
 									}
 								},
 								{
-									"title": "Access IP List Rule",
-									"description": "Match an IP from a list.",
+									"title": "IP list",
+									"description": "Matches an IP address from a list.",
 									"type": "object",
 									"required": [
 										"ip_list"
@@ -1402,7 +1402,7 @@
 											"properties": {
 												"id": {
 													"type": "string",
-													"description": "The ID of a previously created IP List.",
+													"description": "The ID of a previously created IP list.",
 													"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
 												}
 											}
@@ -1410,8 +1410,8 @@
 									}
 								},
 								{
-									"title": "Certificate Rule",
-									"description": "Match any valid certificate.",
+									"title": "Valid certificate",
+									"description": "Matches any valid client certificate.",
 									"type": "object",
 									"example": {
 										"certificate": {}
@@ -1428,8 +1428,8 @@
 									}
 								},
 								{
-									"title": "Access Group Rule",
-									"description": "Match an Access Group",
+									"title": "Access groups",
+									"description": "Matches an Access group",
 									"type": "object",
 									"required": [
 										"group"
@@ -1443,7 +1443,7 @@
 											"properties": {
 												"id": {
 													"type": "string",
-													"description": "The ID of a previously created Access Group.",
+													"description": "The ID of a previously created Access group.",
 													"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
 												}
 											}
@@ -1451,9 +1451,9 @@
 									}
 								},
 								{
-									"title": "Azure Group Rule",
-									"description": "Match an Azure Group",
-									"cfExtendedDescription": "Requires an Azure identity provider",
+									"title": "Azure group",
+									"description": "Matches an Azure group.",
+									"cfExtendedDescription": "Requires an Azure identity provider.",
 									"type": "object",
 									"required": [
 										"azureAD"
@@ -1481,9 +1481,9 @@
 									}
 								},
 								{
-									"title": "Github Organization Rule",
-									"description": "Match a Github Organization",
-									"cfExtendedDescription": "Requires a Github identity provider",
+									"title": "Github organization",
+									"description": "Matches a Github organization",
+									"cfExtendedDescription": "Requires a Github identity provider.",
 									"type": "object",
 									"required": [
 										"github-organization"
@@ -1511,9 +1511,9 @@
 									}
 								},
 								{
-									"title": "GSuite Group Rule",
-									"description": "Match a GSuite Group",
-									"cfExtendedDescription": "Requires a GSuite identity provider",
+									"title": "Google Workspace group",
+									"description": "Matches a group in Google Workspace.",
+									"cfExtendedDescription": "Requires a Google Workspace identity provider.",
 									"type": "object",
 									"required": [
 										"gsuite"
@@ -1528,12 +1528,12 @@
 											"properties": {
 												"email": {
 													"type": "string",
-													"description": "The email of the group.",
+													"description": "The email of the Google Workspace group.",
 													"example": "devs@cloudflare.com"
 												},
 												"connection_id": {
 													"type": "string",
-													"description": "The ID of your GSuite identity provider.",
+													"description": "The ID of your Google Workspace identity provider.",
 													"example": "ea85612a-29c8-46c2-bacb-669d65136971"
 												}
 											}
@@ -1541,9 +1541,9 @@
 									}
 								},
 								{
-									"title": "Okta Group Rule",
-									"description": "Match an Okta Group",
-									"cfExtendedDescription": "Requires a Okta identity provider",
+									"title": "Okta group",
+									"description": "Matches an Okta group.",
+									"cfExtendedDescription": "Requires an Okta identity provider.",
 									"type": "object",
 									"required": [
 										"okta"
@@ -1558,12 +1558,12 @@
 											"properties": {
 												"email": {
 													"type": "string",
-													"description": "The email of the group.",
+													"description": "The email of the Okta group.",
 													"example": "devs@cloudflare.com"
 												},
 												"connection_id": {
 													"type": "string",
-													"description": "The ID of your ID of your Okta identity provider.",
+													"description": "The ID of your Okta identity provider.",
 													"example": "ea85612a-29c8-46c2-bacb-669d65136971"
 												}
 											}
@@ -1571,9 +1571,9 @@
 									}
 								},
 								{
-									"title": "SAML Group Rule",
-									"description": "Match a SAML Group",
-									"cfExtendedDescription": "Requires a SAML identity provider",
+									"title": "SAML group",
+									"description": "Matches a SAML group.",
+									"cfExtendedDescription": "Requires a SAML identity provider.",
 									"type": "object",
 									"required": [
 										"saml"
@@ -1588,12 +1588,12 @@
 											"properties": {
 												"attribute_name": {
 													"type": "string",
-													"description": "The name of the attribute.",
+													"description": "The name of the SAML attribute.",
 													"example": "group"
 												},
 												"attribute_value": {
 													"type": "string",
-													"description": "The value to look for.",
+													"description": "The SAML attribute value to look for.",
 													"example": "devs@cloudflare.com"
 												}
 											}
@@ -1603,8 +1603,8 @@
 							],
 							"definitions": {
 								"email_rule": {
-									"title": "Access Email Rule",
-									"description": "Match a specific email.",
+									"title": "Email",
+									"description": "Matches a specific email.",
 									"type": "object",
 									"required": [
 										"email"
@@ -1627,7 +1627,7 @@
 									}
 								},
 								"domain_rule": {
-									"title": "Access Domain Rule",
+									"title": "Email domain",
 									"description": "Match an entire email domain.",
 									"type": "object",
 									"required": [
@@ -1650,8 +1650,8 @@
 									}
 								},
 								"everyone_rule": {
-									"title": "Access Everyone Rule",
-									"description": "Match everyone.",
+									"title": "Everyone",
+									"description": "Matches everyone.",
 									"type": "object",
 									"required": [
 										"everyone"
@@ -1659,14 +1659,14 @@
 									"properties": {
 										"everyone": {
 											"type": "object",
-											"description": "The everyone rule uses an empty object for the configuration. This will allow any user to reach the path of the application without authentication.",
+											"description": "An empty object which matches on all users.",
 											"example": {}
 										}
 									}
 								},
 								"ip_rule": {
-									"title": "Access IP Rule",
-									"description": "Match an IP address block.",
+									"title": "IP ranges",
+									"description": "Matches an IP address block.",
 									"type": "object",
 									"required": [
 										"ip"
@@ -1688,8 +1688,8 @@
 									}
 								},
 								"certificate_rule": {
-									"title": "Certificate Rule",
-									"description": "Match any valid certificate.",
+									"title": "Valid certificate",
+									"description": "Matches any valid client certificate.",
 									"type": "object",
 									"example": {
 										"certificate": {}
@@ -1706,8 +1706,8 @@
 									}
 								},
 								"access_group_rule": {
-									"title": "Access Group Rule",
-									"description": "Match an Access Group",
+									"title": "Access groups",
+									"description": "Matches an Access group",
 									"type": "object",
 									"required": [
 										"group"
@@ -1721,7 +1721,7 @@
 											"properties": {
 												"id": {
 													"type": "string",
-													"description": "The ID of a previously created Access Group.",
+													"description": "The ID of a previously created Access group.",
 													"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
 												}
 											}
@@ -1729,9 +1729,9 @@
 									}
 								},
 								"azure_group_rule": {
-									"title": "Azure Group Rule",
-									"description": "Match an Azure Group",
-									"cfExtendedDescription": "Requires an Azure identity provider",
+									"title": "Azure group",
+									"description": "Matches an Azure group.",
+									"cfExtendedDescription": "Requires an Azure identity provider.",
 									"type": "object",
 									"required": [
 										"azureAD"
@@ -1759,9 +1759,9 @@
 									}
 								},
 								"github_organization_rule": {
-									"title": "Github Organization Rule",
-									"description": "Match a Github Organization",
-									"cfExtendedDescription": "Requires a Github identity provider",
+									"title": "Github organization",
+									"description": "Matches a Github organization",
+									"cfExtendedDescription": "Requires a Github identity provider.",
 									"type": "object",
 									"required": [
 										"github-organization"
@@ -1789,9 +1789,9 @@
 									}
 								},
 								"gsuite_group_rule": {
-									"title": "GSuite Group Rule",
-									"description": "Match a GSuite Group",
-									"cfExtendedDescription": "Requires a GSuite identity provider",
+									"title": "Google Workspace group",
+									"description": "Matches a group in Google Workspace.",
+									"cfExtendedDescription": "Requires a Google Workspace identity provider.",
 									"type": "object",
 									"required": [
 										"gsuite"
@@ -1806,12 +1806,12 @@
 											"properties": {
 												"email": {
 													"type": "string",
-													"description": "The email of the group.",
+													"description": "The email of the Google Workspace group.",
 													"example": "devs@cloudflare.com"
 												},
 												"connection_id": {
 													"type": "string",
-													"description": "The ID of your GSuite identity provider.",
+													"description": "The ID of your Google Workspace identity provider.",
 													"example": "ea85612a-29c8-46c2-bacb-669d65136971"
 												}
 											}
@@ -1819,9 +1819,9 @@
 									}
 								},
 								"okta_group_rule": {
-									"title": "Okta Group Rule",
-									"description": "Match an Okta Group",
-									"cfExtendedDescription": "Requires a Okta identity provider",
+									"title": "Okta group",
+									"description": "Matches an Okta group.",
+									"cfExtendedDescription": "Requires an Okta identity provider.",
 									"type": "object",
 									"required": [
 										"okta"
@@ -1836,12 +1836,12 @@
 											"properties": {
 												"email": {
 													"type": "string",
-													"description": "The email of the group.",
+													"description": "The email of the Okta group.",
 													"example": "devs@cloudflare.com"
 												},
 												"connection_id": {
 													"type": "string",
-													"description": "The ID of your ID of your Okta identity provider.",
+													"description": "The ID of your Okta identity provider.",
 													"example": "ea85612a-29c8-46c2-bacb-669d65136971"
 												}
 											}
@@ -1849,9 +1849,9 @@
 									}
 								},
 								"saml_group_rule": {
-									"title": "SAML Group Rule",
-									"description": "Match a SAML Group",
-									"cfExtendedDescription": "Requires a SAML identity provider",
+									"title": "SAML group",
+									"description": "Matches a SAML group.",
+									"cfExtendedDescription": "Requires a SAML identity provider.",
 									"type": "object",
 									"required": [
 										"saml"
@@ -1866,12 +1866,12 @@
 											"properties": {
 												"attribute_name": {
 													"type": "string",
-													"description": "The name of the attribute.",
+													"description": "The name of the SAML attribute.",
 													"example": "group"
 												},
 												"attribute_value": {
 													"type": "string",
-													"description": "The value to look for.",
+													"description": "The SAML attribute value to look for.",
 													"example": "devs@cloudflare.com"
 												}
 											}
@@ -1879,8 +1879,8 @@
 									}
 								},
 								"ip_list_rule": {
-									"title": "Access IP List Rule",
-									"description": "Match an IP from a list.",
+									"title": "IP list",
+									"description": "Matches an IP address from a list.",
 									"type": "object",
 									"required": [
 										"ip_list"
@@ -1894,7 +1894,7 @@
 											"properties": {
 												"id": {
 													"type": "string",
-													"description": "The ID of a previously created IP List.",
+													"description": "The ID of a previously created IP list.",
 													"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
 												}
 											}
@@ -2012,16 +2012,16 @@
 					"include": {
 						"type": "array",
 						"example": "[\n  {\n    \"email\": {\n      \"email\": \"test@example.com\"\n    }\n  }\n]",
-						"description": "Rules evaluated with an OR logical operator. To match the policy, a user needs to meet only one of the Include rules.",
+						"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
 						"items": {
 							"id": "https://api.cloudflare.com/schemas/v4/client/definitions/access/rule.json",
 							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 							"type": "object",
-							"description": "Rule configuration. Use the rule type in the top level of the rule configuration object. In the example, the rule type is email and it wraps the email configuration.",
+							"description": "Rules in an Access policy. The rule object contains selectors at the top level, and nested inside are the values each selector will match on.",
 							"oneOf": [
 								{
-									"title": "Access Email Rule",
-									"description": "Match a specific email.",
+									"title": "Email",
+									"description": "Matches a specific email.",
 									"type": "object",
 									"required": [
 										"email"
@@ -2044,7 +2044,7 @@
 									}
 								},
 								{
-									"title": "Access Domain Rule",
+									"title": "Email domain",
 									"description": "Match an entire email domain.",
 									"type": "object",
 									"required": [
@@ -2067,8 +2067,8 @@
 									}
 								},
 								{
-									"title": "Access Everyone Rule",
-									"description": "Match everyone.",
+									"title": "Everyone",
+									"description": "Matches everyone.",
 									"type": "object",
 									"required": [
 										"everyone"
@@ -2076,14 +2076,14 @@
 									"properties": {
 										"everyone": {
 											"type": "object",
-											"description": "The everyone rule uses an empty object for the configuration. This will allow any user to reach the path of the application without authentication.",
+											"description": "An empty object which matches on all users.",
 											"example": {}
 										}
 									}
 								},
 								{
-									"title": "Access IP Rule",
-									"description": "Match an IP address block.",
+									"title": "IP ranges",
+									"description": "Matches an IP address block.",
 									"type": "object",
 									"required": [
 										"ip"
@@ -2105,8 +2105,8 @@
 									}
 								},
 								{
-									"title": "Access IP List Rule",
-									"description": "Match an IP from a list.",
+									"title": "IP list",
+									"description": "Matches an IP address from a list.",
 									"type": "object",
 									"required": [
 										"ip_list"
@@ -2120,7 +2120,7 @@
 											"properties": {
 												"id": {
 													"type": "string",
-													"description": "The ID of a previously created IP List.",
+													"description": "The ID of a previously created IP list.",
 													"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
 												}
 											}
@@ -2128,8 +2128,8 @@
 									}
 								},
 								{
-									"title": "Certificate Rule",
-									"description": "Match any valid certificate.",
+									"title": "Valid certificate",
+									"description": "Matches any valid client certificate.",
 									"type": "object",
 									"example": {
 										"certificate": {}
@@ -2146,8 +2146,8 @@
 									}
 								},
 								{
-									"title": "Access Group Rule",
-									"description": "Match an Access Group",
+									"title": "Access groups",
+									"description": "Matches an Access group",
 									"type": "object",
 									"required": [
 										"group"
@@ -2161,7 +2161,7 @@
 											"properties": {
 												"id": {
 													"type": "string",
-													"description": "The ID of a previously created Access Group.",
+													"description": "The ID of a previously created Access group.",
 													"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
 												}
 											}
@@ -2169,9 +2169,9 @@
 									}
 								},
 								{
-									"title": "Azure Group Rule",
-									"description": "Match an Azure Group",
-									"cfExtendedDescription": "Requires an Azure identity provider",
+									"title": "Azure group",
+									"description": "Matches an Azure group.",
+									"cfExtendedDescription": "Requires an Azure identity provider.",
 									"type": "object",
 									"required": [
 										"azureAD"
@@ -2199,9 +2199,9 @@
 									}
 								},
 								{
-									"title": "Github Organization Rule",
-									"description": "Match a Github Organization",
-									"cfExtendedDescription": "Requires a Github identity provider",
+									"title": "Github organization",
+									"description": "Matches a Github organization",
+									"cfExtendedDescription": "Requires a Github identity provider.",
 									"type": "object",
 									"required": [
 										"github-organization"
@@ -2229,9 +2229,9 @@
 									}
 								},
 								{
-									"title": "GSuite Group Rule",
-									"description": "Match a GSuite Group",
-									"cfExtendedDescription": "Requires a GSuite identity provider",
+									"title": "Google Workspace group",
+									"description": "Matches a group in Google Workspace.",
+									"cfExtendedDescription": "Requires a Google Workspace identity provider.",
 									"type": "object",
 									"required": [
 										"gsuite"
@@ -2246,12 +2246,12 @@
 											"properties": {
 												"email": {
 													"type": "string",
-													"description": "The email of the group.",
+													"description": "The email of the Google Workspace group.",
 													"example": "devs@cloudflare.com"
 												},
 												"connection_id": {
 													"type": "string",
-													"description": "The ID of your GSuite identity provider.",
+													"description": "The ID of your Google Workspace identity provider.",
 													"example": "ea85612a-29c8-46c2-bacb-669d65136971"
 												}
 											}
@@ -2259,9 +2259,9 @@
 									}
 								},
 								{
-									"title": "Okta Group Rule",
-									"description": "Match an Okta Group",
-									"cfExtendedDescription": "Requires a Okta identity provider",
+									"title": "Okta group",
+									"description": "Matches an Okta group.",
+									"cfExtendedDescription": "Requires an Okta identity provider.",
 									"type": "object",
 									"required": [
 										"okta"
@@ -2276,12 +2276,12 @@
 											"properties": {
 												"email": {
 													"type": "string",
-													"description": "The email of the group.",
+													"description": "The email of the Okta group.",
 													"example": "devs@cloudflare.com"
 												},
 												"connection_id": {
 													"type": "string",
-													"description": "The ID of your ID of your Okta identity provider.",
+													"description": "The ID of your Okta identity provider.",
 													"example": "ea85612a-29c8-46c2-bacb-669d65136971"
 												}
 											}
@@ -2289,9 +2289,9 @@
 									}
 								},
 								{
-									"title": "SAML Group Rule",
-									"description": "Match a SAML Group",
-									"cfExtendedDescription": "Requires a SAML identity provider",
+									"title": "SAML group",
+									"description": "Matches a SAML group.",
+									"cfExtendedDescription": "Requires a SAML identity provider.",
 									"type": "object",
 									"required": [
 										"saml"
@@ -2306,12 +2306,12 @@
 											"properties": {
 												"attribute_name": {
 													"type": "string",
-													"description": "The name of the attribute.",
+													"description": "The name of the SAML attribute.",
 													"example": "group"
 												},
 												"attribute_value": {
 													"type": "string",
-													"description": "The value to look for.",
+													"description": "The SAML attribute value to look for.",
 													"example": "devs@cloudflare.com"
 												}
 											}
@@ -2321,8 +2321,8 @@
 							],
 							"definitions": {
 								"email_rule": {
-									"title": "Access Email Rule",
-									"description": "Match a specific email.",
+									"title": "Email",
+									"description": "Matches a specific email.",
 									"type": "object",
 									"required": [
 										"email"
@@ -2345,7 +2345,7 @@
 									}
 								},
 								"domain_rule": {
-									"title": "Access Domain Rule",
+									"title": "Email domain",
 									"description": "Match an entire email domain.",
 									"type": "object",
 									"required": [
@@ -2368,8 +2368,8 @@
 									}
 								},
 								"everyone_rule": {
-									"title": "Access Everyone Rule",
-									"description": "Match everyone.",
+									"title": "Everyone",
+									"description": "Matches everyone.",
 									"type": "object",
 									"required": [
 										"everyone"
@@ -2377,14 +2377,14 @@
 									"properties": {
 										"everyone": {
 											"type": "object",
-											"description": "The everyone rule uses an empty object for the configuration. This will allow any user to reach the path of the application without authentication.",
+											"description": "An empty object which matches on all users.",
 											"example": {}
 										}
 									}
 								},
 								"ip_rule": {
-									"title": "Access IP Rule",
-									"description": "Match an IP address block.",
+									"title": "IP ranges",
+									"description": "Matches an IP address block.",
 									"type": "object",
 									"required": [
 										"ip"
@@ -2406,8 +2406,8 @@
 									}
 								},
 								"certificate_rule": {
-									"title": "Certificate Rule",
-									"description": "Match any valid certificate.",
+									"title": "Valid certificate",
+									"description": "Matches any valid client certificate.",
 									"type": "object",
 									"example": {
 										"certificate": {}
@@ -2424,8 +2424,8 @@
 									}
 								},
 								"access_group_rule": {
-									"title": "Access Group Rule",
-									"description": "Match an Access Group",
+									"title": "Access groups",
+									"description": "Matches an Access group",
 									"type": "object",
 									"required": [
 										"group"
@@ -2439,7 +2439,7 @@
 											"properties": {
 												"id": {
 													"type": "string",
-													"description": "The ID of a previously created Access Group.",
+													"description": "The ID of a previously created Access group.",
 													"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
 												}
 											}
@@ -2447,9 +2447,9 @@
 									}
 								},
 								"azure_group_rule": {
-									"title": "Azure Group Rule",
-									"description": "Match an Azure Group",
-									"cfExtendedDescription": "Requires an Azure identity provider",
+									"title": "Azure group",
+									"description": "Matches an Azure group.",
+									"cfExtendedDescription": "Requires an Azure identity provider.",
 									"type": "object",
 									"required": [
 										"azureAD"
@@ -2477,9 +2477,9 @@
 									}
 								},
 								"github_organization_rule": {
-									"title": "Github Organization Rule",
-									"description": "Match a Github Organization",
-									"cfExtendedDescription": "Requires a Github identity provider",
+									"title": "Github organization",
+									"description": "Matches a Github organization",
+									"cfExtendedDescription": "Requires a Github identity provider.",
 									"type": "object",
 									"required": [
 										"github-organization"
@@ -2507,9 +2507,9 @@
 									}
 								},
 								"gsuite_group_rule": {
-									"title": "GSuite Group Rule",
-									"description": "Match a GSuite Group",
-									"cfExtendedDescription": "Requires a GSuite identity provider",
+									"title": "Google Workspace group",
+									"description": "Matches a group in Google Workspace.",
+									"cfExtendedDescription": "Requires a Google Workspace identity provider.",
 									"type": "object",
 									"required": [
 										"gsuite"
@@ -2524,12 +2524,12 @@
 											"properties": {
 												"email": {
 													"type": "string",
-													"description": "The email of the group.",
+													"description": "The email of the Google Workspace group.",
 													"example": "devs@cloudflare.com"
 												},
 												"connection_id": {
 													"type": "string",
-													"description": "The ID of your GSuite identity provider.",
+													"description": "The ID of your Google Workspace identity provider.",
 													"example": "ea85612a-29c8-46c2-bacb-669d65136971"
 												}
 											}
@@ -2537,9 +2537,9 @@
 									}
 								},
 								"okta_group_rule": {
-									"title": "Okta Group Rule",
-									"description": "Match an Okta Group",
-									"cfExtendedDescription": "Requires a Okta identity provider",
+									"title": "Okta group",
+									"description": "Matches an Okta group.",
+									"cfExtendedDescription": "Requires an Okta identity provider.",
 									"type": "object",
 									"required": [
 										"okta"
@@ -2554,12 +2554,12 @@
 											"properties": {
 												"email": {
 													"type": "string",
-													"description": "The email of the group.",
+													"description": "The email of the Okta group.",
 													"example": "devs@cloudflare.com"
 												},
 												"connection_id": {
 													"type": "string",
-													"description": "The ID of your ID of your Okta identity provider.",
+													"description": "The ID of your Okta identity provider.",
 													"example": "ea85612a-29c8-46c2-bacb-669d65136971"
 												}
 											}
@@ -2567,9 +2567,9 @@
 									}
 								},
 								"saml_group_rule": {
-									"title": "SAML Group Rule",
-									"description": "Match a SAML Group",
-									"cfExtendedDescription": "Requires a SAML identity provider",
+									"title": "SAML group",
+									"description": "Matches a SAML group.",
+									"cfExtendedDescription": "Requires a SAML identity provider.",
 									"type": "object",
 									"required": [
 										"saml"
@@ -2584,12 +2584,12 @@
 											"properties": {
 												"attribute_name": {
 													"type": "string",
-													"description": "The name of the attribute.",
+													"description": "The name of the SAML attribute.",
 													"example": "group"
 												},
 												"attribute_value": {
 													"type": "string",
-													"description": "The value to look for.",
+													"description": "The SAML attribute value to look for.",
 													"example": "devs@cloudflare.com"
 												}
 											}
@@ -2597,8 +2597,8 @@
 									}
 								},
 								"ip_list_rule": {
-									"title": "Access IP List Rule",
-									"description": "Match an IP from a list.",
+									"title": "IP list",
+									"description": "Matches an IP address from a list.",
 									"type": "object",
 									"required": [
 										"ip_list"
@@ -2612,7 +2612,7 @@
 											"properties": {
 												"id": {
 													"type": "string",
-													"description": "The ID of a previously created IP List.",
+													"description": "The ID of a previously created IP list.",
 													"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
 												}
 											}
@@ -2630,11 +2630,11 @@
 							"id": "https://api.cloudflare.com/schemas/v4/client/definitions/access/rule.json",
 							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 							"type": "object",
-							"description": "Rule configuration. Use the rule type in the top level of the rule configuration object. In the example, the rule type is email and it wraps the email configuration.",
+							"description": "Rules in an Access policy. The rule object contains selectors at the top level, and nested inside are the values each selector will match on.",
 							"oneOf": [
 								{
-									"title": "Access Email Rule",
-									"description": "Match a specific email.",
+									"title": "Email",
+									"description": "Matches a specific email.",
 									"type": "object",
 									"required": [
 										"email"
@@ -2657,7 +2657,7 @@
 									}
 								},
 								{
-									"title": "Access Domain Rule",
+									"title": "Email domain",
 									"description": "Match an entire email domain.",
 									"type": "object",
 									"required": [
@@ -2680,8 +2680,8 @@
 									}
 								},
 								{
-									"title": "Access Everyone Rule",
-									"description": "Match everyone.",
+									"title": "Everyone",
+									"description": "Matches everyone.",
 									"type": "object",
 									"required": [
 										"everyone"
@@ -2689,14 +2689,14 @@
 									"properties": {
 										"everyone": {
 											"type": "object",
-											"description": "The everyone rule uses an empty object for the configuration. This will allow any user to reach the path of the application without authentication.",
+											"description": "An empty object which matches on all users.",
 											"example": {}
 										}
 									}
 								},
 								{
-									"title": "Access IP Rule",
-									"description": "Match an IP address block.",
+									"title": "IP ranges",
+									"description": "Matches an IP address block.",
 									"type": "object",
 									"required": [
 										"ip"
@@ -2718,8 +2718,8 @@
 									}
 								},
 								{
-									"title": "Access IP List Rule",
-									"description": "Match an IP from a list.",
+									"title": "IP list",
+									"description": "Matches an IP address from a list.",
 									"type": "object",
 									"required": [
 										"ip_list"
@@ -2733,7 +2733,7 @@
 											"properties": {
 												"id": {
 													"type": "string",
-													"description": "The ID of a previously created IP List.",
+													"description": "The ID of a previously created IP list.",
 													"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
 												}
 											}
@@ -2741,8 +2741,8 @@
 									}
 								},
 								{
-									"title": "Certificate Rule",
-									"description": "Match any valid certificate.",
+									"title": "Valid certificate",
+									"description": "Matches any valid client certificate.",
 									"type": "object",
 									"example": {
 										"certificate": {}
@@ -2759,8 +2759,8 @@
 									}
 								},
 								{
-									"title": "Access Group Rule",
-									"description": "Match an Access Group",
+									"title": "Access groups",
+									"description": "Matches an Access group",
 									"type": "object",
 									"required": [
 										"group"
@@ -2774,7 +2774,7 @@
 											"properties": {
 												"id": {
 													"type": "string",
-													"description": "The ID of a previously created Access Group.",
+													"description": "The ID of a previously created Access group.",
 													"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
 												}
 											}
@@ -2782,9 +2782,9 @@
 									}
 								},
 								{
-									"title": "Azure Group Rule",
-									"description": "Match an Azure Group",
-									"cfExtendedDescription": "Requires an Azure identity provider",
+									"title": "Azure group",
+									"description": "Matches an Azure group.",
+									"cfExtendedDescription": "Requires an Azure identity provider.",
 									"type": "object",
 									"required": [
 										"azureAD"
@@ -2812,9 +2812,9 @@
 									}
 								},
 								{
-									"title": "Github Organization Rule",
-									"description": "Match a Github Organization",
-									"cfExtendedDescription": "Requires a Github identity provider",
+									"title": "Github organization",
+									"description": "Matches a Github organization",
+									"cfExtendedDescription": "Requires a Github identity provider.",
 									"type": "object",
 									"required": [
 										"github-organization"
@@ -2842,9 +2842,9 @@
 									}
 								},
 								{
-									"title": "GSuite Group Rule",
-									"description": "Match a GSuite Group",
-									"cfExtendedDescription": "Requires a GSuite identity provider",
+									"title": "Google Workspace group",
+									"description": "Matches a group in Google Workspace.",
+									"cfExtendedDescription": "Requires a Google Workspace identity provider.",
 									"type": "object",
 									"required": [
 										"gsuite"
@@ -2859,12 +2859,12 @@
 											"properties": {
 												"email": {
 													"type": "string",
-													"description": "The email of the group.",
+													"description": "The email of the Google Workspace group.",
 													"example": "devs@cloudflare.com"
 												},
 												"connection_id": {
 													"type": "string",
-													"description": "The ID of your GSuite identity provider.",
+													"description": "The ID of your Google Workspace identity provider.",
 													"example": "ea85612a-29c8-46c2-bacb-669d65136971"
 												}
 											}
@@ -2872,9 +2872,9 @@
 									}
 								},
 								{
-									"title": "Okta Group Rule",
-									"description": "Match an Okta Group",
-									"cfExtendedDescription": "Requires a Okta identity provider",
+									"title": "Okta group",
+									"description": "Matches an Okta group.",
+									"cfExtendedDescription": "Requires an Okta identity provider.",
 									"type": "object",
 									"required": [
 										"okta"
@@ -2889,12 +2889,12 @@
 											"properties": {
 												"email": {
 													"type": "string",
-													"description": "The email of the group.",
+													"description": "The email of the Okta group.",
 													"example": "devs@cloudflare.com"
 												},
 												"connection_id": {
 													"type": "string",
-													"description": "The ID of your ID of your Okta identity provider.",
+													"description": "The ID of your Okta identity provider.",
 													"example": "ea85612a-29c8-46c2-bacb-669d65136971"
 												}
 											}
@@ -2902,9 +2902,9 @@
 									}
 								},
 								{
-									"title": "SAML Group Rule",
-									"description": "Match a SAML Group",
-									"cfExtendedDescription": "Requires a SAML identity provider",
+									"title": "SAML group",
+									"description": "Matches a SAML group.",
+									"cfExtendedDescription": "Requires a SAML identity provider.",
 									"type": "object",
 									"required": [
 										"saml"
@@ -2919,12 +2919,12 @@
 											"properties": {
 												"attribute_name": {
 													"type": "string",
-													"description": "The name of the attribute.",
+													"description": "The name of the SAML attribute.",
 													"example": "group"
 												},
 												"attribute_value": {
 													"type": "string",
-													"description": "The value to look for.",
+													"description": "The SAML attribute value to look for.",
 													"example": "devs@cloudflare.com"
 												}
 											}
@@ -2934,8 +2934,8 @@
 							],
 							"definitions": {
 								"email_rule": {
-									"title": "Access Email Rule",
-									"description": "Match a specific email.",
+									"title": "Email",
+									"description": "Matches a specific email.",
 									"type": "object",
 									"required": [
 										"email"
@@ -2958,7 +2958,7 @@
 									}
 								},
 								"domain_rule": {
-									"title": "Access Domain Rule",
+									"title": "Email domain",
 									"description": "Match an entire email domain.",
 									"type": "object",
 									"required": [
@@ -2981,8 +2981,8 @@
 									}
 								},
 								"everyone_rule": {
-									"title": "Access Everyone Rule",
-									"description": "Match everyone.",
+									"title": "Everyone",
+									"description": "Matches everyone.",
 									"type": "object",
 									"required": [
 										"everyone"
@@ -2990,14 +2990,14 @@
 									"properties": {
 										"everyone": {
 											"type": "object",
-											"description": "The everyone rule uses an empty object for the configuration. This will allow any user to reach the path of the application without authentication.",
+											"description": "An empty object which matches on all users.",
 											"example": {}
 										}
 									}
 								},
 								"ip_rule": {
-									"title": "Access IP Rule",
-									"description": "Match an IP address block.",
+									"title": "IP ranges",
+									"description": "Matches an IP address block.",
 									"type": "object",
 									"required": [
 										"ip"
@@ -3019,8 +3019,8 @@
 									}
 								},
 								"certificate_rule": {
-									"title": "Certificate Rule",
-									"description": "Match any valid certificate.",
+									"title": "Valid certificate",
+									"description": "Matches any valid client certificate.",
 									"type": "object",
 									"example": {
 										"certificate": {}
@@ -3037,8 +3037,8 @@
 									}
 								},
 								"access_group_rule": {
-									"title": "Access Group Rule",
-									"description": "Match an Access Group",
+									"title": "Access groups",
+									"description": "Matches an Access group",
 									"type": "object",
 									"required": [
 										"group"
@@ -3052,7 +3052,7 @@
 											"properties": {
 												"id": {
 													"type": "string",
-													"description": "The ID of a previously created Access Group.",
+													"description": "The ID of a previously created Access group.",
 													"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
 												}
 											}
@@ -3060,9 +3060,9 @@
 									}
 								},
 								"azure_group_rule": {
-									"title": "Azure Group Rule",
-									"description": "Match an Azure Group",
-									"cfExtendedDescription": "Requires an Azure identity provider",
+									"title": "Azure group",
+									"description": "Matches an Azure group.",
+									"cfExtendedDescription": "Requires an Azure identity provider.",
 									"type": "object",
 									"required": [
 										"azureAD"
@@ -3090,9 +3090,9 @@
 									}
 								},
 								"github_organization_rule": {
-									"title": "Github Organization Rule",
-									"description": "Match a Github Organization",
-									"cfExtendedDescription": "Requires a Github identity provider",
+									"title": "Github organization",
+									"description": "Matches a Github organization",
+									"cfExtendedDescription": "Requires a Github identity provider.",
 									"type": "object",
 									"required": [
 										"github-organization"
@@ -3120,9 +3120,9 @@
 									}
 								},
 								"gsuite_group_rule": {
-									"title": "GSuite Group Rule",
-									"description": "Match a GSuite Group",
-									"cfExtendedDescription": "Requires a GSuite identity provider",
+									"title": "Google Workspace group",
+									"description": "Matches a group in Google Workspace.",
+									"cfExtendedDescription": "Requires a Google Workspace identity provider.",
 									"type": "object",
 									"required": [
 										"gsuite"
@@ -3137,12 +3137,12 @@
 											"properties": {
 												"email": {
 													"type": "string",
-													"description": "The email of the group.",
+													"description": "The email of the Google Workspace group.",
 													"example": "devs@cloudflare.com"
 												},
 												"connection_id": {
 													"type": "string",
-													"description": "The ID of your GSuite identity provider.",
+													"description": "The ID of your Google Workspace identity provider.",
 													"example": "ea85612a-29c8-46c2-bacb-669d65136971"
 												}
 											}
@@ -3150,9 +3150,9 @@
 									}
 								},
 								"okta_group_rule": {
-									"title": "Okta Group Rule",
-									"description": "Match an Okta Group",
-									"cfExtendedDescription": "Requires a Okta identity provider",
+									"title": "Okta group",
+									"description": "Matches an Okta group.",
+									"cfExtendedDescription": "Requires an Okta identity provider.",
 									"type": "object",
 									"required": [
 										"okta"
@@ -3167,12 +3167,12 @@
 											"properties": {
 												"email": {
 													"type": "string",
-													"description": "The email of the group.",
+													"description": "The email of the Okta group.",
 													"example": "devs@cloudflare.com"
 												},
 												"connection_id": {
 													"type": "string",
-													"description": "The ID of your ID of your Okta identity provider.",
+													"description": "The ID of your Okta identity provider.",
 													"example": "ea85612a-29c8-46c2-bacb-669d65136971"
 												}
 											}
@@ -3180,9 +3180,9 @@
 									}
 								},
 								"saml_group_rule": {
-									"title": "SAML Group Rule",
-									"description": "Match a SAML Group",
-									"cfExtendedDescription": "Requires a SAML identity provider",
+									"title": "SAML group",
+									"description": "Matches a SAML group.",
+									"cfExtendedDescription": "Requires a SAML identity provider.",
 									"type": "object",
 									"required": [
 										"saml"
@@ -3197,12 +3197,12 @@
 											"properties": {
 												"attribute_name": {
 													"type": "string",
-													"description": "The name of the attribute.",
+													"description": "The name of the SAML attribute.",
 													"example": "group"
 												},
 												"attribute_value": {
 													"type": "string",
-													"description": "The value to look for.",
+													"description": "The SAML attribute value to look for.",
 													"example": "devs@cloudflare.com"
 												}
 											}
@@ -3210,8 +3210,8 @@
 									}
 								},
 								"ip_list_rule": {
-									"title": "Access IP List Rule",
-									"description": "Match an IP from a list.",
+									"title": "IP list",
+									"description": "Matches an IP address from a list.",
 									"type": "object",
 									"required": [
 										"ip_list"
@@ -3225,7 +3225,7 @@
 											"properties": {
 												"id": {
 													"type": "string",
-													"description": "The ID of a previously created IP List.",
+													"description": "The ID of a previously created IP list.",
 													"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
 												}
 											}
@@ -3243,11 +3243,11 @@
 							"id": "https://api.cloudflare.com/schemas/v4/client/definitions/access/rule.json",
 							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 							"type": "object",
-							"description": "Rule configuration. Use the rule type in the top level of the rule configuration object. In the example, the rule type is email and it wraps the email configuration.",
+							"description": "Rules in an Access policy. The rule object contains selectors at the top level, and nested inside are the values each selector will match on.",
 							"oneOf": [
 								{
-									"title": "Access Email Rule",
-									"description": "Match a specific email.",
+									"title": "Email",
+									"description": "Matches a specific email.",
 									"type": "object",
 									"required": [
 										"email"
@@ -3270,7 +3270,7 @@
 									}
 								},
 								{
-									"title": "Access Domain Rule",
+									"title": "Email domain",
 									"description": "Match an entire email domain.",
 									"type": "object",
 									"required": [
@@ -3293,8 +3293,8 @@
 									}
 								},
 								{
-									"title": "Access Everyone Rule",
-									"description": "Match everyone.",
+									"title": "Everyone",
+									"description": "Matches everyone.",
 									"type": "object",
 									"required": [
 										"everyone"
@@ -3302,14 +3302,14 @@
 									"properties": {
 										"everyone": {
 											"type": "object",
-											"description": "The everyone rule uses an empty object for the configuration. This will allow any user to reach the path of the application without authentication.",
+											"description": "An empty object which matches on all users.",
 											"example": {}
 										}
 									}
 								},
 								{
-									"title": "Access IP Rule",
-									"description": "Match an IP address block.",
+									"title": "IP ranges",
+									"description": "Matches an IP address block.",
 									"type": "object",
 									"required": [
 										"ip"
@@ -3331,8 +3331,8 @@
 									}
 								},
 								{
-									"title": "Access IP List Rule",
-									"description": "Match an IP from a list.",
+									"title": "IP list",
+									"description": "Matches an IP address from a list.",
 									"type": "object",
 									"required": [
 										"ip_list"
@@ -3346,7 +3346,7 @@
 											"properties": {
 												"id": {
 													"type": "string",
-													"description": "The ID of a previously created IP List.",
+													"description": "The ID of a previously created IP list.",
 													"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
 												}
 											}
@@ -3354,8 +3354,8 @@
 									}
 								},
 								{
-									"title": "Certificate Rule",
-									"description": "Match any valid certificate.",
+									"title": "Valid certificate",
+									"description": "Matches any valid client certificate.",
 									"type": "object",
 									"example": {
 										"certificate": {}
@@ -3372,8 +3372,8 @@
 									}
 								},
 								{
-									"title": "Access Group Rule",
-									"description": "Match an Access Group",
+									"title": "Access groups",
+									"description": "Matches an Access group",
 									"type": "object",
 									"required": [
 										"group"
@@ -3387,7 +3387,7 @@
 											"properties": {
 												"id": {
 													"type": "string",
-													"description": "The ID of a previously created Access Group.",
+													"description": "The ID of a previously created Access group.",
 													"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
 												}
 											}
@@ -3395,9 +3395,9 @@
 									}
 								},
 								{
-									"title": "Azure Group Rule",
-									"description": "Match an Azure Group",
-									"cfExtendedDescription": "Requires an Azure identity provider",
+									"title": "Azure group",
+									"description": "Matches an Azure group.",
+									"cfExtendedDescription": "Requires an Azure identity provider.",
 									"type": "object",
 									"required": [
 										"azureAD"
@@ -3425,9 +3425,9 @@
 									}
 								},
 								{
-									"title": "Github Organization Rule",
-									"description": "Match a Github Organization",
-									"cfExtendedDescription": "Requires a Github identity provider",
+									"title": "Github organization",
+									"description": "Matches a Github organization",
+									"cfExtendedDescription": "Requires a Github identity provider.",
 									"type": "object",
 									"required": [
 										"github-organization"
@@ -3455,9 +3455,9 @@
 									}
 								},
 								{
-									"title": "GSuite Group Rule",
-									"description": "Match a GSuite Group",
-									"cfExtendedDescription": "Requires a GSuite identity provider",
+									"title": "Google Workspace group",
+									"description": "Matches a group in Google Workspace.",
+									"cfExtendedDescription": "Requires a Google Workspace identity provider.",
 									"type": "object",
 									"required": [
 										"gsuite"
@@ -3472,12 +3472,12 @@
 											"properties": {
 												"email": {
 													"type": "string",
-													"description": "The email of the group.",
+													"description": "The email of the Google Workspace group.",
 													"example": "devs@cloudflare.com"
 												},
 												"connection_id": {
 													"type": "string",
-													"description": "The ID of your GSuite identity provider.",
+													"description": "The ID of your Google Workspace identity provider.",
 													"example": "ea85612a-29c8-46c2-bacb-669d65136971"
 												}
 											}
@@ -3485,9 +3485,9 @@
 									}
 								},
 								{
-									"title": "Okta Group Rule",
-									"description": "Match an Okta Group",
-									"cfExtendedDescription": "Requires a Okta identity provider",
+									"title": "Okta group",
+									"description": "Matches an Okta group.",
+									"cfExtendedDescription": "Requires an Okta identity provider.",
 									"type": "object",
 									"required": [
 										"okta"
@@ -3502,12 +3502,12 @@
 											"properties": {
 												"email": {
 													"type": "string",
-													"description": "The email of the group.",
+													"description": "The email of the Okta group.",
 													"example": "devs@cloudflare.com"
 												},
 												"connection_id": {
 													"type": "string",
-													"description": "The ID of your ID of your Okta identity provider.",
+													"description": "The ID of your Okta identity provider.",
 													"example": "ea85612a-29c8-46c2-bacb-669d65136971"
 												}
 											}
@@ -3515,9 +3515,9 @@
 									}
 								},
 								{
-									"title": "SAML Group Rule",
-									"description": "Match a SAML Group",
-									"cfExtendedDescription": "Requires a SAML identity provider",
+									"title": "SAML group",
+									"description": "Matches a SAML group.",
+									"cfExtendedDescription": "Requires a SAML identity provider.",
 									"type": "object",
 									"required": [
 										"saml"
@@ -3532,12 +3532,12 @@
 											"properties": {
 												"attribute_name": {
 													"type": "string",
-													"description": "The name of the attribute.",
+													"description": "The name of the SAML attribute.",
 													"example": "group"
 												},
 												"attribute_value": {
 													"type": "string",
-													"description": "The value to look for.",
+													"description": "The SAML attribute value to look for.",
 													"example": "devs@cloudflare.com"
 												}
 											}
@@ -3547,8 +3547,8 @@
 							],
 							"definitions": {
 								"email_rule": {
-									"title": "Access Email Rule",
-									"description": "Match a specific email.",
+									"title": "Email",
+									"description": "Matches a specific email.",
 									"type": "object",
 									"required": [
 										"email"
@@ -3571,7 +3571,7 @@
 									}
 								},
 								"domain_rule": {
-									"title": "Access Domain Rule",
+									"title": "Email domain",
 									"description": "Match an entire email domain.",
 									"type": "object",
 									"required": [
@@ -3594,8 +3594,8 @@
 									}
 								},
 								"everyone_rule": {
-									"title": "Access Everyone Rule",
-									"description": "Match everyone.",
+									"title": "Everyone",
+									"description": "Matches everyone.",
 									"type": "object",
 									"required": [
 										"everyone"
@@ -3603,14 +3603,14 @@
 									"properties": {
 										"everyone": {
 											"type": "object",
-											"description": "The everyone rule uses an empty object for the configuration. This will allow any user to reach the path of the application without authentication.",
+											"description": "An empty object which matches on all users.",
 											"example": {}
 										}
 									}
 								},
 								"ip_rule": {
-									"title": "Access IP Rule",
-									"description": "Match an IP address block.",
+									"title": "IP ranges",
+									"description": "Matches an IP address block.",
 									"type": "object",
 									"required": [
 										"ip"
@@ -3632,8 +3632,8 @@
 									}
 								},
 								"certificate_rule": {
-									"title": "Certificate Rule",
-									"description": "Match any valid certificate.",
+									"title": "Valid certificate",
+									"description": "Matches any valid client certificate.",
 									"type": "object",
 									"example": {
 										"certificate": {}
@@ -3650,8 +3650,8 @@
 									}
 								},
 								"access_group_rule": {
-									"title": "Access Group Rule",
-									"description": "Match an Access Group",
+									"title": "Access groups",
+									"description": "Matches an Access group",
 									"type": "object",
 									"required": [
 										"group"
@@ -3665,7 +3665,7 @@
 											"properties": {
 												"id": {
 													"type": "string",
-													"description": "The ID of a previously created Access Group.",
+													"description": "The ID of a previously created Access group.",
 													"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
 												}
 											}
@@ -3673,9 +3673,9 @@
 									}
 								},
 								"azure_group_rule": {
-									"title": "Azure Group Rule",
-									"description": "Match an Azure Group",
-									"cfExtendedDescription": "Requires an Azure identity provider",
+									"title": "Azure group",
+									"description": "Matches an Azure group.",
+									"cfExtendedDescription": "Requires an Azure identity provider.",
 									"type": "object",
 									"required": [
 										"azureAD"
@@ -3703,9 +3703,9 @@
 									}
 								},
 								"github_organization_rule": {
-									"title": "Github Organization Rule",
-									"description": "Match a Github Organization",
-									"cfExtendedDescription": "Requires a Github identity provider",
+									"title": "Github organization",
+									"description": "Matches a Github organization",
+									"cfExtendedDescription": "Requires a Github identity provider.",
 									"type": "object",
 									"required": [
 										"github-organization"
@@ -3733,9 +3733,9 @@
 									}
 								},
 								"gsuite_group_rule": {
-									"title": "GSuite Group Rule",
-									"description": "Match a GSuite Group",
-									"cfExtendedDescription": "Requires a GSuite identity provider",
+									"title": "Google Workspace group",
+									"description": "Matches a group in Google Workspace.",
+									"cfExtendedDescription": "Requires a Google Workspace identity provider.",
 									"type": "object",
 									"required": [
 										"gsuite"
@@ -3750,12 +3750,12 @@
 											"properties": {
 												"email": {
 													"type": "string",
-													"description": "The email of the group.",
+													"description": "The email of the Google Workspace group.",
 													"example": "devs@cloudflare.com"
 												},
 												"connection_id": {
 													"type": "string",
-													"description": "The ID of your GSuite identity provider.",
+													"description": "The ID of your Google Workspace identity provider.",
 													"example": "ea85612a-29c8-46c2-bacb-669d65136971"
 												}
 											}
@@ -3763,9 +3763,9 @@
 									}
 								},
 								"okta_group_rule": {
-									"title": "Okta Group Rule",
-									"description": "Match an Okta Group",
-									"cfExtendedDescription": "Requires a Okta identity provider",
+									"title": "Okta group",
+									"description": "Matches an Okta group.",
+									"cfExtendedDescription": "Requires an Okta identity provider.",
 									"type": "object",
 									"required": [
 										"okta"
@@ -3780,12 +3780,12 @@
 											"properties": {
 												"email": {
 													"type": "string",
-													"description": "The email of the group.",
+													"description": "The email of the Okta group.",
 													"example": "devs@cloudflare.com"
 												},
 												"connection_id": {
 													"type": "string",
-													"description": "The ID of your ID of your Okta identity provider.",
+													"description": "The ID of your Okta identity provider.",
 													"example": "ea85612a-29c8-46c2-bacb-669d65136971"
 												}
 											}
@@ -3793,9 +3793,9 @@
 									}
 								},
 								"saml_group_rule": {
-									"title": "SAML Group Rule",
-									"description": "Match a SAML Group",
-									"cfExtendedDescription": "Requires a SAML identity provider",
+									"title": "SAML group",
+									"description": "Matches a SAML group.",
+									"cfExtendedDescription": "Requires a SAML identity provider.",
 									"type": "object",
 									"required": [
 										"saml"
@@ -3810,12 +3810,12 @@
 											"properties": {
 												"attribute_name": {
 													"type": "string",
-													"description": "The name of the attribute.",
+													"description": "The name of the SAML attribute.",
 													"example": "group"
 												},
 												"attribute_value": {
 													"type": "string",
-													"description": "The value to look for.",
+													"description": "The SAML attribute value to look for.",
 													"example": "devs@cloudflare.com"
 												}
 											}
@@ -3823,8 +3823,8 @@
 									}
 								},
 								"ip_list_rule": {
-									"title": "Access IP List Rule",
-									"description": "Match an IP from a list.",
+									"title": "IP list",
+									"description": "Matches an IP address from a list.",
 									"type": "object",
 									"required": [
 										"ip_list"
@@ -3838,7 +3838,7 @@
 											"properties": {
 												"id": {
 													"type": "string",
-													"description": "The ID of a previously created IP List.",
+													"description": "The ID of a previously created IP list.",
 													"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
 												}
 											}
@@ -3984,16 +3984,16 @@
 			"include": {
 				"type": "array",
 				"example": "[\n  {\n    \"email\": {\n      \"email\": \"test@example.com\"\n    }\n  }\n]",
-				"description": "Rules evaluated with an OR logical operator. To match the policy, a user needs to meet only one of the Include rules.",
+				"description": "Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.",
 				"items": {
 					"id": "https://api.cloudflare.com/schemas/v4/client/definitions/access/rule.json",
 					"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 					"type": "object",
-					"description": "Rule configuration. Use the rule type in the top level of the rule configuration object. In the example, the rule type is email and it wraps the email configuration.",
+					"description": "Rules in an Access policy. The rule object contains selectors at the top level, and nested inside are the values each selector will match on.",
 					"oneOf": [
 						{
-							"title": "Access Email Rule",
-							"description": "Match a specific email.",
+							"title": "Email",
+							"description": "Matches a specific email.",
 							"type": "object",
 							"required": [
 								"email"
@@ -4016,7 +4016,7 @@
 							}
 						},
 						{
-							"title": "Access Domain Rule",
+							"title": "Email domain",
 							"description": "Match an entire email domain.",
 							"type": "object",
 							"required": [
@@ -4039,8 +4039,8 @@
 							}
 						},
 						{
-							"title": "Access Everyone Rule",
-							"description": "Match everyone.",
+							"title": "Everyone",
+							"description": "Matches everyone.",
 							"type": "object",
 							"required": [
 								"everyone"
@@ -4048,14 +4048,14 @@
 							"properties": {
 								"everyone": {
 									"type": "object",
-									"description": "The everyone rule uses an empty object for the configuration. This will allow any user to reach the path of the application without authentication.",
+									"description": "An empty object which matches on all users.",
 									"example": {}
 								}
 							}
 						},
 						{
-							"title": "Access IP Rule",
-							"description": "Match an IP address block.",
+							"title": "IP ranges",
+							"description": "Matches an IP address block.",
 							"type": "object",
 							"required": [
 								"ip"
@@ -4077,8 +4077,8 @@
 							}
 						},
 						{
-							"title": "Access IP List Rule",
-							"description": "Match an IP from a list.",
+							"title": "IP list",
+							"description": "Matches an IP address from a list.",
 							"type": "object",
 							"required": [
 								"ip_list"
@@ -4092,7 +4092,7 @@
 									"properties": {
 										"id": {
 											"type": "string",
-											"description": "The ID of a previously created IP List.",
+											"description": "The ID of a previously created IP list.",
 											"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
 										}
 									}
@@ -4100,8 +4100,8 @@
 							}
 						},
 						{
-							"title": "Certificate Rule",
-							"description": "Match any valid certificate.",
+							"title": "Valid certificate",
+							"description": "Matches any valid client certificate.",
 							"type": "object",
 							"example": {
 								"certificate": {}
@@ -4118,8 +4118,8 @@
 							}
 						},
 						{
-							"title": "Access Group Rule",
-							"description": "Match an Access Group",
+							"title": "Access groups",
+							"description": "Matches an Access group",
 							"type": "object",
 							"required": [
 								"group"
@@ -4133,7 +4133,7 @@
 									"properties": {
 										"id": {
 											"type": "string",
-											"description": "The ID of a previously created Access Group.",
+											"description": "The ID of a previously created Access group.",
 											"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
 										}
 									}
@@ -4141,9 +4141,9 @@
 							}
 						},
 						{
-							"title": "Azure Group Rule",
-							"description": "Match an Azure Group",
-							"cfExtendedDescription": "Requires an Azure identity provider",
+							"title": "Azure group",
+							"description": "Matches an Azure group.",
+							"cfExtendedDescription": "Requires an Azure identity provider.",
 							"type": "object",
 							"required": [
 								"azureAD"
@@ -4171,9 +4171,9 @@
 							}
 						},
 						{
-							"title": "Github Organization Rule",
-							"description": "Match a Github Organization",
-							"cfExtendedDescription": "Requires a Github identity provider",
+							"title": "Github organization",
+							"description": "Matches a Github organization",
+							"cfExtendedDescription": "Requires a Github identity provider.",
 							"type": "object",
 							"required": [
 								"github-organization"
@@ -4201,9 +4201,9 @@
 							}
 						},
 						{
-							"title": "GSuite Group Rule",
-							"description": "Match a GSuite Group",
-							"cfExtendedDescription": "Requires a GSuite identity provider",
+							"title": "Google Workspace group",
+							"description": "Matches a group in Google Workspace.",
+							"cfExtendedDescription": "Requires a Google Workspace identity provider.",
 							"type": "object",
 							"required": [
 								"gsuite"
@@ -4218,12 +4218,12 @@
 									"properties": {
 										"email": {
 											"type": "string",
-											"description": "The email of the group.",
+											"description": "The email of the Google Workspace group.",
 											"example": "devs@cloudflare.com"
 										},
 										"connection_id": {
 											"type": "string",
-											"description": "The ID of your GSuite identity provider.",
+											"description": "The ID of your Google Workspace identity provider.",
 											"example": "ea85612a-29c8-46c2-bacb-669d65136971"
 										}
 									}
@@ -4231,9 +4231,9 @@
 							}
 						},
 						{
-							"title": "Okta Group Rule",
-							"description": "Match an Okta Group",
-							"cfExtendedDescription": "Requires a Okta identity provider",
+							"title": "Okta group",
+							"description": "Matches an Okta group.",
+							"cfExtendedDescription": "Requires an Okta identity provider.",
 							"type": "object",
 							"required": [
 								"okta"
@@ -4248,12 +4248,12 @@
 									"properties": {
 										"email": {
 											"type": "string",
-											"description": "The email of the group.",
+											"description": "The email of the Okta group.",
 											"example": "devs@cloudflare.com"
 										},
 										"connection_id": {
 											"type": "string",
-											"description": "The ID of your ID of your Okta identity provider.",
+											"description": "The ID of your Okta identity provider.",
 											"example": "ea85612a-29c8-46c2-bacb-669d65136971"
 										}
 									}
@@ -4261,9 +4261,9 @@
 							}
 						},
 						{
-							"title": "SAML Group Rule",
-							"description": "Match a SAML Group",
-							"cfExtendedDescription": "Requires a SAML identity provider",
+							"title": "SAML group",
+							"description": "Matches a SAML group.",
+							"cfExtendedDescription": "Requires a SAML identity provider.",
 							"type": "object",
 							"required": [
 								"saml"
@@ -4278,12 +4278,12 @@
 									"properties": {
 										"attribute_name": {
 											"type": "string",
-											"description": "The name of the attribute.",
+											"description": "The name of the SAML attribute.",
 											"example": "group"
 										},
 										"attribute_value": {
 											"type": "string",
-											"description": "The value to look for.",
+											"description": "The SAML attribute value to look for.",
 											"example": "devs@cloudflare.com"
 										}
 									}
@@ -4293,8 +4293,8 @@
 					],
 					"definitions": {
 						"email_rule": {
-							"title": "Access Email Rule",
-							"description": "Match a specific email.",
+							"title": "Email",
+							"description": "Matches a specific email.",
 							"type": "object",
 							"required": [
 								"email"
@@ -4317,7 +4317,7 @@
 							}
 						},
 						"domain_rule": {
-							"title": "Access Domain Rule",
+							"title": "Email domain",
 							"description": "Match an entire email domain.",
 							"type": "object",
 							"required": [
@@ -4340,8 +4340,8 @@
 							}
 						},
 						"everyone_rule": {
-							"title": "Access Everyone Rule",
-							"description": "Match everyone.",
+							"title": "Everyone",
+							"description": "Matches everyone.",
 							"type": "object",
 							"required": [
 								"everyone"
@@ -4349,14 +4349,14 @@
 							"properties": {
 								"everyone": {
 									"type": "object",
-									"description": "The everyone rule uses an empty object for the configuration. This will allow any user to reach the path of the application without authentication.",
+									"description": "An empty object which matches on all users.",
 									"example": {}
 								}
 							}
 						},
 						"ip_rule": {
-							"title": "Access IP Rule",
-							"description": "Match an IP address block.",
+							"title": "IP ranges",
+							"description": "Matches an IP address block.",
 							"type": "object",
 							"required": [
 								"ip"
@@ -4378,8 +4378,8 @@
 							}
 						},
 						"certificate_rule": {
-							"title": "Certificate Rule",
-							"description": "Match any valid certificate.",
+							"title": "Valid certificate",
+							"description": "Matches any valid client certificate.",
 							"type": "object",
 							"example": {
 								"certificate": {}
@@ -4396,8 +4396,8 @@
 							}
 						},
 						"access_group_rule": {
-							"title": "Access Group Rule",
-							"description": "Match an Access Group",
+							"title": "Access groups",
+							"description": "Matches an Access group",
 							"type": "object",
 							"required": [
 								"group"
@@ -4411,7 +4411,7 @@
 									"properties": {
 										"id": {
 											"type": "string",
-											"description": "The ID of a previously created Access Group.",
+											"description": "The ID of a previously created Access group.",
 											"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
 										}
 									}
@@ -4419,9 +4419,9 @@
 							}
 						},
 						"azure_group_rule": {
-							"title": "Azure Group Rule",
-							"description": "Match an Azure Group",
-							"cfExtendedDescription": "Requires an Azure identity provider",
+							"title": "Azure group",
+							"description": "Matches an Azure group.",
+							"cfExtendedDescription": "Requires an Azure identity provider.",
 							"type": "object",
 							"required": [
 								"azureAD"
@@ -4449,9 +4449,9 @@
 							}
 						},
 						"github_organization_rule": {
-							"title": "Github Organization Rule",
-							"description": "Match a Github Organization",
-							"cfExtendedDescription": "Requires a Github identity provider",
+							"title": "Github organization",
+							"description": "Matches a Github organization",
+							"cfExtendedDescription": "Requires a Github identity provider.",
 							"type": "object",
 							"required": [
 								"github-organization"
@@ -4479,9 +4479,9 @@
 							}
 						},
 						"gsuite_group_rule": {
-							"title": "GSuite Group Rule",
-							"description": "Match a GSuite Group",
-							"cfExtendedDescription": "Requires a GSuite identity provider",
+							"title": "Google Workspace group",
+							"description": "Matches a group in Google Workspace.",
+							"cfExtendedDescription": "Requires a Google Workspace identity provider.",
 							"type": "object",
 							"required": [
 								"gsuite"
@@ -4496,12 +4496,12 @@
 									"properties": {
 										"email": {
 											"type": "string",
-											"description": "The email of the group.",
+											"description": "The email of the Google Workspace group.",
 											"example": "devs@cloudflare.com"
 										},
 										"connection_id": {
 											"type": "string",
-											"description": "The ID of your GSuite identity provider.",
+											"description": "The ID of your Google Workspace identity provider.",
 											"example": "ea85612a-29c8-46c2-bacb-669d65136971"
 										}
 									}
@@ -4509,9 +4509,9 @@
 							}
 						},
 						"okta_group_rule": {
-							"title": "Okta Group Rule",
-							"description": "Match an Okta Group",
-							"cfExtendedDescription": "Requires a Okta identity provider",
+							"title": "Okta group",
+							"description": "Matches an Okta group.",
+							"cfExtendedDescription": "Requires an Okta identity provider.",
 							"type": "object",
 							"required": [
 								"okta"
@@ -4526,12 +4526,12 @@
 									"properties": {
 										"email": {
 											"type": "string",
-											"description": "The email of the group.",
+											"description": "The email of the Okta group.",
 											"example": "devs@cloudflare.com"
 										},
 										"connection_id": {
 											"type": "string",
-											"description": "The ID of your ID of your Okta identity provider.",
+											"description": "The ID of your Okta identity provider.",
 											"example": "ea85612a-29c8-46c2-bacb-669d65136971"
 										}
 									}
@@ -4539,9 +4539,9 @@
 							}
 						},
 						"saml_group_rule": {
-							"title": "SAML Group Rule",
-							"description": "Match a SAML Group",
-							"cfExtendedDescription": "Requires a SAML identity provider",
+							"title": "SAML group",
+							"description": "Matches a SAML group.",
+							"cfExtendedDescription": "Requires a SAML identity provider.",
 							"type": "object",
 							"required": [
 								"saml"
@@ -4556,12 +4556,12 @@
 									"properties": {
 										"attribute_name": {
 											"type": "string",
-											"description": "The name of the attribute.",
+											"description": "The name of the SAML attribute.",
 											"example": "group"
 										},
 										"attribute_value": {
 											"type": "string",
-											"description": "The value to look for.",
+											"description": "The SAML attribute value to look for.",
 											"example": "devs@cloudflare.com"
 										}
 									}
@@ -4569,8 +4569,8 @@
 							}
 						},
 						"ip_list_rule": {
-							"title": "Access IP List Rule",
-							"description": "Match an IP from a list.",
+							"title": "IP list",
+							"description": "Matches an IP address from a list.",
 							"type": "object",
 							"required": [
 								"ip_list"
@@ -4584,7 +4584,7 @@
 									"properties": {
 										"id": {
 											"type": "string",
-											"description": "The ID of a previously created IP List.",
+											"description": "The ID of a previously created IP list.",
 											"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
 										}
 									}
@@ -4602,11 +4602,11 @@
 					"id": "https://api.cloudflare.com/schemas/v4/client/definitions/access/rule.json",
 					"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 					"type": "object",
-					"description": "Rule configuration. Use the rule type in the top level of the rule configuration object. In the example, the rule type is email and it wraps the email configuration.",
+					"description": "Rules in an Access policy. The rule object contains selectors at the top level, and nested inside are the values each selector will match on.",
 					"oneOf": [
 						{
-							"title": "Access Email Rule",
-							"description": "Match a specific email.",
+							"title": "Email",
+							"description": "Matches a specific email.",
 							"type": "object",
 							"required": [
 								"email"
@@ -4629,7 +4629,7 @@
 							}
 						},
 						{
-							"title": "Access Domain Rule",
+							"title": "Email domain",
 							"description": "Match an entire email domain.",
 							"type": "object",
 							"required": [
@@ -4652,8 +4652,8 @@
 							}
 						},
 						{
-							"title": "Access Everyone Rule",
-							"description": "Match everyone.",
+							"title": "Everyone",
+							"description": "Matches everyone.",
 							"type": "object",
 							"required": [
 								"everyone"
@@ -4661,14 +4661,14 @@
 							"properties": {
 								"everyone": {
 									"type": "object",
-									"description": "The everyone rule uses an empty object for the configuration. This will allow any user to reach the path of the application without authentication.",
+									"description": "An empty object which matches on all users.",
 									"example": {}
 								}
 							}
 						},
 						{
-							"title": "Access IP Rule",
-							"description": "Match an IP address block.",
+							"title": "IP ranges",
+							"description": "Matches an IP address block.",
 							"type": "object",
 							"required": [
 								"ip"
@@ -4690,8 +4690,8 @@
 							}
 						},
 						{
-							"title": "Access IP List Rule",
-							"description": "Match an IP from a list.",
+							"title": "IP list",
+							"description": "Matches an IP address from a list.",
 							"type": "object",
 							"required": [
 								"ip_list"
@@ -4705,7 +4705,7 @@
 									"properties": {
 										"id": {
 											"type": "string",
-											"description": "The ID of a previously created IP List.",
+											"description": "The ID of a previously created IP list.",
 											"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
 										}
 									}
@@ -4713,8 +4713,8 @@
 							}
 						},
 						{
-							"title": "Certificate Rule",
-							"description": "Match any valid certificate.",
+							"title": "Valid certificate",
+							"description": "Matches any valid client certificate.",
 							"type": "object",
 							"example": {
 								"certificate": {}
@@ -4731,8 +4731,8 @@
 							}
 						},
 						{
-							"title": "Access Group Rule",
-							"description": "Match an Access Group",
+							"title": "Access groups",
+							"description": "Matches an Access group",
 							"type": "object",
 							"required": [
 								"group"
@@ -4746,7 +4746,7 @@
 									"properties": {
 										"id": {
 											"type": "string",
-											"description": "The ID of a previously created Access Group.",
+											"description": "The ID of a previously created Access group.",
 											"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
 										}
 									}
@@ -4754,9 +4754,9 @@
 							}
 						},
 						{
-							"title": "Azure Group Rule",
-							"description": "Match an Azure Group",
-							"cfExtendedDescription": "Requires an Azure identity provider",
+							"title": "Azure group",
+							"description": "Matches an Azure group.",
+							"cfExtendedDescription": "Requires an Azure identity provider.",
 							"type": "object",
 							"required": [
 								"azureAD"
@@ -4784,9 +4784,9 @@
 							}
 						},
 						{
-							"title": "Github Organization Rule",
-							"description": "Match a Github Organization",
-							"cfExtendedDescription": "Requires a Github identity provider",
+							"title": "Github organization",
+							"description": "Matches a Github organization",
+							"cfExtendedDescription": "Requires a Github identity provider.",
 							"type": "object",
 							"required": [
 								"github-organization"
@@ -4814,9 +4814,9 @@
 							}
 						},
 						{
-							"title": "GSuite Group Rule",
-							"description": "Match a GSuite Group",
-							"cfExtendedDescription": "Requires a GSuite identity provider",
+							"title": "Google Workspace group",
+							"description": "Matches a group in Google Workspace.",
+							"cfExtendedDescription": "Requires a Google Workspace identity provider.",
 							"type": "object",
 							"required": [
 								"gsuite"
@@ -4831,12 +4831,12 @@
 									"properties": {
 										"email": {
 											"type": "string",
-											"description": "The email of the group.",
+											"description": "The email of the Google Workspace group.",
 											"example": "devs@cloudflare.com"
 										},
 										"connection_id": {
 											"type": "string",
-											"description": "The ID of your GSuite identity provider.",
+											"description": "The ID of your Google Workspace identity provider.",
 											"example": "ea85612a-29c8-46c2-bacb-669d65136971"
 										}
 									}
@@ -4844,9 +4844,9 @@
 							}
 						},
 						{
-							"title": "Okta Group Rule",
-							"description": "Match an Okta Group",
-							"cfExtendedDescription": "Requires a Okta identity provider",
+							"title": "Okta group",
+							"description": "Matches an Okta group.",
+							"cfExtendedDescription": "Requires an Okta identity provider.",
 							"type": "object",
 							"required": [
 								"okta"
@@ -4861,12 +4861,12 @@
 									"properties": {
 										"email": {
 											"type": "string",
-											"description": "The email of the group.",
+											"description": "The email of the Okta group.",
 											"example": "devs@cloudflare.com"
 										},
 										"connection_id": {
 											"type": "string",
-											"description": "The ID of your ID of your Okta identity provider.",
+											"description": "The ID of your Okta identity provider.",
 											"example": "ea85612a-29c8-46c2-bacb-669d65136971"
 										}
 									}
@@ -4874,9 +4874,9 @@
 							}
 						},
 						{
-							"title": "SAML Group Rule",
-							"description": "Match a SAML Group",
-							"cfExtendedDescription": "Requires a SAML identity provider",
+							"title": "SAML group",
+							"description": "Matches a SAML group.",
+							"cfExtendedDescription": "Requires a SAML identity provider.",
 							"type": "object",
 							"required": [
 								"saml"
@@ -4891,12 +4891,12 @@
 									"properties": {
 										"attribute_name": {
 											"type": "string",
-											"description": "The name of the attribute.",
+											"description": "The name of the SAML attribute.",
 											"example": "group"
 										},
 										"attribute_value": {
 											"type": "string",
-											"description": "The value to look for.",
+											"description": "The SAML attribute value to look for.",
 											"example": "devs@cloudflare.com"
 										}
 									}
@@ -4906,8 +4906,8 @@
 					],
 					"definitions": {
 						"email_rule": {
-							"title": "Access Email Rule",
-							"description": "Match a specific email.",
+							"title": "Email",
+							"description": "Matches a specific email.",
 							"type": "object",
 							"required": [
 								"email"
@@ -4930,7 +4930,7 @@
 							}
 						},
 						"domain_rule": {
-							"title": "Access Domain Rule",
+							"title": "Email domain",
 							"description": "Match an entire email domain.",
 							"type": "object",
 							"required": [
@@ -4953,8 +4953,8 @@
 							}
 						},
 						"everyone_rule": {
-							"title": "Access Everyone Rule",
-							"description": "Match everyone.",
+							"title": "Everyone",
+							"description": "Matches everyone.",
 							"type": "object",
 							"required": [
 								"everyone"
@@ -4962,14 +4962,14 @@
 							"properties": {
 								"everyone": {
 									"type": "object",
-									"description": "The everyone rule uses an empty object for the configuration. This will allow any user to reach the path of the application without authentication.",
+									"description": "An empty object which matches on all users.",
 									"example": {}
 								}
 							}
 						},
 						"ip_rule": {
-							"title": "Access IP Rule",
-							"description": "Match an IP address block.",
+							"title": "IP ranges",
+							"description": "Matches an IP address block.",
 							"type": "object",
 							"required": [
 								"ip"
@@ -4991,8 +4991,8 @@
 							}
 						},
 						"certificate_rule": {
-							"title": "Certificate Rule",
-							"description": "Match any valid certificate.",
+							"title": "Valid certificate",
+							"description": "Matches any valid client certificate.",
 							"type": "object",
 							"example": {
 								"certificate": {}
@@ -5009,8 +5009,8 @@
 							}
 						},
 						"access_group_rule": {
-							"title": "Access Group Rule",
-							"description": "Match an Access Group",
+							"title": "Access groups",
+							"description": "Matches an Access group",
 							"type": "object",
 							"required": [
 								"group"
@@ -5024,7 +5024,7 @@
 									"properties": {
 										"id": {
 											"type": "string",
-											"description": "The ID of a previously created Access Group.",
+											"description": "The ID of a previously created Access group.",
 											"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
 										}
 									}
@@ -5032,9 +5032,9 @@
 							}
 						},
 						"azure_group_rule": {
-							"title": "Azure Group Rule",
-							"description": "Match an Azure Group",
-							"cfExtendedDescription": "Requires an Azure identity provider",
+							"title": "Azure group",
+							"description": "Matches an Azure group.",
+							"cfExtendedDescription": "Requires an Azure identity provider.",
 							"type": "object",
 							"required": [
 								"azureAD"
@@ -5062,9 +5062,9 @@
 							}
 						},
 						"github_organization_rule": {
-							"title": "Github Organization Rule",
-							"description": "Match a Github Organization",
-							"cfExtendedDescription": "Requires a Github identity provider",
+							"title": "Github organization",
+							"description": "Matches a Github organization",
+							"cfExtendedDescription": "Requires a Github identity provider.",
 							"type": "object",
 							"required": [
 								"github-organization"
@@ -5092,9 +5092,9 @@
 							}
 						},
 						"gsuite_group_rule": {
-							"title": "GSuite Group Rule",
-							"description": "Match a GSuite Group",
-							"cfExtendedDescription": "Requires a GSuite identity provider",
+							"title": "Google Workspace group",
+							"description": "Matches a group in Google Workspace.",
+							"cfExtendedDescription": "Requires a Google Workspace identity provider.",
 							"type": "object",
 							"required": [
 								"gsuite"
@@ -5109,12 +5109,12 @@
 									"properties": {
 										"email": {
 											"type": "string",
-											"description": "The email of the group.",
+											"description": "The email of the Google Workspace group.",
 											"example": "devs@cloudflare.com"
 										},
 										"connection_id": {
 											"type": "string",
-											"description": "The ID of your GSuite identity provider.",
+											"description": "The ID of your Google Workspace identity provider.",
 											"example": "ea85612a-29c8-46c2-bacb-669d65136971"
 										}
 									}
@@ -5122,9 +5122,9 @@
 							}
 						},
 						"okta_group_rule": {
-							"title": "Okta Group Rule",
-							"description": "Match an Okta Group",
-							"cfExtendedDescription": "Requires a Okta identity provider",
+							"title": "Okta group",
+							"description": "Matches an Okta group.",
+							"cfExtendedDescription": "Requires an Okta identity provider.",
 							"type": "object",
 							"required": [
 								"okta"
@@ -5139,12 +5139,12 @@
 									"properties": {
 										"email": {
 											"type": "string",
-											"description": "The email of the group.",
+											"description": "The email of the Okta group.",
 											"example": "devs@cloudflare.com"
 										},
 										"connection_id": {
 											"type": "string",
-											"description": "The ID of your ID of your Okta identity provider.",
+											"description": "The ID of your Okta identity provider.",
 											"example": "ea85612a-29c8-46c2-bacb-669d65136971"
 										}
 									}
@@ -5152,9 +5152,9 @@
 							}
 						},
 						"saml_group_rule": {
-							"title": "SAML Group Rule",
-							"description": "Match a SAML Group",
-							"cfExtendedDescription": "Requires a SAML identity provider",
+							"title": "SAML group",
+							"description": "Matches a SAML group.",
+							"cfExtendedDescription": "Requires a SAML identity provider.",
 							"type": "object",
 							"required": [
 								"saml"
@@ -5169,12 +5169,12 @@
 									"properties": {
 										"attribute_name": {
 											"type": "string",
-											"description": "The name of the attribute.",
+											"description": "The name of the SAML attribute.",
 											"example": "group"
 										},
 										"attribute_value": {
 											"type": "string",
-											"description": "The value to look for.",
+											"description": "The SAML attribute value to look for.",
 											"example": "devs@cloudflare.com"
 										}
 									}
@@ -5182,8 +5182,8 @@
 							}
 						},
 						"ip_list_rule": {
-							"title": "Access IP List Rule",
-							"description": "Match an IP from a list.",
+							"title": "IP list",
+							"description": "Matches an IP address from a list.",
 							"type": "object",
 							"required": [
 								"ip_list"
@@ -5197,7 +5197,7 @@
 									"properties": {
 										"id": {
 											"type": "string",
-											"description": "The ID of a previously created IP List.",
+											"description": "The ID of a previously created IP list.",
 											"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
 										}
 									}
@@ -5215,11 +5215,11 @@
 					"id": "https://api.cloudflare.com/schemas/v4/client/definitions/access/rule.json",
 					"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 					"type": "object",
-					"description": "Rule configuration. Use the rule type in the top level of the rule configuration object. In the example, the rule type is email and it wraps the email configuration.",
+					"description": "Rules in an Access policy. The rule object contains selectors at the top level, and nested inside are the values each selector will match on.",
 					"oneOf": [
 						{
-							"title": "Access Email Rule",
-							"description": "Match a specific email.",
+							"title": "Email",
+							"description": "Matches a specific email.",
 							"type": "object",
 							"required": [
 								"email"
@@ -5242,7 +5242,7 @@
 							}
 						},
 						{
-							"title": "Access Domain Rule",
+							"title": "Email domain",
 							"description": "Match an entire email domain.",
 							"type": "object",
 							"required": [
@@ -5265,8 +5265,8 @@
 							}
 						},
 						{
-							"title": "Access Everyone Rule",
-							"description": "Match everyone.",
+							"title": "Everyone",
+							"description": "Matches everyone.",
 							"type": "object",
 							"required": [
 								"everyone"
@@ -5274,14 +5274,14 @@
 							"properties": {
 								"everyone": {
 									"type": "object",
-									"description": "The everyone rule uses an empty object for the configuration. This will allow any user to reach the path of the application without authentication.",
+									"description": "An empty object which matches on all users.",
 									"example": {}
 								}
 							}
 						},
 						{
-							"title": "Access IP Rule",
-							"description": "Match an IP address block.",
+							"title": "IP ranges",
+							"description": "Matches an IP address block.",
 							"type": "object",
 							"required": [
 								"ip"
@@ -5303,8 +5303,8 @@
 							}
 						},
 						{
-							"title": "Access IP List Rule",
-							"description": "Match an IP from a list.",
+							"title": "IP list",
+							"description": "Matches an IP address from a list.",
 							"type": "object",
 							"required": [
 								"ip_list"
@@ -5318,7 +5318,7 @@
 									"properties": {
 										"id": {
 											"type": "string",
-											"description": "The ID of a previously created IP List.",
+											"description": "The ID of a previously created IP list.",
 											"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
 										}
 									}
@@ -5326,8 +5326,8 @@
 							}
 						},
 						{
-							"title": "Certificate Rule",
-							"description": "Match any valid certificate.",
+							"title": "Valid certificate",
+							"description": "Matches any valid client certificate.",
 							"type": "object",
 							"example": {
 								"certificate": {}
@@ -5344,8 +5344,8 @@
 							}
 						},
 						{
-							"title": "Access Group Rule",
-							"description": "Match an Access Group",
+							"title": "Access groups",
+							"description": "Matches an Access group",
 							"type": "object",
 							"required": [
 								"group"
@@ -5359,7 +5359,7 @@
 									"properties": {
 										"id": {
 											"type": "string",
-											"description": "The ID of a previously created Access Group.",
+											"description": "The ID of a previously created Access group.",
 											"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
 										}
 									}
@@ -5367,9 +5367,9 @@
 							}
 						},
 						{
-							"title": "Azure Group Rule",
-							"description": "Match an Azure Group",
-							"cfExtendedDescription": "Requires an Azure identity provider",
+							"title": "Azure group",
+							"description": "Matches an Azure group.",
+							"cfExtendedDescription": "Requires an Azure identity provider.",
 							"type": "object",
 							"required": [
 								"azureAD"
@@ -5397,9 +5397,9 @@
 							}
 						},
 						{
-							"title": "Github Organization Rule",
-							"description": "Match a Github Organization",
-							"cfExtendedDescription": "Requires a Github identity provider",
+							"title": "Github organization",
+							"description": "Matches a Github organization",
+							"cfExtendedDescription": "Requires a Github identity provider.",
 							"type": "object",
 							"required": [
 								"github-organization"
@@ -5427,9 +5427,9 @@
 							}
 						},
 						{
-							"title": "GSuite Group Rule",
-							"description": "Match a GSuite Group",
-							"cfExtendedDescription": "Requires a GSuite identity provider",
+							"title": "Google Workspace group",
+							"description": "Matches a group in Google Workspace.",
+							"cfExtendedDescription": "Requires a Google Workspace identity provider.",
 							"type": "object",
 							"required": [
 								"gsuite"
@@ -5444,12 +5444,12 @@
 									"properties": {
 										"email": {
 											"type": "string",
-											"description": "The email of the group.",
+											"description": "The email of the Google Workspace group.",
 											"example": "devs@cloudflare.com"
 										},
 										"connection_id": {
 											"type": "string",
-											"description": "The ID of your GSuite identity provider.",
+											"description": "The ID of your Google Workspace identity provider.",
 											"example": "ea85612a-29c8-46c2-bacb-669d65136971"
 										}
 									}
@@ -5457,9 +5457,9 @@
 							}
 						},
 						{
-							"title": "Okta Group Rule",
-							"description": "Match an Okta Group",
-							"cfExtendedDescription": "Requires a Okta identity provider",
+							"title": "Okta group",
+							"description": "Matches an Okta group.",
+							"cfExtendedDescription": "Requires an Okta identity provider.",
 							"type": "object",
 							"required": [
 								"okta"
@@ -5474,12 +5474,12 @@
 									"properties": {
 										"email": {
 											"type": "string",
-											"description": "The email of the group.",
+											"description": "The email of the Okta group.",
 											"example": "devs@cloudflare.com"
 										},
 										"connection_id": {
 											"type": "string",
-											"description": "The ID of your ID of your Okta identity provider.",
+											"description": "The ID of your Okta identity provider.",
 											"example": "ea85612a-29c8-46c2-bacb-669d65136971"
 										}
 									}
@@ -5487,9 +5487,9 @@
 							}
 						},
 						{
-							"title": "SAML Group Rule",
-							"description": "Match a SAML Group",
-							"cfExtendedDescription": "Requires a SAML identity provider",
+							"title": "SAML group",
+							"description": "Matches a SAML group.",
+							"cfExtendedDescription": "Requires a SAML identity provider.",
 							"type": "object",
 							"required": [
 								"saml"
@@ -5504,12 +5504,12 @@
 									"properties": {
 										"attribute_name": {
 											"type": "string",
-											"description": "The name of the attribute.",
+											"description": "The name of the SAML attribute.",
 											"example": "group"
 										},
 										"attribute_value": {
 											"type": "string",
-											"description": "The value to look for.",
+											"description": "The SAML attribute value to look for.",
 											"example": "devs@cloudflare.com"
 										}
 									}
@@ -5519,8 +5519,8 @@
 					],
 					"definitions": {
 						"email_rule": {
-							"title": "Access Email Rule",
-							"description": "Match a specific email.",
+							"title": "Email",
+							"description": "Matches a specific email.",
 							"type": "object",
 							"required": [
 								"email"
@@ -5543,7 +5543,7 @@
 							}
 						},
 						"domain_rule": {
-							"title": "Access Domain Rule",
+							"title": "Email domain",
 							"description": "Match an entire email domain.",
 							"type": "object",
 							"required": [
@@ -5566,8 +5566,8 @@
 							}
 						},
 						"everyone_rule": {
-							"title": "Access Everyone Rule",
-							"description": "Match everyone.",
+							"title": "Everyone",
+							"description": "Matches everyone.",
 							"type": "object",
 							"required": [
 								"everyone"
@@ -5575,14 +5575,14 @@
 							"properties": {
 								"everyone": {
 									"type": "object",
-									"description": "The everyone rule uses an empty object for the configuration. This will allow any user to reach the path of the application without authentication.",
+									"description": "An empty object which matches on all users.",
 									"example": {}
 								}
 							}
 						},
 						"ip_rule": {
-							"title": "Access IP Rule",
-							"description": "Match an IP address block.",
+							"title": "IP ranges",
+							"description": "Matches an IP address block.",
 							"type": "object",
 							"required": [
 								"ip"
@@ -5604,8 +5604,8 @@
 							}
 						},
 						"certificate_rule": {
-							"title": "Certificate Rule",
-							"description": "Match any valid certificate.",
+							"title": "Valid certificate",
+							"description": "Matches any valid client certificate.",
 							"type": "object",
 							"example": {
 								"certificate": {}
@@ -5622,8 +5622,8 @@
 							}
 						},
 						"access_group_rule": {
-							"title": "Access Group Rule",
-							"description": "Match an Access Group",
+							"title": "Access groups",
+							"description": "Matches an Access group",
 							"type": "object",
 							"required": [
 								"group"
@@ -5637,7 +5637,7 @@
 									"properties": {
 										"id": {
 											"type": "string",
-											"description": "The ID of a previously created Access Group.",
+											"description": "The ID of a previously created Access group.",
 											"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
 										}
 									}
@@ -5645,9 +5645,9 @@
 							}
 						},
 						"azure_group_rule": {
-							"title": "Azure Group Rule",
-							"description": "Match an Azure Group",
-							"cfExtendedDescription": "Requires an Azure identity provider",
+							"title": "Azure group",
+							"description": "Matches an Azure group.",
+							"cfExtendedDescription": "Requires an Azure identity provider.",
 							"type": "object",
 							"required": [
 								"azureAD"
@@ -5675,9 +5675,9 @@
 							}
 						},
 						"github_organization_rule": {
-							"title": "Github Organization Rule",
-							"description": "Match a Github Organization",
-							"cfExtendedDescription": "Requires a Github identity provider",
+							"title": "Github organization",
+							"description": "Matches a Github organization",
+							"cfExtendedDescription": "Requires a Github identity provider.",
 							"type": "object",
 							"required": [
 								"github-organization"
@@ -5705,9 +5705,9 @@
 							}
 						},
 						"gsuite_group_rule": {
-							"title": "GSuite Group Rule",
-							"description": "Match a GSuite Group",
-							"cfExtendedDescription": "Requires a GSuite identity provider",
+							"title": "Google Workspace group",
+							"description": "Matches a group in Google Workspace.",
+							"cfExtendedDescription": "Requires a Google Workspace identity provider.",
 							"type": "object",
 							"required": [
 								"gsuite"
@@ -5722,12 +5722,12 @@
 									"properties": {
 										"email": {
 											"type": "string",
-											"description": "The email of the group.",
+											"description": "The email of the Google Workspace group.",
 											"example": "devs@cloudflare.com"
 										},
 										"connection_id": {
 											"type": "string",
-											"description": "The ID of your GSuite identity provider.",
+											"description": "The ID of your Google Workspace identity provider.",
 											"example": "ea85612a-29c8-46c2-bacb-669d65136971"
 										}
 									}
@@ -5735,9 +5735,9 @@
 							}
 						},
 						"okta_group_rule": {
-							"title": "Okta Group Rule",
-							"description": "Match an Okta Group",
-							"cfExtendedDescription": "Requires a Okta identity provider",
+							"title": "Okta group",
+							"description": "Matches an Okta group.",
+							"cfExtendedDescription": "Requires an Okta identity provider.",
 							"type": "object",
 							"required": [
 								"okta"
@@ -5752,12 +5752,12 @@
 									"properties": {
 										"email": {
 											"type": "string",
-											"description": "The email of the group.",
+											"description": "The email of the Okta group.",
 											"example": "devs@cloudflare.com"
 										},
 										"connection_id": {
 											"type": "string",
-											"description": "The ID of your ID of your Okta identity provider.",
+											"description": "The ID of your Okta identity provider.",
 											"example": "ea85612a-29c8-46c2-bacb-669d65136971"
 										}
 									}
@@ -5765,9 +5765,9 @@
 							}
 						},
 						"saml_group_rule": {
-							"title": "SAML Group Rule",
-							"description": "Match a SAML Group",
-							"cfExtendedDescription": "Requires a SAML identity provider",
+							"title": "SAML group",
+							"description": "Matches a SAML group.",
+							"cfExtendedDescription": "Requires a SAML identity provider.",
 							"type": "object",
 							"required": [
 								"saml"
@@ -5782,12 +5782,12 @@
 									"properties": {
 										"attribute_name": {
 											"type": "string",
-											"description": "The name of the attribute.",
+											"description": "The name of the SAML attribute.",
 											"example": "group"
 										},
 										"attribute_value": {
 											"type": "string",
-											"description": "The value to look for.",
+											"description": "The SAML attribute value to look for.",
 											"example": "devs@cloudflare.com"
 										}
 									}
@@ -5795,8 +5795,8 @@
 							}
 						},
 						"ip_list_rule": {
-							"title": "Access IP List Rule",
-							"description": "Match an IP from a list.",
+							"title": "IP list",
+							"description": "Matches an IP address from a list.",
 							"type": "object",
 							"required": [
 								"ip_list"
@@ -5810,7 +5810,7 @@
 									"properties": {
 										"id": {
 											"type": "string",
-											"description": "The ID of a previously created IP List.",
+											"description": "The ID of a previously created IP list.",
 											"example": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f"
 										}
 									}

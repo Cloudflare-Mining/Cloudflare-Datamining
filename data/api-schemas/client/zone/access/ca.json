@@ -1,60 +1,60 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/access/ca.json",
-	"title": "Zone-Level Access Short-Lived Certificates",
-	"description": "Short-lived certificates improve access security to infrastructure with ephemeral certificates. Serves as a replacement to traditional SSH key models. (NOTE: it's recommended that the account route namespace is used instead: https://api.cloudflare.com/#access-short-lived-certificates-properties.)",
-	"cfExtendedDescription": "https://developers.cloudflare.com/access/ssh/short-live-cert-server/",
+	"title": "Zone-Level Access short-lived certificate CAs",
+	"description": "The certificate authority (CA) issues short-lived certificates during an SSH session. Clients authenticate to the SSH server with ephemeral certificates instead of traditional SSH keys. (Note: We recommend using the equivalent account-level endpoints at https://api.cloudflare.com/#access-short-lived-certificate-cas-properties. Account APIs provide a broader range of features and are backwards-compatible to zone APIs.)",
+	"cfExtendedDescription": "https://developers.cloudflare.com/cloudflare-one/identity/users/short-lived-certificates/",
 	"type": "object",
 	"links": [
 		{
-			"title": "List Short-Lived Certificates",
-			"description": "List Short-Lived Certificates",
+			"title": "List short-lived certificate CAs",
+			"description": "Lists short-lived certificate CAs and their public keys.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/identifier}/access/apps/ca",
 			"method": "GET",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-short-lived-certificates-list-short-lived-certificates",
+			"html_id": "zone-level-access-short-lived-certificate-cas-list-short-lived-certificate-cas",
 			"uri": "zones/:identifier/access/apps/ca",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/access/apps/ca\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"7eddae4619b50ab1361ba8ae9bd72269a432fea041529ed9\",\n      \"aud\": \"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\",\n      \"public_key\": \"ecdsa-sha2-nistp256 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/xxxxxxxxxxxxxxxxxxxxx/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx= open-ssh-ca@cloudflareaccess.org\"\n    }\n  ]\n}"
 		},
 		{
-			"title": "Short-Lived Certificate Details",
-			"description": "Fetch a single short-lived certificate",
+			"title": "Get a short-lived certificate CA",
+			"description": "Fetches a short-lived certificate CA and its public key.",
 			"rel": "self",
 			"href": "zones/{#/definitions/identifier}/access/apps/{#/definitions/uuid}/ca",
 			"method": "GET",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-short-lived-certificates-short-lived-certificate-details",
+			"html_id": "zone-level-access-short-lived-certificate-cas-get-a-short-lived-certificate-ca",
 			"uri": "zones/:identifier/access/apps/:uuid/ca",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/access/apps/f174e90a-fafe-4643-bbbc-4a0ed4fc8415/ca\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
 		},
 		{
-			"title": "Create Short-Lived Certificate",
-			"description": "Create a new short-lived certificate",
+			"title": "Create a short-lived certificate CA",
+			"description": "Generates a new short-lived certificate CA and public key.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/identifier}/access/apps/{#/definitions/uuid}/ca",
 			"method": "POST",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-short-lived-certificates-create-short-lived-certificate",
+			"html_id": "zone-level-access-short-lived-certificate-cas-create-a-short-lived-certificate-ca",
 			"uri": "zones/:identifier/access/apps/:uuid/ca",
 			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/access/apps/f174e90a-fafe-4643-bbbc-4a0ed4fc8415/ca\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
 		},
 		{
-			"title": "Delete Access Certificate",
-			"description": "Delete an Access Certificate",
+			"title": "Delete a short-lived certificate CA",
+			"description": "Deletes a short-lived certificate CA.",
 			"rel": "self",
 			"href": "zones/{#/definitions/identifier}/access/apps/{#/definitions/uuid}/ca",
 			"method": "DELETE",
 			"cfOwnership": "access",
-			"html_id": "zone-level-access-short-lived-certificates-delete-access-certificate",
+			"html_id": "zone-level-access-short-lived-certificate-cas-delete-a-short-lived-certificate-ca",
 			"uri": "zones/:identifier/access/apps/:uuid/ca",
 			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/access/apps/f174e90a-fafe-4643-bbbc-4a0ed4fc8415/ca\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"7eddae4619b50ab1361ba8ae9bd72269a432fea041529ed9\"\n  }\n}"
 		}
 	],
-	"html_id": "zone-level-access-short-lived-certificates",
+	"html_id": "zone-level-access-short-lived-certificate-cas",
 	"object_definition": {
 		"_formatter": {
 			"jsonMediaType": {}
@@ -63,21 +63,21 @@
 			"id": {
 				"type": "string",
 				"example": "\"7eddae4619b50ab1361ba8ae9bd72269a432fea041529ed9\"",
-				"description": "Short-lived certificate id",
+				"description": "The ID of the CA.",
 				"maxLength": 48,
 				"readOnly": true
 			},
 			"aud": {
 				"type": "string",
 				"example": "\"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\"",
-				"description": "Audience tag",
+				"description": "The Application Audience (AUD) tag. Identifies the application associated with the CA.",
 				"maxLength": 64,
 				"readOnly": true
 			},
 			"public_key": {
 				"type": "string",
 				"example": "\"ecdsa-sha2-nistp256 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/xxxxxxxxxxxxxxxxxxxxx/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx= open-ssh-ca@cloudflareaccess.org\"",
-				"description": "Public key for DS record",
+				"description": "The public key to add to your SSH server configuration.",
 				"readOnly": true
 			}
 		},
@@ -89,7 +89,7 @@
 		],
 		"objects": [],
 		"example": "{\n  \"id\": \"7eddae4619b50ab1361ba8ae9bd72269a432fea041529ed9\",\n  \"aud\": \"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\",\n  \"public_key\": \"ecdsa-sha2-nistp256 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/xxxxxxxxxxxxxxxxxxxxx/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx= open-ssh-ca@cloudflareaccess.org\"\n}",
-		"title": "Zone-Level Access Short-Lived Certificates",
-		"description": "Short-lived certificates improve access security to infrastructure with ephemeral certificates. Serves as a replacement to traditional SSH key models. (NOTE: it's recommended that the account route namespace is used instead: https://api.cloudflare.com/#access-short-lived-certificates-properties.)"
+		"title": "Zone-Level Access short-lived certificate CAs",
+		"description": "The certificate authority (CA) issues short-lived certificates during an SSH session. Clients authenticate to the SSH server with ephemeral certificates instead of traditional SSH keys. (Note: We recommend using the equivalent account-level endpoints at https://api.cloudflare.com/#access-short-lived-certificate-cas-properties. Account APIs provide a broader range of features and are backwards-compatible to zone APIs.)"
 	}
 }

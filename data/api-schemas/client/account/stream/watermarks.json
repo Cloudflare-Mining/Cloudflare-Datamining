@@ -5,13 +5,13 @@
 	"type": "object",
 	"links": [
 		{
-			"title": "Create a Watermark Profile from an URL",
-			"description": "You can create a watermark profile by specifying the URL to the image.",
+			"title": "Create watermark profiles from a URL",
+			"description": "Creates a watermark profile by specifying an image's URL.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/account_identifier}/stream/watermarks",
 			"method": "POST",
 			"cfOwnership": "stream",
-			"html_id": "stream-watermark-profile-create-a-watermark-profile-from-an-url",
+			"html_id": "stream-watermark-profile-create-watermark-profiles-from-a-url",
 			"uri": "accounts/:account_identifier/stream/watermarks",
 			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/stream/watermarks\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"url\":\"https://company.com/logo.png\",\"name\":\"Marketing Videos\",\"opacity\":0.75,\"padding\":0.1,\"scale\":0.1,\"position\":\"center\"}'",
 			"parameters": {
@@ -22,20 +22,20 @@
 					"url": {
 						"type": "string",
 						"example": "\"https://company.com/logo.png\"",
-						"description": "The source URL to the image where it was downloaded from. If the watermark profile was created via direct upload, this field will be null.",
+						"description": "The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null.",
 						"readOnly": true
 					},
 					"name": {
 						"type": "string",
 						"example": "\"Marketing Videos\"",
-						"description": "A short description for the profile.",
+						"description": "A short description of the watermark profile.",
 						"default": "",
 						"readOnly": true
 					},
 					"opacity": {
 						"type": "number",
 						"example": "0.75",
-						"description": "Translucency of the image. 0.0 means completely transparent, and 1.0 means completely opaque. Note that if the image is already semi-transparent, setting this to 1.0 will not make it completely opaque.",
+						"description": "The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque.",
 						"default": 1,
 						"minimum": 0,
 						"maximum": 1,
@@ -44,7 +44,7 @@
 					"padding": {
 						"type": "number",
 						"example": "0.1",
-						"description": "Whitespace between the adjacent edges (determined by position) of the video and the image. 0.0 means no padding, and 1.0 means padded full video width or length, determined by the algorithm.",
+						"description": "The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length, as determined by the algorithm.",
 						"default": 0.05,
 						"minimum": 0,
 						"maximum": 1,
@@ -53,7 +53,7 @@
 					"scale": {
 						"type": "number",
 						"example": "0.1",
-						"description": "The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. 0.0 means no scaling (use the size of the image as-is), and 1.0 fills the entire video.",
+						"description": "The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0 `fills the entire video.",
 						"default": 0.15,
 						"minimum": 0,
 						"maximum": 1,
@@ -62,7 +62,7 @@
 					"position": {
 						"type": "string",
 						"example": "\"center\"",
-						"description": "Location of the image. Valid positions are: \"upperRight\", \"upperLeft\", \"lowerLeft\", \"lowerRight\", and \"center\". Note that \"center\" will ignore the \"padding\" parameter. ",
+						"description": "The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter. ",
 						"default": "upperRight",
 						"readOnly": true
 					}
@@ -83,8 +83,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"uid\": \"ea95132c15732412d22c1476fa83f27a\",\n    \"size\": 29472,\n    \"height\": 600,\n    \"width\": 400,\n    \"created\": \"2014-01-02T02:20:00Z\",\n    \"downloadedFrom\": \"https://company.com/logo.png\",\n    \"name\": \"Marketing Videos\",\n    \"opacity\": 0.75,\n    \"padding\": 0.1,\n    \"scale\": 0.1,\n    \"position\": \"center\"\n  }\n}"
 		},
 		{
-			"title": "Create a Watermark Profile via Basic Upload",
-			"description": "You can create a watermark profile using a single HTTP POST (multipart/form-data) request.",
+			"title": "Create watermark profiles via basic upload",
+			"description": "Creates watermark profiles using a single `HTTP POST multipart/form-data` request.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/account_identifier}/stream/watermarks",
 			"method": "POST",
@@ -110,7 +110,7 @@
 					}
 				}
 			},
-			"html_id": "stream-watermark-profile-create-a-watermark-profile-via-basic-upload",
+			"html_id": "stream-watermark-profile-create-watermark-profiles-via-basic-upload",
 			"uri": "accounts/:account_identifier/stream/watermarks",
 			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/stream/watermarks\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     --form 'file=@/Users/rchen/Downloads/watermark.png' \\\n     --form 'name=Marketing Videos' \\\n     --form 'opacity=0.75' \\\n     --form 'padding=0.1' \\\n     --form 'scale=0.1' \\\n     --form 'position=center'",
 			"parameters": {
@@ -121,19 +121,19 @@
 					"file": {
 						"type": "string",
 						"example": "\"@/Users/rchen/Downloads/watermark.png\"",
-						"description": "Image file to upload"
+						"description": "The image file to upload."
 					},
 					"name": {
 						"type": "string",
 						"example": "\"Marketing Videos\"",
-						"description": "A short description for the profile.",
+						"description": "A short description of the watermark profile.",
 						"default": "",
 						"readOnly": true
 					},
 					"opacity": {
 						"type": "number",
 						"example": "0.75",
-						"description": "Translucency of the image. 0.0 means completely transparent, and 1.0 means completely opaque. Note that if the image is already semi-transparent, setting this to 1.0 will not make it completely opaque.",
+						"description": "The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque.",
 						"default": 1,
 						"minimum": 0,
 						"maximum": 1,
@@ -142,7 +142,7 @@
 					"padding": {
 						"type": "number",
 						"example": "0.1",
-						"description": "Whitespace between the adjacent edges (determined by position) of the video and the image. 0.0 means no padding, and 1.0 means padded full video width or length, determined by the algorithm.",
+						"description": "The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length, as determined by the algorithm.",
 						"default": 0.05,
 						"minimum": 0,
 						"maximum": 1,
@@ -151,7 +151,7 @@
 					"scale": {
 						"type": "number",
 						"example": "0.1",
-						"description": "The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. 0.0 means no scaling (use the size of the image as-is), and 1.0 fills the entire video.",
+						"description": "The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0 `fills the entire video.",
 						"default": 0.15,
 						"minimum": 0,
 						"maximum": 1,
@@ -160,7 +160,7 @@
 					"position": {
 						"type": "string",
 						"example": "\"center\"",
-						"description": "Location of the image. Valid positions are: \"upperRight\", \"upperLeft\", \"lowerLeft\", \"lowerRight\", and \"center\". Note that \"center\" will ignore the \"padding\" parameter. ",
+						"description": "The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter. ",
 						"default": "upperRight",
 						"readOnly": true
 					}
@@ -181,8 +181,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"uid\": \"ea95132c15732412d22c1476fa83f27a\",\n    \"size\": 29472,\n    \"height\": 600,\n    \"width\": 400,\n    \"created\": \"2014-01-02T02:20:00Z\",\n    \"downloadedFrom\": \"https://company.com/logo.png\",\n    \"name\": \"Marketing Videos\",\n    \"opacity\": 0.75,\n    \"padding\": 0.1,\n    \"scale\": 0.1,\n    \"position\": \"center\"\n  }\n}"
 		},
 		{
-			"title": "List Watermark Profiles",
-			"description": "List all the watermark profiles under your account.",
+			"title": "List watermark profiles",
+			"description": "Lists all watermark profiles for an account.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/account_identifier}/stream/watermarks",
 			"method": "GET",
@@ -193,8 +193,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"uid\": \"ea95132c15732412d22c1476fa83f27a\",\n      \"size\": 29472,\n      \"height\": 600,\n      \"width\": 400,\n      \"created\": \"2014-01-02T02:20:00Z\",\n      \"downloadedFrom\": \"https://company.com/logo.png\",\n      \"name\": \"Marketing Videos\",\n      \"opacity\": 0.75,\n      \"padding\": 0.1,\n      \"scale\": 0.1,\n      \"position\": \"center\"\n    }\n  ]\n}"
 		},
 		{
-			"title": "Watermark Profile Details",
-			"description": "Fetch details of a single watermark profile.",
+			"title": "Watermark profile details",
+			"description": "Retrieves details for a single watermark profile.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/stream/watermarks/{#/definitions/identifier}",
 			"method": "GET",
@@ -205,13 +205,13 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"uid\": \"ea95132c15732412d22c1476fa83f27a\",\n    \"size\": 29472,\n    \"height\": 600,\n    \"width\": 400,\n    \"created\": \"2014-01-02T02:20:00Z\",\n    \"downloadedFrom\": \"https://company.com/logo.png\",\n    \"name\": \"Marketing Videos\",\n    \"opacity\": 0.75,\n    \"padding\": 0.1,\n    \"scale\": 0.1,\n    \"position\": \"center\"\n  }\n}"
 		},
 		{
-			"title": "Delete Watermark Profile",
-			"description": "Mark a watermark profile as deleted",
+			"title": "Delete watermark profiles",
+			"description": "Deletes a watermark profile.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/stream/watermarks/{#/definitions/identifier}",
 			"cfOwnership": "stream",
 			"method": "DELETE",
-			"html_id": "stream-watermark-profile-delete-watermark-profile",
+			"html_id": "stream-watermark-profile-delete-watermark-profiles",
 			"uri": "accounts/:account_identifier/stream/watermarks/:identifier",
 			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/stream/watermarks/ea95132c15732412d22c1476fa83f27a\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": \"\"\n}"
@@ -233,7 +233,7 @@
 			"uid": {
 				"type": "string",
 				"example": "\"ea95132c15732412d22c1476fa83f27a\"",
-				"description": "Watermark profile unique identifier.",
+				"description": "The unique identifier for a watermark profile.",
 				"maxLength": 32,
 				"readOnly": true
 			},
@@ -246,39 +246,39 @@
 			"height": {
 				"type": "integer",
 				"example": "600",
-				"description": "Height of the image in pixels.",
+				"description": "The height of the image in pixels.",
 				"readOnly": true
 			},
 			"width": {
 				"type": "integer",
 				"example": "400",
-				"description": "Width of the image in pixels.",
+				"description": "The width of the image in pixels.",
 				"readOnly": true
 			},
 			"created": {
 				"type": "string",
 				"example": "\"2014-01-02T02:20:00Z\"",
-				"description": "When the watermark profile was created.",
+				"description": "The date and a time a watermark profile was created.",
 				"format": "date-time",
 				"readOnly": true
 			},
 			"downloadedFrom": {
 				"type": "string",
 				"example": "\"https://company.com/logo.png\"",
-				"description": "The source URL to the image where it was downloaded from. If the watermark profile was created via direct upload, this field will be null.",
+				"description": "The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null.",
 				"readOnly": true
 			},
 			"name": {
 				"type": "string",
 				"example": "\"Marketing Videos\"",
-				"description": "A short description for the profile.",
+				"description": "A short description of the watermark profile.",
 				"default": "",
 				"readOnly": true
 			},
 			"opacity": {
 				"type": "number",
 				"example": "0.75",
-				"description": "Translucency of the image. 0.0 means completely transparent, and 1.0 means completely opaque. Note that if the image is already semi-transparent, setting this to 1.0 will not make it completely opaque.",
+				"description": "The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque.",
 				"default": 1,
 				"minimum": 0,
 				"maximum": 1,
@@ -287,7 +287,7 @@
 			"padding": {
 				"type": "number",
 				"example": "0.1",
-				"description": "Whitespace between the adjacent edges (determined by position) of the video and the image. 0.0 means no padding, and 1.0 means padded full video width or length, determined by the algorithm.",
+				"description": "The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length, as determined by the algorithm.",
 				"default": 0.05,
 				"minimum": 0,
 				"maximum": 1,
@@ -296,7 +296,7 @@
 			"scale": {
 				"type": "number",
 				"example": "0.1",
-				"description": "The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. 0.0 means no scaling (use the size of the image as-is), and 1.0 fills the entire video.",
+				"description": "The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0 `fills the entire video.",
 				"default": 0.15,
 				"minimum": 0,
 				"maximum": 1,
@@ -305,7 +305,7 @@
 			"position": {
 				"type": "string",
 				"example": "\"center\"",
-				"description": "Location of the image. Valid positions are: \"upperRight\", \"upperLeft\", \"lowerLeft\", \"lowerRight\", and \"center\". Note that \"center\" will ignore the \"padding\" parameter. ",
+				"description": "The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter. ",
 				"default": "upperRight",
 				"readOnly": true
 			}

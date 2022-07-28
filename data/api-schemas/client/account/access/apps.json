@@ -45,7 +45,7 @@
 					"type": {
 						"type": "string",
 						"example": "\"self_hosted\"",
-						"description": "The application type"
+						"description": "The application type."
 					},
 					"name": {
 						"type": "string",
@@ -978,13 +978,13 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"type\": \"biso\",\n    \"name\": \"Clientless Web Isolation\",\n    \"domain\": \"authdomain.cloudflareaccess.com/browser\",\n    \"session_duration\": \"24h\",\n    \"allowed_idps\": [\n      \"699d98642c564d2e855e9661899b7252\"\n    ],\n    \"auto_redirect_to_identity\": false,\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"aud\": \"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\"\n  }\n}"
 		},
 		{
-			"title": "Add the Bookmark application",
-			"description": "Adds the Bookmark application to Access, which allows you to add custom links to the App Launcher portal.",
+			"title": "Add a Bookmark application",
+			"description": "Adds a custom link to the App Launcher. Bookmark applications are not protected by Access.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/identifier}/access/apps",
 			"method": "POST",
 			"cfOwnership": "access",
-			"html_id": "access-applications-add-the-bookmark-application",
+			"html_id": "access-applications-add-a-bookmark-application",
 			"uri": "accounts/:identifier/access/apps",
 			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/access/apps\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"bookmark\",\"name\":\"Admin Site\",\"domain\":\"https://mybookmark.com\",\"logo_url\":\"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\"app_launcher_visible\":true}'",
 			"parameters": {
@@ -1030,7 +1030,7 @@
 				],
 				"objects": [],
 				"example": "{\n  \"type\": \"bookmark\",\n  \"name\": \"Admin Site\",\n  \"domain\": \"https://mybookmark.com\",\n  \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n  \"app_launcher_visible\": true\n}",
-				"title": "Bookmark Application"
+				"title": "Bookmark application"
 			},
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"aud\": \"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\",\n    \"type\": \"bookmark\",\n    \"name\": \"Admin Site\",\n    \"domain\": \"https://mybookmark.com\",\n    \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n    \"app_launcher_visible\": true\n  }\n}"
 		},
@@ -1052,7 +1052,7 @@
 					"type": {
 						"type": "string",
 						"example": "\"self_hosted\"",
-						"description": "The application type"
+						"description": "The application type."
 					},
 					"name": {
 						"type": "string",
@@ -2077,13 +2077,13 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"type\": \"biso\",\n    \"name\": \"Clientless Web Isolation\",\n    \"domain\": \"authdomain.cloudflareaccess.com/browser\",\n    \"session_duration\": \"24h\",\n    \"allowed_idps\": [\n      \"699d98642c564d2e855e9661899b7252\"\n    ],\n    \"auto_redirect_to_identity\": false,\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"aud\": \"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\"\n  }\n}"
 		},
 		{
-			"title": "Update the Bookmark application",
-			"description": "Updates the Bookmark application.",
+			"title": "Update a Bookmark application",
+			"description": "Updates a Bookmark application.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/identifier}/access/apps/{#/definitions/app_id}",
 			"method": "PUT",
 			"cfOwnership": "access",
-			"html_id": "access-applications-update-the-bookmark-application",
+			"html_id": "access-applications-update-a-bookmark-application",
 			"uri": "accounts/:identifier/access/apps/:app_id",
 			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/access/apps/699d98642c564d2e855e9661899b7252\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"bookmark\",\"name\":\"Admin Site\",\"domain\":\"https://mybookmark.com\",\"logo_url\":\"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\"app_launcher_visible\":true}'",
 			"parameters": {
@@ -2129,7 +2129,7 @@
 				],
 				"objects": [],
 				"example": "{\n  \"type\": \"bookmark\",\n  \"name\": \"Admin Site\",\n  \"domain\": \"https://mybookmark.com\",\n  \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n  \"app_launcher_visible\": true\n}",
-				"title": "Bookmark Application"
+				"title": "Bookmark application"
 			},
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"aud\": \"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\",\n    \"type\": \"bookmark\",\n    \"name\": \"Admin Site\",\n    \"domain\": \"https://mybookmark.com\",\n    \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n    \"app_launcher_visible\": true\n  }\n}"
 		},
@@ -2255,7 +2255,7 @@
 					"type": {
 						"type": "string",
 						"example": "\"self_hosted\"",
-						"description": "The application type"
+						"description": "The application type."
 					},
 					"name": {
 						"type": "string",
@@ -3402,7 +3402,7 @@
 				],
 				"objects": [],
 				"example": "{\n  \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"aud\": \"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\",\n  \"type\": \"bookmark\",\n  \"name\": \"Admin Site\",\n  \"domain\": \"https://mybookmark.com\",\n  \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n  \"app_launcher_visible\": true\n}",
-				"title": "Bookmark Application"
+				"title": "Bookmark application"
 			}
 		],
 		"example": "{\n  \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"aud\": \"737646a56ab1df6ec9bddc7e5ca84eaf3b0768850f3ffb5d74f1534911fe3893\",\n  \"type\": \"self_hosted\",\n  \"name\": \"Admin Site\",\n  \"domain\": \"test.example.com/admin\",\n  \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n  \"app_launcher_visible\": true,\n  \"session_duration\": \"24h\",\n  \"allowed_idps\": [\n    \"699d98642c564d2e855e9661899b7252\"\n  ],\n  \"auto_redirect_to_identity\": false,\n  \"enable_binding_cookie\": false,\n  \"http_only_cookie_attribute\": true,\n  \"same_site_cookie_attribute\": \"strict\",\n  \"cors_headers\": {\n    \"allowed_methods\": [\n      \"GET\"\n    ],\n    \"allowed_origins\": [\n      \"https://example.com\"\n    ],\n    \"allow_all_headers\": true,\n    \"max_age\": -1\n  },\n  \"skip_interstitial\": true,\n  \"service_auth_401_redirect\": true\n}",

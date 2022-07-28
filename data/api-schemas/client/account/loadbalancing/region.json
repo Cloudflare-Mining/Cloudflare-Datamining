@@ -6,7 +6,7 @@
 	"links": [
 		{
 			"title": "List Regions",
-			"description": "List all region mappings",
+			"description": "List all region mappings.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/account_identifier}/load_balancers/regions",
 			"method": "GET",
@@ -42,7 +42,7 @@
 		},
 		{
 			"title": "Get Region",
-			"description": "Get a single region mapping",
+			"description": "Get a single region mapping.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/load_balancers/regions/{#/definitions/region_code}",
 			"method": "GET",

@@ -18,7 +18,7 @@
 		},
 		{
 			"title": "Create Load Balancer",
-			"description": "Create a new load balancer",
+			"description": "Create a new load balancer.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/identifier}/load_balancers",
 			"method": "POST",
@@ -102,7 +102,7 @@
 					"session_affinity": {
 						"type": "string",
 						"example": "\"cookie\"",
-						"description": "The session_affinity specifies the type of session affinity the loadbalancer should use unless specified as \"none\" or \"\"(default). The supported types are \"cookie\" and \"ip_cookie\". \"cookie\" - On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. \"ip_cookie\" behaves the same as \"cookie\" except the initial origin selection is stable and based on the client’s ip address.",
+						"description": "The session_affinity specifies the type of session affinity the load balancer should use unless specified as \"none\" or \"\"(default). The supported types are \"cookie\" and \"ip_cookie\". \"cookie\" - On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. \"ip_cookie\" behaves the same as \"cookie\" except the initial origin selection is stable and based on the client’s ip address.",
 						"enum": [
 							"none",
 							"cookie",
@@ -155,12 +155,12 @@
 								"default": "none"
 							}
 						},
-						"description": "Configure cookie attributes for session affinity cookie."
+						"description": "Configures cookie attributes for session affinity cookie."
 					},
 					"session_affinity_ttl": {
 						"type": "number",
 						"example": "5000",
-						"description": "Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless session_affinity_ttl is explicitly set. The accepted range of values is between [1800, 604800]. Once the expiry time has been reached, subsequent requests may get sent to a different origin server."
+						"description": "Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless session_affinity_ttl is explicitly set. The accepted range of values is between [1800, 604800]. Once the expiry time has been reached, subsequent requests may get sent to a different origin server."
 					},
 					"random_steering": {
 						"type": "object",
@@ -181,7 +181,7 @@
 								"default": 1
 							}
 						},
-						"description": "Configure pool weights for random steering. When steering_policy is 'random', a random pool is selected with probability proportional to these pool weights."
+						"description": "Configures pool weights for random steering. When steering_policy is 'random', a random pool is selected with probability proportional to these pool weights."
 					},
 					"rules": {
 						"type": "array",
@@ -200,7 +200,7 @@
 								},
 								"condition": {
 									"type": "string",
-									"description": "The condition expressions to evaluate. If the condition evaluates to true the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions",
+									"description": "The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions",
 									"example": "http.request.uri.path contains \"/testing\""
 								},
 								"overrides": {
@@ -209,7 +209,7 @@
 									"properties": {
 										"session_affinity": {
 											"type": "string",
-											"description": "The session_affinity specifies the type of session affinity the loadbalancer should use unless specified as \"none\" or \"\"(default). The supported types are \"cookie\" and \"ip_cookie\". \"cookie\" - On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. \"ip_cookie\" behaves the same as \"cookie\" except the initial origin selection is stable and based on the client’s ip address.",
+											"description": "The session_affinity specifies the type of session affinity the load balancer should use unless specified as \"none\" or \"\"(default). The supported types are \"cookie\" and \"ip_cookie\". \"cookie\" - On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. \"ip_cookie\" behaves the same as \"cookie\" except the initial origin selection is stable and based on the client’s ip address.",
 											"enum": [
 												"none",
 												"cookie",
@@ -221,12 +221,12 @@
 										},
 										"session_affinity_ttl": {
 											"type": "number",
-											"description": "Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless session_affinity_ttl is explicitly set. The accepted range of values is between [1800, 604800]. Once the expiry time has been reached, subsequent requests may get sent to a different origin server.",
+											"description": "Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless session_affinity_ttl is explicitly set. The accepted range of values is between [1800, 604800]. Once the expiry time has been reached, subsequent requests may get sent to a different origin server.",
 											"example": 5000
 										},
 										"session_affinity_attributes": {
 											"type": "object",
-											"description": "Configure cookie attributes for session affinity cookie.",
+											"description": "Configures cookie attributes for session affinity cookie.",
 											"properties": {
 												"samesite": {
 													"type": "string",
@@ -355,7 +355,7 @@
 										},
 										"random_steering": {
 											"type": "object",
-											"description": "Configure pool weights for random steering. When steering_policy is 'random', a random pool is selected with probability proportional to these pool weights.",
+											"description": "Configures pool weights for random steering. When steering_policy is 'random', a random pool is selected with probability proportional to these pool weights.",
 											"properties": {
 												"pool_weights": {
 													"type": "object",
@@ -391,7 +391,7 @@
 								},
 								"terminates": {
 									"type": "boolean",
-									"description": "If this rule's condition is true, terminates causes rule evaluation to stop after processing this rule.",
+									"description": "If this rule's condition is true, this causes rule evaluation to stop after processing this rule.",
 									"default": false
 								},
 								"fixed_response": {
@@ -454,7 +454,7 @@
 		},
 		{
 			"title": "Load Balancer Details",
-			"description": "Fetch a single configured load balancer",
+			"description": "Fetch a single configured load balancer.",
 			"rel": "self",
 			"href": "zones/{#/definitions/identifier}/load_balancers/{#/definitions/identifier}",
 			"method": "GET",
@@ -466,7 +466,7 @@
 		},
 		{
 			"title": "Update Load Balancer",
-			"description": "Update a configured load balancer",
+			"description": "Update a configured load balancer.",
 			"rel": "self",
 			"href": "zones/{#/definitions/identifier}/load_balancers/{#/definitions/identifier}",
 			"method": "PUT",
@@ -556,7 +556,7 @@
 					"session_affinity": {
 						"type": "string",
 						"example": "\"cookie\"",
-						"description": "The session_affinity specifies the type of session affinity the loadbalancer should use unless specified as \"none\" or \"\"(default). The supported types are \"cookie\" and \"ip_cookie\". \"cookie\" - On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. \"ip_cookie\" behaves the same as \"cookie\" except the initial origin selection is stable and based on the client’s ip address.",
+						"description": "The session_affinity specifies the type of session affinity the load balancer should use unless specified as \"none\" or \"\"(default). The supported types are \"cookie\" and \"ip_cookie\". \"cookie\" - On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. \"ip_cookie\" behaves the same as \"cookie\" except the initial origin selection is stable and based on the client’s ip address.",
 						"enum": [
 							"none",
 							"cookie",
@@ -609,12 +609,12 @@
 								"default": "none"
 							}
 						},
-						"description": "Configure cookie attributes for session affinity cookie."
+						"description": "Configures cookie attributes for session affinity cookie."
 					},
 					"session_affinity_ttl": {
 						"type": "number",
 						"example": "5000",
-						"description": "Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless session_affinity_ttl is explicitly set. The accepted range of values is between [1800, 604800]. Once the expiry time has been reached, subsequent requests may get sent to a different origin server."
+						"description": "Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless session_affinity_ttl is explicitly set. The accepted range of values is between [1800, 604800]. Once the expiry time has been reached, subsequent requests may get sent to a different origin server."
 					},
 					"random_steering": {
 						"type": "object",
@@ -635,7 +635,7 @@
 								"default": 1
 							}
 						},
-						"description": "Configure pool weights for random steering. When steering_policy is 'random', a random pool is selected with probability proportional to these pool weights."
+						"description": "Configures pool weights for random steering. When steering_policy is 'random', a random pool is selected with probability proportional to these pool weights."
 					},
 					"rules": {
 						"type": "array",
@@ -654,7 +654,7 @@
 								},
 								"condition": {
 									"type": "string",
-									"description": "The condition expressions to evaluate. If the condition evaluates to true the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions",
+									"description": "The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions",
 									"example": "http.request.uri.path contains \"/testing\""
 								},
 								"overrides": {
@@ -663,7 +663,7 @@
 									"properties": {
 										"session_affinity": {
 											"type": "string",
-											"description": "The session_affinity specifies the type of session affinity the loadbalancer should use unless specified as \"none\" or \"\"(default). The supported types are \"cookie\" and \"ip_cookie\". \"cookie\" - On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. \"ip_cookie\" behaves the same as \"cookie\" except the initial origin selection is stable and based on the client’s ip address.",
+											"description": "The session_affinity specifies the type of session affinity the load balancer should use unless specified as \"none\" or \"\"(default). The supported types are \"cookie\" and \"ip_cookie\". \"cookie\" - On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. \"ip_cookie\" behaves the same as \"cookie\" except the initial origin selection is stable and based on the client’s ip address.",
 											"enum": [
 												"none",
 												"cookie",
@@ -675,12 +675,12 @@
 										},
 										"session_affinity_ttl": {
 											"type": "number",
-											"description": "Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless session_affinity_ttl is explicitly set. The accepted range of values is between [1800, 604800]. Once the expiry time has been reached, subsequent requests may get sent to a different origin server.",
+											"description": "Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless session_affinity_ttl is explicitly set. The accepted range of values is between [1800, 604800]. Once the expiry time has been reached, subsequent requests may get sent to a different origin server.",
 											"example": 5000
 										},
 										"session_affinity_attributes": {
 											"type": "object",
-											"description": "Configure cookie attributes for session affinity cookie.",
+											"description": "Configures cookie attributes for session affinity cookie.",
 											"properties": {
 												"samesite": {
 													"type": "string",
@@ -809,7 +809,7 @@
 										},
 										"random_steering": {
 											"type": "object",
-											"description": "Configure pool weights for random steering. When steering_policy is 'random', a random pool is selected with probability proportional to these pool weights.",
+											"description": "Configures pool weights for random steering. When steering_policy is 'random', a random pool is selected with probability proportional to these pool weights.",
 											"properties": {
 												"pool_weights": {
 													"type": "object",
@@ -845,7 +845,7 @@
 								},
 								"terminates": {
 									"type": "boolean",
-									"description": "If this rule's condition is true, terminates causes rule evaluation to stop after processing this rule.",
+									"description": "If this rule's condition is true, this causes rule evaluation to stop after processing this rule.",
 									"default": false
 								},
 								"fixed_response": {
@@ -999,7 +999,7 @@
 					"session_affinity": {
 						"type": "string",
 						"example": "\"cookie\"",
-						"description": "The session_affinity specifies the type of session affinity the loadbalancer should use unless specified as \"none\" or \"\"(default). The supported types are \"cookie\" and \"ip_cookie\". \"cookie\" - On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. \"ip_cookie\" behaves the same as \"cookie\" except the initial origin selection is stable and based on the client’s ip address.",
+						"description": "The session_affinity specifies the type of session affinity the load balancer should use unless specified as \"none\" or \"\"(default). The supported types are \"cookie\" and \"ip_cookie\". \"cookie\" - On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. \"ip_cookie\" behaves the same as \"cookie\" except the initial origin selection is stable and based on the client’s ip address.",
 						"enum": [
 							"none",
 							"cookie",
@@ -1052,12 +1052,12 @@
 								"default": "none"
 							}
 						},
-						"description": "Configure cookie attributes for session affinity cookie."
+						"description": "Configures cookie attributes for session affinity cookie."
 					},
 					"session_affinity_ttl": {
 						"type": "number",
 						"example": "5000",
-						"description": "Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless session_affinity_ttl is explicitly set. The accepted range of values is between [1800, 604800]. Once the expiry time has been reached, subsequent requests may get sent to a different origin server."
+						"description": "Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless session_affinity_ttl is explicitly set. The accepted range of values is between [1800, 604800]. Once the expiry time has been reached, subsequent requests may get sent to a different origin server."
 					},
 					"random_steering": {
 						"type": "object",
@@ -1078,7 +1078,7 @@
 								"default": 1
 							}
 						},
-						"description": "Configure pool weights for random steering. When steering_policy is 'random', a random pool is selected with probability proportional to these pool weights."
+						"description": "Configures pool weights for random steering. When steering_policy is 'random', a random pool is selected with probability proportional to these pool weights."
 					},
 					"rules": {
 						"type": "array",
@@ -1097,7 +1097,7 @@
 								},
 								"condition": {
 									"type": "string",
-									"description": "The condition expressions to evaluate. If the condition evaluates to true the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions",
+									"description": "The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions",
 									"example": "http.request.uri.path contains \"/testing\""
 								},
 								"overrides": {
@@ -1106,7 +1106,7 @@
 									"properties": {
 										"session_affinity": {
 											"type": "string",
-											"description": "The session_affinity specifies the type of session affinity the loadbalancer should use unless specified as \"none\" or \"\"(default). The supported types are \"cookie\" and \"ip_cookie\". \"cookie\" - On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. \"ip_cookie\" behaves the same as \"cookie\" except the initial origin selection is stable and based on the client’s ip address.",
+											"description": "The session_affinity specifies the type of session affinity the load balancer should use unless specified as \"none\" or \"\"(default). The supported types are \"cookie\" and \"ip_cookie\". \"cookie\" - On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. \"ip_cookie\" behaves the same as \"cookie\" except the initial origin selection is stable and based on the client’s ip address.",
 											"enum": [
 												"none",
 												"cookie",
@@ -1118,12 +1118,12 @@
 										},
 										"session_affinity_ttl": {
 											"type": "number",
-											"description": "Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless session_affinity_ttl is explicitly set. The accepted range of values is between [1800, 604800]. Once the expiry time has been reached, subsequent requests may get sent to a different origin server.",
+											"description": "Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless session_affinity_ttl is explicitly set. The accepted range of values is between [1800, 604800]. Once the expiry time has been reached, subsequent requests may get sent to a different origin server.",
 											"example": 5000
 										},
 										"session_affinity_attributes": {
 											"type": "object",
-											"description": "Configure cookie attributes for session affinity cookie.",
+											"description": "Configures cookie attributes for session affinity cookie.",
 											"properties": {
 												"samesite": {
 													"type": "string",
@@ -1252,7 +1252,7 @@
 										},
 										"random_steering": {
 											"type": "object",
-											"description": "Configure pool weights for random steering. When steering_policy is 'random', a random pool is selected with probability proportional to these pool weights.",
+											"description": "Configures pool weights for random steering. When steering_policy is 'random', a random pool is selected with probability proportional to these pool weights.",
 											"properties": {
 												"pool_weights": {
 													"type": "object",
@@ -1288,7 +1288,7 @@
 								},
 								"terminates": {
 									"type": "boolean",
-									"description": "If this rule's condition is true, terminates causes rule evaluation to stop after processing this rule.",
+									"description": "If this rule's condition is true, this causes rule evaluation to stop after processing this rule.",
 									"default": false
 								},
 								"fixed_response": {
@@ -1351,7 +1351,7 @@
 		},
 		{
 			"title": "Delete Load Balancer",
-			"description": "Delete a configured load balancer",
+			"description": "Delete a configured load balancer.",
 			"rel": "self",
 			"href": "zones/{#/definitions/identifier}/load_balancers/{#/definitions/identifier}",
 			"method": "DELETE",
@@ -1472,7 +1472,7 @@
 			"session_affinity": {
 				"type": "string",
 				"example": "\"cookie\"",
-				"description": "The session_affinity specifies the type of session affinity the loadbalancer should use unless specified as \"none\" or \"\"(default). The supported types are \"cookie\" and \"ip_cookie\". \"cookie\" - On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. \"ip_cookie\" behaves the same as \"cookie\" except the initial origin selection is stable and based on the client’s ip address.",
+				"description": "The session_affinity specifies the type of session affinity the load balancer should use unless specified as \"none\" or \"\"(default). The supported types are \"cookie\" and \"ip_cookie\". \"cookie\" - On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. \"ip_cookie\" behaves the same as \"cookie\" except the initial origin selection is stable and based on the client’s ip address.",
 				"enum": [
 					"none",
 					"cookie",
@@ -1525,12 +1525,12 @@
 						"default": "none"
 					}
 				},
-				"description": "Configure cookie attributes for session affinity cookie."
+				"description": "Configures cookie attributes for session affinity cookie."
 			},
 			"session_affinity_ttl": {
 				"type": "number",
 				"example": "5000",
-				"description": "Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless session_affinity_ttl is explicitly set. The accepted range of values is between [1800, 604800]. Once the expiry time has been reached, subsequent requests may get sent to a different origin server."
+				"description": "Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless session_affinity_ttl is explicitly set. The accepted range of values is between [1800, 604800]. Once the expiry time has been reached, subsequent requests may get sent to a different origin server."
 			},
 			"random_steering": {
 				"type": "object",
@@ -1551,7 +1551,7 @@
 						"default": 1
 					}
 				},
-				"description": "Configure pool weights for random steering. When steering_policy is 'random', a random pool is selected with probability proportional to these pool weights."
+				"description": "Configures pool weights for random steering. When steering_policy is 'random', a random pool is selected with probability proportional to these pool weights."
 			},
 			"rules": {
 				"type": "array",
@@ -1570,7 +1570,7 @@
 						},
 						"condition": {
 							"type": "string",
-							"description": "The condition expressions to evaluate. If the condition evaluates to true the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions",
+							"description": "The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions",
 							"example": "http.request.uri.path contains \"/testing\""
 						},
 						"overrides": {
@@ -1579,7 +1579,7 @@
 							"properties": {
 								"session_affinity": {
 									"type": "string",
-									"description": "The session_affinity specifies the type of session affinity the loadbalancer should use unless specified as \"none\" or \"\"(default). The supported types are \"cookie\" and \"ip_cookie\". \"cookie\" - On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. \"ip_cookie\" behaves the same as \"cookie\" except the initial origin selection is stable and based on the client’s ip address.",
+									"description": "The session_affinity specifies the type of session affinity the load balancer should use unless specified as \"none\" or \"\"(default). The supported types are \"cookie\" and \"ip_cookie\". \"cookie\" - On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. \"ip_cookie\" behaves the same as \"cookie\" except the initial origin selection is stable and based on the client’s ip address.",
 									"enum": [
 										"none",
 										"cookie",
@@ -1591,12 +1591,12 @@
 								},
 								"session_affinity_ttl": {
 									"type": "number",
-									"description": "Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless session_affinity_ttl is explicitly set. The accepted range of values is between [1800, 604800]. Once the expiry time has been reached, subsequent requests may get sent to a different origin server.",
+									"description": "Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless session_affinity_ttl is explicitly set. The accepted range of values is between [1800, 604800]. Once the expiry time has been reached, subsequent requests may get sent to a different origin server.",
 									"example": 5000
 								},
 								"session_affinity_attributes": {
 									"type": "object",
-									"description": "Configure cookie attributes for session affinity cookie.",
+									"description": "Configures cookie attributes for session affinity cookie.",
 									"properties": {
 										"samesite": {
 											"type": "string",
@@ -1725,7 +1725,7 @@
 								},
 								"random_steering": {
 									"type": "object",
-									"description": "Configure pool weights for random steering. When steering_policy is 'random', a random pool is selected with probability proportional to these pool weights.",
+									"description": "Configures pool weights for random steering. When steering_policy is 'random', a random pool is selected with probability proportional to these pool weights.",
 									"properties": {
 										"pool_weights": {
 											"type": "object",
@@ -1761,7 +1761,7 @@
 						},
 						"terminates": {
 							"type": "boolean",
-							"description": "If this rule's condition is true, terminates causes rule evaluation to stop after processing this rule.",
+							"description": "If this rule's condition is true, this causes rule evaluation to stop after processing this rule.",
 							"default": false
 						},
 						"fixed_response": {

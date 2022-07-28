@@ -6,7 +6,7 @@
 	"links": [
 		{
 			"title": "List Monitors",
-			"description": "List configured monitors for an account",
+			"description": "List configured monitors for an account.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/account_identifier}/load_balancers/monitors",
 			"method": "GET",
@@ -18,7 +18,7 @@
 		},
 		{
 			"title": "Create Monitor",
-			"description": "Create a configured monitor",
+			"description": "Create a configured monitor.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/account_identifier}/load_balancers/monitors",
 			"method": "POST",
@@ -59,7 +59,7 @@
 					"path": {
 						"type": "string",
 						"example": "\"/health\"",
-						"description": "The endpoint path to health check against. This parameter is only valid for HTTP and HTTPS monitors.",
+						"description": "The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.",
 						"default": "/"
 					},
 					"header": {
@@ -70,7 +70,7 @@
 					"port": {
 						"type": "integer",
 						"example": "8080",
-						"description": "Port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
+						"description": "The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
 						"default": 0
 					},
 					"timeout": {
@@ -159,7 +159,7 @@
 		},
 		{
 			"title": "Monitor Details",
-			"description": "List a single configured monitor for an account",
+			"description": "List a single configured monitor for an account.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/load_balancers/monitors/{#/definitions/identifier}",
 			"method": "GET",
@@ -171,7 +171,7 @@
 		},
 		{
 			"title": "Update Monitor",
-			"description": "Modify a configured monitor",
+			"description": "Modify a configured monitor.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/load_balancers/monitors/{#/definitions/identifier}",
 			"method": "PUT",
@@ -212,7 +212,7 @@
 					"path": {
 						"type": "string",
 						"example": "\"/health\"",
-						"description": "The endpoint path to health check against. This parameter is only valid for HTTP and HTTPS monitors.",
+						"description": "The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.",
 						"default": "/"
 					},
 					"header": {
@@ -223,7 +223,7 @@
 					"port": {
 						"type": "integer",
 						"example": "8080",
-						"description": "Port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
+						"description": "The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
 						"default": 0
 					},
 					"timeout": {
@@ -353,7 +353,7 @@
 					"path": {
 						"type": "string",
 						"example": "\"/health\"",
-						"description": "The endpoint path to health check against. This parameter is only valid for HTTP and HTTPS monitors.",
+						"description": "The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.",
 						"default": "/"
 					},
 					"header": {
@@ -364,7 +364,7 @@
 					"port": {
 						"type": "integer",
 						"example": "8080",
-						"description": "Port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
+						"description": "The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
 						"default": 0
 					},
 					"timeout": {
@@ -452,7 +452,7 @@
 		},
 		{
 			"title": "Delete Monitor",
-			"description": "Delete a configured monitor",
+			"description": "Delete a configured monitor.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/load_balancers/monitors/{#/definitions/identifier}",
 			"method": "DELETE",
@@ -500,7 +500,7 @@
 					"path": {
 						"type": "string",
 						"example": "\"/health\"",
-						"description": "The endpoint path to health check against. This parameter is only valid for HTTP and HTTPS monitors.",
+						"description": "The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.",
 						"default": "/"
 					},
 					"header": {
@@ -511,7 +511,7 @@
 					"port": {
 						"type": "integer",
 						"example": "8080",
-						"description": "Port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
+						"description": "The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
 						"default": 0
 					},
 					"timeout": {
@@ -578,7 +578,7 @@
 		},
 		{
 			"title": "Preview Result",
-			"description": "Get the result of a previous preview operation using the provided preview_id",
+			"description": "Get the result of a previous preview operation using the provided preview_id.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/load_balancers/preview/{#/definitions/preview_id}",
 			"method": "GET",
@@ -600,7 +600,7 @@
 		},
 		{
 			"title": "List Monitor References",
-			"description": "Get the list of resources that reference the provided monitor",
+			"description": "Get the list of resources that reference the provided monitor.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/load_balancers/monitors/{#/definitions/identifier}/references",
 			"method": "GET",
@@ -672,7 +672,7 @@
 			"path": {
 				"type": "string",
 				"example": "\"/health\"",
-				"description": "The endpoint path to health check against. This parameter is only valid for HTTP and HTTPS monitors.",
+				"description": "The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.",
 				"default": "/"
 			},
 			"header": {
@@ -683,7 +683,7 @@
 			"port": {
 				"type": "integer",
 				"example": "8080",
-				"description": "Port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
+				"description": "The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).",
 				"default": 0
 			},
 			"timeout": {

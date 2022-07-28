@@ -6,7 +6,7 @@
 	"links": [
 		{
 			"title": "Create downloads",
-			"description": "Create downloads for a video, this can only be done if the video is ready to view.",
+			"description": "Creates a download for a video when a video is ready to view.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/stream/{#/definitions/video_identifier}/downloads",
 			"method": "POST",
@@ -18,7 +18,7 @@
 		},
 		{
 			"title": "List downloads",
-			"description": "View the downloads created for this video",
+			"description": "Lists the downloads created for a video.",
 			"href": "accounts/{#/definitions/account_identifier}/stream/{#/definitions/video_identifier}/downloads",
 			"method": "GET",
 			"rel": "self",
@@ -63,7 +63,7 @@
 						"readOnly": true
 					}
 				},
-				"description": "A downloadable mp4"
+				"description": "A downloadable MP4 file."
 			}
 		},
 		"required_props": [],

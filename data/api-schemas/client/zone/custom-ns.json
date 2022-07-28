@@ -18,8 +18,7 @@
 			},
 			"cfPermissionsRequired": {
 				"enum": [
-					"#dns_records:read",
-					"#organization:read"
+					"#zone:read"
 				]
 			},
 			"html_id": "account-level-custom-nameservers-usage-for-a-zone-get-account-custom-nameserver-related-zone-metadata",
@@ -41,8 +40,7 @@
 			},
 			"cfPermissionsRequired": {
 				"enum": [
-					"#dns_records:edit",
-					"#organization:edit"
+					"#zone:edit"
 				]
 			},
 			"html_id": "account-level-custom-nameservers-usage-for-a-zone-set-account-custom-nameserver-related-zone-metadata",
