@@ -38172,32 +38172,8 @@
 										},
 										{
 											"properties": {
-												"result_info": {
-													"type": "object",
-													"properties": {
-														"page": {
-															"example": 1
-														},
-														"per_page": {
-															"example": 100
-														},
-														"count": {
-															"example": 1
-														},
-														"total_count": {
-															"example": 1
-														}
-													}
-												}
-											}
-										},
-										{
-											"properties": {
 												"result": {
-													"type": "array",
-													"items": {
-														"type": "object"
-													}
+													"type": "object"
 												}
 											}
 										}
@@ -38366,6 +38342,81 @@
 				"responses": {
 					"200": {
 						"description": "Get deployments response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user~1audit_logs/get/responses/200/content/application~1json/schema/oneOf/1"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"type": "object",
+													"properties": {
+														"page": {
+															"example": 1
+														},
+														"per_page": {
+															"example": 100
+														},
+														"count": {
+															"example": 1
+														},
+														"total_count": {
+															"example": 1
+														}
+													}
+												}
+											}
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "array",
+													"items": {
+														"type": "object"
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				]
+			},
+			"post": {
+				"summary": "Create deployment",
+				"description": "Start a new deployment from production. The repo/account must have been authorized through the Pages UI dash before.",
+				"parameters": [
+					{
+						"name": "project_name",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1deployments/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1deployments/get/parameters/1/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Create deployment response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -38624,57 +38675,6 @@
 														"8000035": "Cannot delete aliased deployment",
 														"8000036": "Account has been blocked"
 													}
-												}
-											}
-										}
-									]
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"api_key": [],
-						"api_email": []
-					}
-				]
-			},
-			"post": {
-				"summary": "Create deployment",
-				"description": "Start a new deployment from production. The repo/account must have been authorized through the Pages UI dash before.",
-				"parameters": [
-					{
-						"name": "project_name",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1deployments/get/parameters/0/schema"
-						}
-					},
-					{
-						"name": "account_identifier",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1deployments/get/parameters/1/schema"
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "Create deployment response",
-						"content": {
-							"application/json": {
-								"schema": {
-									"allOf": [
-										{
-											"$ref": "#/paths/~1user~1audit_logs/get/responses/200/content/application~1json/schema/oneOf/1"
-										},
-										{
-											"properties": {
-												"result": {
-													"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1deployments/get/responses/200/content/application~1json/schema/allOf/1/properties/result"
 												}
 											}
 										}
@@ -39065,11 +39065,22 @@
 				}
 			}
 		},
-		"/accounts/{account_identifier}/pages/projects/{project_name}/deployments/{deployment_identifier}/history/:deployment_stage_name/logs": {
+		"/accounts/{account_identifier}/pages/projects/{project_name}/deployments/{deployment_identifier}/history/{deployment_stage_name}/logs": {
 			"get": {
 				"summary": "Get deployment stage logs",
 				"description": "Fetch deploy logs",
 				"parameters": [
+					{
+						"name": "deployment_stage_name",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"description": "Deployment stage name",
+							"type": "string",
+							"pattern": "queued|initialize|clone_repo|build|deploy",
+							"example": "deploy"
+						}
+					},
 					{
 						"name": "deployment_identifier",
 						"in": "path",
@@ -40209,7 +40220,7 @@
 				}
 			}
 		},
-		"/accounts/{account_identifier}/pages/projects/{project_name}/{domain_name}": {
+		"/accounts/{account_identifier}/pages/projects/{project_name}/domains/{domain_name}": {
 			"get": {
 				"summary": "Get domain",
 				"description": "Fetch a single domain",
@@ -40271,9 +40282,7 @@
 						"api_email": []
 					}
 				]
-			}
-		},
-		"/accounts/{account_identifier}/pages/projects/{project_name}/domains/{domain_name}": {
+			},
 			"patch": {
 				"summary": "Patch domain",
 				"description": "Retry the validation status of a single domain",
@@ -40283,10 +40292,7 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "Name of the domain",
-							"type": "string",
-							"pattern": "^[a-z0-9][a-z0-9-]*$",
-							"example": "this-is-my-domain-01.com"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1domains~1%7Bdomain_name%7D/get/parameters/0/schema"
 						}
 					},
 					{
@@ -40294,7 +40300,7 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1deployments/get/parameters/0/schema"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1domains~1%7Bdomain_name%7D/get/parameters/1/schema"
 						}
 					},
 					{
@@ -40302,7 +40308,7 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1deployments/get/parameters/1/schema"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1domains~1%7Bdomain_name%7D/get/parameters/2/schema"
 						}
 					}
 				],
@@ -40312,18 +40318,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
-										{
-											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object"
-												}
-											}
-										}
-									]
+									"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1domains~1%7Bdomain_name%7D/get/responses/200/content/application~1json/schema"
 								}
 							}
 						}
@@ -40351,7 +40346,7 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1domains~1%7Bdomain_name%7D/patch/parameters/0/schema"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1domains~1%7Bdomain_name%7D/get/parameters/0/schema"
 						}
 					},
 					{
@@ -40359,7 +40354,7 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1domains~1%7Bdomain_name%7D/patch/parameters/1/schema"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1domains~1%7Bdomain_name%7D/get/parameters/1/schema"
 						}
 					},
 					{
@@ -40367,7 +40362,7 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1domains~1%7Bdomain_name%7D/patch/parameters/2/schema"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1pages~1projects~1%7Bproject_name%7D~1domains~1%7Bdomain_name%7D/get/parameters/2/schema"
 						}
 					}
 				],
