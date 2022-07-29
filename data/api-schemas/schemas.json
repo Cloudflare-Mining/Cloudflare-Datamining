@@ -36442,8 +36442,8 @@
 		},
 		"/accounts/{account_identifier}/images/v1": {
 			"post": {
-				"summary": "Upload an image using a single HTTP request",
-				"description": "Upload an image with up to 10 Megabytes using a single HTTP POST (multipart/form-data) request.",
+				"summary": "Upload an image via URL",
+				"description": "Upload an image via URL with up to 10 Megabytes using a single HTTP POST (multipart/form-data) request.",
 				"parameters": [
 					{
 						"name": "account_identifier",
@@ -36460,117 +36460,18 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Upload an image using a single HTTP request response",
+						"description": "Upload an image via URL response",
 						"content": {
 							"application/json": {
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/paths/~1user~1tokens~1permission_groups/get/responses/200/content/application~1json/schema/allOf/0"
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
 										},
 										{
 											"properties": {
 												"result": {
-													"items": {
-														"allOf": [
-															{
-																"type": "object",
-																"properties": {
-																	"id": {
-																		"description": "Image unique identifier",
-																		"example": "ZxR0pLaXRldlBtaFhhO2FiZGVnaA",
-																		"maxLength": 32,
-																		"readOnly": true,
-																		"type": "string"
-																	},
-																	"filename": {
-																		"description": "Image file name",
-																		"example": "avatar.png",
-																		"maxLength": 32,
-																		"readOnly": true,
-																		"type": "string"
-																	},
-																	"metadata": {
-																		"description": "User modifyable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes.",
-																		"example": {
-																			"meta": "metaID"
-																		},
-																		"type": "object"
-																	},
-																	"requireSignedURLs": {
-																		"description": "Indicates whether the image can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the image.",
-																		"type": "boolean",
-																		"default": false,
-																		"example": true
-																	},
-																	"variants": {
-																		"description": "Object specifying available variants for an image.",
-																		"properties": {
-																			"thumbnail": {
-																				"description": "URI to thumbnail variant for an image.",
-																				"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/thumbnail",
-																				"format": "uri",
-																				"readOnly": true,
-																				"type": "string"
-																			},
-																			"hero": {
-																				"description": "URI to hero variant for an image.",
-																				"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/hero",
-																				"format": "uri",
-																				"readOnly": true,
-																				"type": "string"
-																			},
-																			"original": {
-																				"description": "URI to original variant for an image.",
-																				"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/original",
-																				"format": "uri",
-																				"readOnly": true,
-																				"type": "string"
-																			}
-																		},
-																		"readOnly": true
-																	},
-																	"uploaded": {
-																		"description": "When the media item was uploaded.",
-																		"example": "2014-01-02T02:20:00+00:00",
-																		"format": "date-time",
-																		"readOnly": true,
-																		"type": "string"
-																	}
-																},
-																"x-cfDeprecations": {
-																	"direct_upload_v1_deprecation": {
-																		"id": "direct_upload_v1_deprecation",
-																		"description": "Use direct_upload v2 instead: https://api.cloudflare.com/#cloudflare-images-create-authenticated-direct-upload-url-v2. It allows you to control metadata, access policy, and returns the same image ID an image will be accessible with.",
-																		"eol": "2022-07-01",
-																		"display": true
-																	}
-																},
-																"x-cfLinkErrors": {
-																	"5400": "Bad Request.",
-																	"5401": "Variant <name> not found.",
-																	"5403": "The given account is not valid or is not authorized to access this service.",
-																	"5404": "Image not found.",
-																	"5408": "Client was sending upload too slowly.",
-																	"5413": "Maximum image size of 10 MB is reached",
-																	"5415": "Images must be uploaded as a form, not as raw image data. Please use multipart/form-data format.",
-																	"5433": "Request has been aborted by the client.",
-																	"5450": "Error while receiving upload.",
-																	"5453": "The given account has reached a service limit.",
-																	"5455": "Unsupported image format.",
-																	"5500": "Internal Server Error.",
-																	"5503": "Server Unavailable.",
-																	"5540": "Error received from the storage.",
-																	"5541": "Error while purging cache.",
-																	"5542": "Error while loading account.",
-																	"5543": "Error during audit.",
-																	"5544": "Error during abuse operation.",
-																	"5550": "Internal Server Error."
-																}
-															}
-														]
-													},
-													"type": "array"
+													"type": "object"
 												}
 											}
 										}
@@ -36593,13 +36494,13 @@
 							"schema": {
 								"type": "object",
 								"required": [
-									"file"
+									"url"
 								],
 								"properties": {
-									"file": {
+									"url": {
 										"type": "string",
-										"description": "Image file to upload.",
-										"example": "@/Users/kyle/Desktop/logo.png"
+										"description": "A URL to fetch an image from origin.",
+										"example": "https://example.com/path/to/logo.png"
 									},
 									"requireSignedURLs": {
 										"type": "boolean",
@@ -36608,14 +36509,8 @@
 										"default": false
 									},
 									"metadata": {
-										"description": "User modifyable key-value store. Can use used for keeping references to another system of record for managing images.",
+										"description": "User modifiable key-value store. Can use used for keeping references to another system of record for managing images.",
 										"type": "object"
-									},
-									"url": {
-										"type": "string",
-										"description": "A URL to fetch an image from origin. Mutually exclusive with `file` parameter.",
-										"example": "https://example.com/path/to/image.jpeg",
-										"default": false
 									}
 								}
 							}
@@ -36650,7 +36545,107 @@
 											"properties": {
 												"result": {
 													"items": {
-														"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1images~1v1/post/responses/200/content/application~1json/schema/allOf/1/properties/result/items/allOf/0"
+														"type": "object",
+														"properties": {
+															"id": {
+																"description": "Image unique identifier",
+																"example": "107b9558-dd06-4bbd-5fef-9c2c16bb7900",
+																"maxLength": 32,
+																"readOnly": true,
+																"type": "string"
+															},
+															"filename": {
+																"description": "Image file name",
+																"example": "logo.png",
+																"maxLength": 32,
+																"readOnly": true,
+																"type": "string"
+															},
+															"metadata": {
+																"description": "User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes.",
+																"example": {
+																	"key": "value"
+																},
+																"type": "object"
+															},
+															"requireSignedURLs": {
+																"description": "Indicates whether the image can be a accessed only using it's UID. If set to true, a signed token needs to be generated with a signing key to view the image.",
+																"type": "boolean",
+																"default": false,
+																"example": true
+															},
+															"variants": {
+																"description": "Object specifying available variants for an image.",
+																"type": "array",
+																"items": {
+																	"anyOf": [
+																		{
+																			"description": "URI to thumbnail variant for an image.",
+																			"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/thumbnail",
+																			"format": "uri",
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		{
+																			"description": "URI to hero variant for an image.",
+																			"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/hero",
+																			"format": "uri",
+																			"readOnly": true,
+																			"type": "string"
+																		},
+																		{
+																			"description": "URI to original variant for an image.",
+																			"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/original",
+																			"format": "uri",
+																			"readOnly": true,
+																			"type": "string"
+																		}
+																	]
+																},
+																"example": [
+																	"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/thumbnail",
+																	"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/hero",
+																	"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/original"
+																],
+																"readOnly": true
+															},
+															"uploaded": {
+																"description": "When the media item was uploaded.",
+																"example": "2014-01-02T02:20:00+00:00",
+																"format": "date-time",
+																"readOnly": true,
+																"type": "string"
+															}
+														},
+														"x-cfDeprecations": {
+															"direct_upload_v1_deprecation": {
+																"id": "direct_upload_v1_deprecation",
+																"description": "Use direct_upload v2 instead: https://api.cloudflare.com/#cloudflare-images-create-authenticated-direct-upload-url-v2. It allows you to control metadata, access policy, and returns the same image ID an image will be accessible with.",
+																"eol": "2022-07-01",
+																"display": true
+															}
+														},
+														"x-cfLinkErrors": {
+															"5400": "Bad Request.",
+															"5401": "Variant <name> not found.",
+															"5403": "The given account is not valid or is not authorized to access this service.",
+															"5404": "Image not found.",
+															"5408": "Client was sending upload too slowly.",
+															"5413": "Maximum image size of 10 MB is reached",
+															"5415": "Images must be uploaded as a form, not as raw image data. Please use multipart/form-data format.",
+															"5433": "Request has been aborted by the client.",
+															"5450": "Error while receiving upload.",
+															"5453": "The given account has reached a service limit.",
+															"5455": "Unsupported image format.",
+															"5500": "Internal Server Error.",
+															"5503": "Server Unavailable.",
+															"5540": "Error received from the storage.",
+															"5541": "Error while purging cache.",
+															"5542": "Error while loading account.",
+															"5543": "Error during audit.",
+															"5544": "Error during abuse operation.",
+															"5550": "Internal Server Error."
+														}
 													},
 													"type": "array"
 												}
@@ -36681,7 +36676,7 @@
 						"required": true,
 						"schema": {
 							"description": "Image unique identifier",
-							"example": "ZxR0pLaXRldlBtaFhhO2FiZGVnaA",
+							"example": "107b9558-dd06-4bbd-5fef-9c2c16bb7900",
 							"maxLength": 32,
 							"readOnly": true,
 							"type": "string"
@@ -36816,7 +36811,23 @@
 					"200": {
 						"description": "Delete image response",
 						"content": {
-							"application/json": {}
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"example": {},
+													"type": "object"
+												}
+											}
+										}
+									]
+								}
+							}
 						}
 					}
 				},
@@ -36873,7 +36884,7 @@
 														},
 														"id": {
 															"description": "Image unique identifier",
-															"example": "ZxR0pLaXRldlBtaFhhO2FiZGVnaA",
+															"example": "107b9558-dd06-4bbd-5fef-9c2c16bb7900",
 															"maxLength": 32,
 															"readOnly": true,
 															"type": "string"
@@ -36985,7 +36996,7 @@
 				"requestBody": {
 					"required": true,
 					"content": {
-						"application/json": {
+						"multipart/form-data": {
 							"schema": {
 								"type": "object",
 								"properties": {
@@ -37024,7 +37035,7 @@
 						"required": true,
 						"schema": {
 							"description": "Image unique identifier",
-							"example": "ZxR0pLaXRldlBtaFhhO2FiZGVnaA",
+							"example": "107b9558-dd06-4bbd-5fef-9c2c16bb7900",
 							"maxLength": 32,
 							"readOnly": true,
 							"type": "string"
@@ -37157,14 +37168,8 @@
 												"result": {
 													"type": "object",
 													"properties": {
-														"id": {
-															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1images~1v1~1variants/post/requestBody/content/application~1json/schema/properties/id"
-														},
-														"options": {
-															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1images~1v1~1variants/post/requestBody/content/application~1json/schema/properties/options"
-														},
-														"neverRequireSignedURLs": {
-															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1images~1v1~1variants/post/requestBody/content/application~1json/schema/properties/neverRequireSignedURLs"
+														"variant": {
+															"type": "object"
 														}
 													}
 												}
@@ -37190,7 +37195,9 @@
 								"type": "object",
 								"properties": {
 									"id": {
-										"example": "name-of-the-variant"
+										"example": "hero",
+										"pattern": "^[a-zA-Z0-9]$",
+										"maxLength": 99
 									},
 									"options": {
 										"description": "Allows you to define image resizing sizes for different use cases.",
@@ -37273,17 +37280,28 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "object",
-									"properties": {
-										"variants": {
-											"type": "object",
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user~1tokens~1permission_groups/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
 											"properties": {
-												"name-of-the-variant": {
-													"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1images~1v1~1variants/post/requestBody/content/application~1json/schema"
+												"result": {
+													"type": "object",
+													"properties": {
+														"variants": {
+															"type": "object",
+															"properties": {
+																"hero": {
+																	"type": "object"
+																}
+															}
+														}
+													}
 												}
 											}
 										}
-									}
+									]
 								}
 							}
 						}
@@ -37307,7 +37325,9 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"example": "name-of-the-variant"
+							"example": "hero",
+							"pattern": "^[a-zA-Z0-9]$",
+							"maxLength": 99
 						}
 					},
 					{
@@ -37325,27 +37345,23 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"type": "object",
-									"properties": {
-										"variant": {
-											"type": "object",
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
 											"properties": {
-												"id": {
-													"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1images~1v1~1variants~1%7Bidentifier%7D/get/parameters/0/schema"
-												},
-												"options": {
-													"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1images~1v1~1variants~1%7Bidentifier%7D/patch/requestBody/content/application~1json/schema/properties/options"
-												},
-												"neverRequireSignedURLs": {
-													"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1images~1v1~1variants~1%7Bidentifier%7D/patch/requestBody/content/application~1json/schema/properties/neverRequireSignedURLs"
+												"result": {
+													"type": "object",
+													"properties": {
+														"variant": {
+															"type": "object"
+														}
+													}
 												}
-											},
-											"required": [
-												"id",
-												"options"
-											]
+											}
 										}
-									}
+									]
 								}
 							}
 						}
@@ -37385,29 +37401,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
-										{
-											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
-										},
-										{
-											"properties": {
-												"result": {
-													"type": "object",
-													"properties": {
-														"id": {
-															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1images~1v1~1variants~1%7Bidentifier%7D/get/parameters/0/schema"
-														},
-														"options": {
-															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1images~1v1~1variants~1%7Bidentifier%7D/patch/requestBody/content/application~1json/schema/properties/options"
-														},
-														"neverRequireSignedURLs": {
-															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1images~1v1~1variants~1%7Bidentifier%7D/patch/requestBody/content/application~1json/schema/properties/neverRequireSignedURLs"
-														}
-													}
-												}
-											}
-										}
-									]
+									"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1images~1v1~1variants~1%7Bidentifier%7D/get/responses/200/content/application~1json/schema"
 								}
 							}
 						}
@@ -37521,8 +37515,8 @@
 										{
 											"properties": {
 												"result": {
-													"example": "",
-													"type": "string"
+													"example": {},
+													"type": "object"
 												}
 											}
 										}
@@ -37573,21 +37567,26 @@
 										{
 											"properties": {
 												"result": {
-													"type": "array",
-													"items": {
-														"type": "object",
-														"properties": {
-															"name": {
-																"description": "Key name",
-																"example": "default",
-																"readOnly": true,
-																"type": "string"
-															},
-															"value": {
-																"description": "Key value",
-																"example": "Oix0bbNaT8Rge9PuyxUBrjI6zrgnsyJ5=",
-																"readOnly": true,
-																"type": "string"
+													"type": "object",
+													"properties": {
+														"keys": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"name": {
+																		"description": "Key name",
+																		"example": "default",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"value": {
+																		"description": "Key value",
+																		"example": "Oix0bbNaT8Rge9PuyxUBrjI6zrgnsyJ5=",
+																		"readOnly": true,
+																		"type": "string"
+																	}
+																}
 															}
 														}
 													}
