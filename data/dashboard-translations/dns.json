@@ -99,7 +99,7 @@
 	"dns.dnssec.status.cancelling.message": "Your DNSSEC setup will be disabled as soon as we detect that the DS record has been removed from your registrar.",
 	"dns.dnssec.status.error.message": "The DS added to your registrar is incorrect! Please check the DS record below and make sure you've added the same record to your registrar.",
 	"dns.dnssec.status.pending.message": "DNSSEC is pending while we wait for the DS to be added to your registrar. This usually takes ten minutes, but can take up to an hour.",
-	"dns.dnssec.status.pending.warning": "This zone is in a pending state and contains proxied records. Until the zone is activated, DNS queries to proxied records will expose the origin IP / hostname and traffic cannot be proxied through Cloudflare. For more information refer to [Limitations for pending domains](https://developers.cloudflare.com/dns/manage-dns-records/reference/proxied-dns-records#pending-domains).",
+	"dns.dnssec.status.pending.warning": "Cloudflare protection for your domain is in a pending state while we verify ownership. This could take up to 24 hours to complete. Learn more about [pending domains](https://developers.cloudflare.com/dns/manage-dns-records/reference/proxied-dns-records#pending-domains).",
 	"dns.dnssec.status.registrar.pending.message": "DNSSEC is pending while we automatically add the DS record on your domain.",
 	"dns.dnssec.timed_out": "DNSSEC is taking a long time to propagate to the edge. Please come back later.",
 	"dns.dnssec.title": "DNSSEC",

@@ -1013,7 +1013,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					}
 				})(Nt),
 				ge = e("../../../../node_modules/@cloudflare/gates-devtools-ui/dist/index.mjs"),
-				Q = e("../react/app/components/LoadingSuspense.tsx"),
+				Y = e("../react/app/components/LoadingSuspense.tsx"),
 				ke = e("../../../../node_modules/@cloudflare/gates-react-redux/dist/index.mjs"),
 				nt = a().lazy(function() {
 					return e.e(40453).then(e.bind(e, "../react/common/components/DevPanel/DevPanel.tsx"))
@@ -1023,7 +1023,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						sdk: (0, ke._8)()
 					}, a().createElement(ge.OV, {
 						searchParamName: "devPanel"
-					}, a().createElement(Q.Z, null, a().createElement(nt, null))))
+					}, a().createElement(Y.Z, null, a().createElement(nt, null))))
 				},
 				xt = ft,
 				Ct = e("../react/common/components/EmptyPage.js"),
@@ -3500,7 +3500,7 @@ Commit \u2014 `).concat(w.commit)
 									render: function(ca) {
 										var $r = ca.match,
 											Xd = ca.history;
-										return a().createElement(Q.Z, null, a().createElement(hc, {
+										return a().createElement(Y.Z, null, a().createElement(hc, {
 											accountId: $r.params.accountId,
 											history: Xd
 										}))
@@ -4264,7 +4264,7 @@ Commit \u2014 `).concat(w.commit)
 								return a().createElement(a().Fragment, null, !Nc && a().createElement(nr.ZP, null), a().createElement(_a, {
 									hasSidebarNav: !Nc,
 									isSidebarNavOpen: qn
-								}, a().createElement(a().Fragment, null, a().createElement(Q.Z, null, a().createElement(r.rs, null, a().createElement(r.l_, {
+								}, a().createElement(a().Fragment, null, a().createElement(Y.Z, null, a().createElement(r.rs, null, a().createElement(r.l_, {
 									from: "/*/",
 									to: "/*",
 									exact: !0,
@@ -5424,7 +5424,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					return pd(K.hash)
 				})
 			}
-			var Y = e("../../../common/util/util-en-garde/src/index.ts"),
+			var Q = e("../../../common/util/util-en-garde/src/index.ts"),
 				vd = e("../../../../node_modules/lodash-es/memoize.js");
 
 			function Wc(K) {
@@ -5448,8 +5448,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					writable: !0
 				}) : K[w] = re, K
 			}
-			var hd = Y.eg.exact(Y.eg.object({
-					_ga: Y.eg.string.optional
+			var hd = Q.eg.exact(Q.eg.object({
+					_ga: Q.eg.string.optional
 				})),
 				bd = (0, vd.Z)(function(K) {
 					try {
@@ -5731,332 +5731,332 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			function Pd(K) {
 				if (Array.isArray(K)) return K
 			}
-			var jd = Y.eg.union([Y.eg.literal("Access Click"), Y.eg.literal("Access click"), Y.eg.literal("Access Promo Banner Click"), Y.eg.literal("ACM Purchase Success"), Y.eg.literal("Activity feed cancel download modal"), Y.eg.literal("Activity feed close event"), Y.eg.literal("Activity feed download"), Y.eg.literal("Activity feed download from modal"), Y.eg.literal("Activity feed expand event"), Y.eg.literal("Activity feed expand matches"), Y.eg.literal("Activity feed next page"), Y.eg.literal("Activity feed open download modal"), Y.eg.literal("Activity feed previous page"), Y.eg.literal("Add API Discovery authorization headers"), Y.eg.literal("add cron trigger"), Y.eg.literal("Add filter"), Y.eg.literal("add payment method"), Y.eg.literal("add kv key-value"), Y.eg.literal("Add site click"), Y.eg.literal("add workers route"), Y.eg.literal("Addon Purchase Success"), Y.eg.literal("agree to terms"), Y.eg.literal("Analytics Secondary Nav - Tab Click"), Y.eg.literal("Analytics Time Period Change"), Y.eg.literal("anonymizers found"), Y.eg.literal("apply recommendation"), Y.eg.literal("API documentation click"), Y.eg.literal("Argo click"), Y.eg.literal("Argo Smart Routing click"), Y.eg.literal("Argo Tiered Caching click"), Y.eg.literal("Attempt TOTP reconfigure"), Y.eg.literal("begin zone activation flow"), Y.eg.literal("begin log stream"), Y.eg.literal("Billing click"), Y.eg.literal("Billing address country select toggle"), Y.eg.literal("Billing email update failure"), Y.eg.literal("Billing email update success"), Y.eg.literal("Billing invoice download success"), Y.eg.literal("Billing invoice download failed"), Y.eg.literal("Button click"), Y.eg.literal("Cache settings click"), Y.eg.literal("cancel add records later"), Y.eg.literal("cancel addon purchase of automatic platform optimization"), Y.eg.literal("cancel notification create"), Y.eg.literal("cancel notification delete"), Y.eg.literal("cancel notification edit"), Y.eg.literal("Canceled rule form"), Y.eg.literal("Canceled subscription"), Y.eg.literal("Certificate Patch click"), Y.eg.literal("change appearance"), Y.eg.literal("change chart time horizon"), Y.eg.literal("change DNS file upload error visibility"), Y.eg.literal("change DNS setup method"), Y.eg.literal("change pagination page shield"), Y.eg.literal("Change Plan Frequency"), Y.eg.literal("change SSL recommender"), Y.eg.literal("Change time window"), Y.eg.literal("change zone setting"), Y.eg.literal("Change zone setup confirmation"), Y.eg.literal("change zone status"), Y.eg.literal("Change zone status confirmation"), Y.eg.literal("check nameservers"), Y.eg.literal("Cipher Suites Link Click"), Y.eg.literal("Click"), Y.eg.literal("click complete purchase button"), Y.eg.literal("click enable argo button"), Y.eg.literal("click 2fa support token link"), Y.eg.literal("click API snippet drawer"), Y.eg.literal("click API shield upsell link"), Y.eg.literal("click configure 2fa support app link"), Y.eg.literal("click continue quick scan"), Y.eg.literal("click documentation link page shield"), Y.eg.literal("click dns completion wizard suggestion"), Y.eg.literal("click dns email security configure"), Y.eg.literal("click dns email security wizard record type"), Y.eg.literal("click edge traffic visualisation link"), Y.eg.literal("click learn more link"), Y.eg.literal("click login help forgot password selection"), Y.eg.literal("click login help forgot email selection"), Y.eg.literal("click login help lost two factor selection"), Y.eg.literal("submit login help form submission"), Y.eg.literal("click payment details"), Y.eg.literal("click multi-sku confirmation"), Y.eg.literal("Click refresh transfer status"), Y.eg.literal("click save whois"), Y.eg.literal("click scan again"), Y.eg.literal("click start stream button"), Y.eg.literal("click end stream button"), Y.eg.literal("click resolve security issue button"), Y.eg.literal("click submit domain categorization feedback"), Y.eg.literal("click to create rate limiting rule for endpoint"), Y.eg.literal("click ticket submission form search result"), Y.eg.literal("click ticket submission form suggestion"), Y.eg.literal("click Top N investigate"), Y.eg.literal("click TSF (2.0) new category"), Y.eg.literal("click TSF (2.0) step"), Y.eg.literal("click TSF (2.0) search result"), Y.eg.literal("click TSF (2.0) suggestion"), Y.eg.literal("click TSF (2.0) suggested help link"), Y.eg.literal("click TSF (2.0) community more help"), Y.eg.literal("toggle TSF (3.0)"), Y.eg.literal("select category TSF (3.0)"), Y.eg.literal("click submit feedback TSF (3.0)"), Y.eg.literal("click coveo recommended resource TSF (3.0)"), Y.eg.literal("activate coveo recommended resource TSF (3.0)"), Y.eg.literal("click helperbot diagnostic report TSF (3.0)"), Y.eg.literal("activate helperbot diagnostic TSF (3.0)"), Y.eg.literal("view system status"), Y.eg.literal("click Start Over TSF (3.0)"), Y.eg.literal("click Account Home TSF (3.0)"), Y.eg.literal("click deflect community TSF (3.0)"), Y.eg.literal("reach ticket end TSF (3.0)"), Y.eg.literal("click waf upgrade banner"), Y.eg.literal("close account select dropdown"), Y.eg.literal("close script modal page shield"), Y.eg.literal("close zone select dropdown"), Y.eg.literal("collapse sidebar nav"), Y.eg.literal("collapse row"), Y.eg.literal("Community page link click"), Y.eg.literal("complete addon purchase of automatic platform optimization"), Y.eg.literal("complete plan change from automatic platform optimization card"), Y.eg.literal("Confirm"), Y.eg.literal("confirm add records later"), Y.eg.literal("confirm auth code"), Y.eg.literal("confirm DNS records"), Y.eg.literal("confirm domain transfer purchase"), Y.eg.literal("confirm zone removal"), Y.eg.literal("contentful banner displayed"), Y.eg.literal("Continue"), Y.eg.literal("continue to final step"), Y.eg.literal("continue to js snippet"), Y.eg.literal("Contract SS - Approver contact details cancel"), Y.eg.literal("Contract SS - Approver contact details submit success"), Y.eg.literal("Contract SS - Payment type cancel"), Y.eg.literal("Contract SS - Payment type selected success"), Y.eg.literal("Contract SS - Legal agreement cancel"), Y.eg.literal("Contract SS - Legal agreement submit success"), Y.eg.literal("Contract SS - Purchase cancel"), Y.eg.literal("Contract SS - Purchase success"), Y.eg.literal("Contract SS - Purchase flow enter"), Y.eg.literal("copy API snippet from drawer"), Y.eg.literal("copy script id page shield"), Y.eg.literal("copy script url page shield"), Y.eg.literal("copy snippet"), Y.eg.literal("copy site tag"), Y.eg.literal("create pages deployment"), Y.eg.literal("create pages project"), Y.eg.literal("create kv namespace"), Y.eg.literal("Create New Rule"), Y.eg.literal("create notification"), Y.eg.literal("create rate limiting rule"), Y.eg.literal("Create Bulk Redirect Rule"), Y.eg.literal("Create Rule (Save)"), Y.eg.literal("Create Rule as Draft (Save as Draft)"), Y.eg.literal("create service"), Y.eg.literal("create user"), Y.eg.literal("create zone"), Y.eg.literal("Create, Update or Edit Save Failures (Builder)"), Y.eg.literal("Create, Update or Edit Save Failures (Editor)"), Y.eg.literal("CT Alerting Change"), Y.eg.literal("Custom Hostname create click"), Y.eg.literal("Custom Hostname create success"), Y.eg.literal("Custom Hostname delete click"), Y.eg.literal("Custom Hostname delete success"), Y.eg.literal("Custom Hostname edit click"), Y.eg.literal("Custom Hostname edit success"), Y.eg.literal("Custom Hostname fallback origin add click"), Y.eg.literal("Custom Hostname fallback origin delete click"), Y.eg.literal("Custom Hostname fallback origin delete success"), Y.eg.literal("Custom Hostname fallback origin edit click"), Y.eg.literal("Custom Hostname fallback origin refresh"), Y.eg.literal("Custom Hostname refresh click"), Y.eg.literal("Custom Trust Store delete click"), Y.eg.literal("Custom Trust Store delete success"), Y.eg.literal("Custom Trust Store upload click"), Y.eg.literal("Custom Trust Store upload success"), Y.eg.literal("Dedicated Certificates click"), Y.eg.literal("Deep Link Cancel"), Y.eg.literal("Deep Link Success"), Y.eg.literal("Delete click"), Y.eg.literal("Delete confirmation"), Y.eg.literal("delete kv key-value"), Y.eg.literal("delete kv namespace"), Y.eg.literal("delete notification"), Y.eg.literal("delete pages project"), Y.eg.literal("Delete Rule"), Y.eg.literal("delete site"), Y.eg.literal("delete service"), Y.eg.literal("Details click"), Y.eg.literal("Dev Mode change"), Y.eg.literal("Dev Mode change confirm"), Y.eg.literal("Diagnostic failure"), Y.eg.literal("Diagnostic result"), Y.eg.literal("disable page shield"), Y.eg.literal("disable pages web analytics"), Y.eg.literal("Disable Rule"), Y.eg.literal("disable sidebar nav"), Y.eg.literal("dislike redirect in the same window"), Y.eg.literal("dismiss notification"), Y.eg.literal("dismiss recommendation"), Y.eg.literal("display recommendation module"), Y.eg.literal("display recommendation"), Y.eg.literal("display record wizard notification"), Y.eg.literal("DNS settings click"), Y.eg.literal("download file"), Y.eg.literal("edge traffic visualisation is shown"), Y.eg.literal("edit contact information"), Y.eg.literal("edit cron trigger"), Y.eg.literal("edit kv key-value"), Y.eg.literal("edit service environment variables"), Y.eg.literal("edit service kv bindings"), Y.eg.literal("edit notification"), Y.eg.literal("edit plan"), Y.eg.literal("edit service r2 bindings"), Y.eg.literal("edit registration details"), Y.eg.literal("edit service to service bindings"), Y.eg.literal("Edit filter"), Y.eg.literal("Edit/Update Rule (Save)"), Y.eg.literal("edit workers route"), Y.eg.literal("Enable automatic https rewrites click"), Y.eg.literal("Enable Optimization"), Y.eg.literal("enable page shield"), Y.eg.literal("enable pages access policy"), Y.eg.literal("enable pages web analytics"), Y.eg.literal("enable workers"), Y.eg.literal("Enable Rule"), Y.eg.literal("enable sidebar nav"), Y.eg.literal("encrypt variable"), Y.eg.literal("enter domain search value"), Y.eg.literal("Error adding or removing records"), Y.eg.literal("Error Analytics link click"), Y.eg.literal("Error when retrieving conflicting records"), Y.eg.literal("Event Names"), Y.eg.literal("exit onboarding guide"), Y.eg.literal("expand account select dropdown"), Y.eg.literal("expand row"), Y.eg.literal("expand sidebar nav"), Y.eg.literal("expand sidebar nav zone selector"), Y.eg.literal("expand sidebar nav account selector"), Y.eg.literal("Expand measurement details"), Y.eg.literal("expand zone select dropdown"), Y.eg.literal("export instant logs"), Y.eg.literal("fail addon purchase of automatic platform optimization"), Y.eg.literal("Failed to Switch to Editor"), Y.eg.literal("Fetched template"), Y.eg.literal("Filter rules"), Y.eg.literal("filter search page shield"), Y.eg.literal("Filter used"), Y.eg.literal("finish loading gates and microfrontends"), Y.eg.literal("finish onboarding guide"), Y.eg.literal("finish onboarding guide later"), Y.eg.literal("Firewall settings click"), Y.eg.literal("Flow authorize"), Y.eg.literal("Flow cancel"), Y.eg.literal("follow contentful banner link"), Y.eg.literal("follow link"), Y.eg.literal("follow policy link"), Y.eg.literal("follow return to icloud link"), Y.eg.literal("follow support link"), Y.eg.literal("follow recommendation CTA"), Y.eg.literal("follower icloud footer link"), Y.eg.literal("Free Long Wait"), Y.eg.literal("Get your API key click"), Y.eg.literal("hover score tooltip page shield"), Y.eg.literal("hover to read threshold tooltip"), Y.eg.literal("hover to read risk identified tooltip"), Y.eg.literal("identify"), Y.eg.literal("Initialization error"), Y.eg.literal("Initialization success"), Y.eg.literal("initiate addon purchase of automatic platform optimization"), Y.eg.literal("initiate plan change from automatic platform optimization card"), Y.eg.literal("initiate wordpress plugin installation for automatic platform optimization"), Y.eg.literal("Interaction with Film Strip"), Y.eg.literal("Interacton with Film Strip"), Y.eg.literal("investigate threat search"), Y.eg.literal("IP settings click"), Y.eg.literal("launch icloud registrar onboarding"), Y.eg.literal("launch onboarding guide"), Y.eg.literal("launch sidebar nav survey"), Y.eg.literal("launch teams dashboard"), Y.eg.literal("launch zone overview"), Y.eg.literal("list kv key-values"), Y.eg.literal("list kv namespaces"), Y.eg.literal("Load Balancing click"), Y.eg.literal("load web analytics overview"), Y.eg.literal("Logpush Create Job - Open modal"), Y.eg.literal("Logpush Create Job - Step Transition"), Y.eg.literal("Logpush Create Job - Success"), Y.eg.literal("Manage click"), Y.eg.literal("manage pages policies"), Y.eg.literal("manage pages members"), Y.eg.literal("manage security insight"), Y.eg.literal("Map detail type changed"), Y.eg.literal("Matches Entitlement Validation error"), Y.eg.literal("migrate waf"), Y.eg.literal("Mixed content notification test 2019-05-03 link click"), Y.eg.literal("multi-sku purchase success"), Y.eg.literal("multi-sku purchase error"), Y.eg.literal("navigate back"), Y.eg.literal("navigate footer nav"), Y.eg.literal("navigate sidebar nav"), Y.eg.literal("navigate topbar"), Y.eg.literal("navigate to community"), Y.eg.literal("navigate to compliance docs"), Y.eg.literal("navigate to contact support"), Y.eg.literal("navigate to enterprise customer portal"), Y.eg.literal("navigate to help center"), Y.eg.literal("navigate to previous onboarding guide task"), Y.eg.literal("Navigate from Optimization to Overview"), Y.eg.literal("Navigate from Overview to Optimization"), Y.eg.literal("Next onboarding guide section"), Y.eg.literal("next page"), Y.eg.literal("Notification dismissed"), Y.eg.literal("Notification displayed"), Y.eg.literal("Notification link click"), Y.eg.literal("Notification load on page confirmation"), Y.eg.literal("observe automatic platform optimization card"), Y.eg.literal("Onboarding guide elapsed time"), Y.eg.literal("open alert modal page shield"), Y.eg.literal("open advanced waiting room sales link"), Y.eg.literal("open argo subscription modal"), Y.eg.literal("open blog post for automatic platform optimization"), Y.eg.literal("open bot management lead generator link"), Y.eg.literal("open security center categorization tooltip"), Y.eg.literal("open create notification page"), Y.eg.literal("open delete notification modal"), Y.eg.literal("open edit notification page"), Y.eg.literal("open help documentation for automatic platform optimization"), Y.eg.literal("open load balancing subscription modal"), Y.eg.literal("open onboarding guide task manually"), Y.eg.literal("Open Modal Enable Access"), Y.eg.literal("open remove zone modal"), Y.eg.literal("open script modal page shield"), Y.eg.literal("open waiting room upsell modal"), Y.eg.literal("open zone plan update modal"), Y.eg.literal("Opened BrowserInsights tab"), Y.eg.literal("opt-in to marketing emails"), Y.eg.literal("Order click"), Y.eg.literal("Order success"), Y.eg.literal("pageview"), Y.eg.literal("Page Rules click"), Y.eg.literal("paginate kv key-values"), Y.eg.literal("paginate kv namespaces"), Y.eg.literal("paginate pages projects"), Y.eg.literal("paginate services"), Y.eg.literal("Pick validity period success"), Y.eg.literal("Plan Purchase Confirmation"), Y.eg.literal("Plan Purchase Failure"), Y.eg.literal("Plan Purchase Success"), Y.eg.literal("Plan Update Confirmation"), Y.eg.literal("Plan Update Failure"), Y.eg.literal("Plan Update Success"), Y.eg.literal("previous page"), Y.eg.literal("Private keys in china toggle"), Y.eg.literal("Product Purchase Cancel"), Y.eg.literal("Product Purchase Failure"), Y.eg.literal("Product Purchase Success"), Y.eg.literal("Product Update Failure"), Y.eg.literal("Product Update Success"), Y.eg.literal("purchase attempt"), Y.eg.literal("purchase completed"), Y.eg.literal("purchase domain transfer"), Y.eg.literal("Purge cache click"), Y.eg.literal("purge everything from cache"), Y.eg.literal("deploy worker script"), Y.eg.literal("Rate Limiting click"), Y.eg.literal("Re-activate zone click"), Y.eg.literal("read kv key-value"), Y.eg.literal("Re-check nameservers click"), Y.eg.literal("recheck zone for automatic platform optimization"), Y.eg.literal("register site"), Y.eg.literal("Remove filter"), Y.eg.literal("remove item from checkout"), Y.eg.literal("remove zone"), Y.eg.literal("rename account"), Y.eg.literal("rename service"), Y.eg.literal("Reprioritize certificate"), Y.eg.literal("Request review click"), Y.eg.literal("review onboarding guide task from summary"), Y.eg.literal("review products"), Y.eg.literal("Rule event"), Y.eg.literal("Rule preview that was denied because of an unsupported field or operator"), Y.eg.literal("Rule preview that was denied because of lack of data"), Y.eg.literal("Rule preview that was denied due to error"), Y.eg.literal("rules configured"), Y.eg.literal("run security scan"), Y.eg.literal("save onboarding guide task"), Y.eg.literal("save contact information"), Y.eg.literal("save payment details"), Y.eg.literal("save registration details"), Y.eg.literal("See more click"), Y.eg.literal("Search"), Y.eg.literal("search auto fetch"), Y.eg.literal("search kv key-values"), Y.eg.literal("search kv namespaces"), Y.eg.literal("search pages projects"), Y.eg.literal("search services"), Y.eg.literal("Select"), Y.eg.literal("select account"), Y.eg.literal("select alert type page shield"), Y.eg.literal("select domain"), Y.eg.literal("select file"), Y.eg.literal("select change nameservers"), Y.eg.literal("Select hostname success"), Y.eg.literal("select payment option"), Y.eg.literal("select payment method"), Y.eg.literal("select product"), Y.eg.literal("select notification type"), Y.eg.literal("select record addition method"), Y.eg.literal("Select timeseries group by"), Y.eg.literal("select transfer registrars"), Y.eg.literal("Select type success"), Y.eg.literal("select workers plan"), Y.eg.literal("select zone"), Y.eg.literal("select zone plan"), Y.eg.literal("Selected advanced GeoIP field in rule builder"), Y.eg.literal("send verification email"), Y.eg.literal("Set Communication Preferences"), Y.eg.literal("Set communication Preferences"), Y.eg.literal("set pages environment variables"), Y.eg.literal("set pages do bindings"), Y.eg.literal("set pages kv bindings"), Y.eg.literal("Setting up"), Y.eg.literal("set up custom domain"), Y.eg.literal("set up subdomain"), Y.eg.literal("show waf upgrade banner"), Y.eg.literal("signed exchanges toggle"), Y.eg.literal("site configured"), Y.eg.literal("skip onboarding guide section"), Y.eg.literal("sort auto fetch"), Y.eg.literal("sort column page shield"), Y.eg.literal("sort services"), Y.eg.literal("Speedheader - change your nameservers click"), Y.eg.literal("Speedtest - Headless Chrome fetch returned error"), Y.eg.literal("Speedtest - tests are completed"), Y.eg.literal("Speedtest - Tests are running"), Y.eg.literal("Speedtest - WPT tests failed"), Y.eg.literal("SPF conflict resolution failure"), Y.eg.literal("SSL click"), Y.eg.literal("SSL Mode Change"), Y.eg.literal("Status page link click"), Y.eg.literal("Stream click"), Y.eg.literal("Stream Signup Success"), Y.eg.literal("Stream Video Upload Failure"), Y.eg.literal("Stream Video Upload Success"), Y.eg.literal("submit DNS entry method"), Y.eg.literal("submit DNS email security wizard"), Y.eg.literal("submit DNS email security wizard failure"), Y.eg.literal("submit domain name"), Y.eg.literal("submit login form"), Y.eg.literal("submit order"), Y.eg.literal("submit signup form"), Y.eg.literal("Successful flow and user redirected"), Y.eg.literal("Successful rule preview"), Y.eg.literal("Suggestions query confirmation"), Y.eg.literal("Survey banner shown"), Y.eg.literal("Survey banner closed"), Y.eg.literal("Survey opened"), Y.eg.literal("switch DNS entry method"), Y.eg.literal("Switch from Editor and Discarded Changes"), Y.eg.literal("Switch to expression editor"), Y.eg.literal("Test"), Y.eg.literal("Ticket form step click"), Y.eg.literal("Ticket submission form button click"), Y.eg.literal("Ticket submission form submit click"), Y.eg.literal("Time range changed"), Y.eg.literal("Toast dismiss click"), Y.eg.literal("Toast load on page confirmation"), Y.eg.literal("Toggle API discovery"), Y.eg.literal("toggle automatic platform optimization feature"), Y.eg.literal("toggle cache by device type"), Y.eg.literal("toggle recommendation module"), Y.eg.literal("Toggled injection"), Y.eg.literal("transfer DNS records"), Y.eg.literal("Transfer out survey submitted"), Y.eg.literal("Transfer Step"), Y.eg.literal("Transter purchased"), Y.eg.literal("tried to register unavailable domain"), Y.eg.literal("Under Attack Mode change"), Y.eg.literal("update pages project"), Y.eg.literal("update site"), Y.eg.literal("Upload list item CSV"), Y.eg.literal("Upload custom click"), Y.eg.literal("Upload custom confirmation"), Y.eg.literal("upload DNS file"), Y.eg.literal("Upload keyless click"), Y.eg.literal("Upload keyless confirmation"), Y.eg.literal("use spacebar to pause"), Y.eg.literal("use spacebar to play"), Y.eg.literal("User navigated by zone navigation"), Y.eg.literal("User has recommended optimisations"), Y.eg.literal("User selected account"), Y.eg.literal("User selected zone"), Y.eg.literal("USSL Certificate Authority: Changed"), Y.eg.literal("USSL Certificate Authority: Modal Launch"), Y.eg.literal("Validation method change"), Y.eg.literal("Validation success"), Y.eg.literal("validate spf content"), Y.eg.literal("verify address"), Y.eg.literal("verify email"), Y.eg.literal("view accounts"), Y.eg.literal("View click"), Y.eg.literal("view onboarding guide recommendations"), Y.eg.literal("Viewed Global API Key"), Y.eg.literal("Viewed Origin CA Key"), Y.eg.literal("web analytics upgrade plan click"), Y.eg.literal("WHOIS link click"), Y.eg.literal("Workers:Enablement"), Y.eg.literal("Zap:Opt in"), Y.eg.literal("Zap:Opt out"), Y.eg.literal("Zone setup change"), Y.eg.literal("Toggle user level audit logs")]),
-				Ld = Y.eg.exactStrict(Y.eg.object({
-					".agency": Y.eg.any.optional,
-					".auction": Y.eg.any.optional,
-					".bet": Y.eg.any.optional,
-					".center": Y.eg.any.optional,
-					".church": Y.eg.any.optional,
-					".com": Y.eg.any.optional,
-					".community": Y.eg.any.optional,
-					".energy": Y.eg.any.optional,
-					".fitness": Y.eg.any.optional,
-					".guru": Y.eg.any.optional,
-					".io": Y.eg.any.optional,
-					".info": Y.eg.any.optional,
-					".immo": Y.eg.any.optional,
-					".lgbt": Y.eg.any.optional,
-					".life": Y.eg.any.optional,
-					".live": Y.eg.any.optional,
-					".media": Y.eg.any.optional,
-					".mobi": Y.eg.any.optional,
-					".net": Y.eg.any.optional,
-					".network": Y.eg.any.optional,
-					".ninja": Y.eg.any.optional,
-					".online": Y.eg.any.optional,
-					".org": Y.eg.any.optional,
-					".photography": Y.eg.any.optional,
-					".plus": Y.eg.any.optional,
-					".press": Y.eg.any.optional,
-					".pro": Y.eg.any.optional,
-					".services": Y.eg.any.optional,
-					".store": Y.eg.any.optional,
-					".tech": Y.eg.any.optional,
-					".wiki": Y.eg.any.optional,
-					".wtf": Y.eg.any.optional,
-					".xyz": Y.eg.any.optional,
-					_lpchecked: Y.eg.any.optional,
-					a: Y.eg.any.optional,
-					absolute: Y.eg.any.optional,
-					access: Y.eg.any.optional,
-					access_users_allowed: Y.eg.any.optional,
-					account: Y.eg.any.optional,
-					accountId: Y.eg.any.optional,
-					"accountResolver/SELECT_ACCOUNT": Y.eg.any.optional,
-					"accountResolver/NO_ACTION": Y.eg.any.optional,
-					accountResolverTotalCpuTime: Y.eg.any.optional,
-					accountResolverTotalTime: Y.eg.any.optional,
-					accountResolverTotalUserActionsTime: Y.eg.any.optional,
-					action: Y.eg.any.optional,
-					addedRecords: Y.eg.any.optional,
-					addon: Y.eg.any.optional,
-					address: Y.eg.any.optional,
-					argo_accelerated_gigabytes: Y.eg.any.optional,
-					"aria-current": Y.eg.any.optional,
-					"aria-controls": Y.eg.any.optional,
-					"aria-label": Y.eg.any.optional,
-					"aria-selected": Y.eg.any.optional,
-					authHeaders: Y.eg.any.optional,
-					autocomplete: Y.eg.any.optional,
-					autoRenew: Y.eg.any.optional,
-					autoSetup: Y.eg.any.optional,
-					b: Y.eg.any.optional,
-					banner: Y.eg.any.optional,
-					bot_management: Y.eg.any.optional,
-					brokenExpression: Y.eg.any.optional,
-					c: Y.eg.any.optional,
-					cacheKey: Y.eg.any.optional,
-					cache_by_device_type: Y.eg.any.optional,
-					campaignId: Y.eg.any.optional,
-					campaignID: Y.eg.any.optional,
-					cancelled: Y.eg.any.optional,
-					category: Y.eg.any.optional,
-					cd43: Y.eg.any.optional,
-					cd45: Y.eg.any.optional,
-					cd47: Y.eg.any.optional,
-					certificate_pack_id: Y.eg.any.optional,
-					certificate_pack_type: Y.eg.any.optional,
-					cf: Y.eg.any.optional,
-					cfPlan: Y.eg.any.optional,
-					chartName: Y.eg.any.optional,
-					class: Y.eg.any.optional,
-					code0: Y.eg.any.optional,
-					columnName: Y.eg.string.optional,
-					completedTasks: Y.eg.any.optional,
-					component: Y.eg.any.optional,
-					component_values: Y.eg.any.optional,
-					contentfulId: Y.eg.any.optional,
-					country: Y.eg.any.optional,
-					currentCA: Y.eg.any.optional,
-					d: Y.eg.any.optional,
-					"data-children-count": Y.eg.any.optional,
-					"data-tracking-name": Y.eg.any.optional,
-					"data-tracking-id": Y.eg.any.optional,
-					"data-testid": Y.eg.any.optional,
-					dateCreated: Y.eg.any.optional,
-					dateModified: Y.eg.any.optional,
-					ddos: Y.eg.any.optional,
-					dedicated_certificates: Y.eg.any.optional,
-					dedicated_certificates_custom: Y.eg.any.optional,
-					deepLink: Y.eg.any.optional,
-					destinationPage: Y.eg.string.optional,
-					detailType: Y.eg.any.optional,
-					deviceViewport: Y.eg.any.optional,
-					direction: Y.eg.any.optional,
-					domainName: Y.eg.any.optional,
-					download: Y.eg.any.optional,
-					duration: Y.eg.any.optional,
-					e: Y.eg.any.optional,
-					email: Y.eg.any.optional,
-					email_count: Y.eg.any.optional,
-					enabled: Y.eg.any.optional,
-					entitled: Y.eg.any.optional,
-					environment: Y.eg.string.optional,
-					error: Y.eg.any.optional,
-					errorCode: Y.eg.any.optional,
-					errorMessage: Y.eg.any.optional,
-					errors: Y.eg.any.optional,
-					expression: Y.eg.any.optional,
-					failureReasons: Y.eg.any.optional,
-					featureChange: Y.eg.any.optional,
-					featureImproved: Y.eg.any.optional,
-					featureName: Y.eg.any.optional,
-					featureOriginal: Y.eg.any.optional,
-					field: Y.eg.any.optional,
-					fieldName: Y.eg.any.optional,
-					filterId: Y.eg.any.optional,
-					firewall_rules: Y.eg.any.optional,
-					"font-size": Y.eg.any.optional,
-					form: Y.eg.any.optional,
-					formView: Y.eg.any.optional,
-					frequency: Y.eg.any.optional,
-					from: Y.eg.any.optional,
-					gatesDelayed: Y.eg.any.optional,
-					geo: Y.eg.any.optional,
-					hasData: Y.eg.any.optional,
-					hasRecords: Y.eg.any.optional,
-					hasSidebarNav: Y.eg.boolean.optional,
-					"hasTest2019-06-03": Y.eg.any.optional,
-					hCaptchaDisplayed: Y.eg.any.optional,
-					header_modification: Y.eg.any.optional,
-					hostname_count: Y.eg.any.optional,
-					hostParam: Y.eg.any.optional,
-					href: Y.eg.any.optional,
-					id: Y.eg.any.optional,
-					index: Y.eg.any.optional,
-					initialRecommendation: Y.eg.any.optional,
-					ip_access_rules: Y.eg.any.optional,
-					items: Y.eg.number.optional,
-					isPaused: Y.eg.any.optional,
-					isCloudflare: Y.eg.any.optional,
-					isSPA: Y.eg.any.optional,
-					isStreaming: Y.eg.any.optional,
-					is_replacing: Y.eg.any.optional,
-					key: Y.eg.any.optional,
-					label: Y.eg.any.optional,
-					lastTimestamp: Y.eg.any.optional,
-					link: Y.eg.any.optional,
-					listType: Y.eg.any.optional,
-					load_balancing: Y.eg.any.optional,
-					load_balancing_base: Y.eg.any.optional,
-					load_balancing_dns_queries: Y.eg.any.optional,
-					load_balancing_geo_routing: Y.eg.any.optional,
-					load_balancing_monitor_interval: Y.eg.any.optional,
-					load_balancing_origins: Y.eg.any.optional,
-					load_balancing_probe_regions: Y.eg.any.optional,
-					legacyDeepLink: Y.eg.any.optional,
-					locale: Y.eg.any.optional,
-					location: Y.eg.any.optional,
-					maliciousCode: Y.eg.any.optional,
-					maliciousDomain: Y.eg.any.optional,
-					maliciousURL: Y.eg.any.optional,
-					managed_rules: Y.eg.any.optional,
-					marketingPlan: Y.eg.any.optional,
-					matchesCount: Y.eg.any.optional,
-					matchingRequestPercentage: Y.eg.any.optional,
-					matchingRequests: Y.eg.any.optional,
-					message0: Y.eg.any.optional,
-					method: Y.eg.any.optional,
-					millis: Y.eg.any.optional,
-					"mirage-recommendation": Y.eg.any.optional,
-					mode: Y.eg.any.optional,
-					mrktCheckboxDisplayed: Y.eg.any.optional,
-					name: Y.eg.any.optional,
-					new_selection: Y.eg.any.optional,
-					newTotalCount: Y.eg.any.optional,
-					novalidate: Y.eg.any.optional,
-					numAccounts: Y.eg.any.optional,
-					numDomainsInCart: Y.eg.any.optional,
-					numRecords: Y.eg.any.optional,
-					numRecordsToApply: Y.eg.any.optional,
-					numRecordsToPrompt: Y.eg.any.optional,
-					numRecordsToRemove: Y.eg.any.optional,
-					numRows: Y.eg.any.optional,
-					old_expires_on: Y.eg.any.optional,
-					old_mode: Y.eg.any.optional,
-					oldFrequency: Y.eg.string.optional,
-					oldPlan: Y.eg.any.optional,
-					oldPrice: Y.eg.number.optional,
-					oldRatePlan: Y.eg.string.optional,
-					oldStep: Y.eg.any.optional,
-					oldSubscriptionValues: Y.eg.record(Y.eg.string, Y.eg.any).optional,
-					onboarding: Y.eg.any.optional,
-					operator: Y.eg.any.optional,
-					page: Y.eg.any.optional,
-					page_rules: Y.eg.any.optional,
-					pageNumber: Y.eg.any.optional,
-					paused: Y.eg.any.optional,
-					payment_country: Y.eg.string.optional,
-					payment_gateway: Y.eg.string.optional,
-					payment_method: Y.eg.string.optional,
-					payment_option: Y.eg.string.optional,
-					percentages: Y.eg.array(Y.eg.number).optional,
-					plan: Y.eg.any.optional,
-					position: Y.eg.number.optional,
-					prefs: Y.eg.any.optional,
-					previousPage: Y.eg.any.optional,
-					previous_selection: Y.eg.any.optional,
-					previousTotalCount: Y.eg.any.optional,
-					price: Y.eg.any.optional,
-					priority: Y.eg.any.optional,
-					product: Y.eg.any.optional,
-					products: Y.eg.any.optional,
-					productName: Y.eg.any.optional,
-					provider: Y.eg.any.optional,
-					quota: Y.eg.any.optional,
-					ratePlan: Y.eg.any.optional,
-					rayId: Y.eg.any.optional,
-					readTasks: Y.eg.any.optional,
-					recommendation: Y.eg.any.optional,
-					recommendationType: Y.eg.any.optional,
-					recordAdditionMethod: Y.eg.any.optional,
-					recordTypes: Y.eg.any.optional,
-					rulesCount: Y.eg.any.optional,
-					gclid: Y.eg.any.optional,
-					gclsrc: Y.eg.any.optional,
-					dclid: Y.eg.any.optional,
-					utm_source: Y.eg.any.optional,
-					utm_medium: Y.eg.any.optional,
-					utm_campaign: Y.eg.any.optional,
-					utm_term: Y.eg.any.optional,
-					utm_content: Y.eg.any.optional,
-					rate_limiting: Y.eg.any.optional,
-					referring_domain: Y.eg.any.optional,
-					referrer: Y.eg.any.optional,
-					registrationPeriod: Y.eg.any.optional,
-					registrationStatus: Y.eg.any.optional,
-					rel: Y.eg.any.optional,
-					"rocket_loader-recommendation": Y.eg.any.optional,
-					role: Y.eg.any.optional,
-					ruleDescription: Y.eg.any.optional,
-					ruleId: Y.eg.any.optional,
-					scanFailed: Y.eg.any.optional,
-					scope: Y.eg.any.optional,
-					searchAction: Y.eg.any.optional,
-					searchDescription: Y.eg.any.optional,
-					searchParam: Y.eg.any.optional,
-					searchStatus: Y.eg.any.optional,
-					searchValue: Y.eg.any.optional,
-					section: Y.eg.any.optional,
-					seenOnParam: Y.eg.any.optional,
-					selection: Y.eg.any.optional,
-					series: Y.eg.any.optional,
-					service: Y.eg.any.optional,
-					setting: Y.eg.any.optional,
-					setup: Y.eg.any.optional,
-					showErrors: Y.eg.any.optional,
-					sortDirection: Y.eg.string.optional,
-					sortBy: Y.eg.string.optional,
-					source: Y.eg.any.optional,
-					state: Y.eg.any.optional,
-					status: Y.eg.any.optional,
-					step: Y.eg.any.optional,
-					string: Y.eg.any.optional,
-					stream_storage_thousand_minutes: Y.eg.any.optional,
-					stream_viewed_thousand_minutes: Y.eg.any.optional,
-					subcategory: Y.eg.any.optional,
-					subscribedToMarketing: Y.eg.any.optional,
-					subscriptionValues: Y.eg.record(Y.eg.string, Y.eg.any).optional,
-					success: Y.eg.any.optional,
-					tab: Y.eg.any.optional,
-					tag: Y.eg.any.optional,
-					target: Y.eg.any.optional,
-					targetCA: Y.eg.any.optional,
-					target_pack_type: Y.eg.any.optional,
-					task: Y.eg.any.optional,
-					text: Y.eg.any.optional,
-					timeRange: Y.eg.any.optional,
-					title: Y.eg.any.optional,
-					tld: Y.eg.string.optional,
-					to: Y.eg.any.optional,
-					total: Y.eg.number.optional,
-					transform_rules: Y.eg.any.optional,
-					topic: Y.eg.any.optional,
-					totalCount: Y.eg.any.optional,
-					totalCpuTime: Y.eg.any.optional,
-					totalRequests: Y.eg.any.optional,
-					totalTime: Y.eg.any.optional,
-					totalUserActionsTime: Y.eg.any.optional,
-					type: Y.eg.any.optional,
-					upgrade: Y.eg.boolean.optional,
-					uploadFailed: Y.eg.any.optional,
-					url_rewrites: Y.eg.any.optional,
-					userId: Y.eg.any.optional,
-					userType: Y.eg.any.optional,
-					utm_referrer: Y.eg.any.optional,
-					validation_method: Y.eg.any.optional,
-					validity_days: Y.eg.any.optional,
-					value: Y.eg.any.optional,
-					wordpress: Y.eg.any.optional,
-					workers: Y.eg.any.optional,
-					worker_kv_deletes: Y.eg.any.optional,
-					worker_kv_lists: Y.eg.any.optional,
-					worker_kv_reads: Y.eg.any.optional,
-					worker_kv_storage: Y.eg.any.optional,
-					worker_kv_writes: Y.eg.any.optional,
-					worker_requests: Y.eg.any.optional,
-					wp_plugin: Y.eg.any.optional,
-					zone: Y.eg.any.optional,
-					zoneId: Y.eg.any.optional,
-					zoneName: Y.eg.any.optional,
-					"zoneResolver/NO_ACTION": Y.eg.any.optional,
-					"zoneResolver/SELECT_ZONE": Y.eg.any.optional,
-					zoneResolverTotalCpuTime: Y.eg.any.optional,
-					zoneResolverTotalTime: Y.eg.any.optional,
-					zoneResolverTotalUserActionsTime: Y.eg.any.optional,
-					zones: Y.eg.any.optional,
-					zoneType: Y.eg.any.optional
+			var jd = Q.eg.union([Q.eg.literal("Access Click"), Q.eg.literal("Access click"), Q.eg.literal("Access Promo Banner Click"), Q.eg.literal("ACM Purchase Success"), Q.eg.literal("Activity feed cancel download modal"), Q.eg.literal("Activity feed close event"), Q.eg.literal("Activity feed download"), Q.eg.literal("Activity feed download from modal"), Q.eg.literal("Activity feed expand event"), Q.eg.literal("Activity feed expand matches"), Q.eg.literal("Activity feed next page"), Q.eg.literal("Activity feed open download modal"), Q.eg.literal("Activity feed previous page"), Q.eg.literal("Add API Discovery authorization headers"), Q.eg.literal("add cron trigger"), Q.eg.literal("Add filter"), Q.eg.literal("add payment method"), Q.eg.literal("add kv key-value"), Q.eg.literal("Add site click"), Q.eg.literal("add workers route"), Q.eg.literal("Addon Purchase Success"), Q.eg.literal("agree to terms"), Q.eg.literal("Analytics Secondary Nav - Tab Click"), Q.eg.literal("Analytics Time Period Change"), Q.eg.literal("anonymizers found"), Q.eg.literal("apply recommendation"), Q.eg.literal("API documentation click"), Q.eg.literal("Argo click"), Q.eg.literal("Argo Smart Routing click"), Q.eg.literal("Argo Tiered Caching click"), Q.eg.literal("Attempt TOTP reconfigure"), Q.eg.literal("begin zone activation flow"), Q.eg.literal("begin log stream"), Q.eg.literal("Billing click"), Q.eg.literal("Billing address country select toggle"), Q.eg.literal("Billing email update failure"), Q.eg.literal("Billing email update success"), Q.eg.literal("Billing invoice download success"), Q.eg.literal("Billing invoice download failed"), Q.eg.literal("Button click"), Q.eg.literal("Cache settings click"), Q.eg.literal("cancel add records later"), Q.eg.literal("cancel addon purchase of automatic platform optimization"), Q.eg.literal("cancel notification create"), Q.eg.literal("cancel notification delete"), Q.eg.literal("cancel notification edit"), Q.eg.literal("Canceled rule form"), Q.eg.literal("Canceled subscription"), Q.eg.literal("Certificate Patch click"), Q.eg.literal("change appearance"), Q.eg.literal("change chart time horizon"), Q.eg.literal("change DNS file upload error visibility"), Q.eg.literal("change DNS setup method"), Q.eg.literal("change pagination page shield"), Q.eg.literal("Change Plan Frequency"), Q.eg.literal("change SSL recommender"), Q.eg.literal("Change time window"), Q.eg.literal("change zone setting"), Q.eg.literal("Change zone setup confirmation"), Q.eg.literal("change zone status"), Q.eg.literal("Change zone status confirmation"), Q.eg.literal("check nameservers"), Q.eg.literal("Cipher Suites Link Click"), Q.eg.literal("Click"), Q.eg.literal("click complete purchase button"), Q.eg.literal("click enable argo button"), Q.eg.literal("click 2fa support token link"), Q.eg.literal("click API snippet drawer"), Q.eg.literal("click API shield upsell link"), Q.eg.literal("click configure 2fa support app link"), Q.eg.literal("click continue quick scan"), Q.eg.literal("click documentation link page shield"), Q.eg.literal("click dns completion wizard suggestion"), Q.eg.literal("click dns email security configure"), Q.eg.literal("click dns email security wizard record type"), Q.eg.literal("click edge traffic visualisation link"), Q.eg.literal("click learn more link"), Q.eg.literal("click login help forgot password selection"), Q.eg.literal("click login help forgot email selection"), Q.eg.literal("click login help lost two factor selection"), Q.eg.literal("submit login help form submission"), Q.eg.literal("click payment details"), Q.eg.literal("click multi-sku confirmation"), Q.eg.literal("Click refresh transfer status"), Q.eg.literal("click save whois"), Q.eg.literal("click scan again"), Q.eg.literal("click start stream button"), Q.eg.literal("click end stream button"), Q.eg.literal("click resolve security issue button"), Q.eg.literal("click submit domain categorization feedback"), Q.eg.literal("click to create rate limiting rule for endpoint"), Q.eg.literal("click ticket submission form search result"), Q.eg.literal("click ticket submission form suggestion"), Q.eg.literal("click Top N investigate"), Q.eg.literal("click TSF (2.0) new category"), Q.eg.literal("click TSF (2.0) step"), Q.eg.literal("click TSF (2.0) search result"), Q.eg.literal("click TSF (2.0) suggestion"), Q.eg.literal("click TSF (2.0) suggested help link"), Q.eg.literal("click TSF (2.0) community more help"), Q.eg.literal("toggle TSF (3.0)"), Q.eg.literal("select category TSF (3.0)"), Q.eg.literal("click submit feedback TSF (3.0)"), Q.eg.literal("click coveo recommended resource TSF (3.0)"), Q.eg.literal("activate coveo recommended resource TSF (3.0)"), Q.eg.literal("click helperbot diagnostic report TSF (3.0)"), Q.eg.literal("activate helperbot diagnostic TSF (3.0)"), Q.eg.literal("view system status"), Q.eg.literal("click Start Over TSF (3.0)"), Q.eg.literal("click Account Home TSF (3.0)"), Q.eg.literal("click deflect community TSF (3.0)"), Q.eg.literal("reach ticket end TSF (3.0)"), Q.eg.literal("click waf upgrade banner"), Q.eg.literal("close account select dropdown"), Q.eg.literal("close script modal page shield"), Q.eg.literal("close zone select dropdown"), Q.eg.literal("collapse sidebar nav"), Q.eg.literal("collapse row"), Q.eg.literal("Community page link click"), Q.eg.literal("complete addon purchase of automatic platform optimization"), Q.eg.literal("complete plan change from automatic platform optimization card"), Q.eg.literal("Confirm"), Q.eg.literal("confirm add records later"), Q.eg.literal("confirm auth code"), Q.eg.literal("confirm DNS records"), Q.eg.literal("confirm domain transfer purchase"), Q.eg.literal("confirm zone removal"), Q.eg.literal("contentful banner displayed"), Q.eg.literal("Continue"), Q.eg.literal("continue to final step"), Q.eg.literal("continue to js snippet"), Q.eg.literal("Contract SS - Approver contact details cancel"), Q.eg.literal("Contract SS - Approver contact details submit success"), Q.eg.literal("Contract SS - Payment type cancel"), Q.eg.literal("Contract SS - Payment type selected success"), Q.eg.literal("Contract SS - Legal agreement cancel"), Q.eg.literal("Contract SS - Legal agreement submit success"), Q.eg.literal("Contract SS - Purchase cancel"), Q.eg.literal("Contract SS - Purchase success"), Q.eg.literal("Contract SS - Purchase flow enter"), Q.eg.literal("copy API snippet from drawer"), Q.eg.literal("copy script id page shield"), Q.eg.literal("copy script url page shield"), Q.eg.literal("copy snippet"), Q.eg.literal("copy site tag"), Q.eg.literal("create r2 api token"), Q.eg.literal("create pages deployment"), Q.eg.literal("create pages project"), Q.eg.literal("create kv namespace"), Q.eg.literal("Create New Rule"), Q.eg.literal("create notification"), Q.eg.literal("create rate limiting rule"), Q.eg.literal("Create Bulk Redirect Rule"), Q.eg.literal("Create Rule (Save)"), Q.eg.literal("Create Rule as Draft (Save as Draft)"), Q.eg.literal("create r2 bucket"), Q.eg.literal("create service"), Q.eg.literal("create user"), Q.eg.literal("create zone"), Q.eg.literal("Create, Update or Edit Save Failures (Builder)"), Q.eg.literal("Create, Update or Edit Save Failures (Editor)"), Q.eg.literal("CT Alerting Change"), Q.eg.literal("Custom Hostname create click"), Q.eg.literal("Custom Hostname create success"), Q.eg.literal("Custom Hostname delete click"), Q.eg.literal("Custom Hostname delete success"), Q.eg.literal("Custom Hostname edit click"), Q.eg.literal("Custom Hostname edit success"), Q.eg.literal("Custom Hostname fallback origin add click"), Q.eg.literal("Custom Hostname fallback origin delete click"), Q.eg.literal("Custom Hostname fallback origin delete success"), Q.eg.literal("Custom Hostname fallback origin edit click"), Q.eg.literal("Custom Hostname fallback origin refresh"), Q.eg.literal("Custom Hostname refresh click"), Q.eg.literal("Custom Trust Store delete click"), Q.eg.literal("Custom Trust Store delete success"), Q.eg.literal("Custom Trust Store upload click"), Q.eg.literal("Custom Trust Store upload success"), Q.eg.literal("Dedicated Certificates click"), Q.eg.literal("Deep Link Cancel"), Q.eg.literal("Deep Link Success"), Q.eg.literal("delete r2 api token"), Q.eg.literal("Delete click"), Q.eg.literal("Delete confirmation"), Q.eg.literal("delete kv key-value"), Q.eg.literal("delete kv namespace"), Q.eg.literal("delete notification"), Q.eg.literal("delete pages project"), Q.eg.literal("Delete Rule"), Q.eg.literal("delete r2 bucket"), Q.eg.literal("delete r2 objects"), Q.eg.literal("delete site"), Q.eg.literal("delete service"), Q.eg.literal("Details click"), Q.eg.literal("Dev Mode change"), Q.eg.literal("Dev Mode change confirm"), Q.eg.literal("Diagnostic failure"), Q.eg.literal("Diagnostic result"), Q.eg.literal("disable page shield"), Q.eg.literal("disable pages web analytics"), Q.eg.literal("Disable Rule"), Q.eg.literal("disable sidebar nav"), Q.eg.literal("dislike redirect in the same window"), Q.eg.literal("dismiss notification"), Q.eg.literal("dismiss recommendation"), Q.eg.literal("display recommendation module"), Q.eg.literal("display recommendation"), Q.eg.literal("display record wizard notification"), Q.eg.literal("DNS settings click"), Q.eg.literal("download file"), Q.eg.literal("download r2 object"), Q.eg.literal("edge traffic visualisation is shown"), Q.eg.literal("edit r2 api token"), Q.eg.literal("edit contact information"), Q.eg.literal("edit cron trigger"), Q.eg.literal("edit kv key-value"), Q.eg.literal("edit service environment variables"), Q.eg.literal("edit service kv bindings"), Q.eg.literal("edit notification"), Q.eg.literal("edit plan"), Q.eg.literal("edit service r2 bindings"), Q.eg.literal("edit registration details"), Q.eg.literal("edit service to service bindings"), Q.eg.literal("Edit filter"), Q.eg.literal("Edit/Update Rule (Save)"), Q.eg.literal("edit workers route"), Q.eg.literal("Enable automatic https rewrites click"), Q.eg.literal("Enable Optimization"), Q.eg.literal("enable page shield"), Q.eg.literal("enable pages access policy"), Q.eg.literal("enable pages web analytics"), Q.eg.literal("enable workers"), Q.eg.literal("Enable Rule"), Q.eg.literal("enable sidebar nav"), Q.eg.literal("encrypt variable"), Q.eg.literal("enter domain search value"), Q.eg.literal("Error adding or removing records"), Q.eg.literal("Error Analytics link click"), Q.eg.literal("Error when retrieving conflicting records"), Q.eg.literal("Event Names"), Q.eg.literal("exit onboarding guide"), Q.eg.literal("expand account select dropdown"), Q.eg.literal("expand row"), Q.eg.literal("expand sidebar nav"), Q.eg.literal("expand sidebar nav zone selector"), Q.eg.literal("expand sidebar nav account selector"), Q.eg.literal("Expand measurement details"), Q.eg.literal("expand zone select dropdown"), Q.eg.literal("export instant logs"), Q.eg.literal("fail addon purchase of automatic platform optimization"), Q.eg.literal("Failed to Switch to Editor"), Q.eg.literal("Fetched template"), Q.eg.literal("Filter rules"), Q.eg.literal("filter search page shield"), Q.eg.literal("Filter used"), Q.eg.literal("finish loading gates and microfrontends"), Q.eg.literal("finish onboarding guide"), Q.eg.literal("finish onboarding guide later"), Q.eg.literal("Firewall settings click"), Q.eg.literal("Flow authorize"), Q.eg.literal("Flow cancel"), Q.eg.literal("follow contentful banner link"), Q.eg.literal("follow link"), Q.eg.literal("follow policy link"), Q.eg.literal("follow return to icloud link"), Q.eg.literal("follow support link"), Q.eg.literal("follow recommendation CTA"), Q.eg.literal("follower icloud footer link"), Q.eg.literal("Free Long Wait"), Q.eg.literal("Get your API key click"), Q.eg.literal("hover score tooltip page shield"), Q.eg.literal("hover to read threshold tooltip"), Q.eg.literal("hover to read risk identified tooltip"), Q.eg.literal("identify"), Q.eg.literal("Initialization error"), Q.eg.literal("Initialization success"), Q.eg.literal("initiate addon purchase of automatic platform optimization"), Q.eg.literal("initiate plan change from automatic platform optimization card"), Q.eg.literal("initiate wordpress plugin installation for automatic platform optimization"), Q.eg.literal("Interaction with Film Strip"), Q.eg.literal("Interacton with Film Strip"), Q.eg.literal("investigate threat search"), Q.eg.literal("IP settings click"), Q.eg.literal("launch icloud registrar onboarding"), Q.eg.literal("launch onboarding guide"), Q.eg.literal("launch sidebar nav survey"), Q.eg.literal("launch teams dashboard"), Q.eg.literal("launch zone overview"), Q.eg.literal("list kv key-values"), Q.eg.literal("list kv namespaces"), Q.eg.literal("list pages projects"), Q.eg.literal("list r2 buckets"), Q.eg.literal("list r2 objects"), Q.eg.literal("Load Balancing click"), Q.eg.literal("load web analytics overview"), Q.eg.literal("Logpush Create Job - Open modal"), Q.eg.literal("Logpush Create Job - Step Transition"), Q.eg.literal("Logpush Create Job - Success"), Q.eg.literal("Manage click"), Q.eg.literal("manage pages policies"), Q.eg.literal("manage pages members"), Q.eg.literal("manage security insight"), Q.eg.literal("Map detail type changed"), Q.eg.literal("Matches Entitlement Validation error"), Q.eg.literal("migrate waf"), Q.eg.literal("Mixed content notification test 2019-05-03 link click"), Q.eg.literal("multi-sku purchase success"), Q.eg.literal("multi-sku purchase error"), Q.eg.literal("navigate back"), Q.eg.literal("navigate footer nav"), Q.eg.literal("navigate sidebar nav"), Q.eg.literal("navigate topbar"), Q.eg.literal("navigate to community"), Q.eg.literal("navigate to compliance docs"), Q.eg.literal("navigate to contact support"), Q.eg.literal("navigate to enterprise customer portal"), Q.eg.literal("navigate to help center"), Q.eg.literal("navigate to previous onboarding guide task"), Q.eg.literal("Navigate from Optimization to Overview"), Q.eg.literal("Navigate from Overview to Optimization"), Q.eg.literal("Next onboarding guide section"), Q.eg.literal("next page"), Q.eg.literal("Notification dismissed"), Q.eg.literal("Notification displayed"), Q.eg.literal("Notification link click"), Q.eg.literal("Notification load on page confirmation"), Q.eg.literal("observe automatic platform optimization card"), Q.eg.literal("Onboarding guide elapsed time"), Q.eg.literal("open alert modal page shield"), Q.eg.literal("open advanced waiting room sales link"), Q.eg.literal("open argo subscription modal"), Q.eg.literal("open blog post for automatic platform optimization"), Q.eg.literal("open bot management lead generator link"), Q.eg.literal("open security center categorization tooltip"), Q.eg.literal("open create notification page"), Q.eg.literal("open delete notification modal"), Q.eg.literal("open edit notification page"), Q.eg.literal("open help documentation for automatic platform optimization"), Q.eg.literal("open load balancing subscription modal"), Q.eg.literal("open onboarding guide task manually"), Q.eg.literal("Open Modal Enable Access"), Q.eg.literal("open remove zone modal"), Q.eg.literal("open script modal page shield"), Q.eg.literal("open waiting room upsell modal"), Q.eg.literal("open zone plan update modal"), Q.eg.literal("Opened BrowserInsights tab"), Q.eg.literal("opt-in to marketing emails"), Q.eg.literal("Order click"), Q.eg.literal("Order success"), Q.eg.literal("pageview"), Q.eg.literal("Page Rules click"), Q.eg.literal("paginate kv key-values"), Q.eg.literal("paginate kv namespaces"), Q.eg.literal("paginate pages projects"), Q.eg.literal("paginate r2 buckets"), Q.eg.literal("paginate r2 objects"), Q.eg.literal("paginate services"), Q.eg.literal("Pick validity period success"), Q.eg.literal("Plan Purchase Confirmation"), Q.eg.literal("Plan Purchase Failure"), Q.eg.literal("Plan Purchase Success"), Q.eg.literal("Plan Update Confirmation"), Q.eg.literal("Plan Update Failure"), Q.eg.literal("Plan Update Success"), Q.eg.literal("previous page"), Q.eg.literal("Private keys in china toggle"), Q.eg.literal("Product Purchase Cancel"), Q.eg.literal("Product Purchase Failure"), Q.eg.literal("Product Purchase Success"), Q.eg.literal("Product Update Failure"), Q.eg.literal("Product Update Success"), Q.eg.literal("purchase attempt"), Q.eg.literal("purchase completed"), Q.eg.literal("purchase domain transfer"), Q.eg.literal("Purge cache click"), Q.eg.literal("purge everything from cache"), Q.eg.literal("deploy worker script"), Q.eg.literal("Rate Limiting click"), Q.eg.literal("Re-activate zone click"), Q.eg.literal("read kv key-value"), Q.eg.literal("Re-check nameservers click"), Q.eg.literal("recheck zone for automatic platform optimization"), Q.eg.literal("register site"), Q.eg.literal("Remove filter"), Q.eg.literal("remove item from checkout"), Q.eg.literal("remove zone"), Q.eg.literal("rename account"), Q.eg.literal("rename service"), Q.eg.literal("Reprioritize certificate"), Q.eg.literal("Request review click"), Q.eg.literal("review onboarding guide task from summary"), Q.eg.literal("review products"), Q.eg.literal("Rule event"), Q.eg.literal("roll r2 api token"), Q.eg.literal("Rule preview that was denied because of an unsupported field or operator"), Q.eg.literal("Rule preview that was denied because of lack of data"), Q.eg.literal("Rule preview that was denied due to error"), Q.eg.literal("rules configured"), Q.eg.literal("run security scan"), Q.eg.literal("save onboarding guide task"), Q.eg.literal("save contact information"), Q.eg.literal("save payment details"), Q.eg.literal("save registration details"), Q.eg.literal("See more click"), Q.eg.literal("Search"), Q.eg.literal("search auto fetch"), Q.eg.literal("search kv key-values"), Q.eg.literal("search kv namespaces"), Q.eg.literal("search pages projects"), Q.eg.literal("search r2 buckets"), Q.eg.literal("search r2 objects"), Q.eg.literal("search services"), Q.eg.literal("Select"), Q.eg.literal("select account"), Q.eg.literal("select alert type page shield"), Q.eg.literal("select domain"), Q.eg.literal("select file"), Q.eg.literal("select change nameservers"), Q.eg.literal("Select hostname success"), Q.eg.literal("select payment option"), Q.eg.literal("select payment method"), Q.eg.literal("select product"), Q.eg.literal("select notification type"), Q.eg.literal("select record addition method"), Q.eg.literal("select r2 plan"), Q.eg.literal("Select timeseries group by"), Q.eg.literal("select transfer registrars"), Q.eg.literal("Select type success"), Q.eg.literal("select workers plan"), Q.eg.literal("select zone"), Q.eg.literal("select zone plan"), Q.eg.literal("Selected advanced GeoIP field in rule builder"), Q.eg.literal("send verification email"), Q.eg.literal("Set Communication Preferences"), Q.eg.literal("Set communication Preferences"), Q.eg.literal("set pages environment variables"), Q.eg.literal("set pages do bindings"), Q.eg.literal("set pages kv bindings"), Q.eg.literal("Setting up"), Q.eg.literal("set up custom domain"), Q.eg.literal("set up subdomain"), Q.eg.literal("show waf upgrade banner"), Q.eg.literal("signed exchanges toggle"), Q.eg.literal("site configured"), Q.eg.literal("skip onboarding guide section"), Q.eg.literal("sort auto fetch"), Q.eg.literal("sort column page shield"), Q.eg.literal("sort r2 buckets"), Q.eg.literal("sort services"), Q.eg.literal("Speedheader - change your nameservers click"), Q.eg.literal("Speedtest - Headless Chrome fetch returned error"), Q.eg.literal("Speedtest - tests are completed"), Q.eg.literal("Speedtest - Tests are running"), Q.eg.literal("Speedtest - WPT tests failed"), Q.eg.literal("SPF conflict resolution failure"), Q.eg.literal("SSL click"), Q.eg.literal("SSL Mode Change"), Q.eg.literal("Status page link click"), Q.eg.literal("Stream click"), Q.eg.literal("Stream Signup Success"), Q.eg.literal("Stream Video Upload Failure"), Q.eg.literal("Stream Video Upload Success"), Q.eg.literal("submit DNS entry method"), Q.eg.literal("submit DNS email security wizard"), Q.eg.literal("submit DNS email security wizard failure"), Q.eg.literal("submit domain name"), Q.eg.literal("submit login form"), Q.eg.literal("submit order"), Q.eg.literal("submit signup form"), Q.eg.literal("Successful flow and user redirected"), Q.eg.literal("Successful rule preview"), Q.eg.literal("Suggestions query confirmation"), Q.eg.literal("Survey banner shown"), Q.eg.literal("Survey banner closed"), Q.eg.literal("Survey opened"), Q.eg.literal("switch DNS entry method"), Q.eg.literal("Switch from Editor and Discarded Changes"), Q.eg.literal("Switch to expression editor"), Q.eg.literal("Test"), Q.eg.literal("Ticket form step click"), Q.eg.literal("Ticket submission form button click"), Q.eg.literal("Ticket submission form submit click"), Q.eg.literal("Time range changed"), Q.eg.literal("Toast dismiss click"), Q.eg.literal("Toast load on page confirmation"), Q.eg.literal("Toggle API discovery"), Q.eg.literal("toggle automatic platform optimization feature"), Q.eg.literal("toggle cache by device type"), Q.eg.literal("toggle recommendation module"), Q.eg.literal("Toggled injection"), Q.eg.literal("transfer DNS records"), Q.eg.literal("Transfer out survey submitted"), Q.eg.literal("Transfer Step"), Q.eg.literal("Transter purchased"), Q.eg.literal("tried to register unavailable domain"), Q.eg.literal("Under Attack Mode change"), Q.eg.literal("update pages project"), Q.eg.literal("update site"), Q.eg.literal("Upload list item CSV"), Q.eg.literal("Upload custom click"), Q.eg.literal("Upload custom confirmation"), Q.eg.literal("upload DNS file"), Q.eg.literal("Upload keyless click"), Q.eg.literal("Upload keyless confirmation"), Q.eg.literal("upload r2 objects"), Q.eg.literal("use spacebar to pause"), Q.eg.literal("use spacebar to play"), Q.eg.literal("User navigated by zone navigation"), Q.eg.literal("User has recommended optimisations"), Q.eg.literal("User selected account"), Q.eg.literal("User selected zone"), Q.eg.literal("USSL Certificate Authority: Changed"), Q.eg.literal("USSL Certificate Authority: Modal Launch"), Q.eg.literal("Validation method change"), Q.eg.literal("Validation success"), Q.eg.literal("validate spf content"), Q.eg.literal("verify address"), Q.eg.literal("verify email"), Q.eg.literal("view accounts"), Q.eg.literal("View click"), Q.eg.literal("view onboarding guide recommendations"), Q.eg.literal("Viewed Global API Key"), Q.eg.literal("Viewed Origin CA Key"), Q.eg.literal("web analytics upgrade plan click"), Q.eg.literal("WHOIS link click"), Q.eg.literal("Workers:Enablement"), Q.eg.literal("Zap:Opt in"), Q.eg.literal("Zap:Opt out"), Q.eg.literal("Zone setup change"), Q.eg.literal("Toggle user level audit logs")]),
+				Ld = Q.eg.exactStrict(Q.eg.object({
+					".agency": Q.eg.any.optional,
+					".auction": Q.eg.any.optional,
+					".bet": Q.eg.any.optional,
+					".center": Q.eg.any.optional,
+					".church": Q.eg.any.optional,
+					".com": Q.eg.any.optional,
+					".community": Q.eg.any.optional,
+					".energy": Q.eg.any.optional,
+					".fitness": Q.eg.any.optional,
+					".guru": Q.eg.any.optional,
+					".io": Q.eg.any.optional,
+					".info": Q.eg.any.optional,
+					".immo": Q.eg.any.optional,
+					".lgbt": Q.eg.any.optional,
+					".life": Q.eg.any.optional,
+					".live": Q.eg.any.optional,
+					".media": Q.eg.any.optional,
+					".mobi": Q.eg.any.optional,
+					".net": Q.eg.any.optional,
+					".network": Q.eg.any.optional,
+					".ninja": Q.eg.any.optional,
+					".online": Q.eg.any.optional,
+					".org": Q.eg.any.optional,
+					".photography": Q.eg.any.optional,
+					".plus": Q.eg.any.optional,
+					".press": Q.eg.any.optional,
+					".pro": Q.eg.any.optional,
+					".services": Q.eg.any.optional,
+					".store": Q.eg.any.optional,
+					".tech": Q.eg.any.optional,
+					".wiki": Q.eg.any.optional,
+					".wtf": Q.eg.any.optional,
+					".xyz": Q.eg.any.optional,
+					_lpchecked: Q.eg.any.optional,
+					a: Q.eg.any.optional,
+					absolute: Q.eg.any.optional,
+					access: Q.eg.any.optional,
+					access_users_allowed: Q.eg.any.optional,
+					account: Q.eg.any.optional,
+					accountId: Q.eg.any.optional,
+					"accountResolver/SELECT_ACCOUNT": Q.eg.any.optional,
+					"accountResolver/NO_ACTION": Q.eg.any.optional,
+					accountResolverTotalCpuTime: Q.eg.any.optional,
+					accountResolverTotalTime: Q.eg.any.optional,
+					accountResolverTotalUserActionsTime: Q.eg.any.optional,
+					action: Q.eg.any.optional,
+					addedRecords: Q.eg.any.optional,
+					addon: Q.eg.any.optional,
+					address: Q.eg.any.optional,
+					argo_accelerated_gigabytes: Q.eg.any.optional,
+					"aria-current": Q.eg.any.optional,
+					"aria-controls": Q.eg.any.optional,
+					"aria-label": Q.eg.any.optional,
+					"aria-selected": Q.eg.any.optional,
+					authHeaders: Q.eg.any.optional,
+					autocomplete: Q.eg.any.optional,
+					autoRenew: Q.eg.any.optional,
+					autoSetup: Q.eg.any.optional,
+					b: Q.eg.any.optional,
+					banner: Q.eg.any.optional,
+					bot_management: Q.eg.any.optional,
+					brokenExpression: Q.eg.any.optional,
+					c: Q.eg.any.optional,
+					cacheKey: Q.eg.any.optional,
+					cache_by_device_type: Q.eg.any.optional,
+					campaignId: Q.eg.any.optional,
+					campaignID: Q.eg.any.optional,
+					cancelled: Q.eg.any.optional,
+					category: Q.eg.any.optional,
+					cd43: Q.eg.any.optional,
+					cd45: Q.eg.any.optional,
+					cd47: Q.eg.any.optional,
+					certificate_pack_id: Q.eg.any.optional,
+					certificate_pack_type: Q.eg.any.optional,
+					cf: Q.eg.any.optional,
+					cfPlan: Q.eg.any.optional,
+					chartName: Q.eg.any.optional,
+					class: Q.eg.any.optional,
+					code0: Q.eg.any.optional,
+					columnName: Q.eg.string.optional,
+					completedTasks: Q.eg.any.optional,
+					component: Q.eg.any.optional,
+					component_values: Q.eg.any.optional,
+					contentfulId: Q.eg.any.optional,
+					country: Q.eg.any.optional,
+					currentCA: Q.eg.any.optional,
+					d: Q.eg.any.optional,
+					"data-children-count": Q.eg.any.optional,
+					"data-tracking-name": Q.eg.any.optional,
+					"data-tracking-id": Q.eg.any.optional,
+					"data-testid": Q.eg.any.optional,
+					dateCreated: Q.eg.any.optional,
+					dateModified: Q.eg.any.optional,
+					ddos: Q.eg.any.optional,
+					dedicated_certificates: Q.eg.any.optional,
+					dedicated_certificates_custom: Q.eg.any.optional,
+					deepLink: Q.eg.any.optional,
+					destinationPage: Q.eg.string.optional,
+					detailType: Q.eg.any.optional,
+					deviceViewport: Q.eg.any.optional,
+					direction: Q.eg.any.optional,
+					domainName: Q.eg.any.optional,
+					download: Q.eg.any.optional,
+					duration: Q.eg.any.optional,
+					e: Q.eg.any.optional,
+					email: Q.eg.any.optional,
+					email_count: Q.eg.any.optional,
+					enabled: Q.eg.any.optional,
+					entitled: Q.eg.any.optional,
+					environment: Q.eg.string.optional,
+					error: Q.eg.any.optional,
+					errorCode: Q.eg.any.optional,
+					errorMessage: Q.eg.any.optional,
+					errors: Q.eg.any.optional,
+					expression: Q.eg.any.optional,
+					failureReasons: Q.eg.any.optional,
+					featureChange: Q.eg.any.optional,
+					featureImproved: Q.eg.any.optional,
+					featureName: Q.eg.any.optional,
+					featureOriginal: Q.eg.any.optional,
+					field: Q.eg.any.optional,
+					fieldName: Q.eg.any.optional,
+					filterId: Q.eg.any.optional,
+					firewall_rules: Q.eg.any.optional,
+					"font-size": Q.eg.any.optional,
+					form: Q.eg.any.optional,
+					formView: Q.eg.any.optional,
+					frequency: Q.eg.any.optional,
+					from: Q.eg.any.optional,
+					gatesDelayed: Q.eg.any.optional,
+					geo: Q.eg.any.optional,
+					hasData: Q.eg.any.optional,
+					hasRecords: Q.eg.any.optional,
+					hasSidebarNav: Q.eg.boolean.optional,
+					"hasTest2019-06-03": Q.eg.any.optional,
+					hCaptchaDisplayed: Q.eg.any.optional,
+					header_modification: Q.eg.any.optional,
+					hostname_count: Q.eg.any.optional,
+					hostParam: Q.eg.any.optional,
+					href: Q.eg.any.optional,
+					id: Q.eg.any.optional,
+					index: Q.eg.any.optional,
+					initialRecommendation: Q.eg.any.optional,
+					ip_access_rules: Q.eg.any.optional,
+					items: Q.eg.number.optional,
+					isPaused: Q.eg.any.optional,
+					isCloudflare: Q.eg.any.optional,
+					isSPA: Q.eg.any.optional,
+					isStreaming: Q.eg.any.optional,
+					is_replacing: Q.eg.any.optional,
+					key: Q.eg.any.optional,
+					label: Q.eg.any.optional,
+					lastTimestamp: Q.eg.any.optional,
+					link: Q.eg.any.optional,
+					listType: Q.eg.any.optional,
+					load_balancing: Q.eg.any.optional,
+					load_balancing_base: Q.eg.any.optional,
+					load_balancing_dns_queries: Q.eg.any.optional,
+					load_balancing_geo_routing: Q.eg.any.optional,
+					load_balancing_monitor_interval: Q.eg.any.optional,
+					load_balancing_origins: Q.eg.any.optional,
+					load_balancing_probe_regions: Q.eg.any.optional,
+					legacyDeepLink: Q.eg.any.optional,
+					locale: Q.eg.any.optional,
+					location: Q.eg.any.optional,
+					maliciousCode: Q.eg.any.optional,
+					maliciousDomain: Q.eg.any.optional,
+					maliciousURL: Q.eg.any.optional,
+					managed_rules: Q.eg.any.optional,
+					marketingPlan: Q.eg.any.optional,
+					matchesCount: Q.eg.any.optional,
+					matchingRequestPercentage: Q.eg.any.optional,
+					matchingRequests: Q.eg.any.optional,
+					message0: Q.eg.any.optional,
+					method: Q.eg.any.optional,
+					millis: Q.eg.any.optional,
+					"mirage-recommendation": Q.eg.any.optional,
+					mode: Q.eg.any.optional,
+					mrktCheckboxDisplayed: Q.eg.any.optional,
+					name: Q.eg.any.optional,
+					new_selection: Q.eg.any.optional,
+					newTotalCount: Q.eg.any.optional,
+					novalidate: Q.eg.any.optional,
+					numAccounts: Q.eg.any.optional,
+					numDomainsInCart: Q.eg.any.optional,
+					numRecords: Q.eg.any.optional,
+					numRecordsToApply: Q.eg.any.optional,
+					numRecordsToPrompt: Q.eg.any.optional,
+					numRecordsToRemove: Q.eg.any.optional,
+					numRows: Q.eg.any.optional,
+					old_expires_on: Q.eg.any.optional,
+					old_mode: Q.eg.any.optional,
+					oldFrequency: Q.eg.string.optional,
+					oldPlan: Q.eg.any.optional,
+					oldPrice: Q.eg.number.optional,
+					oldRatePlan: Q.eg.string.optional,
+					oldStep: Q.eg.any.optional,
+					oldSubscriptionValues: Q.eg.record(Q.eg.string, Q.eg.any).optional,
+					onboarding: Q.eg.any.optional,
+					operator: Q.eg.any.optional,
+					page: Q.eg.any.optional,
+					page_rules: Q.eg.any.optional,
+					pageNumber: Q.eg.any.optional,
+					paused: Q.eg.any.optional,
+					payment_country: Q.eg.string.optional,
+					payment_gateway: Q.eg.string.optional,
+					payment_method: Q.eg.string.optional,
+					payment_option: Q.eg.string.optional,
+					percentages: Q.eg.array(Q.eg.number).optional,
+					plan: Q.eg.any.optional,
+					position: Q.eg.number.optional,
+					prefs: Q.eg.any.optional,
+					previousPage: Q.eg.any.optional,
+					previous_selection: Q.eg.any.optional,
+					previousTotalCount: Q.eg.any.optional,
+					price: Q.eg.any.optional,
+					priority: Q.eg.any.optional,
+					product: Q.eg.any.optional,
+					products: Q.eg.any.optional,
+					productName: Q.eg.any.optional,
+					provider: Q.eg.any.optional,
+					quota: Q.eg.any.optional,
+					ratePlan: Q.eg.any.optional,
+					rayId: Q.eg.any.optional,
+					readTasks: Q.eg.any.optional,
+					recommendation: Q.eg.any.optional,
+					recommendationType: Q.eg.any.optional,
+					recordAdditionMethod: Q.eg.any.optional,
+					recordTypes: Q.eg.any.optional,
+					rulesCount: Q.eg.any.optional,
+					gclid: Q.eg.any.optional,
+					gclsrc: Q.eg.any.optional,
+					dclid: Q.eg.any.optional,
+					utm_source: Q.eg.any.optional,
+					utm_medium: Q.eg.any.optional,
+					utm_campaign: Q.eg.any.optional,
+					utm_term: Q.eg.any.optional,
+					utm_content: Q.eg.any.optional,
+					rate_limiting: Q.eg.any.optional,
+					referring_domain: Q.eg.any.optional,
+					referrer: Q.eg.any.optional,
+					registrationPeriod: Q.eg.any.optional,
+					registrationStatus: Q.eg.any.optional,
+					rel: Q.eg.any.optional,
+					"rocket_loader-recommendation": Q.eg.any.optional,
+					role: Q.eg.any.optional,
+					ruleDescription: Q.eg.any.optional,
+					ruleId: Q.eg.any.optional,
+					scanFailed: Q.eg.any.optional,
+					scope: Q.eg.any.optional,
+					searchAction: Q.eg.any.optional,
+					searchDescription: Q.eg.any.optional,
+					searchParam: Q.eg.any.optional,
+					searchStatus: Q.eg.any.optional,
+					searchValue: Q.eg.any.optional,
+					section: Q.eg.any.optional,
+					seenOnParam: Q.eg.any.optional,
+					selection: Q.eg.any.optional,
+					series: Q.eg.any.optional,
+					service: Q.eg.any.optional,
+					setting: Q.eg.any.optional,
+					setup: Q.eg.any.optional,
+					showErrors: Q.eg.any.optional,
+					sortDirection: Q.eg.string.optional,
+					sortBy: Q.eg.string.optional,
+					source: Q.eg.any.optional,
+					state: Q.eg.any.optional,
+					status: Q.eg.any.optional,
+					step: Q.eg.any.optional,
+					string: Q.eg.any.optional,
+					stream_storage_thousand_minutes: Q.eg.any.optional,
+					stream_viewed_thousand_minutes: Q.eg.any.optional,
+					subcategory: Q.eg.any.optional,
+					subscribedToMarketing: Q.eg.any.optional,
+					subscriptionValues: Q.eg.record(Q.eg.string, Q.eg.any).optional,
+					success: Q.eg.any.optional,
+					tab: Q.eg.any.optional,
+					tag: Q.eg.any.optional,
+					target: Q.eg.any.optional,
+					targetCA: Q.eg.any.optional,
+					target_pack_type: Q.eg.any.optional,
+					task: Q.eg.any.optional,
+					text: Q.eg.any.optional,
+					timeRange: Q.eg.any.optional,
+					title: Q.eg.any.optional,
+					tld: Q.eg.string.optional,
+					to: Q.eg.any.optional,
+					total: Q.eg.number.optional,
+					transform_rules: Q.eg.any.optional,
+					topic: Q.eg.any.optional,
+					totalCount: Q.eg.any.optional,
+					totalCpuTime: Q.eg.any.optional,
+					totalRequests: Q.eg.any.optional,
+					totalTime: Q.eg.any.optional,
+					totalUserActionsTime: Q.eg.any.optional,
+					type: Q.eg.any.optional,
+					upgrade: Q.eg.boolean.optional,
+					uploadFailed: Q.eg.any.optional,
+					url_rewrites: Q.eg.any.optional,
+					userId: Q.eg.any.optional,
+					userType: Q.eg.any.optional,
+					utm_referrer: Q.eg.any.optional,
+					validation_method: Q.eg.any.optional,
+					validity_days: Q.eg.any.optional,
+					value: Q.eg.any.optional,
+					wordpress: Q.eg.any.optional,
+					workers: Q.eg.any.optional,
+					worker_kv_deletes: Q.eg.any.optional,
+					worker_kv_lists: Q.eg.any.optional,
+					worker_kv_reads: Q.eg.any.optional,
+					worker_kv_storage: Q.eg.any.optional,
+					worker_kv_writes: Q.eg.any.optional,
+					worker_requests: Q.eg.any.optional,
+					wp_plugin: Q.eg.any.optional,
+					zone: Q.eg.any.optional,
+					zoneId: Q.eg.any.optional,
+					zoneName: Q.eg.any.optional,
+					"zoneResolver/NO_ACTION": Q.eg.any.optional,
+					"zoneResolver/SELECT_ZONE": Q.eg.any.optional,
+					zoneResolverTotalCpuTime: Q.eg.any.optional,
+					zoneResolverTotalTime: Q.eg.any.optional,
+					zoneResolverTotalUserActionsTime: Q.eg.any.optional,
+					zones: Q.eg.any.optional,
+					zoneType: Q.eg.any.optional
 				})),
 				_d = function(w, re) {
 					var Ae = Nd(re),
@@ -6064,11 +6064,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						gt = He[0],
 						St = He[1],
 						wt, Pt;
-					return (0, Y.nM)(jd.decode(w)) && (wt = new Td(w)), St && St.length > 0 && (Pt = new fu(w, St)), [gt, wt, Pt]
+					return (0, Q.nM)(jd.decode(w)) && (wt = new Td(w)), St && St.length > 0 && (Pt = new fu(w, St)), [gt, wt, Pt]
 				},
 				Nd = function(w) {
 					var re = Ld.decode(w);
-					if ((0, Y.nM)(re)) {
+					if ((0, Q.nM)(re)) {
 						var Ae = re.left.map(function(He) {
 							var gt = He.context;
 							return gt.map(function(St) {
@@ -6346,14 +6346,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				e.g.build = yu({}, {
-					branch: "release-1659017190",
+					branch: "release-1659103529",
 					isReleaseCandidate: "true",
-					commit: "56060d3df280e143bc85dc7628d5ef424c37a2c1",
+					commit: "2c3c22a9210a80aca81ab46f196424f6315c2ee9",
 					env: "production",
-					builtAt: 1659017520791,
-					dashVersion: "176e7d8e61ea2cc2205d4d962740ea428d7e3cb9",
+					builtAt: 1659103880698,
+					dashVersion: "1d797d34bd22bcc8e575f79a782e38a37f65f86a",
 					versions: {
-						"@cloudflare/app-dash": "25.62.11",
+						"@cloudflare/app-dash": "25.63.2",
 						node: "14.18.3",
 						yarn: "1.18.0",
 						webpack: "5.38.1"
@@ -8799,50 +8799,50 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				m = e("../react/utils/zoneLevelAccess.ts"),
 				s = e("../react/pages/stream/selectors.ts"),
 				l = e("../react/pages/home/domain-registration/store/index.ts"),
-				v = function(Q) {
-					return !!(0, m.b)(Q)
+				v = function(Y) {
+					return !!(0, m.b)(Y)
 				},
-				S = function(Q) {
-					return v(Q) ? (0, i.WL)(Q, (0, i.jX)(null, i.ZZ.read), (0, i.L8)((0, d.e1)())) : !0
+				S = function(Y) {
+					return v(Y) ? (0, i.WL)(Y, (0, i.jX)(null, i.ZZ.read), (0, i.L8)((0, d.e1)())) : !0
 				},
-				U = function(Q, ke, nt) {
+				U = function(Y, ke, nt) {
 					var ft = arguments.length > 3 && arguments[3] !== void 0 ? arguments[3] : "read",
-						xt = (0, P.getZone)(Q);
-					if (v(Q)) return (0, i.WL)(Q, (0, i.W9)(nt, i.ZZ[ft]), (0, i.j)(xt == null ? void 0 : xt.id));
-					var Ct = (0, R.getPermission)(Q)(ke);
+						xt = (0, P.getZone)(Y);
+					if (v(Y)) return (0, i.WL)(Y, (0, i.W9)(nt, i.ZZ[ft]), (0, i.j)(xt == null ? void 0 : xt.id));
+					var Ct = (0, R.getPermission)(Y)(ke);
 					return Ct[ft]
 				},
-				B = function(Q, ke, nt) {
+				B = function(Y, ke, nt) {
 					var ft = arguments.length > 3 && arguments[3] !== void 0 ? arguments[3] : "read",
-						xt = (0, P.getZone)(Q),
+						xt = (0, P.getZone)(Y),
 						Ct = i.zs.includes(nt);
-					if (v(Q)) return (0, i.WL)(Q, Ct ? nt : (0, i.my)(nt, i.ZZ[ft === "edit" ? "update" : ft]), (0, i.j)(xt == null ? void 0 : xt.id));
-					var ht = (0, R.getPermission)(Q)(ke);
+					if (v(Y)) return (0, i.WL)(Y, Ct ? nt : (0, i.my)(nt, i.ZZ[ft === "edit" ? "update" : ft]), (0, i.j)(xt == null ? void 0 : xt.id));
+					var ht = (0, R.getPermission)(Y)(ke);
 					return ht[ft === "update" ? "edit" : ft]
 				},
-				E = function(Q) {
-					return !!(0, s._Q)(Q)
+				E = function(Y) {
+					return !!(0, s._Q)(Y)
 				},
-				f = function(Q) {
+				f = function(Y) {
 					return !!l.Eu.Nw.checkHasRegistrarAccess()
 				},
-				D = function(Q) {
-					return (0, a.hasAccountEntitlement)(Q, "rulesets.magic_transit_allowed")
+				D = function(Y) {
+					return (0, a.hasAccountEntitlement)(Y, "rulesets.magic_transit_allowed")
 				},
-				N = function(Q) {
-					return (0, a.hasAccountEntitlement)(Q, "flowtrackd.magic_custom_config_allowed")
+				N = function(Y) {
+					return (0, a.hasAccountEntitlement)(Y, "flowtrackd.magic_custom_config_allowed")
 				},
-				j = function(Q) {
-					return (0, a.hasAccountEntitlement)(Q, "rulesets.fw_global_rulesets_execute_ddos_l4_allowed")
+				j = function(Y) {
+					return (0, a.hasAccountEntitlement)(Y, "rulesets.fw_global_rulesets_execute_ddos_l4_allowed")
 				},
-				b = function(Q) {
-					return (0, R.getAccountFlipperFlag)(Q, "ddos_protection", "l4_rulesets")
+				b = function(Y) {
+					return (0, R.getAccountFlipperFlag)(Y, "ddos_protection", "l4_rulesets")
 				},
-				g = function(Q) {
-					return (0, a.hasAccountEntitlements)(Q, ["rulesets.owning_root_rulesets_allowed", "rulesets.fw_global_rulesets_execute_firewall_managed_cmr_allowed", "rulesets.fw_global_rulesets_execute_firewall_managed_cor_allowed"])
+				g = function(Y) {
+					return (0, a.hasAccountEntitlements)(Y, ["rulesets.owning_root_rulesets_allowed", "rulesets.fw_global_rulesets_execute_firewall_managed_cmr_allowed", "rulesets.fw_global_rulesets_execute_firewall_managed_cor_allowed"])
 				},
-				C = function(Q) {
-					return (0, P.getZoneFlipperFlag)(Q, "cache", "cache_reserve_beta")
+				C = function(Y) {
+					return (0, P.getZoneFlipperFlag)(Y, "cache", "cache_reserve_beta")
 				},
 				W = e("../react/common/selectors/userSelectors.ts"),
 				$ = e("../react/common/selectors/zoneGraphQLSelectors.ts"),
@@ -8851,8 +8851,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				fe = e("../../../../node_modules/@cloudflare/gates-redux/dist/index.mjs"),
 				X = e("../react/pages/security-center/selectors.ts"),
 				H = e("../react/utils/sso.ts"),
-				ae = function(Q) {
-					return de[Q]
+				ae = function(Y) {
+					return de[Y]
 				},
 				de = {
 					root: [{
@@ -8876,15 +8876,15 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						title: "navigation.profile.access_management",
 						url: "/access-management",
 						iconType: "lock",
-						hasPermission: function(Q) {
-							return !!(0, fe.z1)("oauth-access-management")(Q)
+						hasPermission: function(Y) {
+							return !!(0, fe.z1)("oauth-access-management")(Y)
 						}
 					}, {
 						title: "navigation.profile.authentication",
 						url: "/authentication",
 						iconType: "key",
-						hasPermission: function(Q) {
-							return !(0, H.n3)() && !(0, fe.z1)("oauth-access-management")(Q)
+						hasPermission: function(Y) {
+							return !(0, H.n3)() && !(0, fe.z1)("oauth-access-management")(Y)
 						}
 					}, {
 						title: "navigation.profile.api_tokens",
@@ -8894,8 +8894,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						title: "navigation.profile.sessions",
 						url: "/sessions",
 						iconType: "time",
-						hasPermission: function(Q) {
-							return !(0, fe.z1)("oauth-access-management")(Q)
+						hasPermission: function(Y) {
+							return !(0, fe.z1)("oauth-access-management")(Y)
 						}
 					}],
 					account: [{
@@ -8903,8 +8903,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						url: "/",
 						iconType: "internet-browser"
 					}, {
-						title: function(Q) {
-							return (0, fe.z1)("registrar-account-home-copy-experiment")(Q) === "registrar" ? "navigation.account.registrar" : "navigation.account.registrar.buy_domains"
+						title: function(Y) {
+							return (0, fe.z1)("registrar-account-home-copy-experiment")(Y) === "registrar" ? "navigation.account.registrar" : "navigation.account.registrar.buy_domains"
 						},
 						url: "",
 						iconType: "registrar-logo",
@@ -8914,15 +8914,15 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						}, {
 							title: "navigation.account.registrar.transfer_domains",
 							url: "/domains/transfer",
-							hasPermission: function(Q) {
-								return f(Q)
+							hasPermission: function(Y) {
+								return f(Y)
 							}
 						}, {
 							title: "navigation.account.registrar.register_domains",
 							url: "/domains/register",
 							labels: ["new"],
-							hasPermission: function(Q) {
-								return f(Q)
+							hasPermission: function(Y) {
+								return f(Y)
 							}
 						}]
 					}, {
@@ -8933,26 +8933,26 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 							title: "navigation.account.account_analytics",
 							url: "/analytics",
 							labels: ["beta"],
-							hasPermission: function(Q) {
-								return S(Q)
+							hasPermission: function(Y) {
+								return S(Y)
 							}
 						}, {
 							title: "navigation.account.network_analytics",
 							url: "/network-analytics",
-							hasPermission: function(Q) {
-								return S(Q) && !!(0, R.getAccountFlipperFlag)(Q, "account_analytics", "dos_analytics")
+							hasPermission: function(Y) {
+								return S(Y) && !!(0, R.getAccountFlipperFlag)(Y, "account_analytics", "dos_analytics")
 							}
 						}, {
 							title: "navigation.account.web_analytics",
 							url: "/web-analytics",
-							hasPermission: function(Q) {
-								return S(Q)
+							hasPermission: function(Y) {
+								return S(Y)
 							}
 						}, {
 							title: "navigation.account.carbon",
 							url: "/carbon",
-							hasPermission: function(Q) {
-								return S(Q) && !!(0, R.getAccountFlipperFlag)(Q, "account_analytics", "carbon_dashboard")
+							hasPermission: function(Y) {
+								return S(Y) && !!(0, R.getAccountFlipperFlag)(Y, "account_analytics", "carbon_dashboard")
 							}
 						}]
 					}, {
@@ -8960,22 +8960,22 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						url: "/http-applications",
 						iconType: "applications",
 						labels: ["beta"],
-						hasPermission: function(Q) {
-							return S(Q) && (0, le.dU)(Q)
+						hasPermission: function(Y) {
+							return S(Y) && (0, le.dU)(Y)
 						}
 					}, {
 						title: "navigation.account.pages",
 						url: "/pages",
 						iconType: "pages-logo",
-						hasPermission: function(Q) {
-							return S(Q)
+						hasPermission: function(Y) {
+							return S(Y)
 						}
 					}, {
 						title: "navigation.account.workers",
 						url: "/workers",
 						iconType: "edgeworker",
-						hasPermission: function(Q) {
-							return S(Q)
+						hasPermission: function(Y) {
+							return S(Y)
 						},
 						pages: [{
 							title: "navigation.common.overview",
@@ -8983,8 +8983,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						}, {
 							title: "navigation.account.workers.custom_domains",
 							url: "/workers/custom-domains",
-							hasPermission: function(Q) {
-								return !!(0, R.getAccountFlipperFlag)(Q, "workers", "origin_workers") && !!(0, R.getAccountFlipperFlag)(Q, "workers", "triggers_ui")
+							hasPermission: function(Y) {
+								return !!(0, R.getAccountFlipperFlag)(Y, "workers", "origin_workers") && !!(0, R.getAccountFlipperFlag)(Y, "workers", "triggers_ui")
 							}
 						}, {
 							title: "navigation.account.workers.kv",
@@ -8993,8 +8993,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 							title: "navigation.account.workers.d1",
 							url: "/workers/d1",
 							labels: ["alpha"],
-							hasPermission: function(Q) {
-								return !!(0, R.getAccountFlipperFlag)(Q, "workers", "cfsql_bindings")
+							hasPermission: function(Y) {
+								return !!(0, R.getAccountFlipperFlag)(Y, "workers", "cfsql_bindings")
 							}
 						}, {
 							title: "navigation.account.workers.plans",
@@ -9006,38 +9006,38 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						iconType: "r2",
 						testId: "sidenav-r2-link",
 						labels: ["beta"],
-						hasPermission: function(Q) {
-							return S(Q)
+						hasPermission: function(Y) {
+							return S(Y)
 						}
 					}, {
 						title: "navigation.account.firewall_rulesets",
 						url: "/rulesets",
 						iconType: "shield",
-						hasPermission: function(Q) {
-							return S(Q) && !!(g(Q) || D(Q))
+						hasPermission: function(Y) {
+							return S(Y) && !!(g(Y) || D(Y))
 						},
 						pages: [{
 							title: "navigation.account.firewall_rulesets.ddos",
 							url: "/rulesets",
-							hasPermission: function(Q) {
-								var ke = !!b(Q) && !!j(Q);
-								return !!N(Q) || ke
+							hasPermission: function(Y) {
+								var ke = !!b(Y) && !!j(Y);
+								return !!N(Y) || ke
 							}
 						}, {
 							title: "navigation.account.firewall_rulesets.application_firewall",
-							url: function(Q) {
-								var ke = !!N(Q) || !!b(Q) && !!j(Q);
+							url: function(Y) {
+								var ke = !!N(Y) || !!b(Y) && !!j(Y);
 								return ke ? "/rulesets/managed" : "/rulesets"
 							},
-							hasPermission: function(Q) {
-								return !!g(Q)
+							hasPermission: function(Y) {
+								return !!g(Y)
 							}
 						}, {
 							title: "navigation.account.firewall_rulesets.magic_firewall",
 							url: "/rulesets/magic_firewall",
 							testId: "account-magic-firewall-rules",
-							hasPermission: function(Q) {
-								return !!D(Q)
+							hasPermission: function(Y) {
+								return !!D(Y)
 							}
 						}, {
 							title: "navigation.account.firewall_rulesets.browse_rulesets",
@@ -9047,27 +9047,27 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						title: "navigation.account.stream",
 						url: "/stream",
 						iconType: "stream",
-						hasPermission: function(Q) {
-							return S(Q)
+						hasPermission: function(Y) {
+							return S(Y)
 						},
 						pages: [{
 							title: "navigation.account.stream.videos",
 							url: "/stream/videos",
-							hasPermission: function(Q) {
-								return E(Q)
+							hasPermission: function(Y) {
+								return E(Y)
 							}
 						}, {
 							title: "navigation.account.stream.live_inputs",
 							url: "/stream/inputs",
-							hasPermission: function(Q) {
-								return E(Q)
+							hasPermission: function(Y) {
+								return E(Y)
 							}
 						}, {
 							title: "navigation.common.analytics",
 							url: "/stream/analytics",
 							labels: ["new"],
-							hasPermission: function(Q) {
-								return E(Q)
+							hasPermission: function(Y) {
+								return E(Y)
 							}
 						}]
 					}, {
@@ -9075,45 +9075,45 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						url: "/images",
 						iconType: "image",
 						labels: ["new"],
-						hasPermission: function(Q) {
-							return S(Q) && !!(0, R.getAccountFlipperFlag)(Q, "cloudflare_images", "early_release_access")
+						hasPermission: function(Y) {
+							return S(Y) && !!(0, R.getAccountFlipperFlag)(Y, "cloudflare_images", "early_release_access")
 						}
 					}, {
 						title: "navigation.account.security_center",
 						url: "/security-center",
 						iconType: "product-security-center",
-						hasPermission: function(Q) {
-							return S(Q) && (0, X.sL)(Q)
+						hasPermission: function(Y) {
+							return S(Y) && (0, X.sL)(Y)
 						},
 						pages: [{
 							title: "navigation.account.security_center.security_insights",
 							url: "/security-center",
-							hasPermission: function(Q) {
-								return S(Q) && (0, X.sL)(Q)
+							hasPermission: function(Y) {
+								return S(Y) && (0, X.sL)(Y)
 							}
 						}, {
 							title: "navigation.account.security_center.infrastructure",
 							url: "/security-center/inventory",
-							hasPermission: function(Q) {
-								return S(Q) && (0, X.sL)(Q)
+							hasPermission: function(Y) {
+								return S(Y) && (0, X.sL)(Y)
 							}
 						}, {
 							title: "navigation.account.security_center.investigate",
 							url: "/security-center/investigate",
-							hasPermission: function(Q) {
-								return S(Q) && (0, X.TT)(Q)
+							hasPermission: function(Y) {
+								return S(Y) && (0, X.TT)(Y)
 							}
 						}, {
 							title: "navigation.account.security_center.reports",
 							url: "/security-center/reports",
-							hasPermission: function(Q) {
-								return S(Q) && (0, X.jD)(Q)
+							hasPermission: function(Y) {
+								return S(Y) && (0, X.jD)(Y)
 							}
 						}, {
 							title: "navigation.account.security_center.brand_protection",
 							url: "/security-center/brand-protection",
-							hasPermission: function(Q) {
-								return S(Q) && (0, X.BU)(Q)
+							hasPermission: function(Y) {
+								return S(Y) && (0, X.BU)(Y)
 							}
 						}]
 					}, {
@@ -9121,46 +9121,46 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						url: "https://dash.teams.cloudflare.com",
 						iconType: "cloudflare-zero-trust",
 						labels: ["external-link"],
-						hasPermission: function(Q) {
-							return S(Q)
+						hasPermission: function(Y) {
+							return S(Y)
 						}
 					}, {
 						title: "navigation.account.ip_prefixes",
 						url: "/ip-prefixes",
 						iconType: "network",
 						labels: ["new"],
-						hasPermission: function(Q) {
-							return S(Q) && !!(0, R.getAccountFlipperFlag)(Q, "addressing", "ip_prefixes")
+						hasPermission: function(Y) {
+							return S(Y) && !!(0, R.getAccountFlipperFlag)(Y, "addressing", "ip_prefixes")
 						}
 					}, {
 						title: "navigation.account.magic_transit",
 						url: "/magic-transit",
 						iconType: "magic-transit-logo",
-						hasPermission: function(Q) {
-							return S(Q) && !!(0, R.getAccountFlipperFlag)(Q, "magic_transit", "mt_home")
+						hasPermission: function(Y) {
+							return S(Y) && !!(0, R.getAccountFlipperFlag)(Y, "magic_transit", "mt_home")
 						}
 					}, {
 						title: "navigation.account.magic_wan",
 						url: "/magic-wan",
 						iconType: "cloudflare-magic-wan",
 						labels: ["new"],
-						hasPermission: function(Q) {
-							return S(Q) && !!(0, R.getAccountFlipperFlag)(Q, "magic_wan", "mw_home")
+						hasPermission: function(Y) {
+							return S(Y) && !!(0, R.getAccountFlipperFlag)(Y, "magic_wan", "mw_home")
 						}
 					}, {
 						title: "account.bulk_redirects.title",
 						url: "/bulk-redirects",
 						iconType: "filter",
 						labels: ["beta"],
-						hasPermission: function(Q) {
-							return S(Q)
+						hasPermission: function(Y) {
+							return S(Y)
 						}
 					}, {
 						title: "navigation.account.notifications",
 						url: "/notifications",
 						iconType: "notifications",
-						hasPermission: function(Q) {
-							return S(Q)
+						hasPermission: function(Y) {
+							return S(Y)
 						}
 					}, {
 						title: "navigation.account.manage_account",
@@ -9172,29 +9172,29 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 							title: "navigation.account.members",
 							url: "/members",
 							testId: "account-homepage-members",
-							hasPermission: function(Q) {
-								return S(Q)
+							hasPermission: function(Y) {
+								return S(Y)
 							}
 						}, {
 							title: "navigation.account.audit_log",
 							url: "/audit-log",
 							testId: "account-homepage-audit-logs",
-							hasPermission: function(Q) {
-								return (0, m.b)(Q) ? S(Q) : (0, R.getPermission)(Q)("auditlogs").read
+							hasPermission: function(Y) {
+								return (0, m.b)(Y) ? S(Y) : (0, R.getPermission)(Y)("auditlogs").read
 							}
 						}, {
 							title: "navigation.account.billing",
 							url: "/billing",
 							testId: "account-homepage-billing",
-							hasPermission: function(Q) {
-								return S(Q)
+							hasPermission: function(Y) {
+								return S(Y)
 							}
 						}, {
 							title: "navigation.account.configurations",
 							url: "/configurations",
 							testId: "account-homepage-configurations",
-							hasPermission: function(Q) {
-								return S(Q)
+							hasPermission: function(Y) {
+								return S(Y)
 							}
 						}]
 					}],
@@ -9208,40 +9208,40 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						url: "/analytics",
 						iconType: "chart",
 						testId: "zone-navigation-link-analytics",
-						hasPermission: function(Q) {
-							return B(Q, "analytics", "analytics")
+						hasPermission: function(Y) {
+							return B(Y, "analytics", "analytics")
 						},
 						pages: [{
 							title: "navigation.zone.analytics.traffic",
 							url: "/analytics/traffic",
-							hasPermission: function(Q) {
-								return !(0, a.zoneIsDNSOnly)(Q)
+							hasPermission: function(Y) {
+								return !(0, a.zoneIsDNSOnly)(Y)
 							}
 						}, {
 							title: "navigation.zone.analytics.security",
 							url: "/analytics/security",
-							hasPermission: function(Q) {
-								return !(0, a.zoneIsDNSOnly)(Q)
+							hasPermission: function(Y) {
+								return !(0, a.zoneIsDNSOnly)(Y)
 							}
 						}, {
 							title: "navigation.zone.analytics.performance",
 							url: "/analytics/performance",
-							hasPermission: function(Q) {
-								return !(0, a.zoneIsDNSOnly)(Q)
+							hasPermission: function(Y) {
+								return !(0, a.zoneIsDNSOnly)(Y)
 							}
 						}, {
 							title: "navigation.zone.analytics.origin_reachability",
 							url: "/analytics/originReachability",
-							hasPermission: function(Q) {
-								var ke = (0, P.getZone)(Q);
-								return ke ? !!(!(0, a.zoneIsDNSOnly)(Q) && !!(0, P.getZoneFlipperFlag)(Q, "origin_reachability_dash", "dash_view") && (0, P.isPlanAtLeast)(ke, "enterprise") && !!(0, $.getZoneGraphQLSettingEnabled)(Q, "httpRequestsAdaptiveGroups")) : !1
+							hasPermission: function(Y) {
+								var ke = (0, P.getZone)(Y);
+								return ke ? !!(!(0, a.zoneIsDNSOnly)(Y) && !!(0, P.getZoneFlipperFlag)(Y, "origin_reachability_dash", "dash_view") && (0, P.isPlanAtLeast)(ke, "enterprise") && !!(0, $.getZoneGraphQLSettingEnabled)(Y, "httpRequestsAdaptiveGroups")) : !1
 							}
 						}, {
 							title: "navigation.zone.analytics.edge_reachability",
 							url: "/analytics/edgeReachability",
-							hasPermission: function(Q) {
-								var ke = (0, P.getZone)(Q);
-								return ke ? !!(!(0, a.zoneIsDNSOnly)(Q) && !!(0, P.getZoneFlipperFlag)(Q, "edge_reachability_dash", "dash_view") && (0, P.isPlanAtLeast)(ke, "enterprise") && !!(0, $.getZoneGraphQLSettingEnabled)(Q, "nelReportsAdaptiveGroups")) : !1
+							hasPermission: function(Y) {
+								var ke = (0, P.getZone)(Y);
+								return ke ? !!(!(0, a.zoneIsDNSOnly)(Y) && !!(0, P.getZoneFlipperFlag)(Y, "edge_reachability_dash", "dash_view") && (0, P.isPlanAtLeast)(ke, "enterprise") && !!(0, $.getZoneGraphQLSettingEnabled)(Y, "nelReportsAdaptiveGroups")) : !1
 							}
 						}, {
 							title: "navigation.zone.analytics.dns",
@@ -9249,20 +9249,20 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						}, {
 							title: "navigation.zone.analytics.workers",
 							url: "/analytics/workers",
-							hasPermission: function(Q) {
-								return !(0, a.zoneIsDNSOnly)(Q)
+							hasPermission: function(Y) {
+								return !(0, a.zoneIsDNSOnly)(Y)
 							}
 						}, {
 							title: "navigation.zone.analytics.logs",
 							url: "/analytics/logs",
-							hasPermission: function(Q) {
-								return Object.values((0, J.H_)(Q)).some(Boolean)
+							hasPermission: function(Y) {
+								return Object.values((0, J.H_)(Y)).some(Boolean)
 							}
 						}, {
 							title: "navigation.zone.analytics.instant_logs",
 							url: "/analytics/instant-logs",
-							hasPermission: function(Q) {
-								return !(0, a.zoneIsDNSOnly)(Q) && !!(0, P.getZoneFlipperFlag)(Q, "logs", "instant_log") && !!(0, a.getZoneEntitlement)(Q, "logpush.max_instant_logs_jobs_allowed")
+							hasPermission: function(Y) {
+								return !(0, a.zoneIsDNSOnly)(Y) && !!(0, P.getZoneFlipperFlag)(Y, "logs", "instant_log") && !!(0, a.getZoneEntitlement)(Y, "logpush.max_instant_logs_jobs_allowed")
 							}
 						}]
 					}, {
@@ -9270,8 +9270,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						url: "/dns",
 						iconType: "reliability-dns",
 						testId: "zone-navigation-link-dns",
-						hasPermission: function(Q) {
-							return B(Q, "dns_records", "dns-record")
+						hasPermission: function(Y) {
+							return B(Y, "dns_records", "dns-record")
 						}
 					}, {
 						title: "navigation.zone.email",
@@ -9279,19 +9279,19 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						iconType: "email-forwarding",
 						testId: "zone-navigation-link-email",
 						labels: ["beta"],
-						hasPermission: function(Q) {
-							return !(0, a.zoneIsDNSOnly)(Q) && B(Q, "dns_records", "dns-record")
+						hasPermission: function(Y) {
+							return !(0, a.zoneIsDNSOnly)(Y) && B(Y, "dns_records", "dns-record")
 						}
 					}, {
 						title: "navigation.zone.spectrum",
 						url: "/spectrum",
 						iconType: "spectrum",
 						testId: "zone-navigation-link-spectrum",
-						hasPermission: function(Q) {
-							var ke = (0, P.getZone)(Q);
-							if ((0, a.zoneIsDNSOnly)(Q) || !U(Q, "zone_settings", "spectrum.app") || !ke) return !1;
-							var nt = !!((0, W.userHasEntZones)(Q) || (0, P.userHasDelegatedEntZones)(Q)),
-								ft = !!(0, P.getZoneFlipperFlag)(Q, "spectrum", "enabled"),
+						hasPermission: function(Y) {
+							var ke = (0, P.getZone)(Y);
+							if ((0, a.zoneIsDNSOnly)(Y) || !U(Y, "zone_settings", "spectrum.app") || !ke) return !1;
+							var nt = !!((0, W.userHasEntZones)(Y) || (0, P.userHasDelegatedEntZones)(Y)),
+								ft = !!(0, P.getZoneFlipperFlag)(Y, "spectrum", "enabled"),
 								xt = !!(0, P.isFree)(ke);
 							return ft || nt || !xt
 						}
@@ -9300,8 +9300,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						url: "/ssl-tls",
 						iconType: "lock",
 						testId: "zone-navigation-link-ssl-tls",
-						hasPermission: function(Q) {
-							return !(0, a.zoneIsDNSOnly)(Q) && B(Q, "ssl", "ssl.cert")
+						hasPermission: function(Y) {
+							return !(0, a.zoneIsDNSOnly)(Y) && B(Y, "ssl", "ssl.cert")
 						},
 						pages: [{
 							title: "navigation.common.overview",
@@ -9312,14 +9312,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						}, {
 							title: "navigation.zone.ssl-tls.staging_certs",
 							url: "/ssl-tls/staging-certificates",
-							hasPermission: function(Q) {
-								return (0, a.hasAccountEntitlement)(Q, "staging_certificates")
+							hasPermission: function(Y) {
+								return (0, a.hasAccountEntitlement)(Y, "staging_certificates")
 							}
 						}, {
 							title: "navigation.zone.ssl-tls.client_certs",
 							url: "/ssl-tls/client-certificates",
-							hasPermission: function(Q) {
-								return !!(0, fe.z1)("client-certificates")(Q) || !!(0, P.getZoneFlipperFlag)(Q, "ssl", "client_certificates")
+							hasPermission: function(Y) {
+								return !!(0, fe.z1)("client-certificates")(Y) || !!(0, P.getZoneFlipperFlag)(Y, "ssl", "client_certificates")
 							}
 						}, {
 							title: "navigation.zone.ssl-tls.origin_server",
@@ -9333,8 +9333,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						url: "/security",
 						iconType: "shield",
 						testId: "zone-navigation-link-security",
-						hasPermission: function(Q) {
-							return !(0, a.zoneIsDNSOnly)(Q) && B(Q, "waf", "firewall.rule")
+						hasPermission: function(Y) {
+							return !(0, a.zoneIsDNSOnly)(Y) && B(Y, "waf", "firewall.rule")
 						},
 						pages: [{
 							title: "navigation.common.overview",
@@ -9348,21 +9348,21 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						}, {
 							title: "navigation.zone.security.bots",
 							url: "/security/bots",
-							hasPermission: function(Q) {
-								return !!(0, R.getAccountFlipperFlag)(Q, "bots", "paygo")
+							hasPermission: function(Y) {
+								return !!(0, R.getAccountFlipperFlag)(Y, "bots", "paygo")
 							}
 						}, {
 							title: "navigation.zone.security.data",
 							url: "/security/data",
-							hasPermission: function(Q) {
-								return (0, a.hasZoneEntitlement)(Q, "rulesets.fw_global_rulesets_execute_firewall_managed_cramr_allowed")
+							hasPermission: function(Y) {
+								return (0, a.hasZoneEntitlement)(Y, "rulesets.fw_global_rulesets_execute_firewall_managed_cramr_allowed")
 							}
 						}, {
 							title: "navigation.zone.security.api_shield",
 							url: "/security/api-shield",
-							hasPermission: function(Q) {
-								var ke = (0, P.getZone)(Q);
-								return ke ? !!(0, P.getZoneFlipperFlag)(Q, "firewall", "api_shield_tab") && (0, P.isPlanAtLeast)(ke, "business") : !1
+							hasPermission: function(Y) {
+								var ke = (0, P.getZone)(Y);
+								return ke ? !!(0, P.getZoneFlipperFlag)(Y, "firewall", "api_shield_tab") && (0, P.isPlanAtLeast)(ke, "business") : !1
 							}
 						}, {
 							title: "navigation.zone.security.ddos",
@@ -9376,16 +9376,16 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						url: "/access",
 						iconType: "cloudflare-access",
 						testId: "zone-navigation-link-access",
-						hasPermission: function(Q) {
-							return !(0, a.zoneIsDNSOnly)(Q) && (U(Q, "access", "access.app") || U(Q, "access", "access.zone.app"))
+						hasPermission: function(Y) {
+							return !(0, a.zoneIsDNSOnly)(Y) && (U(Y, "access", "access.app") || U(Y, "access", "access.zone.app"))
 						}
 					}, {
 						title: "navigation.zone.speed",
 						url: "/speed",
 						iconType: "bolt",
 						testId: "zone-navigation-link-speed",
-						hasPermission: function(Q) {
-							return !(0, a.zoneIsDNSOnly)(Q) && B(Q, "zone_settings", "setting")
+						hasPermission: function(Y) {
+							return !(0, a.zoneIsDNSOnly)(Y) && B(Y, "zone_settings", "setting")
 						},
 						pages: [{
 							title: "navigation.common.overview",
@@ -9402,8 +9402,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						url: "/caching",
 						iconType: "drive",
 						testId: "zone-navigation-link-caching",
-						hasPermission: function(Q) {
-							return !(0, a.zoneIsDNSOnly)(Q) && B(Q, "zone_settings", "setting")
+						hasPermission: function(Y) {
+							return !(0, a.zoneIsDNSOnly)(Y) && B(Y, "zone_settings", "setting")
 						},
 						pages: [{
 							title: "navigation.common.overview",
@@ -9414,15 +9414,15 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						}, {
 							title: "navigation.zone.caching.tiered_cache",
 							url: "/caching/tiered-cache",
-							hasPermission: function(Q) {
-								return S(Q)
+							hasPermission: function(Y) {
+								return S(Y)
 							}
 						}, {
 							title: "navigation.zone.caching.cache_reserve",
 							url: "/caching/cache-reserve",
 							labels: ["beta"],
-							hasPermission: function(Q) {
-								return !!C(Q)
+							hasPermission: function(Y) {
+								return !!C(Y)
 							}
 						}]
 					}, {
@@ -9430,16 +9430,16 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						url: "/workers",
 						iconType: "edgeworker",
 						testId: "zone-navigation-link-workers",
-						hasPermission: function(Q) {
-							return !(0, a.zoneIsDNSOnly)(Q) && U(Q, "worker", "worker.route")
+						hasPermission: function(Y) {
+							return !(0, a.zoneIsDNSOnly)(Y) && U(Y, "worker", "worker.route")
 						}
 					}, {
 						title: "navigation.zone.rules",
 						url: "/rules",
 						iconType: "filter",
 						testId: "zone-navigation-link-page-rules",
-						hasPermission: function(Q) {
-							return !(0, a.zoneIsDNSOnly)(Q) && B(Q, "zone_settings", "page-rule")
+						hasPermission: function(Y) {
+							return !(0, a.zoneIsDNSOnly)(Y) && B(Y, "zone_settings", "page-rule")
 						},
 						pages: [{
 							title: "navigation.zone.rules.page_rules",
@@ -9450,18 +9450,18 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						}, {
 							title: "account.bulk_redirects.title",
 							labels: ["beta", "absolute"],
-							url: function(Q) {
-								var ke = (0, R.getAccount)(Q);
+							url: function(Y) {
+								var ke = (0, R.getAccount)(Y);
 								return "/".concat(ke == null ? void 0 : ke.id, "/bulk-redirects")
 							},
-							hasPermission: function(Q) {
-								return S(Q)
+							hasPermission: function(Y) {
+								return S(Y)
 							}
 						}, {
 							title: "navigation.zone.rules.settings",
 							url: "/rules/settings",
-							hasPermission: function(Q) {
-								return !!(0, P.getZoneFlipperFlag)(Q, "page_rules", "normalization") && B(Q, "waf", "page-rule", "update")
+							hasPermission: function(Y) {
+								return !!(0, P.getZoneFlipperFlag)(Y, "page_rules", "normalization") && B(Y, "waf", "page-rule", "update")
 							}
 						}]
 					}, {
@@ -9469,58 +9469,58 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						url: "/network",
 						iconType: "network",
 						testId: "zone-navigation-link-network",
-						hasPermission: function(Q) {
-							return !(0, a.zoneIsDNSOnly)(Q) && B(Q, "zone_settings", "setting")
+						hasPermission: function(Y) {
+							return !(0, a.zoneIsDNSOnly)(Y) && B(Y, "zone_settings", "setting")
 						}
 					}, {
 						title: "navigation.zone.traffic",
 						url: "/traffic",
 						iconType: "reliability-load-balancer",
 						testId: "zone-navigation-link-traffic",
-						hasPermission: function(Q) {
-							return B(Q, "lb", "load-balancer")
+						hasPermission: function(Y) {
+							return B(Y, "lb", "load-balancer")
 						},
 						pages: [{
 							title: "navigation.zone.traffic.argo",
 							url: "/traffic",
-							hasPermission: function(Q) {
-								return !(0, a.zoneIsDNSOnly)(Q)
+							hasPermission: function(Y) {
+								return !(0, a.zoneIsDNSOnly)(Y)
 							}
 						}, {
 							title: "navigation.zone.traffic.argo_tunnel",
 							url: "/traffic/argo-tunnel",
-							hasPermission: function(Q) {
-								return !(0, a.zoneIsDNSOnly)(Q)
+							hasPermission: function(Y) {
+								return !(0, a.zoneIsDNSOnly)(Y)
 							}
 						}, {
 							title: "navigation.zone.traffic.load_balancing",
 							url: "/traffic/load-balancing",
-							hasPermission: function(Q) {
-								return S(Q)
+							hasPermission: function(Y) {
+								return S(Y)
 							}
 						}, {
 							title: "navigation.zone.traffic.load_balancing_analytics",
 							url: "/traffic/load-balancing-analytics",
-							hasPermission: function(Q) {
-								return S(Q)
+							hasPermission: function(Y) {
+								return S(Y)
 							}
 						}, {
 							title: "navigation.zone.traffic.health_checks",
 							url: "/traffic/health-checks",
-							hasPermission: function(Q) {
-								return !(0, a.zoneIsDNSOnly)(Q)
+							hasPermission: function(Y) {
+								return !(0, a.zoneIsDNSOnly)(Y)
 							}
 						}, {
 							title: "navigation.zone.traffic.health_check_analytics",
 							url: "/traffic/health-check-analytics",
-							hasPermission: function(Q) {
-								return !(0, a.zoneIsDNSOnly)(Q) && !!(0, $.getZoneGraphQLSettingEnabled)(Q, "healthCheckEventsAdaptiveGroups")
+							hasPermission: function(Y) {
+								return !(0, a.zoneIsDNSOnly)(Y) && !!(0, $.getZoneGraphQLSettingEnabled)(Y, "healthCheckEventsAdaptiveGroups")
 							}
 						}, {
 							title: "navigation.zone.traffic.waiting_rooms",
 							url: "/traffic/waiting-rooms",
-							hasPermission: function(Q) {
-								return !(0, a.zoneIsDNSOnly)(Q) && ((0, a.hasZoneEntitlement)(Q, "waiting_rooms.allowed") || !!(0, P.getZoneFlipperFlag)(Q, "waitingroomaccessfeatureflipper", "waiting_rooms_ga"))
+							hasPermission: function(Y) {
+								return !(0, a.zoneIsDNSOnly)(Y) && ((0, a.hasZoneEntitlement)(Y, "waiting_rooms.allowed") || !!(0, P.getZoneFlipperFlag)(Y, "waitingroomaccessfeatureflipper", "waiting_rooms_ga"))
 							}
 						}]
 					}, {
@@ -9528,37 +9528,37 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						url: "/custom-pages",
 						iconType: "wrench",
 						testId: "zone-navigation-link-custom-pages",
-						hasPermission: function(Q) {
-							return !(0, a.zoneIsDNSOnly)(Q) && B(Q, "zone_settings", "custom-page")
+						hasPermission: function(Y) {
+							return !(0, a.zoneIsDNSOnly)(Y) && B(Y, "zone_settings", "custom-page")
 						}
 					}, {
 						title: "navigation.zone.apps",
 						url: "/apps",
 						iconType: "platform-apps",
 						testId: "zone-navigation-link-apps",
-						hasPermission: function(Q) {
-							return !(0, a.zoneIsDNSOnly)(Q) && B(Q, "app", "com.cloudflare.api.app.manage", "edit")
+						hasPermission: function(Y) {
+							return !(0, a.zoneIsDNSOnly)(Y) && B(Y, "app", "com.cloudflare.api.app.manage", "edit")
 						}
 					}, {
 						title: "navigation.zone.scrape_shield",
 						url: "/content-protection",
 						iconType: "file",
 						testId: "zone-navigation-link-content-protection",
-						hasPermission: function(Q) {
-							return !(0, a.zoneIsDNSOnly)(Q) && B(Q, "zone_settings", "setting")
+						hasPermission: function(Y) {
+							return !(0, a.zoneIsDNSOnly)(Y) && B(Y, "zone_settings", "setting")
 						}
 					}, {
 						title: "navigation.zone.zaraz",
 						url: "/zaraz",
-						labels: function(Q) {
+						labels: function(Y) {
 							var ke = [],
-								nt = (0, P.getZone)(Q);
+								nt = (0, P.getZone)(Y);
 							return nt && !(0, P.isPlanAtLeast)(nt, "pro") && ke.push("beta"), ke
 						},
 						iconType: "zaraz",
 						testId: "zone-navigation-link-zaraz",
-						hasPermission: function(Q) {
-							return !(0, a.zoneIsDNSOnly)(Q) && B(Q, "zaraz", "zaraz")
+						hasPermission: function(Y) {
+							return !(0, a.zoneIsDNSOnly)(Y) && B(Y, "zaraz", "zaraz")
 						},
 						pages: [{
 							title: "navigation.zone.zaraz.tools",
@@ -9575,16 +9575,16 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						url: "/web3",
 						iconType: "web3",
 						labels: ["new"],
-						hasPermission: function(Q) {
-							return !(0, a.zoneIsDNSOnly)(Q)
+						hasPermission: function(Y) {
+							return !(0, a.zoneIsDNSOnly)(Y)
 						}
 					}],
 					application: [{
 						title: "navigation.zone.ssl-tls",
 						url: "/ssl-tls",
 						iconType: "lock",
-						hasPermission: function(Q) {
-							return !(0, a.zoneIsDNSOnly)(Q) && B(Q, "ssl", "ssl.cert")
+						hasPermission: function(Y) {
+							return !(0, a.zoneIsDNSOnly)(Y) && B(Y, "ssl", "ssl.cert")
 						},
 						pages: [{
 							title: "navigation.common.overview",
@@ -9597,8 +9597,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						title: "navigation.zone.security",
 						url: "/security/waf",
 						iconType: "shield",
-						hasPermission: function(Q) {
-							return !(0, a.zoneIsDNSOnly)(Q) && B(Q, "waf", "firewall.rule")
+						hasPermission: function(Y) {
+							return !(0, a.zoneIsDNSOnly)(Y) && B(Y, "waf", "firewall.rule")
 						},
 						pages: [{
 							title: "navigation.zone.security.waf",
@@ -9606,8 +9606,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						}, {
 							title: "navigation.zone.security.bots",
 							url: "/security/bots",
-							hasPermission: function(Q) {
-								return !!(0, R.getAccountFlipperFlag)(Q, "bots", "paygo")
+							hasPermission: function(Y) {
+								return !!(0, R.getAccountFlipperFlag)(Y, "bots", "paygo")
 							}
 						}, {
 							title: "navigation.zone.security.ddos",
@@ -9620,8 +9620,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						title: "navigation.zone.speed",
 						url: "/speed/optimization",
 						iconType: "bolt",
-						hasPermission: function(Q) {
-							return !(0, a.zoneIsDNSOnly)(Q) && B(Q, "zone_settings", "setting")
+						hasPermission: function(Y) {
+							return !(0, a.zoneIsDNSOnly)(Y) && B(Y, "zone_settings", "setting")
 						},
 						pages: [{
 							title: "navigation.zone.speed.optimization",
@@ -9631,14 +9631,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						title: "navigation.zone.caching",
 						url: "/caching/tiered-cache",
 						iconType: "drive",
-						hasPermission: function(Q) {
-							return !(0, a.zoneIsDNSOnly)(Q) && B(Q, "zone_settings", "setting")
+						hasPermission: function(Y) {
+							return !(0, a.zoneIsDNSOnly)(Y) && B(Y, "zone_settings", "setting")
 						},
 						pages: [{
 							title: "navigation.zone.caching.tiered_cache",
 							url: "/caching/tiered-cache",
-							hasPermission: function(Q) {
-								return S(Q)
+							hasPermission: function(Y) {
+								return S(Y)
 							}
 						}, {
 							title: "navigation.zone.caching.configuration",
@@ -9648,15 +9648,15 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						title: "navigation.account.workers",
 						url: "/workers",
 						iconType: "edgeworker",
-						hasPermission: function(Q) {
-							return !(0, a.zoneIsDNSOnly)(Q) && B(Q, "worker", "worker.route")
+						hasPermission: function(Y) {
+							return !(0, a.zoneIsDNSOnly)(Y) && B(Y, "worker", "worker.route")
 						}
 					}, {
 						title: "navigation.zone.rules",
 						url: "/rules",
 						iconType: "filter",
-						hasPermission: function(Q) {
-							return !(0, a.zoneIsDNSOnly)(Q) && B(Q, "zone_settings", "page-rule")
+						hasPermission: function(Y) {
+							return !(0, a.zoneIsDNSOnly)(Y) && B(Y, "zone_settings", "page-rule")
 						},
 						pages: [{
 							title: "navigation.zone.rules.page_rules",
@@ -9664,50 +9664,50 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						}, {
 							title: "navigation.zone.rules.transform_rules",
 							url: "/rules/transform-rules",
-							hasPermission: function(Q) {
-								return B(Q, "waf", "page-rule", "update")
+							hasPermission: function(Y) {
+								return B(Y, "waf", "page-rule", "update")
 							}
 						}, {
 							title: "navigation.zone.rules.settings",
 							url: "/rules/settings",
-							hasPermission: function(Q) {
-								return !!(0, P.getZoneFlipperFlag)(Q, "page_rules", "normalization") && B(Q, "waf", "page-rule", "update")
+							hasPermission: function(Y) {
+								return !!(0, P.getZoneFlipperFlag)(Y, "page_rules", "normalization") && B(Y, "waf", "page-rule", "update")
 							}
 						}]
 					}, {
 						title: "navigation.zone.network",
 						url: "/network",
 						iconType: "network",
-						hasPermission: function(Q) {
-							return !(0, a.zoneIsDNSOnly)(Q) && B(Q, "zone_settings", "setting")
+						hasPermission: function(Y) {
+							return !(0, a.zoneIsDNSOnly)(Y) && B(Y, "zone_settings", "setting")
 						}
 					}, {
 						title: "navigation.zone.traffic",
 						url: "/traffic",
 						iconType: "reliability-load-balancer",
-						hasPermission: function(Q) {
-							return B(Q, "lb", "load-balancer")
+						hasPermission: function(Y) {
+							return B(Y, "lb", "load-balancer")
 						},
 						pages: [{
 							title: "navigation.zone.traffic.argo",
 							url: "/traffic",
-							hasPermission: function(Q) {
-								return !(0, a.zoneIsDNSOnly)(Q)
+							hasPermission: function(Y) {
+								return !(0, a.zoneIsDNSOnly)(Y)
 							}
 						}]
 					}, {
 						title: "navigation.zone.custom_pages",
 						url: "/custom-pages",
 						iconType: "wrench",
-						hasPermission: function(Q) {
-							return !(0, a.zoneIsDNSOnly)(Q) && B(Q, "zone_settings", "custom-page")
+						hasPermission: function(Y) {
+							return !(0, a.zoneIsDNSOnly)(Y) && B(Y, "zone_settings", "custom-page")
 						}
 					}, {
 						title: "navigation.zone.scrape_shield",
 						url: "/content-protection",
 						iconType: "file",
-						hasPermission: function(Q) {
-							return !(0, a.zoneIsDNSOnly)(Q) && B(Q, "zone_settings", "setting")
+						hasPermission: function(Y) {
+							return !(0, a.zoneIsDNSOnly)(Y) && B(Y, "zone_settings", "setting")
 						}
 					}]
 				};
@@ -9721,12 +9721,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`)
 			}
 
-			function be(ge, Q) {
+			function be(ge, Y) {
 				if (!!ge) {
-					if (typeof ge == "string") return V(ge, Q);
+					if (typeof ge == "string") return V(ge, Y);
 					var ke = Object.prototype.toString.call(ge).slice(8, -1);
 					if (ke === "Object" && ge.constructor && (ke = ge.constructor.name), ke === "Map" || ke === "Set") return Array.from(ge);
-					if (ke === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(ke)) return V(ge, Q)
+					if (ke === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(ke)) return V(ge, Y)
 				}
 			}
 
@@ -9738,31 +9738,31 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				if (Array.isArray(ge)) return V(ge)
 			}
 
-			function V(ge, Q) {
-				(Q == null || Q > ge.length) && (Q = ge.length);
-				for (var ke = 0, nt = new Array(Q); ke < Q; ke++) nt[ke] = ge[ke];
+			function V(ge, Y) {
+				(Y == null || Y > ge.length) && (Y = ge.length);
+				for (var ke = 0, nt = new Array(Y); ke < Y; ke++) nt[ke] = ge[ke];
 				return nt
 			}
-			var q = function(Q, ke) {
+			var q = function(Y, ke) {
 					var nt;
 					return !!(ke == null || (nt = ke.find) === null || nt === void 0 ? void 0 : nt.call(ke, function(ft) {
-						return ft === Q
+						return ft === Y
 					}))
 				},
-				te = function(Q, ke) {
-					if (!Q) return "";
+				te = function(Y, ke) {
+					if (!Y) return "";
 					var nt = ke === "zone";
-					return Q.trim().split(nt ? "." : " ").filter(Boolean).reduce(function(ft, xt) {
+					return Y.trim().split(nt ? "." : " ").filter(Boolean).reduce(function(ft, xt) {
 						return ft += xt[0], ft += nt ? "." : "", ft
 					}, "").slice(0, nt ? 3 : 2)
 				},
-				Ie = function(Q) {
-					return me(Q).map(function(ke) {
+				Ie = function(Y) {
+					return me(Y).map(function(ke) {
 						return ke.match(r.sW) ? ke : encodeURIComponent(ke)
 					}).join("")
 				},
-				_e = function(Q) {
-					var ke = Q.children,
+				_e = function(Y) {
+					var ke = Y.children,
 						nt = (0, n.useContext)(p.VY),
 						ft = nt.actions,
 						xt = nt.isSidebarNavOpen,
@@ -9780,11 +9780,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				We = _e,
 				lt = e("../../../common/util/util-sparrow/src/index.ts"),
 				Ue = (0, o.createStyledComponent)(function(ge) {
-					var Q = ge.theme;
+					var Y = ge.theme;
 					return {
 						width: "100%",
-						color: Q.colors.black,
-						backgroundColor: Q.colors.white,
+						color: Y.colors.black,
+						backgroundColor: Y.colors.white,
 						padding: 0,
 						height: r.ky,
 						"& svg": {
@@ -9799,10 +9799,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					}
 				}, c.zx);
 			Ue.displayName = "Trigger";
-			var Fe = function(Q) {
-					var ke = Q.triggerSidebarNav,
-						nt = Q.isSidebarNavOpen,
-						ft = Q.isSidebarNavExpanded,
+			var Fe = function(Y) {
+					var ke = Y.triggerSidebarNav,
+						nt = Y.isSidebarNavOpen,
+						ft = Y.isSidebarNavExpanded,
 						xt = function() {
 							ke(!nt), lt.ZP.sendEvent(nt ? "collapse sidebar nav" : "expand sidebar nav")
 						},
@@ -9835,11 +9835,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				}, c.$_);
 			Qe.displayName = "FooterContainer";
 			var rt = function() {
-					var Q = (0, n.useContext)(p.VY),
-						ke = Q.isSidebarNavOpen,
-						nt = Q.isSidebarNavExpanded,
-						ft = Q.viewport,
-						xt = Q.actions;
+					var Y = (0, n.useContext)(p.VY),
+						ke = Y.isSidebarNavOpen,
+						nt = Y.isSidebarNavExpanded,
+						ft = Y.viewport,
+						xt = Y.actions;
 					return t().createElement(Qe, null, ft.isDesktop && t().createElement(xe, {
 						isSidebarNavOpen: ke,
 						isSidebarNavExpanded: nt,
@@ -9855,22 +9855,22 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				Ne = e("../react/pages/http-applications/routes.ts"),
 				Ze = e("../react/utils/translator.tsx"),
 				Ee = (0, o.createStyledComponent)(function(ge) {
-					var Q = ge.theme;
+					var Y = ge.theme;
 					return {
 						position: "fixed",
 						top: r.aJ,
 						left: r.rV,
 						width: r.Mh,
-						backgroundColor: Q.colors.white,
-						borderRight: "1px solid ".concat(Q.colors.gray[8]),
-						borderBottom: "1px solid ".concat(Q.colors.gray[8])
+						backgroundColor: Y.colors.white,
+						borderRight: "1px solid ".concat(Y.colors.gray[8]),
+						borderBottom: "1px solid ".concat(Y.colors.gray[8])
 					}
 				}, c.ZC);
 			Ee.displayName = "HeaderMenu";
 			var se = (0, o.createStyledComponent)(function(ge) {
-				var Q = ge.theme;
+				var Y = ge.theme;
 				return {
-					px: Q.space[3],
+					px: Y.space[3],
 					fontSize: r.SV,
 					display: "flex",
 					alignItems: "center"
@@ -9878,9 +9878,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			}, c.Li);
 			se.displayName = "MenuItem";
 			var Se = (0, o.createStyledComponent)(function(ge) {
-				var Q = ge.theme;
+				var Y = ge.theme;
 				return {
-					color: Q.colors.black,
+					color: Y.colors.black,
 					fontWeight: 500,
 					py: "0.5em",
 					marginTop: "0.5em",
@@ -9902,11 +9902,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				}
 			}, Ye.rU);
 			Se.displayName = "MenuLink";
-			var Me = function(Q) {
-					var ke = Q.type,
-						nt = Q.menuItems,
-						ft = Q.viewAllLink,
-						xt = Q.isOpen;
+			var Me = function(Y) {
+					var ke = Y.type,
+						nt = Y.menuItems,
+						ft = Y.viewAllLink,
+						xt = Y.isOpen;
 					return (0, n.useEffect)(function() {
 						xt && lt.ZP.sendEvent("expand sidebar nav ".concat(ke, " selector"), {
 							items: nt.length
@@ -9938,7 +9938,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				je = Me,
 				he = e("../react/app/components/SidebarNav/components/common.ts"),
 				ee = (0, o.createStyledComponent)(function(ge) {
-					var Q = ge.theme;
+					var Y = ge.theme;
 					return {
 						position: "fixed",
 						top: 0,
@@ -9948,7 +9948,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						width: "100%",
 						height: "100%",
 						overflowY: "scroll",
-						backgroundColor: Q.colors.white,
+						backgroundColor: Y.colors.white,
 						scrollbarWidth: "none",
 						"-webkit-overflow-scrolling": "touch",
 						"::-webkit-scrollbar": {
@@ -9959,22 +9959,22 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				}, c.ZC);
 			ee.displayName = "FullScreenMobileMenu";
 			var G = (0, o.createStyledComponent)(function(ge) {
-				var Q = ge.theme;
+				var Y = ge.theme;
 				return {
-					marginTop: Q.space[2],
-					marginBottom: Q.space[2]
+					marginTop: Y.space[2],
+					marginBottom: Y.space[2]
 				}
 			}, c.Li);
 			G.displayName = "MobileMenuItem";
 			var ve = (0, o.createComponent)(function(ge) {
-				var Q = ge.theme;
+				var Y = ge.theme;
 				return {
 					padding: "0.75em 1.5em",
 					display: "flex",
 					alignItems: "center",
 					border: "1px solid transparent",
-					backgroundColor: Q.colors.white,
-					color: Q.colors.black,
+					backgroundColor: Y.colors.white,
+					color: Y.colors.black,
 					fontSize: r.SV,
 					borderRadius: 50,
 					textDecoration: "none",
@@ -9992,12 +9992,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				}
 			}, Ye.OL);
 			ve.displayName = "MobileMenuLink";
-			var Le = function(Q) {
-					var ke = Q.type,
-						nt = Q.viewAllLink,
-						ft = Q.isOpen,
-						xt = Q.menuItems,
-						Ct = Q.closeMobileMenu;
+			var Le = function(Y) {
+					var ke = Y.type,
+						nt = Y.viewAllLink,
+						ft = Y.isOpen,
+						xt = Y.menuItems,
+						Ct = Y.closeMobileMenu;
 					return (0, n.useEffect)(function() {
 						ft && lt.ZP.sendEvent("expand sidebar nav ".concat(ke, " selector"), {
 							items: xt.length
@@ -10074,12 +10074,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`)
 			}
 
-			function Tt(ge, Q) {
+			function Tt(ge, Y) {
 				if (!!ge) {
-					if (typeof ge == "string") return Tn(ge, Q);
+					if (typeof ge == "string") return Tn(ge, Y);
 					var ke = Object.prototype.toString.call(ge).slice(8, -1);
 					if (ke === "Object" && ge.constructor && (ke = ge.constructor.name), ke === "Map" || ke === "Set") return Array.from(ge);
-					if (ke === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(ke)) return Tn(ge, Q)
+					if (ke === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(ke)) return Tn(ge, Y)
 				}
 			}
 
@@ -10091,30 +10091,30 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				if (Array.isArray(ge)) return Tn(ge)
 			}
 
-			function Tn(ge, Q) {
-				(Q == null || Q > ge.length) && (Q = ge.length);
-				for (var ke = 0, nt = new Array(Q); ke < Q; ke++) nt[ke] = ge[ke];
+			function Tn(ge, Y) {
+				(Y == null || Y > ge.length) && (Y = ge.length);
+				for (var ke = 0, nt = new Array(Y); ke < Y; ke++) nt[ke] = ge[ke];
 				return nt
 			}
 			var bn = (0, o.createStyledComponent)(function(ge) {
-				var Q = ge.theme;
+				var Y = ge.theme;
 				return {
 					position: "fixed",
 					top: r.aJ,
 					left: r.rV,
 					width: r.go,
-					backgroundColor: Q.colors.white,
-					borderRight: "1px solid ".concat(Q.colors.gray[8]),
-					borderBottom: "1px solid ".concat(Q.colors.gray[8]),
+					backgroundColor: Y.colors.white,
+					borderRight: "1px solid ".concat(Y.colors.gray[8]),
+					borderBottom: "1px solid ".concat(Y.colors.gray[8]),
 					fontSize: r.SV
 				}
 			}, c.ZC);
 			bn.displayName = "Wrapper";
-			var or = function(Q) {
-					var ke = Q.isOpen,
-						nt = Q.accountId,
-						ft = Q.accountName,
-						xt = Q.zoneName,
+			var or = function(Y) {
+					var ke = Y.isOpen,
+						nt = Y.accountId,
+						ft = Y.accountName,
+						xt = Y.zoneName,
 						Ct = (0, L.UM)(),
 						ht = (0, h.k6)(),
 						It = (0, h.TH)(),
@@ -10188,12 +10188,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`)
 			}
 
-			function Zn(ge, Q) {
+			function Zn(ge, Y) {
 				if (!!ge) {
-					if (typeof ge == "string") return Vn(ge, Q);
+					if (typeof ge == "string") return Vn(ge, Y);
 					var ke = Object.prototype.toString.call(ge).slice(8, -1);
 					if (ke === "Object" && ge.constructor && (ke = ge.constructor.name), ke === "Map" || ke === "Set") return Array.from(ge);
-					if (ke === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(ke)) return Vn(ge, Q)
+					if (ke === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(ke)) return Vn(ge, Y)
 				}
 			}
 
@@ -10205,15 +10205,15 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				if (Array.isArray(ge)) return Vn(ge)
 			}
 
-			function Vn(ge, Q) {
-				(Q == null || Q > ge.length) && (Q = ge.length);
-				for (var ke = 0, nt = new Array(Q); ke < Q; ke++) nt[ke] = ge[ke];
+			function Vn(ge, Y) {
+				(Y == null || Y > ge.length) && (Y = ge.length);
+				for (var ke = 0, nt = new Array(Y); ke < Y; ke++) nt[ke] = ge[ke];
 				return nt
 			}
 
 			function ir(ge) {
-				for (var Q = 1; Q < arguments.length; Q++) {
-					var ke = arguments[Q] != null ? Object(arguments[Q]) : {},
+				for (var Y = 1; Y < arguments.length; Y++) {
+					var ke = arguments[Y] != null ? Object(arguments[Y]) : {},
 						nt = Object.keys(ke);
 					typeof Object.getOwnPropertySymbols == "function" && (nt = nt.concat(Object.getOwnPropertySymbols(ke).filter(function(ft) {
 						return Object.getOwnPropertyDescriptor(ke, ft).enumerable
@@ -10224,13 +10224,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				return ge
 			}
 
-			function In(ge, Q, ke) {
-				return Q in ge ? Object.defineProperty(ge, Q, {
+			function In(ge, Y, ke) {
+				return Y in ge ? Object.defineProperty(ge, Y, {
 					value: ke,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : ge[Q] = ke, ge
+				}) : ge[Y] = ke, ge
 			}
 			var cr = (0, o.createStyledComponent)(function() {
 				return ir({}, he.SB, {
@@ -10239,14 +10239,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			}, Ye.rU);
 			cr.displayName = "BackArrowLink";
 			var cn = (0, o.createStyledComponent)(function(ge) {
-				var Q = ge.theme;
+				var Y = ge.theme;
 				return {
-					backgroundColor: Q.colors.white,
+					backgroundColor: Y.colors.white,
 					width: "100%",
 					height: r.iU,
 					display: "flex",
 					alignItems: "center",
-					borderBottom: "1px solid ".concat(Q.colors.gray[8]),
+					borderBottom: "1px solid ".concat(Y.colors.gray[8]),
 					position: "sticky",
 					top: 0,
 					zIndex: 1,
@@ -10255,10 +10255,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			}, c.h4);
 			cn.displayName = "HeaderContainer";
 			var Ht = (0, o.createStyledComponent)(function(ge) {
-				var Q = ge.theme;
+				var Y = ge.theme;
 				return {
 					width: "100%",
-					color: Q.colors.black,
+					color: Y.colors.black,
 					maxWidth: r.rV - (r.jK + r.qc),
 					whiteSpace: "nowrap",
 					overflow: "hidden",
@@ -10270,7 +10270,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			}, c.H1);
 			Ht.displayName = "HeaderTitle";
 			var tn = (0, o.createStyledComponent)(function(ge) {
-				var Q = ge.theme,
+				var Y = ge.theme,
 					ke = ge.isHeaderMenuExpanded;
 				return {
 					padding: 0,
@@ -10282,9 +10282,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					justifyContent: "center",
 					alignItems: "center",
 					cursor: "pointer",
-					backgroundColor: ke ? Q.colors.gray[(0, I.Yc)() ? 8 : 9] : "transparent",
+					backgroundColor: ke ? Y.colors.gray[(0, I.Yc)() ? 8 : 9] : "transparent",
 					"&:hover": {
-						backgroundColor: Q.colors.gray[(0, I.Yc)() ? 8 : 9]
+						backgroundColor: Y.colors.gray[(0, I.Yc)() ? 8 : 9]
 					},
 					"& svg": {
 						pointerEvents: "none"
@@ -10293,15 +10293,15 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			}, c.zx);
 			tn.displayName = "ExpandIconWrapper";
 			var kt = (0, o.createStyledComponent)(function(ge) {
-				var Q = ge.theme;
+				var Y = ge.theme;
 				return {
 					fontWeight: 500,
 					fontSize: r.SV,
 					width: r.qc,
 					height: r.qc,
-					backgroundColor: Q.colors.blue[9],
-					color: Q.colors.blue[4],
-					border: "1px solid ".concat(Q.colors.blue[4]),
+					backgroundColor: Y.colors.blue[9],
+					color: Y.colors.blue[4],
+					border: "1px solid ".concat(Y.colors.blue[4]),
 					mx: "auto",
 					display: "flex",
 					alignItems: "center",
@@ -10311,9 +10311,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				}
 			}, c.Dr);
 			kt.displayName = "HeaderInitials";
-			var Dn = function(Q) {
-					var ke = Q.message,
-						nt = Q.children;
+			var Dn = function(Y) {
+					var ke = Y.message,
+						nt = Y.children;
 					return ke ? t().createElement(Ge.u, {
 						message: ke,
 						place: "top"
@@ -10321,9 +10321,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						cursor: "pointer"
 					}, nt)) : t().createElement(t().Fragment, null, nt)
 				},
-				Ln = function(Q) {
-					var ke, nt, ft = Q.type,
-						xt = Q.showMobileMenu,
+				Ln = function(Y) {
+					var ke, nt, ft = Y.type,
+						xt = Y.showMobileMenu,
 						Ct = (0, n.useContext)(p.VY),
 						ht = Ct.actions,
 						It = Ct.isHeaderMenuOpen,
@@ -10459,7 +10459,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				},
 				gn = Ln,
 				Pn = (0, o.createStyledComponent)(function(ge) {
-					var Q = ge.theme,
+					var Y = ge.theme,
 						ke = ge.hasSubPages,
 						nt = ge.isClosingDisabled;
 					return {
@@ -10473,10 +10473,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						justifyContent: "center",
 						width: r.qc,
 						visibility: ke ? "visible" : "hidden",
-						color: Q.colors.blue[1],
-						backgroundColor: nt ? Q.colors.gray[(0, I.Yc)() ? 8 : 9] : "transparent",
+						color: Y.colors.blue[1],
+						backgroundColor: nt ? Y.colors.gray[(0, I.Yc)() ? 8 : 9] : "transparent",
 						"&:hover": {
-							backgroundColor: Q.colors.gray[(0, I.Yc)() ? 8 : 9],
+							backgroundColor: Y.colors.gray[(0, I.Yc)() ? 8 : 9],
 							cursor: nt ? "default" : "pointer"
 						},
 						"& svg": {
@@ -10486,12 +10486,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				}, c.zx);
 			Pn.displayName = "ExpandIconWrapper";
 			var tt = (0, o.createStyledComponent)(function(ge) {
-				var Q = ge.theme,
+				var Y = ge.theme,
 					ke = ge.hasBorderTop;
 				return {
 					width: "100%",
 					display: "block",
-					color: Q.colors.black,
+					color: Y.colors.black,
 					minHeight: r.Ed,
 					position: "relative",
 					userSelect: "none",
@@ -10503,9 +10503,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				}
 			}, c.Li);
 			tt.displayName = "ListItem";
-			var ot = function(Q) {
-					var ke = Q.type,
-						nt = Q.parentUrl,
+			var ot = function(Y) {
+					var ke = Y.type,
+						nt = Y.parentUrl,
 						ft = (0, n.useContext)(p.VY),
 						xt = ft.isSidebarNavExpanded,
 						Ct = ft.isSidebarNavPeeking,
@@ -10701,7 +10701,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				},
 				pe = ot,
 				Oe = (0, o.createStyledComponent)(function(ge) {
-					var Q = ge.theme;
+					var Y = ge.theme;
 					return {
 						position: "fixed",
 						top: r.aJ,
@@ -10716,14 +10716,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				});
 			Oe.displayName = "InnerPageOverlay";
 			var it = (0, o.createStyledComponent)(function(ge) {
-				var Q = ge.theme,
+				var Y = ge.theme,
 					ke = ge.isDesktop,
 					nt = ge.isSidebarNavExpanded,
 					ft = ge.isHeaderMenuExpanded;
 				return {
-					backgroundColor: Q.colors.background,
-					color: Q.colors.black,
-					fontSize: Q.fontSizes[1],
+					backgroundColor: Y.colors.background,
+					color: Y.colors.black,
+					fontSize: Y.fontSizes[1],
 					display: nt || ke ? "flex" : "none",
 					justifyContent: "space-between",
 					width: nt ? r.rV : r.jK,
@@ -10732,7 +10732,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					bottom: 0,
 					left: 0,
 					zIndex: 1201,
-					borderRight: "1px solid ".concat(Q.colors.gray[8]),
+					borderRight: "1px solid ".concat(Y.colors.gray[8]),
 					overflowX: ft ? "" : "auto",
 					scrollbarWidth: "none",
 					"-webkit-overflow-scrolling": "touch",
@@ -10747,12 +10747,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			}, "aside");
 			it.displayName = "Sidebar";
 			var yt = function() {
-					var Q = (0, n.useContext)(p.VY),
-						ke = Q.viewport,
-						nt = Q.actions,
-						ft = Q.isSidebarNavOpen,
-						xt = Q.isSidebarNavExpanded,
-						Ct = Q.isHeaderMenuExpanded;
+					var Y = (0, n.useContext)(p.VY),
+						ke = Y.viewport,
+						nt = Y.actions,
+						ft = Y.isSidebarNavOpen,
+						xt = Y.isSidebarNavExpanded,
+						Ct = Y.isHeaderMenuExpanded;
 					return t().createElement(it, {
 						isSidebarNavExpanded: xt,
 						isDesktop: ke.isDesktop,
@@ -10804,10 +10804,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				Lt = yt,
 				jt = e("../../../dash/core/component-header/src/index.js"),
 				Nt = function() {
-					var Q = (0, n.useContext)(p.VY),
-						ke = Q.actions,
-						nt = Q.isSidebarNavOpen,
-						ft = Q.viewport;
+					var Y = (0, n.useContext)(p.VY),
+						ke = Y.actions,
+						nt = Y.isSidebarNavOpen,
+						ft = Y.viewport;
 					return !ft.isDesktop && t().createElement(jt.pr, {
 						alwaysShow: !0,
 						icon: nt ? "remove" : "hamburger",
@@ -11395,7 +11395,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			"use strict";
 			e.d(ce, {
 				Nj: function() {
-					return Q
+					return Y
 				},
 				ZP: function() {
 					return xt
@@ -11956,7 +11956,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				}) : Ct[ht] = It, Ct
 			}
 			var ge = 3e3,
-				Q = function(Ct) {
+				Y = function(Ct) {
 					Lt(ht, Ct);
 
 					function ht(It) {
@@ -12424,7 +12424,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 								var dt = Ve.loadingProps,
 									Et = dt.nothing,
 									Wt = dt.initial;
-								return Et || Wt ? r().createElement(R.Z, null) : !Et && !Wt && !Ft ? r().createElement(o.Z, null) : r().createElement(Q, cn({}, Mt.props, {
+								return Et || Wt ? r().createElement(R.Z, null) : !Et && !Wt && !Ft ? r().createElement(o.Z, null) : r().createElement(Y, cn({}, Mt.props, {
 									nothing: Et,
 									initial: Wt,
 									zoneParams: we
@@ -12433,7 +12433,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						}
 					}]), ht
 				}(r().Component);
-			Q.propTypes = {
+			Y.propTypes = {
 				parentUrl: l().string.isRequired,
 				accountId: l().string.isRequired,
 				zone: l().object,
@@ -13626,7 +13626,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				Nt = (0, p.ZP)("dnsRecordsImport"),
 				De = (0, p.ZP)("spectrumApps"),
 				ge = (0, p.ZP)("dnsAcl"),
-				Q = (0, p.ZP)("dnsAcls", {
+				Y = (0, p.ZP)("dnsAcls", {
 					insertDelete: "dnsAcl"
 				}),
 				ke = (0, p.ZP)("dnsTsig"),
@@ -13641,7 +13641,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				ht = (0, p.ZP)("zoneMasters"),
 				It = (0, n.combineReducers)({
 					acl: ge,
-					acls: Q,
+					acls: Y,
 					tsig: ke,
 					tsigs: nt,
 					master: ft,
@@ -23846,7 +23846,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 							Nt = yt.searchProps,
 							De = yt.loadingProps,
 							ge = yt.accountName,
-							Q = yt.accountStale,
+							Y = yt.accountStale,
 							ke = yt.loading,
 							nt = !De.initial && !De.nothing && !De.listIsEmpty || De.error;
 						return t().createElement(L.oc, null, function(ft) {
@@ -23858,9 +23858,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 								testId: nt ? "".concat(jt, "-zone-selector-search") : "",
 								buttonTestId: "".concat(jt, "-zone-selector-submit"),
 								loading: ke,
-								label: ft.t(ge && !Q ? "zone_selector.search_placeholder_with_account_name" : "zone_selector.search_placeholder_without_account_name", {
+								label: ft.t(ge && !Y ? "zone_selector.search_placeholder_with_account_name" : "zone_selector.search_placeholder_without_account_name", {
 									accountName: ge,
-									_: ge && !Q ? "Search websites in ".concat(ge, "...") : "Search websites..."
+									_: ge && !Y ? "Search websites in ".concat(ge, "...") : "Search websites..."
 								})
 							}, Nt))), jt === "account" && nt && t().createElement(S, null, t().createElement(T.Z, {
 								addSiteEnabled: Lt,
@@ -24024,7 +24024,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					Nt = Oe.selectRow,
 					De = Oe.selectedRow,
 					ge = Oe.sortProps,
-					Q = Oe.app,
+					Y = Oe.app,
 					ke = Oe.zoneNameDisableHref,
 					nt = Oe.tableProps;
 				return t().createElement(de, null, t().createElement(f.iA, X({
@@ -24077,7 +24077,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					}, t().createElement(f.pj, {
 						textEllipsis: !0
 					}, t().createElement(H, null, ke ? t().createElement(ae, null, ft.name) : t().createElement(ae, {
-						href: (0, fe.Np)(ft, Q)
+						href: (0, fe.Np)(ft, Y)
 					}, ft.name))), t().createElement(f.pj, {
 						textEllipsis: !0
 					}, [t().createElement($, {
@@ -24116,8 +24116,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				try {
 					var De = pe[jt](Nt),
 						ge = De.value
-				} catch (Q) {
-					it(Q);
+				} catch (Y) {
+					it(Y);
 					return
 				}
 				De.done ? Oe(ge) : Promise.resolve(ge).then(yt, Lt)
@@ -24279,11 +24279,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						ge = (0, Ce.v9)(function(nt) {
 							return (0, ue.getAccountFlipperFlag)(nt, "magic_wan", "mw_home")
 						}),
-						Q = (0, Ce.v9)(V.sL),
+						Y = (0, Ce.v9)(V.sL),
 						ke = function(ft) {
 							return ft.filter(function(xt) {
 								var Ct = xt.to;
-								return Ct === "network-analytics" ? Lt : Ct === "ip-prefixes" ? jt : Ct === "magic-transit" ? De : Ct === "security-center" ? Q : Ct === "rulesets" ? Nt : Ct === "magic-wan" ? ge : !0
+								return Ct === "network-analytics" ? Lt : Ct === "ip-prefixes" ? jt : Ct === "magic-transit" ? De : Ct === "security-center" ? Y : Ct === "rulesets" ? Nt : Ct === "magic-wan" ? ge : !0
 							})
 						};
 					return t().createElement(f.iA, {
@@ -24682,7 +24682,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 							Nt = Lt.onZoneClick,
 							De = Lt.zones,
 							ge = Lt.active,
-							Q = Lt.type,
+							Y = Lt.type,
 							ke = Lt.loadingProps,
 							nt = Lt.selectedRow,
 							ft = Lt.selectRow,
@@ -24690,7 +24690,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 							Ct = jt.onNextClick,
 							ht = jt.onPrevClick,
 							It = ke.initial || ke.transition;
-						if (!(!ge || Q === "account")) {
+						if (!(!ge || Y === "account")) {
 							if (yt.keyCode === rn.RIGHT_ARROW) {
 								if (nt === 0 || It) return;
 								yt.preventDefault(), Ct && Ct(yt)
@@ -24711,7 +24711,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 							Nt = yt.onZoneClick,
 							De = yt.loadingProps,
 							ge = yt.type,
-							Q = yt.selectRow,
+							Y = yt.selectRow,
 							ke = yt.selectedRow,
 							nt = yt.onAllWebsitesClick,
 							ft = yt.searchProps,
@@ -24752,7 +24752,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 							errored: De.error,
 							onZoneClick: Nt,
 							selectedRow: ke,
-							selectRow: Q,
+							selectRow: Y,
 							app: at,
 							zoneNameDisableHref: we,
 							tableProps: Object.assign({}, {
@@ -24936,7 +24936,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 							Nt = Lt.activeZone,
 							De = Lt.addSiteEnabled,
 							ge = Lt.active,
-							Q = Lt.onEsc,
+							Y = Lt.onEsc,
 							ke = Lt.onClickOutside,
 							nt = Lt.onButtonClick,
 							ft = Lt.fetchZones,
@@ -24989,7 +24989,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 									total: dt,
 									accountId: At,
 									zoneNameDisableHref: Ft,
-									onEsc: Q
+									onEsc: Y
 								}, Re));
 							return Ct === "root" || Ct === "account" || Ct === "sidebar" ? Bt : Ct === "header" && !Kt ? t().createElement(t().Fragment, null, t().createElement(z.Lt, {
 								testId: "zone-selector-dropdown",
@@ -25002,7 +25002,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 								onEsc: function(sn) {
 									yt.setState({
 										selectedRow: 0
-									}), Q(sn)
+									}), Y(sn)
 								},
 								active: ge && !It,
 								showActiveButtonState: !0,
@@ -26606,7 +26606,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						Nt = ot.subscription,
 						De = ot.pageRuleQuotaExceeded,
 						ge = ot.zonePageRulesUrl,
-						Q = ot.hasSelectedAnnualPlan;
+						Y = ot.hasSelectedAnnualPlan;
 					if (De) return M().createElement(T.F, {
 						type: "error",
 						mb: 0
@@ -26631,7 +26631,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 							url: ge
 						}
 					})), M().createElement(r, null))));
-					var ke = it && (Oe !== it || Oe === it && (Nt == null ? void 0 : Nt.frequency) === "yearly" && !Q);
+					var ke = it && (Oe !== it || Oe === it && (Nt == null ? void 0 : Nt.frequency) === "yearly" && !Y);
 					return M().createElement(T.F, {
 						type: "error",
 						mb: 0
@@ -26949,9 +26949,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 								Nt = Lt.currentPlan,
 								De = Lt.nextPlan,
 								ge = De || Nt;
-							ge !== "enterprise" && Oe.setState(function(Q) {
+							ge !== "enterprise" && Oe.setState(function(Y) {
 								return {
-									addonsSnapshot: Q.addonsSnapshot ? Q.addonsSnapshot.map(function(ke) {
+									addonsSnapshot: Y.addonsSnapshot ? Y.addonsSnapshot.map(function(ke) {
 										if (ke.name === yt) {
 											var nt = Ie.UH[ge][ke.name];
 											return Fe({}, ke, {
@@ -26959,11 +26959,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 												price: it * nt.unitPrice
 											})
 										} else return ke
-									}) : Q.addonsSnapshot
+									}) : Y.addonsSnapshot
 								}
 							}, function() {
-								var Q = Oe.state.addonsSnapshot;
-								Q && jt(Q)
+								var Y = Oe.state.addonsSnapshot;
+								Y && jt(Y)
 							})
 						}), Pe(Je(Je(Oe)), "createAddonsSnapshot", function() {
 							return _e(Oe.props.currentPlanAddons).filter(function(it) {
@@ -26992,17 +26992,17 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 											addonsSnapshot: Nt.addonsSnapshot ? Nt.addonsSnapshot.map(function(De) {
 												var ge = Oe.getCurrentPlanAddonByName(De.name);
 												if (!ge) return De;
-												var Q = Ie.UH[yt][De.name];
-												if (!Q) return De;
-												var ke = Q.included,
-													nt = Q.additional_max + ke,
+												var Y = Ie.UH[yt][De.name];
+												if (!Y) return De;
+												var ke = Y.included,
+													nt = Y.additional_max + ke,
 													ft = ge.value < (ge.default || 0) ? ge.default || 0 : ge.value,
-													xt = lt(ft <= ke ? ke : ft, Q.increments, nt);
+													xt = lt(ft <= ke ? ke : ft, Y.increments, nt);
 												return yt === "free" && (xt += ke), {
 													name: De.name,
 													value: xt,
 													default: ke,
-													price: (xt - ke) * Q.unitPrice
+													price: (xt - ke) * Y.unitPrice
 												}
 											}) : Nt.addonsSnapshot
 										}
@@ -27039,7 +27039,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 							if (Lt && Lt === "enterprise" || yt === "enterprise" || !Nt) return null;
 							var De = Lt || yt,
 								ge = Ie.UH[De],
-								Q = jt && (0, h.a7)(De);
+								Y = jt && (0, h.a7)(De);
 							return M().createElement(P.ZC, {
 								mx: -3
 							}, Nt.map(function(ke, nt) {
@@ -27053,10 +27053,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 										increments: ft.increments,
 										max: ft.additional_max,
 										name: ke.name,
-										unitPrice: Q ? ft.unitPrice * 12 : ft.unitPrice,
+										unitPrice: Y ? ft.unitPrice * 12 : ft.unitPrice,
 										included: ke.default || 0,
 										plan: De,
-										isAnnualPlan: Q,
+										isAnnualPlan: Y,
 										labelMap: ft.labelMap,
 										hideIncludeCount: ft.hideIncludeCount
 									},
@@ -27252,17 +27252,17 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						})), tn(Ht(Ht(Oe)), "onClose", function() {
 							Oe.resetState(), Oe.props.onClose()
 						}), tn(Ht(Ht(Oe)), "prefetchData", En(regeneratorRuntime.mark(function jt() {
-							var Nt, De, ge, Q, ke, nt, ft, xt, Ct;
+							var Nt, De, ge, Y, ke, nt, ft, xt, Ct;
 							return regeneratorRuntime.wrap(function(It) {
 								for (;;) switch (It.prev = It.next) {
 									case 0:
-										if (Nt = Oe.props, De = Nt.zone, ge = Nt.fetchAvailablePlans, Q = Nt.fetchAccountQuotas, ke = Nt.fetchBillingAccount, nt = Nt.fetchSubscriptionByZone, ft = Nt.currentSubscriptionIsAnnual, xt = De ? De.account.id : null, Ct = Oe.state.fetching, !(xt && De && Ct === "NotStarted")) {
+										if (Nt = Oe.props, De = Nt.zone, ge = Nt.fetchAvailablePlans, Y = Nt.fetchAccountQuotas, ke = Nt.fetchBillingAccount, nt = Nt.fetchSubscriptionByZone, ft = Nt.currentSubscriptionIsAnnual, xt = De ? De.account.id : null, Ct = Oe.state.fetching, !(xt && De && Ct === "NotStarted")) {
 											It.next = 15;
 											break
 										}
 										return Oe.setState({
 											fetching: "Fetching"
-										}), It.prev = 5, It.next = 8, Promise.all([ge(De.id), ke(xt), nt(De.id), Q(xt, {
+										}), It.prev = 5, It.next = 8, Promise.all([ge(De.id), ke(xt), nt(De.id), Y(xt, {
 											hideErrorAlert: !0
 										})]);
 									case 8:
@@ -27290,8 +27290,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 							var Nt = Oe.props,
 								De = Nt.zone,
 								ge = Nt.ratePlansForAccountType;
-							return !De || !ge || jt.forEach(function(Q) {
-								Q.id in ge || (Q.id == "business" ? Q.isDisabled == "biz" in ge : Q.id == "enterprise" ? Q.isDisabled == "ent" in ge : Q.isDisabled = !0)
+							return !De || !ge || jt.forEach(function(Y) {
+								Y.id in ge || (Y.id == "business" ? Y.isDisabled == "biz" in ge : Y.id == "enterprise" ? Y.isDisabled == "ent" in ge : Y.isDisabled = !0)
 							}), jt
 						}), tn(Ht(Ht(Oe)), "preselectNextPlan", function() {
 							var jt = Oe.props,
@@ -27299,11 +27299,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 								De = jt.minPlan,
 								ge = Oe.state.isMinPlanPreselected;
 							if (!(!De || !Nt || ge)) {
-								var Q = Nt.find(function(ke) {
+								var Y = Nt.find(function(ke) {
 									return ke.legacy_id === De
 								});
 								Oe.setState({
-									nextPlan: Q || null,
+									nextPlan: Y || null,
 									isMinPlanPreselected: !0
 								})
 							}
@@ -27323,11 +27323,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 							})), Oe.submitPayment = null
 						}), tn(Ht(Ht(Oe)), "onChangePlanAddons", function() {
 							var jt = En(regeneratorRuntime.mark(function Nt(De) {
-								var ge, Q, ke, nt, ft, xt, Ct, ht, It;
+								var ge, Y, ke, nt, ft, xt, Ct, ht, It;
 								return regeneratorRuntime.wrap(function(At) {
 									for (;;) switch (At.prev = At.next) {
 										case 0:
-											if (ke = Oe.props, nt = ke.fetchPageRules, ft = ke.pageRules, xt = ke.subscription, Ct = ke.zone, ht = (ge = xt == null ? void 0 : xt.component_values) !== null && ge !== void 0 ? ge : [], It = (0, O.mN)(ht, De), !(Ct && !ft && ((Q = It.downgraded) === null || Q === void 0 ? void 0 : Q.find(function(Ft) {
+											if (ke = Oe.props, nt = ke.fetchPageRules, ft = ke.pageRules, xt = ke.subscription, Ct = ke.zone, ht = (ge = xt == null ? void 0 : xt.component_values) !== null && ge !== void 0 ? ge : [], It = (0, O.mN)(ht, De), !(Ct && !ft && ((Y = It.downgraded) === null || Y === void 0 ? void 0 : Y.find(function(Ft) {
 													return Ft.name === Ie.bi
 												})))) {
 												At.next = 14;
@@ -27369,9 +27369,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 								Nt = jt.currentPlan,
 								De = jt.allPlans,
 								ge = jt.currentSubscriptionIsAnnual,
-								Q = Oe.state,
-								ke = Q.nextPlan,
-								nt = Q.hasSelectedAnnualPlan;
+								Y = Oe.state,
+								ke = Y.nextPlan,
+								nt = Y.hasSelectedAnnualPlan;
 							if (!Nt || !ke || !De) return !1;
 							var ft = (0, O.Hk)(De),
 								xt = ft.indexOf(ke.legacy_id),
@@ -27390,15 +27390,15 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 								Nt = jt.nextPlan,
 								De = jt.hasSelectedAnnualPlan,
 								ge = Oe.props,
-								Q = ge.currentPlan,
+								Y = ge.currentPlan,
 								ke = ge.currentSubscription;
-							return Q && Nt && ((0, h.x$)(ke) && !De || !(0, h.x$)(ke) && De) ? !0 : Q && Nt && Q.legacy_id !== Nt.legacy_id
+							return Y && Nt && ((0, h.x$)(ke) && !De || !(0, h.x$)(ke) && De) ? !0 : Y && Nt && Y.legacy_id !== Nt.legacy_id
 						}), tn(Ht(Ht(Oe)), "canUpdateSubscription", function() {
 							var jt = Oe.props,
 								Nt = jt.currentPlan,
 								De = jt.currentSubscription,
 								ge = Oe.state,
-								Q = ge.nextPlan,
+								Y = ge.nextPlan,
 								ke = ge.isDowngradeConfirmed,
 								nt = ge.hasSelectedAnnualPlan,
 								ft = !1;
@@ -27406,8 +27406,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 								if (Oe.isSomeAddonDowngraded()) return ke;
 								ft = !0
 							}
-							if (Nt && Q) {
-								var xt = Nt.legacy_id !== Q.legacy_id;
+							if (Nt && Y) {
+								var xt = Nt.legacy_id !== Y.legacy_id;
 								if (!xt && (!(0, h.x$)(De) && nt || (0, h.x$)(De) && !nt)) return !0;
 								ft = Oe.nextPlanIsDowngrade() ? xt && ke : ft || xt
 							}
@@ -27437,8 +27437,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 							var Nt = Oe.props,
 								De = Nt.proQuota,
 								ge = Nt.bizQuota,
-								Q = Nt.entQuota;
-							return jt ? !!(jt.legacy_id === _.tJ.pro && De || jt.legacy_id === _.tJ.business && ge || jt.legacy_id === _.tJ.enterprise && Q) : !1
+								Y = Nt.entQuota;
+							return jt ? !!(jt.legacy_id === _.tJ.pro && De || jt.legacy_id === _.tJ.business && ge || jt.legacy_id === _.tJ.enterprise && Y) : !1
 						}), tn(Ht(Ht(Oe)), "needsToContact", function() {
 							var jt = Oe.state.nextPlan,
 								Nt = Oe.props.entQuota;
@@ -27449,14 +27449,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 								De = jt.currentPlan,
 								ge = Oe.state.nextPlan;
 							if (!De) return !1;
-							var Q = ge || De;
-							return Nt && Nt.product && Nt.product.public_name === "CloudFlare Services" && Array.isArray(Nt.component_values) && Q.legacy_id !== _.tJ.enterprise && !Oe.planHasQuota(Q)
+							var Y = ge || De;
+							return Nt && Nt.product && Nt.product.public_name === "CloudFlare Services" && Array.isArray(Nt.component_values) && Y.legacy_id !== _.tJ.enterprise && !Oe.planHasQuota(Y)
 						}), tn(Ht(Ht(Oe)), "changePlan", En(regeneratorRuntime.mark(function jt() {
-							var Nt, De, ge, Q, ke, nt, ft, xt, Ct, ht, It, Mt, At, Ft, on, Re, at, Te, we;
+							var Nt, De, ge, Y, ke, nt, ft, xt, Ct, ht, It, Mt, At, Ft, on, Re, at, Te, we;
 							return regeneratorRuntime.wrap(function(dt) {
 								for (;;) switch (dt.prev = dt.next) {
 									case 0:
-										if (Nt = Oe.props, De = Nt.notifySuccess, ge = Nt.zone, Q = Nt.currentPlan, ke = Nt.onPlanChangeSuccess, nt = Nt.subscription, ft = Nt.createSubscriptionByZone, xt = Nt.updateSubscriptionByAccount, Ct = Nt.updateSubscriptionByZone, ht = Nt.postCancellationReasons, It = Nt.currentSubscription, Mt = Oe.state, At = Mt.nextPlan, Ft = Mt.addons, on = Mt.fetching, Re = Mt.hasSelectedAnnualPlan, !(!ge || !Q || !(At || nt) || on !== "Fulfilled")) {
+										if (Nt = Oe.props, De = Nt.notifySuccess, ge = Nt.zone, Y = Nt.currentPlan, ke = Nt.onPlanChangeSuccess, nt = Nt.subscription, ft = Nt.createSubscriptionByZone, xt = Nt.updateSubscriptionByAccount, Ct = Nt.updateSubscriptionByZone, ht = Nt.postCancellationReasons, It = Nt.currentSubscription, Mt = Oe.state, At = Mt.nextPlan, Ft = Mt.addons, on = Mt.fetching, Re = Mt.hasSelectedAnnualPlan, !(!ge || !Y || !(At || nt) || on !== "Fulfilled")) {
 											dt.next = 4;
 											break
 										}
@@ -27464,7 +27464,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 									case 4:
 										if (at = !1, Oe.setState({
 												isChangingPlan: !0
-											}), At && zt.gS(Q, At), dt.prev = 7, !nt) {
+											}), At && zt.gS(Y, At), dt.prev = 7, !nt) {
 											dt.next = 18;
 											break
 										}
@@ -27479,7 +27479,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 											other: Oe.state.otherReasonText
 										}, nt.id);
 									case 14:
-										De((0, I.ZP)("billing.subscription_change.success")), At && zt.I3(Q, At), dt.next = 43;
+										De((0, I.ZP)("billing.subscription_change.success")), At && zt.I3(Y, At), dt.next = 43;
 										break;
 									case 18:
 										if (!At) {
@@ -27500,7 +27500,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 													id: At.legacy_id
 												},
 												frequency: Re && (0, h.a7)(At.legacy_id) ? "yearly" : "monthly"
-											}, !(Q.legacy_id === _.tJ.free && !It)) {
+											}, !(Y.legacy_id === _.tJ.free && !It)) {
 											dt.next = 29;
 											break
 										}
@@ -27522,7 +27522,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 									case 37:
 										we = dt.sent;
 									case 38:
-										zt.I3(Q, At, we), De((0, I.ZP)("billing.plan_change.success")), dt.next = 43;
+										zt.I3(Y, At, we), De((0, I.ZP)("billing.plan_change.success")), dt.next = 43;
 										break;
 									case 42:
 										throw new Error("PlanChangeModal: No next plan or subscription.");
@@ -27530,7 +27530,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 										dt.next = 50;
 										break;
 									case 45:
-										dt.prev = 45, dt.t0 = dt.catch(7), At && zt.$(Q, At), Oe.setState({
+										dt.prev = 45, dt.t0 = dt.catch(7), At && zt.$(Y, At), Oe.setState({
 											showPlanChangeError: !0,
 											isChangingPlan: !1
 										}), at = !0;
@@ -27568,18 +27568,18 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 								De = Nt.allPlans,
 								ge = Nt.entQuota;
 							if (!!De) {
-								var Q = De.find(function(nt) {
+								var Y = De.find(function(nt) {
 									return nt.legacy_id === jt
 								});
-								if (Q) {
-									var ke = Oe.state.showAnnualPlans && (0, h.a7)(Q == null ? void 0 : Q.legacy_id);
+								if (Y) {
+									var ke = Oe.state.showAnnualPlans && (0, h.a7)(Y == null ? void 0 : Y.legacy_id);
 									Oe.setState({
-										nextPlan: Q,
+										nextPlan: Y,
 										isDowngradeConfirmed: !1,
 										showContactRequestError: !1,
 										showPlanChangeError: !1,
 										hasSelectedAnnualPlan: ke
-									}), zt.RD(Q, ke)
+									}), zt.RD(Y, ke)
 								}
 								jt === _.tJ.enterprise && !ge && (0, h.jM)()
 							}
@@ -27607,7 +27607,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 								Nt = Lt.allPlans,
 								De = Lt.zone,
 								ge = Lt.hasEnterpriseAccountEntitlement,
-								Q = Lt.currentPlan,
+								Y = Lt.currentPlan,
 								ke = Lt.proQuota,
 								nt = Lt.bizQuota,
 								ft = Lt.entQuota,
@@ -27658,25 +27658,25 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 									return [{
 										content: M().createElement("div", {
 											"data-testid": _.wM.CONTAINER_STEP1
-										}, Q && Nt ? M().createElement(M().Fragment, null, At && M().createElement(ae.Z, {
+										}, Y && Nt ? M().createElement(M().Fragment, null, At && M().createElement(ae.Z, {
 											accountType: Mt,
 											quotas: typeof ke == "number" && typeof nt == "number" ? ke + nt : 0,
 											handleToggle: yt.handleAnnualPlansToggle,
-											currentPlan: Q,
+											currentPlan: Y,
 											currentSubscription: pn,
 											showAnnualPlans: Gt
 										}), M().createElement(se.Z, {
-											currentPlan: Q.legacy_id,
+											currentPlan: Y.legacy_id,
 											showAnnualPlans: !!Gt,
 											currentSubscriptionIsAnnual: Ft,
 											nextPlan: dt ? dt.legacy_id : null,
-											allPlans: (0, O.PZ)(Nt, Q, xt, ke, nt, ft, Gt),
+											allPlans: (0, O.PZ)(Nt, Y, xt, ke, nt, ft, Gt),
 											handlePlanSelect: yt.handlePlanSelect
 										}), M().createElement(r, {
 											extended: !0
 										}), yt.shouldShowAddons() && Ct && M().createElement(Ee, {
 											currentPlanAddons: Ct.component_values,
-											currentPlan: Q.legacy_id,
+											currentPlan: Y.legacy_id,
 											showAnnualPlans: !!Gt,
 											nextPlan: dt ? dt.legacy_id : void 0,
 											onChange: yt.onChangePlanAddons
@@ -27691,15 +27691,15 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 											mt: 2
 										}, pn && !((hn = pn.rate_plan) === null || hn === void 0 ? void 0 : hn.is_contract) && pn.current_period_end ? M().createElement(I.cC, {
 											applyMarkdown: !0,
-											id: Q.legacy_id === "business" ? "billing.plan_change.downgrade_delayed.business_to_free.reasons_description" : "billing.plan_change.downgrade_delayed.pro_to_free.reasons_description",
+											id: Y.legacy_id === "business" ? "billing.plan_change.downgrade_delayed.business_to_free.reasons_description" : "billing.plan_change.downgrade_delayed.pro_to_free.reasons_description",
 											values: {
 												date: (0, i.Z)(pn.current_period_end, i.U.ShortDate, !0)
 											}
 										}) : M().createElement(I.cC, {
-											id: Q.legacy_id === "business" ? "billing.plan_change.downgrade_delayed.business_to_free.reasons_description_no_date" : "billing.plan_change.downgrade_delayed.pro_to_free.reasons_description_no_date",
+											id: Y.legacy_id === "business" ? "billing.plan_change.downgrade_delayed.business_to_free.reasons_description_no_date" : "billing.plan_change.downgrade_delayed.pro_to_free.reasons_description_no_date",
 											applyMarkdown: !0
 										}))) : M().createElement(s, {
-											currentPlan: Q.legacy_id,
+											currentPlan: Y.legacy_id,
 											nextPlan: dt == null ? void 0 : dt.legacy_id,
 											addonsDowngradedDiff: we == null ? void 0 : we.downgraded,
 											isChecked: Wt,
@@ -36244,7 +36244,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						}))
 					})))
 				},
-				Q = Lt(`
+				Y = Lt(`
   `.concat(`
     .slick-slider
     {
@@ -36939,7 +36939,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					return n.createElement(n.Fragment, null, n.createElement(Ce, {
 						parentUrl: _t,
 						onHomeButtonClick: nn
-					}, n.createElement(Q, {
+					}, n.createElement(Y, {
 						parentUrl: _t,
 						appsList: F
 					})), n.createElement(kn, {
@@ -60160,13 +60160,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					typeof Object.getOwnPropertySymbols == "function" && (dt = dt.concat(Object.getOwnPropertySymbols(Ve).filter(function(Et) {
 						return Object.getOwnPropertyDescriptor(Ve, Et).enumerable
 					}))), dt.forEach(function(Et) {
-						Q(Te, Et, Ve[Et])
+						Y(Te, Et, Ve[Et])
 					})
 				}
 				return Te
 			}
 
-			function Q(Te, we, Ve) {
+			function Y(Te, we, Ve) {
 				return we in Te ? Object.defineProperty(Te, we, {
 					value: Ve,
 					enumerable: !0,
@@ -69945,16 +69945,16 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				c = e("../../../../node_modules/lodash.get/index.js"),
 				p = e.n(c);
 
-			function z(De, ge, Q) {
+			function z(De, ge, Y) {
 				var ke = p()(ge, De);
-				return Q > 0 ? ke : void 0
+				return Y > 0 ? ke : void 0
 			}
 
 			function _() {
 				return _ = Object.assign || function(De) {
 					for (var ge = 1; ge < arguments.length; ge++) {
-						var Q = arguments[ge];
-						for (var ke in Q) Object.prototype.hasOwnProperty.call(Q, ke) && (De[ke] = Q[ke])
+						var Y = arguments[ge];
+						for (var ke in Y) Object.prototype.hasOwnProperty.call(Y, ke) && (De[ke] = Y[ke])
 					}
 					return De
 				}, _.apply(this, arguments)
@@ -69972,32 +69972,32 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			function M(De, ge) {
 				if (!!De) {
 					if (typeof De == "string") return I(De, ge);
-					var Q = Object.prototype.toString.call(De).slice(8, -1);
-					if (Q === "Object" && De.constructor && (Q = De.constructor.name), Q === "Map" || Q === "Set") return Array.from(De);
-					if (Q === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(Q)) return I(De, ge)
+					var Y = Object.prototype.toString.call(De).slice(8, -1);
+					if (Y === "Object" && De.constructor && (Y = De.constructor.name), Y === "Map" || Y === "Set") return Array.from(De);
+					if (Y === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(Y)) return I(De, ge)
 				}
 			}
 
 			function I(De, ge) {
 				(ge == null || ge > De.length) && (ge = De.length);
-				for (var Q = 0, ke = new Array(ge); Q < ge; Q++) ke[Q] = De[Q];
+				for (var Y = 0, ke = new Array(ge); Y < ge; Y++) ke[Y] = De[Y];
 				return ke
 			}
 
 			function T(De, ge) {
-				var Q = De && (typeof Symbol != "undefined" && De[Symbol.iterator] || De["@@iterator"]);
-				if (Q != null) {
+				var Y = De && (typeof Symbol != "undefined" && De[Symbol.iterator] || De["@@iterator"]);
+				if (Y != null) {
 					var ke = [],
 						nt = !0,
 						ft = !1,
 						xt, Ct;
 					try {
-						for (Q = Q.call(De); !(nt = (xt = Q.next()).done) && (ke.push(xt.value), !(ge && ke.length === ge)); nt = !0);
+						for (Y = Y.call(De); !(nt = (xt = Y.next()).done) && (ke.push(xt.value), !(ge && ke.length === ge)); nt = !0);
 					} catch (ht) {
 						ft = !0, Ct = ht
 					} finally {
 						try {
-							!nt && Q.return != null && Q.return()
+							!nt && Y.return != null && Y.return()
 						} finally {
 							if (ft) throw Ct
 						}
@@ -70012,27 +70012,27 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 
 			function R(De, ge) {
 				if (De == null) return {};
-				var Q = a(De, ge),
+				var Y = a(De, ge),
 					ke, nt;
 				if (Object.getOwnPropertySymbols) {
 					var ft = Object.getOwnPropertySymbols(De);
-					for (nt = 0; nt < ft.length; nt++) ke = ft[nt], !(ge.indexOf(ke) >= 0) && (!Object.prototype.propertyIsEnumerable.call(De, ke) || (Q[ke] = De[ke]))
+					for (nt = 0; nt < ft.length; nt++) ke = ft[nt], !(ge.indexOf(ke) >= 0) && (!Object.prototype.propertyIsEnumerable.call(De, ke) || (Y[ke] = De[ke]))
 				}
-				return Q
+				return Y
 			}
 
 			function a(De, ge) {
 				if (De == null) return {};
-				var Q = {},
+				var Y = {},
 					ke = Object.keys(De),
 					nt, ft;
-				for (ft = 0; ft < ke.length; ft++) nt = ke[ft], !(ge.indexOf(nt) >= 0) && (Q[nt] = De[nt]);
-				return Q
+				for (ft = 0; ft < ke.length; ft++) nt = ke[ft], !(ge.indexOf(nt) >= 0) && (Y[nt] = De[nt]);
+				return Y
 			}
 
 			function P(De) {
 				var ge = De.name,
-					Q = De.Component,
+					Y = De.Component,
 					ke = De.validate,
 					nt = De.onChange,
 					ft = R(De, ["name", "Component", "validate", "onChange"]),
@@ -70048,7 +70048,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					Ft = At.submitCount,
 					on = At.errors,
 					Re = z(ge, on, Ft);
-				return h().createElement(Q, _({}, Mt, {
+				return h().createElement(Y, _({}, Mt, {
 					onChange: function(Te) {
 						nt == null || nt(Te), It(Te)
 					}
@@ -70061,8 +70061,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			function u() {
 				return u = Object.assign || function(De) {
 					for (var ge = 1; ge < arguments.length; ge++) {
-						var Q = arguments[ge];
-						for (var ke in Q) Object.prototype.hasOwnProperty.call(Q, ke) && (De[ke] = Q[ke])
+						var Y = arguments[ge];
+						for (var ke in Y) Object.prototype.hasOwnProperty.call(Y, ke) && (De[ke] = Y[ke])
 					}
 					return De
 				}, u.apply(this, arguments)
@@ -70077,8 +70077,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			function r() {
 				return r = Object.assign || function(De) {
 					for (var ge = 1; ge < arguments.length; ge++) {
-						var Q = arguments[ge];
-						for (var ke in Q) Object.prototype.hasOwnProperty.call(Q, ke) && (De[ke] = Q[ke])
+						var Y = arguments[ge];
+						for (var ke in Y) Object.prototype.hasOwnProperty.call(Y, ke) && (De[ke] = Y[ke])
 					}
 					return De
 				}, r.apply(this, arguments)
@@ -70096,32 +70096,32 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			function m(De, ge) {
 				if (!!De) {
 					if (typeof De == "string") return s(De, ge);
-					var Q = Object.prototype.toString.call(De).slice(8, -1);
-					if (Q === "Object" && De.constructor && (Q = De.constructor.name), Q === "Map" || Q === "Set") return Array.from(De);
-					if (Q === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(Q)) return s(De, ge)
+					var Y = Object.prototype.toString.call(De).slice(8, -1);
+					if (Y === "Object" && De.constructor && (Y = De.constructor.name), Y === "Map" || Y === "Set") return Array.from(De);
+					if (Y === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(Y)) return s(De, ge)
 				}
 			}
 
 			function s(De, ge) {
 				(ge == null || ge > De.length) && (ge = De.length);
-				for (var Q = 0, ke = new Array(ge); Q < ge; Q++) ke[Q] = De[Q];
+				for (var Y = 0, ke = new Array(ge); Y < ge; Y++) ke[Y] = De[Y];
 				return ke
 			}
 
 			function l(De, ge) {
-				var Q = De && (typeof Symbol != "undefined" && De[Symbol.iterator] || De["@@iterator"]);
-				if (Q != null) {
+				var Y = De && (typeof Symbol != "undefined" && De[Symbol.iterator] || De["@@iterator"]);
+				if (Y != null) {
 					var ke = [],
 						nt = !0,
 						ft = !1,
 						xt, Ct;
 					try {
-						for (Q = Q.call(De); !(nt = (xt = Q.next()).done) && (ke.push(xt.value), !(ge && ke.length === ge)); nt = !0);
+						for (Y = Y.call(De); !(nt = (xt = Y.next()).done) && (ke.push(xt.value), !(ge && ke.length === ge)); nt = !0);
 					} catch (ht) {
 						ft = !0, Ct = ht
 					} finally {
 						try {
-							!nt && Q.return != null && Q.return()
+							!nt && Y.return != null && Y.return()
 						} finally {
 							if (ft) throw Ct
 						}
@@ -70136,27 +70136,27 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 
 			function S(De, ge) {
 				if (De == null) return {};
-				var Q = U(De, ge),
+				var Y = U(De, ge),
 					ke, nt;
 				if (Object.getOwnPropertySymbols) {
 					var ft = Object.getOwnPropertySymbols(De);
-					for (nt = 0; nt < ft.length; nt++) ke = ft[nt], !(ge.indexOf(ke) >= 0) && (!Object.prototype.propertyIsEnumerable.call(De, ke) || (Q[ke] = De[ke]))
+					for (nt = 0; nt < ft.length; nt++) ke = ft[nt], !(ge.indexOf(ke) >= 0) && (!Object.prototype.propertyIsEnumerable.call(De, ke) || (Y[ke] = De[ke]))
 				}
-				return Q
+				return Y
 			}
 
 			function U(De, ge) {
 				if (De == null) return {};
-				var Q = {},
+				var Y = {},
 					ke = Object.keys(De),
 					nt, ft;
-				for (ft = 0; ft < ke.length; ft++) nt = ke[ft], !(ge.indexOf(nt) >= 0) && (Q[nt] = De[nt]);
-				return Q
+				for (ft = 0; ft < ke.length; ft++) nt = ke[ft], !(ge.indexOf(nt) >= 0) && (Y[nt] = De[nt]);
+				return Y
 			}
 
 			function B(De) {
 				var ge = De.name,
-					Q = De.onChange,
+					Y = De.onChange,
 					ke = De.validate,
 					nt = S(De, ["name", "onChange", "validate"]),
 					ft = useField({
@@ -70173,7 +70173,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					on = getError(ge, Ft, At);
 				return React.createElement(Checkboxes, r({}, Ct, nt, {
 					onChange: function(at) {
-						It.setValue(at), Q == null || Q(at)
+						It.setValue(at), Y == null || Y(at)
 					},
 					error: on
 				}))
@@ -70182,8 +70182,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			function E() {
 				return E = Object.assign || function(De) {
 					for (var ge = 1; ge < arguments.length; ge++) {
-						var Q = arguments[ge];
-						for (var ke in Q) Object.prototype.hasOwnProperty.call(Q, ke) && (De[ke] = Q[ke])
+						var Y = arguments[ge];
+						for (var ke in Y) Object.prototype.hasOwnProperty.call(Y, ke) && (De[ke] = Y[ke])
 					}
 					return De
 				}, E.apply(this, arguments)
@@ -70201,32 +70201,32 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			function N(De, ge) {
 				if (!!De) {
 					if (typeof De == "string") return j(De, ge);
-					var Q = Object.prototype.toString.call(De).slice(8, -1);
-					if (Q === "Object" && De.constructor && (Q = De.constructor.name), Q === "Map" || Q === "Set") return Array.from(De);
-					if (Q === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(Q)) return j(De, ge)
+					var Y = Object.prototype.toString.call(De).slice(8, -1);
+					if (Y === "Object" && De.constructor && (Y = De.constructor.name), Y === "Map" || Y === "Set") return Array.from(De);
+					if (Y === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(Y)) return j(De, ge)
 				}
 			}
 
 			function j(De, ge) {
 				(ge == null || ge > De.length) && (ge = De.length);
-				for (var Q = 0, ke = new Array(ge); Q < ge; Q++) ke[Q] = De[Q];
+				for (var Y = 0, ke = new Array(ge); Y < ge; Y++) ke[Y] = De[Y];
 				return ke
 			}
 
 			function b(De, ge) {
-				var Q = De && (typeof Symbol != "undefined" && De[Symbol.iterator] || De["@@iterator"]);
-				if (Q != null) {
+				var Y = De && (typeof Symbol != "undefined" && De[Symbol.iterator] || De["@@iterator"]);
+				if (Y != null) {
 					var ke = [],
 						nt = !0,
 						ft = !1,
 						xt, Ct;
 					try {
-						for (Q = Q.call(De); !(nt = (xt = Q.next()).done) && (ke.push(xt.value), !(ge && ke.length === ge)); nt = !0);
+						for (Y = Y.call(De); !(nt = (xt = Y.next()).done) && (ke.push(xt.value), !(ge && ke.length === ge)); nt = !0);
 					} catch (ht) {
 						ft = !0, Ct = ht
 					} finally {
 						try {
-							!nt && Q.return != null && Q.return()
+							!nt && Y.return != null && Y.return()
 						} finally {
 							if (ft) throw Ct
 						}
@@ -70241,27 +70241,27 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 
 			function C(De, ge) {
 				if (De == null) return {};
-				var Q = W(De, ge),
+				var Y = W(De, ge),
 					ke, nt;
 				if (Object.getOwnPropertySymbols) {
 					var ft = Object.getOwnPropertySymbols(De);
-					for (nt = 0; nt < ft.length; nt++) ke = ft[nt], !(ge.indexOf(ke) >= 0) && (!Object.prototype.propertyIsEnumerable.call(De, ke) || (Q[ke] = De[ke]))
+					for (nt = 0; nt < ft.length; nt++) ke = ft[nt], !(ge.indexOf(ke) >= 0) && (!Object.prototype.propertyIsEnumerable.call(De, ke) || (Y[ke] = De[ke]))
 				}
-				return Q
+				return Y
 			}
 
 			function W(De, ge) {
 				if (De == null) return {};
-				var Q = {},
+				var Y = {},
 					ke = Object.keys(De),
 					nt, ft;
-				for (ft = 0; ft < ke.length; ft++) nt = ke[ft], !(ge.indexOf(nt) >= 0) && (Q[nt] = De[nt]);
-				return Q
+				for (ft = 0; ft < ke.length; ft++) nt = ke[ft], !(ge.indexOf(nt) >= 0) && (Y[nt] = De[nt]);
+				return Y
 			}
 
 			function $(De) {
 				var ge = De.name,
-					Q = De.onChange,
+					Y = De.onChange,
 					ke = De.validate,
 					nt = C(De, ["name", "onChange", "validate"]),
 					ft = (0, o.U$)({
@@ -70278,7 +70278,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					on = z(ge, Ft, At);
 				return h().createElement(n.hQ, E({}, Ct, nt, {
 					onChange: function(at) {
-						It.setValue(at.value), Q == null || Q(at)
+						It.setValue(at.value), Y == null || Y(at)
 					},
 					error: on
 				}))
@@ -70287,8 +70287,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			function J() {
 				return J = Object.assign || function(De) {
 					for (var ge = 1; ge < arguments.length; ge++) {
-						var Q = arguments[ge];
-						for (var ke in Q) Object.prototype.hasOwnProperty.call(Q, ke) && (De[ke] = Q[ke])
+						var Y = arguments[ge];
+						for (var ke in Y) Object.prototype.hasOwnProperty.call(Y, ke) && (De[ke] = Y[ke])
 					}
 					return De
 				}, J.apply(this, arguments)
@@ -70296,41 +70296,41 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 
 			function le(De, ge) {
 				if (De == null) return {};
-				var Q = fe(De, ge),
+				var Y = fe(De, ge),
 					ke, nt;
 				if (Object.getOwnPropertySymbols) {
 					var ft = Object.getOwnPropertySymbols(De);
-					for (nt = 0; nt < ft.length; nt++) ke = ft[nt], !(ge.indexOf(ke) >= 0) && (!Object.prototype.propertyIsEnumerable.call(De, ke) || (Q[ke] = De[ke]))
+					for (nt = 0; nt < ft.length; nt++) ke = ft[nt], !(ge.indexOf(ke) >= 0) && (!Object.prototype.propertyIsEnumerable.call(De, ke) || (Y[ke] = De[ke]))
 				}
-				return Q
+				return Y
 			}
 
 			function fe(De, ge) {
 				if (De == null) return {};
-				var Q = {},
+				var Y = {},
 					ke = Object.keys(De),
 					nt, ft;
-				for (ft = 0; ft < ke.length; ft++) nt = ke[ft], !(ge.indexOf(nt) >= 0) && (Q[nt] = De[nt]);
-				return Q
+				for (ft = 0; ft < ke.length; ft++) nt = ke[ft], !(ge.indexOf(nt) >= 0) && (Y[nt] = De[nt]);
+				return Y
 			}
 
 			function X(De) {
 				var ge = De.name,
-					Q = le(De, ["name"]),
+					Y = le(De, ["name"]),
 					ke = (0, o.u6)(),
 					nt = ke.submitCount,
 					ft = ke.errors,
 					xt = p()(ft, ge);
 				return xt && nt > 0 ? h().createElement(n.yE, J({
 					name: ge
-				}, Q), xt) : h().createElement(h().Fragment, null)
+				}, Y), xt) : h().createElement(h().Fragment, null)
 			}
 
 			function H() {
 				return H = Object.assign || function(De) {
 					for (var ge = 1; ge < arguments.length; ge++) {
-						var Q = arguments[ge];
-						for (var ke in Q) Object.prototype.hasOwnProperty.call(Q, ke) && (De[ke] = Q[ke])
+						var Y = arguments[ge];
+						for (var ke in Y) Object.prototype.hasOwnProperty.call(Y, ke) && (De[ke] = Y[ke])
 					}
 					return De
 				}, H.apply(this, arguments)
@@ -70338,41 +70338,41 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 
 			function ae(De, ge) {
 				if (De == null) return {};
-				var Q = de(De, ge),
+				var Y = de(De, ge),
 					ke, nt;
 				if (Object.getOwnPropertySymbols) {
 					var ft = Object.getOwnPropertySymbols(De);
-					for (nt = 0; nt < ft.length; nt++) ke = ft[nt], !(ge.indexOf(ke) >= 0) && (!Object.prototype.propertyIsEnumerable.call(De, ke) || (Q[ke] = De[ke]))
+					for (nt = 0; nt < ft.length; nt++) ke = ft[nt], !(ge.indexOf(ke) >= 0) && (!Object.prototype.propertyIsEnumerable.call(De, ke) || (Y[ke] = De[ke]))
 				}
-				return Q
+				return Y
 			}
 
 			function de(De, ge) {
 				if (De == null) return {};
-				var Q = {},
+				var Y = {},
 					ke = Object.keys(De),
 					nt, ft;
-				for (ft = 0; ft < ke.length; ft++) nt = ke[ft], !(ge.indexOf(nt) >= 0) && (Q[nt] = De[nt]);
-				return Q
+				for (ft = 0; ft < ke.length; ft++) nt = ke[ft], !(ge.indexOf(nt) >= 0) && (Y[nt] = De[nt]);
+				return Y
 			}
 			var me = function(ge) {
-					var Q = ge.name,
+					var Y = ge.name,
 						ke = ae(ge, ["name"]),
 						nt = (0, o.u6)(),
 						ft = nt.submitCount,
 						xt = nt.errors,
-						Ct = z(Q, xt, ft);
+						Ct = z(Y, xt, ft);
 					return Ct ? h().createElement(n.jj, H({
-						id: "error.".concat(Q)
+						id: "error.".concat(Y)
 					}, ke), Ct) : null
 				},
 				ye = me;
 
 			function be(De) {
 				var ge = De.children,
-					Q = (0, o.u6)(),
-					ke = Q.submitCount,
-					nt = Q.errors;
+					Y = (0, o.u6)(),
+					ke = Y.submitCount,
+					nt = Y.errors;
 				return h().createElement(n.Xg, {
 					errors: nt,
 					showErrors: ke > 0
@@ -70403,8 +70403,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					return React.createElement(Form, {
 						name: "example-form",
 						initialValues: V,
-						onSubmit: function(ge, Q) {
-							var ke = Q.submitButtonName;
+						onSubmit: function(ge, Y) {
+							var ke = Y.submitButtonName;
 							console.log("values", ge, ke)
 						}
 					}, React.createElement(Search, {
@@ -70571,8 +70571,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			function We() {
 				return We = Object.assign || function(De) {
 					for (var ge = 1; ge < arguments.length; ge++) {
-						var Q = arguments[ge];
-						for (var ke in Q) Object.prototype.hasOwnProperty.call(Q, ke) && (De[ke] = Q[ke])
+						var Y = arguments[ge];
+						for (var ke in Y) Object.prototype.hasOwnProperty.call(Y, ke) && (De[ke] = Y[ke])
 					}
 					return De
 				}, We.apply(this, arguments)
@@ -70580,32 +70580,32 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 
 			function lt(De) {
 				for (var ge = 1; ge < arguments.length; ge++) {
-					var Q = arguments[ge] != null ? Object(arguments[ge]) : {},
-						ke = Object.keys(Q);
-					typeof Object.getOwnPropertySymbols == "function" && (ke = ke.concat(Object.getOwnPropertySymbols(Q).filter(function(nt) {
-						return Object.getOwnPropertyDescriptor(Q, nt).enumerable
+					var Y = arguments[ge] != null ? Object(arguments[ge]) : {},
+						ke = Object.keys(Y);
+					typeof Object.getOwnPropertySymbols == "function" && (ke = ke.concat(Object.getOwnPropertySymbols(Y).filter(function(nt) {
+						return Object.getOwnPropertyDescriptor(Y, nt).enumerable
 					}))), ke.forEach(function(nt) {
-						Ue(De, nt, Q[nt])
+						Ue(De, nt, Y[nt])
 					})
 				}
 				return De
 			}
 
-			function Ue(De, ge, Q) {
+			function Ue(De, ge, Y) {
 				return ge in De ? Object.defineProperty(De, ge, {
-					value: Q,
+					value: Y,
 					enumerable: !0,
 					configurable: !0,
 					writable: !0
-				}) : De[ge] = Q, De
+				}) : De[ge] = Y, De
 			}
 
-			function Fe(De, ge, Q, ke, nt, ft, xt) {
+			function Fe(De, ge, Y, ke, nt, ft, xt) {
 				try {
 					var Ct = De[ft](xt),
 						ht = Ct.value
 				} catch (It) {
-					Q(It);
+					Y(It);
 					return
 				}
 				Ct.done ? ge(ht) : Promise.resolve(ht).then(ke, nt)
@@ -70614,9 +70614,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			function xe(De) {
 				return function() {
 					var ge = this,
-						Q = arguments;
+						Y = arguments;
 					return new Promise(function(ke, nt) {
-						var ft = De.apply(ge, Q);
+						var ft = De.apply(ge, Y);
 
 						function xt(ht) {
 							Fe(ft, ke, nt, xt, Ct, "next", ht)
@@ -70632,27 +70632,27 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 
 			function Qe(De, ge) {
 				if (De == null) return {};
-				var Q = rt(De, ge),
+				var Y = rt(De, ge),
 					ke, nt;
 				if (Object.getOwnPropertySymbols) {
 					var ft = Object.getOwnPropertySymbols(De);
-					for (nt = 0; nt < ft.length; nt++) ke = ft[nt], !(ge.indexOf(ke) >= 0) && (!Object.prototype.propertyIsEnumerable.call(De, ke) || (Q[ke] = De[ke]))
+					for (nt = 0; nt < ft.length; nt++) ke = ft[nt], !(ge.indexOf(ke) >= 0) && (!Object.prototype.propertyIsEnumerable.call(De, ke) || (Y[ke] = De[ke]))
 				}
-				return Q
+				return Y
 			}
 
 			function rt(De, ge) {
 				if (De == null) return {};
-				var Q = {},
+				var Y = {},
 					ke = Object.keys(De),
 					nt, ft;
-				for (ft = 0; ft < ke.length; ft++) nt = ke[ft], !(ge.indexOf(nt) >= 0) && (Q[nt] = De[nt]);
-				return Q
+				for (ft = 0; ft < ke.length; ft++) nt = ke[ft], !(ge.indexOf(nt) >= 0) && (Y[nt] = De[nt]);
+				return Y
 			}
 
 			function Be(De) {
 				var ge = De.name,
-					Q = De.className,
+					Y = De.className,
 					ke = De.children,
 					nt = De.testId,
 					ft = Qe(De, ["name", "className", "children", "testId"]),
@@ -70663,7 +70663,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					return h().createElement("form", {
 						ref: xt.formRef,
 						onSubmit: Ct.handleSubmit,
-						className: Q,
+						className: Y,
 						"data-testid": nt,
 						"aria-labelledby": xt.fieldNameToErrorId.get(ge)
 					}, typeof ke == "function" ? ke(Ct) : ke)
@@ -70672,7 +70672,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 
 			function Ye(De) {
 				var ge = De.onSubmit,
-					Q = De.validate,
+					Y = De.validate,
 					ke = Qe(De, ["onSubmit", "validate"]),
 					nt = (0, t.useRef)(null);
 				return h().createElement(n.ol, {
@@ -70702,7 +70702,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 								return xt.apply(this, arguments)
 							}
 						}(),
-						validate: Q || ft.validate
+						validate: Y || ft.validate
 					}, ke))
 				}))
 			}
@@ -70720,8 +70720,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			function Je() {
 				return Je = Object.assign || function(De) {
 					for (var ge = 1; ge < arguments.length; ge++) {
-						var Q = arguments[ge];
-						for (var ke in Q) Object.prototype.hasOwnProperty.call(Q, ke) && (De[ke] = Q[ke])
+						var Y = arguments[ge];
+						for (var ke in Y) Object.prototype.hasOwnProperty.call(Y, ke) && (De[ke] = Y[ke])
 					}
 					return De
 				}, Je.apply(this, arguments)
@@ -70736,8 +70736,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			function Ne() {
 				return Ne = Object.assign || function(De) {
 					for (var ge = 1; ge < arguments.length; ge++) {
-						var Q = arguments[ge];
-						for (var ke in Q) Object.prototype.hasOwnProperty.call(Q, ke) && (De[ke] = Q[ke])
+						var Y = arguments[ge];
+						for (var ke in Y) Object.prototype.hasOwnProperty.call(Y, ke) && (De[ke] = Y[ke])
 					}
 					return De
 				}, Ne.apply(this, arguments)
@@ -70755,32 +70755,32 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			function se(De, ge) {
 				if (!!De) {
 					if (typeof De == "string") return Se(De, ge);
-					var Q = Object.prototype.toString.call(De).slice(8, -1);
-					if (Q === "Object" && De.constructor && (Q = De.constructor.name), Q === "Map" || Q === "Set") return Array.from(De);
-					if (Q === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(Q)) return Se(De, ge)
+					var Y = Object.prototype.toString.call(De).slice(8, -1);
+					if (Y === "Object" && De.constructor && (Y = De.constructor.name), Y === "Map" || Y === "Set") return Array.from(De);
+					if (Y === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(Y)) return Se(De, ge)
 				}
 			}
 
 			function Se(De, ge) {
 				(ge == null || ge > De.length) && (ge = De.length);
-				for (var Q = 0, ke = new Array(ge); Q < ge; Q++) ke[Q] = De[Q];
+				for (var Y = 0, ke = new Array(ge); Y < ge; Y++) ke[Y] = De[Y];
 				return ke
 			}
 
 			function Me(De, ge) {
-				var Q = De && (typeof Symbol != "undefined" && De[Symbol.iterator] || De["@@iterator"]);
-				if (Q != null) {
+				var Y = De && (typeof Symbol != "undefined" && De[Symbol.iterator] || De["@@iterator"]);
+				if (Y != null) {
 					var ke = [],
 						nt = !0,
 						ft = !1,
 						xt, Ct;
 					try {
-						for (Q = Q.call(De); !(nt = (xt = Q.next()).done) && (ke.push(xt.value), !(ge && ke.length === ge)); nt = !0);
+						for (Y = Y.call(De); !(nt = (xt = Y.next()).done) && (ke.push(xt.value), !(ge && ke.length === ge)); nt = !0);
 					} catch (ht) {
 						ft = !0, Ct = ht
 					} finally {
 						try {
-							!nt && Q.return != null && Q.return()
+							!nt && Y.return != null && Y.return()
 						} finally {
 							if (ft) throw Ct
 						}
@@ -70795,27 +70795,27 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 
 			function he(De, ge) {
 				if (De == null) return {};
-				var Q = ee(De, ge),
+				var Y = ee(De, ge),
 					ke, nt;
 				if (Object.getOwnPropertySymbols) {
 					var ft = Object.getOwnPropertySymbols(De);
-					for (nt = 0; nt < ft.length; nt++) ke = ft[nt], !(ge.indexOf(ke) >= 0) && (!Object.prototype.propertyIsEnumerable.call(De, ke) || (Q[ke] = De[ke]))
+					for (nt = 0; nt < ft.length; nt++) ke = ft[nt], !(ge.indexOf(ke) >= 0) && (!Object.prototype.propertyIsEnumerable.call(De, ke) || (Y[ke] = De[ke]))
 				}
-				return Q
+				return Y
 			}
 
 			function ee(De, ge) {
 				if (De == null) return {};
-				var Q = {},
+				var Y = {},
 					ke = Object.keys(De),
 					nt, ft;
-				for (ft = 0; ft < ke.length; ft++) nt = ke[ft], !(ge.indexOf(nt) >= 0) && (Q[nt] = De[nt]);
-				return Q
+				for (ft = 0; ft < ke.length; ft++) nt = ke[ft], !(ge.indexOf(nt) >= 0) && (Y[nt] = De[nt]);
+				return Y
 			}
 
 			function G(De) {
 				var ge = De.name,
-					Q = De.onChange,
+					Y = De.onChange,
 					ke = De.validate,
 					nt = he(De, ["name", "onChange", "validate"]),
 					ft = (0, o.U$)({
@@ -70832,7 +70832,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					on = z(ge, Ft, At);
 				return h().createElement(n.Ri, Ne({}, Ct, nt, {
 					onChange: function(at) {
-						It.setValue(at.value), Q == null || Q(at)
+						It.setValue(at.value), Y == null || Y(at)
 					},
 					error: on
 				}))
@@ -70841,8 +70841,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			function ve() {
 				return ve = Object.assign || function(De) {
 					for (var ge = 1; ge < arguments.length; ge++) {
-						var Q = arguments[ge];
-						for (var ke in Q) Object.prototype.hasOwnProperty.call(Q, ke) && (De[ke] = Q[ke])
+						var Y = arguments[ge];
+						for (var ke in Y) Object.prototype.hasOwnProperty.call(Y, ke) && (De[ke] = Y[ke])
 					}
 					return De
 				}, ve.apply(this, arguments)
@@ -70860,32 +70860,32 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			function pt(De, ge) {
 				if (!!De) {
 					if (typeof De == "string") return Rt(De, ge);
-					var Q = Object.prototype.toString.call(De).slice(8, -1);
-					if (Q === "Object" && De.constructor && (Q = De.constructor.name), Q === "Map" || Q === "Set") return Array.from(De);
-					if (Q === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(Q)) return Rt(De, ge)
+					var Y = Object.prototype.toString.call(De).slice(8, -1);
+					if (Y === "Object" && De.constructor && (Y = De.constructor.name), Y === "Map" || Y === "Set") return Array.from(De);
+					if (Y === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(Y)) return Rt(De, ge)
 				}
 			}
 
 			function Rt(De, ge) {
 				(ge == null || ge > De.length) && (ge = De.length);
-				for (var Q = 0, ke = new Array(ge); Q < ge; Q++) ke[Q] = De[Q];
+				for (var Y = 0, ke = new Array(ge); Y < ge; Y++) ke[Y] = De[Y];
 				return ke
 			}
 
 			function zt(De, ge) {
-				var Q = De && (typeof Symbol != "undefined" && De[Symbol.iterator] || De["@@iterator"]);
-				if (Q != null) {
+				var Y = De && (typeof Symbol != "undefined" && De[Symbol.iterator] || De["@@iterator"]);
+				if (Y != null) {
 					var ke = [],
 						nt = !0,
 						ft = !1,
 						xt, Ct;
 					try {
-						for (Q = Q.call(De); !(nt = (xt = Q.next()).done) && (ke.push(xt.value), !(ge && ke.length === ge)); nt = !0);
+						for (Y = Y.call(De); !(nt = (xt = Y.next()).done) && (ke.push(xt.value), !(ge && ke.length === ge)); nt = !0);
 					} catch (ht) {
 						ft = !0, Ct = ht
 					} finally {
 						try {
-							!nt && Q.return != null && Q.return()
+							!nt && Y.return != null && Y.return()
 						} finally {
 							if (ft) throw Ct
 						}
@@ -70900,27 +70900,27 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 
 			function Tt(De, ge) {
 				if (De == null) return {};
-				var Q = Jt(De, ge),
+				var Y = Jt(De, ge),
 					ke, nt;
 				if (Object.getOwnPropertySymbols) {
 					var ft = Object.getOwnPropertySymbols(De);
-					for (nt = 0; nt < ft.length; nt++) ke = ft[nt], !(ge.indexOf(ke) >= 0) && (!Object.prototype.propertyIsEnumerable.call(De, ke) || (Q[ke] = De[ke]))
+					for (nt = 0; nt < ft.length; nt++) ke = ft[nt], !(ge.indexOf(ke) >= 0) && (!Object.prototype.propertyIsEnumerable.call(De, ke) || (Y[ke] = De[ke]))
 				}
-				return Q
+				return Y
 			}
 
 			function Jt(De, ge) {
 				if (De == null) return {};
-				var Q = {},
+				var Y = {},
 					ke = Object.keys(De),
 					nt, ft;
-				for (ft = 0; ft < ke.length; ft++) nt = ke[ft], !(ge.indexOf(nt) >= 0) && (Q[nt] = De[nt]);
-				return Q
+				for (ft = 0; ft < ke.length; ft++) nt = ke[ft], !(ge.indexOf(nt) >= 0) && (Y[nt] = De[nt]);
+				return Y
 			}
 
 			function rn(De) {
 				var ge = De.name,
-					Q = De.onChange,
+					Y = De.onChange,
 					ke = De.validate,
 					nt = Tt(De, ["name", "onChange", "validate"]),
 					ft = (0, o.U$)({
@@ -70937,7 +70937,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					on = z(ge, Ft, At);
 				return h().createElement(n.Tr, ve({}, Ct, nt, {
 					onChange: function(at) {
-						It.setValue(at), Q == null || Q(at)
+						It.setValue(at), Y == null || Y(at)
 					},
 					error: on
 				}))
@@ -70946,8 +70946,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			function Tn() {
 				return Tn = Object.assign || function(De) {
 					for (var ge = 1; ge < arguments.length; ge++) {
-						var Q = arguments[ge];
-						for (var ke in Q) Object.prototype.hasOwnProperty.call(Q, ke) && (De[ke] = Q[ke])
+						var Y = arguments[ge];
+						for (var ke in Y) Object.prototype.hasOwnProperty.call(Y, ke) && (De[ke] = Y[ke])
 					}
 					return De
 				}, Tn.apply(this, arguments)
@@ -70965,8 +70965,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			function En() {
 				return En = Object.assign || function(De) {
 					for (var ge = 1; ge < arguments.length; ge++) {
-						var Q = arguments[ge];
-						for (var ke in Q) Object.prototype.hasOwnProperty.call(Q, ke) && (De[ke] = Q[ke])
+						var Y = arguments[ge];
+						for (var ke in Y) Object.prototype.hasOwnProperty.call(Y, ke) && (De[ke] = Y[ke])
 					}
 					return De
 				}, En.apply(this, arguments)
@@ -70984,32 +70984,32 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			function jn(De, ge) {
 				if (!!De) {
 					if (typeof De == "string") return Vn(De, ge);
-					var Q = Object.prototype.toString.call(De).slice(8, -1);
-					if (Q === "Object" && De.constructor && (Q = De.constructor.name), Q === "Map" || Q === "Set") return Array.from(De);
-					if (Q === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(Q)) return Vn(De, ge)
+					var Y = Object.prototype.toString.call(De).slice(8, -1);
+					if (Y === "Object" && De.constructor && (Y = De.constructor.name), Y === "Map" || Y === "Set") return Array.from(De);
+					if (Y === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(Y)) return Vn(De, ge)
 				}
 			}
 
 			function Vn(De, ge) {
 				(ge == null || ge > De.length) && (ge = De.length);
-				for (var Q = 0, ke = new Array(ge); Q < ge; Q++) ke[Q] = De[Q];
+				for (var Y = 0, ke = new Array(ge); Y < ge; Y++) ke[Y] = De[Y];
 				return ke
 			}
 
 			function ir(De, ge) {
-				var Q = De && (typeof Symbol != "undefined" && De[Symbol.iterator] || De["@@iterator"]);
-				if (Q != null) {
+				var Y = De && (typeof Symbol != "undefined" && De[Symbol.iterator] || De["@@iterator"]);
+				if (Y != null) {
 					var ke = [],
 						nt = !0,
 						ft = !1,
 						xt, Ct;
 					try {
-						for (Q = Q.call(De); !(nt = (xt = Q.next()).done) && (ke.push(xt.value), !(ge && ke.length === ge)); nt = !0);
+						for (Y = Y.call(De); !(nt = (xt = Y.next()).done) && (ke.push(xt.value), !(ge && ke.length === ge)); nt = !0);
 					} catch (ht) {
 						ft = !0, Ct = ht
 					} finally {
 						try {
-							!nt && Q.return != null && Q.return()
+							!nt && Y.return != null && Y.return()
 						} finally {
 							if (ft) throw Ct
 						}
@@ -71024,27 +71024,27 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 
 			function cr(De, ge) {
 				if (De == null) return {};
-				var Q = cn(De, ge),
+				var Y = cn(De, ge),
 					ke, nt;
 				if (Object.getOwnPropertySymbols) {
 					var ft = Object.getOwnPropertySymbols(De);
-					for (nt = 0; nt < ft.length; nt++) ke = ft[nt], !(ge.indexOf(ke) >= 0) && (!Object.prototype.propertyIsEnumerable.call(De, ke) || (Q[ke] = De[ke]))
+					for (nt = 0; nt < ft.length; nt++) ke = ft[nt], !(ge.indexOf(ke) >= 0) && (!Object.prototype.propertyIsEnumerable.call(De, ke) || (Y[ke] = De[ke]))
 				}
-				return Q
+				return Y
 			}
 
 			function cn(De, ge) {
 				if (De == null) return {};
-				var Q = {},
+				var Y = {},
 					ke = Object.keys(De),
 					nt, ft;
-				for (ft = 0; ft < ke.length; ft++) nt = ke[ft], !(ge.indexOf(nt) >= 0) && (Q[nt] = De[nt]);
-				return Q
+				for (ft = 0; ft < ke.length; ft++) nt = ke[ft], !(ge.indexOf(nt) >= 0) && (Y[nt] = De[nt]);
+				return Y
 			}
 			var Ht = 0;
 
 			function tn(De) {
-				var ge, Q = De.children,
+				var ge, Y = De.children,
 					ke = De.label,
 					nt = ke === void 0 ? h().createElement(xn.cC, {
 						id: "common.search"
@@ -71122,7 +71122,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						loading: Ft,
 						testId: Re,
 						onChange: gr
-					}, (0, _e.filterStyleProps)(_n), pn)), h().Children.map(typeof Q == "function" ? Q(wn) : Q, function(Nr) {
+					}, (0, _e.filterStyleProps)(_n), pn)), h().Children.map(typeof Y == "function" ? Y(wn) : Y, function(Nr) {
 						return Nr ? h().cloneElement(Nr, {
 							mb: 0,
 							onChange: gr
@@ -71148,8 +71148,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			function Ln() {
 				return Ln = Object.assign || function(De) {
 					for (var ge = 1; ge < arguments.length; ge++) {
-						var Q = arguments[ge];
-						for (var ke in Q) Object.prototype.hasOwnProperty.call(Q, ke) && (De[ke] = Q[ke])
+						var Y = arguments[ge];
+						for (var ke in Y) Object.prototype.hasOwnProperty.call(Y, ke) && (De[ke] = Y[ke])
 					}
 					return De
 				}, Ln.apply(this, arguments)
@@ -71167,32 +71167,32 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			function tt(De, ge) {
 				if (!!De) {
 					if (typeof De == "string") return ot(De, ge);
-					var Q = Object.prototype.toString.call(De).slice(8, -1);
-					if (Q === "Object" && De.constructor && (Q = De.constructor.name), Q === "Map" || Q === "Set") return Array.from(De);
-					if (Q === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(Q)) return ot(De, ge)
+					var Y = Object.prototype.toString.call(De).slice(8, -1);
+					if (Y === "Object" && De.constructor && (Y = De.constructor.name), Y === "Map" || Y === "Set") return Array.from(De);
+					if (Y === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(Y)) return ot(De, ge)
 				}
 			}
 
 			function ot(De, ge) {
 				(ge == null || ge > De.length) && (ge = De.length);
-				for (var Q = 0, ke = new Array(ge); Q < ge; Q++) ke[Q] = De[Q];
+				for (var Y = 0, ke = new Array(ge); Y < ge; Y++) ke[Y] = De[Y];
 				return ke
 			}
 
 			function pe(De, ge) {
-				var Q = De && (typeof Symbol != "undefined" && De[Symbol.iterator] || De["@@iterator"]);
-				if (Q != null) {
+				var Y = De && (typeof Symbol != "undefined" && De[Symbol.iterator] || De["@@iterator"]);
+				if (Y != null) {
 					var ke = [],
 						nt = !0,
 						ft = !1,
 						xt, Ct;
 					try {
-						for (Q = Q.call(De); !(nt = (xt = Q.next()).done) && (ke.push(xt.value), !(ge && ke.length === ge)); nt = !0);
+						for (Y = Y.call(De); !(nt = (xt = Y.next()).done) && (ke.push(xt.value), !(ge && ke.length === ge)); nt = !0);
 					} catch (ht) {
 						ft = !0, Ct = ht
 					} finally {
 						try {
-							!nt && Q.return != null && Q.return()
+							!nt && Y.return != null && Y.return()
 						} finally {
 							if (ft) throw Ct
 						}
@@ -71207,27 +71207,27 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 
 			function it(De, ge) {
 				if (De == null) return {};
-				var Q = yt(De, ge),
+				var Y = yt(De, ge),
 					ke, nt;
 				if (Object.getOwnPropertySymbols) {
 					var ft = Object.getOwnPropertySymbols(De);
-					for (nt = 0; nt < ft.length; nt++) ke = ft[nt], !(ge.indexOf(ke) >= 0) && (!Object.prototype.propertyIsEnumerable.call(De, ke) || (Q[ke] = De[ke]))
+					for (nt = 0; nt < ft.length; nt++) ke = ft[nt], !(ge.indexOf(ke) >= 0) && (!Object.prototype.propertyIsEnumerable.call(De, ke) || (Y[ke] = De[ke]))
 				}
-				return Q
+				return Y
 			}
 
 			function yt(De, ge) {
 				if (De == null) return {};
-				var Q = {},
+				var Y = {},
 					ke = Object.keys(De),
 					nt, ft;
-				for (ft = 0; ft < ke.length; ft++) nt = ke[ft], !(ge.indexOf(nt) >= 0) && (Q[nt] = De[nt]);
-				return Q
+				for (ft = 0; ft < ke.length; ft++) nt = ke[ft], !(ge.indexOf(nt) >= 0) && (Y[nt] = De[nt]);
+				return Y
 			}
 
 			function Lt(De) {
 				var ge = De.name,
-					Q = De.onChange,
+					Y = De.onChange,
 					ke = De.validate,
 					nt = De.options,
 					ft = it(De, ["name", "onChange", "validate", "options"]),
@@ -71246,7 +71246,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				return h().createElement(n.Ph, Ln({}, ht, ft, {
 					options: nt,
 					onChange: function(Te) {
-						Mt.setValue(Te.value), Q == null || Q(Te)
+						Mt.setValue(Te.value), Y == null || Y(Te)
 					},
 					error: Re
 				}))
@@ -71255,8 +71255,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			function jt() {
 				return jt = Object.assign || function(De) {
 					for (var ge = 1; ge < arguments.length; ge++) {
-						var Q = arguments[ge];
-						for (var ke in Q) Object.prototype.hasOwnProperty.call(Q, ke) && (De[ke] = Q[ke])
+						var Y = arguments[ge];
+						for (var ke in Y) Object.prototype.hasOwnProperty.call(Y, ke) && (De[ke] = Y[ke])
 					}
 					return De
 				}, jt.apply(this, arguments)
@@ -72542,19 +72542,19 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			}
 			var ge = e("../../../common/component/component-search/src/index.js");
 
-			function Q() {
-				return Q = Object.assign || function(Re) {
+			function Y() {
+				return Y = Object.assign || function(Re) {
 					for (var at = 1; at < arguments.length; at++) {
 						var Te = arguments[at];
 						for (var we in Te) Object.prototype.hasOwnProperty.call(Te, we) && (Re[we] = Te[we])
 					}
 					return Re
-				}, Q.apply(this, arguments)
+				}, Y.apply(this, arguments)
 			}
 
 			function ke(Re) {
-				var at = Q({}, Re);
-				return t().createElement(ue, Q({
+				var at = Y({}, Re);
+				return t().createElement(ue, Y({
 					Component: ge.o
 				}, at))
 			}
@@ -76877,10 +76877,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				},
 				De = e("../../../../node_modules/@hcaptcha/react-hcaptcha/dist/index.js"),
 				ge = e.n(De),
-				Q;
+				Y;
 			(function($e) {
 				$e.BILLING_PRE_VERIFICATION = "billingverification"
-			})(Q || (Q = {}));
+			})(Y || (Y = {}));
 			var ke = (0, n.forwardRef)(function($e, et) {
 					var ut = $e.label,
 						Dt = $e.context,
@@ -76896,7 +76896,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						Ir = $e.onFetchSuccess,
 						ur = (0, p.I0)();
 					(0, n.useEffect)(function() {
-						Dt === Q.BILLING_PRE_VERIFICATION && Zt && ur(jt.billingVerification.fetchBillingValidationCaptcha(Zt, tr))
+						Dt === Y.BILLING_PRE_VERIFICATION && Zt && ur(jt.billingVerification.fetchBillingValidationCaptcha(Zt, tr))
 					}, [Yt, Zt]);
 					var Or = (0, p.v9)(Nt[Dt]),
 						Rn = (Or == null ? void 0 : Or.data) || {},
@@ -77520,7 +77520,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						mb: 3
 					}, ua && t().createElement(It, {
 						label: ar("billing.captcha.let_us_know_youre_human"),
-						context: Q.BILLING_PRE_VERIFICATION,
+						context: Y.BILLING_PRE_VERIFICATION,
 						onVerify: function(Er) {
 							var dr = Er.token;
 							vr(dr)
@@ -82298,8 +82298,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 							Nt = k(yt, ["theme"]),
 							De = (0, p.useContext)(_.E),
 							ge = jt || {},
-							Q = typeof tt == "function" ? tt(ge) : tt;
-						return De == null || (Lt = De.renderStatic) === null || Lt === void 0 || Lt.call(De, Q), z().createElement(ot, Nt)
+							Y = typeof tt == "function" ? tt(ge) : tt;
+						return De == null || (Lt = De.renderStatic) === null || Lt === void 0 || Lt.call(De, Y), z().createElement(ot, Nt)
 					},
 					Oe = (0, t.Z)(pe);
 				return Oe.displayName = (0, O.Z)(ot), Oe
@@ -82729,7 +82729,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						De = !1,
 						ge = void 0;
 					try {
-						for (var Q = Rt[Symbol.iterator](), ke; !(Nt = (ke = Q.next()).done); Nt = !0) {
+						for (var Y = Rt[Symbol.iterator](), ke; !(Nt = (ke = Y.next()).done); Nt = !0) {
 							var nt = ke.value;
 							ot[nt] = G
 						}
@@ -82737,7 +82737,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						De = !0, ge = ft
 					} finally {
 						try {
-							!Nt && Q.return != null && Q.return()
+							!Nt && Y.return != null && Y.return()
 						} finally {
 							if (De) throw ge
 						}
@@ -87930,4 +87930,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=80c1753ad1f940755b92.js.map
+//# sourceMappingURL=a6705d743b9f52d56679.js.map
