@@ -1,0 +1,1478 @@
+[
+	{
+		"id": "access.endpoint_integration",
+		"feature": {
+			"feature_set": "access",
+			"id": 749,
+			"key": "access.endpoint_integration",
+			"name": "Access - Endpoint Integratioin"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "access.idp_azuread_enabled",
+		"feature": {
+			"feature_set": "access",
+			"id": 444,
+			"key": "access.idp_azuread_enabled",
+			"name": "Access - IDP Azuread Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "access.idp_centrify_enabled",
+		"feature": {
+			"feature_set": "access",
+			"id": 442,
+			"key": "access.idp_centrify_enabled",
+			"name": "Access - IDP Centrify Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "access.idp_generic_oidc_enabled",
+		"feature": {
+			"feature_set": "access",
+			"id": 445,
+			"key": "access.idp_generic_oidc_enabled",
+			"name": "Access - IDP Generic OIDC Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "access.idp_generic_saml_enabled",
+		"feature": {
+			"feature_set": "access",
+			"id": 446,
+			"key": "access.idp_generic_saml_enabled",
+			"name": "Access - IDP Generic SAML Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "access.idp_googleapps_enabled",
+		"feature": {
+			"feature_set": "access",
+			"id": 443,
+			"key": "access.idp_googleapps_enabled",
+			"name": "Access - IDP Googleapps Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "access.idp_okta_enabled",
+		"feature": {
+			"feature_set": "access",
+			"id": 440,
+			"key": "access.idp_okta_enabled",
+			"name": "Access - IDP Okta Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "access.idp_onelogin_enabled",
+		"feature": {
+			"feature_set": "access",
+			"id": 441,
+			"key": "access.idp_onelogin_enabled",
+			"name": "Access - IDP Onelogin Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "access.log_retention_days",
+		"feature": {
+			"feature_set": "access",
+			"id": 750,
+			"key": "access.log_retention_days",
+			"name": "Access - Log Retention Days"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "access.max_apps",
+		"feature": {
+			"feature_set": "access",
+			"id": 911,
+			"key": "access.max_apps",
+			"name": "Access - Maximum number of applications allowed"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "access.max_emails_per_rule",
+		"feature": {
+			"feature_set": "access",
+			"id": 914,
+			"key": "access.max_emails_per_rule",
+			"name": "Access - Maximum number of emails per rule allowed"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "access.max_group_size",
+		"feature": {
+			"feature_set": "access",
+			"id": 912,
+			"key": "access.max_group_size",
+			"name": "Access - Maximum group size allowed"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "access.max_groups",
+		"feature": {
+			"feature_set": "access",
+			"id": 913,
+			"key": "access.max_groups",
+			"name": "Access - Maximum number of groups allowed"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "access.max_idps",
+		"feature": {
+			"feature_set": "access",
+			"id": 918,
+			"key": "access.max_idps",
+			"name": "Access - Maximum number of IDPs allowed"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "access.max_ips_per_rule",
+		"feature": {
+			"feature_set": "access",
+			"id": 915,
+			"key": "access.max_ips_per_rule",
+			"name": "Access - Maximum number of IPs per rule allowed"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "access.max_mtls_root_certs",
+		"feature": {
+			"feature_set": "access",
+			"id": 916,
+			"key": "access.max_mtls_root_certs",
+			"name": "Access - Maximum number of mTLS root certificates allowed"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "access.max_rules_per_app",
+		"feature": {
+			"feature_set": "access",
+			"id": 919,
+			"key": "access.max_rules_per_app",
+			"name": "Access - Maximum number of rules allowed per application"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "access.max_service_tokens",
+		"feature": {
+			"feature_set": "access",
+			"id": 917,
+			"key": "access.max_service_tokens",
+			"name": "Access - Maximum number of service tokens allowed"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "access.self_serve_sso",
+		"feature": {
+			"feature_set": "access",
+			"id": 931,
+			"key": "access.self_serve_sso",
+			"name": "Access - Self Serve SSO Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "access.service_tokens",
+		"feature": {
+			"feature_set": "access",
+			"id": 751,
+			"key": "access.service_tokens",
+			"name": "Access - Service Tokens"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "access.unlimited_ent_seats_allowed",
+		"feature": {
+			"feature_set": "access",
+			"id": 672,
+			"key": "access.unlimited_ent_seats_allowed",
+			"name": "Access - Unlimited Enterprise Seats Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "access.users_allowed",
+		"feature": {
+			"feature_set": "access",
+			"id": 365,
+			"key": "access.users_allowed",
+			"name": "Access - Users Allowed"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "argo.allow_smart_routing",
+		"feature": {
+			"feature_set": "argo",
+			"id": 39,
+			"key": "argo.allow_smart_routing",
+			"name": "Argo Smart Routing"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "argo.allow_tiered_caching",
+		"feature": {
+			"feature_set": "argo",
+			"id": 38,
+			"key": "argo.allow_tiered_caching",
+			"name": "Argo Tiered Cache"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "argo.zones",
+		"feature": {
+			"feature_set": "argo",
+			"id": 72,
+			"key": "argo.zones",
+			"name": "Argo Zones"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "bulk_biz_zones",
+		"feature": {
+			"feature_set": "bulk",
+			"id": 6,
+			"key": "bulk_biz_zones",
+			"name": "Bulk BIZ Zones"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "bulk_ent_zones",
+		"feature": {
+			"feature_set": "bulk",
+			"id": 540,
+			"key": "bulk_ent_zones",
+			"name": "Bulk Ent Zones"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "bulk_pro_zones",
+		"feature": {
+			"feature_set": "bulk",
+			"id": 5,
+			"key": "bulk_pro_zones",
+			"name": "Bulk PRO Zones"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "cache_reserve.allowed",
+		"feature": {
+			"feature_set": "cache_reserve",
+			"id": 1002,
+			"key": "cache_reserve.allowed",
+			"name": "Cache - Allow Cache Reserve"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "contract.customer_enabled",
+		"feature": {
+			"feature_set": "contract",
+			"id": 390,
+			"key": "contract.customer_enabled",
+			"name": "Contract - Customer Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "contract.self_service_allowed",
+		"feature": {
+			"feature_set": "contract",
+			"id": 649,
+			"key": "contract.self_service_allowed",
+			"name": "Contract - Self Service Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "ctm.allow_country_pools",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 981,
+			"key": "ctm.allow_country_pools",
+			"name": "CTM Allow Country Pools"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "ctm.allow_pop_pools",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 20,
+			"key": "ctm.allow_pop_pools",
+			"name": "CTM Allow PoP Pools"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "ctm.allow_region_pools",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 22,
+			"key": "ctm.allow_region_pools",
+			"name": "CTM Allow Region Pools"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "ctm.enabled",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 18,
+			"key": "ctm.enabled",
+			"name": "CTM Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "ctm.load_balancers",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 13,
+			"key": "ctm.load_balancers",
+			"name": "CTM Load Balancers"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "ctm.max_pools_per_set",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 505,
+			"key": "ctm.max_pools_per_set",
+			"name": "CTM - Pools per set"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "ctm.monitor_interval",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 16,
+			"key": "ctm.monitor_interval",
+			"name": "CTM Monitor Interval"
+		},
+		"allocation": {
+			"type": "range"
+		}
+	},
+	{
+		"id": "ctm.monitors",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 9,
+			"key": "ctm.monitors",
+			"name": "CTM Monitors"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "ctm.origins",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 10,
+			"key": "ctm.origins",
+			"name": "CTM Origins"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "ctm.origins_per_pool",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 21,
+			"key": "ctm.origins_per_pool",
+			"name": "CTM Origins Per Pool"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "ctm.pools",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 11,
+			"key": "ctm.pools",
+			"name": "CTM Pools"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "ctm.premium_probes_enabled",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 975,
+			"key": "ctm.premium_probes_enabled",
+			"name": "CTM Premium Probes Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "ctm.probe_internal",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 17,
+			"key": "ctm.probe_internal",
+			"name": "CTM Probe Internal"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "ctm.probe_regions",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 37,
+			"key": "ctm.probe_regions",
+			"name": "CTM Probe Regions"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "ctm.rules_enabled",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 766,
+			"key": "ctm.rules_enabled",
+			"name": "CTM Rules Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "ctm.rules_per_lb",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 767,
+			"key": "ctm.rules_per_lb",
+			"name": "CTM Rules Per LB"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "ddos.l7_traffic_profiling_allowed",
+		"feature": {
+			"feature_set": "ddos",
+			"id": 1019,
+			"key": "ddos.l7_traffic_profiling_allowed",
+			"name": "L7 Traffic Profiling"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "diagnostics.traceroute_allowed",
+		"feature": {
+			"feature_set": "diagnostics",
+			"id": 765,
+			"key": "diagnostics.traceroute_allowed",
+			"name": "Diagnostics - Traceroute Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "enterprise.ecp_allowed",
+		"feature": {
+			"feature_set": "enterprise",
+			"id": 1008,
+			"key": "enterprise.ecp_allowed",
+			"name": "Enterprise Customer Portal Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "filters.mass_redirects_max_list_items",
+		"feature": {
+			"feature_set": "filters",
+			"id": 962,
+			"key": "filters.mass_redirects_max_list_items",
+			"name": "Mass URL Redirects - Redirects Allowed"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "filters.mass_redirects_max_lists",
+		"feature": {
+			"feature_set": "filters",
+			"id": 961,
+			"key": "filters.mass_redirects_max_lists",
+			"name": "Mass URL Redirects - URL Lists"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "filters.max_lists",
+		"feature": {
+			"feature_set": "filters",
+			"id": 731,
+			"key": "filters.max_lists",
+			"name": "Filters - Max Lists"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "graphql_api.enabled_lb",
+		"feature": {
+			"feature_set": "secondary",
+			"id": 564,
+			"key": "graphql_api.enabled_lb",
+			"name": "GraphQL API - Load Balancing Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "image_resizing.enabled",
+		"feature": {
+			"feature_set": "image_resizing",
+			"id": 516,
+			"key": "image_resizing.enabled",
+			"name": "Image Resizing"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "images.enabled",
+		"feature": {
+			"feature_set": "stream",
+			"id": 939,
+			"key": "images.enabled",
+			"name": "Images"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "images.storage",
+		"feature": {
+			"feature_set": "stream",
+			"id": 940,
+			"key": "images.storage",
+			"name": "Images - Storage Capacity"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "intel.api_domain_history_limit",
+		"feature": {
+			"feature_set": "intel",
+			"id": 927,
+			"key": "intel.api_domain_history_limit",
+			"name": "Intel - Domain History API Requests Limit"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "intel.api_domain_limit",
+		"feature": {
+			"feature_set": "intel",
+			"id": 867,
+			"key": "intel.api_domain_limit",
+			"name": "Intel - Domain Details API Requests Limit"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "intel.api_domain_ranking_limit",
+		"feature": {
+			"feature_set": "intel",
+			"id": 868,
+			"key": "intel.api_domain_ranking_limit",
+			"name": "Intel - Domain Popularity Ranking API Requests Limit"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "intel.api_full_enabled",
+		"feature": {
+			"feature_set": "intel",
+			"id": 866,
+			"key": "intel.api_full_enabled",
+			"name": "Intel - Full API with Unlimited API Requests"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "intel.api_ip_limit",
+		"feature": {
+			"feature_set": "intel",
+			"id": 928,
+			"key": "intel.api_ip_limit",
+			"name": "Intel - IP Overview API Requests Limit"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "intel.api_passive_dns_lookback_limit",
+		"feature": {
+			"feature_set": "intel",
+			"id": 1012,
+			"key": "intel.api_passive_dns_lookback_limit",
+			"name": "Intel - Limit time range of passive DNS endpoint results; Units of days"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "intel.api_phishing_url_scanner_limit",
+		"feature": {
+			"feature_set": "intel",
+			"id": 896,
+			"key": "intel.api_phishing_url_scanner_limit",
+			"name": "Intel - Phishing URL Scanner API Requests Limit"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "intel.api_whois_limit",
+		"feature": {
+			"feature_set": "intel",
+			"id": 929,
+			"key": "intel.api_whois_limit",
+			"name": "Intel - WHOIS API Requests Limit"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "intel.dash_ip_enabled",
+		"feature": {
+			"feature_set": "intel",
+			"id": 982,
+			"key": "intel.dash_ip_enabled",
+			"name": "Intel - IP Overview available in dash with unlimited requests"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "logpush.access_requests.max_jobs_allowed",
+		"feature": {
+			"feature_set": "logpush",
+			"id": 850,
+			"key": "logpush.access_requests.max_jobs_allowed",
+			"name": "Logpush - Access Requests - Max Jobs"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "logpush.audit_log_events.max_jobs_allowed",
+		"feature": {
+			"feature_set": "logpush",
+			"id": 904,
+			"key": "logpush.audit_log_events.max_jobs_allowed",
+			"name": "Logpush - Audit Logs - Max Jobs"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "logpush.gateway_dns.max_jobs_allowed",
+		"feature": {
+			"feature_set": "logpush",
+			"id": 716,
+			"key": "logpush.gateway_dns.max_jobs_allowed",
+			"name": "Logpush - Gateway DNS - Max Jobs"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "logpush.gateway_http.max_jobs_allowed",
+		"feature": {
+			"feature_set": "logpush",
+			"id": 800,
+			"key": "logpush.gateway_http.max_jobs_allowed",
+			"name": "Logpush - Gateway HTTP - Max Jobs"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "logpush.gateway_network.max_jobs_allowed",
+		"feature": {
+			"feature_set": "logpush",
+			"id": 973,
+			"key": "logpush.gateway_network.max_jobs_allowed",
+			"name": "Logpush - Gateway Network - Max Jobs"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "ltz.allow_add_subdomain",
+		"feature": {
+			"feature_set": "ltz",
+			"id": 285,
+			"key": "ltz.allow_add_subdomain",
+			"name": "Liberate the Zone"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "managed_hostname.certificates_account",
+		"feature": {
+			"feature_set": "managed_hostname",
+			"id": 491,
+			"key": "managed_hostname.certificates_account",
+			"name": "SSL for SaaS - Certificates Account (Contract Only)"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "managed_hostname.enabled",
+		"feature": {
+			"feature_set": "managed_hostname",
+			"id": 956,
+			"key": "managed_hostname.enabled",
+			"name": "SSL for SaaS - Enabled (PayGo Only)"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "proxy_anything.enabled",
+		"feature": {
+			"feature_set": "proxy_anything",
+			"id": 362,
+			"key": "proxy_anything.enabled",
+			"name": "Proxy Anything"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "r2.enabled",
+		"feature": {
+			"feature_set": "r2",
+			"id": 1001,
+			"key": "r2.enabled",
+			"name": "R2 - Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "rate_limiting.enabled",
+		"feature": {
+			"feature_set": "rate_limiting",
+			"id": 19,
+			"key": "rate_limiting.enabled",
+			"name": "rate_limiting.enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "rate_limiting.nat_enabled",
+		"feature": {
+			"feature_set": "rate_limiting",
+			"id": 239,
+			"key": "rate_limiting.nat_enabled",
+			"name": "Rate Limiting - NAT enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "rulesets.ddos_l7_expressions_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1048,
+			"key": "rulesets.ddos_l7_expressions_allowed",
+			"name": "Rulesets - Allowed to use expressions in DDoS L7 rulesets"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "rulesets.ddos_l7_sensitivity_limit",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 903,
+			"key": "rulesets.ddos_l7_sensitivity_limit",
+			"name": "Rulesets - Limit the latest sensitivity level allowed"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "rulesets.edge_rules",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 963,
+			"key": "rulesets.edge_rules",
+			"name": "Account level - Edge Rules"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "rulesets.fw_global_rulesets_execute_ddos_l4_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 920,
+			"key": "rulesets.fw_global_rulesets_execute_ddos_l4_allowed",
+			"name": "Rulesets - Execute Global Cloudflare DDoS L4 Managed Rules Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "rulesets.fw_global_rulesets_execute_ddos_l7_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 901,
+			"key": "rulesets.fw_global_rulesets_execute_ddos_l7_allowed",
+			"name": "Rulesets - Execute Global Cloudflare DDoS L7 Managed Rules Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "rulesets.max_ddos_l7_rules",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 902,
+			"key": "rulesets.max_ddos_l7_rules",
+			"name": "Rulesets - Maximum number of rules allowed per DDoS L7 ruleset"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "rulesets.owning_root_rulesets_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 789,
+			"key": "rulesets.owning_root_rulesets_allowed",
+			"name": "Rulesets - Owning Root Rulesets Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "saa.allow_auto_accept_invites",
+		"feature": {
+			"feature_set": "saa",
+			"id": 238,
+			"key": "saa.allow_auto_accept_invites",
+			"name": "Shared Account Access - Allow auto accept invites"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "secondary_dns.zones",
+		"feature": {
+			"feature_set": "secondary_dns",
+			"id": 243,
+			"key": "secondary_dns.zones",
+			"name": "Secondary DNS Zones"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "secondary.create_zone",
+		"feature": {
+			"feature_set": "secondary",
+			"id": 561,
+			"key": "secondary.create_zone",
+			"name": "Secondary DNS Domain Creation"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "stream.enabled",
+		"feature": {
+			"feature_set": "stream",
+			"id": 363,
+			"key": "stream.enabled",
+			"name": "Stream"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "stream.video_storage_capacity",
+		"feature": {
+			"feature_set": "stream",
+			"id": 447,
+			"key": "stream.video_storage_capacity",
+			"name": "Stream - Video Storage Capacity"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "subscriptions.rate_plans.access_free",
+		"feature": {
+			"feature_set": "subscriptions",
+			"id": 642,
+			"key": "subscriptions.rate_plans.access_free",
+			"name": "Access free plan provisioning allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "subscriptions.rate_plans.argo_free",
+		"feature": {
+			"feature_set": "subscriptions",
+			"id": 643,
+			"key": "subscriptions.rate_plans.argo_free",
+			"name": "Argo free plan provisioning allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "subscriptions.rate_plans.cf_biz_emp",
+		"feature": {
+			"feature_set": "subscriptions",
+			"id": 637,
+			"key": "subscriptions.rate_plans.cf_biz_emp",
+			"name": "Employee biz plan provisioning allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "subscriptions.rate_plans.load_balancing_free",
+		"feature": {
+			"feature_set": "subscriptions",
+			"id": 638,
+			"key": "subscriptions.rate_plans.load_balancing_free",
+			"name": "Load balancing free plan provisioning allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "subscriptions.rate_plans.rate_limiting_free",
+		"feature": {
+			"feature_set": "subscriptions",
+			"id": 639,
+			"key": "subscriptions.rate_plans.rate_limiting_free",
+			"name": "Rate limiting free plan provisioning allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "subscriptions.rate_plans.stream_free",
+		"feature": {
+			"feature_set": "subscriptions",
+			"id": 640,
+			"key": "subscriptions.rate_plans.stream_free",
+			"name": "Stream free plan provisioning allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "subscriptions.rate_plans.web3_free",
+		"feature": {
+			"feature_set": "subscriptions",
+			"id": 977,
+			"key": "subscriptions.rate_plans.web3_free",
+			"name": "web3 free plan provisioning allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "subscriptions.rate_plans.workers_free",
+		"feature": {
+			"feature_set": "subscriptions",
+			"id": 641,
+			"key": "subscriptions.rate_plans.workers_free",
+			"name": "Workers free plan provisioning allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "swg.advanced_threat_protection_enabled",
+		"feature": {
+			"feature_set": "access",
+			"id": 671,
+			"key": "swg.advanced_threat_protection_enabled",
+			"name": "Secure Web Gateway - Advanced Threat Protection Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "swg.always_on_browser_isolation_enabled",
+		"feature": {
+			"feature_set": "access",
+			"id": 666,
+			"key": "swg.always_on_browser_isolation_enabled",
+			"name": "Secure Web Gateway - Always-On Browser Isolation Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "swg.edit_ip_enabled",
+		"feature": {
+			"feature_set": "access",
+			"id": 644,
+			"key": "swg.edit_ip_enabled",
+			"name": "Secure Web Gateway - Editable IP Addresses"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "swg.http_proxy_rules_enabled",
+		"feature": {
+			"feature_set": "access",
+			"id": 792,
+			"key": "swg.http_proxy_rules_enabled",
+			"name": "Secure Web Gateway - HTTP Proxy Rules Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "swg.large_network_limit",
+		"feature": {
+			"feature_set": "access",
+			"id": 714,
+			"key": "swg.large_network_limit",
+			"name": "Secure Web Gateway - Large Network Limit"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "swg.list_limit",
+		"feature": {
+			"feature_set": "access",
+			"id": 875,
+			"key": "swg.list_limit",
+			"name": "Secure Web Gateway - List Limit"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "swg.location_limit",
+		"feature": {
+			"feature_set": "access",
+			"id": 715,
+			"key": "swg.location_limit",
+			"name": "Secure Web Gateway - Location Limit"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "swg.log_push_limited_enabled",
+		"feature": {
+			"feature_set": "access",
+			"id": 664,
+			"key": "swg.log_push_limited_enabled",
+			"name": "Secure Web Gateway - Logpush Limited Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "swg.log_retention_days",
+		"feature": {
+			"feature_set": "access",
+			"id": 752,
+			"key": "swg.log_retention_days",
+			"name": "Secure Web Gateway - Log Retention Days"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "swg.max_list_size",
+		"feature": {
+			"feature_set": "access",
+			"id": 855,
+			"key": "swg.max_list_size",
+			"name": "Secure Web Gateway - Max List Size"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "swg.proxy_pac_endpoints",
+		"feature": {
+			"feature_set": "access",
+			"id": 1020,
+			"key": "swg.proxy_pac_endpoints",
+			"name": "Secure Web Gateway - Procy PAC Endpoint Limit"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "swg.users_allowed",
+		"feature": {
+			"feature_set": "access",
+			"id": 658,
+			"key": "swg.users_allowed",
+			"name": "Secure Web Gateway - Users Allowed"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "teams.users_allowed",
+		"feature": {
+			"feature_set": "access",
+			"id": 753,
+			"key": "teams.users_allowed",
+			"name": "Teams - Users Allowed"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "web3_ethereum.enabled",
+		"feature": {
+			"feature_set": "web3",
+			"id": 998,
+			"key": "web3_ethereum.enabled",
+			"name": "web3 Ethereum"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "web3_ethereum.hostnames",
+		"feature": {
+			"feature_set": "web3",
+			"id": 999,
+			"key": "web3_ethereum.hostnames",
+			"name": "web3 Ethereum - Hostnames"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "web3_ethereum.layer_2",
+		"feature": {
+			"feature_set": "web3",
+			"id": 1000,
+			"key": "web3_ethereum.layer_2",
+			"name": "web3 Ethereum - Layer 2"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "web3_ipfs_universal_path.enabled",
+		"feature": {
+			"feature_set": "web3",
+			"id": 1049,
+			"key": "web3_ipfs_universal_path.enabled",
+			"name": "web3 IPFS - Universal Path gateway - enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "web3_ipfs_universal_path.hostnames",
+		"feature": {
+			"feature_set": "web3",
+			"id": 1050,
+			"key": "web3_ipfs_universal_path.hostnames",
+			"name": "web3 IPFS - Universal Path gateway - hostnames"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "web3_ipfs.enabled",
+		"feature": {
+			"feature_set": "web3",
+			"id": 995,
+			"key": "web3_ipfs.enabled",
+			"name": "web3 IPFS"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "web3_ipfs.hostnames",
+		"feature": {
+			"feature_set": "web3",
+			"id": 996,
+			"key": "web3_ipfs.hostnames",
+			"name": "web3 IPFS - Hostnames"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "workers.enabled",
+		"feature": {
+			"feature_set": "workers",
+			"id": 377,
+			"key": "workers.enabled",
+			"name": "Workers"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "workers.multiscript_enabled",
+		"feature": {
+			"feature_set": "workers",
+			"id": 376,
+			"key": "workers.multiscript_enabled",
+			"name": "Workers - Multiscript"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "workers.unbound_allowed",
+		"feature": {
+			"feature_set": "workers",
+			"id": 886,
+			"key": "workers.unbound_allowed",
+			"name": "Workers Unbound"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "zone.advanced_certificate_manager",
+		"feature": {
+			"feature_set": "zone",
+			"id": 587,
+			"key": "zone.advanced_certificate_manager",
+			"name": "Advanced Certificate Manager"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "zone.partial_setup_allowed",
+		"feature": {
+			"feature_set": "zone",
+			"id": 770,
+			"key": "zone.partial_setup_allowed",
+			"name": "Partial Setup Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	}
+]
