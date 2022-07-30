@@ -136,12 +136,8 @@
 			"buy-domains"
 		]
 	},
-	"sign-up-no-mrk": {
-		"enabled": false,
-		"branches": [
-			"control",
-			"variant"
-		]
+	"sign-up-no-marketing": {
+		"enabled": false
 	},
 	"siwa": {
 		"enabled": true
@@ -162,6 +158,9 @@
 		"enabled": false
 	},
 	"unintended-registration": {
+		"enabled": false
+	},
+	"zac-dummy-flag": {
 		"enabled": false
 	},
 	"zone-level-access": {
