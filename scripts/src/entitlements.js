@@ -9,18 +9,24 @@ const known = {
 	zone: await fs.readJson(path.resolve(dir, 'zone.json'), 'utf8'),
 	account: await fs.readJson(path.resolve(dir, 'account.json'), 'utf8'),
 };
-let added = 0;
+const added = [];
 function addEntitlement(entitlement, type){
-	const exists = known[type].some(element => element.id === entitlement.id);
-	if(!exists){
-		known[type].push({
+	let foundEntitlement = known[type].find(element => element.id === entitlement.id);
+	if(!foundEntitlement){
+		foundEntitlement = {
 			id: entitlement.id,
 			feature: entitlement.feature,
 			allocation: {
-				type: entitlement.allocation.type,
+				type: entitlement.allocation?.type ?? 'unknown',
+				values: [],
 			},
-		});
-		added++;
+		};
+		known[type].push(foundEntitlement);
+		added.push(foundEntitlement.id);
+	}
+	foundEntitlement.allocation.values ??= [];
+	if(entitlement.allocation?.value && !foundEntitlement.allocation.values.includes(entitlement.allocation.value)){
+		foundEntitlement.allocation.values.push(entitlement.allocation.value);
 	}
 }
 
@@ -36,13 +42,28 @@ for(const file of list){
 	}
 }
 
-console.log('Added', added, 'entitlements');
+console.log('Added', added.length, 'entitlements:', added.join(', '));
 
+function sortAndFilter(array, filter = true){
+	const sorted = array.sort((entA, entB) => entA.id.localeCompare(entB.id));
+	if(filter){
+		return sorted.map((entitlement) => {
+			return {
+				id: entitlement.id,
+				feature: entitlement.feature,
+				allocation: {
+					type: entitlement.allocation.type,
+				},
+			};
+		});
+	}
+	return sorted;
+}
 if(known.account.length > 0){
-	const sorted = known.account.sort((entA, entB) => entA.id.localeCompare(entB.id));
-	await fs.writeFile(path.resolve(dir, 'account.json'), JSON.stringify([...sorted].sort(), null, '\t'));
+	await fs.writeFile(path.resolve(dir, 'account.json'), JSON.stringify([...sortAndFilter(known.account)].sort(), null, '\t'));
+	await fs.writeFile(path.resolve(dir, 'account-values.json'), JSON.stringify([...sortAndFilter(known.account, false)].sort(), null, '\t'));
 }
 if(known.zone.length > 0){
-	const sorted = known.zone.sort((entA, entB) => entA.id.localeCompare(entB.id));
-	await fs.writeFile(path.resolve(dir, 'zone.json'), JSON.stringify([...sorted].sort(), null, '\t'));
+	await fs.writeFile(path.resolve(dir, 'zone.json'), JSON.stringify([...sortAndFilter(known.zone)].sort(), null, '\t'));
+	await fs.writeFile(path.resolve(dir, 'zone-values.json'), JSON.stringify([...sortAndFilter(known.zone, false)].sort(), null, '\t'));
 }

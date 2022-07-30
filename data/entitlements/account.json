@@ -624,6 +624,18 @@
 		}
 	},
 	{
+		"id": "filters.max_list_items",
+		"feature": {
+			"feature_set": "filters",
+			"id": 732,
+			"key": "filters.max_list_items",
+			"name": "Filters - Max List Items"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "filters.max_lists",
 		"feature": {
 			"feature_set": "filters",
@@ -633,6 +645,42 @@
 		},
 		"allocation": {
 			"type": "max_count"
+		}
+	},
+	{
+		"id": "flowtrackd.magic_custom_config_allowed",
+		"feature": {
+			"feature_set": "flowtrackd",
+			"id": 955,
+			"key": "flowtrackd.magic_custom_config_allowed",
+			"name": "Flowtrackd Magic Transit Custom Config Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "graphql_api_v2.enabled_dos_analytics",
+		"feature": {
+			"feature_set": "graphqlv2",
+			"id": 651,
+			"key": "graphql_api_v2.enabled_dos_analytics",
+			"name": "Access to dos_analytics nodes in GraphQL analytics API"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "graphql_api_v2.enabled_network_analytics_magic_transit",
+		"feature": {
+			"feature_set": "graphqlv2",
+			"id": 938,
+			"key": "graphql_api_v2.enabled_network_analytics_magic_transit",
+			"name": "Access to network_analytics_magic_transit nodes in GraphQL analytics API"
+		},
+		"allocation": {
+			"type": "bool"
 		}
 	},
 	{
@@ -936,6 +984,18 @@
 		}
 	},
 	{
+		"id": "rulesets.ddos_l4_sensitivity_limit",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 922,
+			"key": "rulesets.ddos_l4_sensitivity_limit",
+			"name": "Rulesets - Limit the lowest sensitivity level allowed for a DDoS L4 rule"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "rulesets.ddos_l7_expressions_allowed",
 		"feature": {
 			"feature_set": "rulesets",
@@ -996,12 +1056,48 @@
 		}
 	},
 	{
+		"id": "rulesets.log_action_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 870,
+			"key": "rulesets.log_action_allowed",
+			"name": "Rulesets - Log Action Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "rulesets.magic_transit_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 793,
+			"key": "rulesets.magic_transit_allowed",
+			"name": "Rulesets - Magic Transit Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "rulesets.max_ddos_l7_rules",
 		"feature": {
 			"feature_set": "rulesets",
 			"id": 902,
 			"key": "rulesets.max_ddos_l7_rules",
 			"name": "Rulesets - Maximum number of rules allowed per DDoS L7 ruleset"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "rulesets.max_rules_per_ruleset",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 786,
+			"key": "rulesets.max_rules_per_ruleset",
+			"name": "Rulesets - Max Rules Per Ruleset"
 		},
 		"allocation": {
 			"type": "max_count"
@@ -1176,6 +1272,30 @@
 		}
 	},
 	{
+		"id": "swg.additional_categories_enabled",
+		"feature": {
+			"feature_set": "access",
+			"id": 647,
+			"key": "swg.additional_categories_enabled",
+			"name": "Secure Web Gateway - Additional Categories Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "swg.additional_policy_assignment_enabled",
+		"feature": {
+			"feature_set": "access",
+			"id": 650,
+			"key": "swg.additional_policy_assignment_enabled",
+			"name": "Secure Web Gateway - Additional Policy Assignment Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "swg.advanced_threat_protection_enabled",
 		"feature": {
 			"feature_set": "access",
@@ -1293,6 +1413,18 @@
 		},
 		"allocation": {
 			"type": "max_count"
+		}
+	},
+	{
+		"id": "swg.overrides_pro_enabled",
+		"feature": {
+			"feature_set": "access",
+			"id": 662,
+			"key": "swg.overrides_pro_enabled",
+			"name": "Secure Web Gateway - Overrides Pro Enabled"
+		},
+		"allocation": {
+			"type": "bool"
 		}
 	},
 	{

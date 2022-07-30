@@ -84,12 +84,36 @@
 		}
 	},
 	{
+		"id": "bot_management.enabled",
+		"feature": {
+			"feature_set": "bot_management",
+			"id": 593,
+			"key": "bot_management.enabled",
+			"name": "Bot Management"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "bot_management.session_score",
 		"feature": {
 			"feature_set": "bot_management",
 			"id": 876,
 			"key": "bot_management.session_score",
 			"name": "Bot Management - Configure Session Score"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "bot_management.workers_enabled",
+		"feature": {
+			"feature_set": "bot_management",
+			"id": 588,
+			"key": "bot_management.workers_enabled",
+			"name": "Bot Management - Workers Fields Enabled"
 		},
 		"allocation": {
 			"type": "bool"
@@ -180,6 +204,18 @@
 		}
 	},
 	{
+		"id": "filters.bot_management_enabled",
+		"feature": {
+			"feature_set": "filters",
+			"id": 589,
+			"key": "filters.bot_management_enabled",
+			"name": "Filters - Bot Management Firewall Fields Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "filters.hmac_function_enabled",
 		"feature": {
 			"feature_set": "filters",
@@ -222,6 +258,18 @@
 			"id": 566,
 			"key": "filters.request_body_inspection_enabled",
 			"name": "Firewall Rules Body Inspection Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "filters.wafml_enabled",
+		"feature": {
+			"feature_set": "filters",
+			"id": 972,
+			"key": "filters.wafml_enabled",
+			"name": "Filters - WAFML Fields Enabled"
 		},
 		"allocation": {
 			"type": "bool"
@@ -285,6 +333,42 @@
 		},
 		"allocation": {
 			"type": "max_count"
+		}
+	},
+	{
+		"id": "graphql_api_v2.enabled_bot_management",
+		"feature": {
+			"feature_set": "graphqlv2",
+			"id": 625,
+			"key": "graphql_api_v2.enabled_bot_management",
+			"name": "graphql_api_v2.enabled_bot_management"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "graphql_api.enabled_beta",
+		"feature": {
+			"feature_set": "graphql_api",
+			"id": 594,
+			"key": "graphql_api.enabled_beta",
+			"name": "GraphQL - API - Enabled Beta"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "graphql_api.enabled_bot_management",
+		"feature": {
+			"feature_set": "graphql_api",
+			"id": 590,
+			"key": "graphql_api.enabled_bot_management",
+			"name": "GraphQL API - Bot Management Fields Enabled"
+		},
+		"allocation": {
+			"type": "bool"
 		}
 	},
 	{
@@ -492,6 +576,18 @@
 		}
 	},
 	{
+		"id": "logpush.bot_management.enabled",
+		"feature": {
+			"feature_set": "logpush",
+			"id": 592,
+			"key": "logpush.bot_management.enabled",
+			"name": "Logpush - Bot Management Fields"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "logpush.dns_logs.max_jobs_allowed",
 		"feature": {
 			"feature_set": "logpush",
@@ -564,6 +660,18 @@
 		}
 	},
 	{
+		"id": "logshare.bot_management.enabled",
+		"feature": {
+			"feature_set": "logshare",
+			"id": 591,
+			"key": "logshare.bot_management.enabled",
+			"name": "Log Share - Bot Management Fields"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "logshare.enabled",
 		"feature": {
 			"feature_set": "logshare",
@@ -582,6 +690,18 @@
 			"id": 958,
 			"key": "managed_client_cert.certs",
 			"name": "Managed Client Certificates"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "managed_hostname.certificates",
+		"feature": {
+			"feature_set": "managed_hostname",
+			"id": 35,
+			"key": "managed_hostname.certificates",
+			"name": "SSL for SaaS Certificates (Contract Only)"
 		},
 		"allocation": {
 			"type": "max_count"
@@ -834,6 +954,18 @@
 			"id": 1016,
 			"key": "rulesets.block_customized_response_allowed",
 			"name": "Rulesets - Block Customization Response Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "rulesets.bots_management_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 878,
+			"key": "rulesets.bots_management_allowed",
+			"name": "Rulesets - Bots Management Allowed"
 		},
 		"allocation": {
 			"type": "bool"
@@ -1332,6 +1464,18 @@
 		}
 	},
 	{
+		"id": "wafml.score_allowed",
+		"feature": {
+			"feature_set": "wafml",
+			"id": 966,
+			"key": "wafml.score_allowed",
+			"name": "WAFML - WAF ML Score Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "waiting_rooms.allowed",
 		"feature": {
 			"feature_set": "waiting_rooms",
@@ -1353,6 +1497,18 @@
 		},
 		"allocation": {
 			"type": "max_count"
+		}
+	},
+	{
+		"id": "waiting_rooms.custom_page_allowed",
+		"feature": {
+			"feature_set": "waiting_rooms",
+			"id": 809,
+			"key": "waiting_rooms.custom_page_allowed",
+			"name": "Waiting Rooms Custom Page Allowed"
+		},
+		"allocation": {
+			"type": "bool"
 		}
 	},
 	{
