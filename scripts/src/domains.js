@@ -13,45 +13,52 @@ const agent = getHttpsAgent();
 const dir = path.resolve(`../data/domains`);
 await fs.ensureDir(dir);
 
-const payload = {
-	"apiKey": process.env.WHOISXMLAPI_KEY,
-	"sinceDate": "2009-01-01",
-	"mode": "purchase",
-	"punycode": true,
-	"advancedSearchTerms": [{
-		"field": "RegistrantContact.Organization",
-		"term": "Cloudflare, Inc.",
-		"exactMatch": false,
-	}],
-};
-const domainsRes = await fetch(`https://registrant-alert.whoisxmlapi.com/api/v2`, {
-	agent,
-	method: 'POST',
-	body: JSON.stringify(payload),
-});
+const payloads = [
+	{
+		"apiKey": process.env.WHOISXMLAPI_KEY,
+		"sinceDate": "2009-01-01",
+		"mode": "purchase",
+		"punycode": true,
+		"advancedSearchTerms": [{
+			"field": "RegistrantContact.Organization",
+			"term": "Cloudflare, Inc.",
+			"exactMatch": false,
+		}],
+	},
+];
+const domainsRes = [
+	await fetch(`https://registrant-alert.whoisxmlapi.com/api/v2`, {
+		agent,
+		method: 'POST',
+		body: JSON.stringify(payloads[0]),
+	}),
+];
 
-
-if(domainsRes.ok){
-	const rawDomains = await domainsRes.json();
-
-	const activeDomains = [];
-	const droppedDomains = [];
-	for(const domain of (rawDomains?.domainsList || [])){
-		if(!ipRegex().test(domain.domainName)){
-			if(domain.action === 'added'){
-				activeDomains.push(domain.domainName);
-			}else if(domain.action === 'dropped'){
-				droppedDomains.push(domain.domainName);
+let activeDomains = new Set([]);
+let droppedDomains = new Set([]);
+try{
+	activeDomains = new Set(await fs.readJson(path.resolve('../data/domains/domains-active.json')));
+	droppedDomains = new Set(await fs.readJson(path.resolve('../data/domains/domains-dropped.json')));
+}catch{}
+for(const res of domainsRes){
+	if(res.ok){
+		const rawDomains = await res.json();
+		for(const domain of (rawDomains?.domainsList || [])){
+			if(!ipRegex().test(domain.domainName)){
+				if(domain.action === 'added' || domain.action === 'discovered'){
+					activeDomains.add(domain.domainName);
+				}else if(domain.action === 'dropped'){
+					droppedDomains.add(domain.domainName);
+				}
 			}
 		}
 	}
-
-	if(activeDomains.length > 0){
-		await fs.writeFile(path.resolve(dir, 'domains-active.json'), JSON.stringify([...activeDomains].sort(), null, '\t'));
-	}
-	if(droppedDomains.length > 0){
-		await fs.writeFile(path.resolve(dir, 'domains-dropped.json'), JSON.stringify([...droppedDomains].sort(), null, '\t'));
-	}
+}
+if(activeDomains.size > 0){
+	await fs.writeFile(path.resolve(dir, 'domains-active.json'), JSON.stringify([...activeDomains].sort(), null, '\t'));
+}
+if(droppedDomains.size > 0){
+	await fs.writeFile(path.resolve(dir, 'domains-dropped.json'), JSON.stringify([...droppedDomains].sort(), null, '\t'));
 }
 
 const prefix = dateFormat(new Date(), 'd mmmm yyyy');
