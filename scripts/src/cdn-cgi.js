@@ -175,6 +175,19 @@ for(let i = 100; i <= 1500; i++){
 	await fs.writeFile(metaPath, JSON.stringify(meta, null, '\t'));
 }
 
+// get errors styles
+const styleRes = await fetch(`https://cloudflare.com/cdn-cgi/styles/errors.css`, {agent});
+if(styleRes.ok){
+	const style = await styleRes.text();
+	const stylePath = path.resolve(dir, 'styles/errors.css');
+	await fs.ensureFile(stylePath);
+	await fs.writeFile(stylePath, jsBeautify.css(style, {
+		indent_size: 4,
+		indent_char: '\t',
+		indent_with_tabs: true,
+	}));
+}
+
 // write global list
 await fs.writeFile(path.resolve(dir, 'error/_errors.json'), JSON.stringify(errors, null, '\t'));
 
