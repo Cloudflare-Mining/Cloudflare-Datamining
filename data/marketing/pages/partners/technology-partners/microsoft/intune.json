@@ -201,7 +201,7 @@
 						"streamPosterAssetFile": null,
 						"image": {
 							"file": {
-								"publicURL": "[path]/MDM_logo_high_res.png"
+								"publicURL": "[path]/Microsoft_Intune_graph.png"
 							}
 						},
 						"imageAssetFile": null,
@@ -214,7 +214,7 @@
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": false,
-						"imageSize": "medium",
+						"imageSize": "extra-large",
 						"imageTextAlignment": "center",
 						"togglesTo": null
 					},
@@ -240,7 +240,22 @@
 						"imageLinkUrl": null,
 						"logoList": null,
 						"logoListAssetFile": null,
-						"quoteCarousel": []
+						"quoteCarousel": [
+							{
+								"contentTypeId": "bladeQuote",
+								"quote": "\"In today's work-from-anywhere business culture, the risk of compromise has substantially increased as employees and their devices are continuously surrounded by a hostile threat environment outside the traditional castle-and-moat model. By expanding our integration with Cloudflare, we are making it easier for joint customers to strengthen their Zero Trust security posture across all endpoints and their entire corporate network.\"",
+								"quoteAuthor": "Dave Randall",
+								"quoteTitle": "Sr Program Manager, Microsoft Endpoint Manager",
+								"learnMoreText": null,
+								"learnMoreUrl": null,
+								"imageAssetFile": null,
+								"image": {
+									"file": {
+										"publicURL": "[path]/microsoft_intune.png"
+									}
+								}
+							}
+						]
 					},
 					{
 						"__typename": "bladeEnablement",
@@ -332,6 +347,25 @@
 						"backgroundColor": "blue5",
 						"htmlId": null,
 						"resourceList": [
+							{
+								"resourceMedia": null,
+								"resourceMediaAssetFile": null,
+								"resourceStreamId": null,
+								"title": "[Tech Partner Directory] - Microsoft Endpoint Manager: Blog",
+								"callToAction": "Learn More",
+								"id": "c55418ce-527f-5255-9db1-3257a78c017f",
+								"resourceTitle": "Cloudflare integrates with Microsoft Intune to give CISOs secure control across devices, applications, and corporate networks",
+								"resourceType": "Blog",
+								"topic": [
+									"Enable Zero Trust Security for Workforce",
+									"Secure Teams, Devices, and Internal Applications"
+								],
+								"orderDate": "2022-08-01",
+								"industry": null,
+								"description": "Learn how Cloudflare and Microsoft deepened our partnership to enable users to identify, investigate, and remediate threats faster through multiple new integrations.",
+								"externalLinkUrl": "https://blog.cloudflare.com/cloudflare-microsoft-intune-partner-to-give-cisos-secure-control-across-devices-applications/",
+								"hideFromResourceHub": true
+							},
 							{
 								"resourceMedia": null,
 								"resourceMediaAssetFile": null,
