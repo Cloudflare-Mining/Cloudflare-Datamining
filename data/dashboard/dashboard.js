@@ -5549,12 +5549,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				e.g.build = Hu({}, {
-					branch: "release-1659362671",
+					branch: "alvis/LOUI-3514-revert",
 					isReleaseCandidate: "true",
-					commit: "13c67655f120ea7f93eb6b0e972e536c3407b2be",
+					commit: "22f5cc04b78fdaf0b64fbd76a1eced242e610e87",
 					env: "production",
-					builtAt: 1659362993565,
-					dashVersion: "3e6dc211f6c7884bfdf9414b194ae40063b22215",
+					builtAt: 1659375428721,
+					dashVersion: "bf1e4caf93955d9ed695104e73699c0426da49ad",
 					versions: {
 						"@cloudflare/app-dash": "25.63.7",
 						node: "14.18.3",
@@ -71071,4 +71071,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=52600e217750c58e1d83.js.map
+//# sourceMappingURL=66576f790461a99d3e32.js.map
