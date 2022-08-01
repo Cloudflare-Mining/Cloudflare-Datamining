@@ -330,16 +330,16 @@ async function writeMeta(files, translations){
 				if(node.type === 'TemplateLiteral'){
 					addString(node.quasis[0].value.raw?.trim?.());
 				}
-				if(node.type === 'Identifier' && node.name?.length > 2){
+				if(node.type === 'Identifier' && node.name?.length > 3){
 					addString(node.name, 'identifier');
 				}
-				if(node.type === 'CallExpression' && node.callee?.name && node.callee?.name.length > 2){
+				if(node.type === 'CallExpression' && node.callee?.name && node.callee?.name.length > 3){
 					callees.add(node.callee.name);
 				}
-				if(node.type === 'Property' && node.key?.name && node.key.name.length > 2){
+				if(node.type === 'Property' && node.key?.name && node.key.name.length > 3){
 					addString(node.key.name, 'property');
 				}
-				if(node.type === 'MemberExpression' && node.property?.name && node.property.name.length > 2){
+				if(node.type === 'MemberExpression' && node.property?.name && node.property.name.length > 3){
 					addString(node.property.name, 'property');
 				}
 				if(node.type === 'SwitchStatement'){
