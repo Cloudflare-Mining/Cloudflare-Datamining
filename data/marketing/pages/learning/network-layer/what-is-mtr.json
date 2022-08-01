@@ -1,0 +1,722 @@
+{
+	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
+	"path": "/learning/network-layer/what-is-mtr/",
+	"result": {
+		"data": {
+			"learningCenterArticle": {
+				"contentTypeId": "learningCenterArticle",
+				"contentfulId": "7kiDW0a13M72lSwQNyH6qE",
+				"urlSlug": "network-layer/what-is-mtr",
+				"metaTags": {
+					"metaTitle": "What is My Traceroute (MTR)?",
+					"metaDescription": "My Traceroute, or MTR, combines traceroute and ping to measure a network path's health. Learn how to read MTR.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"metaTitle": "What is My Traceroute (MTR)?",
+				"metaDescription": "My Traceroute, or MTR, combines traceroute and ping to measure a network path's health. Learn how to read MTR.",
+				"learningCenterArticleSubHeader": {
+					"contentTypeId": "learningCenterArticleSubHeader",
+					"contentfulId": "2NTNgGsYPl9HfIDs724JbF",
+					"learningCenterName": "networklayer",
+					"links": [
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "46yNBu6IQ1gCdIA8eG292m",
+							"displayText": "Network Layer",
+							"url": "/learning/network-layer/what-is-the-network-layer/"
+						},
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "6f5fhtiSUbfI8b05lKOm4x",
+							"displayText": "How Internet Works",
+							"url": "/learning/network-layer/how-does-the-internet-work/"
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "18T0AEOTUxQkb9FCJ9PGhU",
+							"name": "Network Layer Header: Networking Basics",
+							"displayText": "Networking Basics",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7yJyIRZ7RyZUMnE6Iz178d",
+									"displayText": "What Is Routing?",
+									"url": "/learning/network-layer/what-is-routing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6omqp77P1xG2VxH7tRPuSA",
+									"displayText": "What Is a Router?",
+									"url": "/learning/network-layer/what-is-a-router/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4YmH7UVzSMAvbcI6sPyyK",
+									"displayText": "Network Switch",
+									"url": "/learning/network-layer/what-is-a-network-switch/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7Jhvs7WYoVu9QOoAjcLX6o",
+									"displayText": "What is a Packet?",
+									"url": "/learning/network-layer/what-is-a-packet/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6RLQUAhE7el2jcCAJnGOQy",
+									"displayText": "What is a Protocol?",
+									"url": "/learning/network-layer/what-is-a-protocol/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6ZVwf9GXI0dUYZyuZ0F0El",
+									"displayText": "What is Tunneling?",
+									"url": "/learning/network-layer/what-is-tunneling/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6ILzrLGo0VX47fqSdZzzvz",
+									"displayText": "What is a Port?",
+									"url": "/learning/network-layer/what-is-a-computer-port/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2oL1WxC7415PcmjuLRiqYl",
+									"displayText": "Control Plane",
+									"url": "/learning/network-layer/what-is-the-control-plane/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "49UJJsxvKvb9Ks30l9bXgx",
+							"name": "Network Layer Header: Network Types",
+							"displayText": "Network Types",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4bK3yl2lIJorDZQHs1H1a0",
+									"displayText": "Local Area Network (LAN)",
+									"url": "/learning/network-layer/what-is-a-lan/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7x0aq8mwf9Rx4lg6rkjWiz",
+									"displayText": "Wide Area Network (WAN)",
+									"url": "/learning/network-layer/what-is-a-wan/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "69FyYu2Nl7lx7PPxWIxkIx",
+									"displayText": "SD-WAN",
+									"url": "/learning/network-layer/what-is-an-sd-wan/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5fMrQ9PPNlCWoSDUWB5ODz",
+									"displayText": "Metropolitan Area Network (MAN)",
+									"url": "/learning/network-layer/what-is-a-metropolitan-area-network/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4C9m4LnuXViq25OjkQ4IIo",
+									"displayText": "Campus Area Network (CAN)",
+									"url": "/learning/network-layer/what-is-a-campus-area-network/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3a237Kt4f9t99EGOlTsnQr",
+									"displayText": "Personal Area Network (PAN)",
+									"url": "/learning/network-layer/what-is-a-personal-area-network/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "31YdKHPLe2rGKcikXmvaIW",
+									"displayText": "Autonomous System (AS)",
+									"url": "/learning/network-layer/what-is-an-autonomous-system/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6aRzsX0gbj4ceQWQiEzBOC",
+									"displayText": "Network-as-a-Service (NaaS)",
+									"url": "/learning/network-layer/network-as-a-service-naas/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6wi0u9frLgJN3XQlvx223h",
+									"displayText": "Enterprise Networking",
+									"url": "/learning/network-layer/enterprise-networking/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "6227tKEJfE6iW20rhlIDzA",
+							"name": "Network Layer Header: Protocols",
+							"displayText": "Protocols",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "19nTg1iwyawlo5bSpU8Xe9",
+									"displayText": "Internet Protocol (IP)",
+									"url": "/learning/network-layer/internet-protocol/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "jT9Z2xK5YfSxiFj6L5eut",
+									"displayText": "What is IPsec?",
+									"url": "/learning/network-layer/what-is-ipsec/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "314nljr3GHR35lcUUgTbeF",
+									"displayText": "What is IGMP?",
+									"url": "/learning/network-layer/what-is-igmp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3EFUwUp91c9kSVVAd5UoRO",
+									"displayText": "IGMP Snooping",
+									"url": "/learning/network-layer/what-is-igmp-snooping/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5uhocF5vOQSt8EmdiRWkq1",
+									"displayText": "What is MPLS?",
+									"url": "/learning/network-layer/what-is-mpls/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2UnHCsGRw7y9aTkPRAITKe",
+									"displayText": "GRE Tunneling",
+									"url": "/learning/network-layer/what-is-gre-tunneling/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "7HSoF6OwkVrpRKdFKQRijv",
+							"name": "Network Layer Header: Glossary",
+							"displayText": "Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "toWW4Gb9PcaIPePoiLaZ3",
+									"displayText": "Subnet",
+									"url": "/learning/network-layer/what-is-a-subnet/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4A5YGXVcY3aDIb48dP0WhH",
+									"displayText": "What is MSS?",
+									"url": "/learning/network-layer/what-is-mss/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1KHllFRuBRPeyUdnokeRC4",
+									"displayText": "What is MTU?",
+									"url": "/learning/network-layer/what-is-mtu/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7bvJN7SaSIva3Ar3sNx05x",
+									"displayText": "What is SDN?",
+									"url": "/learning/network-layer/what-is-sdn/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "JIBUsEPjalIJu1t3jEof8",
+									"displayText": "What is MTR?",
+									"url": "/learning/network-layer/what-is-mtr/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7MFRR5sF1pTzLCpLuxDsBj",
+									"displayText": "IPsec vs SSL VPNs",
+									"url": "/learning/network-layer/ipsec-vs-ssl-vpn/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2lFnXnqBPTWZmdedSv6WPX",
+									"displayText": "Network security",
+									"url": "/learning/network-layer/network-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "msCIoUjRRe010vqjDTHS0",
+									"displayText": "SD-WAN vs. MPLS",
+									"url": "/learning/network-layer/sd-wan-vs-mpls/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "7oux4RIlcnRsZ0LWFBYEyR",
+							"name": "Network Layer Header: Insights",
+							"displayText": "Insights",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1wiWDzIJ6wU4wdgrCCsqKI",
+									"displayText": "Accelerating the journey to SASE",
+									"url": "https://www.cloudflare.com/learning/insights-sase-network-transformation/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6LQmFiGz1KUuA6DwDNfV4F",
+									"displayText": "The challenges of network infrastructure",
+									"url": "https://www.cloudflare.com/insights-network-infrastructure/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "jQp53tpsRvjsWJjYlZDyW",
+									"displayText": "The future of networking",
+									"url": "https://www.cloudflare.com/learning/insights-future-of-networking"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4YNpRTdJGY11quTRBRjPKQ",
+									"displayText": "How blockchain carries us into Web 3.0",
+									"url": "https://www.cloudflare.com/learning/insights-how-blockchain-web3"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1fudUp354PiIkWi5M2QBuE",
+									"displayText": "The risks smaller DDoS attacks pose to network infrastructure",
+									"url": "https://www.cloudflare.com/insights-small-ddos-attacks/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5eUpBgLgoPxWdadu3NiMlC",
+									"displayText": "The software supply chain is under attack",
+									"url": "https://www.cloudflare.com/learning/insights-supply-chain-attacks/"
+								}
+							]
+						}
+					]
+				},
+				"learningCenterArticleFooter": {
+					"contentTypeId": "learningCenterArticleFooter",
+					"contentfulId": "SJpRsBZDhJm2lhBSV0G9E",
+					"learningCenterName": "networklayer",
+					"column1Title": "About the Network Layer",
+					"column1": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "2LY3WMeF8BjVx77cUGCh9Z",
+						"name": "Network Layer About Footer",
+						"displayText": "About the Network Layer",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "46yNBu6IQ1gCdIA8eG292m",
+								"displayText": "Network Layer",
+								"url": "/learning/network-layer/what-is-the-network-layer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7yJyIRZ7RyZUMnE6Iz178d",
+								"displayText": "What Is Routing?",
+								"url": "/learning/network-layer/what-is-routing/"
+							}
+						]
+					},
+					"column2Title": "Network Types",
+					"column2": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "55elS8RVutktd7zM6TVVZ2",
+						"name": "Network Layer Footer - Network Types",
+						"displayText": "Network Types",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4bK3yl2lIJorDZQHs1H1a0",
+								"displayText": "Local Area Network (LAN)",
+								"url": "/learning/network-layer/what-is-a-lan/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7x0aq8mwf9Rx4lg6rkjWiz",
+								"displayText": "Wide Area Network (WAN)",
+								"url": "/learning/network-layer/what-is-a-wan/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "69FyYu2Nl7lx7PPxWIxkIx",
+								"displayText": "SD-WAN",
+								"url": "/learning/network-layer/what-is-an-sd-wan/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5fMrQ9PPNlCWoSDUWB5ODz",
+								"displayText": "Metropolitan Area Network (MAN)",
+								"url": "/learning/network-layer/what-is-a-metropolitan-area-network/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4C9m4LnuXViq25OjkQ4IIo",
+								"displayText": "Campus Area Network (CAN)",
+								"url": "/learning/network-layer/what-is-a-campus-area-network/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3a237Kt4f9t99EGOlTsnQr",
+								"displayText": "Personal Area Network (PAN)",
+								"url": "/learning/network-layer/what-is-a-personal-area-network/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "31YdKHPLe2rGKcikXmvaIW",
+								"displayText": "Autonomous System (AS)",
+								"url": "/learning/network-layer/what-is-an-autonomous-system/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6aRzsX0gbj4ceQWQiEzBOC",
+								"displayText": "Network-as-a-Service (NaaS)",
+								"url": "/learning/network-layer/network-as-a-service-naas/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7bvJN7SaSIva3Ar3sNx05x",
+								"displayText": "What is SDN?",
+								"url": "/learning/network-layer/what-is-sdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6wi0u9frLgJN3XQlvx223h",
+								"displayText": "Enterprise Networking",
+								"url": "/learning/network-layer/enterprise-networking/"
+							}
+						]
+					},
+					"column3Title": "Networking Basics",
+					"column3": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "5eU7ZXZ6LJdfNkU3gtD0nV",
+						"name": "Network Layer Footer - Networking Basics",
+						"displayText": "Networking Basics",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6f5fhtiSUbfI8b05lKOm4x",
+								"displayText": "How Internet Works",
+								"url": "/learning/network-layer/how-does-the-internet-work/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "19nTg1iwyawlo5bSpU8Xe9",
+								"displayText": "Internet Protocol (IP)",
+								"url": "/learning/network-layer/internet-protocol/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6omqp77P1xG2VxH7tRPuSA",
+								"displayText": "What Is a Router?",
+								"url": "/learning/network-layer/what-is-a-router/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7qqJLBSHHwIxQgXKn7CJsf",
+								"displayText": "What is a Network Switch?",
+								"url": "/learning/network-layer/what-is-a-network-switch/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7Jhvs7WYoVu9QOoAjcLX6o",
+								"displayText": "What is a Packet?",
+								"url": "/learning/network-layer/what-is-a-packet/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RLQUAhE7el2jcCAJnGOQy",
+								"displayText": "What is a Protocol?",
+								"url": "/learning/network-layer/what-is-a-protocol/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6ZVwf9GXI0dUYZyuZ0F0El",
+								"displayText": "What is Tunneling?",
+								"url": "/learning/network-layer/what-is-tunneling/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6ILzrLGo0VX47fqSdZzzvz",
+								"displayText": "What is a Port?",
+								"url": "/learning/network-layer/what-is-a-computer-port/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2oL1WxC7415PcmjuLRiqYl",
+								"displayText": "Control Plane",
+								"url": "/learning/network-layer/what-is-the-control-plane/"
+							}
+						]
+					},
+					"column4Title": "Glossary",
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "31rQag046CuMupc5UZGGEp",
+						"name": "Network Layer Footer - Glossary",
+						"displayText": "Glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4A5YGXVcY3aDIb48dP0WhH",
+								"displayText": "What is MSS?",
+								"url": "/learning/network-layer/what-is-mss/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1KHllFRuBRPeyUdnokeRC4",
+								"displayText": "What is MTU?",
+								"url": "/learning/network-layer/what-is-mtu/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "toWW4Gb9PcaIPePoiLaZ3",
+								"displayText": "Subnet",
+								"url": "/learning/network-layer/what-is-a-subnet/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2UnHCsGRw7y9aTkPRAITKe",
+								"displayText": "GRE Tunneling",
+								"url": "/learning/network-layer/what-is-gre-tunneling/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "JIBUsEPjalIJu1t3jEof8",
+								"displayText": "What is MTR?",
+								"url": "/learning/network-layer/what-is-mtr/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "jT9Z2xK5YfSxiFj6L5eut",
+								"displayText": "What is IPsec?",
+								"url": "/learning/network-layer/what-is-ipsec/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7MFRR5sF1pTzLCpLuxDsBj",
+								"displayText": "IPsec vs SSL VPNs",
+								"url": "/learning/network-layer/ipsec-vs-ssl-vpn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "314nljr3GHR35lcUUgTbeF",
+								"displayText": "What is IGMP?",
+								"url": "/learning/network-layer/what-is-igmp/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3EFUwUp91c9kSVVAd5UoRO",
+								"displayText": "IGMP Snooping",
+								"url": "/learning/network-layer/what-is-igmp-snooping/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5uhocF5vOQSt8EmdiRWkq1",
+								"displayText": "What is MPLS?",
+								"url": "/learning/network-layer/what-is-mpls/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2lFnXnqBPTWZmdedSv6WPX",
+								"displayText": "Network security",
+								"url": "/learning/network-layer/network-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "msCIoUjRRe010vqjDTHS0",
+								"displayText": "SD-WAN vs. MPLS",
+								"url": "/learning/network-layer/sd-wan-vs-mpls/"
+							}
+						]
+					},
+					"column5Title": "Learning Center Navigation",
+					"column5": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "7F0ogrrwL1BWGFiKCq8CXJ",
+						"name": "Network Layer Footer - Learning Nav",
+						"displayText": "Learning Center Navigation",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2hdSVoYA5asSIG0U2ae20c",
+								"displayText": "Learning Center Home",
+								"url": "/learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "56Y6OytBNgNoNDWQL2ezlf",
+								"displayText": "DDoS Learning Center",
+								"url": "/learning/ddos/what-is-a-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Ra0qmFJ1uewk2MYscW8KI",
+								"displayText": "DNS Learning Center",
+								"url": "/learning/dns/what-is-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6DGcnYIMM0eCGwqAKu2ECO",
+								"displayText": "CDN Learning Center",
+								"url": "/learning/cdn/what-is-a-cdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z3UC9tP1Kjk85BX5zSGPY",
+								"displayText": "Serverless Learning Center",
+								"url": "/learning/serverless/what-is-serverless/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1yItw6W6SsM2Y0Wuq6Y2c6",
+								"displayText": "Security Learning Center",
+								"url": "/learning/security/what-is-web-application-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q67XLnKqKhfmDJR4q9hJT",
+								"displayText": "Performance Learning Center",
+								"url": "/learning/performance/why-site-speed-matters/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52V7iI9YriJ0En2SGmEXz5",
+								"displayText": "SSL Learning Center",
+								"url": "/learning/ssl/what-is-ssl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7D22pOfjb98KXcnAJyJFCX",
+								"displayText": "Bots Learning Center",
+								"url": "/learning/bots/what-is-a-bot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7jgqDUFFzaLuKrsaBTLdV0",
+								"displayText": "Cloud Learning Center",
+								"url": "/learning/cloud/what-is-the-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6PdBQjiFs98K6RQuG5TYNd",
+								"displayText": "Access Management Learning Center",
+								"url": "/learning/access-management/what-is-identity-and-access-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RvS0l0m86G1VISDrEvlJb",
+								"displayText": "Privacy Learning Center",
+								"url": "/learning/privacy/what-is-data-privacy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "MytksT5WU5mh863BQYEkj",
+								"displayText": "Video Streaming Learning Center",
+								"url": "/learning/video/what-is-streaming/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
+								"displayText": "Email Security Learning Center",
+								"url": "/learning/email-security/what-is-email-security/"
+							}
+						]
+					}
+				},
+				"header": "What is My Traceroute (MTR)?",
+				"blurbSubHeader": "My Traceroute, or MTR, combines traceroute and ping to measure a network path's health.",
+				"objectivesHeader": "My Traceroute",
+				"objectivesList": [
+					"Define “traceroute” and “MTR”",
+					"Understand how traceroute and MTR work",
+					"Read an MTR result to diagnose problems in a network path"
+				],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "46yNBu6IQ1gCdIA8eG292m",
+						"displayText": "Network Layer",
+						"url": "/learning/network-layer/what-is-the-network-layer/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "1KHllFRuBRPeyUdnokeRC4",
+						"displayText": "What is MTU?",
+						"url": "/learning/network-layer/what-is-mtu/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "19nTg1iwyawlo5bSpU8Xe9",
+						"displayText": "Internet Protocol (IP)",
+						"url": "/learning/network-layer/internet-protocol/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "4A5YGXVcY3aDIb48dP0WhH",
+						"displayText": "What is MSS?",
+						"url": "/learning/network-layer/what-is-mss/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "7yJyIRZ7RyZUMnE6Iz178d",
+						"displayText": "What Is Routing?",
+						"url": "/learning/network-layer/what-is-routing/"
+					}
+				],
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is a traceroute?</h2>\n\n<p>Traceroute is a tool used to diagnose problems in a network path. Traceroute is used to understand the path <a href='/learning/network-layer/internet-protocol/'>IP packets</a> are taking from one computer (source IP address) to another (destination <a href='/learning/dns/glossary/what-is-my-ip-address/'>IP address</a>). The command traceroute (on Linux or macOS) or tracert (on Windows) makes it possible to understand:</p>\n\n<ul class=\"learning-list\">\n  <li>The path your packets are taking (including the IP addresses of each router)</li>\n  <li>The RTT* between the source and each hop, or router the packets pass through, in the network path</li>\n</ul>\n\n<p><i>*<a href='/learning/cdn/glossary/round-trip-time-rtt/'>Round-trip time (RTT)</a> is the amount of time it takes for data to get to and from a certain point on a network.</i></p>\n\n<p>Here is an example traceroute to 1.1.1.1. The lines with asterisks (* * *) represent hops from which packets were not returned; this can happen when routers are configured to ignore traceroute packets. The millisecond times in each line are the roundtrip times from the source to that hop for each packet (traceroute sends three packets at a time to verify the results).</p>\n\n<table style=\"width:100%;\">\n  <tr>\n    <th style=\"background-color: #dddddd;\">Traceroute example</th>\n  </tr>\n  <tr>\n    <td>traceroute to 1.1.1.1 (1.1.1.1), 64 hops max, 52 byte packets\n</td>\n  </tr>\n  <tr>\n    <td>1  myrouter (192.168.47.1)  2.755 ms  1.452 ms  1.325 ms</td>\n  </tr>\n  <tr>\n    <td>2  * * *</td>\n  </tr>\n  <tr>\n    <td>3  69.168.32.65 (69.168.32.65)  18.159 ms  18.658 ms  15.091 ms</td>\n  </tr>\n  <tr>\n    <td>4  * * *</td>\n  </tr>\n  <tr>\n    <td>5  206.126.237.30 (206.126.237.30)  30.453 ms  50.242 ms  24.342 ms</td>\n  </tr>\n  <tr>\n    <td>6  one.one.one.one (1.1.1.1)  29.000 ms  26.784 ms  26.017 ms</td>\n  </tr>\n</table>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a network path?</h2>\n\n<p>A network path refers to the sequence of networks a packet passes through in order to reach its destination.</p>\n\n<p>The Internet is a massive collection of networks that connect to one another via <a href='/learning/network-layer/what-is-routing/'>routing</a>. Most Internet endpoints — for example, a web browser trying to access a website and the server which hosts that website — are not part of the same network. This means that if said web browser sends a request to the website’s servers, the request will probably have to hop between several intermediary networks along the way.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does traceroute work?</h2>\n\n<p>A traceroute tool sends packets to a destination IP and with a <a href='/learning/cdn/glossary/time-to-live-ttl/'>time-to-live (TTL)</a> set to 1, so that the first router the packets reach will send back an error (“time exceeded”). When the error returns, the traceroute tool records the first router’s identity and round-trip time, increments the TTL, and sends new packets, repeating this process until either 1) the last packet reaches the destination IP or 2) two sets of packets are dropped.</p>\n\n<p>By doing this, the tool enables you to understand the path your packets are taking and the roundtrip time to each hop, so you can troubleshoot packet loss and latency.</p>\n\n<p>Traceroute relies on the <a href='/learning/ddos/glossary/internet-control-message-protocol-icmp/'>ICMP (Internet Control Message Protocol)</a> protocol. ICMP is a <a href='/learning/network-layer/what-is-the-network-layer/'>network layer</a> protocol used for error testing. It has no associated transport protocol, running directly on the Internet Protocol (IP). When the TTL of a packet sent by the traceroute tool is exceeded, the router sends back an ICMP Type 11 (Time Exceeded Error) packet.</p>\n\n<p>Outgoing packets (sent from the starting router) can use ICMP (default on MacOS and Linux operating systems) or UDP (default on Windows). Choosing a different protocol for outgoing traceroute packets is one way to get more complete results if routers along the network path are configured to filter out packets of a certain protocol.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is My Traceroute (MTR)?</h2>\n\n<p>My Traceroute (MTR) is a tool that combines traceroute and ping, which is another common method for testing network connectivity and speed. In addition to the hops along the network path, MTR shows constantly updating information about the latency and packet loss along the route to the destination. This helps in troubleshooting network issues by allowing you to see what’s happening along the path in real-time.</p>\n\n<p>MTR works by discovering the network path in a similar manner to traceroute, and then regularly sending packets to continue collecting information to provide an updated view into the network’s health and speed.</p>\n\n<p>Like traceroute, MTR can use ICMP or UDP for outgoing packets but relies on ICMP for return (Type 11: Time Exceeded) packets.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How to read MTR</h2>\n\n<p>Below are three examples of how to read and draw conclusions from MTR output.</p>\n\n<h4 class=\"learning-content-h4\">MTR #1: All clean</h4>\n\n<table style=\"width:100%;\">\n  <tr>\n    <th style=\"background-color: #dddddd;\" colspan=\"8\">Clean MTR</th>\n  </tr>\n   <tr>\n    <td colspan=\"8\">Start: 2020-04-08T13:28:52+0100</td>\n  </tr>\n  <tr>\n    <th>HOST: myrouter</th>\n    <th>Loss%</th>\n    <th>Snt</th>\n    <th>Last</th>\n    <th>Avg</th>\n    <th>Best</th>\n    <th>Wrst</th>\n    <th>StDev</th>\n  </tr>\n  <tr>\n    <td>1.|-- 10.10.1.1</td>\n    <td>0.0%</td>\n    <td>10</td>\n    <td>0.3</td>\n    <td>0.4</td>\n    <td>0.3</td>\n    <td>0.4</td>\n    <td>0.0</td>\n  </tr>\n  <tr>\n    <td>2.|-- 141.0.147.177.bcube.co.uk</td>\n    <td>0.0%</td>\n    <td>10</td>\n    <td>2.7</td>\n    <td>2.7</td>\n    <td>2.5</td>\n    <td>3.1</td>\n    <td>0.2</td>\n  </tr>\n  <tr>\n    <td> 3.|-- 172.16.28.38</td>\n    <td>0.0%</td>\n    <td>10</td>\n    <td>2.8</td>\n    <td>6.4</td>\n    <td>2.8</td>\n    <td>22.2</td>\n    <td>6.1</td>\n  </tr>\n  <tr>\n    <td>4.|-- 172.17.13.76</td>\n    <td>0.0%</td>\n    <td>10</td>\n    <td>1.1</td>\n    <td>2.8</td>\n    <td>1.1</td>\n    <td>14.6</td>\n    <td>4.2</td>\n  </tr>\n  <tr>\n    <td>5.|-- 172.17.13.49</td>\n    <td>0.0%</td>\n    <td>10</td>\n    <td>1.4</td>\n    <td>4.0</td>\n    <td>1.3</td>\n    <td>25.0</td>\n    <td>7.4</td>\n  </tr>\n  <tr>\n    <td>  6.|-- 172.17.13.24</td>\n    <td>0.0%</td>\n    <td>10</td>\n    <td>2.5</td>\n    <td>2.7</td>\n    <td>2.0</td>\n    <td>5.1</td>\n    <td>1.1 </td>\n  </tr>\n  <tr>\n    <td> 7.|-- one.one.one.one</td>\n    <td>0.0%</td>\n    <td>10</td>\n    <td>1.3</td>\n    <td>1.2</td>\n    <td>1.2</td>\n    <td>1.3</td>\n    <td>0.0</td>\n  </tr>\n</table>\n\n<p>This example follows the network path between the starting router and Cloudflare’s <a href='/learning/dns/what-is-1.1.1.1/'>1.1.1.1</a> <a href='/learning/dns/what-is-dns/'>DNS</a> server. The MTR output does not indicate any problems — it takes 7 hops to reach 1.1.1.1, and none of them indicate any packet loss.\n</p>\n\n<h4 class=\"learning-content-h4\">MTR #2: Packet loss - or is there?</h4>\n\n<table style=\"width:100%;\">\n  <tr>\n    <th style=\"background-color: #dddddd;\" colspan=\"8\">Packet loss on path</th>\n  </tr>\n  <tr>\n    <td colspan=\"8\">Start: 2020-04-08T12:48:28+0000</td>\n  </tr>\n  <tr>\n    <th>HOST: myrouter</th>\n    <th>Loss%</th>\n    <th>Snt</th>\n    <th>Last</th>\n    <th>Avg</th>\n    <th>Best</th>\n    <th>Wrst</th>\n    <th>StDev</th>\n  </tr>\n  <tr>\n    <td> 1.|-- 2400:cb00:207:1000::1</td>\n    <td>0.0%</td>\n    <td>10</td>\n    <td>1.1</td>\n    <td>6.0</td>\n    <td>0.6</td>\n    <td>15.7</td>\n    <td>5.9</td>\n  </tr>\n  <tr>\n    <td>2.|-- 2404:d400:4000:27::1</td>\n    <td>0.0%</td>\n    <td>10</td>\n    <td>0.4</td>\n    <td>0.6</td>\n    <td>0.2</td>\n    <td>2.9</td>\n    <td>0.8</td>\n  </tr>\n  <tr>\n    <td> 3.|-- 2404:d400:0:8::</td>\n    <td>0.0%</td>\n    <td>10</td>\n    <td>125.7</td>\n    <td>125.7</td>\n    <td>125.7</td>\n    <td>126.2</td>\n    <td>0.2</td>\n  </tr>\n  <tr>\n    <td>4.|-- 2001:978:2:42::e:1</td>\n    <td>50.0%</td>\n    <td>10</td>\n    <td>129.2</td>\n    <td>129.6</td>\n    <td>129.2</td>\n    <td>130.5</td>\n    <td> 0.6</td>\n  </tr>\n  <tr>\n    <td> 5.|-- be2846.ccr42.fra03.atlas.cogentco.com</td>\n    <td>80.0%</td>\n    <td>10</td>\n    <td>151.9</td>\n    <td>139.5</td>\n    <td>127.1</td>\n    <td>151.9</td>\n    <td>17.6</td>\n  </tr>\n  <tr>\n    <td>6.|-- be2814.ccr42.ams03.atlas.cogentco.com</td>\n    <td>80.0%</td>\n    <td>10</td>\n    <td>136.2</td>\n    <td>137.0</td>\n    <td>136.2</td>\n    <td>137.8</td>\n    <td>1.1</td>\n  </tr>\n  <tr>\n    <td>7.|-- be2183.ccr22.lpl01.atlas.cogentco.com</td>\n    <td>50.0%</td>\n    <td>10</td>\n    <td>146.3</td>\n    <td>146.2</td>\n    <td>145.9</td>\n    <td>146.3</td>\n    <td>0.1</td>\n  </tr>\n  <tr>\n    <td>8.|-- be3043.ccr22.ymq01.atlas.cogentco.com</td>\n    <td>30.0%</td>\n    <td>10</td>\n    <td>215.3</td>\n    <td>215.2</td>\n    <td>215.0</td>\n    <td>215.4</td>\n    <td>0.2</td>\n  </tr>\n  <tr>\n    <td>9.|-- be3260.ccr32.yyz02.atlas.cogentco.com</td>\n    <td>90.0%</td>\n    <td>10</td>\n    <td>227.8</td>\n    <td>227.8</td>\n    <td>227.8</td>\n    <td>227.8</td>\n    <td>0.0</td>\n  </tr>\n  <tr>\n    <td>10.|-- be2994.ccr22.cle04.atlas.cogentco.com</td>\n    <td>30.0%</td>\n    <td>10</td>\n    <td>234.9</td>\n    <td>234.9</td>\n    <td>234.5</td>\n    <td>235.1</td>\n    <td>0.2</td>\n  </tr>\n  <tr>\n    <td>11.|-- be2718.ccr42.ord01.atlas.cogentco.com</td>\n    <td>70.0%</td>\n    <td>10</td>\n    <td>233.7</td>\n    <td>233.8</td>\n    <td>233.7</td>\n    <td>233.9</td>\n    <td>0.1</td>\n  </tr>\n  <tr>\n    <td>12.|-- be2832.ccr22.mci01.atlas.cogentco.com</td>\n    <td>50.0%</td>\n    <td>10</td>\n    <td>244.8</td>\n    <td>245.1</td>\n    <td>244.8</td>\n    <td>245.5</td>\n    <td>0.3</td>\n  </tr>\n  <tr>\n    <td>13.|-- be3036.ccr22.den01.atlas.cogentco.com</td>\n    <td>30.0%</td>\n    <td>10</td>\n    <td>259.6</td>\n    <td>259.6</td>\n    <td>259.3</td>\n    <td>259.8</td>\n    <td>0.2</td>\n  </tr>\n  <tr>\n    <td>14.|-- be3038.ccr32.slc01.atlas.cogentco.com</td>\n    <td>90.0%</td>\n    <td>10</td>\n    <td>267.2</td>\n    <td>267.2</td>\n    <td>267.2</td>\n    <td>267.2</td>\n    <td>0.0</td>\n  </tr>\n  <tr>\n    <td>15.|-- be3110.ccr22.sfo01.atlas.cogentco.com</td>\n    <td>10.0%</td>\n    <td>10</td>\n    <td>291.0</td>\n    <td>291.1</td>\n    <td>291.0</td>\n    <td>291.4</td>\n    <td>0.1</td>\n  </tr>\n  <tr>\n    <td>16.|-- be3670.ccr41.sjc03.atlas.cogentco.com</td>\n    <td>30.0%</td>\n    <td>10</td>\n    <td>292.6</td>\n    <td>292.7</td>\n    <td>292.6</td>\n    <td>292.8</td>\n    <td>0.1</td>\n  </tr>\n  <tr>\n    <td> 17.|-- 2001:550:2:1f::29:2</td>\n    <td>0.0%</td>\n    <td>10</td>\n    <td>312.3</td>\n    <td>291.5</td>\n    <td>287.0</td>\n    <td>312.3</td>\n    <td>8.6</td>\n  </tr>\n  <tr>\n    <td>8.6</td>\n    <td>0.0%</td>\n    <td>10</td>\n    <td>298.7</td>\n    <td>299.5</td>\n    <td>298.7</td>\n    <td>306.1</td>\n    <td>2.3</td>\n  </tr>\n  <tr>\n    <td>19.|-- ???</td>\n    <td>100.0</td>\n    <td>10</td>\n    <td>0.0</td>\n    <td>0.0</td>\n    <td>0.0</td>\n    <td>0.0</td>\n    <td>0.0</td>\n  </tr>\n  <tr>\n    <td>20.|-- ???</td>\n    <td>100.0</td>\n    <td>9</td>\n    <td>0.0</td>\n    <td>0.0</td>\n    <td>0.0</td>\n    <td>0.0</td>\n    <td>0.0</td>\n  </tr>\n  <tr>\n    <td>21.|-- 2400:cb00:36:1008::a29e:40e2</td>\n    <td>0.0%</td>\n    <td>9</td>\n    <td>302.9</td>\n    <td>302.9</td>\n    <td>302.8</td>\n    <td>303.2</td>\n    <td>0.1</td>\n  </tr>\n</table>\n\n<p>This example shows the network path between the starting router and 2400:cb00:36:1008::a29e:40e2, which is an <a href='/learning/dns/glossary/what-is-my-ip-address/'>IPv6</a> address. The output shows significant  packet loss on all the Cogent hops. However, there is no packet loss on the last hop (21). This indicates that the network path is actually not problematic. What's happening is something often referred to as \"Control Plane Policing.”</p>\n\n<p>As discussed earlier, MTR works by sending out (as a default) ICMP Echo packets, with an incrementing TTL (Time-To-Live) per packet. When the TTL expires, a router will send back an ICMP Type 11 (Time Exceeded), indicating how many hops there are from point A to point B.</p>\n\n<p>Many network operators (including Cloudflare) set arbitrary limits on the amount of ICMP packets that are allowed to reach the control plane of a router. (The control plane is the router's brain.) A packet that exceeds a router's TTL has to be processed by the control plane. To prevent the control plane from being overwhelmed by too many of these packets, a rate limit (or policer) is put in place, which is why we see all that loss on the intermediary hops, but not the final hop: the control plane rate limits for the routers on the intermediary hops were exceeded, so Type 11 packets were not sent back for the traceroute packets past those limits, but the packets were able to get through to the destination safely.</p>\n\n<h4 class=\"learning-content-h4\">MTR #3: Actual packet loss</h4>\n\n<table style=\"width:100%;\">\n  <tr>\n    <th style=\"background-color: #dddddd;\" colspan=\"8\">Packet loss on return path</th>\n  </tr>\n  <tr>\n    <td colspan=\"8\">Start: 2020-04-08T13:32:30+0000</td>\n  </tr>\n  <tr>\n    <th>HOST: myrouter</th>\n    <th>Loss%</th>\n    <th>Snt</th>\n    <th>Last</th>\n    <th>Avg</th>\n    <th>Best</th>\n    <th>Wrst</th>\n    <th>StDev</th>\n  </tr>\n  <tr>\n    <td>  1.|-- 162.158.216.129</td>\n    <td> 0.0%</td>\n    <td>10</td>\n    <td>0.7</td>\n    <td>6.9</td>\n    <td>0.7</td>\n    <td>62.6</td>\n    <td>19.6</td>\n  </tr>\n  <tr>\n    <td> 2.|-- 118.69.221.209</td>\n    <td> 0.0%</td>\n    <td>10</td>\n    <td>0.2</td>\n    <td>0.3</td>\n    <td>0.2</td>\n    <td>1.3</td>\n    <td>0.3</td>\n  </tr>\n  <tr>\n    <td>3.|-- 118.69.252.172</td>\n    <td>0.0%</td>\n    <td>10</td>\n    <td>0.7</td>\n    <td>1.0</td>\n    <td>0.6</td>\n    <td>2.9</td>\n    <td>0.7</td>\n  </tr>\n  <tr>\n    <td>4.|-- 118.69.132.169</td>\n    <td>0.0%</td>\n    <td>10</td>\n    <td>11.4</td>\n    <td>11.3</td>\n    <td>11.2</td>\n    <td>11.5</td>\n    <td>0.1</td>\n  </tr>\n  <tr>\n    <td>5.|-- 118.69.247.64</td>\n    <td>0.0%</td>\n    <td>10</td>\n    <td>34.2</td>\n    <td>34.4</td>\n    <td>33.9</td>\n    <td>37.2</td>\n    <td>1.0</td>\n  </tr>\n  <tr>\n    <td>6.|-- 13335.sgw.equinix.com</td>\n    <td>50.0%</td>\n    <td>10</td>\n    <td>27.5</td>\n    <td>27.9</td>\n    <td>27.1</td>\n    <td>29.1</td>\n    <td>0.8</td>\n  </tr>\n  <tr>\n    <td>7.|-- 162.158.161.251</td>\n    <td>30.0%</td>\n    <td>10</td>\n    <td>26.8</td>\n    <td>26.8</td>\n    <td>26.8</td>\n    <td>26.8</td>\n    <td>0.0</td>\n  </tr>\n</table>\n\n<p>This example shows the network path between the starting router and 162.158.161.251. The output shows packet loss on the last 2 hops.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Further MTR options</h2>\n\n<p>MTR has a lot of options. You can find more through the MTR help page: <i>mtr --help</i></p>\n\n<p>Some of the frequently used options are:</p>\n\n<ul class=\"learning-list\">\n  <li>TCP MTR: Instead of using ICMP packets, use <a href='/learning/ddos/glossary/tcp-ip/'>TCP</a>. You can optionally choose a destination port as well.</li>\n  <li>UDP MTR: Use <a href='/learning/ddos/glossary/user-datagram-protocol-udp/'>UDP</a> instead of ICMP. This can be used to circumvent routers that are blocking ICMP packets, or for the purpose of testing a specific port.</li>\n  <li>Show IPs: Shows IP addresses next to the records for each hop. This makes it easier to report issues upstream.</li>\n  <li>AS Lookup: Shows the <a href='/learning/network-layer/what-is-an-autonomous-system/'>AS number</a> in the MTR.</li>\n</ul>\n\n\n\n\n\n\n",
+				"availableLocales": null,
+				"localized": null,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "No Page for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "Translated for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": null
+				},
+				"proactivePopup": null,
+				"sidebarForm": null
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "7kiDW0a13M72lSwQNyH6qE",
+			"pathname": "/learning/network-layer/what-is-mtr/",
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

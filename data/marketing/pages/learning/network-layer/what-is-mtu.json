@@ -1,0 +1,722 @@
+{
+	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
+	"path": "/learning/network-layer/what-is-mtu/",
+	"result": {
+		"data": {
+			"learningCenterArticle": {
+				"contentTypeId": "learningCenterArticle",
+				"contentfulId": "4BW3y4hHsUKzo97TMhbpkk",
+				"urlSlug": "network-layer/what-is-mtu",
+				"metaTags": {
+					"metaTitle": "What is MTU (maximum transmission unit)?",
+					"metaDescription": "Maximum transmission unit, or MTU, limits data packet size for any networked device. Learn about IP fragmentation and how MTU network settings affect packets.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"metaTitle": "What is MTU (maximum transmission unit)?",
+				"metaDescription": "Maximum transmission unit, or MTU, limits data packet size for any networked device. Learn about IP fragmentation and how MTU network settings affect packets.",
+				"learningCenterArticleSubHeader": {
+					"contentTypeId": "learningCenterArticleSubHeader",
+					"contentfulId": "2NTNgGsYPl9HfIDs724JbF",
+					"learningCenterName": "networklayer",
+					"links": [
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "46yNBu6IQ1gCdIA8eG292m",
+							"displayText": "Network Layer",
+							"url": "/learning/network-layer/what-is-the-network-layer/"
+						},
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "6f5fhtiSUbfI8b05lKOm4x",
+							"displayText": "How Internet Works",
+							"url": "/learning/network-layer/how-does-the-internet-work/"
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "18T0AEOTUxQkb9FCJ9PGhU",
+							"name": "Network Layer Header: Networking Basics",
+							"displayText": "Networking Basics",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7yJyIRZ7RyZUMnE6Iz178d",
+									"displayText": "What Is Routing?",
+									"url": "/learning/network-layer/what-is-routing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6omqp77P1xG2VxH7tRPuSA",
+									"displayText": "What Is a Router?",
+									"url": "/learning/network-layer/what-is-a-router/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4YmH7UVzSMAvbcI6sPyyK",
+									"displayText": "Network Switch",
+									"url": "/learning/network-layer/what-is-a-network-switch/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7Jhvs7WYoVu9QOoAjcLX6o",
+									"displayText": "What is a Packet?",
+									"url": "/learning/network-layer/what-is-a-packet/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6RLQUAhE7el2jcCAJnGOQy",
+									"displayText": "What is a Protocol?",
+									"url": "/learning/network-layer/what-is-a-protocol/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6ZVwf9GXI0dUYZyuZ0F0El",
+									"displayText": "What is Tunneling?",
+									"url": "/learning/network-layer/what-is-tunneling/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6ILzrLGo0VX47fqSdZzzvz",
+									"displayText": "What is a Port?",
+									"url": "/learning/network-layer/what-is-a-computer-port/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2oL1WxC7415PcmjuLRiqYl",
+									"displayText": "Control Plane",
+									"url": "/learning/network-layer/what-is-the-control-plane/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "49UJJsxvKvb9Ks30l9bXgx",
+							"name": "Network Layer Header: Network Types",
+							"displayText": "Network Types",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4bK3yl2lIJorDZQHs1H1a0",
+									"displayText": "Local Area Network (LAN)",
+									"url": "/learning/network-layer/what-is-a-lan/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7x0aq8mwf9Rx4lg6rkjWiz",
+									"displayText": "Wide Area Network (WAN)",
+									"url": "/learning/network-layer/what-is-a-wan/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "69FyYu2Nl7lx7PPxWIxkIx",
+									"displayText": "SD-WAN",
+									"url": "/learning/network-layer/what-is-an-sd-wan/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5fMrQ9PPNlCWoSDUWB5ODz",
+									"displayText": "Metropolitan Area Network (MAN)",
+									"url": "/learning/network-layer/what-is-a-metropolitan-area-network/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4C9m4LnuXViq25OjkQ4IIo",
+									"displayText": "Campus Area Network (CAN)",
+									"url": "/learning/network-layer/what-is-a-campus-area-network/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3a237Kt4f9t99EGOlTsnQr",
+									"displayText": "Personal Area Network (PAN)",
+									"url": "/learning/network-layer/what-is-a-personal-area-network/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "31YdKHPLe2rGKcikXmvaIW",
+									"displayText": "Autonomous System (AS)",
+									"url": "/learning/network-layer/what-is-an-autonomous-system/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6aRzsX0gbj4ceQWQiEzBOC",
+									"displayText": "Network-as-a-Service (NaaS)",
+									"url": "/learning/network-layer/network-as-a-service-naas/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6wi0u9frLgJN3XQlvx223h",
+									"displayText": "Enterprise Networking",
+									"url": "/learning/network-layer/enterprise-networking/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "6227tKEJfE6iW20rhlIDzA",
+							"name": "Network Layer Header: Protocols",
+							"displayText": "Protocols",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "19nTg1iwyawlo5bSpU8Xe9",
+									"displayText": "Internet Protocol (IP)",
+									"url": "/learning/network-layer/internet-protocol/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "jT9Z2xK5YfSxiFj6L5eut",
+									"displayText": "What is IPsec?",
+									"url": "/learning/network-layer/what-is-ipsec/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "314nljr3GHR35lcUUgTbeF",
+									"displayText": "What is IGMP?",
+									"url": "/learning/network-layer/what-is-igmp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3EFUwUp91c9kSVVAd5UoRO",
+									"displayText": "IGMP Snooping",
+									"url": "/learning/network-layer/what-is-igmp-snooping/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5uhocF5vOQSt8EmdiRWkq1",
+									"displayText": "What is MPLS?",
+									"url": "/learning/network-layer/what-is-mpls/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2UnHCsGRw7y9aTkPRAITKe",
+									"displayText": "GRE Tunneling",
+									"url": "/learning/network-layer/what-is-gre-tunneling/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "7HSoF6OwkVrpRKdFKQRijv",
+							"name": "Network Layer Header: Glossary",
+							"displayText": "Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "toWW4Gb9PcaIPePoiLaZ3",
+									"displayText": "Subnet",
+									"url": "/learning/network-layer/what-is-a-subnet/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4A5YGXVcY3aDIb48dP0WhH",
+									"displayText": "What is MSS?",
+									"url": "/learning/network-layer/what-is-mss/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1KHllFRuBRPeyUdnokeRC4",
+									"displayText": "What is MTU?",
+									"url": "/learning/network-layer/what-is-mtu/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7bvJN7SaSIva3Ar3sNx05x",
+									"displayText": "What is SDN?",
+									"url": "/learning/network-layer/what-is-sdn/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "JIBUsEPjalIJu1t3jEof8",
+									"displayText": "What is MTR?",
+									"url": "/learning/network-layer/what-is-mtr/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7MFRR5sF1pTzLCpLuxDsBj",
+									"displayText": "IPsec vs SSL VPNs",
+									"url": "/learning/network-layer/ipsec-vs-ssl-vpn/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2lFnXnqBPTWZmdedSv6WPX",
+									"displayText": "Network security",
+									"url": "/learning/network-layer/network-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "msCIoUjRRe010vqjDTHS0",
+									"displayText": "SD-WAN vs. MPLS",
+									"url": "/learning/network-layer/sd-wan-vs-mpls/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "7oux4RIlcnRsZ0LWFBYEyR",
+							"name": "Network Layer Header: Insights",
+							"displayText": "Insights",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1wiWDzIJ6wU4wdgrCCsqKI",
+									"displayText": "Accelerating the journey to SASE",
+									"url": "https://www.cloudflare.com/learning/insights-sase-network-transformation/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6LQmFiGz1KUuA6DwDNfV4F",
+									"displayText": "The challenges of network infrastructure",
+									"url": "https://www.cloudflare.com/insights-network-infrastructure/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "jQp53tpsRvjsWJjYlZDyW",
+									"displayText": "The future of networking",
+									"url": "https://www.cloudflare.com/learning/insights-future-of-networking"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4YNpRTdJGY11quTRBRjPKQ",
+									"displayText": "How blockchain carries us into Web 3.0",
+									"url": "https://www.cloudflare.com/learning/insights-how-blockchain-web3"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1fudUp354PiIkWi5M2QBuE",
+									"displayText": "The risks smaller DDoS attacks pose to network infrastructure",
+									"url": "https://www.cloudflare.com/insights-small-ddos-attacks/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5eUpBgLgoPxWdadu3NiMlC",
+									"displayText": "The software supply chain is under attack",
+									"url": "https://www.cloudflare.com/learning/insights-supply-chain-attacks/"
+								}
+							]
+						}
+					]
+				},
+				"learningCenterArticleFooter": {
+					"contentTypeId": "learningCenterArticleFooter",
+					"contentfulId": "SJpRsBZDhJm2lhBSV0G9E",
+					"learningCenterName": "networklayer",
+					"column1Title": "About the Network Layer",
+					"column1": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "2LY3WMeF8BjVx77cUGCh9Z",
+						"name": "Network Layer About Footer",
+						"displayText": "About the Network Layer",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "46yNBu6IQ1gCdIA8eG292m",
+								"displayText": "Network Layer",
+								"url": "/learning/network-layer/what-is-the-network-layer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7yJyIRZ7RyZUMnE6Iz178d",
+								"displayText": "What Is Routing?",
+								"url": "/learning/network-layer/what-is-routing/"
+							}
+						]
+					},
+					"column2Title": "Network Types",
+					"column2": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "55elS8RVutktd7zM6TVVZ2",
+						"name": "Network Layer Footer - Network Types",
+						"displayText": "Network Types",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4bK3yl2lIJorDZQHs1H1a0",
+								"displayText": "Local Area Network (LAN)",
+								"url": "/learning/network-layer/what-is-a-lan/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7x0aq8mwf9Rx4lg6rkjWiz",
+								"displayText": "Wide Area Network (WAN)",
+								"url": "/learning/network-layer/what-is-a-wan/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "69FyYu2Nl7lx7PPxWIxkIx",
+								"displayText": "SD-WAN",
+								"url": "/learning/network-layer/what-is-an-sd-wan/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5fMrQ9PPNlCWoSDUWB5ODz",
+								"displayText": "Metropolitan Area Network (MAN)",
+								"url": "/learning/network-layer/what-is-a-metropolitan-area-network/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4C9m4LnuXViq25OjkQ4IIo",
+								"displayText": "Campus Area Network (CAN)",
+								"url": "/learning/network-layer/what-is-a-campus-area-network/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3a237Kt4f9t99EGOlTsnQr",
+								"displayText": "Personal Area Network (PAN)",
+								"url": "/learning/network-layer/what-is-a-personal-area-network/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "31YdKHPLe2rGKcikXmvaIW",
+								"displayText": "Autonomous System (AS)",
+								"url": "/learning/network-layer/what-is-an-autonomous-system/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6aRzsX0gbj4ceQWQiEzBOC",
+								"displayText": "Network-as-a-Service (NaaS)",
+								"url": "/learning/network-layer/network-as-a-service-naas/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7bvJN7SaSIva3Ar3sNx05x",
+								"displayText": "What is SDN?",
+								"url": "/learning/network-layer/what-is-sdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6wi0u9frLgJN3XQlvx223h",
+								"displayText": "Enterprise Networking",
+								"url": "/learning/network-layer/enterprise-networking/"
+							}
+						]
+					},
+					"column3Title": "Networking Basics",
+					"column3": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "5eU7ZXZ6LJdfNkU3gtD0nV",
+						"name": "Network Layer Footer - Networking Basics",
+						"displayText": "Networking Basics",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6f5fhtiSUbfI8b05lKOm4x",
+								"displayText": "How Internet Works",
+								"url": "/learning/network-layer/how-does-the-internet-work/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "19nTg1iwyawlo5bSpU8Xe9",
+								"displayText": "Internet Protocol (IP)",
+								"url": "/learning/network-layer/internet-protocol/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6omqp77P1xG2VxH7tRPuSA",
+								"displayText": "What Is a Router?",
+								"url": "/learning/network-layer/what-is-a-router/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7qqJLBSHHwIxQgXKn7CJsf",
+								"displayText": "What is a Network Switch?",
+								"url": "/learning/network-layer/what-is-a-network-switch/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7Jhvs7WYoVu9QOoAjcLX6o",
+								"displayText": "What is a Packet?",
+								"url": "/learning/network-layer/what-is-a-packet/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RLQUAhE7el2jcCAJnGOQy",
+								"displayText": "What is a Protocol?",
+								"url": "/learning/network-layer/what-is-a-protocol/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6ZVwf9GXI0dUYZyuZ0F0El",
+								"displayText": "What is Tunneling?",
+								"url": "/learning/network-layer/what-is-tunneling/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6ILzrLGo0VX47fqSdZzzvz",
+								"displayText": "What is a Port?",
+								"url": "/learning/network-layer/what-is-a-computer-port/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2oL1WxC7415PcmjuLRiqYl",
+								"displayText": "Control Plane",
+								"url": "/learning/network-layer/what-is-the-control-plane/"
+							}
+						]
+					},
+					"column4Title": "Glossary",
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "31rQag046CuMupc5UZGGEp",
+						"name": "Network Layer Footer - Glossary",
+						"displayText": "Glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4A5YGXVcY3aDIb48dP0WhH",
+								"displayText": "What is MSS?",
+								"url": "/learning/network-layer/what-is-mss/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1KHllFRuBRPeyUdnokeRC4",
+								"displayText": "What is MTU?",
+								"url": "/learning/network-layer/what-is-mtu/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "toWW4Gb9PcaIPePoiLaZ3",
+								"displayText": "Subnet",
+								"url": "/learning/network-layer/what-is-a-subnet/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2UnHCsGRw7y9aTkPRAITKe",
+								"displayText": "GRE Tunneling",
+								"url": "/learning/network-layer/what-is-gre-tunneling/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "JIBUsEPjalIJu1t3jEof8",
+								"displayText": "What is MTR?",
+								"url": "/learning/network-layer/what-is-mtr/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "jT9Z2xK5YfSxiFj6L5eut",
+								"displayText": "What is IPsec?",
+								"url": "/learning/network-layer/what-is-ipsec/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7MFRR5sF1pTzLCpLuxDsBj",
+								"displayText": "IPsec vs SSL VPNs",
+								"url": "/learning/network-layer/ipsec-vs-ssl-vpn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "314nljr3GHR35lcUUgTbeF",
+								"displayText": "What is IGMP?",
+								"url": "/learning/network-layer/what-is-igmp/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3EFUwUp91c9kSVVAd5UoRO",
+								"displayText": "IGMP Snooping",
+								"url": "/learning/network-layer/what-is-igmp-snooping/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5uhocF5vOQSt8EmdiRWkq1",
+								"displayText": "What is MPLS?",
+								"url": "/learning/network-layer/what-is-mpls/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2lFnXnqBPTWZmdedSv6WPX",
+								"displayText": "Network security",
+								"url": "/learning/network-layer/network-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "msCIoUjRRe010vqjDTHS0",
+								"displayText": "SD-WAN vs. MPLS",
+								"url": "/learning/network-layer/sd-wan-vs-mpls/"
+							}
+						]
+					},
+					"column5Title": "Learning Center Navigation",
+					"column5": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "7F0ogrrwL1BWGFiKCq8CXJ",
+						"name": "Network Layer Footer - Learning Nav",
+						"displayText": "Learning Center Navigation",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2hdSVoYA5asSIG0U2ae20c",
+								"displayText": "Learning Center Home",
+								"url": "/learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "56Y6OytBNgNoNDWQL2ezlf",
+								"displayText": "DDoS Learning Center",
+								"url": "/learning/ddos/what-is-a-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Ra0qmFJ1uewk2MYscW8KI",
+								"displayText": "DNS Learning Center",
+								"url": "/learning/dns/what-is-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6DGcnYIMM0eCGwqAKu2ECO",
+								"displayText": "CDN Learning Center",
+								"url": "/learning/cdn/what-is-a-cdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z3UC9tP1Kjk85BX5zSGPY",
+								"displayText": "Serverless Learning Center",
+								"url": "/learning/serverless/what-is-serverless/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1yItw6W6SsM2Y0Wuq6Y2c6",
+								"displayText": "Security Learning Center",
+								"url": "/learning/security/what-is-web-application-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q67XLnKqKhfmDJR4q9hJT",
+								"displayText": "Performance Learning Center",
+								"url": "/learning/performance/why-site-speed-matters/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52V7iI9YriJ0En2SGmEXz5",
+								"displayText": "SSL Learning Center",
+								"url": "/learning/ssl/what-is-ssl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7D22pOfjb98KXcnAJyJFCX",
+								"displayText": "Bots Learning Center",
+								"url": "/learning/bots/what-is-a-bot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7jgqDUFFzaLuKrsaBTLdV0",
+								"displayText": "Cloud Learning Center",
+								"url": "/learning/cloud/what-is-the-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6PdBQjiFs98K6RQuG5TYNd",
+								"displayText": "Access Management Learning Center",
+								"url": "/learning/access-management/what-is-identity-and-access-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RvS0l0m86G1VISDrEvlJb",
+								"displayText": "Privacy Learning Center",
+								"url": "/learning/privacy/what-is-data-privacy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "MytksT5WU5mh863BQYEkj",
+								"displayText": "Video Streaming Learning Center",
+								"url": "/learning/video/what-is-streaming/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
+								"displayText": "Email Security Learning Center",
+								"url": "/learning/email-security/what-is-email-security/"
+							}
+						]
+					}
+				},
+				"header": "What is MTU (maximum transmission unit)?",
+				"blurbSubHeader": "Maximum transmission unit (MTU) is a measurement in bytes of the largest data packets that an Internet-connected device can accept.",
+				"objectivesHeader": "MTU",
+				"objectivesList": [
+					"Define 'MTU'",
+					"Learn how IP fragmentation works",
+					"Learn about path MTU discovery in IPv4 and IPv6"
+				],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "4A5YGXVcY3aDIb48dP0WhH",
+						"displayText": "What is MSS?",
+						"url": "/learning/network-layer/what-is-mss/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "46yNBu6IQ1gCdIA8eG292m",
+						"displayText": "Network Layer",
+						"url": "/learning/network-layer/what-is-the-network-layer/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "31YdKHPLe2rGKcikXmvaIW",
+						"displayText": "Autonomous System (AS)",
+						"url": "/learning/network-layer/what-is-an-autonomous-system/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "4bK3yl2lIJorDZQHs1H1a0",
+						"displayText": "Local Area Network (LAN)",
+						"url": "/learning/network-layer/what-is-a-lan/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "19nTg1iwyawlo5bSpU8Xe9",
+						"displayText": "Internet Protocol (IP)",
+						"url": "/learning/network-layer/internet-protocol/"
+					}
+				],
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is MTU?</h2>\n\n<p>In <a href='/learning/network-layer/what-is-the-network-layer/'>networking</a>, maximum transmission unit (MTU) is a measurement representing the largest <a href='/learning/network-layer/what-is-a-packet/'>data packet</a> that a network-connected device will accept. Imagine it as being like a height limit for freeway underpasses or tunnels: Cars and trucks that exceed the height limit cannot fit through, just as packets that exceed the MTU of a network cannot pass through that network.</p>\n\n<p>However, unlike cars and trucks, data packets that exceed MTU are broken up into smaller pieces so that they can fit through. This process is called fragmentation. Fragmented packets are reassembled once they reach their destination.</p>\n\n<p>MTU is measured in bytes — a \"byte\" is equal to 8 bits of information, meaning 8 ones and zeroes. 1,500 bytes is the maximum MTU size.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a packet?</h2>\n\n<p>All data sent over the Internet is broken down into smaller chunks that are called packets. For example, when a webpage is sent from a web server to a user's laptop, the webpage’s constituent data travels over the Internet as a series of packets. The packets are then reassembled into the original, whole webpage by the laptop.</p>\n\n<p>Data packets have two main parts: the <i>header</i> and the <i>payload</i>. The header contains information about the packet's source and destination addresses, while the payload is the actual contents of the packet. Think of the header as a shipping label attached to a package, and the payload as the package’s contents. (Unlike packages, packets on the Internet have multiple headers attached by different networking protocols.)</p>\n\n<p>MTU almost always is used in reference to <a href='/learning/ddos/layer-3-ddos-attacks/'>layer 3</a>* packets, or packets that use the <a href='/learning/ddos/glossary/internet-protocol/'>Internet Protocol (IP)</a>. MTU measures the packet as a whole, including all headers and the payload. This includes the IP header and the <a href='/learning/ddos/glossary/tcp-ip/'>TCP (Transport Control Protocol)</a> header, which usually add up to 40 bytes in length.</p>\n\n<p><i>*The <a href='/learning/ddos/glossary/open-systems-interconnection-model-osi/'>OSI model</a> divides the functions that make the Internet possible into 7 layers; layer 3 is the <a href='/learning/network-layer/what-is-the-network-layer/'>network layer</a>, where <a href='/learning/network-layer/what-is-routing/'>routing</a> takes place.</i></p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">When do packets become fragmented?</h2>\n\n<p>When two computing devices open a connection and begin exchanging packets, those packets are routed across multiple networks. It is necessary to take into account not just the MTU of the two devices at the ends of each communication, but all <a href='/learning/network-layer/what-is-a-router/'>routers</a>, <a href='/learning/network-layer/what-is-a-network-switch/'>switches</a>, and servers in the middle as well. Packets that exceed the MTU on any point in the network path are fragmented.</p>\n\n<p>Suppose Server A and Computer A are connected, but the data packets they send to each other have to pass through Router B and Router C along the way. Server A, Computer A, and Router B all have an MTU of 1,500 bytes. However, Router C has an MTU of 1,400 bytes. If Server A and Computer A are not aware of Router C's MTU and send 1,500-byte packets, all their data packets will be fragmented by Router B in transit.</p>\n\n<img src=\"/resources/images/slt3lc6tev37/4scqAPBzaxHsj3SF9ikdFC/baf0be0ff26dc7f942ece5a834196856/mtu_fragmentation_diagram.png\" class=\"responsive-image\" alt=\"Maximum transmission unit - Packet fragmented to fit 1,400 byte MTU\" itemprop=\"image\" />\n\n<p>Fragmentation adds a small degree of <a href='/learning/performance/glossary/what-is-latency/'>latency</a> and inefficiency to network communications, so it should be avoided if possible. (Outdated network equipment may be vulnerable to <a href='/learning/ddos/layer-3-ddos-attacks/'>denial-of-service</a> attacks that exploit fragmentation, such as the \"<a href='/learning/ddos/ping-of-death-ddos-attack/'>ping of death</a>\" attack.)</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does fragmentation work?</h2>\n\n<p>All network routers check the size of each IP packet they receive against the MTU of the next router that will receive the packet. If the packet exceeds the MTU of the next router, the first router breaks the payload into two or more packets, each with its own headers.</p>\n\n<p>Each new packet has a header copied from the original packet (so that the packets all have the original source and destination <a href='/learning/dns/glossary/what-is-my-ip-address/'>IP addresses</a>, etc.) with some important changes. The router edits certain fields in the IP header to indicate that the packets are fragmented and require reassembly, how many packets there are, and in what order they are being sent.</p>\n\n<p>Imagine a shipping company is handling a package that exceeds the weight limits of one of their facilities. Instead of refusing to deliver the package, the shipping company divides the package contents into three smaller packages. It also duplicates the shipping label for each package and adds a note indicating that each package is one part of a series that must arrive together — the first package is 1 of 3, the second is 2 of 3, etc. (Such an approach by a shipping company would be a violation of privacy, so it should not occur in the real world.)</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">When is fragmentation not possible?</h2>\n\n<p>In certain cases, packets cannot be fragmented, and therefore they will not be delivered if they exceed the MTU of any router or device along the network path:</p>\n\n<ol class=\"learning-list\">\n  <li>Fragmentation is not permitted in <a href='/ipv6/'>IPv6</a>. IPv6 is the latest version of the Internet Protocol, although IPv4 is still widely used. Routers that support IPv6 will drop any IPv6 packets that exceed the MTU, because they cannot be fragmented.</li>\n  <li>Fragmentation is also not possible when the \"Don't Fragment\" flag is activated in a packet's IP header.</li>\n</ol>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is the 'Don't Fragment' flag in an IP header?</h2>\n\n<p>Think of the IP header as being like a form consumers fill out when shipping a package to someone. The form indicates source address, destination address, how soon the package should be delivered, and other special instructions for the delivery workers.</p>\n\n<p>The \"Don't Fragment\" flag is a special instruction for routers, an option that can be selected in the \"form\" of an IP header. When the flag is set, the attached packet cannot be fragmented.</p>\n\n<p>Any router that receives the packet will analyze the header and check for the Don't Fragment flag. If the flag is on and the packet exceeds the MTU, the router then drops the packet instead of fragmenting it.</p>\n\n<p>In addition to dropping the packet, the router sends back an <a href='/learning/ddos/glossary/internet-control-message-protocol-icmp/'>ICMP</a> message to the packet's origin. An ICMP message is a very small data packet that sends a status update. In this case, it essentially says, \"This router or device could not deliver these packets because they were too big and could not be fragmented.\"</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is path MTU discovery?</h2>\n\n<p>Path MTU discovery, or PMTUD, is the process of discovering the MTU of all devices, routers, and switches on a network path. If Computer A and Server A from the example above were to use PMTUD, they would identify Router B's MTU requirements and adjust their packet size accordingly to avoid fragmentation.</p>\n\n<p>PMTU works slightly differently depending on whether the connected devices are using IPv4 or IPv6:</p>\n\n<p><strong>IPv4:</strong> IPv4 allows fragmentation and thus includes the Don't Fragment flag in the IP header. PMTUD in IPv4 works by sending test packets along the network path with the Don't Fragment flag turned on. If any router or device along the path drops the packet, it sends back an ICMP message with its MTU. The source device lowers its MTU and sends another test packet. This process is repeated until the test packets are small enough to traverse the entire network path without being dropped.</p>\n\n<p><strong>IPv6:</strong> For IPv6, which does not allow fragmentation, PMTUD works in much the same way. The key difference is that IPv6 headers do not have the Don't Fragment option and so the flag is not set. Routers that support IPv6 will not fragment IPv6 packets, so if the test packets exceed the MTU, the routers drop the packets and send back corresponding ICMP messages without checking for a Don't Fragment flag. IPv6 PMTUD sends smaller and smaller test packets until the packets can traverse the entire network path, just like in IPv4.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is MSS?</h2>\n\n<p><a href='/learning/network-layer/what-is-mss/'>MSS</a> stands for maximum segment size. MSS is used by TCP at layer 4 of the Internet, the transport layer, instead of layer 3. MSS is only concerned with the size of the payload within each packet. It is calculated by subtracting the length of TCP and IP headers from MTU.</p>\n\n<p>While packets that exceed a router's MTU are either fragmented or dropped, packets that exceed the MSS are always dropped.</p>\n\n<p>To learn more about MTU and MSS, see <a href='/learning/network-layer/what-is-mss/'>What is MSS?</a></p>\n",
+				"availableLocales": null,
+				"localized": true,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "Translated for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "Translated for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "No Page for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": null
+				},
+				"proactivePopup": null,
+				"sidebarForm": null
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "4BW3y4hHsUKzo97TMhbpkk",
+			"pathname": "/learning/network-layer/what-is-mtu/",
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

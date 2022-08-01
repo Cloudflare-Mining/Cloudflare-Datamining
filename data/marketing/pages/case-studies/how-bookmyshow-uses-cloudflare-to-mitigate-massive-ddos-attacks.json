@@ -1,0 +1,86 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/how-bookmyshow-uses-cloudflare-to-mitigate-massive-ddos-attacks/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "How BookMyShow Uses Cloudflare To Mitigate Massive DDoS Attacks",
+				"contentfulId": "6a4KwqYrmxBp64XnpTNeEz",
+				"nameUrlSlug": "how-bookmyshow-uses-cloudflare-to-mitigate-massive-ddos-attacks",
+				"metaTags": {
+					"metaTitle": "How BookMyShow Uses Cloudflare To Mitigate Massive DDoS Attacks",
+					"metaDescription": "BookMyShow uses Cloudflare to mitigate massive DDoS attacks and improve website performance",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2020-01-21",
+				"homepageUrl": "https://in.bookmyshow.com/",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "BookMyShow uses Cloudflare to mitigate massive DDoS attacks and improve website performance",
+				"longDescription": "BookMyShow is India's largest ticketing company, with more than 60 million registered users and over 5 billion monthly pageviews. Learn how they use Cloudflare to mitigate DDoS attacks, deliver a highly performant website, and move business logic to the network edge.\n\n\n__Transcript__\n\n*Hi, we're Cloudflare. We're building one of the world's largest global cloud networks to help make the Internet faster, more secure and more reliable. Meet our customer BookMyShow. They've become India's largest ticketing platform thanks to its commitment to the customer experience and technological innovation.*\n\n__Viraj Patel, VP of Technology, BookMyShow:__ We are primarily a ticketing company. The numbers are really big. We have more than 60 million customers who are registered with us. There are around five billion screen views every month, 200 million tickets over the year. We think about what is the best for the customer. If we do not handle a customer's experience well, then they are not going to come back again. And BookMyShow is all about providing that experience.\n\n*As BookMyShow grew, so did the security threats it faced. That's when it turned to Cloudflare.*\n\n__Viraj:__ From a security point of view, we use more or less all the products and features that Cloudflare has. Cloudflare, today, plays the first level of defense for us.\n\n__Pranav Kapoor, DevOps Lead:__ One of the most interesting and \"aha\" moments was when we actually got a DDoS. And we were seeing traffic bursts up to 50 gigabits per second, 50 Gb per second. Usually we would go into panic mode and get downtime, but then all you got was an alert and we just checked it out and then we didn't have to do anything. We just sat there, looked at the traffic peak and then be in control.\n\n__Viraj:__ It just took less than a minute for Cloudflare to start blocking that traffic. Without Cloudflare we wouldn't have been able to easily manage this because even at a data center level, that kind of pipe — it's not easily available.\n\n__Pranav:__ We started with Cloudflare for security and I think that was the \"aha\" moment. We actually get more sleep now because a lot of the operational overhead is reduced.\n\n*With the attacks safely mitigated, BookMyShow found more ways to harness Cloudflare for better security, performance, and operational efficiency.*\n\n__Viraj:__ Once we came onboard the platform, we started seeing the advantage of the other functionalities and features. It was really, really easy to implement HTTP/2 when we decided to move towards that. Cloudflare Workers, which is the computing at the edge — we can move that business logic that we have written custom for our applications at the Cloudflare edge level.\n\n__Pranav:__ One of the most interesting things we liked about Cloudflare, was everything can be done by the API. Which makes almost zero manual work. That helps my team a lot because they don't really have to worry about what they're running, because they can see. They can run the test and then they know that they aren't gonna break anything.\n\n__Viraj:__ Our teams have been able to manage Cloudflare on their own for more or less anything and everything.\n\n*Cloudflare also empowers BookMyShow to manage its traffic across a complex, highly-performant global infrastructure.*\n\n__Viraj:__ We are running on, not only hybrid, we are running on hybrid and multi-cloud strategies. Cloudflare is the entry point for our customers. Whether it is a cloud in the backend or it is our own data center in the backend. Cloudflare is always the first point of contact. \n\nWe do load balancing as well, as we have multiple data centers running, data center selection happens on Cloudflare. It also gives us fine-grain control on how much traffic we can push to which data center, depending upon what is happening in that data center and what is the capacity of that data center. We believe that our applications and our data centers should be closest to the customers. Cloudflare just provides us the right tools to do that.\n\n*With Cloudflare, BookMyShow has been able to improve its security, performance, reliability and operational efficiency. With customers like BookMyShow, and over 26 million other domains that trust Cloudflare with their security and performance, we're making the Internet fast, secure and reliable for everyone. Cloudflare, helping build a better Internet.*",
+				"cloudflareStreamVideoId": "79cba13f16cde34956e20d64f404368c",
+				"keyResults": "BookMyShow uses Cloudflare to effortlessly mitigate DDoS attacks delivering traffic bursts of up to 50 gigabits per second.",
+				"relatedCaseStudies": [
+					{
+						"name": "lastminute.com",
+						"nameUrlSlug": "lastminute"
+					},
+					{
+						"name": "Wongnai",
+						"nameUrlSlug": "wongnai"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "DDoS Mitigation",
+						"url": "/ddos/"
+					},
+					{
+						"title": "Workers",
+						"url": "/products/cloudflare-workers/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": null,
+				"employeeQuoteText": null,
+				"employeeQuoteJobTitle": null,
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": {
+					"file": {
+						"publicURL": "[path]/BookMyShow_Video_case_study_thumbnail.png"
+					}
+				},
+				"logo": {
+					"file": {
+						"publicURL": "[path]/bookmyshowlogoresized.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "6a4KwqYrmxBp64XnpTNeEz",
+			"pathname": "/case-studies/how-bookmyshow-uses-cloudflare-to-mitigate-massive-ddos-attacks/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}

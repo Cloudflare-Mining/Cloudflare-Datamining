@@ -1,0 +1,90 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/lawrence-berkeley-national-laboratory/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Lawrence Berkeley National Laboratory",
+				"contentfulId": "4w3ETcy3zYd43N55Pw1h6u",
+				"nameUrlSlug": "lawrence-berkeley-national-laboratory",
+				"metaTags": {
+					"metaTitle": "Berkeley Lab Case Study",
+					"metaDescription": "Berkeley Lab Case Study",
+					"twitterCustomImage": {
+						"file": {
+							"publicURL": "[path]/berkeley_meta.png"
+						}
+					},
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/berkeley_meta.png"
+						}
+					},
+					"facebookCustomImage": {
+						"file": {
+							"publicURL": "[path]/berkeley_meta.png"
+						}
+					}
+				},
+				"orderDate": "2021-09-17",
+				"homepageUrl": "https://www.lbl.gov/",
+				"hideFromCaseStudiesPage": false,
+				"shortDescription": "Cloudflare’s security suite is an important component of Lawrence Berkeley National Laboratory’s security model",
+				"longDescription": "## __Lawrence Berkeley National Laboratory (Berkeley Lab) chooses Cloudflare as its Zero Trust security partner__\n\nLawrence Berkeley National Laboratory, otherwise known as Berkeley Lab, is a Department of Energy (DOE) National Laboratory, managed by the University of California.  Berkeley Lab conducts open scientific research intended for publication across both fundamental and applied scientific domains. The Lab is located adjacent to the University of California, Berkeley, and it is closely affiliated with the university. In addition to Berkeley Lab’s 5,000 employees, students and researchers from all over the world perform research on-site and electronically access the lab’s resources.\n\n### __Challenge: Secure a decentralized web server architecture and implement more rigorous application access policies__\n\nAlthough it conducts research for the U.S. DOE, Berkeley Lab more closely resembles a research and education institute, not a government agency. While other government organizations focus heavily on restricting access, Berkeley Lab’s goal is to make its information as accessible as possible to the researchers who need it, while at the same time protecting its systems from abuse.\n\nBerkeley Lab’s IT infrastructure is decentralized, with thousands of on-prem and cloud web servers operated by and for different scientific projects and collaborations. For some time, Berkeley Lab was challenged by visibility into cloud assets, in particular web servers that were subject to defacements or other attacks.  \n\nBerkeley Lab attempted to mitigate the attacks through penetration testing and vulnerability scanning, but these methods proved resource intensive. After considering security tools from several vendors, Berkeley Lab signed up for Cloudflare’s security and performance suite, which includes the Cloudflare Web Application Firewall (WAF), Cloudflare Content Delivery Network (CDN) and Load Balancing.\n\nHowever, that was just Phase 1, and Berkeley Lab turned to Cloudflare again when new challenges emerged and existing Cloudflare services offered an easy opportunity to address them:\n\n- Cloudflare Access, which uses a Zero Trust model to help teams secure enterprise applications with better performance, security, and privacy than a traditional VPN.\n- Cloudflare Rate Limiting, which helps protect against Distributed-Denial-of-Service attacks, vulnerability scanning, and reconnaissance.\n- Super Bot Fight Mode, which can block malicious automated attacks early, inexpensively, and at scale, giving Cloudflare-protected resources \"herd immunity\" against them.\n\n### __Cloudflare WAF provides Berkeley Lab with complete visibility and control over hundreds of web servers__\n\nThe Cloudflare WAF enables Berkeley Lab to monitor and control traffic to its cloud-hosted resources, including traditional VMs, SaaS, and serverless apps as well as on-premises devices. Berkeley Lab uses the WAF as a reverse proxy for both HTTP and HTTPS, which has allowed them to regain critical visibility that's been lost with encryption. Because the lab is proxying the web server to the client, they can also terminate TLS connections at Cloudflare's edge, enabling them to meet BOD 18-01 requirements without making changes at their origin servers.\n\nThe WAF blocks over 2 million threats each month from reaching Berkeley Lab’s primary domain, lbl.gov. In addition, the WAF’s logging capabilities are essential to securing the lab’s extensive distributed data environment, since log data can be fed directly into its intrusion detection system (IDS).\n\nCloudflare’s logging capabilities also aligned with the lab’s goal of pervasive visibility across their systems\n\nBerkeley Labs still does automated security scanning, but their web environment is constantly changing. Each change could introduce a vulnerability, and they are unable to scan every server every day. By using a cloud-based WAF, the lab is able to stop cybercriminals from taking advantage of vulnerabilities they haven’t yet found, which lets them be more proactive than reactive with their security.\n\n### __Cloudflare Access supports Berkeley Lab’s Zero Trust architecture__\n\nPrior to implementing Cloudflare Access, employees could only access certain self-hosted tools - like Berkeley Lab’s office supply procurement system - on-premises. This became problematic when the COVID-19 pandemic forced more employees to work remotely, and more users were relying on the VPN for remote application access. \n\nBerkeley Lab still offers a full-tunnel VPN today for visibility purposes, but Cloudflare Access is being used to incrementally reduce reliance on it for application access. Critical enterprise applications ranging from the procurement system to HR information system, as well as groundbreaking scientific projects are protected by Cloudflare Access, and users don’t need a VPN to access them. Instead, users connect to these resources through a regular web browser. As requests are routed and accelerated through Cloudflare’s edge, they are evaluated against Zero Trust rules incorporating signals from Berkeley Lab’s identity providers, devices, and other contexts. \n\nCloudflare Access enables employees to easily and securely access tools like procurement systems from any location, through any web browser, and it lets Berkeley Lab monitor their usage of protected systems. Their employees were able to migrate seamlessly from their VPN to Access without much notice.\n\nCloudflare Access is integrated with their identity provider, which allows Berkeley Lab to enable multi-factor authentication (MFA) on legacy applications that didn’t natively support it. This helped them get ahead of the curve on compliance with the [White House Executive Order that mandates MFA](https://www.whitehouse.gov/briefing-room/presidential-actions/2021/05/12/executive-order-on-improving-the-nations-cybersecurity/) for federal agencies and contractors. MFA is also a key component of a Zero Trust security architecture.\n\nBerkeley Lab had been thinking about Zero Trust Architectures for a very long time, and Cloudflare Access was able to give them the ability to enact it. \n\nBerkeley Lab is still in the process of replacing its VPN with Cloudflare Access throughout the organization. The Lab predicts that within a year, Access will have replaced their VPN for the vast majority of users. \n\nBy combining Berkeley Lab’s existing protocols with Access and the rest of the Cloudflare security suite, they are able to make good progress on their zero-trust journey.\n\n### __Cloudflare’s security and performance solutions are deployed organization-wide__\n\nIn addition to the Cloudflare WAF and Access, Berkeley Lab uses Cloudflare Rate Limiting, Super Bot Fight Mode, and Cloudflare’s performance suite, which includes the Cloudflare CDN and Load Balancing.\n\nCloudflare Rate Limiting and Cloudflare Super Bot Fight Mode enable Berkeley Lab to prevent automated traffic and malicious bots from attacking their systems and straining network resources.\n\nCloudflare’s security and performance solutions are deployed organization-wide. Berkeley Lab’s business systems group, which operates the human resources, finance, and other enterprise systems, used Cloudflare Load Balancing to replace on-premises hardware that was expensive, time-consuming to manage, and represented a single point of failure.\n\nThe Cloudflare CDN serves approximately 2TB of Berkeley Lab’s traffic from cache each month, saving the lab valuable bandwidth that its researchers can use for compute-intensive research activities.\n\nAfter implementing the Cloudflare CDN and Load Balancing, the lab was able to see significant improvements in their WordPress hosts. \n",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "- Cloudflare WAF blocks over 2 million threats each month from reaching the Lab’s primary domain, lbl.gov.\n\n- Cloudflare Access enables Zero Trust rules and multi-factor authentication, saving the Lab considerable cost on implementing MFA for legacy and cloud applications.\n\n- Cloudflare Rate Limiting and Super Bot Fight Mode empowers the Lab to stop cybercriminals from probing web applications for vulnerabilities.",
+				"relatedCaseStudies": [
+					{
+						"name": "OneTrust",
+						"nameUrlSlug": "onetrust"
+					},
+					{
+						"name": "Science Museum of Minnesota",
+						"nameUrlSlug": "science-museum-of-minnesota"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Access",
+						"url": "/teams/access"
+					},
+					{
+						"title": "Web Application Firewall (WAF) ",
+						"url": "/waf/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": null,
+				"employeeQuoteText": null,
+				"employeeQuoteJobTitle": null,
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/5_BL_Horiz_Tile_rgb.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "4w3ETcy3zYd43N55Pw1h6u",
+			"pathname": "/case-studies/lawrence-berkeley-national-laboratory/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}

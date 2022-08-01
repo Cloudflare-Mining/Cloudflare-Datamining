@@ -1,0 +1,860 @@
+{
+	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
+	"path": "/learning/access-management/vpn-speed/",
+	"result": {
+		"data": {
+			"learningCenterArticle": {
+				"contentTypeId": "learningCenterArticle",
+				"contentfulId": "BN7tH9TXNUy0I5FRiAROS",
+				"urlSlug": "access-management/vpn-speed",
+				"metaTags": {
+					"metaTitle": "How VPNs affect Internet speed",
+					"metaDescription": "Even a fast VPN can cause latency. VPNs can noticeably slow down Internet performance, but in some cases VPNs can also speed up Internet traffic.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"metaTitle": "How VPNs affect Internet speed",
+				"metaDescription": "Even a fast VPN can cause latency. VPNs can noticeably slow down Internet performance, but in some cases VPNs can also speed up Internet traffic.",
+				"learningCenterArticleSubHeader": {
+					"contentTypeId": "learningCenterArticleSubHeader",
+					"contentfulId": "X61tS7cHdYUy1Jpp9N5Mb",
+					"learningCenterName": "accessmanagement",
+					"links": [
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "LCfYTn7Kq9EqSCJhxFnw1",
+							"displayText": "What is IAM? ",
+							"url": "/learning/access-management/what-is-identity-and-access-management/"
+						},
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "5TtqrotpypiEg485b2l2tf",
+							"displayText": "What is SASE?",
+							"url": "/learning/access-management/what-is-sase/"
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "3IwB78Wq3DsbhUeCBPNs2L",
+							"name": "Access Management Header: Zero Trust Security",
+							"displayText": "Zero Trust Security",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "11BjITFi6r2hDV21rZPAFR",
+									"displayText": "Zero Trust security",
+									"url": "/learning/security/glossary/what-is-zero-trust/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "sWOO2Fdv8UREvRW1KEYhb",
+									"displayText": "What is ZTNA?",
+									"url": "/learning/access-management/what-is-ztna/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1B9kOyuZZEp1rlqwt8EFOG",
+									"displayText": "Castle-and-Moat Security",
+									"url": "/learning/access-management/castle-and-moat-network-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "33vSzdM0dtfaTfjERoM5Vw",
+									"displayText": "Principle of Least Privilege",
+									"url": "/learning/access-management/principle-of-least-privilege/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "24MOZlRUGXzizkNkiZSWPV",
+									"displayText": "Security Service Edge (SSE)",
+									"url": "/learning/access-management/security-service-edge-sse/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "7GhMQh5cXBGTcKQlfZLvOE",
+							"name": "Access Management Header: Authentication",
+							"displayText": "Authentication",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "Y3y79iQL0H3GMcN0bA3kL",
+									"displayText": "What Is Authentication?",
+									"url": "/learning/access-management/what-is-authentication/ "
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7p87aHcK9Ie2dylUSFYG9T",
+									"displayText": "Two-factor authentication ",
+									"url": "/learning/access-management/what-is-two-factor-authentication/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7ChaKsjsdOTtnIStObr22W",
+									"displayText": "Multi-factor authentication",
+									"url": "/learning/access-management/what-is-multi-factor-authentication/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5GUCQ6GwyX4OAAFC1H3yi5",
+									"displayText": "What is SSO?",
+									"url": "/learning/access-management/what-is-sso/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5okAIdYhmQMh9bgKCJBLYR",
+									"displayText": "What is SAML?",
+									"url": "/learning/access-management/what-is-saml/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "WR4vyyyFh6xNl1MbHazzS",
+									"displayText": "What is OAuth?",
+									"url": "/learning/access-management/what-is-oauth/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6tZm4KTLZULasghLMMgjvX",
+									"displayText": "Identity provider (IdP)",
+									"url": "/learning/access-management/what-is-an-identity-provider/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1z7vN3ASaGLD3mx2NLOLG7",
+									"displayText": "Identity as a Service",
+									"url": "/learning/access-management/what-is-identity-as-a-service/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4QoH8dVxKKYSsfePjHNKxD",
+									"displayText": "Phishing Attack",
+									"url": "/learning/access-management/phishing-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7EcaLFFtsZb1SNgjysiTB7",
+									"displayText": "Spear Phishing",
+									"url": "/learning/access-management/spear-phishing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4MTr0HX43ACfOcNtiwUyjF",
+									"displayText": "Mutual Authentication",
+									"url": "/learning/access-management/what-is-mutual-authentication/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "60GutG8GFeUNrEmqh7TtXV",
+									"displayText": "Mutual TLS (mTLS)",
+									"url": "/learning/access-management/what-is-mutual-tls/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "hlv2Y3rMn5j2y0AdQyQfH",
+									"displayText": "Authn vs. Authz",
+									"url": "/learning/access-management/authn-vs-authz/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5YvhlZgd3eNNrY5vnE5sEw",
+									"displayText": "Token-Based Authentication",
+									"url": "/learning/access-management/token-based-authentication/ "
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "qo6Z0A22GGHuaNqiVcaIx",
+							"name": "Access Management Header: Remote Access",
+							"displayText": "Remote Access",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4FKVZaN6mpIm5iyZ7Lcxs5",
+									"displayText": "What's a VPN? ",
+									"url": "/learning/access-management/what-is-a-vpn/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5DJAZGS3jg3hVYcT1Wian0",
+									"displayText": "VPN Security ",
+									"url": "/learning/access-management/vpn-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5RExMXWreKUk2vNcVq10Gm",
+									"displayText": "VPN Speed ",
+									"url": "/learning/access-management/vpn-speed/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7lPlbx9M7j4TywvoeOXPV0",
+									"displayText": "Business VPN ",
+									"url": "/learning/access-management/what-is-a-business-vpn/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4CBC8Nj1Z2KHBHIHwmlCcC",
+									"displayText": "GDPR remote access",
+									"url": "/learning/access-management/gdpr-remote-access/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3hLfR6mFp6whoN4nymijCN",
+									"displayText": "Remote workforce security",
+									"url": "/learning/access-management/remote-workforce-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3q0Nc1zR2FC7Jl6LgTCOBe",
+									"displayText": "What is the RDP?",
+									"url": "/learning/access-management/what-is-the-remote-desktop-protocol/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3A6ToMdMAXKrvE4tXy8A5C",
+									"displayText": "RDP Security",
+									"url": "/learning/access-management/rdp-security-risks/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "4fsKOVXIb6uDYmCQOVdlMl",
+							"name": "Access Management Header: Access Glossary",
+							"displayText": "Access Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7qscNda3QrDnyAZknHtbLZ",
+									"displayText": "Access control",
+									"url": "/learning/access-management/what-is-access-control/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "37kb391xJxs7bHH8zaLr3l",
+									"displayText": "Role-based access control (RBAC)",
+									"url": "/learning/access-management/role-based-access-control-rbac/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "65VABQOAzccr6p12Tlosw4",
+									"displayText": "Secure web gateway",
+									"url": "/learning/access-management/what-is-a-secure-web-gateway/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "s0e9m5se3XHJHiml9ZU55",
+									"displayText": "What is a CASB? ",
+									"url": "/learning/access-management/what-is-a-casb/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6XvpGQTupqKx4DjPEcOLMj",
+									"displayText": "DNS filtering",
+									"url": "/learning/access-management/what-is-dns-filtering/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3nmpmlsuL3LG41i2zeS5Zq",
+									"displayText": "URL filtering",
+									"url": "/learning/access-management/what-is-url-filtering/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4adDJvliSohgoEK3oT5uaG",
+									"displayText": "Data Loss Prevention (DLP) ",
+									"url": "/learning/access-management/what-is-dlp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3bxDvM2EGcmvwU5oXuL5ny",
+									"displayText": "Software-defined perimeter",
+									"url": "/learning/access-management/software-defined-perimeter/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2VphPHvft5RelO7SAYrrOq",
+									"displayText": "Network Perimeter",
+									"url": "/learning/access-management/what-is-the-network-perimeter/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4uvJAFlB8YFjUORloRPWUO",
+									"displayText": "Browser Isolation",
+									"url": "/learning/access-management/what-is-browser-isolation/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6OT3YMHacbSCBJMO2bBivb",
+									"displayText": "What is an Insider Threat?",
+									"url": "/learning/access-management/what-is-an-insider-threat"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1WkQUvxqzNTr3WgBWuDrek",
+									"displayText": "What is shadow IT?",
+									"url": "/learning/access-management/what-is-shadow-it"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2R63DUgV0F0X6BJ7Esmulw",
+									"displayText": "Identity",
+									"url": "/learning/access-management/what-is-identity/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "1H8EbGxdv2N9Ak908AaBC5",
+							"name": "Accesss Management: Insights",
+							"displayText": "Insights",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1wiWDzIJ6wU4wdgrCCsqKI",
+									"displayText": "Accelerating the journey to SASE",
+									"url": "https://www.cloudflare.com/learning/insights-sase-network-transformation/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "BkQtUObQvEWnAoECA8gEX",
+									"displayText": "Extending Zero Trust to the Internet browser",
+									"url": "https://www.cloudflare.com/learning/insights-zero-trust-browsing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1Eqcf3fqumB1J3IIf1aeT7",
+									"displayText": "Making the case for SASE",
+									"url": "https://www.cloudflare.com/learning/insights-case-for-sase/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "jQp53tpsRvjsWJjYlZDyW",
+									"displayText": "The future of networking",
+									"url": "https://www.cloudflare.com/learning/insights-future-of-networking"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4kyyAceZojTXyGrrNyQv2E",
+									"displayText": "A new framework for network security",
+									"url": "https://www.cloudflare.com/insights-sase-framework"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "37qx4iYUDgPdHJaxEAyIxH",
+									"displayText": "Ransomware attackers escalate extortion tactics",
+									"url": "https://www.cloudflare.com/learning/insights-ransomware-extortion/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1mVhbSh7k2qiuul5gDOmKa",
+									"displayText": "The rise of Zero Trust Network Access",
+									"url": "https://www.cloudflare.com/insights-zero-trust-network-access/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7f80AUP3KPhx1fMsJMuW4T",
+									"displayText": "Securing the distributed enterprise for the long-term",
+									"url": "https://www.cloudflare.com/insights-securing-distributed-enterprise/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5eUpBgLgoPxWdadu3NiMlC",
+									"displayText": "The software supply chain is under attack",
+									"url": "https://www.cloudflare.com/learning/insights-supply-chain-attacks/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6XMprVo1l7XBpfbts9z7Ys",
+									"displayText": "The growing cost of shadow IT",
+									"url": "https://www.cloudflare.com/learning/insights-shadow-it/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5h0xL2XQThUr88KvQQNtET",
+									"displayText": "Mitigating the risk of malicious insiders in the hybrid era",
+									"url": "https://www.cloudflare.com/learning/insights-malicious-insiders/"
+								}
+							]
+						}
+					]
+				},
+				"learningCenterArticleFooter": {
+					"contentTypeId": "learningCenterArticleFooter",
+					"contentfulId": "51K5Pmi401vClHlANqC7rS",
+					"learningCenterName": "accessmanagement",
+					"column1Title": "About Access Management ",
+					"column1": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "57e1z1QwW5UVeDoicZR3DI",
+						"name": "Access Management Footer - About",
+						"displayText": "About Access Management",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "LCfYTn7Kq9EqSCJhxFnw1",
+								"displayText": "What is IAM? ",
+								"url": "/learning/access-management/what-is-identity-and-access-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7qscNda3QrDnyAZknHtbLZ",
+								"displayText": "Access control",
+								"url": "/learning/access-management/what-is-access-control/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2VphPHvft5RelO7SAYrrOq",
+								"displayText": "Network Perimeter",
+								"url": "/learning/access-management/what-is-the-network-perimeter/"
+							}
+						]
+					},
+					"column2Title": "About Zero Trust",
+					"column2": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "64w0aoxQddRHtzH1Ct92rY",
+						"name": "Access Management Footer - Zero Trust",
+						"displayText": "About Zero Trust",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "11BjITFi6r2hDV21rZPAFR",
+								"displayText": "Zero Trust security",
+								"url": "/learning/security/glossary/what-is-zero-trust/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7p87aHcK9Ie2dylUSFYG9T",
+								"displayText": "Two-factor authentication ",
+								"url": "/learning/access-management/what-is-two-factor-authentication/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "37kb391xJxs7bHH8zaLr3l",
+								"displayText": "Role-based access control (RBAC)",
+								"url": "/learning/access-management/role-based-access-control-rbac/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7ChaKsjsdOTtnIStObr22W",
+								"displayText": "Multi-factor authentication",
+								"url": "/learning/access-management/what-is-multi-factor-authentication/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5okAIdYhmQMh9bgKCJBLYR",
+								"displayText": "What is SAML?",
+								"url": "/learning/access-management/what-is-saml/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3hLfR6mFp6whoN4nymijCN",
+								"displayText": "Remote workforce security",
+								"url": "/learning/access-management/remote-workforce-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "WR4vyyyFh6xNl1MbHazzS",
+								"displayText": "What is OAuth?",
+								"url": "/learning/access-management/what-is-oauth/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4uvJAFlB8YFjUORloRPWUO",
+								"displayText": "Browser Isolation",
+								"url": "/learning/access-management/what-is-browser-isolation/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1B9kOyuZZEp1rlqwt8EFOG",
+								"displayText": "Castle-and-Moat Security",
+								"url": "/learning/access-management/castle-and-moat-network-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "60GutG8GFeUNrEmqh7TtXV",
+								"displayText": "Mutual TLS (mTLS)",
+								"url": "/learning/access-management/what-is-mutual-tls/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "sWOO2Fdv8UREvRW1KEYhb",
+								"displayText": "What is ZTNA?",
+								"url": "/learning/access-management/what-is-ztna/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "33vSzdM0dtfaTfjERoM5Vw",
+								"displayText": "Principle of Least Privilege",
+								"url": "/learning/access-management/principle-of-least-privilege/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "24MOZlRUGXzizkNkiZSWPV",
+								"displayText": "Security Service Edge (SSE)",
+								"url": "/learning/access-management/security-service-edge-sse/"
+							}
+						]
+					},
+					"column3Title": "VPN Resources",
+					"column3": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "2l0ZQknxtExdhOWRd1S9ts",
+						"name": "Access Management Footer - VPN Resources",
+						"displayText": "VPN Resources",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4FKVZaN6mpIm5iyZ7Lcxs5",
+								"displayText": "What's a VPN? ",
+								"url": "/learning/access-management/what-is-a-vpn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7lPlbx9M7j4TywvoeOXPV0",
+								"displayText": "Business VPN ",
+								"url": "/learning/access-management/what-is-a-business-vpn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5DJAZGS3jg3hVYcT1Wian0",
+								"displayText": "VPN Security ",
+								"url": "/learning/access-management/vpn-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5RExMXWreKUk2vNcVq10Gm",
+								"displayText": "VPN Speed ",
+								"url": "/learning/access-management/vpn-speed/"
+							}
+						]
+					},
+					"column4Title": "Glossary",
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "3Cr7XBFyYV6UPH671HUybI",
+						"name": "Access Management Footer - Glossary ",
+						"displayText": "Glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4adDJvliSohgoEK3oT5uaG",
+								"displayText": "Data Loss Prevention (DLP) ",
+								"url": "/learning/access-management/what-is-dlp/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "s0e9m5se3XHJHiml9ZU55",
+								"displayText": "What is a CASB? ",
+								"url": "/learning/access-management/what-is-a-casb/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "65VABQOAzccr6p12Tlosw4",
+								"displayText": "Secure web gateway",
+								"url": "/learning/access-management/what-is-a-secure-web-gateway/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4QoH8dVxKKYSsfePjHNKxD",
+								"displayText": "Phishing Attack",
+								"url": "/learning/access-management/phishing-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3bxDvM2EGcmvwU5oXuL5ny",
+								"displayText": "Software-defined perimeter",
+								"url": "/learning/access-management/software-defined-perimeter/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5GUCQ6GwyX4OAAFC1H3yi5",
+								"displayText": "What is SSO?",
+								"url": "/learning/access-management/what-is-sso/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6XvpGQTupqKx4DjPEcOLMj",
+								"displayText": "DNS filtering",
+								"url": "/learning/access-management/what-is-dns-filtering/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3nmpmlsuL3LG41i2zeS5Zq",
+								"displayText": "URL filtering",
+								"url": "/learning/access-management/what-is-url-filtering/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4CBC8Nj1Z2KHBHIHwmlCcC",
+								"displayText": "GDPR remote access",
+								"url": "/learning/access-management/gdpr-remote-access/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3q0Nc1zR2FC7Jl6LgTCOBe",
+								"displayText": "What is the RDP?",
+								"url": "/learning/access-management/what-is-the-remote-desktop-protocol/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3A6ToMdMAXKrvE4tXy8A5C",
+								"displayText": "RDP Security",
+								"url": "/learning/access-management/rdp-security-risks/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6tZm4KTLZULasghLMMgjvX",
+								"displayText": "Identity provider (IdP)",
+								"url": "/learning/access-management/what-is-an-identity-provider/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z7vN3ASaGLD3mx2NLOLG7",
+								"displayText": "Identity as a Service",
+								"url": "/learning/access-management/what-is-identity-as-a-service/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6OT3YMHacbSCBJMO2bBivb",
+								"displayText": "What is an Insider Threat?",
+								"url": "/learning/access-management/what-is-an-insider-threat"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4MTr0HX43ACfOcNtiwUyjF",
+								"displayText": "Mutual Authentication",
+								"url": "/learning/access-management/what-is-mutual-authentication/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7EcaLFFtsZb1SNgjysiTB7",
+								"displayText": "Spear Phishing",
+								"url": "/learning/access-management/spear-phishing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "hlv2Y3rMn5j2y0AdQyQfH",
+								"displayText": "Authn vs. Authz",
+								"url": "/learning/access-management/authn-vs-authz/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1WkQUvxqzNTr3WgBWuDrek",
+								"displayText": "What is shadow IT?",
+								"url": "/learning/access-management/what-is-shadow-it"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2R63DUgV0F0X6BJ7Esmulw",
+								"displayText": "Identity",
+								"url": "/learning/access-management/what-is-identity/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Y3y79iQL0H3GMcN0bA3kL",
+								"displayText": "What Is Authentication?",
+								"url": "/learning/access-management/what-is-authentication/ "
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5YvhlZgd3eNNrY5vnE5sEw",
+								"displayText": "Token-Based Authentication",
+								"url": "/learning/access-management/token-based-authentication/ "
+							}
+						]
+					},
+					"column5Title": "Learning Center Navigation",
+					"column5": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "5620fCE1hx2KRLHi2SY5g9",
+						"name": "Access Management Footer - Learning Center Nav",
+						"displayText": "Learning Center Navigation ",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2hdSVoYA5asSIG0U2ae20c",
+								"displayText": "Learning Center Home",
+								"url": "/learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "56Y6OytBNgNoNDWQL2ezlf",
+								"displayText": "DDoS Learning Center",
+								"url": "/learning/ddos/what-is-a-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6DGcnYIMM0eCGwqAKu2ECO",
+								"displayText": "CDN Learning Center",
+								"url": "/learning/cdn/what-is-a-cdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Ra0qmFJ1uewk2MYscW8KI",
+								"displayText": "DNS Learning Center",
+								"url": "/learning/dns/what-is-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z3UC9tP1Kjk85BX5zSGPY",
+								"displayText": "Serverless Learning Center",
+								"url": "/learning/serverless/what-is-serverless/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52V7iI9YriJ0En2SGmEXz5",
+								"displayText": "SSL Learning Center",
+								"url": "/learning/ssl/what-is-ssl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1yItw6W6SsM2Y0Wuq6Y2c6",
+								"displayText": "Security Learning Center",
+								"url": "/learning/security/what-is-web-application-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q67XLnKqKhfmDJR4q9hJT",
+								"displayText": "Performance Learning Center",
+								"url": "/learning/performance/why-site-speed-matters/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7jgqDUFFzaLuKrsaBTLdV0",
+								"displayText": "Cloud Learning Center",
+								"url": "/learning/cloud/what-is-the-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7D22pOfjb98KXcnAJyJFCX",
+								"displayText": "Bots Learning Center",
+								"url": "/learning/bots/what-is-a-bot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3jjEMuuLrCwhRidjG5kglM",
+								"displayText": "Network Layer Learning Center",
+								"url": "/learning/network-layer/what-is-the-network-layer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RvS0l0m86G1VISDrEvlJb",
+								"displayText": "Privacy Learning Center",
+								"url": "/learning/privacy/what-is-data-privacy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "MytksT5WU5mh863BQYEkj",
+								"displayText": "Video Streaming Learning Center",
+								"url": "/learning/video/what-is-streaming/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5TtqrotpypiEg485b2l2tf",
+								"displayText": "What is SASE?",
+								"url": "/learning/access-management/what-is-sase/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
+								"displayText": "Email Security Learning Center",
+								"url": "/learning/email-security/what-is-email-security/"
+							}
+						]
+					}
+				},
+				"header": "How VPNs affect Internet speed",
+				"blurbSubHeader": "VPNs encrypt traffic to make a connection safe and private, but this can create a tradeoff between security and performance, as some VPN features can introduce latency.",
+				"objectivesHeader": "VPN Speed",
+				"objectivesList": [
+					"Define ‘VPN’ and ‘latency’",
+					"Understand how VPNs can create latency",
+					"Explore alternatives to VPNs"
+				],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "4FKVZaN6mpIm5iyZ7Lcxs5",
+						"displayText": "What's a VPN? ",
+						"url": "/learning/access-management/what-is-a-vpn/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "5DJAZGS3jg3hVYcT1Wian0",
+						"displayText": "VPN Security ",
+						"url": "/learning/access-management/vpn-security/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "7lPlbx9M7j4TywvoeOXPV0",
+						"displayText": "Business VPN ",
+						"url": "/learning/access-management/what-is-a-business-vpn/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "7qscNda3QrDnyAZknHtbLZ",
+						"displayText": "Access control",
+						"url": "/learning/access-management/what-is-access-control/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "11BjITFi6r2hDV21rZPAFR",
+						"displayText": "Zero Trust security",
+						"url": "/learning/security/glossary/what-is-zero-trust/"
+					}
+				],
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is a VPN?</h2>\n\n<p>A <a href='/learning/access-management/what-is-a-vpn/'>virtual private network (VPN)</a> is an Internet security service that allows users to access the Internet as though they were connected to a private network. VPNs <a href='/learning/ssl/what-is-encryption/'>encrypt</a> Internet communications and keep user activity anonymous.</p>\n\n<img class=\"responsive-image\" title=\"what is a vpn\" alt=\"virtual private network (VPN)\" src=\"/img/learning/security/vpn/what-is-a-vpn/what-is-a-vpn.svg\" itemprop=\"image\">\n\n<p>People use VPNs when they need an extra layer of privacy and security on the Internet; for this reason, VPNs are very popular with companies that have <a href='/learning/access-management/remote-workforce-security/'>remote or globally distributed workforces</a>. But VPNs have a built-in drawback: they can often create latency.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is latency?</h2>\n\n<p>On the Internet, <a href='/learning/performance/glossary/what-is-latency/'>latency</a> refers to the amount of time between a user action and a resulting response —for instance, the delay between when a user clicks a link to view an image and when the browser displays that image. Suppose Bob clicks a link and it takes several seconds before the image loads. In this case, Bob’s request is experiencing significant latency.</p>\n\n<img class=\"responsive-image\" title=\"What is Latency?\" alt=\"What is Latency?\" src=\"/img/learning/performance/glossary/what-is-latency/what-is-latency.svg\" itemprop=\"image\">\n\n<p>One of the primary causes of Internet latency is the physical distance between locations where data is accessed and delivered. When a user makes an Internet request, the farther the request and subsequent response have to travel, the more latency the user will experience. For example, if Alice in California makes a request to a website that has its content in a <a href='/learning/cdn/what-is-a-cdn/'>CDN</a> server a few miles away, the request and response will be very fast because there is only a short distance to cover.</p>\n\n<p>However, if Alice makes a request to a website server located in South Korea, the request and response will take significantly longer. Much like taking an international flight with many connections along the way, each request and response must travel through a series of <a href='/learning/network-layer/what-is-a-router/'>routers</a> as it travels from point A to point B. Each of these ‘hops’ from one router to another introduces more latency. <a href='/learning/performance/glossary/what-is-latency/'>Learn more about latency >></a></p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How do VPNs increase latency?</h2>\n\n<h4 class='learning-content-h4'>Increased travel time</h4>\n\n<p>VPNs can increase latency by introducing extra travel time for requests and responses. For example, suppose Bob is a remote employee in Oregon and he uses a Texas-based VPN service to connect to his corporate network. Every time Bob’s computer communicates over the Internet, it must send a request all the way to Texas, and then his VPN service will decrypt the request and forward it to the web server. The web server will then send a response back to the VPN server in Texas, and finally the VPN will encrypt this response and send it to Bob in Oregon.</p>\n\n<p>This means even if Bob is trying to communicate with a <a href='/learning/cdn/glossary/data-center/'>data center</a> a few miles from his home, his request will have to travel all the way from Oregon to Texas and back again, and so will the response. This is known as the trombone effect, and it can introduce a lot of latency.</p>\n\n<img class=\"responsive-image\" title=\"The Trombone Effect\" alt=\"The Trombone Effect\" src=\"/img/learning/cdn/glossary/IxP/trombone-effect.png\" itemprop=\"image\">\n\n<h4 class='learning-content-h4'>Server load</h4>\n\n<p>Server load can also increase latency, and connecting to a VPN introduces a new opportunity for users to experience server load issues. Suppose Alice is connecting to a VPN server at the same time as 1,000 other users, and the server only has enough capacity to handle 300 requests at a time. The server will likely get overloaded and start queueing or dropping requests, slowing load times for Alice and many of the VPN’s other users. This experience is especially common with free and discount VPN service.</p>\n\n<h4 class='learning-content-h4'>Encryption</h4>\n\n<p>With a VPN, all communication between the user and the VPN is encrypted. The encryption process takes time, and depending on the type of encryption used, this may add noticeable latency to Internet communications. There is a tradeoff between VPN encryption strength and latency; typically, the most secure encryption protocols are more time-consuming and create the greatest amount of latency. (It should be noted that some newer encryption protocols such as TLS 1.3 aim to correct this by speeding up the encryption process.)</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">IPsec vs SSL VPN performance</h2>\n\n<p>The two most popular encryption protocols used by VPNs are <a href='/learning/network-layer/what-is-ipsec/'>IPsec</a>, which runs on the network layer of <a href='/learning/ddos/glossary/open-systems-interconnection-model-osi/'>the OSI model</a>, and <a href='/learning/ssl/what-is-ssl/'>SSL</a> (also known as <a href='/learning/ssl/transport-layer-security-tls/'>TLS</a>), which runs on the application layer. When choosing a VPN provider, customers will have to decide which protocol they prefer.</p>\n\n<p>IPsec and SSL provide very similar <a href='/learning/performance/why-site-speed-matters/'>performance</a> rates, but the IKEv2/IPSec protocol provides slightly faster connection negotiation speeds, giving it a slight performance edge.</p>\n\n<p>One caveat here is that SSL VPNs may perform better when there are <a href='/learning/security/what-is-a-firewall/'>firewalls</a> involved. Since SSL VPN traffic is indistinguishable from normal <a href='/learning/ssl/what-is-https/'>HTTPS</a> Internet traffic, it is less likely to get blocked or <a href='/learning/bots/what-is-rate-limiting/'>rate limited</a> by a firewall.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Can a VPN improve Internet speed?</h2>\n\n<p>Under specific circumstances, VPNs can increase speeds for certain services. ISPs sometimes throttle, or artificially slow down, specific types of traffic; for example, several major ISPs have throttled streaming entertainment services like Netflix. If an ISP throttles communication speeds with a specific service, a VPN could circumvent this throttling, because the VPN encryption will prevent the ISP from knowing which services the user is communicating with. </p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Is there a faster alternative to a VPN?</h2>\n\n<p><a href='https://teams.cloudflare.com/access/'>Cloudflare Access</a> is an <a href='/learning/access-management/what-is-identity-and-access-management/'>identity and access management (IAM)</a> product that monitors user access to any domain, application, or path hosted on Cloudflare. It integrates with <a href='/learning/access-management/what-is-sso/'>single sign-on (SSO)</a> (identity) providers like Okta and Google Auth while allowing administrators to alter and customize user permissions.</p>\n\n<p>Many businesses are starting to use remote access services  to replace their <a href='/learning/access-management/what-is-a-business-vpn/'>corporate VPNs</a>, because they are much easier to use and do not encounter al ofl the same latency issues as VPNs. Since Cloudflare Access leverages Cloudflare's <a href='/network/'>global network</a>, customers can expect speedy performance from anywhere in the world, integrated with a powerful <a href='/learning/security/glossary/what-is-zero-trust/'>zero trust security</a> solution. To get started with a free version of Cloudflare Access, see our <a href='https://developers.cloudflare.com/cloudflare-one/setup' target='_blank'>Developer documentation</a>.</p>\n",
+				"availableLocales": null,
+				"localized": true,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "No Page for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": null
+				},
+				"proactivePopup": null,
+				"sidebarForm": null
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "BN7tH9TXNUy0I5FRiAROS",
+			"pathname": "/learning/access-management/vpn-speed/",
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

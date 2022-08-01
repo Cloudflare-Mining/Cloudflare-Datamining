@@ -1,0 +1,86 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/hotelurbano/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Hotel Urbano",
+				"contentfulId": "1hAu2M4cfwACIMWqAOG8o6",
+				"nameUrlSlug": "hotelurbano",
+				"metaTags": {
+					"metaTitle": "Hotel Urbano",
+					"metaDescription": "Hotel Urbano manages massive Black Friday traffic load with Cloudflare.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2018-05-20",
+				"homepageUrl": "https://www.hotelurbano.com/",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "Hotel Urbano manages massive Black Friday traffic load with Cloudflare.",
+				"longDescription": "![hotelurbano-graphic](//cf-assets.www.cloudflare.com/slt3lc6tev37/6Jn6juyhG0es2kAmKOCWwW/cf82fc062050745bf76821ec720c83a6/hotelurbano-graphic.png)\n\n[Hotel Urbano](https://www.hotelurbano.com/) enables travelers to find and reserve accommodations and activities online. The platform promotes tourist destinations and assists entrepreneurs developing travel and leisure services throughout Brazil and Latin America. The more hotels, packages, and activities that Hotel Urbano can offer through its platform, the more consumers will be interested in the service. That's why it is so important for them to have the best technology behind their platform so users have an enjoyable experience and providers sell more packages.\n\n__Hotel Urbano’s Challenge: Bolstering for Black Friday Web Traffic__\n\nThis past Black Friday Hotel Urbano was hopeful that their promotions would drive millions of customers to their site, but the developer team had concerns that this spike in traffic might overload the site making it temporarily unresponsive or even completely unavailable. A compromised site would mean unhappy customers and a drop in sales on one of the highest revenue days of the year. Carlos Rios, CTO at Hotel Urbano, explained “I have read that for every millisecond in latency on your site you lose one customer. I knew our Black Friday promotion would bring a huge spike in traffic, and that meant we needed a solution to keep our site high performing while handling the unusual load.”\n\n__Hotel Urbano’s Solution: Minimizing Strain on Servers, While Securing and Enhancing Site Content__\n\n“Our ex CTO was a previous Cloudflare user, so when this Black Friday promotion came up, I looked into what solutions they could offer” recounted Rios. “With Cloudflare’s Always Online feature I knew we could continue to serve our content directly from Cloudflare’s cache, even if something were to happen to our origin servers.” Cloudflare’s Always Online feature works by serving a cached version of Hotel Urbano’s site in the case that origin servers are knocked offline. That means in the event of a compromised server instead of seeing a error page consumers still get access to Hotel Urbano’s content. Plus, by caching and serving Hotel Urbano’s static content Cloudflare’s CDN dramatically decreases server load reducing the likelihood of a compromised server.\n\nIn addition to this improved site resiliency Hotel Urbano also enjoys the benefits of Cloudflare’s full-feature network with powerful security tools. Rios commented “At the time we were looking there weren’t any other options that were both as affordable, but also as full featured. Cloudflare’s WAF ensures our site is protected against layer 7 attacks, and the savings we get as a result of Cloudflare’s caching is immense.”",
+				"cloudflareStreamVideoId": null,
+				"keyResults": null,
+				"relatedCaseStudies": [
+					{
+						"name": "FCL/Gazeta Esportiva",
+						"nameUrlSlug": "fcl"
+					},
+					{
+						"name": "Bidu",
+						"nameUrlSlug": "bidu"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Content Delivery Network (CDN)",
+						"url": "/cdn/"
+					},
+					{
+						"title": "Web Application Firewall (WAF) ",
+						"url": "/waf/"
+					},
+					{
+						"title": "Always Online",
+						"url": "/always-online/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Carlos Rios",
+				"employeeQuoteText": "Cloudflare gives us technology and service that we could not reach on our own. Cloudflare helps us reach our end-user faster and keeps our site more resilient.",
+				"employeeQuoteJobTitle": "CTO",
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/Logo_HotelUrbano_300x140.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "1hAu2M4cfwACIMWqAOG8o6",
+			"pathname": "/case-studies/hotelurbano/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}

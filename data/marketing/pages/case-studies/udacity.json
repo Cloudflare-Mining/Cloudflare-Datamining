@@ -1,0 +1,92 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/udacity/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Udacity",
+				"contentfulId": "4vBZ895jQAy2cMqAOGacQM",
+				"nameUrlSlug": "udacity",
+				"metaTags": {
+					"metaTitle": "Udacity",
+					"metaDescription": "Udacity leverages Cloudflare's China Network to make their online classroom lightning fast.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2018-04-27",
+				"homepageUrl": "https://www.udacity.com/",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "Udacity leverages Cloudflare's China Network to make their online classroom lightning fast.",
+				"longDescription": "Udacity leverages Cloudflare's China Network to make their online classroom lightning fast.\n\n![udacity-graphic](//cf-assets.www.cloudflare.com/slt3lc6tev37/2pG8YLxPZGagGmgQkSc24c/f4d0c67c35fd0b8c0776052f3f3305c4/udacity-graphic.svg)\n\n[Udacity](https://www.udacity.com/) is an online education company focussed on making entry-level tech jobs more accessible through \"Nanodegree\" educational programs. Students from hundreds of different countries have gone through Udacity’s programs, and some have been hired by top tech companies including Google, Amazon, and Facebook.\n\n__Udacity’s Challenges: Tapping Into the Rapidly Growing Education Market in China__\n\nWith their goal of democratizing education, Udacity's strategy is to penetrate developing markets. China is thus a prime country for Udacity to target because of its deep cultural values of education. In addition to holding a public budget for education that has more than tripled in the last decade, China's private spending on education has also increased almost tenfold in the same time period. With this clear demand for private education in mind, Udacity launched its services in China earlier this year. Udacity's initial entry into the market, however, was met with frustration as customers had difficulty accessing Udacity’s US-based content because of strict internet regulations by the government and slow internet connections throughout China. Paul Bauer, a platform & infrastructure engineer at Udacity, noted \"Depending on your ISP in China, loading the assets from our classroom would take several minutes; that's because AWS CloudFront nodes were getting throttled like everything else outside China to as little as 20 Kbps.\" Udacity was able to quickly respond and create a localized marketing site, but their classroom page, the portal through which students access Udacity’s content was still based in the US through Amazon Web Services (AWS). Udacity knew they had to increase the performance of their classroom or lose customers.\n\n__Udacity's Solution: A CDN With a Global Integrated Network and Presence in Mainland China__\n\nTo solve this challenge, Udacity needed a Content Delivery Network (CDN) that had presence in mainland China that could locally cache their Javascript, CSS, and image assets so students could learn without interruption. Udacity chose Cloudflare, which offers a Global CDN network with data centers in %{ChinaDataCenterCount} cities across mainland China through a strategic partnership with Baidu. By leveraging these mainland China Data Centers, Cloudflare offers the only globally integrated CDN with a China presence, dramatically increasing web performance and security for Udacity and their visitors across China.\n\nBy using [Cloudflare's China CDN](https://www.cloudflare.com/network/china/), Udacity has achieved a two order of magnitude performance improvement— __engineers in Udacity’s Shanghai office saw asset load times that were as high as ten seconds drop to 500 milliseconds when they switched their site to Cloudflare.__\n\nBeyond a global, scalable network, Udacity required control. Through Page Rules, Udacity has fine-grained control over their use of Cloudflare's network and security services. Bauer remarked that “internal testing with Page Rules has been super helpful. They allow us to easily and quickly troubleshoot problems with our site. Recently, we were able to quickly troubleshoot an SSL issue thanks to Page Rules.”\n\nBauer's final remark: “I couldn’t be happier as an engineer to work with Cloudflare.”",
+				"cloudflareStreamVideoId": null,
+				"keyResults": null,
+				"relatedCaseStudies": [
+					{
+						"name": "Quizlet",
+						"nameUrlSlug": "quizlet"
+					},
+					{
+						"name": "Pixowl",
+						"nameUrlSlug": "pixowl"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "China Network",
+						"url": "/network/china/"
+					},
+					{
+						"title": "Content Delivery Network (CDN)",
+						"url": "/cdn/"
+					},
+					{
+						"title": "Page Rules",
+						"url": "/features-page-rules/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Paul Bauer",
+				"employeeQuoteText": "I couldn’t be happier as an engineer to work with Cloudflare.",
+				"employeeQuoteJobTitle": "Platform Engineer",
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": {
+					"file": {
+						"publicURL": "[path]/case-study-udacity.pdf"
+					}
+				},
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/udacity.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "4vBZ895jQAy2cMqAOGacQM",
+			"pathname": "/case-studies/udacity/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US",
+				"zh-CN",
+				"zh-Hans-CN"
+			]
+		}
+	}
+}

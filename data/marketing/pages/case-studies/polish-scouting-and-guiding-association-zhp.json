@@ -1,0 +1,91 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/polish-scouting-and-guiding-association-zhp/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Polish Scouting and Guiding Association (ZHP)",
+				"contentfulId": "1ELIu7jB3WkoXtHrlwfkjG",
+				"nameUrlSlug": "polish-scouting-and-guiding-association-zhp",
+				"metaTags": {
+					"metaTitle": "Polish Scouting and Guiding Association (ZHP) | Project Galileo Case Study",
+					"metaDescription": "To handle their concerns about hijacking and content displacement, the Polish Scouting and Guiding Association relies on Project Galileo from Cloudflare.",
+					"twitterCustomImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					}
+				},
+				"orderDate": "2022-07-13",
+				"homepageUrl": "https://zhp.pl/en",
+				"hideFromCaseStudiesPage": true,
+				"shortDescription": "This century-old organization provides educational and leadership training programs for young people and organizes COVID and refugee assistance.",
+				"longDescription": "## ZHP relies on Project Galileo to help protect its reputation and block malicious traffic.\nThe Polish Scouting and Guiding Association (ZHP) provides educational and leadership training programs for young people between the ages of 6 and 25. As of 2022, ZHP has a membership of over 90,000.\n\nThey are a nationwide organization that mostly operates in Poland, with some Polish scouting associations abroad, for example in the UK and Iceland. These associations in other countries are independent but share the same values and mission. \n\n### __ZHP’s projects__\nZHP is one of the biggest organizers of summer and winter holidays. One popular option is camping in the forest. \n\nThe association is currently engaged in helping with the Ukraine crisis at the border and with ongoing local assistance. Members of ZHP were present at border crossings and railway and bus stations helping refugees. They organized temporary accommodations and collected and distributed supplies. These actions were organized at the national level for ZHP as well as in every region and district.\n\nFor example, they organized a breakfast for 200 refugees in Lublin during the Easter 2022 weekend. Similarly, they organized activities to help communities at the start of the COVID pandemic.\n\n### __The Cloudflare products they use__\nZHP uses the core Cloudflare platform, particularly [DDoS protection](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/) and the [Web Application Firewall](https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf/) (WAF). They would like to start using Access to [restrict logins to systems](https://www.cloudflare.com/learning/access-management/what-is-identity-and-access-management/) and thus increase their security posture.\n\n### __How they run their IT operations__\nThere is no formal IT structure at ZHP; they are a team of volunteers who work after-hours to try to keep their websites operational and maintain their database of members. Due to their organization’s structure, which features many local autonomous entities, they need to manage 500 different WordPress sites. Every unit has their own site with a specific configuration and they host it in different places. This makes maintaining and securing these sites quite a large task, especially when sites get infected.\n\n### __How they onboarded to Cloudflare__ \nWhen the Ukraine crisis started, ZHP was very concerned about denial-of-service attacks that could take their sites and systems down. They spotted some attacks in their web server logs. The first days of the conflict were stressful and nobody knew what to expect over the coming days. They were very worried and wanted to be more secure. \n\nAt the time, they were using the Cloudflare free plan but mainly for secondary domains. They could not use the free plan for their main domain because of specific [DNS](https://www.cloudflare.com/learning/dns/what-is-dns/) requirements. They looked up “Cloudflare for NGOs” on Google and came across the Project Galileo page. \n\nThey filled in the application and in a couple of days they were accepted. They had to move their DNS zone without downtime, which was hard because everyone was trying to help refugees. Paweł Kowalczyk, who is the head of the computer security team and acts as the cyber security expert, was on the temporary accommodation points that were organized in his city, Lublin, and was busy preparing beds and everything needed for the refugees. At the same time, he was on his laptop trying to support his colleagues working in other border cities and doing the migration too. These were hard weekends for the team.\n\nZHP’s DNS zone is huge and they are managed with an Infrastructure-as-Code approach via GitHub. This piece is what took the longest during onboarding. They use GitHub because it helps them automate the DNS configuration changes requested by each different unit (a time savings considering they have 500 WordPress instances, all with their own configuration). Once they switched their DNS, onboarding to Cloudflare was very fast and they could start using Cloudflare tools to secure their sites and IT systems.\n\n“So far we have onboarded the national-level sites, about 40 domains with websites or internal systems,” Kowalczyk said. “Those are websites and systems used by the whole organization and are responsible for most of the traffic.” \n\n### __ZHP’s top concerns__ \nAmong the IT systems they use, the member database is particularly important, as they rely on it to ensure they remain [GDPR](https://www.cloudflare.com/learning/privacy/what-is-the-gdpr/) compliant and check that members have paid their membership fees before participating in activities.\n\nIn general, ZHP is very concerned about hijacking and content displacement. When the Ukraine crisis started, this was identified as a main threat. \nThe Polish Scouting and Guiding Association is 100 years old and has a long history. During the communist times in Poland, they suffered reputational damage because of cooperation with the government. Today, this is still a very sensitive topic in Poland, so they try to remain as neutral as possible and far from politics. If someone hacked the site and added content that falsely suggested affiliation to political parties or ideas, that would cause the association further reputational damage. \n\n### __How Cloudflare helps them be more secure__\nThanks to Cloudflare analytics, ZHP discovered that a lot of traffic to their website was coming from outside Poland. Since they found this suspicious, they started to investigate. They found some SEO spam on their site that they did not previously know about. \n\nThey also noticed that one of their websites that they use as a question and answer system was running on outdated software and got infected. They found out about it thanks to Cloudflare analytics. Since they cannot disable this system, they introduced a firewall rule with a Managed Challenge action. Over the course of 24 hours, almost 17,000 challenges were issued and only 326 were solved. \n“We have visibility into a lot of blocked traffic thanks to Cloudflare and the ratio of resolved to issued captchas is below 1%. I think the product is great!” Kowalczyk said. \n",
+				"cloudflareStreamVideoId": null,
+				"keyResults": null,
+				"relatedCaseStudies": [
+					{
+						"name": "Muzeon",
+						"nameUrlSlug": "muzeon"
+					},
+					{
+						"name": "Dream Girl Foundation",
+						"nameUrlSlug": "dream-girl-foundation"
+					},
+					{
+						"name": "HERA Digital Health",
+						"nameUrlSlug": "hera-digital-health"
+					},
+					{
+						"name": "Better World Ed",
+						"nameUrlSlug": "better-world-ed"
+					},
+					{
+						"name": "Trevor Project",
+						"nameUrlSlug": "trevor-project"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": null,
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Paweł Kowalczyk",
+				"employeeQuoteText": "We have visibility into a lot of blocked traffic thanks to Cloudflare and the ratio of resolved to issued captchas is below 1%. I think the product is great!",
+				"employeeQuoteJobTitle": "Head of Computer Security",
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/identyfikatorZHP_English-zielony.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "1ELIu7jB3WkoXtHrlwfkjG",
+			"pathname": "/case-studies/polish-scouting-and-guiding-association-zhp/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": null
+		}
+	}
+}

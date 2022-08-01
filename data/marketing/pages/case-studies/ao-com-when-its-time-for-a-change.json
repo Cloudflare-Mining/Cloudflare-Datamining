@@ -1,0 +1,100 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/ao-com-when-its-time-for-a-change/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "AO.com",
+				"contentfulId": "4CoFip7ftuGe2Uo422gQy0",
+				"nameUrlSlug": "ao-com-when-its-time-for-a-change",
+				"metaTags": {
+					"metaTitle": "AO.com",
+					"metaDescription": "AO is the largest online-only white goods and electricals retailer in the UK. Their company mission is rooted in always finding a better way of doing things to keep their customers happy. ",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2018-08-29",
+				"homepageUrl": "https://ao.com/",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "AO is the largest online-only white goods and electricals retailer in the UK. Their company mission is rooted in always finding a better way of doing things to keep their customers happy. ",
+				"longDescription": "__Who is AO.com__\nAO is the largest online-only electricals retailer in the UK. Their company’s purpose is to relentlessly strive for better ways to ensure their customers are happy. AO started in 2000 with a bet between their founder John Roberts and his friend, JR was insistent that there was a better way for people to buy white goods online that was rooted in the best possible outcome for the consumer. The result of this wager has evolved to the present day as AO, which supports over 3,000 employees in three countries, selling a wide range of electrical items and boasting the world’s best recycling plant in Europe. \n\n__Expanding to new markets brings challenges__\nIn 2015, AO began their expansion into Germany and the Netherlands. While the logistical effort of delivering products in these new markets was a challenge, they also faced increased pressure to ensure that their website would perform optimally for customers in these regions. AO implemented a well known content delivery network (CDN) to improve site performance across all of their web domains, and to reduce their overall infrastructure costs.\n\nWhile the onboarding process and support was straightforward, it wasn’t until they began routing more traffic to the provider’s edge network that they started experiencing some new unforeseen challenges.\n\n“We were new to CDNs, and were unsure about how much traffic was being offloaded to the provider’s infrastructure. We were hit with some very high unexpected charges as a result, and this made us question the overall investment return of this solution” explained Austin Davies, Site Reliability Engineer at AO. They also experienced an outage around this time, and had issues getting their case sufficiently escalated. These events forced AO to begin exploring alternatives for a solution that would be more cost-effective and support over the long term.\n\n__When Cloudflare offers a better way__\nAO considered many other offerings before deciding on Cloudflare. Cloudflare offered a technically innovative platform that included security features like DDoS protection by default, and was less expensive, with no overage charges for seasonal spikes in bandwidth. \n\n__How AO uses Cloudflare__\nAO primarily uses Cloudflare to improve the performance of their web and mobile properties. Faster websites translate to happier customers, and this is core to their mission. Cloudflare exceeded their performance expectations compared to their previous provider “In almost all circumstances of our performance testing and monitoring, Cloudflare was much faster. I don’t think I can find a single measurement that we track where that wasn’t the case” said Davies. “Once we enabled Cloudflare with features such as Rocket Loader, we immediately saw a 1.7 second decrease in page load times across all of our sites.” AO uses New Relic to track their apdex scoring, and immediately saw a 10% increase in the number of satisfied requests.\n\nArgo Smart Routing with Tiered Caching was also deployed, which allows Cloudflare to route traffic and requests across the fastest, and least congested network paths to their users. Tiered caching reduces the number of requests that hit their origins by leveraging Cloudflare’s Tier-1 data centers to serve requested content. “Our previous provider seems obsolete compared to Cloudflare. Deploying comparable features like Argo Smart Routing and tiered caching was significantly easier to enable, requiring zero changes to our infrastructure” Davies explained.\n\nAO also discovered that Cloudflare Workers could help ease the pain of migrating from their previous solution. “If we didn’t use Cloudflare Workers, it would have been very difficult to leave our previous provider. We were using their object storage solution, and many of the image files we tried moving over to AWS S3 included specific encoded symbols which failed in S3.” Workers runs simple business logic that automatically converts these files so they can be stored in S3. If Workers weren’t employed, it would have meant significant code changes to their websites to handle these files in the required S3 format.\n\nCloudflare was able to help AO reduce their costs significantly, even beyond the contracted services. AO deployed many of the web optimization technologies that Cloudflare offers such as Auto Minify and lossless compression, which reduced their page sizes by 50%.\n\nLastly, to ensure a highly resilient architecture across their sites they use Cloudflare load balancing in addition to AWS ALB. ALB supports their EC2 instances, while Cloudflare load balancing provides instant failover from AWS to their co-located provider in the event of an AWS outage.\n\n__Conclusion__\nAO has been very pleased with the change to Cloudflare. The support teams have been very responsive, and have seen measurable improvements in speed and performance of all of their sites on Cloudflare. “We looked at many other solutions, but at the end of the day, Cloudflare was the only solution that met our technical requirements and delivered the best price performance value” explained Davies.\n\n\n",
+				"cloudflareStreamVideoId": "fb9cf0ef575924d6da5dea557e936890",
+				"keyResults": "50% reduction in page sizes\n1.7 decrease in page load times\n10% increase in satisfied requests",
+				"relatedCaseStudies": [
+					{
+						"name": "YPO ",
+						"nameUrlSlug": "ypo"
+					},
+					{
+						"name": "Great Rail Journeys",
+						"nameUrlSlug": "greatrailjourneys"
+					},
+					{
+						"name": "Bespoke Post",
+						"nameUrlSlug": "bespoke-post"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "CDN",
+						"url": "/cdn/"
+					},
+					{
+						"title": "Argo",
+						"url": "/products/argo-smart-routing/"
+					},
+					{
+						"title": "Workers",
+						"url": "/products/cloudflare-workers/"
+					}
+				],
+				"employeeHeadshot": {
+					"file": {
+						"publicURL": "[path]/Austin.jpg"
+					}
+				},
+				"employeeQuoteName": "Austin Davies",
+				"employeeQuoteText": "Once we enabled Cloudflare with features such as Rocket Loader, we immediately saw a 1.7 second decrease in page load times across all of our sites.",
+				"employeeQuoteJobTitle": "Site Reliability Engineer",
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": {
+					"file": {
+						"publicURL": "[path]/ao-com-when-its-time-for-change.pdf"
+					}
+				},
+				"ref_streamVideoThumbnail": {
+					"file": {
+						"publicURL": "[path]/ao_thumbnail.jpg"
+					}
+				},
+				"logo": {
+					"file": {
+						"publicURL": "[path]/AO.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "4CoFip7ftuGe2Uo422gQy0",
+			"pathname": "/case-studies/ao-com-when-its-time-for-a-change/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": null
+		}
+	}
+}

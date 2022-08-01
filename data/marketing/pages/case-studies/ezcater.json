@@ -1,0 +1,78 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/ezcater/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "ezCater",
+				"contentfulId": "5NIetkciqt0woJS6DtE8UC",
+				"nameUrlSlug": "ezcater",
+				"metaTags": {
+					"metaTitle": "ezCater",
+					"metaDescription": "ezCater partners with Cloudflare for Zero Trust remote access and malicious bot defense.",
+					"twitterCustomImage": {
+						"file": {
+							"publicURL": "[path]/ezcater_meta.png"
+						}
+					},
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/ezcater_meta.png"
+						}
+					},
+					"facebookCustomImage": {
+						"file": {
+							"publicURL": "[path]/ezcater_meta.png"
+						}
+					}
+				},
+				"orderDate": "2021-08-31",
+				"homepageUrl": "https://www.ezcater.com/",
+				"hideFromCaseStudiesPage": false,
+				"shortDescription": "ezCater partners with Cloudflare for Zero Trust remote access and malicious bot defense.",
+				"longDescription": "## __Cloudflare helps ezCater move closer to Zero Trust while mitigating malicious bots__\n\nFounded in 2007 in Boston, Massachusetts, ezCater is the largest national marketplace for business catering with 80,000+ restaurants and caterers and 155+ million people served. ezCater provides companies of all sizes, anywhere in the country, with flexible and scalable food solutions for work. Nationwide, restaurants and caterers use ezCater’s platform to grow and manage their catering business.  \n\n### __Challenges: Mitigate increasingly frequent bot attacks, and secure remote connections to internal resources without a VPN__\n\nezCater began its relationship with Cloudflare by adopting the Cloudflare Web Application Firewall (WAF) and Content Delivery Network (CDN). As ezCater grew from a local startup to a national company, its security needs evolved, and the company began moving towards a Zero Trust security architecture. When the COVID-19 pandemic forced all of ezCater’s employees to work remotely, the company needed a simple, secure way for its globally distributed workforce to connect to internal resources while maintaining Zero Trust.\n\nAdditionally, ezCater had been using manual mitigation techniques, such as blocklists, to defend against malicious bots that were scraping website content, attempting takeovers of customer accounts, and degrading site performance. However, as bot attacks increased in frequency, ezCater’s internal team had to devote increasing time and resources to managing these security rules. Conor Sherman, Head of Security, wanted an effective solution for managing malicious bots.\n\nSherman decided to deploy Cloudflare Bot Management, along with Cloudflare Access, a Zero Trust solution for enabling remote employees to securely connect to internal resources.\n\n### __Cloudflare Access gets ezCater closer to Zero Trust security and negates the need for a VPN__\n\nWhen the COVID-19 pandemic began, ezCater — like many other businesses — had to find a way to enable and secure remote workforces practically overnight. Sherman wanted to implement a Zero Trust solution to this problem and avoid the complexity of a VPN, particularly since ezCater’s workforce is globally distributed. \n\nezCater integrated Cloudflare Access with its single sign-on (SSO) identity provider, enabling the company to rapidly extend its existing Zero Trust architecture to its entire remote workforce. Today, approximately 600 ezCater employees use Access to log into internal resources. \n\n“Cloudflare Access became available just in time to prevent us from having to go through the hassle of deploying a VPN,” Sherman recalls. “It was an easy choice for us, and Cloudflare Access was shockingly simple to deploy.”\n\nIn addition to being more secure than a VPN, Access saves ezCater money because the company didn’t have to hire another person to manage the VPN. Instead, Access is enabling ezCater’s existing team to improve security organization-wide and move further towards a Zero Trust security model.\n\n“The Zero Trust journey is a marathon, not a sprint,” Sherman explains. “Now that Cloudflare Access has provided us with Zero Trust at the identity layer, we’re moving on to the endpoint layer and other areas.”\n\nIn addition to Access’ primary use case of securing remote connections to internal resources, Sherman is excited about Cloudflare’s pace of innovation with Access and its other products.\n\n“Cloudflare’s culture of innovation truly excites me,” Sherman says. “Many companies will introduce a great product with a lot of fanfare, but then it tapers off. Access and the rest of Cloudflare’s products only get better over time.”\n\n### __Cloudflare Bot Management simplifies ezCater’s defenses while providing more effective and accurate protection__\n\nPrior to deploying Bot Management, ezCater’s security team was continuously playing catch-up, writing new firewall rules to block the latest malicious bots. \n\nBot Management’s machine learning-driven approach has significantly improved ezCater’s defenses, enabling it to greatly simplify its firewall rules while enjoying more efficient and accurate bot mitigation. ezCater gets a lot of value out of Bot Management’s Bot Scores, which use machine learning to determine the probability that a particular request is originating from a bot. \n\n“The Bot Management Bot Scores let us take a more holistic approach to mitigating malicious bot traffic than firewall rules allow,” Sherman says. “We have the flexibility to defend our environment more precisely.”\n\nAdditionally, Bot Management lets ezCater set up different risk profiles for different areas of its site, enabling the company to use a surgical approach to block bots. For example, ezCater’s API endpoints are vulnerable to different types of bots than its login page or web forms.\n\n“Bot Management lets us lean into Cloudflare's global threat intelligence, determine what and where our risks are, and craft defenses that target those specific risks,” Sherman explains. “We’ve been able to simplify our rule set while getting better protection.”\n\n### __With Cloudflare as a security partner, ezCater can focus on its core competency__\n\nAs ezCater continues to expand in their market, they intend to rely more heavily on Cloudflare’s innovation and make deeper use of Cloudflare products, particularly as ezCater gets further into its Zero Trust journey.\n\n“Zero Trust is very important, but it’s also incredibly difficult to implement,” Sherman says. “The only way ezCater can succeed with this is to have the right partner. Cloudflare has given us the foundation for a successful Zero Trust implementation.”\n\nThanks to Cloudflare’s security products protecting its marketplace from cyber attacks, ezCater is able to concentrate on its core competency: matching caterers and restaurants with organizations that need their services.\n\n“If ezCater didn't have Cloudflare, we'd have a very bad day,” Sherman says. “We don’t have time to become global security experts. With Cloudflare on our side, we can focus on what we’re great at: food for work.”\n",
+				"cloudflareStreamVideoId": "070ac31cad9d1f7ab6a332b658c46250",
+				"keyResults": "- Cloudflare Access eliminated the need for ezCater to use a VPN, saving the company from having to hire a VPN specialist.\n\n- Cloudflare WAF and Bot Management block over 1.5 million cyber attacks each day from reaching ezCater’s website.\n\n- Bot Management saves ezCater’s team from fighting bad bots manually, saving them the equivalent of one full-time employee.",
+				"relatedCaseStudies": null,
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": null,
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Conor Sherman",
+				"employeeQuoteText": "Cloudflare Access became available just in time to prevent us from having to go through the hassle of deploying a VPN. It was an easy choice for us, and Cloudflare Access was shockingly simple to deploy.",
+				"employeeQuoteJobTitle": "Head of Security",
+				"employeeQuoteName2": "Conor Sherman",
+				"employeeQuoteText2": "Zero Trust is very important, but it’s also incredibly difficult to implement. The only way ezCater can succeed with this is to have the right partner. Cloudflare has given us the foundation for a successful Zero Trust implementation.",
+				"employeeQuoteJobTitle2": "Head of Security",
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": {
+					"file": {
+						"publicURL": "[path]/Screen_Shot_2021-08-31_at_9.47.04_AM.png"
+					}
+				},
+				"logo": {
+					"file": {
+						"publicURL": "[path]/Logo_01.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "5NIetkciqt0woJS6DtE8UC",
+			"pathname": "/case-studies/ezcater/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US",
+				"zh-CN",
+				"ja-JP"
+			]
+		}
+	}
+}

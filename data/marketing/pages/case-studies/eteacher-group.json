@@ -1,0 +1,82 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/eteacher-group/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "eTeacher Group",
+				"contentfulId": "2aMLWdDyUPw1Dazrjz4Xgr",
+				"nameUrlSlug": "eteacher-group",
+				"metaTags": {
+					"metaTitle": "eTeacher Group | Cloudflare",
+					"metaDescription": "eTeacher Group uses Cloudflare to simplify remote access and accelerate its Zero Trust journey.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2021-06-14",
+				"homepageUrl": "https://www.eteachergroup.com/",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "eTeacher Group uses Cloudflare to simplify remote access and accelerate its Zero Trust journey.",
+				"longDescription": "## __Cloudflare supports eTeacher Group towards a Zero Trust security model__\n\nFounded in 2000, Israel-based eTeacher Group uses modern technology to provide virtual learning to over 35,000 students in 200 countries and regions, ranging from small children to adults. With over 850 employees worldwide, eTeacher operates almost on an entirely remote basis. The company currently offers classes in nine different languages and is continually seeking to expand its reach through new course offerings and collaboration with ed-tech professionals.\n\n### __Challenge: Simplify remote access to internal resources while moving towards a Zero Trust security model__\n\nApproximately two weeks prior to Israel officially issuing COVID-19 shutdown mandates, eTeacher Group anticipated having to shift to a remote work model, so they set up VPN access for all of its employees, including its global workforce of call center employees.\n\nHowever, the company found the VPN very difficult to configure — especially for its call center employees, who are distributed worldwide and work from their own devices. Additionally, eTeacher Group wanted to implement a Zero Trust security model to better secure its digital IP and harden its defenses against credential stuffing and other cyberattacks that involve weak or stolen passwords. The VPN didn’t support this plan. Neither did the company’s WAF, which was difficult to configure and didn’t provide advanced security analytics.  \n\nAfter a local cybersecurity company suggested that eTeacher’s CTO, Boaz Borovsky, contact Cloudflare, the company did a proof of concept (POC) of Cloudflare Access, which helps teams secure corporate applications with a Zero Trust model. \n\nAfter a successful POC of Access, Borovsky integrated Cloudflare Tunnel, a secure tunneling software that establishes a private connection between internal applications and the Cloudflare edge, along with Cloudflare WAF. To ensure high performance and availability as eTeacher’s traffic rapidly grew post-pandemic, he also implemented Cloudflare’s performance suite.\n\n### __Cloudflare Access & Tunnel enable eTeacher Group to eliminate its VPN__\n\nAfter implementing Cloudflare Access, eTeacher Group reduced its employee onboarding time by 60%. The added efficiency of Access helped all teams get up to speed faster.\n\n“Configuring VPN access for new employees was time-consuming, extremely difficult, and prone to mistakes,” Borovsky explains. “Setting up new employees on Access is simple, and we know it’s secure.”\n\neTeacher’s employees appreciate Access’ ease of use in contrast to the VPN. “Cloudflare Access provides a simple, seamless logon experience for non-technical employees like me,” says Itay Shalital, CFO. “It’s so easy to use, I don’t even know it exists! It just works.”\n\nAccess also made it simpler for eTeacher Group to block public access to certain URLs, such as the company’s login link for its content management system (CMS). “Without Access, restricting access to a CMS login page is difficult and requires special plugins. Meanwhile, CMS login pages are very susceptible to brute-force attacks like credential stuffing,” Borovsky explains. “Access made it amazingly easy for us to hide that URL from the public internet.”\n\nBy integrating Access with Cloudflare Tunnel, eTeacher Group can deploy a private networking model on Cloudflare’s edge. For example, sensitive applications they need to keep off of the public Internet are connected to Cloudflare via Cloudflare Tunnel, and Access sits in front of the applications, enforcing multiple complexity based rules about who can log in. \n\n“We wanted to go a bit ‘off-grid’ when publishing these particular apps,” Borovsky recalls. “Without Tunnel, this wouldn’t have been an easy thing to accomplish, but Cloudflare made it easy.”\n\nTunnel also enabled eTeacher Group to begin the process of closing all inbound communication to the Cloudflare WAF and segue to outbound traffic only. \n\n“Eventually, we want to use Access and Tunnel to implement a Zero Trust security model company-wide,” Borovsky explains. “We want to fully integrate Cloudflare with our cloud services provider and all of our other technical solutions.”\n\n### __Cloudflare WAF enhances security by providing actionable insights into traffic patterns__\n\nCloudflare WAF has become a critical part of eTeacher Group’s security defense, particularly because of the security analytics it provides.\n\n“Cloudflare WAF’s analytics let us see exactly what’s going on with our traffic, which gives us insight that we never had before,” Borovsky says. “For example, we were able to identify and eliminate DNS problems that we struggled with in the past.” \n\nThe company also found out it was being targeted by non-existent domain attacks, which Borovsky’s team had no way of knowing before. On another occasion, Borovsky’s team identified a script that was attempting to learn more about eTeacher Group’s certificates. The team used this information to build a custom rule in the WAF to block the script, preventing a potential security incident.\n\n“With Cloudflare WAF, our company’s security is already on a higher level,” Borovsky says. “The default rules cover nearly all of our needs. When we do need a custom rule, it’s very easy to build, test, and deploy one.”\n\n### __Cloudflare is helping eTeacher improve performance and implement Zero Trust security__ \n\nCloudflare’s security solutions are playing a key role in eTeacher Group’s journey towards a Zero Trust security model, which Borovsky sees as a necessity in an increasingly digital world and a highly dynamic threat environment.\n\n“IT is evolving by leaps and bounds, and more sophisticated, more destructive cyber threats are emerging every day,” Borvosky says. “Zero Trust is the only viable security model in this environment, and Cloudflare is making it a lot easier for eTeacher Group to get there.”\n\n“Cloudflare is helping us achieve Zero Trust while saving us a lot of time,” says Ehud Ashkenazi, Team Leader. “Additionally, Access and Tunnel enable us to get rid of our VPN, and the WAF is much easier to manage than our previous firewall.”\n\nIn addition to continuing to integrate Cloudflare’s security solutions organization-wide, Borovsky wants to do more with Cloudflare’s performance suite, as well as with Cloudflare Workers, a serverless platform that simplifies running custom code at the network edge. \n\n“Workers looks amazing, and there are also a lot of caching and speed tools that we want to implement, like Load Balancing,” Borovsky says. “The depth of Cloudflare’s offerings is incredible, and Cloudflare is adding new features and tools all the time. Clearly, Cloudflare deeply understands the cyber threat environment and the needs of online businesses.”\n",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "- Cloudflare Access reduced employee onboarding time by 60% and simplified a Bring-Your-Own-Device (BYOD) program for its globally distributed call center employees.\n\n- Analytics from Cloudflare’s WAF provide eTeacher Group with actionable security intelligence that the company previously lacked.\n\n- Cloudflare Access and Tunnel allow eTeacher to keep sensitive applications off the public-facing internet.",
+				"relatedCaseStudies": [
+					{
+						"name": "INSEAD ",
+						"nameUrlSlug": "insead"
+					},
+					{
+						"name": "Oak National Academy",
+						"nameUrlSlug": "oak-national-academy"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Access",
+						"url": "/teams/access"
+					},
+					{
+						"title": "Web Application Firewall (WAF) ",
+						"url": "/waf/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Boaz Borovsky",
+				"employeeQuoteText": "IT is evolving by leaps and bounds, and more sophisticated, more destructive cyber threats are emerging every day. Zero Trust is the only viable security model in this environment, and Cloudflare is making it a lot easier for eTeacher Group to get there.",
+				"employeeQuoteJobTitle": "CTO",
+				"employeeQuoteName2": "Ehud Ashkenazi",
+				"employeeQuoteText2": "Cloudflare is helping us achieve Zero Trust while saving us a lot of time. Additionally, Access and Tunnel enable us to get rid of our VPN, and the WAF is much easier to manage than our previous firewall.",
+				"employeeQuoteJobTitle2": "Team Leader",
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/eteacher.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "2aMLWdDyUPw1Dazrjz4Xgr",
+			"pathname": "/case-studies/eteacher-group/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}

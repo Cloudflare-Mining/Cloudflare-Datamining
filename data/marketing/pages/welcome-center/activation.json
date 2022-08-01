@@ -1,0 +1,236 @@
+{
+	"componentChunkName": "component---src-components-welcome-center-activation-tsx",
+	"path": "/welcome-center/activation/",
+	"result": {
+		"data": {
+			"welcomeCenter": {
+				"tabName": "activation",
+				"contentfulId": "7fJm6PtEbBCK2ztmc5FLm0",
+				"mainHeader": "Activation",
+				"subHeader": "Let us help you get started with Cloudflare. Follow the steps in this guide to set up your account and activate your first site.",
+				"introText": "Follow the recommended steps in this guide to set up your account and activate your site with Cloudflare. If you already have a Cloudflare account, log in and follow along with each step in your Dashboard. Don’t have a Cloudflare account yet? [Sign up here.](https://dash.cloudflare.com/sign-up)",
+				"guideList": [
+					{
+						"mainTitle": "Account setup",
+						"metadata": {
+							"plan": "free"
+						},
+						"items": [
+							{
+								"title": "Create a Cloudflare account and add a website.",
+								"description": "To set up a new Cloudflare account, enter your email address and a password in the provided fields, then log in to your Dashboard."
+							},
+							{
+								"title": "Select your plan.",
+								"description": "Cloudflare offers four plans: Free, Pro, Business, and Enterprise. On this screen, select ‘Business.’ You may upgrade your plan from your Dashboard later if desired."
+							},
+							{
+								"title": "Check for existing DNS records.",
+								"description": "Cloudflare automatically checks for existing DNS records. In your Dashboard, you should see an orange cloud next to your DNS records, which indicates that your web traffic is being successfully proxied through Cloudflare. During the core setup process, you will also have the option to add additional DNS records for your domain.\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/360019093151)"
+							},
+							{
+								"title": "Change your nameservers.",
+								"description": "To successfully activate your site with Cloudflare, you need to update the nameservers at your domain registrar. This does not change your hosting provider, but simply allows Cloudflare to manage your DNS.\n\nFollow our [detailed instructions](https://support.cloudflare.com/hc/en-us/articles/205195708-Changing-your-domain-nameservers-to-Cloudflare) to determine your registrar, log in to your account, and replace your existing nameservers with Cloudflare’s nameservers. When successful, this change will take effect within 24 hours."
+							}
+						]
+					},
+					{
+						"mainTitle": "Account setup",
+						"metadata": {
+							"plan": "pro"
+						},
+						"items": [
+							{
+								"title": "Create a Cloudflare account and add a website.",
+								"description": "To set up a new Cloudflare account, enter your email address and a password in the provided fields, then log in to your Dashboard."
+							},
+							{
+								"title": "Select your plan.",
+								"description": "Cloudflare offers four plans: Free, Pro, Business, and Enterprise. On this screen, select ‘Business.’ You may upgrade your plan from your Dashboard later if desired."
+							},
+							{
+								"title": "Check for existing DNS records.",
+								"description": "Cloudflare automatically checks for existing DNS records. In your Dashboard, you should see an orange cloud next to your DNS records, which indicates that your web traffic is being successfully proxied through Cloudflare. During the core setup process, you will also have the option to add additional DNS records for your domain.\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/360019093151)"
+							},
+							{
+								"title": "Change your nameservers.",
+								"description": "To successfully activate your site with Cloudflare, you need to update the nameservers at your domain registrar. This does not change your hosting provider, but simply allows Cloudflare to manage your DNS.\n\nFollow our [detailed instructions](https://support.cloudflare.com/hc/en-us/articles/205195708-Changing-your-domain-nameservers-to-Cloudflare) to determine your registrar, log in to your account, and replace your existing nameservers with Cloudflare’s nameservers. When successful, this change will take effect within 24 hours."
+							}
+						]
+					},
+					{
+						"mainTitle": "Account setup",
+						"metadata": {
+							"plan": "business"
+						},
+						"items": [
+							{
+								"title": "Create a Cloudflare account and add a website.",
+								"description": "To set up a new Cloudflare account, enter your email address and a password in the provided fields, then log in to your Dashboard."
+							},
+							{
+								"title": "Select your plan.",
+								"description": "Cloudflare offers four plans: Free, Pro, Business, and Enterprise. On this screen, select ‘Business.’ You may upgrade your plan from your Dashboard later if desired."
+							},
+							{
+								"title": "Check for existing DNS records.",
+								"description": "Cloudflare automatically checks for existing DNS records. In your Dashboard, you should see an orange cloud next to your DNS records, which indicates that your web traffic is being successfully proxied through Cloudflare. During the core setup process, you will also have the option to add additional DNS records for your domain.\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/360019093151)"
+							},
+							{
+								"title": "Change your nameservers.",
+								"description": "To successfully activate your site with Cloudflare, you need to update the nameservers at your domain registrar. This does not change your hosting provider, but simply allows Cloudflare to manage your DNS.\n\nFollow our [detailed instructions](https://support.cloudflare.com/hc/en-us/articles/205195708-Changing-your-domain-nameservers-to-Cloudflare) to determine your registrar, log in to your account, and replace your existing nameservers with Cloudflare’s nameservers. When successful, this change will take effect within 24 hours."
+							}
+						]
+					},
+					{
+						"mainTitle": "Follow the Quick Start Guide",
+						"metadata": {
+							"plan": "free"
+						},
+						"items": [
+							{
+								"title": "Select your SSL/TLS encryption mode in the ‘Overview’ tab.",
+								"description": "SSL (Secure Socket Layer) is the standard security technology for establishing an encrypted link between a web server and a browser. This secure link ensures that all data transferred remains private. It’s also called TLS (Transport Layer Security). Millions of websites use SSL encryption everyday to secure connections and keep their customer’s data safe from monitoring and tampering. Cloudflare offers four options: Flexible, Full, Full (strict), and Off (not recommended).\n\nCloudflare recommendation: Full SSL, which encrypts traffic end-to-end using a self-signed certificate on the server.\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/200170416)"
+							},
+							{
+								"title": "Enable HTTPS for all traffic in the ‘Edge Certificates’ tab.",
+								"description": "Any website, especially those that require login credentials, should use HTTPS. In modern web browsers such as Chrome, websites that do not use HTTPS are marked differently than those that are. Look for a green padlock in the URL bar to signify the webpage is secure. Web browsers take HTTPS seriously; Google Chrome and other browsers flag all non-HTTPS websites as not secure. Toggle this feature to redirect all requests with the scheme “http” to “https.”\n\nCloudflare recommendation: Turn on HTTPS, which helps prevent data leaks and increases visitor trust.\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/204144518-SSL-FAQ#h_a61bfdef-08dd-40f8-8888-7edd8e40d156)"
+							},
+							{
+								"title": "Reduce source code on your site with Auto Minify.",
+								"description": "Auto Minify helps accelerate your site by removing all unnecessary characters from JavaScript, CSS, and HTML files, reducing whitespace and comments in content provided to visitors.\n\nCloudflare recommendation: Turn on Auto Minify for all fields, which removes the need for manual size reduction and additional third-party minify applications.\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/200168196-How-do-I-minify-HTML-CSS-and-JavaScript-to-optimize-my-site-)"
+							},
+							{
+								"title": "Accelerate page loads with Brotli.",
+								"description": "Brotli compression allows content to reach users more quickly by speeding up page load times for your visitors’ HTTPS traffic.\n\nCloudflare recommendation: Turn on Brotli, which allows you to compress your site size with the latest compression technology.\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/200168396)"
+							}
+						]
+					},
+					{
+						"mainTitle": "Follow the Quick Start Guide",
+						"metadata": {
+							"plan": "pro"
+						},
+						"items": [
+							{
+								"title": "Select your SSL/TLS encryption mode in the ‘Overview’ tab.",
+								"description": "SSL (Secure Socket Layer) is the standard security technology for establishing an encrypted link between a web server and a browser. This secure link ensures that all data transferred remains private. It’s also called TLS (Transport Layer Security). Millions of websites use SSL encryption everyday to secure connections and keep their customer’s data safe from monitoring and tampering. Cloudflare offers four options: Flexible, Full, Full (strict), and Off (not recommended).\n\nCloudflare recommendation: Full SSL, which encrypts traffic end-to-end using a self-signed certificate on the server.\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/200170416)"
+							},
+							{
+								"title": "Enable HTTPS for all traffic in the ‘Edge Certificates’ tab.",
+								"description": "Any website, especially those that require login credentials, should use HTTPS. In modern web browsers such as Chrome, websites that do not use HTTPS are marked differently than those that are. Look for a green padlock in the URL bar to signify the webpage is secure. Web browsers take HTTPS seriously; Google Chrome and other browsers flag all non-HTTPS websites as not secure. Toggle this feature to redirect all requests with the scheme “http” to “https.”\n\nCloudflare recommendation: Turn on HTTPS, which helps prevent data leaks and increases visitor trust.\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/204144518-SSL-FAQ#h_a61bfdef-08dd-40f8-8888-7edd8e40d156)"
+							},
+							{
+								"title": "Reduce source code on your site with Auto Minify.",
+								"description": "Auto Minify helps accelerate your site by removing all unnecessary characters from JavaScript, CSS, and HTML files, reducing whitespace and comments in content provided to visitors.\n\nCloudflare recommendation: Turn on Auto Minify for all fields, which removes the need for manual size reduction and additional third-party minify applications.\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/200168196-How-do-I-minify-HTML-CSS-and-JavaScript-to-optimize-my-site-)"
+							},
+							{
+								"title": "Accelerate page loads with Brotli.",
+								"description": "Brotli compression allows content to reach users more quickly by speeding up page load times for your visitors’ HTTPS traffic.\n\nCloudflare recommendation: Turn on Brotli, which allows you to compress your site size with the latest compression technology.\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/200168396)"
+							}
+						]
+					},
+					{
+						"mainTitle": "Follow the Quick Start Guide",
+						"metadata": {
+							"plan": "business"
+						},
+						"items": [
+							{
+								"title": "Select your SSL/TLS encryption mode in the ‘Overview’ tab.",
+								"description": "SSL (Secure Socket Layer) is the standard security technology for establishing an encrypted link between a web server and a browser. This secure link ensures that all data transferred remains private. It’s also called TLS (Transport Layer Security). Millions of websites use SSL encryption everyday to secure connections and keep their customer’s data safe from monitoring and tampering. Cloudflare offers four options: Flexible, Full, Full (strict), and Off (not recommended).\n\nCloudflare recommendation: Full SSL, which encrypts traffic end-to-end using a self-signed certificate on the server.\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/200170416)"
+							},
+							{
+								"title": "Enable HTTPS for all traffic in the ‘Edge Certificates’ tab.",
+								"description": "Any website, especially those that require login credentials, should use HTTPS. In modern web browsers such as Chrome, websites that do not use HTTPS are marked differently than those that are. Look for a green padlock in the URL bar to signify the webpage is secure. Web browsers take HTTPS seriously; Google Chrome and other browsers flag all non-HTTPS websites as not secure. Toggle this feature to redirect all requests with the scheme “http” to “https.”\n\nCloudflare recommendation: Turn on HTTPS, which helps prevent data leaks and increases visitor trust.\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/204144518-SSL-FAQ#h_a61bfdef-08dd-40f8-8888-7edd8e40d156)"
+							},
+							{
+								"title": "Reduce source code on your site with Auto Minify.",
+								"description": "Auto Minify helps accelerate your site by removing all unnecessary characters from JavaScript, CSS, and HTML files, reducing whitespace and comments in content provided to visitors.\n\nCloudflare recommendation: Turn on Auto Minify for all fields, which removes the need for manual size reduction and additional third-party minify applications.\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/200168196-How-do-I-minify-HTML-CSS-and-JavaScript-to-optimize-my-site-)"
+							},
+							{
+								"title": "Accelerate page loads with Brotli.",
+								"description": "Brotli compression allows content to reach users more quickly by speeding up page load times for your visitors’ HTTPS traffic.\n\nCloudflare recommendation: Turn on Brotli, which allows you to compress your site size with the latest compression technology.\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/200168396)"
+							}
+						]
+					}
+				],
+				"nextStepTitle": "Now that you’ve activated your first site, it’s time to complete your core setup.",
+				"nextStepButton": {
+					"text": "Start core setup",
+					"url": "/welcome-center/core-setup/"
+				}
+			},
+			"subnav": {
+				"contentTypeId": "bladeSubNav",
+				"contentfulId": "1e0eITYdkm5xNNEvoFpLzK",
+				"menuTitle": null,
+				"stickyNav": null,
+				"htmlId": null,
+				"menuItems": [
+					{
+						"__typename": "bladeSubNavMenuItem",
+						"contentfulId": "3EFWOPuVE1zeba2wumusnr",
+						"linkText": "Overview",
+						"page": null,
+						"url": "/welcome-center",
+						"subMenuItems": null
+					},
+					{
+						"__typename": "bladeSubNavMenuItem",
+						"contentfulId": "7oci0SdKgc9184HYPE9yyn",
+						"linkText": "Activation",
+						"page": null,
+						"url": "/welcome-center/activation/",
+						"subMenuItems": null
+					},
+					{
+						"__typename": "bladeSubNavMenuItem",
+						"contentfulId": "66Rr2LidjpXFoKG9IK0jkO",
+						"linkText": "Core Setup",
+						"page": null,
+						"url": "/welcome-center/core-setup/",
+						"subMenuItems": null
+					},
+					{
+						"__typename": "bladeSubNavMenuItem",
+						"contentfulId": "2B7xGo7Vp7f7JkDYDO5xht",
+						"linkText": "Health Check",
+						"page": null,
+						"url": "/welcome-center/health-check/",
+						"subMenuItems": null
+					}
+				]
+			},
+			"resourceGrid": {
+				"title": "Resources",
+				"contentfulId": "5qZqpdha26WtvVPri2e2t7",
+				"relatedInfoBlocks": [
+					{
+						"title": "Troubleshooting FAQ",
+						"description": "Get answers to common issues you may encounter when adding a new domain to Cloudflare.",
+						"linkText": "Explore answers",
+						"linkUrl": "https://support.cloudflare.com/hc/en-us/sections/200804937-General-Troubleshooting"
+					},
+					{
+						"title": "Cloudflare Support",
+						"description": "Still stumped? 95% of all user questions can be solved by searching in the Cloudflare Help Center.",
+						"linkText": "Get help",
+						"linkUrl": "https://support.cloudflare.com/hc/"
+					},
+					{
+						"title": "Cloudflare Community",
+						"description": "Join thousands of bloggers, freelancers, and entrepreneurs that are also using Cloudflare to build something amazing.",
+						"linkText": "Join the community",
+						"linkUrl": "https://blog.cloudflare.com/"
+					}
+				]
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"pathname": "/welcome-center/activation/",
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

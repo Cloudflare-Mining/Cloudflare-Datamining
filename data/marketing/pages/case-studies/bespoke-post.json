@@ -1,0 +1,90 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/bespoke-post/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Bespoke Post",
+				"contentfulId": "2wmDRfcJHyuq66ouUSiG88",
+				"nameUrlSlug": "bespoke-post",
+				"metaTags": {
+					"metaTitle": "Bespoke Post | Cloudflare",
+					"metaDescription": "Cloudflare keeps Bespoke Post’s ecommerce platform fast and secure through the most extreme traffic spikes.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2018-06-03",
+				"homepageUrl": "https://www.bespokepost.com/",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "Cloudflare keeps Bespoke Post’s ecommerce platform fast and secure through the most extreme traffic spikes.",
+				"longDescription": "Cloudflare keeps Bespoke Post’s ecommerce platform fast and secure through the most extreme traffic spikes.\n\n![bespoke-post-graphic](//cf-assets.www.cloudflare.com/slt3lc6tev37/TLsupLwwASCO8m2S6CIgQ/1c2354162c8422eaed61fcbd2b2b9b54/bespoke-post-graphic.svg)\n\nEach month, [Bespoke Post](https://www.bespokepost.com/) releases at least one new Box of Awesome to their customers. Their boxes are aimed at helping guys freshen up their daily lives and feature unique gear and useful advice to help improve life in all kinds of ways. Users can subscribe to Bespoke Post to receive a new box every month, or they can choose boxes and products they like on the Bespoke Post website. With the tagline “Goods and guidance for the modern man. ,” Bespoke Post strives to deliver their customers the ultimate online shopping experience. “I like to think of ourselves as curators that value both form and function” explained Jared Hales, Director of Engineering at Bespoke Post, “To showcase the great products we sell our site has to be pleasant to use and highly functional on any device.”\n\n__Bespoke Post’s Challenge: High Resolution Images, Traffic Spikes, and Mobile Optimization__\n\nFor eCommmerce shops like Bespoke Post, performance is critical to offering a pleasant user experience. “Statistics about site performance improvements leading to higher conversion rates are always thrown around in our industry. We constantly aim to optimize our site to see those conversion gains,” Hales explained. “We have a lot of large, high-resolution images to show off our products in all their glory, but serving those images to our customers could mean slow site performance and high bandwidth costs.”\n\nIn addition to performance challenges from a media-rich site, traffic spikes can also affect Bespoke Post’s user experience. Hales related that “because of the monthly nature of our service, the 1st day of the month is huge for us. The first of the month sees about 10-15x our normal traffic because that’s when we announce the new products for the month. Likewise, In the first 5 days of the month, you can change or opt-out of your monthly shipment. So the majority of our subscribers are visiting the site during this window.” While auto-scaling cloud infrastructure can handle to gradual increases in traffic, spikes like these often come too quickly and could overload the infrastructure making it slow or entirely unavailable for users.\n\n__Bespoke Post’s Solution: Enlisting the Fastest, Most Secure Network__\n\nBespoke Post found Cloudflare’s performance feature set to offer the exact solutions they were looking for. Cloudflare’s CDN now caches and serves Bespoke Post’s content from data centers in over %{DataCenterCount} cities around the world, minimizing geographic latency by serving content (like large image files) from the data centers closest to users accessing the content. In turn, not only does Cloudflare’s CDN improve the performance of Bespoke Post’s site, but because users are being served from Cloudflare’s cache, Bespoke Post’s origin infrastructure is never overloaded and easily handles these spikes in traffic. Likewise, by also using Cloudflare’s Argo Smart Routing and Tiered Caching services Bespoke Post’s bandwidth consumption is further reduced, while their site performs over 33% faster for requests handled by Argo’s Smart Routing.\n\n# __>33%__\n## __FASTER SITE PERFORMANCE__\n\n\nOn the security side, Bespoke Post has been greatly enjoying the peace of mind that comes with Cloudflare. “Threats that could be problematic for us just get blocked at Cloudflare’s edge,” Hales remarked. “We haven’t had any issues since using Cloudflare.”",
+				"cloudflareStreamVideoId": null,
+				"keyResults": null,
+				"relatedCaseStudies": [
+					{
+						"name": "de Bijenkorf",
+						"nameUrlSlug": "debijenkorf"
+					},
+					{
+						"name": "Buycraft",
+						"nameUrlSlug": "buycraft"
+					},
+					{
+						"name": "Hotel Urbano",
+						"nameUrlSlug": "hotelurbano"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Argo Smart Routing ",
+						"url": "/products/argo-smart-routing/"
+					},
+					{
+						"title": "Content Delivery Network (CDN)",
+						"url": "/cdn/"
+					},
+					{
+						"title": "Security",
+						"url": "/security/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Jared Hales",
+				"employeeQuoteText": "Cloudflare, in conjunction with a few providers, makes deploying and running our site very light and easy. I would recommend Cloudflare to anyone looking to solve the problems we have.",
+				"employeeQuoteJobTitle": "Director of Engineering",
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/bespoke-post.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "2wmDRfcJHyuq66ouUSiG88",
+			"pathname": "/case-studies/bespoke-post/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}

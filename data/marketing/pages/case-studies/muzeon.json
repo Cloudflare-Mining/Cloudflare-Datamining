@@ -1,0 +1,104 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/muzeon/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Muzeon",
+				"contentfulId": "3UOMmEPA5twwHfBVUMaH6C",
+				"nameUrlSlug": "muzeon",
+				"metaTags": {
+					"metaTitle": "Muzeon | Case Study | Project Galileo",
+					"metaDescription": "After DDoS attacks interfered with the Muzeon Association’s ability to share stories about the history of a Jewish community in Romania, they requested help from Project Galileo.",
+					"twitterCustomImage": {
+						"file": {
+							"publicURL": "[path]/Screenshot_2022-03-03_at_14.01.56.png"
+						}
+					},
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Screenshot_2022-03-03_at_14.01.56.png"
+						}
+					},
+					"facebookCustomImage": {
+						"file": {
+							"publicURL": "[path]/Screenshot_2022-03-03_at_14.01.56.png"
+						}
+					}
+				},
+				"orderDate": "2022-05-11",
+				"homepageUrl": "https://muzeon.ro/",
+				"hideFromCaseStudiesPage": true,
+				"shortDescription": "After DDoS attacks interfered with the Muzeon Association’s ability to share stories about the history of a Jewish community in Romania, they requested help from Project Galileo.",
+				"longDescription": "## “We felt we had to show these stories somehow, which are different from mere objects. That is why we call ourselves a storytelling museum.”\n\nThe Muzeon Association is dedicated to telling and preserving stories about the Jewish community in Cluj-Napoca, Romania. Since 2020, Muzeon has operated a museum of the same name, and organizes other interactive educational activities focused on local Jewish history and culture.\n\n“This area was a very traditional region for Jewish people, but after the Holocaust, most of them moved to the US or Israel,” says Dan Craioveanu, Muzeon’s co-founder, president, and technical director. “The remaining population got very old, and their stories started to fade out. My partner and I decided that we needed to maintain and promote all of this heritage and these values.”\n\n### __Preserving a slice of Jewish history__\nThe project began as a way to organize and study keepsakes, letters, and other objects that had been passed down from Craioveanu’s and other Jewish families’ ancestors. As Craioveanu and his colleagues began to translate letters and study other items, they realized they could trace the histories of local Jewish community members over time. Today, the museum’s exhibits are structured around the lives of three of those community members. \n\n“We felt we had to show these stories somehow, which are different from mere objects,” Craioveanu says. “That is why we call ourselves a storytelling museum.”\n\n### __Getting inundated with attacks__\nIn January 2022, the website experienced a surge in distributed denial-of-service ([DDoS](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/)) attacks, along with [brute force](https://www.cloudflare.com/learning/bots/brute-force-attack/) attempts to access and send emails from their origin server. They moved to a cloud-based hosting service, and applied security tools that were built into their content management system (CMS), but the attacks continued. \n\n“You had to wait 30 seconds for the site to load because the server was so overloaded,” Craioveanu says. “People could not buy tickets or anything else. I cannot say that we were being specifically targeted for being a Jewish organization. But we said, ‘Okay, we need to step up our game.’”\n\n### __Freeing up time for a crucial mission__\nAfter applying and being accepted to [Project Galileo](https://www.cloudflare.com/galileo/), Muzeon turned on a number of Cloudflare application services, including DDoS mitigation, the Web Application Firewall ([WAF](https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf/)), Managed DNS, and Image Resizing, along with the Cloudflare for WordPress plug-in. Craioveanu appreciated the simple onboarding processes, commenting on the simplicity of setting up DNS records and activating security services in the Cloudflare dashboard. And once those security services were active, many of the attacks stopped altogether.\n\n“I think that when an attacker sees that you are behind Cloudflare, they are discouraged to even try,” Craioveanu says.\n\nAs for the attackers who are still targeting Muzeon, the foundation’s new security services have been up to the task. \n\n“I can also see, when I look at the analytics, that there are still some [bots](https://www.cloudflare.com/learning/bots/what-is-a-bot/) and other threats that are mitigated,” Craioveanu says. “We look at this sometimes and say, ‘It is good that Cloudflare was here.’ Because we have time to focus on other things that are more important.”\n\n### __Creating new avenues for storytelling__\nThe Muzeon Association has a lot of important things to focus on. They are building out their website content in order to share stories of local Jewish life with people overseas, and with prospective guests who may not be able to visit in person because of the COVID-19 pandemic. They are also working on interactive exhibits outside of the museum.\n\n“We are making a treasure hunt tour where visitors follow clues throughout the city to find Jewish historical landmarks,” Craioveanu says. “We are also working on a humorous escape room — to escape a family dinner with your Jewish family, that you solve using aspects of Jewish culture. Our purpose is to help people learn about all of this in an easier way.”\n",
+				"cloudflareStreamVideoId": null,
+				"keyResults": null,
+				"relatedCaseStudies": [
+					{
+						"name": "BullyingCanada",
+						"nameUrlSlug": "bullyingcanada"
+					},
+					{
+						"name": "Interfaith Enlightenment Center",
+						"nameUrlSlug": "interfaith-enlightenment-center"
+					},
+					{
+						"name": "Sin Embargo",
+						"nameUrlSlug": "sin-embargo"
+					},
+					{
+						"name": "Trevor Project",
+						"nameUrlSlug": "trevor-project"
+					},
+					{
+						"name": "Womens March Global",
+						"nameUrlSlug": "womens-march-global"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "DDoS Mitigation",
+						"url": "/ddos/"
+					},
+					{
+						"title": "Content Delivery Network (CDN)",
+						"url": "/cdn/"
+					},
+					{
+						"title": "Web Application Firewall (WAF) ",
+						"url": "/waf/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Dan Craioveanu",
+				"employeeQuoteText": "I think that when an attacker sees that you are behind Cloudflare, they are discouraged to even try.",
+				"employeeQuoteJobTitle": "Co-Founder, President, and Technical Director",
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/muzeon-logo.svg"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "3UOMmEPA5twwHfBVUMaH6C",
+			"pathname": "/case-studies/muzeon/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": null
+		}
+	}
+}

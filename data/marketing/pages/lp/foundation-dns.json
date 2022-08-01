@@ -1,0 +1,2094 @@
+{
+	"componentChunkName": "component---src-components-page-page-template-tsx",
+	"path": "/lp/foundation-dns/",
+	"result": {
+		"data": {
+			"page": {
+				"pageName": "Foundation DNS Landing Page",
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "Translated for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "Translated for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "No Page for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "Translated for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": "Translated for Locale"
+				},
+				"relativePath": "lp/foundation-dns/",
+				"topNavOptions": "default",
+				"topNavButtonText": null,
+				"topNavButtonUrl": null,
+				"metaTags": {
+					"metaTitle": "Cloudflare Foundation DNS ",
+					"metaDescription": "Cloudflare Foundation DNS is an advanced service that offers the best reliability and performance on the market.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"contentfulId": "1yolDBZF84KGCm8EdC9k24",
+				"contentTypeId": "page",
+				"promotionalBanner": null,
+				"psaBanner": null,
+				"customTopNav": null,
+				"headerLogo": null,
+				"template": null,
+				"relatedBlades": [
+					{
+						"__typename": "bladeSignUpForm",
+						"contentTypeId": "bladeSignUpForm",
+						"contentfulId": "54sbw6AUgRMJOPMOuGYgFX",
+						"bladeName": "LP Foundation DNS - From Blade V1 (1)",
+						"formType": "formRight",
+						"formTitle": null,
+						"buttonText": null,
+						"buttonColor": "orange",
+						"htmlId": null,
+						"marketoEmbeddedForm": {
+							"contentTypeId": "marketoEmbeddedForm",
+							"contentfulId": "1MMi4WLIvk17VrrtmF0uu1",
+							"bladeName": "LP Foundation Marketo Blade",
+							"backgroundColor": "white",
+							"marketoFormId": 1341,
+							"marketoFormLeadSource": "Inbound - Web Form",
+							"marketoFormLeadSourceDetail": "[ACQ] Q4'21 WEB - GBL - Foundation DNS Landing Page",
+							"marketoFormHeaderText": null,
+							"marketoFormDefaultComment": null,
+							"showCommentBox": null,
+							"marketoFormThankYouText": null,
+							"marketoFormCustomSuccessMessage": null,
+							"marketoFormPdfDownload": null,
+							"marketoFormPdfDownloadI18n": null,
+							"marketoFormAssetDownloadButtonText": null,
+							"marketoFormSuccessRedirectUrl": null,
+							"sendAdRoll": null,
+							"meta_adRollCustomSegment": null,
+							"enableSandbox": null,
+							"marketoFormSubmitButtonText": null,
+							"marketoFormSubmitButtonColor": null,
+							"enableEmailVerification": null,
+							"disableEnterpriseEmailNotification": null,
+							"enableRingout": null
+						},
+						"title": "Cloudflare Foundation DNS ",
+						"subtitle": "The most reliable and best performing DNS on the market. Easy to use, simple pricing, with advanced features.",
+						"copy": "Trust your DNS to Cloudflare’s global Anycast network that spans %{DataCenterCount} data centers and %{CountryCount} countries, reaching 95% of the world's population within 50 ms — providing inherent DDoS protection, reducing latency, and improving uptime.",
+						"iconList": [
+							{
+								"file": {
+									"publicURL": "[path]/cloudflare-pages.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/security-shield-protection.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/price.svg"
+								}
+							}
+						],
+						"iconTitleList": [
+							"Increased performance ",
+							"Inherent security ",
+							"DNS just got even simpler "
+						],
+						"iconCopyList": [
+							"The Anycast difference. DNS queries will be resolved from any data center in our global network, just milliseconds away from your users. ",
+							"Our highly secure cloud infrastructure at the edge protects your domains  from infrastructure-level and volumetric DDoS attacks from the Internet. Enable DNSSEC with one click to sign and validate DNS queries in order to prevent domain hijacking.",
+							"Simplified pricing for Foundation DNS - only get charged based on the number of DNS queries per month"
+						],
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamOptions": null,
+						"rightSideCopy": null,
+						"rightSideCopyPosition": null,
+						"backgroundColor": "performance-background",
+						"bladeBorder": "none",
+						"textColor": "white",
+						"extraClass": null,
+						"sectionPadding": "tile--no-top-bottom-padding",
+						"customPrivacyPolicy": null,
+						"customPrivacyPolicyText": null
+					},
+					{
+						"__typename": "bladeKeyFeatures",
+						"contentfulId": "41YXKBCTpzeCOsTOcxYsoY",
+						"contentTypeId": "bladeKeyFeatures",
+						"backgroundColor": "light-blue",
+						"title": "Key Features",
+						"keyFeature": [
+							"DNS resolution at the edge using global Anycast network",
+							"Premium nameservers for enhanced reliability",
+							"DNSSEC support for primary and secondary DNS",
+							"Secondary DNS for incoming and outgoing zone transfers",
+							"Custom nameservers (zone and account level)",
+							"Reverse DNS zones (IPV4/IPV6)",
+							"DNS Logpush",
+							"Wildcard DNS records",
+							"CNAME flattening",
+							"Support for CNAME records at the apex level",
+							"Fully redundant architecture designed for 100% uptime",
+							"Unmetered and unlimited DDoS mitigation",
+							"Global load balancing",
+							"Advanced analytics (up to 6 months)",
+							"Role-based access controls",
+							"Multi-factor authentication and SSO",
+							"24/7/365 dedicated technical support"
+						],
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"titleColor": null,
+						"variant": null,
+						"description": null,
+						"featuresTextStyle": "body1",
+						"htmlId": null
+					},
+					{
+						"__typename": "bladeFourFeatures",
+						"contentfulId": "3jCXTWMInZiqlhb0XHaakA",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": "The Cloudflare difference",
+						"subtitle": null,
+						"bladeStyle": null,
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5XtcYuoRiH6tDDJNE5fZNJ",
+								"title": "Always available",
+								"titleSize": null,
+								"description": "Our global Anycast network allows DNS resolution at the network edge in each of our data centers across %{DataCenterCount}+ cities, resulting in unparalleled redundancy and 100% uptime.\n",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/icon-validator-purple.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "9a9f45e5-8256-5cff-bb15-7336fb732376",
+									"altText": "Performance 1 blue",
+									"title": "Performance 1 blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 1145,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/performance-1-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1G5u8uQKCt3XwswVCGqoxY",
+								"title": "Integrated security",
+								"titleSize": null,
+								"description": "Cloudflare offers built-in DDoS protection and one-click DNSSEC to ensure your applications are always safeguarded from DNS attacks.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/icon-security-purple.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "c6776679-e543-5a80-9232-26ab70198b70",
+									"altText": "Security lock blue",
+									"title": "Security lock blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 1116,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/security-lock-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "55MXQc4pJfT2mz8ngEjZkR",
+								"title": "Superior performance",
+								"titleSize": null,
+								"description": "Our authoritative DNS is the fastest in the world, offering DNS lookup speed of 11ms on average and worldwide DNS propagation in less than five seconds.\n",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/icon-performance-purple.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "4b8d0fd4-e74c-5191-a1ff-2887eb26d2fa",
+									"altText": "Performance acceleration bolt blue",
+									"title": "Performance acceleration bolt blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 387,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/performance-acceleration-bolt-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "YIQSI2GpoKkHGFZYLavIR",
+								"title": "Global Connectivity ",
+								"titleSize": null,
+								"description": "Cloudflare is connected to more Internet Exchanges than other providers worldwide",
+								"learnMoreUrl": "https://bgp.he.net/report/exchanges#_participants",
+								"learnMoreText": "Learn More",
+								"displayBorder": null,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "35aabb7a-ab80-5f86-bb2d-c0bd82a10871",
+									"altText": "Cloud internet blue",
+									"title": "Cloud internet blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 1776,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/cloud-internet-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
+						"__typename": "networkMap",
+						"contentTypeId": "networkMap",
+						"contentfulId": "1gHbPRTVBiHbCznkB6bGse",
+						"bladeName": "All Cloudflare POPs (1) ",
+						"title": "The Cloudflare global network",
+						"copy": "Our vast global network, which is one of the fastest on the planet, is trusted by millions of web properties. \n\nWith direct connections to nearly every service provider and cloud provider, the Cloudflare network can reach 95% of the world’s population within 50 ms.",
+						"bladeLayout": "Stats-bottom and Map with Pops",
+						"backgroundColor": "blue5",
+						"htmlId": "network",
+						"sectionPadding": "default",
+						"bladeBorder": "border-bottom",
+						"statsFeatures": [
+							{
+								"title": "%{DataCenterCount}",
+								"description": "cities in %{CountryCount}+ countries, including mainland China"
+							},
+							{
+								"title": "%{NetworkInterconnects}",
+								"description": "networks directly connect to Cloudflare, including every major ISP, cloud provider, and enterprise"
+							},
+							{
+								"title": "%{NetworkCapacityV2}",
+								"description": "global network edge capacity, consisting of transit connections, peering and private network interconnects\n"
+							},
+							{
+								"title": "50 ms",
+								"description": "from 95% of the world’s Internet-connected population"
+							}
+						],
+						"dataSource": {
+							"type": "Cloudflare PoP",
+							"name": "Cloudflare POPs",
+							"contentfulId": "2O04nulSdNrRpJR9fs9OKv",
+							"contentTypeId": "dataCollection",
+							"items": [
+								{
+									"__typename": "locationData",
+									"cityName": "Honolulu, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Bogota, CO",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Auckland, NZ",
+									"region": "Oceania"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Amman, JO",
+									"region": "Middle East"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Amsterdam, NL",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Dar Es Salaam, TZ",
+									"region": "Africa"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Bangkok, TH",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Jinan, CN",
+									"region": "Mainland China"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "San José, CR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Palermo, IT",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Salvador, BR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Campinas, BR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Canberra, AU",
+									"region": "Oceania"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Nairobi, KE",
+									"region": "Africa"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Jashore, BD",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Yangon, MM",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Tbilisi, GE",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Johor Bahru, MY",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Monrovia, LR",
+									"region": "Africa"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Tegucigalpa, HN",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Vientiane, LA",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Paramaribo, SR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Bandar Seri Begawan, BN",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Dhaka, BD",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Adelaide, AU",
+									"region": "Oceania"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "St. George's, GD",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Thimphu, BT",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Chittagong, BD",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Antananarivo, MG",
+									"region": "Africa"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Dakar, SN",
+									"region": "Africa"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Cordoba, AR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Arica, CL",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Neuquen, AR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Jakarta, ID",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Male, MV",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Kolkata, IN",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Cork, IE",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Nagpur, IN",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Bengaluru, IN",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Guatemala City, GT",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Noumea, NC",
+									"region": "Oceania"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Port-Au-Prince, HT",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Asuncion, PY",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Kigali, RW",
+									"region": "Africa"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Maputo, MZ",
+									"region": "Africa"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Thessaloniki, GR",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Nicosia, CY",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Gothenburg, SE",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Buffalo, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Baku, AZ",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Geneva, CH",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Hyderabad, IN",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Casablanca, MA",
+									"region": "Africa"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Ramallah",
+									"region": "Middle East"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Queretaro, MX",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Ottawa, CA",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Porto Alegre, BR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Curitiba, BR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Reunion, FR",
+									"region": "Africa"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Fortaleza, BR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Valparaíso, CL",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Medellín, CO",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Lima, PE",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Buenos Aires, AR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Quito, EC",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Panama City, PA",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "São Paulo, BR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Rio de Janeiro, BR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Willemstad, CW",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Lahore, PK",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Karachi, PK",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Islamabad, PK",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Ho Chi Minh City, VN",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Hanoi, VN",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "St. Petersburg, RU",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Manama, BH",
+									"region": "Middle East"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Columbus, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Charlotte, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Lagos, NG",
+									"region": "Africa"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Ulaanbaatar, MN",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Richmond, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Norfolk, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Luxembourg City, LU",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Winnipeg, CA",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Saskatoon, CA",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Chișinău, MD",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Houston, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Tallahassee, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Mexico City, MX",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Montgomery, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Memphis, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Jacksonville, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Indianapolis, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Calgary, CA",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Tallinn, EE",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Riga, LV",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Beirut, LB",
+									"region": "Middle East"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Tel Aviv, IL",
+									"region": "Middle East"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Vilnius, LT",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Baghdad, IQ",
+									"region": "Middle East"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Reykjavík, IS",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Phnom Penh, KH",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Salt Lake City, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Kathmandu, NP",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Cebu, PH",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Macau",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Port Louis, MU",
+									"region": "Africa"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Sacramento, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Pittsburgh, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Durban, ZA",
+									"region": "Africa"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Mcallen, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Kyiv, UA",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Riyadh, SA",
+									"region": "Middle East"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Stockholm, SE",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Rome, IT",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Kansas City, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Zagreb, HR",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Budapest, HU",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Djibouti, DJ",
+									"region": "Africa"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Omaha, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Belgrade, RS",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Portland, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Istanbul, TR",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Yerevan, AM",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Detroit, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Nashville, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Vienna, AT",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Cape Town, ZA",
+									"region": "Africa"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Colombo, LK",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "San Diego, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Lisbon, PT",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Boston, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Tampa, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Philadelphia, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Munich, DE",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Denver, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Moscow, RU",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Luanda, AO",
+									"region": "Africa"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "St. Louis, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Barcelona, ES",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Athens, GR",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Brisbane, AU",
+									"region": "Oceania"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Perth, AU",
+									"region": "Oceania"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Oslo, NO",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Las Vegas, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Taipei",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Helsinki, FI",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Brussels, BE",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Edinburgh, GB",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Hamburg, DE",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Sofia, BG",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Warsaw, PL",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Minneapolis, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Frankfurt, DE",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Montréal, CA",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Vancouver, CA",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Manila, PH",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Berlin, DE",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Phoenix, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Copenhagen, DK",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Zürich, CH",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Manchester, GB",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Mombasa, KE",
+									"region": "Africa"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Dubai, AE",
+									"region": "Middle East"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Chennai, IN",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "New Delhi, IN",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Mumbai, IN",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Kuala Lumpur, MY",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Muscat, OM",
+									"region": "Middle East"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Doha, QA",
+									"region": "Middle East"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Kuwait City, KW",
+									"region": "Middle East"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Dublin, IE",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Osaka, JP",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Bucharest, RO",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Marseille, FR",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Düsseldorf, DE",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Melbourne, AU",
+									"region": "Oceania"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Johannesburg, ZA",
+									"region": "Africa"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Madrid, ES",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Milan, IT",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Singapore, SG",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Seoul, KR",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Prague, CZ",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Toronto, CA",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Seattle, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Atlanta, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Sydney, AU",
+									"region": "Oceania"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Hong Kong",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Tokyo, JP",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "London, GB",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Paris, FR",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Miami, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Ashburn, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Dallas, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Chicago, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Los Angeles, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Newark, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Algiers, DZ",
+									"region": "Africa"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Surat Thani, TH",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Guam, GU",
+									"region": "Oceania"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Dammam, SA",
+									"region": "Middle East"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Anquing, CN",
+									"region": "Mainland China"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Baoji, CN",
+									"region": "Mainland China"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Beijing, CN",
+									"region": "Mainland China"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Changde, CN",
+									"region": "Mainland China"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Changzhou, CN",
+									"region": "Mainland China"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Chengdu, CN",
+									"region": "Mainland China"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Chengmai, CN",
+									"region": "Mainland China"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Dalian, CN",
+									"region": "Mainland China"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Foshan, CN",
+									"region": "Mainland China"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Fuzhou, CN",
+									"region": "Mainland China"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Guangzhou, CN",
+									"region": "Mainland China"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Guiyang, CN",
+									"region": "Mainland China"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Haikou, CN",
+									"region": "Mainland China"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Hohhot, CN",
+									"region": "Mainland China"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Huainan, CN",
+									"region": "Mainland China"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Jinhua, CN",
+									"region": "Mainland China"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Langfang, CN",
+									"region": "Mainland China"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Lanzhou, CN",
+									"region": "Mainland China"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Maoming, CN",
+									"region": "Mainland China"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Nanchang, CN",
+									"region": "Mainland China"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Qingdao, CN",
+									"region": "Mainland China"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Qinhuangdao, CN",
+									"region": "Mainland China"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Quanzhou, CN",
+									"region": "Mainland China"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Quzhou, CN",
+									"region": "Mainland China"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Shanghai, CN",
+									"region": "Mainland China"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Shenyang, CN",
+									"region": "Mainland China"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Shiyan, CN",
+									"region": "Mainland China"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Suqian, CN",
+									"region": "Mainland China"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Taizhou, CN",
+									"region": "Mainland China"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Wuxi, CN",
+									"region": "Mainland China"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Xianyang, CN",
+									"region": "Mainland China"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Xining, CN",
+									"region": "Mainland China"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Xinyu, CN",
+									"region": "Mainland China"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Yichang, CN",
+									"region": "Mainland China"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Yiyang, CN",
+									"region": "Mainland China"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Zhengzhou, CN",
+									"region": "Mainland China"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "San Jose, US",
+									"region": "North America"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Cagayan, PH",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Ekaterinburg, RU",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Guayaquil, EC",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Caçador, BR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Ribeirão Preto, BR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Brasília, BR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Florianópolis, BR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Sorocaba, BR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Itajaí, BR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Belém, BR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Americana, BR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Blumenau, BR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Belo Horizonte, BR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Harare, ZW",
+									"region": "Africa"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Krasnoyarsk, RU",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "São José do Rio Preto, BR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Goiânia, BR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Almaty, KZ",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Patna, IN",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Manaus, BR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Minsk, BY",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Khabarovsk, RU",
+									"region": "Europe"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Juazeiro do Norte, BR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Erbil, IQ",
+									"region": "Middle East"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Uberlândia, BR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Haifa, IL",
+									"region": "Middle East"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Tashkent, UZ",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Joinville, BR",
+									"region": "Latin America & the Caribbean"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Accra, GH",
+									"region": "Africa"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Chiang Mai, TH",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Naha, JP",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Fukuoka, JP",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Bhubaneshwar, IN",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Kanpur, IN",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Ahmedabad, IN",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Tunis, TN",
+									"region": "Africa"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Mandalay, MM",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Jeddah, SA",
+									"region": "Middle East"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Yogyakarta, ID",
+									"region": "Asia"
+								},
+								{
+									"__typename": "locationData",
+									"cityName": "Chandigarh, IN",
+									"region": "Asia"
+								}
+							]
+						}
+					},
+					{
+						"__typename": "bladeQuote",
+						"contentTypeId": "bladeQuote",
+						"contentfulId": "69hxyvrraDR6T5Zk0WRCkA",
+						"quote": "\"Cloudflare's amazingly intelligent DDoS protection is what originally drew us in, but using Cloudflare DNS for our biggest zone was by far the easiest decision. We had run into zone size limitations with other providers, but not with Cloudflare DNS.\"\n",
+						"quoteAuthor": "Jenna Recktenwald",
+						"quoteTitle": "Kinsta",
+						"learnMoreText": null,
+						"sectionPadding": null,
+						"backgroundColor": "light-blue",
+						"bladeBorder": "none",
+						"learnMoreUrl": null,
+						"htmlId": null,
+						"image": {
+							"file": {
+								"publicURL": "[path]/kinsta-logo3.png"
+							}
+						},
+						"imageAssetFile": {
+							"id": "071a63ac-7ea8-5c9e-84f0-9dab30379deb",
+							"altText": "logo-kinsta-blue",
+							"title": "logo-kinsta-blue",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "[path]/kinsta-logo-blue-white-1600x.png"
+								}
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"imageLinkUrl": null,
+						"logoList": null,
+						"logoListAssetFile": null,
+						"quoteCarousel": null
+					},
+					{
+						"__typename": "bladeTrustedBy",
+						"contentTypeId": "bladeTrustedBy",
+						"contentfulId": "4WwG5BV10an78fqFsQr2fX",
+						"bladeBorder": "none",
+						"textColor": "black",
+						"linkText": "View case studies",
+						"linkUrl": "https://www.cloudflare.com/case-studies/",
+						"sectionPadding": null,
+						"backgroundColor": "light-blue",
+						"title": "Trusted by millions of Internet properties",
+						"copy": null,
+						"logoList": [
+							{
+								"file": {
+									"publicURL": "[path]/logo_allianz_trusted-by_gray.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_doordash_gray_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_garmin_gray_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_labcorp_color_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_loreal_gray_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_mars_gray_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_panasonic_trusted-by_gray.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_ibm_gray_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_shopify_color_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_sixt_trusted-by_gray.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_thomson-reuters_gray_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_insead_trusted-by_gray.svg"
+								}
+							}
+						],
+						"logoListAssetFile": [
+							{
+								"id": "5ab637c1-ac51-5de5-b8a7-022db4ddf677",
+								"altText": "Logo allianz trusted by gray",
+								"title": "Logo allianz trusted by gray",
+								"activeAsset": "Brandfolder Asset",
+								"locale": "en-US",
+								"contentfulAsset": null,
+								"brandfolderAsset": {
+									"size": 3833,
+									"height": 96,
+									"width": 632,
+									"file": {
+										"publicURL": "[path]/logo_allianz_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "7cbc697b-807d-5a77-81f0-a4b597366f29",
+								"altText": "Logo doordash trusted by gray",
+								"title": "Logo doordash trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_doordash_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "302a3744-177c-549c-a3e3-ba0eccb9558a",
+								"altText": "Logo garmin trusted by gray",
+								"title": "Logo garmin trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_garmin_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "6f68ad17-e6c8-5155-877e-91855b51cee0",
+								"altText": "Logo labcorp trusted by gray",
+								"title": "Logo labcorp trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_labcorp_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "8c37a7a6-cf55-55cf-a5aa-626692cbb63d",
+								"altText": "Logo loreal trusted by gray",
+								"title": "Logo loreal trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_loreal_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "f1f3837d-a408-5f08-8ead-06d1108cd0e1",
+								"altText": "Logo ibm trusted by gray",
+								"title": "Logo ibm trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_ibm_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "9a8f1b8a-cd07-5907-979a-86b8a90c1c80",
+								"altText": "Logo mars trusted by gray",
+								"title": "Logo mars trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_mars_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "2f753509-becb-5286-998f-d320d6513d89",
+								"altText": "Logo panasonic trusted by gray",
+								"title": "Logo panasonic trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_panasonic_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAsset": {
+									"size": 11924,
+									"height": 64,
+									"width": 632,
+									"file": {
+										"publicURL": "[path]/logo_panasonic_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "128d1d80-3d3f-5e8a-8559-33dbf5392576",
+								"altText": "Logo shopify trusted by gray",
+								"title": "Logo shopify trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_shopify_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "320d4b7c-3f9f-5ea6-901d-68f0f9dec99e",
+								"altText": "Logo sixt trusted by gray",
+								"title": "Logo sixt trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_sixt_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAsset": {
+									"size": 2291,
+									"height": 96,
+									"width": 632,
+									"file": {
+										"publicURL": "[path]/logo_sixt_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "626a14c0-589d-5fff-b8aa-155b8bc7392c",
+								"altText": "Logo thomson reuters trusted by gray",
+								"title": "Logo thomson reuters trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_thomson-reuters_gray_32px-wrapper.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "92e43b5a-2e1b-5233-a515-7aed979c976d",
+								"altText": "Logo insead gray",
+								"title": "Logo insead gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_insead_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAsset": {
+									"size": 3266,
+									"height": 336,
+									"width": 336,
+									"file": {
+										"publicURL": "[path]/logo_insead_gray.svg"
+									}
+								},
+								"brandfolderAssetMobile": null
+							}
+						],
+						"logoUrlList": null
+					}
+				],
+				"noindex": false,
+				"enableZendeskChat": false,
+				"formModal": null,
+				"keepHashUrlSyncedWithScrollPosition": false
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"pathname": "/lp/foundation-dns/",
+			"contentfulId": "1yolDBZF84KGCm8EdC9k24",
+			"allowedHrefLangs": [
+				"en-US",
+				"zh-CN",
+				"zh-TW",
+				"fr-FR",
+				"de-DE",
+				"it-IT",
+				"ja-JP",
+				"ko-KR",
+				"pt-BR",
+				"es-ES",
+				"ru-RU",
+				"zh-Hans-CN"
+			],
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

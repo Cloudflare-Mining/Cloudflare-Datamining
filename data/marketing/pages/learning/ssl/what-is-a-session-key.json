@@ -1,0 +1,558 @@
+{
+	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
+	"path": "/learning/ssl/what-is-a-session-key/",
+	"result": {
+		"data": {
+			"learningCenterArticle": {
+				"contentTypeId": "learningCenterArticle",
+				"contentfulId": "1oCeVjbwrEMc1yhryGy6hd",
+				"urlSlug": "ssl/what-is-a-session-key",
+				"metaTags": {
+					"metaTitle": "What is a session key? | Session keys and TLS handshakes",
+					"metaDescription": "An SSL session key is used for symmetric encryption in the TLS protocol. Learn how a TLS handshake enables clients and servers to create session keys.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"metaTitle": "What Is a Session Key? | Session Keys and TLS Handshakes",
+				"metaDescription": "An SSL session key is used for symmetric encryption in the TLS protocol. Learn how a TLS handshake enables clients and servers to create session keys.",
+				"learningCenterArticleSubHeader": {
+					"contentTypeId": "learningCenterArticleSubHeader",
+					"contentfulId": "3u6eezFpOUiCop2PUEz413",
+					"learningCenterName": "ssl",
+					"links": [
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "357fevHD1vzqQ8mp5tKWWp",
+							"displayText": "What is SSL?",
+							"url": "/learning/ssl/what-is-ssl/"
+						},
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "gwBHxAG3RwjReejRFn4Tb",
+							"displayText": "What is an SSL Certificate?",
+							"url": "/learning/ssl/what-is-an-ssl-certificate/"
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "41bCzYtpXDZRkfm3BzO806",
+							"name": "SSL Header: HTTP vs. HTTPS",
+							"displayText": "HTTP vs. HTTPS",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "zcwchxBLBWoaxyFq5Dhrj",
+									"displayText": "HTTP Security Gaps",
+									"url": "/learning/ssl/why-is-http-not-secure/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "11gGk7UFGxU33PLEUtjRfG",
+									"displayText": "What is HTTPS?",
+									"url": "/learning/ssl/what-is-https/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "15Vc3WANDpfVAs97KDEpzB",
+									"displayText": "Why Use HTTPS?",
+									"url": "/learning/ssl/why-use-https/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1oRht1dhER6Saxylj6glBn",
+									"displayText": "What is Mixed Content?",
+									"url": "/learning/ssl/what-is-mixed-content/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "4yMBT5IbPkVA9mccwMlLAY",
+							"name": "SSL Header: How Encryption Works",
+							"displayText": "How Encryption Works",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7qNVD8JotWdDbcqpZbp3VE",
+									"displayText": "What is Encryption?",
+									"url": "/learning/ssl/what-is-encryption/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3rrJ1k7k9ENDfgrBK5YzYK",
+									"displayText": "What is a Key?",
+									"url": "/learning/ssl/what-is-a-cryptographic-key/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4Uc11k7V2M5fHP5LmuF3vu",
+									"displayText": "What is a Session Key?",
+									"url": "/learning/ssl/what-is-a-session-key/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "57mpp35oVI2JzfRKESr73H",
+									"displayText": "Public Key Encryption",
+									"url": "/learning/ssl/how-does-public-key-encryption-work/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "33mZ23MKbvH87xdIT1dD7U",
+									"displayText": "Asymmetric Encryption",
+									"url": "/learning/ssl/what-is-asymmetric-encryption/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1QIQ5fPzS3n1uqI4XYZu72",
+									"displayText": "Lava Lamp Encryption",
+									"url": "/learning/ssl/lava-lamp-encryption/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2lwLYHBHzDBTGRId8drlRf",
+									"displayText": "Quantum Computing",
+									"url": "/learning/ssl/quantum/what-is-quantum-computing/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "5NWfQa2W1T6GY7oKFVQ5yn",
+							"name": "SSL Header: SSL Glossary",
+							"displayText": "SSL Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7dVuWLoT4g4e5ACvtAvDXG",
+									"displayText": "SSL Handshake",
+									"url": "/learning/ssl/what-happens-in-a-tls-handshake/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1brMQhAhJnFjyUUM6TaQrW",
+									"displayText": "What is TLS?",
+									"url": "/learning/ssl/transport-layer-security-tls/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3DJJDfuNUIAZ9HHhRYGgbV",
+									"displayText": "Keyless SSL",
+									"url": "/learning/ssl/keyless-ssl/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2fhx0LLDXj3vPLqS4ghmCe",
+									"displayText": "How SSL Works",
+									"url": "/learning/ssl/how-does-ssl-work/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6R3H8YcjaXUWJfMFDzvpUu",
+									"displayText": "SSL Certificate Types",
+									"url": "/learning/ssl/types-of-ssl-certificates/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7Gakh2yuxfEcpgxfy1hJhg",
+									"displayText": "Why Use TLS 1.3?",
+									"url": "/learning/ssl/why-use-tls-1.3/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5AsEd8eehv2y9EnsWeAVRr",
+									"displayText": "What is SNI?",
+									"url": "/learning/ssl/what-is-sni/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "DQ4yCoBF3o0LSkpiQCyuc",
+									"displayText": "Connection Not Private",
+									"url": "/learning/ssl/connection-not-private-explained/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2lbLRhcdSDOeSBEOF6PBsf",
+									"displayText": "What is Encrypted SNI?",
+									"url": "/learning/ssl/what-is-encrypted-sni/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6UQyd1PLht2H5F8aSNnF1y",
+									"displayText": "What is Domain Spoofing?",
+									"url": "/learning/ssl/what-is-domain-spoofing/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "6jvtLTbtKFKb5U7Fi94imf",
+							"name": "SSL header: Insights",
+							"displayText": "Insights",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "22UXessHsWvrAW3d6QdL1i",
+									"displayText": "Securing the post-quantum world",
+									"url": "https://www.cloudflare.com/insights-quantum-computing/"
+								}
+							]
+						}
+					]
+				},
+				"learningCenterArticleFooter": {
+					"contentTypeId": "learningCenterArticleFooter",
+					"contentfulId": "4qJHR2kpJZnCuBYyk2jEUu",
+					"learningCenterName": "ssl",
+					"column1Title": "About SSL/TLS",
+					"column1": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "7r9tBZ6FyoU4ybaPKM0uP5",
+						"name": "SSL Footer: About",
+						"displayText": "About SSL",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "357fevHD1vzqQ8mp5tKWWp",
+								"displayText": "What is SSL?",
+								"url": "/learning/ssl/what-is-ssl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1brMQhAhJnFjyUUM6TaQrW",
+								"displayText": "What is TLS?",
+								"url": "/learning/ssl/transport-layer-security-tls/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2fhx0LLDXj3vPLqS4ghmCe",
+								"displayText": "How SSL Works",
+								"url": "/learning/ssl/how-does-ssl-work/"
+							}
+						]
+					},
+					"column2Title": "About HTTPS",
+					"column2": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "1NrTagZnZPxPyjSu05dXiw",
+						"name": "SSL Footer: HTTPS",
+						"displayText": "About HTTPS",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "11gGk7UFGxU33PLEUtjRfG",
+								"displayText": "What is HTTPS?",
+								"url": "/learning/ssl/what-is-https/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "15Vc3WANDpfVAs97KDEpzB",
+								"displayText": "Why Use HTTPS?",
+								"url": "/learning/ssl/why-use-https/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "zcwchxBLBWoaxyFq5Dhrj",
+								"displayText": "HTTP Security Gaps",
+								"url": "/learning/ssl/why-is-http-not-secure/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "DQ4yCoBF3o0LSkpiQCyuc",
+								"displayText": "Connection Not Private",
+								"url": "/learning/ssl/connection-not-private-explained/"
+							}
+						]
+					},
+					"column3Title": "About Encryption",
+					"column3": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "7bDOcuccdiCIy26KzI2d1Q",
+						"name": "SSL Footer: Encryption",
+						"displayText": "About Encryption",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7qNVD8JotWdDbcqpZbp3VE",
+								"displayText": "What is Encryption?",
+								"url": "/learning/ssl/what-is-encryption/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "57mpp35oVI2JzfRKESr73H",
+								"displayText": "Public Key Encryption",
+								"url": "/learning/ssl/how-does-public-key-encryption-work/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "33mZ23MKbvH87xdIT1dD7U",
+								"displayText": "Asymmetric Encryption",
+								"url": "/learning/ssl/what-is-asymmetric-encryption/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1QIQ5fPzS3n1uqI4XYZu72",
+								"displayText": "Lava Lamp Encryption",
+								"url": "/learning/ssl/lava-lamp-encryption/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3rrJ1k7k9ENDfgrBK5YzYK",
+								"displayText": "What is a Key?",
+								"url": "/learning/ssl/what-is-a-cryptographic-key/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Uc11k7V2M5fHP5LmuF3vu",
+								"displayText": "What is a Session Key?",
+								"url": "/learning/ssl/what-is-a-session-key/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2lwLYHBHzDBTGRId8drlRf",
+								"displayText": "Quantum Computing",
+								"url": "/learning/ssl/quantum/what-is-quantum-computing/"
+							}
+						]
+					},
+					"column4Title": "SSL Glossary",
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "4yqGLocqy6kW3wUKCxerun",
+						"name": "SSL Footer: Glossary",
+						"displayText": "SSL Glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1oRht1dhER6Saxylj6glBn",
+								"displayText": "What is Mixed Content?",
+								"url": "/learning/ssl/what-is-mixed-content/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7dVuWLoT4g4e5ACvtAvDXG",
+								"displayText": "SSL Handshake",
+								"url": "/learning/ssl/what-happens-in-a-tls-handshake/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "gwBHxAG3RwjReejRFn4Tb",
+								"displayText": "What is an SSL Certificate?",
+								"url": "/learning/ssl/what-is-an-ssl-certificate/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6R3H8YcjaXUWJfMFDzvpUu",
+								"displayText": "SSL Certificate Types",
+								"url": "/learning/ssl/types-of-ssl-certificates/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7Gakh2yuxfEcpgxfy1hJhg",
+								"displayText": "Why Use TLS 1.3?",
+								"url": "/learning/ssl/why-use-tls-1.3/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5AsEd8eehv2y9EnsWeAVRr",
+								"displayText": "What is SNI?",
+								"url": "/learning/ssl/what-is-sni/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2lbLRhcdSDOeSBEOF6PBsf",
+								"displayText": "What is Encrypted SNI?",
+								"url": "/learning/ssl/what-is-encrypted-sni/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6UQyd1PLht2H5F8aSNnF1y",
+								"displayText": "What is Domain Spoofing?",
+								"url": "/learning/ssl/what-is-domain-spoofing/"
+							}
+						]
+					},
+					"column5Title": "Learning Center Navigation",
+					"column5": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "5qQn8nMmpW7qfjbAtFT7by",
+						"name": "SSL Footer: LC Navigation",
+						"displayText": "Learning Center Navigation",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2hdSVoYA5asSIG0U2ae20c",
+								"displayText": "Learning Center Home",
+								"url": "/learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "56Y6OytBNgNoNDWQL2ezlf",
+								"displayText": "DDoS Learning Center",
+								"url": "/learning/ddos/what-is-a-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6DGcnYIMM0eCGwqAKu2ECO",
+								"displayText": "CDN Learning Center",
+								"url": "/learning/cdn/what-is-a-cdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Ra0qmFJ1uewk2MYscW8KI",
+								"displayText": "DNS Learning Center",
+								"url": "/learning/dns/what-is-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q67XLnKqKhfmDJR4q9hJT",
+								"displayText": "Performance Learning Center",
+								"url": "/learning/performance/why-site-speed-matters/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1yItw6W6SsM2Y0Wuq6Y2c6",
+								"displayText": "Security Learning Center",
+								"url": "/learning/security/what-is-web-application-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z3UC9tP1Kjk85BX5zSGPY",
+								"displayText": "Serverless Learning Center",
+								"url": "/learning/serverless/what-is-serverless/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7D22pOfjb98KXcnAJyJFCX",
+								"displayText": "Bots Learning Center",
+								"url": "/learning/bots/what-is-a-bot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7jgqDUFFzaLuKrsaBTLdV0",
+								"displayText": "Cloud Learning Center",
+								"url": "/learning/cloud/what-is-the-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6PdBQjiFs98K6RQuG5TYNd",
+								"displayText": "Access Management Learning Center",
+								"url": "/learning/access-management/what-is-identity-and-access-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3jjEMuuLrCwhRidjG5kglM",
+								"displayText": "Network Layer Learning Center",
+								"url": "/learning/network-layer/what-is-the-network-layer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RvS0l0m86G1VISDrEvlJb",
+								"displayText": "Privacy Learning Center",
+								"url": "/learning/privacy/what-is-data-privacy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "MytksT5WU5mh863BQYEkj",
+								"displayText": "Video Streaming Learning Center",
+								"url": "/learning/video/what-is-streaming/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
+								"displayText": "Email Security Learning Center",
+								"url": "/learning/email-security/what-is-email-security/"
+							}
+						]
+					}
+				},
+				"header": "What is a session key? | Session keys and TLS handshakes",
+				"blurbSubHeader": "The SSL/TLS protocol uses both public key and symmetric encryption, and new keys for symmetric encryption have to be generated for each communication session. Such keys are called \"session keys.\"",
+				"objectivesHeader": "Session Key",
+				"objectivesList": [
+					"Learn what a session is, what a key is, and when new session keys have to be created",
+					"Understand the differences between asymmetric and symmetric encryption",
+					"Learn how the SSL/TLS encryption protocol uses both kinds of encryption",
+					"Learn the 4 types of session keys used for symmetric encryption in SSL/TLS"
+				],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "357fevHD1vzqQ8mp5tKWWp",
+						"displayText": "What is SSL?",
+						"url": "/learning/ssl/what-is-ssl/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "7dVuWLoT4g4e5ACvtAvDXG",
+						"displayText": "SSL Handshake",
+						"url": "/learning/ssl/what-happens-in-a-tls-handshake/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "6R3H8YcjaXUWJfMFDzvpUu",
+						"displayText": "SSL Certificate Types",
+						"url": "/learning/ssl/types-of-ssl-certificates/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "3DJJDfuNUIAZ9HHhRYGgbV",
+						"displayText": "Keyless SSL",
+						"url": "/learning/ssl/keyless-ssl/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "2fhx0LLDXj3vPLqS4ghmCe",
+						"displayText": "How SSL Works",
+						"url": "/learning/ssl/how-does-ssl-work/"
+					}
+				],
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is a session key?</h2>\n\n<p>A session key is any <a href='/learning/ssl/what-is-a-cryptographic-key/'>encryption key</a> used to <a href='https://www.cloudflare.com/learning/ssl/what-is-asymmetric-encryption/'>symmetrically encrypt</a> one communication session only. In other words, it's a temporary key that is only used once, during one stretch of time, for <a href='/learning/ssl/what-is-encryption/'>encrypting</a> and decrypting data; future conversations between the two parties would be encrypted with different session keys. A session key is like a password that someone resets every time they log in.</p>\n\n<p>In <a href='/learning/ssl/what-is-ssl/'>SSL</a>/<a href='/learning/ssl/transport-layer-security-tls/'>TLS</a>, the two communicating parties (the <a href='/learning/serverless/glossary/client-side-vs-server-side/'>client and the server</a>) generate 4 session keys at the start of any communication session, during the <a href='/learning/ssl/what-happens-in-a-tls-handshake/'>TLS handshake</a>. The official <a href='https://tools.ietf.org/html/rfc5246' target='_blank'>RFC for TLS</a> does not actually call these keys \"session keys\", but functionally that's exactly what they are.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a session?</h2>\n\n<p>A session is essentially a conversation. A session takes place over a network, and it begins when two devices acknowledge each other and open a virtual connection. It ends when the two devices have obtained the information they need from each other and send \"finished\" messages, terminating the connection, much like if two people are texting each other, and they close the conversation by saying, \"Talk to you later.\" The connection can also time out due to inactivity, like if two people are texting and simply stop responding to each other.</p>\n\n<img src=\"/resources/images/slt3lc6tev37/V9RAG8z5jvFu1c0FUyE5A/5a686114c92664bccef84c32a37a09f3/what_is_a_session_key.png\" class=\"responsive-image\" alt=\"Session keys - three sessions each with a new key\" itemprop=\"image\" />\n\n<p>A session can either be a set period of time, or it can last for as long as the two parties are communicating. If the former, the session will expire after a certain amount of time; in the context of <a href='/learning/ssl/transport-layer-security-tls/'>TLS encryption</a>, the two devices would then have to exchange information and generate new session keys to reopen the connection.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a cryptographic key?</h2>\n\n<p>In encryption, a key is a string of data that is used to alter messages so that they become encrypted – in other words, so that the data appears randomized or scrambled. A key is also used for decrypting the data, or translating it from its scrambled form to its original form. (See <a href='/learning/ssl/what-is-a-cryptographic-key/'>What is a cryptographic key?</a> to learn more.)</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is symmetric encryption? What is asymmetric encryption?</h2>\n\n<p>In symmetric encryption, the exact same key is used on both sides of a conversation, for both encrypting and decrypting. In a session that uses symmetric encryption, multiple keys can be used, but a message that is encrypted with one key is decrypted with that same key.</p>\n\n<p>In <a href='/learning/ssl/what-is-asymmetric-encryption/'>asymmetric encryption</a>, there are two keys, and data that is encrypted with one key can only be decrypted with the other key – unlike in symmetric encryption, when the same key both encrypts and decrypts. This is also known as <a href='/learning/ssl/how-does-public-key-encryption-work/'>public key encryption</a>, because one of the keys is shared publicly.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Does HTTPS use symmetric or asymmetric encryption?</h2>\n\n<p><a href='/learning/ssl/what-is-https/'>HTTPS</a>, which is <a href='/learning/ddos/glossary/hypertext-transfer-protocol-http/'>HTTP</a> with the TLS encryption protocol, uses both types of encryption. All communications over TLS start with a TLS handshake. Asymmetric encryption is crucial for making the TLS handshake work.</p>\n\n<p>During the course of a TLS handshake, the two communicating devices will establish the four session keys, and these will be used for symmetric encryption for the rest of the session. Usually, the two communicating devices are a client, or a user device like a laptop or a smartphone, and a server, which is any web server that hosts a website. (For more, see <a href='/learning/serverless/glossary/client-side-vs-server-side/'>What is the client-server model?</a>)</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does a TLS handshake work?</h2>\n\n<p>During a <a href='/learning/ssl/what-happens-in-a-tls-handshake/'>TLS handshake</a>, both client and server send each other random data, which they use to make calculations separately and then derive the same session keys. Three kinds of randomly generated data are sent from one side to the other:</p>\n\n<ul class=\"learning-list\">\n  <li>The \"client random\": This is a random string of bytes that the client sends to the server.</li>\n  <li>The \"server random\": This is similar to the client random, except that the server sends it to the client.</li>\n  <li>The \"premaster secret\": This is yet another string of data. In some versions of the TLS handshake, the client generates this and sends it to the server encrypted with the public key; in other versions, the client and server generate the premaster secret on their own, using agreed-upon algorithm parameters to arrive at the same result.</li>\n</ul>\n\n<p>The TLS handshake uses asymmetric encryption either to hide the server random from attackers (by encrypting it with a private key), or for allowing the server to digitally \"sign\" one of its messages so that the client knows the server is who it claims to be (just as a signature helps verify someone's identity in real life). The server encrypts some data with the private key, and the client uses the public key to decrypt it, proving that the server has the correct key and is legitimate.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is the 'master secret' in a TLS handshake?</h2>\n\n<p>The master secret is the final result from combining the client random, the server random, and the premaster secret via an algorithm. The client and the server each have those three messages, so they should arrive at the same result for the master secret.</p>\n\n<p>The client and server then use the master secret to calculate several session keys for use in that session only – 4 session keys, to be precise.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What 4 session keys are generated from the master secret in a TLS handshake?</h2>\n\n<p>The 4 kinds of session keys created in each TLS handshake are:</p>\n\n<ul class=\"learning-list\">\n  <li>The \"client write key\"</li>\n  <li>The \"server write key\"</li>\n  <li>The \"client write MAC key\"</li>\n  <li>The \"server write MAC key\"</li>\n</ul>\n\n<p>The client write key is the key that the client uses to encrypt its messages. The client write key is a symmetric key, and both the client and the server have it. This enables the server to decrypt messages from the client using the same key.</p>\n\n<p>The server write key is just like the client write key, except on the server side. To summarize: Messages from client to server are encrypted with the client write key, and the server uses the client write key to decrypt them. Messages from server to client are encrypted with the server write key, and the client uses the server write key to decrypt them. (This whole process is handled by the client device or browser; the users themselves don't have to do any of this encrypting or decrypting.)</p>\n\n<p>The MAC, or message authentication code, keys are used to digitally sign messages. The server signs its messages with the server write MAC key, and when the client receives the message, it can check the MAC key used against its own record of the server MAC key to make sure it's legitimate. The client signs its messages with the client write MAC key.</p>\n\n<p>A set of 4 completely new session keys gets created with every new communication session and new TLS handshake. There will be a different client write key, server write key, and so on, but those 4 types of keys get created every time.</p>",
+				"availableLocales": null,
+				"localized": true,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "No Page for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": null
+				},
+				"proactivePopup": null,
+				"sidebarForm": null
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "1oCeVjbwrEMc1yhryGy6hd",
+			"pathname": "/learning/ssl/what-is-a-session-key/",
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

@@ -1,0 +1,722 @@
+{
+	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
+	"path": "/learning/network-layer/what-is-a-network-switch/",
+	"result": {
+		"data": {
+			"learningCenterArticle": {
+				"contentTypeId": "learningCenterArticle",
+				"contentfulId": "6ZwogzVZJjJ2shJJLowm24",
+				"urlSlug": "network-layer/what-is-a-network-switch",
+				"metaTags": {
+					"metaTitle": "What is a network switch? | Switch vs. router",
+					"metaDescription": "A network switch forwards data between devices, unlike routers, which forward data between networks. Learn about Ethernet switches, managed switches, and more.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"metaTitle": "What is a network switch? | Switch vs. router",
+				"metaDescription": "A network switch forwards data between devices, unlike routers, which forward data between networks. Learn about Ethernet switches, managed switches, and more.",
+				"learningCenterArticleSubHeader": {
+					"contentTypeId": "learningCenterArticleSubHeader",
+					"contentfulId": "2NTNgGsYPl9HfIDs724JbF",
+					"learningCenterName": "networklayer",
+					"links": [
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "46yNBu6IQ1gCdIA8eG292m",
+							"displayText": "Network Layer",
+							"url": "/learning/network-layer/what-is-the-network-layer/"
+						},
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "6f5fhtiSUbfI8b05lKOm4x",
+							"displayText": "How Internet Works",
+							"url": "/learning/network-layer/how-does-the-internet-work/"
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "18T0AEOTUxQkb9FCJ9PGhU",
+							"name": "Network Layer Header: Networking Basics",
+							"displayText": "Networking Basics",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7yJyIRZ7RyZUMnE6Iz178d",
+									"displayText": "What Is Routing?",
+									"url": "/learning/network-layer/what-is-routing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6omqp77P1xG2VxH7tRPuSA",
+									"displayText": "What Is a Router?",
+									"url": "/learning/network-layer/what-is-a-router/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4YmH7UVzSMAvbcI6sPyyK",
+									"displayText": "Network Switch",
+									"url": "/learning/network-layer/what-is-a-network-switch/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7Jhvs7WYoVu9QOoAjcLX6o",
+									"displayText": "What is a Packet?",
+									"url": "/learning/network-layer/what-is-a-packet/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6RLQUAhE7el2jcCAJnGOQy",
+									"displayText": "What is a Protocol?",
+									"url": "/learning/network-layer/what-is-a-protocol/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6ZVwf9GXI0dUYZyuZ0F0El",
+									"displayText": "What is Tunneling?",
+									"url": "/learning/network-layer/what-is-tunneling/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6ILzrLGo0VX47fqSdZzzvz",
+									"displayText": "What is a Port?",
+									"url": "/learning/network-layer/what-is-a-computer-port/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2oL1WxC7415PcmjuLRiqYl",
+									"displayText": "Control Plane",
+									"url": "/learning/network-layer/what-is-the-control-plane/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "49UJJsxvKvb9Ks30l9bXgx",
+							"name": "Network Layer Header: Network Types",
+							"displayText": "Network Types",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4bK3yl2lIJorDZQHs1H1a0",
+									"displayText": "Local Area Network (LAN)",
+									"url": "/learning/network-layer/what-is-a-lan/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7x0aq8mwf9Rx4lg6rkjWiz",
+									"displayText": "Wide Area Network (WAN)",
+									"url": "/learning/network-layer/what-is-a-wan/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "69FyYu2Nl7lx7PPxWIxkIx",
+									"displayText": "SD-WAN",
+									"url": "/learning/network-layer/what-is-an-sd-wan/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5fMrQ9PPNlCWoSDUWB5ODz",
+									"displayText": "Metropolitan Area Network (MAN)",
+									"url": "/learning/network-layer/what-is-a-metropolitan-area-network/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4C9m4LnuXViq25OjkQ4IIo",
+									"displayText": "Campus Area Network (CAN)",
+									"url": "/learning/network-layer/what-is-a-campus-area-network/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3a237Kt4f9t99EGOlTsnQr",
+									"displayText": "Personal Area Network (PAN)",
+									"url": "/learning/network-layer/what-is-a-personal-area-network/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "31YdKHPLe2rGKcikXmvaIW",
+									"displayText": "Autonomous System (AS)",
+									"url": "/learning/network-layer/what-is-an-autonomous-system/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6aRzsX0gbj4ceQWQiEzBOC",
+									"displayText": "Network-as-a-Service (NaaS)",
+									"url": "/learning/network-layer/network-as-a-service-naas/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6wi0u9frLgJN3XQlvx223h",
+									"displayText": "Enterprise Networking",
+									"url": "/learning/network-layer/enterprise-networking/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "6227tKEJfE6iW20rhlIDzA",
+							"name": "Network Layer Header: Protocols",
+							"displayText": "Protocols",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "19nTg1iwyawlo5bSpU8Xe9",
+									"displayText": "Internet Protocol (IP)",
+									"url": "/learning/network-layer/internet-protocol/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "jT9Z2xK5YfSxiFj6L5eut",
+									"displayText": "What is IPsec?",
+									"url": "/learning/network-layer/what-is-ipsec/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "314nljr3GHR35lcUUgTbeF",
+									"displayText": "What is IGMP?",
+									"url": "/learning/network-layer/what-is-igmp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3EFUwUp91c9kSVVAd5UoRO",
+									"displayText": "IGMP Snooping",
+									"url": "/learning/network-layer/what-is-igmp-snooping/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5uhocF5vOQSt8EmdiRWkq1",
+									"displayText": "What is MPLS?",
+									"url": "/learning/network-layer/what-is-mpls/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2UnHCsGRw7y9aTkPRAITKe",
+									"displayText": "GRE Tunneling",
+									"url": "/learning/network-layer/what-is-gre-tunneling/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "7HSoF6OwkVrpRKdFKQRijv",
+							"name": "Network Layer Header: Glossary",
+							"displayText": "Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "toWW4Gb9PcaIPePoiLaZ3",
+									"displayText": "Subnet",
+									"url": "/learning/network-layer/what-is-a-subnet/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4A5YGXVcY3aDIb48dP0WhH",
+									"displayText": "What is MSS?",
+									"url": "/learning/network-layer/what-is-mss/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1KHllFRuBRPeyUdnokeRC4",
+									"displayText": "What is MTU?",
+									"url": "/learning/network-layer/what-is-mtu/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7bvJN7SaSIva3Ar3sNx05x",
+									"displayText": "What is SDN?",
+									"url": "/learning/network-layer/what-is-sdn/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "JIBUsEPjalIJu1t3jEof8",
+									"displayText": "What is MTR?",
+									"url": "/learning/network-layer/what-is-mtr/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7MFRR5sF1pTzLCpLuxDsBj",
+									"displayText": "IPsec vs SSL VPNs",
+									"url": "/learning/network-layer/ipsec-vs-ssl-vpn/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2lFnXnqBPTWZmdedSv6WPX",
+									"displayText": "Network security",
+									"url": "/learning/network-layer/network-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "msCIoUjRRe010vqjDTHS0",
+									"displayText": "SD-WAN vs. MPLS",
+									"url": "/learning/network-layer/sd-wan-vs-mpls/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "7oux4RIlcnRsZ0LWFBYEyR",
+							"name": "Network Layer Header: Insights",
+							"displayText": "Insights",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1wiWDzIJ6wU4wdgrCCsqKI",
+									"displayText": "Accelerating the journey to SASE",
+									"url": "https://www.cloudflare.com/learning/insights-sase-network-transformation/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6LQmFiGz1KUuA6DwDNfV4F",
+									"displayText": "The challenges of network infrastructure",
+									"url": "https://www.cloudflare.com/insights-network-infrastructure/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "jQp53tpsRvjsWJjYlZDyW",
+									"displayText": "The future of networking",
+									"url": "https://www.cloudflare.com/learning/insights-future-of-networking"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4YNpRTdJGY11quTRBRjPKQ",
+									"displayText": "How blockchain carries us into Web 3.0",
+									"url": "https://www.cloudflare.com/learning/insights-how-blockchain-web3"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1fudUp354PiIkWi5M2QBuE",
+									"displayText": "The risks smaller DDoS attacks pose to network infrastructure",
+									"url": "https://www.cloudflare.com/insights-small-ddos-attacks/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5eUpBgLgoPxWdadu3NiMlC",
+									"displayText": "The software supply chain is under attack",
+									"url": "https://www.cloudflare.com/learning/insights-supply-chain-attacks/"
+								}
+							]
+						}
+					]
+				},
+				"learningCenterArticleFooter": {
+					"contentTypeId": "learningCenterArticleFooter",
+					"contentfulId": "SJpRsBZDhJm2lhBSV0G9E",
+					"learningCenterName": "networklayer",
+					"column1Title": "About the Network Layer",
+					"column1": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "2LY3WMeF8BjVx77cUGCh9Z",
+						"name": "Network Layer About Footer",
+						"displayText": "About the Network Layer",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "46yNBu6IQ1gCdIA8eG292m",
+								"displayText": "Network Layer",
+								"url": "/learning/network-layer/what-is-the-network-layer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7yJyIRZ7RyZUMnE6Iz178d",
+								"displayText": "What Is Routing?",
+								"url": "/learning/network-layer/what-is-routing/"
+							}
+						]
+					},
+					"column2Title": "Network Types",
+					"column2": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "55elS8RVutktd7zM6TVVZ2",
+						"name": "Network Layer Footer - Network Types",
+						"displayText": "Network Types",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4bK3yl2lIJorDZQHs1H1a0",
+								"displayText": "Local Area Network (LAN)",
+								"url": "/learning/network-layer/what-is-a-lan/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7x0aq8mwf9Rx4lg6rkjWiz",
+								"displayText": "Wide Area Network (WAN)",
+								"url": "/learning/network-layer/what-is-a-wan/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "69FyYu2Nl7lx7PPxWIxkIx",
+								"displayText": "SD-WAN",
+								"url": "/learning/network-layer/what-is-an-sd-wan/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5fMrQ9PPNlCWoSDUWB5ODz",
+								"displayText": "Metropolitan Area Network (MAN)",
+								"url": "/learning/network-layer/what-is-a-metropolitan-area-network/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4C9m4LnuXViq25OjkQ4IIo",
+								"displayText": "Campus Area Network (CAN)",
+								"url": "/learning/network-layer/what-is-a-campus-area-network/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3a237Kt4f9t99EGOlTsnQr",
+								"displayText": "Personal Area Network (PAN)",
+								"url": "/learning/network-layer/what-is-a-personal-area-network/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "31YdKHPLe2rGKcikXmvaIW",
+								"displayText": "Autonomous System (AS)",
+								"url": "/learning/network-layer/what-is-an-autonomous-system/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6aRzsX0gbj4ceQWQiEzBOC",
+								"displayText": "Network-as-a-Service (NaaS)",
+								"url": "/learning/network-layer/network-as-a-service-naas/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7bvJN7SaSIva3Ar3sNx05x",
+								"displayText": "What is SDN?",
+								"url": "/learning/network-layer/what-is-sdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6wi0u9frLgJN3XQlvx223h",
+								"displayText": "Enterprise Networking",
+								"url": "/learning/network-layer/enterprise-networking/"
+							}
+						]
+					},
+					"column3Title": "Networking Basics",
+					"column3": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "5eU7ZXZ6LJdfNkU3gtD0nV",
+						"name": "Network Layer Footer - Networking Basics",
+						"displayText": "Networking Basics",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6f5fhtiSUbfI8b05lKOm4x",
+								"displayText": "How Internet Works",
+								"url": "/learning/network-layer/how-does-the-internet-work/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "19nTg1iwyawlo5bSpU8Xe9",
+								"displayText": "Internet Protocol (IP)",
+								"url": "/learning/network-layer/internet-protocol/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6omqp77P1xG2VxH7tRPuSA",
+								"displayText": "What Is a Router?",
+								"url": "/learning/network-layer/what-is-a-router/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7qqJLBSHHwIxQgXKn7CJsf",
+								"displayText": "What is a Network Switch?",
+								"url": "/learning/network-layer/what-is-a-network-switch/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7Jhvs7WYoVu9QOoAjcLX6o",
+								"displayText": "What is a Packet?",
+								"url": "/learning/network-layer/what-is-a-packet/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RLQUAhE7el2jcCAJnGOQy",
+								"displayText": "What is a Protocol?",
+								"url": "/learning/network-layer/what-is-a-protocol/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6ZVwf9GXI0dUYZyuZ0F0El",
+								"displayText": "What is Tunneling?",
+								"url": "/learning/network-layer/what-is-tunneling/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6ILzrLGo0VX47fqSdZzzvz",
+								"displayText": "What is a Port?",
+								"url": "/learning/network-layer/what-is-a-computer-port/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2oL1WxC7415PcmjuLRiqYl",
+								"displayText": "Control Plane",
+								"url": "/learning/network-layer/what-is-the-control-plane/"
+							}
+						]
+					},
+					"column4Title": "Glossary",
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "31rQag046CuMupc5UZGGEp",
+						"name": "Network Layer Footer - Glossary",
+						"displayText": "Glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4A5YGXVcY3aDIb48dP0WhH",
+								"displayText": "What is MSS?",
+								"url": "/learning/network-layer/what-is-mss/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1KHllFRuBRPeyUdnokeRC4",
+								"displayText": "What is MTU?",
+								"url": "/learning/network-layer/what-is-mtu/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "toWW4Gb9PcaIPePoiLaZ3",
+								"displayText": "Subnet",
+								"url": "/learning/network-layer/what-is-a-subnet/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2UnHCsGRw7y9aTkPRAITKe",
+								"displayText": "GRE Tunneling",
+								"url": "/learning/network-layer/what-is-gre-tunneling/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "JIBUsEPjalIJu1t3jEof8",
+								"displayText": "What is MTR?",
+								"url": "/learning/network-layer/what-is-mtr/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "jT9Z2xK5YfSxiFj6L5eut",
+								"displayText": "What is IPsec?",
+								"url": "/learning/network-layer/what-is-ipsec/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7MFRR5sF1pTzLCpLuxDsBj",
+								"displayText": "IPsec vs SSL VPNs",
+								"url": "/learning/network-layer/ipsec-vs-ssl-vpn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "314nljr3GHR35lcUUgTbeF",
+								"displayText": "What is IGMP?",
+								"url": "/learning/network-layer/what-is-igmp/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3EFUwUp91c9kSVVAd5UoRO",
+								"displayText": "IGMP Snooping",
+								"url": "/learning/network-layer/what-is-igmp-snooping/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5uhocF5vOQSt8EmdiRWkq1",
+								"displayText": "What is MPLS?",
+								"url": "/learning/network-layer/what-is-mpls/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2lFnXnqBPTWZmdedSv6WPX",
+								"displayText": "Network security",
+								"url": "/learning/network-layer/network-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "msCIoUjRRe010vqjDTHS0",
+								"displayText": "SD-WAN vs. MPLS",
+								"url": "/learning/network-layer/sd-wan-vs-mpls/"
+							}
+						]
+					},
+					"column5Title": "Learning Center Navigation",
+					"column5": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "7F0ogrrwL1BWGFiKCq8CXJ",
+						"name": "Network Layer Footer - Learning Nav",
+						"displayText": "Learning Center Navigation",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2hdSVoYA5asSIG0U2ae20c",
+								"displayText": "Learning Center Home",
+								"url": "/learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "56Y6OytBNgNoNDWQL2ezlf",
+								"displayText": "DDoS Learning Center",
+								"url": "/learning/ddos/what-is-a-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Ra0qmFJ1uewk2MYscW8KI",
+								"displayText": "DNS Learning Center",
+								"url": "/learning/dns/what-is-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6DGcnYIMM0eCGwqAKu2ECO",
+								"displayText": "CDN Learning Center",
+								"url": "/learning/cdn/what-is-a-cdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z3UC9tP1Kjk85BX5zSGPY",
+								"displayText": "Serverless Learning Center",
+								"url": "/learning/serverless/what-is-serverless/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1yItw6W6SsM2Y0Wuq6Y2c6",
+								"displayText": "Security Learning Center",
+								"url": "/learning/security/what-is-web-application-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q67XLnKqKhfmDJR4q9hJT",
+								"displayText": "Performance Learning Center",
+								"url": "/learning/performance/why-site-speed-matters/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52V7iI9YriJ0En2SGmEXz5",
+								"displayText": "SSL Learning Center",
+								"url": "/learning/ssl/what-is-ssl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7D22pOfjb98KXcnAJyJFCX",
+								"displayText": "Bots Learning Center",
+								"url": "/learning/bots/what-is-a-bot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7jgqDUFFzaLuKrsaBTLdV0",
+								"displayText": "Cloud Learning Center",
+								"url": "/learning/cloud/what-is-the-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6PdBQjiFs98K6RQuG5TYNd",
+								"displayText": "Access Management Learning Center",
+								"url": "/learning/access-management/what-is-identity-and-access-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RvS0l0m86G1VISDrEvlJb",
+								"displayText": "Privacy Learning Center",
+								"url": "/learning/privacy/what-is-data-privacy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "MytksT5WU5mh863BQYEkj",
+								"displayText": "Video Streaming Learning Center",
+								"url": "/learning/video/what-is-streaming/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
+								"displayText": "Email Security Learning Center",
+								"url": "/learning/email-security/what-is-email-security/"
+							}
+						]
+					}
+				},
+				"header": "What is a network switch? | Switch vs. router",
+				"blurbSubHeader": "A network switch forwards data packets between devices. Switches send packets directly to devices, rather than sending them to networks like a router does.",
+				"objectivesHeader": "Network Switch",
+				"objectivesList": [
+					"Define network switch",
+					"Learn the difference between a switch vs. a router",
+					"Learn about Ethernet switches, unmanaged and managed switches, and more"
+				],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "46yNBu6IQ1gCdIA8eG292m",
+						"displayText": "Network Layer",
+						"url": "/learning/network-layer/what-is-the-network-layer/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "7yJyIRZ7RyZUMnE6Iz178d",
+						"displayText": "What Is Routing?",
+						"url": "/learning/network-layer/what-is-routing/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "6f5fhtiSUbfI8b05lKOm4x",
+						"displayText": "How Internet Works",
+						"url": "/learning/network-layer/how-does-the-internet-work/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "31YdKHPLe2rGKcikXmvaIW",
+						"displayText": "Autonomous System (AS)",
+						"url": "/learning/network-layer/what-is-an-autonomous-system/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "4A5YGXVcY3aDIb48dP0WhH",
+						"displayText": "What is MSS?",
+						"url": "/learning/network-layer/what-is-mss/"
+					}
+				],
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is a network switch?</h2>\n\n<p>A network switch connects devices within a network (often a <a href='/learning/network-layer/what-is-a-lan/'>local area network, or LAN</a>*) and forwards <a href='/learning/network-layer/what-is-a-packet/'>data packets</a> to and from those devices. Unlike a <a href='/learning/network-layer/what-is-a-router/'>router</a>, a switch only sends data to the single device it is intended for (which may be another switch, a router, or a user's computer), not to networks of multiple devices.</p>\n\n<img src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/6ENfwtM3iUH99JpYoEC9FY/04abc1654ceff2645f50713394ebcb73/network-switch.svg\" class=\"responsive-image\" alt=\"Network traffic goes from Internet to router to network switch to computers\" itemprop=\"image\"/>\n\n<p><i>*A local area network (LAN) is a group of connected devices within close physical proximity. Home WiFi networks are one common example of a LAN.</i></p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is the difference between a switch and a router?</h2>\n\n<p>Routers select paths for data packets to cross networks and reach their destinations. Routers do this by connecting with different networks and forwarding data from network to network — including LANs, <a href='/learning/network-layer/what-is-a-wan/'>wide area networks (WANs)</a>, or <a href='/learning/network-layer/what-is-an-autonomous-system/'>autonomous systems</a>, which are the large networks that make up the Internet.</p>\n\n<p>In practice, what this means is that routers are necessary for an Internet connection, while switches are only used for interconnecting devices. Homes and small offices need routers for Internet access, but most do not need a network switch, unless they require a large amount of Ethernet* ports. However, large offices, networks, and data centers with dozens or hundreds of computers usually do require switches.</p>\n\n<p><i>*Ethernet is a layer 2 <a href='/learning/network-layer/what-is-a-protocol/'>protocol</a> for sending data between devices. Unlike WiFi, Ethernet requires a physical connection via an Ethernet cable.</i></p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a layer 2 switch? What is a layer 3 switch?</h2>\n\n<p>Network switches can operate at either <a href='/learning/ddos/glossary/open-systems-interconnection-model-osi/'>OSI</a> layer 2 (the data link layer) or <a href='/learning/ddos/layer-3-ddos-attacks/'>layer 3</a> (the <a href='/learning/network-layer/what-is-the-network-layer/'>network layer</a>). Layer 2 switches forward data based on the destination MAC address (see below for definition), while layer 3 switches forward data based on the destination <a href='/learning/dns/glossary/what-is-my-ip-address/'>IP address</a>. Some switches can do both.</p>\n\n<p>Most switches, however, are layer 2 switches. Layer 2 switches most often connect to the devices in their networks using Ethernet cables. Ethernet cables are physical cables that plug into devices via Ethernet ports.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is an unmanaged switch? What is a managed switch?</h2>\n\n<p>An unmanaged switch simply creates more Ethernet ports on a LAN, so that more local devices can access the Internet. Unmanaged switches pass data back and forth based on device MAC addresses.</p>\n\n<p>A managed switch fulfills the same function for much larger networks, and offers network administrators much more control over how traffic is prioritized. They also enable administrators to set up Virtual LANs (VLANs) to further subdivide a local network into smaller chunks.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is the difference between a MAC address and an IP address?</h2>\n\n<p>Network switches refer to MAC addresses in order to send Internet traffic to the right devices, not IP addresses.</p>\n\n<p>\nEvery device that connects to the Internet has an IP address. An IP address is a series of alphanumeric characters, like 192.0.2.255 or 2001:0db8:85a3:0000:0000:8a2e:0370:7334. IP addresses act like a mailing address, enabling Internet communications directed at that address to reach that device. IP addresses often change: because there is a limited number of IPv4 addresses, user devices are typically assigned new ones when they form a new connection with a network.\n</p>\n\n<p>IP addresses are used at layer 3, which means computers and devices all over the Internet use IP addresses for sending and receiving data, no matter which network they are connected to. All IP packets include their source and destination IP addresses in their headers, just as a piece of mail has a destination address and a return address.</p>\n\n<p>In contrast, a MAC address is a permanent identifier for each piece of hardware, somewhat like a serial number. Unlike IP addresses, MAC addresses do not change. MAC addresses are used at layer 2, not layer 3 — which means they are not included in IP packet headers. In other words, MAC addresses are not part of Internet traffic. They are only used inside a given network.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How do network switches know the MAC addresses of the devices in their network?</h2>\n\n<p>Layer 2 network switches maintain a table in memory that matches MAC addresses to the switch's Ethernet ports. This table is called a Content Addressable Memory (CAM) table.</p>\n\n<p>Suppose Computer A is connected to an Ethernet cable that plugs into the switch's Port 1, Computer B is connected to Port 2, and Computer C to Port 3. When data arrives for Computer A, the switch consults its CAM table, sees where Computer A is connected, and knows to forward Computer A-bound traffic at Port 1, not Ports 2 or 3.</p>\n\n<p>The switch's CAM table would look something like this:</p>\n\n<div class=\"record-table\">\n<table>\n<tr>\n<th>MAC address</th>\n<th>&nbsp;Port&nbsp;</th>\n</tr>\n<tr>\n<td>Computer A's MAC address</td>\n<td>1</td>\n</tr>\n<tr>\n<td>Computer B's MAC address</td>\n<td>2</td>\n</tr>\n<tr>\n<td>Computer C's MAC address</td>\n<td>3</td>\n</tr>\n</table>\n</div>\n\n<p>The switch's CAM table is stored in memory. If the switch is turned off, the table will disappear and the switch has to relearn the table when it is rebooted.</p>\n\n<p>Now, suppose the switch was just turned on and has not yet created its CAM table. It does not know which ports Computers A, B, and C are connected to. It also does not know their MAC addresses.</p>\n\n<div class=\"record-table\">\n<table>\n<tr>\n<th>&nbsp;MAC address&nbsp;</th>\n<th>&nbsp;Port&nbsp;</th>\n</tr>\n<tr>\n<td>?</td>\n<td>?</td>\n</tr>\n<tr>\n<td>?</td>\n<td>?</td>\n</tr>\n<tr>\n<td>?</td>\n<td>?</td>\n</tr>\n</table>\n</div>\n\n<p>Suppose Computer A sends a message to Computer B. The switch takes the following steps to get the message to Computer B and start filling out its CAM table:</p>\n<ul>\n<li>It records Computer A's MAC address and the port its message came in on</li>\n<li>It forwards Computer A's message to all other computers on the network (except Computer A); this is known as \"flooding\"</li>\n<li>When Computer B replies, it records Computer B's MAC address and port as well</li>\n  </ul>\n\n  <div class=\"record-table\">\n<table>\n<tr>\n<th>MAC address</th>\n<th>&nbsp;Port&nbsp;</th>\n</tr>\n<tr>\n<td>Computer A's MAC address</td>\n<td>1</td>\n</tr>\n<tr>\n<td>Computer B's MAC address</td>\n<td>2</td>\n</tr>\n<tr>\n<td>?</td>\n<td>?</td>\n</tr>\n</table>\n</div>\n\n<p>Now, the switch's CAM table knows where Computer A and Computer B are. It also knows their MAC addresses.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does Cloudflare protect network switches?</h2>\n\n<p>Cloudflare Magic Transit protects network infrastructure devices such as switches and routers from <a href='/learning/ddos/what-is-a-ddos-attack/'>DDoS</a> attack traffic that can knock them offline or compromise them. Magic Transit protects on-premise, <a href='/learning/cloud/what-is-the-cloud/'>cloud</a>, and <a href='/learning/cloud/what-is-hybrid-cloud/'>hybrid</a> networks. Learn more about <a href='/magic-transit/'>Magic Transit</a> or about <a href='/learning/ddos/layer-3-ddos-attacks/'>layer 3 attacks</a>.</p>\n",
+				"availableLocales": null,
+				"localized": true,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "No Page for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": "Translated for Locale"
+				},
+				"proactivePopup": null,
+				"sidebarForm": null
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "6ZwogzVZJjJ2shJJLowm24",
+			"pathname": "/learning/network-layer/what-is-a-network-switch/",
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

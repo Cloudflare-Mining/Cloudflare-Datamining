@@ -1,0 +1,84 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/trendyol/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Trendyol",
+				"contentfulId": "73AazCApz6ifSNjMXdAf5q",
+				"nameUrlSlug": "trendyol",
+				"metaTags": {
+					"metaTitle": "Trendyol",
+					"metaDescription": "Ecommerce platform Trendyol used Cloudflare to block hundreds of millions of malicious requests without impacting site performance.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2020-08-10",
+				"homepageUrl": "https://www.trendyol.com/",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "Ecommerce platform Trendyol used Cloudflare to block hundreds of millions of malicious requests without impacting site performance.",
+				"longDescription": "## Trendyol uses Cloudflare to boost its ecommerce platform's security and performance\n\nFrom clothes and cosmetics to computers, mobile phones, and appliances, e-commerce company Trendyol offers its customers hundreds of thousands of discounted products. Based in Turkey, Trendyol has become the country’s largest and fastest-growing mobile commerce company, serving over 15 million customers in collaboration with over 2,000 merchants. According to Trendyol security engineer Mert Can Coskuner, Internet security and performance are two of the company’s key pillars. “We’re an e-commerce company and a technology company, which means a daily challenge of keeping our customer and merchant engagement high while maintaining security,” he says.\n\n### __Cloudflare offers protection from huge volumes of malicious requests__\n\nTrendyol began working with Cloudflare out of a desire to secure its site without sacrificing performance. The relationship began with a proof-of-concept period which included the Black Friday weekend, a high-traffic and high-sales time for any ecommerce company. \n\nDuring that period, Trendyol saw the high request volumes it was expecting—far higher than it was expecting, in fact. These requests might have hurt Trendyol’s site performance at a critical moment. Fortunately, the Cloudflare WAF was in place, and recognized over 85 million requests as malicious, blocking them easily:\n\n![trendyol image 1](//cf-assets.www.cloudflare.com/slt3lc6tev37/60FqzxGwk26PYIFYNkXNZI/25cf5c9b51a4852d3a5f83d706714327/trendyol_image_1.png)\n\nImpressed by these results, Trendyol has continued to work with Cloudflare. And the Trendyol site has continued to stay secure. The chart below shows Trendyol’s traffic for April 2020 and the events (malicious and non-malicious) that triggered Cloudflare’s security protocols. In this month alone, Cloudflare supported Trendyol’s business by blocking more than 180 million malicious requests. \n\n![Trendyol Image 2](//cf-assets.www.cloudflare.com/slt3lc6tev37/3KW8XtjWrNJN1b0HpBfTUr/97c66583f1074e7527ca996b5b0487c2/Trendyol_Image_2.png)\n\n### __Rich Cloudflare features offer flexibility and scalability__\n\nSince that initial success, Trendyol has adopted many other Cloudflare products. These include DNSSEC, rate limiting, and SSL/TLS on the security front, and managed DNS and load balancing for performance and reliability.\n\nTrendyol appreciates the ease with which they have been able to deploy these services. “To be able to deploy so many capabilities with so much flexibility is a good feeling when it comes to the challenges that we face every day,” says Coskuner.\n\nTrendyol also values how Cloudflare’s services remain effective as Trendyol’s platform attracts more users. “Cloudflare solutions like DDoS protection are especially helpful in addressing scalability and performance issues, while functionalities like rate limiting and WAF protection filter out bad traffic upfront to only pass cleaner, safer traffic to our servers,” Coskuner says.\n\n### __Great support and the best performance and security__\n\nAlready convinced of the value of Cloudflare technology, Mert is a fan of Cloudflare’s customer support as well. “If we have any problems regarding the platform itself or the traffic flow, we can directly communicate with Cloudflare customer support and get any data that we need. The best side of the support is being fast to respond, as we value agility not only within the company but also in the partners that we work with.”\n\nCloudflare thus plays a pivotal role in helping Trendyol carry out its online sales mission and maintain its growth. As Coskuner says, “we have concluded that Cloudflare offers the best of both worlds in terms of both performance and security.”\n",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "The Cloudflare WAF blocked over 85 million malicious requests in a month, protecting Trendyol during a high-value ecommerce period.\n\nMonthly attack traffic has more than doubled since then, but Cloudflare continues to keep Trendyol’s site secure and performant.",
+				"relatedCaseStudies": [
+					{
+						"name": "Shopify",
+						"nameUrlSlug": "shopify"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Web Application Firewall (WAF) ",
+						"url": "/waf/"
+					},
+					{
+						"title": "DDoS Mitigation",
+						"url": "/ddos/"
+					},
+					{
+						"title": "Rate Limiting",
+						"url": "/rate-limiting/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Mert Can Coskuner",
+				"employeeQuoteText": "Cloudflare solutions like DDoS protection are especially helpful in addressing scalability and performance issues, while functionalities like rate limiting and WAF protection filter out bad traffic upfront to only pass cleaner, safer traffic to our servers.",
+				"employeeQuoteJobTitle": "Security Engineer",
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/Trendyol_Social_Logo.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": [
+					"en-us"
+				]
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "73AazCApz6ifSNjMXdAf5q",
+			"pathname": "/case-studies/trendyol/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}

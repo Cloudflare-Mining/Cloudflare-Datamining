@@ -1,0 +1,94 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/arrival/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Arrival",
+				"contentfulId": "71mz6eGKuWtJ0rGPdY11N6",
+				"nameUrlSlug": "arrival",
+				"metaTags": {
+					"metaTitle": "Arrival | Cloudflare Zero Trust Case Study",
+					"metaDescription": "Arrival incorporates Cloudflare to help improve their internal infrastructure and application security with Zero Trust Network Access ",
+					"twitterCustomImage": {
+						"file": {
+							"publicURL": "[path]/arrival_meta_2.png"
+						}
+					},
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/arrival_meta_2.png"
+						}
+					},
+					"facebookCustomImage": {
+						"file": {
+							"publicURL": "[path]/arrival_meta_2.png"
+						}
+					}
+				},
+				"orderDate": "2022-07-11",
+				"homepageUrl": "https://arrival.com/us/en",
+				"hideFromCaseStudiesPage": false,
+				"shortDescription": "Arrival, inventor of a unique method of design and production of commercial electric vehicles by local Microfactories, uses Cloudflare to help secure their global workforce and internal applications",
+				"longDescription": "## __Arrival incorporates Cloudflare to help improve their internal infrastructure and application security with Zero Trust Network Access__ \n\nArrival is a technology company pioneering a new method of design and production of commercial electric vehicles (EVs) in Microfactories. Founded nearly seven years ago with the vision of making cities better places to live by developing sustainable mobility ecosystems that create clean air for cities all over the world.  It became clear to Arrival that this wouldn't be achievable using old methods and existing technologies - they would need to reinvent both the product and the process together in order to reduce costs and produce better vehicles. This has been achieved by the invention of Arrival’s own in-house technologies - software, hardware and robotics - and the use of Microfactories - low CapEx, small footprint production facilities that can be placed locally serving the cities that need them.  \n\nArrival is transforming urban mobility  - right now, the company sees the most opportunity in the commercial EV market, particularly with the growth of e-commerce. Arrival wants to power a green transition and make our cities better places to live, by developing truly sustainable and equitable mobility ecosystems, creating clean air for communities all over the world. Its decentralized production strategy allows Arrival to make vehicles designed for each city, in the city itself - supercharging the communities they are in. Arrival’s Microfactories enable this, also bringing employment to local communities in a manner that’s sustainable and helping to grow STEM careers.\n\n### __Challenge: Providing reliable, bandwidth-unrestricted connectivity to users around the globe__\n\nTo connect Arrival’s globally distributed workforce to its corporate applications, Arrival initially adopted a commercially licensed, open-source VPN, which showed a poor end-user experience. \n\n“Despite its broad feature set, our VPN had some issues,” explains Kirill Sluchanko, Senior Engineer at Arrival, responsible for infrastructure security and liaison between the company’s security and IT teams. “That inflexibility affected our users, who would avoid using the VPN whenever possible.”\n\nUsers seeking workarounds because of a poor experience unnecessarily exposed themselves and the company to Internet-based threats. This vulnerability affected the company’s intentions to develop public services and portals on a larger scale. \n\n“Arrival can’t accept any risks to our internal security. We are a technology company, software is the greatest part of our infrastructure, so we can’t compromise,” says Sluchanko. “Our priority is to protect our users, infrastructure, and products.” \n\nAn inability to manage their user access was another issue for Arrival. Their VPN solution was inflexible and offered little granularity regarding which users should be allowed to access specific company resources.\n\n“We tried to build an access list policy based around each user’s group membership, but our VPN just couldn’t do that,” states Sluchanko. “We needed a tool where our users could connect to the system easily rather than fighting with configuration issues, so we decided to look into a Zero Trust solution.”  \n\n### __Improving network visibility with Cloudflare analytics and security solutions__ \n\nArrival has been using the Cloudflare security suite since the early stages of the business. They began with Cloudflare DNS, certificates, Web Application Firewall (WAF), firewall rules, DDoS, and Rate Limiting.\n\n“First, we tested the Cloudflare security suite on one of our internal zones, creating data sources to check performance and behavior. It was great — very easy to implement,” says Sluchanko. \n\nOn their production system, the Arrival security team discovered that Cloudflare was not limited to protecting their infrastructure from external threats like bots and DDoS attacks. To illustrate, Sluchanko recalls an incident with a bug bounty researcher whose activities in the Arrival data center resulted in an alarming but non-malicious spike in server activity.  \n\n“We were not expecting a surge, but using Cloudflare logs we were able to rapidly pinpoint and mitigate the source using the Cloudflare firewalls,” he relates. “Cloudflare analytics give Arrival unparalleled insight into all of our network traffic, external or internal, malicious or benign.”  \n\nThat enhanced visibility allows teams at Arrival to spend their time improving rather than monitoring the business. “We are protected from most threats automatically — Cloudflare stops exploit attempts before they become vulnerabilities,” he says. “When we get an incident report we know it is something truly important.”     \n\n### __Improving Arrival’s internal applications and user security with Cloudflare Zero Trust__\n\nTo solve its VPN and user access problems, Arrival evaluated Cloudflare and one other vendor that was an early entrant into the Zero Trust Network Access (ZTNA) space.\n\n“We reached out to both companies,” Sluchanko says. “With Cloudflare, we began testing their Zero Trust services immediately on their self-service plan. In contrast, the other vendor got back to us 6 months later!”   \n\nWith the completion of the Proof of Concept (PoC), Arrival adopted Cloudflare Access on an enterprise scale. Their initial focus was on providing secure, VPN-free connectivity and endpoint protection to core company resources. The immediate benefit of the shift to Access was a widespread improvement in user experience for Arrival employees and associates. \n\n“With Access, our users can connect with a quick click and without friction. Our employees are more efficient because they are not impacted by bandwidth limitations from our traditional VPN,” says Sluchanko. “Cloudflare protects our resources and makes our infrastructure even more reliable. That is very comforting.”       \n\nAccess also simplifies Arrival’s application deployment and integration efforts and its native SAML SSO authentication gives their employees and associates connectivity options and improves accessibility.\n\nTo further protect their branch offices and users from malware and ransomware, Arrival is actively rolling out Cloudflare Gateway – a Secure Web Gateway service. Their current Gateway configuration centers on DNS filtering, but Arrival plans to extend the implementation to include TLS and HTTP filtering for both onsite and remote users.\n\n“Although we have user awareness programs and training, we sometimes face zero-day attempts to reach our sites and servers with malware,” says Sluchanko. “Cloudflare Gateway mitigates those concerns around harmful content.”     \n\nFrom their initial onboarding of the Cloudflare security suite to their rollout of Access and Cloudflare Gateway, Arrival continues to appreciate Cloudflare developer tools and proactive Cloudflare customer support.  \n\n“Dedicated Cloudflare engineers are always ready to answer our questions, and the Cloudflare developer portal and documentation are great resources,” says Sluchanko. “Even the Cloudflare blog is a great tool because it shows us new scenarios and features we might have overlooked.”  \n\nAccording to Sluchanko, Arrival plans to continue exploring and extending how they use the Cloudflare products in their portfolio as the company continues to grow. \n",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "- Improved user efficiency by enabling access to core company resources and applications without bandwidth restrictions\n\n- Enhanced visibility and automatic protection from threats\n\n- Simplified internal application deployment, integration, and security while improving accessibility to core business tools\n\n- Eliminated the bandwidth restrictions associated with a traditional VPN",
+				"relatedCaseStudies": [
+					{
+						"name": "Polestar",
+						"nameUrlSlug": "polestar"
+					},
+					{
+						"name": "Carousell",
+						"nameUrlSlug": "carousell"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Access",
+						"url": "/teams/access"
+					},
+					{
+						"title": "Web Application Firewall (WAF) ",
+						"url": "/waf/"
+					},
+					{
+						"title": "DDoS Mitigation",
+						"url": "/ddos/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Kirill Sluchanko",
+				"employeeQuoteText": "With Cloudflare Access, our users can connect with a mouse click, but there are also improvements in efficiency because our internal resources are reachable without any bandwidth limitations from our traditional VPN.",
+				"employeeQuoteJobTitle": "Senior Engineer",
+				"employeeQuoteName2": "Kirill Sluchanko",
+				"employeeQuoteText2": "With Cloudflare, we are protected from most threats automatically. Cloudflare stops exploit attempts before they become vulnerabilities.",
+				"employeeQuoteJobTitle2": "Senior Engineer",
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/Arrival_Logo_Digital_RGB_Wordmark_Black.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "71mz6eGKuWtJ0rGPdY11N6",
+			"pathname": "/case-studies/arrival/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}

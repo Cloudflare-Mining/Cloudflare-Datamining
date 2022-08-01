@@ -1,0 +1,860 @@
+{
+	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
+	"path": "/learning/access-management/what-is-an-identity-provider/",
+	"result": {
+		"data": {
+			"learningCenterArticle": {
+				"contentTypeId": "learningCenterArticle",
+				"contentfulId": "5fc5s8qRweX7DIcN0cjetO",
+				"urlSlug": "access-management/what-is-an-identity-provider",
+				"metaTags": {
+					"metaTitle": "What is an identity provider (IdP)?",
+					"metaDescription": "An identity provider, or IdP, stores and manages users' digital identities. Learn how an IdP and SSO can work together to authenticate users.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"metaTitle": "What is an identity provider (IdP)?",
+				"metaDescription": "An identity provider or IdP stores and manages users' digital identities. Learn how an IdP & SSO can work together to authenticate users.",
+				"learningCenterArticleSubHeader": {
+					"contentTypeId": "learningCenterArticleSubHeader",
+					"contentfulId": "X61tS7cHdYUy1Jpp9N5Mb",
+					"learningCenterName": "accessmanagement",
+					"links": [
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "LCfYTn7Kq9EqSCJhxFnw1",
+							"displayText": "What is IAM? ",
+							"url": "/learning/access-management/what-is-identity-and-access-management/"
+						},
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "5TtqrotpypiEg485b2l2tf",
+							"displayText": "What is SASE?",
+							"url": "/learning/access-management/what-is-sase/"
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "3IwB78Wq3DsbhUeCBPNs2L",
+							"name": "Access Management Header: Zero Trust Security",
+							"displayText": "Zero Trust Security",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "11BjITFi6r2hDV21rZPAFR",
+									"displayText": "Zero Trust security",
+									"url": "/learning/security/glossary/what-is-zero-trust/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "sWOO2Fdv8UREvRW1KEYhb",
+									"displayText": "What is ZTNA?",
+									"url": "/learning/access-management/what-is-ztna/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1B9kOyuZZEp1rlqwt8EFOG",
+									"displayText": "Castle-and-Moat Security",
+									"url": "/learning/access-management/castle-and-moat-network-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "33vSzdM0dtfaTfjERoM5Vw",
+									"displayText": "Principle of Least Privilege",
+									"url": "/learning/access-management/principle-of-least-privilege/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "24MOZlRUGXzizkNkiZSWPV",
+									"displayText": "Security Service Edge (SSE)",
+									"url": "/learning/access-management/security-service-edge-sse/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "7GhMQh5cXBGTcKQlfZLvOE",
+							"name": "Access Management Header: Authentication",
+							"displayText": "Authentication",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "Y3y79iQL0H3GMcN0bA3kL",
+									"displayText": "What Is Authentication?",
+									"url": "/learning/access-management/what-is-authentication/ "
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7p87aHcK9Ie2dylUSFYG9T",
+									"displayText": "Two-factor authentication ",
+									"url": "/learning/access-management/what-is-two-factor-authentication/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7ChaKsjsdOTtnIStObr22W",
+									"displayText": "Multi-factor authentication",
+									"url": "/learning/access-management/what-is-multi-factor-authentication/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5GUCQ6GwyX4OAAFC1H3yi5",
+									"displayText": "What is SSO?",
+									"url": "/learning/access-management/what-is-sso/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5okAIdYhmQMh9bgKCJBLYR",
+									"displayText": "What is SAML?",
+									"url": "/learning/access-management/what-is-saml/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "WR4vyyyFh6xNl1MbHazzS",
+									"displayText": "What is OAuth?",
+									"url": "/learning/access-management/what-is-oauth/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6tZm4KTLZULasghLMMgjvX",
+									"displayText": "Identity provider (IdP)",
+									"url": "/learning/access-management/what-is-an-identity-provider/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1z7vN3ASaGLD3mx2NLOLG7",
+									"displayText": "Identity as a Service",
+									"url": "/learning/access-management/what-is-identity-as-a-service/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4QoH8dVxKKYSsfePjHNKxD",
+									"displayText": "Phishing Attack",
+									"url": "/learning/access-management/phishing-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7EcaLFFtsZb1SNgjysiTB7",
+									"displayText": "Spear Phishing",
+									"url": "/learning/access-management/spear-phishing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4MTr0HX43ACfOcNtiwUyjF",
+									"displayText": "Mutual Authentication",
+									"url": "/learning/access-management/what-is-mutual-authentication/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "60GutG8GFeUNrEmqh7TtXV",
+									"displayText": "Mutual TLS (mTLS)",
+									"url": "/learning/access-management/what-is-mutual-tls/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "hlv2Y3rMn5j2y0AdQyQfH",
+									"displayText": "Authn vs. Authz",
+									"url": "/learning/access-management/authn-vs-authz/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5YvhlZgd3eNNrY5vnE5sEw",
+									"displayText": "Token-Based Authentication",
+									"url": "/learning/access-management/token-based-authentication/ "
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "qo6Z0A22GGHuaNqiVcaIx",
+							"name": "Access Management Header: Remote Access",
+							"displayText": "Remote Access",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4FKVZaN6mpIm5iyZ7Lcxs5",
+									"displayText": "What's a VPN? ",
+									"url": "/learning/access-management/what-is-a-vpn/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5DJAZGS3jg3hVYcT1Wian0",
+									"displayText": "VPN Security ",
+									"url": "/learning/access-management/vpn-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5RExMXWreKUk2vNcVq10Gm",
+									"displayText": "VPN Speed ",
+									"url": "/learning/access-management/vpn-speed/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7lPlbx9M7j4TywvoeOXPV0",
+									"displayText": "Business VPN ",
+									"url": "/learning/access-management/what-is-a-business-vpn/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4CBC8Nj1Z2KHBHIHwmlCcC",
+									"displayText": "GDPR remote access",
+									"url": "/learning/access-management/gdpr-remote-access/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3hLfR6mFp6whoN4nymijCN",
+									"displayText": "Remote workforce security",
+									"url": "/learning/access-management/remote-workforce-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3q0Nc1zR2FC7Jl6LgTCOBe",
+									"displayText": "What is the RDP?",
+									"url": "/learning/access-management/what-is-the-remote-desktop-protocol/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3A6ToMdMAXKrvE4tXy8A5C",
+									"displayText": "RDP Security",
+									"url": "/learning/access-management/rdp-security-risks/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "4fsKOVXIb6uDYmCQOVdlMl",
+							"name": "Access Management Header: Access Glossary",
+							"displayText": "Access Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7qscNda3QrDnyAZknHtbLZ",
+									"displayText": "Access control",
+									"url": "/learning/access-management/what-is-access-control/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "37kb391xJxs7bHH8zaLr3l",
+									"displayText": "Role-based access control (RBAC)",
+									"url": "/learning/access-management/role-based-access-control-rbac/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "65VABQOAzccr6p12Tlosw4",
+									"displayText": "Secure web gateway",
+									"url": "/learning/access-management/what-is-a-secure-web-gateway/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "s0e9m5se3XHJHiml9ZU55",
+									"displayText": "What is a CASB? ",
+									"url": "/learning/access-management/what-is-a-casb/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6XvpGQTupqKx4DjPEcOLMj",
+									"displayText": "DNS filtering",
+									"url": "/learning/access-management/what-is-dns-filtering/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3nmpmlsuL3LG41i2zeS5Zq",
+									"displayText": "URL filtering",
+									"url": "/learning/access-management/what-is-url-filtering/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4adDJvliSohgoEK3oT5uaG",
+									"displayText": "Data Loss Prevention (DLP) ",
+									"url": "/learning/access-management/what-is-dlp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3bxDvM2EGcmvwU5oXuL5ny",
+									"displayText": "Software-defined perimeter",
+									"url": "/learning/access-management/software-defined-perimeter/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2VphPHvft5RelO7SAYrrOq",
+									"displayText": "Network Perimeter",
+									"url": "/learning/access-management/what-is-the-network-perimeter/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4uvJAFlB8YFjUORloRPWUO",
+									"displayText": "Browser Isolation",
+									"url": "/learning/access-management/what-is-browser-isolation/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6OT3YMHacbSCBJMO2bBivb",
+									"displayText": "What is an Insider Threat?",
+									"url": "/learning/access-management/what-is-an-insider-threat"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1WkQUvxqzNTr3WgBWuDrek",
+									"displayText": "What is shadow IT?",
+									"url": "/learning/access-management/what-is-shadow-it"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2R63DUgV0F0X6BJ7Esmulw",
+									"displayText": "Identity",
+									"url": "/learning/access-management/what-is-identity/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "1H8EbGxdv2N9Ak908AaBC5",
+							"name": "Accesss Management: Insights",
+							"displayText": "Insights",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1wiWDzIJ6wU4wdgrCCsqKI",
+									"displayText": "Accelerating the journey to SASE",
+									"url": "https://www.cloudflare.com/learning/insights-sase-network-transformation/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "BkQtUObQvEWnAoECA8gEX",
+									"displayText": "Extending Zero Trust to the Internet browser",
+									"url": "https://www.cloudflare.com/learning/insights-zero-trust-browsing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1Eqcf3fqumB1J3IIf1aeT7",
+									"displayText": "Making the case for SASE",
+									"url": "https://www.cloudflare.com/learning/insights-case-for-sase/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "jQp53tpsRvjsWJjYlZDyW",
+									"displayText": "The future of networking",
+									"url": "https://www.cloudflare.com/learning/insights-future-of-networking"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4kyyAceZojTXyGrrNyQv2E",
+									"displayText": "A new framework for network security",
+									"url": "https://www.cloudflare.com/insights-sase-framework"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "37qx4iYUDgPdHJaxEAyIxH",
+									"displayText": "Ransomware attackers escalate extortion tactics",
+									"url": "https://www.cloudflare.com/learning/insights-ransomware-extortion/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1mVhbSh7k2qiuul5gDOmKa",
+									"displayText": "The rise of Zero Trust Network Access",
+									"url": "https://www.cloudflare.com/insights-zero-trust-network-access/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7f80AUP3KPhx1fMsJMuW4T",
+									"displayText": "Securing the distributed enterprise for the long-term",
+									"url": "https://www.cloudflare.com/insights-securing-distributed-enterprise/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5eUpBgLgoPxWdadu3NiMlC",
+									"displayText": "The software supply chain is under attack",
+									"url": "https://www.cloudflare.com/learning/insights-supply-chain-attacks/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6XMprVo1l7XBpfbts9z7Ys",
+									"displayText": "The growing cost of shadow IT",
+									"url": "https://www.cloudflare.com/learning/insights-shadow-it/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5h0xL2XQThUr88KvQQNtET",
+									"displayText": "Mitigating the risk of malicious insiders in the hybrid era",
+									"url": "https://www.cloudflare.com/learning/insights-malicious-insiders/"
+								}
+							]
+						}
+					]
+				},
+				"learningCenterArticleFooter": {
+					"contentTypeId": "learningCenterArticleFooter",
+					"contentfulId": "51K5Pmi401vClHlANqC7rS",
+					"learningCenterName": "accessmanagement",
+					"column1Title": "About Access Management ",
+					"column1": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "57e1z1QwW5UVeDoicZR3DI",
+						"name": "Access Management Footer - About",
+						"displayText": "About Access Management",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "LCfYTn7Kq9EqSCJhxFnw1",
+								"displayText": "What is IAM? ",
+								"url": "/learning/access-management/what-is-identity-and-access-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7qscNda3QrDnyAZknHtbLZ",
+								"displayText": "Access control",
+								"url": "/learning/access-management/what-is-access-control/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2VphPHvft5RelO7SAYrrOq",
+								"displayText": "Network Perimeter",
+								"url": "/learning/access-management/what-is-the-network-perimeter/"
+							}
+						]
+					},
+					"column2Title": "About Zero Trust",
+					"column2": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "64w0aoxQddRHtzH1Ct92rY",
+						"name": "Access Management Footer - Zero Trust",
+						"displayText": "About Zero Trust",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "11BjITFi6r2hDV21rZPAFR",
+								"displayText": "Zero Trust security",
+								"url": "/learning/security/glossary/what-is-zero-trust/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7p87aHcK9Ie2dylUSFYG9T",
+								"displayText": "Two-factor authentication ",
+								"url": "/learning/access-management/what-is-two-factor-authentication/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "37kb391xJxs7bHH8zaLr3l",
+								"displayText": "Role-based access control (RBAC)",
+								"url": "/learning/access-management/role-based-access-control-rbac/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7ChaKsjsdOTtnIStObr22W",
+								"displayText": "Multi-factor authentication",
+								"url": "/learning/access-management/what-is-multi-factor-authentication/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5okAIdYhmQMh9bgKCJBLYR",
+								"displayText": "What is SAML?",
+								"url": "/learning/access-management/what-is-saml/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3hLfR6mFp6whoN4nymijCN",
+								"displayText": "Remote workforce security",
+								"url": "/learning/access-management/remote-workforce-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "WR4vyyyFh6xNl1MbHazzS",
+								"displayText": "What is OAuth?",
+								"url": "/learning/access-management/what-is-oauth/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4uvJAFlB8YFjUORloRPWUO",
+								"displayText": "Browser Isolation",
+								"url": "/learning/access-management/what-is-browser-isolation/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1B9kOyuZZEp1rlqwt8EFOG",
+								"displayText": "Castle-and-Moat Security",
+								"url": "/learning/access-management/castle-and-moat-network-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "60GutG8GFeUNrEmqh7TtXV",
+								"displayText": "Mutual TLS (mTLS)",
+								"url": "/learning/access-management/what-is-mutual-tls/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "sWOO2Fdv8UREvRW1KEYhb",
+								"displayText": "What is ZTNA?",
+								"url": "/learning/access-management/what-is-ztna/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "33vSzdM0dtfaTfjERoM5Vw",
+								"displayText": "Principle of Least Privilege",
+								"url": "/learning/access-management/principle-of-least-privilege/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "24MOZlRUGXzizkNkiZSWPV",
+								"displayText": "Security Service Edge (SSE)",
+								"url": "/learning/access-management/security-service-edge-sse/"
+							}
+						]
+					},
+					"column3Title": "VPN Resources",
+					"column3": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "2l0ZQknxtExdhOWRd1S9ts",
+						"name": "Access Management Footer - VPN Resources",
+						"displayText": "VPN Resources",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4FKVZaN6mpIm5iyZ7Lcxs5",
+								"displayText": "What's a VPN? ",
+								"url": "/learning/access-management/what-is-a-vpn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7lPlbx9M7j4TywvoeOXPV0",
+								"displayText": "Business VPN ",
+								"url": "/learning/access-management/what-is-a-business-vpn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5DJAZGS3jg3hVYcT1Wian0",
+								"displayText": "VPN Security ",
+								"url": "/learning/access-management/vpn-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5RExMXWreKUk2vNcVq10Gm",
+								"displayText": "VPN Speed ",
+								"url": "/learning/access-management/vpn-speed/"
+							}
+						]
+					},
+					"column4Title": "Glossary",
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "3Cr7XBFyYV6UPH671HUybI",
+						"name": "Access Management Footer - Glossary ",
+						"displayText": "Glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4adDJvliSohgoEK3oT5uaG",
+								"displayText": "Data Loss Prevention (DLP) ",
+								"url": "/learning/access-management/what-is-dlp/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "s0e9m5se3XHJHiml9ZU55",
+								"displayText": "What is a CASB? ",
+								"url": "/learning/access-management/what-is-a-casb/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "65VABQOAzccr6p12Tlosw4",
+								"displayText": "Secure web gateway",
+								"url": "/learning/access-management/what-is-a-secure-web-gateway/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4QoH8dVxKKYSsfePjHNKxD",
+								"displayText": "Phishing Attack",
+								"url": "/learning/access-management/phishing-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3bxDvM2EGcmvwU5oXuL5ny",
+								"displayText": "Software-defined perimeter",
+								"url": "/learning/access-management/software-defined-perimeter/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5GUCQ6GwyX4OAAFC1H3yi5",
+								"displayText": "What is SSO?",
+								"url": "/learning/access-management/what-is-sso/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6XvpGQTupqKx4DjPEcOLMj",
+								"displayText": "DNS filtering",
+								"url": "/learning/access-management/what-is-dns-filtering/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3nmpmlsuL3LG41i2zeS5Zq",
+								"displayText": "URL filtering",
+								"url": "/learning/access-management/what-is-url-filtering/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4CBC8Nj1Z2KHBHIHwmlCcC",
+								"displayText": "GDPR remote access",
+								"url": "/learning/access-management/gdpr-remote-access/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3q0Nc1zR2FC7Jl6LgTCOBe",
+								"displayText": "What is the RDP?",
+								"url": "/learning/access-management/what-is-the-remote-desktop-protocol/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3A6ToMdMAXKrvE4tXy8A5C",
+								"displayText": "RDP Security",
+								"url": "/learning/access-management/rdp-security-risks/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6tZm4KTLZULasghLMMgjvX",
+								"displayText": "Identity provider (IdP)",
+								"url": "/learning/access-management/what-is-an-identity-provider/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z7vN3ASaGLD3mx2NLOLG7",
+								"displayText": "Identity as a Service",
+								"url": "/learning/access-management/what-is-identity-as-a-service/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6OT3YMHacbSCBJMO2bBivb",
+								"displayText": "What is an Insider Threat?",
+								"url": "/learning/access-management/what-is-an-insider-threat"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4MTr0HX43ACfOcNtiwUyjF",
+								"displayText": "Mutual Authentication",
+								"url": "/learning/access-management/what-is-mutual-authentication/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7EcaLFFtsZb1SNgjysiTB7",
+								"displayText": "Spear Phishing",
+								"url": "/learning/access-management/spear-phishing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "hlv2Y3rMn5j2y0AdQyQfH",
+								"displayText": "Authn vs. Authz",
+								"url": "/learning/access-management/authn-vs-authz/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1WkQUvxqzNTr3WgBWuDrek",
+								"displayText": "What is shadow IT?",
+								"url": "/learning/access-management/what-is-shadow-it"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2R63DUgV0F0X6BJ7Esmulw",
+								"displayText": "Identity",
+								"url": "/learning/access-management/what-is-identity/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Y3y79iQL0H3GMcN0bA3kL",
+								"displayText": "What Is Authentication?",
+								"url": "/learning/access-management/what-is-authentication/ "
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5YvhlZgd3eNNrY5vnE5sEw",
+								"displayText": "Token-Based Authentication",
+								"url": "/learning/access-management/token-based-authentication/ "
+							}
+						]
+					},
+					"column5Title": "Learning Center Navigation",
+					"column5": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "5620fCE1hx2KRLHi2SY5g9",
+						"name": "Access Management Footer - Learning Center Nav",
+						"displayText": "Learning Center Navigation ",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2hdSVoYA5asSIG0U2ae20c",
+								"displayText": "Learning Center Home",
+								"url": "/learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "56Y6OytBNgNoNDWQL2ezlf",
+								"displayText": "DDoS Learning Center",
+								"url": "/learning/ddos/what-is-a-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6DGcnYIMM0eCGwqAKu2ECO",
+								"displayText": "CDN Learning Center",
+								"url": "/learning/cdn/what-is-a-cdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Ra0qmFJ1uewk2MYscW8KI",
+								"displayText": "DNS Learning Center",
+								"url": "/learning/dns/what-is-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z3UC9tP1Kjk85BX5zSGPY",
+								"displayText": "Serverless Learning Center",
+								"url": "/learning/serverless/what-is-serverless/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52V7iI9YriJ0En2SGmEXz5",
+								"displayText": "SSL Learning Center",
+								"url": "/learning/ssl/what-is-ssl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1yItw6W6SsM2Y0Wuq6Y2c6",
+								"displayText": "Security Learning Center",
+								"url": "/learning/security/what-is-web-application-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q67XLnKqKhfmDJR4q9hJT",
+								"displayText": "Performance Learning Center",
+								"url": "/learning/performance/why-site-speed-matters/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7jgqDUFFzaLuKrsaBTLdV0",
+								"displayText": "Cloud Learning Center",
+								"url": "/learning/cloud/what-is-the-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7D22pOfjb98KXcnAJyJFCX",
+								"displayText": "Bots Learning Center",
+								"url": "/learning/bots/what-is-a-bot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3jjEMuuLrCwhRidjG5kglM",
+								"displayText": "Network Layer Learning Center",
+								"url": "/learning/network-layer/what-is-the-network-layer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RvS0l0m86G1VISDrEvlJb",
+								"displayText": "Privacy Learning Center",
+								"url": "/learning/privacy/what-is-data-privacy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "MytksT5WU5mh863BQYEkj",
+								"displayText": "Video Streaming Learning Center",
+								"url": "/learning/video/what-is-streaming/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5TtqrotpypiEg485b2l2tf",
+								"displayText": "What is SASE?",
+								"url": "/learning/access-management/what-is-sase/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
+								"displayText": "Email Security Learning Center",
+								"url": "/learning/email-security/what-is-email-security/"
+							}
+						]
+					}
+				},
+				"header": "What is an identity provider (IdP)?",
+				"blurbSubHeader": "An identity provider (IdP) is a service that stores and verifies user identity. IdPs are typically cloud-hosted services, and they often work with single sign-on (SSO) providers to authenticate users.",
+				"objectivesHeader": "Identity Provider",
+				"objectivesList": [
+					"Define identity provider (IdP)",
+					"Learn why IdPs are important",
+					"Learn where an IdP fits into the user authentication process"
+				],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "LCfYTn7Kq9EqSCJhxFnw1",
+						"displayText": "What is IAM? ",
+						"url": "/learning/access-management/what-is-identity-and-access-management/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "7qscNda3QrDnyAZknHtbLZ",
+						"displayText": "Access control",
+						"url": "/learning/access-management/what-is-access-control/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "WR4vyyyFh6xNl1MbHazzS",
+						"displayText": "What is OAuth?",
+						"url": "/learning/access-management/what-is-oauth/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "5okAIdYhmQMh9bgKCJBLYR",
+						"displayText": "What is SAML?",
+						"url": "/learning/access-management/what-is-saml/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "7p87aHcK9Ie2dylUSFYG9T",
+						"displayText": "Two-factor authentication ",
+						"url": "/learning/access-management/what-is-two-factor-authentication/"
+					}
+				],
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is an identity provider (IdP)?</h2>\n\n<p>An identity provider (IdP) stores and manages users' <a href='/learning/access-management/what-is-identity/'>digital identities</a>. Think of an IdP as being like a guest list, but for digital and cloud-hosted applications instead of an event. An IdP may check user identities via username-password combinations and other factors, or it may simply provide a list of user identities that another service provider (like an SSO) checks.</p>\n\n<p>IdPs are not limited to verifying human users. Technically, an IdP can authenticate any entity connected to a network or a system, including computers and other devices. Any entity stored by an IdP is known as a \"principal\" (instead of a \"user\"). However, IdPs are most often used in <a href='/learning/cloud/what-is-the-cloud/'>cloud computing</a> to manage user identities.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is user identity?</h2>\n\n<p>Digital user identity is associated with quantifiable factors that can be verified by a computer system. These factors are called \"authentication factors.\" The three authentication factors are:</p>\n\n<ul class='learning-list'>\n  <li><strong>Knowledge:</strong> something you know, such as a username and password</li>\n  <li><strong>Possession:</strong> something you have, such as a smartphone</li>\n  <li><strong>Intrinsic qualities:</strong> something you are, such as your fingerprint or a retina scan</li>\n</ul>\n\n<p>An IdP may use one or more of these factors to identify a user. Using multiple factors to verify user identify is called <a href='/learning/access-management/what-is-multi-factor-authentication/'>multi-factor authentication (MFA)</a>.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Why are IdPs necessary?</h2>\n\n<p>Digital identity must be tracked somewhere, especially for cloud computing, where user identity determines whether or not someone can access sensitive data. Cloud services need to know exactly where and how to retrieve and verify user identity.</p>\n\n<p>Records of user identities also need to be stored in a <a href='/learning/cloud/what-is-cloud-security/'>secured</a> fashion to ensure that attackers cannot use them to impersonate users. A cloud identity provider will typically take extra precautions to protect user data, whereas a service not dedicated solely to storing identity may store it in an unsecured location, such as a server open to the Internet.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How do IdPs work with SSO services?</h2>\n\n<p>A <a href='/learning/access-management/what-is-sso/'>single sign-on service</a>, often called an 'SSO,' is a unified place for users to sign in to all their cloud services at once. In addition to being more convenient for users, implementing SSO often makes user logins more secure.</p>\n\n<p>For the most part, SSOs and IdPs are separate. An SSO service uses an IdP to check user identity, but it does not actually store user identity. An SSO provider is more of a go-between than a one-stop shop; think of it as being like a security guard firm that is hired to keep a company secure but is not actually part of that company.</p>\n\n<p>Even though they are separate, IdPs are an essential part of the SSO login process. SSO providers check user identity with the IdP when users log in. Once that is done, the SSO can verify user identity with any number of connected cloud applications.</p>\n\n<p>However, this is not always the case. An SSO and IdP can theoretically be one and the same. But this setup is much more open to <a href='/learning/security/threats/on-path-attack/'>on-path attacks</a> in which an attacker forges a <a href='/learning/access-management/what-is-saml/'>SAML</a> assertion* in order to gain access to an application. For this reason, IdP and SSO are typically separated.</p>\n\n<p><i>*A SAML assertion is a specialized message sent from SSO services to any cloud application that confirms user authentication, allowing the user to access and use the application.</i></p>\n\n<p><strong>How does all this look in practice?</strong></p>\n\n  <p>Suppose Alice is using her work laptop at her employer's office. Alice needs to log in to the company's live chat application in order to better coordinate with her coworkers. She opens a tab on her browser and loads the chat application. Assuming her company uses an SSO service, the following steps take place behind the scenes:</p>\n\n<ul class='learning-list'>\n  <li>The chat app asks the SSO for Alice's identity verification.</li>\n  <li>The SSO sees that Alice has not signed in yet.</li>\n  <li>The SSO prompts Alice to log in.</li>\n</ul>\n\n<p>At this point Alice's browser redirects her to the SSO login page. The page has fields for Alice to enter her username and password. Since her company requires <a href='/learning/access-management/what-is-two-factor-authentication/'>two-factor authentication</a>, Alice also has to enter a short code that the SSO automatically texts to her smartphone. After this is done, she clicks \"Log in.\" Now, the following things happen:</p>\n\n<ul class='learning-list'>\n  <li>The SSO sends a SAML request to the IdP used by Alice's company.</li>\n  <li>The IdP sends a SAML response to the SSO confirming Alice's identity.</li>\n  <li>The SSO sends a SAML assertion to the chat application Alice originally wanted to use.</li>\n</ul>\n\n<p>Alice is redirected back to her chat application. Now she can chat with her coworkers. The whole process only took seconds.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does Cloudflare integrate with identity providers?</h2>\n\n<p><a href='https://teams.cloudflare.com/access/'>Cloudflare Zero Trust</a> helps keep internal teams secure by integrating with SSOs and IdPs in order to manage user access.</p>\n",
+				"availableLocales": null,
+				"localized": true,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "No Page for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": null
+				},
+				"proactivePopup": null,
+				"sidebarForm": null
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "5fc5s8qRweX7DIcN0cjetO",
+			"pathname": "/learning/access-management/what-is-an-identity-provider/",
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

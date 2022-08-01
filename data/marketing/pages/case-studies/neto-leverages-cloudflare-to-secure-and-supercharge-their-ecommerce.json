@@ -1,0 +1,96 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/neto-leverages-cloudflare-to-secure-and-supercharge-their-ecommerce/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Neto",
+				"contentfulId": "5Uxgjj2IEHzvvefwHHbPwS",
+				"nameUrlSlug": "neto-leverages-cloudflare-to-secure-and-supercharge-their-ecommerce",
+				"metaTags": {
+					"metaTitle": "Neto",
+					"metaDescription": "Neto thwarts cyber attacks and safeguards its ecommerce platform with Cloudflare WAF and Bot Management.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2020-01-22",
+				"homepageUrl": "https://www.netohq.com/",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "Neto thwarts cyber attacks and safeguards its ecommerce platform with Cloudflare WAF and Bot Management.",
+				"longDescription": "## Neto leverages Cloudflare to secure and supercharge their ecommerce platform\n\nNeto is a cloud-based, omnichannel ecommerce platform that enables merchants to easily list their products on selling platforms such as Amazon Marketplace, eBay, Catch Marketplace, and their own web stores, and to manage all inventory and orders from a centralised place. Neto’s platform is used by thousands of merchants, predominantly in Australia, ranging from single-shop sellers to large multi-warehouse retailers and wholesalers.\n\n## Neto’s challenge: Build trust with customers by providing a high-performing, highly secure, reliable platform\n\nAs one of the largest ecommerce providers in Australia, Neto’s platform receives between 85 and 90 million requests per day. “Performance, reliability, and security form the backbone of what we do,” says Justin Hennessy, VP of Engineering. “We take security very seriously. Our merchants need a resilient platform that stays available and high-performing even during DDoS attacks, server failures, and other emergencies.”\n\nAchieving this high performance is challenging. As a SaaS provider, Neto is a major target for DDoS attacks, malicious bots, and other cyber attacks. In addition, because their solution serves online merchants, many of the requests hitting Neto’s platform are bandwidth-heavy image traffic.\n\nWhat’s more, the platform must also be able to seamlessly and rapidly scale during busy seasons such as the winter holidays, when traffic can spike dramatically. “There cannot be a situation where it’s Black Friday, and our platform goes down or starts running really slowly,” says Hennessy. “That would destroy the trust we’ve worked so hard to build with our customers.”\n\n## Achieving security and simplicity with SSL for SaaS, Bot Management, and Cloudflare WAF\n\nNeto initially adopted Cloudflare in order to automate ongoing work that was taking up critical technical resources. \n\n“SSL for SaaS was the primary driver of why we began using Cloudflare,” Hennessy explains. “At the time, our merchant onboarding process, which included setting up SSL certificates for new customers, took a couple of days and only specialized personnel could work on it.”\n\nCloudflare SSL for SaaS makes it easy for SaaS providers to enable SSL (TLS) on customers’ CNAME vanity domains, removing the burden of SSL certificate management. The solution transformed Neto’s customer onboarding into a completely automated, one-click process that any employee can perform. “The ability to automate processes was the primary pain point that Cloudflare solved for us,” Hennessy notes.\n\nNeto has also benefited from the Cloudflare Web Application Firewall (WAF) and Bot Management. “We turned Bot Management on a couple of weeks ago, and on the first day, we blocked 2.4 million requests, which obviously has a pretty significant cost effect over time,” Hennessy recalls.\n\nFrom time to time, Neto experiences automated attacks against its platform. The sophistication of these attacks are increasing and, at times, the usual static methods of blocking the types of threats in question don’t work. This is where Bot Management bridges the gap. “With the use of Cloudflare’s logs, and assistance from Cloudflare’s technical support team, we were able to identify, visualize, and mitigate the issues,” Hennessy says. “Without Bot Management, we would have had quite a big challenge dealing with that attack.”\n\nSince then, Bot Management and the WAF have allowed Neto to block an average of 15,000 to 16,000 attacks per day.\n\n“Security used to keep me up at night,” says Hennessy. “The security of our platform is the key to a successful future, not just for us, but also for our merchants. Cloudflare helps to mitigate a lot of those fears.”\n\n## Reducing bandwidth and improving performance with Cloudflare Global CDN and serverless computing\n\nNow that Neto uses the Cloudflare global CDN to cache content, only 50% of their traffic goes to their origin servers, significantly reducing their bandwidth expenditures.\n\nNeto also utilizes Cloudflare Workers, which allows developers to build serverless functions that run on Cloudflare’s network, closer to their users, to direct web traffic to specific origin servers. They are working on using it to simplify some of the caching elements in their platform so that they can move them to the edge.\n\n“With Cloudflare, especially Workers, Neto has the capabilities that we need to be creative about how we solve problems,” Hennessy remarks. “It's also enabling us to simplify the complexity of our platform by pushing a lot of the custom things that we have built on the platform out to the edges, and do it in a very standardized and automated way.”\n\n__Cloudflare offers a full gamut of solutions to ensure performance, resiliency, and security without a lot of effort on our part. Thanks to Cloudflare, we can be creative about how we serve our customers and solve problems.”\n— Justin Hennessy, Vice President of Engineering__",
+				"cloudflareStreamVideoId": "0713651a1852da6afac4c771aea3e91c",
+				"keyResults": "- Cloudflare Bot Management and Web Application Firewall (WAF) mitigate 15,000 to 16,000 cyber attacks per day\n- Cloudflare SSL for SaaS allowed Neto to transform their previously complex merchant onboarding into an automated, one-click process\n- Neto has seen a significant bandwidth cost savings from Cloudflare caching; only 50% of traffic now goes to their origin server",
+				"relatedCaseStudies": [
+					{
+						"name": "Shopify",
+						"nameUrlSlug": "shopify"
+					},
+					{
+						"name": "Authentication 3.0: Udaan Taps Cloudflare Access to Secure India’s Largest B2B Platform",
+						"nameUrlSlug": "udaan-access"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Web Application Firewall (WAF) ",
+						"url": "/waf/"
+					},
+					{
+						"title": "Bot Management",
+						"url": "https://www.cloudflare.com/products/bot-management/"
+					},
+					{
+						"title": "SSL for SaaS",
+						"url": "/ssl-for-saas-providers/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Justin Hennessy",
+				"employeeQuoteText": "We turned Bot Management on a couple of weeks ago, and on the first day, we blocked 2.4 million requests, which obviously has a pretty significant cost effect over time...without Bot Management, we would have had quite a big challenge dealing with that attack.",
+				"employeeQuoteJobTitle": "Vice President of Engineering",
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": {
+					"file": {
+						"publicURL": "[path]/BDES-316_Neto_CASE_STUDY_0120.pdf"
+					}
+				},
+				"ref_streamVideoThumbnail": {
+					"file": {
+						"publicURL": "[path]/Neto_screen_shot.png"
+					}
+				},
+				"logo": {
+					"file": {
+						"publicURL": "[path]/Neto-logo-blue.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "5Uxgjj2IEHzvvefwHHbPwS",
+			"pathname": "/case-studies/neto-leverages-cloudflare-to-secure-and-supercharge-their-ecommerce/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US",
+				"zh-CN",
+				"zh-TW"
+			]
+		}
+	}
+}

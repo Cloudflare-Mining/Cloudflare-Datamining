@@ -1,0 +1,73 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/bitfly-spectrum-protect-tcp-from-ddos-attacks/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Bitfly Uses Cloudflare Spectrum to Protect TCP Traffic from DDoS Attacks",
+				"contentfulId": "1VOO1o0cS6ENNuviu9mpha",
+				"nameUrlSlug": "bitfly-spectrum-protect-tcp-from-ddos-attacks",
+				"metaTags": {
+					"metaTitle": "Bitfly Uses Cloudflare Spectrum to Protect TCP Traffic from DDoS Attacks",
+					"metaDescription": "Bitfly uses Cloudflare Spectrum to protect TCP traffic from DDoS attacks.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2019-01-30",
+				"homepageUrl": "https://www.bitfly.at/",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "Bitfly uses Cloudflare Spectrum to protect TCP traffic from DDoS attacks.",
+				"longDescription": "*Protecting your TCP applications on the Internet is a tough job — that’s why Bitfly turned to Cloudflare Spectrum.*\n\nBitfly is a blockchain technology firm that makes two core products: the first akin to a web browser for the blockchain, allowing users to easily navigate the data that underlies each cryptocurrency. The second is a proprietary tool for ‘mining pools’, which allow many users to combine computing resources for the sake of cryptographically generating additional currency, and safeguarding the blockchain itself.\n\nSecurity is vitally important when it comes to cryptocurrency, and Bitfly takes a number of measures to ensure its customers’ funds stay safe — like employing Cloudflare’s world-class [DDoS protection](https://www.cloudflare.com/ddos/).\n\nBefore switching to Cloudflare, Bitfly was using a conventional hosting provider for security. It worked well enough, until it didn’t — taking down Bitfly’s service for stretches that were unacceptable. Meanwhile Bitfly was facing the threat of escalating DDoS attacks, prompting its users to ask, “Why don’t you just use Cloudflare and be done with all that?”\n\nAnd so they did, says Bitfly Founder and CEO Peter Pratscher. Bitfly initially joined Cloudflare as a Free customer several years ago, upgrading to our Professional and now-Enterprise plan as its business scaled.\n\n## The Cloudflare Difference\n\nOne of the key ways Bitfly leverages Cloudflare has to do with the nature of its data. Most security providers focus almost exclusively on the HTTP traffic associated with conventional web apps — but HTTP represents only a fraction of Internet traffic. Bitfly’s core mining product operates over TCP, a foundational Internet protocol that handles huge volumes of data, but isn’t protected by most Internet security services. \n\nThat’s where Cloudflare’s unique security service, [Spectrum](https://www.cloudflare.com/products/cloudflare-spectrum/ \"Spectrum\"), comes in.\n\nSpectrum brings Cloudflare’s DDoS mitigation — powered by one of the world’s largest networks — to vital, woefully underprotected protocols like SMTP (email), SSH, and, more broadly, any service that runs over TCP. \n\nBefore Cloudflare Spectrum, Bitfly would have had a difficult time defending its TCP services against attack, especially because the tool operates on arbitrary TCP ports. But with Cloudflare Spectrum, those concerns have faded to the background. \n\n![peter pratscher bitfly quote image 2](//cf-assets.www.cloudflare.com/slt3lc6tev37/69la8OS0lHpRnm9xKkFYQO/b5ccab79cd98b8c63e04df6602f6dbfe/peter_pratscher_bitfly_quote_image_2.png)\n \n*To learn more about Bitfly, visit their site [here](https://www.bitfly.at/).*\n\n*For more on __Cloudflare Spectrum__ and the protocols it defends, visit our portal [here](https://www.cloudflare.com/products/cloudflare-spectrum/).*",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "Bitfly protects TCP traffic using Cloudflare's unique security product, Spectrum",
+				"relatedCaseStudies": [],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Spectrum",
+						"url": "/products/cloudflare-spectrum/"
+					},
+					{
+						"title": "DDoS Mitigation",
+						"url": "/ddos/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Peter Pratscher",
+				"employeeQuoteText": "Cloudflare offers the unique opportunity to put TCP-based services behind a security provider — which is <b><u>very</u></b> valuable for us.",
+				"employeeQuoteJobTitle": "Founder and CEO, Bitfly",
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/bitfly_logo.svg"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "1VOO1o0cS6ENNuviu9mpha",
+			"pathname": "/case-studies/bitfly-spectrum-protect-tcp-from-ddos-attacks/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}

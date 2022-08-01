@@ -1,0 +1,545 @@
+{
+	"componentChunkName": "component---src-components-page-page-template-tsx",
+	"path": "/products/performance/",
+	"result": {
+		"data": {
+			"page": {
+				"pageName": "Products - Performance",
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "Translated for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "Translated for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "No Page for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": null,
+					"zhHansCN": null
+				},
+				"relativePath": "products/performance",
+				"topNavOptions": "default",
+				"topNavButtonText": null,
+				"topNavButtonUrl": null,
+				"metaTags": {
+					"metaTitle": "The Most Out Of Our Performance",
+					"metaDescription": "Here you can find out about products that we offer which can help improve the performance of your site.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"contentfulId": "5m6KRYp2taKUyEoa4w8eWU",
+				"contentTypeId": "page",
+				"promotionalBanner": null,
+				"psaBanner": null,
+				"customTopNav": null,
+				"headerLogo": null,
+				"template": null,
+				"relatedBlades": [
+					{
+						"__typename": "bladeHeroAnimation",
+						"contentfulId": "41rYKS50DKEauUGiA2G2wO",
+						"contentTypeId": "bladeHeroAnimation",
+						"title": "Web Performance Services",
+						"subtitle": "Fast, Efficient, Optimized",
+						"copy": "Cloudflare Performance Services accelerate applications, improve mobile delivery, and ensure availability for Internet properties.",
+						"buttonColor": null,
+						"buttonColor2": null,
+						"buttonText1": null,
+						"buttonText1LoggedIn": null,
+						"buttonUrl1": null,
+						"buttonUrl1LoggedIn": null,
+						"button1ExtraClass": null,
+						"buttonText2": null,
+						"buttonText2LoggedIn": null,
+						"buttonUrl2": null,
+						"button2ExtraClass": null,
+						"bladeBorder": "none",
+						"htmlId": null,
+						"textColor": "black",
+						"includeVideo": false,
+						"streamVideoId": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"popupStreamId": null,
+						"popupText": null,
+						"button1OpenInNewTab": null,
+						"button2OpenInNewTab": null,
+						"streamThumbnails": null,
+						"sectionPadding": null,
+						"streamPosterAssetFile": null,
+						"streamPoster": null,
+						"imageSize": null,
+						"imagePosition": null,
+						"leftLinkUrl": null,
+						"leftLink": null,
+						"leftLinkLoggedIn": null,
+						"leftLinkOptions": "hide",
+						"backgroundColor": "white",
+						"textlayoutMode": null,
+						"backgroundAssetFile": null,
+						"imageLayout": null,
+						"image": {
+							"file": {
+								"publicURL": "[path]/cloudflare-mobile-hero.svg"
+							}
+						},
+						"imageAssetFile": null
+					},
+					{
+						"__typename": "bladeQuote",
+						"contentTypeId": "bladeQuote",
+						"contentfulId": "4bwWcwXyMg6wA2IWSqUCY",
+						"quote": "The support with Cloudflare is great. It feels like we’re working with another HubSpot team. They really seem to care, they take things seriously. I’ve filed cases and gotten responses back in under a minute. The quality of the responses is just a night and day difference.",
+						"quoteAuthor": "Ken Breeman",
+						"quoteTitle": "Technical Lead, Infrastructure, Security & Networking",
+						"learnMoreText": null,
+						"sectionPadding": null,
+						"backgroundColor": "light-gray",
+						"bladeBorder": "none",
+						"learnMoreUrl": null,
+						"htmlId": null,
+						"image": {
+							"file": {
+								"publicURL": "[path]/hubspot_logo_125x125.svg"
+							}
+						},
+						"imageAssetFile": {
+							"id": "2d4a322a-a94b-52e5-b521-a223272e98cf",
+							"altText": "Logo hubspot gray",
+							"title": "Logo hubspot gray",
+							"activeAsset": "Brandfolder Asset",
+							"locale": "en-US",
+							"contentfulAsset": null,
+							"brandfolderAsset": {
+								"size": 5561,
+								"height": 1124,
+								"width": 3993,
+								"file": {
+									"publicURL": "[path]/logo_hubspot_gray.svg"
+								}
+							},
+							"brandfolderAssetMobile": null
+						},
+						"imageLinkUrl": null,
+						"logoList": null,
+						"logoListAssetFile": null,
+						"quoteCarousel": null
+					},
+					{
+						"__typename": "bladeFourFeatures",
+						"contentfulId": "2rrxbI1W2EaqYiWkaqAgsU",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": null,
+						"subtitle": null,
+						"bladeStyle": null,
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-bottom-padding",
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6cIyi2jEkt0kngxj1AXKjA",
+								"title": "Content Delivery Network (CDN)",
+								"titleSize": null,
+								"description": "Spanning %{DataCenterCount} cities across %{CountryCount} countries, Cloudflare’s Anycast CDN caches static content at the edge, reducing latency by delivering assets as close as geographically possible to visitors.",
+								"learnMoreUrl": "/cdn/",
+								"learnMoreText": "Learn More",
+								"displayBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/icon-cdn-purple.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "096de851-410f-5df1-8f9a-58dd4a411b44",
+									"altText": "Server 3 blue",
+									"title": "Server 3 blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 2368,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/server-3-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3jbMVBeqhjrgzlxKGjDZeN",
+								"title": "Website Optimizations",
+								"titleSize": null,
+								"description": "Cloudflare includes a suite of web optimizations to improve the performance of Internet assets. Optimizations include the latest web standards, such as HTTP/2 and TLS 1.3, as well as proprietary enhancements for images and mobile device visitors.",
+								"learnMoreUrl": "/website-optimization/",
+								"learnMoreText": "Learn More",
+								"displayBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/icon-web-optimization-purple.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "6d5531b7-edaf-5b05-8686-6f455b1c5c6d",
+									"altText": "Optimization web blue",
+									"title": "Optimization web blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 2687,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/optimization-web-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "11LMIrPDi6cMZHPOBhUUES",
+								"title": "DNS",
+								"titleSize": null,
+								"description": "Cloudflare is the fastest managed DNS provider in the world. Cloudflare has multiple ways to achieve maximum performance for online assets.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/icon-dns-purple.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "6bb3285c-bf75-5bac-82dd-58c220479c42",
+									"altText": "Reliability dns blue",
+									"title": "Reliability dns blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 682,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/reliability-dns-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "73H9xmt9jRYLXwCMyReibB",
+								"title": "Load Balancing",
+								"titleSize": null,
+								"description": "Cloudflare Load Balancing provides load balancing, geo-steering, monitoring and failover for single, hybrid-cloud, and multi-cloud environments, enhancing performance and availability.",
+								"learnMoreUrl": "/load-balancing/",
+								"learnMoreText": "Learn More",
+								"displayBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/icon-load-balancing-purple.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "5a959b28-b768-5052-bf8d-c87c2f5dcfb3",
+									"altText": "Reliability load balancer blue",
+									"title": "Reliability load balancer blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 2275,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/reliability-load-balancer-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4sUCp5AtUisjJYFS7cnJQE",
+								"title": "Argo Smart Routing",
+								"titleSize": null,
+								"description": "Argo Smart Routing improves Internet asset performance on average of 35% by routing visitors through the least congested and most reliable paths on Cloudflare's private network.",
+								"learnMoreUrl": "/products/argo-smart-routing/",
+								"learnMoreText": "Learn More",
+								"displayBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/icon-argo-purple.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "d0d91ab6-8531-56fe-89d3-5fe996d9f7bf",
+									"altText": "Performance intelligent routing blue",
+									"title": "Performance intelligent routing blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 2190,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/performance-intelligent-routing-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5uC8JuqJ3fmBbJ0tCvPV3S",
+								"title": "Railgun™",
+								"titleSize": null,
+								"description": "Railgun compresses previously uncacheable web objects up to 99.6% by leveraging techniques similar to those used in the compression of high-quality video. This results in an average 200% additional performance increase.",
+								"learnMoreUrl": "/website-optimization/railgun/",
+								"learnMoreText": "Learn More",
+								"displayBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/icon-speed-purple.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "4b8d0fd4-e74c-5191-a1ff-2887eb26d2fa",
+									"altText": "Performance acceleration bolt blue",
+									"title": "Performance acceleration bolt blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 387,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/performance-acceleration-bolt-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "01zUfjb82QLiguGvu8lO5p",
+								"title": "Stream",
+								"titleSize": null,
+								"description": "Cloudflare Stream makes streaming high quality video at scale, easy and affordable.",
+								"learnMoreUrl": "/products/cloudflare-stream/",
+								"learnMoreText": "Learn More",
+								"displayBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/icon-Stream-purple.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "568f982b-2d48-5bc2-aa5d-9d341054af13",
+									"altText": "Play blue",
+									"title": "Play blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 1191,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/play-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "287uFCq9DjoAcwQ7Ea9Dq7",
+								"title": "Workers",
+								"titleSize": null,
+								"description": "Cloudflare Workers let developers run JavaScript Service Workers in Cloudflare's global cloud network across %{DataCenterCount} cities and %{CountryCount} countries.",
+								"learnMoreUrl": "/products/cloudflare-workers/",
+								"learnMoreText": "Learn More",
+								"displayBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/icon-workers-purple.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "e9338336-ce81-5938-a534-b60611eb0d00",
+									"altText": "Cloudflare workers blue",
+									"title": "Cloudflare workers blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 493,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/cloudflare-workers-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5wU4OJaQBxxq7e9fhkwsY5",
+								"title": "Mobile SDK",
+								"titleSize": null,
+								"description": "Cloudflare’s Mobile SDK provides visibility into application performance and load times across any global carrier network.",
+								"learnMoreUrl": "/products/mobile-sdk/",
+								"learnMoreText": "Learn More",
+								"displayBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/icon-Mobile-SDK-purple.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "ac0d6e4c-7191-5053-b82c-89f6b718847c",
+									"altText": "icon-Mobile-SDK-purple.png",
+									"title": "icon-Mobile-SDK-purple.png",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/icon-Mobile-SDK-purple.png"
+										}
+									},
+									"brandfolderAsset": {
+										"size": 242,
+										"height": 2250,
+										"width": 1500,
+										"file": {
+											"publicURL": "[path]/device-mobile.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
+						"__typename": "bladeEnablement",
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "34dvIFP0zK68OUAciiAcqy",
+						"copy": "Check out our plan details for more information. Signing up is free.",
+						"buttonExtraClass": null,
+						"buttonColor": "orange",
+						"buttonColor2": null,
+						"title": "Ready to use Cloudflare?",
+						"backgroundColor": "blue",
+						"buttonText": "VIEW PLANS",
+						"buttonUrl": "/plans/",
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"textColor": "white",
+						"bladeBorder": "none",
+						"buttonOne": null,
+						"buttonTwo": null,
+						"sectionPadding": null
+					}
+				],
+				"noindex": false,
+				"enableZendeskChat": null,
+				"formModal": null,
+				"keepHashUrlSyncedWithScrollPosition": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"pathname": "/products/performance/",
+			"contentfulId": "5m6KRYp2taKUyEoa4w8eWU",
+			"allowedHrefLangs": [
+				"en-US",
+				"zh-CN",
+				"zh-TW",
+				"fr-FR",
+				"de-DE",
+				"it-IT",
+				"ja-JP",
+				"ko-KR",
+				"pt-BR",
+				"es-ES"
+			],
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

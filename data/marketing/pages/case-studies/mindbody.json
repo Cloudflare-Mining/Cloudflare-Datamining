@@ -1,0 +1,104 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/mindbody/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Mindbody ",
+				"contentfulId": "4zEQUWxcIs9Fww8YPsg4tJ",
+				"nameUrlSlug": "mindbody",
+				"metaTags": {
+					"metaTitle": "Cloudflare | Mindbody",
+					"metaDescription": "Mindbody helps people live happier, healthier lives by connecting the world to wellness and delivers a smooth, secure online experience with Cloudflare",
+					"twitterCustomImage": {
+						"file": {
+							"publicURL": "[path]/mindbody_meta.png"
+						}
+					},
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/mindbody_meta.png"
+						}
+					},
+					"facebookCustomImage": {
+						"file": {
+							"publicURL": "[path]/mindbody_meta.png"
+						}
+					}
+				},
+				"orderDate": "2021-12-30",
+				"homepageUrl": "https://www.mindbodyonline.com/",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "Mindbody helps people live happier, healthier lives by connecting the world to wellness and delivers a smooth, secure online experience with Cloudflare",
+				"longDescription": "### __Mindbody helps people live happier, healthier lives by connecting the world to wellness and delivers a smooth, secure online experience with Cloudflare__\n\nNamed one of the “Top 10 Most Innovative Companies in Wellness'' by Fast Company in 2021, Mindbody has supported the rapid growth of wellness businesses for over twenty years.  Fitness studios, salons, spas, and integrative health centers rely on Mindbody's integrated software and payments platform to manage, promote and expand their businesses. Consumers turn to the Mindbody app to find and interact with health and wellness businesses around the world - from signing up for gym classes, to booking spa appointments, to finding a hair stylist in their local area, and more. Consumers expect a seamless and pleasant experience when searching for and booking classes and services at wellness studies.  However, this user experience can be placed at risk by cyberattacks that cause account lockouts and potentially leverage compromised credentials to access user accounts and make fraudulent reservations or purchases.\n\nPreviously, Mindbody had deployed many different solutions across their on-premises and cloud-based infrastructure, including multiple CDNs, WAFs, and a bot mitigation service.  However, these solutions were complex to manage and did not meet Mindbody’s needs.  According to Eric Pierce, Senior Manager Cybersecurity at Mindbody, “We had a diversity of products all of which had different interfaces and different capabilities used in different platforms across different things. It was really hard to manage and monitor that many disparate solutions and different environments.”\n\n### __Challenge: Blocking cyber threats with an easy-to-use, powerful security architecture__\nConsumers expect a seamless and pleasant experience when searching for and booking classes and services at wellness studies.  However, this user experience can be placed at risk by cyberattacks that cause account lockouts and potentially leverage compromised credentials to access user accounts and make fraudulent reservations or purchases.\n\nPreviously, Mindbody had deployed many different solutions across their on-premises and cloud-based infrastructure, including multiple CDNs, WAFs, and a bot mitigation service.  However, these solutions were complex to manage and did not meet Mindbody’s needs.  According to Eric Pierce, Senior Manager Cybersecurity at Mindbody, “We had a diversity of products all of which had different interfaces and different capabilities used in different platforms across different things. It was really hard to manage and monitor that many disparate solutions and different environments.”\n\n### Security integration streamlines monitoring and management\nAfter a thorough evaluation, Mindbody decided to partner with Cloudflare to replace seven legacy tools with a solution that seamlessly protected both its on-prem and cloud-based assets.  This shift eliminated the complexity of managing multiple point solutions and provided improved visibility and protection for Mindbody’s IT infrastructure.  Adelyn Fears, Security Engineer at Mindbody, says, “With Cloudflare, we've been able to replicate all the functionality that we had previously with a variety of tools and consolidate it into one, which just makes everything easier.”\n\n### __Blocking the leading cyber threats to online commerce__\nLike all online enterprises, Mindbody and its customers are targeted by credential stuffing, distributed denial-of-service (DDoS), data scraping, and other attacks. These cyber threats harm the customer experience, place sensitive data at risk, and waste Mindbody’s resources.\nCloudflare Bot Management, WAF, and DDoS protection have dramatically reduced Mindbody’s exposure to these automated attacks. According to Pierce, “Right now, about 20% of the requests inbound to Mindbody services are bots. Some of those are good bots like Googlebots, but some are web scrapers and credential stuffers. With Cloudflare, we're able to tell the difference between the good bots and the bad bots and create rules that only allow the good bots through.”\n\n### __Eliminating false positives to improve customer experience__\nMindbody’s customers expect to be able to quickly and easily access their studio’s business account and consumers expect to seamlessly book a fitness class or schedule an appointment.  However, several times each day, a legacy solution blocked legitimate users and directed them to contact Mindbody’s security team.\n\nCloudflare Bot Management offered improved bot detection and the ability to more precisely tune detection rules to reduce false-positive detections.  Instead of multiple customers and consumers being redirected each day, Mindbody’s security team now only addresses a few account lockout issues per week.  Pierce says, “With Cloudflare, our security blocks have dropped by about 95%, which is a huge improvement.  We’ve mitigated bot scraping and improved the customer experience.”\n\n### __Controlling access for remote contractors__\nMindbody works with a group of remote contractors who need access to certain internal resources to do their work.  However, directly exposing its servers to remote workers places Mindbody at greater cyber risk. Cloudflare Access enables Mindbody to manage its third-party risk by implementing zero trust remote access for its contractors.  Remote access to Mindbody’s systems is strictly limited based on business needs, limiting the potential impact of a compromised user account.\nProtecting against modern and future cyber threats\n\nMindbody is an innovation leader in the wellness space.  As Mindbody’s platform continues to evolve to meet the changing needs of its customers and consumers, Cloudflare provides protection against modern and emerging cyber threats.\n",
+				"cloudflareStreamVideoId": "c2b65a7f58ac4d1735e14ff0a7ce3b64",
+				"keyResults": "- Replaced seven standalone products with one integrated, user-friendly Cloudflare solution\n\n- False-positive account blocks decreased from several per day to one or two per week\n\n- Remote contractors granted secure, zero trust access to corporate apps via Cloudflare Access\n",
+				"relatedCaseStudies": [
+					{
+						"name": "Kathmandu",
+						"nameUrlSlug": "kathmandu"
+					},
+					{
+						"name": "Manduka",
+						"nameUrlSlug": "manduka"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Access",
+						"url": "/teams/access"
+					},
+					{
+						"title": "Bot Management",
+						"url": "https://www.cloudflare.com/products/bot-management/"
+					},
+					{
+						"title": "CDN",
+						"url": "/cdn/"
+					},
+					{
+						"title": "Web Application Firewall (WAF) ",
+						"url": "/waf/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Adelyn Fears",
+				"employeeQuoteText": "With Cloudflare, we've been able to replicate all the functionality that we had previously with a variety of tools and consolidate it into one, which just makes everything easier.",
+				"employeeQuoteJobTitle": "Security Engineer",
+				"employeeQuoteName2": "Eric Pierce",
+				"employeeQuoteText2": "With Cloudflare, our security blocks have dropped by about 95%, which is a huge improvement.  We’ve mitigated bot scraping and improved the customer experience.",
+				"employeeQuoteJobTitle2": "Senior Manager, Cyber Security",
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": {
+					"file": {
+						"publicURL": "[path]/Screen_Shot_2021-12-30_at_3.10.40_PM.png"
+					}
+				},
+				"logo": {
+					"file": {
+						"publicURL": "[path]/mindbody_logo.svg"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": [
+					"en-us"
+				]
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "4zEQUWxcIs9Fww8YPsg4tJ",
+			"pathname": "/case-studies/mindbody/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}

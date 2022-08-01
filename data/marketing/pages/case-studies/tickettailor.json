@@ -1,0 +1,74 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/tickettailor/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Ticket Tailor",
+				"contentfulId": "4A0ei1hHr08QLGoSylgUPX",
+				"nameUrlSlug": "tickettailor",
+				"metaTags": {
+					"metaTitle": "Ticket Tailor",
+					"metaDescription": "Ticket Tailor uses Cloudflare Waiting Room to manage high traffic volumes associated with COVID-19 vaccine registration.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2021-03-25",
+				"homepageUrl": "https://www.tickettailor.com/",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "Ticket Tailor uses Cloudflare Waiting Room to manage high traffic volumes associated with COVID-19 vaccine registration.",
+				"longDescription": "## __Ticket Tailor partners with Cloudflare to provide a smooth COVID-19 vaccine registration experience__\n\n[Ticket Tailor](https://www.tickettailor.com) was founded in 2010 to support event organizers. Ticket Tailor is designed to provide a software-like experience for ticket sales, where the event organizer largely configures and manages their own ticket sales. This keeps the focus on the event organizer rather than the ticketing platform.Ticket Tailor primarily operates in the UK and the US. However, it has a presence in approximately 180 countries, selling tickets to festivals, concerts, TED Talks, and similar events. \n\nIn 2021, the COVID-19 pandemic forced a change in direction, and, among other things, Ticket Tailor is currently supporting COVID-19 vaccination registration for two United States hospitals.\n\n### __Challenge: Massive interest in COVID-19 vaccines overwhelms Ticket Tailor’s infrastructure__\n\nTicket Tailor specializes in selling tickets for in-person events but shifted gears because of the COVID-19 pandemic. Throughout 2020, the company pivoted to support events that suddenly needed the ability to register and schedule visitors in advance, such as museums, food pickups, and farm tours.\n\nTicket Tailor is currently offering [free support to organizations scheduling COVID-19 vaccination appointments](https://www.tickettailor.com/vaccine-registration-software/). However, the high traffic volumes that are associated with these events can overwhelm the company’s systems. Cloudflare Waiting Room — available via Project Fair Shot — allows the company to implement an online queue for access to their COVID-19 vaccine registration sites.\n\n### __Cloudflare Waiting Room provides scalability for vaccine registrations__\n\nTicket Tailor is accustomed to traffic spikes with registration for big events, but its backend database can still struggle under the load. According to Jake Gissing, a developer at Ticket Tailor, “There'll be a huge rush of traffic that we struggle to handle without scaling up our infrastructure.”\n\nWhen the company started supporting COVID-19 vaccine registration, the traffic strained its infrastructure, a problem that Cloudflare Waiting Room helped to resolve. According to Gissing, “Typically, we'll hit about 70% utilization across our web servers and database. Without the queue, that initial spike can last anywhere between one and 20 minutes. With Cloudflare Waiting Room’s queue enabled, we were letting 200 visitors through at a time, and we saw there's no noticeable spike. It was at 10% of capacity. There are no spikes at all, which is really good to see.”\n\nGissing also commented that Cloudflare Waiting Room was easy to configure and manage. “Setting up the first queue took about five minutes,” he said. “And the mechanism where it refreshes itself works perfectly well for us.”\n\n### __Lower traffic volumes reduce stress and costs for Ticket Tailor__\n\nOn the first day of vaccine registration with Cloudflare Waiting Room in place, Ticket Tailor saw about 3,000 visitors looking for 800 vaccine slots. The ability to monitor and configure Cloudflare Waiting Room live was invaluable to the team. “Once I was able to see how much Waiting Room was allowing us to handle, I did tweak it a little bit to allow more people through,” according to Gissing. \n\nHaving Waiting Room in place was also a cost-saving measure for Ticket Tailor. Jonny White, founder and CEO of Ticket Tailor, said, “If we knew a vaccination event was going to be opened up, we'd have two people on standby watching the database and taking time out of their day to do that. Whereas with Cloudflare Waiting Room, we can be confident, and the system doesn't require that.”\n\n### __A perfect solution to Ticket Tailor’s needs__\n\nWhile Cloudflare Waiting Room is currently being used only for COVID-19 vaccination registration via Project Fair Shot, this will not always be the case. Ticket Tailor is looking forward to when it can use the product across its wider customer base for various events. White says, “We will probably use it for everything in the future.”",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "- Peak resource utilization reduced from 70% to 10%\n\n- Cloudflare Waiting Room removed the need to have two employees standing by to address issues, which resulted in cost-savings\n\n- Waiting Room’s live management console allowed capacity to be updated on-the-fly based on backend database utilization",
+				"relatedCaseStudies": [
+					{
+						"name": "County of San Luis Obispo",
+						"nameUrlSlug": "county-of-san-luis-obispo"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Cloudflare Waiting Room",
+						"url": "https://www.cloudflare.com/waiting-room/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Jake Gissing",
+				"employeeQuoteText": "Typically, we'll hit about 70% utilization across our web servers and database. With Cloudflare Waiting Room’s queue enabled, we were letting 200 visitors through at a time, and we saw there's no noticeable spike. It was only at 10% of capacity...which is really good to see.",
+				"employeeQuoteJobTitle": "Developer",
+				"employeeQuoteName2": "Jonny White",
+				"employeeQuoteText2": "If we knew a vaccination event was going to be opened up, we'd have two people on standby watching the database and taking time out of their day to do that. Whereas with Cloudflare Waiting Room, we can be confident, and the system doesn't require that.",
+				"employeeQuoteJobTitle2": "Founder and CEO",
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/logo_ticket-tailor.svg"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "4A0ei1hHr08QLGoSylgUPX",
+			"pathname": "/case-studies/tickettailor/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}

@@ -1,0 +1,864 @@
+{
+	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
+	"path": "/learning/access-management/what-is-browser-isolation/",
+	"result": {
+		"data": {
+			"learningCenterArticle": {
+				"contentTypeId": "learningCenterArticle",
+				"contentfulId": "1pIOEQcZ4vx8DzFPfbRezW",
+				"urlSlug": "access-management/what-is-browser-isolation",
+				"metaTags": {
+					"metaTitle": "What is browser isolation? | Remote browser isolation",
+					"metaDescription": "Browser isolation keeps browsing activity secure by separating web browsing from user devices. Learn about remote browser isolation and how it works.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					}
+				},
+				"metaTitle": null,
+				"metaDescription": null,
+				"learningCenterArticleSubHeader": {
+					"contentTypeId": "learningCenterArticleSubHeader",
+					"contentfulId": "X61tS7cHdYUy1Jpp9N5Mb",
+					"learningCenterName": "accessmanagement",
+					"links": [
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "LCfYTn7Kq9EqSCJhxFnw1",
+							"displayText": "What is IAM? ",
+							"url": "/learning/access-management/what-is-identity-and-access-management/"
+						},
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "5TtqrotpypiEg485b2l2tf",
+							"displayText": "What is SASE?",
+							"url": "/learning/access-management/what-is-sase/"
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "3IwB78Wq3DsbhUeCBPNs2L",
+							"name": "Access Management Header: Zero Trust Security",
+							"displayText": "Zero Trust Security",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "11BjITFi6r2hDV21rZPAFR",
+									"displayText": "Zero Trust security",
+									"url": "/learning/security/glossary/what-is-zero-trust/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "sWOO2Fdv8UREvRW1KEYhb",
+									"displayText": "What is ZTNA?",
+									"url": "/learning/access-management/what-is-ztna/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1B9kOyuZZEp1rlqwt8EFOG",
+									"displayText": "Castle-and-Moat Security",
+									"url": "/learning/access-management/castle-and-moat-network-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "33vSzdM0dtfaTfjERoM5Vw",
+									"displayText": "Principle of Least Privilege",
+									"url": "/learning/access-management/principle-of-least-privilege/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "24MOZlRUGXzizkNkiZSWPV",
+									"displayText": "Security Service Edge (SSE)",
+									"url": "/learning/access-management/security-service-edge-sse/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "7GhMQh5cXBGTcKQlfZLvOE",
+							"name": "Access Management Header: Authentication",
+							"displayText": "Authentication",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "Y3y79iQL0H3GMcN0bA3kL",
+									"displayText": "What Is Authentication?",
+									"url": "/learning/access-management/what-is-authentication/ "
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7p87aHcK9Ie2dylUSFYG9T",
+									"displayText": "Two-factor authentication ",
+									"url": "/learning/access-management/what-is-two-factor-authentication/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7ChaKsjsdOTtnIStObr22W",
+									"displayText": "Multi-factor authentication",
+									"url": "/learning/access-management/what-is-multi-factor-authentication/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5GUCQ6GwyX4OAAFC1H3yi5",
+									"displayText": "What is SSO?",
+									"url": "/learning/access-management/what-is-sso/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5okAIdYhmQMh9bgKCJBLYR",
+									"displayText": "What is SAML?",
+									"url": "/learning/access-management/what-is-saml/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "WR4vyyyFh6xNl1MbHazzS",
+									"displayText": "What is OAuth?",
+									"url": "/learning/access-management/what-is-oauth/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6tZm4KTLZULasghLMMgjvX",
+									"displayText": "Identity provider (IdP)",
+									"url": "/learning/access-management/what-is-an-identity-provider/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1z7vN3ASaGLD3mx2NLOLG7",
+									"displayText": "Identity as a Service",
+									"url": "/learning/access-management/what-is-identity-as-a-service/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4QoH8dVxKKYSsfePjHNKxD",
+									"displayText": "Phishing Attack",
+									"url": "/learning/access-management/phishing-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7EcaLFFtsZb1SNgjysiTB7",
+									"displayText": "Spear Phishing",
+									"url": "/learning/access-management/spear-phishing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4MTr0HX43ACfOcNtiwUyjF",
+									"displayText": "Mutual Authentication",
+									"url": "/learning/access-management/what-is-mutual-authentication/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "60GutG8GFeUNrEmqh7TtXV",
+									"displayText": "Mutual TLS (mTLS)",
+									"url": "/learning/access-management/what-is-mutual-tls/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "hlv2Y3rMn5j2y0AdQyQfH",
+									"displayText": "Authn vs. Authz",
+									"url": "/learning/access-management/authn-vs-authz/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5YvhlZgd3eNNrY5vnE5sEw",
+									"displayText": "Token-Based Authentication",
+									"url": "/learning/access-management/token-based-authentication/ "
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "qo6Z0A22GGHuaNqiVcaIx",
+							"name": "Access Management Header: Remote Access",
+							"displayText": "Remote Access",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4FKVZaN6mpIm5iyZ7Lcxs5",
+									"displayText": "What's a VPN? ",
+									"url": "/learning/access-management/what-is-a-vpn/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5DJAZGS3jg3hVYcT1Wian0",
+									"displayText": "VPN Security ",
+									"url": "/learning/access-management/vpn-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5RExMXWreKUk2vNcVq10Gm",
+									"displayText": "VPN Speed ",
+									"url": "/learning/access-management/vpn-speed/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7lPlbx9M7j4TywvoeOXPV0",
+									"displayText": "Business VPN ",
+									"url": "/learning/access-management/what-is-a-business-vpn/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4CBC8Nj1Z2KHBHIHwmlCcC",
+									"displayText": "GDPR remote access",
+									"url": "/learning/access-management/gdpr-remote-access/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3hLfR6mFp6whoN4nymijCN",
+									"displayText": "Remote workforce security",
+									"url": "/learning/access-management/remote-workforce-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3q0Nc1zR2FC7Jl6LgTCOBe",
+									"displayText": "What is the RDP?",
+									"url": "/learning/access-management/what-is-the-remote-desktop-protocol/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3A6ToMdMAXKrvE4tXy8A5C",
+									"displayText": "RDP Security",
+									"url": "/learning/access-management/rdp-security-risks/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "4fsKOVXIb6uDYmCQOVdlMl",
+							"name": "Access Management Header: Access Glossary",
+							"displayText": "Access Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7qscNda3QrDnyAZknHtbLZ",
+									"displayText": "Access control",
+									"url": "/learning/access-management/what-is-access-control/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "37kb391xJxs7bHH8zaLr3l",
+									"displayText": "Role-based access control (RBAC)",
+									"url": "/learning/access-management/role-based-access-control-rbac/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "65VABQOAzccr6p12Tlosw4",
+									"displayText": "Secure web gateway",
+									"url": "/learning/access-management/what-is-a-secure-web-gateway/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "s0e9m5se3XHJHiml9ZU55",
+									"displayText": "What is a CASB? ",
+									"url": "/learning/access-management/what-is-a-casb/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6XvpGQTupqKx4DjPEcOLMj",
+									"displayText": "DNS filtering",
+									"url": "/learning/access-management/what-is-dns-filtering/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3nmpmlsuL3LG41i2zeS5Zq",
+									"displayText": "URL filtering",
+									"url": "/learning/access-management/what-is-url-filtering/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4adDJvliSohgoEK3oT5uaG",
+									"displayText": "Data Loss Prevention (DLP) ",
+									"url": "/learning/access-management/what-is-dlp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3bxDvM2EGcmvwU5oXuL5ny",
+									"displayText": "Software-defined perimeter",
+									"url": "/learning/access-management/software-defined-perimeter/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2VphPHvft5RelO7SAYrrOq",
+									"displayText": "Network Perimeter",
+									"url": "/learning/access-management/what-is-the-network-perimeter/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4uvJAFlB8YFjUORloRPWUO",
+									"displayText": "Browser Isolation",
+									"url": "/learning/access-management/what-is-browser-isolation/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6OT3YMHacbSCBJMO2bBivb",
+									"displayText": "What is an Insider Threat?",
+									"url": "/learning/access-management/what-is-an-insider-threat"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1WkQUvxqzNTr3WgBWuDrek",
+									"displayText": "What is shadow IT?",
+									"url": "/learning/access-management/what-is-shadow-it"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2R63DUgV0F0X6BJ7Esmulw",
+									"displayText": "Identity",
+									"url": "/learning/access-management/what-is-identity/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "1H8EbGxdv2N9Ak908AaBC5",
+							"name": "Accesss Management: Insights",
+							"displayText": "Insights",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1wiWDzIJ6wU4wdgrCCsqKI",
+									"displayText": "Accelerating the journey to SASE",
+									"url": "https://www.cloudflare.com/learning/insights-sase-network-transformation/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "BkQtUObQvEWnAoECA8gEX",
+									"displayText": "Extending Zero Trust to the Internet browser",
+									"url": "https://www.cloudflare.com/learning/insights-zero-trust-browsing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1Eqcf3fqumB1J3IIf1aeT7",
+									"displayText": "Making the case for SASE",
+									"url": "https://www.cloudflare.com/learning/insights-case-for-sase/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "jQp53tpsRvjsWJjYlZDyW",
+									"displayText": "The future of networking",
+									"url": "https://www.cloudflare.com/learning/insights-future-of-networking"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4kyyAceZojTXyGrrNyQv2E",
+									"displayText": "A new framework for network security",
+									"url": "https://www.cloudflare.com/insights-sase-framework"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "37qx4iYUDgPdHJaxEAyIxH",
+									"displayText": "Ransomware attackers escalate extortion tactics",
+									"url": "https://www.cloudflare.com/learning/insights-ransomware-extortion/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1mVhbSh7k2qiuul5gDOmKa",
+									"displayText": "The rise of Zero Trust Network Access",
+									"url": "https://www.cloudflare.com/insights-zero-trust-network-access/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7f80AUP3KPhx1fMsJMuW4T",
+									"displayText": "Securing the distributed enterprise for the long-term",
+									"url": "https://www.cloudflare.com/insights-securing-distributed-enterprise/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5eUpBgLgoPxWdadu3NiMlC",
+									"displayText": "The software supply chain is under attack",
+									"url": "https://www.cloudflare.com/learning/insights-supply-chain-attacks/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6XMprVo1l7XBpfbts9z7Ys",
+									"displayText": "The growing cost of shadow IT",
+									"url": "https://www.cloudflare.com/learning/insights-shadow-it/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5h0xL2XQThUr88KvQQNtET",
+									"displayText": "Mitigating the risk of malicious insiders in the hybrid era",
+									"url": "https://www.cloudflare.com/learning/insights-malicious-insiders/"
+								}
+							]
+						}
+					]
+				},
+				"learningCenterArticleFooter": {
+					"contentTypeId": "learningCenterArticleFooter",
+					"contentfulId": "51K5Pmi401vClHlANqC7rS",
+					"learningCenterName": "accessmanagement",
+					"column1Title": "About Access Management ",
+					"column1": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "57e1z1QwW5UVeDoicZR3DI",
+						"name": "Access Management Footer - About",
+						"displayText": "About Access Management",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "LCfYTn7Kq9EqSCJhxFnw1",
+								"displayText": "What is IAM? ",
+								"url": "/learning/access-management/what-is-identity-and-access-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7qscNda3QrDnyAZknHtbLZ",
+								"displayText": "Access control",
+								"url": "/learning/access-management/what-is-access-control/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2VphPHvft5RelO7SAYrrOq",
+								"displayText": "Network Perimeter",
+								"url": "/learning/access-management/what-is-the-network-perimeter/"
+							}
+						]
+					},
+					"column2Title": "About Zero Trust",
+					"column2": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "64w0aoxQddRHtzH1Ct92rY",
+						"name": "Access Management Footer - Zero Trust",
+						"displayText": "About Zero Trust",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "11BjITFi6r2hDV21rZPAFR",
+								"displayText": "Zero Trust security",
+								"url": "/learning/security/glossary/what-is-zero-trust/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7p87aHcK9Ie2dylUSFYG9T",
+								"displayText": "Two-factor authentication ",
+								"url": "/learning/access-management/what-is-two-factor-authentication/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "37kb391xJxs7bHH8zaLr3l",
+								"displayText": "Role-based access control (RBAC)",
+								"url": "/learning/access-management/role-based-access-control-rbac/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7ChaKsjsdOTtnIStObr22W",
+								"displayText": "Multi-factor authentication",
+								"url": "/learning/access-management/what-is-multi-factor-authentication/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5okAIdYhmQMh9bgKCJBLYR",
+								"displayText": "What is SAML?",
+								"url": "/learning/access-management/what-is-saml/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3hLfR6mFp6whoN4nymijCN",
+								"displayText": "Remote workforce security",
+								"url": "/learning/access-management/remote-workforce-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "WR4vyyyFh6xNl1MbHazzS",
+								"displayText": "What is OAuth?",
+								"url": "/learning/access-management/what-is-oauth/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4uvJAFlB8YFjUORloRPWUO",
+								"displayText": "Browser Isolation",
+								"url": "/learning/access-management/what-is-browser-isolation/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1B9kOyuZZEp1rlqwt8EFOG",
+								"displayText": "Castle-and-Moat Security",
+								"url": "/learning/access-management/castle-and-moat-network-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "60GutG8GFeUNrEmqh7TtXV",
+								"displayText": "Mutual TLS (mTLS)",
+								"url": "/learning/access-management/what-is-mutual-tls/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "sWOO2Fdv8UREvRW1KEYhb",
+								"displayText": "What is ZTNA?",
+								"url": "/learning/access-management/what-is-ztna/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "33vSzdM0dtfaTfjERoM5Vw",
+								"displayText": "Principle of Least Privilege",
+								"url": "/learning/access-management/principle-of-least-privilege/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "24MOZlRUGXzizkNkiZSWPV",
+								"displayText": "Security Service Edge (SSE)",
+								"url": "/learning/access-management/security-service-edge-sse/"
+							}
+						]
+					},
+					"column3Title": "VPN Resources",
+					"column3": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "2l0ZQknxtExdhOWRd1S9ts",
+						"name": "Access Management Footer - VPN Resources",
+						"displayText": "VPN Resources",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4FKVZaN6mpIm5iyZ7Lcxs5",
+								"displayText": "What's a VPN? ",
+								"url": "/learning/access-management/what-is-a-vpn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7lPlbx9M7j4TywvoeOXPV0",
+								"displayText": "Business VPN ",
+								"url": "/learning/access-management/what-is-a-business-vpn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5DJAZGS3jg3hVYcT1Wian0",
+								"displayText": "VPN Security ",
+								"url": "/learning/access-management/vpn-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5RExMXWreKUk2vNcVq10Gm",
+								"displayText": "VPN Speed ",
+								"url": "/learning/access-management/vpn-speed/"
+							}
+						]
+					},
+					"column4Title": "Glossary",
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "3Cr7XBFyYV6UPH671HUybI",
+						"name": "Access Management Footer - Glossary ",
+						"displayText": "Glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4adDJvliSohgoEK3oT5uaG",
+								"displayText": "Data Loss Prevention (DLP) ",
+								"url": "/learning/access-management/what-is-dlp/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "s0e9m5se3XHJHiml9ZU55",
+								"displayText": "What is a CASB? ",
+								"url": "/learning/access-management/what-is-a-casb/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "65VABQOAzccr6p12Tlosw4",
+								"displayText": "Secure web gateway",
+								"url": "/learning/access-management/what-is-a-secure-web-gateway/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4QoH8dVxKKYSsfePjHNKxD",
+								"displayText": "Phishing Attack",
+								"url": "/learning/access-management/phishing-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3bxDvM2EGcmvwU5oXuL5ny",
+								"displayText": "Software-defined perimeter",
+								"url": "/learning/access-management/software-defined-perimeter/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5GUCQ6GwyX4OAAFC1H3yi5",
+								"displayText": "What is SSO?",
+								"url": "/learning/access-management/what-is-sso/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6XvpGQTupqKx4DjPEcOLMj",
+								"displayText": "DNS filtering",
+								"url": "/learning/access-management/what-is-dns-filtering/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3nmpmlsuL3LG41i2zeS5Zq",
+								"displayText": "URL filtering",
+								"url": "/learning/access-management/what-is-url-filtering/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4CBC8Nj1Z2KHBHIHwmlCcC",
+								"displayText": "GDPR remote access",
+								"url": "/learning/access-management/gdpr-remote-access/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3q0Nc1zR2FC7Jl6LgTCOBe",
+								"displayText": "What is the RDP?",
+								"url": "/learning/access-management/what-is-the-remote-desktop-protocol/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3A6ToMdMAXKrvE4tXy8A5C",
+								"displayText": "RDP Security",
+								"url": "/learning/access-management/rdp-security-risks/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6tZm4KTLZULasghLMMgjvX",
+								"displayText": "Identity provider (IdP)",
+								"url": "/learning/access-management/what-is-an-identity-provider/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z7vN3ASaGLD3mx2NLOLG7",
+								"displayText": "Identity as a Service",
+								"url": "/learning/access-management/what-is-identity-as-a-service/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6OT3YMHacbSCBJMO2bBivb",
+								"displayText": "What is an Insider Threat?",
+								"url": "/learning/access-management/what-is-an-insider-threat"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4MTr0HX43ACfOcNtiwUyjF",
+								"displayText": "Mutual Authentication",
+								"url": "/learning/access-management/what-is-mutual-authentication/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7EcaLFFtsZb1SNgjysiTB7",
+								"displayText": "Spear Phishing",
+								"url": "/learning/access-management/spear-phishing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "hlv2Y3rMn5j2y0AdQyQfH",
+								"displayText": "Authn vs. Authz",
+								"url": "/learning/access-management/authn-vs-authz/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1WkQUvxqzNTr3WgBWuDrek",
+								"displayText": "What is shadow IT?",
+								"url": "/learning/access-management/what-is-shadow-it"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2R63DUgV0F0X6BJ7Esmulw",
+								"displayText": "Identity",
+								"url": "/learning/access-management/what-is-identity/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Y3y79iQL0H3GMcN0bA3kL",
+								"displayText": "What Is Authentication?",
+								"url": "/learning/access-management/what-is-authentication/ "
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5YvhlZgd3eNNrY5vnE5sEw",
+								"displayText": "Token-Based Authentication",
+								"url": "/learning/access-management/token-based-authentication/ "
+							}
+						]
+					},
+					"column5Title": "Learning Center Navigation",
+					"column5": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "5620fCE1hx2KRLHi2SY5g9",
+						"name": "Access Management Footer - Learning Center Nav",
+						"displayText": "Learning Center Navigation ",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2hdSVoYA5asSIG0U2ae20c",
+								"displayText": "Learning Center Home",
+								"url": "/learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "56Y6OytBNgNoNDWQL2ezlf",
+								"displayText": "DDoS Learning Center",
+								"url": "/learning/ddos/what-is-a-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6DGcnYIMM0eCGwqAKu2ECO",
+								"displayText": "CDN Learning Center",
+								"url": "/learning/cdn/what-is-a-cdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Ra0qmFJ1uewk2MYscW8KI",
+								"displayText": "DNS Learning Center",
+								"url": "/learning/dns/what-is-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z3UC9tP1Kjk85BX5zSGPY",
+								"displayText": "Serverless Learning Center",
+								"url": "/learning/serverless/what-is-serverless/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52V7iI9YriJ0En2SGmEXz5",
+								"displayText": "SSL Learning Center",
+								"url": "/learning/ssl/what-is-ssl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1yItw6W6SsM2Y0Wuq6Y2c6",
+								"displayText": "Security Learning Center",
+								"url": "/learning/security/what-is-web-application-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q67XLnKqKhfmDJR4q9hJT",
+								"displayText": "Performance Learning Center",
+								"url": "/learning/performance/why-site-speed-matters/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7jgqDUFFzaLuKrsaBTLdV0",
+								"displayText": "Cloud Learning Center",
+								"url": "/learning/cloud/what-is-the-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7D22pOfjb98KXcnAJyJFCX",
+								"displayText": "Bots Learning Center",
+								"url": "/learning/bots/what-is-a-bot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3jjEMuuLrCwhRidjG5kglM",
+								"displayText": "Network Layer Learning Center",
+								"url": "/learning/network-layer/what-is-the-network-layer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RvS0l0m86G1VISDrEvlJb",
+								"displayText": "Privacy Learning Center",
+								"url": "/learning/privacy/what-is-data-privacy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "MytksT5WU5mh863BQYEkj",
+								"displayText": "Video Streaming Learning Center",
+								"url": "/learning/video/what-is-streaming/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5TtqrotpypiEg485b2l2tf",
+								"displayText": "What is SASE?",
+								"url": "/learning/access-management/what-is-sase/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
+								"displayText": "Email Security Learning Center",
+								"url": "/learning/email-security/what-is-email-security/"
+							}
+						]
+					}
+				},
+				"header": "What is browser isolation?",
+				"blurbSubHeader": "Browser isolation protects users from untrusted, potentially malicious websites and apps by confining browsing activity to a secured environment that is separated from user devices and organizational networks.",
+				"objectivesHeader": "Browser Isolation",
+				"objectivesList": [
+					"Define browser isolation",
+					"Explain the risks of using a web browser",
+					"Describe the different types of browser isolation, including remote browser isolation"
+				],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "11BjITFi6r2hDV21rZPAFR",
+						"displayText": "Zero Trust security",
+						"url": "/learning/security/glossary/what-is-zero-trust/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "65VABQOAzccr6p12Tlosw4",
+						"displayText": "Secure web gateway",
+						"url": "/learning/access-management/what-is-a-secure-web-gateway/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "3nmpmlsuL3LG41i2zeS5Zq",
+						"displayText": "URL filtering",
+						"url": "/learning/access-management/what-is-url-filtering/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "6XvpGQTupqKx4DjPEcOLMj",
+						"displayText": "DNS filtering",
+						"url": "/learning/access-management/what-is-dns-filtering/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "3hLfR6mFp6whoN4nymijCN",
+						"displayText": "Remote workforce security",
+						"url": "/learning/access-management/remote-workforce-security/"
+					}
+				],
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is browser isolation?</h2>\n\n<p>Browser isolation is a technology that keeps browsing activity secure by separating the process of loading webpages from the user devices displaying the webpages. This way, potentially malicious webpage code does not run on a user’s device, preventing <a href='/learning/ddos/glossary/malware/'>malware</a> infections and other cyber attacks from impacting both user devices and internal networks.</p>\n\n<p>Visiting websites and using web applications involves a web browser loading content and code from remote, untrusted sources (e.g. faraway web servers), then executing that code on a user's device. From a security perspective, this makes browsing the web a fairly dangerous activity. Browser isolation instead loads and executes code far away from users, insulating them and the networks they connect to from the risks — similar to how using robots to perform certain dangerous tasks within a factory can keep the factory workers safer.</p>\n\n<p>Browser isolation can be an important component of a <a href='/learning/security/glossary/what-is-zero-trust/'>Zero Trust</a> security model, in which no user, application, or website is trusted by default.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Why do organizations use browser isolation?</h2>\n\n<p>The Internet has become incredibly important to modern business operations. It used to be that business processes took place mostly within an <a href='/learning/network-layer/enterprise-networking/'>internal corporate network</a>, but that has long since stopped being the case. Instead employees regularly access websites and web applications to do their work (and to perform personal tasks), and they do so through a browser.</p>\n\n<p>Just as <a href='/learning/security/what-is-a-firewall/'>firewalls</a> and network access control helped stop attacks directed at internal networks, browser isolation helps stop attacks directed at the browser.</p>\n\n<h4 class=\"learning-content-h4\">Benefits of browser isolation</h4>\n\n<ul class=\"learning-list\">\n  <li>Dangerous downloads are deleted</li>\n  <li>Malicious scripts do not execute on a device or inside a private network</li>\n  <li><a href='/learning/security/threats/zero-day-exploit/'>Zero-day exploits</a>* through the browser are blocked</li>\n  <li>Malicious web content can be blocked without having to block entire websites</li>\n</ul>\n\n<p>*<i>A zero-day exploit is an attack that uses a vulnerability that has not previously been identified or patched. Though rare, zero-day exploits are nearly impossible to stop.</i></p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the different types of browser isolation?</h2>\n\n<p>There are three main kinds of browser isolation: <i>remote</i> (or <i>cloud-hosted</i>), <i>on-premise</i>, and <i>client-side</i>.</p>\n\n<ul class=\"learning-list\">\n   <li><strong>Remote browser isolation</strong> technology loads webpages and executes any associated JavaScript code on a <a href='/learning/cloud/what-is-the-cloud/'>cloud</a> server, far   removed from user devices and organizations' internal networks.</li>\n   <li><strong>On-premise browser isolation</strong> does the same thing, but on a server that an organization manages internally.</li>\n   <li><strong>Client-side browser isolation</strong> still loads the webpages on a user device, but it uses virtualization or sandboxing to keep website code and content separate from the rest of the device.</li>\n</ul>\n\n<p>In all three methods of browser isolation, the user's browsing session is deleted when it ends, so any malicious cookies or downloads associated with the session are eliminated.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does remote browser isolation work?</h2>\n\n<img src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/3xRG4dU3ErkppmbqnyMDVA/9a0de8ec1d66361a559f2b26cd00ced6/remote_browser_isolation.png\" class=\"responsive-image\" alt=\"Remote browser isolation: website code executed on remote server removed from client laptop\" itemprop=\"image\" />\n\n<p>Remote or cloud-hosted browser isolation keeps untrusted browser activity as far away as possible from user devices and corporate networks. It does so by conducting a user’s web browsing activities on a cloud server controlled by a cloud vendor. It then transmits the resulting webpages to the user's device so that the user can interact with the Internet like normal, but without actually loading full webpages on their device. Any user actions, such as mouse clicks or form submissions, are transmitted to the cloud server and carried out there.</p>\n\n<p>There are several ways a remote browser isolation server can send web content to a user's device:</p>\n\n<ul class=\"learning-list\">\n   <li><strong>Stream the browser to the user:</strong> The user views a video or an image of their browsing activity; this technique is also known as \"pixel pushing.\" This method introduces <a href='/learning/performance/glossary/what-is-latency/'>latency</a> to user browsing activities, sometimes resulting in a poor user experience.</li>\n   <li><strong>Open, inspect, and rewrite each webpage to remove malicious content, then send to the local user browser:</strong> With this method, known as <a href='/learning/performance/how-dcl-and-fcp-affect-seo/'>DOM</a> rewriting, webpages are loaded in an isolated environment and rewritten to remove potential attacks. Once the content is considered safe, it is sent to the user's device, where the webpage code loads and executes a second time. This approach may not be compatible with all websites.</li>\n   <li><strong>Send final output of webpage to user:</strong> Once a webpage fully loads and all code is executed by the browser, a vector graphics representation of the final version of the webpage is sent to the user.</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does on-premise browser isolation work?</h2>\n\n<img src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/7mmIDEVIQ7dCaexK6GfaaJ/4c43a3014805aae677537ab1554fc75f/on-premise_browser_isolation.png\" class=\"responsive-image\" alt=\"On-premise browser isolation: website code executed on on-premise server, not client laptop\" itemprop=\"image\" />\n\n<p>On-premise browser isolation works similarly to remote browser isolation. But instead of taking place on a remote cloud server, browsing takes place on a server inside the organization's private network. This can cut down on latency compared to some types of remote browser isolation.</p>\n\n<p>The downside of on-premise isolation is that the organization has to provision their own servers dedicated to browser isolation, which can be costly. The isolation also usually has to occur within the organization's <a href='/learning/security/what-is-a-firewall/'>firewall</a>, instead of outside it (as it does during the remote browser isolation process). Even though user devices remain secure from malware and other malicious code, the internal network itself remains at risk. Additionally, on-premise browser isolation is difficult to expand to multiple facilities or networks, and especially so for <a href='/learning/access-management/remote-workforce-security/'>remote workforces</a>.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does client-side browser isolation work?</h2>\n\n<img src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/1L8Wq5uR42xA00XfnOqrB1/81193ed224cd482fefe0f53e0b0ecd77/client-side_browser_isolation.png\" class=\"responsive-image\" alt=\"Client-side browser isolation: website code executed in sandbox within endpoint device\" itemprop=\"image\" />\n\n<p>Like the other kinds of browser isolation, client-side browser isolation virtualizes browser sessions; unlike remote and on-premise browser isolation, client-side browser isolation does this on the user device itself. It attempts to keep browsing separate from the rest of the device using either virtualization or sandboxing.</p>\n\n<p><strong>Virtualization:</strong> Virtualization is the process of dividing a computer into separate <a href='/learning/cloud/what-is-a-virtual-machine/'>virtual machines</a> without physically altering the computer. This is done at a layer of software below the operating system called the \"hypervisor.\" Theoretically, what happens on one virtual machine should not affect adjacent virtual machines, even when they are on the same device. By loading webpages on a separate virtual machine within the user's computer, the rest of the computer remains secure.</p>\n\n<p><strong>Sandboxing:</strong> A sandbox is similar to a virtual machine. It is a separate, contained virtual environment where testing can safely take place. Sandboxing is a common malware detection technique: many anti-malware tools open and execute potentially malicious files in a sandbox to see what they do. Some client-side browser isolation products use sandboxes to keep web browsing activity safely contained within the sandbox.</p>\n\n<p>Because client-side browser isolation involves actually loading potentially malicious content on the user device, it still poses a risk to users and networks. Physical separation of harmful code from the device is a core concept of the other types of browser isolation; client-side browser isolation does not have this separation.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What threats does browser isolation defend against?</h2>\n\n<p>All webpages and web apps are composed of HTML, CSS, and JavaScript code. While HTML and CSS are markup languages, meaning they only provide formatting instructions, JavaScript is a full programming language. JavaScript is very useful for enabling many of the features seen in modern web applications. However, it can also be used maliciously. Malicious JavaScript is particularly dangerous because most web browsers automatically execute all JavaScript associated with a page.</p>\n\n<p>Several different types of attacks are possible using JavaScript. Some of the most common include:</p>\n\n<ul class=\"learning-list\">\n   <li><strong>Drive-by downloads:</strong> Simply loading a webpage initiates the download of a malicious payload. Drive-by downloads usually take advantage of an unpatched vulnerability in a browser.</li>\n   <li><strong>Malvertising:</strong> Malicious code is injected into legitimate ad networks. When the malicious ads are displayed, the code executes, usually with the result that visitors are redirected to malicious websites. Because legitimate ad networks are the ones unintentionally distributing the malicious code, malvertising can compromise even legitimate, highly trafficked websites.</li>\n   <li><strong>Click-jacking:</strong> A webpage is designed so that a user is fooled into clicking on something they did not intend to. Click-jacking can be used to generate fake ad revenue, send a user to an unsafe website, or even initiate a malware download.</li>\n</ul>\n\n<p>Some other common in-browser attacks (that may or may not involve JavaScript) include:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Redirect attacks:</strong> A user attempts to load a legitimate URL but is then redirected to a URL controlled by an attacker.</li>\n  <li><strong>On-path browser attacks:</strong> An <a href='/learning/security/threats/on-path-attack/'>on-path</a> attacker exploits browser vulnerabilities to compromise a user's browser, at which point they can alter the web content shown to the user or even impersonate the user.</li>\n  <li><strong>Cross-site scripting:</strong> Malicious code is injected into a website or web app. This allows attackers to carry out a variety of malicious activities, including stealing session <a href='/learning/privacy/what-are-cookies/'>cookie</a> or login <a href='/learning/access-management/token-based-authentication/'>token</a> and then impersonating legitimate users.</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does browser isolation protect against these attacks?</h2>\n\n<p>By isolating browser sessions in a controlled environment, malicious content and code is kept off user devices and away from the organization's network. For example, a drive-by download attack would have no effect on a user within an organization that uses browser isolation. The download would take place on a remote server or in a sandbox and would be destroyed at the end of the browsing session.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does browser isolation fit into a Zero Trust security architecture?</h2>\n\n<p>Zero Trust is an approach to information security in which no user, web traffic, application, or device is trusted by default. A zero trust security model assumes that even though a user has safely loaded a website 99 times, the website might be compromised on the 100th time. Browser isolation is one way to implement this assumption in practice.</p>\n\n<p>Cloudflare incorporates a Zero Trust approach into its network security product stack. <a href='/teams/browser-isolation/'>Cloudflare Browser Isolation</a> is a remote browser isolation service designed to provide an optimum user experience. Because Cloudflare Browser Isolation is built on the Cloudflare network, with global locations in %{DataCenterCount} cities, web browsing sessions are served as close to users as possible, minimizing latency. Additionally, Cloudflare Browser Isolation sends the final output of each webpage to a user instead of sending an image or stream, further reducing latency.</p>",
+				"availableLocales": null,
+				"localized": false,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "No Page for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": null
+				},
+				"proactivePopup": null,
+				"sidebarForm": null
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "1pIOEQcZ4vx8DzFPfbRezW",
+			"pathname": "/learning/access-management/what-is-browser-isolation/",
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

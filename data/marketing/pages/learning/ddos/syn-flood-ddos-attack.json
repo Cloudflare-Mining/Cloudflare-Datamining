@@ -1,0 +1,813 @@
+{
+	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
+	"path": "/learning/ddos/syn-flood-ddos-attack/",
+	"result": {
+		"data": {
+			"learningCenterArticle": {
+				"contentTypeId": "learningCenterArticle",
+				"contentfulId": "2Xy5Y78qTDUNmKTYiy0zNk",
+				"urlSlug": "ddos/syn-flood-ddos-attack",
+				"metaTags": {
+					"metaTitle": "SYN flood DDoS attack",
+					"metaDescription": "A SYN flood (half-open attack) is a type of distributed denial-of-service (DDoS) attack which aims to make a server unavailable to legitimate traffic by consuming all available server resources.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/ddos-lc.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"metaTitle": "SYN Flood DDoS Attack",
+				"metaDescription": "A SYN flood (half-open attack) is a type of denial-of-service (DDoS) attack which aims to make a server unavailable to legitimate traffic by consuming all available server resources.",
+				"learningCenterArticleSubHeader": {
+					"contentTypeId": "learningCenterArticleSubHeader",
+					"contentfulId": "28LvlxvxleYGQ8oAcq8Gc2",
+					"learningCenterName": "ddos",
+					"links": [
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "43tpgapD9mSS2WCOqOCG0k",
+							"displayText": "What is a DDoS Attack?",
+							"url": "/learning/ddos/what-is-a-ddos-attack/"
+						},
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "4x6c2TDv4s8Y82QmmeMQSy",
+							"displayText": "What is a DDoS Botnet?",
+							"url": "/learning/ddos/what-is-a-ddos-botnet/"
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "488TK0iPJY2UOcQ4GaYOSM",
+							"name": "DDoS Header: common ddos attacks ",
+							"displayText": "Common DDoS Attacks",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5amlKsiE40kWyWiCiKWI8q",
+									"displayText": "Memcached DDoS Attack",
+									"url": "/learning/ddos/memcached-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "32jyFJRQXmOU6E2eEWeoU0",
+									"displayText": "NTP Amplification Attack",
+									"url": "/learning/ddos/ntp-amplification-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2TjuYJUlBYIcsQYaK2EKSC",
+									"displayText": "DNS Amplification Attack",
+									"url": "/learning/ddos/dns-amplification-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6qWmxdFwCkGO8EEiiOeuEo",
+									"displayText": "SSDP Attack",
+									"url": "/learning/ddos/ssdp-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1mbUWG6ecQ4Es8mqEsqIOQ",
+									"displayText": "Low and Slow Attack",
+									"url": "/learning/ddos/ddos-low-and-slow-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4MQpd8pYVa20YuY6Ks8YQU",
+									"displayText": "Application Layer Attack",
+									"url": "/learning/ddos/application-layer-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1CPIOdRoNwdyvn2wk6ZLGw",
+									"displayText": "Layer 3 Attacks",
+									"url": "/learning/ddos/layer-3-ddos-attacks/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6hOizQoGtyCY8gYyas8II6",
+									"displayText": "Cryptocurrency Attacks",
+									"url": "/learning/ddos/cryptocurrency-ddos-attacks/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "72V7mH81OM2lkZtlWhMD6B",
+									"displayText": "Ransom DDoS attack",
+									"url": "/learning/ddos/ransom-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3vYiB3zjjy0KM0e4qiKY8g",
+									"displayText": "Smurf Attack (historic)",
+									"url": "/learning/ddos/smurf-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6dJ8xImGLSG4Sg2y2kG4mM",
+									"displayText": "Ping of Death (historic)",
+									"url": "/learning/ddos/ping-of-death-ddos-attack/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "Vo72dHHO8V2xTXLPaW61N",
+							"name": "DDoS Header: Flood Attacks drop-down",
+							"displayText": "Flood Attacks",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1nMvoWHltOEqoAkCaE40Ei",
+									"displayText": "DNS Flood",
+									"url": "/learning/ddos/dns-flood-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2a52AhHSNKUk6Gs28yu0uy",
+									"displayText": "HTTP Flood",
+									"url": "/learning/ddos/http-flood-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "21gBkzwknGcLCYsvkBGkhG",
+									"displayText": "SYN Flood Attack",
+									"url": "/learning/ddos/syn-flood-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5wHlxpadXaHWi2PlBPbckX",
+									"displayText": "ACK Flood Attack",
+									"url": "/learning/ddos/what-is-an-ack-flood/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1fNJ2IIgxqKUEYuS6kuI6q",
+									"displayText": "Ping (ICMP) Flood Attack",
+									"url": "/learning/ddos/ping-icmp-flood-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4sBZoVheo8ICoUuqocecoa",
+									"displayText": "UDP Flood Attack",
+									"url": "/learning/ddos/udp-flood-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5DKMqlo86Qy5l7gT1FXNS4",
+									"displayText": "QUIC Flood Attack",
+									"url": "/learning/ddos/what-is-a-quic-flood/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "1TotuWDV6YSUcUEak4KGYM",
+							"name": "DDoS Header: DDoS attack tools",
+							"displayText": "DDoS Attack Tools",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "b2paLepZMkICu60yMqm6u",
+									"displayText": "How to DDoS",
+									"url": "/learning/ddos/ddos-attack-tools/how-to-ddos/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "b8HHJH0rokU6gayiww26K",
+									"displayText": "Low Orbit Ion Cannon",
+									"url": "/learning/ddos/ddos-attack-tools/low-orbit-ion-cannon-loic/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6Ncf86b8sgWQ8aEeOuKS0O",
+									"displayText": "High Orbit Ion Cannon",
+									"url": "/learning/ddos/ddos-attack-tools/high-orbit-ion-cannon-hoic"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "eUBWBDodk4i44IeaOquk0",
+									"displayText": "R U Dead Yet? (R.U.D.Y.)",
+									"url": "/learning/ddos/ddos-attack-tools/r-u-dead-yet-rudy/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6g6tWXLFduMCqwcWwOuWm0",
+									"displayText": "Slowloris Attack",
+									"url": "/learning/ddos/ddos-attack-tools/slowloris/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "rImA6gycScEyWcYUUAaUm",
+									"displayText": "DDoS Booter/IP Stresser",
+									"url": "/learning/ddos/ddos-attack-tools/ddos-booter-ip-stresser/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1aExU3KQxQQhJY4YqnTBCo",
+									"displayText": "IP Spoofing",
+									"url": "/learning/ddos/glossary/ip-spoofing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6cfMFCb4qcI26OSWqKMK82",
+									"displayText": "Malware",
+									"url": "/learning/ddos/glossary/malware/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2nJ2YWt7YgmmESuk80uEqs",
+									"displayText": "Mirai Botnet",
+									"url": "/learning/ddos/glossary/mirai-botnet/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "1hw7BfQbL8qzPSokzSyXJU",
+							"name": "DDoS Header: Glossary",
+							"displayText": "Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3vUhnhCnSMYg22KsU4ua2Y",
+									"displayText": "Famous DDoS Attacks",
+									"url": "/learning/ddos/famous-ddos-attacks/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4Cn3WavphCAekuSwIMqMGe",
+									"displayText": "DDoS Mitigation",
+									"url": "/learning/ddos/ddos-mitigation/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5Yq6iZEMVySMUS8wO40w2",
+									"displayText": "Blackhole Routing",
+									"url": "/learning/ddos/glossary/ddos-blackhole-routing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6s6YUS3x7OGkYmuSeY484s",
+									"displayText": "Denial Of Service",
+									"url": "/learning/ddos/glossary/denial-of-service/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6d1quO1yzC88UKgMsmwY0s",
+									"displayText": "DNS",
+									"url": "/learning/ddos/glossary/domain-name-system-dns/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4YRqcKCEYM8C4WUEeae8Uw",
+									"displayText": "HTTP",
+									"url": "/learning/ddos/glossary/hypertext-transfer-protocol-http/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4lqVLcWrG8uIwcs2aQKi4a",
+									"displayText": "ICMP",
+									"url": "/learning/ddos/glossary/internet-control-message-protocol-icmp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "51BVc8hCzYkMcACSekOsag",
+									"displayText": "OSI Model",
+									"url": "/learning/ddos/glossary/open-systems-interconnection-model-osi/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6xtVT6OheomGscU244Gy4c",
+									"displayText": "TCP/IP",
+									"url": "/learning/ddos/glossary/tcp-ip/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7D0UJZyrqE0YO0yYMWK2Wi",
+									"displayText": "UDP",
+									"url": "/learning/ddos/glossary/user-datagram-protocol-udp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "47hHJHZNSoQuio4QmgCo6w",
+									"displayText": "WAF",
+									"url": "/learning/ddos/glossary/web-application-firewall-waf/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5zTsx9XoT6soGWcWWM6mGa",
+									"displayText": "Internet Of Things (IOT)",
+									"url": "/learning/ddos/glossary/internet-of-things-iot/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3yLp4rjHIIw3L5FhyeT4wG",
+									"displayText": "Layer 7",
+									"url": "/learning/ddos/what-is-layer-7/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "56DqGG2u4w6dn5uDStyvNA",
+							"name": "DDoS Header: Insights",
+							"displayText": "Insights",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7nYhsmOt8j2TMfIi6t2pOG",
+									"displayText": "The future of web application security",
+									"url": "https://www.cloudflare.com/insights-future-web-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "37qx4iYUDgPdHJaxEAyIxH",
+									"displayText": "Ransomware attackers escalate extortion tactics",
+									"url": "https://www.cloudflare.com/learning/insights-ransomware-extortion/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1fudUp354PiIkWi5M2QBuE",
+									"displayText": "The risks smaller DDoS attacks pose to network infrastructure",
+									"url": "https://www.cloudflare.com/insights-small-ddos-attacks/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "Bngdc6ouSn7Q4HEyfH9tZ",
+									"displayText": "Using DDoS threats to extort organizations",
+									"url": "https://www.cloudflare.com/insights-ransom-ddos"
+								}
+							]
+						}
+					]
+				},
+				"learningCenterArticleFooter": {
+					"contentTypeId": "learningCenterArticleFooter",
+					"contentfulId": "BpfTCuIF5AqKwM4wsyQIq",
+					"learningCenterName": "ddos",
+					"column1Title": "About DDoS Attacks",
+					"column1": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "p6u7Eh6PwkA40yMS0mgMY",
+						"name": "DDoS Footer: about ddos attack",
+						"displayText": "About DDoS Attacks",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "43tpgapD9mSS2WCOqOCG0k",
+								"displayText": "What is a DDoS Attack?",
+								"url": "/learning/ddos/what-is-a-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4x6c2TDv4s8Y82QmmeMQSy",
+								"displayText": "What is a DDoS Botnet?",
+								"url": "/learning/ddos/what-is-a-ddos-botnet/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3vUhnhCnSMYg22KsU4ua2Y",
+								"displayText": "Famous DDoS Attacks",
+								"url": "/learning/ddos/famous-ddos-attacks/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Cn3WavphCAekuSwIMqMGe",
+								"displayText": "DDoS Mitigation",
+								"url": "/learning/ddos/ddos-mitigation/"
+							}
+						]
+					},
+					"column2Title": "DDoS Attacks",
+					"column2": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "2TtoXvpi8UYPqpEVzWuntQ",
+						"name": "DDoS Footer: DDoS Attacks",
+						"displayText": "DDoS Attacks",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5amlKsiE40kWyWiCiKWI8q",
+								"displayText": "Memcached DDoS Attack",
+								"url": "/learning/ddos/memcached-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "32jyFJRQXmOU6E2eEWeoU0",
+								"displayText": "NTP Amplification Attack",
+								"url": "/learning/ddos/ntp-amplification-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2TjuYJUlBYIcsQYaK2EKSC",
+								"displayText": "DNS Amplification Attack",
+								"url": "/learning/ddos/dns-amplification-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6qWmxdFwCkGO8EEiiOeuEo",
+								"displayText": "SSDP Attack",
+								"url": "/learning/ddos/ssdp-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1mbUWG6ecQ4Es8mqEsqIOQ",
+								"displayText": "Low and Slow Attack",
+								"url": "/learning/ddos/ddos-low-and-slow-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4MQpd8pYVa20YuY6Ks8YQU",
+								"displayText": "Application Layer Attack",
+								"url": "/learning/ddos/application-layer-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1CPIOdRoNwdyvn2wk6ZLGw",
+								"displayText": "Layer 3 Attacks",
+								"url": "/learning/ddos/layer-3-ddos-attacks/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6hOizQoGtyCY8gYyas8II6",
+								"displayText": "Cryptocurrency Attacks",
+								"url": "/learning/ddos/cryptocurrency-ddos-attacks/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "72V7mH81OM2lkZtlWhMD6B",
+								"displayText": "Ransom DDoS attack",
+								"url": "/learning/ddos/ransom-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3vYiB3zjjy0KM0e4qiKY8g",
+								"displayText": "Smurf Attack (historic)",
+								"url": "/learning/ddos/smurf-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6dJ8xImGLSG4Sg2y2kG4mM",
+								"displayText": "Ping of Death (historic)",
+								"url": "/learning/ddos/ping-of-death-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5wHlxpadXaHWi2PlBPbckX",
+								"displayText": "ACK Flood Attack",
+								"url": "/learning/ddos/what-is-an-ack-flood/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1nMvoWHltOEqoAkCaE40Ei",
+								"displayText": "DNS Flood",
+								"url": "/learning/ddos/dns-flood-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2a52AhHSNKUk6Gs28yu0uy",
+								"displayText": "HTTP Flood",
+								"url": "/learning/ddos/http-flood-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1fNJ2IIgxqKUEYuS6kuI6q",
+								"displayText": "Ping (ICMP) Flood Attack",
+								"url": "/learning/ddos/ping-icmp-flood-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5DKMqlo86Qy5l7gT1FXNS4",
+								"displayText": "QUIC Flood Attack",
+								"url": "/learning/ddos/what-is-a-quic-flood/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "21gBkzwknGcLCYsvkBGkhG",
+								"displayText": "SYN Flood Attack",
+								"url": "/learning/ddos/syn-flood-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4sBZoVheo8ICoUuqocecoa",
+								"displayText": "UDP Flood Attack",
+								"url": "/learning/ddos/udp-flood-ddos-attack/"
+							}
+						]
+					},
+					"column3Title": "DDoS Attack Tools",
+					"column3": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "1EzjWEy67zC4i5hLIC8FpF",
+						"name": "DDoS Footer: DDoS attack tools",
+						"displayText": "DDoS Attack Tools",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "b2paLepZMkICu60yMqm6u",
+								"displayText": "How to DDoS",
+								"url": "/learning/ddos/ddos-attack-tools/how-to-ddos/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "b8HHJH0rokU6gayiww26K",
+								"displayText": "Low Orbit Ion Cannon",
+								"url": "/learning/ddos/ddos-attack-tools/low-orbit-ion-cannon-loic/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6Ncf86b8sgWQ8aEeOuKS0O",
+								"displayText": "High Orbit Ion Cannon",
+								"url": "/learning/ddos/ddos-attack-tools/high-orbit-ion-cannon-hoic"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "eUBWBDodk4i44IeaOquk0",
+								"displayText": "R U Dead Yet? (R.U.D.Y.)",
+								"url": "/learning/ddos/ddos-attack-tools/r-u-dead-yet-rudy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6g6tWXLFduMCqwcWwOuWm0",
+								"displayText": "Slowloris Attack",
+								"url": "/learning/ddos/ddos-attack-tools/slowloris/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "rImA6gycScEyWcYUUAaUm",
+								"displayText": "DDoS Booter/IP Stresser",
+								"url": "/learning/ddos/ddos-attack-tools/ddos-booter-ip-stresser/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1aExU3KQxQQhJY4YqnTBCo",
+								"displayText": "IP Spoofing",
+								"url": "/learning/ddos/glossary/ip-spoofing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6cfMFCb4qcI26OSWqKMK82",
+								"displayText": "Malware",
+								"url": "/learning/ddos/glossary/malware/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2nJ2YWt7YgmmESuk80uEqs",
+								"displayText": "Mirai Botnet",
+								"url": "/learning/ddos/glossary/mirai-botnet/"
+							}
+						]
+					},
+					"column4Title": "DDoS Glossary",
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "1xhHdBkjmcNOgkR8B2bgap",
+						"name": "DDos Footer: Glossary",
+						"displayText": "DDoS Glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6s6YUS3x7OGkYmuSeY484s",
+								"displayText": "Denial Of Service",
+								"url": "/learning/ddos/glossary/denial-of-service/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5Yq6iZEMVySMUS8wO40w2",
+								"displayText": "Blackhole Routing",
+								"url": "/learning/ddos/glossary/ddos-blackhole-routing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "51BVc8hCzYkMcACSekOsag",
+								"displayText": "OSI Model",
+								"url": "/learning/ddos/glossary/open-systems-interconnection-model-osi/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6xtVT6OheomGscU244Gy4c",
+								"displayText": "TCP/IP",
+								"url": "/learning/ddos/glossary/tcp-ip/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4lqVLcWrG8uIwcs2aQKi4a",
+								"displayText": "ICMP",
+								"url": "/learning/ddos/glossary/internet-control-message-protocol-icmp/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4YRqcKCEYM8C4WUEeae8Uw",
+								"displayText": "HTTP",
+								"url": "/learning/ddos/glossary/hypertext-transfer-protocol-http/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3m3SoSRTz9H3QUP1Y3fLJ0",
+								"displayText": "Web Application Firewall (WAF)",
+								"url": "/learning/ddos/glossary/web-application-firewall-waf/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2JgJvIWgo72kFjaMf1xzWc",
+								"displayText": "User Datagram Protocol (UDP)",
+								"url": "/learning/ddos/glossary/user-datagram-protocol-udp/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3yLp4rjHIIw3L5FhyeT4wG",
+								"displayText": "Layer 7",
+								"url": "/learning/ddos/what-is-layer-7/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5zTsx9XoT6soGWcWWM6mGa",
+								"displayText": "Internet Of Things (IOT)",
+								"url": "/learning/ddos/glossary/internet-of-things-iot/"
+							}
+						]
+					},
+					"column5Title": "Learning Center Navigation",
+					"column5": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "3W1E40q164OhUFAC0XF03C",
+						"name": "DDoS Footer: Learning Nav",
+						"displayText": "Learning Center Navigation",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2hdSVoYA5asSIG0U2ae20c",
+								"displayText": "Learning Center Home",
+								"url": "/learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Ra0qmFJ1uewk2MYscW8KI",
+								"displayText": "DNS Learning Center",
+								"url": "/learning/dns/what-is-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6DGcnYIMM0eCGwqAKu2ECO",
+								"displayText": "CDN Learning Center",
+								"url": "/learning/cdn/what-is-a-cdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z3UC9tP1Kjk85BX5zSGPY",
+								"displayText": "Serverless Learning Center",
+								"url": "/learning/serverless/what-is-serverless/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1yItw6W6SsM2Y0Wuq6Y2c6",
+								"displayText": "Security Learning Center",
+								"url": "/learning/security/what-is-web-application-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q67XLnKqKhfmDJR4q9hJT",
+								"displayText": "Performance Learning Center",
+								"url": "/learning/performance/why-site-speed-matters/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52V7iI9YriJ0En2SGmEXz5",
+								"displayText": "SSL Learning Center",
+								"url": "/learning/ssl/what-is-ssl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7D22pOfjb98KXcnAJyJFCX",
+								"displayText": "Bots Learning Center",
+								"url": "/learning/bots/what-is-a-bot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7jgqDUFFzaLuKrsaBTLdV0",
+								"displayText": "Cloud Learning Center",
+								"url": "/learning/cloud/what-is-the-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6PdBQjiFs98K6RQuG5TYNd",
+								"displayText": "Access Management Learning Center",
+								"url": "/learning/access-management/what-is-identity-and-access-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3jjEMuuLrCwhRidjG5kglM",
+								"displayText": "Network Layer Learning Center",
+								"url": "/learning/network-layer/what-is-the-network-layer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RvS0l0m86G1VISDrEvlJb",
+								"displayText": "Privacy Learning Center",
+								"url": "/learning/privacy/what-is-data-privacy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "MytksT5WU5mh863BQYEkj",
+								"displayText": "Video Streaming Learning Center",
+								"url": "/learning/video/what-is-streaming/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
+								"displayText": "Email Security Learning Center",
+								"url": "/learning/email-security/what-is-email-security/"
+							}
+						]
+					}
+				},
+				"header": "SYN flood attack",
+				"blurbSubHeader": "A SYN flood exploits a vulnerability in the TCP/IP handshake in an attempt to disrupt a web service.",
+				"objectivesHeader": "SYN Flood",
+				"objectivesList": [
+					"Define a SYN flood DDoS attack",
+					"Explain how a SYN flood attack works",
+					"Differentiate the different types of SYN Attacks",
+					"Understand some mitigation techniques for SYN Floods"
+				],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "1nMvoWHltOEqoAkCaE40Ei",
+						"displayText": "DNS Flood",
+						"url": "/learning/ddos/dns-flood-ddos-attack/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "2a52AhHSNKUk6Gs28yu0uy",
+						"displayText": "HTTP Flood",
+						"url": "/learning/ddos/http-flood-ddos-attack/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "4sBZoVheo8ICoUuqocecoa",
+						"displayText": "UDP Flood Attack",
+						"url": "/learning/ddos/udp-flood-ddos-attack/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "6cfMFCb4qcI26OSWqKMK82",
+						"displayText": "Malware",
+						"url": "/learning/ddos/glossary/malware/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "1fNJ2IIgxqKUEYuS6kuI6q",
+						"displayText": "Ping (ICMP) Flood Attack",
+						"url": "/learning/ddos/ping-icmp-flood-ddos-attack/"
+					}
+				],
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is a SYN flood attack?</h2>\n\n<p>A SYN flood (half-open attack) is a type of <a href=\"/learning/ddos/what-is-a-ddos-attack/\">denial-of-service (DDoS) attack</a> which aims to make a server unavailable to legitimate traffic by consuming all available server resources. By repeatedly sending initial connection request (SYN) packets, the attacker is able to overwhelm all available ports on a targeted server machine, causing the targeted device to respond to legitimate traffic sluggishly or not at all.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does a SYN flood attack work?</h2>\n\n<p>SYN flood attacks work by exploiting the handshake process of a <a href=\"/learning/ddos/glossary/tcp-ip/\">TCP</a> connection. Under normal conditions, TCP connection exhibits three distinct processes in order to make a connection.</p>\n\n<ol class=\"learning-list\">\n              <li>First, the client sends a SYN packet to the server in order to initiate the connection.</li>\n              <li>The server then responds to that initial packet with a SYN/ACK packet, in order to acknowledge the communication.</li>\n              <li>Finally, the client returns an ACK packet to acknowledge the receipt of the packet from the server. After completing this sequence of packet sending and receiving, the TCP connection is open and able to send and receive data.</li>\n</ol>\n\n<img class=\"responsive-image\" title=\"TCP Three-way handshake diagram\" alt=\"TCP Three-way handshake diagram\" src=\"/img/learning/ddos/syn-flood-ddos-attack/syn-flood-attack-ddos-attack-diagram-1.png\" itemprop=\"image\" />\n\n<p>To create <a href=\"/learning/ddos/glossary/denial-of-service/\">denial-of-service</a>, an attacker exploits the fact that after an initial SYN packet has been received, the server will respond back with one or more SYN/ACK packets and wait for the final step in the handshake. Here’s how it works:</p>\n\n<ol class=\"learning-list\">\n              <li>The attacker sends a high volume of SYN packets to the targeted server, often with <a href=\"/learning/ddos/glossary/ip-spoofing/\">spoofed</a> IP addresses.</li>\n              <li>The server then responds to each one of the connection requests and leaves an open port ready to receive the response.</li>\n              <li>While the server waits for the final ACK packet, which never arrives, the attacker continues to send more SYN packets. The arrival of each new SYN packet causes the server to temporarily maintain a new open port connection for a certain length of time, and once all the available ports have been utilized the server is unable to function normally.</li>\n</ol>\n\n<img class=\"responsive-image\" title=\"SYN flood DDoS attack animation\" alt=\"SYN flood DDoS attack animation\" src=\"/img/learning/ddos/syn-flood-ddos-attack/syn-flood-attack-ddos-attack-diagram-2.png\" itemprop=\"image\" />\n\n<p>In networking, when a server is leaving a connection open but the machine on the other side of the connection is not, the connection is considered half-open. In this type of DDoS attack, the targeted server is continuously leaving open connections and waiting for each connection to timeout before the ports become available again. The result is that this type of attack can be considered a “half-open attack”. </p>\n\n<h4 class=\"learning-content-h4\">A SYN flood can occur in three different ways: </h4>\n<ol class=\"learning-list\">\n              <li><strong>Direct attack:</strong> A SYN flood where the <a href='/learning/dns/glossary/what-is-my-ip-address/'>IP address</a> is not spoofed is known as a direct attack. In this attack, the attacker does not mask their IP address at all.  As a result of the attacker using a single source device with a real IP address to create the attack, the attacker is highly vulnerable to discovery and mitigation. In order to create the half-open state on the targeted machine, the hacker prevents their machine from responding to the server’s SYN-ACK packets. This is often achieved by <a href='/learning/security/what-is-a-firewall/'>firewall</a> rules that stop outgoing packets other than SYN packets or by filtering out any incoming SYN-ACK packets before they reach the malicious user's machine. In practice this method is used rarely (if ever), as mitigation is fairly straightforward – just block the IP address of each malicious system. If the attacker is using a <a href=\"/learning/ddos/what-is-a-ddos-botnet/\">botnet</a> such as the <a href='/learning/ddos/glossary/mirai-botnet/'>Mirai botnet</a> they won’t care about masking the IP of the infected device.</li>\n              <li><strong>Spoofed Attack:</strong> A malicious user can also spoof the IP address on each SYN packet they send in order to inhibit mitigation efforts and make their identity more difficult to discover. While the packets may be spoofed, those packets can potentially be traced back to their source.  It’s difficult to do this sort of detective work but it’s not impossible, especially if Internet service providers (ISPs) are willing to help.</li>\n              <li><strong>Distributed attack (DDoS):</strong> If an attack is created using a botnet the likelihood of tracking the attack back to its source is low. For an added level of obfuscation, an attacker may have each distributed device also spoof the IP addresses from which it sends packets. If the attacker is using a botnet such as the Mirai botnet, they generally won’t care about masking the IP of the infected device.</li>\n</ol>\n\n<p>By using a SYN flood attack, a bad actor can attempt to create <a href='/learning/ddos/glossary/denial-of-service/'>denial-of-service</a> in a target device or service with substantially less traffic than other DDoS attacks. Instead of volumetric attacks, which aim to saturate the network infrastructure surrounding the target, SYN attacks only need to be larger than the available backlog in the target’s operating system. If the attacker is able to determine the size of the backlog and how long each connection will be left open before timing out, the attacker can target the exact parameters needed to disable the system, thereby reducing the total traffic to the minimum necessary amount to create denial-of-service.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How is a SYN flood attack mitigated?</h2>\n\n<p>SYN flood vulnerability has been known for a long time and a number of mitigation pathways have been utilized. A few approaches include:</p>\n\n<h4 class=\"learning-content-h4\">Increasing Backlog queue</h4>\n\n<p>Each operating system on a targeted device has a certain number of half-open connections that it will allow. One response to high volumes of SYN packets is to increase the maximum number of possible half-open connections the operating system will allow. In order to successfully increase the maximum backlog, the system must reserve additional memory resources to deal with all the new requests. If the system does not have enough memory to be able to handle the increased backlog queue size, system performance will be negatively impacted, but that still may be better than denial-of-service.</p>\n\n<h4 class=\"learning-content-h4\">Recycling the Oldest Half-Open TCP connection</h4>\n\n<p>Another mitigation strategy involves overwriting the oldest half-open connection once the backlog has been filled. This strategy requires that the legitimate connections can be fully established in less time than the backlog can be filled with malicious SYN packets. This particular defense fails when the attack volume is increased, or if the backlog size is too small to be practical.</p>\n\n<h4 class=\"learning-content-h4\">SYN cookies</h4>\n\n<p>This strategy involves the creation of a cookie by the server. In order to avoid the risk of dropping connections when the backlog has been filled, the server responds to each connection request with a SYN-ACK packet but then drops the SYN request from the backlog, removing the request from memory and leaving the port open and ready to make a new connection. If the connection is a legitimate request, and a final ACK packet is sent from the client machine back to the server, the server will then reconstruct (with some limitations) the SYN backlog queue entry. While this mitigation effort does lose some information about the TCP connection, it is better than allowing denial-of-service to occur to legitimate users as a result of an attack.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does Cloudflare mitigate SYN Flood attacks?</h2>\n\n<p>Cloudflare mitigates this type of attack in part by standing between the targeted server and the SYN flood.  When the initial SYN request is made, Cloudflare handles the handshake process in the cloud, withholding the connection with the targeted server until the TCP handshake is complete. This strategy takes the resource cost of maintaining the connections with the bogus SYN packets off the targeted server and places it on Cloudflare’s <a href=\"https://blog.cloudflare.com/a-brief-anycast-primer/\">Anycast network</a>. Learn more about how Cloudflare's <a href=\"/ddos/\">DDoS Protection</a> works.</p>\n\n<img class=\"responsive-image\" title=\"Cloudflare stops SYN Flood attacks diagram\" alt=\"Cloudflare stops SYN Flood attacks diagram\" src=\"/img/learning/ddos/syn-flood-ddos-attack/syn-flood-attack-ddos-attack-diagram-3.png\" itemprop=\"image\" />\n",
+				"availableLocales": null,
+				"localized": true,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "Translated for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "Translated for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "No Page for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": "Translated for Locale"
+				},
+				"proactivePopup": null,
+				"sidebarForm": null
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "2Xy5Y78qTDUNmKTYiy0zNk",
+			"pathname": "/learning/ddos/syn-flood-ddos-attack/",
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

@@ -1,0 +1,568 @@
+{
+	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
+	"path": "/learning/performance/test-the-speed-of-a-website/",
+	"result": {
+		"data": {
+			"learningCenterArticle": {
+				"contentTypeId": "learningCenterArticle",
+				"contentfulId": "3OKvblDUGKKTLauohPKRHY",
+				"urlSlug": "performance/test-the-speed-of-a-website",
+				"metaTags": {
+					"metaTitle": "How to test the speed of a website",
+					"metaDescription": "Test a website with the Cloudflare site speed test tool, and learn more about how website speed tests work and why site speed is important.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/performance-lc.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"metaTitle": "How to Test the Speed of a Website",
+				"metaDescription": "Test a website with the Cloudflare site speed test tool, and learn more about how website speed tests work and why site speed is important.",
+				"learningCenterArticleSubHeader": {
+					"contentTypeId": "learningCenterArticleSubHeader",
+					"contentfulId": "3EXwEdnC7JnXLjoWOxHdT9",
+					"learningCenterName": "performance",
+					"links": [
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "e3oFRMHsIzHQZYTLmPDOr",
+							"displayText": "Why Site Speed Matters",
+							"url": "/learning/performance/why-site-speed-matters/"
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "wjD4s7zPAIlrcocplo68g",
+							"name": "Performance Header: Performance Benefits",
+							"displayText": "Performance Benefits",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3XMpuNDRWA2j2aZ0qi1DaU",
+									"displayText": "Speed and Conversion Rates",
+									"url": "/learning/performance/more/website-performance-conversion-rates/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2u9nE8G5zJaY1Limh5GLkW",
+									"displayText": "How Site Speed Boosts SEO",
+									"url": "/learning/performance/how-website-speed-boosts-seo/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4s6X4x3EYYlHHb9aI4X31Q",
+									"displayText": "Core Web Vitals",
+									"url": "/learning/performance/what-are-core-web-vitals/ "
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "1Z9S7dlY2AIhyf5X4kYzLf",
+							"name": "Performance Header: Load Balancing",
+							"displayText": "Load Balancing",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "205Es4ofD2BShliEBNj1Z6",
+									"displayText": "What is Load Balancing?",
+									"url": "/learning/performance/what-is-load-balancing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "hhFtuqqoybh6WOlwSiqIo",
+									"displayText": "Server failover",
+									"url": "/learning/performance/what-is-server-failover/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3EsOLhDVoFDkZWt35VPRqD",
+									"displayText": "DNS-based load balancing",
+									"url": "https://www.cloudflare.com/learning/performance/what-is-dns-load-balancing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4RFn9zHjqaC2djLIVH1R21",
+									"displayText": "Load balancing algorithms",
+									"url": "/learning/performance/types-of-load-balancing-algorithms/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7G0p4vQ9468caPQGJoE6IL",
+									"displayText": "Multi-cloud and hybrid cloud load balancing",
+									"url": "/learning/performance/load-balancing-multi-cloud-hybrid-cloud/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4ZbTYQT5tvo9CTMX9psYMa",
+									"displayText": "Cloud load balancing (LBaaS)",
+									"url": "/learning/performance/cloud-load-balancing-lbaas/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "6BoLYDQbAwY5LuAk1OHyNu",
+							"name": "Performance Header: Performance for Developers",
+							"displayText": "Performance for Developers",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "35apJbC5biFa3jzTQHmDe1",
+									"displayText": "Why Minify Javascript?",
+									"url": "/learning/performance/why-minify-javascript-code/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2Xp2GgqtMv84qqtbYIIQtc",
+									"displayText": "HTTP/2 vs HTTP/1.1",
+									"url": "/learning/performance/http2-vs-http1.1/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4H29YTj5ck7Dfu72foQyXb",
+									"displayText": "What is JAMstack?",
+									"url": "/learning/performance/what-is-jamstack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2x2nqZ8zTTRUOqJhuYyaNH",
+									"displayText": "Static site generator",
+									"url": "/learning/performance/static-site-generator/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5Zm1SJxNbA3ddOOxIJW8yl",
+									"displayText": "How DCL & FCP Affect SEO",
+									"url": "/learning/performance/how-dcl-and-fcp-affect-seo/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "787jBq0LeOM6UkZuvDQNQW",
+									"displayText": "Making a Site Mobile Friendly",
+									"url": "/learning/performance/how-to-make-a-site-mobile-friendly/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5eTNDaWptWyi8ELSirebqE",
+									"displayText": "Speed Up a Website",
+									"url": "/learning/performance/speed-up-a-website/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "31bAifmor3KmJTmOyGUYGu",
+									"displayText": "Test the Speed of a Site",
+									"url": "/learning/performance/test-the-speed-of-a-website/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4hvxrtMRLXQXsqW3YKAUwN",
+									"displayText": "What is HTTP/3?",
+									"url": "learning/performance/what-is-http3"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4okTLSy9bqbLvqOAz4dqIf",
+									"displayText": "Preventing Downtime",
+									"url": "/learning/performance/preventing-downtime/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2x8bWWSONCzLyUVomacqHL",
+									"displayText": "Lazy Loading",
+									"url": "/learning/performance/what-is-lazy-loading/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "5exwZsks9Ss1d5Q52LVpbl",
+							"name": "Performance Header: More on Performance",
+							"displayText": "More on Performance",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7LQi33SEfVIys6UyNq8f9K",
+									"displayText": "What is Latency?",
+									"url": "/learning/performance/glossary/what-is-latency/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4CDfNtFZec20k10IsDnMKO",
+									"displayText": "Speed Up the Web",
+									"url": "/learning/performance/more/speed-up-the-web/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3n7LgS1F3I881eXiTOJVti",
+									"displayText": "What is an Image Optimizer?",
+									"url": "/learning/performance/glossary/what-is-an-image-optimizer/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3JVN13JI6LoSlZuhr7LAxF",
+									"displayText": "Routing vs. Smart Routing",
+									"url": "/learning/performance/routing-vs-smart-routing/"
+								}
+							]
+						}
+					]
+				},
+				"learningCenterArticleFooter": {
+					"contentTypeId": "learningCenterArticleFooter",
+					"contentfulId": "3BGH880XprClbWXeQhnw1L",
+					"learningCenterName": "performance",
+					"column1Title": "About Performance",
+					"column1": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "ES3KtU5NVbIkUUTPKBGds",
+						"name": "Performance Footer - About",
+						"displayText": "About Performance",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "e3oFRMHsIzHQZYTLmPDOr",
+								"displayText": "Why Site Speed Matters",
+								"url": "/learning/performance/why-site-speed-matters/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "31bAifmor3KmJTmOyGUYGu",
+								"displayText": "Test the Speed of a Site",
+								"url": "/learning/performance/test-the-speed-of-a-website/"
+							}
+						]
+					},
+					"column2Title": "Performance and SEO",
+					"column2": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "3gosdnz8T1wPj5ExVH8Ng6",
+						"name": "Performance Footer: SEO",
+						"displayText": "Performance and SEO",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2u9nE8G5zJaY1Limh5GLkW",
+								"displayText": "How Site Speed Boosts SEO",
+								"url": "/learning/performance/how-website-speed-boosts-seo/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5Zm1SJxNbA3ddOOxIJW8yl",
+								"displayText": "How DCL & FCP Affect SEO",
+								"url": "/learning/performance/how-dcl-and-fcp-affect-seo/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4s6X4x3EYYlHHb9aI4X31Q",
+								"displayText": "Core Web Vitals",
+								"url": "/learning/performance/what-are-core-web-vitals/ "
+							}
+						]
+					},
+					"column3Title": "More on Performance",
+					"column3": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "7tEVxRje5aVg2jKT46gn90",
+						"name": "Performance Footer: More",
+						"displayText": "More on Performance",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3XMpuNDRWA2j2aZ0qi1DaU",
+								"displayText": "Speed and Conversion Rates",
+								"url": "/learning/performance/more/website-performance-conversion-rates/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4CDfNtFZec20k10IsDnMKO",
+								"displayText": "Speed Up the Web",
+								"url": "/learning/performance/more/speed-up-the-web/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5eTNDaWptWyi8ELSirebqE",
+								"displayText": "Speed Up a Website",
+								"url": "/learning/performance/speed-up-a-website/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3JVN13JI6LoSlZuhr7LAxF",
+								"displayText": "Routing vs. Smart Routing",
+								"url": "/learning/performance/routing-vs-smart-routing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4H29YTj5ck7Dfu72foQyXb",
+								"displayText": "What is JAMstack?",
+								"url": "/learning/performance/what-is-jamstack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2x2nqZ8zTTRUOqJhuYyaNH",
+								"displayText": "Static site generator",
+								"url": "/learning/performance/static-site-generator/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4okTLSy9bqbLvqOAz4dqIf",
+								"displayText": "Preventing Downtime",
+								"url": "/learning/performance/preventing-downtime/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2x8bWWSONCzLyUVomacqHL",
+								"displayText": "Lazy Loading",
+								"url": "/learning/performance/what-is-lazy-loading/"
+							}
+						]
+					},
+					"column4Title": "Glossary",
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "6huscp9lw1hiV4RtOogq44",
+						"name": "Performance Footer: Glossary",
+						"displayText": "Glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7LQi33SEfVIys6UyNq8f9K",
+								"displayText": "What is Latency?",
+								"url": "/learning/performance/glossary/what-is-latency/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3n7LgS1F3I881eXiTOJVti",
+								"displayText": "What is an Image Optimizer?",
+								"url": "/learning/performance/glossary/what-is-an-image-optimizer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2Xp2GgqtMv84qqtbYIIQtc",
+								"displayText": "HTTP/2 vs HTTP/1.1",
+								"url": "/learning/performance/http2-vs-http1.1/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "205Es4ofD2BShliEBNj1Z6",
+								"displayText": "What is Load Balancing?",
+								"url": "/learning/performance/what-is-load-balancing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "hhFtuqqoybh6WOlwSiqIo",
+								"displayText": "Server failover",
+								"url": "/learning/performance/what-is-server-failover/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3EsOLhDVoFDkZWt35VPRqD",
+								"displayText": "DNS-based load balancing",
+								"url": "https://www.cloudflare.com/learning/performance/what-is-dns-load-balancing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4RFn9zHjqaC2djLIVH1R21",
+								"displayText": "Load balancing algorithms",
+								"url": "/learning/performance/types-of-load-balancing-algorithms/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7G0p4vQ9468caPQGJoE6IL",
+								"displayText": "Multi-cloud and hybrid cloud load balancing",
+								"url": "/learning/performance/load-balancing-multi-cloud-hybrid-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4hvxrtMRLXQXsqW3YKAUwN",
+								"displayText": "What is HTTP/3?",
+								"url": "learning/performance/what-is-http3"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4ZbTYQT5tvo9CTMX9psYMa",
+								"displayText": "Cloud load balancing (LBaaS)",
+								"url": "/learning/performance/cloud-load-balancing-lbaas/"
+							}
+						]
+					},
+					"column5Title": "Learning Center Navigation",
+					"column5": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "10E7AAyZScH8CewOHQxoql",
+						"name": "Performance Footer - Learning Nav",
+						"displayText": "Learning Center Navigation",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2hdSVoYA5asSIG0U2ae20c",
+								"displayText": "Learning Center Home",
+								"url": "/learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "56Y6OytBNgNoNDWQL2ezlf",
+								"displayText": "DDoS Learning Center",
+								"url": "/learning/ddos/what-is-a-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6DGcnYIMM0eCGwqAKu2ECO",
+								"displayText": "CDN Learning Center",
+								"url": "/learning/cdn/what-is-a-cdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Ra0qmFJ1uewk2MYscW8KI",
+								"displayText": "DNS Learning Center",
+								"url": "/learning/dns/what-is-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1yItw6W6SsM2Y0Wuq6Y2c6",
+								"displayText": "Security Learning Center",
+								"url": "/learning/security/what-is-web-application-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z3UC9tP1Kjk85BX5zSGPY",
+								"displayText": "Serverless Learning Center",
+								"url": "/learning/serverless/what-is-serverless/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52V7iI9YriJ0En2SGmEXz5",
+								"displayText": "SSL Learning Center",
+								"url": "/learning/ssl/what-is-ssl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7D22pOfjb98KXcnAJyJFCX",
+								"displayText": "Bots Learning Center",
+								"url": "/learning/bots/what-is-a-bot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7jgqDUFFzaLuKrsaBTLdV0",
+								"displayText": "Cloud Learning Center",
+								"url": "/learning/cloud/what-is-the-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3jjEMuuLrCwhRidjG5kglM",
+								"displayText": "Network Layer Learning Center",
+								"url": "/learning/network-layer/what-is-the-network-layer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6PdBQjiFs98K6RQuG5TYNd",
+								"displayText": "Access Management Learning Center",
+								"url": "/learning/access-management/what-is-identity-and-access-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RvS0l0m86G1VISDrEvlJb",
+								"displayText": "Privacy Learning Center",
+								"url": "/learning/privacy/what-is-data-privacy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "MytksT5WU5mh863BQYEkj",
+								"displayText": "Video Streaming Learning Center",
+								"url": "/learning/video/what-is-streaming/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
+								"displayText": "Email Security Learning Center",
+								"url": "/learning/email-security/what-is-email-security/"
+							}
+						]
+					}
+				},
+				"header": "How to test the speed of a website",
+				"blurbSubHeader": "Testing website performance is an important part of website development and maintenance. A site speed test can help developers identify specific assets or resources that are causing their websites to perform slowly.",
+				"objectivesHeader": "Site Speed Test",
+				"objectivesList": [
+					"Know where to go to test a website's performance",
+					"Understand why testing site speed is necessary",
+					"Understand how to interpret speed test results"
+				],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "3XMpuNDRWA2j2aZ0qi1DaU",
+						"displayText": "Speed and Conversion Rates",
+						"url": "/learning/performance/more/website-performance-conversion-rates/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "3n7LgS1F3I881eXiTOJVti",
+						"displayText": "What is an Image Optimizer?",
+						"url": "/learning/performance/glossary/what-is-an-image-optimizer/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "e3oFRMHsIzHQZYTLmPDOr",
+						"displayText": "Why Site Speed Matters",
+						"url": "/learning/performance/why-site-speed-matters/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "7LQi33SEfVIys6UyNq8f9K",
+						"displayText": "What is Latency?",
+						"url": "/learning/performance/glossary/what-is-latency/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "7FhDfdAOVUHyf0C2tFqGMl",
+						"displayText": "How to Make a Site Mobile Friendly",
+						"url": "/learning/performance/how-to-make-a-site-mobile-friendly/"
+					}
+				],
+				"desktopMainContent": "<h2 class=\"learning-content-h2\" itemprop=\"headline\">Why test site speed?</h2>\n                    <p>When automobile manufacturers develop a new model of a car, it may accelerate quickly and drive smoothly on paper, but the manufacturer can't know how well the car actually runs until a test driver takes it out on the track. Similarly, how a site performs in a local testing environment is not always a good indication of how it will perform in the wider <a href='/learning/network-layer/how-does-the-internet-work/'>Internet</a>, which spans across a variety of network conditions and in various locations.</p>\n                    <img class=\"responsive-image--50-pct-center\" title=\"Site Speed Test\" alt=\"Site Speed Test\" src=\"/img/learning/performance/test-the-speed-of-a-website/what-is-site-speed.svg\" itemprop=\"image\" />\n                    <p>Website speed tests aim to simulate real-world conditions and provide data on how well a website actually performs. A website speed test should let developers know not just how fast their site or application is, but also which elements on the page are causing slowdowns.</p>\n                  <h2 class=\"learning-content-h2\" itemprop=\"headline\">Why is site speed important?</h2>\n                    <p><a href='/learning/performance/why-site-speed-matters/'>Websites that perform poorly</a> can frustrate users, driving them away. Slow site performance negatively impacts <a href='/learning/performance/how-website-speed-boosts-seo/'>search rankings (or SEO)</a>, <a href='/learning/performance/more/website-performance-conversion-rates/'>conversion rates</a>, and the overall user experience.</p>\n                  <h2 class=\"learning-content-h2\" itemprop=\"headline\">How can developers test the speed of their websites?</h2>\n                    <p>Cloudflare offers a <a href='https://www.cloudflare.com/lp/can-your-website-be-faster/'>free site speed test tool</a>. Additionally, we offer free <a href='/learning/cdn/what-is-a-cdn/'>CDN</a> services for boosting website performance and reducing latency.</p>\n                    <p>A number of online providers also offer website speed tests, and typically all that's necessary to start the test is to paste the URL into the provided field.</p>\n                  <h2 class=\"learning-content-h2\" itemprop=\"headline\">What performance metrics will a site speed test provide?</h2>\n                    <p>The basic Cloudflare speed test measures the following:</p>\n                  <ul class=\"learning-list\">\n  <li><strong>Load time:</strong> The time it takes for a web browser to finish downloading and displaying the webpage (measured in milliseconds)</li>\n  <li><strong>Time to First Byte (TTFB):</strong> How long it takes for the browser to receive the first byte of data from the web server (measured in milliseconds).</li>\n  <li><strong>Requests:</strong> The number of <a href='/learning/ddos/glossary/hypertext-transfer-protocol-http/'>HTTP requests</a> for resources that a browser has to make in order to fully load the page.</li>\n</ul>\n                    <p>Not all speed test providers will break down site speed using the same performance metrics. Other performance metrics include:</p>\n                  <ul class=\"learning-list\">\n  <li><strong>DOMContentLoaded (DCL):</strong> This measures the time it takes for the full HTML code of the page to be loaded; images, CSS files, and other assets don't have to be loaded.</li>\n  <li><strong>Time to above-the-fold load:</strong> 'Above the fold' refers to the area of a webpage that fits in a browser window without a user having to scroll down.</li>\n  <li><strong>First Contentful Paint (FCP):</strong> The time at which content first begins to be 'painted,' or rendered, by the browser. This can be any aspect of the page, including text, images, or non-white background colors.</li>\n  <li><strong>Page size:</strong> The total file size of all content and assets that appear on the page.</li>\n  <li><strong>Round trips:</strong> This metric counts the number of round trips necessary to load the webpage. When an HTTP request travels all the way from a browser to the <a href='/learning/cdn/glossary/origin-server/'>origin server</a>, and the server's HTTP response goes all the way back, this constitutes a round trip.</li>\n  <li><strong>Render-blocking round trips:</strong> A subcategory of round trips. 'Render blocking' refers to resources that have to be loaded before anything else can be loaded.</li>\n  <li><strong><a href='/learning/cdn/glossary/round-trip-time-rtt/'>Round trip time (RTT)</a>:</strong> The amount of time the round trips take.</li>\n  <li><strong>Render-blocking resources:</strong> Certain resources, like CSS files, block other parts of the page from being loaded if they are not yet loaded. The more render-blocking resources a webpage has, the more chances there are for the browser to fail to load the page.</li>\n                  </ul>",
+				"availableLocales": null,
+				"localized": null,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "No Page for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": null
+				},
+				"proactivePopup": null,
+				"sidebarForm": null
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "3OKvblDUGKKTLauohPKRHY",
+			"pathname": "/learning/performance/test-the-speed-of-a-website/",
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

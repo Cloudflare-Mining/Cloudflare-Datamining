@@ -1,0 +1,291 @@
+{
+	"componentChunkName": "component---src-components-page-page-template-tsx",
+	"path": "/log4j/",
+	"result": {
+		"data": {
+			"page": {
+				"pageName": "Helping protect against Log4j",
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "Translated for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "Translated for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "No Page for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": null
+				},
+				"relativePath": "log4j",
+				"topNavOptions": "default",
+				"topNavButtonText": null,
+				"topNavButtonUrl": null,
+				"metaTags": {
+					"metaTitle": "Helping protect against Log4j",
+					"metaDescription": "The Log4j vulnerability allows attackers to execute code on a remote server. Cloudflare is helping all customers, free or paid, mitigate the log4j issue",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"contentfulId": "30ddMm0vtYeuYvQsh4gRwn",
+				"contentTypeId": "page",
+				"promotionalBanner": null,
+				"psaBanner": null,
+				"customTopNav": null,
+				"headerLogo": null,
+				"template": null,
+				"relatedBlades": [
+					{
+						"__typename": "bladeHeroAnimation",
+						"contentfulId": "7pzQlkg1YuY13FQBW0hv4q",
+						"contentTypeId": "bladeHeroAnimation",
+						"title": "Helping protect against Log4j",
+						"subtitle": "The Log4j vulnerability allows attackers to execute code on a remote server. Cloudflare is helping all customers, free or paid, mitigate the Log4j issue.",
+						"copy": "On December 9th, 2021, a very serious vulnerability in the popular Java-based logging package Log4j was disclosed. To mitigate attacks, Cloudflare has deployed mitigation rules for all of our customers.",
+						"buttonColor": "orange",
+						"buttonColor2": "orange",
+						"buttonText1": "Learn more",
+						"buttonText1LoggedIn": null,
+						"buttonUrl1": "https://blog.cloudflare.com/tag/log4j/",
+						"buttonUrl1LoggedIn": null,
+						"button1ExtraClass": null,
+						"buttonText2": null,
+						"buttonText2LoggedIn": null,
+						"buttonUrl2": null,
+						"button2ExtraClass": null,
+						"bladeBorder": "none",
+						"htmlId": null,
+						"textColor": "black",
+						"includeVideo": false,
+						"streamVideoId": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"popupStreamId": null,
+						"popupText": null,
+						"button1OpenInNewTab": true,
+						"button2OpenInNewTab": null,
+						"streamThumbnails": null,
+						"sectionPadding": null,
+						"streamPosterAssetFile": null,
+						"streamPoster": null,
+						"imageSize": null,
+						"imagePosition": false,
+						"leftLinkUrl": null,
+						"leftLink": null,
+						"leftLinkLoggedIn": null,
+						"leftLinkOptions": "hide",
+						"backgroundColor": "light-blue",
+						"textlayoutMode": null,
+						"backgroundAssetFile": null,
+						"imageLayout": null,
+						"image": {
+							"file": {
+								"publicURL": "[path]/Log4j.png"
+							}
+						},
+						"imageAssetFile": null
+					},
+					{
+						"__typename": "bladeImageText",
+						"contentfulId": "6STw5uLw8S9CWc8e0BydMz",
+						"title": "Context",
+						"copy": "Log4j is a popular open source software library that is used to log web application activity to logs in memory. These files often contain information coming from outside an organization — for instance, a User-Agent string that is sent by a browser along with an HTTP request.",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": null,
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": {
+							"file": {
+								"publicURL": "[path]/System_before_exploit.png"
+							}
+						},
+						"imageAssetFile": null,
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": "What is the Log4j exploit?",
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": false,
+						"imageSize": null,
+						"imageTextAlignment": null,
+						"togglesTo": null
+					},
+					{
+						"__typename": "bladeImageText",
+						"contentfulId": "773kBa7sAyyrBAMwqDCYDD",
+						"title": "Vulnerability",
+						"copy": "Unfortunately, a flaw in Log4j means that by using special characters in logged data, it is possible to get a machine inside a company to run code that an attacker controls. Through an attack known as remote code execution (RCE), attackers can gain a foothold into what would normally be a secure, protected system.",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": null,
+						"subheadline": null,
+						"button1Text": "Learn more",
+						"button1Url": "https://blog.cloudflare.com/inside-the-log4j2-vulnerability-cve-2021-44228/",
+						"button1Color": "blue",
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": {
+							"file": {
+								"publicURL": "[path]/Exploit_activated.png"
+							}
+						},
+						"imageAssetFile": null,
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": null,
+						"imageTextAlignment": null,
+						"togglesTo": null
+					},
+					{
+						"__typename": "bladeImageText",
+						"contentfulId": "0174lujKew2lC9f9jmagSd",
+						"title": "How Cloudflare Helps",
+						"copy": "In response to the Log4j vulnerability, Cloudflare has rolled out basic protections to all customers, irrespective of their plan type. As this vulnerability is actively being exploited, Log4j users [should update to the latest version](https://logging.apache.org/log4j/2.x/download.html) as soon as possible.\n\n[Cloudflare WAF](https://www.cloudflare.com/waf/) now includes four rules to help mitigate any exploit attempts. See this [blog post](https://blog.cloudflare.com/protection-against-cve-2021-45046-the-additional-log4j-rce-vulnerability/) for details on how to enable these rules.\n\nIn addition, Cloudflare rolled out a [config option](https://blog.cloudflare.com/log4j-cloudflare-logs-mitigation/) for our [Logpush](https://www.cloudflare.com/products/cloudflare-logs/) service to find and replace known exploit strings in Cloudflare logs to help mitigate the impact of this vulnerability.",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": null,
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": {
+							"file": {
+								"publicURL": "[path]/Log4j_vuln.png"
+							}
+						},
+						"imageAssetFile": null,
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "light-blue",
+						"bladeBorder": "none",
+						"imagePosition": false,
+						"imageSize": null,
+						"imageTextAlignment": null,
+						"togglesTo": null
+					},
+					{
+						"__typename": "bladeEnablement",
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "1VnKO79NxHbaw25cPkPhoC",
+						"copy": null,
+						"buttonExtraClass": null,
+						"buttonColor": "orange",
+						"buttonColor2": "orange",
+						"title": "If you have been affected by the Log4j vulnerability or are concerned about its potential impact, sign up to start using Cloudflare today.",
+						"backgroundColor": "blue",
+						"buttonText": "Sign up",
+						"buttonUrl": "https://www.cloudflare.com/plans/",
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "large",
+						"htmlId": null,
+						"textColor": "white",
+						"bladeBorder": "none",
+						"buttonOne": null,
+						"buttonTwo": null,
+						"sectionPadding": null
+					}
+				],
+				"noindex": false,
+				"enableZendeskChat": false,
+				"formModal": null,
+				"keepHashUrlSyncedWithScrollPosition": false
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"pathname": "/log4j/",
+			"contentfulId": "30ddMm0vtYeuYvQsh4gRwn",
+			"allowedHrefLangs": [
+				"en-US",
+				"zh-CN",
+				"zh-TW",
+				"fr-FR",
+				"de-DE",
+				"it-IT",
+				"ja-JP",
+				"ko-KR",
+				"pt-BR",
+				"es-ES"
+			],
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

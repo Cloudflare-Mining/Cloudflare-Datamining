@@ -1,0 +1,812 @@
+{
+	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
+	"path": "/learning/ddos/ddos-attack-tools/low-orbit-ion-cannon-loic/",
+	"result": {
+		"data": {
+			"learningCenterArticle": {
+				"contentTypeId": "learningCenterArticle",
+				"contentfulId": "3uRk1bnpUnp4PbIeZhGVhv",
+				"urlSlug": "ddos/ddos-attack-tools/low-orbit-ion-cannon-loic",
+				"metaTags": {
+					"metaTitle": "What is the low orbit ion cannon (LOIC)?",
+					"metaDescription": "The low orbit ion cannon is a user-friendly tool that launches DoS and DDoS attacks. Learn more about the LOIC.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/ddos-lc.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"metaTitle": "What Is The Low Orbit Ion Cannon (LOIC)?",
+				"metaDescription": "The Low Orbit Ion Cannon is a user-friendly tool to launch DoS and DDoS attacks which overload a server with malicious traffic. Learn more about the LOIC.",
+				"learningCenterArticleSubHeader": {
+					"contentTypeId": "learningCenterArticleSubHeader",
+					"contentfulId": "28LvlxvxleYGQ8oAcq8Gc2",
+					"learningCenterName": "ddos",
+					"links": [
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "43tpgapD9mSS2WCOqOCG0k",
+							"displayText": "What is a DDoS Attack?",
+							"url": "/learning/ddos/what-is-a-ddos-attack/"
+						},
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "4x6c2TDv4s8Y82QmmeMQSy",
+							"displayText": "What is a DDoS Botnet?",
+							"url": "/learning/ddos/what-is-a-ddos-botnet/"
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "488TK0iPJY2UOcQ4GaYOSM",
+							"name": "DDoS Header: common ddos attacks ",
+							"displayText": "Common DDoS Attacks",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5amlKsiE40kWyWiCiKWI8q",
+									"displayText": "Memcached DDoS Attack",
+									"url": "/learning/ddos/memcached-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "32jyFJRQXmOU6E2eEWeoU0",
+									"displayText": "NTP Amplification Attack",
+									"url": "/learning/ddos/ntp-amplification-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2TjuYJUlBYIcsQYaK2EKSC",
+									"displayText": "DNS Amplification Attack",
+									"url": "/learning/ddos/dns-amplification-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6qWmxdFwCkGO8EEiiOeuEo",
+									"displayText": "SSDP Attack",
+									"url": "/learning/ddos/ssdp-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1mbUWG6ecQ4Es8mqEsqIOQ",
+									"displayText": "Low and Slow Attack",
+									"url": "/learning/ddos/ddos-low-and-slow-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4MQpd8pYVa20YuY6Ks8YQU",
+									"displayText": "Application Layer Attack",
+									"url": "/learning/ddos/application-layer-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1CPIOdRoNwdyvn2wk6ZLGw",
+									"displayText": "Layer 3 Attacks",
+									"url": "/learning/ddos/layer-3-ddos-attacks/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6hOizQoGtyCY8gYyas8II6",
+									"displayText": "Cryptocurrency Attacks",
+									"url": "/learning/ddos/cryptocurrency-ddos-attacks/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "72V7mH81OM2lkZtlWhMD6B",
+									"displayText": "Ransom DDoS attack",
+									"url": "/learning/ddos/ransom-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3vYiB3zjjy0KM0e4qiKY8g",
+									"displayText": "Smurf Attack (historic)",
+									"url": "/learning/ddos/smurf-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6dJ8xImGLSG4Sg2y2kG4mM",
+									"displayText": "Ping of Death (historic)",
+									"url": "/learning/ddos/ping-of-death-ddos-attack/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "Vo72dHHO8V2xTXLPaW61N",
+							"name": "DDoS Header: Flood Attacks drop-down",
+							"displayText": "Flood Attacks",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1nMvoWHltOEqoAkCaE40Ei",
+									"displayText": "DNS Flood",
+									"url": "/learning/ddos/dns-flood-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2a52AhHSNKUk6Gs28yu0uy",
+									"displayText": "HTTP Flood",
+									"url": "/learning/ddos/http-flood-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "21gBkzwknGcLCYsvkBGkhG",
+									"displayText": "SYN Flood Attack",
+									"url": "/learning/ddos/syn-flood-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5wHlxpadXaHWi2PlBPbckX",
+									"displayText": "ACK Flood Attack",
+									"url": "/learning/ddos/what-is-an-ack-flood/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1fNJ2IIgxqKUEYuS6kuI6q",
+									"displayText": "Ping (ICMP) Flood Attack",
+									"url": "/learning/ddos/ping-icmp-flood-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4sBZoVheo8ICoUuqocecoa",
+									"displayText": "UDP Flood Attack",
+									"url": "/learning/ddos/udp-flood-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5DKMqlo86Qy5l7gT1FXNS4",
+									"displayText": "QUIC Flood Attack",
+									"url": "/learning/ddos/what-is-a-quic-flood/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "1TotuWDV6YSUcUEak4KGYM",
+							"name": "DDoS Header: DDoS attack tools",
+							"displayText": "DDoS Attack Tools",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "b2paLepZMkICu60yMqm6u",
+									"displayText": "How to DDoS",
+									"url": "/learning/ddos/ddos-attack-tools/how-to-ddos/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "b8HHJH0rokU6gayiww26K",
+									"displayText": "Low Orbit Ion Cannon",
+									"url": "/learning/ddos/ddos-attack-tools/low-orbit-ion-cannon-loic/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6Ncf86b8sgWQ8aEeOuKS0O",
+									"displayText": "High Orbit Ion Cannon",
+									"url": "/learning/ddos/ddos-attack-tools/high-orbit-ion-cannon-hoic"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "eUBWBDodk4i44IeaOquk0",
+									"displayText": "R U Dead Yet? (R.U.D.Y.)",
+									"url": "/learning/ddos/ddos-attack-tools/r-u-dead-yet-rudy/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6g6tWXLFduMCqwcWwOuWm0",
+									"displayText": "Slowloris Attack",
+									"url": "/learning/ddos/ddos-attack-tools/slowloris/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "rImA6gycScEyWcYUUAaUm",
+									"displayText": "DDoS Booter/IP Stresser",
+									"url": "/learning/ddos/ddos-attack-tools/ddos-booter-ip-stresser/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1aExU3KQxQQhJY4YqnTBCo",
+									"displayText": "IP Spoofing",
+									"url": "/learning/ddos/glossary/ip-spoofing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6cfMFCb4qcI26OSWqKMK82",
+									"displayText": "Malware",
+									"url": "/learning/ddos/glossary/malware/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2nJ2YWt7YgmmESuk80uEqs",
+									"displayText": "Mirai Botnet",
+									"url": "/learning/ddos/glossary/mirai-botnet/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "1hw7BfQbL8qzPSokzSyXJU",
+							"name": "DDoS Header: Glossary",
+							"displayText": "Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3vUhnhCnSMYg22KsU4ua2Y",
+									"displayText": "Famous DDoS Attacks",
+									"url": "/learning/ddos/famous-ddos-attacks/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4Cn3WavphCAekuSwIMqMGe",
+									"displayText": "DDoS Mitigation",
+									"url": "/learning/ddos/ddos-mitigation/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5Yq6iZEMVySMUS8wO40w2",
+									"displayText": "Blackhole Routing",
+									"url": "/learning/ddos/glossary/ddos-blackhole-routing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6s6YUS3x7OGkYmuSeY484s",
+									"displayText": "Denial Of Service",
+									"url": "/learning/ddos/glossary/denial-of-service/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6d1quO1yzC88UKgMsmwY0s",
+									"displayText": "DNS",
+									"url": "/learning/ddos/glossary/domain-name-system-dns/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4YRqcKCEYM8C4WUEeae8Uw",
+									"displayText": "HTTP",
+									"url": "/learning/ddos/glossary/hypertext-transfer-protocol-http/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4lqVLcWrG8uIwcs2aQKi4a",
+									"displayText": "ICMP",
+									"url": "/learning/ddos/glossary/internet-control-message-protocol-icmp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "51BVc8hCzYkMcACSekOsag",
+									"displayText": "OSI Model",
+									"url": "/learning/ddos/glossary/open-systems-interconnection-model-osi/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6xtVT6OheomGscU244Gy4c",
+									"displayText": "TCP/IP",
+									"url": "/learning/ddos/glossary/tcp-ip/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7D0UJZyrqE0YO0yYMWK2Wi",
+									"displayText": "UDP",
+									"url": "/learning/ddos/glossary/user-datagram-protocol-udp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "47hHJHZNSoQuio4QmgCo6w",
+									"displayText": "WAF",
+									"url": "/learning/ddos/glossary/web-application-firewall-waf/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5zTsx9XoT6soGWcWWM6mGa",
+									"displayText": "Internet Of Things (IOT)",
+									"url": "/learning/ddos/glossary/internet-of-things-iot/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3yLp4rjHIIw3L5FhyeT4wG",
+									"displayText": "Layer 7",
+									"url": "/learning/ddos/what-is-layer-7/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "56DqGG2u4w6dn5uDStyvNA",
+							"name": "DDoS Header: Insights",
+							"displayText": "Insights",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7nYhsmOt8j2TMfIi6t2pOG",
+									"displayText": "The future of web application security",
+									"url": "https://www.cloudflare.com/insights-future-web-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "37qx4iYUDgPdHJaxEAyIxH",
+									"displayText": "Ransomware attackers escalate extortion tactics",
+									"url": "https://www.cloudflare.com/learning/insights-ransomware-extortion/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1fudUp354PiIkWi5M2QBuE",
+									"displayText": "The risks smaller DDoS attacks pose to network infrastructure",
+									"url": "https://www.cloudflare.com/insights-small-ddos-attacks/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "Bngdc6ouSn7Q4HEyfH9tZ",
+									"displayText": "Using DDoS threats to extort organizations",
+									"url": "https://www.cloudflare.com/insights-ransom-ddos"
+								}
+							]
+						}
+					]
+				},
+				"learningCenterArticleFooter": {
+					"contentTypeId": "learningCenterArticleFooter",
+					"contentfulId": "BpfTCuIF5AqKwM4wsyQIq",
+					"learningCenterName": "ddos",
+					"column1Title": "About DDoS Attacks",
+					"column1": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "p6u7Eh6PwkA40yMS0mgMY",
+						"name": "DDoS Footer: about ddos attack",
+						"displayText": "About DDoS Attacks",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "43tpgapD9mSS2WCOqOCG0k",
+								"displayText": "What is a DDoS Attack?",
+								"url": "/learning/ddos/what-is-a-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4x6c2TDv4s8Y82QmmeMQSy",
+								"displayText": "What is a DDoS Botnet?",
+								"url": "/learning/ddos/what-is-a-ddos-botnet/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3vUhnhCnSMYg22KsU4ua2Y",
+								"displayText": "Famous DDoS Attacks",
+								"url": "/learning/ddos/famous-ddos-attacks/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Cn3WavphCAekuSwIMqMGe",
+								"displayText": "DDoS Mitigation",
+								"url": "/learning/ddos/ddos-mitigation/"
+							}
+						]
+					},
+					"column2Title": "DDoS Attacks",
+					"column2": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "2TtoXvpi8UYPqpEVzWuntQ",
+						"name": "DDoS Footer: DDoS Attacks",
+						"displayText": "DDoS Attacks",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5amlKsiE40kWyWiCiKWI8q",
+								"displayText": "Memcached DDoS Attack",
+								"url": "/learning/ddos/memcached-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "32jyFJRQXmOU6E2eEWeoU0",
+								"displayText": "NTP Amplification Attack",
+								"url": "/learning/ddos/ntp-amplification-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2TjuYJUlBYIcsQYaK2EKSC",
+								"displayText": "DNS Amplification Attack",
+								"url": "/learning/ddos/dns-amplification-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6qWmxdFwCkGO8EEiiOeuEo",
+								"displayText": "SSDP Attack",
+								"url": "/learning/ddos/ssdp-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1mbUWG6ecQ4Es8mqEsqIOQ",
+								"displayText": "Low and Slow Attack",
+								"url": "/learning/ddos/ddos-low-and-slow-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4MQpd8pYVa20YuY6Ks8YQU",
+								"displayText": "Application Layer Attack",
+								"url": "/learning/ddos/application-layer-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1CPIOdRoNwdyvn2wk6ZLGw",
+								"displayText": "Layer 3 Attacks",
+								"url": "/learning/ddos/layer-3-ddos-attacks/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6hOizQoGtyCY8gYyas8II6",
+								"displayText": "Cryptocurrency Attacks",
+								"url": "/learning/ddos/cryptocurrency-ddos-attacks/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "72V7mH81OM2lkZtlWhMD6B",
+								"displayText": "Ransom DDoS attack",
+								"url": "/learning/ddos/ransom-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3vYiB3zjjy0KM0e4qiKY8g",
+								"displayText": "Smurf Attack (historic)",
+								"url": "/learning/ddos/smurf-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6dJ8xImGLSG4Sg2y2kG4mM",
+								"displayText": "Ping of Death (historic)",
+								"url": "/learning/ddos/ping-of-death-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5wHlxpadXaHWi2PlBPbckX",
+								"displayText": "ACK Flood Attack",
+								"url": "/learning/ddos/what-is-an-ack-flood/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1nMvoWHltOEqoAkCaE40Ei",
+								"displayText": "DNS Flood",
+								"url": "/learning/ddos/dns-flood-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2a52AhHSNKUk6Gs28yu0uy",
+								"displayText": "HTTP Flood",
+								"url": "/learning/ddos/http-flood-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1fNJ2IIgxqKUEYuS6kuI6q",
+								"displayText": "Ping (ICMP) Flood Attack",
+								"url": "/learning/ddos/ping-icmp-flood-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5DKMqlo86Qy5l7gT1FXNS4",
+								"displayText": "QUIC Flood Attack",
+								"url": "/learning/ddos/what-is-a-quic-flood/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "21gBkzwknGcLCYsvkBGkhG",
+								"displayText": "SYN Flood Attack",
+								"url": "/learning/ddos/syn-flood-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4sBZoVheo8ICoUuqocecoa",
+								"displayText": "UDP Flood Attack",
+								"url": "/learning/ddos/udp-flood-ddos-attack/"
+							}
+						]
+					},
+					"column3Title": "DDoS Attack Tools",
+					"column3": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "1EzjWEy67zC4i5hLIC8FpF",
+						"name": "DDoS Footer: DDoS attack tools",
+						"displayText": "DDoS Attack Tools",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "b2paLepZMkICu60yMqm6u",
+								"displayText": "How to DDoS",
+								"url": "/learning/ddos/ddos-attack-tools/how-to-ddos/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "b8HHJH0rokU6gayiww26K",
+								"displayText": "Low Orbit Ion Cannon",
+								"url": "/learning/ddos/ddos-attack-tools/low-orbit-ion-cannon-loic/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6Ncf86b8sgWQ8aEeOuKS0O",
+								"displayText": "High Orbit Ion Cannon",
+								"url": "/learning/ddos/ddos-attack-tools/high-orbit-ion-cannon-hoic"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "eUBWBDodk4i44IeaOquk0",
+								"displayText": "R U Dead Yet? (R.U.D.Y.)",
+								"url": "/learning/ddos/ddos-attack-tools/r-u-dead-yet-rudy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6g6tWXLFduMCqwcWwOuWm0",
+								"displayText": "Slowloris Attack",
+								"url": "/learning/ddos/ddos-attack-tools/slowloris/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "rImA6gycScEyWcYUUAaUm",
+								"displayText": "DDoS Booter/IP Stresser",
+								"url": "/learning/ddos/ddos-attack-tools/ddos-booter-ip-stresser/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1aExU3KQxQQhJY4YqnTBCo",
+								"displayText": "IP Spoofing",
+								"url": "/learning/ddos/glossary/ip-spoofing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6cfMFCb4qcI26OSWqKMK82",
+								"displayText": "Malware",
+								"url": "/learning/ddos/glossary/malware/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2nJ2YWt7YgmmESuk80uEqs",
+								"displayText": "Mirai Botnet",
+								"url": "/learning/ddos/glossary/mirai-botnet/"
+							}
+						]
+					},
+					"column4Title": "DDoS Glossary",
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "1xhHdBkjmcNOgkR8B2bgap",
+						"name": "DDos Footer: Glossary",
+						"displayText": "DDoS Glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6s6YUS3x7OGkYmuSeY484s",
+								"displayText": "Denial Of Service",
+								"url": "/learning/ddos/glossary/denial-of-service/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5Yq6iZEMVySMUS8wO40w2",
+								"displayText": "Blackhole Routing",
+								"url": "/learning/ddos/glossary/ddos-blackhole-routing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "51BVc8hCzYkMcACSekOsag",
+								"displayText": "OSI Model",
+								"url": "/learning/ddos/glossary/open-systems-interconnection-model-osi/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6xtVT6OheomGscU244Gy4c",
+								"displayText": "TCP/IP",
+								"url": "/learning/ddos/glossary/tcp-ip/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4lqVLcWrG8uIwcs2aQKi4a",
+								"displayText": "ICMP",
+								"url": "/learning/ddos/glossary/internet-control-message-protocol-icmp/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4YRqcKCEYM8C4WUEeae8Uw",
+								"displayText": "HTTP",
+								"url": "/learning/ddos/glossary/hypertext-transfer-protocol-http/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3m3SoSRTz9H3QUP1Y3fLJ0",
+								"displayText": "Web Application Firewall (WAF)",
+								"url": "/learning/ddos/glossary/web-application-firewall-waf/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2JgJvIWgo72kFjaMf1xzWc",
+								"displayText": "User Datagram Protocol (UDP)",
+								"url": "/learning/ddos/glossary/user-datagram-protocol-udp/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3yLp4rjHIIw3L5FhyeT4wG",
+								"displayText": "Layer 7",
+								"url": "/learning/ddos/what-is-layer-7/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5zTsx9XoT6soGWcWWM6mGa",
+								"displayText": "Internet Of Things (IOT)",
+								"url": "/learning/ddos/glossary/internet-of-things-iot/"
+							}
+						]
+					},
+					"column5Title": "Learning Center Navigation",
+					"column5": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "3W1E40q164OhUFAC0XF03C",
+						"name": "DDoS Footer: Learning Nav",
+						"displayText": "Learning Center Navigation",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2hdSVoYA5asSIG0U2ae20c",
+								"displayText": "Learning Center Home",
+								"url": "/learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Ra0qmFJ1uewk2MYscW8KI",
+								"displayText": "DNS Learning Center",
+								"url": "/learning/dns/what-is-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6DGcnYIMM0eCGwqAKu2ECO",
+								"displayText": "CDN Learning Center",
+								"url": "/learning/cdn/what-is-a-cdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z3UC9tP1Kjk85BX5zSGPY",
+								"displayText": "Serverless Learning Center",
+								"url": "/learning/serverless/what-is-serverless/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1yItw6W6SsM2Y0Wuq6Y2c6",
+								"displayText": "Security Learning Center",
+								"url": "/learning/security/what-is-web-application-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q67XLnKqKhfmDJR4q9hJT",
+								"displayText": "Performance Learning Center",
+								"url": "/learning/performance/why-site-speed-matters/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52V7iI9YriJ0En2SGmEXz5",
+								"displayText": "SSL Learning Center",
+								"url": "/learning/ssl/what-is-ssl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7D22pOfjb98KXcnAJyJFCX",
+								"displayText": "Bots Learning Center",
+								"url": "/learning/bots/what-is-a-bot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7jgqDUFFzaLuKrsaBTLdV0",
+								"displayText": "Cloud Learning Center",
+								"url": "/learning/cloud/what-is-the-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6PdBQjiFs98K6RQuG5TYNd",
+								"displayText": "Access Management Learning Center",
+								"url": "/learning/access-management/what-is-identity-and-access-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3jjEMuuLrCwhRidjG5kglM",
+								"displayText": "Network Layer Learning Center",
+								"url": "/learning/network-layer/what-is-the-network-layer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RvS0l0m86G1VISDrEvlJb",
+								"displayText": "Privacy Learning Center",
+								"url": "/learning/privacy/what-is-data-privacy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "MytksT5WU5mh863BQYEkj",
+								"displayText": "Video Streaming Learning Center",
+								"url": "/learning/video/what-is-streaming/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
+								"displayText": "Email Security Learning Center",
+								"url": "/learning/email-security/what-is-email-security/"
+							}
+						]
+					}
+				},
+				"header": "What is the low orbit ion cannon (LOIC)?",
+				"blurbSubHeader": "The low orbit ion cannon is a user-friendly tool that launches DoS and DDoS attacks, which overload a server with malicious traffic.",
+				"objectivesHeader": "Low Orbit Ion Cannon",
+				"objectivesList": [
+					"Define the low orbit ion cannon",
+					"Describe how the LOIC works",
+					"Know which tools can mitigate LOIC attacks"
+				],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "6Ncf86b8sgWQ8aEeOuKS0O",
+						"displayText": "High Orbit Ion Cannon",
+						"url": "/learning/ddos/ddos-attack-tools/high-orbit-ion-cannon-hoic"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "4Cn3WavphCAekuSwIMqMGe",
+						"displayText": "DDoS Mitigation",
+						"url": "/learning/ddos/ddos-mitigation/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "4x6c2TDv4s8Y82QmmeMQSy",
+						"displayText": "What is a DDoS Botnet?",
+						"url": "/learning/ddos/what-is-a-ddos-botnet/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "43tpgapD9mSS2WCOqOCG0k",
+						"displayText": "What is a DDoS Attack?",
+						"url": "/learning/ddos/what-is-a-ddos-attack/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "4lqVLcWrG8uIwcs2aQKi4a",
+						"displayText": "ICMP",
+						"url": "/learning/ddos/glossary/internet-control-message-protocol-icmp/"
+					}
+				],
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is the Low Orbit Ion Cannon (LOIC)?</h2>\n\n<p>The Low Orbit Ion Cannon is a tool commonly used to launch <a href=\"/learning/ddos/glossary/denial-of-service/\">DoS</a> and <a href=\"/learning/ddos/what-is-a-ddos-attack/\">DDoS attacks</a>. It was originally developed by Praetox Technology as a network <a href='/learning/security/glossary/what-is-penetration-testing/'>stress-testing</a> application, but it has since become open-source and is now mostly used with malicious intent. It is known for being a very user-friendly and accessible tool, and it gained notoriety for its use by members of hacktivist group Anonymous as well as users of the 4Chan forums.</p>\n\n<p>This tool puts the ability to launch DDoS attacks in the hands of users with very little technical knowledge. It is widely available for download and has a simple point-and-click interface, additionally users can even launch attacks from a web browser using a JavaScript version called JS LOIC and a web version known as the Low Orbit Web Cannon.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does the LOIC work?</h2>\n\n<p>It works by flooding a target server with <a href=\"/learning/ddos/glossary/tcp-ip/\">TCP</a>, <a href=\"/learning/ddos/glossary/user-datagram-protocol-udp/\">UDP</a>, or <a href=\"/learning/ddos/glossary/hypertext-transfer-protocol-http/\">HTTP</a> packets with the goal of disrupting service.  One attacker using the LOIC can’t generate enough junk traffic to make a serious impact on a target; serious attacks require thousands of users to coordinate a simultaneous attack on the same target. In order to make these coordinated attacks easier, users can use IRC chat channels to run a ‘Hivemind’ version of the LOIC which lets one primary user control several networked secondary computers, creating a voluntary <a href=\"/learning/ddos/what-is-a-ddos-botnet/\">botnet</a>. This is a popular approach because owners of the secondary devices can claim they were innocent victims of an involuntary botnet.</p>\n\n<p>LOIC hiveminds were used by Anonymous in 2008 to attack Church of Scientology websites in response to the Church’s legal efforts to take down YouTube videos. The LOIC was also notably used in 2010, when WikiLeaks supporters went after the Visa and MasterCard sites in response to the credit card companies freezing payments to WikiLeaks.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How do you stop an LOIC attack?</h2>\n\n<p>Small LOIC HTTP attacks can be mitigated with a local <a href='/learning/security/what-is-a-firewall/'>firewall</a> by having a server administrator look at the logs and identify the IPs of the attackers and dropping their requests. However this strategy won’t stand up to a large-scale attack where hundreds or even thousands of different attackers are working in tandem. Local firewalls also can’t protect against TCP or UDP floods, the latter of which can even target and disrupt a firewall. A <a href=\"/learning/ddos/glossary/web-application-firewall-waf/\">Web Application Firewall (WAF)</a> can provide strong protection against HTTP floods, and dedicated DDoS protection can stop TCP and UDP attacks.</p>\n\n<p>Fortunately, attackers using the LOIC are fairly easy to detect; it can’t be used through a proxy, so attackers’ <a href='/learning/dns/glossary/what-is-my-ip-address/'>IP addresses</a> are visible to the target. Numerous countries have taken legal action against attackers using the LOIC including the U.S., U.K., Spain, and Turkey.</p>",
+				"availableLocales": null,
+				"localized": true,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "No Page for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": null
+				},
+				"proactivePopup": null,
+				"sidebarForm": null
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "3uRk1bnpUnp4PbIeZhGVhv",
+			"pathname": "/learning/ddos/ddos-attack-tools/low-orbit-ion-cannon-loic/",
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

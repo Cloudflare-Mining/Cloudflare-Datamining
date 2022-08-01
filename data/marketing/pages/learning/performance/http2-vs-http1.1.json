@@ -1,0 +1,568 @@
+{
+	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
+	"path": "/learning/performance/http2-vs-http1.1/",
+	"result": {
+		"data": {
+			"learningCenterArticle": {
+				"contentTypeId": "learningCenterArticle",
+				"contentfulId": "VREyv8Qn5Xn6dUswFzXXu",
+				"urlSlug": "performance/http2-vs-http1.1",
+				"metaTags": {
+					"metaTitle": "HTTP/2 vs. HTTP/1.1: How do they affect web performance?",
+					"metaDescription": "Learn how HTTP 1.1 slows web performance. Compare HTTP/2 vs. HTTP/1.1, learn why HTTP/2 is faster, and learn about the next HTTP version: HTTP/3.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/performance-lc.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"metaTitle": "HTTP/2 vs. HTTP/1.1: How Do They Affect Web Performance?",
+				"metaDescription": "Learn how HTTP 1.1 slows web performance. Compare HTTP/2 vs. HTTP/1.1, learn why HTTP/2 is faster, and learn about the next HTTP version: HTTP/3.",
+				"learningCenterArticleSubHeader": {
+					"contentTypeId": "learningCenterArticleSubHeader",
+					"contentfulId": "3EXwEdnC7JnXLjoWOxHdT9",
+					"learningCenterName": "performance",
+					"links": [
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "e3oFRMHsIzHQZYTLmPDOr",
+							"displayText": "Why Site Speed Matters",
+							"url": "/learning/performance/why-site-speed-matters/"
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "wjD4s7zPAIlrcocplo68g",
+							"name": "Performance Header: Performance Benefits",
+							"displayText": "Performance Benefits",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3XMpuNDRWA2j2aZ0qi1DaU",
+									"displayText": "Speed and Conversion Rates",
+									"url": "/learning/performance/more/website-performance-conversion-rates/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2u9nE8G5zJaY1Limh5GLkW",
+									"displayText": "How Site Speed Boosts SEO",
+									"url": "/learning/performance/how-website-speed-boosts-seo/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4s6X4x3EYYlHHb9aI4X31Q",
+									"displayText": "Core Web Vitals",
+									"url": "/learning/performance/what-are-core-web-vitals/ "
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "1Z9S7dlY2AIhyf5X4kYzLf",
+							"name": "Performance Header: Load Balancing",
+							"displayText": "Load Balancing",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "205Es4ofD2BShliEBNj1Z6",
+									"displayText": "What is Load Balancing?",
+									"url": "/learning/performance/what-is-load-balancing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "hhFtuqqoybh6WOlwSiqIo",
+									"displayText": "Server failover",
+									"url": "/learning/performance/what-is-server-failover/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3EsOLhDVoFDkZWt35VPRqD",
+									"displayText": "DNS-based load balancing",
+									"url": "https://www.cloudflare.com/learning/performance/what-is-dns-load-balancing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4RFn9zHjqaC2djLIVH1R21",
+									"displayText": "Load balancing algorithms",
+									"url": "/learning/performance/types-of-load-balancing-algorithms/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7G0p4vQ9468caPQGJoE6IL",
+									"displayText": "Multi-cloud and hybrid cloud load balancing",
+									"url": "/learning/performance/load-balancing-multi-cloud-hybrid-cloud/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4ZbTYQT5tvo9CTMX9psYMa",
+									"displayText": "Cloud load balancing (LBaaS)",
+									"url": "/learning/performance/cloud-load-balancing-lbaas/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "6BoLYDQbAwY5LuAk1OHyNu",
+							"name": "Performance Header: Performance for Developers",
+							"displayText": "Performance for Developers",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "35apJbC5biFa3jzTQHmDe1",
+									"displayText": "Why Minify Javascript?",
+									"url": "/learning/performance/why-minify-javascript-code/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2Xp2GgqtMv84qqtbYIIQtc",
+									"displayText": "HTTP/2 vs HTTP/1.1",
+									"url": "/learning/performance/http2-vs-http1.1/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4H29YTj5ck7Dfu72foQyXb",
+									"displayText": "What is JAMstack?",
+									"url": "/learning/performance/what-is-jamstack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2x2nqZ8zTTRUOqJhuYyaNH",
+									"displayText": "Static site generator",
+									"url": "/learning/performance/static-site-generator/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5Zm1SJxNbA3ddOOxIJW8yl",
+									"displayText": "How DCL & FCP Affect SEO",
+									"url": "/learning/performance/how-dcl-and-fcp-affect-seo/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "787jBq0LeOM6UkZuvDQNQW",
+									"displayText": "Making a Site Mobile Friendly",
+									"url": "/learning/performance/how-to-make-a-site-mobile-friendly/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5eTNDaWptWyi8ELSirebqE",
+									"displayText": "Speed Up a Website",
+									"url": "/learning/performance/speed-up-a-website/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "31bAifmor3KmJTmOyGUYGu",
+									"displayText": "Test the Speed of a Site",
+									"url": "/learning/performance/test-the-speed-of-a-website/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4hvxrtMRLXQXsqW3YKAUwN",
+									"displayText": "What is HTTP/3?",
+									"url": "learning/performance/what-is-http3"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4okTLSy9bqbLvqOAz4dqIf",
+									"displayText": "Preventing Downtime",
+									"url": "/learning/performance/preventing-downtime/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2x8bWWSONCzLyUVomacqHL",
+									"displayText": "Lazy Loading",
+									"url": "/learning/performance/what-is-lazy-loading/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "5exwZsks9Ss1d5Q52LVpbl",
+							"name": "Performance Header: More on Performance",
+							"displayText": "More on Performance",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7LQi33SEfVIys6UyNq8f9K",
+									"displayText": "What is Latency?",
+									"url": "/learning/performance/glossary/what-is-latency/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4CDfNtFZec20k10IsDnMKO",
+									"displayText": "Speed Up the Web",
+									"url": "/learning/performance/more/speed-up-the-web/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3n7LgS1F3I881eXiTOJVti",
+									"displayText": "What is an Image Optimizer?",
+									"url": "/learning/performance/glossary/what-is-an-image-optimizer/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3JVN13JI6LoSlZuhr7LAxF",
+									"displayText": "Routing vs. Smart Routing",
+									"url": "/learning/performance/routing-vs-smart-routing/"
+								}
+							]
+						}
+					]
+				},
+				"learningCenterArticleFooter": {
+					"contentTypeId": "learningCenterArticleFooter",
+					"contentfulId": "3BGH880XprClbWXeQhnw1L",
+					"learningCenterName": "performance",
+					"column1Title": "About Performance",
+					"column1": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "ES3KtU5NVbIkUUTPKBGds",
+						"name": "Performance Footer - About",
+						"displayText": "About Performance",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "e3oFRMHsIzHQZYTLmPDOr",
+								"displayText": "Why Site Speed Matters",
+								"url": "/learning/performance/why-site-speed-matters/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "31bAifmor3KmJTmOyGUYGu",
+								"displayText": "Test the Speed of a Site",
+								"url": "/learning/performance/test-the-speed-of-a-website/"
+							}
+						]
+					},
+					"column2Title": "Performance and SEO",
+					"column2": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "3gosdnz8T1wPj5ExVH8Ng6",
+						"name": "Performance Footer: SEO",
+						"displayText": "Performance and SEO",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2u9nE8G5zJaY1Limh5GLkW",
+								"displayText": "How Site Speed Boosts SEO",
+								"url": "/learning/performance/how-website-speed-boosts-seo/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5Zm1SJxNbA3ddOOxIJW8yl",
+								"displayText": "How DCL & FCP Affect SEO",
+								"url": "/learning/performance/how-dcl-and-fcp-affect-seo/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4s6X4x3EYYlHHb9aI4X31Q",
+								"displayText": "Core Web Vitals",
+								"url": "/learning/performance/what-are-core-web-vitals/ "
+							}
+						]
+					},
+					"column3Title": "More on Performance",
+					"column3": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "7tEVxRje5aVg2jKT46gn90",
+						"name": "Performance Footer: More",
+						"displayText": "More on Performance",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3XMpuNDRWA2j2aZ0qi1DaU",
+								"displayText": "Speed and Conversion Rates",
+								"url": "/learning/performance/more/website-performance-conversion-rates/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4CDfNtFZec20k10IsDnMKO",
+								"displayText": "Speed Up the Web",
+								"url": "/learning/performance/more/speed-up-the-web/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5eTNDaWptWyi8ELSirebqE",
+								"displayText": "Speed Up a Website",
+								"url": "/learning/performance/speed-up-a-website/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3JVN13JI6LoSlZuhr7LAxF",
+								"displayText": "Routing vs. Smart Routing",
+								"url": "/learning/performance/routing-vs-smart-routing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4H29YTj5ck7Dfu72foQyXb",
+								"displayText": "What is JAMstack?",
+								"url": "/learning/performance/what-is-jamstack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2x2nqZ8zTTRUOqJhuYyaNH",
+								"displayText": "Static site generator",
+								"url": "/learning/performance/static-site-generator/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4okTLSy9bqbLvqOAz4dqIf",
+								"displayText": "Preventing Downtime",
+								"url": "/learning/performance/preventing-downtime/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2x8bWWSONCzLyUVomacqHL",
+								"displayText": "Lazy Loading",
+								"url": "/learning/performance/what-is-lazy-loading/"
+							}
+						]
+					},
+					"column4Title": "Glossary",
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "6huscp9lw1hiV4RtOogq44",
+						"name": "Performance Footer: Glossary",
+						"displayText": "Glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7LQi33SEfVIys6UyNq8f9K",
+								"displayText": "What is Latency?",
+								"url": "/learning/performance/glossary/what-is-latency/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3n7LgS1F3I881eXiTOJVti",
+								"displayText": "What is an Image Optimizer?",
+								"url": "/learning/performance/glossary/what-is-an-image-optimizer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2Xp2GgqtMv84qqtbYIIQtc",
+								"displayText": "HTTP/2 vs HTTP/1.1",
+								"url": "/learning/performance/http2-vs-http1.1/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "205Es4ofD2BShliEBNj1Z6",
+								"displayText": "What is Load Balancing?",
+								"url": "/learning/performance/what-is-load-balancing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "hhFtuqqoybh6WOlwSiqIo",
+								"displayText": "Server failover",
+								"url": "/learning/performance/what-is-server-failover/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3EsOLhDVoFDkZWt35VPRqD",
+								"displayText": "DNS-based load balancing",
+								"url": "https://www.cloudflare.com/learning/performance/what-is-dns-load-balancing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4RFn9zHjqaC2djLIVH1R21",
+								"displayText": "Load balancing algorithms",
+								"url": "/learning/performance/types-of-load-balancing-algorithms/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7G0p4vQ9468caPQGJoE6IL",
+								"displayText": "Multi-cloud and hybrid cloud load balancing",
+								"url": "/learning/performance/load-balancing-multi-cloud-hybrid-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4hvxrtMRLXQXsqW3YKAUwN",
+								"displayText": "What is HTTP/3?",
+								"url": "learning/performance/what-is-http3"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4ZbTYQT5tvo9CTMX9psYMa",
+								"displayText": "Cloud load balancing (LBaaS)",
+								"url": "/learning/performance/cloud-load-balancing-lbaas/"
+							}
+						]
+					},
+					"column5Title": "Learning Center Navigation",
+					"column5": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "10E7AAyZScH8CewOHQxoql",
+						"name": "Performance Footer - Learning Nav",
+						"displayText": "Learning Center Navigation",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2hdSVoYA5asSIG0U2ae20c",
+								"displayText": "Learning Center Home",
+								"url": "/learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "56Y6OytBNgNoNDWQL2ezlf",
+								"displayText": "DDoS Learning Center",
+								"url": "/learning/ddos/what-is-a-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6DGcnYIMM0eCGwqAKu2ECO",
+								"displayText": "CDN Learning Center",
+								"url": "/learning/cdn/what-is-a-cdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Ra0qmFJ1uewk2MYscW8KI",
+								"displayText": "DNS Learning Center",
+								"url": "/learning/dns/what-is-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1yItw6W6SsM2Y0Wuq6Y2c6",
+								"displayText": "Security Learning Center",
+								"url": "/learning/security/what-is-web-application-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z3UC9tP1Kjk85BX5zSGPY",
+								"displayText": "Serverless Learning Center",
+								"url": "/learning/serverless/what-is-serverless/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52V7iI9YriJ0En2SGmEXz5",
+								"displayText": "SSL Learning Center",
+								"url": "/learning/ssl/what-is-ssl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7D22pOfjb98KXcnAJyJFCX",
+								"displayText": "Bots Learning Center",
+								"url": "/learning/bots/what-is-a-bot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7jgqDUFFzaLuKrsaBTLdV0",
+								"displayText": "Cloud Learning Center",
+								"url": "/learning/cloud/what-is-the-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3jjEMuuLrCwhRidjG5kglM",
+								"displayText": "Network Layer Learning Center",
+								"url": "/learning/network-layer/what-is-the-network-layer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6PdBQjiFs98K6RQuG5TYNd",
+								"displayText": "Access Management Learning Center",
+								"url": "/learning/access-management/what-is-identity-and-access-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RvS0l0m86G1VISDrEvlJb",
+								"displayText": "Privacy Learning Center",
+								"url": "/learning/privacy/what-is-data-privacy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "MytksT5WU5mh863BQYEkj",
+								"displayText": "Video Streaming Learning Center",
+								"url": "/learning/video/what-is-streaming/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
+								"displayText": "Email Security Learning Center",
+								"url": "/learning/email-security/what-is-email-security/"
+							}
+						]
+					}
+				},
+				"header": "HTTP/2 vs. HTTP/1.1: How do they affect web performance?",
+				"blurbSubHeader": "HTTP/2 allows developers to customize prioritization, or the order in which web assets load. HTTP/2 offers a number of other performance improvements over HTTP/1 as well.\n",
+				"objectivesHeader": "HTTP/2 & HTTP/1.1",
+				"objectivesList": [
+					"Learn what HTTP is, and the differences between HTTP versions",
+					"Understand how prioritization works in HTTP/2",
+					"Explore the ways HTTP/2 improves web performance"
+				],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "2u9nE8G5zJaY1Limh5GLkW",
+						"displayText": "How Site Speed Boosts SEO",
+						"url": "/learning/performance/how-website-speed-boosts-seo/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "5eTNDaWptWyi8ELSirebqE",
+						"displayText": "Speed Up a Website",
+						"url": "/learning/performance/speed-up-a-website/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "4CDfNtFZec20k10IsDnMKO",
+						"displayText": "Speed Up the Web",
+						"url": "/learning/performance/more/speed-up-the-web/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "3XMpuNDRWA2j2aZ0qi1DaU",
+						"displayText": "Speed and Conversion Rates",
+						"url": "/learning/performance/more/website-performance-conversion-rates/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "e3oFRMHsIzHQZYTLmPDOr",
+						"displayText": "Why Site Speed Matters",
+						"url": "/learning/performance/why-site-speed-matters/"
+					}
+				],
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is HTTP? Why is HTTP/2 faster than HTTP/1.1?</h2>\n\n<p><a href='/learning/ddos/glossary/hypertext-transfer-protocol-http/'>HTTP</a> stands for hypertext transfer protocol, and it is the basis for almost all web applications. More specifically, HTTP is the method computers and servers use to request and send information. For instance, when someone navigates to cloudflare.com on their laptop, their web browser sends an HTTP request to the Cloudflare servers for the content that appears on the page. Then, Cloudflare servers send HTTP responses with the text, images, and formatting that the browser displays to the user.</p>\n\n<p>The first usable version of HTTP was created in 1997. Because it went through several stages of development, this first version of HTTP was called HTTP/1.1. This version is still in use on the web. In 2015, a new version of HTTP called <a href='https://www.cloudflare.com/website-optimization/http2/what-is-http2/' target='_blank'>HTTP/2</a> was created.</p>\n\n<p>HTTP/2 solves several problems that the creators of HTTP/1.1 did not anticipate. In particular, HTTP/2 is much faster and more efficient than HTTP/1.1. One of the ways in which HTTP/2 is faster is in how it prioritizes content during the loading process.</p>\n\n<h2 class=\"learning-content-h2 learning-content-h2\" itemprop=\"headline\">What is prioritization?</h2>\n\n<p>In the context of <a href='/learning/performance/why-site-speed-matters/'>web performance</a>, prioritization refers to the order in which pieces of content are loaded. Suppose a user visits a news website and navigates to an article. Should the photo at the top of the article load first? Should the text of the article load first? Should the banner ads load first?</p>\n\n<p>Prioritization affects a webpage's load time. For example, certain resources, like large JavaScript files, may block the rest of the page from loading if they have to load first. More of the page can load at once if these render-blocking resources load last.</p>\n\n<p>In addition, the order in which these page resources load affects how the user perceives page load time. If only behind-the-scenes content (like a CSS file) or content the user can't see immediately (like banner ads at the bottom of the page) loads first, the user will think the page is not loading at all. If the content that's most important to the user loads first, such as the image at the top of the page, then the user will perceive the page as loading faster.</p>\n\n<h2 class=\"learning-content-h2 learning-content-h2\" itemprop=\"headline\">How does prioritization in HTTP/2 affect performance?</h2>\n\n<p>In HTTP/2, developers have hands-on, detailed control over prioritization. This allows them to maximize perceived and actual page load speed to a degree that was not possible in HTTP/1.1.</p>\n\n<p>HTTP/2 offers a feature called weighted prioritization. This allows developers to decide which page resources will load first, every time. In HTTP/2, when a <a href='/learning/serverless/glossary/client-side-vs-server-side/'>client</a> makes a request for a webpage, the server sends several streams of data to the client at once, instead of sending one thing after another. This method of data delivery is known as multiplexing. Developers can assign each of these data streams a different weighted value, and the value tells the client which data stream to render first.</p>\n\n<p>Imagine that Alice wants to read a novel that her friend Bob wrote, but both Alice and Bob only communicate through the regular mail. Alice sends a letter to Bob and asks Bob to send her his novel. Bob decides to send the novel HTTP/1.1-style: He mails one chapter at a time, and he only mails the next chapter after receiving a reply letter from Alice confirming that she received the previous chapter. Using this method of content delivery, it takes Alice many weeks to read Bob's novel.</p>\n\n<p>Now imagine that Bob decides to send Alice his novel HTTP/2-style: In this case, he sends each chapter of the novel separately (to stay within the postal service's size limits) but all at the same time. He also numbers each chapter: Chapter 1, Chapter 2, etc. Now, Alice receives the novel all at once and can assemble it in the correct order on her own time. If a chapter is missing, she may send a quick reply asking for that specific chapter, but otherwise the process is complete, and Alice can read the novel in just a few days.</p>\n\n<p>In HTTP/2, data is sent all at once, much like Bob when he sends Alice multiple chapters at once. And just like Bob, developers get to number the chapters in HTTP/2. They can decide if the text of a webpage loads first, or the CSS files, or the JavaScript, or whatever they feel is most important for the user experience.</p>\n\n<h2 class=\"learning-content-h2 learning-content-h2\" itemprop=\"headline\">What are the other differences between HTTP/2 and HTTP/1.1 that impact performance?</h2>\n\n<p><strong>Multiplexing:</strong> HTTP/1.1 loads resources one after the other, so if one resource cannot be loaded, it blocks all the other resources behind it. In contrast, HTTP/2 is able to use a single <a href='/learning/ddos/glossary/tcp-ip/'>TCP</a> connection to send multiple streams of data at once so that no one resource blocks any other resource. HTTP/2 does this by splitting data into binary-code messages and numbering these messages so that the client knows which stream each binary message belongs to.</p>\n\n<p><strong>Server push:</strong> Typically, a server only serves content to a client device if the client asks for it. However, this approach is not always practical for modern webpages, which often involve several dozen separate resources that the client must request. HTTP/2 solves this problem by allowing a server to \"push\" content to a client before the client asks for it. The server also sends a message letting the client know what pushed content to expect – like if Bob had sent Alice a Table of Contents of his novel before sending the whole thing.</p>\n\n<p><strong>Header compression:</strong> Small files load more quickly than large ones. To speed up web performance, both HTTP/1.1 and HTTP/2 compress HTTP messages to make them smaller. However, HTTP/2 uses a more advanced compression method called HPACK that eliminates redundant information in HTTP header packets. This eliminates a few bytes from every HTTP packet. Given the volume of HTTP packets involved in loading even a single webpage, those bytes add up quickly, resulting in faster loading.</p>\n\n<h2 class=\"learning-content-h2 learning-content-h2\" itemprop=\"headline\">What is HTTP/3?</h2>\n\n<p>HTTP/3 is the next proposed version of the HTTP protocol. HTTP/3 does not have wide adoption on the web yet, but it is growing in usage. The key difference between HTTP/3 and previous versions of the protocol is that HTTP/3 runs over <a href='/learning/ddos/what-is-a-quic-flood/'>QUIC</a> instead of TCP. QUIC is a faster and more secure transport layer protocol that is designed for the needs of the modern Internet.</p>\n\n<h2 class=\"learning-content-h2 learning-content-h2\" itemprop=\"headline\">How does Cloudflare help developers implement HTTP/2 for faster performance?</h2>\n\n<p>Cloudflare supports all features of HTTP/2. Web properties on Cloudflare can <a href='https://www.cloudflare.com/website-optimization/http2/' target='_blank'>turn on HTTP/2 for free</a> with one click. <a href='https://blog.cloudflare.com/http3-the-past-present-and-future/' target='_blank'>Cloudflare supports HTTP/3</a> in addition to HTTP/2.</p>",
+				"availableLocales": null,
+				"localized": true,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "No Page for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": null
+				},
+				"proactivePopup": null,
+				"sidebarForm": null
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "VREyv8Qn5Xn6dUswFzXXu",
+			"pathname": "/learning/performance/http2-vs-http1.1/",
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

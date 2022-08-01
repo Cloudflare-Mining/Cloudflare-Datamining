@@ -1,0 +1,738 @@
+{
+	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
+	"path": "/learning/dns/dns-records/dns-dkim-record/",
+	"result": {
+		"data": {
+			"learningCenterArticle": {
+				"contentTypeId": "learningCenterArticle",
+				"contentfulId": "3Fv9LLaHoX2SEhDNs9gcdH",
+				"urlSlug": "dns/dns-records/dns-dkim-record",
+				"metaTags": {
+					"metaTitle": "What is a DNS DKIM record?",
+					"metaDescription": "A DKIM record is a specialized DNS TXT record that stores the public key used to verify an email's authenticity. Learn how DKIM lookups work.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/dns_og.jpeg"
+						}
+					},
+					"facebookCustomImage": {
+						"file": {
+							"publicURL": "[path]/dns_og.jpeg"
+						}
+					}
+				},
+				"metaTitle": null,
+				"metaDescription": null,
+				"learningCenterArticleSubHeader": {
+					"contentTypeId": "learningCenterArticleSubHeader",
+					"contentfulId": "7skJGddyApM6rrCZOvn9YF",
+					"learningCenterName": "dns",
+					"links": [
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "2j9vWGfXAwGGPl7LN1Ezi7",
+							"displayText": "What is DNS?",
+							"url": "/learning/dns/what-is-dns/"
+						},
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "3noj8iKecv1MxsE67u045T",
+							"displayText": "What is 1.1.1.1?",
+							"url": "/learning/dns/what-is-1.1.1.1/"
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "5H0d0oeRRCTIjGxZR65GiF",
+							"name": "DNS Records (dropdown)",
+							"displayText": "DNS Records",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "52pTZ4IwdIcqznT6vpOg8O",
+									"displayText": "Overview",
+									"url": "/learning/dns/dns-records/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6zoT4UnozC7f0YgaA4GayP",
+									"displayText": "DNS A Record",
+									"url": "/learning/dns/dns-records/dns-a-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "216n5uGl275SXOSCgPUKYE",
+									"displayText": "DNS AAAA Record",
+									"url": "/learning/dns/dns-records/dns-aaaa-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "25IZh36P1Hroccd1Hbn0J9",
+									"displayText": "DNS CNAME Record",
+									"url": "/learning/dns/dns-records/dns-cname-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3RB9F8AcZ12cYLoa88V0tw",
+									"displayText": "DNS MX Record",
+									"url": "/learning/dns/dns-records/dns-mx-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5POxZ3Tq5wtr5nvPh3EjOa",
+									"displayText": "DNS TXT Record",
+									"url": "/learning/dns/dns-records/dns-txt-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4PwRBNlUE7MUBPZhTVrFm7",
+									"displayText": "DNS NS Record",
+									"url": "/learning/dns/dns-records/dns-ns-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7JzBM5jTjsL8wyh3HOEmZx",
+									"displayText": "DNS SOA Record",
+									"url": "/learning/dns/dns-records/dns-soa-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "54EtZ8wu9XeFUmjpP4ffcM",
+									"displayText": "DNS SRV Record",
+									"url": "/learning/dns/dns-records/dns-srv-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3ZJqZzOr67RDB035iGoFfq",
+									"displayText": "DNS PTR Record",
+									"url": "/learning/dns/dns-records/dns-ptr-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4cRZgnJnlTJ0btlrWSVDQs",
+									"displayText": "DNSKEY and DS Records",
+									"url": "/learning/dns/dns-records/dnskey-ds-records/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5qZnEhej6gYQitbACd6zyl",
+									"displayText": "DNS SPF Record",
+									"url": "/learning/dns/dns-records/dns-spf-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4xfxdFdQt99i8HyQJnxrB1",
+									"displayText": "DNS DKIM Record",
+									"url": "/learning/dns/dns-records/dns-dkim-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "Q49hOQqCkiSUJkM1OpfYS",
+									"displayText": "DNS DMARC Record",
+									"url": "/learning/dns/dns-records/dns-dmarc-record/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "3ZnjBOMP0HJxvAFLXbYSzJ",
+							"name": "DNS Header: Securing DNS drop-down",
+							"displayText": "Securing DNS",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1qDNMOTTvjkYO6pegCD1uF",
+									"displayText": "DNS over TLS",
+									"url": "/learning/dns/dns-over-tls/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6eI7dSVO2bxGNiIj6iKq0n",
+									"displayText": "DNS security",
+									"url": "/learning/dns/dns-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2PaGg8hMqJM1igspXYbvv3",
+									"displayText": "DNS Cache Poisoning",
+									"url": "/learning/dns/dns-cache-poisoning/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5YlKzhtoXpJxfv54E8YwUa",
+									"displayText": "DNS Fast Flux",
+									"url": "/learning/dns/dns-fast-flux/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "2AtQTtUFJafy4cPr8qwVxS",
+							"name": "DNS Header: Domain Registration drop-down",
+							"displayText": "Domain Registration",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1ikXSOCWeoGFzBnkDIwuMY",
+									"displayText": "Domain Name",
+									"url": "/learning/dns/glossary/what-is-a-domain-name/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1OPRVsnrKwgcUG0kLGU3cS",
+									"displayText": "Top-Level Domain",
+									"url": "/learning/dns/top-level-domain"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2h2AMLDpLE26iXPuwzXW9I",
+									"displayText": "Domain name registrar",
+									"url": "/learning/dns/glossary/what-is-a-domain-name-registrar/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7nawVf9j5ZfeeEDxxQkox6",
+									"displayText": "Best Domain Name Registrar",
+									"url": "/learning/dns/glossary/choose-the-best-domain-name-registrar/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4EJToFmoxmGMpGfGw62Uwb",
+									"displayText": "Expired Domains",
+									"url": "/learning/dns/glossary/expired-domains/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3CCIJMYWZVIhnemJrYGRvL",
+									"displayText": "Cloudflare Registrar",
+									"url": "/learning/dns/what-is-cloudflare-registrar/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "1KSq89nu1bbMJ3FMyFOV0S",
+							"name": "DNS Header: Glossary ",
+							"displayText": "DNS Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "499ZJa7WyHPnVn7bN9oWez",
+									"displayText": "DNS Zone",
+									"url": "/learning/dns/glossary/dns-zone/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4Zxjal5K4Ftso190MOHh5b",
+									"displayText": "IP Address",
+									"url": "/learning/dns/glossary/what-is-my-ip-address/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5OM8E8MngEWEbPk2z3dL8K",
+									"displayText": "What's a DNS Server?",
+									"url": "/learning/dns/what-is-a-dns-server/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "zUbDVzpVYeLJyroEFft7S",
+									"displayText": "DNS Root Server",
+									"url": "/learning/dns/glossary/dns-root-server/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "70gaOJdXvkgXzRRApB6HkS",
+									"displayText": "Dynamic DNS",
+									"url": "/learning/dns/glossary/dynamic-dns/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5io6sFzA7GqUtf7iJ48iDZ",
+									"displayText": "Reverse DNS",
+									"url": "/learning/dns/glossary/reverse-dns/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5IMnlrCJD7x0FVpewqkOIR",
+									"displayText": "Primary vs. secondary DNS",
+									"url": "/learning/dns/glossary/primary-secondary-dns/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3SokyTEzCKuAzAad9haVI9",
+									"displayText": "Round-robin DNS",
+									"url": "/learning/dns/glossary/round-robin-dns/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5n1f5p2zH49IYRP3FcVzjQ",
+									"displayText": "Anycast DNS",
+									"url": "/learning/dns/what-is-anycast-dns/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1vco0E7j6jTBPLi9OYJ6eO",
+									"displayText": "Recursive DNS",
+									"url": "/learning/dns/what-is-recursive-dns/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3MOZsA9003MKQ1GDZMGFY5",
+									"displayText": "DNS Server Types",
+									"url": "/learning/dns/dns-server-types/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "7LEmGmCIHDsIsBT3vXJtG6",
+							"name": "DNS Header: Insights",
+							"displayText": "Insights",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1n7zfUXeehnxV53QhYGE36",
+									"displayText": "The evolving DNS threat landscape",
+									"url": "http://www.cloudflare.com/learning/insights-dns-landscape"
+								}
+							]
+						}
+					]
+				},
+				"learningCenterArticleFooter": {
+					"contentTypeId": "learningCenterArticleFooter",
+					"contentfulId": "7pedUTjJAQ6HVpZxZEQCUP",
+					"learningCenterName": "dns",
+					"column1Title": "About DNS",
+					"column1": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "5bri15IPDKK6k63oZBUMsj",
+						"name": "DNS Footer: About DNS",
+						"displayText": "About DNS",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2j9vWGfXAwGGPl7LN1Ezi7",
+								"displayText": "What is DNS?",
+								"url": "/learning/dns/what-is-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6eI7dSVO2bxGNiIj6iKq0n",
+								"displayText": "DNS security",
+								"url": "/learning/dns/dns-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1qDNMOTTvjkYO6pegCD1uF",
+								"displayText": "DNS over TLS",
+								"url": "/learning/dns/dns-over-tls/"
+							}
+						]
+					},
+					"column2Title": "DNS Servers",
+					"column2": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "6phQ5syd9rr3QdKWNSj1D8",
+						"name": "DNS Footer: DNS Servers",
+						"displayText": "DNS Servers",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5OM8E8MngEWEbPk2z3dL8K",
+								"displayText": "What's a DNS Server?",
+								"url": "/learning/dns/what-is-a-dns-server/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "zUbDVzpVYeLJyroEFft7S",
+								"displayText": "DNS Root Server",
+								"url": "/learning/dns/glossary/dns-root-server/"
+							}
+						]
+					},
+					"column3Title": "DNS Records",
+					"column3": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "7dBB0Vi2GBftSRtz2gOXAE",
+						"name": "DNS Footer: DNS Records",
+						"displayText": "DNS Records",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52pTZ4IwdIcqznT6vpOg8O",
+								"displayText": "Overview",
+								"url": "/learning/dns/dns-records/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6zoT4UnozC7f0YgaA4GayP",
+								"displayText": "DNS A Record",
+								"url": "/learning/dns/dns-records/dns-a-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "216n5uGl275SXOSCgPUKYE",
+								"displayText": "DNS AAAA Record",
+								"url": "/learning/dns/dns-records/dns-aaaa-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "25IZh36P1Hroccd1Hbn0J9",
+								"displayText": "DNS CNAME Record",
+								"url": "/learning/dns/dns-records/dns-cname-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3RB9F8AcZ12cYLoa88V0tw",
+								"displayText": "DNS MX Record",
+								"url": "/learning/dns/dns-records/dns-mx-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5POxZ3Tq5wtr5nvPh3EjOa",
+								"displayText": "DNS TXT Record",
+								"url": "/learning/dns/dns-records/dns-txt-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4PwRBNlUE7MUBPZhTVrFm7",
+								"displayText": "DNS NS Record",
+								"url": "/learning/dns/dns-records/dns-ns-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7JzBM5jTjsL8wyh3HOEmZx",
+								"displayText": "DNS SOA Record",
+								"url": "/learning/dns/dns-records/dns-soa-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "54EtZ8wu9XeFUmjpP4ffcM",
+								"displayText": "DNS SRV Record",
+								"url": "/learning/dns/dns-records/dns-srv-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3ZJqZzOr67RDB035iGoFfq",
+								"displayText": "DNS PTR Record",
+								"url": "/learning/dns/dns-records/dns-ptr-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4cRZgnJnlTJ0btlrWSVDQs",
+								"displayText": "DNSKEY and DS Records",
+								"url": "/learning/dns/dns-records/dnskey-ds-records/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5qZnEhej6gYQitbACd6zyl",
+								"displayText": "DNS SPF Record",
+								"url": "/learning/dns/dns-records/dns-spf-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4xfxdFdQt99i8HyQJnxrB1",
+								"displayText": "DNS DKIM Record",
+								"url": "/learning/dns/dns-records/dns-dkim-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q49hOQqCkiSUJkM1OpfYS",
+								"displayText": "DNS DMARC Record",
+								"url": "/learning/dns/dns-records/dns-dmarc-record/"
+							}
+						]
+					},
+					"column4Title": "DNS Glossary",
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "5WMBaCE7sRnxCptrlp0KcN",
+						"name": "DNS Footer: Glossary",
+						"displayText": "DNS Glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3noj8iKecv1MxsE67u045T",
+								"displayText": "What is 1.1.1.1?",
+								"url": "/learning/dns/what-is-1.1.1.1/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6v4wbr2ex8UmyM5nD2kkKL",
+								"displayText": "What is My IP Address?",
+								"url": "/learning/dns/glossary/what-is-my-ip-address/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "499ZJa7WyHPnVn7bN9oWez",
+								"displayText": "DNS Zone",
+								"url": "/learning/dns/glossary/dns-zone/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "70gaOJdXvkgXzRRApB6HkS",
+								"displayText": "Dynamic DNS",
+								"url": "/learning/dns/glossary/dynamic-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5io6sFzA7GqUtf7iJ48iDZ",
+								"displayText": "Reverse DNS",
+								"url": "/learning/dns/glossary/reverse-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5IMnlrCJD7x0FVpewqkOIR",
+								"displayText": "Primary vs. secondary DNS",
+								"url": "/learning/dns/glossary/primary-secondary-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3SokyTEzCKuAzAad9haVI9",
+								"displayText": "Round-robin DNS",
+								"url": "/learning/dns/glossary/round-robin-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5n1f5p2zH49IYRP3FcVzjQ",
+								"displayText": "Anycast DNS",
+								"url": "/learning/dns/what-is-anycast-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1vco0E7j6jTBPLi9OYJ6eO",
+								"displayText": "Recursive DNS",
+								"url": "/learning/dns/what-is-recursive-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2PaGg8hMqJM1igspXYbvv3",
+								"displayText": "DNS Cache Poisoning",
+								"url": "/learning/dns/dns-cache-poisoning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1ikXSOCWeoGFzBnkDIwuMY",
+								"displayText": "Domain Name",
+								"url": "/learning/dns/glossary/what-is-a-domain-name/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2h2AMLDpLE26iXPuwzXW9I",
+								"displayText": "Domain name registrar",
+								"url": "/learning/dns/glossary/what-is-a-domain-name-registrar/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7nawVf9j5ZfeeEDxxQkox6",
+								"displayText": "Best Domain Name Registrar",
+								"url": "/learning/dns/glossary/choose-the-best-domain-name-registrar/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4EJToFmoxmGMpGfGw62Uwb",
+								"displayText": "Expired Domains",
+								"url": "/learning/dns/glossary/expired-domains/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3CCIJMYWZVIhnemJrYGRvL",
+								"displayText": "Cloudflare Registrar",
+								"url": "/learning/dns/what-is-cloudflare-registrar/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5YlKzhtoXpJxfv54E8YwUa",
+								"displayText": "DNS Fast Flux",
+								"url": "/learning/dns/dns-fast-flux/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1OPRVsnrKwgcUG0kLGU3cS",
+								"displayText": "Top-Level Domain",
+								"url": "/learning/dns/top-level-domain"
+							}
+						]
+					},
+					"column5Title": "Learning Center Navigation",
+					"column5": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "2FBivsdi2bchWEIqvMoEJ",
+						"name": "DNS Footer: Learning Nav",
+						"displayText": "Learning Center Navigation",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2hdSVoYA5asSIG0U2ae20c",
+								"displayText": "Learning Center Home",
+								"url": "/learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "56Y6OytBNgNoNDWQL2ezlf",
+								"displayText": "DDoS Learning Center",
+								"url": "/learning/ddos/what-is-a-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6DGcnYIMM0eCGwqAKu2ECO",
+								"displayText": "CDN Learning Center",
+								"url": "/learning/cdn/what-is-a-cdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z3UC9tP1Kjk85BX5zSGPY",
+								"displayText": "Serverless Learning Center",
+								"url": "/learning/serverless/what-is-serverless/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1yItw6W6SsM2Y0Wuq6Y2c6",
+								"displayText": "Security Learning Center",
+								"url": "/learning/security/what-is-web-application-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q67XLnKqKhfmDJR4q9hJT",
+								"displayText": "Performance Learning Center",
+								"url": "/learning/performance/why-site-speed-matters/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52V7iI9YriJ0En2SGmEXz5",
+								"displayText": "SSL Learning Center",
+								"url": "/learning/ssl/what-is-ssl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7D22pOfjb98KXcnAJyJFCX",
+								"displayText": "Bots Learning Center",
+								"url": "/learning/bots/what-is-a-bot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7jgqDUFFzaLuKrsaBTLdV0",
+								"displayText": "Cloud Learning Center",
+								"url": "/learning/cloud/what-is-the-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6PdBQjiFs98K6RQuG5TYNd",
+								"displayText": "Access Management Learning Center",
+								"url": "/learning/access-management/what-is-identity-and-access-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3jjEMuuLrCwhRidjG5kglM",
+								"displayText": "Network Layer Learning Center",
+								"url": "/learning/network-layer/what-is-the-network-layer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RvS0l0m86G1VISDrEvlJb",
+								"displayText": "Privacy Learning Center",
+								"url": "/learning/privacy/what-is-data-privacy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "MytksT5WU5mh863BQYEkj",
+								"displayText": "Video Streaming Learning Center",
+								"url": "/learning/video/what-is-streaming/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
+								"displayText": "Email Security Learning Center",
+								"url": "/learning/email-security/what-is-email-security/"
+							}
+						]
+					}
+				},
+				"header": "What is a DNS DKIM record?",
+				"blurbSubHeader": "A DKIM record is a specialized DNS TXT record that stores the public key used to verify an email's authenticity.",
+				"objectivesHeader": "DKIM",
+				"objectivesList": [
+					"Describe how DKIM helps stop email spam",
+					"View an example DKIM record",
+					"Explain how DKIM headers work"
+				],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "Q49hOQqCkiSUJkM1OpfYS",
+						"displayText": "DNS DMARC Record",
+						"url": "/learning/dns/dns-records/dns-dmarc-record/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "5qZnEhej6gYQitbACd6zyl",
+						"displayText": "DNS SPF Record",
+						"url": "/learning/dns/dns-records/dns-spf-record/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "5POxZ3Tq5wtr5nvPh3EjOa",
+						"displayText": "DNS TXT Record",
+						"url": "/learning/dns/dns-records/dns-txt-record/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "3RB9F8AcZ12cYLoa88V0tw",
+						"displayText": "DNS MX Record",
+						"url": "/learning/dns/dns-records/dns-mx-record/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "2j9vWGfXAwGGPl7LN1Ezi7",
+						"displayText": "What is DNS?",
+						"url": "/learning/dns/what-is-dns/"
+					}
+				],
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is DKIM?</h2>\n\n<p>DomainKeys Identified Mail (DKIM) is a method of email authentication that helps prevent spammers and other malicious parties from <a href='/learning/ssl/what-is-domain-spoofing/'>impersonating a legitimate domain</a>.</p>\n\n<p>All email addresses have a <a href='/learning/dns/glossary/what-is-a-domain-name/'>domain</a> — the part of the address after the \"@\" symbol. Spammers and attackers may try to impersonate a domain when sending emails to carry out <a href='/learning/access-management/phishing-attack/'>phishing attacks</a> or other scams.</p>\n\n<p>Suppose Chuck wants to trick Alice, who works for example.com, into sending him confidential company information. He could send her an email that seems to be coming from \"bob@example.com\" to fool her into thinking he also works for example.com.</p>\n\n<p>DKIM, along with <a href='/learning/dns/dns-records/dns-spf-record/'>Sender Policy Framework (SPF)</a> and <a href='/learning/dns/dns-records/dns-dmarc-record/'>Domain-based Message Authentication Reporting and Conformance (DMARC)</a>, makes it much more difficult for attackers to impersonate domains in this way. Emails that do not pass DKIM and SPF get marked as \"spam\" or are not delivered by email servers. If example.com has DKIM, SPF, and DMARC set up for their domain, then Alice will probably never even see Chuck's malicious email because it will either go to her spam folder or be rejected by the email server altogether.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does DKIM work?</h2>\n\n<p>There are two main aspects of DKIM: the DKIM record, which is stored in the <a href='/learning/dns/what-is-dns/'>Domain Name System (DNS)</a> records for the domain, and the DKIM header, which is attached to all emails from the domain.</p>\n\n<p>DKIM uses digital signature schemes based on <a href='/learning/ssl/how-does-public-key-encryption-work/'>public key cryptography</a> to authenticate where an email came from, that it actually came from a server that sends emails from that domain. A pair of cryptographic keys are used: a private key for the sender to sign messages, and a public key for the receiver to verify signatures. A receiver cannot use the public key to sign messages, and vice versa.</p>\n\n<p>The email provider generates the public key and private key. They give the public key to the domain owner, who stores the public key in a publicly available DNS record — the DKIM record.</p>\n\n<p>All emails sent from that domain include a DKIM header, which contains a section of data that is signed with the private key: this is called a \"digital signature.\" An email server can check the DKIM DNS record, obtain the public key, and use the public key to verify the digital signature.</p>\n\n<p>This process also ensures that the email has not been changed in transit. The digital signature will not be verified if email headers or the email body have been altered — like a tamper-proof seal on a canister of medicine.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a DKIM record?</h2>\n\n<p>A DKIM record stores the DKIM public key — a randomized string of characters that is used to verify anything signed with the private key. Email servers query the domain's DNS records to see the DKIM record and view the public key.</p>\n\n<p>A DKIM record is really a <a href='/learning/dns/dns-records/dns-txt-record/'>DNS TXT (\"text\") record</a> . TXT records can be used to store any text that a domain administrator wants to associate with their domain. DKIM is one of many uses for this type of DNS record.</p>\n\n<p>Here is an example of a DKIM DNS TXT record:</p>\n\n<div class=\"record-table\">\n  <table>\n    <tr>\n      <th>Name</th>\n      <th>Type</th>\n      <th>Content</th>\n      <th>TTL</th>\n    </tr>\n    <tr>\n      <td><code>big-email._domainkey.example.com</code></td>\n      <td><code>TXT</code></td>\n      <td><code>v=DKIM1; p=76E629F05F70<br>9EF665853333<br>EEC3F5ADE69A<br>2362BECE4065<br>8267AB2FC3CB<br>6CBE</code></td>\n      <td><code>6000</code></td>\n    </tr>\n  </table>\n</div>\n\n<h4 class=\"learning-content-h4\">Name</h4>\n\n<p>Unlike most DNS TXT records, DKIM records are stored under a specialized name, not just the name of the domain. DKIM record names follow this format:</p>\n\n<pre><code>[selector]._domainkey.[domain]</code></pre>\n\n<p>The <code>selector</code> is a specialized value issued by the email service provider used by the domain. It is included in the DKIM header to enable an email server to perform the required DKIM lookup in the DNS. The <code>domain</code> is the email domain name. <code>._domainkey.</code> is included in all DKIM record names.</p>\n\n<p>To look up the DKIM record, email servers use the DKIM selector provided by the email service provider, not just the domain name. Suppose example.com uses Big Email as their email service provider, and suppose Big Email uses the DKIM selector <code>big-email</code>. Most of example.com's DNS records would be named <code>example.com</code>, but their DKIM DNS record would be under the name <code>big-email._domainkey.example.com</code>, which is listed in the example above.</p>\n\n<h4 class=\"learning-content-h4\">Content</h4>\n\n<p>This is the part of the DKIM DNS record that lists the public key. In the example above, <code>v=DKIM1</code> indicates that this TXT record should be interpreted as DKIM, and the public key is everything after <code>p=</code>.</p>\n\n<h4 class=\"learning-content-h4\">Record type and TTL</h4>\n\n<p>These are standard fields in DNS records. <code>TXT</code> indicates that this is a DNS TXT record. \"TTL\" stands for time to live (measured in seconds), and it indicates how long this record should be considered valid before it needs to be refreshed. DKIM records generally have a TTL of several minutes.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a DKIM header? How does a DKIM signature work?</h2>\n\n<p>The sending email server creates its digital signature using email headers, the email body (actually a hash of the email body — read more below), and its private key. This digital signature is attached to the email as part of the DKIM header.</p>\n\n<p>The DKIM header is one of many headers that are attached to an email. Most email applications do not show the header when displaying an email unless the user selects certain options. In Gmail, for example, users can view an email's header by clicking on the three vertical dots in the upper right of the email, then clicking \"Show original.\"</p>\n\n<p>Here is an example of a DKIM header:</p>\n\n<pre>\nv=1; a=rsa-sha256; \n        d=example.com; s=big-email;\n        h=from:to:subject;\n      bh=uMixy0BsCqhbru4fqPZQdeZY5Pq865sNAnOAxNgUS0s=;\n  b=LiIvJeRyqMo0gngiCygwpiKphJjYezb5kXBKCNj8DqRVcCk7obK6OUg4o+EufEbB\ntRYQfQhgIkx5m70IqA6dP+DBZUcsJyS9C+vm2xRK7qyHi2hUFpYS5pkeiNVoQk/Wk4w\nZG4tu/g+OA49mS7VX+64FXr79MPwOMRRmJ3lNwJU=\n</pre>\n\n<ul class=\"learning-list\">\n  <li><code>v=</code> shows which version of DKIM is in use.</li>\n  <li><code>d=</code> is the domain name of the sender.</li>\n  <li><code>s=</code> is the selector that the receiving server should use to look up the DNS record.</li>\n  <li><code>h=</code> lists the header fields that are used to create the digital signature, or <code>b</code>. In this case, the from, to, and subject headers are used. If Bob sent an email to Alice using the example.com domain and the subject line was \"Recipe for cheesecake,\" the content used here would be \"bob@example.com\" + \"alice@example.com\" + \"Recipe for cheesecake\". (This content would also be canonicalized — put into a standardized format.)</li>\n  <li><code>bh=</code> is the hash of the email body. A hash is the result of a specialized mathematical function called a hash function. This is included so that the receiving email server can compute the signature before the entire email body loads, since email bodies can be any length and loading it may take a long time in some cases.</li>\n  <li><code>a=</code> is the algorithm used to compute the digital signature, or <code>b</code>, as well as generate the hash of the email body, or <code>bh</code>. In this example, RSA-SHA-256 is in use (RSA using SHA-256 as the hash function for the digital signature, and SHA-256 for the body hash).</li>\n  <li><code>b=</code> is the <strong>digital signature</strong>, generated from <code>h</code> and <code>bh</code> and signed with the private key.</li>\n</ul>\n\n<p>The digital signature (<code>b=</code>) allows the receiving server to 1. authenticate the sending server and 2. ensure integrity — that the email has not been tampered with.</p>\n\n<p>The receiving server does this by taking the same content that is listed in <code>h=</code> plus the body hash (<code>bh=</code>) and using the public key from the DKIM record to check if the digital signature is valid. If the correct private key was used and if the content (headers and body) has not been altered, the email passes the DKIM check.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does DKIM relate to DMARC?</h2>\n\n<p>DMARC is an email authentication method built on top of DKIM and SPF. DMARC describes what to do with an email that fails SPF and DKIM. Together, SPF, DKIM, and DMARC help prevent email spam and email spoofing. Like DKIM records, DMARC policies are stored as DNS TXT records.</p>\n\n<p>Cloudflare offers an <a href='https://blog.cloudflare.com/tackling-email-spoofing/' target='_blank'>Email Security DNS Wizard</a> that allows users to quickly set up email authentication DNS TXT records, helping domain administrators stop malicious parties from impersonating their domain.</p>\n\n<p>Learn more about DNS records for email:</p>\n\n<ul class=\"learning-list\">\n  <li><a href='/learning/dns/dns-records/dns-spf-record/'>DNS SPF record</a></li>\n  <li><a href='/learning/dns/dns-records/dns-dmarc-record/'>DNS DMARC record</a></li>\n  <li><a href='/learning/dns/dns-records/dns-mx-record/'>DNS MX record</a></li>\n  <li><a href='/learning/dns/dns-records/dns-txt-record/'>DNS TXT record</a></li>\n</ul>\n\nTo learn more about DKIM, see <a href='https://datatracker.ietf.org/doc/html/rfc6376/' target='_blank'>RFC 6376</a>.",
+				"availableLocales": null,
+				"localized": null,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "No Page for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": null
+				},
+				"proactivePopup": null,
+				"sidebarForm": null
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "3Fv9LLaHoX2SEhDNs9gcdH",
+			"pathname": "/learning/dns/dns-records/dns-dkim-record/",
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

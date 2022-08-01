@@ -1,0 +1,833 @@
+{
+	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
+	"path": "/learning/security/threats/sql-injection/",
+	"result": {
+		"data": {
+			"learningCenterArticle": {
+				"contentTypeId": "learningCenterArticle",
+				"contentfulId": "6NkMjqEbVoY355TYLBonmL",
+				"urlSlug": "security/threats/sql-injection",
+				"metaTags": {
+					"metaTitle": "What is SQL injection?",
+					"metaDescription": "What is a SQL injection? How do you stop SQL Injection?",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/security-lc.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"metaTitle": "What Is SQL Injection?",
+				"metaDescription": "What is a SQL injection? How do you stop SQL Injection?",
+				"learningCenterArticleSubHeader": {
+					"contentTypeId": "learningCenterArticleSubHeader",
+					"contentfulId": "2AptEr2bqQDzL0VuYp3VhQ",
+					"learningCenterName": "security",
+					"links": [
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "7esVgOhtx4g1wc9j085HEg",
+							"displayText": "Web Application Security",
+							"url": "/learning/security/what-is-web-application-security/"
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "4kvm6bAM81cW4E1whOMHfF",
+							"name": "Security Header: API Security",
+							"displayText": "API Security",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5bLsysaJiy1V2vLbnfFSCA",
+									"displayText": "What is an API?",
+									"url": "/learning/security/api/what-is-an-api/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "67hyyJkFehDZPSijR5982x",
+									"displayText": "API Security",
+									"url": "/learning/security/api/what-is-api-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1LfmC7tjXk7k8A8Sc4HWS9",
+									"displayText": "OWASP API Security Top 10",
+									"url": "/learning/security/api/owasp-api-security-top-10/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2H8a0y76R0sqYn2lm1EBhU",
+									"displayText": "API Call",
+									"url": "/learning/security/api/what-is-api-call/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7J4bElUm4dIjsfAvV6c51Z",
+									"displayText": "API Endpoint",
+									"url": "/learning/security/api/what-is-api-endpoint/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "23owvyEXORbnCzHlcV3G5J",
+							"name": "Security Header: Common Threats",
+							"displayText": "Common Threats",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7E7WwNyil3bJj73NvtGlm2",
+									"displayText": "On-Path Attack",
+									"url": "/learning/security/threats/on-path-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "52yU1a7q2E6gaFa6THLqQK",
+									"displayText": "Buffer Overflow",
+									"url": "/learning/security/threats/buffer-overflow/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4q4d8ySq1tGNmgVpYIbyii",
+									"displayText": "Cross-Site Scripting",
+									"url": "/learning/security/threats/cross-site-scripting/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5AX3kxdgXjJCUN3uv7mvzJ",
+									"displayText": "Cross-Site Request Forgery",
+									"url": "/learning/security/threats/cross-site-request-forgery/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "29Fkw1XKWHACE0x4W0BypM",
+									"displayText": "SQL Injection",
+									"url": "/learning/security/threats/sql-injection/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2Dg5Q4JDGkBwOFWJN8wgsC",
+									"displayText": "Social Engineering Attack",
+									"url": "/learning/security/threats/social-engineering-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6XPhbYmE7dwzO6WII8TzfE",
+									"displayText": "Data Breach",
+									"url": "/learning/security/what-is-a-data-breach/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "59UCpRlTqcjNsMj5iWQZfb",
+							"name": "Security Header: More Attacks",
+							"displayText": "More Attacks",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4mRTue6odVQv3lCIQp8t4l",
+									"displayText": "Global DNS hijacking",
+									"url": "/learning/security/global-dns-hijacking-threat/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2SaFJ6C5mPRd8BvBp7tArF",
+									"displayText": "BGP Hijacking",
+									"url": "/learning/security/glossary/bgp-hijacking/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5tYNdzP27M2rbvr927jcxk",
+									"displayText": "Zero-Day Exploit",
+									"url": "/learning/security/threats/zero-day-exploit/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7AHfnw4GRNrlxwOKgiKqpb",
+									"displayText": "What is Swatting?",
+									"url": "/learning/security/glossary/what-is-swatting/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4Q1GEBC3aDwiTLD0FY1UOf",
+									"displayText": "KRACK Attack",
+									"url": "/learning/security/what-is-a-krack-attack/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "7AzKZHJSj74Q2LkjotHBDE",
+							"name": "Security Header: Ransomware",
+							"displayText": "Ransomware",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7B34gNUdmG55POcpXlcGLo",
+									"displayText": "What Is Ransomware?",
+									"url": "/learning/security/ransomware/what-is-ransomware/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "265Cektgw28NG3ss1yKbCQ",
+									"displayText": "Preventing Ransomware Attacks",
+									"url": "/learning/security/ransomware/how-to-prevent-ransomware/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2EtXHxPEU8dFW4R0g6nOuL",
+									"displayText": "Ryuk Ransomware",
+									"url": "/learning/security/ransomware/ryuk-ransomware/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6GX92CRtwCTcMOeAfWRbGt",
+									"displayText": "Maze Ransomware",
+									"url": "/learning/security/ransomware/maze-ransomware/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "iwA3DULV07dv6Cjgc4o1F",
+									"displayText": "WannaCry Ransomware",
+									"url": "/learning/security/ransomware/wannacry-ransomware/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5E4oePL3Y3toYR1AOCTrH8",
+									"displayText": "Petya and NotPetya",
+									"url": "/learning/security/ransomware/petya-notpetya-ransomware/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4MGxlaarKOMNRMlHy5cauE",
+									"displayText": "Ransomware-as-a-Service (RaaS)",
+									"url": "/learning/security/ransomware/ransomware-as-a-service/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "5hGYGUNPlUimQ8zfoTF4hR",
+							"name": "Security Header: Glossary",
+							"displayText": "Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4Nzjjp656PRDIGKSTWZT3j",
+									"displayText": "OWASP Top Ten",
+									"url": "/learning/security/threats/owasp-top-10/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2tTmn0TpFzNeaYtdgN1VqA",
+									"displayText": "Meltdown/Spectre",
+									"url": "/learning/security/threats/meltdown-spectre/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "18pQIL9UgJUzveNS34uaYt",
+									"displayText": "Malicious Payload",
+									"url": "/learning/security/glossary/malicious-payload/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3toLoFceaeXeYfxdDjIqZw",
+									"displayText": "Penetration Testing",
+									"url": "/learning/security/glossary/what-is-penetration-testing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5o2i5YMZ6zytouhLBTNmBA",
+									"displayText": "What is a Firewall?",
+									"url": "/learning/security/what-is-a-firewall/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7KRboR85H5bMxk2EMc0ubi",
+									"displayText": "What is an NGFW?",
+									"url": "/learning/security/what-is-next-generation-firewall-ngfw/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2Coozbp70nuj5hyqnYdSsz",
+									"displayText": "What is BGP?",
+									"url": "/learning/security/glossary/what-is-bgp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2rHmLbOwwKqmTccVo3hAH6",
+									"displayText": "What is HTTPS Inspection?",
+									"url": "/learning/security/what-is-https-inspection"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "HKJIs8IRHEhqfkkfh8ery",
+									"displayText": "Threat intelligence",
+									"url": "/learning/security/glossary/what-is-threat-intelligence/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7uIZizD3VmA3mKcS7oU05s",
+									"displayText": "Defense in Depth",
+									"url": "/learning/security/glossary/what-is-defense-in-depth/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6GTKw596xBRlE5DU7qyUfI",
+									"displayText": "What is an endpoint?",
+									"url": "/learning/security/glossary/what-is-endpoint/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2lH9xh74JZ8zsMn2gLOLzG",
+									"displayText": "Endpoint Security",
+									"url": "/learning/security/glossary/endpoint-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1rMA7WEz9hC379I8mZxhcD",
+									"displayText": "Lateral Movement",
+									"url": "/learning/security/glossary/what-is-lateral-movement/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3VBRrElHGrMrIBbQ2UrbFq",
+									"displayText": "IoT Security",
+									"url": "/learning/security/glossary/iot-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6AOcfzKk4yuN8XREQTEToj",
+									"displayText": "Attack Vector",
+									"url": "/learning/security/glossary/attack-vector/ "
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "60NMUJD4OQw5PuujgjtNlj",
+									"displayText": "Data at Rest",
+									"url": "/learning/security/glossary/data-at-rest/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "4p2aAtVD45hFwfp8CgZf5",
+							"name": "Security header: Insights",
+							"displayText": "Insights",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5fFLZFiqHTYjdUMQ4wc30f",
+									"displayText": "Attack surface grows with the proliferation of APIs",
+									"url": "https://www.cloudflare.com/insights-api-proliferation/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7nYhsmOt8j2TMfIi6t2pOG",
+									"displayText": "The future of web application security",
+									"url": "https://www.cloudflare.com/insights-future-web-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "22UXessHsWvrAW3d6QdL1i",
+									"displayText": "Securing the post-quantum world",
+									"url": "https://www.cloudflare.com/insights-quantum-computing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1fudUp354PiIkWi5M2QBuE",
+									"displayText": "The risks smaller DDoS attacks pose to network infrastructure",
+									"url": "https://www.cloudflare.com/insights-small-ddos-attacks/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "Bngdc6ouSn7Q4HEyfH9tZ",
+									"displayText": "Using DDoS threats to extort organizations",
+									"url": "https://www.cloudflare.com/insights-ransom-ddos"
+								}
+							]
+						}
+					]
+				},
+				"learningCenterArticleFooter": {
+					"contentTypeId": "learningCenterArticleFooter",
+					"contentfulId": "4rekcWVhzo2nZPugOtJlOh",
+					"learningCenterName": "security",
+					"column1Title": "About Web Application Security",
+					"column1": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "ZctowvgiEQNLcljxty1Ou",
+						"name": "Security Footer: About",
+						"displayText": "About Web Application Security",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7esVgOhtx4g1wc9j085HEg",
+								"displayText": "Web Application Security",
+								"url": "/learning/security/what-is-web-application-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "15Vc3WANDpfVAs97KDEpzB",
+								"displayText": "Why Use HTTPS?",
+								"url": "/learning/ssl/why-use-https/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3icyl9iMQn9zZDBiIp2C0e",
+								"displayText": "What is a Data Breach?",
+								"url": "/learning/security/what-is-a-data-breach/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Nzjjp656PRDIGKSTWZT3j",
+								"displayText": "OWASP Top Ten",
+								"url": "/learning/security/threats/owasp-top-10/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1LfmC7tjXk7k8A8Sc4HWS9",
+								"displayText": "OWASP API Security Top 10",
+								"url": "/learning/security/api/owasp-api-security-top-10/"
+							}
+						]
+					},
+					"column2Title": "Common Threats",
+					"column2": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "TgNnUjg3LMpb4tt3nuvBQ",
+						"name": "Security Footer: Common Threats",
+						"displayText": "Common Threats",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7E7WwNyil3bJj73NvtGlm2",
+								"displayText": "On-Path Attack",
+								"url": "/learning/security/threats/on-path-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Iu9iZ8JoQuMdcLsZeMa1g",
+								"displayText": "Brute Force Attack",
+								"url": "/learning/bots/brute-force-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2krgvvRxSgPgmshS6kPUsN",
+								"displayText": "Buffer Overflow Attack",
+								"url": "/learning/security/threats/buffer-overflow/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4q4d8ySq1tGNmgVpYIbyii",
+								"displayText": "Cross-Site Scripting",
+								"url": "/learning/security/threats/cross-site-scripting/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5AX3kxdgXjJCUN3uv7mvzJ",
+								"displayText": "Cross-Site Request Forgery",
+								"url": "/learning/security/threats/cross-site-request-forgery/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "29Fkw1XKWHACE0x4W0BypM",
+								"displayText": "SQL Injection",
+								"url": "/learning/security/threats/sql-injection/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2Dg5Q4JDGkBwOFWJN8wgsC",
+								"displayText": "Social Engineering Attack",
+								"url": "/learning/security/threats/social-engineering-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4QoH8dVxKKYSsfePjHNKxD",
+								"displayText": "Phishing Attack",
+								"url": "/learning/access-management/phishing-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5tYNdzP27M2rbvr927jcxk",
+								"displayText": "Zero-Day Exploit",
+								"url": "/learning/security/threats/zero-day-exploit/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7B34gNUdmG55POcpXlcGLo",
+								"displayText": "What Is Ransomware?",
+								"url": "/learning/security/ransomware/what-is-ransomware/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4MGxlaarKOMNRMlHy5cauE",
+								"displayText": "Ransomware-as-a-Service (RaaS)",
+								"url": "/learning/security/ransomware/ransomware-as-a-service/"
+							}
+						]
+					},
+					"column3Title": "VPN Resources",
+					"column3": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "6xpp724MrKUqfVapxIHi9P",
+						"name": "Security Footer: VPN Resources",
+						"displayText": "VPN Resources",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4FKVZaN6mpIm5iyZ7Lcxs5",
+								"displayText": "What's a VPN? ",
+								"url": "/learning/access-management/what-is-a-vpn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4W9Oi0Ap2vVUSKzYj0a9cM",
+								"displayText": "Choosing the Best VPN",
+								"url": "/learning/security/vpn/choosing-the-best-vpn/"
+							}
+						]
+					},
+					"column4Title": "Security Glossary",
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "7lOnb52evTwjUnjwLZHXhl",
+						"name": "Security Footer: Glossary",
+						"displayText": "Security Glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2tTmn0TpFzNeaYtdgN1VqA",
+								"displayText": "Meltdown/Spectre",
+								"url": "/learning/security/threats/meltdown-spectre/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "18pQIL9UgJUzveNS34uaYt",
+								"displayText": "Malicious Payload",
+								"url": "/learning/security/glossary/malicious-payload/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3toLoFceaeXeYfxdDjIqZw",
+								"displayText": "Penetration Testing",
+								"url": "/learning/security/glossary/what-is-penetration-testing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7AHfnw4GRNrlxwOKgiKqpb",
+								"displayText": "What is Swatting?",
+								"url": "/learning/security/glossary/what-is-swatting/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2Coozbp70nuj5hyqnYdSsz",
+								"displayText": "What is BGP?",
+								"url": "/learning/security/glossary/what-is-bgp/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2SaFJ6C5mPRd8BvBp7tArF",
+								"displayText": "BGP Hijacking",
+								"url": "/learning/security/glossary/bgp-hijacking/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2rHmLbOwwKqmTccVo3hAH6",
+								"displayText": "What is HTTPS Inspection?",
+								"url": "/learning/security/what-is-https-inspection"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5bLsysaJiy1V2vLbnfFSCA",
+								"displayText": "What is an API?",
+								"url": "/learning/security/api/what-is-an-api/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "67hyyJkFehDZPSijR5982x",
+								"displayText": "API Security",
+								"url": "/learning/security/api/what-is-api-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "HKJIs8IRHEhqfkkfh8ery",
+								"displayText": "Threat intelligence",
+								"url": "/learning/security/glossary/what-is-threat-intelligence/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7uIZizD3VmA3mKcS7oU05s",
+								"displayText": "Defense in Depth",
+								"url": "/learning/security/glossary/what-is-defense-in-depth/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6GTKw596xBRlE5DU7qyUfI",
+								"displayText": "What is an endpoint?",
+								"url": "/learning/security/glossary/what-is-endpoint/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2lH9xh74JZ8zsMn2gLOLzG",
+								"displayText": "Endpoint Security",
+								"url": "/learning/security/glossary/endpoint-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7KRboR85H5bMxk2EMc0ubi",
+								"displayText": "What is an NGFW?",
+								"url": "/learning/security/what-is-next-generation-firewall-ngfw/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2EtXHxPEU8dFW4R0g6nOuL",
+								"displayText": "Ryuk Ransomware",
+								"url": "/learning/security/ransomware/ryuk-ransomware/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6GX92CRtwCTcMOeAfWRbGt",
+								"displayText": "Maze Ransomware",
+								"url": "/learning/security/ransomware/maze-ransomware/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "iwA3DULV07dv6Cjgc4o1F",
+								"displayText": "WannaCry Ransomware",
+								"url": "/learning/security/ransomware/wannacry-ransomware/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "265Cektgw28NG3ss1yKbCQ",
+								"displayText": "Preventing Ransomware Attacks",
+								"url": "/learning/security/ransomware/how-to-prevent-ransomware/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1rMA7WEz9hC379I8mZxhcD",
+								"displayText": "Lateral Movement",
+								"url": "/learning/security/glossary/what-is-lateral-movement/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3VBRrElHGrMrIBbQ2UrbFq",
+								"displayText": "IoT Security",
+								"url": "/learning/security/glossary/iot-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6AOcfzKk4yuN8XREQTEToj",
+								"displayText": "Attack Vector",
+								"url": "/learning/security/glossary/attack-vector/ "
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5E4oePL3Y3toYR1AOCTrH8",
+								"displayText": "Petya and NotPetya",
+								"url": "/learning/security/ransomware/petya-notpetya-ransomware/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2H8a0y76R0sqYn2lm1EBhU",
+								"displayText": "API Call",
+								"url": "/learning/security/api/what-is-api-call/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7J4bElUm4dIjsfAvV6c51Z",
+								"displayText": "API Endpoint",
+								"url": "/learning/security/api/what-is-api-endpoint/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "60NMUJD4OQw5PuujgjtNlj",
+								"displayText": "Data at Rest",
+								"url": "/learning/security/glossary/data-at-rest/"
+							}
+						]
+					},
+					"column5Title": "Learning Center Navigation",
+					"column5": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "17Lz0GxJBWEftufXeTsGwJ",
+						"name": "Security Footer: Nav",
+						"displayText": "Learning Center Navigation",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2hdSVoYA5asSIG0U2ae20c",
+								"displayText": "Learning Center Home",
+								"url": "/learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "56Y6OytBNgNoNDWQL2ezlf",
+								"displayText": "DDoS Learning Center",
+								"url": "/learning/ddos/what-is-a-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Ra0qmFJ1uewk2MYscW8KI",
+								"displayText": "DNS Learning Center",
+								"url": "/learning/dns/what-is-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6DGcnYIMM0eCGwqAKu2ECO",
+								"displayText": "CDN Learning Center",
+								"url": "/learning/cdn/what-is-a-cdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q67XLnKqKhfmDJR4q9hJT",
+								"displayText": "Performance Learning Center",
+								"url": "/learning/performance/why-site-speed-matters/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z3UC9tP1Kjk85BX5zSGPY",
+								"displayText": "Serverless Learning Center",
+								"url": "/learning/serverless/what-is-serverless/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52V7iI9YriJ0En2SGmEXz5",
+								"displayText": "SSL Learning Center",
+								"url": "/learning/ssl/what-is-ssl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7D22pOfjb98KXcnAJyJFCX",
+								"displayText": "Bots Learning Center",
+								"url": "/learning/bots/what-is-a-bot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7jgqDUFFzaLuKrsaBTLdV0",
+								"displayText": "Cloud Learning Center",
+								"url": "/learning/cloud/what-is-the-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6PdBQjiFs98K6RQuG5TYNd",
+								"displayText": "Access Management Learning Center",
+								"url": "/learning/access-management/what-is-identity-and-access-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3jjEMuuLrCwhRidjG5kglM",
+								"displayText": "Network Layer Learning Center",
+								"url": "/learning/network-layer/what-is-the-network-layer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RvS0l0m86G1VISDrEvlJb",
+								"displayText": "Privacy Learning Center",
+								"url": "/learning/privacy/what-is-data-privacy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "MytksT5WU5mh863BQYEkj",
+								"displayText": "Video Streaming Learning Center",
+								"url": "/learning/video/what-is-streaming/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
+								"displayText": "Email Security Learning Center",
+								"url": "/learning/email-security/what-is-email-security/"
+							}
+						]
+					}
+				},
+				"header": "What is SQL injection?",
+				"blurbSubHeader": "Using SQL injection, attackers can perform unauthorized database commands on a victim's SQL database.",
+				"objectivesHeader": "SQL Injection",
+				"objectivesList": [
+					"Define SQL Injection",
+					"Explain how SQL Injection works",
+					"Learn how to defend against SQL injection",
+					"Explore compounded SQLI attacks"
+				],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "7esVgOhtx4g1wc9j085HEg",
+						"displayText": "Web Application Security",
+						"url": "/learning/security/what-is-web-application-security/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "5AX3kxdgXjJCUN3uv7mvzJ",
+						"displayText": "Cross-Site Request Forgery",
+						"url": "/learning/security/threats/cross-site-request-forgery/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "3icyl9iMQn9zZDBiIp2C0e",
+						"displayText": "What is a Data Breach?",
+						"url": "/learning/security/what-is-a-data-breach/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "2krgvvRxSgPgmshS6kPUsN",
+						"displayText": "Buffer Overflow Attack",
+						"url": "/learning/security/threats/buffer-overflow/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "4Nzjjp656PRDIGKSTWZT3j",
+						"displayText": "OWASP Top Ten",
+						"url": "/learning/security/threats/owasp-top-10/"
+					}
+				],
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is SQL injection (SQi)?</h2>\n\n<p>Structured Query Language (SQL*) Injection is a code injection technique used to modify or retrieve data from SQL databases. By inserting specialized SQL statements into an entry field, an attacker is able to execute commands that allow for the retrieval of data from the database, the destruction of sensitive data, or other manipulative behaviors.</p>\n\n<p>With the proper SQL command execution, the unauthorized user is able to spoof the identity of a more privileged user, make themselves or others database administrators, tamper with existing data, modify transactions and balances, and retrieve and/or destroy all server data.</p>\n\n<p>In modern computing, SQL injection typically occurs over the Internet by sending malicious SQL queries to an API endpoint provided by a website or service (more on this later). In its most severe form, SQL injection can allow an attacker to gain root access to a machine, giving them complete control.</p>\n\n<p>*SQL is a programming language used to maintain most databases.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does a SQL injection attack work?</h2>\n\n<p>Imagine a courtroom in which a man named Bob is on trial, and is about to appear before a judge. When filling out paperwork before the trial, Bob writes his name as “Bob is free to go”. When the judge reaches his case and reads aloud “Now calling Bob is free to go”, the bailiff lets Bob go because the judge said so.</p>\n\n<p>While there are slightly different varieties of SQLi, the core vulnerability is essentially the same:   a SQL query field that is supposed to be reserved for a particular type of data, such as a number is instead passed unexpected information, such as a command. The command, when run, escapes beyond the intended confines, allowing for potentially nefarious behavior. A query field is commonly populated from data entered into a form on a webpage.</p>\n\n<p>Let’s look at at a simple comparison between normal and malicious SQL statements:</p>\n\n<h4 class=\"learning-content-h4\">Normal SQL query:</h4>\n\n<p>In this normal SQL query, the studentId string is passed into a SQL statement. The goal is to look through the list of students for a student that matches the studentId entered. Once found, that student’s record will be returned. Put simply, the command says “go find this user and give me their data”.</p>\n\n<p>The code might look something like this:</p>\n\n<pre><code>studentId = getRequestString(\"studentId\");\nlookupStudent  = \"SELECT * FROM students WHERE studentId = \" + studentId\n   </code></pre>\n\n<p>If a student enters a student ID of 117 inside a webpage form labelled 'Please enter your student ID number'</p>\n\n<img class=\"responsive-image\" title=\"normal form field\" alt=\"normal form field\" src=\"/img/learning/security/threats/sql-injection-attack/normal-form-field.png\" itemprop=\"image\" />\n\n<p>the resulting SQL query will look like:</p>\n\n<pre><code>SELECT * FROM students WHERE studentId = 117;</code></pre>\n\n<p>This command will return the record for the particular student with a studentId, which is what the developer who wrote the API expects to have happen.</p>\n\n<h4 class=\"learning-content-h4\">SQL Injection query:</h4>\n\n<p>In this example, an attacker instead enters a SQL command or conditional logic into the input field, he enters a student ID number of:</p>\n\n<img class=\"responsive-image\" title=\"SQL injection example form field\" alt=\"SQL injection example form field\" src=\"/img/learning/security/threats/sql-injection-attack/sql-injection-example-form-field.png\" itemprop=\"image\" />\n\n<p>Where normally the query would search the database table for the matching ID, it now looks for an ID or tests to see if 1 is equal to 1. As you might expect, the statement is always true for every student in the column, and as a result, the database will return all data from the students table back to the attacker making the query. </p>\n\n<pre><code>SELECT * FROM students WHERE studentId = 117 OR 1=1;</code></pre>\n\n<img class=\"responsive-image\" title=\"SQL injection infographic\" alt=\"SQL injection infographic\" src=\"/img/learning/security/threats/sql-injection-attack/sql-injection-infographic.png\" itemprop=\"image\" />\n\n<p>SQLi works by targeting a vulnerable Application Programming Interface or API. An API in this case is the software interface through which a server receives and responds to requests.</p>\n\n<p>Commonly used tools exist that allow a malicious actor to automatically search through a website looking for forms, and then attempt to input various SQL queries that may generate a response that the website’s software developers did not intend in order to exploit the database.</p>\n\n<p>SQL injections are easy to implement, and interestingly, also fairly easy to prevent given the proper development practices. The reality is more murky, as tight deadlines, inexperienced developers, and legacy code often result in variable code quality and security practices. A single vulnerable field on any form or API endpoint across a website that has access to a database may be sufficient to expose a vulnerability.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How is a SQL Injection attack prevented?</h2>\n\n<p>There are number of methods for reducing the risk of a <a href=\"/learning/security/what-is-a-data-breach/\">data breach</a> due to SQL injection. As a best practice, several strategies should be utilized. Let’s explore a few of the more common implementations:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Use of Prepared Statements (with Parameterized Queries)</strong> - This method of sanitizing database inputs involves forcing the developers to first define all the SQL code, and then to pass only specific parameters to the SQL query; data entered is explicitly given a limited scope that it can not expand beyond. This allows the database to make the distinction between data that’s being input and code that’s to be run, regardless of the type of data supplied in the input field. Some object-relational mapping (ORM) libraries are commonly utilized for this purpose, as some versions will sanitize database inputs automatically.</li>\n  <li><strong>Escape All User Supplied Input</strong> - When writing SQL, specific characters or words have particular meaning. For example, the ‘*’ character means “any”  and the words “OR”  is a conditional. To circumvent users who enter these characters either accidentally or maliciously into an API request to the database, user supplied input can be escaped. Escaping a character is the way of telling the database not to parse it as a command or conditional but instead treat it as literal input.</li>\n  <li><strong>Use of Stored Procedures</strong> - Although not a robust security strategy by itself, stored procedures can help limit the risk associated with SQL injection. By properly limiting the permissions of the database account running SQL queries, even non-robust application code that is vulnerable to SQL injection will lack the permissions necessary to manipulate unrelated database tables. Stored procedures may also check the type of input parameters, preventing data to be input that violates the type the field is designed to receive. In instances where static queries are insufficient, stored procedures are typically to be avoided.</li>\n  <li><strong>Enforce Least Privilege</strong> - As a general rule, in all instances where a website needs to use dynamic SQL, it is important to reduce the exposure to SQL injection by limiting permissions to the narrowest scope required to execute the relevant query. In its most obvious form, this means that an administrative account should in no instance be executing SQL commands as a result of a API call from an unauthorized request. While stored procedures are best utilized for static queries, enforcing least privilege can help reduce the risks of dynamic SQL queries.</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a compound SQL injection attack?</h2>\n\n<p>In order to circumvent security measures, clever attackers will sometimes implement multi-vector attacks against a targeted website. While a single attack may be mitigated, it can also become the focus of attention for database administrators and information security teams. <a href=\"/learning/ddos/what-is-a-ddos-attack/\">DDoS attacks</a>, <a href=\"/learning/dns/dns-security/\">DNS hijacking</a> and other methods of disruption are sometimes used as a distraction to implement sweeping SQL injection attacks. As a result, a comprehensive threat mitigation strategy provides the widest range of protection. Cloudflare’s <a href=\"/waf/\">web application firewall</a>, <a href=\"/ddos/\">DDoS mitigation</a> and <a href=\"/dns/\">DNS security</a> comprise core elements of a holistic security strategy.</p>",
+				"availableLocales": null,
+				"localized": true,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "No Page for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": null
+				},
+				"proactivePopup": null,
+				"sidebarForm": null
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "6NkMjqEbVoY355TYLBonmL",
+			"pathname": "/learning/security/threats/sql-injection/",
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

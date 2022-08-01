@@ -1,0 +1,84 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/gyazo/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Gyazo",
+				"contentfulId": "4BYdpBgoyAqSgcWuyCussA",
+				"nameUrlSlug": "gyazo",
+				"metaTags": {
+					"metaTitle": "Cloudflare | Case Study | Gyazo",
+					"metaDescription": "Gyazo optimizes uploads to their screenshot sharing platforms with Cloudflare Load Balancing.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2018-05-08",
+				"homepageUrl": "https://www.gyazo.com/",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "Gyazo optimizes uploads to their screenshot sharing platforms with Cloudflare Load Balancing.",
+				"longDescription": "Gyazo optimizes uploads to their screenshot sharing platforms with Cloudflare Load Balancing.\n\n[Gyazo](https://www.gyazo.com/), leveraging a cloud-based infrastructure, allows users to quickly take screenshots, and then easily share them through instantly created links. With millions of active users Gyazo is the largest, fastest screenshot and screen-GIF creation tool in the world.\n\n__Gyazo's Challenge: Optimize Uploading for Global User Base__\n\nInitially, all of Gyazo’s servers were based in the United States and Gyazo used a CDN (Content Delivery Network) to distribute their content to users. Gyazo’s users are roughly split 45% in Europe, 15% in Asia, and 40% in the United States, so this strategy worked well for users in the US, but users outside of US noticed extreme upload times. “That’s because CDN’s are great at distributing content,” explained Isshu Rakusai, CEO of Nota, the maker of Gyazo, “but they aren’t good for uploading content. Some of our users, in Australia for example, were seeing upload times over 30 seconds just to upload a small screenshot.” That upload latency was due to the fact that content from the example Australia Gyazo user was being routed through South Asia, across the Pacific Ocean, to one of Gyazo’s servers somewhere in the US and then back across the same route.\n\nTo combat this issue Gyazo built out its own network of upload edge servers around the world, but that lead to a further issue: These edge servers would experience spikes in traffic, and then have degraded performance when they were being used most.\n\n__Gyazo’s Solution: Global Load Balancing With Failover__\n\nGyazo saw Cloudflare’s Early Access program for Load Balancing and thought it might provide the complementary functionality needed to perfect their proprietary solution. Cloudflare’s Global Load Balancing now intelligently sends traffic from Gyazo’s users to the nearest and healthiest upload server, which ensures that users are experiencing the fastest upload speeds possible and servers are not getting overloaded.\n\n![gyazo-graphic](//cf-assets.www.cloudflare.com/slt3lc6tev37/6lIoA4gbzauWuMg4ckGoeM/a1b461fd0d79bdfabc691d60a1583c6c/gyazo-graphic.png)\n\nFurthermore, by distributing traffic and maintaining server health, Load Balancing ensures Gyazo’s users don’t see the degraded performance that they were initially experiencing. Plus, with the Failover feature of Load Balancing, Gyazo’s users are rapidly rerouted when a server goes down so they don’t even notice if a server failed. “Failover was also very helpful for us,” explained Rakusai, “With our previous DNS provider, we created a quick hack to do DNS based Failover, but this was complicated to set up, and changes took hours to fully propagate.”",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "Global Load Balancing improves international latency users were experiencing\n\nFailover and Healthchecks provide Gyazo’s users with a seamless experience, even in the case of a server failure",
+				"relatedCaseStudies": [
+					{
+						"name": "Great Rail Journeys",
+						"nameUrlSlug": "greatrailjourneys"
+					},
+					{
+						"name": "Crisp",
+						"nameUrlSlug": "crisp"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Load Balancing",
+						"url": "/load-balancing/"
+					},
+					{
+						"title": "Content Delivery Network (CDN)",
+						"url": "/cdn/"
+					},
+					{
+						"title": "Web Application Firewall (WAF) ",
+						"url": "/waf/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Isshu Rakusai",
+				"employeeQuoteText": "Cloudflare allows us to focus more on our own development. Sometimes we were spending half our engineering resources on maintaining our network. Plus, when things were slow everyone in the organization, like marketing and customer support, heard about it and it slowed them down too. Now everyone can focus on our users.",
+				"employeeQuoteJobTitle": "CEO at Nota Inc. Maker of Gyazo",
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/gyazo.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "4BYdpBgoyAqSgcWuyCussA",
+			"pathname": "/case-studies/gyazo/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": null
+		}
+	}
+}

@@ -1,0 +1,91 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/bitpanda/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Bitpanda ",
+				"contentfulId": "yMbdpE1L3wNfshNrcwPrT",
+				"nameUrlSlug": "bitpanda",
+				"metaTags": {
+					"metaTitle": "Bitpanda",
+					"metaDescription": "Bitpanda depends on Cloudflare to secure its platform from automated attacks and account takeovers.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2021-07-20",
+				"homepageUrl": "https://www.bitpanda.com/en",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "Bitpanda depends on Cloudflare to secure its platform from automated attacks and account takeovers",
+				"longDescription": "## __Cloudflare helps Bitpanda boost their app and IT security without performance trade-offs as they grow from small startup to major fintech player__ \n\nBitpanda makes investing accessible for everyone. Founded in 2014 in Vienna, Austria by Eric Demuth, Paul Klanschek and Christian Trummer, Bitpanda removes the barriers to investing by harnessing the innovative power of digitized assets and blockchain technology.\n\nWith more than 500 team members and over 2 million users, the company is one of Europe's fastest-growing fintechs.\n\nThe user-friendly, trade-everything platform empowers both first-time investors and seasoned experts to invest in the stocks, cryptocurrencies and metals they want — with any amount of money.\n\n### __Challenge: Mitigate increasingly frequent and severe DDoS and other automated attacks__ \n\nWhen Bitpanda started experiencing DDoS attacks, it had been in business for only about two months and had a very small customer base. To mitigate the attacks, Bitpanda signed up for the free plan on Cloudflare, which includes Cloudflare DNS, Cloudflare CDN, basic DDoS protection, and a limited number of Page Rules, which trigger certain actions whenever a request matches one of the URL patterns a user defines. As Bitpanda grew, it upgraded to a paid subscription and added Rate Limiting, which helps protect against DDoS and other automated cyber attacks.\n\nOver the past two years, Bitpanda experienced a significant growth spurt, and the company saw a corresponding rise in automated attacks against its APIs and customer accounts. Cyber criminals were scanning Bitpanda’s APIs for vulnerabilities and launching credential-stuffing attacks against its customers. These automated attacks degraded performance and put customers at risk of account takeovers (ATOs).\n\nChristian Trummer, CTO and co-founder of Bitpanda, knew it was time for them to upgrade to a Cloudflare Enterprise plan, which offers the most robust toolset that Cloudflare has to offer, as well as 24/7, prioritized customer support by phone, chat, and email. Because Bitpanda was migrating to a Zero Trust security architecture, Trummer also added Cloudflare Access, which uses Zero Trust rules to help teams secure corporate applications. Access provides simple, secure access to digital assets in specialized use cases\n\nBitpanda leverages Cloudflare Access to restrict access to internal assets. For example, Bitpanda used Access when the company deployed a beta version of a certain product and needed to limit access to a select group of beta testers. \n\nPreviously, Bitpanda had used a VPN, which was complex to configure and maintain and difficult for end users to use. Access eliminated the administrative overhead associated with the VPN, freeing up Bitpanda’s team to focus on internal projects instead of maintaining a VPN, and reduced the company’s potential cyber attack surface.\n\n“Access is much simpler and more secure than a VPN for limiting access to internal assets. We just activate it and add users,” Trummer says. “It just works!”\n\nIn addition to authenticating users and preventing malicious actors from accessing Bitpanda’s network, Access also gives the company visibility into user activity inside the system, which supports Bitpanda’s Zero Trust model.\n\n“Access provides us with Zero Trust user authentication, granular control over user access, and complete visibility into user activity,” Trummer says. “This is key to Zero Trust, which recognizes that threats can be internal as well as external.”\n\n### __The Cloudflare security suite stops DDoS and other automated attacks that threaten both site performance and integrity of customer accounts__\n\nShortly before upgrading to Cloudflare Enterprise, Bitpanda experienced a massive DDoS attack that took its systems offline. When the internal team was unable to mitigate the attack on their own, Trummer contacted Cloudflare, and a support representative suggested adding some Page Rules, which stopped the attack. \n\n“That attack was the catalyst for us to upgrade to Enterprise,” Trummer recalls. “Bitpanda had grown to the point where we needed the most comprehensive solution available, and there was no question that we were going to buy it from Cloudflare.”\n\nSince upgrading, Trummer is elated that his team no longer has to spend so much time monitoring threats and mitigating them. Freed from having to engage in security monitoring and defense, Bitpanda’s engineers can spend their time developing new products and enhancing current ones.\n\n“I can’t imagine not having Cloudflare as a security partner. Our software engineers want to spend time building products for our customers, so we need a partner with that expertise who can focus on security for us,” Trummer says. “Our cloud services provider offers a WAF and other security tools, but we haven’t looked at them because we’re so happy with Cloudflare. We have no reason to shop around.”\n\nIn addition to the Cloudflare Web Application Firewall (WAF), DDoS protection, Page Rules, and Rate Limiting, Bitpanda depends on Cloudflare DNS services to secure its domains from DNS attacks and keep its platform online. Prior to Cloudflare, Bitpanda had used another DNS provider, but they had several incidents where their DNS went offline for hours, and the provider’s support team provided no help.\n\n“They lost our trust,” Trummer says. “We trust Cloudflare to provide a secure environment. Over the years, Cloudflare has consistently provided us with professional, top-quality service, and I look forward to expanding our partnership as Bitpanda continues to grow.”\n",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "- Cloudflare Access enables Bitpanda to limit access to internal assets.\n\n- Access supports Bitpanda’s Zero Trust model with strong authentication and visibility into user activity.\n\n- Bitpanda depends heavily on Cloudflare WAF, Rate Limiting, and Page Rules to prevent DDoS and other automated attacks.",
+				"relatedCaseStudies": [
+					{
+						"name": "Bitso",
+						"nameUrlSlug": "bitso"
+					},
+					{
+						"name": "BridgerPay",
+						"nameUrlSlug": "bridgerpay"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Access",
+						"url": "/teams/access"
+					},
+					{
+						"title": "Web Application Firewall (WAF) ",
+						"url": "/waf/"
+					},
+					{
+						"title": "Page Rules",
+						"url": "/features-page-rules/"
+					},
+					{
+						"title": "Rate Limiting",
+						"url": "/rate-limiting/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Christian Trummer",
+				"employeeQuoteText": "Access provides us with Zero Trust user authentication, granular control over user access, and complete visibility into user activity. This is key to Zero Trust, which recognizes that threats can be internal as well as external.",
+				"employeeQuoteJobTitle": "CTO and Co-Founder",
+				"employeeQuoteName2": "Christian Trummer",
+				"employeeQuoteText2": "Bitpanda had grown to the point where we needed the most comprehensive solution available, and there was no question that we were going to buy it from Cloudflare.",
+				"employeeQuoteJobTitle2": "CTO and Co-Founder",
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/Bitpanda_Black_Horizontal.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "yMbdpE1L3wNfshNrcwPrT",
+			"pathname": "/case-studies/bitpanda/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US",
+				"de-DE"
+			]
+		}
+	}
+}

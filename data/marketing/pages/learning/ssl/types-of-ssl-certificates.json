@@ -1,0 +1,556 @@
+{
+	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
+	"path": "/learning/ssl/types-of-ssl-certificates/",
+	"result": {
+		"data": {
+			"learningCenterArticle": {
+				"contentTypeId": "learningCenterArticle",
+				"contentfulId": "2iVzfBxrozAhpj5SFtyA2",
+				"urlSlug": "ssl/types-of-ssl-certificates",
+				"metaTags": {
+					"metaTitle": "Types of SSL certificates | SSL certificate types explained",
+					"metaDescription": "Learn about the different types of SSL/TLS certificates, SSL certificate validation levels, and the kinds of free SSL certificates Cloudflare offers.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"metaTitle": "Types of SSL Certificates | SSL Certificate Types Explained",
+				"metaDescription": "Learn about the different types of SSL/TLS certificates, SSL certificate validation levels, and the kinds of free SSL certificates Cloudflare offers.",
+				"learningCenterArticleSubHeader": {
+					"contentTypeId": "learningCenterArticleSubHeader",
+					"contentfulId": "3u6eezFpOUiCop2PUEz413",
+					"learningCenterName": "ssl",
+					"links": [
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "357fevHD1vzqQ8mp5tKWWp",
+							"displayText": "What is SSL?",
+							"url": "/learning/ssl/what-is-ssl/"
+						},
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "gwBHxAG3RwjReejRFn4Tb",
+							"displayText": "What is an SSL Certificate?",
+							"url": "/learning/ssl/what-is-an-ssl-certificate/"
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "41bCzYtpXDZRkfm3BzO806",
+							"name": "SSL Header: HTTP vs. HTTPS",
+							"displayText": "HTTP vs. HTTPS",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "zcwchxBLBWoaxyFq5Dhrj",
+									"displayText": "HTTP Security Gaps",
+									"url": "/learning/ssl/why-is-http-not-secure/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "11gGk7UFGxU33PLEUtjRfG",
+									"displayText": "What is HTTPS?",
+									"url": "/learning/ssl/what-is-https/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "15Vc3WANDpfVAs97KDEpzB",
+									"displayText": "Why Use HTTPS?",
+									"url": "/learning/ssl/why-use-https/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1oRht1dhER6Saxylj6glBn",
+									"displayText": "What is Mixed Content?",
+									"url": "/learning/ssl/what-is-mixed-content/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "4yMBT5IbPkVA9mccwMlLAY",
+							"name": "SSL Header: How Encryption Works",
+							"displayText": "How Encryption Works",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7qNVD8JotWdDbcqpZbp3VE",
+									"displayText": "What is Encryption?",
+									"url": "/learning/ssl/what-is-encryption/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3rrJ1k7k9ENDfgrBK5YzYK",
+									"displayText": "What is a Key?",
+									"url": "/learning/ssl/what-is-a-cryptographic-key/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4Uc11k7V2M5fHP5LmuF3vu",
+									"displayText": "What is a Session Key?",
+									"url": "/learning/ssl/what-is-a-session-key/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "57mpp35oVI2JzfRKESr73H",
+									"displayText": "Public Key Encryption",
+									"url": "/learning/ssl/how-does-public-key-encryption-work/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "33mZ23MKbvH87xdIT1dD7U",
+									"displayText": "Asymmetric Encryption",
+									"url": "/learning/ssl/what-is-asymmetric-encryption/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1QIQ5fPzS3n1uqI4XYZu72",
+									"displayText": "Lava Lamp Encryption",
+									"url": "/learning/ssl/lava-lamp-encryption/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2lwLYHBHzDBTGRId8drlRf",
+									"displayText": "Quantum Computing",
+									"url": "/learning/ssl/quantum/what-is-quantum-computing/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "5NWfQa2W1T6GY7oKFVQ5yn",
+							"name": "SSL Header: SSL Glossary",
+							"displayText": "SSL Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7dVuWLoT4g4e5ACvtAvDXG",
+									"displayText": "SSL Handshake",
+									"url": "/learning/ssl/what-happens-in-a-tls-handshake/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1brMQhAhJnFjyUUM6TaQrW",
+									"displayText": "What is TLS?",
+									"url": "/learning/ssl/transport-layer-security-tls/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3DJJDfuNUIAZ9HHhRYGgbV",
+									"displayText": "Keyless SSL",
+									"url": "/learning/ssl/keyless-ssl/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2fhx0LLDXj3vPLqS4ghmCe",
+									"displayText": "How SSL Works",
+									"url": "/learning/ssl/how-does-ssl-work/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6R3H8YcjaXUWJfMFDzvpUu",
+									"displayText": "SSL Certificate Types",
+									"url": "/learning/ssl/types-of-ssl-certificates/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7Gakh2yuxfEcpgxfy1hJhg",
+									"displayText": "Why Use TLS 1.3?",
+									"url": "/learning/ssl/why-use-tls-1.3/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5AsEd8eehv2y9EnsWeAVRr",
+									"displayText": "What is SNI?",
+									"url": "/learning/ssl/what-is-sni/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "DQ4yCoBF3o0LSkpiQCyuc",
+									"displayText": "Connection Not Private",
+									"url": "/learning/ssl/connection-not-private-explained/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2lbLRhcdSDOeSBEOF6PBsf",
+									"displayText": "What is Encrypted SNI?",
+									"url": "/learning/ssl/what-is-encrypted-sni/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6UQyd1PLht2H5F8aSNnF1y",
+									"displayText": "What is Domain Spoofing?",
+									"url": "/learning/ssl/what-is-domain-spoofing/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "6jvtLTbtKFKb5U7Fi94imf",
+							"name": "SSL header: Insights",
+							"displayText": "Insights",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "22UXessHsWvrAW3d6QdL1i",
+									"displayText": "Securing the post-quantum world",
+									"url": "https://www.cloudflare.com/insights-quantum-computing/"
+								}
+							]
+						}
+					]
+				},
+				"learningCenterArticleFooter": {
+					"contentTypeId": "learningCenterArticleFooter",
+					"contentfulId": "4qJHR2kpJZnCuBYyk2jEUu",
+					"learningCenterName": "ssl",
+					"column1Title": "About SSL/TLS",
+					"column1": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "7r9tBZ6FyoU4ybaPKM0uP5",
+						"name": "SSL Footer: About",
+						"displayText": "About SSL",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "357fevHD1vzqQ8mp5tKWWp",
+								"displayText": "What is SSL?",
+								"url": "/learning/ssl/what-is-ssl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1brMQhAhJnFjyUUM6TaQrW",
+								"displayText": "What is TLS?",
+								"url": "/learning/ssl/transport-layer-security-tls/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2fhx0LLDXj3vPLqS4ghmCe",
+								"displayText": "How SSL Works",
+								"url": "/learning/ssl/how-does-ssl-work/"
+							}
+						]
+					},
+					"column2Title": "About HTTPS",
+					"column2": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "1NrTagZnZPxPyjSu05dXiw",
+						"name": "SSL Footer: HTTPS",
+						"displayText": "About HTTPS",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "11gGk7UFGxU33PLEUtjRfG",
+								"displayText": "What is HTTPS?",
+								"url": "/learning/ssl/what-is-https/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "15Vc3WANDpfVAs97KDEpzB",
+								"displayText": "Why Use HTTPS?",
+								"url": "/learning/ssl/why-use-https/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "zcwchxBLBWoaxyFq5Dhrj",
+								"displayText": "HTTP Security Gaps",
+								"url": "/learning/ssl/why-is-http-not-secure/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "DQ4yCoBF3o0LSkpiQCyuc",
+								"displayText": "Connection Not Private",
+								"url": "/learning/ssl/connection-not-private-explained/"
+							}
+						]
+					},
+					"column3Title": "About Encryption",
+					"column3": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "7bDOcuccdiCIy26KzI2d1Q",
+						"name": "SSL Footer: Encryption",
+						"displayText": "About Encryption",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7qNVD8JotWdDbcqpZbp3VE",
+								"displayText": "What is Encryption?",
+								"url": "/learning/ssl/what-is-encryption/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "57mpp35oVI2JzfRKESr73H",
+								"displayText": "Public Key Encryption",
+								"url": "/learning/ssl/how-does-public-key-encryption-work/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "33mZ23MKbvH87xdIT1dD7U",
+								"displayText": "Asymmetric Encryption",
+								"url": "/learning/ssl/what-is-asymmetric-encryption/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1QIQ5fPzS3n1uqI4XYZu72",
+								"displayText": "Lava Lamp Encryption",
+								"url": "/learning/ssl/lava-lamp-encryption/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3rrJ1k7k9ENDfgrBK5YzYK",
+								"displayText": "What is a Key?",
+								"url": "/learning/ssl/what-is-a-cryptographic-key/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Uc11k7V2M5fHP5LmuF3vu",
+								"displayText": "What is a Session Key?",
+								"url": "/learning/ssl/what-is-a-session-key/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2lwLYHBHzDBTGRId8drlRf",
+								"displayText": "Quantum Computing",
+								"url": "/learning/ssl/quantum/what-is-quantum-computing/"
+							}
+						]
+					},
+					"column4Title": "SSL Glossary",
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "4yqGLocqy6kW3wUKCxerun",
+						"name": "SSL Footer: Glossary",
+						"displayText": "SSL Glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1oRht1dhER6Saxylj6glBn",
+								"displayText": "What is Mixed Content?",
+								"url": "/learning/ssl/what-is-mixed-content/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7dVuWLoT4g4e5ACvtAvDXG",
+								"displayText": "SSL Handshake",
+								"url": "/learning/ssl/what-happens-in-a-tls-handshake/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "gwBHxAG3RwjReejRFn4Tb",
+								"displayText": "What is an SSL Certificate?",
+								"url": "/learning/ssl/what-is-an-ssl-certificate/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6R3H8YcjaXUWJfMFDzvpUu",
+								"displayText": "SSL Certificate Types",
+								"url": "/learning/ssl/types-of-ssl-certificates/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7Gakh2yuxfEcpgxfy1hJhg",
+								"displayText": "Why Use TLS 1.3?",
+								"url": "/learning/ssl/why-use-tls-1.3/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5AsEd8eehv2y9EnsWeAVRr",
+								"displayText": "What is SNI?",
+								"url": "/learning/ssl/what-is-sni/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2lbLRhcdSDOeSBEOF6PBsf",
+								"displayText": "What is Encrypted SNI?",
+								"url": "/learning/ssl/what-is-encrypted-sni/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6UQyd1PLht2H5F8aSNnF1y",
+								"displayText": "What is Domain Spoofing?",
+								"url": "/learning/ssl/what-is-domain-spoofing/"
+							}
+						]
+					},
+					"column5Title": "Learning Center Navigation",
+					"column5": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "5qQn8nMmpW7qfjbAtFT7by",
+						"name": "SSL Footer: LC Navigation",
+						"displayText": "Learning Center Navigation",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2hdSVoYA5asSIG0U2ae20c",
+								"displayText": "Learning Center Home",
+								"url": "/learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "56Y6OytBNgNoNDWQL2ezlf",
+								"displayText": "DDoS Learning Center",
+								"url": "/learning/ddos/what-is-a-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6DGcnYIMM0eCGwqAKu2ECO",
+								"displayText": "CDN Learning Center",
+								"url": "/learning/cdn/what-is-a-cdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Ra0qmFJ1uewk2MYscW8KI",
+								"displayText": "DNS Learning Center",
+								"url": "/learning/dns/what-is-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q67XLnKqKhfmDJR4q9hJT",
+								"displayText": "Performance Learning Center",
+								"url": "/learning/performance/why-site-speed-matters/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1yItw6W6SsM2Y0Wuq6Y2c6",
+								"displayText": "Security Learning Center",
+								"url": "/learning/security/what-is-web-application-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z3UC9tP1Kjk85BX5zSGPY",
+								"displayText": "Serverless Learning Center",
+								"url": "/learning/serverless/what-is-serverless/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7D22pOfjb98KXcnAJyJFCX",
+								"displayText": "Bots Learning Center",
+								"url": "/learning/bots/what-is-a-bot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7jgqDUFFzaLuKrsaBTLdV0",
+								"displayText": "Cloud Learning Center",
+								"url": "/learning/cloud/what-is-the-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6PdBQjiFs98K6RQuG5TYNd",
+								"displayText": "Access Management Learning Center",
+								"url": "/learning/access-management/what-is-identity-and-access-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3jjEMuuLrCwhRidjG5kglM",
+								"displayText": "Network Layer Learning Center",
+								"url": "/learning/network-layer/what-is-the-network-layer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RvS0l0m86G1VISDrEvlJb",
+								"displayText": "Privacy Learning Center",
+								"url": "/learning/privacy/what-is-data-privacy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "MytksT5WU5mh863BQYEkj",
+								"displayText": "Video Streaming Learning Center",
+								"url": "/learning/video/what-is-streaming/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
+								"displayText": "Email Security Learning Center",
+								"url": "/learning/email-security/what-is-email-security/"
+							}
+						]
+					}
+				},
+				"header": "Types of SSL certificates | SSL certificate types explained",
+				"blurbSubHeader": "There are several types of different SSL certificates. While all provide the same level of TLS encryption, they serve different purposes and are used in different contexts.",
+				"objectivesHeader": "SSL Certificate Types",
+				"objectivesList": [
+					"Understand the different types of SSL (TLS) certificates",
+					"Learn about the different SSL certificate validation levels"
+				],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "357fevHD1vzqQ8mp5tKWWp",
+						"displayText": "What is SSL?",
+						"url": "/learning/ssl/what-is-ssl/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "gwBHxAG3RwjReejRFn4Tb",
+						"displayText": "What is an SSL Certificate?",
+						"url": "/learning/ssl/what-is-an-ssl-certificate/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "7dVuWLoT4g4e5ACvtAvDXG",
+						"displayText": "SSL Handshake",
+						"url": "/learning/ssl/what-happens-in-a-tls-handshake/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "3DJJDfuNUIAZ9HHhRYGgbV",
+						"displayText": "Keyless SSL",
+						"url": "/learning/ssl/keyless-ssl/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "2fhx0LLDXj3vPLqS4ghmCe",
+						"displayText": "How SSL Works",
+						"url": "/learning/ssl/how-does-ssl-work/"
+					}
+				],
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What does an SSL certificate do?</h2>\n\n<p>An <a href='/learning/ssl/what-is-an-ssl-certificate/'>SSL certificate</a> (more accurately called a <a href='/learning/ssl/transport-layer-security-tls/'>TLS</a> certificate), is necessary for a website to have <a href='/learning/ssl/what-is-https/'>HTTPS</a> encryption. An SSL certificate contains the website's <a href='/learning/ssl/how-does-public-key-encryption-work/'>public key</a>, the <a href='/learning/dns/glossary/what-is-a-domain-name/'>domain name</a> it's issued for, the issuing certificate authority's digital signature, and other important information. It's used for authenticating an origin server's identity, which helps prevent <a href='/learning/security/threats/on-path-attack/'>on-path attacks</a>, domain spoofing, and other methods attackers use to impersonate a website and trick users.</p>\n\n<p>HTTPS creates an encrypted connection between a user's browser and the web server they are communicating with, protecting the communications from being intercepted. SSL certificates are necessary for establishing this encrypted connection (see <a href='/learning/ssl/what-is-an-ssl-certificate/'>What is an SSL certificate?</a> to learn more).</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the different types of SSL certificates?</h2>\n\n<h4 class=\"learning-content-h4\">Single Domain SSL Certificates</h4>\n\n<p>A single-domain SSL certificate applies to one domain and one domain only. It cannot be used to authenticate any other domain, not even subdomains of the domain it is issued for.</p>\n\n<p>All pages on this domain are also secured with the certificate; for instance, if cloudflare.com has a single-domain certificate, then cloudflare.com/learning (the Learning Center main page) is also covered by that certificate.</p>\n\n<img src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/ND4BUNi8xaqKuKcYEfbXo/e05775718674775f2241d89c6333ab52/single-domain-ssl-certificate.svg\" class=\"responsive-image--50-pct-center\" alt=\"Single Domain SSL Certificate\" itemprop=\"image\"/>\n\n<h4 class=\"learning-content-h4\">Wildcard SSL Certificates</h4>\n\n<p>Wildcard SSL certificates are for a single domain and all its subdomains. A subdomain is under the umbrella of the main domain. Usually subdomains will have an address that begins with something other than 'www.'</p>\n\n<p>For example, www.cloudflare.com has a number of subdomains, including blog.cloudflare.com, support.cloudflare.com, and developers.cloudflare.com. Each is a subdomain under the main cloudflare.com domain.</p>\n\n<img src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/7uh7zF2RnXoBNGblm7fYfM/20d4aed32e69d6b420385e752e522ea4/wildcard-ssl-certificate.svg\" class=\"responsive-image\" alt=\"Wildcard SSL Certificate\" itemprop=\"image\"/>\n\n<p>A single Wildcard SSL certificate can apply to all of these subdomains. Any subdomain will be listed in the SSL certificate. Users can see a list of subdomains covered by a particular certificate by clicking on the padlock in the URL bar of their browser, then clicking on \"Certificate\" (in Chrome) to view the certificate's details.</p>\n\n<h4 class=\"learning-content-h4\">Multi-Domain SSL Certificates (MDC)</h4>\n\n<p>A multi-domain SSL certificate, or MDC, lists multiple distinct domains on one certificate. With an MDC, domains that are not subdomains of each other can share a certificate.</p>\n\n<img src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/41egOiqMSGKk0tbChVC3HT/fa4517eacbe2bcd874a93e7926482850/multi-domain-ssl-certificate.svg\" class=\"responsive-image\" alt=\"Multi-Domain SSL Certificate\" itemprop=\"image\"/>\n\n<p>Cloudflare issues <a href='/ssl/'>free SSL certificates</a> to make it possible for anyone to turn on HTTPS encryption, and these certificates are MDCs. Dedicated and customized SSL certificates are available for purchase.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are SSL certificate validation levels?</h2>\n\n<p>A bank doesn't issue a loan to someone before performing a credit check. Similarly, before a certificate authority (CA) issues an SSL certificate to an organization, they have to validate the organization; it has to be proven that the organization actually owns and operates the domain. This is what's known as SSL certificate validation.</p>\n\n<p>However, there are different levels of validation, ranging from bare minimum validation to thorough background investigations. An SSL certificate from any of these validation levels provides the same degree of TLS encryption; the only difference is how thoroughly the CA has authenticated the organization's identity.</p>\n\n<h4 class=\"learning-content-h4\">Domain Validation SSL Certificates</h4>\n\n<p>Domain Validation is the least-stringent level of validation. To obtain one of these SSL certificates, an organization only has to prove they control the domain. They can do this by altering the <a href='/learning/dns/dns-records/'>DNS record</a> associated with the domain, or sometimes just by sending the CA an email. Often the process is automated.</p>\n\n<p>This level of validation is the cheapest. It's a good option for blogs, portfolio sites, or for small businesses that are just looking to quickly launch HTTPS, especially if a business doesn't sell products via its website (e.g. a restaurant or coffee shop).</p>\n\n<h4 class=\"learning-content-h4\">Organization Validation SSL Certificates</h4>\n\n<p>Organization Validation involves a manual vetting process: The CA will contact the organization requesting the SSL certificate, and they may do some further investigating. Organization Validation SSL certificates will contain the organization's name and address, making them more trustworthy for users than Domain Validation certificates.</p>\n\n<h4 class=\"learning-content-h4\">Extended Validation SSL Certificates</h4>\n\n<img src=\"/resources/images/slt3lc6tev37/2mkpUOPzl2jEPEERn2e57B/3b180ecab3ff7e0a5da1706434722573/ssl-certificate-secure-browsing.png\" class=\"responsive-image\" alt=\"Multi-Domain SSL Certificate\" itemprop=\"image\"/>\n\n<p>Extended Validation involves a full background check of the organization. The CA will make sure that the organization exists and is legally registered as a business, that they actually are present at the address they list, and so on. This validation level takes the longest and costs the most, but Extended Validation SSL certificates are more trustworthy than other types of SSL certificates. Consequently, these certificates are necessary for a website's address to turn the browser URL bar green, the visual representation for users of a trustworthy TLS-encrypted site.</p>\n\n<p>Large enterprises, financial institutions, and eCommerce stores should obtain Extended Validation certificates. This is especially crucial if a site or application handles sensitive customer data, such as passwords, credit card numbers, or names and addresses.</p>\n\n<p>To learn more about how to get a free SSL certificate from Cloudflare, see our <a href='/ssl/'>SSL page</a>. <a href='/diagnostic-center/'>Check if your website's SSL certificate is working properly.</a></p>\n",
+				"availableLocales": null,
+				"localized": true,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "No Page for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": null
+				},
+				"proactivePopup": null,
+				"sidebarForm": null
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "2iVzfBxrozAhpj5SFtyA2",
+			"pathname": "/learning/ssl/types-of-ssl-certificates/",
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

@@ -1,0 +1,977 @@
+{
+	"componentChunkName": "component---src-components-page-page-template-tsx",
+	"path": "/cdn/",
+	"result": {
+		"data": {
+			"page": {
+				"pageName": "Cloudflare Caching - CDN Product Page",
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "Translated for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "Translated for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "Translated for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "Translated for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "Translated for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": null
+				},
+				"relativePath": "cdn",
+				"topNavOptions": "default",
+				"topNavButtonText": null,
+				"topNavButtonUrl": null,
+				"metaTags": {
+					"metaTitle": "Cloudflare CDN | Content Delivery Network",
+					"metaDescription": "The Cloudflare CDN is an content delivery network that uses next-gen tech to deliver a fast, reliable, CDN services. Learn more about our best-in-class CDN.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"contentfulId": "7sWlrqu5Uc4AOaoaWyAy2C",
+				"contentTypeId": "page",
+				"promotionalBanner": {
+					"pillText": "News",
+					"linkText": "Read the reviews",
+					"linkUrl": "https://www.gartner.com/reviews/market/global-cdn/vendor/cloudflare/product/cloudflare-cdn/reviews",
+					"desktopText": "Cloudflare Named A 2021 Gartner Peer Insights Customers’ Choice for Web Application Firewalls"
+				},
+				"psaBanner": null,
+				"customTopNav": null,
+				"headerLogo": null,
+				"template": null,
+				"relatedBlades": [
+					{
+						"__typename": "bladeHeroAnimation",
+						"contentfulId": "5LjpJTKLAsGSm4G0iaS0Ye",
+						"contentTypeId": "bladeHeroAnimation",
+						"title": "Cloudflare CDN",
+						"subtitle": "A fast, agile, and secure global network",
+						"copy": "Cloudflare offers ultra-fast static and dynamic content delivery over our global edge network. Exercise precise control over how your content is cached, reduce bandwidth costs, and take advantage of built-in unmetered DDoS protection. ",
+						"buttonColor": "orange",
+						"buttonColor2": "orange",
+						"buttonText1": "Sign Up",
+						"buttonText1LoggedIn": "View in Dashboard",
+						"buttonUrl1": "https://dash.cloudflare.com/sign-up",
+						"buttonUrl1LoggedIn": "https://dash.cloudflare.com/?to=/:account/",
+						"button1ExtraClass": null,
+						"buttonText2": "Contact Sales",
+						"buttonText2LoggedIn": "Looking for enterprise-grade solutions?",
+						"buttonUrl2": "#",
+						"button2ExtraClass": "cloudflare-caching-cdn-product-contact-sales",
+						"bladeBorder": "none",
+						"htmlId": "overview",
+						"textColor": "black",
+						"includeVideo": false,
+						"streamVideoId": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"popupStreamId": null,
+						"popupText": null,
+						"button1OpenInNewTab": null,
+						"button2OpenInNewTab": null,
+						"streamThumbnails": null,
+						"sectionPadding": null,
+						"streamPosterAssetFile": null,
+						"streamPoster": null,
+						"imageSize": null,
+						"imagePosition": null,
+						"leftLinkUrl": null,
+						"leftLink": "Already a customer? [Activate Today](https://dash.cloudflare.com/)",
+						"leftLinkLoggedIn": null,
+						"leftLinkOptions": "hide",
+						"backgroundColor": "light-blue",
+						"textlayoutMode": null,
+						"backgroundAssetFile": null,
+						"imageLayout": null,
+						"image": {
+							"file": {
+								"publicURL": "[path]/caching-hero.svg"
+							}
+						},
+						"imageAssetFile": {
+							"id": "291c2f68-8754-5531-bf9a-6f269ec4856f",
+							"altText": "caching-hero",
+							"title": "caching-hero",
+							"activeAsset": "Brandfolder Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "[path]/caching-hero.svg"
+								}
+							},
+							"brandfolderAsset": {
+								"size": 24753,
+								"height": 4092,
+								"width": 4939,
+								"file": {
+									"publicURL": "[path]/cdn-global-hero-illustration.svg"
+								}
+							},
+							"brandfolderAssetMobile": null
+						}
+					},
+					{
+						"__typename": "bladeFourFeatures",
+						"contentfulId": "6il4S2nKhRGi1K4NnSkQmv",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": "\n",
+						"title": null,
+						"subtitle": null,
+						"bladeStyle": null,
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1QhSkf5TJZ3Fdmu9B9A4k1",
+								"title": "Global Network",
+								"titleSize": null,
+								"description": "Cloudflare has built an [expansive global network](https://www.cloudflare.com/network/) of data centers that cache static content closer to users, and deliver dynamic content over the fastest and most reliable private backbone links.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/icon-global-purple.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "76a11ba2-f049-5af8-803e-8d933358063b",
+									"altText": "Internet globe blue",
+									"title": "Internet globe blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 2017,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/internet-globe-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7D5vv6HxkyPicfceF4kCDT",
+								"title": "API First",
+								"titleSize": null,
+								"description": "The Cloudflare network is API-first, allowing customers to easily automate workflows with highly granular control over how content is cached and purged. With [Cloudflare Workers](https://www.cloudflare.com/products/cloudflare-workers/), customers can easily customize caching based on their application needs.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/icon-api-purple.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "7dcf0b32-5e52-5e8a-be1e-2324e1aab71c",
+									"altText": "Code api blue",
+									"title": "Code api blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 3021,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/code-api-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6ZUWVmCK2EVx7ctciNtiS5",
+								"title": "Increased Savings",
+								"titleSize": null,
+								"description": "Caching content on the Cloudflare network reduces the need to source content from the origin, reducing costs. Additionally, shared customers of Cloudflare partners are entitled to significantly discounted cloud egress fees with the [Bandwidth Alliance](https://www.cloudflare.com/bandwidth-alliance/).",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/icon-cost-purple.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "eaa35043-4f47-559a-84df-14dd2dc384bd",
+									"altText": "Price blue",
+									"title": "Price blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 2943,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/price-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
+						"__typename": "bladeImageText",
+						"contentfulId": "6J8PSYfP9uQKuKgsWwyGAA",
+						"title": "Static and Dynamic Content Delivery",
+						"copy": "Cloudflare supports millions of Internet properties, and intelligently routes content requests on its network along the fastest paths using [Argo Smart Routing](https://www.cloudflare.com/products/argo-smart-routing/ \"Argo Smart Routing\"). Traffic can also be [load balanced](https://www.cloudflare.com/load-balancing/ \"Load Balanced\") across multiple origins, using proximity and network latency to determine the most efficient destination for each request.",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": null,
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls",
+							"autoplay",
+							"muted",
+							"loop"
+						],
+						"streamCaptions": null,
+						"streamVideoId": "dee96a54e43684ae09c33cc27ee47a10",
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": null,
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "light-blue",
+						"bladeBorder": "border-bottom",
+						"imagePosition": false,
+						"imageSize": null,
+						"imageTextAlignment": null,
+						"togglesTo": null
+					},
+					{
+						"__typename": "bladeImageText",
+						"contentfulId": "25QdRdptwceCWsaMsQ62qc",
+						"title": "Highly Customizable CDN",
+						"copy": "Cloudflare lets you apply advanced control over how content is cached on its network. Page Rules let you specify particular behavior for individual URLs, including what gets cached and for how long. The Cloudflare Cache API lets customers have more control over how content is cached, and improves cache hit ratios with advanced routing and URL canonicalization. ",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": null,
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "1f1c4315-23ca-5528-98f9-e6e1f86b48c7",
+							"altText": "Custom caching controls",
+							"title": "Custom caching controls",
+							"activeAsset": "Brandfolder Asset",
+							"locale": "en-US",
+							"contentfulAsset": null,
+							"brandfolderAsset": {
+								"size": 17403,
+								"height": 1412,
+								"width": 3248,
+								"file": {
+									"publicURL": "[path]/cdn-customizable-cdn-diagram.svg"
+								}
+							},
+							"brandfolderAssetMobile": null
+						},
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "light-blue",
+						"bladeBorder": "border-bottom",
+						"imagePosition": true,
+						"imageSize": null,
+						"imageTextAlignment": null,
+						"togglesTo": null
+					},
+					{
+						"__typename": "bladeImageText",
+						"contentfulId": "5XP4BJjqusek0WQ8OqSOyE",
+						"title": "Increased bandwidth savings ",
+						"copy": "Caching content on Cloudflare's network reduces the number of requests to an origin by serving static content from a Cloudflare data center, minimizing bandwidth consumption. \n\nCloudflare offers predictable bandwidth pricing, with no surge pricing when you get attacked. Customers hosting their websites with [Cloudflare partners](https://www.cloudflare.com/bandwidth-alliance/ \"Cloudflare partners\") can reduce or completely eliminate data egress costs from their hosting provider to Cloudflare when dynamic content is requested.",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": null,
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": {
+							"file": {
+								"publicURL": "[path]/Increased_bandwidth_savings__.svg"
+							}
+						},
+						"imageAssetFile": {
+							"id": "66404678-2f13-5a17-a9d8-6cd1a19d908c",
+							"altText": "Increased bandwidth savings",
+							"title": "Increased bandwidth savings",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "[path]/Increased_bandwidth_savings__.svg"
+								}
+							},
+							"brandfolderAsset": {
+								"size": 34521,
+								"height": 2904,
+								"width": 6006,
+								"file": {
+									"publicURL": "[path]/cdn-bandwidth-savings-diagram.svg"
+								}
+							},
+							"brandfolderAssetMobile": null
+						},
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "light-blue",
+						"bladeBorder": "border-bottom",
+						"imagePosition": false,
+						"imageSize": null,
+						"imageTextAlignment": null,
+						"togglesTo": null
+					},
+					{
+						"__typename": "bladeImageText",
+						"contentfulId": "3UCpTtD5kN7PpKiCks08l",
+						"title": "Granular visibility into your cache",
+						"copy": "Get actionable insights into the caching of your website for a better cache-hit ratio and further drive down your bandwidth costs.\n\n- See exactly what resources on your website are cached and what aren’t. Make configuration changes to improve cache-hit ratios.\n- Get dashboard views of your website performance based on the Requests served and data transfer to optimize for performance as well as cost-savings.\n- Filter by hostnames, or see a list of top URLs that missed cache using intuitive drill-down graphs right from the dashboard.\n",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": null,
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": {
+							"file": {
+								"publicURL": "[path]/illustration_analytics_data.svg"
+							}
+						},
+						"imageAssetFile": {
+							"id": "7ae65571-3bb8-5f3f-b09f-2d29b65facdd",
+							"altText": "Cache Analytics",
+							"title": "Cache Analytics",
+							"activeAsset": "Brandfolder Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "[path]/illustration_analytics_data.svg"
+								}
+							},
+							"brandfolderAsset": {
+								"size": 15556,
+								"height": 2272,
+								"width": 3016,
+								"file": {
+									"publicURL": "[path]/cdn-analytics-spot-illustration.svg"
+								}
+							},
+							"brandfolderAssetMobile": null
+						},
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "light-blue",
+						"bladeBorder": "border-bottom",
+						"imagePosition": true,
+						"imageSize": null,
+						"imageTextAlignment": null,
+						"togglesTo": null
+					},
+					{
+						"__typename": "bladeImageText",
+						"contentfulId": "SRWcnA5P7hqFI4qW4zc1s",
+						"title": "The right CDN for video",
+						"copy": "Cloudflare offers a rich ecosystem of performance and security services tuned specifically for video. Cloudflare’s global anycast network ensures [fast video delivery](https://www.cloudflare.com/products/stream-delivery/), with shorter video startup times and reduced buffering, no matter where your visitors are located. Features such as Concurrent Streaming Acceleration further optimize delivery of live video, even to mulitple simultaneous requestors at scale with minimal end-to-end latency.",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": null,
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": {
+							"file": {
+								"publicURL": "[path]/MRK-8731_CloudflareForOTT_1-High_Performance_Video_Delivery.png"
+							}
+						},
+						"imageAssetFile": {
+							"id": "579e8fff-696c-5125-a680-203fc43cd19c",
+							"altText": "Video delivery",
+							"title": "Video delivery",
+							"activeAsset": "Brandfolder Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "[path]/MRK-8731_CloudflareForOTT_1-High_Performance_Video_Delivery.png"
+								}
+							},
+							"brandfolderAsset": {
+								"size": 10991,
+								"height": 2272,
+								"width": 3016,
+								"file": {
+									"publicURL": "[path]/cdn-video-spot-illustration.svg"
+								}
+							},
+							"brandfolderAssetMobile": null
+						},
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "light-blue",
+						"bladeBorder": "border-bottom",
+						"imagePosition": false,
+						"imageSize": null,
+						"imageTextAlignment": null,
+						"togglesTo": null
+					},
+					{
+						"__typename": "bladeImageText",
+						"contentfulId": "6ndsdG6dNzlsf4xA0sK9aI",
+						"title": "Support for HTTP/3",
+						"copy": "[HTTP/3](http://blog.cloudflare.com/HTTP3-the-past-present-and-future) is the latest generation of the protocol that powers the web. Instead of using TCP as the transport layer, HTTP/3 uses QUIC, a new Internet transport protocol which is encrypted by default and helps accelerate delivery of traffic.\n\nCloudflare's support for HTTP/3 enables faster, more reliable, and more secure connections to websites and APIs.\n\n\n",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": null,
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": {
+							"file": {
+								"publicURL": "[path]/HTTP3_portal_2x.png"
+							}
+						},
+						"imageAssetFile": {
+							"id": "cfc22097-81b1-55b6-8904-63f451a0db45",
+							"altText": "HTTP/3",
+							"title": "HTTP/3",
+							"activeAsset": "Brandfolder Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "[path]/HTTP3_portal_2x.png"
+								}
+							},
+							"brandfolderAsset": {
+								"size": 4624,
+								"height": 2962,
+								"width": 3999,
+								"file": {
+									"publicURL": "[path]/cdn-http3-spot-illustration.svg"
+								}
+							},
+							"brandfolderAssetMobile": null
+						},
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "light-blue",
+						"bladeBorder": "border-bottom",
+						"imagePosition": true,
+						"imageSize": null,
+						"imageTextAlignment": null,
+						"togglesTo": null
+					},
+					{
+						"__typename": "bladeImageText",
+						"contentfulId": "4PHwM2ct698xyDdcRdSkPH",
+						"title": "Support for BYOIP",
+						"copy": "BYOIP (Bring your own IPs) feature allows customers to have their IPs announced by Cloudflare and attached to the Cloudflare services of their choice. This way the internet sees the customer IP addresses and not Cloudflares\n\n\n- API to toggle on/off an announcement \n- Network analytics on IPs\n- Ability to map DNS responses to individual domains\n- Allows for rotation of IPs as they get blocked",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": null,
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": {
+							"file": {
+								"publicURL": "[path]/BYoIP_CDN.png"
+							}
+						},
+						"imageAssetFile": {
+							"id": "316e7019-4ed6-51cb-862f-5c914d02b37f",
+							"altText": "Cdn support byoip spot illustration",
+							"title": "Cdn support byoip spot illustration",
+							"activeAsset": "Brandfolder Asset",
+							"locale": "en-US",
+							"contentfulAsset": null,
+							"brandfolderAsset": {
+								"size": 11164,
+								"height": 2268,
+								"width": 3587,
+								"file": {
+									"publicURL": "[path]/cdn-support-byoip-spot-illustration.svg"
+								}
+							},
+							"brandfolderAssetMobile": null
+						},
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "light-blue",
+						"bladeBorder": "none",
+						"imagePosition": false,
+						"imageSize": null,
+						"imageTextAlignment": null,
+						"togglesTo": null
+					},
+					{
+						"__typename": "bladeImageText",
+						"contentfulId": "5bNbbEMiitilSGBFpgNHcK",
+						"title": "China Network CDN",
+						"copy": "Alongside JD Cloud, Cloudflare has launched a network that will grow to 150 mainland China locations by the end of 2023. Not only does this network reduce latency for customers, but it also provides them with a number of built-in application security services.",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": "https://www.cloudflare.com/china-network/",
+						"learnMoreText": "Learn more",
+						"link": null,
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "9060db97-2bdd-534e-9e2c-67338d467aed",
+							"altText": null,
+							"title": "China Network hero illustration",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "[path]/china-network-hero-illustration_3x-8__1_.png"
+								}
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "light-blue",
+						"bladeBorder": "border-top",
+						"imagePosition": false,
+						"imageSize": null,
+						"imageTextAlignment": null,
+						"togglesTo": null
+					},
+					{
+						"__typename": "bladeQuote",
+						"contentTypeId": "bladeQuote",
+						"contentfulId": "5JfjxkLU8yt8083R1Qtfcs",
+						"quote": "\"We are caching 80% of our traffic on Cloudflare, and saw page load times for both desktop and mobile clients decrease on average by 50% - which was amazing!\"",
+						"quoteAuthor": "David O'Brien",
+						"quoteTitle": "Digital and eCommerce Manager, YPO",
+						"learnMoreText": null,
+						"sectionPadding": null,
+						"backgroundColor": "light-blue",
+						"bladeBorder": "none",
+						"learnMoreUrl": null,
+						"htmlId": null,
+						"image": {
+							"file": {
+								"publicURL": "[path]/ypo.png"
+							}
+						},
+						"imageAssetFile": {
+							"id": "723785ab-5205-5cfe-9cf4-1114175ea503",
+							"altText": "Logo ypo gray",
+							"title": "Logo ypo gray",
+							"activeAsset": "Brandfolder Asset",
+							"locale": "en-US",
+							"contentfulAsset": null,
+							"brandfolderAsset": {
+								"size": 2009,
+								"height": 1670,
+								"width": 3976,
+								"file": {
+									"publicURL": "[path]/logo_ypo_gray.svg"
+								}
+							},
+							"brandfolderAssetMobile": null
+						},
+						"imageLinkUrl": null,
+						"logoList": null,
+						"logoListAssetFile": null,
+						"quoteCarousel": [
+							{
+								"contentTypeId": "bladeQuote",
+								"quote": "\"Our previous provider seems obsolete compared to Cloudflare. Deploying comparable features like Argo Smart Routing and tiered caching was significantly easier to enable, requiring zero changes to our infrastructure.\"",
+								"quoteAuthor": " Austin Davies",
+								"quoteTitle": "Site Reliability Engineer at AO.com",
+								"learnMoreText": null,
+								"learnMoreUrl": null,
+								"imageAssetFile": {
+									"id": "ed45ec1d-6337-5937-a0b0-6b11cacc61cc",
+									"altText": "Logo ao gray",
+									"title": "Logo ao gray",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 7485,
+										"height": 2308,
+										"width": 3981,
+										"file": {
+											"publicURL": "[path]/logo_ao_gray.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"image": {
+									"file": {
+										"publicURL": "[path]/AO_logo.png"
+									}
+								}
+							},
+							{
+								"contentTypeId": "bladeQuote",
+								"quote": "\"With Cloudflare’s CDN the load time of our images improved by 2-3x and on top of that we’re saving over 50% on our monthly bandwidth usage.\"",
+								"quoteAuthor": "Mikayel Vardanyan, CTO",
+								"quoteTitle": "PicsArt",
+								"learnMoreText": null,
+								"learnMoreUrl": null,
+								"imageAssetFile": {
+									"id": "5e5f33d8-a583-5149-af2a-d0082e92261f",
+									"altText": "Logo picsart gray",
+									"title": "Logo picsart gray",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 4407,
+										"height": 924,
+										"width": 3986,
+										"file": {
+											"publicURL": "[path]/logo_picsart_gray.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"image": {
+									"file": {
+										"publicURL": "[path]/picsart.png"
+									}
+								}
+							}
+						]
+					},
+					{
+						"__typename": "bladeKeyFeatures",
+						"contentfulId": "5z6bdSUEhioKgG84qA42kM",
+						"contentTypeId": "bladeKeyFeatures",
+						"backgroundColor": "white",
+						"title": "Key Features",
+						"keyFeature": [
+							"China support",
+							"API programmability",
+							"Cache tags",
+							"Cache control header extensions",
+							"Concurrent Streaming Acceleration",
+							"Web cache deception protection",
+							"ETag header support",
+							"Cross origin resource sharing (CORS) support",
+							"Customizable cache expiration periods (TTL)",
+							"Intelligent traffic routing to avoid congestion and latency",
+							"Support for MPEG-DASH, HLS, and CMAF video files",
+							"Fast cache purge"
+						],
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"titleColor": null,
+						"variant": null,
+						"description": null,
+						"featuresTextStyle": null,
+						"htmlId": null
+					},
+					{
+						"__typename": "bladeImageText",
+						"contentfulId": "34HwMobrNYV8QyWO2N9Quk",
+						"title": "Cloudflare CDN recognized as a Gartner Peer Insights \"Customer's Choice\" in 2021 for Global CDN",
+						"copy": "Learn what enterprise tech professionals love about Cloudflare's global network.",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": "https://www.gartner.com/reviews/market/global-cdn/vendor/cloudflare/product/cloudflare-cdn/reviews",
+						"learnMoreText": "Read the reviews",
+						"link": null,
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": {
+							"file": {
+								"publicURL": "[path]/Gartner-407x337.png"
+							}
+						},
+						"imageAssetFile": {
+							"id": "383c7a1f-9c97-5e4b-887d-d65740c4a847",
+							"altText": "Gartner Peer Insights - Customers' Choice 2021 - Logo",
+							"title": "Gartner Peer Insights - Customers' Choice 2021 - Logo",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "[path]/Gartner-407x337.png"
+								}
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "light-blue",
+						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": null,
+						"imageTextAlignment": null,
+						"togglesTo": null
+					},
+					{
+						"__typename": "bladeHtml",
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "5LxLmh5oXZi6YiIVhxtIYO",
+						"htmlContent": "<div class=\"pt4 pb4\">\n<div class=\"container\">\n<div class=\"row\">\n<div class=\"col-lg-12\">\n  <p class=\"gray1 f2 fw4 lh-6 mb3 mt0\">* Gartner Peer Insights reviews constitute the subjective opinions of individual end users based on their own experiences and do not represent the views of Gartner or its affiliates.</p>\n</div>\n</div>\n</div>\n</div>\n",
+						"htmlId": null
+					}
+				],
+				"noindex": false,
+				"enableZendeskChat": true,
+				"formModal": [
+					{
+						"contentTypeId": "formModal",
+						"contentfulId": "6Kr6LKAutxSDuSJElmlGUv",
+						"modalName": "Cloudflare Caching - CDN Product Page: Form Modal",
+						"modalId": "cloudflare-caching-cdn-product-contact-sales",
+						"modalType": "single-form",
+						"marketoForm": {
+							"contentTypeId": "marketoEmbeddedForm",
+							"contentfulId": "6dpU9sGC5UhuG5v20NqWhJ",
+							"bladeName": "Cloudflare Caching - CDN Product Page: Marketo Form (1341)",
+							"backgroundColor": "white",
+							"marketoFormId": 1341,
+							"marketoFormLeadSource": "Inbound - Web Form",
+							"marketoFormLeadSourceDetail": "Contact Us CDN",
+							"marketoFormHeaderText": null,
+							"marketoFormDefaultComment": null,
+							"showCommentBox": true,
+							"marketoFormThankYouText": null,
+							"marketoFormCustomSuccessMessage": null,
+							"marketoFormPdfDownload": null,
+							"marketoFormPdfDownloadI18n": null,
+							"marketoFormAssetDownloadButtonText": null,
+							"marketoFormSuccessRedirectUrl": null,
+							"sendAdRoll": null,
+							"meta_adRollCustomSegment": null,
+							"enableSandbox": null,
+							"marketoFormSubmitButtonText": null,
+							"marketoFormSubmitButtonColor": null,
+							"enableEmailVerification": null,
+							"disableEnterpriseEmailNotification": null,
+							"enableRingout": null
+						},
+						"salesforceForm": null,
+						"title": "Contact Sales",
+						"regularCopy": "Fast, Global Content Delivery Network",
+						"splitFormDefaultTab": null,
+						"selfServeTabText": null,
+						"selfServeCopy": null,
+						"enterpriseTabText": null,
+						"enterpriseCopy": null
+					}
+				],
+				"keepHashUrlSyncedWithScrollPosition": false
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"pathname": "/cdn/",
+			"contentfulId": "7sWlrqu5Uc4AOaoaWyAy2C",
+			"allowedHrefLangs": [
+				"en-US",
+				"zh-CN",
+				"zh-TW",
+				"fr-FR",
+				"de-DE",
+				"it-IT",
+				"ja-JP",
+				"ko-KR",
+				"pt-BR",
+				"es-ES",
+				"nl-NL",
+				"th-TH",
+				"vi-VN"
+			],
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

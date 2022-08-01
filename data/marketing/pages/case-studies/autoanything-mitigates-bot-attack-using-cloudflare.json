@@ -1,0 +1,86 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/autoanything-mitigates-bot-attack-using-cloudflare/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "AutoAnything Mitigates Bot Attack Using Cloudflare",
+				"contentfulId": "4pv3t6LJHORcWIHTjQFhM0",
+				"nameUrlSlug": "autoanything-mitigates-bot-attack-using-cloudflare",
+				"metaTags": {
+					"metaTitle": "AutoAnything Mitigates Bot Attack Using Cloudflare",
+					"metaDescription": "Learn how AutoAnything overcame the threat from bots using Cloudflare",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2019-09-28",
+				"homepageUrl": "https://www.autoanything.com/",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "Learn how AutoAnything overcame the threat from bots using Cloudflare",
+				"longDescription": "## __AutoAnything Mitigates Bot Attack Using Cloudflare__\n\nThe modern consumer spends a great deal of their time online, and when it comes to shopping for specific products or services, they’re typically just an online search away from finding what they need. Retailers have responded in kind, and just about every retailer, large or small, now hosts an online storefront.\n\nCreating a storefront is the easy part; there are several turnkey solutions available that make it easy for anyone to sell their products online. Driving traffic to that storefront and converting those visitors into customers is far more challenging.\n\n__The Challenge__\n\nAutoAnything is based in San Diego, California and is one of America’s fastest-growing online retailers of specialized automotive products. Founded in 1979, AutoAnything offers a wide array of products that enhance protection, comfort, safety, and performance of cars, trucks, SUVs, and vans.\n\nAutoAnything has always looked deeply into two sources of traffic - organic and direct traffic. While organic site traffic is important for measuring new, first-time customers arriving through search, direct traffic is especially valuable. Direct traffic represents visits from customers who know AutoAnything’s brand and are returning to make a purchase. In 2018, AutoAnything noticed an inexplicable spike in direct traffic that resulted in significantly lower conversion rates. Something wasn’t adding up.\n\n<center><b>“Since the direct traffic arrives outside of a known referrer or advertising channel, it is the most impacted by bot activity. Direct traffic then rolls up into overall site traffic and impacts sitewide reporting. ”</b></center>\n</b></center>\n<center><i>— Marie Britt</center>\n  <center>Business Intelligence Analyst, AutoAnything</i></center>\n</br>\n\nAutoAnything discovered that their site was being targeted by malicious bots. This wasn’t their first time dealing with malicious bot traffic. In 2018, they had experienced a large-scale bot attack and were able to mitigate this attack using Cloudflare Web Application Firewall (WAF). However, this time around, these bots were imitating direct traffic and contaminating marketing analytics. The sheer volume of bot requests, especially on specific product pages, was invalidating crucial site analytics and degrading user experience with slow page loads.\n\n__The Cloudflare Solution__\n\nAutoAnything was able to remedy this problem using Cloudflare Bot Management. The automatic thresholds provided by our Bot Management solution helped them identify traffic from bad bots, enabling a more realistic analysis of their visitors’ behavior. AutoAnything saw an immediate drop of 85% in malicious traffic and a ~4x increase in conversion rates. \n\n<center><b>“Cloudflare Bot Management helped us clean up the direct traffic noise and improve conversion rates. We got a better sense of our visitors’ behavior and the performance of various page types. Originally, we were reporting 76.6% of direct traffic arriving to one page type in particular. That page type dropped to being only 9.1% of entry page visits after we enabled Cloudflare Bot Management.”</b></center>\n</b></center>\n<center><i>— Marie Britt</center>\n  <center>Business Intelligence Analyst, AutoAnything</i></center>\n</br>",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "• Using Cloudflare Bot Management, AutoAnything saw an immediate drop of 85% in malicious traffic and a ~4x increase in conversion rates.\n",
+				"relatedCaseStudies": [
+					{
+						"name": "AngelList ",
+						"nameUrlSlug": "angellist"
+					},
+					{
+						"name": "ArtStation Thwarts Malicious Bots With Cloudflare",
+						"nameUrlSlug": "artstation-malicious-bot-management"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Bot Management",
+						"url": "https://www.cloudflare.com/products/bot-management/"
+					},
+					{
+						"title": "DDoS Mitigation",
+						"url": "/ddos/"
+					},
+					{
+						"title": "Web Application Firewall (WAF) ",
+						"url": "/waf/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Marie Britt",
+				"employeeQuoteText": "Cloudflare Bot Management helped us clean up the direct traffic noise and improve conversion rates. We got a better sense of our visitors’ behavior and the performance of various page types.",
+				"employeeQuoteJobTitle": "Business Intelligence Analyst, AutoAnything",
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/AutoAnything_transparent_logo.svg"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "4pv3t6LJHORcWIHTjQFhM0",
+			"pathname": "/case-studies/autoanything-mitigates-bot-attack-using-cloudflare/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}

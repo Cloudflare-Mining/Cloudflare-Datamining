@@ -1,0 +1,78 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/artstation-malicious-bot-management/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "ArtStation Thwarts Malicious Bots With Cloudflare",
+				"contentfulId": "5SRNoeSZHjginJnj6BaeTt",
+				"nameUrlSlug": "artstation-malicious-bot-management",
+				"metaTags": {
+					"metaTitle": "ArtStation Thwarts Malicious Bots With Cloudflare",
+					"metaDescription": "Learn how ArtStation uses Cloudflare to thwart hundreds of thousands of bot attacks.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2019-03-29",
+				"homepageUrl": "https://www.artstation.com/",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "Learn how ArtStation uses Cloudflare to thwart hundreds of thousands of bot attacks.",
+				"longDescription": "If you’re a creative, one of the most challenging parts of your job is getting your work in front of the right audience. [ArtStation’s](https://www.artstation.com \"ArtStation's\") platform helps solve that: it enables professional artists and designers to showcase their portfolios, find work and make money via an online marketplace. \n\nIt’s a vibrant hub of creativity that’s growing quickly — enough so that it caught the attention of one of the Internet’s most prevalent threats: bots. Lots of bots.\n\nArtStation’s battle with malicious bots climaxed at the company's holiday office party. In the midst of the festivities, the ArtStation team noticed an influx of complaints from customers. Soon, they realized that bots had attempted to hijack thousands of accounts using credentials harvested from security breaches elsewhere — with enough success to deluge the site with spam.\n\nArtStation founder and CEO Leonard Teo says the team quickly worked to clean up the site and repair compromised accounts. Due to the increased sophistication and quantity of the malicious activity, ArtStation turned to Cloudflare.\n\n</br>\n<center><b>\n“Bots get in the way of building our platform. We’ve seen everything from competitors scraping our content to bad actors that stuff credentials in order to gain access to customer accounts. The safety of our client accounts are paramount and these bot attacks that were increasing in frequency and sophistication were undermining our business.”</b></center>\n\n<center><i>- Leonard Teo</center>\n  <center>Founder and CEO, ArtStation</i></center>\n</br>\n\n## An Old Threat Learns New Tricks\nBots are computer programs that automatically navigate and interact with the Internet. Some are benign, like the Googlebot, which crawls the web with the aim of improving Google’s search engine. But many bots are malicious — they aspire to exploit stolen passwords, scrape content, and fill sites with spam.\n\nNefarious bots have existed for years, but it’s only more recently that they’ve become an epidemic. What’s worse, today’s bots have learned to bypass conventional mitigation techniques like rate limiting and IP blocking. In one month, 11 billion login attempts — 50% of all login attempts across Cloudflare’s millions of Internet properties — are made by bots instead of by humans. That’s why Cloudflare developed a novel, robust solution founded in machine learning.\n\n## The Cloudflare Difference\nCloudflare’s [Bot Management](https://www.cloudflare.com/products/bot-management/ \"Bot Management\") is powered by the collective intelligence derived from the millions of Internet properties on its network. Whenever Cloudflare detects a bot attack in one part of the network, it informs a threat recognition model that is applied across every other site. In other words: every bot attack makes Cloudflare’s defenses even stronger.\n\nThe key is machine learning. Because of the immense scale of Cloudflare’s network — Internet requests for millions of websites run through Cloudflare’s network — it can apply machine learning algorithms to detect patterns that would otherwise be invisible. Cloudflare’s Bot Management also goes one step further: it doesn’t just look at the initial fingerprint of a potential threat; it also evaluates its behavior over time.\n\nAnd because some bots are good (indeed, search engine bots are essential to many businesses) Cloudflare Bot Management automates allowlisting traffic from benign actors.\n\n## A Clean Palette \nAs soon as ArtStation turned on Cloudflare Bot Management, its team realized the problem was even bigger than it first thought: “*Hundreds of thousands* of malicious requests were swarming the site. There were attacks we weren’t even aware of,” Teo says.\n\nEnabling Bot Management swiftly resolved that. Foiled by Cloudflare’s robust protection, the bots decided to turn their malicious intent elsewhere. \n\n</br>\n<center><b>\n“Before enabling Cloudflare’s Bot Management, you don’t really have much idea about what’s going on with your site — all you can see are the results of malicious bot activity.</b></center>\n<p></p>\n<center><b>With Cloudflare, we could see hundreds of thousands of malicious requests rotating through IP addresses, trying to login using hacked credentials and spam our site. Cloudflare automatically blocked them.</b></center> \n<p></p>\n<center><b>Soon, we saw the number of malicious attacks drop drastically. Because of Cloudflare, it just wasn’t worth the bother, so they gave up. We still see a few bots trying — but they don't get through, thanks to Cloudflare.”</b></center>\n\n<center><i>- Leonard Teo</center>\n  <center>Founder and CEO, ArtStation</i></center>\n</br>",
+				"cloudflareStreamVideoId": "5dca229234c21ed63dd64156048b5ad7",
+				"keyResults": "• ArtStation was under siege from hundreds of thousands of malicious bot requests\n\n• Bots were scraping the site, attempting to hijack accounts, and posting spam\n\n• Enabling Cloudflare Bot Management stopped malicious bot activity in its tracks\n\n• Cloudflare also detected and blocked malicious bot activity that was otherwise invisible",
+				"relatedCaseStudies": [
+					{
+						"name": "Zendesk",
+						"nameUrlSlug": "zendesk"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Bot Management",
+						"url": "https://www.cloudflare.com/products/bot-management/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Leonard Teo",
+				"employeeQuoteText": "With Cloudflare, we could see hundreds of thousands of malicious requests rotating through IP addresses, trying to login using hacked credentials and spam our site. Cloudflare automatically blocked them. Soon, we saw the number of malicious attacks drop drastically. Because of Cloudflare, it just wasn’t worth the bother, so they gave up.<p></p><b>We still see a few bots trying — but they don't get through, thanks to Cloudflare.</b>",
+				"employeeQuoteJobTitle": "Founder and CEO, ArtStation",
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": {
+					"file": {
+						"publicURL": "[path]/artstation.jpg"
+					}
+				},
+				"logo": {
+					"file": {
+						"publicURL": "[path]/artstation_logo.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "5SRNoeSZHjginJnj6BaeTt",
+			"pathname": "/case-studies/artstation-malicious-bot-management/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}

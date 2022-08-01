@@ -1,0 +1,90 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/villa/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Villa ",
+				"contentfulId": "1J4PcpPckgsG2OM0UKS6Ig",
+				"nameUrlSlug": "villa",
+				"metaTags": {
+					"metaTitle": "Villa ",
+					"metaDescription": "Villa protects their online shop from bot attacks with Cloudflare.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2018-06-04",
+				"homepageUrl": "https://www.ruvilla.com/",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "Villa protects their online shop from bot attacks with Cloudflare.",
+				"longDescription": "[Villa](https://www.ruvilla.com/) is one of the country's most successful emerging urban lifestyle retailers with 120 stores in 10 states. By fusing together a passion for fashion, music, sports, community empowerment, entertainment and other community-shaping topics, Villa strives to give their customers a high-energy, enjoyable shopping experience.\n\n__Villa’s Challenge: Robots Buying Human Shoes__\n\nSneakers have long been at the helm of urban fashion and culture, and with the Jordan brand, one of the most recognized sneaker brands in the world, pulling in $2.8bn in revenue in 2016, sneakers are also serious business. With the sneaker culture favoring limited release, hard-to-find shoes, people have turned to writing bots to scrape the web for the latest shoe releases giving them a buying advantage over the usual customer. Though bot users still pay for the sneakers they’re looking for, they hurt businesses by keeping in-demand shoes out of stock and ruining the performance of the sites they crawl.\n\n“Bot Traffic hurts our customer experience because they can’t buy the shoes they’re looking for,” explained Matthew Butch, Systems Engineering Manager at Villa. “We want to sell to the customers that aren’t trying to game the system. If we sell out of a shoe as soon as it’s released because bots buy all of the units, then our customers don’t come back to us the next time we have a release. As a business, we want to sell to the real customers because they’re also adding other merchandise to their carts and coming back later to buy other products. The bots only look for a specific shoe and don’t care where or how they get it.”\n\nThe bots that crawl Villa’s site also negatively affect the site’s performance. “Bots suck up the performance power of our servers,” Butch continued, “by constantly requesting pages, taking up data and request processing, all of which increases our infrastructure costs and degrades the shopping experience for our real customers. If a normal user visits our site and it’s a slow, unpleasant they won’t come back.”\n\n__Villa’s Solution: Bot Mitigation with Rate Limiting__\n\n“Today we use Cloudflare’s Rate-Limiting to block these bots and ensure we deliver a good experience for our users,” Butch related. “We have a few rules that rate limit based on the pages that are being requested and the geographic regions the requests are coming from, which have worked to give legitimate users a great shopping experiencing while blocking and banning the bots that hurt our business. As a result we’ve seen a tremendous reduction on the feedback we get on twitter, we have 15% fewer customer service complaints, and I, personally, don’t spend time manually blocking IP’s and looking at access rules, I just turn rate limiting on and my time is free to work on other important tasks.”",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "Blocking bots at the flip of a switch instead of hours of manual work\n\n15% Fewer Customer Service Calls\n\n10% Savings on infrastructure costs",
+				"relatedCaseStudies": [
+					{
+						"name": "Bespoke Post",
+						"nameUrlSlug": "bespoke-post"
+					},
+					{
+						"name": "Buycraft",
+						"nameUrlSlug": "buycraft"
+					},
+					{
+						"name": "Hotel Urbano",
+						"nameUrlSlug": "hotelurbano"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Rate Limiting",
+						"url": "/rate-limiting/"
+					},
+					{
+						"title": "Security",
+						"url": "/security/"
+					}
+				],
+				"employeeHeadshot": {
+					"file": {
+						"publicURL": "[path]/villa-graphic.png"
+					}
+				},
+				"employeeQuoteName": "Matthew Butch",
+				"employeeQuoteText": "Cloudflare’s rate limiting has improved our site performance and customer satisfaction by stopping bots, and has freed our time to invest in other site performance and functionality improvements.",
+				"employeeQuoteJobTitle": "Systems Engineering Manager",
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/villa.jpg"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "1J4PcpPckgsG2OM0UKS6Ig",
+			"pathname": "/case-studies/villa/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}

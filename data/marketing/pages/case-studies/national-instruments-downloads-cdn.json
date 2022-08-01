@@ -1,0 +1,82 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/national-instruments-downloads-cdn/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "NI",
+				"contentfulId": "4S5LkkXc5ZhyPsvcrAl8w4",
+				"nameUrlSlug": "national-instruments-downloads-cdn",
+				"metaTags": {
+					"metaTitle": "NI",
+					"metaDescription": "Learn how the world’s premier vendor of automated testing and measurement tools dramatically accelerated download performance.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2019-05-16",
+				"homepageUrl": "http://www.ni.com/en-us.html",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "Learn how the world’s premier vendor of automated testing and measurement tools dramatically accelerated download performance.",
+				"longDescription": "If you’re a scientist or engineer, you’re probably familiar with [NI](https://ni.com \"NI\") — the world’s premier vendor of automated testing and measurement tools. The company’s lineup of software and modular hardware is used for everything from circuit design to biomedical research. With so many customers that work in mission-critical environments, NI needs an online presence that instills trust and confidence.\n\n</br>\n<center><b>\n“NI is a global company, with customers evenly distributed around the globe. We needed a good way to deliver software and content to these customers out of our datacenter in Austin in a performant, reliable manner.”</b></center>\n<center><i>- Robert Cope</center>\n<center>Infrastructure Architect, NI</i></center>\n</br>\n\n## The Challenge\nNI is no stranger to complexity, but one of its chief difficulties stemmed from a relatively straightforward task: file downloads. \n\nAs with many modern software distributors, NI gives customers a way to download applications directly from its website, with predictably large file sizes. But few cache operators can properly handle downloads this large, and the vendor NI had been using was regularly aging out these files from its cache. \n\nIn turn, much of NI’s download traffic was being routed to its origin server in Austin, Texas for  customers around the globe — with suboptimal results. Reports of slow download speeds streamed into NI’s support desk; even employees located in the company’s regional offices noticed slowdowns. \n\n</br>\n<center><b>\n“There was a continuous amount of feedback that customers were having a poor download experience. And at the same time, the CDN vendor was handing us some pricey monthly invoices. That’s just a bad mix.”</b></center> \n<center><i>- Eric McCraw</center>\n  <center>Senior IT Manager - Web Systems & Cloud Center of Excellence,</br> \nNI</i></center>\n</br>\n\nThese complaints were especially concerning because of the way they reflected on the business more broadly. As NI Infrastructure Architect Robert Cope puts it, “Given the technical nature of our business, if we can't do something \"this simple\" right, why would they buy our highly technical products?”\n\nIt was time to look elsewhere for a solution. \n\n## The Cloudflare Difference\n\nAs a global company with over a billion dollars in annual revenue, switching CDN providers isn’t something NI took lightly. NI’s infrastructure team deployed monitoring points around the globe to benchmark five competitive services, with special attention given to their ability to handle large file sizes. After a rigorous process — spanning everything from customer support to performance to price — Cloudflare came out on top. \n\n</br>\n<center><b>\n“In our testing, Cloudflare delivered the fastest worldwide performance, and they worked with us to ensure our large files would be delivered as quickly as possible. </center></b>\n<p></p>\n<center><b>Cloudflare’s worldwide footprint, including in China, played a big part in our decision. And we’re seeing considerable savings compared to our previous provider.”</b></center> \n<center><i>- Robert Cope</center>\n  <center>Infrastructure Architect, NI</i></center>\n</br>\n\nIn addition to Cloudflare’s CDN, NI also enabled performance-enhancing features like Argo Smart Routing — with compelling results. Since switching to Cloudflare, the number of customer complaints about download performance has dwindled to a trickle, and the NI team is exploring additional ways to leverage Cloudflare’s product portfolio. \n\n</br>\n<center><b>\n“Another advantage with Cloudflare is its flexibility. Between its robust API and the extensibility enabled by Cloudflare Workers, we knew we’d be able to deploy tweaks as needed. Plus we get excellent DDoS and WAF security protection as part of Cloudflare’s core package, which would have been very expensive on our previous provider.”</b></center> \n<center><i>- Eric McCraw</center>\n  <center>Senior IT Manager - Web Systems & Cloud Center of Excellence</br>\n    NI</i></center>\n</br>\n",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "• NI struggled to deliver large file downloads to its customers, despite having a CDN.\n\n• By moving to Cloudflare, NI was able to dramatically improve download speeds, including in China.\n\n• Cloudflare Workers enable NI to customize its setup and iterate quickly on new improvements. \n\n• Argo Smart Routing further enhances NI's performance.",
+				"relatedCaseStudies": [
+					{
+						"name": "Zendesk",
+						"nameUrlSlug": "zendesk"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Content Delivery Network (CDN)",
+						"url": "/cdn/"
+					},
+					{
+						"title": "Workers",
+						"url": "/products/cloudflare-workers/"
+					},
+					{
+						"title": "Argo Smart Routing ",
+						"url": "/products/argo-smart-routing/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Robert Cope",
+				"employeeQuoteText": "In our testing, Cloudflare delivered the fastest worldwide performance, and they worked with us to ensure our large files would be delivered as quickly as possible.",
+				"employeeQuoteJobTitle": "Infrastructure Architect, NI",
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/NI.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "4S5LkkXc5ZhyPsvcrAl8w4",
+			"pathname": "/case-studies/national-instruments-downloads-cdn/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}

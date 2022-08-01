@@ -1,0 +1,568 @@
+{
+	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
+	"path": "/learning/performance/what-is-load-balancing/",
+	"result": {
+		"data": {
+			"learningCenterArticle": {
+				"contentTypeId": "learningCenterArticle",
+				"contentfulId": "T400l0gYGL03KVvJ8ybvT",
+				"urlSlug": "performance/what-is-load-balancing",
+				"metaTags": {
+					"metaTitle": "What is load balancing? | How load balancers work",
+					"metaDescription": "Load balancing is the process of distributing traffic among multiple servers to improve a service or application's performance. Learn how load balancers work.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/performance-lc.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"metaTitle": null,
+				"metaDescription": null,
+				"learningCenterArticleSubHeader": {
+					"contentTypeId": "learningCenterArticleSubHeader",
+					"contentfulId": "3EXwEdnC7JnXLjoWOxHdT9",
+					"learningCenterName": "performance",
+					"links": [
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "e3oFRMHsIzHQZYTLmPDOr",
+							"displayText": "Why Site Speed Matters",
+							"url": "/learning/performance/why-site-speed-matters/"
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "wjD4s7zPAIlrcocplo68g",
+							"name": "Performance Header: Performance Benefits",
+							"displayText": "Performance Benefits",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3XMpuNDRWA2j2aZ0qi1DaU",
+									"displayText": "Speed and Conversion Rates",
+									"url": "/learning/performance/more/website-performance-conversion-rates/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2u9nE8G5zJaY1Limh5GLkW",
+									"displayText": "How Site Speed Boosts SEO",
+									"url": "/learning/performance/how-website-speed-boosts-seo/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4s6X4x3EYYlHHb9aI4X31Q",
+									"displayText": "Core Web Vitals",
+									"url": "/learning/performance/what-are-core-web-vitals/ "
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "1Z9S7dlY2AIhyf5X4kYzLf",
+							"name": "Performance Header: Load Balancing",
+							"displayText": "Load Balancing",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "205Es4ofD2BShliEBNj1Z6",
+									"displayText": "What is Load Balancing?",
+									"url": "/learning/performance/what-is-load-balancing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "hhFtuqqoybh6WOlwSiqIo",
+									"displayText": "Server failover",
+									"url": "/learning/performance/what-is-server-failover/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3EsOLhDVoFDkZWt35VPRqD",
+									"displayText": "DNS-based load balancing",
+									"url": "https://www.cloudflare.com/learning/performance/what-is-dns-load-balancing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4RFn9zHjqaC2djLIVH1R21",
+									"displayText": "Load balancing algorithms",
+									"url": "/learning/performance/types-of-load-balancing-algorithms/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7G0p4vQ9468caPQGJoE6IL",
+									"displayText": "Multi-cloud and hybrid cloud load balancing",
+									"url": "/learning/performance/load-balancing-multi-cloud-hybrid-cloud/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4ZbTYQT5tvo9CTMX9psYMa",
+									"displayText": "Cloud load balancing (LBaaS)",
+									"url": "/learning/performance/cloud-load-balancing-lbaas/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "6BoLYDQbAwY5LuAk1OHyNu",
+							"name": "Performance Header: Performance for Developers",
+							"displayText": "Performance for Developers",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "35apJbC5biFa3jzTQHmDe1",
+									"displayText": "Why Minify Javascript?",
+									"url": "/learning/performance/why-minify-javascript-code/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2Xp2GgqtMv84qqtbYIIQtc",
+									"displayText": "HTTP/2 vs HTTP/1.1",
+									"url": "/learning/performance/http2-vs-http1.1/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4H29YTj5ck7Dfu72foQyXb",
+									"displayText": "What is JAMstack?",
+									"url": "/learning/performance/what-is-jamstack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2x2nqZ8zTTRUOqJhuYyaNH",
+									"displayText": "Static site generator",
+									"url": "/learning/performance/static-site-generator/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5Zm1SJxNbA3ddOOxIJW8yl",
+									"displayText": "How DCL & FCP Affect SEO",
+									"url": "/learning/performance/how-dcl-and-fcp-affect-seo/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "787jBq0LeOM6UkZuvDQNQW",
+									"displayText": "Making a Site Mobile Friendly",
+									"url": "/learning/performance/how-to-make-a-site-mobile-friendly/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5eTNDaWptWyi8ELSirebqE",
+									"displayText": "Speed Up a Website",
+									"url": "/learning/performance/speed-up-a-website/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "31bAifmor3KmJTmOyGUYGu",
+									"displayText": "Test the Speed of a Site",
+									"url": "/learning/performance/test-the-speed-of-a-website/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4hvxrtMRLXQXsqW3YKAUwN",
+									"displayText": "What is HTTP/3?",
+									"url": "learning/performance/what-is-http3"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4okTLSy9bqbLvqOAz4dqIf",
+									"displayText": "Preventing Downtime",
+									"url": "/learning/performance/preventing-downtime/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2x8bWWSONCzLyUVomacqHL",
+									"displayText": "Lazy Loading",
+									"url": "/learning/performance/what-is-lazy-loading/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "5exwZsks9Ss1d5Q52LVpbl",
+							"name": "Performance Header: More on Performance",
+							"displayText": "More on Performance",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7LQi33SEfVIys6UyNq8f9K",
+									"displayText": "What is Latency?",
+									"url": "/learning/performance/glossary/what-is-latency/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4CDfNtFZec20k10IsDnMKO",
+									"displayText": "Speed Up the Web",
+									"url": "/learning/performance/more/speed-up-the-web/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3n7LgS1F3I881eXiTOJVti",
+									"displayText": "What is an Image Optimizer?",
+									"url": "/learning/performance/glossary/what-is-an-image-optimizer/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3JVN13JI6LoSlZuhr7LAxF",
+									"displayText": "Routing vs. Smart Routing",
+									"url": "/learning/performance/routing-vs-smart-routing/"
+								}
+							]
+						}
+					]
+				},
+				"learningCenterArticleFooter": {
+					"contentTypeId": "learningCenterArticleFooter",
+					"contentfulId": "3BGH880XprClbWXeQhnw1L",
+					"learningCenterName": "performance",
+					"column1Title": "About Performance",
+					"column1": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "ES3KtU5NVbIkUUTPKBGds",
+						"name": "Performance Footer - About",
+						"displayText": "About Performance",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "e3oFRMHsIzHQZYTLmPDOr",
+								"displayText": "Why Site Speed Matters",
+								"url": "/learning/performance/why-site-speed-matters/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "31bAifmor3KmJTmOyGUYGu",
+								"displayText": "Test the Speed of a Site",
+								"url": "/learning/performance/test-the-speed-of-a-website/"
+							}
+						]
+					},
+					"column2Title": "Performance and SEO",
+					"column2": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "3gosdnz8T1wPj5ExVH8Ng6",
+						"name": "Performance Footer: SEO",
+						"displayText": "Performance and SEO",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2u9nE8G5zJaY1Limh5GLkW",
+								"displayText": "How Site Speed Boosts SEO",
+								"url": "/learning/performance/how-website-speed-boosts-seo/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5Zm1SJxNbA3ddOOxIJW8yl",
+								"displayText": "How DCL & FCP Affect SEO",
+								"url": "/learning/performance/how-dcl-and-fcp-affect-seo/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4s6X4x3EYYlHHb9aI4X31Q",
+								"displayText": "Core Web Vitals",
+								"url": "/learning/performance/what-are-core-web-vitals/ "
+							}
+						]
+					},
+					"column3Title": "More on Performance",
+					"column3": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "7tEVxRje5aVg2jKT46gn90",
+						"name": "Performance Footer: More",
+						"displayText": "More on Performance",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3XMpuNDRWA2j2aZ0qi1DaU",
+								"displayText": "Speed and Conversion Rates",
+								"url": "/learning/performance/more/website-performance-conversion-rates/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4CDfNtFZec20k10IsDnMKO",
+								"displayText": "Speed Up the Web",
+								"url": "/learning/performance/more/speed-up-the-web/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5eTNDaWptWyi8ELSirebqE",
+								"displayText": "Speed Up a Website",
+								"url": "/learning/performance/speed-up-a-website/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3JVN13JI6LoSlZuhr7LAxF",
+								"displayText": "Routing vs. Smart Routing",
+								"url": "/learning/performance/routing-vs-smart-routing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4H29YTj5ck7Dfu72foQyXb",
+								"displayText": "What is JAMstack?",
+								"url": "/learning/performance/what-is-jamstack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2x2nqZ8zTTRUOqJhuYyaNH",
+								"displayText": "Static site generator",
+								"url": "/learning/performance/static-site-generator/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4okTLSy9bqbLvqOAz4dqIf",
+								"displayText": "Preventing Downtime",
+								"url": "/learning/performance/preventing-downtime/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2x8bWWSONCzLyUVomacqHL",
+								"displayText": "Lazy Loading",
+								"url": "/learning/performance/what-is-lazy-loading/"
+							}
+						]
+					},
+					"column4Title": "Glossary",
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "6huscp9lw1hiV4RtOogq44",
+						"name": "Performance Footer: Glossary",
+						"displayText": "Glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7LQi33SEfVIys6UyNq8f9K",
+								"displayText": "What is Latency?",
+								"url": "/learning/performance/glossary/what-is-latency/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3n7LgS1F3I881eXiTOJVti",
+								"displayText": "What is an Image Optimizer?",
+								"url": "/learning/performance/glossary/what-is-an-image-optimizer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2Xp2GgqtMv84qqtbYIIQtc",
+								"displayText": "HTTP/2 vs HTTP/1.1",
+								"url": "/learning/performance/http2-vs-http1.1/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "205Es4ofD2BShliEBNj1Z6",
+								"displayText": "What is Load Balancing?",
+								"url": "/learning/performance/what-is-load-balancing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "hhFtuqqoybh6WOlwSiqIo",
+								"displayText": "Server failover",
+								"url": "/learning/performance/what-is-server-failover/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3EsOLhDVoFDkZWt35VPRqD",
+								"displayText": "DNS-based load balancing",
+								"url": "https://www.cloudflare.com/learning/performance/what-is-dns-load-balancing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4RFn9zHjqaC2djLIVH1R21",
+								"displayText": "Load balancing algorithms",
+								"url": "/learning/performance/types-of-load-balancing-algorithms/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7G0p4vQ9468caPQGJoE6IL",
+								"displayText": "Multi-cloud and hybrid cloud load balancing",
+								"url": "/learning/performance/load-balancing-multi-cloud-hybrid-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4hvxrtMRLXQXsqW3YKAUwN",
+								"displayText": "What is HTTP/3?",
+								"url": "learning/performance/what-is-http3"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4ZbTYQT5tvo9CTMX9psYMa",
+								"displayText": "Cloud load balancing (LBaaS)",
+								"url": "/learning/performance/cloud-load-balancing-lbaas/"
+							}
+						]
+					},
+					"column5Title": "Learning Center Navigation",
+					"column5": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "10E7AAyZScH8CewOHQxoql",
+						"name": "Performance Footer - Learning Nav",
+						"displayText": "Learning Center Navigation",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2hdSVoYA5asSIG0U2ae20c",
+								"displayText": "Learning Center Home",
+								"url": "/learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "56Y6OytBNgNoNDWQL2ezlf",
+								"displayText": "DDoS Learning Center",
+								"url": "/learning/ddos/what-is-a-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6DGcnYIMM0eCGwqAKu2ECO",
+								"displayText": "CDN Learning Center",
+								"url": "/learning/cdn/what-is-a-cdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Ra0qmFJ1uewk2MYscW8KI",
+								"displayText": "DNS Learning Center",
+								"url": "/learning/dns/what-is-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1yItw6W6SsM2Y0Wuq6Y2c6",
+								"displayText": "Security Learning Center",
+								"url": "/learning/security/what-is-web-application-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z3UC9tP1Kjk85BX5zSGPY",
+								"displayText": "Serverless Learning Center",
+								"url": "/learning/serverless/what-is-serverless/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52V7iI9YriJ0En2SGmEXz5",
+								"displayText": "SSL Learning Center",
+								"url": "/learning/ssl/what-is-ssl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7D22pOfjb98KXcnAJyJFCX",
+								"displayText": "Bots Learning Center",
+								"url": "/learning/bots/what-is-a-bot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7jgqDUFFzaLuKrsaBTLdV0",
+								"displayText": "Cloud Learning Center",
+								"url": "/learning/cloud/what-is-the-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3jjEMuuLrCwhRidjG5kglM",
+								"displayText": "Network Layer Learning Center",
+								"url": "/learning/network-layer/what-is-the-network-layer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6PdBQjiFs98K6RQuG5TYNd",
+								"displayText": "Access Management Learning Center",
+								"url": "/learning/access-management/what-is-identity-and-access-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RvS0l0m86G1VISDrEvlJb",
+								"displayText": "Privacy Learning Center",
+								"url": "/learning/privacy/what-is-data-privacy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "MytksT5WU5mh863BQYEkj",
+								"displayText": "Video Streaming Learning Center",
+								"url": "/learning/video/what-is-streaming/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
+								"displayText": "Email Security Learning Center",
+								"url": "/learning/email-security/what-is-email-security/"
+							}
+						]
+					}
+				},
+				"header": "What is load balancing? | How load balancers work",
+				"blurbSubHeader": "Load balancing is the process of distributing traffic among multiple servers to improve a service or application's performance and reliability.",
+				"objectivesHeader": "Load Balancing",
+				"objectivesList": [
+					"Define load balancing",
+					"Explain the two main categories of load balancing algorithms",
+					"Understand important load balancing concepts like server monitoring and failover"
+				],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "4RFn9zHjqaC2djLIVH1R21",
+						"displayText": "Load balancing algorithms",
+						"url": "/learning/performance/types-of-load-balancing-algorithms/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "3EsOLhDVoFDkZWt35VPRqD",
+						"displayText": "DNS-based load balancing",
+						"url": "https://www.cloudflare.com/learning/performance/what-is-dns-load-balancing/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "hhFtuqqoybh6WOlwSiqIo",
+						"displayText": "Server failover",
+						"url": "/learning/performance/what-is-server-failover/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "7G0p4vQ9468caPQGJoE6IL",
+						"displayText": "Multi-cloud and hybrid cloud load balancing",
+						"url": "/learning/performance/load-balancing-multi-cloud-hybrid-cloud/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "4ZbTYQT5tvo9CTMX9psYMa",
+						"displayText": "Cloud load balancing (LBaaS)",
+						"url": "/learning/performance/cloud-load-balancing-lbaas/"
+					}
+				],
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is load balancing?</h2>\n\n<img class=\"responsive-image--50-pct-center\" title=\"Load Balancing Image\" alt=\"Load Balancing Image\" src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/4UOw8NjWkV0seGVd2MxK9t/07bf5e88b1a20b6c09092b899361a9e2/Load-balancing-Illustration_650x650.png\" itemprop=\"image\" />\n\n<p>Load balancing is the practice of distributing computational workloads between two or more computers. On the Internet, load balancing is often employed to divide network traffic among several servers. This reduces the strain on each server and makes the servers more efficient, speeding up <a href='/learning/performance/why-site-speed-matters/'>performance</a> and reducing <a href='/learning/performance/glossary/what-is-latency/'>latency</a>. Load balancing is essential for most Internet applications to function properly.</p>\n\n<img src=\"/resources/images/slt3lc6tev37/25mxQ7enQpLxkGkPA65ThD/dedd9667bc99943c8f224b914307316b/without_load_balancing_diagram.png\" class=\"responsive-image\" alt=\"Without load balancing - server becomes overloaded, service slow\" itemprop=\"image\" />\n\n<img src=\"/resources/images/slt3lc6tev37/5XVUMMchWZhrGjDrVk6pU0/40234e77d9f6c0e6cdd8641f26cf9e3c/with_load_balancing_diagram.png\" class=\"responsive-image\" alt=\"With load balancing - workload distributed evenly\" itemprop=\"image\" />\n\n<p>Imagine a checkout line at a grocery store with 8 checkout lines, only one of which is open. All customers must get into the same line, and therefore it takes a long time for a customer to finish paying for their groceries. Now imagine that the store instead opens all 8 checkout lines. In this case, the wait time for customers is about 8 times shorter (depending on factors like how much food each customer is buying).</p>\n\n<p>Load balancing essentially accomplishes the same thing. By dividing user requests among multiple servers, user wait time is vastly cut down. This results in a better user experience — the grocery store customers in the example above would probably look for a more efficient grocery store if they always experienced long wait times.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does load balancing work?</h2>\n\n<p>Load balancing is handled by a tool or application called a load balancer. A load balancer can be either hardware-based or software-based. Hardware load balancers require the installation of a dedicated load balancing device; software-based load balancers can run on a server, on a <a href='/learning/cloud/what-is-a-virtual-machine/'>virtual machine</a>, or in the <a href='/learning/cloud/what-is-the-cloud/'>cloud</a>. <a href='/learning/cdn/what-is-a-cdn/'>Content delivery networks (CDN)</a> often include load balancing features.</p>\n\n<p>When a request arrives from a user, the load balancer assigns the request to a given server, and this process repeats for each request. Load balancers determine which server should handle each request based on a number of different algorithms. These algorithms fall into two main categories: static and dynamic.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Static load balancing algorithms</h2>\n\n<p>Static load balancing algorithms distribute workloads without taking into account the current state of the system. A static load balancer will not be aware of which servers are performing slowly and which servers are not being used enough. Instead it assigns workloads based on a predetermined plan. Static load balancing is quick to set up, but can result in inefficiencies.</p>\n\n<p>Referring back to the analogy above, imagine if the grocery store with 8 open checkout lines has an employee whose job it is to direct customers into the lines. Imagine this employee simply goes in order, assigning the first customer to line 1, the second customer to line 2, and so on, without looking back to see how quickly the lines are moving. If the 8 cashiers all perform efficiently, this system will work fine — but if one or more is lagging behind, some lines may become far longer than others, resulting in bad customer experiences. Static load balancing presents the same risk: sometimes, individual servers can still become overburdened.</p>\n\n<p><a href='/learning/dns/glossary/round-robin-dns/'>Round robin DNS</a> and client-side random load balancing are two common forms of static load balancing.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Dynamic load balancing algorithms</h2>\n\n<p>Dynamic load balancing algorithms take the current availability, workload, and health of each server into account. They can shift traffic from overburdened or poorly performing servers to underutilized servers, keeping the distribution even and efficient. However, dynamic load balancing is more difficult to configure. A number of different factors play into server availability: the health and overall capacity of each server, the size of the tasks being distributed, and so on.</p>\n\n<p>Suppose the grocery store employee who sorts the customers into checkout lines uses a more dynamic approach: the employee watches the lines carefully, sees which are moving the fastest, observes how many groceries each customer is purchasing, and assigns the customers accordingly. This may ensure a more efficient experience for all customers, but it also puts a greater strain on the line-sorting employee.</p>\n\n<p>There are several types of dynamic load balancing algorithms, including least connection, weighted least connection, resource-based, and geolocation-based load balancing.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Where is load balancing used?</h2>\n\n<p>As discussed above, load balancing is often used with web applications. Software-based and cloud-based load balancers help distribute Internet traffic evenly between servers that host the application. Some cloud load balancing products can balance Internet traffic loads across servers that are spread out around the world, a process known as <a href='/learning/cdn/glossary/global-server-load-balancing-gslb/'>global server load balancing (GSLB)</a>.</p>\n\n<p>Load balancing is also commonly used within large <a href='/learning/network-layer/what-is-a-lan/'>localized networks</a>, like those within a data center or a large office complex. Traditionally, this has required the use of hardware appliances such as an application delivery controller (ADC) or a dedicated load balancing device. Software-based load balancers are also used for this purpose.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is server monitoring?</h2>\n\n<p>Dynamic load balancers must be aware of server health: their current status, how well they are performing, etc. Dynamic load balancers monitor servers by performing regular server health checks. If a server or group of servers is performing slowly, the load balancer distributes less traffic to it. If a server or group of servers fails completely, the load balancer reroutes traffic to another group of servers, a process known as \"failover.\"</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is failover?</h2>\n\n<p>Failover occurs when a given server is not functioning and a load balancer distributes its normal processes to a secondary server or group of servers. Server failover is crucial for reliability: if there is no backup in place, a server crash could bring down a website or application. It is important that failover takes place quickly to avoid a gap in service.</p>\n\n<p>Learn more about different aspects of load balancing:</p>\n\n<ul class='learning-list'>\n  <li><a href='/learning/performance/types-of-load-balancing-algorithms/'>Load balancing algorithms</a>\n  <li><a href='/learning/cdn/glossary/global-server-load-balancing-gslb/'>Global server load balancing (GSLB)</a></li>\n  <li><a href='/learning/performance/what-is-dns-load-balancing/'>DNS load balancing</a></li>\n  <li><a href='/learning/performance/what-is-server-failover/'>Server failover</a></li>\n  <li><a href='/learning/performance/load-balancing-multi-cloud-hybrid-cloud/'>Load balancing across multiple clouds</a>\n  <li><a href='/load-balancing/'>Cloudflare Load Balancing</a></li>\n  <li><a href='https://developers.cloudflare.com/load-balancing/' target='_blank'>Set up a Cloudflare Load Balancer</a></li>\n</ul>\n",
+				"availableLocales": null,
+				"localized": null,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "No Page for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": null
+				},
+				"proactivePopup": null,
+				"sidebarForm": null
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "T400l0gYGL03KVvJ8ybvT",
+			"pathname": "/learning/performance/what-is-load-balancing/",
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

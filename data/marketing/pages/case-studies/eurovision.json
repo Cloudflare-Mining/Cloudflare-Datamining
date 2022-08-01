@@ -1,0 +1,84 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/eurovision/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Eurovisional",
+				"contentfulId": "2hxJU8POd2M8cqyGg2cy6i",
+				"nameUrlSlug": "eurovision",
+				"metaTags": {
+					"metaTitle": "Cloudflare | Case Study | Eurovision",
+					"metaDescription": "During the 2012 Eurovision Song Contest semi-final Eurovision.tv was targeted with a large DDoS attack.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2018-04-09",
+				"homepageUrl": "http://www.eurovision.tv/",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "During the 2012 Eurovision Song Contest semi-final Eurovision.tv was targeted with a large DDoS attack.",
+				"longDescription": "Eurovision was taken down with DDoS. Cloudflare brought it back online. \n\nHeld every year since 1956, the [Eurovision Song Contest](http://www.eurovision.tv/) reached 170 million television viewers worldwide in 2013. Participants from about 40 countries perform an original song, and a combination of public vote and national juries decide who continues on from the semi-finals to the Grand Final. Past winners of Eurovision include Celine Dion, the best-selling Canadian artist of all time, and ABBA, the most successful group to ever to take part in the contest. The contest takes place throughout the year with the semi-finals and final lasting for just a week, making for an incredibly exciting and intense grand final event.\n\n__Eurovision Sends Cloudflare an SOS__\n\nDuring the 2012 Eurovision Song Contest semi final, the busiest time of year for the website, Eurovision.tv was targeted with a large DDoS attack. “Our content delivery network provider at that time could only do very little to mitigate the attack, and because we were using a CDN, our hosting partner couldn’t do much filtering either,” said Wouter van Vliet, Project Developer of the Eurovision Song Contest at EBU/EUROVISION. “The first flood of attack traffic was mitigated with some blocking techniques implemented by our CDN, but when the attack got more creative there was nothing more they could do.”\n\nWouter and his team came across Cloudflare a few months earlier and had decided to keep the service in mind in case they were in need of additional security and protection. That time came sooner than they had imagined. With the main site of Europe’s favorite TV show going down during the most critical time of the year, just days before the Grand Final, they decided they needed Cloudflare. And fast!\n\nDuring the first semi final, fans of the Eurovision Song Contest access the website to find out results and to watch online streams of the contest. With the site service disrupting, visitors from around the world to Eurovision.tv experienced difficulty accessing these results and streams. It was imperative to the Eurovision Song Contest that they get back up and running.\n\nSo the Eurovision Song Contest reached out to Cloudflare. Cloudflare mitigated the DDoS attack and the site was brought back online. The editorial team and Eurovision.tv’s visitors immediately noticed the site was back in business. “We also noticed that the servers were beginning to have some space to breath again as well,” said van Vliet. “We have thrived from that moment on. Cloudflare has made our platforms much more stable, which has been a huge value for us.”\n\n__Cloudflare Answers, Provides More Than Just Search and Rescue__\n\nCloudflare not only mitigated the DDoS attack, but also increased Eurovision.tv’s performance, providing a noticeable improvement in load time to everyone who visits the site. With security and performance taken care of, the Eurovision Song Contest was able to get rid of their old CDN service and rely entirely on Cloudflare.\n\nAs the Eurovision Song Contest used the service more, they discovered additional features that made their lives easier. Eurovision.tv used Page Rules to cache additional content on Cloudflare’s edge, speeding up delivery without sacrificing up-to-the-minute updates during the global event. Page Rules gives Cloudflare customers fine-grained control over how Cloudflare interacts with a site on a page-by-page basis.\n\n“The combination of attack mitigation and CDN is what makes it so powerful,” said van Vliet. “Thanks to the great support we received from the Cloudflare team, especially during our peak weeks in May, we’ve felt more secure that the sites would keep running smooth regardless of amounts of traffic - and they have.”",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "Brought back online after massive DDoS attack\n\nStability during peak traffic events\n\nPage Rule implementation to increase performance\n\nDrastic performance improvements with global CDN",
+				"relatedCaseStudies": [
+					{
+						"name": "Christmas.com",
+						"nameUrlSlug": "christmas"
+					},
+					{
+						"name": "Shopping Cart Elite",
+						"nameUrlSlug": "shoppingcartelite"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "DDoS Mitigation",
+						"url": "/ddos/"
+					},
+					{
+						"title": "Content Delivery Network (CDN)",
+						"url": "/cdn/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Wouter van Vliet",
+				"employeeQuoteText": "Cloudflare has made our platforms much more stable, which has been a huge value for us . . . The combination of attack mitigation and CDN is what makes it so powerful.",
+				"employeeQuoteJobTitle": "Project Developer",
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": {
+					"file": {
+						"publicURL": "[path]/case-study-eurovision.pdf"
+					}
+				},
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/eurovision.svg"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "2hxJU8POd2M8cqyGg2cy6i",
+			"pathname": "/case-studies/eurovision/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": null
+		}
+	}
+}

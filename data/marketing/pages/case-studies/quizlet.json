@@ -1,0 +1,92 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/quizlet/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Quizlet",
+				"contentfulId": "4f6EhpCZ9eCesSmy8e6uGA",
+				"nameUrlSlug": "quizlet",
+				"metaTags": {
+					"metaTitle": "Cloudflare | Case Study | Quizlet",
+					"metaDescription": "Quizlet receives performance and security benefits, while saving more than 50% on their Google Cloud networking egress bill by using Cloudflare.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2018-04-24",
+				"homepageUrl": "https://quizlet.com/",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "Quizlet receives performance and security benefits, while saving more than 50% on their Google Cloud networking egress bill by using Cloudflare.",
+				"longDescription": "Quizlet receives performance and security benefits, while saving more than 50% on their Google Cloud networking egress bill by using Cloudflare.\n\nQuizlet makes study tools used by students and teachers. With more than 20 million monthly visitors, Quizlet has achieved success by enabling students to create and share study materials across on any subject.\n\n__Quizlet's Challenges: Mitigating DDoS Attacks and Globally Serving Content__\n\nQuizlet is the most popular online learning service in the United States, with a top 50 website and iOS and Android apps consistently ranked in the top 10 educational apps in their respective stores. As the site became more and more popular, it also became a bigger target for bad actors. Peter Bakkum, platform lead at Quizlet, recounted that \"as we grew and became a more visible target, we were starting to have trouble with DDoS attacks on our site preventing students from accessing study material.\" Furthermore, Quizlet was still serving traffic out of a single region in the US, which was limiting it’s ability to quickly serve content to a global student base. In order to meet the goal of making its learning tools readily available to the world, Quizlet needed a way to both protect its website from the increase in DDoS attacks, while simultaneously distributing its content internationally with high performance.\n\n__Quizlet's Solution: A Multi-Spoked Problem With a Bundled, Cost-Effective Solution__\n\n![quizlet-savings-graph](//cf-assets.www.cloudflare.com/slt3lc6tev37/24b8qyy4ggsMI8Mu4KuEGk/39754aa21141aef70076aaf4acf59d7f/quizlet-savings-graph.png)\n\nQuizlet found a solution to their problem that was easy, affordable, and effective. Quizlet enrolled in Cloudflare's CDN, DNS, WAF, and DDoS mitigation services and immediately noticed a dramatic improvement. Bakkum related that \"The reason we use Cloudflare is because the security features are excellent, the CDN is high performing, and using a single solution is very convenient. It simplifies everything and allows us to focus on our core business.\"\n\nWhile Quizlet focuses on their core business, Cloudflare helps to quickly and securely serve content around the world. Bakkum further explained \"We take connectivity in places with poor internet really seriously, so the latency benefits of Cloudflare are huge for us. Because we run out of a single region in the US we've seen dramatically increased performance for our international students because of Cloudflare's global caching.\" Furthermore, Quizlet sees security benefits that simultaneously protect its site and further increase its performance. This is possible because Quizlet's site now sits behind Cloudflare's network, which means malicious traffic is diverted away from hitting Quizlet's origin server by Cloudflare's Web Application Firewall (WAF), and DDoS attacks are mitigated through Cloudflare's advanced web security. In addition, Bakkum was delighted that \"our TLS traffic sees significant performance benefits because Cloudflare handles SSL negotiations edgeside closer to the user.\"\n\n![quizlet-performace](//cf-assets.www.cloudflare.com/slt3lc6tev37/7CEil4V160sQwueKS6gSaS/9a7a41a400b6f4e196eac05c824b3fe3/quizlet-performace.png)\n\nCloudflare not only helps Quizlet with security and content distribution, but also helps save them thousands of dollars on their monthly Google Cloud Services bill. In May 2016, the last month of school and a busy time for Quizlet, Cloudflare helped cut their network egress bill by more than 50%— which translated to thousands of dollars that Quizlet saves every month thanks to Cloudflare. On average, Quizlet saves over 10Tb of bandwidth every day.",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "Saving 50% on monthly Google Cloud Network Egress Bill\n\n76% reduction (or over 10 Tb) of daily bandwidth use",
+				"relatedCaseStudies": [
+					{
+						"name": "Zendesk",
+						"nameUrlSlug": "zendesk"
+					},
+					{
+						"name": "Udacity",
+						"nameUrlSlug": "udacity"
+					},
+					{
+						"name": "Discord",
+						"nameUrlSlug": "discord"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Content Delivery Network (CDN)",
+						"url": "/cdn/"
+					},
+					{
+						"title": "DDoS Mitigation",
+						"url": "/ddos/"
+					},
+					{
+						"title": "Google Cloud Integration",
+						"url": "/integrations/google-cloud/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Peter Bakkum",
+				"employeeQuoteText": "The reason we use Cloudflare is because the security features are excellent, the CDN (Content Delivery Network) is high performing, and it’s really convenient that these solutions are packaged together. It makes managing everything easy, and allows us to focus on our core business.",
+				"employeeQuoteJobTitle": "Platform Lead at Quizlet",
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": {
+					"file": {
+						"publicURL": "[path]/case-study-quizlet.pdf"
+					}
+				},
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/quizlet.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "4f6EhpCZ9eCesSmy8e6uGA",
+			"pathname": "/case-studies/quizlet/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": null
+		}
+	}
+}

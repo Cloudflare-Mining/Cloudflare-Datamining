@@ -1,0 +1,95 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/cars24/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "CARS24",
+				"contentfulId": "2YIRofvx7mO6Dn36CYCiJ",
+				"nameUrlSlug": "cars24",
+				"metaTags": {
+					"metaTitle": "CARS24 | Case Study",
+					"metaDescription": "CARS24 & Cloudflare | Case Study",
+					"twitterCustomImage": {
+						"file": {
+							"publicURL": "[path]/cars24_meta.png"
+						}
+					},
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/cars24_meta.png"
+						}
+					},
+					"facebookCustomImage": {
+						"file": {
+							"publicURL": "[path]/cars24_meta.png"
+						}
+					}
+				},
+				"orderDate": "2022-04-27",
+				"homepageUrl": "https://www.cars24.com/",
+				"hideFromCaseStudiesPage": false,
+				"shortDescription": "CARS24 uses Cloudflare to protect its customers from malicious bots and DDoS attacks while providing peace of mind to both buyers and sellers in the pre-owned car market",
+				"longDescription": "## __Cloudflare helps the CARS24 ecommerce platform stay one step ahead of DDoS attacks, data scrapers, and appointment hoarding bots__\n\nIndia’s growing professional class aspires more than ever toward the safety and convenience of private transportation. Many car buyers, however, are simply unwilling to pay the premium new car prices that COVID-19 uncertainties, global supply chain issues, and a shortfall of new vehicles demand. That is where CARS24 enters the picture. Pioneering a unique dual C2B and B2C sales strategy, CARS24 demystifies the sale of pre-owned cars by offering sellers fair valuations and buyers quality assurance, warranties, and financing. \n\nThe timing couldn’t be better  — [India’s pre-owned vehicle market is currently valued at US $34.1 billion](https://www.mordorintelligence.com/industry-reports/india-used-car-market), with projections estimating that number will double to over US $70 billion by 2027 as other regional markets follow suit. Valued at $5 billion, this privately-owned, 2015 startup has 205 branches across India, a presence in 203 Indian cities, and a network of 10,000+ channel partners. With the Indian market well in hand, CARS24 has expanded to the UAE, Australia, and Thailand and has plans underway to further their global reach. \n\n### __Challenge: Ensuring secure, frictionless transactions in a fast-paced international ecosystem under attack__\n\nAs a thriving autotech ecommerce platform, CARS24 depends on security, stability, and availability to ensure frictionless transactions in a market fraught with buyer and seller insecurity.\n\n“Convenience and consumer peace of mind are the most important services we provide,” explains Marut Singh, the CARS24 CTO overseeing the company’s tech stack, application architecture, and security. “Although the process looks very simple, there are many underlying complexities,” he adds, referring to consumer confidence as well as the regulations, logistics, and systems required to evaluate, acquire, refurbish, photograph, and finance the purchase of each vehicle.\n\n“Our infrastructure must always be up and running because our customers won't wait. There is a limited supply of vehicles and a lot of people interested in each car. Delays mean lost opportunities.”\n\nWith a three-person SecOps team doing double duty handling compliance and multiple internal and external domains used by their channel partners and customers around the world, CARS24 had multiple concerns.\n\n“We were facing DDoS attacks, data scrapers, and cumbersome certificate management across all our web properties as they grew in number,” summarizes Singh. “We wanted a security layer that could protect our web properties and APIs without adding significant overhead.”\n\nIn their quest for a security solution, CARS24 tried several vendors before Cloudflare, but none of them ticked all the boxes.\n\n“The competitor with the largest comparable footprint and service offering to Cloudflare had a user interface that was too clunky and outdated to use efficiently,” Singh recalls. “Another vendor lacked Indian servers — the nearest was in Singapore — and added significant latency to our infrastructure. The last solution we looked at was too complicated to configure effectively and had immature pricing policies.”\n\nCARS24 wanted an advanced security solution that delivered everything on their list — ease of implementation and configuration, maintenance, performance, local server coverage, prompt support, and value for money. \n\n### __Cloudflare ensures seamless WAF implementation and peak-level DDoS protection__\n\nCARS24 began their journey with Cloudflare in 2019 by moving to protect their domains with the Web Application Firewall (WAF).\n\n“It really wasn’t difficult. Integrating Cloudflare with our newer domains was just a matter of changing name servers,” says Singh.\n\nMigrating CARS24’s legacy domains and their complex load balancing requirements proved to be almost equally straightforward. With Cloudflare CNAME flattening, CARS24 was able to provide immediate access to edge services.\n\n“When we used competing solutions, we encountered significant implementation and configuration issues with changes taking a long time to reflect,” Singh relates. “What took us three days with a previous provider, Cloudflare accomplished in an hour. Overall, the Cloudflare interface is much simpler, and certificates and configuration changes to the WAF propagate in minutes.”\n\nWith Cloudflare, the CARS24 team can finally address their most pressing security concern: DDoS attacks. With their early vendors, CARS24 was particularly vulnerable on weekends when customer activity was highest and their technical staff least available.\n\n“Saturdays and Sundays are our busiest days and, in the past, the site has failed due to a DDoS attack during this critical period,” says Singh.\n\nNow, CARS24 can configure robust DDoS attack prevention with a combination of the Cloudflare WAF, Managed Ruleset, OWASP ModSecurity Core Ruleset, and their own custom rules.\n\nCARS24 also uses Cloudflare country-based IP blocking to avert unwanted volume attacks and ensure their sites stay up.\n\n“There is no strategic value in allowing traffic that originates in problem countries when it couldn’t possibly come from a potential customer,” says Singh.\n\nDirectly from the dashboard, Cloudflare filters out questionable requests and secures the CARS24 websites, applications, and networks against DDoS attacks without compromising performance or inconveniencing legitimate customer traffic.\n\n“In the most severe instances, we can rely on the Cloudflare cache to serve our users even if our underlying infrastructure is not available,” Singh adds. “It gives us an advantage for sure.” \n\n### __Cloudflare Bot Management frees up customer appointment times and reduces unwanted traffic and unnecessary overheads__\n\nAnother pain point for CARS24 was “hoarding” bots that create false bookings and disrupt the company’s vehicle acquisition workflows.\n\nSingh explains, “There is a fixed number of bookings our vehicle inspection partners can handle. When a bot blocks those appointment slots, we can’t accept real bookings which means we can’t buy cars.”\n\nCloudflare’s advanced rate limiting protects CARS24 from unusual activity like excessive login attempts or repeated API calls.    \n\nData scrapers were also a threat to user personal information and CARS24 public domain data that needed to be curbed. In addition to the security risk, the unwanted traffic was affecting CARS24’ bottom line.\n\n“Whether or not traffic is genuine, we bear the costs of upgrading our infrastructure to serve it,” says Singh. “Useless traffic also skews our analytics and puts us in danger of focusing our marketing and other initiatives on the wrong audience.”\n\nWith the granular control Cloudflare gives CARS24 over their traffic, Singh and his team can rapidly recognize spurious activity and automatically block, challenge, or redirect threats without interrupting service or staffing around the clock to manually monitor systems. \n\n“Simply put, Cloudflare identifies and mitigates risks to our ecosystem that rogue elements want to exploit,” says Singh, indicating that Cloudflare had stopped 44,000 threats in the last 24 hours. “We couldn’t build that in-house and expect to get it right. Discovering an attack and knowing Cloudflare has already stopped it gives us peace of mind.”      \n\n### __Non-disruptive legacy code replacement on the edge with Cloudflare Workers__\n\nCloudflare Workers enables CARS24 to deploy serverless code on the edge of a powerful global network, minimizing latency and removing on-premise infrastructure dependencies. Singh explains how Workers empowers CARS24 development teams to update their legacy PHP codebase to React.js without service interruptions or laborious update procedures: \n\n“Workers and advanced routing mesh well with our development roadmap. We are changing our tech stack and converting our backlog page by page using complex logic to direct users to our new code. It would be very difficult to do from inside our own web servers, but it is very easy to do with Workers on the edge.”             \n\nAs CARS24 takes the business even further afield, Workers features are likely to become a more critical part of their infrastructure.\n\n“In addition, we are exploring the use cases of Cloudflare Tunnel and Argo Smart Routing as the CARS24 global portfolio continues to expand,” says Singh. The company is also investigating caching their static content — including images of their entire automobile inventory — on Cloudflare’s global network.   \n\nAfter three years, CARS24 remains impressed by the availability of the dedicated Cloudflare CSM and CSE teams working to meet their needs.\n\n“Cloudflare is such a technical product, having immediate access to their support team’s expertise to ensure everything is configured for maximum performance, answer a quick question, or get on a call to help us explore a new product or feature is very reassuring,” says Singh. “As their customer, I’m confident Cloudflare will continue to support CARS24 as we grow.” \n",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "- Reduced infrastructure overheads and eliminated misleading marketing insights by diverting malicious traffic\n\n- Improved customer access to high-demand vehicle inspection services by eliminating false appointment booking\n\n- Enabled low-impact, zero-disruption legacy code replacement using edge serverless computing",
+				"relatedCaseStudies": [
+					{
+						"name": "Koo",
+						"nameUrlSlug": "koo"
+					},
+					{
+						"name": "Auto Trader UK",
+						"nameUrlSlug": "auto-trader-on-premises-cloud-migration"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Web Application Firewall (WAF) ",
+						"url": "/waf/"
+					},
+					{
+						"title": "Workers",
+						"url": "/products/cloudflare-workers/"
+					},
+					{
+						"title": "Bot Management",
+						"url": "https://www.cloudflare.com/products/bot-management/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Marut Singh",
+				"employeeQuoteText": "What took us three days with a previous provider, Cloudflare accomplished in an hour. The Cloudflare dashboard is much simpler, and certificates and configuration changes to the WAF propagate in minutes.",
+				"employeeQuoteJobTitle": "CTO",
+				"employeeQuoteName2": "Marut Singh",
+				"employeeQuoteText2": "Cloudflare filters out questionable requests and secures Cars24 websites, applications, and networks against DDoS attacks without compromising performance or inconveniencing legitimate customer traffic.",
+				"employeeQuoteJobTitle2": "CTO",
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/Cars24logo.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "2YIRofvx7mO6Dn36CYCiJ",
+			"pathname": "/case-studies/cars24/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US",
+				"es-ES"
+			]
+		}
+	}
+}

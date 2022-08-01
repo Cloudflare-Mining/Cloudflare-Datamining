@@ -1,0 +1,624 @@
+{
+	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
+	"path": "/learning/ssl/lava-lamp-encryption/",
+	"result": {
+		"data": {
+			"learningCenterArticle": {
+				"contentTypeId": "learningCenterArticle",
+				"contentfulId": "7KV718gMkHCUPEUqCS65Bw",
+				"urlSlug": "ssl/lava-lamp-encryption",
+				"metaTags": {
+					"metaTitle": "How do lava lamps help with Internet encryption?",
+					"metaDescription": "The Cloudflare lava lamps are used for Internet encryption. Learn about entropy in cryptography and why randomness is essential for SSL encryption.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"metaTitle": "How Do Lava Lamps Help with Internet Encryption?",
+				"metaDescription": "The Cloudflare lava lamps are used for Internet encryption. Learn about entropy in cryptography and why randomness is essential for SSL encryption.",
+				"learningCenterArticleSubHeader": {
+					"contentTypeId": "learningCenterArticleSubHeader",
+					"contentfulId": "3u6eezFpOUiCop2PUEz413",
+					"learningCenterName": "ssl",
+					"links": [
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "357fevHD1vzqQ8mp5tKWWp",
+							"displayText": "What is SSL?",
+							"url": "/learning/ssl/what-is-ssl/"
+						},
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "gwBHxAG3RwjReejRFn4Tb",
+							"displayText": "What is an SSL Certificate?",
+							"url": "/learning/ssl/what-is-an-ssl-certificate/"
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "41bCzYtpXDZRkfm3BzO806",
+							"name": "SSL Header: HTTP vs. HTTPS",
+							"displayText": "HTTP vs. HTTPS",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "zcwchxBLBWoaxyFq5Dhrj",
+									"displayText": "HTTP Security Gaps",
+									"url": "/learning/ssl/why-is-http-not-secure/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "11gGk7UFGxU33PLEUtjRfG",
+									"displayText": "What is HTTPS?",
+									"url": "/learning/ssl/what-is-https/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "15Vc3WANDpfVAs97KDEpzB",
+									"displayText": "Why Use HTTPS?",
+									"url": "/learning/ssl/why-use-https/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1oRht1dhER6Saxylj6glBn",
+									"displayText": "What is Mixed Content?",
+									"url": "/learning/ssl/what-is-mixed-content/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "4yMBT5IbPkVA9mccwMlLAY",
+							"name": "SSL Header: How Encryption Works",
+							"displayText": "How Encryption Works",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7qNVD8JotWdDbcqpZbp3VE",
+									"displayText": "What is Encryption?",
+									"url": "/learning/ssl/what-is-encryption/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3rrJ1k7k9ENDfgrBK5YzYK",
+									"displayText": "What is a Key?",
+									"url": "/learning/ssl/what-is-a-cryptographic-key/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4Uc11k7V2M5fHP5LmuF3vu",
+									"displayText": "What is a Session Key?",
+									"url": "/learning/ssl/what-is-a-session-key/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "57mpp35oVI2JzfRKESr73H",
+									"displayText": "Public Key Encryption",
+									"url": "/learning/ssl/how-does-public-key-encryption-work/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "33mZ23MKbvH87xdIT1dD7U",
+									"displayText": "Asymmetric Encryption",
+									"url": "/learning/ssl/what-is-asymmetric-encryption/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1QIQ5fPzS3n1uqI4XYZu72",
+									"displayText": "Lava Lamp Encryption",
+									"url": "/learning/ssl/lava-lamp-encryption/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2lwLYHBHzDBTGRId8drlRf",
+									"displayText": "Quantum Computing",
+									"url": "/learning/ssl/quantum/what-is-quantum-computing/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "5NWfQa2W1T6GY7oKFVQ5yn",
+							"name": "SSL Header: SSL Glossary",
+							"displayText": "SSL Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7dVuWLoT4g4e5ACvtAvDXG",
+									"displayText": "SSL Handshake",
+									"url": "/learning/ssl/what-happens-in-a-tls-handshake/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1brMQhAhJnFjyUUM6TaQrW",
+									"displayText": "What is TLS?",
+									"url": "/learning/ssl/transport-layer-security-tls/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3DJJDfuNUIAZ9HHhRYGgbV",
+									"displayText": "Keyless SSL",
+									"url": "/learning/ssl/keyless-ssl/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2fhx0LLDXj3vPLqS4ghmCe",
+									"displayText": "How SSL Works",
+									"url": "/learning/ssl/how-does-ssl-work/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6R3H8YcjaXUWJfMFDzvpUu",
+									"displayText": "SSL Certificate Types",
+									"url": "/learning/ssl/types-of-ssl-certificates/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7Gakh2yuxfEcpgxfy1hJhg",
+									"displayText": "Why Use TLS 1.3?",
+									"url": "/learning/ssl/why-use-tls-1.3/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5AsEd8eehv2y9EnsWeAVRr",
+									"displayText": "What is SNI?",
+									"url": "/learning/ssl/what-is-sni/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "DQ4yCoBF3o0LSkpiQCyuc",
+									"displayText": "Connection Not Private",
+									"url": "/learning/ssl/connection-not-private-explained/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2lbLRhcdSDOeSBEOF6PBsf",
+									"displayText": "What is Encrypted SNI?",
+									"url": "/learning/ssl/what-is-encrypted-sni/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6UQyd1PLht2H5F8aSNnF1y",
+									"displayText": "What is Domain Spoofing?",
+									"url": "/learning/ssl/what-is-domain-spoofing/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "6jvtLTbtKFKb5U7Fi94imf",
+							"name": "SSL header: Insights",
+							"displayText": "Insights",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "22UXessHsWvrAW3d6QdL1i",
+									"displayText": "Securing the post-quantum world",
+									"url": "https://www.cloudflare.com/insights-quantum-computing/"
+								}
+							]
+						}
+					]
+				},
+				"learningCenterArticleFooter": {
+					"contentTypeId": "learningCenterArticleFooter",
+					"contentfulId": "4qJHR2kpJZnCuBYyk2jEUu",
+					"learningCenterName": "ssl",
+					"column1Title": "About SSL/TLS",
+					"column1": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "7r9tBZ6FyoU4ybaPKM0uP5",
+						"name": "SSL Footer: About",
+						"displayText": "About SSL",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "357fevHD1vzqQ8mp5tKWWp",
+								"displayText": "What is SSL?",
+								"url": "/learning/ssl/what-is-ssl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1brMQhAhJnFjyUUM6TaQrW",
+								"displayText": "What is TLS?",
+								"url": "/learning/ssl/transport-layer-security-tls/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2fhx0LLDXj3vPLqS4ghmCe",
+								"displayText": "How SSL Works",
+								"url": "/learning/ssl/how-does-ssl-work/"
+							}
+						]
+					},
+					"column2Title": "About HTTPS",
+					"column2": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "1NrTagZnZPxPyjSu05dXiw",
+						"name": "SSL Footer: HTTPS",
+						"displayText": "About HTTPS",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "11gGk7UFGxU33PLEUtjRfG",
+								"displayText": "What is HTTPS?",
+								"url": "/learning/ssl/what-is-https/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "15Vc3WANDpfVAs97KDEpzB",
+								"displayText": "Why Use HTTPS?",
+								"url": "/learning/ssl/why-use-https/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "zcwchxBLBWoaxyFq5Dhrj",
+								"displayText": "HTTP Security Gaps",
+								"url": "/learning/ssl/why-is-http-not-secure/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "DQ4yCoBF3o0LSkpiQCyuc",
+								"displayText": "Connection Not Private",
+								"url": "/learning/ssl/connection-not-private-explained/"
+							}
+						]
+					},
+					"column3Title": "About Encryption",
+					"column3": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "7bDOcuccdiCIy26KzI2d1Q",
+						"name": "SSL Footer: Encryption",
+						"displayText": "About Encryption",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7qNVD8JotWdDbcqpZbp3VE",
+								"displayText": "What is Encryption?",
+								"url": "/learning/ssl/what-is-encryption/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "57mpp35oVI2JzfRKESr73H",
+								"displayText": "Public Key Encryption",
+								"url": "/learning/ssl/how-does-public-key-encryption-work/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "33mZ23MKbvH87xdIT1dD7U",
+								"displayText": "Asymmetric Encryption",
+								"url": "/learning/ssl/what-is-asymmetric-encryption/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1QIQ5fPzS3n1uqI4XYZu72",
+								"displayText": "Lava Lamp Encryption",
+								"url": "/learning/ssl/lava-lamp-encryption/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3rrJ1k7k9ENDfgrBK5YzYK",
+								"displayText": "What is a Key?",
+								"url": "/learning/ssl/what-is-a-cryptographic-key/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Uc11k7V2M5fHP5LmuF3vu",
+								"displayText": "What is a Session Key?",
+								"url": "/learning/ssl/what-is-a-session-key/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2lwLYHBHzDBTGRId8drlRf",
+								"displayText": "Quantum Computing",
+								"url": "/learning/ssl/quantum/what-is-quantum-computing/"
+							}
+						]
+					},
+					"column4Title": "SSL Glossary",
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "4yqGLocqy6kW3wUKCxerun",
+						"name": "SSL Footer: Glossary",
+						"displayText": "SSL Glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1oRht1dhER6Saxylj6glBn",
+								"displayText": "What is Mixed Content?",
+								"url": "/learning/ssl/what-is-mixed-content/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7dVuWLoT4g4e5ACvtAvDXG",
+								"displayText": "SSL Handshake",
+								"url": "/learning/ssl/what-happens-in-a-tls-handshake/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "gwBHxAG3RwjReejRFn4Tb",
+								"displayText": "What is an SSL Certificate?",
+								"url": "/learning/ssl/what-is-an-ssl-certificate/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6R3H8YcjaXUWJfMFDzvpUu",
+								"displayText": "SSL Certificate Types",
+								"url": "/learning/ssl/types-of-ssl-certificates/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7Gakh2yuxfEcpgxfy1hJhg",
+								"displayText": "Why Use TLS 1.3?",
+								"url": "/learning/ssl/why-use-tls-1.3/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5AsEd8eehv2y9EnsWeAVRr",
+								"displayText": "What is SNI?",
+								"url": "/learning/ssl/what-is-sni/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2lbLRhcdSDOeSBEOF6PBsf",
+								"displayText": "What is Encrypted SNI?",
+								"url": "/learning/ssl/what-is-encrypted-sni/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6UQyd1PLht2H5F8aSNnF1y",
+								"displayText": "What is Domain Spoofing?",
+								"url": "/learning/ssl/what-is-domain-spoofing/"
+							}
+						]
+					},
+					"column5Title": "Learning Center Navigation",
+					"column5": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "5qQn8nMmpW7qfjbAtFT7by",
+						"name": "SSL Footer: LC Navigation",
+						"displayText": "Learning Center Navigation",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2hdSVoYA5asSIG0U2ae20c",
+								"displayText": "Learning Center Home",
+								"url": "/learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "56Y6OytBNgNoNDWQL2ezlf",
+								"displayText": "DDoS Learning Center",
+								"url": "/learning/ddos/what-is-a-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6DGcnYIMM0eCGwqAKu2ECO",
+								"displayText": "CDN Learning Center",
+								"url": "/learning/cdn/what-is-a-cdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Ra0qmFJ1uewk2MYscW8KI",
+								"displayText": "DNS Learning Center",
+								"url": "/learning/dns/what-is-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q67XLnKqKhfmDJR4q9hJT",
+								"displayText": "Performance Learning Center",
+								"url": "/learning/performance/why-site-speed-matters/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1yItw6W6SsM2Y0Wuq6Y2c6",
+								"displayText": "Security Learning Center",
+								"url": "/learning/security/what-is-web-application-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z3UC9tP1Kjk85BX5zSGPY",
+								"displayText": "Serverless Learning Center",
+								"url": "/learning/serverless/what-is-serverless/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7D22pOfjb98KXcnAJyJFCX",
+								"displayText": "Bots Learning Center",
+								"url": "/learning/bots/what-is-a-bot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7jgqDUFFzaLuKrsaBTLdV0",
+								"displayText": "Cloud Learning Center",
+								"url": "/learning/cloud/what-is-the-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6PdBQjiFs98K6RQuG5TYNd",
+								"displayText": "Access Management Learning Center",
+								"url": "/learning/access-management/what-is-identity-and-access-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3jjEMuuLrCwhRidjG5kglM",
+								"displayText": "Network Layer Learning Center",
+								"url": "/learning/network-layer/what-is-the-network-layer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RvS0l0m86G1VISDrEvlJb",
+								"displayText": "Privacy Learning Center",
+								"url": "/learning/privacy/what-is-data-privacy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "MytksT5WU5mh863BQYEkj",
+								"displayText": "Video Streaming Learning Center",
+								"url": "/learning/video/what-is-streaming/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
+								"displayText": "Email Security Learning Center",
+								"url": "/learning/email-security/what-is-email-security/"
+							}
+						]
+					}
+				},
+				"header": "How do lava lamps help with Internet encryption?",
+				"blurbSubHeader": "Cloudflare translates photos of 100 lava lamps into random data for use in SSL encryption.",
+				"objectivesHeader": "Lava Lamp Encryption",
+				"objectivesList": [
+					"Learn why randomness is necessary for encryption keys",
+					"Explain why computers can't create randomness on their own",
+					"Understand how a computer uses random inputs to generate random outputs",
+					"Learn what a cryptographic seed is",
+					"Understand how lava lamps create the random data necessary for a cryptographic seed"
+				],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "7qNVD8JotWdDbcqpZbp3VE",
+						"displayText": "What is Encryption?",
+						"url": "/learning/ssl/what-is-encryption/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "57mpp35oVI2JzfRKESr73H",
+						"displayText": "Public Key Encryption",
+						"url": "/learning/ssl/how-does-public-key-encryption-work/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "33mZ23MKbvH87xdIT1dD7U",
+						"displayText": "Asymmetric Encryption",
+						"url": "/learning/ssl/what-is-asymmetric-encryption/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "357fevHD1vzqQ8mp5tKWWp",
+						"displayText": "What is SSL?",
+						"url": "/learning/ssl/what-is-ssl/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "gwBHxAG3RwjReejRFn4Tb",
+						"displayText": "What is an SSL Certificate?",
+						"url": "/learning/ssl/what-is-an-ssl-certificate/"
+					}
+				],
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">Why does Cloudflare use lava lamps to help with encryption?</h2>\n\n<p>Randomness is extremely important for secure <a href='/learning/ssl/what-is-encryption/'>encryption</a>. Each new key that a computer uses to encrypt data must be truly random, so that an attacker won't be able to figure out the key and decrypt the data. However, computers are designed to provide predictable, logical outputs based on a given input. They aren't designed to produce the random data needed for creating unpredictable <a href='/learning/ssl/what-is-a-cryptographic-key/'>encryption keys</a>.</p>\n\n<p>To produce the unpredictable, chaotic data necessary for strong encryption, a computer must have a source of random data. The \"real world\" turns out to be a great source for randomness, because events in the physical world are unpredictable.</p>\n\n<p>As one might expect, lava lamps are consistently random. The \"lava\" in a lava lamp never takes the same shape twice, and as a result, observing a group of lava lamps is a great source for random data.</p>\n\n<img src=\"https://blog.cloudflare.com/content/images/2017/11/lava-lamps.jpg\" class=\"responsive-image\" alt=\"Cloudflare Lava Lamp Wall\" itemprop=\"image\"/>\n\n<p>To collect this data, Cloudflare has arranged about 100 lava lamps on one of the walls in the lobby of the Cloudflare headquarters and mounted a camera pointing at the lamps. The camera takes photos of the lamps at regular intervals and sends the images to Cloudflare servers. All digital images are really stored by computers as a series of numbers, with each pixel having its own numerical value, and so each image becomes a string of totally random numbers that the Cloudflare servers can then use as a starting point for creating secure encryption keys.</p>\n\n<p>Thus, with the help of lava lamps, Cloudflare is able to offer extremely strong (and sufficiently random) <a href='/learning/ssl/what-is-ssl/'>SSL</a>/<a href='/learning/ssl/transport-layer-security-tls/'>TLS encryption</a> to its customers. This is especially important considering that millions of Internet properties use Cloudflare.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What does 'random' mean in the context of cryptography?</h2>\n\n<p>In cryptography, random does not just mean statistically random; it also means unpredictable. Suppose someone were to roll a single six-sided die two dozen times with the following results:</p>\n\n<p>1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6</p>\n\n<p>Statistically speaking, this is a random distribution of die-rolling results. Each number has an equal probability of being rolled, so it's within the realm of possibility that this sequence would appear.</p>\n\n<p>However, this sequence is not unpredictable. If this series were used in encryption, an attacker could figure out the pattern.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Why is true unpredictability important for encryption?</h2>\n\n<p>Encrypted data should look like totally random data, since predictable data can be guessed. If there is any pattern – if certain values are used for encryption more than others, or if values appear in a certain order consistently – then mathematical analysis will pick up on the pattern and allow an attacker to have a much easier time guessing the key used for encryption. Essentially, if encrypted data is predictable, it might as well already be compromised.</p>\n\n<p>The process of <a href='/learning/ssl/what-is-encryption/'>encryption</a> itself is a predictable one: Encrypted data plus the right key equals decrypted data, and the decrypted data is the same as it was before it was encrypted. But the encryption keys used have to be unpredictable.</p>\n\n<p>To understand why unpredictability is so important, imagine two poker players: Bob always bets when he has good cards and folds (declines to match other players' bets) when he has bad cards. Alice, meanwhile, mixes up her betting strategy so that there's no discernable pattern to it: sometimes she bets when she has good cards, sometimes she contents herself with matching other players' bets, and sometimes she even bluffs by betting big when she has bad cards. When Alice and Bob enter the same poker tournament, Alice lasts much longer than Bob does, because Bob is too predictable. Opponents quickly figure out when Bob has good cards and react accordingly. Even though they can't see his cards, they can discern roughly what cards he's holding.</p>\n\n<p>Similarly, even though attackers can't see the \"cards\" – or, the encrypted content – that's sent over a network, they can guess it if the method for concealing the content is too predictable.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Why can't computers create randomness?</h2>\n\n<p>Computers run on logic. A computer program is based on if-then statements: If certain conditions are met, then perform this specified action. The same input into a program results in the same output every time.</p>\n\n<p>This is by design. An input should lead to an expected output, not an unexpected one. Imagine the chaos if a printer printed random text that was different from the text in the document that was sent to the printer, or if smartphones were to call a different phone number than the one the user entered. Computers are only useful because of their (relative) reliability and predictability. However, that predictability is a liability when it comes to generating secure encryption keys.</p>\n\n<p>Some computer programs are good at simulating randomness, but not good enough at it for creating encryption keys.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How can a computer use random, real-world inputs to generate random data?</h2>\n\n<p>A software program called a pseudorandom number generator (PRNG) is able to take an unpredictable input and use it to generate unpredictable outputs. Theoretically, a PRNG can produce unlimited random outputs from a random input.</p>\n\n<p>Such an algorithm is called \"pseudorandom\" and not \"random\" because its outputs are not actually completely random. Why is this the case? There are 2 main reasons:</p>\n\n<ol class=\"learning-list\">\n  <li>When given the same seed to start with twice in a row, a PRNG will produce the exact same results.</li>\n  <li>It's difficult to prove if the results it generates will be completely random the entire time (if the PRNG runs indefinitely).</li>\n</ol>\n\n<p>Because of reason No. 2, the algorithm continually needs new inputs of randomness. A random input is known as a \"cryptographic seed.\"</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a cryptographically secure pseudorandom number generator?</h2>\n\n<p>A cryptographically secure pseudorandom number generator, or CSPRNG, is a PRNG that meets more stringent standards, making it safer to use for cryptography. A CSPRNG meets two requirements that PRNGs may not necessarily meet:</p>\n\n<ol class=\"learning-list\">\n  <li>It has to pass certain statistical randomness tests to prove unpredictability.</li>\n  <li>An attacker must not be able to predict the outputs of the CSPRNG even if they have partial access to the program.</li>\n</ol>\n\n<p>Like a PRNG, a CSPRNG needs random data (the cryptographic seed) as a starting point from which to produce more random data.</p>\n\n<p>To generate encryption keys for SSL/TLS encryption, Cloudflare uses a CSPRNG, with data collected from the lava lamps as part of the cryptographic seed.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a cryptographic seed?</h2>\n\n<p>A cryptographic seed is the data that a CSPRNG starts with for generating random data. Although a CSPRNG could theoretically produce unlimited random outputs from a single cryptographic seed, it is far more secure to regularly refresh the cryptographic seed. An attacker may eventually compromise the initial cryptographic seed – and remember, a CSPRNG will produce the exact same outputs again if it is fed the same seed, so the attacker could then duplicate the random outputs. Additionally, even the most rigorously tested CSPRNG is not guaranteed to produce unpredictable results indefinitely.</p>\n\n<p>With the lava lamps, Cloudflare has a continual source for new cryptographic seed data. Each image the camera takes of the lamps is different, resulting in a different random sequence of numerical values that can be used as a seed.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Are the lava lamps the only source for the cryptographic seed?</h2>\n\n<p>Many operating systems have their own sources of random data for use in cryptographic seeds, for instance from user actions (mouse movements, typing on a keyboard, etc.), although they obtain this data relatively slowly. Cloudflare mixes the random data obtained from the lava lamps with data generated by the Linux operating system on two different machines in order to maximize entropy when creating cryptographic seeds for SSL/TLS encryption.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is entropy?</h2>\n\n<p>In general, \"entropy\" means disorder or chaos. But entropy has a specific meaning in cryptography: it refers to unpredictability. Cryptographers will actually measure how much entropy a given set of data has in terms of the number of bits of entropy. Because of this, Cloudflare refers to the lava lamp wall as the \"Wall of Entropy.\"</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What if someone stands in front of the lava lamps?</h2>\n\n<p>Because the lava lamp wall is in the busy lobby of the Cloudflare headquarters, this happens all the time. People come and go in the lobby, walking by or stopping to talk in front of the lamps. Such obstructions become part of the randomness that the camera captures, so people partially blocking the camera's view of the lava lamps actually helps generate entropy.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What if someone shuts off or damages the camera?</h2>\n\n<p>If this happens, Cloudflare still has two other sources for randomization from the Linux operating system running on Cloudflare servers. In addition, Cloudflare has easy physical access to the camera because it's in a Cloudflare-owned space, and Cloudflare can quickly turn it back on or replace it as needed.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Do all Cloudflare offices have the lava lamp wall?</h2>\n\n<p>The other two main Cloudflare offices are in London and Singapore, and each office has its own method for generating random data from real-world inputs. London takes photos of a double-pendulum system mounted in the office (a pendulum connected to a pendulum, the movements of which are mathematically unpredictable). The Singapore office measures the radioactive decay of a pellet of uranium (a small enough amount to be harmless).</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Was Cloudflare the first company to use lava lamps for encryption?</h2>\n\n<p>Surprisingly, no – a company called Silicon Graphics designed a similar system called \"Lavarand\" in 1996, although the patent has since expired.</p>\n\n<p><strong>To learn more about the Cloudflare lava lamp wall</strong> check out these two blog posts:</p>\n\n<ul class=\"learning-list\">\n  <li><a href='https://blog.cloudflare.com/randomness-101-lavarand-in-production/' target='_blank'>Randomness 101: LavaRand in Production</a></li>\n  <li><a href='https://blog.cloudflare.com/lavarand-in-production-the-nitty-gritty-technical-details/' target='_blank'>LavaRand in Production: The Nitty-Gritty Technical Details</a></li>\n</ul>\n\n<p>See <a href='/ssl/'>this page to learn how to use free SSL encryption from Cloudflare</a>.</p>",
+				"availableLocales": null,
+				"localized": true,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "No Page for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": null
+				},
+				"proactivePopup": {
+					"contentTypeId": "proactivePopup",
+					"contentfulId": "3e078HhDjGwh728YjwsGqd",
+					"headerText": "Want to keep learning?",
+					"subHeadingText": "Sign up to receive security learning articles from Cloudflare.",
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "4N6NOUDQwA5AAjxuGTnCMu",
+						"bladeName": "Form-Marketo Single Inline - Learning Center Newsletter Form",
+						"backgroundColor": "blue",
+						"marketoFormId": 2488,
+						"marketoFormLeadSource": "Learning Center - Subscription",
+						"marketoFormLeadSourceDetail": "[EXP] Q3'20 WEB - GBL - PAYGO WWW Product Recommendations",
+						"marketoFormHeaderText": null,
+						"marketoFormDefaultComment": null,
+						"showCommentBox": null,
+						"marketoFormThankYouText": "Thank you for subscribing!",
+						"marketoFormCustomSuccessMessage": "Cloudflare learning articles are on the way.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": null,
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonColor": null,
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					},
+					"timeDelay": 20000
+				},
+				"sidebarForm": {
+					"contentTypeId": "learningCenterArticleSidebarForm",
+					"contentfulId": "38cCzU8oRXFlEHKfflIvrj",
+					"heading": "Want to keep learning?",
+					"postSubmissionHeading": "Thank you for subscribing",
+					"description": "Sign up to receive security learning articles from Cloudflare.",
+					"postSubmissionDescription": "Cloudflare learning articles are on their way!",
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "4N6NOUDQwA5AAjxuGTnCMu",
+						"bladeName": "Form-Marketo Single Inline - Learning Center Newsletter Form",
+						"backgroundColor": "blue",
+						"marketoFormId": 2488,
+						"marketoFormLeadSource": "Learning Center - Subscription",
+						"marketoFormLeadSourceDetail": "[EXP] Q3'20 WEB - GBL - PAYGO WWW Product Recommendations",
+						"marketoFormHeaderText": null,
+						"marketoFormDefaultComment": null,
+						"showCommentBox": null,
+						"marketoFormThankYouText": "Thank you for subscribing!",
+						"marketoFormCustomSuccessMessage": "Cloudflare learning articles are on the way.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": null,
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonColor": null,
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					}
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "7KV718gMkHCUPEUqCS65Bw",
+			"pathname": "/learning/ssl/lava-lamp-encryption/",
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

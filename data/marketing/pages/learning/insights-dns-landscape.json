@@ -1,0 +1,2701 @@
+{
+	"componentChunkName": "component---src-components-page-page-template-tsx",
+	"path": "/learning/insights-dns-landscape/",
+	"result": {
+		"data": {
+			"page": {
+				"pageName": "Insights - DNS Landscape",
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "English for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "No Page for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": "English for Locale"
+				},
+				"relativePath": "learning/insights-dns-landscape",
+				"topNavOptions": "default",
+				"topNavButtonText": "Get in touch",
+				"topNavButtonUrl": "/lp/overview-x/",
+				"metaTags": {
+					"metaTitle": "The evolving DNS threat landscape",
+					"metaDescription": "3 novel threat vectors join a long list of persistent DNS security threats. To respond, organizations need to implement a multilayered approach.",
+					"twitterCustomImage": {
+						"file": {
+							"publicURL": "[path]/BDES-2640-Article-DNS-threat-landscape-A.png"
+						}
+					},
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/BDES-2640-Article-DNS-threat-landscape-A.png"
+						}
+					},
+					"facebookCustomImage": {
+						"file": {
+							"publicURL": "[path]/BDES-2640-Article-DNS-threat-landscape-A.png"
+						}
+					}
+				},
+				"contentfulId": "4WUy3IKSLvEwaUX4bUnUhv",
+				"contentTypeId": "page",
+				"promotionalBanner": null,
+				"psaBanner": null,
+				"customTopNav": null,
+				"headerLogo": null,
+				"template": null,
+				"relatedBlades": [
+					{
+						"__typename": "bladeRichTextColumnGroup",
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "2bDc0M7oTkzXlA6P9GcjyL",
+						"htmlId": null,
+						"mainHeadline": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-bottom-padding",
+						"columnLayout": "Two Thirds & One Third",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "1EyCfcXfDqXEjDNXmBxwWw",
+								"title": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-1",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The evolving DNS threat landscape",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "3ze3QRyz4NdkfA2wUdFS3Z",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "3ze3QRyz4NdkfA2wUdFS3Z",
+															"locale": "en-US",
+															"title": "BDES-2640-Article-DNS-threat-landscape-A",
+															"file": {
+																"name": "BDES-2640-Article-DNS-threat-landscape-A",
+																"publicURL": "[path]/BDES-2640-Article-DNS-threat-landscape-A.png",
+																"internal": {
+																	"mediaType": "image/png"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": null,
+													"entry_assetFile": null,
+													"entry_button": null,
+													"entry_elementLink": null,
+													"entry_page": null,
+													"entry_elementIcon": null,
+													"entry_bladeTable": null,
+													"entry_bladeThreeFeatures": null,
+													"entry_bladeFourFeatures": null
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "DNS was not designed for security",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The Domain Name System (",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/learning/dns/what-is-dns/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "DNS",
+															"marks": [
+																{
+																	"type": "underline"
+																}
+															],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ") was designed in the 1980s when Internet access was restricted to government agencies, scientists, and the military. The system’s early architects were concerned about reliability and functionality, not security. As a result, DNS servers have always been vulnerable to a broad spectrum of attacks, including spoofing, amplification, and denial-of-service. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "And these attacks are becoming more common. According to IDC’s ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.efficientip.com/resources/idc-dns-threat-report-2021/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "2021 Global DNS Threat Report",
+															"marks": [
+																{
+																	"type": "underline"
+																}
+															],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ", 87% of organizations suffered a DNS attack in the past year — an increase of eight percentage points from the year prior. Many of these attacks had serious consequences. 76% of DNS attacks caused application downtime, the report found — and the average attack took over five and a half hours to mitigate. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "A number of factors explain this increase in attacks — and organizations need a plan to address all of them.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Recent years have caused two changes to the existing DNS landscape: newly discovered DNS vulnerabilities, and changing Internet browsing habits stemming from the Covid-19 pandemic. To respond to these new threats — and defend against existing ones — organizations need to give DNS security higher priority in general and implement a multilayered approach that extends beyond ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/learning/dns/dns-security/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "DNSSEC",
+															"marks": [
+																{
+																	"type": "underline"
+																}
+															],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ".",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "New cyber threats exploit and abuse DNS",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "In 2021, ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://team-cymru.com/2021-ponemonstudy/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "44% of organizations",
+															"marks": [
+																{
+																	"type": "underline"
+																}
+															],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " identified DNS-based attacks as one of their top security challenges. A quick look back over the past year makes the reasons clear.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "For starters, several new DNS-related vulnerabilities have recently been discovered, including:",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "unordered-list",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "“Forgot Password” cache poisoning attacks. ",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "‘Forgot password’ links are common in web applications, but a vulnerability discovered in July 2021 ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://sec-consult.com/blog/detail/forgot-password-taking-over-user-accounts-kaminsky-style/"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "made them vulnerable to DNS cache poisoning attacks",
+																			"marks": [
+																				{
+																					"type": "underline"
+																				}
+																			],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": ". Security researchers discovered that, by performing a cache poisoning attack on 146 vulnerable web applications, they could redirect password reset emails to attacker-controlled servers. This enabled them to click on the link and reset the user’s password, providing legitimate access to their account.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Data exposure in managed DNS. ",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Research presented at Black Hat USA 2021 demonstrated that bugs in certain managed DNS services ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://thehackernews.com/2021/08/bugs-in-managed-dns-services-cloud-let.html"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "could expose corporate DNS traffic",
+																			"marks": [
+																				{
+																					"type": "underline"
+																				}
+																			],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " containing sensitive information. By registering a domain on Amazon’s Route53 DNS service or Google Cloud DNS that had the same name as the DNS name server, the attacker could force all DNS traffic to be sent to their server. This exposed sensitive information and could enable DNS spoofing attacks.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "tsuNAME DDoS attacks against DNS servers. ",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://tsuname.io/"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "tsuNAME is a flaw in DNS resolver software",
+																			"marks": [
+																				{
+																					"type": "underline"
+																				}
+																			],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " that enable DDoS attacks against DNS servers. Domains with “cyclic dependencies'' can exist, where domain A delegates to domain B and vice versa. Vulnerable DNS resolvers will start looping when presented with domains causing cyclic dependencies. ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://www.itpro.co.uk/security/distributed-denial-of-service-ddos/359458/new-tsuname-vulnerability-could-enable-hackers"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "In one case",
+																			"marks": [
+																				{
+																					"type": "underline"
+																				}
+																			],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": ", just two misconfigured domains created a 50% traffic increase for .nz’s authoritative DNS servers in 2020.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Additionally, the surge in remote work has inspired further DNS attacks. Since the beginning of the Covid-19 pandemic, several attack varieties have ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://arstechnica.com/information-technology/2020/03/new-attack-on-home-routers-sends-users-to-spoofed-sites-that-push-malware/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "targeted home routers with DNS hijacking",
+															"marks": [
+																{
+																	"type": "underline"
+																}
+															],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ". In DNS hijacking, the attacker causes the DNS record for a legitimate domain to point to a site under their control. In these recent attacks, the compromised site claimed to offer Covid-19 information, but actually installed malware on the user’s device.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "With many employees working full or part-time from home, a compromised device represents a significant network security risk. Overall, a report by the Global Cyber Alliance found that ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.prnewswire.com/news-releases/use-of-dns-firewalls-could-reduce-33-of-all-cybersecurity-breaches-new-global-cyber-alliance-research-finds-300866191.html"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "roughly a third of data breaches worldwide stem from DNS security gaps",
+															"marks": [
+																{
+																	"type": "underline"
+																}
+															],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ".",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Existing DNS threats persist as well",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "These novel DNS attack vectors join a long list of established threats. Some of the most common attacks involving DNS infrastructure include:",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "unordered-list",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "DNS ",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "Denial-of-Service attacks",
+																			"marks": [
+																				{
+																					"type": "bold"
+																				},
+																				{
+																					"type": "underline"
+																				}
+																			],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": ":",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " which take down DNS services, making the sites that they serve unreachable. These attacks could waste server resources by requesting non-existent domains (NXDOMAINs) or random subdomains or could perform a Distributed DoS (DDoS) attack against a DNS server.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "DNS spoofing:",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " similar to DNS hijacking but target DNS resolvers, which cache commonly or recently requested DNS records. A DNS spoofing or cache poisoning attack introduces false DNS records into a resolver’s cache, causing requests for those domains to be routed to an attacker-controlled website.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "DNS DDoS amplification:",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " which takes advantage of services that communicate over UDP and have responses that are much larger than the corresponding request. These factors allow an attacker to send requests to the service and have their much larger responses sent to the target. A DNS amplification attack floods the target with DNS responses, consuming bandwidth and overwhelming target servers.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "DNS Tunneling:",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " exploits DNS traffic’s permissions to pass through corporate firewalls. These attacks use DNS traffic to carry data between malware and the attacker-controlled data server.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The impact of DNS attacks",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The significant variety within the DNS attack landscape means attack consequences vary as well. Regardless of the circumstance, said consequences are often severe.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "DNS DDoS attacks — such as those exploiting the aforementioned tsuNAME flaw — can result in poor performance or outright downtime for entire web applications. DNS is a crucial first step in a website’s ability to load quickly, and such attacks use server resources that could otherwise be used to handle legitimate requests. In 2020, ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.techrepublic.com/article/how-dns-attacks-threaten-organizations/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "42% of organizations that suffered a DNS attack ",
+															"marks": [
+																{
+																	"type": "underline"
+																}
+															],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "reported that their website had been compromised in some way.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Even attacks not designed to take down DNS services, such as DNS DDoS amplification or DNS tunneling, can create heavy volumes of traffic to DNS servers. This poor performance has multiple secondary consequences, including ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/learning/performance/more/website-performance-conversion-rates/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "lower conversion rates",
+															"marks": [
+																{
+																	"type": "underline"
+																}
+															],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ", ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/learning/performance/why-site-speed-matters/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "lower organic search rankings",
+															"marks": [
+																{
+																	"type": "underline"
+																}
+															],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ", and more.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Spoofing, hijacking, and cache poisoning attacks can also hurt website conversions by directing prospective customers away from the legitimate website. In addition, having one’s site be seen as poorly secured can hurt an organization’s brand reputation in the long run. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "DNS attacks can also have severe consequences for an organization’s network security. The aforementioned vulnerabilities in certain managed DNS providers resulted in private traffic being exposed to attackers — a critical data security issue. And DNS tunneling attacks that install and control malware on a network can have any number of consequences, ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "http://cloudflare.com/learning/ddos/glossary/malware/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "including data loss and ransom demands",
+															"marks": [
+																{
+																	"type": "underline"
+																}
+															],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ".",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Overall, ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.techrepublic.com/article/how-dns-attacks-threaten-organizations/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "the average cost per DNS attack in 2020 was over $900,000",
+															"marks": [
+																{
+																	"type": "underline"
+																}
+															],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ".",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Mitigating the threat of DNS attacks",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "A number of steps can help organizations mitigate DNS attacks. At the very top of the list: implement DNS security solutions of some kind. IDC’s report found that 42% of organizations have not deployed dedicated DNS security solutions. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Protecting against these attacks requires DNS security solutions. However, these solutions must be carefully designed and implemented to ensure that they do not negatively impact the performance of legitimate DNS requests.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Some DNS attack mitigation options include:",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "unordered-list",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "DNSSEC:",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " DNSSEC is a security protocol that signs responses from DNS servers. This helps to protect against DNS hijacking and spoofing by authenticating the data returned to the client.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Redundant infrastructure:",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " DoS attacks against DNS infrastructure commonly work by sending the target DNS server more traffic than it can handle. By overprovisioning servers and using anycast routing, traffic can be load-balanced between multiple servers. This ensures availability if one server is overloaded or goes down.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "DNS firewall:",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " A DNS firewall sits between a domain’s authoritative nameserver and users’ recursive resolvers. The firewall can rate limit requests to protect against DDoS attacks or filter traffic to block malicious or suspicious requests.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Encrypted DNS:",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " By default, DNS is an unencrypted and unauthenticated protocol. DNS over HTTPS (DoH) and DNS over TLS (DoT) provide encryption and authentication.",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Securing DNS with Cloudflare",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare helps millions of customers mitigate across the full DNS threat spectrum. ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/dns/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Cloudflare managed DNS",
+															"marks": [
+																{
+																	"type": "underline"
+																}
+															],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " offers one-click ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/dns/dnssec/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "DNSSEC",
+															"marks": [
+																{
+																	"type": "underline"
+																}
+															],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " to protect against DNS spoofing and hijacking attacks. It is built on Cloudflare’s 100 Tbps of total network capacity — many times larger than the largest-ever DNS DDoS attack and blocks DDoS attacks in addition to other attack varieties.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/network/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "The Cloudflare network",
+															"marks": [
+																{
+																	"type": "underline"
+																}
+															],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " is powered by threat intelligence from millions of websites, APIs, and networks, staying ahead of the latest vulnerabilities automatically. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "And these protections come with no performance tradeoffs. Cloudflare operates the world’s fastest authoritative DNS, with an 11 ms average lookup time. You can even maintain your existing DNS infrastructure while using Cloudflare DNS as a secondary DNS or in a hidden primary setup.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "This article is part of a series on the latest trends and topics impacting today’s technology decision-makers.",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "2JOBOM8FMAt0Hho1jUZkXv",
+								"title": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-4",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Key takeaways",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "After reading this article you will be able to understand:",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "unordered-list",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "The importance of DNS security",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "The recent DNS vulnerabilities and their consequences",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "How to identify common DNS attacks",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "How to improve DNS security\r\n",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "heading-6",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "RELATED RESOURCES",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "unordered-list",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://www.cloudflare.com/improving-dns-security-performance-reliability/"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "Whitepaper: Improving DNS security, performance, and reliability",
+																			"marks": [],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://www.cloudflare.com/learning/dns/what-is-dns/"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "What is DNS?",
+																			"marks": [],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://www.cloudflare.com/dns-x/"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "Cloudflare DNS",
+																			"marks": [],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://www.youtube.com/watch?v=42E8DWdZgYc"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "",
+																			"marks": [],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"__typename": "bladeRichTextColumnGroup",
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "1GDY1ovHyKKRkiDRG3bTeV",
+						"htmlId": null,
+						"mainHeadline": null,
+						"backgroundColor": "light-blue",
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"columnLayout": "Two Thirds & One Third",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "5vcxBTvf2YRGiI0nWyMSVC",
+								"title": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-2",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Dive deeper into this topic",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Learn more about DNS security challenges, and how to address them without risking performance challenges in the ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/improving-dns-security-performance-reliability/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Improving DNS security, performance, and reliability",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " whitepaper.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-entry-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "9g1o5dr9tVKuYg9WDqVz9",
+														"type": "Link",
+														"linkType": "Entry"
+													},
+													"related_asset": null,
+													"entry_elementMarkdown": null,
+													"entry_assetFile": null,
+													"entry_button": [
+														{
+															"buttonAssetFile": null,
+															"buttonWidth": "wide",
+															"buttonColor": "orange",
+															"buttonTextLoggedIn": null,
+															"contentTypeId": "button",
+															"contentfulId": "9g1o5dr9tVKuYg9WDqVz9",
+															"elementName": "Insights - DNS Landscape - Dive Deeper - left - button",
+															"standardText": null,
+															"text": "Get the paper",
+															"url": "https://www.cloudflare.com/improving-dns-security-performance-reliability/",
+															"loggedInUrl": null,
+															"modal": null,
+															"openInNewTab": true,
+															"locale": "en-US"
+														}
+													],
+													"entry_elementLink": null,
+													"entry_page": null,
+													"entry_elementIcon": null,
+													"entry_bladeTable": null,
+													"entry_bladeThreeFeatures": null,
+													"entry_bladeFourFeatures": null
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"__typename": "bladeEnablement",
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "6a0AK8klnguk8T7mRLYvRt",
+						"copy": null,
+						"buttonExtraClass": null,
+						"buttonColor": "orange",
+						"buttonColor2": "orange",
+						"title": "Receive a monthly recap of the most popular Internet insights!",
+						"backgroundColor": "blue",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"textColor": "white",
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonWidth": "auto",
+							"buttonColor": "orange",
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "42YK7xPyI7ogEbiDthlJRL",
+							"elementName": "Blog Subscribe Blade - Button",
+							"standardText": null,
+							"text": "Subscribe to Trending Stories",
+							"url": null,
+							"loggedInUrl": null,
+							"modal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "46yewBLdXHwQh9wdijoTot",
+								"modalName": "Blog Subscribe Modal Two",
+								"modalId": "blog-subscribe-modal-two",
+								"modalType": "split-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "163Qf8tDGZJZMB7N1hPbhR",
+									"bladeName": "Blog Subscribe Blade - Marketo Form",
+									"backgroundColor": "white",
+									"marketoFormId": 2459,
+									"marketoFormLeadSource": "Inbound - Blog Subscriber",
+									"marketoFormLeadSourceDetail": "[BRD] Q1'22 WEB - GBL - Brand Gen Newsletter Subscription",
+									"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
+									"marketoFormDefaultComment": null,
+									"showCommentBox": false,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": "We are looking forward to sharing content with you.",
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": null,
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": "Subscribe to Trending Stories",
+									"marketoFormSubmitButtonColor": "orange",
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"salesforceForm": null,
+								"title": null,
+								"regularCopy": null,
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
+							},
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": null
+					}
+				],
+				"noindex": false,
+				"enableZendeskChat": false,
+				"formModal": null,
+				"keepHashUrlSyncedWithScrollPosition": false
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"pathname": "/learning/insights-dns-landscape/",
+			"contentfulId": "4WUy3IKSLvEwaUX4bUnUhv",
+			"allowedHrefLangs": [
+				"en-US",
+				"fr-FR",
+				"de-DE",
+				"ja-JP"
+			],
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

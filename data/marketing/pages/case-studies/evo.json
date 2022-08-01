@@ -1,0 +1,91 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/evo/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "evo ",
+				"contentfulId": "1h4Npp1Kq9LnB7ghs3uCHx",
+				"nameUrlSlug": "evo",
+				"metaTags": {
+					"metaTitle": "evo | Cloudflare",
+					"metaDescription": "evo secures its site against DDoS and malicious requests, and reduces complexity by consolidating performance, security, and serverless solutions with a single vendor, Cloudflare.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2020-12-15",
+				"homepageUrl": "https://www.evo.com/",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "evo secures its site against DDoS and malicious requests, and reduces complexity by consolidating performance, security, and serverless solutions with a single vendor, Cloudflare.",
+				"longDescription": "## evo uses Cloudflare to reduce internal complexity, enhance security, and improve performance\n\nBased in Seattle, Washington, evo is an omni-channel retailer specializing in outdoor sports and lifestyle gear, including skiing, snowboarding, mountain biking, surfing, and camping gear. Its online store is responsible for about 85% of its sales, and evo’s two biggest selling days of the year are Black Friday and Cyber Monday.\n\nLike all online retailers, evo has to deal with automated traffic, nefarious crawlers, malicious bots, and the threat of DDoS and other attacks. Unlike legitimate customer traffic, which is stable and predictable, malicious requests often come in giant spikes, which can degrade site performance.\n\n### __Challenge: Protect against DDoS and malicious requests, and reduce complexity by consolidating performance & security solutions__\n\nAs evo’s business has grown, so too has their risk of DDoS and other forms of cyber attack. At key times of the year, an attack leading to downtime could prove extremely costly. This risk concerned Ben Plehal, Director of Technology. “When sales are at their holiday peak and every minute of website uptime is critical, we simply can’t afford to have an attack disrupt our ability to serve our customers.”\n\nevo was also unsatisfied with its content delivery network (CDN). evo’s first CDN partner was Akamai, which became expensive as they scaled. The company then switched to Verizon Edgecast. However, Verizon’s CDN was difficult to configure, and Verizon didn’t offer other services evo needed.\n\n“Verizon simply offered a CDN - WAF, DDoS protection, and DNS services were all expensive add-ons or integrations with other vendors,” Plehal recalled. “We were using a separate managed DNS service. It wasn’t expensive, but it was yet another bill and another set of configurations for us to manage. Complexity is my team’s enemy. We wanted one vendor to provide us with all of the security and performance solutions we needed.”\n\nCloudflare turned out to be that vendor. evo signed up for Cloudflare’s security and performance product suites, which includes Cloudflare WAF, DDoS, CDN, Rate Limiting, DNS, and Argo Smart Routing, as well as Workers, Cloudflare’s serverless computing solution.\n\n### __Cloudflare WAF blocks malicious requests and lets evo’s team isolate problematic pockets of traffic__\n\nAfter implementing WAF with all features enabled in test mode, evo pushed it live and has been happy with it ever since. Most of the time, his team uses the built-in rules, and Plehal reports that it’s easy to configure custom rules for specific use cases when needed.\n\n“My team no longer has to work to stay ahead of bad actors, because Cloudflare protects our site from DDoS and malicious requests,” Plehal says. “Cloudflare’s WAF blocks an average of 80,000 to 90,000 malicious requests per week. My team and I sleep much better now, especially during the holiday shopping season.” \n\nPlehal likes the insight he gets from the WAF analytics and the log simulate feature, which allow his team to identify potentially problematic traffic. Recently, when an evo engineer noticed a big spike in TCP incoming requests, the team quickly created a log simulate rule within the WAF, which enabled them to identify the traffic as originating from one of its own vendors. \n\n“The vendor was aggressively spidering our pages in the wake of an email blast to see if our products were in stock,” Plehal explains. “Their intentions weren't malicious, but they were making 150 requests each second to our product details pages, which caused performance degradation. Thanks to the WAF analytics and log simulate rule, we discerned what was going on, which allowed us to work with the vendor and find an alternative way for them to confirm our products were in stock.”\n\nWith the WAF taking care of traffic spikes from malicious requests, evo focuses on ensuring its site can scale to handle legitimate traffic. “Because we don’t need to accommodate giant spikes of automated traffic, we can service the same amount of human traffic with fewer resources. For example, if we had 10 web service instances before deploying Cloudflare WAF, we might get by with only 6 or 8 now.”\n\n### __Cloudflare Workers enables evo to retire a legacy web service, reducing complexity and minimizing their potential attack surface__\n\nevo had built a legacy web service to perform file-name mapping for millions of product images. The service took incoming requests from evo.com and mapped them to the image blob files in cloud storage. When evo decided to migrate to Microsoft Azure, they were looking at having to redesign this service and build it out in Azure, a complicated and time-consuming process.\n\nInstead, evo decided to use Cloudflare Workers to perform this function and pass image requests straight from the edge to Azure Blob Storage, without the requests hitting evo’s servers. “Thanks to Cloudflare Workers, we no longer have to maintain a special service just to map legacy file names,” Plehal says. “We don’t have to pay to run it, worry about it going down, or worry about it becoming a vulnerability. Eliminating it reduced our potential cyberattack surface by simplifying our service topology.”\n\nPlehal is seeking out additional use cases for Workers. “Workers holds great promise in the way it could simplify tasks for our servers. Because it enables us to perform compute operations at the network edge, we’re investigating whether we can use it to handle more logic and reduce load on our origin services.”\n\n### __Cloudflare simplifies internal processes, and Argo Smart Routing dramatically improves page load times__\n\nPlehal reports that his team was thrilled when he demonstrated Cloudflare’s dashboard. “Our previous CDN dashboards were notoriously difficult to use. Not only is Cloudflare’s dashboard much simpler, but we now have one place to manage and view analytics for our DNS, performance suite, and security suite.”\n\nImproving page load times is always a focus for retailers like evo, which uses many media- and image-rich pages. Argo Smart Routing, which finds the fastest network paths for traffic, has significantly improved evo’s page load times. “There’s a direct correlation between site speed and conversions, so speed is the same as money for us,” Plehal says. “Argo Smart Routing has improved our page load times by nearly 40%.”\n",
+				"cloudflareStreamVideoId": "0bfa603dfdcacc96d86fa6e9b559d023",
+				"keyResults": "- Cloudflare’s WAF blocks between 80,000 to 90,000 malicious requests each week from hitting evo’s primary website.\n\n- Using Argo Smart Routing, evo improved page load times by nearly 40%.\n\n- Using Cloudflare Workers to perform file-path manipulation of images in Azure Blob storage, evo was able to eliminate an additional web service, removing complexity and reducing their potential attack surface.",
+				"relatedCaseStudies": [
+					{
+						"name": "Kathmandu",
+						"nameUrlSlug": "kathmandu"
+					},
+					{
+						"name": "AllSaints",
+						"nameUrlSlug": "allsaints-performance-security"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Web Application Firewall (WAF) ",
+						"url": "/waf/"
+					},
+					{
+						"title": "Workers",
+						"url": "/products/cloudflare-workers/"
+					},
+					{
+						"title": "Argo Smart Routing ",
+						"url": "/products/argo-smart-routing/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Ben Plehal",
+				"employeeQuoteText": "Thanks to Cloudflare Workers, we no longer have to pay to run a special service just to maintain file names. We don’t have to maintain it, worry about it going down, or worry about it becoming a vulnerability. Eliminating it reduced our potential cyberattack surface by simplifying our service topology.",
+				"employeeQuoteJobTitle": "Director of Technology",
+				"employeeQuoteName2": "Ben Plehal",
+				"employeeQuoteText2": "There’s a direct correlation between site speed and conversions, so speed is the same as money for us. Argo Smart Routing has improved our page load times by nearly 40%.",
+				"employeeQuoteJobTitle2": "Director of Technology",
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": {
+					"file": {
+						"publicURL": "[path]/Evo_Thumbnail.png"
+					}
+				},
+				"logo": {
+					"file": {
+						"publicURL": "[path]/evo_logo.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "1h4Npp1Kq9LnB7ghs3uCHx",
+			"pathname": "/case-studies/evo/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US",
+				"zh-CN"
+			]
+		}
+	}
+}

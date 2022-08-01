@@ -1,0 +1,82 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/county-of-san-luis-obispo/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "County of San Luis Obispo",
+				"contentfulId": "1GHJaoa5a0kkP9hsbLYSUq",
+				"nameUrlSlug": "county-of-san-luis-obispo",
+				"metaTags": {
+					"metaTitle": "County of San Luis Obispo",
+					"metaDescription": "The County of San Luis Obispo uses Cloudflare’s Project Fair Shot to provide equal access to COVID-19 appointments.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2021-03-09",
+				"homepageUrl": "https://www.slocounty.ca.gov/",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "The County of San Luis Obispo uses Cloudflare’s Project Fair Shot to provide equal access to COVID-19 appointments.",
+				"longDescription": "## __County of San Luis Obispo Ensures Equitable COVID-19 Vaccine Access with Project Fair Shot__\n\nThe County of San Luis Obispo, California provides over 700 public services to its 277,000 residents — including distributing vaccines during the COVID-19 pandemic. The county operates three vaccination clinics located at its major population centers.  Each week, between 2,000 and 7,000 COVID-19 vaccine doses are distributed within the county.  An estimated 81,000 residents are eligible for vaccination in the first phase of the country’s program, and it has issued over 31,000 first doses and 14,000 second doses to date.\n\nOn Thursday mornings at 9 AM, when appointment slots for the next week are made available, approximately 23,000 people visit the county’s vaccination website attempting to book an appointment for eligible residents. These traffic surges frequently overwhelmed the scheduling application, resulting in site outages and accidental double-bookings. \n\n### __Searching for the Right Solution__\n\nThe County of San Luis Obispo is committed to providing equal access to the vaccine. This includes operating a call center and enabling online vaccine scheduling. However, ensuring fairness with an online portal is difficult, as visitors with faster Internet connections and clicking speeds have a distinct advantage.\n\nThe county has explored several options for its vaccine portal. Platforms designed for event registration exist but often have language about selling tickets, which did not fit their use case.  Additionally, some of these platforms were found to fail under the heavy traffic associated with COVID-19 appointment scheduling. Other options designed for scheduling meetings within an organization had similar scalability issues.\n\nThe county’s web team settled on Google Forms and Worksheets for implementing its vaccine registration system. Google Forms allowed the creation of scripts that automatically opened and closed appointment time slots as they are filled. Forms also feeds data to a Google Worksheet which is used by the call center and for email confirmations.\n\n### __Cloudflare’s Project Fair Shot Enables Equal Access__\n\nThe switch to Google Forms enabled the site to scale to meet load, but the county still had a problem: the scripts running behind Google Forms needed time to run and close booked appointment slots. Thousands of simultaneous visitors didn’t allow for this time, and slots were occasionally double-booked. These double-bookings could be resolved by the call center, but it was still a disappointment for those who needed to reschedule.\n\nA county employee following the Cloudflare blog learned of the launch of [Project Fair Shot](https://www.cloudflare.com/fair-shot/). This is a free program that enables COVID-19 vaccine distributors to set up Cloudflare Waiting Room in front of their scheduling sites and applications. Waiting Room creates a queue for visitors to the site and limits the number of visitors interacting with the application at one time. This ensures that sites are not overwhelmed and provides fair, first-come-first-served access to appointments with no modifications needed to the scheduling application.\n\nBecause vaccines are allocated on a weekly basis, the county’s web team had a few days to design its waiting room. According to Tyler Penney, the county’s Web Services Administrator, “We spent a couple days working with our media relations folks, working with our web team, to be able to build out this nice little waiting room. So we had a little bit of fun with the design of it, we made these little icons with people in line with masks on and we tried to make it kind of just a nice place to be.”\n\nThe day before the next batch of vaccines was due to be released, the team filled out the form to activate their waiting room. Working with the Cloudflare team, they were able to configure Cloudflare Waiting Room and improved their caching configurations to minimize load on their servers.  The next morning, the county’s web team performed a test to ensure that everything was working as expected. Penney says that it was a quick and painless process, “The Cloudflare team was wonderful helping us. When we have any questions, they’re able to quickly answer and help us to set it up.”\n\nOn Thursday morning, the site experienced the usual rush of visitors.  At 7 AM, the first of the approximately 23,000 visitors started to arrive, waiting for vaccine appointment registration to begin at 9.  This time, the site was ready, and visitors were placed in the Waiting Room and provided with information about their current position in line.  Starting at 9 AM, the doors opened and the first group was allowed into the scheduling application.\n\n### __Appointment Scheduling is Transparent and Fair with Cloudflare Waiting Room__\n\nWith Project Fair Shot, the County of San Luis Obispo is able to ensure that scheduling vaccine appointments is an equitable and transparent process for its citizens. According to Penney, “It’s not Lord of the Flies anymore, which, you know, basically is what it was before. If you had a fast Internet connection or you could click really quickly, that would give you an advantage on getting a vaccine.”\n\nCloudflare Waiting Room allows residents to enter in groups of two hundred with a few minutes between groups. This ensures that the Forms-based portal is able to keep up with the load and that the backend scripts have time to run.  These smaller groups also allow the county’s web team to monitor progress and ensure that everything is working correctly.  Penney says, “With Cloudflare Waiting Room, we can see everything fill up over time, but it happens at a pace that's manageable.  To be able to breathe a little bit and watch the numbers, watch the registrations happen, watch all the slots fill up, it's really great.”\n\nCitizens in the Waiting Room receive regular updates regarding their place in line and the availability of vaccine appointments. When their turn comes, the page automatically refreshes and grants access to the scheduling application. As appointment slots become full, typically within the first hour, residents are advised to check back the following day for any available slots.\n\nRecently, the County of San Luis Obispo has transitioned to a lottery-based appointment scheduling system to improve access to vaccines. Residents eligible for a COVID-19 vaccine can sign up once and are automatically notified each week if they have been selected for an appointment that week. Cloudflare Waiting Room remains in place to ensure that residents still have a positive experience even if traffic suddenly surges, such as when eligibility opens up for a new group.\n\nThe county has received positive feedback from several citizens on the usability and transparency of the new system. Penney says, “Our County Motto is ‘Not for Ourselves Alone’. It’s a joy to work with a company that shares our values and our commitment to a better society.”\n",
+				"cloudflareStreamVideoId": "06d586c792e094de533ab51defcc89eb",
+				"keyResults": "- Vaccine scheduling pages remain available during traffic surges of as many as 23,000 simultaneous users.\n\n- By limiting the number of visitors who can access an appointment application at the same time, Project Fair Shot eliminates double-booked appointments caused by high traffic volume\n\n- Cloudflare Waiting Room provides a transparent and equitable process for scheduling COVID-19 vaccinations",
+				"relatedCaseStudies": [
+					{
+						"name": "Verto",
+						"nameUrlSlug": "verto"
+					},
+					{
+						"name": "Ticket Tailor",
+						"nameUrlSlug": "tickettailor"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Cloudflare Waiting Room",
+						"url": "https://www.cloudflare.com/waiting-room/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Tyler Penney",
+				"employeeQuoteText": "With Cloudflare Waiting Room, we can see everything fill up over time, but it happens at a pace that's manageable.  To be able to breathe a little bit and watch the numbers, watch the registrations happen, watch all the slots fill up, it's really great.",
+				"employeeQuoteJobTitle": "Web Services Administrator",
+				"employeeQuoteName2": "Tyler Penney",
+				"employeeQuoteText2": "Our County Motto is ‘Not for Ourselves Alone’. It’s a joy to work with a company that shares our values and our commitment to a better society.",
+				"employeeQuoteJobTitle2": "Web Services Administrator",
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": {
+					"file": {
+						"publicURL": "[path]/Screen_Shot_2021-03-11_at_5.40.15_PM.png"
+					}
+				},
+				"logo": {
+					"file": {
+						"publicURL": "[path]/cslo_logo.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "1GHJaoa5a0kkP9hsbLYSUq",
+			"pathname": "/case-studies/county-of-san-luis-obispo/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}

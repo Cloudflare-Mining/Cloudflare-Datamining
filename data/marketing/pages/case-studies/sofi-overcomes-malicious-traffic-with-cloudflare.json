@@ -1,0 +1,90 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/sofi-overcomes-malicious-traffic-with-cloudflare/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "SoFi ",
+				"contentfulId": "47oleGztf6b0BjTGTzmWQ9",
+				"nameUrlSlug": "sofi-overcomes-malicious-traffic-with-cloudflare",
+				"metaTags": {
+					"metaTitle": "SoFi ",
+					"metaDescription": "Learn how SoFi blocks malicious traffic attacking its website using Cloudflare",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2019-12-31",
+				"homepageUrl": "https://www.sofi.com/homepage/",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "Learn how SoFi blocks malicious traffic attacking its website using Cloudflare",
+				"longDescription": "## __SoFi Overcomes Malicious Traffic with Cloudflare__\n\nIn the age of the digital economy, traditional brick and mortar banks are giving way to a new breed of online-only financial institutions. The task at hand for these fully digitized financial institutions is not easy: they need to deliver a smooth, secure, and flexible experience to their customers all over the world. \n\nWith the ever-increasing threat and sophistication of cyber attacks, the emphasis on security has become paramount for these new-age financial institutions. Any breach of security can drastically impact their business and unnerve customers.\n\n__The Challenge__\n\nSoFi, based out of San Francisco, is a well-known name in the world of online-first financial institutions. Started in 2011, they have revolutionized the way people borrow, spend, earn, and invest money. They have over 800,000 members and have funded over $40 billion in loans.\n\nFacing a constant threat from cyber attacks, SoFi’s security team started looking for a Web Application Firewall (WAF) in 2018. They wanted an easy-to-use solution that not only blocked nefarious traffic but also became intelligent over time as new threats emerged. In the beginning, they tried some of the WAF solutions that their cloud providers offered; however, none of them were up to the task. Some lacked comprehensive features and rulesets, while others required a great deal of engineering effort to set up and maintain.\n\n<center><b>“We tried a couple of different WAFs offered by major cloud providers, but they involved too much effort to maintain and involved a steep learning curve for our engineers. Some of them just didn’t offer most of the features or rules we needed. It was almost like building a WAF from the ground up.”</b></center>\n</b></center>\n<center><i>— Peter Wolf</center>\n  <center>Security Engineering Manager, SoFi</i></center>\n</br>\n\n__The Cloudflare Solution__\n\nCloudflare emerged as the answer SoFi was looking for — an easy-to-use WAF solution that offers comprehensive rulesets to stop emerging and sophisticated threats. Cloudflare’s network across %{GlobalWebsiteCountWords} million internet properties acts as an immune system for the internet — learning from any attack on one property to better protect them all. With Cloudflare, SoFi is constantly protected against any new vulnerabilities that crop up on the Internet. \n\nUsing Cloudflare WAF, SoFi’s engineers took almost no time to build and deploy granular rule sets and were able to reduce malicious traffic by over 60%, with a significantly low false-positive rate.\n\nSoFi was also able to add an additional layer of authentication for its international visitors by leveraging Cloudflare Workers, Cloudflare’s serverless development platform. Deploying a mobile validation solution at the network edge using Cloudflare Workers enabled SoFi to filter out malicious traffic that was spoofing their real users — without any compromise to performance. \n\n<center><b>“What surprised us the most was that Cloudflare WAF was so easy and intuitive to use. It took our engineers almost no time to get up to speed. The issues that took days to get resolved with other cloud providers only take a few hours with Cloudflare. We’ve now expanded our usage of Cloudflare’s suite of products. Integrating with any Cloudflare solution has been just so smooth and painless.”</b></center>\n</b></center>\n<center><i>— Paul Shope</center>\n  <center>Security Engineer, SoFi</i></center>\n</br>\n",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "• SoFi was able to reduce malicious traffic by over 60%, with a significantly low false-positive rate.\n\n• Using Cloudflare WAF's comprehensive rulesets, SoFi is constantly protected against any new vulnerabilities that crop up on the Internet. ",
+				"relatedCaseStudies": [
+					{
+						"name": "AngelList ",
+						"nameUrlSlug": "angellist"
+					},
+					{
+						"name": "lastminute.com",
+						"nameUrlSlug": "lastminute"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Bot Management",
+						"url": "https://www.cloudflare.com/products/bot-management/"
+					},
+					{
+						"title": "DDoS Mitigation",
+						"url": "/ddos/"
+					},
+					{
+						"title": "Web Application Firewall (WAF) ",
+						"url": "/waf/"
+					},
+					{
+						"title": "Workers",
+						"url": "/products/cloudflare-workers/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Paul Shope",
+				"employeeQuoteText": "Cloudflare WAF was so easy and intuitive to use. It took our engineers almost no time to get up to speed. We’ve now expanded our usage of Cloudflare’s suite of products. Integrating with any Cloudflare solution has been just so smooth and painless.",
+				"employeeQuoteJobTitle": "Security Engineer, SoFi",
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/Sofi.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "47oleGztf6b0BjTGTzmWQ9",
+			"pathname": "/case-studies/sofi-overcomes-malicious-traffic-with-cloudflare/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}

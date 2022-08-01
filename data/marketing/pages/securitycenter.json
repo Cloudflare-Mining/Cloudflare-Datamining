@@ -1,0 +1,792 @@
+{
+	"componentChunkName": "component---src-components-page-page-template-tsx",
+	"path": "/securitycenter/",
+	"result": {
+		"data": {
+			"page": {
+				"pageName": "Cloudflare Security Center",
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "Translated for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "Translated for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "No Page for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": null
+				},
+				"relativePath": "securitycenter",
+				"topNavOptions": "default",
+				"topNavButtonText": null,
+				"topNavButtonUrl": null,
+				"metaTags": {
+					"metaTitle": "Cloudflare Security Center | Attack Surface Management",
+					"metaDescription": "Attack surface management that maps an organization’s attack surface and gives a list of potential security risks and vulnerabilities associated with their IT infrastructure, and mitigate threats in a single click. ",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"contentfulId": "oqw7JLDK7wiOt55NrSNX5",
+				"contentTypeId": "page",
+				"promotionalBanner": {
+					"pillText": "NEW",
+					"linkText": "Read More",
+					"linkUrl": "https://blog.cloudflare.com/security-center-investigate",
+					"desktopText": "Introducing Investigate: A threat investigations platform that enables customers to query Cloudflare-gathered intelligence."
+				},
+				"psaBanner": null,
+				"customTopNav": null,
+				"headerLogo": null,
+				"template": null,
+				"relatedBlades": [
+					{
+						"__typename": "bladeHeroAnimation",
+						"contentfulId": "5PzoE4zoXHzCnCUuSdzQN6",
+						"contentTypeId": "bladeHeroAnimation",
+						"title": "Cloudflare Security Center",
+						"subtitle": "Reduce your security risk",
+						"copy": "Cloudflare Security Center offers attack surface management (ASM) that inventories IT assets, enumerates potential security risks, and enables security teams to investigate and mitigate threats in a few clicks.\n\nIncluded in all plans at no charge.\n",
+						"buttonColor": "orange",
+						"buttonColor2": "orange",
+						"buttonText1": "Read more",
+						"buttonText1LoggedIn": null,
+						"buttonUrl1": "https://blog.cloudflare.com/security-center/",
+						"buttonUrl1LoggedIn": null,
+						"button1ExtraClass": null,
+						"buttonText2": "Get data sheet",
+						"buttonText2LoggedIn": null,
+						"buttonUrl2": "https://www.cloudflare.com/static/cc7af67fb02426fcade9727bcbf3353d/Cloudflare_Security_Center_Datasheet.pdf",
+						"button2ExtraClass": null,
+						"bladeBorder": "none",
+						"htmlId": null,
+						"textColor": "black",
+						"includeVideo": false,
+						"streamVideoId": null,
+						"streamOptions": [
+							"controls",
+							"captions"
+						],
+						"streamCaptions": "en",
+						"popupStreamId": null,
+						"popupText": null,
+						"button1OpenInNewTab": true,
+						"button2OpenInNewTab": null,
+						"streamThumbnails": null,
+						"sectionPadding": null,
+						"streamPosterAssetFile": null,
+						"streamPoster": null,
+						"imageSize": "Medium",
+						"imagePosition": false,
+						"leftLinkUrl": null,
+						"leftLink": null,
+						"leftLinkLoggedIn": null,
+						"leftLinkOptions": "hide",
+						"backgroundColor": "white",
+						"textlayoutMode": null,
+						"backgroundAssetFile": null,
+						"imageLayout": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "a5441816-81e1-5773-9d48-71239db17dbd",
+							"altText": "Cloudflare Security Center",
+							"title": "Cloudflare Security Center",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "[path]/Cloudflare_Security_Center.png"
+								}
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						}
+					},
+					{
+						"__typename": "bladeFourFeatures",
+						"contentfulId": "28sahZvO8cCxgQzsrO1k1x",
+						"backgroundColor": "light-blue",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": null,
+						"subtitle": "Expanding attack surfaces include",
+						"bladeStyle": null,
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6aiTZT8imzlpNmKO3RhZ8O",
+								"title": "Known assets",
+								"titleSize": null,
+								"description": "Issues in inventoried and managed assets such as the corporate website, servers, and the dependencies running on them.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/reliability-load-balancer-blue.svg"
+									}
+								},
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1XGzr3IUO21K9EsqPY2EGB",
+								"title": "Unknown assets",
+								"titleSize": null,
+								"description": "Shadow IT or orphaned IT infrastructure like forgotten websites or unsanctioned cloud applications.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/help-question-blue-600x600-950dd6f.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "b0b8d74a-324b-582f-ade7-bbbdc3311984",
+									"altText": "Help question blue",
+									"title": "Help question blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 2996,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/help-question-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1W2tCMgWRblAyDCrx6pND8",
+								"title": "Rogue assets",
+								"titleSize": null,
+								"description": "Malicious infrastructure spun up by threat actors such as typosquatted domains, or a website or app impersonating a brand.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/security-crawler-blue.svg"
+									}
+								},
+								"iconAssetFile": {
+									"id": "486af6c9-dbc6-5ea8-b3f7-a314995bf2bd",
+									"altText": "Security crawler blue",
+									"title": "Security crawler blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 3062,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/security-crawler-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2UmJp5YHjQ4hs2P3ERHhjG",
+								"title": "Third-party risk",
+								"titleSize": null,
+								"description": "Third-party software risks beyond an organization's direct control like open source vulnerabilities or malicious Javascript.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/share.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "f2eb93a9-5084-50de-8f8c-5182cce34fa9",
+									"altText": "share icon",
+									"title": "share icon",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/share.png"
+										}
+									},
+									"brandfolderAsset": {
+										"size": 2900,
+										"height": 3263,
+										"width": 3307,
+										"file": {
+											"publicURL": "[path]/share.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
+						"__typename": "bladeImageText",
+						"contentfulId": "3mGHAxEzDk7egxaLWoZNBu",
+						"title": null,
+						"copy": "- Streamlined security risk management to inventory attack surfaces and associated risk\n- Insights to stay ahead of attackers and mitigate vulnerabilities before exploitation\n- Efficient & SOC ready attack surface management so teams & budgets do more\n",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": null,
+						"subheadline": "Cloudflare Security Center",
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": {
+							"file": {
+								"publicURL": "[path]/cloudflare-network-globe-hero-illustration-1200x600.png"
+							}
+						},
+						"imageAssetFile": null,
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": "See and mitigate risk",
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": "large",
+						"imageTextAlignment": "center",
+						"togglesTo": null
+					},
+					{
+						"__typename": "bladeFourFeatures",
+						"contentfulId": "22R97evdlsKy1WW6kOaauP",
+						"backgroundColor": "light-blue",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": null,
+						"subtitle": "Cloudflare Security Center Capabilities ",
+						"bladeStyle": "Feature Blocks - 2 columns",
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "66Z4fHwoK4IxMRsJQ5lE4n",
+								"title": "Infrastructure",
+								"titleSize": "small",
+								"description": "Inventory and review IT infrastructure assets like domains, ASNs, and IPs.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "CuNKXWBdw9PjCnV5uxrHu",
+								"title": "Security Insights ",
+								"titleSize": null,
+								"description": "Manage an always up-to-date list of misconfigurations and risks in Cloudflare IT assets.  Mitigate in a few clicks.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4qQpIMsfIqvsU47ZZMtC6h",
+								"title": "Investigate",
+								"titleSize": "small",
+								"description": "Query threat data gathered from the Cloudflare network to better investigate and respond to security risks.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
+						"__typename": "bladeEnablement",
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "PV7xw5U4HcOGJ9RkI374d",
+						"copy": null,
+						"buttonExtraClass": null,
+						"buttonColor": "orange",
+						"buttonColor2": null,
+						"title": "Security Center is included for all customers ",
+						"backgroundColor": "blue",
+						"buttonText": "Activate in Dash",
+						"buttonUrl": "https://dash.cloudflare.com/",
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"textColor": "white",
+						"bladeBorder": "none",
+						"buttonOne": null,
+						"buttonTwo": null,
+						"sectionPadding": null
+					},
+					{
+						"__typename": "bladeThreeFeatures",
+						"backgroundColor": "light-blue",
+						"contentfulId": "71gyYuAtE3QpLrxMqUG5bh",
+						"contentTypeId": "bladeThreeFeatures",
+						"subtitle": null,
+						"bladeBorder": "none",
+						"sectionTitle": null,
+						"title1": "More streamlined ",
+						"copy1": "Finally, attack surface management already integrated into your security posture - activated in a click.",
+						"locale": "en-US",
+						"image1": null,
+						"imageAssetFile1": null,
+						"learnMoreUrl1": null,
+						"title2": "More actionable",
+						"copy2": "Put insights into action with single-click mitigation.",
+						"learnMoreUrl2": null,
+						"image2": null,
+						"imageAssetFile2": null,
+						"title3": "More efficient",
+						"copy3": "ASM is included for all customers at no charge - easy to deploy and simple to manage.",
+						"image3": null,
+						"imageAssetFile3": null,
+						"learnMoreUrl3": null,
+						"features": null
+					},
+					{
+						"__typename": "bladeImageText",
+						"contentfulId": "3yWcv6SByG6RYqd6Heikl1",
+						"title": "What is an attack surface?",
+						"copy": "An attack surface refers to the entire IT footprint of an organization that is susceptible to cyber attacks. Your attack surface consists of all the corporate servers, devices, SaaS, and cloud assets that are accessible from the Internet. ",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": null,
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": null,
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": "tile--no-bottom-padding",
+						"backgroundColor": "light-blue",
+						"bladeBorder": "border-top",
+						"imagePosition": true,
+						"imageSize": null,
+						"imageTextAlignment": "center",
+						"togglesTo": null
+					},
+					{
+						"__typename": "bladeImageText",
+						"contentfulId": "7gYrXnP91bvQf1BuBt3bRK",
+						"title": "Part of Cloudflare security ",
+						"copy": "- Keep applications, APIs and web properties secure with integrated __application security__.\n\n- Protect remote teams and pivot to zero trust access with our __Zero Trust platform__. \n\n- Evolve the WAN and NGFW with __cloud-delivered networking security__.\n\n- __Pivot to SASE__ to securely connect users, applications, data centers, and offices with __Cloudflare ONE__.\n",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": null,
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": {
+							"file": {
+								"publicURL": "[path]/Cloudflare_security_portfolio_larger.png"
+							}
+						},
+						"imageAssetFile": null,
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": false,
+						"imageSize": null,
+						"imageTextAlignment": null,
+						"togglesTo": null
+					},
+					{
+						"__typename": "bladeTrustedBy",
+						"contentTypeId": "bladeTrustedBy",
+						"contentfulId": "bGXZcQriItbwEaMlcrTcV",
+						"bladeBorder": "none",
+						"textColor": "black",
+						"linkText": "View case studies",
+						"linkUrl": "https://www.cloudflare.com/case-studies/",
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"title": "Trusted by millions of Internet properties",
+						"copy": null,
+						"logoList": [
+							{
+								"file": {
+									"publicURL": "[path]/logo_mars_gray_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_loreal_gray_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_doordash_gray_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_garmin_gray_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_ibm_gray_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_23andme_color_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_shopify_color_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_lending-tree_color_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_labcorp_color_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_ncr_gray_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_thomson-reuters_gray_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_zendesk_gray_32px-wrapper.svg"
+								}
+							}
+						],
+						"logoListAssetFile": [
+							{
+								"id": "9a8f1b8a-cd07-5907-979a-86b8a90c1c80",
+								"altText": "Logo mars trusted by gray",
+								"title": "Logo mars trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_mars_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "8c37a7a6-cf55-55cf-a5aa-626692cbb63d",
+								"altText": "Logo loreal trusted by gray",
+								"title": "Logo loreal trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_loreal_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "7cbc697b-807d-5a77-81f0-a4b597366f29",
+								"altText": "Logo doordash trusted by gray",
+								"title": "Logo doordash trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_doordash_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "302a3744-177c-549c-a3e3-ba0eccb9558a",
+								"altText": "Logo garmin trusted by gray",
+								"title": "Logo garmin trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_garmin_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "f1f3837d-a408-5f08-8ead-06d1108cd0e1",
+								"altText": "Logo ibm trusted by gray",
+								"title": "Logo ibm trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_ibm_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "ffd4a407-4457-5421-8b20-54433e485cc7",
+								"altText": "Logo 23andme trusted by gray",
+								"title": "Logo 23andme trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_23andme_color_32px-wrapper.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "128d1d80-3d3f-5e8a-8559-33dbf5392576",
+								"altText": "Logo shopify trusted by gray",
+								"title": "Logo shopify trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_shopify_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "5d11dee2-570b-5d45-86a2-634fc4c71ce1",
+								"altText": "Logo lending tree trusted by gray",
+								"title": "Logo lending tree trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_lending-tree_color_32px-wrapper.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "6f68ad17-e6c8-5155-877e-91855b51cee0",
+								"altText": "Logo labcorp trusted by gray",
+								"title": "Logo labcorp trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_labcorp_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "d20283f3-6fa3-50d0-91a1-715d8d303897",
+								"altText": "Logo ncr trusted by gray",
+								"title": "Logo ncr trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_ncr_gray_32px-wrapper.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "626a14c0-589d-5fff-b8aa-155b8bc7392c",
+								"altText": "Logo thomson reuters trusted by gray",
+								"title": "Logo thomson reuters trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_thomson-reuters_gray_32px-wrapper.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "7b63d2ac-0e8f-5b5b-aeab-27b7128928e8",
+								"altText": "Logo zendesk trusted by gray",
+								"title": "Logo zendesk trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_zendesk_gray_32px-wrapper.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							}
+						],
+						"logoUrlList": null
+					}
+				],
+				"noindex": false,
+				"enableZendeskChat": false,
+				"formModal": null,
+				"keepHashUrlSyncedWithScrollPosition": false
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"pathname": "/securitycenter/",
+			"contentfulId": "oqw7JLDK7wiOt55NrSNX5",
+			"allowedHrefLangs": [
+				"en-US",
+				"zh-CN",
+				"zh-TW",
+				"fr-FR",
+				"de-DE",
+				"it-IT",
+				"ja-JP",
+				"ko-KR",
+				"pt-BR",
+				"es-ES"
+			],
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

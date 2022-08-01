@@ -1,0 +1,82 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/panasonic/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Panasonic",
+				"contentfulId": "1CBsUTZy433CPqg0yDz6BD",
+				"nameUrlSlug": "panasonic",
+				"metaTags": {
+					"metaTitle": "Panasonic",
+					"metaDescription": "Panasonic in Europe uses Cloudflare WAF (Web Application Firewall) and Workers to enhance security, while maintaining high performance and reducing bandwidth costs ",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2020-12-15",
+				"homepageUrl": "https://www.panasonic.com/",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "Panasonic in Europe uses Cloudflare WAF (Web Application Firewall) and Workers to enhance security, while maintaining high performance and reducing bandwidth costs ",
+				"longDescription": "## __Cloudflare Helps Panasonic To Enhance Web Security__\n\nPanasonic has been in Europe for over 50 years and started with its first office in 1962 in Hamburg. Its parent organization, the Panasonic Corporation, is a worldwide leader in the development of diverse electronics technologies and solutions for customers in the consumer electronics, housing, automotive, and B2B businesses. The company, which celebrated its 100th anniversary in 2018, has expanded globally and now operates 528 subsidiaries and 72 associated companies worldwide.\n\nPanasonic Information Systems Company Europe (PISCEU), supports the information technology needs of Panasonic’s European business divisions. \n\n### __Challenge: Improve DDoS defense & attain better visibility into network activity__\n\n\"Due to Panasonic’s longstanding high brand reputation being a household brand not only in Japan but also in Europe, this also bears potential risks for DDoS attacks and other cyber attacks,” says Stefan Schulze, IT Consultant Web Security, Cyber Security.\n\n“We had several firewall solutions in place, ranging from physical appliances to managed solution, from various providers,” he recalls. “Our challenge was to consolidate the high number of security data points to give us a comprehensive view of web and network traffic. Especially identifying alerting behavior ahead of an incident was one of our main considerations for further strengthening Panasonic’s cyber security situation”.\n\n“An additional objective was the enhancement of security against DDoS attacks and other cyber security risks. We were looking for solutions that are able to distill actionable insights from network traffic data, provide quality of service, support integration with existing infrastructure and are ultimately built to withstand even the largest DDoS attacks.”\n\n### __Solution: Cloudflare WAF provides comprehensive protection and unified security events monitoring__\n\nAfter an intense internal evaluation process, Panasonic’ European cyber security team selected Cloudflare’s HTTP Proxy service, including CDN, Advanced DDoS Protection, WAF, and Enterprise (Domains), along with the Cloudflare Workers solution.\n\nThe Cloudflare WAF has given Panasonic the visibility and insight that they need to effectively manage their security. “Cloudflare WAF provides us with deep dives into our network traffic,” Schulze explains. “When we detect an issue, Cloudflare WAF allows us to examine the timeframe when it occurred, determine if the issue correlates with any other events in the WAF log or our other Cloudflare analytics.”\n\nCloudflare’s cloud-based solutions work well with Panasonic’s infrastructure set-up. “Every log for every asset on Cloudflare WAF provides the same level of detail. Now we have one standardized set of logs fulfilling our requirements.”\n\nWhen initially configuring Cloudflare WAF, Schulze’s team took a conservative approach. “We were concerned about blocking legitimate traffic, so we ran Cloudflare WAF in non-blocking mode and examined the logs. We realized that the default settings naturally supported our non-intrusive approach, which gave us the confidence to turn on blocking using the default settings. Cloudflare WAF is really well-configured from the get-go.” \n\nSchulze states that Cloudflare WAF’s default rules protect against the vast amount of attacks. “We usually do not need to configure custom rules, except for specific use cases, such as adapting to the architecture of a specific app, defining trusted sources, or blocking specific traffic.” Cloudflare WAF is connected to our IT-Monitoring and -Event Management system. This way, we can identify incidents and with the help of Cloudflare data we are able to investigate various incident cases, internal as well as external ones.”\n\n“Another positive side effect of the introduction of Cloudflare services, is the possibility of consolidation and cost savings, along with increasing scalability, reliability, and performance of applications. Especially the latter was a concern early on. Some Panasonic cybersecurity team members expected performance to decrease with the introduction of the WAF. It turned out that these concerns were causeless. In fact, in many cases, Cloudflare WAF increased the performance of applications in comparison to the previously used solution.”\n\n### __Customized Cloudflare Workers solution for rapid, cost-effective downloading of digital assets__\n\nIn addition to enhancing security with Cloudflare WAF, Panasonic also introduced Cloudflare Workers to create a reliable solution for rapid download of electronic assets from cloud storage. Previously the team had been using another vendor’s solution, but they were eager to explore an alternative to reduce complexity and save bandwidth costs.\n\nCloudflare’s Solution Engineers supported the Panasonic cyber security team in the set-up of Cloudflare Workers. “Together, we were able to create a custom call-back feature to digest technical documents from cloud storage with secure file transmission and proper visualization of our documents, catered to the requirements of the various browsers,” says Schulze.\n\n“Workers was easy to integrate, and Cloudflare provided us with strong support during the introduction process,” Schulze recalls.\n\nUsing Workers, Panasonic was able to build a superior download delivery solution which achieved its goals of reduced complexity and costs. “It was a complex set-up, and Cloudflare didn’t have an off-the-shelf product to handle it, but using Workers, we were able to build a powerful solution,” Schulze says. “We are happy with the performance and stability of Cloudflare Workers. The Workers solution is fast and cost effective, it’s highly reliable, and it scales very well.\n\n### __Cloudflare is helping Panasonic to identify opportunities__\n\n“We have confidence in all of the Cloudflare solutions that we are using. As Cloudflare continues to expand its services, I expect that they will continue to help us identify further opportunities,” says Schulze.\n\nHe continues, “Our team started using Cloudflare for pure cloud security, and we ended up using Workers as well. Now, we are evaluating the full power of Cloudflare products and solutions to deliver secure, fast, and reliable online experiences to our internal business customers in Europe.” \n",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "- Cloudflare WAF enhances Panasonic’s cyber security in Europe by providing visibility into web requests through a single pane of glass, along with advanced analytics to distill actionable intelligence\n\n- Cloudflare WAF’s default rules protect Panasonic in Europe from the threat of vast amounts of malicious traffic, so that the internal IT security team can create powerful customized rules for specific security needs of different applications.\n\n- Cloudflare Workers enables Panasonic to provide a faster, more lightweight, and less bandwidth-intensive alternative. ",
+				"relatedCaseStudies": null,
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Web Application Firewall (WAF) ",
+						"url": "/waf/"
+					},
+					{
+						"title": "Workers",
+						"url": "/products/cloudflare-workers/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Stefan Schulze",
+				"employeeQuoteText": "Cloudflare WAF allows us to deep dive into our web traffic. When we detect an issue, Cloudflare WAF enables us to easily examine the timeframe when it occurred, determine if the issue correlates with any other events in the WAF log or our other Cloudflare analytics, and determine if the issue is internal or external.",
+				"employeeQuoteJobTitle": "IT Consultant Web Security, Cyber Security",
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/Panasonic_2.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "1CBsUTZy433CPqg0yDz6BD",
+			"pathname": "/case-studies/panasonic/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US",
+				"zh-CN",
+				"zh-TW",
+				"fr-FR",
+				"de-DE",
+				"it-IT",
+				"ja-JP",
+				"ko-KR",
+				"pt-BR",
+				"es-ES"
+			]
+		}
+	}
+}

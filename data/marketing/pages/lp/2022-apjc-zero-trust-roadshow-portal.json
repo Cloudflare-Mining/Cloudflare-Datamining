@@ -1,0 +1,522 @@
+{
+	"componentChunkName": "component---src-components-page-page-template-tsx",
+	"path": "/lp/2022-apjc-zero-trust-roadshow-portal/",
+	"result": {
+		"data": {
+			"page": {
+				"pageName": "Q2'22 Zero Trust Roadshow- Post Event - Page",
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "English for Locale",
+					"deDE": "English for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "English for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "English for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "English for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": null
+				},
+				"relativePath": "lp/2022-apjc-zero-trust-roadshow-portal",
+				"topNavOptions": "default",
+				"topNavButtonText": null,
+				"topNavButtonUrl": null,
+				"metaTags": {
+					"metaTitle": "APJC Zero Trust Roadshow 2022",
+					"metaDescription": "Cloudflare is hosting Zero Trust Roadshows across APJC, bringing together IT professionals and business decision-makers across the region who want to start actioning a phased approach to Zero Trust implementation.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/BDES-3462_1200x700-B-LinkedIn-Banner-promoting-Zero-Trust-Roadshows__1_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"contentfulId": "61DYVVmpGaw2wpjUqyCjbU",
+				"contentTypeId": "page",
+				"promotionalBanner": null,
+				"psaBanner": null,
+				"customTopNav": null,
+				"headerLogo": null,
+				"template": null,
+				"relatedBlades": [
+					{
+						"__typename": "bladeHeroAnimation",
+						"contentfulId": "68QuqsPukhLf9PLs8pZrUn",
+						"contentTypeId": "bladeHeroAnimation",
+						"title": "Zero Trust, Zero Nonsense: Take a faster, more practical approach",
+						"subtitle": null,
+						"copy": null,
+						"buttonColor": "orange",
+						"buttonColor2": "orange",
+						"buttonText1": null,
+						"buttonText1LoggedIn": null,
+						"buttonUrl1": null,
+						"buttonUrl1LoggedIn": null,
+						"button1ExtraClass": null,
+						"buttonText2": null,
+						"buttonText2LoggedIn": null,
+						"buttonUrl2": null,
+						"button2ExtraClass": null,
+						"bladeBorder": "none",
+						"htmlId": null,
+						"textColor": "white",
+						"includeVideo": false,
+						"streamVideoId": null,
+						"streamOptions": [
+							"controls",
+							"captions"
+						],
+						"streamCaptions": "en",
+						"popupStreamId": null,
+						"popupText": null,
+						"button1OpenInNewTab": null,
+						"button2OpenInNewTab": null,
+						"streamThumbnails": null,
+						"sectionPadding": null,
+						"streamPosterAssetFile": null,
+						"streamPoster": null,
+						"imageSize": null,
+						"imagePosition": null,
+						"leftLinkUrl": null,
+						"leftLink": null,
+						"leftLinkLoggedIn": null,
+						"leftLinkOptions": "hide",
+						"backgroundColor": "white",
+						"textlayoutMode": "left wide",
+						"backgroundAssetFile": {
+							"id": "e8ebad99-6b28-55dd-8bbd-6f0068aebd9e",
+							"altText": "Cloudflare Zero Trust",
+							"title": "APJC 2022 ZT roadshow - Head Banner",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "[path]/APJC-Zero-Trust-Roadshow-Landing-Page-Hero.png"
+								}
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"imageLayout": "background",
+						"image": null,
+						"imageAssetFile": null
+					},
+					{
+						"__typename": "bladeFourFeatures",
+						"contentfulId": "21nDGCHsTnGPCmekMRyehV",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": "Start Your Zero Trust Journey Today",
+						"subtitle": null,
+						"bladeStyle": null,
+						"bladeBorder": "border-bottom",
+						"sectionPadding": "tile--no-bottom-padding",
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": null
+					},
+					{
+						"__typename": "bladeFourFeatures",
+						"contentfulId": "6o5mENUX2Q0i07X3TWQ3K0",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": null,
+						"subtitle": null,
+						"bladeStyle": "Feature Blocks - 2 columns",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-top-padding",
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "hoLplnKxEBxT0kXEzZ30r",
+								"title": "VPN replacement and augmentation",
+								"titleSize": "small",
+								"description": "__Replace or augment your VPN__\n\nZero Trust Network Access (ZTNA) technologies create secure boundaries around applications. When resources are protected with ZTNA, users are only allowed to access resources after verifying the identity, context, and policy adherence of each specific request.\n\n- [VPN replacement whitepaper](https://www.cloudflare.com/static/3b06c0f764d243bc741e8a85f13a782a/Can_ZTNA_Replace_Your_VPN_Whitepaper.pdf)\n\n- [Cloudflare ZTNA (Access) product brief](https://www.cloudflare.com/static/7a087420e450601d8e0e2de01d2b66be/Cloudflare_Access_Product_Brief.pdf)\n\n- [Product Demo - VPN-as-a-Service](https://drive.google.com/file/d/1rZfeRXR-owl7Bo-ftfreAgMw0wT5Fj0L/view?usp=sharing)\n\n- [Whitepaper: Can ZTNA Replace your VPN?](https://www.cloudflare.com/static/f9639e7bf41f8ce69250aee4cd260bab/Can_ZTNA_replace_your_VPN.pdf)\n",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5Jqmi65XGSrMALXogKshpY",
+								"title": "Internet threat and data protection",
+								"titleSize": "small",
+								"description": "__Protect users and data from Internet threats__\n\nCloudflare makes it fast and easy to level up your Internet protection with identity-based web filtering, plus natively-integrated browser isolation. Start with DNS filtering to achieve quick time-to-value for remote or office users. Deliver more comprehensive security with HTTP inspection and isolation for all Internet activity.\n\n- [Threat Defense with Cloudflare (Solution Brief)](https://www.cloudflare.com/static/b5c19838b5447467e3f7f08e9da2d19c/Threat_Defense_with_Cloudflare_Zero_Trust_Solution_Brief.pdf)\n\n- [Browser Isolation (whitepaper)](https://www.cloudflare.com/static/d3093bf12e93c426971667f34a74d8f1/Browser_Isolation_Whitepaper.pdf)\n\n- [Feature Demo Video: Clientless Browser Isolation](https://drive.google.com/file/d/1B_JCZRa2Xh_kJG3CvfdQtR1Wm5x7_zYm/view)\n\n- [Datasheet: Cloudflare Gateway](https://www.cloudflare.com/resources/assets/slt3lc6tev37/6GcZqWjqsWB8TDdVWzlsgE/bb265042263263038d2fdba072365691/Cloudflare_Gateway_Datasheet.pdf)\n",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5hERAiqCIOHWLrevXQ9T9I",
+								"title": "Remote work transformation",
+								"titleSize": null,
+								"description": "__Secure your remote workforce no matter where in the world they’re working from__\n\nCloudflare Zero Trust enables seamless, identity- and context- based application access and software-defined security, allowing you to secure your remote teams, devices, and data without sacrificing performance or user experience.\n\n- [Solution Brief: Remote work security over the long haul](https://www.cloudflare.com/static/48be0b4844382fdfd3c0d2cfc111d6bd/Remote_Work_Solution_Brief.pdf)\n\n- [Webinar: Employes are exhausted: how Zero Trust security can actually help](https://gateway.on24.com/wcc/eh/2153307/lp/3677922/)\n\n- [7 Ways to Work From Anywhere ](https://cf-assets.www.cloudflare.com/slt3lc6tev37/4mxuP8J2OZs1B6qwrarDKi/dceb610204d99f3556abe62e524f86ea/Remote_Work_Ebook.pdf)\n\n- [Webinar: BlockFi’s security evolution: Lessons in hyperscaling with CSO Adam Healy](https://gateway.on24.com/wcc/eh/2153307/lp/3576219)\n",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5XqSF5dX6gkR3JtMZ570gG",
+								"title": "Preemptively stop phishing attacks",
+								"titleSize": null,
+								"description": "__Secure user inboxes, adopt a proactive security posture, and save time on email security operations__\n\nCloudflare Area 1 is a cloud-native email security platform. It crawls the Internet to stop phishing, Business Email Compromise (BEC), and email supply chain attacks at the earliest stages of the attack cycle. Area 1 enhances built-in security from cloud email providers with deep integrations into Microsoft and Google environments and workflows.\n\n- [Report: 2021 Email Security Report](https://www.cloudflare.com/resources/assets/slt3lc6tev37/6HhAbLYa84R8wbMpDHMTv4/bafe24b3e8665f6c7fc2a2cb393de27a/Area_1_Security_2021_Email_Threat_Report.PDF)\n\n- [Cloudflare Area 1 datasheet](https://www.cloudflare.com/static/d40dbf403f1f55a270556c8cef5a086f/Cloudflare_Area_1_Email_Security_Datasheet.pdf)\n\n- [Webinar: Expanding Zero Trust with email security](https://event.on24.com/wcc/r/3677497/3B393ED1F8E9B991ABD4DFB56D479384)\n\n- [E-Book: How to Stop Business Email Compromise Threats](https://liveshare.seismic.com/i/F6WLmmB2yN8FxOo27lQHPAurQDbaNkHV5gCsaXb9lLzu9vnMNSs___NWv9g2EFnlvhBZc1V___jPLUSSIGNIwiw8LAgkw9KdhcKZEkixO___9jg___tuvpLzwEEQUALSIGN)\n",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
+						"__typename": "bladeRichTextColumnGroup",
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "2u9eKOChYwT2BxvnNeehQA",
+						"htmlId": null,
+						"mainHeadline": "Deployment outcomes: Save time and money with Zero Trust",
+						"backgroundColor": "light-blue",
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"columnLayout": "One Column Wide",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "6gJ8d52H0dNlA4m7W57v3Q",
+								"title": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "embedded-asset-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "1TR8p1tymPJ92LliWzphJj",
+														"type": "Link",
+														"linkType": "Asset"
+													},
+													"related_asset": [
+														{
+															"contentfulId": "1TR8p1tymPJ92LliWzphJj",
+															"locale": "en-US",
+															"title": "Deployment Outcomes ROI of Zero Trust - Web SGV (Q2 2022)",
+															"file": {
+																"name": "Deployment_Outcomes_ROI_of_Zero_Trust_-_Web_SGV__Q2_2022_",
+																"publicURL": "[path]/Deployment_Outcomes_ROI_of_Zero_Trust_-_Web_SGV__Q2_2022_.svg",
+																"internal": {
+																	"mediaType": "image/svg+xml"
+																}
+															}
+														}
+													],
+													"entry_elementMarkdown": null,
+													"entry_assetFile": null,
+													"entry_button": null,
+													"entry_elementLink": null,
+													"entry_page": null,
+													"entry_elementIcon": null,
+													"entry_bladeTable": null,
+													"entry_bladeThreeFeatures": null,
+													"entry_bladeFourFeatures": null
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"__typename": "bladeQuote",
+						"contentTypeId": "bladeQuote",
+						"contentfulId": "5Qb8rodJsGuzrYQt0h7G9J",
+						"quote": "“Cloudflare’s Zero Trust services enabled us to protect our remote-first, globally distributed workforce and critical internal applications that are not exposed to the public Internet.”",
+						"quoteAuthor": "Adam Healy",
+						"quoteTitle": "Chief Security Officer",
+						"learnMoreText": "Read the full case study",
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"learnMoreUrl": "https://www.cloudflare.com/case-studies/blockfi/",
+						"htmlId": null,
+						"image": {
+							"file": {
+								"publicURL": "[path]/BlockFi-grayscale.png"
+							}
+						},
+						"imageAssetFile": null,
+						"imageLinkUrl": null,
+						"logoList": null,
+						"logoListAssetFile": null,
+						"quoteCarousel": [
+							{
+								"contentTypeId": "bladeQuote",
+								"quote": "\"At Delivery Hero, we always strive to deliver an amazing experience to our customers. Cloudflare Access helps us do the same for our internal teams: offering them a secure working environment, and removing the need for a VPN to access all of our applications across the globe.\"",
+								"quoteAuthor": "Willian Carminato",
+								"quoteTitle": "Senior Director, Engineering",
+								"learnMoreText": null,
+								"learnMoreUrl": null,
+								"imageAssetFile": null,
+								"image": {
+									"file": {
+										"publicURL": "[path]/Delivery-Hero-grayscale.png"
+									}
+								}
+							},
+							{
+								"contentTypeId": "bladeQuote",
+								"quote": "\"OneTrust relies on Cloudflare to maintain our network perimeter, so we can focus on delivering technology that helps our customers be more trusted. With Cloudflare, we can easily build context-aware Zero Trust policies for secure access to our developer tools. Employees can connect to the tools they need so simply teams don’t even know Cloudflare is powering the backend. It just works.\"",
+								"quoteAuthor": "Blake Brannon",
+								"quoteTitle": "CTO",
+								"learnMoreText": "Read the full case study",
+								"learnMoreUrl": "https://www.cloudflare.com/case-studies/onetrust/",
+								"imageAssetFile": {
+									"id": "6628a4ed-ec4e-500e-b9a5-5b2941989462",
+									"altText": "Logo onetrust gray",
+									"title": "Logo onetrust gray",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 5277,
+										"height": 696,
+										"width": 3978,
+										"file": {
+											"publicURL": "[path]/logo_onetrust_gray.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"image": {
+									"file": {
+										"publicURL": "[path]/logo_onetrust_color.svg"
+									}
+								}
+							},
+							{
+								"contentTypeId": "bladeQuote",
+								"quote": "\"JetBlue Travel Products needed a way to give crew-members secure and simple access to internally-managed benefit apps. Cloudflare Zero Trust Services gave us all that and more - a much more efficient way to connect business partners and crew-members to critical internal tools.\"",
+								"quoteAuthor": "Vitaliy Faida",
+								"quoteTitle": "General Manager, Data and DevSecOps",
+								"learnMoreText": null,
+								"learnMoreUrl": null,
+								"imageAssetFile": {
+									"id": "fdf3fa47-71de-5a9a-887d-1a150b7e06e9",
+									"altText": "Logo jetblue travel products gray",
+									"title": "Logo jetblue travel products gray",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 15662,
+										"height": 656,
+										"width": 3993,
+										"file": {
+											"publicURL": "[path]/logo_jetblue-travel-products_gray.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"image": {
+									"file": {
+										"publicURL": "[path]/logo_jetblue-travel-products_color__1_.svg"
+									}
+								}
+							},
+							{
+								"contentTypeId": "bladeQuote",
+								"quote": "\"Cloudflare Access saved us from having to develop our own Identity and Access Management (IAM) system. We don’t have to build user permission functions into the apps that Access protects. We went all in; everyone in the company has a seat.\"",
+								"quoteAuthor": "Jim Tyrell",
+								"quoteTitle": "Head of Infrastructure",
+								"learnMoreText": "Read the full case study",
+								"learnMoreUrl": "https://www.cloudflare.com/case-studies/canva/",
+								"imageAssetFile": {
+									"id": "5babca25-4e00-5099-a260-c2dfdd68fd2a",
+									"altText": "Logo canva gray",
+									"title": "Logo canva gray",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 5101,
+										"height": 336,
+										"width": 336,
+										"file": {
+											"publicURL": "[path]/logo_canva_gray.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"image": {
+									"file": {
+										"publicURL": "[path]/logo_canva_color_svg.svg"
+									}
+								}
+							},
+							{
+								"contentTypeId": "bladeQuote",
+								"quote": "“Zero Trust is very important, but it’s also incredibly difficult to implement. The only way ezCater can succeed with this is to have the right partner. Cloudflare has given us the foundation for a successful Zero Trust implementation.”",
+								"quoteAuthor": "Conor Sherman",
+								"quoteTitle": "Head of Security",
+								"learnMoreText": "Read the full case study",
+								"learnMoreUrl": "https://www.cloudflare.com/case-studies/ezcater/",
+								"imageAssetFile": null,
+								"image": {
+									"file": {
+										"publicURL": "[path]/ezCater-grayscale.png"
+									}
+								}
+							},
+							{
+								"contentTypeId": "bladeQuote",
+								"quote": "“IT is evolving by leaps and bounds, and more sophisticated, more destructive cyber threats are emerging every day. Zero Trust is the only viable security model in this environment, and Cloudflare is making it a lot easier for eTeacher Group to get there.”",
+								"quoteAuthor": "Boris Borovsky",
+								"quoteTitle": "CTO",
+								"learnMoreText": "Read the full case study",
+								"learnMoreUrl": "https://www.cloudflare.com/case-studies/eteacher-group/",
+								"imageAssetFile": null,
+								"image": {
+									"file": {
+										"publicURL": "[path]/eteacher.png"
+									}
+								}
+							},
+							{
+								"contentTypeId": "bladeQuote",
+								"quote": "\"Discord is where the world builds relationships. Cloudflare Zero Trust Services helps us deliver on that mission, connecting our internal engineering team to the tools they need. With Cloudflare, we can rest easy knowing every request to our critical apps is evaluated for identity and context - a true Zero Trust approach.\"",
+								"quoteAuthor": "Mark Smith",
+								"quoteTitle": "Director of Infrastructure",
+								"learnMoreText": null,
+								"learnMoreUrl": null,
+								"imageAssetFile": null,
+								"image": {
+									"file": {
+										"publicURL": "[path]/logo_discord_trusted-by_gray.svg"
+									}
+								}
+							},
+							{
+								"contentTypeId": "bladeQuote",
+								"quote": "\"POLITICO needed a way to control access to specific critical resources without the risk and overhead of connecting through a private corporate network. Cloudflare Access aligns with how and where our team works, while helping us embrace a Zero Trust security model, where every request to every app is evaluated for user identity - and no VPN is required.\"",
+								"quoteAuthor": "Michael Irwin",
+								"quoteTitle": "Senior Director, Technology Operations and Cybersecurity",
+								"learnMoreText": null,
+								"learnMoreUrl": null,
+								"imageAssetFile": {
+									"id": "489299a8-3a50-58be-86b6-c37dc96f2752",
+									"altText": "Logo politico gray",
+									"title": "Logo politico gray",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 3001,
+										"height": 788,
+										"width": 3979,
+										"file": {
+											"publicURL": "[path]/logo_politico_gray.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"image": {
+									"file": {
+										"publicURL": "[path]/logo_politico_color.svg"
+									}
+								}
+							}
+						]
+					}
+				],
+				"noindex": false,
+				"enableZendeskChat": false,
+				"formModal": null,
+				"keepHashUrlSyncedWithScrollPosition": false
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"pathname": "/lp/2022-apjc-zero-trust-roadshow-portal/",
+			"contentfulId": "61DYVVmpGaw2wpjUqyCjbU",
+			"allowedHrefLangs": [
+				"en-US"
+			],
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

@@ -1,0 +1,847 @@
+{
+	"componentChunkName": "component---src-components-about-your-website-about-your-website-tsx",
+	"path": "/about-your-website/",
+	"result": {
+		"data": {
+			"recEngineV3CopyData": {
+				"json_values": {
+					"questions": [
+						{
+							"id": "1",
+							"key": "general",
+							"question": "How can we help you?",
+							"hint": "(select all that apply)",
+							"multiselect": true,
+							"context": null,
+							"options": [
+								{
+									"text": "Web application security & speed",
+									"value": "as",
+									"additionalInfo": "For websites and applications"
+								},
+								{
+									"text": "Zero Trust application access",
+									"value": "zt",
+									"additionalInfo": "For securing employees & internal apps"
+								},
+								{
+									"text": "Corporate network security",
+									"value": "ns",
+									"additionalInfo": "For securing your corporate network"
+								},
+								{
+									"text": "Developer platform",
+									"value": "dp",
+									"additionalInfo": "For building on the Cloudflare network"
+								}
+							],
+							"sidenavCopy": {
+								"title": "Get a personalized product recommendation",
+								"subtitle": "We can help you find the right tools for your specific needs. Let’s get started."
+							}
+						},
+						{
+							"id": "2",
+							"key": "as",
+							"question": "What are you trying to secure or accelarate?",
+							"hint": "(select one)",
+							"multiselect": null,
+							"context": "You selected “Web application security & speed”",
+							"options": [
+								{
+									"text": "Personal / Hobby website",
+									"value": "as1",
+									"additionalInfo": "For personal, school, or hobby projects"
+								},
+								{
+									"text": "Professional website",
+									"value": "as2",
+									"additionalInfo": "For non-business critical sites and apps"
+								},
+								{
+									"text": "Small businesses website or app",
+									"value": "as3",
+									"additionalInfo": "For small businesses operating online"
+								},
+								{
+									"text": "Enterprise website or app",
+									"value": "as4",
+									"additionalInfo": "For business-critical websites and apps"
+								}
+							],
+							"sidenavCopy": {
+								"title": "You selected “Web application security & speed”",
+								"subtitle": ""
+							}
+						},
+						{
+							"id": "3",
+							"key": "zt",
+							"question": "How many people are you protecting?",
+							"hint": "(select one)",
+							"multiselect": null,
+							"context": "You selected “Zero Trust for employees & apps”",
+							"options": [
+								{
+									"text": "1-49",
+									"value": "zt1",
+									"additionalInfo": "Employees and / or contractors"
+								},
+								{
+									"text": "50+",
+									"value": "zt2",
+									"additionalInfo": "Employees and / or contractors"
+								}
+							],
+							"sidenavCopy": {
+								"title": "You selected “Zero Trust for employees & apps”",
+								"subtitle": ""
+							}
+						},
+						{
+							"id": "4",
+							"key": "ns",
+							"question": "What does your network need?",
+							"hint": "(select all that apply)",
+							"multiselect": true,
+							"context": "You selected “Corporate network security”",
+							"options": [
+								{
+									"text": "DDoS protection",
+									"value": "ns1",
+									"additionalInfo": "Protect your IP infrasctructure and internet access from DDoS attacks"
+								},
+								{
+									"text": "MPLS Wan replacement",
+									"value": "ns2",
+									"additionalInfo": "Use the internet for your corporate network with security built in"
+								},
+								{
+									"text": "Network Firewall as a service",
+									"value": "ns3",
+									"additionalInfo": "Enforce consistent network security policies across your entire WAN"
+								}
+							],
+							"sidenavCopy": {
+								"title": "You selected “Corporate network security”",
+								"subtitle": ""
+							}
+						},
+						{
+							"id": "5",
+							"key": "dp",
+							"question": "What are you building?",
+							"hint": "(select all that apply)",
+							"multiselect": true,
+							"context": "You selected “Developer platform”",
+							"options": [
+								{
+									"text": "Back-end API / Serverless function",
+									"value": "dp1",
+									"additionalInfo": ""
+								},
+								{
+									"text": "Front end application",
+									"value": "dp2",
+									"additionalInfo": ""
+								},
+								{
+									"text": "Full stack application",
+									"value": "dp3",
+									"additionalInfo": ""
+								}
+							],
+							"sidenavCopy": {
+								"title": "You selected “Developer platform”",
+								"subtitle": ""
+							}
+						},
+						{
+							"id": "6",
+							"key": "cs",
+							"question": "What level of support is right for you?",
+							"hint": "(select one)",
+							"multiselect": null,
+							"context": null,
+							"options": [
+								{
+									"text": "Self-serve",
+									"value": "cs1",
+									"additionalInfo": "FAQs, forums, documentation • Free"
+								},
+								{
+									"text": "Low-level",
+									"value": "cs2",
+									"additionalInfo": "Email • Low-cost"
+								},
+								{
+									"text": "Mid-level",
+									"value": "cs3",
+									"additionalInfo": "Email & chat • Mid-cost"
+								},
+								{
+									"text": "High-level",
+									"value": "cs4",
+									"additionalInfo": "Email, chat, 24/7 phone • Custom price"
+								}
+							],
+							"sidenavCopy": {
+								"title": "Support levels and cost may vary by plan tier",
+								"subtitle": ""
+							}
+						}
+					],
+					"addons": [
+						{
+							"id": "ao1",
+							"name": "Argo Smart Routing",
+							"description": "Argo intelligent routing is a service that uses optimized routes across the Cloudflare network to deliver responses to your users more quickly, reliably, and securely. Argo includes: Smart Routing, Tunnel, and Tiered Caching.",
+							"infolink": "/products/argo-smart-routing/",
+							"price": "Starting at $5 per month",
+							"cta": "Learn more",
+							"linkUrl": "/products/argo-smart-routing/",
+							"iconURL": "/img/icons/blue/performance-intelligent-routing.svg"
+						},
+						{
+							"id": "ao2",
+							"name": "Network Interconnect",
+							"description": "Connect your network infrastructure directly to Cloudflare's network for a more reliable and secure experience than connecting over the public Internet.",
+							"infolink": "/network-interconnect/",
+							"price": "Custom pricing",
+							"cta": "Learn More",
+							"linkUrl": "/network-interconnect/",
+							"iconURL": "/img/icons/blue/network-scale.svg"
+						},
+						{
+							"id": "ao3",
+							"name": "Rate Limiting",
+							"description": "Rate Limiting protects against denial-of-service attacks, brute-force password attempts, and other types of abusive behavior targeting the application layer.",
+							"infolink": "/rate-limiting/",
+							"price": "$.05 per 10k good requests",
+							"cta": "Learn more",
+							"linkUrl": "/rate-limiting/",
+							"iconURL": "/img/icons/blue/security-shield-protection.svg"
+						},
+						{
+							"id": "ao4",
+							"name": "Load Balancing",
+							"description": "Load Balancing safeguards from service disruptions with local and global traffic load balancing, geographic routing, server health checks, and failover, ensuring the continuous availability of your critical resources.",
+							"infolink": "/load-balancing/",
+							"price": "Starting at $5 per month",
+							"cta": "Learn more",
+							"linkUrl": "/load-balancing/",
+							"iconURL": "/img/icons/blue/reliability-load-balancer.svg"
+						},
+						{
+							"id": "ao5",
+							"name": "Video Stream",
+							"description": "Cloudflare Stream makes streaming high quality video at scale, easy and affordable.",
+							"infolink": "/rate-limiting/",
+							"price": "Starting at $5 per month",
+							"cta": "Learn more",
+							"linkUrl": "/rate-limiting/",
+							"iconURL": "/img/icons/blue/browser-video.svg"
+						},
+						{
+							"id": "ao6",
+							"name": "Network Interconnect",
+							"description": "Connect your network infrastructure directly to Cloudflare's network for a more reliable and secure experience than connecting over the public Internet.",
+							"infolink": "/network-interconnect/",
+							"price": "Starting at $5 per month",
+							"cta": "Learn More",
+							"linkUrl": "/network-interconnect/",
+							"iconURL": "/img/icons/blue/network-scale.svg"
+						},
+						{
+							"id": "ao7",
+							"name": "Browser Isolation",
+							"description": "Faster than any legacy remote browser. Natively integrated in the Cloudflare Zero Trust platform policy builder, allowing administrators to allow, block, or isolate any security or content category and application group.",
+							"infolink": "/teams/browser-isolation/",
+							"price": "Starting at $10 per user",
+							"cta": "Learn more",
+							"linkUrl": "/teams/browser-isolation/",
+							"iconURL": "/img/icons/blue/internet-browser.svg"
+						},
+						{
+							"id": "ao8",
+							"name": "Cloudflare Images",
+							"description": "Store, resize, and optimize images at scale with Cloudflare Images",
+							"infolink": "/products/cloudflare-images/",
+							"price": "Starting at $6 per month",
+							"cta": "Learn more",
+							"linkUrl": "/products/cloudflare-images/",
+							"iconURL": "/img/icons/blue/image.svg"
+						},
+						{
+							"id": "ao9",
+							"name": "Automatic Platform Optimization",
+							"description": "Switch to a single plugin for CDN, intelligent caching, and other key WordPress optimizations with Cloudflare's Automatic Platform Optimization. Turn it on and go (up to 300% faster).",
+							"infolink": "/automatic-platform-optimization/wordpress/",
+							"price": "From $5/mo with Free Plan. Included with all paid plans.",
+							"cta": "Learn more",
+							"linkUrl": "/automatic-platform-optimization/wordpress/",
+							"iconURL": "/img/icons/blue/optimization-web.svg"
+						}
+					],
+					"recommendationData": [
+						{
+							"id": "appServicesFree",
+							"associatedProducts": [
+								"appServicesFree"
+							],
+							"title": "Application Services",
+							"subTitle": "(Free Plan)",
+							"bullets": [
+								"Free Plan"
+							],
+							"description": "Protect and accelerate web applications",
+							"recommendation": "We recommend our Free Application Services plan because you indicated that you have a personal or hobby web application and can self-serve when you need support.",
+							"anchor": "#as",
+							"enterpriseProduct": false
+						},
+						{
+							"id": "appServicesPro",
+							"associatedProducts": [
+								"appServicesPro"
+							],
+							"title": "Application Services",
+							"subTitle": "(Pro Plan)",
+							"bullets": [
+								"Pro Plan"
+							],
+							"description": "Protect and accelerate web applications",
+							"recommendation": "We recommend our Pro Application Services plan because you're likely have non-urgent support needs. This plan comes support via email only.",
+							"anchor": "#as",
+							"enterpriseProduct": false
+						},
+						{
+							"id": "appServicesBiz",
+							"associatedProducts": [
+								"appServicesBiz"
+							],
+							"title": "Application Services",
+							"subTitle": "(Business Plan)",
+							"bullets": [
+								"Business Plan"
+							],
+							"description": "Protect and accelerate web applications",
+							"recommendation": "We recommend our Business Application Services plan because you might need faster support. This plan comes with support via email and online chat.",
+							"anchor": "#as",
+							"enterpriseProduct": false
+						},
+						{
+							"id": "appServicesEnt",
+							"associatedProducts": [
+								"appServicesEnt"
+							],
+							"title": "Application Services",
+							"subTitle": "(Enterprise Plan)",
+							"bullets": [
+								"Enterprise Plan"
+							],
+							"description": "Protect and accelerate web applications",
+							"recommendation": "We recommend our Enterprise Application Services plan because you might need the fastest support possible. This plan comes with support via all channels, including 24x7x365 access to a live expert.",
+							"anchor": "#as",
+							"enterpriseProduct": true
+						},
+						{
+							"id": "magicTransit",
+							"associatedProducts": [
+								"magicTransit"
+							],
+							"title": "Network Services",
+							"subTitle": "(Magic Transit)",
+							"bullets": [
+								"Magic Transit"
+							],
+							"description": "Protect and accelerate a corporate network",
+							"recommendation": "We recommend our Magic Transit product because you indicated that you want to protect your network against DDoS attacks.",
+							"anchor": "#ns",
+							"enterpriseProduct": true
+						},
+						{
+							"id": "magicWan",
+							"associatedProducts": [
+								"magicWan"
+							],
+							"title": "Network Services",
+							"subTitle": "(Magic WAN)",
+							"bullets": [
+								"Magic WAN"
+							],
+							"description": "Protect and accelerate a corporate network",
+							"recommendation": "We recommend our Magic WAN product because you indicated that you want to replace your MPLS WAN.",
+							"anchor": "#ns",
+							"enterpriseProduct": true
+						},
+						{
+							"id": "magicFirewall",
+							"associatedProducts": [
+								"magicFirewall"
+							],
+							"title": "Network Services",
+							"subTitle": "(Magic Firewall)",
+							"bullets": [
+								"Magic Firewall"
+							],
+							"description": "Protect and accelerate a corporate network",
+							"recommendation": "We recommend our Magic Transit product because you indicated that you want to deploy a network firewall as a service.",
+							"anchor": "#ns",
+							"enterpriseProduct": true
+						},
+						{
+							"id": "magicTransitWan",
+							"associatedProducts": [
+								"magicTransit",
+								"magicWan"
+							],
+							"title": "Network Services",
+							"subTitle": "(Magic Transit + Magic WAN)",
+							"bullets": [
+								"Magic Transit",
+								"Magic WAN"
+							],
+							"description": "Protect and accelerate a corporate network",
+							"recommendation": "We recommend our Magic Transit and Magic WAN products because you indicated that you want to protect your network against DDoS attacks and replace your MPLS WAN.",
+							"anchor": "#ns",
+							"enterpriseProduct": true
+						},
+						{
+							"id": "magicTransitFirewall",
+							"associatedProducts": [
+								"magicTransit",
+								"magicFirewall"
+							],
+							"title": "Network Services",
+							"subTitle": "(Magic Transit + Magic Firewall)",
+							"bullets": [
+								"Magic Transit",
+								"Magic Firewall"
+							],
+							"description": "Protect and accelerate a corporate network",
+							"recommendation": "We recommend our Magic Transit and Magic Firewall products because you indicated that you want to protect your network against DDoS attacks and deploy a network firewall as a service.",
+							"anchor": "#ns",
+							"enterpriseProduct": true
+						},
+						{
+							"id": "magicWanFirewall",
+							"associatedProducts": [
+								"magicWan",
+								"magicFirewall"
+							],
+							"title": "Network Services",
+							"subTitle": "(Magic WAN + Magic Firewall)",
+							"bullets": [
+								"Magic WAN",
+								"Magic Firewall"
+							],
+							"description": "Protect and accelerate a corporate network",
+							"recommendation": "We recommend our Magic WAN and Magic Firewall products because you indicated that you want to replace your MPLS WAN and deploy a network firewall as a service.",
+							"anchor": "#ns",
+							"enterpriseProduct": true
+						},
+						{
+							"id": "magicTransitWanFirewall",
+							"associatedProducts": [
+								"magicTransit",
+								"magicFirewall",
+								"magicWan"
+							],
+							"title": "Network Services",
+							"subTitle": "(Magic Transit + Magic WAN + Magic Firewall)",
+							"bullets": [
+								"Magic Transit",
+								"Magic WAN",
+								"Magic Firewall"
+							],
+							"description": "Protect and accelerate a corporate network",
+							"recommendation": "We recommend our Magic Transit, Magic WAN, and Magic Firewall products because you indicated that you want to protect your network against DDoS attacks, replace your MPLS WAN, and deploy a network firewall as a service.",
+							"anchor": "#ns",
+							"enterpriseProduct": true
+						},
+						{
+							"id": "teamsFree",
+							"associatedProducts": [
+								"teamsFree"
+							],
+							"title": "Zero Trust Services",
+							"subTitle": "(Free Plan)",
+							"bullets": [
+								"Free Plan"
+							],
+							"description": "Protect employees and internal apps",
+							"recommendation": "We recommend our Free Zero Trust plan because you need to protect less than 50 users and are okay self-serving when you need support.",
+							"anchor": "#zt",
+							"enterpriseProduct": false
+						},
+						{
+							"id": "teamsStandard",
+							"associatedProducts": [
+								"teamsStandard"
+							],
+							"title": "Zero Trust Services",
+							"subTitle": "(Standard Plan)",
+							"bullets": [
+								"Standard Plan"
+							],
+							"description": "Protect employees and internal apps",
+							"recommendation": "We recommend our Standard Zero Trust plan because you indicated that you would like to be able to email or chat with us online when you need support.",
+							"anchor": "#zt",
+							"enterpriseProduct": false
+						},
+						{
+							"id": "teamsEnterprise",
+							"associatedProducts": [
+								"teamsEnterprise"
+							],
+							"title": "Zero Trust Services",
+							"subTitle": "(Enterprise Plan)",
+							"bullets": [
+								"Enterprise Plan"
+							],
+							"description": "Protect employees and internal apps",
+							"recommendation": "We recommend our Zero Trust Enterprise plan because you indicated that you would like to speak to a live person when you need support.",
+							"anchor": "#zt",
+							"enterpriseProduct": true
+						},
+						{
+							"id": "dpWorkers",
+							"associatedProducts": [
+								"workers"
+							],
+							"title": "Developer Platform",
+							"subTitle": "(Workers Paid)",
+							"bullets": [
+								"Workers Paid"
+							],
+							"description": "Build an application or website",
+							"recommendation": "We recommend our Workers product because you indicated that you're building a back end API or serverless function.",
+							"anchor": "#dp",
+							"enterpriseProduct": false
+						},
+						{
+							"id": "dpPages",
+							"associatedProducts": [
+								"pages"
+							],
+							"title": "Developer Platform",
+							"subTitle": "(Pages Free)",
+							"bullets": [
+								"Pages Free"
+							],
+							"description": "Build an application or website",
+							"recommendation": "We recommend our Pages product because you indicated that you're building a front end application.",
+							"anchor": "#dp",
+							"enterpriseProduct": false
+						},
+						{
+							"id": "dpWorkersPages",
+							"associatedProducts": [
+								"workers",
+								"pages"
+							],
+							"title": "Developer Platform",
+							"subTitle": "(Workers Paid + Pages Free)",
+							"bullets": [
+								"Workers Paid",
+								"Pages Free"
+							],
+							"description": "Build an application or website",
+							"recommendation": "We recommend our Workers + Pages products because you indicated that you're building a full stack application.",
+							"anchor": "#dp",
+							"enterpriseProduct": false
+						}
+					],
+					"planFeatures": [
+						{
+							"id": "appServicesFree",
+							"title": "Free Plan",
+							"description": "Secure and accelerate your personal or hobby website.",
+							"price": "$0",
+							"cta": "Get started free",
+							"linkUrl": "https://dash.cloudflare.com/sign-up?pt=f",
+							"compareCTA": "Compare All Plans",
+							"compareUrl": "/plans/",
+							"coreFeatures": [
+								"Fast, easy-to-use DNS",
+								"Unmetered DDoS mitigation",
+								"Globally load balanced CDN",
+								"Universal SSL certificate",
+								"And more"
+							]
+						},
+						{
+							"id": "appServicesPro",
+							"title": "Pro Plan",
+							"description": "Secure and accelerate your professional, non-business-critical website.",
+							"price": "$20 / domain per month",
+							"cta": "Get started",
+							"linkUrl": "https://dash.cloudflare.com/sign-up?pt=p",
+							"compareCTA": "Compare All Plans",
+							"compareUrl": "/plans/",
+							"coreFeatures": [
+								"Fast, easy-to-use DNS",
+								"Unmetered DDoS mitigation",
+								"Globally load balanced CDN",
+								"Universal SSL certificate",
+								"Web Application Firewall (WAF)",
+								"Lossless image optimization",
+								"Accelerated mobile pages",
+								"Support via email",
+								"And more"
+							]
+						},
+						{
+							"id": "appServicesBiz",
+							"title": "Business Plan",
+							"description": "Secure and accelerate applications for your small business operating online.",
+							"price": "$200 / domain per month",
+							"cta": "Get started",
+							"linkUrl": "https://dash.cloudflare.com/sign-up?pt=p",
+							"compareCTA": "Compare All Plans",
+							"compareUrl": "/plans/",
+							"coreFeatures": [
+								"Fast, easy-to-use DNS",
+								"Unmetered DDoS mitigation",
+								"Globally load balanced CDN",
+								"Universal SSL certificate",
+								"Web Application Firewall (WAF)",
+								"Lossless image optimization",
+								"Accelerated mobile pages",
+								"PCI DSS 3.2 compliance",
+								"100% uptime SLA",
+								"Support via email and chat",
+								"And more"
+							]
+						},
+						{
+							"id": "appServicesEnt",
+							"title": "Enterprise Plan",
+							"description": "Secure and accelerate applications for your small business operating online.",
+							"price": "Custom pricing",
+							"cta": "Talk to an expert",
+							"linkUrl": "/plans/enterprise/contact/",
+							"compareCTA": "Compare All Plans",
+							"compareUrl": "/plans/",
+							"coreFeatures": [
+								"Fast, easy-to-use DNS",
+								"Unmetered DDoS mitigation",
+								"Globally load balanced CDN",
+								"Universal SSL certificate",
+								"Web Application Firewall (WAF)",
+								"Lossless image optimization",
+								"Accelerated mobile pages",
+								"PCI DSS 3.2 compliance",
+								"100% uptime SLA",
+								"Single sign-on support",
+								"24x7x365 support via email, chat, and phone",
+								"Access to all Cloudflare products and add-ons",
+								"Much more"
+							]
+						},
+						{
+							"id": "magicTransit",
+							"title": "Magic Transit",
+							"description": "Protect your data centers and network infrastructure against DDoS attacks",
+							"price": "Custom pricing",
+							"cta": "Talk to an expert",
+							"linkUrl": "/plans/enterprise/contact/",
+							"compareCTA": "Compare All Products",
+							"compareUrl": "/plans/network-services/",
+							"coreFeatures": [
+								"Over 100 Tbps of network capacity",
+								"Mitigate most attacks in under 3 seconds",
+								"Integrate via BGP routing and GRE encapsulation",
+								"Native integration with L7 services (CDN, WAF, Bot Management, etc.)",
+								"Support for all IP services (TCP, UDP, IPSec, VoIP, custom protocols)"
+							]
+						},
+						{
+							"id": "magicFirewall",
+							"title": "Magic Firewall",
+							"description": "Secure and accelerate applications for your small business operating Enforce consistent network security policies across your entire WAN",
+							"price": "Custom pricing",
+							"cta": "Talk to an expert",
+							"linkUrl": "/plans/enterprise/contact/",
+							"compareCTA": "Compare All Products",
+							"compareUrl": "/plans/network-services/",
+							"coreFeatures": [
+								"Static firewall rules for your entire network for any device, location (branch or HQ), or application",
+								"Configured rules deploy in < 500ms globally",
+								"Globally load balanced CDN",
+								"Allow or block traffic based on: protocol, source or destination IP and port, packet length, bit field match"
+							]
+						},
+						{
+							"id": "magicWan",
+							"title": "MagicWAN",
+							"description": "We recommend our Magic WAN product because you indicated that you want to replace your MPLS WAN.",
+							"price": "Custom pricing",
+							"cta": "Talk to an expert",
+							"linkUrl": "/plans/enterprise/contact/",
+							"compareCTA": "Compare All Products",
+							"compareUrl": "/plans/network-services/",
+							"coreFeatures": [
+								"Global presence in 200 cities across 100+ countries",
+								"Interconnects with > 9,800 networks, major ISPs, cloud services, and enterprises",
+								"Connect using a variety of on-ramps, including Anycast GRE tunnels, direct connection, forward-proxy, and encrypted (Argo) tunnels",
+								"Unified management plane for network connectivity",
+								"Integrated DDoS mitigation, network firewall, and Zero Trust functionality",
+								"Fast routing powered by Argo Smart Routing (roadmap)"
+							]
+						},
+						{
+							"id": "teamsFree",
+							"title": "Zero Trust Free Plan",
+							"description": "Secure users, devices, and networks with Zero Trust browsing and application access. All of our pricing plans start with the same base set of security controls designed to bring the power of Cloudflare’s global edge network.",
+							"price": "$0",
+							"cta": "Get Started Free",
+							"linkUrl": "https://dash.cloudflare.com/sign-up/teams",
+							"compareCTA": "Compare All Plans",
+							"compareUrl": "/plans/zero-trust-services/",
+							"coreFeatures": [
+								"Up to 50 users",
+								"Up to 3 network locations",
+								"Up to 24 hours of logging activity",
+								"Zero Trust network access",
+								"Secure web gateway",
+								"Private Routing to IP/Hosts",
+								"HTTP/S inspection and filters",
+								"Network Firewall as a Service",
+								"DNS resolution and filters",
+								"Cloud access security broker"
+							]
+						},
+						{
+							"id": "teamsStandard",
+							"title": "Zero Trust Standard Plan",
+							"description": "Secure users, devices, and networks with Zero Trust browsing and application access. All of our pricing plans start with the same base set of security controls designed to bring the power of Cloudflare’s global edge network.",
+							"price": "$7 / user per month",
+							"cta": "Get started",
+							"linkUrl": "https://dash.cloudflare.com/sign-up/teams",
+							"compareCTA": "Compare All Plans",
+							"compareUrl": "/plans/zero-trust-services/",
+							"coreFeatures": [
+								"No user limit",
+								"Up to 20 network locations",
+								"Up to 30 days of logging activity",
+								"Zero Trust network access",
+								"Secure web gateway",
+								"PrivaterRouting to IP/Hosts",
+								"HTTP/S inspection and filters",
+								"Network Firewall as a Service",
+								"DNS resolution and filters",
+								"Cloud access security broker",
+								"Support via email and chat",
+								"100% uptime SLA",
+								"Auth for automated services"
+							]
+						},
+						{
+							"id": "teamsEnterprise",
+							"title": "Zero Trust Enterprise",
+							"description": "Secure and accelerate your personal or hobby website.",
+							"price": "$14 / user per month",
+							"cta": "Talk to an expert",
+							"linkUrl": "/teams/plans/enterprise/",
+							"compareCTA": "Compare All Plans",
+							"compareUrl": "/plans/zero-trust-services/",
+							"coreFeatures": [
+								"No user limit",
+								"Up to 250 network locations",
+								"Up to 6 months of logging activity",
+								"Zero Trust network access",
+								"Secure web gateway",
+								"PrivaterRouting to IP/Hosts",
+								"HTTP/S inspection and filters",
+								"Network Firewall as a Service",
+								"DNS resolution and filters",
+								"Cloud access security broker",
+								"24x7x365 support via phone, email, and chat",
+								"100% uptime SLA",
+								"Specialist for onboarding teams",
+								"Auth for automated services",
+								"Logpush to SIEM/cloud storage",
+								"Cert-based auth for IoT",
+								"Editable IP network locations"
+							]
+						},
+						{
+							"id": "workers",
+							"title": "Workers",
+							"description": "Deploy serverless code instantly across the globe to give it exceptional performance, reliability, and scale.",
+							"price": "$0",
+							"cta": "Get started free",
+							"linkUrl": "https://dash.cloudflare.com/sign-up/workers",
+							"compareCTA": "Compare All Products",
+							"compareUrl": "https://www.cloudflare.com/plans/developer-platform/",
+							"coreFeatures": [
+								"Up to 30 Worker scripts",
+								"Up to 100 namespaces",
+								"Automatic global deployments to hundreds of data centers",
+								"Maintenance-free infrastructure that scales automatically",
+								"High performance runtime with no cold starts",
+								"Support for JavaScript and over 10 other languages",
+								"Full CLI deployment capabilities"
+							]
+						},
+						{
+							"id": "pages",
+							"title": "Pages",
+							"description": "Cloudflare Pages is a JAMstack platform for frontend developers to collaborate and deploy websites.",
+							"price": "$0",
+							"cta": "Get started free",
+							"linkUrl": "https://dash.cloudflare.com/sign-up/workers",
+							"compareCTA": "Compare All Products",
+							"compareUrl": "https://www.cloudflare.com/plans/developer-platform/",
+							"coreFeatures": [
+								"Developer-focused with effortless Git integration.",
+								"Advanced collaboration built-in with unlimited seats.",
+								"Unmatched performance on Cloudflare’s edge network.",
+								"Dynamic functionality with Cloudflare Workers."
+							]
+						}
+					],
+					"copy": {
+						"next": "Next",
+						"submit": "Submit",
+						"previous": "Previous",
+						"quiz_hero_title": "Let's find the right solutions for you",
+						"quiz_hero_subtitle": "",
+						"page_title": "Personalized recommendation - Cloudflare",
+						"highlighted_features": "HIGHLIGHTED FEATURES",
+						"personal_recommendation_header": "Here is your personalized product recommendation",
+						"personal_recommendation_subheader": "Based on your input, here's a quick summary of your personalized recommendations.",
+						"personal_recommendation_subheader_bold": "For details, explore each tab below.",
+						"talk_to_an_expert": "Talk To An Expert",
+						"save_recommendation": "Save Recommendation",
+						"subnav_subtitle": "Here are the details of the plans we recommend. Click tabs to explore.",
+						"why_recommend_header": "WHY WE RECOMMEND THESE PRODUCTS",
+						"recommended_products": "RECOMMENDED PRODUCTS",
+						"view_more": "Click to view more",
+						"view_less": "Click to view less",
+						"addon_header": "We think you will find value with these add-ons",
+						"topCTAButtonTextNonEnterprise": "Get Started",
+						"topCTAButtonUrlNonEnterprise": "http://dash.cloudflare.com/sign-up",
+						"topCTAButtonTextEnterprise": "Talk to an Expert",
+						"topCTAButtonUrlEnterprise": "/plans/enterprise/contact/"
+					},
+					"enablementBladeCopy": {
+						"title": "Do you have additional questions or want a free demo?",
+						"buttonText": "Talk to an Expert",
+						"buttonUrl": "/plans/enterprise/contact"
+					},
+					"progressIndicatorCopy": {
+						"progressStep": "Progress: Step",
+						"of": "of"
+					}
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"pathname": "/about-your-website/",
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

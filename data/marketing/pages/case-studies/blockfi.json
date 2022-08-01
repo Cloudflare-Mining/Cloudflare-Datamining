@@ -1,0 +1,103 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/blockfi/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "BlockFi",
+				"contentfulId": "7k9dRKrA9FpuJFGXslsmBg",
+				"nameUrlSlug": "blockfi",
+				"metaTags": {
+					"metaTitle": "Cloudflare | BlockFi",
+					"metaDescription": "Cloudflare & BlockFi | Case Study",
+					"twitterCustomImage": {
+						"file": {
+							"publicURL": "[path]/BlockFi_Meta_Pic.png"
+						}
+					},
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/BlockFi_Meta_Pic.png"
+						}
+					},
+					"facebookCustomImage": {
+						"file": {
+							"publicURL": "[path]/BlockFi_Meta_Pic.png"
+						}
+					}
+				},
+				"orderDate": "2021-11-02",
+				"homepageUrl": "https://www.blockfi.com/",
+				"hideFromCaseStudiesPage": false,
+				"shortDescription": "Cloudflare removes complexity from BlockFi’s security stack while enabling the adoption of a scalable Zero Trust architecture",
+				"longDescription": "## __BlockFi simplifies its security stack while enabling scalable Zero Trust remote access to internal resources__\n\nWith a mission to bring financial empowerment to traditionally underserved markets, BlockFi bridges the worlds of traditional finance and blockchain technology on a global scale. BlockFi’s interest accounts, cryptocurrency-backed loans, BlockFi Rewards Credit Card and crypto trading platform are leveraged by crypto-asset owners worldwide, ranging from everyday retail clients to top-tier hedge funds. \n\nBlockFi supports over 450,000 funded clients and manages over $10 billion in assets (as of June 30, 2021). The company is backed by more than $450 million in equity funding, including a recent Series D funding round led by Bain Capital that [raised $350 million](https://www.blockfi.com/blockfi-completes-usd350-million-series-d). \n\n### __Challenge: Replace a complex security solution with a comprehensive Zero Trust platform — but first, stop a massive DDoS and API attack__\n\nIn 2020, BlockFi had been deploying multiple services from a vendor to protect external web properties and protect employees from online threats. The solutions were complex to deploy, required multiple endpoint agents, and lacked natively integrated capabilities to secure application access. Additionally, BlockFi relied on IP-based controls to enable remote access to key corporate resources. Maintaining these IP blocks and allow lists across a rapidly growing, globally distributed workforce of nearly 1,000 employees was time-consuming and not scalable.\n\nJust as BlockFi began exploring alternative vendors and approaches, they were suddenly and simultaneously struck by two serious cyberattacks: a very large DDoS attack and an attack on its sign-up API. The attacks occurred during a major growth spurt, during which BlockFi was signing up approximately 20,000 new retail clients each week.\n\nLacking sufficient internal resources to mitigate the attacks on their own, BlockFi contacted Cloudflare for help. “Cloudflare came to BlockFi in our hour of need,” recalls Adam Healy, Chief Security Officer. “I literally woke up my Cloudflare contact at 6:00 a.m. They quickly mobilized every resource we needed, even though BlockFi wasn’t a Cloudflare customer at the time.”\n\n### __After stopping DDoS & API attacks, Cloudflare works with BlockFi to implement scalable Zero Trust security solutions__\n\nCloudflare helped BlockFi halt the DDoS and API attacks during an onboarding session allowing systems operations to return to normal within 6 hours, saving “thousands, if not millions” of dollars in lost revenue and helping mitigate reputational damage among customers and investors.\n\nAfter mitigating the attacks, BlockFi decided to pursue a more comprehensive organizational security transformation to protect its workforce and sensitive data with the Cloudflare Zero Trust platform. This platform includes a Zero Trust network access (ZTNA) solution to protect applications across cloud and on-premise environments, along with a secure web gateway (SWG) solution to provide threat protection from ransomware, phishing, and other Internet-based threats.\n\nAll of BlockFi’s high-value internal applications are now secured behind the Cloudflare ZTNA solution, including two applications that handle sensitive data and represent an estimated 70% of BlockFi’s mission-critical operations. \n\n“Cloudflare gave us fine-grained, Zero Trust access control over our internal applications throughout our distributed environment, which is an enormous improvement in our security posture,” says Dan Rue, Lead Site Reliability Engineer. “We have full control over system ingress, we can scale much better, and we’re much more resilient.”\n\nHealy adds, “Cloudflare’s Zero Trust services enabled us to protect our remote-first, globally distributed workforce and critical internal applications that are not exposed to the public Internet.”\n\n### __A simpler security stack helps BlockFi minimize costs and increase productivity, while serverless computing and static site hosting using Cloudflare Workers optimize development processes__\n\nWith Zero Trust network access in place, BlockFi was able to stop using IP block and allow lists, which previously demanded the dedicated attention of four full-time engineers. Additionally, employees whose IP addresses changed were frequently forced to remain idle while BlockFi engineers added their new IPs to allow lists. Now, employees securely access resources from anywhere, on any device, simply by logging on through BlockFi’s single sign-on (SSO) provider, Okta.\n\n“Since our engineers no longer have to maintain IP block and allow lists, they have far more time to focus on strategic projects that drive the business, such as enhancing applications,” says Eric Freeman, VP, Security Program Management. \n\nSeeing an opportunity to improve development processes, BlockFi also added Cloudflare Workers, which provides developers with a serverless execution environment, and Cloudflare Pages, a JAMstack platform for frontend developers to rapidly deploy fast-loading websites.\n\nBlockFi is using Cloudflare Workers to move more application logic to its network edge, which enhances performance and simplifies the company’s internal architecture. BlockFi’s developers frequently use Workers to insert code snippets into static sites built with Cloudflare Pages, which allows them to make changes far more quickly than if they had to rewrite the site code. Moving forward, BlockFi anticipates using Workers far more often.\n\n“Workers solves our most complicated use cases in an elegant and simple fashion, while Cloudflare Pages provides us with best-in-class static site hosting that’s much easier to use than our cloud services provider,” notes Rue.\n\n### __BlockFi enjoys defense in depth at the network edge__\n\nBy enabling BlockFi to block user traffic to malicious websites out of the box, Cloudflare reduces the risk of employees being victimized by drive-by malware or phishing sites as they browse the Internet. For phishing emails specifically -- whether to everyone in the organization or only to a specific target -- BlockFi can run antivirus inspection and use threat category filters to prevent risky links from resolving.\n\nBlockFi also saw instant results from the Cloudflare Bot Management solution, which it deployed simultaneously with Cloudflare’s Zero Trust platform. Within the first day of deployment, Bot Management blocked approximately 10 million malicious bots from reaching BlockFi’s site. In addition to ensuring that malicious traffic does not degrade site performance, this protects BlockFi from credential-stuffing and other bots that seek to compromise user login credentials.\n\n“By protecting our employees from phishing links, credential-stuffing, and other attacks on their login credentials, Cloudflare gives us the end user protection that’s crucial to defense in depth,” explains Freeman.\n\nFrom ZTNA to DDoS protection to security against malicious bots, Cloudflare solutions are so deeply woven into BlockFi’s data environment that they effectively make up the company’s network edge.\n\n“Cloudflare is our edge. It protects our entire cloud environment,” Healy says. “Our perimeter is secure, and we have the resiliency to scale as much and as quickly as we want.”\n\nRue adds, “Cloudflare is critically important to our ability to securely scale, and it fits in with the rest of our stack beautifully. As extensive as our Cloudflare integration already is, we’ve only just started. We have many more potential use cases where Cloudflare is the best tool for the job.”\n",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "- Halt automated attacks that were negatively impacting application performance\n\n- Eliminate time-consuming manual controls in favor of automated Zero Trust application access\n\n- Significantly simplify security stack while enhancing the organization’s overall security posture",
+				"relatedCaseStudies": [
+					{
+						"name": "Bitpanda ",
+						"nameUrlSlug": "bitpanda"
+					},
+					{
+						"name": "LendingTree ",
+						"nameUrlSlug": "lendingtree"
+					},
+					{
+						"name": "One Mount Group",
+						"nameUrlSlug": "one-mount-group"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Access",
+						"url": "/teams/access"
+					},
+					{
+						"title": "Workers",
+						"url": "/products/cloudflare-workers/"
+					},
+					{
+						"title": "Bot Management",
+						"url": "https://www.cloudflare.com/products/bot-management/"
+					},
+					{
+						"title": "Gateway",
+						"url": "https://www.cloudflare.com/products/zero-trust/gateway/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Adam Healy",
+				"employeeQuoteText": "Cloudflare is our edge. It protects our entire cloud environment. Our perimeter is secure, and we have the resiliency to scale quickly as our needs grow.",
+				"employeeQuoteJobTitle": "Chief Security Officer",
+				"employeeQuoteName2": "Dan Rue",
+				"employeeQuoteText2": "Cloudflare gave us fine-grained, Zero Trust access control over our internal applications throughout our distributed environment, which is an enormous improvement in our security posture.",
+				"employeeQuoteJobTitle2": "Lead Site Reliability Engineer",
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/BlockFi_Logo_2020_BlockFi-2020-Full-Color.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "7k9dRKrA9FpuJFGXslsmBg",
+			"pathname": "/case-studies/blockfi/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US",
+				"zh-CN"
+			]
+		}
+	}
+}
