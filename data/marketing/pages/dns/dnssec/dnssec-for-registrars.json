@@ -58,7 +58,7 @@
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "DNSSEC for Registrars",
 						"subtitle": null,
-						"copy": "At Cloudflare, we’re excited about making the Internet safer through the mass deployment of our recently deployed DNSSEC implementation. Cloudflare Universal DNSSEC provides authentication to an otherwise insecure DNS, preventing man-in-the-middle attacks and giving visitors assurance that their connection is safely routed to the right server.\n\nBecause trust in DNSSEC is top-down (The root zone verifies the .com zone, and the .com zone verifies the cloudflare.com zone, and so forth), enabling DNSSEC requires a website owner to update the DS record with you, the registrar.\n\nThis part is problematic—copying and pasting the DS record opens up the possibility of human error, and adds a layer of complexity for less-savvy users. We want to make DNSSEC as easy to deploy as possible.\n\nIf Cloudflare could communicate directly with the registrar or registry, we could activate DNSSEC for every website on Cloudflare automatically and manage their keys without human intervention.\n\nAs part of our DNSSEC rollout, we published an <a href=\"https://tools.ietf.org/id/draft-latour-dnsoperator-to-rrr-protocol-00.txt\">Internet Draft alongside CIRA</a>, the .ca registry, proposing a protocol for DNS operators like Cloudflare to do just that: communicate with registrars and registries to automate DNSSEC management.",
+						"copy": "At Cloudflare, we're excited about making the Internet safer through the mass deployment of our recently deployed DNSSEC implementation. Cloudflare Universal DNSSEC provides authentication to an otherwise insecure DNS, preventing man-in-the-middle attacks and giving visitors assurance that their connection is safely routed to the right server.\n\nBecause trust in DNSSEC is top-down (The root zone verifies the .com zone, and the .com zone verifies the cloudflare.com zone, and so forth), enabling DNSSEC requires a website owner to update the DS record with you, the registrar.\n\nThis part is problematic—copying and pasting the DS record opens up the possibility of human error, and adds a layer of complexity for less-savvy users. We want to make DNSSEC as easy to deploy as possible.\n\nIf Cloudflare could communicate directly with the registrar or registry, we could activate DNSSEC for every website on Cloudflare automatically and manage their keys without human intervention.\n\nAs part of our DNSSEC rollout, we published an <a href=\"https://tools.ietf.org/id/draft-latour-dnsoperator-to-rrr-protocol-00.txt\">Internet Draft alongside CIRA</a>, the .ca registry, proposing a protocol for DNS operators like Cloudflare to do just that: communicate with registrars and registries to automate DNSSEC management.",
 						"buttonColor": null,
 						"buttonColor2": null,
 						"buttonText1": null,
@@ -226,7 +226,7 @@
 						"contentTypeId": "bladePricingPlans",
 						"contentfulId": "5Cw4cx3ZpM4B6TicJ55DAp",
 						"title": "Cloudflare Pricing",
-						"description": "Everyone’s Internet application can benefit from using Cloudflare. Pick a plan that fits your needs.",
+						"description": "Everyone's Internet application can benefit from using Cloudflare. Pick a plan that fits your needs.",
 						"htmlId": null,
 						"plansList": [
 							{
