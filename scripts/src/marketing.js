@@ -29,6 +29,9 @@ const addPath = function(url){
 	paths.add(fixed);
 };
 const addMore = function(url){
+	if(url.includes('#')){
+		return;
+	}
 	const fixed = removeTrailing(url);
 	if(!paths.has(fixed) && !morePaths.has(fixed)){
 		console.log('Found new path!', fixed);
@@ -62,9 +65,10 @@ const findMoreUrls = function(object){
 };
 
 const stabiliseString = function(string){
-	return string.replaceAll('��', '"')
-		.replaceAll('�', '\'')
-		.replaceAll('’', '\'')
+	if(string.includes('�')){
+		throw new Error('Bad encoding');
+	}
+	return string.replaceAll('’', '\'')
 		.replaceAll('‘', '\'')
 		.replaceAll('”', '"')
 		.replaceAll('“', '"');
@@ -91,6 +95,15 @@ const stabiliseData = function(object){
 					item = stabiliseString(item);
 				}
 			}
+			object[key] = object[key].sort((itemA, itemB) => {
+				if(itemA.orderDate){
+					return itemB.orderDate.localeCompare(itemA.orderDate) || itemA.id.localeCompare(itemB.id);
+				}
+				if(typeof(itemA) === 'string'){
+					return 0;
+				}
+				return 0;
+			});
 		}
 	}
 };
@@ -116,7 +129,12 @@ const processPage = async function(urlPath){
 	await fs.ensureFile(filePath);
 
 	findMoreUrls(json.result);
-	stabiliseData(json.result);
+	try{
+		stabiliseData(json.result);
+	}catch(err){
+		console.warn('Ignoring', url, err);
+		return;
+	}
 
 	// extract global info
 	if(urlPath === 'index'){
