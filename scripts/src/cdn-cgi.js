@@ -204,6 +204,7 @@ await tryAndPush(
 		'data/cdn-cgi/*',
 		'data/cdn-cgi/**/*',
 		'data/cdn-cgi/**/*.json',
+		'data/cdn-cgi/**/*.css',
 	],
 	`${prefix} - CDN CGI Data was updated!`,
 	'CFData - CDN CGI Update',
