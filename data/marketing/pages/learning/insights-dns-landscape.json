@@ -230,7 +230,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": ") was designed in the 1980s when Internet access was restricted to government agencies, scientists, and the military. The system’s early architects were concerned about reliability and functionality, not security. As a result, DNS servers have always been vulnerable to a broad spectrum of attacks, including spoofing, amplification, and denial-of-service. ",
+													"value": ") was designed in the 1980s when Internet access was restricted to government agencies, scientists, and the military. The system's early architects were concerned about reliability and functionality, not security. As a result, DNS servers have always been vulnerable to a broad spectrum of attacks, including spoofing, amplification, and denial-of-service. ",
 													"marks": [],
 													"content": null
 												}
@@ -251,7 +251,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "And these attacks are becoming more common. According to IDC’s ",
+													"value": "And these attacks are becoming more common. According to IDC's ",
 													"marks": [],
 													"content": null
 												},
@@ -500,7 +500,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "“Forgot Password” cache poisoning attacks. ",
+																	"value": "\"Forgot Password\" cache poisoning attacks. ",
 																	"marks": [
 																		{
 																			"type": "bold"
@@ -514,7 +514,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "‘Forgot password’ links are common in web applications, but a vulnerability discovered in July 2021 ",
+																	"value": "'Forgot password' links are common in web applications, but a vulnerability discovered in July 2021 ",
 																	"marks": [],
 																	"content": null
 																},
@@ -549,7 +549,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": ". Security researchers discovered that, by performing a cache poisoning attack on 146 vulnerable web applications, they could redirect password reset emails to attacker-controlled servers. This enabled them to click on the link and reset the user’s password, providing legitimate access to their account.",
+																	"value": ". Security researchers discovered that, by performing a cache poisoning attack on 146 vulnerable web applications, they could redirect password reset emails to attacker-controlled servers. This enabled them to click on the link and reset the user's password, providing legitimate access to their account.",
 																	"marks": [],
 																	"content": null
 																}
@@ -630,7 +630,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": " containing sensitive information. By registering a domain on Amazon’s Route53 DNS service or Google Cloud DNS that had the same name as the DNS name server, the attacker could force all DNS traffic to be sent to their server. This exposed sensitive information and could enable DNS spoofing attacks.",
+																	"value": " containing sensitive information. By registering a domain on Amazon's Route53 DNS service or Google Cloud DNS that had the same name as the DNS name server, the attacker could force all DNS traffic to be sent to their server. This exposed sensitive information and could enable DNS spoofing attacks.",
 																	"marks": [],
 																	"content": null
 																}
@@ -701,7 +701,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": " that enable DDoS attacks against DNS servers. Domains with “cyclic dependencies'' can exist, where domain A delegates to domain B and vice versa. Vulnerable DNS resolvers will start looping when presented with domains causing cyclic dependencies. ",
+																	"value": " that enable DDoS attacks against DNS servers. Domains with \"cyclic dependencies'' can exist, where domain A delegates to domain B and vice versa. Vulnerable DNS resolvers will start looping when presented with domains causing cyclic dependencies. ",
 																	"marks": [],
 																	"content": null
 																},
@@ -736,7 +736,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": ", just two misconfigured domains created a 50% traffic increase for .nz’s authoritative DNS servers in 2020.",
+																	"value": ", just two misconfigured domains created a 50% traffic increase for .nz's authoritative DNS servers in 2020.",
 																	"marks": [],
 																	"content": null
 																}
@@ -796,7 +796,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": ". In DNS hijacking, the attacker causes the DNS record for a legitimate domain to point to a site under their control. In these recent attacks, the compromised site claimed to offer Covid-19 information, but actually installed malware on the user’s device.",
+													"value": ". In DNS hijacking, the attacker causes the DNS record for a legitimate domain to point to a site under their control. In these recent attacks, the compromised site claimed to offer Covid-19 information, but actually installed malware on the user's device.",
 													"marks": [],
 													"content": null
 												}
@@ -1035,7 +1035,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": " similar to DNS hijacking but target DNS resolvers, which cache commonly or recently requested DNS records. A DNS spoofing or cache poisoning attack introduces false DNS records into a resolver’s cache, causing requests for those domains to be routed to an attacker-controlled website.",
+																	"value": " similar to DNS hijacking but target DNS resolvers, which cache commonly or recently requested DNS records. A DNS spoofing or cache poisoning attack introduces false DNS records into a resolver's cache, causing requests for those domains to be routed to an attacker-controlled website.",
 																	"marks": [],
 																	"content": null
 																}
@@ -1127,7 +1127,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": " exploits DNS traffic’s permissions to pass through corporate firewalls. These attacks use DNS traffic to carry data between malware and the attacker-controlled data server.",
+																	"value": " exploits DNS traffic's permissions to pass through corporate firewalls. These attacks use DNS traffic to carry data between malware and the attacker-controlled data server.",
 																	"marks": [],
 																	"content": null
 																}
@@ -1194,7 +1194,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "DNS DDoS attacks — such as those exploiting the aforementioned tsuNAME flaw — can result in poor performance or outright downtime for entire web applications. DNS is a crucial first step in a website’s ability to load quickly, and such attacks use server resources that could otherwise be used to handle legitimate requests. In 2020, ",
+													"value": "DNS DDoS attacks — such as those exploiting the aforementioned tsuNAME flaw — can result in poor performance or outright downtime for entire web applications. DNS is a crucial first step in a website's ability to load quickly, and such attacks use server resources that could otherwise be used to handle legitimate requests. In 2020, ",
 													"marks": [],
 													"content": null
 												},
@@ -1341,7 +1341,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Spoofing, hijacking, and cache poisoning attacks can also hurt website conversions by directing prospective customers away from the legitimate website. In addition, having one’s site be seen as poorly secured can hurt an organization’s brand reputation in the long run. ",
+													"value": "Spoofing, hijacking, and cache poisoning attacks can also hurt website conversions by directing prospective customers away from the legitimate website. In addition, having one's site be seen as poorly secured can hurt an organization's brand reputation in the long run. ",
 													"marks": [],
 													"content": null
 												}
@@ -1362,7 +1362,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "DNS attacks can also have severe consequences for an organization’s network security. The aforementioned vulnerabilities in certain managed DNS providers resulted in private traffic being exposed to attackers — a critical data security issue. And DNS tunneling attacks that install and control malware on a network can have any number of consequences, ",
+													"value": "DNS attacks can also have severe consequences for an organization's network security. The aforementioned vulnerabilities in certain managed DNS providers resulted in private traffic being exposed to attackers — a critical data security issue. And DNS tunneling attacks that install and control malware on a network can have any number of consequences, ",
 													"marks": [],
 													"content": null
 												},
@@ -1495,7 +1495,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "A number of steps can help organizations mitigate DNS attacks. At the very top of the list: implement DNS security solutions of some kind. IDC’s report found that 42% of organizations have not deployed dedicated DNS security solutions. ",
+													"value": "A number of steps can help organizations mitigate DNS attacks. At the very top of the list: implement DNS security solutions of some kind. IDC's report found that 42% of organizations have not deployed dedicated DNS security solutions. ",
 													"marks": [],
 													"content": null
 												}
@@ -1682,7 +1682,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": " A DNS firewall sits between a domain’s authoritative nameserver and users’ recursive resolvers. The firewall can rate limit requests to protect against DDoS attacks or filter traffic to block malicious or suspicious requests.",
+																	"value": " A DNS firewall sits between a domain's authoritative nameserver and users' recursive resolvers. The firewall can rate limit requests to protect against DDoS attacks or filter traffic to block malicious or suspicious requests.",
 																	"marks": [],
 																	"content": null
 																}
@@ -1844,7 +1844,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " to protect against DNS spoofing and hijacking attacks. It is built on Cloudflare’s 100 Tbps of total network capacity — many times larger than the largest-ever DNS DDoS attack and blocks DDoS attacks in addition to other attack varieties.",
+													"value": " to protect against DNS spoofing and hijacking attacks. It is built on Cloudflare's 100 Tbps of total network capacity — many times larger than the largest-ever DNS DDoS attack and blocks DDoS attacks in addition to other attack varieties.",
 													"marks": [],
 													"content": null
 												}
@@ -1921,7 +1921,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "And these protections come with no performance tradeoffs. Cloudflare operates the world’s fastest authoritative DNS, with an 11 ms average lookup time. You can even maintain your existing DNS infrastructure while using Cloudflare DNS as a secondary DNS or in a hidden primary setup.",
+													"value": "And these protections come with no performance tradeoffs. Cloudflare operates the world's fastest authoritative DNS, with an 11 ms average lookup time. You can even maintain your existing DNS infrastructure while using Cloudflare DNS as a secondary DNS or in a hidden primary setup.",
 													"marks": [],
 													"content": null
 												}
@@ -1942,7 +1942,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "This article is part of a series on the latest trends and topics impacting today’s technology decision-makers.",
+													"value": "This article is part of a series on the latest trends and topics impacting today's technology decision-makers.",
 													"marks": [
 														{
 															"type": "italic"

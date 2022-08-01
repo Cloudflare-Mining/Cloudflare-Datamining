@@ -61,13 +61,21 @@ const findMoreUrls = function(object){
 	}
 };
 
+const stabiliseString = function(string){
+	return string.replaceAll('��', '"')
+		.replaceAll('�', '\'')
+		.replaceAll('’', '\'')
+		.replaceAll('‘', '\'')
+		.replaceAll('”', '"')
+		.replaceAll('“', '"');
+};
 const stabiliseData = function(object){
 	if(typeof object === 'string'){
 		return object;
 	}
 	for(const key in object){
 		if(typeof object[key] === 'string'){
-			object[key] = object[key].replaceAll('�', '');
+			object[key] = stabiliseString(object[key]);
 			if(key === 'publicURL'){
 				object[key] = object[key].replace(/^\/static\/\w+\/(.*)/, '[path]/$1');
 			}
@@ -80,7 +88,7 @@ const stabiliseData = function(object){
 				if(typeof item === 'object'){
 					stabiliseData(item);
 				}else if(typeof item === 'string'){
-					item = item.replaceAll('�', '');
+					item = stabiliseString(item);
 				}
 			}
 		}

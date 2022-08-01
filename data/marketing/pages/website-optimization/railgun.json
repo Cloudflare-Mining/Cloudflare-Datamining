@@ -198,7 +198,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Cloudflare’s ability to make a web site appear to be hosted close to web surfers is key in accelerating web surfing. A web site might be hosted in the US, but accessed mainly by web surfers in the UK. With Cloudflare the site will be served from a UK data center eliminating the costly delay caused by the speed of light.",
+													"value": "Cloudflare's ability to make a web site appear to be hosted close to web surfers is key in accelerating web surfing. A web site might be hosted in the US, but accessed mainly by web surfers in the UK. With Cloudflare the site will be served from a UK data center eliminating the costly delay caused by the speed of light.",
 													"marks": [],
 													"content": null
 												}
@@ -240,7 +240,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "For example, it’s hard to cache the New York Times home page for any length of time because the news changes and being up to date is essential to their business. And for a personalized web site like Facebook each user sees a different page even though the URL may be the same for different users.",
+													"value": "For example, it's hard to cache the New York Times home page for any length of time because the news changes and being up to date is essential to their business. And for a personalized web site like Facebook each user sees a different page even though the URL may be the same for different users.",
 													"marks": [],
 													"content": null
 												}
@@ -303,7 +303,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "For personalized sites the boilerplate HTML is the same with only small pieces of content (such as a person’s Twitter timeline or Facebook news feed) changing. This means there’s a huge opportunity to compress web pages for transmission if the unchanging parts of a page can be detected and only the differences transmitted.",
+													"value": "For personalized sites the boilerplate HTML is the same with only small pieces of content (such as a person's Twitter timeline or Facebook news feed) changing. This means there's a huge opportunity to compress web pages for transmission if the unchanging parts of a page can be detected and only the differences transmitted.",
 													"marks": [],
 													"content": null
 												}
@@ -368,7 +368,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "When a request is made to a Cloudflare server for a web page that is not in cache Cloudflare makes an HTTP connection to the origin server to request the page. It’s that HTTP connection that Railgun accelerates and secures.",
+													"value": "When a request is made to a Cloudflare server for a web page that is not in cache Cloudflare makes an HTTP connection to the origin server to request the page. It's that HTTP connection that Railgun accelerates and secures.",
 													"marks": [],
 													"content": null
 												}
@@ -576,7 +576,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Railgun consists of two software components: the Listener and Sender. The Railgun Listener is installed at your web host on an origin server. It’s a small piece of software that runs on a standard server and services requests from Cloudflare using the encrypted, binary Railgun protocol.",
+													"value": "Railgun consists of two software components: the Listener and Sender. The Railgun Listener is installed at your web host on an origin server. It's a small piece of software that runs on a standard server and services requests from Cloudflare using the encrypted, binary Railgun protocol.",
 													"marks": [],
 													"content": null
 												}
@@ -639,7 +639,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "The Railgun Sender turns the request into a compressed, binary chunk that’s transmitted to the corresponding Railgun Listener. The Railgun Listener handles the request and performs an HTTP request to the origin server. From the origin server’s perspective it’s as if the HTTP connection came directly from Cloudflare, but because it comes from inside the hosting partner’s infrastructure the request suffers no latency related delay.",
+													"value": "The Railgun Sender turns the request into a compressed, binary chunk that's transmitted to the corresponding Railgun Listener. The Railgun Listener handles the request and performs an HTTP request to the origin server. From the origin server's perspective it's as if the HTTP connection came directly from Cloudflare, but because it comes from inside the hosting partner's infrastructure the request suffers no latency related delay.",
 													"marks": [],
 													"content": null
 												}
@@ -938,7 +938,7 @@
 						"contentTypeId": "bladePricingPlans",
 						"contentfulId": "5Cw4cx3ZpM4B6TicJ55DAp",
 						"title": "Cloudflare Pricing",
-						"description": "Everyone’s Internet application can benefit from using Cloudflare. Pick a plan that fits your needs.",
+						"description": "Everyone's Internet application can benefit from using Cloudflare. Pick a plan that fits your needs.",
 						"htmlId": null,
 						"plansList": [
 							{
