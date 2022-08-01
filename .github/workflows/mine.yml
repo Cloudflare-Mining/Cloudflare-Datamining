@@ -31,6 +31,7 @@ jobs:
           npm run mine
         env:
           DISCORD_URL: ${{ secrets.DISCORD_URL }}
+          DISCORD_MARKETING_URL: ${{ secrets.DISCORD_MARKETING_URL }}
           FETCH_FROM_COLO_URL: ${{ secrets.FETCH_FROM_COLO_URL }}
           COVEO_KEY: ${{ secrets.COVEO_KEY }}
           COVEO_ORGID: ${{ secrets.COVEO_ORGID }}

@@ -18,9 +18,13 @@ https.globalAgent = getHttpsAgent();
 // We want it to be ran from root not scripts
 const git = simpleGit({baseDir: path.resolve('..')});
 
-export async function sendToDiscord(name, msg){
+export async function sendToDiscord(name, msg, type){
 	// Send message
-	return fetch(`${process.env.DISCORD_URL}?wait=true`, {
+	let url = process.env.DISCORD_URL;
+	if(type === 'marketing'){
+		url = process.env.DISCORD_MARKETING_URL;
+	}
+	return fetch(`${url}?wait=true`, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
@@ -32,7 +36,7 @@ export async function sendToDiscord(name, msg){
 	});
 }
 
-export async function tryAndPush(files, commitMessage, webhookUsername, webhookMessage){
+export async function tryAndPush(files, commitMessage, webhookUsername, webhookMessage, type = 'default'){
 	if(!process.env.CI){
 		console.log('Not pushing changes as not in CI environment.');
 		return;
@@ -51,7 +55,7 @@ export async function tryAndPush(files, commitMessage, webhookUsername, webhookM
 		const commit = (await git.log({maxCount: 1})).latest;
 		if(commit.hash !== prevCommit.hash){
 			const commitUrl = `https://github.com/Cherry/Cloudflare-Datamining/commit/${commit.hash}`;
-			await sendToDiscord(webhookUsername, `[${webhookMessage}](${commitUrl})`);
+			await sendToDiscord(webhookUsername, `[${webhookMessage}](${commitUrl})`, type);
 		}
 	}catch(err){
 		console.error(err);
