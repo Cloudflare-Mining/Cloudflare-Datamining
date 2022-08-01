@@ -1,0 +1,557 @@
+{
+	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
+	"path": "/learning/ssl/what-is-encrypted-sni/",
+	"result": {
+		"data": {
+			"learningCenterArticle": {
+				"contentTypeId": "learningCenterArticle",
+				"contentfulId": "W0YIwHOGfu3LxPyjb5JBC",
+				"urlSlug": "ssl/what-is-encrypted-sni",
+				"metaTags": {
+					"metaTitle": "What is encrypted SNI? | How ESNI works",
+					"metaDescription": "Encrypted SNI, or ESNI, helps keep user browsing private. Learn how ESNI makes TLS encryption more secure by using DNS records and public key cryptography.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"metaTitle": "What is encrypted SNI? | How ESNI works",
+				"metaDescription": "Encrypted SNI, or ESNI, helps keep user browsing private. Learn how ESNI makes TLS encryption more secure by using DNS records and public key cryptography.",
+				"learningCenterArticleSubHeader": {
+					"contentTypeId": "learningCenterArticleSubHeader",
+					"contentfulId": "3u6eezFpOUiCop2PUEz413",
+					"learningCenterName": "ssl",
+					"links": [
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "357fevHD1vzqQ8mp5tKWWp",
+							"displayText": "What is SSL?",
+							"url": "/learning/ssl/what-is-ssl/"
+						},
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "gwBHxAG3RwjReejRFn4Tb",
+							"displayText": "What is an SSL Certificate?",
+							"url": "/learning/ssl/what-is-an-ssl-certificate/"
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "41bCzYtpXDZRkfm3BzO806",
+							"name": "SSL Header: HTTP vs. HTTPS",
+							"displayText": "HTTP vs. HTTPS",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "zcwchxBLBWoaxyFq5Dhrj",
+									"displayText": "HTTP Security Gaps",
+									"url": "/learning/ssl/why-is-http-not-secure/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "11gGk7UFGxU33PLEUtjRfG",
+									"displayText": "What is HTTPS?",
+									"url": "/learning/ssl/what-is-https/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "15Vc3WANDpfVAs97KDEpzB",
+									"displayText": "Why Use HTTPS?",
+									"url": "/learning/ssl/why-use-https/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1oRht1dhER6Saxylj6glBn",
+									"displayText": "What is Mixed Content?",
+									"url": "/learning/ssl/what-is-mixed-content/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "4yMBT5IbPkVA9mccwMlLAY",
+							"name": "SSL Header: How Encryption Works",
+							"displayText": "How Encryption Works",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7qNVD8JotWdDbcqpZbp3VE",
+									"displayText": "What is Encryption?",
+									"url": "/learning/ssl/what-is-encryption/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3rrJ1k7k9ENDfgrBK5YzYK",
+									"displayText": "What is a Key?",
+									"url": "/learning/ssl/what-is-a-cryptographic-key/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4Uc11k7V2M5fHP5LmuF3vu",
+									"displayText": "What is a Session Key?",
+									"url": "/learning/ssl/what-is-a-session-key/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "57mpp35oVI2JzfRKESr73H",
+									"displayText": "Public Key Encryption",
+									"url": "/learning/ssl/how-does-public-key-encryption-work/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "33mZ23MKbvH87xdIT1dD7U",
+									"displayText": "Asymmetric Encryption",
+									"url": "/learning/ssl/what-is-asymmetric-encryption/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1QIQ5fPzS3n1uqI4XYZu72",
+									"displayText": "Lava Lamp Encryption",
+									"url": "/learning/ssl/lava-lamp-encryption/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2lwLYHBHzDBTGRId8drlRf",
+									"displayText": "Quantum Computing",
+									"url": "/learning/ssl/quantum/what-is-quantum-computing/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "5NWfQa2W1T6GY7oKFVQ5yn",
+							"name": "SSL Header: SSL Glossary",
+							"displayText": "SSL Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7dVuWLoT4g4e5ACvtAvDXG",
+									"displayText": "SSL Handshake",
+									"url": "/learning/ssl/what-happens-in-a-tls-handshake/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1brMQhAhJnFjyUUM6TaQrW",
+									"displayText": "What is TLS?",
+									"url": "/learning/ssl/transport-layer-security-tls/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3DJJDfuNUIAZ9HHhRYGgbV",
+									"displayText": "Keyless SSL",
+									"url": "/learning/ssl/keyless-ssl/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2fhx0LLDXj3vPLqS4ghmCe",
+									"displayText": "How SSL Works",
+									"url": "/learning/ssl/how-does-ssl-work/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6R3H8YcjaXUWJfMFDzvpUu",
+									"displayText": "SSL Certificate Types",
+									"url": "/learning/ssl/types-of-ssl-certificates/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7Gakh2yuxfEcpgxfy1hJhg",
+									"displayText": "Why Use TLS 1.3?",
+									"url": "/learning/ssl/why-use-tls-1.3/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5AsEd8eehv2y9EnsWeAVRr",
+									"displayText": "What is SNI?",
+									"url": "/learning/ssl/what-is-sni/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "DQ4yCoBF3o0LSkpiQCyuc",
+									"displayText": "Connection Not Private",
+									"url": "/learning/ssl/connection-not-private-explained/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2lbLRhcdSDOeSBEOF6PBsf",
+									"displayText": "What is Encrypted SNI?",
+									"url": "/learning/ssl/what-is-encrypted-sni/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6UQyd1PLht2H5F8aSNnF1y",
+									"displayText": "What is Domain Spoofing?",
+									"url": "/learning/ssl/what-is-domain-spoofing/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "6jvtLTbtKFKb5U7Fi94imf",
+							"name": "SSL header: Insights",
+							"displayText": "Insights",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "22UXessHsWvrAW3d6QdL1i",
+									"displayText": "Securing the post-quantum world",
+									"url": "https://www.cloudflare.com/insights-quantum-computing/"
+								}
+							]
+						}
+					]
+				},
+				"learningCenterArticleFooter": {
+					"contentTypeId": "learningCenterArticleFooter",
+					"contentfulId": "4qJHR2kpJZnCuBYyk2jEUu",
+					"learningCenterName": "ssl",
+					"column1Title": "About SSL/TLS",
+					"column1": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "7r9tBZ6FyoU4ybaPKM0uP5",
+						"name": "SSL Footer: About",
+						"displayText": "About SSL",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "357fevHD1vzqQ8mp5tKWWp",
+								"displayText": "What is SSL?",
+								"url": "/learning/ssl/what-is-ssl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1brMQhAhJnFjyUUM6TaQrW",
+								"displayText": "What is TLS?",
+								"url": "/learning/ssl/transport-layer-security-tls/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2fhx0LLDXj3vPLqS4ghmCe",
+								"displayText": "How SSL Works",
+								"url": "/learning/ssl/how-does-ssl-work/"
+							}
+						]
+					},
+					"column2Title": "About HTTPS",
+					"column2": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "1NrTagZnZPxPyjSu05dXiw",
+						"name": "SSL Footer: HTTPS",
+						"displayText": "About HTTPS",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "11gGk7UFGxU33PLEUtjRfG",
+								"displayText": "What is HTTPS?",
+								"url": "/learning/ssl/what-is-https/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "15Vc3WANDpfVAs97KDEpzB",
+								"displayText": "Why Use HTTPS?",
+								"url": "/learning/ssl/why-use-https/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "zcwchxBLBWoaxyFq5Dhrj",
+								"displayText": "HTTP Security Gaps",
+								"url": "/learning/ssl/why-is-http-not-secure/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "DQ4yCoBF3o0LSkpiQCyuc",
+								"displayText": "Connection Not Private",
+								"url": "/learning/ssl/connection-not-private-explained/"
+							}
+						]
+					},
+					"column3Title": "About Encryption",
+					"column3": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "7bDOcuccdiCIy26KzI2d1Q",
+						"name": "SSL Footer: Encryption",
+						"displayText": "About Encryption",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7qNVD8JotWdDbcqpZbp3VE",
+								"displayText": "What is Encryption?",
+								"url": "/learning/ssl/what-is-encryption/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "57mpp35oVI2JzfRKESr73H",
+								"displayText": "Public Key Encryption",
+								"url": "/learning/ssl/how-does-public-key-encryption-work/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "33mZ23MKbvH87xdIT1dD7U",
+								"displayText": "Asymmetric Encryption",
+								"url": "/learning/ssl/what-is-asymmetric-encryption/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1QIQ5fPzS3n1uqI4XYZu72",
+								"displayText": "Lava Lamp Encryption",
+								"url": "/learning/ssl/lava-lamp-encryption/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3rrJ1k7k9ENDfgrBK5YzYK",
+								"displayText": "What is a Key?",
+								"url": "/learning/ssl/what-is-a-cryptographic-key/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Uc11k7V2M5fHP5LmuF3vu",
+								"displayText": "What is a Session Key?",
+								"url": "/learning/ssl/what-is-a-session-key/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2lwLYHBHzDBTGRId8drlRf",
+								"displayText": "Quantum Computing",
+								"url": "/learning/ssl/quantum/what-is-quantum-computing/"
+							}
+						]
+					},
+					"column4Title": "SSL Glossary",
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "4yqGLocqy6kW3wUKCxerun",
+						"name": "SSL Footer: Glossary",
+						"displayText": "SSL Glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1oRht1dhER6Saxylj6glBn",
+								"displayText": "What is Mixed Content?",
+								"url": "/learning/ssl/what-is-mixed-content/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7dVuWLoT4g4e5ACvtAvDXG",
+								"displayText": "SSL Handshake",
+								"url": "/learning/ssl/what-happens-in-a-tls-handshake/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "gwBHxAG3RwjReejRFn4Tb",
+								"displayText": "What is an SSL Certificate?",
+								"url": "/learning/ssl/what-is-an-ssl-certificate/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6R3H8YcjaXUWJfMFDzvpUu",
+								"displayText": "SSL Certificate Types",
+								"url": "/learning/ssl/types-of-ssl-certificates/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7Gakh2yuxfEcpgxfy1hJhg",
+								"displayText": "Why Use TLS 1.3?",
+								"url": "/learning/ssl/why-use-tls-1.3/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5AsEd8eehv2y9EnsWeAVRr",
+								"displayText": "What is SNI?",
+								"url": "/learning/ssl/what-is-sni/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2lbLRhcdSDOeSBEOF6PBsf",
+								"displayText": "What is Encrypted SNI?",
+								"url": "/learning/ssl/what-is-encrypted-sni/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6UQyd1PLht2H5F8aSNnF1y",
+								"displayText": "What is Domain Spoofing?",
+								"url": "/learning/ssl/what-is-domain-spoofing/"
+							}
+						]
+					},
+					"column5Title": "Learning Center Navigation",
+					"column5": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "5qQn8nMmpW7qfjbAtFT7by",
+						"name": "SSL Footer: LC Navigation",
+						"displayText": "Learning Center Navigation",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2hdSVoYA5asSIG0U2ae20c",
+								"displayText": "Learning Center Home",
+								"url": "/learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "56Y6OytBNgNoNDWQL2ezlf",
+								"displayText": "DDoS Learning Center",
+								"url": "/learning/ddos/what-is-a-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6DGcnYIMM0eCGwqAKu2ECO",
+								"displayText": "CDN Learning Center",
+								"url": "/learning/cdn/what-is-a-cdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Ra0qmFJ1uewk2MYscW8KI",
+								"displayText": "DNS Learning Center",
+								"url": "/learning/dns/what-is-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q67XLnKqKhfmDJR4q9hJT",
+								"displayText": "Performance Learning Center",
+								"url": "/learning/performance/why-site-speed-matters/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1yItw6W6SsM2Y0Wuq6Y2c6",
+								"displayText": "Security Learning Center",
+								"url": "/learning/security/what-is-web-application-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z3UC9tP1Kjk85BX5zSGPY",
+								"displayText": "Serverless Learning Center",
+								"url": "/learning/serverless/what-is-serverless/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7D22pOfjb98KXcnAJyJFCX",
+								"displayText": "Bots Learning Center",
+								"url": "/learning/bots/what-is-a-bot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7jgqDUFFzaLuKrsaBTLdV0",
+								"displayText": "Cloud Learning Center",
+								"url": "/learning/cloud/what-is-the-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6PdBQjiFs98K6RQuG5TYNd",
+								"displayText": "Access Management Learning Center",
+								"url": "/learning/access-management/what-is-identity-and-access-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3jjEMuuLrCwhRidjG5kglM",
+								"displayText": "Network Layer Learning Center",
+								"url": "/learning/network-layer/what-is-the-network-layer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RvS0l0m86G1VISDrEvlJb",
+								"displayText": "Privacy Learning Center",
+								"url": "/learning/privacy/what-is-data-privacy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "MytksT5WU5mh863BQYEkj",
+								"displayText": "Video Streaming Learning Center",
+								"url": "/learning/video/what-is-streaming/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
+								"displayText": "Email Security Learning Center",
+								"url": "/learning/email-security/what-is-email-security/"
+							}
+						]
+					}
+				},
+				"header": "What is encrypted SNI? | How ESNI works",
+				"blurbSubHeader": " Encrypted server name indication (ESNI) helps keep user browsing private. It does this by encrypting a previously unencrypted part of the TLS handshake that can reveal which website a user is visiting.",
+				"objectivesHeader": "Encrypted SNI",
+				"objectivesList": [
+					"Learn why ESNI is necessary for privacy and security",
+					"Understand how ESNI works using public key cryptography and DNS records",
+					"Explore additional privacy-focused protocols for secure web browsing"
+				],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "357fevHD1vzqQ8mp5tKWWp",
+						"displayText": "What is SSL?",
+						"url": "/learning/ssl/what-is-ssl/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "gwBHxAG3RwjReejRFn4Tb",
+						"displayText": "What is an SSL Certificate?",
+						"url": "/learning/ssl/what-is-an-ssl-certificate/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "7dVuWLoT4g4e5ACvtAvDXG",
+						"displayText": "SSL Handshake",
+						"url": "/learning/ssl/what-happens-in-a-tls-handshake/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "6R3H8YcjaXUWJfMFDzvpUu",
+						"displayText": "SSL Certificate Types",
+						"url": "/learning/ssl/types-of-ssl-certificates/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "3DJJDfuNUIAZ9HHhRYGgbV",
+						"displayText": "Keyless SSL",
+						"url": "/learning/ssl/keyless-ssl/"
+					}
+				],
+				"desktopMainContent": "<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is encrypted SNI (ESNI)?</h2>\n\n<p>Encrypted server name indication (ESNI) is an essential feature for keeping user browsing data private. It ensures that snooping third parties cannot spy on the <a href='/learning/ssl/what-happens-in-a-tls-handshake/'>TLS handshake</a> process to determine which websites users are visiting. ESNI, as the name implies, accomplishes this by encrypting the <a href='/learning/ssl/what-is-sni/'>server name indication (SNI)</a> part of the TLS handshake.</p>\n\n<p>SNI tells a web server which <a href='/learning/ssl/what-is-an-ssl-certificate/'>TLS certificate</a> to show at the start of a connection between the client and server. SNI is an addition to the TLS protocol that enables a server to host multiple TLS certificates at the same <a href='/learning/dns/glossary/what-is-my-ip-address/'>IP address</a>.</p>\n\n<p>Think of SNI as being like the apartment number on a mailing address: multiple apartments are in one building, so each apartment needs a different number to distinguish it. Similarly, while the server is indicated by the IP address, a client device needs to include SNI in its first message to the server to indicate which website (which apartment) it is trying to reach.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is TLS?</h2>\n\n<p>Transport Layer Security, or <a href='/learning/ssl/transport-layer-security-tls/'>TLS</a> for short, is an <a href='/learning/ssl/what-is-encryption/'>encryption</a> protocol that keeps communications private and secure on the Internet. TLS is used mostly to encrypt the communication between applications and web servers, like when web browsers load a website. All websites that use TLS must have a TLS certificate. TLS is sometimes called SSL, although <a href='/learning/ssl/what-is-ssl/'>SSL</a> is an outdated name for the protocol.</p>\n\n<p>All TLS connections start with something called a \"handshake.\" Just as a handshake is used in real life when two people meet and exchange introductions, the TLS handshake is a series of introductory communications between a client device (like a user's smartphone) and a web application or website. During a TLS handshake, the two communicating devices agree on what <a href='/learning/ssl/what-is-a-cryptographic-key/'>encryption keys</a> to use, among other steps. Despite the number of steps involved, a TLS handshake takes only a few milliseconds.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does server name indication (SNI) work?</h2>\n\n<p>SNI is a small but crucial part of the first step of the TLS handshake. The first message in a TLS handshake is called the \"client hello.\" As part of this message, the client asks to see the web server's TLS certificate. The server is supposed to send the certificate as part of its reply.</p>\n\n<p>The problem is, many web servers host more than one website, and each website may have its own TLS certificate. If the server shows the wrong one to the client, then the client will be unable to connect securely to the desired website, resulting in a \"<a href='/learning/ssl/connection-not-private-explained/'>Your connection is not private\" error</a>.</p>\n\n<p>SNI solves this problem by indicating which website the client is trying to reach. Paradoxically, no encryption can take place until after the TLS handshake is successfully completed using SNI. As a result, regular SNI is not encrypted because the client hello message is sent at the start of the TLS handshake. Any attacker monitoring the connection between the client and the server could determine which website the client was connecting with by reading the SNI part of the handshake, even though all further communications are indecipherable to the attacker. (Attackers could use this information in a number of ways — setting up a <a href='/learning/access-management/phishing-attack/'>phishing website</a> to trick the user, for instance.)</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does encrypted SNI work?</h2>\n\n<p>ESNI keeps SNI secret by encrypting the SNI part of the client hello message (and only this part). Encryption only works if both sides of a communication — in this case, the client and the server — have the key for encrypting and decrypting the information, just as two people can use the same locker only if both have a key to the locker. Because the client hello message is sent before the client and server have negotiated TLS encryption keys, the ESNI encryption key has to be communicated some other way.</p>\n\n<p>The solution: <a href='/learning/ssl/how-does-public-key-encryption-work/'>public key cryptography</a>. The web server adds a public key to its <a href='/learning/dns/dns-records/'>DNS record</a>, so that when the client looks up where to find the right server, it finds the server's public key as well. This is somewhat like leaving a house key in a lockbox outside one's home so that a visitor can safely enter the home. The client can then use the public key to encrypt its SNI record in such a way that only that specific server can decrypt it. (This is a somewhat simplified explanation; for a lengthier technical explanation, see <a href='https://blog.cloudflare.com/encrypted-sni/'>this blog post</a>.)</p>\n\n<p>Imagine that Alice wants to visit Bob's website, www.bobisawesome.example.com. Like every responsible website owner should, Bob uses TLS for his website so that all traffic to and from his website is encrypted. Bob has also implemented ESNI to further protect site visitors like Alice.</p>\n\n<p>When Alice types https://www.bobisawesome.example.com into her laptop's browser, her laptop goes through the following process for loading the website:</p>\n\n<ol class='learning-list'>\n  <li>Her laptop sends a query to a DNS server to find out the website's IP address.</li>\n  <li>The DNS response tells Alice's laptop which IP address to use in order to find Bob's website, and the DNS response also includes Bob's ESNI public key.</li>\n  <li>Alice's laptop sends a client hello message to the indicated IP address, encrypting the SNI part of the message by using Bob's public key.</li>\n  <li>Bob's web server shows Bob's TLS certificate.</li>\n  <li>The TLS handshake proceeds, and Alice's laptop loads www.bobisawesome.example.com. Any attackers who may be monitoring the network cannot see which website Alice is visiting.*</li>\n</ol>\n\n<p>*<i>This last statement is only true if the DNS part of the process used DNSSEC and either DNS over HTTPS or DNS over TLS — more below.</i></p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Does ESNI alone keep web browsing private?</h2>\n\n<p>ESNI is a major step towards privacy and security on the web, but other new protocols and features are important as well. The Internet was not designed with security and privacy in mind, and as a result there are a number of steps in the process of visiting a website that are not private. However, various new protocols are helping to encrypt and secure each step from malicious attackers.</p>\n\n<p>The Domain Name System, or <a href='/learning/dns/what-is-dns/'>DNS</a>, matches human-readable website addresses like www.bobisawesome.example.com to alphanumerical IP addresses. It is like looking up someone's address in a large address book that everyone uses. However, normal DNS is not encrypted, meaning anyone could see which address someone is looking up, and anyone could pretend to be the address book. Even with ESNI in place, an attacker could see what DNS records users are querying and figure out which websites they are visiting.</p>\n\n<p>Three additional protocols aim to close these gaps: <a href='/learning/dns/dns-over-tls/'>DNS over TLS</a>, DNS over HTTPS, and <a href='/learning/dns/dns-security/'>DNSSEC</a>.</p>\n\n<p>DNS over TLS and DNS over HTTPS both do the same thing: encrypt DNS queries with TLS encryption. The main differences between them are what layer of the network they use and which network port they use. DNSSEC verifies that DNS records are real and come from a legitimate DNS server, not from an attacker impersonating a DNS server (as in a <a href='/learning/dns/dns-cache-poisoning/'>DNS cache poisoning attack</a>).</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Does Cloudflare support ESNI?</h2>\n\n<p>The Cloudflare network has supported ESNI <a href='https://blog.cloudflare.com/esni/'>since September 2018</a>. Not only was Cloudflare the first major network to support ESNI, but Cloudflare was also instrumental in developing ESNI. ESNI has not yet been published as an official RFC, or Internet standard, but a <a href='https://datatracker.ietf.org/doc/draft-ietf-tls-esni/?include_text=1' target='_blank'>draft RFC</a> is in the works.</p>\n\n<p>Check your browser for security, privacy, and ESNI usage with this <a href='https://www.cloudflare.com/ssl/encrypted-sni/'>free ESNI checker tool</a>. Learn more about <a href='/learning/ssl/what-is-sni/'>why SNI was created</a>, or <a href='/learning/ssl/what-happens-in-a-tls-handshake/'>how a TLS handshake works</a>.</p>\n\n\n\n\n\n\n\n\n",
+				"availableLocales": null,
+				"localized": true,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "No Page for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": null
+				},
+				"proactivePopup": null,
+				"sidebarForm": null
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "W0YIwHOGfu3LxPyjb5JBC",
+			"pathname": "/learning/ssl/what-is-encrypted-sni/",
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

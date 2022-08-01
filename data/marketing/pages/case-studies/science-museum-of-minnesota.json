@@ -1,0 +1,73 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/science-museum-of-minnesota/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Science Museum of Minnesota",
+				"contentfulId": "mhkYEyxH0NT5mOWyA0owz",
+				"nameUrlSlug": "science-museum-of-minnesota",
+				"metaTags": {
+					"metaTitle": "Science Museum of Minnesota",
+					"metaDescription": "Science Museum of Minnesota leveraged Cloudflare Access to transition to remote work overnight.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2020-10-29",
+				"homepageUrl": "https://new.smm.org/",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "Science Museum of Minnesota leveraged Cloudflare Access to transition to remote work overnight.",
+				"longDescription": "## Faced with an overnight order to work remotely, the Science Museum of Minnesota used Cloudflare Access to keep employees connected to critical apps \nThe Science Museum of Minnesota (SMM) is a treasure of the American Midwest and the global STEM community. Founded in 1907, SMM is one of the oldest natural history museums in the U.S. In a typical year, students across all of Minnesota’s 87 counties engage with SMM, whether through class visits or educational outreach. Traveling exhibitions and partnerships with international museums extend SMM’s influence to millions around the world.\n\nThe 370-thousand square foot museum, located along the Mississippi River in St. Paul, is physically a sight to behold. But as Infrastructure Developer Joel Miles noted, the museum has always been interested in “taking the learning that happens within our physical space and sharing it outwards.” As the COVID-19 pandemic required families to stay home this year, bringing the museum to life digitally became more and more important. \n\n### __Challenge: Transitioning to Google Cloud Platform__\nSMM envisions a world where “everyone has the power to use science to make lives better.” To realize that vision, SMM recognized that it needed to modernize its IT approach for the long-term. SMM’s hardware was aging and required significant maintenance. So instead of incurring costs to replace its on-premise boxes, SMM migrated to Google Cloud Platform over the course of 2019, lifting and shifting all of its data and applications. \n\nAdopting GCP made sense given the organization’s multi-year history using G-Suite. But configuring Google’s Identity-Aware Proxy to secure access to applications was, according to Miles, more “complex” and “required more tuning” than anticipated. In particular, Miles was frustrated that certain certificate renewals recurred frequently and required his manual intervention.\n\n### __Cloudflare Access enables more seamless GCP implementation__\nThe museum’s IT team is small and values simplicity above all else. Miles was motivated to get started with Cloudflare Access because of positive experiences with Cloudflare’s other website products over the years. Cloudflare CDN has helped the museum save costs by offloading traffic, and the WAF has protected against prior targeted attacks. \n\nSo instead of investing time tinkering with the Google Identity-Aware Proxy and teaching his colleagues a new process, Miles turned to Access. He found that he could secure his applications faster and with less effort. \n\n“It was ridiculously simple,” he said. “We put in our domain, set up the login page and service account, and it just worked.”\n\nThe museum moved multiple Remote Desktop applications behind Access. From a remote desktop, employees reach their most critical business tools, such as the museum’s CRM, general ledger, and purchase management system. All employees work in one or more of these tools over the course of a week. \n\nBut at least initially in 2019, the Museum had only rolled Access out to a subset of the organization. Most employees accessed these systems from within the office, while the handful of colleagues working from home could use a pre-existing VPN.\n\n### __Remote work transition proves a turning point__\nThe coronavirus pandemic forced the museum to devise and implement a remote work strategy practically overnight. The thought of scaling the VPN to over 350 employees gave Miles “shivers.” Instead, he committed to expanding Cloudflare Access across the whole organization and standardized his colleagues’ login experience.\n\nSince the pandemic, SMM has put new applications behind Access in addition to the remote desktop. One such tool was a developer site that helped the museum shift its educational programming online, including experiments that families can do at home and materials for other science teachers. More broadly, Access is now protecting several administrator login pages that support development, testing, and staging for the museum’s main website. These pages have long been popular attack targets for automated bots.\n\nAcross these varied tools, Access enables the museum to deliver a frictionless login experience. All museum employees are already logged into web browsers with their Google IDs, which is compatible with Access’ Multi-SSO capabilities. So when employees reach applications protected by Access, they are already authenticated.\n\n“People connect seamlessly, so nobody ever sees that Access is in front of it, which is beautiful,” Miles said. “They just connect to a page, login with their credentials, and they’re running apps on a browser that they would have been running locally previously.”\n\nThe Science Museum is open now with new safety protocols and scaled down hours and is planning a wider reopening pending government guidance. Going forward, the museum’s simplified technology infrastructure enables staff to spend less time on maintenance and more time designing new experiences for patrons, including highly sought-after online offerings. For Miles, this “low-to-no-maintenance” approach helps the museum focus on its “reason for being, which is science!”\n",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "- Overnight remote work readiness with SSO to critical apps\n\n- Seamless login experiences over RDP without a VPN\n\n- IT productivity savings through simple setup and configuration ",
+				"relatedCaseStudies": null,
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Access",
+						"url": "/teams/access"
+					},
+					{
+						"title": "Web Application Firewall (WAF) ",
+						"url": "/waf/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Joel Miles",
+				"employeeQuoteText": "Access is a crown jewel in our IT systems, specifically for how it has enabled us to work this past year. It was dead simple to set up and provides me a lot of visibility. With a 24-hour turnaround, everyone needed to work from home, and we wouldn’t have been able to do it any other way.",
+				"employeeQuoteJobTitle": "Infrastructure Developer",
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": "People connect seamlessly, so nobody ever sees that Access is in front of it, which is beautiful. They just connect to a page, login with their credentials, and they’re running apps on a browser that they would have been running locally previously.",
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/final_social_science_museum_of_minnesota_png_logo.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "mhkYEyxH0NT5mOWyA0owz",
+			"pathname": "/case-studies/science-museum-of-minnesota/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}

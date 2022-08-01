@@ -1,0 +1,78 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/thredup-site-security-waf/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "thredUP",
+				"contentfulId": "3rifFjMLnqrFsNRXSHcrzt",
+				"nameUrlSlug": "thredup-site-security-waf",
+				"metaTags": {
+					"metaTitle": "thredUP",
+					"metaDescription": "thredUP secures and scales their online fashion marketplace with Cloudflare’s enterprise-grade WAF.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2019-12-03",
+				"homepageUrl": "https://www.thredup.com/",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "thredUP secures and scales their online fashion marketplace with Cloudflare’s enterprise-grade WAF.",
+				"longDescription": "## __thredUP Bolsters Site Security With Cloudflare WAF__\n\nThe fashion marketplace is evolving. More consumers favor environmentally friendly brands, shop with the intent to resell rather than accumulate, and expect retailers to offer sustainably created clothing. [thredUP](https://thredup.com \"thredUP\") is the world’s largest fashion resale marketplace, with 3+ million women’s and kids’ clothing items and 35,000+ brand names. Co-founded by CEO James Reinhart in 2009, the online reseller allows customers to shop ethically and easily while saving up to 90% on retail prices.\n\n__The Challenge__\n\nthredUP reinvented resale to help shoppers reduce their environmental footprint, but scaling their platform to support that vision came with challenges to tackle. As they evolved from a startup into a well-known retailer, their website began facing an increased number of exploratory attacks, some of which were targeted or massive in size. \n\nthredUP’s engineering team had mitigation strategies in place that were successful in blocking the attacks, but they required expensive hardware and hours of engineering time to identify where attacks were coming from and how to stop them. That’s when they tapped the Cloudflare WAF.\n\n__thredUP blocks threats with the Cloudflare WAF__\n\nCloudflare’s industry-leading Web Application Firewall, or WAF, leverages collective intelligence from over %{GlobalWebsiteCountWords} million Internet properties to identify and defend against new security vulnerabilities. Cloudflare’s network learns from every attack against any one of these properties to better protect them all — bolstering security for everyone.\n\nBefore deploying Cloudflare’s firewall, thredUP would have had to expend considerable internal resources to create their own WAF rules from scratch and monitor every new threat aimed at their website. Now, the enterprise-grade security they receive from Cloudflare automatically and proactively defends them from incoming attacks.\n\n“Deploying Cloudflare was a very smooth transition for us,” said Roman Chepurnyi, Director of Infrastructure Engineering at thredUP. “We were able to simulate the WAF and tweak the Page Rules as we rolled it out, making sure that each setting was optimized to fit our company’s needs.”\n\n__Cloudflare automation keeps thredUP fast and flexible__\n\nBecause they receive over 100,000 items every day, thredUP requires more than top-level security. They need a performant website backed by fast, flexible services that allow them to make changes on the fly.\n\nthredUP utilizes Cloudflare’s global network to cache and serve content closer to their customers, minimizing latency and drastically reducing bandwidth consumption and costs. And the built-in capabilities of the Cloudflare API empower their software engineers and infrastructure team to refresh the cache on demand and apply the changes with Terraform — a huge benefit for a retailer that maintains an online inventory of 3+ million unique products.\n\nTerraform enables thredUP to provision their entire infrastructure on AWS while incorporating key Cloudflare resources for upgraded security, performance, and reliability. That seamless integration helps simplify a continuous delivery and deployment process as thredUP pushes changes to production up to a hundred times a day.\n\n</br>\n<center><b>\n“thredUP is defined by scale and efficiency powered by cutting-edge technology and logistics. In this high-speed, high-paced environment, it’s crucial to apply updates quickly. Cloudflare is the key, allowing us to cache our content, apply changes to our firewall rules and DNS, and deliver a fast and hassle-free user experience.”</b></center>\n<p></p>\n</b></center>\n<center><i>— Roman Chepurnyi</center>\n  <center>Director of Infrastructure Engineering, thredUP</i></center>\n</br>\n",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "• Cloudflare blocked or challenged over 6.2 million malicious requests targeting thredUP in September 2019.\n\n• thredUP upgraded site security by deploying custom WAF rules.\n\n• With Cloudflare, thredUP enabled TLS 1.2 or above for 100% of site traffic and TLS 1.3 for 48%.",
+				"relatedCaseStudies": [
+					{
+						"name": "Glossier Trusts Cloudflare to Secure and Supercharge Its Beauty Ecosystem",
+						"nameUrlSlug": "glossier-ecommerce-security-performance-block-bots"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Web Application Firewall (WAF) ",
+						"url": "/waf/"
+					},
+					{
+						"title": "Cloudflare API",
+						"url": "https://api.cloudflare.com/#getting-started-endpoints"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Roman Chepurnyi",
+				"employeeQuoteText": "Cloudflare is the key, allowing us to cache our content, apply changes to our firewall rules and DNS, and deliver a fast and hassle-free user experience.",
+				"employeeQuoteJobTitle": "Director of Infrastructure Engineering, thredUP",
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/threduplogoresized.jpg"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "3rifFjMLnqrFsNRXSHcrzt",
+			"pathname": "/case-studies/thredup-site-security-waf/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}

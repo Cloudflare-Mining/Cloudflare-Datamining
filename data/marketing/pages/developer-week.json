@@ -1,0 +1,443 @@
+{
+	"componentChunkName": "component---src-components-page-page-template-tsx",
+	"path": "/developer-week/",
+	"result": {
+		"data": {
+			"page": {
+				"pageName": "Cloudflare Developer Week",
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "English for Locale",
+					"deDE": "English for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "English for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "English for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "English for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": null
+				},
+				"relativePath": "developer-week",
+				"topNavOptions": "minimized",
+				"topNavButtonText": "Learn more",
+				"topNavButtonUrl": null,
+				"metaTags": {
+					"metaTitle": "Cloudflare offers a developer platform with automatic speed, security, and scale.",
+					"metaDescription": "Cloudflare offers a modern developer-first platform to solve developer problems end to end, across their application development – from compute, to storage, to frontend services, and more. ",
+					"twitterCustomImage": {
+						"file": {
+							"publicURL": "[path]/twitter-shared-link.png"
+						}
+					},
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/twitter-shared-link.png"
+						}
+					},
+					"facebookCustomImage": {
+						"file": {
+							"publicURL": "[path]/facebook-link-image.png"
+						}
+					}
+				},
+				"contentfulId": "43nk9CCRwtlpEjeHDo6nG9",
+				"contentTypeId": "page",
+				"promotionalBanner": null,
+				"psaBanner": null,
+				"customTopNav": null,
+				"headerLogo": null,
+				"template": null,
+				"relatedBlades": [
+					{
+						"__typename": "bladeHeroAnimation",
+						"contentfulId": "7qQohBVMZpMJ78ohF7G0ul",
+						"contentTypeId": "bladeHeroAnimation",
+						"title": "Developer Week",
+						"subtitle": null,
+						"copy": "Developer experience is eating the world. A modern developer platform should simplify the process to build applications from end to end. Whether you are building a static site or an AI application, you should have a one-stop-shop with all the tools you need.  \n\nThis week, we are announcing new services to simplify application development.",
+						"buttonColor": "orange",
+						"buttonColor2": null,
+						"buttonText1": "Read the announcements",
+						"buttonText1LoggedIn": null,
+						"buttonUrl1": "https://blog.cloudflare.com/tag/developer-week/",
+						"buttonUrl1LoggedIn": null,
+						"button1ExtraClass": null,
+						"buttonText2": null,
+						"buttonText2LoggedIn": null,
+						"buttonUrl2": null,
+						"button2ExtraClass": null,
+						"bladeBorder": "none",
+						"htmlId": null,
+						"textColor": "black",
+						"includeVideo": false,
+						"streamVideoId": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"popupStreamId": null,
+						"popupText": null,
+						"button1OpenInNewTab": true,
+						"button2OpenInNewTab": null,
+						"streamThumbnails": null,
+						"sectionPadding": null,
+						"streamPosterAssetFile": null,
+						"streamPoster": null,
+						"imageSize": "Medium",
+						"imagePosition": null,
+						"leftLinkUrl": null,
+						"leftLink": null,
+						"leftLinkLoggedIn": null,
+						"leftLinkOptions": "hide",
+						"backgroundColor": "light-blue",
+						"textlayoutMode": null,
+						"backgroundAssetFile": null,
+						"imageLayout": null,
+						"image": {
+							"file": {
+								"publicURL": "[path]/developer-week-hero-illustration_4x__1_.png"
+							}
+						},
+						"imageAssetFile": {
+							"id": "506126f3-d8de-5d1b-a133-26a414ab773f",
+							"altText": null,
+							"title": "Developer Week Hero Image",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "[path]/developer-week-hero-illustration_4x__1_.png"
+								}
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						}
+					},
+					{
+						"__typename": "bladeFourFeatures",
+						"contentfulId": "40iDt2yfgSTssTUq9nyLXO",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": "Cloudflare's Developer Products",
+						"subtitle": null,
+						"bladeStyle": null,
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-top-bottom-padding",
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "tnGc2VdBqvcJbBq6rlcGe",
+								"title": "Compute",
+								"titleSize": null,
+								"description": "__You write code, we handle the rest__. [Cloudflare Workers](https://workers.cloudflare.com/ \"Cloudflare Workers Home Page\") is a serverless platform to create new apps or augment existing ones – with speed, security and scale baked in. And now, you can also run CPU-intensive workloads with Workers Unbound. ",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/cloudflare-workers-80x80-0ab91d2.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "0dc25a13-ecf5-503c-b3e1-4e3e6e60cd68",
+									"altText": "cloudflare-workers-80x80-0ab91d2",
+									"title": "cloudflare-workers-80x80-0ab91d2",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/cloudflare-workers-80x80-0ab91d2.png"
+										}
+									},
+									"brandfolderAsset": {
+										"size": 493,
+										"height": 3001,
+										"width": 3017,
+										"file": {
+											"publicURL": "[path]/cloudflare-workers.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "55LAKPpcZm9ERWXFFZHn2C",
+								"title": "Data Storage",
+								"titleSize": null,
+								"description": "__Store your data on the edge.__ Cloudflare offers [Workers KV](https://developers.cloudflare.com/workers/runtime-apis/kv \"Workers KV Documentation\"), a globally distributed key value store for eventually consistent data, plus [Durable Objects](https://developers.cloudflare.com/workers/runtime-apis/durable-objects \"Durable Objects Docs\") for strongly consistent data and coordination at the edge, and integrations with third-party databases. ",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/code-api__2_.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "56731bae-c970-512b-9483-7daa578f8ffa",
+									"altText": "code-api.png",
+									"title": "code-api.png",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/code-api__2_.png"
+										}
+									},
+									"brandfolderAsset": {
+										"size": 3021,
+										"height": 3250,
+										"width": 2552,
+										"file": {
+											"publicURL": "[path]/code-api.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "40kCu3NmJKg2tQJeYb3tgH",
+								"title": "Developer Services",
+								"titleSize": null,
+								"description": "__Build fast sites, in record time__. [Pages](https://pages.cloudflare.com/ \"Cloudflare Pages home\") allows devs to collaborate on and host fast websites with [Web Analytics](https://www.cloudflare.com/web-analytics/ \"Web Analytics homepage\"). [Stream ](https://www.cloudflare.com/products/cloudflare-stream \"Cloudflare Stream homepage\")and [Image Resizing](https://developers.cloudflare.com/images/ \"Cloudflare Image Resizing homepage\") enable users to embed video and images quickly, and [Cloudflare for SaaS](https://www.cloudflare.com/saas/ \"Cloudflare for SaaS homepage\") offers seamless certificate management. ",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/cloudflare-pages.svg"
+									}
+								},
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
+						"__typename": "bladeImageText",
+						"contentfulId": "1T1ur4LcKTKlgmukgOvdcc",
+						"title": "Get Started with our Developer Week Challenges",
+						"copy": "Try out our #DevChallenges to begin using Cloudflare Workers and Pages! The first challenge is to deploy a Hello World with Workers, the second is to deploy your first Pages site, and the third is to build a Discord Bot with Workers. Tune in the rest of the week to see what's next!\n",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": "https://blog.cloudflare.com/developer-week-challenges/#devchallenge1%20%22Dev%20Challenges",
+						"learnMoreText": "Learn more",
+						"link": null,
+						"subheadline": "Tweet Us Your Progress @CloudflareDev",
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": {
+							"file": {
+								"publicURL": "[path]/developer-week-challenges-spot-1_4x__1_.png"
+							}
+						},
+						"imageAssetFile": {
+							"id": "1e9f3e60-56dc-5cf8-9e58-c36c5ddf2f68",
+							"altText": null,
+							"title": null,
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "[path]/developer-week-challenges-spot-1_4x__1_.png"
+								}
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": "large",
+						"sectionPadding": null,
+						"backgroundColor": "light-blue",
+						"bladeBorder": "none",
+						"imagePosition": false,
+						"imageSize": "small",
+						"imageTextAlignment": "center",
+						"togglesTo": null
+					},
+					{
+						"__typename": "bladeImageText",
+						"contentfulId": "6t2lRcU3paYPO3IDXAoljv",
+						"title": "Join Our Developer Speakers Series",
+						"copy": "Curious about how edge computing is changing the future of software, or what's next for React, e-commerce and the static web? Join us live on Cloudflare TV as we invite leaders across serverless, Jamstack, and data storage!",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": "https://cloudflare.tv/schedule?start=2021-04-11T05%3A00%3A00.000Z&end=2021-04-18T05%3A00%3A00.000Z",
+						"learnMoreText": "View the full schedule",
+						"link": null,
+						"subheadline": "Tune in, Geek Out. ",
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": {
+							"file": {
+								"publicURL": "[path]/__Developer_Week_Social_Cards_CFTV_Slides.png"
+							}
+						},
+						"imageAssetFile": {
+							"id": "814fa051-14c7-5af1-9b0e-2c9ffce5edec",
+							"altText": null,
+							"title": null,
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "[path]/__Developer_Week_Social_Cards_CFTV_Slides.png"
+								}
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": "extra-large",
+						"imageTextAlignment": "center",
+						"togglesTo": null
+					},
+					{
+						"__typename": "bladeQuote",
+						"contentTypeId": "bladeQuote",
+						"contentfulId": "6jZQJcyLnY4Jty7C6PJi6J",
+						"quote": "Cloudflare Workers Unbound and Workers KV offer consistent performance and reliability. We use them to reduce the burden on our origin servers and pre-populate our cache. We are early users of Unbound's long running Workers, and the simple integration with Workers KV has made it easy for our developers to get up and running.",
+						"quoteAuthor": "Randy Kleinhuizen",
+						"quoteTitle": "Architect, Thomson Reuters",
+						"learnMoreText": null,
+						"sectionPadding": "tile--no-top-padding",
+						"backgroundColor": "light-blue",
+						"bladeBorder": "none",
+						"learnMoreUrl": null,
+						"htmlId": null,
+						"image": {
+							"file": {
+								"publicURL": "[path]/logo_thomson-reuters_gray_32px-wrapper.svg"
+							}
+						},
+						"imageAssetFile": null,
+						"imageLinkUrl": null,
+						"logoList": null,
+						"logoListAssetFile": null,
+						"quoteCarousel": [
+							{
+								"contentTypeId": "bladeQuote",
+								"quote": "We chose to use Cloudflare Pages to host our marketing sites because it is easy to use, and eliminates time spent fumbling with CI/CD. It is also extremely fast and offers simple integration with the rest of the Cloudflare ecosystem.",
+								"quoteAuthor": "Harry Dehal",
+								"quoteTitle": "Sr.Manager, Web & Growth Marketing, DoorDash",
+								"learnMoreText": null,
+								"learnMoreUrl": null,
+								"imageAssetFile": null,
+								"image": {
+									"file": {
+										"publicURL": "[path]/logo_doordash_gray_32px-wrapper.svg"
+									}
+								}
+							},
+							{
+								"contentTypeId": "bladeQuote",
+								"quote": "We needed a fast and reliable platform to host and deploy our websites. Cloudflare Pages has allowed us to do so without any downtime or performance issues, even as traffic spiked during the pandemic. We also appreciate the simple integration with other Cloudflare products including Cloudflare Workers, Access, and WAF.",
+								"quoteAuthor": "James Taylor",
+								"quoteTitle": "Technical Services Manager, Cambridge University Press",
+								"learnMoreText": null,
+								"learnMoreUrl": null,
+								"imageAssetFile": null,
+								"image": {
+									"file": {
+										"publicURL": "[path]/cambridge.png"
+									}
+								}
+							},
+							{
+								"contentTypeId": "bladeQuote",
+								"quote": "Our team runs genomics analysis with Workers Unbound and Workers KV, which are well-suited for complex workloads. For example, I was able to build an API that simulates DNA sequencing data. Workers was a perfect fit as it features no cold starts, runs at the edge (i.e. in a data center close to your users), and has a pricing model that doesn’t require a degree in quantum physics to understand.",
+								"quoteAuthor": "Robert Aboukhalil",
+								"quoteTitle": "Bioinformatics Software Engineer, Tech Lead Manager, Invitae",
+								"learnMoreText": null,
+								"learnMoreUrl": null,
+								"imageAssetFile": null,
+								"image": {
+									"file": {
+										"publicURL": "[path]/invitae_corporation_logo.jpeg"
+									}
+								}
+							}
+						]
+					}
+				],
+				"noindex": false,
+				"enableZendeskChat": null,
+				"formModal": null,
+				"keepHashUrlSyncedWithScrollPosition": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"pathname": "/developer-week/",
+			"contentfulId": "43nk9CCRwtlpEjeHDo6nG9",
+			"allowedHrefLangs": [
+				"en-US"
+			],
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

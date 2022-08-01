@@ -1,0 +1,379 @@
+{
+	"componentChunkName": "component---src-components-welcome-center-core-setup-tsx",
+	"path": "/welcome-center/core-setup/",
+	"result": {
+		"data": {
+			"welcomeCenter": {
+				"tabName": "core-setup",
+				"contentfulId": "68iKOgvLBcgPgfUAorAvJN",
+				"mainHeader": "Core Setup",
+				"subHeader": "Complete your site setup by configuring your DNS, performance, and security settings.",
+				"introText": "Follow the recommended steps in this guide to complete your core setup and optimize your performance and security settings. Get started by logging in to your Cloudflare Dashboard.",
+				"guideList": [
+					{
+						"mainTitle": "DNS Configuration",
+						"metadata": {
+							"plan": "free"
+						},
+						"items": [
+							{
+								"title": "Configure critical A, CNAME, and AAAA DNS records to ensure that all visitor traffic reaches your domain.",
+								"description": "When you first add a domain to Cloudflare during your initial account setup, Cloudflare automatically scans for common DNS records to add to the Cloudflare DNS app. However, some DNS records may require manual configuration.\n\nFor visitor traffic to successfully reach your domain, the domain must have at least one A or AAAA record that points to the origin web server IP address or a CNAME record that points to the hostname of a hosting service.\n\n__Add an A, AAAA, or CNAME record for your domain by selecting ‘+Add records’ under the DNS tab and specifying the type, name, and IPv4 (or IPv6 address) in the appropriate fields. When a DNS record has been successfully added, the ‘Proxy status’ will show an orange cloud.__\n\n![DNS Management A Record 1](//cf-assets.www.cloudflare.com/slt3lc6tev37/1YMqAsncvuDpzrPuwAPVg5/7be00d4168e9c6e6d5f54e1028c7209e/DNS_Management_A_Record_1.png)\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/360019093151)"
+							},
+							{
+								"title": "Configure MX and TXT records for email delivery and authentication.",
+								"description": "After your critical DNS records have been configured, MX and TXT records need to be authorized in order to set up email delivery and authentication for your domain. Both MX and TXT records can be added using the same fields as A, AAAA, and CNAME records.\n\nFor MX records:\n__Add an MX record for your domain by selecting ‘+Add records’ under the DNS tab and specifying the type, name, mail server, and priority in the appropriate fields.__\n\n![DNS Management MX Record 1](//cf-assets.www.cloudflare.com/slt3lc6tev37/5dUqpSJErBm3HZ2uiqZo8S/492c9ebc608e7f9a4a1aceb040fdd345/DNS_Management_MX_Record_1.png)\n\nFor TXT records:\n__Add a TXT record for your domain by selecting ‘+Add records’ under the DNS tab and specifying the type, name, TTL, and content in the appropriate fields.__\n\n![DNS Management TXT Record 1](//cf-assets.www.cloudflare.com/slt3lc6tev37/6s7AKM7BXNKnmNYNxlYS0S/6aa1552290a893ea75d15e46ea1772f9/DNS_Management_TXT_Record_1.png)\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/360019093151)"
+							},
+							{
+								"title": "Optional: Transfer your domain with Cloudflare Registrar.",
+								"description": "You may transfer an existing domain to Cloudflare with Cloudflare Registrar. Domains on Cloudflare are set to auto-renew by default, but may be manually renewed at any point.\n\n__In your Dashboard, select the domain you want to transfer to Cloudflare and navigate to the Overview tab. Under ‘Domain Registration,’ select “Manage Domains” and click on “Transfer to Cloudflare.” You will need to take the following three steps to complete the transfer:__\n\n1. Disable DNSSEC by removing the DS record at your current DNS host. Turn off DNSSEC within the Cloudflare Dashboard.\n2. Ensure that your current domain is not scheduled to expire within the next 15 days, as it may take up to 15 days to successfully complete a domain transfer. If your domain expires before the transfer to Cloudflare is completed, follow [these instructions](https://support.cloudflare.com/hc/en-us/articles/360019910671-Transferring-and-renewing-domains-with-Cloudflare-Registrar#h_uoRmCDaxJwYtONlntyHCo).\n3. Complete your domain transfer by following the instructions for [Namecheap](https://developers.cloudflare.com/registrar/transfer-instructions/namecheap/), [GoDaddy](https://developers.cloudflare.com/registrar/transfer-instructions/godaddy/), [Network Solutions](https://developers.cloudflare.com/registrar/transfer-instructions/network-solutions/), [1&1](https://developers.cloudflare.com/registrar/transfer-instructions/oneandone/), [Enom](https://developers.cloudflare.com/registrar/transfer-instructions/enom/), or [any other domain registrar](https://developers.cloudflare.com/registrar/transfer-instructions/generic/).\n\nIf you plan to initiate multiple domain transfers, notify your financial institution to avoid flagging the charges as fraudulent.\n\n![Cloudflare Registrar 1](//cf-assets.www.cloudflare.com/slt3lc6tev37/2VskjfU4wpeSKKlywazmi3/a44c8d0354bc0e04d966d6964b5bdd89/Cloudflare_Registrar_1.png)\n\n*Registrar, pricing, and expiration date may vary by domain.*\n\nNeed help? Follow our [detailed instructions >](https://developers.cloudflare.com/registrar/domain-transfers)\n"
+							}
+						]
+					},
+					{
+						"mainTitle": "DNS Configuration",
+						"metadata": {
+							"plan": "pro"
+						},
+						"items": [
+							{
+								"title": "Configure critical A, CNAME, and AAAA DNS records to ensure that all visitor traffic reaches your domain.",
+								"description": "When you first add a domain to Cloudflare during your initial account setup, Cloudflare automatically scans for common DNS records to add to the Cloudflare DNS app. However, some DNS records may require manual configuration.\n\nFor visitor traffic to successfully reach your domain, the domain must have at least one A or AAAA record that points to the origin web server IP address or a CNAME record that points to the hostname of a hosting service.\n\n__Add an A, AAAA, or CNAME record for your domain by selecting ‘+Add records’ under the DNS tab and specifying the type, name, and IPv4 (or IPv6 address) in the appropriate fields. When a DNS record has been successfully added, the ‘Proxy status’ will show an orange cloud.__\n\n![DNS Management A Record 1](//cf-assets.www.cloudflare.com/slt3lc6tev37/1YMqAsncvuDpzrPuwAPVg5/7be00d4168e9c6e6d5f54e1028c7209e/DNS_Management_A_Record_1.png)\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/360019093151)"
+							},
+							{
+								"title": "Configure MX and TXT records for email delivery and authentication.",
+								"description": "After your critical DNS records have been configured, MX and TXT records need to be authorized in order to set up email delivery and authentication for your domain. Both MX and TXT records can be added using the same fields as A, AAAA, and CNAME records.\n\nFor MX records:\n__Add an MX record for your domain by selecting ‘+Add records’ under the DNS tab and specifying the type, name, mail server, and priority in the appropriate fields.__\n\n![DNS Management MX Record 1](//cf-assets.www.cloudflare.com/slt3lc6tev37/5dUqpSJErBm3HZ2uiqZo8S/492c9ebc608e7f9a4a1aceb040fdd345/DNS_Management_MX_Record_1.png)\n\nFor TXT records:\n__Add a TXT record for your domain by selecting ‘+Add records’ under the DNS tab and specifying the type, name, TTL, and content in the appropriate fields.__\n\n![DNS Management TXT Record 1](//cf-assets.www.cloudflare.com/slt3lc6tev37/6s7AKM7BXNKnmNYNxlYS0S/6aa1552290a893ea75d15e46ea1772f9/DNS_Management_TXT_Record_1.png)\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/360019093151)"
+							},
+							{
+								"title": "Optional: Transfer your domain with Cloudflare Registrar.",
+								"description": "You may transfer an existing domain to Cloudflare with Cloudflare Registrar. Domains on Cloudflare are set to auto-renew by default, but may be manually renewed at any point.\n\n__In your Dashboard, select the domain you want to transfer to Cloudflare and navigate to the Overview tab. Under ‘Domain Registration,’ select “Manage Domains” and click on “Transfer to Cloudflare.” You will need to take the following three steps to complete the transfer:__\n\n1. Disable DNSSEC by removing the DS record at your current DNS host. Turn off DNSSEC within the Cloudflare Dashboard.\n2. Ensure that your current domain is not scheduled to expire within the next 15 days, as it may take up to 15 days to successfully complete a domain transfer. If your domain expires before the transfer to Cloudflare is completed, follow [these instructions](https://support.cloudflare.com/hc/en-us/articles/360019910671-Transferring-and-renewing-domains-with-Cloudflare-Registrar#h_uoRmCDaxJwYtONlntyHCo).\n3. Complete your domain transfer by following the instructions for [Namecheap](https://developers.cloudflare.com/registrar/transfer-instructions/namecheap/), [GoDaddy](https://developers.cloudflare.com/registrar/transfer-instructions/godaddy/), [Network Solutions](https://developers.cloudflare.com/registrar/transfer-instructions/network-solutions/), [1&1](https://developers.cloudflare.com/registrar/transfer-instructions/oneandone/), [Enom](https://developers.cloudflare.com/registrar/transfer-instructions/enom/), or [any other domain registrar](https://developers.cloudflare.com/registrar/transfer-instructions/generic/).\n\nIf you plan to initiate multiple domain transfers, notify your financial institution to avoid flagging the charges as fraudulent.\n\n![Cloudflare Registrar 1](//cf-assets.www.cloudflare.com/slt3lc6tev37/2VskjfU4wpeSKKlywazmi3/a44c8d0354bc0e04d966d6964b5bdd89/Cloudflare_Registrar_1.png)\n\n*Registrar, pricing, and expiration date may vary by domain.*\n\nNeed help? Follow our [detailed instructions >](https://developers.cloudflare.com/registrar/domain-transfers)\n"
+							}
+						]
+					},
+					{
+						"mainTitle": "DNS Configuration",
+						"metadata": {
+							"plan": "business"
+						},
+						"items": [
+							{
+								"title": "Configure critical A, CNAME, and AAAA DNS records to ensure that all visitor traffic reaches your domain.",
+								"description": "When you first add a domain to Cloudflare during your initial account setup, Cloudflare automatically scans for common DNS records to add to the Cloudflare DNS app. However, some DNS records may require manual configuration.\n\nFor visitor traffic to successfully reach your domain, the domain must have at least one A or AAAA record that points to the origin web server IP address or a CNAME record that points to the hostname of a hosting service.\n\n__Add an A, AAAA, or CNAME record for your domain by selecting ‘+Add records’ under the DNS tab and specifying the type, name, and IPv4 (or IPv6 address) in the appropriate fields. When a DNS record has been successfully added, the ‘Proxy status’ will show an orange cloud.__\n\n![DNS Management A Record 1](//cf-assets.www.cloudflare.com/slt3lc6tev37/1YMqAsncvuDpzrPuwAPVg5/7be00d4168e9c6e6d5f54e1028c7209e/DNS_Management_A_Record_1.png)\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/360019093151)"
+							},
+							{
+								"title": "Configure MX and TXT records for email delivery and authentication.",
+								"description": "After your critical DNS records have been configured, MX and TXT records need to be authorized in order to set up email delivery and authentication for your domain. Both MX and TXT records can be added using the same fields as A, AAAA, and CNAME records.\n\nFor MX records:\n__Add an MX record for your domain by selecting ‘+Add records’ under the DNS tab and specifying the type, name, mail server, and priority in the appropriate fields.__\n\n![DNS Management MX Record 1](//cf-assets.www.cloudflare.com/slt3lc6tev37/5dUqpSJErBm3HZ2uiqZo8S/492c9ebc608e7f9a4a1aceb040fdd345/DNS_Management_MX_Record_1.png)\n\nFor TXT records:\n__Add a TXT record for your domain by selecting ‘+Add records’ under the DNS tab and specifying the type, name, TTL, and content in the appropriate fields.__\n\n![DNS Management TXT Record 1](//cf-assets.www.cloudflare.com/slt3lc6tev37/6s7AKM7BXNKnmNYNxlYS0S/6aa1552290a893ea75d15e46ea1772f9/DNS_Management_TXT_Record_1.png)\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/360019093151)"
+							},
+							{
+								"title": "Set custom nameservers for your domain(s).",
+								"description": "__Under the DNS tab, click “Add Custom Nameservers” and enter the nameserver hostnames. When Cloudflare assigns IPv4 and IPv6 to your nameservers, add the custom nameservers and IP addresses to your domain registrar’s DNS as A or AAAA records. Finally, update the nameservers at your registrar to point to your custom nameservers.__\n\n![Custom Nameservers 2](//cf-assets.www.cloudflare.com/slt3lc6tev37/5ZeQfOAy2rbJAqxEHNFo3Y/cea28c50e454da713f17d63543b422c2/Custom_Nameservers_2.png)\n\n![Custom Nameservers 1](//cf-assets.www.cloudflare.com/slt3lc6tev37/hqJgfcNZnWRsOnBl9Kkk3/aa407064ff390fa4eb210bea913340dc/Custom_Nameservers_1.png)\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/200169006-Setting-up-Custom-Nameservers-at-Cloudflare)"
+							},
+							{
+								"title": "Optional: Enable CNAME setup for individual subdomains to manage authoritative DNS outside of Cloudflare.",
+								"description": "*During your initial account setup, you may enable a CNAME setup for a specific domain. This allows you to apply security and performance benefits to individual subdomains without pointing each domain to Cloudflare’s nameservers for DNS resolution.\n\n__To enable a CNAME setup for a domain, contact Cloudflare Support with the subject line, “CNAME setup for <domain>.” Once the CNAME setup has been confirmed, you can manage the settings through the “Enable Partial Setup” tab in the Overview section of your Dashboard. In the DNS section of the Dashboard, a TXT record will appear under “Verification TXT Record”; you will need to add it to your authoritative DNS.__\n\nAny onboarded domain can be switched from a Full setup to a CNAME setup, even after the account set-up process is complete. To switch a domain to a CNAME setup, contact Cloudflare Support or look for the \"Convert to Partial\" button in the Overview section of your Dashboard.*\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/360020615111-Configuring-a-CNAME-setup)"
+							},
+							{
+								"title": "Optional: Transfer your domain with Cloudflare Registrar.",
+								"description": "You may transfer an existing domain to Cloudflare with Cloudflare Registrar. Domains on Cloudflare are set to auto-renew by default, but may be manually renewed at any point. Please note that Cloudflare domain transfers are only available on a full DNS setup, not a CNAME setup.\n\n__In your Dashboard, select the domain you want to transfer to Cloudflare and navigate to the Overview tab. Under ‘Domain Registration,’ select “Manage Domains” and click on “Transfer to Cloudflare.” You will need to take the following three steps to complete the transfer:__\n\n1. Disable DNSSEC by removing the DS record at your current DNS host. Turn off DNSSEC within the Cloudflare Dashboard.\n2. Ensure that your current domain is not scheduled to expire within the next 15 days, as it may take up to 15 days to successfully complete a domain transfer. If your domain expires before the transfer to Cloudflare is completed, follow [these instructions](https://support.cloudflare.com/hc/en-us/articles/360019910671-Transferring-and-renewing-domains-with-Cloudflare-Registrar#h_uoRmCDaxJwYtONlntyHCo).\n3. Complete your domain transfer by following the instructions for [Namecheap](https://developers.cloudflare.com/registrar/transfer-instructions/namecheap/), [GoDaddy](https://developers.cloudflare.com/registrar/transfer-instructions/godaddy/), [Network Solutions](https://developers.cloudflare.com/registrar/transfer-instructions/network-solutions/), [1&1](https://developers.cloudflare.com/registrar/transfer-instructions/oneandone/), [Enom](https://developers.cloudflare.com/registrar/transfer-instructions/enom/), or [any other domain registrar](https://developers.cloudflare.com/registrar/transfer-instructions/generic/).\n\nIf you plan to initiate multiple domain transfers, notify your financial institution to avoid flagging the charges as fraudulent.\n\n![Cloudflare Registrar 1](//cf-assets.www.cloudflare.com/slt3lc6tev37/2VskjfU4wpeSKKlywazmi3/a44c8d0354bc0e04d966d6964b5bdd89/Cloudflare_Registrar_1.png)\n\n*Registrar, pricing, and expiration date may vary by domain.*\n\nNeed help? Follow our [detailed instructions >](https://developers.cloudflare.com/registrar/domain-transfers)\n"
+							}
+						]
+					},
+					{
+						"mainTitle": "Performance Configuration",
+						"metadata": {
+							"plan": "free"
+						},
+						"items": [
+							{
+								"title": "Review your pre-enabled settings.",
+								"description": "__Global CDN caching:__\nCloudflare’s global CDN (Content Delivery Network) is a geographically-distributed group of servers that accelerates the delivery of HTML pages, JavaScript files, images, and other types of Internet content. By caching static resources with the Cloudflare CDN, you can reduce server load and bandwidth, with no extra charge for bandwidth spikes. For a list of all file extensions that are automatically cached by the Cloudflare CDN, see [Understanding Cloudflare’s CDN](https://support.cloudflare.com/hc/en-us/articles/200172516-Understanding-Cloudflare-s-CDN). If you want to cache additional files with Cloudflare, see [Customizing Cloudflare’s cache](https://support.cloudflare.com/hc/en-us/articles/202775670-Customizing-Cloudflare-s-cache).\n\n__HTTP/2:__\nHTTP/2 is an upgraded HTTP protocol that has been optimized for the modern website. It enables servers to deliver more content than originally requested by a user, which speeds up page loads without the use of complicated hacks. HTTP/2 is enabled by default for all Cloudflare domains. It can be managed under the Network tab of your Dashboard. To learn more, see [Understanding Cloudflare HTTP/2 and HTTP/3 Support](https://support.cloudflare.com/hc/en-us/articles/200168076-Understanding-Cloudflare-HTTP-2-and-HTTP-3-Support)."
+							},
+							{
+								"title": "Optimize web performance by customizing your caching settings.",
+								"description": "There are three primary actions that allow you to customize your caching settings in the Dashboard: Purge Cache, Caching Level, and Browser Cache TTL.\n\n- __Purge Cache__ allows you to clear files from Cloudflare’s cache, either selectively (Custom Purge) or collectively (Purge Everything). Purging all cached resources may temporarily degrade your web performance and increase bandwidth and CPU, as it forces Cloudflare to retrieve a new version of these files from your origin server. Cloudflare recommendation: Custom Purge.\n\n\n- __Caching Level__ tells Cloudflare how much of your website’s static content needs to be cached. Typically, the more content you cache, the faster your web pages load. Cloudflare recommendation: Standard Caching Level.\n\n\n- __Browser Cache TTL__ tells Cloudflare how long to cache files in a visitor’s browser. The expiration time can be set to respect existing headers, or set for an amount of time that ranges from 30 minutes to 1 year. Be aware that while longer expiration times ensure faster load times for repeat visitors, they can subsequently trigger slower update times when these files are modified. You may also use Page Rules to allow a different cache expiration time for a specific path or resource.\n\n![Caching settings copy](//cf-assets.www.cloudflare.com/slt3lc6tev37/Na9PjLCjlMxa81dMJ7vd2/8ba4c1cac6fc1442b85699a764e2056f/Caching_settings_copy.png)"
+							},
+							{
+								"title": "Improve page load times with Rocket Loader.",
+								"description": "Rocket Loader accelerates page load times by prioritizing website content over JavaScript. Once your web content (text, images, etc.) has loaded, it dynamically inserts the JavaScripts back into the page so the browser can load them. This drastically reduces the amount of time your users have to wait to see a webpage.\n\n__Under the ‘Optimization’ tab of your Speed settings, toggle Rocket Loader by switching the setting to “On.”\n__\n\n![rocket](//cf-assets.www.cloudflare.com/slt3lc6tev37/4EIPs0vMudnEoKJ7sGQ5GW/1ce0d9f78f734f801e07ddf8dac96a0a/rocket.png)\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/200168056-What-does-Rocket-Loader-do-)\n"
+							},
+							{
+								"title": "Improve performance for returning users with 0-RTT Connection Resumption.",
+								"description": "With 0-RTT Connection Resumption, returning users benefit from faster web performance by making their first requests before the TLS or QUIC connection is fully established. This ensures faster connection times and page loads, but also introduces a slight security risk as application data may be intercepted by an attacker. This feature is not enabled by default.\n\n__To enable 0-RTT Connection Resumption, navigate to the Network tab of your Dashboard and toggle the “On” setting.__\n\n![o-rtt](//cf-assets.www.cloudflare.com/slt3lc6tev37/7t2NNgKxNuMhzQpCwOFekS/a696a070cca7d1bb8d4db7b38f65393c/o-rtt.png)\n\nLearn more about the risks of [0-RTT Connection Resumption >](https://blog.cloudflare.com/even-faster-connection-establishment-with-quic-0-rtt-resumption/)"
+							},
+							{
+								"title": "Ensure your site always stays up with the ‘Always Online’ feature.",
+								"description": "Cloudflare’s ‘Always Online’ feature allows users to access your site even when your origin web server gets knocked offline. Cloudflare does this by caching a limited number of webpages that are always available to visitors. With the ‘Always On’ feature enabled, visitors will also see a green notification button allowing them to refresh the page for a live version.\n\n__Under the Caching tab at the top of the screen, turn on ‘Always Online’ by switching the setting to “On.”__\n\n![always online](//cf-assets.www.cloudflare.com/slt3lc6tev37/6xmIxGhwLifZrDMMrL2jaq/e321b0ff8f38d08f884f37682d3758e8/always_online.png)\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/200168436-Understanding-Cloudflare-Always-Online)"
+							}
+						]
+					},
+					{
+						"mainTitle": "Performance Configuration",
+						"metadata": {
+							"plan": "pro"
+						},
+						"items": [
+							{
+								"title": "Review your pre-enabled settings.",
+								"description": "__Global CDN caching:__\nCloudflare’s global CDN (Content Delivery Network) is a geographically-distributed group of servers that accelerates the delivery of HTML pages, JavaScript files, images, and other types of Internet content. By caching static resources with the Cloudflare CDN, you can reduce server load and bandwidth, with no extra charge for bandwidth spikes. For a list of all file extensions that are automatically cached by the Cloudflare CDN, see [Understanding Cloudflare’s CDN](https://support.cloudflare.com/hc/en-us/articles/200172516-Understanding-Cloudflare-s-CDN). If you want to cache additional files with Cloudflare, see [Customizing Cloudflare’s cache](https://support.cloudflare.com/hc/en-us/articles/202775670-Customizing-Cloudflare-s-cache).\n\n__HTTP/2:__\nHTTP/2 is an upgraded HTTP protocol that has been optimized for the modern website. It enables servers to deliver more content than originally requested by a user, which speeds up page loads without the use of complicated hacks. HTTP/2 is enabled by default for all Cloudflare domains. It can be managed under the Network tab of your Dashboard. To learn more, see [Understanding Cloudflare HTTP/2 and HTTP/3 Support](https://support.cloudflare.com/hc/en-us/articles/200168076-Understanding-Cloudflare-HTTP-2-and-HTTP-3-Support).\n\n__TCP Turbo:__\nTCP Turbo automatically tunes the initial congestion window for every TCP connection based on closed connections data. This allows Cloudflare to optimize connections from the Cloudflare edge to the user in order to deliver faster performance. This feature is automatically enabled for all Cloudflare domains on a Pro, Business, or Enterprise Plan."
+							},
+							{
+								"title": "Reduce image file sizes with Polish.",
+								"description": "Cloudflare Polish optimizes image file sizes in order to further accelerate page loads. It offers two primary functions: lossless compression, which reduces file sizes while preserving the original image detail, and lossy compression, which offers greater file reduction by slightly reducing the image detail.\n\n__Under the ‘Optimization’ tab of your Speed settings, select “Lossy” or “Lossless” from the Polish dropdown menu. You may also click “WebP” to optimize .png and .jpeg images stored in the origin server.__\n\n![Polish 2](//cf-assets.www.cloudflare.com/slt3lc6tev37/3RnpMdJHQemBDuQUUGzzCo/04092a779660dd34b74b22b8b66678c7/Polish_2.png)\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/360000607372-Using-Cloudflare-Polish-to-compress-images)"
+							},
+							{
+								"title": "Accelerate mobile performance with Mirage.",
+								"description": "Mirage helps optimize image loading on mobile devices, particularly those experiencing slow network connections. It first analyzes each visitor’s connection and device type, then uses JavaScript to automatically resize images based on screen size and strength of connection. Visitors with poor connections will receive a smaller, lower resolution version of an image until they can access a higher bandwidth connection. Mirage also acts as a ‘lazy loader,’ so that images are only loaded when a visitor scrolls to their location.\n\n__Under the ‘Optimization’ tab of your Speed settings, toggle Mirage by switching the setting to “On.”__\n\n![Mirage](//cf-assets.www.cloudflare.com/slt3lc6tev37/4VczfYHBGtzhZ886kW0rCR/be73a495b60c5662bdbe38473338353f/Mirage.png)\n\nLearn more about Mirage and [the types of image files it optimizes](https://support.cloudflare.com/hc/en-us/articles/219178057-Configuring-Cloudflare-Mirage).\n"
+							},
+							{
+								"title": "Optimize web performance by customizing your caching settings.",
+								"description": "There are three primary actions that allow you to customize your caching settings in the Dashboard: Purge Cache, Caching Level, and Browser Cache TTL.\n\n- __Purge Cache__ allows you to clear files from Cloudflare’s cache, either selectively (Custom Purge) or collectively (Purge Everything). Purging all cached resources may temporarily degrade your web performance and increase bandwidth and CPU, as it forces Cloudflare to retrieve a new version of these files from your origin server. Cloudflare recommendation: Custom Purge.\n\n\n- __Caching Level__ tells Cloudflare how much of your website’s static content needs to be cached. Typically, the more content you cache, the faster your web pages load. Cloudflare recommendation: Standard Caching Level.\n\n\n- __Browser Cache TTL__ tells Cloudflare how long to cache files in a visitor’s browser. The expiration time can be set to respect existing headers, or set for an amount of time that ranges from 30 minutes to 1 year. Be aware that while longer expiration times ensure faster load times for repeat visitors, they can subsequently trigger slower update times when these files are modified. You may also use Page Rules to allow a different cache expiration time for a specific path or resource.\n\n![Caching settings copy](//cf-assets.www.cloudflare.com/slt3lc6tev37/Na9PjLCjlMxa81dMJ7vd2/8ba4c1cac6fc1442b85699a764e2056f/Caching_settings_copy.png)"
+							},
+							{
+								"title": "Improve page load times with Rocket Loader.",
+								"description": "Rocket Loader accelerates page load times by prioritizing website content over JavaScript. Once your web content (text, images, etc.) has loaded, it dynamically inserts the JavaScripts back into the page so the browser can load them. This drastically reduces the amount of time your users have to wait to see a webpage.\n\n__Under the ‘Optimization’ tab of your Speed settings, toggle Rocket Loader by switching the setting to “On.”\n__\n\n![rocket](//cf-assets.www.cloudflare.com/slt3lc6tev37/4EIPs0vMudnEoKJ7sGQ5GW/1ce0d9f78f734f801e07ddf8dac96a0a/rocket.png)\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/200168056-What-does-Rocket-Loader-do-)\n"
+							},
+							{
+								"title": "Improve performance for returning users with 0-RTT Connection Resumption.",
+								"description": "With 0-RTT Connection Resumption, returning users benefit from faster web performance by making their first requests before the TLS or QUIC connection is fully established. This ensures faster connection times and page loads, but also introduces a slight security risk as application data may be intercepted by an attacker. This feature is not enabled by default.\n\n__To enable 0-RTT Connection Resumption, navigate to the Network tab of your Dashboard and toggle the “On” setting.__\n\n![o-rtt](//cf-assets.www.cloudflare.com/slt3lc6tev37/7t2NNgKxNuMhzQpCwOFekS/a696a070cca7d1bb8d4db7b38f65393c/o-rtt.png)\n\nLearn more about the risks of [0-RTT Connection Resumption >](https://blog.cloudflare.com/even-faster-connection-establishment-with-quic-0-rtt-resumption/)"
+							},
+							{
+								"title": "Speed up page loads across different browsers with Enhanced HTTP/2 Prioritization.",
+								"description": "Enhanced HTTP/2 Prioritization ensures that web content is loaded in the optimal order, no matter what browser visitors use to access your site. Note: With this feature, visitors will see the greatest improvements by using Safari and Edge browsers.\n\n__In the ‘Optimization’ tab of your Speed settings, toggle Enhanced HTTP/2 Prioritization by switching the setting to “On.”__\n\n![Enhanced HTTP2 Prioritization](//cf-assets.www.cloudflare.com/slt3lc6tev37/6MZ3oVkZ2ajA3mNYGNRD98/a032e2939e9e3aa59366e4b302821ce9/Enhanced_HTTP2_Prioritization.png)"
+							},
+							{
+								"title": "Ensure your site always stays up with the ‘Always Online’ feature.",
+								"description": "Cloudflare’s ‘Always Online’ feature allows users to access your site even when your origin web server gets knocked offline. Cloudflare does this by caching a limited number of webpages that are always available to visitors. With the ‘Always On’ feature enabled, visitors will also see a green notification button allowing them to refresh the page for a live version.\n\n__Under the Caching tab at the top of the screen, turn on ‘Always Online’ by switching the setting to “On.”__\n\n![always online](//cf-assets.www.cloudflare.com/slt3lc6tev37/6xmIxGhwLifZrDMMrL2jaq/e321b0ff8f38d08f884f37682d3758e8/always_online.png)\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/200168436-Understanding-Cloudflare-Always-Online)"
+							}
+						]
+					},
+					{
+						"mainTitle": "Performance Configuration",
+						"metadata": {
+							"plan": "business"
+						},
+						"items": [
+							{
+								"title": "Review your pre-enabled settings.",
+								"description": "__Global CDN caching:__\nCloudflare’s global CDN (Content Delivery Network) is a geographically-distributed group of servers that accelerates the delivery of HTML pages, JavaScript files, images, and other types of Internet content. By caching static resources with the Cloudflare CDN, you can reduce server load and bandwidth, with no extra charge for bandwidth spikes. For a list of all file extensions that are automatically cached by the Cloudflare CDN, see [Understanding Cloudflare’s CDN](https://support.cloudflare.com/hc/en-us/articles/200172516-Understanding-Cloudflare-s-CDN). If you want to cache additional files with Cloudflare, see [Customizing Cloudflare’s cache](https://support.cloudflare.com/hc/en-us/articles/202775670-Customizing-Cloudflare-s-cache).\n\n__HTTP/2:__\nHTTP/2 is an upgraded HTTP protocol that has been optimized for the modern website. It enables servers to deliver more content than originally requested by a user, which speeds up page loads without the use of complicated hacks. HTTP/2 is enabled by default for all Cloudflare domains. It can be managed under the Network tab of your Dashboard. To learn more, see [Understanding Cloudflare HTTP/2 and HTTP/3 Support](https://support.cloudflare.com/hc/en-us/articles/200168076-Understanding-Cloudflare-HTTP-2-and-HTTP-3-Support).\n\n__TCP Turbo:__\nTCP Turbo automatically tunes the initial congestion window for every TCP connection based on closed connections data. This allows Cloudflare to optimize connections from the Cloudflare edge to the user in order to deliver faster performance. This feature is automatically enabled for all Cloudflare domains on a Pro, Business, or Enterprise Plan."
+							},
+							{
+								"title": "Reduce image file sizes with Polish.",
+								"description": "Cloudflare Polish optimizes image file sizes in order to further accelerate page loads. It offers two primary functions: lossless compression, which reduces file sizes while preserving the original image detail, and lossy compression, which offers greater file reduction by slightly reducing the image detail.\n\n__Under the ‘Optimization’ tab of your Speed settings, select “Lossy” or “Lossless” from the Polish dropdown menu. You may also click “WebP” to optimize .png and .jpeg images stored in the origin server.__\n\n![Polish 2](//cf-assets.www.cloudflare.com/slt3lc6tev37/3RnpMdJHQemBDuQUUGzzCo/04092a779660dd34b74b22b8b66678c7/Polish_2.png)\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/360000607372-Using-Cloudflare-Polish-to-compress-images)"
+							},
+							{
+								"title": "Accelerate mobile performance with Mirage.",
+								"description": "Mirage helps optimize image loading on mobile devices, particularly those experiencing slow network connections. It first analyzes each visitor’s connection and device type, then uses JavaScript to automatically resize images based on screen size and strength of connection. Visitors with poor connections will receive a smaller, lower resolution version of an image until they can access a higher bandwidth connection. Mirage also acts as a ‘lazy loader,’ so that images are only loaded when a visitor scrolls to their location.\n\n__Under the ‘Optimization’ tab of your Speed settings, toggle Mirage by switching the setting to “On.”__\n\n![Mirage](//cf-assets.www.cloudflare.com/slt3lc6tev37/4VczfYHBGtzhZ886kW0rCR/be73a495b60c5662bdbe38473338353f/Mirage.png)\n\nLearn more about Mirage and [the types of image files it optimizes](https://support.cloudflare.com/hc/en-us/articles/219178057-Configuring-Cloudflare-Mirage).\n"
+							},
+							{
+								"title": "Optimize web performance by customizing your caching settings.",
+								"description": "There are three primary actions that allow you to customize your caching settings in the Dashboard: Purge Cache, Caching Level, and Browser Cache TTL.\n\n- __Purge Cache__ allows you to clear files from Cloudflare’s cache, either selectively (Custom Purge) or collectively (Purge Everything). Purging all cached resources may temporarily degrade your web performance and increase bandwidth and CPU, as it forces Cloudflare to retrieve a new version of these files from your origin server. Cloudflare recommendation: Custom Purge.\n\n\n- __Caching Level__ tells Cloudflare how much of your website’s static content needs to be cached. Typically, the more content you cache, the faster your web pages load. Cloudflare recommendation: Standard Caching Level.\n\n\n- __Browser Cache TTL__ tells Cloudflare how long to cache files in a visitor’s browser. The expiration time can be set to respect existing headers, or set for an amount of time that ranges from 30 minutes to 1 year. Be aware that while longer expiration times ensure faster load times for repeat visitors, they can subsequently trigger slower update times when these files are modified. You may also use Page Rules to allow a different cache expiration time for a specific path or resource.\n\n![Caching settings copy](//cf-assets.www.cloudflare.com/slt3lc6tev37/Na9PjLCjlMxa81dMJ7vd2/8ba4c1cac6fc1442b85699a764e2056f/Caching_settings_copy.png)"
+							},
+							{
+								"title": "Improve page load times with Rocket Loader.",
+								"description": "Rocket Loader accelerates page load times by prioritizing website content over JavaScript. Once your web content (text, images, etc.) has loaded, it dynamically inserts the JavaScripts back into the page so the browser can load them. This drastically reduces the amount of time your users have to wait to see a webpage.\n\n__Under the ‘Optimization’ tab of your Speed settings, toggle Rocket Loader by switching the setting to “On.”\n__\n\n![rocket](//cf-assets.www.cloudflare.com/slt3lc6tev37/4EIPs0vMudnEoKJ7sGQ5GW/1ce0d9f78f734f801e07ddf8dac96a0a/rocket.png)\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/200168056-What-does-Rocket-Loader-do-)\n"
+							},
+							{
+								"title": "Improve performance for returning users with 0-RTT Connection Resumption.",
+								"description": "With 0-RTT Connection Resumption, returning users benefit from faster web performance by making their first requests before the TLS or QUIC connection is fully established. This ensures faster connection times and page loads, but also introduces a slight security risk as application data may be intercepted by an attacker. This feature is not enabled by default.\n\n__To enable 0-RTT Connection Resumption, navigate to the Network tab of your Dashboard and toggle the “On” setting.__\n\n![o-rtt](//cf-assets.www.cloudflare.com/slt3lc6tev37/7t2NNgKxNuMhzQpCwOFekS/a696a070cca7d1bb8d4db7b38f65393c/o-rtt.png)\n\nLearn more about the risks of [0-RTT Connection Resumption >](https://blog.cloudflare.com/even-faster-connection-establishment-with-quic-0-rtt-resumption/)"
+							},
+							{
+								"title": "Speed up page loads across different browsers with Enhanced HTTP/2 Prioritization.",
+								"description": "Enhanced HTTP/2 Prioritization ensures that web content is loaded in the optimal order, no matter what browser visitors use to access your site. Note: With this feature, visitors will see the greatest improvements by using Safari and Edge browsers.\n\n__In the ‘Optimization’ tab of your Speed settings, toggle Enhanced HTTP/2 Prioritization by switching the setting to “On.”__\n\n![Enhanced HTTP2 Prioritization](//cf-assets.www.cloudflare.com/slt3lc6tev37/6MZ3oVkZ2ajA3mNYGNRD98/a032e2939e9e3aa59366e4b302821ce9/Enhanced_HTTP2_Prioritization.png)"
+							},
+							{
+								"title": "Ensure your site always stays up with the ‘Always Online’ feature.",
+								"description": "Cloudflare’s ‘Always Online’ feature allows users to access your site even when your origin web server gets knocked offline. Cloudflare does this by caching a limited number of webpages that are always available to visitors. With the ‘Always On’ feature enabled, visitors will also see a green notification button allowing them to refresh the page for a live version.\n\n__Under the Caching tab at the top of the screen, turn on ‘Always Online’ by switching the setting to “On.”__\n\n![always online](//cf-assets.www.cloudflare.com/slt3lc6tev37/6xmIxGhwLifZrDMMrL2jaq/e321b0ff8f38d08f884f37682d3758e8/always_online.png)\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/200168436-Understanding-Cloudflare-Always-Online)"
+							}
+						]
+					},
+					{
+						"mainTitle": "Security Configuration",
+						"metadata": {
+							"plan": "free"
+						},
+						"items": [
+							{
+								"title": "Review your pre-enabled settings.",
+								"description": "__DDoS Protection:__\nCloudflare automatically shields your site from network- and application-level DDoS attacks. There are five primary types of attacks Cloudflare helps mitigate: HTTP flood attacks, UDP flood attacks, SYN flood attacks, ACK flood attacks, and QUIC flood attacks. To learn how these attacks work, visit our [DDoS Learning Center](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/). Under attack? Learn how to [respond to a DDoS attack](https://support.cloudflare.com/hc/en-us/articles/200170196).\n\n__Opportunistic Encryption:__\nOpportunistic Encryption adds a layer of security to websites that have not migrated to HTTPS. When this feature is enabled, users will be able to access sites over an encrypted connection, but will continue to see “http” in the address bar. Opportunistic Encryption is not a substitute for HTTPS, which should be used when strong encryption and authentication are required.\n\n__TLS 1.3:__\nTLS 1.3 is the latest version of the TLS protocol, which uses HTTPS to encrypt communications between a client and web server. TLS 1.3 offers several significant security and performance advantages over previous versions of TLS, including security patches for known vulnerabilities and decreased latency and load times.\n\n__Automatic HTTPS Rewrites:__\nWhen you connect to your site over HTTPS, but see an information or warning icon in the URL instead of a lock icon, your site may be experiencing an issue with mixed content. With Automatic HTTPS Rewrites, Cloudflare can help keep your site secure by rewriting insecure HTTP resources and links as HTTPS resources and links. To learn more about the limitations of this feature, see [Understanding Automatic HTTPS Rewrites](https://support.cloudflare.com/hc/en-us/articles/227227647-Understanding-Automatic-HTTPS-rewrites).\n\n__Email Address Obfuscation:__\nScrape Shield is a free app that protects your domain from email spam and bandwidth abuse, while automatically hiding specific content on your site from suspicious visitors. Email Address Obfuscation is automatically enabled for your site under the Scrape Shield tab of your Dashboard."
+							},
+							{
+								"title": "Ensure DNS integrity with DNSSEC.",
+								"description": "DNSSEC authenticates your DNS so that users are always directed to your web server when they type your domain into a web browser. Without DNSSEC, your site may be vulnerable to on-path attacks and other types of DNS forgeries. There are two required steps to configure DNS:\n\n1. Enable DNSSEC in the DNS settings of your Dashboard.\n2. Add a DS record to your registrar.\n\n![DNSSEC](//cf-assets.www.cloudflare.com/slt3lc6tev37/6gcanTlxrJkkdT7QJUa2uK/1edcba11b892cab056b90be692b4f493/DNSSEC.png)\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/360006660072-Understanding-and-Configuring-DNSSEC-in-Cloudflare-DNS)"
+							},
+							{
+								"title": "Create up to five Firewall Rules.",
+								"description": "Cloudflare Firewall Rules allow you to examine all incoming site traffic and approve, challenge, or block it based on custom criteria. By proactively inspecting your site traffic, you can create specific responses that will automatically anticipate and respond to threats. The Free Plan allows users to create and apply five (5) Firewall Rules to a domain.\n\n__Configure your Firewall Rules in the ‘Firewall Rules’ tab of your Firewall settings.__\n\n![firewall rules](//cf-assets.www.cloudflare.com/slt3lc6tev37/2sTev79vVTZUYe334HV2Yz/dbe04c65d36d779d218883e6d9b50aa4/firewall_rules.png)\n\n__Each firewall rule triggers a specific action that will be performed when an incoming HTTP request matches the expression in the rule.__\n\n![Create a Firewall Rule](//cf-assets.www.cloudflare.com/slt3lc6tev37/5rMOSsYdDGIrG2DMuvpYx4/bdc34b6ee9e7f5eb9496337b2bb69765/Create_a_Firewall_Rule.png)\n\nNeed help? Follow our [detailed instructions >](https://developers.cloudflare.com/firewall/cf-firewall-rules)"
+							},
+							{
+								"title": "Manage your Cloudflare settings with Page Rules.",
+								"description": "Cloudflare Page Rules gives you granular control over the performance and security settings for your domain. Using Page Rules, you can define URL patterns that automatically trigger certain actions, i.e. changing the SSL mode for your subdomains, applying Auto Minify to a set of URLs, and so on.\n\nThe Free Plan includes three Page Rules, with additional Page Rules available starting at $5/month.\n\n__Add a Page Rule by clicking ‘Create Page Rule’ in the Page Rules tab, then adding any desired settings to that rule. Page Rules are prioritized in descending order in the Cloudflare Dashboard, and should be ordered from most specific to least specific.__\n\n![page rules](//cf-assets.www.cloudflare.com/slt3lc6tev37/4mMTw0e7TjExmFuqzLyhJ8/cdb5742e2ed7517a10b3f55c966d2564/page_rules.png)\n\nLearn more about [recommended Page Rules](https://support.cloudflare.com/hc/en-us/articles/224509547-Recommended-Page-Rules-to-Consider) for your site.\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/218411427-Understanding-and-Configuring-Cloudflare-Page-Rules-Page-Rules-Tutorial-)"
+							},
+							{
+								"title": "Shield your domain from off-site linking with Hotlink Protection.",
+								"description": "When other websites use your images without permission, your bandwidth consumption and costs may increase. Hotlink Protection allows other sites to download and view images from your domain, but prevents them from linking directly to your image resources. This feature supports the following file extensions: .gif, .ico, .jpg, jpeg, and .png.\n\n__To apply Hotlink Protection to your domain, navigate to the Scrape Shield tab of your Dashboard and toggle the feature by clicking “On.”__\n\n![hotlink protection](//cf-assets.www.cloudflare.com/slt3lc6tev37/mtpx3hGUXE0cgQ2InVYZf/f363014de3faf6ff31534ba2c30df2e6/hotlink_protection.png)"
+							}
+						]
+					},
+					{
+						"mainTitle": "Security Configuration",
+						"metadata": {
+							"plan": "pro"
+						},
+						"items": [
+							{
+								"title": "Review your pre-enabled settings.",
+								"description": "__DDoS Protection:__\nCloudflare automatically shields your site from network- and application-level DDoS attacks. There are five primary types of attacks Cloudflare helps mitigate: HTTP flood attacks, UDP flood attacks, SYN flood attacks, ACK flood attacks, and QUIC flood attacks. To learn how these attacks work, visit our [DDoS Learning Center](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/). Under attack? Learn how to [respond to a DDoS attack](https://support.cloudflare.com/hc/en-us/articles/200170196).\n\n__Opportunistic Encryption:__\nOpportunistic Encryption adds a layer of security to websites that have not migrated to HTTPS. When this feature is enabled, users will be able to access sites over an encrypted connection, but will continue to see “http” in the address bar. Opportunistic Encryption is not a substitute for HTTPS, which should be used when strong encryption and authentication are required.\n\n__TLS 1.3:__\nTLS 1.3 is the latest version of the TLS protocol, which uses HTTPS to encrypt communications between a client and web server. TLS 1.3 offers several significant security and performance advantages over previous versions of TLS, including security patches for known vulnerabilities and decreased latency and load times.\n\n__Automatic HTTPS Rewrites:__\nWhen you connect to your site over HTTPS, but see an information or warning icon in the URL instead of a lock icon, your site may be experiencing an issue with mixed content. With Automatic HTTPS Rewrites, Cloudflare can help keep your site secure by rewriting insecure HTTP resources and links as HTTPS resources and links. To learn more about the limitations of this feature, see [Understanding Automatic HTTPS Rewrites](https://support.cloudflare.com/hc/en-us/articles/227227647-Understanding-Automatic-HTTPS-rewrites).\n\n__Email Address Obfuscation:__\nScrape Shield is a free app that protects your domain from email spam and bandwidth abuse, while automatically hiding specific content on your site from suspicious visitors. Email Address Obfuscation is automatically enabled for your site under the Scrape Shield tab of your Dashboard."
+							},
+							{
+								"title": "Ensure DNS integrity with DNSSEC.",
+								"description": "DNSSEC authenticates your DNS so that users are always directed to your web server when they type your domain into a web browser. Without DNSSEC, your site may be vulnerable to on-path attacks and other types of DNS forgeries. There are two required steps to configure DNS:\n\n1. Enable DNSSEC in the DNS settings of your Dashboard.\n2. Add a DS record to your registrar.\n\n![DNSSEC](//cf-assets.www.cloudflare.com/slt3lc6tev37/6gcanTlxrJkkdT7QJUa2uK/1edcba11b892cab056b90be692b4f493/DNSSEC.png)\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/360006660072-Understanding-and-Configuring-DNSSEC-in-Cloudflare-DNS)"
+							},
+							{
+								"title": "Enhance web security with the Web Application Firewall (WAF).",
+								"description": "The Cloudflare WAF protects your site by using custom rules to identify and block malicious requests, such as cross-site scripting attacks (XSS), SQL injection attacks (SQLi), common keywords used in spam messages, etc. In order to successfully monitor and combat malicious activity, the WAF introduces approximately 100 milliseconds of latency, and changes to the WAF may take around 30 seconds to propagate globally.\n\n![WAF](//cf-assets.www.cloudflare.com/slt3lc6tev37/1mYxpcv8ncB2Ri32RWCnPq/7bd1acee6688ac5fbb5aebcb6414a599/WAF.png)\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/200172016)"
+							},
+							{
+								"title": "Enable curated security rules with the Cloudflare Managed Ruleset.",
+								"description": "The Cloudflare Managed Ruleset contains several groups of standard firewall rules that have been written and curated by Cloudflare. These rulesets are designed to combat common web attacks and provide fast and performant protection for your applications. At a minimum, Cloudflare recommends enabling the ‘Cloudflare Specials’ ruleset.\n\n__To apply a Cloudflare Managed Ruleset, navigate to the ‘Managed Rules’ tab of the Firewall app in your Dashboard, then click “On” next to the desired ruleset. Changes to these rulesets may be monitored via Cloudflare’s [WAF changelog.](https://developers.cloudflare.com/waf/change-log/scheduled-changes/)__\n\n![Cloudflare Managed Rulesets](//cf-assets.www.cloudflare.com/slt3lc6tev37/6WqmHGvZuKQMbefyxk21o9/28e11cd27e717a4c07d014d037f2cd93/Cloudflare_Managed_Rulesets.png)\n\n\n![OWASP](//cf-assets.www.cloudflare.com/slt3lc6tev37/6n2j6ImwC0tJoTvXVv7ngl/9b2ecc85dd7794ea63cebe7055051984/OWASP.png)\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/200172016)"
+							},
+							{
+								"title": "Create up to 20 Firewall Rules.",
+								"description": "Cloudflare Firewall Rules allow you to examine all incoming site traffic and approve, challenge, or block it based on custom criteria. By proactively inspecting your site traffic, you can create specific responses that will automatically anticipate and respond to threats. The Pro Plan allows users to create and apply 20 Firewall Rules to a domain.\n\n__Configure your Firewall Rules in the ‘Firewall Rules’ tab of your Firewall settings.__\n\n![Firewall Rules](//cf-assets.www.cloudflare.com/slt3lc6tev37/3IX6i8PSrRJZ8YpQUY7QWa/bd3c1190e41065e47a41ad0844910eff/Firewall_Rules.png)\n\n__Each firewall rule triggers a specific action that will be performed when an incoming HTTP request matches the expression in the rule.__\n\n![Create a Firewall Rule](//cf-assets.www.cloudflare.com/slt3lc6tev37/5rMOSsYdDGIrG2DMuvpYx4/bdc34b6ee9e7f5eb9496337b2bb69765/Create_a_Firewall_Rule.png)\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/224509547-Recommended-Page-Rules-to-Consider)\n"
+							},
+							{
+								"title": "Manage your Cloudflare settings with Page Rules.",
+								"description": "Cloudflare Page Rules gives you granular control over the performance and security settings for your domain. Using Page Rules, you can define URL patterns that automatically trigger certain actions, i.e. changing the SSL mode for your subdomains, applying Auto Minify to a set of URLs, and so on.\n\nThe Pro Plan includes 20 Page Rules, with additional Page Rules available starting at $5/month.\n\n__Add a Page Rule by clicking ‘Create Page Rule’ in the Page Rules tab, then adding any desired settings to that rule. Page Rules are prioritized in descending order in the Cloudflare Dashboard, and should be ordered from most specific to least specific.__\n\n![page rules](//cf-assets.www.cloudflare.com/slt3lc6tev37/4mMTw0e7TjExmFuqzLyhJ8/cdb5742e2ed7517a10b3f55c966d2564/page_rules.png)\n\nLearn more about [recommended Page Rules](https://support.cloudflare.com/hc/en-us/articles/224509547-Recommended-Page-Rules-to-Consider) for your site.\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/218411427-Understanding-and-Configuring-Cloudflare-Page-Rules-Page-Rules-Tutorial-)"
+							},
+							{
+								"title": "Shield your domain from off-site linking with Hotlink Protection.",
+								"description": "When other websites use your images without permission, your bandwidth consumption and costs may increase. Hotlink Protection allows other sites to download and view images from your domain, but prevents them from linking directly to your image resources. This feature supports the following file extensions: .gif, .ico, .jpg, jpeg, and .png.\n\n__To apply Hotlink Protection to your domain, navigate to the Scrape Shield tab of your Dashboard and toggle the feature by clicking “On.”__\n\n![hotlink protection](//cf-assets.www.cloudflare.com/slt3lc6tev37/mtpx3hGUXE0cgQ2InVYZf/f363014de3faf6ff31534ba2c30df2e6/hotlink_protection.png)"
+							},
+							{
+								"title": "Personalize error and challenge pages with Custom Pages settings.",
+								"description": "By default, sites protected by Cloudflare will mention Cloudflare on every error page. For Pro, Business, and Enterprise users, these pages can be customized to fit your site’s unique branding.\n\n__To add a custom error page to your Cloudflare account, design, code, and host the page on your own web server. You may use our custom error template to build your page.__\n\n__Next, add a custom error token. For example, this is the token you would need to include for a basic security challenge:__\n\n![Custom Pages CAPTCHA](//cf-assets.www.cloudflare.com/slt3lc6tev37/31vxYGjyk6x3ENNBmhRdaq/3a8d938161fb583f3f8e41d96d1fd2a4/Custom_Pages_CAPTCHA.png)\n\n__Finally, to publish your page, navigate to the Custom Pages tab of your Dashboard, select the appropriate error page category, and enter your URL into the field.__\n\n![Custom Pages Tab Pro](//cf-assets.www.cloudflare.com/slt3lc6tev37/5P9FpfJ8RDrfEHI7DtQKV7/04bade02c6bb08401bbb570ee996aa95/Custom_Pages_Tab_Pro.png)\n\nThe setup process for Custom Pages varies slightly when publishing an account-level custom error page versus a domain-level custom page. Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/200172706-Configuring-Custom-Pages-Error-and-Challenge-)"
+							}
+						]
+					},
+					{
+						"mainTitle": "Security Configuration",
+						"metadata": {
+							"plan": "business"
+						},
+						"items": [
+							{
+								"title": "Review your pre-enabled settings.",
+								"description": "__DDoS Protection:__\nCloudflare automatically shields your site from network- and application-level DDoS attacks. There are five primary types of attacks Cloudflare helps mitigate: HTTP flood attacks, UDP flood attacks, SYN flood attacks, ACK flood attacks, and QUIC flood attacks. To learn how these attacks work, visit our [DDoS Learning Center](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/). Under attack? Learn how to [respond to a DDoS attack](https://support.cloudflare.com/hc/en-us/articles/200170196).\n\n__Opportunistic Encryption:__\nOpportunistic Encryption adds a layer of security to websites that have not migrated to HTTPS. When this feature is enabled, users will be able to access sites over an encrypted connection, but will continue to see “http” in the address bar. Opportunistic Encryption is not a substitute for HTTPS, which should be used when strong encryption and authentication are required.\n\n__TLS 1.3:__\nTLS 1.3 is the latest version of the TLS protocol, which uses HTTPS to encrypt communications between a client and web server. TLS 1.3 offers several significant security and performance advantages over previous versions of TLS, including security patches for known vulnerabilities and decreased latency and load times.\n\n__Automatic HTTPS Rewrites:__\nWhen you connect to your site over HTTPS, but see an information or warning icon in the URL instead of a lock icon, your site may be experiencing an issue with mixed content. With Automatic HTTPS Rewrites, Cloudflare can help keep your site secure by rewriting insecure HTTP resources and links as HTTPS resources and links. To learn more about the limitations of this feature, see [Understanding Automatic HTTPS Rewrites](https://support.cloudflare.com/hc/en-us/articles/227227647-Understanding-Automatic-HTTPS-rewrites).\n\n__Email Address Obfuscation:__\nScrape Shield is a free app that protects your domain from email spam and bandwidth abuse, while automatically hiding specific content on your site from suspicious visitors. Email Address Obfuscation is automatically enabled for your site under the Scrape Shield tab of your Dashboard."
+							},
+							{
+								"title": "Ensure DNS integrity with DNSSEC.",
+								"description": "DNSSEC authenticates your DNS so that users are always directed to your web server when they type your domain into a web browser. Without DNSSEC, your site may be vulnerable to on-path attacks and other types of DNS forgeries. There are two required steps to configure DNS:\n\n1. Enable DNSSEC in the DNS settings of your Dashboard.\n2. Add a DS record to your registrar.\n\n![DNSSEC](//cf-assets.www.cloudflare.com/slt3lc6tev37/6gcanTlxrJkkdT7QJUa2uK/1edcba11b892cab056b90be692b4f493/DNSSEC.png)\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/360006660072-Understanding-and-Configuring-DNSSEC-in-Cloudflare-DNS)"
+							},
+							{
+								"title": "Enhance web security with the Web Application Firewall (WAF).",
+								"description": "The Cloudflare WAF protects your site by using custom rules to identify and block malicious requests, such as cross-site scripting attacks (XSS), SQL injection attacks (SQLi), common keywords used in spam messages, etc. In order to successfully monitor and combat malicious activity, the WAF introduces approximately 100 milliseconds of latency, and changes to the WAF may take around 30 seconds to propagate globally.\n\n![WAF](//cf-assets.www.cloudflare.com/slt3lc6tev37/1mYxpcv8ncB2Ri32RWCnPq/7bd1acee6688ac5fbb5aebcb6414a599/WAF.png)\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/200172016)"
+							},
+							{
+								"title": "Enable curated security rules with the Cloudflare Managed Ruleset.",
+								"description": "The Cloudflare Managed Ruleset contains several groups of standard firewall rules that have been written and curated by Cloudflare. These rulesets are designed to combat common web attacks and provide fast and performant protection for your applications. At a minimum, Cloudflare recommends enabling the ‘Cloudflare Specials’ ruleset.\n\n__To apply a Cloudflare Managed Ruleset, navigate to the ‘Managed Rules’ tab of the Firewall app in your Dashboard, then click “On” next to the desired ruleset. Changes to these rulesets may be monitored via Cloudflare’s [WAF changelog.](https://developers.cloudflare.com/waf/change-log/scheduled-changes/)__\n\n![Cloudflare Managed Rulesets](//cf-assets.www.cloudflare.com/slt3lc6tev37/6WqmHGvZuKQMbefyxk21o9/28e11cd27e717a4c07d014d037f2cd93/Cloudflare_Managed_Rulesets.png)\n\n\n![OWASP](//cf-assets.www.cloudflare.com/slt3lc6tev37/6n2j6ImwC0tJoTvXVv7ngl/9b2ecc85dd7794ea63cebe7055051984/OWASP.png)\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/200172016)"
+							},
+							{
+								"title": "Create up to 100 Firewall Rules.",
+								"description": "Cloudflare Firewall Rules allow you to examine all incoming site traffic and approve, challenge, or block it based on custom criteria. By proactively inspecting your site traffic, you can create specific responses that will automatically anticipate and respond to threats. The Business Plan allows users to create and apply 100 Firewall Rules to a domain.\n\n__Configure your Firewall Rules in the ‘Firewall Rules’ tab of your Firewall settings.__\n\n\n![Firewall Rules - BIZ](//cf-assets.www.cloudflare.com/slt3lc6tev37/3yEg5uca2tek49W5E6LuN1/4f4ca0ded851cdc4c96c371de23eef95/Firewall_Rules_-_BIZ.png)\n\n__Each firewall rule triggers a specific action that will be performed when an incoming HTTP request matches the expression in the rule.__\n\n![Create a Firewall Rule](//cf-assets.www.cloudflare.com/slt3lc6tev37/5rMOSsYdDGIrG2DMuvpYx4/bdc34b6ee9e7f5eb9496337b2bb69765/Create_a_Firewall_Rule.png)\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/224509547-Recommended-Page-Rules-to-Consider)\n"
+							},
+							{
+								"title": "Manage your Cloudflare settings with Page Rules.",
+								"description": "Cloudflare Page Rules gives you granular control over the performance and security settings for your domain. Using Page Rules, you can define URL patterns that automatically trigger certain actions, i.e. changing the SSL mode for your subdomains, applying Auto Minify to a set of URLs, and so on.\n\nThe Pro Plan includes 20 Page Rules, with additional Page Rules available starting at $5/month.\n\n__Add a Page Rule by clicking ‘Create Page Rule’ in the Page Rules tab, then adding any desired settings to that rule. Page Rules are prioritized in descending order in the Cloudflare Dashboard, and should be ordered from most specific to least specific.__\n\n![page rules](//cf-assets.www.cloudflare.com/slt3lc6tev37/4mMTw0e7TjExmFuqzLyhJ8/cdb5742e2ed7517a10b3f55c966d2564/page_rules.png)\n\nLearn more about [recommended Page Rules](https://support.cloudflare.com/hc/en-us/articles/224509547-Recommended-Page-Rules-to-Consider) for your site.\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/218411427-Understanding-and-Configuring-Cloudflare-Page-Rules-Page-Rules-Tutorial-)"
+							},
+							{
+								"title": "Shield your domain from off-site linking with Hotlink Protection.",
+								"description": "When other websites use your images without permission, your bandwidth consumption and costs may increase. Hotlink Protection allows other sites to download and view images from your domain, but prevents them from linking directly to your image resources. This feature supports the following file extensions: .gif, .ico, .jpg, jpeg, and .png.\n\n__To apply Hotlink Protection to your domain, navigate to the Scrape Shield tab of your Dashboard and toggle the feature by clicking “On.”__\n\n![hotlink protection](//cf-assets.www.cloudflare.com/slt3lc6tev37/mtpx3hGUXE0cgQ2InVYZf/f363014de3faf6ff31534ba2c30df2e6/hotlink_protection.png)"
+							},
+							{
+								"title": "Personalize error and challenge pages with Custom Pages settings.",
+								"description": "By default, sites protected by Cloudflare will mention Cloudflare on every error page. For Pro, Business, and Enterprise users, these pages can be customized to fit your site’s unique branding.\n\n__To add a custom error page to your Cloudflare account, design, code, and host the page on your own web server. You may use our custom error template to build your page.__\n\n__Next, add a custom error token. For example, this is the token you would need to include for a basic security challenge:__\n\n![Custom Pages CAPTCHA](//cf-assets.www.cloudflare.com/slt3lc6tev37/31vxYGjyk6x3ENNBmhRdaq/3a8d938161fb583f3f8e41d96d1fd2a4/Custom_Pages_CAPTCHA.png)\n\n__Finally, to publish your page, navigate to the Custom Pages tab of your Dashboard, select the appropriate error page category, and enter your URL into the field.__\n\n![Custom Pages Tab Pro](//cf-assets.www.cloudflare.com/slt3lc6tev37/5P9FpfJ8RDrfEHI7DtQKV7/04bade02c6bb08401bbb570ee996aa95/Custom_Pages_Tab_Pro.png)\n\nThe setup process for Custom Pages varies slightly when publishing an account-level custom error page versus a domain-level custom page. Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/200172706-Configuring-Custom-Pages-Error-and-Challenge-)"
+							},
+							{
+								"title": " Set up custom SSL certificates for each domain.",
+								"description": "You may upload one custom SSL certificate per Business domain. Cloudflare permits four types of custom SSL certificates: Unified Communications Certificates (UCC), Extended Validation certificates (EV), Domain Validated certificates (DV), and Organization Validated certificates (OV). All custom SSL certificates are served from Cloudflare’s network and are not shared by multiple customer domains.\n\n__Navigate to the “Edge Certificates” section of the SSL/TLS tab and click on “Upload Custom SSL Certificate.”__\n\n![SSL Certificates - 1](//cf-assets.www.cloudflare.com/slt3lc6tev37/1MF2bs1jwOqHop6xgLNG4V/e00a14d8537886efee8dbe9c048584a4/SSL_Certificates_-_1.png)\n\n__Copy and paste the SSL certificate file contents into the “SSL Certificate” text area. Then, choose the preferred Bundle Method to determine the SSL certificate chain:__\n- “Compatible” allows the greatest compatibility with older browsers and clients\n- “Modern” uses newer and fewer intermediary certificates, but may not be fully compatible with older browsers\n- “User Defined” allows you to provide your own certificate chain\n\n![SSL Certificates - 2](//cf-assets.www.cloudflare.com/slt3lc6tev37/19NH6y04xt0DQfKdc8ldni/0daceef353362d887ad80668950fb482/SSL_Certificates_-_2.png)\n\n__After selecting your Bundle Method, open the SSL certificate private key file and copy and paste the private key file contents into the “Private key” field. If necessary, you may opt to change the Private Key Restriction, which determines which Cloudflare data centers store the SSL private key.__\n\n![SSL Certificates - 3](//cf-assets.www.cloudflare.com/slt3lc6tev37/4vs6yeHUt934XIxKBkXDpj/8af674806d6ed7aed5cf2ca146e9671e/SSL_Certificates_-_3.png)\n\n__Finally, enable Server Name Indication (SNI) support for older browsers and servers. SNI is an extension of the TLS protocol that allows a server to host multiple TLS certificates for multiple websites using a single IP address. There are two options for Legacy Client Support:__\n\n1. Modern (default): SNI only\n2. Legacy: Supports non-SNI\n\n__Once you have completed these steps, click ‘Upload Custom Certificate,’ then repeat the steps for each Business-enabled domain on your account. These steps will need to be completed again upon the expiration of the certificate, as Cloudflare does not automatically renew custom SSL certificates.__\n\n![SSL Certificates - 4](//cf-assets.www.cloudflare.com/slt3lc6tev37/2hKwEbpP0GBYekiajKoDvK/0b23ed069cb49d8550fa422c47252d15/SSL_Certificates_-_4.png)\n\nNeed help? Follow our [detailed instructions >](https://support.cloudflare.com/hc/en-us/articles/200170466-Managing-Custom-SSL-certificates)"
+							}
+						]
+					}
+				],
+				"nextStepTitle": "Now that you have completed your core setup, run a health check to make sure everything is set up correctly.",
+				"nextStepButton": {
+					"text": "Start health check",
+					"url": "/welcome-center/health-check/"
+				}
+			},
+			"subnav": {
+				"contentTypeId": "bladeSubNav",
+				"contentfulId": "1e0eITYdkm5xNNEvoFpLzK",
+				"menuTitle": null,
+				"stickyNav": null,
+				"htmlId": null,
+				"menuItems": [
+					{
+						"__typename": "bladeSubNavMenuItem",
+						"contentfulId": "3EFWOPuVE1zeba2wumusnr",
+						"linkText": "Overview",
+						"page": null,
+						"url": "/welcome-center",
+						"subMenuItems": null
+					},
+					{
+						"__typename": "bladeSubNavMenuItem",
+						"contentfulId": "7oci0SdKgc9184HYPE9yyn",
+						"linkText": "Activation",
+						"page": null,
+						"url": "/welcome-center/activation/",
+						"subMenuItems": null
+					},
+					{
+						"__typename": "bladeSubNavMenuItem",
+						"contentfulId": "66Rr2LidjpXFoKG9IK0jkO",
+						"linkText": "Core Setup",
+						"page": null,
+						"url": "/welcome-center/core-setup/",
+						"subMenuItems": null
+					},
+					{
+						"__typename": "bladeSubNavMenuItem",
+						"contentfulId": "2B7xGo7Vp7f7JkDYDO5xht",
+						"linkText": "Health Check",
+						"page": null,
+						"url": "/welcome-center/health-check/",
+						"subMenuItems": null
+					}
+				]
+			},
+			"resourceGrid": {
+				"title": "Resources",
+				"relatedInfoBlocks": [
+					{
+						"title": "Troubleshooting FAQ",
+						"description": "Get answers to common issues you may encounter when adding a new domain to Cloudflare.",
+						"linkText": "Explore answers",
+						"linkUrl": "https://support.cloudflare.com/hc/en-us/sections/200804937-General-Troubleshooting"
+					},
+					{
+						"title": "Cloudflare Support",
+						"description": "Still stumped? 95% of all user questions can be solved by searching in the Cloudflare Help Center.",
+						"linkText": "Get help",
+						"linkUrl": "https://support.cloudflare.com/hc/"
+					},
+					{
+						"title": "Cloudflare Community",
+						"description": "Join thousands of bloggers, freelancers, and entrepreneurs that are also using Cloudflare to build something amazing.",
+						"linkText": "Join the community",
+						"linkUrl": "https://blog.cloudflare.com/"
+					}
+				]
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"pathname": "/welcome-center/core-setup/",
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

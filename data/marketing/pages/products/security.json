@@ -1,0 +1,593 @@
+{
+	"componentChunkName": "component---src-components-page-page-template-tsx",
+	"path": "/products/security/",
+	"result": {
+		"data": {
+			"page": {
+				"pageName": "Products - Security",
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "Translated for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "Translated for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "No Page for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": null,
+					"zhHansCN": null
+				},
+				"relativePath": "products/security",
+				"topNavOptions": "default",
+				"topNavButtonText": null,
+				"topNavButtonUrl": null,
+				"metaTags": {
+					"metaTitle": "Internet Security Service",
+					"metaDescription": "Our advanced learning web security platform can protect your website against bad bots, malware, attacks and other range of treats. Free to signup!",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"contentfulId": "5XQocMk2MEq2c2cyUcUqcO",
+				"contentTypeId": "page",
+				"promotionalBanner": null,
+				"psaBanner": null,
+				"customTopNav": null,
+				"headerLogo": null,
+				"template": null,
+				"relatedBlades": [
+					{
+						"__typename": "bladeHeroAnimation",
+						"contentfulId": "2GfTYPyZ0cYy0eSOwoWSgw",
+						"contentTypeId": "bladeHeroAnimation",
+						"title": "Security",
+						"subtitle": "Advanced, Powerful, Trusted",
+						"copy": "Cloudflare Security Services protect and secure Internet properties against denial-of-service attacks, customer data breaches, and abusive bots.",
+						"buttonColor": null,
+						"buttonColor2": null,
+						"buttonText1": null,
+						"buttonText1LoggedIn": null,
+						"buttonUrl1": null,
+						"buttonUrl1LoggedIn": null,
+						"button1ExtraClass": null,
+						"buttonText2": null,
+						"buttonText2LoggedIn": null,
+						"buttonUrl2": null,
+						"button2ExtraClass": null,
+						"bladeBorder": "none",
+						"htmlId": null,
+						"textColor": "black",
+						"includeVideo": false,
+						"streamVideoId": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"popupStreamId": null,
+						"popupText": null,
+						"button1OpenInNewTab": null,
+						"button2OpenInNewTab": null,
+						"streamThumbnails": null,
+						"sectionPadding": null,
+						"streamPosterAssetFile": null,
+						"streamPoster": null,
+						"imageSize": null,
+						"imagePosition": null,
+						"leftLinkUrl": null,
+						"leftLink": null,
+						"leftLinkLoggedIn": null,
+						"leftLinkOptions": "hide",
+						"backgroundColor": "white",
+						"textlayoutMode": null,
+						"backgroundAssetFile": null,
+						"imageLayout": null,
+						"image": {
+							"file": {
+								"publicURL": "[path]/cloudflare_security_illustration.png"
+							}
+						},
+						"imageAssetFile": null
+					},
+					{
+						"__typename": "bladeQuote",
+						"contentTypeId": "bladeQuote",
+						"contentfulId": "1lbg0Ur592myKSkOee46gc",
+						"quote": "\"Thanks to the great support we received from the Cloudflare team, especially during our peak weeks in May, we’ve felt more secure that the sites would keep running smooth regardless of amounts of traffic—and they have.\"",
+						"quoteAuthor": "Wouter van Vliet",
+						"quoteTitle": "Project Developer of the Eurovision Song Contest at EBU/EUROVISION",
+						"learnMoreText": null,
+						"sectionPadding": null,
+						"backgroundColor": "mint",
+						"bladeBorder": "none",
+						"learnMoreUrl": null,
+						"htmlId": null,
+						"image": {
+							"file": {
+								"publicURL": "[path]/eurovision.svg"
+							}
+						},
+						"imageAssetFile": {
+							"id": "0460efce-2c71-5a97-b032-85bf7ec01753",
+							"altText": "Logo eurovision gray",
+							"title": "Logo eurovision gray",
+							"activeAsset": "Brandfolder Asset",
+							"locale": "en-US",
+							"contentfulAsset": null,
+							"brandfolderAsset": {
+								"size": 10747,
+								"height": 1264,
+								"width": 3998,
+								"file": {
+									"publicURL": "[path]/logo_eurovision_gray.svg"
+								}
+							},
+							"brandfolderAssetMobile": null
+						},
+						"imageLinkUrl": null,
+						"logoList": null,
+						"logoListAssetFile": null,
+						"quoteCarousel": null
+					},
+					{
+						"__typename": "bladeFourFeatures",
+						"contentfulId": "lcsJhcJsS4gCIK6KU0C8c",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": null,
+						"subtitle": null,
+						"bladeStyle": null,
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-bottom-padding",
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "BPnnltUFLdsz15VqzDX9g",
+								"title": "Anycast Network",
+								"titleSize": null,
+								"description": "With %{DataCenterCount} cities across %{CountryCount} countries and %{NetworkCapacity} of capacity, Cloudflare’s Anycast network absorbs distributed attack traffic by dispersing it geographically, while keeping Internet properties available and performant.\n<a href=\"/network/\" class=\"button--text button--gt-after\">Learn More</a>",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/icon-global-mint.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "74773f2c-04f3-5470-957d-0cbdc96ff9b2",
+									"altText": "icon-global-mint.png",
+									"title": "icon-global-mint.png",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/icon-global-mint.png"
+										}
+									},
+									"brandfolderAsset": {
+										"size": 2017,
+										"height": 528,
+										"width": 528,
+										"file": {
+											"publicURL": "[path]/internet-globe.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6x9lMOPIirdpUUYsKdRAgq",
+								"title": "DNSSEC",
+								"titleSize": null,
+								"description": "DNSSEC is the Internet’s non-spoofable caller ID. It guarantees a web application’s traffic is safely routed to the correct servers so that a site’s visitors are not intercepted by a hidden “man-in-the-middle” attacker.\n<a href=\"/dns/dnssec/\" class=\"button--text button--gt-after\">Learn More</a>",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/icon-DNSSEC-mint.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "7eeb6aea-18f5-5736-9b17-69295f2df58c",
+									"altText": "Security shield protection blue",
+									"title": "Security shield protection blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 806,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/security-shield-protection-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "G8n8A8dfkZV3Drfy4xjkf",
+								"title": "Web Application Firewall (WAF)",
+								"titleSize": null,
+								"description": "Cloudflare’s enterprise-grade web application firewall (WAF) detects and block common application layer vulnerabilities at the network edge, utilising the OWASP Top 10, application-specific and custom rulesets.\n<a href=\"/waf/\" class=\"button--text button--gt-after\">Learn More</a>",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/icon-waf-mint.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "6116a658-a791-529f-86ef-243564024b8d",
+									"altText": "Security waf blue",
+									"title": "Security waf blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 608,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/security-waf-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2EKB8soZzIzGTdxhAwF1qu",
+								"title": "Rate Limiting",
+								"titleSize": null,
+								"description": "Rate Limiting protects critical resources by providing fine-grained control to block or qualify visitors with suspicious request rates.\n<a href=\"/rate-limiting/\" class=\"button--text button--gt-after\">Learn More</a>",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/icon-rate-limiting-mint.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "6f3c3c16-e5fe-5df5-93ff-c32e7663b0d2",
+									"altText": "icon-rate-limiting-mint.png",
+									"title": "icon-rate-limiting-mint.png",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/icon-rate-limiting-mint.png"
+										}
+									},
+									"brandfolderAsset": {
+										"size": 2142,
+										"height": 3972,
+										"width": 2414,
+										"file": {
+											"publicURL": "[path]/filtering.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4xr2JEYvPtiTu57nn6WKLE",
+								"title": "SSL / TLS",
+								"titleSize": null,
+								"description": "Transport Security Layer (TLS) encryption enables HTTPS connections between visitors and origin server(s), preventing man-in-the-middle attacks, packet sniffing, the display of web browser trust warnings, and more.\n<a href=\"/ssl/\" class=\"button--text button--gt-after\">Learn More</a>",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/icon-dedicated-cert-mint.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "2c71b7cd-a024-5268-8ab8-367e3f8bdfb5",
+									"altText": "icon-dedicated-cert-mint.png",
+									"title": "icon-dedicated-cert-mint.png",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/icon-dedicated-cert-mint.png"
+										}
+									},
+									"brandfolderAsset": {
+										"size": 1969,
+										"height": 4000,
+										"width": 2694,
+										"file": {
+											"publicURL": "[path]/certificate-manager.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "dtmxGuasshuTkkWELysit",
+								"title": "Secure Registrar",
+								"titleSize": null,
+								"description": "Cloudflare is an ICANN accredited registrar, protecting organizations from domain hijacking with high-touch, online and offline verification for any changes to a registrar account.\n<a href=\"/products/registrar/\" class=\"button--text button--gt-after\">Learn More</a>",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/icon-secure-registrar-mint.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "cde61019-3234-56a4-8b39-49ff01e3a806",
+									"altText": "Cloudflare registrar blue",
+									"title": "Cloudflare registrar blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 2943,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/cloudflare-registrar-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "y1PY286iy6Bm3xRw3a137",
+								"title": "Orbit",
+								"titleSize": null,
+								"description": "Cloudflare Orbit solves security-related issues for Internet of Things devices at the network level.\n<a href=\"/orbit/\" class=\"button--text button--gt-after\">Learn More</a>",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/icon-orbit-mint.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "a248b639-99bf-5914-8c34-8d0ebaaf98b2",
+									"altText": "Orbit blue",
+									"title": "Orbit blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 2413,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/orbit-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "kq4ZM32Ia6XQqaHG65lI0",
+								"title": "Argo Tunnel",
+								"titleSize": null,
+								"description": "Cloudflare creates an encrypted tunnel between its nearest data center and an application’s origin server without opening a public inbound port.\n<a href=\"/products/argo-tunnel/\" class=\"button--text button--gt-after\">Learn More</a>",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/icon-warp-mint.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "4bab6144-527d-51ff-a4c0-be3260243bee",
+									"altText": "Cloudflare warp blue",
+									"title": "Cloudflare warp blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 3027,
+										"height": 192,
+										"width": 196,
+										"file": {
+											"publicURL": "[path]/cloudflare-warp-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3YfqdumzsOvg4f8bT4u8n9",
+								"title": "Access",
+								"titleSize": null,
+								"description": "Secure, authenticate, and monitor user access to any domain, application, or path on Cloudflare.\n<a href=\"/products/cloudflare-access/\" class=\"button--text button--gt-after\">Learn More</a>",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/icon-access-mint.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "b1eea928-2d0f-5054-88fa-f76a1be0a724",
+									"altText": "icon-access-mint.png",
+									"title": "icon-access-mint.png",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/icon-access-mint.png"
+										}
+									},
+									"brandfolderAsset": {
+										"size": 1409,
+										"height": 2652,
+										"width": 3626,
+										"file": {
+											"publicURL": "[path]/cloudflare-access.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4lqWc1d47kfqixSM1CjT4v",
+								"title": "Spectrum",
+								"titleSize": null,
+								"description": "Spectrum protects TCP applications and ports from volumetric DDoS attacks and data theft by proxying non-web traffic through Cloudflare’s Anycast network.\n<a href=\"/products/cloudflare-spectrum/\" class=\"button--text button--gt-after\">Learn More</a>",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/icon-Spectrum-mint.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "dc0ee946-9622-540c-8a6d-c314b6490868",
+									"altText": "Cloudflare spectrum blue",
+									"title": "Cloudflare spectrum blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 1367,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/cloudflare-spectrum-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
+						"__typename": "bladeEnablement",
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "1D9zxpOddegOmeW2kYGu8e",
+						"copy": "Check out our plan details for more information. Signing up is free.",
+						"buttonExtraClass": null,
+						"buttonColor": "orange",
+						"buttonColor2": null,
+						"title": "Ready to use Cloudflare?",
+						"backgroundColor": "blue",
+						"buttonText": "VIEW PLANS",
+						"buttonUrl": "/plans/",
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": null,
+						"htmlId": null,
+						"textColor": "white",
+						"bladeBorder": "none",
+						"buttonOne": null,
+						"buttonTwo": null,
+						"sectionPadding": null
+					}
+				],
+				"noindex": false,
+				"enableZendeskChat": null,
+				"formModal": null,
+				"keepHashUrlSyncedWithScrollPosition": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"pathname": "/products/security/",
+			"contentfulId": "5XQocMk2MEq2c2cyUcUqcO",
+			"allowedHrefLangs": [
+				"en-US",
+				"zh-CN",
+				"zh-TW",
+				"fr-FR",
+				"de-DE",
+				"it-IT",
+				"ja-JP",
+				"ko-KR",
+				"pt-BR",
+				"es-ES"
+			],
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

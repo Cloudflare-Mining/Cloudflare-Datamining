@@ -1,0 +1,572 @@
+{
+	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
+	"path": "/learning/performance/cloud-load-balancing-lbaas/",
+	"result": {
+		"data": {
+			"learningCenterArticle": {
+				"contentTypeId": "learningCenterArticle",
+				"contentfulId": "1djXaCCTlOj3F2aweE3ELs",
+				"urlSlug": "performance/cloud-load-balancing-lbaas",
+				"metaTags": {
+					"metaTitle": "What is cloud load balancing? | LBaaS",
+					"metaDescription": "Cloud load balancing, or LBaaS, is a software-based load balancer that operates in the cloud. Learn how cloud load balancers improve performance and reliability.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/performance-lc.png"
+						}
+					},
+					"facebookCustomImage": {
+						"file": {
+							"publicURL": "[path]/performance-lc.png"
+						}
+					}
+				},
+				"metaTitle": null,
+				"metaDescription": null,
+				"learningCenterArticleSubHeader": {
+					"contentTypeId": "learningCenterArticleSubHeader",
+					"contentfulId": "3EXwEdnC7JnXLjoWOxHdT9",
+					"learningCenterName": "performance",
+					"links": [
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "e3oFRMHsIzHQZYTLmPDOr",
+							"displayText": "Why Site Speed Matters",
+							"url": "/learning/performance/why-site-speed-matters/"
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "wjD4s7zPAIlrcocplo68g",
+							"name": "Performance Header: Performance Benefits",
+							"displayText": "Performance Benefits",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3XMpuNDRWA2j2aZ0qi1DaU",
+									"displayText": "Speed and Conversion Rates",
+									"url": "/learning/performance/more/website-performance-conversion-rates/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2u9nE8G5zJaY1Limh5GLkW",
+									"displayText": "How Site Speed Boosts SEO",
+									"url": "/learning/performance/how-website-speed-boosts-seo/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4s6X4x3EYYlHHb9aI4X31Q",
+									"displayText": "Core Web Vitals",
+									"url": "/learning/performance/what-are-core-web-vitals/ "
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "1Z9S7dlY2AIhyf5X4kYzLf",
+							"name": "Performance Header: Load Balancing",
+							"displayText": "Load Balancing",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "205Es4ofD2BShliEBNj1Z6",
+									"displayText": "What is Load Balancing?",
+									"url": "/learning/performance/what-is-load-balancing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "hhFtuqqoybh6WOlwSiqIo",
+									"displayText": "Server failover",
+									"url": "/learning/performance/what-is-server-failover/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3EsOLhDVoFDkZWt35VPRqD",
+									"displayText": "DNS-based load balancing",
+									"url": "https://www.cloudflare.com/learning/performance/what-is-dns-load-balancing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4RFn9zHjqaC2djLIVH1R21",
+									"displayText": "Load balancing algorithms",
+									"url": "/learning/performance/types-of-load-balancing-algorithms/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7G0p4vQ9468caPQGJoE6IL",
+									"displayText": "Multi-cloud and hybrid cloud load balancing",
+									"url": "/learning/performance/load-balancing-multi-cloud-hybrid-cloud/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4ZbTYQT5tvo9CTMX9psYMa",
+									"displayText": "Cloud load balancing (LBaaS)",
+									"url": "/learning/performance/cloud-load-balancing-lbaas/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "6BoLYDQbAwY5LuAk1OHyNu",
+							"name": "Performance Header: Performance for Developers",
+							"displayText": "Performance for Developers",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "35apJbC5biFa3jzTQHmDe1",
+									"displayText": "Why Minify Javascript?",
+									"url": "/learning/performance/why-minify-javascript-code/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2Xp2GgqtMv84qqtbYIIQtc",
+									"displayText": "HTTP/2 vs HTTP/1.1",
+									"url": "/learning/performance/http2-vs-http1.1/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4H29YTj5ck7Dfu72foQyXb",
+									"displayText": "What is JAMstack?",
+									"url": "/learning/performance/what-is-jamstack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2x2nqZ8zTTRUOqJhuYyaNH",
+									"displayText": "Static site generator",
+									"url": "/learning/performance/static-site-generator/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5Zm1SJxNbA3ddOOxIJW8yl",
+									"displayText": "How DCL & FCP Affect SEO",
+									"url": "/learning/performance/how-dcl-and-fcp-affect-seo/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "787jBq0LeOM6UkZuvDQNQW",
+									"displayText": "Making a Site Mobile Friendly",
+									"url": "/learning/performance/how-to-make-a-site-mobile-friendly/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5eTNDaWptWyi8ELSirebqE",
+									"displayText": "Speed Up a Website",
+									"url": "/learning/performance/speed-up-a-website/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "31bAifmor3KmJTmOyGUYGu",
+									"displayText": "Test the Speed of a Site",
+									"url": "/learning/performance/test-the-speed-of-a-website/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4hvxrtMRLXQXsqW3YKAUwN",
+									"displayText": "What is HTTP/3?",
+									"url": "learning/performance/what-is-http3"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4okTLSy9bqbLvqOAz4dqIf",
+									"displayText": "Preventing Downtime",
+									"url": "/learning/performance/preventing-downtime/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2x8bWWSONCzLyUVomacqHL",
+									"displayText": "Lazy Loading",
+									"url": "/learning/performance/what-is-lazy-loading/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "5exwZsks9Ss1d5Q52LVpbl",
+							"name": "Performance Header: More on Performance",
+							"displayText": "More on Performance",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7LQi33SEfVIys6UyNq8f9K",
+									"displayText": "What is Latency?",
+									"url": "/learning/performance/glossary/what-is-latency/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4CDfNtFZec20k10IsDnMKO",
+									"displayText": "Speed Up the Web",
+									"url": "/learning/performance/more/speed-up-the-web/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3n7LgS1F3I881eXiTOJVti",
+									"displayText": "What is an Image Optimizer?",
+									"url": "/learning/performance/glossary/what-is-an-image-optimizer/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3JVN13JI6LoSlZuhr7LAxF",
+									"displayText": "Routing vs. Smart Routing",
+									"url": "/learning/performance/routing-vs-smart-routing/"
+								}
+							]
+						}
+					]
+				},
+				"learningCenterArticleFooter": {
+					"contentTypeId": "learningCenterArticleFooter",
+					"contentfulId": "3BGH880XprClbWXeQhnw1L",
+					"learningCenterName": "performance",
+					"column1Title": "About Performance",
+					"column1": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "ES3KtU5NVbIkUUTPKBGds",
+						"name": "Performance Footer - About",
+						"displayText": "About Performance",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "e3oFRMHsIzHQZYTLmPDOr",
+								"displayText": "Why Site Speed Matters",
+								"url": "/learning/performance/why-site-speed-matters/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "31bAifmor3KmJTmOyGUYGu",
+								"displayText": "Test the Speed of a Site",
+								"url": "/learning/performance/test-the-speed-of-a-website/"
+							}
+						]
+					},
+					"column2Title": "Performance and SEO",
+					"column2": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "3gosdnz8T1wPj5ExVH8Ng6",
+						"name": "Performance Footer: SEO",
+						"displayText": "Performance and SEO",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2u9nE8G5zJaY1Limh5GLkW",
+								"displayText": "How Site Speed Boosts SEO",
+								"url": "/learning/performance/how-website-speed-boosts-seo/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5Zm1SJxNbA3ddOOxIJW8yl",
+								"displayText": "How DCL & FCP Affect SEO",
+								"url": "/learning/performance/how-dcl-and-fcp-affect-seo/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4s6X4x3EYYlHHb9aI4X31Q",
+								"displayText": "Core Web Vitals",
+								"url": "/learning/performance/what-are-core-web-vitals/ "
+							}
+						]
+					},
+					"column3Title": "More on Performance",
+					"column3": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "7tEVxRje5aVg2jKT46gn90",
+						"name": "Performance Footer: More",
+						"displayText": "More on Performance",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3XMpuNDRWA2j2aZ0qi1DaU",
+								"displayText": "Speed and Conversion Rates",
+								"url": "/learning/performance/more/website-performance-conversion-rates/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4CDfNtFZec20k10IsDnMKO",
+								"displayText": "Speed Up the Web",
+								"url": "/learning/performance/more/speed-up-the-web/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5eTNDaWptWyi8ELSirebqE",
+								"displayText": "Speed Up a Website",
+								"url": "/learning/performance/speed-up-a-website/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3JVN13JI6LoSlZuhr7LAxF",
+								"displayText": "Routing vs. Smart Routing",
+								"url": "/learning/performance/routing-vs-smart-routing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4H29YTj5ck7Dfu72foQyXb",
+								"displayText": "What is JAMstack?",
+								"url": "/learning/performance/what-is-jamstack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2x2nqZ8zTTRUOqJhuYyaNH",
+								"displayText": "Static site generator",
+								"url": "/learning/performance/static-site-generator/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4okTLSy9bqbLvqOAz4dqIf",
+								"displayText": "Preventing Downtime",
+								"url": "/learning/performance/preventing-downtime/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2x8bWWSONCzLyUVomacqHL",
+								"displayText": "Lazy Loading",
+								"url": "/learning/performance/what-is-lazy-loading/"
+							}
+						]
+					},
+					"column4Title": "Glossary",
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "6huscp9lw1hiV4RtOogq44",
+						"name": "Performance Footer: Glossary",
+						"displayText": "Glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7LQi33SEfVIys6UyNq8f9K",
+								"displayText": "What is Latency?",
+								"url": "/learning/performance/glossary/what-is-latency/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3n7LgS1F3I881eXiTOJVti",
+								"displayText": "What is an Image Optimizer?",
+								"url": "/learning/performance/glossary/what-is-an-image-optimizer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2Xp2GgqtMv84qqtbYIIQtc",
+								"displayText": "HTTP/2 vs HTTP/1.1",
+								"url": "/learning/performance/http2-vs-http1.1/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "205Es4ofD2BShliEBNj1Z6",
+								"displayText": "What is Load Balancing?",
+								"url": "/learning/performance/what-is-load-balancing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "hhFtuqqoybh6WOlwSiqIo",
+								"displayText": "Server failover",
+								"url": "/learning/performance/what-is-server-failover/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3EsOLhDVoFDkZWt35VPRqD",
+								"displayText": "DNS-based load balancing",
+								"url": "https://www.cloudflare.com/learning/performance/what-is-dns-load-balancing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4RFn9zHjqaC2djLIVH1R21",
+								"displayText": "Load balancing algorithms",
+								"url": "/learning/performance/types-of-load-balancing-algorithms/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7G0p4vQ9468caPQGJoE6IL",
+								"displayText": "Multi-cloud and hybrid cloud load balancing",
+								"url": "/learning/performance/load-balancing-multi-cloud-hybrid-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4hvxrtMRLXQXsqW3YKAUwN",
+								"displayText": "What is HTTP/3?",
+								"url": "learning/performance/what-is-http3"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4ZbTYQT5tvo9CTMX9psYMa",
+								"displayText": "Cloud load balancing (LBaaS)",
+								"url": "/learning/performance/cloud-load-balancing-lbaas/"
+							}
+						]
+					},
+					"column5Title": "Learning Center Navigation",
+					"column5": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "10E7AAyZScH8CewOHQxoql",
+						"name": "Performance Footer - Learning Nav",
+						"displayText": "Learning Center Navigation",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2hdSVoYA5asSIG0U2ae20c",
+								"displayText": "Learning Center Home",
+								"url": "/learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "56Y6OytBNgNoNDWQL2ezlf",
+								"displayText": "DDoS Learning Center",
+								"url": "/learning/ddos/what-is-a-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6DGcnYIMM0eCGwqAKu2ECO",
+								"displayText": "CDN Learning Center",
+								"url": "/learning/cdn/what-is-a-cdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Ra0qmFJ1uewk2MYscW8KI",
+								"displayText": "DNS Learning Center",
+								"url": "/learning/dns/what-is-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1yItw6W6SsM2Y0Wuq6Y2c6",
+								"displayText": "Security Learning Center",
+								"url": "/learning/security/what-is-web-application-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z3UC9tP1Kjk85BX5zSGPY",
+								"displayText": "Serverless Learning Center",
+								"url": "/learning/serverless/what-is-serverless/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52V7iI9YriJ0En2SGmEXz5",
+								"displayText": "SSL Learning Center",
+								"url": "/learning/ssl/what-is-ssl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7D22pOfjb98KXcnAJyJFCX",
+								"displayText": "Bots Learning Center",
+								"url": "/learning/bots/what-is-a-bot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7jgqDUFFzaLuKrsaBTLdV0",
+								"displayText": "Cloud Learning Center",
+								"url": "/learning/cloud/what-is-the-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3jjEMuuLrCwhRidjG5kglM",
+								"displayText": "Network Layer Learning Center",
+								"url": "/learning/network-layer/what-is-the-network-layer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6PdBQjiFs98K6RQuG5TYNd",
+								"displayText": "Access Management Learning Center",
+								"url": "/learning/access-management/what-is-identity-and-access-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RvS0l0m86G1VISDrEvlJb",
+								"displayText": "Privacy Learning Center",
+								"url": "/learning/privacy/what-is-data-privacy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "MytksT5WU5mh863BQYEkj",
+								"displayText": "Video Streaming Learning Center",
+								"url": "/learning/video/what-is-streaming/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
+								"displayText": "Email Security Learning Center",
+								"url": "/learning/email-security/what-is-email-security/"
+							}
+						]
+					}
+				},
+				"header": "What is cloud load balancing? | LBaaS",
+				"blurbSubHeader": "Cloud load balancing, also known as LBaaS, is the process of distributing workloads in a cloud environment to minimize downtime and improve reliability.",
+				"objectivesHeader": "Cloud Load Balancing",
+				"objectivesList": [
+					"Define ‘cloud load balancing’",
+					"Explain why load balancers are necessary for cloud computing",
+					"Describe the advantages of using a cloud load balancer"
+				],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "205Es4ofD2BShliEBNj1Z6",
+						"displayText": "What is Load Balancing?",
+						"url": "/learning/performance/what-is-load-balancing/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "3EsOLhDVoFDkZWt35VPRqD",
+						"displayText": "DNS-based load balancing",
+						"url": "https://www.cloudflare.com/learning/performance/what-is-dns-load-balancing/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "4RFn9zHjqaC2djLIVH1R21",
+						"displayText": "Load balancing algorithms",
+						"url": "/learning/performance/types-of-load-balancing-algorithms/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "hhFtuqqoybh6WOlwSiqIo",
+						"displayText": "Server failover",
+						"url": "/learning/performance/what-is-server-failover/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "7G0p4vQ9468caPQGJoE6IL",
+						"displayText": "Multi-cloud and hybrid cloud load balancing",
+						"url": "/learning/performance/load-balancing-multi-cloud-hybrid-cloud/"
+					}
+				],
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is cloud load balancing?</h2>\n\n<p>Cloud load balancing, is a software-based <a href='/learning/performance/what-is-load-balancing/'>load balancing</a> service that distributes traffic between multiple cloud servers. Like hardware load balancers, cloud load balancers are designed to manage massive workloads so that no one server becomes overwhelmed by requests, which can increase <a href='/learning/performance/glossary/what-is-latency/'>latency</a> and cause downtime.</p>\n\n<p>Many <a href='/learning/cloud/what-is-the-cloud/'>cloud</a> providers allow customers to rent load balancing services on an as-needed basis, rather than configuring and maintaining dedicated on-premise appliances to route their traffic themselves. This process is often referred to as ‘load balancing-as-a-service’ (LBaaS), though LBaaS can also balance workloads among on-premise servers.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does cloud load balancing work?</h2>\n\n<p>Load balancing distributes traffic across multiple servers in order to reduce latency and improve server availability and reliability. When implemented successfully, the workload is shared among the servers to optimize performance and prevent server failure. Different <a href='/learning/performance/types-of-load-balancing-algorithms/'>load balancing techniques</a> may be used to achieve this purpose: for example, a load balancer may evaluate server load or geographical distance before deciding where to direct traffic. In the event that a server goes offline, the load balancer redirects incoming traffic to another available server in a process called <a href='/learning/performance/what-is-server-failover/'>failover</a>.</p>\n\n<p>Cloud-based load balancing, or LBaaS, operates in a similar way. However, instead of distributing traffic across a cluster of servers located in a single data center, it balances workloads across servers in a cloud environment, usually managed by a single cloud vendor. (<a href='/learning/performance/load-balancing-multi-cloud-hybrid-cloud/'>Multi-cloud and hybrid cloud load balancers</a>, by contrast, distribute traffic among multiple cloud providers.)</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Why is load balancing necessary for cloud computing?</h2>\n\n<p>For cloud-hosted applications, load balancing is an essential service. Just as individual servers running in a data center can become overwhelmed and fail — causing significant latency and potential outages for end users — so can servers running in the cloud.</p>\n\n<p>Hardware load balancing appliances not only are inefficient at managing traffic in the cloud, but are often prohibited from running in vendor-managed cloud environments as well. Software-based load balancers, meanwhile, can run in any environment and location, making them more suitable for cloud-hosted applications and infrastructure.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Regional cloud load balancing vs. global server load balancing</h2>\n\n<p>Cloud-based load balancers encompass both regional load balancers and <a href='/learning/cdn/glossary/global-server-load-balancing-gslb/'>global server load balancers (GSLB)</a>. As the name suggests, regional load balancers are designed to reduce strain on computing services within a specific region or <a href='/learning/network-layer/what-is-a-lan/'>localized network</a>. On the other hand, global load balancers can balance workloads across servers in multiple locations worldwide, vastly cutting down on latency for the end user.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the advantages of using LBaaS?</h2>\n\n<p><strong>Reduced costs:</strong> LBaaS is often less costly than hardware appliances and requires less time, effort, and internal resources to maintain.</p>\n\n<p><strong>Scalability:</strong> LBaaS allows users to quickly and easily scale load balancing services to accommodate traffic spikes, rather than manually configuring additional physical load balancing infrastructure to do so.</p>\n\n<p><strong>Global availability:</strong> With GSLB, users can connect to the server that is geographically closest to them, minimizing latency and guaranteeing high availability even when a server is knocked offline.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Does Cloudflare offer cloud load balancing?</h2>\n\n<p>Cloudflare Load Balancing is a cloud-based load balancing solution that replaces on-premise load balancing hardware. It runs on a global network that spans 200+ cities worldwide, ensuring that traffic is quickly and efficiently routed. Learn more about <a href='/load-balancing/'>Cloudflare Load Balancing</a>.</p>",
+				"availableLocales": null,
+				"localized": null,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "No Page for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": null
+				},
+				"proactivePopup": null,
+				"sidebarForm": null
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "1djXaCCTlOj3F2aweE3ELs",
+			"pathname": "/learning/performance/cloud-load-balancing-lbaas/",
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

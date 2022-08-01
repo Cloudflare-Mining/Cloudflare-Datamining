@@ -1,0 +1,724 @@
+{
+	"componentChunkName": "component---src-components-page-page-template-tsx",
+	"path": "/dns/dnssec/how-dnssec-works/",
+	"result": {
+		"data": {
+			"page": {
+				"pageName": "How DNSSEC Works ",
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "Translated for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "Translated for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "No Page for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": "Translated for Locale"
+				},
+				"relativePath": "dns/dnssec/how-dnssec-works",
+				"topNavOptions": "default",
+				"topNavButtonText": null,
+				"topNavButtonUrl": null,
+				"metaTags": {
+					"metaTitle": "How DNSSEC Works",
+					"metaDescription": "DNSSEC helps The domain name system (DNS) which the phone book of the Internet to be secure, Find out how it works here.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/dnssec-logo.svg"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"contentfulId": "1u5jsNsHNJdTmfnxHFEdos",
+				"contentTypeId": "page",
+				"promotionalBanner": null,
+				"psaBanner": null,
+				"customTopNav": null,
+				"headerLogo": null,
+				"template": null,
+				"relatedBlades": [
+					{
+						"__typename": "bladeHeroAnimation",
+						"contentfulId": "2yBvj25xEoSoxaSeQKyKYz",
+						"contentTypeId": "bladeHeroAnimation",
+						"title": "How DNSSEC Works",
+						"subtitle": null,
+						"copy": "The domain name system (DNS) is the phone book of the Internet: it tells computers where to send and retrieve information. Unfortunately, it also accepts any address given to it, no questions asked.\n\nEmail servers use DNS to route their messages, which means they’re vulnerable to security issues in the DNS infrastructure. In September 2014 [researchers at CMU](https://insights.sei.cmu.edu/cert/2014/09/-probable-cache-poisoning-of-mail-handling-domains.html) found email supposed to be sent through Yahoo!, Hotmail, and Gmail servers routing instead through rogue mail servers. Attackers were exploiting a decades-old vulnerability in the Domain Name System (DNS)—it doesn’t check for credentials before accepting an answer.\n\nThe solution is a protocol called DNSSEC; it adds a layer of trust on top of DNS by providing authentication. When a DNS resolver is looking for [blog.cloudflare.com](https://blog.cloudflare.com), the .com name servers help the resolver verify the records returned for cloudflare, and cloudflare helps verify the records returned for blog. The root DNS name servers help verify .com, and information published by the root is vetted by a thorough security procedure, including the [Root Signing Ceremony](/dns/dnssec/root-signing-ceremony/).",
+						"buttonColor": null,
+						"buttonColor2": null,
+						"buttonText1": null,
+						"buttonText1LoggedIn": null,
+						"buttonUrl1": null,
+						"buttonUrl1LoggedIn": null,
+						"button1ExtraClass": null,
+						"buttonText2": null,
+						"buttonText2LoggedIn": null,
+						"buttonUrl2": null,
+						"button2ExtraClass": null,
+						"bladeBorder": "none",
+						"htmlId": null,
+						"textColor": "black",
+						"includeVideo": false,
+						"streamVideoId": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"popupStreamId": null,
+						"popupText": null,
+						"button1OpenInNewTab": null,
+						"button2OpenInNewTab": null,
+						"streamThumbnails": null,
+						"sectionPadding": null,
+						"streamPosterAssetFile": null,
+						"streamPoster": null,
+						"imageSize": "Large",
+						"imagePosition": null,
+						"leftLinkUrl": null,
+						"leftLink": null,
+						"leftLinkLoggedIn": null,
+						"leftLinkOptions": "hide",
+						"backgroundColor": "white",
+						"textlayoutMode": null,
+						"backgroundAssetFile": null,
+						"imageLayout": null,
+						"image": {
+							"file": {
+								"publicURL": "[path]/dnssec_logo.png"
+							}
+						},
+						"imageAssetFile": {
+							"id": "500444ce-cf6c-5d58-8733-9f3c49f65ccf",
+							"altText": "dnssec logo",
+							"title": "dnssec logo",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "[path]/dnssec_logo.png"
+								}
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						}
+					},
+					{
+						"__typename": "bladeSubNav",
+						"contentTypeId": "bladeSubNav",
+						"contentfulId": "6MDeXx4b0IQJXClsuBpjL6",
+						"menuTitle": "DNSSEC Articles",
+						"stickyNav": null,
+						"htmlId": null,
+						"menuItems": [
+							{
+								"__typename": "bladeSubNavMenuItem",
+								"contentfulId": "5WFa1YcPSXrm1WuWjs2vq",
+								"linkText": "Universal DNSSEC",
+								"page": null,
+								"url": "dns/dnssec/universal-dnssec/",
+								"subMenuItems": null
+							},
+							{
+								"__typename": "bladeSubNavMenuItem",
+								"contentfulId": "2UXA9wBNObtjAbqm5NpSq2",
+								"linkText": "How DNSSEC Works",
+								"page": null,
+								"url": "dns/dnssec/how-dnssec-works/",
+								"subMenuItems": null
+							},
+							{
+								"__typename": "bladeSubNavMenuItem",
+								"contentfulId": "383AV903uhcT3Y08sDPi2x",
+								"linkText": "Root-Signing Ceremony",
+								"page": null,
+								"url": "dns/dnssec/root-signing-ceremony/",
+								"subMenuItems": null
+							},
+							{
+								"__typename": "bladeSubNavMenuItem",
+								"contentfulId": "5XvhB0L2cRg6nApXw9TiVd",
+								"linkText": "ECDSA and DNSSEC",
+								"page": null,
+								"url": "dns/dnssec/ecdsa-and-dnssec/",
+								"subMenuItems": null
+							},
+							{
+								"__typename": "bladeSubNavMenuItem",
+								"contentfulId": "3iaY9yzodOgfDc4kqV3jqy",
+								"linkText": "DNSSEC Complexities",
+								"page": null,
+								"url": "dns/dnssec/dnssec-complexities-and-considerations/",
+								"subMenuItems": null
+							},
+							{
+								"__typename": "bladeSubNavMenuItem",
+								"contentfulId": "2o6TALIThh1aCNCvqbhRNk",
+								"linkText": "DNSSEC for Registrars",
+								"page": null,
+								"url": "dns/dnssec/dnssec-for-registrars/",
+								"subMenuItems": null
+							}
+						]
+					},
+					{
+						"__typename": "bladeDoubleContent",
+						"button": null,
+						"contentTypeId": "bladeDoubleContent",
+						"contentfulId": "3uJlZFg4AbMajq4Au0kHeD",
+						"bladeName": "How DNSSEC Works - Introduction",
+						"title": null,
+						"longCopy": null,
+						"header1": "A Gentle Introduction to DNSSEC",
+						"subheader1": null,
+						"copy1": "<p>\nDNSSEC creates a secure domain name system by adding cryptographic signatures to existing DNS records. These digital signatures are stored in DNS name servers alongside common record types like A, AAAA, MX, CNAME, etc. By checking its associated signature, you can verify that a requested DNS record comes from its authoritative name server and wasn’t altered en-route, opposed to a fake record injected in a man-in-the-middle attack.\n</p>\n<p>\nTo facilitate signature validation, DNSSEC adds a few new DNS record types:\n</p>\n<ul class=\"marketing-ul\">\n<li><strong class=\"text--uppercase\">RRSIG</strong> - Contains a cryptographic signature</li>\n<li><strong class=\"text--uppercase\">DNSKEY</strong> - Contains a public signing key</li>\n<li><strong class=\"text--uppercase\">DS</strong> - Contains the hash of a DNSKEY record</li>\n<li><strong class=\"text--uppercase\">NSEC</strong> and <strong class=\"text--uppercase\">NSEC3</strong> - For explicit denial-of-existence of a DNS record</li>\n<li><strong class=\"text--uppercase\">CDNSKEY</strong> and <strong class=\"text--uppercase\">CDS</strong> - For a child zone requesting updates to DS record(s) in the parent zone.</li>\n</ul>\n<p>\nThe interaction between RRSIG, DNSKEY, and DS records, as well as how they add a layer of trust on top of DNS, is what we’ll be talking about in this article.\n</p>",
+						"image": null,
+						"imageAssetFile": null,
+						"buttonText1": null,
+						"buttonUrl1": null,
+						"button1ExtraClass": null,
+						"header2": "RRsets",
+						"subheader2": null,
+						"copy2": "<p>\nThe first step towards securing a zone with DNSSEC is to group all the records with the same type into a resource record set (RRset). For example, if you have three AAAA records in your zone on the same label (i.e. label.example.com), they would all be bundled into a single AAAA RRset.\n</p>\n<img class=\"responsive-image\" title=\"diagram rrsets\" alt=\"diagram rrsets\" src=\"/img/products/ssl/diagram-rrsets.svg\">\n<p>\nIt’s actually this full RRset that gets digitally signed, opposed to individual DNS records. Of course, this also means that you must request and validate all of the AAAA records from a zone with the same label instead of validating only one of them.\n</p>",
+						"buttonText2": null,
+						"buttonUrl2": null,
+						"button2ExtraClass": null,
+						"backgroundColor": "light-gray",
+						"bladeBorder": "none",
+						"textColor": "black",
+						"sectionPadding": null,
+						"link": null
+					},
+					{
+						"__typename": "bladeDoubleContent",
+						"button": null,
+						"contentTypeId": "bladeDoubleContent",
+						"contentfulId": "1UpRBoJzToqODAoa7h8CAy",
+						"bladeName": "How DNSSEC Works - Keys",
+						"title": null,
+						"longCopy": null,
+						"header1": "Zone-Signing Keys",
+						"subheader1": null,
+						"copy1": "<p>\n Each zone in DNSSEC has a zone-signing key pair (ZSK): the private portion of the key digitally signs each RRset in the zone, while the public portion verifies the signature. To enable DNSSEC, a zone operator creates digital signatures for each RRset using the private ZSK and stores them in their name server as RRSIG records. This is like saying, “These are my DNS records, they come from my server, and they should look like this.”\n</p>\n<img class=\"responsive-image\" title=\"diagram zone signing keys 1\" alt=\"diagram zone signing keys 1\" src=\"/img/products/ssl/diagram-zone-signing-keys-1.svg\">\n<p>\nHowever, these RRSIG records are useless unless DNS resolvers have a way of verifying the signatures. The zone operator also needs to make their public ZSK available by adding it to their name server in a DNSKEY record.\n</p>\n<p>\nWhen a DNSSEC resolver requests a particular record type (e.g., AAAA), the name server also returns the corresponding RRSIG. The resolver can then pull the DNSKEY record containing the public ZSK from the name server. Together, the RRset, RRSIG, and public ZSK can validate the response.\n</p>\n<img class=\"responsive-image\" title=\"diagram zone signing keys 2\" alt=\"diagram zone signing keys 2\" src=\"/img/products/ssl/diagram-zone-signing-keys-2.svg\">\n<p>\nIf we trust the zone-signing key in the DNSKEY record, we can trust all the records in the zone. But, what if the zone-signing key was compromised? We need a way to validate the public ZSK.\n</p>\n",
+						"image": null,
+						"imageAssetFile": null,
+						"buttonText1": null,
+						"buttonUrl1": null,
+						"button1ExtraClass": null,
+						"header2": "Key-Signing Keys",
+						"subheader2": null,
+						"copy2": "<p>\nIn addition to a zone-signing key, DNSSEC name servers also have a key-signing key (KSK). The KSK validates the DNSKEY record in exactly the same way as our ZSK secured the rest of our RRsets in the previous section: It signs the public ZSK (which is stored in a DNSKEY record), creating an RRSIG for the DNSKEY.\n</p>\n<img class=\"responsive-image\" title=\"diagram key signing keys 1\" alt=\"diagram key signing keys 1\" src=\"/img/products/ssl/diagram-key-signing-keys-1.svg\">\n<p>\nJust like the public ZSK, the name server publishes the public KSK in another DNSKEY record, which gives us the DNSKEY RRset shown above. Both the public KSK and public ZSK are signed by the private KSK. Resolvers can then use the public KSK to validate the public ZSK.\n</p>\n<p>\nValidation for resolvers now looks like this:\n</p>\n<ul class=\"marketing-ul\">\n<li>Request the desired RRset, which also returns the corresponding RRSIG record.</li>\n<li>Request the DNSKEY records containing the public ZSK and public KSK, which also returns the RRSIG for the DNSKEY RRset.</li>\n<li>Verify the RRSIG of the requested RRset with the public ZSK.</li>\n<li>Verify the RRSIG of the DNSKEY RRset with the public KSK.</li>\n</ul>\n<img class=\"responsive-image\" title=\"diagram key signing keys 2\" alt=\"diagram key signing keys 2\" src=\"/img/products/ssl/diagram-key-signing-keys-2.svg\">\n<p>\nOf course, the DNSKEY RRset and corresponding RRSIG records can be cached, so the DNS name servers aren’t constantly being bombarded with unnecessary requests.\n</p>\n<p>\nWhy do we use separate zone-signing keys and key-signing keys? As we’ll discuss in the next section, it’s difficult to swap out an old or compromised KSK. Changing the ZSK, on the other hand, is much easier. This allows us to use a smaller ZSK without compromising the security of the server, minimizing the amount of data that the server has to send with each response.\n</p>\n<p>\nWe’ve now established trust within our zone, but DNS is a hierarchical system, and zones rarely operate independently. Complicating things further, the key-signing key is signed by itself, which doesn’t provide any additional trust. We need a way to connect the trust in our zone with its parent zone.\n</p>",
+						"buttonText2": null,
+						"buttonUrl2": null,
+						"button2ExtraClass": null,
+						"backgroundColor": "light-gray",
+						"bladeBorder": "none",
+						"textColor": "black",
+						"sectionPadding": null,
+						"link": null
+					},
+					{
+						"__typename": "bladeDoubleContent",
+						"button": null,
+						"contentTypeId": "bladeDoubleContent",
+						"contentfulId": "25PU5PY51urAw6JMa9eCWb",
+						"bladeName": "How DNSSEC Works - Delegation",
+						"title": null,
+						"longCopy": null,
+						"header1": "Delegation Signer Records",
+						"subheader1": null,
+						"copy1": "<p>\nDNSSEC introduces a delegation signer (DS) record to allow the transfer of trust from a parent zone to a child zone. A zone operator hashes the DNSKEY record containing the public KSK and gives it to the parent zone to publish as a DS record.\n</p>\n<img class=\"responsive-image\" title=\"diagram delegation signer records\" alt=\"diagram delegation signer records\" src=\"/img/products/ssl/diagram-delegation-signer-records.svg\">\n<p>\nEvery time a resolver is referred to a child zone, the parent zone also provides a DS record. This DS record is how resolvers know that the child zone is DNSSEC-enabled. To check the validity of the child zone’s public KSK, the resolver hashes it and compares it to the DS record from the parent. If they match, the resolver can assume that the public KSK hasn’t been tampered with, which means it can trust all of the records in the child zone. This is how a chain of trust is established in DNSSEC.\n</p>\n<p>\nNote that any change in the KSK also requires a change in the parent zone’s DS record. Changing the DS record is a multi-step process that can end up breaking the zone if it’s performed incorrectly. First, the parent needs to add the new DS record, then they need to wait until the TTL for the original DS record to expire before removing it. This is why it’s much easier to swap out zone-signing keys than key-signing keys.\n</p>\n<h3 class=\"marketing-h3\">Explicit Denial of Existence</h3>\n<p>\nIf you ask DNS for the IP address of a domain that doesn’t exist, it returns an empty answer—there’s no way to explicitly say, “sorry, the zone you requested doesn’t exist.” This is a problem if you want to authenticate the response, since there’s no message to sign. DNSSEC fixes this by adding the NSEC and NSEC3 record types. They both allow for an authenticated denial of existence.\n</p>\n<p>\nNSEC works by returning the “next secure” record. For example, consider a name server that defines AAAA records for api, blog, and www. If you request a record for store, it would return an NSEC record containing www, meaning there’s no AAAA records between store and www when the records are sorted alphabetically. This effectively tells you that store doesn’t exist. And, since the NSEC record is signed, you can validate its corresponding RRSIG just like any RRset.\n</p>\n<p>\nUnfortunately, this solution allows anybody to walk through the zone and gather every single record without knowing which ones they’re looking for. This can be a potential security threat if the zone administrator was counting on the contents of the zone being private. You can read more about this problem in <a href=\"/dns/dnssec/dnssec-complexities-and-considerations/\">DNSSEC: Complexities and Considerations</a>, as well as Cloudflare’s unique solution in <a href=\"https://blog.cloudflare.com/dnssec-done-right/\">DNSSEC Done Right</a>.\n</p>",
+						"image": null,
+						"imageAssetFile": null,
+						"buttonText1": null,
+						"buttonUrl1": null,
+						"button1ExtraClass": null,
+						"header2": "The Chain of Trust",
+						"subheader2": null,
+						"copy2": "<p>\nOk, so we have a way to establish trust within a zone and connect it to its parent zone, but how do we trust the DS record? Well, the DS record is signed just like any other RRset, which means it has a corresponding RRSIG in the parent. The whole validation process repeats until we get to the parent’s public KSK. To verify that, we need to go to that parent’s DS record, and on and on we go up the chain of trust.\n</p>\n<img class=\"responsive-image\" title=\"diagram the chain of trust\" alt=\"diagram the chain of trust\" src=\"/img/products/ssl/diagram-the-chain-of-trust.svg\">\n<p>\nHowever, when we finally get to the root DNS zone, we have a problem: there’s no parent DS record to validate against. This is where we get to see a very human side of the global Internet.\n</p>\n<p>\nIn the <a href=\"/dns/dnssec/root-signing-ceremony/\">Root Signing Ceremony</a>, several selected individuals from around the world come together and sign the root DNSKEY RRset in a very public and highly audited way. The ceremony produces an RRSIG record that can be used to verify the root name server’s public KSK and ZSK. Instead of trusting the public KSK because of the parent’s DS record, we <em>assume</em> that it’s valid because we trust the security procedures around accessing the private KSK.\n</p>\n<p>\nThe ability to establish trust between parent and child zones is an integral part of DNSSEC. If any part of the chain is broken, we can’t trust the records we’re requesting because a man-in-the-middle could alter the records and direct us to any IP address they want.\n</p>",
+						"buttonText2": null,
+						"buttonUrl2": null,
+						"button2ExtraClass": null,
+						"backgroundColor": "light-gray",
+						"bladeBorder": "none",
+						"textColor": "black",
+						"sectionPadding": null,
+						"link": null
+					},
+					{
+						"__typename": "bladeImageText",
+						"contentfulId": "7MqSHybXPYzsM5bWTNjACW",
+						"title": "Summary",
+						"copy": "<p>\nSimilar to HTTPS, DNSSEC adds a layer of security by enabling authenticated answers on top of an otherwise insecure protocol. Whereas HTTPS encrypts traffic so nobody on the wire can snoop on your Internet activities, DNSSEC merely signs responses so that forgeries are detectable. DNSSEC provides a solution to a real problem without the need to incorporate encryption.\n</p>\n<p>\nCloudflare’s goal is to make it as easy as possible to enable DNSSEC. Right now, customers with Cloudflare paid plans can add DNSSEC to their web properties by flipping a switch to enable DNSSEC and uploading a DS record (which we’ll generate automatically) to their registrar. <a class=\"text--white\" href=\"/dns/dnssec/universal-dnssec/\">Learn more</a> about how to get DNSSEC.\n</p>\n<p>We’ve also <a class=\"text--white\" href=\"/dns/dnssec/dnssec-for-registrars/\">published an Internet Draft</a> outlining an automated way for registries and registrars to upload DS records on behalf of our customers. This will enable Cloudflare to automatically enable DNSSEC for our entire community. Stay tuned for updates.\n</p>",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": null,
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": null,
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "mint",
+						"bladeBorder": "none",
+						"imagePosition": false,
+						"imageSize": "large",
+						"imageTextAlignment": null,
+						"togglesTo": null
+					},
+					{
+						"__typename": "bladeHtml",
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "76Of7L7xZNVIkJ1Xc8JtQe",
+						"htmlContent": "<section\n  class=\"tile tile--border tile__background--white js-cloudflare-setup-video-tile\"\n>\n  <div class=\"tile__content tile__content--fixed\">\n    <h2 class=\"marketing-h2 marketing-h2--center marketing-h2--bottom-margin\">\n      Setting Up Cloudflare Is Easy\n    </h2>\n    <br /><br />\n    <div class=\"grid grid--center\">\n      <video\n        poster=\"/img/getting-started.png\"\n        muted=\"\"\n        autoplay=\"\"\n        loop=\"\"\n        class=\"responsive-image grid__item grid__item js-cloudflare-setup-video no-margin-bottom\"\n        id=\"cloudflare-stream-video\"\n      >\n        <source src=\"/video/cloudflare-setup.mp4?v=3\" type=\"video/mp4\" />\n        <source src=\"/video/cloudflare-setup.webm?v=3\" type=\"video/webm\" />\n      </video>\n      <p class=\"tc db w-100\">\n        Set up a domain in less than 5 minutes. Keep your hosting provider. No\n        code changes required.\n      </p>\n    </div>\n  </div>\n</section>\n\n<hr />",
+						"htmlId": null
+					},
+					{
+						"__typename": "bladePricingPlans",
+						"bladeBorder": "border-bottom",
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"contentTypeId": "bladePricingPlans",
+						"contentfulId": "5Cw4cx3ZpM4B6TicJ55DAp",
+						"title": "Cloudflare Pricing",
+						"description": "Everyone’s Internet application can benefit from using Cloudflare. Pick a plan that fits your needs.",
+						"htmlId": null,
+						"plansList": [
+							{
+								"contentTypeId": "plan",
+								"contentfulId": "7DyKuEy4oqYn3YGTnOqUNh",
+								"type": "Free",
+								"priceCurrencySymbol": null,
+								"price": "$0/month",
+								"priceDurationPeriod": null,
+								"billingSubtext": "Add-ons billed monthly",
+								"description": "For personal websites, blogs, and anyone who wants to explore Cloudflare.",
+								"shortDescription": null,
+								"mediumDescription": null,
+								"supportResponseTitleText": null,
+								"supportResponseTime": null,
+								"ctaButtonText": "ADD A WEBSITE",
+								"ctaButtonUrl": "https://dash.cloudflare.com/sign-up",
+								"ctaButton": null,
+								"additionalTermsText": null,
+								"learnMoreText": null,
+								"plansPageLinkText": null,
+								"plansPageLinkUrl": null,
+								"activatedKeyFeatures": null,
+								"deactivatedKeyFeatures": null,
+								"coreFeatures": null,
+								"supportResponse": null,
+								"bottomCtaLinkUrl": "https://www.cloudflare.com/plans/#overview",
+								"bottomCtaLinkText": "Learn More",
+								"bottomCtaLink": null,
+								"hideTopDivider": null,
+								"featureList1": null,
+								"featureList2": null,
+								"featureList3": null
+							},
+							{
+								"contentTypeId": "plan",
+								"contentfulId": "24mzcA2x7cPSK1RZaisKmb",
+								"type": "Pro",
+								"priceCurrencySymbol": null,
+								"price": "$20/month",
+								"priceDurationPeriod": null,
+								"billingSubtext": "Billed monthly",
+								"description": "For professional websites, blogs, and portfolios requiring basic security and performance.",
+								"shortDescription": null,
+								"mediumDescription": null,
+								"supportResponseTitleText": null,
+								"supportResponseTime": null,
+								"ctaButtonText": "GET PRO",
+								"ctaButtonUrl": "https://dash.cloudflare.com/sign-up",
+								"ctaButton": null,
+								"additionalTermsText": null,
+								"learnMoreText": "Learn More",
+								"plansPageLinkText": null,
+								"plansPageLinkUrl": null,
+								"activatedKeyFeatures": null,
+								"deactivatedKeyFeatures": null,
+								"coreFeatures": null,
+								"supportResponse": null,
+								"bottomCtaLinkUrl": "/plans/pro/",
+								"bottomCtaLinkText": "Learn More",
+								"bottomCtaLink": null,
+								"hideTopDivider": null,
+								"featureList1": null,
+								"featureList2": null,
+								"featureList3": null
+							},
+							{
+								"contentTypeId": "plan",
+								"contentfulId": "18qXBPHc1CntGoHDReJXTk",
+								"type": "Business",
+								"priceCurrencySymbol": null,
+								"price": "$200/month",
+								"priceDurationPeriod": null,
+								"billingSubtext": "Billed monthly",
+								"description": "For small eCommerce websites and businesses requiring advanced security and performance, PCI compliance, and prioritized email support.",
+								"shortDescription": null,
+								"mediumDescription": null,
+								"supportResponseTitleText": null,
+								"supportResponseTime": null,
+								"ctaButtonText": "GET BUSINESS",
+								"ctaButtonUrl": "https://dash.cloudflare.com/sign-up",
+								"ctaButton": null,
+								"additionalTermsText": null,
+								"learnMoreText": "Learn More",
+								"plansPageLinkText": null,
+								"plansPageLinkUrl": null,
+								"activatedKeyFeatures": null,
+								"deactivatedKeyFeatures": null,
+								"coreFeatures": null,
+								"supportResponse": null,
+								"bottomCtaLinkUrl": "/plans/business/",
+								"bottomCtaLinkText": "Learn More",
+								"bottomCtaLink": null,
+								"hideTopDivider": null,
+								"featureList1": null,
+								"featureList2": null,
+								"featureList3": null
+							},
+							{
+								"contentTypeId": "plan",
+								"contentfulId": "19rBu6aYA1FDtSkqOc1NpD",
+								"type": "Enterprise",
+								"priceCurrencySymbol": null,
+								"price": "Contact Us",
+								"priceDurationPeriod": null,
+								"billingSubtext": "Billed annually",
+								"description": "For companies requiring enterprise-grade security and performance, prioritized 24/7/365 phone, email, or chat support, and guaranteed uptime.",
+								"shortDescription": null,
+								"mediumDescription": null,
+								"supportResponseTitleText": null,
+								"supportResponseTime": null,
+								"ctaButtonText": "GET IN TOUCH",
+								"ctaButtonUrl": "/plans/enterprise/contact/",
+								"ctaButton": null,
+								"additionalTermsText": null,
+								"learnMoreText": "Learn More",
+								"plansPageLinkText": null,
+								"plansPageLinkUrl": null,
+								"activatedKeyFeatures": null,
+								"deactivatedKeyFeatures": null,
+								"coreFeatures": null,
+								"supportResponse": null,
+								"bottomCtaLinkUrl": "/plans/enterprise/",
+								"bottomCtaLinkText": "Learn More",
+								"bottomCtaLink": null,
+								"hideTopDivider": null,
+								"featureList1": null,
+								"featureList2": null,
+								"featureList3": null
+							}
+						]
+					},
+					{
+						"__typename": "bladeTrustedBy",
+						"contentTypeId": "bladeTrustedBy",
+						"contentfulId": "bGXZcQriItbwEaMlcrTcV",
+						"bladeBorder": "none",
+						"textColor": "black",
+						"linkText": "View case studies",
+						"linkUrl": "https://www.cloudflare.com/case-studies/",
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"title": "Trusted by millions of Internet properties",
+						"copy": null,
+						"logoList": [
+							{
+								"file": {
+									"publicURL": "[path]/logo_mars_gray_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_loreal_gray_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_doordash_gray_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_garmin_gray_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_ibm_gray_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_23andme_color_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_shopify_color_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_lending-tree_color_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_labcorp_color_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_ncr_gray_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_thomson-reuters_gray_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_zendesk_gray_32px-wrapper.svg"
+								}
+							}
+						],
+						"logoListAssetFile": [
+							{
+								"id": "9a8f1b8a-cd07-5907-979a-86b8a90c1c80",
+								"altText": "Logo mars trusted by gray",
+								"title": "Logo mars trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_mars_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "8c37a7a6-cf55-55cf-a5aa-626692cbb63d",
+								"altText": "Logo loreal trusted by gray",
+								"title": "Logo loreal trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_loreal_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "7cbc697b-807d-5a77-81f0-a4b597366f29",
+								"altText": "Logo doordash trusted by gray",
+								"title": "Logo doordash trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_doordash_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "302a3744-177c-549c-a3e3-ba0eccb9558a",
+								"altText": "Logo garmin trusted by gray",
+								"title": "Logo garmin trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_garmin_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "f1f3837d-a408-5f08-8ead-06d1108cd0e1",
+								"altText": "Logo ibm trusted by gray",
+								"title": "Logo ibm trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_ibm_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "ffd4a407-4457-5421-8b20-54433e485cc7",
+								"altText": "Logo 23andme trusted by gray",
+								"title": "Logo 23andme trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_23andme_color_32px-wrapper.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "128d1d80-3d3f-5e8a-8559-33dbf5392576",
+								"altText": "Logo shopify trusted by gray",
+								"title": "Logo shopify trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_shopify_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "5d11dee2-570b-5d45-86a2-634fc4c71ce1",
+								"altText": "Logo lending tree trusted by gray",
+								"title": "Logo lending tree trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_lending-tree_color_32px-wrapper.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "6f68ad17-e6c8-5155-877e-91855b51cee0",
+								"altText": "Logo labcorp trusted by gray",
+								"title": "Logo labcorp trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_labcorp_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "d20283f3-6fa3-50d0-91a1-715d8d303897",
+								"altText": "Logo ncr trusted by gray",
+								"title": "Logo ncr trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_ncr_gray_32px-wrapper.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "626a14c0-589d-5fff-b8aa-155b8bc7392c",
+								"altText": "Logo thomson reuters trusted by gray",
+								"title": "Logo thomson reuters trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_thomson-reuters_gray_32px-wrapper.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "7b63d2ac-0e8f-5b5b-aeab-27b7128928e8",
+								"altText": "Logo zendesk trusted by gray",
+								"title": "Logo zendesk trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_zendesk_gray_32px-wrapper.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							}
+						],
+						"logoUrlList": null
+					}
+				],
+				"noindex": false,
+				"enableZendeskChat": null,
+				"formModal": null,
+				"keepHashUrlSyncedWithScrollPosition": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"pathname": "/dns/dnssec/how-dnssec-works/",
+			"contentfulId": "1u5jsNsHNJdTmfnxHFEdos",
+			"allowedHrefLangs": [
+				"en-US",
+				"zh-CN",
+				"zh-TW",
+				"fr-FR",
+				"de-DE",
+				"it-IT",
+				"ja-JP",
+				"ko-KR",
+				"pt-BR",
+				"es-ES",
+				"zh-Hans-CN"
+			],
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

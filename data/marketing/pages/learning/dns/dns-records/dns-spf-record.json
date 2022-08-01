@@ -1,0 +1,734 @@
+{
+	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
+	"path": "/learning/dns/dns-records/dns-spf-record/",
+	"result": {
+		"data": {
+			"learningCenterArticle": {
+				"contentTypeId": "learningCenterArticle",
+				"contentfulId": "5Uq6NGWBAMBokH9AbZIQtb",
+				"urlSlug": "dns/dns-records/dns-spf-record",
+				"metaTags": {
+					"metaTitle": "What is a DNS SPF record?",
+					"metaDescription": "SPF records are a type of DNS TXT record commonly used for email authentication. Learn more about how SPF records work, their benefits, and their basic structure. ",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/dns_og.jpeg"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"metaTitle": null,
+				"metaDescription": null,
+				"learningCenterArticleSubHeader": {
+					"contentTypeId": "learningCenterArticleSubHeader",
+					"contentfulId": "7skJGddyApM6rrCZOvn9YF",
+					"learningCenterName": "dns",
+					"links": [
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "2j9vWGfXAwGGPl7LN1Ezi7",
+							"displayText": "What is DNS?",
+							"url": "/learning/dns/what-is-dns/"
+						},
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "3noj8iKecv1MxsE67u045T",
+							"displayText": "What is 1.1.1.1?",
+							"url": "/learning/dns/what-is-1.1.1.1/"
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "5H0d0oeRRCTIjGxZR65GiF",
+							"name": "DNS Records (dropdown)",
+							"displayText": "DNS Records",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "52pTZ4IwdIcqznT6vpOg8O",
+									"displayText": "Overview",
+									"url": "/learning/dns/dns-records/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6zoT4UnozC7f0YgaA4GayP",
+									"displayText": "DNS A Record",
+									"url": "/learning/dns/dns-records/dns-a-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "216n5uGl275SXOSCgPUKYE",
+									"displayText": "DNS AAAA Record",
+									"url": "/learning/dns/dns-records/dns-aaaa-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "25IZh36P1Hroccd1Hbn0J9",
+									"displayText": "DNS CNAME Record",
+									"url": "/learning/dns/dns-records/dns-cname-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3RB9F8AcZ12cYLoa88V0tw",
+									"displayText": "DNS MX Record",
+									"url": "/learning/dns/dns-records/dns-mx-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5POxZ3Tq5wtr5nvPh3EjOa",
+									"displayText": "DNS TXT Record",
+									"url": "/learning/dns/dns-records/dns-txt-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4PwRBNlUE7MUBPZhTVrFm7",
+									"displayText": "DNS NS Record",
+									"url": "/learning/dns/dns-records/dns-ns-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7JzBM5jTjsL8wyh3HOEmZx",
+									"displayText": "DNS SOA Record",
+									"url": "/learning/dns/dns-records/dns-soa-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "54EtZ8wu9XeFUmjpP4ffcM",
+									"displayText": "DNS SRV Record",
+									"url": "/learning/dns/dns-records/dns-srv-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3ZJqZzOr67RDB035iGoFfq",
+									"displayText": "DNS PTR Record",
+									"url": "/learning/dns/dns-records/dns-ptr-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4cRZgnJnlTJ0btlrWSVDQs",
+									"displayText": "DNSKEY and DS Records",
+									"url": "/learning/dns/dns-records/dnskey-ds-records/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5qZnEhej6gYQitbACd6zyl",
+									"displayText": "DNS SPF Record",
+									"url": "/learning/dns/dns-records/dns-spf-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4xfxdFdQt99i8HyQJnxrB1",
+									"displayText": "DNS DKIM Record",
+									"url": "/learning/dns/dns-records/dns-dkim-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "Q49hOQqCkiSUJkM1OpfYS",
+									"displayText": "DNS DMARC Record",
+									"url": "/learning/dns/dns-records/dns-dmarc-record/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "3ZnjBOMP0HJxvAFLXbYSzJ",
+							"name": "DNS Header: Securing DNS drop-down",
+							"displayText": "Securing DNS",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1qDNMOTTvjkYO6pegCD1uF",
+									"displayText": "DNS over TLS",
+									"url": "/learning/dns/dns-over-tls/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6eI7dSVO2bxGNiIj6iKq0n",
+									"displayText": "DNS security",
+									"url": "/learning/dns/dns-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2PaGg8hMqJM1igspXYbvv3",
+									"displayText": "DNS Cache Poisoning",
+									"url": "/learning/dns/dns-cache-poisoning/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5YlKzhtoXpJxfv54E8YwUa",
+									"displayText": "DNS Fast Flux",
+									"url": "/learning/dns/dns-fast-flux/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "2AtQTtUFJafy4cPr8qwVxS",
+							"name": "DNS Header: Domain Registration drop-down",
+							"displayText": "Domain Registration",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1ikXSOCWeoGFzBnkDIwuMY",
+									"displayText": "Domain Name",
+									"url": "/learning/dns/glossary/what-is-a-domain-name/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1OPRVsnrKwgcUG0kLGU3cS",
+									"displayText": "Top-Level Domain",
+									"url": "/learning/dns/top-level-domain"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2h2AMLDpLE26iXPuwzXW9I",
+									"displayText": "Domain name registrar",
+									"url": "/learning/dns/glossary/what-is-a-domain-name-registrar/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7nawVf9j5ZfeeEDxxQkox6",
+									"displayText": "Best Domain Name Registrar",
+									"url": "/learning/dns/glossary/choose-the-best-domain-name-registrar/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4EJToFmoxmGMpGfGw62Uwb",
+									"displayText": "Expired Domains",
+									"url": "/learning/dns/glossary/expired-domains/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3CCIJMYWZVIhnemJrYGRvL",
+									"displayText": "Cloudflare Registrar",
+									"url": "/learning/dns/what-is-cloudflare-registrar/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "1KSq89nu1bbMJ3FMyFOV0S",
+							"name": "DNS Header: Glossary ",
+							"displayText": "DNS Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "499ZJa7WyHPnVn7bN9oWez",
+									"displayText": "DNS Zone",
+									"url": "/learning/dns/glossary/dns-zone/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4Zxjal5K4Ftso190MOHh5b",
+									"displayText": "IP Address",
+									"url": "/learning/dns/glossary/what-is-my-ip-address/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5OM8E8MngEWEbPk2z3dL8K",
+									"displayText": "What's a DNS Server?",
+									"url": "/learning/dns/what-is-a-dns-server/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "zUbDVzpVYeLJyroEFft7S",
+									"displayText": "DNS Root Server",
+									"url": "/learning/dns/glossary/dns-root-server/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "70gaOJdXvkgXzRRApB6HkS",
+									"displayText": "Dynamic DNS",
+									"url": "/learning/dns/glossary/dynamic-dns/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5io6sFzA7GqUtf7iJ48iDZ",
+									"displayText": "Reverse DNS",
+									"url": "/learning/dns/glossary/reverse-dns/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5IMnlrCJD7x0FVpewqkOIR",
+									"displayText": "Primary vs. secondary DNS",
+									"url": "/learning/dns/glossary/primary-secondary-dns/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3SokyTEzCKuAzAad9haVI9",
+									"displayText": "Round-robin DNS",
+									"url": "/learning/dns/glossary/round-robin-dns/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5n1f5p2zH49IYRP3FcVzjQ",
+									"displayText": "Anycast DNS",
+									"url": "/learning/dns/what-is-anycast-dns/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1vco0E7j6jTBPLi9OYJ6eO",
+									"displayText": "Recursive DNS",
+									"url": "/learning/dns/what-is-recursive-dns/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3MOZsA9003MKQ1GDZMGFY5",
+									"displayText": "DNS Server Types",
+									"url": "/learning/dns/dns-server-types/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "7LEmGmCIHDsIsBT3vXJtG6",
+							"name": "DNS Header: Insights",
+							"displayText": "Insights",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1n7zfUXeehnxV53QhYGE36",
+									"displayText": "The evolving DNS threat landscape",
+									"url": "http://www.cloudflare.com/learning/insights-dns-landscape"
+								}
+							]
+						}
+					]
+				},
+				"learningCenterArticleFooter": {
+					"contentTypeId": "learningCenterArticleFooter",
+					"contentfulId": "7pedUTjJAQ6HVpZxZEQCUP",
+					"learningCenterName": "dns",
+					"column1Title": "About DNS",
+					"column1": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "5bri15IPDKK6k63oZBUMsj",
+						"name": "DNS Footer: About DNS",
+						"displayText": "About DNS",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2j9vWGfXAwGGPl7LN1Ezi7",
+								"displayText": "What is DNS?",
+								"url": "/learning/dns/what-is-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6eI7dSVO2bxGNiIj6iKq0n",
+								"displayText": "DNS security",
+								"url": "/learning/dns/dns-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1qDNMOTTvjkYO6pegCD1uF",
+								"displayText": "DNS over TLS",
+								"url": "/learning/dns/dns-over-tls/"
+							}
+						]
+					},
+					"column2Title": "DNS Servers",
+					"column2": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "6phQ5syd9rr3QdKWNSj1D8",
+						"name": "DNS Footer: DNS Servers",
+						"displayText": "DNS Servers",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5OM8E8MngEWEbPk2z3dL8K",
+								"displayText": "What's a DNS Server?",
+								"url": "/learning/dns/what-is-a-dns-server/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "zUbDVzpVYeLJyroEFft7S",
+								"displayText": "DNS Root Server",
+								"url": "/learning/dns/glossary/dns-root-server/"
+							}
+						]
+					},
+					"column3Title": "DNS Records",
+					"column3": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "7dBB0Vi2GBftSRtz2gOXAE",
+						"name": "DNS Footer: DNS Records",
+						"displayText": "DNS Records",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52pTZ4IwdIcqznT6vpOg8O",
+								"displayText": "Overview",
+								"url": "/learning/dns/dns-records/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6zoT4UnozC7f0YgaA4GayP",
+								"displayText": "DNS A Record",
+								"url": "/learning/dns/dns-records/dns-a-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "216n5uGl275SXOSCgPUKYE",
+								"displayText": "DNS AAAA Record",
+								"url": "/learning/dns/dns-records/dns-aaaa-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "25IZh36P1Hroccd1Hbn0J9",
+								"displayText": "DNS CNAME Record",
+								"url": "/learning/dns/dns-records/dns-cname-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3RB9F8AcZ12cYLoa88V0tw",
+								"displayText": "DNS MX Record",
+								"url": "/learning/dns/dns-records/dns-mx-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5POxZ3Tq5wtr5nvPh3EjOa",
+								"displayText": "DNS TXT Record",
+								"url": "/learning/dns/dns-records/dns-txt-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4PwRBNlUE7MUBPZhTVrFm7",
+								"displayText": "DNS NS Record",
+								"url": "/learning/dns/dns-records/dns-ns-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7JzBM5jTjsL8wyh3HOEmZx",
+								"displayText": "DNS SOA Record",
+								"url": "/learning/dns/dns-records/dns-soa-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "54EtZ8wu9XeFUmjpP4ffcM",
+								"displayText": "DNS SRV Record",
+								"url": "/learning/dns/dns-records/dns-srv-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3ZJqZzOr67RDB035iGoFfq",
+								"displayText": "DNS PTR Record",
+								"url": "/learning/dns/dns-records/dns-ptr-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4cRZgnJnlTJ0btlrWSVDQs",
+								"displayText": "DNSKEY and DS Records",
+								"url": "/learning/dns/dns-records/dnskey-ds-records/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5qZnEhej6gYQitbACd6zyl",
+								"displayText": "DNS SPF Record",
+								"url": "/learning/dns/dns-records/dns-spf-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4xfxdFdQt99i8HyQJnxrB1",
+								"displayText": "DNS DKIM Record",
+								"url": "/learning/dns/dns-records/dns-dkim-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q49hOQqCkiSUJkM1OpfYS",
+								"displayText": "DNS DMARC Record",
+								"url": "/learning/dns/dns-records/dns-dmarc-record/"
+							}
+						]
+					},
+					"column4Title": "DNS Glossary",
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "5WMBaCE7sRnxCptrlp0KcN",
+						"name": "DNS Footer: Glossary",
+						"displayText": "DNS Glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3noj8iKecv1MxsE67u045T",
+								"displayText": "What is 1.1.1.1?",
+								"url": "/learning/dns/what-is-1.1.1.1/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6v4wbr2ex8UmyM5nD2kkKL",
+								"displayText": "What is My IP Address?",
+								"url": "/learning/dns/glossary/what-is-my-ip-address/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "499ZJa7WyHPnVn7bN9oWez",
+								"displayText": "DNS Zone",
+								"url": "/learning/dns/glossary/dns-zone/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "70gaOJdXvkgXzRRApB6HkS",
+								"displayText": "Dynamic DNS",
+								"url": "/learning/dns/glossary/dynamic-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5io6sFzA7GqUtf7iJ48iDZ",
+								"displayText": "Reverse DNS",
+								"url": "/learning/dns/glossary/reverse-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5IMnlrCJD7x0FVpewqkOIR",
+								"displayText": "Primary vs. secondary DNS",
+								"url": "/learning/dns/glossary/primary-secondary-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3SokyTEzCKuAzAad9haVI9",
+								"displayText": "Round-robin DNS",
+								"url": "/learning/dns/glossary/round-robin-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5n1f5p2zH49IYRP3FcVzjQ",
+								"displayText": "Anycast DNS",
+								"url": "/learning/dns/what-is-anycast-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1vco0E7j6jTBPLi9OYJ6eO",
+								"displayText": "Recursive DNS",
+								"url": "/learning/dns/what-is-recursive-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2PaGg8hMqJM1igspXYbvv3",
+								"displayText": "DNS Cache Poisoning",
+								"url": "/learning/dns/dns-cache-poisoning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1ikXSOCWeoGFzBnkDIwuMY",
+								"displayText": "Domain Name",
+								"url": "/learning/dns/glossary/what-is-a-domain-name/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2h2AMLDpLE26iXPuwzXW9I",
+								"displayText": "Domain name registrar",
+								"url": "/learning/dns/glossary/what-is-a-domain-name-registrar/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7nawVf9j5ZfeeEDxxQkox6",
+								"displayText": "Best Domain Name Registrar",
+								"url": "/learning/dns/glossary/choose-the-best-domain-name-registrar/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4EJToFmoxmGMpGfGw62Uwb",
+								"displayText": "Expired Domains",
+								"url": "/learning/dns/glossary/expired-domains/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3CCIJMYWZVIhnemJrYGRvL",
+								"displayText": "Cloudflare Registrar",
+								"url": "/learning/dns/what-is-cloudflare-registrar/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5YlKzhtoXpJxfv54E8YwUa",
+								"displayText": "DNS Fast Flux",
+								"url": "/learning/dns/dns-fast-flux/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1OPRVsnrKwgcUG0kLGU3cS",
+								"displayText": "Top-Level Domain",
+								"url": "/learning/dns/top-level-domain"
+							}
+						]
+					},
+					"column5Title": "Learning Center Navigation",
+					"column5": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "2FBivsdi2bchWEIqvMoEJ",
+						"name": "DNS Footer: Learning Nav",
+						"displayText": "Learning Center Navigation",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2hdSVoYA5asSIG0U2ae20c",
+								"displayText": "Learning Center Home",
+								"url": "/learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "56Y6OytBNgNoNDWQL2ezlf",
+								"displayText": "DDoS Learning Center",
+								"url": "/learning/ddos/what-is-a-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6DGcnYIMM0eCGwqAKu2ECO",
+								"displayText": "CDN Learning Center",
+								"url": "/learning/cdn/what-is-a-cdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z3UC9tP1Kjk85BX5zSGPY",
+								"displayText": "Serverless Learning Center",
+								"url": "/learning/serverless/what-is-serverless/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1yItw6W6SsM2Y0Wuq6Y2c6",
+								"displayText": "Security Learning Center",
+								"url": "/learning/security/what-is-web-application-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q67XLnKqKhfmDJR4q9hJT",
+								"displayText": "Performance Learning Center",
+								"url": "/learning/performance/why-site-speed-matters/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52V7iI9YriJ0En2SGmEXz5",
+								"displayText": "SSL Learning Center",
+								"url": "/learning/ssl/what-is-ssl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7D22pOfjb98KXcnAJyJFCX",
+								"displayText": "Bots Learning Center",
+								"url": "/learning/bots/what-is-a-bot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7jgqDUFFzaLuKrsaBTLdV0",
+								"displayText": "Cloud Learning Center",
+								"url": "/learning/cloud/what-is-the-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6PdBQjiFs98K6RQuG5TYNd",
+								"displayText": "Access Management Learning Center",
+								"url": "/learning/access-management/what-is-identity-and-access-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3jjEMuuLrCwhRidjG5kglM",
+								"displayText": "Network Layer Learning Center",
+								"url": "/learning/network-layer/what-is-the-network-layer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RvS0l0m86G1VISDrEvlJb",
+								"displayText": "Privacy Learning Center",
+								"url": "/learning/privacy/what-is-data-privacy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "MytksT5WU5mh863BQYEkj",
+								"displayText": "Video Streaming Learning Center",
+								"url": "/learning/video/what-is-streaming/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
+								"displayText": "Email Security Learning Center",
+								"url": "/learning/email-security/what-is-email-security/"
+							}
+						]
+					}
+				},
+				"header": "What is a DNS SPF record?",
+				"blurbSubHeader": "SPF records are a type of DNS TXT record commonly used for email authentication. SPF records include a list of IP addresses and domains authorized to send emails from that domain. ",
+				"objectivesHeader": "DNS SPF record",
+				"objectivesList": [
+					"Define a DNS SPF record",
+					"Explain the benefits of a DNS SPF record ",
+					"Understand a DNS SPF record’s components "
+				],
+				"relatedContentLinkText": null,
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "4cRZgnJnlTJ0btlrWSVDQs",
+						"displayText": "DNSKEY and DS Records",
+						"url": "/learning/dns/dns-records/dnskey-ds-records/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "3RB9F8AcZ12cYLoa88V0tw",
+						"displayText": "DNS MX Record",
+						"url": "/learning/dns/dns-records/dns-mx-record/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "2dqRthxmj41I1BD5u3aUwY",
+						"displayText": "DNS records",
+						"url": "/learning/dns/dns-records/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "Q49hOQqCkiSUJkM1OpfYS",
+						"displayText": "DNS DMARC Record",
+						"url": "/learning/dns/dns-records/dns-dmarc-record/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "4xfxdFdQt99i8HyQJnxrB1",
+						"displayText": "DNS DKIM Record",
+						"url": "/learning/dns/dns-records/dns-dkim-record/"
+					}
+				],
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is a DNS SPF record?</h2>\n\n<p>A sender policy framework (SPF) record is a type of <a href='/learning/dns/dns-records/dns-txt-record/'>DNS TXT record</a> that lists all the servers authorized to send emails from a particular domain.</p>\n\n<p>A DNS TXT (“text”) record lets a <a href='/learning/dns/glossary/what-is-a-domain-name/'>domain</a> administrator enter arbitrary text into the <a href='/learning/dns/what-is-dns/'>Domain Name System (DNS)</a>. TXT records were initially created for the purpose of including important notices regarding the domain, but have since evolved to serve other purposes. </p>\n\n<p>SPF records were originally created because the standard protocol used for email — the Simple Mail Transfer Protocol (<a href='https://datatracker.ietf.org/doc/html/rfc5321'target='_blank'>SMTP</a>) — does not inherently authenticate the “from” address in an email. This means that without SPF or other authentication records, an attacker can easily impersonate a sender and trick the recipient into taking action or sharing information they otherwise would not. </p>\n\n<p>Think of SPF records like a guest list that is managed by a door attendant. If someone is not on the list, the door attendant will not let them in. Similarly, if an SPF record does not have a sender’s IP address or domain on its list, the receiving server (door attendant) will either not deliver those emails or mark them as spam.</p>\n\n<p>SPF records are just one of many DNS-based mechanisms that can help email servers confirm whether an email comes from a trusted source. Domain-based Message Authentication Reporting and Conformance (<a href='/learning/dns/dns-records/dns-dmarc-record/'>DMARC</a>) and DomainKeys Identified Mail (<a href='/learning/dns/dns-records/dns-dkim-record/'>DKIM</a>) are two other mechanisms used for email authentication. </p>\n\n<p>It is worth noting that, at one point, SPF records had a dedicated DNS record type. The dedicated record type has since been <a href='https://datatracker.ietf.org/doc/html/rfc7208#section-3.1'target='_blank'>deprecated</a> and only TXT records are to be used.  </p>\n\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">How does a mail server check an SPF record?</h2>\n<p>Mail servers go through a relatively simple process when checking an SPF record:</p>\n<ul class=\"learning-list\"><li>Server One sends an email. Its IP address is <i>192.0.2.0</i> and the return-path the email uses is email@returnpath.com. (A return-path address is different from the “from” address and is used specifically for collecting and processing bounced messages.)</li>\n<li>The mail server that is receiving the message (Server Two) takes the return-path domain and searches for its SPF record.</li>\n<li>If Server Two finds an SPF record for the return-path’s domain, it searches the SPF record for Server One’s IP address in its list of authorized senders. If the IP address is listed in the SPF record, the SPF check passes and the email will go through. If the IP address is not listed in the SPF record, the SPF check fails. In this case, the email will be rejected or marked as spam. </li></ul>\n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What does an SPF record look like?</h2>\n<p>SPF records must follow certain standards in order for the server to understand how to interpret its contents. Here is an example of the core components of an SPF record:</p>\n\n <pre><code>v=spf1 ip4=192.0.2.0 ip4=192.0.2.1 include:examplesender.email -all</code></pre>\n\n<p>This example lets the server know what type of record this is, states the approved IP addresses and a third-party for this domain, and tells the server what to do with non-compliant emails. Let’s break down how the individual components accomplish this: </p>\n<ul class=\"learning-list\"><li><code>v=spf1</code> tells the server that this contains an SPF record. Every SPF record must begin with this string.</li>\n<li>Then comes the “guest list” portion of the SPF record or the list of authorized IP addresses. In this example, the SPF record is telling the server that <code>ip4=192.0.2.0</code> and <code>ip4=192.0.2.1</code> are authorized to send emails on behalf of the domain. </li>\n<li><code>include:examplesender.net</code> is an example of the include tag, which tells the server what third-party organizations are authorized to send emails on behalf of the domain. This tag signals that the content of the SPF record for the included domain (examplesender.net) should be checked and the IP addresses it contains should also be considered authorized. Multiple domains can be included within an SPF record but this tag will only work for valid domains. </li>\n  <li>Finally, <code>-all</code> tells the server that addresses not listed in the SPF record are not authorized to send emails and should be rejected. </li>\n  <ul class=\"learning-list\"><li>Alternative options here include <code>~all</code>, which states that unlisted emails will be marked as insecure or spam but still accepted, and, less commonly, <code>+all</code>, which signifies that any server can send emails on behalf of your domain. </li></ul></ul>\n\n<p>While the example used in this article is fairly straightforward, SPF records can certainly be more complex. Here are just a few things to keep in mind to ensure SPF records are valid:</p>\n<ul class=\"learning-list\"><li>There cannot be more than one SPF record associated with a domain. </li>\n<li>The record must end with the <code>all</code> component or include a <code>redirect:</code> component (which indicates that the SPF record is hosted by another domain). </li>\n<li>An SPF record cannot contain uppercase characters.</li></ul>\n\n<p>Check out the <a href='https://datatracker.ietf.org/doc/html/rfc7208'target='_blank'>official SPF record documentation</a> for more information.</p> \n<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">Why are SPF records used?</h2>\n\n<p>There are many reasons domain operators use SPF records: </p>\n\n<ul class=\"learning-list\"><li><strong>Preventing attacks:</strong> If emails are not authenticated, companies and email recipients are at risk for <a href='/learning/access-management/phishing-attack/'>phishing</a> attacks, spam emails, and email spoofing. With SPF records, it is harder for attackers to imitate a domain, reducing the likelihood of these attacks. </li>\n<li><strong>Improving email deliverability:</strong> Domains without a published SPF record may have their emails bounce or be marked as spam. Over time, bounced emails or emails marked as spam can hurt a domain’s ability to reach their audience’s inboxes, compromising efforts to communicate with customers, employees, and other entities.</li>\n<li><strong>DMARC compliance:</strong> DMARC is an email validation system that helps ensure that emails are sent only by authorized users. DMARC policies dictate what servers should do with emails that fail SPF and DKIM checks. Based on the DMARC policy instructions, those emails will either be marked as spam, rejected, or delivered as normal. Domain administrators receive reports about their email activity that help them make adjustments to their policy. </li></ul>\n\n<p>The Cloudflare Email Security DNS Wizard makes it simple to set up the correct DNS TXT records and block spammers from using a domain. <a href='https://blog.cloudflare.com/tackling-email-spoofing/' target='_blank'>Read more about the Wizard here</a>.</p>\n\n<p>Learn more about DNS records for email:</p>\n\n<ul class=\"learning-list\"><li><a href='/learning/dns/dns-records/dns-dmarc-record/'>DMARC record</a></li>\n  <li><a href='/learning/dns/dns-records/dns-dkim-record/'>DNS DKIM record</a></li>\n  <li><a href='/learning/dns/dns-records/dns-mx-record/'>DNS MX record</a></li>\n  <li><a href='/learning/dns/dns-records/dns-txt-record/'>DNS TXT record</a></li></ul>\n",
+				"availableLocales": null,
+				"localized": null,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "Translated for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "Translated for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "No Page for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": null
+				},
+				"proactivePopup": null,
+				"sidebarForm": null
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "5Uq6NGWBAMBokH9AbZIQtb",
+			"pathname": "/learning/dns/dns-records/dns-spf-record/",
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

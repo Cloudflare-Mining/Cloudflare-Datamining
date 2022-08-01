@@ -1,0 +1,1294 @@
+{
+	"componentChunkName": "component---src-components-page-page-template-tsx",
+	"path": "/waf/",
+	"result": {
+		"data": {
+			"page": {
+				"pageName": "WAF - Product Page",
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "Translated for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "Translated for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "Translated for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "Translated for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "Translated for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": null
+				},
+				"relativePath": "waf",
+				"topNavOptions": "default",
+				"topNavButtonText": null,
+				"topNavButtonUrl": null,
+				"metaTags": {
+					"metaTitle": "Cloudflare WAF | Web Application Firewall",
+					"metaDescription": "The Cloudflare Web Application Firewall is a WAF that can provide automatic protection for applications from zero-day vulnerabilities, OWASP top ten attacks, and attack variations and bypasses.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"contentfulId": "7DxWgi2iysGyEUEoKa4oKm",
+				"contentTypeId": "page",
+				"promotionalBanner": {
+					"pillText": "NEW",
+					"linkText": "Read More",
+					"linkUrl": "https://blog.cloudflare.com/waf-ml",
+					"desktopText": "Introducing WAF ML: Stop bypasses and attack variations with machine learning based detections."
+				},
+				"psaBanner": null,
+				"customTopNav": null,
+				"headerLogo": null,
+				"template": null,
+				"relatedBlades": [
+					{
+						"__typename": "bladeHeroAnimation",
+						"contentfulId": "3DNyYDGkGutEYDEZXqjDbW",
+						"contentTypeId": "bladeHeroAnimation",
+						"title": "Web Application Firewall",
+						"subtitle": "Modern protections for modern applications",
+						"copy": "Enterprises rely on applications and APIs for growth--and with our world-class web application firewall, expanding attack surfaces and novel attacks never get in the way. \n\nOur powerful web application firewall is integrated with the rest of our leading cloud-delivered application security portfolio. ",
+						"buttonColor": "orange",
+						"buttonColor2": "orange-outline",
+						"buttonText1": "Sign Up",
+						"buttonText1LoggedIn": null,
+						"buttonUrl1": "https://dash.cloudflare.com/sign-up",
+						"buttonUrl1LoggedIn": null,
+						"button1ExtraClass": null,
+						"buttonText2": "Contact Sales",
+						"buttonText2LoggedIn": null,
+						"buttonUrl2": "#ent-demo-form",
+						"button2ExtraClass": null,
+						"bladeBorder": "none",
+						"htmlId": null,
+						"textColor": "black",
+						"includeVideo": false,
+						"streamVideoId": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"popupStreamId": null,
+						"popupText": null,
+						"button1OpenInNewTab": null,
+						"button2OpenInNewTab": false,
+						"streamThumbnails": null,
+						"sectionPadding": null,
+						"streamPosterAssetFile": null,
+						"streamPoster": null,
+						"imageSize": "Regular",
+						"imagePosition": false,
+						"leftLinkUrl": null,
+						"leftLink": "[Learn more about our cloud-based WAF solution (view data sheet).](https://www.cloudflare.com/static/490f2198961f8bd41a39afea330d65a8/Cloudflare_WAF_data_sheet.pdf \"WAF data sheet\")",
+						"leftLinkLoggedIn": "[Learn more about our cloud-based WAF solution (view data sheet).](https://www.cloudflare.com/static/490f2198961f8bd41a39afea330d65a8/Cloudflare_WAF_data_sheet.pdf \"WAF data sheet\")",
+						"leftLinkOptions": "hide",
+						"backgroundColor": "white",
+						"textlayoutMode": null,
+						"backgroundAssetFile": null,
+						"imageLayout": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "34b840ba-13c3-54d2-844d-29007a78eec7",
+							"altText": null,
+							"title": null,
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "[path]/waf-spot-illustration_3x-8.png"
+								}
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						}
+					},
+					{
+						"__typename": "bladeFourFeatures",
+						"contentfulId": "1ce8XNtDUTQXVIxvJueWoI",
+						"backgroundColor": "light-blue",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": null,
+						"subtitle": "We stop modern application security threats",
+						"bladeStyle": "Feature Blocks - 4 columns",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-top-bottom-padding",
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2Dwlun5WPnDsA3tdhX5h4s",
+								"title": null,
+								"titleSize": "large",
+								"description": "2021 saw more than __20K vulnerabilities__ to exploit - the greatest number of vulns on record.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "5a8f05ee-8980-50f2-ab6c-8ce0a26eec43",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/target_scope.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4LlixtcLtpfNR3MEE6ckVJ",
+								"title": null,
+								"titleSize": "small",
+								"description": "There are more than __5 billion__ stolen credentials on the dark web to fuel credential stuffing that leads to account takeover.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "99614c4d-dcbc-5ef6-9f10-dfc7ee605a89",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/cloudflare-browser-blue-600x600-950dd6f.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5khE3Ojz8rtbAbYQk1YER2",
+								"title": null,
+								"titleSize": "small",
+								"description": "Attackers have web servers in the crosshairs as they are the top IT asset targeted - in __50% of attacks__. \n",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "773c23ff-5e01-502e-b9ca-cd0fb0de4bd2",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/server-1.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6Ao9MiOMFl9Xo4ygkYiegx",
+								"title": null,
+								"titleSize": null,
+								"description": "Companies need __16 days to patch__ - leaving attackers weeks to exploit vulnerabilities.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "672bae7e-7843-5f70-80c8-25b6483c2b51",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/time.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
+						"__typename": "bladeImageText",
+						"contentfulId": "6wixjbCHXAiy5Ii3Irn1FX",
+						"title": "WAF layered defenses ",
+						"copy": "- __Cloudflare managed rules__ offer advanced zero-day vulnerability protections.\n- Core __OWASP rules__ block familiar “Top 10” attack techniques.\n- __Custom rulesets__ deliver tailored protections to block any threat.\n- __WAF Machine Learning__ complements WAF rulesets by detecting bypasses and attack variations of XSS and SQLi attacks.\n- __Exposed credential checks__ monitor and block use of stolen/exposed credentials for __account takeover__. \n- __Sensitive data detection__ alerts on responses containing sensitive data. \n- __Advanced rate limiting__ prevents abuse, DDoS, brute force attempts along with API-centric controls.\n- __Flexible response options__ allow for blocking, logging, rate limiting or challenging.",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": null,
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "267f56c9-fca0-5b4c-9ef7-95d054593017",
+							"altText": "WAF Managed Rules Engine",
+							"title": "WAF Managed Rules Engine",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "[path]/ssl-tls-hero-illustration.svg"
+								}
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "light-gray",
+						"bladeBorder": "none",
+						"imagePosition": false,
+						"imageSize": "medium",
+						"imageTextAlignment": "center",
+						"togglesTo": null
+					},
+					{
+						"__typename": "bladeThreeFeatures",
+						"backgroundColor": "light-blue",
+						"contentfulId": "5lF8amnZh3hgfUiRYhdLB0",
+						"contentTypeId": "bladeThreeFeatures",
+						"subtitle": null,
+						"bladeBorder": "none",
+						"sectionTitle": null,
+						"title1": "Stop account takeover",
+						"copy1": "Prevent successful credential stuffing attacks from taking over user accounts.",
+						"locale": "en-US",
+						"image1": null,
+						"imageAssetFile1": null,
+						"learnMoreUrl1": null,
+						"title2": "Prevent data exfiltration",
+						"copy2": "Stop data leaks to keep sensitive company data safe and private. ",
+						"learnMoreUrl2": null,
+						"image2": null,
+						"imageAssetFile2": null,
+						"title3": "Block credential stuffing",
+						"copy3": "See and stop abusive login attacks using stolen credentials.",
+						"image3": null,
+						"imageAssetFile3": null,
+						"learnMoreUrl3": null,
+						"features": null
+					},
+					{
+						"__typename": "bladeFourFeatures",
+						"contentfulId": "5coLFJnVlAJ3ybP8PpaMt6",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": "Cloudflare WAF Advantages",
+						"subtitle": null,
+						"bladeStyle": "Feature Blocks - 3 columns",
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2ud9gJ6i2qPW0xkvZPdVmA",
+								"title": null,
+								"titleSize": null,
+								"description": "Our global %{NetworkCapacity} network sees tens of millions of requests per second.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "ff8961fa-ef8b-5b0d-b999-e0c79b5bbe93",
+									"altText": "internet globe",
+									"title": "internet globe",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/internet-globe.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "s5cPxorHmmij1CBKdQE6n",
+								"title": null,
+								"titleSize": "small",
+								"description": "Complete application security from the same cloud network for an effective and uniform security posture.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "6a3960ee-a810-5100-a55a-ffcb4d676e43",
+									"altText": "network virtual backbone",
+									"title": "network virtual backbone",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/network-virtual-backbone.svg"
+										}
+									},
+									"brandfolderAsset": {
+										"size": 4038,
+										"height": 3264,
+										"width": 3252,
+										"file": {
+											"publicURL": "[path]/network-virtual-backbone.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4dWJVN2ByjOnvuB0HcPzA3",
+								"title": null,
+								"titleSize": "small",
+								"description": "Faster, easier security deployments for quicker mitigations and time-to-value.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "672bae7e-7843-5f70-80c8-25b6483c2b51",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/time.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "AU68MwX1xpb0MJAfL5Qme",
+								"title": null,
+								"titleSize": "small",
+								"description": "A single Rust-based engine drives portfolio protections for no gaps in security. ",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "2332eb6b-5b91-5080-a95c-04d6dfea6ec2",
+									"altText": "Leader crown blue",
+									"title": "Leader crown blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 1823,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/leader-crown-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7t6aRBcmDEehZvIXXr8IsE",
+								"title": null,
+								"titleSize": "small",
+								"description": "Zero-day protections are in place fast for immediate virtual patching. Rules are deployed globally in seconds.\n",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "6116a658-a791-529f-86ef-243564024b8d",
+									"altText": "Security waf blue",
+									"title": "Security waf blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 608,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/security-waf-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1OFtwBVXkVzCviUP4D4t48",
+								"title": null,
+								"titleSize": null,
+								"description": "Our network's unparalleled visibility into threats yields the sharpest security and most effective machine learning. \n",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "5a8f05ee-8980-50f2-ab6c-8ce0a26eec43",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/target_scope.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
+						"__typename": "bladeEnablement",
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "5FGCpXGjhmZvujxyN2xpQV",
+						"copy": null,
+						"buttonExtraClass": null,
+						"buttonColor": "orange",
+						"buttonColor2": "orange",
+						"title": "Learn how our WAF uses Machine Learning ",
+						"backgroundColor": "blue",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"textColor": "white",
+						"bladeBorder": "none",
+						"buttonOne": null,
+						"buttonTwo": null,
+						"sectionPadding": null
+					},
+					{
+						"__typename": "bladeQuote",
+						"contentTypeId": "bladeQuote",
+						"contentfulId": "1DECB9hRaYhQqsKASuVJ9R",
+						"quote": "“Thanks to Cloudflare protecting us from zero-day attacks, we have the time to enhance all of our internal security controls. Cloudflare has been invaluable in enabling us to take control of our security.”",
+						"quoteAuthor": "Pedro Pereira ",
+						"quoteTitle": "Head of Engineering",
+						"learnMoreText": null,
+						"sectionPadding": null,
+						"backgroundColor": "light-blue",
+						"bladeBorder": "none",
+						"learnMoreUrl": null,
+						"htmlId": null,
+						"image": {
+							"file": {
+								"publicURL": "[path]/PropertyGuru-Logo-1-1.png"
+							}
+						},
+						"imageAssetFile": {
+							"id": "8dca3674-c17f-5fdc-93e6-3afd8ea10b91",
+							"altText": null,
+							"title": null,
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "[path]/PropertyGuru-Logo-1-1.png"
+								}
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"imageLinkUrl": null,
+						"logoList": null,
+						"logoListAssetFile": null,
+						"quoteCarousel": null
+					},
+					{
+						"__typename": "bladeImageText",
+						"contentfulId": "22FNi54zVVfnTtVUqykIDQ",
+						"title": "World-class application security from Cloudflare",
+						"copy": "The Cloudflare web application firewall (WAF) is the cornerstone of our advanced application security portfolio that keeps applications and APIs secure and productive, thwarts DDoS attacks, keeps bots at bay, detects anomalies and malicious payloads, all while monitoring for browser supply chain attacks.",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": null,
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": {
+							"file": {
+								"publicURL": "[path]/security-week-hero-600x497-a2fec9c.png"
+							}
+						},
+						"imageAssetFile": null,
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": "small",
+						"sectionPadding": null,
+						"backgroundColor": "light-blue",
+						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": "medium",
+						"imageTextAlignment": null,
+						"togglesTo": null
+					},
+					{
+						"__typename": "bladeThreeFeatures",
+						"backgroundColor": "light-blue",
+						"contentfulId": "3d0klzchtScktv26yabsQn",
+						"contentTypeId": "bladeThreeFeatures",
+						"subtitle": null,
+						"bladeBorder": "none",
+						"sectionTitle": null,
+						"title1": "Bot Management",
+						"copy1": "Deliver great customer experiences by protecting against bot attacks that harm web properties.",
+						"locale": "en-US",
+						"image1": {
+							"file": {
+								"publicURL": "[path]/analytics-bots.png"
+							}
+						},
+						"imageAssetFile1": null,
+						"learnMoreUrl1": null,
+						"title2": "API Shield",
+						"copy2": "Keep APIs safe and productive with API discovery, schema validation, mTLS, DLP, anomaly detection, and more.",
+						"learnMoreUrl2": null,
+						"image2": {
+							"file": {
+								"publicURL": "[path]/cloudflare-api.png"
+							}
+						},
+						"imageAssetFile2": null,
+						"title3": "Page Shield",
+						"copy3": "Protect against 3rd party Magecart attacks carried out in visitors' browsers.",
+						"image3": {
+							"file": {
+								"publicURL": "[path]/cloudflare-browser.png"
+							}
+						},
+						"imageAssetFile3": null,
+						"learnMoreUrl3": null,
+						"features": null
+					},
+					{
+						"__typename": "bladeFourFeatures",
+						"contentfulId": "XV3sM2wwfXPh1goHsBODB",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": "Cloudflare security leadership",
+						"subtitle": null,
+						"bladeStyle": "Feature Blocks - 3 columns",
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3YUwLJyO8mlFq51IuzkRsb",
+								"title": null,
+								"titleSize": null,
+								"description": "Named a \"Customers' Choice\" for WAF in the 2021 Gartner Peer Insights report.\n",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "cc58384a-64c5-5b25-be13-05b5cbe3ea83",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/gartner_peer_insights.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4HZDdQY0gcmR1n4NlPK1K1",
+								"title": null,
+								"titleSize": null,
+								"description": "Innovation Leader in the Frost & Sullivan Frost Radar™: Global Holistic Web Protection Market Report.\n",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "aa7782c9-852d-5023-915d-09db03e70728",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/fs_image.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3NvjlsVCOTEMnCsu8YkjPj",
+								"title": null,
+								"titleSize": null,
+								"description": "'Leader' in The Forrester Wave for DDoS Mitigation Solutions.\n",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "414e0be0-8bb3-521a-9b08-ab82911c6326",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Forrester_black__1_.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
+						"__typename": "bladeTrustedBy",
+						"contentTypeId": "bladeTrustedBy",
+						"contentfulId": "bGXZcQriItbwEaMlcrTcV",
+						"bladeBorder": "none",
+						"textColor": "black",
+						"linkText": "View case studies",
+						"linkUrl": "https://www.cloudflare.com/case-studies/",
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"title": "Trusted by millions of Internet properties",
+						"copy": null,
+						"logoList": [
+							{
+								"file": {
+									"publicURL": "[path]/logo_mars_gray_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_loreal_gray_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_doordash_gray_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_garmin_gray_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_ibm_gray_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_23andme_color_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_shopify_color_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_lending-tree_color_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_labcorp_color_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_ncr_gray_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_thomson-reuters_gray_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_zendesk_gray_32px-wrapper.svg"
+								}
+							}
+						],
+						"logoListAssetFile": [
+							{
+								"id": "9a8f1b8a-cd07-5907-979a-86b8a90c1c80",
+								"altText": "Logo mars trusted by gray",
+								"title": "Logo mars trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_mars_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "8c37a7a6-cf55-55cf-a5aa-626692cbb63d",
+								"altText": "Logo loreal trusted by gray",
+								"title": "Logo loreal trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_loreal_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "7cbc697b-807d-5a77-81f0-a4b597366f29",
+								"altText": "Logo doordash trusted by gray",
+								"title": "Logo doordash trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_doordash_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "302a3744-177c-549c-a3e3-ba0eccb9558a",
+								"altText": "Logo garmin trusted by gray",
+								"title": "Logo garmin trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_garmin_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "f1f3837d-a408-5f08-8ead-06d1108cd0e1",
+								"altText": "Logo ibm trusted by gray",
+								"title": "Logo ibm trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_ibm_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "ffd4a407-4457-5421-8b20-54433e485cc7",
+								"altText": "Logo 23andme trusted by gray",
+								"title": "Logo 23andme trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_23andme_color_32px-wrapper.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "128d1d80-3d3f-5e8a-8559-33dbf5392576",
+								"altText": "Logo shopify trusted by gray",
+								"title": "Logo shopify trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_shopify_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "5d11dee2-570b-5d45-86a2-634fc4c71ce1",
+								"altText": "Logo lending tree trusted by gray",
+								"title": "Logo lending tree trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_lending-tree_color_32px-wrapper.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "6f68ad17-e6c8-5155-877e-91855b51cee0",
+								"altText": "Logo labcorp trusted by gray",
+								"title": "Logo labcorp trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_labcorp_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "d20283f3-6fa3-50d0-91a1-715d8d303897",
+								"altText": "Logo ncr trusted by gray",
+								"title": "Logo ncr trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_ncr_gray_32px-wrapper.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "626a14c0-589d-5fff-b8aa-155b8bc7392c",
+								"altText": "Logo thomson reuters trusted by gray",
+								"title": "Logo thomson reuters trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_thomson-reuters_gray_32px-wrapper.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "7b63d2ac-0e8f-5b5b-aeab-27b7128928e8",
+								"altText": "Logo zendesk trusted by gray",
+								"title": "Logo zendesk trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_zendesk_gray_32px-wrapper.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							}
+						],
+						"logoUrlList": null
+					},
+					{
+						"__typename": "bladeEnterpriseForm",
+						"contentTypeId": "bladeEnterpriseForm",
+						"contentfulId": "5UOWiVn9IPsBB1vUr47l6y",
+						"bladeName": "HUB WAF - Enterprise Demo Form",
+						"bladeBorder": "none",
+						"marketoEmbeddedForm": {
+							"contentTypeId": "marketoEmbeddedForm",
+							"contentfulId": "2XC9BniQqtuJZAp8rwKRfH",
+							"bladeName": "HUB WAF - Contact Sales Form (1341)",
+							"backgroundColor": "blue",
+							"marketoFormId": 1341,
+							"marketoFormLeadSource": "Inbound - Web Form",
+							"marketoFormLeadSourceDetail": "Web Form - WAF",
+							"marketoFormHeaderText": null,
+							"marketoFormDefaultComment": null,
+							"showCommentBox": true,
+							"marketoFormThankYouText": null,
+							"marketoFormCustomSuccessMessage": null,
+							"marketoFormPdfDownload": null,
+							"marketoFormPdfDownloadI18n": null,
+							"marketoFormAssetDownloadButtonText": null,
+							"marketoFormSuccessRedirectUrl": null,
+							"sendAdRoll": null,
+							"meta_adRollCustomSegment": null,
+							"enableSandbox": null,
+							"marketoFormSubmitButtonText": null,
+							"marketoFormSubmitButtonColor": null,
+							"enableEmailVerification": null,
+							"disableEnterpriseEmailNotification": null,
+							"enableRingout": null
+						},
+						"backgroundColor": "light-blue",
+						"leftTitle": "Contact Sales",
+						"leftSubtitle": null,
+						"rightTitle": "Get access to Enterprise-only features:",
+						"rightSubtitle": null,
+						"rightImage": null,
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5O6Alohp6PfIiPZmKvmCiE",
+								"title": "24/7/365 support via chat, email, and phone",
+								"titleSize": null,
+								"description": "Phone, chat, and email support with median response time of 15 minutes. For critical business issues, Enterprise customers have access to our 24/7/365 emergency phone support hotline.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "753BBC0GFHK2TZCcAtnfFS",
+								"title": "100% uptime guarantee with 25x reimbursement SLA",
+								"titleSize": null,
+								"description": "In the rare event of downtime, Enterprise customers receive a 25x credit against the monthly fee, in proportion to the respective disruption and affected customer ratio.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2uwBvE2CCtQPoWLQ4ulGLV",
+								"title": "Predictable flat-rate pricing for usage based products",
+								"titleSize": null,
+								"description": "Only enterprise customers can negotiate flat rate pricing on Argo, Rate limiting, Workers, Load Balancing, Live Stream and more.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "CnBkrA0G0AnD2wfpzJtPc",
+								"title": "Advanced Cache controls",
+								"titleSize": null,
+								"description": "Enterprise customers have lower TTLs and can purge cache by tag or host.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "xiSJ6a0ar5DeI4mcenFoX",
+								"title": "Bot management",
+								"titleSize": null,
+								"description": "Use the power of Cloudflare's network to intelligently manage bot traffic to your application in order to prevent credential stuffing, inventory hoarding, content scraping and other types of fraud.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7FtVQZIYRs7dsmPVoSFyO",
+								"title": "Access to raw logs",
+								"titleSize": null,
+								"description": "\nTake charge of your data and run your own analytics using raw log data from web assets on Cloudflare's network.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "29kAsrj68icxAApaHOkKVj",
+								"title": "Firewall analytics",
+								"titleSize": null,
+								"description": "Understand the impact of your WAF configuration. Firewall Analytics let you know if a rule is effective by illustrating the impact in an easy to digest format.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7mglI5tm5Lenukdg452dI",
+								"title": "Role based access",
+								"titleSize": null,
+								"description": "Provide role-based access throughout your organization. Each user is given set permissions, individual API keys, and optional two-factor authentication.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1UUExCOigJukBgzOtid1xd",
+								"title": "Network prioritization",
+								"titleSize": null,
+								"description": "Enterprise web assets are placed on Cloudflare dedicated IP ranges, providing prioritized routing and protection to ensure maximum speed and availability.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						],
+						"sectionPadding": null,
+						"moreFeatures": [
+							"Advanced Cache controls",
+							"Bot management",
+							"Access to raw logs",
+							"Firewall analytics",
+							"Role-based access",
+							"Network prioritization",
+							"Named technical resource",
+							"Image resizing",
+							"Access to China network"
+						],
+						"moreFeaturesModalTitle": "What you get with the Enterprise Plan",
+						"moreFeaturesLinkText": "Much more",
+						"moreFeaturesModalLearnMoreText": "See all of the Details",
+						"moreFeaturesModalLearnMoreUrl": "/plans/enterprise/",
+						"logos": [
+							{
+								"file": {
+									"publicURL": "[path]/trustedby-marketo-black.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/trustedby-digital-ocean-black.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/trustedby-discord-black.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/trustedby-ibm-black.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/trustedby-udacity-black.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/trustedby-zendesk-black.svg"
+								}
+							}
+						],
+						"htmlId": "ent-demo-form"
+					}
+				],
+				"noindex": false,
+				"enableZendeskChat": true,
+				"formModal": null,
+				"keepHashUrlSyncedWithScrollPosition": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"pathname": "/waf/",
+			"contentfulId": "7DxWgi2iysGyEUEoKa4oKm",
+			"allowedHrefLangs": [
+				"en-US",
+				"zh-CN",
+				"zh-TW",
+				"fr-FR",
+				"de-DE",
+				"it-IT",
+				"ja-JP",
+				"ko-KR",
+				"pt-BR",
+				"es-ES",
+				"nl-NL",
+				"th-TH",
+				"vi-VN"
+			],
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

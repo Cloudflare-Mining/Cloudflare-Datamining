@@ -1,0 +1,74 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/nicehash-protects-its-critical-broker-service-with-cloudflare-spectrum/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "NiceHash",
+				"contentfulId": "2fbHUwiNUIHJiWJnT5XcpP",
+				"nameUrlSlug": "nicehash-protects-its-critical-broker-service-with-cloudflare-spectrum",
+				"metaTags": {
+					"metaTitle": "NiceHash",
+					"metaDescription": "Cloudflare Spectrum shields NiceHash from DDoS attacks and helps keep its brokerage platform online.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2019-06-05",
+				"homepageUrl": "https://www.nicehash.com",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "Cloudflare Spectrum shields NiceHash from DDoS attacks and helps keep its brokerage platform online.",
+				"longDescription": "## __NiceHash Protects Its Critical Broker Service with Cloudflare Spectrum__\n\nThe world of crypto mining runs on hash power — the computational resource (power and hardware) it takes to run and solve different cryptocurrency hashing algorithms. NiceHash is the largest hash power broker marketplace, connecting sellers (or miners) with buyers of hash power. \n\nWhile NiceHash itself does not own or rent out any mining infrastructure, it acts as a broker to connect sellers and buyers of hash power. \n\n“We’re like the AirBnB or Uber of hash power,” Denis Tomasevic, Head of Infrastructure and Security explains. Having this unique \"sharing economy\" approach on the market, NiceHash serves as an important part of the nascent cryptocurrency industry and allows an easy off-ramp for everyone who would like to start mining and earn cryptocurrencies in the process.\n\n## The Challenge\n\nThe side-effect of the near-overnight explosion of interest in the cryptocurrency industry was that cryptocurrency platforms, such as NiceHash, became targets to DDoS attacks.\n\n“As soon as we launched our platform, we started seeing near constant DDoS attacks,” Denis says. \n\nNiceHash was already using Cloudflare to safeguard their website and web sockets, so their web assets successfully resisted DDoS attempts and had 100% uptime. The same could not be said about their mining service. Frequent volumetric DDoS attacks that followed the launch of their mining service led to NiceHash looking to extend DDoS mitigation to all their critical communication protocols.\n\n“Our mining service that connects buyers and sellers of hash power runs on a custom TCP communication protocol. We had implemented best-practice mitigations on local infrastructure that resisted occasional DoS attempts. But we were not prepared for the frequent and high-volume DDoS attack that followed our launch,” explained Denis.\n\n## The Cloudflare Solution\n\nWhen a volumetric DDoS attack brought their service down for nearly 10 hours, it was time to act. Having their critical revenue-generating application go down for a significant amount of time led NiceHash to look for a solution to safeguard all their bases, not just their web assets.\n\nCloudflare Spectrum was just the answer to NiceHash’s needs. Spectrum extends Cloudflare’s industry-leading DDoS mitigation to all services that run over TCP/UDP. When NiceHash moved their mining services running over TCP behind Spectrum, they instantly observed drastically improved uptime of their service. Better yet, the performance of their application was not impaired.\n</br>\n<center><b>\n\"Our biggest consideration for a DDoS mitigation solution for our TCP protocol was to ensure the end-to-end latency was not impaired. With Spectrum, there is very minimal added latency, if at all, and that is really beneficial to us.\"\n</b></center>\n<center><i>Denis Tomasevic</center> \n  <center>Head of Infrastructure and Security, NiceHash </i> </center>\n\nWith Cloudflare, NiceHash today protects and accelerates their web assets as well as their critical revenue-generating TCP protocol.\n",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "- NiceHash is the largest hash power broker marketplace in the world\n\n- NiceHash struggled to safeguard its critical revenue generating TCP services from coordinated volumetric DDoS attacks\n\n- Moving mining services behind Spectrum immediately improved uptime for their users ",
+				"relatedCaseStudies": [
+					{
+						"name": "Shields Up: Turtle Entertainment Secures Custom Protocols With Cloudflare",
+						"nameUrlSlug": "turtle-entertainment-secures-custom-protocols-spectrum"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Spectrum",
+						"url": "/products/cloudflare-spectrum/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Denis Tomasevic",
+				"employeeQuoteText": "Our biggest consideration for a DDoS mitigation solution for our TCP protocol was to ensure the end-to-end latency was not impaired. With Spectrum, there is very minimal added latency, if at all, and that is really beneficial to us",
+				"employeeQuoteJobTitle": "Head of Infrastructure and Security, Nicehash",
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/NiceHash-Logo.jpg"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "2fbHUwiNUIHJiWJnT5XcpP",
+			"pathname": "/case-studies/nicehash-protects-its-critical-broker-service-with-cloudflare-spectrum/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}

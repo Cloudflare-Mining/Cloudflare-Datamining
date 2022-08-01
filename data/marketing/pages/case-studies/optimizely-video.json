@@ -1,0 +1,80 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/optimizely-video/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Optimizely Harnesses Cloudflare Workers to Reinvent Web Optimization",
+				"contentfulId": "1DWSbCPMOHFRyic8RtDH26",
+				"nameUrlSlug": "optimizely-video",
+				"metaTags": {
+					"metaTitle": "Optimizely Harnesses Cloudflare Workers to Reinvent Web Optimization",
+					"metaDescription": "Optimizely leveraged Cloudflare Workers to reinvent its leading experimentation platform.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2019-12-03",
+				"homepageUrl": "https://optimizely.com",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "Optimizely leveraged Cloudflare Workers to reinvent its leading experimentation platform.",
+				"longDescription": "If you’re looking to grow your business online, there’s no substitute for running objective tests to see how your website is performing. [Optimizely](https://optimizely.com \"Optimizely\") is one of the world’s leading experimentation platforms — with thousands of customers including global brands like IBM, HP, and Microsoft — who cumulatively deliver billions of experiences every week.\n\nThese tests help Optimizely’s customers improve everything from their website layout, to copy, to identifying which products have the most growth potential.\n\nOptimizely offers a straightforward, easy way to get up and running on its platform: simply drop its Javascript snippet into your website header. This approach has helped drive Optimizely’s popularity — and has served its customers well. However, it comes with tradeoffs. \n\nBecause the Javascript is loaded in the website’s header, it has to download and execute before the page itself can render. This typically happens so quickly that users don’t notice a difference. But as Optimizely’s customers add more and more tests to their pages, this Javascript can take longer to load. In other words, there’s a tradeoff between how many tests Optimizely’s customers can run, and the potential impact on performance.\n\n__The Cloudflare Difference__\n\nWhen Optimizely heard about Cloudflare’s new [Workers platform](https://www.cloudflare.com/products/cloudflare-workers/ \"Cloudflare Workers\"), it realized there was an opportunity to develop a robust new implementation of its experimentation platform — one that would still be easy for its customers to install, but that doesn’t come with the same tradeoffs in performance.\n\nCloudflare Workers allows developers to leverage Cloudflare’s global network — spanning over %{DataCenterCount} cities in 90 countries worldwide — to deploy and execute their own code, in the programming language of their choice. This allows developers to do everything from customizing Cloudflare’s own products, to developing entirely new applications that perform complex logic at the network edge. \n\nWhen Optimizely’s customers use this new, Workers-powered implementation of its experimentation platform, they can now concurrently run ten or even one hundred times as many tests without a noticeable impact on performance. That’s because the test logic runs on the servers on Cloudflare’s edge network, rather than in the user’s browser. And because Cloudflare has servers within 100 milliseconds of 99% of the Internet-connected population in the developed world — those tests are blazing fast. \n\nWant more of the technical details? Learn more from our [joint blog post](https://blog.cloudflare.com/enhancing-optimizely-with-cloudflare-workers/ \"Cloudflare + Optimizely Blog Post\") and Optimizely’s [press release](https://www.optimizely.com/optimizely-cloudflare-introduce-performance-edge/ \"Optimizely Performance Edge Launch Announcement\") announcing Performance Edge, powered by Cloudflare Workers.\n\n__Transcript__\n\nClaire Vo, SVP of Product: Optimizely is the world’s leading experimentation platform. Our customers come to Optimizely, quite frankly, to grow their business.\n\nWhelan Boyd, Senior Product Manager: They are able to test all of their assumptions and make more decisions based on insights and data. \n\nClaire Vo: We serve some of the largest enterprises in the world, and those enterprises have quite high standards for the scalability and performance of the products that Optimizely is bringing into their organization. \n\nGreeshma Yellareddy, Senior Performance Engineer: We have a Javascript snippet that goes on customers’ websites that executes all the experiments that they have configured, all the changes that they have configured for any of the experiments. \n\nLauren Pappone, Senior Software Engineer: That Javascript takes time to download, to parse, and also to execute and so customers have become increasingly performance conscious. \n\nClaire Vo: The reason we partnered with Cloudflare is to improve the performance aspects of some of our core experimentation products.\n\nWhelan Boyd: We needed a way to push this kind of decision making and computation out to the edge. And Workers ultimately surfaced as the no-brainer tool of choice there. \n\nLauren Pappone: Once we started using Workers it was really fast to get up to speed. It was like, “Oh, I can just go into this playground and write Javascript which I totally know how to do — and then it just works. So that was pretty cool.”\n\nWhelan Boyd: Our customers will be able to run 10x, 100x the number of experiments. And from our perspective that ultimately means they’ll get more value out of it. And the business impact for our bottom line and our top line, will also start to mirror that as well. \n\nClaire Vo: Workers has allowed us to accelerate our product velocity around performance innovation which I’m very excited about. But that’s just the beginning. There’s a lot that Cloudflare is doing from a technology perspective that we’re really excited to partner on so that we can bring our innovation to market faster. \n",
+				"cloudflareStreamVideoId": "653576f0415d1198aa424dfd48d62b96",
+				"keyResults": "• Optimizely leveraged Cloudflare Workers to build an overhauled implementation of its experimentation platform.\n\n• The new Workers-based implementation allows Optimizely's customers to run many more experiments concurrently, without an impact to performance.",
+				"relatedCaseStudies": [
+					{
+						"name": "Zendesk",
+						"nameUrlSlug": "zendesk"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Workers",
+						"url": "/products/cloudflare-workers/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Whelan Boyd",
+				"employeeQuoteText": "We needed a way to push this kind of decision making and computation out to the edge. And Workers ultimately surfaced as the no-brainer tool of choice.",
+				"employeeQuoteJobTitle": "Senior Product Manager, Optimizely",
+				"employeeQuoteName2": "Lauren Pappone",
+				"employeeQuoteText2": "Once we started using Workers it was really fast to get up to speed. It was like, 'Oh, I can just go into this playground and write Javascript which I totally know how to do — and then it just works.'",
+				"employeeQuoteJobTitle2": "Senior Software Engineer, Optimizely",
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": {
+					"file": {
+						"publicURL": "[path]/claire_screenshot.png"
+					}
+				},
+				"logo": {
+					"file": {
+						"publicURL": "[path]/optimizelylogoresized.jpg"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "1DWSbCPMOHFRyic8RtDH26",
+			"pathname": "/case-studies/optimizely-video/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US",
+				"zh-CN",
+				"zh-TW"
+			]
+		}
+	}
+}

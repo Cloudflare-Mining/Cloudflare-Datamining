@@ -1,0 +1,585 @@
+{
+	"componentChunkName": "component---src-components-page-page-template-tsx",
+	"path": "/products/r2/",
+	"result": {
+		"data": {
+			"page": {
+				"pageName": "R2 - Product page",
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "Translated for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "Translated for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "No Page for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": "Translated for Locale"
+				},
+				"relativePath": "products/r2",
+				"topNavOptions": "default",
+				"topNavButtonText": null,
+				"topNavButtonUrl": null,
+				"metaTags": {
+					"metaTitle": "Cloudflare R2 | distributed object storage with zero egress fees",
+					"metaDescription": "Cloudflare R2 is an S3-compatible, zero egress-fee, globally distributed object storage.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"contentfulId": "6c2CpRkK67PXP4LRz6s2JX",
+				"contentTypeId": "page",
+				"promotionalBanner": null,
+				"psaBanner": null,
+				"customTopNav": null,
+				"headerLogo": null,
+				"template": null,
+				"relatedBlades": [
+					{
+						"__typename": "bladeHeroAnimation",
+						"contentfulId": "tbMXbdl947mR3liButqiw",
+						"contentTypeId": "bladeHeroAnimation",
+						"title": "Zero egress fee distributed object storage",
+						"subtitle": "R2 gives you the freedom to create the multi-cloud architectures you desire with an S3-compatible distributed object storage. ",
+						"copy": "- Globally distributed object storage\n- Dynamic functionality via integration with Cloudflare Workers \n- Avoid vendor lock-in with our S3-compatible API \n*Currently in beta*",
+						"buttonColor": "orange",
+						"buttonColor2": "orange",
+						"buttonText1": "Read the docs",
+						"buttonText1LoggedIn": "Get started",
+						"buttonUrl1": "https://developers.cloudflare.com/r2/get-started/",
+						"buttonUrl1LoggedIn": "https://developers.cloudflare.com/r2/get-started/",
+						"button1ExtraClass": null,
+						"buttonText2": "Sign up ",
+						"buttonText2LoggedIn": null,
+						"buttonUrl2": "https://dash.cloudflare.com/sign-up/r2",
+						"button2ExtraClass": null,
+						"bladeBorder": "none",
+						"htmlId": null,
+						"textColor": "black",
+						"includeVideo": false,
+						"streamVideoId": null,
+						"streamOptions": [
+							"controls",
+							"captions"
+						],
+						"streamCaptions": "en",
+						"popupStreamId": null,
+						"popupText": null,
+						"button1OpenInNewTab": true,
+						"button2OpenInNewTab": true,
+						"streamThumbnails": null,
+						"sectionPadding": "tile--no-bottom-padding",
+						"streamPosterAssetFile": null,
+						"streamPoster": null,
+						"imageSize": "Medium",
+						"imagePosition": false,
+						"leftLinkUrl": null,
+						"leftLink": null,
+						"leftLinkLoggedIn": null,
+						"leftLinkOptions": "hide",
+						"backgroundColor": "white",
+						"textlayoutMode": null,
+						"backgroundAssetFile": null,
+						"imageLayout": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "0522f72b-8363-5743-b2b9-2a025c93b795",
+							"altText": "Illustration of a cloud with various shapes inside it",
+							"title": "R2-Hero",
+							"activeAsset": "Brandfolder Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "[path]/R2_Open_Beta.png"
+								}
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						}
+					},
+					{
+						"__typename": "bladeImageText",
+						"contentfulId": "3Ga1PwtQNF0RlO7vpjUGHN",
+						"title": "No more egress charges",
+						"copy": "You shouldn’t have to pay to access your data. Pay no egress charges for data accessed from R2. Our affordable and  consistent pricing means no more surprise bills. ",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": null,
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "8f903c3c-8aea-5883-b152-745a73132d61",
+							"altText": null,
+							"title": "R2-zero-egress-fees",
+							"activeAsset": "Brandfolder Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "[path]/r2-zero-egress.svg"
+								}
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": "large",
+						"imageTextAlignment": null,
+						"togglesTo": null
+					},
+					{
+						"__typename": "bladeImageText",
+						"contentfulId": "5cwBbt3eGMkwppcbuuXICu",
+						"title": "Enhance and extend",
+						"copy": "Deploy edge functions with Cloudflare Workers, using the In-Worker API to perform authentication, route requests, enhance decisions, and more. The S3-compatible API allows you to access the wide range of S3 tools, libraries, and extensions.",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": null,
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "01c1f325-aa86-586f-a967-9093e1710bdc",
+							"altText": "Flexible API",
+							"title": "Flexible API",
+							"activeAsset": "Brandfolder Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "[path]/r2-flexible.svg"
+								}
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": "tile--no-top-padding",
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": false,
+						"imageSize": "small",
+						"imageTextAlignment": null,
+						"togglesTo": null
+					},
+					{
+						"__typename": "bladeImageText",
+						"contentfulId": "7JfKn72fHccrlgg8PZCCaK",
+						"title": "Build a flexible, robust, & portable multi-cloud architecture",
+						"copy": "You’re no longer constrained by vendor lock-in or exorbitant egress fees to move your data to your preferred locations. Move data freely and build the multi-cloud architecture you desire. The S3-compatible API makes your data portable.",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": null,
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "f00ca93e-47c1-53aa-8779-72969fcd3725",
+							"altText": "R2 Storage - Multi-Cloud",
+							"title": "R2 Storage - Multi-Cloud",
+							"activeAsset": "Brandfolder Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "[path]/r2-multi-cloud.svg"
+								}
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": "tile--no-top-bottom-padding",
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": "medium",
+						"imageTextAlignment": null,
+						"togglesTo": null
+					},
+					{
+						"__typename": "bladeEnablement",
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "6dAwHpcQw5aNP5C7I8Eaf9",
+						"copy": null,
+						"buttonExtraClass": null,
+						"buttonColor": null,
+						"buttonColor2": "orange",
+						"title": "Want to learn more about R2 object storage?",
+						"backgroundColor": "blue",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"textColor": "white",
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonWidth": "auto",
+							"buttonColor": "orange",
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "1aS7ZFOijDXoFFiX9ie8vk",
+							"elementName": "R2 Product Page Button",
+							"standardText": null,
+							"text": "Speak to a specialist",
+							"url": null,
+							"loggedInUrl": null,
+							"modal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "7HKPKdN8NyJuuIz6x0XBYI",
+								"modalName": "R2 Product Page Modal Form",
+								"modalId": "r2-product-page-modal-form",
+								"modalType": "split-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "7uQTdBu6g82MhQrzAgjaJu",
+									"bladeName": "R2 Product Page Marketo Form",
+									"backgroundColor": "white",
+									"marketoFormId": 2733,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "[INB] Q3'22 WEB - GBL - R2 web inquiry",
+									"marketoFormHeaderText": "Is R2 right for you?",
+									"marketoFormDefaultComment": null,
+									"showCommentBox": false,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": null,
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": null,
+									"marketoFormSubmitButtonColor": null,
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"salesforceForm": null,
+								"title": null,
+								"regularCopy": "Fill out the form below and an R2 specialist will be in touch shortly to discuss your specific needs.",
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
+							},
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": null
+					},
+					{
+						"__typename": "bladeTable",
+						"contentTypeId": "bladeTable",
+						"contentfulId": "23pPRtEM5wpqNzw6az0kBl",
+						"locale": "en-US",
+						"sectionPadding": "tile--no-bottom-padding",
+						"bladeBorder": "none",
+						"backgroundColor": "white",
+						"displayHeader": null,
+						"showFilter": null,
+						"sectionTitle": null,
+						"title": "R2 Pricing",
+						"copy": "R2 charges based on the total volume of data stored and two classes of operations on that data. You pay zero egress fees.\n",
+						"htmlId": null,
+						"columnHeaders": [
+							{
+								"cellText": "Forever Free",
+								"cellTextLinkUrl": null,
+								"cellSubtitle": null,
+								"buttonText": null,
+								"buttonUrl": null,
+								"commonElements": null,
+								"imageAssetFile": null
+							},
+							{
+								"cellText": "Monthly Rates",
+								"cellTextLinkUrl": null,
+								"cellSubtitle": null,
+								"buttonText": null,
+								"buttonUrl": null,
+								"commonElements": null,
+								"imageAssetFile": null
+							}
+						],
+						"groupsInTable": null,
+						"rowsInTable": [
+							{
+								"contentfulId": "XeiULTLR6eFEwr90XrS6e",
+								"rowHeader2": {
+									"contentfulId": "6VK8KAbU0ep1ipABTjgcUz",
+									"cellText": "Storage",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "6eqG1DrYVjAedhkmD0W6ba",
+										"cellText": "10 GB / month",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "6Up7mjsjfGU6tEYFHnaQyv",
+										"cellText": "$0.015 / GB storage",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "5vy1lPqamF3LW9TOCFOeDC",
+								"rowHeader2": {
+									"contentfulId": "6Nkii3Ej3WJRimBQUFJdFV",
+									"cellText": "Class A operations: mutate state",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "5LKm6sR7gSNtKw81srtQ1y",
+										"cellText": "1,000,000 / month",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "5FuaSVJexUdpifJL1jtyqB",
+										"cellText": "$4.50 / million",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "SkqRtjtaNpNANpmISzAJS",
+								"rowHeader2": {
+									"contentfulId": "26xTGigHzGlgkHDSmRdQab",
+									"cellText": "Class B operations: read existing state",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "4zMhYcGbpHjldEP9F3iOp2",
+										"cellText": "10,000,000 / month",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "4lFYCbwimsUSDY9dzmTQpq",
+										"cellText": "$0.36 / million ",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							}
+						],
+						"dataSource": null
+					},
+					{
+						"__typename": "bladeKeyFeatures",
+						"contentfulId": "3XIOErHhLOGGO1ffE7wsAM",
+						"contentTypeId": "bladeKeyFeatures",
+						"backgroundColor": "light-blue",
+						"title": "Key Features",
+						"keyFeature": [
+							"In-workers API",
+							"S3-compatible API",
+							"Globally distributed",
+							"Integration with Cloudflare's CDN",
+							"Integration with Workers",
+							"Zero egress fees"
+						],
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"titleColor": "blue1",
+						"variant": null,
+						"description": null,
+						"featuresTextStyle": "body1",
+						"htmlId": null
+					}
+				],
+				"noindex": false,
+				"enableZendeskChat": false,
+				"formModal": [
+					{
+						"contentTypeId": "formModal",
+						"contentfulId": "7HKPKdN8NyJuuIz6x0XBYI",
+						"modalName": "R2 Product Page Modal Form",
+						"modalId": "r2-product-page-modal-form",
+						"modalType": "split-form",
+						"marketoForm": {
+							"contentTypeId": "marketoEmbeddedForm",
+							"contentfulId": "7uQTdBu6g82MhQrzAgjaJu",
+							"bladeName": "R2 Product Page Marketo Form",
+							"backgroundColor": "white",
+							"marketoFormId": 2733,
+							"marketoFormLeadSource": "Inbound - Web Form",
+							"marketoFormLeadSourceDetail": "[INB] Q3'22 WEB - GBL - R2 web inquiry",
+							"marketoFormHeaderText": "Is R2 right for you?",
+							"marketoFormDefaultComment": null,
+							"showCommentBox": false,
+							"marketoFormThankYouText": null,
+							"marketoFormCustomSuccessMessage": null,
+							"marketoFormPdfDownload": null,
+							"marketoFormPdfDownloadI18n": null,
+							"marketoFormAssetDownloadButtonText": null,
+							"marketoFormSuccessRedirectUrl": null,
+							"sendAdRoll": null,
+							"meta_adRollCustomSegment": null,
+							"enableSandbox": null,
+							"marketoFormSubmitButtonText": null,
+							"marketoFormSubmitButtonColor": null,
+							"enableEmailVerification": null,
+							"disableEnterpriseEmailNotification": null,
+							"enableRingout": null
+						},
+						"salesforceForm": null,
+						"title": null,
+						"regularCopy": "Fill out the form below and an R2 specialist will be in touch shortly to discuss your specific needs.",
+						"splitFormDefaultTab": null,
+						"selfServeTabText": null,
+						"selfServeCopy": null,
+						"enterpriseTabText": null,
+						"enterpriseCopy": null
+					}
+				],
+				"keepHashUrlSyncedWithScrollPosition": false
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"pathname": "/products/r2/",
+			"contentfulId": "6c2CpRkK67PXP4LRz6s2JX",
+			"allowedHrefLangs": [
+				"en-US",
+				"zh-CN",
+				"zh-TW",
+				"fr-FR",
+				"de-DE",
+				"it-IT",
+				"ja-JP",
+				"ko-KR",
+				"pt-BR",
+				"es-ES",
+				"zh-Hans-CN"
+			],
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

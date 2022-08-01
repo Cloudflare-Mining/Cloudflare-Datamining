@@ -1,0 +1,101 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/kuobrothers/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "KuoBrothers",
+				"contentfulId": "4QU8luERS6XMLzt9tF1sN8",
+				"nameUrlSlug": "kuobrothers",
+				"metaTags": {
+					"metaTitle": "KuoBrothers | Case Study",
+					"metaDescription": "Cloudflare’s performance and security platform provides a faster and safer shopping experience for KuoBrothers’ six million users",
+					"twitterCustomImage": {
+						"file": {
+							"publicURL": "[path]/kuobrothers_meta.png"
+						}
+					},
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/kuobrothers_meta.png"
+						}
+					},
+					"facebookCustomImage": {
+						"file": {
+							"publicURL": "[path]/kuobrothers_meta.png"
+						}
+					}
+				},
+				"orderDate": "2022-02-23",
+				"homepageUrl": "https://www.kuobrothers.com/",
+				"hideFromCaseStudiesPage": false,
+				"shortDescription": "Cloudflare’s performance and security platform provides a faster and safer shopping experience for KuoBrothers’ six million users",
+				"longDescription": "## __Cloudflare helps KuoBrothers create an ecommerce platform that is secure and ensures a pleasant shopping experience__\n\nOnly four years after its founding, ecommerce retailer KuoBrothers was listed on the Taiwan OTC exchange in 2016, setting a record for the fastest listing in Taiwan’s ecommerce history. KuoBrothers, which includes brands like Buy123 and PCone, sets themselves apart by using AI technology and business innovation to understand and manage the needs of the consumer market.\n\n### __Challenge: Providing the safest shopping experience for the public while reducing development work__\n\nBuy123 was established in 2013 and is KuoBrothers’ largest B2C ecommerce platform. In order to provide shoppers with the most competitive prices, Buy123 painstakingly negotiates the price of each product on the shelf, and strives to create the most cost-effective shopping platform for every consumer.\n\nIn 2021, Buy123 began to focus on discounts to differentiate itself from its competitors. Through the platform’s continuous price-checking mechanism and bargaining power, consumers are able to enjoy preferential discount prices in Buy123 day after day, which creates a win-win ecommerce ecosystem for merchants, consumers, and the platform alike. \n\nToday, more than six million users visit Buy123 every month, the number of monthly page views exceeds 32 million, and the transaction volume is in excess of 400 million TWD. As the platform continues to grow, Buy123 not only faces high traffic volumes, but also needs to defend against malicious requests, which have proven to be a big challenge for technicians. To combat these issues, developers at KuoBrothers decided they needed an easy to use and reliable cloud service platform.\n\n### __Cloudflare reduces the traffic load for Buy123 by effective caching and filtering requests__\n\nWith the increase in traffic volume, the first problem to be tackled by an online shopping platform is how to maintain the speed and page load times of the website.\n\n“With Buy123’s ever-growing user base, we encountered traffic load issues,” says Chifeng Ku, Product Reliability Technology Development Manager at KuoBrothers. “But with Cloudflare’s application performance solutions, we were able to turn what would normally be a big problem into a cakewalk.”\n\nCloudflare’s cache function is one of the features most frequently used by Buy123. Cloudflare provides flexible caching options for enterprise-level customers. In the face of traffic peaks, Buy123 can create Page Rules to cache HTML, reduce the load on the web server, and improve the website loading speed.\n\n“The caching feature has saved us a lot of traffic that would otherwise go to the web server, and the speed of the website has also improved,” added Ku.\n\n### __Cloudflare DDoS Protection and Rate Limiting blocks fake traffic to Buy123__\n\nWhile dealing with an influx in traffic, Buy123 also often encounters malicious or fake requests.\n\n“We are very concerned about the user experience, requests for add-ons or when people are placing orders — we don’t want those functions being abused,” says Ku.\n\nBefore using Cloudflare, processing fake requests was a costly and time-consuming affair for Buy123, requiring a lot of complex front-end work.\n\nCurrently, Buy123 uses Cloudflare’s security solutions — including Web Application Firewall (WAF), DDoS protection, and Rate Limiting — across multiple domains. WAF protects against attacks that damage web assets, DDoS Protection ensures that the performance of legitimate traffic is not affected, while Rate Limiting prevents brute force login attempts and other types of abuse targeting the application layer. \n\nIn 2021, Cloudflare blocked an average of 1.8 million threats per month to Buy123, and identified and blocked an additional eight million threats during major ecommerce promotions. \n\n### __Cloudflare spares Buy123 tedious development work__\n\nCloudflare provides a simplified environment for the Buy123 and KuoBrothers’ engineering teams. With assistance from the Cloudflare team, Buy123 technicians can get started quickly, saving time, expense, and effort on development work.\n\n“After partnering with Cloudflare, we saw a significant reduction in development costs and efforts, as well as manpower — all accompanied by increased flexibility,” Ku says. \n\nBuy123 is also starting to use Workers, Cloudflare’s serverless platform, to further simplify development work — and, in turn, devote more time to product selection and consumer market research in order to optimize their users’ shopping experience.\n",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "- Caching reduces the load on their web servers, resulting in faster website loading for users.\n\n- Identified and blocked 5.85 million malicious requests per month.\n\n- Cloudflare provides a simplified engineering environment for technicians, eliminating the need for complicated development work. ",
+				"relatedCaseStudies": [
+					{
+						"name": "SHOPLAZZA",
+						"nameUrlSlug": "shoplazza"
+					},
+					{
+						"name": "PChome ",
+						"nameUrlSlug": "pchome"
+					},
+					{
+						"name": "Shoptop ",
+						"nameUrlSlug": "shoptop"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "CDN",
+						"url": "/cdn/"
+					},
+					{
+						"title": "DDoS Mitigation",
+						"url": "/ddos/"
+					},
+					{
+						"title": "Rate Limiting",
+						"url": "/rate-limiting/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Chifeng Ku",
+				"employeeQuoteText": "With Buy123’s ever-growing user base, we encountered traffic load issues. But with Cloudflare’s application performance solutions, we were able to turn what would normally be a big problem into a cakewalk.",
+				"employeeQuoteJobTitle": "Product Reliability Technology Development Manager",
+				"employeeQuoteName2": "Chifeng Ku",
+				"employeeQuoteText2": "After partnering with Cloudflare, we saw a significant reduction in development costs and efforts, as well as manpower — all accompanied by increased flexibility.",
+				"employeeQuoteJobTitle2": "Product Reliability Technology Development Manager ",
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/Pls_use_me_when_background_is_White-_Kuobrothers_logo-14.jpg"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "4QU8luERS6XMLzt9tF1sN8",
+			"pathname": "/case-studies/kuobrothers/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US",
+				"zh-CN",
+				"zh-TW",
+				"zh-Hans-CN"
+			]
+		}
+	}
+}

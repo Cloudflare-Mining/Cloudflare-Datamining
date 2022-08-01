@@ -1,0 +1,90 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/panagora-room-ab/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Panagora",
+				"contentfulId": "4ts3DQqz1QwhUYHkiVUVaF",
+				"nameUrlSlug": "panagora-room-ab",
+				"metaTags": {
+					"metaTitle": "Panagora",
+					"metaDescription": "Cloudflare helps Panagora banish bad bots and optimize performance.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2021-02-09",
+				"homepageUrl": "https://www.panagora.se/en/",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "Cloudflare helps Panagora banish bad bots and optimize performance.",
+				"longDescription": "Founded in 2005, Panagora is a multi-disciplinary digital agency with a focus on online retailers of fashion and lifestyle products. Panagora was originally created to deal with uptime and performance issues with sneaker releases and managing traffic peaks like Black Friday and Cyber Monday. Their clients now include SneakersnStuff, BabyShop.com and more. The company’s mission is to help its clients become winners in their categories through high-performing, user-friendly ecommerce solutions. Panagora’s proprietary ecommerce platform, Panagora EDGE, is built to deliver high performance and 100% availability at scale.\n\n### __Challenge: Mitigate malicious traffic that was significantly degrading site performance__\n\nEcommerce sites are major targets for malicious bots, including scalper bots, which buy large numbers of limited-edition items for later resale at a higher price. These bots often deplete retailers’ stocks of particular items within seconds of product release, shutting out legitimate customers. Additionally, the sudden traffic spikes from these bots degrade site performance.\n\n“Normally, about 20% to 40% of traffic to ecommerce sites is automated,” explains Fredrik Schweinebarth, CTO & Co-Founder of Panagora. “When an in-demand product is launched, bots detect the listing within two minutes, and almost immediately, traffic to the site spikes tenfold, and about 80% of that traffic is bad bots.”\n\nPanagora attempted to mitigate the bots using homegrown solutions, with limited success. “Combating these bots is extremely difficult, as they’re constantly evolving and becoming sophisticated. Web application firewall rules can catch some bots, but not smart bots,” Schweinebarth says. “Our reputation and our ability to keep our relationships with our clients were at risk, because we couldn’t provide our customers with a reliable and scalable ecommerce platform. We needed a tool to mitigate malicious traffic.”\n\n### __Cloudflare Bot Management Shuts Down Bad Bots & Keeps Panagora’s Clients Online__\n\nAfter researching multiple solutions, Schweinebarth chose Cloudflare’s Bot Management solution. “We were already using Cloudflare’s DDoS mitigation and Argo Smart Routing performance solution, and we had a good relationship with Cloudflare,” Schweinebarth recalls. “We knew that Cloudflare was developing a bot management solution, and we held off until it was ready instead of partnering with an additional vendor.”\n\nPanagora implemented Cloudflare Bot Management and saw immediate results in reduction of malicious bot traffic. \"In addition to minimizing strain on our services, this enabled our clients to improve their customers’ experience,” Schweinebarth says. “Customers had a chance to purchase products instead of the products being snatched up by scalper bots.” \n\nAdditionally, Cloudflare’s Bot Analytics gave Panagora better insights into malicious traffic, a better understanding of cybercriminals and how to mitigate cyberattacks, improved transparency of what traffic comes through its origin, and the ability to quickly mitigate issues related to sudden traffic spikes.\n\n“The analytical insight that Cloudflare Bot Management gives us is very important,” notes Moon-Suck Song, CEO and Co-Founder. “The ability to understand how much of our traffic is bots enables us to improve our cybersecurity measures as a whole.”\n\n### __Cloudflare Security, Performance, and Serverless Solutions Provide Additional Protection & Optimization__\n\nPanagora is a Cloudflare Agency Partner and uses a wide array of Cloudflare products in addition to Bot Management. These include the Cloudflare WAF, DDoS mitigation, Argo Smart Routing, Access, and Workers.\n\nPanagora first partnered with Cloudflare to mitigate large-scale DDoS attacks. “We had tried different partners, but they all came up short. The difference between our previous providers and Cloudflare was like night and day,” Schweinebarth recalls. “By 2016, we were using Cloudflare to improve security and performance for all of our clients. As both Cloudflare and Panagora grew, we subscribed to more Cloudflare services, and Cloudflare is now an integral part of our platform.”\n\nPanagora has especially benefited from Argo Smart Routing, which improves page load times by routing dynamic content around network congestion. “Argo Smart Routing is a service we take for granted,” Schweinebarth says. “It’s so easy to use. You literally push a button, and Argo makes your site faster.”\n\nPanagora uses Access, which extends zero-trust access to corporate and SaaS applications, to secure internal tools, like JIRA and Confluence as well as some legacy APIs. “Previously, our legacy APIs only supported authentication using access control lists, which have a lot of downsides, especially since everyone is in the cloud now,” says Schweinebarth. “Cloudflare Access is an easy and secure way to maintain API access control. Our partners can be more innovative with their integrations, and we don’t need to update our legacy APIs.”\n\nPanagora uses Workers, Cloudflare’s serverless development platform, for use cases ranging from behavior tracking to data export to SEO optimization. “Currently, we’re using Workers to add specific data points to headers to send to our origin for tracking in our local login environment,” he explains. “We also use it to help one of our clients create small modules to export data, such as sitemaps. We built a Worker that can provide an updated sitemap to Google’s site crawlers.”\n\nPanagora also uses Workers to enhance performance of the Panagora EDGE’s shopping cart. “Sometimes, if a high-demand product is out of stock, our app cache may not be able to update in time, and consumers can add unavailable items to their cart,” Schweinebarth says. “Workers lets us cache product stock data on Cloudflare’s edge so that it updates much faster, and consumers will get an out-of-stock alert instead of being able to add that item to their cart. This enhances our platform by enabling our clients to avoid disappointing their customers.”\n\nAs Panagora continues to grow into other verticals including beauty, interiors, and consumer electronics, they are excited to continue their partnership with Cloudflare. \n\n“Thanks to Cloudflare, we have nearly unlimited capacity to scale, so we can take on much bigger clients than previously and solve their biggest pain points,” Song says. “Not only do we solve the pain associated with scraper bots spoiling product releases, but we also improve the user experience for our retailers’ customers.”\n",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "Cloudflare Bot Management greatly reduced malicious bot traffic\n\nCloudflare Access provides an easy and secure way for Panagora to maintain access control for its legacy APIs.\n\nCloudflare Workers enables Panagora to cache product stock data on Cloudflare’s edge, enhancing the performance of its platform and improving the end-user experience.\n",
+				"relatedCaseStudies": [
+					{
+						"name": "Kathmandu",
+						"nameUrlSlug": "kathmandu"
+					},
+					{
+						"name": "evo ",
+						"nameUrlSlug": "evo"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Access",
+						"url": "/teams/access"
+					},
+					{
+						"title": "Argo Smart Routing ",
+						"url": "/products/argo-smart-routing/"
+					},
+					{
+						"title": "Bot Management",
+						"url": "https://www.cloudflare.com/products/bot-management/"
+					},
+					{
+						"title": "Workers",
+						"url": "/products/cloudflare-workers/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Moon-Suck Song",
+				"employeeQuoteText": "Thanks to Cloudflare, we have nearly unlimited capacity to scale, so we can take on much bigger clients than previously and solve their biggest pain points. Not only do we solve the pain associated with scraper bots spoiling product releases, but we also improve the user experience for our retailers’ customers.",
+				"employeeQuoteJobTitle": "CEO & Co-Founder",
+				"employeeQuoteName2": "Fredrik Schweinebarth",
+				"employeeQuoteText2": "Cloudflare Access is an easy and secure way to maintain API access control. Our partners can be more innovative with their integrations, and we don’t need to update our legacy APIs.",
+				"employeeQuoteJobTitle2": "CTO & Co-Founder",
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/Panagora.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "4ts3DQqz1QwhUYHkiVUVaF",
+			"pathname": "/case-studies/panagora-room-ab/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}

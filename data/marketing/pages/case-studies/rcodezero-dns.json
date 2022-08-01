@@ -1,0 +1,82 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/rcodezero-dns/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "RcodeZero DNS",
+				"contentfulId": "4KPPpYYET6PgXueiIZEbN1",
+				"nameUrlSlug": "rcodezero-dns",
+				"metaTags": {
+					"metaTitle": "RcodeZero DNS",
+					"metaDescription": "Cloudflare Magic Transit protects RcodeZero DNS’s customer domains from DDoS attacks.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2021-06-02",
+				"homepageUrl": "https://www.rcodezero.at",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "Cloudflare Magic Transit protects RcodeZero DNS’s customer domains from DDoS attacks.",
+				"longDescription": "## __Cloudflare Magic Transit protects RcodeZero DNS against DDoS attacks on a global scale__\n\nBased in Salzburg and Vienna, Austria, nic.at GmbH is the delegating body (registry) for the .at top-level domain (TLD), as well as the .co.at and .or.at domains. Its sister company, ipcom GmbH, also offers domain name services like the Anycast service RcodeZero DNS. In addition to Internet Service Providers (ISPs) and global enterprises, more than 20 registries with over 20 million domains already depend on RcodeZero DNS and benefit from reliable DNS protection – now additionally secured with Cloudflare Magic Transit. Maintaining the availability of DNS services for these domains is the company’s top priority.\n\n### __Challenge: Global DDoS attacks threaten to take customer domains offline__\n\nIn September 2020, RcodeZero DNS fell victim to a DDoS attack that took both its registered domains and its internal operations offline. \n\n“The attack hit one of our link server locations, which is behind the same network as our office network,” explains Klaus Darilion, Head of Operations. “In addition to taking down customer domains, we couldn’t send email or do anything else internally.”\n\nAt the time, RcodeZero DNS used a DDoS mitigation service offered by their local ISP, to stop the attack against its office network and bring internal operations back online. However, because this service worked only in Europe, it couldn’t mitigate the attack on RcodeZero DNS’s customer domains; the company had to do that on its own. This required the participation of all operation employees and took about an hour, during which all customer domains were unavailable. While the attack was active, employees were so busy trying to mitigate it that they didn’t have time to keep customers informed timely.\n\nTo Darilion and his team, the experience demonstrated that RcodeZero DNS needed a global DDoS mitigation service, especially as it continued to expand worldwide. He decided to implement Cloudflare Magic Transit, which uses Cloudflare’s global network to protect entire IP subnets from DDoS attacks while also accelerating network traffic.\n\n### __Magic Transit provides global DDoS mitigation to ensure DNS availability and support RcodeZero DNS’s global Anycast DNS cloud.__\n\nAfter deploying Magic Transit on an on-demand basis at the end of 2020, RcodeZero DNS didn’t experience another DDoS attack until April 2021. The attack coincided with a very large network maintenance project that impacted Internet services throughout the Vienna area.\n\n“After two hours of trying to fix the problem with our network, we got hit with a DDoS attack,” Darilion recalls. “It was the perfect storm.”\n\nFortunately, mitigating this attack was just a matter of logging into Magic Transit and turning the service on. Within minutes, Magic Transit stopped the attack.\n\n“Magic Transit stopped the DDoS attack so quickly, our customers had no idea we’d experienced a problem,” says Simone Binder, Head of PR and Marketing. “The attack was stopped before it could cause issues for our customers.”\n\n“DDoS mitigation is like insurance. Most of the time, you don’t use it, but when you’re under attack, you desperately need it,” Darilion adds. “Cloudflare provides us with peace of mind, knowing that if we have an attack, Magic Transit will handle it.”\n\nAdditionally, the RcodeZero DNS sales team has discovered that simply having Cloudflare Magic Transit helps them close sales by providing their customers with peace of mind that their domains will be protected.\n\n“When I have sales talks, prospective customers always ask us about DDoS mitigation, and when I tell them that we use Magic Transit, they recognize the quality of Cloudflare’s services,” Binder says. “Magic Transit essentially upgrades our products by giving customers more confidence about using our services.”\n\n“In addition to its products, Cloudflare is very well known in the tech community for its deep technical knowledge base. Cloudflare’s blog is widely read by system administrators and other IT professionals,” Darilion adds. “Our partnership with Cloudflare has a significant positive impact on our other partnerships and our customer relationships.”\n",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "- Cloudflare Magic Transit mitigated a global DDoS attack against RcodeZero DNS within minutes.\n\n- RcodeZero DNS’s partnership with Cloudflare helps nic.at close sales by giving customers more confidence about using the company’s services.",
+				"relatedCaseStudies": [
+					{
+						"name": "Wikimedia Foundation",
+						"nameUrlSlug": "wikimedia-foundation"
+					},
+					{
+						"name": "Godwin Heights Public School District",
+						"nameUrlSlug": "godwin-heights-public-school-district"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Magic Transit",
+						"url": "/magic-transit/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Simone Binder",
+				"employeeQuoteText": "Magic Transit stopped the DDoS attack so quickly, our customers had no idea we’d experienced a problem. The attack was stopped before it could cause issues for our customers.",
+				"employeeQuoteJobTitle": "Head of PR & Marketing",
+				"employeeQuoteName2": "Klaus Darilion",
+				"employeeQuoteText2": "DDoS mitigation is like insurance. Most of the time, you don’t use it, but when you’re under attack, you desperately need it. Cloudflare provides us with peace of mind, knowing that if we have an attack, Magic Transit will handle it.",
+				"employeeQuoteJobTitle2": "Head of Operations",
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/rcodezerodns-product-logo-positive-landscape-sRGB.jpg"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "4KPPpYYET6PgXueiIZEbN1",
+			"pathname": "/case-studies/rcodezero-dns/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US",
+				"zh-CN",
+				"fr-FR",
+				"de-DE",
+				"ja-JP"
+			]
+		}
+	}
+}

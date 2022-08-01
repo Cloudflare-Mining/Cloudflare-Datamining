@@ -1,0 +1,165 @@
+{
+	"componentChunkName": "component---src-components-page-page-template-tsx",
+	"path": "/ips/",
+	"result": {
+		"data": {
+			"page": {
+				"pageName": "IP Ranges",
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "English for Locale",
+					"deDE": "English for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "English for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "English for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "No Page for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": null,
+					"zhHansCN": null
+				},
+				"relativePath": "ips",
+				"topNavOptions": "default",
+				"topNavButtonText": null,
+				"topNavButtonUrl": null,
+				"metaTags": {
+					"metaTitle": "IP Ranges",
+					"metaDescription": "This page is intended to be the definitive source of Cloudflare’s current IP ranges.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"contentfulId": "43cIp3wrHxwFcg7exP6GmC",
+				"contentTypeId": "page",
+				"promotionalBanner": null,
+				"psaBanner": null,
+				"customTopNav": null,
+				"headerLogo": null,
+				"template": null,
+				"relatedBlades": [
+					{
+						"__typename": "bladeFourFeatures",
+						"contentfulId": "51vvFftf4cCXyHSDeSQOGy",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": "Last updated: April 8, 2021\n\nSome applications or host providers might find it handy to know about Cloudflare’s IPs. This page is intended to be the definitive source of Cloudflare’s current IP ranges.  \n\nYou can also use the <a href=\"https://api.cloudflare.com/#cloudflare-ips-properties\">Cloudflare API</a> to access this list\n",
+						"title": "IP Ranges",
+						"subtitle": null,
+						"bladeStyle": "Half Cards",
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "IhhVCtsAiNv6LCphzaSpF",
+								"title": "IPv4",
+								"titleSize": null,
+								"description": "- 103.21.244.0/22\n- 103.22.200.0/22\n- 103.31.4.0/22\n- 104.16.0.0/13\n- 104.24.0.0/14  \n- 108.162.192.0/18\n- 131.0.72.0/22\n- 141.101.64.0/18\n- 162.158.0.0/15\n- 172.64.0.0/13\n- 173.245.48.0/20\n- 188.114.96.0/20\n- 190.93.240.0/20\n- 197.234.240.0/22\n- 198.41.128.0/17\n\n<p>Also available as a <a href=\"https://www.cloudflare.com/ips-v4\">IPv4 text list</a>.</p>\n",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "47nWtF3EO5kTaP7tn5XMyD",
+								"title": "IPv6",
+								"titleSize": null,
+								"description": "- 2400:cb00::/32\n- 2606:4700::/32\n- 2803:f800::/32\n- 2405:b500::/32\n- 2405:8100::/32\n- 2a06:98c0::/29\n- 2c0f:f248::/32\n<p>Also available as a <a href=\" https://www.cloudflare.com/ips-v6\">IPv6 text list</a>.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
+						"__typename": "bladeImageText",
+						"contentfulId": "xLIlpEAd1ISJHQF3kE0VE",
+						"title": "Update History",
+						"copy": "### Apr 8, 2021:   \n104.16.0.0/12 removed from ips-v4  \n104.16.0.0/13 added to ips-v4  \n104.24.0.0/14 added to ips-v4  \n### Oct 1, 2020:  \nIPS were confirmed, no changes  \n### Jun 7, 2017:  \n199.27.128.0/21 removed from ips-v4  ",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": null,
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": null,
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": false,
+						"imageSize": "large",
+						"imageTextAlignment": null,
+						"togglesTo": null
+					}
+				],
+				"noindex": false,
+				"enableZendeskChat": null,
+				"formModal": null,
+				"keepHashUrlSyncedWithScrollPosition": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"pathname": "/ips/",
+			"contentfulId": "43cIp3wrHxwFcg7exP6GmC",
+			"allowedHrefLangs": [
+				"en-US"
+			],
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

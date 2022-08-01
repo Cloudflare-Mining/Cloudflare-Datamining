@@ -1,0 +1,86 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/turtle-entertainment-secures-custom-protocols-spectrum/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Shields Up: Turtle Entertainment Secures Custom Protocols With Cloudflare",
+				"contentfulId": "21DETWbZicHeWcl4jE9wkH",
+				"nameUrlSlug": "turtle-entertainment-secures-custom-protocols-spectrum",
+				"metaTags": {
+					"metaTitle": "Shields Up: Turtle Entertainment Secures Custom Protocols With Cloudflare",
+					"metaDescription": "Turtle Entertainment Online is an industry leader in esports software security, as well as competitive esports matchmaking. Learn how it secures  and accelerates performance of its custom protocols with Cloudflare.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2019-05-17",
+				"homepageUrl": "https://about.eslgaming.com/",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "Turtle Entertainment Online accelerates performance of its custom protocols with Cloudflare.",
+				"longDescription": "Turtle Entertainment Online, Inc. (TEO) is part of [ESL](https://about.eslgaming.com/ \"ESL\"), the world’s largest esports company. ESL produces the most popular online and offline gaming competitions, including arena-filled events broadcast live to millions of fans. [ESEA](https://play.esea.net/ \"ESEA\"), a subsidiary brand of TEO, has nearly 2.5 million global users, and is an industry leader in esports software security and anti-cheat, as well as a leader in competitive Counter-Strike: Global Offensive matchmaking and league play.\n\n## The challenge\n\nThe gaming industry is often subject to some of the largest volumetric DDoS attacks — and as marquee brand, TEO attracts more than its fair share. The risks are considerable: the industry is incredibly competitive and any service downtime could result in an exodus of gamers, leading the platform to lose its edge in the market. \n\nAdditionally, with a growing globally distributed user base, TEO detected that some of its users in remote parts of the globe were encountering slow page load times and poor user experiences. \n\nFurther complicating matters is the fact that some of ESEA’s critical infrastructure operates over a proprietary network protocol, designed for the low-latency demands of gamers. When it comes to DDoS attacks, conventional security products wouldn’t be able to safeguard these custom protocols. \n\nBen Burns, Chief Information Officer of TEO explained, “It’s important for us to continue to be the best in our industry, while also staying lean in our operations.” It was clear that TEO and ESEA needed a robust security mechanism to shield its services from DDoS attacks, while also accelerating web performance. They needed a platform that could do both: Security and Performance.\n\nBen elaborates, “As we grew and expanded our services, we got to thinking: how can we increase our robustness and resilience for all of our critical infrastructure from a risk mitigation perspective?”\n\nThey turned to Cloudflare. As the industry leader in DDoS mitigation and accelerating application performance, Cloudflare was the clear choice.\n\n## DDoS Protection for custom game protocols\nCloudflare’s Spectrum was just what TEO was looking for. Spectrum leverages Cloudflare’s vast [global network](https://www.cloudflare.com/network/) to extend DDoS mitigation to all services that run over TCP/UDP - and this includes protection for custom TCP/UDP protocols - without impairing end-to-end performance.\n\n</br>\n<center><b>\n“We wanted to ensure we have a high-quality Cloudflare level of protection to protect our critical communication protocol, and Cloudflare Spectrum helped us really boost the performance and resiliency of our custom TCP protocols. With other providers, it takes more than 30 seconds to a minute before scrubbing or mitigation takes place. Using Spectrum, it’s much faster.</b></center>\n<p></p>\n<center><b>Having prior experience with Cloudflare’s products, and knowing that we’re able to really mitigate the attack without any impact to our customers, business, and infrastructure gives us another level of peace of mind.”</b></center> \n<p></p>\n\n<center><i>- Ben Burns</center>\n  <center>Chief Information Officer, TEO</i></center>\n</br>\n\n## 70% faster page load times\nTo address the problem of slow page load times for gamers in remote parts of the world, TEO employed Argo Smart Routing. “We were noticing that load times and round trip times for our web assets would take 1-2 seconds for a page to load,” Ben related.\n\nWith Argo Smart Routing enabled, the ESEA website saw its average Time to First Byte (TTFB) decrease by more than 50% globally. In some cases, page download speeds improved by 70%. \n\n“Our customers deserve the best connectivity to our services from wherever on the planet they are. The benefits Argo provided were really eye-opening and it just made sense for us to use it.”\n\n## Credential Stuffing and Content Scraping? Game Over.\nAnother challenge TEO had was credential stuffing and content scraping on its websites, including ESEA. Lots of malicious requests flooded TEO’s websites in attempts to scrape and manipulate data. \n\nWhen TEO activated Cloudflare Bot Management on the ESEA website, it was able to quickly and easily block malicious bots. “Cloudflare Bot Management really helped us out from not only an intelligence perspective — by giving us insights on what bots are touching our environment — but all the way down to being able to take action, like implementing rate limiting, challenges, and other firewall rules. \n\nOn top of that, it’s not just about blocking some curl requests or a simple headless bot. It’s also about being able to detect Selenium, headless Chrome and other things that most other traditional off-the-shelf tools would not be able to.” Ben explained.\n\n## Ease-of-use\nTEO uses Cloudflare’s suite of performance and security products to ensure 100% uptime and optimize the delivery of its brands and services to customers. Better yet, they’re able to do this with minimal configuration at their end. \n\n“As a CIO, it’s important for me to get into the trenches with our engineering teams when needed. Cloudflare’s products help our teams clear tasks off their boards because they’re so easy to use,” Ben commented.\n",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "• Argo Smart Routing reduced ESEA's average Time to First Byte by more than 50% globally, and page download speeds improved by up to 70%. \n\n• Cloudflare Spectrum instantly mitigated DDoS attacks as well as boosted performance of custom TCP protocols \n\n• Using Cloudflare Bot Management, TEO gained insights into malicious bots on their site — enabling them to take immediate action",
+				"relatedCaseStudies": [
+					{
+						"name": "Bitfly Uses Cloudflare Spectrum to Protect TCP Traffic from DDoS Attacks",
+						"nameUrlSlug": "bitfly-spectrum-protect-tcp-from-ddos-attacks"
+					},
+					{
+						"name": "Zendesk",
+						"nameUrlSlug": "zendesk"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Spectrum",
+						"url": "/products/cloudflare-spectrum/"
+					},
+					{
+						"title": "Argo Smart Routing ",
+						"url": "/products/argo-smart-routing/"
+					},
+					{
+						"title": "Bot Management",
+						"url": "https://www.cloudflare.com/products/bot-management/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Ben Burns",
+				"employeeQuoteText": "Cloudflare Spectrum helped us really boost the performance and resiliency of our custom TCP protocols.",
+				"employeeQuoteJobTitle": "Chief Information Officer at TEO",
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/ESL-Logo.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "21DETWbZicHeWcl4jE9wkH",
+			"pathname": "/case-studies/turtle-entertainment-secures-custom-protocols-spectrum/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}

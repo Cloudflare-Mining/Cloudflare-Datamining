@@ -1,0 +1,114 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/kathmandu/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Kathmandu",
+				"contentfulId": "4wxS5DHJUT9ss8FglcKyrq",
+				"nameUrlSlug": "kathmandu",
+				"metaTags": {
+					"metaTitle": "Kathmandu",
+					"metaDescription": "Kathmandu���s engineering team protects its site and internal applications partnering with Cloudflare for access management, WAF, and serverless computing.",
+					"twitterCustomImage": {
+						"file": {
+							"publicURL": "[path]/kathmandu_meta.png"
+						}
+					},
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/kathmandu_meta.png"
+						}
+					},
+					"facebookCustomImage": {
+						"file": {
+							"publicURL": "[path]/kathmandu_meta.png"
+						}
+					}
+				},
+				"orderDate": "2020-09-10",
+				"homepageUrl": "https://www.kathmanduoutdoor.com/",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "Kathmandu’s engineering team protects its site and internal applications partnering with Cloudflare for access management, WAF, and serverless computing.",
+				"longDescription": "## Cloudflare’s access management, security, and serverless solutions minimize administrative burdens for Kathmandu’s engineering team \n\nBased in Christchurch, New Zealand, Kathmandu is an international retailer of apparel and equipment for travel and outdoor activities. “Our products enable people to travel the world and be fully equipped for outdoor experiences,” explains James Deane, Web Development Manager. Kathmandu ships to 130 countries and serves an extremely diverse customer base, ranging from urban adventurers to outdoor explorers to globetrotting travelers, and everyone in between. In the Fall of 2019, Kathmandu acquired Rip Curl, a world-renowned Australian surfing products brand, bolstering Kathmandu’s value to about $1 billion.\n\n### __Challenge: Replace an unwieldy performance & security platform__\n\nPrior to partnering with Cloudflare, Kathmandu used Akamai’s performance and security services. “It was very difficult to use,” Deane recalls. “I have a small engineering team. We have a million things to do. We don’t have time for an overly complex performance platform.” Kathmandu also needed additional protection from specific cyberthreats. “Online retailers are huge targets for cybercrime, especially retailers like us, who use the Magento platform. There are organized cybercrime groups that are dedicated to attacking Magento stores.”\n\nAfter comparing several vendors, Kathmandu chose Cloudflare due to its feature set, capabilities, and usability. “Cloudflare was an obvious choice for us because it served all of our needs and more, without adding complexity.” Kathmandu signed up for Cloudflare’s core security and performance suite, which includes the Cloudflare CDN and WAF. Later, the company added Cloudflare Access and Workers.\n\n### __Cloudflare Access secures access to internal apps without adding complexity__\n\nPrior to partnering with Cloudflare, Kathmandu used HTTP authentication to secure access to some internal apps, and Azure AD for others. Unfortunately, HTTP authentication has security gaps; login credentials are not encrypted, leaving them dangerously exposed. Azure AD proved difficult to extend to internal apps and external contract users. “We wanted the ability to give partners access to our apps without all of the configuration work Azure AD required, touching servers, managing config files. Cloudflare Access integrates with Azure AD to abstract all of that complexity to the edge,” Deane recalls.\n\nDeane decided to pilot Cloudflare Access on Kathmandu’s development and test applications. “That was a small but critically important use case,” he explains. “We have partners around the world. One of our primary development partners is based in Belarus. Secure global accessibility to our dev/test environment is super important.”\n\nThe pilot took only 30 minutes to set up, from start to finish, and end users reacted very favorably. Based on this success, Deane began rolling out Access to the remainder of the company. Today, partners, remote workers, and on-site office workers use Access to authenticate. “Our employees and partners rave about how seamless Access is compared to Azure AD. Our users range from hardcore techies to laypeople. Ensuring security without making things too hard for non-technical users is challenging. Our information security manager loves how Access balances security and usability.”\n\nDeane is currently exploring how to use Access to protect Kathmandu’s backend systems. “Magento is the key to the kingdom for an ecommerce business. We process tens of millions of dollars of transactions for millions of customers. We’re working on integrating Access with single sign-on (SSO), multi-factor authentication (MFA), and Azure AD.”\n\n### __Cloudflare WAF provides visibility and enhances security & performance__\n\nThe WAF played a key role in Kathmandu’s decision to partner with Cloudflare. “Ultimately, everything comes down to the security posture of our platform,” Deane says.\n\nKathmandu was especially eager to filter out bot traffic. On an average day, Kathmandu’s flagship Australian ecommerce site attracts several thousand of these malicious requests. “One of our biggest problems is when bots attack a dynamic section of the site, such as a product page or the checkout page. Because those pages aren’t cached, every request hits the database. Under a flood of requests, the database will fail, the site will be inoperable, and customers can’t transact” Deane explains.\n\nThe Cloudflare WAF has resolved this issue. In mid-August, Kathmandu’s site was bombarded with 29 million requests from the same IP address. “The WAF’s automated blocking took care of it, and my team was able to place an additional IP block just in case anything managed to slip through,” Deane recalls. “The visibility that WAF gives us makes a huge difference. Anyone on my team can access the WAF portal and view what’s going on at any given moment, we can see what’s going on and immediately react to it.”\n\nDeane’s team finds the WAF extremely easy to configure and manage, even when writing custom firewall rules. “The automated rules take care of the majority of our needs, but it’s great to have the flexibility to write custom rules. For example, the WAF analytics helped us identify a lot of bad requests hitting the Australian site from visitors outside of Australia, so we configured a geo-based challenge to filter out human users from bots.”\n\nBy blocking bad requests, Cloudflare WAF ensures that Kathmandu’s sites remain available and operable for legitimate customers. With the WAF blocking bad bots, and the Cloudflare CDN delivering content at the network edge, close to users, Kathmandu’s sites are able to weather traffic spikes. “Because we sell outdoor clothing and equipment, we run extremely seasonal marketing campaigns that result in traffic levels at five to 10 times normal,” Deane reports. “The resiliency that Cloudflare gives us makes a massive difference.”\n\n### __Next, Kathmandu will use Cloudflare Workers to abstract away complexity__\n\nMoving forward, Deane has big plans for Workers, Cloudflare’s serverless platform. “The development experience in Workers is fantastic. It’s very straightforward and really well put together. Going from zero to having something up takes literally seconds. It’s great to have this resource available; Workers is going to make a massive difference for us.”\n\nDeane plans to use Workers to build an enhanced brick-and-mortar store locator for Kathmandu’s websites, as well as to find ways to abstract away Magento’s complexity. “We’re examining where serverless could drive efficiency. Anywhere we can decouple from Magento is great, and I know that serverless far outstrips what we can do with Magento.”\n\nDeane reports that he wouldn’t hesitate to recommend Cloudflare to a colleague. “Whether you’re a small business or a large enterprise, using Cloudflare is a no-brainer. I can’t think of a single reason why any business shouldn’t use Cloudflare.”\n\nRead more about the Kathmandu + Rip Curl acquisition [here](https://www.ripcurl.com/us/blog/rip-curl-founders-sell-iconic-surf-brand-to-outdoor-specialists-kathmandu.html)",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "- Cloudflare Access gives Kathmandu employees and partners a simple, secure way to access developer environments and admin panels - with multiple identity sources supported at once.\n\n- By blocking bad requests, Cloudflare WAF ensures that Kathmandu’s sites remain available and operable for legitimate customers.\n\n- Kathmandu’s sites stay reliable and performant even when experiencing seasonal traffic spikes 5 to 10 times higher than normal traffic levels.",
+				"relatedCaseStudies": [
+					{
+						"name": "Trendyol",
+						"nameUrlSlug": "trendyol"
+					},
+					{
+						"name": "Shopify",
+						"nameUrlSlug": "shopify"
+					},
+					{
+						"name": "Neto",
+						"nameUrlSlug": "neto-leverages-cloudflare-to-secure-and-supercharge-their-ecommerce"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Web Application Firewall (WAF) ",
+						"url": "/waf/"
+					},
+					{
+						"title": "Access",
+						"url": "/teams/access"
+					},
+					{
+						"title": "Workers",
+						"url": "/products/cloudflare-workers/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "James Deane",
+				"employeeQuoteText": "Whether you’re a small business or a large enterprise, using Cloudflare is a no-brainer. I can’t think of a single reason why any business shouldn’t use Cloudflare.",
+				"employeeQuoteJobTitle": "Web Development Manager",
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/kathmandu_white_background_svg_2.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": [
+					"fr-fr",
+					"de-de"
+				]
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "4wxS5DHJUT9ss8FglcKyrq",
+			"pathname": "/case-studies/kathmandu/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US",
+				"zh-CN",
+				"zh-TW",
+				"fr-FR",
+				"de-DE",
+				"it-IT",
+				"ja-JP",
+				"ko-KR",
+				"pt-BR",
+				"es-ES",
+				"id-ID",
+				"th-TH",
+				"vi-VN",
+				"zh-Hans-CN"
+			]
+		}
+	}
+}

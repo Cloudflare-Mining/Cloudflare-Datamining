@@ -1,0 +1,813 @@
+{
+	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
+	"path": "/learning/ddos/what-is-layer-7/",
+	"result": {
+		"data": {
+			"learningCenterArticle": {
+				"contentTypeId": "learningCenterArticle",
+				"contentfulId": "1cl64HeTUptiklYAXMGnge",
+				"urlSlug": "ddos/what-is-layer-7",
+				"metaTags": {
+					"metaTitle": "What is layer 7? | How layer 7 of the Internet works",
+					"metaDescription": "Learn what layer 7 of the OSI Model is, how it interacts with the other OSI Model layers, and how the OSI Model differs from the TCP/IP model of the Internet.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/ddos-lc.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"metaTitle": "What is Layer 7? | How Layer 7 of the Internet Works",
+				"metaDescription": "Learn what layer 7 of the OSI model is, how it interacts with the other OSI model layers, and how the OSI model differs from the TCP/IP model of the Internet.",
+				"learningCenterArticleSubHeader": {
+					"contentTypeId": "learningCenterArticleSubHeader",
+					"contentfulId": "28LvlxvxleYGQ8oAcq8Gc2",
+					"learningCenterName": "ddos",
+					"links": [
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "43tpgapD9mSS2WCOqOCG0k",
+							"displayText": "What is a DDoS Attack?",
+							"url": "/learning/ddos/what-is-a-ddos-attack/"
+						},
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "4x6c2TDv4s8Y82QmmeMQSy",
+							"displayText": "What is a DDoS Botnet?",
+							"url": "/learning/ddos/what-is-a-ddos-botnet/"
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "488TK0iPJY2UOcQ4GaYOSM",
+							"name": "DDoS Header: common ddos attacks ",
+							"displayText": "Common DDoS Attacks",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5amlKsiE40kWyWiCiKWI8q",
+									"displayText": "Memcached DDoS Attack",
+									"url": "/learning/ddos/memcached-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "32jyFJRQXmOU6E2eEWeoU0",
+									"displayText": "NTP Amplification Attack",
+									"url": "/learning/ddos/ntp-amplification-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2TjuYJUlBYIcsQYaK2EKSC",
+									"displayText": "DNS Amplification Attack",
+									"url": "/learning/ddos/dns-amplification-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6qWmxdFwCkGO8EEiiOeuEo",
+									"displayText": "SSDP Attack",
+									"url": "/learning/ddos/ssdp-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1mbUWG6ecQ4Es8mqEsqIOQ",
+									"displayText": "Low and Slow Attack",
+									"url": "/learning/ddos/ddos-low-and-slow-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4MQpd8pYVa20YuY6Ks8YQU",
+									"displayText": "Application Layer Attack",
+									"url": "/learning/ddos/application-layer-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1CPIOdRoNwdyvn2wk6ZLGw",
+									"displayText": "Layer 3 Attacks",
+									"url": "/learning/ddos/layer-3-ddos-attacks/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6hOizQoGtyCY8gYyas8II6",
+									"displayText": "Cryptocurrency Attacks",
+									"url": "/learning/ddos/cryptocurrency-ddos-attacks/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "72V7mH81OM2lkZtlWhMD6B",
+									"displayText": "Ransom DDoS attack",
+									"url": "/learning/ddos/ransom-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3vYiB3zjjy0KM0e4qiKY8g",
+									"displayText": "Smurf Attack (historic)",
+									"url": "/learning/ddos/smurf-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6dJ8xImGLSG4Sg2y2kG4mM",
+									"displayText": "Ping of Death (historic)",
+									"url": "/learning/ddos/ping-of-death-ddos-attack/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "Vo72dHHO8V2xTXLPaW61N",
+							"name": "DDoS Header: Flood Attacks drop-down",
+							"displayText": "Flood Attacks",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1nMvoWHltOEqoAkCaE40Ei",
+									"displayText": "DNS Flood",
+									"url": "/learning/ddos/dns-flood-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2a52AhHSNKUk6Gs28yu0uy",
+									"displayText": "HTTP Flood",
+									"url": "/learning/ddos/http-flood-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "21gBkzwknGcLCYsvkBGkhG",
+									"displayText": "SYN Flood Attack",
+									"url": "/learning/ddos/syn-flood-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5wHlxpadXaHWi2PlBPbckX",
+									"displayText": "ACK Flood Attack",
+									"url": "/learning/ddos/what-is-an-ack-flood/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1fNJ2IIgxqKUEYuS6kuI6q",
+									"displayText": "Ping (ICMP) Flood Attack",
+									"url": "/learning/ddos/ping-icmp-flood-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4sBZoVheo8ICoUuqocecoa",
+									"displayText": "UDP Flood Attack",
+									"url": "/learning/ddos/udp-flood-ddos-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5DKMqlo86Qy5l7gT1FXNS4",
+									"displayText": "QUIC Flood Attack",
+									"url": "/learning/ddos/what-is-a-quic-flood/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "1TotuWDV6YSUcUEak4KGYM",
+							"name": "DDoS Header: DDoS attack tools",
+							"displayText": "DDoS Attack Tools",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "b2paLepZMkICu60yMqm6u",
+									"displayText": "How to DDoS",
+									"url": "/learning/ddos/ddos-attack-tools/how-to-ddos/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "b8HHJH0rokU6gayiww26K",
+									"displayText": "Low Orbit Ion Cannon",
+									"url": "/learning/ddos/ddos-attack-tools/low-orbit-ion-cannon-loic/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6Ncf86b8sgWQ8aEeOuKS0O",
+									"displayText": "High Orbit Ion Cannon",
+									"url": "/learning/ddos/ddos-attack-tools/high-orbit-ion-cannon-hoic"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "eUBWBDodk4i44IeaOquk0",
+									"displayText": "R U Dead Yet? (R.U.D.Y.)",
+									"url": "/learning/ddos/ddos-attack-tools/r-u-dead-yet-rudy/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6g6tWXLFduMCqwcWwOuWm0",
+									"displayText": "Slowloris Attack",
+									"url": "/learning/ddos/ddos-attack-tools/slowloris/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "rImA6gycScEyWcYUUAaUm",
+									"displayText": "DDoS Booter/IP Stresser",
+									"url": "/learning/ddos/ddos-attack-tools/ddos-booter-ip-stresser/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1aExU3KQxQQhJY4YqnTBCo",
+									"displayText": "IP Spoofing",
+									"url": "/learning/ddos/glossary/ip-spoofing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6cfMFCb4qcI26OSWqKMK82",
+									"displayText": "Malware",
+									"url": "/learning/ddos/glossary/malware/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2nJ2YWt7YgmmESuk80uEqs",
+									"displayText": "Mirai Botnet",
+									"url": "/learning/ddos/glossary/mirai-botnet/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "1hw7BfQbL8qzPSokzSyXJU",
+							"name": "DDoS Header: Glossary",
+							"displayText": "Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3vUhnhCnSMYg22KsU4ua2Y",
+									"displayText": "Famous DDoS Attacks",
+									"url": "/learning/ddos/famous-ddos-attacks/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4Cn3WavphCAekuSwIMqMGe",
+									"displayText": "DDoS Mitigation",
+									"url": "/learning/ddos/ddos-mitigation/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5Yq6iZEMVySMUS8wO40w2",
+									"displayText": "Blackhole Routing",
+									"url": "/learning/ddos/glossary/ddos-blackhole-routing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6s6YUS3x7OGkYmuSeY484s",
+									"displayText": "Denial Of Service",
+									"url": "/learning/ddos/glossary/denial-of-service/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6d1quO1yzC88UKgMsmwY0s",
+									"displayText": "DNS",
+									"url": "/learning/ddos/glossary/domain-name-system-dns/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4YRqcKCEYM8C4WUEeae8Uw",
+									"displayText": "HTTP",
+									"url": "/learning/ddos/glossary/hypertext-transfer-protocol-http/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4lqVLcWrG8uIwcs2aQKi4a",
+									"displayText": "ICMP",
+									"url": "/learning/ddos/glossary/internet-control-message-protocol-icmp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "51BVc8hCzYkMcACSekOsag",
+									"displayText": "OSI Model",
+									"url": "/learning/ddos/glossary/open-systems-interconnection-model-osi/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6xtVT6OheomGscU244Gy4c",
+									"displayText": "TCP/IP",
+									"url": "/learning/ddos/glossary/tcp-ip/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7D0UJZyrqE0YO0yYMWK2Wi",
+									"displayText": "UDP",
+									"url": "/learning/ddos/glossary/user-datagram-protocol-udp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "47hHJHZNSoQuio4QmgCo6w",
+									"displayText": "WAF",
+									"url": "/learning/ddos/glossary/web-application-firewall-waf/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5zTsx9XoT6soGWcWWM6mGa",
+									"displayText": "Internet Of Things (IOT)",
+									"url": "/learning/ddos/glossary/internet-of-things-iot/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3yLp4rjHIIw3L5FhyeT4wG",
+									"displayText": "Layer 7",
+									"url": "/learning/ddos/what-is-layer-7/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "56DqGG2u4w6dn5uDStyvNA",
+							"name": "DDoS Header: Insights",
+							"displayText": "Insights",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7nYhsmOt8j2TMfIi6t2pOG",
+									"displayText": "The future of web application security",
+									"url": "https://www.cloudflare.com/insights-future-web-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "37qx4iYUDgPdHJaxEAyIxH",
+									"displayText": "Ransomware attackers escalate extortion tactics",
+									"url": "https://www.cloudflare.com/learning/insights-ransomware-extortion/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1fudUp354PiIkWi5M2QBuE",
+									"displayText": "The risks smaller DDoS attacks pose to network infrastructure",
+									"url": "https://www.cloudflare.com/insights-small-ddos-attacks/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "Bngdc6ouSn7Q4HEyfH9tZ",
+									"displayText": "Using DDoS threats to extort organizations",
+									"url": "https://www.cloudflare.com/insights-ransom-ddos"
+								}
+							]
+						}
+					]
+				},
+				"learningCenterArticleFooter": {
+					"contentTypeId": "learningCenterArticleFooter",
+					"contentfulId": "BpfTCuIF5AqKwM4wsyQIq",
+					"learningCenterName": "ddos",
+					"column1Title": "About DDoS Attacks",
+					"column1": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "p6u7Eh6PwkA40yMS0mgMY",
+						"name": "DDoS Footer: about ddos attack",
+						"displayText": "About DDoS Attacks",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "43tpgapD9mSS2WCOqOCG0k",
+								"displayText": "What is a DDoS Attack?",
+								"url": "/learning/ddos/what-is-a-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4x6c2TDv4s8Y82QmmeMQSy",
+								"displayText": "What is a DDoS Botnet?",
+								"url": "/learning/ddos/what-is-a-ddos-botnet/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3vUhnhCnSMYg22KsU4ua2Y",
+								"displayText": "Famous DDoS Attacks",
+								"url": "/learning/ddos/famous-ddos-attacks/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Cn3WavphCAekuSwIMqMGe",
+								"displayText": "DDoS Mitigation",
+								"url": "/learning/ddos/ddos-mitigation/"
+							}
+						]
+					},
+					"column2Title": "DDoS Attacks",
+					"column2": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "2TtoXvpi8UYPqpEVzWuntQ",
+						"name": "DDoS Footer: DDoS Attacks",
+						"displayText": "DDoS Attacks",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5amlKsiE40kWyWiCiKWI8q",
+								"displayText": "Memcached DDoS Attack",
+								"url": "/learning/ddos/memcached-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "32jyFJRQXmOU6E2eEWeoU0",
+								"displayText": "NTP Amplification Attack",
+								"url": "/learning/ddos/ntp-amplification-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2TjuYJUlBYIcsQYaK2EKSC",
+								"displayText": "DNS Amplification Attack",
+								"url": "/learning/ddos/dns-amplification-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6qWmxdFwCkGO8EEiiOeuEo",
+								"displayText": "SSDP Attack",
+								"url": "/learning/ddos/ssdp-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1mbUWG6ecQ4Es8mqEsqIOQ",
+								"displayText": "Low and Slow Attack",
+								"url": "/learning/ddos/ddos-low-and-slow-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4MQpd8pYVa20YuY6Ks8YQU",
+								"displayText": "Application Layer Attack",
+								"url": "/learning/ddos/application-layer-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1CPIOdRoNwdyvn2wk6ZLGw",
+								"displayText": "Layer 3 Attacks",
+								"url": "/learning/ddos/layer-3-ddos-attacks/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6hOizQoGtyCY8gYyas8II6",
+								"displayText": "Cryptocurrency Attacks",
+								"url": "/learning/ddos/cryptocurrency-ddos-attacks/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "72V7mH81OM2lkZtlWhMD6B",
+								"displayText": "Ransom DDoS attack",
+								"url": "/learning/ddos/ransom-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3vYiB3zjjy0KM0e4qiKY8g",
+								"displayText": "Smurf Attack (historic)",
+								"url": "/learning/ddos/smurf-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6dJ8xImGLSG4Sg2y2kG4mM",
+								"displayText": "Ping of Death (historic)",
+								"url": "/learning/ddos/ping-of-death-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5wHlxpadXaHWi2PlBPbckX",
+								"displayText": "ACK Flood Attack",
+								"url": "/learning/ddos/what-is-an-ack-flood/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1nMvoWHltOEqoAkCaE40Ei",
+								"displayText": "DNS Flood",
+								"url": "/learning/ddos/dns-flood-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2a52AhHSNKUk6Gs28yu0uy",
+								"displayText": "HTTP Flood",
+								"url": "/learning/ddos/http-flood-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1fNJ2IIgxqKUEYuS6kuI6q",
+								"displayText": "Ping (ICMP) Flood Attack",
+								"url": "/learning/ddos/ping-icmp-flood-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5DKMqlo86Qy5l7gT1FXNS4",
+								"displayText": "QUIC Flood Attack",
+								"url": "/learning/ddos/what-is-a-quic-flood/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "21gBkzwknGcLCYsvkBGkhG",
+								"displayText": "SYN Flood Attack",
+								"url": "/learning/ddos/syn-flood-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4sBZoVheo8ICoUuqocecoa",
+								"displayText": "UDP Flood Attack",
+								"url": "/learning/ddos/udp-flood-ddos-attack/"
+							}
+						]
+					},
+					"column3Title": "DDoS Attack Tools",
+					"column3": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "1EzjWEy67zC4i5hLIC8FpF",
+						"name": "DDoS Footer: DDoS attack tools",
+						"displayText": "DDoS Attack Tools",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "b2paLepZMkICu60yMqm6u",
+								"displayText": "How to DDoS",
+								"url": "/learning/ddos/ddos-attack-tools/how-to-ddos/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "b8HHJH0rokU6gayiww26K",
+								"displayText": "Low Orbit Ion Cannon",
+								"url": "/learning/ddos/ddos-attack-tools/low-orbit-ion-cannon-loic/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6Ncf86b8sgWQ8aEeOuKS0O",
+								"displayText": "High Orbit Ion Cannon",
+								"url": "/learning/ddos/ddos-attack-tools/high-orbit-ion-cannon-hoic"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "eUBWBDodk4i44IeaOquk0",
+								"displayText": "R U Dead Yet? (R.U.D.Y.)",
+								"url": "/learning/ddos/ddos-attack-tools/r-u-dead-yet-rudy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6g6tWXLFduMCqwcWwOuWm0",
+								"displayText": "Slowloris Attack",
+								"url": "/learning/ddos/ddos-attack-tools/slowloris/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "rImA6gycScEyWcYUUAaUm",
+								"displayText": "DDoS Booter/IP Stresser",
+								"url": "/learning/ddos/ddos-attack-tools/ddos-booter-ip-stresser/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1aExU3KQxQQhJY4YqnTBCo",
+								"displayText": "IP Spoofing",
+								"url": "/learning/ddos/glossary/ip-spoofing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6cfMFCb4qcI26OSWqKMK82",
+								"displayText": "Malware",
+								"url": "/learning/ddos/glossary/malware/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2nJ2YWt7YgmmESuk80uEqs",
+								"displayText": "Mirai Botnet",
+								"url": "/learning/ddos/glossary/mirai-botnet/"
+							}
+						]
+					},
+					"column4Title": "DDoS Glossary",
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "1xhHdBkjmcNOgkR8B2bgap",
+						"name": "DDos Footer: Glossary",
+						"displayText": "DDoS Glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6s6YUS3x7OGkYmuSeY484s",
+								"displayText": "Denial Of Service",
+								"url": "/learning/ddos/glossary/denial-of-service/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5Yq6iZEMVySMUS8wO40w2",
+								"displayText": "Blackhole Routing",
+								"url": "/learning/ddos/glossary/ddos-blackhole-routing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "51BVc8hCzYkMcACSekOsag",
+								"displayText": "OSI Model",
+								"url": "/learning/ddos/glossary/open-systems-interconnection-model-osi/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6xtVT6OheomGscU244Gy4c",
+								"displayText": "TCP/IP",
+								"url": "/learning/ddos/glossary/tcp-ip/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4lqVLcWrG8uIwcs2aQKi4a",
+								"displayText": "ICMP",
+								"url": "/learning/ddos/glossary/internet-control-message-protocol-icmp/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4YRqcKCEYM8C4WUEeae8Uw",
+								"displayText": "HTTP",
+								"url": "/learning/ddos/glossary/hypertext-transfer-protocol-http/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3m3SoSRTz9H3QUP1Y3fLJ0",
+								"displayText": "Web Application Firewall (WAF)",
+								"url": "/learning/ddos/glossary/web-application-firewall-waf/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2JgJvIWgo72kFjaMf1xzWc",
+								"displayText": "User Datagram Protocol (UDP)",
+								"url": "/learning/ddos/glossary/user-datagram-protocol-udp/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3yLp4rjHIIw3L5FhyeT4wG",
+								"displayText": "Layer 7",
+								"url": "/learning/ddos/what-is-layer-7/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5zTsx9XoT6soGWcWWM6mGa",
+								"displayText": "Internet Of Things (IOT)",
+								"url": "/learning/ddos/glossary/internet-of-things-iot/"
+							}
+						]
+					},
+					"column5Title": "Learning Center Navigation",
+					"column5": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "3W1E40q164OhUFAC0XF03C",
+						"name": "DDoS Footer: Learning Nav",
+						"displayText": "Learning Center Navigation",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2hdSVoYA5asSIG0U2ae20c",
+								"displayText": "Learning Center Home",
+								"url": "/learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Ra0qmFJ1uewk2MYscW8KI",
+								"displayText": "DNS Learning Center",
+								"url": "/learning/dns/what-is-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6DGcnYIMM0eCGwqAKu2ECO",
+								"displayText": "CDN Learning Center",
+								"url": "/learning/cdn/what-is-a-cdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z3UC9tP1Kjk85BX5zSGPY",
+								"displayText": "Serverless Learning Center",
+								"url": "/learning/serverless/what-is-serverless/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1yItw6W6SsM2Y0Wuq6Y2c6",
+								"displayText": "Security Learning Center",
+								"url": "/learning/security/what-is-web-application-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q67XLnKqKhfmDJR4q9hJT",
+								"displayText": "Performance Learning Center",
+								"url": "/learning/performance/why-site-speed-matters/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52V7iI9YriJ0En2SGmEXz5",
+								"displayText": "SSL Learning Center",
+								"url": "/learning/ssl/what-is-ssl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7D22pOfjb98KXcnAJyJFCX",
+								"displayText": "Bots Learning Center",
+								"url": "/learning/bots/what-is-a-bot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7jgqDUFFzaLuKrsaBTLdV0",
+								"displayText": "Cloud Learning Center",
+								"url": "/learning/cloud/what-is-the-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6PdBQjiFs98K6RQuG5TYNd",
+								"displayText": "Access Management Learning Center",
+								"url": "/learning/access-management/what-is-identity-and-access-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3jjEMuuLrCwhRidjG5kglM",
+								"displayText": "Network Layer Learning Center",
+								"url": "/learning/network-layer/what-is-the-network-layer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RvS0l0m86G1VISDrEvlJb",
+								"displayText": "Privacy Learning Center",
+								"url": "/learning/privacy/what-is-data-privacy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "MytksT5WU5mh863BQYEkj",
+								"displayText": "Video Streaming Learning Center",
+								"url": "/learning/video/what-is-streaming/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
+								"displayText": "Email Security Learning Center",
+								"url": "/learning/email-security/what-is-email-security/"
+							}
+						]
+					}
+				},
+				"header": "What is layer 7? | How layer 7 of the Internet works",
+				"blurbSubHeader": "Layer 7 is the layer of the OSI Model just beneath the surface of user interfaces, and on top of the other 6 layers of the model. In this layer, data is presented in a form that user-facing applications can use. DDoS attacks often take place on layer 7.",
+				"objectivesHeader": "Layer 7",
+				"objectivesList": [
+					"Learn how the OSI model works",
+					"Understand what layer 7 is in the OSI Model",
+					"Understand why layer 7 is called the \"application layer\"",
+					"Explain how layer 7 DDoS attacks work"
+				],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "51BVc8hCzYkMcACSekOsag",
+						"displayText": "OSI Model",
+						"url": "/learning/ddos/glossary/open-systems-interconnection-model-osi/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "43tpgapD9mSS2WCOqOCG0k",
+						"displayText": "What is a DDoS Attack?",
+						"url": "/learning/ddos/what-is-a-ddos-attack/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "3vUhnhCnSMYg22KsU4ua2Y",
+						"displayText": "Famous DDoS Attacks",
+						"url": "/learning/ddos/famous-ddos-attacks/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "4x6c2TDv4s8Y82QmmeMQSy",
+						"displayText": "What is a DDoS Botnet?",
+						"url": "/learning/ddos/what-is-a-ddos-botnet/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "4Cn3WavphCAekuSwIMqMGe",
+						"displayText": "DDoS Mitigation",
+						"url": "/learning/ddos/ddos-mitigation/"
+					}
+				],
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is layer 7 of the Internet?</h2>\n\n<p>Layer 7 refers to the top layer in the 7-layer <a href='/learning/ddos/glossary/open-systems-interconnection-model-osi/'>OSI Model</a> of the Internet. It is also known as the \"application layer.\" It's the top layer of the data processing that occurs just below the surface or behind the scenes of the software applications that users interact with. The <a href='/learning/ddos/glossary/hypertext-transfer-protocol-http/'>HTTP</a> requests and responses used to load webpages, for example, are layer 7 events.</p>\n\n<p><a href='/learning/ddos/what-is-a-ddos-attack/'>DDoS attacks</a> that take place at this level are known as layer 7 attacks or application layer attacks. DDoS attacks can also take place at layers 3 or 4 of the OSI Model.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is the OSI Model?</h2>\n\n<p>The OSI (open systems interconnection) Model divides the functions of a networking system into 7 layers, each layer abstracted from the one below it. Within the model, each layer interacts only with the layers above and below itself.</p>\n\n<p>It’s worth keeping in mind that the OSI Model is purely theoretical, and it is designed to help describe what takes place in networking communications, not to describe the actual technology involved. Just because the OSI Model a conceptual framework doesn’t mean it isn’t useful; referencing the model helps engineers, developers, and IT professionals pinpoint what a product or protocol does and where it belongs in the process of network communication.</p>\n\n<img src='/img/learning/ddos/what-is-a-ddos-attack/osi-model-7-layers.svg' class=\"responsive-image\" alt=\"The OSI Model\" itemprop=\"image\"/>\n\n<p>At the bottom of the model is the physical layer (layer 1), or the pulses of electricity that communicate bits of information across the cables, routers, switches, and WiFi networks making up Internet infrastructure. At the top, in layer 7, are the protocols and services applications use in order to function. In between are various functionalities and protocols that data passes through over the course of network communications.</p>\n\n<p>For a more thorough breakdown of what each layer does, see \"<a href='/learning/ddos/glossary/open-systems-interconnection-model-osi/'>What is the OSI model?</a>\"</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What does layer 7 do?</h2>\n\n<p>Although layer 7 is known as the application layer, it is not the user interface of the applications themselves. Rather, layer 7 provides functionalities and services that user-facing software applications use to present data. If an application is like a house, then layer 7 is the foundation, not the house itself.</p>\n\n<p>API calls and responses belong to this layer, and the main protocols used are HTTP and SMTP (simple mail transfer protocol, which email applications use).</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does layer 7 interact with the other OSI layers?</h2>\n\n<p>Data from layer 7 gets passed down the stack, although layer 7 only interacts with layer 6. As data goes down through the stack, it is broken up into packets, and certain layers add headers and footers to each packet – for example, at layer 3, an IP header containing the destination and source <a href='/learning/dns/glossary/what-is-my-ip-address/'>IP addresses</a> is added to each packet. At the bottom of the stack, data is converted into bits and transmitted across the physical Internet.</p>\n\n<p>Upon reaching its destination, data goes back up the stack, starting at layer 1. At each layer, header and footer data is interpreted and stripped, and data is put into a form that is usable for the next layer up. Once data reaches layer 7 on the other side, it is made available to applications. (Despite all these steps, the whole process takes only milliseconds.)</p>\n\n<p>Crucial to understanding how the OSI Model works is the fact that each layer only communicates with that same layer on the other end of the interaction. Layer 7 data is only interpreted by layer 7 on the receiving end of the communication; the other layers on the receiving end merely pass the data up to layer 7. Similarly, the IP header data that is appended to data packets in layer 3 on one side is only read and interpreted by layer 3 on the other side.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How do layer 7 DDoS attacks work?</h2>\n\n<p>Layer 7 or <a href='/learning/ddos/application-layer-ddos-attack/'>application layer DDoS attacks</a> attempt to overwhelm network or server resources with a flood of traffic (typically HTTP traffic). An example would be sending thousands of requests for a certain webpage per second until the server is overwhelmed and cannot respond to all of the requests. Another example would be calling an API over and over until the service crashes. Typically, layer 7 DDoS attacks are more complex than other kinds of DDoS attacks.</p>\n\n<p>To learn more, see \"<a href='/learning/ddos/application-layer-ddos-attack/'>Application layer DDoS attacks.</a>\"</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How is the OSI Model different from the TCP/IP model?</h2>\n\n<p>The <a href='/learning/ddos/glossary/tcp-ip/'>TCP/IP</a> networking conceptual model is an alternative to the OSI Model. It divides the networking stack into four layers instead of seven, and although it is similar to the OSI Model, it does not match up exactly. In the TCP/IP model, there is no \"layer 7,\" but this is a purely semantic distinction and does not mean that networking functions differently in the two models.</p>\n\n<p>The four layers in the TCP/IP model are:</p>\n\n<ol class='learning-list'>\n  <li>The application layer (for protocols such as HTTP and SMTP)</li>\n  <li>The transport layer (for transport protocols such as TCP and UDP)</li>\n  <li>The Internet layer (the <a href='/learning/ddos/glossary/internet-protocol/'>Internet protocol</a>)</li>\n  <li>The network access layer</li>\n</ol>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does Cloudflare protect against layer 7 attacks?</h2>\n\n<p><a href='/ddos/'>Cloudflare DDoS protection</a> is built to protect against DDoS attacks no matter which OSI layer they're targeting. By intelligently filtering and distributing network traffic across %{DataCenterCount} data centers worldwide, the Cloudflare network is able to absorb massive amounts of layer 7 traffic. The <a href='/network/'>Cloudflare network</a> is shielded by these attacks when following Cloudflare best practices.</p>",
+				"availableLocales": null,
+				"localized": true,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "No Page for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": null
+				},
+				"proactivePopup": null,
+				"sidebarForm": null
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "1cl64HeTUptiklYAXMGnge",
+			"pathname": "/learning/ddos/what-is-layer-7/",
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

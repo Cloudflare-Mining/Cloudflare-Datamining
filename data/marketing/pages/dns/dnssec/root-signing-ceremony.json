@@ -1,0 +1,742 @@
+{
+	"componentChunkName": "component---src-components-page-page-template-tsx",
+	"path": "/dns/dnssec/root-signing-ceremony/",
+	"result": {
+		"data": {
+			"page": {
+				"pageName": "The DNSSEC Root Signing Ceremony",
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "English for Locale",
+					"deDE": "English for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "English for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "English for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "No Page for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": "English for Locale"
+				},
+				"relativePath": "dns/dnssec/root-signing-ceremony",
+				"topNavOptions": "default",
+				"topNavButtonText": null,
+				"topNavButtonUrl": null,
+				"metaTags": {
+					"metaTitle": "The DNSSEC Root Signing Ceremony",
+					"metaDescription": "Find out why there has to be a Root Signing Ceremony and how we can trust the root DNS zone, despite it having no parent.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"contentfulId": "4dBi7GiiaEcFz2bolZr04z",
+				"contentTypeId": "page",
+				"promotionalBanner": null,
+				"psaBanner": null,
+				"customTopNav": null,
+				"headerLogo": null,
+				"template": null,
+				"relatedBlades": [
+					{
+						"__typename": "bladeHeroAnimation",
+						"contentfulId": "1GGArasu7JJ0IDu598Iln4",
+						"contentTypeId": "bladeHeroAnimation",
+						"title": "The DNSSEC Root Signing Ceremony",
+						"subtitle": null,
+						"copy": "The root DNS zone contains information about how to query the top-level domain (TLD) name servers (.com, .edu, .org, etc). It enables Internet users to access domain names in all TLDs, even brand new ones like .software and .bank, making it an integral part of the global Internet.\n\nIn <a href=\"/dns/dnssec/how-dnssec-works/\">How DNSSEC Works</a>, we explained how trust in DNSSEC is derived from the parent zone’s DS resource record. However, the root DNS zone has no parent, so how can we trust the integrity and authenticity of its information?\n\n<img class=\"responsive-image-pad-center\" title=\"official ceremony photo\" alt=\"official ceremony photo\" src=\"/img/products/official-ceremony-photo.jpg\">\n<p class=\"text--italic\"> Photo courtesy of IANA </p>\n\nThat’s the purpose of the Root Signing Ceremony—a rigorous procedure around signing the root DNS zone’s public keying information for the next few months. The private signing key used in this process is quite literally the key to the entire DNSSEC-protected Internet. A public, audited, and tightly controlled ceremony around accessing this key is a necessity for DNSSEC to succeed as a global standard.\n\nÓlafur Guðmundsson, an engineering manager at Cloudflare and Crypto Officer at ICANN, participated in the ceremony this August. These are his reflections on the Root Signing Ceremony.\n",
+						"buttonColor": null,
+						"buttonColor2": null,
+						"buttonText1": null,
+						"buttonText1LoggedIn": null,
+						"buttonUrl1": null,
+						"buttonUrl1LoggedIn": null,
+						"button1ExtraClass": null,
+						"buttonText2": null,
+						"buttonText2LoggedIn": null,
+						"buttonUrl2": null,
+						"button2ExtraClass": null,
+						"bladeBorder": "none",
+						"htmlId": null,
+						"textColor": "black",
+						"includeVideo": false,
+						"streamVideoId": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"popupStreamId": null,
+						"popupText": null,
+						"button1OpenInNewTab": null,
+						"button2OpenInNewTab": null,
+						"streamThumbnails": null,
+						"sectionPadding": null,
+						"streamPosterAssetFile": null,
+						"streamPoster": null,
+						"imageSize": "Large",
+						"imagePosition": null,
+						"leftLinkUrl": null,
+						"leftLink": null,
+						"leftLinkLoggedIn": null,
+						"leftLinkOptions": "hide",
+						"backgroundColor": "white",
+						"textlayoutMode": null,
+						"backgroundAssetFile": null,
+						"imageLayout": null,
+						"image": {
+							"file": {
+								"publicURL": "[path]/dnssec_logo.png"
+							}
+						},
+						"imageAssetFile": {
+							"id": "500444ce-cf6c-5d58-8733-9f3c49f65ccf",
+							"altText": "dnssec logo",
+							"title": "dnssec logo",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "[path]/dnssec_logo.png"
+								}
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						}
+					},
+					{
+						"__typename": "bladeSubNav",
+						"contentTypeId": "bladeSubNav",
+						"contentfulId": "6MDeXx4b0IQJXClsuBpjL6",
+						"menuTitle": "DNSSEC Articles",
+						"stickyNav": null,
+						"htmlId": null,
+						"menuItems": [
+							{
+								"__typename": "bladeSubNavMenuItem",
+								"contentfulId": "5WFa1YcPSXrm1WuWjs2vq",
+								"linkText": "Universal DNSSEC",
+								"page": null,
+								"url": "dns/dnssec/universal-dnssec/",
+								"subMenuItems": null
+							},
+							{
+								"__typename": "bladeSubNavMenuItem",
+								"contentfulId": "2UXA9wBNObtjAbqm5NpSq2",
+								"linkText": "How DNSSEC Works",
+								"page": null,
+								"url": "dns/dnssec/how-dnssec-works/",
+								"subMenuItems": null
+							},
+							{
+								"__typename": "bladeSubNavMenuItem",
+								"contentfulId": "383AV903uhcT3Y08sDPi2x",
+								"linkText": "Root-Signing Ceremony",
+								"page": null,
+								"url": "dns/dnssec/root-signing-ceremony/",
+								"subMenuItems": null
+							},
+							{
+								"__typename": "bladeSubNavMenuItem",
+								"contentfulId": "5XvhB0L2cRg6nApXw9TiVd",
+								"linkText": "ECDSA and DNSSEC",
+								"page": null,
+								"url": "dns/dnssec/ecdsa-and-dnssec/",
+								"subMenuItems": null
+							},
+							{
+								"__typename": "bladeSubNavMenuItem",
+								"contentfulId": "3iaY9yzodOgfDc4kqV3jqy",
+								"linkText": "DNSSEC Complexities",
+								"page": null,
+								"url": "dns/dnssec/dnssec-complexities-and-considerations/",
+								"subMenuItems": null
+							},
+							{
+								"__typename": "bladeSubNavMenuItem",
+								"contentfulId": "2o6TALIThh1aCNCvqbhRNk",
+								"linkText": "DNSSEC for Registrars",
+								"page": null,
+								"url": "dns/dnssec/dnssec-for-registrars/",
+								"subMenuItems": null
+							}
+						]
+					},
+					{
+						"__typename": "bladeDoubleContent",
+						"button": null,
+						"contentTypeId": "bladeDoubleContent",
+						"contentfulId": "2MwIB8wTLBgAIkbJqhXqks",
+						"bladeName": "DNSSEC Root Signing - Where is the Root-Signing Key",
+						"title": null,
+						"longCopy": null,
+						"header1": null,
+						"subheader1": null,
+						"copy1": "<h3 class=\"marketing-h3 marketing-h3--no-desktop-top-margin\">Where Is the Root-Signing Key?</h3>\n<p>\nThere are two geographically distinct locations that safeguard the root key-signing key: El Segundo, CA and Culpeper, VA. Both are secure facilities, and they contain redundant copies of the key. The ceremony alternates between the El Segundo and Culpeper locations.\n</p>\n<h3 class=\"marketing-h3\">Ceremony Participants</h3>\n<ul class=\"marketing-ul\">\n<li>The Ceremony Administrator</li>\n<li>An Internal Witness</li>\n<li>The Credentials Safe Controller</li>\n<li>The Hardware Safe Controller</li>\n<li>Crypto Officer #1</li>\n<li>Crypto Officer #2</li>\n<li>Crypto Officer #3</li>\n</ul>\n<p>\nEach of these participants can only perform certain parts of the ceremony. Their roles are divided in a way that ensures less than a 1:1,000,000 chance that a group of conspirators could compromise the root-signing key, assuming a 5% dishonesty rate (yes, that’s formally in the specification) amongst these individuals.\n</p>\n<img class=\"responsive-image-pad-center\" title=\"diagram who holds the key\" alt=\"diagram who holds the key\" src=\"/img/products/dns/dnssec/diagram-who-holds-the-key.svg\">\n<p>\nThe first four of these individuals are ICANN staff members, while the three crypto officers are trusted volunteers from the Internet community. Verisign also plays an important role, as they are the root zone maintainer responsible for generating the root zone-signing key that is signed during the ceremony. In addition, the entire procedure is audited by two Big Four auditing firms that are not associated with either Verisign or ICANN.\n</p>",
+						"image": null,
+						"imageAssetFile": null,
+						"buttonText1": null,
+						"buttonUrl1": null,
+						"button1ExtraClass": null,
+						"header2": null,
+						"subheader2": null,
+						"copy2": "<h3 class=\"marketing-h3 marketing-h3--no-desktop-top-margin\">Ceremony Preparations</h3>\n<p>\nThere are only 14 available Crypto Officers in the world (7 are affiliated with each location), and at least three of them must attend the ceremony. So, the first step is to poll the Crypto Officers to find a two-day window when 4-5 of them can attend. We usually try to find a period where more than the minimum three are available, as emergencies or travel problems can cause a ceremony cancellation.\n</p>\n<p>\nThe last ceremony took place on August 13th at the El Segundo facility. To get into the facility, I had to show a government issued ID and show the contents of my bag. In return, I got an ID strip attached to my shirt. Then, I waited for an ICANN staffer to escort me inside. To get through the door, he had to swipe an access card and place his hand on a scanner.\n</p>\n<p>\nThe first stop was a conference room where lunch was being served. We mingled there while waiting for the rest of the ceremony participants to arrive. Being Crypto Officers, most of the small talk revolved around trying to steal root-signing key. We figured it would only take a half hour or so to blast a hole in the wall and walk out with the safe; however, that would probably trip the seismic sensors, so we would know that the key was compromised.\n</p>\n<p>\nOnce everybody showed up, we were escorted to the ceremony room in small groups as the entrance room only holds about 8 people. In this room we sign a log before we are allowed into the main key ceremony room. To access the entrance room, an ICANN staff member needs to use a smart card; to enter the main room a retina scan is needed of said staffer.\n</p>",
+						"buttonText2": null,
+						"buttonUrl2": null,
+						"button2ExtraClass": null,
+						"backgroundColor": "light-gray",
+						"bladeBorder": "none",
+						"textColor": "black",
+						"sectionPadding": null,
+						"link": null
+					},
+					{
+						"__typename": "bladeDoubleContent",
+						"button": null,
+						"contentTypeId": "bladeDoubleContent",
+						"contentfulId": "DKsMS2BdPGF2vjoprRETS",
+						"bladeName": "DNSSEC Root Signing - A guy walks into a room",
+						"title": null,
+						"longCopy": null,
+						"header1": null,
+						"subheader1": null,
+						"copy1": "<h3 class=\"marketing-h3 marketing-h3--no-desktop-top-margin\">A Guy Walks Into a Room with Two Safes…</h3>\n<p>\nThe ceremony room has a cage on the side of it that contains two safes. These safes store all of the sensitive material used during the ceremony. The cage can only be entered in the presence of the Ceremony Administrator and an Internal Witness. This is enforced by a second retina scan and access cards from both the Ceremony Administrator and Internal Witness.\n</p>\n<img class=\"responsive-image-pad-center\" title=\"diagram a guy walks into a room with two safes\" alt=\"diagram a guy walks into a room with two safes\" src=\"/img/products/dns/dnssec/diagram-a-guy-walks-into-a-room-with-two-safes.svg\">\n<p>\nHowever, neither the Ceremony Administrator or Internal Witness can actually open the safes. For that, we need the Safe Controllers\n</p>\n<h3 class=\"marketing-h3\">The Credentials Safe</h3>\n<p>\nThe Credentials Safe Controller opens the first safe, and inside we find several safe deposit boxes, each requiring two keys. The Ceremony Administrator has one of those keys, and each of the Crypto Officers has a key to a different box. Together (and in the presence of the Internal Witness and Credentials Safe Controller), the Ceremony Administrator and the Crypto Officers open three safe deposit boxes.\n</p>\n<img class=\"responsive-image-pad-center\" title=\"diagram the credentials safe\" alt=\"diagram the credentials safe\" src=\"/img/products/dns/dnssec/diagram-the-credentials-safe.svg\">\n<p>\nEach safe deposit box contains an operator card and a security permissions card for the Hardware Security Module (HSM), which we’ll discuss in the next section. Three operator cards are required to unlock the HSM, which is why three Crypto Officers must attend the ceremony. The security permissions cards are only used when we need to transfer the root-signing key, so we usually leave those in the safe deposit box.\n</p>\n<p>\nBoth cards are stored inside plastic cases wrapped in tamper-evident bags (most of the ceremony revolves around detecting foul-play, if you couldn’t tell already). These cards stay in the safe when not in use, which means the last time someone touched them was at the previous Root Signing Ceremony. The tamper-evident bags help ensure that they haven’t been altered in the interim.\n</p>\n<p>\nThe plastic cases are also very important, as someone discovered that it was possible to manipulate the cards by poking needles through the tamper evident bag, which would not necessarily be noticeable when inspecting the bag. This is a good example of how the security procedures around the ceremony are constantly evolving.\n</p>\n<img class=\"responsive-image-pad-center\" title=\"tamper evident bag\" alt=\"tamper evident bag\" src=\"/img/products/tamper-evident-bag.jpg\">",
+						"image": null,
+						"imageAssetFile": null,
+						"buttonText1": null,
+						"buttonUrl1": null,
+						"button1ExtraClass": null,
+						"header2": null,
+						"subheader2": null,
+						"copy2": "<h3 class=\"marketing-h3 marketing-h3--no-desktop-top-margin\">The Hardware Safe</h3>\n<p>\nThe Hardware Safe Controller then enters the safe room and opens up the second safe, which contains a tamper-proof hardware security module (HSM). The HSM is a physical computing device designed specifically for working with sensitive cryptographic material. You can think of it as a digital lock-box for the root-signing key. It can only be accessed with the three operator cards that we collected from the credentials safe.\n</p>\n<img class=\"responsive-image-pad-center\" title=\"diagram the hardware safe\" alt=\"diagram the hardware safe\" src=\"/img/products/dns/dnssec/diagram-the-hardware-safe.svg\">\n<p>\nThe HSM can’t be operated without an external interface, so the hardware safe also contains a special laptop that can send commands to the HSM. This laptop has no battery, hard disk, or even a clock backup battery, and thus can’t store state once it’s unplugged. The goal is to eliminate any possibility of the root-signing key leaving the HSM after the ceremony ends.\n</p>\n<p>\nWe now have the hardware to perform the Root Signing Ceremony. Notice that the presence of all 7 participants is required to physically access the materials for the ceremony. Again, the idea is to minimize the risk of malicious conspirators by separating access to the HSM from access to the operator cards that activate the HSM.\n</p>\n<p>\nA USB containing logs from each of the prior ceremonies and a DVD used to boot the laptop (both in their own tamper-evident bags) are also removed from this safe.\n</p>",
+						"buttonText2": null,
+						"buttonUrl2": null,
+						"button2ExtraClass": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"textColor": "black",
+						"sectionPadding": null,
+						"link": null
+					},
+					{
+						"__typename": "bladeDoubleContent",
+						"button": null,
+						"contentTypeId": "bladeDoubleContent",
+						"contentfulId": "5j6xWaOY5uZD6RgqN6Iqos",
+						"bladeName": "DNSSEC - Root Signing - Equipment Setup",
+						"title": null,
+						"longCopy": null,
+						"header1": null,
+						"subheader1": null,
+						"copy1": "<h3 class=\"marketing-h3 marketing-h3--no-desktop-top-margin\">Equipment Setup</h3>\n<p>\nWe’re now ready to perform the actual Root Signing Ceremony. All of the equipment is laid out on a table in full view of all those attending, as well as the camera used to audit the proceedings.\n</p>\n<p>\nOne by one, each of the three Crypto Officers is called up to the table and asked to hand over the HSM operator card they took out of their safe deposit box. Before doing so, they verify that the tamper-evident bag is in the same condition as when they placed it in the safe deposit box at the end of the previous ceremony. Once they hand it over, only the Ceremony Administrator is allowed to touch the card.\n</p>\n<img class=\"responsive-image-pad-center\" title=\"diagram equipment setup\" alt=\"diagram equipment setup\" src=\"/img/products/dns/dnssec/diagram-equipment-setup.svg\">\n<p>\nThe Ceremony Administrator boots the laptop from a DVD and initializes the USB that records the ceremony logs. Remember that the laptop has no clock battery backup, which means the time needs to be set manually from a special wall clock in the ceremony room. It’s the same clock used since the first ceremony five years ago, and it’s completely isolated from the rest of the world. It’s drifted slightly, but that’s fine, as it’s only used for logging purposes.\n</p>\n<img class=\"responsive-image-pad-center\" title=\"Root signing ceremony\" alt=\"Root signing ceremony\" src=\"/img/products/ceremony-table.jpg\">\n<p class=\"text--italic\">Ceremony table, before equipment setup</p>\n<p>\nNext, the Ceremony Administrator needs to activate the HSM by placing the three operator cards collected from the Crypto Officers into the machine. Then, the HSM is connected to the laptop via ethernet cable. The Ceremony Administrator now has access to the root-signing key.\n</p>\n",
+						"image": null,
+						"imageAssetFile": null,
+						"buttonText1": null,
+						"buttonUrl1": null,
+						"button1ExtraClass": null,
+						"header2": null,
+						"subheader2": null,
+						"copy2": "<h3 class=\"marketing-h3 marketing-h3--no-desktop-top-margin\">Signing the Root DNS Keys</h3>\n<p>\nThere are two geographically distinct locations that safeguard the root key-signing key: El Segundo, CA and Culpeper, VA. Both are secure facilities, and they contain redundant copies of the key. The ceremony alternates between the El Segundo and Culpeper locations.\n</p>\n<img class=\"responsive-image-pad-center\" title=\"diagram signing the root dns keys\" alt=\"diagram signing the root dns keys\" src=\"/img/products/dns/dnssec/diagram-signing-the-root-dns-keys.svg\">\n<p>\nThe laptop/HSM system is air-gapped, meaning it is physically isolated from any potentially insecure computer networks (e.g., the Internet). The only way to move information from the outside world into the laptop/HSM is via USB drive. Accordingly, the key-signing request is loaded into the laptop via USB. To ensure that the correct key is being signed, a PGP hash of the key-signing request is computed, and Verisign verifies that it is identical to the one they provided.\n</p>\n<p>\nFinally, the Ceremony Administrator can sign the KSR with the private key-signing key. He enters “Y” on a command prompt, and the dramatic portion of the ceremony is complete. The result is a collection of digital signatures, otherwise known in DNSSEC as the RRSIG record, which we’ll explore in a moment.\n</p>\n<p>\nNote that the KSR actually contains a bundle of zone-signing keys that are rotated out every 15-16 days. There are enough keys in the bundle to last until the next Root Signing Ceremony three months from now.\n</p>",
+						"buttonText2": null,
+						"buttonUrl2": null,
+						"button2ExtraClass": null,
+						"backgroundColor": "light-gray",
+						"bladeBorder": "none",
+						"textColor": "black",
+						"sectionPadding": null,
+						"link": null
+					},
+					{
+						"__typename": "bladeDoubleContent",
+						"button": null,
+						"contentTypeId": "bladeDoubleContent",
+						"contentfulId": "7GWHekjQv1C7lyPvTXem22",
+						"bladeName": "DNSSEC - Root Signing - Public Record",
+						"title": null,
+						"longCopy": null,
+						"header1": null,
+						"subheader1": null,
+						"copy1": "<h3 class=\"marketing-h3 marketing-h3--no-desktop-top-margin\">Public Record</h3>\n<p>\nEvery tiny detail is recorded by auditors and <a href=\"https://www.iana.org/dnssec/ceremonies/22\">videotaped</a>, making the whole ceremony a matter of public record. This is crucial if the entire DNSSEC-protected Internet is to trust the root name servers’ signatures.\n</p>\n<p>\nThis video is streamed live during the ceremony, and we were able to track how many people were watching the ceremony in real time. We had a record-breaking number of viewers this time, probably due to better publicity than previous ceremonies. We were even able to have a participant relay questions from the audience via chatroom. We were very happy about all this engagement.\n</p>\n<img class=\"responsive-image-pad-center\" title=\"logs\" alt=\"logs\" src=\"/img/products/logs.png\">\n<p>\nAt the end of the ceremony, logs are printed out and given to anybody in the room that wants a copy. Verisign is given a copy of the signed key set on a USB stick, and they will use these signed DNSKEY RRsets in the root zone during Q4 this year. All materials are put back into tamper-evident bags and placed in their respective safes.\n</p>",
+						"image": null,
+						"imageAssetFile": null,
+						"buttonText1": null,
+						"buttonUrl1": null,
+						"button1ExtraClass": null,
+						"header2": null,
+						"subheader2": null,
+						"copy2": "<h3 class=\"marketing-h3 marketing-h3--no-desktop-top-margin\">Let’s See Those Signed Keys!</h3>\n<p>\nThere are two geographically distinct locations that safeguard the root key-signing key: El Segundo, CA and Culpeper, VA. Both are secure facilities, and they contain redundant copies of the key. The ceremony alternates between the El Segundo and Culpeper locations.\n</p>\n<code>\ndig . dnskey +dnssec\n</code>\n<p>\nThis requests the dnskey records from the root DNS name servers. The interesting part of the response should look something like the following:\n</p>\n<code>\n. 20868 IN DNSKEY 257 3 8 AwEAAagAIKlVZrpC6Ia7gEzahOR+9W29euxhJhVVLOyQbSEW0O8gcCjF FVQUTf6v58fLjwBd0YI0EzrAcQqBGCzh/RStIoO8g0NfnfL2MTJRkxoX bfDaUeVPQuYEhg37NZWAJQ9VnMVDxP/VHL496M/QZxkjf5/Efucp2gaD X6RS6CXpoY68LsvPVjR0ZSwzz1apAzvN9dlzEheX7ICJBBtuA6G3LQpz W5hOA2hzCTMjJPJ8LbqF6dsV6DoBQzgul0sGIcGOYl7OyQdXfZ57relS Qageu+ipAdTTJ25AsRTAoub8ONGcLmqrAmRLKBP1dfwhYB4N7knNnulq QxA+Uk1ihz0=\n</code>\n<code>\n. 20868 IN DNSKEY 256 3 8 AwEAAa67bQck1JjopOOFc+iMISFcp/osWrEst2wbKbuQSUWu77QC9UHL ipiHgWN7JlqVAEjKITZz49hhkLmOpmLK55pTq+RD2kwoyNWk9cvpc+tS nIxT7i93O+3oVeLYjMWrkDAz7K45rObbHDuSBwYZKrcSIUCZnCpNMUtn PFl/04cb\n</code>\n<code>\n. 20868 IN RRSIG DNSKEY 8 0 172800 20150913235959 20150830000000 19036 . QKU/YSUHNXa0coshORV2r8o0PWZ43dn/u1ml4DglqLXTi2WJh+OyMFgi w4Xc7cF4T8Eab5TLbwqDHOrE87fmvcdSgQQOVwYN6jwStHAliuEICs6X rd+sqanyyMpaynLI630k5PuuQVOWxHn/Hyn4yFN5MJoQG9Pz+gn8FjCB oNGs0vu1TQm2m6DSGfjRTd7tRIchXAbOUvEVVnDWaTNPX3c35xqoHlUZ Ta00N9FvKqEwZDjdR1e0BCaDLL/Pk+CRygzOyfSKiuULzKEecsp3jPYY nXfKZmTuMuaQNRmcyJD+WSFwi5XyRgqrnxWUYmFcum4zw1NXdyp0mlGO slQ6NQ==\n</code>\n<p>\nThe first record is the public counterpart to the private key-signing key in the HSM, the second is the zone-signing key provided by Verisign, and the third RRSIG record is what we created during the Root Signing Ceremony. Without that last one, the worldwide DNSSEC system wouldn’t work.\n</p>",
+						"buttonText2": null,
+						"buttonUrl2": null,
+						"button2ExtraClass": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"textColor": "black",
+						"sectionPadding": null,
+						"link": null
+					},
+					{
+						"__typename": "bladeImageText",
+						"contentfulId": "5MHIRo77TkiZBRV4RhVqE9",
+						"title": "Summary",
+						"copy": "The Root Signing Ceremony turns the root DNS name servers into a trust anchor. Instead of trust being derived from a parent zone, trust is assumed. This whole ceremony is designed to reinforce that trust. It’s a very human side of securing the Internet: the reason you can trust the root DNS servers is because you can trust the people signing it. And, the reason you can trust the people signing it is because of the strict protocols they follow while doing so. That’s what the Root Signing Ceremony is all about.",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": null,
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": null,
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "mint",
+						"bladeBorder": "none",
+						"imagePosition": false,
+						"imageSize": "large",
+						"imageTextAlignment": null,
+						"togglesTo": null
+					},
+					{
+						"__typename": "bladeHtml",
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "76Of7L7xZNVIkJ1Xc8JtQe",
+						"htmlContent": "<section\n  class=\"tile tile--border tile__background--white js-cloudflare-setup-video-tile\"\n>\n  <div class=\"tile__content tile__content--fixed\">\n    <h2 class=\"marketing-h2 marketing-h2--center marketing-h2--bottom-margin\">\n      Setting Up Cloudflare Is Easy\n    </h2>\n    <br /><br />\n    <div class=\"grid grid--center\">\n      <video\n        poster=\"/img/getting-started.png\"\n        muted=\"\"\n        autoplay=\"\"\n        loop=\"\"\n        class=\"responsive-image grid__item grid__item js-cloudflare-setup-video no-margin-bottom\"\n        id=\"cloudflare-stream-video\"\n      >\n        <source src=\"/video/cloudflare-setup.mp4?v=3\" type=\"video/mp4\" />\n        <source src=\"/video/cloudflare-setup.webm?v=3\" type=\"video/webm\" />\n      </video>\n      <p class=\"tc db w-100\">\n        Set up a domain in less than 5 minutes. Keep your hosting provider. No\n        code changes required.\n      </p>\n    </div>\n  </div>\n</section>\n\n<hr />",
+						"htmlId": null
+					},
+					{
+						"__typename": "bladePricingPlans",
+						"bladeBorder": "border-bottom",
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"contentTypeId": "bladePricingPlans",
+						"contentfulId": "5Cw4cx3ZpM4B6TicJ55DAp",
+						"title": "Cloudflare Pricing",
+						"description": "Everyone’s Internet application can benefit from using Cloudflare. Pick a plan that fits your needs.",
+						"htmlId": null,
+						"plansList": [
+							{
+								"contentTypeId": "plan",
+								"contentfulId": "7DyKuEy4oqYn3YGTnOqUNh",
+								"type": "Free",
+								"priceCurrencySymbol": null,
+								"price": "$0/month",
+								"priceDurationPeriod": null,
+								"billingSubtext": "Add-ons billed monthly",
+								"description": "For personal websites, blogs, and anyone who wants to explore Cloudflare.",
+								"shortDescription": null,
+								"mediumDescription": null,
+								"supportResponseTitleText": null,
+								"supportResponseTime": null,
+								"ctaButtonText": "ADD A WEBSITE",
+								"ctaButtonUrl": "https://dash.cloudflare.com/sign-up",
+								"ctaButton": null,
+								"additionalTermsText": null,
+								"learnMoreText": null,
+								"plansPageLinkText": null,
+								"plansPageLinkUrl": null,
+								"activatedKeyFeatures": null,
+								"deactivatedKeyFeatures": null,
+								"coreFeatures": null,
+								"supportResponse": null,
+								"bottomCtaLinkUrl": "https://www.cloudflare.com/plans/#overview",
+								"bottomCtaLinkText": "Learn More",
+								"bottomCtaLink": null,
+								"hideTopDivider": null,
+								"featureList1": null,
+								"featureList2": null,
+								"featureList3": null
+							},
+							{
+								"contentTypeId": "plan",
+								"contentfulId": "24mzcA2x7cPSK1RZaisKmb",
+								"type": "Pro",
+								"priceCurrencySymbol": null,
+								"price": "$20/month",
+								"priceDurationPeriod": null,
+								"billingSubtext": "Billed monthly",
+								"description": "For professional websites, blogs, and portfolios requiring basic security and performance.",
+								"shortDescription": null,
+								"mediumDescription": null,
+								"supportResponseTitleText": null,
+								"supportResponseTime": null,
+								"ctaButtonText": "GET PRO",
+								"ctaButtonUrl": "https://dash.cloudflare.com/sign-up",
+								"ctaButton": null,
+								"additionalTermsText": null,
+								"learnMoreText": "Learn More",
+								"plansPageLinkText": null,
+								"plansPageLinkUrl": null,
+								"activatedKeyFeatures": null,
+								"deactivatedKeyFeatures": null,
+								"coreFeatures": null,
+								"supportResponse": null,
+								"bottomCtaLinkUrl": "/plans/pro/",
+								"bottomCtaLinkText": "Learn More",
+								"bottomCtaLink": null,
+								"hideTopDivider": null,
+								"featureList1": null,
+								"featureList2": null,
+								"featureList3": null
+							},
+							{
+								"contentTypeId": "plan",
+								"contentfulId": "18qXBPHc1CntGoHDReJXTk",
+								"type": "Business",
+								"priceCurrencySymbol": null,
+								"price": "$200/month",
+								"priceDurationPeriod": null,
+								"billingSubtext": "Billed monthly",
+								"description": "For small eCommerce websites and businesses requiring advanced security and performance, PCI compliance, and prioritized email support.",
+								"shortDescription": null,
+								"mediumDescription": null,
+								"supportResponseTitleText": null,
+								"supportResponseTime": null,
+								"ctaButtonText": "GET BUSINESS",
+								"ctaButtonUrl": "https://dash.cloudflare.com/sign-up",
+								"ctaButton": null,
+								"additionalTermsText": null,
+								"learnMoreText": "Learn More",
+								"plansPageLinkText": null,
+								"plansPageLinkUrl": null,
+								"activatedKeyFeatures": null,
+								"deactivatedKeyFeatures": null,
+								"coreFeatures": null,
+								"supportResponse": null,
+								"bottomCtaLinkUrl": "/plans/business/",
+								"bottomCtaLinkText": "Learn More",
+								"bottomCtaLink": null,
+								"hideTopDivider": null,
+								"featureList1": null,
+								"featureList2": null,
+								"featureList3": null
+							},
+							{
+								"contentTypeId": "plan",
+								"contentfulId": "19rBu6aYA1FDtSkqOc1NpD",
+								"type": "Enterprise",
+								"priceCurrencySymbol": null,
+								"price": "Contact Us",
+								"priceDurationPeriod": null,
+								"billingSubtext": "Billed annually",
+								"description": "For companies requiring enterprise-grade security and performance, prioritized 24/7/365 phone, email, or chat support, and guaranteed uptime.",
+								"shortDescription": null,
+								"mediumDescription": null,
+								"supportResponseTitleText": null,
+								"supportResponseTime": null,
+								"ctaButtonText": "GET IN TOUCH",
+								"ctaButtonUrl": "/plans/enterprise/contact/",
+								"ctaButton": null,
+								"additionalTermsText": null,
+								"learnMoreText": "Learn More",
+								"plansPageLinkText": null,
+								"plansPageLinkUrl": null,
+								"activatedKeyFeatures": null,
+								"deactivatedKeyFeatures": null,
+								"coreFeatures": null,
+								"supportResponse": null,
+								"bottomCtaLinkUrl": "/plans/enterprise/",
+								"bottomCtaLinkText": "Learn More",
+								"bottomCtaLink": null,
+								"hideTopDivider": null,
+								"featureList1": null,
+								"featureList2": null,
+								"featureList3": null
+							}
+						]
+					},
+					{
+						"__typename": "bladeTrustedBy",
+						"contentTypeId": "bladeTrustedBy",
+						"contentfulId": "bGXZcQriItbwEaMlcrTcV",
+						"bladeBorder": "none",
+						"textColor": "black",
+						"linkText": "View case studies",
+						"linkUrl": "https://www.cloudflare.com/case-studies/",
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"title": "Trusted by millions of Internet properties",
+						"copy": null,
+						"logoList": [
+							{
+								"file": {
+									"publicURL": "[path]/logo_mars_gray_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_loreal_gray_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_doordash_gray_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_garmin_gray_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_ibm_gray_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_23andme_color_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_shopify_color_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_lending-tree_color_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_labcorp_color_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_ncr_gray_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_thomson-reuters_gray_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_zendesk_gray_32px-wrapper.svg"
+								}
+							}
+						],
+						"logoListAssetFile": [
+							{
+								"id": "9a8f1b8a-cd07-5907-979a-86b8a90c1c80",
+								"altText": "Logo mars trusted by gray",
+								"title": "Logo mars trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_mars_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "8c37a7a6-cf55-55cf-a5aa-626692cbb63d",
+								"altText": "Logo loreal trusted by gray",
+								"title": "Logo loreal trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_loreal_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "7cbc697b-807d-5a77-81f0-a4b597366f29",
+								"altText": "Logo doordash trusted by gray",
+								"title": "Logo doordash trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_doordash_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "302a3744-177c-549c-a3e3-ba0eccb9558a",
+								"altText": "Logo garmin trusted by gray",
+								"title": "Logo garmin trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_garmin_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "f1f3837d-a408-5f08-8ead-06d1108cd0e1",
+								"altText": "Logo ibm trusted by gray",
+								"title": "Logo ibm trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_ibm_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "ffd4a407-4457-5421-8b20-54433e485cc7",
+								"altText": "Logo 23andme trusted by gray",
+								"title": "Logo 23andme trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_23andme_color_32px-wrapper.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "128d1d80-3d3f-5e8a-8559-33dbf5392576",
+								"altText": "Logo shopify trusted by gray",
+								"title": "Logo shopify trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_shopify_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "5d11dee2-570b-5d45-86a2-634fc4c71ce1",
+								"altText": "Logo lending tree trusted by gray",
+								"title": "Logo lending tree trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_lending-tree_color_32px-wrapper.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "6f68ad17-e6c8-5155-877e-91855b51cee0",
+								"altText": "Logo labcorp trusted by gray",
+								"title": "Logo labcorp trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_labcorp_trusted-by_gray.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "d20283f3-6fa3-50d0-91a1-715d8d303897",
+								"altText": "Logo ncr trusted by gray",
+								"title": "Logo ncr trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_ncr_gray_32px-wrapper.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "626a14c0-589d-5fff-b8aa-155b8bc7392c",
+								"altText": "Logo thomson reuters trusted by gray",
+								"title": "Logo thomson reuters trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_thomson-reuters_gray_32px-wrapper.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							},
+							{
+								"id": "7b63d2ac-0e8f-5b5b-aeab-27b7128928e8",
+								"altText": "Logo zendesk trusted by gray",
+								"title": "Logo zendesk trusted by gray",
+								"activeAsset": "Contentful Asset",
+								"locale": "en-US",
+								"contentfulAsset": {
+									"file": {
+										"publicURL": "[path]/logo_zendesk_gray_32px-wrapper.svg"
+									}
+								},
+								"brandfolderAsset": null,
+								"brandfolderAssetMobile": null
+							}
+						],
+						"logoUrlList": null
+					}
+				],
+				"noindex": false,
+				"enableZendeskChat": null,
+				"formModal": null,
+				"keepHashUrlSyncedWithScrollPosition": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"pathname": "/dns/dnssec/root-signing-ceremony/",
+			"contentfulId": "4dBi7GiiaEcFz2bolZr04z",
+			"allowedHrefLangs": [
+				"en-US"
+			],
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

@@ -1,0 +1,88 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/digitalocean/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "DigitalOcean",
+				"contentfulId": "1yqif6WCasseeCaKs6oCSa",
+				"nameUrlSlug": "digitalocean",
+				"metaTags": {
+					"metaTitle": " Cloudflare | Case Study | DigitalOcean",
+					"metaDescription": "DigitalOcean answers 10,000 DNS queries every second. Cloudflare ensures that’s 100% clean traffic.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2018-04-17",
+				"homepageUrl": "https://www.digitalocean.com/",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "DigitalOcean answers 10,000 DNS queries every second. Cloudflare ensures that’s 100% clean traffic.",
+				"longDescription": "DigitalOcean answers 10,000 DNS queries every second. Cloudflare ensures their DNS infrastructure is protected.\n\n__The Company__\n\nFew companies have seen growth like [DigitalOcean](https://www.digitalocean.com/). They offer the simplest and most cost effective solution for developers to spin up private, virtualized cloud servers – in under a minute, no less. Following rapid adoption in the developer community since launching three years ago, DigitalOcean has become the third largest cloud provider on the planet, soon to be second behind only Amazon Web Services.\n\n__The Challenge__\n\nIt’s becoming increasingly common for malicious attacks to target DNS servers. With so many developers relying on DigitalOcean to serve their content, DigitalOcean proactively sought out a solution to ensure that their DNS resolutions were fast and always online anywhere in the world. “Even though DigitalOcean never experienced a DDoS attack, we needed to have confidence that going forward our DNS infrastructure would not fall victim of such attacks”, says Sam Kottler, a Platform Engineer at DigitalOcean.\n\n# __10,000__\n### __DNS REQUESTS/SECOND__\n### by utilizing Cloudflare’s DNS Firewall\n\n__The Solution__\n\nIn July 2014, DigitalOcean became one of the first test customers of Cloudflare’s new DNS proxy service, called DNS Firewall. With all of their DNS requests proxied and cached at Cloudflare’s edge, DigitalOcean reliably serves several thousand DNS answers every second.\n\nDNS Firewall stops attack traffic at Cloudflare’s edge, before it ever reaches DigitalOcean’s nameservers. This both saves resources for real customer traffic and keeps nameservers from being knocked offline.\n\n“Cloudflare has incredibly large network and infrastructure to stop really large attacks on the DNS system. We just get clean requests and never have to deal with malicious traffic or attacks on the DNS infrastructure,” says Kottler. “Pairing security with bandwidth savings and fast global DNS response time makes Cloudflare the perfect partner for our business.”",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "10,000 DNS requests/second\n\n100% clean DNS traffic",
+				"relatedCaseStudies": [
+					{
+						"name": "Taringa!",
+						"nameUrlSlug": "taringa"
+					},
+					{
+						"name": "Hostnet",
+						"nameUrlSlug": "hostnet"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "DNS Firewall",
+						"url": "/dns/dns-firewall/"
+					},
+					{
+						"title": "DNS",
+						"url": "/dns/"
+					},
+					{
+						"title": "DDoS Mitigation",
+						"url": "/ddos/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Sam Kottler",
+				"employeeQuoteText": "Cloudflare’s DNS Firewall is exactly what we needed to protect our DNS infrastructure. It is the leading company working in the DNS and web DDoS mitigation space.",
+				"employeeQuoteJobTitle": "Platform Engineer",
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": {
+					"file": {
+						"publicURL": "[path]/case-study-digitalocean.pdf"
+					}
+				},
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/digitalocean.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "1yqif6WCasseeCaKs6oCSa",
+			"pathname": "/case-studies/digitalocean/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": null
+		}
+	}
+}

@@ -1,0 +1,1336 @@
+{
+	"componentChunkName": "component---src-components-page-page-template-tsx",
+	"path": "/plans/free/",
+	"result": {
+		"data": {
+			"page": {
+				"pageName": "Plans - Free Plan",
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "Translated for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "Translated for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "No Page for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": "Translated for Locale"
+				},
+				"relativePath": "plans/free",
+				"topNavOptions": null,
+				"topNavButtonText": null,
+				"topNavButtonUrl": null,
+				"metaTags": {
+					"metaTitle": "Free Plan Overview",
+					"metaDescription": "The Free Plan provides free SSL, CDN, DDoS protection and more. Cloudflare’s Free plan gives you all the basics you need to protect & accelerate your website.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"contentfulId": "3nNAZTs9uedp0HATUpLBt9",
+				"contentTypeId": "page",
+				"promotionalBanner": null,
+				"psaBanner": null,
+				"customTopNav": null,
+				"headerLogo": null,
+				"template": null,
+				"relatedBlades": [
+					{
+						"__typename": "bladeHeroAnimation",
+						"contentfulId": "7c7WX4H1GOIWDmnfZnK3d0",
+						"contentTypeId": "bladeHeroAnimation",
+						"title": "The basics you need to protect and accelerate your site",
+						"subtitle": null,
+						"copy": "Our mission is to build a better Internet. We believe every website should have free access to foundational security and performance.",
+						"buttonColor": "orange",
+						"buttonColor2": "orange",
+						"buttonText1": "Sign Up Free",
+						"buttonText1LoggedIn": null,
+						"buttonUrl1": "https://dash.cloudflare.com/sign-up",
+						"buttonUrl1LoggedIn": null,
+						"button1ExtraClass": null,
+						"buttonText2": null,
+						"buttonText2LoggedIn": null,
+						"buttonUrl2": null,
+						"button2ExtraClass": null,
+						"bladeBorder": "none",
+						"htmlId": null,
+						"textColor": "black",
+						"includeVideo": true,
+						"streamVideoId": "5efe5eca1517ad1a2f9ff3e75cc9cf5a",
+						"streamOptions": [
+							"controls",
+							"captions"
+						],
+						"streamCaptions": "en",
+						"popupStreamId": null,
+						"popupText": null,
+						"button1OpenInNewTab": null,
+						"button2OpenInNewTab": null,
+						"streamThumbnails": null,
+						"sectionPadding": null,
+						"streamPosterAssetFile": null,
+						"streamPoster": null,
+						"imageSize": "Medium",
+						"imagePosition": null,
+						"leftLinkUrl": null,
+						"leftLink": null,
+						"leftLinkLoggedIn": null,
+						"leftLinkOptions": "hide",
+						"backgroundColor": "white",
+						"textlayoutMode": null,
+						"backgroundAssetFile": null,
+						"imageLayout": null,
+						"image": null,
+						"imageAssetFile": null
+					},
+					{
+						"__typename": "bladeFourFeatures",
+						"contentfulId": "40oyCaPGFso0N2cmO1VZ3S",
+						"backgroundColor": "light-blue",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": "keyfeatures",
+						"copy": null,
+						"title": "Get your site up and running with our Free plan features:",
+						"subtitle": null,
+						"bladeStyle": null,
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1DtrKq9oSYMseIT6C14CRM",
+								"title": "Unmatched DDoS mitigation",
+								"titleSize": "small",
+								"description": "Protect your site with the world’s #1 ranked DDoS mitigation solution. Rest easy knowing Cloudflare’s got your back. \n",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/ddos-attack.png"
+									}
+								},
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6HSYYsYLFNIeDcM9uB7Klw",
+								"title": "The world’s fastest DNS resolver",
+								"titleSize": "small",
+								"description": "Leverage the most private and the world’s fastest DNS resolver: 1.1.1.1\nWe will never sell your data or use it to target you with ads. Period.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/reliability-dns-resolver.png"
+									}
+								},
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2LPuZYrg5eRUqRKEEROFbi",
+								"title": "The world’s #1 ranked Content Delivery Network (CDN)",
+								"titleSize": "small",
+								"description": "Accelerate your website with our %{DataCenterCount} data centers worldwide. \nWe route your traffic to our closest data center ensuring lightning-fast load times.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/_Pangea__network-scale-blue.svg"
+									}
+								},
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "219j4kTPgIh1f7rNt1dEI9",
+								"title": "Free SSL certificate",
+								"titleSize": "small",
+								"description": "Secure the transfer of data between you and your website visitors instantly, with a free shared SSL certificate from Cloudflare.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/cerificate.png"
+									}
+								},
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
+						"__typename": "bladeRichTextColumnGroup",
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "2gWrIQ7Iwrf0VadBOXbmuT",
+						"htmlId": "usecases",
+						"mainHeadline": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-bottom-padding",
+						"columnLayout": "One Column Wide",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "363vzyzErmlSUBViiUmCD0",
+								"title": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Popular use cases to protect and accelerate your:",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"__typename": "bladeCarousel",
+						"contentfulId": "Ecm5KKiMQyUpq4W37YJ2K",
+						"contentTypeId": "bladeCarousel",
+						"entryTitle": "Plan - Free Plan - Use Cases",
+						"slides": [
+							{
+								"__typename": "bladeImageText",
+								"contentfulId": "60sNu3SSanoCGY9JgcP7p2",
+								"title": "Blog",
+								"copy": "Eliminate slow load time for your readers using Cloudflare’s massive content delivery network.",
+								"toggleText": null,
+								"button": null,
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"link": null,
+								"subheadline": null,
+								"button1Text": null,
+								"button1Url": null,
+								"button1Color": null,
+								"button2Text": null,
+								"button2Url": null,
+								"button2Color": null,
+								"streamOptions": [
+									"controls"
+								],
+								"streamCaptions": null,
+								"streamVideoId": null,
+								"streamThumbnails": null,
+								"streamPoster": null,
+								"streamPosterAssetFile": null,
+								"image": {
+									"file": {
+										"publicURL": "[path]/network-map-spot-hero-illustration__1_.svg"
+									}
+								},
+								"imageAssetFile": null,
+								"featureList": null,
+								"contentTypeId": "bladeImageText",
+								"sectionTitle": null,
+								"htmlId": null,
+								"titleSize": null,
+								"sectionPadding": "tile--no-top-bottom-padding",
+								"backgroundColor": "white",
+								"bladeBorder": "none",
+								"imagePosition": false,
+								"imageSize": null,
+								"imageTextAlignment": null,
+								"togglesTo": null
+							},
+							{
+								"__typename": "bladeImageText",
+								"contentfulId": "1KjfBR3hW7d2Wi4pwKdfSb",
+								"title": "WordPress Site",
+								"copy": "Leverage Cloudflare's edge network of %{DataCenterCount} data centers for decreased load times and next-level web security, with features built specifically for WordPress.",
+								"toggleText": null,
+								"button": null,
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"link": null,
+								"subheadline": null,
+								"button1Text": null,
+								"button1Url": null,
+								"button1Color": null,
+								"button2Text": null,
+								"button2Url": null,
+								"button2Color": null,
+								"streamOptions": [
+									"controls"
+								],
+								"streamCaptions": null,
+								"streamVideoId": null,
+								"streamThumbnails": null,
+								"streamPoster": null,
+								"streamPosterAssetFile": null,
+								"image": {
+									"file": {
+										"publicURL": "[path]/B.png"
+									}
+								},
+								"imageAssetFile": null,
+								"featureList": null,
+								"contentTypeId": "bladeImageText",
+								"sectionTitle": null,
+								"htmlId": null,
+								"titleSize": null,
+								"sectionPadding": "tile--no-top-bottom-padding",
+								"backgroundColor": "white",
+								"bladeBorder": "none",
+								"imagePosition": false,
+								"imageSize": null,
+								"imageTextAlignment": null,
+								"togglesTo": null
+							},
+							{
+								"__typename": "bladeImageText",
+								"contentfulId": "4CSmaLLXEKjxUVEJMJAGAT",
+								"title": "Minecraft Server",
+								"copy": "Prevent your Minecraft server from being DDoSed with Cloudflare's Advanced DDoS Mitigation. In 2021 Cloudflare mitigated the largest DDoS attack in history coming in at 17.2 million requests per second.",
+								"toggleText": null,
+								"button": null,
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"link": null,
+								"subheadline": null,
+								"button1Text": null,
+								"button1Url": null,
+								"button1Color": null,
+								"button2Text": null,
+								"button2Url": null,
+								"button2Color": null,
+								"streamOptions": [
+									"controls"
+								],
+								"streamCaptions": null,
+								"streamVideoId": null,
+								"streamThumbnails": null,
+								"streamPoster": null,
+								"streamPosterAssetFile": null,
+								"image": {
+									"file": {
+										"publicURL": "[path]/ddos-protection-hero-illustration.svg"
+									}
+								},
+								"imageAssetFile": null,
+								"featureList": null,
+								"contentTypeId": "bladeImageText",
+								"sectionTitle": null,
+								"htmlId": null,
+								"titleSize": null,
+								"sectionPadding": "tile--no-top-bottom-padding",
+								"backgroundColor": "white",
+								"bladeBorder": "none",
+								"imagePosition": false,
+								"imageSize": null,
+								"imageTextAlignment": null,
+								"togglesTo": null
+							},
+							{
+								"__typename": "bladeImageText",
+								"contentfulId": "6B88g7khbDFVwz53a3GPSU",
+								"title": "E-commerce Store",
+								"copy": "Speed up and protect your e-commerce site with Cloudflare's vast network of data centers. Cloudflare’s network is within 50 ms from 95% of the world’s Internet-connected population. Your site's content is routed to the closest data center to your customer resulting in extremely fast load times. Shopify uses Cloudflare to protect and secure its eCommerce SaaS!",
+								"toggleText": null,
+								"button": null,
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"link": null,
+								"subheadline": null,
+								"button1Text": null,
+								"button1Url": null,
+								"button1Color": null,
+								"button2Text": null,
+								"button2Url": null,
+								"button2Color": null,
+								"streamOptions": [
+									"controls"
+								],
+								"streamCaptions": null,
+								"streamVideoId": null,
+								"streamThumbnails": null,
+								"streamPoster": null,
+								"streamPosterAssetFile": null,
+								"image": {
+									"file": {
+										"publicURL": "[path]/cloudflare-network-globe-hero-illustration.svg"
+									}
+								},
+								"imageAssetFile": null,
+								"featureList": null,
+								"contentTypeId": "bladeImageText",
+								"sectionTitle": null,
+								"htmlId": null,
+								"titleSize": null,
+								"sectionPadding": "tile--no-top-bottom-padding",
+								"backgroundColor": "white",
+								"bladeBorder": "none",
+								"imagePosition": false,
+								"imageSize": null,
+								"imageTextAlignment": null,
+								"togglesTo": null
+							},
+							{
+								"__typename": "bladeImageText",
+								"contentfulId": "4ZpGz7LDtMKtCoUbYAjkBQ",
+								"title": "Web Applications",
+								"copy": "Protect & speed up your web applications absolutely free. Kick off your next project without worrying about DDoS attacks and data breaches!",
+								"toggleText": null,
+								"button": null,
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"link": null,
+								"subheadline": null,
+								"button1Text": null,
+								"button1Url": null,
+								"button1Color": null,
+								"button2Text": null,
+								"button2Url": null,
+								"button2Color": null,
+								"streamOptions": [
+									"controls"
+								],
+								"streamCaptions": null,
+								"streamVideoId": null,
+								"streamThumbnails": null,
+								"streamPoster": null,
+								"streamPosterAssetFile": null,
+								"image": {
+									"file": {
+										"publicURL": "[path]/accelerate-internet-applications-hero-illustration.png"
+									}
+								},
+								"imageAssetFile": null,
+								"featureList": null,
+								"contentTypeId": "bladeImageText",
+								"sectionTitle": null,
+								"htmlId": null,
+								"titleSize": null,
+								"sectionPadding": "tile--no-top-bottom-padding",
+								"backgroundColor": "white",
+								"bladeBorder": "none",
+								"imagePosition": false,
+								"imageSize": null,
+								"imageTextAlignment": null,
+								"togglesTo": null
+							},
+							{
+								"__typename": "bladeImageText",
+								"contentfulId": "5Aj9Lz5ExIA9AcNTuQH9xU",
+								"title": "JAMStack Site",
+								"copy": "Kick off your JAMStack site the right way. By leveraging the benefits of Cloudflare, you’ll have all the basics you need to get started.",
+								"toggleText": null,
+								"button": null,
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"link": null,
+								"subheadline": null,
+								"button1Text": null,
+								"button1Url": null,
+								"button1Color": null,
+								"button2Text": null,
+								"button2Url": null,
+								"button2Color": null,
+								"streamOptions": [
+									"controls"
+								],
+								"streamCaptions": null,
+								"streamVideoId": null,
+								"streamThumbnails": null,
+								"streamPoster": null,
+								"streamPosterAssetFile": null,
+								"image": {
+									"file": {
+										"publicURL": "[path]/ensure-application-availability-hero-illustration.svg"
+									}
+								},
+								"imageAssetFile": null,
+								"featureList": null,
+								"contentTypeId": "bladeImageText",
+								"sectionTitle": null,
+								"htmlId": null,
+								"titleSize": null,
+								"sectionPadding": "tile--no-top-bottom-padding",
+								"backgroundColor": "white",
+								"bladeBorder": "none",
+								"imagePosition": false,
+								"imageSize": null,
+								"imageTextAlignment": null,
+								"togglesTo": null
+							}
+						],
+						"bladeLayoutConfig": {
+							"backgroundColor": "white",
+							"bladeBorder": "none",
+							"sectionPadding": "tile--no-top-padding"
+						}
+					},
+					{
+						"__typename": "bladeImageText",
+						"contentfulId": "3Eyh54hYnIgZawIu4nMVfj",
+						"title": "Why is our free plan so good?",
+						"copy": "At Cloudflare, our mission is to help build a better internet. We believe the web should be open and free, and that ALL websites and web users, no matter how small, should be safe, secure, and fast. Cloudflare always has and always will offer a generous free plan for [many reasons](https://webmasters.stackexchange.com/questions/88659/how-can-cloudflare-offer-a-free-cdn-with-unlimited-bandwidth). \n\nWe work hard to minimize the cost of running our network so we can offer huge value in our Free plan. On top of this, protecting more sites means we get better data about the types of attacks on our network so we can offer better security and protection for all. \n\nAs a privacy-first company, one thing we DON’T do is sell your data. In fact, Cloudflare recognizes privacy in personal data as a fundamental human right and has taken a [number of steps](https://blog.cloudflare.com/certifying-our-commitment-to-your-right-to-information-privacy/) to demonstrate our commitment to privacy.",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": null,
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": {
+							"file": {
+								"publicURL": "[path]/dns-unmetered-ddos-spot-illustration.svg"
+							}
+						},
+						"imageAssetFile": null,
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": "statement",
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "light-blue",
+						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": null,
+						"imageTextAlignment": null,
+						"togglesTo": null
+					},
+					{
+						"__typename": "bladeQuote",
+						"contentTypeId": "bladeQuote",
+						"contentfulId": "2YN4I8fvkM6E67A60eTeum",
+						"quote": "“Knowing that we don’t have to worry about DDoS attacks against our API and gateway servers gives us the peace of mind to focus on improving our product.”",
+						"quoteAuthor": "Stanislav Vishnevskiy",
+						"quoteTitle": "CTO of Discord",
+						"learnMoreText": null,
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"learnMoreUrl": null,
+						"htmlId": "customers",
+						"image": {
+							"file": {
+								"publicURL": "[path]/trustedby-discord-black.svg"
+							}
+						},
+						"imageAssetFile": null,
+						"imageLinkUrl": null,
+						"logoList": null,
+						"logoListAssetFile": null,
+						"quoteCarousel": null
+					},
+					{
+						"__typename": "bladeEnablement",
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "6TuOdp66LZJIKzvJgFktBO",
+						"copy": null,
+						"buttonExtraClass": null,
+						"buttonColor": "orange",
+						"buttonColor2": "orange",
+						"title": "Get started in 5 min",
+						"backgroundColor": "blue",
+						"buttonText": "Sign Up Free",
+						"buttonUrl": "https://dash.cloudflare.com/sign-up",
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "large",
+						"htmlId": null,
+						"textColor": "white",
+						"bladeBorder": "none",
+						"buttonOne": null,
+						"buttonTwo": null,
+						"sectionPadding": null
+					},
+					{
+						"__typename": "bladeAddOns",
+						"locale": "en-US",
+						"entryTitle": "Plan - Free Plan - Add on",
+						"htmlId": "addons",
+						"contentfulId": "4xEOd2tVcLadFmlK2qnQQ4",
+						"contentTypeId": "bladeAddOns",
+						"caption": null,
+						"title": "Add-ons to take your site to the next level",
+						"grouped": true,
+						"description": null,
+						"variant": null,
+						"callToAction": null,
+						"sectionPadding": "default",
+						"bladeBorder": "none",
+						"backgroundColor": "white",
+						"addOns": [
+							{
+								"locale": "en-US",
+								"entryTitle": "AddOn-Load Balancing",
+								"contentfulId": "5B7nEb62TCIhzLyRQIVDnI",
+								"contentTypeId": "elementAddOn",
+								"iconAssetFile": {
+									"id": "5a959b28-b768-5052-bf8d-c87c2f5dcfb3",
+									"altText": "Reliability load balancer blue",
+									"title": "Reliability load balancer blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 2275,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/reliability-load-balancer-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"title": "Load Balancing",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Load Balancing safeguards from service disruptions with local and global traffic load balancing, geographic routing, server health checks, and failover, ensuring the continuous availability of your critical resources.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": "Performance",
+								"pricingText": "Starting at $5 per month",
+								"learnMoreLink": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "7HZPTHAm4xTECpoCFOVuts",
+									"elementName": "AddOn-Load Balancing-Link",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "https://www.cloudflare.com/load-balancing/",
+									"modal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonWidth": "auto",
+									"buttonColor": "blue",
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "4rHLtXy296ik2cpAYeMpC9",
+									"elementName": "AddOn-Load Balancing-Activate-Button",
+									"standardText": null,
+									"text": "Activate",
+									"url": "https://dash.cloudflare.com/?to=/:account/:zone/traffic/load-balancing",
+									"loggedInUrl": null,
+									"modal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
+							},
+							{
+								"locale": "en-US",
+								"entryTitle": "AddOn-Rate Limiting",
+								"contentfulId": "5Xj6xAbpjk6NevG7RKAU99",
+								"contentTypeId": "elementAddOn",
+								"iconAssetFile": {
+									"id": "326d66b9-319c-522a-9a89-d79f3d382742",
+									"altText": "Security shield ddos protection blue",
+									"title": "Security shield ddos protection blue",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/security-shield-ddos-protection.svg"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"title": "Rate Limiting",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Rate Limiting protects against denial-of-service attacks, brute-force password attempts, and other types of abusive behavior targeting the application layer.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": "Security",
+								"pricingText": "$.05 per 10k good requests",
+								"learnMoreLink": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "5Mr8XUUFlJtOMo2amUScPV",
+									"elementName": "AddOn-Rate Limiting-Learn more",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "/rate-limiting/",
+									"modal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonWidth": "auto",
+									"buttonColor": "blue",
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "25nOqVRhO2PRZ3fpqwG8qE",
+									"elementName": "AddOn-Rate Limiting-Button",
+									"standardText": null,
+									"text": "Activate",
+									"url": "https://dash.cloudflare.com/firewall",
+									"loggedInUrl": null,
+									"modal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
+							},
+							{
+								"locale": "en-US",
+								"entryTitle": "AddOn-Argo Smart Routing",
+								"contentfulId": "2Sxpb9pyUy8kXVotbxMilY",
+								"contentTypeId": "elementAddOn",
+								"iconAssetFile": {
+									"id": "d0d91ab6-8531-56fe-89d3-5fe996d9f7bf",
+									"altText": "Performance intelligent routing blue",
+									"title": "Performance intelligent routing blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 2190,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/performance-intelligent-routing-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"title": "Argo Smart Routing",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Argo is a service that uses optimized routes across the Cloudflare network to deliver responses to your users more quickly, reliably, and securely. Argo includes: Smart Routing and Tiered Caching.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": "Performance",
+								"pricingText": "Starting at $5 per month",
+								"learnMoreLink": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "5RvfL3OxRa3M7nNSk9adTx",
+									"elementName": "AddOn-Argo Smart Routing-Link",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "/products/argo-smart-routing/",
+									"modal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonWidth": "auto",
+									"buttonColor": "blue",
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "54kJUd2Ah2YIMlZ9ktnlvR",
+									"elementName": "AddOn-Argo Smart Routing Activate",
+									"standardText": null,
+									"text": "Activate",
+									"url": "https://dash.cloudflare.com/traffic",
+									"loggedInUrl": null,
+									"modal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
+							},
+							{
+								"locale": "en-US",
+								"entryTitle": "AddOns-Workers",
+								"contentfulId": "2hiZeeVrUgTu5KrCMq8fbO",
+								"contentTypeId": "elementAddOn",
+								"iconAssetFile": {
+									"id": "e9338336-ce81-5938-a534-b60611eb0d00",
+									"altText": "Cloudflare workers blue",
+									"title": "Cloudflare workers blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 493,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/cloudflare-workers-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"title": "Workers",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare Workers lets developers deploy serverless code written in JavaScript, Rust, C, and C++ to Cloudflare's edge, closer to the end user.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": "Serverless",
+								"pricingText": "Try for free",
+								"learnMoreLink": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "ygNXZZAF1sDx37AAepHxi",
+									"elementName": "AddOns-Workers-Learn More Link",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "/products/cloudflare-workers/",
+									"modal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonWidth": "auto",
+									"buttonColor": "blue",
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "3yibLzUww1YcAMJT7TE7WV",
+									"elementName": "AddOns-Workers-Activate-Button",
+									"standardText": null,
+									"text": "Activate",
+									"url": "https://dash.cloudflare.com/login?redirect_uri=https%3A%2F%2Fdash.cloudflare.com%2F%3Faccount%3Dworkers",
+									"loggedInUrl": null,
+									"modal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
+							},
+							{
+								"locale": "en-US",
+								"entryTitle": "AddOns - Access",
+								"contentfulId": "4pR30DnoyAOu6CWepQULSG",
+								"contentTypeId": "elementAddOn",
+								"iconAssetFile": {
+									"id": "87f9101d-857c-5202-9a77-f2f35ff7e4a9",
+									"altText": "Cloudflare access blue",
+									"title": "Cloudflare access blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 1409,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/cloudflare-access-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"title": "Access",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare Access protects internal resources by securing, authenticating and monitoring access per-user and by application.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": "Security",
+								"pricingText": "Starting at $3 per month",
+								"learnMoreLink": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "3Lq9pF6rA4CzKFD59HRi97",
+									"elementName": "AddOns - Access-Learn more",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "https://www.cloudflare.com/teams/access/",
+									"modal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonWidth": "auto",
+									"buttonColor": "orange",
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "4BV4DB9EGSfR1qpUY2VGB",
+									"elementName": "AddOns - Access - Button",
+									"standardText": null,
+									"text": "Book Black Hat 2022 Meeting",
+									"url": "https://calendly.com/cloudflare-area-1/cloudflare-at-black-hat-usa-2022?text_color=4e4e4e&primary_color=ff6633",
+									"loggedInUrl": null,
+									"modal": null,
+									"openInNewTab": true,
+									"locale": "en-US"
+								}
+							},
+							{
+								"locale": "en-US",
+								"entryTitle": "AddOns-Video Streaming",
+								"contentfulId": "24Ry9wWD5ffaeFvWwRHvC7",
+								"contentTypeId": "elementAddOn",
+								"iconAssetFile": {
+									"id": "354f7679-9260-56e3-8424-c7ab413df9c4",
+									"altText": "Browser video blue",
+									"title": "Browser video blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 1081,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/browser-video-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"title": "Video Streaming",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare Stream makes streaming high quality video at scale, easy and affordable.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": "Serverless",
+								"pricingText": "Starting at $5 per month",
+								"learnMoreLink": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "eGJIN6Luq9PdcMZhG4gZM",
+									"elementName": "AddOns-Video Streaming-Learn more link",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "/products/cloudflare-stream/",
+									"modal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonWidth": "auto",
+									"buttonColor": "blue",
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "BzhTYyTCjQM2igJSZ7Nhm",
+									"elementName": "AddOns-Video Streaming-Activate Button",
+									"standardText": null,
+									"text": "Activate",
+									"url": "https://dash.cloudflare.com/stream",
+									"loggedInUrl": null,
+									"modal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
+							},
+							{
+								"locale": "en-US",
+								"entryTitle": "AddOn-Advanced Certificate Manager",
+								"contentfulId": "2juxr6lX3uIexGa0kvAK8N",
+								"contentTypeId": "elementAddOn",
+								"iconAssetFile": {
+									"id": "56e4ad29-94fc-5b3f-92ff-e7e657e886cb",
+									"altText": "Certificate blue",
+									"title": "Certificate blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 1415,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/certificate-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"title": "Advanced Certificate Manager",
+								"description": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Advanced Certificate Manager is a flexible and customizable way to issue and manage certificates in Cloudflare.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								},
+								"category": "Security",
+								"pricingText": "Starting at $10 per month",
+								"learnMoreLink": {
+									"contentTypeId": "elementLink",
+									"contentfulId": "1Fmlzx9rj0olhLPljfSKDW",
+									"elementName": "AddOn-Universal SSL",
+									"standardText": null,
+									"text": "Learn more",
+									"url": "https://blog.cloudflare.com/advanced-certificate-manager/",
+									"modal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonWidth": "auto",
+									"buttonColor": "blue",
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "2dXiimNvQNb7eubUup5Pfc",
+									"elementName": "AddOn-Advanced Certificate Manager-Activate-Button",
+									"standardText": null,
+									"text": "Activate",
+									"url": "https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/acm",
+									"loggedInUrl": null,
+									"modal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
+							}
+						]
+					},
+					{
+						"__typename": "bladeTrustedBy",
+						"contentTypeId": "bladeTrustedBy",
+						"contentfulId": "7roMf5T3oTs2dRPbWwH7tG",
+						"bladeBorder": "none",
+						"textColor": "black",
+						"linkText": null,
+						"linkUrl": null,
+						"sectionPadding": "tile--no-bottom-padding",
+						"backgroundColor": "light-blue",
+						"title": "Trusted by millions of Internet properties",
+						"copy": null,
+						"logoList": [
+							{
+								"file": {
+									"publicURL": "[path]/logo_discord_trusted-by_gray.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_ibm_trusted-by_gray.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_mozilla_trusted-by_gray.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_zendesk_trusted-by_gray.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_angellist_trusted-by_gray.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_hubspot_trusted-by_gray.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_wp-engine_gray.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_github_gray_32px-wrapper_svg.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/trustedby-digital-ocean-black.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_coinbase_gray.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_shopify_color_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/logo_doordash_gray_32px-wrapper.svg"
+								}
+							}
+						],
+						"logoListAssetFile": null,
+						"logoUrlList": null
+					},
+					{
+						"__typename": "bladeEnablement",
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "7DszJXPifKrKbU6Od6ZPjL",
+						"copy": null,
+						"buttonExtraClass": null,
+						"buttonColor": "orange",
+						"buttonColor2": "orange",
+						"title": "Get started in 5 min",
+						"backgroundColor": "blue",
+						"buttonText": "Sign Up Free",
+						"buttonUrl": "https://dash.cloudflare.com/sign-up",
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "large",
+						"htmlId": null,
+						"textColor": "white",
+						"bladeBorder": "none",
+						"buttonOne": null,
+						"buttonTwo": null,
+						"sectionPadding": null
+					}
+				],
+				"noindex": false,
+				"enableZendeskChat": false,
+				"formModal": null,
+				"keepHashUrlSyncedWithScrollPosition": false
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"pathname": "/plans/free/",
+			"contentfulId": "3nNAZTs9uedp0HATUpLBt9",
+			"allowedHrefLangs": [
+				"en-US",
+				"zh-CN",
+				"zh-TW",
+				"fr-FR",
+				"de-DE",
+				"it-IT",
+				"ja-JP",
+				"ko-KR",
+				"pt-BR",
+				"es-ES",
+				"zh-Hans-CN"
+			],
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

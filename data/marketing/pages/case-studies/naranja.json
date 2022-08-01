@@ -1,0 +1,109 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/naranja/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Naranja",
+				"contentfulId": "3ogL4LqIRC0PVJ3KjiRKHJ",
+				"nameUrlSlug": "naranja",
+				"metaTags": {
+					"metaTitle": "Naranja | Cloudflare",
+					"metaDescription": "Cloudflare's performance and security solutions enable Naranja to confidently move forward with its digital transformation and cloud migration.",
+					"twitterCustomImage": {
+						"file": {
+							"publicURL": "[path]/naranja_meta.png"
+						}
+					},
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/naranja_meta.png"
+						}
+					},
+					"facebookCustomImage": {
+						"file": {
+							"publicURL": "[path]/naranja_meta.png"
+						}
+					}
+				},
+				"orderDate": "2020-10-13",
+				"homepageUrl": "https://www.naranja.com/",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "Cloudflare's performance and security solutions enable Naranja to confidently move forward with its digital transformation and cloud migration.",
+				"longDescription": "## Cloudflare security and performance solutions provide a solid foundation for  Naranja’s digital transformation\n\nFounded in 1985, Naranja is Argentina’s largest credit card issuer, with over six million customers. The bank, which primarily services consumers, also offers loans and insurance products through 200 branches and commercial offices covering all provinces in the country. \n\n### __Challenge: Migrate to the cloud while avoiding vendor lock-in__\n\nNaranja had been running legacy infrastructure from two on-prem data centers, but over the past three years, it has experienced tremendous growth. The company needed scalability, flexibility, and the ability to implement modern technologies, such as smart analytics, mobility, and contactless payment so that it could continue providing valuable consumer solutions while simultaneously enhancing its value proposition. On-prem infrastructure was no longer meeting Naranja’s needs.\n\nThe company embarked on a company-wide digital transformation project that involved moving all of its systems and data to the cloud. The company’s leadership did not want to be tied down to any particular cloud vendor; they wanted to build a multi-cloud environment that would give them the flexibility to run the right workloads, in the right place, at the right time. They decided to move most of their workloads to AWS and put some of them in Microsoft Azure.\n\nNaranja’s next step was to select a cloud-hosted solution that would enable them to maximize the security of their AWS and Azure environments while achieving maximum performance and value.\n\n### __Solution: Cloudflare’s performance and security solutions enhance performance, improve visibility into security issues, and block threats__\n\nAfter evaluating a number of performance and security solutions from a variety of vendors, Naranja chose Cloudflare. They liked that Cloudflare’s solutions were cloud host-agnostic and cloud-native, and they appreciated that Cloudflare had a local presence in Argentina, which meant that their team could work closely with Cloudflare’s engineers throughout their cloud migration process. \n\n“We see Cloudflare as a valuable entry point to the cloud,” explains Gabriel Balastegui, Cloud Networking Engineer. “Cloudflare is our first line of security perimeter defense. They’re a key partner that allows Naranja to run workloads in the cloud of our choice, as we see best.”\n\nNaranja first implemented Cloudflare DNS and Load Balancer, later adding Page Rules, WAF, rate limiting, and CDN. The Cloudflare global network reduced egress traffic to its AWS deployment by 80%, which resulted in significant cost savings, as well as enhanced reliability and fewer outages. \n\n“We’ve seen some of the greatest tangible benefits from the Cloudflare network,” Balastegui says, “but perhaps the greatest tangible benefit is the visibility Cloudflare gives us into our traffic, security policies, and security incidents. We had some visibility before, when we were running on-prem solutions, but Cloudflare has considerably improved it.”\n\nBalastegui reports a very positive experience with Cloudflare’s security suite. In one 72-hour period, Cloudflare WAF blocked over 730,000 attempted attacks across five highly trafficked domains. “We value the visibility and threat mitigation that Cloudflare provides. The user interface is very user-friendly. We have WAF turned on at a very high level and are using most of the features of the firewall rules. We use them quite a bit for geo-blocking, so that we can block traffic from countries that do not have AWS instances. It’s been extremely useful in finding issues at the app level, which allows us to modify the code and mitigate them.” Tarjeta Naranja is also in the process of integrating Cloudflare’s security logs with its Splunk deployment.\n\nCloudflare has also enabled Naranja to automate IaaS deployment and configuration by using Cloudflare APIs with platforms such as Terraform. When the company originally implemented Cloudflare’s solutions, they used Cloudflare’s DNS service in a C-NAME configuration on their most critical domain. “Over time, we gained a lot of confidence in Cloudflare’s solutions, and we’re looking to migrate this domain to a full setup going forward,” says Balastegui.\n\nNaranja is also very satisfied with Cloudflare Argo. After using Argo Smart Routing, they saw a 20% to 30% improvement in load times. Currently, Naranja is starting to use Argo Tunnel and is moving more of its on-prem workloads to Cloudflare to obtain greater visibility and enhance the security of its legacy apps. They are also testing using Argo Tunnel as an intermediate connectivity layer with their VPN and WAN to connect their datacenter with their cloud instances, and they are performing testing on planned use cases for Cloudflare Workers, including header manipulation.\n",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "- Cloudflare CDN reduced egress traffic from Naranja’s AWS environment by 80%\n\n- Argo Smart Routing improved load times by up to 30%\n\n- In one 72-hour period, Cloudflare WAF blocked over 730,000 attempted attacks across five highly trafficked domains",
+				"relatedCaseStudies": [
+					{
+						"name": "Trustbank ",
+						"nameUrlSlug": "trust-bank"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Web Application Firewall (WAF) ",
+						"url": "/waf/"
+					},
+					{
+						"title": "Argo Smart Routing ",
+						"url": "/products/argo-smart-routing/"
+					},
+					{
+						"title": "CDN",
+						"url": "/cdn/"
+					},
+					{
+						"title": "DNS",
+						"url": "/dns/"
+					},
+					{
+						"title": "Rate Limiting",
+						"url": "/rate-limiting/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Gabriel Balastegui",
+				"employeeQuoteText": "Cloudflare is our first line of security perimeter defense. They’re a key partner that allows Naranja to run workloads in the cloud of our choice, as we see best.",
+				"employeeQuoteJobTitle": "Cloud Networking Engineer",
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/tarjeta_naranja.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": [
+					"de-de",
+					"fr-fr",
+					"pt-br",
+					"zh-cn"
+				]
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "3ogL4LqIRC0PVJ3KjiRKHJ",
+			"pathname": "/case-studies/naranja/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US",
+				"zh-CN",
+				"fr-FR",
+				"de-DE",
+				"pt-BR",
+				"es-ES",
+				"zh-Hans-CN"
+			]
+		}
+	}
+}

@@ -1,0 +1,90 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/canva/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Canva",
+				"contentfulId": "1MtxTckBFclX13LNUBlfD0",
+				"nameUrlSlug": "canva",
+				"metaTags": {
+					"metaTitle": "Canva",
+					"metaDescription": "Cloudflare enables Canva to scale its global operations with solutions for security, access management and serverless",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2020-09-18",
+				"homepageUrl": "https://www.canva.com/",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "Cloudflare enables Canva to scale its global operations with solutions for security, access management and serverless",
+				"longDescription": "## Canva powers global expansion with Cloudflare security, access management and serverless solutions\n\nWith a recent valuation of $6 billion, Canva is the most valuable private technology business in Australia. The company’s graphic design platform is used by over 35 million people worldwide, including Hubspot, Warner Music Group and Skyscanner. Canva serves its community through an in-browser platform with free and subscription-based tiers. \n\n“There are many design tools available, but a lot of them require extensive training in graphic design,” explains Jim Tyrrell, Canva’s Head of Infrastructure. “Canva removes the complexity so everyone can express themselves easily through graphic design.”\n\n### __Canva’s partnership with Cloudflare grows along with its business__\n\nCanva’s partnership with Cloudflare began in 2016, when Canva started using Cloudflare’s free DDoS protection and CDN. “We needed a solution that would scale globally as Canva expanded its reach into other markets,” explains Tyrrell. “We liked that Cloudflare allows customers to start with a free tier, see value, and then upgrade. That’s pretty similar to how Canva works too.” As Canva’s user base grew, the company expanded its partnership with Cloudflare so that it could continue to scale globally and maintain high performance without sacrificing security.\n\nCanva now uses nearly all of Cloudflare’s products, spanning use cases as diverse as remote application access, serverless development, and bot management. “We transmit about four petabytes of data a month. Cloudflare is essential to handling that sort of bandwidth while maintaining security.”\n\n### __Cloudflare Access enables easier & far more secure remote access to internal apps__\n\nAs the company rapidly expanded, took on more employees, and outsourced more work to third-party developers, IT administrators had to find a better way of authenticating users and tracking app usage. \n\nTo improve security and efficiency, Canva adopted Cloudflare Access, which provides secure access to internal applications After a successful pilot with CanvaWorld, an internal social media platform, Canva expanded their Access usage to their internal testing and front-end development workflow. “We went all-in, everyone in the company has an Access seat,” Tyrrell says. \n\nIn addition to eliminating inefficiencies caused by shared passwords, Cloudflare Access has greatly improved the security of Canva’s internal apps. “Cloudflare Access saved us from having to develop our own Identity and Access Management (IAM) system,” Tyrrell says. “We also don’t have to build user permission functions into the apps that Access protects. For example, we wanted to give employees different levels of permissions in CanvaWorld, and Access lets us do that easily.” Access also makes employee and contractor onboarding and offboarding easier and more secure. “As people come and go, we can just add and remove them. We don’t have to change a common password, then save it in a file, then notify everyone.”\n\n### __Cloudflare Workers helps Canva with SEO optimization, A/B testing & more__\n\nWhen Cloudflare launched Workers, a serverless computing platform that runs on Cloudflare’s edge network, Canva eagerly signed up. “We were using another vendor’s solution to run custom code at the network edge, and it was hard to manage,” Tyrrell recalls. \n\nCanva initially used Workers to work around an upstream provider’s limitations on blob storage. Workers allowed Canva to add a header that would allow the browser to not load the image and poison the cache. Tyrrell says, “Our use of Workers has greatly expanded, and it’s now become a critical part of our software. Workers performs a lot of key functions for our app, and we’re looking into more potential uses right now.”\n\nAmong Canva’s current and planned use cases for Workers:\n\n- SEO optimization. “Google penalizes websites for slowness, especially on mobile,” Tyrrell points out. “Workers help us ensure we can serve a cached version of certain pages based on the device.”\n- Time-limiting access to visual content. “We use signed URLs to give time-limited access to media and images,” Tyrrell explains, “but signed URLs are hard to cache because the parameters change based on the media’s expiration time. We’re exploring how Workers can still cache that media at the edge and get the security benefits of time-limited access, but without having to refetch that image back to the origin.”\n\nThe Canva team likes Workers’ flexibility and ease of use, and the company enjoys time and cost savings from using Workers. “If we had to manage our own proxy servers end-to-end, it would cost us a lot of time and money.”\n\n### __Cloudflare Bot Management stops cyberattacks by image-scraping bots__\n\nWith millions of images, plus additional video and audio content, Canva is a frequent target of image-scraping bots. “Our content partners would contact us and report that they’d found their images on another site, which would make them very upset,” Tyrrell recalls.\n\nCanva tried to solve the problem by throttling malicious IP addresses and using client heuristics, neither of which were effective. Then, Canva deployed Cloudflare’s Bot Management solution and saw immediate results. “When we deployed Bot Management, a large proportion of traffic just dropped, and we knew it wasn’t legitimate traffic,” says Tyrrell. We didn’t have the capacity to build out our own solution. Cloudflare Bot Management helped us get a handle on the problem.”\n\n### __Next up for Canva: additional collaborative tools & mobile__\n\nCanva is continuously investing in its platform’s collaborative capabilities. “Enabling remote collaboration is a big priority post COVID-19,” Tyrrell says. Mobile is another area of focus for Canva, especially as it penetrates developing markets where most people rely on mobile devices. “We’re already using Cloudflare’s image resizing tool for mobile optimization. It resizes images on the fly depending on the end user’s device size, which enhances performance and reduces our storage and bandwidth costs.”\n\nCloudflare’s solutions play a major role in Canva’s long-term plans. “As our business grows, and we expand our product offerings, such as Canva for Enterprise, we expect to run into new technical challenges,” Tyrrell explains. “Just as Canva simplifies graphic design, Cloudflare simplifies performance and security. Thanks to Cloudflare, we can focus on improving our product and expanding into new markets with confidence, knowing that our platform is fast, reliable, and secure.”",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "- Cloudflare Access enables and secures remote access to internal apps, eliminating the need for Canva to build its own identity and access management (IAM) solution.\n\n- Cloudflare Workers lets Canva customize how user traffic is handled at the network edge, increasing page speed, enhancing SEO, and optimizing performance.\n\n- Cloudflare Bot Management significantly reduces cyberattacks by image-scraping bots.",
+				"relatedCaseStudies": [
+					{
+						"name": "Kathmandu",
+						"nameUrlSlug": "kathmandu"
+					},
+					{
+						"name": "TOPdesk",
+						"nameUrlSlug": "topdesk"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Workers",
+						"url": "/products/cloudflare-workers/"
+					},
+					{
+						"title": "Access",
+						"url": "/teams/access"
+					},
+					{
+						"title": "Bot Management",
+						"url": "https://www.cloudflare.com/products/bot-management/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Jim Tyrrell",
+				"employeeQuoteText": "Just as Canva simplifies graphic design, Cloudflare simplifies performance and security. Thanks to Cloudflare, we can focus on growing our product and expanding into new markets with confidence, knowing that our platform is fast, reliable, and secure.",
+				"employeeQuoteJobTitle": "Head of Infrastructure",
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/Canva.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "1MtxTckBFclX13LNUBlfD0",
+			"pathname": "/case-studies/canva/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US",
+				"zh-CN",
+				"zh-TW",
+				"fr-FR",
+				"de-DE"
+			]
+		}
+	}
+}

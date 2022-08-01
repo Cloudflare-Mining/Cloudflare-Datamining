@@ -1,0 +1,90 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/greatrailjourneys/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Great Rail Journeys",
+				"contentfulId": "2rzx3QPZRi6ScgGyyMkgi0",
+				"nameUrlSlug": "greatrailjourneys",
+				"metaTags": {
+					"metaTitle": "Great Rail Journeys",
+					"metaDescription": "Active Solutions helps their customer, Great Rail Journeys, extend their vacation platform globally by using Cloudflare’s Load Balancing.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2018-04-30",
+				"homepageUrl": "http://www.greatrail.com/",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "Active Solutions helps their customer, Great Rail Journeys, extend their vacation platform globally by using Cloudflare’s Load Balancing.",
+				"longDescription": "Active Solutions helps their customer, Great Rail Journeys, extend their vacation platform globally by using Cloudflare’s Load Balancing.\n\n[Great Rail Journeys](http://www.greatrail.com/) is the UK's leading seller of holidays by rail, making it easy for customers to browse and book trips online. Great Rail Journeys is actively expanding their customer base internationally to the United States and Canada. They hope to continue expanding their catalogue and eventually deliver services globally.\n\n__Great Rail Journeys’ Challenge:__\n\nAs Great Rail Journeys expanded internationally, they recognized a few technical challenges that they would need to overcome to continue delivering their customers a premium user experience. Initially, in order to reduce geographic latency to new regions, Great Rail Journeys set up origin servers in both Chicago and London to serve content from locations closer to their new clientele. However, Great Rail Journeys still needed support to securely optimize the distribution of their content across these new origin servers. “When we looked to expand internationally, we noticed our previous CDN provider didn’t offer global coverage, geolocation for DNS or Load Balancing” explained Nigel Hepworth Managing Director at [Active Solutions Limited](http://www.asolution.co.uk/), the Agency supporting Great Rail Journeys. “We could have supplemented our existing CDN and WAF providers with even more additional vendors, but we were hoping we could find a single-vendor solution to meet all of our needs.”\n\n__Great Rail Journeys’ Solution:__\n\nAfter researching potential options Active Solutions, found that Cloudflare was the perfect solution for their customers requirements. “Alternatives were large, expensive, and made cumbersome by old technology” related Hepworth. “They lacked the sophistication that Cloudflare has. Multiple vendors also means multiple dashboards to monitor Great Rail Journeys' site and multiple customer support teams to contact if there was an issue. Now we can see everything in a single dashboard, and we can all sleep at night knowing we have one vendor, Cloudflare, who is going to keep our customer’s site online.”\n\n![rail-case-study-graphic](//cf-assets.www.cloudflare.com/slt3lc6tev37/6LxWZvw5rO2sIsocuQuGiG/67c5850021f4068fd61fb5871d9436a4/rail-case-study-graphic.png)\n\nActive Solutions uses Cloudflare’s Load Balancing to ensure that Great Rail Journey’s site is resilient and high performing globally. Hepworth noted, “the Failover feature of Load Balancing was important for us because it ensures Great Rail Journeys’ customers don’t notice a difference in the case that a local origin server goes down.” Cloudflare’s Load Balancing actively monitors Great Rail Journeys’ origin servers and when an origin server goes down, traffic is rapidly rerouted to healthy servers so their customers don’t notice a difference.\n\nFurthermore, because Cloudflare’s Load Balancing implements Geolocation based routing, Great Rail Journeys’ customers are always routed to the origin server that is closest to them ensuring the dynamic content on Great Rail Journeys’ site loads as quickly as possible. Hepworth stated, “Because all of the static content on the site gets cached, but the specific price or availability is determined at the time the customer visits, it’s really crucial that Great Rail Journeys’ customers are being routed to the closest origin servers to them so that content appears at the same time. That’s why Geolocation steering was important for us.“\n\nGreat Rail Journeys also uses Cloudflare’s CDN and WAF to serve and secure their content around the world. Cloudflare’s CDN, in conjunction with careful site design, helps Great Rail Journeys deliver 92% of their end user bandwidth from a Cloudflare Data Center, providing a faster end user experience.\n\nHepworth commented “We’ve managed to globally achieve the same or better performance than our previous local CDN provider, we can use the WAF to protect our origin servers against attacks, and we have a suite of different tools for optimizing the site. We’re now in a position with a more advanced network and website, with fewer potential points of failure.”",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "Load Balancing Failover ensures site resilience even when origin servers go down\n\nGeolocation based routing ensures that customers are routed to the closest possible origin servers\n\nA Cloudflare Data Center delivers the vast majority of content, eliminating origin traffic and ensuring a good end user experience",
+				"relatedCaseStudies": [
+					{
+						"name": "Crisp",
+						"nameUrlSlug": "crisp"
+					},
+					{
+						"name": "Bitfinex ",
+						"nameUrlSlug": "bitfinex"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Load Balancing",
+						"url": "/load-balancing/"
+					},
+					{
+						"title": "Content Delivery Network (CDN)",
+						"url": "/cdn/"
+					},
+					{
+						"title": "Page Rules",
+						"url": "/features-page-rules/"
+					},
+					{
+						"title": "DDoS Mitigation",
+						"url": "/ddos/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Nigel Hepworth",
+				"employeeQuoteText": "Cloudflare is a single, integrated solution for optimizing delivery of Great Rail Journeys website to their customers. It’s an integrated solution with all of these optimizations that we can take advantage of (like optimizing images on the fly and optimizing content for mobile devices) to make the site better for all end users.",
+				"employeeQuoteJobTitle": "Managing Director Active Solutions Limited",
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/great-rail-journeys.jpg"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "2rzx3QPZRi6ScgGyyMkgi0",
+			"pathname": "/case-studies/greatrailjourneys/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}

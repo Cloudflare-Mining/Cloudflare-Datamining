@@ -1,0 +1,78 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/ngena/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "ngena",
+				"contentfulId": "4l2oc1Yojgagu6EQNu8l2r",
+				"nameUrlSlug": "ngena",
+				"metaTags": {
+					"metaTitle": "ngena",
+					"metaDescription": "ngena uses Cloudflare to protect its Connectivity-as-a-Service infrastructure from DDoS attacks and other threats",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2021-06-17",
+				"homepageUrl": "https://www.ngena.net/",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "ngena uses Cloudflare to protect its Connectivity-as-a-Service infrastructure from DDoS attacks and other threats",
+				"longDescription": "## __ngena uses Cloudflare Magic Transit to protect distributed communications infrastructure as they mature from start-up to scale-up__\n\nBased in Frankfurt, ngena has built a global cloud platform to offer Connectivity-as-a-Service to customers around the world. By using ngena’s end-to-end platform for networking, customers don’t need to acquire, deploy, and configure hardware to meet their networking needs. Instead, they use ngena’s pre-configured and secure SD-WAN solution to simplify their networks and better support their multiple sites and expanding remote workforces.\n\n### __Challenge: Rapid growth drives a need for improved protection__\n\nWithin the last few years, ngena’s customer list has grown rapidly. With this success comes additional visibility to cybercriminals. For ngena, a distributed denial-of-service (DDoS) attack against their systems would impact their ability to provide networking services to their customers. To manage these risks, ngena deployed Cloudflare Magic Transit, which offers DDoS mitigation for network infrastructure as well as optimized traffic routing and protection against other cyber threats.\n\n### __Magic Transit provides distributed protection and optimized routing__\n\nWhen ngena chose to move to Magic Transit, they were pleased by just how easy it was to deploy the solution. \n\n“It was very smooth. There was great support from Cloudflare,” says Miroslav Istona, Network Engineer at ngena. “Someone was always there, picking up the phone, replying to my emails, and solving my problems when I needed them.” \n\nngena has customers all around the world and has deployed a network of points of presence (PoPs) to support them and increase the resiliency of customer networks. Deploying physical DDoS mitigation appliances at each location is not an option, making an edge-based DDoS protection solution essential.\n\nMagic Transit’s DDoS mitigation is deployed at the edge of the Cloudflare network. This allows it to provide distributed protection to all ngena’s locations without the cost and complexity associated with stitching together multiple standalone solutions and network hardware. Istona says, “We have the protection enabled at every location, but we can now see it all in one dashboard. We can see all our locations, the status of them, or if there are any ongoing attacks. If there were issues in the past, we would have to log into each device and check if there was any type of DDoS attack. Now, we can just go to the Cloudflare dashboard and not just see everything at once, but manage and analyze it too. This saves us so much time.” \n\nFor ngena, Cloudflare’s geographic distribution is another major advantage. Once inside the Cloudflare network, traffic is routed to its destination over optimal network paths, providing a significant improvement in network latency. According to Istona, “In the past, we explained to customers that the problems that they're having were caused by the Internet routing traffic improperly. With Cloudflare and with all their points of presence all over the world, we can be almost 100% sure that the traffic from the Internet will enter Cloudflare and then the ngena networks at the proper place.” For some of ngena’s customers, the use of Cloudflare’s network has improved network latency by up to 50%.\n\n### __Building the network of the future__\n\nngena sees Cloudflare as a strategic partner as they continue to work towards their mission to simplify network connectivity for customers around the world. Both companies share the belief that [The Network is the Computer®](https://blog.cloudflare.com/the-network-is-the-computer/) and are helping organizations to simplify and optimize their network infrastructure. According to Dr. Marcus Hacke, co-founder and CTO at ngena, “We are dedicated to providing the highest class of service to our customers. We're proud to use a security vendor like Cloudflare, who's also providing that service”.",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "- Magic Transit provides distributed protection while minimizing costs and complexity.\n\n- Cloudflare provides centralized visibility into all of ngena’s locations.\n\n- Cloudflare’s optimized routing has improved network latency by up to 50%.",
+				"relatedCaseStudies": [
+					{
+						"name": "RcodeZero DNS",
+						"nameUrlSlug": "rcodezero-dns"
+					},
+					{
+						"name": "CCP Games",
+						"nameUrlSlug": "ccp-games"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Magic Transit",
+						"url": "/magic-transit/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Miroslav Istona",
+				"employeeQuoteText": "If there were issues in the past, we would have to log into each device and check if there was any type of DDoS attack. Now, we can just go to the Cloudflare dashboard and not just see everything at once, but manage and analyze it too. This saves us so much time.",
+				"employeeQuoteJobTitle": "Network Engineer",
+				"employeeQuoteName2": "Dr. Marcus Hacke",
+				"employeeQuoteText2": "We are dedicated to providing the highest class of service to our customers. We're proud to use a security vendor like Cloudflare, who's also providing that service.",
+				"employeeQuoteJobTitle2": "Co-founder and CTO",
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/20-02_ngena_Logo_with_New_Tagline_CMYK_color_-_V02.jpg"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "4l2oc1Yojgagu6EQNu8l2r",
+			"pathname": "/case-studies/ngena/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}

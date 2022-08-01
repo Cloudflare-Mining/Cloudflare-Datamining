@@ -1,0 +1,162 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/voteamerica/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "VoteAmerica",
+				"contentfulId": "3gMESlSOcA4pb8rp7E6zDb",
+				"nameUrlSlug": "voteamerica",
+				"metaTags": {
+					"metaTitle": "VoteAmerica | Project Galileo",
+					"metaDescription": "Learn how Project Galileo helped VoteAmerica",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Screenshot_2022-03-03_at_14.01.56.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2018-04-10",
+				"homepageUrl": "https://www.voteamerica.com/",
+				"hideFromCaseStudiesPage": true,
+				"shortDescription": "VoteAmerica was conceived by a small cadre of elections and technology experts ahead of the United States’ 2020 elections, with a simple yet ambitious goal: mobilize record-breaking voter turnout.",
+				"longDescription": "VoteAmerica was conceived by a small cadre of elections and technology experts ahead of the United States’ 2020 elections, with a simple yet ambitious goal: mobilize record-breaking voter turnout. In the words of Nick Catalano, Director of Technology for the 501(c)(3) organization, “it's harder to vote in America than any other western democracy because voter disenfranchisement is an electoral strategy.” This, according to Catalano, leaves millions of Americans unable to cast a ballot.\n\nRelating the results of a poll conducted in October 2016, Catalano claims that 37% of Americans surveyed didn’t know when Election Day was and 41% of Americans didn’t vote. There is, however, a silver lining: if citizens aren’t voting because they don’t know when or how to do so, then VoteAmerica can, as the reasoning goes, increase turnout by filling the information gap. To that end, VoteAmerica conducts targeted outreach to eligible voters that other partisan groups may ignore, such as low-income citizens and people of color, and builds publicly-available tools and resources to empower those Americans to participate in elections. \n\nBetween its founding in December 2019 and Election Day, the organization sent over 100 million peer-to-peer SMS (text) messages containing non-partisan information including when and where the recipient could exercise their right to vote and the documents they would need to bring with them to the polls in order to do so. In addition, several of the tools on VoteAmerica’s website (e.g., Register to Vote and Request an Absentee Ballot) were each used over 1 million times in 2020. Catalano knew in advance of achieving these numbers that VoteAmerica would need some cover. Understanding the necessity of securing voter registration information and staying online during traffic surges, and having worked with Cloudflare in the past, he turned to Project Galileo for help.\n\nVoteAmerica faced two key challenges prior to joining Project Galileo. Per Catalano:\n\n1. We needed a CDN of some sort to cache our assets and accelerate our APIs. By nature, election tools have \"bursty\" traffic, with some days experiencing significantly more traffic than others. We were also churning a lot of data through our public APIs and tools, and we needed a way to handle the load.\n\n2. Everything we did needed to be secured from cyberattacks and malicious actors. Our systems store considerable amounts of personal identifiable information (PII), and security is a top concern of ours. We were particularly worried about DDoS attacks and attempts to compromise voter’s personal data.\n\nCatalano felt Project Galileo could provide VoteAmerica with the best combination of protection and performance to address the foregoing: “we needed a solution that would let us distribute election information at a scale that grew in unpredictable ways. Cloudflare's infrastructure would enable us to handle varying levels of traffic without downtime or significant additional costs.”\nUpon joining Project Galileo, VoteAmerica deployed Cloudflare’s CDN, custom cache rules, rate limiting tool, WAF, and Cloudflare for Workers, with the following key results:\n\n- Over 2.9 million voters relied on VoteAmerica’s voting registration, absentee ballot, polling place lookup, and voter registration verification tools served by Cloudflare’s CDN with zero downtime. \n\n- Access to VoteAmerica’s voting information endpoint went from taking 1.5 seconds to only 20 milliseconds once Cloudflare caching went into effect. \n\n- Cloudflare’s WAF and rate limiting tool safeguarded login portals to core administrative interfaces and protected VoteAmerica’s backend, which houses databases that contain PII and local election data, against content scraping.\n\nVoteAmerica relied heavily on Cloudflare’s rate limiting tool and custom caching rules to protect its online assets against malicious actors and optimize site uptime and reliability during the 2020 elections -- both of which the organization believes are essential to maximizing voter turnout. \n\n“We're very reliant on Cloudflare's caching infrastructure to speed up all parts of our website and APIs,” Catalano said. “We offer our tools as free embeddable widgets that third parties can use, and all of the JavaScript code was cached by Cloudflare.” One of those third parties is a civic engagement platform that claims to have helped over 20,000,000 voters with a number of tasks, such as checking their registration status, registering to vote, requesting an absentee ballot, and identifying their polling locations. In doing so, the platform made tens of thousands of calls to VoteAmerica’s public API for information about how to vote stored on its back-end databases. Custom caching rules that Catalano and his team wrote for the API both protected requests from overloading VoteAmerica’s servers and drastically improved its performance: once implemented, access to VoteAmerica’s voting information endpoint went from taking 1.5 seconds on average to just 20 milliseconds – in other words, almost no time at all.\n\nCloudflare’s rate limiting tool proved equally consequential. In the weeks leading up to Election Day 2020, VoteAmerica released TXBallot.org, a website that enables voters in Texas–which lacks a state-wide tool for voters to track their ballots--to verify whether their ballot was received. “[The website] got slammed with traffic,” Catalano recalled. Then, a DDoS attack surfaced. Cloudflare’s rate limiting function, however, was quick to discern and absorb the traffic influx, thereby keeping the site up and running with minimal delays--particularly noteworthy, Catalano believes, when the alternative (i.e., site disruption) is considered in context.\n\n“It’s already so hard to vote in America,” Catalano said. “People have a hard time believing in democratic institutions. If a tool designed to tell voters the status of their ballot isn’t working, then that could undermine voters’ faith in the integrity of elections and depress turnout.” It is thus an imperative for organizations like VoteAmerica to ensure their public-facing tools are resilient. Hence, the significance of security and performance solutions that provide an efficacious defense against malicious behavior and abnormal network activity.\n\nEquipped with such tools through Project Galileo, VoteAmerica is helping to deliver stable and secure elections in the U.S. at a time when doing so increasingly depends on a stable, secure internet.\n",
+				"cloudflareStreamVideoId": null,
+				"keyResults": null,
+				"relatedCaseStudies": [
+					{
+						"name": "Bedayaa",
+						"nameUrlSlug": "bedayaa"
+					},
+					{
+						"name": "BullyingCanada",
+						"nameUrlSlug": "bullyingcanada"
+					},
+					{
+						"name": "Cagle Cartoons",
+						"nameUrlSlug": "cagle-cartoons"
+					},
+					{
+						"name": "Decision Desk HQ",
+						"nameUrlSlug": "decision-desk-hq"
+					},
+					{
+						"name": "Diario de Araxa",
+						"nameUrlSlug": "diario-de-araxa"
+					},
+					{
+						"name": "Electionland",
+						"nameUrlSlug": "electionland"
+					},
+					{
+						"name": "GMRF",
+						"nameUrlSlug": "gmrf"
+					},
+					{
+						"name": "Interfaith Enlightenment Center",
+						"nameUrlSlug": "interfaith-enlightenment-center"
+					},
+					{
+						"name": "Internet Archive",
+						"nameUrlSlug": "internet-archive"
+					},
+					{
+						"name": "Lake County News",
+						"nameUrlSlug": "lake-county-news"
+					},
+					{
+						"name": "Majal",
+						"nameUrlSlug": "majal"
+					},
+					{
+						"name": "Musopen",
+						"nameUrlSlug": "musopen"
+					},
+					{
+						"name": "Raissa Robles",
+						"nameUrlSlug": "raissa-robles"
+					},
+					{
+						"name": "Reporter Taiwan",
+						"nameUrlSlug": "reporter-taiwan"
+					},
+					{
+						"name": "Sarawak Report",
+						"nameUrlSlug": "sarawak-report"
+					},
+					{
+						"name": "Sin Embargo",
+						"nameUrlSlug": "sin-embargo"
+					},
+					{
+						"name": "Trevor Project",
+						"nameUrlSlug": "trevor-project"
+					},
+					{
+						"name": "US Vote Foundation",
+						"nameUrlSlug": "us-vote-foundation"
+					},
+					{
+						"name": "Veterans Brotherhood",
+						"nameUrlSlug": "veterans-brotherhood"
+					},
+					{
+						"name": "Vost Portugal",
+						"nameUrlSlug": "vost-portugal"
+					},
+					{
+						"name": "Womens March Global",
+						"nameUrlSlug": "womens-march-global"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "DDoS Mitigation",
+						"url": "/ddos/"
+					},
+					{
+						"title": "Content Delivery Network (CDN)",
+						"url": "/cdn/"
+					},
+					{
+						"title": "Web Application Firewall (WAF) ",
+						"url": "/waf/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": null,
+				"employeeQuoteText": null,
+				"employeeQuoteJobTitle": null,
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/voteamerica_logo_color.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "3gMESlSOcA4pb8rp7E6zDb",
+			"pathname": "/case-studies/voteamerica/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}

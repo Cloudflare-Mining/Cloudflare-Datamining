@@ -1,0 +1,76 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/shift-markets-protects-and-accelerates-custom-tcp-traffic/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Shift Markets Protects and Accelerates Custom TCP Traffic With Cloudflare Spectrum ",
+				"contentfulId": "6apAPSUHnwFBVad9lXTZaK",
+				"nameUrlSlug": "shift-markets-protects-and-accelerates-custom-tcp-traffic",
+				"metaTags": {
+					"metaTitle": "Shift Markets Protects and Accelerates Custom TCP Traffic With Cloudflare Spectrum ",
+					"metaDescription": "Shift Markets uses Cloudflare Spectrum to protect and accelerate the custom TCP protocols that keep its financial trading platforms humming.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2019-05-21",
+				"homepageUrl": "https://www.shiftmarkets.com/",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "Shift Markets uses Cloudflare Spectrum to protect and accelerate the custom TCP protocols that keep its financial trading platforms humming.",
+				"longDescription": "Shift Markets provides technology services and turnkey solutions that make foreign exchange and cryptocurrency more accessible to consumers. Since its launch in 2009, Shift has launched over 150 new foreign exchange brokers and over 60 crypto exchanges around the globe. Today, Shift offers white labeled brokerage trading technology, cryptocurrency exchange solutions, liquidity, risk management, compliance, and marketing services for its clients.\n\n## The Challenge\n\nGiven the nature of Shift's business, reliability is crucial: 24/7 connectivity, 100% uptime and maintaining ultra-low end-to-end latency is critical to success in today’s competitive digital markets. Latency spikes lasting just milliseconds can be enough to derail a transaction as it travels from the client to the interbank market. For this reason, surplus latency needs to be curbed at every step of the data’s journey, maintaining privately provisioned infrastructure whenever possible. \n\nBefore activating Cloudflare Spectrum, Shift was struggling with connectivity issues for some of its globally distributed clientele. Protecting and accelerating these connections proved challenging, because Shift’s technology operates over a variety of proprietary protocols.\n\n\n</br>\n<center><b>\n“Even with our production systems hosted in a sophisticated hybrid deployment with dedicated cross-connects between our global data centers and one of the largest cloud providers in the world, connectivity was still not where we wanted it to be.</b></center>\n<p></p>\n<center><b>Hosting our own network of proxy servers was a huge investment, both in terms of cost and maintenance, and couldn’t possibly compete with Cloudflare’s unparalleled global footprint. There really are no other general-purpose solutions in the market offering a global TCP-level proxy service.”</b></center>\n</b></center>\n<center><i>- Anthony DiSanti</center>\n  <center>CTO, Shift Markets </i></center>\n</br>\n\n## The Cloudflare Difference\n\nWhat makes Cloudflare Spectrum unique is the breadth of protocols it protects. Unlike other security services that generally focus on web traffic, Spectrum is designed to protect and accelerate all kinds of TCP traffic — including custom protocols. Spectrum can even safeguard the connection using TLS 1.3 with zero-round trip resumption support, enabling fast and secure transit. \n\nThis suited Shift’s needs perfectly: by routing TCP traffic through Spectrum, Shift was able to safeguard its production systems from DDoS attacks, while simultaneously ensuring reliability and faster connectivity. After activating Spectrum, Shift saw an immediate reduction of over 50% in latencies from certain regions, with especially large improvements on Kuwaiti mobile networks and throughout rural Malaysia.  \n\nBetter yet, Spectrum comes with built-in WAF functionality, including support for custom security rules. “It’s extremely helpful to have a fully integrated WAF. It provides us unparalleled flexibility and protection on our proprietary trading protocols” says Anthony. All told, more than 5TB per month of Shift’s data is encrypted, protected and accelerated by Cloudflare. \n\nSpectrum empowers Shift Markets to deliver their services to their customers in a faster, more reliable way.\n\n“After more than two years searching for a solution to our connectivity and security issues, I can confidently say that Spectrum offers an unprecedented level of reliability, security, and flexibility for proprietary protocols.”\n",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "• Shift uses Cloudflare Spectrum to safeguard and accelerate its traffic routed over a proprietary TCP protocol.\n\n• 5TB per month of Shift’s data is encrypted, protected and accelerated by Cloudflare.\n\n• Shift saw an immediate reduction of over 50% in latency from certain regions, with especially large improvements on Kuwaiti mobile networks and throughout rural Malaysia.",
+				"relatedCaseStudies": [
+					{
+						"name": "Shields Up: Turtle Entertainment Secures Custom Protocols With Cloudflare",
+						"nameUrlSlug": "turtle-entertainment-secures-custom-protocols-spectrum"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Spectrum",
+						"url": "/products/cloudflare-spectrum/"
+					},
+					{
+						"title": "Web Application Firewall (WAF) ",
+						"url": "/waf/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Anthony DiSanti",
+				"employeeQuoteText": "After more than two years searching for a solution to our connectivity and security issues, I can confidently say that Spectrum offers an unprecedented level of reliability, security, and flexibility for proprietary protocols.",
+				"employeeQuoteJobTitle": "CTO, Shift Markets",
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/ShiftMarkets_Dark.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "6apAPSUHnwFBVad9lXTZaK",
+			"pathname": "/case-studies/shift-markets-protects-and-accelerates-custom-tcp-traffic/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": null
+		}
+	}
+}

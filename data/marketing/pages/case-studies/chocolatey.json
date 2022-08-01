@@ -1,0 +1,90 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/chocolatey/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Chocolatey",
+				"contentfulId": "1PYs6QuUleECgqIGc8EK8o",
+				"nameUrlSlug": "chocolatey",
+				"metaTags": {
+					"metaTitle": "Chocolatey | Cloudflare",
+					"metaDescription": "Chocolatey no longer worries about unexpected costs from its rapid growth with Cloudflare easing their bandwidth burden.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2018-04-25",
+				"homepageUrl": "https://chocolatey.org/",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "Chocolatey no longer worries about unexpected costs from its rapid growth with Cloudflare easing their bandwidth burden.",
+				"longDescription": "Chocolatey no longer worries about unexpected costs from its rapid growth with Cloudflare easing their bandwidth burden.\n\n[Chocolatey](https://chocolatey.org/) is the package manager for Microsoft Windows, working with all aspects of software management. Chocolatey exists as an open source and commercial tool with a community package repository at [https://chocolatey.org/packages](https://chocolatey.org/packages). Chocolatey has seen an amazing increase in the number of users and community over the past 5 years with a 400% increase in the number of downloads from 2014 to 2015.\n\n> Chocolatey's Rapid Growth\n![chocolatey-graphic](//cf-assets.www.cloudflare.com/slt3lc6tev37/rhB1qy5ipMIk4oYueU06E/507d1c13d26ecaea0fe59ffc3fc8aa30/chocolatey-graphic.png)\n\n__Chocolatey’s Challenge: Scaling to Meet the Demands of A Rapidly Growing Open Source Community__\n\nThough Chocolatey began as a small open source tool, the community has since exploded and as a result Chocolatey was downloaded over 50 million times just in the first half of 2016. To accommodate this rapid growth in demand Chocolatey needed to scale their infrastructure. Rob Reynolds, founder of Chocolatey, explained that \"We were looking for the ability to cache static content and provide a more reliable service without having to continue to overload our backend. It wasn’t like we were being DDoS’d, we were receiving legitimate requests. We just needed bigger infrastructure. We needed something to support the sheer amount of traffic we were experiencing.\" The challenge for Chocolatey, though, was finding an affordable solution so that they could continue to offer their free services.\n\n__Chocolatey's Solution: An Affordable, Flat-Rate Content Delivery Network (CDN)__\n\nChocolatey's requirements could be perfectly matched by a CDN and they chose Cloudflare because of it's touted reputation and flat rate pricing. Chocolatey enjoys the lower request load and less expensive infrastructure costs because Cloudflare's CDN replicates Chocolatey's static content and serves it from data centers in over %{DataCenterCount} cities around the world. By serving cached content from Cloudflare's edge both Chocolatey's need for servers and their bandwidth costs are reduced by over 90% each month. Reynolds enjoys that \"The Cloudflare CDN helps us handle the massive number of requests we receive and helps cache packages so that our infrastructure costs are lower and more predictable.\"\n\nFurthermore, Chocolatey enjoys the fine-grained control they get with Page Rules. Reynolds delighted \"Page rules are huge for determining caching. We enjoy how much control they allow us, and how much we save by using them.\" Chocolatey also received added security benefits by using Cloudflare. \"We did come under a legitimate DDoS attack recently,\" explained Reynolds, \"As soon as we turned on I'm Under Attack Mode the site stayed up and the attack was mitigated.\"",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "Flat-Rate Pricing allows for easy scale and growth\n\nDramatic Bandwidth and Infrastructure cost savings\n\nPage Rules are for determining caching",
+				"relatedCaseStudies": [
+					{
+						"name": "Discord",
+						"nameUrlSlug": "discord"
+					},
+					{
+						"name": "Hostnet",
+						"nameUrlSlug": "hostnet"
+					},
+					{
+						"name": "Yola ",
+						"nameUrlSlug": "yola"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Content Delivery Network (CDN)",
+						"url": "/cdn/"
+					},
+					{
+						"title": "DDoS Mitigation",
+						"url": "/ddos/"
+					},
+					{
+						"title": "Page Rules",
+						"url": "/features-page-rules/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Rob Reynolds",
+				"employeeQuoteText": "Cloudflare provides a lot of different things out of the box that really allows a site to scale without issues.",
+				"employeeQuoteJobTitle": "Founder",
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/chocolatey.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "1PYs6QuUleECgqIGc8EK8o",
+			"pathname": "/case-studies/chocolatey/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}

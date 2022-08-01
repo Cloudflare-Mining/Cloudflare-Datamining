@@ -1,0 +1,503 @@
+{
+	"componentChunkName": "component---src-components-page-page-template-tsx",
+	"path": "/integrations/kubernetes/",
+	"result": {
+		"data": {
+			"page": {
+				"pageName": "Integrations - Kubernetes",
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "Translated for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "Translated for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "No Page for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": null,
+					"zhHansCN": null
+				},
+				"relativePath": "integrations/kubernetes",
+				"topNavOptions": "default",
+				"topNavButtonText": null,
+				"topNavButtonUrl": null,
+				"metaTags": {
+					"metaTitle": "Kubernetes Security & Performance",
+					"metaDescription": "The Cloudflare and Kubernetes integration makes multi-cloud, federated Kubernetes easy. Leverage the benefits of Cloudflare CDN, DNS, and DDoS protection services.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"contentfulId": "CcE6zXlgn6equiMMY6G8A",
+				"contentTypeId": "page",
+				"promotionalBanner": null,
+				"psaBanner": null,
+				"customTopNav": null,
+				"headerLogo": null,
+				"template": null,
+				"relatedBlades": [
+					{
+						"__typename": "bladeSignUpForm",
+						"contentTypeId": "bladeSignUpForm",
+						"contentfulId": "3M4Lmw3jNuyoi2UqMuaics",
+						"bladeName": "Kubernetes - Form Blade",
+						"formType": "formRight",
+						"formTitle": null,
+						"buttonText": "#",
+						"buttonColor": "orange",
+						"htmlId": "kubernetesForm",
+						"marketoEmbeddedForm": {
+							"contentTypeId": "marketoEmbeddedForm",
+							"contentfulId": "jEeqxlfmpMxH6HQ9lk7cG",
+							"bladeName": "Kubernetes - Marketo Form",
+							"backgroundColor": "white",
+							"marketoFormId": 1343,
+							"marketoFormLeadSource": "Partner - Integration",
+							"marketoFormLeadSourceDetail": "Contact Us Kubernetes",
+							"marketoFormHeaderText": "Learn More And Get $500 in Google Cloud Platform Credit *",
+							"marketoFormDefaultComment": null,
+							"showCommentBox": null,
+							"marketoFormThankYouText": null,
+							"marketoFormCustomSuccessMessage": null,
+							"marketoFormPdfDownload": null,
+							"marketoFormPdfDownloadI18n": null,
+							"marketoFormAssetDownloadButtonText": null,
+							"marketoFormSuccessRedirectUrl": null,
+							"sendAdRoll": false,
+							"meta_adRollCustomSegment": null,
+							"enableSandbox": null,
+							"marketoFormSubmitButtonText": null,
+							"marketoFormSubmitButtonColor": null,
+							"enableEmailVerification": null,
+							"disableEnterpriseEmailNotification": null,
+							"enableRingout": null
+						},
+						"title": "Cloudflare + Kubernetes",
+						"subtitle": "Multi-Cloud, Federated Kubernetes Made Easy",
+						"copy": "Deploying applications using containers provides an effective way to ensure that application code runs in a consistent, lightweight, and portable environment. While this solution works effectively for applications running in the same cloud it has been difficult to scale out to take advantage of the benefits provided by having multiple cloud providers.\n\nUsing the Cloudflare® Load Balancer or Argo Tunnel™ Ingress Controller in conjunction with Kubernetes®, developers can ensure applications benefit from cluster management across clouds. Together, Cloudflare’s multi-cloud solution and Kubernetes lead to improved application availability and reduced costs, while also providing a unified security and performance control plane.\n\n\n(*) Credit is available for new Google Cloud Platform users.",
+						"iconList": null,
+						"iconTitleList": null,
+						"iconCopyList": null,
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamOptions": null,
+						"rightSideCopy": null,
+						"rightSideCopyPosition": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"textColor": "black",
+						"extraClass": null,
+						"sectionPadding": null,
+						"customPrivacyPolicy": null,
+						"customPrivacyPolicyText": null
+					},
+					{
+						"__typename": "bladeFourFeatures",
+						"contentfulId": "7gtcVYkBC6Jo51ovdN6ZH7",
+						"backgroundColor": "light-gray",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": null,
+						"subtitle": null,
+						"bladeStyle": null,
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4ID2RQkX2XyIWoxQg6G497",
+								"title": "Global Network Security",
+								"titleSize": null,
+								"description": "Origins protected with Cloudflare benefit from %{NetworkCapacity} of DDoS mitigation capacity, %{NetworkCapacityLargestDDOS} bigger than the largest DDoS attack, and the security insights derived from millions of protected Internet properties worldwide.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/icon-global-blue.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "76a11ba2-f049-5af8-803e-8d933358063b",
+									"altText": "Internet globe blue",
+									"title": "Internet globe blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 2017,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/internet-globe-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6HyByk8zBtIzajuYwbaEUo",
+								"title": "Single Control Plane",
+								"titleSize": null,
+								"description": "Apply and monitor security policies, manage routing and tweak performance settings from a single location reducing both the time spent managing configurations as well as the possibility of a misconfiguration.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/icon-setting-blue.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "0fe57de7-3ccf-5dce-9a13-71ed4f8fec44",
+									"altText": "Connect iot blue",
+									"title": "Connect iot blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 4558,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/connect-iot-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4nPH9fYRVSQjpam4IesJl4",
+								"title": "Security Without A Performance Penalty",
+								"titleSize": null,
+								"description": "Cloudflare’s network, which spans %{DataCenterCount} cities across %{CountryCount} countries, improves performance through integrated traffic acceleration and low-latency security services.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/icon-security-blue.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "c6776679-e543-5a80-9232-26ab70198b70",
+									"altText": "Security lock blue",
+									"title": "Security lock blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 1116,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/security-lock-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
+						"__typename": "bladeImageText",
+						"contentfulId": "6rNLlyRjnVyDtw7CWtfDsb",
+						"title": "Run Kubernetes Across Clouds",
+						"copy": "The Cloudflare Load Balancer provides traffic routing and failover for Kubernetes clusters across clouds and regions. To get started and take advantage of the improved availability, control, and visibility follow the [step by step guide here](https://support.cloudflare.com/hc/en-us/articles/115003384591-Using-Kubernetes-on-GKE-and-AWS-with-Cloudflare-Load-Balancer).\n",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": null,
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "4774ea95-57ef-5f14-875d-e80c426a0a58",
+							"altText": null,
+							"title": "kubernetescflb.png",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "[path]/kubernetescflb.png"
+								}
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": false,
+						"imageSize": "extra-large",
+						"imageTextAlignment": "center",
+						"togglesTo": null
+					},
+					{
+						"__typename": "bladeFourFeatures",
+						"contentfulId": "QR9fq14gKI8oCKsAQi6Aw",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": null,
+						"subtitle": null,
+						"bladeStyle": null,
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6D4JVquj5V0XTKZXUANgiV",
+								"title": null,
+								"titleSize": null,
+								"description": "Ensure every Kubernetes cluster is protected with the same robust set of security rules in all clouds, and receive a unified set of logs and analytics for every cluster.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/icon-scanning_1-blue.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "94716675-099b-561c-a6b3-d9be2b13ab58",
+									"altText": "Search blue",
+									"title": "Search blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 1059,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/search-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6fbQgdVk1S4SOppdgap6ik",
+								"title": "Manage Routing Configurations",
+								"titleSize": null,
+								"description": "Use Cloudflare Load Balancing to easily route traffic to a Kubernetes cluster that is nearest to the user, cheapest to run, or failover to a healthy cluster during an outage.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/icon-request-respond-blue.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "dd55db16-73f4-51d0-87d7-36979bb08c8c",
+									"altText": "Refresh blue",
+									"title": "Refresh blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 1044,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/refresh-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3K9KW2RVcVXtXWm80KjRZl",
+								"title": "Tweak Universal Performance Settings",
+								"titleSize": null,
+								"description": "By changing settings for every cluster only once in the Cloudflare dashboard, spend less time managing individual clusters and reduce the possibility of misconfigurations.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/icon-setting-blue.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "0fe57de7-3ccf-5dce-9a13-71ed4f8fec44",
+									"altText": "Connect iot blue",
+									"title": "Connect iot blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 4558,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/connect-iot-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4Vx2yReUZcYxQSVNFnU2EM",
+								"title": "Add and Modify Web Applications",
+								"titleSize": null,
+								"description": "Easily add applications hosted using Kubernetes clusters on premise, in a private cloud, or in the public cloud. Cloudflare Load Balancer works with applications hosted in or across any setup.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/icon-configuration-blue.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "1b916824-7fb8-5f8f-a315-4faa6461d4d3",
+									"altText": "Optimization gear blue",
+									"title": "Optimization gear blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 1640,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/optimization-gear-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
+						"__typename": "bladeEnablement",
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "33AuPE0dcAYGUaquoi8CYW",
+						"copy": null,
+						"buttonExtraClass": null,
+						"buttonColor": "orange",
+						"buttonColor2": null,
+						"title": "Want to learn about Cloudflare and Kubernetes?",
+						"backgroundColor": "blue",
+						"buttonText": "Learn More",
+						"buttonUrl": "#",
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"textColor": "white",
+						"bladeBorder": "none",
+						"buttonOne": null,
+						"buttonTwo": null,
+						"sectionPadding": null
+					}
+				],
+				"noindex": false,
+				"enableZendeskChat": null,
+				"formModal": null,
+				"keepHashUrlSyncedWithScrollPosition": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"pathname": "/integrations/kubernetes/",
+			"contentfulId": "CcE6zXlgn6equiMMY6G8A",
+			"allowedHrefLangs": [
+				"en-US",
+				"zh-CN",
+				"zh-TW",
+				"fr-FR",
+				"de-DE",
+				"it-IT",
+				"ja-JP",
+				"ko-KR",
+				"pt-BR",
+				"es-ES"
+			],
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

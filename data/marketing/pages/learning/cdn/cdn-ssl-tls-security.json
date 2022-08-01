@@ -1,0 +1,491 @@
+{
+	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
+	"path": "/learning/cdn/cdn-ssl-tls-security/",
+	"result": {
+		"data": {
+			"learningCenterArticle": {
+				"contentTypeId": "learningCenterArticle",
+				"contentfulId": "7wJPZcCKffwW46br18m319",
+				"urlSlug": "cdn/cdn-ssl-tls-security",
+				"metaTags": {
+					"metaTitle": "CDN SSL/TLS | CDN security",
+					"metaDescription": "CDN strategies for mitigating vulnerabilities include proper SSL/TLS encryption and specialized encryption hardware. Explore the CDN guide.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/cdn-lc.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"metaTitle": "CDN SSL/TLS | CDN Security",
+				"metaDescription": "CDN strategies for mitigating vulnerabilities include proper SSL/TLS encryption and specialized encryption hardware. Explore the CDN guide.",
+				"learningCenterArticleSubHeader": {
+					"contentTypeId": "learningCenterArticleSubHeader",
+					"contentfulId": "1TmxktXfUAclAhABE2horM",
+					"learningCenterName": "cdn",
+					"links": [
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "3D1xEG3yadmgE8mx0qn5MJ",
+							"displayText": "What is a CDN?  ",
+							"url": "/learning/cdn/what-is-a-cdn/"
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "zygaXlW07J4MrONnddhcM",
+							"name": "CDN Header: CDN Benefits",
+							"displayText": "CDN Benefits",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3Rtr5Y3B21KDY5rll94vfV",
+									"displayText": "CDN Benefits Summary",
+									"url": "/learning/cdn/cdn-benefits/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1TT4G3C7LJsolyiywM89vS",
+									"displayText": "CDN Performance",
+									"url": "/learning/cdn/performance/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6jyrxonbzcxCgqdepHymae",
+									"displayText": "CDN Reliability",
+									"url": "/learning/cdn/cdn-load-balance-reliability/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6igaSfAmzhyUfouCsoHbVq",
+									"displayText": "How CDNs Reduce Costs",
+									"url": "/learning/cdn/how-cdns-reduce-bandwidth-cost/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "3Pl0qF0hFWqaFsAVHWu7y5",
+							"name": "CDN Header: CDN Metrics",
+							"displayText": "CDN Metrics",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1T54LIEtYSk6kRVn76Nj55",
+									"displayText": "Round-trip Time (RTT)",
+									"url": "/learning/cdn/glossary/round-trip-time-rtt/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "xRhnt5OShurSlFpIZ8TMV",
+									"displayText": "Time-to-live (TTL)",
+									"url": "/learning/cdn/glossary/time-to-live-ttl/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4P70BNgiPfigHxGdCl803c",
+									"displayText": "Cache Hit Ratio",
+									"url": "/learning/cdn/what-is-a-cache-hit-ratio/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "PaGO0WjMX7EYeZkB3pdoA",
+							"name": "CDN Header: How Caching Works",
+							"displayText": "How Caching Works",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7oxj52SCzgMFJWTD2JRMDU",
+									"displayText": "What is Caching?",
+									"url": "/learning/cdn/what-is-caching/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "47QfhUCWZNVc492FRdChU5",
+									"displayText": "Static vs Dynamic Caching",
+									"url": "/learning/cdn/caching-static-and-dynamic-content/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4SURNvqLXnEF90z0rluKXj",
+									"displayText": "Cache Control",
+									"url": "/learning/cdn/glossary/what-is-cache-control/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "63eV3I9XCEzLfNvwycmmmS",
+							"name": "CDN Header: CDN Glossary",
+							"displayText": "CDN Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4qXkaiE0w1Gv6ByBCtJSA1",
+									"displayText": "Anycast",
+									"url": "/learning/cdn/glossary/anycast-network/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4wiEjYpswyW7KqrYywtFHs",
+									"displayText": "Data Center",
+									"url": "/learning/cdn/glossary/data-center/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "38ZIPiWHhYthel2M0phbnU",
+									"displayText": "Origin Server",
+									"url": "/learning/cdn/glossary/origin-server/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4uTWD4D65UfywkSudIU392",
+									"displayText": "Edge Server",
+									"url": "/learning/cdn/glossary/edge-server/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5PAq9dBn9Q9KLVLRN84xu8",
+									"displayText": "Internet Exchange Point (IXP)",
+									"url": "/learning/cdn/glossary/internet-exchange-point-ixp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7BXEVgdbR1yC2UegiHYOFu",
+									"displayText": "Reverse Proxy",
+									"url": "/learning/cdn/glossary/reverse-proxy/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "58uteVo7HkNVlD4piR5sOu",
+									"displayText": "GSLB",
+									"url": "/learning/cdn/glossary/global-server-load-balancing-gslb/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5sZpyP6Z4glWzcyC45momG",
+									"displayText": "CDN SSL TLS Security",
+									"url": "/learning/cdn/cdn-ssl-tls-security/"
+								}
+							]
+						}
+					]
+				},
+				"learningCenterArticleFooter": {
+					"contentTypeId": "learningCenterArticleFooter",
+					"contentfulId": "56VyWmkYkFemEgQYOAy3fR",
+					"learningCenterName": "cdn",
+					"column1Title": "About CDNs",
+					"column1": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "5AVjzamCJRR1y5yM7Pa8Gc",
+						"name": "CDN Footer: About CDNs",
+						"displayText": "About CDNs",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3D1xEG3yadmgE8mx0qn5MJ",
+								"displayText": "What is a CDN?  ",
+								"url": "/learning/cdn/what-is-a-cdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4xXPQOQueQs8qzgmoFeW7j",
+								"displayText": "What is a Reverse Proxy?",
+								"url": "/learning/cdn/glossary/reverse-proxy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "47QfhUCWZNVc492FRdChU5",
+								"displayText": "Static vs Dynamic Caching",
+								"url": "/learning/cdn/caching-static-and-dynamic-content/"
+							}
+						]
+					},
+					"column2Title": "CDN Features",
+					"column2": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "3duEHHDQOd8X56Bz17FstV",
+						"name": "CDN Footer: CDN Features",
+						"displayText": "CDN Features",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1TT4G3C7LJsolyiywM89vS",
+								"displayText": "CDN Performance",
+								"url": "/learning/cdn/performance/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5sZpyP6Z4glWzcyC45momG",
+								"displayText": "CDN SSL TLS Security",
+								"url": "/learning/cdn/cdn-ssl-tls-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6jyrxonbzcxCgqdepHymae",
+								"displayText": "CDN Reliability",
+								"url": "/learning/cdn/cdn-load-balance-reliability/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3Rtr5Y3B21KDY5rll94vfV",
+								"displayText": "CDN Benefits Summary",
+								"url": "/learning/cdn/cdn-benefits/"
+							}
+						]
+					},
+					"column3Title": "CDN Servers",
+					"column3": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "2pbRllZTp2moJmAiqqBqAW",
+						"name": "CDN Footer: CDN Servers",
+						"displayText": "CDN Servers",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3vp4op7gWBCnIrycqEL521",
+								"displayText": "What is a Data Center?",
+								"url": "/learning/cdn/glossary/data-center/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2E81TUGCnTdu4FfVl7FW46",
+								"displayText": "What is an Edge Server?",
+								"url": "/learning/cdn/glossary/edge-server/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5TWEQdIjWPr7s45sNRDPMC",
+								"displayText": "What is an Origin Server?",
+								"url": "/learning/cdn/glossary/origin-server/"
+							}
+						]
+					},
+					"column4Title": "CDN Glossary",
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "6Lsv77b4iLhQIGUIGiWf9l",
+						"name": "CDN Footer: CDN Glossary",
+						"displayText": "CDN Glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4qXkaiE0w1Gv6ByBCtJSA1",
+								"displayText": "Anycast",
+								"url": "/learning/cdn/glossary/anycast-network/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5PAq9dBn9Q9KLVLRN84xu8",
+								"displayText": "Internet Exchange Point (IXP)",
+								"url": "/learning/cdn/glossary/internet-exchange-point-ixp/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1T54LIEtYSk6kRVn76Nj55",
+								"displayText": "Round-trip Time (RTT)",
+								"url": "/learning/cdn/glossary/round-trip-time-rtt/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "xRhnt5OShurSlFpIZ8TMV",
+								"displayText": "Time-to-live (TTL)",
+								"url": "/learning/cdn/glossary/time-to-live-ttl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4SURNvqLXnEF90z0rluKXj",
+								"displayText": "Cache Control",
+								"url": "/learning/cdn/glossary/what-is-cache-control/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "58uteVo7HkNVlD4piR5sOu",
+								"displayText": "GSLB",
+								"url": "/learning/cdn/glossary/global-server-load-balancing-gslb/"
+							}
+						]
+					},
+					"column5Title": "Learning Center Navigation",
+					"column5": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "19U8CIaJEgWH5bbLk56bEF",
+						"name": "CDN Footer: Learning Navigation",
+						"displayText": "Learning Center Navigation",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2hdSVoYA5asSIG0U2ae20c",
+								"displayText": "Learning Center Home",
+								"url": "/learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "56Y6OytBNgNoNDWQL2ezlf",
+								"displayText": "DDoS Learning Center",
+								"url": "/learning/ddos/what-is-a-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Ra0qmFJ1uewk2MYscW8KI",
+								"displayText": "DNS Learning Center",
+								"url": "/learning/dns/what-is-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1yItw6W6SsM2Y0Wuq6Y2c6",
+								"displayText": "Security Learning Center",
+								"url": "/learning/security/what-is-web-application-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q67XLnKqKhfmDJR4q9hJT",
+								"displayText": "Performance Learning Center",
+								"url": "/learning/performance/why-site-speed-matters/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z3UC9tP1Kjk85BX5zSGPY",
+								"displayText": "Serverless Learning Center",
+								"url": "/learning/serverless/what-is-serverless/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52V7iI9YriJ0En2SGmEXz5",
+								"displayText": "SSL Learning Center",
+								"url": "/learning/ssl/what-is-ssl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7D22pOfjb98KXcnAJyJFCX",
+								"displayText": "Bots Learning Center",
+								"url": "/learning/bots/what-is-a-bot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7jgqDUFFzaLuKrsaBTLdV0",
+								"displayText": "Cloud Learning Center",
+								"url": "/learning/cloud/what-is-the-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6PdBQjiFs98K6RQuG5TYNd",
+								"displayText": "Access Management Learning Center",
+								"url": "/learning/access-management/what-is-identity-and-access-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3jjEMuuLrCwhRidjG5kglM",
+								"displayText": "Network Layer Learning Center",
+								"url": "/learning/network-layer/what-is-the-network-layer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RvS0l0m86G1VISDrEvlJb",
+								"displayText": "Privacy Learning Center",
+								"url": "/learning/privacy/what-is-data-privacy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "MytksT5WU5mh863BQYEkj",
+								"displayText": "Video Streaming Learning Center",
+								"url": "/learning/video/what-is-streaming/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
+								"displayText": "Email Security Learning Center",
+								"url": "/learning/email-security/what-is-email-security/"
+							}
+						]
+					}
+				},
+				"header": "CDN SSL/TLS | CDN security",
+				"blurbSubHeader": "CDN strategies for mitigating vulnerabilities include proper SSL/TLS encryption and specialized encryption hardware. Explore the CDN guide.",
+				"objectivesHeader": "CDN Security",
+				"objectivesList": [
+					"Understand how CDN SSL/TLS works",
+					"Explore CDN optimizations for SSL/TLS",
+					"See how a CDN can improve an out-of-date SSL/TLS certificate",
+					"Learn how a CDN can help mitigate DDoS attacks"
+				],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "6jyrxonbzcxCgqdepHymae",
+						"displayText": "CDN Reliability",
+						"url": "/learning/cdn/cdn-load-balance-reliability/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "1TT4G3C7LJsolyiywM89vS",
+						"displayText": "CDN Performance",
+						"url": "/learning/cdn/performance/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "4qXkaiE0w1Gv6ByBCtJSA1",
+						"displayText": "Anycast",
+						"url": "/learning/cdn/glossary/anycast-network/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "5PAq9dBn9Q9KLVLRN84xu8",
+						"displayText": "Internet Exchange Point (IXP)",
+						"url": "/learning/cdn/glossary/internet-exchange-point-ixp/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "1T54LIEtYSk6kRVn76Nj55",
+						"displayText": "Round-trip Time (RTT)",
+						"url": "/learning/cdn/glossary/round-trip-time-rtt/"
+					}
+				],
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What are the security risks to a CDN?</h2>\n\n<p>Like all networks exposed to the internet, CDNs must guard against <a href='/learning/security/threats/on-path-attack/'>on-path attacks</a>, <a href='/learning/security/what-is-a-data-breach/'>data breaches</a>, and attempts to overwhelm the network of the targeted <a href=\"/learning/cdn/glossary/origin-server/\">origin server</a> using <a href=\"/learning/ddos/what-is-a-ddos-attack/\">DDoS attacks</a>. A <a href='/learning/cdn/what-is-a-cdn/'>CDN</a> can have multiple strategies for mitigating vulnerabilities including proper <a href='/learning/ssl/what-is-ssl/'>SSL</a>/<a href='/learning/ssl/transport-layer-security-tls/'>TLS</a> encryption and specialized <a href='/learning/ssl/what-is-encryption/'>encryption</a> hardware.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is SSL/TLS encryption?</h2>\n\n<p>Transport Layer Security (TLS) is a protocol for encrypting data that is sent over the Internet. TLS grew out of Secure Sockets Layer (SSL), the first widely-adopted web encryption protocol, in order to fix most of the earlier protocol’s security flaws. The industry still uses the terms somewhat interchangeably for historical reasons. Any web site that you visit starting with <a href='/learning/ssl/what-is-https/'>https://</a> rather than http:// is using TLS/SSL for communication between a browser and a server.</p>\n\n<p>Proper encryption practices are a necessity in order to prevent attackers from accessing important data. Because the Internet is designed in such a way that data is transferred across many locations, it is possible to intercept packets of important information as they move across the globe. Through the utilization of a <a href='/learning/ssl/what-is-a-cryptographic-key/'>cryptographic protocol</a>, only the intended recipient is able to decode and read the information and intermediaries are prevented from decoding the contents of the transferred data.</p>\n\n<h4 class=\"learning-content-h4\">The TLS protocol is designed to provide 3 components:</h4>\n\n<ol class=\"learning-list\">\n  <li><strong>Authentication</strong> - The ability to verify the validity of the provided identifications</li>\n  <li><strong>Encryption</strong> - The ability to obfuscate information sent from one host to another</li>\n  <li><strong>Integrity</strong> - The ability to detect forgery and tampering</li>\n</ol>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is an SSL Certificate?</h2>\n\n<p>To enable TLS, a site needs an <a href='/learning/ssl/what-is-an-ssl-certificate/'>SSL certificate</a> and a corresponding <a href='/learning/ssl/what-is-a-cryptographic-key/'>key</a>. Certificates are files containing information about the owner of a site, and the public half of an asymmetric key pair. A certificate authority (CA) digitally signs the certificate to verify that the information in the certificate is correct. By trusting the certificate, you are trusting that the certificate authority has done its due diligence.</p>\n\n<img class=\"\" title=\"SSL/TLS error graphic\" alt=\"SSL/TLS error graphic\" src=\"/img/learning/cdn/tls-ssl/https-tls-ssl-not-secure.png\" width=\"100%\" itemprop=\"image\" />\n\n<p>Operating systems and browsers typically have a list of certificate authorities that they implicitly trust. If a web site presents a certificate that is signed by an untrusted certificate authority, the browser warns the visitor that something could be afoot.</p>\n\n<p>Certificates and the way they are implemented can also be independently rated based on strength, protocol support and other characteristics. Ratings can change over time as newer, better implementations become available or other factors result in reduction of overall security of a certification implementation. If an origin server has an older lower grade SSL security implementation it will typically be graded more poorly and may be vulnerable to compromise.</p>\n\n<p>A CDN has the added benefit of providing security to visitors of properties hosted within its network using a CDN provided certificate. Because visitors connect to only the CDN, an older or less secure certificate in use between the origin server and the CDN will not affect the client’s experience.</p>\n\n<img class=\"\" title=\"SSL/TLS self-signed diagram\" alt=\"SSL/TLS self-signed diagram\" src=\"/img/learning/cdn/tls-ssl/origin-ssl-self-signed-certificate-diagram.png\" width=\"100%\" itemprop=\"image\" />\n\n<p>Realistically, this weaker server-to-edge security still represents a vulnerability and should be avoided, especially given the ease with which it is possible to upgrade the security of an origin server by using <a href=\"https://blog.cloudflare.com/cloudflare-ca-encryption-origin/\">free origin encryption</a>.</p>\n\n<img class=\"\" title=\"SSL/TLS self-signed diagram\" alt=\"SSL/TLS self-signed diagram\" src=\"/img/learning/cdn/tls-ssl/origin-ssl-protection-diagram.png\" width=\"100%\" itemprop=\"image\" />\n\n<p>Proper security is also important to organic search; encrypted web properties result in stronger ranking on Google search.</p>\n\n<p>An SSL/TLS connection operates differently than a traditional <a href='/learning/ddos/glossary/tcp-ip/'>TCP/IP</a> connection. Once the initial stages of the TCP connection have been made, a separate exchange occurs to set up the secure connection. This article will refer to the device requesting the secure connection as the client and the device serving up the secure connection as the server, as is the case with a user loading a webpage encrypted with SSL/TLS.</p>\n\n<h4 class=\"learning-content-h4\">First the TCP/IP handshake is made in 3 steps:</h4>\n\n<ol class=\"learning-list\">\n  <li>The client sends a SYN packet to the server in order to initiate the connection.</li>\n  <li>The server than responds to that initial packet with a SYN/ACK packet, in order to acknowledge the communication.</li>\n  <li>Finally, the client returns an ACK packet to acknowledge the receipt of the packet from the server. After completing this sequence of packet sending and receiving, the TCP connection is open and able to send and receive data.</li>\n</ol>\n\n<img class=\"\" title=\"TCP 3-way handshake diagram\" alt=\"TCP 3-way handshake diagram\" src=\"/img/learning/cdn/tls-ssl/tcp-handshake-diagram.png\" width=\"100%\" itemprop=\"image\" />\n\n<p>Once the TCP/IP handshake has occurred, the <a href='/learning/ssl/what-happens-in-a-tls-handshake/'>TLS encryption handshake</a> begins. The detailed processes behind a TLS handshaking implementation are beyond the scope of this guide. Instead we will focus on the core purpose of the handshake and the time required to complete the process.</p>\n\n<h4 class=\"learning-content-h4\">From a high level, there are three main components to a TLS handshake:</h4>\n<ol class=\"learning-list\">\n  <li>The client and the server negotiate TLS versions and the type of cryptography cipher to be used in the communication.</li>\n  <li>The client and server take steps to ensure mutually authentic communication.</li>\n  <li>A key is exchanged to be used in future encrypted communications.</li>\n</ol>\n\n<p>In the diagram below, each of the steps involved in a TCP/IP handshake and a TLS handshake are visualized. Keep in mind that each arrow represents a separate communication which must travel physically between the client and the server. Since the total number of messages back and forth are increased when using TLS encryption, web page load times are increased.</p>\n\n<img class=\"\" title=\"SSL/TLS handshake diagram\" alt=\"SSL/TLS handshake diagram\" src=\"/img/learning/cdn/tls-ssl/tls-ssl-handshake.png\" width=\"100%\" itemprop=\"image\" />\n\n<p>For illustrative purposes it can be said the TCP handshake takes about 50ms, the TLS handshake may take about 110ms. This is largely a result of the time it takes for data to be sent both ways between the client and server. The idea of <a href=\"/learning/cdn/glossary/round-trip-time-rtt/\">round-trip time (RTT)</a>, which is the amount of time it takes for information to travel from one device to another and back again, can be used to quantify how “expensive” a connection is to create. If left unoptimized and without the use of a CDN, additional RTT represents increases in <a href='/learning/performance/glossary/what-is-latency/'>latency</a> and load times for end-users. Luckily, there are optimizations that can be made to improve total load time and reduce the number of trips back and forth.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How can SSL latency be improved?</h2>\n\n<p>SSL optimizations can reduce RTT and improve page load time. Here are 3 of the ways a TLS connection can be optimized:</p>\n\n<p><strong>TLS Session Resumption</strong> - a CDN can keep a connection alive between the origin server and the CDN network for longer by resuming the same session for additional requests. Keeping the connection alive saves time spent renegotiating the connection between the CDN and the origin server when the client requires an uncached origin fetch. As long as the origin server receives additional requests while the connection to the CDN is maintained, additional visitors to the site will experience lower latency.</p>\n\n<img class=\"\" title=\"session resumption real time infographic\" alt=\"session resumption real time infographic\" src=\"/img/learning/cdn/tls-ssl/session-resumption-real-time.png\" width=\"80%\" itemprop=\"image\" />\n\n<p>The overall cost of a session resumption is less than 50% of a full TLS handshake, mainly because session resumption only costs one round-trip while a full TLS handshake requires two. Additionally, a session resumption does not require any large finite field arithmetic (new sessions do), so the CPU cost for the client is almost negligible compared to that in a full TLS handshake. For mobile users, the performance improvement by session resumption means a much more reactive and battery-life-friendly surfing experience.</p>\n\n<img class=\"\" title=\"session resumption CPU time infographic\" alt=\"session resumption CPU time infographic\" src=\"/img/learning/cdn/tls-ssl/session-resumption-cpu-time.png\" width=\"80%\" itemprop=\"image\" />\n\n<p><strong>Enable TLS False Start</strong> - when a visitor is viewing the site for the first time, the session resumption mentioned above will not be helpful. TLS False Start allows the sender to send application data without a complete TLS handshake.</p>\n\n<img class=\"\" title=\"SSL/TLS False Start handshake diagram\" alt=\"SSL/TLS False Start handshake diagram\" src=\"/img/learning/cdn/tls-ssl/tls-ssl-false-start-handshake.png\" width=\"100%\" itemprop=\"image\" />\n\n<p>The False Start does not modify the TLS protocol itself, it only modifies the timing in which data is transferred. Once the client begins the key exchange, encryption can be assured and data transfer begins. This modification reduces the total number of roundtrips, cutting down the latency required by 60ms.</p>\n\n<p><strong>Zero Round Trip Time Resumption (0-RTT)</strong> - 0-RTT allows for session resumption without addition RTT latency added to the connection. For resumed connections using <a href='/learning/ssl/why-use-tls-1.3/'>TLS 1.3</a> and 0-RTT, connection speed is improved, leading to a faster and smoother web experience for web sites that users visit regularly. This speed boost is especially noticeable on mobile networks.</p>\n\n<p>0-RTT is an effective improvement, but isn’t without some security tradeoffs. To overcome the risk of what’s known as a replay attack, a CDN service may implement restriction on the type of HTTP requests and the allowed parameters. To learn more, explore an <a href=\"https://blog.cloudflare.com/introducing-0-rtt/\">introduction to 0-RTT</a>.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">CDN Protection from DDoS attacks</h2>\n\n<p>One of the most substantial security vulnerabilities of web properties on the modern Internet is the use of <a href=\"/learning/ddos/what-is-a-ddos-attack/\">distributed denial-of-service (DDoS) attacks</a>. Over time DDoS attacks have increased in size and complexity, with attackers utilizing <a href=\"https://www.cloudflare.com/learning/ddos/what-is-a-ddos-botnet/\">botnets</a> to target websites with attack traffic. A large and properly configured CDN has the potential benefit of scale as a protective factor against DDoS; by having enough data center locations and sizable bandwidth capabilities, a CDN is able to withstand and mitigate an amount of incoming attack traffic that would easily overwhelm the targeted origin server.</p>\n\n<p>Other steps can be taken to secure a TLS connection. Learn more about the <a href=\"/cdn/\">Cloudflare CDN</a> and <a href=\"https://blog.cloudflare.com/staying-on-top-of-tls-attacks/\">staying on top of TLS attacks</a>. Check your website for proper HTTPS usage in the <a href='https://www.cloudflare.com/diagnostic-center/'>Cloudflare Diagnostic Center</a>.</p>",
+				"availableLocales": null,
+				"localized": true,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "Translated for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "Translated for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "No Page for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": null
+				},
+				"proactivePopup": null,
+				"sidebarForm": null
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "7wJPZcCKffwW46br18m319",
+			"pathname": "/learning/cdn/cdn-ssl-tls-security/",
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

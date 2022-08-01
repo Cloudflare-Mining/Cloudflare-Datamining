@@ -1,0 +1,733 @@
+{
+	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
+	"path": "/learning/dns/glossary/round-robin-dns/",
+	"result": {
+		"data": {
+			"learningCenterArticle": {
+				"contentTypeId": "learningCenterArticle",
+				"contentfulId": "KG0vLPZREThwxhDMbPdfh",
+				"urlSlug": "dns/glossary/round-robin-dns",
+				"metaTags": {
+					"metaTitle": "What is round-robin DNS?",
+					"metaDescription": "Round-robin DNS is a DNS-based load balancing technique.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/dns_og.jpeg"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"metaTitle": "What Is Round-Robin DNS?",
+				"metaDescription": "Round-robin DNS is a DNS-based load balancing technique.",
+				"learningCenterArticleSubHeader": {
+					"contentTypeId": "learningCenterArticleSubHeader",
+					"contentfulId": "7skJGddyApM6rrCZOvn9YF",
+					"learningCenterName": "dns",
+					"links": [
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "2j9vWGfXAwGGPl7LN1Ezi7",
+							"displayText": "What is DNS?",
+							"url": "/learning/dns/what-is-dns/"
+						},
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "3noj8iKecv1MxsE67u045T",
+							"displayText": "What is 1.1.1.1?",
+							"url": "/learning/dns/what-is-1.1.1.1/"
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "5H0d0oeRRCTIjGxZR65GiF",
+							"name": "DNS Records (dropdown)",
+							"displayText": "DNS Records",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "52pTZ4IwdIcqznT6vpOg8O",
+									"displayText": "Overview",
+									"url": "/learning/dns/dns-records/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6zoT4UnozC7f0YgaA4GayP",
+									"displayText": "DNS A Record",
+									"url": "/learning/dns/dns-records/dns-a-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "216n5uGl275SXOSCgPUKYE",
+									"displayText": "DNS AAAA Record",
+									"url": "/learning/dns/dns-records/dns-aaaa-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "25IZh36P1Hroccd1Hbn0J9",
+									"displayText": "DNS CNAME Record",
+									"url": "/learning/dns/dns-records/dns-cname-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3RB9F8AcZ12cYLoa88V0tw",
+									"displayText": "DNS MX Record",
+									"url": "/learning/dns/dns-records/dns-mx-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5POxZ3Tq5wtr5nvPh3EjOa",
+									"displayText": "DNS TXT Record",
+									"url": "/learning/dns/dns-records/dns-txt-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4PwRBNlUE7MUBPZhTVrFm7",
+									"displayText": "DNS NS Record",
+									"url": "/learning/dns/dns-records/dns-ns-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7JzBM5jTjsL8wyh3HOEmZx",
+									"displayText": "DNS SOA Record",
+									"url": "/learning/dns/dns-records/dns-soa-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "54EtZ8wu9XeFUmjpP4ffcM",
+									"displayText": "DNS SRV Record",
+									"url": "/learning/dns/dns-records/dns-srv-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3ZJqZzOr67RDB035iGoFfq",
+									"displayText": "DNS PTR Record",
+									"url": "/learning/dns/dns-records/dns-ptr-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4cRZgnJnlTJ0btlrWSVDQs",
+									"displayText": "DNSKEY and DS Records",
+									"url": "/learning/dns/dns-records/dnskey-ds-records/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5qZnEhej6gYQitbACd6zyl",
+									"displayText": "DNS SPF Record",
+									"url": "/learning/dns/dns-records/dns-spf-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4xfxdFdQt99i8HyQJnxrB1",
+									"displayText": "DNS DKIM Record",
+									"url": "/learning/dns/dns-records/dns-dkim-record/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "Q49hOQqCkiSUJkM1OpfYS",
+									"displayText": "DNS DMARC Record",
+									"url": "/learning/dns/dns-records/dns-dmarc-record/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "3ZnjBOMP0HJxvAFLXbYSzJ",
+							"name": "DNS Header: Securing DNS drop-down",
+							"displayText": "Securing DNS",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1qDNMOTTvjkYO6pegCD1uF",
+									"displayText": "DNS over TLS",
+									"url": "/learning/dns/dns-over-tls/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6eI7dSVO2bxGNiIj6iKq0n",
+									"displayText": "DNS security",
+									"url": "/learning/dns/dns-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2PaGg8hMqJM1igspXYbvv3",
+									"displayText": "DNS Cache Poisoning",
+									"url": "/learning/dns/dns-cache-poisoning/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5YlKzhtoXpJxfv54E8YwUa",
+									"displayText": "DNS Fast Flux",
+									"url": "/learning/dns/dns-fast-flux/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "2AtQTtUFJafy4cPr8qwVxS",
+							"name": "DNS Header: Domain Registration drop-down",
+							"displayText": "Domain Registration",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1ikXSOCWeoGFzBnkDIwuMY",
+									"displayText": "Domain Name",
+									"url": "/learning/dns/glossary/what-is-a-domain-name/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1OPRVsnrKwgcUG0kLGU3cS",
+									"displayText": "Top-Level Domain",
+									"url": "/learning/dns/top-level-domain"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2h2AMLDpLE26iXPuwzXW9I",
+									"displayText": "Domain name registrar",
+									"url": "/learning/dns/glossary/what-is-a-domain-name-registrar/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7nawVf9j5ZfeeEDxxQkox6",
+									"displayText": "Best Domain Name Registrar",
+									"url": "/learning/dns/glossary/choose-the-best-domain-name-registrar/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4EJToFmoxmGMpGfGw62Uwb",
+									"displayText": "Expired Domains",
+									"url": "/learning/dns/glossary/expired-domains/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3CCIJMYWZVIhnemJrYGRvL",
+									"displayText": "Cloudflare Registrar",
+									"url": "/learning/dns/what-is-cloudflare-registrar/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "1KSq89nu1bbMJ3FMyFOV0S",
+							"name": "DNS Header: Glossary ",
+							"displayText": "DNS Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "499ZJa7WyHPnVn7bN9oWez",
+									"displayText": "DNS Zone",
+									"url": "/learning/dns/glossary/dns-zone/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4Zxjal5K4Ftso190MOHh5b",
+									"displayText": "IP Address",
+									"url": "/learning/dns/glossary/what-is-my-ip-address/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5OM8E8MngEWEbPk2z3dL8K",
+									"displayText": "What's a DNS Server?",
+									"url": "/learning/dns/what-is-a-dns-server/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "zUbDVzpVYeLJyroEFft7S",
+									"displayText": "DNS Root Server",
+									"url": "/learning/dns/glossary/dns-root-server/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "70gaOJdXvkgXzRRApB6HkS",
+									"displayText": "Dynamic DNS",
+									"url": "/learning/dns/glossary/dynamic-dns/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5io6sFzA7GqUtf7iJ48iDZ",
+									"displayText": "Reverse DNS",
+									"url": "/learning/dns/glossary/reverse-dns/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5IMnlrCJD7x0FVpewqkOIR",
+									"displayText": "Primary vs. secondary DNS",
+									"url": "/learning/dns/glossary/primary-secondary-dns/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3SokyTEzCKuAzAad9haVI9",
+									"displayText": "Round-robin DNS",
+									"url": "/learning/dns/glossary/round-robin-dns/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5n1f5p2zH49IYRP3FcVzjQ",
+									"displayText": "Anycast DNS",
+									"url": "/learning/dns/what-is-anycast-dns/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1vco0E7j6jTBPLi9OYJ6eO",
+									"displayText": "Recursive DNS",
+									"url": "/learning/dns/what-is-recursive-dns/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3MOZsA9003MKQ1GDZMGFY5",
+									"displayText": "DNS Server Types",
+									"url": "/learning/dns/dns-server-types/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "7LEmGmCIHDsIsBT3vXJtG6",
+							"name": "DNS Header: Insights",
+							"displayText": "Insights",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1n7zfUXeehnxV53QhYGE36",
+									"displayText": "The evolving DNS threat landscape",
+									"url": "http://www.cloudflare.com/learning/insights-dns-landscape"
+								}
+							]
+						}
+					]
+				},
+				"learningCenterArticleFooter": {
+					"contentTypeId": "learningCenterArticleFooter",
+					"contentfulId": "7pedUTjJAQ6HVpZxZEQCUP",
+					"learningCenterName": "dns",
+					"column1Title": "About DNS",
+					"column1": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "5bri15IPDKK6k63oZBUMsj",
+						"name": "DNS Footer: About DNS",
+						"displayText": "About DNS",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2j9vWGfXAwGGPl7LN1Ezi7",
+								"displayText": "What is DNS?",
+								"url": "/learning/dns/what-is-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6eI7dSVO2bxGNiIj6iKq0n",
+								"displayText": "DNS security",
+								"url": "/learning/dns/dns-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1qDNMOTTvjkYO6pegCD1uF",
+								"displayText": "DNS over TLS",
+								"url": "/learning/dns/dns-over-tls/"
+							}
+						]
+					},
+					"column2Title": "DNS Servers",
+					"column2": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "6phQ5syd9rr3QdKWNSj1D8",
+						"name": "DNS Footer: DNS Servers",
+						"displayText": "DNS Servers",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5OM8E8MngEWEbPk2z3dL8K",
+								"displayText": "What's a DNS Server?",
+								"url": "/learning/dns/what-is-a-dns-server/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "zUbDVzpVYeLJyroEFft7S",
+								"displayText": "DNS Root Server",
+								"url": "/learning/dns/glossary/dns-root-server/"
+							}
+						]
+					},
+					"column3Title": "DNS Records",
+					"column3": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "7dBB0Vi2GBftSRtz2gOXAE",
+						"name": "DNS Footer: DNS Records",
+						"displayText": "DNS Records",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52pTZ4IwdIcqznT6vpOg8O",
+								"displayText": "Overview",
+								"url": "/learning/dns/dns-records/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6zoT4UnozC7f0YgaA4GayP",
+								"displayText": "DNS A Record",
+								"url": "/learning/dns/dns-records/dns-a-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "216n5uGl275SXOSCgPUKYE",
+								"displayText": "DNS AAAA Record",
+								"url": "/learning/dns/dns-records/dns-aaaa-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "25IZh36P1Hroccd1Hbn0J9",
+								"displayText": "DNS CNAME Record",
+								"url": "/learning/dns/dns-records/dns-cname-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3RB9F8AcZ12cYLoa88V0tw",
+								"displayText": "DNS MX Record",
+								"url": "/learning/dns/dns-records/dns-mx-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5POxZ3Tq5wtr5nvPh3EjOa",
+								"displayText": "DNS TXT Record",
+								"url": "/learning/dns/dns-records/dns-txt-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4PwRBNlUE7MUBPZhTVrFm7",
+								"displayText": "DNS NS Record",
+								"url": "/learning/dns/dns-records/dns-ns-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7JzBM5jTjsL8wyh3HOEmZx",
+								"displayText": "DNS SOA Record",
+								"url": "/learning/dns/dns-records/dns-soa-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "54EtZ8wu9XeFUmjpP4ffcM",
+								"displayText": "DNS SRV Record",
+								"url": "/learning/dns/dns-records/dns-srv-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3ZJqZzOr67RDB035iGoFfq",
+								"displayText": "DNS PTR Record",
+								"url": "/learning/dns/dns-records/dns-ptr-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4cRZgnJnlTJ0btlrWSVDQs",
+								"displayText": "DNSKEY and DS Records",
+								"url": "/learning/dns/dns-records/dnskey-ds-records/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5qZnEhej6gYQitbACd6zyl",
+								"displayText": "DNS SPF Record",
+								"url": "/learning/dns/dns-records/dns-spf-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4xfxdFdQt99i8HyQJnxrB1",
+								"displayText": "DNS DKIM Record",
+								"url": "/learning/dns/dns-records/dns-dkim-record/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q49hOQqCkiSUJkM1OpfYS",
+								"displayText": "DNS DMARC Record",
+								"url": "/learning/dns/dns-records/dns-dmarc-record/"
+							}
+						]
+					},
+					"column4Title": "DNS Glossary",
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "5WMBaCE7sRnxCptrlp0KcN",
+						"name": "DNS Footer: Glossary",
+						"displayText": "DNS Glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3noj8iKecv1MxsE67u045T",
+								"displayText": "What is 1.1.1.1?",
+								"url": "/learning/dns/what-is-1.1.1.1/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6v4wbr2ex8UmyM5nD2kkKL",
+								"displayText": "What is My IP Address?",
+								"url": "/learning/dns/glossary/what-is-my-ip-address/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "499ZJa7WyHPnVn7bN9oWez",
+								"displayText": "DNS Zone",
+								"url": "/learning/dns/glossary/dns-zone/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "70gaOJdXvkgXzRRApB6HkS",
+								"displayText": "Dynamic DNS",
+								"url": "/learning/dns/glossary/dynamic-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5io6sFzA7GqUtf7iJ48iDZ",
+								"displayText": "Reverse DNS",
+								"url": "/learning/dns/glossary/reverse-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5IMnlrCJD7x0FVpewqkOIR",
+								"displayText": "Primary vs. secondary DNS",
+								"url": "/learning/dns/glossary/primary-secondary-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3SokyTEzCKuAzAad9haVI9",
+								"displayText": "Round-robin DNS",
+								"url": "/learning/dns/glossary/round-robin-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5n1f5p2zH49IYRP3FcVzjQ",
+								"displayText": "Anycast DNS",
+								"url": "/learning/dns/what-is-anycast-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1vco0E7j6jTBPLi9OYJ6eO",
+								"displayText": "Recursive DNS",
+								"url": "/learning/dns/what-is-recursive-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2PaGg8hMqJM1igspXYbvv3",
+								"displayText": "DNS Cache Poisoning",
+								"url": "/learning/dns/dns-cache-poisoning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1ikXSOCWeoGFzBnkDIwuMY",
+								"displayText": "Domain Name",
+								"url": "/learning/dns/glossary/what-is-a-domain-name/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2h2AMLDpLE26iXPuwzXW9I",
+								"displayText": "Domain name registrar",
+								"url": "/learning/dns/glossary/what-is-a-domain-name-registrar/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7nawVf9j5ZfeeEDxxQkox6",
+								"displayText": "Best Domain Name Registrar",
+								"url": "/learning/dns/glossary/choose-the-best-domain-name-registrar/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4EJToFmoxmGMpGfGw62Uwb",
+								"displayText": "Expired Domains",
+								"url": "/learning/dns/glossary/expired-domains/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3CCIJMYWZVIhnemJrYGRvL",
+								"displayText": "Cloudflare Registrar",
+								"url": "/learning/dns/what-is-cloudflare-registrar/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5YlKzhtoXpJxfv54E8YwUa",
+								"displayText": "DNS Fast Flux",
+								"url": "/learning/dns/dns-fast-flux/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1OPRVsnrKwgcUG0kLGU3cS",
+								"displayText": "Top-Level Domain",
+								"url": "/learning/dns/top-level-domain"
+							}
+						]
+					},
+					"column5Title": "Learning Center Navigation",
+					"column5": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "2FBivsdi2bchWEIqvMoEJ",
+						"name": "DNS Footer: Learning Nav",
+						"displayText": "Learning Center Navigation",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2hdSVoYA5asSIG0U2ae20c",
+								"displayText": "Learning Center Home",
+								"url": "/learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "56Y6OytBNgNoNDWQL2ezlf",
+								"displayText": "DDoS Learning Center",
+								"url": "/learning/ddos/what-is-a-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6DGcnYIMM0eCGwqAKu2ECO",
+								"displayText": "CDN Learning Center",
+								"url": "/learning/cdn/what-is-a-cdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z3UC9tP1Kjk85BX5zSGPY",
+								"displayText": "Serverless Learning Center",
+								"url": "/learning/serverless/what-is-serverless/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1yItw6W6SsM2Y0Wuq6Y2c6",
+								"displayText": "Security Learning Center",
+								"url": "/learning/security/what-is-web-application-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q67XLnKqKhfmDJR4q9hJT",
+								"displayText": "Performance Learning Center",
+								"url": "/learning/performance/why-site-speed-matters/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52V7iI9YriJ0En2SGmEXz5",
+								"displayText": "SSL Learning Center",
+								"url": "/learning/ssl/what-is-ssl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7D22pOfjb98KXcnAJyJFCX",
+								"displayText": "Bots Learning Center",
+								"url": "/learning/bots/what-is-a-bot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7jgqDUFFzaLuKrsaBTLdV0",
+								"displayText": "Cloud Learning Center",
+								"url": "/learning/cloud/what-is-the-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6PdBQjiFs98K6RQuG5TYNd",
+								"displayText": "Access Management Learning Center",
+								"url": "/learning/access-management/what-is-identity-and-access-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3jjEMuuLrCwhRidjG5kglM",
+								"displayText": "Network Layer Learning Center",
+								"url": "/learning/network-layer/what-is-the-network-layer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RvS0l0m86G1VISDrEvlJb",
+								"displayText": "Privacy Learning Center",
+								"url": "/learning/privacy/what-is-data-privacy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "MytksT5WU5mh863BQYEkj",
+								"displayText": "Video Streaming Learning Center",
+								"url": "/learning/video/what-is-streaming/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
+								"displayText": "Email Security Learning Center",
+								"url": "/learning/email-security/what-is-email-security/"
+							}
+						]
+					}
+				},
+				"header": "What is round-robin DNS?",
+				"blurbSubHeader": "Round-robin DNS is a load balancing technique that involves using several different IP addresses for a single domain name.",
+				"objectivesHeader": "Round-Robin DNS",
+				"objectivesList": [
+					"Describe round-robin DNS",
+					"Outline the pros and cons of using round-robin DNS for load balancing"
+				],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "2dqRthxmj41I1BD5u3aUwY",
+						"displayText": "DNS records",
+						"url": "/learning/dns/dns-records/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "499ZJa7WyHPnVn7bN9oWez",
+						"displayText": "DNS Zone",
+						"url": "/learning/dns/glossary/dns-zone/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "70gaOJdXvkgXzRRApB6HkS",
+						"displayText": "Dynamic DNS",
+						"url": "/learning/dns/glossary/dynamic-dns/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "5io6sFzA7GqUtf7iJ48iDZ",
+						"displayText": "Reverse DNS",
+						"url": "/learning/dns/glossary/reverse-dns/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "2j9vWGfXAwGGPl7LN1Ezi7",
+						"displayText": "What is DNS?",
+						"url": "/learning/dns/what-is-dns/"
+					}
+				],
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is round-robin DNS?</h2>\n\n<p>Round-robin <a href=\"/learning/dns/what-is-dns/\">DNS</a> is a load balancing technique where the balancing is done by a type of DNS server called an <a href=\"/learning/dns/dns-server-types#authoritative-nameserver\">authoritative nameserver</a>, rather than using a dedicated piece of load-balancing hardware. Round-robin DNS can be used when a website or service has their content hosted on several redundant web servers; when the DNS authoritative nameserver is queried for an <a href='/learning/dns/glossary/what-is-my-ip-address/'>IP address</a>, the server hands out a different address each time, operating on a rotation. This is particularly useful when the redundant web servers are geographically separated, making traditional load-balancing difficult. Round-robin is known for it’s ease of implementation, but it also has strong drawbacks.</p>\n\n<p>A DNS server with round-robin enabled will have multiple different <a href='/learning/dns/dns-records/dns-a-record/'>A records</a>, each with the same domain name but a different IP address. Each time the DNS server is queried, it sends the IP address to which it most recently responded with to the back of the queue, operating on a loop. The IP addresses in a round-robin DNS server are like baseball players in a batting lineup: each one gets a turn and then is moved to the back of the line.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the drawbacks of Round-Robin DNS?</h2>\n\n<p>The round-robin method doesn’t always provide evenly-distributed load balancing because of both DNS <a href='/learning/cdn/what-is-caching/'>caching</a> and <a href='/learning/serverless/glossary/client-side-vs-server-side/'>client-side</a> caching. If a user makes a DNS query to a particularly high traffic  <a href=\"/learning/dns/dns-server-types#recursive-resolver\">recursive resolver</a> for a particular website, that resolver will cache the website’s IP, potentially sending a heavy amount of traffic to that one IP.</p>\n\n<p>Another drawback is that round-robin cannot be depended upon for site reliability; if one of the servers goes down, the DNS server will still keep that server’s IP in the round-robin rotation. So if there are 6 servers and one is taken offline, one in six users will be denied service. In addition, round-robin DNS does not account for server load, transaction time, geographical distance, and other factors that traditional load balancing can be configured for.</p>\n\n<p>Some advanced round-robin services have methods to overcome a few of the drawbacks, such as the ability to detect unresponsive servers and take them out of the round-robin rotation, but there is no way around the caching issue. Many DNS providers, like <a href=\"/dns/\">Cloudflare DNS</a> support round-robin DNS.</p>",
+				"availableLocales": null,
+				"localized": true,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "No Page for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": null
+				},
+				"proactivePopup": null,
+				"sidebarForm": null
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "KG0vLPZREThwxhDMbPdfh",
+			"pathname": "/learning/dns/glossary/round-robin-dns/",
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

@@ -1,0 +1,94 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/moneybox/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Moneybox",
+				"contentfulId": "7nZoNYwESSBbKFQyXcvsN3",
+				"nameUrlSlug": "moneybox",
+				"metaTags": {
+					"metaTitle": "Moneybox | Case Study",
+					"metaDescription": "Moneybox & Cloudflare | Case Study",
+					"twitterCustomImage": {
+						"file": {
+							"publicURL": "[path]/moneybox_meta.png"
+						}
+					},
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/moneybox_meta.png"
+						}
+					},
+					"facebookCustomImage": {
+						"file": {
+							"publicURL": "[path]/moneybox_meta.png"
+						}
+					}
+				},
+				"orderDate": "2022-02-14",
+				"homepageUrl": "https://www.moneyboxapp.com/",
+				"hideFromCaseStudiesPage": false,
+				"shortDescription": "Moneybox shields infrastructure and keeps business moving with Zero Trust solutions from Cloudflare",
+				"longDescription": "## __Moneybox shields infrastructure and keeps business moving with Zero Trust solutions from Cloudflare__\n\nMoneybox, the digital wealth manager, helps UK consumers build wealth with confidence, whatever their starting point, whether saving for a rainy day, growing their money through investing, buying a house, or planning a retirement they can look forward to.  \n\nIn 2016, Moneybox changed the face of retail investing by making it easier than ever for people to open and regularly contribute to a stocks and shares ISA, simply by rounding up their daily purchases and investing their spare change. Today, Moneybox offers a range of great value products and services across savings, investing, mortgages and pensions, to help people manage and achieve their short, mid, and longer-term financial goals all within one easy-to-use and engaging app.\n\nSince its launch in 2016, Moneybox has seen exponential growth. It currently employs 300 people, supports a community of more than 750,000 customers, and has in excess of £2B in assets under administration. \n\nWith customer growth of 46% year on year, Moneybox is rapidly expanding in terms of mass-market adoption and on its way to becoming a category-defining wealth platform supported by award-winning technology and customer support.\n\n### __Challenge: Deliver secure access to internal infrastructure for remote workforce__\n\nSince Moneybox launched, the company has used Cloudflare Access to keep its internal applications shielded from the public internet. Access, which is now part of the Cloudflare Zero Trust platform, enables users to securely connect to corporate applications. Access easily scaled as Moneybox rapidly expanded from only 40 employees in 2016 to more than 300 today.\n\n“Even when employees are working on site, they may be using their own devices. Cloudflare's Zero Trust Platform ensures they can connect to internal resources on any device, from anywhere, securely and with appropriate role-based controls,” notes Jonathan Leigh, Engineering Director.\n\nWhen the COVID-19 pandemic hit in March 2020, businesses had to close their offices, and Moneybox had to quickly pivot to enable its entire workforce to work remotely, which meant providing all employees with secure, reliable remote access to all of the internal resources they needed to do their jobs. The Access solution helped the company seamlessly transition employees to work from home.\n\nThe Cloudflare Zero Trust platform delivers the high level of security required by a company operating in the financial services space, including granular role-based access controls. At the same time, employees have a much easier time securely connecting to key work-related resources. \n\n“The Cloudflare Zero Trust platform lets us give every employee least privilege access to the applications they need to do their job,” recalls Edward Fretwell, Engineering Director. \n\nMoneybox is using Cloudflare two-factor authentication (2FA), which provides protection against password-related cyber attacks such as credential-stuffing. The company has also integrated Cloudflare with Terraform to automate provisioning for new applications and users, saving the company time and ensuring that security controls are applied consistently.\n\n“The Cloudflare integration with Terraform lets us protect new application types and scale with user growth in a consistent, automated way, without having to put a lot of thought into user access rules,” Fretwell explains.\n\n“When we were a very small company, our security needs weren’t as complex,” Fretwell says. “Now that Moneybox is mature and growing, Cloudflare provides us with the comprehensive and nuanced protection we need against highly sophisticated cyber attacks.”\n\n### __Freedom to innovate and bring features to market faster to serve a growing customer base__\n\nBy leveraging Platform as a Service (PaaS) solutions such as Cloudflare and public cloud vendors, Moneybox is able to keep its infrastructure team lean and efficient while resting assured that Cloudflare is keeping its infrastructure and user data secure. Freed from tedious infrastructure tasks, developers can focus on innovation and quickly bring new features to market to better serve the company’s massive and growing user base.\n\nIn addition to enhancing Moneybox’s security posture, Cloudflare is a key partner in Moneybox’s ambitious plans to continually disrupt the financial services space through non-stop innovation and a fanatical focus on its customers. \n",
+				"cloudflareStreamVideoId": "b93616aed38b1c55e3c24fc3c7a7a6ef",
+				"keyResults": "- Moneybox allows employees to securely and easily login to internal applications remotely with Zero Trust access\n\n- Integration with Terraform allows Moneybox to automate provisioning, saving time and ensuring consistency of policy configuration\n\n- Moneybox’s engineering teams are able to focus on delivering innovative new products to the growing user base and can rest assured that the solution is secure",
+				"relatedCaseStudies": [
+					{
+						"name": "Bitpanda ",
+						"nameUrlSlug": "bitpanda"
+					},
+					{
+						"name": "ezCater",
+						"nameUrlSlug": "ezcater"
+					},
+					{
+						"name": "One Mount Group",
+						"nameUrlSlug": "one-mount-group"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Access",
+						"url": "/teams/access"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Edward Fretwell",
+				"employeeQuoteText": "The Cloudflare Zero Trust platform lets us give every employee least privilege access to the applications they need to do their job.",
+				"employeeQuoteJobTitle": "Engineering Director",
+				"employeeQuoteName2": "Edward Fretwell",
+				"employeeQuoteText2": "The Cloudflare integration with Terraform enables us to protect new application types and scale with user growth in a consistent, automated way, without having to put a lot of thought into user access rules.",
+				"employeeQuoteJobTitle2": "Engineering Director",
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": {
+					"file": {
+						"publicURL": "[path]/thumbnail__2_.jpg"
+					}
+				},
+				"logo": {
+					"file": {
+						"publicURL": "[path]/moneybox_logo.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "7nZoNYwESSBbKFQyXcvsN3",
+			"pathname": "/case-studies/moneybox/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}

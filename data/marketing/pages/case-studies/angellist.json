@@ -1,0 +1,82 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/angellist/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "AngelList ",
+				"contentfulId": "5sUwFsQNWSk9Msy9PVvpQx",
+				"nameUrlSlug": "angellist",
+				"metaTags": {
+					"metaTitle": "AngelList ",
+					"metaDescription": "Learn how AngelList defeats bad bots with Cloudflare",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2019-09-20",
+				"homepageUrl": "https://angel.co/",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "Learn how AngelList defeats bad bots with Cloudflare",
+				"longDescription": "## __AngelList Defeats Bad Bots with Cloudflare__ \n\nAngelList is the world’s largest startup community. Built with a mission to empower anyone interested in startups to find the right resources to succeed, AngelList aims to help startups raise funding, hire top talent, and launch their products to the world. AngelList’s family of companies includes AngelList Talent, AngelList Venture, and Product Hunt, which collectively managed over $1 billion in assets, supported two million candidates in their job search, and helped makers launch over 20,000 products in 2018.\n\n__Challenge__\n\nThe value of any social network lies in the people who use and contribute to the platform. If the platform is instead inundated with fake accounts built using automated bots, then the core value proposition can be compromised. AngelList faced this exact challenge when an influx of bot-driven accounts began to flood the social network, threatening their revenue, user retention, and most importantly, their reputation. \n\nIn late 2018, product engineers at AngelList discovered that spambots were building fake profiles and scraping proprietary and valuable information that lives on AngelList: candidate resumes, startup and investor profiles, job listings, and more.\n\nAt first, AngelList tried solving this issue internally by building its own solution to identify fake accounts and stop malicious bot traffic. While they were successful in banning some of the bad bots, they knew a lot of malicious bots were still operating on their platform. Overall, the entire process turned out to be more time-consuming and resource-draining than they had anticipated. That’s when AngelList learned that Cloudflare had a new product specifically designed to mitigate bot attacks.\n\n<center><b>“Before Cloudflare, we relied on our in-house bot management solution but it was not very effective. We created certain thresholds to automatically ban users. However, we knew that we were missing a lot of users who were abusing our platform.”</b></center>\n</b></center>\n<center><i>— Tony Bruess</center>\n  <center>Product Engineer, AngelList</i></center>\n</br>\n\n__Bot Management with Cloudflare__\n\nAngelList was able to easily deploy Cloudflare’s bot management solution without the hassle of injecting JavaScript or other client-side code from their end. From day one, they have been able to quickly identify and mitigate bot traffic in real-time, with much greater accuracy. \n\nBy leveraging machine learning and behavioral analysis across the %{GlobalWebsiteCountWords} million Internet properties on its network, Cloudflare’s bot management solution automatically scores every request that AngelList receives and sets thresholds to distinguish between threats and trusted sources. During the first month of its deployment, AngelList’s domains issued 39 million CAPTCHAs to over half a million IP addresses. Only 0.0033% percent of these CAPTCHAs were false positives (issued to actual customers). \n\nUsing Cloudflare’s bot protection technology, AngelList has experienced lower latency and faster performance, since the decision handling (the process of distinguishing between good and bad traffic) is supported at Cloudflare’s edge instead of the origin. Additionally, AngelList has been able to integrate bot management with the complete suite of Cloudflare’s performance and security portfolio — including Argo, DDoS mitigation, and diverse IP reputation database; thereby, strengthening their battle against malicious bots. \n\n<center><b>“Using machine learning across tens of millions of websites, Cloudflare is able to immediately identify unauthorized bots that are abusing our website. Their mitigation strategies block bots without impacting real users - our false positive rate is as low as 0.003%.”</b></center>\n<center><i>— Tony Bruess</center>\n  <center>Product Engineer, AngelList</i></center>\n</br>\n",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "• Using Cloudflare, Angel List was immediately able to identify and throttle malicious bots with high accuracy.\n\n• AngelList has experienced lower latency since the decision handling is done at Cloudflare’s edge instead of the origin.",
+				"relatedCaseStudies": [
+					{
+						"name": "ArtStation Thwarts Malicious Bots With Cloudflare",
+						"nameUrlSlug": "artstation-malicious-bot-management"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "DDoS Mitigation",
+						"url": "/ddos/"
+					},
+					{
+						"title": "Web Application Firewall (WAF) ",
+						"url": "/waf/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Tony Bruess",
+				"employeeQuoteText": "Using machine learning across tens of millions of websites, Cloudflare is able to immediately identify unauthorized bots that are abusing our website. Their mitigation strategies block bots without impacting real users.",
+				"employeeQuoteJobTitle": "Product Engineer",
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/AngelList.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "5sUwFsQNWSk9Msy9PVvpQx",
+			"pathname": "/case-studies/angellist/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US",
+				"zh-CN",
+				"fr-FR",
+				"de-DE",
+				"ja-JP"
+			]
+		}
+	}
+}

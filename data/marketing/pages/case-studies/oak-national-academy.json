@@ -1,0 +1,77 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/oak-national-academy/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Oak National Academy",
+				"contentfulId": "2Gvnu8tG0KRuRQvjpkZv0L",
+				"nameUrlSlug": "oak-national-academy",
+				"metaTags": {
+					"metaTitle": "Oak National Academy",
+					"metaDescription": "Cloudflare Access helped a non-profit online academy scale quickly.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2020-10-30",
+				"homepageUrl": "https://www.thenational.academy/",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "Cloudflare Access helped a non-profit online academy scale quickly.",
+				"longDescription": "## Cloudflare Access helped Oak National Academy scale online learning and ensure “no child misses a lesson” across the United Kingdom\n\nOak National Academy has arguably been the U.K’s most well-attended school this year, but you won’t see its logo emblazoned on any uniforms. \n\nOak was launched as an online resource hub in April 2020 to help instructors, parents, and students transition to remote learning during the coronavirus pandemic. Oak’s founding team had built careers in education as principals and teachers and when schools closed, they aspired “to make sure no student missed a lesson during COVID-19.” \n\nIn its first week, the team brought together volunteer teachers, developers, and designers to prepare over 250 video lessons. By the summer, Oak had delivered 20 million lessons, reached 4.7 million people, and secured £4.3 million in government funding to expand programming into the next academic year. Today, Oak offers nearly 10,000 lessons - all available for free - across diverse subjects for pupils ages 4-16.\n\nThe true heroes of this story are the educators, whose passion has fueled Oak’s growth. But getting off the ground in April was technically daunting: The portal needed to be created within one week, in time for a government decision on a permanent transition to remote learning. With such a short turnaround, Oak needed technology that could keep pace with their ambitions and imagination.\n\n### __Securing access to Oak’s pre-production environments__\nWith a few days until launch, Oak’s team needed to test its initial Wordpress portal. To conduct QA, several volunteer developers needed access to certain pre-production environments. Meanwhile, volunteer teachers needed access to other pre-production environments, so that they could review and edit their lesson plans. \n\nCloudflare Access made it fast and simple to authenticate these different stakeholders into their respective environments. Developers and teachers already had a Google ID with Oak, and so, the IT team could create groups within Access and enable them to authenticate based on that identity provider. According to Technology Director John Roberts, implementing and scaling across the hundred of users took “literally less than an hour.” \n\n“Using Google plus Access meant we didn’t have to integrate with any identity services or build one ourselves,” added Stef Lewandowski, Lead Developer. “That could have taken weeks of work and implementation overhead.”\n\nDuring a rebuild of the platform later in the summer, Oak stuck with Access to scale to the 900+ teachers who were creating new lessons for the fall.\n\n### __Fixing compliance overnight before launch__\nOn the night of the go-live, Roberts and Lewandowski had some outstanding tasks  in their final runbook. The Wordpress site was missing specific security headers that would be required for audits and to secure Oak’s content. The oversight was potentially launch-threatening.\n\nIn response, Lewandoski created a Cloudflare Worker from scratch within 15 minutes to add those missing headers. “It worked on the first try,” said Lewandowski. “And we went from an ‘F rating’ to an ‘A rating’ on the site.” \n\nThis experience not only helped them sleep easy that night, but also showcased the power of serverless app development. Today, Oak runs more than 20 different Workers in production. One such Worker supports an internal search function, which Lewandowski noted “delivers a massively improved user experience” relative to analogous functions on competitors platforms.\n\n### __Protecting against threats on launch day and beyond__\nOn Sunday, April 19, Education Secretary Gavin Williamson announced Oak National Academy at the government’s daily COVID briefing. The Oak team knew to expect significant attention, but was confident in Cloudflare’s capabilities to manage traffic.\n\nSpecifically, Oak had cached their website heavily (about 97% of content) on Cloudflare’s network, which reduced the load on Oak’s servers substantially. Moreover, Oak locked down specific parts of Wordpress with some off-the-shelf and custom controls with Cloudflare’s WAF and Page Rules.\n\n“We were able to support 250 thousand users on day one,” said Lewandowski. “I don’t think that would’ve been possible without Cloudflare, unless we had more substantial engineering resources.”\n\nSince April, Oak has evolved its educational offerings and portal, even moving from Wordpress to React and Next.js. Through these changes, Cloudflare’s network has helped the IT team absorb and face new threats, including a DDOS attack. Ultimately, as classes continue in remote and hybrid contexts, the goal remains ensuring that Oak is secure and reliable for the teachers and students who need it most. \n\n“We’ve had a significant amount of press. We were announced on the podium at 10 Downing Street, and this made us a bigger target,” said Roberts. “We needed to make sure we had a best-in-class product to secure our site as we were building it so fast. Cloudflare has definitely achieved that and exceeded our expectations.” ",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "- Simple and secure access to pre-production environments for developers and teachers with Google IDs\n\n- Security and resilience to user traffic for public-facing website \n\n- Easily delivered compliance with rigorous government security standards",
+				"relatedCaseStudies": null,
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Access",
+						"url": "/teams/access"
+					},
+					{
+						"title": "Web Application Firewall (WAF) ",
+						"url": "/waf/"
+					},
+					{
+						"title": "Page Rules",
+						"url": "/features-page-rules/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Stef Lewandowski",
+				"employeeQuoteText": "Using Google plus Access meant we didn’t have to integrate with any identity services or build one ourselves. That could have taken weeks of work and implementation overhead.",
+				"employeeQuoteJobTitle": "Lead Developer",
+				"employeeQuoteName2": "John Roberts",
+				"employeeQuoteText2": "We needed to make sure we had a best-in-class product to secure our site as we were building it so fast. Cloudflare has definitely achieved that and exceeded our expectations.",
+				"employeeQuoteJobTitle2": "Technology Director",
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/oak_national.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "2Gvnu8tG0KRuRQvjpkZv0L",
+			"pathname": "/case-studies/oak-national-academy/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}

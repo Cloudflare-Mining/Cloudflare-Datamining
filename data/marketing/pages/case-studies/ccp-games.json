@@ -1,0 +1,86 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/ccp-games/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "CCP Games",
+				"contentfulId": "7MzTBcOxLJBE5sSLUI5MYV",
+				"nameUrlSlug": "ccp-games",
+				"metaTags": {
+					"metaTitle": "CCP Games | Cloudflare",
+					"metaDescription": "CCP Games uses a combination of Cloudflare Magic Transit and Cloudflare Spectrum to mitigate DDoS attacks, and Cloudflare Bot Management to fend off malicious bots.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2021-02-25",
+				"homepageUrl": "https://www.ccpgames.com/",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "CCP Games uses a combination of Cloudflare Magic Transit and Cloudflare Spectrum to mitigate DDoS attacks, and Cloudflare Bot Management to fend off malicious bots.",
+				"longDescription": "## __Cloudflare Security Solutions Help CCP Games Stop DDoS Attacks & Credential-Stuffing Bots__\n\nHeadquartered in Reykjavík, Iceland, CCP Games develops cutting-edge, massively multiplayer online (MMO) games — including EVE Online, an MMO whose 300,000+ active players populate a virtual universe, traveling in intricate spacecrafts that require years of time and thousands of dollars to build. \n\nEVE Online’s global player base forge real connections with one another and spend real money in-game. Transaction errors and other glitches that detract from the in-game experience are unacceptable. DDoS attacks that slow game servers or take them down completely are devastating to game developers.\n\nAccount takeovers (ATOs) are also a big issue in the gaming industry. User credentials for MMO games fetch high prices on the Dark Web. In addition to in-game currency and digital assets, these accounts contain valuable personal identifying information (PII) and payment card data.\n\nCCP Games must maintain the highest standards for reliability, performance, and security to protect their players from data breaches and ensure that they have a flawless experience.\n\n### __Challenge: Prevent DDoS attacks and account takeovers (ATOs)__\n\nGames like EVE Online, where players accumulate high-value digital assets, are major targets for credential stuffing attacks. Cybercriminals obtain lists of user credentials stolen during data breaches, then use bots to run these lists against game login pages. If a set of credentials works, the cybercriminals take over the user account, steal its digital assets, and resell them. “EVE Online’s virtual space empires are a serious real-world business, and many players invest thousands of dollars in their digital assets,” explains Nicholas Herring, Technical Director of Infrastructure. \n\nBecause EVE Online is community-driven, most of what occurs within its virtual universe is dictated by the gamers themselves. CCP Games straddles a fine line between exposing enough of its infrastructure to provide gamers with a terrific in-game experience, but not so much that it threatens CCP Games’ infrastructure. “DDoS attacks are becoming more sophisticated,” Herring says. “Attackers will target specific parts of our infrastructure, like a certain gameport or a certain form.”\n\nCybercriminals also seek out and take advantage of other vulnerabilities. “We expose a lot of third-party APIs. If an API returns an empty list opposed to a null result, attackers can weaponize it. We have to be really careful about how much information we expose.”\n\n### __Cloudflare Magic Transit & Cloudflare Spectrum stop persistent DDoS attacks__\n\nFor some time, CCP Games’ attempts to mitigate DDoS attacks were less than effective. Herring says that internal efforts were complicated by CCP Games’ unusual infrastructure, which requires both a TCP proxy and an IP proxy. “Our game ports use the TCP protocol, and we were putting a lot of effort into traffic identification, tuning, and earmarking, but nothing was working,” Herring says. “Additionally, attackers knew what our IP addresses were, so they were coming after us there, too.”\n\nAfter evaluating many other vendors’ solutions, CCP Games chose a combination of Cloudflare Magic Transit and Cloudflare Spectrum. “Some companies only offered a Magic Transit-like solution for IP addresses, and others only provided a Spectrum-like proxy solution. Only Cloudflare offered solutions that could secure both the L3 and L4 layers of our network. The combination of Magic Transit at the L3 layer and Spectrum on L4 provided the ideal solution for our setup.”\n\nWhen CCP Games partnered with Cloudflare, they were facing an active DDoS attack. “We landed like a meteor in Cloudflare’s lap,” Herring says. “It was an all-hands-on-deck situation. Everyone at CCP was involved, including the CEO in some cases.”\n\nHerring raves about Cloudflare’s willingness to tailor its solutions to work with CCP Games’ existing infrastructure. “At no point during the onboarding process did anyone at Cloudflare say, ‘Sorry, but it doesn’t work that way.’ Cloudflare did things that needed to be done in an emergency situation. They had the correct combination of countermeasures, and they displayed the ability to easily and transparently expand those countermeasures.”\n\nCCP Games’ customers immediately noticed the switch to Cloudflare. “We didn’t have to tell them; they told us,” Herring laughs. Customers also noticed an improvement in performance and reliability, especially in Australia, and some of them dropped the VPNs they had purchased to connect to CCP’s data center. “When players get to a certain level in EVE Online, they spend $8,000 of time and materials to build a ship,” Herring explains. “Because they invested that sort of money, they’d also buy VPNs into our data center to guarantee reliability. This isn’t about performance so much as a continuous connection. Now, we’ve heard anecdotes about customers dropping those VPNs because they feel they don’t need them anymore.”\n\n### __Cloudflare Bot Management stops customer account takeovers by blocking credential-stuffing bots__\n\nPrior to implementing Cloudflare Bot Management, CCP Games depended on manual processes, such as IP throttling, to mitigate credential stuffing bots. However, because of the distributed nature of such attacks, these measures had limited effect. Additionally, as the attacks increased in frequency, CCP’s team struggled to keep up. “We were getting a lot of customer service tickets about account takeovers,” Herring says. “The attacks would happen in giant bursts, targeting anywhere from 500,000 to one million user accounts at a time.”\n\nFollowing a spate of credential stuffing attacks from July through September, one of CCP Games’ engineers suggested that the company look into Cloudflare’s Bot Management solution, which they had read about on social media. Bot Management examines each HTTP request and assigns it a \"Bot Score\" that measures the likelihood that the request is from a bot. A score of 1 indicates that a request is almost certainly from a bot, not a real person. CCP Games decided to implement Bot Management and trigger a Captcha challenge for all requests with a score of 1.\n\nShortly after implementing Bot Management, the solution caught and blocked an attack where bots attempted to use nearly 8,000 stolen login credentials to access EVE Online. “Since implementing Bot Management, we haven't seen a single credential stuffing attack hit our front door, which is an enormous improvement. It blocks credential-stuffing bots with 99% accuracy, and it’s very easy to use. We pushed a button, and Bot Management did its job. We didn’t have to do anything. We have the option of dialing down the Bot Score, but it’s not even worth adjusting, because the standard  setting is working for us. Bot Analytics has made it very easy for us to spot a bot attack. It provides us visibility into the bot traffic by showing bot score distribution in the dashboard.”\n\nHerring reports that the percentage of Captchas that are successfully resolved is hovering around 1.5%. “Since this number is a pretty good estimate of ‘false positives,’ this means that nearly all of the requests that Bot Management is blocking are bad. The solution is having negligible impact on legitimate player logins, and customer complaints about account takeovers have plummeted.”\n\nHerring and his team at CCP Games are avid readers of Cloudflare’s company blog, and he says they are always on the lookout for additional solutions that would benefit the company. “When our customers think of Cloudflare, they think of your CDN solution, but Cloudflare is so much more than a CDN provider. What Cloudflare is doing for CCP Games is not trivial. There is no way that we could build these solutions in-house, and maintain them, cost-effectively or on the same level of expertise as Cloudflare.”\n",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "- Cloudflare Magic Transit blocks DDoS attacks on the L3 network layer, while Cloudflare Spectrum protects L4\n\n- Cloudflare Bot Management blocks credential-stuffing bots with 99% accuracy\n\n- Since implementing Cloudflare Bot Management, CCP Games hasn’t suffered a single credential-stuffing attack",
+				"relatedCaseStudies": [
+					{
+						"name": "Discord",
+						"nameUrlSlug": "discord"
+					},
+					{
+						"name": "Cloudflare Makes Fast-Loading Games a Quick Win for Poki",
+						"nameUrlSlug": "poki-games-fast-loading-worldwide"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Magic Transit",
+						"url": "/magic-transit/"
+					},
+					{
+						"title": "Spectrum",
+						"url": "/products/cloudflare-spectrum/"
+					},
+					{
+						"title": "Bot Management",
+						"url": "https://www.cloudflare.com/products/bot-management/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Nicholas Herring",
+				"employeeQuoteText": "Since implementing Bot Management, we haven't seen a single credential stuffing attack hit our front door, which is an enormous improvement. It blocks credential-stuffing bots with 99% accuracy, and it’s very easy to use. We pushed a button, and Bot Management did its job. We didn’t have to do anything.",
+				"employeeQuoteJobTitle": "Technical Director of Infrastructure",
+				"employeeQuoteName2": "Nicholas Herring",
+				"employeeQuoteText2": "Only Cloudflare offered solutions that could secure both the L3 and L4 layers of our network. The combination of Magic Transit at the L3 layer and Spectrum on L4 provided the ideal solution for our setup.",
+				"employeeQuoteJobTitle2": "Technical Director of Infrastructure",
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/ccp_logo.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "7MzTBcOxLJBE5sSLUI5MYV",
+			"pathname": "/case-studies/ccp-games/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}

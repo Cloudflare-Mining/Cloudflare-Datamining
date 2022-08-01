@@ -1,0 +1,572 @@
+{
+	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
+	"path": "/learning/performance/what-are-core-web-vitals/",
+	"result": {
+		"data": {
+			"learningCenterArticle": {
+				"contentTypeId": "learningCenterArticle",
+				"contentfulId": "3E9N8ieSzuiUa2EDPQdhBs",
+				"urlSlug": "performance/what-are-core-web-vitals",
+				"metaTags": {
+					"metaTitle": "What are the Core Web Vitals (CWV)?",
+					"metaDescription": "The Core Web Vitals (CWVs) are web performance metrics that Google uses as part of its search ranking algorithms. Learn how the CWVs affect SEO.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/performance-lc.png"
+						}
+					},
+					"facebookCustomImage": {
+						"file": {
+							"publicURL": "[path]/performance-lc.png"
+						}
+					}
+				},
+				"metaTitle": null,
+				"metaDescription": null,
+				"learningCenterArticleSubHeader": {
+					"contentTypeId": "learningCenterArticleSubHeader",
+					"contentfulId": "3EXwEdnC7JnXLjoWOxHdT9",
+					"learningCenterName": "performance",
+					"links": [
+						{
+							"__typename": "learningCenterArticleLink",
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "e3oFRMHsIzHQZYTLmPDOr",
+							"displayText": "Why Site Speed Matters",
+							"url": "/learning/performance/why-site-speed-matters/"
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "wjD4s7zPAIlrcocplo68g",
+							"name": "Performance Header: Performance Benefits",
+							"displayText": "Performance Benefits",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3XMpuNDRWA2j2aZ0qi1DaU",
+									"displayText": "Speed and Conversion Rates",
+									"url": "/learning/performance/more/website-performance-conversion-rates/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2u9nE8G5zJaY1Limh5GLkW",
+									"displayText": "How Site Speed Boosts SEO",
+									"url": "/learning/performance/how-website-speed-boosts-seo/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4s6X4x3EYYlHHb9aI4X31Q",
+									"displayText": "Core Web Vitals",
+									"url": "/learning/performance/what-are-core-web-vitals/ "
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "1Z9S7dlY2AIhyf5X4kYzLf",
+							"name": "Performance Header: Load Balancing",
+							"displayText": "Load Balancing",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "205Es4ofD2BShliEBNj1Z6",
+									"displayText": "What is Load Balancing?",
+									"url": "/learning/performance/what-is-load-balancing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "hhFtuqqoybh6WOlwSiqIo",
+									"displayText": "Server failover",
+									"url": "/learning/performance/what-is-server-failover/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3EsOLhDVoFDkZWt35VPRqD",
+									"displayText": "DNS-based load balancing",
+									"url": "https://www.cloudflare.com/learning/performance/what-is-dns-load-balancing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4RFn9zHjqaC2djLIVH1R21",
+									"displayText": "Load balancing algorithms",
+									"url": "/learning/performance/types-of-load-balancing-algorithms/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7G0p4vQ9468caPQGJoE6IL",
+									"displayText": "Multi-cloud and hybrid cloud load balancing",
+									"url": "/learning/performance/load-balancing-multi-cloud-hybrid-cloud/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4ZbTYQT5tvo9CTMX9psYMa",
+									"displayText": "Cloud load balancing (LBaaS)",
+									"url": "/learning/performance/cloud-load-balancing-lbaas/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "6BoLYDQbAwY5LuAk1OHyNu",
+							"name": "Performance Header: Performance for Developers",
+							"displayText": "Performance for Developers",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "35apJbC5biFa3jzTQHmDe1",
+									"displayText": "Why Minify Javascript?",
+									"url": "/learning/performance/why-minify-javascript-code/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2Xp2GgqtMv84qqtbYIIQtc",
+									"displayText": "HTTP/2 vs HTTP/1.1",
+									"url": "/learning/performance/http2-vs-http1.1/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4H29YTj5ck7Dfu72foQyXb",
+									"displayText": "What is JAMstack?",
+									"url": "/learning/performance/what-is-jamstack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2x2nqZ8zTTRUOqJhuYyaNH",
+									"displayText": "Static site generator",
+									"url": "/learning/performance/static-site-generator/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5Zm1SJxNbA3ddOOxIJW8yl",
+									"displayText": "How DCL & FCP Affect SEO",
+									"url": "/learning/performance/how-dcl-and-fcp-affect-seo/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "787jBq0LeOM6UkZuvDQNQW",
+									"displayText": "Making a Site Mobile Friendly",
+									"url": "/learning/performance/how-to-make-a-site-mobile-friendly/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5eTNDaWptWyi8ELSirebqE",
+									"displayText": "Speed Up a Website",
+									"url": "/learning/performance/speed-up-a-website/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "31bAifmor3KmJTmOyGUYGu",
+									"displayText": "Test the Speed of a Site",
+									"url": "/learning/performance/test-the-speed-of-a-website/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4hvxrtMRLXQXsqW3YKAUwN",
+									"displayText": "What is HTTP/3?",
+									"url": "learning/performance/what-is-http3"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4okTLSy9bqbLvqOAz4dqIf",
+									"displayText": "Preventing Downtime",
+									"url": "/learning/performance/preventing-downtime/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2x8bWWSONCzLyUVomacqHL",
+									"displayText": "Lazy Loading",
+									"url": "/learning/performance/what-is-lazy-loading/"
+								}
+							]
+						},
+						{
+							"__typename": "learningCenterArticleLinkedList",
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "5exwZsks9Ss1d5Q52LVpbl",
+							"name": "Performance Header: More on Performance",
+							"displayText": "More on Performance",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7LQi33SEfVIys6UyNq8f9K",
+									"displayText": "What is Latency?",
+									"url": "/learning/performance/glossary/what-is-latency/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4CDfNtFZec20k10IsDnMKO",
+									"displayText": "Speed Up the Web",
+									"url": "/learning/performance/more/speed-up-the-web/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3n7LgS1F3I881eXiTOJVti",
+									"displayText": "What is an Image Optimizer?",
+									"url": "/learning/performance/glossary/what-is-an-image-optimizer/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3JVN13JI6LoSlZuhr7LAxF",
+									"displayText": "Routing vs. Smart Routing",
+									"url": "/learning/performance/routing-vs-smart-routing/"
+								}
+							]
+						}
+					]
+				},
+				"learningCenterArticleFooter": {
+					"contentTypeId": "learningCenterArticleFooter",
+					"contentfulId": "3BGH880XprClbWXeQhnw1L",
+					"learningCenterName": "performance",
+					"column1Title": "About Performance",
+					"column1": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "ES3KtU5NVbIkUUTPKBGds",
+						"name": "Performance Footer - About",
+						"displayText": "About Performance",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "e3oFRMHsIzHQZYTLmPDOr",
+								"displayText": "Why Site Speed Matters",
+								"url": "/learning/performance/why-site-speed-matters/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "31bAifmor3KmJTmOyGUYGu",
+								"displayText": "Test the Speed of a Site",
+								"url": "/learning/performance/test-the-speed-of-a-website/"
+							}
+						]
+					},
+					"column2Title": "Performance and SEO",
+					"column2": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "3gosdnz8T1wPj5ExVH8Ng6",
+						"name": "Performance Footer: SEO",
+						"displayText": "Performance and SEO",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2u9nE8G5zJaY1Limh5GLkW",
+								"displayText": "How Site Speed Boosts SEO",
+								"url": "/learning/performance/how-website-speed-boosts-seo/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5Zm1SJxNbA3ddOOxIJW8yl",
+								"displayText": "How DCL & FCP Affect SEO",
+								"url": "/learning/performance/how-dcl-and-fcp-affect-seo/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4s6X4x3EYYlHHb9aI4X31Q",
+								"displayText": "Core Web Vitals",
+								"url": "/learning/performance/what-are-core-web-vitals/ "
+							}
+						]
+					},
+					"column3Title": "More on Performance",
+					"column3": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "7tEVxRje5aVg2jKT46gn90",
+						"name": "Performance Footer: More",
+						"displayText": "More on Performance",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3XMpuNDRWA2j2aZ0qi1DaU",
+								"displayText": "Speed and Conversion Rates",
+								"url": "/learning/performance/more/website-performance-conversion-rates/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4CDfNtFZec20k10IsDnMKO",
+								"displayText": "Speed Up the Web",
+								"url": "/learning/performance/more/speed-up-the-web/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5eTNDaWptWyi8ELSirebqE",
+								"displayText": "Speed Up a Website",
+								"url": "/learning/performance/speed-up-a-website/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3JVN13JI6LoSlZuhr7LAxF",
+								"displayText": "Routing vs. Smart Routing",
+								"url": "/learning/performance/routing-vs-smart-routing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4H29YTj5ck7Dfu72foQyXb",
+								"displayText": "What is JAMstack?",
+								"url": "/learning/performance/what-is-jamstack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2x2nqZ8zTTRUOqJhuYyaNH",
+								"displayText": "Static site generator",
+								"url": "/learning/performance/static-site-generator/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4okTLSy9bqbLvqOAz4dqIf",
+								"displayText": "Preventing Downtime",
+								"url": "/learning/performance/preventing-downtime/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2x8bWWSONCzLyUVomacqHL",
+								"displayText": "Lazy Loading",
+								"url": "/learning/performance/what-is-lazy-loading/"
+							}
+						]
+					},
+					"column4Title": "Glossary",
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "6huscp9lw1hiV4RtOogq44",
+						"name": "Performance Footer: Glossary",
+						"displayText": "Glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7LQi33SEfVIys6UyNq8f9K",
+								"displayText": "What is Latency?",
+								"url": "/learning/performance/glossary/what-is-latency/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3n7LgS1F3I881eXiTOJVti",
+								"displayText": "What is an Image Optimizer?",
+								"url": "/learning/performance/glossary/what-is-an-image-optimizer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2Xp2GgqtMv84qqtbYIIQtc",
+								"displayText": "HTTP/2 vs HTTP/1.1",
+								"url": "/learning/performance/http2-vs-http1.1/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "205Es4ofD2BShliEBNj1Z6",
+								"displayText": "What is Load Balancing?",
+								"url": "/learning/performance/what-is-load-balancing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "hhFtuqqoybh6WOlwSiqIo",
+								"displayText": "Server failover",
+								"url": "/learning/performance/what-is-server-failover/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3EsOLhDVoFDkZWt35VPRqD",
+								"displayText": "DNS-based load balancing",
+								"url": "https://www.cloudflare.com/learning/performance/what-is-dns-load-balancing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4RFn9zHjqaC2djLIVH1R21",
+								"displayText": "Load balancing algorithms",
+								"url": "/learning/performance/types-of-load-balancing-algorithms/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7G0p4vQ9468caPQGJoE6IL",
+								"displayText": "Multi-cloud and hybrid cloud load balancing",
+								"url": "/learning/performance/load-balancing-multi-cloud-hybrid-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4hvxrtMRLXQXsqW3YKAUwN",
+								"displayText": "What is HTTP/3?",
+								"url": "learning/performance/what-is-http3"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4ZbTYQT5tvo9CTMX9psYMa",
+								"displayText": "Cloud load balancing (LBaaS)",
+								"url": "/learning/performance/cloud-load-balancing-lbaas/"
+							}
+						]
+					},
+					"column5Title": "Learning Center Navigation",
+					"column5": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "10E7AAyZScH8CewOHQxoql",
+						"name": "Performance Footer - Learning Nav",
+						"displayText": "Learning Center Navigation",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2hdSVoYA5asSIG0U2ae20c",
+								"displayText": "Learning Center Home",
+								"url": "/learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "56Y6OytBNgNoNDWQL2ezlf",
+								"displayText": "DDoS Learning Center",
+								"url": "/learning/ddos/what-is-a-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6DGcnYIMM0eCGwqAKu2ECO",
+								"displayText": "CDN Learning Center",
+								"url": "/learning/cdn/what-is-a-cdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Ra0qmFJ1uewk2MYscW8KI",
+								"displayText": "DNS Learning Center",
+								"url": "/learning/dns/what-is-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1yItw6W6SsM2Y0Wuq6Y2c6",
+								"displayText": "Security Learning Center",
+								"url": "/learning/security/what-is-web-application-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z3UC9tP1Kjk85BX5zSGPY",
+								"displayText": "Serverless Learning Center",
+								"url": "/learning/serverless/what-is-serverless/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52V7iI9YriJ0En2SGmEXz5",
+								"displayText": "SSL Learning Center",
+								"url": "/learning/ssl/what-is-ssl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7D22pOfjb98KXcnAJyJFCX",
+								"displayText": "Bots Learning Center",
+								"url": "/learning/bots/what-is-a-bot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7jgqDUFFzaLuKrsaBTLdV0",
+								"displayText": "Cloud Learning Center",
+								"url": "/learning/cloud/what-is-the-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3jjEMuuLrCwhRidjG5kglM",
+								"displayText": "Network Layer Learning Center",
+								"url": "/learning/network-layer/what-is-the-network-layer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6PdBQjiFs98K6RQuG5TYNd",
+								"displayText": "Access Management Learning Center",
+								"url": "/learning/access-management/what-is-identity-and-access-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RvS0l0m86G1VISDrEvlJb",
+								"displayText": "Privacy Learning Center",
+								"url": "/learning/privacy/what-is-data-privacy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "MytksT5WU5mh863BQYEkj",
+								"displayText": "Video Streaming Learning Center",
+								"url": "/learning/video/what-is-streaming/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
+								"displayText": "Email Security Learning Center",
+								"url": "/learning/email-security/what-is-email-security/"
+							}
+						]
+					}
+				},
+				"header": "What are the Core Web Vitals (CWV)?",
+				"blurbSubHeader": "The Core Web Vitals (CWVs) are three web performance measurements that impact where a website shows up in search engine results: Largest Contentful Paint (LCP), First Input Delay (FID), and Cumulative Layout Shift (CLS).",
+				"objectivesHeader": "Core Web Vitals",
+				"objectivesList": [
+					"List the three Core Web Vitals",
+					"Describe how the Core Web Vitals affect search engine optimization (SEO)",
+					"Know how to improve a website's Core Web Vitals"
+				],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "2u9nE8G5zJaY1Limh5GLkW",
+						"displayText": "How Site Speed Boosts SEO",
+						"url": "/learning/performance/how-website-speed-boosts-seo/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "5Zm1SJxNbA3ddOOxIJW8yl",
+						"displayText": "How DCL & FCP Affect SEO",
+						"url": "/learning/performance/how-dcl-and-fcp-affect-seo/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "e3oFRMHsIzHQZYTLmPDOr",
+						"displayText": "Why Site Speed Matters",
+						"url": "/learning/performance/why-site-speed-matters/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "3XMpuNDRWA2j2aZ0qi1DaU",
+						"displayText": "Speed and Conversion Rates",
+						"url": "/learning/performance/more/website-performance-conversion-rates/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "35apJbC5biFa3jzTQHmDe1",
+						"displayText": "Why Minify Javascript?",
+						"url": "/learning/performance/why-minify-javascript-code/"
+					}
+				],
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What are the Core Web Vitals (CWV)?</h2>\n\n<p>The Core Web Vitals (CWV) are a set of three <a href='/learning/performance/why-site-speed-matters/'>web performance</a> metrics. Google's search engine measures these three metrics to help determine which websites to display after a user performs a search. While page load time has long been an important part of <a href='/learning/performance/how-website-speed-boosts-seo/'>search engine optimization (SEO)</a>, Google has specifically focused on the CWVs as part of its ranking algorithms since <a href='https://developers.google.com/search/blog/2020/11/timing-for-page-experience' target='_blank'>mid-2021</a>.</p>\n\n<p>The CWVs are:</p>\n\n<ol class=\"learning-list\">\n  <li>Largest Contentful Paint (LCP), which measures loading speed</li>\n  <li>First Input Delay (FID), which measures page interactivity</li>\n  <li>Cumulative Layout Shift (CLS), which measures visual stability</li>\n</ol>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How do the Core Web Vitals affect SEO?</h2>\n\n<p>All search engines use <a href='/learning/bots/what-is-a-bot/'>bots</a>, called <a href='/learning/bots/what-is-a-web-crawler/'>web crawlers or web spiders</a>, to analyze websites. These bots determine what the content on each website is about, and they help determine when that website should be displayed in response to a search query. Web performance is one of the aspects of a website that Google's bots check.</p>\n\n<p>It is not known precisely how much LCP, FID, and CLS affect SEO, since Google keeps its ranking algorithms mostly secret. But the CWVs do impact SEO to a large degree. Google announced its incorporation of CWV into its algorithm in June 2021. And many industry observers have conducted case studies demonstrating improvements or losses in search rankings based on changes in a website's CWVs.</p>\n\n<p>How does this play out in reality? Suppose Google has to choose between putting Website A and Website B at the top of the search results for the search query \"<a href='https://blog.cloudflare.com/fifty-years-ago/' target='_blank'>What is ARPANET?</a>\" Website A and Website B both have strong reputations for providing facts about Internet history, and both provide similarly detailed information on the subject of ARPANET. All else being equal, if Website A loads faster, responds more quickly, and jumps around on loading less than Website B, Google's algorithm will probably decide to show Website A at the top of the search results — even though the websites provide a similar caliber of information.</p>\n\n<img class=\"responsive-image--50-pct-center\" title=\"Core Web Vitals SEO Ranking Example\" alt=\"SEO Ranking Example - Website A at top of search results\" src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Zh4sBboPBKWY7V9ZcZ7bE/91181ad7893279d9827227b662be6faa/core_web_vitals_seo_ranking_example.png\" itemprop=\"image\">\n\n<p>(Search engine rankings are more complex than depicted in this example, and dozens of factors affect where a website will show up in search.)</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Why does Google take web performance into account?</h2>\n\n<p>Search engines like Google want to provide searchers with the most relevant information as quickly as possible. Delays in load time tend to <a href='/learning/performance/why-site-speed-matters/'>frustrate users</a> — conversely, fast-loading pages increase the odds that users will return. While Google has the vast majority of the English-speaking search market today, a poor user experience may cause searchers to turn to other sources for information.</p>\n\n<p>For similar reasons, other search engines like DuckDuckGo and Bing may take web performance into account as well — although, as with Google, it is not known for certain how their page ranking algorithms work.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is Largest Contentful Paint (LCP)?</h2>\n\n<p>LCP measures the amount of time it takes to load the largest piece of a webpage, which is usually an image or a block of text.</p>\n\n<p>LCP does not measure how long it takes to load an entire webpage, but it provides a good benchmark to indicate how fast a webpage is loading. And typically the biggest element on a webpage is its main content, so the time when it loads is often well-aligned with the time when the user perceives that the page has loaded.</p>\n\n<p>Experts suggest that LCP should take 2.5 seconds at the most. However, faster is always better.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is First Input Delay (FID)?</h2>\n\n<p>FID is a measurement of the time between a user's first attempt to interact with a webpage and when it responds. In other words, FID quantifies when a person can first click on the screen and make something happen. Ideally, a webpage's FID will be 100 milliseconds or less.</p>\n\n<p>Suppose Alan visits a webpage titled \"How to polish your shoes.\" He sees a carousel of photos of shoe cleaning products on the top of the page and clicks on the right arrow to navigate to the next photo. The FID is the time that elapses from when he clicks the arrow to when the next photo starts to load.</p>\n\n<p>FID does not measure how long it takes for the requested event to actually occur — how long it takes Alan's browser to finish loading the next photo. It only measures the time between the request and when the request starts to be fulfilled.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is Cumulative Layout Shift (CLS)?</h2>\n\n<p>CLS measures how much a webpage \"jumps around\" as it loads. Specifically, it measures the largest \"burst\" of shifts in the page's layout.</p>\n\n<p>A layout shift is when page content moves up, down, or in any other direction from where it originally appeared. In the context of this metric, a burst is a group of layout shifts that all happen within a second of each other. A burst can be up to five seconds long and contain any number of layout shifts.</p>\n\n<p>Imagine that after Alan loads the \"How to polish your shoes\" page, he tries to click on the right arrow to see the next image in the carousel. However, the image carousel suddenly moves further down the page and Alan ends up clicking on text that loads above the carousel. The webpage has shifted because it did not all load at the same time, and Alan is left feeling confused.</p>\n\n<p>Such a webpage likely has a poor CLS score. It clearly moved around quite a bit, shifting the photo carousel downward by dozens or hundreds of pixels.</p>\n\n<h4 class=\"learning-content-h4\">How CLS is measured</h4>\n\n<p>Google calculates CLS scores with the following equation:</p>\n\n<p><em>impact fraction * distance fraction = layout shift score</em></p>\n\n<ul class=\"learning-list\">\n  <li><em>Impact fraction</em> is the percentage of the screen that changes when a layout shift occurs.</li>\n  <li><em>Distance fraction</em> measures how far an element moves on the screen, also as a percentage of the screen.</li>\n</ul>\n\n<p>If a webpage loads on a screen that is 400 pixels high, and then 200 of those pixels shift when a new element loads, the impact fraction is 200/400, or 50%. If the new element moved another element down by 50 pixels, the distance fraction is 50/400, or 12.5%.</p>\n\n<img src=\"/resources/images/slt3lc6tev37/jAmZ1ECSlGCNtLyfhdoZy/5fa3f6a87aef3603baae1f43de8513f1/core_web_vitals_measuring_CLS.png\" class=\"responsive-image\" alt=\"Core Web Vitals - CLS example - Impact fraction of 200 pixels and distance fraction of 50 pixels\" itemprop=\"image\" />\n\n<p>To calculate the layout shift score, take those two percentages and write them as decimals, then multiply them together:</p>\n\n<p><em>0.50 * 0.125 = 0.0625</em></p>\n\n<p>If this is the largest amount of movement that the webpage has, the webpage's CLS score is 0.0625.</p>\n\n<p>While ideally a webpage will not shift at all when it loads, this is still a decent score. Experts recommend that webpages have a CLS score of 0.10 or less.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How can developers optimize websites for these three metrics?</h2>\n\n<h4 class=\"learning-content-h4\">How to improve LCP</h4>\n\n<ul class=\"learning-list\">\n  <li><strong>Use a content delivery network (<a href='/learning/cdn/what-is-a-cdn/'>CDN</a>):</strong> CDNs cache content in locations all over the world so that content reaches users more quickly.</li>\n  <li><strong><a href='/learning/performance/glossary/what-is-an-image-optimizer/'>Optimize images</a>:</strong> Images are often the largest element of a page. Reducing image file size can help speed up an image's load time.</li>\n</ul>\n\n<h4 class=\"learning-content-h4\">How to improve FID</h4>\n\n<ul class=\"learning-list\">\n  <li><strong>Reduce the size of JavaScript functions:</strong> Code-heavy dynamic webpages can cause input delays because the browser has to wait for all the code to load before it can execute it. <a href='/learning/performance/why-minify-javascript-code/'>JavaScript minification</a> can help this process go faster.</li>\n  <li><strong>Build static webpages:</strong> Static HTML webpages load far faster than dynamic pages, especially when distributed via CDN. Learn about <a href='/learning/performance/static-site-generator/'>static site generators</a> or about <a href='/learning/performance/what-is-jamstack/'>Jamstack</a>, a development philosophy that emphasizes static content.</li>\n</ul>\n\n<h4 class=\"learning-content-h4\">How to improve CLS</h4>\n\n<ul class=\"learning-list\">\n  <li><strong>Minimize third-party page elements:</strong> Third-party elements on a page load from separate locations compared to the rest of the page. Because of this, they may load at a slightly different time, changing the page's layout as they load. Minimizing the use of these third-party elements reduces the number of resulting layout shifts.</li>\n  <li><strong>Reserve space for embedded content:</strong> Many third-party elements, such as ads, are essential to a website's functionality or business model and cannot be eliminated. Developers can reserve space on the webpage for these elements to load before the browser fetches the actual element.</li>\n  <li><strong>Ensure images load in the optimal size:</strong> This is a slightly different process than optimizing images in general. Desktop computers, tablets, and smartphones all need images at slightly different sizes because their screens vary in size. If a browser loads the large, desktop-optimized image first, then needs to get the mobile-optimized image because the device in use is a smartphone, this can cause the content on the page to jump around when the differently sized image loads.</li>\n  <li><strong>Include height and width for images and video:</strong> The height and width properties tell browsers how large an image will be so they can reserve that space before the image or video loads. Our <a href='/learning/video/how-html5-video-works/'>HTML5 video article</a> has further information on how to do this for video.</li>\n  <li><strong>Use CSS aspect ratio boxes:</strong> There are a number of CSS techniques developers can use to preserve space for a page element using aspect ratios — <a href='https://css-tricks.com/aspect-ratio-boxes/' target='_blank'>learn more here</a>.</li>\n</ul>\n\n<p>Cloudflare also offers several services specifically for improving Core Web Vitals. See this article to learn more: <a href='/core-web-vitals-how-to/'>How to use Cloudflare to optimize your website for Core Web Vitals</a>.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What other performance metrics are important?</h2>\n\n<p>There are a number of other \"Web Vitals\" in addition to the CWVs. <a href='/learning/performance/how-dcl-and-fcp-affect-seo/'>First Contentful Paint (FCP), DOMContentLoaded (DCL)</a>, Time to Interactive (TTI), and Time to First Byte (TTFB) do not impact SEO to the same degree, but they can help developers identify issues that impact the CWVs.</p>\n\n<p>(On its own, TTFB is <a href='https://blog.cloudflare.com/ttfb-time-to-first-byte-considered-meaningles/' target='_blank'>not a particularly useful metric</a>. But it can be an indication of additional issues that developers need to fix.)</p>\n\n<p>Those who want to learn more can <a href='https://info.cloudflare.com/rs/713-XSC-918/images/Getting_Faster_-_Performance_whitepaper.pdf'>download this white paper</a>, which contains a glossary that defines a number of performance metrics.</p>",
+				"availableLocales": null,
+				"localized": null,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "No Page for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": "Translated for Locale"
+				},
+				"proactivePopup": null,
+				"sidebarForm": null
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "3E9N8ieSzuiUa2EDPQdhBs",
+			"pathname": "/learning/performance/what-are-core-web-vitals/",
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}

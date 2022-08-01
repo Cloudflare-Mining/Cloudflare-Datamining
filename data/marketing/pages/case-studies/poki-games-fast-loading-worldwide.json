@@ -1,0 +1,86 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/poki-games-fast-loading-worldwide/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Cloudflare Makes Fast-Loading Games a Quick Win for Poki",
+				"contentfulId": "2yrhXxvBkNED7R2DWlO321",
+				"nameUrlSlug": "poki-games-fast-loading-worldwide",
+				"metaTags": {
+					"metaTitle": "Cloudflare Makes Fast-Loading Games a Quick Win for Poki",
+					"metaDescription": "Cloudflare makes fast-loading games a quick win for Poki.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2019-10-07",
+				"homepageUrl": "https://www.poki.com",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "Cloudflare makes fast-loading games a quick win for Poki.",
+				"longDescription": "[Poki](https://poki.com \"Poki\") is a leading web games platform that offers free online gaming to more than 30 million users monthly from around the globe. In doing so, Poki also helps game developers bring their games to the market and monetize them through online advertising. The platform optimizes game discovery by giving gamers personalized recommendations based on the games they already like.\n\nPoki strives to ensure that all the games on its platform are instantly playable across the web. Download performance is a critical factor in keeping users coming back for more. Casper van Wezel, Head of Technology for Poki, says, “We've found that loading times are directly correlated to the number of successful game plays. Fast-loading games lead to more game plays, which lead to happier users and better financial results.”\n\n__The Challenge__\n\nBringing games as close as possible to users is a critical part of Poki’s strategy. With 1.1 million hours of play per day and users playing in numerous native languages including German, Chinese and Turkish, Poki needs to satisfy a globally-distributed, high-traffic audience. Offloading the workload from its origin servers is essential, as is optimizing the transfer of images and dynamic game data. \n\nHowever, with its previous CDN provider, Poki was experiencing unresolved issues in edge communications with users. Determined to give both users and developers the best performance possible, Poki reviewed a panoply of CDN players to find the solution it needed.\n\n__The Cloudflare solution__\n\nPoki began leveraging Cloudflare's CDN service for its image and game files. It then also moved its on-the-fly image resizing and HTML serving completely to Cloudflare. With [Cloudflare Image Resizing](https://blog.cloudflare.com/announcing-cloudflare-image-resizing-simplifying-optimal-image-delivery/), Poki serves resized images that are optimized for each visitor's device, keeping images as lean as possible without compromising the user experience. \n\nDynamic game content that cannot be cached is served by Cloudflare’s [Argo Smart Routing](https://www.cloudflare.com/products/argo-smart-routing/). Casper van Wezel says, “Our data shows that Cloudflare’s Argo Smart Routing product outperforms competitors.” The global Cloudflare network enables Argo to detect real-time congestion and route web traffic across the fastest and most reliable network paths, helping Poki optimize performance for  users everywhere. \n\n__Win-win for Poki and its gamers__\n\nPoki now sees significant download speed improvements thanks to the reliable, high-performance Cloudflare infrastructure and functionality. As Casper van Wezel says, “Along with improving our existing US infrastructure, our users in South America are experiencing huge speed increases, because they are now served not with the cheapest edge location, but the fastest.” \n\nPoki thus optimizes its website performance, which is vitally important for our user experience and for keeping users engaged and active. ",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "• Poki leverages Cloudflare Image Resizing to serve images optimized for each visitor's device, from one hi-res source image\n\n• Cloudflare's global network puts Poki's games within milliseconds of gamers worldwide\n\n• Argo Smart Routing accelerates dynamic traffic for an even greater performance boost\n",
+				"relatedCaseStudies": [
+					{
+						"name": "AllSaints",
+						"nameUrlSlug": "allsaints-performance-security"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Argo Smart Routing ",
+						"url": "/products/argo-smart-routing/"
+					},
+					{
+						"title": "Web Optimizations",
+						"url": "/website-optimization/"
+					},
+					{
+						"title": "CDN",
+						"url": "/cdn/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Casper van Wezel",
+				"employeeQuoteText": "Our data shows that Cloudflare’s Argo Smart Routing product outperforms competitors.",
+				"employeeQuoteJobTitle": "Head of Technology, Poki",
+				"employeeQuoteName2": "Casper van Wezel",
+				"employeeQuoteText2": "Especially for users in South America we are experiencing huge speed increases, because they are now served not with the cheapest edge location, but the fastest.",
+				"employeeQuoteJobTitle2": "Head of Technology, Poki",
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/pokilogoresized.jpg"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "2yrhXxvBkNED7R2DWlO321",
+			"pathname": "/case-studies/poki-games-fast-loading-worldwide/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US",
+				"zh-CN",
+				"fr-FR",
+				"de-DE",
+				"ja-JP"
+			]
+		}
+	}
+}

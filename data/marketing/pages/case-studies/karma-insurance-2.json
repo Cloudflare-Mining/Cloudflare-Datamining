@@ -1,0 +1,84 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/karma-insurance-2/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Karma Insurance",
+				"contentfulId": "5MNVDyc3Xqwe2uWaoE8AEY",
+				"nameUrlSlug": "karma-insurance-2",
+				"metaTags": {
+					"metaTitle": "Karma Insurance",
+					"metaDescription": "Karma Insurance doesn’t rely on good faith to keep their data safe and site fast.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2018-06-09",
+				"homepageUrl": "https://www.karmainsurance.ca/",
+				"hideFromCaseStudiesPage": null,
+				"shortDescription": "Karma Insurance doesn’t rely on good faith to keep their data safe and site fast.",
+				"longDescription": "[Karma Insurance](https://www.karmainsurance.ca/) prepares to disrupt the Canadian insurance market leveraging Cloudflare's network to bring their customers high performance and online security. Karma Insurance is an insurtech startup based in Quebec, Canada. It was created with the firm belief that buying insurance should be simple and transparent. To achieve this mission, Karma Insurance built an online platform that enables Canadians to shop and buy life insurance without meeting an insurance broker in person, while still providing the full advice and support of a full service broker.\n\n__Karma Insurance’s Challenges: Maintaining High Performance and Securing Customer Data__\n\nAs with any startup resources are not unlimited. Being technically savvy, Karma Insurance developed a complex strategy for deploying their infrastructure, however, they soon discovered that the resources needed to execute this plan would take away from developing their core business. Karma Insurance thus needed replacement solution. CTO, President & Co-Founder of Karma Insurance, Martin Bailey explained that \"Our requirements were Canadian Data Centers, DNSSEC, strict SSL, IPv6, HTTP/2, authenticated origin pulls, transparent firewall and customizable caching.\"\n\n__Karma Insurance's Solution: An Advanced Single Vendor Solution With Presence in Canada__\n\nKarma insurance was looking for a single vendor solution with presence in Canada for both web performance and security. \"We considered Amazon AWS, Microsoft Azure, Sucuri and Incapsula\" said Bailey, \"In the last year, none of those services had a strong presence in Canada and today they’re mostly limited to one city. They either target pure CDN functionality or pure WAF without the seamless integration of DNSSEC management and transparent proxying.\" Cloudflare, however, did meet those needs.\n\nCloudflare's security suite brought Karma Insurance peace of mind and helpful regulatory compliance. Bailey explained that \"As an insurance broker we have to prove that we take adequate precautions to prevent unauthorized access to our data. By allowing Cloudflare as the single user of our private cloud, we’ve eliminated entire classes of threat vectors and made our security that much simpler to prove.\" Additionally, Cloudflare's data centers in Montréal, Toronto, and Vancouver provided a regulatory advantage: \"Our clients really appreciate knowing their data stays in one legislation and it enables our regulatory compliance\" said Bailey.\n\nPerformance-wise Karma Insurance noticed immediate improvements when they switched to Cloudflare. Bailey explained \"Our largest US competitor has API delays of up to 5 seconds when a slider on their site is moved. With careful design to make our quoting API cacheable, the Cloudflare CDN at the edge helps us bring such latencies down to the 20ms range. That’s a huge boost to our user experience. Our early testers keep asking us if they’re seeing real, live data because information was appearing instantly.\"\n\n![karma-sliders](//cf-assets.www.cloudflare.com/slt3lc6tev37/6tl9PR8ri8OscsOCywmYGa/337cf39f4a30dc0928eeb73a961ca205/karma-sliders.png)\n*These sliders on Karma Insurance's website appear to instantly load despite pulling in live data from multiple insurance companies.*\n\nBailey concluded, \"Cloudflare checked all of our technical boxes inside a user friendly package with room for our hopefully rapid growth.\"\n",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "20ms latency compared to 5s at most competitor sites\n\nEnabled regulatory compliance through Cloudflare's security features and Canadian presence.",
+				"relatedCaseStudies": [
+					{
+						"name": "Montecito Bank & Trust",
+						"nameUrlSlug": "montecito"
+					},
+					{
+						"name": "Olo",
+						"nameUrlSlug": "olo"
+					},
+					{
+						"name": "GetInsured",
+						"nameUrlSlug": "getinsured"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Content Delivery Network (CDN)",
+						"url": "/cdn/"
+					},
+					{
+						"title": "DNSSEC",
+						"url": "/dns/dnssec/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Martin Bailey",
+				"employeeQuoteText": "Cloudflare is a guardian angel for your cloud. It protects and accelerates your cloud in a few clicks.",
+				"employeeQuoteJobTitle": "CTO, President & Co-Founder",
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/karma.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "5MNVDyc3Xqwe2uWaoE8AEY",
+			"pathname": "/case-studies/karma-insurance-2/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": null
+		}
+	}
+}
