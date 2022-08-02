@@ -1392,6 +1392,18 @@
 		}
 	},
 	{
+		"id": "rulesets.waf_migration_validation_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1052,
+			"key": "rulesets.waf_migration_validation_allowed",
+			"name": "Rulesets - WAF Migration Validation Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "rum.max_rules",
 		"feature": {
 			"feature_set": "rum",
