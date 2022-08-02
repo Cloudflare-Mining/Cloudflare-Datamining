@@ -1,9 +1,9 @@
 on:
   schedule:
-    - cron:  '0 * * * *'
+    - cron:  '15 * * * *'
   workflow_dispatch: {}
 
-name: Mine CF Data
+name: Mine CF Marketing Site
 jobs:
   runner:
     runs-on: ubuntu-latest
@@ -22,16 +22,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-      - name: Mine lots of data
+      - name: Mine marketing site
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
           cd scripts
           npm ci
-          npm run mine
+          npm run mine:marketing
         env:
-          DISCORD_URL: ${{ secrets.DISCORD_URL }}
-          FETCH_FROM_COLO_URL: ${{ secrets.FETCH_FROM_COLO_URL }}
-          COVEO_KEY: ${{ secrets.COVEO_KEY }}
-          COVEO_ORGID: ${{ secrets.COVEO_ORGID }}
-          GATES_API_KEY: ${{ secrets.GATES_API_KEY }}
+          DISCORD_MARKETING_URL: ${{ secrets.DISCORD_MARKETING_URL }}

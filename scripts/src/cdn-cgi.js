@@ -39,11 +39,6 @@ try{
 }catch{} // we tried
 await fs.ensureDir(dir);
 
-// TODO: dog, lab, mcp canary?
-const MCP_COLO = 'lhr01';
-const CANARY_COLO = 'kul01';
-const MAIN_COLO = 'dfw01';
-
 // get keys for request.cf
 const cfJsonRes = await fetch(`https://jross.me/cf.json`);
 const cfJson = await cfJsonRes.json();
@@ -66,28 +61,23 @@ if(cfKeys.size >= 0){
 	await fs.writeFile(path.resolve(dir, 'cf.json'), JSON.stringify([...cfKeys].sort(), null, '\t'));
 }
 
-
-const buildVersions = {
-	// ssl
-	// TODO: make this work from multiple colos
-	//'build-info/ssl-main': `${process.env.FETCH_FROM_COLO_URL}colo=${MAIN_COLO}&url=https://build-info.jross.workers.dev/?type=ssl`,
-
-	// fl
-	'build-info/fl-main': `${process.env.FETCH_FROM_COLO_URL}colo=${MAIN_COLO}&url=https://build-info.jross.workers.dev/?type=fl`,
-	'build-info/fl-mcp': `${process.env.FETCH_FROM_COLO_URL}colo=${MCP_COLO}&url=https://build-info.jross.workers.dev/?type=fl`,
-	'build-info/fl-canary': `${process.env.FETCH_FROM_COLO_URL}colo=${CANARY_COLO}&url=https://build-info.jross.workers.dev/?type=fl`,
-
-	// cache
-	'build-info/cache-main': `${process.env.FETCH_FROM_COLO_URL}colo=${MAIN_COLO}&url=https://build-info.jross.workers.dev/?type=cache`,
-	'build-info/cache-mcp': `${process.env.FETCH_FROM_COLO_URL}colo=${MCP_COLO}&url=https://build-info.jross.workers.dev/?type=cache`,
-	'build-info/cache-canary': `${process.env.FETCH_FROM_COLO_URL}colo=${CANARY_COLO}&url=https://build-info.jross.workers.dev/?type=cache`,
-
-	// origin
-	'build-info/origin-main': `${process.env.FETCH_FROM_COLO_URL}colo=${MAIN_COLO}&url=https://build-info.jross.workers.dev/?type=origin`,
-	'build-info/origin-mcp': `${process.env.FETCH_FROM_COLO_URL}colo=${MCP_COLO}&url=https://build-info.jross.workers.dev/?type=origin`,
-	'build-info/origin-canary': `${process.env.FETCH_FROM_COLO_URL}colo=${CANARY_COLO}&url=https://build-info.jross.workers.dev/?type=origin`,
+const colos = {
+	'mcp': 'lhr01',
+	'mcp-canary-candidate-01': 'gru05',
+	'mcp-canary-candidate-02': 'dac07',
+	'mcp-canary-candidate-03': 'kwi03',
+	'mcp-canary-candidate-04': 'han02',
+	'mcp-canary-candidate-05': 'poa01',
+	'canary': 'kul01',
+	'main': 'dfw01',
 };
+const buildVersions = {};
 
+for(const [name, colo] of Object.entries(colos)){
+	buildVersions[`build-info/fl-${name}`] = `${process.env.FETCH_FROM_COLO_URL}colo=${colo}&url=https://build-info.jross.workers.dev/?type=fl`;
+	buildVersions[`build-info/cache-${name}`] = `${process.env.FETCH_FROM_COLO_URL}colo=${colo}&url=https://build-info.jross.workers.dev/?type=cache`;
+	buildVersions[`build-info/origin-${name}`] = `${process.env.FETCH_FROM_COLO_URL}colo=${colo}&url=https://build-info.jross.workers.dev/?type=origin`;
+}
 
 for(const [file, url] of Object.entries(buildVersions)){
 	const filePath = path.resolve(dir, file);

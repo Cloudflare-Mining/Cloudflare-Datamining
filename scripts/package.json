@@ -10,7 +10,7 @@
 	"scripts": {
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
-		"mine": "npm run mine:npm && npm run mine:types && npm run mine:github && npm run mine:api-schemas && npm run mine:cdn-cgi && npm run mine:ips && npm run mine:coveo && npm run mine:gates && npm run mine:marketing",
+		"mine": "npm run mine:npm && npm run mine:types && npm run mine:github && npm run mine:api-schemas && npm run mine:cdn-cgi && npm run mine:ips && npm run mine:coveo && npm run mine:gates",
 		"mine:api-schemas": "node src/api-schemas.js",
 		"mine:cdn-cgi": "node src/cdn-cgi.js",
 		"mine:coveo": "node src/coveo.js",
