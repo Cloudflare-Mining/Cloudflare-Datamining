@@ -5549,14 +5549,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				e.g.build = Hu({}, {
-					branch: "alvis/LOUI-3514-revert",
+					branch: "release-1659448963",
 					isReleaseCandidate: "true",
-					commit: "22f5cc04b78fdaf0b64fbd76a1eced242e610e87",
+					commit: "30a96b3e05bd9e43584979a5b6c53116d1e52ad9",
 					env: "production",
-					builtAt: 1659375428721,
-					dashVersion: "bf1e4caf93955d9ed695104e73699c0426da49ad",
+					builtAt: 1659466362137,
+					dashVersion: "1ddc4d025e13e8887df87c9383794fa381903a38",
 					versions: {
-						"@cloudflare/app-dash": "25.63.7",
+						"@cloudflare/app-dash": "25.65.3",
 						node: "14.18.3",
 						yarn: "1.18.0",
 						webpack: "5.38.1"
@@ -65943,7 +65943,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				},
 				w = function(x) {
 					var r, L;
-					if (!x || !x.includes("@")) return !1;
+					if (!x || !x.includes("@") || !x.includes(".")) return !1;
 					var o = (r = window) === null || r === void 0 || (L = r.bootstrap) === null || L === void 0 ? void 0 : L.sdh;
 					if (!o) return !1;
 					for (var j = x.split("@").pop(), a = !1, c = 0; c < o.length; c++) {
@@ -71071,4 +71071,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=66576f790461a99d3e32.js.map
+//# sourceMappingURL=ec753796c90f3f04a4ba.js.map
