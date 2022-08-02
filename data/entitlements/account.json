@@ -1596,6 +1596,18 @@
 		}
 	},
 	{
+		"id": "zone.cname_setup_allowed",
+		"feature": {
+			"feature_set": "zone",
+			"id": 567,
+			"key": "zone.cname_setup_allowed",
+			"name": "CNAME Setup Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "zone.partial_setup_allowed",
 		"feature": {
 			"feature_set": "zone",
