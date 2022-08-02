@@ -18,42 +18,6 @@
 	<link rel="stylesheet" id="cf_styles-css" href="/cdn-cgi/styles/main.css">
 
 
-	<script>
-		(function() {
-			if (document.addEventListener && window.XMLHttpRequest && JSON && JSON.stringify) {
-				var e = function(a) {
-					var c = document.getElementById("error-feedback-survey"),
-						d = document.getElementById("error-feedback-success"),
-						b = new XMLHttpRequest;
-					a = {
-						event: "feedback clicked",
-						properties: {
-							errorCode: 524,
-							helpful: a,
-							version: 1
-						}
-					};
-					b.open("POST", "https://sparrow.cloudflare.com/api/v1/event");
-					b.setRequestHeader("Content-Type", "application/json");
-					b.setRequestHeader("Sparrow-Source-Key", "c771f0e4b54944bebf4261d44bd79a1e");
-					b.send(JSON.stringify(a));
-					c.classList.add("feedback-hidden");
-					d.classList.remove("feedback-hidden")
-				};
-				document.addEventListener("DOMContentLoaded", function() {
-					var a = document.getElementById("error-feedback"),
-						c = document.getElementById("feedback-button-yes"),
-						d = document.getElementById("feedback-button-no");
-					"classList" in a && (a.classList.remove("feedback-hidden"), c.addEventListener("click", function() {
-						e(!0)
-					}), d.addEventListener("click", function() {
-						e(!1)
-					}))
-				})
-			}
-		})();
-	</script>
-
 </head>
 
 <body>
@@ -130,18 +94,6 @@
 				</div>
 
 			</div>
-
-			<div class="feedback-hidden py-8 text-center" id="error-feedback">
-				<div id="error-feedback-survey" class="footer-line-wrapper">
-					Was this page helpful?
-					<button class="border border-solid bg-white cf-button cursor-pointer ml-4 px-4 py-2 rounded" id="feedback-button-yes" type="button">Yes</button>
-					<button class="border border-solid bg-white cf-button cursor-pointer ml-4 px-4 py-2 rounded" id="feedback-button-no" type="button">No</button>
-				</div>
-				<div class="feedback-success feedback-hidden" id="error-feedback-success">
-					Thank you for your feedback!
-				</div>
-			</div>
-
 
 			<div class="cf-error-footer cf-wrapper w-240 lg:w-full py-10 sm:py-4 sm:px-8 mx-auto text-center sm:text-left border-solid border-0 border-t border-gray-300">
 				<p class="text-13">
