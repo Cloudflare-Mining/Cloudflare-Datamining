@@ -186,33 +186,47 @@ const processPage = async function(urlPath){
 	}
 	await fs.writeFile(filePath, JSON.stringify(json, null, '\t'));
 };
-// first fetch everything from the sitemap
-const sitemap = await fetch('https://www.cloudflare.com/sitemap.xml').then(res => res.text());
-const sitemapXml = parser.parse(sitemap);
-for(const url of sitemapXml.urlset.url){
-	if(url.loc){
-		const rawPath = url.loc.replace('https://www.cloudflare.com/', '');
-		addPath(rawPath);
+
+// first determine that we're requesting from the US
+// Cloudflare's marketing site seems to change content based on the country
+// So let's get the most possible stable diffs by ensuring this is coming from the US
+async function run(){
+	const cfRes = await fetch('https://jross.me/cf.json');
+	const cf = await cfRes.json();
+	if(cf?.country !== 'US'){
+		console.log('Action isn\'t running in the US. Skipping marketing site processing.');
+		return;
 	}
-}
-for(const urlPath of paths){
-	await processPage(urlPath);
-}
 
-for(const urlPath of morePaths){
-	console.log('Processing more', urlPath);
-	await processPage(urlPath);
-}
+	// then fetch everything from the sitemap
+	const sitemap = await fetch('https://www.cloudflare.com/sitemap.xml').then(res => res.text());
+	const sitemapXml = parser.parse(sitemap);
+	for(const url of sitemapXml.urlset.url){
+		if(url.loc){
+			const rawPath = url.loc.replace('https://www.cloudflare.com/', '');
+			addPath(rawPath);
+		}
+	}
+	for(const urlPath of paths){
+		await processPage(urlPath);
+	}
 
-const prefix = dateFormat(new Date(), 'd mmmm yyyy');
-await tryAndPush(
-	[
-		'data/marketing/*',
-		'data/marketing/*.json',
-		'data/marketing/**/*.json',
-	],
-	`${prefix} - Marketing Site Data was updated!`,
-	'CFData -Marketing Site Data Update',
-	'Pushed Marketing Site Data: ' + prefix,
-	'marketing',
-);
+	for(const urlPath of morePaths){
+		console.log('Processing more', urlPath);
+		await processPage(urlPath);
+	}
+
+	const prefix = dateFormat(new Date(), 'd mmmm yyyy');
+	await tryAndPush(
+		[
+			'data/marketing/*',
+			'data/marketing/*.json',
+			'data/marketing/**/*.json',
+		],
+		`${prefix} - Marketing Site Data was updated!`,
+		'CFData -Marketing Site Data Update',
+		'Pushed Marketing Site Data: ' + prefix,
+		'marketing',
+	);
+}
+run();

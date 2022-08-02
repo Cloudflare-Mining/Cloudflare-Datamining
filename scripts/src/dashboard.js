@@ -24,7 +24,7 @@ const dashVersion = /dashVersion: ?"([\da-f]+)",/;
 const likelyFiles = /\.(png|ico|svg)$/; // static assets that we want to extract properly
 const translationsSnippet = 'dash/intl/intl-translations/src/locale/en-US/';
 const navigationSnippet = 'components/SidebarNav/index.ts":';
-const subRoutesSnippet = 'util-routes/src/index.ts';
+const subRoutesSnippet = 'util-routes/es/index.js';
 const actionSnippet = 'app/redux/makeActionCreator.ts';
 const staticDashURL = 'https://static.dash.cloudflare.com/';
 
