@@ -61,6 +61,15 @@ if(cfKeys.size >= 0){
 	await fs.writeFile(path.resolve(dir, 'cf.json'), JSON.stringify([...cfKeys].sort(), null, '\t'));
 }
 
+// get keys for trace
+const traceRes = await fetch(`https://jross.me/cdn-cgi/trace`);
+const trace = await traceRes.text();
+const data = trace.split('\n').map(line => line.split('='));
+const traceKeys = data.map(arr => arr[0]).filter(key => key !== '').sort();
+if(traceKeys.length >= 0){
+	await fs.writeFile(path.resolve(dir, 'trace.json'), JSON.stringify([...traceKeys].sort(), null, '\t'));
+}
+
 const colos = {
 	'mcp': 'lhr01',
 	'mcp-canary-candidate-01': 'gru05',
