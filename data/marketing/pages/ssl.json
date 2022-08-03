@@ -47,10 +47,10 @@
 				"contentfulId": "2kWtbkqBgoQ8wOYYew688Y",
 				"contentTypeId": "page",
 				"promotionalBanner": {
-					"pillText": "NEWS",
-					"linkText": "Read",
-					"linkUrl": "https://blog.cloudflare.com/introducing-backup-certificates/",
-					"desktopText": "Learn more about how Cloudflare is offering backup certificates for all customers."
+					"pillText": "Learn",
+					"linkText": "What is SSL?",
+					"linkUrl": "https://www.cloudflare.com/learning/ssl/what-is-ssl/",
+					"desktopText": "Not sure what SSL is or how to use it? Read more in our Learning Center."
 				},
 				"psaBanner": null,
 				"customTopNav": null,
@@ -59,95 +59,50 @@
 				"relatedBlades": [
 					{
 						"__typename": "bladeHeroAnimation",
-						"contentfulId": "3V3V3rUFXy6GuceIgAI48a",
+						"contentfulId": "5wn0cFKzO4u827hiwvaMCz",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Cloudflare SSL / TLS",
-						"subtitle": "Get free SSL / TLS with any application services plan",
-						"copy": "\nEncrypting as much web traffic as possible to prevent data theft and other tampering is a critical step toward building a safer, better Internet. We're proud to be the first Internet performance and security company to offer SSL protection free of charge.",
-						"buttonColor": null,
+						"title": "Free SSL / TLS",
+						"subtitle": "Included for free with ALL application service plans",
+						"copy": "\n- Get \"the lock\" to show visitors your website is trustworthy and their data protected. \n- Improve your SEO ranking. Search engines favor SSL websites in search rankings.",
+						"buttonColor": "orange",
 						"buttonColor2": "orange-outline",
 						"buttonText1": "Sign Up For Free",
-						"buttonText1LoggedIn": "View in Dashboard",
-						"buttonUrl1": "https://dash.cloudflare.com/sign-up",
+						"buttonText1LoggedIn": "Activate for Free",
+						"buttonUrl1": "#SSL-Page-Pricing-AS",
 						"buttonUrl1LoggedIn": "https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls",
 						"button1ExtraClass": null,
-						"buttonText2": "Explore Plans & Pricing",
+						"buttonText2": "Compare All Plans",
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": "/plans",
+						"buttonUrl2": "#SSL-Page-Pricing-AS",
 						"button2ExtraClass": "ssl-product-page-contact-us",
 						"bladeBorder": "none",
 						"htmlId": null,
 						"textColor": "black",
 						"includeVideo": false,
 						"streamVideoId": null,
-						"streamOptions": null,
-						"streamCaptions": null,
+						"streamOptions": [
+							"controls",
+							"captions"
+						],
+						"streamCaptions": "en",
 						"popupStreamId": null,
 						"popupText": null,
 						"button1OpenInNewTab": null,
 						"button2OpenInNewTab": null,
 						"streamThumbnails": null,
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-bottom-padding",
 						"streamPosterAssetFile": null,
 						"streamPoster": null,
 						"imageSize": null,
 						"imagePosition": null,
 						"leftLinkUrl": null,
-						"leftLink": "[Enterprise features include SSL, and more! Schedule a demo!](#ent-demo-form \"SSL Enterprise Demo\")",
-						"leftLinkLoggedIn": "[Enterprise features include SSL, and more! Schedule a demo!](#ent-demo-form \"SSL Enterprise Demo\")",
+						"leftLink": "[Enterprise plans include SSL, and much more! Schedule a demo!](#ent-demo-form \"SSL Enterprise Demo\")",
+						"leftLinkLoggedIn": "[Enterprise plans include SSL, and much more! Schedule a demo!](#ent-demo-form \"SSL Enterprise Demo\")",
 						"leftLinkOptions": "show",
 						"backgroundColor": "white",
 						"textlayoutMode": null,
 						"backgroundAssetFile": null,
 						"imageLayout": null,
-						"image": {
-							"file": {
-								"publicURL": "[path]/cloudflare_security_illustration.png"
-							}
-						},
-						"imageAssetFile": {
-							"id": "8636e356-13c9-520d-bed1-dd0eba100743",
-							"altText": "Ssl tls hero illustration",
-							"title": "Ssl tls hero illustration",
-							"activeAsset": "Brandfolder Asset",
-							"locale": "en-US",
-							"contentfulAsset": null,
-							"brandfolderAsset": {
-								"size": 25354,
-								"height": 3262,
-								"width": 3740,
-								"file": {
-									"publicURL": "[path]/ssl-tls-hero-illustration.svg"
-								}
-							},
-							"brandfolderAssetMobile": null
-						}
-					},
-					{
-						"__typename": "bladeImageText",
-						"contentfulId": "6CrCQERlcR3LsTe1S8eR6a",
-						"title": "What is SSL?",
-						"copy": "SSL (Secure Socket Layer) is the standard security technology for establishing an encrypted link between a web server and a browser. This secure link ensures that all data transferred remains private. It's also called TLS (Transport Layer Security). Millions of websites use SSL encryption everyday to secure connections and keep their customer's data safe from monitoring and tampering.",
-						"toggleText": null,
-						"button": null,
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": null,
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": [
-							"controls"
-						],
-						"streamCaptions": "en",
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
 						"image": null,
 						"imageAssetFile": {
 							"id": "4c90cb81-579a-59d6-a3fe-d520599221ac",
@@ -162,1114 +117,17 @@
 							},
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
-						},
-						"featureList": null,
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "border",
-						"imagePosition": false,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": null
-					},
-					{
-						"__typename": "bladeRichTextColumnGroup",
-						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "lsV9sPcv0AYPidvhCJq9m",
-						"htmlId": null,
-						"mainHeadline": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"sectionPadding": "tile--no-bottom-padding",
-						"columnLayout": "Half & Half",
-						"columns": [
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "5R44VlYH6fY7I8VJnx9uNK",
-								"title": null,
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "heading-3",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Why Use SSL?",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Every website on the Internet should be served over HTTPS. Here's why:",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "unordered-list",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "list-item",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "Performance:",
-																	"marks": [
-																		{
-																			"type": "bold"
-																		}
-																	],
-																	"content": null
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": " Modern SSL can actually improve page load times.",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												},
-												{
-													"nodeType": "list-item",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "Search Ranking Boost:",
-																	"marks": [
-																		{
-																			"type": "bold"
-																		}
-																	],
-																	"content": null
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": " Search engines favor HTTPS websites.",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												},
-												{
-													"nodeType": "list-item",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "Security:",
-																	"marks": [
-																		{
-																			"type": "bold"
-																		}
-																	],
-																	"content": null
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": " Encrypting traffic with SSL ensures nobody can snoop on your users' data.",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												},
-												{
-													"nodeType": "list-item",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "Trust:",
-																	"marks": [
-																		{
-																			"type": "bold"
-																		}
-																	],
-																	"content": null
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": " By displaying a green lock in the browser's address bar, SSL increases visitor's trust.",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												},
-												{
-													"nodeType": "list-item",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "Regulatory Compliance:",
-																	"marks": [
-																		{
-																			"type": "bold"
-																		}
-																	],
-																	"content": null
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": " SSL is a key component in PCI compliance.",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								}
-							},
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "3lKoSV91xoDG6096K0VBIv",
-								"title": "SSL - Easy SSL Configuration - right column",
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "heading-3",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Easy SSL Configuration",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Manually configuring SSL requires several steps, and a misconfiguration can prevent users from getting to your website. Cloudflare allows any Internet property to become HTTPS-enabled with the click of a button. You'll never need to worry about SSL certificates expiring or staying up to date with the latest SSL vulnerabilities when you're using Cloudflare SSL.",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-4",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Manually Configuring SSL",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "embedded-entry-block",
-											"data": {
-												"target": {
-													"sys": {
-														"id": "3vIvM8CMfeYJWnRzfuUHXs",
-														"type": "Link",
-														"linkType": "Entry"
-													},
-													"related_asset": null,
-													"entry_elementMarkdown": null,
-													"entry_assetFile": [
-														{
-															"id": "10303fa0-c310-592e-9fe9-1354177feba0",
-															"altText": "SSL - manually configuring SSL steps",
-															"title": "SSL - manually configuring SSL steps",
-															"activeAsset": "Contentful Asset",
-															"locale": "en-US",
-															"contentfulAsset": {
-																"file": {
-																	"publicURL": "[path]/manually-configuring-ssl.svg"
-																}
-															},
-															"brandfolderAsset": null,
-															"brandfolderAssetMobile": null
-														}
-													],
-													"entry_button": null,
-													"entry_elementLink": null,
-													"entry_page": null,
-													"entry_elementIcon": null,
-													"entry_bladeTable": null,
-													"entry_bladeThreeFeatures": null,
-													"entry_bladeFourFeatures": null
-												},
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": []
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "heading-4",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Configuring SSL With Cloudflare",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "embedded-entry-block",
-											"data": {
-												"target": {
-													"sys": {
-														"id": "1MKa3G3Tp3oKrrinF3KtGg",
-														"type": "Link",
-														"linkType": "Entry"
-													},
-													"related_asset": null,
-													"entry_elementMarkdown": null,
-													"entry_assetFile": [
-														{
-															"id": "b6dd6341-53b4-5142-a021-339052478707",
-															"altText": "Turn on SSL from Cloudflare dashboard",
-															"title": "SSL - configuring SSL with Cloudflare",
-															"activeAsset": "Contentful Asset",
-															"locale": "en-US",
-															"contentfulAsset": {
-																"file": {
-																	"publicURL": "[path]/configuring-ssl-with-cloudflare.svg"
-																}
-															},
-															"brandfolderAsset": null,
-															"brandfolderAssetMobile": null
-														}
-													],
-													"entry_button": null,
-													"entry_elementLink": null,
-													"entry_page": null,
-													"entry_elementIcon": null,
-													"entry_bladeTable": null,
-													"entry_bladeThreeFeatures": null,
-													"entry_bladeFourFeatures": null
-												},
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": []
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								}
-							}
-						]
-					},
-					{
-						"__typename": "bladeRichTextColumnGroup",
-						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "4NR9ezmgrbSSKZgMZwKlOF",
-						"htmlId": null,
-						"mainHeadline": "SSL Performance",
-						"backgroundColor": "white",
-						"bladeBorder": "border",
-						"sectionPadding": "tile--no-bottom-padding",
-						"columnLayout": "One Column Wide",
-						"columns": [
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "6Ko8nuDOqwvBz6FOADLveA",
-								"title": "SSL - SSL Performance - body text",
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "HTTPS isn't what it used to be. It's faster, more secure, and used by more websites than ever before. SSL enables HTTP/2, which has the potential to make websites up to two times faster with no changes to existing codebases. Modern TLS also includes performance-oriented features like session resumption, OCSP stapling, and elliptic curve cryptography that uses smaller keys (resulting in a faster handshake). TLS 1.3 reduces latency even further and removes insecure features of TLS making HTTPS more secure and performant than any previous version of TLS and its non-secure counterpart, HTTP.",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Cloudflare has even worked to improve the performance of OpenSSL. We implemented ChaCha20-Poly1305, a cipher suite that runs three times faster than AES-128-GCM on mobile devices. We care about performance.",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								}
-							}
-						]
-					},
-					{
-						"__typename": "bladeRichTextColumnGroup",
-						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "4Ls6lrdbYdvJWIL7pik8RB",
-						"htmlId": null,
-						"mainHeadline": "Modes of Operation",
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"sectionPadding": "tile--no-bottom-padding",
-						"columnLayout": "One Column Wide",
-						"columns": [
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "2Svwi1aE87DN5e2ZYa8m62",
-								"title": "SSL - Modes of Operation",
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Cloudflare SSL operates in different modes depending on the level of security required and the amount of configuration you're willing to do. Traffic to the end user will always be encrypted, which means your website will always enjoy the benefits of HTTPS. However, traffic between Cloudflare and your origin server can be configured in a variety of ways.",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								}
-							}
-						]
-					},
-					{
-						"__typename": "bladeImageText",
-						"contentfulId": "3OEyMZgsZ3m80a0BdzGjGe",
-						"title": "Flexible SSL",
-						"copy": "Flexible SSL encrypts traffic from Cloudflare to end users of your website, but not from Cloudflare to your origin server. This is the easiest way to enable HTTPS because it doesn't require installing an SSL certificate on your origin. While not as secure as the other options, Flexible SSL does protect your visitors from a large class of threats including public WiFi snooping and ad injection over HTTP.",
-						"toggleText": null,
-						"button": null,
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": null,
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": [
-							"controls"
-						],
-						"streamCaptions": "en",
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "aaee6a56-3ff6-5c27-8282-c49d9a11ce0c",
-							"altText": "Cloudflare flexible SSL traffic encrypted between visitor and Cloudflare",
-							"title": "SSL - flexible SSL",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "[path]/flexible-ssl.svg"
-								}
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": null,
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": "tile--no-top-bottom-padding",
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": null
-					},
-					{
-						"__typename": "bladeImageText",
-						"contentfulId": "2bZZeHDsf1kd0eYclnBnRK",
-						"title": "Full SSL",
-						"copy": "Full SSL mode provides encryption from end users to Cloudflare and from Cloudflare to your origin server. This requires an SSL certificate on your origin server. In Full SSL mode, you have three options for certificates to install on your server: one issued by a Certificate Authority (Strict), one issued by Cloudflare (Origin CA), or a self signed certificate. It is recommended that you use a certificate obtained through Cloudflare Origin CA.",
-						"toggleText": null,
-						"button": null,
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": null,
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": [
-							"controls"
-						],
-						"streamCaptions": "en",
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "3880db46-f2ad-5cb9-a159-219c1734555c",
-							"altText": "Cloudflare full SSL traffic encrypted from Cloudflare to origin server",
-							"title": "SSL - full SSL strict",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "[path]/full-ssl-strict.svg"
-								}
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": null,
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": "tile--no-top-bottom-padding",
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": true,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": null
-					},
-					{
-						"__typename": "bladeImageText",
-						"contentfulId": "6HMDWy0E2krBQD6lpRqEZu",
-						"title": "Origin CA",
-						"copy": "Origin CA uses a Cloudflare-issued SSL certificate instead of one issued by a Certificate Authority. This reduces much of the friction around configuring SSL on your origin server, while still securing traffic from your origin to Cloudflare. Instead of having your certificate signed by a CA, you can generate a signed certificate directly in the Cloudflare dashboard.",
-						"toggleText": null,
-						"button": null,
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": null,
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": [
-							"controls"
-						],
-						"streamCaptions": "en",
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "9277abc0-11b2-5d82-b7e9-7386973622b2",
-							"altText": null,
-							"title": null,
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "[path]/origin-certificates-emptytable.png"
-								}
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": null,
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": "tile--no-top-padding",
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": "large",
-						"imageTextAlignment": null,
-						"togglesTo": null
+						}
 					},
 					{
 						"__typename": "bladeFourFeatures",
-						"contentfulId": "6hESsUkZRV1k4i6f87NYEf",
+						"contentfulId": "3INQJw5CQv1kccjgUJlQWG",
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
 						"copy": null,
-						"title": "Advanced Configuration Options",
-						"subtitle": null,
-						"bladeStyle": "Feature Blocks - 4 columns",
-						"bladeBorder": "border",
-						"sectionPadding": "tile--no-bottom-padding",
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5et8vHwmubgymjByZTjZXY",
-								"title": "Custom Certificates",
-								"titleSize": "medium",
-								"description": "Cloudflare automatically provisions SSL certificates that are shared by multiple customer domains. Business and Enterprise customers have the option to upload a custom, dedicated SSL certificate that will be presented to end users. This allows the use of extended validation (EV) and organization validated (OV) certificates.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "3CoNhtAO2W2GkbHjdlG7Ap",
-								"title": "Modern TLS Only",
-								"titleSize": "medium",
-								"description": "\nPCI 3.2 compliance requires either TLS 1.2 or 1.3, as there are known vulnerabilities in all earlier versions of TLS and SSL. Cloudflare provides a \"Modern TLS Only\" option that forces all HTTPS traffic from your website to be served over either TLS 1.2 or 1.3.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "1cTuMckylaCJn03nvSY2MQ",
-								"title": "Opportunistic Encryption",
-								"titleSize": "medium",
-								"description": "Opportunistic Encryption provides HTTP-only domains that can't upgrade to HTTPS, due to mixed content or other legacy issues, the benefits of encryption and web optimization features only available using TLS without changing a single line of code.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "2LQeUsXnFOZakrpxsCsCsd",
-								"title": "TLS Client Auth",
-								"titleSize": "medium",
-								"description": "\nCloudflare's Mutual Auth (TLS Client Auth) creates a secure connection between a client, like an IoT device or a mobile app, and its origin. When a client attempts to establish a connection with its origin server, Cloudflare validates the device's certificate to check it has authorized access to the endpoint. If the device has a valid client certificate, like having the correct key to enter a building, the device is able to establish a secure connection. If the device's certificate is missing, expired, or invalid, the connection is revoked and Cloudflare returns a 403 error.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "7l6CtVObtutvaLGUHtqjpa",
-								"title": "HSTS",
-								"titleSize": "medium",
-								"description": "\nSupporting the HTTP Strict Transport Security (HSTS) protocol is one of the easiest ways to better secure your website, API, or mobile application. HSTS is an extension to the HTTP protocol that forces clients to use secure connections for every request to your origin server. Cloudflare provides HSTS support with the click of a button.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "1PbXXZj5k7UOHWh0oMsPVS",
-								"title": "Automatic HTTPS Rewrites",
-								"titleSize": "medium",
-								"description": "\nAutomatic HTTPS Rewrites safely eliminates mixed content issues while enhancing performance and security by rewriting insecure URLs dynamically from known (secure) hosts to their secure counterpart. By enforcing a secure connection, Automatic HTTPS Rewrites enables you to take advantage of the latest security standards and web optimization features only available over HTTPS.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "4YRxQeH3kei1v3oeKEs5l1",
-								"title": "Encrypted Server Name Indicator (SNI)",
-								"titleSize": "medium",
-								"description": "\nEncrypted SNI replaces the plaintext \"server_name\" extension used in the ClientHello message during TLS negotiation with an \"encrypted_server_name.\" This capability expands on TLS 1.3, increasing the privacy of users by concealing the destination hostname from intermediaries between the visitor and website.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "R8dwcOMikBGmWDe00U4PJ",
-								"title": "Geo Key Manager",
-								"titleSize": "medium",
-								"description": "\nGeo Key Manager provides the ability to choose which Cloudflare data centers have access to private keys in order to establish HTTPS connections. Cloudflare has preconfigured options to select from either US or EU data centers as well as the highest security data centers in the Cloudflare network. Data centers without access to private keys can still terminate TLS, but they will experience a slight initial delay when contacting the nearest Cloudflare data center storing the private key.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						]
-					},
-					{
-						"__typename": "bladeRichTextColumnGroup",
-						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "6FOvOrzVaR43SbjChqoUiN",
-						"htmlId": null,
-						"mainHeadline": "Dedicated SSL Certificates",
-						"backgroundColor": "white",
-						"bladeBorder": "border-bottom",
-						"sectionPadding": null,
-						"columnLayout": "One Column Wide",
-						"columns": [
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "2Svwi1aE87DN5e2ZYa8m62",
-								"title": "SSL - Modes of Operation",
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Cloudflare SSL operates in different modes depending on the level of security required and the amount of configuration you're willing to do. Traffic to the end user will always be encrypted, which means your website will always enjoy the benefits of HTTPS. However, traffic between Cloudflare and your origin server can be configured in a variety of ways.",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								}
-							}
-						]
-					},
-					{
-						"__typename": "bladeFourFeatures",
-						"contentfulId": "56SqgeJj9PhM3JW6RU8WET",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": "Cloudflare engineers deal with billions of SSL requests on a daily basis, so when a new security vulnerability is discovered, we have to act fast. Many vulnerabilities don't affect users due to our strict security standards, but we love explaining how encryption breaks.",
-						"title": "Working With TLS Vulnerabilities at Scale",
-						"subtitle": null,
-						"bladeStyle": "Feature Blocks - 4 columns",
-						"bladeBorder": "none",
-						"sectionPadding": "tile--no-top-bottom-padding",
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "4huhi3TskYiWtZUJnbTeHr",
-								"title": "Padding Oracles and the Decline of CBC Cipher Suites",
-								"titleSize": "medium",
-								"description": "In early 2016, we saw web client support for AEAD ciphers increase from under 50% to over 70% in only six months. Learn why cipher block chaining is no longer considered completely secure. ",
-								"learnMoreUrl": "https://blog.cloudflare.com/padding-oracles-and-the-decline-of-cbc-mode-ciphersuites/",
-								"learnMoreText": "Learn More",
-								"displayBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "4Vmzh2NMC9BuhjlkXTmSJg",
-								"title": "Logjam: the Latest TLS Vulnerability Explained",
-								"titleSize": "medium",
-								"description": "\nCloudflare customers were never affected by the Logjam vulnerability, but we did create a detailed writeup explaining how it works. ",
-								"learnMoreUrl": "https://blog.cloudflare.com/logjam-the-latest-tls-vulnerability-explained/",
-								"learnMoreText": "Learn More",
-								"displayBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "3dqge9sx4sU8AgQcdErnDn",
-								"title": "Build Your Own Public Key Infrastructure",
-								"titleSize": "medium",
-								"description": "\nCloudflare encrypts all traffic between its datacenters using its own internal certificate authority. We built our own open-source PKI toolkit to do it. ",
-								"learnMoreUrl": "https://blog.cloudflare.com/how-to-build-your-own-public-key-infrastructure/",
-								"learnMoreText": "Learn More",
-								"displayBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5Z4QMs0p4tCXwsoVarKNmp",
-								"title": "Roughtime Protocol Support",
-								"titleSize": "medium",
-								"description": "Helps the web be more secure by reducing TLS certificate errors using an authenticated timestamp service.",
-								"learnMoreUrl": "https://blog.cloudflare.com/roughtime/",
-								"learnMoreText": "Learn More",
-								"displayBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						]
-					},
-					{
-						"__typename": "bladeFourFeatures",
-						"contentfulId": "4CcbPyS6LfRSbtTI596v5L",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": "Minimum Supported Browser Versions for Cloudflare SSL Free Users:\n",
-						"title": "Technical Details",
-						"subtitle": null,
+						"title": "Faster, more secure websites",
+						"subtitle": "Cloudflare SSL",
 						"bladeStyle": null,
 						"bladeBorder": "none",
 						"sectionPadding": null,
@@ -1279,15 +137,28 @@
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5AwJyaL1gRaZF83dNqWQ8l",
-								"title": "Desktop Browsers",
+								"contentfulId": "1CnptEK9IxNI2rQy42BGJA",
+								"title": "Improve Website Performance",
 								"titleSize": null,
-								"description": "- Firefox 2\n- Internet Explorer 7 on Windows Vista\n- Windows Vista or OS X 10.6 with:  \n  Chrome 5.0.342.0, Opera 14, Safari 4",
+								"description": "Cloudflare's modern SSL improves webpage load times to provide a better visitor experience on your website.\n",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
-								"displayBorder": null,
+								"displayBorder": false,
 								"icon": null,
-								"iconAssetFile": null,
+								"iconAssetFile": {
+									"id": "32001ca5-5e70-541d-8457-1a1e01ef15b6",
+									"altText": "speed performance blue rocket - icon",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/performance-acceleration-rocket-blue-192x192-4798970.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
 								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
@@ -1295,15 +166,31 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "1sNdHD5geFwDjaP7pQxput",
-								"title": "Mobile Browsers",
+								"contentfulId": "t4caNXfRJySNnVRzt4t19",
+								"title": "Protect Website Visitors",
 								"titleSize": null,
-								"description": "- Mobile Safari on iOS 4.0\n- Android 4.0 (Ice Cream Sandwich)\n- Windows Phone 7",
+								"description": "Encrypting traffic with SSL ensures nobody can snoop on your users' data and is important for PCI compliance.\n",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
-								"displayBorder": null,
+								"displayBorder": false,
 								"icon": null,
-								"iconAssetFile": null,
+								"iconAssetFile": {
+									"id": "c6776679-e543-5a80-9232-26ab70198b70",
+									"altText": "Security lock blue",
+									"title": "Security lock blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 1116,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/security-lock-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
 								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
@@ -1311,186 +198,91 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "7jTEwboJSJwb8ktgSdULjg",
-								"title": "Note:",
+								"contentfulId": "76pyIMw0845N7nztO6JFEV",
+								"title": "Boost Search Rankings",
 								"titleSize": null,
-								"description": "Operating systems, when specified above, are the minimum version required. If you need more compatibility with older browsers, such as Windows XP SP2 and Android <3.0, please use the SSL on our Pro, Business, or Enterprise plans. If you have further questions please see our [FAQ](https://support.cloudflare.com/hc/en-us/categories/200276247-SSL).",
+								"description": "Search engines like Google®, favor SSL websites in keyword rankings. Easily increase your website SEO.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
-								"displayBorder": null,
+								"displayBorder": false,
 								"icon": null,
-								"iconAssetFile": null,
+								"iconAssetFile": {
+									"id": "f5307774-0846-5238-a3c7-d4da0a685dd6",
+									"altText": "Performance arrow up blue",
+									"title": "Performance arrow up blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 377,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/performance-arrow-up-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
 								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
-							}
-						]
-					},
-					{
-						"__typename": "bladeHtml",
-						"contentTypeId": "bladeHtml",
-						"contentfulId": "76Of7L7xZNVIkJ1Xc8JtQe",
-						"htmlContent": "<section\n  class=\"tile tile--border tile__background--white js-cloudflare-setup-video-tile\"\n>\n  <div class=\"tile__content tile__content--fixed\">\n    <h2 class=\"marketing-h2 marketing-h2--center marketing-h2--bottom-margin\">\n      Setting Up Cloudflare Is Easy\n    </h2>\n    <br /><br />\n    <div class=\"grid grid--center\">\n      <video\n        poster=\"/img/getting-started.png\"\n        muted=\"\"\n        autoplay=\"\"\n        loop=\"\"\n        class=\"responsive-image grid__item grid__item js-cloudflare-setup-video no-margin-bottom\"\n        id=\"cloudflare-stream-video\"\n      >\n        <source src=\"/video/cloudflare-setup.mp4?v=3\" type=\"video/mp4\" />\n        <source src=\"/video/cloudflare-setup.webm?v=3\" type=\"video/webm\" />\n      </video>\n      <p class=\"tc db w-100\">\n        Set up a domain in less than 5 minutes. Keep your hosting provider. No\n        code changes required.\n      </p>\n    </div>\n  </div>\n</section>\n\n<hr />",
-						"htmlId": null
-					},
-					{
-						"__typename": "bladePricingPlans",
-						"bladeBorder": "border-bottom",
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"contentTypeId": "bladePricingPlans",
-						"contentfulId": "5Cw4cx3ZpM4B6TicJ55DAp",
-						"title": "Cloudflare Pricing",
-						"description": "Everyone's Internet application can benefit from using Cloudflare. Pick a plan that fits your needs.",
-						"htmlId": null,
-						"plansList": [
+							},
 							{
-								"contentTypeId": "plan",
-								"contentfulId": "7DyKuEy4oqYn3YGTnOqUNh",
-								"type": "Free",
-								"priceCurrencySymbol": null,
-								"price": "$0/month",
-								"priceDurationPeriod": null,
-								"billingSubtext": "Add-ons billed monthly",
-								"description": "For personal websites, blogs, and anyone who wants to explore Cloudflare.",
-								"shortDescription": null,
-								"mediumDescription": null,
-								"supportResponseTitleText": null,
-								"supportResponseTime": null,
-								"ctaButtonText": "ADD A WEBSITE",
-								"ctaButtonUrl": "https://dash.cloudflare.com/sign-up",
-								"ctaButton": null,
-								"additionalTermsText": null,
+								"contentTypeId": "feature",
+								"contentfulId": "3JyMMe1oay1yqsSXS3hudy",
+								"title": "Easy Setup",
+								"titleSize": null,
+								"description": "Set up a domain in less than 5 minutes. Keep your hosting provider. No code changes required.",
+								"learnMoreUrl": null,
 								"learnMoreText": null,
-								"plansPageLinkText": null,
-								"plansPageLinkUrl": null,
-								"activatedKeyFeatures": null,
-								"deactivatedKeyFeatures": null,
-								"coreFeatures": null,
-								"supportResponse": null,
-								"bottomCtaLinkUrl": "https://www.cloudflare.com/plans/#overview",
-								"bottomCtaLinkText": "Learn More",
-								"bottomCtaLink": null,
-								"hideTopDivider": null,
-								"featureList1": null,
-								"featureList2": null,
-								"featureList3": null
-							},
-							{
-								"contentTypeId": "plan",
-								"contentfulId": "24mzcA2x7cPSK1RZaisKmb",
-								"type": "Pro",
-								"priceCurrencySymbol": null,
-								"price": "$20/month",
-								"priceDurationPeriod": null,
-								"billingSubtext": "Billed monthly",
-								"description": "For professional websites, blogs, and portfolios requiring basic security and performance.",
-								"shortDescription": null,
-								"mediumDescription": null,
-								"supportResponseTitleText": null,
-								"supportResponseTime": null,
-								"ctaButtonText": "GET PRO",
-								"ctaButtonUrl": "https://dash.cloudflare.com/sign-up",
-								"ctaButton": null,
-								"additionalTermsText": null,
-								"learnMoreText": "Learn More",
-								"plansPageLinkText": null,
-								"plansPageLinkUrl": null,
-								"activatedKeyFeatures": null,
-								"deactivatedKeyFeatures": null,
-								"coreFeatures": null,
-								"supportResponse": null,
-								"bottomCtaLinkUrl": "/plans/pro/",
-								"bottomCtaLinkText": "Learn More",
-								"bottomCtaLink": null,
-								"hideTopDivider": null,
-								"featureList1": null,
-								"featureList2": null,
-								"featureList3": null
-							},
-							{
-								"contentTypeId": "plan",
-								"contentfulId": "18qXBPHc1CntGoHDReJXTk",
-								"type": "Business",
-								"priceCurrencySymbol": null,
-								"price": "$200/month",
-								"priceDurationPeriod": null,
-								"billingSubtext": "Billed monthly",
-								"description": "For small eCommerce websites and businesses requiring advanced security and performance, PCI compliance, and prioritized email support.",
-								"shortDescription": null,
-								"mediumDescription": null,
-								"supportResponseTitleText": null,
-								"supportResponseTime": null,
-								"ctaButtonText": "GET BUSINESS",
-								"ctaButtonUrl": "https://dash.cloudflare.com/sign-up",
-								"ctaButton": null,
-								"additionalTermsText": null,
-								"learnMoreText": "Learn More",
-								"plansPageLinkText": null,
-								"plansPageLinkUrl": null,
-								"activatedKeyFeatures": null,
-								"deactivatedKeyFeatures": null,
-								"coreFeatures": null,
-								"supportResponse": null,
-								"bottomCtaLinkUrl": "/plans/business/",
-								"bottomCtaLinkText": "Learn More",
-								"bottomCtaLink": null,
-								"hideTopDivider": null,
-								"featureList1": null,
-								"featureList2": null,
-								"featureList3": null
-							},
-							{
-								"contentTypeId": "plan",
-								"contentfulId": "19rBu6aYA1FDtSkqOc1NpD",
-								"type": "Enterprise",
-								"priceCurrencySymbol": null,
-								"price": "Contact Us",
-								"priceDurationPeriod": null,
-								"billingSubtext": "Billed annually",
-								"description": "For companies requiring enterprise-grade security and performance, prioritized 24/7/365 phone, email, or chat support, and guaranteed uptime.",
-								"shortDescription": null,
-								"mediumDescription": null,
-								"supportResponseTitleText": null,
-								"supportResponseTime": null,
-								"ctaButtonText": "GET IN TOUCH",
-								"ctaButtonUrl": "/plans/enterprise/contact/",
-								"ctaButton": null,
-								"additionalTermsText": null,
-								"learnMoreText": "Learn More",
-								"plansPageLinkText": null,
-								"plansPageLinkUrl": null,
-								"activatedKeyFeatures": null,
-								"deactivatedKeyFeatures": null,
-								"coreFeatures": null,
-								"supportResponse": null,
-								"bottomCtaLinkUrl": "/plans/enterprise/",
-								"bottomCtaLinkText": "Learn More",
-								"bottomCtaLink": null,
-								"hideTopDivider": null,
-								"featureList1": null,
-								"featureList2": null,
-								"featureList3": null
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "11e03783-c55c-582e-b490-3eab11cac88b",
+									"altText": "Ease of use blue",
+									"title": "Ease of use blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 1444,
+										"height": 192,
+										"width": 192,
+										"file": {
+											"publicURL": "[path]/ease-of-use-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							}
 						]
 					},
 					{
 						"__typename": "bladeTrustedBy",
 						"contentTypeId": "bladeTrustedBy",
-						"contentfulId": "bGXZcQriItbwEaMlcrTcV",
+						"contentfulId": "2445KYDBR15F1A4iKrrjJR",
 						"bladeBorder": "none",
 						"textColor": "black",
-						"linkText": "View case studies",
-						"linkUrl": "https://www.cloudflare.com/case-studies/",
+						"linkText": null,
+						"linkUrl": null,
 						"sectionPadding": null,
 						"backgroundColor": "white",
-						"title": "Trusted by millions of Internet properties",
-						"copy": null,
+						"title": "Trusted by the biggest brands worldwide",
+						"copy": "Cloudflare named a 2022 Gartner® Peer Insights™ Customers' Choice for  CDN<sup>2</sup> and WAAP<sup>3</sup>",
 						"logoList": [
 							{
 								"file": {
-									"publicURL": "[path]/logo_mars_gray_32px-wrapper.svg"
+									"publicURL": "[path]/logo_ibm_gray_32px-wrapper.svg"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/tb-logo-marketo-grayscale.png"
 								}
 							},
 							{
@@ -1500,65 +292,40 @@
 							},
 							{
 								"file": {
-									"publicURL": "[path]/logo_doordash_gray_32px-wrapper.svg"
+									"publicURL": "[path]/logo_garmin_trusted-by_gray.svg"
 								}
 							},
 							{
 								"file": {
-									"publicURL": "[path]/logo_garmin_gray_32px-wrapper.svg"
+									"publicURL": "[path]/logo_panasonic_trusted-by_gray.svg"
 								}
 							},
 							{
 								"file": {
-									"publicURL": "[path]/logo_ibm_gray_32px-wrapper.svg"
+									"publicURL": "[path]/logo_shopify_trusted-by_gray.svg"
 								}
 							},
 							{
 								"file": {
-									"publicURL": "[path]/logo_23andme_color_32px-wrapper.svg"
+									"publicURL": "[path]/logo_allianz_trusted-by_gray.svg"
 								}
 							},
 							{
 								"file": {
-									"publicURL": "[path]/logo_shopify_color_32px-wrapper.svg"
-								}
-							},
-							{
-								"file": {
-									"publicURL": "[path]/logo_lending-tree_color_32px-wrapper.svg"
-								}
-							},
-							{
-								"file": {
-									"publicURL": "[path]/logo_labcorp_color_32px-wrapper.svg"
-								}
-							},
-							{
-								"file": {
-									"publicURL": "[path]/logo_ncr_gray_32px-wrapper.svg"
-								}
-							},
-							{
-								"file": {
-									"publicURL": "[path]/logo_thomson-reuters_gray_32px-wrapper.svg"
-								}
-							},
-							{
-								"file": {
-									"publicURL": "[path]/logo_zendesk_gray_32px-wrapper.svg"
+									"publicURL": "[path]/logo_zendesk_trusted-by_gray.svg"
 								}
 							}
 						],
 						"logoListAssetFile": [
 							{
-								"id": "9a8f1b8a-cd07-5907-979a-86b8a90c1c80",
-								"altText": "Logo mars trusted by gray",
-								"title": "Logo mars trusted by gray",
+								"id": "f1f3837d-a408-5f08-8ead-06d1108cd0e1",
+								"altText": "Logo ibm trusted by gray",
+								"title": "Logo ibm trusted by gray",
 								"activeAsset": "Contentful Asset",
 								"locale": "en-US",
 								"contentfulAsset": {
 									"file": {
-										"publicURL": "[path]/logo_mars_trusted-by_gray.svg"
+										"publicURL": "[path]/logo_ibm_trusted-by_gray.svg"
 									}
 								},
 								"brandfolderAsset": null,
@@ -1579,20 +346,6 @@
 								"brandfolderAssetMobile": null
 							},
 							{
-								"id": "7cbc697b-807d-5a77-81f0-a4b597366f29",
-								"altText": "Logo doordash trusted by gray",
-								"title": "Logo doordash trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "[path]/logo_doordash_trusted-by_gray.svg"
-									}
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
 								"id": "302a3744-177c-549c-a3e3-ba0eccb9558a",
 								"altText": "Logo garmin trusted by gray",
 								"title": "Logo garmin trusted by gray",
@@ -1607,31 +360,41 @@
 								"brandfolderAssetMobile": null
 							},
 							{
-								"id": "f1f3837d-a408-5f08-8ead-06d1108cd0e1",
-								"altText": "Logo ibm trusted by gray",
-								"title": "Logo ibm trusted by gray",
+								"id": "2f753509-becb-5286-998f-d320d6513d89",
+								"altText": "Logo panasonic trusted by gray",
+								"title": "Logo panasonic trusted by gray",
 								"activeAsset": "Contentful Asset",
 								"locale": "en-US",
 								"contentfulAsset": {
 									"file": {
-										"publicURL": "[path]/logo_ibm_trusted-by_gray.svg"
+										"publicURL": "[path]/logo_panasonic_trusted-by_gray.svg"
 									}
 								},
-								"brandfolderAsset": null,
+								"brandfolderAsset": {
+									"size": 11924,
+									"height": 64,
+									"width": 632,
+									"file": {
+										"publicURL": "[path]/logo_panasonic_trusted-by_gray.svg"
+									}
+								},
 								"brandfolderAssetMobile": null
 							},
 							{
-								"id": "ffd4a407-4457-5421-8b20-54433e485cc7",
-								"altText": "Logo 23andme trusted by gray",
-								"title": "Logo 23andme trusted by gray",
-								"activeAsset": "Contentful Asset",
+								"id": "1155fb4b-ac77-52b1-a102-6cb68f69f466",
+								"altText": "Logo marketo trusted by gray",
+								"title": "Logo marketo trusted by gray",
+								"activeAsset": "Brandfolder Asset",
 								"locale": "en-US",
-								"contentfulAsset": {
+								"contentfulAsset": null,
+								"brandfolderAsset": {
+									"size": 2708,
+									"height": 608,
+									"width": 2690,
 									"file": {
-										"publicURL": "[path]/logo_23andme_color_32px-wrapper.svg"
+										"publicURL": "[path]/logo_marketo_trusted-by_gray.svg"
 									}
 								},
-								"brandfolderAsset": null,
 								"brandfolderAssetMobile": null
 							},
 							{
@@ -1649,59 +412,20 @@
 								"brandfolderAssetMobile": null
 							},
 							{
-								"id": "5d11dee2-570b-5d45-86a2-634fc4c71ce1",
-								"altText": "Logo lending tree trusted by gray",
-								"title": "Logo lending tree trusted by gray",
-								"activeAsset": "Contentful Asset",
+								"id": "5ab637c1-ac51-5de5-b8a7-022db4ddf677",
+								"altText": "Logo allianz trusted by gray",
+								"title": "Logo allianz trusted by gray",
+								"activeAsset": "Brandfolder Asset",
 								"locale": "en-US",
-								"contentfulAsset": {
+								"contentfulAsset": null,
+								"brandfolderAsset": {
+									"size": 3833,
+									"height": 96,
+									"width": 632,
 									"file": {
-										"publicURL": "[path]/logo_lending-tree_color_32px-wrapper.svg"
+										"publicURL": "[path]/logo_allianz_trusted-by_gray.svg"
 									}
 								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "6f68ad17-e6c8-5155-877e-91855b51cee0",
-								"altText": "Logo labcorp trusted by gray",
-								"title": "Logo labcorp trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "[path]/logo_labcorp_trusted-by_gray.svg"
-									}
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "d20283f3-6fa3-50d0-91a1-715d8d303897",
-								"altText": "Logo ncr trusted by gray",
-								"title": "Logo ncr trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "[path]/logo_ncr_gray_32px-wrapper.svg"
-									}
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "626a14c0-589d-5fff-b8aa-155b8bc7392c",
-								"altText": "Logo thomson reuters trusted by gray",
-								"title": "Logo thomson reuters trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "[path]/logo_thomson-reuters_gray_32px-wrapper.svg"
-									}
-								},
-								"brandfolderAsset": null,
 								"brandfolderAssetMobile": null
 							},
 							{
@@ -1720,6 +444,964 @@
 							}
 						],
 						"logoUrlList": null
+					},
+					{
+						"__typename": "bladePlansMatrix",
+						"contentfulId": "49st5Ch9uHWbt1JZujc5qP",
+						"contentTypeId": "bladePlansMatrix",
+						"hasFilter": false,
+						"htmlId": "SSL-Page-Pricing-AS",
+						"filterLabel": null,
+						"showInModal": false,
+						"title": "Upgrade your website security and performance with free SSL & so much more!",
+						"modalButtonText": null,
+						"mobileMode": "Cards",
+						"sectionPadding": "tile--no-bottom-padding",
+						"plans": [
+							{
+								"contentTypeId": "planElementPlanMatrixPlan",
+								"contentfulId": "mBZPOsc9k3pCyGmsB6aAz",
+								"showDescription": true,
+								"showPriceDescription": true,
+								"plan": {
+									"contentfulId": "4J2b292gM2Io6Xb2UjbsLo",
+									"contentTypeId": "planElementPlan",
+									"entryTitle": "Application Services - Free Plan",
+									"name": "Free",
+									"description": "For personal or hobby projects that aren't business-critical.",
+									"pricingDescription": "Add-ons billed monthly",
+									"price": 0,
+									"currency": "$",
+									"customPricingText": "$0/month",
+									"billingCycle": "monthly"
+								},
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonWidth": "auto",
+									"buttonColor": "orange",
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "3ILA97nY8NryApAuJ1Gk1Y",
+									"elementName": "Add a website (Free Plan CTA)",
+									"standardText": null,
+									"text": "Add a Website",
+									"url": "https://dash.cloudflare.com/sign-up?pt=f",
+									"loggedInUrl": null,
+									"modal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"learnMoreLink": null
+							},
+							{
+								"contentTypeId": "planElementPlanMatrixPlan",
+								"contentfulId": "3KZckJdQE2jo5TJTl64Wob",
+								"showDescription": true,
+								"showPriceDescription": true,
+								"plan": {
+									"contentfulId": "7JMDjiexzE2evvzrTjly8l",
+									"contentTypeId": "planElementPlan",
+									"entryTitle": "Application Services - Pro Plan",
+									"name": "Pro",
+									"description": "For professional websites that aren't business-critical.",
+									"pricingDescription": "Billed monthly",
+									"price": 20,
+									"currency": "$",
+									"customPricingText": "$20/month",
+									"billingCycle": "monthly"
+								},
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonWidth": "auto",
+									"buttonColor": "orange",
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "oUsaiWm7GC8nCOSjsVkda",
+									"elementName": "Pro Plan - Get Started",
+									"standardText": null,
+									"text": "Get Started",
+									"url": "https://dash.cloudflare.com/sign-up?to=/:account/:zone/billing/checkout&add=cf_pro_20_20",
+									"loggedInUrl": null,
+									"modal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"learnMoreLink": null
+							},
+							{
+								"contentTypeId": "planElementPlanMatrixPlan",
+								"contentfulId": "3s9I3QypaHhvHH0ReJDobs",
+								"showDescription": true,
+								"showPriceDescription": true,
+								"plan": {
+									"contentfulId": "X0mi2lABGJXFQqE4wieTW",
+									"contentTypeId": "planElementPlan",
+									"entryTitle": "Application Services - Business Plan",
+									"name": "Business",
+									"description": "For small businesses operating online.",
+									"pricingDescription": "Billed monthly",
+									"price": 200,
+									"currency": "$",
+									"customPricingText": "$200/month",
+									"billingCycle": "monthly"
+								},
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonWidth": "auto",
+									"buttonColor": "orange",
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "2e82akp3uD5uAlpIQ9e2cf",
+									"elementName": "Business Plan - Get Started",
+									"standardText": null,
+									"text": "Get Started",
+									"url": "https://dash.cloudflare.com/sign-up?to=/:account/:zone/billing/checkout&add=cf_biz",
+									"loggedInUrl": "https://dash.cloudflare.com/login?pt=b",
+									"modal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"learnMoreLink": null
+							},
+							{
+								"contentTypeId": "planElementPlanMatrixPlan",
+								"contentfulId": "UFr6oJUnfxy758404GLLe",
+								"showDescription": true,
+								"showPriceDescription": true,
+								"plan": {
+									"contentfulId": "9KE9tgEmXrKuduOkp2NKd",
+									"contentTypeId": "planElementPlan",
+									"entryTitle": "Application Services - Enterprise Plan",
+									"name": "Enterprise",
+									"description": "For mission-critical applications that are core to your business.",
+									"pricingDescription": "Billed annually",
+									"price": null,
+									"currency": null,
+									"customPricingText": "Custom",
+									"billingCycle": null
+								},
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonWidth": "auto",
+									"buttonColor": "orange",
+									"buttonTextLoggedIn": "Learn More",
+									"contentTypeId": "button",
+									"contentfulId": "3VX1As80QY8qThQpOpgx5f",
+									"elementName": "Enterprise Plan-Learn More",
+									"standardText": null,
+									"text": "Learn More",
+									"url": "/plans/enterprise",
+									"loggedInUrl": "/plans/enterprise",
+									"modal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"learnMoreLink": null
+							}
+						],
+						"planFeatures": [
+							{
+								"contentfulId": "eSI9v7bcXkSO3MxWQe3dE",
+								"contentTypeId": "planElementFeatures",
+								"name": "Support Options",
+								"description": null,
+								"planValues": [
+									{
+										"__typename": "planElementFeatureValueText",
+										"contentTypeId": "planElementFeatureValueText",
+										"contentfulId": "78P4yIV6bbcKv6ZC56AUYh",
+										"textValue": "Community forums and documentation",
+										"plan": {
+											"contentfulId": "4J2b292gM2Io6Xb2UjbsLo",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Free Plan",
+											"name": "Free",
+											"description": "For personal or hobby projects that aren't business-critical.",
+											"pricingDescription": "Add-ons billed monthly",
+											"price": 0,
+											"currency": "$",
+											"customPricingText": "$0/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueText",
+										"contentTypeId": "planElementFeatureValueText",
+										"contentfulId": "7kkEoCoIbuYYkn1y5njeP4",
+										"textValue": "Support via email",
+										"plan": {
+											"contentfulId": "7JMDjiexzE2evvzrTjly8l",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Pro Plan",
+											"name": "Pro",
+											"description": "For professional websites that aren't business-critical.",
+											"pricingDescription": "Billed monthly",
+											"price": 20,
+											"currency": "$",
+											"customPricingText": "$20/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueText",
+										"contentTypeId": "planElementFeatureValueText",
+										"contentfulId": "3xfaFSUHLmq1f7a2H9afip",
+										"textValue": "Email + Chat",
+										"plan": {
+											"contentfulId": "X0mi2lABGJXFQqE4wieTW",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Business Plan",
+											"name": "Business",
+											"description": "For small businesses operating online.",
+											"pricingDescription": "Billed monthly",
+											"price": 200,
+											"currency": "$",
+											"customPricingText": "$200/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueText",
+										"contentTypeId": "planElementFeatureValueText",
+										"contentfulId": "3PpJlM6csvAH4ny076rj5c",
+										"textValue": "24x7x365 Email + Chat + Phone",
+										"plan": {
+											"contentfulId": "9KE9tgEmXrKuduOkp2NKd",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Enterprise Plan",
+											"name": "Enterprise",
+											"description": "For mission-critical applications that are core to your business.",
+											"pricingDescription": "Billed annually",
+											"price": null,
+											"currency": null,
+											"customPricingText": "Custom",
+											"billingCycle": null
+										}
+									}
+								]
+							},
+							{
+								"contentfulId": "70aTNoLdZm3Gdd1siKg6m0",
+								"contentTypeId": "planElementFeatures",
+								"name": "Universal SSL Certificate",
+								"description": "Cloudflare is compatible with your existing SSL configuration. If you do not currently use SSL, Cloudflare can provide you with SSL capabilities — no configuration required.",
+								"planValues": [
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "7CQbhRxne5scqSHoDwUMMw",
+										"value": true,
+										"plan": {
+											"contentfulId": "4J2b292gM2Io6Xb2UjbsLo",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Free Plan",
+											"name": "Free",
+											"description": "For personal or hobby projects that aren't business-critical.",
+											"pricingDescription": "Add-ons billed monthly",
+											"price": 0,
+											"currency": "$",
+											"customPricingText": "$0/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "6bOyALEjllpdSeRY5M4Eg6",
+										"value": true,
+										"plan": {
+											"contentfulId": "7JMDjiexzE2evvzrTjly8l",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Pro Plan",
+											"name": "Pro",
+											"description": "For professional websites that aren't business-critical.",
+											"pricingDescription": "Billed monthly",
+											"price": 20,
+											"currency": "$",
+											"customPricingText": "$20/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "5peMTnfL3Qjpr3BU4lFXFO",
+										"value": true,
+										"plan": {
+											"contentfulId": "X0mi2lABGJXFQqE4wieTW",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Business Plan",
+											"name": "Business",
+											"description": "For small businesses operating online.",
+											"pricingDescription": "Billed monthly",
+											"price": 200,
+											"currency": "$",
+											"customPricingText": "$200/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "1GK2Rsxepc3yQAHg5DMML0",
+										"value": true,
+										"plan": {
+											"contentfulId": "9KE9tgEmXrKuduOkp2NKd",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Enterprise Plan",
+											"name": "Enterprise",
+											"description": "For mission-critical applications that are core to your business.",
+											"pricingDescription": "Billed annually",
+											"price": null,
+											"currency": null,
+											"customPricingText": "Custom",
+											"billingCycle": null
+										}
+									}
+								]
+							},
+							{
+								"contentfulId": "3AdaP6Gkua4w77dUpnB0YQ",
+								"contentTypeId": "planElementFeatures",
+								"name": "Unmetered DDoS Protection",
+								"description": "Cloudflare DDoS protection secures websites, applications, and entire networks while ensuring the performance of legitimate traffic is not compromised.",
+								"planValues": [
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "KrkA1GrdRJF8aQnqkPF52",
+										"value": true,
+										"plan": {
+											"contentfulId": "4J2b292gM2Io6Xb2UjbsLo",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Free Plan",
+											"name": "Free",
+											"description": "For personal or hobby projects that aren't business-critical.",
+											"pricingDescription": "Add-ons billed monthly",
+											"price": 0,
+											"currency": "$",
+											"customPricingText": "$0/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "1UeSJksCMsZ1JuSmsATDQs",
+										"value": true,
+										"plan": {
+											"contentfulId": "7JMDjiexzE2evvzrTjly8l",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Pro Plan",
+											"name": "Pro",
+											"description": "For professional websites that aren't business-critical.",
+											"pricingDescription": "Billed monthly",
+											"price": 20,
+											"currency": "$",
+											"customPricingText": "$20/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "7M0zilue0cnxZBmN95rPbY",
+										"value": true,
+										"plan": {
+											"contentfulId": "X0mi2lABGJXFQqE4wieTW",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Business Plan",
+											"name": "Business",
+											"description": "For small businesses operating online.",
+											"pricingDescription": "Billed monthly",
+											"price": 200,
+											"currency": "$",
+											"customPricingText": "$200/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "1B7s10dX513dW9h4wtrG3c",
+										"value": true,
+										"plan": {
+											"contentfulId": "9KE9tgEmXrKuduOkp2NKd",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Enterprise Plan",
+											"name": "Enterprise",
+											"description": "For mission-critical applications that are core to your business.",
+											"pricingDescription": "Billed annually",
+											"price": null,
+											"currency": null,
+											"customPricingText": "Custom",
+											"billingCycle": null
+										}
+									}
+								]
+							},
+							{
+								"contentfulId": "1Qg7GWVP8EoEfhQaKvDjBQ",
+								"contentTypeId": "planElementFeatures",
+								"name": "CDN",
+								"description": "Our %{DataCenterCount} data centers located across the globe provide visitors with location-based access to your website, while removing latency and improving performance.",
+								"planValues": [
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "5JLmdAtFkljnohj733CXpL",
+										"value": true,
+										"plan": {
+											"contentfulId": "4J2b292gM2Io6Xb2UjbsLo",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Free Plan",
+											"name": "Free",
+											"description": "For personal or hobby projects that aren't business-critical.",
+											"pricingDescription": "Add-ons billed monthly",
+											"price": 0,
+											"currency": "$",
+											"customPricingText": "$0/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "1UXvimgYgyJ9R9mVeiD9mt",
+										"value": true,
+										"plan": {
+											"contentfulId": "7JMDjiexzE2evvzrTjly8l",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Pro Plan",
+											"name": "Pro",
+											"description": "For professional websites that aren't business-critical.",
+											"pricingDescription": "Billed monthly",
+											"price": 20,
+											"currency": "$",
+											"customPricingText": "$20/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "7vY854wrPLvxwMVt8EUYAs",
+										"value": true,
+										"plan": {
+											"contentfulId": "X0mi2lABGJXFQqE4wieTW",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Business Plan",
+											"name": "Business",
+											"description": "For small businesses operating online.",
+											"pricingDescription": "Billed monthly",
+											"price": 200,
+											"currency": "$",
+											"customPricingText": "$200/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "1W3aspNOCrNUuRJwsLF18j",
+										"value": true,
+										"plan": {
+											"contentfulId": "9KE9tgEmXrKuduOkp2NKd",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Enterprise Plan",
+											"name": "Enterprise",
+											"description": "For mission-critical applications that are core to your business.",
+											"pricingDescription": "Billed annually",
+											"price": null,
+											"currency": null,
+											"customPricingText": "Custom",
+											"billingCycle": null
+										}
+									}
+								]
+							},
+							{
+								"contentfulId": "D7GuD0WsvFiIj8aur59pQ",
+								"contentTypeId": "planElementFeatures",
+								"name": "Web Application Firewall (WAF)",
+								"description": "Cloudflare Web Application Firewall's intuitive dashboard enables users to build powerful rules through easy clicks and also provides Terraform integration. Every request to the WAF is inspected against the rule engine and the threat intelligence curated from protecting millions of websites. Suspicious requests can be blocked, challenged or logged as per the needs of the user while legitimate requests are routed to the destination, agnostic of whether it lives on-premise or in the cloud.",
+								"planValues": [
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "49oH4C4976zsZ97hpF0SaE",
+										"value": false,
+										"plan": {
+											"contentfulId": "4J2b292gM2Io6Xb2UjbsLo",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Free Plan",
+											"name": "Free",
+											"description": "For personal or hobby projects that aren't business-critical.",
+											"pricingDescription": "Add-ons billed monthly",
+											"price": 0,
+											"currency": "$",
+											"customPricingText": "$0/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "6MKn9Le7IwrfdSBLQvYWyi",
+										"value": true,
+										"plan": {
+											"contentfulId": "7JMDjiexzE2evvzrTjly8l",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Pro Plan",
+											"name": "Pro",
+											"description": "For professional websites that aren't business-critical.",
+											"pricingDescription": "Billed monthly",
+											"price": 20,
+											"currency": "$",
+											"customPricingText": "$20/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "4lJhMiUyJGvMwa83EzvOh0",
+										"value": true,
+										"plan": {
+											"contentfulId": "X0mi2lABGJXFQqE4wieTW",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Business Plan",
+											"name": "Business",
+											"description": "For small businesses operating online.",
+											"pricingDescription": "Billed monthly",
+											"price": 200,
+											"currency": "$",
+											"customPricingText": "$200/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "7HdbF9EKXyF9YGGp4aPQ4g",
+										"value": true,
+										"plan": {
+											"contentfulId": "9KE9tgEmXrKuduOkp2NKd",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Enterprise Plan",
+											"name": "Enterprise",
+											"description": "For mission-critical applications that are core to your business.",
+											"pricingDescription": "Billed annually",
+											"price": null,
+											"currency": null,
+											"customPricingText": "Custom",
+											"billingCycle": null
+										}
+									}
+								]
+							},
+							{
+								"contentfulId": "6krV7nuy6itGGb76xk26K5",
+								"contentTypeId": "planElementFeatures",
+								"name": "Lossless Image Optimization",
+								"description": "Polish applies \"lossless\" or optional \"lossy\" image optimization to reduce your image sizes by 35% on average.",
+								"planValues": [
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "4Yh6y69O07bwoOd6MbrFRN",
+										"value": false,
+										"plan": {
+											"contentfulId": "4J2b292gM2Io6Xb2UjbsLo",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Free Plan",
+											"name": "Free",
+											"description": "For personal or hobby projects that aren't business-critical.",
+											"pricingDescription": "Add-ons billed monthly",
+											"price": 0,
+											"currency": "$",
+											"customPricingText": "$0/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "4ozYL2TtaQAN6HY32gEGLG",
+										"value": true,
+										"plan": {
+											"contentfulId": "7JMDjiexzE2evvzrTjly8l",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Pro Plan",
+											"name": "Pro",
+											"description": "For professional websites that aren't business-critical.",
+											"pricingDescription": "Billed monthly",
+											"price": 20,
+											"currency": "$",
+											"customPricingText": "$20/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "1tpzRIsizHbptz2ikcz4rg",
+										"value": true,
+										"plan": {
+											"contentfulId": "X0mi2lABGJXFQqE4wieTW",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Business Plan",
+											"name": "Business",
+											"description": "For small businesses operating online.",
+											"pricingDescription": "Billed monthly",
+											"price": 200,
+											"currency": "$",
+											"customPricingText": "$200/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "4rkJhkSWESDGSvy7oPRoc1",
+										"value": true,
+										"plan": {
+											"contentfulId": "9KE9tgEmXrKuduOkp2NKd",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Enterprise Plan",
+											"name": "Enterprise",
+											"description": "For mission-critical applications that are core to your business.",
+											"pricingDescription": "Billed annually",
+											"price": null,
+											"currency": null,
+											"customPricingText": "Custom",
+											"billingCycle": null
+										}
+									}
+								]
+							},
+							{
+								"contentfulId": "2JNiOkngmNt3xcLqYNXpqn",
+								"contentTypeId": "planElementFeatures",
+								"name": "Accelerated Mobile Pages",
+								"description": "Mirage automatically optimizes image loading through virtualized and lazyloaded images. It detects the browser type of a visitor and optimizes performance for the particular device, improving the performance of images on a mobile connection.",
+								"planValues": [
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "5r8w9cpz668uCMz21Seas7",
+										"value": false,
+										"plan": {
+											"contentfulId": "4J2b292gM2Io6Xb2UjbsLo",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Free Plan",
+											"name": "Free",
+											"description": "For personal or hobby projects that aren't business-critical.",
+											"pricingDescription": "Add-ons billed monthly",
+											"price": 0,
+											"currency": "$",
+											"customPricingText": "$0/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "59cQKef650iXJ9S2obyStm",
+										"value": true,
+										"plan": {
+											"contentfulId": "7JMDjiexzE2evvzrTjly8l",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Pro Plan",
+											"name": "Pro",
+											"description": "For professional websites that aren't business-critical.",
+											"pricingDescription": "Billed monthly",
+											"price": 20,
+											"currency": "$",
+											"customPricingText": "$20/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "2XZhsJZgD4R5Kq0fvTci2",
+										"value": true,
+										"plan": {
+											"contentfulId": "X0mi2lABGJXFQqE4wieTW",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Business Plan",
+											"name": "Business",
+											"description": "For small businesses operating online.",
+											"pricingDescription": "Billed monthly",
+											"price": 200,
+											"currency": "$",
+											"customPricingText": "$200/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "XB1ZTccZ5gmACSAJYLIhH",
+										"value": true,
+										"plan": {
+											"contentfulId": "9KE9tgEmXrKuduOkp2NKd",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Enterprise Plan",
+											"name": "Enterprise",
+											"description": "For mission-critical applications that are core to your business.",
+											"pricingDescription": "Billed annually",
+											"price": null,
+											"currency": null,
+											"customPricingText": "Custom",
+											"billingCycle": null
+										}
+									}
+								]
+							},
+							{
+								"contentfulId": "JwvDx4vkLdQwuQrJnHaRM",
+								"contentTypeId": "planElementFeatures",
+								"name": "Uptime SLA",
+								"description": null,
+								"planValues": [
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "6z5FBtTuaL3NDrJoa6G069",
+										"value": false,
+										"plan": {
+											"contentfulId": "4J2b292gM2Io6Xb2UjbsLo",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Free Plan",
+											"name": "Free",
+											"description": "For personal or hobby projects that aren't business-critical.",
+											"pricingDescription": "Add-ons billed monthly",
+											"price": 0,
+											"currency": "$",
+											"customPricingText": "$0/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "34GfCbLQP4PS4J5bDTJWxE",
+										"value": false,
+										"plan": {
+											"contentfulId": "7JMDjiexzE2evvzrTjly8l",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Pro Plan",
+											"name": "Pro",
+											"description": "For professional websites that aren't business-critical.",
+											"pricingDescription": "Billed monthly",
+											"price": 20,
+											"currency": "$",
+											"customPricingText": "$20/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueText",
+										"contentTypeId": "planElementFeatureValueText",
+										"contentfulId": "6XxWubgAisjWbebXTZu7Cb",
+										"textValue": "100%",
+										"plan": {
+											"contentfulId": "X0mi2lABGJXFQqE4wieTW",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Business Plan",
+											"name": "Business",
+											"description": "For small businesses operating online.",
+											"pricingDescription": "Billed monthly",
+											"price": 200,
+											"currency": "$",
+											"customPricingText": "$200/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueText",
+										"contentTypeId": "planElementFeatureValueText",
+										"contentfulId": "1ct4o29VJ1ArtlShlk8T1v",
+										"textValue": "100%",
+										"plan": {
+											"contentfulId": "9KE9tgEmXrKuduOkp2NKd",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Enterprise Plan",
+											"name": "Enterprise",
+											"description": "For mission-critical applications that are core to your business.",
+											"pricingDescription": "Billed annually",
+											"price": null,
+											"currency": null,
+											"customPricingText": "Custom",
+											"billingCycle": null
+										}
+									}
+								]
+							},
+							{
+								"contentfulId": "zUX5gewcszapkgmS0x87A",
+								"contentTypeId": "planElementFeatures",
+								"name": "Network Prioritization",
+								"description": null,
+								"planValues": [
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "Kwd2QqBzbqbR3aCxqEY7N",
+										"value": false,
+										"plan": {
+											"contentfulId": "4J2b292gM2Io6Xb2UjbsLo",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Free Plan",
+											"name": "Free",
+											"description": "For personal or hobby projects that aren't business-critical.",
+											"pricingDescription": "Add-ons billed monthly",
+											"price": 0,
+											"currency": "$",
+											"customPricingText": "$0/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "1iQlD62m7tegMtFCWn3nqt",
+										"value": false,
+										"plan": {
+											"contentfulId": "7JMDjiexzE2evvzrTjly8l",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Pro Plan",
+											"name": "Pro",
+											"description": "For professional websites that aren't business-critical.",
+											"pricingDescription": "Billed monthly",
+											"price": 20,
+											"currency": "$",
+											"customPricingText": "$20/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "7bWs9hFEKdDO83WexjIjAU",
+										"value": false,
+										"plan": {
+											"contentfulId": "X0mi2lABGJXFQqE4wieTW",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Business Plan",
+											"name": "Business",
+											"description": "For small businesses operating online.",
+											"pricingDescription": "Billed monthly",
+											"price": 200,
+											"currency": "$",
+											"customPricingText": "$200/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "2b3HV86jnWwsv9rsHVqREh",
+										"value": true,
+										"plan": {
+											"contentfulId": "9KE9tgEmXrKuduOkp2NKd",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Enterprise Plan",
+											"name": "Enterprise",
+											"description": "For mission-critical applications that are core to your business.",
+											"pricingDescription": "Billed annually",
+											"price": null,
+											"currency": null,
+											"customPricingText": "Custom",
+											"billingCycle": null
+										}
+									}
+								]
+							},
+							{
+								"contentfulId": "72wRpCz34uIOBF97C63LuE",
+								"contentTypeId": "planElementFeatures",
+								"name": "Bot Mitigation",
+								"description": "Manage good and bad bots in real-time with speed and accuracy by harnessing the data from the millions of Internet properties on Cloudflare.",
+								"planValues": [
+									{
+										"__typename": "planElementFeatureValueText",
+										"contentTypeId": "planElementFeatureValueText",
+										"contentfulId": "50QkfuSTjPWuDMGPHtsSnS",
+										"textValue": "Simple bots",
+										"plan": {
+											"contentfulId": "4J2b292gM2Io6Xb2UjbsLo",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Free Plan",
+											"name": "Free",
+											"description": "For personal or hobby projects that aren't business-critical.",
+											"pricingDescription": "Add-ons billed monthly",
+											"price": 0,
+											"currency": "$",
+											"customPricingText": "$0/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueText",
+										"contentTypeId": "planElementFeatureValueText",
+										"contentfulId": "3F9wsV7pX5Tid2JkN0mObT",
+										"textValue": "More advanced bots",
+										"plan": {
+											"contentfulId": "7JMDjiexzE2evvzrTjly8l",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Pro Plan",
+											"name": "Pro",
+											"description": "For professional websites that aren't business-critical.",
+											"pricingDescription": "Billed monthly",
+											"price": 20,
+											"currency": "$",
+											"customPricingText": "$20/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueText",
+										"contentTypeId": "planElementFeatureValueText",
+										"contentfulId": "4FiPaZHyGdesfUa2Q0jTDB",
+										"textValue": "Sophisticated bots and basic bot analytics",
+										"plan": {
+											"contentfulId": "X0mi2lABGJXFQqE4wieTW",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Business Plan",
+											"name": "Business",
+											"description": "For small businesses operating online.",
+											"pricingDescription": "Billed monthly",
+											"price": 200,
+											"currency": "$",
+											"customPricingText": "$200/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueText",
+										"contentTypeId": "planElementFeatureValueText",
+										"contentfulId": "DB2zmgwgdlpK3YQgub66I",
+										"textValue": "All bots, anomaly detection, custom CAPTCHAs & threat response, advanced bot analytics, and more",
+										"plan": {
+											"contentfulId": "9KE9tgEmXrKuduOkp2NKd",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Enterprise Plan",
+											"name": "Enterprise",
+											"description": "For mission-critical applications that are core to your business.",
+											"pricingDescription": "Billed annually",
+											"price": null,
+											"currency": null,
+											"customPricingText": "Custom",
+											"billingCycle": null
+										}
+									}
+								]
+							}
+						],
+						"planFeaturesGroup": null
 					},
 					{
 						"__typename": "bladeEnterpriseForm",
@@ -1954,53 +1636,18 @@
 							}
 						],
 						"htmlId": "ent-demo-form"
+					},
+					{
+						"__typename": "bladeHtml",
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "2dj6BeZWZcPqhPJFseWfO8",
+						"htmlContent": "<div class=\"pt4 pb4\" style=\"padding-top:100px;\">\n<div class=\"container\">\n<div class=\"row\">\n<div class=\"col-lg-12\">\n  <p class=\"gray1 f2 fw4 lh-6 mb3 mt0\"><strong>Analyst Reports & Sources:</strong>\n<ol style=\"font-size:12px\">\n<li>The Forrester Wave™: DDoS Mitigation Solutions, Q1 2021 - <a href=\"https://www.cloudflare.com/forrester-wave-ddos-mitigation-2021/\" target=\"_blank\">Register for report </a></li>\n<li>Gartner Peer Insights 'Voice of the Customer': Global CDN, April 28, 2022 - <a href=\"https://www.gartner.com/document/4014175\" target=\"_blank\">View report</a></li>\n<li>Gartner Peer Insights 'Voice of the Customer': Web Application and API Protection, March 22, 2022 - <a href=\"https://www.gartner.com/document/4012732\" target=\"_blank\">View report</a></li>\n<li>Gartner: Market Guide for Zero Trust Network Access, February 2022 - <a href=\"https://www.gartner.com/document/4011640\" target=\"_blank\">View report</a></li>\n<li>2022 IDC MarketScape for Worldwide Commercial Content Delivery Network Services 2022 Vendor Assessment (doc #US47652821, March 2022) - <a href=\"https://www.cloudflare.com/lp/idc-worldwide-cdn-marketscape/\" target=\"_blank\">Register for report</a></li>\n  </ol>\n  <span style=\"font-size:12px\">GARTNER is a registered trademark and service mark, and PEER INSIGHTS is a trademark and service mark, of Gartner, Inc. and/or its affiliates in the U.S. and internationally and are used herein with permission. All rights reserved. Gartner Peer Insights content consists of the opinions of individual end users based on their own experiences with the vendors listed on the platform, should not be construed as statements of fact, nor do they represent the views of Gartner or its affiliates. Gartner does not endorse any vendor, product or service depicted in this content nor makes any warranties, expressed or implied, with respect to this content, about its accuracy or completeness, including any warranties of merchantability or fitness for a particular purpose.</span>\n </p>\n\n</div>\n</div>\n</div>\n</div>",
+						"htmlId": null
 					}
 				],
 				"noindex": false,
 				"enableZendeskChat": null,
-				"formModal": [
-					{
-						"contentTypeId": "formModal",
-						"contentfulId": "BvHpzhapgeEbAOJcnDwbB",
-						"modalName": "SSL - Product Page: Form Modal",
-						"modalId": "ssl-product-page-contact-us",
-						"modalType": "single-form",
-						"marketoForm": {
-							"contentTypeId": "marketoEmbeddedForm",
-							"contentfulId": "1Dvs5g6AQJ2drpVWniRynq",
-							"bladeName": "SSL - Product Page: Marketo Form (1341)",
-							"backgroundColor": "white",
-							"marketoFormId": 1341,
-							"marketoFormLeadSource": "Inbound - Web Form",
-							"marketoFormLeadSourceDetail": "Contact Us Cloudflare SSL",
-							"marketoFormHeaderText": null,
-							"marketoFormDefaultComment": null,
-							"showCommentBox": true,
-							"marketoFormThankYouText": null,
-							"marketoFormCustomSuccessMessage": null,
-							"marketoFormPdfDownload": null,
-							"marketoFormPdfDownloadI18n": null,
-							"marketoFormAssetDownloadButtonText": null,
-							"marketoFormSuccessRedirectUrl": null,
-							"sendAdRoll": null,
-							"meta_adRollCustomSegment": null,
-							"enableSandbox": null,
-							"marketoFormSubmitButtonText": null,
-							"marketoFormSubmitButtonColor": null,
-							"enableEmailVerification": null,
-							"disableEnterpriseEmailNotification": null,
-							"enableRingout": null
-						},
-						"salesforceForm": null,
-						"title": "Contact Sales",
-						"regularCopy": "Cloudflare Free SSL/TLS",
-						"splitFormDefaultTab": null,
-						"selfServeTabText": null,
-						"selfServeCopy": null,
-						"enterpriseTabText": null,
-						"enterpriseCopy": null
-					}
-				],
+				"formModal": null,
 				"keepHashUrlSyncedWithScrollPosition": null
 			},
 			"site": {
