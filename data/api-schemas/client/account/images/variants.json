@@ -13,7 +13,7 @@
 			"cfOwnership": "images",
 			"html_id": "cloudflare-images-variants-create-a-variant",
 			"uri": "accounts/:account_identifier/images/v1/variants",
-			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/images/v1/variants\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"id\":\"name-of-the-variant\",\"options\":{\"fit\":\"scale-down\",\"metadata\":\"none\",\"width\":1366,\"height\":768},\"neverRequireSignedURLs\":true}'",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/images/v1/variants\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"id\":\"hero\",\"options\":{\"fit\":\"scale-down\",\"metadata\":\"none\",\"width\":1366,\"height\":768},\"neverRequireSignedURLs\":true}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -21,11 +21,12 @@
 				"all_props": {
 					"id": {
 						"type": "string",
-						"example": "\"name-of-the-variant\"",
+						"example": "\"hero\"",
+						"pattern": "^[a-zA-Z0-9]$",
+						"maxLength": 99,
 						"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 						"description": "API item identifier tag",
-						"maxLength": 32,
 						"readOnly": true
 					},
 					"options": {
@@ -90,9 +91,9 @@
 					"neverRequireSignedURLs"
 				],
 				"objects": [],
-				"example": "{\n  \"id\": \"name-of-the-variant\",\n  \"options\": {\n    \"fit\": \"scale-down\",\n    \"metadata\": \"none\",\n    \"width\": 1366,\n    \"height\": 768\n  },\n  \"neverRequireSignedURLs\": true\n}"
+				"example": "{\n  \"id\": \"hero\",\n  \"options\": {\n    \"fit\": \"scale-down\",\n    \"metadata\": \"none\",\n    \"width\": 1366,\n    \"height\": 768\n  },\n  \"neverRequireSignedURLs\": true\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"name-of-the-variant\",\n    \"options\": {\n      \"fit\": \"scale-down\",\n      \"metadata\": \"none\",\n      \"width\": 1366,\n      \"height\": 768\n    },\n    \"neverRequireSignedURLs\": true\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"variant\": {\n      \"id\": \"hero\",\n      \"options\": {\n        \"fit\": \"scale-down\",\n        \"metadata\": \"none\",\n        \"width\": 1366,\n        \"height\": 768\n      },\n      \"neverRequireSignedURLs\": true\n    }\n  }\n}"
 		},
 		{
 			"title": "List variants",
@@ -101,10 +102,31 @@
 			"href": "accounts/{#/definitions/account_identifier}/images/v1/variants",
 			"method": "GET",
 			"cfOwnership": "images",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
 			"html_id": "cloudflare-images-variants-list-variants",
 			"uri": "accounts/:account_identifier/images/v1/variants",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/images/v1/variants\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"variants\": {\n    \"name-of-the-variant\": {\n      \"id\": \"name-of-the-variant\",\n      \"options\": {\n        \"fit\": \"scale-down\",\n        \"metadata\": \"none\",\n        \"width\": 1366,\n        \"height\": 768\n      },\n      \"neverRequireSignedURLs\": true\n    }\n  }\n}"
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/images/v1/variants\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"variants\": {\n      \"hero\": {\n        \"id\": \"hero\",\n        \"options\": {\n          \"fit\": \"scale-down\",\n          \"metadata\": \"none\",\n          \"width\": 1366,\n          \"height\": 768\n        },\n        \"neverRequireSignedURLs\": true\n      }\n    }\n  }\n}"
 		},
 		{
 			"title": "Variant details",
@@ -113,10 +135,31 @@
 			"href": "accounts/{#/definitions/account_identifier}/images/v1/variants/{#/definitions/identifier}",
 			"cfOwnership": "images",
 			"method": "GET",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
 			"html_id": "cloudflare-images-variants-variant-details",
 			"uri": "accounts/:account_identifier/images/v1/variants/:identifier",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/images/v1/variants/name-of-the-variant\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"variant\": {\n    \"id\": \"name-of-the-variant\",\n    \"options\": {\n      \"fit\": \"scale-down\",\n      \"metadata\": \"none\",\n      \"width\": 1366,\n      \"height\": 768\n    },\n    \"neverRequireSignedURLs\": true\n  }\n}"
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/images/v1/variants/hero\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"variant\": {\n      \"id\": \"hero\",\n      \"options\": {\n        \"fit\": \"scale-down\",\n        \"metadata\": \"none\",\n        \"width\": 1366,\n        \"height\": 768\n      },\n      \"neverRequireSignedURLs\": true\n    }\n  }\n}"
 		},
 		{
 			"title": "Update a variant",
@@ -127,7 +170,7 @@
 			"cfOwnership": "images",
 			"html_id": "cloudflare-images-variants-update-a-variant",
 			"uri": "accounts/:account_identifier/images/v1/variants/:identifier",
-			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/images/v1/variants/name-of-the-variant\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"options\":{\"fit\":\"scale-down\",\"metadata\":\"none\",\"width\":1366,\"height\":768},\"neverRequireSignedURLs\":true}'",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/images/v1/variants/hero\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"options\":{\"fit\":\"scale-down\",\"metadata\":\"none\",\"width\":1366,\"height\":768},\"neverRequireSignedURLs\":true}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -196,7 +239,7 @@
 				"objects": [],
 				"example": "{\n  \"options\": {\n    \"fit\": \"scale-down\",\n    \"metadata\": \"none\",\n    \"width\": 1366,\n    \"height\": 768\n  },\n  \"neverRequireSignedURLs\": true\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"name-of-the-variant\",\n    \"options\": {\n      \"fit\": \"scale-down\",\n      \"metadata\": \"none\",\n      \"width\": 1366,\n      \"height\": 768\n    },\n    \"neverRequireSignedURLs\": true\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"variant\": {\n      \"id\": \"hero\",\n      \"options\": {\n        \"fit\": \"scale-down\",\n        \"metadata\": \"none\",\n        \"width\": 1366,\n        \"height\": 768\n      },\n      \"neverRequireSignedURLs\": true\n    }\n  }\n}"
 		},
 		{
 			"title": "Delete a variant",
@@ -205,10 +248,31 @@
 			"href": "accounts/{#/definitions/account_identifier}/images/v1/variants/{#/definitions/identifier}",
 			"cfOwnership": "images",
 			"method": "DELETE",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
 			"html_id": "cloudflare-images-variants-delete-a-variant",
 			"uri": "accounts/:account_identifier/images/v1/variants/:identifier",
-			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/images/v1/variants/name-of-the-variant\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": \"\"\n}"
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/images/v1/variants/hero\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {}\n}"
 		}
 	],
 	"html_id": "cloudflare-images-variants",
@@ -219,11 +283,12 @@
 		"all_props": {
 			"id": {
 				"type": "string",
-				"example": "\"name-of-the-variant\"",
+				"example": "\"hero\"",
+				"pattern": "^[a-zA-Z0-9]$",
+				"maxLength": 99,
 				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 				"description": "API item identifier tag",
-				"maxLength": 32,
 				"readOnly": true
 			},
 			"options": {
@@ -287,7 +352,7 @@
 			"neverRequireSignedURLs"
 		],
 		"objects": [],
-		"example": "{\n  \"id\": \"name-of-the-variant\",\n  \"options\": {\n    \"fit\": \"scale-down\",\n    \"metadata\": \"none\",\n    \"width\": 1366,\n    \"height\": 768\n  },\n  \"neverRequireSignedURLs\": true\n}",
+		"example": "{\n  \"id\": \"hero\",\n  \"options\": {\n    \"fit\": \"scale-down\",\n    \"metadata\": \"none\",\n    \"width\": 1366,\n    \"height\": 768\n  },\n  \"neverRequireSignedURLs\": true\n}",
 		"title": "Cloudflare Images Variants",
 		"description": "Cloudflare Images supports variants that specify different image sizes for different use cases. You can configure up to 20 variants."
 	}

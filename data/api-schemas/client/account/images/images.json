@@ -21,9 +21,11 @@
 			"cfOwnership": "images",
 			"encType": "multipart/form-data",
 			"cfRequestHeaders": {
+				"type": "object",
 				"required": [
 					"X-Auth-Email",
-					"X-Auth-Key"
+					"X-Auth-Key",
+					"Content-Type"
 				],
 				"properties": {
 					"X-Auth-Email": {
@@ -37,12 +39,19 @@
 						"minLength": 45,
 						"maxLength": 45,
 						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					},
+					"Content-Type": {
+						"type": "string",
+						"enum": [
+							"multipart/form-data"
+						],
+						"example": "multipart/form-data"
 					}
 				}
 			},
 			"html_id": "cloudflare-images-upload-an-image-using-a-single-http-request",
 			"uri": "accounts/:account_identifier/images/v1",
-			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/images/v1\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     --form 'file=@/Users/kyle/Desktop/logo.png' \\\n     --form 'requireSignedURLs=true' \\\n     --form 'metadata={\"meta\": \"metaID\"}' \\\n     --form 'url=https://example.com/path/to/image.jpeg'",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/images/v1\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: multipart/form-data\" \\\n     --form 'file=@/Users/kyle/Desktop/logo.png' \\\n     --form 'requireSignedURLs=true' \\\n     --form 'metadata={\"key\": \"value\"}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -61,14 +70,8 @@
 					},
 					"metadata": {
 						"type": "object",
-						"example": "\"{\\\"meta\\\": \\\"metaID\\\"}\"",
-						"description": "User modifyable key-value store. Can use used for keeping references to another system of record for managing images."
-					},
-					"url": {
-						"type": "string",
-						"example": "\"https://example.com/path/to/image.jpeg\"",
-						"description": "A URL to fetch an image from origin. Mutually exclusive with `file` parameter.",
-						"default": false
+						"example": "\"{\\\"key\\\": \\\"value\\\"}\"",
+						"description": "User modifiable key-value store. Can use used for keeping references to another system of record for managing images."
 					}
 				},
 				"required_props": [
@@ -76,13 +79,86 @@
 				],
 				"optional_props": [
 					"requireSignedURLs",
-					"metadata",
-					"url"
+					"metadata"
 				],
 				"objects": [],
-				"example": "{\n  \"file\": \"@/Users/kyle/Desktop/logo.png\",\n  \"requireSignedURLs\": true,\n  \"metadata\": \"{\\\"meta\\\": \\\"metaID\\\"}\",\n  \"url\": \"https://example.com/path/to/image.jpeg\"\n}"
+				"example": "{\n  \"file\": \"@/Users/kyle/Desktop/logo.png\",\n  \"requireSignedURLs\": true,\n  \"metadata\": \"{\\\"key\\\": \\\"value\\\"}\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"ZxR0pLaXRldlBtaFhhO2FiZGVnaA\",\n      \"filename\": \"avatar.png\",\n      \"metadata\": {\n        \"meta\": \"metaID\"\n      },\n      \"requireSignedURLs\": true,\n      \"variants\": {\n        \"thumbnail\": \"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/thumbnail\",\n        \"hero\": \"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/hero\",\n        \"original\": \"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/original\"\n      },\n      \"uploaded\": \"2014-01-02T02:20:00Z\"\n    }\n  ]\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"107b9558-dd06-4bbd-5fef-9c2c16bb7900\",\n    \"filename\": \"logo.png\",\n    \"metadata\": {\n      \"key\": \"value\"\n    },\n    \"requireSignedURLs\": true,\n    \"variants\": [\n      \"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/thumbnail\",\n      \"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/hero\",\n      \"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/original\"\n    ],\n    \"uploaded\": \"2014-01-02T02:20:00Z\"\n  }\n}"
+		},
+		{
+			"title": "Upload an image via URL",
+			"description": "Upload an image via URL with up to 10 Megabytes using a single HTTP POST (multipart/form-data) request.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/images/v1",
+			"method": "POST",
+			"cfOwnership": "images",
+			"encType": "multipart/form-data",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key",
+					"Content-Type"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					},
+					"Content-Type": {
+						"type": "string",
+						"enum": [
+							"multipart/form-data"
+						],
+						"example": "multipart/form-data"
+					}
+				}
+			},
+			"html_id": "cloudflare-images-upload-an-image-via-url",
+			"uri": "accounts/:account_identifier/images/v1",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/images/v1\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: multipart/form-data\" \\\n     --form 'url=https://example.com/path/to/logo.png' \\\n     --form 'requireSignedURLs=true' \\\n     --form 'metadata={\"key\": \"value\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"url": {
+						"type": "string",
+						"example": "\"https://example.com/path/to/logo.png\"",
+						"description": "A URL to fetch an image from origin."
+					},
+					"requireSignedURLs": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Indicates whether the image requires a signature token for the access.",
+						"default": false
+					},
+					"metadata": {
+						"type": "object",
+						"example": "\"{\\\"key\\\": \\\"value\\\"}\"",
+						"description": "User modifiable key-value store. Can use used for keeping references to another system of record for managing images."
+					}
+				},
+				"required_props": [
+					"url"
+				],
+				"optional_props": [
+					"requireSignedURLs",
+					"metadata"
+				],
+				"objects": [],
+				"example": "{\n  \"url\": \"https://example.com/path/to/logo.png\",\n  \"requireSignedURLs\": true,\n  \"metadata\": \"{\\\"key\\\": \\\"value\\\"}\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"107b9558-dd06-4bbd-5fef-9c2c16bb7900\",\n    \"filename\": \"logo.png\",\n    \"metadata\": {\n      \"key\": \"value\"\n    },\n    \"requireSignedURLs\": true,\n    \"variants\": [\n      \"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/thumbnail\",\n      \"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/hero\",\n      \"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/original\"\n    ],\n    \"uploaded\": \"2014-01-02T02:20:00Z\"\n  }\n}"
 		},
 		{
 			"title": "Update image",
@@ -91,9 +167,38 @@
 			"href": "accounts/{#/definitions/account_identifier}/images/v1/{#/definitions/identifier}",
 			"method": "PATCH",
 			"cfOwnership": "images",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key",
+					"Content-Type"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					},
+					"Content-Type": {
+						"type": "string",
+						"enum": [
+							"application/json"
+						],
+						"example": "application/json"
+					}
+				}
+			},
 			"html_id": "cloudflare-images-update-image",
 			"uri": "accounts/:account_identifier/images/v1/:identifier",
-			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/images/v1/ZxR0pLaXRldlBtaFhhO2FiZGVnaA\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"requireSignedURLs\":true,\"metadata\":\"{\\\"meta\\\": \\\"metaID\\\"}\"}'",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/images/v1/107b9558-dd06-4bbd-5fef-9c2c16bb7900\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"requireSignedURLs\":true,\"metadata\":\"{\\\"key\\\": \\\"value\\\"}\"}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -106,7 +211,7 @@
 					},
 					"metadata": {
 						"type": "object",
-						"example": "\"{\\\"meta\\\": \\\"metaID\\\"}\"",
+						"example": "\"{\\\"key\\\": \\\"value\\\"}\"",
 						"description": "User modifiable key-value store. Can be used for keeping references to another system of record for managing images. No change if not specified."
 					}
 				},
@@ -116,9 +221,9 @@
 					"metadata"
 				],
 				"objects": [],
-				"example": "{\n  \"requireSignedURLs\": true,\n  \"metadata\": \"{\\\"meta\\\": \\\"metaID\\\"}\"\n}"
+				"example": "{\n  \"requireSignedURLs\": true,\n  \"metadata\": \"{\\\"key\\\": \\\"value\\\"}\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"ZxR0pLaXRldlBtaFhhO2FiZGVnaA\",\n    \"filename\": \"avatar.png\",\n    \"metadata\": {\n      \"meta\": \"metaID\"\n    },\n    \"requireSignedURLs\": true,\n    \"variants\": {\n      \"thumbnail\": \"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/thumbnail\",\n      \"hero\": \"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/hero\",\n      \"original\": \"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/original\"\n    },\n    \"uploaded\": \"2014-01-02T02:20:00Z\"\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"107b9558-dd06-4bbd-5fef-9c2c16bb7900\",\n    \"filename\": \"logo.png\",\n    \"metadata\": {\n      \"key\": \"value\"\n    },\n    \"requireSignedURLs\": true,\n    \"variants\": [\n      \"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/thumbnail\",\n      \"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/hero\",\n      \"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/original\"\n    ],\n    \"uploaded\": \"2014-01-02T02:20:00Z\"\n  }\n}"
 		},
 		{
 			"title": "Create authenticated direct upload URL",
@@ -127,6 +232,35 @@
 			"href": "accounts/{#/definitions/account_identifier}/images/v1/direct_upload",
 			"method": "POST",
 			"cfOwnership": "images",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key",
+					"Content-Type"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					},
+					"Content-Type": {
+						"type": "string",
+						"enum": [
+							"application/json"
+						],
+						"example": "application/json"
+					}
+				}
+			},
 			"cfDeprecation": {
 				"id": "direct_upload_v1_deprecation",
 				"description": "Use direct_upload v2 instead: https://api.cloudflare.com/#cloudflare-images-create-authenticated-direct-upload-url-v2. It allows you to control metadata, access policy, and returns the same image ID an image will be accessible with.",
@@ -156,7 +290,7 @@
 				"objects": [],
 				"example": "{\n  \"expiry\": \"2021-01-02T02:20:00Z\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"uploadURL\": \"https://upload.imagedelivery.net/e22e9e6b-c02b-42fd-c405-6c32af5fe623\",\n    \"id\": \"ZxR0pLaXRldlBtaFhhO2FiZGVnaA\"\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"uploadURL\": \"https://upload.imagedelivery.net/e22e9e6b-c02b-42fd-c405-6c32af5fe623\",\n    \"id\": \"107b9558-dd06-4bbd-5fef-9c2c16bb7900\"\n  }\n}"
 		},
 		{
 			"title": "Create authenticated direct upload URL V2",
@@ -165,9 +299,39 @@
 			"href": "accounts/{#/definitions/account_identifier}/images/v2/direct_upload",
 			"method": "POST",
 			"cfOwnership": "images",
+			"encType": "multipart/form-data",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key",
+					"Content-Type"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					},
+					"Content-Type": {
+						"type": "string",
+						"enum": [
+							"multipart/form-data"
+						],
+						"example": "multipart/form-data"
+					}
+				}
+			},
 			"html_id": "cloudflare-images-create-authenticated-direct-upload-url-v2",
 			"uri": "accounts/:account_identifier/images/v2/direct_upload",
-			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/images/v2/direct_upload\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"requireSignedURLs\":true,\"metadata\":\"{\\\"meta\\\": \\\"metaID\\\"}\",\"expiry\":\"2021-01-02T02:20:00Z\"}'",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/images/v2/direct_upload\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: multipart/form-data\" \\\n     --form 'requireSignedURLs=true' \\\n     --form 'metadata={\"key\": \"value\"}' \\\n     --form 'expiry=2021-01-02T02:20:00Z'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -181,7 +345,7 @@
 					},
 					"metadata": {
 						"type": "object",
-						"example": "\"{\\\"meta\\\": \\\"metaID\\\"}\"",
+						"example": "\"{\\\"key\\\": \\\"value\\\"}\"",
 						"description": "User modifiable key-value store. Can be used for keeping references to another system of record, for managing images."
 					},
 					"expiry": {
@@ -199,7 +363,7 @@
 					"expiry"
 				],
 				"objects": [],
-				"example": "{\n  \"requireSignedURLs\": true,\n  \"metadata\": \"{\\\"meta\\\": \\\"metaID\\\"}\",\n  \"expiry\": \"2021-01-02T02:20:00Z\"\n}"
+				"example": "{\n  \"requireSignedURLs\": true,\n  \"metadata\": \"{\\\"key\\\": \\\"value\\\"}\",\n  \"expiry\": \"2021-01-02T02:20:00Z\"\n}"
 			},
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"uploadURL\": \"https://upload.imagedelivery.net/FxUufywByo0m2v3xhKSiU8/e22e9e6b-c02b-42fd-c405-6c32af5fe600\",\n    \"id\": \"e22e9e6b-c02b-42fd-c405-6c32af5fe600\"\n  }\n}"
 		},
@@ -210,9 +374,30 @@
 			"href": "accounts/{#/definitions/account_identifier}/images/v1",
 			"method": "GET",
 			"cfOwnership": "images",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
 			"html_id": "cloudflare-images-list-images",
 			"uri": "accounts/:account_identifier/images/v1",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/images/v1?page=1&per_page=50\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/images/v1?page=1&per_page=50\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -242,7 +427,7 @@
 				"objects": [],
 				"example": "{\n  \"page\": 1,\n  \"per_page\": 50\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"ZxR0pLaXRldlBtaFhhO2FiZGVnaA\",\n      \"filename\": \"avatar.png\",\n      \"metadata\": {\n        \"meta\": \"metaID\"\n      },\n      \"requireSignedURLs\": true,\n      \"variants\": {\n        \"thumbnail\": \"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/thumbnail\",\n        \"hero\": \"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/hero\",\n        \"original\": \"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/original\"\n      },\n      \"uploaded\": \"2014-01-02T02:20:00Z\"\n    }\n  ]\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"107b9558-dd06-4bbd-5fef-9c2c16bb7900\",\n      \"filename\": \"logo.png\",\n      \"metadata\": {\n        \"key\": \"value\"\n      },\n      \"requireSignedURLs\": true,\n      \"variants\": [\n        \"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/thumbnail\",\n        \"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/hero\",\n        \"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/original\"\n      ],\n      \"uploaded\": \"2014-01-02T02:20:00Z\"\n    }\n  ]\n}"
 		},
 		{
 			"title": "Image details",
@@ -251,10 +436,39 @@
 			"href": "accounts/{#/definitions/account_identifier}/images/v1/{#/definitions/identifier}",
 			"method": "GET",
 			"cfOwnership": "images",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key",
+					"Content-Type"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					},
+					"Content-Type": {
+						"type": "string",
+						"enum": [
+							"application/json"
+						],
+						"example": "application/json"
+					}
+				}
+			},
 			"html_id": "cloudflare-images-image-details",
 			"uri": "accounts/:account_identifier/images/v1/:identifier",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/images/v1/ZxR0pLaXRldlBtaFhhO2FiZGVnaA\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"ZxR0pLaXRldlBtaFhhO2FiZGVnaA\",\n    \"filename\": \"avatar.png\",\n    \"metadata\": {\n      \"meta\": \"metaID\"\n    },\n    \"requireSignedURLs\": true,\n    \"variants\": {\n      \"thumbnail\": \"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/thumbnail\",\n      \"hero\": \"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/hero\",\n      \"original\": \"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/original\"\n    },\n    \"uploaded\": \"2014-01-02T02:20:00Z\"\n  }\n}"
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/images/v1/107b9558-dd06-4bbd-5fef-9c2c16bb7900\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"107b9558-dd06-4bbd-5fef-9c2c16bb7900\",\n    \"filename\": \"logo.png\",\n    \"metadata\": {\n      \"key\": \"value\"\n    },\n    \"requireSignedURLs\": true,\n    \"variants\": [\n      \"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/thumbnail\",\n      \"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/hero\",\n      \"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/original\"\n    ],\n    \"uploaded\": \"2014-01-02T02:20:00Z\"\n  }\n}"
 		},
 		{
 			"title": "Base image",
@@ -265,6 +479,7 @@
 			"cfOwnership": "images",
 			"mediaType": "image/*,application/octet-stream",
 			"cfRequestHeaders": {
+				"type": "object",
 				"required": [
 					"X-Auth-Email",
 					"X-Auth-Key"
@@ -286,7 +501,7 @@
 			},
 			"html_id": "cloudflare-images-base-image",
 			"uri": "accounts/:account_identifier/images/v1/:identifier/blob",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/images/v1/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/blob\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/images/v1/107b9558-dd06-4bbd-5fef-9c2c16bb7900/blob\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
 			"response": "<image blob data>"
 		},
 		{
@@ -296,9 +511,31 @@
 			"href": "accounts/{#/definitions/account_identifier}/images/v1/{#/definitions/identifier}",
 			"cfOwnership": "images",
 			"method": "DELETE",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					}
+				}
+			},
 			"html_id": "cloudflare-images-delete-image",
 			"uri": "accounts/:account_identifier/images/v1/:identifier",
-			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/images/v1/ZxR0pLaXRldlBtaFhhO2FiZGVnaA\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\""
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/images/v1/107b9558-dd06-4bbd-5fef-9c2c16bb7900\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {}\n}"
 		},
 		{
 			"title": "Images usage statistics",
@@ -307,6 +544,35 @@
 			"href": "accounts/{#/definitions/account_identifier}/images/v1/stats",
 			"method": "GET",
 			"cfOwnership": "images",
+			"cfRequestHeaders": {
+				"type": "object",
+				"required": [
+					"X-Auth-Email",
+					"X-Auth-Key",
+					"Content-Type"
+				],
+				"properties": {
+					"X-Auth-Email": {
+						"description": "Your Cloudflare email",
+						"type": "string",
+						"example": "user@example.com"
+					},
+					"X-Auth-Key": {
+						"description": "Your Cloudflare API key",
+						"type": "string",
+						"minLength": 45,
+						"maxLength": 45,
+						"example": "c2547eb745079dac9320b638f5e225cf483cc5cfdda41"
+					},
+					"Content-Type": {
+						"type": "string",
+						"enum": [
+							"application/json"
+						],
+						"example": "application/json"
+					}
+				}
+			},
 			"html_id": "cloudflare-images-images-usage-statistics",
 			"uri": "accounts/:account_identifier/images/v1/stats",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/images/v1/stats\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
@@ -342,22 +608,22 @@
 		"all_props": {
 			"id": {
 				"type": "string",
-				"example": "\"ZxR0pLaXRldlBtaFhhO2FiZGVnaA\"",
+				"example": "\"107b9558-dd06-4bbd-5fef-9c2c16bb7900\"",
 				"description": "Image unique identifier",
 				"maxLength": 32,
 				"readOnly": true
 			},
 			"filename": {
 				"type": "string",
-				"example": "\"avatar.png\"",
+				"example": "\"logo.png\"",
 				"description": "Image file name",
 				"maxLength": 32,
 				"readOnly": true
 			},
 			"metadata": {
 				"type": "object",
-				"example": "{\n  \"meta\": \"metaID\"\n}",
-				"description": "User modifyable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes."
+				"example": "{\n  \"key\": \"value\"\n}",
+				"description": "User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes."
 			},
 			"requireSignedURLs": {
 				"type": "boolean",
@@ -366,31 +632,34 @@
 				"default": false
 			},
 			"variants": {
-				"example": "{\n  \"thumbnail\": \"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/thumbnail\",\n  \"hero\": \"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/hero\",\n  \"original\": \"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/original\"\n}",
-				"properties": {
-					"thumbnail": {
-						"type": "string",
-						"example": "\"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/thumbnail\"",
-						"description": "URI to thumbnail variant for an image.",
-						"format": "uri",
-						"readOnly": true
-					},
-					"hero": {
-						"type": "string",
-						"example": "\"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/hero\"",
-						"description": "URI to hero variant for an image.",
-						"format": "uri",
-						"readOnly": true
-					},
-					"original": {
-						"type": "string",
-						"example": "\"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/original\"",
-						"description": "URI to original variant for an image.",
-						"format": "uri",
-						"readOnly": true
-					}
-				},
+				"type": "array",
+				"example": "[\n  \"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/thumbnail\",\n  \"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/hero\",\n  \"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/original\"\n]",
 				"description": "Object specifying available variants for an image.",
+				"items": {
+					"anyOf": [
+						{
+							"description": "URI to thumbnail variant for an image.",
+							"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/thumbnail",
+							"format": "uri",
+							"readOnly": true,
+							"type": "string"
+						},
+						{
+							"description": "URI to hero variant for an image.",
+							"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/hero",
+							"format": "uri",
+							"readOnly": true,
+							"type": "string"
+						},
+						{
+							"description": "URI to original variant for an image.",
+							"example": "https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/original",
+							"format": "uri",
+							"readOnly": true,
+							"type": "string"
+						}
+					]
+				},
 				"readOnly": true
 			},
 			"uploaded": {
@@ -411,7 +680,7 @@
 			"uploaded"
 		],
 		"objects": [],
-		"example": "{\n  \"id\": \"ZxR0pLaXRldlBtaFhhO2FiZGVnaA\",\n  \"filename\": \"avatar.png\",\n  \"metadata\": {\n    \"meta\": \"metaID\"\n  },\n  \"requireSignedURLs\": true,\n  \"variants\": {\n    \"thumbnail\": \"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/thumbnail\",\n    \"hero\": \"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/hero\",\n    \"original\": \"https://imagedelivery.net/MTt4OTd0b0w5aj/ZxR0pLaXRldlBtaFhhO2FiZGVnaA/original\"\n  },\n  \"uploaded\": \"2014-01-02T02:20:00Z\"\n}",
+		"example": "{\n  \"id\": \"107b9558-dd06-4bbd-5fef-9c2c16bb7900\",\n  \"filename\": \"logo.png\",\n  \"metadata\": {\n    \"key\": \"value\"\n  },\n  \"requireSignedURLs\": true,\n  \"variants\": [\n    \"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/thumbnail\",\n    \"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/hero\",\n    \"https://imagedelivery.net/MTt4OTd0b0w5aj/107b9558-dd06-4bbd-5fef-9c2c16bb7900/original\"\n  ],\n  \"uploaded\": \"2014-01-02T02:20:00Z\"\n}",
 		"title": "Cloudflare Images",
 		"description": "Upload images to Cloudflare Images for fast image processing and delivery."
 	}

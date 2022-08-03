@@ -14,7 +14,7 @@
 			"html_id": "cloudflare-images-keys-list-signing-keys",
 			"uri": "accounts/:account_identifier/images/v1/keys",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/images/v1/keys\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"name\": \"default\",\n      \"value\": \"Oix0bbNaT8Rge9PuyxUBrjI6zrgnsyJ5=\"\n    }\n  ]\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"keys\": [\n      {\n        \"name\": \"default\",\n        \"value\": \"Oix0bbNaT8Rge9PuyxUBrjI6zrgnsyJ5=\"\n      }\n    ]\n  }\n}"
 		}
 	],
 	"html_id": "cloudflare-images-keys",
