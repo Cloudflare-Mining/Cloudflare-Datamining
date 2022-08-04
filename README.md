@@ -1,6 +1,6 @@
 # Cloudflare Datamining
 
-## Into
+## Intro
 
 This repository mines a lot of publicly available data from Cloudflare, including their customer dashboard, NPM/GitHub repos, marketing site, and more. Automated commits will be made frequently and will show how the data changes over time.
 
