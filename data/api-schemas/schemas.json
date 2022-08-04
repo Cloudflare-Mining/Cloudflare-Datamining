@@ -1607,7 +1607,7 @@
 								],
 								"properties": {
 									"email": {
-										"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1firewall~1access_rules~1rules~1%7Bidentifier%7D/patch/requestBody/content/application~1json/schema/allOf/1/properties/scope/properties/email"
+										"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1email~1routing~1addresses/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/allOf/0/properties/email"
 									},
 									"status": {
 										"enum": [
@@ -1795,7 +1795,7 @@
 														"$ref": "#/paths/~1user/patch/requestBody/content/application~1json/schema/properties/last_name"
 													},
 													"email": {
-														"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1firewall~1access_rules~1rules~1%7Bidentifier%7D/patch/requestBody/content/application~1json/schema/allOf/1/properties/scope/properties/email"
+														"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1email~1routing~1addresses/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/allOf/0/properties/email"
 													},
 													"two_factor_authentication_enabled": {
 														"description": "Whether two-factor authentication is enabled for the user account. This does not apply to API authentication",
@@ -3196,7 +3196,7 @@
 																"nullable": true
 															},
 															"email": {
-																"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1firewall~1access_rules~1rules~1%7Bidentifier%7D/patch/requestBody/content/application~1json/schema/allOf/1/properties/scope/properties/email"
+																"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1email~1routing~1addresses/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/allOf/0/properties/email"
 															},
 															"status": {
 																"enum": [
@@ -5848,7 +5848,7 @@
 																										"nullable": true
 																									},
 																									{
-																										"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1firewall~1access_rules~1rules~1%7Bidentifier%7D/patch/requestBody/content/application~1json/schema/allOf/1/properties/scope/properties/email"
+																										"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1email~1routing~1addresses/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/allOf/0/properties/email"
 																									}
 																								]
 																							},
@@ -33512,6 +33512,1368 @@
 				}
 			}
 		},
+		"/accounts/{account_identifier}/email/routing/addresses": {
+			"get": {
+				"summary": "List destination addresses",
+				"description": "Lists existing destination addresses.",
+				"parameters": [
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "List destination addresses response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user~1tokens~1permission_groups/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"type": "object",
+													"properties": {
+														"page": {
+															"example": 1
+														},
+														"per_page": {
+															"example": 20
+														},
+														"count": {
+															"example": 1
+														},
+														"total_count": {
+															"example": 1
+														}
+													}
+												},
+												"result": {
+													"items": {
+														"type": "object",
+														"allOf": [
+															{
+																"type": "object",
+																"properties": {
+																	"tag": {
+																		"type": "string",
+																		"description": "Destination address identifier",
+																		"example": "ea95132c15732412d22c1476fa83f27a",
+																		"maxLength": 32,
+																		"readOnly": true
+																	},
+																	"email": {
+																		"description": "The contact email address of the user.",
+																		"type": "string",
+																		"maxLength": 90,
+																		"example": "user@example.com"
+																	},
+																	"verified": {
+																		"type": "string",
+																		"format": "date-time",
+																		"description": "The date and time the destination address has been verified.",
+																		"example": "2014-01-02T02:20:00+00:00",
+																		"readOnly": true
+																	},
+																	"created": {
+																		"type": "string",
+																		"format": "date-time",
+																		"description": "The date and time the destination address has been created.",
+																		"example": "2014-01-02T02:20:00+00:00",
+																		"readOnly": true
+																	},
+																	"modified": {
+																		"type": "string",
+																		"format": "date-time",
+																		"description": "The date and time the destination address was last modified.",
+																		"example": "2014-01-02T02:20:00+00:00",
+																		"readOnly": true
+																	}
+																}
+															}
+														]
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#organization:read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			},
+			"post": {
+				"summary": "Create a destination address",
+				"description": "Create a destination address to forward your emails to. Destination addresses need to be verified before they become active.",
+				"parameters": [
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1email~1routing~1addresses/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Create a destination address response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#organization:edit"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"required": [
+									"email"
+								],
+								"properties": {
+									"email": {
+										"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1email~1routing~1addresses/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/allOf/0/properties/email"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/accounts/{account_identifier}/email/routing/addresses/{destination_address_identifier}": {
+			"get": {
+				"summary": "Get a destination address",
+				"description": "Gets information for a specific destination email already created.",
+				"parameters": [
+					{
+						"name": "destination_address_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"description": "Destination address identifier",
+							"example": "ea95132c15732412d22c1476fa83f27a",
+							"maxLength": 32,
+							"readOnly": true
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Get a destination address response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#organization:read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			},
+			"delete": {
+				"summary": "Delete destination address",
+				"description": "Deletes a specific destination address.",
+				"parameters": [
+					{
+						"name": "destination_address_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1email~1routing~1addresses~1%7Bdestination_address_identifier%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1email~1routing~1addresses~1%7Bdestination_address_identifier%7D/get/parameters/1/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Delete destination address response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1email~1routing~1addresses~1%7Bdestination_address_identifier%7D/get/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#organization:edit"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {}
+					}
+				}
+			}
+		},
+		"/zones/{zone_identifier}/email/routing/rules": {
+			"get": {
+				"summary": "List routing rules",
+				"description": "Lists existing routing rules.",
+				"parameters": [
+					{
+						"name": "zone_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1argo~1smart_routing/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "List routing rules response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user~1tokens~1permission_groups/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result_info": {
+													"type": "object",
+													"properties": {
+														"page": {
+															"example": 1
+														},
+														"per_page": {
+															"example": 20
+														},
+														"count": {
+															"example": 1
+														},
+														"total_count": {
+															"example": 1
+														}
+													}
+												},
+												"result": {
+													"items": {
+														"type": "object",
+														"allOf": [
+															{
+																"type": "object",
+																"properties": {
+																	"tag": {
+																		"type": "string",
+																		"description": "Routing rule identifier.",
+																		"example": "a7e6fb77503c41d8a7f3113c6918f10c",
+																		"maxLength": 32,
+																		"readOnly": true
+																	},
+																	"name": {
+																		"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1email~1routing~1rules/post/requestBody/content/application~1json/schema/properties/name"
+																	},
+																	"priority": {
+																		"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1email~1routing~1rules/post/requestBody/content/application~1json/schema/properties/priority"
+																	},
+																	"enabled": {
+																		"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1email~1routing~1rules/post/requestBody/content/application~1json/schema/properties/enabled"
+																	},
+																	"matchers": {
+																		"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1email~1routing~1rules/post/requestBody/content/application~1json/schema/properties/matchers"
+																	},
+																	"actions": {
+																		"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1email~1routing~1rules/post/requestBody/content/application~1json/schema/properties/actions"
+																	}
+																}
+															}
+														]
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#zone_settings:read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			},
+			"post": {
+				"summary": "Create routing rule",
+				"description": "Create a new routing rule. Rules consist of a custom email address paired with a destination address, that forward emails to the destination address you chose.",
+				"parameters": [
+					{
+						"name": "zone_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1email~1routing~1rules/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Create routing rule response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#zone_settings:edit"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"required": [
+									"actions",
+									"matchers"
+								],
+								"properties": {
+									"name": {
+										"type": "string",
+										"description": "Routing rule name.",
+										"maxLength": 256,
+										"example": "Rule send to user@example.net"
+									},
+									"enabled": {
+										"type": "boolean",
+										"description": "Routing rule status.",
+										"enum": [
+											true,
+											false
+										],
+										"default": true,
+										"example": true
+									},
+									"priority": {
+										"type": "number",
+										"description": "Priority of the routing rule.",
+										"minimum": 0,
+										"default": 0
+									},
+									"matchers": {
+										"type": "array",
+										"description": "Matching patterns to forward to your actions.",
+										"items": {
+											"type": "object",
+											"description": "Matching pattern to forward your actions.",
+											"required": [
+												"type",
+												"field",
+												"value"
+											],
+											"properties": {
+												"type": {
+													"type": "string",
+													"description": "Type of matcher.",
+													"enum": [
+														"literal"
+													],
+													"example": "literal"
+												},
+												"field": {
+													"type": "string",
+													"description": "Field for type matcher.",
+													"enum": [
+														"to"
+													],
+													"example": "to"
+												},
+												"value": {
+													"type": "string",
+													"description": "Value for matcher.",
+													"maxLength": 90,
+													"example": "test@example.com"
+												}
+											}
+										}
+									},
+									"actions": {
+										"type": "array",
+										"description": "List actions patterns.",
+										"items": {
+											"type": "object",
+											"description": "Actions pattern.",
+											"required": [
+												"type",
+												"value"
+											],
+											"properties": {
+												"type": {
+													"type": "string",
+													"description": "Action supported type.",
+													"enum": [
+														"forward",
+														"worker"
+													],
+													"example": "forward"
+												},
+												"value": {
+													"type": "array",
+													"items": {
+														"type": "string",
+														"description": "Value for action.",
+														"maxLength": 90,
+														"example": "destinationaddress@example.net"
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/zones/{zone_identifier}/email/routing/rules/{rule_identifier}": {
+			"get": {
+				"summary": "Get routing rule",
+				"description": "Get information for a specific routing rule already created.",
+				"parameters": [
+					{
+						"name": "rule_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"description": "Routing rule identifier.",
+							"example": "a7e6fb77503c41d8a7f3113c6918f10c",
+							"maxLength": 32,
+							"readOnly": true
+						}
+					},
+					{
+						"name": "zone_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1argo~1smart_routing/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Get routing rule response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#zone_settings:read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			},
+			"put": {
+				"summary": "Update routing rule",
+				"description": "Update actions, matches, or enable/disable specific routing rules",
+				"parameters": [
+					{
+						"name": "rule_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1email~1routing~1rules~1%7Brule_identifier%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "zone_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1email~1routing~1rules~1%7Brule_identifier%7D/get/parameters/1/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Update routing rule response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1email~1routing~1rules~1%7Brule_identifier%7D/get/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#zone_settings:edit"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"required": [
+									"actions",
+									"matchers"
+								],
+								"properties": {
+									"name": {
+										"type": "string",
+										"description": "Routing rule name.",
+										"maxLength": 256,
+										"example": "Rule send to user@example.net"
+									},
+									"enabled": {
+										"type": "boolean",
+										"description": "Routing rule status.",
+										"enum": [
+											true,
+											false
+										],
+										"default": true,
+										"example": true
+									},
+									"priority": {
+										"type": "number",
+										"description": "Priority of the routing rule.",
+										"minimum": 0,
+										"default": 0
+									},
+									"matchers": {
+										"type": "array",
+										"description": "Matching patterns to forward to your actions.",
+										"items": {
+											"type": "object",
+											"description": "Matching pattern to forward your actions.",
+											"required": [
+												"type",
+												"field",
+												"value"
+											],
+											"properties": {
+												"type": {
+													"type": "string",
+													"description": "Type of matcher.",
+													"enum": [
+														"literal"
+													],
+													"example": "literal"
+												},
+												"field": {
+													"type": "string",
+													"description": "Field for type matcher.",
+													"enum": [
+														"to"
+													],
+													"example": "to"
+												},
+												"value": {
+													"type": "string",
+													"description": "Value for matcher.",
+													"maxLength": 90,
+													"example": "test@example.com"
+												}
+											}
+										}
+									},
+									"actions": {
+										"type": "array",
+										"description": "List actions patterns.",
+										"items": {
+											"type": "object",
+											"description": "Actions pattern.",
+											"required": [
+												"type",
+												"value"
+											],
+											"properties": {
+												"type": {
+													"type": "string",
+													"description": "Action supported type.",
+													"enum": [
+														"forward",
+														"worker"
+													],
+													"example": "forward"
+												},
+												"value": {
+													"type": "array",
+													"items": {
+														"type": "string",
+														"description": "Value for action.",
+														"maxLength": 90,
+														"example": "destinationaddress@example.net"
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"summary": "Delete routing rule",
+				"description": "Delete a specific routing rule.",
+				"parameters": [
+					{
+						"name": "rule_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1email~1routing~1rules~1%7Brule_identifier%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "zone_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1email~1routing~1rules~1%7Brule_identifier%7D/get/parameters/1/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Delete routing rule response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1email~1routing~1rules~1%7Brule_identifier%7D/get/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#zone_settings:edit"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {}
+					}
+				}
+			}
+		},
+		"/zones/{zone_identifier}/email/routing/rules/catch_all": {
+			"get": {
+				"summary": "Get catch-all rule",
+				"description": "Get information on the default catch-all routing rule.",
+				"parameters": [
+					{
+						"name": "zone_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1argo~1smart_routing/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Get catch-all rule response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"tag": {
+											"type": "string",
+											"description": "Routing rule identifier.",
+											"example": "a7e6fb77503c41d8a7f3113c6918f10c",
+											"maxLength": 32,
+											"readOnly": true
+										},
+										"name": {
+											"type": "string",
+											"description": "Routing rule name.",
+											"maxLength": 256,
+											"example": "Rule send to user@example.net"
+										},
+										"enabled": {
+											"type": "boolean",
+											"description": "Routing rule status.",
+											"enum": [
+												true,
+												false
+											],
+											"default": true,
+											"example": true
+										},
+										"matchers": {
+											"type": "array",
+											"description": "List of matchers for the catch-all routing rule.",
+											"items": {
+												"type": "object",
+												"description": "Matcher for catch-all routing rule.",
+												"required": [
+													"type"
+												],
+												"properties": {
+													"type": {
+														"type": "string",
+														"description": "Type of matcher. Default is 'all'.",
+														"enum": [
+															"all"
+														],
+														"example": "all"
+													}
+												}
+											}
+										},
+										"actions": {
+											"type": "array",
+											"description": "List actions for the catch-all routing rule.",
+											"items": {
+												"type": "object",
+												"description": "Action for the catch-all routing rule.",
+												"required": [
+													"type"
+												],
+												"properties": {
+													"type": {
+														"type": "string",
+														"description": "Type of action for catch-all rule.",
+														"enum": [
+															"drop",
+															"forward",
+															"worker"
+														],
+														"example": "forward"
+													},
+													"value": {
+														"type": "array",
+														"items": {
+															"type": "string",
+															"description": "Input value for action",
+															"maxLength": 90,
+															"example": "destinationaddress@example.net"
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#zone_settings:read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			},
+			"put": {
+				"summary": "Update catch-all rule",
+				"description": "Enable or disable catch-all routing rule, or change action to forward to specific destination address.",
+				"parameters": [
+					{
+						"name": "zone_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1email~1routing~1rules~1catch_all/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Update catch-all rule response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1email~1routing~1rules~1catch_all/get/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#zone_settings:read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"required": [
+									"actions",
+									"matchers"
+								],
+								"properties": {
+									"name": {
+										"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1email~1routing~1rules~1catch_all/get/responses/200/content/application~1json/schema/properties/name"
+									},
+									"enabled": {
+										"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1email~1routing~1rules~1catch_all/get/responses/200/content/application~1json/schema/properties/enabled"
+									},
+									"matchers": {
+										"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1email~1routing~1rules~1catch_all/get/responses/200/content/application~1json/schema/properties/matchers"
+									},
+									"actions": {
+										"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1email~1routing~1rules~1catch_all/get/responses/200/content/application~1json/schema/properties/actions"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/zones/{zone_identifier}/email/routing": {
+			"get": {
+				"summary": "Get Email Routing settings",
+				"description": "Get information about the settings for your Email Routing zone.",
+				"parameters": [
+					{
+						"name": "zone_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1argo~1smart_routing/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Get Email Routing settings response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#zone_settings:read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/zones/{zone_identifier}/email/routing/enabled": {
+			"post": {
+				"summary": "Enable Email Routing",
+				"description": "Enable you Email Routing zone. Add and lock the necessary MX and SPF records.",
+				"parameters": [
+					{
+						"name": "zone_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1argo~1smart_routing/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Enable Email Routing response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#zone_settings:edit"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {}
+					}
+				}
+			}
+		},
+		"/zones/{zone_identifier}/email/routing/disable": {
+			"post": {
+				"summary": "Disable Email Routing",
+				"description": "Disable your Email Routing zone. Also removes adicional MX records previsously required for Email Routing to work.",
+				"parameters": [
+					{
+						"name": "zone_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1argo~1smart_routing/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Disable Email Routing response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object"
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#zone_settings:edit"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {}
+					}
+				}
+			}
+		},
+		"/zones/{zone_identifier}/email/routing/dns": {
+			"get": {
+				"summary": "Email Routing - DNS settings",
+				"description": "Show the DNS records needed to configure your Email Routing zone.",
+				"parameters": [
+					{
+						"name": "zone_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1argo~1smart_routing/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Email Routing - DNS settings response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user~1tokens~1permission_groups/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"items": {
+														"type": "object",
+														"description": "List of records needed to enable an Email Routing zone.",
+														"properties": {
+															"type": {
+																"type": "string",
+																"description": "DNS record type",
+																"enum": [
+																	"A",
+																	"AAAA",
+																	"CNAME",
+																	"HTTPS",
+																	"TXT",
+																	"SRV",
+																	"LOC",
+																	"MX",
+																	"NS",
+																	"CERT",
+																	"DNSKEY",
+																	"DS",
+																	"NAPTR",
+																	"SMIMEA",
+																	"SSHFP",
+																	"SVCB",
+																	"TLSA",
+																	"URI"
+																],
+																"example": "A",
+																"readOnly": true
+															},
+															"name": {
+																"type": "string",
+																"description": "DNS record name (or @ for the zone apex).",
+																"maxLength": 255,
+																"example": "example.com"
+															},
+															"content": {
+																"type": "string",
+																"description": "DNS record content.",
+																"example": "127.0.0.1"
+															},
+															"ttl": {
+																"type": "number",
+																"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'.",
+																"example": 3600,
+																"anyOf": [
+																	{
+																		"type": "number",
+																		"example": 3600,
+																		"minimum": 60,
+																		"maximum": 86400
+																	},
+																	{
+																		"type": "number",
+																		"enum": [
+																			1
+																		]
+																	}
+																]
+															},
+															"priority": {
+																"type": "number",
+																"description": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred.",
+																"minimum": 0,
+																"maximum": 65535,
+																"example": 10
+															}
+														}
+													},
+													"type": "array"
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#zone_settings:read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
 		"/accounts/{account_identifier}/stream/copy": {
 			"post": {
 				"summary": "Upload videos from a URL",
@@ -47577,10 +48939,7 @@
 														"$ref": "#/paths/~1user~1audit_logs/get/responses/200/content/application~1json/schema/oneOf/0/properties/result/items/properties/owner/properties/id"
 													},
 													"email": {
-														"description": "The contact email address of the user.",
-														"type": "string",
-														"maxLength": 90,
-														"example": "user@example.com"
+														"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1email~1routing~1addresses/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/allOf/0/properties/email"
 													},
 													"type": {
 														"enum": [
@@ -77360,7 +78719,7 @@
 																		"description": "The enrolled device user's name."
 																	},
 																	"email": {
-																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1firewall~1access_rules~1rules~1%7Bidentifier%7D/patch/requestBody/content/application~1json/schema/allOf/1/properties/scope/properties/email"
+																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1email~1routing~1addresses/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/allOf/0/properties/email"
 																	}
 																}
 															},
@@ -82398,7 +83757,7 @@
 																								"$ref": "#/paths/~1user/patch/requestBody/content/application~1json/schema/properties/telephone"
 																							},
 																							"email": {
-																								"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1firewall~1access_rules~1rules~1%7Bidentifier%7D/patch/requestBody/content/application~1json/schema/allOf/1/properties/scope/properties/email"
+																								"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1email~1routing~1addresses/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/allOf/0/properties/email"
 																							},
 																							"fax": {
 																								"description": "Contact fax number",
