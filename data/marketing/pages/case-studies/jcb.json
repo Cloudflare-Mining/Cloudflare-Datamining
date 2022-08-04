@@ -1,0 +1,96 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/jcb/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "JCB",
+				"contentfulId": "1GTcwHdRu06YbL9K3DrNPq",
+				"nameUrlSlug": "jcb",
+				"metaTags": {
+					"metaTitle": "JCB | Cloudflare",
+					"metaDescription": "JCB & Cloudflare | Case Study",
+					"twitterCustomImage": {
+						"file": {
+							"publicURL": "[path]/JCB_Card.jpeg"
+						}
+					},
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/JCB_Card.jpeg"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2022-08-02",
+				"homepageUrl": "https://www.jcb.co.jp/",
+				"hideFromCaseStudiesPage": true,
+				"shortDescription": "JCBがCloudflareでCDNのコスト最適化と運用の利便性を実現 Cloudflare と DigiCert が連携して移行をサポート",
+				"longDescription": "## __JCBがCloudflareでCDNのコスト最適化と運用の利便性を実現 Cloudflare と DigiCert が連携して移行をサポート__\n\n株式会社ジェーシービー（JCB）は日本のクレジットカード会社。1961 年設立、日本発かつ日本唯一の国際カードブランドで、会員数は 1 億 4000 万人以上、加盟店数は約 3700 万店（2022 年 3 月末時点）。カード発行や加盟店獲得も含めて、カード決済に関わるあらゆる業務を扱っています。近年では決済スキームの多様化、非接触 IC 決済、モバイルアプリ、生体認証など、先進的なサービス開発も積極的に進めています。Web サイトの PV は月間 2000 万以\n上。\n\n### __Challenge: CDNとDDoS対策のコスト最適化__\n\nJCB では以前より他社の CDN サービスを運用していたものの、サービスと料金体系のバランスが JCB に適していないと感じていました。JCB ではキャンペーンなど特定の期間で PV が急増することがあり、そうした PV に沿った価格帯系だと利用料が高くついてしまうところが課題でした。\nまた、サイトの信頼性や安全性を保つためにも DDoS 対策をはじめとした Web セキュリティ製品を導入して攻撃に備える必要もありました。\n\n### __Cloudflareなら機能と料金体系がJCBの要件にベストマッチ__\n\n2020 年の秋になるころ、JCB は従前の CDN と DDoS 対策製品の更新が迫り、より最適化が図れる製品を模索していました。実は従前の製品導入時に Cloudflare も候補にあったものの、日本法人設立前で断念した経緯がありました。しかし 2020 年 7 月に Cloudflare が日本法人を設立したことで状況が変わり、JCB は Cloudflare を再検討することにしました。\n\nJCB 柿沼礼氏は Cloudflare への移行を決めた理由として 「Cloudflare ならコストを低く抑えら\nれるだけではなく、機能や性能で他社に劣後することがないと考えました。またCloudflare の DDoS は有名でしたので懸念は特にありませんでした」と説明します。また、旧ソリューションは機能を多く提供していたものの、機能毎にコンソールが分かれており、運用で使いこなせないという課題がありました。Cloudflare にすることで、一つのコンソールで全てを管理できるようになりました。\n\nそれまで Web サイトの性能では特に苦情はなく、Cloudflare 導入で劇的に改善したと実感しな\nいものの、Cloudflare の Argo smart routing（CDN を利用しない通信に対する高速化機能）の\n履歴を見ると、未使用との比較で応答速度が 65％高速化するなどの改善が見られています。\n\n### __DigiCertとCloudflareがタッグを組み移行をサポート__\n\nJCB における Cloudflare への移行は DigiCert が代理店として前面に立ち、Cloudflare と連携して行いました。柿沼氏は「JCB としては利用者として技術に踏み込んだ検討ができることを強みとしており、代理店を経由することで技術レベルの議論に阻害が発生することを懸念していました。POC では代理店である DigiCert 社自身の技術理解の高さ、Cloudflare 社の選任技術者の迅速かつ丁寧なサポートを受けられことから、弊社が重要視している技術面においても安心\n感を得られました」と振り返ります。\n\n### __Cloudflareの将来の機能追加や発展に期待__\n2021 年 1 月、JCB は Cloudflare の利用を開始しました。当初は CDN と DDoS 対策製品の移行がメインであり、WAF は自社で保有していることから、Cloudflare WAF の導入は検討しませんでした。しかし柿沼氏は次のように魅力について話しています。「Log4j の脆弱性が公表された直後に Cloudflare から『対応した』とのメールを見ました。log4j の件は一例ですが、Cloudflare のようなマネージドサービス型の WAF を利用することで、よりビジネスにリソースを注げる可能性を感じました。\n\nまた柿沼氏は Cloudflare に新たな機能追加が盛り込まれていること、特に Domain Scoped\nRoles のような大規模組織における運用に役立つ機能にも「すごく興味があります」と期待を\n寄せています。\n",
+				"cloudflareStreamVideoId": null,
+				"keyResults": null,
+				"relatedCaseStudies": [
+					{
+						"name": "Trustbank ",
+						"nameUrlSlug": "trust-bank"
+					},
+					{
+						"name": "Sony Music Group (Japan) ",
+						"nameUrlSlug": "sonymusic"
+					},
+					{
+						"name": "Dcard",
+						"nameUrlSlug": "dcard"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Web Application Firewall (WAF) ",
+						"url": "/waf/"
+					},
+					{
+						"title": "DDoS Mitigation",
+						"url": "/ddos/"
+					},
+					{
+						"title": "Argo Smart Routing ",
+						"url": "/products/argo-smart-routing/"
+					},
+					{
+						"title": "CDN",
+						"url": "/cdn/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "柿沼 礼氏",
+				"employeeQuoteText": "Cloudflare ならコストを低く抑えられるだけではなく、機能や性能で他社に劣後することがな\nいと考えました.\n",
+				"employeeQuoteJobTitle": "TBC",
+				"employeeQuoteName2": "柿沼 礼氏",
+				"employeeQuoteText2": "実際に導入の検討を始めると、2 社が最適な提案を出し、PoC 環境を迅速に準備するなど、積 極的なサポートで安心感が得られました.",
+				"employeeQuoteJobTitle2": "株式会社ジェーシービー システム本部 デジタルソリューション開発部 ダイレクトチャネルシステム㈵グループ 副主事",
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/jcb_logo.png"
+					}
+				},
+				"customCanonicalTag": null,
+				"availableLocales": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "1GTcwHdRu06YbL9K3DrNPq",
+			"pathname": "/case-studies/jcb/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": null
+		}
+	}
+}
