@@ -4,7 +4,7 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "DDoS for Web Applications Product Page",
+				"pageName": "DDoS for Web - Applications Product Page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "English for Locale",
@@ -46,7 +46,12 @@
 				},
 				"contentfulId": "3LNIexiZ9KttpSLWbnp9c5",
 				"contentTypeId": "page",
-				"promotionalBanner": null,
+				"promotionalBanner": {
+					"pillText": "Learn More",
+					"linkText": "What is DDoS?",
+					"linkUrl": "https://www.cloudflare.com/learning/ddos/ddos-attack-tools/how-to-ddos/",
+					"desktopText": "Not sure what DDoS is or how it's used? Read more in our Learning Center."
+				},
 				"psaBanner": null,
 				"customTopNav": null,
 				"headerLogo": null,
@@ -54,52 +59,51 @@
 				"relatedBlades": [
 					{
 						"__typename": "bladeHeroAnimation",
-						"contentfulId": "L2BZjn19crkPtXArphqhv",
+						"contentfulId": "hSEr0dfXRb5XeY5HAyd9v",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "DDoS Protection for Web Applications",
-						"subtitle": "Robust security with fast performance",
-						"copy": "Get increased uptime and speed for your websites and other HTTP/s applications with Cloudflare's automated, always-on, and unmetered DDoS protection. ",
-						"buttonColor": "blue",
-						"buttonColor2": null,
-						"buttonText1": "Contact us",
-						"buttonText1LoggedIn": null,
-						"buttonUrl1": "#",
-						"buttonUrl1LoggedIn": null,
-						"button1ExtraClass": "ddos-for-web-applications",
-						"buttonText2": null,
+						"title": "Free DDoS Web Protection",
+						"subtitle": "Powerful DDoS (L7) protection for websites & web applications, free with ALL application service plans.",
+						"copy": "- Cloudflare's %{NetworkCapacity} network blocks an average of %{ThreatsBlockedPerDay} billion daily threats.\n- Intelligent and automated mitigations at the edge.",
+						"buttonColor": "orange",
+						"buttonColor2": "orange-outline",
+						"buttonText1": "Sign Up For Free",
+						"buttonText1LoggedIn": "Activate for Free",
+						"buttonUrl1": "#DDoS-Page-Pricing-AS",
+						"buttonUrl1LoggedIn": "https://dash.cloudflare.com/",
+						"button1ExtraClass": null,
+						"buttonText2": "Compare All Plans",
 						"buttonText2LoggedIn": null,
-						"buttonUrl2": null,
+						"buttonUrl2": "#DDoS-Page-Pricing-AS",
 						"button2ExtraClass": null,
 						"bladeBorder": "none",
 						"htmlId": null,
 						"textColor": "black",
 						"includeVideo": false,
 						"streamVideoId": null,
-						"streamOptions": null,
-						"streamCaptions": null,
+						"streamOptions": [
+							"controls",
+							"captions"
+						],
+						"streamCaptions": "en",
 						"popupStreamId": null,
 						"popupText": null,
 						"button1OpenInNewTab": null,
 						"button2OpenInNewTab": null,
 						"streamThumbnails": null,
-						"sectionPadding": "tile--no-top-bottom-padding",
+						"sectionPadding": null,
 						"streamPosterAssetFile": null,
 						"streamPoster": null,
-						"imageSize": null,
+						"imageSize": "Regular",
 						"imagePosition": null,
 						"leftLinkUrl": null,
-						"leftLink": null,
-						"leftLinkLoggedIn": null,
+						"leftLink": "[Enterprise plans include DDoS service, & more! Schedule a demo!](https://www.cloudflare.com/plans/enterprise/demo/ \"DDoS Enterprise Demo\")",
+						"leftLinkLoggedIn": "[Enterprise plans include DDoS service, & more! Schedule a demo!](https://www.cloudflare.com/plans/enterprise/demo/ \"DDoS Enterprise Demo\")",
 						"leftLinkOptions": "hide",
 						"backgroundColor": "white",
 						"textlayoutMode": null,
 						"backgroundAssetFile": null,
 						"imageLayout": null,
-						"image": {
-							"file": {
-								"publicURL": "[path]/cf_sheild_blue_2x.png"
-							}
-						},
+						"image": null,
 						"imageAssetFile": {
 							"id": "21149118-10ff-5d0d-9117-0c28f663d5df",
 							"altText": "Ddos protection hero illustration",
@@ -136,30 +140,33 @@
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5wnWldVsD8IMrTLO4SuEky",
-								"title": "Robust",
+								"contentfulId": "17TEZG4Fs33XYHgCURhSZp",
+								"title": "Free",
 								"titleSize": null,
-								"description": "With over %{NetworkCapacity} Tbps of network capacity and a global network that's constantly learning from the millions of Internet properties on it, Cloudflare protects you against the largest and most sophisticated attacks.",
+								"description": "All Cloudflare plans offer unlimited and unmetered mitigation of DDoS attacks. Customers are not charged for attack traffic ever, period. \nThere's no penalty for spikes due to attack traffic, requiring no chargeback by the customer.\n",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": null,
 								"icon": {
 									"file": {
-										"publicURL": "[path]/icon-ddos-blue.png"
+										"publicURL": "[path]/icon-cost-blue.png"
 									}
 								},
 								"iconAssetFile": {
-									"id": "326d66b9-319c-522a-9a89-d79f3d382742",
-									"altText": "Security shield ddos protection blue",
-									"title": "Security shield ddos protection blue",
-									"activeAsset": "Contentful Asset",
+									"id": "eaa35043-4f47-559a-84df-14dd2dc384bd",
+									"altText": "Price blue",
+									"title": "Price blue",
+									"activeAsset": "Brandfolder Asset",
 									"locale": "en-US",
-									"contentfulAsset": {
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 2943,
+										"height": 192,
+										"width": 192,
 										"file": {
-											"publicURL": "[path]/security-shield-ddos-protection.svg"
+											"publicURL": "[path]/price-blue.svg"
 										}
 									},
-									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
 								"imageAssetFile": null,
@@ -205,33 +212,30 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "17TEZG4Fs33XYHgCURhSZp",
-								"title": "Cost-effective",
+								"contentfulId": "5wnWldVsD8IMrTLO4SuEky",
+								"title": "Robust",
 								"titleSize": null,
-								"description": "All Cloudflare plans offer unlimited and unmetered mitigation of DDoS attacks. Customers are not charged for attack traffic ever, period. \nThere's no penalty for spikes due to attack traffic, requiring no chargeback by the customer.\n",
+								"description": "With over %{NetworkCapacity} of network capacity and a global network that's constantly learning from the millions of Internet properties on it, Cloudflare protects you against the largest and most sophisticated attacks.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": null,
 								"icon": {
 									"file": {
-										"publicURL": "[path]/icon-cost-blue.png"
+										"publicURL": "[path]/icon-ddos-blue.png"
 									}
 								},
 								"iconAssetFile": {
-									"id": "eaa35043-4f47-559a-84df-14dd2dc384bd",
-									"altText": "Price blue",
-									"title": "Price blue",
-									"activeAsset": "Brandfolder Asset",
+									"id": "326d66b9-319c-522a-9a89-d79f3d382742",
+									"altText": "Security shield ddos protection blue",
+									"title": "Security shield ddos protection blue",
+									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 2943,
-										"height": 192,
-										"width": 192,
+									"contentfulAsset": {
 										"file": {
-											"publicURL": "[path]/price-blue.svg"
+											"publicURL": "[path]/security-shield-ddos-protection.svg"
 										}
 									},
+									"brandfolderAsset": null,
 									"brandfolderAssetMobile": null
 								},
 								"imageAssetFile": null,
@@ -240,6 +244,1059 @@
 								"streamThumbnailAssetFile": null
 							}
 						]
+					},
+					{
+						"__typename": "bladeImageText",
+						"contentfulId": "3YjJmkLDaoYMTJ3Vt1bcn7",
+						"title": "Cloudflare named a \"Leader\"",
+						"copy": "According to Forrester, \"Cloudflare protects against DDoS from the edge, and fast,\" and that \"customer references view Cloudflare's edge network as a compelling way to protect and deliver applications.\"",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": null,
+						"subheadline": "Forrester Wave™ DDoS Mitigation Solutions Q1 2021",
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "414e0be0-8bb3-521a-9b08-ab82911c6326",
+							"altText": null,
+							"title": null,
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "[path]/Forrester_black__1_.png"
+								}
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": "Industry Leading",
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "light-blue",
+						"bladeBorder": "none",
+						"imagePosition": false,
+						"imageSize": "small",
+						"imageTextAlignment": null,
+						"togglesTo": null
+					},
+					{
+						"__typename": "bladePlansMatrix",
+						"contentfulId": "2y1QXb1a0w6FeMslbHjhuA",
+						"contentTypeId": "bladePlansMatrix",
+						"hasFilter": false,
+						"htmlId": "DDoS-Page-Pricing-AS",
+						"filterLabel": null,
+						"showInModal": false,
+						"title": "Upgrade your website security and performance with free a DDoS & so much more!",
+						"modalButtonText": null,
+						"mobileMode": "Cards",
+						"sectionPadding": "tile--no-bottom-padding",
+						"plans": [
+							{
+								"contentTypeId": "planElementPlanMatrixPlan",
+								"contentfulId": "mBZPOsc9k3pCyGmsB6aAz",
+								"showDescription": true,
+								"showPriceDescription": true,
+								"plan": {
+									"contentfulId": "4J2b292gM2Io6Xb2UjbsLo",
+									"contentTypeId": "planElementPlan",
+									"entryTitle": "Application Services - Free Plan",
+									"name": "Free",
+									"description": "For personal or hobby projects that aren't business-critical.",
+									"pricingDescription": "Add-ons billed monthly",
+									"price": 0,
+									"currency": "$",
+									"customPricingText": "$0/month",
+									"billingCycle": "monthly"
+								},
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonWidth": "auto",
+									"buttonColor": "orange",
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "3ILA97nY8NryApAuJ1Gk1Y",
+									"elementName": "Add a website (Free Plan CTA)",
+									"standardText": null,
+									"text": "Add a Website",
+									"url": "https://dash.cloudflare.com/sign-up?pt=f",
+									"loggedInUrl": null,
+									"modal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"learnMoreLink": null
+							},
+							{
+								"contentTypeId": "planElementPlanMatrixPlan",
+								"contentfulId": "3KZckJdQE2jo5TJTl64Wob",
+								"showDescription": true,
+								"showPriceDescription": true,
+								"plan": {
+									"contentfulId": "7JMDjiexzE2evvzrTjly8l",
+									"contentTypeId": "planElementPlan",
+									"entryTitle": "Application Services - Pro Plan",
+									"name": "Pro",
+									"description": "For professional websites that aren't business-critical.",
+									"pricingDescription": "Billed monthly",
+									"price": 20,
+									"currency": "$",
+									"customPricingText": "$20/month",
+									"billingCycle": "monthly"
+								},
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonWidth": "auto",
+									"buttonColor": "orange",
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "oUsaiWm7GC8nCOSjsVkda",
+									"elementName": "Pro Plan - Get Started",
+									"standardText": null,
+									"text": "Get Started",
+									"url": "https://dash.cloudflare.com/sign-up?to=/:account/:zone/billing/checkout&add=cf_pro_20_20",
+									"loggedInUrl": null,
+									"modal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"learnMoreLink": null
+							},
+							{
+								"contentTypeId": "planElementPlanMatrixPlan",
+								"contentfulId": "3s9I3QypaHhvHH0ReJDobs",
+								"showDescription": true,
+								"showPriceDescription": true,
+								"plan": {
+									"contentfulId": "X0mi2lABGJXFQqE4wieTW",
+									"contentTypeId": "planElementPlan",
+									"entryTitle": "Application Services - Business Plan",
+									"name": "Business",
+									"description": "For small businesses operating online.",
+									"pricingDescription": "Billed monthly",
+									"price": 200,
+									"currency": "$",
+									"customPricingText": "$200/month",
+									"billingCycle": "monthly"
+								},
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonWidth": "auto",
+									"buttonColor": "orange",
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "2e82akp3uD5uAlpIQ9e2cf",
+									"elementName": "Business Plan - Get Started",
+									"standardText": null,
+									"text": "Get Started",
+									"url": "https://dash.cloudflare.com/sign-up?to=/:account/:zone/billing/checkout&add=cf_biz",
+									"loggedInUrl": "https://dash.cloudflare.com/login?pt=b",
+									"modal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"learnMoreLink": null
+							},
+							{
+								"contentTypeId": "planElementPlanMatrixPlan",
+								"contentfulId": "UFr6oJUnfxy758404GLLe",
+								"showDescription": true,
+								"showPriceDescription": true,
+								"plan": {
+									"contentfulId": "9KE9tgEmXrKuduOkp2NKd",
+									"contentTypeId": "planElementPlan",
+									"entryTitle": "Application Services - Enterprise Plan",
+									"name": "Enterprise",
+									"description": "For mission-critical applications that are core to your business.",
+									"pricingDescription": "Billed annually",
+									"price": null,
+									"currency": null,
+									"customPricingText": "Custom",
+									"billingCycle": null
+								},
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonWidth": "auto",
+									"buttonColor": "orange",
+									"buttonTextLoggedIn": "Learn More",
+									"contentTypeId": "button",
+									"contentfulId": "3VX1As80QY8qThQpOpgx5f",
+									"elementName": "Enterprise Plan-Learn More",
+									"standardText": null,
+									"text": "Learn More",
+									"url": "/plans/enterprise",
+									"loggedInUrl": "/plans/enterprise",
+									"modal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								},
+								"learnMoreLink": null
+							}
+						],
+						"planFeatures": [
+							{
+								"contentfulId": "eSI9v7bcXkSO3MxWQe3dE",
+								"contentTypeId": "planElementFeatures",
+								"name": "Support Options",
+								"description": null,
+								"planValues": [
+									{
+										"__typename": "planElementFeatureValueText",
+										"contentTypeId": "planElementFeatureValueText",
+										"contentfulId": "78P4yIV6bbcKv6ZC56AUYh",
+										"textValue": "Community forums and documentation",
+										"plan": {
+											"contentfulId": "4J2b292gM2Io6Xb2UjbsLo",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Free Plan",
+											"name": "Free",
+											"description": "For personal or hobby projects that aren't business-critical.",
+											"pricingDescription": "Add-ons billed monthly",
+											"price": 0,
+											"currency": "$",
+											"customPricingText": "$0/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueText",
+										"contentTypeId": "planElementFeatureValueText",
+										"contentfulId": "7kkEoCoIbuYYkn1y5njeP4",
+										"textValue": "Support via email",
+										"plan": {
+											"contentfulId": "7JMDjiexzE2evvzrTjly8l",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Pro Plan",
+											"name": "Pro",
+											"description": "For professional websites that aren't business-critical.",
+											"pricingDescription": "Billed monthly",
+											"price": 20,
+											"currency": "$",
+											"customPricingText": "$20/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueText",
+										"contentTypeId": "planElementFeatureValueText",
+										"contentfulId": "3xfaFSUHLmq1f7a2H9afip",
+										"textValue": "Email + Chat",
+										"plan": {
+											"contentfulId": "X0mi2lABGJXFQqE4wieTW",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Business Plan",
+											"name": "Business",
+											"description": "For small businesses operating online.",
+											"pricingDescription": "Billed monthly",
+											"price": 200,
+											"currency": "$",
+											"customPricingText": "$200/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueText",
+										"contentTypeId": "planElementFeatureValueText",
+										"contentfulId": "3PpJlM6csvAH4ny076rj5c",
+										"textValue": "24x7x365 Email + Chat + Phone",
+										"plan": {
+											"contentfulId": "9KE9tgEmXrKuduOkp2NKd",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Enterprise Plan",
+											"name": "Enterprise",
+											"description": "For mission-critical applications that are core to your business.",
+											"pricingDescription": "Billed annually",
+											"price": null,
+											"currency": null,
+											"customPricingText": "Custom",
+											"billingCycle": null
+										}
+									}
+								]
+							},
+							{
+								"contentfulId": "3AdaP6Gkua4w77dUpnB0YQ",
+								"contentTypeId": "planElementFeatures",
+								"name": "Unmetered DDoS Protection",
+								"description": "Cloudflare DDoS protection secures websites, applications, and entire networks while ensuring the performance of legitimate traffic is not compromised.",
+								"planValues": [
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "KrkA1GrdRJF8aQnqkPF52",
+										"value": true,
+										"plan": {
+											"contentfulId": "4J2b292gM2Io6Xb2UjbsLo",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Free Plan",
+											"name": "Free",
+											"description": "For personal or hobby projects that aren't business-critical.",
+											"pricingDescription": "Add-ons billed monthly",
+											"price": 0,
+											"currency": "$",
+											"customPricingText": "$0/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "1UeSJksCMsZ1JuSmsATDQs",
+										"value": true,
+										"plan": {
+											"contentfulId": "7JMDjiexzE2evvzrTjly8l",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Pro Plan",
+											"name": "Pro",
+											"description": "For professional websites that aren't business-critical.",
+											"pricingDescription": "Billed monthly",
+											"price": 20,
+											"currency": "$",
+											"customPricingText": "$20/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "7M0zilue0cnxZBmN95rPbY",
+										"value": true,
+										"plan": {
+											"contentfulId": "X0mi2lABGJXFQqE4wieTW",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Business Plan",
+											"name": "Business",
+											"description": "For small businesses operating online.",
+											"pricingDescription": "Billed monthly",
+											"price": 200,
+											"currency": "$",
+											"customPricingText": "$200/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "1B7s10dX513dW9h4wtrG3c",
+										"value": true,
+										"plan": {
+											"contentfulId": "9KE9tgEmXrKuduOkp2NKd",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Enterprise Plan",
+											"name": "Enterprise",
+											"description": "For mission-critical applications that are core to your business.",
+											"pricingDescription": "Billed annually",
+											"price": null,
+											"currency": null,
+											"customPricingText": "Custom",
+											"billingCycle": null
+										}
+									}
+								]
+							},
+							{
+								"contentfulId": "70aTNoLdZm3Gdd1siKg6m0",
+								"contentTypeId": "planElementFeatures",
+								"name": "Universal SSL Certificate",
+								"description": "Cloudflare is compatible with your existing SSL configuration. If you do not currently use SSL, Cloudflare can provide you with SSL capabilities — no configuration required.",
+								"planValues": [
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "7CQbhRxne5scqSHoDwUMMw",
+										"value": true,
+										"plan": {
+											"contentfulId": "4J2b292gM2Io6Xb2UjbsLo",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Free Plan",
+											"name": "Free",
+											"description": "For personal or hobby projects that aren't business-critical.",
+											"pricingDescription": "Add-ons billed monthly",
+											"price": 0,
+											"currency": "$",
+											"customPricingText": "$0/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "6bOyALEjllpdSeRY5M4Eg6",
+										"value": true,
+										"plan": {
+											"contentfulId": "7JMDjiexzE2evvzrTjly8l",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Pro Plan",
+											"name": "Pro",
+											"description": "For professional websites that aren't business-critical.",
+											"pricingDescription": "Billed monthly",
+											"price": 20,
+											"currency": "$",
+											"customPricingText": "$20/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "5peMTnfL3Qjpr3BU4lFXFO",
+										"value": true,
+										"plan": {
+											"contentfulId": "X0mi2lABGJXFQqE4wieTW",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Business Plan",
+											"name": "Business",
+											"description": "For small businesses operating online.",
+											"pricingDescription": "Billed monthly",
+											"price": 200,
+											"currency": "$",
+											"customPricingText": "$200/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "1GK2Rsxepc3yQAHg5DMML0",
+										"value": true,
+										"plan": {
+											"contentfulId": "9KE9tgEmXrKuduOkp2NKd",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Enterprise Plan",
+											"name": "Enterprise",
+											"description": "For mission-critical applications that are core to your business.",
+											"pricingDescription": "Billed annually",
+											"price": null,
+											"currency": null,
+											"customPricingText": "Custom",
+											"billingCycle": null
+										}
+									}
+								]
+							},
+							{
+								"contentfulId": "1Qg7GWVP8EoEfhQaKvDjBQ",
+								"contentTypeId": "planElementFeatures",
+								"name": "CDN",
+								"description": "Our %{DataCenterCount} data centers located across the globe provide visitors with location-based access to your website, while removing latency and improving performance.",
+								"planValues": [
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "5JLmdAtFkljnohj733CXpL",
+										"value": true,
+										"plan": {
+											"contentfulId": "4J2b292gM2Io6Xb2UjbsLo",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Free Plan",
+											"name": "Free",
+											"description": "For personal or hobby projects that aren't business-critical.",
+											"pricingDescription": "Add-ons billed monthly",
+											"price": 0,
+											"currency": "$",
+											"customPricingText": "$0/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "1UXvimgYgyJ9R9mVeiD9mt",
+										"value": true,
+										"plan": {
+											"contentfulId": "7JMDjiexzE2evvzrTjly8l",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Pro Plan",
+											"name": "Pro",
+											"description": "For professional websites that aren't business-critical.",
+											"pricingDescription": "Billed monthly",
+											"price": 20,
+											"currency": "$",
+											"customPricingText": "$20/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "7vY854wrPLvxwMVt8EUYAs",
+										"value": true,
+										"plan": {
+											"contentfulId": "X0mi2lABGJXFQqE4wieTW",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Business Plan",
+											"name": "Business",
+											"description": "For small businesses operating online.",
+											"pricingDescription": "Billed monthly",
+											"price": 200,
+											"currency": "$",
+											"customPricingText": "$200/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "1W3aspNOCrNUuRJwsLF18j",
+										"value": true,
+										"plan": {
+											"contentfulId": "9KE9tgEmXrKuduOkp2NKd",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Enterprise Plan",
+											"name": "Enterprise",
+											"description": "For mission-critical applications that are core to your business.",
+											"pricingDescription": "Billed annually",
+											"price": null,
+											"currency": null,
+											"customPricingText": "Custom",
+											"billingCycle": null
+										}
+									}
+								]
+							},
+							{
+								"contentfulId": "D7GuD0WsvFiIj8aur59pQ",
+								"contentTypeId": "planElementFeatures",
+								"name": "Web Application Firewall (WAF)",
+								"description": "Cloudflare Web Application Firewall's intuitive dashboard enables users to build powerful rules through easy clicks and also provides Terraform integration. Every request to the WAF is inspected against the rule engine and the threat intelligence curated from protecting millions of websites. Suspicious requests can be blocked, challenged or logged as per the needs of the user while legitimate requests are routed to the destination, agnostic of whether it lives on-premise or in the cloud.",
+								"planValues": [
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "49oH4C4976zsZ97hpF0SaE",
+										"value": false,
+										"plan": {
+											"contentfulId": "4J2b292gM2Io6Xb2UjbsLo",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Free Plan",
+											"name": "Free",
+											"description": "For personal or hobby projects that aren't business-critical.",
+											"pricingDescription": "Add-ons billed monthly",
+											"price": 0,
+											"currency": "$",
+											"customPricingText": "$0/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "6MKn9Le7IwrfdSBLQvYWyi",
+										"value": true,
+										"plan": {
+											"contentfulId": "7JMDjiexzE2evvzrTjly8l",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Pro Plan",
+											"name": "Pro",
+											"description": "For professional websites that aren't business-critical.",
+											"pricingDescription": "Billed monthly",
+											"price": 20,
+											"currency": "$",
+											"customPricingText": "$20/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "4lJhMiUyJGvMwa83EzvOh0",
+										"value": true,
+										"plan": {
+											"contentfulId": "X0mi2lABGJXFQqE4wieTW",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Business Plan",
+											"name": "Business",
+											"description": "For small businesses operating online.",
+											"pricingDescription": "Billed monthly",
+											"price": 200,
+											"currency": "$",
+											"customPricingText": "$200/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "7HdbF9EKXyF9YGGp4aPQ4g",
+										"value": true,
+										"plan": {
+											"contentfulId": "9KE9tgEmXrKuduOkp2NKd",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Enterprise Plan",
+											"name": "Enterprise",
+											"description": "For mission-critical applications that are core to your business.",
+											"pricingDescription": "Billed annually",
+											"price": null,
+											"currency": null,
+											"customPricingText": "Custom",
+											"billingCycle": null
+										}
+									}
+								]
+							},
+							{
+								"contentfulId": "6krV7nuy6itGGb76xk26K5",
+								"contentTypeId": "planElementFeatures",
+								"name": "Lossless Image Optimization",
+								"description": "Polish applies \"lossless\" or optional \"lossy\" image optimization to reduce your image sizes by 35% on average.",
+								"planValues": [
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "4Yh6y69O07bwoOd6MbrFRN",
+										"value": false,
+										"plan": {
+											"contentfulId": "4J2b292gM2Io6Xb2UjbsLo",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Free Plan",
+											"name": "Free",
+											"description": "For personal or hobby projects that aren't business-critical.",
+											"pricingDescription": "Add-ons billed monthly",
+											"price": 0,
+											"currency": "$",
+											"customPricingText": "$0/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "4ozYL2TtaQAN6HY32gEGLG",
+										"value": true,
+										"plan": {
+											"contentfulId": "7JMDjiexzE2evvzrTjly8l",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Pro Plan",
+											"name": "Pro",
+											"description": "For professional websites that aren't business-critical.",
+											"pricingDescription": "Billed monthly",
+											"price": 20,
+											"currency": "$",
+											"customPricingText": "$20/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "1tpzRIsizHbptz2ikcz4rg",
+										"value": true,
+										"plan": {
+											"contentfulId": "X0mi2lABGJXFQqE4wieTW",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Business Plan",
+											"name": "Business",
+											"description": "For small businesses operating online.",
+											"pricingDescription": "Billed monthly",
+											"price": 200,
+											"currency": "$",
+											"customPricingText": "$200/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "4rkJhkSWESDGSvy7oPRoc1",
+										"value": true,
+										"plan": {
+											"contentfulId": "9KE9tgEmXrKuduOkp2NKd",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Enterprise Plan",
+											"name": "Enterprise",
+											"description": "For mission-critical applications that are core to your business.",
+											"pricingDescription": "Billed annually",
+											"price": null,
+											"currency": null,
+											"customPricingText": "Custom",
+											"billingCycle": null
+										}
+									}
+								]
+							},
+							{
+								"contentfulId": "2JNiOkngmNt3xcLqYNXpqn",
+								"contentTypeId": "planElementFeatures",
+								"name": "Accelerated Mobile Pages",
+								"description": "Mirage automatically optimizes image loading through virtualized and lazyloaded images. It detects the browser type of a visitor and optimizes performance for the particular device, improving the performance of images on a mobile connection.",
+								"planValues": [
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "5r8w9cpz668uCMz21Seas7",
+										"value": false,
+										"plan": {
+											"contentfulId": "4J2b292gM2Io6Xb2UjbsLo",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Free Plan",
+											"name": "Free",
+											"description": "For personal or hobby projects that aren't business-critical.",
+											"pricingDescription": "Add-ons billed monthly",
+											"price": 0,
+											"currency": "$",
+											"customPricingText": "$0/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "59cQKef650iXJ9S2obyStm",
+										"value": true,
+										"plan": {
+											"contentfulId": "7JMDjiexzE2evvzrTjly8l",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Pro Plan",
+											"name": "Pro",
+											"description": "For professional websites that aren't business-critical.",
+											"pricingDescription": "Billed monthly",
+											"price": 20,
+											"currency": "$",
+											"customPricingText": "$20/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "2XZhsJZgD4R5Kq0fvTci2",
+										"value": true,
+										"plan": {
+											"contentfulId": "X0mi2lABGJXFQqE4wieTW",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Business Plan",
+											"name": "Business",
+											"description": "For small businesses operating online.",
+											"pricingDescription": "Billed monthly",
+											"price": 200,
+											"currency": "$",
+											"customPricingText": "$200/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "XB1ZTccZ5gmACSAJYLIhH",
+										"value": true,
+										"plan": {
+											"contentfulId": "9KE9tgEmXrKuduOkp2NKd",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Enterprise Plan",
+											"name": "Enterprise",
+											"description": "For mission-critical applications that are core to your business.",
+											"pricingDescription": "Billed annually",
+											"price": null,
+											"currency": null,
+											"customPricingText": "Custom",
+											"billingCycle": null
+										}
+									}
+								]
+							},
+							{
+								"contentfulId": "JwvDx4vkLdQwuQrJnHaRM",
+								"contentTypeId": "planElementFeatures",
+								"name": "Uptime SLA",
+								"description": null,
+								"planValues": [
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "6z5FBtTuaL3NDrJoa6G069",
+										"value": false,
+										"plan": {
+											"contentfulId": "4J2b292gM2Io6Xb2UjbsLo",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Free Plan",
+											"name": "Free",
+											"description": "For personal or hobby projects that aren't business-critical.",
+											"pricingDescription": "Add-ons billed monthly",
+											"price": 0,
+											"currency": "$",
+											"customPricingText": "$0/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "34GfCbLQP4PS4J5bDTJWxE",
+										"value": false,
+										"plan": {
+											"contentfulId": "7JMDjiexzE2evvzrTjly8l",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Pro Plan",
+											"name": "Pro",
+											"description": "For professional websites that aren't business-critical.",
+											"pricingDescription": "Billed monthly",
+											"price": 20,
+											"currency": "$",
+											"customPricingText": "$20/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueText",
+										"contentTypeId": "planElementFeatureValueText",
+										"contentfulId": "6XxWubgAisjWbebXTZu7Cb",
+										"textValue": "100%",
+										"plan": {
+											"contentfulId": "X0mi2lABGJXFQqE4wieTW",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Business Plan",
+											"name": "Business",
+											"description": "For small businesses operating online.",
+											"pricingDescription": "Billed monthly",
+											"price": 200,
+											"currency": "$",
+											"customPricingText": "$200/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueText",
+										"contentTypeId": "planElementFeatureValueText",
+										"contentfulId": "1ct4o29VJ1ArtlShlk8T1v",
+										"textValue": "100%",
+										"plan": {
+											"contentfulId": "9KE9tgEmXrKuduOkp2NKd",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Enterprise Plan",
+											"name": "Enterprise",
+											"description": "For mission-critical applications that are core to your business.",
+											"pricingDescription": "Billed annually",
+											"price": null,
+											"currency": null,
+											"customPricingText": "Custom",
+											"billingCycle": null
+										}
+									}
+								]
+							},
+							{
+								"contentfulId": "zUX5gewcszapkgmS0x87A",
+								"contentTypeId": "planElementFeatures",
+								"name": "Network Prioritization",
+								"description": null,
+								"planValues": [
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "Kwd2QqBzbqbR3aCxqEY7N",
+										"value": false,
+										"plan": {
+											"contentfulId": "4J2b292gM2Io6Xb2UjbsLo",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Free Plan",
+											"name": "Free",
+											"description": "For personal or hobby projects that aren't business-critical.",
+											"pricingDescription": "Add-ons billed monthly",
+											"price": 0,
+											"currency": "$",
+											"customPricingText": "$0/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "1iQlD62m7tegMtFCWn3nqt",
+										"value": false,
+										"plan": {
+											"contentfulId": "7JMDjiexzE2evvzrTjly8l",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Pro Plan",
+											"name": "Pro",
+											"description": "For professional websites that aren't business-critical.",
+											"pricingDescription": "Billed monthly",
+											"price": 20,
+											"currency": "$",
+											"customPricingText": "$20/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "7bWs9hFEKdDO83WexjIjAU",
+										"value": false,
+										"plan": {
+											"contentfulId": "X0mi2lABGJXFQqE4wieTW",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Business Plan",
+											"name": "Business",
+											"description": "For small businesses operating online.",
+											"pricingDescription": "Billed monthly",
+											"price": 200,
+											"currency": "$",
+											"customPricingText": "$200/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueBoolean",
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "2b3HV86jnWwsv9rsHVqREh",
+										"value": true,
+										"plan": {
+											"contentfulId": "9KE9tgEmXrKuduOkp2NKd",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Enterprise Plan",
+											"name": "Enterprise",
+											"description": "For mission-critical applications that are core to your business.",
+											"pricingDescription": "Billed annually",
+											"price": null,
+											"currency": null,
+											"customPricingText": "Custom",
+											"billingCycle": null
+										}
+									}
+								]
+							},
+							{
+								"contentfulId": "72wRpCz34uIOBF97C63LuE",
+								"contentTypeId": "planElementFeatures",
+								"name": "Bot Mitigation",
+								"description": "Manage good and bad bots in real-time with speed and accuracy by harnessing the data from the millions of Internet properties on Cloudflare.",
+								"planValues": [
+									{
+										"__typename": "planElementFeatureValueText",
+										"contentTypeId": "planElementFeatureValueText",
+										"contentfulId": "50QkfuSTjPWuDMGPHtsSnS",
+										"textValue": "Simple bots",
+										"plan": {
+											"contentfulId": "4J2b292gM2Io6Xb2UjbsLo",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Free Plan",
+											"name": "Free",
+											"description": "For personal or hobby projects that aren't business-critical.",
+											"pricingDescription": "Add-ons billed monthly",
+											"price": 0,
+											"currency": "$",
+											"customPricingText": "$0/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueText",
+										"contentTypeId": "planElementFeatureValueText",
+										"contentfulId": "3F9wsV7pX5Tid2JkN0mObT",
+										"textValue": "More advanced bots",
+										"plan": {
+											"contentfulId": "7JMDjiexzE2evvzrTjly8l",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Pro Plan",
+											"name": "Pro",
+											"description": "For professional websites that aren't business-critical.",
+											"pricingDescription": "Billed monthly",
+											"price": 20,
+											"currency": "$",
+											"customPricingText": "$20/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueText",
+										"contentTypeId": "planElementFeatureValueText",
+										"contentfulId": "4FiPaZHyGdesfUa2Q0jTDB",
+										"textValue": "Sophisticated bots and basic bot analytics",
+										"plan": {
+											"contentfulId": "X0mi2lABGJXFQqE4wieTW",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Business Plan",
+											"name": "Business",
+											"description": "For small businesses operating online.",
+											"pricingDescription": "Billed monthly",
+											"price": 200,
+											"currency": "$",
+											"customPricingText": "$200/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"__typename": "planElementFeatureValueText",
+										"contentTypeId": "planElementFeatureValueText",
+										"contentfulId": "DB2zmgwgdlpK3YQgub66I",
+										"textValue": "All bots, anomaly detection, custom CAPTCHAs & threat response, advanced bot analytics, and more",
+										"plan": {
+											"contentfulId": "9KE9tgEmXrKuduOkp2NKd",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Enterprise Plan",
+											"name": "Enterprise",
+											"description": "For mission-critical applications that are core to your business.",
+											"pricingDescription": "Billed annually",
+											"price": null,
+											"currency": null,
+											"customPricingText": "Custom",
+											"billingCycle": null
+										}
+									}
+								]
+							}
+						],
+						"planFeaturesGroup": null
+					},
+					{
+						"__typename": "bladeImageText",
+						"contentfulId": "jRVJynjvP3ZdGLHUwFJBj",
+						"title": "Fast mitigation",
+						"copy": "Cloudflare centralized and decentralized mitigation systems work in concert to identify and mitigate most DDoS attacks in under 10 seconds (3 seconds on average). Preconfigured static rules are deployed in less than 1 second.",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": null,
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": {
+							"file": {
+								"publicURL": "[path]/10-sec_Illustration_3x.png"
+							}
+						},
+						"imageAssetFile": null,
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": "AUTOMATED, UNMETERED, ALWAYS-ON DDOS PROTECTION",
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": "tile--no-top-padding",
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": null,
+						"imageTextAlignment": null,
+						"togglesTo": null
 					},
 					{
 						"__typename": "bladeQuote",
@@ -344,76 +1401,10 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeFourFeatures",
-						"contentfulId": "4B0sO5jdZ0bX738Wrlmp3c",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
-						"title": "Industry-leading DDoS mitigation",
-						"subtitle": null,
-						"bladeStyle": null,
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "1r41pdSKFGB3rLrzFAG7xj",
-								"title": "IDC",
-								"titleSize": null,
-								"description": "Cloudflare was named a \"[Leader](https://www.cloudflare.com/lp/idc-ddos-marketscape/)\" according to the 2019 'IDC MarketScape: Worldwide DDoS Prevention Solutions' <sup class=\"text--black\">1</sup>",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "179FSFSoINVIx0pJ3dbP88",
-								"title": "Gartner",
-								"titleSize": null,
-								"description": "Cloudflare has received the most number of 'High' ratings as compared to the other 6 DDoS vendors across 23 assessment criteria in Gartner's 2020 'Solution Comparison for DDoS Cloud Scrubbing Centers' [report](https://www.gartner.com/document/3983636) <sup class=\"text--black\">2</sup>",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "476uAaZNk3mloZS95jQkG8",
-								"title": "Forrester",
-								"titleSize": null,
-								"description": "Cloudflare has been recognized as a \"[Leader](https://www.cloudflare.com/forrester-wave-ddos-mitigation-2021/)\" in 'The Forrester Wave: DDoS Mitigation Solutions, Q1, 2021' report <sup class=\"text--black\">3</sup>",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						]
-					},
-					{
 						"__typename": "bladeImageText",
-						"contentfulId": "jRVJynjvP3ZdGLHUwFJBj",
-						"title": "Fast mitigation",
-						"copy": "Cloudflare centralized and decentralized mitigation systems work in concert to identify and mitigate most DDoS attacks in under 10 seconds (3 seconds on average). Preconfigured static rules are deployed in less than 1 second.",
+						"contentfulId": "3C44K7KkS4CD7cgGDMVsmp",
+						"title": "Security with fast performance",
+						"copy": "Cloudflare's DDoS protection is designed to integrate and operate seamlessly with other security and performance products including Web Application Firewall, Bot Management, Load Balancer, CDN, and more.",
 						"toggleText": null,
 						"button": null,
 						"learnMoreUrl": null,
@@ -434,16 +1425,16 @@
 						"streamPosterAssetFile": null,
 						"image": {
 							"file": {
-								"publicURL": "[path]/10-sec_Illustration_3x.png"
+								"publicURL": "[path]/performance-acceleration-spot-illustration.svg"
 							}
 						},
 						"imageAssetFile": null,
 						"featureList": null,
 						"contentTypeId": "bladeImageText",
-						"sectionTitle": "AUTOMATED, UNMETERED, ALWAYS-ON DDOS PROTECTION",
+						"sectionTitle": null,
 						"htmlId": null,
 						"titleSize": null,
-						"sectionPadding": "tile--no-top-padding",
+						"sectionPadding": null,
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": true,
@@ -512,301 +1503,6 @@
 						"imageSize": null,
 						"imageTextAlignment": null,
 						"togglesTo": null
-					},
-					{
-						"__typename": "bladeImageText",
-						"contentfulId": "3C44K7KkS4CD7cgGDMVsmp",
-						"title": "Security with fast performance",
-						"copy": "Cloudflare's DDoS protection is designed to integrate and operate seamlessly with other security and performance products including Web Application Firewall, Bot Management, Load Balancer, CDN, and more.",
-						"toggleText": null,
-						"button": null,
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": null,
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "[path]/performance-acceleration-spot-illustration.svg"
-							}
-						},
-						"imageAssetFile": null,
-						"featureList": null,
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": true,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": null
-					},
-					{
-						"__typename": "bladeTrustedBy",
-						"contentTypeId": "bladeTrustedBy",
-						"contentfulId": "bGXZcQriItbwEaMlcrTcV",
-						"bladeBorder": "none",
-						"textColor": "black",
-						"linkText": "View case studies",
-						"linkUrl": "https://www.cloudflare.com/case-studies/",
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"title": "Trusted by millions of Internet properties",
-						"copy": null,
-						"logoList": [
-							{
-								"file": {
-									"publicURL": "[path]/logo_mars_gray_32px-wrapper.svg"
-								}
-							},
-							{
-								"file": {
-									"publicURL": "[path]/logo_loreal_gray_32px-wrapper.svg"
-								}
-							},
-							{
-								"file": {
-									"publicURL": "[path]/logo_doordash_gray_32px-wrapper.svg"
-								}
-							},
-							{
-								"file": {
-									"publicURL": "[path]/logo_garmin_gray_32px-wrapper.svg"
-								}
-							},
-							{
-								"file": {
-									"publicURL": "[path]/logo_ibm_gray_32px-wrapper.svg"
-								}
-							},
-							{
-								"file": {
-									"publicURL": "[path]/logo_23andme_color_32px-wrapper.svg"
-								}
-							},
-							{
-								"file": {
-									"publicURL": "[path]/logo_shopify_color_32px-wrapper.svg"
-								}
-							},
-							{
-								"file": {
-									"publicURL": "[path]/logo_lending-tree_color_32px-wrapper.svg"
-								}
-							},
-							{
-								"file": {
-									"publicURL": "[path]/logo_labcorp_color_32px-wrapper.svg"
-								}
-							},
-							{
-								"file": {
-									"publicURL": "[path]/logo_ncr_gray_32px-wrapper.svg"
-								}
-							},
-							{
-								"file": {
-									"publicURL": "[path]/logo_thomson-reuters_gray_32px-wrapper.svg"
-								}
-							},
-							{
-								"file": {
-									"publicURL": "[path]/logo_zendesk_gray_32px-wrapper.svg"
-								}
-							}
-						],
-						"logoListAssetFile": [
-							{
-								"id": "9a8f1b8a-cd07-5907-979a-86b8a90c1c80",
-								"altText": "Logo mars trusted by gray",
-								"title": "Logo mars trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "[path]/logo_mars_trusted-by_gray.svg"
-									}
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "8c37a7a6-cf55-55cf-a5aa-626692cbb63d",
-								"altText": "Logo loreal trusted by gray",
-								"title": "Logo loreal trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "[path]/logo_loreal_trusted-by_gray.svg"
-									}
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "7cbc697b-807d-5a77-81f0-a4b597366f29",
-								"altText": "Logo doordash trusted by gray",
-								"title": "Logo doordash trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "[path]/logo_doordash_trusted-by_gray.svg"
-									}
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "302a3744-177c-549c-a3e3-ba0eccb9558a",
-								"altText": "Logo garmin trusted by gray",
-								"title": "Logo garmin trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "[path]/logo_garmin_trusted-by_gray.svg"
-									}
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "f1f3837d-a408-5f08-8ead-06d1108cd0e1",
-								"altText": "Logo ibm trusted by gray",
-								"title": "Logo ibm trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "[path]/logo_ibm_trusted-by_gray.svg"
-									}
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "ffd4a407-4457-5421-8b20-54433e485cc7",
-								"altText": "Logo 23andme trusted by gray",
-								"title": "Logo 23andme trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "[path]/logo_23andme_color_32px-wrapper.svg"
-									}
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "128d1d80-3d3f-5e8a-8559-33dbf5392576",
-								"altText": "Logo shopify trusted by gray",
-								"title": "Logo shopify trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "[path]/logo_shopify_trusted-by_gray.svg"
-									}
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "5d11dee2-570b-5d45-86a2-634fc4c71ce1",
-								"altText": "Logo lending tree trusted by gray",
-								"title": "Logo lending tree trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "[path]/logo_lending-tree_color_32px-wrapper.svg"
-									}
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "6f68ad17-e6c8-5155-877e-91855b51cee0",
-								"altText": "Logo labcorp trusted by gray",
-								"title": "Logo labcorp trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "[path]/logo_labcorp_trusted-by_gray.svg"
-									}
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "d20283f3-6fa3-50d0-91a1-715d8d303897",
-								"altText": "Logo ncr trusted by gray",
-								"title": "Logo ncr trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "[path]/logo_ncr_gray_32px-wrapper.svg"
-									}
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "626a14c0-589d-5fff-b8aa-155b8bc7392c",
-								"altText": "Logo thomson reuters trusted by gray",
-								"title": "Logo thomson reuters trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "[path]/logo_thomson-reuters_gray_32px-wrapper.svg"
-									}
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							},
-							{
-								"id": "7b63d2ac-0e8f-5b5b-aeab-27b7128928e8",
-								"altText": "Logo zendesk trusted by gray",
-								"title": "Logo zendesk trusted by gray",
-								"activeAsset": "Contentful Asset",
-								"locale": "en-US",
-								"contentfulAsset": {
-									"file": {
-										"publicURL": "[path]/logo_zendesk_gray_32px-wrapper.svg"
-									}
-								},
-								"brandfolderAsset": null,
-								"brandfolderAssetMobile": null
-							}
-						],
-						"logoUrlList": null
-					},
-					{
-						"__typename": "bladeHtml",
-						"contentTypeId": "bladeHtml",
-						"contentfulId": "1MVaGs7JgX2F2RQ30LjCOj",
-						"htmlContent": "<div class=\"flex flex-column items-center\">\n<p class=\"text--black text--extra-small\"><sup class=\"text--black\">1</sup> Gartner \"Solution Comparison for DDoS Cloud Scrubbing Centers,\" Thomas Lintemuth,  Patrick Hevesi, Sushil Aryal, 16 April 2020. Gartner subscribers access the report at: https://www.gartner.com/document/3983636 <sup class=\"text--black\">2</sup> IDC MarketScape: Worldwide DDoS Prevention Solutions 2019 Vendor Assessment, by Martha Vazquez, March 2019, IDC #US43699318. Access the report at https://www.cloudflare.com/lp/idc-ddos-marketscape/ <sup class=\"text--black\">3</sup> Forrester Wave™: DDoS Mitigation Solutions, Q4 2017, Forrester Research, Inc., December 7, 2017. Access the report at https://www.cloudflare.com/forrester-wave-ddos-mitigation-2017/</p>\n</div>",
-						"htmlId": null
 					}
 				],
 				"noindex": false,
@@ -858,7 +1554,7 @@
 			},
 			"site": {
 				"siteMetadata": {
-					"baseURL": "https://q2-2022-press-release.preview.mrk.cfdata.org"
+					"baseURL": "https://www.cloudflare.com"
 				}
 			}
 		},
@@ -870,7 +1566,7 @@
 				"en-US",
 				"de-DE"
 			],
-			"baseURL": "https://q2-2022-press-release.preview.mrk.cfdata.org"
+			"baseURL": "https://www.cloudflare.com"
 		}
 	}
 }
