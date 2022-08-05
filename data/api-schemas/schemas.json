@@ -75702,6 +75702,11 @@
 													"background_color": {
 														"type": "string",
 														"description": "Block page background color in #rrggbb format"
+													},
+													"suppress_footer": {
+														"type": "boolean",
+														"description": "Suppress detailed info at the bottom of the block page",
+														"example": false
 													}
 												}
 											},
