@@ -446,7 +446,7 @@
 						"__typename": "bladeImageText",
 						"contentfulId": "3J3LnjOTGnBsuh7wCEbhcU",
 						"title": "Baking resilience into our network using Anycast",
-						"copy": "Our Magic products use Anycast IP addresses for network tunnel endpoints — so a single tunnel configured from your network to Cloudflare connects to 200 global data centers. This does not add strain on your router; from your router's perspective, it is a single tunnel to a single IP address.\n\nThis works because while the tunnel endpoint is technically bound to an IP address, it need not be bound to a specific device. Any device that can strip off the outer headers and then route the inner packet can handle any packet sent over the tunnel.\n\nIn the event of a network outage or other issues, tunnels fail over automatically — with no impact to your network performance.",
+						"copy": "Our Magic products use Anycast IP addresses for network tunnel endpoints — so a single tunnel configured from your network to Cloudflare connects to %{DataCenterCount} network locations globally. This does not add strain on your router; from your router's perspective, it is a single tunnel to a single IP address.\n\nThis works because while the tunnel endpoint is technically bound to an IP address, it need not be bound to a specific device. Any device that can strip off the outer headers and then route the inner packet can handle any packet sent over the tunnel.\n\nIn the event of a network outage or other issues, tunnels fail over automatically — with no impact to your network performance.",
 						"toggleText": null,
 						"button": null,
 						"learnMoreUrl": null,
