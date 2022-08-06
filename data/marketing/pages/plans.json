@@ -6766,6 +6766,86 @@
 										]
 									},
 									{
+										"contentfulId": "30moGSY68f09M9YqOeLbNg",
+										"contentTypeId": "planElementFeatures",
+										"name": "Cloudflare Managed Rules",
+										"description": null,
+										"planValues": [
+											{
+												"__typename": "planElementFeatureValueBoolean",
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "45i117bVbGO9InZsRCXCLg",
+												"value": true,
+												"plan": {
+													"contentfulId": "4J2b292gM2Io6Xb2UjbsLo",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Application Services - Free Plan",
+													"name": "Free",
+													"description": "For personal or hobby projects that aren't business-critical.",
+													"pricingDescription": "Add-ons billed monthly",
+													"price": 0,
+													"currency": "$",
+													"customPricingText": "$0/month",
+													"billingCycle": "monthly"
+												}
+											},
+											{
+												"__typename": "planElementFeatureValueBoolean",
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "5ACziKgh80CjwAxW0stWCW",
+												"value": true,
+												"plan": {
+													"contentfulId": "7JMDjiexzE2evvzrTjly8l",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Application Services - Pro Plan",
+													"name": "Pro",
+													"description": "For professional websites that aren't business-critical.",
+													"pricingDescription": "Billed monthly",
+													"price": 20,
+													"currency": "$",
+													"customPricingText": "$20/month",
+													"billingCycle": "monthly"
+												}
+											},
+											{
+												"__typename": "planElementFeatureValueBoolean",
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "1YSPmjmI0OH03Bbd7v5WW2",
+												"value": true,
+												"plan": {
+													"contentfulId": "X0mi2lABGJXFQqE4wieTW",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Application Services - Business Plan",
+													"name": "Business",
+													"description": "For small businesses operating online.",
+													"pricingDescription": "Billed monthly",
+													"price": 200,
+													"currency": "$",
+													"customPricingText": "$200/month",
+													"billingCycle": "monthly"
+												}
+											},
+											{
+												"__typename": "planElementFeatureValueBoolean",
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "4wzQ9o3KTMiN5bXzhfhRO8",
+												"value": true,
+												"plan": {
+													"contentfulId": "9KE9tgEmXrKuduOkp2NKd",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Application Services - Enterprise Plan",
+													"name": "Enterprise",
+													"description": "For mission-critical applications that are core to your business.",
+													"pricingDescription": "Billed annually",
+													"price": null,
+													"currency": null,
+													"customPricingText": "Custom",
+													"billingCycle": null
+												}
+											}
+										]
+									},
+									{
 										"contentfulId": "3D5o1UZEiN4RhvC3RTJgd3",
 										"contentTypeId": "planElementFeatures",
 										"name": "OWASP Core Rulesets",
@@ -7556,6 +7636,86 @@
 												"__typename": "planElementFeatureValueBoolean",
 												"contentTypeId": "planElementFeatureValueBoolean",
 												"contentfulId": "4Rqs9Z10rUgYHsJI7ho8FQ",
+												"value": true,
+												"plan": {
+													"contentfulId": "9KE9tgEmXrKuduOkp2NKd",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Application Services - Enterprise Plan",
+													"name": "Enterprise",
+													"description": "For mission-critical applications that are core to your business.",
+													"pricingDescription": "Billed annually",
+													"price": null,
+													"currency": null,
+													"customPricingText": "Custom",
+													"billingCycle": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "1lvNFVe76sInVWg14WTIk8",
+										"contentTypeId": "planElementFeatures",
+										"name": "DNSSEC",
+										"description": "DNSSEC ensures that a website's traffic is safely directed to the correct servers, so that a connection to a website is not intercepted by a man-in-the-middle.",
+										"planValues": [
+											{
+												"__typename": "planElementFeatureValueBoolean",
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "2BWIzUG5tw0yXYLbxv13m3",
+												"value": true,
+												"plan": {
+													"contentfulId": "4J2b292gM2Io6Xb2UjbsLo",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Application Services - Free Plan",
+													"name": "Free",
+													"description": "For personal or hobby projects that aren't business-critical.",
+													"pricingDescription": "Add-ons billed monthly",
+													"price": 0,
+													"currency": "$",
+													"customPricingText": "$0/month",
+													"billingCycle": "monthly"
+												}
+											},
+											{
+												"__typename": "planElementFeatureValueBoolean",
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "7o0iL01ahG7iHwj5FsQrRy",
+												"value": true,
+												"plan": {
+													"contentfulId": "7JMDjiexzE2evvzrTjly8l",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Application Services - Pro Plan",
+													"name": "Pro",
+													"description": "For professional websites that aren't business-critical.",
+													"pricingDescription": "Billed monthly",
+													"price": 20,
+													"currency": "$",
+													"customPricingText": "$20/month",
+													"billingCycle": "monthly"
+												}
+											},
+											{
+												"__typename": "planElementFeatureValueBoolean",
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "1P3ng3qpXICZH6hycy0eok",
+												"value": true,
+												"plan": {
+													"contentfulId": "X0mi2lABGJXFQqE4wieTW",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Application Services - Business Plan",
+													"name": "Business",
+													"description": "For small businesses operating online.",
+													"pricingDescription": "Billed monthly",
+													"price": 200,
+													"currency": "$",
+													"customPricingText": "$200/month",
+													"billingCycle": "monthly"
+												}
+											},
+											{
+												"__typename": "planElementFeatureValueBoolean",
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "1Z5RJWhcwLELpuwO0Em8Ik",
 												"value": true,
 												"plan": {
 													"contentfulId": "9KE9tgEmXrKuduOkp2NKd",
