@@ -33,7 +33,7 @@ function propertiesToArray(obj){
 }
 const dir = path.resolve(`../data/cdn-cgi`);
 try{
-	await fs.rm(dir, {
+	await fs.rm(path.resolve(dir, './error'), {
 		recursive: true,
 	});
 }catch{} // we tried
