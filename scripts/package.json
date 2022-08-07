@@ -10,7 +10,7 @@
 	"scripts": {
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
-		"mine": "npm run mine:npm && npm run mine:types && npm run mine:github && npm run mine:api-schemas && npm run mine:cdn-cgi && npm run mine:ips && npm run mine:coveo && npm run mine:gates",
+		"mine": "npm run mine:npm && npm run mine:types && npm run mine:github && npm run mine:api-schemas && npm run mine:cdn-cgi && npm run mine:ips && npm run mine:coveo && npm run mine:gates && npm run mine:products",
 		"mine:api-schemas": "node src/api-schemas.js",
 		"mine:cdn-cgi": "node src/cdn-cgi.js",
 		"mine:coveo": "node src/coveo.js",
@@ -21,6 +21,9 @@
 		"mine:ips": "node src/ips.js",
 		"mine:npm": "node src/npm.js",
 		"mine:marketing": "node src/marketing.js",
+		"mine:products": "npm run mine:product:pages && npm run mine:product:workers",
+		"mine:product:pages": "node src/products/pages.js",
+		"mine:product:workers": "node src/products/workers.js",
 		"mine:types": "node src/types.js",
 		"mine:zt-dashboard": "node src/zt-dashboard.js"
 	},
@@ -45,6 +48,7 @@
 		"eslint-plugin-unicorn": "43.0.2",
 		"fast-xml-parser": "4.0.9",
 		"filenamify": "5.1.1",
+		"flat": "5.0.2",
 		"fs-extra": "10.1.0",
 		"get-urls": "11.0.0",
 		"hex-color-regex": "1.1.0",
