@@ -48,7 +48,7 @@ console.log('Making requests...');
 for(const req of reqs){
 	const file = path.resolve(dir, `${req.name}.json`);
 	const url = req.url;
-	console.log(`Fetch for ${req.name}...`, url);
+	console.log(`Fetch for ${req.name}...`);
 	const res = await cfRequest(url, {
 		method: req.method,
 		body: req.body,
