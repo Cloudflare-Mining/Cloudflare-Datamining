@@ -35,3 +35,6 @@ jobs:
           COVEO_KEY: ${{ secrets.COVEO_KEY }}
           COVEO_ORGID: ${{ secrets.COVEO_ORGID }}
           GATES_API_KEY: ${{ secrets.GATES_API_KEY }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_GLOBAL_KEY: ${{ secrets.CLOUDFLARE_GLOBAL_KEY }}
+          CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}

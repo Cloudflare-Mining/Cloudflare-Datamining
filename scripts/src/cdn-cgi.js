@@ -11,26 +11,10 @@ const ip = ipRegex();
 const isoDate = /(\d{4}-[01]\d-[0-3]\dT[0-2](?:\d:[0-5]){2}\d\.\d+([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2](?:\d:[0-5]){2}\d([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z))/g;
 const niceDate = /\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} [+A-Za-z-]+/g;
 
-import {tryAndPush, getHttpsAgent} from './utils.js';
+import {tryAndPush, getHttpsAgent, propertiesToArray} from './utils.js';
 
 const agent = getHttpsAgent();
 
-function propertiesToArray(obj){
-	const isObject = val => val && typeof val === 'object' && !Array.isArray(val);
-
-	const addDelimiter = (delA, delB) => (delA ? `${delA}.${delB}` : delB);
-
-	const paths = (obj = {}, head = '') => Object.entries(obj)
-		.reduce((product, [key, value]) => {
-			const fullPath = addDelimiter(head, key);
-			if(isObject(value)){
-				return [...product, ...paths(value, fullPath)];
-			}
-			return [...product, fullPath];
-		}, []);
-
-	return paths(obj);
-}
 const dir = path.resolve(`../data/cdn-cgi`);
 try{
 	await fs.rm(path.resolve(dir, './error'), {

@@ -4,6 +4,7 @@ import process from 'node:process';
 import fetch from 'node-fetch';
 import simpleGit from 'simple-git';
 import jsBeautify from 'js-beautify';
+import flat from 'flat';
 
 // enablle keepalives for faster fetching
 import https from 'node:https';
@@ -131,4 +132,22 @@ export function sleep(ms){
 	console.log('Sleeping for', ms, 'ms');
 	// eslint-disable-next-line no-promise-executor-return
 	return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+export function propertiesToArray(obj){
+	return Object.keys(flat(obj));
+}
+
+const agent = getHttpsAgent();
+export function cfRequest(url, options = {}){
+	return fetch(url, {
+		...options,
+		headers: {
+			'X-Auth-Email': process.env.CLOUDFLARE_EMAIL,
+			'X-Auth-Key': process.env.CLOUDFLARE_GLOBAL_KEY,
+			'Content-Type': 'application/json',
+			...options.headers,
+		},
+		agent,
+	});
 }
