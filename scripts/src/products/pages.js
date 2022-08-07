@@ -50,7 +50,7 @@ for(const req of reqs){
 		url = url.replace('{deployment_id}', results['deployments-create'].result.id);
 	}
 
-	console.log(`Fetch for ${req.name}...`, url);
+	console.log(`Fetch for ${req.name}...`);
 	const res = await cfRequest(url, {
 		method: req.method,
 	});
