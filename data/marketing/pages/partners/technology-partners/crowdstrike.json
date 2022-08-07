@@ -35,7 +35,7 @@
 				"topNavButtonUrl": null,
 				"metaTags": {
 					"metaTitle": "CrowdStrike - Tech Partners",
-					"metaDescription": "Identify, investigate, and remediate threats faster with Cloudflare and CrowdStrike",
+					"metaDescription": "Identify, investigate, and remediate threats faster with Cloudflare and CrowdStrike.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -75,8 +75,11 @@
 						"textColor": "black",
 						"includeVideo": false,
 						"streamVideoId": null,
-						"streamOptions": null,
-						"streamCaptions": null,
+						"streamOptions": [
+							"controls",
+							"captions"
+						],
+						"streamCaptions": "en",
 						"popupStreamId": null,
 						"popupText": null,
 						"button1OpenInNewTab": null,
@@ -161,8 +164,10 @@
 						"button2Text": null,
 						"button2Url": null,
 						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
 						"streamVideoId": null,
 						"streamThumbnails": null,
 						"streamPoster": null,
@@ -203,8 +208,10 @@
 						"button2Text": null,
 						"button2Url": null,
 						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
 						"streamVideoId": null,
 						"streamThumbnails": null,
 						"streamPoster": null,
