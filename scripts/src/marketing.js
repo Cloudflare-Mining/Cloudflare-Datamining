@@ -20,6 +20,24 @@ const paths = new Set([
 ]);
 const morePaths = new Set([]);
 
+const shuffle = function(array){
+	let currentIndex = array.length;
+	let	randomIndex;
+
+	// While there remain elements to shuffle.
+	while(currentIndex !== 0){
+		// Pick a remaining element.
+		randomIndex = Math.floor(Math.random() * currentIndex);
+		currentIndex--;
+
+		// And swap it with the current element.
+		[array[currentIndex], array[randomIndex]] = [
+			array[randomIndex], array[currentIndex],
+		];
+	}
+
+	return array;
+};
 const removeTrailing = function(string){
 	return string.replace(/\/$/, '');
 };
@@ -113,6 +131,9 @@ const processPage = async function(urlPath){
 	console.log('Fetching', url);
 	const res = await fetch(url, {
 		agent,
+		headers: {
+			'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36',
+		},
 	});
 	const filePath = path.resolve(pagesDir, `${urlPath}.json`);
 	if(!res.ok){
@@ -207,11 +228,11 @@ async function run(){
 			addPath(rawPath);
 		}
 	}
-	for(const urlPath of paths){
+	for(const urlPath of shuffle([...paths])){
 		await processPage(urlPath);
 	}
 
-	for(const urlPath of morePaths){
+	for(const urlPath of shuffle([...morePaths])){
 		console.log('Processing more', urlPath);
 		await processPage(urlPath);
 	}
