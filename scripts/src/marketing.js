@@ -109,7 +109,7 @@ const stabiliseData = function(object){
 };
 
 const processPage = async function(urlPath){
-	const url = `https://marketing-page-data.jross.workers.dev/?path=${urlPath}`;
+	const url = `https://marketing-data.james.pub/?path=${urlPath}`;
 	console.log('Fetching', url);
 	const res = await fetch(url, {
 		agent,
@@ -194,7 +194,7 @@ async function run(){
 	const cfRes = await fetch('https://jross.me/cf.json');
 	const cf = await cfRes.json();
 	if(cf?.country !== 'US'){
-		console.log('Action isn\'t running in the US. Skipping marketing site processing.');
+		console.log('Action isn\'t running in the US. Skipping marketing site processing.', cf);
 		return;
 	}
 
