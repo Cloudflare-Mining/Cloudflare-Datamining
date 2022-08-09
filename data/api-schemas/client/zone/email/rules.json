@@ -1,0 +1,182 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/email/rules.json",
+	"title": "Email Routing - Settings",
+	"description": "Cloudflare Email Routing settings.",
+	"type": "object",
+	"links": [
+		{
+			"title": "Get Email Routing settings",
+			"description": "Get information about the settings for your Email Routing zone.",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_identifier}/email/routing",
+			"method": "GET",
+			"cfOwnership": "email",
+			"cfPermissionsRequired": {
+				"enum": [
+					"#zone_settings:read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "email-routing---settings-get-email-routing-settings",
+			"uri": "zones/:zone_identifier/email/routing",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/email/routing\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"tag\": \"75610dab9e69410a82cf7e400a09ecec\",\n    \"name\": \"example.net\",\n    \"enabled\": true,\n    \"created\": \"2014-01-02T02:20:00Z\",\n    \"modified\": \"2014-01-02T02:20:00Z\",\n    \"skip_wizard\": true,\n    \"status\": \"read\"\n  }\n}"
+		},
+		{
+			"title": "Enable Email Routing",
+			"description": "Enable you Email Routing zone. Add and lock the necessary MX and SPF records.",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_identifier}/email/routing/enabled",
+			"method": "POST",
+			"cfOwnership": "email",
+			"cfPermissionsRequired": {
+				"enum": [
+					"#zone_settings:edit"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "email-routing---settings-enable-email-routing",
+			"uri": "zones/:zone_identifier/email/routing/enabled",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/email/routing/enabled\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"tag\": \"75610dab9e69410a82cf7e400a09ecec\",\n    \"name\": \"example.net\",\n    \"enabled\": true,\n    \"created\": \"2014-01-02T02:20:00Z\",\n    \"modified\": \"2014-01-02T02:20:00Z\",\n    \"skip_wizard\": true,\n    \"status\": \"read\"\n  }\n}"
+		},
+		{
+			"title": "Disable Email Routing",
+			"description": "Disable your Email Routing zone. Also removes adicional MX records previsously required for Email Routing to work.",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_identifier}/email/routing/disable",
+			"method": "POST",
+			"cfOwnership": "email",
+			"cfPermissionsRequired": {
+				"enum": [
+					"#zone_settings:edit"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "email-routing---settings-disable-email-routing",
+			"uri": "zones/:zone_identifier/email/routing/disable",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/email/routing/disable\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"tag\": \"75610dab9e69410a82cf7e400a09ecec\",\n    \"name\": \"example.net\",\n    \"enabled\": true,\n    \"created\": \"2014-01-02T02:20:00Z\",\n    \"modified\": \"2014-01-02T02:20:00Z\",\n    \"skip_wizard\": true,\n    \"status\": \"read\"\n  }\n}"
+		},
+		{
+			"title": "Email Routing - DNS settings",
+			"description": "Show the DNS records needed to configure your Email Routing zone.",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_identifier}/email/routing/dns",
+			"method": "GET",
+			"cfOwnership": "email",
+			"cfPermissionsRequired": {
+				"enum": [
+					"#zone_settings:read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "email-routing---settings-email-routing---dns-settings",
+			"uri": "zones/:zone_identifier/email/routing/dns",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/email/routing/dns\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"type\": \"A\",\n      \"name\": \"example.com\",\n      \"content\": \"127.0.0.1\",\n      \"ttl\": 3600,\n      \"priority\": 10\n    }\n  ]\n}"
+		}
+	],
+	"html_id": "email-routing---settings",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"tag": {
+				"type": "string",
+				"example": "\"75610dab9e69410a82cf7e400a09ecec\"",
+				"description": "Email Routing settings identifier",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"name": {
+				"type": "string",
+				"example": "\"example.net\"",
+				"description": "Domain of your zone",
+				"readOnly": true
+			},
+			"enabled": {
+				"type": "boolean",
+				"example": "true",
+				"description": "State of Email Routing zone settings.",
+				"enum": [
+					true,
+					false
+				],
+				"default": true
+			},
+			"created": {
+				"type": "string",
+				"example": "\"2014-01-02T02:20:00Z\"",
+				"format": "date-time",
+				"description": "The date and time the settings have been created.",
+				"readOnly": true
+			},
+			"modified": {
+				"type": "string",
+				"example": "\"2014-01-02T02:20:00Z\"",
+				"format": "date-time",
+				"description": "The date and time the settings have been modified.",
+				"readOnly": true
+			},
+			"skip_wizard": {
+				"type": "boolean",
+				"example": "true",
+				"description": "Flag to check if the user skipped the configuration wizard.",
+				"enum": [
+					true,
+					false
+				],
+				"default": true
+			},
+			"status": {
+				"type": "string",
+				"example": "\"read\"",
+				"description": "Show the state of your account, and the type or configuration error.",
+				"enum": [
+					"ready",
+					"unconfigured",
+					"misconfigured",
+					"misconfigured/locked",
+					"unlocked"
+				],
+				"readOnly": true
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"tag",
+			"name",
+			"enabled",
+			"created",
+			"modified",
+			"skip_wizard",
+			"status"
+		],
+		"objects": [],
+		"example": "{\n  \"tag\": \"75610dab9e69410a82cf7e400a09ecec\",\n  \"name\": \"example.net\",\n  \"enabled\": true,\n  \"created\": \"2014-01-02T02:20:00Z\",\n  \"modified\": \"2014-01-02T02:20:00Z\",\n  \"skip_wizard\": true,\n  \"status\": \"read\"\n}",
+		"title": "Email Routing - Settings",
+		"description": "Cloudflare Email Routing settings."
+	}
+}

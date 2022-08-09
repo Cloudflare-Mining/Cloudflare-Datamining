@@ -1,0 +1,642 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/email/settings.json",
+	"title": "Email Routing - Routing rules",
+	"description": "Cloudflare Email Routing supports different routing rules. You can configure up to 200 different routing rules.",
+	"type": "object",
+	"links": [
+		{
+			"title": "List routing rules",
+			"description": "Lists existing routing rules.",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_identifier}/email/routing/rules",
+			"method": "GET",
+			"cfOwnership": "email",
+			"cfPermissionsRequired": {
+				"enum": [
+					"#zone_settings:read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "email-routing---routing-rules-list-routing-rules",
+			"uri": "zones/:zone_identifier/email/routing/rules",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/email/routing/rules?page=1&per_page=20&enabled=true\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"page": {
+						"type": "number",
+						"example": "1",
+						"description": "Page number of paginated results.",
+						"minimum": 1,
+						"default": 1
+					},
+					"per_page": {
+						"type": "number",
+						"example": "20",
+						"description": "Maximum number of results per page.",
+						"minimum": 5,
+						"maximum": 50,
+						"default": 20
+					},
+					"enabled": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Filter by enabled routing rules.",
+						"enum": [
+							true,
+							false
+						]
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"page",
+					"per_page",
+					"enabled"
+				],
+				"objects": [],
+				"example": "{\n  \"page\": 1,\n  \"per_page\": 20,\n  \"enabled\": true\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"tag\": \"a7e6fb77503c41d8a7f3113c6918f10c\",\n      \"name\": \"Rule send to user@example.net\",\n      \"priority\": 0,\n      \"enabled\": true,\n      \"matchers\": [\n        {\n          \"type\": \"literal\",\n          \"field\": \"to\",\n          \"value\": \"test@example.com\"\n        }\n      ],\n      \"actions\": [\n        {\n          \"type\": \"forward\",\n          \"value\": [\n            \"destinationaddress@example.net\"\n          ]\n        }\n      ]\n    }\n  ],\n  \"result_info\": {\n    \"page\": 1,\n    \"per_page\": 20,\n    \"count\": 1,\n    \"total_count\": 1\n  }\n}"
+		},
+		{
+			"title": "Create routing rule",
+			"description": "Create a new routing rule. Rules consist of a custom email address paired with a destination address, that forward emails to the destination address you chose.",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_identifier}/email/routing/rules",
+			"method": "POST",
+			"cfOwnership": "email",
+			"cfPermissionsRequired": {
+				"enum": [
+					"#zone_settings:edit"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "email-routing---routing-rules-create-routing-rule",
+			"uri": "zones/:zone_identifier/email/routing/rules",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/email/routing/rules\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"Rule send to user@example.net\",\"enabled\":true,\"priority\":0,\"matchers\":[{\"type\":\"literal\",\"field\":\"to\",\"value\":\"test@example.com\"}],\"actions\":[{\"type\":\"forward\",\"value\":[\"destinationaddress@example.net\"]}]}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"Rule send to user@example.net\"",
+						"description": "Routing rule name.",
+						"maxLength": 256
+					},
+					"enabled": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Routing rule status.",
+						"enum": [
+							true,
+							false
+						],
+						"default": true
+					},
+					"priority": {
+						"type": "number",
+						"example": "0",
+						"description": "Priority of the routing rule.",
+						"minimum": 0,
+						"default": 0
+					},
+					"matchers": {
+						"type": "array",
+						"example": "[\n  {\n    \"type\": \"literal\",\n    \"field\": \"to\",\n    \"value\": \"test@example.com\"\n  }\n]",
+						"description": "Matching patterns to forward to your actions.",
+						"items": {
+							"type": "object",
+							"description": "Matching pattern to forward your actions.",
+							"required": [
+								"type",
+								"field",
+								"value"
+							],
+							"properties": {
+								"type": {
+									"type": "string",
+									"description": "Type of matcher.",
+									"enum": [
+										"literal"
+									],
+									"example": "literal"
+								},
+								"field": {
+									"type": "string",
+									"description": "Field for type matcher.",
+									"enum": [
+										"to"
+									],
+									"example": "to"
+								},
+								"value": {
+									"type": "string",
+									"description": "Value for matcher.",
+									"maxLength": 90,
+									"example": "test@example.com"
+								}
+							}
+						}
+					},
+					"actions": {
+						"type": "array",
+						"example": "[\n  {\n    \"type\": \"forward\",\n    \"value\": [\n      \"destinationaddress@example.net\"\n    ]\n  }\n]",
+						"description": "List actions patterns.",
+						"items": {
+							"type": "object",
+							"description": "Actions pattern.",
+							"required": [
+								"type",
+								"value"
+							],
+							"properties": {
+								"type": {
+									"type": "string",
+									"description": "Action supported type.",
+									"enum": [
+										"forward",
+										"worker"
+									],
+									"example": "forward"
+								},
+								"value": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"description": "Value for action.",
+										"maxLength": 90,
+										"example": "destinationaddress@example.net"
+									}
+								}
+							}
+						}
+					}
+				},
+				"required_props": [
+					"actions",
+					"matchers"
+				],
+				"optional_props": [
+					"name",
+					"enabled",
+					"priority"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": \"Rule send to user@example.net\",\n  \"enabled\": true,\n  \"priority\": 0,\n  \"matchers\": [\n    {\n      \"type\": \"literal\",\n      \"field\": \"to\",\n      \"value\": \"test@example.com\"\n    }\n  ],\n  \"actions\": [\n    {\n      \"type\": \"forward\",\n      \"value\": [\n        \"destinationaddress@example.net\"\n      ]\n    }\n  ]\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"tag\": \"a7e6fb77503c41d8a7f3113c6918f10c\",\n    \"name\": \"Rule send to user@example.net\",\n    \"priority\": 0,\n    \"enabled\": true,\n    \"matchers\": [\n      {\n        \"type\": \"literal\",\n        \"field\": \"to\",\n        \"value\": \"test@example.com\"\n      }\n    ],\n    \"actions\": [\n      {\n        \"type\": \"forward\",\n        \"value\": [\n          \"destinationaddress@example.net\"\n        ]\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Get routing rule",
+			"description": "Get information for a specific routing rule already created.",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_identifier}/email/routing/rules/{#/definitions/rule_identifier}",
+			"method": "GET",
+			"cfOwnership": "email",
+			"cfPermissionsRequired": {
+				"enum": [
+					"#zone_settings:read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "email-routing---routing-rules-get-routing-rule",
+			"uri": "zones/:zone_identifier/email/routing/rules/:rule_identifier",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/email/routing/rules/a7e6fb77503c41d8a7f3113c6918f10c\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"tag\": \"a7e6fb77503c41d8a7f3113c6918f10c\",\n    \"name\": \"Rule send to user@example.net\",\n    \"priority\": 0,\n    \"enabled\": true,\n    \"matchers\": [\n      {\n        \"type\": \"literal\",\n        \"field\": \"to\",\n        \"value\": \"test@example.com\"\n      }\n    ],\n    \"actions\": [\n      {\n        \"type\": \"forward\",\n        \"value\": [\n          \"destinationaddress@example.net\"\n        ]\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Update routing rule",
+			"description": "Update actions, matches, or enable/disable specific routing rules",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_identifier}/email/routing/rules/{#/definitions/rule_identifier}",
+			"method": "PUT",
+			"cfOwnership": "email",
+			"cfPermissionsRequired": {
+				"enum": [
+					"#zone_settings:edit"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "email-routing---routing-rules-update-routing-rule",
+			"uri": "zones/:zone_identifier/email/routing/rules/:rule_identifier",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/email/routing/rules/a7e6fb77503c41d8a7f3113c6918f10c\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"Rule send to user@example.net\",\"enabled\":true,\"priority\":0,\"matchers\":[{\"type\":\"literal\",\"field\":\"to\",\"value\":\"test@example.com\"}],\"actions\":[{\"type\":\"forward\",\"value\":[\"destinationaddress@example.net\"]}]}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"Rule send to user@example.net\"",
+						"description": "Routing rule name.",
+						"maxLength": 256
+					},
+					"enabled": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Routing rule status.",
+						"enum": [
+							true,
+							false
+						],
+						"default": true
+					},
+					"priority": {
+						"type": "number",
+						"example": "0",
+						"description": "Priority of the routing rule.",
+						"minimum": 0,
+						"default": 0
+					},
+					"matchers": {
+						"type": "array",
+						"example": "[\n  {\n    \"type\": \"literal\",\n    \"field\": \"to\",\n    \"value\": \"test@example.com\"\n  }\n]",
+						"description": "Matching patterns to forward to your actions.",
+						"items": {
+							"type": "object",
+							"description": "Matching pattern to forward your actions.",
+							"required": [
+								"type",
+								"field",
+								"value"
+							],
+							"properties": {
+								"type": {
+									"type": "string",
+									"description": "Type of matcher.",
+									"enum": [
+										"literal"
+									],
+									"example": "literal"
+								},
+								"field": {
+									"type": "string",
+									"description": "Field for type matcher.",
+									"enum": [
+										"to"
+									],
+									"example": "to"
+								},
+								"value": {
+									"type": "string",
+									"description": "Value for matcher.",
+									"maxLength": 90,
+									"example": "test@example.com"
+								}
+							}
+						}
+					},
+					"actions": {
+						"type": "array",
+						"example": "[\n  {\n    \"type\": \"forward\",\n    \"value\": [\n      \"destinationaddress@example.net\"\n    ]\n  }\n]",
+						"description": "List actions patterns.",
+						"items": {
+							"type": "object",
+							"description": "Actions pattern.",
+							"required": [
+								"type",
+								"value"
+							],
+							"properties": {
+								"type": {
+									"type": "string",
+									"description": "Action supported type.",
+									"enum": [
+										"forward",
+										"worker"
+									],
+									"example": "forward"
+								},
+								"value": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"description": "Value for action.",
+										"maxLength": 90,
+										"example": "destinationaddress@example.net"
+									}
+								}
+							}
+						}
+					}
+				},
+				"required_props": [
+					"actions",
+					"matchers"
+				],
+				"optional_props": [
+					"name",
+					"enabled",
+					"priority"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": \"Rule send to user@example.net\",\n  \"enabled\": true,\n  \"priority\": 0,\n  \"matchers\": [\n    {\n      \"type\": \"literal\",\n      \"field\": \"to\",\n      \"value\": \"test@example.com\"\n    }\n  ],\n  \"actions\": [\n    {\n      \"type\": \"forward\",\n      \"value\": [\n        \"destinationaddress@example.net\"\n      ]\n    }\n  ]\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"tag\": \"a7e6fb77503c41d8a7f3113c6918f10c\",\n    \"name\": \"Rule send to user@example.net\",\n    \"priority\": 0,\n    \"enabled\": true,\n    \"matchers\": [\n      {\n        \"type\": \"literal\",\n        \"field\": \"to\",\n        \"value\": \"test@example.com\"\n      }\n    ],\n    \"actions\": [\n      {\n        \"type\": \"forward\",\n        \"value\": [\n          \"destinationaddress@example.net\"\n        ]\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Delete routing rule",
+			"description": "Delete a specific routing rule.",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_identifier}/email/routing/rules/{#/definitions/rule_identifier}",
+			"method": "DELETE",
+			"cfOwnership": "email",
+			"cfPermissionsRequired": {
+				"enum": [
+					"#zone_settings:edit"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "email-routing---routing-rules-delete-routing-rule",
+			"uri": "zones/:zone_identifier/email/routing/rules/:rule_identifier",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/email/routing/rules/a7e6fb77503c41d8a7f3113c6918f10c\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"tag\": \"a7e6fb77503c41d8a7f3113c6918f10c\",\n    \"name\": \"Rule send to user@example.net\",\n    \"priority\": 0,\n    \"enabled\": true,\n    \"matchers\": [\n      {\n        \"type\": \"literal\",\n        \"field\": \"to\",\n        \"value\": \"test@example.com\"\n      }\n    ],\n    \"actions\": [\n      {\n        \"type\": \"forward\",\n        \"value\": [\n          \"destinationaddress@example.net\"\n        ]\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Get catch-all rule",
+			"description": "Get information on the default catch-all routing rule.",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_identifier}/email/routing/rules/catch_all",
+			"method": "GET",
+			"cfOwnership": "email",
+			"cfPermissionsRequired": {
+				"enum": [
+					"#zone_settings:read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "email-routing---routing-rules-get-catch-all-rule",
+			"uri": "zones/:zone_identifier/email/routing/rules/catch_all",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/email/routing/rules/catch_all\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"tag\": \"a7e6fb77503c41d8a7f3113c6918f10c\",\n  \"name\": \"Rule send to user@example.net\",\n  \"enabled\": true,\n  \"matchers\": [\n    {\n      \"type\": \"all\"\n    }\n  ],\n  \"actions\": [\n    {\n      \"type\": \"forward\",\n      \"value\": [\n        \"destinationaddress@example.net\"\n      ]\n    }\n  ]\n}"
+		},
+		{
+			"title": "Update catch-all rule",
+			"description": "Enable or disable catch-all routing rule, or change action to forward to specific destination address.",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_identifier}/email/routing/rules/catch_all",
+			"method": "PUT",
+			"cfOwnership": "email",
+			"cfPermissionsRequired": {
+				"enum": [
+					"#zone_settings:read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "email-routing---routing-rules-update-catch-all-rule",
+			"uri": "zones/:zone_identifier/email/routing/rules/catch_all",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/email/routing/rules/catch_all\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"Rule send to user@example.net\",\"enabled\":true,\"matchers\":[{\"type\":\"all\"}],\"actions\":[{\"type\":\"forward\",\"value\":[\"destinationaddress@example.net\"]}]}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"Rule send to user@example.net\"",
+						"description": "Routing rule name.",
+						"maxLength": 256
+					},
+					"enabled": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Routing rule status.",
+						"enum": [
+							true,
+							false
+						],
+						"default": true
+					},
+					"matchers": {
+						"type": "array",
+						"example": "[\n  {\n    \"type\": \"all\"\n  }\n]",
+						"description": "List of matchers for the catch-all routing rule.",
+						"items": {
+							"type": "object",
+							"description": "Matcher for catch-all routing rule.",
+							"required": [
+								"type"
+							],
+							"properties": {
+								"type": {
+									"type": "string",
+									"description": "Type of matcher. Default is 'all'.",
+									"enum": [
+										"all"
+									],
+									"example": "all"
+								}
+							}
+						}
+					},
+					"actions": {
+						"type": "array",
+						"example": "[\n  {\n    \"type\": \"forward\",\n    \"value\": [\n      \"destinationaddress@example.net\"\n    ]\n  }\n]",
+						"description": "List actions for the catch-all routing rule.",
+						"items": {
+							"type": "object",
+							"description": "Action for the catch-all routing rule.",
+							"required": [
+								"type"
+							],
+							"properties": {
+								"type": {
+									"type": "string",
+									"description": "Type of action for catch-all rule.",
+									"enum": [
+										"drop",
+										"forward",
+										"worker"
+									],
+									"example": "forward"
+								},
+								"value": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"description": "Input value for action",
+										"maxLength": 90,
+										"example": "destinationaddress@example.net"
+									}
+								}
+							}
+						}
+					}
+				},
+				"required_props": [
+					"actions",
+					"matchers"
+				],
+				"optional_props": [
+					"name",
+					"enabled"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": \"Rule send to user@example.net\",\n  \"enabled\": true,\n  \"matchers\": [\n    {\n      \"type\": \"all\"\n    }\n  ],\n  \"actions\": [\n    {\n      \"type\": \"forward\",\n      \"value\": [\n        \"destinationaddress@example.net\"\n      ]\n    }\n  ]\n}"
+			},
+			"response": "{\n  \"tag\": \"a7e6fb77503c41d8a7f3113c6918f10c\",\n  \"name\": \"Rule send to user@example.net\",\n  \"enabled\": true,\n  \"matchers\": [\n    {\n      \"type\": \"all\"\n    }\n  ],\n  \"actions\": [\n    {\n      \"type\": \"forward\",\n      \"value\": [\n        \"destinationaddress@example.net\"\n      ]\n    }\n  ]\n}"
+		}
+	],
+	"html_id": "email-routing---routing-rules",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"tag": {
+				"type": "string",
+				"example": "\"a7e6fb77503c41d8a7f3113c6918f10c\"",
+				"description": "Routing rule identifier.",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"name": {
+				"type": "string",
+				"example": "\"Rule send to user@example.net\"",
+				"description": "Routing rule name.",
+				"maxLength": 256
+			},
+			"priority": {
+				"type": "number",
+				"example": "0",
+				"description": "Priority of the routing rule.",
+				"minimum": 0,
+				"default": 0
+			},
+			"enabled": {
+				"type": "boolean",
+				"example": "true",
+				"description": "Routing rule status.",
+				"enum": [
+					true,
+					false
+				],
+				"default": true
+			},
+			"matchers": {
+				"type": "array",
+				"example": "[\n  {\n    \"type\": \"literal\",\n    \"field\": \"to\",\n    \"value\": \"test@example.com\"\n  }\n]",
+				"description": "Matching patterns to forward to your actions.",
+				"items": {
+					"type": "object",
+					"description": "Matching pattern to forward your actions.",
+					"required": [
+						"type",
+						"field",
+						"value"
+					],
+					"properties": {
+						"type": {
+							"type": "string",
+							"description": "Type of matcher.",
+							"enum": [
+								"literal"
+							],
+							"example": "literal"
+						},
+						"field": {
+							"type": "string",
+							"description": "Field for type matcher.",
+							"enum": [
+								"to"
+							],
+							"example": "to"
+						},
+						"value": {
+							"type": "string",
+							"description": "Value for matcher.",
+							"maxLength": 90,
+							"example": "test@example.com"
+						}
+					}
+				}
+			},
+			"actions": {
+				"type": "array",
+				"example": "[\n  {\n    \"type\": \"forward\",\n    \"value\": [\n      \"destinationaddress@example.net\"\n    ]\n  }\n]",
+				"description": "List actions patterns.",
+				"items": {
+					"type": "object",
+					"description": "Actions pattern.",
+					"required": [
+						"type",
+						"value"
+					],
+					"properties": {
+						"type": {
+							"type": "string",
+							"description": "Action supported type.",
+							"enum": [
+								"forward",
+								"worker"
+							],
+							"example": "forward"
+						},
+						"value": {
+							"type": "array",
+							"items": {
+								"type": "string",
+								"description": "Value for action.",
+								"maxLength": 90,
+								"example": "destinationaddress@example.net"
+							}
+						}
+					}
+				}
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"tag",
+			"name",
+			"priority",
+			"enabled",
+			"matchers",
+			"actions"
+		],
+		"objects": [],
+		"example": "{\n  \"tag\": \"a7e6fb77503c41d8a7f3113c6918f10c\",\n  \"name\": \"Rule send to user@example.net\",\n  \"priority\": 0,\n  \"enabled\": true,\n  \"matchers\": [\n    {\n      \"type\": \"literal\",\n      \"field\": \"to\",\n      \"value\": \"test@example.com\"\n    }\n  ],\n  \"actions\": [\n    {\n      \"type\": \"forward\",\n      \"value\": [\n        \"destinationaddress@example.net\"\n      ]\n    }\n  ]\n}",
+		"title": "Email Routing - Routing rules",
+		"description": "Cloudflare Email Routing supports different routing rules. You can configure up to 200 different routing rules."
+	}
+}

@@ -1,0 +1,222 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/email/addresses.json",
+	"title": "Email Routing - Destination addresses",
+	"description": "Cloudflare Email Routing supports different destination addresses. You can configure up to 200 different destination addresses.",
+	"type": "object",
+	"links": [
+		{
+			"title": "List destination addresses",
+			"description": "Lists existing destination addresses.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/email/routing/addresses",
+			"method": "GET",
+			"cfOwnership": "email",
+			"cfPermissionsRequired": {
+				"enum": [
+					"#organization:read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "email-routing---destination-addresses-list-destination-addresses",
+			"uri": "accounts/:account_identifier/email/routing/addresses",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/email/routing/addresses?page=1&per_page=20&direction=asc&verified=true\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"page": {
+						"type": "number",
+						"example": "1",
+						"description": "Page number of paginated results.",
+						"minimum": 1,
+						"default": 1
+					},
+					"per_page": {
+						"type": "number",
+						"example": "20",
+						"description": "Maximum number of results per page.",
+						"minimum": 5,
+						"maximum": 50,
+						"default": 20
+					},
+					"direction": {
+						"type": "string",
+						"example": "\"asc\"",
+						"description": "Sorts results in an ascending or descending order.",
+						"enum": [
+							"asc",
+							"desc"
+						]
+					},
+					"verified": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Filter by verified destination addresses.",
+						"enum": [
+							true,
+							false
+						]
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"page",
+					"per_page",
+					"direction",
+					"verified"
+				],
+				"objects": [],
+				"example": "{\n  \"page\": 1,\n  \"per_page\": 20,\n  \"direction\": \"asc\",\n  \"verified\": true\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"tag\": \"ea95132c15732412d22c1476fa83f27a\",\n      \"email\": \"user@example.com\",\n      \"verified\": \"2014-01-02T02:20:00Z\",\n      \"created\": \"2014-01-02T02:20:00Z\",\n      \"modified\": \"2014-01-02T02:20:00Z\"\n    }\n  ],\n  \"result_info\": {\n    \"page\": 1,\n    \"per_page\": 20,\n    \"count\": 1,\n    \"total_count\": 1\n  }\n}"
+		},
+		{
+			"title": "Create a destination address",
+			"description": "Create a destination address to forward your emails to. Destination addresses need to be verified before they become active.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/email/routing/addresses",
+			"method": "POST",
+			"cfOwnership": "email",
+			"cfPermissionsRequired": {
+				"enum": [
+					"#organization:edit"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "email-routing---destination-addresses-create-a-destination-address",
+			"uri": "accounts/:account_identifier/email/routing/addresses",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/email/routing/addresses\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"email\":\"user@example.com\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"email": {
+						"type": "string",
+						"example": "\"user@example.com\"",
+						"description": "The contact email address of the user.",
+						"maxLength": 90
+					}
+				},
+				"required_props": [
+					"email"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"email\": \"user@example.com\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"tag\": \"ea95132c15732412d22c1476fa83f27a\",\n    \"email\": \"user@example.com\",\n    \"verified\": \"2014-01-02T02:20:00Z\",\n    \"created\": \"2014-01-02T02:20:00Z\",\n    \"modified\": \"2014-01-02T02:20:00Z\"\n  }\n}"
+		},
+		{
+			"title": "Get a destination address",
+			"description": "Gets information for a specific destination email already created.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/email/routing/addresses/{#/definitions/destination_address_identifier}",
+			"method": "GET",
+			"cfOwnership": "email",
+			"cfPermissionsRequired": {
+				"enum": [
+					"#organization:read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "email-routing---destination-addresses-get-a-destination-address",
+			"uri": "accounts/:account_identifier/email/routing/addresses/:destination_address_identifier",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/email/routing/addresses/ea95132c15732412d22c1476fa83f27a\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"tag\": \"ea95132c15732412d22c1476fa83f27a\",\n    \"email\": \"user@example.com\",\n    \"verified\": \"2014-01-02T02:20:00Z\",\n    \"created\": \"2014-01-02T02:20:00Z\",\n    \"modified\": \"2014-01-02T02:20:00Z\"\n  }\n}"
+		},
+		{
+			"title": "Delete destination address",
+			"description": "Deletes a specific destination address.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/email/routing/addresses/{#/definitions/destination_address_identifier}",
+			"method": "Delete",
+			"cfOwnership": "email",
+			"cfPermissionsRequired": {
+				"enum": [
+					"#organization:edit"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "email-routing---destination-addresses-delete-destination-address",
+			"uri": "accounts/:account_identifier/email/routing/addresses/:destination_address_identifier",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/email/routing/addresses/ea95132c15732412d22c1476fa83f27a\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"tag\": \"ea95132c15732412d22c1476fa83f27a\",\n    \"email\": \"user@example.com\",\n    \"verified\": \"2014-01-02T02:20:00Z\",\n    \"created\": \"2014-01-02T02:20:00Z\",\n    \"modified\": \"2014-01-02T02:20:00Z\"\n  }\n}"
+		}
+	],
+	"html_id": "email-routing---destination-addresses",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"tag": {
+				"type": "string",
+				"example": "\"ea95132c15732412d22c1476fa83f27a\"",
+				"description": "Destination address identifier",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"email": {
+				"type": "string",
+				"example": "\"user@example.com\"",
+				"description": "The contact email address of the user.",
+				"maxLength": 90
+			},
+			"verified": {
+				"type": "string",
+				"example": "\"2014-01-02T02:20:00Z\"",
+				"format": "date-time",
+				"description": "The date and time the destination address has been verified.",
+				"readOnly": true
+			},
+			"created": {
+				"type": "string",
+				"example": "\"2014-01-02T02:20:00Z\"",
+				"format": "date-time",
+				"description": "The date and time the destination address has been created.",
+				"readOnly": true
+			},
+			"modified": {
+				"type": "string",
+				"example": "\"2014-01-02T02:20:00Z\"",
+				"format": "date-time",
+				"description": "The date and time the destination address was last modified.",
+				"readOnly": true
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"tag",
+			"email",
+			"verified",
+			"created",
+			"modified"
+		],
+		"objects": [],
+		"example": "{\n  \"tag\": \"ea95132c15732412d22c1476fa83f27a\",\n  \"email\": \"user@example.com\",\n  \"verified\": \"2014-01-02T02:20:00Z\",\n  \"created\": \"2014-01-02T02:20:00Z\",\n  \"modified\": \"2014-01-02T02:20:00Z\"\n}",
+		"title": "Email Routing - Destination addresses",
+		"description": "Cloudflare Email Routing supports different destination addresses. You can configure up to 200 different destination addresses."
+	}
+}

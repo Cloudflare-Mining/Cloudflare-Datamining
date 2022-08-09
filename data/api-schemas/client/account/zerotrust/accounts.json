@@ -56,7 +56,7 @@
 			"cfOwnership": "gateway",
 			"html_id": "zero-trust-accounts-update-zero-trust-account-configuration",
 			"uri": "accounts/:identifier/gateway/configuration",
-			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/configuration\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"settings\":{\"antivirus\":{\"enabled_download_phase\":false,\"enabled_upload_phase\":false,\"fail_closed\":false},\"tls_decrypt\":{\"enabled\":true},\"activity_log\":{\"enabled\":true},\"block_page\":{\"enabled\":true,\"name\":\"Cloudflare\",\"footer_text\":\"--footer--\",\"header_text\":\"--header--\",\"mailto_address\":\"admin@example.com\",\"mailto_subject\":\"Blocked User Inquiry\",\"logo_path\":\"https://logos.com/a.png\",\"background_color\":true},\"browser_isolation\":{\"url_browser_isolation_enabled\":true},\"fips\":{\"tls\":true}}}'",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/configuration\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"settings\":{\"antivirus\":{\"enabled_download_phase\":false,\"enabled_upload_phase\":false,\"fail_closed\":false},\"tls_decrypt\":{\"enabled\":true},\"activity_log\":{\"enabled\":true},\"block_page\":{\"enabled\":true,\"name\":\"Cloudflare\",\"footer_text\":\"--footer--\",\"header_text\":\"--header--\",\"mailto_address\":\"admin@example.com\",\"mailto_subject\":\"Blocked User Inquiry\",\"logo_path\":\"https://logos.com/a.png\",\"background_color\":true,\"suppress_footer\":false},\"browser_isolation\":{\"url_browser_isolation_enabled\":true},\"fips\":{\"tls\":true}}}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -64,7 +64,7 @@
 				"all_props": {
 					"settings": {
 						"type": "object",
-						"example": "{\n  \"antivirus\": {\n    \"enabled_download_phase\": false,\n    \"enabled_upload_phase\": false,\n    \"fail_closed\": false\n  },\n  \"tls_decrypt\": {\n    \"enabled\": true\n  },\n  \"activity_log\": {\n    \"enabled\": true\n  },\n  \"block_page\": {\n    \"enabled\": true,\n    \"name\": \"Cloudflare\",\n    \"footer_text\": \"--footer--\",\n    \"header_text\": \"--header--\",\n    \"mailto_address\": \"admin@example.com\",\n    \"mailto_subject\": \"Blocked User Inquiry\",\n    \"logo_path\": \"https://logos.com/a.png\",\n    \"background_color\": true\n  },\n  \"browser_isolation\": {\n    \"url_browser_isolation_enabled\": true\n  },\n  \"fips\": {\n    \"tls\": true\n  }\n}",
+						"example": "{\n  \"antivirus\": {\n    \"enabled_download_phase\": false,\n    \"enabled_upload_phase\": false,\n    \"fail_closed\": false\n  },\n  \"tls_decrypt\": {\n    \"enabled\": true\n  },\n  \"activity_log\": {\n    \"enabled\": true\n  },\n  \"block_page\": {\n    \"enabled\": true,\n    \"name\": \"Cloudflare\",\n    \"footer_text\": \"--footer--\",\n    \"header_text\": \"--header--\",\n    \"mailto_address\": \"admin@example.com\",\n    \"mailto_subject\": \"Blocked User Inquiry\",\n    \"logo_path\": \"https://logos.com/a.png\",\n    \"background_color\": true,\n    \"suppress_footer\": false\n  },\n  \"browser_isolation\": {\n    \"url_browser_isolation_enabled\": true\n  },\n  \"fips\": {\n    \"tls\": true\n  }\n}",
 						"properties": {
 							"antivirus": {
 								"type": "object",
@@ -114,7 +114,7 @@
 							},
 							"block_page": {
 								"type": "object",
-								"example": "{\n  \"enabled\": true,\n  \"name\": \"Cloudflare\",\n  \"footer_text\": \"--footer--\",\n  \"header_text\": \"--header--\",\n  \"mailto_address\": \"admin@example.com\",\n  \"mailto_subject\": \"Blocked User Inquiry\",\n  \"logo_path\": \"https://logos.com/a.png\",\n  \"background_color\": true\n}",
+								"example": "{\n  \"enabled\": true,\n  \"name\": \"Cloudflare\",\n  \"footer_text\": \"--footer--\",\n  \"header_text\": \"--header--\",\n  \"mailto_address\": \"admin@example.com\",\n  \"mailto_subject\": \"Blocked User Inquiry\",\n  \"logo_path\": \"https://logos.com/a.png\",\n  \"background_color\": true,\n  \"suppress_footer\": false\n}",
 								"properties": {
 									"enabled": {
 										"type": "boolean",
@@ -155,6 +155,11 @@
 										"type": "string",
 										"example": "true",
 										"description": "Block page background color in #rrggbb format"
+									},
+									"suppress_footer": {
+										"type": "boolean",
+										"example": "false",
+										"description": "Suppress detailed info at the bottom of the block page"
 									}
 								},
 								"description": "Block page layout settings"
@@ -192,10 +197,10 @@
 					"settings"
 				],
 				"objects": [],
-				"example": "{\n  \"settings\": {\n    \"antivirus\": {\n      \"enabled_download_phase\": false,\n      \"enabled_upload_phase\": false,\n      \"fail_closed\": false\n    },\n    \"tls_decrypt\": {\n      \"enabled\": true\n    },\n    \"activity_log\": {\n      \"enabled\": true\n    },\n    \"block_page\": {\n      \"enabled\": true,\n      \"name\": \"Cloudflare\",\n      \"footer_text\": \"--footer--\",\n      \"header_text\": \"--header--\",\n      \"mailto_address\": \"admin@example.com\",\n      \"mailto_subject\": \"Blocked User Inquiry\",\n      \"logo_path\": \"https://logos.com/a.png\",\n      \"background_color\": true\n    },\n    \"browser_isolation\": {\n      \"url_browser_isolation_enabled\": true\n    },\n    \"fips\": {\n      \"tls\": true\n    }\n  }\n}",
+				"example": "{\n  \"settings\": {\n    \"antivirus\": {\n      \"enabled_download_phase\": false,\n      \"enabled_upload_phase\": false,\n      \"fail_closed\": false\n    },\n    \"tls_decrypt\": {\n      \"enabled\": true\n    },\n    \"activity_log\": {\n      \"enabled\": true\n    },\n    \"block_page\": {\n      \"enabled\": true,\n      \"name\": \"Cloudflare\",\n      \"footer_text\": \"--footer--\",\n      \"header_text\": \"--header--\",\n      \"mailto_address\": \"admin@example.com\",\n      \"mailto_subject\": \"Blocked User Inquiry\",\n      \"logo_path\": \"https://logos.com/a.png\",\n      \"background_color\": true,\n      \"suppress_footer\": false\n    },\n    \"browser_isolation\": {\n      \"url_browser_isolation_enabled\": true\n    },\n    \"fips\": {\n      \"tls\": true\n    }\n  }\n}",
 				"description": "account settings"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"settings\": {\n      \"antivirus\": {\n        \"enabled_download_phase\": false,\n        \"enabled_upload_phase\": false,\n        \"fail_closed\": false\n      },\n      \"tls_decrypt\": {\n        \"enabled\": true\n      },\n      \"activity_log\": {\n        \"enabled\": true\n      },\n      \"block_page\": {\n        \"enabled\": true,\n        \"name\": \"Cloudflare\",\n        \"footer_text\": \"--footer--\",\n        \"header_text\": \"--header--\",\n        \"mailto_address\": \"admin@example.com\",\n        \"mailto_subject\": \"Blocked User Inquiry\",\n        \"logo_path\": \"https://logos.com/a.png\",\n        \"background_color\": true\n      },\n      \"browser_isolation\": {\n        \"url_browser_isolation_enabled\": true\n      },\n      \"fips\": {\n        \"tls\": true\n      }\n    },\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"settings\": {\n      \"antivirus\": {\n        \"enabled_download_phase\": false,\n        \"enabled_upload_phase\": false,\n        \"fail_closed\": false\n      },\n      \"tls_decrypt\": {\n        \"enabled\": true\n      },\n      \"activity_log\": {\n        \"enabled\": true\n      },\n      \"block_page\": {\n        \"enabled\": true,\n        \"name\": \"Cloudflare\",\n        \"footer_text\": \"--footer--\",\n        \"header_text\": \"--header--\",\n        \"mailto_address\": \"admin@example.com\",\n        \"mailto_subject\": \"Blocked User Inquiry\",\n        \"logo_path\": \"https://logos.com/a.png\",\n        \"background_color\": true,\n        \"suppress_footer\": false\n      },\n      \"browser_isolation\": {\n        \"url_browser_isolation_enabled\": true\n      },\n      \"fips\": {\n        \"tls\": true\n      }\n    },\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
 		},
 		{
 			"title": "Get Zero Trust account configuration",
@@ -207,7 +212,7 @@
 			"html_id": "zero-trust-accounts-get-zero-trust-account-configuration",
 			"uri": "accounts/:identifier/gateway/configuration",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/configuration\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"settings\": {\n      \"antivirus\": {\n        \"enabled_download_phase\": false,\n        \"enabled_upload_phase\": false,\n        \"fail_closed\": false\n      },\n      \"tls_decrypt\": {\n        \"enabled\": true\n      },\n      \"activity_log\": {\n        \"enabled\": true\n      },\n      \"block_page\": {\n        \"enabled\": true,\n        \"name\": \"Cloudflare\",\n        \"footer_text\": \"--footer--\",\n        \"header_text\": \"--header--\",\n        \"mailto_address\": \"admin@example.com\",\n        \"mailto_subject\": \"Blocked User Inquiry\",\n        \"logo_path\": \"https://logos.com/a.png\",\n        \"background_color\": true\n      },\n      \"browser_isolation\": {\n        \"url_browser_isolation_enabled\": true\n      },\n      \"fips\": {\n        \"tls\": true\n      }\n    },\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"settings\": {\n      \"antivirus\": {\n        \"enabled_download_phase\": false,\n        \"enabled_upload_phase\": false,\n        \"fail_closed\": false\n      },\n      \"tls_decrypt\": {\n        \"enabled\": true\n      },\n      \"activity_log\": {\n        \"enabled\": true\n      },\n      \"block_page\": {\n        \"enabled\": true,\n        \"name\": \"Cloudflare\",\n        \"footer_text\": \"--footer--\",\n        \"header_text\": \"--header--\",\n        \"mailto_address\": \"admin@example.com\",\n        \"mailto_subject\": \"Blocked User Inquiry\",\n        \"logo_path\": \"https://logos.com/a.png\",\n        \"background_color\": true,\n        \"suppress_footer\": false\n      },\n      \"browser_isolation\": {\n        \"url_browser_isolation_enabled\": true\n      },\n      \"fips\": {\n        \"tls\": true\n      }\n    },\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
 		},
 		{
 			"title": "Update device settings for the Zero Trust account",
