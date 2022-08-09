@@ -3,7 +3,7 @@ on:
     - cron:  '*/15 * * * *'
   workflow_dispatch: {}
 
-name: Mine CF Data
+name: Mine CF CDN CGI
 jobs:
   runner:
     runs-on: ubuntu-latest
