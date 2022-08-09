@@ -46,7 +46,7 @@ if(cfKeys.size >= 0){
 }
 
 // get keys for trace
-const traceRes = await fetch(`https://jross.me/cdn-cgi/trace`);
+const traceRes = await fetch(`https://colo.quest/cdn-cgi/trace`);
 const trace = await traceRes.text();
 const data = trace.split('\n').map(line => line.split('='));
 const traceKeys = data.map(arr => arr[0]).filter(key => key !== '').sort();
@@ -54,32 +54,53 @@ if(traceKeys.length >= 0){
 	await fs.writeFile(path.resolve(dir, 'trace.json'), JSON.stringify([...traceKeys].sort(), null, '\t'));
 }
 
+// colos with mostly stable versions across metals
 const colos = {
+	'pig': 'pig',
+	'canary': 'kul01',
 	'mcp': 'lhr01',
 	'mcp-canary-candidate-01': 'gru05',
 	'mcp-canary-candidate-02': 'dac07',
 	'mcp-canary-candidate-03': 'kwi03',
 	'mcp-canary-candidate-04': 'han02',
 	'mcp-canary-candidate-05': 'poa01',
-	'canary': 'kul01',
 	'main': 'dfw01',
 };
-const buildVersions = {};
+// colos with very unstable versions across metals, so get an aggregate of all versions
+const aggregateColos = {
+	'dog': 'sfo06',
+	'lab': 'sfo07',
+};
 
+const buildVersions = {};
 for(const [name, colo] of Object.entries(colos)){
-	buildVersions[`build-info/fl-${name}`] = `${process.env.FETCH_FROM_COLO_URL}colo=${colo}&url=https://build-info.jross.workers.dev/?type=fl`;
-	buildVersions[`build-info/cache-${name}`] = `${process.env.FETCH_FROM_COLO_URL}colo=${colo}&url=https://build-info.jross.workers.dev/?type=cache`;
-	buildVersions[`build-info/origin-${name}`] = `${process.env.FETCH_FROM_COLO_URL}colo=${colo}&url=https://build-info.jross.workers.dev/?type=origin`;
+	buildVersions[`build-info/fl-${name}`] = `${process.env.FETCH_FROM_COLO_URL}colo=${colo}&url=https://trace.colo.quest/info?type=fl`;
+	buildVersions[`build-info/cache-${name}`] = `${process.env.FETCH_FROM_COLO_URL}colo=${colo}&url=https://trace.colo.quest/info?type=cache`;
+	buildVersions[`build-info/origin-${name}`] = `${process.env.FETCH_FROM_COLO_URL}colo=${colo}&url=https://trace.colo.quest/info?type=origin`;
+}
+for(const [name, colo] of Object.entries(aggregateColos)){
+	buildVersions[`build-info/fl-${name}`] = `${process.env.FETCH_FROM_COLO_MULTI_URL}colo=${colo}&url=https://trace.colo.quest/info?type=fl`;
+	buildVersions[`build-info/cache-${name}`] = `${process.env.FETCH_FROM_COLO_MULTI_URL}colo=${colo}&url=https://trace.colo.quest/info?type=cache`;
+	buildVersions[`build-info/origin-${name}`] = `${process.env.FETCH_FROM_COLO_MULTI_URL}colo=${colo}&url=https://trace.colo.quest/info?type=origin`;
 }
 
 for(const [file, url] of Object.entries(buildVersions)){
 	const filePath = path.resolve(dir, file);
 	console.log('Fetching', file);
-	const dataReq = await fetch(url, {agent});
-	if(dataReq.ok){
-		const data = await dataReq.text();
-		await fs.ensureFile(filePath);
-		await fs.writeFile(filePath, data);
+	try{
+		const controller = new AbortController();
+		const timeout = setTimeout(() => {
+			controller.abort();
+		}, 20000);
+		const dataReq = await fetch(url, {agent, signal: controller.signal});
+		if(dataReq.ok){
+			const data = await dataReq.text();
+			await fs.ensureFile(filePath);
+			await fs.writeFile(filePath, data);
+		}
+		clearTimeout(timeout);
+	}catch(err){
+		console.error(err);
 	}
 }
 
