@@ -10,6 +10,12 @@ await fs.ensureDir(dir);
 
 const reqs = [
 	{
+		name: 'build-image-versions-list',
+		url: `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/pages/build_image_versions?per_page=100`,
+		method: 'GET',
+		transform: json => json.result,
+	},
+	{
 		name: 'projects-list',
 		url: `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/pages/projects`,
 		method: 'GET',
@@ -61,7 +67,11 @@ for(const req of reqs){
 	const json = await res.json();
 	results[req.name] = json;
 	if(req.write !== false){
-		await fs.writeJson(file, propertiesToArray(json).sort(), {spaces: '\t'});
+		if(req.transform){
+			await fs.writeJson(file, req.transform(json), {spaces: '\t'});
+		}else{
+			await fs.writeJson(file, propertiesToArray(json).sort(), {spaces: '\t'});
+		}
 	}
 }
 
