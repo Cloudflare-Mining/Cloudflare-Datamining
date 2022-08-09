@@ -32,6 +32,7 @@ jobs:
         env:
           DISCORD_URL: ${{ secrets.DISCORD_URL }}
           FETCH_FROM_COLO_URL: ${{ secrets.FETCH_FROM_COLO_URL }}
+          FETCH_FROM_COLO_MULTI_URL: ${{ secrets.FETCH_FROM_COLO_MULTI_URL }}
           COVEO_KEY: ${{ secrets.COVEO_KEY }}
           COVEO_ORGID: ${{ secrets.COVEO_ORGID }}
           GATES_API_KEY: ${{ secrets.GATES_API_KEY }}

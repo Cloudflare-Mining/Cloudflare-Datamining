@@ -25,6 +25,7 @@ You can join the Discord at https://discord.gg/Z94Hn6qVDm for notifications of c
 - `marketing`: This extracts the raw JSON data for the marketing site, cloudflare.com.
 - `other`: This tracks some other miscellaneous data (like IPs), not tracked by other scripts.
 - `packages`: This tracks updates and any new packages owned by Cloudflare.
+- `products`: This tracks specific products API endpoints and their response keys.
 - `types`: This tracks the `@cloudflare/types` NPM package, which can be useful for spotting changes to new billing subscriptions, etc.
 - `zt-dashboard-translations`: This extracts the translations from the Zero Trust dashboard, and tracks their changes over time. This is useful for seeing new features and changes in the ZT dashboard.
 - `zt-dashboard`: This extracts other miscellaneous data from the Zero Trust dashboard, and tracks their changes over time.
