@@ -1,0 +1,367 @@
+{
+	"componentChunkName": "component---src-components-page-page-template-tsx",
+	"path": "/partners/technology-partners/google/analytics/",
+	"result": {
+		"data": {
+			"page": {
+				"pageName": "[Tech Partner Directory] - Google Analytics",
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "English for Locale",
+					"deDE": "English for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "English for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "English for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "English for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": null
+				},
+				"relativePath": "partners/technology-partners/google/analytics",
+				"topNavOptions": "default",
+				"topNavButtonText": null,
+				"topNavButtonUrl": null,
+				"metaTags": {
+					"metaTitle": "Google (Analytics) - Tech Partners",
+					"metaDescription": "Cloudflare and Google partner to enable customers to examine and visualize logs and provide the best experience for end users.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"contentfulId": "64vb94whUwqhDc1VBScBJ",
+				"contentTypeId": "page",
+				"promotionalBanner": null,
+				"psaBanner": null,
+				"customTopNav": null,
+				"headerLogo": null,
+				"template": null,
+				"relatedBlades": [
+					{
+						"__typename": "bladeHeroAnimation",
+						"contentfulId": "6fHJcHv0j3TrgSnqLymFJd",
+						"contentTypeId": "bladeHeroAnimation",
+						"title": "Analytics Integration",
+						"subtitle": null,
+						"copy": "Cloudflare's analytics partnerships with Google allows mutual customers to examine and visualize logs to provide the best experience for end users. Insights show how Cloudflare speeds up websites, saves you bandwidth, ranks your fastest and slowest pages, and alerts you of cyberattacks.",
+						"buttonColor": "orange",
+						"buttonColor2": "orange",
+						"buttonText1": "Contact us",
+						"buttonText1LoggedIn": null,
+						"buttonUrl1": "#",
+						"buttonUrl1LoggedIn": null,
+						"button1ExtraClass": null,
+						"buttonText2": null,
+						"buttonText2LoggedIn": null,
+						"buttonUrl2": null,
+						"button2ExtraClass": null,
+						"bladeBorder": "none",
+						"htmlId": null,
+						"textColor": "black",
+						"includeVideo": false,
+						"streamVideoId": null,
+						"streamOptions": [
+							"controls",
+							"captions"
+						],
+						"streamCaptions": "en",
+						"popupStreamId": null,
+						"popupText": null,
+						"button1OpenInNewTab": null,
+						"button2OpenInNewTab": null,
+						"streamThumbnails": null,
+						"sectionPadding": null,
+						"streamPosterAssetFile": null,
+						"streamPoster": null,
+						"imageSize": "Medium",
+						"imagePosition": false,
+						"leftLinkUrl": null,
+						"leftLink": null,
+						"leftLinkLoggedIn": null,
+						"leftLinkOptions": "hide",
+						"backgroundColor": "light-blue",
+						"textlayoutMode": null,
+						"backgroundAssetFile": null,
+						"imageLayout": null,
+						"image": {
+							"file": {
+								"publicURL": "[path]/analytics-real-time-monitoring-spot-illustration.svg"
+							}
+						},
+						"imageAssetFile": null
+					},
+					{
+						"__typename": "bladeSubNav",
+						"contentTypeId": "bladeSubNav",
+						"contentfulId": "1wPapUG7MNOXur3zDh2ZnR",
+						"menuTitle": null,
+						"stickyNav": true,
+						"htmlId": null,
+						"menuItems": [
+							{
+								"__typename": "bladeSubNavMenuItem",
+								"contentfulId": "6aHEiQHPhU9xHnAowBIUPd",
+								"linkText": "Overview",
+								"page": null,
+								"url": "/partners/technology-partners/google",
+								"subMenuItems": null
+							},
+							{
+								"__typename": "bladeSubNavMenuItem",
+								"contentfulId": "2H28oaLsbvQtoJQgqir6JM",
+								"linkText": "Analytics",
+								"page": null,
+								"url": "/partners/technology-partners/google/analytics",
+								"subMenuItems": null
+							},
+							{
+								"__typename": "bladeSubNavMenuItem",
+								"contentfulId": "I4Sc3p0RuxubUds8YFtfX",
+								"linkText": "CASB Integration",
+								"page": null,
+								"url": "/partners/technology-partners/google/casb-integration",
+								"subMenuItems": null
+							},
+							{
+								"__typename": "bladeSubNavMenuItem",
+								"contentfulId": "2rKjwZPRqEOJiOIQgLDM4m",
+								"linkText": "Identity Partnership",
+								"page": null,
+								"url": "/partners/technology-partners/google-workspace",
+								"subMenuItems": null
+							},
+							{
+								"__typename": "bladeSubNavMenuItem",
+								"contentfulId": "WH9Pp8Ugu2eMP0xncN8HF",
+								"linkText": "Integrated Cloud Email Security",
+								"page": null,
+								"url": "/partners/technology-partners/google/email-security",
+								"subMenuItems": null
+							}
+						]
+					},
+					{
+						"__typename": "bladeImageText",
+						"contentfulId": "4d0NXEnzKjgS53NxwVsKlW",
+						"title": "Partnership Overview",
+						"copy": "Through this integration and real-time insights from Google Data Studio, users can visualize several dashboards to analyze their Cloudflare log data. They can generate charts and graphs through Google BigQuery, making log data available to the reporting engine. The integration supports pushing logs directly to Google Cloud Storage. Learn how to deploy Logpush via the Cloudflare dashboard or via API in our [developer documentation](https://developers.cloudflare.com/logs/get-started/enable-destinations/google-cloud-storage).",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": null,
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": {
+							"file": {
+								"publicURL": "[path]/logs-hero-illustration-601x565-c30e0b4.png"
+							}
+						},
+						"imageAssetFile": null,
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": false,
+						"imageSize": "medium",
+						"imageTextAlignment": "center",
+						"togglesTo": null
+					},
+					{
+						"__typename": "bladeThreeFeatures",
+						"backgroundColor": "light-blue",
+						"contentfulId": "4ovK5TORDC6Vpmp2qhFOVt",
+						"contentTypeId": "bladeThreeFeatures",
+						"subtitle": null,
+						"bladeBorder": "none",
+						"sectionTitle": "Benefits",
+						"title1": "Comprehensive insights",
+						"copy1": "Filter key metrics (i.e. geography, IP, user agent, traffic type) around security, performance, and reliability for your websites and applications.",
+						"locale": "en-US",
+						"image1": null,
+						"imageAssetFile1": {
+							"id": "ff8961fa-ef8b-5b0d-b999-e0c79b5bbe93",
+							"altText": "internet globe",
+							"title": "internet globe",
+							"activeAsset": "Brandfolder Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "[path]/internet-globe.png"
+								}
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"learnMoreUrl1": null,
+						"title2": "Automate log data updates",
+						"copy2": "Through Google BigQuery, log data will update every five minutes by default once Logpush is configured.",
+						"learnMoreUrl2": null,
+						"image2": null,
+						"imageAssetFile2": {
+							"id": "da7be7ce-7adf-5a42-89c2-02ec388c838d",
+							"altText": "Time blue",
+							"title": "Time blue",
+							"activeAsset": "Brandfolder Asset",
+							"locale": "en-US",
+							"contentfulAsset": null,
+							"brandfolderAsset": {
+								"size": 1138,
+								"height": 192,
+								"width": 192,
+								"file": {
+									"publicURL": "[path]/time-blue.svg"
+								}
+							},
+							"brandfolderAssetMobile": null
+						},
+						"title3": "Create reports",
+						"copy3": "Build customized log data reports for different fields based on the Cloudflare insights template with Google Data Studio.",
+						"image3": null,
+						"imageAssetFile3": {
+							"id": "864f1e8d-46b2-58c2-86fc-08a9ddcecb0b",
+							"altText": "Documentation list blue",
+							"title": "Documentation list blue",
+							"activeAsset": "Brandfolder Asset",
+							"locale": "en-US",
+							"contentfulAsset": null,
+							"brandfolderAsset": {
+								"size": 685,
+								"height": 192,
+								"width": 192,
+								"file": {
+									"publicURL": "[path]/documentation-list-blue.svg"
+								}
+							},
+							"brandfolderAssetMobile": null
+						},
+						"learnMoreUrl3": null,
+						"features": null
+					},
+					{
+						"__typename": "bladeResourceGrid",
+						"contentfulId": "6SkDMAPzR8Y9mRlAD2Y5Rx",
+						"contentTypeId": "bladeResourceGrid",
+						"title": "Learn More",
+						"description": null,
+						"sectionPadding": null,
+						"bladeBorder": "none",
+						"textColor": "black",
+						"backgroundColor": "blue5",
+						"htmlId": null,
+						"resourceList": [
+							{
+								"resourceMedia": null,
+								"resourceMediaAssetFile": null,
+								"image": null,
+								"resourceStreamId": null,
+								"title": "[Tech Partner Directory] - Google Analytics: Blog",
+								"callToAction": "Learn More",
+								"id": "0bfb0f17-c803-5797-8017-93c3d8ff4e1d",
+								"resourceTitle": "Get Cloudflare insights in your preferred analytics provider",
+								"resourceType": "Blog",
+								"topic": [
+									"N/A"
+								],
+								"orderDate": "2022-08-09",
+								"industry": null,
+								"description": "Learn about Cloudflare's partnership with Google Cloud in this announcement blog post around our Analytics partners.",
+								"externalLinkUrl": "https://blog.cloudflare.com/cloudflare-partners-with-analytics-providers/",
+								"hideFromResourceHub": true
+							},
+							{
+								"resourceMedia": null,
+								"resourceMediaAssetFile": null,
+								"image": null,
+								"resourceStreamId": null,
+								"title": "[Tech Partner Directory] - Google Analytics: Documentation",
+								"callToAction": "Learn More",
+								"id": "60af1931-b9d5-5fd8-8fd3-7cbe3ec416b0",
+								"resourceTitle": "Enable Logpush to Google Cloud Storage",
+								"resourceType": "Solution & Product Guides",
+								"topic": [
+									"N/A"
+								],
+								"orderDate": "2022-08-09",
+								"industry": null,
+								"description": "Learn how to enable Logpush directly to Google Cloud Storage via the Cloudflare dashboard or API.",
+								"externalLinkUrl": "https://developers.cloudflare.com/logs/get-started/enable-destinations/google-cloud-storage",
+								"hideFromResourceHub": true
+							},
+							{
+								"resourceMedia": null,
+								"resourceMediaAssetFile": null,
+								"image": null,
+								"resourceStreamId": null,
+								"title": "[Tech Partner Directory] - Google Analytics: Documentation II",
+								"callToAction": "Learn More",
+								"id": "75dcc50f-4127-5b7e-b810-5b690765ac66",
+								"resourceTitle": "Google Cloud integration overview",
+								"resourceType": "Solution & Product Guides",
+								"topic": [
+									"N/A"
+								],
+								"orderDate": "2022-08-09",
+								"industry": null,
+								"description": "Learn how to analyze Cloudflare logs using Google Cloud.",
+								"externalLinkUrl": "https://developers.cloudflare.com/fundamentals/data-products/analytics-integrations/google-cloud",
+								"hideFromResourceHub": true
+							}
+						],
+						"filterMenu": null
+					}
+				],
+				"noindex": true,
+				"enableZendeskChat": false,
+				"formModal": null,
+				"keepHashUrlSyncedWithScrollPosition": false
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"pathname": "/partners/technology-partners/google/analytics/",
+			"contentfulId": "64vb94whUwqhDc1VBScBJ",
+			"allowedHrefLangs": [
+				"en-US"
+			],
+			"baseURL": "https://www.cloudflare.com"
+		}
+	}
+}
