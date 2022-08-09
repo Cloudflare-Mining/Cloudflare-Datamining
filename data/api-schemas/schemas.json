@@ -37802,6 +37802,225 @@
 				}
 			}
 		},
+		"/accounts/{account_identifier}/stream/clip": {
+			"post": {
+				"summary": "Clip videos given a start and end time",
+				"description": "Clips a video based on the specified start and end times provided in seconds.",
+				"parameters": [
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"description": "The account identifier tag.",
+							"example": "023e105f4ecef8ad9ca31a8372d0c353",
+							"maxLength": 32,
+							"readOnly": true,
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Clip videos given a start and end time response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user~1tokens~1permission_groups/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"clippedFromVideoUID": {
+															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1stream~1clip/post/requestBody/content/application~1json/schema/properties/clippedFromVideoUID"
+														},
+														"startTimeSeconds": {
+															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1stream~1clip/post/requestBody/content/application~1json/schema/properties/startTimeSeconds"
+														},
+														"endTimeSeconds": {
+															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1stream~1clip/post/requestBody/content/application~1json/schema/properties/endTimeSeconds"
+														},
+														"playback": {
+															"type": "object",
+															"readOnly": true,
+															"properties": {
+																"hls": {
+																	"type": "string",
+																	"readOnly": true,
+																	"description": "The HLS manifest for the video.",
+																	"example": "https://videodelivery.net/ea95132c15732412d22c1476fa83f27a/manifest/video.m3u8"
+																},
+																"dash": {
+																	"type": "string",
+																	"readOnly": true,
+																	"description": "DASH Media Presentation Description for the video",
+																	"example": "https://videodelivery.net/ea95132c15732412d22c1476fa83f27a/manifest/video.mpd"
+																}
+															}
+														},
+														"preview": {
+															"description": "The video's preview page URI. This field is omitted until encoding is complete.",
+															"example": "https://watch.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a",
+															"format": "uri",
+															"readOnly": true,
+															"type": "string"
+														},
+														"created": {
+															"description": "The date and time the live input was created.",
+															"example": "2014-01-02T02:20:00+00:00",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"modified": {
+															"description": "The date and time the live input was last modified.",
+															"example": "2014-01-02T02:20:00+00:00",
+															"format": "date-time",
+															"readOnly": true,
+															"type": "string"
+														},
+														"creator": {
+															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1stream~1clip/post/requestBody/content/application~1json/schema/properties/creator"
+														},
+														"maxDurationSeconds": {
+															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1stream~1clip/post/requestBody/content/application~1json/schema/properties/maxDurationSeconds"
+														},
+														"thumbnailTimestampPct": {
+															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1stream~1clip/post/requestBody/content/application~1json/schema/properties/thumbnailTimestampPct"
+														},
+														"allowedOrigins": {
+															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1stream~1clip/post/requestBody/content/application~1json/schema/properties/allowedOrigins"
+														},
+														"requireSignedURLs": {
+															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1stream~1clip/post/requestBody/content/application~1json/schema/properties/requireSignedURLs"
+														},
+														"watermark": {
+															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1stream~1clip/post/requestBody/content/application~1json/schema/properties/watermark"
+														},
+														"meta": {
+															"description": "A user modifiable key-value store used to reference other systems of record for managing videos.",
+															"example": {
+																"name": "example_filename.mp4"
+															},
+															"type": "object"
+														},
+														"status": {
+															"description": "Specifies the processing status of the video.",
+															"type": "string",
+															"enum": [
+																"pendingupload",
+																"downloading",
+																"queued",
+																"inprogress",
+																"ready",
+																"error"
+															],
+															"readOnly": true,
+															"example": "inprogress"
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"required": [
+									"clippedFromVideoUID",
+									"startTimeSeconds",
+									"endTimeSeconds"
+								],
+								"properties": {
+									"clippedFromVideoUID": {
+										"description": "The unique video identifier (UID).",
+										"example": "023e105f4ecef8ad9ca31a8372d0c353",
+										"maxLength": 32,
+										"readOnly": true,
+										"type": "string"
+									},
+									"startTimeSeconds": {
+										"description": "Specifies the start time for the video clip in seconds.",
+										"type": "integer",
+										"readOnly": true
+									},
+									"endTimeSeconds": {
+										"description": "Specifies the end time for the video clip in seconds.",
+										"type": "integer",
+										"readOnly": true
+									},
+									"creator": {
+										"description": "A user-defined identifier for the media creator.",
+										"example": "creator-id_abcde12345",
+										"maxLength": 64,
+										"type": "string"
+									},
+									"maxDurationSeconds": {
+										"type": "integer",
+										"description": "Calculates the amount of time a video occupies before the video is uploaded. Direct uploads occupy minutes of videos on your Stream account until they are expired. After upload, the upload duration is used instead. If a video longer than the value is uploaded, the video results in an error.",
+										"minimum": 1,
+										"maximum": 21600
+									},
+									"thumbnailTimestampPct": {
+										"description": "The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video.",
+										"example": 0.529241,
+										"default": 0,
+										"minimum": 0,
+										"maximum": 1,
+										"type": "number"
+									},
+									"allowedOrigins": {
+										"description": "Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.",
+										"type": "array",
+										"example": [
+											"example.com"
+										],
+										"items": {
+											"type": "string"
+										}
+									},
+									"requireSignedURLs": {
+										"description": "Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.",
+										"type": "boolean",
+										"readOnly": true,
+										"default": false,
+										"example": true
+									},
+									"watermark": {
+										"type": "object",
+										"properties": {
+											"uid": {
+												"description": "The unique identifier for the watermark profile.",
+												"example": "ea95132c15732412d22c1476fa83f27a",
+												"maxLength": 32,
+												"type": "string"
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
 		"/accounts/{account_identifier}/images/v1": {
 			"post": {
 				"summary": "Upload an image via URL",
