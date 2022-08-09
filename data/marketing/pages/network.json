@@ -66,7 +66,7 @@
 						"contentfulId": "2Xq4NeGXKsCqjMzMwFncGa",
 						"bladeName": "All Cloudflare POPs",
 						"title": "The Cloudflare global network",
-						"copy": "Our vast global network, which is one of the fastest on the planet, is trusted by millions of web properties. \n\nWith direct connections to nearly every service provider and cloud provider, the Cloudflare network can reach 95% of the world's population within 50 ms.",
+						"copy": "Our vast global network, which is one of the fastest on the planet, is trusted by millions of web properties. \n\nWith direct connections to nearly every service provider and cloud provider, the Cloudflare network can reach 95% of the world's population within approximately %{OperationMilliseconds} ms.",
 						"bladeLayout": "Stats-bottom and Map with Pops",
 						"backgroundColor": "blue5",
 						"htmlId": "network",
@@ -86,8 +86,8 @@
 								"description": "global network edge capacity, consisting of transit connections, peering and private network interconnects\n"
 							},
 							{
-								"title": "50 ms",
-								"description": "from 95% of the world's Internet-connected population"
+								"title": "~50 ms",
+								"description": "from %{GlobalInternetConnectedPercent}% of the world's Internet-connected population"
 							}
 						],
 						"dataSource": {
@@ -3287,7 +3287,7 @@
 						"__typename": "bladeImageText",
 						"contentfulId": "5vJoc6RZcK1fWwFac3klTr",
 						"title": "Get to any network — faster",
-						"copy": "Interconnected with over 10,000 major service providers, [cloud providers](https://www.cloudflare.com/multi-cloud/), and enterprise networks, Cloudflare is your own fast lane on the Internet. By avoiding network hops and optimizing traffic paths, we drastically reduce latency while improving application performance and the end user experience.",
+						"copy": "Interconnected with over %{NetworkInterconnects} major service providers, [cloud providers](https://www.cloudflare.com/multi-cloud/), and enterprise networks, Cloudflare is your own fast lane on the Internet. By avoiding network hops and optimizing traffic paths, we drastically reduce latency while improving application performance and the end user experience.",
 						"toggleText": null,
 						"button": null,
 						"learnMoreUrl": null,

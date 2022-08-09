@@ -1,6 +1,6 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/partners/technology-partners/google-workspace/",
+	"path": "/partners/technology-partners/google/identity-providers/",
 	"result": {
 		"data": {
 			"page": {
@@ -29,7 +29,7 @@
 					"trTR": "No Page for Locale",
 					"zhHansCN": null
 				},
-				"relativePath": "partners/technology-partners/google-workspace",
+				"relativePath": "partners/technology-partners/google/identity-providers",
 				"topNavOptions": null,
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
@@ -56,7 +56,7 @@
 						"__typename": "bladeHeroAnimation",
 						"contentfulId": "58QPGpAxtjnh9YFFW8OjUB",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Google Workspace",
+						"title": "Identity Partnership",
 						"subtitle": "Easily and confidently protect your applications against security threats with Google Workspace and Cloudflare",
 						"copy": "Google Workspace (formerly known as G Suite) is a suite of secure cloud computing, productivity, and collaboration tools developed by Google. Its features include Gmail, Docs, meet, chat, calendar, drive, forms, currents, slides, and sheets.",
 						"buttonColor": "orange",
@@ -97,10 +97,60 @@
 						"imageLayout": null,
 						"image": {
 							"file": {
-								"publicURL": "[path]/Google_Workspace_logo_high_res.png"
+								"publicURL": "[path]/Zero_Trust_application_access_-_CF1_Week_2022.svg"
 							}
 						},
 						"imageAssetFile": null
+					},
+					{
+						"__typename": "bladeSubNav",
+						"contentTypeId": "bladeSubNav",
+						"contentfulId": "1wPapUG7MNOXur3zDh2ZnR",
+						"menuTitle": null,
+						"stickyNav": true,
+						"htmlId": null,
+						"menuItems": [
+							{
+								"__typename": "bladeSubNavMenuItem",
+								"contentfulId": "6aHEiQHPhU9xHnAowBIUPd",
+								"linkText": "Overview",
+								"page": null,
+								"url": "/partners/technology-partners/google",
+								"subMenuItems": null
+							},
+							{
+								"__typename": "bladeSubNavMenuItem",
+								"contentfulId": "2H28oaLsbvQtoJQgqir6JM",
+								"linkText": "Analytics",
+								"page": null,
+								"url": "/partners/technology-partners/google/analytics",
+								"subMenuItems": null
+							},
+							{
+								"__typename": "bladeSubNavMenuItem",
+								"contentfulId": "I4Sc3p0RuxubUds8YFtfX",
+								"linkText": "CASB Integration",
+								"page": null,
+								"url": "/partners/technology-partners/google/casb-integration",
+								"subMenuItems": null
+							},
+							{
+								"__typename": "bladeSubNavMenuItem",
+								"contentfulId": "2rKjwZPRqEOJiOIQgLDM4m",
+								"linkText": "Identity Partnership",
+								"page": null,
+								"url": "/partners/technology-partners/google-workspace",
+								"subMenuItems": null
+							},
+							{
+								"__typename": "bladeSubNavMenuItem",
+								"contentfulId": "WH9Pp8Ugu2eMP0xncN8HF",
+								"linkText": "Integrated Cloud Email Security",
+								"page": null,
+								"url": "/partners/technology-partners/google/email-security",
+								"subMenuItems": null
+							}
+						]
 					},
 					{
 						"__typename": "bladeImageText",
@@ -346,7 +396,7 @@
 		},
 		"pageContext": {
 			"locale": "en-US",
-			"pathname": "/partners/technology-partners/google-workspace/",
+			"pathname": "/partners/technology-partners/google/identity-providers/",
 			"contentfulId": "4VTHLc3Xad0OVNyHxxt5w0",
 			"allowedHrefLangs": [
 				"en-US"
