@@ -89,7 +89,7 @@ for(let i = 100; i <= 1500; i++){
 	const controller = new AbortController();
 	const timeout = setTimeout(() => {
 		controller.abort();
-	}, 200);
+	}, 1000);
 	let dataReq = null;
 	try{
 		dataReq = await fetch(`https://cloudflare.com/cdn-cgi/error/${i}`, {
