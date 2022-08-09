@@ -76,12 +76,10 @@ const buildVersions = {};
 for(const [name, colo] of Object.entries(colos)){
 	buildVersions[`build-info/fl-${name}`] = `${process.env.FETCH_FROM_COLO_URL}colo=${colo}&url=https://trace.colo.quest/info?type=fl`;
 	buildVersions[`build-info/cache-${name}`] = `${process.env.FETCH_FROM_COLO_URL}colo=${colo}&url=https://trace.colo.quest/info?type=cache`;
-	buildVersions[`build-info/origin-${name}`] = `${process.env.FETCH_FROM_COLO_URL}colo=${colo}&url=https://trace.colo.quest/info?type=origin`;
 }
 for(const [name, colo] of Object.entries(aggregateColos)){
 	buildVersions[`build-info/fl-${name}`] = `${process.env.FETCH_FROM_COLO_MULTI_URL}colo=${colo}&url=https://trace.colo.quest/info?type=fl`;
 	buildVersions[`build-info/cache-${name}`] = `${process.env.FETCH_FROM_COLO_MULTI_URL}colo=${colo}&url=https://trace.colo.quest/info?type=cache`;
-	buildVersions[`build-info/origin-${name}`] = `${process.env.FETCH_FROM_COLO_MULTI_URL}colo=${colo}&url=https://trace.colo.quest/info?type=origin`;
 }
 
 for(const [file, url] of Object.entries(buildVersions)){
@@ -91,7 +89,7 @@ for(const [file, url] of Object.entries(buildVersions)){
 		const controller = new AbortController();
 		const timeout = setTimeout(() => {
 			controller.abort();
-		}, 20000);
+		}, 30000);
 		const dataReq = await fetch(url, {agent, signal: controller.signal});
 		if(dataReq.ok){
 			const data = await dataReq.text();
