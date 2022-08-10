@@ -817,7 +817,7 @@
 							"Allow TLS passthrough traffic",
 							"Easy setup through dashboard UI or API",
 							"Load balance layer 4 traffic across multiple servers",
-							"Supports log share to public cloud storage buckets"
+							"Supports log share to public cloud storage buckets (Enterprise plans only)"
 						],
 						"bladeBorder": "none",
 						"sectionPadding": null,
@@ -914,47 +914,6 @@
 								]
 							},
 							{
-								"contentfulId": "6bPTCnWdGFiJRruRqlKVGJ",
-								"rowHeader2": {
-									"contentfulId": "7htenWpKTgjkrjmlEhgcRc",
-									"cellText": "RDP",
-									"cellTextLinkUrl": "https://www.cloudflare.com/products/cloudflare-spectrum/rdp/",
-									"buttonText": null,
-									"buttonUrl": null,
-									"commonElements": null,
-									"imageAssetFile": null
-								},
-								"cellsInRow": [
-									{
-										"contentfulId": "5FioJhX0wpMMDoS4f2fMVS",
-										"cellText": null,
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									},
-									{
-										"contentfulId": "2uKBMTPt7DYtO8NAbqU8b5",
-										"cellText": "10GB monthly data allowance $1/GB overage fees",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									},
-									{
-										"contentfulId": "5obSXC1a7vo82HrlFV3xBM",
-										"cellText": null,
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": "Check",
-										"imageAssetFile": null
-									}
-								]
-							},
-							{
 								"contentfulId": "WLxsgxmHgNv11iykCs9uf",
 								"rowHeader2": {
 									"contentfulId": "5r6eM91joyeKbvanN97RXb",
@@ -986,6 +945,47 @@
 									},
 									{
 										"contentfulId": "1lvxH8wcA3GcfglcIJtpVD",
+										"cellText": null,
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": "Check",
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "6bPTCnWdGFiJRruRqlKVGJ",
+								"rowHeader2": {
+									"contentfulId": "7htenWpKTgjkrjmlEhgcRc",
+									"cellText": "RDP",
+									"cellTextLinkUrl": "https://www.cloudflare.com/products/cloudflare-spectrum/rdp/",
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "5FioJhX0wpMMDoS4f2fMVS",
+										"cellText": null,
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "2uKBMTPt7DYtO8NAbqU8b5",
+										"cellText": "10GB monthly data allowance $1/GB overage fees",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "5obSXC1a7vo82HrlFV3xBM",
 										"cellText": null,
 										"cellTextLinkUrl": null,
 										"buttonText": null,
@@ -1031,7 +1031,7 @@
 										"cellTextLinkUrl": null,
 										"buttonText": null,
 										"buttonUrl": null,
-										"commonElements": null,
+										"commonElements": "Check",
 										"imageAssetFile": null
 									}
 								]

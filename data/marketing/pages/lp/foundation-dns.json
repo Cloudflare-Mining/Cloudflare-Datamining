@@ -348,8 +348,8 @@
 								"description": "global network edge capacity, consisting of transit connections, peering and private network interconnects\n"
 							},
 							{
-								"title": "50 ms",
-								"description": "from 95% of the world's Internet-connected population"
+								"title": "~50 ms",
+								"description": "from %{GlobalInternetConnectedPercent}% of the world's Internet-connected population"
 							}
 						],
 						"dataSource": {
