@@ -519,7 +519,7 @@
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
 						"copy": "We want to __empower__ and __inspire__ our team members to do their best work every day - making sure they feel happy, healthy and fulfilled both inside and outside of the workplace.",
-						"title": "Benefits and Perks",
+						"title": "Benefits & Perks",
 						"subtitle": null,
 						"bladeStyle": null,
 						"bladeBorder": "none",
@@ -537,7 +537,11 @@
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
-								"icon": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/premium-success-offering.png"
+									}
+								},
 								"iconAssetFile": null,
 								"imageAssetFile": null,
 								"streamId": null,
@@ -547,13 +551,37 @@
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "1W0lxafw4jBo8OHScApYv",
-								"title": "Take-what-you-need paid vacation policy",
+								"title": "Take-what-you-need vacation",
 								"titleSize": "medium",
 								"description": "We encourage employees to find a comfortable work-life balance by taking as many days off as they need while still being able to perform their jobs satisfactorily. (We really mean it!)",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
-								"icon": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/time.png"
+									}
+								},
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2gQua7SMC5VPuAFnPD9kDW",
+								"title": "Paid maternity & paternity leave",
+								"titleSize": "medium",
+								"description": "Our global parental leave policy allows up to sixteen paid weeks of bonding leave time for all qualifying new parents.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/benefits-parental-leave.png"
+									}
+								},
 								"iconAssetFile": null,
 								"imageAssetFile": null,
 								"streamId": null,
@@ -565,27 +593,15 @@
 								"contentfulId": "3bxSZDu2Aara85cSX2u67m",
 								"title": "Employee benefits",
 								"titleSize": "medium",
-								"description": "We offer a comprehensive benefits package including healthcare, life insurance, short- and long-term disability, pension plans in accordance with the market practice in our locations.  A complimentary global program that aims to provide family forming and mental wellbeing support to our employees across our offices. ",
+								"description": "We offer a comprehensive benefits package including healthcare, life insurance, short- and long-term disability, pension plans in accordance with the market practice in our locations.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "2gQua7SMC5VPuAFnPD9kDW",
-								"title": "Paid maternity and paternity leave",
-								"titleSize": "medium",
-								"description": "Our global parental leave policy allows up to sixteen paid weeks of bonding leave time for all qualifying new parents.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"icon": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/performance-validator.png"
+									}
+								},
 								"iconAssetFile": null,
 								"imageAssetFile": null,
 								"streamId": null,
@@ -598,6 +614,26 @@
 								"title": "Commuter program",
 								"titleSize": "medium",
 								"description": "We are flexible about where we work and value connecting at the office. Our commuter benefits program is in place to support team members' commute to work via public transportation without the extra cost burden.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/performance-routing.png"
+									}
+								},
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7EtWot1EmltRi0XFwcIMYx",
+								"title": "Wellbeing",
+								"titleSize": "medium",
+								"description": "Global offerings that provide mental health, childcare and family forming support to our employees across our offices.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
