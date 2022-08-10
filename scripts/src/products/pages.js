@@ -76,18 +76,18 @@ for(const req of reqs){
 }
 
 // delete all previous deployments
-// console.log('Cleaning up old deployments...');
-// for(const deployment of results['deployments-list'].result){
-// 	if(deployment.id === results['deployments-create']?.result?.id){
-// 		continue;
-// 	}
-// 	const res = await cfRequest(`https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/pages/projects/${projectName}/deployments/${deployment.id}`, {
-// 		method: 'DELETE',
-// 	});
-// 	if(!res.ok){
-// 		console.log(`Failed to delete deployment: ${res.status} ${res.statusText}`);
-// 	}
-// }
+console.log('Cleaning up old deployments...');
+for(const deployment of results['deployments-list'].result){
+	if(deployment.id === results['deployments-create']?.result?.id){
+		continue;
+	}
+	const res = await cfRequest(`https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/pages/projects/${projectName}/deployments/${deployment.id}`, {
+		method: 'DELETE',
+	});
+	if(!res.ok){
+		console.log(`Failed to delete deployment: ${res.status} ${res.statusText}`);
+	}
+}
 
 const prefix = dateFormat(new Date(), 'd mmmm yyyy');
 await tryAndPush(
