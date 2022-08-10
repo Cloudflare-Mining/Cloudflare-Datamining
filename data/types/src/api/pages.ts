@@ -146,3 +146,19 @@ export const DeploymentExistingLiveLogs = eg.object({
 export type DeploymentExistingLiveLogs = TypeFromCodec<
   typeof DeploymentExistingLiveLogs
 >;
+
+export const DirectUploadsJWT = eg.object({
+  jwt: eg.string
+});
+
+export type DirectUploadsJWT = TypeFromCodec<typeof DirectUploadsJWT>;
+
+export const UploadFileGroupPayload = eg.object({
+  key: eg.string,
+  value: eg.string,
+  metadata: eg.object({ contentType: eg.string }),
+  base64: eg.boolean
+});
+export type UploadFileGroupPayload = TypeFromCodec<
+  typeof UploadFileGroupPayload
+>;
