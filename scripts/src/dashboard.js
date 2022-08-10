@@ -810,6 +810,7 @@ async function run(){
 			'data/dashboard-subroutes/*',
 			'data/dashboard-subroutes/*.json',
 			'data/dashboard-subroutes/*/*.json',
+			'data/dashboard-subroutes/**',
 			'data/dashboard-subroutes/**/*',
 			'data/dashboard-subroutes/**/*.json',
 			'data/dashboard-subroutes/**/*.ts.json',
