@@ -33578,7 +33578,7 @@
 																	"verified": {
 																		"type": "string",
 																		"format": "date-time",
-																		"description": "The date and time the destination address has been verified.",
+																		"description": "The date and time the destination address has been verified. Null means not verified yet.",
 																		"example": "2014-01-02T02:20:00+00:00",
 																		"readOnly": true
 																	},
@@ -33618,7 +33618,7 @@
 				],
 				"x-cfPermissionsRequired": {
 					"enum": [
-						"#organization:read"
+						"com.cloudflare.api.account.email.routing.address.list"
 					]
 				},
 				"x-cfPlanAvailability": {
@@ -33630,7 +33630,7 @@
 			},
 			"post": {
 				"summary": "Create a destination address",
-				"description": "Create a destination address to forward your emails to. Destination addresses need to be verified before they become active.",
+				"description": "Create a destination address to forward your emails to. Destination addresses need to be verified before they can be used.",
 				"parameters": [
 					{
 						"name": "account_identifier",
@@ -33672,7 +33672,7 @@
 				],
 				"x-cfPermissionsRequired": {
 					"enum": [
-						"#organization:edit"
+						"com.cloudflare.api.account.email.routing.address.create"
 					]
 				},
 				"x-cfPlanAvailability": {
@@ -33758,7 +33758,7 @@
 				],
 				"x-cfPermissionsRequired": {
 					"enum": [
-						"#organization:read"
+						"com.cloudflare.api.account.email.routing.address.read"
 					]
 				},
 				"x-cfPlanAvailability": {
@@ -33809,7 +33809,7 @@
 				],
 				"x-cfPermissionsRequired": {
 					"enum": [
-						"#organization:edit"
+						"com.cloudflare.api.account.email.routing.address.delete"
 					]
 				},
 				"x-cfPlanAvailability": {
@@ -33920,7 +33920,7 @@
 				],
 				"x-cfPermissionsRequired": {
 					"enum": [
-						"#zone_settings:read"
+						"com.cloudflare.api.account.zone.email.routing.rule.list"
 					]
 				},
 				"x-cfPlanAvailability": {
@@ -33932,7 +33932,7 @@
 			},
 			"post": {
 				"summary": "Create routing rule",
-				"description": "Create a new routing rule. Rules consist of a custom email address paired with a destination address, that forward emails to the destination address you chose.",
+				"description": "Rules consist of a set of criteria for matching emails (such as an email being sent to a specific custom email address) plus a set of actions to take on the email (like forwarding it to a specific destination address).",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -33974,7 +33974,7 @@
 				],
 				"x-cfPermissionsRequired": {
 					"enum": [
-						"#zone_settings:edit"
+						"com.cloudflare.api.account.zone.email.routing.rule.create"
 					]
 				},
 				"x-cfPlanAvailability": {
@@ -33998,7 +33998,7 @@
 										"type": "string",
 										"description": "Routing rule name.",
 										"maxLength": 256,
-										"example": "Rule send to user@example.net"
+										"example": "Send to user@example.net rule."
 									},
 									"enabled": {
 										"type": "boolean",
@@ -34066,7 +34066,7 @@
 											"properties": {
 												"type": {
 													"type": "string",
-													"description": "Action supported type.",
+													"description": "Type of supported action.",
 													"enum": [
 														"forward",
 														"worker"
@@ -34149,7 +34149,7 @@
 				],
 				"x-cfPermissionsRequired": {
 					"enum": [
-						"#zone_settings:read"
+						"com.cloudflare.api.account.zone.email.routing.rule.read"
 					]
 				},
 				"x-cfPlanAvailability": {
@@ -34161,7 +34161,7 @@
 			},
 			"put": {
 				"summary": "Update routing rule",
-				"description": "Update actions, matches, or enable/disable specific routing rules",
+				"description": "Update actions and matches, or enable/disable specific routing rules",
 				"parameters": [
 					{
 						"name": "rule_identifier",
@@ -34200,7 +34200,7 @@
 				],
 				"x-cfPermissionsRequired": {
 					"enum": [
-						"#zone_settings:edit"
+						"com.cloudflare.api.account.zone.email.routing.rule.update"
 					]
 				},
 				"x-cfPlanAvailability": {
@@ -34224,7 +34224,7 @@
 										"type": "string",
 										"description": "Routing rule name.",
 										"maxLength": 256,
-										"example": "Rule send to user@example.net"
+										"example": "Send to user@example.net rule."
 									},
 									"enabled": {
 										"type": "boolean",
@@ -34292,7 +34292,7 @@
 											"properties": {
 												"type": {
 													"type": "string",
-													"description": "Action supported type.",
+													"description": "Type of supported action.",
 													"enum": [
 														"forward",
 														"worker"
@@ -34358,7 +34358,7 @@
 				],
 				"x-cfPermissionsRequired": {
 					"enum": [
-						"#zone_settings:edit"
+						"com.cloudflare.api.account.zone.email.routing.rule.delete"
 					]
 				},
 				"x-cfPlanAvailability": {
@@ -34408,7 +34408,7 @@
 											"type": "string",
 											"description": "Routing rule name.",
 											"maxLength": 256,
-											"example": "Rule send to user@example.net"
+											"example": "Send to user@example.net rule."
 										},
 										"enabled": {
 											"type": "boolean",
@@ -34487,7 +34487,7 @@
 				],
 				"x-cfPermissionsRequired": {
 					"enum": [
-						"#zone_settings:read"
+						"com.cloudflare.api.account.zone.email.routing.rule.read"
 					]
 				},
 				"x-cfPlanAvailability": {
@@ -34530,7 +34530,7 @@
 				],
 				"x-cfPermissionsRequired": {
 					"enum": [
-						"#zone_settings:read"
+						"com.cloudflare.api.account.zone.email.routing.rule.update"
 					]
 				},
 				"x-cfPlanAvailability": {
@@ -34614,7 +34614,7 @@
 				],
 				"x-cfPermissionsRequired": {
 					"enum": [
-						"#zone_settings:read"
+						"com.cloudflare.api.account.zone.email.routing.config.read"
 					]
 				},
 				"x-cfPlanAvailability": {
@@ -34670,7 +34670,7 @@
 				],
 				"x-cfPermissionsRequired": {
 					"enum": [
-						"#zone_settings:edit"
+						"com.cloudflare.api.account.zone.email.routing.config.update"
 					]
 				},
 				"x-cfPlanAvailability": {
@@ -34690,7 +34690,7 @@
 		"/zones/{zone_identifier}/email/routing/disable": {
 			"post": {
 				"summary": "Disable Email Routing",
-				"description": "Disable your Email Routing zone. Also removes adicional MX records previsously required for Email Routing to work.",
+				"description": "Disable your Email Routing zone. Also removes additional MX records previously required for Email Routing to work.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -34732,7 +34732,7 @@
 				],
 				"x-cfPermissionsRequired": {
 					"enum": [
-						"#zone_settings:edit"
+						"com.cloudflare.api.account.zone.email.routing.config.update"
 					]
 				},
 				"x-cfPlanAvailability": {
@@ -34863,7 +34863,7 @@
 				],
 				"x-cfPermissionsRequired": {
 					"enum": [
-						"#zone_settings:read"
+						"com.cloudflare.api.account.zone.email.routing.config.read"
 					]
 				},
 				"x-cfPlanAvailability": {
