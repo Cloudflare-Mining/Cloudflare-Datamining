@@ -58,7 +58,7 @@
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Microsoft 365",
 						"subtitle": "Deliver a faster and more secure user experience with Microsoft and Cloudflare",
-						"copy": "Cloudflare has become a certified partner in the Microsoft Networking Partner Program (NPP) for Microsoft 365. Microsoft has designed this program to offer customers a select set of partners whose deployment practices and guidance are aligned with Microsoft's networking recommendations for Microsoft 365 to provide users a fast and secure user experience.",
+						"copy": "Area 1 Security deploys and integrates in minutes with Office 365 to seal its protection profile with a preemptive, comprehensive, and accountable defense from socially engineered phish. The anti-phishing capabilities of Area 1 Security fit tightly with the email security features included in Office 365, including anti-spam, DLP, encryption, and archive to provide total, seamless email security against phishing attacks.\n\nCloudflare has also become a certified partner in the Microsoft Networking Partner Program (NPP) for Microsoft 365. Microsoft has designed this program to offer customers a select set of partners whose deployment practices and guidance are aligned with Microsoft's networking recommendations for Microsoft 365 to provide users a fast and secure user experience.",
 						"buttonColor": "orange",
 						"buttonColor2": null,
 						"buttonText1": "Contact us",
@@ -97,7 +97,7 @@
 						"imageLayout": null,
 						"image": {
 							"file": {
-								"publicURL": "[path]/npp.png"
+								"publicURL": "[path]/Replacing_an_email_gateway_with_Area_1.png"
 							}
 						},
 						"imageAssetFile": null
@@ -178,6 +178,124 @@
 					},
 					{
 						"__typename": "bladeImageText",
+						"contentfulId": "2l3Ma7vEKcSoKsBJq5Ckzu",
+						"title": "Integrated Cloud Email Security",
+						"copy": "Cloudflare Area 1 proactively crawls the web to discover phishing campaigns and uses that early insight, plus contextual email analysis techniques, to protect employee inboxes from phishing attacks — before damage can occur. Deploy Cloudflare Area 1 in just minutes for a best-of-breed, defense-in-depth anti-phishing security layer for your Microsoft 365 email users.",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": null,
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": {
+							"file": {
+								"publicURL": "[path]/Microsoft_Area_1_Deployment.png"
+							}
+						},
+						"imageAssetFile": null,
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": false,
+						"imageSize": null,
+						"imageTextAlignment": "center",
+						"togglesTo": null
+					},
+					{
+						"__typename": "bladeThreeFeatures",
+						"backgroundColor": "light-blue",
+						"contentfulId": "16eScbjEt0K0Ykrzmw6j5c",
+						"contentTypeId": "bladeThreeFeatures",
+						"subtitle": null,
+						"bladeBorder": "none",
+						"sectionTitle": "Benefits",
+						"title1": "Reduce risk of breach",
+						"copy1": "Lower the cyber risk from your organization's #1 threat vector — email.",
+						"locale": "en-US",
+						"image1": null,
+						"imageAssetFile1": {
+							"id": "8cb02df8-4ee5-51a0-93bd-5d68cd65230d",
+							"altText": "Spam email blue",
+							"title": "Spam email blue",
+							"activeAsset": "Brandfolder Asset",
+							"locale": "en-US",
+							"contentfulAsset": null,
+							"brandfolderAsset": {
+								"size": 1626,
+								"height": 192,
+								"width": 192,
+								"file": {
+									"publicURL": "[path]/spam-email-blue.svg"
+								}
+							},
+							"brandfolderAssetMobile": null
+						},
+						"learnMoreUrl1": null,
+						"title2": "Save time on incident response",
+						"copy2": "Built-in phishing response reduces the time spent investigating and remediating suspicious email incidents.",
+						"learnMoreUrl2": null,
+						"image2": null,
+						"imageAssetFile2": {
+							"id": "da7be7ce-7adf-5a42-89c2-02ec388c838d",
+							"altText": "Time blue",
+							"title": "Time blue",
+							"activeAsset": "Brandfolder Asset",
+							"locale": "en-US",
+							"contentfulAsset": null,
+							"brandfolderAsset": {
+								"size": 1138,
+								"height": 192,
+								"width": 192,
+								"file": {
+									"publicURL": "[path]/time-blue.svg"
+								}
+							},
+							"brandfolderAssetMobile": null
+						},
+						"title3": "Peace of mind",
+						"copy3": "Keep end users productive and confident that inboxes are free of the most sophisticated campaigns, such as malware-less BEC and supply chain email attacks.",
+						"image3": null,
+						"imageAssetFile3": {
+							"id": "a3b97712-b4fd-5088-8fff-fdff36375933",
+							"altText": "Security safe blue",
+							"title": "Security safe blue",
+							"activeAsset": "Brandfolder Asset",
+							"locale": "en-US",
+							"contentfulAsset": null,
+							"brandfolderAsset": {
+								"size": 2346,
+								"height": 192,
+								"width": 192,
+								"file": {
+									"publicURL": "[path]/security-safe-blue.svg"
+								}
+							},
+							"brandfolderAssetMobile": null
+						},
+						"learnMoreUrl3": null,
+						"features": null
+					},
+					{
+						"__typename": "bladeImageText",
 						"contentfulId": "5oLUpq0uD1yX16pJPmidKl",
 						"title": "Cloudflare One simplifies administration, improves control, and increases visibility",
 						"copy": "Keeping up with Microsoft's continuous IP and URL changes can be daunting, and missing an update can adversely impact the user experience. Cloudflare One simplifies administration by making Office 365 as easy as a 1-click checkbox.",
@@ -213,7 +331,7 @@
 						"sectionPadding": null,
 						"backgroundColor": "white",
 						"bladeBorder": "none",
-						"imagePosition": false,
+						"imagePosition": true,
 						"imageSize": null,
 						"imageTextAlignment": null,
 						"togglesTo": null
@@ -222,7 +340,7 @@
 						"__typename": "bladeImageText",
 						"contentfulId": "5ptAvpNdCoMF3LavpwyFfe",
 						"title": "Cloudflare peers with Microsoft in major data centers",
-						"copy": "Delivering extremely fast connection times between the user and Office 365 applications, Cloudflare's network spans across 270+ cities and peers with Microsoft around the world with 7 private interconnects and 113 Internet exchanges with private/public peering.",
+						"copy": "Delivering extremely fast connection times between the user and Office 365 applications, Cloudflare's network spans across 275+ cities and peers with Microsoft around the world with 7 private interconnects and 113 Internet exchanges with private/public peering.",
 						"toggleText": null,
 						"button": null,
 						"learnMoreUrl": null,
@@ -255,7 +373,7 @@
 						"sectionPadding": null,
 						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
-						"imagePosition": true,
+						"imagePosition": false,
 						"imageSize": null,
 						"imageTextAlignment": null,
 						"togglesTo": null
@@ -417,7 +535,67 @@
 								"resourceMediaAssetFile": null,
 								"image": null,
 								"resourceStreamId": null,
-								"title": "[Tech Partner Directory] - Microsoft 365: Blog II",
+								"title": "[Tech Partner Directory] - Microsoft 365: ICES Blog",
+								"callToAction": "Learn More",
+								"id": "8edde1f3-c626-51ca-b665-ef76b6d96a10",
+								"resourceTitle": "How to replace your email gateway with Cloudflare Area 1",
+								"resourceType": "Blog",
+								"topic": [
+									"Stop Phishing & BEC Attacks",
+									"Enhance Cloud Email Security"
+								],
+								"orderDate": "2022-08-11",
+								"industry": null,
+								"description": "Learn how the Cloudflare Area 1 Horizon anti-phishing service complements Microsoft 365's security features.",
+								"externalLinkUrl": "https://blog.cloudflare.com/replace-your-email-gateway-with-area-1/https://blog.cloudflare.com/replace-your-email-gateway-with-area-1/",
+								"hideFromResourceHub": true
+							},
+							{
+								"resourceMedia": null,
+								"resourceMediaAssetFile": null,
+								"image": null,
+								"resourceStreamId": null,
+								"title": "[Tech Partner Directory] - Microsoft 365: ICES Datasheet",
+								"callToAction": "Download PDF",
+								"id": "bec90d67-19ff-5853-bb13-8433bf83e157",
+								"resourceTitle": "Deploying Cloudflare Area 1",
+								"resourceType": "Solution & Product Guides",
+								"topic": [
+									"Stop Phishing & BEC Attacks",
+									"Enhance Cloud Email Security"
+								],
+								"orderDate": "2022-08-11",
+								"industry": null,
+								"description": "Learn about customers' different deployment architectures for Cloudflare Area 1.",
+								"externalLinkUrl": "https://www.cloudflare.com/static/f7ebb2c5a4469c5f31e978711379ba2d/Cloudflare_Area_1_Datasheet__Deployment_Options.pdf",
+								"hideFromResourceHub": true
+							},
+							{
+								"resourceMedia": null,
+								"resourceMediaAssetFile": null,
+								"image": null,
+								"resourceStreamId": null,
+								"title": "[Tech Partner Directory] - Microsoft 365: ICES Documentation",
+								"callToAction": "Learn More",
+								"id": "fb5468df-61fc-5082-aaf1-de5e662cb0bf",
+								"resourceTitle": "Microsoft + Area 1 Email Security Documentation",
+								"resourceType": "Solution & Product Guides",
+								"topic": [
+									"Stop Phishing & BEC Attacks",
+									"Enhance Cloud Email Security"
+								],
+								"orderDate": "2022-08-11",
+								"industry": null,
+								"description": "Learn how Cloudflare Area 1 integrates with Microsoft 365 to detect and block targeted phishing attacks.",
+								"externalLinkUrl": "https://developers.cloudflare.com/email-security/",
+								"hideFromResourceHub": true
+							},
+							{
+								"resourceMedia": null,
+								"resourceMediaAssetFile": null,
+								"image": null,
+								"resourceStreamId": null,
+								"title": "[Tech Partner Directory] - Microsoft 365: CASB Blog II",
 								"callToAction": "Learn More",
 								"id": "20cbb25d-2634-55ae-8bd7-475081a2c616",
 								"resourceTitle": "Announcing Gateway + CASB",
@@ -437,7 +615,7 @@
 								"resourceMediaAssetFile": null,
 								"image": null,
 								"resourceStreamId": null,
-								"title": "[Tech Partner Directory] - Microsoft 365: Blog",
+								"title": "[Tech Partner Directory] - Microsoft 365: CASB Blog",
 								"callToAction": "Learn More",
 								"id": "3b235a0b-8248-5095-8c41-37e180ec3144",
 								"resourceTitle": "Managing Clouds - Cloudflare CASB and our not so secret plan for what's next",
