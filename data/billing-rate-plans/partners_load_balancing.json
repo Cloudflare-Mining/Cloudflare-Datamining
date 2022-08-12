@@ -1,0 +1,196 @@
+{
+	"id": "PARTNERS_LOAD_BALANCING",
+	"public_name": "Partners Load Balancing",
+	"currency": "USD",
+	"components": [
+		{
+			"name": "load_balancers",
+			"publicName": "Load Balancers",
+			"type": "tieredPricingComponent",
+			"aggregate": "",
+			"features": [
+				"ctm.load_balancers"
+			],
+			"chargeType": "subscription",
+			"chargeModel": "tiered",
+			"defaultQuantity": 20,
+			"tiers": [
+				{
+					"lowerThreshold": 20,
+					"upperThreshold": 50,
+					"pricingType": "unit",
+					"price": 0,
+					"bucketSize": 0
+				}
+			]
+		},
+		{
+			"name": "load_balancing_base",
+			"publicName": "Basic Load Balancing",
+			"type": "flatPricingComponent",
+			"aggregate": "",
+			"chargeType": "subscription",
+			"chargeModel": "flat",
+			"defaultQuantity": 1,
+			"tiers": [
+				{
+					"lowerThreshold": 1,
+					"upperThreshold": 1,
+					"pricingType": "fixed",
+					"price": 0,
+					"bucketSize": 0
+				}
+			]
+		},
+		{
+			"name": "load_balancing_dns_queries",
+			"publicName": "DNS Queries (First 500,000 are FREE)",
+			"type": "tieredPricingComponent",
+			"metric": "load_balancing_dns_queries",
+			"aggregate": "sum",
+			"chargeType": "usage",
+			"chargeModel": "tiered",
+			"defaultQuantity": 0,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 0,
+					"pricingType": "unit",
+					"price": 0,
+					"bucketSize": 0
+				}
+			],
+			"cfQuantityLabel": "{{comma .}} queries",
+			"cfStartOfFirstUnit": 500001,
+			"cfUsageDivisor": 1,
+			"cfUsageID": "load_balancing_dns_queries"
+		},
+		{
+			"name": "load_balancing_geo_routing",
+			"publicName": "Geo-Routing Enabled",
+			"type": "tieredPricingComponent",
+			"aggregate": "",
+			"features": [
+				"ctm.allow_region_pools",
+				"ctm.allow_country_pools"
+			],
+			"chargeType": "subscription",
+			"chargeModel": "tiered",
+			"defaultQuantity": 0,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 1,
+					"pricingType": "unit",
+					"price": 0,
+					"bucketSize": 0
+				}
+			]
+		},
+		{
+			"name": "load_balancing_monitor_interval",
+			"publicName": "Health Check Interval (sec)",
+			"type": "tieredVolumePricingComponent",
+			"aggregate": "",
+			"features": [
+				"ctm.monitor_interval"
+			],
+			"chargeType": "subscription",
+			"chargeModel": "tiered_volume",
+			"defaultQuantity": 60,
+			"tiers": [
+				{
+					"lowerThreshold": 60,
+					"upperThreshold": 60,
+					"pricingType": "fixed",
+					"price": 0,
+					"bucketSize": 0
+				}
+			]
+		},
+		{
+			"name": "load_balancing_monitors",
+			"publicName": "Load Balancing Monitors",
+			"type": "tieredPricingComponent",
+			"aggregate": "",
+			"features": [
+				"ctm.monitors"
+			],
+			"chargeType": "subscription",
+			"chargeModel": "tiered",
+			"defaultQuantity": 5,
+			"tiers": [
+				{
+					"lowerThreshold": 5,
+					"upperThreshold": 20,
+					"pricingType": "unit",
+					"price": 0,
+					"bucketSize": 0
+				}
+			]
+		},
+		{
+			"name": "load_balancing_origins",
+			"publicName": "Number of Origins",
+			"type": "tieredVolumePricingComponent",
+			"aggregate": "",
+			"features": [
+				"ctm.origins"
+			],
+			"chargeType": "subscription",
+			"chargeModel": "tiered_volume",
+			"defaultQuantity": 6,
+			"tiers": [
+				{
+					"lowerThreshold": 6,
+					"upperThreshold": 6,
+					"pricingType": "fixed",
+					"price": 0,
+					"bucketSize": 0
+				}
+			]
+		},
+		{
+			"name": "load_balancing_pools",
+			"publicName": "Load Balancing Pools",
+			"type": "tieredPricingComponent",
+			"aggregate": "",
+			"features": [
+				"ctm.pools"
+			],
+			"chargeType": "subscription",
+			"chargeModel": "tiered",
+			"defaultQuantity": 5,
+			"tiers": [
+				{
+					"lowerThreshold": 5,
+					"upperThreshold": 20,
+					"pricingType": "unit",
+					"price": 0,
+					"bucketSize": 0
+				}
+			]
+		},
+		{
+			"name": "load_balancing_probe_regions",
+			"publicName": "Health Check Regions",
+			"type": "tieredVolumePricingComponent",
+			"aggregate": "",
+			"features": [
+				"ctm.probe_regions"
+			],
+			"chargeType": "subscription",
+			"chargeModel": "tiered_volume",
+			"defaultQuantity": 1,
+			"tiers": [
+				{
+					"lowerThreshold": 1,
+					"upperThreshold": 1,
+					"pricingType": "fixed",
+					"price": 0,
+					"bucketSize": 0
+				}
+			]
+		}
+	]
+}

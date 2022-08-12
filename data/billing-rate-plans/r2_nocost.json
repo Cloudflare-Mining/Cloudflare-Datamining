@@ -1,0 +1,76 @@
+{
+	"id": "R2_NOCOST",
+	"public_name": "R2 Storage - No Cost",
+	"currency": "USD",
+	"components": [
+		{
+			"name": "r2_class_a_operations",
+			"publicName": "R2 Storage Class A Operations",
+			"type": "tieredPricingComponent",
+			"metric": "r2_class_a_operations",
+			"aggregate": "sum",
+			"chargeType": "usage",
+			"chargeModel": "tiered",
+			"defaultQuantity": 0,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 0,
+					"pricingType": "unit",
+					"price": 0,
+					"bucketSize": 0
+				}
+			],
+			"cfQuantityLabel": "{{comma .}} Million Class A Operations",
+			"cfStartOfFirstUnit": 1000001,
+			"cfUsageDivisor": 1,
+			"cfUsageID": "r2_class_a_operations"
+		},
+		{
+			"name": "r2_class_b_operations",
+			"publicName": "R2 Storage Class B Operations",
+			"type": "tieredPricingComponent",
+			"metric": "r2_class_b_operations",
+			"aggregate": "sum",
+			"chargeType": "usage",
+			"chargeModel": "tiered",
+			"defaultQuantity": 0,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 0,
+					"pricingType": "unit",
+					"price": 0,
+					"bucketSize": 0
+				}
+			],
+			"cfQuantityLabel": "{{comma .}} Million Class B Operations",
+			"cfStartOfFirstUnit": 10000001,
+			"cfUsageDivisor": 1,
+			"cfUsageID": "r2_class_b_operations"
+		},
+		{
+			"name": "r2_storage",
+			"publicName": "R2 Storage",
+			"type": "tieredPricingComponent",
+			"metric": "r2_storage",
+			"aggregate": "sum",
+			"chargeType": "usage",
+			"chargeModel": "tiered",
+			"defaultQuantity": 0,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 0,
+					"pricingType": "unit",
+					"price": 0,
+					"bucketSize": 0
+				}
+			],
+			"cfQuantityLabel": "{{comma .}} GB-Month",
+			"cfStartOfFirstUnit": 300000000001,
+			"cfUsageDivisor": 30000000000,
+			"cfUsageID": "r2_storage"
+		}
+	]
+}

@@ -1,0 +1,301 @@
+{
+	"id": "WORKERS_BASIC",
+	"public_name": "Cloudflare Workers",
+	"currency": "USD",
+	"components": [
+		{
+			"name": "account",
+			"publicName": "Base Monthly Fee",
+			"type": "flatPricingComponent",
+			"aggregate": "",
+			"chargeType": "subscription",
+			"chargeModel": "flat",
+			"defaultQuantity": 1,
+			"tiers": [
+				{
+					"lowerThreshold": 1,
+					"upperThreshold": 1,
+					"pricingType": "fixed",
+					"price": 5,
+					"bucketSize": 0
+				}
+			]
+		},
+		{
+			"name": "worker_durable_objects_duration",
+			"publicName": "Durable Objects Duration (First 400,000 GB-sec included)",
+			"type": "tieredPricingComponent",
+			"metric": "worker_durable_objects_duration",
+			"aggregate": "sum",
+			"chargeType": "usage",
+			"chargeModel": "tiered",
+			"defaultQuantity": 0,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 0,
+					"pricingType": "unit",
+					"price": 0.000013,
+					"bucketSize": 0
+				}
+			],
+			"cfQuantityLabel": "{{comma .}} GB-sec",
+			"cfStartOfFirstUnit": 400001,
+			"cfUsageDivisor": 7812500,
+			"cfUsageID": "worker_durable_objects_duration"
+		},
+		{
+			"name": "worker_durable_objects_requests",
+			"publicName": "Durable Objects Requests (First 1 million included)",
+			"type": "tieredPricingComponent",
+			"metric": "worker_durable_objects_requests",
+			"aggregate": "sum",
+			"chargeType": "usage",
+			"chargeModel": "tiered",
+			"defaultQuantity": 0,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 0,
+					"pricingType": "unit",
+					"price": 0,
+					"bucketSize": 0
+				}
+			],
+			"cfQuantityLabel": "{{comma .}} requests",
+			"cfStartOfFirstUnit": 1000001,
+			"cfUsageDivisor": 1,
+			"cfUsageID": "worker_durable_objects_requests"
+		},
+		{
+			"name": "worker_durable_objects_storage_deletes",
+			"publicName": "Durable Objects Storage Deletes (First 1 million included)",
+			"type": "tieredPricingComponent",
+			"metric": "worker_durable_objects_storage_deletes",
+			"aggregate": "sum",
+			"chargeType": "usage",
+			"chargeModel": "tiered",
+			"defaultQuantity": 0,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 0,
+					"pricingType": "unit",
+					"price": 0.000001,
+					"bucketSize": 0
+				}
+			],
+			"cfQuantityLabel": "{{comma .}} requests",
+			"cfStartOfFirstUnit": 1000001,
+			"cfUsageDivisor": 1,
+			"cfUsageID": "worker_durable_objects_storage_deletes"
+		},
+		{
+			"name": "worker_durable_objects_storage_reads",
+			"publicName": "Durable Objects Storage Reads (First 1 million included)",
+			"type": "tieredPricingComponent",
+			"metric": "worker_durable_objects_storage_reads",
+			"aggregate": "sum",
+			"chargeType": "usage",
+			"chargeModel": "tiered",
+			"defaultQuantity": 0,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 0,
+					"pricingType": "unit",
+					"price": 0,
+					"bucketSize": 0
+				}
+			],
+			"cfQuantityLabel": "{{comma .}} requests",
+			"cfStartOfFirstUnit": 1000001,
+			"cfUsageDivisor": 1,
+			"cfUsageID": "worker_durable_objects_storage_reads"
+		},
+		{
+			"name": "worker_durable_objects_storage_writes",
+			"publicName": "Durable Objects Storage Writes (First 1 million included)",
+			"type": "tieredPricingComponent",
+			"metric": "worker_durable_objects_storage_writes",
+			"aggregate": "sum",
+			"chargeType": "usage",
+			"chargeModel": "tiered",
+			"defaultQuantity": 0,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 0,
+					"pricingType": "unit",
+					"price": 0.000001,
+					"bucketSize": 0
+				}
+			],
+			"cfQuantityLabel": "{{comma .}} requests",
+			"cfStartOfFirstUnit": 1000001,
+			"cfUsageDivisor": 1,
+			"cfUsageID": "worker_durable_objects_storage_writes"
+		},
+		{
+			"name": "worker_durable_objects_stored_data",
+			"publicName": "Durable Objects Stored Data (First 1GB included)",
+			"type": "tieredPricingComponent",
+			"metric": "worker_durable_objects_stored_data",
+			"aggregate": "sum",
+			"chargeType": "usage",
+			"chargeModel": "tiered",
+			"defaultQuantity": 0,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 0,
+					"pricingType": "unit",
+					"price": 0.2,
+					"bucketSize": 0
+				}
+			],
+			"cfQuantityLabel": "{{comma .}} GB",
+			"cfStartOfFirstUnit": 5000000001,
+			"cfUsageDivisor": 720000000000,
+			"cfUsageID": "worker_durable_objects_stored_data"
+		},
+		{
+			"name": "worker_kv_deletes",
+			"publicName": "KV Deletes",
+			"type": "tieredPricingComponent",
+			"metric": "worker_kv_deletes",
+			"aggregate": "sum",
+			"chargeType": "usage",
+			"chargeModel": "tiered",
+			"defaultQuantity": 0,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 0,
+					"pricingType": "unit",
+					"price": 0.000005,
+					"bucketSize": 0
+				}
+			],
+			"cfQuantityLabel": "{{comma .}} deletes",
+			"cfStartOfFirstUnit": 1000001,
+			"cfUsageDivisor": 1,
+			"cfUsageID": "worker_kv_deletes"
+		},
+		{
+			"name": "worker_kv_lists",
+			"publicName": "KV Lists",
+			"type": "tieredPricingComponent",
+			"metric": "worker_kv_lists",
+			"aggregate": "sum",
+			"chargeType": "usage",
+			"chargeModel": "tiered",
+			"defaultQuantity": 0,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 0,
+					"pricingType": "unit",
+					"price": 0.000005,
+					"bucketSize": 0
+				}
+			],
+			"cfQuantityLabel": "{{comma .}} lists",
+			"cfStartOfFirstUnit": 1000001,
+			"cfUsageDivisor": 1,
+			"cfUsageID": "worker_kv_lists"
+		},
+		{
+			"name": "worker_kv_reads",
+			"publicName": "KV Reads (First 10 million are included)",
+			"type": "tieredPricingComponent",
+			"metric": "worker_kv_reads",
+			"aggregate": "sum",
+			"chargeType": "usage",
+			"chargeModel": "tiered",
+			"defaultQuantity": 0,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 0,
+					"pricingType": "unit",
+					"price": 0,
+					"bucketSize": 0
+				}
+			],
+			"cfQuantityLabel": "{{comma .}} reads",
+			"cfStartOfFirstUnit": 10000001,
+			"cfUsageDivisor": 1,
+			"cfUsageID": "worker_kv_reads"
+		},
+		{
+			"name": "worker_kv_storage",
+			"publicName": "KV Storage",
+			"type": "tieredPricingComponent",
+			"metric": "worker_kv_storage",
+			"aggregate": "sum",
+			"chargeType": "usage",
+			"chargeModel": "tiered",
+			"defaultQuantity": 0,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 0,
+					"pricingType": "unit",
+					"price": 0,
+					"bucketSize": 0
+				}
+			],
+			"cfQuantityLabel": "{{comma .}} Byte-Hours",
+			"cfStartOfFirstUnit": 745,
+			"cfUsageDivisor": 720000000000,
+			"cfUsageID": "worker_kv_storage"
+		},
+		{
+			"name": "worker_kv_writes",
+			"publicName": "KV Writes",
+			"type": "tieredPricingComponent",
+			"metric": "worker_kv_writes",
+			"aggregate": "sum",
+			"chargeType": "usage",
+			"chargeModel": "tiered",
+			"defaultQuantity": 0,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 0,
+					"pricingType": "unit",
+					"price": 0.000005,
+					"bucketSize": 0
+				}
+			],
+			"cfQuantityLabel": "{{comma .}} writes",
+			"cfStartOfFirstUnit": 1000001,
+			"cfUsageDivisor": 1,
+			"cfUsageID": "worker_kv_writes"
+		},
+		{
+			"name": "worker_requests",
+			"publicName": "Worker Requests (First 10 million included)",
+			"type": "tieredPricingComponent",
+			"metric": "worker_requests",
+			"aggregate": "sum",
+			"chargeType": "usage",
+			"chargeModel": "tiered",
+			"defaultQuantity": 0,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 0,
+					"pricingType": "unit",
+					"price": 0.5,
+					"bucketSize": 0
+				}
+			],
+			"cfQuantityLabel": "{{comma .}} requests",
+			"cfStartOfFirstUnit": 10000001,
+			"cfUsageDivisor": 1,
+			"cfUsageID": "worker_requests"
+		}
+	]
+}

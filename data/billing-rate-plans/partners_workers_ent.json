@@ -1,0 +1,71 @@
+{
+	"id": "PARTNERS_WORKERS_ENT",
+	"public_name": "Cloudflare Workers",
+	"currency": "USD",
+	"components": [
+		{
+			"name": "account",
+			"publicName": "Base Monthly Fee",
+			"type": "flatPricingComponent",
+			"aggregate": "",
+			"chargeType": "subscription",
+			"chargeModel": "flat",
+			"defaultQuantity": 1,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 0,
+					"pricingType": "fixed",
+					"price": 0,
+					"bucketSize": 0
+				}
+			]
+		},
+		{
+			"name": "worker_kv_reads",
+			"publicName": "KV Reads",
+			"type": "tieredPricingComponent",
+			"metric": "worker_kv_reads",
+			"aggregate": "sum",
+			"chargeType": "usage",
+			"chargeModel": "tiered",
+			"defaultQuantity": 0,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 0,
+					"pricingType": "unit",
+					"price": 0,
+					"bucketSize": 0
+				}
+			],
+			"cfQuantityLabel": "{{comma .}} reads",
+			"cfStartOfFirstUnit": 10000001,
+			"cfUsageDivisor": 1,
+			"cfUsageID": "worker_kv_reads"
+		},
+		{
+			"name": "worker_requests",
+			"publicName": "Worker Requests (First 10 million included)",
+			"type": "tieredPricingComponent",
+			"metric": "worker_requests",
+			"aggregate": "sum",
+			"chargeType": "usage",
+			"chargeModel": "tiered",
+			"defaultQuantity": 0,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 0,
+					"pricingType": "unit",
+					"price": 0,
+					"bucketSize": 0
+				}
+			],
+			"cfQuantityLabel": "{{comma .}} requests",
+			"cfStartOfFirstUnit": 10000001,
+			"cfUsageDivisor": 1,
+			"cfUsageID": "worker_requests"
+		}
+	]
+}

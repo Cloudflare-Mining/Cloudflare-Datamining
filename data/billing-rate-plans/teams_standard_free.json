@@ -1,0 +1,70 @@
+{
+	"id": "TEAMS_STANDARD_FREE",
+	"public_name": "Cloudflare Zero Trust",
+	"currency": "USD",
+	"components": [
+		{
+			"name": "browser_isolation_adv",
+			"publicName": "Browser Isolation Advanced (Per User)",
+			"type": "tieredPricingComponent",
+			"aggregate": "",
+			"features": [
+				"swg.always_on_browser_isolation_enabled"
+			],
+			"chargeType": "subscription",
+			"chargeModel": "tiered",
+			"defaultQuantity": 0,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 100000000,
+					"pricingType": "unit",
+					"price": 0,
+					"bucketSize": 0
+				}
+			]
+		},
+		{
+			"name": "browser_isolation_basic",
+			"publicName": "Browser Isolation Basic (Per User)",
+			"type": "tieredPricingComponent",
+			"aggregate": "",
+			"features": [
+				"swg.advanced_threat_protection_enabled"
+			],
+			"chargeType": "subscription",
+			"chargeModel": "tiered",
+			"defaultQuantity": 0,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 100000000,
+					"pricingType": "unit",
+					"price": 0,
+					"bucketSize": 0
+				}
+			]
+		},
+		{
+			"name": "users",
+			"publicName": "Monthly Fee (Per User)",
+			"type": "tieredPricingComponent",
+			"aggregate": "",
+			"features": [
+				"teams.users_allowed"
+			],
+			"chargeType": "subscription",
+			"chargeModel": "tiered",
+			"defaultQuantity": 1,
+			"tiers": [
+				{
+					"lowerThreshold": 1,
+					"upperThreshold": 100000000,
+					"pricingType": "unit",
+					"price": 0,
+					"bucketSize": 0
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,73 @@
+{
+	"id": "CACHE_RESERVE_ENT",
+	"public_name": "Cache Reserve for Enterprise",
+	"currency": "USD",
+	"components": [
+		{
+			"name": "cache_reserve_class_a_operations",
+			"publicName": "Cache Reserve Class A Operations",
+			"type": "tieredPricingComponent",
+			"metric": "cache_reserve_class_a_operations",
+			"aggregate": "sum",
+			"chargeType": "usage",
+			"chargeModel": "tiered",
+			"defaultQuantity": 0,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 0,
+					"pricingType": "unit",
+					"price": 0,
+					"bucketSize": 0
+				}
+			],
+			"cfQuantityLabel": "{{comma .}} Million Class A Operations",
+			"cfUsageDivisor": 1,
+			"cfUsageID": "cache_reserve_class_a_operations"
+		},
+		{
+			"name": "cache_reserve_class_b_operations",
+			"publicName": "Cache Reserve Class B Operations",
+			"type": "tieredPricingComponent",
+			"metric": "cache_reserve_class_b_operations",
+			"aggregate": "sum",
+			"chargeType": "usage",
+			"chargeModel": "tiered",
+			"defaultQuantity": 0,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 0,
+					"pricingType": "unit",
+					"price": 0,
+					"bucketSize": 0
+				}
+			],
+			"cfQuantityLabel": "{{comma .}} Million Class B Operations",
+			"cfUsageDivisor": 1,
+			"cfUsageID": "cache_reserve_class_b_operations"
+		},
+		{
+			"name": "cache_reserve_storage",
+			"publicName": "Cache Reserve Storage",
+			"type": "tieredPricingComponent",
+			"metric": "cache_reserve_storage",
+			"aggregate": "sum",
+			"chargeType": "usage",
+			"chargeModel": "tiered",
+			"defaultQuantity": 0,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 0,
+					"pricingType": "unit",
+					"price": 0,
+					"bucketSize": 0
+				}
+			],
+			"cfQuantityLabel": "{{comma .}} GB-Month",
+			"cfUsageDivisor": 30000000000,
+			"cfUsageID": "cache_reserve_storage"
+		}
+	]
+}
