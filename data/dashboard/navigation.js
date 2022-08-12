@@ -21,14 +21,14 @@ const navigation = {
 		url: "/access-management",
 		iconType: "lock",
 		hasPermission: function(ce) {
-			return !!(0, Ce.z1)("oauth-access-management")(ce)
+			return !!(0, Me.z1)("oauth-access-management")(ce)
 		}
 	}, {
 		title: "navigation.profile.authentication",
 		url: "/authentication",
 		iconType: "key",
 		hasPermission: function(ce) {
-			return !(0, J.n3)() && !(0, Ce.z1)("oauth-access-management")(ce)
+			return !(0, J.n3)() && !(0, Me.z1)("oauth-access-management")(ce)
 		}
 	}, {
 		title: "navigation.profile.api_tokens",
@@ -39,7 +39,7 @@ const navigation = {
 		url: "/sessions",
 		iconType: "time",
 		hasPermission: function(ce) {
-			return !(0, Ce.z1)("oauth-access-management")(ce)
+			return !(0, Me.z1)("oauth-access-management")(ce)
 		}
 	}],
 	account: [{
@@ -48,7 +48,7 @@ const navigation = {
 		iconType: "internet-browser"
 	}, {
 		title: function(ce) {
-			return (0, Ce.z1)("registrar-account-home-copy-experiment")(ce) === "registrar" ? "navigation.account.registrar" : "navigation.account.registrar.buy_domains"
+			return (0, Me.z1)("registrar-account-home-copy-experiment")(ce) === "registrar" ? "navigation.account.registrar" : "navigation.account.registrar.buy_domains"
 		},
 		url: "",
 		iconType: "registrar-logo",
@@ -434,10 +434,10 @@ const navigation = {
 		hasPermission: function(ce) {
 			var pt = (0, j.getZone)(ce);
 			if ((0, r.zoneIsDNSOnly)(ce) || !Y(ce, "zone_settings", "spectrum.app") || !pt) return !1;
-			var It = !!((0, $.userHasEntZones)(ce) || (0, j.userHasDelegatedEntZones)(ce)),
+			var Dt = !!((0, $.userHasEntZones)(ce) || (0, j.userHasDelegatedEntZones)(ce)),
 				Ut = !!(0, j.getZoneFlipperFlag)(ce, "spectrum", "enabled"),
-				$t = !!(0, j.isFree)(pt);
-			return Ut || It || !$t
+				Xt = !!(0, j.isFree)(pt);
+			return Ut || Dt || !Xt
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -463,7 +463,7 @@ const navigation = {
 			title: "navigation.zone.ssl-tls.client_certs",
 			url: "/ssl-tls/client-certificates",
 			hasPermission: function(ce) {
-				return !!(0, Ce.z1)("client-certificates")(ce) || !!(0, j.getZoneFlipperFlag)(ce, "ssl", "client_certificates")
+				return !!(0, Me.z1)("client-certificates")(ce) || !!(0, j.getZoneFlipperFlag)(ce, "ssl", "client_certificates")
 			}
 		}, {
 			title: "navigation.zone.ssl-tls.origin_server",
@@ -696,8 +696,8 @@ const navigation = {
 		url: "/zaraz",
 		labels: function(ce) {
 			var pt = [],
-				It = (0, j.getZone)(ce);
-			return It && !(0, j.isPlanAtLeast)(It, "pro") && pt.push("beta"), pt
+				Dt = (0, j.getZone)(ce);
+			return Dt && !(0, j.isPlanAtLeast)(Dt, "pro") && pt.push("beta"), pt
 		},
 		iconType: "zaraz",
 		testId: "zone-navigation-link-zaraz",
