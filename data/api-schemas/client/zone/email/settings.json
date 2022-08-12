@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/email/settings.json",
-	"title": "Email Routing - Routing rules",
-	"description": "Cloudflare Email Routing supports different routing rules. You can configure up to 200 different routing rules.",
+	"title": "Email Routing routing rules",
+	"description": "Create rules to route emails to your preferred inbox.",
 	"type": "object",
 	"links": [
 		{
@@ -13,7 +13,7 @@
 			"cfOwnership": "email",
 			"cfPermissionsRequired": {
 				"enum": [
-					"#zone_settings:read"
+					"com.cloudflare.api.account.zone.email.routing.rule.list"
 				]
 			},
 			"cfPlanAvailability": {
@@ -22,7 +22,7 @@
 				"business": true,
 				"enterprise": true
 			},
-			"html_id": "email-routing---routing-rules-list-routing-rules",
+			"html_id": "email-routing-routing-rules-list-routing-rules",
 			"uri": "zones/:zone_identifier/email/routing/rules",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/email/routing/rules?page=1&per_page=20&enabled=true\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {
@@ -64,18 +64,18 @@
 				"objects": [],
 				"example": "{\n  \"page\": 1,\n  \"per_page\": 20,\n  \"enabled\": true\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"tag\": \"a7e6fb77503c41d8a7f3113c6918f10c\",\n      \"name\": \"Rule send to user@example.net\",\n      \"priority\": 0,\n      \"enabled\": true,\n      \"matchers\": [\n        {\n          \"type\": \"literal\",\n          \"field\": \"to\",\n          \"value\": \"test@example.com\"\n        }\n      ],\n      \"actions\": [\n        {\n          \"type\": \"forward\",\n          \"value\": [\n            \"destinationaddress@example.net\"\n          ]\n        }\n      ]\n    }\n  ],\n  \"result_info\": {\n    \"page\": 1,\n    \"per_page\": 20,\n    \"count\": 1,\n    \"total_count\": 1\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"tag\": \"a7e6fb77503c41d8a7f3113c6918f10c\",\n      \"name\": \"Send to user@example.net rule.\",\n      \"priority\": 0,\n      \"enabled\": true,\n      \"matchers\": [\n        {\n          \"type\": \"literal\",\n          \"field\": \"to\",\n          \"value\": \"test@example.com\"\n        }\n      ],\n      \"actions\": [\n        {\n          \"type\": \"forward\",\n          \"value\": [\n            \"destinationaddress@example.net\"\n          ]\n        }\n      ]\n    }\n  ],\n  \"result_info\": {\n    \"page\": 1,\n    \"per_page\": 20,\n    \"count\": 1,\n    \"total_count\": 1\n  }\n}"
 		},
 		{
 			"title": "Create routing rule",
-			"description": "Create a new routing rule. Rules consist of a custom email address paired with a destination address, that forward emails to the destination address you chose.",
+			"description": "Rules consist of a set of criteria for matching emails (such as an email being sent to a specific custom email address) plus a set of actions to take on the email (like forwarding it to a specific destination address).",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone_identifier}/email/routing/rules",
 			"method": "POST",
 			"cfOwnership": "email",
 			"cfPermissionsRequired": {
 				"enum": [
-					"#zone_settings:edit"
+					"com.cloudflare.api.account.zone.email.routing.rule.create"
 				]
 			},
 			"cfPlanAvailability": {
@@ -84,9 +84,9 @@
 				"business": true,
 				"enterprise": true
 			},
-			"html_id": "email-routing---routing-rules-create-routing-rule",
+			"html_id": "email-routing-routing-rules-create-routing-rule",
 			"uri": "zones/:zone_identifier/email/routing/rules",
-			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/email/routing/rules\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"Rule send to user@example.net\",\"enabled\":true,\"priority\":0,\"matchers\":[{\"type\":\"literal\",\"field\":\"to\",\"value\":\"test@example.com\"}],\"actions\":[{\"type\":\"forward\",\"value\":[\"destinationaddress@example.net\"]}]}'",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/email/routing/rules\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"Send to user@example.net rule.\",\"enabled\":true,\"priority\":0,\"matchers\":[{\"type\":\"literal\",\"field\":\"to\",\"value\":\"test@example.com\"}],\"actions\":[{\"type\":\"forward\",\"value\":[\"destinationaddress@example.net\"]}]}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -94,7 +94,7 @@
 				"all_props": {
 					"name": {
 						"type": "string",
-						"example": "\"Rule send to user@example.net\"",
+						"example": "\"Send to user@example.net rule.\"",
 						"description": "Routing rule name.",
 						"maxLength": 256
 					},
@@ -167,7 +167,7 @@
 							"properties": {
 								"type": {
 									"type": "string",
-									"description": "Action supported type.",
+									"description": "Type of supported action.",
 									"enum": [
 										"forward",
 										"worker"
@@ -197,9 +197,9 @@
 					"priority"
 				],
 				"objects": [],
-				"example": "{\n  \"name\": \"Rule send to user@example.net\",\n  \"enabled\": true,\n  \"priority\": 0,\n  \"matchers\": [\n    {\n      \"type\": \"literal\",\n      \"field\": \"to\",\n      \"value\": \"test@example.com\"\n    }\n  ],\n  \"actions\": [\n    {\n      \"type\": \"forward\",\n      \"value\": [\n        \"destinationaddress@example.net\"\n      ]\n    }\n  ]\n}"
+				"example": "{\n  \"name\": \"Send to user@example.net rule.\",\n  \"enabled\": true,\n  \"priority\": 0,\n  \"matchers\": [\n    {\n      \"type\": \"literal\",\n      \"field\": \"to\",\n      \"value\": \"test@example.com\"\n    }\n  ],\n  \"actions\": [\n    {\n      \"type\": \"forward\",\n      \"value\": [\n        \"destinationaddress@example.net\"\n      ]\n    }\n  ]\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"tag\": \"a7e6fb77503c41d8a7f3113c6918f10c\",\n    \"name\": \"Rule send to user@example.net\",\n    \"priority\": 0,\n    \"enabled\": true,\n    \"matchers\": [\n      {\n        \"type\": \"literal\",\n        \"field\": \"to\",\n        \"value\": \"test@example.com\"\n      }\n    ],\n    \"actions\": [\n      {\n        \"type\": \"forward\",\n        \"value\": [\n          \"destinationaddress@example.net\"\n        ]\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"tag\": \"a7e6fb77503c41d8a7f3113c6918f10c\",\n    \"name\": \"Send to user@example.net rule.\",\n    \"priority\": 0,\n    \"enabled\": true,\n    \"matchers\": [\n      {\n        \"type\": \"literal\",\n        \"field\": \"to\",\n        \"value\": \"test@example.com\"\n      }\n    ],\n    \"actions\": [\n      {\n        \"type\": \"forward\",\n        \"value\": [\n          \"destinationaddress@example.net\"\n        ]\n      }\n    ]\n  }\n}"
 		},
 		{
 			"title": "Get routing rule",
@@ -210,7 +210,7 @@
 			"cfOwnership": "email",
 			"cfPermissionsRequired": {
 				"enum": [
-					"#zone_settings:read"
+					"com.cloudflare.api.account.zone.email.routing.rule.read"
 				]
 			},
 			"cfPlanAvailability": {
@@ -219,21 +219,21 @@
 				"business": true,
 				"enterprise": true
 			},
-			"html_id": "email-routing---routing-rules-get-routing-rule",
+			"html_id": "email-routing-routing-rules-get-routing-rule",
 			"uri": "zones/:zone_identifier/email/routing/rules/:rule_identifier",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/email/routing/rules/a7e6fb77503c41d8a7f3113c6918f10c\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"tag\": \"a7e6fb77503c41d8a7f3113c6918f10c\",\n    \"name\": \"Rule send to user@example.net\",\n    \"priority\": 0,\n    \"enabled\": true,\n    \"matchers\": [\n      {\n        \"type\": \"literal\",\n        \"field\": \"to\",\n        \"value\": \"test@example.com\"\n      }\n    ],\n    \"actions\": [\n      {\n        \"type\": \"forward\",\n        \"value\": [\n          \"destinationaddress@example.net\"\n        ]\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"tag\": \"a7e6fb77503c41d8a7f3113c6918f10c\",\n    \"name\": \"Send to user@example.net rule.\",\n    \"priority\": 0,\n    \"enabled\": true,\n    \"matchers\": [\n      {\n        \"type\": \"literal\",\n        \"field\": \"to\",\n        \"value\": \"test@example.com\"\n      }\n    ],\n    \"actions\": [\n      {\n        \"type\": \"forward\",\n        \"value\": [\n          \"destinationaddress@example.net\"\n        ]\n      }\n    ]\n  }\n}"
 		},
 		{
 			"title": "Update routing rule",
-			"description": "Update actions, matches, or enable/disable specific routing rules",
+			"description": "Update actions and matches, or enable/disable specific routing rules",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone_identifier}/email/routing/rules/{#/definitions/rule_identifier}",
 			"method": "PUT",
 			"cfOwnership": "email",
 			"cfPermissionsRequired": {
 				"enum": [
-					"#zone_settings:edit"
+					"com.cloudflare.api.account.zone.email.routing.rule.update"
 				]
 			},
 			"cfPlanAvailability": {
@@ -242,9 +242,9 @@
 				"business": true,
 				"enterprise": true
 			},
-			"html_id": "email-routing---routing-rules-update-routing-rule",
+			"html_id": "email-routing-routing-rules-update-routing-rule",
 			"uri": "zones/:zone_identifier/email/routing/rules/:rule_identifier",
-			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/email/routing/rules/a7e6fb77503c41d8a7f3113c6918f10c\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"Rule send to user@example.net\",\"enabled\":true,\"priority\":0,\"matchers\":[{\"type\":\"literal\",\"field\":\"to\",\"value\":\"test@example.com\"}],\"actions\":[{\"type\":\"forward\",\"value\":[\"destinationaddress@example.net\"]}]}'",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/email/routing/rules/a7e6fb77503c41d8a7f3113c6918f10c\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"Send to user@example.net rule.\",\"enabled\":true,\"priority\":0,\"matchers\":[{\"type\":\"literal\",\"field\":\"to\",\"value\":\"test@example.com\"}],\"actions\":[{\"type\":\"forward\",\"value\":[\"destinationaddress@example.net\"]}]}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -252,7 +252,7 @@
 				"all_props": {
 					"name": {
 						"type": "string",
-						"example": "\"Rule send to user@example.net\"",
+						"example": "\"Send to user@example.net rule.\"",
 						"description": "Routing rule name.",
 						"maxLength": 256
 					},
@@ -325,7 +325,7 @@
 							"properties": {
 								"type": {
 									"type": "string",
-									"description": "Action supported type.",
+									"description": "Type of supported action.",
 									"enum": [
 										"forward",
 										"worker"
@@ -355,9 +355,9 @@
 					"priority"
 				],
 				"objects": [],
-				"example": "{\n  \"name\": \"Rule send to user@example.net\",\n  \"enabled\": true,\n  \"priority\": 0,\n  \"matchers\": [\n    {\n      \"type\": \"literal\",\n      \"field\": \"to\",\n      \"value\": \"test@example.com\"\n    }\n  ],\n  \"actions\": [\n    {\n      \"type\": \"forward\",\n      \"value\": [\n        \"destinationaddress@example.net\"\n      ]\n    }\n  ]\n}"
+				"example": "{\n  \"name\": \"Send to user@example.net rule.\",\n  \"enabled\": true,\n  \"priority\": 0,\n  \"matchers\": [\n    {\n      \"type\": \"literal\",\n      \"field\": \"to\",\n      \"value\": \"test@example.com\"\n    }\n  ],\n  \"actions\": [\n    {\n      \"type\": \"forward\",\n      \"value\": [\n        \"destinationaddress@example.net\"\n      ]\n    }\n  ]\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"tag\": \"a7e6fb77503c41d8a7f3113c6918f10c\",\n    \"name\": \"Rule send to user@example.net\",\n    \"priority\": 0,\n    \"enabled\": true,\n    \"matchers\": [\n      {\n        \"type\": \"literal\",\n        \"field\": \"to\",\n        \"value\": \"test@example.com\"\n      }\n    ],\n    \"actions\": [\n      {\n        \"type\": \"forward\",\n        \"value\": [\n          \"destinationaddress@example.net\"\n        ]\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"tag\": \"a7e6fb77503c41d8a7f3113c6918f10c\",\n    \"name\": \"Send to user@example.net rule.\",\n    \"priority\": 0,\n    \"enabled\": true,\n    \"matchers\": [\n      {\n        \"type\": \"literal\",\n        \"field\": \"to\",\n        \"value\": \"test@example.com\"\n      }\n    ],\n    \"actions\": [\n      {\n        \"type\": \"forward\",\n        \"value\": [\n          \"destinationaddress@example.net\"\n        ]\n      }\n    ]\n  }\n}"
 		},
 		{
 			"title": "Delete routing rule",
@@ -368,7 +368,7 @@
 			"cfOwnership": "email",
 			"cfPermissionsRequired": {
 				"enum": [
-					"#zone_settings:edit"
+					"com.cloudflare.api.account.zone.email.routing.rule.delete"
 				]
 			},
 			"cfPlanAvailability": {
@@ -377,10 +377,10 @@
 				"business": true,
 				"enterprise": true
 			},
-			"html_id": "email-routing---routing-rules-delete-routing-rule",
+			"html_id": "email-routing-routing-rules-delete-routing-rule",
 			"uri": "zones/:zone_identifier/email/routing/rules/:rule_identifier",
 			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/email/routing/rules/a7e6fb77503c41d8a7f3113c6918f10c\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"tag\": \"a7e6fb77503c41d8a7f3113c6918f10c\",\n    \"name\": \"Rule send to user@example.net\",\n    \"priority\": 0,\n    \"enabled\": true,\n    \"matchers\": [\n      {\n        \"type\": \"literal\",\n        \"field\": \"to\",\n        \"value\": \"test@example.com\"\n      }\n    ],\n    \"actions\": [\n      {\n        \"type\": \"forward\",\n        \"value\": [\n          \"destinationaddress@example.net\"\n        ]\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"tag\": \"a7e6fb77503c41d8a7f3113c6918f10c\",\n    \"name\": \"Send to user@example.net rule.\",\n    \"priority\": 0,\n    \"enabled\": true,\n    \"matchers\": [\n      {\n        \"type\": \"literal\",\n        \"field\": \"to\",\n        \"value\": \"test@example.com\"\n      }\n    ],\n    \"actions\": [\n      {\n        \"type\": \"forward\",\n        \"value\": [\n          \"destinationaddress@example.net\"\n        ]\n      }\n    ]\n  }\n}"
 		},
 		{
 			"title": "Get catch-all rule",
@@ -391,7 +391,7 @@
 			"cfOwnership": "email",
 			"cfPermissionsRequired": {
 				"enum": [
-					"#zone_settings:read"
+					"com.cloudflare.api.account.zone.email.routing.rule.read"
 				]
 			},
 			"cfPlanAvailability": {
@@ -400,10 +400,10 @@
 				"business": true,
 				"enterprise": true
 			},
-			"html_id": "email-routing---routing-rules-get-catch-all-rule",
+			"html_id": "email-routing-routing-rules-get-catch-all-rule",
 			"uri": "zones/:zone_identifier/email/routing/rules/catch_all",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/email/routing/rules/catch_all\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"tag\": \"a7e6fb77503c41d8a7f3113c6918f10c\",\n  \"name\": \"Rule send to user@example.net\",\n  \"enabled\": true,\n  \"matchers\": [\n    {\n      \"type\": \"all\"\n    }\n  ],\n  \"actions\": [\n    {\n      \"type\": \"forward\",\n      \"value\": [\n        \"destinationaddress@example.net\"\n      ]\n    }\n  ]\n}"
+			"response": "{\n  \"tag\": \"a7e6fb77503c41d8a7f3113c6918f10c\",\n  \"name\": \"Send to user@example.net rule.\",\n  \"enabled\": true,\n  \"matchers\": [\n    {\n      \"type\": \"all\"\n    }\n  ],\n  \"actions\": [\n    {\n      \"type\": \"forward\",\n      \"value\": [\n        \"destinationaddress@example.net\"\n      ]\n    }\n  ]\n}"
 		},
 		{
 			"title": "Update catch-all rule",
@@ -414,7 +414,7 @@
 			"cfOwnership": "email",
 			"cfPermissionsRequired": {
 				"enum": [
-					"#zone_settings:read"
+					"com.cloudflare.api.account.zone.email.routing.rule.update"
 				]
 			},
 			"cfPlanAvailability": {
@@ -423,9 +423,9 @@
 				"business": true,
 				"enterprise": true
 			},
-			"html_id": "email-routing---routing-rules-update-catch-all-rule",
+			"html_id": "email-routing-routing-rules-update-catch-all-rule",
 			"uri": "zones/:zone_identifier/email/routing/rules/catch_all",
-			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/email/routing/rules/catch_all\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"Rule send to user@example.net\",\"enabled\":true,\"matchers\":[{\"type\":\"all\"}],\"actions\":[{\"type\":\"forward\",\"value\":[\"destinationaddress@example.net\"]}]}'",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/email/routing/rules/catch_all\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"Send to user@example.net rule.\",\"enabled\":true,\"matchers\":[{\"type\":\"all\"}],\"actions\":[{\"type\":\"forward\",\"value\":[\"destinationaddress@example.net\"]}]}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -433,7 +433,7 @@
 				"all_props": {
 					"name": {
 						"type": "string",
-						"example": "\"Rule send to user@example.net\"",
+						"example": "\"Send to user@example.net rule.\"",
 						"description": "Routing rule name.",
 						"maxLength": 256
 					},
@@ -512,12 +512,12 @@
 					"enabled"
 				],
 				"objects": [],
-				"example": "{\n  \"name\": \"Rule send to user@example.net\",\n  \"enabled\": true,\n  \"matchers\": [\n    {\n      \"type\": \"all\"\n    }\n  ],\n  \"actions\": [\n    {\n      \"type\": \"forward\",\n      \"value\": [\n        \"destinationaddress@example.net\"\n      ]\n    }\n  ]\n}"
+				"example": "{\n  \"name\": \"Send to user@example.net rule.\",\n  \"enabled\": true,\n  \"matchers\": [\n    {\n      \"type\": \"all\"\n    }\n  ],\n  \"actions\": [\n    {\n      \"type\": \"forward\",\n      \"value\": [\n        \"destinationaddress@example.net\"\n      ]\n    }\n  ]\n}"
 			},
-			"response": "{\n  \"tag\": \"a7e6fb77503c41d8a7f3113c6918f10c\",\n  \"name\": \"Rule send to user@example.net\",\n  \"enabled\": true,\n  \"matchers\": [\n    {\n      \"type\": \"all\"\n    }\n  ],\n  \"actions\": [\n    {\n      \"type\": \"forward\",\n      \"value\": [\n        \"destinationaddress@example.net\"\n      ]\n    }\n  ]\n}"
+			"response": "{\n  \"tag\": \"a7e6fb77503c41d8a7f3113c6918f10c\",\n  \"name\": \"Send to user@example.net rule.\",\n  \"enabled\": true,\n  \"matchers\": [\n    {\n      \"type\": \"all\"\n    }\n  ],\n  \"actions\": [\n    {\n      \"type\": \"forward\",\n      \"value\": [\n        \"destinationaddress@example.net\"\n      ]\n    }\n  ]\n}"
 		}
 	],
-	"html_id": "email-routing---routing-rules",
+	"html_id": "email-routing-routing-rules",
 	"object_definition": {
 		"_formatter": {
 			"jsonMediaType": {}
@@ -532,7 +532,7 @@
 			},
 			"name": {
 				"type": "string",
-				"example": "\"Rule send to user@example.net\"",
+				"example": "\"Send to user@example.net rule.\"",
 				"description": "Routing rule name.",
 				"maxLength": 256
 			},
@@ -605,7 +605,7 @@
 					"properties": {
 						"type": {
 							"type": "string",
-							"description": "Action supported type.",
+							"description": "Type of supported action.",
 							"enum": [
 								"forward",
 								"worker"
@@ -635,8 +635,8 @@
 			"actions"
 		],
 		"objects": [],
-		"example": "{\n  \"tag\": \"a7e6fb77503c41d8a7f3113c6918f10c\",\n  \"name\": \"Rule send to user@example.net\",\n  \"priority\": 0,\n  \"enabled\": true,\n  \"matchers\": [\n    {\n      \"type\": \"literal\",\n      \"field\": \"to\",\n      \"value\": \"test@example.com\"\n    }\n  ],\n  \"actions\": [\n    {\n      \"type\": \"forward\",\n      \"value\": [\n        \"destinationaddress@example.net\"\n      ]\n    }\n  ]\n}",
-		"title": "Email Routing - Routing rules",
-		"description": "Cloudflare Email Routing supports different routing rules. You can configure up to 200 different routing rules."
+		"example": "{\n  \"tag\": \"a7e6fb77503c41d8a7f3113c6918f10c\",\n  \"name\": \"Send to user@example.net rule.\",\n  \"priority\": 0,\n  \"enabled\": true,\n  \"matchers\": [\n    {\n      \"type\": \"literal\",\n      \"field\": \"to\",\n      \"value\": \"test@example.com\"\n    }\n  ],\n  \"actions\": [\n    {\n      \"type\": \"forward\",\n      \"value\": [\n        \"destinationaddress@example.net\"\n      ]\n    }\n  ]\n}",
+		"title": "Email Routing routing rules",
+		"description": "Create rules to route emails to your preferred inbox."
 	}
 }

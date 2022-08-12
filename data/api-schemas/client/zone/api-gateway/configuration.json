@@ -1,0 +1,216 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/api-gateway/configuration.json",
+	"title": "API Shield Settings",
+	"description": "API Shield-specific configuration options",
+	"cfExtendedDescription": "",
+	"type": "object",
+	"links": [
+		{
+			"title": "Retrieve information about specific configuration properties",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_id}/api_gateway/configuration",
+			"method": "GET",
+			"cfOwnership": "anode",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.account.zone.api-gateway.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"trakalIgnore": false,
+			"cfPrivate": false,
+			"html_id": "api-shield-settings-retrieve-information-about-specific-configuration-properties",
+			"uri": "zones/:zone_id/api_gateway/configuration",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/api_gateway/configuration?properties=auth_id_characteristics\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"properties": {
+						"type": "array",
+						"example": "[\n  \"auth_id_characteristics\"\n]",
+						"uniqueItems": true,
+						"items": {
+							"type": "string",
+							"enum": [
+								"auth_id_characteristics"
+							],
+							"example": "auth_id_characteristics"
+						},
+						"description": "Requests information about certain properties."
+					}
+				},
+				"required_props": [
+					"properties"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"properties\": [\n    \"auth_id_characteristics\"\n  ]\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": null,\n  \"messages\": null,\n  \"result\": {\n    \"auth_id_characteristics\": [\n      {\n        \"type\": \"header\",\n        \"name\": \"authorization\"\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Set configuration properties",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_id}/api_gateway/configuration",
+			"method": "PUT",
+			"cfOwnership": "anode",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.account.zone.api-gateway.update"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"trakalIgnore": false,
+			"cfPrivate": false,
+			"html_id": "api-shield-settings-set-configuration-properties",
+			"uri": "zones/:zone_id/api_gateway/configuration",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/api_gateway/configuration\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"auth_id_characteristics\":[{\"type\":\"header\",\"name\":\"authorization\"}]}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"auth_id_characteristics": {
+						"type": "array",
+						"example": "[\n  {\n    \"type\": \"header\",\n    \"name\": \"authorization\"\n  }\n]",
+						"id": "https://api.cloudflare.com/schemas/v4/client/zone/api-gateway/characteristics.json",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"title": "Characteristics",
+						"description": "Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner",
+						"items": {
+							"type": "object",
+							"properties": {
+								"type": {
+									"description": "The type of characteristic",
+									"type": "string",
+									"enum": [
+										"header",
+										"cookie"
+									],
+									"example": "header"
+								},
+								"name": {
+									"description": "The name of the characteristic field, i.e., the header or cookie name",
+									"type": "string",
+									"example": "authorization",
+									"maxLength": 128
+								}
+							},
+							"required": [
+								"type",
+								"name"
+							]
+						},
+						"uniqueItems": true,
+						"maxItems": 10,
+						"definitions": {
+							"name": {
+								"description": "The name of the characteristic field, i.e., the header or cookie name",
+								"type": "string",
+								"example": "authorization",
+								"maxLength": 128
+							},
+							"type": {
+								"description": "The type of characteristic",
+								"type": "string",
+								"enum": [
+									"header",
+									"cookie"
+								],
+								"example": "header"
+							}
+						}
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"auth_id_characteristics"
+				],
+				"objects": [],
+				"example": "{\n  \"auth_id_characteristics\": [\n    {\n      \"type\": \"header\",\n      \"name\": \"authorization\"\n    }\n  ]\n}",
+				"title": "API Shield Settings",
+				"description": "API Shield-specific configuration options"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": null,\n  \"messages\": null\n}"
+		}
+	],
+	"html_id": "api-shield-settings",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"auth_id_characteristics": {
+				"type": "array",
+				"example": "[\n  {\n    \"type\": \"header\",\n    \"name\": \"authorization\"\n  }\n]",
+				"id": "https://api.cloudflare.com/schemas/v4/client/zone/api-gateway/characteristics.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"title": "Characteristics",
+				"description": "Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner",
+				"items": {
+					"type": "object",
+					"properties": {
+						"type": {
+							"description": "The type of characteristic",
+							"type": "string",
+							"enum": [
+								"header",
+								"cookie"
+							],
+							"example": "header"
+						},
+						"name": {
+							"description": "The name of the characteristic field, i.e., the header or cookie name",
+							"type": "string",
+							"example": "authorization",
+							"maxLength": 128
+						}
+					},
+					"required": [
+						"type",
+						"name"
+					]
+				},
+				"uniqueItems": true,
+				"maxItems": 10,
+				"definitions": {
+					"name": {
+						"description": "The name of the characteristic field, i.e., the header or cookie name",
+						"type": "string",
+						"example": "authorization",
+						"maxLength": 128
+					},
+					"type": {
+						"description": "The type of characteristic",
+						"type": "string",
+						"enum": [
+							"header",
+							"cookie"
+						],
+						"example": "header"
+					}
+				}
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"auth_id_characteristics"
+		],
+		"objects": [],
+		"example": "{\n  \"auth_id_characteristics\": [\n    {\n      \"type\": \"header\",\n      \"name\": \"authorization\"\n    }\n  ]\n}",
+		"title": "API Shield Settings",
+		"description": "API Shield-specific configuration options"
+	}
+}

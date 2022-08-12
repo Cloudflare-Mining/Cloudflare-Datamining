@@ -1,0 +1,152 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/stream/clipping.json",
+	"title": "Stream Video Clipping",
+	"description": "Clip or trim a video based on a start and end time range.",
+	"type": "object",
+	"links": [
+		{
+			"title": "Clip videos given a start and end time",
+			"description": "Clips a video based on the specified start and end times provided in seconds.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/stream/clip",
+			"method": "POST",
+			"cfOwnership": "stream",
+			"html_id": "stream-video-clipping-clip-videos-given-a-start-and-end-time",
+			"uri": "accounts/:account_identifier/stream/clip",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/stream/clip\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"clippedFromVideoUID\":\"023e105f4ecef8ad9ca31a8372d0c353\",\"startTimeSeconds\":35,\"endTimeSeconds\":155,\"creator\":\"creator-id_abcde12345\",\"maxDurationSeconds\":300,\"thumbnailTimestampPct\":0.529241,\"allowedOrigins\":[\"example.com\"],\"requireSignedURLs\":true,\"watermark\":{\"uid\":\"ea95132c15732412d22c1476fa83f27a\"}}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"clippedFromVideoUID": {
+						"type": "string",
+						"example": "\"023e105f4ecef8ad9ca31a8372d0c353\"",
+						"description": "The unique video identifier (UID).",
+						"maxLength": 32,
+						"readOnly": true
+					},
+					"startTimeSeconds": {
+						"type": "integer",
+						"example": "35",
+						"description": "Specifies the start time for the video clip in seconds.",
+						"readOnly": true
+					},
+					"endTimeSeconds": {
+						"type": "integer",
+						"example": "155",
+						"description": "Specifies the end time for the video clip in seconds.",
+						"readOnly": true
+					},
+					"creator": {
+						"type": "string",
+						"example": "\"creator-id_abcde12345\"",
+						"description": "A user-defined identifier for the media creator.",
+						"maxLength": 64
+					},
+					"maxDurationSeconds": {
+						"type": "integer",
+						"example": "300",
+						"description": "Calculates the amount of time a video occupies before the video is uploaded. Direct uploads occupy minutes of videos on your Stream account until they are expired. After upload, the upload duration is used instead. If a video longer than the value is uploaded, the video results in an error.",
+						"minimum": 1,
+						"maximum": 21600
+					},
+					"thumbnailTimestampPct": {
+						"type": "number",
+						"example": "0.529241",
+						"description": "The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video.",
+						"default": 0,
+						"minimum": 0,
+						"maximum": 1
+					},
+					"allowedOrigins": {
+						"type": "array",
+						"example": "[\n  \"example.com\"\n]",
+						"description": "Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.",
+						"items": {
+							"type": "string"
+						}
+					},
+					"requireSignedURLs": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.",
+						"readOnly": true,
+						"default": false
+					},
+					"watermark": {
+						"type": "object",
+						"example": "{\n  \"uid\": \"ea95132c15732412d22c1476fa83f27a\"\n}",
+						"properties": {
+							"uid": {
+								"type": "string",
+								"example": "\"ea95132c15732412d22c1476fa83f27a\"",
+								"description": "The unique identifier for the watermark profile.",
+								"maxLength": 32
+							}
+						}
+					}
+				},
+				"required_props": [
+					"clippedFromVideoUID",
+					"startTimeSeconds",
+					"endTimeSeconds"
+				],
+				"optional_props": [
+					"creator",
+					"maxDurationSeconds",
+					"thumbnailTimestampPct",
+					"allowedOrigins",
+					"requireSignedURLs",
+					"watermark"
+				],
+				"objects": [],
+				"example": "{\n  \"clippedFromVideoUID\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"startTimeSeconds\": 35,\n  \"endTimeSeconds\": 155,\n  \"creator\": \"creator-id_abcde12345\",\n  \"maxDurationSeconds\": 300,\n  \"thumbnailTimestampPct\": 0.529241,\n  \"allowedOrigins\": [\n    \"example.com\"\n  ],\n  \"requireSignedURLs\": true,\n  \"watermark\": {\n    \"uid\": \"ea95132c15732412d22c1476fa83f27a\"\n  }\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"clippedFromVideoUID\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"startTimeSeconds\": 35,\n    \"endTimeSeconds\": 155,\n    \"playback\": {\n      \"hls\": \"https://videodelivery.net/ea95132c15732412d22c1476fa83f27a/manifest/video.m3u8\",\n      \"dash\": \"https://videodelivery.net/ea95132c15732412d22c1476fa83f27a/manifest/video.mpd\"\n    },\n    \"preview\": \"https://watch.cloudflarestream.com/ea95132c15732412d22c1476fa83f27a\",\n    \"created\": \"2014-01-02T02:20:00Z\",\n    \"modified\": \"2014-01-02T02:20:00Z\",\n    \"creator\": \"creator-id_abcde12345\",\n    \"maxDurationSeconds\": 300,\n    \"thumbnailTimestampPct\": 0.529241,\n    \"allowedOrigins\": [\n      \"example.com\"\n    ],\n    \"requireSignedURLs\": true,\n    \"watermark\": {\n      \"uid\": \"ea95132c15732412d22c1476fa83f27a\"\n    },\n    \"meta\": {\n      \"name\": \"example_filename.mp4\"\n    },\n    \"status\": \"inprogress\"\n  }\n}"
+		}
+	],
+	"html_id": "stream-video-clipping",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"uid": {
+				"type": "string",
+				"example": "\"023e105f4ecef8ad9ca31a8372d0c353\"",
+				"description": "The unique video identifier (UID).",
+				"maxLength": 32,
+				"readOnly": true
+			},
+			"startTimeSeconds": {
+				"type": "integer",
+				"example": "35",
+				"description": "Specifies the start time for the video clip in seconds.",
+				"readOnly": true
+			},
+			"endTimeSeconds": {
+				"type": "integer",
+				"example": "155",
+				"description": "Specifies the end time for the video clip in seconds.",
+				"readOnly": true
+			},
+			"meta": {
+				"type": "object",
+				"example": "{\n  \"name\": \"example_filename.mp4\"\n}",
+				"description": "A user modifiable key-value store used to reference other systems of record for managing videos."
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"uid",
+			"startTimeSeconds",
+			"endTimeSeconds",
+			"meta"
+		],
+		"objects": [],
+		"example": "{\n  \"uid\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"startTimeSeconds\": 35,\n  \"endTimeSeconds\": 155,\n  \"meta\": {\n    \"name\": \"example_filename.mp4\"\n  }\n}",
+		"title": "Stream Video Clipping",
+		"description": "Clip or trim a video based on a start and end time range."
+	}
+}
