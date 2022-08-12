@@ -70,6 +70,7 @@ export const Deployment = eg.object({
   kv_namespaces: eg.any.optional,
   durable_object_namespaces: eg.any.optional,
   short_id: eg.string,
+  production_branch: eg.string,
   source: eg.object({
     type: eg.union([eg.literal('github'), eg.literal('gitlab')]),
     config: eg.object({
