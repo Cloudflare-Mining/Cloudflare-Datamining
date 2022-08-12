@@ -59,11 +59,11 @@ const colos = {
 	'pig': 'pig',
 	'canary': 'kul01',
 	'mcp': 'lhr01',
-	'mcp-canary-candidate-01': 'gru05',
-	'mcp-canary-candidate-02': 'dac07',
-	'mcp-canary-candidate-03': 'kwi03',
-	'mcp-canary-candidate-04': 'han02',
-	'mcp-canary-candidate-05': 'poa01',
+	// 'mcp-canary-candidate-01': 'gru05',
+	// 'mcp-canary-candidate-02': 'dac07',
+	// 'mcp-canary-candidate-03': 'kwi03',
+	// 'mcp-canary-candidate-04': 'han02',
+	// 'mcp-canary-candidate-05': 'poa01',
 	'main': 'dfw01',
 };
 // colos with very unstable versions across metals, so get an aggregate of all versions
