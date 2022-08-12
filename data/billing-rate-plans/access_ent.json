@@ -1,0 +1,28 @@
+{
+	"id": "ACCESS_ENT",
+	"public_name": "Access for Enterprise",
+	"currency": "USD",
+	"components": [
+		{
+			"name": "access_users_allowed",
+			"publicName": "Monthly Fee (Per User)",
+			"type": "tieredPricingComponent",
+			"aggregate": "",
+			"features": [
+				"access.users_allowed"
+			],
+			"chargeType": "subscription",
+			"chargeModel": "tiered",
+			"defaultQuantity": 5,
+			"tiers": [
+				{
+					"lowerThreshold": 5,
+					"upperThreshold": 100000000,
+					"pricingType": "unit",
+					"price": 0,
+					"bucketSize": 0
+				}
+			]
+		}
+	]
+}

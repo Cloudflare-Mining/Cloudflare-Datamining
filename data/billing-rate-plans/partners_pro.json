@@ -1,0 +1,46 @@
+{
+	"id": "PARTNERS_PRO",
+	"public_name": "Partners Professional Plan",
+	"currency": "USD",
+	"components": [
+		{
+			"name": "page_rules",
+			"publicName": "Page Rules (20 included in plan)",
+			"type": "tieredPricingComponent",
+			"aggregate": "",
+			"features": [
+				"page_rules"
+			],
+			"chargeType": "subscription",
+			"chargeModel": "tiered",
+			"defaultQuantity": 20,
+			"tiers": [
+				{
+					"lowerThreshold": 20,
+					"upperThreshold": 20,
+					"pricingType": "unit",
+					"price": 0,
+					"bucketSize": 0
+				}
+			]
+		},
+		{
+			"name": "zones",
+			"publicName": "Website",
+			"type": "flatPricingComponent",
+			"aggregate": "",
+			"chargeType": "subscription",
+			"chargeModel": "flat",
+			"defaultQuantity": 1,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 1,
+					"pricingType": "fixed",
+					"price": 0,
+					"bucketSize": 0
+				}
+			]
+		}
+	]
+}

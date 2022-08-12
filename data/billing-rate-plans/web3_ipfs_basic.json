@@ -1,0 +1,76 @@
+{
+	"id": "WEB3_IPFS_BASIC",
+	"public_name": "IPFS Gateway Basic",
+	"currency": "USD",
+	"components": [
+		{
+			"name": "web3_ipfs_bandwidth",
+			"publicName": "IPFS Bandwidth (First 50GB are FREE)",
+			"type": "tieredPricingComponent",
+			"metric": "web3_ipfs_bandwidth",
+			"aggregate": "sum",
+			"chargeType": "usage",
+			"chargeModel": "tiered",
+			"defaultQuantity": 0,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 50,
+					"pricingType": "unit",
+					"price": 0,
+					"bucketSize": 0
+				},
+				{
+					"lowerThreshold": 51,
+					"upperThreshold": 0,
+					"pricingType": "unit",
+					"price": 0.25,
+					"bucketSize": 0
+				}
+			],
+			"cfQuantityLabel": "{{comma .}} GB",
+			"cfStartOfFirstUnit": 51,
+			"cfUsageDivisor": 1000000000,
+			"cfUsageID": "web3_ipfs_bandwidth"
+		},
+		{
+			"name": "web3_ipfs_base",
+			"publicName": "web3 IPFS Base",
+			"type": "flatPricingComponent",
+			"aggregate": "",
+			"chargeType": "subscription",
+			"chargeModel": "flat",
+			"defaultQuantity": 1,
+			"tiers": [
+				{
+					"lowerThreshold": 1,
+					"upperThreshold": 1,
+					"pricingType": "fixed",
+					"price": 0,
+					"bucketSize": 0
+				}
+			]
+		},
+		{
+			"name": "web3_ipfs_hostnames",
+			"publicName": "Number of IPFS Hostnames",
+			"type": "tieredPricingComponent",
+			"aggregate": "",
+			"features": [
+				"web3_ipfs.hostnames"
+			],
+			"chargeType": "subscription",
+			"chargeModel": "tiered",
+			"defaultQuantity": 15,
+			"tiers": [
+				{
+					"lowerThreshold": 15,
+					"upperThreshold": 15,
+					"pricingType": "fixed",
+					"price": 0,
+					"bucketSize": 0
+				}
+			]
+		}
+	]
+}

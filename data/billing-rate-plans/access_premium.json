@@ -1,0 +1,56 @@
+{
+	"id": "ACCESS_PREMIUM",
+	"public_name": "Access Premium",
+	"currency": "USD",
+	"components": [
+		{
+			"name": "access_users_allowed",
+			"publicName": "Monthly Fee (Per User)",
+			"type": "tieredPricingComponent",
+			"aggregate": "",
+			"features": [
+				"access.users_allowed"
+			],
+			"chargeType": "subscription",
+			"chargeModel": "tiered",
+			"defaultQuantity": 5,
+			"tiers": [
+				{
+					"lowerThreshold": 5,
+					"upperThreshold": 5,
+					"pricingType": "unit",
+					"price": 0,
+					"bucketSize": 0
+				},
+				{
+					"lowerThreshold": 6,
+					"upperThreshold": 100,
+					"pricingType": "unit",
+					"price": 5,
+					"bucketSize": 0
+				},
+				{
+					"lowerThreshold": 101,
+					"upperThreshold": 500,
+					"pricingType": "unit",
+					"price": 4,
+					"bucketSize": 0
+				},
+				{
+					"lowerThreshold": 501,
+					"upperThreshold": 2000,
+					"pricingType": "unit",
+					"price": 3.5,
+					"bucketSize": 0
+				},
+				{
+					"lowerThreshold": 2001,
+					"upperThreshold": 100000000,
+					"pricingType": "unit",
+					"price": 3,
+					"bucketSize": 0
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,48 @@
+{
+	"id": "BOT_ZONE_ENT_PAYGO",
+	"public_name": "Enterprise Bot Management",
+	"currency": "USD",
+	"components": [
+		{
+			"name": "bot_http_requests",
+			"publicName": "Enterprise Bot Management Http Requests",
+			"type": "tieredPricingComponent",
+			"metric": "bot_http_requests",
+			"aggregate": "sum",
+			"chargeType": "usage",
+			"chargeModel": "tiered",
+			"defaultQuantity": 0,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 0,
+					"pricingType": "unit",
+					"price": 0.000005,
+					"bucketSize": 0
+				}
+			],
+			"cfQuantityLabel": "{{comma .}} requests",
+			"cfStartOfFirstUnit": 1,
+			"cfUsageDivisor": 1,
+			"cfUsageID": "bot_http_requests"
+		},
+		{
+			"name": "zones",
+			"publicName": "Enterprise Bot Management",
+			"type": "flatPricingComponent",
+			"aggregate": "",
+			"chargeType": "subscription",
+			"chargeModel": "flat",
+			"defaultQuantity": 1,
+			"tiers": [
+				{
+					"lowerThreshold": 1,
+					"upperThreshold": 1,
+					"pricingType": "fixed",
+					"price": 1500,
+					"bucketSize": 0
+				}
+			]
+		}
+	]
+}

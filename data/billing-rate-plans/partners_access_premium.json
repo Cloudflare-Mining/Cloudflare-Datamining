@@ -1,0 +1,28 @@
+{
+	"id": "PARTNERS_ACCESS_PREMIUM",
+	"public_name": "Cloudflare Access",
+	"currency": "USD",
+	"components": [
+		{
+			"name": "access_users_allowed",
+			"publicName": "Monthly Fee (Per User)",
+			"type": "tieredPricingComponent",
+			"aggregate": "",
+			"features": [
+				"access.users_allowed"
+			],
+			"chargeType": "subscription",
+			"chargeModel": "tiered",
+			"defaultQuantity": 5,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 100000000,
+					"pricingType": "unit",
+					"price": 0,
+					"bucketSize": 0
+				}
+			]
+		}
+	]
+}

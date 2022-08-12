@@ -1,0 +1,51 @@
+{
+	"id": "STREAM_BASIC",
+	"public_name": "Cloudflare Stream",
+	"currency": "USD",
+	"components": [
+		{
+			"name": "stream_storage_thousand_minutes",
+			"publicName": "Minutes of Video Storage (in thousands)",
+			"type": "tieredPricingComponent",
+			"aggregate": "",
+			"features": [
+				"stream.video_storage_capacity"
+			],
+			"chargeType": "subscription",
+			"chargeModel": "tiered",
+			"defaultQuantity": 0,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 99999,
+					"pricingType": "unit",
+					"price": 5,
+					"bucketSize": 0
+				}
+			]
+		},
+		{
+			"name": "stream_viewed_thousand_minutes",
+			"publicName": "Minutes of Video Viewed (in thousands)",
+			"type": "tieredPricingComponent",
+			"metric": "stream_minutes_viewed",
+			"aggregate": "sum",
+			"chargeType": "usage",
+			"chargeModel": "tiered",
+			"defaultQuantity": 0,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 0,
+					"pricingType": "unit",
+					"price": 1,
+					"bucketSize": 0
+				}
+			],
+			"cfQuantityLabel": "{{comma .}} minutes viewed",
+			"cfStartOfFirstUnit": 1,
+			"cfUsageDivisor": 1,
+			"cfUsageID": "stream_minutes_viewed"
+		}
+	]
+}

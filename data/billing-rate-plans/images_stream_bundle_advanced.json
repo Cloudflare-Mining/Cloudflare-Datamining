@@ -1,0 +1,141 @@
+{
+	"id": "IMAGES_STREAM_BUNDLE_ADVANCED",
+	"public_name": "Cloudflare Images Stream Creator Bundle",
+	"currency": "USD",
+	"components": [
+		{
+			"name": "image_delivered_per_hundred_thousand",
+			"publicName": "Image Delivered (per 100k)",
+			"type": "tieredPricingComponent",
+			"metric": "image_requests",
+			"aggregate": "sum",
+			"chargeType": "usage",
+			"chargeModel": "tiered",
+			"defaultQuantity": 0,
+			"tiers": [
+				{
+					"lowerThreshold": 1,
+					"upperThreshold": 1000000,
+					"pricingType": "unit",
+					"price": 0,
+					"bucketSize": 0
+				},
+				{
+					"lowerThreshold": 1000001,
+					"upperThreshold": 0,
+					"pricingType": "unit",
+					"price": 1,
+					"bucketSize": 0
+				}
+			],
+			"cfQuantityLabel": "{{comma .}} images delivered",
+			"cfStartOfFirstUnit": 1000001,
+			"cfUsageDivisor": 1,
+			"cfUsageID": "image_requests"
+		},
+		{
+			"name": "images_storage_per_hundred_thousand",
+			"publicName": "Image Storage (per 100k) - 5 included in plan",
+			"type": "tieredPricingComponent",
+			"aggregate": "",
+			"features": [
+				"images.storage"
+			],
+			"chargeType": "subscription",
+			"chargeModel": "tiered",
+			"defaultQuantity": 5,
+			"tiers": [
+				{
+					"lowerThreshold": 5,
+					"upperThreshold": 5,
+					"pricingType": "unit",
+					"price": 0,
+					"bucketSize": 0
+				},
+				{
+					"lowerThreshold": 6,
+					"upperThreshold": 100000000,
+					"pricingType": "unit",
+					"price": 5,
+					"bucketSize": 0
+				}
+			]
+		},
+		{
+			"name": "images_stream_bundle_advanced_base",
+			"publicName": "Cloudflare Images + Stream Creator Bundle",
+			"type": "flatPricingComponent",
+			"aggregate": "",
+			"chargeType": "subscription",
+			"chargeModel": "flat",
+			"defaultQuantity": 0,
+			"tiers": [
+				{
+					"lowerThreshold": 1,
+					"upperThreshold": 1,
+					"pricingType": "fixed",
+					"price": 50,
+					"bucketSize": 0
+				}
+			]
+		},
+		{
+			"name": "stream_storage_thousand_minutes",
+			"publicName": "Minutes of Video Storage (in thousands) - 10 included in plan",
+			"type": "tieredPricingComponent",
+			"aggregate": "",
+			"features": [
+				"stream.video_storage_capacity"
+			],
+			"chargeType": "subscription",
+			"chargeModel": "tiered",
+			"defaultQuantity": 10,
+			"tiers": [
+				{
+					"lowerThreshold": 10,
+					"upperThreshold": 10,
+					"pricingType": "unit",
+					"price": 0,
+					"bucketSize": 0
+				},
+				{
+					"lowerThreshold": 11,
+					"upperThreshold": 99999,
+					"pricingType": "unit",
+					"price": 5,
+					"bucketSize": 0
+				}
+			]
+		},
+		{
+			"name": "stream_viewed_thousand_minutes",
+			"publicName": "Minutes of Video Viewed (in thousands)",
+			"type": "tieredPricingComponent",
+			"metric": "stream_minutes_viewed",
+			"aggregate": "sum",
+			"chargeType": "usage",
+			"chargeModel": "tiered",
+			"defaultQuantity": 0,
+			"tiers": [
+				{
+					"lowerThreshold": 1,
+					"upperThreshold": 50000,
+					"pricingType": "unit",
+					"price": 0,
+					"bucketSize": 0
+				},
+				{
+					"lowerThreshold": 50001,
+					"upperThreshold": 0,
+					"pricingType": "unit",
+					"price": 1,
+					"bucketSize": 0
+				}
+			],
+			"cfQuantityLabel": "{{comma .}} minutes viewed",
+			"cfStartOfFirstUnit": 50001,
+			"cfUsageDivisor": 1,
+			"cfUsageID": "stream_minutes_viewed"
+		}
+	]
+}
