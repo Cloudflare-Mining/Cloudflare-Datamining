@@ -57244,7 +57244,7 @@
 				}
 			}
 		},
-		"/zones/{zone_id}/script_monitor": {
+		"/zones/{zone_id}/page_shield": {
 			"get": {
 				"summary": "Get Page Shield status",
 				"description": "Fetches the Page Shield status.",
@@ -57323,7 +57323,7 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1script_monitor/get/parameters/0/schema"
+							"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1page_shield/get/parameters/0/schema"
 						}
 					}
 				],
@@ -57335,17 +57335,17 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1script_monitor/get/responses/200/content/application~1json/schema/allOf/0"
+											"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1page_shield/get/responses/200/content/application~1json/schema/allOf/0"
 										},
 										{
 											"properties": {
 												"result": {
 													"properties": {
 														"enabled": {
-															"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1script_monitor/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/enabled"
+															"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1page_shield/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/enabled"
 														},
 														"updated_at": {
-															"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1script_monitor/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/updated_at"
+															"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1page_shield/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/updated_at"
 														}
 													}
 												}
@@ -57377,7 +57377,7 @@
 				}
 			}
 		},
-		"/zones/{zone_id}/script_monitor/scripts": {
+		"/zones/{zone_id}/page_shield/scripts": {
 			"get": {
 				"summary": "List Page Shield scripts",
 				"description": "Lists all scripts detected by Page Shield.",
@@ -57500,7 +57500,7 @@
 				}
 			}
 		},
-		"/zones/{zone_id}/script_monitor/scripts/{script_id}": {
+		"/zones/{zone_id}/page_shield/scripts/{script_id}": {
 			"get": {
 				"summary": "Get a Page Shield script",
 				"description": "Fetches a script detected by Page Shield by script ID.",
