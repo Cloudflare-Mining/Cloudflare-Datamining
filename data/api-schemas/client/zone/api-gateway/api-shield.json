@@ -1,0 +1,640 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/api-gateway/api-shield.json",
+	"title": "API Shield Endpoint Management",
+	"description": "API endpoint-related security and management operations for a zone",
+	"cfExtendedDescription": "",
+	"links": [
+		{
+			"title": "Retrieve information about an operation",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_id}/api_gateway/operations/{#/definitions/operation_id}",
+			"method": "GET",
+			"cfOwnership": "anode",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.account.zone.api-gateway.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"trakalIgnore": false,
+			"cfPrivate": true,
+			"html_id": "api-shield-endpoint-management-retrieve-information-about-an-operation",
+			"uri": "zones/:zone_id/api_gateway/operations/:operation_id",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/api_gateway/operations/f174e90a-fafe-4643-bbbc-4a0ed4fc8415?feature=thresholds\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"feature": {
+						"type": "array",
+						"example": "[\n  \"thresholds\"\n]",
+						"uniqueItems": true,
+						"items": {
+							"type": "string",
+							"enum": [
+								"thresholds"
+							],
+							"example": "thresholds"
+						},
+						"description": "Add feature(s) to the results. The feature name that is given here corresponds to the resulting feature object. Have a look at the top-level object description for more details on the specific meaning."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"feature"
+				],
+				"objects": [],
+				"example": "{\n  \"feature\": [\n    \"thresholds\"\n  ]\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": null,\n  \"messages\": null,\n  \"result\": {\n    \"operation_id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"method\": \"GET\",\n    \"host\": \"www.example.com\",\n    \"endpoint\": \"/api/v1/users/{var1}\",\n    \"last_updated\": \"2014-01-01T05:20:00.12345Z\",\n    \"features\": {\n      \"thresholds\": {\n        \"period_seconds\": 600,\n        \"suggested_threshold\": 18,\n        \"p50\": 3,\n        \"p90\": 7,\n        \"p99\": 11,\n        \"requests\": 65890,\n        \"auth_id_tokens\": 7236,\n        \"data_points\": 10100,\n        \"last_updated\": \"2014-01-01T05:20:00.12345Z\"\n      }\n    }\n  }\n}"
+		},
+		{
+			"title": "Retrieve information about all operations on a zone",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_id}/api_gateway/operations",
+			"method": "GET",
+			"cfOwnership": "anode",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.account.zone.api-gateway.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"trakalIgnore": false,
+			"cfPrivate": true,
+			"html_id": "api-shield-endpoint-management-retrieve-information-about-all-operations-on-a-zone",
+			"uri": "zones/:zone_id/api_gateway/operations",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/api_gateway/operations?page=1&per_page=20&feature=thresholds&order=method&direction=desc\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"page": {
+						"type": "number",
+						"example": "1",
+						"minimum": 1,
+						"default": 1,
+						"description": "Page number of paginated results"
+					},
+					"per_page": {
+						"type": "number",
+						"example": "20",
+						"minimum": 5,
+						"maximum": 50,
+						"default": 20,
+						"description": "Maximum number of results per page"
+					},
+					"feature": {
+						"type": "array",
+						"example": "[\n  \"thresholds\"\n]",
+						"uniqueItems": true,
+						"items": {
+							"type": "string",
+							"enum": [
+								"thresholds"
+							],
+							"example": "thresholds"
+						},
+						"description": "Add feature(s) to the results. The feature name that is given here corresponds to the resulting feature object. Have a look at the top-level object description for more details on the specific meaning."
+					},
+					"order": {
+						"type": "string",
+						"example": "\"method\"",
+						"enum": [
+							"method",
+							"host",
+							"endpoint",
+							"thresholds.$key"
+						],
+						"description": "Field to order by. When requesting a feature, the feature keys are available for ordering as well, e.g., thresholds.suggested_threshold"
+					},
+					"direction": {
+						"type": "string",
+						"example": "\"desc\"",
+						"enum": [
+							"asc",
+							"desc"
+						],
+						"description": "Direction to order results"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"page",
+					"per_page",
+					"feature",
+					"order",
+					"direction"
+				],
+				"objects": [],
+				"example": "{\n  \"page\": 1,\n  \"per_page\": 20,\n  \"feature\": [\n    \"thresholds\"\n  ],\n  \"order\": \"method\",\n  \"direction\": \"desc\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": null,\n  \"messages\": null,\n  \"result\": [\n    {\n      \"operation_id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"method\": \"GET\",\n      \"host\": \"www.example.com\",\n      \"endpoint\": \"/api/v1/users/{var1}\",\n      \"last_updated\": \"2014-01-01T05:20:00.12345Z\",\n      \"features\": {\n        \"thresholds\": {\n          \"period_seconds\": 600,\n          \"suggested_threshold\": 18,\n          \"p50\": 3,\n          \"p90\": 7,\n          \"p99\": 11,\n          \"requests\": 65890,\n          \"auth_id_tokens\": 7236,\n          \"data_points\": 10100,\n          \"last_updated\": \"2014-01-01T05:20:00.12345Z\"\n        }\n      }\n    }\n  ]\n}"
+		},
+		{
+			"title": "Delete an operation",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_id}/api_gateway/operations/{#/definitions/operation_id}",
+			"method": "DELETE",
+			"cfOwnership": "anode",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.account.zone.api-gateway.delete"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"trakalIgnore": false,
+			"cfPrivate": true,
+			"html_id": "api-shield-endpoint-management-delete-an-operation",
+			"uri": "zones/:zone_id/api_gateway/operations/:operation_id",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/api_gateway/operations/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": null,\n  \"messages\": null\n}"
+		},
+		{
+			"title": "Add operations to a zone",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_id}/api_gateway/operations",
+			"method": "POST",
+			"description": "Add one or more operations to a zone. Endpoints can contain path variables. Host, method, endpoint will be normalized to a canoncial form when creating an operation and must be unique on the zone. Inserting an operation that matches an existing one will return the record of the already existing operation and update its last_updated date.",
+			"cfOwnership": "anode",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.account.zone.api-gateway.create"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"trakalIgnore": false,
+			"cfPrivate": true,
+			"html_id": "api-shield-endpoint-management-add-operations-to-a-zone",
+			"uri": "zones/:zone_id/api_gateway/operations",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/api_gateway/operations\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '[{\"host\":\"www.example.com\",\"method\":\"GET\",\"endpoint\":\"/api/v1/users/{var1}\"}]'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"host": {
+						"type": "string",
+						"example": "\"www.example.com\"",
+						"description": "RFC3986-compliant host",
+						"format": "hostname",
+						"maxLength": 255
+					},
+					"method": {
+						"type": "string",
+						"example": "\"GET\"",
+						"description": "The HTTP method used to access the endpoint",
+						"enum": [
+							"GET",
+							"POST",
+							"HEAD",
+							"OPTIONS",
+							"PUT",
+							"DELETE",
+							"CONNECT",
+							"PATCH",
+							"TRACE"
+						]
+					},
+					"endpoint": {
+						"type": "string",
+						"example": "\"/api/v1/users/{var1}\"",
+						"description": "The endpoint. Can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. Will further be Cloudflare-normalized upon insertion, see: https://developers.cloudflare.com/rules/normalization/how-it-works/",
+						"format": "uri-template",
+						"pattern": "^/.*$",
+						"maxLength": 4096
+					}
+				},
+				"required_props": [
+					"host",
+					"method",
+					"endpoint"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"host\": \"www.example.com\",\n  \"method\": \"GET\",\n  \"endpoint\": \"/api/v1/users/{var1}\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": null,\n  \"messages\": null,\n  \"result\": [\n    {\n      \"operation_id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"method\": \"GET\",\n      \"host\": \"www.example.com\",\n      \"endpoint\": \"/api/v1/users/{var1}\",\n      \"last_updated\": \"2014-01-01T05:20:00.12345Z\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Retrieve operations and features as OpenAPI schemas",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_id}/api_gateway/schemas",
+			"method": "GET",
+			"description": "",
+			"cfOwnership": "anode",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.account.zone.api-gateway.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"trakalIgnore": false,
+			"cfPrivate": true,
+			"html_id": "api-shield-endpoint-management-retrieve-operations-and-features-as-openapi-schemas",
+			"uri": "zones/:zone_id/api_gateway/schemas",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/api_gateway/schemas?feature=thresholds&host=www.example.com\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"feature": {
+						"type": "array",
+						"example": "[\n  \"thresholds\"\n]",
+						"uniqueItems": true,
+						"items": {
+							"type": "string",
+							"enum": [
+								"thresholds"
+							],
+							"example": "thresholds"
+						},
+						"description": "Add feature(s) to the results. The feature name that is given here corresponds to the resulting feature object. Have a look at the top-level object description for more details on the specific meaning."
+					},
+					"host": {
+						"type": "array",
+						"example": "[\n  \"www.example.com\"\n]",
+						"uniqueItems": true,
+						"items": {
+							"type": "string",
+							"example": "www.example.com"
+						},
+						"description": "Receive schema only for the given host(s)."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"feature",
+					"host"
+				],
+				"objects": [],
+				"example": "{\n  \"feature\": [\n    \"thresholds\"\n  ],\n  \"host\": [\n    \"www.example.com\"\n  ]\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": null,\n  \"messages\": null,\n  \"result\": {\n    \"timestamp\": \"2014-01-01T05:20:00.12345Z\",\n    \"schemas\": [\n      {\n        \"openapi\": \"3.0.0\",\n        \"servers\": [\n          {\n            \"url\": \"www.example.com\"\n          }\n        ],\n        \"info\": {\n          \"title\": \"OpenAPI JSON schema for www.example.com\",\n          \"version\": \"1.0\"\n        },\n        \"paths\": {\n          \"/api/v1/users/{var1}\": {\n            \"get\": {\n              \"parameters\": [\n                {\n                  \"in\": \"path\",\n                  \"name\": \"var1\",\n                  \"required\": true,\n                  \"schema\": {\n                    \"type\": \"string\"\n                  }\n                }\n              ],\n              \"x-cf-threshold\": {\n                \"period_seconds\": 600,\n                \"suggested_threshold\": 18,\n                \"p50\": 3,\n                \"p90\": 7,\n                \"p99\": 11,\n                \"requests\": 66886,\n                \"auth_id_tokens\": 7262,\n                \"data_points\": 10189,\n                \"last_udated\": \"2014-01-01T05:20:00.12345Z\"\n              }\n            }\n          },\n          \"... Further paths ...\": {}\n        }\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Retrieve API Discovery results for a zone",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_id}/api_gateway/discovery",
+			"method": "GET",
+			"description": "Retrieve the most up to date view of API Discovery on a zone.",
+			"cfOwnership": "anode",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.account.zone.api-gateway.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"trakalIgnore": false,
+			"cfPrivate": false,
+			"html_id": "api-shield-endpoint-management-retrieve-api-discovery-results-for-a-zone",
+			"uri": "zones/:zone_id/api_gateway/discovery",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/api_gateway/discovery\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": null,\n  \"messages\": null,\n  \"result\": {\n    \"timestamp\": \"2014-01-01T05:20:00.12345Z\",\n    \"schemas\": [\n      {\n        \"openapi\": \"3.0.0\",\n        \"servers\": [\n          {\n            \"url\": \"www.example.com\"\n          }\n        ],\n        \"info\": {\n          \"title\": \"OpenAPI JSON schema for www.example.com\",\n          \"version\": \"1.0\"\n        },\n        \"paths\": {\n          \"/api/v1/users/{var1}\": {\n            \"get\": {\n              \"parameters\": [\n                {\n                  \"in\": \"path\",\n                  \"name\": \"var1\",\n                  \"required\": true,\n                  \"schema\": {\n                    \"type\": \"string\"\n                  }\n                }\n              ]\n            }\n          },\n          \"... Further paths ...\": {}\n        }\n      }\n    ]\n  }\n}"
+		}
+	],
+	"html_id": "api-shield-endpoint-management",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"operation_id": {
+				"type": "string",
+				"example": "\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"",
+				"description": "The ID that identifies the API operation",
+				"format": "uuid",
+				"id": "https://api.cloudflare.com/schemas/v4/common/uuid.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"readOnly": true,
+				"maxLength": 36
+			},
+			"method": {
+				"type": "string",
+				"example": "\"GET\"",
+				"description": "The HTTP method used to access the endpoint",
+				"enum": [
+					"GET",
+					"POST",
+					"HEAD",
+					"OPTIONS",
+					"PUT",
+					"DELETE",
+					"CONNECT",
+					"PATCH",
+					"TRACE"
+				]
+			},
+			"host": {
+				"type": "string",
+				"example": "\"www.example.com\"",
+				"description": "RFC3986-compliant host",
+				"format": "hostname",
+				"maxLength": 255
+			},
+			"endpoint": {
+				"type": "string",
+				"example": "\"/api/v1/users/{var1}\"",
+				"description": "The endpoint. Can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. Will further be Cloudflare-normalized upon insertion, see: https://developers.cloudflare.com/rules/normalization/how-it-works/",
+				"format": "uri-template",
+				"pattern": "^/.*$",
+				"maxLength": 4096
+			},
+			"last_updated": {
+				"type": "string",
+				"example": "\"2014-01-01T05:20:00.12345Z\"",
+				"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "Last modification time",
+				"format": "date-time",
+				"readOnly": true
+			},
+			"features": {
+				"type": "object",
+				"example": "{\n  \"thresholds\": {\n    \"period_seconds\": 600,\n    \"suggested_threshold\": 18,\n    \"p50\": 3,\n    \"p90\": 7,\n    \"p99\": 11,\n    \"requests\": 65890,\n    \"auth_id_tokens\": 7236,\n    \"data_points\": 10100,\n    \"last_updated\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}",
+				"anyOf": [
+					{
+						"all_props": {
+							"thresholds": {
+								"type": "object",
+								"example": "{\n  \"period_seconds\": 600,\n  \"suggested_threshold\": 18,\n  \"p50\": 3,\n  \"p90\": 7,\n  \"p99\": 11,\n  \"requests\": 65890,\n  \"auth_id_tokens\": 7236,\n  \"data_points\": 10100,\n  \"last_updated\": \"2014-01-01T05:20:00.12345Z\"\n}",
+								"properties": {
+									"period_seconds": {
+										"type": "integer",
+										"example": "600",
+										"description": "The period over which this threshold is suggested",
+										"readOnly": true
+									},
+									"suggested_threshold": {
+										"type": "integer",
+										"example": "18",
+										"description": "The suggested threshold in: requests done by the same auth_id / period_seconds",
+										"readOnly": true
+									},
+									"p50": {
+										"type": "integer",
+										"example": "3",
+										"description": "The p50 quantile of requests (in period_seconds)",
+										"readOnly": true
+									},
+									"p90": {
+										"type": "integer",
+										"example": "7",
+										"description": "The p90 quantile of requests (in period_seconds)",
+										"readOnly": true
+									},
+									"p99": {
+										"type": "integer",
+										"example": "11",
+										"description": "The p99 quantile of requests (in period_seconds)",
+										"readOnly": true
+									},
+									"requests": {
+										"type": "integer",
+										"example": "65890",
+										"description": "The estimated number of requests covered by these calculations",
+										"readOnly": true
+									},
+									"auth_id_tokens": {
+										"type": "integer",
+										"example": "7236",
+										"description": "The total number of auth-ids seen across this calculation",
+										"readOnly": true
+									},
+									"data_points": {
+										"type": "integer",
+										"example": "10100",
+										"description": "The number of data point used for the threshold suggestion calculation",
+										"readOnly": true
+									},
+									"last_updated": {
+										"type": "string",
+										"example": "\"2014-01-01T05:20:00.12345Z\"",
+										"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
+										"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+										"description": "Last modification time",
+										"format": "date-time",
+										"readOnly": true
+									}
+								}
+							}
+						},
+						"required_props": [
+							"period_seconds",
+							"suggested_threshold",
+							"p50",
+							"p90",
+							"p99",
+							"requests",
+							"auth_id_tokens",
+							"data_points",
+							"last_updated"
+						],
+						"optional_props": [
+							"thresholds"
+						],
+						"objects": [],
+						"example": "{\n  \"thresholds\": {\n    \"period_seconds\": 600,\n    \"suggested_threshold\": 18,\n    \"p50\": 3,\n    \"p90\": 7,\n    \"p99\": 11,\n    \"requests\": 65890,\n    \"auth_id_tokens\": 7236,\n    \"data_points\": 10100,\n    \"last_updated\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}",
+						"title": "Thresholds",
+						"description": "Suggested thresholding information"
+					}
+				],
+				"id": "https://api.cloudflare.com/schemas/v4/client/zone/api-gateway/features.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"title": "Features",
+				"description": "An optional object that contains one or more requested features",
+				"readOnly": true,
+				"definitions": {
+					"thresholds": {
+						"id": "https://api.cloudflare.com/schemas/v4/client/zone/api-gateway/thresholds.json",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"title": "Thresholds",
+						"description": "Suggested thresholding information",
+						"type": "object",
+						"readOnly": true,
+						"properties": {
+							"thresholds": {
+								"type": "object",
+								"properties": {
+									"period_seconds": {
+										"description": "The period over which this threshold is suggested",
+										"type": "integer",
+										"example": 600,
+										"readOnly": true
+									},
+									"suggested_threshold": {
+										"description": "The suggested threshold in: requests done by the same auth_id / period_seconds",
+										"type": "integer",
+										"example": 18,
+										"readOnly": true
+									},
+									"p50": {
+										"description": "The p50 quantile of requests (in period_seconds)",
+										"type": "integer",
+										"example": 3,
+										"readOnly": true
+									},
+									"p90": {
+										"description": "The p90 quantile of requests (in period_seconds)",
+										"type": "integer",
+										"example": 7,
+										"readOnly": true
+									},
+									"p99": {
+										"description": "The p99 quantile of requests (in period_seconds)",
+										"type": "integer",
+										"example": 11,
+										"readOnly": true
+									},
+									"requests": {
+										"description": "The estimated number of requests covered by these calculations",
+										"type": "integer",
+										"example": 65890,
+										"readOnly": true
+									},
+									"auth_id_tokens": {
+										"description": "The total number of auth-ids seen across this calculation",
+										"type": "integer",
+										"example": 7236,
+										"readOnly": true
+									},
+									"data_points": {
+										"description": "The number of data point used for the threshold suggestion calculation",
+										"type": "integer",
+										"example": 10100,
+										"readOnly": true
+									},
+									"last_updated": {
+										"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
+										"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+										"description": "Last modification time",
+										"type": "string",
+										"format": "date-time",
+										"readOnly": true,
+										"example": "2014-01-01T05:20:00.12345Z"
+									}
+								}
+							}
+						},
+						"required": [
+							"period_seconds",
+							"suggested_threshold",
+							"p50",
+							"p90",
+							"p99",
+							"requests",
+							"auth_id_tokens",
+							"data_points",
+							"last_updated"
+						],
+						"definitions": {
+							"period_seconds": {
+								"description": "The period over which this threshold is suggested",
+								"type": "integer",
+								"example": 600,
+								"readOnly": true
+							},
+							"suggested_threshold": {
+								"description": "The suggested threshold in: requests done by the same auth_id / period_seconds",
+								"type": "integer",
+								"example": 18,
+								"readOnly": true
+							},
+							"p50": {
+								"description": "The p50 quantile of requests (in period_seconds)",
+								"type": "integer",
+								"example": 3,
+								"readOnly": true
+							},
+							"p90": {
+								"description": "The p90 quantile of requests (in period_seconds)",
+								"type": "integer",
+								"example": 7,
+								"readOnly": true
+							},
+							"p99": {
+								"description": "The p99 quantile of requests (in period_seconds)",
+								"type": "integer",
+								"example": 11,
+								"readOnly": true
+							},
+							"requests": {
+								"description": "The estimated number of requests covered by these calculations",
+								"type": "integer",
+								"example": 65890,
+								"readOnly": true
+							},
+							"auth_id_tokens": {
+								"description": "The total number of auth-ids seen across this calculation",
+								"type": "integer",
+								"example": 7236,
+								"readOnly": true
+							},
+							"data_points": {
+								"description": "The number of data point used for the threshold suggestion calculation",
+								"type": "integer",
+								"example": 10100,
+								"readOnly": true
+							},
+							"last_updated": {
+								"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
+								"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+								"description": "Last modification time",
+								"type": "string",
+								"format": "date-time",
+								"readOnly": true,
+								"example": "2014-01-01T05:20:00.12345Z"
+							}
+						}
+					}
+				}
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"operation_id",
+			"method",
+			"host",
+			"endpoint",
+			"last_updated",
+			"features"
+		],
+		"objects": [],
+		"example": "{\n  \"operation_id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n  \"method\": \"GET\",\n  \"host\": \"www.example.com\",\n  \"endpoint\": \"/api/v1/users/{var1}\",\n  \"last_updated\": \"2014-01-01T05:20:00.12345Z\",\n  \"features\": {\n    \"thresholds\": {\n      \"period_seconds\": 600,\n      \"suggested_threshold\": 18,\n      \"p50\": 3,\n      \"p90\": 7,\n      \"p99\": 11,\n      \"requests\": 65890,\n      \"auth_id_tokens\": 7236,\n      \"data_points\": 10100,\n      \"last_updated\": \"2014-01-01T05:20:00.12345Z\"\n    }\n  }\n}",
+		"title": "API Shield Endpoint Management",
+		"description": "API endpoint-related security and management operations for a zone"
+	}
+}

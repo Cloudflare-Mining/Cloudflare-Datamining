@@ -1,0 +1,240 @@
+{
+	"type": "object",
+	"example": "{\n  \"thresholds\": {\n    \"period_seconds\": 600,\n    \"suggested_threshold\": 18,\n    \"p50\": 3,\n    \"p90\": 7,\n    \"p99\": 11,\n    \"requests\": 65890,\n    \"auth_id_tokens\": 7236,\n    \"data_points\": 10100,\n    \"last_updated\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}",
+	"anyOf": [
+		{
+			"all_props": {
+				"thresholds": {
+					"type": "object",
+					"example": "{\n  \"period_seconds\": 600,\n  \"suggested_threshold\": 18,\n  \"p50\": 3,\n  \"p90\": 7,\n  \"p99\": 11,\n  \"requests\": 65890,\n  \"auth_id_tokens\": 7236,\n  \"data_points\": 10100,\n  \"last_updated\": \"2014-01-01T05:20:00.12345Z\"\n}",
+					"properties": {
+						"period_seconds": {
+							"type": "integer",
+							"example": "600",
+							"description": "The period over which this threshold is suggested",
+							"readOnly": true
+						},
+						"suggested_threshold": {
+							"type": "integer",
+							"example": "18",
+							"description": "The suggested threshold in: requests done by the same auth_id / period_seconds",
+							"readOnly": true
+						},
+						"p50": {
+							"type": "integer",
+							"example": "3",
+							"description": "The p50 quantile of requests (in period_seconds)",
+							"readOnly": true
+						},
+						"p90": {
+							"type": "integer",
+							"example": "7",
+							"description": "The p90 quantile of requests (in period_seconds)",
+							"readOnly": true
+						},
+						"p99": {
+							"type": "integer",
+							"example": "11",
+							"description": "The p99 quantile of requests (in period_seconds)",
+							"readOnly": true
+						},
+						"requests": {
+							"type": "integer",
+							"example": "65890",
+							"description": "The estimated number of requests covered by these calculations",
+							"readOnly": true
+						},
+						"auth_id_tokens": {
+							"type": "integer",
+							"example": "7236",
+							"description": "The total number of auth-ids seen across this calculation",
+							"readOnly": true
+						},
+						"data_points": {
+							"type": "integer",
+							"example": "10100",
+							"description": "The number of data point used for the threshold suggestion calculation",
+							"readOnly": true
+						},
+						"last_updated": {
+							"type": "string",
+							"example": "\"2014-01-01T05:20:00.12345Z\"",
+							"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
+							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+							"description": "Last modification time",
+							"format": "date-time",
+							"readOnly": true
+						}
+					}
+				}
+			},
+			"required_props": [
+				"period_seconds",
+				"suggested_threshold",
+				"p50",
+				"p90",
+				"p99",
+				"requests",
+				"auth_id_tokens",
+				"data_points",
+				"last_updated"
+			],
+			"optional_props": [
+				"thresholds"
+			],
+			"objects": [],
+			"example": "{\n  \"thresholds\": {\n    \"period_seconds\": 600,\n    \"suggested_threshold\": 18,\n    \"p50\": 3,\n    \"p90\": 7,\n    \"p99\": 11,\n    \"requests\": 65890,\n    \"auth_id_tokens\": 7236,\n    \"data_points\": 10100,\n    \"last_updated\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}",
+			"title": "Thresholds",
+			"description": "Suggested thresholding information"
+		}
+	],
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/api-gateway/features.json",
+	"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+	"title": "Features",
+	"description": "An optional object that contains one or more requested features",
+	"readOnly": true,
+	"definitions": {
+		"thresholds": {
+			"id": "https://api.cloudflare.com/schemas/v4/client/zone/api-gateway/thresholds.json",
+			"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+			"title": "Thresholds",
+			"description": "Suggested thresholding information",
+			"type": "object",
+			"readOnly": true,
+			"properties": {
+				"thresholds": {
+					"type": "object",
+					"properties": {
+						"period_seconds": {
+							"description": "The period over which this threshold is suggested",
+							"type": "integer",
+							"example": 600,
+							"readOnly": true
+						},
+						"suggested_threshold": {
+							"description": "The suggested threshold in: requests done by the same auth_id / period_seconds",
+							"type": "integer",
+							"example": 18,
+							"readOnly": true
+						},
+						"p50": {
+							"description": "The p50 quantile of requests (in period_seconds)",
+							"type": "integer",
+							"example": 3,
+							"readOnly": true
+						},
+						"p90": {
+							"description": "The p90 quantile of requests (in period_seconds)",
+							"type": "integer",
+							"example": 7,
+							"readOnly": true
+						},
+						"p99": {
+							"description": "The p99 quantile of requests (in period_seconds)",
+							"type": "integer",
+							"example": 11,
+							"readOnly": true
+						},
+						"requests": {
+							"description": "The estimated number of requests covered by these calculations",
+							"type": "integer",
+							"example": 65890,
+							"readOnly": true
+						},
+						"auth_id_tokens": {
+							"description": "The total number of auth-ids seen across this calculation",
+							"type": "integer",
+							"example": 7236,
+							"readOnly": true
+						},
+						"data_points": {
+							"description": "The number of data point used for the threshold suggestion calculation",
+							"type": "integer",
+							"example": 10100,
+							"readOnly": true
+						},
+						"last_updated": {
+							"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
+							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+							"description": "Last modification time",
+							"type": "string",
+							"format": "date-time",
+							"readOnly": true,
+							"example": "2014-01-01T05:20:00.12345Z"
+						}
+					}
+				}
+			},
+			"required": [
+				"period_seconds",
+				"suggested_threshold",
+				"p50",
+				"p90",
+				"p99",
+				"requests",
+				"auth_id_tokens",
+				"data_points",
+				"last_updated"
+			],
+			"definitions": {
+				"period_seconds": {
+					"description": "The period over which this threshold is suggested",
+					"type": "integer",
+					"example": 600,
+					"readOnly": true
+				},
+				"suggested_threshold": {
+					"description": "The suggested threshold in: requests done by the same auth_id / period_seconds",
+					"type": "integer",
+					"example": 18,
+					"readOnly": true
+				},
+				"p50": {
+					"description": "The p50 quantile of requests (in period_seconds)",
+					"type": "integer",
+					"example": 3,
+					"readOnly": true
+				},
+				"p90": {
+					"description": "The p90 quantile of requests (in period_seconds)",
+					"type": "integer",
+					"example": 7,
+					"readOnly": true
+				},
+				"p99": {
+					"description": "The p99 quantile of requests (in period_seconds)",
+					"type": "integer",
+					"example": 11,
+					"readOnly": true
+				},
+				"requests": {
+					"description": "The estimated number of requests covered by these calculations",
+					"type": "integer",
+					"example": 65890,
+					"readOnly": true
+				},
+				"auth_id_tokens": {
+					"description": "The total number of auth-ids seen across this calculation",
+					"type": "integer",
+					"example": 7236,
+					"readOnly": true
+				},
+				"data_points": {
+					"description": "The number of data point used for the threshold suggestion calculation",
+					"type": "integer",
+					"example": 10100,
+					"readOnly": true
+				},
+				"last_updated": {
+					"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
+					"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+					"description": "Last modification time",
+					"type": "string",
+					"format": "date-time",
+					"readOnly": true,
+					"example": "2014-01-01T05:20:00.12345Z"
+				}
+			}
+		}
+	}
+}
