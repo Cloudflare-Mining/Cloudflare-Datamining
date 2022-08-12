@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/partners/technology-partners/mongodb/",
+	"path": "/partners/technology-partners/prisma/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "[Tech Partner Directory] - MongoDB",
+				"pageName": "[Tech Partner Directory] - Prisma",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "English for Locale",
@@ -29,13 +29,13 @@
 					"trTR": "No Page for Locale",
 					"zhHansCN": null
 				},
-				"relativePath": "partners/technology-partners/mongodb",
+				"relativePath": "partners/technology-partners/prisma",
 				"topNavOptions": null,
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"metaTags": {
-					"metaTitle": "MongoDB - Tech Partners",
-					"metaDescription": "Build stateful applications that scale dynamically with MongoDB and Cloudflare\n",
+					"metaTitle": "Prisma - Tech Partners",
+					"metaDescription": "Build stateful applications that scale dynamically with Prisma and Cloudflare.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -44,7 +44,7 @@
 					},
 					"facebookCustomImage": null
 				},
-				"contentfulId": "5mTAfJTFGITVcK8ffoaIW3",
+				"contentfulId": "3xeBADh2MvXghpVk3LqEfH",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -54,14 +54,14 @@
 				"relatedBlades": [
 					{
 						"__typename": "bladeHeroAnimation",
-						"contentfulId": "7KBvXtQSiftb7h05XJgj7U",
+						"contentfulId": "76rrlASKwsBtaJzJBCPOmZ",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "MongoDB",
-						"subtitle": "Build stateful applications that scale dynamically with MongoDB and Cloudflare",
-						"copy": "MongoDB is a powerful, full-featured open-source database loved by developers. It unlocks the ability to store, query, and index data securely. Its document model is  MongoDB support is provided via the Realm SDK, which integrates directly with MongoDB Atlas. MongoDB Atlas is the easiest way to run MongoDB and it includes Global Clusters, perfect for creating a low-latency, geo-distributed MongoDB database to back your Workers.\n",
+						"title": "Prisma",
+						"subtitle": "Build stateful applications that scale dynamically with Prisma and Cloudflare",
+						"copy": "Prisma is an ORM(Object-Relational Mapping) that helps app developers build faster and make fewer errors. It transforms entries in a database into objects in code. Prisma reduces the complexities of working with the database by handling type-safety, schema migrations, query optimization and the actual interactions between your code and the database. Like Workers does for computing at the edge, Prisma makes managing your database dead-simple. Prisma currently supports Postgres, MySQL, SQL Server, SQLite and MongoDB. \n",
 						"buttonColor": "orange",
 						"buttonColor2": "orange",
-						"buttonText1": "Contact us",
+						"buttonText1": "Contact Us",
 						"buttonText1LoggedIn": null,
 						"buttonUrl1": "https://www.cloudflare.com/partners/edge-database-partners/",
 						"buttonUrl1LoggedIn": null,
@@ -97,16 +97,16 @@
 						"imageLayout": null,
 						"image": {
 							"file": {
-								"publicURL": "[path]/kusb9stg1ndrp7j53-MongoDBLogoBrand1.png"
+								"publicURL": "[path]/prismalogo-freelogovectors.net_.png"
 							}
 						},
 						"imageAssetFile": null
 					},
 					{
 						"__typename": "bladeImageText",
-						"contentfulId": "1r7TyDWbQ9NFeue02an01f",
+						"contentfulId": "2A2u0Up6UAYX2JO3UTPtPd",
 						"title": "Partnership Overview",
-						"copy": "Cloudflare has launched a partnership with MongoDB to enable developers to support rich aggregations within the database. Through Cloudflare Workers and MongoDB, developers can build powerful and secure serverless applications and APIs at the edge. This partnership can help developers choose an edge-first database when they build a new application on Cloudflare Workers.\n",
+						"copy": "Cloudflare has launched a partnership for global data with Prisma to enable developers to use supported databases. Prisma integrates with Workers via the Prisma Data Proxy. After setting up the Proxy, developers can import the Prisma client into Workers script and define a schema to begin using any of the supported databases!\n",
 						"toggleText": null,
 						"button": null,
 						"learnMoreUrl": null,
@@ -147,7 +147,7 @@
 					{
 						"__typename": "bladeThreeFeatures",
 						"backgroundColor": "light-blue",
-						"contentfulId": "65qY4xtKzOqKB6Or2nzJVx",
+						"contentfulId": "78u7C9vQ83L61j4HyKM6H1",
 						"contentTypeId": "bladeThreeFeatures",
 						"subtitle": null,
 						"bladeBorder": "none",
@@ -220,7 +220,7 @@
 					},
 					{
 						"__typename": "bladeResourceGrid",
-						"contentfulId": "3Q9ChzfuYoDqwMPbMHNyKh",
+						"contentfulId": "4Jm28qCbLd7OIgZBwFl1i2",
 						"contentTypeId": "bladeResourceGrid",
 						"title": "Learn More",
 						"description": null,
@@ -235,9 +235,30 @@
 								"resourceMediaAssetFile": null,
 								"image": null,
 								"resourceStreamId": null,
-								"title": "[Tech Partner Directory] - MongoDB: Blog",
+								"title": "[Tech Partner Directory] - Prisma: Developer Documentation",
 								"callToAction": "Learn More",
-								"id": "2638cca8-4e11-599e-98a9-60f476f1c15f",
+								"id": "4586d179-8a94-54e9-a255-78ac3624fabb",
+								"resourceTitle": "Deploying to Cloudflare Workers",
+								"resourceType": "Solution & Product Guides",
+								"topic": [
+									"Develop Serverless Applications"
+								],
+								"orderDate": "2022-08-11",
+								"industry": [
+									"Manufacturing"
+								],
+								"description": "Learn more about how to deploy Prisma to Cloudflare Workers\n",
+								"externalLinkUrl": "https://www.prisma.io/docs/guides/deployment/deployment-guides/deploying-to-cloudflare-workers",
+								"hideFromResourceHub": true
+							},
+							{
+								"resourceMedia": null,
+								"resourceMediaAssetFile": null,
+								"image": null,
+								"resourceStreamId": null,
+								"title": "[Tech Partner Directory] - Prisma: Blog",
+								"callToAction": "Learn More",
+								"id": "68fdf02b-a03b-546c-80d4-c99972a07cdf",
 								"resourceTitle": "Workers adds support for two modern data platforms: MongoDB Atlas and Prisma",
 								"resourceType": "Blog",
 								"topic": [
@@ -245,46 +266,8 @@
 								],
 								"orderDate": "2022-08-11",
 								"industry": null,
-								"description": "Learn about Cloudflare's partnership with MongoDB in this announcement blog post.  ",
+								"description": "Learn about Cloudflare's partnership with Prisma in this announcement blog post.",
 								"externalLinkUrl": "https://blog.cloudflare.com/workers-adds-support-for-two-modern-data-platforms-mongodb-atlas-and-prisma/",
-								"hideFromResourceHub": true
-							},
-							{
-								"resourceMedia": null,
-								"resourceMediaAssetFile": null,
-								"image": null,
-								"resourceStreamId": null,
-								"title": "[Tech Partner Directory] - MongoDB: Developer Documentation",
-								"callToAction": "Learn More",
-								"id": "7903f7d6-7a99-5fb7-8d3a-63171343d592",
-								"resourceTitle": "MongoDB SSH",
-								"resourceType": "Solution & Product Guides",
-								"topic": [
-									"Develop Serverless Applications"
-								],
-								"orderDate": "2022-08-11",
-								"industry": null,
-								"description": "Learn more about how to secure connections to MongoDB deployments using Cloudflare Access and Cloudflare Tunnel.\n",
-								"externalLinkUrl": "https://developers.cloudflare.com/cloudflare-one/tutorials/mongodb-tunnel",
-								"hideFromResourceHub": true
-							},
-							{
-								"resourceMedia": null,
-								"resourceMediaAssetFile": null,
-								"image": null,
-								"resourceStreamId": null,
-								"title": "[Tech Partner Directory] - MongoDB: Developer Documentation II",
-								"callToAction": "Learn More",
-								"id": "984e78dd-0a1d-53a9-9a1a-67160974c3f0",
-								"resourceTitle": "Create a REST API with Cloudflare Workers, MongoDB Atlas, and Realm",
-								"resourceType": "Solution & Product Guides",
-								"topic": [
-									"Develop Serverless Applications"
-								],
-								"orderDate": "2022-08-11",
-								"industry": null,
-								"description": "Learn how to create a REST API with Cloudflare Workers, MongoDB Atlas, and Realm. \n",
-								"externalLinkUrl": "https://www.mongodb.com/developer/products/atlas/cloudflare-worker-rest-api-realm/",
 								"hideFromResourceHub": true
 							}
 						],
@@ -304,8 +287,8 @@
 		},
 		"pageContext": {
 			"locale": "en-US",
-			"pathname": "/partners/technology-partners/mongodb/",
-			"contentfulId": "5mTAfJTFGITVcK8ffoaIW3",
+			"pathname": "/partners/technology-partners/prisma/",
+			"contentfulId": "3xeBADh2MvXghpVk3LqEfH",
 			"allowedHrefLangs": [
 				"en-US"
 			],
