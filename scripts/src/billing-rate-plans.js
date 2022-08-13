@@ -17,8 +17,13 @@ const knownRatePlans = new Set([
 	'biz',
 	'ent',
 	'load_balancing',
+	'load_balancing_ent',
+	'load_balancing_ent_contract',
+	'load_balancing_ent_paygo',
 	'spectrum',
 	'workers_ss',
+	'stream_ent_contract',
+	'stream_ent_paygo',
 ]);
 
 const ratePlans = new Set([]);
