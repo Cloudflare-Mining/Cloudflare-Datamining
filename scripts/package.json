@@ -13,6 +13,7 @@
 		"mine": "npm run mine:npm && npm run mine:types && npm run mine:github && npm run mine:api-schemas && npm run mine:ips && npm run mine:coveo && npm run mine:gates && npm run mine:products && npm run mine:billing-rate-plans",
 		"mine:api-schemas": "node src/api-schemas.js",
 		"mine:billing-rate-plans": "node src/billing-rate-plans.js",
+		"mine:billing-rate-plans-registrar": "node src/billing-rate-plans-registrar.js",
 		"mine:cdn-cgi": "node src/cdn-cgi.js",
 		"mine:coveo": "node src/coveo.js",
 		"mine:dashboard": "node src/dashboard.js",
@@ -59,12 +60,14 @@
 		"js-beautify": "1.14.5",
 		"known-css-properties": "0.25.0",
 		"libnpmsearch": "5.0.3",
+		"markdown-table": "3.0.2",
 		"node-fetch": "3.2.10",
 		"object.pick": "1.3.0",
 		"p-limit": "4.0.0",
 		"pacote": "13.6.1",
 		"puppeteer": "16.1.0",
 		"simple-git": "3.12.0",
+		"tlds": "1.231.0",
 		"valid-filename": "4.0.0"
 	},
 	"engines": {
