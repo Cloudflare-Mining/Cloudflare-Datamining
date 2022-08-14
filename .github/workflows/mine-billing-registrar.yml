@@ -28,7 +28,7 @@ jobs:
           git config user.email "<>"
           cd scripts
           npm ci
-          npm run mine:marketing
+          npm run mine:billing-rate-plans-registrar
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_GLOBAL_KEY: ${{ secrets.CLOUDFLARE_GLOBAL_KEY }}
