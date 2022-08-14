@@ -22,7 +22,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-      - name: Mine registrar rate plans
+      - name: Mine registrar pricing
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
