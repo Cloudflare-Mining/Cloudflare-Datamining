@@ -1,0 +1,25 @@
+{
+	"id": "BOT_ZONE_ENT",
+	"public_name": "Enterprise Bot Management",
+	"currency": "USD",
+	"components": [
+		{
+			"name": "zones",
+			"publicName": "Enterprise Bot Management",
+			"type": "flatPricingComponent",
+			"aggregate": "",
+			"chargeType": "subscription",
+			"chargeModel": "flat",
+			"defaultQuantity": 1,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 1,
+					"pricingType": "fixed",
+					"price": 0,
+					"bucketSize": 0
+				}
+			]
+		}
+	]
+}
