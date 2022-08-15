@@ -1,0 +1,66 @@
+[
+	{
+		"id": "0feeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+		"name": "Free Plan",
+		"price": 0,
+		"currency": "USD",
+		"frequency": "monthly",
+		"is_subscribed": false,
+		"can_subscribe": true,
+		"legacy_id": "free",
+		"legacy_discount": false,
+		"externally_managed": false,
+		"annual": {
+			"price": 0,
+			"frequency": ""
+		}
+	},
+	{
+		"id": "1ac039f6c29b691475c3d74fe588d1ae",
+		"name": "Business Plan",
+		"price": 200,
+		"currency": "USD",
+		"frequency": "monthly",
+		"is_subscribed": false,
+		"can_subscribe": true,
+		"legacy_id": "business",
+		"legacy_discount": false,
+		"externally_managed": false,
+		"annual": {
+			"price": 2400,
+			"frequency": "yearly"
+		}
+	},
+	{
+		"id": "a577b510288e82b26486fd1df47000ec",
+		"name": "Professional Plan",
+		"price": 20,
+		"currency": "USD",
+		"frequency": "monthly",
+		"is_subscribed": false,
+		"can_subscribe": true,
+		"legacy_id": "pro",
+		"legacy_discount": false,
+		"externally_managed": false,
+		"annual": {
+			"price": 240,
+			"frequency": "yearly"
+		}
+	},
+	{
+		"id": "94f3b7b768b0458b56d2cac4fe5ec0f9",
+		"name": "Enterprise",
+		"price": 0,
+		"currency": "USD",
+		"frequency": "monthly",
+		"is_subscribed": false,
+		"can_subscribe": false,
+		"legacy_id": "enterprise",
+		"legacy_discount": false,
+		"externally_managed": true,
+		"annual": {
+			"price": 0,
+			"frequency": ""
+		}
+	}
+]
