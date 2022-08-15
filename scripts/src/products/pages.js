@@ -16,6 +16,12 @@ const reqs = [
 		transform: json => json.result,
 	},
 	{
+		name: 'metrics-get',
+		url: `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/pages/metrics`,
+		method: 'GET',
+		transform: json => json.result,
+	},
+	{
 		name: 'projects-list',
 		url: `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/pages/projects`,
 		method: 'GET',

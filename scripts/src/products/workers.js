@@ -12,6 +12,18 @@ await fs.ensureDir(dir);
 const id = crypto.randomUUID();
 const reqs = [
 	{
+		name: 'settings-get',
+		url: `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/workers/settings`,
+		method: 'GET',
+		transform: json => json.result,
+	},
+	{
+		name: 'account-settings-get',
+		url: `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/workers/account-settings`,
+		method: 'GET',
+		transform: json => json.result,
+	},
+	{
 		name: 'services-list',
 		url: `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/workers/services?expand=routes&page=1&perPage=100`,
 		method: 'GET',
@@ -61,7 +73,11 @@ for(const req of reqs){
 	const json = await res.json();
 	results[req.name] = json;
 	if(req.write !== false){
-		await fs.writeJson(file, propertiesToArray(json).sort(), {spaces: '\t'});
+		if(req.transform){
+			await fs.writeJson(file, req.transform(json), {spaces: '\t'});
+		}else{
+			await fs.writeJson(file, propertiesToArray(json).sort(), {spaces: '\t'});
+		}
 	}
 }
 
