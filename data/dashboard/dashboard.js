@@ -5488,12 +5488,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				e.g.build = Yc({}, {
-					branch: "release-1660572244",
+					branch: "pcostanzo/UI-5380-hotfix",
 					isReleaseCandidate: "true",
-					commit: "29b89eac8261c399de3dedb7165c711d34c4de55",
+					commit: "67ba082678a230d3ccffd23e4813aa841079da16",
 					env: "production",
-					builtAt: 1660573543440,
-					dashVersion: "4725f93be41e786f51d3d6a685d65ce1d4f1b5eb",
+					builtAt: 1660594321229,
+					dashVersion: "dd383342efa5700cb495e9fc3dfdb1c06665f4fe",
 					versions: {
 						"@cloudflare/app-dash": "25.71.4",
 						node: "14.18.3",
@@ -76665,4 +76665,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=e8128dcf954f4ec4f88b.js.map
+//# sourceMappingURL=5976cac26353511a564b.js.map
