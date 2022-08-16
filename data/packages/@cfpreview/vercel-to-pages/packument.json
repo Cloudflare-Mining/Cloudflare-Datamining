@@ -1,0 +1,42 @@
+{
+	"name": "@cfpreview/vercel-to-pages",
+	"dist-tags": {
+		"latest": "0.0.1"
+	},
+	"versions": {
+		"0.0.1": {
+			"name": "@cfpreview/vercel-to-pages",
+			"version": "0.0.1",
+			"dependencies": {
+				"esbuild": "^0.15.3",
+				"shellac": "^0.7.2"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^3.14.1",
+				"esbuild-plugin-fileloc": "^0.0.6",
+				"prettier": "^2.7.1",
+				"typescript": "^4.7.4"
+			},
+			"peerDependencies": {
+				"vercel": "^28.0.2"
+			},
+			"bin": {
+				"vercel-to-pages": "bin/index.js"
+			},
+			"dist": {
+				"integrity": "sha512-Y1WkVCpbyKNQH5giXWmtGNMEhrjjP1t3YL1A1fxHQjVcYLM0JQW/P69CMPUPGhF9qCtz2bBWQhGOOK4jTsQJcw==",
+				"shasum": "ccbde9539c3bb5fb90cfc0a8415075fbaf926554",
+				"tarball": "https://registry.npmjs.org/@cfpreview/vercel-to-pages/-/vercel-to-pages-0.0.1.tgz",
+				"fileCount": 8,
+				"unpackedSize": 40614,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIAVDfph9/TMM8AiYNB6t4XMbN9m1Y9vHVpYJsCOV1ENDAiEAzACfGLoYTyNBNJhrzCPVn4slg8PPtn/LuIvDxKm8mcY="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJi++heACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmq+Xg//aqTg63svsN7PcA2IMFGfKVAly2V7AY3sxMaOdMzeb00ca0FD\r\n87XlsrASypV6wWpBiQBmovaZl+E8jEj+L6obYfSXGr08r/E946PgP/JluVPi\r\nVCGy4sVVGjK7f2G9VLEqI6QME3+emUByI1TI3n+Iryq9GmKjM9X3PS2aWu8t\r\nvvycNZjXykc1PKFBCcCVm4I2iw8Yx2POAXqnxEYqLH7BBnBSo4fG7ofPplYF\r\nPrWjZVocnHoXygrQAR1gpkKl3I27YRs1kr9Sn5q2IvvfFXYteF+pL1kLVnX2\r\nNv6FKLBa33fyHe7GkC462mY/8tkaH4UZ8UPWMY/HQoNJikDinJugRElIsQdh\r\nztIo12x/VZ9EIW1Fcq0FV64R/nUQ2yEg5H0F9mmeEvgPzqeLY4rtTvsPv2/l\r\n75/00E4S7SSsp4NFloMwSX5pDrxnisSgv0IIvyzIOn9WyBmfwuoelBTOGSpO\r\n0mOfoYy/j7NFRW7D0eE131+YLWiJ5JQhh1nhytPq0n0Yy6v5Sc9VKtJh+8rB\r\ndBsPtVS6lyw/CmX6MFR2OTmSrx74vE2E+SUOcnJLpIyOy8Z4d1zpe5t7eAkR\r\nqaqrbSUX3UVJ42rG+QHx58JP/sHTTvVhYgPYvp0qs7eW7LtsiqYx7qwVrg9y\r\n22aS8joT1tm5SfNl8bYLObV35DwhUheJnSQ=\r\n=qRYL\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		}
+	}
+}
