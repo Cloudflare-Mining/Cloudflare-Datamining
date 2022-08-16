@@ -29,13 +29,13 @@
 					"trTR": "No Page for Locale",
 					"zhHansCN": null
 				},
-				"relativePath": "partners/technology-partners/mandiant",
+				"relativePath": "partners/technology-partners/mandiant/",
 				"topNavOptions": "default",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"metaTags": {
 					"metaTitle": "Mandiant - Tech Partners",
-					"metaDescription": "Mitigate the risk of breaches and address malicious threats with Mandiant and Cloudflare.",
+					"metaDescription": "Defend against modern threats and stop breaches with Mandiant and Cloudflare",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -44,7 +44,7 @@
 					},
 					"facebookCustomImage": null
 				},
-				"contentfulId": "6qiCkxYXnODlT3WoZcRwiV",
+				"contentfulId": "zdMBnRBbf1dhcUWntRpEJ",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -57,13 +57,13 @@
 						"contentfulId": "1l7eCUDNGq6lWKiAtV6Yg8",
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Mandiant",
-						"subtitle": "Mitigate the risk of breaches and address malicious threats with Mandiant and Cloudflare",
+						"subtitle": "Defend against modern threats and stop breaches with Mandiant and Cloudflare",
 						"copy": "Mandiant is recognized by enterprises, governments, and law enforcement agencies worldwide as the market leader in threat intelligence and expertise gained on the frontlines of cyber security. To make every organization confidently ready for cyber threats, Mandiant scales its intelligence and expertise through the Mandiant Advantage SaaS platform to deliver current intelligence, automation of alert investigation and prioritization and validation of security controls products from a variety of vendors.",
 						"buttonColor": "orange",
 						"buttonColor2": "orange",
 						"buttonText1": "Contact us",
 						"buttonText1LoggedIn": null,
-						"buttonUrl1": "https://www.cloudflare.com/partners/cyber-risk/",
+						"buttonUrl1": null,
 						"buttonUrl1LoggedIn": null,
 						"button1ExtraClass": null,
 						"buttonText2": null,
@@ -103,14 +103,48 @@
 						"imageAssetFile": null
 					},
 					{
+						"__typename": "bladeSubNav",
+						"contentTypeId": "bladeSubNav",
+						"contentfulId": "2yFsjNwpLWnPVhxYydSFGm",
+						"menuTitle": null,
+						"stickyNav": true,
+						"htmlId": null,
+						"menuItems": [
+							{
+								"__typename": "bladeSubNavMenuItem",
+								"contentfulId": "6h42j9W8Qqlow7QvOpZZOb",
+								"linkText": "Overview",
+								"page": null,
+								"url": "/partners/technology-partners/mandiant",
+								"subMenuItems": null
+							},
+							{
+								"__typename": "bladeSubNavMenuItem",
+								"contentfulId": "7DvtsyHsewkrlBhru3VAhu",
+								"linkText": "Cyber Risk",
+								"page": null,
+								"url": "/partners/technology-partners/mandiant/cyber-risk",
+								"subMenuItems": null
+							},
+							{
+								"__typename": "bladeSubNavMenuItem",
+								"contentfulId": "4K5p3Zu9DJQoeOj7BqnPPB",
+								"linkText": "Threat Intelligence",
+								"page": null,
+								"url": "/partners/technology-partners/mandiant/threat-intelligence",
+								"subMenuItems": null
+							}
+						]
+					},
+					{
 						"__typename": "bladeImageText",
-						"contentfulId": "1y1KC1n8vqtyr8qOnqITaH",
-						"title": "Partnership Overview",
+						"contentfulId": "6AsSp2rXj20dJogMWiGxQ1",
+						"title": "Cyber Risk",
 						"copy": "As an incident response provider, Mandiant deals with active under attack situations day in, day out — helping customers mitigate the attack, and getting their web property and network back online. Many times, precious time is wasted in trying to figure out which security vendor to reach out to and how to get hold of the right team. Cloudflare's partnership with Mandiant not only enables rapid referral of organizations under attack, but helps customers mitigate the risk to their business operations.",
 						"toggleText": null,
 						"button": null,
-						"learnMoreUrl": null,
-						"learnMoreText": null,
+						"learnMoreUrl": "https://cloudflare.com/partners/technology-partners/mandiant/cyber-risk",
+						"learnMoreText": "Learn More",
 						"link": null,
 						"subheadline": null,
 						"button1Text": null,
@@ -119,15 +153,17 @@
 						"button2Text": null,
 						"button2Url": null,
 						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
 						"streamVideoId": null,
 						"streamThumbnails": null,
 						"streamPoster": null,
 						"streamPosterAssetFile": null,
 						"image": {
 							"file": {
-								"publicURL": "[path]/Dual_Keys.png"
+								"publicURL": "[path]/cyber-risk-spot-illustration_3x.png"
 							}
 						},
 						"imageAssetFile": null,
@@ -141,185 +177,52 @@
 						"bladeBorder": "none",
 						"imagePosition": false,
 						"imageSize": null,
-						"imageTextAlignment": "center",
+						"imageTextAlignment": null,
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeThreeFeatures",
-						"backgroundColor": "light-blue",
-						"contentfulId": "6gxJsGAkw70WoTw7yflYwZ",
-						"contentTypeId": "bladeThreeFeatures",
-						"subtitle": null,
-						"bladeBorder": "none",
-						"sectionTitle": "Benefits",
-						"title1": "Improved security posture",
-						"copy1": "In light of the rising frequency and severity of attacks (ransomware, DDoS), cyber risk partnerships are a vital tool to mitigate common threat vectors.",
-						"locale": "en-US",
-						"image1": null,
-						"imageAssetFile1": {
-							"id": "6116a658-a791-529f-86ef-243564024b8d",
-							"altText": "Security waf blue",
-							"title": "Security waf blue",
-							"activeAsset": "Brandfolder Asset",
-							"locale": "en-US",
-							"contentfulAsset": null,
-							"brandfolderAsset": {
-								"size": 608,
-								"height": 192,
-								"width": 192,
-								"file": {
-									"publicURL": "[path]/security-waf-blue.svg"
-								}
-							},
-							"brandfolderAssetMobile": null
-						},
-						"learnMoreUrl1": null,
-						"title2": "Mitigate attacks quickly",
-						"copy2": "Organizations under attack obtain rapid referral to incident response providers, who help actively investigate and mitigate attacks.",
-						"learnMoreUrl2": null,
-						"image2": null,
-						"imageAssetFile2": {
-							"id": "4ad77fba-3ae1-5ad0-a850-d814c56d9d9d",
-							"altText": "Reliability timer blue",
-							"title": "Reliability timer blue",
-							"activeAsset": "Brandfolder Asset",
-							"locale": "en-US",
-							"contentfulAsset": null,
-							"brandfolderAsset": {
-								"size": 1134,
-								"height": 192,
-								"width": 192,
-								"file": {
-									"publicURL": "[path]/reliability-timer-blue.svg"
-								}
-							},
-							"brandfolderAssetMobile": null
-						},
-						"title3": "Adopt security best practices",
-						"copy3": "Encourage the most vulnerable businesses to adopt proper security standards to proactively address potential vulnerabilities.",
-						"image3": null,
-						"imageAssetFile3": {
-							"id": "c6776679-e543-5a80-9232-26ab70198b70",
-							"altText": "Security lock blue",
-							"title": "Security lock blue",
-							"activeAsset": "Brandfolder Asset",
-							"locale": "en-US",
-							"contentfulAsset": null,
-							"brandfolderAsset": {
-								"size": 1116,
-								"height": 192,
-								"width": 192,
-								"file": {
-									"publicURL": "[path]/security-lock-blue.svg"
-								}
-							},
-							"brandfolderAssetMobile": null
-						},
-						"learnMoreUrl3": null,
-						"features": null
-					},
-					{
-						"__typename": "bladeQuote",
-						"contentTypeId": "bladeQuote",
-						"contentfulId": "3bgjgnAhDw15k6blzbJrMb",
-						"quote": "\"As cyber threats continue to rapidly evolve, the need for organizations to put response plans in place increases. Together, Mandiant and Cloudflare are enabling our mutual customers to mitigate the risk breaches pose to their business operations. We hope to see more of these much-needed technology collaborations that help organizations address the growing need of ransomware and DDoS attack in a timely manner.\"",
-						"quoteAuthor": "Marshall Heilman",
-						"quoteTitle": "EVP & Chief Technology Officer, Mandiant",
-						"learnMoreText": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
-						"learnMoreUrl": null,
-						"htmlId": null,
+						"__typename": "bladeImageText",
+						"contentfulId": "7hOw8mw08VvvgY4DaDdXyg",
+						"title": "Threat Intelligence",
+						"copy": "Threat intelligence aims to provide specific information on threats and attackers. This includes goals of the threat actor, the conditions under which a specific threat is likely to exploit a vulnerability, outcomes for an organization should a threat be successfully executed, and more. Cloudflare and Mandiant's partnership helps solve these problems, providing high quality telemetry and deep insights into the techniques and actors targeting an organization's industry — and protecting teams against threats with minimal to no involvement.",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": "https://www.cloudflare.com/partners/technology-partners/mandiant/threat-intelligence",
+						"learnMoreText": "Learn More",
+						"link": null,
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
 						"image": {
 							"file": {
-								"publicURL": "[path]/Mandiant_logo_high_res.png"
+								"publicURL": "[path]/global-immune-system-network-hero-illustration.svg"
 							}
 						},
 						"imageAssetFile": null,
-						"imageLinkUrl": null,
-						"logoList": null,
-						"logoListAssetFile": null,
-						"quoteCarousel": null
-					},
-					{
-						"__typename": "bladeResourceGrid",
-						"contentfulId": "5yZ573eB497X17SYmXdSpf",
-						"contentTypeId": "bladeResourceGrid",
-						"title": "Learn More",
-						"description": null,
-						"sectionPadding": null,
-						"bladeBorder": "none",
-						"textColor": "black",
-						"backgroundColor": "blue5",
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
 						"htmlId": null,
-						"resourceList": [
-							{
-								"resourceMedia": {
-									"file": {
-										"publicURL": "[path]/Mandiant_and_Cloudflare_Partner_Brief.pdf"
-									}
-								},
-								"resourceMediaAssetFile": null,
-								"image": null,
-								"resourceStreamId": null,
-								"title": "[Tech Partner Directory] - Mandiant: Partner Brief",
-								"callToAction": "Learn More",
-								"id": "2fa7e772-66f5-541e-b55c-728ae980e915",
-								"resourceTitle": "Mandiant Partner Brief",
-								"resourceType": "Solution & Product Guides",
-								"topic": [
-									"Ensure Application Availability",
-									"Secure Internet Applications"
-								],
-								"orderDate": "2022-05-22",
-								"industry": null,
-								"description": "Read about how Cloudflare partners with Mandiant and how you can benefit from this partnership.",
-								"externalLinkUrl": null,
-								"hideFromResourceHub": null
-							},
-							{
-								"resourceMedia": null,
-								"resourceMediaAssetFile": null,
-								"image": null,
-								"resourceStreamId": null,
-								"title": "[Tech Partner Directory] - Mandiant: Blog",
-								"callToAction": "Learn More",
-								"id": "079c2c06-3789-55e6-a579-0ed255fc52c7",
-								"resourceTitle": "Announcing Cyber Risk Partnerships",
-								"resourceType": "Blog",
-								"topic": [
-									"Ensure Application Availability",
-									"Secure Internet Applications"
-								],
-								"orderDate": "2022-04-01",
-								"industry": null,
-								"description": "Learn about Cloudflare's partnership with Mandiant in this announcement blog post around our Cyber Risk partners.",
-								"externalLinkUrl": "https://blog.cloudflare.com/cyber-risk-partnerships/",
-								"hideFromResourceHub": true
-							},
-							{
-								"resourceMedia": null,
-								"resourceMediaAssetFile": null,
-								"image": null,
-								"resourceStreamId": null,
-								"title": "[Tech Partner Directory] - Cloudflare: Cyber Risk Press Release",
-								"callToAction": "Learn More",
-								"id": "80fbe951-2ea9-5f47-a2b0-1ede1676b217",
-								"resourceTitle": "Cloudflare Cyber Risk Press Release",
-								"resourceType": "Link",
-								"topic": [
-									"Ensure Application Availability",
-									"Secure Internet Applications"
-								],
-								"orderDate": "2022-04-01",
-								"industry": null,
-								"description": "Learn why Cloudflare announced partnerships with leading cyber insurers and incident response providers.",
-								"externalLinkUrl": "https://www.cloudflare.com/press-releases/2021/cloudflare-helps-businesses-manage-their-cyber-risk/",
-								"hideFromResourceHub": true
-							}
-						],
-						"filterMenu": null
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "light-blue",
+						"bladeBorder": "none",
+						"imagePosition": true,
+						"imageSize": null,
+						"imageTextAlignment": null,
+						"togglesTo": null
 					}
 				],
 				"noindex": false,
@@ -336,7 +239,7 @@
 		"pageContext": {
 			"locale": "en-US",
 			"pathname": "/partners/technology-partners/mandiant/",
-			"contentfulId": "6qiCkxYXnODlT3WoZcRwiV",
+			"contentfulId": "zdMBnRBbf1dhcUWntRpEJ",
 			"allowedHrefLangs": [
 				"en-US"
 			],
