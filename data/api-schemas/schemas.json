@@ -70784,8 +70784,8 @@
 		},
 		"/accounts/{identifier}/access/keys": {
 			"get": {
-				"summary": "Get Access Keys Configuration",
-				"description": "Get the Keys Configuration for an account",
+				"summary": "Get the Access key configuration",
+				"description": "Gets the Access key rotation settings for an account.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -70798,7 +70798,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get Access Keys Configuration response",
+						"description": "Get the Access key configuration response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -70813,11 +70813,13 @@
 													"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1keys/put/requestBody/content/application~1json/schema/properties/key_rotation_interval_days"
 												},
 												"last_key_rotation_at": {
+													"description": "The timestamp of the previous key rotation.",
 													"type": "string",
 													"format": "date-time",
 													"example": "2014-01-01T05:20:00.123450+00:00"
 												},
 												"days_until_next_rotation": {
+													"description": "The number of days until the next key rotation.",
 													"type": "number",
 													"readOnly": true,
 													"example": 1
@@ -70838,8 +70840,8 @@
 				]
 			},
 			"put": {
-				"summary": "Update Access Keys Configuration",
-				"description": "Update the Keys Configuration for an account",
+				"summary": "Update the Access key configuration",
+				"description": "Updates the Access key rotation settings for an account.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -70852,7 +70854,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update Access Keys Configuration response",
+						"description": "Update the Access key configuration response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -70878,6 +70880,7 @@
 								],
 								"properties": {
 									"key_rotation_interval_days": {
+										"description": "The number of days between key rotations.",
 										"type": "number",
 										"minimum": 21,
 										"maximum": 365,
@@ -70892,8 +70895,8 @@
 		},
 		"/accounts/{identifier}/access/keys/rotate": {
 			"post": {
-				"summary": "Rotate Access Keys",
-				"description": "Perfoms a key rotation for an account",
+				"summary": "Rotate Access keys",
+				"description": "Perfoms a key rotation for an account.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -70906,7 +70909,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Rotate Access Keys response",
+						"description": "Rotate Access keys response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -70918,17 +70921,20 @@
 											"type": "object",
 											"properties": {
 												"key_rotation_interval_days": {
+													"description": "The number of days between key rotations.",
 													"type": "number",
 													"minimum": 21,
 													"maximum": 365,
 													"example": 30
 												},
 												"last_key_rotation_at": {
+													"description": "The timestamp of the previous key rotation.",
 													"type": "string",
 													"format": "date-time",
 													"example": "2014-01-01T05:20:00.123450+00:00"
 												},
 												"days_until_next_rotation": {
+													"description": "The number of days until the next key rotation.",
 													"type": "number",
 													"readOnly": true,
 													"example": 1
@@ -70957,8 +70963,8 @@
 		},
 		"/accounts/{identifier}/access/logs/access_requests": {
 			"get": {
-				"summary": "Access Requests Audit",
-				"description": "Audit log of all authentication attempts. Details include the identity provider or login method and the IP address of the user.",
+				"summary": "Get Access authentication logs",
+				"description": "Gets a list of Access authentication audit logs for an account.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -70971,7 +70977,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Access Requests Audit response",
+						"description": "Get Access authentication logs response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -70989,8 +70995,8 @@
 															"user_email": {
 																"type": "string",
 																"format": "email",
-																"example": "michelle@example.com",
-																"description": "The email of the user that performed the action."
+																"example": "user@example.com",
+																"description": "The email address of the authenticating user."
 															},
 															"ip_address": {
 																"description": "The IP address of the authenticating user.",
@@ -70999,11 +71005,11 @@
 															},
 															"app_uid": {
 																"example": "df7e2w5f-02b7-4d9d-af26-8d1988fca630",
-																"description": "The unique identifier for the protected application."
+																"description": "The unique identifier for the Access application."
 															},
 															"app_domain": {
 																"type": "string",
-																"description": "The URL of the protected application.",
+																"description": "The URL of the Access application.",
 																"example": "test.example.com/admin"
 															},
 															"action": {
@@ -71013,7 +71019,7 @@
 															},
 															"connection": {
 																"type": "string",
-																"description": "The IDP used the authenticate.",
+																"description": "The IdP used to authenticate.",
 																"example": "saml"
 															},
 															"allowed": {
@@ -71027,7 +71033,7 @@
 															"ray_id": {
 																"type": "string",
 																"maxLength": 16,
-																"description": "Ray ID of the request. For more information on what a Ray ID is, please refer to: https://support.cloudflare.com/hc/en-us/articles/200169746-What-is-the-CF-RAY-header-",
+																"description": "The unique identifier for the request to Cloudflare.",
 																"example": "187d944c61940c77"
 															}
 														}
