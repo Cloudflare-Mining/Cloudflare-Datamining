@@ -436,8 +436,8 @@ const navigation = {
 			if ((0, r.zoneIsDNSOnly)(ce) || !Y(ce, "zone_settings", "spectrum.app") || !pt) return !1;
 			var Dt = !!((0, $.userHasEntZones)(ce) || (0, j.userHasDelegatedEntZones)(ce)),
 				Ut = !!(0, j.getZoneFlipperFlag)(ce, "spectrum", "enabled"),
-				Xt = !!(0, j.isFree)(pt);
-			return Ut || Dt || !Xt
+				$t = !!(0, j.isFree)(pt);
+			return Ut || Dt || !$t
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
