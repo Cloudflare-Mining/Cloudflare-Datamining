@@ -73,10 +73,7 @@
 					}
 				},
 				"customCanonicalTag": null,
-				"availableLocales": [
-					"en-us",
-					"de-de"
-				]
+				"availableLocales": null
 			},
 			"site": {
 				"siteMetadata": {
@@ -89,7 +86,10 @@
 			"contentfulId": "3kczQhKDqljYgMmCUf3e56",
 			"pathname": "/case-studies/kuka/",
 			"baseURL": "https://www.cloudflare.com",
-			"allowedHrefLangs": null
+			"allowedHrefLangs": [
+				"en-US",
+				"de-DE"
+			]
 		}
 	}
 }
