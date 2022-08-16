@@ -39,6 +39,10 @@ const knownRatePlans = new Set([
 	'stream_ent_contract',
 	'stream_ent_paygo',
 	'teams_ent',
+	'teams_gateway',
+	'teams_gateway_ent',
+	'teams_access',
+	'teams_access_ent',
 	'workers_ss',
 ]);
 
