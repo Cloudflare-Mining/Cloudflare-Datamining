@@ -77,16 +77,6 @@
 	"new-load-balancing-alert-types": {
 		"enabled": false
 	},
-	"new-sign-up-page": {
-		"enabled": false,
-		"branches": [
-			"baseline",
-			"variant-1-exist-w-illustration",
-			"variant-2-full-illustration",
-			"variant-3-bare-new-form",
-			"variant-4-exist-new-form"
-		]
-	},
 	"new-zone-overview": {
 		"enabled": false
 	},
@@ -141,6 +131,13 @@
 		"branches": [
 			"show-marketing-content",
 			"hide-marketing-content"
+		]
+	},
+	"signup-new-form": {
+		"enabled": false,
+		"branches": [
+			"control",
+			"new-form"
 		]
 	},
 	"siwa": {
