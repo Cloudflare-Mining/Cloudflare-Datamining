@@ -1,0 +1,28 @@
+{
+	"id": "TEAMS_ACCESS",
+	"public_name": "Cloudflare Access",
+	"currency": "USD",
+	"components": [
+		{
+			"name": "users",
+			"publicName": "Monthly Fee (Per User)",
+			"type": "tieredPricingComponent",
+			"aggregate": "",
+			"features": [
+				"access.users_allowed"
+			],
+			"chargeType": "subscription",
+			"chargeModel": "tiered",
+			"defaultQuantity": 1,
+			"tiers": [
+				{
+					"lowerThreshold": 1,
+					"upperThreshold": 100000000,
+					"pricingType": "unit",
+					"price": 3,
+					"bucketSize": 0
+				}
+			]
+		}
+	]
+}
