@@ -14,7 +14,7 @@
 			"html_id": "stream-mp4-downloads-create-downloads",
 			"uri": "accounts/:account_identifier/stream/:video_identifier/downloads",
 			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/stream/ea95132c15732412d22c1476fa83f27a/downloads\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"default\": {\n      \"url\": \"https://videodelivery.net/7227269b8c5324f9b9a68502e80df65a/downloads/default.mp4\",\n      \"status\": \"ready\",\n      \"percentComplete\": \"100.0\"\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"default\": {\n      \"url\": \"https://customer-m033z5x00ks6nunl.cloudflarestream.com/7227269b8c5324f9b9a68502e80df65a/downloads/default.mp4\",\n      \"status\": \"ready\",\n      \"percentComplete\": \"100.0\"\n    }\n  }\n}"
 		},
 		{
 			"title": "List downloads",
@@ -26,7 +26,7 @@
 			"html_id": "stream-mp4-downloads-list-downloads",
 			"uri": "accounts/:account_identifier/stream/:video_identifier/downloads",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/stream/ea95132c15732412d22c1476fa83f27a/downloads\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"default\": {\n      \"url\": \"https://videodelivery.net/7227269b8c5324f9b9a68502e80df65a/downloads/default.mp4\",\n      \"status\": \"ready\",\n      \"percentComplete\": \"100.0\"\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"default\": {\n      \"url\": \"https://customer-m033z5x00ks6nunl.cloudflarestream.com/7227269b8c5324f9b9a68502e80df65a/downloads/default.mp4\",\n      \"status\": \"ready\",\n      \"percentComplete\": \"100.0\"\n    }\n  }\n}"
 		}
 	],
 	"html_id": "stream-mp4-downloads",
@@ -37,11 +37,11 @@
 		"all_props": {
 			"default": {
 				"type": "object",
-				"example": "{\n  \"url\": \"https://videodelivery.net/7227269b8c5324f9b9a68502e80df65a/downloads/default.mp4\",\n  \"status\": \"ready\",\n  \"percentComplete\": \"100.0\"\n}",
+				"example": "{\n  \"url\": \"https://customer-m033z5x00ks6nunl.cloudflarestream.com/7227269b8c5324f9b9a68502e80df65a/downloads/default.mp4\",\n  \"status\": \"ready\",\n  \"percentComplete\": \"100.0\"\n}",
 				"properties": {
 					"url": {
 						"type": "string",
-						"example": "\"https://videodelivery.net/7227269b8c5324f9b9a68502e80df65a/downloads/default.mp4\"",
+						"example": "\"https://customer-m033z5x00ks6nunl.cloudflarestream.com/7227269b8c5324f9b9a68502e80df65a/downloads/default.mp4\"",
 						"format": "uri",
 						"readOnly": true
 					},
@@ -71,7 +71,7 @@
 			"default"
 		],
 		"objects": [],
-		"example": "{\n  \"default\": {\n    \"url\": \"https://videodelivery.net/7227269b8c5324f9b9a68502e80df65a/downloads/default.mp4\",\n    \"status\": \"ready\",\n    \"percentComplete\": \"100.0\"\n  }\n}",
+		"example": "{\n  \"default\": {\n    \"url\": \"https://customer-m033z5x00ks6nunl.cloudflarestream.com/7227269b8c5324f9b9a68502e80df65a/downloads/default.mp4\",\n    \"status\": \"ready\",\n    \"percentComplete\": \"100.0\"\n  }\n}",
 		"title": "Stream MP4 Downloads",
 		"description": "Create .mp4 files for offline viewing and downloading."
 	}
