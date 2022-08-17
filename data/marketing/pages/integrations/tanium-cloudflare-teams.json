@@ -53,7 +53,6 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"__typename": "bladeSignUpForm",
 						"contentTypeId": "bladeSignUpForm",
 						"contentfulId": "6Ep5A1E594vPpmCxyeosgg",
 						"bladeName": "[LTB] - Tanium Integration - LP",
@@ -108,7 +107,6 @@
 						"customPrivacyPolicyText": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "70M5zhMUVCEUeytHXWe856",
 						"title": "Authenticate users on Cloudflare's network",
 						"copy": "Add the Tanium device posture signal to a Cloudflare Access policy to make sure every connection to corporate apps is verified for user and device trust. When a user logs in to an application protected by Access, Access first verifies that the device is managed by Tanium, then checks policies from your corporate Identity Provider (IdP) to verify the user can access the corporate application. Every connection to your corporate application gets an additional layer of identity assurance, and users avoid having to fire up a VPN to get connected. ",
@@ -152,7 +150,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "6g3sEJ7diqPbkK4Sm49GzD",
 						"title": " Combine Tanium and Cloudflare for defense-in-depth to corporate apps ",
 						"copy": "Tanium, a unified endpoint management and security platform, integrates with Cloudflare Access to ensure devices connecting to their cloud and Zero Trust networks are managed and secure; all without requiring another agent.\n\nCloudflare Access secures web apps, SSH connections, remote desktops and other protocols with Cloudflare's global network, where every request to the resource is evaluated for identity.\n\nWhen corporate tools are protected with Access, they feel like SaaS apps, and employees can log in to them with a simple and consistent flow.",

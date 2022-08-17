@@ -57,7 +57,6 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"__typename": "bladeHeroAnimation",
 						"contentfulId": "77NFDIGkTumQZ1Pbi0k20V",
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Helping protect against Log4j",
@@ -107,7 +106,6 @@
 						"imageAssetFile": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "4jvPm0jjw3foKCjIE1ICtF",
 						"title": "Context",
 						"copy": "Log4j is a popular open source software library that is used to log web application activity to logs in memory. These files often contain information coming from outside an organization — for instance, a User-Agent string that is sent by a browser along with an HTTP request.",
@@ -151,7 +149,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "6rgabDuPT79w6axAmvHBnF",
 						"title": "Vulnerability",
 						"copy": "Unfortunately, a flaw in Log4j means that by using special characters in logged data, it is possible to get a machine inside a company to run code that an attacker controls. Through an attack known as remote code execution (RCE), attackers can gain a foothold into what would normally be a secure, protected system.",
@@ -195,7 +192,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "2bfLmJt7hZjGBM5Xl0bqpb",
 						"title": "How Cloudflare Helps",
 						"copy": "In response to the Log4j vulnerability, Cloudflare has rolled out basic protections to all customers, irrespective of their plan type. As this vulnerability is actively being exploited, Log4j users [should update to the latest version](https://logging.apache.org/log4j/2.x/download.html) as soon as possible.\n\n[Cloudflare WAF](https://www.cloudflare.com/waf/) now includes four rules to help mitigate any exploit attempts. See this [blog post](https://blog.cloudflare.com/protection-against-cve-2021-45046-the-additional-log4j-rce-vulnerability/) for details on how to enable these.\n\nIn addition, Cloudflare rolled out a [config option](https://blog.cloudflare.com/log4j-cloudflare-logs-mitigation/) for our [Logpush](https://www.cloudflare.com/products/cloudflare-logs/) service to find and replace known exploit strings in Cloudflare logs to help mitigate the impact of this vulnerability.\n\nA key piece to managing cyber risk is a strong security posture, which is why we suggest organizations deploy Cloudflare application security. At-Bay customers subscribing to Cloudflare's plans will automatically receive mitigation against this vulnerability.",
@@ -239,7 +235,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeEnablement",
 						"contentTypeId": "bladeEnablement",
 						"contentfulId": "3aK7LAMJs1xHI87sBbEyyA",
 						"copy": null,

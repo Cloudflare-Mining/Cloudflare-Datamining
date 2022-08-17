@@ -53,7 +53,6 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"__typename": "bladeHeroAnimation",
 						"contentfulId": "4zTn7szQa3Rh9f13aVGtHV",
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Cloudflare Peering Portal",
@@ -103,7 +102,6 @@
 						"imageAssetFile": null
 					},
 					{
-						"__typename": "bladeFourFeatures",
 						"contentfulId": "1eO0MuRGRT5OEhJfNsiBKg",
 						"backgroundColor": "light-gray",
 						"contentTypeId": "bladeFourFeatures",
@@ -233,7 +231,6 @@
 						]
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "2iJ1WY35ctDjIxJXbNAd6v",
 						"title": "Peering Portal",
 						"copy": "The Peering Portal shows the volume of data between your network and Cloudflare's, as well as where your data goes. If you want to manage your traffic more proactively, you can dedicate the Cloudflare traffic to that peering link and better plan for the rest.",
@@ -275,7 +272,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "5d7a5xd2PZPX3JJ4anQPst",
 						"title": null,
 						"copy": "Any network can view the potential savings of peering with Cloudflare, just request access to the portal.\n",
@@ -317,7 +313,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "5wcPzrEQ4VMRvqImBenhca",
 						"title": null,
 						"copy": "## Private Network Interconnect\n\nThis is designed for use at a <a href=\"https://www.peeringdb.com/asn/13335\">private network interconnect location</a> where both Cloudflare and a partner's network are present.\n\nPeering in this scenario requires that the hardware for the ISP and Cloudflare be connected using a dedicated link.",
@@ -359,7 +354,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "70NQ0mbIWYg1bXO6gJaajo",
 						"title": null,
 						"copy": "## Internet Exchange Point\n\nIf you're collocated at one of the <a href=\"https://www.peeringdb.com/asn/13335\" class=\"text--bolder\">peering exchange points</a> where Cloudflare is present, you can peer through the exchange switching fabric (no need to plug in any cables).",
@@ -401,7 +395,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "5dBs9fwkhEtzU25eWXyqET",
 						"title": null,
 						"copy": "## Hosting cache nodes\nIf you're located at a distance from an Internet exchange or Cloudflare Data Center or you manage your own data center, you may want to consider hosting a Cloudflare Cache node. If you're familiar with the Google Global Cache appliance, we'll ship you the equivalent Cloudflare hardware.\n\n## Better caching\nWith millions of Internet properties using Cloudflare, a cache node reduces your transit costs and improves your customers' speed of access to one of the internet's most ubiquitous networks.\n\n## Better DNS\nThanks to Cloudflare operating the E and F Root servers, you will have the benefit of reducing latency for all your customers' traffic by minimizing DNS root requests, regardless of whether they are using Cloudflare.",

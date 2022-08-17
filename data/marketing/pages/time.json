@@ -53,7 +53,6 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"__typename": "bladeHeroAnimation",
 						"contentfulId": "3QyRNavmDly2qLw3IWzjmH",
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Cloudflare Time Services",
@@ -103,7 +102,6 @@
 						"imageAssetFile": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "2Rnj5QWxsJkQMZjgtRvGPk",
 						"title": "Network Time Protocol",
 						"copy": "Network Time Protocol (NTP) is an Internet protocol designed to synchronize time between computer systems communicating over unreliable and variable-latency network paths. Cloudflare offers a free public time service that allows you to use our anycast network of %{DataCenterCount} locations to synchronize time from our closest server. To use our NTP server, change the time configuration in your device to point to __time.cloudflare.com__.",
@@ -145,7 +143,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "1wvOjPL8IePzSgQS13FLeu",
 						"title": "Network Time Security",
 						"copy": "Cloudflare's time service will allow users to connect to our Network Time Protocol (NTP) server that supports [Network Time Security](https://tools.ietf.org/html/draft-ietf-ntp-network-time-security-15 \"Network Time Security\") (NTS), enabling users to obtain time in an authenticated manner. Anyone with a client supporting NTS can obtain secure time by pointing their client to __time.cloudflare.com__. If you would like to learn more, read our [developer docs](https://developers.cloudflare.com/time-services/ \"Developer docs\").\n\nReach out to __time-services@cloudflare.com__ to join our mailing list for updates on our NTS client implementation. ",
@@ -183,7 +180,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "JAMqWd3sNFyyGgEScQhlE",
 						"title": null,
 						"copy": "Roughtime is a protocol that aims to achieve rough time synchronisation in a secure way that doesn't depend on any particular time server.\n\nFor many applications, accurate network time isn't essential: it suffices to be within 10 seconds of real time, but security is paramount. This observation is the primary motivation behind [Google's Roughtime protocol](https://roughtime.googlesource.com/roughtime), a simple protocol by which clients can synchronize their clocks with one or more authenticated servers while keeping inaccurate servers accountable.\n\nCloudflare is providing a free, high-availability, and low-latency authenticated time service that leverages our expansive network for increased robustness in Roughtime. Our service can be reached at __roughtime.cloudflare.com:2002__.\n\nRead our [blog](https://blog.cloudflare.com/roughtime/ \"blog\") for more information about Cloudflare's Roughtime Service.",

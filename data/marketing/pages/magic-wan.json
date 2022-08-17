@@ -61,7 +61,6 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"__typename": "bladeHeroAnimation",
 						"contentfulId": "27W05Xoi8NCHEW8ynNqtig",
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Magic WAN",
@@ -111,7 +110,6 @@
 						"imageAssetFile": null
 					},
 					{
-						"__typename": "bladeQuote",
 						"contentTypeId": "bladeQuote",
 						"contentfulId": "4FQPwEcNcdUHKcFKA3nMrx",
 						"quote": "\"Increased cloud adoption coupled with the recent pivot to remote workers has increased the volume of Internet, SaaS, and IaaS traffic, straining traditional network architectures such as MPLS.\n\n\nWAN architectures that offer a global scale, integrated enterprise network security functions, and direct, secure connectivity to remote users are key to organizations looking to increase their operational agility and lower total costs of ownership.\"",
@@ -148,7 +146,6 @@
 						"quoteCarousel": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "4i0E7gLmbpm4YupPtUr2bj",
 						"title": "The problem with legacy WAN architectures",
 						"copy": "Legacy WAN architectures were never designed to deliver the security, millisecond performance, and reliability required for businesses today. \n\nTo address the core limitations and vulnerabilities of traditional WAN architectures, enterprises have had to cobble together a patchwork of proprietary circuits and network appliances that are expensive to install and difficult to manage.  \n",
@@ -203,7 +200,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeQuote",
 						"contentTypeId": "bladeQuote",
 						"contentfulId": "7K3ajDXBky7gy712791fOu",
 						"quote": "\"Our network team is excited by Magic WAN. Cloudflare has built a global network-as-a-service (NaaS) platform that will help network teams manage complex edge and multi-cloud environments much more efficiently. Operating a single global WAN with built-in security and fast routing functionality — regardless of the HQ, data center, branch office, or end user location — is a game-changer in WAN technology.\"",
@@ -240,7 +236,6 @@
 						"quoteCarousel": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "XcSwsvblAyF5PEevJb995",
 						"title": "The new paradigm for networking",
 						"copy": "Magic WAN, the connectivity foundation of [Cloudflare One](https://www.cloudflare.com/cloudflare-one/), is a comprehensive, cloud-based network-as-a-service solution that is designed to be secure, fast, and reliable by default. \n\nIt replaces a patchwork of appliances and expensive, proprietary circuits with a single global network that provides built-in:\n- [Network firewalling](https://blog.cloudflare.com/introducing-magic-firewall/)\n- [Zero trust functionality](https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/) \n- [DDoS protection](https://www.cloudflare.com/magic-transit/)\n- Traffic acceleration\n- and much more!\n\nAll delivered and managed as-a-service.\n",
@@ -295,7 +290,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "1G6Hle2hPYQdIqAS9aiPVS",
 						"title": "Replace MPLS between branch offices & data centers",
 						"copy": "Connect your on-prem data centers, branch offices, and cloud-hosted workloads to Cloudflare over Anycast GRE tunnels, [direct network connections](https://www.cloudflare.com/network-interconnect/), and [Argo Tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps). \n\n- Route traffic privately over Cloudflare's global network \n- Get the inherent benefits of Cloudflare — faster performance, built-in security, and increased resiliency \n- All easily managed from a single dashboard\n\nIt's like hub-and-spoke, but the \"hub\" is now everywhere that the Cloudflare network is. Get the performance advantages of full-mesh, but with the simplicity and reduced management overhead of classic hub-and-spoke. \n",
@@ -350,7 +344,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "1NKRh17XlXpH2XgJFcIISG",
 						"title": "Secure remote employee access to private networks — without VPNs",
 						"copy": "With [Cloudfare One](https://www.cloudflare.com/cloudflare-one/), [Cloudflare for Teams](https://www.cloudflare.com/teams/) and [Magic WAN](https://www.cloudflare.com/magic-wan/) provide a secure way for your employees to access resources behind private networks, wherever they're working. \n\nInstead of sending all remote traffic through a single choke point device (such as VPN concentrators at your corporate network \"perimeter\"), traffic is routed to the Cloudflare edge location closest to the source. Access policies are applied before that remote traffic is sent over optimal secure paths to its destination. \n\nApply comprehensive, consistent security policies wherever your users are, all managed from a single unified control plane. ",
@@ -405,7 +398,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "JI8tR13b5aaiEdGEmLldD",
 						"title": "Strengthen your security posture — while retiring legacy hardware",
 						"copy": "Magic WAN comes with Magic Firewall, a built-in software-defined network firewall that is part of the Cloudflare suite of [network security solutions](https://www.cloudflare.com/network-security/). Apply packet filters for ingress and egress traffic based on parameters like source and destination IP and port, packet length, and bit field match. Rules are deployed instantly across all locations. \n\nYou may also layer additional security functionality such as DNS filtering, [SWG](https://www.cloudflare.com/teams/) with remote browser isolation, [DDoS protection](https://www.cloudflare.com/magic-transit/), and much more — all delivered and managed as-a-service. Learn more about secure network connectivity with [Magic WAN and Magic Firewall](https://blog.cloudflare.com/magic-wan-firewall/).\n",
@@ -460,7 +452,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeQuote",
 						"contentTypeId": "bladeQuote",
 						"contentfulId": "2k7DjM6iXulRtXY2AOnYe5",
 						"quote": "\"Cloudflare has built one of the world's most interconnected networks. And to have built-in DDoS protection, traffic acceleration, network firewall, and zero trust functionality, over Cloudflare's global IP network that can be managed using a single management plane — is arguably the biggest leap in enterprise network technology in the last couple of decades.\"",
@@ -497,7 +488,6 @@
 						"quoteCarousel": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "2V2Y8Fn8yJfTxpeD08SBfE",
 						"title": "No more boxes. Simply connect to Cloudflare and leave the rest to us.",
 						"copy": "Unlike legacy hardware vendors with \"virtual\" versions of their hardware appliances, Cloudflare is fully software-defined and cloud-native,  so there is no need to add physical or virtual gateways to your environment. You can start using Magic WAN with your existing network infrastructure — no rip-and-replace required.\n\nSimply configure connectivity from your existing edge router/gateway (physical or cloud-hosted) to Cloudflare's network and get the connectivity and inherent security, performance, and reliability benefits over our network for all your traffic between your users and locations.",
@@ -555,7 +545,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeQuote",
 						"contentTypeId": "bladeQuote",
 						"contentfulId": "7t9xMHv7zvNPPByoIyfjpC",
 						"quote": "\"Digital transformation has challenged traditional network architectures, leading to clunky bolt-on security practices that simply do not work for today's global enterprises. As more intelligence moves to the edge, enterprises must leverage modern WAN technologies that offer a broad range of built-in cloud-delivered security services. Fast edge global connectivity with robust security inherently included is what enterprises really want today.\"",
@@ -592,7 +581,6 @@
 						"quoteCarousel": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "25LM1B3uEOiquttlGDLpNa",
 						"title": "Cloudflare's global network is now your private WAN",
 						"copy": "Cloudflare operates one of the world's largest networks with data centers spanning over %{DataCenterCount} cities in %{CountryCount} countries. Our network is carrier-agnostic, exceptionally well-connected and peered, and delivers the same set of services from every global point of presence (PoP).\n\nCustomers may also choose to interconnect their networks to Cloudflare over direct, dedicated physical or virtual connections with [Cloudflare Network Interconnect](https://www.cloudflare.com/network-interconnect/) for enhanced performance & reliability. ",
@@ -650,7 +638,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeTrustedBy",
 						"contentTypeId": "bladeTrustedBy",
 						"contentfulId": "bGXZcQriItbwEaMlcrTcV",
 						"bladeBorder": "none",
@@ -896,7 +883,6 @@
 						"logoUrlList": null
 					},
 					{
-						"__typename": "bladeEnablement",
 						"contentTypeId": "bladeEnablement",
 						"contentfulId": "3N42H9BX8PuXcbzReL9ITX",
 						"copy": null,

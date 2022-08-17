@@ -57,7 +57,6 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"__typename": "bladeHeroAnimation",
 						"contentfulId": "7bFA72KcxXIdX4SgjUrbmy",
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Cloudflare Data Localization Suite",
@@ -126,7 +125,6 @@
 						}
 					},
 					{
-						"__typename": "bladeRichTextColumnGroup",
 						"contentTypeId": "bladeRichTextColumnGroup",
 						"contentfulId": "EEAVMQB0XxbznW4U5GMbF",
 						"htmlId": null,
@@ -243,7 +241,6 @@
 						]
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "6Q1YzlBaOOrB0YhQIt8uvv",
 						"title": "How the Cloudflare Data Localization Suite works",
 						"copy": "Preserving end-user privacy is core to Cloudflare's mission of helping to build a better Internet. There are several ways Cloudflare ensures that your data stays as private as you want it to, and only goes where you want it to go:\n\n- DDoS attacks are detected and mitigated at the data center closest to the end user.\n- Data centers inside the preferred region decrypt TLS and apply HTTP services like WAF, CDN, and Cloudflare Workers.\n- Keyless SSL and Geo Key Manager store private SSL keys in a user-specified region.\n- Edge Log Delivery securely transmits logs from the inspection point to the log storage location of your choice.\n",
@@ -301,7 +298,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "e1IYGn5ErgpSe1iP8eVzz",
 						"title": "Effortlessly encrypt your data.",
 						"copy": "Data privacy requires airtight encryption. Cloudflare uses the highest level of encryption possible for data in transit and at rest, ensuring that all communication between our edge and core data centers is always protected.",
@@ -359,7 +355,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "7LG06nFgKxLb53dMffcBgV",
 						"title": "Control access to SSL private keys.",
 						"copy": "Security regulations can make it impossible to share private keys with third-party providers. Geo Key Manager and Keyless SSL allow you to store and manage your own SSL private keys, while still routing encrypted traffic through Cloudflare's global network.",
@@ -417,7 +412,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "2Lb7QZmHRH5aHlqYSPNzuk",
 						"title": "Choose where your traffic is handled.",
 						"copy": "To meet your compliance obligations, you may need control over where your data is inspected. Cloudflare Regional Services helps you decide where your data should be handled, without losing the security and performance benefits our network provides.",
@@ -475,7 +469,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "XHDa0dJhLFlTo5tH7eX4E",
 						"title": "Decide where log data is sent.",
 						"copy": "Logs can contain sensitive information that is subject to local regulations. Cloudflare Edge Log Delivery (Beta) allows you to send logs directly from the edge to your partner of choice — without passing through one of our core data centers first.",
@@ -533,7 +526,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "3SJm6HGeqoNFsKVsCAhO0i",
 						"title": "Build location-aware applications.",
 						"copy": "Traditional cloud systems aren't always equipped to meet data compliance standards. Jurisdiction Restrictions for Workers Durable Objects makes it easy to build serverless applications that are confined to a specific region — so you can control where your applications store and run data.",
@@ -588,7 +580,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeFourFeatures",
 						"contentfulId": "61Iyorfl1nXeF643waZCvh",
 						"backgroundColor": "light-gray",
 						"contentTypeId": "bladeFourFeatures",
@@ -654,7 +645,6 @@
 						]
 					},
 					{
-						"__typename": "bladeEnablement",
 						"contentTypeId": "bladeEnablement",
 						"contentfulId": "5U4PEVJlZq0sqQrya1DsBR",
 						"copy": null,

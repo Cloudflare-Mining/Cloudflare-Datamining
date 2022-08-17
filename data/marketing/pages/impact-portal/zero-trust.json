@@ -61,7 +61,6 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"__typename": "bladeRichTextColumnGroup",
 						"contentTypeId": "bladeRichTextColumnGroup",
 						"contentfulId": "qtI2piKEyGx6Q5JEjfDrQ",
 						"htmlId": null,
@@ -178,7 +177,6 @@
 						]
 					},
 					{
-						"__typename": "bladeSubNav",
 						"contentTypeId": "bladeSubNav",
 						"contentfulId": "6FtGsfz9MJqkTDNw1wK04e",
 						"menuTitle": "Resources",
@@ -186,7 +184,6 @@
 						"htmlId": null,
 						"menuItems": [
 							{
-								"__typename": "bladeSubNavMenuItem",
 								"contentfulId": "2WeaLN5k7i9NNki0j5GduK",
 								"linkText": "Overview",
 								"page": null,
@@ -194,7 +191,6 @@
 								"subMenuItems": null
 							},
 							{
-								"__typename": "bladeSubNavMenuItem",
 								"contentfulId": "7FmkCH0ZO8r5acmwvrg2jy",
 								"linkText": "Getting started",
 								"page": null,
@@ -202,7 +198,6 @@
 								"subMenuItems": null
 							},
 							{
-								"__typename": "bladeSubNavMenuItem",
 								"contentfulId": "1vnToXFJabaKcwNBr2YNUT",
 								"linkText": "Website security",
 								"page": null,
@@ -210,7 +205,6 @@
 								"subMenuItems": null
 							},
 							{
-								"__typename": "bladeSubNavMenuItem",
 								"contentfulId": "6brUpL4Aed0OuNZYKGmuhs",
 								"linkText": "Zero Trust",
 								"page": null,
@@ -218,7 +212,6 @@
 								"subMenuItems": null
 							},
 							{
-								"__typename": "bladeSubNavMenuItem",
 								"contentfulId": "7edHK1KqlKUzfKKqW5AhdQ",
 								"linkText": "Support",
 								"page": null,
@@ -226,7 +219,6 @@
 								"subMenuItems": null
 							},
 							{
-								"__typename": "bladeSubNavMenuItem",
 								"contentfulId": "444Lk8zZ58zuOSBgUtSEpo",
 								"linkText": "Share your story",
 								"page": null,
@@ -236,7 +228,6 @@
 						]
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "1Iwi45IM6pgm6vekQEKm57",
 						"title": "What is Zero Trust?",
 						"copy": "[Zero Trust](https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/) security is a model that requires strict [identity verification](https://www.cloudflare.com/learning/access-management/what-is-identity-and-access-management/) for every person and device trying to access resources on a private network, regardless of whether they are sitting within or outside of the [network perimeter](https://www.cloudflare.com/learning/access-management/what-is-the-network-perimeter/). More simply put: traditional IT network security trusts anyone and anything inside the network. A Zero Trust architecture trusts no one and nothing.\n",
@@ -289,7 +280,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "5A88QvtOy6VZif3VTeQwXq",
 						"title": "Why is Zero Trust important?",
 						"copy": "A Zero Trust approach helps organizations enforce processes that authenticate, authorize, and validate all users and devices that connect to the network. Amid the shift to remote work, many organizations are unaware of the relevant risks or lack the resources to afford security tools to protect their internal teams. With Zero Trust tools such as Access and Gateway, you can use trusted access controls and inspect, secure, and log traffic from employees' and volunteers' devices. \n",
@@ -345,7 +335,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "5HY0QYQxAUcTWxb5GxKY7d",
 						"title": "Cloudflare Access",
 						"copy": "With Access, you can easily prevent unauthorized access to internal resources with identity- and posture-based rules to keep sensitive data from leaving your organization. It replaces a VPN client by securing [SaaS](https://www.cloudflare.com/learning/cloud/what-is-saas/) and internal applications with a Zero Trust approach. \n\nAccess evaluates requests to internal applications and determines whether users are authorized based on defined policies. These policies and security rules are enforced when users connect to the Cloudflare network. Once the user is authenticated and authorized, they can access the internal resource. \n\nWatch a [30-minute demo](https://cloudflare.tv/event/1b6z1glenPnUsoHjIyP17Y) of Access.",
@@ -398,7 +387,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeFourFeatures",
 						"contentfulId": "6v3xoUbIFxp8EzmfxW4Bfu",
 						"backgroundColor": "light-gray",
 						"contentTypeId": "bladeFourFeatures",
@@ -474,7 +462,6 @@
 						]
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "5VFSB8jpE50sLNWm2fTCxy",
 						"title": "What is a secure web gateway?",
 						"copy": "<p><a href=\"https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway/\" target=\"_blank\"> Secure web gateways</a> (SWG) protect an organization's data and enforce security policies. SWGs operate in between an organization's employees and the Internet. </p>\n\nLike a water filter, which removes impurities from water so it is safe to drink, SWGs filter unsafe content from web traffic to stop cyber threats and [data breaches](https://www.cloudflare.com/learning/security/what-is-a-data-breach/). They also block risky or unauthorized user behavior.\n\nWatch a [30-minute demo](https://cloudflare.tv/event/4WmnPmt47myUKeOFooHUm3) of Gateway.",
@@ -530,7 +517,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "3oIswRhCriqH06cMVHJZu3",
 						"title": "Why is a secure web gateway important?",
 						"copy": "When a client device sends a request to a website or application on the Internet, the request travels through the gateway first. The gateway inspects the request and passes it along only if it does not violate established security policies. A similar process occurs in reverse: all incoming data is inspected by the SWG before it is passed along to users.\n\nBecause SWGs can run anywhere, they are helpful for managing remote employees and volunteers. By requiring remote workers to access the Internet through a secure web gateway, organizations can better prevent sensitive data from being stolen, as Gateway prevents users from clicking on malicious links, even if the organization does not have direct control over employee devices and networks.\n",
@@ -586,7 +572,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "22oAKehd11tvVclh1kUSCN",
 						"title": "Get started with Cloudflare Gateway",
 						"copy": "To start protecting your network with Gateway, we recommend the following workflow:\n1. Connect the devices and/or networks that you want to apply policies to.\n2. Verify that Gateway is successfully proxying traffic from your devices.\n3. Set up basic security and compatibility policies.\n4. Customize your configuration to the unique needs of your organization.\n",

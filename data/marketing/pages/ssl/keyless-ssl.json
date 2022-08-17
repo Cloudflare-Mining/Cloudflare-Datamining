@@ -53,7 +53,6 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"__typename": "bladeHeroAnimation",
 						"contentfulId": "4Hpyjum0r42g6i2pHqniuK",
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Overview of Keyless SSL",
@@ -103,14 +102,12 @@
 						"imageAssetFile": null
 					},
 					{
-						"__typename": "bladeHtml",
 						"contentTypeId": "bladeHtml",
 						"contentfulId": "3eIowXJBe57QSmWuLREDEn",
 						"htmlContent": "<center><h1>Why Use Keyless SSL?</h1><center>\n\n<p>While most customers are comfortable with Cloudflare managing their private keys, some have unique security requirements making this impossible. Keyless SSL allows users to retain control of keys while still routing encrypted traffic through Cloudflare's global network.</p>\n\n<p>With Keyless SSL, for the first time ever, an organization can use a solution such as Cloudflare, that is infinitely scalable and infinitely elastic, without sharing their SSL key. Companies are able to get all of the benefits of the cloud (DDoS attack mitigation, load balancing, WAN optimization), without having to choose between encrypting web traffic or giving their SSL private keys to a 3rd party cloud provider.</p>",
 						"htmlId": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "3vlWEoCeCUzMdWDpxAJV7h",
 						"title": "How Keyless SSL Works",
 						"copy": "Note: Keyless SSL requires that Cloudflare decrypt, inspect and re-encrypt traffic for transmission back to a customer's origin.\n\nFor non-SSL traffic through Cloudflare there are 3 parties: Client (e.g., web browser), Cloudflare edge node and Customer origin server.\n\nFor SSL traffic with Keyless SSL enabled, there is one additional endpoint involved in the initial SSL session creation, after which normal transmission resumes.\n\n__The request flow for Keyless SSL transactions is as follows:__\n\n1a. Client (e.g., web browser) connects to the Cloudflare edge node closest to the customer, via Anycast routing. The client sends a secret to the edge server encrypted with the site's public key.\n\n1b. The edge server contacts the key server, authenticating itself with a certificate. The edge server sends the encrypted secret to the key server to decrypt it. The key server returns the decrypted secret over an encrypted tunnel.\n\n2a. Both client and server use the shared secret to establish a secure connection. Client (e.g., web browser) makes request over HTTPS for Cloudflare-powered customer resource.\n\n2b. Cloudflare edge node (the Session Server) decrypts, inspects, and processes the original request.\n\nThe authentication step happens only once per session; additional requests within the session do not require the extra check to the Key Server. The customer can modify the default SSL session TTL (time to live) from 18 hours to as low as 5 minutes or as high as 48 hours.\n\nFor more details on Keyless SSL see [this blog post](https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/).",
@@ -154,7 +151,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeFourFeatures",
 						"contentfulId": "7ud5GLceZ1D9Iwwpqhk9OW",
 						"backgroundColor": "light-blue",
 						"contentTypeId": "bladeFourFeatures",
@@ -204,14 +200,12 @@
 						]
 					},
 					{
-						"__typename": "bladeHtml",
 						"contentTypeId": "bladeHtml",
 						"contentfulId": "76Of7L7xZNVIkJ1Xc8JtQe",
 						"htmlContent": "<section\n  class=\"tile tile--border tile__background--white js-cloudflare-setup-video-tile\"\n>\n  <div class=\"tile__content tile__content--fixed\">\n    <h2 class=\"marketing-h2 marketing-h2--center marketing-h2--bottom-margin\">\n      Setting Up Cloudflare Is Easy\n    </h2>\n    <br /><br />\n    <div class=\"grid grid--center\">\n      <video\n        poster=\"/img/getting-started.png\"\n        muted=\"\"\n        autoplay=\"\"\n        loop=\"\"\n        class=\"responsive-image grid__item grid__item js-cloudflare-setup-video no-margin-bottom\"\n        id=\"cloudflare-stream-video\"\n      >\n        <source src=\"/video/cloudflare-setup.mp4?v=3\" type=\"video/mp4\" />\n        <source src=\"/video/cloudflare-setup.webm?v=3\" type=\"video/webm\" />\n      </video>\n      <p class=\"tc db w-100\">\n        Set up a domain in less than 5 minutes. Keep your hosting provider. No\n        code changes required.\n      </p>\n    </div>\n  </div>\n</section>\n\n<hr />",
 						"htmlId": null
 					},
 					{
-						"__typename": "bladePricingPlans",
 						"bladeBorder": "border-bottom",
 						"sectionPadding": null,
 						"backgroundColor": "white",
@@ -352,7 +346,6 @@
 						]
 					},
 					{
-						"__typename": "bladeTrustedBy",
 						"contentTypeId": "bladeTrustedBy",
 						"contentfulId": "bGXZcQriItbwEaMlcrTcV",
 						"bladeBorder": "none",

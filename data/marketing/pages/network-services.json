@@ -53,7 +53,6 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"__typename": "bladeHeroAnimation",
 						"contentfulId": "5qw2eGSICueeLx0GeOptLt",
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Cloudflare network services ",
@@ -119,7 +118,6 @@
 						}
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "7eZdfWNpJAJ1iSRZV58FEK",
 						"title": "Embrace network transformation — retire the castle-and-moat architecture",
 						"copy": "Corporate networking has become overly complicated. Network and IT teams that used to maintain \"castle-and-moat\" architectures are now responsible for much more: managing legacy WAN connectivity (such as MPLS), establishing secure remote access, and stringing together disparate networking hardware on-premise to satisfy security, performance, and reliability needs.\n\n__With Cloudflare, replace a patchwork of appliances and expensive legacy circuits with a single global network that provides built-in, software-defined Zero Trust functionality, DDoS mitigation, firewall services, and traffic acceleration.__\n",
@@ -161,7 +159,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "1iFPY4n3tcy3mPCWAXUtol",
 						"title": "Magic WAN",
 						"copy": "Build your own private wide area network (WAN) over our network. Replace legacy WAN architectures, such as MPLS, and get global connectivity with cloud-delivered security, performance, and control through one simple user interface — all as a service. Take advantage of Cloudflare One [network security services](https://www.cloudflare.com/network-security/) natively without rerouting traffic through a central hub.",
@@ -203,7 +200,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeQuote",
 						"contentTypeId": "bladeQuote",
 						"contentfulId": "7K3ajDXBky7gy712791fOu",
 						"quote": "\"Our network team is excited by Magic WAN. Cloudflare has built a global network-as-a-service (NaaS) platform that will help network teams manage complex edge and multi-cloud environments much more efficiently. Operating a single global WAN with built-in security and fast routing functionality — regardless of the HQ, data center, branch office, or end user location — is a game-changer in WAN technology.\"",
@@ -240,7 +236,6 @@
 						"quoteCarousel": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "4hACPQVgCuL05q9d4pplSn",
 						"title": "Magic Transit",
 						"copy": "BGP-based DDoS mitigation delivered from every server in every Cloudflare data center ensures attacks of any size and kind are detected and mitigated automatically within seconds. Clean traffic is delivered over low-latency resilient Anycast GRE tunnels or direct connections to the customer data center. \n",
@@ -282,7 +277,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeQuote",
 						"contentTypeId": "bladeQuote",
 						"contentfulId": "Whv0LrJdEOej8wbBPUo4z",
 						"quote": "\"Cloudflare has reliable infrastructure and an extremely competent and responsive team. They are well-positioned to deflect even the largest of attacks.\"",
@@ -322,7 +316,6 @@
 						"quoteCarousel": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "6a4U3DAKb52BaD1O50RStB",
 						"title": "Magic Firewall",
 						"copy": "Deploy unified [network security](https://www.cloudflare.com/network-security/) policies across your entire organization — headquarters, branch offices, remote users, and cloud-hosted applications. Fine-grained policies controlling what traffic is allowed in and out of your corporate network are propagated and deployed under 500 ms globally — all from one programmable interface.\n",
@@ -364,7 +357,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "1veuOYhaKASp0Fq2eoTWjE",
 						"title": "Network Interconnect",
 						"copy": "We have a physical presence in %{DataCenterCount} cities across %{CountryCount} countries and interconnect with over %{NetworkInterconnects} networks globally, including major ISPs and cloud services. With our highly connected network, we are likely co-located with your organization in at least one peering facility.\n\nUsing Cloudflare Network Interconnect, establish a direct connection to our network — for a more reliable and secure experience than connecting over the public Internet.",
@@ -406,7 +398,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeQuote",
 						"contentTypeId": "bladeQuote",
 						"contentfulId": "4nI7gm2Y8er5nYoc6imP2u",
 						"quote": "\"Cloudflare Network Interconnect's high-performance private links enable us to effectively and efficiently serve the content delivery needs of our B2 Cloud Storage customers.\"",
@@ -443,7 +434,6 @@
 						"quoteCarousel": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "3J3LnjOTGnBsuh7wCEbhcU",
 						"title": "Baking resilience into our network using Anycast",
 						"copy": "Our Magic products use Anycast IP addresses for network tunnel endpoints — so a single tunnel configured from your network to Cloudflare connects to %{DataCenterCount} network locations globally. This does not add strain on your router; from your router's perspective, it is a single tunnel to a single IP address.\n\nThis works because while the tunnel endpoint is technically bound to an IP address, it need not be bound to a specific device. Any device that can strip off the outer headers and then route the inner packet can handle any packet sent over the tunnel.\n\nIn the event of a network outage or other issues, tunnels fail over automatically — with no impact to your network performance.",
@@ -485,7 +475,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "e0FRyWvsBJ07kDMLWkV22",
 						"title": "Networking with unparalleled scale, speed, and smarts",
 						"copy": "The Cloudflare network is like a fractal — all security, performance, and reliability functions run on every single server on every rack in every Cloudflare data center that today spans %{DataCenterCount} cities across %{CountryCount} countries. \n\nRunning the full stack of all Cloudflare services ensures all customer traffic is processed at the same data center that is closest to its source — whether for application layer services such as content caching or network services such as firewalling.",
@@ -536,7 +525,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeTrustedBy",
 						"contentTypeId": "bladeTrustedBy",
 						"contentfulId": "bGXZcQriItbwEaMlcrTcV",
 						"bladeBorder": "none",

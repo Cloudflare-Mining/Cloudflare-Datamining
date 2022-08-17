@@ -53,7 +53,6 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"__typename": "bladeSignUpForm",
 						"contentTypeId": "bladeSignUpForm",
 						"contentfulId": "1dG1QoPmzHeucLE5tu7BRx",
 						"bladeName": "Orbit Hero Form",
@@ -108,7 +107,6 @@
 						"customPrivacyPolicyText": null
 					},
 					{
-						"__typename": "bladeFourFeatures",
 						"contentfulId": "5rX0auCDRSRTGVtGyFgaPx",
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
@@ -270,7 +268,6 @@
 						]
 					},
 					{
-						"__typename": "bladeQuote",
 						"contentTypeId": "bladeQuote",
 						"contentfulId": "2VZTocRAp7vPJXaaeCgDaF",
 						"quote": "\"Keeping our products and customers secure is our primary concern. Cloudflare provides an extra layer of security that allows us to keep our devices continually updated and ahead of any vulnerabilities.\"",
@@ -307,7 +304,6 @@
 						"quoteCarousel": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "1LHazYlcbdpqliGDsGbewx",
 						"title": "Secure and Authenticated IoT Device Connections",
 						"copy": "<p>Cloudflare's Mutual Authentication (TLS Client Authentication) creates a secure connection between an Internet of Things device and its origin. When a device attempts to establish a connection with its origin server, Cloudflare validates the device's certificate.</p>\n\n<div class=\"tc h3\">Successful IoT Device Authentication</div>\n<img src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/6JXwahV0WhHKhceQXujCFq/27aeba7045fa722968aedb1ac48ff1c5/successful-iot-auth.svg\">\n<p>If the device has a valid client certificate, like having the correct key to enter a building, the device is able to establish a secure connection.</p>\n<div class=\"tc h3\">Unsuccessful IoT Device Authentication</div>\n<img src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/3B2uEzih9OsjwQVKbeDEkI/c05521592a3886648bfa42e6c36cf41b/unsuccessful-iot-auth.svg\">\n<p>If the device's certificate is missing, expired, or invalid, the connection is revoked and Cloudflare returns a 403 error.</p>",
@@ -345,7 +341,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeTrustedBy",
 						"contentTypeId": "bladeTrustedBy",
 						"contentfulId": "bGXZcQriItbwEaMlcrTcV",
 						"bladeBorder": "none",

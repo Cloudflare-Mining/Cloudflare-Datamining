@@ -53,7 +53,6 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"__typename": "bladeHeroAnimation",
 						"contentfulId": "3Uf7ZLvXnOkYCUowcEMq4o",
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Cloudflare Spectrum",
@@ -127,7 +126,6 @@
 						}
 					},
 					{
-						"__typename": "bladeFourFeatures",
 						"contentfulId": "7s8zfE374aRN1srISsd46g",
 						"backgroundColor": "light-gray",
 						"contentTypeId": "bladeFourFeatures",
@@ -250,7 +248,6 @@
 						]
 					},
 					{
-						"__typename": "bladeQuote",
 						"contentTypeId": "bladeQuote",
 						"contentfulId": "1pKlZ18TwuFeusjovaiPPb",
 						"quote": "\"Cloudflare Spectrum helped us really boost the performance and resiliency of our custom TCP protocols.\"",
@@ -290,7 +287,6 @@
 						"quoteCarousel": null
 					},
 					{
-						"__typename": "bladeFourFeatures",
 						"contentfulId": "6sbg1oDEtTLybtxJnIXkcM",
 						"backgroundColor": "light-blue",
 						"contentTypeId": "bladeFourFeatures",
@@ -428,7 +424,6 @@
 						]
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "6pW0bbQ5tWQCYgdY28GtGb",
 						"title": "Real-time traffic acceleration",
 						"copy": "Speed is an integral part of many applications. Often, applications such as RDP, VoIP, RTMP or custom financial and gaming applications require low end-to-end network latency to deliver consistent, reliable, and 'real-time' experiences to end-users. \n\n__Cloudflare Spectrum integrates with [Argo Smart Routing](https://www.cloudflare.com/products/argo-smart-routing/ \"Argo Smart Routing\") to send TCP traffic faster than the 'best-effort' Internet.__ Cloudflare's network learns from the traffic of millions of Internet properties, enabling machine-learning (ML) based intelligent routing around network congestion in real-time. \n\nBased on synthetic measurement tests between Western America and Singapore, we saw a nearly 17% decrease in the TCP roundtrip time (RTT) on Cloudflare's network when compared to sending the traffic directly on the Internet.",
@@ -486,7 +481,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "WYwV1cv0Kgnesqb2V8xEv",
 						"title": "Best-in-class DDoS protection",
 						"copy": "With a network mitigation capacity of over %{NetworkCapacity}, instant threat detection, a time to mitigate (TTM) under 3 seconds for most threats, Spectrum proxies and protects your applications against the most sophisticated and multi-vector DDoS attacks. With a network of data centers that spans over %{DataCenterCount} cities in %{CountryCount} countries, Spectrum is well-positioned to stop DDoS attacks in the cloud closest to the attack source, well before they reach your application server.",
@@ -544,7 +538,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "5zSzC5fEdsJL8DcTa3LAK7",
 						"title": "IP Firewall included",
 						"copy": "Spectrum comes with a completely software-defined IP firewall that can be configured right from the dashboard or API. You can allow or deny individual IPs or IP ranges to granularly control traffic to your application server. You can also configure rules to block visitors from a specified country or even an Autonomous System Number (ASN).",
@@ -606,7 +599,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "6SGo4DjIZDGEE2bJvEb1e1",
 						"title": "Increased reliability with faster failovers",
 						"copy": "In the event of a downtime, all active TCP connections and UDP traffic automatically failover to an alternate healthy server in a configured load balancing pool to prevent downtime. By dynamically distributing it to the most available and responsive server pools, Cloudflare Spectrum and Load Balancing together help increase the uptime of your services.",
@@ -664,7 +656,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeQuote",
 						"contentTypeId": "bladeQuote",
 						"contentfulId": "2YVeJAMe3YwgqukOeEMqic",
 						"quote": "\"Before Spectrum, we had to rely on unstable services and techniques that increased latency, worsening user's experience. Now, we're able to be continually protected without added latency, which makes it the best option for any latency and uptime sensitive service such as online gaming.\"",
@@ -701,7 +692,6 @@
 						"quoteCarousel": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "7iYNe6LjhjDkKEn8aPovJA",
 						"title": "Real-time analytics",
 						"copy": "Get in-depth information on ingress, egress traffic, and threats mitigated using Spectrum.\n\n- See real-time data transfer (ingress and egress) as well as the no. of concurrent connections to your service\n- Request detailed log data on every single connection event using a RESTful API\n- Automate log data delivery to a cloud storage provider of your choice",
@@ -763,7 +753,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeQuote",
 						"contentTypeId": "bladeQuote",
 						"contentfulId": "7kRCOOIU6n9oARNVfnwTcD",
 						"quote": "\"From a latency perspective, we saw improvements when using Argo coupled with Spectrum — in more remote regions like Australia, the improvements were more noticeable. For example, without Argo, round-trip messages from Australia to Chicago would take on average around 270 ms for us. With Argo enabled, we saw reductions down to around 250 ms consistently.\n \nThis means that on average, our customers in Australia see around 7% improvement in request response times when managing their game servers in Australia.\"",
@@ -803,7 +792,6 @@
 						"quoteCarousel": null
 					},
 					{
-						"__typename": "bladeKeyFeatures",
 						"contentfulId": "26LbBudzTigwQkKyg0oOQW",
 						"contentTypeId": "bladeKeyFeatures",
 						"backgroundColor": "light-gray",
@@ -828,7 +816,6 @@
 						"htmlId": null
 					},
 					{
-						"__typename": "bladeTable",
 						"contentTypeId": "bladeTable",
 						"contentfulId": "c6eZJXVgxuscGBLhENIvT",
 						"locale": "en-US",
@@ -1081,7 +1068,6 @@
 						"dataSource": null
 					},
 					{
-						"__typename": "bladeTrustedBy",
 						"contentTypeId": "bladeTrustedBy",
 						"contentfulId": "bGXZcQriItbwEaMlcrTcV",
 						"bladeBorder": "none",

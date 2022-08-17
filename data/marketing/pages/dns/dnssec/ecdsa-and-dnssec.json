@@ -53,7 +53,6 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"__typename": "bladeHeroAnimation",
 						"contentfulId": "3g6UEzcFPLtTc332qyvS4p",
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "ECDSA: The missing piece of DNSSEC",
@@ -116,7 +115,6 @@
 						}
 					},
 					{
-						"__typename": "bladeSubNav",
 						"contentTypeId": "bladeSubNav",
 						"contentfulId": "6MDeXx4b0IQJXClsuBpjL6",
 						"menuTitle": "DNSSEC Articles",
@@ -124,7 +122,6 @@
 						"htmlId": null,
 						"menuItems": [
 							{
-								"__typename": "bladeSubNavMenuItem",
 								"contentfulId": "5WFa1YcPSXrm1WuWjs2vq",
 								"linkText": "Universal DNSSEC",
 								"page": null,
@@ -132,7 +129,6 @@
 								"subMenuItems": null
 							},
 							{
-								"__typename": "bladeSubNavMenuItem",
 								"contentfulId": "2UXA9wBNObtjAbqm5NpSq2",
 								"linkText": "How DNSSEC Works",
 								"page": null,
@@ -140,7 +136,6 @@
 								"subMenuItems": null
 							},
 							{
-								"__typename": "bladeSubNavMenuItem",
 								"contentfulId": "383AV903uhcT3Y08sDPi2x",
 								"linkText": "Root-Signing Ceremony",
 								"page": null,
@@ -148,7 +143,6 @@
 								"subMenuItems": null
 							},
 							{
-								"__typename": "bladeSubNavMenuItem",
 								"contentfulId": "5XvhB0L2cRg6nApXw9TiVd",
 								"linkText": "ECDSA and DNSSEC",
 								"page": null,
@@ -156,7 +150,6 @@
 								"subMenuItems": null
 							},
 							{
-								"__typename": "bladeSubNavMenuItem",
 								"contentfulId": "3iaY9yzodOgfDc4kqV3jqy",
 								"linkText": "DNSSEC Complexities",
 								"page": null,
@@ -164,7 +157,6 @@
 								"subMenuItems": null
 							},
 							{
-								"__typename": "bladeSubNavMenuItem",
 								"contentfulId": "2o6TALIThh1aCNCvqbhRNk",
 								"linkText": "DNSSEC for Registrars",
 								"page": null,
@@ -174,7 +166,6 @@
 						]
 					},
 					{
-						"__typename": "bladeFourFeatures",
 						"contentfulId": "WO45K6HZXBXArD8lrUagX",
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
@@ -224,7 +215,6 @@
 						]
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "5TP6KNVyxosNFSnpYajTI6",
 						"title": "DDoS Amplification",
 						"copy": "<p>\nCloudflare is the <a href=\"https://www.datanyze.com/market-share/dns/Alexa%20top%201M/cloudflare-dns-market-share\">largest</a> managed DNS provider in the world. What we really don't want is to turn our DNSSEC servers into an amplification vector for distributed denial-of-service (DDoS) attacks. Every time you request a record from a DNSSEC server, it also returns the signature associated with that record, as well as the public key used to verify that signature. That's potentially a lot of information.\n</p>\n<p>\nMaking the response size for DNSSEC queries as small as possible is an important requirement to prevent abuse of our DNS infrastructure by would-be attackers. The small size of ECDSA keys and signatures goes a long way towards that end.\n</p>\n",
@@ -262,7 +252,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "3FRNyLTshC7WdD3KjKkDtz",
 						"title": "ECDSA vs. RSA Response Size",
 						"copy": "<p>\nAchieving 128-bit security with ECDSA requires a 256-bit key, while a comparable RSA key would be 3072 bits. That's a 12x amplification factor just from the keys. You can read more about why cryptographic keys are different sizes in <a href=\"https://blog.cloudflare.com/why-are-some-keys-small/\">this blog post</a>.\n</p>\n<p>\nBut, most RSA keys are not 3072 bits, so a 12x amplification factor may not be the most realistic figure. Let's take a look at a worst-case real-world scenario for DDoS amplification, which is a negative response (NSEC record). For a domain behind Cloudflare (which uses ECDSA signatures and DNSSEC white lies), a typical DNSSEC response is 377 bytes. Compare this to 1075 bytes for a domain not using ECDSA or DNSSEC white lies.\n</p>\n<p>\nWhen you consider the fact that every other large-scale DNSSEC implementation relies on RSA signatures, it's unappealing for an attacker to leverage our DNSSEC infrastructure as a DDoS vector.\n</p>",
@@ -300,7 +289,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeFourFeatures",
 						"contentfulId": "4pxYWBunWrvRvXRu7vug8y",
 						"backgroundColor": "light-gray",
 						"contentTypeId": "bladeFourFeatures",
@@ -350,7 +338,6 @@
 						]
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "2GInRTInevm66Wm8jNnikd",
 						"title": "Drawbacks of ECDSA",
 						"copy": "ECDSA is not without its trade-offs. According to\n<a href=\"http://www.sigcomm.org/sites/default/files/ccr/papers/2015/October/0000000-0000002.pdf\">Roland van Rijswijk-Deij et al</a>.,\nonly 80% of resolvers support ECDSA validation. This number is growing,\nbut it means that if we switched the entire DNSSEC Internet onto ECDSA\nright now, DNSSEC validation would fail for millions of Internet users\neveryday and fall back to returning unverified DNS records.\n</p>\n<p>Furthermore, while ECDSA signature creation is faster than RSA,\nsignature validation is actually much slower. Roland van Rijswijk-Deij\net al. showed that, even with the ECDSA optimizations that we\ncontributed to OpenSSL, ECDSA is still 6.6 times slower than 1024-bit\nRSA (which is the most common algorithm used for zone-signing keys).\nThis is a serious problem, because overloading DNS resolvers could\npotentially slow down the entire Internet.</p>\n",
@@ -388,7 +375,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "2UI3uHr0910vBeX2PE5gWD",
 						"title": "Conclusion",
 						"copy": "<p>\nThere's one very important caveat to all this Algorithm 13 discussion: only\n1.5% of web properties support DNSSEC in <em>any</em> capacity. Not all registrars\nsupport DNSSEC, and adding support is not trivial. They need to allow their\nusers to upload DS records, which, in turn, need to be uploaded to the registry\nby the registrar. We're working to make this an <a class=\"text--white\" href=\"/dns/dnssec/dnssec-for-registrars/\">automated\nprocess</a>\nso the registrant doesn't even need to upload the DS record, but it still\nrequires intervention by the registrar.\n</p>\n<p>The good news is, we're trending in the right direction. Over the\nlast 12 months, DNSSEC in general has seen a decent amount of growth.\nAnd, in the three weeks between our public DNSSEC beta and our Universal\nDNSSEC announcement, Hover, OVH, Metaname, Internet.bs, and the .NZ\nregistry have added support for Algorithm 13.</p>\n<p>We believe that DNSSEC is an essential technology for the modern web\nand that ECDSA makes global DNSSEC adoption a real possibility.\nHopefully, we'll continue seeing support for Algorithm 13 from\nregistrars and registries, big and small.</p>",
@@ -426,14 +412,12 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeHtml",
 						"contentTypeId": "bladeHtml",
 						"contentfulId": "76Of7L7xZNVIkJ1Xc8JtQe",
 						"htmlContent": "<section\n  class=\"tile tile--border tile__background--white js-cloudflare-setup-video-tile\"\n>\n  <div class=\"tile__content tile__content--fixed\">\n    <h2 class=\"marketing-h2 marketing-h2--center marketing-h2--bottom-margin\">\n      Setting Up Cloudflare Is Easy\n    </h2>\n    <br /><br />\n    <div class=\"grid grid--center\">\n      <video\n        poster=\"/img/getting-started.png\"\n        muted=\"\"\n        autoplay=\"\"\n        loop=\"\"\n        class=\"responsive-image grid__item grid__item js-cloudflare-setup-video no-margin-bottom\"\n        id=\"cloudflare-stream-video\"\n      >\n        <source src=\"/video/cloudflare-setup.mp4?v=3\" type=\"video/mp4\" />\n        <source src=\"/video/cloudflare-setup.webm?v=3\" type=\"video/webm\" />\n      </video>\n      <p class=\"tc db w-100\">\n        Set up a domain in less than 5 minutes. Keep your hosting provider. No\n        code changes required.\n      </p>\n    </div>\n  </div>\n</section>\n\n<hr />",
 						"htmlId": null
 					},
 					{
-						"__typename": "bladePricingPlans",
 						"bladeBorder": "border-bottom",
 						"sectionPadding": null,
 						"backgroundColor": "white",
@@ -574,7 +558,6 @@
 						]
 					},
 					{
-						"__typename": "bladeTrustedBy",
 						"contentTypeId": "bladeTrustedBy",
 						"contentfulId": "bGXZcQriItbwEaMlcrTcV",
 						"bladeBorder": "none",
