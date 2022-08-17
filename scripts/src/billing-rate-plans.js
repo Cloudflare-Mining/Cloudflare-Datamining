@@ -28,12 +28,14 @@ const knownRatePlans = new Set([
 	'image_resizing_ent',
 	'image_resizing_legacy_100',
 	'image_resizing_legacy_300',
+	'image_resizing_legacy_600',
 	'image_resizing_nocost',
 	'load_balancing',
 	'load_balancing_ent',
 	'load_balancing_ent_contract',
 	'load_balancing_ent_paygo',
 	'pro',
+	'rate_limiting_ent_ss',
 	'spectrum',
 	'ssl_for_saas_advanced',
 	'ssl_for_saas_basic',
@@ -45,6 +47,7 @@ const knownRatePlans = new Set([
 	'teams_gateway_ent',
 	'teams_access',
 	'teams_access_ent',
+	'workers_ent_ss',
 	'workers_ss',
 ]);
 
