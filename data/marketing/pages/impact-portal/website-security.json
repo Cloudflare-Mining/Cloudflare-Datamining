@@ -61,7 +61,6 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"__typename": "bladeRichTextColumnGroup",
 						"contentTypeId": "bladeRichTextColumnGroup",
 						"contentfulId": "5trHat3HRbsGzXF3WQNjok",
 						"htmlId": null,
@@ -178,7 +177,6 @@
 						]
 					},
 					{
-						"__typename": "bladeSubNav",
 						"contentTypeId": "bladeSubNav",
 						"contentfulId": "6FtGsfz9MJqkTDNw1wK04e",
 						"menuTitle": "Resources",
@@ -186,7 +184,6 @@
 						"htmlId": null,
 						"menuItems": [
 							{
-								"__typename": "bladeSubNavMenuItem",
 								"contentfulId": "2WeaLN5k7i9NNki0j5GduK",
 								"linkText": "Overview",
 								"page": null,
@@ -194,7 +191,6 @@
 								"subMenuItems": null
 							},
 							{
-								"__typename": "bladeSubNavMenuItem",
 								"contentfulId": "7FmkCH0ZO8r5acmwvrg2jy",
 								"linkText": "Getting started",
 								"page": null,
@@ -202,7 +198,6 @@
 								"subMenuItems": null
 							},
 							{
-								"__typename": "bladeSubNavMenuItem",
 								"contentfulId": "1vnToXFJabaKcwNBr2YNUT",
 								"linkText": "Website security",
 								"page": null,
@@ -210,7 +205,6 @@
 								"subMenuItems": null
 							},
 							{
-								"__typename": "bladeSubNavMenuItem",
 								"contentfulId": "6brUpL4Aed0OuNZYKGmuhs",
 								"linkText": "Zero Trust",
 								"page": null,
@@ -218,7 +212,6 @@
 								"subMenuItems": null
 							},
 							{
-								"__typename": "bladeSubNavMenuItem",
 								"contentfulId": "7edHK1KqlKUzfKKqW5AhdQ",
 								"linkText": "Support",
 								"page": null,
@@ -226,7 +219,6 @@
 								"subMenuItems": null
 							},
 							{
-								"__typename": "bladeSubNavMenuItem",
 								"contentfulId": "444Lk8zZ58zuOSBgUtSEpo",
 								"linkText": "Share your story",
 								"page": null,
@@ -236,7 +228,6 @@
 						]
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "bW45IDZW8y03zLMxUtbrv",
 						"title": "Account security",
 						"copy": "Adopting a strong security posture for your Cloudflare account is an important step toward ensuring your website's overall safety. [Two-factor authentication](https://www.cloudflare.com/learning/access-management/what-is-two-factor-authentication/) (2FA) improves account security by requiring a second piece of information to validate your identity when logging in. \n\nFollow [these instructions to enable 2FA](https://support.cloudflare.com/hc/en-us/articles/200167906-Securing-user-access-with-two-factor-authentication-2FA-) by enrolling through your preferred mobile authentication application. Save a copy of the recovery codes in a safe location to avoid locking yourself out of your account. \n",
@@ -289,7 +280,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "3GEl6rTsjBaojcbg8jBHl2",
 						"title": "Notifications",
 						"copy": "Manage your notifications to define what you want to be warned about and how. We recommend enabling: \n\n- __Passive Origin Monitoring Alerts__: Get notified when your origin web server is  unreachable from our edge network for at least 5 minutes so you can quickly fix the issue. \n- __HTTPS DDoS Alerts__: Sign up for a real-time email when Cloudflare automatically detects and mitigates a DDoS attack that targets your Internet property.\n- __Security Events Alert__: Receive an alert within two hours of any spike of firewall-related events across all Cloudflare services that generate related log entries. ",
@@ -342,7 +332,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "2zA1M10feFt9YBAWWW3OjF",
 						"title": "Manage DNS records",
 						"copy": "When you use Cloudflare DNS, all DNS queries for your domain are answered by our global Anycast network. DNS records help communicate information about your domain to visitors and other web services. \n\nWith Cloudflare DNS, you can manage all of your records for your website in the DNS tab — watch a [Cloudflare dashboard walkthrough](https://www.youtube.com/watch?v=xjaLVZduT5g) of the available options.",
@@ -398,7 +387,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "6cBtRb34xiLAP6ABGkPNOM",
 						"title": "Orange cloud vs. grey cloud ",
 						"copy": "An __orange cloud symbol__ means traffic to that hostname is running through Cloudflare. This enables features such as hiding your origin IP, caching, SSL, and Web Application Firewall. We recommend enabling the orange cloud for A, AAAA, and CNAME records. \n\nA __grey cloud__ means that Cloudflare will announce those records in DNS, but all traffic will be routed to your origin instead of through Cloudflare. This is useful in a few contexts such as records other than A, AAAA, or CNAME, if you are trying to validate a service with a record or non-web traffic, including mail and FTP. If you run into issues with a record on Cloudflare, you can pause Cloudflare for the record by grey clouding it on the DNS tab. \n\nIf you experience issues with undeliverable emails after onboarding, grey cloud the DNS records used to receive mail on the DNS tab. The default configuration allows only proxying of HTTP traffic and will break mail traffic.\n",
@@ -451,7 +439,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "1iGBtVNffvJZ4PKMKbZeCc",
 						"title": "Hide your origin IP address",
 						"copy": "Cloudflare offers many features to detect and block malicious traffic. However, if malicious users find the origin IP of your server, which is  where your actual resources are hosted, they may be able to send traffic or attacks directly to the servers.\n\nConsider taking steps to keep from leaking this information:\n\n1. Review [DNS records](https://www.cloudflare.com/learning/dns/glossary/dns-zone/) for your zone(s). If possible, keep all your subdomains on Cloudflare and check for SPF and TXT records for origin information.\n2. Do not host a mail service on the same server as the web resource you want to protect, since emails sent to non-existent addresses get bounced back to the attacker and reveal the mail server IP.\n3. Ensure your web server does not connect to arbitrary addresses provided by users.\n4. Once onboarded, rotate your origin IPs, as DNS records are in the public domain. Historical records are kept and would contain IP addresses prior to joining Cloudflare.\n",
@@ -504,7 +491,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "7mN5xU774uVOyVNYyS7Vrw",
 						"title": "Enable DNSSEC",
 						"copy": "[DNSSEC](https://www.cloudflare.com/dns/dnssec/how-dnssec-works/) creates a secure domain name system by adding cryptographic signatures to existing DNS records. These digital signatures are stored in DNS name servers alongside common record types like A, AAAA, MX, and CNAME. \n\nBy checking its associated signature, you can verify that a requested DNS record comes from its authoritative name server and was not altered en route, as opposed to a fake record injected in an [on-path attack](https://www.cloudflare.com/learning/security/threats/on-path-attack/).\n\nWe highly recommend [enabling DNSSEC](https://developers.cloudflare.com/dns/additional-options/dnssec/) to add a layer of authentication on top of your DNS for domains on Cloudflare.",
@@ -557,7 +543,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "1KFsjmOHEvqHZH4C9IjZ3x",
 						"title": "Enable SSL encryption",
 						"copy": "[SSL certificates](https://www.cloudflare.com/learning/ssl/how-does-ssl-work/) encrypt user information and keep users secure on the Internet. Manually configuring SSL requires several steps, however, and misconfigurations can prevent users from reaching your website.\n\nWith Cloudflare, become [HTTPS](https://www.cloudflare.com/learning/ssl/what-is-https/)-enabled with the click of a button. We offer edge certificates and origin server certificates. \n\n- __Edge Certificates__: By default, we issue and renew free, unshared, publicly trusted SSL certificates to all Cloudflare domains. Your domain should automatically receive its Universal SSL certificate within 24 hours of [domain activation](https://developers.cloudflare.com/dns/zone-setups/full-setup/). We recommend enabling either Full or Full (strict) as the settings to ensure data confidentiality on your site.\n- __Origin Certificate Authority (CA)__: Use these certificates to encrypt traffic between Cloudflare and your origin web server. Once deployed, these certificates are compatible with Strict SSL mode. \n",
@@ -610,7 +595,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "7wUlyC5Yku1rRpH7BOBiSk",
 						"title": "Get protected with a WAF",
 						"copy": "By deploying a [Web Application Firewall](https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf/) (WAF), you can decide whether to allow types of incoming and outgoing traffic via a set of rules (often called policies). WAFs protect against attacks such as [SQL injection](https://www.cloudflare.com/learning/security/threats/sql-injection/) attacks, [cross-site scripting](https://www.cloudflare.com/learning/security/threats/cross-site-scripting/), and [cross-site forgery](https://www.cloudflare.com/learning/security/threats/cross-site-request-forgery/).\n\nOur WAF provides automatic protection and the flexibility to create custom rules:\n- __Rate limiting rules__: Define rate limits for incoming requests matching an expression and the action to take when those limits are reached.\n- __WAF Managed Rulesets__: Enable the pre-configured policies to get immediate protection, including from advanced [zero-day vulnerabilities](https://www.cloudflare.com/learning/security/threats/zero-day-exploit/).\n- __Exposed Credential Checks__: Monitor and block the use of stolen/exposed credentials for account takeover.\n- __Firewall Analytics__: Investigate security threats, then tailor your security configurations based on the activity log.\n",
@@ -663,7 +647,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "5hYTykZq7lE4yncSx2O9st",
 						"title": "WAF configuration tips",
 						"copy": "When using managed rulesets:\n\n- Only enable rule groups that correspond to your technology stack. For example, if you use WordPress, enable the Cloudflare WordPress group. You also have the ability to craft custom rules.\n- We recommend turning on the WAF and enabling [Cloudflare Specials](https://support.cloudflare.com/hc/en-us/articles/200172016-Understanding-WAF-managed-rules-Web-Application-Firewall) to automatically protect against the latest attack vectors.\n",
@@ -719,7 +702,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "2vzcfsLjU4TUNL2wWh4l6l",
 						"title": "Learn the basics of caching",
 						"copy": "[Caching](https://www.cloudflare.com/learning/cdn/what-is-caching/) is the process of storing copies of files in a temporary storage location so they can be accessed quickly. Web browsers cache HTML files, JavaScript, and images for fast load times; [DNS](https://www.cloudflare.com/learning/dns/what-is-dns/) servers cache [DNS records](https://www.cloudflare.com/learning/dns/dns-records/) for faster lookups; and [CDN](https://www.cloudflare.com/learning/cdn/what-is-a-cdn/) servers cache content to reduce [latency](https://www.cloudflare.com/learning/performance/glossary/what-is-latency/).\n\n- Learn about our [default cache behavior](https://developers.cloudflare.com/cache/about/default-cache-behavior/#default-cached-file-extensions).\n- For caching HTML, you can use Cloudflare [Page Rules](https://support.cloudflare.com/hc/en-us/articles/218411427-Understanding-and-configuring-Cloudflare-Page-Rules-Page-Rules-Tutorial-) to set rules on how to cache dynamic content. ",
@@ -772,7 +754,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "3sp0EiXqkfttuiKYwVCo5D",
 						"title": "Understanding Browser Cache TTL and Edge Cache TTL ",
 						"copy": "These important features help protect your site and ensure content is up to date. \n\n- __Edge Cache TTL (Time to Live)__ specifies how long to cache a resource on our edge network. You can configure  how long we keep the cached resource before asking the origin for it again.\n- __Browser Cache TTL__ sets the expiration for resources cached in a visitor's browser. \n\nFor example, if you are updating an election results page with resources we automatically cache every 20 minutes, set the Edge Cache TTL to 20 minutes, with Browser Cache TTL around 1 minute so users have fresh data.  Or, you can manually purge the cache by file URL or hostname every time you update the file.\n",

@@ -53,7 +53,6 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"__typename": "bladeRichTextColumnGroup",
 						"contentTypeId": "bladeRichTextColumnGroup",
 						"contentfulId": "2jqynCvTzsVbWM5lKioaeC",
 						"htmlId": null,
@@ -121,9 +120,9 @@
 														"type": "Link",
 														"linkType": "Entry"
 													},
-													"related_asset": null,
-													"entry_elementMarkdown": null,
-													"entry_assetFile": null,
+													"related_asset": [],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
 													"entry_button": [
 														{
 															"buttonAssetFile": null,
@@ -142,12 +141,12 @@
 															"locale": "en-US"
 														}
 													],
-													"entry_elementLink": null,
-													"entry_page": null,
-													"entry_elementIcon": null,
-													"entry_bladeTable": null,
-													"entry_bladeThreeFeatures": null,
-													"entry_bladeFourFeatures": null
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
 												},
 												"uri": null
 											},
@@ -549,7 +548,6 @@
 						]
 					},
 					{
-						"__typename": "bladeFourFeatures",
 						"contentfulId": "3K5Zl5wLko3piPL21Sm44U",
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
@@ -777,7 +775,6 @@
 						]
 					},
 					{
-						"__typename": "bladeQuote",
 						"contentTypeId": "bladeQuote",
 						"contentfulId": "31YfBfUQgxy6sOwK2hRmCP",
 						"quote": "\"Cloudflare's DNS Firewall is exactly what we needed to protect our DNS infrastructure. It is the leading company working in the DNS and web DDoS mitigation space.\"",
@@ -817,7 +814,6 @@
 						"quoteCarousel": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "23Cs0GJ9DJrLOOyV2VSDku",
 						"title": "How It Works",
 						"copy": "<p>\nDNS Firewall makes running reliable DNS easy by protecting and accelerating any organization's DNS infrastructure. With DNS Firewall enabled, DNS queries for your\nnameservers get sent to the nearest Cloudflare data center where the legitimacy of the requests are checked and malicious traffic is blocked.\nIf the proper DNS response is available in Cloudflare's cache, Cloudflare will return the response to the visitor. If the DNS response is not\navailable in cache, Cloudflare will query the provider's nameservers in the background to fetch the DNS response and send it back to the visitor.\n</p>\n<p>\nOnboarding DNS Firewall is easy, with a simple change of your nameservers' IP addresses, your DNS infrastructure can be protected in as little as 5 minutes.\n</p>",
@@ -870,7 +866,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeQuote",
 						"contentTypeId": "bladeQuote",
 						"contentfulId": "7sRYfpMVQLkl5W7FcOoOmN",
 						"quote": "\"Your protection has enabled us to keep growing without worrying about attacks to our DNS infrastructure. Your services have also given our clients a chance to reduce their bandwidth usage, and make their sites load faster.\"",
@@ -907,7 +902,6 @@
 						"quoteCarousel": null
 					},
 					{
-						"__typename": "bladeFourFeatures",
 						"contentfulId": "68pP40dCVZDaxKfBVj4eLZ",
 						"backgroundColor": "light-gray",
 						"contentTypeId": "bladeFourFeatures",
@@ -957,7 +951,6 @@
 						]
 					},
 					{
-						"__typename": "bladeRichTextColumnGroup",
 						"contentTypeId": "bladeRichTextColumnGroup",
 						"contentfulId": "75P6u7FPY6xPfWyaJOhmdZ",
 						"htmlId": null,
@@ -1032,7 +1025,6 @@
 						]
 					},
 					{
-						"__typename": "bladeEnablement",
 						"contentTypeId": "bladeEnablement",
 						"contentfulId": "1uGzmUnIyMWPx9KPRHjZJF",
 						"copy": "Cache DNS Responses at the Edge \n\nDNS Firewall is sold as a separate product, regardless of plan type. For more information, contact our sales team.",
@@ -1055,7 +1047,6 @@
 						"sectionPadding": null
 					},
 					{
-						"__typename": "bladeRichTextColumnGroup",
 						"contentTypeId": "bladeRichTextColumnGroup",
 						"contentfulId": "5mQJSNcTPewmCLM4GXZ9bx",
 						"htmlId": null,
@@ -1095,15 +1086,15 @@
 															}
 														}
 													],
-													"entry_elementMarkdown": null,
-													"entry_assetFile": null,
-													"entry_button": null,
-													"entry_elementLink": null,
-													"entry_page": null,
-													"entry_elementIcon": null,
-													"entry_bladeTable": null,
-													"entry_bladeThreeFeatures": null,
-													"entry_bladeFourFeatures": null
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
 												},
 												"uri": null
 											},
@@ -1138,7 +1129,6 @@
 						]
 					},
 					{
-						"__typename": "bladeTrustedBy",
 						"contentTypeId": "bladeTrustedBy",
 						"contentfulId": "bGXZcQriItbwEaMlcrTcV",
 						"bladeBorder": "none",

@@ -53,7 +53,6 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"__typename": "bladeHeroAnimation",
 						"contentfulId": "2Dkzs4KsqjxHs9m5xFy5rP",
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "DDoS Protection + Traffic Acceleration for SSH",
@@ -103,7 +102,6 @@
 						"imageAssetFile": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "7D0yk6hJ1wzppnpWWKNENn",
 						"title": "Increased uptime with protection from DDoS attacks",
 						"copy": "If your SSH server is exposed to the Internet, then it is vulnerable to DDoS attacks.\n\nCloudflare Spectrum protects your servers against DDoS attacks of any kind. With a network mitigation capacity of over %{NetworkCapacity}, instant threat detection, and < 10 second time to mitigation (TTM), your SSH server is protected behind one of the world's largest networks. ",
@@ -145,7 +143,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "2BWOk1i8gBx21tJOde6AIw",
 						"title": "Having to Ctrl + C your slow terminal connection?",
 						"copy": "How many times have you had to terminate and reinitiate your terminal connection because it was too slow?\n\nNetwork latency and high load on the SSH server contribute to poor performance of SSH client sessions. \n\nLatency is directly related to the distance between a server and a client in communication. As the distance grows, latency increases. In addition, network congestion, inefficient service provider routing policies, and poor peering practices of residential ISPs contribute to suboptimal end-user experiences for real-time applications such as SSH.",
@@ -187,7 +184,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "6eMYoUzJXjIjPnSgFIMEv0",
 						"title": "Supercharge your SSH connections over a faster, more reliable network",
 						"copy": "__Cloudflare Spectrum dramatically reduces network latency associated with long-distance client-server connections and other network issues.__ \n\nUsing TCP optimizations, Cloudflare decreases the connection time for sessions and helps reduce latency. TCP connections terminate at the Cloudflare data center closest to the end user, making SSH connections faster and more reliable.\n\nCloudflare's network also learns from the traffic to millions of Internet properties, enabling machine learning-based intelligent routing around real-time network congestion to deliver a measurable improvement in latency. This routes SSH connection traffic on Cloudflare's network much faster than on the 'best-effort' Internet.",
@@ -227,7 +223,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeFullContent",
 						"contentfulId": "7AVhWGl4GXOx62VEFdjS5w",
 						"contentTypeId": "bladeFullContent",
 						"title": "Supercharge your SSH connections over a faster, more reliable network",
@@ -236,7 +231,6 @@
 						"imageAssetFile": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "4ovspPZOH8mPk5SsDLBbzd",
 						"title": "No hardware or software plug-ins necessary",
 						"copy": "We make complex problems easy to solve. You can configure Spectrum with a few clicks right from the dashboard or API. There is no hardware to rack and stack and no software to install. Best yet, the only thing your users experience is faster performance. \n\n__Onboard with Cloudflare Spectrum within minutes and start accelerating and protecting your server right away__.\n",
@@ -278,14 +272,12 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeHtml",
 						"contentTypeId": "bladeHtml",
 						"contentfulId": "3vK2muM13DGGrdNqs6uaiV",
 						"htmlContent": "  <div class=\"overflow-x-scroll\">\n  <section id=\"pricing-details\" class=\"pv5 minw-700px\">\n    <h2 class=\"fw7 f5 f6-l tc mt5 mb6\">Cloudflare Spectrum – Availability by plan</h2>\n    <div class=\"js-plans-detail-nav w-100 mw9 ph2 center\">\n      <div class=\"flex flex-row mw9 center items-end bg-white bl br b--transparent\">\n        <div class=\"w-third w-third-m w-third-l\">\n          <h3 class=\"fw7 f4 lh-title ls5 brandGray5\">Protocol</h3>\n        </div>\n        <div class=\"w-two-thirds flex flex-row\">\n            <div class=\"w-third-l w-100 ph3 pt4 pb4 db-l br1 br--top js-plans-detail-nav-item bg-gray9\">\n              <!--\n                NOTE: With the pricing commented out, this looks\n                weird aligned left, so I added `tc` to align center.\n                If you un-comment the pricing, remove `tc` as well\n              -->\n              <h3 class=\"fw7 f5 f6-l mv0 brandGray5 tc\">Pro</h3>\n              <!--<p class=\"fw7 f5 lh-title ls4 mt3 mb0\">\n                $20/mo\n              </p>-->\n            </div>\n            <div class=\"w-third-l w-100 ph3 pt4 pb4 db-l br1 br--top js-plans-detail-nav-item\">\n              <!--\n                NOTE: With the pricing commented out, this looks\n                weird aligned left, so I added `tc` to align center.\n                If you un-comment the pricing, remove `tc` as well\n              -->\n              <h3 class=\"fw7 f5 f6-l mv0 brandGray5 tc\">Business</h3>\n              <!--<p class=\"fw7 f5 lh-title ls4 mt3 mb0\">\n                $20/mo\n              </p>-->\n            </div>\n            <div class=\"w-third-l w-100 ph3 pt4 pb4 db-l br1 br--top js-plans-detail-nav-item bg-gray9\">\n              <!--\n                NOTE: With the pricing commented out, this looks\n                weird aligned left, so I added `tc` to align center.\n                If you un-comment the pricing, remove `tc` as well\n              -->\n              <h3 class=\"fw7 f5 f6-l mv0 brandGray5 tc\">Enterprise</h3>\n              <!--<p class=\"fw7 f5 lh-title ls4 mt3 mb0\">\n                $20/mo\n              </p>-->\n            </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"ph2 flex-row mw9 center items-center\">\n      <div class=\"flex flex-row bg-white bl br bb bt b--gray7\">\n        <div class=\"w-third w-third-m w-third-l flex-row items-center justify-between flex\">\n          <div class=\"w-two-thirds\">\n            <a href=\"https://www.cloudflare.com/products/cloudflare-spectrum/ssh/\" class=\"lh-copy ls2 blue2 no-underline mv1 pl3 fw7 db\">SSH</a>\n          </div>\n        </div>\n        \n        <div class=\"w-two-thirds flex flex-row tc\">\n              <div class=\"w-third-l pa4 bg-gray9 w-100 items-center justify-center js-plans-detail-item flex flex-column\">\n                    <img src=\"/img/icons/green/check.svg\">\n                    <p class=\"f2 tc mb0\">5GB monthly data allowance $1/GB overage fees</p>\n              </div>\n              <div class=\"w-third-l pa4 w-100 items-center justify-center js-plans-detail-item flex flex-column\">\n                    <img src=\"/img/icons/green/check.svg\">\n                    <p class=\"f2 tc mb0\">10GB monthly data allowance $1/GB overage fees</p>\n              </div>\n              <div class=\"w-third-l pa4 bg-gray9 w-100 items-center justify-center js-plans-detail-item flex flex-column\" data-plantype=\"business\">\n                    <img src=\"/img/icons/green/check.svg\">\n              </div>\n        </div>\n      </div>    \n    </div>\n\n    <div class=\"ph2 flex-row mw9 center items-center\">\n      <div class=\"flex flex-row bg-white bl br bb bt b--gray7\">\n        <div class=\"w-third w-third-m w-third-l flex-row items-center justify-between flex\">\n          <div class=\"w-two-thirds\">\n            <a href=\"https://www.cloudflare.com/products/cloudflare-spectrum/rdp/\" class=\"lh-copy ls2 blue2 no-underline mv1 pl3 fw7 db\">RDP</a>\n          </div>\n        </div>\n        \n        <div class=\"w-two-thirds flex flex-row tc\">\n              <div class=\"w-third-l pa4 bg-gray9 w-100 items-center justify-center js-plans-detail-item flex flex-column\">\n              </div>\n              <div class=\"w-third-l pa4 w-100 items-center justify-center js-plans-detail-item flex flex-column\">\n                    <img src=\"/img/icons/green/check.svg\">\n                    <p class=\"f2 tc mb0\">10GB monthly data allowance $1/GB overage fees</p>\n              </div>\n              <div class=\"w-third-l pa4 bg-gray9 w-100 items-center justify-center js-plans-detail-item flex flex-column\" data-plantype=\"business\">\n                    <img src=\"/img/icons/green/check.svg\">\n              </div>\n        </div>\n      </div>    \n    </div>\n\n    <div class=\"ph2 flex-row mw9 center items-center\">\n      <div class=\"flex flex-row bg-white bl br bb bt b--gray7\">\n        <div class=\"w-third w-third-m w-third-l flex-row items-center justify-between flex\">\n          <div class=\"w-two-thirds\">\n            <a href=\"https://www.cloudflare.com/products/cloudflare-spectrum/minecraft/\" class=\"lh-copy ls2 blue2 no-underline mv1 pl3 fw7 db\">Minecraft</a>\n          </div>\n        </div>\n        \n        <div class=\"w-two-thirds flex flex-row tc\">\n              <div class=\"w-third-l pa4 bg-gray9 w-100 items-center justify-center js-plans-detail-item flex flex-column\">\n                    <img src=\"/img/icons/green/check.svg\">\n                    <p class=\"f2 tc mb0\">5GB monthly data allowance $1/GB overage fees</p>\n              </div>\n              <div class=\"w-third-l pa4 w-100 items-center justify-center js-plans-detail-item flex flex-column\">\n                    <img src=\"/img/icons/green/check.svg\">\n                    <p class=\"f2 tc mb0\">10GB monthly data allowance $1/GB overage fees</p>\n              </div>\n              <div class=\"w-third-l pa4 bg-gray9 w-100 items-center justify-center js-plans-detail-item flex flex-column\" data-plantype=\"business\">\n                    <img src=\"/img/icons/green/check.svg\">\n              </div>\n        </div>\n      </div>    \n    </div>\n\n        <div class=\"ph2 flex-row mw9 center items-center\">\n          <div class=\"flex flex-row bg-white bl br bb bt b--gray7\">\n            <div class=\"w-third w-third-m w-third-l flex-row items-center justify-between flex\">\n              <div class=\"w-two-thirds\">\n                <a href=\"https://www.cloudflare.com/products/cloudflare-spectrum/\" class=\"lh-copy ls2 blue2 no-underline mv1 pl3 fw7 db\">All other TCP/UDP protocols</a>\n              </div>\n            </div>\n            \n            <div class=\"w-two-thirds flex flex-row tc\">\n                  <div class=\"w-third-l pa4 bg-gray9 w-100 items-center justify-center js-plans-detail-item flex flex-column\">\n                  </div>\n                  <div class=\"w-third-l pa4 w-100 items-center justify-center js-plans-detail-item flex\">\n                  </div>\n                  <div class=\"w-third-l pa4 bg-gray9 w-100 items-center justify-center js-plans-detail-item flex flex-column\" data-plantype=\"business\">\n                        <img src=\"/img/icons/green/check.svg\">\n                  </div>\n            </div>\n          </div>    \n        </div>\n\n    <div class=\"js-plans-detail-nav w-100 mw9 ph2 center\">\n      <div class=\"flex flex-row mw9 center items-end bg-white bl br b--transparent\">\n        <div class=\"w-third w-third-m w-third-l\">\n        </div>\n        <div class=\"w-two-thirds flex flex-row\">\n            <div class=\"w-third-l w-100 pa3 db-l br1 br--top js-plans-detail-nav-item bg-gray9\">\n              <a href=\"https://dash.cloudflare.com/sign-up?pt=p\" class=\"button-framework-sm mw-100 mw-100-l bg-orange white db center fw4 center db\" data-tracking-category=\"pro-Get Started Btn\" data-tracking-action=\"click\" data-tracking-label=\"Get Started-https://dash.cloudflare.com/sign-up?pt=p\">Get Started</a>\n            </div>\n            <div class=\"w-third-l w-100 pa3 db-l br1 br--top js-plans-detail-nav-item\">\n              <a href=\"https://dash.cloudflare.com/sign-up?pt=b\" class=\"button-framework-sm mw-100 mw-100-l bg-orange white db center fw4 center db\" data-tracking-category=\"business-Get Started Btn\" data-tracking-action=\"click\" data-tracking-label=\"Get Started-https://dash.cloudflare.com/sign-up?pt=b\">Get Started</a>\n            </div>\n            <div class=\"w-third-l w-100 pa3 db-l br1 br--top js-plans-detail-nav-item bg-gray9\">\n              <a href=\"/plans/enterprise/demo/\" class=\"button-framework-sm mw-100 mw-100-l bg-orange white db center fw4 center\" data-tracking-category=\"enterprise-Request Demo Btn\" data-tracking-action=\"click\" data-tracking-label=\"Request Demo-/plans/enterprise/demo/\">Request Demo</a>\n            </div>\n        </div>\n      </div>\n    </div>\n  </section>\n</div>",
 						"htmlId": null
 					},
 					{
-						"__typename": "bladeFullContent",
 						"contentfulId": "6Ouhuu3DXR8CKOukyUcF4b",
 						"contentTypeId": "bladeFullContent",
 						"title": "Cloudflare Spectrum – Plan by usage",
@@ -294,7 +286,6 @@
 						"imageAssetFile": null
 					},
 					{
-						"__typename": "bladeTrustedBy",
 						"contentTypeId": "bladeTrustedBy",
 						"contentfulId": "bGXZcQriItbwEaMlcrTcV",
 						"bladeBorder": "none",

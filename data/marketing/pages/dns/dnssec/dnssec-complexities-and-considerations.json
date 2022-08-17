@@ -53,7 +53,6 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"__typename": "bladeHeroAnimation",
 						"contentfulId": "PSWuNP5nnWYuAMG957mdn",
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "DNSSEC Complexities and Considerations",
@@ -116,7 +115,6 @@
 						}
 					},
 					{
-						"__typename": "bladeSubNav",
 						"contentTypeId": "bladeSubNav",
 						"contentfulId": "6MDeXx4b0IQJXClsuBpjL6",
 						"menuTitle": "DNSSEC Articles",
@@ -124,7 +122,6 @@
 						"htmlId": null,
 						"menuItems": [
 							{
-								"__typename": "bladeSubNavMenuItem",
 								"contentfulId": "5WFa1YcPSXrm1WuWjs2vq",
 								"linkText": "Universal DNSSEC",
 								"page": null,
@@ -132,7 +129,6 @@
 								"subMenuItems": null
 							},
 							{
-								"__typename": "bladeSubNavMenuItem",
 								"contentfulId": "2UXA9wBNObtjAbqm5NpSq2",
 								"linkText": "How DNSSEC Works",
 								"page": null,
@@ -140,7 +136,6 @@
 								"subMenuItems": null
 							},
 							{
-								"__typename": "bladeSubNavMenuItem",
 								"contentfulId": "383AV903uhcT3Y08sDPi2x",
 								"linkText": "Root-Signing Ceremony",
 								"page": null,
@@ -148,7 +143,6 @@
 								"subMenuItems": null
 							},
 							{
-								"__typename": "bladeSubNavMenuItem",
 								"contentfulId": "5XvhB0L2cRg6nApXw9TiVd",
 								"linkText": "ECDSA and DNSSEC",
 								"page": null,
@@ -156,7 +150,6 @@
 								"subMenuItems": null
 							},
 							{
-								"__typename": "bladeSubNavMenuItem",
 								"contentfulId": "3iaY9yzodOgfDc4kqV3jqy",
 								"linkText": "DNSSEC Complexities",
 								"page": null,
@@ -164,7 +157,6 @@
 								"subMenuItems": null
 							},
 							{
-								"__typename": "bladeSubNavMenuItem",
 								"contentfulId": "2o6TALIThh1aCNCvqbhRNk",
 								"linkText": "DNSSEC for Registrars",
 								"page": null,
@@ -174,7 +166,6 @@
 						]
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "5mHwmB1oNaL2ju04g84tYX",
 						"title": "Zone Content Exposure",
 						"copy": "DNS is split into smaller pieces called zones. A zone typically starts at a domain name, and contains all records pertaining to the subdomains. Each zone is managed by a single manager. For example, cloudflare.com is a zone containing all DNS records for cloudflare.com and its subdomains (e.g. www.cloudflare.com, api.cloudflare.com).\n\nThere is no directory service for subdomains in DNS so if you want to know if api.cloudflare.com exists, you have to ask a DNS server and that DNS server will end up asking cloudflare.com whether api.cloudflare.com exists. This is not true with DNSSEC. In some cases, enabling DNSSEC may expose otherwise obscured zone content. Not everyone cares about the secrecy of subdomains, and zone content may already be easily guessable because most sites have a 'www' subdomain; however, subdomains are sometimes used as login portals or other services that the site owner wants to keep private. A site owner may not want to reveal that \"secretbackdoor.example.com\" exists in order to protect that site from attackers.\n\n![x ray specs](/img/products/dns/dnssec/x-ray_specs.jpg)\n\nThe reason DNSSEC can expose subdomains has to do with how zones are signed. Historically, DNSSEC is used to sign static zones. A static zone is a complete set of records for a given domain. The DNSSEC signature records are created using the Key Signing Key (KSK) and Zone Signing Key (ZSK) in a central location and sent to the authoritative server to be published. This set of records allows an authoritative server to answer any question it is asked, including questions about subdomains that don't exist.\n\nUnlike standard DNS, where the server returns an unsigned NXDOMAIN (Non-Existent Domain) response when a subdomain does not exist, DNSSEC guarantees that every answer is signed. This is done with a special record that serves as a proof of non-existence called the NextSECure (NSEC) record. An NSEC record can be used to say: \"there are no subdomains between subdomains X and subdomain Y.\" By filling the gap between every domain in the zone, NSEC provides a way to answer any query with a static record. The NSEC record also lists what Resource Record types exist at each name.\n\nFor statically signed zones, there are, by definition, a fixed number of records. Since each NSEC record points to the next, this results in a finite 'ring' of NSEC records that covers all the subdomains. Anyone can 'walk' a zone by following one NSEC record to the next until they know all subdomains. This method can be used to reveal all of the names in that zone---possibly exposing internal information.\n\nSuppose there is a DNSSEC-enabled zone called example.com, with subdomains public.example.com and secret.example.com. Adding NSEC records will reveal the existence of all subdomains.\n\nAsking for the NSEC record of example.com gives the following:\n\n```\nexample.com. NSEC public.example.com. A NS SOA TXT AAAA RRSIG NSEC DNSKEY\n```\n\nAsking for public.example.com gives the following NSEC record:\n\n```\npublic.example.com. NSEC secret.example.com. A TXT AAAA RRSIG NSEC\n```\n\nAsking for secret.example.com gives the following NSEC record:\n\n```\nsecret.example.com. NSEC example.com. A TXT AAAA RRSIG NSEC\n```\n\nThe first one is for the zone top/apex, and says that the name \"example.com\" exists and the next name is \"public.example.com\". The public.example.com record says that the next name is \"secret.example.com\" revealing the existence of a private subdomain. The \"secret.example.com\" says the next record is \"example.com\" completing the chain of subdomains. Therefore, with a few queries anybody can know the complete set of records in the zone.\n\nTechnically, DNS records are not supposed to be secret, but in practice they are sometimes considered so. Subdomains have been used to keep things (such as a corporate login page) private for a while, and suddenly revealing the contents of the zone file may be unexpected and unappreciated.\n\nBefore DNSSEC the only way to discover the contents of names in a zone was to either query for them, or attempt to perform a transfer of the zone from one of the authoritative servers. Zone Transfers (AXFR) are frequently blocked. NSEC's alternatative, NSEC3, was introduced to fight zone enumeration concerns, but even NSEC3 can be used to reveal the existence of subdomains.\n\n![dnssec nsec stat](/img/products/dns/dnssec/dnssec_nsec_stat.png)\n\n_[Most domains under .ch use NSEC3](http://securityblog.switch.ch/2013/02/19/dnssec-deployment-in-ch/)_\n\nThe NSEC3 record is like an NSEC record, but, rather than a signed gap of domain names for which there are no answers to the question, NSEC3 provides a signed gap of hashes of domain names. This was intended to prevent zone enumeration. Thus, the NSEC3 chain for a zone containing \"example.com\" and \"www.example.com\" could be (each NSEC3 record is on 3 lines for clarity):\n\n```\n231SPNAMH63428R68U7BV359PFPJI2FC.example.com. NSEC3 1 0 3 ABCDEF\nNKDO8UKT2STOL6EJRD1EKVD1BQ2688DM\nA NS SOA TXT AAAA RRSIG DNSKEY NSEC3PARAM\n```\n\n```\nNKDO8UKT2STOL6EJRD1EKVD1BQ2688DM.example.com. NSEC3 1 0 3 ABCDEF\n231SPNAMH63428R68U7BV359PFPJI2FC\nA TXT AAAA RRSIG\n```\n\nWhere `231SPNAMH63428R68U7BV359PFPJI2FC` is the salted hash of `example.com` and `NKDO8UKT2STOL6EJRD1EKVD1BQ2688DM` is the salted hash of `www.example.com`. This is reminiscent of the way [password databases work](https://blog.cloudflare.com/keeping-passwords-safe-by-staying-up-to-date/).\n\nThe first line of the NSEC3 record contains the \"name\" of the zone after it has been hashed, the number of hash rounds and salt used in the hashing are the two last parameters on the first line \"3 ABCDEF\". The \"1 0\" stands for digest algorithm (1 means SHA-1) and if the zone uses Opt-out (0 means no). The second line is the \"next hashed name in the zone\", the third line lists the types at the name. You can see the \"next name\" at the first NSEC3 record matches the name on the second NSEC3 record and the \"next name\" on that one completes the chain.\n\nFor NSEC enumeration, you can create the full list of domains by starting to guess at possible names in the domain. If the zone has around 100 domain names, it will take around 100 requests to enumerate the entire zone. With NSEC3, when you request a record that does not exist, a signed NSEC3 record is returned with the next zone present ordered alphabetically by hash. Checking if the next query name candidate fits in one of the known gaps allows anyone to discover the full chain in around 100 queries. There are many tools that can do this computation for you, including [a plug-in to nmap](http://nmap.org/nsedoc/scripts/dns-nsec3-enum.html)\n\nWith the hashes that correspond to all the valid names in the zone, a dictionary attack can be used to figure out the real names. Short names are easily guessed, and by using a dictionary, longer names can be revealed as existing without having to flood the authoritative nameservers with guesses. Tools like [HashCat](http://hashcat.net/oclhashcat/) make this easy to do in software, and the popularity of bitcoin has dramatically lowered the price of hashing-specific hardware. There is a burgeoning cottage industry of devices built to compute cryptographic hashes. The Tesla Password cracker (below) is just one example of these off-the shelf devices.\n\n![tesla cracker](/img/products/dns/dnssec/tesla-cracker.jpg)\n\n_The Teslsa Cracker_\n\nBecause hashing is cheap, zone privacy is only slightly improved when using NSEC3 as designed; the amount of protection a name gets is proportional to its unguessability.\n\nIn short, NSEC is like revealing plaintext passwords, and NSEC3 is like revealing a Unix-style passwords file. Neither technique is very secure. With NSEC3 a subdomain is only as private as it is hard to guess.\n\nThis vulnerability can be mitigated by a techniques introduced in RFCs 4470 and 4471 ([https://tools.ietf.org/html/rfc4470](https://tools.ietf.org/html/rfc4470) and [https://tools.ietf.org/html/rfc4471](https://tools.ietf.org/html/rfc4471)) called \"DNSSEC white lies\"; this was implemented by Dan Kaminsky for demonstration purposes. When a request comes in for a domain that is not present, instead of providing an NSEC3 record of the next real domain, an NSEC3 record of the next hash alphabetically is presented. This does not break the NSEC3 guarantee that there are no domains whose hash fits lexicographically between the NSEC3 response and the question.\n\nYou can only implement NSEC3 or NSEC \"white lies\" if signatures can be computed in real-time in response to questions. Traditionally, static zone records for DNS resolution are created offline, and all the records with signatures stored in a zone file. This file is then read by a live DNS server allowing it to answer questions about the zone.\n\nCloudflare's DNSSEC implementation leverages [ECDSA's efficient signature generation](/dns/dnssec/ecdsa-and-dnssec/) to sign DNSSEC records on-the-fly.",
@@ -212,7 +203,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "7uU6AFiReHyu5MlGUDggAt",
 						"title": "Key Management",
 						"copy": "<p>\nDNSSEC was designed to operate in various modes, each providing different security, performance and convenience tradeoffs. Live signing solves the zone content exposure problem in exchange for less secure key management.\n</p>\n<p>\nThe most common DNSSEC mode is offline signing of static zones. This allows the signing system to be highly protected from external threats by keeping the private keys on a machine that is not connected to the network. This operating model works well when the DNS information does not change often.\n</p>\n<p>\nAnother common operating mode is centralized online signing. If you sign data in restricted access, dedicated DNS signing systems, it allows DNS data to change and get published quickly. Some operators run DNS signing on their main DNS servers. Just like offline signing of static zones, this mode follows the central signing model, i.e., a single (or replicated) central signer does all the signing and data gets propagated from it to the actual authoritative DNS servers.\n</p>\n<p>\nA more radical mode is to allow the actual authoritative DNS servers to sign data on the fly when needed, this allows a number of new features including geographically dependant information signed where the answer is generated. The downside is that now the keying material is on many different machines that have direct access to the Internet. Doing live signing at the edge introduces new problems such as key distribution and places extra computing requirements on the nodes.\n</p>\n<p>\nRecently, a bug known as <a href=\"https://blog.cloudflare.com/answering-the-critical-question-can-you-get-private-ssl-keys-using-heartbleed/\">Heartbleed</a> was found that opened a major security hole in server applications. It was caused by a coding error in OpenSSL that created a remote memory disclosure vulnerability. This bug allowed remote attackers to extract cryptographic keys from Internet-facing servers. Remote memory exposure bug are just one of the many threats to private key security when the key is being used in an active process such as DNSSEC live signing. The more a machine is exposed to the Internet, the more vectors of attack there are. Offline signing machines have a much smaller window of exposure to such threats.\n</p>\n<p>\nOne way to keep keys secure is to use a hardware-backed solution such as a Hardware Security Module (HSM). The major drawback for this is cost – HSMs are very expensive (and slow). This is one of the stickiest points for running DNS servers that are spread out geographically in order to be close to their customers. Running an HSM in every server location can not only be expensive, but there can also be <a href=\"http://www.kslaw.com/imageserver/KSPublic/library/publication/2011articles/11-11WorldECRCloutierCohen.pdf\">legal complications</a> too.\n</p>\n<p>\nAnother solution to protect keys from remote disclosure is to offload cryptographic operations into trusted component of the system. This is where having a <a href=\"https://blog.cloudflare.com/cloudflare-fastest-free-dns-among-fastest-dns/\">custom DNS server</a> that can offload cryptography can come in handy.\n</p>\n<p>\nKey management for DNSSEC is similar to key management for TLS and has similar challenges. Earlier this year, we introduced <a href=\"https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/\">Keyless SSL</a> to help improve key security for TLS. We are looking at extending Keyless SSL to provide the advantages of remote key servers for DNSSEC live-signing.\n</p>",
@@ -250,7 +240,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "6gXu9LqtgJB1fPdI42TOtz",
 						"title": "Reflection/Amplification Threat",
 						"copy": "<p>Operators running an authoritative DNS server are often nervous their server will be used as a conduit for malicious distributed denial of service (DDoS) attacks. This stems from the fact that DNS uses UDP, a stateless protocol.</p>\n<p>In TCP, each connection begins with a three-way handshake. This ensures that the IP address of both parties is known and correct before starting a connection. In UDP, there is no such handshake: messages are just sent directly to an IP with an unverified 'from' IP address. If an attacker can craft a UDP packet that says 'hi, from IP X' to a server, the server will typically respond by sending a UDP packet to X. Choosing X as a victim's IP address instead of the sender's is called UDP 'spoofing'. By spoofing a victim, an attacker can cause a server that responds to UDP requests to flood the victim with 'reflected' traffic. This applies as much to authoritative servers as to open recursive resolvers.</p>\n<p>DNSSEC also works over UDP, and the answers to DNS queries can be very long, containing multiple DNSKEY and RRSIG records. This is an attractive target for attackers since it allows them to 'amplify' their reflection attacks. If a small volume of spoofed UDP DNSSEC requests is sent to nameservers, the victim will receive a large volume of reflected traffic. Sometimes this is enough to overwhelm the victim's server, and cause a denial of service.</p>\n<p>Asking for a TLD that does not exist from a root server returns an answer that is around 100 bytes, the signed answer for the same question is about 650 bytes or an amplification factor of 6.5. The root is signed using a 1,024 bit RSA key and uses NSEC for negative answers. Asking for a domain that does not exist in a TLD using NSEC3 signed with 1,024 bit key will yield an amplification factor of around 10. There are other queries that can yield even higher amplification factors, the most effective being the \"ANY\" query.</p>\n<p>Like many services, DNS can also work over TCP. There is a 'truncation' flag that can be sent back to a resolver to indicate that TCP is required. This would fix the issue of DNS reflection at the cost of slower DNS requests. This solution is not practical at the moment since 16% of resolvers don't respect the TCP truncation flag, and <a href=\"http://www.circleid.com/posts/20130820_a_question_of_dns_protocols/\">4% don't try a second server</a>.</p>\n<p>Another option to reduce the size of responses is to use <a href=\"/dns/dnssec/ecdsa-and-dnssec/\">Elliptic Curve Digital Signature Algorithm\n(ECDSA)</a> keys instead of traditional RSA keys. ECDSA keys are much smaller\nthan RSA keys of equivalent strength, and they produce smaller signatures\nmaking DNSSEC responses much smaller, reducing the amplification factor. Google\nPublic DNS added support for ECDSA in late 2014, and several others have\nfollowed suit since then.</p>\n<p>Support for TCP and ECDSA is still lagging behind general DNSSEC support, so traditional anti-abuse methods can be used instead. This includes <a href=\"https://kb.isc.org/article/AA-01000/0/A-Quick-Introduction-to-Response-Rate-Limiting.html\">Resource Rate Limiting (RRL)</a> and other heuristics.</p>\n<p>To protect against reflection attacks, Cloudflare is working on a multi-pronged approach. First, by using attack identification heuristics and anti-abuse techniques that we are currently using in our DNS server, and second by reducing the amplification factor of DNSSEC responses. Ways to reduces the maximum amplification factor includes only replying to \"ANY\" requests over TCP, using smaller ECDSA keys when possible, and reducing the frequency of key rollovers.</p>",
@@ -288,7 +277,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "3MDDyZO1YL73SqXDUot8mF",
 						"title": "Conclusions",
 						"copy": "Cloudflare is aware of the complexity introduced by DNSSEC with respect to zone privacy, key management, and reflection/amplification risk. With smart engineering decisions, and operational controls in place, the dangers of DNSSEC can be prevented.",
@@ -326,14 +314,12 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeHtml",
 						"contentTypeId": "bladeHtml",
 						"contentfulId": "76Of7L7xZNVIkJ1Xc8JtQe",
 						"htmlContent": "<section\n  class=\"tile tile--border tile__background--white js-cloudflare-setup-video-tile\"\n>\n  <div class=\"tile__content tile__content--fixed\">\n    <h2 class=\"marketing-h2 marketing-h2--center marketing-h2--bottom-margin\">\n      Setting Up Cloudflare Is Easy\n    </h2>\n    <br /><br />\n    <div class=\"grid grid--center\">\n      <video\n        poster=\"/img/getting-started.png\"\n        muted=\"\"\n        autoplay=\"\"\n        loop=\"\"\n        class=\"responsive-image grid__item grid__item js-cloudflare-setup-video no-margin-bottom\"\n        id=\"cloudflare-stream-video\"\n      >\n        <source src=\"/video/cloudflare-setup.mp4?v=3\" type=\"video/mp4\" />\n        <source src=\"/video/cloudflare-setup.webm?v=3\" type=\"video/webm\" />\n      </video>\n      <p class=\"tc db w-100\">\n        Set up a domain in less than 5 minutes. Keep your hosting provider. No\n        code changes required.\n      </p>\n    </div>\n  </div>\n</section>\n\n<hr />",
 						"htmlId": null
 					},
 					{
-						"__typename": "bladePricingPlans",
 						"bladeBorder": "border-bottom",
 						"sectionPadding": null,
 						"backgroundColor": "white",
@@ -474,7 +460,6 @@
 						]
 					},
 					{
-						"__typename": "bladeTrustedBy",
 						"contentTypeId": "bladeTrustedBy",
 						"contentfulId": "bGXZcQriItbwEaMlcrTcV",
 						"bladeBorder": "none",

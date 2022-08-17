@@ -53,7 +53,6 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"__typename": "bladeHeroAnimation",
 						"contentfulId": "tVKMDMHI1F8NPp8lqbdzp",
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Cloudflare Stream",
@@ -112,7 +111,6 @@
 						}
 					},
 					{
-						"__typename": "bladeFeatureList",
 						"contentfulId": "7oeloCAjGxTGjBv2uksA7J",
 						"contentTypeId": "bladeFeatureList",
 						"title": "Key Features",
@@ -406,7 +404,6 @@
 						]
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "2T01IEoaKtRQLAd3BDhByv",
 						"title": "Go live with one API call",
 						"copy": "Create live inputs and start pushing RTMP feeds to Cloudflare Stream. Watch your live stream using HLS/DASH or simulcast to 3rd party platforms.\n\nAll live streams are automatically recorded for replays.",
@@ -459,7 +456,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "5Vd8liTHF45SoJ2oSw2NIH",
 						"title": "Seamlessly upload videos and leverage instant recordings",
 						"copy": "Stream supports uploads for video formats such as H.264, H.265, ProRes and VP9. Live videos automatically are converted to recordings instantly so viewers can access it later. Videos automatically are converted to modern formats that can be viewed on most devices.",
@@ -523,7 +519,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "UYUn0cOllIasg3AC9EVOD",
 						"title": "Fast, responsive streaming ",
 						"copy": "Cloudflare Stream supports both HLS and DASH standards for adaptive bitrate streaming that can be embedded on your website. It automatically encodes videos to create multiple size and quality levels, allowing the videos to be fast and responsive for any device used by the viewer.",
@@ -580,7 +575,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "5aP88iIdrmCCPq2xFfldzd",
 						"title": "Advanced access control",
 						"copy": "Limit who can view your live videos with self-expiring tokenized links for each viewer. When generating the tokenized links, you can define constraints including time-based expiration, geo-fencing and IP restrictions.\n",
@@ -640,7 +634,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "3AXISS5LsRNaCqWXLHOHcn",
 						"title": "Instant scale",
 						"copy": "Offer fast, reliable video streaming for a global audience with effortless scale. All Cloudflare network locations run the necessary software to ingest and deliver videos, so you don't have to worry about adding new compute instances, setting up availability zones, or negotiating additional software licenses.",
@@ -704,7 +697,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeRichTextColumnGroup",
 						"contentTypeId": "bladeRichTextColumnGroup",
 						"contentfulId": "4ztuSgH6DvTrOvXr83rEd6",
 						"htmlId": null,
@@ -1129,9 +1121,9 @@
 														"type": "Link",
 														"linkType": "Entry"
 													},
-													"related_asset": null,
-													"entry_elementMarkdown": null,
-													"entry_assetFile": null,
+													"related_asset": [],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [],
 													"entry_button": [
 														{
 															"buttonAssetFile": null,
@@ -1150,12 +1142,12 @@
 															"locale": "en-US"
 														}
 													],
-													"entry_elementLink": null,
-													"entry_page": null,
-													"entry_elementIcon": null,
-													"entry_bladeTable": null,
-													"entry_bladeThreeFeatures": null,
-													"entry_bladeFourFeatures": null
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
 												},
 												"uri": null
 											},
@@ -1667,7 +1659,6 @@
 						]
 					},
 					{
-						"__typename": "bladeQuote",
 						"contentTypeId": "bladeQuote",
 						"contentfulId": "5PA24mds2cuUuQGYWWaAQ8",
 						"quote": "\"We've been delighted with our trial of Stream: it's a simple, powerful service with zero bloat that's clearly been built with a lot of attention to detail. The API-driven video upload functionality fits our requirements perfectly, and it's very easy to embed videos and customize the player. The service also has clear, fair pricing, and we look forward to streaming much more of our content with its help in the near future.\"",

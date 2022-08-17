@@ -53,7 +53,6 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"__typename": "bladeHeroAnimation",
 						"contentfulId": "1IS3UQ9VfJLO2tDJbb71Lc",
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Taking the Pain Out of Managing Your Domain Specific SSL Certificate",
@@ -119,7 +118,6 @@
 						}
 					},
 					{
-						"__typename": "bladeFourFeatures",
 						"contentfulId": "XrolXW3Tp73CY2Bt3tjEB",
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
@@ -169,7 +167,6 @@
 						]
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "KFk7DCAtnF1Y7X1RdzaXR",
 						"title": "Managing Your Security",
 						"copy": "The padlock icon and HTTPS in the URL bar not only ensure the integrity of your data, but also increase your visitor's confidence knowing that their personal and financial details are safe and encrypted. Beyond satisfying HIPAA & PCI compliancy requirements, HTTPS is also a ranking signal, potentially improving your domain's SEO.\n\nCreating and managing your SSL certificates can be easily accomplished through a few clicks within the Cloudflare dashboard or via API.\n\nWildcard certificates reduce the complexity of protecting multiple hostnames by covering multiple levels of a domain (e.g. example.com, *.example.com, *.secure.example.com), all in the same certificate.\n\nKeeping your SSL certificates up to date is an important security practice. Cloudflare Dedicated SSL Certificates are automatically renewed on your behalf prior to expiration. When security conditions require it, certificates are also automatically reissued ensuring your data has the highest level of integrity and availability.",
@@ -211,21 +208,18 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeHtml",
 						"contentTypeId": "bladeHtml",
 						"contentfulId": "1bBepSpbqGVfDO07HNMAdQ",
 						"htmlContent": "<h2><center>Reduce Latency and Optimize Performance</center></h2>\n<p>Shorter physical distance between your certificate and your visitors results in enormous performance gains. Cloudflare distributes your certificates to our edge servers around the globe to significantly reduce the latency incurred during the TLS handshake.</p>\n\n<p>Cloudflare has been a major contributor of emerging encryption technologies like the Transportation Layer Security (TLS) 1.3 protocol. TLS 1.3 provides unparalleled privacy and performance compared to previous versions of TLS, and Cloudflare is the first to offer TLS 1.3 on a global scale. The secure web is now more performant than any other previous version and non-secure HTTP.</p>\n\n<p>Cloudflare has also been a leader in the global implementation of networking technologies like HTTP/2 and Server Push, which have been designed to improve page load times. A secure connection over HTTPS is required in order to take advantage of HTTP/2 and Server Push.</p>\n<br>\n",
 						"htmlId": null
 					},
 					{
-						"__typename": "bladeHtml",
 						"contentTypeId": "bladeHtml",
 						"contentfulId": "q8JZoj0VxeTxG37elr7V5",
 						"htmlContent": "<h2><center>Optimal Compatibility Across Browsers and Devices</center></h2>\n<p>Cloudflare issued certificates are trusted by all common browsers, email clients, operating systems, and mobile devices.</p>\n\n<p>For utmost compatibility, each Dedicated SSL Certificate includes three versions of the certificate SHA-2/ECDSA, SHA-2/RSA, SHA-1/RSA. When a browser attempts to connect to your domain, Cloudflare will serve the optimal certificate version to establish the connection.</p>\n\n<p>The SHA-2/RSA and SHA-1/RSA certificates utilize a 2048-bit private key to secure data transmission where SHA-2/ECDSA certificates uses the P-256 curve. ECDSA results in smaller key sizes making TLS faster and more scalable while providing better security than the default cryptography in use on the web.</p>",
 						"htmlId": null
 					},
 					{
-						"__typename": "bladeHeroAnimation",
 						"contentfulId": "21ZzuVwx9KRcNHVUosBJnH",
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Managed SSL Certificates Made Easy",
@@ -295,14 +289,12 @@
 						}
 					},
 					{
-						"__typename": "bladeHtml",
 						"contentTypeId": "bladeHtml",
 						"contentfulId": "76Of7L7xZNVIkJ1Xc8JtQe",
 						"htmlContent": "<section\n  class=\"tile tile--border tile__background--white js-cloudflare-setup-video-tile\"\n>\n  <div class=\"tile__content tile__content--fixed\">\n    <h2 class=\"marketing-h2 marketing-h2--center marketing-h2--bottom-margin\">\n      Setting Up Cloudflare Is Easy\n    </h2>\n    <br /><br />\n    <div class=\"grid grid--center\">\n      <video\n        poster=\"/img/getting-started.png\"\n        muted=\"\"\n        autoplay=\"\"\n        loop=\"\"\n        class=\"responsive-image grid__item grid__item js-cloudflare-setup-video no-margin-bottom\"\n        id=\"cloudflare-stream-video\"\n      >\n        <source src=\"/video/cloudflare-setup.mp4?v=3\" type=\"video/mp4\" />\n        <source src=\"/video/cloudflare-setup.webm?v=3\" type=\"video/webm\" />\n      </video>\n      <p class=\"tc db w-100\">\n        Set up a domain in less than 5 minutes. Keep your hosting provider. No\n        code changes required.\n      </p>\n    </div>\n  </div>\n</section>\n\n<hr />",
 						"htmlId": null
 					},
 					{
-						"__typename": "bladePricingPlans",
 						"bladeBorder": "border-bottom",
 						"sectionPadding": null,
 						"backgroundColor": "white",
@@ -443,7 +435,6 @@
 						]
 					},
 					{
-						"__typename": "bladeTrustedBy",
 						"contentTypeId": "bladeTrustedBy",
 						"contentfulId": "bGXZcQriItbwEaMlcrTcV",
 						"bladeBorder": "none",

@@ -53,7 +53,6 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"__typename": "bladeHeroAnimation",
 						"contentfulId": "2yBvj25xEoSoxaSeQKyKYz",
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "How DNSSEC Works",
@@ -116,7 +115,6 @@
 						}
 					},
 					{
-						"__typename": "bladeSubNav",
 						"contentTypeId": "bladeSubNav",
 						"contentfulId": "6MDeXx4b0IQJXClsuBpjL6",
 						"menuTitle": "DNSSEC Articles",
@@ -124,7 +122,6 @@
 						"htmlId": null,
 						"menuItems": [
 							{
-								"__typename": "bladeSubNavMenuItem",
 								"contentfulId": "5WFa1YcPSXrm1WuWjs2vq",
 								"linkText": "Universal DNSSEC",
 								"page": null,
@@ -132,7 +129,6 @@
 								"subMenuItems": null
 							},
 							{
-								"__typename": "bladeSubNavMenuItem",
 								"contentfulId": "2UXA9wBNObtjAbqm5NpSq2",
 								"linkText": "How DNSSEC Works",
 								"page": null,
@@ -140,7 +136,6 @@
 								"subMenuItems": null
 							},
 							{
-								"__typename": "bladeSubNavMenuItem",
 								"contentfulId": "383AV903uhcT3Y08sDPi2x",
 								"linkText": "Root-Signing Ceremony",
 								"page": null,
@@ -148,7 +143,6 @@
 								"subMenuItems": null
 							},
 							{
-								"__typename": "bladeSubNavMenuItem",
 								"contentfulId": "5XvhB0L2cRg6nApXw9TiVd",
 								"linkText": "ECDSA and DNSSEC",
 								"page": null,
@@ -156,7 +150,6 @@
 								"subMenuItems": null
 							},
 							{
-								"__typename": "bladeSubNavMenuItem",
 								"contentfulId": "3iaY9yzodOgfDc4kqV3jqy",
 								"linkText": "DNSSEC Complexities",
 								"page": null,
@@ -164,7 +157,6 @@
 								"subMenuItems": null
 							},
 							{
-								"__typename": "bladeSubNavMenuItem",
 								"contentfulId": "2o6TALIThh1aCNCvqbhRNk",
 								"linkText": "DNSSEC for Registrars",
 								"page": null,
@@ -174,7 +166,6 @@
 						]
 					},
 					{
-						"__typename": "bladeDoubleContent",
 						"button": null,
 						"contentTypeId": "bladeDoubleContent",
 						"contentfulId": "3uJlZFg4AbMajq4Au0kHeD",
@@ -202,7 +193,6 @@
 						"link": null
 					},
 					{
-						"__typename": "bladeDoubleContent",
 						"button": null,
 						"contentTypeId": "bladeDoubleContent",
 						"contentfulId": "1UpRBoJzToqODAoa7h8CAy",
@@ -230,7 +220,6 @@
 						"link": null
 					},
 					{
-						"__typename": "bladeDoubleContent",
 						"button": null,
 						"contentTypeId": "bladeDoubleContent",
 						"contentfulId": "25PU5PY51urAw6JMa9eCWb",
@@ -258,7 +247,6 @@
 						"link": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "7MqSHybXPYzsM5bWTNjACW",
 						"title": "Summary",
 						"copy": "<p>\nSimilar to HTTPS, DNSSEC adds a layer of security by enabling authenticated answers on top of an otherwise insecure protocol. Whereas HTTPS encrypts traffic so nobody on the wire can snoop on your Internet activities, DNSSEC merely signs responses so that forgeries are detectable. DNSSEC provides a solution to a real problem without the need to incorporate encryption.\n</p>\n<p>\nCloudflare's goal is to make it as easy as possible to enable DNSSEC. Right now, customers with Cloudflare paid plans can add DNSSEC to their web properties by flipping a switch to enable DNSSEC and uploading a DS record (which we'll generate automatically) to their registrar. <a class=\"text--white\" href=\"/dns/dnssec/universal-dnssec/\">Learn more</a> about how to get DNSSEC.\n</p>\n<p>We've also <a class=\"text--white\" href=\"/dns/dnssec/dnssec-for-registrars/\">published an Internet Draft</a> outlining an automated way for registries and registrars to upload DS records on behalf of our customers. This will enable Cloudflare to automatically enable DNSSEC for our entire community. Stay tuned for updates.\n</p>",
@@ -296,14 +284,12 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeHtml",
 						"contentTypeId": "bladeHtml",
 						"contentfulId": "76Of7L7xZNVIkJ1Xc8JtQe",
 						"htmlContent": "<section\n  class=\"tile tile--border tile__background--white js-cloudflare-setup-video-tile\"\n>\n  <div class=\"tile__content tile__content--fixed\">\n    <h2 class=\"marketing-h2 marketing-h2--center marketing-h2--bottom-margin\">\n      Setting Up Cloudflare Is Easy\n    </h2>\n    <br /><br />\n    <div class=\"grid grid--center\">\n      <video\n        poster=\"/img/getting-started.png\"\n        muted=\"\"\n        autoplay=\"\"\n        loop=\"\"\n        class=\"responsive-image grid__item grid__item js-cloudflare-setup-video no-margin-bottom\"\n        id=\"cloudflare-stream-video\"\n      >\n        <source src=\"/video/cloudflare-setup.mp4?v=3\" type=\"video/mp4\" />\n        <source src=\"/video/cloudflare-setup.webm?v=3\" type=\"video/webm\" />\n      </video>\n      <p class=\"tc db w-100\">\n        Set up a domain in less than 5 minutes. Keep your hosting provider. No\n        code changes required.\n      </p>\n    </div>\n  </div>\n</section>\n\n<hr />",
 						"htmlId": null
 					},
 					{
-						"__typename": "bladePricingPlans",
 						"bladeBorder": "border-bottom",
 						"sectionPadding": null,
 						"backgroundColor": "white",
@@ -444,7 +430,6 @@
 						]
 					},
 					{
-						"__typename": "bladeTrustedBy",
 						"contentTypeId": "bladeTrustedBy",
 						"contentfulId": "bGXZcQriItbwEaMlcrTcV",
 						"bladeBorder": "none",

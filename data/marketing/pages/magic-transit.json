@@ -58,7 +58,6 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"__typename": "bladeHeroAnimation",
 						"contentfulId": "8WsIP8fbREmvsrcTWqv0p",
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Magic Transit",
@@ -132,7 +131,6 @@
 						}
 					},
 					{
-						"__typename": "bladeQuote",
 						"contentTypeId": "bladeQuote",
 						"contentfulId": "7jXZn8GaH3141HXLpHMiWV",
 						"quote": "\"Cloudflare has reliable infrastructure and an extremely competent and responsive team. They are well-positioned to deflect even the largest of attacks.\"",
@@ -237,7 +235,6 @@
 						]
 					},
 					{
-						"__typename": "bladeFourFeatures",
 						"contentfulId": "5SGXmK1qkNgBinDiZf605G",
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
@@ -363,7 +360,6 @@
 						]
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "4gDzAfW9udjMBPesTumjTM",
 						"title": "The next step in infrastructure architecture",
 						"copy": "Cloudflare Magic Transit protects entire IP subnets from DDoS attacks, while also accelerating network traffic. It uses Cloudflare's global network to mitigate attacks, employing standards-based networking protocols, like [BGP](https://www.cloudflare.com/learning/security/glossary/what-is-bgp/), [GRE](https://www.cloudflare.com/learning/network-layer/what-is-gre-tunneling/), and [IPsec](https://www.cloudflare.com/learning/network-layer/what-is-ipsec/), for routing and encapsulation.\n\nAll your network assets, whether on-premise or in private or public hosted cloud environments are safeguarded. \n",
@@ -422,7 +418,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeFourFeatures",
 						"contentfulId": "kzZDF99JJhyqhjJAOTa8J",
 						"backgroundColor": "light-blue",
 						"contentTypeId": "bladeFourFeatures",
@@ -541,7 +536,6 @@
 						]
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "3MEOrpL0iWs07aV1LlaXZf",
 						"title": "The Cloudflare global network",
 						"copy": "Cloudflare delivers DDoS mitigation using our entire network. This network has a capacity of over %{NetworkCapacity} and spans more than %{DataCenterCount} cities in %{CountryCount} countries. Our network allows us to sit approximately %{OperationMilliseconds} ms from 95% of the Internet-connected population globally. This is especially important for latency-sensitive applications such as Voice over IP (VoIP) and custom gaming protocols.\n",
@@ -603,7 +597,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "6LlO0Zocu0GkOKFqHXlHrb",
 						"title": "Ultra-low Time to Mitigate (TTM)",
 						"copy": "With a heritage in DDoS mitigation and a vast library of known attacks, malicious traffic is identified at a Cloudflare data center closest to the source within seconds. Automatic mitigation techniques are applied immediately and most malicious traffic is blocked in __less than 3 seconds__.",
@@ -661,7 +654,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "2kEZHjCUPjM1iNJk1ZdIfb",
 						"title": "Pick your network function",
 						"copy": "Cloudflare Magic Transit comes integrated with our best-in-class network firewall, allowing you to configure granular allow/deny rules for IP ranges and propagate changes in seconds. Want application level [firewalling](https://www.cloudflare.com/waf/)? Configure optional TLS termination and start inspecting payloads. Want a [load balancer](https://www.cloudflare.com/load-balancing/)? You got it. Want to write a serverless [Cloudflare Worker](https://www.cloudflare.com/products/cloudflare-workers/) to modify traffic on the fly? You can do that, too. \n\nMagic Transit comes natively integrated with all of Cloudflare's L4 and L7 products.\n",
@@ -723,7 +715,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "4HWD2ATzm1399ao1GWpn3s",
 						"title": "Traffic acceleration",
 						"copy": "Cloudflare's network serves %{HTTPRequests} million HTTP requests per second on average. With every bit we move, the network gets smarter and faster. \n\nWhen integrated with [Argo Smart Routing](https://www.cloudflare.com/products/argo-smart-routing), Cloudflare Magic Transit will deliver clean traffic back to your network using the fastest, most reliable links in real-time. \n",
@@ -781,7 +772,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeKeyFeatures",
 						"contentfulId": "3JxBXnt3ufXb57JuUTofhC",
 						"contentTypeId": "bladeKeyFeatures",
 						"backgroundColor": "light-blue",
@@ -805,7 +795,6 @@
 						"htmlId": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "2GrBJS20zOHvNlprkoG39R",
 						"title": "Cloudflare network services",
 						"copy": "Magic Transit is just one part of the Cloudflare network security and solutions family. Cloudflare offers built-in services — like DDoS mitigation, branch connectivity, software-defined Zero-Trust functionality, and network firewalling — on a single global network that replaces patchwork appliances. Connect, secure, and accelerate your corporate network with Cloudflare.\n",
@@ -849,7 +838,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeResourceGrid",
 						"contentfulId": "6nxe3kW8Xq4E9DXzpimPjv",
 						"contentTypeId": "bladeResourceGrid",
 						"title": "Learn more about Magic Transit ",
@@ -953,7 +941,6 @@
 						"filterMenu": null
 					},
 					{
-						"__typename": "bladeTrustedBy",
 						"contentTypeId": "bladeTrustedBy",
 						"contentfulId": "bGXZcQriItbwEaMlcrTcV",
 						"bladeBorder": "none",
