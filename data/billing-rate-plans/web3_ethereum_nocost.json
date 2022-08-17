@@ -1,0 +1,69 @@
+{
+	"id": "WEB3_ETHEREUM_NOCOST",
+	"public_name": "Ethereum Gateway Free",
+	"currency": "USD",
+	"components": [
+		{
+			"name": "web3_ethereum_base",
+			"publicName": "web3 Ethereum Base",
+			"type": "flatPricingComponent",
+			"aggregate": "",
+			"chargeType": "subscription",
+			"chargeModel": "flat",
+			"defaultQuantity": 1,
+			"tiers": [
+				{
+					"lowerThreshold": 1,
+					"upperThreshold": 1,
+					"pricingType": "fixed",
+					"price": 0,
+					"bucketSize": 0
+				}
+			]
+		},
+		{
+			"name": "web3_ethereum_hostnames",
+			"publicName": "Number of Ethereum Hostnames",
+			"type": "tieredPricingComponent",
+			"aggregate": "",
+			"features": [
+				"web3_ethereum.hostnames"
+			],
+			"chargeType": "subscription",
+			"chargeModel": "tiered",
+			"defaultQuantity": 15,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 999999,
+					"pricingType": "unit",
+					"price": 0,
+					"bucketSize": 0
+				}
+			]
+		},
+		{
+			"name": "web3_ethereum_queries",
+			"publicName": "Ethereum Queries (First 500,000 are FREE)",
+			"type": "tieredPricingComponent",
+			"metric": "web3_ethereum_queries",
+			"aggregate": "sum",
+			"chargeType": "usage",
+			"chargeModel": "tiered",
+			"defaultQuantity": 0,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 0,
+					"pricingType": "unit",
+					"price": 0,
+					"bucketSize": 0
+				}
+			],
+			"cfQuantityLabel": "{{comma .}} queries",
+			"cfStartOfFirstUnit": 500001,
+			"cfUsageDivisor": 1,
+			"cfUsageID": "web3_ethereum_queries"
+		}
+	]
+}

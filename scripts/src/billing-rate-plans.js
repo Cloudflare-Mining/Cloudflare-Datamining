@@ -2,62 +2,112 @@ import 'dotenv/config';
 import path from 'node:path';
 import fs from 'fs-extra';
 import dateFormat from 'dateformat';
+import pLimit from 'p-limit';
+import fetch from 'node-fetch';
 
-import {tryAndPush, cfRequest} from './utils.js';
+import {tryAndPush, getHttpsAgent} from './utils.js';
+
+const limit = pLimit(50);
 
 const dir = path.resolve(`../data/billing-rate-plans`);
 await fs.ensureDir(dir);
 
-// some known rate plans that aren't listed in the types
+const knownSuffixes = new Set([
+	'_account',
+	'_advanced',
+	'_advanced_no_cost',
+	'_advanced_nocost',
+	'_basic',
+	'_basic_no_cost',
+	'_basic_nocost',
+	'_beta',
+	'_emp',
+	'_ent',
+	'_ent_contract',
+	'_ent_paygo',
+	'_ent_ss',
+	'_fairshot',
+	'_free',
+	'_galileo',
+	'_no_cost',
+	'_nocost',
+	'_nocost',
+	'_paid',
+	'_premium',
+	'_pro',
+	'_ss',
+	'_test',
+]);
+
+// some known (or anticipated) rate plans that aren't listed in the types
+// suffixes will always be added from above list, so are ommited here
 const knownRatePlans = new Set([
+	'access',
 	'advanced_cert_manager',
-	'advanced_cert_manager_account',
-	'advanced_cert_manager_free',
-	'advanced_ddos_protection_ent',
+	'advanced_ddos_protection',
+	'api_gateway',
+	'api_gateway_zone',
+	'api_shield',
 	'api_shield_zone',
 	'biz',
-	'bot_zone_ent',
-	'bot_zone_ent_contract',
-	'bot_zone_ent_paygo',
+	'bot_management',
+	'bot_zone',
+	'byoip',
+	'cache_reserve',
+	'casb',
 	'cf_ent_app_sec_adv',
-	'ddos_protection_magic_transit_ent',
-	'ddos_protection_spectrum_ent',
+	'd1',
+	'dns',
+	'ddos_protection_magic_transit',
+	'ddos_protection_spectrum',
 	'ent',
 	'free',
-	'image_resizing_basic',
-	'image_resizing_ent',
+	'gateway',
+	'image_resizing',
 	'image_resizing_legacy_100',
 	'image_resizing_legacy_300',
 	'image_resizing_legacy_600',
-	'image_resizing_nocost',
+	'images',
+	'images_stream',
+	'images_stream_bundle',
 	'load_balancing',
-	'load_balancing_ent',
-	'load_balancing_ent_contract',
-	'load_balancing_ent_paygo',
+	'magic_firewall',
+	'magic_transit',
+	'magic_wan',
+	'pages',
 	'pro',
-	'rate_limiting_ent_ss',
+	'r2',
+	'rate_limiting',
+	'soc',
 	'spectrum',
-	'ssl_for_saas_advanced',
-	'ssl_for_saas_basic',
-	'ssl_for_saas_basic_no_cost',
-	'stream_ent_contract',
-	'stream_ent_paygo',
-	'teams_ent',
+	'ssl_for_saas',
+	'stream',
+	'teams',
 	'teams_gateway',
-	'teams_gateway_ent',
 	'teams_access',
-	'teams_access_ent',
-	'workers_ent_ss',
-	'workers_ss',
+	'waiting_rooms',
+	'workers',
 ]);
 
 const ratePlans = new Set([]);
-for(const ratePlan of knownRatePlans){
+const addRatePlan = function(ratePlan){
 	ratePlans.add(ratePlan);
 	// partner rate plans are usually just prefixed with partners_
 	ratePlans.add(`partners_${ratePlan}`);
+	// add some other common suffixes
+	const endsWithSuffix = [...knownSuffixes].find(suffix => ratePlan.endsWith(suffix));
+	let usePlan = ratePlan;
+	if(endsWithSuffix){
+		usePlan = ratePlan.slice(0, Math.max(0, ratePlan.length - endsWithSuffix.length));
+	}
+	for(const suffix of knownSuffixes){
+		console.log('add', `${usePlan}${suffix}`);
+		ratePlans.add(`${usePlan}${suffix}`);
+	}
+};
+for(const ratePlan of knownRatePlans){
+	addRatePlan(ratePlan);
 }
-
 
 let ratePlanRaw = null;
 try{
@@ -68,36 +118,47 @@ try{
 		if(!planName){
 			continue;
 		}
-		ratePlans.add(planName);
-		// partner rate plans are usually just prefixed with partners_
-		ratePlans.add(`partners_${planName}`);
+		addRatePlan(planName);
 	}
 
 }catch(err){
 	console.log(err);
 }
 
+await fs.writeFile(path.resolve('../data/billing-rate-plans/_list.json'), JSON.stringify([...ratePlans].sort(), null, '\t'));
+
+const promises = [];
+const agent = getHttpsAgent();
 for(const ratePlan of [...ratePlans].sort()){
-	const file = path.resolve(`${dir}/${ratePlan}.json`);
-	console.log('Fetching for', ratePlan);
-	const res = await cfRequest(`https://api.cloudflare.com/client/v4/billing/rate_plans/${ratePlan}`);
-	if(!res.ok){
-		console.warn(`${ratePlan} failed to be fetched`);
-		if(res.status === 404){
-			console.warn(`${ratePlan} not found`);
-			try{
-				await fs.remove(file);
-			}catch{}
+	promises.push(limit(async () => {
+		const file = path.resolve(`${dir}/${ratePlan}.json`);
+		console.log('Fetching for', ratePlan);
+		const res = await fetch(`https://api.cloudflare.com/client/v4/billing/rate_plans/${ratePlan}`, {
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			agent,
+		});
+		if(!res.ok){
+			if(res.status === 404){
+				console.warn(`${ratePlan} not found`);
+				try{
+					await fs.remove(file);
+				}catch{}
+			}else{
+				console.warn(`${ratePlan} failed to be fetched`, res.status);
+			}
+			return;
 		}
-		continue;
-	}
-	const json = await res.json();
-	if(!json.result || !json.success){
-		console.warn(`${ratePlan} failed to be fetched`, json);
-		continue;
-	}
-	await fs.writeFile(file, JSON.stringify(json.result, null, '\t'));
+		const json = await res.json();
+		if(!json.result || !json.success){
+			console.warn(`${ratePlan} failed to be fetched`, json);
+			return;
+		}
+		await fs.writeFile(file, JSON.stringify(json.result, null, '\t'));
+	}));
 }
+await Promise.all(promises);
 
 const prefix = dateFormat(new Date(), 'd mmmm yyyy');
 await tryAndPush(
