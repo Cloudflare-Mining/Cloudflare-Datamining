@@ -4,7 +4,7 @@
 		"title": "Cloudflare Client API",
 		"description": "The Cloudflare Client API",
 		"version": "4.0.0",
-		"x-revision": "187-67cef9f"
+		"x-revision": "191-ada7c97"
 	},
 	"servers": [
 		{
@@ -58923,6 +58923,48 @@
 						}
 					}
 				}
+			},
+			"patch": {
+				"summary": "Patch Pools",
+				"description": "Apply changes to a number of existing pools, overwriting the supplied properties. Pools are ordered by ascending `name`. Returns the list of affected pools. Supports the standard pagination query parameters, either `limit`/`offset` or `per_page`/`page`.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Patch Pools response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1user~1load_balancers~1pools/get/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"notification_email": {
+										"type": "string",
+										"description": "The email address to send health status notifications to. This field is now deprecated in favor of Cloudflare Notifications for Load Balancing, so only resetting this field with an empty string `\"\"` is accepted.",
+										"enum": [
+											"\"\""
+										],
+										"example": ""
+									}
+								}
+							}
+						}
+					}
+				}
 			}
 		},
 		"/user/load_balancers/pools/{identifier}": {
@@ -61286,6 +61328,57 @@
 									},
 									"notification_filter": {
 										"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1load_balancers~1pools/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/notification_filter"
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			"patch": {
+				"summary": "Patch Pools",
+				"description": "Apply changes to a number of existing pools, overwriting the supplied properties. Pools are ordered by ascending `name`. Returns the list of affected pools. Supports the standard pagination query parameters, either `limit`/`offset` or `per_page`/`page`.",
+				"parameters": [
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1load_balancers~1pools/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Patch Pools response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1load_balancers~1pools/get/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"notification_email": {
+										"type": "string",
+										"description": "The email address to send health status notifications to. This field is now deprecated in favor of Cloudflare Notifications for Load Balancing, so only resetting this field with an empty string `\"\"` is accepted.",
+										"enum": [
+											"\"\""
+										],
+										"example": ""
 									}
 								}
 							}
