@@ -36,6 +36,7 @@ const knownSuffixes = new Set([
 	'_premium',
 	'_pro',
 	'_ss',
+	'_standard',
 	'_test',
 ]);
 
@@ -54,6 +55,7 @@ const knownRatePlans = new Set([
 	'bot_zone',
 	'byoip',
 	'cache_reserve',
+	'calls',
 	'casb',
 	'cf_ent_app_sec_adv',
 	'd1',
@@ -91,18 +93,21 @@ const knownRatePlans = new Set([
 
 const ratePlans = new Set([]);
 const addRatePlan = function(ratePlan){
-	ratePlans.add(ratePlan);
 	// partner rate plans are usually just prefixed with partners_
-	ratePlans.add(`partners_${ratePlan}`);
 	// add some other common suffixes
 	const endsWithSuffix = [...knownSuffixes].find(suffix => ratePlan.endsWith(suffix));
 	let usePlan = ratePlan;
 	if(endsWithSuffix){
 		usePlan = ratePlan.slice(0, Math.max(0, ratePlan.length - endsWithSuffix.length));
 	}
+	ratePlans.add(usePlan);
+	// partner rate plans are usually just prefixed with partners_
+	ratePlans.add(`partners_${usePlan}`);
 	for(const suffix of knownSuffixes){
-		console.log('add', `${usePlan}${suffix}`);
-		ratePlans.add(`${usePlan}${suffix}`);
+		const toAdd = `${usePlan}${suffix}`;
+		console.log('add', toAdd);
+		ratePlans.add(toAdd);
+		ratePlans.add(`partners_${toAdd}`);
 	}
 };
 for(const ratePlan of knownRatePlans){
