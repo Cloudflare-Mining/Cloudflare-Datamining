@@ -377,15 +377,13 @@ async function writeMeta(files, translations){
 
 }
 
-async function writeSubRoutes(files, write){
-	const rootDir = await prepareWriteDir(files, 'dashboard-subroutes', write);
+async function writeSubRoutes(files){
+	const rootDir = await prepareWriteDir(files, 'dashboard-subroutes', true);
 	for(const file in files){
-		if(write){
-			try{
-				await writeFile(file + '.json', JSON.stringify([...files[file]].sort(), null, '\t'), rootDir);
-			}catch(err){
-				console.error('Error writing file', file, err);
-			}
+		try{
+			await writeFile(file + '.json', JSON.stringify([...files[file]].sort(), null, '\t'), rootDir);
+		}catch(err){
+			console.error('Error writing file', file, err);
 		}
 	}
 }
@@ -649,7 +647,7 @@ async function generateDashboardStructure(wantedChunks, write = false, translati
 	}
 	await writeAssets(files, write);
 	await writeMeta(files, translations);
-	await writeSubRoutes(subRoutes, write);
+	await writeSubRoutes(subRoutes);
 	const linksFile = path.resolve(`../data/dashboard/links.json`);
 	await fs.writeFile(linksFile, JSON.stringify([...links].sort(), null, '\t'));
 
@@ -807,10 +805,6 @@ async function run(){
 	await tryAndPush(
 		[
 			'data/dashboard-translations/*',
-			'data/dashboard-subroutes/*',
-			'data/dashboard-subroutes/*.json',
-			'data/dashboard-subroutes/*/*.json',
-			'data/dashboard-subroutes/**',
 			'data/dashboard-subroutes/**/*',
 			'data/dashboard-subroutes/**/*.json',
 			'data/dashboard-subroutes/**/*.ts.json',

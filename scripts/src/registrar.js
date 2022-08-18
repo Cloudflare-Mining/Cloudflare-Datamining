@@ -40,6 +40,9 @@ for(const [index, batch] of splicedArrays.entries()){
 			id: batch.map(tld => `${randomDomain}.${tld}`),
 		}),
 	});
+	if(!res.ok){
+		throw new Error(`Failed to fetch domains for batch ${index + 1} of ${splicedArrays.length}. Response code: ${res.status}`);
+	}
 	const json = await res.json();
 	if(!json.result || !json.success){
 		continue;
