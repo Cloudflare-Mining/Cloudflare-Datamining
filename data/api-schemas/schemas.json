@@ -39406,6 +39406,19 @@
 															}
 														},
 														"nullable": true
+													},
+													"compatibility_date": {
+														"description": "Compatibility date used for Pages Functions",
+														"type": "string",
+														"example": "2022-01-01"
+													},
+													"compatibility_flags": {
+														"description": "Compatibility flags used for Pages Functions",
+														"type": "array",
+														"example": [
+															"url_standard"
+														],
+														"items": {}
 													}
 												}
 											},
@@ -39433,6 +39446,19 @@
 															}
 														},
 														"nullable": true
+													},
+													"compatibility_date": {
+														"description": "Compatibility date used for Pages Functions",
+														"type": "string",
+														"example": "2022-01-01"
+													},
+													"compatibility_flags": {
+														"description": "Compatibility flags used for Pages Functions",
+														"type": "array",
+														"example": [
+															"url_standard"
+														],
+														"items": {}
 													}
 												}
 											}
@@ -39885,7 +39911,11 @@
 												"BUILD_VERSION": {
 													"value": "3.3"
 												}
-											}
+											},
+											"compatibility_date": "2022-01-01",
+											"compatibility_flags": [
+												"url_standard"
+											]
 										}
 									}
 								}
