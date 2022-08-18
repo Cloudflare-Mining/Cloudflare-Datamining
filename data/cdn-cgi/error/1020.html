@@ -19,7 +19,7 @@
 						properties: {
 							errorCode: 1020,
 							helpful: a,
-							version: 4
+							version: 3
 						}
 					};
 					b.open("POST", "https://sparrow.cloudflare.com/api/v1/event");
@@ -84,28 +84,43 @@
 				<span class="code-label">Error code <span>1020</span></span>
 			</h1>
 			<div class="large-font">
-				<p>You can not access cloudflare.com. Refresh the page or contact the site owner to request access.</p>
+				<p>You do not have access to cloudflare.com.</p>
+				<p>The site owner may have set restrictions that prevent you from accessing the site. Contact the site owner for access or try loading the page again.</p>
 			</div>
 		</div>
 	</div>
 
 	<div>
-		<div class="section know-more">
-			<h2 class="large-font">Troubleshooting information</h2>
-			<p>Copy and paste the Ray ID when you contact the site owner.</p>
-			<p class="ray-id-wrapper">
-				Ray ID:
-				<span class="plain-ray-id" id="plain-ray-id">
-					[ray id]
-				</span>
-				<button class="click-to-copy-btn hidden" id="click-to-copy-btn" title="Click to copy Ray ID" type="button">
-					<span class="ray-id">[ray id]</span><span class="copy-label" id="copy-label">Copy</span>
-				</button>
-			</p>
-			<p>
-				For help visit <a rel="noopener noreferrer" href="https://support.cloudflare.com/hc/articles/360029779472-Troubleshooting-Cloudflare-1XXX-errors?utm_source=1020_error#error1020" target="_blank">Troubleshooting guide</a>
+		<div class="clearfix section">
+			<div class="column know-more">
+				<h2 class="large-font">Additional information</h2>
+				<p>The access policies of a site define which visits are allowed. Your current visit is not allowed according to those policies.</p>
+				<p>Only the site owner can change site access policies.</p>
+			</div>
+			<div class="column know-more">
+				<h2 class="large-font">I am the site owner</h2>
+				<p class="ray-id-wrapper">
+					Ray ID:
+					<span class="plain-ray-id" id="plain-ray-id">
+						[ray id]
+					</span>
+					<button class="click-to-copy-btn hidden" id="click-to-copy-btn" title="Click to copy Ray ID" type="button">
+						<span class="ray-id">[ray id]</span><span class="copy-label" id="copy-label">Copy</span>
+					</button>
+				</p>
+				<ol>
+					<li>
+						Search the
+						<a rel="noopener noreferrer" href="https://dash.cloudflare.com/?to=/:account/:zone/firewall" target="_blank">Firewall Events Log</a>
+						<img class="external-link" title="Opens in new tab" src="/cdn-cgi/images/external.png" alt="External link">
+						for the above Ray ID.
+					</li>
+					<li>Examine and assess the details of the access policy.</li>
+				</ol>
+				<br>
+				<a rel="noopener noreferrer" href="https://support.cloudflare.com/hc/articles/360029779472-Troubleshooting-Cloudflare-1XXX-errors#error1020" target="_blank">Troubleshooting guide</a>
 				<img class="external-link" title="Opens in new tab" src="/cdn-cgi/images/external.png" alt="External link">
-			</p>
+			</div>
 		</div>
 
 		<div class="clearfix footer section" role="contentinfo">
@@ -123,7 +138,7 @@
 
 			</div>
 			<div class="column footer-line-wrapper text-center">
-				Performance &amp; security by <a rel="noopener noreferrer" href="https://www.cloudflare.com?utm_source=1020_error" target="_blank">Cloudflare</a>
+				Performance &amp; security by <a rel="noopener noreferrer" href="https://www.cloudflare.com" target="_blank">Cloudflare</a>
 				<img class="external-link" title="Opens in new tab" src="/cdn-cgi/images/external.png" alt="External link">
 			</div>
 		</div>
