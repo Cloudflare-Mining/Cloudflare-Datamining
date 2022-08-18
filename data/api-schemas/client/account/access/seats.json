@@ -1,17 +1,17 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/access/seats.json",
-	"title": "Zero Trust Seats",
-	"description": "Zero Trust seats will allow a user to manage the seat allocation for their account",
+	"title": "Zero Trust seats",
+	"description": "User seat allocation for a Zero Trust organization.",
 	"type": "object",
 	"links": [
 		{
-			"title": "Update User Seats",
-			"description": "Manage seats for gateway and access accounts",
+			"title": "Update a user seat",
+			"description": "Removes a user from a Zero Trust seat when both `access_seat` and `gateway_seat` are set to false. ",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/identifier}/access/seats",
 			"method": "PATCH",
 			"cfOwnership": "access",
-			"html_id": "zero-trust-seats-update-user-seats",
+			"html_id": "zero-trust-seats-update-a-user-seat",
 			"uri": "accounts/:identifier/access/seats",
 			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/access/seats\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '[{\"seat_uid\":\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\"access_seat\":false,\"gateway_seat\":false}]'",
 			"parameters": {
@@ -22,7 +22,7 @@
 					"seat_uid": {
 						"type": "string",
 						"example": "\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"",
-						"description": "Seat UUID",
+						"description": "The unique API identifier for the Zero Trust seat.",
 						"id": "https://api.cloudflare.com/schemas/v4/common/uuid.json",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 						"readOnly": true,
@@ -31,12 +31,12 @@
 					"access_seat": {
 						"type": "boolean",
 						"example": "false",
-						"description": "user seat is part of access"
+						"description": "True if the seat is part of Access."
 					},
 					"gateway_seat": {
 						"type": "boolean",
 						"example": "false",
-						"description": "user seat is part of gateway"
+						"description": "True if the seat is part of Gateway."
 					}
 				},
 				"required_props": [
@@ -60,7 +60,7 @@
 			"seat_uid": {
 				"type": "string",
 				"example": "\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"",
-				"description": "Seat UUID",
+				"description": "The unique API identifier for the Zero Trust seat.",
 				"id": "https://api.cloudflare.com/schemas/v4/common/uuid.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 				"readOnly": true,
@@ -87,12 +87,12 @@
 			"access_seat": {
 				"type": "boolean",
 				"example": "false",
-				"description": "user seat is part of access"
+				"description": "True if the seat is part of Access."
 			},
 			"gateway_seat": {
 				"type": "boolean",
 				"example": "false",
-				"description": "user seat is part of gateway"
+				"description": "True if the seat is part of Gateway."
 			}
 		},
 		"required_props": [],
@@ -105,7 +105,7 @@
 		],
 		"objects": [],
 		"example": "{\n  \"seat_uid\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"access_seat\": false,\n  \"gateway_seat\": false\n}",
-		"title": "Zero Trust Seats",
-		"description": "Zero Trust seats will allow a user to manage the seat allocation for their account"
+		"title": "Zero Trust seats",
+		"description": "User seat allocation for a Zero Trust organization."
 	}
 }
