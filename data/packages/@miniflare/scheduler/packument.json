@@ -2,7 +2,7 @@
 	"name": "@miniflare/scheduler",
 	"dist-tags": {
 		"next": "2.0.0-rc.5",
-		"latest": "2.6.0",
+		"latest": "2.7.0",
 		"d1": "2.6.0-d1.5"
 	},
 	"versions": {
@@ -606,6 +606,35 @@
 			},
 			"engines": {
 				"node": ">=16.7"
+			}
+		},
+		"2.7.0": {
+			"name": "@miniflare/scheduler",
+			"version": "2.7.0",
+			"dependencies": {
+				"@miniflare/core": "2.7.0",
+				"@miniflare/shared": "2.7.0",
+				"cron-schedule": "^3.0.4"
+			},
+			"devDependencies": {
+				"@miniflare/shared-test": "2.7.0"
+			},
+			"dist": {
+				"integrity": "sha512-TvfRV1hOjuDkbPz62Q1K+yWAg50NQ3vspgZRHXBUVwcPTLP0HcWdHli855qNvtf7yCsD4Rzc2QZ2vOJTKZpypg==",
+				"shasum": "7ebacd7dcbdd33fb706052388a1300588ae43d06",
+				"tarball": "https://registry.npmjs.org/@miniflare/scheduler/-/scheduler-2.7.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 11071,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCtkaQX3X4qhIlojtmuUzG87I6WA+I1X3H7oeQOSty5uAIhANyR2c+LsC/j7cXcTxoRWZ9uddCnZ7gZa3mAdOdxtkCH"
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJi/8MuACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqciA//TJNW5Hdt2Xys83mjjOBoSqopTzRh1CcnWtOt8lGs1oSAjDnM\r\nEziEbt/IJggGg1Q072vOT6d3KHoKKf0wU79nOdJCj+fKiEd+Z2Sq455scDFP\r\nqETtaAKDSB49sXhhzzlDkkOe0Z8na1OzKS6GIg5v/SFbcB8Szz1k3n6Z2UKx\r\nS21gMjtWcj8A6xer0ppwaLGW3gvKue3jJZOIktPYb/mDfjC8RBRLANew2jQ+\r\nuxRKCy7HnzDZu/hE9JsGb4aWewcqAvITDNOf810nDxACif4+FHY849A6QuLN\r\nfOkrJOXp3NTmJ2aB0WjdKqQh8NGdUIC5240rapLVPcplJYWpy9mxrBL3GwTt\r\ncpuyNAThihuZ5DOtlBxfZN54qGspi6rhu8Ce+om8QUusIog2HhEIzorOVzXi\r\nzrgVawZm6TRzh+yA4rloxK8nNOMAsCp9JK2EGFfZ8A2B6QrDOX7jptdVhhC1\r\nRIGgrmkfy+5klgdEG8hMQHhWD0gaIgju+Cw6txmIZipzVHyiXvYdXtKBJqwU\r\nqgp84c9IrozILBV0etaCFKE8vdb51dKj8RLfF8x/H1ody9DrlYKgLcGslZBN\r\nWbTjh2NYy3g9jWGVHklUYTmFbwYDdDYeX7NgMlhPhDEM9XSNbkM7bBUGGmrz\r\nY+jrH7JWXbBxuNoL/hY8iRApSwV9X37N5BQ=\r\n=nF9G\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=16.13"
 			}
 		}
 	}

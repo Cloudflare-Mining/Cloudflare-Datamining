@@ -2,7 +2,7 @@
 	"name": "@miniflare/storage-file",
 	"dist-tags": {
 		"next": "2.0.0-rc.5",
-		"latest": "2.6.0",
+		"latest": "2.7.0",
 		"d1": "2.6.0-d1.5"
 	},
 	"versions": {
@@ -582,6 +582,34 @@
 			},
 			"engines": {
 				"node": ">=16.7"
+			}
+		},
+		"2.7.0": {
+			"name": "@miniflare/storage-file",
+			"version": "2.7.0",
+			"dependencies": {
+				"@miniflare/shared": "2.7.0",
+				"@miniflare/storage-memory": "2.7.0"
+			},
+			"devDependencies": {
+				"@miniflare/shared-test": "2.7.0"
+			},
+			"dist": {
+				"integrity": "sha512-mwSHZys9h6bi227tAff3TTb0bONXQWkU+rBsAf4J8SOqfOjqGbU+71Q8hNwr2pQqrY+16NnG/iVqY4sNHjSg/w==",
+				"shasum": "a488f54b3d2cf3aa894387793e63e4a6e388aac1",
+				"tarball": "https://registry.npmjs.org/@miniflare/storage-file/-/storage-file-2.7.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 15300,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCkevMvx59YqMyjbruwxIw+wr+fnyfUYOBW6qZVu6IjtwIhAOshYvdgtT3KOHw3M94/HEKMhL0WMGuKDfAmPj2Ui+pA"
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJi/8M1ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqhWA/9FbbTDg0pKHRZlgMiRqw20gc89VOdg9iokDZg8B9vch+7d025\r\n3jWEyAholyTZLjj8NIx9gp4PtTcTkn1FlmVl2dmJpQow5KX+NNNROFKns2Z7\r\nY7lLYayABExv37EsyC5y1eZuXtE+beD+ad0NMZY92UoCs/p+/gtZY23PiEKf\r\nqg+4/GvwTlBbJncW/vjAosOIOkUq6dSf6O/DhP2BfCRS8PpsAYtl6XFfXgUZ\r\nDlqx2CWFdLiXDWqrpdhzIBKDb6YMCw+oeP0PBualVRkxGGAWBMqXDjZTMYwd\r\noFDO5bZCxBHltwsR9VXsVajVdGYWpFWUcLBldwH4szmEI3ZDPt6XMpPZVglf\r\n2kOL8xvcu5lwN18J9nL+Gtpsjw1GaBDlRwjy49N4n//hS30kEXcqlxXGTJwo\r\nlNvueBfKXGG38UHEkMEGbEDOM0/hprwYBNRF8YNuvf584HyeROwxJi4Ez9AO\r\ntLtn5sj7/cnvFJgqyeA2XU2omoPaEZfffw+/Vh4nC44CPZTWpby9diwuFn45\r\nPkiub+13yXgb4rMtWeEGaBgG4Ugv0A5kIKfNSCFJRBtRa6sIM96cXVNeyj8x\r\nlC/RS/wv3djX08CO8kdrk1a8KxFh16OUEeKRjM0MGN28sjasF+sURXPyWqBo\r\n4BQss345GnhJAx+qmyOLCfYBtQMdUM2VYZA=\r\n=HuLk\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=16.13"
 			}
 		}
 	}

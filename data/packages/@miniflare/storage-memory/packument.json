@@ -2,7 +2,7 @@
 	"name": "@miniflare/storage-memory",
 	"dist-tags": {
 		"next": "2.0.0-rc.5",
-		"latest": "2.6.0",
+		"latest": "2.7.0",
 		"d1": "2.6.0-d1.5"
 	},
 	"versions": {
@@ -561,6 +561,33 @@
 			},
 			"engines": {
 				"node": ">=16.7"
+			}
+		},
+		"2.7.0": {
+			"name": "@miniflare/storage-memory",
+			"version": "2.7.0",
+			"dependencies": {
+				"@miniflare/shared": "2.7.0"
+			},
+			"devDependencies": {
+				"@miniflare/shared-test": "2.7.0"
+			},
+			"dist": {
+				"integrity": "sha512-YBPMTJmw8LPFE7n3fuM7Tp7PEj9X2he2vvjninpkuxj0CFnNkgyayuU2hnQJl4epa8IDurcba4ytC5dL3+MZzw==",
+				"shasum": "d2b3ffeb04052b541a45bebf714054e348750b41",
+				"tarball": "https://registry.npmjs.org/@miniflare/storage-memory/-/storage-memory-2.7.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 16902,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIGMZ93duUNCObbVhrrd1UJeVuF2CwhoUdRQR2RrCPYuVAiBvhtkb5ZWA0a4/HA7oO1mRDQmIIDd3nKy+QydItNaJqg=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJi/8M3ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpQ7g/9FpWfNaIwewRWK5Wh3FPmVxPt3d66bIAGg6UXDTEZedGxVfK+\r\n31BvEhEQGVnBOtIbRlHkCtXOZ4/S/bcu5ErBlUTjibPpkek+X2t3armMU/st\r\nL7RzDbjZa2t3iwQukXv8VNmb28urvTfmExL28ybyiYMZxMQoSceHe73lnzIQ\r\nKbnTUhRel/SOi4BEJwTP5T8wPbwoYDWAJ7XTxD/oOiOR7LnHsuZTvAnCABt2\r\nWqhQPAD8bLNmdNtAtKM4PC0Ij8q/70kRHAFafE071gNYwtcRMANworxNmgsU\r\nAcMObrhweH9px+lpqJ2V+MOKxuSij1MPanjMWR+F/HyvmzJ/KrllIl3kY7Vk\r\nD33ICgXHSwVI5ctTKwsL3JAze8J3Fq8y/gQgupHQm1Ymka2GomeHEoxsTXWm\r\nT8RzAUhxKehZv23cdM68ICj/fdoQzPmIpaxUBgVH3sZEDIG/Gp1Ng/wcth3X\r\nQrMTV4wC0Q38I5NljmHKeFQgfb1hpZGei6TPFVyMole99Rq7J0pskoIlGoRZ\r\nl85gEXinf/rIPZdE7R39iDENpSdzXqcR/IrB9s7DYNrEe1rUTr66rrHgaQrW\r\nY5OmLXZ7bxmBj6RgVMHenMaFh4Tg/MoWw3eNq+HhHtOyGY93oSj28qa36VcP\r\n4LFxa4D4gdss2uixMV7pA7DbHHYm6nhhI+A=\r\n=+4Z/\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=16.13"
 			}
 		}
 	}

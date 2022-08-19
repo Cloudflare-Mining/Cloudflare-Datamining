@@ -2,7 +2,7 @@
 	"name": "@miniflare/html-rewriter",
 	"dist-tags": {
 		"next": "2.0.0-rc.5",
-		"latest": "2.6.0",
+		"latest": "2.7.0",
 		"d1": "2.6.0-d1.5"
 	},
 	"versions": {
@@ -624,6 +624,36 @@
 			},
 			"engines": {
 				"node": ">=16.7"
+			}
+		},
+		"2.7.0": {
+			"name": "@miniflare/html-rewriter",
+			"version": "2.7.0",
+			"dependencies": {
+				"@miniflare/core": "2.7.0",
+				"@miniflare/shared": "2.7.0",
+				"html-rewriter-wasm": "^0.4.1",
+				"undici": "5.9.1"
+			},
+			"devDependencies": {
+				"@miniflare/shared-test": "2.7.0"
+			},
+			"dist": {
+				"integrity": "sha512-+lgpDydSOJqIdhscwWlnU5CtmWahuhITGs6K7Mv2XRju/EYAXR9NMRLFU/X0OekQm9GhjCW20DITyZukXd2Mnw==",
+				"shasum": "d32b7a8543f9a1e8d2757d14447244d58b5c4b6d",
+				"tarball": "https://registry.npmjs.org/@miniflare/html-rewriter/-/html-rewriter-2.7.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 8320,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCS2sm1KvJZyl6Ia3RYosSN03C0vYgnoUxSPHw/nvYFpwIgPz1qXuuwLeCfGRP4XyubL2gHUrCGorq/U5/P6BWbaIM="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJi/8MmACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmpxiw/+KSGGRfbmKacw3kTNIRz74W14W7h5kd6Ehclbxp/nDr3pApvr\r\nUVawIj/igE8n2cHi/lG3QX2+PrZp2ipNIHgY8aOz/3PROUdjD2x/u/RLViO8\r\nU/bVHRg3WpOsUII+mhZj6DQhyaso5R9bE6YB8L5IsejEXLX84kB8qxNulTQc\r\nh1TqUSG7uNA7BDjSpGGakwqKny+olJ4RmpZCgU8wS5dFdD/ajlrF/k8lDlXZ\r\nxnf58zFWD9S1rX0BJKDbxSumHL/RXTUmHYVa7BVU1gWomkkchUzNw/VB0NBR\r\nrytUH7vU0jwlgwjs/AWotvpHlu8jHuWtVI+bmT9DgOebfwnUQzzYOn4VZlGG\r\nrG+ceAyhKB2lPKxsjD5HzqMK1W6FlPuHtjxLLTkO/DC2KrV2Sd1rSDklEQHO\r\nRyztzAo418MYLKpJBQzf2unE3fs1mQLGlRIJ98QufNThwEL5cl4IQVRujPqc\r\n1S+hNf/pfIL1FxB+1i6zqk2BevZOCwzwsep/sL8UkwRXsTuPqJom9y3Gx+/o\r\nGJNcttAZXx57TXgrEEL5BHaNNvTEbutTAnGVPSK/2lpPkA/UJL3QAJQpudxP\r\nfI/kYNksxbJPym4lXBWcwNSFeVPqpaDHoqWCN8eYJc3aAOVFyWSJTrOHObSL\r\ntH3iYM6vrDPPbnRap8wRb3kunEbTxBJrO2s=\r\n=1dGo\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=16.13"
 			}
 		}
 	}

@@ -2,7 +2,7 @@
 	"name": "@miniflare/watcher",
 	"dist-tags": {
 		"next": "2.0.0-rc.5",
-		"latest": "2.6.0",
+		"latest": "2.7.0",
 		"d1": "2.6.0-d1.5"
 	},
 	"versions": {
@@ -561,6 +561,33 @@
 			},
 			"engines": {
 				"node": ">=16.7"
+			}
+		},
+		"2.7.0": {
+			"name": "@miniflare/watcher",
+			"version": "2.7.0",
+			"dependencies": {
+				"@miniflare/shared": "2.7.0"
+			},
+			"devDependencies": {
+				"@miniflare/shared-test": "2.7.0"
+			},
+			"dist": {
+				"integrity": "sha512-jerNvZDtT+DHedEJXh9dLjlkqvrb/jU+e0GOt8acax6EzIlFPPQRRr19/k3gk4daQmibZJFyIAu48O/MaThjUQ==",
+				"shasum": "8e2ef52902a3f19946eb376a12a296201bdfbc4d",
+				"tarball": "https://registry.npmjs.org/@miniflare/watcher/-/watcher-2.7.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 15414,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIHyrIa3GQojbUyhoBQLzXVng5UrANTRGdWaIkGtTkNXeAiEA9uigFuTiAhzwXcAio2q9IW1KI4LSV2XmE++Y0nRYKRg="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJi/8M5ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoSqA/9HOkhsPJJPaqLSR3tm75smVURJo9KbbVv1GKn/qBRJOyUdryD\r\nHUvBNAmTA3IsNL0td+ucxbMyAGFDXU89JJhNKi6TsxUZsGrKcYrLiEBoA/gj\r\ncOO2DuBUi5jKcDuCL49eVC5EXfkrDZ5uXOXRqpzI2mdT7VQFnDLyZ4YWGRTG\r\nYy6jTCwXeZkYPF5pzgJ9ko7OxSHQfxnG6zhr7rkb8ZL2WvxTILgEvcq8iuoM\r\nIkdhpfdHi0rxSCybeFLFCv/cokD5HzDwmldgcxIynDcCN9krWhRqQWGD2uEL\r\nHIzkV8LAs/wuek8HaOxLGfGSw/a7YXmKVSxwr0VMdlvIXEYpHO+omBQoLW/T\r\nbbVJTzN+RDgkapzhMRzrb8HnzL8CfX29PcwO7fEXqlvh7rfmOWyHUPOnHvqT\r\ns3dozWkx3JKZCCVLoTCnPHEkrWEB2wXKZf++CbBLipqzAVFcoCRjBJkJiZL1\r\niNW+QevVFrckR7A2fi07b11Um/YaHMss3PQg+O2pPsglFinyoifHxvVxTRxn\r\nLh4rPmbWZ+mMG6aYSpJO8xXdailzANprmjX3OoX389ZZ28eHcUVkg0s53jaJ\r\n2F0/dwEx/dhl5W9tRYTNeQtlluLmv857+hH7DjoFEjjCe0ed3U7eQZvFFBRg\r\nFyMJW6AeV56F1VlH8lMPjkScl57f42hzdd4=\r\n=S98N\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=16.13"
 			}
 		}
 	}
