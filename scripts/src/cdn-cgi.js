@@ -76,10 +76,12 @@ const buildVersions = {};
 for(const [name, colo] of Object.entries(colos)){
 	buildVersions[`build-info/fl-${name}`] = `${process.env.FETCH_FROM_COLO_URL}colo=${colo}&url=https://trace.colo.quest/info?type=fl`;
 	buildVersions[`build-info/cache-${name}`] = `${process.env.FETCH_FROM_COLO_URL}colo=${colo}&url=https://trace.colo.quest/info?type=cache`;
+	buildVersions[`build-info/challenge-platform-${name}`] = `${process.env.FETCH_FROM_COLO_URL}colo=${colo}&url=https://trace.colo.quest/info?type=challenge-platform`;
 }
 for(const [name, colo] of Object.entries(aggregateColos)){
 	buildVersions[`build-info/fl-${name}`] = `${process.env.FETCH_FROM_COLO_MULTI_URL}colo=${colo}&url=https://trace.colo.quest/info?type=fl`;
 	buildVersions[`build-info/cache-${name}`] = `${process.env.FETCH_FROM_COLO_MULTI_URL}colo=${colo}&url=https://trace.colo.quest/info?type=cache`;
+	buildVersions[`build-info/challenge-platform-${name}`] = `${process.env.FETCH_FROM_COLO_MULTI_URL}colo=${colo}&url=https://trace.colo.quest/info?type=challenge-platform`;
 }
 
 for(const [file, url] of Object.entries(buildVersions)){
