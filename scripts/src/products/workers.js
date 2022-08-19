@@ -24,6 +24,11 @@ const reqs = [
 		transform: json => json.result,
 	},
 	{
+		name: 'subdomain-get',
+		url: `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/workers/subdomain`,
+		method: 'GET',
+	},
+	{
 		name: 'services-list',
 		url: `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/workers/services?expand=routes&page=1&perPage=100`,
 		method: 'GET',
@@ -45,7 +50,23 @@ const reqs = [
 	},
 	{
 		name: 'services-get',
-		url: `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/workers/services/${id}`,
+		url: `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/workers/services/${id}?expand=scripts`,
+		method: 'GET',
+	},
+	{
+		name: 'services-environment-production-get',
+		url: `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/workers/services/${id}/environments/production?expand=routes`,
+		method: 'GET',
+	},
+	{
+		name: 'services-schedules-put',
+		url: `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/workers/services/${id}/environments/production/schedules`,
+		method: 'PUT',
+		body: JSON.stringify([{"cron": "*/30 * * * *"}]),
+	},
+	{
+		name: 'services-schedules-get',
+		url: `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/workers/services/${id}/environments/production/schedules`,
 		method: 'GET',
 	},
 	{
