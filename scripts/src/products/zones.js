@@ -5,7 +5,7 @@ import dateFormat from 'dateformat';
 
 import {tryAndPush, propertiesToArray, cfRequest} from '../utils.js';
 
-const dir = path.resolve(`../data/products/pages`);
+const dir = path.resolve(`../data/products/zones`);
 await fs.ensureDir(dir);
 
 const reqs = [

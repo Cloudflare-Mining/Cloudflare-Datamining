@@ -34,9 +34,13 @@ const knownSuffixes = new Set([
 	'_nocost',
 	'_paid',
 	'_premium',
+	'_premium_no_cost',
+	'_premium_nocost',
 	'_pro',
 	'_ss',
-	'_standard',
+	'_standard_no_cost',
+	'_standard_nocost',
+	'_staging',
 	'_test',
 ]);
 
@@ -63,6 +67,7 @@ const knownRatePlans = new Set([
 	'ddos_protection_magic_transit',
 	'ddos_protection_spectrum',
 	'ent',
+	'enterprise_customer_portal',
 	'free',
 	'gateway',
 	'image_resizing',
@@ -95,6 +100,7 @@ const ratePlans = new Set([]);
 const addRatePlan = function(ratePlan){
 	// partner rate plans are usually just prefixed with partners_
 	// add some other common suffixes
+	ratePlans.add(ratePlan);
 	const endsWithSuffix = [...knownSuffixes].find(suffix => ratePlan.endsWith(suffix));
 	let usePlan = ratePlan;
 	if(endsWithSuffix){
@@ -126,6 +132,16 @@ try{
 		addRatePlan(planName);
 	}
 
+}catch(err){
+	console.log(err);
+}
+
+try{
+	const dir = await fs.readdir(path.resolve('../data/billing-rate-plans'));
+	for(const file of dir){
+		const ratePlan = file.replace('.json', '');
+		addRatePlan(ratePlan);
+	}
 }catch(err){
 	console.log(err);
 }
