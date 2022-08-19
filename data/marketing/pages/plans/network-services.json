@@ -275,7 +275,7 @@
 									"buttonTextLoggedIn": null,
 									"contentTypeId": "button",
 									"contentfulId": "yoxfCnfLHez7o3ZHSgtfM",
-									"elementName": "Plans&Pricing-Product_Category-Network Services-Magic_Transit-CTA",
+									"elementName": "Request Demo Button - Plans&Pricing-Product_Category-Network Services-Magic_Transit",
 									"standardText": null,
 									"text": "Request demo",
 									"url": null,
@@ -1357,11 +1357,11 @@
 						"networkLocationText": null,
 						"statsFeatures": [
 							{
-								"title": "200+",
-								"description": "__Cities__ covered by our worldwide network, including 17 in mainland China"
+								"title": "%{DataCenterCount}",
+								"description": "__Cities__ covered by our worldwide network, including %{ChinaDataCenterCount} in mainland China"
 							},
 							{
-								"title": "9,800",
+								"title": "%{NetworkInterconnects}",
 								"description": "__Interconnections__ to every major service provider, cloud provider, and enterprise network"
 							},
 							{
@@ -1395,7 +1395,7 @@
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
 							"contentfulId": "yoxfCnfLHez7o3ZHSgtfM",
-							"elementName": "Plans&Pricing-Product_Category-Network Services-Magic_Transit-CTA",
+							"elementName": "Request Demo Button - Plans&Pricing-Product_Category-Network Services-Magic_Transit",
 							"standardText": null,
 							"text": "Request demo",
 							"url": null,
