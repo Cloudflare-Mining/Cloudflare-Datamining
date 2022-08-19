@@ -42008,22 +42008,11 @@
 				}
 			}
 		},
-		"/accounts/{account_identifier}/r2/buckets/{bucket_name}": {
+		"/accounts/{account_identifier}/r2/buckets": {
 			"post": {
 				"summary": "Create Bucket",
 				"description": "Creates a new R2 bucket.",
 				"parameters": [
-					{
-						"name": "bucket_name",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"description": "Name of the bucket. The name must be greater than 2 and less than 64 characters.",
-							"type": "string",
-							"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
-							"example": "example-bucket"
-						}
-					},
 					{
 						"name": "account_identifier",
 						"in": "path",
@@ -42078,7 +42067,9 @@
 						}
 					}
 				}
-			},
+			}
+		},
+		"/accounts/{account_identifier}/r2/buckets/{bucket_name}": {
 			"delete": {
 				"summary": "Delete Bucket",
 				"description": "Deletes an existing R2 bucket.",
@@ -42088,7 +42079,10 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1r2~1buckets~1%7Bbucket_name%7D/post/parameters/0/schema"
+							"description": "Name of the bucket. The name must be greater than 2 and less than 64 characters.",
+							"type": "string",
+							"pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]",
+							"example": "example-bucket"
 						}
 					},
 					{
@@ -42096,7 +42090,7 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1r2~1buckets~1%7Bbucket_name%7D/post/parameters/1/schema"
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1available_plans~1%7Bplan_identifier%7D/get/parameters/0/schema"
 						}
 					}
 				],
@@ -42106,7 +42100,19 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1r2~1buckets~1%7Bbucket_name%7D/post/responses/200/content/application~1json/schema"
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user~1audit_logs/get/responses/200/content/application~1json/schema/oneOf/1"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object",
+													"properties": {}
+												}
+											}
+										}
+									]
 								}
 							}
 						}
