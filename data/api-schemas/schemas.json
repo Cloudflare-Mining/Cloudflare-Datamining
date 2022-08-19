@@ -4,7 +4,7 @@
 		"title": "Cloudflare Client API",
 		"description": "The Cloudflare Client API",
 		"version": "4.0.0",
-		"x-revision": "191-ada7c97"
+		"x-revision": "194-6c49035"
 	},
 	"servers": [
 		{
@@ -37345,33 +37345,50 @@
 										{
 											"properties": {
 												"result": {
-													"type": "array",
-													"items": {
-														"properties": {
-															"uid": {
-																"description": "A unique identifier for a live input.",
-																"example": "66be4bf738797e01e1fca35a7bdecdcd",
-																"maxLength": 32,
-																"readOnly": true,
-																"type": "string"
-															},
-															"meta": {
-																"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1stream~1live_inputs/post/requestBody/content/application~1json/schema/properties/meta"
-															},
-															"created": {
-																"description": "The date and time the live input was created.",
-																"example": "2014-01-02T02:20:00+00:00",
-																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
-															},
-															"modified": {
-																"description": "The date and time the live input was last modified.",
-																"example": "2014-01-02T02:20:00+00:00",
-																"format": "date-time",
-																"readOnly": true,
-																"type": "string"
+													"type": "object",
+													"properties": {
+														"liveInputs": {
+															"type": "array",
+															"items": {
+																"properties": {
+																	"uid": {
+																		"description": "A unique identifier for a live input.",
+																		"example": "66be4bf738797e01e1fca35a7bdecdcd",
+																		"maxLength": 32,
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"meta": {
+																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1stream~1live_inputs/post/requestBody/content/application~1json/schema/properties/meta"
+																	},
+																	"created": {
+																		"description": "The date and time the live input was created.",
+																		"example": "2014-01-02T02:20:00+00:00",
+																		"format": "date-time",
+																		"readOnly": true,
+																		"type": "string"
+																	},
+																	"modified": {
+																		"description": "The date and time the live input was last modified.",
+																		"example": "2014-01-02T02:20:00+00:00",
+																		"format": "date-time",
+																		"readOnly": true,
+																		"type": "string"
+																	}
+																}
 															}
+														},
+														"total": {
+															"description": "The total number of live inputs that match the provided filters.",
+															"example": 35586,
+															"readOnly": true,
+															"type": "integer"
+														},
+														"range": {
+															"description": "The total number of remaining live inputs based on cursor position.",
+															"example": 1000,
+															"readOnly": true,
+															"type": "integer"
 														}
 													}
 												}
