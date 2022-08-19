@@ -2,7 +2,7 @@
 	"name": "@miniflare/storage-redis",
 	"dist-tags": {
 		"next": "2.0.0-rc.5",
-		"latest": "2.6.0",
+		"latest": "2.7.0",
 		"d1": "2.6.0-d1.5"
 	},
 	"versions": {
@@ -624,6 +624,36 @@
 			},
 			"engines": {
 				"node": ">=16.7"
+			}
+		},
+		"2.7.0": {
+			"name": "@miniflare/storage-redis",
+			"version": "2.7.0",
+			"dependencies": {
+				"@miniflare/shared": "2.7.0",
+				"@miniflare/storage-memory": "2.7.0",
+				"ioredis": "^4.27.9"
+			},
+			"devDependencies": {
+				"@miniflare/shared-test": "2.7.0",
+				"@types/ioredis": "^4.27.2"
+			},
+			"dist": {
+				"integrity": "sha512-rweA/fsgKDjFG5vT/aEJAvbM+qhAW+dFN5pyeGcaZoZmuGW2DwXJuzzdQ7Ex3CaY60NqGolTlp+72AY27CcFrg==",
+				"shasum": "13cc0e3ee5bff40bc1b267161eba34bd51f52bd1",
+				"tarball": "https://registry.npmjs.org/@miniflare/storage-redis/-/storage-redis-2.7.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 19168,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQC6PIy/MWTLXwzN7bDMcVtDsNh20snR8ZXF4doTPQ617AIhALOvmVFAX8Z2Au8KqOVE0BupQ7G+/eVaJuFiegAxsdrf"
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJi/8M4ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoVTw//cPOiYB3+WD7ttaFa7SLFlWjehBCbU0Ck/7dTjnDFFGTFLC4N\r\ny3+gRuLTiQCl42HUwo79bDNJgmGtkEisoryQVp+sUh9fecQJP8ow3xXDhOjv\r\n10iWSIR01bJB7n19/nspmBZHphhl11MDO1oqEwZq0SBG2p+wIf/kBWW0oO9V\r\nAor1kCxEkBXkYLfsfADiLIU3ozjLaCo1txIo9aE49LehPdrVik04Pu1u8G3g\r\n1JGDgajoTGoWAZQZlElcQrjXv4/1Ole6Dax35+py19V+WPsAsONdb6TUvyQv\r\n9kcfkQf+HnnhW+KLNc1FP45IHSUhoHZwscsjmC1HWyESRsJjVzKrJRpY5CQu\r\nNASq6iuOUOuuELjHamS0/Fbn7op3aL7yGrQpXgeWr/g6tFOhC6wIjeO4wf/t\r\nxM+FYK1YqVNXrvMiipJdvp+645oggg0IuNAcYRKEsShpAD01YQrPlA2EdZ+Z\r\n8Ubi63REGShuINVbLWMNT7Uxflf8GvO89zxcUWA/ed/V8Yl/myKBQ4sGg2cY\r\n8m4pGPFD0D0d4ekVbOy2FZN20pers2BYghy1YWBD6yQh6kuIVUDZVAlGwZNW\r\nDUAW42QeNcTUpPxUeesztK6Av6hWrUhsl2c3ee8HpwZq26LbfgUSHKIBFaOs\r\nri8pehx0JtMb5yTNK04W5SRvkw2tvcxQRsU=\r\n=81rg\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=16.13"
 			}
 		}
 	}

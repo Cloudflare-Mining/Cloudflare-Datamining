@@ -2,7 +2,7 @@
 	"name": "@miniflare/runner-vm",
 	"dist-tags": {
 		"next": "2.0.0-rc.5",
-		"latest": "2.6.0",
+		"latest": "2.7.0",
 		"d1": "2.6.0-d1.5"
 	},
 	"versions": {
@@ -561,6 +561,33 @@
 			},
 			"engines": {
 				"node": ">=16.7"
+			}
+		},
+		"2.7.0": {
+			"name": "@miniflare/runner-vm",
+			"version": "2.7.0",
+			"dependencies": {
+				"@miniflare/shared": "2.7.0"
+			},
+			"devDependencies": {
+				"@miniflare/shared-test": "2.7.0"
+			},
+			"dist": {
+				"integrity": "sha512-U5urPJkTIyUf44VArJmO0rPmIQjW2Zw39S+3CkWEkERdgqi3ShIzWnX1AM94BYKh9WvweTKW9BWQi2ZQJisXOQ==",
+				"shasum": "b470c0e138764204cae06bc07133af09a3033f59",
+				"tarball": "https://registry.npmjs.org/@miniflare/runner-vm/-/runner-vm-2.7.0.tgz",
+				"fileCount": 5,
+				"unpackedSize": 20292,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCMmOGWHcxypGaztsXSgDFTqdrxoFJQMSVy2uTCmgvy2QIgXBHnsJILPb4T28ahO7R2ZT4YCjjNnolkZZ7n1kPYmBw="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJi/8MtACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpmvQ/+NHs+Fau210KlMrFbfDfn0Gpj4WnJCtBSNWTpNP+/PGB/gz/1\r\nR97aARPpmQxSzoW7xvZf3jnIpXkP+6A9IoXQBSwipGhOvfVm3d381eENIVLl\r\nsQBPTarSOyw7yo1vEcXJMieOmjoe2NxyloPh7SNOBV0ZmI+nchm1X62PI0mz\r\ncg9UOYcIHcS1jtWtR88xDERjNVtDGESceepvmyR9KL1LVMT0/LlvA8xAa8Eb\r\nRI++ZRWirSgkI8SCxPuRqOjIHeac+BBZ/PYAMBAZqC7qwFwO3O2QyETcNd61\r\nUJbzXMn49/7Tj6SgOLrm13mJRhp01/3u+gyV2t0afE02KFXxnhtjDEIKn2p+\r\ntgfsXStVoH5dc5GonU1YdgQwAdl6s460c1UjDQkJF1AsoLMMGb3rck3O/ilW\r\neDr35cVR68tuh1+TO48Ykce2w18kNDIVV9vz95BK+98F7Kj1FtIHAYf0X8w3\r\nHqkYtppnP+u+1To3D93sj33y7i4g+CiOvgzuvWAAHBvtklwHzGQ32vCmUZom\r\nKJj2YcM3AoQvQ9Ae8k8sZEjARQk6d3jxxc2jD6AiWM8YYwP94BYsuh/+tKvO\r\n9yvGOjFXqN/NrjG7b9FKh58jWmrzhRdxBhs7AuZ+rtC0+w0lInMOm3ITKCV+\r\nFOP5c+UCxNWdfpbV4lZOqrnIUyFOJdEFRkQ=\r\n=2Tid\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=16.13"
 			}
 		}
 	}
