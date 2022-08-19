@@ -314,6 +314,10 @@
 							"mkd_content": "Area 1 Email Security"
 						},
 						{
+							"meta_templateVariableName": "productFilter[]",
+							"mkd_content": "Web3"
+						},
+						{
 							"meta_templateVariableName": "loadMore",
 							"mkd_content": "Load More"
 						},
@@ -651,29 +655,6 @@
 			},
 			"caseStudies": {
 				"nodes": [
-					{
-						"id": "67962e04-af35-585b-a955-bbddefd14ef4",
-						"contentfulId": "1Zy3JAe4acIdv5qGms8bqq",
-						"logo": null,
-						"nameUrlSlug": "uniswap",
-						"shortDescription": "Uniswap Lab uses Cloudflare IPFS Gateway to securely serve their users",
-						"longDescription": "__This video features Connor McEwen, Engineering Lead at Uniswap Labs__\n\n### __Introduce yourself and tell us about your company.__\n\n__Connor McEwen:__ My name is Connor McEwen, and I'm an engineering lead at Uniswap Labs. Uniswap Labs is a company that helps to develop the Uniswap protocol, which is the largest decentralized exchange that runs on the Ethereum network. Ethereum is a decentralized blockchain that allows people to run compute, which is like to run smart contracts and enables people to sort of build a lot of financial tools that are permissionless.\n\n### __What Cloudflare products are you using?__\n\nWe used DNS and then actually deployed to the IPFS network and then use the Cloudflare IPFS Gateway to serve the application to our users. So we use that and then sort of have a couple functions that run on Cloudflare Workers, that are sort of part of that interface.\n\n### __Why did you start using IPFS Gateway and how does it help your organization?__\n\nI think as people working in the Web3 space, we're sort of always interested in technologies and tools that sort of embody the values we care about, which are sort of like, you know, decentralization and open accessibility and IPFS is a cool network that enables sort of this decentralized file storage and serving and so that aligned really well with how, you know, we wanted to build our application and also aligned well with our reliability and security goals.\n\nIt's just nice to have a company like Cloudflare sort of build a product that enable us to use IPFS and serve our front-end to our users. It's super important to us that our users feel secure using our product. And so, you know, for us the main goal is just every bit of code that gets committed to our GitHub repository gets served securely to our users, and they can sort of verify that security and they're using the Uniswap interface in a way that they feel safe.\n\nUniswap works in a way so we never have custody over people's funds, they always retain custody, they're always in control of what they want to do with their tokens and assets. And so I think that's really cool and we sort of take that base foundation and apply it to sort of the application layer as well. And in the way that we build our application to be sort of as decentralized as possible to have as, you know, a minimal amount of third party dependencies and then the way we serve our application users, which is through the IPFS Gateway. \n\n### __What do you think about Cloudflare?__\n\nI'm excited about sort of the products that you all are building. I feel like having IPFS Gateway support running through Ethereum nodes, like to me that's exciting because even though I like being in sort of a hip, cutting edge area, I also care about reliable products and products that people can use and sometimes for that you need large organizations like Cloudflare with a great track record of keeping stuff running and the lights on. And so I'm excited that companies like Cloudflare are sort of entering this domain to partner with smaller companies like us. \n",
-						"cloudflareStreamVideoId": "d938f6e605fc5f79a46791361b6c234e",
-						"orderDate": "2022-08-18",
-						"ref_streamVideoThumbnail": null,
-						"twoCardPreviewImage": null,
-						"industryNew52420": [
-							"High Technology",
-							"Financial Services"
-						],
-						"regionNew52520": [
-							"North America"
-						],
-						"primaryUseCases": [
-							"Accelerate digital properties"
-						],
-						"product": null
-					},
 					{
 						"id": "58f877ef-21db-55a6-b49e-b7fffed44447",
 						"contentfulId": "1GeGJ5dC8rwF5msmBRHVue",
@@ -1546,7 +1527,7 @@
 						"orderDate": "2022-02-14",
 						"ref_streamVideoThumbnail": {
 							"file": {
-								"publicURL": "[path]/thumbnail__2_.jpg"
+								"publicURL": "[path]/BDES-3661_Thumbnail_Template_for_Customer_Videos_1020x1020__1_.png"
 							}
 						},
 						"twoCardPreviewImage": null,
@@ -2237,6 +2218,35 @@
 							"Access",
 							"WAF",
 							"Zero Trust"
+						]
+					},
+					{
+						"id": "c020fd89-bc82-5a85-9368-7f61cf1d89a1",
+						"contentfulId": "61bd47Vf08tKelPY9ptan0",
+						"logo": {
+							"file": {
+								"publicURL": "[path]/KIAVI_Logo_Seafoam_Green-Gray_RGB_Fnl.jpg"
+							}
+						},
+						"nameUrlSlug": "kiavi",
+						"shortDescription": "Kiavi (formerly LendingHome), a financial services technology company, deploys Cloudflare Area 1 to complement Google Workspace phishing protection, and to block business email compromise attacks.",
+						"longDescription": "## __Cloudflare Area 1 keeps Kiavi's email clean and free of phishing threats__\n<br>\n\nAs a modern technology provider for real estate investors, Kiavi (formerly known as LendingHome) is concerned about email vulnerability to phishing attacks. Email is a key resource for the company, which has helped real estate investors in 32 states unlock over $4.1 billion in value.\n\nKiavi turned to Cloudflare Area 1 Security to protect the integrity of its email, realizing how phishing attacks opened the door to [business email compromise](https://www.cloudflare.com/learning/email-security/business-email-compromise-bec/ \"Business Email Compromise\") (BEC) and other fraud. BEC allows a criminal gang to pose as a company officer and swindle users into forwarding company funds or confidential data. \"We can't exaggerate the importance of keeping those clever ploys and phishing messages from landing in front of our staff,\" said Donovan Bray, Director of DevOps and IT.\n\n### __Challenge: Difficult-to-detect, low-volume email threats bypassing Gmail's native defenses__\nKiavi knew that it was only a matter of time until the company became a target for spear-phishing emails. The company needed a robust, innovative solution to detect incoming attacks and neutralize the danger. \n\nKiavi started with using Google's Gmail system alone, believing that Gmail's spam filter and rules would catch phishing emails in addition to spam. But that was far from true. Even the best spam filter is not engineered to recognize highly targeted phishing emails. Unlike the avalanches of spam released 24/7, which can be flagged and filtered effectively, phishing campaigns are extremely sophisticated. They are purposely constructed to present a low volume attack profile that doesn't appear on a spam filter's \"radar.\" So hackers can actually steal right past spam defenses and arrive in employee inboxes with an apparently innocent request. The attackers often do their homework and appear to know the company well. This ability to masquerade as legitimate communication is one of the many reasons why phishing is responsible for many breaches.\n\nIn addition to BEC, phishing is the root cause for a spectrum of email attacks. Two notorious phishing attacks faced by other companies were the DocuSign malware and the \"Google Docs\" worm — which posed as email from a trusted contact and tricked users into yielding their permissions, while infecting their contacts too. Relying on a spam filter alone to find and stop phish is similar to leaving doors and windows unlocked when a burglar is in the neighborhood. In addition to the danger of phishing itself, Kiavi employees had to take the time to report potential phishing attempts to Information Security.\n\n### __Kiavi augments employee awareness training with Cloudflare Area 1's preemptive email security technology__\nKiavi reviewed a number of anti-phishing solutions before turning to Cloudflare Area 1. Of course, they had employee training to recognize phishing attacks, but they wanted to ensure they had the highest levels of protection. So they decided to augment their efforts with Area 1's powerful preemptive capabilities, and keep phishing emails from arriving in employees' inboxes. Although training can lower malicious intrusions, just one click on a phishing email can result in a catastrophe. \n\nWith Area 1, phishing attacks are comprehensively and preemptively stopped. The service acts upon live attacks, which are discovered globally using distributed sensors at specific attack relay points. Sophisticated analytics and innovative web crawling capabilities deliver advanced visibility into emerging and active phishing threats, so they can be proactively shut down before even reaching Kiavi's perimeter. \n\nThe company also appreciates Area 1's push notifications that warn of phish in real time, as well as the versatile dashboard. Kiavi wanted to keep users from being bombarded by suspicious emails and expending time and energy to evaluate messages that could be phishing. Yet, each one had to be checked, because phish are getting more and more professional.\n\n### __Cloudflare Area 1 helps free Kiavi employees from the need to examine, report, and authenticate suspicious emails__\n\"I'm happy to say that Cloudflare Area 1 exceeded all of our expectations,\" Donovan says. \"It took less than half an hour to get the service up and running.\" \n\nResults were assessed by how often a user reaches out with suspect email to be investigated. Kiavi now goes weeks without a single report — instead of multiple reports per day as in the past. It would have been impossible to reach someone at Google to report the problem—much less having a resolution immediately in place.\n\n\"Even though Google spam filtering does an okay job, we now see plenty of malicious emails caught by Cloudflare Area 1 after passing through Gmail's filters,\" Donovan says.\n\nPhishing and spoofing are two areas where Kiavi's sees a big improvement in Area 1's service, versus Google spam filtering alone. Now, the company sends all malicious, suspicious, and spoof emails automatically to Google quarantine, saving substantial time. \n\nPrior to Area 1, even with Google's G Suite Spam and Phishing rules, far too many phishing attempts made it to user inboxes. Now, thanks to Area 1's effectiveness, phishing concerns have eased dramatically. \"We rolled it out with virtually no trouble, and it's now stable and effective, requiring little to no attention,\" Donovan notes.\n",
+						"cloudflareStreamVideoId": null,
+						"orderDate": "2021-09-15",
+						"ref_streamVideoThumbnail": null,
+						"twoCardPreviewImage": null,
+						"industryNew52420": [
+							"Financial Services"
+						],
+						"regionNew52520": [
+							"North America"
+						],
+						"primaryUseCases": [
+							"Stop Phishing & BEC Attacks",
+							"Enhance Cloud Email Security"
+						],
+						"product": [
+							"Area 1 Email Security"
 						]
 					},
 					{
@@ -8188,6 +8198,10 @@
 						{
 							"meta_templateVariableName": "productFilter[]",
 							"mkd_content": "Area 1 Email Security"
+						},
+						{
+							"meta_templateVariableName": "productFilter[]",
+							"mkd_content": "Web3"
 						},
 						{
 							"meta_templateVariableName": "loadMore",
