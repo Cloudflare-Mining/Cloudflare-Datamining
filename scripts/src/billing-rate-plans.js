@@ -21,6 +21,8 @@ const knownSuffixes = new Set([
 	'_basic_no_cost',
 	'_basic_nocost',
 	'_beta',
+	'_biz',
+	'_biz_free',
 	'_emp',
 	'_ent',
 	'_ent_contract',
@@ -37,6 +39,7 @@ const knownSuffixes = new Set([
 	'_premium_no_cost',
 	'_premium_nocost',
 	'_pro',
+	'_pro_free',
 	'_ss',
 	'_standard_no_cost',
 	'_standard_nocost',
@@ -85,6 +88,7 @@ const knownRatePlans = new Set([
 	'pro',
 	'r2',
 	'rate_limiting',
+	"secure_web_gateway",
 	'soc',
 	'spectrum',
 	'ssl_for_saas',
@@ -94,6 +98,9 @@ const knownRatePlans = new Set([
 	'teams_access',
 	'waiting_rooms',
 	'workers',
+	'zero_trust',
+	'zero_trust_access',
+	'zero_trust_gateway',
 ]);
 
 const ratePlans = new Set([]);

@@ -3,7 +3,11 @@ import fs from 'fs-extra';
 import dateFormat from 'dateformat';
 import fetch from 'node-fetch';
 import {parse} from 'acorn';
+import {parse as parseLoose} from 'acorn-loose';
 import {full} from 'acorn-walk';
+import isValidCSSUnit from 'is-valid-css-unit';
+import hexColorRegex from 'hex-color-regex';
+import cssProperties from 'known-css-properties';
 
 import {tryAndPush, beautify, getHttpsAgent} from './utils.js';
 
@@ -74,6 +78,7 @@ async function getChunks(){
 	// get chunks from AST
 	const chunks = [];
 	const translations = {};
+	const rawTranslations = new Set();
 	const ast = parse(appJs, {ecmaVersion: 2020});
 	full(ast, (node) => {
 		if(
@@ -110,9 +115,12 @@ async function getChunks(){
 			for(const property of node.arguments[1].properties){
 				if(property.key.type === 'Identifier'){
 					translations[node.arguments[0].value][property.key.name] = property.value.value;
+					rawTranslations.add(property.key.name);
 				}else if(property.key.type === 'Literal'){
 					translations[node.arguments[0].value][property.key.value] = property.value.value;
+					rawTranslations.add(property.key.value);
 				}
+				rawTranslations.add(property.value.value);
 			}
 		}else if(
 			node.type === 'ObjectExpression' &&
@@ -128,6 +136,8 @@ async function getChunks(){
 					continue;
 				}
 				console.log('Found translation', property.key.value);
+				rawTranslations.add(property.key.value);
+				rawTranslations.add(property.value.value);
 				const split = property.key.value.split('.');
 				const namespace = split[0];
 				if(!namespace){
@@ -147,12 +157,86 @@ async function getChunks(){
 			name: appFile,
 			code: appJs,
 			translations,
+			rawTranslations,
 		},
 	};
 }
 
-async function generateDashboardStructure(wantedChunks){
+async function generateDashboardStructure(wantedChunks, translations){
+	const strings = new Set();
+	const properties = new Set();
+	const identifiers = new Set();
+	const regexes = new Set();
+	const callees = new Set();
 	const links = new Set();
+	const addString = (str, type = 'string') => {
+		// handle all strings
+		// ignore a bunch of things we don't care about or want to dupe
+		if(typeof(str) !== 'string'){
+			return;
+		}
+		if(translations.has(str)){
+			return;
+		}
+		if(str.trim() === ''){
+			return;
+		}
+		if(str.startsWith('<html>')){
+			return;
+		}
+		if(str.startsWith('[{')){
+			return;
+		}
+		// likely SVG string
+		if(/^m\s?\d+/i.test(str)){
+			return;
+		}
+		// images and stuff
+		if(str.startsWith('data:')){
+			return;
+		}
+		if(str.startsWith('url(')){
+			return;
+		}
+		if(str.startsWith('http')){
+			return;
+		}
+		// likely CSS string
+		if(str.includes('!important')){
+			return;
+		}
+		if(str.startsWith(';\n')){
+			return;
+		}
+		if(str.startsWith('calc(')){
+			return;
+		}
+		// css units
+		if(isValidCSSUnit.default(str)){
+			return;
+		}
+		if(hexColorRegex({strict: true}).test(str)){
+			return;
+		}
+		if(cssProperties.all.includes(str)){
+			return;
+		}
+		// number px/fr
+		if(/^\d+\s?(px|fr|rem)/i.test(str)){
+			return;
+		}
+		// likely more css/svg stuff
+		if(str.startsWith('0 ')){
+			return;
+		}
+		if(type === 'string'){
+			strings.add(str?.trim?.());
+		}else if(type === 'property'){
+			properties.add(str?.trim?.());
+		}else if(type === 'identifier'){
+			identifiers.add(str?.trim?.());
+		}
+	};
 	for(const chunk of wantedChunks){
 		for(const match of chunk.code.matchAll(/["'](https?:\/\/[^"']*)["']/g)){
 			if(match && match[1] && !match[1].includes('`')){
@@ -165,10 +249,70 @@ async function generateDashboardStructure(wantedChunks){
 				}
 			}
 		}
+
+		// get callees, strings, etc.
+		try{
+			const ast = parseLoose(chunk.code, {
+				sourceType: 'script',
+				ecmaVersion: 2020,
+			});
+			full(ast, (node) => {
+				if(node.type === 'StringLiteral' || node.type === 'Literal'){
+					if(node.regex && node.raw){
+						regexes.add(node.raw?.trim?.());
+					}else if(node.value){
+						addString(node.value);
+					}
+				}
+				if(node.type === 'TemplateLiteral'){
+					addString(node.quasis[0].value.raw?.trim?.());
+				}
+				if(node.type === 'Identifier' && node.name?.length > 3){
+					addString(node.name, 'identifier');
+				}
+				if(node.type === 'CallExpression' && node.callee?.name && node.callee?.name.length > 3){
+					callees.add(node.callee.name);
+				}
+				if(node.type === 'Property' && node.key?.name && node.key.name.length > 3){
+					addString(node.key.name, 'property');
+				}
+				if(node.type === 'MemberExpression' && node.property?.name && node.property.name.length > 3){
+					addString(node.property.name, 'property');
+				}
+				if(node.type === 'SwitchStatement'){
+					for(const switchCase of node.cases){
+						if(switchCase.test){
+							if(switchCase.test.type === 'Literal'){
+								addString(switchCase.test.value);
+							}else if(switchCase.test.type === 'MemberExpression'){
+								addString(switchCase.test.property.name);
+							}
+						}
+					}
+				}
+			});
+		}catch{}
 	}
 
 	const linksFile = path.resolve(`../data/zt-dashboard/links.json`);
 	await fs.writeFile(linksFile, JSON.stringify([...links].sort(), null, '\t'));
+
+	const stringsArray = [...strings].sort();
+	const stingsFile = path.resolve(`../data/zt-dashboard/strings.json`);
+	await fs.writeFile(stingsFile, JSON.stringify(stringsArray, null, '\t'));
+
+	const filteredProperties = [...properties].filter(str => !stringsArray.includes(str)).sort();
+	const propertiesFile = path.resolve(`../data/zt-dashboard/properties.json`);
+	await fs.writeFile(propertiesFile, JSON.stringify(filteredProperties.sort(), null, '\t'));
+
+	const identifiersFile = path.resolve(`../data/zt-dashboard/identifiers.json`);
+	await fs.writeFile(identifiersFile, JSON.stringify([...identifiers].sort(), null, '\t'));
+
+	const regexesFile = path.resolve(`../data/zt-dashboard/regexes.json`);
+	await fs.writeFile(regexesFile, JSON.stringify([...regexes].sort(), null, '\t'));
+
+	const calleesFile = path.resolve(`../data/zt-dashboard/callees.json`);
+	await fs.writeFile(calleesFile, JSON.stringify([...callees].sort(), null, '\t'));
 }
 
 async function run(){
@@ -186,7 +330,7 @@ async function run(){
 	await generateDashboardStructure([
 		...wantedChunks.chunks,
 		chunks.app,
-	]);
+	], chunks.app.rawTranslations);
 
 	console.log('Writing translations...');
 	const translationsDir = path.resolve('../data/zt-dashboard-translations/');
