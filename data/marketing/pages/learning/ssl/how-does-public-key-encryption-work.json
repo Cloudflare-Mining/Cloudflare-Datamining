@@ -8,8 +8,8 @@
 				"contentfulId": "crH2I7igrhO0TVRXopthp",
 				"urlSlug": "ssl/how-does-public-key-encryption-work",
 				"metaTags": {
-					"metaTitle": "How does public key encryption work? | Public key cryptography and SSL",
-					"metaDescription": "Public key encryption, also known as public key cryptography, uses two cryptographic keys: a public key and a private key. It makes TLS/SSL possible.",
+					"metaTitle": "How does public key cryptography work? | Public key encryption and SSL",
+					"metaDescription": "Public key cryptography, sometimes called public key encryption, uses two cryptographic keys: a public key and a private key. It makes TLS/SSL possible.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -26,21 +26,18 @@
 					"learningCenterName": "ssl",
 					"links": [
 						{
-							"__typename": "learningCenterArticleLink",
 							"contentTypeId": "learningCenterArticleLink",
 							"contentfulId": "357fevHD1vzqQ8mp5tKWWp",
 							"displayText": "What is SSL?",
 							"url": "/learning/ssl/what-is-ssl/"
 						},
 						{
-							"__typename": "learningCenterArticleLink",
 							"contentTypeId": "learningCenterArticleLink",
 							"contentfulId": "gwBHxAG3RwjReejRFn4Tb",
 							"displayText": "What is an SSL Certificate?",
 							"url": "/learning/ssl/what-is-an-ssl-certificate/"
 						},
 						{
-							"__typename": "learningCenterArticleLinkedList",
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "41bCzYtpXDZRkfm3BzO806",
 							"name": "SSL Header: HTTP vs. HTTPS",
@@ -73,7 +70,6 @@
 							]
 						},
 						{
-							"__typename": "learningCenterArticleLinkedList",
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "4yMBT5IbPkVA9mccwMlLAY",
 							"name": "SSL Header: How Encryption Works",
@@ -100,7 +96,7 @@
 								{
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "57mpp35oVI2JzfRKESr73H",
-									"displayText": "Public Key Encryption",
+									"displayText": "Public Key Cryptography",
 									"url": "/learning/ssl/how-does-public-key-encryption-work/"
 								},
 								{
@@ -124,7 +120,6 @@
 							]
 						},
 						{
-							"__typename": "learningCenterArticleLinkedList",
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "5NWfQa2W1T6GY7oKFVQ5yn",
 							"name": "SSL Header: SSL Glossary",
@@ -193,7 +188,6 @@
 							]
 						},
 						{
-							"__typename": "learningCenterArticleLinkedList",
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "6jvtLTbtKFKb5U7Fi94imf",
 							"name": "SSL header: Insights",
@@ -289,7 +283,7 @@
 							{
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "57mpp35oVI2JzfRKESr73H",
-								"displayText": "Public Key Encryption",
+								"displayText": "Public Key Cryptography",
 								"url": "/learning/ssl/how-does-public-key-encryption-work/"
 							},
 							{
@@ -475,13 +469,13 @@
 						]
 					}
 				},
-				"header": "How does public key encryption work? | Public key cryptography and SSL",
-				"blurbSubHeader": "Public key encryption, also known as asymmetric encryption, uses two separate keys instead of one shared one: a public key and a private key. Public key encryption is an important technology for Internet security.",
-				"objectivesHeader": "Public Key Encryption",
+				"header": "How does public key cryptography work?",
+				"blurbSubHeader": "Public key cryptography, also known as asymmetric cryptography, uses two separate keys instead of one shared one: a public key and a private key. Public key cryptography is an important technology for Internet security.",
+				"objectivesHeader": "Public Key Cryptography",
 				"objectivesList": [
-					"Define public key encryption",
-					"Understand how public key encryption works",
-					"Learn why public key encryption is essential for the TLS/SSL protocol"
+					"Define public key cryptography",
+					"Understand how public key cryptography works",
+					"Learn why public key cryptography is essential for the TLS/SSL protocol"
 				],
 				"relatedContentLinkText": "Related Content",
 				"relatedContent": [
@@ -516,7 +510,7 @@
 						"url": "/learning/ssl/what-is-mixed-content/"
 					}
 				],
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is public key encryption?</h2>\n\n<p>Public key encryption, or public key cryptography, is a method of encrypting data with two different keys and making one of the keys, the public key, available for anyone to use. The other key is known as the private key. Data encrypted with the public key can only be decrypted with the private key, and data encrypted with the private key can only be decrypted with the public key. Public key encryption is also known as asymmetric encryption. It is widely used, especially for <a href='/learning/ssl/transport-layer-security-tls/'>TLS/SSL</a>, which makes <a href='/learning/ssl/what-is-https/'>HTTPS</a> possible.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a cryptographic key?</h2>\n\n<p>In cryptography, a key is a piece of information used for scrambling data so that it appears random; often it's a large number, or string of numbers and letters. When unencrypted data, also called plaintext, is put into an encryption algorithm using the key, the plaintext comes out the other side as random-looking data. However, anyone with the right key for decrypting the data can put it back into plaintext form.</p>\n\n<p>For example, suppose we take a plaintext message, \"hello,\" and encrypt it with a key*; let's say the key is \"2jd8932kd8.\" Encrypted with this key, our simple \"hello\" now reads \"X5xJCSycg14=\", which seems like random garbage data. However, by decrypting it with that same key, we get \"hello\" back.<p>\n \n<p>Plaintext + key = ciphertext:</p>\n<pre>hello + 2jd8932kd8 = X5xJCSycg14=</pre>\n\n<p>Ciphertext + key = plaintext:</p>\n<pre>X5xJCSycg14= + 2jd8932kd8 = hello</pre>\n\n<p>(This is an example of symmetric encryption, in which only one key is used.)</p>\n\n<p>*Using Blowfish algorithm, CBC mode, Base64 encoding.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does public key encryption work?</h2>\n\n<p>Public key cryptography can seem complex for the uninitiated; fortunately a writer named <a href='https://medium.com/@vrypan/explaining-public-key-cryptography-to-non-geeks-f0994b3c2d5' target=\"_blank\">Panayotis Vryonis</a> came up with an analogy that roughly goes as follows.</p>\n\n<p>Imagine a trunk with a lock that two people, Bob and Alice, use to ship documents back and forth. A typical lock has only two states: locked and unlocked. Anyone with a copy of the key can unlock the trunk if it's locked, and vice versa. When Bob locks the trunk and sends it to Alice, he knows that Alice can use her copy of the key to unlock the trunk. This is essentially how what's known as symmetric cryptography works: one secret key is used for both encrypting and decrypting, and both sides of a conversation use the same key.</p>\n\n<p>Now imagine, instead, that Bob makes a trunk with a special kind of lock. This lock has three states instead of two:</p>\n\n<ul class=\"learning-list\">\n  <li>A. Locked, key turned all the way to the left</li>\n  <li>B. Unlocked, in the middle.</li>\n  <li>C. Locked, key turned all the way to the right.</li>\n</ul>\n\n<img src=\"https://cf-assets.www.cloudflare.com/slt3lc6tev37/7kVktQFB6hm8LvVzJbtndu/8b55e437dd1a0d3de90ce36c24ba9034/ssl-lock-analogy.svg\" class=\"responsive-image--50-pct-center\" alt=\"SSL Lock Analogy\" itemprop=\"image\" style=\"margin-top: 30px; margin-bottom: 30px;\" />\n\n<p>Instead of one key, two keys go with this lock:</p>\n\n<ul class=\"learning-list\">\n  <li>Key No. 1 can only turn to the left</li>\n  <li>Key No. 2 can only turn to the right</li>\n</ul>\n\n<p>This means that if the trunk is locked and the key is turned to position A, only key No. 2 can unlock it by turning right, to position B (unlocked). If the trunk is locked in position C, only key No. 1 can unlock it by turning the lock left, to position B.</p>\n\n<p>In other words, either key can lock the trunk – but once it is locked, only the other key can unlock it.</p>\n\n<p>Now let's say Bob makes a few dozen copies of key No. 2, the key that only turns right, and shares them with everyone he knows and anyone who wants a copy, making it his public key. He keeps key No. 1 for himself – it's his private key. What does this accomplish?</p>\n\n<ol class=\"learning-list\">\n  <li><strong>Alice can send Bob confidential data via the trunk and be confident that only Bob can unlock it.</strong> Once Alice has locked the trunk with the public key, which turns from left to right, only a key that can turn right to left can unlock it. That means only Bob's private key can unlock it.</li>\n  <li><strong>Alice can be sure that the trunk is actually from Bob, and not an impersonator, if it's locked with his private key.</strong> There's only one key that can lock the trunk so that the lock is in position A, or turned all the way to the left: Bob's private key. True, anyone can unlock it with the public key by turning the key to the right, but it's guaranteed that the trunk is from Bob.</li>\n</ol>\n\n<p>Substitute plaintext data for the trunk and cryptographic keys for the physical keys from this analogy, and this is how public key cryptography works. Only the owner of the private key can encrypt data so that the public key decrypts it; meanwhile, anyone can encrypt data with the public key, but only the owner of the private key can decrypt it.</p>\n\n<p>Therefore, anyone can send data securely to the private key owner. Also, anyone can verify that data they receive from the owner of the private key is actually from that source, and not from an impersonator (see <a href='/learning/security/threats/on-path-attack/'>What is an on-path attack?</a>).</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does TLS/SSL use public key encryption?</h2>\n\n<p>Public key encryption is extremely useful for establishing secure communications over the Internet (via HTTPS). A website's <a href='/learning/ssl/what-is-an-ssl-certificate/'>SSL/TLS certificate</a>, which is shared publicly, contains the public key, and the private key is installed on the <a href='/learning/cdn/glossary/origin-server/'>origin server</a> – it's \"owned\" by the website.</p>\n\n<p><a href='/learning/ssl/what-happens-in-a-tls-handshake/'>TLS handshakes</a> use public key cryptography to authenticate the identity of the origin server, and to exchange data that is used for generating the session keys. A key exchange algorithm, such as RSA or Diffie-Hellman, uses the public-private key pair to agree upon session keys, which are used for symmetric encryption once the handshake is complete. Clients and servers are able to agree upon new session keys for each communication session, so that bad actors are unable to decrypt communications even if they identify or steal one of the session keys.</p>",
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is public key cryptography?</h2>\n\n<p>Public key cryptography is a method of encrypting or signing data with two different keys and making one of the keys, the public key, available for anyone to use. The other key is known as the private key. Data encrypted with the public key can only be decrypted with the private key. Because of this use of two keys instead of one, public key cryptography is also known as <a href='/learning/ssl/what-is-asymmetric-encryption/'>asymmetric cryptography</a>. It is widely used, especially for <a href='/learning/ssl/transport-layer-security-tls/'>TLS/SSL</a>, which makes <a href='/learning/ssl/what-is-https/'>HTTPS</a> possible.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a cryptographic key?</h2>\n\n<p>In cryptography, a <a href='/learning/ssl/what-is-a-cryptographic-key/'>key</a> is a piece of information used for scrambling data so that it appears random; often it's a large number, or string of numbers and letters. When unencrypted data, also called plaintext, is put into a cryptographic algorithm using the key, the plaintext comes out the other side as random-looking data. However, anyone with the right key for decrypting the data can put it back into plaintext form.</p>\n\n<p>For example, suppose we take a plaintext message, \"hello,\" and encrypt it with a key; let's say the key is \"2jd8932kd8.\" Encrypted with this key, our simple \"hello\" now reads \"X5xJCSycg14=\", which seems like random garbage data. However, by decrypting it with that same key, we get \"hello\" back.<p>\n\n<p>Plaintext + key = ciphertext:</p>\n<pre>hello + 2jd8932kd8 = X5xJCSycg14=</pre>\n\n<p>Ciphertext + key = plaintext:</p>\n<pre>X5xJCSycg14= + 2jd8932kd8 = hello</pre>\n\n<p>This is an example of symmetric cryptography, in which only one key is used. In public key cryptography, there would instead be two keys. The public key would encrypt the data, and the private key would decrypt it.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does TLS/SSL use public key cryptography?</h2>\n\n<p>Public key cryptography is extremely useful for establishing secure communications over the Internet (via HTTPS). A website's <a href='/learning/ssl/what-is-an-ssl-certificate/'>SSL/TLS certificate</a>, which is shared publicly, contains the public key, and the private key is installed on the <a href='/learning/cdn/glossary/origin-server/'>origin server</a> — it's \"owned\" by the website.</p>\n\n<p><a href='/learning/ssl/what-happens-in-a-tls-handshake/'>TLS handshakes</a> use public key cryptography to authenticate the identity of the origin server, and to exchange data that is used for generating the session keys. A key exchange algorithm, such as RSA or Diffie-Hellman, uses the public-private key pair to agree upon session keys, which are used for symmetric encryption once the handshake is complete. Clients and servers are able to agree upon new session keys for each communication session, so that bad actors are unable to decrypt communications even if they identify or steal one of the session keys from a previous session.</p>",
 				"availableLocales": null,
 				"localized": true,
 				"localeList": {

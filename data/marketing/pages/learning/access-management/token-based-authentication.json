@@ -30,21 +30,18 @@
 					"learningCenterName": "accessmanagement",
 					"links": [
 						{
-							"__typename": "learningCenterArticleLink",
 							"contentTypeId": "learningCenterArticleLink",
 							"contentfulId": "LCfYTn7Kq9EqSCJhxFnw1",
 							"displayText": "What is IAM? ",
 							"url": "/learning/access-management/what-is-identity-and-access-management/"
 						},
 						{
-							"__typename": "learningCenterArticleLink",
 							"contentTypeId": "learningCenterArticleLink",
 							"contentfulId": "5TtqrotpypiEg485b2l2tf",
 							"displayText": "What is SASE?",
 							"url": "/learning/access-management/what-is-sase/"
 						},
 						{
-							"__typename": "learningCenterArticleLinkedList",
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "3IwB78Wq3DsbhUeCBPNs2L",
 							"name": "Access Management Header: Zero Trust Security",
@@ -83,7 +80,6 @@
 							]
 						},
 						{
-							"__typename": "learningCenterArticleLinkedList",
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "7GhMQh5cXBGTcKQlfZLvOE",
 							"name": "Access Management Header: Authentication",
@@ -176,7 +172,6 @@
 							]
 						},
 						{
-							"__typename": "learningCenterArticleLinkedList",
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "qo6Z0A22GGHuaNqiVcaIx",
 							"name": "Access Management Header: Remote Access",
@@ -233,7 +228,6 @@
 							]
 						},
 						{
-							"__typename": "learningCenterArticleLinkedList",
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "4fsKOVXIb6uDYmCQOVdlMl",
 							"name": "Access Management Header: Access Glossary",
@@ -320,10 +314,9 @@
 							]
 						},
 						{
-							"__typename": "learningCenterArticleLinkedList",
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "1H8EbGxdv2N9Ak908AaBC5",
-							"name": "Accesss Management: Insights",
+							"name": "Access Management: Insights",
 							"displayText": "Insights",
 							"links": [
 								{
@@ -391,6 +384,12 @@
 									"contentfulId": "5h0xL2XQThUr88KvQQNtET",
 									"displayText": "Mitigating the risk of malicious insiders in the hybrid era",
 									"url": "https://www.cloudflare.com/learning/insights-malicious-insiders/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1GXw1K6oAtiM6LI17bzM6q",
+									"displayText": "Roadmap to Zero Trust",
+									"url": "/learning/insights-roadmap-zerotrust/"
 								}
 							]
 						}

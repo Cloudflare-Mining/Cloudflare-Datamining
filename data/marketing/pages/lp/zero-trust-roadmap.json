@@ -27,7 +27,7 @@
 					"svSE": "No Page for Locale",
 					"viVN": "No Page for Locale",
 					"trTR": "No Page for Locale",
-					"zhHansCN": null
+					"zhHansCN": "English for Locale"
 				},
 				"relativePath": "lp/zero-trust-roadmap",
 				"topNavOptions": null,
@@ -53,7 +53,6 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"__typename": "bladeSignUpForm",
 						"contentTypeId": "bladeSignUpForm",
 						"contentfulId": "5H1JQVxkxWFA4seXLJJWdA",
 						"bladeName": "[ACQ] Q3'22 WEB - NAMER - Zero Trust Roadmap - Form Blade",
@@ -92,9 +91,9 @@
 							"disableEnterpriseEmailNotification": null,
 							"enableRingout": null
 						},
-						"title": "A Roadmap to Zero Trust Architecture",
+						"title": "A step-by-step roadmap to Zero Trust architecture",
 						"subtitle": null,
-						"copy": "Traditional network architecture was built with the concept of a perimeter network where once someone was on the network, there was an implicit level of trust. The shift toward cloud hosting, remote work and other modernization has created challenges with a traditional perimeter network architecture.\n\nThese challenges can be addressed by implementing a Zero Trust Architecture, which ensures that all traffic in and out of a business is verified and authorized. Implementing a Zero Trust Architecture can be done in steps without disrupting employee productivity and connectivity.\n\nThis guide was built by security experts to provide a vendor agnostic Zero Trust architecture and example implementation timeline. The timeline assumes that an organization is beginning their Zero Trust journey from scratch, but is meant to be useful for all organizations.",
+						"copy": "Traditional network architecture was designed around the concept of a perimeter network, where any user or request which made it inside the network received an implicit level of trust. Unfortunately, the shift toward cloud hosting, remote work, and other types of modernization make the network perimeter harder to rely on. \n\nThese challenges can be addressed by implementing a Zero Trust architecture, wherein all traffic moving into, out of, or within a corporate network is verified, inspected, and logged. Yet Zero Trust is difficult to make progress towards. A common reason? It's often unclear which actions are required to get there.\n\nThis guide was built by security experts to provide a vendor-agnostic roadmap to Zero Trust.  Download it now to learn:\n\n- 28 concrete steps an organization can take to achieve (or start a journey towards) Zero Trust\n- The dependencies and required time investments of those steps\n- Lists of services and products required for reach of those steps.\n",
 						"iconList": null,
 						"iconTitleList": null,
 						"iconCopyList": null,

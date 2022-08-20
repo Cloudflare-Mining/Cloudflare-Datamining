@@ -53,7 +53,6 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"__typename": "bladeHeroAnimation",
 						"contentfulId": "4onArFcXlCS0IwyAeac4wW",
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Distributed Web Gateway",
@@ -103,7 +102,6 @@
 						"imageAssetFile": null
 					},
 					{
-						"__typename": "bladeSubNav",
 						"contentTypeId": "bladeSubNav",
 						"contentfulId": "6boVf6FQYlbkEYMgl4O0jf",
 						"menuTitle": "IPFS Gateway or Ethereum Gateway",
@@ -111,7 +109,6 @@
 						"htmlId": null,
 						"menuItems": [
 							{
-								"__typename": "bladeSubNavMenuItem",
 								"contentfulId": "1N4GeEb6aFaE4XMNsGHmHJ",
 								"linkText": "IPFS Gateway",
 								"page": null,
@@ -119,7 +116,6 @@
 								"subMenuItems": null
 							},
 							{
-								"__typename": "bladeSubNavMenuItem",
 								"contentfulId": "3PD2xpOigyePgQafRzuCKl",
 								"linkText": "Ethereum Gateway",
 								"page": null,
@@ -129,7 +125,6 @@
 						]
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "1kbJDg8q4IvenWNI61Q1eg",
 						"title": "IPFS Gateway",
 						"copy": "<p id=\"_IPFSGateway\">Browse files stored on IPFS easily and securely with Cloudflare's Distributed Web Gateway without downloading software. Serve your own content hosted on IPFS from a custom domain over HTTPs.</p>",
@@ -171,7 +166,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeThreeFeatures",
 						"backgroundColor": "white",
 						"contentfulId": "3Qs3s4wG5WEYUSgMOSUSGe",
 						"contentTypeId": "bladeThreeFeatures",
@@ -209,14 +203,12 @@
 						"features": null
 					},
 					{
-						"__typename": "bladeHtml",
 						"contentTypeId": "bladeHtml",
 						"contentfulId": "5WDUBJmqTZF45BQilY3FXh",
 						"htmlContent": "<h2><center>Browse IPFS with Cloudflare's Gateway</center></h2>\n<p>Generally, to access content stored on IPFS, you have to be running an IPFS node. That means downloading dedicated software and allocating local storage space on your computer.  Cloudflare's Distributed Web Gateway makes all of that unnecessary. Cloudflare's gateway allows you to browse any file stored on the public IPFS network by going to cloudflare-ipfs.com/</p>\n\n<p>No need to download anything. No need to give up local storage space. It all happens in your browser.</p>\n<br>\n<p>Curious about what types of content you can run on IPFS? <a href='https://cloudflare-ipfs.com/ipfs/zdj7WfDfksy5WyofcpNNTwBLcBVaFziE9ywaZRwZdFB7RFKHE/travel/A/index.html'><strong>Click here to go to an example</strong></a>.</p>\n\n<p>If you want to put your own files on IPFS, go to the Developer Docs to learn how.</p>\n<br>",
 						"htmlId": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "W1cOj3vj4yS2C6qYqqWIy",
 						"title": "Faster Access ",
 						"copy": "Cloudflare's gateway helps speed up delivery of IPFS content. By caching IPFS content in our global network of data centers, Cloudflare can deliver content requested through our gateway from a data center near you.\n\n",
@@ -258,7 +250,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "3ZZ0kzrynSa0iSayesKsoS",
 						"title": "Built in Security",
 						"copy": "For each file that Cloudflare's gateway requests on your behalf, we check the hash of the file to ensure that the content hasn't been modified in transit. Our gateway also serves all content over HTTPS, protecting it from manipulation.",
@@ -300,7 +291,6 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeImageText",
 						"contentfulId": "4aDenLfbxLMdooPIhXazJI",
 						"title": null,
 						"copy": "<h3 id=\"_EthereumGateway\"class=\"headline-3 mb3 mb3-ns mb3-m mb2-l\">What is the Ethereum Gateway?</h3>\n<p>The Cloudflare Ethereum Gateway will provide access to the Ethereum network that you can provision through your own custom hostname. Using the gateway, users can add interactive elements to sites powered by Ethereum smart contracts, a decentralized compute platform. </p>\n\n<p>Moreover, in conjunction with Cloudflare's IPFS gateway, users can host websites and other resources in a decentralized manner. This, with the added speed, security and reliability provided by the Cloudflare global network.</p>\n",
@@ -342,21 +332,18 @@
 						"togglesTo": null
 					},
 					{
-						"__typename": "bladeHtml",
 						"contentTypeId": "bladeHtml",
 						"contentfulId": "70AdcdCta2BuOajr6GIa1u",
 						"htmlContent": "\n<h2 id=\"what-is-ethereum\">What is Ethereum?</h2>\n<p>Ethereum is a distributed, virtual compute network that stores and enforces\npolicies defined by smart contracts. The Ethereum network is made up of many\nglobally distributed nodes that build a consensus in the form of a blockchain,\nbased on the transfer and execution of currency</p>\n<p>Anyone, anywhere can become a node on the Ethereum network by simply running a\ncompatible Ethereum daemon such as <a href=\"https://github.com/ethereum/go-ethereum\">https://github.com/ethereum/go-ethereum</a>.</p>\n<p>Any transaction created by an individual is verified and agreed upon by the\nentire network, and becomes part of the global consensus.</p>\n<h2 id=\"how-does-ethereum-work\">How does Ethereum work?</h2>\n<p>Any user that joins the network can start performing transactions and\nrunning/writing smart contracts. Whatever the results, these will be added to\nthe global consensus on the Ethereum blockchain.</p>\n<p>Every transaction that takes place is identified with a block that joins the\nblockchain. Each block and transaction have a unique identifier that enable them\nto be read by any node on the network.</p>\n<p>Once something is written onto the blockchain, it stays there forever. This\nprovides a historical reference at which this piece of data will always be\navailable.</p>\n<h2 id=\"why-are-people-using-ethereum\">Why are people using Ethereum?</h2>\n<p>The Ethereum network represents a huge decentralized computing platform, with\nexpressive policies and programs that are run as smart contracts.</p>\n<ul>\n<li><p><strong>Integrity and resiliency of content</strong>: The advantage of this approach is that any change to the network is agreed upon by all nodes on the network and added to the blockchain. This means that there is no way of subverting the trust of the system without compromising a huge number of globally distributed nodes.</p>\n</li>\n<li><p><strong>A new computing paradigm</strong>: The Ethereum network is growing rapidly, and represents a new approach in how large distributed systems and computing platforms can be built.</p>\n</li>\n</ul>\n",
 						"htmlId": null
 					},
 					{
-						"__typename": "bladeHtml",
 						"contentTypeId": "bladeHtml",
 						"contentfulId": "5OkaRF0aR0j0PuqKEvXMJI",
 						"htmlContent": "<br>\n<h2><center>Interact with the Ethereum network using Cloudflare's gateway</center></h2>\n\n<p>Instead of running your own node that connects to the Ethereum network, which\ncan be difficult and costly, connect to Cloudflare's distributed web gateway\ninstead! The Cloudflare Ethereum gateway allows anyone to get access to the Ethereum\nnetwork. This includes viewing the current state of the network and supplying\ntheir own transactions to be added to the consensus.</p>\n<p>All connections with the network take place in the browser, <strong>nothing needs to run\non your local machine</strong>.</p>\n<ul>\n<li><p><strong>Fast Access</strong>: Benefit from Cloudflare's global edge network to reach the Ethereum network. We use the power of Cloudflare's global cache to speed up all responses from our gateway. We use our own product Argo Tunnel to speed up the routing of your queries across our network. This means that you can interact with the network from a data center close by, rather than a node that is thousands of miles anyway.</p>\n</li>\n<li><p><strong>Built-in Security</strong>: All communication with the Ethereum gateway is encrypted as it takes place over HTTPS. Traffic between the Cloudflare edge and the gateway is protected using Argo Tunnel.</p>\n</li>\n<li><p><strong>Simply JSON</strong>: All queries to the Ethereum network are simply JSON structs. See the <a href=\"https://developers.cloudflare.com/distributed-web/ipfs-gateway\" class=\"white-alternate-link\"><strong>Developer Docs</strong></a> for a list of the supported API for the Cloudflare gateway. A full description of the official API is also available <a href=\"https://github.com/ethereum/wiki/wiki/JSON-RPC\" class=\"white-alternate-link\"><strong>here</strong></a>.</p>\n</li>\n</ul>\n<br>\n",
 						"htmlId": null
 					},
 					{
-						"__typename": "bladeHtml",
 						"contentTypeId": "bladeHtml",
 						"contentfulId": "4Gof6RQBgzXH43t2ULc0hp",
 						"htmlContent": "<h2><center>Learn how to connect to the network</center></h2>\n\n<p>It is now possible to connect your website to the Cloudflare Ethereum gateway\nand bring the Ethereum network closer to your own website's visitors. After you\nconnect your website to the Ethereum gateway, visitors will be able to access\nthe Ethereum network through your domain. All you need to get started is a\ndomain that you own!</p>\n<p>These are the steps to get started:</p>\n<ul>\n<li>Go to your DNS settings for your domain. If your website is on Cloudflare, the DNS settings are accessible from your dashboard. If your website is not on Cloudflare, and you need help finding the DNS records, <a href=\"https://support.google.com/projectshield/answer/6358886?hl=en/\">see here</a>.</li>\n<li>Add a CNAME record from your domain (e.g. <a href=\"http://www.example.com\">www.example.com</a>) to cloudflare-eth.com Note: if your website is on Cloudflare, the little cloud next to this record will automatically turn gray. Because you've CNAME'd to our gateway, you'll automatically receive Cloudflare's enterprise-level performance and security enhancements, but you won't be able to control those settings yourself.</li>\n<li>Once you have added those records:</li>\n<li>Type your domain name (e.g. <a href=\"http://www.example.com\">www.example.com</a>) into the text box below and click \"Submit\".</li>\n<li>This will generate an SSL certificate, which will allow traffic from your domain to be served securely over HTTPS. Be prepared to wait up to 90 seconds. You will receive a confirmation message when the certificate has been successfully issued. When this has been issued, then any Ethereum RPC query to your website will automatically resolve to <a href=\"https://cloudflare-eth.com/\">https://cloudflare-eth.com/</a> and the response will be served from the Ethereum network.</li>\n</ul>\n<p><a href=\"https://docs.google.com/forms/d/e/1FAIpQLSeAWzY0M_Zo6c4qDtT9DCkRRVgBJdpXZr6U9fysSKlx1KMa2A/viewform\"><strong>Learn More About Ethereum</strong></a></p>\n<br>\n",

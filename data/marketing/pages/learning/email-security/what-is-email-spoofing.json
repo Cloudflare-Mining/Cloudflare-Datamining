@@ -26,28 +26,24 @@
 					"learningCenterName": "emailsecurity",
 					"links": [
 						{
-							"__typename": "learningCenterArticleLink",
 							"contentTypeId": "learningCenterArticleLink",
 							"contentfulId": "38fUyzILExC1obGHBctS0a",
 							"displayText": "What is email security?",
 							"url": "/learning/email-security/what-is-email-security/"
 						},
 						{
-							"__typename": "learningCenterArticleLink",
 							"contentTypeId": "learningCenterArticleLink",
 							"contentfulId": "1V68nslIsHJxWwDTY9YdOe",
 							"displayText": "What is email?",
 							"url": "/learning/email-security/what-is-email/"
 						},
 						{
-							"__typename": "learningCenterArticleLink",
 							"contentTypeId": "learningCenterArticleLink",
 							"contentfulId": "56i3gfoV1dUYcYGK5bpltK",
 							"displayText": "Email spoofing",
 							"url": "/learning/email-security/what-is-email-spoofing/"
 						},
 						{
-							"__typename": "learningCenterArticleLinkedList",
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "6TykCZN9dRKyXIdDKQ2GdC",
 							"name": "Email security header: blocking malicious emails",
@@ -68,18 +64,11 @@
 							]
 						},
 						{
-							"__typename": "learningCenterArticleLinkedList",
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "78Tis52PZn5UDADyFPe0JV",
 							"name": "Email security header: Glossary",
 							"displayText": "Glossary",
 							"links": [
-								{
-									"contentTypeId": "learningCenterArticleLink",
-									"contentfulId": "7f0ugrpEtOGACB76NMwBvj",
-									"displayText": "What is SMTP?",
-									"url": "/learning/email-security/what-is-smtp/"
-								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "5ywJIjtcGqzgBemMQz6M2M",
@@ -91,11 +80,22 @@
 									"contentfulId": "4diu4WZYJy08cSy5mXzFED",
 									"displayText": "What is vishing?",
 									"url": "/learning/email-security/what-is-vishing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7f0ugrpEtOGACB76NMwBvj",
+									"displayText": "What is SMTP?",
+									"url": "/learning/email-security/what-is-smtp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "QZT4WAOXrcC4wxJ5OPZUW",
+									"displayText": "What is IMAP?",
+									"url": "/learning/email-security/what-is-imap/"
 								}
 							]
 						},
 						{
-							"__typename": "learningCenterArticleLinkedList",
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "20DLRJkjwTwJWk3PInYJvl",
 							"name": "Email security header: Insights",
@@ -175,6 +175,12 @@
 								"contentfulId": "7f0ugrpEtOGACB76NMwBvj",
 								"displayText": "What is SMTP?",
 								"url": "/learning/email-security/what-is-smtp/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "QZT4WAOXrcC4wxJ5OPZUW",
+								"displayText": "What is IMAP?",
+								"url": "/learning/email-security/what-is-imap/"
 							}
 						]
 					},

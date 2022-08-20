@@ -26,21 +26,18 @@
 					"learningCenterName": "ssl",
 					"links": [
 						{
-							"__typename": "learningCenterArticleLink",
 							"contentTypeId": "learningCenterArticleLink",
 							"contentfulId": "357fevHD1vzqQ8mp5tKWWp",
 							"displayText": "What is SSL?",
 							"url": "/learning/ssl/what-is-ssl/"
 						},
 						{
-							"__typename": "learningCenterArticleLink",
 							"contentTypeId": "learningCenterArticleLink",
 							"contentfulId": "gwBHxAG3RwjReejRFn4Tb",
 							"displayText": "What is an SSL Certificate?",
 							"url": "/learning/ssl/what-is-an-ssl-certificate/"
 						},
 						{
-							"__typename": "learningCenterArticleLinkedList",
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "41bCzYtpXDZRkfm3BzO806",
 							"name": "SSL Header: HTTP vs. HTTPS",
@@ -73,7 +70,6 @@
 							]
 						},
 						{
-							"__typename": "learningCenterArticleLinkedList",
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "4yMBT5IbPkVA9mccwMlLAY",
 							"name": "SSL Header: How Encryption Works",
@@ -100,7 +96,7 @@
 								{
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "57mpp35oVI2JzfRKESr73H",
-									"displayText": "Public Key Encryption",
+									"displayText": "Public Key Cryptography",
 									"url": "/learning/ssl/how-does-public-key-encryption-work/"
 								},
 								{
@@ -124,7 +120,6 @@
 							]
 						},
 						{
-							"__typename": "learningCenterArticleLinkedList",
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "5NWfQa2W1T6GY7oKFVQ5yn",
 							"name": "SSL Header: SSL Glossary",
@@ -193,7 +188,6 @@
 							]
 						},
 						{
-							"__typename": "learningCenterArticleLinkedList",
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "6jvtLTbtKFKb5U7Fi94imf",
 							"name": "SSL header: Insights",
@@ -289,7 +283,7 @@
 							{
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "57mpp35oVI2JzfRKESr73H",
-								"displayText": "Public Key Encryption",
+								"displayText": "Public Key Cryptography",
 								"url": "/learning/ssl/how-does-public-key-encryption-work/"
 							},
 							{
@@ -475,9 +469,9 @@
 						]
 					}
 				},
-				"header": "What is asymmetric encryption? | Asymmetric vs. symmetric encryption",
+				"header": "What is asymmetric encryption?",
 				"blurbSubHeader": "Asymmetric encryption, also known as public key encryption, makes the HTTPS protocol possible. In asymmetric encryption, two keys are used instead of one.",
-				"objectivesHeader": "Aymmetric Encryption",
+				"objectivesHeader": "Asymmetric Encryption",
 				"objectivesList": [
 					"Learn what asymmetric encryption is",
 					"Understand the difference between asymmetric and symmetric encryption",
@@ -488,7 +482,7 @@
 					{
 						"contentTypeId": "learningCenterArticleLink",
 						"contentfulId": "57mpp35oVI2JzfRKESr73H",
-						"displayText": "Public Key Encryption",
+						"displayText": "Public Key Cryptography",
 						"url": "/learning/ssl/how-does-public-key-encryption-work/"
 					},
 					{
@@ -516,7 +510,7 @@
 						"url": "/learning/ssl/keyless-ssl/"
 					}
 				],
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is asymmetric encryption?</h2>\n\n<p>There are two sides in an encrypted communication: the sender, who encrypts the data, and the recipient, who decrypts it. As the name implies, asymmetric encryption is different on each side; the sender and the recipient use two different keys. Asymmetric encryption, also known as <a href='/learning/ssl/how-does-public-key-encryption-work/'>public key encryption</a>, uses a public key-private key pairing: data encrypted with the private key can only be decrypted with the public key, and vice versa.</p>\n\n<p><a href='/learning/ssl/transport-layer-security-tls/'>TLS</a> (or <a href='/learning/ssl/what-is-ssl/'>SSL</a>), the protocol that makes <a href='/learning/ssl/what-is-https/'>HTTPS</a> possible, relies on asymmetric encryption. A client will obtain a website's public key from that website's TLS certificate (or <a href='/learning/ssl/what-is-an-ssl-certificate/'>SSL certificate</a>) and use that to initiate secure communication. The website keeps the private key secret.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is symmetric encryption?</h2>\n\n<p>In symmetric encryption, the same key both encrypts and decrypts data. For symmetric encryption to work, the two or more communicating parties must know what the key is; for it to remain secure, no third party should be able to guess or steal the key.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How are asymmetric encryption and symmetric encryption used for TLS/SSL?</h2>\n\n<p>TLS, also known as SSL, is a protocol for encrypting communications over a network. TLS uses both asymmetric encryption and symmetric encryption. During a <a href='/learning/ssl/what-happens-in-a-tls-handshake/'>TLS handshake</a>, the client and server agree upon new keys to use for symmetric encryption, called \"session keys.\" Each new communication session will start with a new TLS handshake and use new session keys.</p>\n\n<p>The TLS handshake itself makes use of asymmetric encryption for security while the two sides generate the session keys, and in order to authenticate the identity of the website's origin server.\n</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does a cryptographic key work?</h2>\n\n<p>A key is a string of data that, when used in conjunction with a <a href='/learning/ssl/what-is-a-cryptographic-key/'>cryptographic algorithm</a>, encrypts or decrypts messages. Data encrypted with the key will look like a random series of characters, but anyone with the right key (either the same key or one of the public/private key pairing) can put it back into plaintext form.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does Cloudflare help web properties implement asymmetric encryption?</h2>\n\n<p>Cloudflare offers the use of <a href='/ssl/'>free SSL certificates</a>. Website owners who have signed up for Cloudflare can implement SSL with one click. This makes it easy for websites to move from <a href='/learning/ddos/glossary/hypertext-transfer-protocol-http/'>HTTP</a> to HTTPS, keeping user data secure and increasing user trust.</p>\n\n<p>To learn more about SSL/TLS handshakes and how they use both asymmetric and symmetric encryption, see <a href='/learning/ssl/what-happens-in-a-tls-handshake/'>What happens in a TLS handshake?</a></p>",
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is asymmetric encryption?</h2>\n\n<p>There are two sides in an encrypted communication: the sender, who encrypts the data, and the recipient, who decrypts it. As the name implies, asymmetric encryption is different on each side; the sender and the recipient use two different keys. Asymmetric encryption, also known as <a href='/learning/ssl/how-does-public-key-encryption-work/'>public key encryption</a>, uses a public key-private key pairing: data encrypted with the public key can only be decrypted with the private key.</p>\n\n<p><a href='/learning/ssl/transport-layer-security-tls/'>TLS</a> (or <a href='/learning/ssl/what-is-ssl/'>SSL</a>), the protocol that makes <a href='/learning/ssl/what-is-https/'>HTTPS</a> possible, relies partially on asymmetric encryption. A client will obtain a website's public key from that website's TLS certificate (or <a href='/learning/ssl/what-is-an-ssl-certificate/'>SSL certificate</a>) and use that to initiate secure communication. The website keeps the private key secret.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is symmetric encryption?</h2>\n\n<p>In symmetric encryption, the same key both encrypts and decrypts data. For symmetric encryption to work, the two or more communicating parties must know what the key is; for it to remain secure, no third party should be able to guess or steal the key.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How are asymmetric encryption and symmetric encryption used for TLS/SSL?</h2>\n\n<p>TLS, historically known as SSL, is a protocol for encrypting communications over a network. TLS uses both asymmetric encryption and symmetric encryption. During a <a href='/learning/ssl/what-happens-in-a-tls-handshake/'>TLS handshake</a>, the client and server agree upon new keys to use for symmetric encryption, called \"session keys.\" Each new communication session will start with a new TLS handshake and use new session keys.</p>\n\n<p>The TLS handshake itself makes use of asymmetric cryptography for security while the two sides generate the session keys, and in order to authenticate the identity of the website's origin server.\n</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does a cryptographic key work?</h2>\n\n<p>A key is a string of data that, when used in conjunction with a <a href='/learning/ssl/what-is-a-cryptographic-key/'>cryptographic algorithm</a>, encrypts or decrypts messages. Data encrypted with the key will look like a random series of characters, but anyone with the right key can put it back into plaintext form. (A key can also be used to digitally sign data, not just for encryption.)</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does Cloudflare help web properties implement asymmetric encryption?</h2>\n\n<p>Cloudflare offers the use of <a href='/ssl/'>free SSL/TLS certificates</a>. Website owners who have signed up for Cloudflare can implement SSL/TLS with one click. This makes it easy for websites to move from <a href='/learning/ddos/glossary/hypertext-transfer-protocol-http/'>HTTP</a> to HTTPS, keeping user data secure and increasing user trust.</p>\n\n<p>To learn more about SSL/TLS handshakes and how they use both asymmetric and symmetric encryption, see <a href='/learning/ssl/what-happens-in-a-tls-handshake/'>What happens in a TLS handshake?</a></p>",
 				"availableLocales": null,
 				"localized": true,
 				"localeList": {

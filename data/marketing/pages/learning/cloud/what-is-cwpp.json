@@ -30,14 +30,12 @@
 					"learningCenterName": "cloud",
 					"links": [
 						{
-							"__typename": "learningCenterArticleLink",
 							"contentTypeId": "learningCenterArticleLink",
 							"contentfulId": "5ESn5jCqN6jtX9UJgIrsRH",
 							"displayText": "What is the cloud?",
 							"url": "/learning/cloud/what-is-the-cloud/"
 						},
 						{
-							"__typename": "learningCenterArticleLinkedList",
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "39LIvqQCFa8iU7ITBQmaEm",
 							"name": "Cloud Header: Cloud Basics",
@@ -82,7 +80,6 @@
 							]
 						},
 						{
-							"__typename": "learningCenterArticleLinkedList",
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "3X81SpcBRddDrjqw17J1l2",
 							"name": "Cloud Header: Multicloud and Hybrid Cloud",
@@ -121,7 +118,6 @@
 							]
 						},
 						{
-							"__typename": "learningCenterArticleLinkedList",
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "486fCRIX89EKjcHElALCiw",
 							"name": "Cloud Header: Securing the Cloud",
@@ -172,7 +168,6 @@
 							]
 						},
 						{
-							"__typename": "learningCenterArticleLinkedList",
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "2OkRH9jhjm8FmxBtbYnZ9V",
 							"name": "Cloud Header: Cloud Glossary",
@@ -213,11 +208,16 @@
 									"contentfulId": "4tdJ2w6eYbR8xOXMfltAVK",
 									"displayText": "Cloudflare and the Cloud",
 									"url": "/learning/cloud/cloudflare-and-the-cloud/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "J93zt7n2b6WBPOCwb1NVy",
+									"displayText": "What is blob storage?",
+									"url": "/learning/cloud/what-is-blob-storage/ "
 								}
 							]
 						},
 						{
-							"__typename": "learningCenterArticleLinkedList",
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "7qiJLGJVI1us6Le145zRbC",
 							"name": "Cloud Header: Insights",
@@ -420,6 +420,12 @@
 								"contentfulId": "5W7CZ85ygOlDuRPDKS8YyD",
 								"displayText": "Cloud security",
 								"url": "/learning/cloud/what-is-cloud-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "J93zt7n2b6WBPOCwb1NVy",
+								"displayText": "What is blob storage?",
+								"url": "/learning/cloud/what-is-blob-storage/ "
 							}
 						]
 					},

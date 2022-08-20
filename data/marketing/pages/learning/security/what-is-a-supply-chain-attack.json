@@ -1,0 +1,834 @@
+{
+	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
+	"path": "/learning/security/what-is-a-supply-chain-attack/",
+	"result": {
+		"data": {
+			"learningCenterArticle": {
+				"contentTypeId": "learningCenterArticle",
+				"contentfulId": "1FhnPvhgMxIB1IaQmWWoEc",
+				"urlSlug": "security/what-is-a-supply-chain-attack",
+				"metaTags": {
+					"metaTitle": "What is a supply chain attack?",
+					"metaDescription": "A supply chain attack uses third-party tools or services to infiltrate a target's system or network. Learn how to stop supply chain attacks.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"metaTitle": null,
+				"metaDescription": null,
+				"learningCenterArticleSubHeader": {
+					"contentTypeId": "learningCenterArticleSubHeader",
+					"contentfulId": "2AptEr2bqQDzL0VuYp3VhQ",
+					"learningCenterName": "security",
+					"links": [
+						{
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "7esVgOhtx4g1wc9j085HEg",
+							"displayText": "Web Application Security",
+							"url": "/learning/security/what-is-web-application-security/"
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "4kvm6bAM81cW4E1whOMHfF",
+							"name": "Security Header: API Security",
+							"displayText": "API Security",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5bLsysaJiy1V2vLbnfFSCA",
+									"displayText": "What is an API?",
+									"url": "/learning/security/api/what-is-an-api/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "67hyyJkFehDZPSijR5982x",
+									"displayText": "API Security",
+									"url": "/learning/security/api/what-is-api-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1LfmC7tjXk7k8A8Sc4HWS9",
+									"displayText": "OWASP API Security Top 10",
+									"url": "/learning/security/api/owasp-api-security-top-10/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2H8a0y76R0sqYn2lm1EBhU",
+									"displayText": "API Call",
+									"url": "/learning/security/api/what-is-api-call/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7J4bElUm4dIjsfAvV6c51Z",
+									"displayText": "API Endpoint",
+									"url": "/learning/security/api/what-is-api-endpoint/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "23owvyEXORbnCzHlcV3G5J",
+							"name": "Security Header: Common Threats",
+							"displayText": "Common Threats",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7E7WwNyil3bJj73NvtGlm2",
+									"displayText": "On-Path Attack",
+									"url": "/learning/security/threats/on-path-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "52yU1a7q2E6gaFa6THLqQK",
+									"displayText": "Buffer Overflow",
+									"url": "/learning/security/threats/buffer-overflow/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4q4d8ySq1tGNmgVpYIbyii",
+									"displayText": "Cross-Site Scripting",
+									"url": "/learning/security/threats/cross-site-scripting/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5AX3kxdgXjJCUN3uv7mvzJ",
+									"displayText": "Cross-Site Request Forgery",
+									"url": "/learning/security/threats/cross-site-request-forgery/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "29Fkw1XKWHACE0x4W0BypM",
+									"displayText": "SQL Injection",
+									"url": "/learning/security/threats/sql-injection/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2Dg5Q4JDGkBwOFWJN8wgsC",
+									"displayText": "Social Engineering Attack",
+									"url": "/learning/security/threats/social-engineering-attack/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6XPhbYmE7dwzO6WII8TzfE",
+									"displayText": "Data Breach",
+									"url": "/learning/security/what-is-a-data-breach/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5cGXrdJmHiePGFShMVWvtf",
+									"displayText": "Supply Chain Attacks",
+									"url": "security/what-is-a-supply-chain-attack"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "59UCpRlTqcjNsMj5iWQZfb",
+							"name": "Security Header: More Attacks",
+							"displayText": "More Attacks",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4mRTue6odVQv3lCIQp8t4l",
+									"displayText": "Global DNS hijacking",
+									"url": "/learning/security/global-dns-hijacking-threat/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2SaFJ6C5mPRd8BvBp7tArF",
+									"displayText": "BGP Hijacking",
+									"url": "/learning/security/glossary/bgp-hijacking/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5tYNdzP27M2rbvr927jcxk",
+									"displayText": "Zero-Day Exploit",
+									"url": "/learning/security/threats/zero-day-exploit/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7AHfnw4GRNrlxwOKgiKqpb",
+									"displayText": "What is Swatting?",
+									"url": "/learning/security/glossary/what-is-swatting/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4Q1GEBC3aDwiTLD0FY1UOf",
+									"displayText": "KRACK Attack",
+									"url": "/learning/security/what-is-a-krack-attack/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "7AzKZHJSj74Q2LkjotHBDE",
+							"name": "Security Header: Ransomware",
+							"displayText": "Ransomware",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7B34gNUdmG55POcpXlcGLo",
+									"displayText": "What Is Ransomware?",
+									"url": "/learning/security/ransomware/what-is-ransomware/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "265Cektgw28NG3ss1yKbCQ",
+									"displayText": "Preventing Ransomware Attacks",
+									"url": "/learning/security/ransomware/how-to-prevent-ransomware/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2EtXHxPEU8dFW4R0g6nOuL",
+									"displayText": "Ryuk Ransomware",
+									"url": "/learning/security/ransomware/ryuk-ransomware/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6GX92CRtwCTcMOeAfWRbGt",
+									"displayText": "Maze Ransomware",
+									"url": "/learning/security/ransomware/maze-ransomware/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "iwA3DULV07dv6Cjgc4o1F",
+									"displayText": "WannaCry Ransomware",
+									"url": "/learning/security/ransomware/wannacry-ransomware/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5E4oePL3Y3toYR1AOCTrH8",
+									"displayText": "Petya and NotPetya",
+									"url": "/learning/security/ransomware/petya-notpetya-ransomware/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4MGxlaarKOMNRMlHy5cauE",
+									"displayText": "Ransomware-as-a-Service (RaaS)",
+									"url": "/learning/security/ransomware/ransomware-as-a-service/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "5hGYGUNPlUimQ8zfoTF4hR",
+							"name": "Security Header: Glossary",
+							"displayText": "Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4Nzjjp656PRDIGKSTWZT3j",
+									"displayText": "OWASP Top Ten",
+									"url": "/learning/security/threats/owasp-top-10/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2tTmn0TpFzNeaYtdgN1VqA",
+									"displayText": "Meltdown/Spectre",
+									"url": "/learning/security/threats/meltdown-spectre/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "18pQIL9UgJUzveNS34uaYt",
+									"displayText": "Malicious Payload",
+									"url": "/learning/security/glossary/malicious-payload/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3toLoFceaeXeYfxdDjIqZw",
+									"displayText": "Penetration Testing",
+									"url": "/learning/security/glossary/what-is-penetration-testing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5o2i5YMZ6zytouhLBTNmBA",
+									"displayText": "What is a Firewall?",
+									"url": "/learning/security/what-is-a-firewall/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7KRboR85H5bMxk2EMc0ubi",
+									"displayText": "What is an NGFW?",
+									"url": "/learning/security/what-is-next-generation-firewall-ngfw/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2Coozbp70nuj5hyqnYdSsz",
+									"displayText": "What is BGP?",
+									"url": "/learning/security/glossary/what-is-bgp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2rHmLbOwwKqmTccVo3hAH6",
+									"displayText": "What is HTTPS Inspection?",
+									"url": "/learning/security/what-is-https-inspection"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "HKJIs8IRHEhqfkkfh8ery",
+									"displayText": "Threat intelligence",
+									"url": "/learning/security/glossary/what-is-threat-intelligence/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7uIZizD3VmA3mKcS7oU05s",
+									"displayText": "Defense in Depth",
+									"url": "/learning/security/glossary/what-is-defense-in-depth/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6GTKw596xBRlE5DU7qyUfI",
+									"displayText": "What is an endpoint?",
+									"url": "/learning/security/glossary/what-is-endpoint/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2lH9xh74JZ8zsMn2gLOLzG",
+									"displayText": "Endpoint Security",
+									"url": "/learning/security/glossary/endpoint-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1rMA7WEz9hC379I8mZxhcD",
+									"displayText": "Lateral Movement",
+									"url": "/learning/security/glossary/what-is-lateral-movement/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3VBRrElHGrMrIBbQ2UrbFq",
+									"displayText": "IoT Security",
+									"url": "/learning/security/glossary/iot-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6AOcfzKk4yuN8XREQTEToj",
+									"displayText": "Attack Vector",
+									"url": "/learning/security/glossary/attack-vector/ "
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "60NMUJD4OQw5PuujgjtNlj",
+									"displayText": "Data at Rest",
+									"url": "/learning/security/glossary/data-at-rest/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "4p2aAtVD45hFwfp8CgZf5",
+							"name": "Security header: Insights",
+							"displayText": "Insights",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5fFLZFiqHTYjdUMQ4wc30f",
+									"displayText": "Attack surface grows with the proliferation of APIs",
+									"url": "https://www.cloudflare.com/insights-api-proliferation/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7nYhsmOt8j2TMfIi6t2pOG",
+									"displayText": "The future of web application security",
+									"url": "https://www.cloudflare.com/insights-future-web-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "22UXessHsWvrAW3d6QdL1i",
+									"displayText": "Securing the post-quantum world",
+									"url": "https://www.cloudflare.com/insights-quantum-computing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1fudUp354PiIkWi5M2QBuE",
+									"displayText": "The risks smaller DDoS attacks pose to network infrastructure",
+									"url": "https://www.cloudflare.com/insights-small-ddos-attacks/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "Bngdc6ouSn7Q4HEyfH9tZ",
+									"displayText": "Using DDoS threats to extort organizations",
+									"url": "https://www.cloudflare.com/insights-ransom-ddos"
+								}
+							]
+						}
+					]
+				},
+				"learningCenterArticleFooter": {
+					"contentTypeId": "learningCenterArticleFooter",
+					"contentfulId": "4rekcWVhzo2nZPugOtJlOh",
+					"learningCenterName": "security",
+					"column1Title": "About Web Application Security",
+					"column1": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "ZctowvgiEQNLcljxty1Ou",
+						"name": "Security Footer: About",
+						"displayText": "About Web Application Security",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7esVgOhtx4g1wc9j085HEg",
+								"displayText": "Web Application Security",
+								"url": "/learning/security/what-is-web-application-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "15Vc3WANDpfVAs97KDEpzB",
+								"displayText": "Why Use HTTPS?",
+								"url": "/learning/ssl/why-use-https/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3icyl9iMQn9zZDBiIp2C0e",
+								"displayText": "What is a Data Breach?",
+								"url": "/learning/security/what-is-a-data-breach/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Nzjjp656PRDIGKSTWZT3j",
+								"displayText": "OWASP Top Ten",
+								"url": "/learning/security/threats/owasp-top-10/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1LfmC7tjXk7k8A8Sc4HWS9",
+								"displayText": "OWASP API Security Top 10",
+								"url": "/learning/security/api/owasp-api-security-top-10/"
+							}
+						]
+					},
+					"column2Title": "Common Threats",
+					"column2": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "TgNnUjg3LMpb4tt3nuvBQ",
+						"name": "Security Footer: Common Threats",
+						"displayText": "Common Threats",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7E7WwNyil3bJj73NvtGlm2",
+								"displayText": "On-Path Attack",
+								"url": "/learning/security/threats/on-path-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Iu9iZ8JoQuMdcLsZeMa1g",
+								"displayText": "Brute Force Attack",
+								"url": "/learning/bots/brute-force-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2krgvvRxSgPgmshS6kPUsN",
+								"displayText": "Buffer Overflow Attack",
+								"url": "/learning/security/threats/buffer-overflow/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4q4d8ySq1tGNmgVpYIbyii",
+								"displayText": "Cross-Site Scripting",
+								"url": "/learning/security/threats/cross-site-scripting/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5AX3kxdgXjJCUN3uv7mvzJ",
+								"displayText": "Cross-Site Request Forgery",
+								"url": "/learning/security/threats/cross-site-request-forgery/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "29Fkw1XKWHACE0x4W0BypM",
+								"displayText": "SQL Injection",
+								"url": "/learning/security/threats/sql-injection/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2Dg5Q4JDGkBwOFWJN8wgsC",
+								"displayText": "Social Engineering Attack",
+								"url": "/learning/security/threats/social-engineering-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4QoH8dVxKKYSsfePjHNKxD",
+								"displayText": "Phishing Attack",
+								"url": "/learning/access-management/phishing-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5tYNdzP27M2rbvr927jcxk",
+								"displayText": "Zero-Day Exploit",
+								"url": "/learning/security/threats/zero-day-exploit/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7B34gNUdmG55POcpXlcGLo",
+								"displayText": "What Is Ransomware?",
+								"url": "/learning/security/ransomware/what-is-ransomware/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4MGxlaarKOMNRMlHy5cauE",
+								"displayText": "Ransomware-as-a-Service (RaaS)",
+								"url": "/learning/security/ransomware/ransomware-as-a-service/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5cGXrdJmHiePGFShMVWvtf",
+								"displayText": "Supply Chain Attacks",
+								"url": "security/what-is-a-supply-chain-attack"
+							}
+						]
+					},
+					"column3Title": "VPN Resources",
+					"column3": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "6xpp724MrKUqfVapxIHi9P",
+						"name": "Security Footer: VPN Resources",
+						"displayText": "VPN Resources",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4FKVZaN6mpIm5iyZ7Lcxs5",
+								"displayText": "What's a VPN? ",
+								"url": "/learning/access-management/what-is-a-vpn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4W9Oi0Ap2vVUSKzYj0a9cM",
+								"displayText": "Choosing the Best VPN",
+								"url": "/learning/security/vpn/choosing-the-best-vpn/"
+							}
+						]
+					},
+					"column4Title": "Security Glossary",
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "7lOnb52evTwjUnjwLZHXhl",
+						"name": "Security Footer: Glossary",
+						"displayText": "Security Glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2tTmn0TpFzNeaYtdgN1VqA",
+								"displayText": "Meltdown/Spectre",
+								"url": "/learning/security/threats/meltdown-spectre/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "18pQIL9UgJUzveNS34uaYt",
+								"displayText": "Malicious Payload",
+								"url": "/learning/security/glossary/malicious-payload/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3toLoFceaeXeYfxdDjIqZw",
+								"displayText": "Penetration Testing",
+								"url": "/learning/security/glossary/what-is-penetration-testing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7AHfnw4GRNrlxwOKgiKqpb",
+								"displayText": "What is Swatting?",
+								"url": "/learning/security/glossary/what-is-swatting/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2Coozbp70nuj5hyqnYdSsz",
+								"displayText": "What is BGP?",
+								"url": "/learning/security/glossary/what-is-bgp/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2SaFJ6C5mPRd8BvBp7tArF",
+								"displayText": "BGP Hijacking",
+								"url": "/learning/security/glossary/bgp-hijacking/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2rHmLbOwwKqmTccVo3hAH6",
+								"displayText": "What is HTTPS Inspection?",
+								"url": "/learning/security/what-is-https-inspection"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5bLsysaJiy1V2vLbnfFSCA",
+								"displayText": "What is an API?",
+								"url": "/learning/security/api/what-is-an-api/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "67hyyJkFehDZPSijR5982x",
+								"displayText": "API Security",
+								"url": "/learning/security/api/what-is-api-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "HKJIs8IRHEhqfkkfh8ery",
+								"displayText": "Threat intelligence",
+								"url": "/learning/security/glossary/what-is-threat-intelligence/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7uIZizD3VmA3mKcS7oU05s",
+								"displayText": "Defense in Depth",
+								"url": "/learning/security/glossary/what-is-defense-in-depth/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6GTKw596xBRlE5DU7qyUfI",
+								"displayText": "What is an endpoint?",
+								"url": "/learning/security/glossary/what-is-endpoint/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2lH9xh74JZ8zsMn2gLOLzG",
+								"displayText": "Endpoint Security",
+								"url": "/learning/security/glossary/endpoint-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7KRboR85H5bMxk2EMc0ubi",
+								"displayText": "What is an NGFW?",
+								"url": "/learning/security/what-is-next-generation-firewall-ngfw/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2EtXHxPEU8dFW4R0g6nOuL",
+								"displayText": "Ryuk Ransomware",
+								"url": "/learning/security/ransomware/ryuk-ransomware/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6GX92CRtwCTcMOeAfWRbGt",
+								"displayText": "Maze Ransomware",
+								"url": "/learning/security/ransomware/maze-ransomware/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "iwA3DULV07dv6Cjgc4o1F",
+								"displayText": "WannaCry Ransomware",
+								"url": "/learning/security/ransomware/wannacry-ransomware/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "265Cektgw28NG3ss1yKbCQ",
+								"displayText": "Preventing Ransomware Attacks",
+								"url": "/learning/security/ransomware/how-to-prevent-ransomware/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1rMA7WEz9hC379I8mZxhcD",
+								"displayText": "Lateral Movement",
+								"url": "/learning/security/glossary/what-is-lateral-movement/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3VBRrElHGrMrIBbQ2UrbFq",
+								"displayText": "IoT Security",
+								"url": "/learning/security/glossary/iot-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6AOcfzKk4yuN8XREQTEToj",
+								"displayText": "Attack Vector",
+								"url": "/learning/security/glossary/attack-vector/ "
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5E4oePL3Y3toYR1AOCTrH8",
+								"displayText": "Petya and NotPetya",
+								"url": "/learning/security/ransomware/petya-notpetya-ransomware/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2H8a0y76R0sqYn2lm1EBhU",
+								"displayText": "API Call",
+								"url": "/learning/security/api/what-is-api-call/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7J4bElUm4dIjsfAvV6c51Z",
+								"displayText": "API Endpoint",
+								"url": "/learning/security/api/what-is-api-endpoint/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "60NMUJD4OQw5PuujgjtNlj",
+								"displayText": "Data at Rest",
+								"url": "/learning/security/glossary/data-at-rest/"
+							}
+						]
+					},
+					"column5Title": "Learning Center Navigation",
+					"column5": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "17Lz0GxJBWEftufXeTsGwJ",
+						"name": "Security Footer: Nav",
+						"displayText": "Learning Center Navigation",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2hdSVoYA5asSIG0U2ae20c",
+								"displayText": "Learning Center Home",
+								"url": "/learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "56Y6OytBNgNoNDWQL2ezlf",
+								"displayText": "DDoS Learning Center",
+								"url": "/learning/ddos/what-is-a-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Ra0qmFJ1uewk2MYscW8KI",
+								"displayText": "DNS Learning Center",
+								"url": "/learning/dns/what-is-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6DGcnYIMM0eCGwqAKu2ECO",
+								"displayText": "CDN Learning Center",
+								"url": "/learning/cdn/what-is-a-cdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q67XLnKqKhfmDJR4q9hJT",
+								"displayText": "Performance Learning Center",
+								"url": "/learning/performance/why-site-speed-matters/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z3UC9tP1Kjk85BX5zSGPY",
+								"displayText": "Serverless Learning Center",
+								"url": "/learning/serverless/what-is-serverless/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52V7iI9YriJ0En2SGmEXz5",
+								"displayText": "SSL Learning Center",
+								"url": "/learning/ssl/what-is-ssl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7D22pOfjb98KXcnAJyJFCX",
+								"displayText": "Bots Learning Center",
+								"url": "/learning/bots/what-is-a-bot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7jgqDUFFzaLuKrsaBTLdV0",
+								"displayText": "Cloud Learning Center",
+								"url": "/learning/cloud/what-is-the-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6PdBQjiFs98K6RQuG5TYNd",
+								"displayText": "Access Management Learning Center",
+								"url": "/learning/access-management/what-is-identity-and-access-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3jjEMuuLrCwhRidjG5kglM",
+								"displayText": "Network Layer Learning Center",
+								"url": "/learning/network-layer/what-is-the-network-layer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RvS0l0m86G1VISDrEvlJb",
+								"displayText": "Privacy Learning Center",
+								"url": "/learning/privacy/what-is-data-privacy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "MytksT5WU5mh863BQYEkj",
+								"displayText": "Video Streaming Learning Center",
+								"url": "/learning/video/what-is-streaming/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
+								"displayText": "Email Security Learning Center",
+								"url": "/learning/email-security/what-is-email-security/"
+							}
+						]
+					}
+				},
+				"header": "What is a supply chain attack?",
+				"blurbSubHeader": "During a supply chain attack, attackers exploit third-party dependencies in order to infiltrate a target's system or network.",
+				"objectivesHeader": "Supply chain attacks",
+				"objectivesList": [
+					"Define 'supply chain attack'",
+					"Explain how a supply chain attack is carried out",
+					"Learn how to stop supply chain attacks"
+				],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "6cfMFCb4qcI26OSWqKMK82",
+						"displayText": "Malware",
+						"url": "/learning/ddos/glossary/malware/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "4QoH8dVxKKYSsfePjHNKxD",
+						"displayText": "Phishing Attack",
+						"url": "/learning/access-management/phishing-attack/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "1rMA7WEz9hC379I8mZxhcD",
+						"displayText": "Lateral Movement",
+						"url": "/learning/security/glossary/what-is-lateral-movement/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "5tYNdzP27M2rbvr927jcxk",
+						"displayText": "Zero-Day Exploit",
+						"url": "/learning/security/threats/zero-day-exploit/"
+					}
+				],
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is a supply chain attack?</h2>\n\n<p>A supply chain attack uses third-party tools or services — collectively referred to as a 'supply chain' — to infiltrate a target's system or network. These attacks are sometimes called \"value-chain attacks\" or \"third-party attacks.\"</p>\n\n<p>By nature, supply chain attacks are indirect: they target the third-party dependencies that their ultimate targets rely on (often unknowingly). A dependency is a program or piece of code (often written in JavaScript) from third-party providers that enhances application functionality. A dependency used by an ecommerce retailer, for instance, might help run customer assistance chatbots or capture information about site visitor activity. Hundreds, if not thousands, of these dependencies can be found in a broad range of software, applications, and services that targets use to maintain their applications and networks.</p>\n\n<p>In a supply chain attack, an attacker might target a cybersecurity vendor and add malicious code (or '<a href='/learning/ddos/glossary/malware/'>malware</a>') to their software, which is then sent out in a system update to that vendor's clients. When the clients download the update, believing it to be from a trusted source, the malware grants attackers access to those clients' systems and information. (This is essentially how the <a href='https://blog.cloudflare.com/solarwinds-orion-compromise-trend-data/'>SolarWinds attack</a> was carried out against 18,000 customers in 2020.)</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How is a supply chain attack carried out?</h2>\n\n<p>Before a supply chain attack can be carried out, attackers need to gain access to the third-party system, application, or tool they plan to exploit (also known as an \"upstream\" attack). This may be done by using stolen credentials, targeting vendors with temporary access to an organization's system, or exploiting an unknown software vulnerability, among other methods.</p>\n\n<p>Once access to this third-party dependency has been secured, the \"downstream\" attack — the attack that reaches the ultimate target, often via their browser or device — can be carried out in a variety of ways.</p>\n\n<p>Returning to the previous example, the \"upstream\" attack occurs when the attacker adds malicious code to the software of a cybersecurity vendor. Then, the \"downstream\" attack is performed when that malware executes on end-user devices via a routine software update.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are common types of supply chain attacks?</h2>\n\n<p>Supply chain attacks may target hardware, software, applications, or devices that are managed by third parties. Some common attack types include the following:</p>\n\n<p><strong>Browser-based attacks</strong> run malicious code on end-user browsers. Attackers may target JavaScript libraries or browser extensions that automatically execute code on user devices. Alternatively, they may also steal sensitive user information that is stored in the browser (via <a href='/learning/privacy/what-are-cookies/'>cookies</a>, session storage, and so on).</p>\n\n<p><strong>Software attacks</strong> disguise malware in software updates. As in the SolarWinds attack, users' systems may download these updates automatically — inadvertently allowing attackers to infect their devices and carry out further actions.</p>\n\n<p><strong>Open-source attacks</strong> exploit vulnerabilities in open-source code. Open-source code packages can help organizations accelerate application and software development, but they may also allow attackers to tamper with known vulnerabilities or conceal malware that is then used to infiltrate the user's system or device.</p>\n\n<p><strong>JavaScript attacks</strong> exploit existing vulnerabilities in JavaScript code or embed malicious scripts in webpages that automatically execute when loaded by a user.</p>\n\n<p><strong>Magecart attacks</strong> use malicious JavaScript code to skim credit card information from website checkout forms, which are often managed by third parties. This is also known as \"formjacking.\"</p>\n\n<p><strong>Watering hole attacks</strong> identify websites that are commonly used by a large number of users (e.g. a website builder or government website). Attackers may use a number of tactics to identify security vulnerabilities within the site, then use those vulnerabilities to deliver malware to unsuspecting users.</p>\n\n<p><strong>Cryptojacking</strong> allows attackers to steal computational resources needed to mine cryptocurrency. They can do this in several ways: by injecting malicious code or ads into a website, embedding cryptomining scripts into open-source code repositories, or using <a href='/learning/access-management/phishing-attack/'>phishing</a> tactics to deliver malware-infected links to unsuspecting users.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How to defend against supply chain attacks</h2>\n\n<p>Any attack that exploits or tampers with third-party software, hardware, or applications is considered a supply chain attack. Organizations typically work with a variety of outside vendors, each of whom may use dozens of dependencies in their tools and services.</p>\n\n<p>For that reason, it may be difficult, if not impossible, for organizations to completely insulate themselves from supply chain attacks. However, there are several strategies organizations can use to preemptively defend against common attack methods:</p>\n\n<ul class='learning-list'>\n  <li><strong>Run a third-party risk assessment:</strong> This may include testing third-party software prior to deployment, requiring vendors to adhere to specific security policies, implementing Content Security Policies (CSP) to control which resources a browser can run, or using Subresource Integrity (SRI) to check JavaScript for suspicious content.</li>\n  <li><strong>Implement Zero Trust:</strong> <a href='/learning/security/glossary/what-is-zero-trust/'>Zero Trust</a> ensures that every user — from employees to contractors and vendors — is subject to continuous validation and monitoring inside an organization's network. Verifying user and device identity and privileges helps ensure that attackers cannot infiltrate an organization simply by stealing legitimate user credentials (or <a href='/learning/security/glossary/what-is-lateral-movement/'>move laterally</a> within the network if they do breach existing security measures).</li>\n  <li><strong>Use malware prevention:</strong> Malware prevention tools, like antivirus software, automatically scan devices for malicious code in order to prevent it from executing.</li>\n  <li><strong>Adopt browser isolation:</strong> <a href='/learning/access-management/what-is-browser-isolation/'>Browser isolation</a> tools isolate (or sandbox) webpage code before it executes on end-user devices, so any malware is detected and mitigated before it reaches its intended target.</li>\n  <li><strong>Detect shadow IT:</strong> '<a href='/learning/access-management/what-is-shadow-it/'>Shadow IT</a>' refers to applications and services employees use without the approval of their organization's IT department. These unsanctioned tools may contain vulnerabilities that cannot be patched by IT, since they are unaware of their use. Using a <a href='/learning/access-management/what-is-a-casb/'>cloud access security broker (CASB)</a> with shadow IT detection capabilities can help organizations better catalog the tools their employees are using and analyze them for any security vulnerabilities.</li>\n  <li><strong>Enable patching and vulnerability detection:</strong> Organizations that use third-party tools have a responsibility to ensure that those tools are free from security vulnerabilities. While identifying and patching every vulnerability may not be possible, organizations should still do their due diligence to find and disclose known vulnerabilities in software, applications, and other third-party resources.</li>\n  <li><strong>Prevent zero-day exploits*:</strong> Often, supply chain attacks make use of <a href='/learning/security/threats/zero-day-exploit/'>zero-day exploits</a> that have not been patched yet. While there is no foolproof method for anticipating zero-day threats, browser isolation tools and firewalls can help isolate and block malicious code before it executes.</li></ul>\n\n<p>*<em>Stopping zero-day exploits is still a particularly challenging task for most organizations. In 2021, a zero-day vulnerability was discovered in Log4j, an open-source software library that helps developers log data within Java applications. This allowed attackers to infect and control hundreds of millions of devices, from which they then carried out further attacks, including ransomware attacks and illegal cryptomining. Read more about how Cloudflare defends against the <a href='https://www.cloudflare.com/log4j/'>Log4j vulnerability</a>.</em></p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does Cloudflare stop supply chain attacks?</h2>\n\n<p><a href='https://www.cloudflare.com/products/zero-trust/'>Cloudflare Zero Trust</a> helps thwart supply chain attacks by blocking access to potentially risky websites, preventing malicious uploads and downloads, and auditing the SaaS applications (both approved and unapproved) within your organization.</p>\n\n<p><a href='https://www.cloudflare.com/products/zaraz/'>Cloudflare Zaraz</a> is a third-party tool manager that loads applications in the cloud, so malicious code cannot execute on the end-user browser. Zaraz gives users visibility into and control over the third-party scripts that run on their sites, enabling them to isolate and block risky behavior.</p>",
+				"availableLocales": null,
+				"localized": null,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "English for Locale",
+					"deDE": "English for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "English for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "English for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "English for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": "English for Locale"
+				},
+				"proactivePopup": null,
+				"sidebarForm": null
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "1FhnPvhgMxIB1IaQmWWoEc",
+			"pathname": "/learning/security/what-is-a-supply-chain-attack/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}

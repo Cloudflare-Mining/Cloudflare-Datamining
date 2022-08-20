@@ -30,21 +30,18 @@
 					"learningCenterName": "ssl",
 					"links": [
 						{
-							"__typename": "learningCenterArticleLink",
 							"contentTypeId": "learningCenterArticleLink",
 							"contentfulId": "357fevHD1vzqQ8mp5tKWWp",
 							"displayText": "What is SSL?",
 							"url": "/learning/ssl/what-is-ssl/"
 						},
 						{
-							"__typename": "learningCenterArticleLink",
 							"contentTypeId": "learningCenterArticleLink",
 							"contentfulId": "gwBHxAG3RwjReejRFn4Tb",
 							"displayText": "What is an SSL Certificate?",
 							"url": "/learning/ssl/what-is-an-ssl-certificate/"
 						},
 						{
-							"__typename": "learningCenterArticleLinkedList",
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "41bCzYtpXDZRkfm3BzO806",
 							"name": "SSL Header: HTTP vs. HTTPS",
@@ -77,7 +74,6 @@
 							]
 						},
 						{
-							"__typename": "learningCenterArticleLinkedList",
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "4yMBT5IbPkVA9mccwMlLAY",
 							"name": "SSL Header: How Encryption Works",
@@ -104,7 +100,7 @@
 								{
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "57mpp35oVI2JzfRKESr73H",
-									"displayText": "Public Key Encryption",
+									"displayText": "Public Key Cryptography",
 									"url": "/learning/ssl/how-does-public-key-encryption-work/"
 								},
 								{
@@ -128,7 +124,6 @@
 							]
 						},
 						{
-							"__typename": "learningCenterArticleLinkedList",
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "5NWfQa2W1T6GY7oKFVQ5yn",
 							"name": "SSL Header: SSL Glossary",
@@ -197,7 +192,6 @@
 							]
 						},
 						{
-							"__typename": "learningCenterArticleLinkedList",
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "6jvtLTbtKFKb5U7Fi94imf",
 							"name": "SSL header: Insights",
@@ -293,7 +287,7 @@
 							{
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "57mpp35oVI2JzfRKESr73H",
-								"displayText": "Public Key Encryption",
+								"displayText": "Public Key Cryptography",
 								"url": "/learning/ssl/how-does-public-key-encryption-work/"
 							},
 							{
@@ -523,7 +517,30 @@
 				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is quantum computing?</h2>\n\n<p>A quantum computer uses the properties of quantum mechanics to perform calculations. Quantum computers are much faster at certain types of calculations than classical computers (meaning any computing device in wide use today, like smartphones, servers, and desktop computers). Most importantly, quantum computing may be able to solve certain extremely difficult math problems that classic computing cannot efficiently solve at all, which would put current <a href='/learning/ssl/what-is-encryption/'>encryption</a> methods at risk and expose sensitive data.</p>\n\n<p>Imagine finding a chapter in a book by turning page by page until arriving at the desired place. Now imagine instead consulting the table of contents first, and almost instantly turning to the correct chapter. Quantum computing is more like the experience of using a table of contents: it examines all possible solutions to a calculation quickly and simultaneously, instead of trying different solutions until arriving at the correct one.</p>\n\n<p>Technically, a classical computer can do any calculation that a quantum computer can do — given enough time. But a classical computer might need centuries or millennia to solve a problem a quantum computer could <em>theoretically</em> solve in minutes.</p>\n\n<p>In practice, researchers have produced just a handful of cases where a quantum computer solved a problem faster than a classical computer. Quantum computers are difficult to build and unstable once built. But if the challenges of constructing quantum computers are solved, quantum computing might permanently transform technology.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are bits and qubits?</h2>\n\n<p>A classical computer stores information in a series of bits. A bit is the smallest possible unit of information; its value is either 0 or 1.</p>\n\n<p>A quantum computer stores information in qubits rather than bits. A qubit can have a value of 0, 1, or a mix of <em>both</em> states (the technical term for such a mix is \"superposition\"). In fact, a qubit's value is <em>uncertain</em> — unlike a classical bit, which is always known to be either 0 or 1. A qubit's value remains indeterminate until someone observes it.</p>\n\n<p>As a result, a quantum computer can hold multiple states, or versions, of information at once. This enables it to process solutions to calculations at an exponentially faster pace compared to a regular computer — just as a team of people performing multiple tasks simultaneously will complete a project faster than one person doing all the tasks on their own.</p>\n\n<p>Imagine a segment of information as a globe. A bit can sit either at the globe's north pole or south pole. A qubit can sit anywhere on the surface of the globe, vastly increasing the informational possibilities it can contain.</p>\n\n<p>On a mechanical level, of course, bits and qubits are not actually globes. A bit is a tiny section of a computer that either holds an electrical charge (1) or does not hold an electrical charge (0). A qubit is the uncertain, unstable position of an electron within an atom.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the challenges of building quantum computers?</h2>\n\n<p>To this point, very few quantum computers have been constructed. Those that have been built are small, unstable, and not usable outside of laboratory conditions.</p>\n\n<p>This is because quantum computing faces a few major challenges:</p>\n\n<h4 class=\"learning-content-h4\">Interference from the outside environment</h4>\n\n<p>Qubits are fragile. Noise, vibration, temperature changes, and electromagnetic waves can all inhibit or destroy the internal state of a qubit. To operate properly, quantum computers need to be in highly controlled environments that lack these and other types of interference. Such environments are difficult to construct and maintain outside of a laboratory.</p>\n\n<p>Environmental factors impact classical computers as well — for instance, high temperatures or strong magnetic forces can slow or destroy a computer. But the problem is much more severe for quantum computers, to the point that it is uncertain if they can operate in real-world conditions.</p>\n\n<p>(Eventually it may be possible to counteract interferences, just as a desktop computer's fan helps it counteract high temperatures.)</p>\n\n<h4 class=\"learning-content-h4\">Error correction</h4>\n\n<p>Quantum computers are less stable in general than their classical counterparts. This makes them more prone to errors. All computers commit errors, which is why classical computers have built-in memory and processors dedicated to error correction. But quantum computers have to devote a lot more resources to error correction than classical computers, relative to their processing ability.</p>\n\n<h4 class=\"learning-content-h4\">Temperature</h4>\n\n<p>To keep qubits stable, quantum computers have to be kept extremely cold — just a few degrees above absolute zero. Again, this makes it hard to operate them outside of highly controlled laboratory environments.</p>\n\n<p>The result of these and other challenges is that very few quantum computers have been constructed with more than a handful of qubits. (A 256-qubit quantum computer was <a href='https://www.technologyreview.com/2021/11/17/1040243/quantum-computer-256-bit-startup/' target='_blank'>announced</a> in 2021, and one firm hopes to construct a 1,000-qubit quantum computer <a href='https://www.science.org/content/article/ibm-promises-1000-qubit-quantum-computer-milestone-2023' target='_blank'>by 2023</a>.)</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What impact would quantum computing have on the world?</h2>\n\n<p>The full impact of quantum computing is difficult to determine, as it is still unclear if large-scale quantum computers are feasible, let alone if mass production of such computers is possible. This contrasts with classical computing — in most societies, miniature computers are used in almost all aspects of life, and many people carry the equivalent of a supercomputer in their pockets (as smartphones).</p>\n\n<p>Powerful, stable quantum computers could have major positive impacts on society. But it is also clear that such computers would put <a href='/learning/privacy/what-is-data-privacy/'>privacy</a> and security at risk in new ways.</p>\n\n<h4 class=\"learning-content-h4\">Potential positive effects</h4>\n\n<p>There are many possible applications of quantum computers. With more powerful computers, the financial industry may be able to help more accurately analyze and predict the stock market. Climatologists might be able to analyze and predict weather patterns more precisely. Transportation systems could become more efficient if quantum computers can better predict traffic patterns.</p>\n\n<p>All these outcomes are still theoretical. And even if large-scale, highly stable quantum computers could be constructed, their processing results would still only be as accurate as the data they are fed. Even so, quantum computing could have a major positive impact on these or similar areas.</p>\n\n<h4 class=\"learning-content-h4\">Current encryption methods would break</h4>\n\n<p>Today, sensitive information is often protected through the use of encryption. Encryption is the process of encoding a message using a key, so that no one can read the message except someone who has the key. Encryption protects personal data users enter on websites (through <a href='/learning/ssl/transport-layer-security-tls/'>TLS</a>), business data stored on hard disks and in servers, confidential government data, and other sensitive information.</p>\n\n<p>Many types of encryption rely on difficult math problems, such as prime factorization, to protect data. The difficulty of these problems ensures that the encryption cannot be broken within a feasible amount of time. Although well-known algorithms for breaking encryption exist, it is always possible to use larger encryption keys, requiring exponentially more time (for classical computers) to find the key and break the encryption.</p>\n\n<p>However, quantum computers can theoretically solve the hard problems used in currently deployed encryption methods. In this scenario, increasing key sizes does not strengthen the difficulty of the problem exponentially. Thus, breaking encryption could take significantly less time. This would allow quantum computers to break most current encryption methods, putting any encrypted data at risk of exposure.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What does Cloudflare do to prepare for quantum computing?</h2>\n\n<p>Cloudflare is heavily involved with developing new quantum-resistant encryption methods that will protect sensitive information now and in the future. This is part of Cloudflare's larger commitment to help develop better Internet protocols, encryption standards, and privacy protections.</p>\n\n<p>Cloudflare will continue contributing in this area. To learn more, see the <a href='https://blog.cloudflare.com/tag/post-quantum/' target='_blank'>latest blog posts on quantum computing</a> and encryption.</p>",
 				"availableLocales": null,
 				"localized": null,
-				"localeList": null,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "English for Locale",
+					"deDE": "English for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "English for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "English for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "English for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": "English for Locale"
+				},
 				"proactivePopup": null,
 				"sidebarForm": null
 			}
@@ -533,7 +550,9 @@
 			"contentfulId": "4fANIQxw2MXK475l4sHM7R",
 			"pathname": "/learning/ssl/quantum/what-is-quantum-computing/",
 			"baseURL": "https://www.cloudflare.com",
-			"allowedHrefLangs": null
+			"allowedHrefLangs": [
+				"en-US"
+			]
 		}
 	}
 }
