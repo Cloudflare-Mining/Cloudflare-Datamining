@@ -26,21 +26,18 @@
 					"learningCenterName": "dns",
 					"links": [
 						{
-							"__typename": "learningCenterArticleLink",
 							"contentTypeId": "learningCenterArticleLink",
 							"contentfulId": "2j9vWGfXAwGGPl7LN1Ezi7",
 							"displayText": "What is DNS?",
 							"url": "/learning/dns/what-is-dns/"
 						},
 						{
-							"__typename": "learningCenterArticleLink",
 							"contentTypeId": "learningCenterArticleLink",
 							"contentfulId": "3noj8iKecv1MxsE67u045T",
 							"displayText": "What is 1.1.1.1?",
 							"url": "/learning/dns/what-is-1.1.1.1/"
 						},
 						{
-							"__typename": "learningCenterArticleLinkedList",
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "5H0d0oeRRCTIjGxZR65GiF",
 							"name": "DNS Records (dropdown)",
@@ -133,7 +130,6 @@
 							]
 						},
 						{
-							"__typename": "learningCenterArticleLinkedList",
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "3ZnjBOMP0HJxvAFLXbYSzJ",
 							"name": "DNS Header: Securing DNS drop-down",
@@ -166,7 +162,6 @@
 							]
 						},
 						{
-							"__typename": "learningCenterArticleLinkedList",
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "2AtQTtUFJafy4cPr8qwVxS",
 							"name": "DNS Header: Domain Registration drop-down",
@@ -211,7 +206,6 @@
 							]
 						},
 						{
-							"__typename": "learningCenterArticleLinkedList",
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "1KSq89nu1bbMJ3FMyFOV0S",
 							"name": "DNS Header: Glossary ",
@@ -286,7 +280,6 @@
 							]
 						},
 						{
-							"__typename": "learningCenterArticleLinkedList",
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "7LEmGmCIHDsIsBT3vXJtG6",
 							"name": "DNS Header: Insights",
@@ -661,7 +654,7 @@
 				],
 				"relatedContentLinkText": null,
 				"relatedContent": null,
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is a DNS MX record?</h2>\n\n<p>A DNS 'mail exchange' (MX) record directs email to a mail server. The MX record indicates how email messages should be routed in accordance with the Simple Mail Transfer Protocol (SMTP, the standard protocol for all email). Like <a href='/learning/dns/dns-records/dns-cname-record/'>CNAME records</a>, an MX record must always point to another <a href='/learning/dns/glossary/what-is-a-domain-name/'>domain</a>.</p>\n\n<p>Example of an MX record:</p>\n\n<div class=\"record-table\">\n<table>\n<tr>\n<th>example.com</th>\n<th>record type:</th>\n<th>priority:</th>\n<th>value:</th>\n<th>TTL</th>\n</tr>\n<tr>\n<td>@</td>\n<td>MX</td>\n<td>10</td>\n<td>mailhost1.example.com</td>\n<td>45000</td>\n</tr>\n<tr>\n<td>@</td>\n<td>MX</td>\n<td>20</td>\n<td>mailhost2.example.com</td>\n<td>45000</td>\n</tr>\n</table>\n</div>\n\n<p>The 'priority' numbers before the domains for these MX records indicate preference; the lower 'priority' value is preferred. The server will always try mailhost1 first because 10 is lower than 20. In the result of a message send failure, the server will default to mailhost2.</p>\n\n<p>The email service could also configure this MX record so that both servers have equal priority and receive an equal amount of mail:</p>\n\n<div class=\"record-table\">\n<table>\n<tr>\n<th>example.com</th>\n<th>record type:</th>\n<th>priority:</th>\n<th>value:</th>\n<th>TTL</th>\n</tr>\n<tr>\n<td>@</td>\n<td>MX</td>\n<td>10</td>\n<td>mailhost1.example.com</td>\n<td>45000</td>\n</tr>\n<tr>\n<td>@</td>\n<td>MX</td>\n<td>10</td>\n<td>mailhost2.example.com</td>\n<td>45000</td>\n</tr>\n</table>\n</div>\n\n<p>This configuration enables the email provider to equally <a href='/load-balancing/'>balance the load</a> between the two servers.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is the process of querying an MX record?</h2>\n\n<p>Message transfer agent (MTA) software is responsible for querying MX records. When a user sends an email, the MTA sends a DNS query to identify the mail servers for the email recipients. The MTA establishes an SMTP connection with those mail servers, starting with the prioritized domains (in the first example above, mailhost1).</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a backup MX record?</h2>\n\n<p>A backup MX record is just an MX record for a mail server with a higher 'priority' value (which means a lower priority), so that under normal circumstances mail will go to the more prioritized servers. In the first example above, mailhost2 would be the 'backup' server because email traffic will be handled by mailhost1 as long as it is up and running.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Can MX records point to a CNAME?</h2>\n\n<p>A CNAME record is used for referencing a domain's alias instead of its actual name. CNAME records typically point to an <a href='/learning/dns/dns-records/dns-a-record/'>A record</a> (in IPv4) or AAAA record (in IPv6) for that domain. However, MX records have to point directly to a server's A record or <a href='/learning/dns/dns-records/dns-aaaa-record/'>AAAA record</a>. Pointing to a CNAME is forbidden by the <a href='https://tools.ietf.org/html/rfc2181' target='_blank'>RFC documents that define</a> how MX records function.</p>\n\n<p>Learn more about the uses for <a href='/learning/dns/dns-records/dns-cname-record/'>CNAME records</a>.</p>",
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is a DNS MX record?</h2>\n\n<p>A DNS 'mail exchange' (MX) record directs email to a mail server. The MX record indicates how <a href='/learning/email-security/what-is-email/'>email</a> messages should be routed in accordance with the Simple Mail Transfer Protocol (<a href='/learning/email-security/what-is-smtp/'>SMTP</a>, the standard protocol for all email). Like <a href='/learning/dns/dns-records/dns-cname-record/'>CNAME records</a>, an MX record must always point to another <a href='/learning/dns/glossary/what-is-a-domain-name/'>domain</a>.</p>\n\n<p>Example of an MX record:</p>\n\n<div class=\"record-table\">\n<table>\n<tr>\n<th>example.com</th>\n<th>record type:</th>\n<th>priority:</th>\n<th>value:</th>\n<th>TTL</th>\n</tr>\n<tr>\n<td>@</td>\n<td>MX</td>\n<td>10</td>\n<td>mailhost1.example.com</td>\n<td>45000</td>\n</tr>\n<tr>\n<td>@</td>\n<td>MX</td>\n<td>20</td>\n<td>mailhost2.example.com</td>\n<td>45000</td>\n</tr>\n</table>\n</div>\n\n<p>The 'priority' numbers before the domains for these MX records indicate preference; the lower 'priority' value is preferred. The server will always try mailhost1 first because 10 is lower than 20. In the result of a message send failure, the server will default to mailhost2.</p>\n\n<p>The email service could also configure this MX record so that both servers have equal priority and receive an equal amount of mail:</p>\n\n<div class=\"record-table\">\n<table>\n<tr>\n<th>example.com</th>\n<th>record type:</th>\n<th>priority:</th>\n<th>value:</th>\n<th>TTL</th>\n</tr>\n<tr>\n<td>@</td>\n<td>MX</td>\n<td>10</td>\n<td>mailhost1.example.com</td>\n<td>45000</td>\n</tr>\n<tr>\n<td>@</td>\n<td>MX</td>\n<td>10</td>\n<td>mailhost2.example.com</td>\n<td>45000</td>\n</tr>\n</table>\n</div>\n\n<p>This configuration enables the email provider to equally <a href='/load-balancing/'>balance the load</a> between the two servers.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is the process of querying an MX record?</h2>\n\n<p>Message transfer agent (MTA) software is responsible for querying MX records. When a user sends an email, the MTA sends a DNS query to identify the mail servers for the email recipients. The MTA establishes an SMTP connection with those mail servers, starting with the prioritized domains (in the first example above, mailhost1).</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a backup MX record?</h2>\n\n<p>A backup MX record is just an MX record for a mail server with a higher 'priority' value (which means a lower priority), so that under normal circumstances mail will go to the more prioritized servers. In the first example above, mailhost2 would be the 'backup' server because email traffic will be handled by mailhost1 as long as it is up and running.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Can MX records point to a CNAME?</h2>\n\n<p>A CNAME record is used for referencing a domain's alias instead of its actual name. CNAME records typically point to an <a href='/learning/dns/dns-records/dns-a-record/'>A record</a> (in IPv4) or AAAA record (in IPv6) for that domain. However, MX records have to point directly to a server's A record or <a href='/learning/dns/dns-records/dns-aaaa-record/'>AAAA record</a>. Pointing to a CNAME is forbidden by the <a href='https://tools.ietf.org/html/rfc2181' target='_blank'>RFC documents that define</a> how MX records function.</p>\n\n<p>Learn more about the uses for <a href='/learning/dns/dns-records/dns-cname-record/'>CNAME records</a>.</p>",
 				"availableLocales": null,
 				"localized": true,
 				"localeList": {

@@ -30,14 +30,12 @@
 					"learningCenterName": "security",
 					"links": [
 						{
-							"__typename": "learningCenterArticleLink",
 							"contentTypeId": "learningCenterArticleLink",
 							"contentfulId": "7esVgOhtx4g1wc9j085HEg",
 							"displayText": "Web Application Security",
 							"url": "/learning/security/what-is-web-application-security/"
 						},
 						{
-							"__typename": "learningCenterArticleLinkedList",
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "4kvm6bAM81cW4E1whOMHfF",
 							"name": "Security Header: API Security",
@@ -76,7 +74,6 @@
 							]
 						},
 						{
-							"__typename": "learningCenterArticleLinkedList",
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "23owvyEXORbnCzHlcV3G5J",
 							"name": "Security Header: Common Threats",
@@ -123,11 +120,16 @@
 									"contentfulId": "6XPhbYmE7dwzO6WII8TzfE",
 									"displayText": "Data Breach",
 									"url": "/learning/security/what-is-a-data-breach/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5cGXrdJmHiePGFShMVWvtf",
+									"displayText": "Supply Chain Attacks",
+									"url": "security/what-is-a-supply-chain-attack"
 								}
 							]
 						},
 						{
-							"__typename": "learningCenterArticleLinkedList",
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "59UCpRlTqcjNsMj5iWQZfb",
 							"name": "Security Header: More Attacks",
@@ -166,7 +168,6 @@
 							]
 						},
 						{
-							"__typename": "learningCenterArticleLinkedList",
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "7AzKZHJSj74Q2LkjotHBDE",
 							"name": "Security Header: Ransomware",
@@ -217,7 +218,6 @@
 							]
 						},
 						{
-							"__typename": "learningCenterArticleLinkedList",
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "5hGYGUNPlUimQ8zfoTF4hR",
 							"name": "Security Header: Glossary",
@@ -322,7 +322,6 @@
 							]
 						},
 						{
-							"__typename": "learningCenterArticleLinkedList",
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "4p2aAtVD45hFwfp8CgZf5",
 							"name": "Security header: Insights",
@@ -477,6 +476,12 @@
 								"contentfulId": "4MGxlaarKOMNRMlHy5cauE",
 								"displayText": "Ransomware-as-a-Service (RaaS)",
 								"url": "/learning/security/ransomware/ransomware-as-a-service/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5cGXrdJmHiePGFShMVWvtf",
+								"displayText": "Supply Chain Attacks",
+								"url": "security/what-is-a-supply-chain-attack"
 							}
 						]
 					},
