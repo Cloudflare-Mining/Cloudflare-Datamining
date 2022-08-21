@@ -153,7 +153,6 @@ async function getChunks(){
 			node.type === 'ObjectExpression' &&
 			node.properties.some(property => property.key?.type === 'Identifier' && (property.key?.name === 'release' || property.key?.name === 'dsn'))
 		){
-			//console.log('version?', node.properties);
 			const findVersion = node.properties.find(property => property.key?.type === 'Identifier' && property.key?.name === 'release')?.value?.value;
 			if(findVersion){
 				version = findVersion;
