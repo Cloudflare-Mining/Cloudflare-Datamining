@@ -79,6 +79,7 @@ async function getChunks(){
 	const chunks = [];
 	const translations = {};
 	const rawTranslations = new Set();
+	let version = null;
 	const ast = parse(appJs, {ecmaVersion: 2020});
 	full(ast, (node) => {
 		if(
@@ -148,6 +149,15 @@ async function getChunks(){
 				translations[namespace] ??= {};
 				translations[namespace][key] = property.value.value;
 			}
+		}else if(
+			node.type === 'ObjectExpression' &&
+			node.properties.some(property => property.key?.type === 'Identifier' && (property.key?.name === 'release' || property.key?.name === 'dsn'))
+		){
+			//console.log('version?', node.properties);
+			const findVersion = node.properties.find(property => property.key?.type === 'Identifier' && property.key?.name === 'release')?.value?.value;
+			if(findVersion){
+				version = findVersion;
+			}
 		}
 	});
 
@@ -158,6 +168,7 @@ async function getChunks(){
 			code: appJs,
 			translations,
 			rawTranslations,
+			version,
 		},
 	};
 }
@@ -346,6 +357,12 @@ async function run(){
 			{},
 		);
 		await fs.writeFile(file, JSON.stringify(sorted, null, '\t'));
+	}
+
+	// app version
+	if(chunks.app.version){
+		const versionFile = path.resolve(`../data/zt-dashboard/version.json`);
+		await fs.writeFile(versionFile, JSON.stringify(chunks.app.version, null, '\t'));
 	}
 
 	// parse navigation
