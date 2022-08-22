@@ -924,6 +924,18 @@
 		}
 	},
 	{
+		"id": "managed_hostname.custom_origin_server_access",
+		"feature": {
+			"feature_set": "managed_hostname",
+			"id": 242,
+			"key": "managed_hostname.custom_origin_server_access",
+			"name": "SSL for SaaS Custom origin server specification"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "managed_hostname.enabled",
 		"feature": {
 			"feature_set": "managed_hostname",
@@ -1278,6 +1290,18 @@
 			"id": 647,
 			"key": "swg.additional_categories_enabled",
 			"name": "Secure Web Gateway - Additional Categories Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "swg.additional_locations_enabled",
+		"feature": {
+			"feature_set": "access",
+			"id": 645,
+			"key": "swg.additional_locations_enabled",
+			"name": "Secure Web Gateway - Additional Locations Enabled"
 		},
 		"allocation": {
 			"type": "bool"
