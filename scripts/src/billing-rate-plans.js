@@ -101,6 +101,7 @@ const knownRatePlans = new Set([
 	'zero_trust',
 	'zero_trust_access',
 	'zero_trust_gateway',
+	'zone_argo',
 ]);
 
 const ratePlans = new Set([]);
@@ -114,13 +115,15 @@ const addRatePlan = function(ratePlan){
 		usePlan = ratePlan.slice(0, Math.max(0, ratePlan.length - endsWithSuffix.length));
 	}
 	ratePlans.add(usePlan);
-	// partner rate plans are usually just prefixed with partners_
+	// partner/smp rate plans are usually just prefixed with partners_/msp_
 	ratePlans.add(`partners_${usePlan}`);
+	//ratePlans.add(`msp_${usePlan}`);
 	for(const suffix of knownSuffixes){
 		const toAdd = `${usePlan}${suffix}`;
 		console.log('add', toAdd);
 		ratePlans.add(toAdd);
 		ratePlans.add(`partners_${toAdd}`);
+		//ratePlans.add(`msp_${toAdd}`);
 	}
 };
 for(const ratePlan of knownRatePlans){
