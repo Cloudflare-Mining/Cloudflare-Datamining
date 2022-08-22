@@ -87640,6 +87640,390 @@
 				}
 			}
 		},
+		"/accounts/{account_identifier}/magic/cf_interconnects": {
+			"get": {
+				"summary": "List Interconnects",
+				"description": "List Interconnects associated with an account's Magic setup",
+				"parameters": [
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "List Interconnects response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"interconnects": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"id": {
+																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1gre_tunnels/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/gre_tunnels/items/properties/id"
+																	},
+																	"created_on": {
+																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1gre_tunnels/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/gre_tunnels/items/properties/created_on"
+																	},
+																	"modified_on": {
+																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1gre_tunnels/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/gre_tunnels/items/properties/modified_on"
+																	},
+																	"name": {
+																		"type": "string",
+																		"description": "Name for the Interconnect. It cannot share a name with other tunnels",
+																		"example": "pni_ord"
+																	},
+																	"interface_address": {
+																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1gre_tunnels/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/gre_tunnels/items/properties/interface_address"
+																	},
+																	"description": {
+																		"type": "string",
+																		"description": "An optional description of the Interconnect",
+																		"example": "Tunnel for Interconnect to ORD"
+																	},
+																	"health_check": {
+																		"type": "object",
+																		"properties": {
+																			"enabled": {
+																				"description": "Flag to run healthchecks for this tunnel (defaults to true)",
+																				"type": "boolean",
+																				"example": true,
+																				"default": true
+																			},
+																			"target": {
+																				"type": "string",
+																				"description": "Address to run healthchecks against",
+																				"example": "203.0.113.1"
+																			},
+																			"type": {
+																				"type": "string",
+																				"description": "Type of healthcheck to run (reply or request). Defaults to reply.",
+																				"example": "request",
+																				"default": "reply",
+																				"enum": [
+																					"reply",
+																					"request"
+																				]
+																			}
+																		}
+																	},
+																	"gre": {
+																		"type": "object",
+																		"description": "Configuration specific to GRE Interconnects",
+																		"properties": {
+																			"cloudflare_endpoint": {
+																				"type": "string",
+																				"description": "The IP address assigned to the Cloudflare side of the GRE tunnel created as part of the Interconnect",
+																				"example": "203.0.113.1"
+																			},
+																			"customer_endpoint": {
+																				"type": "string",
+																				"description": "The IP address assigned to the Customer side of the GRE tunnel created as part of the Interconnect",
+																				"example": "203.0.113.1"
+																			},
+																			"is_colo_cast": {
+																				"type": "boolean",
+																				"description": "This flag is used to support multiple Interconnects to the same colo for a Customer",
+																				"default": true
+																			}
+																		}
+																	},
+																	"mtu": {
+																		"type": "integer",
+																		"description": "Maximum Transmission Unit (MTU) in bytes for the Interconnect. Maximum value 1476 and minimum value 576",
+																		"default": 1476
+																	},
+																	"colo_name": {
+																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1cf_interconnects/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/interconnects/items/properties/name"
+																	}
+																},
+																"x-cfLinkErrors": {}
+															}
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
+					"enterprise": true
+				}
+			},
+			"put": {
+				"summary": "Update Many Interconnects",
+				"description": "Update many Interconnects for an account's Magic setup. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes",
+				"parameters": [
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1cf_interconnects/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Update Many Interconnects response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"modified": {
+															"type": "boolean",
+															"example": true
+														},
+														"modified_interconnects": {
+															"type": "array",
+															"items": {
+																"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1cf_interconnects/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/interconnects/items"
+															}
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"required": [
+									"id"
+								]
+							}
+						}
+					}
+				}
+			}
+		},
+		"/accounts/{account_identifier}/magic/cf_interconnects/{tunnel_identifier}": {
+			"get": {
+				"summary": "Interconnect Details",
+				"description": "Get a specific Interconnect for an account's Magic setup",
+				"parameters": [
+					{
+						"name": "tunnel_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Interconnect Details response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"interconnect": {
+															"type": "object"
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
+					"enterprise": true
+				}
+			},
+			"put": {
+				"summary": "Update Interconnect",
+				"description": "Update a specific Interconnect for an account's Magic setup. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes",
+				"parameters": [
+					{
+						"name": "tunnel_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1cf_interconnects~1%7Btunnel_identifier%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1cf_interconnects~1%7Btunnel_identifier%7D/get/parameters/1/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Update Interconnect response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"modified": {
+															"type": "boolean",
+															"example": true
+														},
+														"modified_interconnect": {
+															"type": "object"
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"mtu": {
+										"type": "integer",
+										"description": "Maximum Transmission Unit (MTU) in bytes for the Interconnect. Maximum value 1476 and minimum value 576",
+										"default": 1476
+									},
+									"interface_address": {
+										"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1gre_tunnels/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/gre_tunnels/items/properties/interface_address"
+									},
+									"description": {
+										"type": "string",
+										"description": "An optional description of the Interconnect",
+										"example": "Tunnel for Interconnect to ORD"
+									},
+									"gre": {
+										"type": "object",
+										"description": "Configuration specific to GRE Interconnects",
+										"properties": {
+											"cloudflare_endpoint": {
+												"type": "string",
+												"description": "The IP address assigned to the Cloudflare side of the GRE tunnel created as part of the Interconnect",
+												"example": "203.0.113.1"
+											},
+											"customer_endpoint": {
+												"type": "string",
+												"description": "The IP address assigned to the Customer side of the GRE tunnel created as part of the Interconnect",
+												"example": "203.0.113.1"
+											},
+											"is_colo_cast": {
+												"type": "boolean",
+												"description": "This flag is used to support multiple Interconnects to the same colo for a Customer",
+												"default": true
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
 		"/accounts/{account_identifier}/pcaps": {
 			"get": {
 				"summary": "List PCAP requests",
