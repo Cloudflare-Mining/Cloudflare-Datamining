@@ -54766,7 +54766,61 @@
 					"200": {
 						"description": "List account rulesets response",
 						"content": {
-							"application/json": {}
+							"application/json": {
+								"schema": {
+									"description": "The rulesets in the account",
+									"type": "array",
+									"items": {
+										"description": "The ruleset",
+										"properties": {
+											"id": {
+												"description": "The ID of the ruleset",
+												"type": "string",
+												"pattern": "^[0-9a-f]{32}$",
+												"example": "2f2feab2026849078ba485f918791bdc"
+											},
+											"name": {
+												"description": "The human readable name for the ruleset",
+												"type": "string",
+												"example": "My ruleset"
+											},
+											"description": {
+												"description": "An optional description of the ruleset",
+												"type": "string",
+												"default": "",
+												"example": "My ruleset to execute managed rulesets"
+											},
+											"kind": {
+												"description": "The kind of the ruleset",
+												"type": "string",
+												"enum": [
+													"custom",
+													"root",
+													"zone"
+												],
+												"example": "root"
+											},
+											"phase": {
+												"description": "The phase of the ruleset",
+												"type": "string",
+												"pattern": "^[a-z_]+$",
+												"example": "http_request_firewall_managed"
+											},
+											"version": {
+												"description": "The version of the ruleset",
+												"type": "string",
+												"pattern": "^[0-9]+$",
+												"example": "1"
+											},
+											"last_updated": {
+												"description": "When the ruleset was last modified",
+												"type": "string",
+												"example": "2000-01-01T00:00:00+00:00"
+											}
+										}
+									}
+								}
+							}
 						}
 					}
 				},
@@ -54802,182 +54856,125 @@
 						"content": {
 							"application/json": {
 								"schema": {
+									"description": "The ruleset",
 									"properties": {
+										"id": {
+											"description": "The ID of the ruleset",
+											"type": "string",
+											"pattern": "^[0-9a-f]{32}$",
+											"example": "2f2feab2026849078ba485f918791bdc"
+										},
 										"name": {
 											"description": "The human readable name for the ruleset",
-											"type": "string"
+											"type": "string",
+											"example": "My ruleset"
 										},
 										"description": {
-											"description": "The description of the ruleset",
-											"type": "string"
+											"description": "An optional description of the ruleset",
+											"type": "string",
+											"default": "",
+											"example": "My ruleset to execute managed rulesets"
 										},
 										"kind": {
-											"description": "The kind of ruleset",
+											"description": "The kind of the ruleset",
 											"type": "string",
 											"enum": [
 												"custom",
-												"managed",
 												"root",
-												"schema",
 												"zone"
-											]
+											],
+											"example": "root"
 										},
 										"phase": {
-											"description": "The phase when the ruleset is executed",
+											"description": "The phase of the ruleset",
 											"type": "string",
-											"enum": [
-												"ddos_l4",
-												"ddos_l7",
-												"magic_transit",
-												"http_request_sanitize",
-												"http_request_transform",
-												"http_request_firewall_custom",
-												"http_ratelimit",
-												"http_request_firewall_managed",
-												"http_request_late_transform",
-												"http_response_firewall_managed"
-											]
+											"pattern": "^[a-z_]+$",
+											"example": "http_request_firewall_managed"
+										},
+										"version": {
+											"description": "The version of the ruleset",
+											"type": "string",
+											"pattern": "^[0-9]+$",
+											"example": "1"
 										},
 										"rules": {
+											"description": "The rules in the ruleset",
 											"type": "array",
 											"items": {
+												"description": "The rule",
 												"properties": {
-													"action": {
-														"description": "The action to take when the expression matches",
+													"id": {
+														"description": "The ID of the rule",
 														"type": "string",
-														"enum": [
-															"block",
-															"challenge",
-															"ddos_dynamic",
-															"execute",
-															"force_connection_close",
-															"js_challenge",
-															"managed_challenge",
-															"log",
-															"score",
-															"skip",
-															"rewrite",
-															"redirect"
-														]
-													},
-													"expression": {
-														"description": "The expression",
-														"type": "string"
+														"example": "3a03d665bac047339bb530ecb439a90d"
 													},
 													"description": {
-														"description": "The description of the rule",
-														"type": "string"
+														"description": "An optional description of the rule",
+														"type": "string",
+														"default": "",
+														"example": "Execute the OWASP ruleset when the IP address is not 1.1.1.1"
+													},
+													"version": {
+														"description": "The version of the rule",
+														"type": "string",
+														"pattern": "^[0-9]+$",
+														"example": "1"
+													},
+													"expression": {
+														"description": "The expression of the rule to match traffic on",
+														"type": "string",
+														"example": "ip.src ne 1.1.1.1"
+													},
+													"action": {
+														"description": "The action to take when the rule matches",
+														"type": "string",
+														"pattern": "^[a-z_]+$",
+														"example": "execute"
 													},
 													"action_parameters": {
-														"description": "The parameters to configure the action",
+														"description": "The parameters to configure the given action",
 														"type": "object",
-														"oneOf": [
-															{
-																"description": "The action parameters for the bypass action",
-																"properties": {
-																	"products": {
-																		"description": "Bypass one or more of the following products",
-																		"type": "array",
-																		"default": [],
-																		"minLength": 1,
-																		"items": {
-																			"type": "string",
-																			"enum": [
-																				"bic",
-																				"hot",
-																				"ratelimit",
-																				"securityLevel",
-																				"uablock",
-																				"waf",
-																				"zonelockdown"
-																			]
-																		}
-																	}
-																}
-															},
-															{
-																"description": "The action parameters for the execute action",
-																"properties": {
-																	"id": {
-																		"description": "The ID of the ruleset to execute",
-																		"type": "string"
-																	}
-																}
-															},
-															{
-																"description": "The action parameters for the rewrite action",
-																"properties": {
-																	"uri": {
-																		"description": "Rewrite the path, query string, or both for the origin",
-																		"type": "object",
-																		"properties": {
-																			"path": {
-																				"description": "The new path for the origin"
-																			},
-																			"query": {
-																				"description": "The new query string for the origin"
-																			}
-																		}
-																	}
-																}
-															},
-															{
-																"description": "The action parameters for the score action",
-																"properties": {
-																	"increment": {
-																		"description": "The score increment",
-																		"type": "number"
-																	},
-																	"id": {
-																		"description": "The ID of the rule",
-																		"type": "string"
-																	},
-																	"version": {
-																		"description": "The version of the rule",
-																		"type": "string"
-																	}
-																}
-															},
-															{
-																"description": "The action parameters for the skip action",
-																"properties": {
-																	"ruleset": {
-																		"description": "Skip execution of these rulesets",
-																		"enum": [
-																			"current"
-																		],
-																		"type": "string"
-																	}
-																}
-															},
-															{
-																"description": "The action parameters for the redirect action",
-																"properties": {
-																	"from_list": {
-																		"description": "Applies a redirect based on a redirect list",
-																		"type": "object",
-																		"properties": {
-																			"name": {
-																				"type": "string",
-																				"description": "The name of the redirect list",
-																				"example": "my_redirect_list"
-																			},
-																			"key": {
-																				"type": "string",
-																				"description": "Key to use to lookup the redirect in the list",
-																				"example": "http.request.full_uri"
-																			}
-																		}
-																	}
-																}
+														"example": {
+															"id": "4814384a9e5d4991b9815dcfc25d2f1f"
+														}
+													},
+													"ref": {
+														"description": "An optional reference for the rule, defaults to the ID",
+														"type": "string",
+														"example": "my_ref"
+													},
+													"enabled": {
+														"description": "Whether the rule should be run",
+														"type": "boolean",
+														"default": "true",
+														"example": true
+													},
+													"logging": {
+														"description": "The parameters to configure how the rule generates logs",
+														"type": "object",
+														"properties": {
+															"enabled": {
+																"description": "Whether a log should be generated when the rule matches",
+																"type": "boolean",
+																"example": true
 															}
-														]
+														},
+														"example": {
+															"enabled": true
+														}
+													},
+													"last_updated": {
+														"description": "When the rule was last modified",
+														"type": "string",
+														"example": "2000-01-01T00:00:00+00:00"
 													}
 												}
 											}
 										},
-										"shareable_entitlement_name": {
-											"type": "string"
+										"last_updated": {
+											"description": "When the ruleset was last modified",
+											"type": "string",
+											"example": "2000-01-01T00:00:00+00:00"
 										}
 									}
 								}
@@ -55000,15 +54997,62 @@
 				"requestBody": {
 					"required": true,
 					"content": {
-						"application/json": {}
+						"application/json": {
+							"schema": {
+								"description": "A ruleset",
+								"properties": {
+									"name": {
+										"description": "The human readable name for the ruleset",
+										"type": "string",
+										"example": "My ruleset"
+									},
+									"description": {
+										"description": "An optional description of the ruleset",
+										"type": "string",
+										"default": "",
+										"example": "My ruleset to execute managed rulesets"
+									},
+									"kind": {
+										"description": "The kind of the ruleset",
+										"type": "string",
+										"enum": [
+											"custom",
+											"root",
+											"zone"
+										],
+										"example": "root"
+									},
+									"phase": {
+										"description": "The phase of the ruleset",
+										"type": "string",
+										"pattern": "^[a-z_]+$",
+										"example": "http_request_firewall_managed"
+									},
+									"rules": {
+										"description": "The rules in the ruleset",
+										"type": "array",
+										"items": {
+											"oneOf": [
+												{
+													"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D~1rules/post/requestBody/content/application~1json/schema"
+												},
+												{
+													"description": "An ID of a rule"
+												}
+											]
+										}
+									}
+								}
+							}
+						}
 					}
 				}
 			}
 		},
 		"/accounts/{account_id}/rulesets/{ruleset_id}": {
 			"get": {
-				"summary": "Get an account ruleset",
-				"description": "Get an account ruleset",
+				"summary": "Get account ruleset",
+				"description": "Get the latest version of an account ruleset",
 				"parameters": [
 					{
 						"name": "ruleset_id",
@@ -55017,8 +55061,8 @@
 						"schema": {
 							"description": "The ID of the ruleset",
 							"type": "string",
-							"minLength": 32,
-							"maxLength": 32
+							"pattern": "^[0-9a-f]{32}$",
+							"example": "2f2feab2026849078ba485f918791bdc"
 						}
 					},
 					{
@@ -55032,163 +55076,11 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get an account ruleset response",
+						"description": "Get account ruleset response",
 						"content": {
 							"application/json": {
 								"schema": {
-									"properties": {
-										"id": {
-											"example": "2f2feab2026849078ba485f918791bdc"
-										},
-										"name": {
-											"example": "My Magic Transit ruleset"
-										},
-										"description": {
-											"description": "The description of the ruleset",
-											"type": "string"
-										},
-										"kind": {
-											"example": "root"
-										},
-										"phase": {
-											"example": "phase_magic_transit"
-										},
-										"rules": {
-											"description": "The rules for this ruleset",
-											"type": "array",
-											"items": {
-												"properties": {
-													"id": {
-														"example": "3a03d665bac047339bb530ecb439a90d"
-													},
-													"version": {
-														"example": "1"
-													},
-													"action": {
-														"example": "block"
-													},
-													"expression": {
-														"example": "not ip.src in {10.20.30.40}"
-													},
-													"description": {
-														"example": "Block all traffic except 10.20.30.40"
-													},
-													"action_parameters": {
-														"description": "The parameters to configure the action",
-														"type": "object",
-														"oneOf": [
-															{
-																"description": "The action parameters for the bypass action",
-																"properties": {
-																	"products": {
-																		"description": "Bypass one or more of the following products",
-																		"type": "array",
-																		"default": [],
-																		"minLength": 1,
-																		"items": {
-																			"type": "string",
-																			"enum": [
-																				"bic",
-																				"hot",
-																				"ratelimit",
-																				"securityLevel",
-																				"uablock",
-																				"waf",
-																				"zonelockdown"
-																			]
-																		}
-																	}
-																}
-															},
-															{
-																"description": "The action parameters for the execute action",
-																"properties": {
-																	"id": {
-																		"description": "The ID of the ruleset to execute",
-																		"type": "string"
-																	}
-																}
-															},
-															{
-																"description": "The action parameters for the rewrite action",
-																"properties": {
-																	"uri": {
-																		"description": "Rewrite the path, query string, or both for the origin",
-																		"type": "object",
-																		"properties": {
-																			"path": {
-																				"description": "The new path for the origin"
-																			},
-																			"query": {
-																				"description": "The new query string for the origin"
-																			}
-																		}
-																	}
-																}
-															},
-															{
-																"description": "The action parameters for the score action",
-																"properties": {
-																	"increment": {
-																		"description": "The score increment",
-																		"type": "number"
-																	},
-																	"id": {
-																		"description": "The ID of the rule",
-																		"type": "string"
-																	},
-																	"version": {
-																		"description": "The version of the rule",
-																		"type": "string"
-																	}
-																}
-															},
-															{
-																"description": "The action parameters for the skip action",
-																"properties": {
-																	"ruleset": {
-																		"description": "Skip execution of these rulesets",
-																		"enum": [
-																			"current"
-																		],
-																		"type": "string"
-																	}
-																}
-															},
-															{
-																"description": "The action parameters for the redirect action",
-																"properties": {
-																	"from_list": {
-																		"description": "Applies a redirect based on a redirect list",
-																		"type": "object",
-																		"properties": {
-																			"name": {
-																				"type": "string",
-																				"description": "The name of the redirect list",
-																				"example": "my_redirect_list"
-																			},
-																			"key": {
-																				"type": "string",
-																				"description": "Key to use to lookup the redirect in the list",
-																				"example": "http.request.full_uri"
-																			}
-																		}
-																	}
-																}
-															}
-														]
-													},
-													"score_threshold": {
-														"description": "Rule score threshold",
-														"type": "number"
-													},
-													"logging": {
-														"example": "logging: { enabled: true }"
-													}
-												}
-											}
-										}
-									}
+									"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema"
 								}
 							}
 						}
@@ -55207,9 +55099,65 @@
 					"enterprise": true
 				}
 			},
+			"put": {
+				"summary": "Update account ruleset",
+				"description": "Update an account ruleset, creating a new version",
+				"parameters": [
+					{
+						"name": "ruleset_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D/get/parameters/1/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Update account ruleset response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/requestBody/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema"
+							}
+						}
+					}
+				}
+			},
 			"delete": {
 				"summary": "Delete account ruleset",
-				"description": "Delete all versions of the account ruleset",
+				"description": "Delete all versions of an account ruleset",
 				"parameters": [
 					{
 						"name": "ruleset_id",
@@ -55254,209 +55202,12 @@
 						"application/json": {}
 					}
 				}
-			},
-			"put": {
-				"summary": "Update account ruleset",
-				"description": "Update an existing account ruleset",
-				"parameters": [
-					{
-						"name": "ruleset_id",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D/get/parameters/0/schema"
-						}
-					},
-					{
-						"name": "account_id",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D/get/parameters/1/schema"
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "Update account ruleset response",
-						"content": {
-							"application/json": {
-								"schema": {
-									"properties": {
-										"description": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/description"
-										},
-										"rules": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"id": {
-														"description": "The ID of the rule",
-														"type": "string"
-													},
-													"action": {
-														"description": "The action to take when the expression matches",
-														"type": "string",
-														"enum": [
-															"block",
-															"challenge",
-															"ddos_dynamic",
-															"execute",
-															"force_connection_close",
-															"js_challenge",
-															"managed_challenge",
-															"log",
-															"score",
-															"skip",
-															"rewrite",
-															"redirect"
-														]
-													},
-													"expression": {
-														"description": "The expression",
-														"type": "string"
-													},
-													"description": {
-														"description": "The description of the rule",
-														"type": "string"
-													},
-													"action_parameters": {
-														"description": "The parameters to configure the action",
-														"type": "object",
-														"oneOf": [
-															{
-																"description": "The action parameters for the bypass action",
-																"properties": {
-																	"products": {
-																		"description": "Bypass one or more of the following products",
-																		"type": "array",
-																		"default": [],
-																		"minLength": 1,
-																		"items": {
-																			"type": "string",
-																			"enum": [
-																				"bic",
-																				"hot",
-																				"ratelimit",
-																				"securityLevel",
-																				"uablock",
-																				"waf",
-																				"zonelockdown"
-																			]
-																		}
-																	}
-																}
-															},
-															{
-																"description": "The action parameters for the execute action",
-																"properties": {
-																	"id": {
-																		"description": "The ID of the ruleset to execute",
-																		"type": "string"
-																	}
-																}
-															},
-															{
-																"description": "The action parameters for the rewrite action",
-																"properties": {
-																	"uri": {
-																		"description": "Rewrite the path, query string, or both for the origin",
-																		"type": "object",
-																		"properties": {
-																			"path": {
-																				"description": "The new path for the origin"
-																			},
-																			"query": {
-																				"description": "The new query string for the origin"
-																			}
-																		}
-																	}
-																}
-															},
-															{
-																"description": "The action parameters for the score action",
-																"properties": {
-																	"increment": {
-																		"description": "The score increment",
-																		"type": "number"
-																	},
-																	"id": {
-																		"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D/put/responses/200/content/application~1json/schema/properties/rules/items/properties/id"
-																	},
-																	"version": {
-																		"description": "The version of the rule",
-																		"type": "string"
-																	}
-																}
-															},
-															{
-																"description": "The action parameters for the skip action",
-																"properties": {
-																	"ruleset": {
-																		"description": "Skip execution of these rulesets",
-																		"enum": [
-																			"current"
-																		],
-																		"type": "string"
-																	}
-																}
-															},
-															{
-																"description": "The action parameters for the redirect action",
-																"properties": {
-																	"from_list": {
-																		"description": "Applies a redirect based on a redirect list",
-																		"type": "object",
-																		"properties": {
-																			"name": {
-																				"type": "string",
-																				"description": "The name of the redirect list",
-																				"example": "my_redirect_list"
-																			},
-																			"key": {
-																				"type": "string",
-																				"description": "Key to use to lookup the redirect in the list",
-																				"example": "http.request.full_uri"
-																			}
-																		}
-																	}
-																}
-															}
-														]
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"api_key": [],
-						"api_email": []
-					}
-				],
-				"x-cfPlanAvailability": {
-					"free": true,
-					"pro": true,
-					"business": true,
-					"enterprise": true
-				},
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {}
-					}
-				}
 			}
 		},
 		"/accounts/{account_id}/rulesets/{ruleset_id}/versions": {
 			"get": {
-				"summary": "List versions of an account ruleset",
-				"description": "List versions of an account ruleset",
+				"summary": "List account ruleset versions",
+				"description": "List the versions of an account ruleset",
 				"parameters": [
 					{
 						"name": "ruleset_id",
@@ -55477,37 +55228,14 @@
 				],
 				"responses": {
 					"200": {
-						"description": "List versions of an account ruleset response",
+						"description": "List account ruleset versions response",
 						"content": {
 							"application/json": {
 								"schema": {
-									"properties": {
-										"id": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D/get/parameters/0/schema"
-										},
-										"name": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/name"
-										},
-										"description": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/description"
-										},
-										"kind": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/kind"
-										},
-										"version": {
-											"description": "The version of the ruleset",
-											"type": "string"
-										},
-										"shareable_entitlement_name": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/shareable_entitlement_name"
-										},
-										"last_updated": {
-											"description": "The timestamp of the last ruleset execution",
-											"type": "string"
-										},
-										"phase": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/phase"
-										}
+									"description": "The versions of the ruleset",
+									"type": "array",
+									"items": {
+										"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/get/responses/200/content/application~1json/schema/items"
 									}
 								}
 							}
@@ -55530,15 +55258,18 @@
 		},
 		"/accounts/{account_id}/rulesets/{ruleset_id}/versions/{ruleset_version}": {
 			"get": {
-				"summary": "Get an account ruleset version",
-				"description": "Get an account ruleset version",
+				"summary": "Get account ruleset version",
+				"description": "Get a version of an account ruleset",
 				"parameters": [
 					{
 						"name": "ruleset_version",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D~1versions/get/responses/200/content/application~1json/schema/properties/version"
+							"description": "The version of the ruleset",
+							"type": "string",
+							"pattern": "^[0-9]+$",
+							"example": "1"
 						}
 					},
 					{
@@ -55560,96 +55291,11 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get an account ruleset version response",
+						"description": "Get account ruleset version response",
 						"content": {
 							"application/json": {
 								"schema": {
-									"properties": {
-										"id": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D/get/parameters/0/schema"
-										},
-										"name": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/name"
-										},
-										"description": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/description"
-										},
-										"kind": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/kind"
-										},
-										"version": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D~1versions/get/responses/200/content/application~1json/schema/properties/version"
-										},
-										"rules": {
-											"type": "array",
-											"items": {
-												"properties": {
-													"id": {
-														"description": "The ID of the rule",
-														"type": "string"
-													},
-													"version": {
-														"description": "The version of the rule",
-														"type": "string"
-													},
-													"action": {
-														"description": "The action to take when the expression matches",
-														"type": "string",
-														"enum": [
-															"block",
-															"challenge",
-															"ddos_dynamic",
-															"execute",
-															"force_connection_close",
-															"js_challenge",
-															"managed_challenge",
-															"log",
-															"score",
-															"skip",
-															"rewrite",
-															"redirect"
-														]
-													},
-													"expression": {
-														"description": "The expression",
-														"type": "string"
-													},
-													"score_threshold": {
-														"description": "Rule score threshold",
-														"type": "number"
-													},
-													"last_updated": {
-														"description": "Last time the rule was updated",
-														"type": "string"
-													},
-													"ref": {
-														"description": "Rule reference",
-														"type": "string"
-													},
-													"enabled": {
-														"description": "Rule activation",
-														"type": "boolean"
-													},
-													"logging": {
-														"description": "The parameters to configure how the rule generates logs",
-														"type": "object",
-														"properties": {
-															"enabled": {
-																"description": "Override the default logging behavior when a rule is matched",
-																"type": "boolean"
-															}
-														}
-													}
-												}
-											}
-										},
-										"last_updated": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D~1versions/get/responses/200/content/application~1json/schema/properties/last_updated"
-										},
-										"phase": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/phase"
-										}
-									}
+									"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema"
 								}
 							}
 						}
@@ -55669,7 +55315,7 @@
 				}
 			},
 			"delete": {
-				"summary": "Delete a version of an account ruleset",
+				"summary": "Delete account ruleset version",
 				"description": "Delete a version of an account ruleset",
 				"parameters": [
 					{
@@ -55699,7 +55345,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete a version of an account ruleset response",
+						"description": "Delete account ruleset version response",
 						"content": {
 							"application/json": {}
 						}
@@ -55725,283 +55371,10 @@
 				}
 			}
 		},
-		"/accounts/{account_id}/rulesets/phases/{ruleset_phase}/entrypoint": {
-			"get": {
-				"summary": "Get entrypoint ruleset",
-				"description": "Get entrypoint ruleset",
-				"parameters": [
-					{
-						"name": "ruleset_phase",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/phase"
-						}
-					},
-					{
-						"name": "account_id",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1audit_logs/get/parameters/0/schema"
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "Get entrypoint ruleset response",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D/get/responses/200/content/application~1json/schema"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"api_key": [],
-						"api_email": []
-					}
-				],
-				"x-cfPlanAvailability": {
-					"free": true,
-					"pro": true,
-					"business": true,
-					"enterprise": true
-				}
-			},
-			"put": {
-				"summary": "Update entrypoint ruleset",
-				"description": "Update or create entrypoint ruleset",
-				"parameters": [
-					{
-						"name": "ruleset_phase",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1phases~1%7Bruleset_phase%7D~1entrypoint/get/parameters/0/schema"
-						}
-					},
-					{
-						"name": "account_id",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1phases~1%7Bruleset_phase%7D~1entrypoint/get/parameters/1/schema"
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "Update entrypoint ruleset response",
-						"content": {
-							"application/json": {
-								"schema": {
-									"properties": {
-										"name": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/name"
-										},
-										"description": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/description"
-										},
-										"rules": {
-											"type": "array",
-											"items": {
-												"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D/put/responses/200/content/application~1json/schema/properties/rules/items"
-											}
-										},
-										"shareable_entitlement_name": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/shareable_entitlement_name"
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"api_key": [],
-						"api_email": []
-					}
-				],
-				"x-cfPlanAvailability": {
-					"free": true,
-					"pro": true,
-					"business": true,
-					"enterprise": true
-				},
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {}
-					}
-				}
-			}
-		},
-		"/accounts/{account_id}/rulesets/phases/{ruleset_phase}/entrypoint/versions/{ruleset_version}": {
-			"get": {
-				"summary": "Get an entrypoint ruleset version",
-				"description": "Get an entrypoint ruleset version",
-				"parameters": [
-					{
-						"name": "ruleset_version",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D~1versions/get/responses/200/content/application~1json/schema/properties/version"
-						}
-					},
-					{
-						"name": "ruleset_phase",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/phase"
-						}
-					},
-					{
-						"name": "account_id",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1audit_logs/get/parameters/0/schema"
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "Get an entrypoint ruleset version response",
-						"content": {
-							"application/json": {
-								"schema": {
-									"properties": {
-										"id": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D/get/parameters/0/schema"
-										},
-										"name": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/name"
-										},
-										"description": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/description"
-										},
-										"kind": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/kind"
-										},
-										"version": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D~1versions/get/responses/200/content/application~1json/schema/properties/version"
-										},
-										"rules": {
-											"type": "array",
-											"items": {
-												"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D~1versions~1%7Bruleset_version%7D/get/responses/200/content/application~1json/schema/properties/rules/items"
-											}
-										},
-										"last_updated": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D~1versions/get/responses/200/content/application~1json/schema/properties/last_updated"
-										},
-										"phase": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/phase"
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"api_key": [],
-						"api_email": []
-					}
-				],
-				"x-cfPlanAvailability": {
-					"free": true,
-					"pro": true,
-					"business": true,
-					"enterprise": true
-				}
-			}
-		},
-		"/accounts/{account_id}/rulesets/phases/{ruleset_phase}/entrypoint/versions": {
-			"get": {
-				"summary": "List versions of an entrypoint ruleset",
-				"description": "List versions of an entrypoint ruleset",
-				"parameters": [
-					{
-						"name": "ruleset_phase",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/phase"
-						}
-					},
-					{
-						"name": "account_id",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1audit_logs/get/parameters/0/schema"
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "List versions of an entrypoint ruleset response",
-						"content": {
-							"application/json": {
-								"schema": {
-									"properties": {
-										"id": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D/get/parameters/0/schema"
-										},
-										"name": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/name"
-										},
-										"description": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/description"
-										},
-										"kind": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/kind"
-										},
-										"version": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D~1versions/get/responses/200/content/application~1json/schema/properties/version"
-										},
-										"shareable_entitlement_name": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/shareable_entitlement_name"
-										},
-										"last_updated": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D~1versions/get/responses/200/content/application~1json/schema/properties/last_updated"
-										},
-										"phase": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/phase"
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"api_key": [],
-						"api_email": []
-					}
-				],
-				"x-cfPlanAvailability": {
-					"free": true,
-					"pro": true,
-					"business": true,
-					"enterprise": true
-				}
-			}
-		},
 		"/accounts/{account_id}/rulesets/{ruleset_id}/rules": {
 			"post": {
-				"summary": "Add an individual rule",
-				"description": "Add a new individual rule a the ruleset",
+				"summary": "Create account ruleset rule",
+				"description": "Add a new rule to an account ruleset",
 				"parameters": [
 					{
 						"name": "ruleset_id",
@@ -56022,9 +55395,13 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Add an individual rule response",
+						"description": "Create account ruleset rule response",
 						"content": {
-							"application/json": {}
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema"
+								}
+							}
 						}
 					}
 				},
@@ -56043,15 +55420,70 @@
 				"requestBody": {
 					"required": true,
 					"content": {
-						"application/json": {}
+						"application/json": {
+							"schema": {
+								"description": "A rule",
+								"properties": {
+									"description": {
+										"description": "An optional description of the rule",
+										"type": "string",
+										"default": "",
+										"example": "Execute the OWASP ruleset when the IP address is not 1.1.1.1"
+									},
+									"expression": {
+										"description": "The expression of the rule to match traffic on",
+										"type": "string",
+										"example": "ip.src ne 1.1.1.1"
+									},
+									"action": {
+										"description": "The action to take when the rule matches",
+										"type": "string",
+										"pattern": "^[a-z_]+$",
+										"example": "execute"
+									},
+									"action_parameters": {
+										"description": "The parameters to configure the given action",
+										"type": "object",
+										"example": {
+											"id": "4814384a9e5d4991b9815dcfc25d2f1f"
+										}
+									},
+									"ref": {
+										"description": "An optional reference for the rule, defaults to the ID",
+										"type": "string",
+										"example": "my_ref"
+									},
+									"enabled": {
+										"description": "Whether the rule should be run",
+										"type": "boolean",
+										"default": "true",
+										"example": true
+									},
+									"logging": {
+										"description": "The parameters to configure how the rule generates logs",
+										"type": "object",
+										"properties": {
+											"enabled": {
+												"description": "Whether a log should be generated when the rule matches",
+												"type": "boolean",
+												"example": true
+											}
+										},
+										"example": {
+											"enabled": true
+										}
+									}
+								}
+							}
+						}
 					}
 				}
 			}
 		},
 		"/accounts/{account_id}/rulesets/{ruleset_id}/rules/{rule_id}": {
 			"patch": {
-				"summary": "Patch an individual rule",
-				"description": "Patch an individual rule in a ruleset",
+				"summary": "Update account ruleset rule",
+				"description": "Update a rule in an account ruleset",
 				"parameters": [
 					{
 						"name": "rule_id",
@@ -56059,7 +55491,8 @@
 						"required": true,
 						"schema": {
 							"description": "The ID of the rule",
-							"type": "string"
+							"type": "string",
+							"example": "3a03d665bac047339bb530ecb439a90d"
 						}
 					},
 					{
@@ -56081,9 +55514,13 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Patch an individual rule response",
+						"description": "Update account ruleset rule response",
 						"content": {
-							"application/json": {}
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema"
+								}
+							}
 						}
 					}
 				},
@@ -56102,13 +55539,17 @@
 				"requestBody": {
 					"required": true,
 					"content": {
-						"application/json": {}
+						"application/json": {
+							"schema": {
+								"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D~1rules/post/requestBody/content/application~1json/schema"
+							}
+						}
 					}
 				}
 			},
 			"delete": {
-				"summary": "Delete an individual rule",
-				"description": "Delete an individual rule from a ruleset",
+				"summary": "Delete account ruleset rule",
+				"description": "Delete a rule from an account ruleset",
 				"parameters": [
 					{
 						"name": "rule_id",
@@ -56137,7 +55578,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete an individual rule response",
+						"description": "Delete account ruleset rule response",
 						"content": {
 							"application/json": {}
 						}
@@ -56163,10 +55604,117 @@
 				}
 			}
 		},
+		"/accounts/{account_id}/rulesets/phases/{ruleset_phase}/entrypoint": {
+			"get": {
+				"summary": "Get account entrypoint ruleset",
+				"description": "Get the latest version of an account entrypoint ruleset",
+				"parameters": [
+					{
+						"name": "ruleset_phase",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"description": "The phase of the ruleset",
+							"type": "string",
+							"pattern": "^[a-z_]+$",
+							"example": "http_request_firewall_managed"
+						}
+					},
+					{
+						"name": "account_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1audit_logs/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Get account entrypoint ruleset response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			},
+			"put": {
+				"summary": "Update account entrypoint ruleset",
+				"description": "Update an account entrypoint ruleset, creating a new version",
+				"parameters": [
+					{
+						"name": "ruleset_phase",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1phases~1%7Bruleset_phase%7D~1entrypoint/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1phases~1%7Bruleset_phase%7D~1entrypoint/get/parameters/1/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Update account entrypoint ruleset response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/requestBody/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema"
+							}
+						}
+					}
+				}
+			}
+		},
 		"/zones/{zone_id}/rulesets": {
 			"get": {
 				"summary": "List zone rulesets",
-				"description": "List all rulesets",
+				"description": "List all rulesets for a zone",
 				"parameters": [
 					{
 						"name": "zone_id",
@@ -56181,7 +55729,15 @@
 					"200": {
 						"description": "List zone rulesets response",
 						"content": {
-							"application/json": {}
+							"application/json": {
+								"schema": {
+									"description": "The rulesets in the zone",
+									"type": "array",
+									"items": {
+										"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/get/responses/200/content/application~1json/schema/items"
+									}
+								}
+							}
 						}
 					}
 				},
@@ -56217,29 +55773,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"properties": {
-										"name": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/name"
-										},
-										"description": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/description"
-										},
-										"kind": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/kind"
-										},
-										"phase": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/phase"
-										},
-										"rules": {
-											"type": "array",
-											"items": {
-												"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/rules/items"
-											}
-										},
-										"shareable_entitlement_name": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/shareable_entitlement_name"
-										}
-									}
+									"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema"
 								}
 							}
 						}
@@ -56260,15 +55794,19 @@
 				"requestBody": {
 					"required": true,
 					"content": {
-						"application/json": {}
+						"application/json": {
+							"schema": {
+								"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/requestBody/content/application~1json/schema"
+							}
+						}
 					}
 				}
 			}
 		},
 		"/zones/{zone_id}/rulesets/{ruleset_id}": {
 			"get": {
-				"summary": "Get a zone ruleset",
-				"description": "Get a zone ruleset",
+				"summary": "Get zone ruleset",
+				"description": "Get the latest version of a zone ruleset",
 				"parameters": [
 					{
 						"name": "ruleset_id",
@@ -56289,11 +55827,11 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get a zone ruleset response",
+						"description": "Get zone ruleset response",
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D/get/responses/200/content/application~1json/schema"
+									"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema"
 								}
 							}
 						}
@@ -56312,9 +55850,65 @@
 					"enterprise": true
 				}
 			},
+			"put": {
+				"summary": "Update zone ruleset",
+				"description": "Update a zone ruleset, creating a new version",
+				"parameters": [
+					{
+						"name": "ruleset_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1rulesets~1%7Bruleset_id%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "zone_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1rulesets~1%7Bruleset_id%7D/get/parameters/1/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Update zone ruleset response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/requestBody/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema"
+							}
+						}
+					}
+				}
+			},
 			"delete": {
 				"summary": "Delete zone ruleset",
-				"description": "Delete all versions of the zone ruleset",
+				"description": "Delete all versions of a zone ruleset",
 				"parameters": [
 					{
 						"name": "ruleset_id",
@@ -56359,17 +55953,19 @@
 						"application/json": {}
 					}
 				}
-			},
-			"put": {
-				"summary": "Update a zone ruleset",
-				"description": "Update an existing zone ruleset",
+			}
+		},
+		"/zones/{zone_id}/rulesets/{ruleset_id}/versions": {
+			"get": {
+				"summary": "List zone ruleset versions",
+				"description": "List the versions of a zone ruleset",
 				"parameters": [
 					{
 						"name": "ruleset_id",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1rulesets~1%7Bruleset_id%7D/get/parameters/0/schema"
+							"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D/get/parameters/0/schema"
 						}
 					},
 					{
@@ -56377,26 +55973,20 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1rulesets~1%7Bruleset_id%7D/get/parameters/1/schema"
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1argo~1smart_routing/get/parameters/0/schema"
 						}
 					}
 				],
 				"responses": {
 					"200": {
-						"description": "Update a zone ruleset response",
+						"description": "List zone ruleset versions response",
 						"content": {
 							"application/json": {
 								"schema": {
-									"properties": {
-										"description": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/description"
-										},
-										"rules": {
-											"type": "array",
-											"items": {
-												"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D/put/responses/200/content/application~1json/schema/properties/rules/items"
-											}
-										}
+									"description": "The versions of the ruleset",
+									"type": "array",
+									"items": {
+										"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/get/responses/200/content/application~1json/schema/items"
 									}
 								}
 							}
@@ -56414,26 +56004,20 @@
 					"pro": true,
 					"business": true,
 					"enterprise": true
-				},
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {}
-					}
 				}
 			}
 		},
 		"/zones/{zone_id}/rulesets/{ruleset_id}/versions/{ruleset_version}": {
 			"get": {
-				"summary": "Get a zone ruleset version",
-				"description": "Get a zone ruleset version",
+				"summary": "Get zone ruleset version",
+				"description": "Get a version of a zone ruleset",
 				"parameters": [
 					{
 						"name": "ruleset_version",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D~1versions/get/responses/200/content/application~1json/schema/properties/version"
+							"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D~1versions~1%7Bruleset_version%7D/get/parameters/0/schema"
 						}
 					},
 					{
@@ -56455,39 +56039,11 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get a zone ruleset version response",
+						"description": "Get zone ruleset version response",
 						"content": {
 							"application/json": {
 								"schema": {
-									"properties": {
-										"id": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D/get/parameters/0/schema"
-										},
-										"name": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/name"
-										},
-										"description": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/description"
-										},
-										"kind": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/kind"
-										},
-										"version": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D~1versions/get/responses/200/content/application~1json/schema/properties/version"
-										},
-										"rules": {
-											"type": "array",
-											"items": {
-												"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D~1versions~1%7Bruleset_version%7D/get/responses/200/content/application~1json/schema/properties/rules/items"
-											}
-										},
-										"last_updated": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D~1versions/get/responses/200/content/application~1json/schema/properties/last_updated"
-										},
-										"phase": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/phase"
-										}
-									}
+									"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema"
 								}
 							}
 						}
@@ -56507,7 +56063,7 @@
 				}
 			},
 			"delete": {
-				"summary": "Delete a version of a zone ruleset",
+				"summary": "Delete zone ruleset version",
 				"description": "Delete a version of a zone ruleset",
 				"parameters": [
 					{
@@ -56537,7 +56093,187 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete a version of a zone ruleset response",
+						"description": "Delete zone ruleset version response",
+						"content": {
+							"application/json": {}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {}
+					}
+				}
+			}
+		},
+		"/zones/{zone_id}/rulesets/{ruleset_id}/rules": {
+			"post": {
+				"summary": "Create zone ruleset rule",
+				"description": "Add a new rule to a zone ruleset",
+				"parameters": [
+					{
+						"name": "ruleset_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "zone_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1argo~1smart_routing/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Create zone ruleset rule response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D~1rules/post/requestBody/content/application~1json/schema"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/zones/{zone_id}/rulesets/{ruleset_id}/rules/{rule_id}": {
+			"patch": {
+				"summary": "Update zone ruleset rule",
+				"description": "Update a rule in a zone ruleset",
+				"parameters": [
+					{
+						"name": "rule_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D~1rules~1%7Brule_id%7D/patch/parameters/0/schema"
+						}
+					},
+					{
+						"name": "ruleset_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "zone_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1argo~1smart_routing/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Update zone ruleset rule response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D~1rules/post/requestBody/content/application~1json/schema"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"summary": "Delete zone ruleset rule",
+				"description": "Delete a rule from a zone ruleset",
+				"parameters": [
+					{
+						"name": "rule_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1rulesets~1%7Bruleset_id%7D~1rules~1%7Brule_id%7D/patch/parameters/0/schema"
+						}
+					},
+					{
+						"name": "ruleset_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1rulesets~1%7Bruleset_id%7D~1rules~1%7Brule_id%7D/patch/parameters/1/schema"
+						}
+					},
+					{
+						"name": "zone_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1rulesets~1%7Bruleset_id%7D~1rules~1%7Brule_id%7D/patch/parameters/2/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Delete zone ruleset rule response",
 						"content": {
 							"application/json": {}
 						}
@@ -56565,15 +56301,15 @@
 		},
 		"/zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint": {
 			"get": {
-				"summary": "Get entrypoint ruleset",
-				"description": "Get entrypoint ruleset",
+				"summary": "Get zone entrypoint ruleset",
+				"description": "Get the latest version of a zone entrypoint ruleset",
 				"parameters": [
 					{
 						"name": "ruleset_phase",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/phase"
+							"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1phases~1%7Bruleset_phase%7D~1entrypoint/get/parameters/0/schema"
 						}
 					},
 					{
@@ -56587,11 +56323,11 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get entrypoint ruleset response",
+						"description": "Get zone entrypoint ruleset response",
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D/get/responses/200/content/application~1json/schema"
+									"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema"
 								}
 							}
 						}
@@ -56611,8 +56347,8 @@
 				}
 			},
 			"put": {
-				"summary": "Update entrypoint ruleset",
-				"description": "Update entrypoint ruleset",
+				"summary": "Update zone entrypoint ruleset",
+				"description": "Update a zone entrypoint ruleset, creating a new version",
 				"parameters": [
 					{
 						"name": "ruleset_phase",
@@ -56633,21 +56369,11 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update entrypoint ruleset response",
+						"description": "Update zone entrypoint ruleset response",
 						"content": {
 							"application/json": {
 								"schema": {
-									"properties": {
-										"description": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/description"
-										},
-										"rules": {
-											"type": "array",
-											"items": {
-												"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D/put/responses/200/content/application~1json/schema/properties/rules/items"
-											}
-										}
-									}
+									"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/requestBody/content/application~1json/schema"
 								}
 							}
 						}
@@ -56668,165 +56394,12 @@
 				"requestBody": {
 					"required": true,
 					"content": {
-						"application/json": {}
-					}
-				}
-			}
-		},
-		"/zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint/versions/{ruleset_version}": {
-			"get": {
-				"summary": "Get an entrypoint ruleset version",
-				"description": "Get an entrypoint ruleset version",
-				"parameters": [
-					{
-						"name": "ruleset_version",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D~1versions/get/responses/200/content/application~1json/schema/properties/version"
-						}
-					},
-					{
-						"name": "ruleset_phase",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/phase"
-						}
-					},
-					{
-						"name": "zone_id",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1argo~1smart_routing/get/parameters/0/schema"
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "Get an entrypoint ruleset version response",
-						"content": {
-							"application/json": {
-								"schema": {
-									"properties": {
-										"id": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D/get/parameters/0/schema"
-										},
-										"name": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/name"
-										},
-										"description": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/description"
-										},
-										"kind": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/kind"
-										},
-										"version": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D~1versions/get/responses/200/content/application~1json/schema/properties/version"
-										},
-										"rules": {
-											"type": "array",
-											"items": {
-												"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D~1versions~1%7Bruleset_version%7D/get/responses/200/content/application~1json/schema/properties/rules/items"
-											}
-										},
-										"last_updated": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D~1versions/get/responses/200/content/application~1json/schema/properties/last_updated"
-										},
-										"phase": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/phase"
-										}
-									}
-								}
+						"application/json": {
+							"schema": {
+								"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema"
 							}
 						}
 					}
-				},
-				"security": [
-					{
-						"api_key": [],
-						"api_email": []
-					}
-				],
-				"x-cfPlanAvailability": {
-					"free": true,
-					"pro": true,
-					"business": true,
-					"enterprise": true
-				}
-			}
-		},
-		"/zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint/versions": {
-			"get": {
-				"summary": "List versions of an entrypoint ruleset",
-				"description": "List versions of an entrypoint ruleset",
-				"parameters": [
-					{
-						"name": "ruleset_phase",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/phase"
-						}
-					},
-					{
-						"name": "zone_id",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1argo~1smart_routing/get/parameters/0/schema"
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "List versions of an entrypoint ruleset response",
-						"content": {
-							"application/json": {
-								"schema": {
-									"properties": {
-										"id": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D/get/parameters/0/schema"
-										},
-										"name": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/name"
-										},
-										"description": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/description"
-										},
-										"kind": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/kind"
-										},
-										"version": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D~1versions/get/responses/200/content/application~1json/schema/properties/version"
-										},
-										"shareable_entitlement_name": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/shareable_entitlement_name"
-										},
-										"last_updated": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D~1versions/get/responses/200/content/application~1json/schema/properties/last_updated"
-										},
-										"phase": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/phase"
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"api_key": [],
-						"api_email": []
-					}
-				],
-				"x-cfPlanAvailability": {
-					"free": true,
-					"pro": true,
-					"business": true,
-					"enterprise": true
 				}
 			}
 		},
@@ -56995,17 +56568,7 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"properties": {
-									"description": {
-										"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema/properties/description"
-									},
-									"rules": {
-										"type": "array",
-										"items": {
-											"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D/put/responses/200/content/application~1json/schema/properties/rules/items"
-										}
-									}
-								}
+								"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/requestBody/content/application~1json/schema"
 							}
 						}
 					}
@@ -57407,7 +56970,7 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1rulesets~1phases~1%7Bphase%7D~1entrypoint/put/requestBody/content/application~1json/schema"
+								"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/requestBody/content/application~1json/schema"
 							}
 						}
 					}
