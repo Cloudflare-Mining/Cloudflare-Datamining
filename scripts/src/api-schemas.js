@@ -66,7 +66,7 @@ async function run(){
 	const schemasReqYml = await fetch('https://raw.githubusercontent.com/cloudflare/api-schemas/main/openapi.yaml');
 	const schemasYml = await schemasReqYml.text();
 	if(schemasReqYml.ok && schemasYml){
-		await fs.writeFile(path.resolve(`../data/api-schemas/openapi.yml`), schemasYml);
+		await fs.writeFile(path.resolve(`../data/api-schemas/openapi.yaml`), schemasYml);
 	}
 
 	console.log('Pushing!');
@@ -74,6 +74,7 @@ async function run(){
 	await tryAndPush(
 		[
 			'data/api-schemas/*.json',
+			'data/api-schemas/*.yaml',
 			'data/api-schemas/**/*.json',
 		],
 		`${prefix} - API Schemas were updated!`,

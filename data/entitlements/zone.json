@@ -204,6 +204,18 @@
 		}
 	},
 	{
+		"id": "filters.adv_threat_intel_allowed",
+		"feature": {
+			"feature_set": "filters",
+			"id": 1003,
+			"key": "filters.adv_threat_intel_allowed",
+			"name": "Firewall Filters - Advanced Threat Intel Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "filters.advanced_geoip_enabled",
 		"feature": {
 			"feature_set": "filters",
@@ -720,6 +732,18 @@
 		}
 	},
 	{
+		"id": "managed_hostname.metadata_access",
+		"feature": {
+			"feature_set": "managed_hostname",
+			"id": 71,
+			"key": "managed_hostname.metadata_access",
+			"name": "SSL for SaaS Metadata Access"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "page_rules",
 		"feature": {
 			"feature_set": "page_rules",
@@ -960,12 +984,36 @@
 		}
 	},
 	{
+		"id": "rulesets.adv_threat_intel_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1004,
+			"key": "rulesets.adv_threat_intel_allowed",
+			"name": "Rulesets - Advanced Threat Intel Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "rulesets.block_customized_response_allowed",
 		"feature": {
 			"feature_set": "rulesets",
 			"id": 1016,
 			"key": "rulesets.block_customized_response_allowed",
 			"name": "Rulesets - Block Customization Response Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "rulesets.body_inspection_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 882,
+			"key": "rulesets.body_inspection_allowed",
+			"name": "Rulesets - Body Inspection Allowed"
 		},
 		"allocation": {
 			"type": "bool"
@@ -1104,6 +1152,30 @@
 		}
 	},
 	{
+		"id": "rulesets.firewall_custom_max_rules_per_ruleset",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 884,
+			"key": "rulesets.firewall_custom_max_rules_per_ruleset",
+			"name": "Rulesets - Firewall Custom Max Rules Per Ruleset"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "rulesets.firewall_custom_phase_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 864,
+			"key": "rulesets.firewall_custom_phase_allowed",
+			"name": "Rulesets - Firewall Custom Phase Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "rulesets.fw_global_rulesets_execute_ddos_l7_allowed",
 		"feature": {
 			"feature_set": "rulesets",
@@ -1176,6 +1248,18 @@
 		}
 	},
 	{
+		"id": "rulesets.fw_global_rulesets_execute_firewall_managed_cramr_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 889,
+			"key": "rulesets.fw_global_rulesets_execute_firewall_managed_cramr_allowed",
+			"name": "Rulesets - Execute Global Cloudflare Response Analysis Managed Rules Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "rulesets.fw_global_rulesets_execute_request_late_transform_managed_headers_allowed",
 		"feature": {
 			"feature_set": "rulesets",
@@ -1212,6 +1296,18 @@
 		}
 	},
 	{
+		"id": "rulesets.hmac_function_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 879,
+			"key": "rulesets.hmac_function_allowed",
+			"name": "Rulesets - HMAC Function Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "rulesets.labelled_releases_allowed",
 		"feature": {
 			"feature_set": "rulesets",
@@ -1242,6 +1338,18 @@
 			"id": 935,
 			"key": "rulesets.managed_lists_open_proxies_allowed",
 			"name": "Rulesets - Managed Lists Open Proxies Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "rulesets.managed_rules_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 885,
+			"key": "rulesets.managed_rules_allowed",
+			"name": "Rulesets - Managed Rules Allowed"
 		},
 		"allocation": {
 			"type": "bool"
@@ -1290,6 +1398,18 @@
 			"id": 1058,
 			"key": "rulesets.max_endpoints_per_shield",
 			"name": "Rulesets - Max Allowed Endpoints per API Shield"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "rulesets.max_ratelimit_rules_per_ruleset",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 883,
+			"key": "rulesets.max_ratelimit_rules_per_ruleset",
+			"name": "Rulesets - Max Ratelimit Rules Per Ruleset"
 		},
 		"allocation": {
 			"type": "max_count"
@@ -1368,12 +1488,48 @@
 		}
 	},
 	{
+		"id": "rulesets.ratelimit_level",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 993,
+			"key": "rulesets.ratelimit_level",
+			"name": "Rulesets - Ratelimit Level"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "rulesets.ratelimit_sampling_period",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 994,
+			"key": "rulesets.ratelimit_sampling_period",
+			"name": "Rulesets - Ratelimit Sampling Period"
+		},
+		"allocation": {
+			"type": "enum_number"
+		}
+	},
+	{
 		"id": "rulesets.regex_operator_allowed",
 		"feature": {
 			"feature_set": "rulesets",
 			"id": 881,
 			"key": "rulesets.regex_operator_allowed",
 			"name": "Rulesets - Regex Operator Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "rulesets.response_phase_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 888,
+			"key": "rulesets.response_phase_allowed",
+			"name": "Rulesets - Response Phase Allowed"
 		},
 		"allocation": {
 			"type": "bool"
