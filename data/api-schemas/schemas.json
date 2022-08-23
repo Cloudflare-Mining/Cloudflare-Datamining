@@ -54768,57 +54768,70 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"description": "The rulesets in the account",
-									"type": "array",
-									"items": {
-										"description": "The ruleset",
-										"properties": {
-											"id": {
-												"description": "The ID of the ruleset",
-												"type": "string",
-												"pattern": "^[0-9a-f]{32}$",
-												"example": "2f2feab2026849078ba485f918791bdc"
-											},
-											"name": {
-												"description": "The human readable name for the ruleset",
-												"type": "string",
-												"example": "My ruleset"
-											},
-											"description": {
-												"description": "An optional description of the ruleset",
-												"type": "string",
-												"default": "",
-												"example": "My ruleset to execute managed rulesets"
-											},
-											"kind": {
-												"description": "The kind of the ruleset",
-												"type": "string",
-												"enum": [
-													"custom",
-													"root",
-													"zone"
-												],
-												"example": "root"
-											},
-											"phase": {
-												"description": "The phase of the ruleset",
-												"type": "string",
-												"pattern": "^[a-z_]+$",
-												"example": "http_request_firewall_managed"
-											},
-											"version": {
-												"description": "The version of the ruleset",
-												"type": "string",
-												"pattern": "^[0-9]+$",
-												"example": "1"
-											},
-											"last_updated": {
-												"description": "When the ruleset was last modified",
-												"type": "string",
-												"example": "2000-01-01T00:00:00+00:00"
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user~1audit_logs/get/responses/200/content/application~1json/schema/oneOf/1"
+										},
+										{
+											"type": "object",
+											"properties": {
+												"result": {
+													"description": "The rulesets",
+													"type": "array",
+													"items": {
+														"description": "The ruleset",
+														"type": "object",
+														"properties": {
+															"id": {
+																"description": "The ID of the ruleset",
+																"type": "string",
+																"pattern": "^[0-9a-f]{32}$",
+																"example": "2f2feab2026849078ba485f918791bdc"
+															},
+															"name": {
+																"description": "The human readable name for the ruleset",
+																"type": "string",
+																"example": "My ruleset"
+															},
+															"description": {
+																"description": "A description of the ruleset",
+																"type": "string",
+																"default": "",
+																"example": "My ruleset to execute managed rulesets"
+															},
+															"kind": {
+																"description": "The kind of the ruleset",
+																"type": "string",
+																"enum": [
+																	"custom",
+																	"root",
+																	"zone"
+																],
+																"example": "root"
+															},
+															"phase": {
+																"description": "The phase of the ruleset",
+																"type": "string",
+																"pattern": "^[a-z_]+$",
+																"example": "http_request_firewall_managed"
+															},
+															"version": {
+																"description": "The version of the ruleset",
+																"type": "string",
+																"pattern": "^[0-9]+$",
+																"example": "1"
+															},
+															"last_updated": {
+																"description": "When the ruleset was last modified",
+																"type": "string",
+																"example": "2000-01-01T00:00:00+00:00"
+															}
+														}
+													}
+												}
 											}
 										}
-									}
+									]
 								}
 							}
 						}
@@ -54856,127 +54869,141 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"description": "The ruleset",
-									"properties": {
-										"id": {
-											"description": "The ID of the ruleset",
-											"type": "string",
-											"pattern": "^[0-9a-f]{32}$",
-											"example": "2f2feab2026849078ba485f918791bdc"
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user~1audit_logs/get/responses/200/content/application~1json/schema/oneOf/1"
 										},
-										"name": {
-											"description": "The human readable name for the ruleset",
-											"type": "string",
-											"example": "My ruleset"
-										},
-										"description": {
-											"description": "An optional description of the ruleset",
-											"type": "string",
-											"default": "",
-											"example": "My ruleset to execute managed rulesets"
-										},
-										"kind": {
-											"description": "The kind of the ruleset",
-											"type": "string",
-											"enum": [
-												"custom",
-												"root",
-												"zone"
-											],
-											"example": "root"
-										},
-										"phase": {
-											"description": "The phase of the ruleset",
-											"type": "string",
-											"pattern": "^[a-z_]+$",
-											"example": "http_request_firewall_managed"
-										},
-										"version": {
-											"description": "The version of the ruleset",
-											"type": "string",
-											"pattern": "^[0-9]+$",
-											"example": "1"
-										},
-										"rules": {
-											"description": "The rules in the ruleset",
-											"type": "array",
-											"items": {
-												"description": "The rule",
-												"properties": {
-													"id": {
-														"description": "The ID of the rule",
-														"type": "string",
-														"example": "3a03d665bac047339bb530ecb439a90d"
-													},
-													"description": {
-														"description": "An optional description of the rule",
-														"type": "string",
-														"default": "",
-														"example": "Execute the OWASP ruleset when the IP address is not 1.1.1.1"
-													},
-													"version": {
-														"description": "The version of the rule",
-														"type": "string",
-														"pattern": "^[0-9]+$",
-														"example": "1"
-													},
-													"expression": {
-														"description": "The expression of the rule to match traffic on",
-														"type": "string",
-														"example": "ip.src ne 1.1.1.1"
-													},
-													"action": {
-														"description": "The action to take when the rule matches",
-														"type": "string",
-														"pattern": "^[a-z_]+$",
-														"example": "execute"
-													},
-													"action_parameters": {
-														"description": "The parameters to configure the given action",
-														"type": "object",
-														"example": {
-															"id": "4814384a9e5d4991b9815dcfc25d2f1f"
-														}
-													},
-													"ref": {
-														"description": "An optional reference for the rule, defaults to the ID",
-														"type": "string",
-														"example": "my_ref"
-													},
-													"enabled": {
-														"description": "Whether the rule should be run",
-														"type": "boolean",
-														"default": "true",
-														"example": true
-													},
-													"logging": {
-														"description": "The parameters to configure how the rule generates logs",
-														"type": "object",
-														"properties": {
-															"enabled": {
-																"description": "Whether a log should be generated when the rule matches",
-																"type": "boolean",
-																"example": true
+										{
+											"type": "object",
+											"properties": {
+												"result": {
+													"description": "The ruleset",
+													"type": "object",
+													"properties": {
+														"id": {
+															"description": "The ID of the ruleset",
+															"type": "string",
+															"pattern": "^[0-9a-f]{32}$",
+															"example": "2f2feab2026849078ba485f918791bdc"
+														},
+														"name": {
+															"description": "The human readable name for the ruleset",
+															"type": "string",
+															"example": "My ruleset"
+														},
+														"description": {
+															"description": "A description of the ruleset",
+															"type": "string",
+															"default": "",
+															"example": "My ruleset to execute managed rulesets"
+														},
+														"kind": {
+															"description": "The kind of the ruleset",
+															"type": "string",
+															"enum": [
+																"custom",
+																"root",
+																"zone"
+															],
+															"example": "root"
+														},
+														"phase": {
+															"description": "The phase of the ruleset",
+															"type": "string",
+															"pattern": "^[a-z_]+$",
+															"example": "http_request_firewall_managed"
+														},
+														"version": {
+															"description": "The version of the ruleset",
+															"type": "string",
+															"pattern": "^[0-9]+$",
+															"example": "1"
+														},
+														"rules": {
+															"description": "The rules in the ruleset",
+															"type": "array",
+															"items": {
+																"description": "The rule",
+																"type": "object",
+																"properties": {
+																	"id": {
+																		"description": "The ID of the rule",
+																		"type": "string",
+																		"example": "3a03d665bac047339bb530ecb439a90d"
+																	},
+																	"description": {
+																		"description": "A description of the rule",
+																		"type": "string",
+																		"default": "",
+																		"example": "Execute the OWASP ruleset when the IP address is not 1.1.1.1"
+																	},
+																	"version": {
+																		"description": "The version of the rule",
+																		"type": "string",
+																		"pattern": "^[0-9]+$",
+																		"example": "1"
+																	},
+																	"expression": {
+																		"description": "The expression of the rule to match traffic on",
+																		"type": "string",
+																		"example": "ip.src ne 1.1.1.1"
+																	},
+																	"action": {
+																		"description": "The action to take when the rule matches",
+																		"type": "string",
+																		"pattern": "^[a-z_]+$",
+																		"example": "execute"
+																	},
+																	"action_parameters": {
+																		"description": "The parameters to configure the given action",
+																		"type": "object",
+																		"example": {
+																			"id": "4814384a9e5d4991b9815dcfc25d2f1f"
+																		}
+																	},
+																	"ref": {
+																		"description": "A reference for the rule, defaults to the ID",
+																		"type": "string",
+																		"example": "my_ref"
+																	},
+																	"enabled": {
+																		"description": "Whether the rule should be run",
+																		"type": "boolean",
+																		"default": "true",
+																		"example": true
+																	},
+																	"logging": {
+																		"description": "The parameters to configure how the rule generates logs",
+																		"type": "object",
+																		"properties": {
+																			"enabled": {
+																				"description": "Whether a log should be generated when the rule matches",
+																				"type": "boolean",
+																				"example": true
+																			}
+																		},
+																		"example": {
+																			"enabled": true
+																		}
+																	},
+																	"last_updated": {
+																		"description": "When the rule was last modified",
+																		"type": "string",
+																		"example": "2000-01-01T00:00:00+00:00"
+																	}
+																}
 															}
 														},
-														"example": {
-															"enabled": true
+														"last_updated": {
+															"description": "When the ruleset was last modified",
+															"type": "string",
+															"example": "2000-01-01T00:00:00+00:00"
 														}
-													},
-													"last_updated": {
-														"description": "When the rule was last modified",
-														"type": "string",
-														"example": "2000-01-01T00:00:00+00:00"
 													}
 												}
 											}
-										},
-										"last_updated": {
-											"description": "When the ruleset was last modified",
-											"type": "string",
-											"example": "2000-01-01T00:00:00+00:00"
 										}
-									}
+									]
 								}
 							}
 						}
@@ -55000,6 +55027,13 @@
 						"application/json": {
 							"schema": {
 								"description": "A ruleset",
+								"type": "object",
+								"required": [
+									"name",
+									"kind",
+									"phase",
+									"rules"
+								],
 								"properties": {
 									"name": {
 										"description": "The human readable name for the ruleset",
@@ -55007,7 +55041,7 @@
 										"example": "My ruleset"
 									},
 									"description": {
-										"description": "An optional description of the ruleset",
+										"description": "A description of the ruleset",
 										"type": "string",
 										"default": "",
 										"example": "My ruleset to execute managed rulesets"
@@ -55032,7 +55066,7 @@
 										"description": "The rules in the ruleset",
 										"type": "array",
 										"items": {
-											"oneOf": [
+											"anyOf": [
 												{
 													"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D~1rules/post/requestBody/content/application~1json/schema"
 												},
@@ -55126,7 +55160,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/requestBody/content/application~1json/schema"
+									"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema"
 								}
 							}
 						}
@@ -55149,7 +55183,33 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema"
+								"description": "A ruleset",
+								"type": "object",
+								"required": [
+									"rules"
+								],
+								"properties": {
+									"description": {
+										"description": "A description of the ruleset",
+										"type": "string",
+										"default": "",
+										"example": "My ruleset to execute managed rulesets"
+									},
+									"rules": {
+										"description": "The rules in the ruleset",
+										"type": "array",
+										"items": {
+											"anyOf": [
+												{
+													"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D~1rules/post/requestBody/content/application~1json/schema"
+												},
+												{
+													"description": "An ID of a rule"
+												}
+											]
+										}
+									}
+								}
 							}
 						}
 					}
@@ -55232,11 +55292,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"description": "The versions of the ruleset",
-									"type": "array",
-									"items": {
-										"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/get/responses/200/content/application~1json/schema/items"
-									}
+									"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/get/responses/200/content/application~1json/schema"
 								}
 							}
 						}
@@ -55423,9 +55479,14 @@
 						"application/json": {
 							"schema": {
 								"description": "A rule",
+								"type": "object",
+								"required": [
+									"expression",
+									"action"
+								],
 								"properties": {
 									"description": {
-										"description": "An optional description of the rule",
+										"description": "A description of the rule",
 										"type": "string",
 										"default": "",
 										"example": "Execute the OWASP ruleset when the IP address is not 1.1.1.1"
@@ -55449,7 +55510,7 @@
 										}
 									},
 									"ref": {
-										"description": "An optional reference for the rule, defaults to the ID",
+										"description": "A reference for the rule, defaults to the ID",
 										"type": "string",
 										"example": "my_ref"
 									},
@@ -55580,7 +55641,11 @@
 					"200": {
 						"description": "Delete account ruleset rule response",
 						"content": {
-							"application/json": {}
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema"
+								}
+							}
 						}
 					}
 				},
@@ -55681,7 +55746,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/requestBody/content/application~1json/schema"
+									"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema"
 								}
 							}
 						}
@@ -55704,7 +55769,7 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema"
+								"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D/put/requestBody/content/application~1json/schema"
 							}
 						}
 					}
@@ -55731,11 +55796,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"description": "The rulesets in the zone",
-									"type": "array",
-									"items": {
-										"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/get/responses/200/content/application~1json/schema/items"
-									}
+									"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/get/responses/200/content/application~1json/schema"
 								}
 							}
 						}
@@ -55877,7 +55938,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/requestBody/content/application~1json/schema"
+									"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema"
 								}
 							}
 						}
@@ -55900,7 +55961,7 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema"
+								"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D/put/requestBody/content/application~1json/schema"
 							}
 						}
 					}
@@ -55983,11 +56044,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"description": "The versions of the ruleset",
-									"type": "array",
-									"items": {
-										"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/get/responses/200/content/application~1json/schema/items"
-									}
+									"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/get/responses/200/content/application~1json/schema"
 								}
 							}
 						}
@@ -56275,7 +56332,11 @@
 					"200": {
 						"description": "Delete zone ruleset rule response",
 						"content": {
-							"application/json": {}
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema"
+								}
+							}
 						}
 					}
 				},
@@ -56373,7 +56434,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/requestBody/content/application~1json/schema"
+									"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema"
 								}
 							}
 						}
@@ -56396,7 +56457,7 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema"
+								"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D/put/requestBody/content/application~1json/schema"
 							}
 						}
 					}
@@ -56568,7 +56629,7 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/requestBody/content/application~1json/schema"
+								"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D/put/requestBody/content/application~1json/schema"
 							}
 						}
 					}
@@ -56970,7 +57031,7 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/requestBody/content/application~1json/schema"
+								"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D/put/requestBody/content/application~1json/schema"
 							}
 						}
 					}
