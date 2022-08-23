@@ -144,6 +144,18 @@
 		}
 	},
 	{
+		"id": "central_endpoint_list.max_endpoints_per_zone",
+		"feature": {
+			"feature_set": "central_endpoint_list",
+			"id": 1056,
+			"key": "central_endpoint_list.max_endpoints_per_zone",
+			"name": "Central Endpoint List - Max Allowed Endpoints per Zone"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "cf_registrar.enabled",
 		"feature": {
 			"feature_set": "registrar",
@@ -1266,6 +1278,18 @@
 			"id": 902,
 			"key": "rulesets.max_ddos_l7_rules",
 			"name": "Rulesets - Maximum number of rules allowed per DDoS L7 ruleset"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "rulesets.max_endpoints_per_shield",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1058,
+			"key": "rulesets.max_endpoints_per_shield",
+			"name": "Rulesets - Max Allowed Endpoints per API Shield"
 		},
 		"allocation": {
 			"type": "max_count"

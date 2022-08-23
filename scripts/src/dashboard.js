@@ -12,6 +12,7 @@ import dataUriToBuffer from 'data-uri-to-buffer';
 import isValidCSSUnit from 'is-valid-css-unit';
 import hexColorRegex from 'hex-color-regex';
 import cssProperties from 'known-css-properties';
+import {generate} from 'astring';
 
 import {tryAndPush, removeSlashes, beautify, getHttpsAgent} from './utils.js';
 
@@ -189,6 +190,38 @@ async function writeFile(file, data, rootDir){
 	}
 }
 
+async function processInlineTranslation(file, code){
+	const ast = parseLoose(code, {
+		sourceType: 'script',
+		ecmaVersion: 2020,
+	});
+
+	let filename;
+	let translations;
+	let output;
+	// find what's most likely the translactions part
+	full(ast, (node) => {
+		if(
+			node.type === 'CallExpression' &&
+			node.callee?.type === 'SequenceExpression' &&
+			node.callee?.expressions?.length === 2 &&
+			node.arguments?.length === 2 &&
+			node.arguments?.[0]?.type === 'Literal' &&
+			node.arguments?.[1]?.type === 'ObjectExpression'
+		){
+			filename = node.arguments[0].value;
+			translations = node.arguments[1].properties;
+			console.log('got translations', filename, translations);
+			output = generate(node.arguments[1], {
+				indent: '\t',
+			});
+		}
+	});
+	if(filename && translations && output){
+		await writeFile(path.basename(file), output, path.resolve(`../data/dashboard-translations`));
+	}
+}
+
 async function writeFiles(files, write){
 	const rootDir = await prepareWriteDir(files, 'dashboard-extracted', write);
 	const tree = [];
@@ -199,6 +232,9 @@ async function writeFiles(files, write){
 			}catch(err){
 				console.error('Error writing file', file, err);
 			}
+		}
+		if(file.includes('.translations.ts')){
+			await processInlineTranslation(file, files[file]);
 		}
 		tree.push(file);
 	}
@@ -480,7 +516,7 @@ async function generateDashboardStructure(wantedChunks, write = false, translati
 								console.log('Unhandled file data', fileData);
 							}
 						// else handle code
-						}else if(files[file]){
+						}else if(files[file] && files[file].at(-1) !== code){
 							files[file].push(code);
 						}else{
 							files[file] = [code];
