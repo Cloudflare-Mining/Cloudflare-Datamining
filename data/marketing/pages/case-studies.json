@@ -656,6 +656,41 @@
 			"caseStudies": {
 				"nodes": [
 					{
+						"id": "65a002b9-4920-5101-b6fa-c1cd95f7a1b7",
+						"contentfulId": "7iKsU8SU13B31ViJw9gl4E",
+						"logo": {
+							"file": {
+								"publicURL": "[path]/Outdoorsy-Logo__1_.png"
+							}
+						},
+						"nameUrlSlug": "outdoorsy",
+						"shortDescription": "Cloudflare improves access to internal tooling and keeps bad actors away for Outdoorsy",
+						"longDescription": "__This video features Nathaniel Hill, Director of Engineering at Outdoorsy.__\n\n__Nathaniel Hill:__ Security is paramount at Outdoorsy, because our entire platform is built on trust and safety. People are literally handing over the keys to a super expensive RV - there's a massive element of trust.\n\nMy name is Nathaniel Hill. I am the Director of Engineering at Outdoorsy. Outdoorsy is an online RV rental marketplace with the goal of reconnecting people with the outdoors.\n\nPrior to Cloudflare, Outdoorsy was repeatedly scraped by competitors and bad actors, and we found it extremely difficult to prevent. It's an unfortunate situation where we don't want to cause friction for our renters browsing our inventory, but we also don't want people to be able to download the entire inventory.\n\nAt Outdoorsy, since implementing Cloudflare Bot Management and WAF protection, we have been able to focus more on the customer and our product, and we spend far fewer engineering resources configuring and maintaining those.\n\nSince Outdoorsy has been using Cloudflare, we have 4x the size of our engineering team, but we actually spend less time now - I would say less than half of the time - configuring our security rules.\n\nPrior to Cloudflare, we did not have a strong security posture for our self-hosted resources. We began to realize it was only a matter of time before we had a data breach or an attacker was successful. And so we were looking for a solution to secure those resources.\n\nOutdoorsy has always been a digital native company. We've never had any on-premise servers. Adding a VPN would seem almost like going backwards. \n\nOur Access users are located all over the globe. They're all using Access for our self-hosted resources. Cloudflare Zero Trust has eased employee and contractor onboarding and made it much simpler to access our internal tooling. I would say that Cloudflare Zero Trust has made it at least 25 to 50% faster to grant access to our internal tooling to new team members and contractors.\n\nThe security landscape is difficult enough. I think that I feel like I have a fighting chance there with Cloudflare.",
+						"cloudflareStreamVideoId": "0473e85e5b4dd5ded137ee7dcb244b63",
+						"orderDate": "2022-08-24",
+						"ref_streamVideoThumbnail": {
+							"file": {
+								"publicURL": "[path]/Screen_Shot_2022-07-18_at_2.22.59_PM.png"
+							}
+						},
+						"twoCardPreviewImage": null,
+						"industryNew52420": [
+							"Travel & Leisure"
+						],
+						"regionNew52520": [
+							"North America"
+						],
+						"primaryUseCases": [
+							"Enable zero trust security for workforce",
+							"Secure websites & applications"
+						],
+						"product": [
+							"Bot Management",
+							"Access",
+							"Zero Trust"
+						]
+					},
+					{
 						"id": "0744dc02-0fe0-5b23-ae98-a9bb2586dc58",
 						"contentfulId": "5KtLE5NLrAH4D7sddzjHJ0",
 						"logo": {
@@ -746,41 +781,6 @@
 							"Secure workforce applications, devices and networks"
 						],
 						"product": [
-							"Access",
-							"Zero Trust"
-						]
-					},
-					{
-						"id": "65a002b9-4920-5101-b6fa-c1cd95f7a1b7",
-						"contentfulId": "7iKsU8SU13B31ViJw9gl4E",
-						"logo": {
-							"file": {
-								"publicURL": "[path]/Outdoorsy-Logo__1_.png"
-							}
-						},
-						"nameUrlSlug": "outdoorsy",
-						"shortDescription": "Cloudflare improves access to internal tooling and keeps bad actors away for Outdoorsy",
-						"longDescription": "__This video features Nathaniel Hill, Director of Engineering at Outdoorsy.__\n\n__Nathaniel Hill:__ Security is paramount at Outdoorsy, because our entire platform is built on trust and safety. People are literally handing over the keys to a super expensive RV - there's a massive element of trust.\n\nMy name is Nathaniel Hill. I am the Director of Engineering at Outdoorsy. Outdoorsy is an online RV rental marketplace with the goal of reconnecting people with the outdoors.\n\nPrior to Cloudflare, Outdoorsy was repeatedly scraped by competitors and bad actors, and we found it extremely difficult to prevent. It's an unfortunate situation where we don't want to cause friction for our renters browsing our inventory, but we also don't want people to be able to download the entire inventory.\n\nAt Outdoorsy, since implementing Cloudflare Bot Management and WAF protection, we have been able to focus more on the customer and our product, and we spend far fewer engineering resources configuring and maintaining those.\n\nSince Outdoorsy has been using Cloudflare, we have 4x the size of our engineering team, but we actually spend less time now - I would say less than half of the time - configuring our security rules.\n\nPrior to Cloudflare, we did not have a strong security posture for our self-hosted resources. We began to realize it was only a matter of time before we had a data breach or an attacker was successful. And so we were looking for a solution to secure those resources.\n\nOutdoorsy has always been a digital native company. We've never had any on-premise servers. Adding a VPN would seem almost like going backwards. \n\nOur Access users are located all over the globe. They're all using Access for our self-hosted resources. Cloudflare Zero Trust has eased employee and contractor onboarding and made it much simpler to access our internal tooling. I would say that Cloudflare Zero Trust has made it at least 25 to 50% faster to grant access to our internal tooling to new team members and contractors.\n\nThe security landscape is difficult enough. I think that I feel like I have a fighting chance there with Cloudflare.",
-						"cloudflareStreamVideoId": "0473e85e5b4dd5ded137ee7dcb244b63",
-						"orderDate": "2022-07-18",
-						"ref_streamVideoThumbnail": {
-							"file": {
-								"publicURL": "[path]/Screen_Shot_2022-07-18_at_2.22.59_PM.png"
-							}
-						},
-						"twoCardPreviewImage": null,
-						"industryNew52420": [
-							"Travel & Leisure"
-						],
-						"regionNew52520": [
-							"North America"
-						],
-						"primaryUseCases": [
-							"Enable zero trust security for workforce",
-							"Secure websites & applications"
-						],
-						"product": [
-							"Bot Management",
 							"Access",
 							"Zero Trust"
 						]
