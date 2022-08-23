@@ -66,7 +66,7 @@ async function run(){
 	const schemasReqYml = await fetch('https://raw.githubusercontent.com/cloudflare/api-schemas/main/openapi.yaml');
 	const schemasYml = await schemasReqYml.text();
 	if(schemasReqYml.ok && schemasYml){
-		await fs.writeFile(path.resolve(`../data/api-schemas/openapi.yml`), JSON.stringify(schemasJson, null, '\t'));
+		await fs.writeFile(path.resolve(`../data/api-schemas/openapi.yml`), schemasYml);
 	}
 
 	console.log('Pushing!');
