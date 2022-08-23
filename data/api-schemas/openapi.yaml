@@ -12303,7 +12303,8 @@ components:
       readOnly: true
       type: boolean
     pcaps_byte_limit:
-      description: Maximum number of bytes to capture. Optional. Full PCAP type only.
+      description: The maximum number of bytes to capture. This field only applies
+        to `full` packet captures.
       example: 500000
       maximum: 1000000000
       minimum: 1
@@ -12319,47 +12320,50 @@ components:
               - $ref: '#/components/schemas/pcaps_response_full'
             type: array
     pcaps_colo_name:
-      description: Colo name to capture from. Full PCAP type only.
+      description: The name of the data center used for the packet capture. This field
+        only applies to `full` packet captures.
       example: ord02
       type: string
     pcaps_components-schemas-identifier:
       example: 69cd1e104af3e6ed3cb344f263fd0d5a
     pcaps_destination_conf:
-      description: Full URI of bucket. Full PCAP type only.
+      description: The full URI for the bucket. This field only applies to `full`
+        packet captures.
       example: s3://pcaps-bucket?region=us-east-1
       type: string
     pcaps_error_message:
-      description: A textual description of the error when gathering a Packet Capture.
-        Full PCAP type only
+      description: An error message that describes why the packet capture failed.
+        This field only applies to `full` packet captures.
       example: No packets matched the filter in the time limit given. Please modify
         the filter or try again.
       type: string
     pcaps_filter_v1:
-      description: PCAP filter. Leave fields blank or empty to specify any.
+      description: The packet capture filter. When this field is empty, all packets
+        are captured.
       properties:
         destination_address:
-          description: Destination IP address to filter on.
+          description: The destination IP address of the packet.
           example: 1.2.3.4
           type: string
         destination_port:
-          description: Destination port to filter on.
+          description: The destination port of the packet.
           example: 80
           type: number
         protocol:
-          description: Protocol number to filter on.
+          description: The protocol number of the packet.
           example: 6
           type: number
         source_address:
-          description: Source IP address to filter on.
+          description: The source IP address of the packet.
           example: 1.2.3.4
           type: string
         source_port:
-          description: Source port to filter on.
+          description: The source port of the packet.
           example: 123
           type: number
       type: object
     pcaps_id:
-      description: The ID of the PCAP
+      description: The ID for the packet capture.
       example: 66802ca5668e47a2b82c2e6746e45037
       maxLength: 32
       minLength: 32
@@ -12371,13 +12375,14 @@ components:
         filename:
           $ref: '#/components/schemas/pcaps_ownership_challenge'
         id:
-          description: The ID of the Bucket associated with PCAPs API
+          description: The bucket ID associated with the packet captures API.
           example: 9883874ecac311ec8475433579a6bf5f
           maxLength: 32
           minLength: 32
           type: string
         submitted:
-          description: The RFC 3339 timestamp the bucket was added to PCAPs API.
+          description: The RFC 3339 timestamp when the bucket was added to packet
+            captures API.
           example: "2020-01-01T08:00:00Z"
           type: string
         validated:
@@ -12386,7 +12391,7 @@ components:
           type: string
       type: object
     pcaps_ownership_challenge:
-      description: Ownership challenge filename as stored in bucket
+      description: The ownership challenge filename stored in the bucket
       example: ownership-challenge-9883874ecac311ec8475433579a6bf5f.txt
       type: string
     pcaps_ownership_collection:
@@ -12411,7 +12416,7 @@ components:
           $ref: '#/components/schemas/pcaps_ownership_challenge'
       type: object
     pcaps_packet_limit:
-      description: Limit of number of packets contained in a PCAP.
+      description: The limit of packets contained in a packet capture.
       example: 10000
       maximum: 10000
       minimum: 1
@@ -12492,7 +12497,7 @@ components:
             - $ref: '#/components/schemas/pcaps_response_simple'
             - $ref: '#/components/schemas/pcaps_response_full'
     pcaps_status:
-      description: The status of the pcap request.
+      description: The status of the packet capture request.
       enum:
       - unknown
       - success
@@ -12505,24 +12510,24 @@ components:
       example: success
       type: string
     pcaps_submitted:
-      description: The RFC 3339 timestamp the item was created.
+      description: The RFC 3339 timestamp when the packet capture was created.
       example: "2020-01-01T08:00:00Z"
       type: string
     pcaps_system:
-      description: The system used to collect pcaps.
+      description: The system used to collect packet captures.
       enum:
       - magic-transit
       example: magic-transit
       type: string
     pcaps_time_limit:
-      description: Duration of PCAP in number of seconds.
+      description: The packet capture duration in seconds.
       example: 300
       maximum: 300
       minimum: 1
       type: number
     pcaps_type:
-      description: The type of pcap to collect. Simple will captured sampled packets,
-        while full will capture entire payloads and non-sampled packets.
+      description: The type of packet capture. `Simple` captures sampled packets,
+        and `full` captures entire payloads and non-sampled packets.
       enum:
       - simple
       - full
@@ -27549,8 +27554,8 @@ paths:
       summary: Patch domain
   /accounts/{account_identifier}/pcaps:
     get:
-      description: List all PCAP requests for an account.
-      operationId: magic-pcap-collection-list-pcap-requests
+      description: Lists all packet capture requests for an account.
+      operationId: magic-pcap-collection-list-packet-capture-requests
       parameters:
       - in: path
         name: account_identifier
@@ -27565,17 +27570,17 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/pcaps_collection_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: List PCAP requests response failure
+          description: List packet capture requests response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/pcaps_collection_response'
-          description: List PCAP requests response
+          description: List packet capture requests response
       security:
       - api_email: []
         api_key: []
-      summary: List PCAP requests
+      summary: List packet capture requests
       x-cfPlanAvailability:
         business: false
         enterprise: true
@@ -27728,8 +27733,8 @@ paths:
         free: false
         pro: false
     post:
-      description: Add AWS or GCP bucket for use with PCAPs API.
-      operationId: magic-pcap-collection-add-bucket-for-use-with-pca-ps
+      description: Adds an AWS or GCP bucket to use with full packet captures.
+      operationId: magic-pcap-collection-add-buckets-for-full-packet-captures
       parameters:
       - in: path
         name: account_identifier
@@ -27748,17 +27753,17 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/pcaps_ownership_request'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Add Bucket For Use with PCAPs response failure
+          description: Add buckets for full packet captures response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/pcaps_ownership_request'
-          description: Add Bucket For Use with PCAPs response
+          description: Add buckets for full packet captures response
       security:
       - api_email: []
         api_key: []
-      summary: Add Bucket For Use with PCAPs
+      summary: Add buckets for full packet captures
       x-cfPlanAvailability:
         business: false
         enterprise: true
@@ -27766,8 +27771,8 @@ paths:
         pro: false
   /accounts/{account_identifier}/pcaps/ownership/{ownership_identifier}:
     delete:
-      description: Delete bucket that has been added to PCAPs API.
-      operationId: magic-pcap-collection-delete-bucket-for-use-with-pca-ps
+      description: Deletes buckets added to the packet captures API.
+      operationId: magic-pcap-collection-delete-buckets-for-full-packet-captures
       parameters:
       - in: path
         name: ownership_identifier
@@ -27787,15 +27792,15 @@ paths:
         4xx:
           content:
             application/json: {}
-          description: Delete Bucket for Use with PCAPs response failure
+          description: Delete buckets for full packet captures response failure
         "200":
           content:
             application/json: {}
-          description: Delete Bucket for Use with PCAPs response
+          description: Delete buckets for full packet captures response
       security:
       - api_email: []
         api_key: []
-      summary: Delete Bucket for Use with PCAPs
+      summary: Delete buckets for full packet captures
       x-cfPlanAvailability:
         business: false
         enterprise: true
@@ -27803,8 +27808,8 @@ paths:
         pro: false
   /accounts/{account_identifier}/pcaps/ownership/validate:
     post:
-      description: Validate bucket that has been added to PCAPs API.
-      operationId: magic-pcap-collection-validate-bucket-for-use-with-pca-ps
+      description: Validates buckets added to the packet captures API.
+      operationId: magic-pcap-collection-validate-buckets-for-full-packet-captures
       parameters:
       - in: path
         name: account_identifier
@@ -27823,17 +27828,17 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/pcaps_ownership_validate_request'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Validate Bucket For Use with PCAPs response failure
+          description: Validate buckets for full packet captures response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/pcaps_ownership_validate_request'
-          description: Validate Bucket For Use with PCAPs response
+          description: Validate buckets for full packet captures response
       security:
       - api_email: []
         api_key: []
-      summary: Validate Bucket For Use with PCAPs
+      summary: Validate buckets for full packet captures
       x-cfPlanAvailability:
         business: false
         enterprise: true
