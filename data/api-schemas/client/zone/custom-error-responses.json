@@ -38,211 +38,119 @@
 			},
 			"html_id": "custom-error-responses-update-custom-error-responses",
 			"uri": "zones/:zone_id/rulesets/phases/http_custom_errors/entrypoint",
-			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/rulesets/phases/http_custom_errors/entrypoint\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"rules\":[{\"action_parameters\":{\"products\":[]}}]}'",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/rulesets/phases/http_custom_errors/entrypoint\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"My ruleset\",\"description\":\"My ruleset to execute managed rulesets\",\"kind\":\"root\",\"phase\":\"http_request_firewall_managed\",\"rules\":[{\"description\":\"Execute the OWASP ruleset when the IP address is not 1.1.1.1\",\"expression\":\"ip.src ne 1.1.1.1\",\"action\":\"execute\",\"action_parameters\":{\"id\":\"4814384a9e5d4991b9815dcfc25d2f1f\"},\"ref\":\"my_ref\",\"enabled\":\"true\",\"logging\":{\"enabled\":\"true\"}}]}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
 				},
 				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"My ruleset\"",
+						"description": "The human readable name for the ruleset"
+					},
 					"description": {
 						"type": "string",
-						"description": "The description of the ruleset"
+						"example": "\"My ruleset to execute managed rulesets\"",
+						"description": "An optional description of the ruleset",
+						"default": ""
+					},
+					"kind": {
+						"type": "string",
+						"example": "\"root\"",
+						"description": "The kind of the ruleset",
+						"enum": [
+							"custom",
+							"root",
+							"zone"
+						]
+					},
+					"phase": {
+						"type": "string",
+						"example": "\"http_request_firewall_managed\"",
+						"description": "The phase of the ruleset",
+						"pattern": "^[a-z_]+$"
 					},
 					"rules": {
 						"type": "array",
-						"example": "[\n  {\n    \"action_parameters\": {\n      \"products\": []\n    }\n  }\n]",
+						"example": "[\n  {\n    \"description\": \"Execute the OWASP ruleset when the IP address is not 1.1.1.1\",\n    \"expression\": \"ip.src ne 1.1.1.1\",\n    \"action\": \"execute\",\n    \"action_parameters\": {\n      \"id\": \"4814384a9e5d4991b9815dcfc25d2f1f\"\n    },\n    \"ref\": \"my_ref\",\n    \"enabled\": \"true\",\n    \"logging\": {\n      \"enabled\": \"true\"\n    }\n  }\n]",
+						"description": "The rules in the ruleset",
 						"items": {
-							"properties": {
-								"id": {
-									"description": "The ID of the rule",
-									"type": "string"
-								},
-								"action": {
-									"description": "The action to take when the expression matches",
-									"type": "string",
-									"enum": [
-										"block",
-										"challenge",
-										"ddos_dynamic",
-										"execute",
-										"force_connection_close",
-										"js_challenge",
-										"managed_challenge",
-										"log",
-										"score",
-										"skip",
-										"rewrite",
-										"redirect"
-									]
-								},
-								"expression": {
-									"description": "The expression",
-									"type": "string"
-								},
-								"description": {
-									"description": "The description of the rule",
-									"type": "string"
-								},
-								"action_parameters": {
-									"description": "The parameters to configure the action",
-									"type": "object",
-									"oneOf": [
-										{
-											"description": "The action parameters for the bypass action",
-											"properties": {
-												"products": {
-													"description": "Bypass one or more of the following products",
-													"type": "array",
-													"default": [],
-													"minLength": 1,
-													"items": {
-														"type": "string",
-														"enum": [
-															"bic",
-															"hot",
-															"ratelimit",
-															"securityLevel",
-															"uablock",
-															"waf",
-															"zonelockdown"
-														]
-													}
-												}
+							"oneOf": [
+								{
+									"description": "A rule",
+									"properties": {
+										"description": {
+											"description": "An optional description of the rule",
+											"type": "string",
+											"default": "",
+											"example": "Execute the OWASP ruleset when the IP address is not 1.1.1.1"
+										},
+										"expression": {
+											"description": "The expression of the rule to match traffic on",
+											"type": "string",
+											"example": "ip.src ne 1.1.1.1"
+										},
+										"action": {
+											"description": "The action to take when the rule matches",
+											"type": "string",
+											"pattern": "^[a-z_]+$",
+											"example": "execute"
+										},
+										"action_parameters": {
+											"description": "The parameters to configure the given action",
+											"type": "object",
+											"example": {
+												"id": "4814384a9e5d4991b9815dcfc25d2f1f"
 											}
 										},
-										{
-											"description": "The action parameters for the execute action",
-											"properties": {
-												"id": {
-													"description": "The ID of the ruleset to execute",
-													"type": "string"
-												}
-											}
+										"ref": {
+											"description": "An optional reference for the rule, defaults to the ID",
+											"type": "string",
+											"example": "my_ref"
 										},
-										{
-											"description": "The action parameters for the rewrite action",
-											"properties": {
-												"uri": {
-													"description": "Rewrite the path, query string, or both for the origin",
-													"type": "object",
-													"properties": {
-														"path": {
-															"description": "The new path for the origin",
-															"oneOf": [
-																{
-																	"type": "object",
-																	"properties": {
-																		"expression": {
-																			"type": "string",
-																			"description": "Wirefilter expression to compute a new path or query string",
-																			"example": "concat(\"/new/\", http.request.uri)"
-																		}
-																	}
-																},
-																{
-																	"type": "object",
-																	"properties": {
-																		"value": {
-																			"type": "string",
-																			"description": "The new value of the path or query string",
-																			"example": "/"
-																		}
-																	}
-																}
-															]
-														},
-														"query": {
-															"description": "The new query string for the origin",
-															"oneOf": [
-																{
-																	"type": "object",
-																	"properties": {
-																		"expression": {
-																			"type": "string",
-																			"description": "Wirefilter expression to compute a new path or query string",
-																			"example": "concat(\"/new/\", http.request.uri)"
-																		}
-																	}
-																},
-																{
-																	"type": "object",
-																	"properties": {
-																		"value": {
-																			"type": "string",
-																			"description": "The new value of the path or query string",
-																			"example": "/"
-																		}
-																	}
-																}
-															]
-														}
-													}
-												}
-											}
+										"enabled": {
+											"description": "Whether the rule should be run",
+											"type": "boolean",
+											"default": "true",
+											"example": "true"
 										},
-										{
-											"description": "The action parameters for the score action",
+										"logging": {
+											"description": "The parameters to configure how the rule generates logs",
+											"type": "object",
 											"properties": {
-												"increment": {
-													"description": "The score increment",
-													"type": "number"
-												},
-												"id": {
-													"description": "The ID of the rule",
-													"type": "string"
-												},
-												"version": {
-													"description": "The version of the rule",
-													"type": "string"
+												"enabled": {
+													"description": "Whether a log should be generated when the rule matches",
+													"type": "boolean",
+													"example": "true"
 												}
-											}
-										},
-										{
-											"description": "The action parameters for the skip action",
-											"properties": {
-												"ruleset": {
-													"description": "Skip execution of these rulesets",
-													"enum": [
-														"current"
-													],
-													"type": "string"
-												}
-											}
-										},
-										{
-											"description": "The action parameters for the redirect action",
-											"properties": {
-												"from_list": {
-													"description": "Applies a redirect based on a redirect list",
-													"type": "object",
-													"properties": {
-														"name": {
-															"type": "string",
-															"description": "The name of the redirect list",
-															"example": "my_redirect_list"
-														},
-														"key": {
-															"type": "string",
-															"description": "Key to use to lookup the redirect in the list",
-															"example": "http.request.full_uri"
-														}
-													}
-												}
+											},
+											"example": {
+												"enabled": true
 											}
 										}
-									]
+									}
+								},
+								{
+									"description": "An ID of a rule",
+									"type": "string",
+									"example": "3a03d665bac047339bb530ecb439a90d"
 								}
-							}
+							]
 						}
 					}
 				},
 				"required_props": [],
 				"optional_props": [
+					"name",
 					"description",
+					"kind",
+					"phase",
 					"rules"
 				],
 				"objects": [],
-				"example": "{\n  \"rules\": [\n    {\n      \"action_parameters\": {\n        \"products\": []\n      }\n    }\n  ]\n}"
+				"example": "{\n  \"name\": \"My ruleset\",\n  \"description\": \"My ruleset to execute managed rulesets\",\n  \"kind\": \"root\",\n  \"phase\": \"http_request_firewall_managed\",\n  \"rules\": [\n    {\n      \"description\": \"Execute the OWASP ruleset when the IP address is not 1.1.1.1\",\n      \"expression\": \"ip.src ne 1.1.1.1\",\n      \"action\": \"execute\",\n      \"action_parameters\": {\n        \"id\": \"4814384a9e5d4991b9815dcfc25d2f1f\"\n      },\n      \"ref\": \"my_ref\",\n      \"enabled\": \"true\",\n      \"logging\": {\n        \"enabled\": \"true\"\n      }\n    }\n  ]\n}",
+				"description": "A ruleset"
 			},
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
 		}

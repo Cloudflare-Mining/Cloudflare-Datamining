@@ -81,8 +81,61 @@
 			"cfOwnership": "stream",
 			"html_id": "stream-live-inputs-list-live-inputs",
 			"uri": "accounts/:account_identifier/stream/live_inputs",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/stream/live_inputs\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"uid\": \"66be4bf738797e01e1fca35a7bdecdcd\",\n      \"meta\": {\n        \"name\": \"test stream 1\"\n      },\n      \"created\": \"2014-01-02T02:20:00Z\",\n      \"modified\": \"2014-01-02T02:20:00Z\"\n    }\n  ]\n}"
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/stream/live_inputs?after=2022-01-02T02:20:00Z&before=2022-07-02T02:20:00Z&include_counts=false&search=live stream 1&limit=undefined&asc=false\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"after": {
+						"type": "string",
+						"example": "\"2022-01-02T02:20:00Z\"",
+						"description": "Lists live inputs created after the specified date and time.",
+						"format": "date-time"
+					},
+					"before": {
+						"type": "string",
+						"example": "\"2022-07-02T02:20:00Z\"",
+						"description": "Lists live inputs created before the specified date and time.",
+						"format": "date-time"
+					},
+					"include_counts": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Lists stats in the response that include the number of live inputs in the response range and the total number of live inputs available. When this parameter is not specified or is specified as `false`, the `result` field of the response object will be an array with the live inputs.",
+						"default": false
+					},
+					"search": {
+						"type": "string",
+						"example": "\"live stream 1\"",
+						"description": "Searches over the `name` key in the `meta` field. This field can be set when creating the live input, or after with the update request."
+					},
+					"limit": {
+						"type": "integer",
+						"description": "The number of live inputs to include in the response.",
+						"minimum": 0,
+						"maximum": 1000
+					},
+					"asc": {
+						"type": "boolean",
+						"example": "false",
+						"description": "Lists live inputs in ascending order of creation.",
+						"default": false
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"after",
+					"before",
+					"include_counts",
+					"search",
+					"limit",
+					"asc"
+				],
+				"objects": [],
+				"example": "{\n  \"after\": \"2022-01-02T02:20:00Z\",\n  \"before\": \"2022-07-02T02:20:00Z\",\n  \"include_counts\": false,\n  \"search\": \"live stream 1\",\n  \"asc\": false\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"liveInputs\": [\n      {\n        \"uid\": \"66be4bf738797e01e1fca35a7bdecdcd\",\n        \"meta\": {\n          \"name\": \"test stream 1\"\n        },\n        \"created\": \"2014-01-02T02:20:00Z\",\n        \"modified\": \"2014-01-02T02:20:00Z\"\n      }\n    ],\n    \"total\": \"35586\",\n    \"range\": \"1000\"\n  }\n}"
 		},
 		{
 			"title": "List a single live input ",
@@ -184,7 +237,7 @@
 			"cfOwnership": "stream",
 			"html_id": "stream-live-inputs-add-outputs-to-a-live-input",
 			"uri": "accounts/:account_identifier/stream/live_inputs/:live_input_identifier/outputs",
-			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/stream/live_inputs/66be4bf738797e01e1fca35a7bdecdcd/outputs\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"url\":\"rtmp://a.rtmp.youtube.com/live2\",\"streamKey\":\"uzya-f19y-g2g9-a2ee-51j2\"}'",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/stream/live_inputs/66be4bf738797e01e1fca35a7bdecdcd/outputs\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"url\":\"rtmp://a.rtmp.youtube.com/live2\",\"streamKey\":\"uzya-f19y-g2g9-a2ee-51j2\",\"enabled\":\"true\"}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -201,17 +254,25 @@
 						"example": "\"uzya-f19y-g2g9-a2ee-51j2\"",
 						"description": "The streamKey used to authenticate against an output's target.",
 						"readOnly": true
+					},
+					"enabled": {
+						"type": "boolean",
+						"example": "\"true\"",
+						"description": "Indicates whether the output will be restreamed to when the live input is connected",
+						"readOnly": false
 					}
 				},
 				"required_props": [
 					"url",
 					"streamKey"
 				],
-				"optional_props": [],
+				"optional_props": [
+					"enabled"
+				],
 				"objects": [],
-				"example": "{\n  \"url\": \"rtmp://a.rtmp.youtube.com/live2\",\n  \"streamKey\": \"uzya-f19y-g2g9-a2ee-51j2\"\n}"
+				"example": "{\n  \"url\": \"rtmp://a.rtmp.youtube.com/live2\",\n  \"streamKey\": \"uzya-f19y-g2g9-a2ee-51j2\",\n  \"enabled\": \"true\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"uid\": \"baea4d9c515887b80289d5c33cf01145\",\n    \"url\": \"rtmp://a.rtmp.youtube.com/live2\",\n    \"streamKey\": \"uzya-f19y-g2g9-a2ee-51j2\"\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"uid\": \"baea4d9c515887b80289d5c33cf01145\",\n    \"url\": \"rtmp://a.rtmp.youtube.com/live2\",\n    \"streamKey\": \"uzya-f19y-g2g9-a2ee-51j2\",\n    \"enabled\": \"true\"\n  }\n}"
 		},
 		{
 			"title": "List outputs associated with a live input",
@@ -223,7 +284,7 @@
 			"html_id": "stream-live-inputs-list-outputs-associated-with-a-live-input",
 			"uri": "accounts/:account_identifier/stream/live_inputs/:live_input_identifier/outputs",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/stream/live_inputs/66be4bf738797e01e1fca35a7bdecdcd/outputs\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"uid\": \"baea4d9c515887b80289d5c33cf01145\",\n      \"url\": \"rtmp://a.rtmp.youtube.com/live2\",\n      \"streamKey\": \"uzya-f19y-g2g9-a2ee-51j2\"\n    }\n  ]\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"uid\": \"baea4d9c515887b80289d5c33cf01145\",\n      \"url\": \"rtmp://a.rtmp.youtube.com/live2\",\n      \"streamKey\": \"uzya-f19y-g2g9-a2ee-51j2\",\n      \"enabled\": \"true\"\n    }\n  ]\n}"
 		},
 		{
 			"title": "Remove an output from a live input",
@@ -235,6 +296,37 @@
 			"html_id": "stream-live-inputs-remove-an-output-from-a-live-input",
 			"uri": "accounts/:account_identifier/stream/live_inputs/:live_input_identifier/outputs/:output_identifier",
 			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/stream/live_inputs/66be4bf738797e01e1fca35a7bdecdcd/outputs/baea4d9c515887b80289d5c33cf01145\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\""
+		},
+		{
+			"title": "Toggle an output on a live input",
+			"description": "Toggles the 'enabled' state on an output from a live input.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/stream/live_inputs/{#/definitions/live_input_identifier}/outputs/{#/definitions/output_identifier}/enabled",
+			"method": "PUT",
+			"cfOwnership": "stream",
+			"html_id": "stream-live-inputs-toggle-an-output-on-a-live-input",
+			"uri": "accounts/:account_identifier/stream/live_inputs/:live_input_identifier/outputs/:output_identifier/enabled",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/stream/live_inputs/66be4bf738797e01e1fca35a7bdecdcd/outputs/baea4d9c515887b80289d5c33cf01145/enabled\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"enabled\":\"true\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"enabled": {
+						"type": "boolean",
+						"example": "\"true\"",
+						"description": "Indicates whether the output will be restreamed to when the live input is connected",
+						"readOnly": false
+					}
+				},
+				"required_props": [
+					"enabled"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"enabled\": \"true\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"uid\": \"baea4d9c515887b80289d5c33cf01145\",\n    \"url\": \"rtmp://a.rtmp.youtube.com/live2\",\n    \"streamKey\": \"uzya-f19y-g2g9-a2ee-51j2\",\n    \"enabled\": \"true\"\n  }\n}"
 		}
 	],
 	"html_id": "stream-live-inputs",
