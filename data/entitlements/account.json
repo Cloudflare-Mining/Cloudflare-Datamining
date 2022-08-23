@@ -1236,6 +1236,210 @@
 		}
 	},
 	{
+		"id": "subscriptions.rate_plans.partners_access_basic",
+		"feature": {
+			"feature_set": "subscriptions",
+			"id": 741,
+			"key": "subscriptions.rate_plans.partners_access_basic",
+			"name": "Access basic partner allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "subscriptions.rate_plans.partners_access_ent",
+		"feature": {
+			"feature_set": "subscriptions",
+			"id": 742,
+			"key": "subscriptions.rate_plans.partners_access_ent",
+			"name": "Access ent partner allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "subscriptions.rate_plans.partners_access_premium",
+		"feature": {
+			"feature_set": "subscriptions",
+			"id": 743,
+			"key": "subscriptions.rate_plans.partners_access_premium",
+			"name": "Access premium subscription partner allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "subscriptions.rate_plans.partners_argo",
+		"feature": {
+			"feature_set": "subscriptions",
+			"id": 578,
+			"key": "subscriptions.rate_plans.partners_argo",
+			"name": "Partners Argo subscription allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "subscriptions.rate_plans.partners_biz",
+		"feature": {
+			"feature_set": "subscriptions",
+			"id": 507,
+			"key": "subscriptions.rate_plans.partners_biz",
+			"name": "Partners Biz subscription allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "subscriptions.rate_plans.partners_ent",
+		"feature": {
+			"feature_set": "subscriptions",
+			"id": 508,
+			"key": "subscriptions.rate_plans.partners_ent",
+			"name": "Partners Ent subscription allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "subscriptions.rate_plans.partners_free",
+		"feature": {
+			"feature_set": "subscriptions",
+			"id": 898,
+			"key": "subscriptions.rate_plans.partners_free",
+			"name": "Partners Free subscription allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "subscriptions.rate_plans.partners_load_balancing",
+		"feature": {
+			"feature_set": "subscriptions",
+			"id": 509,
+			"key": "subscriptions.rate_plans.partners_load_balancing",
+			"name": "Partners Load Balancing subscription allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "subscriptions.rate_plans.partners_load_balancing_ent",
+		"feature": {
+			"feature_set": "subscriptions",
+			"id": 510,
+			"key": "subscriptions.rate_plans.partners_load_balancing_ent",
+			"name": "Partners Ent Load Balancing subscription allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "subscriptions.rate_plans.partners_pro",
+		"feature": {
+			"feature_set": "subscriptions",
+			"id": 506,
+			"key": "subscriptions.rate_plans.partners_pro",
+			"name": "Partners Pro subscription allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "subscriptions.rate_plans.partners_rate_limiting",
+		"feature": {
+			"feature_set": "subscriptions",
+			"id": 511,
+			"key": "subscriptions.rate_plans.partners_rate_limiting",
+			"name": "Partners Rate Limiting subscription allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "subscriptions.rate_plans.partners_spectrum",
+		"feature": {
+			"feature_set": "subscriptions",
+			"id": 512,
+			"key": "subscriptions.rate_plans.partners_spectrum",
+			"name": "Partners Spectrum subscription allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "subscriptions.rate_plans.partners_stream_basic",
+		"feature": {
+			"feature_set": "subscriptions",
+			"id": 739,
+			"key": "subscriptions.rate_plans.partners_stream_basic",
+			"name": "Stream basic partner allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "subscriptions.rate_plans.partners_stream_ent",
+		"feature": {
+			"feature_set": "subscriptions",
+			"id": 740,
+			"key": "subscriptions.rate_plans.partners_stream_ent",
+			"name": "Stream ent partner allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "subscriptions.rate_plans.partners_workers_basic",
+		"feature": {
+			"feature_set": "subscriptions",
+			"id": 657,
+			"key": "subscriptions.rate_plans.partners_workers_basic",
+			"name": "Partners Workers Basic Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "subscriptions.rate_plans.partners_workers_ent",
+		"feature": {
+			"feature_set": "subscriptions",
+			"id": 513,
+			"key": "subscriptions.rate_plans.partners_workers_ent",
+			"name": "Partners Workers Enterprise subscription allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "subscriptions.rate_plans.partners_workers_ss",
+		"feature": {
+			"feature_set": "subscriptions",
+			"id": 514,
+			"key": "subscriptions.rate_plans.partners_workers_ss",
+			"name": "Partners Workers Self-Serve subscription allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "subscriptions.rate_plans.rate_limiting_free",
 		"feature": {
 			"feature_set": "subscriptions",
