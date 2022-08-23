@@ -62,6 +62,13 @@ async function run(){
 		await fs.writeFile(path.resolve(`../data/api-schemas/schemas.json`), JSON.stringify(schemasJson, null, '\t'));
 	}
 
+	// and then query the schemas.yml from git
+	const schemasReqYml = await fetch('https://raw.githubusercontent.com/cloudflare/api-schemas/main/openapi.yaml');
+	const schemasYml = await schemasReqYml.text();
+	if(schemasReqYml.ok && schemasYml){
+		await fs.writeFile(path.resolve(`../data/api-schemas/openapi.yml`), JSON.stringify(schemasJson, null, '\t'));
+	}
+
 	console.log('Pushing!');
 	const prefix = dateFormat(new Date(), 'd mmmm yyyy');
 	await tryAndPush(
