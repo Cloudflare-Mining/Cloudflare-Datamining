@@ -7,7 +7,7 @@
 		renew: "Renew",
 		retry: "Retry",
 		addCard: "Add card",
-		back_to_zone: (0, n.d)(c(), "zoneName"),
+		back_to_zone: (0, n.d)(u(), "zoneName"),
 		email_notification: "Please <0>verify your account email address</0> to access all Registrar features such as Registration and Transfer.",
 		invalid_auth_code: "The registry has indicated that the authorization code is not correct. Please re-enter the code again. If you continue to receive an authorization code error, please request a new code from your current registrar.",
 		registrar_managed: "As this is a Cloudflare Registrar managed account, no payment is needed."
@@ -178,7 +178,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		billing: (0, n.d)(o(), "last4"),
 		billing_cloud: (0, n.d)(l(), "last4")
 	},
-	registered_on: (0, n.d)(C(), "registration_date"),
+	registered_on: (0, n.d)(S(), "registration_date"),
 	renewals_billing_modal_title: "Confirm domain renewal for %{domain}",
 	renewals_billing_line_item_1: "%{smart_count} year %{tld} renewal |||| %{smart_count} years %{tld} renewal",
 	renewals_billing_line_item_1_meta: "Expires %{expiration}",
@@ -286,7 +286,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	instructions_enom: d,
 	instructions_godaddy: O,
 	instructions_namecheap: T,
-	instructions_network_solutions: S,
+	instructions_network_solutions: C,
 	instructions_one_and_one: L,
 	instructions_unknown: g,
 	instructions_uk: _,

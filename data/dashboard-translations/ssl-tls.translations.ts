@@ -834,7 +834,7 @@ If no alternative CAs are valid within the trust store, Cloudflare will not be a
 		custom_truststore: "Custom Trust Store",
 		on_purchase: "Advanced Certificate Manager is now a part of your plan.",
 		order_cta: "Order Advanced Certificate",
-		quota: (0, n.d)(C(), "used", "allocated"),
+		quota: (0, n.d)(S(), "used", "allocated"),
 		order_success: "Your Advanced certificate has been created will be automatically deployed to our edge and served to your visitors once it has been validated",
 		order_success_autodcv: "Your Advanced certificate has been created will be automatically validated and deployed to our edge and served to your visitors.",
 		blocked_ent: "Please contact your Customer Success Manager to purchase ACM.",
