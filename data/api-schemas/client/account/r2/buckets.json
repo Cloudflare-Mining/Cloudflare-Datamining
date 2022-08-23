@@ -9,7 +9,7 @@
 			"title": "Create Bucket",
 			"description": "Creates a new R2 bucket.",
 			"rel": "self",
-			"href": "accounts/{#/definitions/account_identifier}/r2/buckets/{#/definitions/bucket_name}",
+			"href": "accounts/{#/definitions/account_identifier}/r2/buckets",
 			"method": "POST",
 			"cfRequestHeaders": {
 				"type": "object",
@@ -48,8 +48,8 @@
 				]
 			},
 			"html_id": "r2-bucket-create-bucket",
-			"uri": "accounts/:account_identifier/r2/buckets/:bucket_name",
-			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/r2/buckets/example-bucket\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '\"{'name': 'example-bucket'}\"'",
+			"uri": "accounts/:account_identifier/r2/buckets",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/r2/buckets\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '\"{'name': 'example-bucket'}\"'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}

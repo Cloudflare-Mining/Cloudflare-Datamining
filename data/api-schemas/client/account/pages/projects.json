@@ -36,7 +36,7 @@
 			"html_id": "pages-project-get-projects",
 			"uri": "accounts/:account_identifier/pages/projects",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/pages/projects\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"name\": \"NextJS Blog\",\n      \"id\": \"7b162ea7-7367-4d67-bcde-1160995d5\",\n      \"created_on\": \"2017-01-01T00:00:00Z\",\n      \"subdomain\": \"helloworld.pages.dev\",\n      \"domains\": [\n        \"customdomain.com\",\n        \"customdomain.org\"\n      ],\n      \"source\": {\n        \"type\": \"github\",\n        \"config\": {\n          \"owner\": \"cloudflare\",\n          \"repo_name\": \"ninjakittens\",\n          \"production_branch\": \"main\",\n          \"pr_comments_enabled\": true,\n          \"deployments_enabled\": true\n        }\n      },\n      \"build_config\": {\n        \"build_command\": \"npm run build\",\n        \"destination_dir\": \"build\",\n        \"root_dir\": \"/\",\n        \"web_analytics_tag\": \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n        \"web_analytics_token\": \"021e1057c18547eca7b79f2516f06o7x\"\n      },\n      \"deployment_configs\": {\n        \"preview\": {\n          \"env_vars\": {\n            \"BUILD_VERSION\": {\n              \"value\": \"3.3\"\n            }\n          }\n        },\n        \"production\": {\n          \"env_vars\": {\n            \"BUILD_VERSION\": {\n              \"value\": \"3.3\"\n            }\n          }\n        }\n      },\n      \"latest_deployment\": {},\n      \"canonical_deployment\": {}\n    }\n  ],\n  \"result_info\": {\n    \"page\": 1,\n    \"per_page\": 100,\n    \"count\": 1,\n    \"total_count\": 1\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"name\": \"NextJS Blog\",\n      \"id\": \"7b162ea7-7367-4d67-bcde-1160995d5\",\n      \"created_on\": \"2017-01-01T00:00:00Z\",\n      \"subdomain\": \"helloworld.pages.dev\",\n      \"domains\": [\n        \"customdomain.com\",\n        \"customdomain.org\"\n      ],\n      \"source\": {\n        \"type\": \"github\",\n        \"config\": {\n          \"owner\": \"cloudflare\",\n          \"repo_name\": \"ninjakittens\",\n          \"production_branch\": \"main\",\n          \"pr_comments_enabled\": true,\n          \"deployments_enabled\": true\n        }\n      },\n      \"build_config\": {\n        \"build_command\": \"npm run build\",\n        \"destination_dir\": \"build\",\n        \"root_dir\": \"/\",\n        \"web_analytics_tag\": \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n        \"web_analytics_token\": \"021e1057c18547eca7b79f2516f06o7x\"\n      },\n      \"deployment_configs\": {\n        \"preview\": {\n          \"env_vars\": {\n            \"BUILD_VERSION\": {\n              \"value\": \"3.3\"\n            }\n          },\n          \"compatibility_date\": \"2022-01-01\",\n          \"compatibility_flags\": [\n            \"url_standard\"\n          ]\n        },\n        \"production\": {\n          \"env_vars\": {\n            \"BUILD_VERSION\": {\n              \"value\": \"3.3\"\n            }\n          },\n          \"compatibility_date\": \"2022-01-01\",\n          \"compatibility_flags\": [\n            \"url_standard\"\n          ]\n        }\n      },\n      \"latest_deployment\": {},\n      \"canonical_deployment\": {}\n    }\n  ],\n  \"result_info\": {\n    \"page\": 1,\n    \"per_page\": 100,\n    \"count\": 1,\n    \"total_count\": 1\n  }\n}"
 		},
 		{
 			"title": "Get project",
@@ -69,7 +69,7 @@
 			"html_id": "pages-project-get-project",
 			"uri": "accounts/:account_identifier/pages/projects/:project_name",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/pages/projects/this-is-my-project-01\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"name\": \"NextJS Blog\",\n    \"id\": \"7b162ea7-7367-4d67-bcde-1160995d5\",\n    \"created_on\": \"2017-01-01T00:00:00Z\",\n    \"subdomain\": \"helloworld.pages.dev\",\n    \"domains\": [\n      \"customdomain.com\",\n      \"customdomain.org\"\n    ],\n    \"source\": {\n      \"type\": \"github\",\n      \"config\": {\n        \"owner\": \"cloudflare\",\n        \"repo_name\": \"ninjakittens\",\n        \"production_branch\": \"main\",\n        \"pr_comments_enabled\": true,\n        \"deployments_enabled\": true\n      }\n    },\n    \"build_config\": {\n      \"build_command\": \"npm run build\",\n      \"destination_dir\": \"build\",\n      \"root_dir\": \"/\",\n      \"web_analytics_tag\": \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n      \"web_analytics_token\": \"021e1057c18547eca7b79f2516f06o7x\"\n    },\n    \"deployment_configs\": {\n      \"preview\": {\n        \"env_vars\": {\n          \"BUILD_VERSION\": {\n            \"value\": \"3.3\"\n          }\n        }\n      },\n      \"production\": {\n        \"env_vars\": {\n          \"BUILD_VERSION\": {\n            \"value\": \"3.3\"\n          }\n        }\n      }\n    },\n    \"latest_deployment\": {},\n    \"canonical_deployment\": {}\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"name\": \"NextJS Blog\",\n    \"id\": \"7b162ea7-7367-4d67-bcde-1160995d5\",\n    \"created_on\": \"2017-01-01T00:00:00Z\",\n    \"subdomain\": \"helloworld.pages.dev\",\n    \"domains\": [\n      \"customdomain.com\",\n      \"customdomain.org\"\n    ],\n    \"source\": {\n      \"type\": \"github\",\n      \"config\": {\n        \"owner\": \"cloudflare\",\n        \"repo_name\": \"ninjakittens\",\n        \"production_branch\": \"main\",\n        \"pr_comments_enabled\": true,\n        \"deployments_enabled\": true\n      }\n    },\n    \"build_config\": {\n      \"build_command\": \"npm run build\",\n      \"destination_dir\": \"build\",\n      \"root_dir\": \"/\",\n      \"web_analytics_tag\": \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n      \"web_analytics_token\": \"021e1057c18547eca7b79f2516f06o7x\"\n    },\n    \"deployment_configs\": {\n      \"preview\": {\n        \"env_vars\": {\n          \"BUILD_VERSION\": {\n            \"value\": \"3.3\"\n          }\n        },\n        \"compatibility_date\": \"2022-01-01\",\n        \"compatibility_flags\": [\n          \"url_standard\"\n        ]\n      },\n      \"production\": {\n        \"env_vars\": {\n          \"BUILD_VERSION\": {\n            \"value\": \"3.3\"\n          }\n        },\n        \"compatibility_date\": \"2022-01-01\",\n        \"compatibility_flags\": [\n          \"url_standard\"\n        ]\n      }\n    },\n    \"latest_deployment\": {},\n    \"canonical_deployment\": {}\n  }\n}"
 		},
 		{
 			"title": "Delete project",
@@ -142,7 +142,7 @@
 			"cfOwnership": "pages",
 			"html_id": "pages-project-create-project",
 			"uri": "accounts/:account_identifier/pages/projects",
-			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/pages/projects\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"NextJS Blog\",\"id\":\"7b162ea7-7367-4d67-bcde-1160995d5\",\"created_on\":\"2017-01-01T00:00:00Z\",\"subdomain\":\"helloworld.pages.dev\",\"domains\":[\"customdomain.com\",\"customdomain.org\"],\"source\":{\"type\":\"github\",\"config\":{\"owner\":\"cloudflare\",\"repo_name\":\"ninjakittens\",\"production_branch\":\"main\",\"pr_comments_enabled\":true,\"deployments_enabled\":true}},\"build_config\":{\"build_command\":\"npm run build\",\"destination_dir\":\"build\",\"root_dir\":\"/\",\"web_analytics_tag\":\"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\"web_analytics_token\":\"021e1057c18547eca7b79f2516f06o7x\"},\"deployment_configs\":{\"preview\":{\"env_vars\":{\"BUILD_VERSION\":{\"value\":\"3.3\"}}},\"production\":{\"env_vars\":{\"BUILD_VERSION\":{\"value\":\"3.3\"}}}},\"latest_deployment\":{},\"canonical_deployment\":{}}'",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/pages/projects\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"NextJS Blog\",\"id\":\"7b162ea7-7367-4d67-bcde-1160995d5\",\"created_on\":\"2017-01-01T00:00:00Z\",\"subdomain\":\"helloworld.pages.dev\",\"domains\":[\"customdomain.com\",\"customdomain.org\"],\"source\":{\"type\":\"github\",\"config\":{\"owner\":\"cloudflare\",\"repo_name\":\"ninjakittens\",\"production_branch\":\"main\",\"pr_comments_enabled\":true,\"deployments_enabled\":true}},\"build_config\":{\"build_command\":\"npm run build\",\"destination_dir\":\"build\",\"root_dir\":\"/\",\"web_analytics_tag\":\"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\"web_analytics_token\":\"021e1057c18547eca7b79f2516f06o7x\"},\"deployment_configs\":{\"preview\":{\"env_vars\":{\"BUILD_VERSION\":{\"value\":\"3.3\"}},\"compatibility_date\":\"2022-01-01\",\"compatibility_flags\":[\"url_standard\"]},\"production\":{\"env_vars\":{\"BUILD_VERSION\":{\"value\":\"3.3\"}},\"compatibility_date\":\"2022-01-01\",\"compatibility_flags\":[\"url_standard\"]}},\"latest_deployment\":{},\"canonical_deployment\":{}}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -273,11 +273,11 @@
 					},
 					"deployment_configs": {
 						"type": "object",
-						"example": "{\n  \"preview\": {\n    \"env_vars\": {\n      \"BUILD_VERSION\": {\n        \"value\": \"3.3\"\n      }\n    }\n  },\n  \"production\": {\n    \"env_vars\": {\n      \"BUILD_VERSION\": {\n        \"value\": \"3.3\"\n      }\n    }\n  }\n}",
+						"example": "{\n  \"preview\": {\n    \"env_vars\": {\n      \"BUILD_VERSION\": {\n        \"value\": \"3.3\"\n      }\n    },\n    \"compatibility_date\": \"2022-01-01\",\n    \"compatibility_flags\": [\n      \"url_standard\"\n    ]\n  },\n  \"production\": {\n    \"env_vars\": {\n      \"BUILD_VERSION\": {\n        \"value\": \"3.3\"\n      }\n    },\n    \"compatibility_date\": \"2022-01-01\",\n    \"compatibility_flags\": [\n      \"url_standard\"\n    ]\n  }\n}",
 						"properties": {
 							"preview": {
 								"type": "object",
-								"example": "{\n  \"env_vars\": {\n    \"BUILD_VERSION\": {\n      \"value\": \"3.3\"\n    }\n  }\n}",
+								"example": "{\n  \"env_vars\": {\n    \"BUILD_VERSION\": {\n      \"value\": \"3.3\"\n    }\n  },\n  \"compatibility_date\": \"2022-01-01\",\n  \"compatibility_flags\": [\n    \"url_standard\"\n  ]\n}",
 								"properties": {
 									"env_vars": {
 										"type": [
@@ -300,13 +300,23 @@
 											}
 										},
 										"description": "Environment variables for build configs"
+									},
+									"compatibility_date": {
+										"type": "string",
+										"example": "\"2022-01-01\"",
+										"description": "Compatibility date used for Pages Functions"
+									},
+									"compatibility_flags": {
+										"type": "array",
+										"example": "[\n  \"url_standard\"\n]",
+										"description": "Compatibility flags used for Pages Functions"
 									}
 								},
 								"description": "Configs for preview deploys"
 							},
 							"production": {
 								"type": "object",
-								"example": "{\n  \"env_vars\": {\n    \"BUILD_VERSION\": {\n      \"value\": \"3.3\"\n    }\n  }\n}",
+								"example": "{\n  \"env_vars\": {\n    \"BUILD_VERSION\": {\n      \"value\": \"3.3\"\n    }\n  },\n  \"compatibility_date\": \"2022-01-01\",\n  \"compatibility_flags\": [\n    \"url_standard\"\n  ]\n}",
 								"properties": {
 									"env_vars": {
 										"type": [
@@ -329,6 +339,16 @@
 											}
 										},
 										"description": "Environment variables for build configs"
+									},
+									"compatibility_date": {
+										"type": "string",
+										"example": "\"2022-01-01\"",
+										"description": "Compatibility date used for Pages Functions"
+									},
+									"compatibility_flags": {
+										"type": "array",
+										"example": "[\n  \"url_standard\"\n]",
+										"description": "Compatibility flags used for Pages Functions"
 									}
 								},
 								"description": "Configs for production deploys"
@@ -1015,11 +1035,11 @@
 					"canonical_deployment"
 				],
 				"objects": [],
-				"example": "{\n  \"name\": \"NextJS Blog\",\n  \"id\": \"7b162ea7-7367-4d67-bcde-1160995d5\",\n  \"created_on\": \"2017-01-01T00:00:00Z\",\n  \"subdomain\": \"helloworld.pages.dev\",\n  \"domains\": [\n    \"customdomain.com\",\n    \"customdomain.org\"\n  ],\n  \"source\": {\n    \"type\": \"github\",\n    \"config\": {\n      \"owner\": \"cloudflare\",\n      \"repo_name\": \"ninjakittens\",\n      \"production_branch\": \"main\",\n      \"pr_comments_enabled\": true,\n      \"deployments_enabled\": true\n    }\n  },\n  \"build_config\": {\n    \"build_command\": \"npm run build\",\n    \"destination_dir\": \"build\",\n    \"root_dir\": \"/\",\n    \"web_analytics_tag\": \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n    \"web_analytics_token\": \"021e1057c18547eca7b79f2516f06o7x\"\n  },\n  \"deployment_configs\": {\n    \"preview\": {\n      \"env_vars\": {\n        \"BUILD_VERSION\": {\n          \"value\": \"3.3\"\n        }\n      }\n    },\n    \"production\": {\n      \"env_vars\": {\n        \"BUILD_VERSION\": {\n          \"value\": \"3.3\"\n        }\n      }\n    }\n  },\n  \"latest_deployment\": {},\n  \"canonical_deployment\": {}\n}",
+				"example": "{\n  \"name\": \"NextJS Blog\",\n  \"id\": \"7b162ea7-7367-4d67-bcde-1160995d5\",\n  \"created_on\": \"2017-01-01T00:00:00Z\",\n  \"subdomain\": \"helloworld.pages.dev\",\n  \"domains\": [\n    \"customdomain.com\",\n    \"customdomain.org\"\n  ],\n  \"source\": {\n    \"type\": \"github\",\n    \"config\": {\n      \"owner\": \"cloudflare\",\n      \"repo_name\": \"ninjakittens\",\n      \"production_branch\": \"main\",\n      \"pr_comments_enabled\": true,\n      \"deployments_enabled\": true\n    }\n  },\n  \"build_config\": {\n    \"build_command\": \"npm run build\",\n    \"destination_dir\": \"build\",\n    \"root_dir\": \"/\",\n    \"web_analytics_tag\": \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n    \"web_analytics_token\": \"021e1057c18547eca7b79f2516f06o7x\"\n  },\n  \"deployment_configs\": {\n    \"preview\": {\n      \"env_vars\": {\n        \"BUILD_VERSION\": {\n          \"value\": \"3.3\"\n        }\n      },\n      \"compatibility_date\": \"2022-01-01\",\n      \"compatibility_flags\": [\n        \"url_standard\"\n      ]\n    },\n    \"production\": {\n      \"env_vars\": {\n        \"BUILD_VERSION\": {\n          \"value\": \"3.3\"\n        }\n      },\n      \"compatibility_date\": \"2022-01-01\",\n      \"compatibility_flags\": [\n        \"url_standard\"\n      ]\n    }\n  },\n  \"latest_deployment\": {},\n  \"canonical_deployment\": {}\n}",
 				"title": "Pages Project",
 				"description": "A Pages project represents a website deployed to Cloudflare's edge."
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"name\": \"NextJS Blog\",\n    \"id\": \"7b162ea7-7367-4d67-bcde-1160995d5\",\n    \"created_on\": \"2017-01-01T00:00:00Z\",\n    \"subdomain\": \"helloworld.pages.dev\",\n    \"domains\": [\n      \"customdomain.com\",\n      \"customdomain.org\"\n    ],\n    \"source\": {\n      \"type\": \"github\",\n      \"config\": {\n        \"owner\": \"cloudflare\",\n        \"repo_name\": \"ninjakittens\",\n        \"production_branch\": \"main\",\n        \"pr_comments_enabled\": true,\n        \"deployments_enabled\": true\n      }\n    },\n    \"build_config\": {\n      \"build_command\": \"npm run build\",\n      \"destination_dir\": \"build\",\n      \"root_dir\": \"/\",\n      \"web_analytics_tag\": \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n      \"web_analytics_token\": \"021e1057c18547eca7b79f2516f06o7x\"\n    },\n    \"deployment_configs\": {\n      \"preview\": {\n        \"env_vars\": {\n          \"BUILD_VERSION\": {\n            \"value\": \"3.3\"\n          }\n        }\n      },\n      \"production\": {\n        \"env_vars\": {\n          \"BUILD_VERSION\": {\n            \"value\": \"3.3\"\n          }\n        }\n      }\n    },\n    \"latest_deployment\": {},\n    \"canonical_deployment\": {}\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"name\": \"NextJS Blog\",\n    \"id\": \"7b162ea7-7367-4d67-bcde-1160995d5\",\n    \"created_on\": \"2017-01-01T00:00:00Z\",\n    \"subdomain\": \"helloworld.pages.dev\",\n    \"domains\": [\n      \"customdomain.com\",\n      \"customdomain.org\"\n    ],\n    \"source\": {\n      \"type\": \"github\",\n      \"config\": {\n        \"owner\": \"cloudflare\",\n        \"repo_name\": \"ninjakittens\",\n        \"production_branch\": \"main\",\n        \"pr_comments_enabled\": true,\n        \"deployments_enabled\": true\n      }\n    },\n    \"build_config\": {\n      \"build_command\": \"npm run build\",\n      \"destination_dir\": \"build\",\n      \"root_dir\": \"/\",\n      \"web_analytics_tag\": \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n      \"web_analytics_token\": \"021e1057c18547eca7b79f2516f06o7x\"\n    },\n    \"deployment_configs\": {\n      \"preview\": {\n        \"env_vars\": {\n          \"BUILD_VERSION\": {\n            \"value\": \"3.3\"\n          }\n        },\n        \"compatibility_date\": \"2022-01-01\",\n        \"compatibility_flags\": [\n          \"url_standard\"\n        ]\n      },\n      \"production\": {\n        \"env_vars\": {\n          \"BUILD_VERSION\": {\n            \"value\": \"3.3\"\n          }\n        },\n        \"compatibility_date\": \"2022-01-01\",\n        \"compatibility_flags\": [\n          \"url_standard\"\n        ]\n      }\n    },\n    \"latest_deployment\": {},\n    \"canonical_deployment\": {}\n  }\n}"
 		},
 		{
 			"title": "Update project",
@@ -1059,7 +1079,7 @@
 			"cfOwnership": "pages",
 			"html_id": "pages-project-update-project",
 			"uri": "accounts/:account_identifier/pages/projects/:project_name",
-			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/pages/projects/this-is-my-project-01\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"deployment_configs\":{\"production\":{\"env_vars\":{\"delete_this_env_var\":null,\"BUILD_VERSION\":{\"value\":\"3.3\"}}}}}'",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/pages/projects/this-is-my-project-01\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"deployment_configs\":{\"production\":{\"env_vars\":{\"delete_this_env_var\":null,\"BUILD_VERSION\":{\"value\":\"3.3\"}},\"compatibility_date\":\"2022-01-01\",\"compatibility_flags\":[\"url_standard\"]}}}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -1068,9 +1088,9 @@
 				"required_props": [],
 				"optional_props": [],
 				"objects": [],
-				"example": "{\n  \"deployment_configs\": {\n    \"production\": {\n      \"env_vars\": {\n        \"delete_this_env_var\": null,\n        \"BUILD_VERSION\": {\n          \"value\": \"3.3\"\n        }\n      }\n    }\n  }\n}"
+				"example": "{\n  \"deployment_configs\": {\n    \"production\": {\n      \"env_vars\": {\n        \"delete_this_env_var\": null,\n        \"BUILD_VERSION\": {\n          \"value\": \"3.3\"\n        }\n      },\n      \"compatibility_date\": \"2022-01-01\",\n      \"compatibility_flags\": [\n        \"url_standard\"\n      ]\n    }\n  }\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"name\": \"NextJS Blog\",\n    \"id\": \"7b162ea7-7367-4d67-bcde-1160995d5\",\n    \"created_on\": \"2017-01-01T00:00:00Z\",\n    \"subdomain\": \"helloworld.pages.dev\",\n    \"domains\": [\n      \"customdomain.com\",\n      \"customdomain.org\"\n    ],\n    \"source\": {\n      \"type\": \"github\",\n      \"config\": {\n        \"owner\": \"cloudflare\",\n        \"repo_name\": \"ninjakittens\",\n        \"production_branch\": \"main\",\n        \"pr_comments_enabled\": true,\n        \"deployments_enabled\": true\n      }\n    },\n    \"build_config\": {\n      \"build_command\": \"npm run build\",\n      \"destination_dir\": \"build\",\n      \"root_dir\": \"/\",\n      \"web_analytics_tag\": \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n      \"web_analytics_token\": \"021e1057c18547eca7b79f2516f06o7x\"\n    },\n    \"deployment_configs\": {\n      \"preview\": {\n        \"env_vars\": {\n          \"BUILD_VERSION\": {\n            \"value\": \"3.3\"\n          }\n        }\n      },\n      \"production\": {\n        \"env_vars\": {\n          \"BUILD_VERSION\": {\n            \"value\": \"3.3\"\n          }\n        }\n      }\n    },\n    \"latest_deployment\": {},\n    \"canonical_deployment\": {}\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"name\": \"NextJS Blog\",\n    \"id\": \"7b162ea7-7367-4d67-bcde-1160995d5\",\n    \"created_on\": \"2017-01-01T00:00:00Z\",\n    \"subdomain\": \"helloworld.pages.dev\",\n    \"domains\": [\n      \"customdomain.com\",\n      \"customdomain.org\"\n    ],\n    \"source\": {\n      \"type\": \"github\",\n      \"config\": {\n        \"owner\": \"cloudflare\",\n        \"repo_name\": \"ninjakittens\",\n        \"production_branch\": \"main\",\n        \"pr_comments_enabled\": true,\n        \"deployments_enabled\": true\n      }\n    },\n    \"build_config\": {\n      \"build_command\": \"npm run build\",\n      \"destination_dir\": \"build\",\n      \"root_dir\": \"/\",\n      \"web_analytics_tag\": \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n      \"web_analytics_token\": \"021e1057c18547eca7b79f2516f06o7x\"\n    },\n    \"deployment_configs\": {\n      \"preview\": {\n        \"env_vars\": {\n          \"BUILD_VERSION\": {\n            \"value\": \"3.3\"\n          }\n        },\n        \"compatibility_date\": \"2022-01-01\",\n        \"compatibility_flags\": [\n          \"url_standard\"\n        ]\n      },\n      \"production\": {\n        \"env_vars\": {\n          \"BUILD_VERSION\": {\n            \"value\": \"3.3\"\n          }\n        },\n        \"compatibility_date\": \"2022-01-01\",\n        \"compatibility_flags\": [\n          \"url_standard\"\n        ]\n      }\n    },\n    \"latest_deployment\": {},\n    \"canonical_deployment\": {}\n  }\n}"
 		}
 	],
 	"cfLinkErrors": {
@@ -1110,7 +1130,29 @@
 		"8000033": "Production branch must be set",
 		"8000034": "Cannot delete active production deployment",
 		"8000035": "Cannot delete aliased deployment",
-		"8000036": "Account has been blocked"
+		"8000036": "Account has been blocked",
+		"8000037": "Invalid values for BuildConfig",
+		"8000038": "Cannot rollback to a failed deployment",
+		"8000039": "Deployment is currently in production",
+		"8000040": "Cannot rollback to a preview deployment",
+		"8000041": "Project assigned unexpected subdomain",
+		"8000042": "The specified build candidate has already been promoted",
+		"8000043": "Another build candidate has already been promoted",
+		"8000044": "Deploy hook not found",
+		"8000045": "Invalid deploy hook ID. Please use the UUID for the hook.",
+		"8000046": "Provider not found",
+		"8000047": "Functions configuration not found",
+		"8000048": "Build metadata not found",
+		"8000049": "Invalid deploy hook name",
+		"8000050": "The associated Source Control Management account has been blocked",
+		"8000051": "Invalid branch config",
+		"8000052": "File is too large (> 25 MiB)",
+		"8000053": "Build not found",
+		"8000054": "Build is not running",
+		"8000055": "Can't retry direct upload deployments",
+		"8000056": "Can't rotate kv namespace if there is an ongoing deployment",
+		"8000057": "Invalid _routes.json",
+		"8000058": "Commit hash (sha) length must not exceed 64 characters"
 	},
 	"html_id": "pages-project",
 	"object_definition": {
@@ -1243,11 +1285,11 @@
 			},
 			"deployment_configs": {
 				"type": "object",
-				"example": "{\n  \"preview\": {\n    \"env_vars\": {\n      \"BUILD_VERSION\": {\n        \"value\": \"3.3\"\n      }\n    }\n  },\n  \"production\": {\n    \"env_vars\": {\n      \"BUILD_VERSION\": {\n        \"value\": \"3.3\"\n      }\n    }\n  }\n}",
+				"example": "{\n  \"preview\": {\n    \"env_vars\": {\n      \"BUILD_VERSION\": {\n        \"value\": \"3.3\"\n      }\n    },\n    \"compatibility_date\": \"2022-01-01\",\n    \"compatibility_flags\": [\n      \"url_standard\"\n    ]\n  },\n  \"production\": {\n    \"env_vars\": {\n      \"BUILD_VERSION\": {\n        \"value\": \"3.3\"\n      }\n    },\n    \"compatibility_date\": \"2022-01-01\",\n    \"compatibility_flags\": [\n      \"url_standard\"\n    ]\n  }\n}",
 				"properties": {
 					"preview": {
 						"type": "object",
-						"example": "{\n  \"env_vars\": {\n    \"BUILD_VERSION\": {\n      \"value\": \"3.3\"\n    }\n  }\n}",
+						"example": "{\n  \"env_vars\": {\n    \"BUILD_VERSION\": {\n      \"value\": \"3.3\"\n    }\n  },\n  \"compatibility_date\": \"2022-01-01\",\n  \"compatibility_flags\": [\n    \"url_standard\"\n  ]\n}",
 						"properties": {
 							"env_vars": {
 								"type": [
@@ -1270,13 +1312,23 @@
 									}
 								},
 								"description": "Environment variables for build configs"
+							},
+							"compatibility_date": {
+								"type": "string",
+								"example": "\"2022-01-01\"",
+								"description": "Compatibility date used for Pages Functions"
+							},
+							"compatibility_flags": {
+								"type": "array",
+								"example": "[\n  \"url_standard\"\n]",
+								"description": "Compatibility flags used for Pages Functions"
 							}
 						},
 						"description": "Configs for preview deploys"
 					},
 					"production": {
 						"type": "object",
-						"example": "{\n  \"env_vars\": {\n    \"BUILD_VERSION\": {\n      \"value\": \"3.3\"\n    }\n  }\n}",
+						"example": "{\n  \"env_vars\": {\n    \"BUILD_VERSION\": {\n      \"value\": \"3.3\"\n    }\n  },\n  \"compatibility_date\": \"2022-01-01\",\n  \"compatibility_flags\": [\n    \"url_standard\"\n  ]\n}",
 						"properties": {
 							"env_vars": {
 								"type": [
@@ -1299,6 +1351,16 @@
 									}
 								},
 								"description": "Environment variables for build configs"
+							},
+							"compatibility_date": {
+								"type": "string",
+								"example": "\"2022-01-01\"",
+								"description": "Compatibility date used for Pages Functions"
+							},
+							"compatibility_flags": {
+								"type": "array",
+								"example": "[\n  \"url_standard\"\n]",
+								"description": "Compatibility flags used for Pages Functions"
 							}
 						},
 						"description": "Configs for production deploys"
@@ -1985,7 +2047,7 @@
 			"canonical_deployment"
 		],
 		"objects": [],
-		"example": "{\n  \"name\": \"NextJS Blog\",\n  \"id\": \"7b162ea7-7367-4d67-bcde-1160995d5\",\n  \"created_on\": \"2017-01-01T00:00:00Z\",\n  \"subdomain\": \"helloworld.pages.dev\",\n  \"domains\": [\n    \"customdomain.com\",\n    \"customdomain.org\"\n  ],\n  \"source\": {\n    \"type\": \"github\",\n    \"config\": {\n      \"owner\": \"cloudflare\",\n      \"repo_name\": \"ninjakittens\",\n      \"production_branch\": \"main\",\n      \"pr_comments_enabled\": true,\n      \"deployments_enabled\": true\n    }\n  },\n  \"build_config\": {\n    \"build_command\": \"npm run build\",\n    \"destination_dir\": \"build\",\n    \"root_dir\": \"/\",\n    \"web_analytics_tag\": \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n    \"web_analytics_token\": \"021e1057c18547eca7b79f2516f06o7x\"\n  },\n  \"deployment_configs\": {\n    \"preview\": {\n      \"env_vars\": {\n        \"BUILD_VERSION\": {\n          \"value\": \"3.3\"\n        }\n      }\n    },\n    \"production\": {\n      \"env_vars\": {\n        \"BUILD_VERSION\": {\n          \"value\": \"3.3\"\n        }\n      }\n    }\n  },\n  \"latest_deployment\": {},\n  \"canonical_deployment\": {}\n}",
+		"example": "{\n  \"name\": \"NextJS Blog\",\n  \"id\": \"7b162ea7-7367-4d67-bcde-1160995d5\",\n  \"created_on\": \"2017-01-01T00:00:00Z\",\n  \"subdomain\": \"helloworld.pages.dev\",\n  \"domains\": [\n    \"customdomain.com\",\n    \"customdomain.org\"\n  ],\n  \"source\": {\n    \"type\": \"github\",\n    \"config\": {\n      \"owner\": \"cloudflare\",\n      \"repo_name\": \"ninjakittens\",\n      \"production_branch\": \"main\",\n      \"pr_comments_enabled\": true,\n      \"deployments_enabled\": true\n    }\n  },\n  \"build_config\": {\n    \"build_command\": \"npm run build\",\n    \"destination_dir\": \"build\",\n    \"root_dir\": \"/\",\n    \"web_analytics_tag\": \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n    \"web_analytics_token\": \"021e1057c18547eca7b79f2516f06o7x\"\n  },\n  \"deployment_configs\": {\n    \"preview\": {\n      \"env_vars\": {\n        \"BUILD_VERSION\": {\n          \"value\": \"3.3\"\n        }\n      },\n      \"compatibility_date\": \"2022-01-01\",\n      \"compatibility_flags\": [\n        \"url_standard\"\n      ]\n    },\n    \"production\": {\n      \"env_vars\": {\n        \"BUILD_VERSION\": {\n          \"value\": \"3.3\"\n        }\n      },\n      \"compatibility_date\": \"2022-01-01\",\n      \"compatibility_flags\": [\n        \"url_standard\"\n      ]\n    }\n  },\n  \"latest_deployment\": {},\n  \"canonical_deployment\": {}\n}",
 		"title": "Pages Project",
 		"description": "A Pages project represents a website deployed to Cloudflare's edge."
 	}

@@ -4,12 +4,12 @@
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/api-gateway/characteristics.json",
 	"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 	"title": "Characteristics",
-	"description": "Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner",
+	"description": "Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.",
 	"items": {
 		"type": "object",
 		"properties": {
 			"type": {
-				"description": "The type of characteristic",
+				"description": "The type of characteristic.",
 				"type": "string",
 				"enum": [
 					"header",
@@ -18,7 +18,7 @@
 				"example": "header"
 			},
 			"name": {
-				"description": "The name of the characteristic field, i.e., the header or cookie name",
+				"description": "The name of the characteristic field, i.e., the header or cookie name.",
 				"type": "string",
 				"example": "authorization",
 				"maxLength": 128
@@ -33,13 +33,13 @@
 	"maxItems": 10,
 	"definitions": {
 		"name": {
-			"description": "The name of the characteristic field, i.e., the header or cookie name",
+			"description": "The name of the characteristic field, i.e., the header or cookie name.",
 			"type": "string",
 			"example": "authorization",
 			"maxLength": 128
 		},
 		"type": {
-			"description": "The type of characteristic",
+			"description": "The type of characteristic.",
 			"type": "string",
 			"enum": [
 				"header",

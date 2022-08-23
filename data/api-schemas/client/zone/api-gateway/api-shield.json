@@ -198,14 +198,14 @@
 					"host": {
 						"type": "string",
 						"example": "\"www.example.com\"",
-						"description": "RFC3986-compliant host",
+						"description": "RFC3986-compliant host.",
 						"format": "hostname",
 						"maxLength": 255
 					},
 					"method": {
 						"type": "string",
 						"example": "\"GET\"",
-						"description": "The HTTP method used to access the endpoint",
+						"description": "The HTTP method used to access the endpoint.",
 						"enum": [
 							"GET",
 							"POST",
@@ -221,7 +221,7 @@
 					"endpoint": {
 						"type": "string",
 						"example": "\"/api/v1/users/{var1}\"",
-						"description": "The endpoint. Can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. Will further be Cloudflare-normalized upon insertion, see: https://developers.cloudflare.com/rules/normalization/how-it-works/",
+						"description": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/",
 						"format": "uri-template",
 						"pattern": "^/.*$",
 						"maxLength": 4096
@@ -335,7 +335,7 @@
 			"operation_id": {
 				"type": "string",
 				"example": "\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"",
-				"description": "The ID that identifies the API operation",
+				"description": "The ID that identifies the API operation.",
 				"format": "uuid",
 				"id": "https://api.cloudflare.com/schemas/v4/common/uuid.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
@@ -345,7 +345,7 @@
 			"method": {
 				"type": "string",
 				"example": "\"GET\"",
-				"description": "The HTTP method used to access the endpoint",
+				"description": "The HTTP method used to access the endpoint.",
 				"enum": [
 					"GET",
 					"POST",
@@ -361,14 +361,14 @@
 			"host": {
 				"type": "string",
 				"example": "\"www.example.com\"",
-				"description": "RFC3986-compliant host",
+				"description": "RFC3986-compliant host.",
 				"format": "hostname",
 				"maxLength": 255
 			},
 			"endpoint": {
 				"type": "string",
 				"example": "\"/api/v1/users/{var1}\"",
-				"description": "The endpoint. Can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. Will further be Cloudflare-normalized upon insertion, see: https://developers.cloudflare.com/rules/normalization/how-it-works/",
+				"description": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/",
 				"format": "uri-template",
 				"pattern": "^/.*$",
 				"maxLength": 4096
@@ -395,49 +395,49 @@
 									"period_seconds": {
 										"type": "integer",
 										"example": "600",
-										"description": "The period over which this threshold is suggested",
+										"description": "The period over which this threshold is suggested.",
 										"readOnly": true
 									},
 									"suggested_threshold": {
 										"type": "integer",
 										"example": "18",
-										"description": "The suggested threshold in: requests done by the same auth_id / period_seconds",
+										"description": "The suggested threshold in requests done by the same auth_id or period_seconds.",
 										"readOnly": true
 									},
 									"p50": {
 										"type": "integer",
 										"example": "3",
-										"description": "The p50 quantile of requests (in period_seconds)",
+										"description": "The p50 quantile of requests (in period_seconds).",
 										"readOnly": true
 									},
 									"p90": {
 										"type": "integer",
 										"example": "7",
-										"description": "The p90 quantile of requests (in period_seconds)",
+										"description": "The p90 quantile of requests (in period_seconds).",
 										"readOnly": true
 									},
 									"p99": {
 										"type": "integer",
 										"example": "11",
-										"description": "The p99 quantile of requests (in period_seconds)",
+										"description": "The p99 quantile of requests (in period_seconds).",
 										"readOnly": true
 									},
 									"requests": {
 										"type": "integer",
 										"example": "65890",
-										"description": "The estimated number of requests covered by these calculations",
+										"description": "The estimated number of requests covered by these calculations.",
 										"readOnly": true
 									},
 									"auth_id_tokens": {
 										"type": "integer",
 										"example": "7236",
-										"description": "The total number of auth-ids seen across this calculation",
+										"description": "The total number of auth-ids seen across this calculation.",
 										"readOnly": true
 									},
 									"data_points": {
 										"type": "integer",
 										"example": "10100",
-										"description": "The number of data point used for the threshold suggestion calculation",
+										"description": "The number of data points used for the threshold suggestion calculation.",
 										"readOnly": true
 									},
 									"last_updated": {
@@ -490,49 +490,49 @@
 								"type": "object",
 								"properties": {
 									"period_seconds": {
-										"description": "The period over which this threshold is suggested",
+										"description": "The period over which this threshold is suggested.",
 										"type": "integer",
 										"example": 600,
 										"readOnly": true
 									},
 									"suggested_threshold": {
-										"description": "The suggested threshold in: requests done by the same auth_id / period_seconds",
+										"description": "The suggested threshold in requests done by the same auth_id or period_seconds.",
 										"type": "integer",
 										"example": 18,
 										"readOnly": true
 									},
 									"p50": {
-										"description": "The p50 quantile of requests (in period_seconds)",
+										"description": "The p50 quantile of requests (in period_seconds).",
 										"type": "integer",
 										"example": 3,
 										"readOnly": true
 									},
 									"p90": {
-										"description": "The p90 quantile of requests (in period_seconds)",
+										"description": "The p90 quantile of requests (in period_seconds).",
 										"type": "integer",
 										"example": 7,
 										"readOnly": true
 									},
 									"p99": {
-										"description": "The p99 quantile of requests (in period_seconds)",
+										"description": "The p99 quantile of requests (in period_seconds).",
 										"type": "integer",
 										"example": 11,
 										"readOnly": true
 									},
 									"requests": {
-										"description": "The estimated number of requests covered by these calculations",
+										"description": "The estimated number of requests covered by these calculations.",
 										"type": "integer",
 										"example": 65890,
 										"readOnly": true
 									},
 									"auth_id_tokens": {
-										"description": "The total number of auth-ids seen across this calculation",
+										"description": "The total number of auth-ids seen across this calculation.",
 										"type": "integer",
 										"example": 7236,
 										"readOnly": true
 									},
 									"data_points": {
-										"description": "The number of data point used for the threshold suggestion calculation",
+										"description": "The number of data points used for the threshold suggestion calculation.",
 										"type": "integer",
 										"example": 10100,
 										"readOnly": true
@@ -562,49 +562,49 @@
 						],
 						"definitions": {
 							"period_seconds": {
-								"description": "The period over which this threshold is suggested",
+								"description": "The period over which this threshold is suggested.",
 								"type": "integer",
 								"example": 600,
 								"readOnly": true
 							},
 							"suggested_threshold": {
-								"description": "The suggested threshold in: requests done by the same auth_id / period_seconds",
+								"description": "The suggested threshold in requests done by the same auth_id or period_seconds.",
 								"type": "integer",
 								"example": 18,
 								"readOnly": true
 							},
 							"p50": {
-								"description": "The p50 quantile of requests (in period_seconds)",
+								"description": "The p50 quantile of requests (in period_seconds).",
 								"type": "integer",
 								"example": 3,
 								"readOnly": true
 							},
 							"p90": {
-								"description": "The p90 quantile of requests (in period_seconds)",
+								"description": "The p90 quantile of requests (in period_seconds).",
 								"type": "integer",
 								"example": 7,
 								"readOnly": true
 							},
 							"p99": {
-								"description": "The p99 quantile of requests (in period_seconds)",
+								"description": "The p99 quantile of requests (in period_seconds).",
 								"type": "integer",
 								"example": 11,
 								"readOnly": true
 							},
 							"requests": {
-								"description": "The estimated number of requests covered by these calculations",
+								"description": "The estimated number of requests covered by these calculations.",
 								"type": "integer",
 								"example": 65890,
 								"readOnly": true
 							},
 							"auth_id_tokens": {
-								"description": "The total number of auth-ids seen across this calculation",
+								"description": "The total number of auth-ids seen across this calculation.",
 								"type": "integer",
 								"example": 7236,
 								"readOnly": true
 							},
 							"data_points": {
-								"description": "The number of data point used for the threshold suggestion calculation",
+								"description": "The number of data points used for the threshold suggestion calculation.",
 								"type": "integer",
 								"example": 10100,
 								"readOnly": true
