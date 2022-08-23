@@ -21,14 +21,14 @@ const navigation = {
 		url: "/access-management",
 		iconType: "lock",
 		hasPermission: function(ce) {
-			return !!(0, Se.z1)("oauth-access-management")(ce)
+			return !!(0, Oe.z1)("oauth-access-management")(ce)
 		}
 	}, {
 		title: "navigation.profile.authentication",
 		url: "/authentication",
 		iconType: "key",
 		hasPermission: function(ce) {
-			return !(0, J.n3)() && !(0, Se.z1)("oauth-access-management")(ce)
+			return !(0, J.n3)() && !(0, Oe.z1)("oauth-access-management")(ce)
 		}
 	}, {
 		title: "navigation.profile.api_tokens",
@@ -39,7 +39,7 @@ const navigation = {
 		url: "/sessions",
 		iconType: "time",
 		hasPermission: function(ce) {
-			return !(0, Se.z1)("oauth-access-management")(ce)
+			return !(0, Oe.z1)("oauth-access-management")(ce)
 		}
 	}],
 	account: [{
@@ -48,7 +48,7 @@ const navigation = {
 		iconType: "internet-browser"
 	}, {
 		title: function(ce) {
-			return (0, Se.z1)("registrar-account-home-copy-experiment")(ce) === "registrar" ? "navigation.account.registrar" : "navigation.account.registrar.buy_domains"
+			return (0, Oe.z1)("registrar-account-home-copy-experiment")(ce) === "registrar" ? "navigation.account.registrar" : "navigation.account.registrar.buy_domains"
 		},
 		url: "",
 		iconType: "registrar-logo",
@@ -59,14 +59,14 @@ const navigation = {
 			title: "navigation.account.registrar.transfer_domains",
 			url: "/domains/transfer",
 			hasPermission: function(ce) {
-				return I(ce)
+				return D(ce)
 			}
 		}, {
 			title: "navigation.account.registrar.register_domains",
 			url: "/domains/register",
 			labels: ["new"],
 			hasPermission: function(ce) {
-				return I(ce)
+				return D(ce)
 			}
 		}]
 	}, {
@@ -105,7 +105,7 @@ const navigation = {
 		iconType: "applications",
 		labels: ["beta"],
 		hasPermission: function(ce) {
-			return _(ce) && (0, Oe.dU)(ce)
+			return _(ce) && (0, Ce.dU)(ce)
 		}
 	}, {
 		title: "navigation.account.calls",
@@ -166,7 +166,7 @@ const navigation = {
 		url: "/rulesets",
 		iconType: "shield",
 		hasPermission: function(ce) {
-			return _(ce) && !!(w(ce) || F(ce))
+			return _(ce) && !!(w(ce) || W(ce))
 		},
 		pages: [{
 			title: "navigation.account.firewall_rulesets.ddos",
@@ -189,7 +189,7 @@ const navigation = {
 			url: "/rulesets/magic_firewall",
 			testId: "account-magic-firewall-rules",
 			hasPermission: function(ce) {
-				return !!F(ce)
+				return !!W(ce)
 			}
 		}, {
 			title: "navigation.account.firewall_rulesets.browse_rulesets",
@@ -442,10 +442,10 @@ const navigation = {
 		hasPermission: function(ce) {
 			var pt = (0, N.getZone)(ce);
 			if ((0, r.zoneIsDNSOnly)(ce) || !H(ce, "zone_settings", "spectrum.app") || !pt) return !1;
-			var Dt = !!((0, $.userHasEntZones)(ce) || (0, N.userHasDelegatedEntZones)(ce)),
-				Ut = !!(0, N.getZoneFlipperFlag)(ce, "spectrum", "enabled"),
+			var It = !!((0, $.userHasEntZones)(ce) || (0, N.userHasDelegatedEntZones)(ce)),
+				_t = !!(0, N.getZoneFlipperFlag)(ce, "spectrum", "enabled"),
 				$t = !!(0, N.isFree)(pt);
-			return Ut || Dt || !$t
+			return _t || It || !$t
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -471,7 +471,7 @@ const navigation = {
 			title: "navigation.zone.ssl-tls.client_certs",
 			url: "/ssl-tls/client-certificates",
 			hasPermission: function(ce) {
-				return !!(0, Se.z1)("client-certificates")(ce) || !!(0, N.getZoneFlipperFlag)(ce, "ssl", "client_certificates")
+				return !!(0, Oe.z1)("client-certificates")(ce) || !!(0, N.getZoneFlipperFlag)(ce, "ssl", "client_certificates")
 			}
 		}, {
 			title: "navigation.zone.ssl-tls.origin_server",
@@ -704,8 +704,8 @@ const navigation = {
 		url: "/zaraz",
 		labels: function(ce) {
 			var pt = [],
-				Dt = (0, N.getZone)(ce);
-			return Dt && !(0, N.isPlanAtLeast)(Dt, "pro") && pt.push("beta"), pt
+				It = (0, N.getZone)(ce);
+			return It && !(0, N.isPlanAtLeast)(It, "pro") && pt.push("beta"), pt
 		},
 		iconType: "zaraz",
 		testId: "zone-navigation-link-zaraz",

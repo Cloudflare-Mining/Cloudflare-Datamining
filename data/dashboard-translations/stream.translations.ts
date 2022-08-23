@@ -630,5 +630,8 @@ To read the full docs, [click here](https://developers.cloudflare.com/stream/).`
 	create_cname_record: "Create CNAME Record",
 	create_cname_record_decline: "No, thanks",
 	create_cname_record_already_exists: "An A, AAAA, or CNAME record with that host already exists.",
-	created_cname_success: "CNAME record created successfully!"
+	created_cname_success: "CNAME record created successfully!",
+	customer_subdomain: "Customer subdomain",
+	read_docs: "read docs",
+	customer_subdomain_tooltip: "This domain is specific to your Cloudflare account. Use it for all requests to fetch video manifests, thumbnails and embed codes."
 }
