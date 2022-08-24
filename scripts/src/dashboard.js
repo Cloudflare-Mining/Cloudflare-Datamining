@@ -211,7 +211,6 @@ async function processInlineTranslation(file, code){
 		){
 			filename = node.arguments[0].value;
 			translations = node.arguments[1].properties;
-			console.log('got translations', filename, translations);
 			output = generate(node.arguments[1], {
 				indent: '\t',
 			});
