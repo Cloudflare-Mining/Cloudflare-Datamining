@@ -5,6 +5,9 @@
 	"allow-google-ssl-for-saas": {
 		"enabled": true
 	},
+	"api-gateway-endpoint-management": {
+		"enabled": false
+	},
 	"argo-card-pricing-copy": {
 		"enabled": true,
 		"branches": [
@@ -75,6 +78,9 @@
 		"enabled": false
 	},
 	"magic-transit-healthchecks": {
+		"enabled": false
+	},
+	"managed-challenge-ui": {
 		"enabled": false
 	},
 	"new-load-balancing-alert-types": {
