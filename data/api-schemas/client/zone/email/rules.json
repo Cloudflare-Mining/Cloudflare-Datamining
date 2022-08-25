@@ -31,7 +31,7 @@
 			"title": "Enable Email Routing",
 			"description": "Enable you Email Routing zone. Add and lock the necessary MX and SPF records.",
 			"rel": "collection",
-			"href": "zones/{#/definitions/zone_identifier}/email/routing/enable",
+			"href": "zones/{#/definitions/zone_identifier}/email/routing/enabled",
 			"method": "POST",
 			"cfOwnership": "email",
 			"cfPermissionsRequired": {
@@ -46,8 +46,8 @@
 				"enterprise": true
 			},
 			"html_id": "email-routing-settings-enable-email-routing",
-			"uri": "zones/:zone_identifier/email/routing/enable",
-			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/email/routing/enable\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"uri": "zones/:zone_identifier/email/routing/enabled",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/email/routing/enabled\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"tag\": \"75610dab9e69410a82cf7e400a09ecec\",\n    \"name\": \"example.net\",\n    \"enabled\": true,\n    \"created\": \"2014-01-02T02:20:00Z\",\n    \"modified\": \"2014-01-02T02:20:00Z\",\n    \"skip_wizard\": true,\n    \"status\": \"read\"\n  }\n}"
 		},
 		{
