@@ -5,8 +5,8 @@
 	"type": "object",
 	"links": [
 		{
-			"title": "List packet capture requests",
-			"description": "Lists all packet capture requests for an account.",
+			"title": "List PCAP requests",
+			"description": "List all PCAP requests for an account.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/pcaps",
 			"method": "GET",
@@ -17,7 +17,7 @@
 				"business": false,
 				"enterprise": true
 			},
-			"html_id": "magic-pcap-collection-list-packet-capture-requests",
+			"html_id": "magic-pcap-collection-list-pcap-requests",
 			"uri": "accounts/:account_identifier/pcaps",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/pcaps\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"66802ca5668e47a2b82c2e6746e45037\",\n      \"submitted\": \"2020-01-01T08:00:00Z\",\n      \"filter_v1\": {\n        \"destination_address\": \"1.2.3.4\",\n        \"source_address\": \"1.2.3.4\",\n        \"source_port\": 123,\n        \"destination_port\": 80,\n        \"protocol\": 6\n      },\n      \"time_limit\": 300,\n      \"status\": \"success\",\n      \"type\": \"simple\",\n      \"system\": \"magic-transit\"\n    }\n  ]\n}"
@@ -50,49 +50,49 @@
 							"destination_address": {
 								"type": "string",
 								"example": "\"1.2.3.4\"",
-								"description": "The destination IP address of the packet."
+								"description": "Destination IP address to filter on."
 							},
 							"source_address": {
 								"type": "string",
 								"example": "\"1.2.3.4\"",
-								"description": "The source IP address of the packet."
+								"description": "Source IP address to filter on."
 							},
 							"source_port": {
 								"type": "number",
 								"example": "123",
-								"description": "The source port of the packet."
+								"description": "Source port to filter on."
 							},
 							"destination_port": {
 								"type": "number",
 								"example": "80",
-								"description": "The destination port of the packet."
+								"description": "Destination port to filter on."
 							},
 							"protocol": {
 								"type": "number",
 								"example": "6",
-								"description": "The protocol number of the packet."
+								"description": "Protocol number to filter on."
 							}
 						},
-						"description": "The packet capture filter. When this field is empty, all packets are captured."
+						"description": "PCAP filter. Leave fields blank or empty to specify any."
 					},
 					"time_limit": {
 						"type": "number",
 						"example": "300",
-						"description": "The packet capture duration in seconds.",
+						"description": "Duration of PCAP in number of seconds.",
 						"minimum": 1,
 						"maximum": 300
 					},
 					"packet_limit": {
 						"type": "number",
 						"example": "10000",
-						"description": "The limit of packets contained in a packet capture.",
+						"description": "Limit of number of packets contained in a PCAP.",
 						"minimum": 1,
 						"maximum": 10000
 					},
 					"type": {
 						"type": "string",
 						"example": "\"simple\"",
-						"description": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets.",
+						"description": "The type of pcap to collect. Simple will captured sampled packets, while full will capture entire payloads and non-sampled packets.",
 						"enum": [
 							"simple",
 							"full"
@@ -101,7 +101,7 @@
 					"system": {
 						"type": "string",
 						"example": "\"magic-transit\"",
-						"description": "The system used to collect packet captures.",
+						"description": "The system used to collect pcaps.",
 						"enum": [
 							"magic-transit"
 						]
@@ -149,49 +149,49 @@
 							"destination_address": {
 								"type": "string",
 								"example": "\"1.2.3.4\"",
-								"description": "The destination IP address of the packet."
+								"description": "Destination IP address to filter on."
 							},
 							"source_address": {
 								"type": "string",
 								"example": "\"1.2.3.4\"",
-								"description": "The source IP address of the packet."
+								"description": "Source IP address to filter on."
 							},
 							"source_port": {
 								"type": "number",
 								"example": "123",
-								"description": "The source port of the packet."
+								"description": "Source port to filter on."
 							},
 							"destination_port": {
 								"type": "number",
 								"example": "80",
-								"description": "The destination port of the packet."
+								"description": "Destination port to filter on."
 							},
 							"protocol": {
 								"type": "number",
 								"example": "6",
-								"description": "The protocol number of the packet."
+								"description": "Protocol number to filter on."
 							}
 						},
-						"description": "The packet capture filter. When this field is empty, all packets are captured."
+						"description": "PCAP filter. Leave fields blank or empty to specify any."
 					},
 					"time_limit": {
 						"type": "number",
 						"example": "300",
-						"description": "The packet capture duration in seconds.",
+						"description": "Duration of PCAP in number of seconds.",
 						"minimum": 1,
 						"maximum": 300
 					},
 					"packet_limit": {
 						"type": "number",
 						"example": "10000",
-						"description": "The limit of packets contained in a packet capture.",
+						"description": "Limit of number of packets contained in a PCAP.",
 						"minimum": 1,
 						"maximum": 10000
 					},
 					"type": {
 						"type": "string",
 						"example": "\"simple\"",
-						"description": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets.",
+						"description": "The type of pcap to collect. Simple will captured sampled packets, while full will capture entire payloads and non-sampled packets.",
 						"enum": [
 							"simple",
 							"full"
@@ -200,7 +200,7 @@
 					"system": {
 						"type": "string",
 						"example": "\"magic-transit\"",
-						"description": "The system used to collect packet captures.",
+						"description": "The system used to collect pcaps.",
 						"enum": [
 							"magic-transit"
 						]
@@ -208,19 +208,19 @@
 					"byte_limit": {
 						"type": "number",
 						"example": "500000",
-						"description": "The maximum number of bytes to capture. This field only applies to `full` packet captures.",
+						"description": "Maximum number of bytes to capture. Optional. Full PCAP type only.",
 						"minimum": 1,
 						"maximum": 1000000000
 					},
 					"colo_name": {
 						"type": "string",
 						"example": "\"ord02\"",
-						"description": "The name of the data center used for the packet capture. This field only applies to `full` packet captures."
+						"description": "Colo name to capture from. Full PCAP type only."
 					},
 					"destination_conf": {
 						"type": "string",
 						"example": "\"s3://pcaps-bucket?region=us-east-1\"",
-						"description": "The full URI for the bucket. This field only applies to `full` packet captures."
+						"description": "Full URI of bucket. Full PCAP type only."
 					}
 				},
 				"required_props": [
@@ -323,8 +323,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
 		},
 		{
-			"title": "Add buckets for full packet captures",
-			"description": "Adds an AWS or GCP bucket to use with full packet captures.",
+			"title": "Add Bucket For Use with PCAPs",
+			"description": "Add AWS or GCP bucket for use with PCAPs API.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/pcaps/ownership",
 			"method": "POST",
@@ -335,14 +335,14 @@
 				"business": false,
 				"enterprise": true
 			},
-			"html_id": "magic-pcap-collection-add-buckets-for-full-packet-captures",
+			"html_id": "magic-pcap-collection-add-bucket-for-use-with-pcaps",
 			"uri": "accounts/:account_identifier/pcaps/ownership",
 			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/pcaps/ownership\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"destination_conf\": \"s3://pcaps-bucket?region=us-east-1\"\n}"
 		},
 		{
-			"title": "Validate buckets for full packet captures",
-			"description": "Validates buckets added to the packet captures API.",
+			"title": "Validate Bucket For Use with PCAPs",
+			"description": "Validate bucket that has been added to PCAPs API.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/pcaps/ownership/validate",
 			"method": "POST",
@@ -353,14 +353,14 @@
 				"business": false,
 				"enterprise": true
 			},
-			"html_id": "magic-pcap-collection-validate-buckets-for-full-packet-captures",
+			"html_id": "magic-pcap-collection-validate-bucket-for-use-with-pcaps",
 			"uri": "accounts/:account_identifier/pcaps/ownership/validate",
 			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/pcaps/ownership/validate\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"destination_conf\": \"s3://pcaps-bucket?region=us-east-1\",\n  \"ownership_challenge\": \"ownership-challenge-9883874ecac311ec8475433579a6bf5f.txt\"\n}"
 		},
 		{
-			"title": "Delete buckets for full packet captures",
-			"description": "Deletes buckets added to the packet captures API.",
+			"title": "Delete Bucket for Use with PCAPs",
+			"description": "Delete bucket that has been added to PCAPs API.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/pcaps/ownership/{#/definitions/ownership_identifier}",
 			"method": "DELETE",
@@ -371,7 +371,7 @@
 				"business": false,
 				"enterprise": true
 			},
-			"html_id": "magic-pcap-collection-delete-buckets-for-full-packet-captures",
+			"html_id": "magic-pcap-collection-delete-bucket-for-use-with-pcaps",
 			"uri": "accounts/:account_identifier/pcaps/ownership/:ownership_identifier",
 			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/pcaps/ownership/b2df3c4fcfc84ea49a28df6d55ce16cb\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\""
 		}
@@ -411,49 +411,49 @@
 							"destination_address": {
 								"type": "string",
 								"example": "\"1.2.3.4\"",
-								"description": "The destination IP address of the packet."
+								"description": "Destination IP address to filter on."
 							},
 							"source_address": {
 								"type": "string",
 								"example": "\"1.2.3.4\"",
-								"description": "The source IP address of the packet."
+								"description": "Source IP address to filter on."
 							},
 							"source_port": {
 								"type": "number",
 								"example": "123",
-								"description": "The source port of the packet."
+								"description": "Source port to filter on."
 							},
 							"destination_port": {
 								"type": "number",
 								"example": "80",
-								"description": "The destination port of the packet."
+								"description": "Destination port to filter on."
 							},
 							"protocol": {
 								"type": "number",
 								"example": "6",
-								"description": "The protocol number of the packet."
+								"description": "Protocol number to filter on."
 							}
 						},
-						"description": "The packet capture filter. When this field is empty, all packets are captured."
+						"description": "PCAP filter. Leave fields blank or empty to specify any."
 					},
 					"time_limit": {
 						"type": "number",
 						"example": "300",
-						"description": "The packet capture duration in seconds.",
+						"description": "Duration of PCAP in number of seconds.",
 						"minimum": 1,
 						"maximum": 300
 					},
 					"packet_limit": {
 						"type": "number",
 						"example": "10000",
-						"description": "The limit of packets contained in a packet capture.",
+						"description": "Limit of number of packets contained in a PCAP.",
 						"minimum": 1,
 						"maximum": 10000
 					},
 					"type": {
 						"type": "string",
 						"example": "\"simple\"",
-						"description": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets.",
+						"description": "The type of pcap to collect. Simple will captured sampled packets, while full will capture entire payloads and non-sampled packets.",
 						"enum": [
 							"simple",
 							"full"
@@ -462,7 +462,7 @@
 					"system": {
 						"type": "string",
 						"example": "\"magic-transit\"",
-						"description": "The system used to collect packet captures.",
+						"description": "The system used to collect pcaps.",
 						"enum": [
 							"magic-transit"
 						]
@@ -482,14 +482,14 @@
 					"id": {
 						"type": "string",
 						"example": "\"66802ca5668e47a2b82c2e6746e45037\"",
-						"description": "The ID for the packet capture.",
+						"description": "The ID of the PCAP",
 						"minLength": 32,
 						"maxLength": 32
 					},
 					"submitted": {
 						"type": "string",
 						"example": "\"2020-01-01T08:00:00Z\"",
-						"description": "The RFC 3339 timestamp when the packet capture was created."
+						"description": "The RFC 3339 timestamp the item was created."
 					},
 					"filter_v1": {
 						"type": "object",
@@ -498,42 +498,42 @@
 							"destination_address": {
 								"type": "string",
 								"example": "\"1.2.3.4\"",
-								"description": "The destination IP address of the packet."
+								"description": "Destination IP address to filter on."
 							},
 							"source_address": {
 								"type": "string",
 								"example": "\"1.2.3.4\"",
-								"description": "The source IP address of the packet."
+								"description": "Source IP address to filter on."
 							},
 							"source_port": {
 								"type": "number",
 								"example": "123",
-								"description": "The source port of the packet."
+								"description": "Source port to filter on."
 							},
 							"destination_port": {
 								"type": "number",
 								"example": "80",
-								"description": "The destination port of the packet."
+								"description": "Destination port to filter on."
 							},
 							"protocol": {
 								"type": "number",
 								"example": "6",
-								"description": "The protocol number of the packet."
+								"description": "Protocol number to filter on."
 							}
 						},
-						"description": "The packet capture filter. When this field is empty, all packets are captured."
+						"description": "PCAP filter. Leave fields blank or empty to specify any."
 					},
 					"time_limit": {
 						"type": "number",
 						"example": "300",
-						"description": "The packet capture duration in seconds.",
+						"description": "Duration of PCAP in number of seconds.",
 						"minimum": 1,
 						"maximum": 300
 					},
 					"status": {
 						"type": "string",
 						"example": "\"success\"",
-						"description": "The status of the packet capture request.",
+						"description": "The status of the pcap request.",
 						"enum": [
 							"unknown",
 							"success",
@@ -548,7 +548,7 @@
 					"type": {
 						"type": "string",
 						"example": "\"simple\"",
-						"description": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets.",
+						"description": "The type of pcap to collect. Simple will captured sampled packets, while full will capture entire payloads and non-sampled packets.",
 						"enum": [
 							"simple",
 							"full"
@@ -557,7 +557,7 @@
 					"system": {
 						"type": "string",
 						"example": "\"magic-transit\"",
-						"description": "The system used to collect packet captures.",
+						"description": "The system used to collect pcaps.",
 						"enum": [
 							"magic-transit"
 						]
@@ -575,49 +575,49 @@
 							"destination_address": {
 								"type": "string",
 								"example": "\"1.2.3.4\"",
-								"description": "The destination IP address of the packet."
+								"description": "Destination IP address to filter on."
 							},
 							"source_address": {
 								"type": "string",
 								"example": "\"1.2.3.4\"",
-								"description": "The source IP address of the packet."
+								"description": "Source IP address to filter on."
 							},
 							"source_port": {
 								"type": "number",
 								"example": "123",
-								"description": "The source port of the packet."
+								"description": "Source port to filter on."
 							},
 							"destination_port": {
 								"type": "number",
 								"example": "80",
-								"description": "The destination port of the packet."
+								"description": "Destination port to filter on."
 							},
 							"protocol": {
 								"type": "number",
 								"example": "6",
-								"description": "The protocol number of the packet."
+								"description": "Protocol number to filter on."
 							}
 						},
-						"description": "The packet capture filter. When this field is empty, all packets are captured."
+						"description": "PCAP filter. Leave fields blank or empty to specify any."
 					},
 					"time_limit": {
 						"type": "number",
 						"example": "300",
-						"description": "The packet capture duration in seconds.",
+						"description": "Duration of PCAP in number of seconds.",
 						"minimum": 1,
 						"maximum": 300
 					},
 					"packet_limit": {
 						"type": "number",
 						"example": "10000",
-						"description": "The limit of packets contained in a packet capture.",
+						"description": "Limit of number of packets contained in a PCAP.",
 						"minimum": 1,
 						"maximum": 10000
 					},
 					"type": {
 						"type": "string",
 						"example": "\"simple\"",
-						"description": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets.",
+						"description": "The type of pcap to collect. Simple will captured sampled packets, while full will capture entire payloads and non-sampled packets.",
 						"enum": [
 							"simple",
 							"full"
@@ -626,7 +626,7 @@
 					"system": {
 						"type": "string",
 						"example": "\"magic-transit\"",
-						"description": "The system used to collect packet captures.",
+						"description": "The system used to collect pcaps.",
 						"enum": [
 							"magic-transit"
 						]
@@ -634,19 +634,19 @@
 					"byte_limit": {
 						"type": "number",
 						"example": "500000",
-						"description": "The maximum number of bytes to capture. This field only applies to `full` packet captures.",
+						"description": "Maximum number of bytes to capture. Optional. Full PCAP type only.",
 						"minimum": 1,
 						"maximum": 1000000000
 					},
 					"colo_name": {
 						"type": "string",
 						"example": "\"ord02\"",
-						"description": "The name of the data center used for the packet capture. This field only applies to `full` packet captures."
+						"description": "Colo name to capture from. Full PCAP type only."
 					},
 					"destination_conf": {
 						"type": "string",
 						"example": "\"s3://pcaps-bucket?region=us-east-1\"",
-						"description": "The full URI for the bucket. This field only applies to `full` packet captures."
+						"description": "Full URI of bucket. Full PCAP type only."
 					}
 				},
 				"required": [
@@ -664,14 +664,14 @@
 					"id": {
 						"type": "string",
 						"example": "\"66802ca5668e47a2b82c2e6746e45037\"",
-						"description": "The ID for the packet capture.",
+						"description": "The ID of the PCAP",
 						"minLength": 32,
 						"maxLength": 32
 					},
 					"submitted": {
 						"type": "string",
 						"example": "\"2020-01-01T08:00:00Z\"",
-						"description": "The RFC 3339 timestamp when the packet capture was created."
+						"description": "The RFC 3339 timestamp the item was created."
 					},
 					"filter_v1": {
 						"type": "object",
@@ -680,42 +680,42 @@
 							"destination_address": {
 								"type": "string",
 								"example": "\"1.2.3.4\"",
-								"description": "The destination IP address of the packet."
+								"description": "Destination IP address to filter on."
 							},
 							"source_address": {
 								"type": "string",
 								"example": "\"1.2.3.4\"",
-								"description": "The source IP address of the packet."
+								"description": "Source IP address to filter on."
 							},
 							"source_port": {
 								"type": "number",
 								"example": "123",
-								"description": "The source port of the packet."
+								"description": "Source port to filter on."
 							},
 							"destination_port": {
 								"type": "number",
 								"example": "80",
-								"description": "The destination port of the packet."
+								"description": "Destination port to filter on."
 							},
 							"protocol": {
 								"type": "number",
 								"example": "6",
-								"description": "The protocol number of the packet."
+								"description": "Protocol number to filter on."
 							}
 						},
-						"description": "The packet capture filter. When this field is empty, all packets are captured."
+						"description": "PCAP filter. Leave fields blank or empty to specify any."
 					},
 					"time_limit": {
 						"type": "number",
 						"example": "300",
-						"description": "The packet capture duration in seconds.",
+						"description": "Duration of PCAP in number of seconds.",
 						"minimum": 1,
 						"maximum": 300
 					},
 					"status": {
 						"type": "string",
 						"example": "\"success\"",
-						"description": "The status of the packet capture request.",
+						"description": "The status of the pcap request.",
 						"enum": [
 							"unknown",
 							"success",
@@ -730,12 +730,12 @@
 					"error_message": {
 						"type": "string",
 						"example": "\"No packets matched the filter in the time limit given. Please modify the filter or try again.\"",
-						"description": "An error message that describes why the packet capture failed. This field only applies to `full` packet captures."
+						"description": "A textual description of the error when gathering a Packet Capture. Full PCAP type only"
 					},
 					"type": {
 						"type": "string",
 						"example": "\"simple\"",
-						"description": "The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets.",
+						"description": "The type of pcap to collect. Simple will captured sampled packets, while full will capture entire payloads and non-sampled packets.",
 						"enum": [
 							"simple",
 							"full"
@@ -744,7 +744,7 @@
 					"system": {
 						"type": "string",
 						"example": "\"magic-transit\"",
-						"description": "The system used to collect packet captures.",
+						"description": "The system used to collect pcaps.",
 						"enum": [
 							"magic-transit"
 						]
@@ -752,19 +752,19 @@
 					"byte_limit": {
 						"type": "number",
 						"example": "500000",
-						"description": "The maximum number of bytes to capture. This field only applies to `full` packet captures.",
+						"description": "Maximum number of bytes to capture. Optional. Full PCAP type only.",
 						"minimum": 1,
 						"maximum": 1000000000
 					},
 					"colo_name": {
 						"type": "string",
 						"example": "\"ord02\"",
-						"description": "The name of the data center used for the packet capture. This field only applies to `full` packet captures."
+						"description": "Colo name to capture from. Full PCAP type only."
 					},
 					"destination_conf": {
 						"type": "string",
 						"example": "\"s3://pcaps-bucket?region=us-east-1\"",
-						"description": "The full URI for the bucket. This field only applies to `full` packet captures."
+						"description": "Full URI of bucket. Full PCAP type only."
 					}
 				}
 			}
