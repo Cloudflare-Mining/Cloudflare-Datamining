@@ -84,7 +84,7 @@ async function findWantedChunks(chunks){
 			}
 
 			// other generic chunks
-			if(text.startsWith('(self.webpackChunk=self.webpackChunk||[])')){
+			if(text.startsWith('(self.webpackChunk=self.webpackChunk||[])') || text.startsWith('"use strict";(self.webpackChunk=self.webpackChunk||[])')){
 				results.chunks.push({
 					code: text,
 					chunk,
@@ -480,13 +480,13 @@ async function generateDashboardStructure(wantedChunks, write = false, translati
 							});
 							continue;
 						}
-						// get static files like imags
-						if(likelyFiles.test(file) && buildFile.value?.body?.body?.[1]?.expression?.right){
-							const fileData = buildFile.value?.body?.body?.[1]?.expression?.right;
+						// get static files like images
+						if(likelyFiles.test(file) && (buildFile.value?.body?.body?.[1]?.expression?.right || buildFile.value?.body?.body?.[0]?.expression?.right)){
+							const fileData = buildFile.value?.body?.body?.[1]?.expression?.right || buildFile.value?.body?.body?.[0]?.expression?.right;
 							if(fileData.type === 'BinaryExpression'){
 								// something like this: `i.p + "e42997c2963d927d6ba5.png"`
 								// remote file, go get it
-								const remoteFile = buildFile.value?.body?.body?.[1]?.expression?.right?.right?.value;
+								const remoteFile = buildFile.value?.body?.body?.[1]?.expression?.right?.right?.value || buildFile.value?.body?.body?.[0]?.expression?.right?.right?.value;
 								files[file] = ''; // add to list of files so it's still included in our manifest
 								getRemoteFiles.push(async function(){
 									let fileRes = null;
@@ -512,7 +512,7 @@ async function generateDashboardStructure(wantedChunks, write = false, translati
 								}
 							}else{
 								// no match?
-								console.log('Unhandled file data', fileData);
+								console.log('Unhandled file data', file, fileData);
 							}
 						// else handle code
 						}else if(files[file] && files[file].at(-1) !== code){
