@@ -1164,6 +1164,18 @@
 		}
 	},
 	{
+		"id": "staging_certificates",
+		"feature": {
+			"feature_set": "staging_certificates",
+			"id": 930,
+			"key": "staging_certificates",
+			"name": "Staging Certificates"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "stream.enabled",
 		"feature": {
 			"feature_set": "stream",
