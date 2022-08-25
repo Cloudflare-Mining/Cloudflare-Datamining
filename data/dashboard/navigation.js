@@ -59,14 +59,14 @@ const navigation = {
 			title: "navigation.account.registrar.transfer_domains",
 			url: "/domains/transfer",
 			hasPermission: function(se) {
-				return D(se)
+				return j(se)
 			}
 		}, {
 			title: "navigation.account.registrar.register_domains",
 			url: "/domains/register",
 			labels: ["new"],
 			hasPermission: function(se) {
-				return D(se)
+				return j(se)
 			}
 		}]
 	}, {
@@ -235,37 +235,37 @@ const navigation = {
 		url: "/security-center",
 		iconType: "product-security-center",
 		hasPermission: function(se) {
-			return _(se) && (0, ae.sL)(se)
+			return _(se) && (0, re.sL)(se)
 		},
 		pages: [{
 			title: "navigation.account.security_center.security_insights",
 			url: "/security-center",
 			hasPermission: function(se) {
-				return _(se) && (0, ae.sL)(se)
+				return _(se) && (0, re.sL)(se)
 			}
 		}, {
 			title: "navigation.account.security_center.infrastructure",
 			url: "/security-center/inventory",
 			hasPermission: function(se) {
-				return _(se) && (0, ae.sL)(se)
+				return _(se) && (0, re.sL)(se)
 			}
 		}, {
 			title: "navigation.account.security_center.investigate",
 			url: "/security-center/investigate",
 			hasPermission: function(se) {
-				return _(se) && (0, ae.TT)(se)
+				return _(se) && (0, re.TT)(se)
 			}
 		}, {
 			title: "navigation.account.security_center.reports",
 			url: "/security-center/reports",
 			hasPermission: function(se) {
-				return _(se) && (0, ae.jD)(se)
+				return _(se) && (0, re.jD)(se)
 			}
 		}, {
 			title: "navigation.account.security_center.brand_protection",
 			url: "/security-center/brand-protection",
 			hasPermission: function(se) {
-				return _(se) && (0, ae.BU)(se)
+				return _(se) && (0, re.BU)(se)
 			}
 		}]
 	}, {

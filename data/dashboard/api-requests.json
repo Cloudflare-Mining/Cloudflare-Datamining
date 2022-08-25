@@ -555,56 +555,6 @@
 		"id": "dns.records.api.title.delete"
 	},
 	{
-		"uri": "/zones/:zone_identifier/firewall/lockdowns",
-		"method": "GET",
-		"id": "zone-lockdown-list-lockdown-rules"
-	},
-	{
-		"uri": "/zones/:zone_identifier/firewall/lockdowns",
-		"method": "POST",
-		"id": "zone-lockdown-create-a-lockdown-rule"
-	},
-	{
-		"uri": "/zones/:zone_identifier/firewall/lockdowns/:id",
-		"method": "GET",
-		"id": "zone-lockdown-lockdown-rule-details"
-	},
-	{
-		"uri": "/zones/:zone_identifier/firewall/lockdowns/:id",
-		"method": "PUT",
-		"id": "zone-lockdown-update-lockdown-rule"
-	},
-	{
-		"uri": "/zones/:zone_identifier/firewall/lockdowns/:id",
-		"method": "DELETE",
-		"id": "zone-lockdown-delete-lockdown-rule"
-	},
-	{
-		"uri": "/zones/:zone_identifier/firewall/ua_rules",
-		"method": "GET",
-		"id": "user-agent-blocking-rules-list-useragent-rules"
-	},
-	{
-		"uri": "/zones/:zone_identifier/firewall/ua_rules",
-		"method": "POST",
-		"id": "user-agent-blocking-rules-create-a-useragent-rule"
-	},
-	{
-		"uri": "/zones/:zone_identifier/firewall/ua_rules/:id",
-		"method": "GET",
-		"id": "user-agent-blocking-rules-useragent-rule-details"
-	},
-	{
-		"uri": "/zones/:zone_identifier/firewall/ua_rules/:id",
-		"method": "PUT",
-		"id": "user-agent-blocking-rules-update-useragent-rule"
-	},
-	{
-		"uri": "/zones/:zone_identifier/firewall/ua_rules/:id",
-		"method": "DELETE",
-		"id": "user-agent-blocking-rules-delete-useragent-rule"
-	},
-	{
 		"uri": "/zones/:zone_identifier/keyless_certificates",
 		"method": "POST",
 		"id": "keyless-ssl-for-a-zone-create-a-keyless-ssl-configuration"
@@ -685,31 +635,6 @@
 		"id": "page-rules-for-a-zone-delete-page-rule"
 	},
 	{
-		"uri": "/zones/:zone_identifier/rate_limits",
-		"method": "GET",
-		"id": "rate-limits-for-a-zone-list-rate-limits"
-	},
-	{
-		"uri": "/zones/:zone_identifier/rate_limits",
-		"method": "POST",
-		"id": "rate-limits-for-a-zone-create-rate-limit"
-	},
-	{
-		"uri": "/zones/:zone_identifier/rate_limits/:id",
-		"method": "GET",
-		"id": "rate-limits-for-a-zone-rate-limit-details"
-	},
-	{
-		"uri": "/zones/:zone_identifier/rate_limits/:id",
-		"method": "PUT",
-		"id": "rate-limits-for-a-zone-update-rate-limit"
-	},
-	{
-		"uri": "/zones/:zone_identifier/rate_limits/:id",
-		"method": "DELETE",
-		"id": "rate-limits-for-a-zone-delete-rate-limit"
-	},
-	{
 		"uri": "/zones/:zone_identifier/settings",
 		"method": "PATCH",
 		"id": "zone-settings-edit-zone-settings-info"
@@ -1218,16 +1143,6 @@
 		"uri": "/zones/:zone_identifier/settings/prefetch_preload",
 		"method": "PATCH",
 		"id": "zone-settings-change-prefetch-preload-setting"
-	},
-	{
-		"uri": "/zones/:zone_identifier/settings/pseudo_ipv4",
-		"method": "GET",
-		"id": "zone-settings-get-pseudo-ipv4-setting"
-	},
-	{
-		"uri": "/zones/:zone_identifier/settings/pseudo_ipv4",
-		"method": "PATCH",
-		"id": "zone-settings-change-pseudo-ipv4-setting"
 	},
 	{
 		"uri": "/zones/:zone_identifier/settings/response_buffering",
