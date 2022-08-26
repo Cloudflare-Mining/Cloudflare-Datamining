@@ -35210,7 +35210,7 @@
 																	},
 																	"pctComplete": {
 																		"description": "Indicates the size of the entire upload in bytes. The value must be a non-negative integer.",
-																		"type": "integer",
+																		"type": "string",
 																		"minimum": 0,
 																		"maximum": 100,
 																		"readOnly": true
@@ -35832,7 +35832,7 @@
 																	},
 																	"pctComplete": {
 																		"description": "Indicates the size of the entire upload in bytes. The value must be a non-negative integer.",
-																		"type": "integer",
+																		"type": "string",
 																		"minimum": 0,
 																		"maximum": 100,
 																		"readOnly": true
@@ -86556,7 +86556,7 @@
 		"/accounts/{account_identifier}/magic/gre_tunnels": {
 			"get": {
 				"summary": "List GRE tunnels",
-				"description": "List GRE tunnels associated with an account's Magic setup",
+				"description": "Lists GRE tunnels associated with an account.",
 				"parameters": [
 					{
 						"name": "account_identifier",
@@ -86604,67 +86604,67 @@
 																		"readOnly": true,
 																		"format": "date-time",
 																		"example": "2017-06-14T00:00:00+00:00",
-																		"description": "When the tunnel was created"
+																		"description": "The date and time the tunnel was created."
 																	},
 																	"modified_on": {
 																		"type": "string",
 																		"readOnly": true,
 																		"format": "date-time",
 																		"example": "2017-06-14T05:20:00+00:00",
-																		"description": "When the tunnel was last modified"
+																		"description": "The date and time the tunnel was last modified."
 																	},
 																	"name": {
 																		"type": "string",
-																		"description": "Should be a valid Linux interface name, i.e., has no spaces, special characters, is 15 or less characters, and doesn't share a name with other GRE tunnels",
+																		"description": "The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.",
 																		"example": "GRE_1"
 																	},
 																	"customer_gre_endpoint": {
 																		"type": "string",
-																		"description": "The IP address assigned to the customer side of the GRE tunnel",
+																		"description": "The IP address assigned to the customer side of the GRE tunnel.",
 																		"example": "203.0.113.1"
 																	},
 																	"cloudflare_gre_endpoint": {
 																		"type": "string",
-																		"description": "The IP address assigned to the Cloudflare side of the GRE tunnel",
+																		"description": "The IP address assigned to the Cloudflare side of the GRE tunnel.",
 																		"example": "203.0.113.1"
 																	},
 																	"interface_address": {
 																		"type": "string",
-																		"description": "A 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
+																		"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
 																		"example": "192.0.2.0/31"
 																	},
 																	"description": {
 																		"type": "string",
-																		"description": "An optional description of the GRE tunnel",
+																		"description": "An optional description of the GRE tunnel.",
 																		"example": "Tunnel for ISP X"
 																	},
 																	"ttl": {
 																		"type": "integer",
-																		"description": "Time To Live (TTL) in number of hops of the GRE tunnel. Minimum value 64",
+																		"description": "Time To Live (TTL) in number of hops of the GRE tunnel.",
 																		"default": 64
 																	},
 																	"mtu": {
 																		"type": "integer",
-																		"description": "Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. Maximum value 1476 and minimum value 576",
+																		"description": "Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.",
 																		"default": 1476
 																	},
 																	"health_check": {
 																		"type": "object",
 																		"properties": {
 																			"enabled": {
-																				"description": "Flag to run healthchecks for this tunnel (defaults to true)",
+																				"description": "Determines whether to run healthchecks for a tunnel.",
 																				"type": "boolean",
 																				"example": true,
 																				"default": true
 																			},
 																			"target": {
 																				"type": "string",
-																				"description": "Address to run healthchecks against (defaults to customer_gre_endpoint address)",
+																				"description": "The address used to run healthchecks for a tunnel. This field defaults to `customer_gre_endpoint address`.",
 																				"example": "203.0.113.1"
 																			},
 																			"type": {
 																				"type": "string",
-																				"description": "Type of healthcheck to run (reply or request). Defaults to reply.",
+																				"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
 																				"example": "request",
 																				"default": "reply",
 																				"enum": [
@@ -86703,7 +86703,7 @@
 			},
 			"post": {
 				"summary": "Create GRE tunnels",
-				"description": "Creates new GRE tunnels associated with an account's Magic setup. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes",
+				"description": "Creates new GRE tunnels. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
 				"parameters": [
 					{
 						"name": "account_identifier",
@@ -86755,8 +86755,8 @@
 				}
 			},
 			"put": {
-				"summary": "Update Many GRE tunnels",
-				"description": "Update many GRE tunnels for an account's Magic setup. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes",
+				"summary": "Update multiple GRE tunnels",
+				"description": "Updates multiple GRE tunnels. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
 				"parameters": [
 					{
 						"name": "account_identifier",
@@ -86769,7 +86769,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update Many GRE tunnels response",
+						"description": "Update multiple GRE tunnels response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -86829,8 +86829,8 @@
 		},
 		"/accounts/{account_identifier}/magic/gre_tunnels/{tunnel_identifier}": {
 			"get": {
-				"summary": "GRE Tunnel Details",
-				"description": "Get a specific GRE tunnel for an account's Magic setup",
+				"summary": "List GRE Tunnel Details",
+				"description": "Lists informtion for a specific GRE tunnel.",
 				"parameters": [
 					{
 						"name": "tunnel_identifier",
@@ -86851,7 +86851,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "GRE Tunnel Details response",
+						"description": "List GRE Tunnel Details response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -86891,7 +86891,7 @@
 			},
 			"put": {
 				"summary": "Update GRE Tunnel",
-				"description": "Update a specific GRE tunnel for an account's Magic setup. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes",
+				"description": "Updates a specific GRE tunnel. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
 				"parameters": [
 					{
 						"name": "tunnel_identifier",
@@ -86970,17 +86970,17 @@
 										"properties": {
 											"name": {
 												"type": "string",
-												"description": "Should be a valid Linux interface name, i.e., has no spaces, special characters, is 15 or less characters, and doesn't share a name with other GRE tunnels",
+												"description": "The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.",
 												"example": "GRE_1"
 											},
 											"customer_gre_endpoint": {
 												"type": "string",
-												"description": "The IP address assigned to the customer side of the GRE tunnel",
+												"description": "The IP address assigned to the customer side of the GRE tunnel.",
 												"example": "203.0.113.1"
 											},
 											"cloudflare_gre_endpoint": {
 												"type": "string",
-												"description": "The IP address assigned to the Cloudflare side of the GRE tunnel",
+												"description": "The IP address assigned to the Cloudflare side of the GRE tunnel.",
 												"example": "203.0.113.1"
 											},
 											"interface_address": {
@@ -86988,36 +86988,36 @@
 											},
 											"description": {
 												"type": "string",
-												"description": "An optional description of the GRE tunnel",
+												"description": "An optional description of the GRE tunnel.",
 												"example": "Tunnel for ISP X"
 											},
 											"ttl": {
 												"type": "integer",
-												"description": "Time To Live (TTL) in number of hops of the GRE tunnel. Minimum value 64",
+												"description": "Time To Live (TTL) in number of hops of the GRE tunnel.",
 												"default": 64
 											},
 											"mtu": {
 												"type": "integer",
-												"description": "Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. Maximum value 1476 and minimum value 576",
+												"description": "Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.",
 												"default": 1476
 											},
 											"health_check": {
 												"type": "object",
 												"properties": {
 													"enabled": {
-														"description": "Flag to run healthchecks for this tunnel (defaults to true)",
+														"description": "Determines whether to run healthchecks for a tunnel.",
 														"type": "boolean",
 														"example": true,
 														"default": true
 													},
 													"target": {
 														"type": "string",
-														"description": "Address to run healthchecks against (defaults to customer_gre_endpoint address)",
+														"description": "The address used to run healthchecks for a tunnel. This field defaults to `customer_gre_endpoint address`.",
 														"example": "203.0.113.1"
 													},
 													"type": {
 														"type": "string",
-														"description": "Type of healthcheck to run (reply or request). Defaults to reply.",
+														"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
 														"example": "request",
 														"default": "reply",
 														"enum": [
@@ -87037,7 +87037,7 @@
 			},
 			"delete": {
 				"summary": "Delete GRE Tunnel",
-				"description": "Disable and remove a specific static GRE Tunnel for an account's Magic setup. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes",
+				"description": "Disables and removes a specific static GRE tunnel. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
 				"parameters": [
 					{
 						"name": "tunnel_identifier",
@@ -87110,7 +87110,7 @@
 		"/accounts/{account_identifier}/magic/ipsec_tunnels": {
 			"get": {
 				"summary": "List IPsec tunnels",
-				"description": "List IPsec tunnels associated with an account's Magic setup",
+				"description": "Lists IPsec tunnels associated with an account.",
 				"parameters": [
 					{
 						"name": "account_identifier",
@@ -87156,7 +87156,7 @@
 																	},
 																	"name": {
 																		"type": "string",
-																		"description": "Name for the IPsec tunnel. It cannot share a name with other tunnels",
+																		"description": "The name of the IPsec tunnel. The name cannot share a name with other tunnels.",
 																		"example": "IPsec_1"
 																	},
 																	"customer_endpoint": {
@@ -87174,12 +87174,12 @@
 																	},
 																	"description": {
 																		"type": "string",
-																		"description": "An optional description of the IPsec tunnel",
+																		"description": "An optional description forthe IPsec tunnel.",
 																		"example": "Tunnel for ISP X"
 																	},
 																	"psk_metadata": {
 																		"type": "object",
-																		"description": "Metadata about the PSK such as when it was generated.",
+																		"description": "The PSK metadata that includes when the PSK was generated.",
 																		"properties": {
 																			"last_generated_on": {
 																				"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1gre_tunnels/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/gre_tunnels/items/properties/modified_on"
@@ -87190,19 +87190,19 @@
 																		"type": "object",
 																		"properties": {
 																			"enabled": {
-																				"description": "Flag to run healthchecks for this tunnel (defaults to true)",
+																				"description": "Determines whether to run healthchecks for a tunnel.",
 																				"type": "boolean",
 																				"example": true,
 																				"default": true
 																			},
 																			"target": {
 																				"type": "string",
-																				"description": "Address to run healthchecks against (defaults to customer_gre_endpoint address)",
+																				"description": "The address used to run healthchecks for a tunnel. This field defaults to `customer_gre_endpoint address`.",
 																				"example": "203.0.113.1"
 																			},
 																			"type": {
 																				"type": "string",
-																				"description": "Type of healthcheck to run (reply or request). Defaults to reply.",
+																				"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
 																				"example": "request",
 																				"default": "reply",
 																				"enum": [
@@ -87214,7 +87214,7 @@
 																	},
 																	"allow_null_cipher": {
 																		"type": "boolean",
-																		"description": "When true, this tunnel can use a null-cipher (ENCR_NULL) in the ESP tunnel (Phase 2)",
+																		"description": "When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).",
 																		"example": true
 																	}
 																},
@@ -87246,7 +87246,7 @@
 			},
 			"post": {
 				"summary": "Create IPsec tunnels",
-				"description": "Creates new IPsec tunnels associated with an account's Magic setup. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes",
+				"description": "Creates new IPsec tunnels associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
 				"parameters": [
 					{
 						"name": "account_identifier",
@@ -87298,8 +87298,8 @@
 				}
 			},
 			"put": {
-				"summary": "Update Many IPsec tunnels",
-				"description": "Update many IPsec tunnels for an account's Magic setup. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes",
+				"summary": "Update multiple IPsec tunnels",
+				"description": "Update multiple IPsec tunnels associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
 				"parameters": [
 					{
 						"name": "account_identifier",
@@ -87312,7 +87312,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update Many IPsec tunnels response",
+						"description": "Update multiple IPsec tunnels response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -87372,8 +87372,8 @@
 		},
 		"/accounts/{account_identifier}/magic/ipsec_tunnels/{tunnel_identifier}": {
 			"get": {
-				"summary": "IPsec Tunnel Details",
-				"description": "Get a specific IPsec tunnel for an account's Magic setup",
+				"summary": "List IPsec tunnel details",
+				"description": "Lists details for a specific IPsec tunnel.",
 				"parameters": [
 					{
 						"name": "tunnel_identifier",
@@ -87394,7 +87394,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "IPsec Tunnel Details response",
+						"description": "List IPsec tunnel details response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -87434,7 +87434,7 @@
 			},
 			"put": {
 				"summary": "Update IPsec Tunnel",
-				"description": "Update a specific IPsec tunnel for an account's Magic setup. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes",
+				"description": "Updates a specific IPsec tunnel associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
 				"parameters": [
 					{
 						"name": "tunnel_identifier",
@@ -87512,7 +87512,7 @@
 										"properties": {
 											"name": {
 												"type": "string",
-												"description": "Name for the IPsec tunnel. It cannot share a name with other tunnels",
+												"description": "The name of the IPsec tunnel. The name cannot share a name with other tunnels.",
 												"example": "IPsec_1"
 											},
 											"customer_endpoint": {
@@ -87530,7 +87530,7 @@
 											},
 											"description": {
 												"type": "string",
-												"description": "An optional description of the IPsec tunnel",
+												"description": "An optional description forthe IPsec tunnel.",
 												"example": "Tunnel for ISP X"
 											},
 											"psk": {
@@ -87548,7 +87548,7 @@
 			},
 			"delete": {
 				"summary": "Delete IPsec Tunnel",
-				"description": "Disable and remove a specific static IPsec Tunnel for an account's Magic setup. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes",
+				"description": "Disables and removes a specific static IPsec Tunnel associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
 				"parameters": [
 					{
 						"name": "tunnel_identifier",
@@ -87621,7 +87621,7 @@
 		"/accounts/{account_identifier}/magic/ipsec_tunnels/{tunnel_identifier}/psk_generate": {
 			"post": {
 				"summary": "Generate Pre Shared Key (PSK) for IPsec tunnels",
-				"description": "Generates a Pre Shared Key for a particular IPsec tunnel that is used in the IKE session. Use `?validate_only=true` as an optional query parameter to run validation only without actually generating PSK. Please note that the PSK generated is immediately persisted to Cloudflare's Edge and not stored in a fashion that is retrievable later. As such the PSK should be noted down in a safe place.",
+				"description": "Generates a Pre Shared Key for a specific IPsec tunnel used in the IKE session. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes. After a PSK is generated, the PSK is immediately persisted to Cloudflare's edge and cannot be retrieved later. Note the PSK in a safe place.",
 				"parameters": [
 					{
 						"name": "tunnel_identifier",
@@ -87656,7 +87656,7 @@
 													"properties": {
 														"psk_metadata": {
 															"type": "object",
-															"description": "Metadata about the PSK such as when it was generated.",
+															"description": "The PSK metadata that includes when the PSK was generated.",
 															"properties": {
 																"last_generated_on": {
 																	"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1gre_tunnels/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/gre_tunnels/items/properties/modified_on"
@@ -87703,8 +87703,8 @@
 		},
 		"/accounts/{account_identifier}/magic/cf_interconnects": {
 			"get": {
-				"summary": "List Interconnects",
-				"description": "List Interconnects associated with an account's Magic setup",
+				"summary": "List interconnects",
+				"description": "Lists interconnects associated with an account.",
 				"parameters": [
 					{
 						"name": "account_identifier",
@@ -87717,7 +87717,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "List Interconnects response",
+						"description": "List interconnects response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -87745,7 +87745,7 @@
 																	},
 																	"name": {
 																		"type": "string",
-																		"description": "Name for the Interconnect. It cannot share a name with other tunnels",
+																		"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
 																		"example": "pni_ord"
 																	},
 																	"interface_address": {
@@ -87753,26 +87753,26 @@
 																	},
 																	"description": {
 																		"type": "string",
-																		"description": "An optional description of the Interconnect",
+																		"description": "An optional description of the interconnect",
 																		"example": "Tunnel for Interconnect to ORD"
 																	},
 																	"health_check": {
 																		"type": "object",
 																		"properties": {
 																			"enabled": {
-																				"description": "Flag to run healthchecks for this tunnel (defaults to true)",
+																				"description": "Determines whether to run healthchecks for a tunnel.",
 																				"type": "boolean",
 																				"example": true,
 																				"default": true
 																			},
 																			"target": {
 																				"type": "string",
-																				"description": "Address to run healthchecks against",
+																				"description": "The address used to run healthchecks for a tunnel.",
 																				"example": "203.0.113.1"
 																			},
 																			"type": {
 																				"type": "string",
-																				"description": "Type of healthcheck to run (reply or request). Defaults to reply.",
+																				"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
 																				"example": "request",
 																				"default": "reply",
 																				"enum": [
@@ -87784,7 +87784,7 @@
 																	},
 																	"gre": {
 																		"type": "object",
-																		"description": "Configuration specific to GRE Interconnects",
+																		"description": "The configuration specific to GRE interconnects.",
 																		"properties": {
 																			"cloudflare_endpoint": {
 																				"type": "string",
@@ -87793,19 +87793,19 @@
 																			},
 																			"customer_endpoint": {
 																				"type": "string",
-																				"description": "The IP address assigned to the Customer side of the GRE tunnel created as part of the Interconnect",
+																				"description": "The IP address assigned to the customer side of the GRE tunnel created as part of the Interconnect",
 																				"example": "203.0.113.1"
 																			},
 																			"is_colo_cast": {
 																				"type": "boolean",
-																				"description": "This flag is used to support multiple Interconnects to the same colo for a Customer",
+																				"description": "Determines whether to support multiple interconnects to the same data center for a useer.",
 																				"default": true
 																			}
 																		}
 																	},
 																	"mtu": {
 																		"type": "integer",
-																		"description": "Maximum Transmission Unit (MTU) in bytes for the Interconnect. Maximum value 1476 and minimum value 576",
+																		"description": "The Maximum Transmission Unit (MTU) in bytes for the interconnect. The minimum value is 576.",
 																		"default": 1476
 																	},
 																	"colo_name": {
@@ -87839,8 +87839,8 @@
 				}
 			},
 			"put": {
-				"summary": "Update Many Interconnects",
-				"description": "Update many Interconnects for an account's Magic setup. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes",
+				"summary": "Update multiple interconnects",
+				"description": "Updates multiple interconnects associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
 				"parameters": [
 					{
 						"name": "account_identifier",
@@ -87853,7 +87853,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update Many Interconnects response",
+						"description": "Update multiple interconnects response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -87913,8 +87913,8 @@
 		},
 		"/accounts/{account_identifier}/magic/cf_interconnects/{tunnel_identifier}": {
 			"get": {
-				"summary": "Interconnect Details",
-				"description": "Get a specific Interconnect for an account's Magic setup",
+				"summary": "List interconnect Details",
+				"description": "Lists details for a specific interconnect.",
 				"parameters": [
 					{
 						"name": "tunnel_identifier",
@@ -87935,7 +87935,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Interconnect Details response",
+						"description": "List interconnect Details response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -87974,8 +87974,8 @@
 				}
 			},
 			"put": {
-				"summary": "Update Interconnect",
-				"description": "Update a specific Interconnect for an account's Magic setup. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes",
+				"summary": "Update interconnect",
+				"description": "Updates a specific interconnect associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
 				"parameters": [
 					{
 						"name": "tunnel_identifier",
@@ -87996,7 +87996,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update Interconnect response",
+						"description": "Update interconnect response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -88046,7 +88046,7 @@
 								"properties": {
 									"mtu": {
 										"type": "integer",
-										"description": "Maximum Transmission Unit (MTU) in bytes for the Interconnect. Maximum value 1476 and minimum value 576",
+										"description": "The Maximum Transmission Unit (MTU) in bytes for the interconnect. The minimum value is 576.",
 										"default": 1476
 									},
 									"interface_address": {
@@ -88054,12 +88054,12 @@
 									},
 									"description": {
 										"type": "string",
-										"description": "An optional description of the Interconnect",
+										"description": "An optional description of the interconnect",
 										"example": "Tunnel for Interconnect to ORD"
 									},
 									"gre": {
 										"type": "object",
-										"description": "Configuration specific to GRE Interconnects",
+										"description": "The configuration specific to GRE interconnects.",
 										"properties": {
 											"cloudflare_endpoint": {
 												"type": "string",
@@ -88068,12 +88068,12 @@
 											},
 											"customer_endpoint": {
 												"type": "string",
-												"description": "The IP address assigned to the Customer side of the GRE tunnel created as part of the Interconnect",
+												"description": "The IP address assigned to the customer side of the GRE tunnel created as part of the Interconnect",
 												"example": "203.0.113.1"
 											},
 											"is_colo_cast": {
 												"type": "boolean",
-												"description": "This flag is used to support multiple Interconnects to the same colo for a Customer",
+												"description": "Determines whether to support multiple interconnects to the same data center for a useer.",
 												"default": true
 											}
 										}

@@ -1266,8 +1266,8 @@ components:
       example: true
       type: boolean
     allow_null_cipher:
-      description: When true, this tunnel can use a null-cipher (ENCR_NULL) in the
-        ESP tunnel (Phase 2)
+      description: When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in
+        the ESP tunnel (Phase 2).
       example: true
       type: boolean
     allowed:
@@ -3428,7 +3428,7 @@ components:
       example: false
       type: boolean
     cloudflare_gre_endpoint:
-      description: The IP address assigned to the Cloudflare side of the GRE tunnel
+      description: The IP address assigned to the Cloudflare side of the GRE tunnel.
       example: 203.0.113.1
       type: string
     cloudflare_ipsec_endpoint:
@@ -3595,7 +3595,7 @@ components:
       example: Example comment for this route
       type: string
     common_components-schemas-created_on:
-      description: When the tunnel was created
+      description: The date and time the tunnel was created.
       example: "2017-06-14T00:00:00Z"
       format: date-time
       readOnly: true
@@ -3617,7 +3617,7 @@ components:
       - $ref: '#/components/schemas/ipv4'
       - $ref: '#/components/schemas/schemas-ipv6'
     common_components-schemas-modified_on:
-      description: When the tunnel was last modified
+      description: The date and time the tunnel was last modified.
       example: "2017-06-14T05:20:00Z"
       format: date-time
       readOnly: true
@@ -4189,8 +4189,7 @@ components:
       type: integer
     components-schemas-ttl:
       default: 64
-      description: Time To Live (TTL) in number of hops of the GRE tunnel. Minimum
-        value 64
+      description: Time To Live (TTL) in number of hops of the GRE tunnel.
       type: integer
     components-schemas-tunnel_modified_response:
       allOf:
@@ -5261,7 +5260,7 @@ components:
         Notes: If you omit this object, Cloudflare will use the default HTML error page. If "mode" is "challenge", "managed_challenge", or "js_challenge", Cloudflare will use the zone challenge pages and you should not provide the "response" object.
       type: object
     customer_gre_endpoint:
-      description: The IP address assigned to the customer side of the GRE tunnel
+      description: The IP address assigned to the customer side of the GRE tunnel.
       example: 203.0.113.1
       type: string
     customer_ipsec_endpoint:
@@ -7990,7 +7989,7 @@ components:
           type: boolean
       type: object
     gre:
-      description: Configuration specific to GRE Interconnects
+      description: The configuration specific to GRE interconnects.
       properties:
         cloudflare_endpoint:
           description: The IP address assigned to the Cloudflare side of the GRE tunnel
@@ -7998,14 +7997,14 @@ components:
           example: 203.0.113.1
           type: string
         customer_endpoint:
-          description: The IP address assigned to the Customer side of the GRE tunnel
+          description: The IP address assigned to the customer side of the GRE tunnel
             created as part of the Interconnect
           example: 203.0.113.1
           type: string
         is_colo_cast:
           default: true
-          description: This flag is used to support multiple Interconnects to the
-            same colo for a Customer
+          description: Determines whether to support multiple interconnects to the
+            same data center for a useer.
           type: boolean
       type: object
     gre-tunnel:
@@ -8039,13 +8038,13 @@ components:
       - interface_address
       type: object
     gre-tunnel_components-schemas-description:
-      description: An optional description of the GRE tunnel
+      description: An optional description of the GRE tunnel.
       example: Tunnel for ISP X
       type: string
     gre-tunnel_components-schemas-name:
-      description: Should be a valid Linux interface name, i.e., has no spaces, special
-        characters, is 15 or less characters, and doesn't share a name with other
-        GRE tunnels
+      description: The name of the tunnel. The name cannot contain spaces or special
+        characters, must be 15 characters or less, and cannot share a name with another
+        GRE tunnel.
       example: GRE_1
       type: string
     group:
@@ -8200,18 +8199,18 @@ components:
       properties:
         enabled:
           default: true
-          description: Flag to run healthchecks for this tunnel (defaults to true)
+          description: Determines whether to run healthchecks for a tunnel.
           example: true
           type: boolean
         target:
-          description: Address to run healthchecks against (defaults to customer_gre_endpoint
-            address)
+          description: The address used to run healthchecks for a tunnel. This field
+            defaults to `customer_gre_endpoint address`.
           example: 203.0.113.1
           type: string
         type:
           default: reply
-          description: Type of healthcheck to run (reply or request). Defaults to
-            reply.
+          description: The type of healthcheck to run, reply or request. The default
+            value is `reply`.
           enum:
           - reply
           - request
@@ -8916,15 +8915,16 @@ components:
           $ref: '#/components/schemas/interconnect_components-schemas-name'
       type: object
     interconnect_components-schemas-description:
-      description: An optional description of the Interconnect
+      description: An optional description of the interconnect
       example: Tunnel for Interconnect to ORD
       type: string
     interconnect_components-schemas-name:
-      description: Name for the Interconnect. It cannot share a name with other tunnels
+      description: The name of the interconnect. The name cannot share a name with
+        other tunnels.
       example: pni_ord
       type: string
     interface_address:
-      description: 'A 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one
+      description: 'A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one
         for each side of the tunnel. Select the subnet from the following private
         IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.'
       example: 192.0.2.0/31
@@ -9251,11 +9251,12 @@ components:
       - interface_address
       type: object
     ipsec-tunnel_components-schemas-description:
-      description: An optional description of the IPsec tunnel
+      description: An optional description forthe IPsec tunnel.
       example: Tunnel for ISP X
       type: string
     ipsec-tunnel_components-schemas-name:
-      description: Name for the IPsec tunnel. It cannot share a name with other tunnels
+      description: The name of the IPsec tunnel. The name cannot share a name with
+        other tunnels.
       example: IPsec_1
       type: string
     ipv4:
@@ -11233,8 +11234,8 @@ components:
       type: string
     mtu:
       default: 1476
-      description: Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. Maximum
-        value 1476 and minimum value 576
+      description: Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The
+        minimum value is 576.
       type: integer
     multiple_route_modified_response:
       allOf:
@@ -12539,7 +12540,7 @@ components:
       maximum: 100
       minimum: 0
       readOnly: true
-      type: integer
+      type: string
     peer:
       properties:
         id:
@@ -13422,7 +13423,7 @@ components:
               psk_metadata:
                 $ref: '#/components/schemas/psk_metadata'
     psk_metadata:
-      description: Metadata about the PSK such as when it was generated.
+      description: The PSK metadata that includes when the PSK was generated.
       properties:
         last_generated_on:
           $ref: '#/components/schemas/common_components-schemas-modified_on'
@@ -16158,17 +16159,17 @@ components:
       properties:
         enabled:
           default: true
-          description: Flag to run healthchecks for this tunnel (defaults to true)
+          description: Determines whether to run healthchecks for a tunnel.
           example: true
           type: boolean
         target:
-          description: Address to run healthchecks against
+          description: The address used to run healthchecks for a tunnel.
           example: 203.0.113.1
           type: string
         type:
           default: reply
-          description: Type of healthcheck to run (reply or request). Defaults to
-            reply.
+          description: The type of healthcheck to run, reply or request. The default
+            value is `reply`.
           enum:
           - reply
           - request
@@ -16378,8 +16379,8 @@ components:
         within this pool.
     schemas-mtu:
       default: 1476
-      description: Maximum Transmission Unit (MTU) in bytes for the Interconnect.
-        Maximum value 1476 and minimum value 576
+      description: The Maximum Transmission Unit (MTU) in bytes for the interconnect.
+        The minimum value is 576.
       type: integer
     schemas-name:
       description: Organization Name
@@ -19557,18 +19558,18 @@ components:
       properties:
         enabled:
           default: true
-          description: Flag to run healthchecks for this tunnel (defaults to true)
+          description: Determines whether to run healthchecks for a tunnel.
           example: true
           type: boolean
         target:
-          description: Address to run healthchecks against (defaults to customer_gre_endpoint
-            address)
+          description: The address used to run healthchecks for a tunnel. This field
+            defaults to `customer_gre_endpoint address`.
           example: 203.0.113.1
           type: string
         type:
           default: reply
-          description: Type of healthcheck to run (reply or request). Defaults to
-            reply.
+          description: The type of healthcheck to run, reply or request. The default
+            value is `reply`.
           enum:
           - reply
           - request
@@ -25656,7 +25657,7 @@ paths:
       summary: Search Resources
   /accounts/{account_identifier}/magic/cf_interconnects:
     get:
-      description: List Interconnects associated with an account's Magic setup
+      description: Lists interconnects associated with an account.
       operationId: magic-interconnects-list-interconnects
       parameters:
       - in: path
@@ -25672,26 +25673,27 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/components-schemas-tunnels_collection_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: List Interconnects response failure
+          description: List interconnects response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/components-schemas-tunnels_collection_response'
-          description: List Interconnects response
+          description: List interconnects response
       security:
       - api_email: []
         api_key: []
-      summary: List Interconnects
+      summary: List interconnects
       x-cfPlanAvailability:
         business: false
         enterprise: true
         free: false
         pro: false
     put:
-      description: Update many Interconnects for an account's Magic setup. Use `?validate_only=true`
-        as an optional query parameter to run validation only without persisting changes
-      operationId: magic-interconnects-update-many-interconnects
+      description: Updates multiple interconnects associated with an account. Use
+        `?validate_only=true` as an optional query parameter to only run validation
+        without persisting changes.
+      operationId: magic-interconnects-update-multiple-interconnects
       parameters:
       - in: path
         name: account_identifier
@@ -25713,17 +25715,17 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/components-schemas-modified_tunnels_collection_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Update Many Interconnects response failure
+          description: Update multiple interconnects response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/components-schemas-modified_tunnels_collection_response'
-          description: Update Many Interconnects response
+          description: Update multiple interconnects response
       security:
       - api_email: []
         api_key: []
-      summary: Update Many Interconnects
+      summary: Update multiple interconnects
       x-cfPlanAvailability:
         business: false
         enterprise: true
@@ -25731,8 +25733,8 @@ paths:
         pro: false
   /accounts/{account_identifier}/magic/cf_interconnects/{tunnel_identifier}:
     get:
-      description: Get a specific Interconnect for an account's Magic setup
-      operationId: magic-interconnects-interconnect-details
+      description: Lists details for a specific interconnect.
+      operationId: magic-interconnects-list-interconnect-details
       parameters:
       - in: path
         name: tunnel_identifier
@@ -25752,26 +25754,26 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/components-schemas-tunnel_single_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Interconnect Details response failure
+          description: List interconnect Details response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/components-schemas-tunnel_single_response'
-          description: Interconnect Details response
+          description: List interconnect Details response
       security:
       - api_email: []
         api_key: []
-      summary: Interconnect Details
+      summary: List interconnect Details
       x-cfPlanAvailability:
         business: false
         enterprise: true
         free: false
         pro: false
     put:
-      description: Update a specific Interconnect for an account's Magic setup. Use
-        `?validate_only=true` as an optional query parameter to run validation only
-        without persisting changes
+      description: Updates a specific interconnect associated with an account. Use
+        `?validate_only=true` as an optional query parameter to only run validation
+        without persisting changes.
       operationId: magic-interconnects-update-interconnect
       parameters:
       - in: path
@@ -25798,17 +25800,17 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/components-schemas-tunnel_modified_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Update Interconnect response failure
+          description: Update interconnect response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/components-schemas-tunnel_modified_response'
-          description: Update Interconnect response
+          description: Update interconnect response
       security:
       - api_email: []
         api_key: []
-      summary: Update Interconnect
+      summary: Update interconnect
       x-cfPlanAvailability:
         business: false
         enterprise: true
@@ -25816,7 +25818,7 @@ paths:
         pro: false
   /accounts/{account_identifier}/magic/gre_tunnels:
     get:
-      description: List GRE tunnels associated with an account's Magic setup
+      description: Lists GRE tunnels associated with an account.
       operationId: magic-gre-tunnels-list-gre-tunnels
       parameters:
       - in: path
@@ -25849,9 +25851,8 @@ paths:
         free: false
         pro: false
     post:
-      description: Creates new GRE tunnels associated with an account's Magic setup.
-        Use `?validate_only=true` as an optional query parameter to run validation
-        only without persisting changes
+      description: Creates new GRE tunnels. Use `?validate_only=true` as an optional
+        query parameter to only run validation without persisting changes.
       operationId: magic-gre-tunnels-create-gre-tunnels
       parameters:
       - in: path
@@ -25894,9 +25895,9 @@ paths:
         free: false
         pro: false
     put:
-      description: Update many GRE tunnels for an account's Magic setup. Use `?validate_only=true`
-        as an optional query parameter to run validation only without persisting changes
-      operationId: magic-gre-tunnels-update-many-gre-tunnels
+      description: Updates multiple GRE tunnels. Use `?validate_only=true` as an optional
+        query parameter to only run validation without persisting changes.
+      operationId: magic-gre-tunnels-update-multiple-gre-tunnels
       parameters:
       - in: path
         name: account_identifier
@@ -25918,17 +25919,17 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/modified_tunnels_collection_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Update Many GRE tunnels response failure
+          description: Update multiple GRE tunnels response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/modified_tunnels_collection_response'
-          description: Update Many GRE tunnels response
+          description: Update multiple GRE tunnels response
       security:
       - api_email: []
         api_key: []
-      summary: Update Many GRE tunnels
+      summary: Update multiple GRE tunnels
       x-cfPlanAvailability:
         business: false
         enterprise: true
@@ -25936,9 +25937,8 @@ paths:
         pro: false
   /accounts/{account_identifier}/magic/gre_tunnels/{tunnel_identifier}:
     delete:
-      description: Disable and remove a specific static GRE Tunnel for an account's
-        Magic setup. Use `?validate_only=true` as an optional query parameter to run
-        validation only without persisting changes
+      description: Disables and removes a specific static GRE tunnel. Use `?validate_only=true`
+        as an optional query parameter to only run validation without persisting changes.
       operationId: magic-gre-tunnels-delete-gre-tunnel
       parameters:
       - in: path
@@ -25980,8 +25980,8 @@ paths:
         free: false
         pro: false
     get:
-      description: Get a specific GRE tunnel for an account's Magic setup
-      operationId: magic-gre-tunnels-gre-tunnel-details
+      description: Lists informtion for a specific GRE tunnel.
+      operationId: magic-gre-tunnels-list-gre-tunnel-details
       parameters:
       - in: path
         name: tunnel_identifier
@@ -26001,26 +26001,25 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/tunnel_single_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: GRE Tunnel Details response failure
+          description: List GRE Tunnel Details response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/tunnel_single_response'
-          description: GRE Tunnel Details response
+          description: List GRE Tunnel Details response
       security:
       - api_email: []
         api_key: []
-      summary: GRE Tunnel Details
+      summary: List GRE Tunnel Details
       x-cfPlanAvailability:
         business: false
         enterprise: true
         free: false
         pro: false
     put:
-      description: Update a specific GRE tunnel for an account's Magic setup. Use
-        `?validate_only=true` as an optional query parameter to run validation only
-        without persisting changes
+      description: Updates a specific GRE tunnel. Use `?validate_only=true` as an
+        optional query parameter to only run validation without persisting changes.
       operationId: magic-gre-tunnels-update-gre-tunnel
       parameters:
       - in: path
@@ -26065,7 +26064,7 @@ paths:
         pro: false
   /accounts/{account_identifier}/magic/ipsec_tunnels:
     get:
-      description: List IPsec tunnels associated with an account's Magic setup
+      description: Lists IPsec tunnels associated with an account.
       operationId: magic-i-psec-tunnels-list-i-psec-tunnels
       parameters:
       - in: path
@@ -26098,9 +26097,8 @@ paths:
         free: false
         pro: false
     post:
-      description: Creates new IPsec tunnels associated with an account's Magic setup.
-        Use `?validate_only=true` as an optional query parameter to run validation
-        only without persisting changes
+      description: Creates new IPsec tunnels associated with an account. Use `?validate_only=true`
+        as an optional query parameter to only run validation without persisting changes.
       operationId: magic-i-psec-tunnels-create-i-psec-tunnels
       parameters:
       - in: path
@@ -26143,9 +26141,9 @@ paths:
         free: false
         pro: false
     put:
-      description: Update many IPsec tunnels for an account's Magic setup. Use `?validate_only=true`
-        as an optional query parameter to run validation only without persisting changes
-      operationId: magic-i-psec-tunnels-update-many-i-psec-tunnels
+      description: Update multiple IPsec tunnels associated with an account. Use `?validate_only=true`
+        as an optional query parameter to only run validation without persisting changes.
+      operationId: magic-i-psec-tunnels-update-multiple-i-psec-tunnels
       parameters:
       - in: path
         name: account_identifier
@@ -26167,17 +26165,17 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/schemas-modified_tunnels_collection_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Update Many IPsec tunnels response failure
+          description: Update multiple IPsec tunnels response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/schemas-modified_tunnels_collection_response'
-          description: Update Many IPsec tunnels response
+          description: Update multiple IPsec tunnels response
       security:
       - api_email: []
         api_key: []
-      summary: Update Many IPsec tunnels
+      summary: Update multiple IPsec tunnels
       x-cfPlanAvailability:
         business: false
         enterprise: true
@@ -26185,9 +26183,9 @@ paths:
         pro: false
   /accounts/{account_identifier}/magic/ipsec_tunnels/{tunnel_identifier}:
     delete:
-      description: Disable and remove a specific static IPsec Tunnel for an account's
-        Magic setup. Use `?validate_only=true` as an optional query parameter to run
-        validation only without persisting changes
+      description: Disables and removes a specific static IPsec Tunnel associated
+        with an account. Use `?validate_only=true` as an optional query parameter
+        to only run validation without persisting changes.
       operationId: magic-i-psec-tunnels-delete-i-psec-tunnel
       parameters:
       - in: path
@@ -26229,8 +26227,8 @@ paths:
         free: false
         pro: false
     get:
-      description: Get a specific IPsec tunnel for an account's Magic setup
-      operationId: magic-i-psec-tunnels-i-psec-tunnel-details
+      description: Lists details for a specific IPsec tunnel.
+      operationId: magic-i-psec-tunnels-list-i-psec-tunnel-details
       parameters:
       - in: path
         name: tunnel_identifier
@@ -26250,26 +26248,26 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/schemas-tunnel_single_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: IPsec Tunnel Details response failure
+          description: List IPsec tunnel details response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/schemas-tunnel_single_response'
-          description: IPsec Tunnel Details response
+          description: List IPsec tunnel details response
       security:
       - api_email: []
         api_key: []
-      summary: IPsec Tunnel Details
+      summary: List IPsec tunnel details
       x-cfPlanAvailability:
         business: false
         enterprise: true
         free: false
         pro: false
     put:
-      description: Update a specific IPsec tunnel for an account's Magic setup. Use
-        `?validate_only=true` as an optional query parameter to run validation only
-        without persisting changes
+      description: Updates a specific IPsec tunnel associated with an account. Use
+        `?validate_only=true` as an optional query parameter to only run validation
+        without persisting changes.
       operationId: magic-i-psec-tunnels-update-i-psec-tunnel
       parameters:
       - in: path
@@ -26314,12 +26312,11 @@ paths:
         pro: false
   /accounts/{account_identifier}/magic/ipsec_tunnels/{tunnel_identifier}/psk_generate:
     post:
-      description: Generates a Pre Shared Key for a particular IPsec tunnel that is
-        used in the IKE session. Use `?validate_only=true` as an optional query parameter
-        to run validation only without actually generating PSK. Please note that the
-        PSK generated is immediately persisted to Cloudflare's Edge and not stored
-        in a fashion that is retrievable later. As such the PSK should be noted down
-        in a safe place.
+      description: Generates a Pre Shared Key for a specific IPsec tunnel used in
+        the IKE session. Use `?validate_only=true` as an optional query parameter
+        to only run validation without persisting changes. After a PSK is generated,
+        the PSK is immediately persisted to Cloudflare's edge and cannot be retrieved
+        later. Note the PSK in a safe place.
       operationId: magic-i-psec-tunnels-generate-pre-shared-key-(-psk)-for-i-psec-tunnels
       parameters:
       - in: path
