@@ -3810,14 +3810,14 @@
 			}
 		]
 	},
-	"experimentId": "opgn7xeLQzq1upDGpJDRqg",
+	"experimentId": "RNxFGS1ORxyr9HAWMdew4A",
 	"variant": {
 		"contentTypeId": "navNavigationGroup",
-		"contentfulId": "4x2QLdhYyf0llj6MiRBEzW",
+		"contentfulId": "4pOnimuAF1yU40DKqqZVyh",
 		"locale": "en-US",
 		"mainNav": {
 			"contentTypeId": "navNavigation",
-			"contentfulId": "4bA0QsoYCb3vq2iQRvh0uI",
+			"contentfulId": "693nRqyfyK3P1wPiq55p2n",
 			"locale": "en-US",
 			"navigationType": "Header",
 			"isDefaultNav": true,
@@ -6903,14 +6903,14 @@
 				},
 				{
 					"contentTypeId": "navNavigationItem",
-					"contentfulId": "1jWH8q8ExNwGrytdahM5r2",
+					"contentfulId": "z3NyO61BQjulbSrxp6jrj",
 					"locale": "en-US",
-					"name": "Getting Started",
+					"name": "Pricing",
 					"description": null,
 					"navIcon": null,
 					"contentfulButton": null,
 					"showIconOnly": false,
-					"hideOnChinaSite": false,
+					"hideOnChinaSite": null,
 					"navigationItems": [
 						{
 							"contentTypeId": "navNavigationItem",
@@ -7477,38 +7477,13 @@
 		},
 		"utilityNav": {
 			"contentTypeId": "navNavigation",
-			"contentfulId": "3Ubk7uPrpCVkhQ3ZYXZLOp",
+			"contentfulId": "4WwJYI9sahwQXgf9AYORyk",
 			"locale": "en-US",
 			"navigationType": "Custom Navigation",
 			"isDefaultNav": false,
 			"backgroundColor": null,
-			"sectionPadding": null,
+			"sectionPadding": "default",
 			"navigationItems": [
-				{
-					"contentTypeId": "navNavigationItem",
-					"contentfulId": "7BSYXeT710gmAyEbd0CNbd",
-					"locale": "en-US",
-					"name": "Log In",
-					"description": null,
-					"navIcon": null,
-					"contentfulButton": null,
-					"showIconOnly": false,
-					"hideOnChinaSite": null,
-					"navigationItems": null,
-					"mainLink": {
-						"contentTypeId": "elementNavLink",
-						"contentfulId": "1xhWSK7DC4KkoxszXRgVuG",
-						"locale": "en-US",
-						"title": "Log In",
-						"description": null,
-						"url": "https://dash.cloudflare.com/login/",
-						"badges": null,
-						"specialLinkType": null,
-						"openInNewWindow": false,
-						"isExternalUrl": null
-					},
-					"navigationLinks": null
-				},
 				{
 					"contentTypeId": "navNavigationItem",
 					"contentfulId": "5XqIIHouIN3SqoeS8eIQL8",
@@ -7564,34 +7539,34 @@
 		},
 		"rightNav": {
 			"contentTypeId": "navNavigation",
-			"contentfulId": "55yBvRCoANQ6LSDRS8y34S",
+			"contentfulId": "2Js7MZQquxw7j6af9fUYnb",
 			"locale": "en-US",
 			"navigationType": "Custom Navigation",
 			"isDefaultNav": true,
 			"backgroundColor": null,
-			"sectionPadding": null,
+			"sectionPadding": "default",
 			"navigationItems": [
 				{
 					"contentTypeId": "navNavigationItem",
-					"contentfulId": "7rbuvTQnwySxPNN0BVU8fv",
+					"contentfulId": "1M7N3P8AENyY3aS0BI1uZb",
 					"locale": "en-US",
-					"name": "Sign Up",
+					"name": "Login",
 					"description": null,
 					"navIcon": null,
 					"contentfulButton": null,
 					"showIconOnly": false,
-					"hideOnChinaSite": null,
+					"hideOnChinaSite": false,
 					"navigationItems": null,
 					"mainLink": {
 						"contentTypeId": "elementNavLink",
-						"contentfulId": "4QEp9MIaBzbHZU8tBfLM5L",
+						"contentfulId": "1EsG0ufALXV9BrekEAj3Oi",
 						"locale": "en-US",
-						"title": "Sign Up",
+						"title": "Login",
 						"description": null,
-						"url": "https://dash.cloudflare.com/sign-up",
+						"url": "https://dash.cloudflare.com/login/",
 						"badges": null,
 						"specialLinkType": null,
-						"openInNewWindow": true,
+						"openInNewWindow": false,
 						"isExternalUrl": null
 					},
 					"navigationLinks": null
