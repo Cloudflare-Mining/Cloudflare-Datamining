@@ -65,6 +65,7 @@ const knownRatePlans = new Set([
 	'calls',
 	'casb',
 	'cf_ent_app_sec_adv',
+	'cf_ent_app_sec_core',
 	'd1',
 	'dns',
 	'ddos_protection_magic_transit',
