@@ -9,10 +9,10 @@
 					"enUS": "English for Locale",
 					"zhCN": "English for Locale",
 					"zhTW": "English for Locale",
-					"frFR": "English for Locale",
-					"deDE": "English for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
 					"itIT": "English for Locale",
-					"jaJP": "English for Locale",
+					"jaJP": "Translated for Locale",
 					"koKR": "English for Locale",
 					"ptBR": "English for Locale",
 					"esES": "English for Locale",
@@ -20,7 +20,7 @@
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
-					"nlNL": "English for Locale",
+					"nlNL": "No Page for Locale",
 					"idID": "No Page for Locale",
 					"thTH": "No Page for Locale",
 					"ruRU": "No Page for Locale",
@@ -93,7 +93,7 @@
 						},
 						"title": "A step-by-step roadmap to Zero Trust architecture",
 						"subtitle": null,
-						"copy": "Traditional network architecture was designed around the concept of a perimeter network, where any user or request which made it inside the network received an implicit level of trust. Unfortunately, the shift toward cloud hosting, remote work, and other types of modernization make the network perimeter harder to rely on. \n\nThese challenges can be addressed by implementing a Zero Trust architecture, wherein all traffic moving into, out of, or within a corporate network is verified, inspected, and logged. Yet Zero Trust is difficult to make progress towards. A common reason? It's often unclear which actions are required to get there.\n\nThis guide was built by security experts to provide a vendor-agnostic roadmap to Zero Trust.  Download it now to learn:\n\n- 28 concrete steps an organization can take to achieve (or start a journey towards) Zero Trust\n- The dependencies and required time investments of those steps\n- Lists of services and products required for reach of those steps.\n",
+						"copy": "Traditional network architecture was designed around the concept of a perimeter network, where any user or request which made it inside the network received an implicit level of trust. Unfortunately, the shift toward cloud hosting, remote work, and other types of modernization make the network perimeter harder to rely on. \n\nThese challenges can be addressed by implementing a Zero Trust architecture, wherein all traffic moving into, out of, or within a corporate network is verified, inspected, and logged. Yet Zero Trust is difficult to make progress towards. A common reason? It's often unclear which actions are required to get there.\n\nThis guide was built by security experts to provide a vendor-agnostic roadmap to Zero Trust.  Download it now to learn:\n\n- 28 concrete steps an organization can take to achieve (or start a journey towards) Zero Trust\n- The dependencies and required time investments of those steps\n- Lists of services and products required for each of those steps.\n",
 						"iconList": null,
 						"iconTitleList": null,
 						"iconCopyList": null,
@@ -127,7 +127,10 @@
 			"pathname": "/lp/zero-trust-roadmap/",
 			"contentfulId": "5JeIdHiK6fGaRJU2NtTEsD",
 			"allowedHrefLangs": [
-				"en-US"
+				"en-US",
+				"fr-FR",
+				"de-DE",
+				"ja-JP"
 			],
 			"baseURL": "https://www.cloudflare.com"
 		}

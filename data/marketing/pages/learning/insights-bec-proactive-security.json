@@ -9,10 +9,10 @@
 					"enUS": "English for Locale",
 					"zhCN": "English for Locale",
 					"zhTW": "English for Locale",
-					"frFR": "English for Locale",
-					"deDE": "English for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
 					"itIT": "English for Locale",
-					"jaJP": "English for Locale",
+					"jaJP": "Translated for Locale",
 					"koKR": "English for Locale",
 					"ptBR": "English for Locale",
 					"esES": "English for Locale",
@@ -20,7 +20,7 @@
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
-					"nlNL": "English for Locale",
+					"nlNL": "No Page for Locale",
 					"idID": "No Page for Locale",
 					"thTH": "No Page for Locale",
 					"ruRU": "No Page for Locale",
@@ -157,6 +157,27 @@
 											"value": null,
 											"marks": null,
 											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
 										},
 										{
 											"nodeType": "heading-3",
@@ -2309,7 +2330,10 @@
 			"pathname": "/learning/insights-bec-proactive-security/",
 			"contentfulId": "MJL6iing0fxicR5lnBJ5J",
 			"allowedHrefLangs": [
-				"en-US"
+				"en-US",
+				"fr-FR",
+				"de-DE",
+				"ja-JP"
 			],
 			"baseURL": "https://www.cloudflare.com"
 		}
