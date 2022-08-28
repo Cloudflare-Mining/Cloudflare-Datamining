@@ -564,6 +564,30 @@
 		}
 	},
 	{
+		"id": "ddos.l4_advanced_alerts_allowed",
+		"feature": {
+			"feature_set": "ddos",
+			"id": 1059,
+			"key": "ddos.l4_advanced_alerts_allowed",
+			"name": "L4 Advanced DDoS Alerts"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "ddos.l4_traffic_profiling_allowed",
+		"feature": {
+			"feature_set": "ddos",
+			"id": 1057,
+			"key": "ddos.l4_traffic_profiling_allowed",
+			"name": "L4 Traffic Profiling"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "ddos.l7_traffic_profiling_allowed",
 		"feature": {
 			"feature_set": "ddos",
@@ -678,6 +702,18 @@
 			"id": 938,
 			"key": "graphql_api_v2.enabled_network_analytics_magic_transit",
 			"name": "Access to network_analytics_magic_transit nodes in GraphQL analytics API"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "graphql_api_v2.enabled_network_analytics_spectrum",
+		"feature": {
+			"feature_set": "graphqlv2",
+			"id": 937,
+			"key": "graphql_api_v2.enabled_network_analytics_spectrum",
+			"name": "Access to network_analytics_spectrum nodes in GraphQL analytics API"
 		},
 		"allocation": {
 			"type": "bool"
@@ -900,12 +936,36 @@
 		}
 	},
 	{
+		"id": "logpush.network_analytics_logs.max_jobs_allowed",
+		"feature": {
+			"feature_set": "logpush",
+			"id": 1013,
+			"key": "logpush.network_analytics_logs.max_jobs_allowed",
+			"name": "Logpush - Network Analytics Logs - Max Jobs"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "ltz.allow_add_subdomain",
 		"feature": {
 			"feature_set": "ltz",
 			"id": 285,
 			"key": "ltz.allow_add_subdomain",
 			"name": "Liberate the Zone"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "magic_firewall.pcaps_allowed",
+		"feature": {
+			"feature_set": "magic_firewall",
+			"id": 968,
+			"key": "magic_firewall.pcaps_allowed",
+			"name": "Magic Firewall Pcaps Allowed"
 		},
 		"allocation": {
 			"type": "bool"
@@ -1068,6 +1128,18 @@
 		}
 	},
 	{
+		"id": "rulesets.fw_global_rulesets_execute_magic_transit_managed_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1046,
+			"key": "rulesets.fw_global_rulesets_execute_magic_transit_managed_allowed",
+			"name": "Rulesets - Execute Magic Transit Managed Rules Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "rulesets.log_action_allowed",
 		"feature": {
 			"feature_set": "rulesets",
@@ -1089,6 +1161,54 @@
 		},
 		"allocation": {
 			"type": "bool"
+		}
+	},
+	{
+		"id": "rulesets.magic_transit_cf_lists_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1063,
+			"key": "rulesets.magic_transit_cf_lists_allowed",
+			"name": "Ruleset - Magic Transit CF Defined Lists Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "rulesets.magic_transit_max_ip_lists",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 932,
+			"key": "rulesets.magic_transit_max_ip_lists",
+			"name": "Rulesets - Magic Transit Max IP Lists"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "rulesets.magic_transit_protocols_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1009,
+			"key": "rulesets.magic_transit_protocols_allowed",
+			"name": "Rulesets - Magic Transit Protocols Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "rulesets.max_ddos_l4_rules",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 921,
+			"key": "rulesets.max_ddos_l4_rules",
+			"name": "Rulesets - Maximum number of rules allowed per DDoS L4 ruleset"
+		},
+		"allocation": {
+			"type": "max_count"
 		}
 	},
 	{
