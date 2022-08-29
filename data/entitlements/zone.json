@@ -1584,6 +1584,18 @@
 		}
 	},
 	{
+		"id": "rulesets.waiting_rooms_custom_rules_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1051,
+			"key": "rulesets.waiting_rooms_custom_rules_allowed",
+			"name": "Waiting Rooms - Custom Rules Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "rum.max_rules",
 		"feature": {
 			"feature_set": "rum",
@@ -1680,6 +1692,18 @@
 		}
 	},
 	{
+		"id": "waiting_rooms.change_queueing_method_allowed",
+		"feature": {
+			"feature_set": "waiting_rooms",
+			"id": 812,
+			"key": "waiting_rooms.change_queueing_method_allowed",
+			"name": "Waiting Rooms Change Queueing Method Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "waiting_rooms.count",
 		"feature": {
 			"feature_set": "waiting_rooms",
@@ -1704,6 +1728,18 @@
 		}
 	},
 	{
+		"id": "waiting_rooms.disable_session_renewal_allowed",
+		"feature": {
+			"feature_set": "waiting_rooms",
+			"id": 810,
+			"key": "waiting_rooms.disable_session_renewal_allowed",
+			"name": "Waiting Rooms Disable Session Renewal Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "waiting_rooms.event_count",
 		"feature": {
 			"feature_set": "waiting_rooms",
@@ -1713,6 +1749,30 @@
 		},
 		"allocation": {
 			"type": "max_count"
+		}
+	},
+	{
+		"id": "waiting_rooms.json_response_allowed",
+		"feature": {
+			"feature_set": "waiting_rooms",
+			"id": 923,
+			"key": "waiting_rooms.json_response_allowed",
+			"name": "Waiting Rooms JSON Response Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "waiting_rooms.schedule_event_allowed",
+		"feature": {
+			"feature_set": "waiting_rooms",
+			"id": 811,
+			"key": "waiting_rooms.schedule_event_allowed",
+			"name": "Waiting Rooms Schedule Event Allowed"
+		},
+		"allocation": {
+			"type": "bool"
 		}
 	},
 	{
