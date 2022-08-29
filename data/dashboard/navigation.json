@@ -67,6 +67,10 @@
 					"labels": [
 						"new"
 					]
+				},
+				{
+					"title": "navigation.account.registrar.domain_protection",
+					"url": "/domains/protection"
 				}
 			]
 		},
@@ -207,6 +211,31 @@
 			"iconType": "image",
 			"labels": [
 				"new"
+			],
+			"pages": [
+				{
+					"title": "navigation.account.images",
+					"url": "/images/images"
+				},
+				{
+					"title": "navigation.account.images.variants",
+					"url": "/images/variants"
+				},
+				{
+					"title": "navigation.account.images.keys",
+					"url": "/images/keys"
+				},
+				{
+					"title": "navigation.account.images.sourcing_kit",
+					"url": "/images/sourcing-kit/waitlist"
+				},
+				{
+					"title": "navigation.account.images.sourcing_kit_dev",
+					"url": "/images/sourcing-kit/d",
+					"labels": [
+						"beta"
+					]
+				}
 			]
 		},
 		{
