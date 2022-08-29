@@ -5656,6 +5656,34 @@ components:
               - url_standard
               items: {}
               type: array
+            d1_databases:
+              description: D1 databases used for Pages Functions
+              properties:
+                D1_BINDING:
+                  description: D1 binding
+                  example:
+                    id: 445e2955-951a-43f8-a35b-a4d0c8138f63
+                  properties:
+                    id:
+                      description: UUID of the D1 database
+                      example: 445e2955-951a-43f8-a35b-a4d0c8138f63
+                      type: string
+                  type: object
+              type: object
+            durable_object_namespaces:
+              description: Durabble Object namespaces used for Pages Functions
+              properties:
+                DO_BINDING:
+                  description: Durabble Object binding
+                  example:
+                    namespace_id: 5eb63bbbe01eeed093cb22bb8f5acdc3
+                  properties:
+                    namespace_id:
+                      description: ID of the Durabble Object namespace
+                      example: 5eb63bbbe01eeed093cb22bb8f5acdc3
+                      type: string
+                  type: object
+              type: object
             env_vars:
               description: Environment variables for build configs
               nullable: true
@@ -5668,6 +5696,34 @@ components:
                     value:
                       description: Environment variable value
                       example: "3.3"
+                      type: string
+                  type: object
+              type: object
+            kv_namespaces:
+              description: KV namespaces used for Pages Functions
+              properties:
+                KV_BINDING:
+                  description: KV binding
+                  example:
+                    namespace_id: 5eb63bbbe01eeed093cb22bb8f5acdc3
+                  properties:
+                    namespace_id:
+                      description: ID of the KV namespace
+                      example: 5eb63bbbe01eeed093cb22bb8f5acdc3
+                      type: string
+                  type: object
+              type: object
+            r2_buckets:
+              description: R2 buckets used for Pages Functions
+              properties:
+                R2_BINDING:
+                  description: R2 binding
+                  example:
+                    name: some-bucket
+                  properties:
+                    name:
+                      description: Name of the R2 bucket
+                      example: some-bucket
                       type: string
                   type: object
               type: object
@@ -5685,6 +5741,34 @@ components:
               - url_standard
               items: {}
               type: array
+            d1_databases:
+              description: D1 databases used for Pages Functions
+              properties:
+                D1_BINDING:
+                  description: D1 binding
+                  example:
+                    id: 445e2955-951a-43f8-a35b-a4d0c8138f63
+                  properties:
+                    id:
+                      description: UUID of the D1 database
+                      example: 445e2955-951a-43f8-a35b-a4d0c8138f63
+                      type: string
+                  type: object
+              type: object
+            durable_object_namespaces:
+              description: Durabble Object namespaces used for Pages Functions
+              properties:
+                DO_BINDING:
+                  description: Durabble Object binding
+                  example:
+                    namespace_id: 5eb63bbbe01eeed093cb22bb8f5acdc3
+                  properties:
+                    namespace_id:
+                      description: ID of the Durabble Object namespace
+                      example: 5eb63bbbe01eeed093cb22bb8f5acdc3
+                      type: string
+                  type: object
+              type: object
             env_vars:
               description: Environment variables for build configs
               nullable: true
@@ -5697,6 +5781,34 @@ components:
                     value:
                       description: Environment variable value
                       example: "3.3"
+                      type: string
+                  type: object
+              type: object
+            kv_namespaces:
+              description: KV namespaces used for Pages Functions
+              properties:
+                KV_BINDING:
+                  description: KV binding
+                  example:
+                    namespace_id: 5eb63bbbe01eeed093cb22bb8f5acdc3
+                  properties:
+                    namespace_id:
+                      description: ID of the KV namespace
+                      example: 5eb63bbbe01eeed093cb22bb8f5acdc3
+                      type: string
+                  type: object
+              type: object
+            r2_buckets:
+              description: R2 buckets used for Pages Functions
+              properties:
+                R2_BINDING:
+                  description: R2 binding
+                  example:
+                    name: some-bucket
+                  properties:
+                    name:
+                      description: Name of the R2 bucket
+                      example: some-bucket
                       type: string
                   type: object
               type: object
@@ -5776,6 +5888,8 @@ components:
           readOnly: true
           type: string
         is_skipped:
+          description: If the deployment has been skipped
+          example: true
           readOnly: true
           type: boolean
         latest_stage:
@@ -13254,6 +13368,11 @@ components:
         name:
           description: Name of the project
           example: NextJS Blog
+          type: string
+        production_branch:
+          description: Production branch of the project. Used to identify production
+            deployments
+          example: main
           type: string
         source:
           readOnly: true

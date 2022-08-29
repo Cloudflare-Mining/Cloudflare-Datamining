@@ -39541,6 +39541,86 @@
 														},
 														"nullable": true
 													},
+													"kv_namespaces": {
+														"description": "KV namespaces used for Pages Functions",
+														"type": "object",
+														"properties": {
+															"KV_BINDING": {
+																"description": "KV binding",
+																"type": "object",
+																"properties": {
+																	"namespace_id": {
+																		"description": "ID of the KV namespace",
+																		"type": "string",
+																		"example": "5eb63bbbe01eeed093cb22bb8f5acdc3"
+																	}
+																},
+																"example": {
+																	"namespace_id": "5eb63bbbe01eeed093cb22bb8f5acdc3"
+																}
+															}
+														}
+													},
+													"durable_object_namespaces": {
+														"description": "Durabble Object namespaces used for Pages Functions",
+														"type": "object",
+														"properties": {
+															"DO_BINDING": {
+																"description": "Durabble Object binding",
+																"type": "object",
+																"properties": {
+																	"namespace_id": {
+																		"description": "ID of the Durabble Object namespace",
+																		"type": "string",
+																		"example": "5eb63bbbe01eeed093cb22bb8f5acdc3"
+																	}
+																},
+																"example": {
+																	"namespace_id": "5eb63bbbe01eeed093cb22bb8f5acdc3"
+																}
+															}
+														}
+													},
+													"r2_buckets": {
+														"description": "R2 buckets used for Pages Functions",
+														"type": "object",
+														"properties": {
+															"R2_BINDING": {
+																"description": "R2 binding",
+																"type": "object",
+																"properties": {
+																	"name": {
+																		"description": "Name of the R2 bucket",
+																		"type": "string",
+																		"example": "some-bucket"
+																	}
+																},
+																"example": {
+																	"name": "some-bucket"
+																}
+															}
+														}
+													},
+													"d1_databases": {
+														"description": "D1 databases used for Pages Functions",
+														"type": "object",
+														"properties": {
+															"D1_BINDING": {
+																"description": "D1 binding",
+																"type": "object",
+																"properties": {
+																	"id": {
+																		"description": "UUID of the D1 database",
+																		"type": "string",
+																		"example": "445e2955-951a-43f8-a35b-a4d0c8138f63"
+																	}
+																},
+																"example": {
+																	"id": "445e2955-951a-43f8-a35b-a4d0c8138f63"
+																}
+															}
+														}
+													},
 													"compatibility_date": {
 														"description": "Compatibility date used for Pages Functions",
 														"type": "string",
@@ -39580,6 +39660,86 @@
 															}
 														},
 														"nullable": true
+													},
+													"kv_namespaces": {
+														"description": "KV namespaces used for Pages Functions",
+														"type": "object",
+														"properties": {
+															"KV_BINDING": {
+																"description": "KV binding",
+																"type": "object",
+																"properties": {
+																	"namespace_id": {
+																		"description": "ID of the KV namespace",
+																		"type": "string",
+																		"example": "5eb63bbbe01eeed093cb22bb8f5acdc3"
+																	}
+																},
+																"example": {
+																	"namespace_id": "5eb63bbbe01eeed093cb22bb8f5acdc3"
+																}
+															}
+														}
+													},
+													"durable_object_namespaces": {
+														"description": "Durabble Object namespaces used for Pages Functions",
+														"type": "object",
+														"properties": {
+															"DO_BINDING": {
+																"description": "Durabble Object binding",
+																"type": "object",
+																"properties": {
+																	"namespace_id": {
+																		"description": "ID of the Durabble Object namespace",
+																		"type": "string",
+																		"example": "5eb63bbbe01eeed093cb22bb8f5acdc3"
+																	}
+																},
+																"example": {
+																	"namespace_id": "5eb63bbbe01eeed093cb22bb8f5acdc3"
+																}
+															}
+														}
+													},
+													"r2_buckets": {
+														"description": "R2 buckets used for Pages Functions",
+														"type": "object",
+														"properties": {
+															"R2_BINDING": {
+																"description": "R2 binding",
+																"type": "object",
+																"properties": {
+																	"name": {
+																		"description": "Name of the R2 bucket",
+																		"type": "string",
+																		"example": "some-bucket"
+																	}
+																},
+																"example": {
+																	"name": "some-bucket"
+																}
+															}
+														}
+													},
+													"d1_databases": {
+														"description": "D1 databases used for Pages Functions",
+														"type": "object",
+														"properties": {
+															"D1_BINDING": {
+																"description": "D1 binding",
+																"type": "object",
+																"properties": {
+																	"id": {
+																		"description": "UUID of the D1 database",
+																		"type": "string",
+																		"example": "445e2955-951a-43f8-a35b-a4d0c8138f63"
+																	}
+																},
+																"example": {
+																	"id": "445e2955-951a-43f8-a35b-a4d0c8138f63"
+																}
+															}
+														}
 													},
 													"compatibility_date": {
 														"description": "Compatibility date used for Pages Functions",
@@ -39668,8 +39828,10 @@
 														"items": {}
 													},
 													"is_skipped": {
+														"description": "If the deployment has been skipped",
 														"type": "boolean",
-														"readOnly": true
+														"readOnly": true,
+														"example": true
 													},
 													"latest_stage": {
 														"readOnly": true
@@ -39868,6 +40030,12 @@
 										],
 										"description": "Most recent deployment to the repo",
 										"readOnly": true
+									},
+									"production_branch": {
+										"description": "Production branch of the project. Used to identify production deployments",
+										"type": "string",
+										"readOnly": false,
+										"example": "main"
 									}
 								}
 							}
@@ -40236,8 +40404,10 @@
 															"items": {}
 														},
 														"is_skipped": {
+															"description": "If the deployment has been skipped",
 															"type": "boolean",
-															"readOnly": true
+															"readOnly": true,
+															"example": true
 														},
 														"latest_stage": {
 															"readOnly": true
@@ -40550,8 +40720,10 @@
 															"items": {}
 														},
 														"is_skipped": {
+															"description": "If the deployment has been skipped",
 															"type": "boolean",
-															"readOnly": true
+															"readOnly": true,
+															"example": true
 														},
 														"latest_stage": {
 															"readOnly": true
@@ -41304,8 +41476,10 @@
 															"items": {}
 														},
 														"is_skipped": {
+															"description": "If the deployment has been skipped",
 															"type": "boolean",
-															"readOnly": true
+															"readOnly": true,
+															"example": true
 														},
 														"latest_stage": {
 															"readOnly": true
@@ -41618,8 +41792,10 @@
 															"items": {}
 														},
 														"is_skipped": {
+															"description": "If the deployment has been skipped",
 															"type": "boolean",
-															"readOnly": true
+															"readOnly": true,
+															"example": true
 														},
 														"latest_stage": {
 															"readOnly": true
