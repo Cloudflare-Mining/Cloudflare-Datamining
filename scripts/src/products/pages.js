@@ -3,7 +3,7 @@ import path from 'node:path';
 import fs from 'fs-extra';
 import dateFormat from 'dateformat';
 
-import {tryAndPush, propertiesToArray, cfRequest} from '../utils.js';
+import {tryAndPush, propertiesToArray, cfRequest, sleep} from '../utils.js';
 
 const dir = path.resolve(`../data/products/pages`);
 await fs.ensureDir(dir);
@@ -79,6 +79,72 @@ for(const req of reqs){
 			await fs.writeJson(file, propertiesToArray(json).sort(), {spaces: '\t'});
 		}
 	}
+}
+
+// get and parse logs for deploy, after deployed
+const maxAttempts = 30;
+let waiting = true;
+let attempts = 0;
+
+while(waiting){
+	if(attempts > maxAttempts){
+		throw new Error('Max attempts reached, exiting.');
+	}
+	attempts++;
+	const deploymentRes = await cfRequest(`https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/pages/projects/${projectName}/deployments/${results['deployments-create'].result.id}`);
+	if(!deploymentRes.ok){
+		console.log(`deployment-get failed: ${deploymentRes.status} ${deploymentRes.statusText}`);
+		continue;
+	}
+	const deploymentJson = await deploymentRes.json();
+	if(deploymentJson?.result?.latest_stage?.name === 'deploy' && deploymentJson?.result?.latest_stage?.status === 'success'){
+		waiting = false;
+	}
+	console.log('Still deploying...', deploymentJson?.result?.latest_stage?.name, deploymentJson?.result?.latest_stage?.status);
+	await sleep(5000);
+}
+
+const truncateEnvVars = new Set([
+	'CF_PAGES_BRANCH',
+	'CF_PAGES_COMMIT_SHA',
+	'CF_PAGES_URL',
+]);
+const deployiD = results['deployments-create']?.result?.id;
+const logsReq = await cfRequest(`https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/pages/projects/${projectName}/deployments/${deployiD}/history/logs`);
+const logsRes = await logsReq.json();
+const logs = logsRes.result.data ?? [];
+const startIndex = logs.findIndex(log => log.line === '---start-env---');
+const endIndex = logs.findIndex(log => log.line === '---end-env---');
+if(startIndex && endIndex){
+	const envLogs = logs.slice(startIndex + 1, endIndex);
+	const env = {};
+	for(const log of envLogs){
+		const split = log.line.split('=');
+		if(truncateEnvVars.has(split[0])){
+			env[split[0]] = '-snip-';
+		}else if(split[0] === 'PATH'){
+			const path = split.slice(1).join('=').split(':');
+			const newVal = [];
+			for(const part of path){
+				if(part.includes('cache')){
+					newVal.push('-cache-dir-snip-');
+				}else{
+					newVal.push(part);
+				}
+			}
+			env[split[0]] = newVal;
+		}else{
+			env[split[0]] = split.slice(1).join('=');
+		}
+	}
+	const sorted = Object.keys(env).sort().reduce(
+		(obj, key) => {
+			obj[key] = env[key];
+			return obj;
+		},
+		{},
+	);
+	await fs.writeJson(path.resolve(dir, 'deployments-logs-env.json'), sorted, {spaces: '\t'});
 }
 
 // delete all previous deployments

@@ -4,6 +4,8 @@ import fs from 'fs-extra';
 import fetch from 'node-fetch';
 import dateFormat from 'dateformat';
 import {XMLParser} from 'fast-xml-parser';
+import puppeteer from 'puppeteer';
+
 
 import {tryAndPush, getHttpsAgent} from './utils.js';
 const agent = getHttpsAgent();
@@ -126,13 +128,18 @@ const stabiliseData = function(object){
 	}
 };
 
-const processPage = async function(urlPath){
+const processPage = async function(urlPath, bmCookie){
 	const url = `https://marketing-data.james.pub/?path=${urlPath}`;
 	console.log('Fetching', url);
+	let cookie;
+	if(bmCookie){
+		cookie = `${bmCookie.name}=${bmCookie.value}`;
+	}
 	const res = await fetch(url, {
 		agent,
 		headers: {
 			'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36',
+			cookie,
 		},
 	});
 	const filePath = path.resolve(pagesDir, `${urlPath}.json`);
@@ -219,6 +226,21 @@ async function run(){
 		return;
 	}
 
+	// launch a browser, get a bot management token. Helps to work around bot management restrictions
+	const browser = await puppeteer.launch({
+		defaultViewport: {
+			width: 1920,
+			height: 1080,
+		},
+	});
+	const page = await browser.newPage();
+	await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36');
+	await page.goto('https://www.cloudflare.com', {
+		waitUntil: 'networkidle2',
+	});
+	const cookies = await page.cookies();
+	const bmCookie = cookies.find(cookie => cookie.name === '__cf_bm');
+
 	// then fetch everything from the sitemap
 	const sitemap = await fetch('https://www.cloudflare.com/sitemap.xml').then(res => res.text());
 	const sitemapXml = parser.parse(sitemap);
@@ -229,12 +251,12 @@ async function run(){
 		}
 	}
 	for(const urlPath of shuffle([...paths])){
-		await processPage(urlPath);
+		await processPage(urlPath, bmCookie);
 	}
 
 	for(const urlPath of shuffle([...morePaths])){
 		console.log('Processing more', urlPath);
-		await processPage(urlPath);
+		await processPage(urlPath, bmCookie);
 	}
 
 	const prefix = dateFormat(new Date(), 'd mmmm yyyy');
