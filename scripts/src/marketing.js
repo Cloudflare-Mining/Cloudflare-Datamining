@@ -240,6 +240,7 @@ async function run(){
 	});
 	const cookies = await page.cookies();
 	const bmCookie = cookies.find(cookie => cookie.name === '__cf_bm');
+	await browser.close();
 
 	// then fetch everything from the sitemap
 	const sitemap = await fetch('https://www.cloudflare.com/sitemap.xml').then(res => res.text());
