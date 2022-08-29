@@ -102,12 +102,12 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		invalid_auth_code: "Invalid auth code",
 		auth_code: "Enter auth code",
 		payment: (0, n.d)(E(), "amount"),
-		approve: (0, n.d)(f(), "registrar"),
+		approve: (0, n.d)(g(), "registrar"),
 		success: "Transfer successful"
 	},
 	registration_card: {
 		title: "Registration",
-		pending_deletion: (0, n.d)(s(), "expired_on", "purchaseable_on"),
+		pending_deletion: (0, n.d)(l(), "expired_on", "purchaseable_on"),
 		renew_btn: "Renew your domain",
 		auto_renew_on: "Auto Renew is on",
 		auto_renew_off: "Auto Renew is off",
@@ -118,7 +118,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		not_on_cloudflare: {
 			expiration: (0, n.d)(y(), "expiration"),
 			transfer_cta: "Transfer to Cloudflare",
-			transfer_cta_subext: (0, n.d)(v(), "price")
+			transfer_cta_subext: (0, n.d)(h(), "price")
 		},
 		transfer_in_progress: {
 			title: "Transfer Progress",
@@ -172,11 +172,11 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	cor_resend_email: "Resend email",
 	renewal_info: {
 		expires_on: (0, n.d)(P(), "expiresOn"),
-		renews_on: (0, n.d)(i(), "renewsOn"),
+		renews_on: (0, n.d)(o(), "renewsOn"),
 		price: "Price",
 		per_year: "/ year",
-		billing: (0, n.d)(o(), "last4"),
-		billing_cloud: (0, n.d)(l(), "last4")
+		billing: (0, n.d)(i(), "last4"),
+		billing_cloud: (0, n.d)(s(), "last4")
 	},
 	registered_on: (0, n.d)(S(), "registration_date"),
 	renewals_billing_modal_title: "Confirm domain renewal for %{domain}",
@@ -283,13 +283,13 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	eligibility_unknown_domains_show: "Show %{smart_count} domain with unknown transfer eligibility* |||| Show %{smart_count} domains with unknown transfer eligibility*",
 	eligibility_unknown_domains_hide: "Hide %{smart_count} domain with unknown transfer eligibility* |||| Hide %{smart_count} domains with unknown transfer eligibility*",
 	unknown_eligibility_domains_description: "*These domains MAY be available for transfer, however we don't have enough information to make a determination at this moment.  Don't worry, we're attempting to determine the current state of each  domain.  This process may take some time so please try back in 5 minutes.  If we are still unable to make a determination please contact support for assistance.",
-	instructions_enom: d,
+	instructions_enom: m,
 	instructions_godaddy: O,
 	instructions_namecheap: T,
 	instructions_network_solutions: C,
 	instructions_one_and_one: L,
-	instructions_unknown: g,
-	instructions_uk: _,
+	instructions_unknown: v,
+	instructions_uk: B,
 	instructions_restrictions: a,
 	instructions_restrictions_title: "Show restrictions",
 	instructions_known_title: "Transfer your domain from %{registrar}",
