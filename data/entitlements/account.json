@@ -264,6 +264,18 @@
 		}
 	},
 	{
+		"id": "analytics_engine.not_older_than",
+		"feature": {
+			"feature_set": "analytics_engine",
+			"id": 1041,
+			"key": "analytics_engine.not_older_than",
+			"name": "Analytics Engine API - Not Older Than"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "argo.allow_smart_routing",
 		"feature": {
 			"feature_set": "argo",
@@ -732,6 +744,18 @@
 		}
 	},
 	{
+		"id": "http_applications.strict_zone_routing",
+		"feature": {
+			"feature_set": "http_applications",
+			"id": 991,
+			"key": "http_applications.strict_zone_routing",
+			"name": "HTTP Applications - Strict Zone Routing"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "image_resizing.enabled",
 		"feature": {
 			"feature_set": "image_resizing",
@@ -972,6 +996,18 @@
 		}
 	},
 	{
+		"id": "managed_hostname.apex_proxying_access",
+		"feature": {
+			"feature_set": "managed_hostname",
+			"id": 598,
+			"key": "managed_hostname.apex_proxying_access",
+			"name": "Apex Proxying Access"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "managed_hostname.certificates_account",
 		"feature": {
 			"feature_set": "managed_hostname",
@@ -1008,6 +1044,18 @@
 		}
 	},
 	{
+		"id": "managed_hostname.metadata_access",
+		"feature": {
+			"feature_set": "managed_hostname",
+			"id": 71,
+			"key": "managed_hostname.metadata_access",
+			"name": "SSL for SaaS Metadata Access"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "proxy_anything.enabled",
 		"feature": {
 			"feature_set": "proxy_anything",
@@ -1017,6 +1065,18 @@
 		},
 		"allocation": {
 			"type": "bool"
+		}
+	},
+	{
+		"id": "quota.advanced_certificate_manager",
+		"feature": {
+			"feature_set": "quota",
+			"id": 1032,
+			"key": "quota.advanced_certificate_manager",
+			"name": "Zone Quota - Advanced Certificate Manager"
+		},
+		"allocation": {
+			"type": "max_count"
 		}
 	},
 	{
@@ -1242,6 +1302,18 @@
 			"id": 789,
 			"key": "rulesets.owning_root_rulesets_allowed",
 			"name": "Rulesets - Owning Root Rulesets Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "rulesets.select_configuration_phase_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 900,
+			"key": "rulesets.select_configuration_phase_allowed",
+			"name": "Rulesets - Select Configuration Phase Allowed"
 		},
 		"allocation": {
 			"type": "bool"
@@ -1953,6 +2025,18 @@
 		},
 		"allocation": {
 			"type": "bool"
+		}
+	},
+	{
+		"id": "zone.advanced_certificate_manager_quota_override",
+		"feature": {
+			"feature_set": "zone",
+			"id": 964,
+			"key": "zone.advanced_certificate_manager_quota_override",
+			"name": "Advanced Certificate Manager Certs Per Zone Override"
+		},
+		"allocation": {
+			"type": "max_count"
 		}
 	},
 	{

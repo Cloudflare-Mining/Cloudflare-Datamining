@@ -33,7 +33,13 @@ function addEntitlement(entitlement, type){
 const list = await fs.readdir(path.resolve(dir, 'responses'));
 for(const file of list){
 	const data = await fs.readJson(path.resolve(dir, 'responses', file));
-	for(const entitlement of data.result || []){
+	let look = [];
+	if(data.result){
+		look = data.result;
+	}else if(Array.isArray(data)){
+		look = data;
+	}
+	for(const entitlement of look){
 		if(file.startsWith('zone')){
 			addEntitlement(entitlement, 'zone');
 		}else if(file.startsWith('account')){
