@@ -17,7 +17,7 @@ const staticDashURL = 'https://dash.teams.cloudflare.com/';
 const agent = getHttpsAgent();
 
 async function writeJS(filename, data){
-	const file = path.resolve(`../data/zt-dashboard/${filename}`);
+	const file = path.resolve(`../data/zt-dashboard/js/${filename}`);
 	await fs.ensureDir(path.dirname(file));
 	await fs.writeFile(file, beautify(data));
 }
@@ -39,12 +39,10 @@ async function findWantedChunks(chunks){
 			}
 			const text = await res.text();
 
-			if(text.startsWith('(self.webpackChunk=self.webpackChunk||[])') || text.startsWith('(window.webpackJsonp=window.webpackJsonp||[])')){
-				results.chunks.push({
-					code: text,
-					chunk,
-				});
-			}
+			results.chunks.push({
+				code: text,
+				chunk,
+			});
 			//await writeJS(chunk, text);
 		});
 	}
@@ -74,6 +72,7 @@ async function getChunks(){
 
 	const appRes = await fetch(`${staticDashURL}${appFile}`, {agent});
 	const appJs = await appRes.text();
+	await writeJS(appFile, appJs);
 
 	// get chunks from AST
 	const chunks = [];
@@ -85,23 +84,27 @@ async function getChunks(){
 		if(
 			node.type === 'AssignmentExpression' &&
 			node.left?.type === 'MemberExpression' &&
-			node.left?.property?.name === 'src' &&
-			node.right?.type === 'CallExpression' &&
-			node.right?.callee?.type === 'FunctionExpression' &&
-			node.right?.callee?.body?.body?.[0]?.type === 'ReturnStatement' &&
-			node.right?.callee?.body?.body?.[0]?.argument?.left?.right?.type === 'MemberExpression' &&
-			node.right?.callee?.body?.body?.[0]?.argument?.left?.right?.object?.type === 'ObjectExpression'
+			node.right?.type === 'FunctionExpression' &&
+			node.right?.body?.type === 'BlockStatement' &&
+			node.right?.body?.body?.length === 1 &&
+			node.right?.body?.body[0]?.type === 'ReturnStatement' &&
+			node.right?.body?.body[0]?.argument?.type === 'BinaryExpression' &&
+			node.right?.body?.body[0]?.argument?.left?.type === 'BinaryExpression' &&
+			node.right?.body?.body[0]?.argument?.left?.left?.type === 'BinaryExpression' &&
+			node.right?.body?.body[0]?.argument?.left?.left?.right?.type === 'Literal' &&
+			node.right?.body?.body[0]?.argument?.left?.left?.right?.value === '.' &&
+			node.right?.body?.body[0]?.argument?.left?.right?.type === 'MemberExpression' &&
+			node.right?.body?.body[0]?.argument?.left?.right?.object?.type === 'ObjectExpression'
 		){
 			// first find all chunks
-			for(const property of node.right.callee.body.body[0].argument.left.right.object.properties){
+			const properties = node.right?.body?.body[0]?.argument?.left?.right?.object.properties;
+			for(const property of properties){
 				chunks.push(`${property.key.value}.${property.value.value}.js`);
 			}
 		}else if(
 			node.type === 'CallExpression' &&
-			node.callee?.type === 'CallExpression' &&
-			node.callee?.callee?.type === 'Identifier' &&
-			node.callee?.callee?.name === 'Object' &&
-			node.callee?.arguments?.length === 1 &&
+			node.callee?.type === 'SequenceExpression' &&
+			node.callee?.expressions?.length === 2 &&
 			node?.arguments?.length === 2 &&
 			node.arguments[0].type === 'Literal' &&
 			node.arguments[1].type === 'ObjectExpression'
@@ -112,7 +115,7 @@ async function getChunks(){
 				return;
 			}
 			translations[node.arguments[0].value] ??= {};
-			console.log('Found translation', node.arguments[0].value);
+			console.log('Found translation--call', node.arguments[0].value);
 			for(const property of node.arguments[1].properties){
 				if(property.key.type === 'Identifier'){
 					translations[node.arguments[0].value][property.key.name] = property.value.value;
