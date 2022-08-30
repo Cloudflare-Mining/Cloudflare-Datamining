@@ -5,8 +5,8 @@
 	"type": "object",
 	"links": [
 		{
-			"title": "List Interconnects",
-			"description": "List Interconnects associated with an account's Magic setup",
+			"title": "List interconnects",
+			"description": "Lists interconnects associated with an account.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/account_identifier}/magic/cf_interconnects",
 			"method": "GET",
@@ -23,8 +23,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"interconnects\": [\n      {\n        \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n        \"created_on\": \"2017-06-14T00:00:00Z\",\n        \"modified_on\": \"2017-06-14T05:20:00Z\",\n        \"name\": \"pni_ord\",\n        \"interface_address\": \"192.0.2.0/31\",\n        \"description\": \"Tunnel for Interconnect to ORD\",\n        \"health_check\": {\n          \"enabled\": true,\n          \"target\": \"203.0.113.1\",\n          \"type\": \"request\"\n        },\n        \"gre\": {\n          \"cloudflare_endpoint\": \"203.0.113.1\",\n          \"customer_endpoint\": \"203.0.113.1\",\n          \"is_colo_cast\": true\n        },\n        \"mtu\": 1476,\n        \"colo_name\": \"pni_ord\"\n      }\n    ]\n  }\n}"
 		},
 		{
-			"title": "Interconnect Details",
-			"description": "Get a specific Interconnect for an account's Magic setup",
+			"title": "List interconnect Details",
+			"description": "Lists details for a specific interconnect.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/magic/cf_interconnects/{#/definitions/tunnel_identifier}",
 			"method": "GET",
@@ -35,14 +35,14 @@
 				"business": false,
 				"enterprise": true
 			},
-			"html_id": "magic-interconnects-interconnect-details",
+			"html_id": "magic-interconnects-list-interconnect-details",
 			"uri": "accounts/:account_identifier/magic/cf_interconnects/:tunnel_identifier",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/magic/cf_interconnects/01a7362d577a6c3019a474fd6f485823\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"interconnect\": {\n      \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n      \"created_on\": \"2017-06-14T00:00:00Z\",\n      \"modified_on\": \"2017-06-14T05:20:00Z\",\n      \"name\": \"pni_ord\",\n      \"interface_address\": \"192.0.2.0/31\",\n      \"description\": \"Tunnel for Interconnect to ORD\",\n      \"health_check\": {\n        \"enabled\": true,\n        \"target\": \"203.0.113.1\",\n        \"type\": \"request\"\n      },\n      \"gre\": {\n        \"cloudflare_endpoint\": \"203.0.113.1\",\n        \"customer_endpoint\": \"203.0.113.1\",\n        \"is_colo_cast\": true\n      },\n      \"mtu\": 1476,\n      \"colo_name\": \"pni_ord\"\n    }\n  }\n}"
 		},
 		{
-			"title": "Update Interconnect",
-			"description": "Update a specific Interconnect for an account's Magic setup. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes",
+			"title": "Update interconnect",
+			"description": "Updates a specific interconnect associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/magic/cf_interconnects/{#/definitions/tunnel_identifier}?validate_only={#/definitions/validate_only}",
 			"method": "PUT",
@@ -64,18 +64,18 @@
 					"mtu": {
 						"type": "integer",
 						"example": "1476",
-						"description": "Maximum Transmission Unit (MTU) in bytes for the Interconnect. Maximum value 1476 and minimum value 576",
+						"description": "The Maximum Transmission Unit (MTU) in bytes for the interconnect. The minimum value is 576.",
 						"default": 1476
 					},
 					"interface_address": {
 						"type": "string",
 						"example": "\"192.0.2.0/31\"",
-						"description": "A 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255."
+						"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255."
 					},
 					"description": {
 						"type": "string",
 						"example": "\"Tunnel for Interconnect to ORD\"",
-						"description": "An optional description of the Interconnect"
+						"description": "An optional description of the interconnect"
 					},
 					"gre": {
 						"type": "object",
@@ -89,16 +89,16 @@
 							"customer_endpoint": {
 								"type": "string",
 								"example": "\"203.0.113.1\"",
-								"description": "The IP address assigned to the Customer side of the GRE tunnel created as part of the Interconnect"
+								"description": "The IP address assigned to the customer side of the GRE tunnel created as part of the Interconnect"
 							},
 							"is_colo_cast": {
 								"type": "boolean",
 								"example": "true",
-								"description": "This flag is used to support multiple Interconnects to the same colo for a Customer",
+								"description": "Determines whether to support multiple interconnects to the same data center for a useer.",
 								"default": true
 							}
 						},
-						"description": "Configuration specific to GRE Interconnects"
+						"description": "The configuration specific to GRE interconnects."
 					}
 				},
 				"required_props": [],
@@ -114,8 +114,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"modified\": true,\n    \"modified_interconnect\": {\n      \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n      \"created_on\": \"2017-06-14T00:00:00Z\",\n      \"modified_on\": \"2017-06-14T05:20:00Z\",\n      \"name\": \"pni_ord\",\n      \"interface_address\": \"192.0.2.0/31\",\n      \"description\": \"Tunnel for Interconnect to ORD\",\n      \"health_check\": {\n        \"enabled\": true,\n        \"target\": \"203.0.113.1\",\n        \"type\": \"request\"\n      },\n      \"gre\": {\n        \"cloudflare_endpoint\": \"203.0.113.1\",\n        \"customer_endpoint\": \"203.0.113.1\",\n        \"is_colo_cast\": true\n      },\n      \"mtu\": 1476,\n      \"colo_name\": \"pni_ord\"\n    }\n  }\n}"
 		},
 		{
-			"title": "Update Many Interconnects",
-			"description": "Update many Interconnects for an account's Magic setup. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes",
+			"title": "Update multiple interconnects",
+			"description": "Updates multiple interconnects associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/magic/cf_interconnects?validate_only={#/definitions/validate_only}",
 			"method": "PUT",
@@ -126,7 +126,7 @@
 				"business": false,
 				"enterprise": true
 			},
-			"html_id": "magic-interconnects-update-many-interconnects",
+			"html_id": "magic-interconnects-update-multiple-interconnects",
 			"uri": "accounts/:account_identifier/magic/cf_interconnects?validate_only=:validate_only",
 			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/magic/cf_interconnects?validate_only=true\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"interconnects\":[{\"id\":\"01a7362d577a6c3019a474fd6f485823\",\"mtu\":1476,\"interface_address\":\"192.0.2.0/31\",\"description\":\"Tunnel for Interconnect to ORD\",\"gre\":{\"cloudflare_endpoint\":\"203.0.113.1\",\"customer_endpoint\":\"203.0.113.1\",\"is_colo_cast\":true}}]}'",
 			"parameters": {
@@ -156,23 +156,23 @@
 									"properties": {
 										"mtu": {
 											"type": "integer",
-											"description": "Maximum Transmission Unit (MTU) in bytes for the Interconnect. Maximum value 1476 and minimum value 576",
+											"description": "The Maximum Transmission Unit (MTU) in bytes for the interconnect. The minimum value is 576.",
 											"example": 1476,
 											"default": 1476
 										},
 										"interface_address": {
 											"type": "string",
-											"description": "A 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
+											"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
 											"example": "192.0.2.0/31"
 										},
 										"description": {
 											"type": "string",
-											"description": "An optional description of the Interconnect",
+											"description": "An optional description of the interconnect",
 											"example": "Tunnel for Interconnect to ORD"
 										},
 										"gre": {
 											"type": "object",
-											"description": "Configuration specific to GRE Interconnects",
+											"description": "The configuration specific to GRE interconnects.",
 											"properties": {
 												"cloudflare_endpoint": {
 													"type": "string",
@@ -181,12 +181,12 @@
 												},
 												"customer_endpoint": {
 													"type": "string",
-													"description": "The IP address assigned to the Customer side of the GRE tunnel created as part of the Interconnect",
+													"description": "The IP address assigned to the customer side of the GRE tunnel created as part of the Interconnect",
 													"example": "203.0.113.1"
 												},
 												"is_colo_cast": {
 													"type": "boolean",
-													"description": "This flag is used to support multiple Interconnects to the same colo for a Customer",
+													"description": "Determines whether to support multiple interconnects to the same data center for a useer.",
 													"default": true
 												}
 											}
@@ -228,29 +228,29 @@
 				"example": "\"2017-06-14T00:00:00Z\"",
 				"readOnly": true,
 				"format": "date-time",
-				"description": "When the tunnel was created"
+				"description": "The date and time the tunnel was created."
 			},
 			"modified_on": {
 				"type": "string",
 				"example": "\"2017-06-14T05:20:00Z\"",
 				"readOnly": true,
 				"format": "date-time",
-				"description": "When the tunnel was last modified"
+				"description": "The date and time the tunnel was last modified."
 			},
 			"name": {
 				"type": "string",
 				"example": "\"pni_ord\"",
-				"description": "Name for the Interconnect. It cannot share a name with other tunnels"
+				"description": "The name of the interconnect. The name cannot share a name with other tunnels."
 			},
 			"interface_address": {
 				"type": "string",
 				"example": "\"192.0.2.0/31\"",
-				"description": "A 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255."
+				"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255."
 			},
 			"description": {
 				"type": "string",
 				"example": "\"Tunnel for Interconnect to ORD\"",
-				"description": "An optional description of the Interconnect"
+				"description": "An optional description of the interconnect"
 			},
 			"health_check": {
 				"type": "object",
@@ -259,18 +259,18 @@
 					"enabled": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Flag to run healthchecks for this tunnel (defaults to true)",
+						"description": "Determines whether to run healthchecks for a tunnel.",
 						"default": true
 					},
 					"target": {
 						"type": "string",
 						"example": "\"203.0.113.1\"",
-						"description": "Address to run healthchecks against"
+						"description": "The address used to run healthchecks for a tunnel."
 					},
 					"type": {
 						"type": "string",
 						"example": "\"request\"",
-						"description": "Type of healthcheck to run (reply or request). Defaults to reply.",
+						"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
 						"default": "reply",
 						"enum": [
 							"reply",
@@ -291,27 +291,27 @@
 					"customer_endpoint": {
 						"type": "string",
 						"example": "\"203.0.113.1\"",
-						"description": "The IP address assigned to the Customer side of the GRE tunnel created as part of the Interconnect"
+						"description": "The IP address assigned to the customer side of the GRE tunnel created as part of the Interconnect"
 					},
 					"is_colo_cast": {
 						"type": "boolean",
 						"example": "true",
-						"description": "This flag is used to support multiple Interconnects to the same colo for a Customer",
+						"description": "Determines whether to support multiple interconnects to the same data center for a useer.",
 						"default": true
 					}
 				},
-				"description": "Configuration specific to GRE Interconnects"
+				"description": "The configuration specific to GRE interconnects."
 			},
 			"mtu": {
 				"type": "integer",
 				"example": "1476",
-				"description": "Maximum Transmission Unit (MTU) in bytes for the Interconnect. Maximum value 1476 and minimum value 576",
+				"description": "The Maximum Transmission Unit (MTU) in bytes for the interconnect. The minimum value is 576.",
 				"default": 1476
 			},
 			"colo_name": {
 				"type": "string",
 				"example": "\"pni_ord\"",
-				"description": "Name for the Interconnect. It cannot share a name with other tunnels"
+				"description": "The name of the interconnect. The name cannot share a name with other tunnels."
 			}
 		},
 		"required_props": [],

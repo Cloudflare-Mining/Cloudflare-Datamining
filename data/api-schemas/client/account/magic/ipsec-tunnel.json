@@ -6,7 +6,7 @@
 	"links": [
 		{
 			"title": "List IPsec tunnels",
-			"description": "List IPsec tunnels associated with an account's Magic setup",
+			"description": "Lists IPsec tunnels associated with an account.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/account_identifier}/magic/ipsec_tunnels",
 			"method": "GET",
@@ -23,8 +23,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"ipsec_tunnels\": [\n      {\n        \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n        \"created_on\": \"2017-06-14T00:00:00Z\",\n        \"modified_on\": \"2017-06-14T05:20:00Z\",\n        \"name\": \"IPsec_1\",\n        \"customer_endpoint\": \"203.0.113.1\",\n        \"cloudflare_endpoint\": \"203.0.113.1\",\n        \"interface_address\": \"192.0.2.0/31\",\n        \"description\": \"Tunnel for ISP X\",\n        \"psk_metadata\": {\n          \"last_generated_on\": \"2017-06-14T05:20:00Z\"\n        },\n        \"tunnel_health_check\": {\n          \"enabled\": true,\n          \"target\": \"203.0.113.1\",\n          \"type\": \"request\"\n        },\n        \"allow_null_cipher\": \"true\"\n      }\n    ]\n  }\n}"
 		},
 		{
-			"title": "IPsec Tunnel Details",
-			"description": "Get a specific IPsec tunnel for an account's Magic setup",
+			"title": "List IPsec tunnel details",
+			"description": "Lists details for a specific IPsec tunnel.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/magic/ipsec_tunnels/{#/definitions/tunnel_identifier}",
 			"method": "GET",
@@ -35,14 +35,14 @@
 				"business": false,
 				"enterprise": true
 			},
-			"html_id": "magic-ipsec-tunnels-ipsec-tunnel-details",
+			"html_id": "magic-ipsec-tunnels-list-ipsec-tunnel-details",
 			"uri": "accounts/:account_identifier/magic/ipsec_tunnels/:tunnel_identifier",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/magic/ipsec_tunnels/01a7362d577a6c3019a474fd6f485823\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"ipsec_tunnel\": {\n      \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n      \"created_on\": \"2017-06-14T00:00:00Z\",\n      \"modified_on\": \"2017-06-14T05:20:00Z\",\n      \"name\": \"IPsec_1\",\n      \"customer_endpoint\": \"203.0.113.1\",\n      \"cloudflare_endpoint\": \"203.0.113.1\",\n      \"interface_address\": \"192.0.2.0/31\",\n      \"description\": \"Tunnel for ISP X\",\n      \"psk_metadata\": {\n        \"last_generated_on\": \"2017-06-14T05:20:00Z\"\n      },\n      \"tunnel_health_check\": {\n        \"enabled\": true,\n        \"target\": \"203.0.113.1\",\n        \"type\": \"request\"\n      },\n      \"allow_null_cipher\": \"true\"\n    }\n  }\n}"
 		},
 		{
 			"title": "Create IPsec tunnels",
-			"description": "Creates new IPsec tunnels associated with an account's Magic setup. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes",
+			"description": "Creates new IPsec tunnels associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/magic/ipsec_tunnels?validate_only={#/definitions/validate_only}",
 			"method": "POST",
@@ -74,7 +74,7 @@
 							"properties": {
 								"name": {
 									"type": "string",
-									"description": "Name for the IPsec tunnel. It cannot share a name with other tunnels",
+									"description": "The name of the IPsec tunnel. The name cannot share a name with other tunnels.",
 									"example": "IPsec_1"
 								},
 								"customer_endpoint": {
@@ -89,12 +89,12 @@
 								},
 								"interface_address": {
 									"type": "string",
-									"description": "A 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
+									"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
 									"example": "192.0.2.0/31"
 								},
 								"description": {
 									"type": "string",
-									"description": "An optional description of the IPsec tunnel",
+									"description": "An optional description forthe IPsec tunnel.",
 									"example": "Tunnel for ISP X"
 								},
 								"psk": {
@@ -122,7 +122,7 @@
 		},
 		{
 			"title": "Generate Pre Shared Key (PSK) for IPsec tunnels",
-			"description": "Generates a Pre Shared Key for a particular IPsec tunnel that is used in the IKE session. Use `?validate_only=true` as an optional query parameter to run validation only without actually generating PSK. Please note that the PSK generated is immediately persisted to Cloudflare's Edge and not stored in a fashion that is retrievable later. As such the PSK should be noted down in a safe place.",
+			"description": "Generates a Pre Shared Key for a specific IPsec tunnel used in the IKE session. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes. After a PSK is generated, the PSK is immediately persisted to Cloudflare's edge and cannot be retrieved later. Note the PSK in a safe place.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/magic/ipsec_tunnels/{#/definitions/tunnel_identifier}/psk_generate?validate_only={#/definitions/validate_only}",
 			"method": "POST",
@@ -140,7 +140,7 @@
 		},
 		{
 			"title": "Update IPsec Tunnel",
-			"description": "Update a specific IPsec tunnel for an account's Magic setup. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes",
+			"description": "Updates a specific IPsec tunnel associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/magic/ipsec_tunnels/{#/definitions/tunnel_identifier}?validate_only={#/definitions/validate_only}",
 			"method": "PUT",
@@ -162,7 +162,7 @@
 					"name": {
 						"type": "string",
 						"example": "\"IPsec_1\"",
-						"description": "Name for the IPsec tunnel. It cannot share a name with other tunnels"
+						"description": "The name of the IPsec tunnel. The name cannot share a name with other tunnels."
 					},
 					"customer_endpoint": {
 						"type": "string",
@@ -177,12 +177,12 @@
 					"interface_address": {
 						"type": "string",
 						"example": "\"192.0.2.0/31\"",
-						"description": "A 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255."
+						"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255."
 					},
 					"description": {
 						"type": "string",
 						"example": "\"Tunnel for ISP X\"",
-						"description": "An optional description of the IPsec tunnel"
+						"description": "An optional description forthe IPsec tunnel."
 					},
 					"psk": {
 						"type": "string",
@@ -205,8 +205,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"modified\": true,\n    \"modified_ipsec_tunnel\": {\n      \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n      \"created_on\": \"2017-06-14T00:00:00Z\",\n      \"modified_on\": \"2017-06-14T05:20:00Z\",\n      \"name\": \"IPsec_1\",\n      \"customer_endpoint\": \"203.0.113.1\",\n      \"cloudflare_endpoint\": \"203.0.113.1\",\n      \"interface_address\": \"192.0.2.0/31\",\n      \"description\": \"Tunnel for ISP X\",\n      \"psk_metadata\": {\n        \"last_generated_on\": \"2017-06-14T05:20:00Z\"\n      },\n      \"tunnel_health_check\": {\n        \"enabled\": true,\n        \"target\": \"203.0.113.1\",\n        \"type\": \"request\"\n      },\n      \"allow_null_cipher\": \"true\"\n    }\n  }\n}"
 		},
 		{
-			"title": "Update Many IPsec tunnels",
-			"description": "Update many IPsec tunnels for an account's Magic setup. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes",
+			"title": "Update multiple IPsec tunnels",
+			"description": "Update multiple IPsec tunnels associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/magic/ipsec_tunnels?validate_only={#/definitions/validate_only}",
 			"method": "PUT",
@@ -217,7 +217,7 @@
 				"business": false,
 				"enterprise": true
 			},
-			"html_id": "magic-ipsec-tunnels-update-many-ipsec-tunnels",
+			"html_id": "magic-ipsec-tunnels-update-multiple-ipsec-tunnels",
 			"uri": "accounts/:account_identifier/magic/ipsec_tunnels?validate_only=:validate_only",
 			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/magic/ipsec_tunnels?validate_only=true\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"ipsec_tunnels\":[{\"id\":\"01a7362d577a6c3019a474fd6f485823\",\"name\":\"IPsec_1\",\"customer_endpoint\":\"203.0.113.1\",\"cloudflare_endpoint\":\"203.0.113.1\",\"interface_address\":\"192.0.2.0/31\",\"description\":\"Tunnel for ISP X\",\"psk\":\"O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy\"}]}'",
 			"parameters": {
@@ -254,7 +254,7 @@
 											"properties": {
 												"name": {
 													"type": "string",
-													"description": "Name for the IPsec tunnel. It cannot share a name with other tunnels",
+													"description": "The name of the IPsec tunnel. The name cannot share a name with other tunnels.",
 													"example": "IPsec_1"
 												},
 												"customer_endpoint": {
@@ -269,12 +269,12 @@
 												},
 												"interface_address": {
 													"type": "string",
-													"description": "A 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
+													"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
 													"example": "192.0.2.0/31"
 												},
 												"description": {
 													"type": "string",
-													"description": "An optional description of the IPsec tunnel",
+													"description": "An optional description forthe IPsec tunnel.",
 													"example": "Tunnel for ISP X"
 												},
 												"psk": {
@@ -303,7 +303,7 @@
 		},
 		{
 			"title": "Delete IPsec Tunnel",
-			"description": "Disable and remove a specific static IPsec Tunnel for an account's Magic setup. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes",
+			"description": "Disables and removes a specific static IPsec Tunnel associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/magic/ipsec_tunnels/{#/definitions/tunnel_identifier}?validate_only={#/definitions/validate_only}",
 			"method": "DELETE",
@@ -339,19 +339,19 @@
 				"example": "\"2017-06-14T00:00:00Z\"",
 				"readOnly": true,
 				"format": "date-time",
-				"description": "When the tunnel was created"
+				"description": "The date and time the tunnel was created."
 			},
 			"modified_on": {
 				"type": "string",
 				"example": "\"2017-06-14T05:20:00Z\"",
 				"readOnly": true,
 				"format": "date-time",
-				"description": "When the tunnel was last modified"
+				"description": "The date and time the tunnel was last modified."
 			},
 			"name": {
 				"type": "string",
 				"example": "\"IPsec_1\"",
-				"description": "Name for the IPsec tunnel. It cannot share a name with other tunnels"
+				"description": "The name of the IPsec tunnel. The name cannot share a name with other tunnels."
 			},
 			"customer_endpoint": {
 				"type": "string",
@@ -366,12 +366,12 @@
 			"interface_address": {
 				"type": "string",
 				"example": "\"192.0.2.0/31\"",
-				"description": "A 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255."
+				"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255."
 			},
 			"description": {
 				"type": "string",
 				"example": "\"Tunnel for ISP X\"",
-				"description": "An optional description of the IPsec tunnel"
+				"description": "An optional description forthe IPsec tunnel."
 			},
 			"psk_metadata": {
 				"type": "object",
@@ -382,10 +382,10 @@
 						"example": "\"2017-06-14T05:20:00Z\"",
 						"readOnly": true,
 						"format": "date-time",
-						"description": "When the tunnel was last modified"
+						"description": "The date and time the tunnel was last modified."
 					}
 				},
-				"description": "Metadata about the PSK such as when it was generated."
+				"description": "The PSK metadata that includes when the PSK was generated."
 			},
 			"tunnel_health_check": {
 				"type": "object",
@@ -394,18 +394,18 @@
 					"enabled": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Flag to run healthchecks for this tunnel (defaults to true)",
+						"description": "Determines whether to run healthchecks for a tunnel.",
 						"default": true
 					},
 					"target": {
 						"type": "string",
 						"example": "\"203.0.113.1\"",
-						"description": "Address to run healthchecks against (defaults to customer_gre_endpoint address)"
+						"description": "The address used to run healthchecks for a tunnel. This field defaults to `customer_gre_endpoint address`."
 					},
 					"type": {
 						"type": "string",
 						"example": "\"request\"",
-						"description": "Type of healthcheck to run (reply or request). Defaults to reply.",
+						"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
 						"default": "reply",
 						"enum": [
 							"reply",
@@ -417,7 +417,7 @@
 			"allow_null_cipher": {
 				"type": "boolean",
 				"example": "\"true\"",
-				"description": "When true, this tunnel can use a null-cipher (ENCR_NULL) in the ESP tunnel (Phase 2)"
+				"description": "When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2)."
 			}
 		},
 		"required_props": [
