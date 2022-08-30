@@ -1,0 +1,30 @@
+{
+	"id": "RATE_LIMITING_TRIAL",
+	"public_name": "Rate Limiting Trial",
+	"currency": "USD",
+	"components": [
+		{
+			"name": "rate_limiting_requests",
+			"publicName": "Rate Limiting Requests",
+			"type": "tieredPricingComponent",
+			"metric": "rate_limiting_allow_usage",
+			"aggregate": "sum",
+			"chargeType": "usage",
+			"chargeModel": "tiered",
+			"defaultQuantity": 0,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 0,
+					"pricingType": "unit",
+					"price": 0,
+					"bucketSize": 0
+				}
+			],
+			"cfQuantityLabel": "{{comma .}} requests",
+			"cfStartOfFirstUnit": 10001,
+			"cfUsageDivisor": 1,
+			"cfUsageID": "rate_limiting_allow_usage"
+		}
+	]
+}

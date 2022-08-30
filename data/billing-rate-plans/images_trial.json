@@ -1,0 +1,51 @@
+{
+	"id": "IMAGES_TRIAL",
+	"public_name": "Cloudflare Images Trial",
+	"currency": "USD",
+	"components": [
+		{
+			"name": "image_delivered_per_hundred_thousand",
+			"publicName": "Image Delivered (per 100k)",
+			"type": "tieredPricingComponent",
+			"metric": "image_requests",
+			"aggregate": "sum",
+			"chargeType": "usage",
+			"chargeModel": "tiered",
+			"defaultQuantity": 0,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 0,
+					"pricingType": "unit",
+					"price": 0,
+					"bucketSize": 0
+				}
+			],
+			"cfQuantityLabel": "{{comma .}} images delivered",
+			"cfStartOfFirstUnit": 1,
+			"cfUsageDivisor": 1,
+			"cfUsageID": "image_requests"
+		},
+		{
+			"name": "images_storage_per_hundred_thousand",
+			"publicName": "Image Storage (per 100k)",
+			"type": "tieredPricingComponent",
+			"aggregate": "",
+			"features": [
+				"images.storage"
+			],
+			"chargeType": "subscription",
+			"chargeModel": "tiered",
+			"defaultQuantity": 0,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 100000000,
+					"pricingType": "unit",
+					"price": 0,
+					"bucketSize": 0
+				}
+			]
+		}
+	]
+}
