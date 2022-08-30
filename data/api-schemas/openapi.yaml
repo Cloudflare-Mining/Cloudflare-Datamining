@@ -5030,6 +5030,8 @@ components:
           $ref: '#/components/schemas/keyless-certificate'
         modified_on:
           $ref: '#/components/schemas/components-schemas-modified_on'
+        policy:
+          $ref: '#/components/schemas/policy'
         priority:
           $ref: '#/components/schemas/schemas-priority'
         signature:
@@ -6225,6 +6227,10 @@ components:
           $ref: '#/components/schemas/model'
         name:
           $ref: '#/components/schemas/devices_components-schemas-name'
+        os_distro_name:
+          $ref: '#/components/schemas/os_distro_name'
+        os_distro_revision:
+          $ref: '#/components/schemas/os_distro_revision'
         os_version:
           $ref: '#/components/schemas/os_version'
         revoked_at:
@@ -11972,6 +11978,14 @@ components:
       items:
         $ref: '#/components/schemas/schemas-origin'
       type: array
+    os_distro_name:
+      description: The Linux distro name
+      example: ubuntu
+      type: string
+    os_distro_revision:
+      description: The Linux distro revision
+      example: 1.0.0
+      type: string
     os_version:
       description: The operating system version
       example: 10.0.0
@@ -12916,6 +12930,17 @@ components:
       - properties:
           result:
             $ref: '#/components/schemas/components-schemas-policies'
+    policy:
+      description: 'Specify the policy that determines the region where your private
+        key will be held locally. HTTPS connections to any excluded data center will
+        still be fully encrypted, but will incur some latency while Keyless SSL is
+        used to complete the handshake with the nearest allowed data center. Any combination
+        of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements)
+        can be chosen, such as ''country: IN'', as well as ''region: EU'' which refers
+        to the EU region. If there are too few data centers satisfying the policy,
+        it will be rejected.'
+      example: '(country: US) or (region: EU)'
+      type: string
     policy_check_response:
       allOf:
       - $ref: '#/components/schemas/api-response-single'
@@ -19323,12 +19348,6 @@ components:
       - "on"
       - "off"
       type: string
-    toggle_output_request:
-      properties:
-        enabled:
-          $ref: '#/components/schemas/output_enabled'
-      required:
-      - enabled
     token:
       properties:
         condition:
@@ -19868,6 +19887,12 @@ components:
           $ref: '#/components/schemas/live_input_metadata'
         recording:
           $ref: '#/components/schemas/live_input_recording_settings'
+    update_output_request:
+      properties:
+        enabled:
+          $ref: '#/components/schemas/output_enabled'
+      required:
+      - enabled
     update_rule_properties:
       properties:
         actions:
@@ -20058,7 +20083,7 @@ components:
         last_successful_login:
           $ref: '#/components/schemas/last_successful_login'
         name:
-          $ref: '#/components/schemas/components-schemas-email'
+          $ref: '#/components/schemas/users_components-schemas-name'
         seat_uid:
           $ref: '#/components/schemas/seat_uid'
         uid:
@@ -20071,6 +20096,10 @@ components:
       example: f3b12456-80dd-4e89-9f5f-ba3dfff12365
     users_components-schemas-identifier:
       example: 699d98642c564d2e855e9661899b7252
+    users_components-schemas-name:
+      description: The name of the user.
+      example: Jane Doe
+      type: string
     users_components-schemas-response_collection:
       allOf:
       - $ref: '#/components/schemas/api-response-collection'
@@ -31445,10 +31474,9 @@ paths:
       - api_email: []
         api_key: []
       summary: Remove an output from a live input
-  /accounts/{account_identifier}/stream/live_inputs/{live_input_identifier}/outputs/{output_identifier}/enabled:
     put:
-      description: Toggles the 'enabled' state on an output from a live input.
-      operationId: stream-live-inputs-toggle-an-output-on-a-live-input
+      description: Updates an output's details associated with a live input.
+      operationId: stream-live-inputs-update-a-single-output-on-a-live-input
       parameters:
       - in: path
         name: output_identifier
@@ -31469,7 +31497,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/toggle_output_request'
+              $ref: '#/components/schemas/update_output_request'
         required: true
       responses:
         4xx:
@@ -31479,17 +31507,17 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/output_response_single'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Toggle an output on a live input response failure
+          description: Update a single output on a live input response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/output_response_single'
-          description: Toggle an output on a live input response
+          description: Update a single output on a live input response
       security:
       - api_email: []
         api_key: []
-      summary: Toggle an output on a live input
+      summary: Update a single output on a live input
   /accounts/{account_identifier}/stream/watermarks:
     get:
       description: Lists all watermark profiles for an account.
@@ -35645,6 +35673,44 @@ paths:
       - api_email: []
         api_key: []
       summary: Update a service token
+  /accounts/{identifier}/access/service_tokens/{uuid}/refresh:
+    post:
+      description: Refreshes the expiration of a service token
+      operationId: access-service-tokens-refresh-a-service-token
+      parameters:
+      - in: path
+        name: uuid
+        required: true
+        schema:
+          $ref: '#/components/schemas/uuid'
+      - in: path
+        name: identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      requestBody:
+        content:
+          application/json: {}
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/service-tokens_components-schemas-single_response'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Refresh a service token response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/service-tokens_components-schemas-single_response'
+          description: Refresh a service token response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Refresh a service token
   /accounts/{identifier}/access/users:
     get:
       description: Gets a list of users for an account.
@@ -36215,7 +36281,21 @@ paths:
           $ref: '#/components/schemas/common_components-schemas-identifier'
       requestBody:
         content:
-          application/json: {}
+          application/json:
+            schema:
+              properties:
+                alert_type:
+                  $ref: '#/components/schemas/alert_type'
+                description:
+                  $ref: '#/components/schemas/policies_components-schemas-description'
+                enabled:
+                  $ref: '#/components/schemas/policies_components-schemas-enabled'
+                filters:
+                  $ref: '#/components/schemas/components-schemas-filters'
+                mechanisms:
+                  $ref: '#/components/schemas/mechanisms'
+                name:
+                  $ref: '#/components/schemas/policies_components-schemas-name-2'
         required: true
       responses:
         4xx:
@@ -46772,6 +46852,8 @@ paths:
                   $ref: '#/components/schemas/certificate'
                 geo_restrictions:
                   $ref: '#/components/schemas/geo_restrictions'
+                policy:
+                  $ref: '#/components/schemas/policy'
                 private_key:
                   $ref: '#/components/schemas/private_key'
                 type:
@@ -46921,6 +47003,8 @@ paths:
                   $ref: '#/components/schemas/certificate'
                 geo_restrictions:
                   $ref: '#/components/schemas/geo_restrictions'
+                policy:
+                  $ref: '#/components/schemas/policy'
                 private_key:
                   $ref: '#/components/schemas/private_key'
               type: object
