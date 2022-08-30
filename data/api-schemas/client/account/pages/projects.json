@@ -36,7 +36,7 @@
 			"html_id": "pages-project-get-projects",
 			"uri": "accounts/:account_identifier/pages/projects",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/pages/projects\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"name\": \"NextJS Blog\",\n      \"id\": \"7b162ea7-7367-4d67-bcde-1160995d5\",\n      \"created_on\": \"2017-01-01T00:00:00Z\",\n      \"subdomain\": \"helloworld.pages.dev\",\n      \"domains\": [\n        \"customdomain.com\",\n        \"customdomain.org\"\n      ],\n      \"source\": {\n        \"type\": \"github\",\n        \"config\": {\n          \"owner\": \"cloudflare\",\n          \"repo_name\": \"ninjakittens\",\n          \"production_branch\": \"main\",\n          \"pr_comments_enabled\": true,\n          \"deployments_enabled\": true\n        }\n      },\n      \"build_config\": {\n        \"build_command\": \"npm run build\",\n        \"destination_dir\": \"build\",\n        \"root_dir\": \"/\",\n        \"web_analytics_tag\": \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n        \"web_analytics_token\": \"021e1057c18547eca7b79f2516f06o7x\"\n      },\n      \"deployment_configs\": {\n        \"preview\": {\n          \"env_vars\": {\n            \"BUILD_VERSION\": {\n              \"value\": \"3.3\"\n            }\n          },\n          \"compatibility_date\": \"2022-01-01\",\n          \"compatibility_flags\": [\n            \"url_standard\"\n          ]\n        },\n        \"production\": {\n          \"env_vars\": {\n            \"BUILD_VERSION\": {\n              \"value\": \"3.3\"\n            }\n          },\n          \"compatibility_date\": \"2022-01-01\",\n          \"compatibility_flags\": [\n            \"url_standard\"\n          ]\n        }\n      },\n      \"latest_deployment\": {},\n      \"canonical_deployment\": {}\n    }\n  ],\n  \"result_info\": {\n    \"page\": 1,\n    \"per_page\": 100,\n    \"count\": 1,\n    \"total_count\": 1\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"name\": \"NextJS Blog\",\n      \"id\": \"7b162ea7-7367-4d67-bcde-1160995d5\",\n      \"created_on\": \"2017-01-01T00:00:00Z\",\n      \"subdomain\": \"helloworld.pages.dev\",\n      \"domains\": [\n        \"customdomain.com\",\n        \"customdomain.org\"\n      ],\n      \"source\": {\n        \"type\": \"github\",\n        \"config\": {\n          \"owner\": \"cloudflare\",\n          \"repo_name\": \"ninjakittens\",\n          \"production_branch\": \"main\",\n          \"pr_comments_enabled\": true,\n          \"production_deployments_enabled\": true,\n          \"preview_deployment_setting\": \"custom\",\n          \"preview_branch_includes\": [\n            \"release/*\",\n            \"production\",\n            \"main\"\n          ],\n          \"preview_branch_excludes\": [\n            \"dependabot/*\",\n            \"dev\",\n            \"*/ignore\"\n          ]\n        }\n      },\n      \"build_config\": {\n        \"build_command\": \"npm run build\",\n        \"destination_dir\": \"build\",\n        \"root_dir\": \"/\",\n        \"web_analytics_tag\": \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n        \"web_analytics_token\": \"021e1057c18547eca7b79f2516f06o7x\"\n      },\n      \"deployment_configs\": {\n        \"preview\": {\n          \"env_vars\": {\n            \"BUILD_VERSION\": {\n              \"value\": \"3.3\"\n            }\n          },\n          \"kv_namespaces\": {\n            \"KV_BINDING\": {\n              \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n            }\n          },\n          \"durable_object_namespaces\": {\n            \"DO_BINDING\": {\n              \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n            }\n          },\n          \"r2_buckets\": {\n            \"R2_BINDING\": {\n              \"name\": \"some-bucket\"\n            }\n          },\n          \"d1_databases\": {\n            \"D1_BINDING\": {\n              \"id\": \"445e2955-951a-43f8-a35b-a4d0c8138f63\"\n            }\n          },\n          \"compatibility_date\": \"2022-01-01\",\n          \"compatibility_flags\": [\n            \"url_standard\"\n          ]\n        },\n        \"production\": {\n          \"env_vars\": {\n            \"BUILD_VERSION\": {\n              \"value\": \"3.3\"\n            }\n          },\n          \"kv_namespaces\": {\n            \"KV_BINDING\": {\n              \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n            }\n          },\n          \"durable_object_namespaces\": {\n            \"DO_BINDING\": {\n              \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n            }\n          },\n          \"r2_buckets\": {\n            \"R2_BINDING\": {\n              \"name\": \"some-bucket\"\n            }\n          },\n          \"d1_databases\": {\n            \"D1_BINDING\": {\n              \"id\": \"445e2955-951a-43f8-a35b-a4d0c8138f63\"\n            }\n          },\n          \"compatibility_date\": \"2022-01-01\",\n          \"compatibility_flags\": [\n            \"url_standard\"\n          ]\n        }\n      },\n      \"latest_deployment\": {},\n      \"canonical_deployment\": {},\n      \"production_branch\": \"main\"\n    }\n  ],\n  \"result_info\": {\n    \"page\": 1,\n    \"per_page\": 100,\n    \"count\": 1,\n    \"total_count\": 1\n  }\n}"
 		},
 		{
 			"title": "Get project",
@@ -69,7 +69,7 @@
 			"html_id": "pages-project-get-project",
 			"uri": "accounts/:account_identifier/pages/projects/:project_name",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/pages/projects/this-is-my-project-01\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"name\": \"NextJS Blog\",\n    \"id\": \"7b162ea7-7367-4d67-bcde-1160995d5\",\n    \"created_on\": \"2017-01-01T00:00:00Z\",\n    \"subdomain\": \"helloworld.pages.dev\",\n    \"domains\": [\n      \"customdomain.com\",\n      \"customdomain.org\"\n    ],\n    \"source\": {\n      \"type\": \"github\",\n      \"config\": {\n        \"owner\": \"cloudflare\",\n        \"repo_name\": \"ninjakittens\",\n        \"production_branch\": \"main\",\n        \"pr_comments_enabled\": true,\n        \"deployments_enabled\": true\n      }\n    },\n    \"build_config\": {\n      \"build_command\": \"npm run build\",\n      \"destination_dir\": \"build\",\n      \"root_dir\": \"/\",\n      \"web_analytics_tag\": \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n      \"web_analytics_token\": \"021e1057c18547eca7b79f2516f06o7x\"\n    },\n    \"deployment_configs\": {\n      \"preview\": {\n        \"env_vars\": {\n          \"BUILD_VERSION\": {\n            \"value\": \"3.3\"\n          }\n        },\n        \"compatibility_date\": \"2022-01-01\",\n        \"compatibility_flags\": [\n          \"url_standard\"\n        ]\n      },\n      \"production\": {\n        \"env_vars\": {\n          \"BUILD_VERSION\": {\n            \"value\": \"3.3\"\n          }\n        },\n        \"compatibility_date\": \"2022-01-01\",\n        \"compatibility_flags\": [\n          \"url_standard\"\n        ]\n      }\n    },\n    \"latest_deployment\": {},\n    \"canonical_deployment\": {}\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"name\": \"NextJS Blog\",\n    \"id\": \"7b162ea7-7367-4d67-bcde-1160995d5\",\n    \"created_on\": \"2017-01-01T00:00:00Z\",\n    \"subdomain\": \"helloworld.pages.dev\",\n    \"domains\": [\n      \"customdomain.com\",\n      \"customdomain.org\"\n    ],\n    \"source\": {\n      \"type\": \"github\",\n      \"config\": {\n        \"owner\": \"cloudflare\",\n        \"repo_name\": \"ninjakittens\",\n        \"production_branch\": \"main\",\n        \"pr_comments_enabled\": true,\n        \"production_deployments_enabled\": true,\n        \"preview_deployment_setting\": \"custom\",\n        \"preview_branch_includes\": [\n          \"release/*\",\n          \"production\",\n          \"main\"\n        ],\n        \"preview_branch_excludes\": [\n          \"dependabot/*\",\n          \"dev\",\n          \"*/ignore\"\n        ]\n      }\n    },\n    \"build_config\": {\n      \"build_command\": \"npm run build\",\n      \"destination_dir\": \"build\",\n      \"root_dir\": \"/\",\n      \"web_analytics_tag\": \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n      \"web_analytics_token\": \"021e1057c18547eca7b79f2516f06o7x\"\n    },\n    \"deployment_configs\": {\n      \"preview\": {\n        \"env_vars\": {\n          \"BUILD_VERSION\": {\n            \"value\": \"3.3\"\n          }\n        },\n        \"kv_namespaces\": {\n          \"KV_BINDING\": {\n            \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n          }\n        },\n        \"durable_object_namespaces\": {\n          \"DO_BINDING\": {\n            \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n          }\n        },\n        \"r2_buckets\": {\n          \"R2_BINDING\": {\n            \"name\": \"some-bucket\"\n          }\n        },\n        \"d1_databases\": {\n          \"D1_BINDING\": {\n            \"id\": \"445e2955-951a-43f8-a35b-a4d0c8138f63\"\n          }\n        },\n        \"compatibility_date\": \"2022-01-01\",\n        \"compatibility_flags\": [\n          \"url_standard\"\n        ]\n      },\n      \"production\": {\n        \"env_vars\": {\n          \"BUILD_VERSION\": {\n            \"value\": \"3.3\"\n          }\n        },\n        \"kv_namespaces\": {\n          \"KV_BINDING\": {\n            \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n          }\n        },\n        \"durable_object_namespaces\": {\n          \"DO_BINDING\": {\n            \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n          }\n        },\n        \"r2_buckets\": {\n          \"R2_BINDING\": {\n            \"name\": \"some-bucket\"\n          }\n        },\n        \"d1_databases\": {\n          \"D1_BINDING\": {\n            \"id\": \"445e2955-951a-43f8-a35b-a4d0c8138f63\"\n          }\n        },\n        \"compatibility_date\": \"2022-01-01\",\n        \"compatibility_flags\": [\n          \"url_standard\"\n        ]\n      }\n    },\n    \"latest_deployment\": {},\n    \"canonical_deployment\": {},\n    \"production_branch\": \"main\"\n  }\n}"
 		},
 		{
 			"title": "Delete project",
@@ -142,7 +142,7 @@
 			"cfOwnership": "pages",
 			"html_id": "pages-project-create-project",
 			"uri": "accounts/:account_identifier/pages/projects",
-			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/pages/projects\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"NextJS Blog\",\"id\":\"7b162ea7-7367-4d67-bcde-1160995d5\",\"created_on\":\"2017-01-01T00:00:00Z\",\"subdomain\":\"helloworld.pages.dev\",\"domains\":[\"customdomain.com\",\"customdomain.org\"],\"source\":{\"type\":\"github\",\"config\":{\"owner\":\"cloudflare\",\"repo_name\":\"ninjakittens\",\"production_branch\":\"main\",\"pr_comments_enabled\":true,\"deployments_enabled\":true}},\"build_config\":{\"build_command\":\"npm run build\",\"destination_dir\":\"build\",\"root_dir\":\"/\",\"web_analytics_tag\":\"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\"web_analytics_token\":\"021e1057c18547eca7b79f2516f06o7x\"},\"deployment_configs\":{\"preview\":{\"env_vars\":{\"BUILD_VERSION\":{\"value\":\"3.3\"}},\"compatibility_date\":\"2022-01-01\",\"compatibility_flags\":[\"url_standard\"]},\"production\":{\"env_vars\":{\"BUILD_VERSION\":{\"value\":\"3.3\"}},\"compatibility_date\":\"2022-01-01\",\"compatibility_flags\":[\"url_standard\"]}},\"latest_deployment\":{},\"canonical_deployment\":{}}'",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/pages/projects\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"NextJS Blog\",\"id\":\"7b162ea7-7367-4d67-bcde-1160995d5\",\"created_on\":\"2017-01-01T00:00:00Z\",\"subdomain\":\"helloworld.pages.dev\",\"domains\":[\"customdomain.com\",\"customdomain.org\"],\"source\":{\"type\":\"github\",\"config\":{\"owner\":\"cloudflare\",\"repo_name\":\"ninjakittens\",\"production_branch\":\"main\",\"pr_comments_enabled\":true,\"production_deployments_enabled\":true,\"preview_deployment_setting\":\"custom\",\"preview_branch_includes\":[\"release/*\",\"production\",\"main\"],\"preview_branch_excludes\":[\"dependabot/*\",\"dev\",\"*/ignore\"]}},\"build_config\":{\"build_command\":\"npm run build\",\"destination_dir\":\"build\",\"root_dir\":\"/\",\"web_analytics_tag\":\"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\"web_analytics_token\":\"021e1057c18547eca7b79f2516f06o7x\"},\"deployment_configs\":{\"preview\":{\"env_vars\":{\"BUILD_VERSION\":{\"value\":\"3.3\"}},\"kv_namespaces\":{\"KV_BINDING\":{\"namespace_id\":\"5eb63bbbe01eeed093cb22bb8f5acdc3\"}},\"durable_object_namespaces\":{\"DO_BINDING\":{\"namespace_id\":\"5eb63bbbe01eeed093cb22bb8f5acdc3\"}},\"r2_buckets\":{\"R2_BINDING\":{\"name\":\"some-bucket\"}},\"d1_databases\":{\"D1_BINDING\":{\"id\":\"445e2955-951a-43f8-a35b-a4d0c8138f63\"}},\"compatibility_date\":\"2022-01-01\",\"compatibility_flags\":[\"url_standard\"]},\"production\":{\"env_vars\":{\"BUILD_VERSION\":{\"value\":\"3.3\"}},\"kv_namespaces\":{\"KV_BINDING\":{\"namespace_id\":\"5eb63bbbe01eeed093cb22bb8f5acdc3\"}},\"durable_object_namespaces\":{\"DO_BINDING\":{\"namespace_id\":\"5eb63bbbe01eeed093cb22bb8f5acdc3\"}},\"r2_buckets\":{\"R2_BINDING\":{\"name\":\"some-bucket\"}},\"d1_databases\":{\"D1_BINDING\":{\"id\":\"445e2955-951a-43f8-a35b-a4d0c8138f63\"}},\"compatibility_date\":\"2022-01-01\",\"compatibility_flags\":[\"url_standard\"]}},\"latest_deployment\":{},\"canonical_deployment\":{},\"production_branch\":\"main\"}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -180,7 +180,7 @@
 					},
 					"source": {
 						"type": "object",
-						"example": "{\n  \"type\": \"github\",\n  \"config\": {\n    \"owner\": \"cloudflare\",\n    \"repo_name\": \"ninjakittens\",\n    \"production_branch\": \"main\",\n    \"pr_comments_enabled\": true,\n    \"deployments_enabled\": true\n  }\n}",
+						"example": "{\n  \"type\": \"github\",\n  \"config\": {\n    \"owner\": \"cloudflare\",\n    \"repo_name\": \"ninjakittens\",\n    \"production_branch\": \"main\",\n    \"pr_comments_enabled\": true,\n    \"production_deployments_enabled\": true,\n    \"preview_deployment_setting\": \"custom\",\n    \"preview_branch_includes\": [\n      \"release/*\",\n      \"production\",\n      \"main\"\n    ],\n    \"preview_branch_excludes\": [\n      \"dependabot/*\",\n      \"dev\",\n      \"*/ignore\"\n    ]\n  }\n}",
 						"properties": {
 							"type": {
 								"type": "string",
@@ -190,7 +190,7 @@
 							},
 							"config": {
 								"type": "object",
-								"example": "{\n  \"owner\": \"cloudflare\",\n  \"repo_name\": \"ninjakittens\",\n  \"production_branch\": \"main\",\n  \"pr_comments_enabled\": true,\n  \"deployments_enabled\": true\n}",
+								"example": "{\n  \"owner\": \"cloudflare\",\n  \"repo_name\": \"ninjakittens\",\n  \"production_branch\": \"main\",\n  \"pr_comments_enabled\": true,\n  \"production_deployments_enabled\": true,\n  \"preview_deployment_setting\": \"custom\",\n  \"preview_branch_includes\": [\n    \"release/*\",\n    \"production\",\n    \"main\"\n  ],\n  \"preview_branch_excludes\": [\n    \"dependabot/*\",\n    \"dev\",\n    \"*/ignore\"\n  ]\n}",
 								"properties": {
 									"owner": {
 										"type": "string",
@@ -213,10 +213,30 @@
 										"example": "true",
 										"description": "Enable Pages to comment on Pull Requests"
 									},
-									"deployments_enabled": {
+									"production_deployments_enabled": {
 										"type": "boolean",
 										"example": "true",
-										"description": "Toggle deployments on this repo"
+										"description": "Toggle production deployments on this repo"
+									},
+									"preview_deployment_setting": {
+										"type": "string",
+										"example": "\"custom\"",
+										"description": "Preview deployment setting",
+										"enum": [
+											"all",
+											"none",
+											"custom"
+										]
+									},
+									"preview_branch_includes": {
+										"type": "array",
+										"example": "[\n  \"release/*\",\n  \"production\",\n  \"main\"\n]",
+										"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard"
+									},
+									"preview_branch_excludes": {
+										"type": "array",
+										"example": "[\n  \"dependabot/*\",\n  \"dev\",\n  \"*/ignore\"\n]",
+										"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard"
 									}
 								}
 							}
@@ -273,11 +293,11 @@
 					},
 					"deployment_configs": {
 						"type": "object",
-						"example": "{\n  \"preview\": {\n    \"env_vars\": {\n      \"BUILD_VERSION\": {\n        \"value\": \"3.3\"\n      }\n    },\n    \"compatibility_date\": \"2022-01-01\",\n    \"compatibility_flags\": [\n      \"url_standard\"\n    ]\n  },\n  \"production\": {\n    \"env_vars\": {\n      \"BUILD_VERSION\": {\n        \"value\": \"3.3\"\n      }\n    },\n    \"compatibility_date\": \"2022-01-01\",\n    \"compatibility_flags\": [\n      \"url_standard\"\n    ]\n  }\n}",
+						"example": "{\n  \"preview\": {\n    \"env_vars\": {\n      \"BUILD_VERSION\": {\n        \"value\": \"3.3\"\n      }\n    },\n    \"kv_namespaces\": {\n      \"KV_BINDING\": {\n        \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n      }\n    },\n    \"durable_object_namespaces\": {\n      \"DO_BINDING\": {\n        \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n      }\n    },\n    \"r2_buckets\": {\n      \"R2_BINDING\": {\n        \"name\": \"some-bucket\"\n      }\n    },\n    \"d1_databases\": {\n      \"D1_BINDING\": {\n        \"id\": \"445e2955-951a-43f8-a35b-a4d0c8138f63\"\n      }\n    },\n    \"compatibility_date\": \"2022-01-01\",\n    \"compatibility_flags\": [\n      \"url_standard\"\n    ]\n  },\n  \"production\": {\n    \"env_vars\": {\n      \"BUILD_VERSION\": {\n        \"value\": \"3.3\"\n      }\n    },\n    \"kv_namespaces\": {\n      \"KV_BINDING\": {\n        \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n      }\n    },\n    \"durable_object_namespaces\": {\n      \"DO_BINDING\": {\n        \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n      }\n    },\n    \"r2_buckets\": {\n      \"R2_BINDING\": {\n        \"name\": \"some-bucket\"\n      }\n    },\n    \"d1_databases\": {\n      \"D1_BINDING\": {\n        \"id\": \"445e2955-951a-43f8-a35b-a4d0c8138f63\"\n      }\n    },\n    \"compatibility_date\": \"2022-01-01\",\n    \"compatibility_flags\": [\n      \"url_standard\"\n    ]\n  }\n}",
 						"properties": {
 							"preview": {
 								"type": "object",
-								"example": "{\n  \"env_vars\": {\n    \"BUILD_VERSION\": {\n      \"value\": \"3.3\"\n    }\n  },\n  \"compatibility_date\": \"2022-01-01\",\n  \"compatibility_flags\": [\n    \"url_standard\"\n  ]\n}",
+								"example": "{\n  \"env_vars\": {\n    \"BUILD_VERSION\": {\n      \"value\": \"3.3\"\n    }\n  },\n  \"kv_namespaces\": {\n    \"KV_BINDING\": {\n      \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n    }\n  },\n  \"durable_object_namespaces\": {\n    \"DO_BINDING\": {\n      \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n    }\n  },\n  \"r2_buckets\": {\n    \"R2_BINDING\": {\n      \"name\": \"some-bucket\"\n    }\n  },\n  \"d1_databases\": {\n    \"D1_BINDING\": {\n      \"id\": \"445e2955-951a-43f8-a35b-a4d0c8138f63\"\n    }\n  },\n  \"compatibility_date\": \"2022-01-01\",\n  \"compatibility_flags\": [\n    \"url_standard\"\n  ]\n}",
 								"properties": {
 									"env_vars": {
 										"type": [
@@ -300,6 +320,90 @@
 											}
 										},
 										"description": "Environment variables for build configs"
+									},
+									"kv_namespaces": {
+										"type": [
+											"object"
+										],
+										"example": "{\n  \"KV_BINDING\": {\n    \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n  }\n}",
+										"properties": {
+											"KV_BINDING": {
+												"type": "object",
+												"example": "{\n  \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n}",
+												"properties": {
+													"namespace_id": {
+														"type": "string",
+														"example": "\"5eb63bbbe01eeed093cb22bb8f5acdc3\"",
+														"description": "ID of the KV namespace"
+													}
+												},
+												"description": "KV binding"
+											}
+										},
+										"description": "KV namespaces used for Pages Functions"
+									},
+									"durable_object_namespaces": {
+										"type": [
+											"object"
+										],
+										"example": "{\n  \"DO_BINDING\": {\n    \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n  }\n}",
+										"properties": {
+											"DO_BINDING": {
+												"type": "object",
+												"example": "{\n  \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n}",
+												"properties": {
+													"namespace_id": {
+														"type": "string",
+														"example": "\"5eb63bbbe01eeed093cb22bb8f5acdc3\"",
+														"description": "ID of the Durabble Object namespace"
+													}
+												},
+												"description": "Durabble Object binding"
+											}
+										},
+										"description": "Durabble Object namespaces used for Pages Functions"
+									},
+									"r2_buckets": {
+										"type": [
+											"object"
+										],
+										"example": "{\n  \"R2_BINDING\": {\n    \"name\": \"some-bucket\"\n  }\n}",
+										"properties": {
+											"R2_BINDING": {
+												"type": "object",
+												"example": "{\n  \"name\": \"some-bucket\"\n}",
+												"properties": {
+													"name": {
+														"type": "string",
+														"example": "\"some-bucket\"",
+														"description": "Name of the R2 bucket"
+													}
+												},
+												"description": "R2 binding"
+											}
+										},
+										"description": "R2 buckets used for Pages Functions"
+									},
+									"d1_databases": {
+										"type": [
+											"object"
+										],
+										"example": "{\n  \"D1_BINDING\": {\n    \"id\": \"445e2955-951a-43f8-a35b-a4d0c8138f63\"\n  }\n}",
+										"properties": {
+											"D1_BINDING": {
+												"type": "object",
+												"example": "{\n  \"id\": \"445e2955-951a-43f8-a35b-a4d0c8138f63\"\n}",
+												"properties": {
+													"id": {
+														"type": "string",
+														"example": "\"445e2955-951a-43f8-a35b-a4d0c8138f63\"",
+														"description": "UUID of the D1 database"
+													}
+												},
+												"description": "D1 binding"
+											}
+										},
+										"description": "D1 databases used for Pages Functions"
 									},
 									"compatibility_date": {
 										"type": "string",
@@ -316,7 +420,7 @@
 							},
 							"production": {
 								"type": "object",
-								"example": "{\n  \"env_vars\": {\n    \"BUILD_VERSION\": {\n      \"value\": \"3.3\"\n    }\n  },\n  \"compatibility_date\": \"2022-01-01\",\n  \"compatibility_flags\": [\n    \"url_standard\"\n  ]\n}",
+								"example": "{\n  \"env_vars\": {\n    \"BUILD_VERSION\": {\n      \"value\": \"3.3\"\n    }\n  },\n  \"kv_namespaces\": {\n    \"KV_BINDING\": {\n      \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n    }\n  },\n  \"durable_object_namespaces\": {\n    \"DO_BINDING\": {\n      \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n    }\n  },\n  \"r2_buckets\": {\n    \"R2_BINDING\": {\n      \"name\": \"some-bucket\"\n    }\n  },\n  \"d1_databases\": {\n    \"D1_BINDING\": {\n      \"id\": \"445e2955-951a-43f8-a35b-a4d0c8138f63\"\n    }\n  },\n  \"compatibility_date\": \"2022-01-01\",\n  \"compatibility_flags\": [\n    \"url_standard\"\n  ]\n}",
 								"properties": {
 									"env_vars": {
 										"type": [
@@ -339,6 +443,90 @@
 											}
 										},
 										"description": "Environment variables for build configs"
+									},
+									"kv_namespaces": {
+										"type": [
+											"object"
+										],
+										"example": "{\n  \"KV_BINDING\": {\n    \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n  }\n}",
+										"properties": {
+											"KV_BINDING": {
+												"type": "object",
+												"example": "{\n  \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n}",
+												"properties": {
+													"namespace_id": {
+														"type": "string",
+														"example": "\"5eb63bbbe01eeed093cb22bb8f5acdc3\"",
+														"description": "ID of the KV namespace"
+													}
+												},
+												"description": "KV binding"
+											}
+										},
+										"description": "KV namespaces used for Pages Functions"
+									},
+									"durable_object_namespaces": {
+										"type": [
+											"object"
+										],
+										"example": "{\n  \"DO_BINDING\": {\n    \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n  }\n}",
+										"properties": {
+											"DO_BINDING": {
+												"type": "object",
+												"example": "{\n  \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n}",
+												"properties": {
+													"namespace_id": {
+														"type": "string",
+														"example": "\"5eb63bbbe01eeed093cb22bb8f5acdc3\"",
+														"description": "ID of the Durabble Object namespace"
+													}
+												},
+												"description": "Durabble Object binding"
+											}
+										},
+										"description": "Durabble Object namespaces used for Pages Functions"
+									},
+									"r2_buckets": {
+										"type": [
+											"object"
+										],
+										"example": "{\n  \"R2_BINDING\": {\n    \"name\": \"some-bucket\"\n  }\n}",
+										"properties": {
+											"R2_BINDING": {
+												"type": "object",
+												"example": "{\n  \"name\": \"some-bucket\"\n}",
+												"properties": {
+													"name": {
+														"type": "string",
+														"example": "\"some-bucket\"",
+														"description": "Name of the R2 bucket"
+													}
+												},
+												"description": "R2 binding"
+											}
+										},
+										"description": "R2 buckets used for Pages Functions"
+									},
+									"d1_databases": {
+										"type": [
+											"object"
+										],
+										"example": "{\n  \"D1_BINDING\": {\n    \"id\": \"445e2955-951a-43f8-a35b-a4d0c8138f63\"\n  }\n}",
+										"properties": {
+											"D1_BINDING": {
+												"type": "object",
+												"example": "{\n  \"id\": \"445e2955-951a-43f8-a35b-a4d0c8138f63\"\n}",
+												"properties": {
+													"id": {
+														"type": "string",
+														"example": "\"445e2955-951a-43f8-a35b-a4d0c8138f63\"",
+														"description": "UUID of the D1 database"
+													}
+												},
+												"description": "D1 binding"
+											}
+										},
+										"description": "D1 databases used for Pages Functions"
 									},
 									"compatibility_date": {
 										"type": "string",
@@ -430,6 +618,8 @@
 									},
 									"is_skipped": {
 										"type": "boolean",
+										"example": "true",
+										"description": "If the deployment has been skipped",
 										"readOnly": true
 									},
 									"latest_stage": {
@@ -615,7 +805,7 @@
 									},
 									"source": {
 										"type": "object",
-										"example": "{\n  \"type\": \"github\",\n  \"config\": {\n    \"owner\": \"cloudflare\",\n    \"repo_name\": \"ninjakittens\",\n    \"production_branch\": \"main\",\n    \"pr_comments_enabled\": true,\n    \"deployments_enabled\": true\n  }\n}",
+										"example": "{\n  \"type\": \"github\",\n  \"config\": {\n    \"owner\": \"cloudflare\",\n    \"repo_name\": \"ninjakittens\",\n    \"production_branch\": \"main\",\n    \"pr_comments_enabled\": true,\n    \"production_deployments_enabled\": true,\n    \"preview_deployment_setting\": \"custom\",\n    \"preview_branch_includes\": [\n      \"release/*\",\n      \"production\",\n      \"main\"\n    ],\n    \"preview_branch_excludes\": [\n      \"dependabot/*\",\n      \"dev\",\n      \"*/ignore\"\n    ]\n  }\n}",
 										"properties": {
 											"type": {
 												"type": "string",
@@ -625,7 +815,7 @@
 											},
 											"config": {
 												"type": "object",
-												"example": "{\n  \"owner\": \"cloudflare\",\n  \"repo_name\": \"ninjakittens\",\n  \"production_branch\": \"main\",\n  \"pr_comments_enabled\": true,\n  \"deployments_enabled\": true\n}",
+												"example": "{\n  \"owner\": \"cloudflare\",\n  \"repo_name\": \"ninjakittens\",\n  \"production_branch\": \"main\",\n  \"pr_comments_enabled\": true,\n  \"production_deployments_enabled\": true,\n  \"preview_deployment_setting\": \"custom\",\n  \"preview_branch_includes\": [\n    \"release/*\",\n    \"production\",\n    \"main\"\n  ],\n  \"preview_branch_excludes\": [\n    \"dependabot/*\",\n    \"dev\",\n    \"*/ignore\"\n  ]\n}",
 												"properties": {
 													"owner": {
 														"type": "string",
@@ -648,10 +838,30 @@
 														"example": "true",
 														"description": "Enable Pages to comment on Pull Requests"
 													},
-													"deployments_enabled": {
+													"production_deployments_enabled": {
 														"type": "boolean",
 														"example": "true",
-														"description": "Toggle deployments on this repo"
+														"description": "Toggle production deployments on this repo"
+													},
+													"preview_deployment_setting": {
+														"type": "string",
+														"example": "\"custom\"",
+														"description": "Preview deployment setting",
+														"enum": [
+															"all",
+															"none",
+															"custom"
+														]
+													},
+													"preview_branch_includes": {
+														"type": "array",
+														"example": "[\n  \"release/*\",\n  \"production\",\n  \"main\"\n]",
+														"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard"
+													},
+													"preview_branch_excludes": {
+														"type": "array",
+														"example": "[\n  \"dependabot/*\",\n  \"dev\",\n  \"*/ignore\"\n]",
+														"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard"
 													}
 												}
 											}
@@ -680,7 +890,7 @@
 									"source"
 								],
 								"objects": [],
-								"example": "{\n  \"id\": \"f64788e9-fccd-4d4a-a28a-cb84f88f6\",\n  \"short_id\": \"f64788e9\",\n  \"project_id\": \"7b162ea7-7367-4d67-bcde-1160995d5\",\n  \"project_name\": \"ninjakittens\",\n  \"environment\": \"preview\",\n  \"url\": \"https://f64788e9.ninjakittens.pages.dev\",\n  \"created_on\": \"2021-03-09T00:55:03.923456Z\",\n  \"modified_on\": \"2021-03-09T00:58:59.045655\",\n  \"aliases\": [\n    \"https://branchname.projectname.pages.dev\"\n  ],\n  \"latest_stage\": {\n    \"name\": \"deploy\",\n    \"started_on\": \"2021-03-09T00:55:03.923456Z\",\n    \"ended_on\": \"2021-03-09T00:58:59.045655\",\n    \"status\": \"success\"\n  },\n  \"env_vars\": {\n    \"BUILD_VERSION\": {\n      \"value\": \"3.3\"\n    },\n    \"ENV\": {\n      \"value\": \"STAGING\"\n    }\n  },\n  \"deployment_trigger\": {\n    \"type\": \"ad_hoc\",\n    \"metadata\": {\n      \"branch\": \"main\",\n      \"commit_hash\": \"ad9ccd918a81025731e10e40267e11273a263421\",\n      \"commit_message\": \"Update index.html\"\n    }\n  },\n  \"stages\": [\n    {\n      \"name\": \"queued\",\n      \"started_on\": \"2021-06-03T15:38:15.608194Z\",\n      \"ended_on\": \"2021-06-03T15:39:03.134378Z\",\n      \"status\": \"active\"\n    },\n    {\n      \"name\": \"initialize\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"clone_repo\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"build\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"deploy\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    }\n  ],\n  \"build_config\": {\n    \"build_command\": \"npm run build\",\n    \"destination_dir\": \"build\",\n    \"root_dir\": \"/\",\n    \"web_analytics_tag\": \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n    \"web_analytics_token\": \"021e1057c18547eca7b79f2516f06o7x\"\n  },\n  \"source\": {\n    \"type\": \"github\",\n    \"config\": {\n      \"owner\": \"cloudflare\",\n      \"repo_name\": \"ninjakittens\",\n      \"production_branch\": \"main\",\n      \"pr_comments_enabled\": true,\n      \"deployments_enabled\": true\n    }\n  }\n}",
+								"example": "{\n  \"id\": \"f64788e9-fccd-4d4a-a28a-cb84f88f6\",\n  \"short_id\": \"f64788e9\",\n  \"project_id\": \"7b162ea7-7367-4d67-bcde-1160995d5\",\n  \"project_name\": \"ninjakittens\",\n  \"environment\": \"preview\",\n  \"url\": \"https://f64788e9.ninjakittens.pages.dev\",\n  \"created_on\": \"2021-03-09T00:55:03.923456Z\",\n  \"modified_on\": \"2021-03-09T00:58:59.045655\",\n  \"aliases\": [\n    \"https://branchname.projectname.pages.dev\"\n  ],\n  \"is_skipped\": true,\n  \"latest_stage\": {\n    \"name\": \"deploy\",\n    \"started_on\": \"2021-03-09T00:55:03.923456Z\",\n    \"ended_on\": \"2021-03-09T00:58:59.045655\",\n    \"status\": \"success\"\n  },\n  \"env_vars\": {\n    \"BUILD_VERSION\": {\n      \"value\": \"3.3\"\n    },\n    \"ENV\": {\n      \"value\": \"STAGING\"\n    }\n  },\n  \"deployment_trigger\": {\n    \"type\": \"ad_hoc\",\n    \"metadata\": {\n      \"branch\": \"main\",\n      \"commit_hash\": \"ad9ccd918a81025731e10e40267e11273a263421\",\n      \"commit_message\": \"Update index.html\"\n    }\n  },\n  \"stages\": [\n    {\n      \"name\": \"queued\",\n      \"started_on\": \"2021-06-03T15:38:15.608194Z\",\n      \"ended_on\": \"2021-06-03T15:39:03.134378Z\",\n      \"status\": \"active\"\n    },\n    {\n      \"name\": \"initialize\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"clone_repo\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"build\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"deploy\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    }\n  ],\n  \"build_config\": {\n    \"build_command\": \"npm run build\",\n    \"destination_dir\": \"build\",\n    \"root_dir\": \"/\",\n    \"web_analytics_tag\": \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n    \"web_analytics_token\": \"021e1057c18547eca7b79f2516f06o7x\"\n  },\n  \"source\": {\n    \"type\": \"github\",\n    \"config\": {\n      \"owner\": \"cloudflare\",\n      \"repo_name\": \"ninjakittens\",\n      \"production_branch\": \"main\",\n      \"pr_comments_enabled\": true,\n      \"production_deployments_enabled\": true,\n      \"preview_deployment_setting\": \"custom\",\n      \"preview_branch_includes\": [\n        \"release/*\",\n        \"production\",\n        \"main\"\n      ],\n      \"preview_branch_excludes\": [\n        \"dependabot/*\",\n        \"dev\",\n        \"*/ignore\"\n      ]\n    }\n  }\n}",
 								"title": "Pages Deployment",
 								"description": "A Pages deployment is a published build for a commit on Pages"
 							}
@@ -762,6 +972,8 @@
 									},
 									"is_skipped": {
 										"type": "boolean",
+										"example": "true",
+										"description": "If the deployment has been skipped",
 										"readOnly": true
 									},
 									"latest_stage": {
@@ -947,7 +1159,7 @@
 									},
 									"source": {
 										"type": "object",
-										"example": "{\n  \"type\": \"github\",\n  \"config\": {\n    \"owner\": \"cloudflare\",\n    \"repo_name\": \"ninjakittens\",\n    \"production_branch\": \"main\",\n    \"pr_comments_enabled\": true,\n    \"deployments_enabled\": true\n  }\n}",
+										"example": "{\n  \"type\": \"github\",\n  \"config\": {\n    \"owner\": \"cloudflare\",\n    \"repo_name\": \"ninjakittens\",\n    \"production_branch\": \"main\",\n    \"pr_comments_enabled\": true,\n    \"production_deployments_enabled\": true,\n    \"preview_deployment_setting\": \"custom\",\n    \"preview_branch_includes\": [\n      \"release/*\",\n      \"production\",\n      \"main\"\n    ],\n    \"preview_branch_excludes\": [\n      \"dependabot/*\",\n      \"dev\",\n      \"*/ignore\"\n    ]\n  }\n}",
 										"properties": {
 											"type": {
 												"type": "string",
@@ -957,7 +1169,7 @@
 											},
 											"config": {
 												"type": "object",
-												"example": "{\n  \"owner\": \"cloudflare\",\n  \"repo_name\": \"ninjakittens\",\n  \"production_branch\": \"main\",\n  \"pr_comments_enabled\": true,\n  \"deployments_enabled\": true\n}",
+												"example": "{\n  \"owner\": \"cloudflare\",\n  \"repo_name\": \"ninjakittens\",\n  \"production_branch\": \"main\",\n  \"pr_comments_enabled\": true,\n  \"production_deployments_enabled\": true,\n  \"preview_deployment_setting\": \"custom\",\n  \"preview_branch_includes\": [\n    \"release/*\",\n    \"production\",\n    \"main\"\n  ],\n  \"preview_branch_excludes\": [\n    \"dependabot/*\",\n    \"dev\",\n    \"*/ignore\"\n  ]\n}",
 												"properties": {
 													"owner": {
 														"type": "string",
@@ -980,10 +1192,30 @@
 														"example": "true",
 														"description": "Enable Pages to comment on Pull Requests"
 													},
-													"deployments_enabled": {
+													"production_deployments_enabled": {
 														"type": "boolean",
 														"example": "true",
-														"description": "Toggle deployments on this repo"
+														"description": "Toggle production deployments on this repo"
+													},
+													"preview_deployment_setting": {
+														"type": "string",
+														"example": "\"custom\"",
+														"description": "Preview deployment setting",
+														"enum": [
+															"all",
+															"none",
+															"custom"
+														]
+													},
+													"preview_branch_includes": {
+														"type": "array",
+														"example": "[\n  \"release/*\",\n  \"production\",\n  \"main\"\n]",
+														"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard"
+													},
+													"preview_branch_excludes": {
+														"type": "array",
+														"example": "[\n  \"dependabot/*\",\n  \"dev\",\n  \"*/ignore\"\n]",
+														"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard"
 													}
 												}
 											}
@@ -1012,13 +1244,19 @@
 									"source"
 								],
 								"objects": [],
-								"example": "{\n  \"id\": \"f64788e9-fccd-4d4a-a28a-cb84f88f6\",\n  \"short_id\": \"f64788e9\",\n  \"project_id\": \"7b162ea7-7367-4d67-bcde-1160995d5\",\n  \"project_name\": \"ninjakittens\",\n  \"environment\": \"preview\",\n  \"url\": \"https://f64788e9.ninjakittens.pages.dev\",\n  \"created_on\": \"2021-03-09T00:55:03.923456Z\",\n  \"modified_on\": \"2021-03-09T00:58:59.045655\",\n  \"aliases\": [\n    \"https://branchname.projectname.pages.dev\"\n  ],\n  \"latest_stage\": {\n    \"name\": \"deploy\",\n    \"started_on\": \"2021-03-09T00:55:03.923456Z\",\n    \"ended_on\": \"2021-03-09T00:58:59.045655\",\n    \"status\": \"success\"\n  },\n  \"env_vars\": {\n    \"BUILD_VERSION\": {\n      \"value\": \"3.3\"\n    },\n    \"ENV\": {\n      \"value\": \"STAGING\"\n    }\n  },\n  \"deployment_trigger\": {\n    \"type\": \"ad_hoc\",\n    \"metadata\": {\n      \"branch\": \"main\",\n      \"commit_hash\": \"ad9ccd918a81025731e10e40267e11273a263421\",\n      \"commit_message\": \"Update index.html\"\n    }\n  },\n  \"stages\": [\n    {\n      \"name\": \"queued\",\n      \"started_on\": \"2021-06-03T15:38:15.608194Z\",\n      \"ended_on\": \"2021-06-03T15:39:03.134378Z\",\n      \"status\": \"active\"\n    },\n    {\n      \"name\": \"initialize\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"clone_repo\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"build\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"deploy\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    }\n  ],\n  \"build_config\": {\n    \"build_command\": \"npm run build\",\n    \"destination_dir\": \"build\",\n    \"root_dir\": \"/\",\n    \"web_analytics_tag\": \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n    \"web_analytics_token\": \"021e1057c18547eca7b79f2516f06o7x\"\n  },\n  \"source\": {\n    \"type\": \"github\",\n    \"config\": {\n      \"owner\": \"cloudflare\",\n      \"repo_name\": \"ninjakittens\",\n      \"production_branch\": \"main\",\n      \"pr_comments_enabled\": true,\n      \"deployments_enabled\": true\n    }\n  }\n}",
+								"example": "{\n  \"id\": \"f64788e9-fccd-4d4a-a28a-cb84f88f6\",\n  \"short_id\": \"f64788e9\",\n  \"project_id\": \"7b162ea7-7367-4d67-bcde-1160995d5\",\n  \"project_name\": \"ninjakittens\",\n  \"environment\": \"preview\",\n  \"url\": \"https://f64788e9.ninjakittens.pages.dev\",\n  \"created_on\": \"2021-03-09T00:55:03.923456Z\",\n  \"modified_on\": \"2021-03-09T00:58:59.045655\",\n  \"aliases\": [\n    \"https://branchname.projectname.pages.dev\"\n  ],\n  \"is_skipped\": true,\n  \"latest_stage\": {\n    \"name\": \"deploy\",\n    \"started_on\": \"2021-03-09T00:55:03.923456Z\",\n    \"ended_on\": \"2021-03-09T00:58:59.045655\",\n    \"status\": \"success\"\n  },\n  \"env_vars\": {\n    \"BUILD_VERSION\": {\n      \"value\": \"3.3\"\n    },\n    \"ENV\": {\n      \"value\": \"STAGING\"\n    }\n  },\n  \"deployment_trigger\": {\n    \"type\": \"ad_hoc\",\n    \"metadata\": {\n      \"branch\": \"main\",\n      \"commit_hash\": \"ad9ccd918a81025731e10e40267e11273a263421\",\n      \"commit_message\": \"Update index.html\"\n    }\n  },\n  \"stages\": [\n    {\n      \"name\": \"queued\",\n      \"started_on\": \"2021-06-03T15:38:15.608194Z\",\n      \"ended_on\": \"2021-06-03T15:39:03.134378Z\",\n      \"status\": \"active\"\n    },\n    {\n      \"name\": \"initialize\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"clone_repo\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"build\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"deploy\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    }\n  ],\n  \"build_config\": {\n    \"build_command\": \"npm run build\",\n    \"destination_dir\": \"build\",\n    \"root_dir\": \"/\",\n    \"web_analytics_tag\": \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n    \"web_analytics_token\": \"021e1057c18547eca7b79f2516f06o7x\"\n  },\n  \"source\": {\n    \"type\": \"github\",\n    \"config\": {\n      \"owner\": \"cloudflare\",\n      \"repo_name\": \"ninjakittens\",\n      \"production_branch\": \"main\",\n      \"pr_comments_enabled\": true,\n      \"production_deployments_enabled\": true,\n      \"preview_deployment_setting\": \"custom\",\n      \"preview_branch_includes\": [\n        \"release/*\",\n        \"production\",\n        \"main\"\n      ],\n      \"preview_branch_excludes\": [\n        \"dependabot/*\",\n        \"dev\",\n        \"*/ignore\"\n      ]\n    }\n  }\n}",
 								"title": "Pages Deployment",
 								"description": "A Pages deployment is a published build for a commit on Pages"
 							}
 						],
 						"description": "Most recent deployment to the repo",
 						"readOnly": true
+					},
+					"production_branch": {
+						"type": "string",
+						"example": "\"main\"",
+						"description": "Production branch of the project. Used to identify production deployments",
+						"readOnly": false
 					}
 				},
 				"required_props": [],
@@ -1032,14 +1270,15 @@
 					"build_config",
 					"deployment_configs",
 					"latest_deployment",
-					"canonical_deployment"
+					"canonical_deployment",
+					"production_branch"
 				],
 				"objects": [],
-				"example": "{\n  \"name\": \"NextJS Blog\",\n  \"id\": \"7b162ea7-7367-4d67-bcde-1160995d5\",\n  \"created_on\": \"2017-01-01T00:00:00Z\",\n  \"subdomain\": \"helloworld.pages.dev\",\n  \"domains\": [\n    \"customdomain.com\",\n    \"customdomain.org\"\n  ],\n  \"source\": {\n    \"type\": \"github\",\n    \"config\": {\n      \"owner\": \"cloudflare\",\n      \"repo_name\": \"ninjakittens\",\n      \"production_branch\": \"main\",\n      \"pr_comments_enabled\": true,\n      \"deployments_enabled\": true\n    }\n  },\n  \"build_config\": {\n    \"build_command\": \"npm run build\",\n    \"destination_dir\": \"build\",\n    \"root_dir\": \"/\",\n    \"web_analytics_tag\": \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n    \"web_analytics_token\": \"021e1057c18547eca7b79f2516f06o7x\"\n  },\n  \"deployment_configs\": {\n    \"preview\": {\n      \"env_vars\": {\n        \"BUILD_VERSION\": {\n          \"value\": \"3.3\"\n        }\n      },\n      \"compatibility_date\": \"2022-01-01\",\n      \"compatibility_flags\": [\n        \"url_standard\"\n      ]\n    },\n    \"production\": {\n      \"env_vars\": {\n        \"BUILD_VERSION\": {\n          \"value\": \"3.3\"\n        }\n      },\n      \"compatibility_date\": \"2022-01-01\",\n      \"compatibility_flags\": [\n        \"url_standard\"\n      ]\n    }\n  },\n  \"latest_deployment\": {},\n  \"canonical_deployment\": {}\n}",
+				"example": "{\n  \"name\": \"NextJS Blog\",\n  \"id\": \"7b162ea7-7367-4d67-bcde-1160995d5\",\n  \"created_on\": \"2017-01-01T00:00:00Z\",\n  \"subdomain\": \"helloworld.pages.dev\",\n  \"domains\": [\n    \"customdomain.com\",\n    \"customdomain.org\"\n  ],\n  \"source\": {\n    \"type\": \"github\",\n    \"config\": {\n      \"owner\": \"cloudflare\",\n      \"repo_name\": \"ninjakittens\",\n      \"production_branch\": \"main\",\n      \"pr_comments_enabled\": true,\n      \"production_deployments_enabled\": true,\n      \"preview_deployment_setting\": \"custom\",\n      \"preview_branch_includes\": [\n        \"release/*\",\n        \"production\",\n        \"main\"\n      ],\n      \"preview_branch_excludes\": [\n        \"dependabot/*\",\n        \"dev\",\n        \"*/ignore\"\n      ]\n    }\n  },\n  \"build_config\": {\n    \"build_command\": \"npm run build\",\n    \"destination_dir\": \"build\",\n    \"root_dir\": \"/\",\n    \"web_analytics_tag\": \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n    \"web_analytics_token\": \"021e1057c18547eca7b79f2516f06o7x\"\n  },\n  \"deployment_configs\": {\n    \"preview\": {\n      \"env_vars\": {\n        \"BUILD_VERSION\": {\n          \"value\": \"3.3\"\n        }\n      },\n      \"kv_namespaces\": {\n        \"KV_BINDING\": {\n          \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n        }\n      },\n      \"durable_object_namespaces\": {\n        \"DO_BINDING\": {\n          \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n        }\n      },\n      \"r2_buckets\": {\n        \"R2_BINDING\": {\n          \"name\": \"some-bucket\"\n        }\n      },\n      \"d1_databases\": {\n        \"D1_BINDING\": {\n          \"id\": \"445e2955-951a-43f8-a35b-a4d0c8138f63\"\n        }\n      },\n      \"compatibility_date\": \"2022-01-01\",\n      \"compatibility_flags\": [\n        \"url_standard\"\n      ]\n    },\n    \"production\": {\n      \"env_vars\": {\n        \"BUILD_VERSION\": {\n          \"value\": \"3.3\"\n        }\n      },\n      \"kv_namespaces\": {\n        \"KV_BINDING\": {\n          \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n        }\n      },\n      \"durable_object_namespaces\": {\n        \"DO_BINDING\": {\n          \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n        }\n      },\n      \"r2_buckets\": {\n        \"R2_BINDING\": {\n          \"name\": \"some-bucket\"\n        }\n      },\n      \"d1_databases\": {\n        \"D1_BINDING\": {\n          \"id\": \"445e2955-951a-43f8-a35b-a4d0c8138f63\"\n        }\n      },\n      \"compatibility_date\": \"2022-01-01\",\n      \"compatibility_flags\": [\n        \"url_standard\"\n      ]\n    }\n  },\n  \"latest_deployment\": {},\n  \"canonical_deployment\": {},\n  \"production_branch\": \"main\"\n}",
 				"title": "Pages Project",
 				"description": "A Pages project represents a website deployed to Cloudflare's edge."
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"name\": \"NextJS Blog\",\n    \"id\": \"7b162ea7-7367-4d67-bcde-1160995d5\",\n    \"created_on\": \"2017-01-01T00:00:00Z\",\n    \"subdomain\": \"helloworld.pages.dev\",\n    \"domains\": [\n      \"customdomain.com\",\n      \"customdomain.org\"\n    ],\n    \"source\": {\n      \"type\": \"github\",\n      \"config\": {\n        \"owner\": \"cloudflare\",\n        \"repo_name\": \"ninjakittens\",\n        \"production_branch\": \"main\",\n        \"pr_comments_enabled\": true,\n        \"deployments_enabled\": true\n      }\n    },\n    \"build_config\": {\n      \"build_command\": \"npm run build\",\n      \"destination_dir\": \"build\",\n      \"root_dir\": \"/\",\n      \"web_analytics_tag\": \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n      \"web_analytics_token\": \"021e1057c18547eca7b79f2516f06o7x\"\n    },\n    \"deployment_configs\": {\n      \"preview\": {\n        \"env_vars\": {\n          \"BUILD_VERSION\": {\n            \"value\": \"3.3\"\n          }\n        },\n        \"compatibility_date\": \"2022-01-01\",\n        \"compatibility_flags\": [\n          \"url_standard\"\n        ]\n      },\n      \"production\": {\n        \"env_vars\": {\n          \"BUILD_VERSION\": {\n            \"value\": \"3.3\"\n          }\n        },\n        \"compatibility_date\": \"2022-01-01\",\n        \"compatibility_flags\": [\n          \"url_standard\"\n        ]\n      }\n    },\n    \"latest_deployment\": {},\n    \"canonical_deployment\": {}\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"name\": \"NextJS Blog\",\n    \"id\": \"7b162ea7-7367-4d67-bcde-1160995d5\",\n    \"created_on\": \"2017-01-01T00:00:00Z\",\n    \"subdomain\": \"helloworld.pages.dev\",\n    \"domains\": [\n      \"customdomain.com\",\n      \"customdomain.org\"\n    ],\n    \"source\": {\n      \"type\": \"github\",\n      \"config\": {\n        \"owner\": \"cloudflare\",\n        \"repo_name\": \"ninjakittens\",\n        \"production_branch\": \"main\",\n        \"pr_comments_enabled\": true,\n        \"production_deployments_enabled\": true,\n        \"preview_deployment_setting\": \"custom\",\n        \"preview_branch_includes\": [\n          \"release/*\",\n          \"production\",\n          \"main\"\n        ],\n        \"preview_branch_excludes\": [\n          \"dependabot/*\",\n          \"dev\",\n          \"*/ignore\"\n        ]\n      }\n    },\n    \"build_config\": {\n      \"build_command\": \"npm run build\",\n      \"destination_dir\": \"build\",\n      \"root_dir\": \"/\",\n      \"web_analytics_tag\": \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n      \"web_analytics_token\": \"021e1057c18547eca7b79f2516f06o7x\"\n    },\n    \"deployment_configs\": {\n      \"preview\": {\n        \"env_vars\": {\n          \"BUILD_VERSION\": {\n            \"value\": \"3.3\"\n          }\n        },\n        \"kv_namespaces\": {\n          \"KV_BINDING\": {\n            \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n          }\n        },\n        \"durable_object_namespaces\": {\n          \"DO_BINDING\": {\n            \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n          }\n        },\n        \"r2_buckets\": {\n          \"R2_BINDING\": {\n            \"name\": \"some-bucket\"\n          }\n        },\n        \"d1_databases\": {\n          \"D1_BINDING\": {\n            \"id\": \"445e2955-951a-43f8-a35b-a4d0c8138f63\"\n          }\n        },\n        \"compatibility_date\": \"2022-01-01\",\n        \"compatibility_flags\": [\n          \"url_standard\"\n        ]\n      },\n      \"production\": {\n        \"env_vars\": {\n          \"BUILD_VERSION\": {\n            \"value\": \"3.3\"\n          }\n        },\n        \"kv_namespaces\": {\n          \"KV_BINDING\": {\n            \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n          }\n        },\n        \"durable_object_namespaces\": {\n          \"DO_BINDING\": {\n            \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n          }\n        },\n        \"r2_buckets\": {\n          \"R2_BINDING\": {\n            \"name\": \"some-bucket\"\n          }\n        },\n        \"d1_databases\": {\n          \"D1_BINDING\": {\n            \"id\": \"445e2955-951a-43f8-a35b-a4d0c8138f63\"\n          }\n        },\n        \"compatibility_date\": \"2022-01-01\",\n        \"compatibility_flags\": [\n          \"url_standard\"\n        ]\n      }\n    },\n    \"latest_deployment\": {},\n    \"canonical_deployment\": {},\n    \"production_branch\": \"main\"\n  }\n}"
 		},
 		{
 			"title": "Update project",
@@ -1090,7 +1329,7 @@
 				"objects": [],
 				"example": "{\n  \"deployment_configs\": {\n    \"production\": {\n      \"env_vars\": {\n        \"delete_this_env_var\": null,\n        \"BUILD_VERSION\": {\n          \"value\": \"3.3\"\n        }\n      },\n      \"compatibility_date\": \"2022-01-01\",\n      \"compatibility_flags\": [\n        \"url_standard\"\n      ]\n    }\n  }\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"name\": \"NextJS Blog\",\n    \"id\": \"7b162ea7-7367-4d67-bcde-1160995d5\",\n    \"created_on\": \"2017-01-01T00:00:00Z\",\n    \"subdomain\": \"helloworld.pages.dev\",\n    \"domains\": [\n      \"customdomain.com\",\n      \"customdomain.org\"\n    ],\n    \"source\": {\n      \"type\": \"github\",\n      \"config\": {\n        \"owner\": \"cloudflare\",\n        \"repo_name\": \"ninjakittens\",\n        \"production_branch\": \"main\",\n        \"pr_comments_enabled\": true,\n        \"deployments_enabled\": true\n      }\n    },\n    \"build_config\": {\n      \"build_command\": \"npm run build\",\n      \"destination_dir\": \"build\",\n      \"root_dir\": \"/\",\n      \"web_analytics_tag\": \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n      \"web_analytics_token\": \"021e1057c18547eca7b79f2516f06o7x\"\n    },\n    \"deployment_configs\": {\n      \"preview\": {\n        \"env_vars\": {\n          \"BUILD_VERSION\": {\n            \"value\": \"3.3\"\n          }\n        },\n        \"compatibility_date\": \"2022-01-01\",\n        \"compatibility_flags\": [\n          \"url_standard\"\n        ]\n      },\n      \"production\": {\n        \"env_vars\": {\n          \"BUILD_VERSION\": {\n            \"value\": \"3.3\"\n          }\n        },\n        \"compatibility_date\": \"2022-01-01\",\n        \"compatibility_flags\": [\n          \"url_standard\"\n        ]\n      }\n    },\n    \"latest_deployment\": {},\n    \"canonical_deployment\": {}\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"name\": \"NextJS Blog\",\n    \"id\": \"7b162ea7-7367-4d67-bcde-1160995d5\",\n    \"created_on\": \"2017-01-01T00:00:00Z\",\n    \"subdomain\": \"helloworld.pages.dev\",\n    \"domains\": [\n      \"customdomain.com\",\n      \"customdomain.org\"\n    ],\n    \"source\": {\n      \"type\": \"github\",\n      \"config\": {\n        \"owner\": \"cloudflare\",\n        \"repo_name\": \"ninjakittens\",\n        \"production_branch\": \"main\",\n        \"pr_comments_enabled\": true,\n        \"production_deployments_enabled\": true,\n        \"preview_deployment_setting\": \"custom\",\n        \"preview_branch_includes\": [\n          \"release/*\",\n          \"production\",\n          \"main\"\n        ],\n        \"preview_branch_excludes\": [\n          \"dependabot/*\",\n          \"dev\",\n          \"*/ignore\"\n        ]\n      }\n    },\n    \"build_config\": {\n      \"build_command\": \"npm run build\",\n      \"destination_dir\": \"build\",\n      \"root_dir\": \"/\",\n      \"web_analytics_tag\": \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n      \"web_analytics_token\": \"021e1057c18547eca7b79f2516f06o7x\"\n    },\n    \"deployment_configs\": {\n      \"preview\": {\n        \"env_vars\": {\n          \"BUILD_VERSION\": {\n            \"value\": \"3.3\"\n          }\n        },\n        \"kv_namespaces\": {\n          \"KV_BINDING\": {\n            \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n          }\n        },\n        \"durable_object_namespaces\": {\n          \"DO_BINDING\": {\n            \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n          }\n        },\n        \"r2_buckets\": {\n          \"R2_BINDING\": {\n            \"name\": \"some-bucket\"\n          }\n        },\n        \"d1_databases\": {\n          \"D1_BINDING\": {\n            \"id\": \"445e2955-951a-43f8-a35b-a4d0c8138f63\"\n          }\n        },\n        \"compatibility_date\": \"2022-01-01\",\n        \"compatibility_flags\": [\n          \"url_standard\"\n        ]\n      },\n      \"production\": {\n        \"env_vars\": {\n          \"BUILD_VERSION\": {\n            \"value\": \"3.3\"\n          }\n        },\n        \"kv_namespaces\": {\n          \"KV_BINDING\": {\n            \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n          }\n        },\n        \"durable_object_namespaces\": {\n          \"DO_BINDING\": {\n            \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n          }\n        },\n        \"r2_buckets\": {\n          \"R2_BINDING\": {\n            \"name\": \"some-bucket\"\n          }\n        },\n        \"d1_databases\": {\n          \"D1_BINDING\": {\n            \"id\": \"445e2955-951a-43f8-a35b-a4d0c8138f63\"\n          }\n        },\n        \"compatibility_date\": \"2022-01-01\",\n        \"compatibility_flags\": [\n          \"url_standard\"\n        ]\n      }\n    },\n    \"latest_deployment\": {},\n    \"canonical_deployment\": {},\n    \"production_branch\": \"main\"\n  }\n}"
 		}
 	],
 	"cfLinkErrors": {
@@ -1192,7 +1431,7 @@
 			},
 			"source": {
 				"type": "object",
-				"example": "{\n  \"type\": \"github\",\n  \"config\": {\n    \"owner\": \"cloudflare\",\n    \"repo_name\": \"ninjakittens\",\n    \"production_branch\": \"main\",\n    \"pr_comments_enabled\": true,\n    \"deployments_enabled\": true\n  }\n}",
+				"example": "{\n  \"type\": \"github\",\n  \"config\": {\n    \"owner\": \"cloudflare\",\n    \"repo_name\": \"ninjakittens\",\n    \"production_branch\": \"main\",\n    \"pr_comments_enabled\": true,\n    \"production_deployments_enabled\": true,\n    \"preview_deployment_setting\": \"custom\",\n    \"preview_branch_includes\": [\n      \"release/*\",\n      \"production\",\n      \"main\"\n    ],\n    \"preview_branch_excludes\": [\n      \"dependabot/*\",\n      \"dev\",\n      \"*/ignore\"\n    ]\n  }\n}",
 				"properties": {
 					"type": {
 						"type": "string",
@@ -1202,7 +1441,7 @@
 					},
 					"config": {
 						"type": "object",
-						"example": "{\n  \"owner\": \"cloudflare\",\n  \"repo_name\": \"ninjakittens\",\n  \"production_branch\": \"main\",\n  \"pr_comments_enabled\": true,\n  \"deployments_enabled\": true\n}",
+						"example": "{\n  \"owner\": \"cloudflare\",\n  \"repo_name\": \"ninjakittens\",\n  \"production_branch\": \"main\",\n  \"pr_comments_enabled\": true,\n  \"production_deployments_enabled\": true,\n  \"preview_deployment_setting\": \"custom\",\n  \"preview_branch_includes\": [\n    \"release/*\",\n    \"production\",\n    \"main\"\n  ],\n  \"preview_branch_excludes\": [\n    \"dependabot/*\",\n    \"dev\",\n    \"*/ignore\"\n  ]\n}",
 						"properties": {
 							"owner": {
 								"type": "string",
@@ -1225,10 +1464,30 @@
 								"example": "true",
 								"description": "Enable Pages to comment on Pull Requests"
 							},
-							"deployments_enabled": {
+							"production_deployments_enabled": {
 								"type": "boolean",
 								"example": "true",
-								"description": "Toggle deployments on this repo"
+								"description": "Toggle production deployments on this repo"
+							},
+							"preview_deployment_setting": {
+								"type": "string",
+								"example": "\"custom\"",
+								"description": "Preview deployment setting",
+								"enum": [
+									"all",
+									"none",
+									"custom"
+								]
+							},
+							"preview_branch_includes": {
+								"type": "array",
+								"example": "[\n  \"release/*\",\n  \"production\",\n  \"main\"\n]",
+								"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard"
+							},
+							"preview_branch_excludes": {
+								"type": "array",
+								"example": "[\n  \"dependabot/*\",\n  \"dev\",\n  \"*/ignore\"\n]",
+								"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard"
 							}
 						}
 					}
@@ -1285,11 +1544,11 @@
 			},
 			"deployment_configs": {
 				"type": "object",
-				"example": "{\n  \"preview\": {\n    \"env_vars\": {\n      \"BUILD_VERSION\": {\n        \"value\": \"3.3\"\n      }\n    },\n    \"compatibility_date\": \"2022-01-01\",\n    \"compatibility_flags\": [\n      \"url_standard\"\n    ]\n  },\n  \"production\": {\n    \"env_vars\": {\n      \"BUILD_VERSION\": {\n        \"value\": \"3.3\"\n      }\n    },\n    \"compatibility_date\": \"2022-01-01\",\n    \"compatibility_flags\": [\n      \"url_standard\"\n    ]\n  }\n}",
+				"example": "{\n  \"preview\": {\n    \"env_vars\": {\n      \"BUILD_VERSION\": {\n        \"value\": \"3.3\"\n      }\n    },\n    \"kv_namespaces\": {\n      \"KV_BINDING\": {\n        \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n      }\n    },\n    \"durable_object_namespaces\": {\n      \"DO_BINDING\": {\n        \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n      }\n    },\n    \"r2_buckets\": {\n      \"R2_BINDING\": {\n        \"name\": \"some-bucket\"\n      }\n    },\n    \"d1_databases\": {\n      \"D1_BINDING\": {\n        \"id\": \"445e2955-951a-43f8-a35b-a4d0c8138f63\"\n      }\n    },\n    \"compatibility_date\": \"2022-01-01\",\n    \"compatibility_flags\": [\n      \"url_standard\"\n    ]\n  },\n  \"production\": {\n    \"env_vars\": {\n      \"BUILD_VERSION\": {\n        \"value\": \"3.3\"\n      }\n    },\n    \"kv_namespaces\": {\n      \"KV_BINDING\": {\n        \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n      }\n    },\n    \"durable_object_namespaces\": {\n      \"DO_BINDING\": {\n        \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n      }\n    },\n    \"r2_buckets\": {\n      \"R2_BINDING\": {\n        \"name\": \"some-bucket\"\n      }\n    },\n    \"d1_databases\": {\n      \"D1_BINDING\": {\n        \"id\": \"445e2955-951a-43f8-a35b-a4d0c8138f63\"\n      }\n    },\n    \"compatibility_date\": \"2022-01-01\",\n    \"compatibility_flags\": [\n      \"url_standard\"\n    ]\n  }\n}",
 				"properties": {
 					"preview": {
 						"type": "object",
-						"example": "{\n  \"env_vars\": {\n    \"BUILD_VERSION\": {\n      \"value\": \"3.3\"\n    }\n  },\n  \"compatibility_date\": \"2022-01-01\",\n  \"compatibility_flags\": [\n    \"url_standard\"\n  ]\n}",
+						"example": "{\n  \"env_vars\": {\n    \"BUILD_VERSION\": {\n      \"value\": \"3.3\"\n    }\n  },\n  \"kv_namespaces\": {\n    \"KV_BINDING\": {\n      \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n    }\n  },\n  \"durable_object_namespaces\": {\n    \"DO_BINDING\": {\n      \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n    }\n  },\n  \"r2_buckets\": {\n    \"R2_BINDING\": {\n      \"name\": \"some-bucket\"\n    }\n  },\n  \"d1_databases\": {\n    \"D1_BINDING\": {\n      \"id\": \"445e2955-951a-43f8-a35b-a4d0c8138f63\"\n    }\n  },\n  \"compatibility_date\": \"2022-01-01\",\n  \"compatibility_flags\": [\n    \"url_standard\"\n  ]\n}",
 						"properties": {
 							"env_vars": {
 								"type": [
@@ -1312,6 +1571,90 @@
 									}
 								},
 								"description": "Environment variables for build configs"
+							},
+							"kv_namespaces": {
+								"type": [
+									"object"
+								],
+								"example": "{\n  \"KV_BINDING\": {\n    \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n  }\n}",
+								"properties": {
+									"KV_BINDING": {
+										"type": "object",
+										"example": "{\n  \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n}",
+										"properties": {
+											"namespace_id": {
+												"type": "string",
+												"example": "\"5eb63bbbe01eeed093cb22bb8f5acdc3\"",
+												"description": "ID of the KV namespace"
+											}
+										},
+										"description": "KV binding"
+									}
+								},
+								"description": "KV namespaces used for Pages Functions"
+							},
+							"durable_object_namespaces": {
+								"type": [
+									"object"
+								],
+								"example": "{\n  \"DO_BINDING\": {\n    \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n  }\n}",
+								"properties": {
+									"DO_BINDING": {
+										"type": "object",
+										"example": "{\n  \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n}",
+										"properties": {
+											"namespace_id": {
+												"type": "string",
+												"example": "\"5eb63bbbe01eeed093cb22bb8f5acdc3\"",
+												"description": "ID of the Durabble Object namespace"
+											}
+										},
+										"description": "Durabble Object binding"
+									}
+								},
+								"description": "Durabble Object namespaces used for Pages Functions"
+							},
+							"r2_buckets": {
+								"type": [
+									"object"
+								],
+								"example": "{\n  \"R2_BINDING\": {\n    \"name\": \"some-bucket\"\n  }\n}",
+								"properties": {
+									"R2_BINDING": {
+										"type": "object",
+										"example": "{\n  \"name\": \"some-bucket\"\n}",
+										"properties": {
+											"name": {
+												"type": "string",
+												"example": "\"some-bucket\"",
+												"description": "Name of the R2 bucket"
+											}
+										},
+										"description": "R2 binding"
+									}
+								},
+								"description": "R2 buckets used for Pages Functions"
+							},
+							"d1_databases": {
+								"type": [
+									"object"
+								],
+								"example": "{\n  \"D1_BINDING\": {\n    \"id\": \"445e2955-951a-43f8-a35b-a4d0c8138f63\"\n  }\n}",
+								"properties": {
+									"D1_BINDING": {
+										"type": "object",
+										"example": "{\n  \"id\": \"445e2955-951a-43f8-a35b-a4d0c8138f63\"\n}",
+										"properties": {
+											"id": {
+												"type": "string",
+												"example": "\"445e2955-951a-43f8-a35b-a4d0c8138f63\"",
+												"description": "UUID of the D1 database"
+											}
+										},
+										"description": "D1 binding"
+									}
+								},
+								"description": "D1 databases used for Pages Functions"
 							},
 							"compatibility_date": {
 								"type": "string",
@@ -1328,7 +1671,7 @@
 					},
 					"production": {
 						"type": "object",
-						"example": "{\n  \"env_vars\": {\n    \"BUILD_VERSION\": {\n      \"value\": \"3.3\"\n    }\n  },\n  \"compatibility_date\": \"2022-01-01\",\n  \"compatibility_flags\": [\n    \"url_standard\"\n  ]\n}",
+						"example": "{\n  \"env_vars\": {\n    \"BUILD_VERSION\": {\n      \"value\": \"3.3\"\n    }\n  },\n  \"kv_namespaces\": {\n    \"KV_BINDING\": {\n      \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n    }\n  },\n  \"durable_object_namespaces\": {\n    \"DO_BINDING\": {\n      \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n    }\n  },\n  \"r2_buckets\": {\n    \"R2_BINDING\": {\n      \"name\": \"some-bucket\"\n    }\n  },\n  \"d1_databases\": {\n    \"D1_BINDING\": {\n      \"id\": \"445e2955-951a-43f8-a35b-a4d0c8138f63\"\n    }\n  },\n  \"compatibility_date\": \"2022-01-01\",\n  \"compatibility_flags\": [\n    \"url_standard\"\n  ]\n}",
 						"properties": {
 							"env_vars": {
 								"type": [
@@ -1351,6 +1694,90 @@
 									}
 								},
 								"description": "Environment variables for build configs"
+							},
+							"kv_namespaces": {
+								"type": [
+									"object"
+								],
+								"example": "{\n  \"KV_BINDING\": {\n    \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n  }\n}",
+								"properties": {
+									"KV_BINDING": {
+										"type": "object",
+										"example": "{\n  \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n}",
+										"properties": {
+											"namespace_id": {
+												"type": "string",
+												"example": "\"5eb63bbbe01eeed093cb22bb8f5acdc3\"",
+												"description": "ID of the KV namespace"
+											}
+										},
+										"description": "KV binding"
+									}
+								},
+								"description": "KV namespaces used for Pages Functions"
+							},
+							"durable_object_namespaces": {
+								"type": [
+									"object"
+								],
+								"example": "{\n  \"DO_BINDING\": {\n    \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n  }\n}",
+								"properties": {
+									"DO_BINDING": {
+										"type": "object",
+										"example": "{\n  \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n}",
+										"properties": {
+											"namespace_id": {
+												"type": "string",
+												"example": "\"5eb63bbbe01eeed093cb22bb8f5acdc3\"",
+												"description": "ID of the Durabble Object namespace"
+											}
+										},
+										"description": "Durabble Object binding"
+									}
+								},
+								"description": "Durabble Object namespaces used for Pages Functions"
+							},
+							"r2_buckets": {
+								"type": [
+									"object"
+								],
+								"example": "{\n  \"R2_BINDING\": {\n    \"name\": \"some-bucket\"\n  }\n}",
+								"properties": {
+									"R2_BINDING": {
+										"type": "object",
+										"example": "{\n  \"name\": \"some-bucket\"\n}",
+										"properties": {
+											"name": {
+												"type": "string",
+												"example": "\"some-bucket\"",
+												"description": "Name of the R2 bucket"
+											}
+										},
+										"description": "R2 binding"
+									}
+								},
+								"description": "R2 buckets used for Pages Functions"
+							},
+							"d1_databases": {
+								"type": [
+									"object"
+								],
+								"example": "{\n  \"D1_BINDING\": {\n    \"id\": \"445e2955-951a-43f8-a35b-a4d0c8138f63\"\n  }\n}",
+								"properties": {
+									"D1_BINDING": {
+										"type": "object",
+										"example": "{\n  \"id\": \"445e2955-951a-43f8-a35b-a4d0c8138f63\"\n}",
+										"properties": {
+											"id": {
+												"type": "string",
+												"example": "\"445e2955-951a-43f8-a35b-a4d0c8138f63\"",
+												"description": "UUID of the D1 database"
+											}
+										},
+										"description": "D1 binding"
+									}
+								},
+								"description": "D1 databases used for Pages Functions"
 							},
 							"compatibility_date": {
 								"type": "string",
@@ -1442,6 +1869,8 @@
 							},
 							"is_skipped": {
 								"type": "boolean",
+								"example": "true",
+								"description": "If the deployment has been skipped",
 								"readOnly": true
 							},
 							"latest_stage": {
@@ -1627,7 +2056,7 @@
 							},
 							"source": {
 								"type": "object",
-								"example": "{\n  \"type\": \"github\",\n  \"config\": {\n    \"owner\": \"cloudflare\",\n    \"repo_name\": \"ninjakittens\",\n    \"production_branch\": \"main\",\n    \"pr_comments_enabled\": true,\n    \"deployments_enabled\": true\n  }\n}",
+								"example": "{\n  \"type\": \"github\",\n  \"config\": {\n    \"owner\": \"cloudflare\",\n    \"repo_name\": \"ninjakittens\",\n    \"production_branch\": \"main\",\n    \"pr_comments_enabled\": true,\n    \"production_deployments_enabled\": true,\n    \"preview_deployment_setting\": \"custom\",\n    \"preview_branch_includes\": [\n      \"release/*\",\n      \"production\",\n      \"main\"\n    ],\n    \"preview_branch_excludes\": [\n      \"dependabot/*\",\n      \"dev\",\n      \"*/ignore\"\n    ]\n  }\n}",
 								"properties": {
 									"type": {
 										"type": "string",
@@ -1637,7 +2066,7 @@
 									},
 									"config": {
 										"type": "object",
-										"example": "{\n  \"owner\": \"cloudflare\",\n  \"repo_name\": \"ninjakittens\",\n  \"production_branch\": \"main\",\n  \"pr_comments_enabled\": true,\n  \"deployments_enabled\": true\n}",
+										"example": "{\n  \"owner\": \"cloudflare\",\n  \"repo_name\": \"ninjakittens\",\n  \"production_branch\": \"main\",\n  \"pr_comments_enabled\": true,\n  \"production_deployments_enabled\": true,\n  \"preview_deployment_setting\": \"custom\",\n  \"preview_branch_includes\": [\n    \"release/*\",\n    \"production\",\n    \"main\"\n  ],\n  \"preview_branch_excludes\": [\n    \"dependabot/*\",\n    \"dev\",\n    \"*/ignore\"\n  ]\n}",
 										"properties": {
 											"owner": {
 												"type": "string",
@@ -1660,10 +2089,30 @@
 												"example": "true",
 												"description": "Enable Pages to comment on Pull Requests"
 											},
-											"deployments_enabled": {
+											"production_deployments_enabled": {
 												"type": "boolean",
 												"example": "true",
-												"description": "Toggle deployments on this repo"
+												"description": "Toggle production deployments on this repo"
+											},
+											"preview_deployment_setting": {
+												"type": "string",
+												"example": "\"custom\"",
+												"description": "Preview deployment setting",
+												"enum": [
+													"all",
+													"none",
+													"custom"
+												]
+											},
+											"preview_branch_includes": {
+												"type": "array",
+												"example": "[\n  \"release/*\",\n  \"production\",\n  \"main\"\n]",
+												"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard"
+											},
+											"preview_branch_excludes": {
+												"type": "array",
+												"example": "[\n  \"dependabot/*\",\n  \"dev\",\n  \"*/ignore\"\n]",
+												"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard"
 											}
 										}
 									}
@@ -1692,7 +2141,7 @@
 							"source"
 						],
 						"objects": [],
-						"example": "{\n  \"id\": \"f64788e9-fccd-4d4a-a28a-cb84f88f6\",\n  \"short_id\": \"f64788e9\",\n  \"project_id\": \"7b162ea7-7367-4d67-bcde-1160995d5\",\n  \"project_name\": \"ninjakittens\",\n  \"environment\": \"preview\",\n  \"url\": \"https://f64788e9.ninjakittens.pages.dev\",\n  \"created_on\": \"2021-03-09T00:55:03.923456Z\",\n  \"modified_on\": \"2021-03-09T00:58:59.045655\",\n  \"aliases\": [\n    \"https://branchname.projectname.pages.dev\"\n  ],\n  \"latest_stage\": {\n    \"name\": \"deploy\",\n    \"started_on\": \"2021-03-09T00:55:03.923456Z\",\n    \"ended_on\": \"2021-03-09T00:58:59.045655\",\n    \"status\": \"success\"\n  },\n  \"env_vars\": {\n    \"BUILD_VERSION\": {\n      \"value\": \"3.3\"\n    },\n    \"ENV\": {\n      \"value\": \"STAGING\"\n    }\n  },\n  \"deployment_trigger\": {\n    \"type\": \"ad_hoc\",\n    \"metadata\": {\n      \"branch\": \"main\",\n      \"commit_hash\": \"ad9ccd918a81025731e10e40267e11273a263421\",\n      \"commit_message\": \"Update index.html\"\n    }\n  },\n  \"stages\": [\n    {\n      \"name\": \"queued\",\n      \"started_on\": \"2021-06-03T15:38:15.608194Z\",\n      \"ended_on\": \"2021-06-03T15:39:03.134378Z\",\n      \"status\": \"active\"\n    },\n    {\n      \"name\": \"initialize\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"clone_repo\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"build\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"deploy\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    }\n  ],\n  \"build_config\": {\n    \"build_command\": \"npm run build\",\n    \"destination_dir\": \"build\",\n    \"root_dir\": \"/\",\n    \"web_analytics_tag\": \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n    \"web_analytics_token\": \"021e1057c18547eca7b79f2516f06o7x\"\n  },\n  \"source\": {\n    \"type\": \"github\",\n    \"config\": {\n      \"owner\": \"cloudflare\",\n      \"repo_name\": \"ninjakittens\",\n      \"production_branch\": \"main\",\n      \"pr_comments_enabled\": true,\n      \"deployments_enabled\": true\n    }\n  }\n}",
+						"example": "{\n  \"id\": \"f64788e9-fccd-4d4a-a28a-cb84f88f6\",\n  \"short_id\": \"f64788e9\",\n  \"project_id\": \"7b162ea7-7367-4d67-bcde-1160995d5\",\n  \"project_name\": \"ninjakittens\",\n  \"environment\": \"preview\",\n  \"url\": \"https://f64788e9.ninjakittens.pages.dev\",\n  \"created_on\": \"2021-03-09T00:55:03.923456Z\",\n  \"modified_on\": \"2021-03-09T00:58:59.045655\",\n  \"aliases\": [\n    \"https://branchname.projectname.pages.dev\"\n  ],\n  \"is_skipped\": true,\n  \"latest_stage\": {\n    \"name\": \"deploy\",\n    \"started_on\": \"2021-03-09T00:55:03.923456Z\",\n    \"ended_on\": \"2021-03-09T00:58:59.045655\",\n    \"status\": \"success\"\n  },\n  \"env_vars\": {\n    \"BUILD_VERSION\": {\n      \"value\": \"3.3\"\n    },\n    \"ENV\": {\n      \"value\": \"STAGING\"\n    }\n  },\n  \"deployment_trigger\": {\n    \"type\": \"ad_hoc\",\n    \"metadata\": {\n      \"branch\": \"main\",\n      \"commit_hash\": \"ad9ccd918a81025731e10e40267e11273a263421\",\n      \"commit_message\": \"Update index.html\"\n    }\n  },\n  \"stages\": [\n    {\n      \"name\": \"queued\",\n      \"started_on\": \"2021-06-03T15:38:15.608194Z\",\n      \"ended_on\": \"2021-06-03T15:39:03.134378Z\",\n      \"status\": \"active\"\n    },\n    {\n      \"name\": \"initialize\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"clone_repo\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"build\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"deploy\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    }\n  ],\n  \"build_config\": {\n    \"build_command\": \"npm run build\",\n    \"destination_dir\": \"build\",\n    \"root_dir\": \"/\",\n    \"web_analytics_tag\": \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n    \"web_analytics_token\": \"021e1057c18547eca7b79f2516f06o7x\"\n  },\n  \"source\": {\n    \"type\": \"github\",\n    \"config\": {\n      \"owner\": \"cloudflare\",\n      \"repo_name\": \"ninjakittens\",\n      \"production_branch\": \"main\",\n      \"pr_comments_enabled\": true,\n      \"production_deployments_enabled\": true,\n      \"preview_deployment_setting\": \"custom\",\n      \"preview_branch_includes\": [\n        \"release/*\",\n        \"production\",\n        \"main\"\n      ],\n      \"preview_branch_excludes\": [\n        \"dependabot/*\",\n        \"dev\",\n        \"*/ignore\"\n      ]\n    }\n  }\n}",
 						"title": "Pages Deployment",
 						"description": "A Pages deployment is a published build for a commit on Pages"
 					}
@@ -1774,6 +2223,8 @@
 							},
 							"is_skipped": {
 								"type": "boolean",
+								"example": "true",
+								"description": "If the deployment has been skipped",
 								"readOnly": true
 							},
 							"latest_stage": {
@@ -1959,7 +2410,7 @@
 							},
 							"source": {
 								"type": "object",
-								"example": "{\n  \"type\": \"github\",\n  \"config\": {\n    \"owner\": \"cloudflare\",\n    \"repo_name\": \"ninjakittens\",\n    \"production_branch\": \"main\",\n    \"pr_comments_enabled\": true,\n    \"deployments_enabled\": true\n  }\n}",
+								"example": "{\n  \"type\": \"github\",\n  \"config\": {\n    \"owner\": \"cloudflare\",\n    \"repo_name\": \"ninjakittens\",\n    \"production_branch\": \"main\",\n    \"pr_comments_enabled\": true,\n    \"production_deployments_enabled\": true,\n    \"preview_deployment_setting\": \"custom\",\n    \"preview_branch_includes\": [\n      \"release/*\",\n      \"production\",\n      \"main\"\n    ],\n    \"preview_branch_excludes\": [\n      \"dependabot/*\",\n      \"dev\",\n      \"*/ignore\"\n    ]\n  }\n}",
 								"properties": {
 									"type": {
 										"type": "string",
@@ -1969,7 +2420,7 @@
 									},
 									"config": {
 										"type": "object",
-										"example": "{\n  \"owner\": \"cloudflare\",\n  \"repo_name\": \"ninjakittens\",\n  \"production_branch\": \"main\",\n  \"pr_comments_enabled\": true,\n  \"deployments_enabled\": true\n}",
+										"example": "{\n  \"owner\": \"cloudflare\",\n  \"repo_name\": \"ninjakittens\",\n  \"production_branch\": \"main\",\n  \"pr_comments_enabled\": true,\n  \"production_deployments_enabled\": true,\n  \"preview_deployment_setting\": \"custom\",\n  \"preview_branch_includes\": [\n    \"release/*\",\n    \"production\",\n    \"main\"\n  ],\n  \"preview_branch_excludes\": [\n    \"dependabot/*\",\n    \"dev\",\n    \"*/ignore\"\n  ]\n}",
 										"properties": {
 											"owner": {
 												"type": "string",
@@ -1992,10 +2443,30 @@
 												"example": "true",
 												"description": "Enable Pages to comment on Pull Requests"
 											},
-											"deployments_enabled": {
+											"production_deployments_enabled": {
 												"type": "boolean",
 												"example": "true",
-												"description": "Toggle deployments on this repo"
+												"description": "Toggle production deployments on this repo"
+											},
+											"preview_deployment_setting": {
+												"type": "string",
+												"example": "\"custom\"",
+												"description": "Preview deployment setting",
+												"enum": [
+													"all",
+													"none",
+													"custom"
+												]
+											},
+											"preview_branch_includes": {
+												"type": "array",
+												"example": "[\n  \"release/*\",\n  \"production\",\n  \"main\"\n]",
+												"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard"
+											},
+											"preview_branch_excludes": {
+												"type": "array",
+												"example": "[\n  \"dependabot/*\",\n  \"dev\",\n  \"*/ignore\"\n]",
+												"description": "If preview_deployment_setting is custom then these are the branches to build. Use * for a wildcard"
 											}
 										}
 									}
@@ -2024,13 +2495,19 @@
 							"source"
 						],
 						"objects": [],
-						"example": "{\n  \"id\": \"f64788e9-fccd-4d4a-a28a-cb84f88f6\",\n  \"short_id\": \"f64788e9\",\n  \"project_id\": \"7b162ea7-7367-4d67-bcde-1160995d5\",\n  \"project_name\": \"ninjakittens\",\n  \"environment\": \"preview\",\n  \"url\": \"https://f64788e9.ninjakittens.pages.dev\",\n  \"created_on\": \"2021-03-09T00:55:03.923456Z\",\n  \"modified_on\": \"2021-03-09T00:58:59.045655\",\n  \"aliases\": [\n    \"https://branchname.projectname.pages.dev\"\n  ],\n  \"latest_stage\": {\n    \"name\": \"deploy\",\n    \"started_on\": \"2021-03-09T00:55:03.923456Z\",\n    \"ended_on\": \"2021-03-09T00:58:59.045655\",\n    \"status\": \"success\"\n  },\n  \"env_vars\": {\n    \"BUILD_VERSION\": {\n      \"value\": \"3.3\"\n    },\n    \"ENV\": {\n      \"value\": \"STAGING\"\n    }\n  },\n  \"deployment_trigger\": {\n    \"type\": \"ad_hoc\",\n    \"metadata\": {\n      \"branch\": \"main\",\n      \"commit_hash\": \"ad9ccd918a81025731e10e40267e11273a263421\",\n      \"commit_message\": \"Update index.html\"\n    }\n  },\n  \"stages\": [\n    {\n      \"name\": \"queued\",\n      \"started_on\": \"2021-06-03T15:38:15.608194Z\",\n      \"ended_on\": \"2021-06-03T15:39:03.134378Z\",\n      \"status\": \"active\"\n    },\n    {\n      \"name\": \"initialize\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"clone_repo\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"build\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"deploy\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    }\n  ],\n  \"build_config\": {\n    \"build_command\": \"npm run build\",\n    \"destination_dir\": \"build\",\n    \"root_dir\": \"/\",\n    \"web_analytics_tag\": \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n    \"web_analytics_token\": \"021e1057c18547eca7b79f2516f06o7x\"\n  },\n  \"source\": {\n    \"type\": \"github\",\n    \"config\": {\n      \"owner\": \"cloudflare\",\n      \"repo_name\": \"ninjakittens\",\n      \"production_branch\": \"main\",\n      \"pr_comments_enabled\": true,\n      \"deployments_enabled\": true\n    }\n  }\n}",
+						"example": "{\n  \"id\": \"f64788e9-fccd-4d4a-a28a-cb84f88f6\",\n  \"short_id\": \"f64788e9\",\n  \"project_id\": \"7b162ea7-7367-4d67-bcde-1160995d5\",\n  \"project_name\": \"ninjakittens\",\n  \"environment\": \"preview\",\n  \"url\": \"https://f64788e9.ninjakittens.pages.dev\",\n  \"created_on\": \"2021-03-09T00:55:03.923456Z\",\n  \"modified_on\": \"2021-03-09T00:58:59.045655\",\n  \"aliases\": [\n    \"https://branchname.projectname.pages.dev\"\n  ],\n  \"is_skipped\": true,\n  \"latest_stage\": {\n    \"name\": \"deploy\",\n    \"started_on\": \"2021-03-09T00:55:03.923456Z\",\n    \"ended_on\": \"2021-03-09T00:58:59.045655\",\n    \"status\": \"success\"\n  },\n  \"env_vars\": {\n    \"BUILD_VERSION\": {\n      \"value\": \"3.3\"\n    },\n    \"ENV\": {\n      \"value\": \"STAGING\"\n    }\n  },\n  \"deployment_trigger\": {\n    \"type\": \"ad_hoc\",\n    \"metadata\": {\n      \"branch\": \"main\",\n      \"commit_hash\": \"ad9ccd918a81025731e10e40267e11273a263421\",\n      \"commit_message\": \"Update index.html\"\n    }\n  },\n  \"stages\": [\n    {\n      \"name\": \"queued\",\n      \"started_on\": \"2021-06-03T15:38:15.608194Z\",\n      \"ended_on\": \"2021-06-03T15:39:03.134378Z\",\n      \"status\": \"active\"\n    },\n    {\n      \"name\": \"initialize\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"clone_repo\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"build\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    },\n    {\n      \"name\": \"deploy\",\n      \"started_on\": null,\n      \"ended_on\": null,\n      \"status\": \"idle\"\n    }\n  ],\n  \"build_config\": {\n    \"build_command\": \"npm run build\",\n    \"destination_dir\": \"build\",\n    \"root_dir\": \"/\",\n    \"web_analytics_tag\": \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n    \"web_analytics_token\": \"021e1057c18547eca7b79f2516f06o7x\"\n  },\n  \"source\": {\n    \"type\": \"github\",\n    \"config\": {\n      \"owner\": \"cloudflare\",\n      \"repo_name\": \"ninjakittens\",\n      \"production_branch\": \"main\",\n      \"pr_comments_enabled\": true,\n      \"production_deployments_enabled\": true,\n      \"preview_deployment_setting\": \"custom\",\n      \"preview_branch_includes\": [\n        \"release/*\",\n        \"production\",\n        \"main\"\n      ],\n      \"preview_branch_excludes\": [\n        \"dependabot/*\",\n        \"dev\",\n        \"*/ignore\"\n      ]\n    }\n  }\n}",
 						"title": "Pages Deployment",
 						"description": "A Pages deployment is a published build for a commit on Pages"
 					}
 				],
 				"description": "Most recent deployment to the repo",
 				"readOnly": true
+			},
+			"production_branch": {
+				"type": "string",
+				"example": "\"main\"",
+				"description": "Production branch of the project. Used to identify production deployments",
+				"readOnly": false
 			}
 		},
 		"required_props": [],
@@ -2044,10 +2521,11 @@
 			"build_config",
 			"deployment_configs",
 			"latest_deployment",
-			"canonical_deployment"
+			"canonical_deployment",
+			"production_branch"
 		],
 		"objects": [],
-		"example": "{\n  \"name\": \"NextJS Blog\",\n  \"id\": \"7b162ea7-7367-4d67-bcde-1160995d5\",\n  \"created_on\": \"2017-01-01T00:00:00Z\",\n  \"subdomain\": \"helloworld.pages.dev\",\n  \"domains\": [\n    \"customdomain.com\",\n    \"customdomain.org\"\n  ],\n  \"source\": {\n    \"type\": \"github\",\n    \"config\": {\n      \"owner\": \"cloudflare\",\n      \"repo_name\": \"ninjakittens\",\n      \"production_branch\": \"main\",\n      \"pr_comments_enabled\": true,\n      \"deployments_enabled\": true\n    }\n  },\n  \"build_config\": {\n    \"build_command\": \"npm run build\",\n    \"destination_dir\": \"build\",\n    \"root_dir\": \"/\",\n    \"web_analytics_tag\": \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n    \"web_analytics_token\": \"021e1057c18547eca7b79f2516f06o7x\"\n  },\n  \"deployment_configs\": {\n    \"preview\": {\n      \"env_vars\": {\n        \"BUILD_VERSION\": {\n          \"value\": \"3.3\"\n        }\n      },\n      \"compatibility_date\": \"2022-01-01\",\n      \"compatibility_flags\": [\n        \"url_standard\"\n      ]\n    },\n    \"production\": {\n      \"env_vars\": {\n        \"BUILD_VERSION\": {\n          \"value\": \"3.3\"\n        }\n      },\n      \"compatibility_date\": \"2022-01-01\",\n      \"compatibility_flags\": [\n        \"url_standard\"\n      ]\n    }\n  },\n  \"latest_deployment\": {},\n  \"canonical_deployment\": {}\n}",
+		"example": "{\n  \"name\": \"NextJS Blog\",\n  \"id\": \"7b162ea7-7367-4d67-bcde-1160995d5\",\n  \"created_on\": \"2017-01-01T00:00:00Z\",\n  \"subdomain\": \"helloworld.pages.dev\",\n  \"domains\": [\n    \"customdomain.com\",\n    \"customdomain.org\"\n  ],\n  \"source\": {\n    \"type\": \"github\",\n    \"config\": {\n      \"owner\": \"cloudflare\",\n      \"repo_name\": \"ninjakittens\",\n      \"production_branch\": \"main\",\n      \"pr_comments_enabled\": true,\n      \"production_deployments_enabled\": true,\n      \"preview_deployment_setting\": \"custom\",\n      \"preview_branch_includes\": [\n        \"release/*\",\n        \"production\",\n        \"main\"\n      ],\n      \"preview_branch_excludes\": [\n        \"dependabot/*\",\n        \"dev\",\n        \"*/ignore\"\n      ]\n    }\n  },\n  \"build_config\": {\n    \"build_command\": \"npm run build\",\n    \"destination_dir\": \"build\",\n    \"root_dir\": \"/\",\n    \"web_analytics_tag\": \"cee1c73f6e4743d0b5e6bb1a0bcaabcc\",\n    \"web_analytics_token\": \"021e1057c18547eca7b79f2516f06o7x\"\n  },\n  \"deployment_configs\": {\n    \"preview\": {\n      \"env_vars\": {\n        \"BUILD_VERSION\": {\n          \"value\": \"3.3\"\n        }\n      },\n      \"kv_namespaces\": {\n        \"KV_BINDING\": {\n          \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n        }\n      },\n      \"durable_object_namespaces\": {\n        \"DO_BINDING\": {\n          \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n        }\n      },\n      \"r2_buckets\": {\n        \"R2_BINDING\": {\n          \"name\": \"some-bucket\"\n        }\n      },\n      \"d1_databases\": {\n        \"D1_BINDING\": {\n          \"id\": \"445e2955-951a-43f8-a35b-a4d0c8138f63\"\n        }\n      },\n      \"compatibility_date\": \"2022-01-01\",\n      \"compatibility_flags\": [\n        \"url_standard\"\n      ]\n    },\n    \"production\": {\n      \"env_vars\": {\n        \"BUILD_VERSION\": {\n          \"value\": \"3.3\"\n        }\n      },\n      \"kv_namespaces\": {\n        \"KV_BINDING\": {\n          \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n        }\n      },\n      \"durable_object_namespaces\": {\n        \"DO_BINDING\": {\n          \"namespace_id\": \"5eb63bbbe01eeed093cb22bb8f5acdc3\"\n        }\n      },\n      \"r2_buckets\": {\n        \"R2_BINDING\": {\n          \"name\": \"some-bucket\"\n        }\n      },\n      \"d1_databases\": {\n        \"D1_BINDING\": {\n          \"id\": \"445e2955-951a-43f8-a35b-a4d0c8138f63\"\n        }\n      },\n      \"compatibility_date\": \"2022-01-01\",\n      \"compatibility_flags\": [\n        \"url_standard\"\n      ]\n    }\n  },\n  \"latest_deployment\": {},\n  \"canonical_deployment\": {},\n  \"production_branch\": \"main\"\n}",
 		"title": "Pages Project",
 		"description": "A Pages project represents a website deployed to Cloudflare's edge."
 	}

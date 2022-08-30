@@ -6,7 +6,7 @@
 	"links": [
 		{
 			"title": "List GRE tunnels",
-			"description": "List GRE tunnels associated with an account's Magic setup",
+			"description": "Lists GRE tunnels associated with an account.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/account_identifier}/magic/gre_tunnels",
 			"method": "GET",
@@ -23,8 +23,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"gre_tunnels\": [\n      {\n        \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n        \"created_on\": \"2017-06-14T00:00:00Z\",\n        \"modified_on\": \"2017-06-14T05:20:00Z\",\n        \"name\": \"GRE_1\",\n        \"customer_gre_endpoint\": \"203.0.113.1\",\n        \"cloudflare_gre_endpoint\": \"203.0.113.1\",\n        \"interface_address\": \"192.0.2.0/31\",\n        \"description\": \"Tunnel for ISP X\",\n        \"ttl\": 64,\n        \"mtu\": 1476,\n        \"health_check\": {\n          \"enabled\": true,\n          \"target\": \"203.0.113.1\",\n          \"type\": \"request\"\n        }\n      }\n    ]\n  }\n}"
 		},
 		{
-			"title": "GRE Tunnel Details",
-			"description": "Get a specific GRE tunnel for an account's Magic setup",
+			"title": "List GRE Tunnel Details",
+			"description": "Lists informtion for a specific GRE tunnel.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/magic/gre_tunnels/{#/definitions/tunnel_identifier}",
 			"method": "GET",
@@ -35,14 +35,14 @@
 				"business": false,
 				"enterprise": true
 			},
-			"html_id": "magic-gre-tunnels-gre-tunnel-details",
+			"html_id": "magic-gre-tunnels-list-gre-tunnel-details",
 			"uri": "accounts/:account_identifier/magic/gre_tunnels/:tunnel_identifier",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/magic/gre_tunnels/01a7362d577a6c3019a474fd6f485823\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"gre_tunnel\": {\n      \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n      \"created_on\": \"2017-06-14T00:00:00Z\",\n      \"modified_on\": \"2017-06-14T05:20:00Z\",\n      \"name\": \"GRE_1\",\n      \"customer_gre_endpoint\": \"203.0.113.1\",\n      \"cloudflare_gre_endpoint\": \"203.0.113.1\",\n      \"interface_address\": \"192.0.2.0/31\",\n      \"description\": \"Tunnel for ISP X\",\n      \"ttl\": 64,\n      \"mtu\": 1476,\n      \"health_check\": {\n        \"enabled\": true,\n        \"target\": \"203.0.113.1\",\n        \"type\": \"request\"\n      }\n    }\n  }\n}"
 		},
 		{
 			"title": "Create GRE tunnels",
-			"description": "Creates new GRE tunnels associated with an account's Magic setup. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes",
+			"description": "Creates new GRE tunnels. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/magic/gre_tunnels?validate_only={#/definitions/validate_only}",
 			"method": "POST",
@@ -75,38 +75,38 @@
 							"properties": {
 								"name": {
 									"type": "string",
-									"description": "Should be a valid Linux interface name, i.e., has no spaces, special characters, is 15 or less characters, and doesn't share a name with other GRE tunnels",
+									"description": "The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.",
 									"example": "GRE_1"
 								},
 								"customer_gre_endpoint": {
 									"type": "string",
-									"description": "The IP address assigned to the customer side of the GRE tunnel",
+									"description": "The IP address assigned to the customer side of the GRE tunnel.",
 									"example": "203.0.113.1"
 								},
 								"cloudflare_gre_endpoint": {
 									"type": "string",
-									"description": "The IP address assigned to the Cloudflare side of the GRE tunnel",
+									"description": "The IP address assigned to the Cloudflare side of the GRE tunnel.",
 									"example": "203.0.113.1"
 								},
 								"interface_address": {
 									"type": "string",
-									"description": "A 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
+									"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
 									"example": "192.0.2.0/31"
 								},
 								"description": {
 									"type": "string",
-									"description": "An optional description of the GRE tunnel",
+									"description": "An optional description of the GRE tunnel.",
 									"example": "Tunnel for ISP X"
 								},
 								"ttl": {
 									"type": "integer",
-									"description": "Time To Live (TTL) in number of hops of the GRE tunnel. Minimum value 64",
+									"description": "Time To Live (TTL) in number of hops of the GRE tunnel.",
 									"example": 64,
 									"default": 64
 								},
 								"mtu": {
 									"type": "integer",
-									"description": "Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. Maximum value 1476 and minimum value 576",
+									"description": "Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.",
 									"example": 1476,
 									"default": 1476
 								},
@@ -114,19 +114,19 @@
 									"type": "object",
 									"properties": {
 										"enabled": {
-											"description": "Flag to run healthchecks for this tunnel (defaults to true)",
+											"description": "Determines whether to run healthchecks for a tunnel.",
 											"type": "boolean",
 											"example": true,
 											"default": true
 										},
 										"target": {
 											"type": "string",
-											"description": "Address to run healthchecks against (defaults to customer_gre_endpoint address)",
+											"description": "The address used to run healthchecks for a tunnel. This field defaults to `customer_gre_endpoint address`.",
 											"example": "203.0.113.1"
 										},
 										"type": {
 											"type": "string",
-											"description": "Type of healthcheck to run (reply or request). Defaults to reply.",
+											"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
 											"example": "request",
 											"default": "reply",
 											"enum": [
@@ -156,7 +156,7 @@
 		},
 		{
 			"title": "Update GRE Tunnel",
-			"description": "Update a specific GRE tunnel for an account's Magic setup. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes",
+			"description": "Updates a specific GRE tunnel. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/magic/gre_tunnels/{#/definitions/tunnel_identifier}?validate_only={#/definitions/validate_only}",
 			"method": "PUT",
@@ -178,38 +178,38 @@
 					"name": {
 						"type": "string",
 						"example": "\"GRE_1\"",
-						"description": "Should be a valid Linux interface name, i.e., has no spaces, special characters, is 15 or less characters, and doesn't share a name with other GRE tunnels"
+						"description": "The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel."
 					},
 					"customer_gre_endpoint": {
 						"type": "string",
 						"example": "\"203.0.113.1\"",
-						"description": "The IP address assigned to the customer side of the GRE tunnel"
+						"description": "The IP address assigned to the customer side of the GRE tunnel."
 					},
 					"cloudflare_gre_endpoint": {
 						"type": "string",
 						"example": "\"203.0.113.1\"",
-						"description": "The IP address assigned to the Cloudflare side of the GRE tunnel"
+						"description": "The IP address assigned to the Cloudflare side of the GRE tunnel."
 					},
 					"interface_address": {
 						"type": "string",
 						"example": "\"192.0.2.0/31\"",
-						"description": "A 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255."
+						"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255."
 					},
 					"description": {
 						"type": "string",
 						"example": "\"Tunnel for ISP X\"",
-						"description": "An optional description of the GRE tunnel"
+						"description": "An optional description of the GRE tunnel."
 					},
 					"ttl": {
 						"type": "integer",
 						"example": "64",
-						"description": "Time To Live (TTL) in number of hops of the GRE tunnel. Minimum value 64",
+						"description": "Time To Live (TTL) in number of hops of the GRE tunnel.",
 						"default": 64
 					},
 					"mtu": {
 						"type": "integer",
 						"example": "1476",
-						"description": "Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. Maximum value 1476 and minimum value 576",
+						"description": "Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.",
 						"default": 1476
 					},
 					"health_check": {
@@ -219,18 +219,18 @@
 							"enabled": {
 								"type": "boolean",
 								"example": "true",
-								"description": "Flag to run healthchecks for this tunnel (defaults to true)",
+								"description": "Determines whether to run healthchecks for a tunnel.",
 								"default": true
 							},
 							"target": {
 								"type": "string",
 								"example": "\"203.0.113.1\"",
-								"description": "Address to run healthchecks against (defaults to customer_gre_endpoint address)"
+								"description": "The address used to run healthchecks for a tunnel. This field defaults to `customer_gre_endpoint address`."
 							},
 							"type": {
 								"type": "string",
 								"example": "\"request\"",
-								"description": "Type of healthcheck to run (reply or request). Defaults to reply.",
+								"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
 								"default": "reply",
 								"enum": [
 									"reply",
@@ -257,8 +257,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"modified\": true,\n    \"modified_gre_tunnel\": {\n      \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n      \"created_on\": \"2017-06-14T00:00:00Z\",\n      \"modified_on\": \"2017-06-14T05:20:00Z\",\n      \"name\": \"GRE_1\",\n      \"customer_gre_endpoint\": \"203.0.113.1\",\n      \"cloudflare_gre_endpoint\": \"203.0.113.1\",\n      \"interface_address\": \"192.0.2.0/31\",\n      \"description\": \"Tunnel for ISP X\",\n      \"ttl\": 64,\n      \"mtu\": 1476,\n      \"health_check\": {\n        \"enabled\": true,\n        \"target\": \"203.0.113.1\",\n        \"type\": \"request\"\n      }\n    }\n  }\n}"
 		},
 		{
-			"title": "Update Many GRE tunnels",
-			"description": "Update many GRE tunnels for an account's Magic setup. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes",
+			"title": "Update multiple GRE tunnels",
+			"description": "Updates multiple GRE tunnels. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/magic/gre_tunnels?validate_only={#/definitions/validate_only}",
 			"method": "PUT",
@@ -269,7 +269,7 @@
 				"business": false,
 				"enterprise": true
 			},
-			"html_id": "magic-gre-tunnels-update-many-gre-tunnels",
+			"html_id": "magic-gre-tunnels-update-multiple-gre-tunnels",
 			"uri": "accounts/:account_identifier/magic/gre_tunnels?validate_only=:validate_only",
 			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/magic/gre_tunnels?validate_only=true\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"gre_tunnels\":[{\"id\":\"01a7362d577a6c3019a474fd6f485823\",\"name\":\"GRE_1\",\"customer_gre_endpoint\":\"203.0.113.1\",\"cloudflare_gre_endpoint\":\"203.0.113.1\",\"interface_address\":\"192.0.2.0/31\",\"description\":\"Tunnel for ISP X\",\"ttl\":64,\"mtu\":1476,\"health_check\":{\"enabled\":true,\"target\":\"203.0.113.1\",\"type\":\"request\"}}]}'",
 			"parameters": {
@@ -307,38 +307,38 @@
 											"properties": {
 												"name": {
 													"type": "string",
-													"description": "Should be a valid Linux interface name, i.e., has no spaces, special characters, is 15 or less characters, and doesn't share a name with other GRE tunnels",
+													"description": "The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.",
 													"example": "GRE_1"
 												},
 												"customer_gre_endpoint": {
 													"type": "string",
-													"description": "The IP address assigned to the customer side of the GRE tunnel",
+													"description": "The IP address assigned to the customer side of the GRE tunnel.",
 													"example": "203.0.113.1"
 												},
 												"cloudflare_gre_endpoint": {
 													"type": "string",
-													"description": "The IP address assigned to the Cloudflare side of the GRE tunnel",
+													"description": "The IP address assigned to the Cloudflare side of the GRE tunnel.",
 													"example": "203.0.113.1"
 												},
 												"interface_address": {
 													"type": "string",
-													"description": "A 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
+													"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.",
 													"example": "192.0.2.0/31"
 												},
 												"description": {
 													"type": "string",
-													"description": "An optional description of the GRE tunnel",
+													"description": "An optional description of the GRE tunnel.",
 													"example": "Tunnel for ISP X"
 												},
 												"ttl": {
 													"type": "integer",
-													"description": "Time To Live (TTL) in number of hops of the GRE tunnel. Minimum value 64",
+													"description": "Time To Live (TTL) in number of hops of the GRE tunnel.",
 													"example": 64,
 													"default": 64
 												},
 												"mtu": {
 													"type": "integer",
-													"description": "Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. Maximum value 1476 and minimum value 576",
+													"description": "Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.",
 													"example": 1476,
 													"default": 1476
 												},
@@ -346,19 +346,19 @@
 													"type": "object",
 													"properties": {
 														"enabled": {
-															"description": "Flag to run healthchecks for this tunnel (defaults to true)",
+															"description": "Determines whether to run healthchecks for a tunnel.",
 															"type": "boolean",
 															"example": true,
 															"default": true
 														},
 														"target": {
 															"type": "string",
-															"description": "Address to run healthchecks against (defaults to customer_gre_endpoint address)",
+															"description": "The address used to run healthchecks for a tunnel. This field defaults to `customer_gre_endpoint address`.",
 															"example": "203.0.113.1"
 														},
 														"type": {
 															"type": "string",
-															"description": "Type of healthcheck to run (reply or request). Defaults to reply.",
+															"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
 															"example": "request",
 															"default": "reply",
 															"enum": [
@@ -389,7 +389,7 @@
 		},
 		{
 			"title": "Delete GRE Tunnel",
-			"description": "Disable and remove a specific static GRE Tunnel for an account's Magic setup. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes",
+			"description": "Disables and removes a specific static GRE tunnel. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/magic/gre_tunnels/{#/definitions/tunnel_identifier}?validate_only={#/definitions/validate_only}",
 			"method": "DELETE",
@@ -425,50 +425,50 @@
 				"example": "\"2017-06-14T00:00:00Z\"",
 				"readOnly": true,
 				"format": "date-time",
-				"description": "When the tunnel was created"
+				"description": "The date and time the tunnel was created."
 			},
 			"modified_on": {
 				"type": "string",
 				"example": "\"2017-06-14T05:20:00Z\"",
 				"readOnly": true,
 				"format": "date-time",
-				"description": "When the tunnel was last modified"
+				"description": "The date and time the tunnel was last modified."
 			},
 			"name": {
 				"type": "string",
 				"example": "\"GRE_1\"",
-				"description": "Should be a valid Linux interface name, i.e., has no spaces, special characters, is 15 or less characters, and doesn't share a name with other GRE tunnels"
+				"description": "The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel."
 			},
 			"customer_gre_endpoint": {
 				"type": "string",
 				"example": "\"203.0.113.1\"",
-				"description": "The IP address assigned to the customer side of the GRE tunnel"
+				"description": "The IP address assigned to the customer side of the GRE tunnel."
 			},
 			"cloudflare_gre_endpoint": {
 				"type": "string",
 				"example": "\"203.0.113.1\"",
-				"description": "The IP address assigned to the Cloudflare side of the GRE tunnel"
+				"description": "The IP address assigned to the Cloudflare side of the GRE tunnel."
 			},
 			"interface_address": {
 				"type": "string",
 				"example": "\"192.0.2.0/31\"",
-				"description": "A 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255."
+				"description": "A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255."
 			},
 			"description": {
 				"type": "string",
 				"example": "\"Tunnel for ISP X\"",
-				"description": "An optional description of the GRE tunnel"
+				"description": "An optional description of the GRE tunnel."
 			},
 			"ttl": {
 				"type": "integer",
 				"example": "64",
-				"description": "Time To Live (TTL) in number of hops of the GRE tunnel. Minimum value 64",
+				"description": "Time To Live (TTL) in number of hops of the GRE tunnel.",
 				"default": 64
 			},
 			"mtu": {
 				"type": "integer",
 				"example": "1476",
-				"description": "Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. Maximum value 1476 and minimum value 576",
+				"description": "Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.",
 				"default": 1476
 			},
 			"health_check": {
@@ -478,18 +478,18 @@
 					"enabled": {
 						"type": "boolean",
 						"example": "true",
-						"description": "Flag to run healthchecks for this tunnel (defaults to true)",
+						"description": "Determines whether to run healthchecks for a tunnel.",
 						"default": true
 					},
 					"target": {
 						"type": "string",
 						"example": "\"203.0.113.1\"",
-						"description": "Address to run healthchecks against (defaults to customer_gre_endpoint address)"
+						"description": "The address used to run healthchecks for a tunnel. This field defaults to `customer_gre_endpoint address`."
 					},
 					"type": {
 						"type": "string",
 						"example": "\"request\"",
-						"description": "Type of healthcheck to run (reply or request). Defaults to reply.",
+						"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
 						"default": "reply",
 						"enum": [
 							"reply",

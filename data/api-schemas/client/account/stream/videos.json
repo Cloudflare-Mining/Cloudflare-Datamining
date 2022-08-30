@@ -706,7 +706,7 @@
 						"readOnly": true
 					},
 					"pctComplete": {
-						"type": "integer",
+						"type": "string",
 						"example": "51",
 						"description": "Indicates the size of the entire upload in bytes. The value must be a non-negative integer.",
 						"minimum": 0,
