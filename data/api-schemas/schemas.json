@@ -79066,6 +79066,16 @@
 																"description": "The operating system version",
 																"example": "10.0.0"
 															},
+															"os_distro_name": {
+																"type": "string",
+																"description": "The Linux distro name",
+																"example": "ubuntu"
+															},
+															"os_distro_revision": {
+																"type": "string",
+																"description": "The Linux distro revision",
+																"example": "1.0.0"
+															},
 															"mac_address": {
 																"type": "string",
 																"example": "00-00-5E-00-53-00",
