@@ -84,7 +84,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		overview: {
 			transfer_in: {
 				title: "Complete your transfer",
-				subtitle: (0, n.d)(R(), "domainName"),
+				subtitle: (0, n.d)(L(), "domainName"),
 				body: "Complete the following tasks to finish your domain transfer and activate on Cloudflare.",
 				refresh: "Refresh transfer status"
 			},
@@ -287,9 +287,9 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	instructions_godaddy: O,
 	instructions_namecheap: T,
 	instructions_network_solutions: C,
-	instructions_one_and_one: L,
+	instructions_one_and_one: z,
 	instructions_unknown: v,
-	instructions_uk: B,
+	instructions_uk: U,
 	instructions_restrictions: a,
 	instructions_restrictions_title: "Show restrictions",
 	instructions_known_title: "Transfer your domain from %{registrar}",
