@@ -45,6 +45,7 @@ const knownSuffixes = new Set([
 	'_standard_nocost',
 	'_staging',
 	'_test',
+	'_trial',
 ]);
 
 // some known (or anticipated) rate plans that aren't listed in the types

@@ -1,0 +1,30 @@
+{
+	"id": "IMAGE_RESIZING_TRIAL",
+	"public_name": "Image Resizing Trial",
+	"currency": "USD",
+	"components": [
+		{
+			"name": "image_resizing_requests",
+			"publicName": "Image Resizing Requests",
+			"type": "tieredPricingComponent",
+			"metric": "image_resizing_requests",
+			"aggregate": "sum",
+			"chargeType": "usage",
+			"chargeModel": "tiered",
+			"defaultQuantity": 0,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 0,
+					"pricingType": "unit",
+					"price": 0,
+					"bucketSize": 0
+				}
+			],
+			"cfQuantityLabel": "{{comma .}} requests",
+			"cfStartOfFirstUnit": 100001,
+			"cfUsageDivisor": 1,
+			"cfUsageID": "image_resizing_requests"
+		}
+	]
+}
