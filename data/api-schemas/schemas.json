@@ -68113,6 +68113,86 @@
 				}
 			}
 		},
+		"/accounts/{identifier}/access/service_tokens/{uuid}/refresh": {
+			"post": {
+				"summary": "Refresh a service token",
+				"description": "Refreshes the expiration of a service token",
+				"parameters": [
+					{
+						"name": "uuid",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1identity_providers/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/id"
+						}
+					},
+					{
+						"name": "identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1available_plans~1%7Bplan_identifier%7D/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Refresh a service token response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object",
+													"properties": {
+														"created_at": {
+															"$ref": "#/paths/~1user~1load_balancers~1monitors/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/created_on"
+														},
+														"updated_at": {
+															"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1ssl~1recommendation/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/modified_on"
+														},
+														"id": {
+															"description": "The ID of the service token."
+														},
+														"name": {
+															"type": "string",
+															"description": "The name of the service token.",
+															"example": "CI/CD token"
+														},
+														"client_id": {
+															"type": "string",
+															"description": "The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.",
+															"example": "88bf3b6d86161464f6509f7219099e57.access.example.com"
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {}
+					}
+				}
+			}
+		},
 		"/accounts/{identifier}/access/apps/ca": {
 			"get": {
 				"summary": "List short-lived certificate CAs",
@@ -75604,12 +75684,14 @@
 															},
 															"name": {
 																"type": "string",
+																"description": "The name of the user.",
+																"example": "Jane Doe"
+															},
+															"email": {
+																"type": "string",
 																"format": "email",
 																"example": "jdoe@example.com",
 																"description": "The email of the user."
-															},
-															"email": {
-																"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1users/get/responses/200/content/application~1json/schema/allOf/2/properties/result/items/properties/name"
 															},
 															"last_successful_login": {
 																"description": "The time at which the user last successfully logged in.",
