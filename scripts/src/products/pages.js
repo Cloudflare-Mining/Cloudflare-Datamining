@@ -144,7 +144,10 @@ if(startIndex && endIndex){
 		},
 		{},
 	);
-	await fs.writeJson(path.resolve(dir, 'deployments-logs-env.json'), sorted, {spaces: '\t'});
+	// check a common env var like `PATH` to make sure we have a valid object
+	if(sorted.PATH){
+		await fs.writeJson(path.resolve(dir, 'deployments-logs-env.json'), sorted, {spaces: '\t'});
+	}
 }
 
 // delete all previous deployments
