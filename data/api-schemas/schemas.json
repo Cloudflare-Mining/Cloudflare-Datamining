@@ -37844,23 +37844,17 @@
 						"application/json": {}
 					}
 				}
-			}
-		},
-		"/accounts/{account_identifier}/stream/live_inputs/{live_input_identifier}/outputs/{output_identifier}/enabled": {
+			},
 			"put": {
-				"summary": "Toggle an output on a live input",
-				"description": "Toggles the 'enabled' state on an output from a live input.",
+				"summary": "Update a single output on a live input",
+				"description": "Updates an output's details associated with a live input.",
 				"parameters": [
 					{
 						"name": "output_identifier",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "A unique identifier for the output.",
-							"example": "baea4d9c515887b80289d5c33cf01145",
-							"maxLength": 32,
-							"readOnly": true,
-							"type": "string"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1stream~1live_inputs~1%7Blive_input_identifier%7D~1outputs~1%7Boutput_identifier%7D/delete/parameters/0/schema"
 						}
 					},
 					{
@@ -37868,11 +37862,7 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "A unique identifier for a live input.",
-							"example": "66be4bf738797e01e1fca35a7bdecdcd",
-							"maxLength": 32,
-							"readOnly": true,
-							"type": "string"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1stream~1live_inputs~1%7Blive_input_identifier%7D~1outputs~1%7Boutput_identifier%7D/delete/parameters/1/schema"
 						}
 					},
 					{
@@ -37880,13 +37870,13 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1available_plans~1%7Bplan_identifier%7D/get/parameters/0/schema"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1stream~1live_inputs~1%7Blive_input_identifier%7D~1outputs~1%7Boutput_identifier%7D/delete/parameters/2/schema"
 						}
 					}
 				],
 				"responses": {
 					"200": {
-						"description": "Toggle an output on a live input response",
+						"description": "Update a single output on a live input response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -37899,7 +37889,7 @@
 												"result": {
 													"properties": {
 														"uid": {
-															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1stream~1live_inputs~1%7Blive_input_identifier%7D~1outputs~1%7Boutput_identifier%7D~1enabled/put/parameters/0/schema"
+															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1stream~1live_inputs~1%7Blive_input_identifier%7D~1outputs~1%7Boutput_identifier%7D/delete/parameters/0/schema"
 														},
 														"url": {
 															"description": "The URL an output uses to restream.",
@@ -37914,7 +37904,7 @@
 															"type": "string"
 														},
 														"enabled": {
-															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1stream~1live_inputs~1%7Blive_input_identifier%7D~1outputs~1%7Boutput_identifier%7D~1enabled/put/requestBody/content/application~1json/schema/properties/enabled"
+															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1stream~1live_inputs~1%7Blive_input_identifier%7D~1outputs~1%7Boutput_identifier%7D/put/requestBody/content/application~1json/schema/properties/enabled"
 														}
 													}
 												}
