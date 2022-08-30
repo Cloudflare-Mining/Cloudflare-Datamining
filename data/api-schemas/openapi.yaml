@@ -36215,7 +36215,21 @@ paths:
           $ref: '#/components/schemas/common_components-schemas-identifier'
       requestBody:
         content:
-          application/json: {}
+          application/json:
+            schema:
+              properties:
+                alert_type:
+                  $ref: '#/components/schemas/alert_type'
+                description:
+                  $ref: '#/components/schemas/policies_components-schemas-description'
+                enabled:
+                  $ref: '#/components/schemas/policies_components-schemas-enabled'
+                filters:
+                  $ref: '#/components/schemas/components-schemas-filters'
+                mechanisms:
+                  $ref: '#/components/schemas/mechanisms'
+                name:
+                  $ref: '#/components/schemas/policies_components-schemas-name-2'
         required: true
       responses:
         4xx:

@@ -90478,70 +90478,22 @@
 															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1alerting~1v3~1policies~1%7Buuid%7D/get/parameters/0/schema"
 														},
 														"name": {
-															"type": "string",
-															"description": "Name of the policy.",
-															"example": "SSL Notification Event Policy"
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1alerting~1v3~1policies~1%7Buuid%7D/put/requestBody/content/application~1json/schema/properties/name"
 														},
 														"description": {
-															"type": "string",
-															"description": "Optional description for the Notification policy.",
-															"example": "Something describing the policy."
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1alerting~1v3~1policies~1%7Buuid%7D/put/requestBody/content/application~1json/schema/properties/description"
 														},
 														"enabled": {
-															"type": "boolean",
-															"description": "Whether or not the Notification policy is enabled.",
-															"default": true,
-															"example": true
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1alerting~1v3~1policies~1%7Buuid%7D/put/requestBody/content/application~1json/schema/properties/enabled"
 														},
 														"alert_type": {
-															"type": "string",
-															"description": "Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.",
-															"example": "universal_ssl_event_type"
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1alerting~1v3~1policies~1%7Buuid%7D/put/requestBody/content/application~1json/schema/properties/alert_type"
 														},
 														"mechanisms": {
-															"type": "object",
-															"description": "List of IDs that will be used when dispatching a notification. IDs for email type will be the email address.",
-															"additionalProperties": {
-																"type": "array",
-																"items": {
-																	"type": "object",
-																	"properties": {
-																		"id": {
-																			"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1alerting~1v3~1policies~1%7Buuid%7D/get/parameters/0/schema"
-																		}
-																	}
-																}
-															},
-															"example": {
-																"email": [
-																	{
-																		"id": "test@example.com"
-																	}
-																],
-																"pagerduty": [
-																	{
-																		"id": "e8133a15-00a4-4d69-aec1-32f70c51f6e5"
-																	}
-																],
-																"webhooks": [
-																	{
-																		"id": "14cc1190-5d2b-4b98-a696-c424cb2ad05f"
-																	}
-																]
-															}
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1alerting~1v3~1policies~1%7Buuid%7D/put/requestBody/content/application~1json/schema/properties/mechanisms"
 														},
 														"filters": {
-															"type": "object",
-															"additionalProperties": {
-																"type": "array",
-																"description": "Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details.",
-																"items": {}
-															},
-															"example": {
-																"slo": [
-																	"99.9"
-																]
-															}
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1alerting~1v3~1policies~1%7Buuid%7D/put/requestBody/content/application~1json/schema/properties/filters"
 														},
 														"created": {
 															"$ref": "#/paths/~1user~1load_balancers~1monitors/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/created_on"
@@ -90624,7 +90576,78 @@
 				"requestBody": {
 					"required": true,
 					"content": {
-						"application/json": {}
+						"application/json": {
+							"schema": {
+								"properties": {
+									"name": {
+										"type": "string",
+										"description": "Name of the policy.",
+										"example": "SSL Notification Event Policy"
+									},
+									"description": {
+										"type": "string",
+										"description": "Optional description for the Notification policy.",
+										"example": "Something describing the policy."
+									},
+									"enabled": {
+										"type": "boolean",
+										"description": "Whether or not the Notification policy is enabled.",
+										"default": true,
+										"example": true
+									},
+									"alert_type": {
+										"type": "string",
+										"description": "Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.",
+										"example": "universal_ssl_event_type"
+									},
+									"mechanisms": {
+										"type": "object",
+										"description": "List of IDs that will be used when dispatching a notification. IDs for email type will be the email address.",
+										"additionalProperties": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"id": {
+														"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1alerting~1v3~1policies~1%7Buuid%7D/get/parameters/0/schema"
+													}
+												}
+											}
+										},
+										"example": {
+											"email": [
+												{
+													"id": "test@example.com"
+												}
+											],
+											"pagerduty": [
+												{
+													"id": "e8133a15-00a4-4d69-aec1-32f70c51f6e5"
+												}
+											],
+											"webhooks": [
+												{
+													"id": "14cc1190-5d2b-4b98-a696-c424cb2ad05f"
+												}
+											]
+										}
+									},
+									"filters": {
+										"type": "object",
+										"additionalProperties": {
+											"type": "array",
+											"description": "Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details.",
+											"items": {}
+										},
+										"example": {
+											"slo": [
+												"99.9"
+											]
+										}
+									}
+								}
+							}
+						}
 					}
 				}
 			},
