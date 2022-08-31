@@ -15943,7 +15943,8 @@ components:
           type: object
         jump_start:
           default: false
-          description: Automatically attempt to fetch existing DNS records
+          description: Automatically attempt to fetch existing DNS records. This field
+            is deprecated, and will be removed on 2022-09-23.
           example: true
           type: boolean
         name:
