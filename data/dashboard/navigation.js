@@ -763,6 +763,9 @@ const navigation = {
 			},
 			url: "/zaraz/consent"
 		}, {
+			title: "navigation.zone.zaraz.variables",
+			url: "/zaraz/variables"
+		}, {
 			title: "navigation.zone.zaraz.settings",
 			url: "/zaraz/settings"
 		}]
