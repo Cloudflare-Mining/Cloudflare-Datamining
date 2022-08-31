@@ -17,6 +17,7 @@ const knownSuffixes = new Set([
 	'_advanced',
 	'_advanced_no_cost',
 	'_advanced_nocost',
+	'_athenian',
 	'_basic',
 	'_basic_no_cost',
 	'_basic_nocost',
@@ -71,6 +72,7 @@ const knownRatePlans = new Set([
 	'dns',
 	'ddos_protection_magic_transit',
 	'ddos_protection_spectrum',
+	'edge_containers',
 	'ent',
 	'enterprise_customer_portal',
 	'free',
@@ -100,6 +102,8 @@ const knownRatePlans = new Set([
 	'teams_access',
 	'waiting_rooms',
 	'workers',
+	'workers_for_platforms',
+	'zaraz',
 	'zero_trust',
 	'zero_trust_access',
 	'zero_trust_gateway',
@@ -122,7 +126,6 @@ const addRatePlan = function(ratePlan){
 	//ratePlans.add(`msp_${usePlan}`);
 	for(const suffix of knownSuffixes){
 		const toAdd = `${usePlan}${suffix}`;
-		console.log('add', toAdd);
 		ratePlans.add(toAdd);
 		ratePlans.add(`partners_${toAdd}`);
 		//ratePlans.add(`msp_${toAdd}`);
