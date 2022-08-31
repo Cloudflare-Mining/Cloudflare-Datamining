@@ -136,8 +136,8 @@ If checked, images that require signed URLs can be accessed publicly.`,
 	},
 	modal_add_storage_custom_calculation: (0, a.d)(C(), "value"),
 	modal_add_extra_storage_custom_calculation: (0, a.d)(O(), "value"),
-	modal_extra_minutes_of_video: (0, a.d)(S(), "value"),
-	modal_total_storage: (0, a.d)(I(), "value"),
+	modal_extra_minutes_of_video: (0, a.d)(I(), "value"),
+	modal_total_storage: (0, a.d)(S(), "value"),
 	subscription: {
 		error: "There was an error enabling Images",
 		success: "Created Images subscription successfully",
@@ -328,6 +328,7 @@ To read the full docs, [click here](https://developers.cloudflare.com/images).`,
 		access_key: "Access key",
 		test_credentials_description: "Both user name and access key are required to establish the test connection. They can be found on your S3 account."
 	},
+	no_variants_svg_message: "SVG images are scalable by default. Variants do not apply to SVG images.",
 	define_rules_form: {
 		define_rules: "Define rules",
 		source_created: "Source was created successfully.",

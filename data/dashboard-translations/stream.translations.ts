@@ -563,6 +563,7 @@ To read the full docs, [click here](https://developers.cloudflare.com/stream/).`
 	response_body: "Response body",
 	input_status: "Input Status",
 	output_status: "Status",
+	output_enabled: "Enabled",
 	connecting: "Connecting",
 	connected: "Connected",
 	disconnected: "Disconnected",
