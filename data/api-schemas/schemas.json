@@ -91516,7 +91516,8 @@
 										"description": "Target gateway of the hostname.",
 										"enum": [
 											"ethereum",
-											"ipfs"
+											"ipfs",
+											"ipfs_universal_path"
 										],
 										"example": "ipfs"
 									},
@@ -91602,7 +91603,8 @@
 															"description": "Target gateway of the hostname.",
 															"enum": [
 																"ethereum",
-																"ipfs"
+																"ipfs",
+																"ipfs_universal_path"
 															],
 															"example": "ipfs"
 														},
@@ -91748,6 +91750,546 @@
 					"free": true,
 					"pro": true,
 					"business": true,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {}
+					}
+				}
+			}
+		},
+		"/zones/{zone_identifier}/web3/hostnames/{identifier}/ipfs_universal_path/content_list": {
+			"get": {
+				"summary": "IPFS Universal Path Gateway Content List Details",
+				"parameters": [
+					{
+						"name": "identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1available_plans~1%7Bplan_identifier%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "zone_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1available_plans~1%7Bplan_identifier%7D/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "IPFS Universal Path Gateway Content List Details response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1web3~1hostnames~1%7Bidentifier%7D~1ipfs_universal_path~1content_list/put/requestBody/content/application~1json/schema"
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
+					"enterprise": true
+				}
+			},
+			"put": {
+				"summary": "Update IPFS Universal Path Gateway Content List",
+				"parameters": [
+					{
+						"name": "identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1web3~1hostnames~1%7Bidentifier%7D~1ipfs_universal_path~1content_list/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "zone_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1web3~1hostnames~1%7Bidentifier%7D~1ipfs_universal_path~1content_list/get/parameters/1/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Update IPFS Universal Path Gateway Content List response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1web3~1hostnames~1%7Bidentifier%7D~1ipfs_universal_path~1content_list/get/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"action": {
+										"type": "string",
+										"enum": [
+											"block"
+										],
+										"description": "Behavior of the content list",
+										"example": "block"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/zones/{zone_identifier}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries": {
+			"get": {
+				"summary": "List IPFS Universal Path Gateway Content List Entries",
+				"parameters": [
+					{
+						"name": "identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1available_plans~1%7Bplan_identifier%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "zone_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1available_plans~1%7Bplan_identifier%7D/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "List IPFS Universal Path Gateway Content List Entries response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user~1tokens~1permission_groups/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object",
+													"properties": {
+														"entries": {
+															"description": "Content list entries",
+															"type": "array",
+															"items": {
+																"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1web3~1hostnames~1%7Bidentifier%7D~1ipfs_universal_path~1content_list~1entries/post/responses/200/content/application~1json/schema/allOf/1/properties/result"
+															}
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
+					"enterprise": true
+				}
+			},
+			"post": {
+				"summary": "Create IPFS Universal Path Gateway Content List Entry",
+				"parameters": [
+					{
+						"name": "identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1web3~1hostnames~1%7Bidentifier%7D~1ipfs_universal_path~1content_list~1entries/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "zone_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1web3~1hostnames~1%7Bidentifier%7D~1ipfs_universal_path~1content_list~1entries/get/parameters/1/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Create IPFS Universal Path Gateway Content List Entry response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"description": "Content list entry to be blocked",
+													"type": "object",
+													"properties": {
+														"id": {
+															"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1available_plans~1%7Bplan_identifier%7D/get/parameters/0/schema"
+														},
+														"type": {
+															"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1web3~1hostnames~1%7Bidentifier%7D~1ipfs_universal_path~1content_list~1entries/post/requestBody/content/application~1json/schema/properties/type"
+														},
+														"content": {
+															"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1web3~1hostnames~1%7Bidentifier%7D~1ipfs_universal_path~1content_list~1entries/post/requestBody/content/application~1json/schema/properties/content"
+														},
+														"description": {
+															"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1web3~1hostnames~1%7Bidentifier%7D~1ipfs_universal_path~1content_list~1entries/post/requestBody/content/application~1json/schema/properties/description"
+														},
+														"created_on": {
+															"$ref": "#/paths/~1user~1load_balancers~1monitors/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/created_on"
+														},
+														"modified_on": {
+															"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1ssl~1recommendation/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/modified_on"
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"type": {
+										"type": "string",
+										"enum": [
+											"cid",
+											"content_path"
+										],
+										"description": "Type of content list entry to block",
+										"example": "cid"
+									},
+									"content": {
+										"type": "string",
+										"maxLength": 500,
+										"description": "CID or content path of content to block",
+										"example": "QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB"
+									},
+									"description": {
+										"type": "string",
+										"maxLength": 500,
+										"description": "An optional description of the content list entry.",
+										"example": "this is my content list entry"
+									}
+								},
+								"required": [
+									"type",
+									"content"
+								]
+							}
+						}
+					}
+				}
+			}
+		},
+		"/zones/{zone_identifier}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries/{content_list_entry_identifier}": {
+			"get": {
+				"summary": "IPFS Universal Path Gateway Content List Entry Details",
+				"parameters": [
+					{
+						"name": "content_list_entry_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1available_plans~1%7Bplan_identifier%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1available_plans~1%7Bplan_identifier%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "zone_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1available_plans~1%7Bplan_identifier%7D/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "IPFS Universal Path Gateway Content List Entry Details response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"description": "Content list entry to be blocked",
+													"type": "object",
+													"properties": {
+														"id": {
+															"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1web3~1hostnames~1%7Bidentifier%7D~1ipfs_universal_path~1content_list~1entries~1%7Bcontent_list_entry_identifier%7D/get/parameters/0/schema"
+														},
+														"type": {
+															"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1web3~1hostnames~1%7Bidentifier%7D~1ipfs_universal_path~1content_list~1entries~1%7Bcontent_list_entry_identifier%7D/put/requestBody/content/application~1json/schema/properties/type"
+														},
+														"content": {
+															"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1web3~1hostnames~1%7Bidentifier%7D~1ipfs_universal_path~1content_list~1entries~1%7Bcontent_list_entry_identifier%7D/put/requestBody/content/application~1json/schema/properties/content"
+														},
+														"description": {
+															"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1web3~1hostnames~1%7Bidentifier%7D~1ipfs_universal_path~1content_list~1entries~1%7Bcontent_list_entry_identifier%7D/put/requestBody/content/application~1json/schema/properties/description"
+														},
+														"created_on": {
+															"$ref": "#/paths/~1user~1load_balancers~1monitors/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/created_on"
+														},
+														"modified_on": {
+															"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1ssl~1recommendation/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/modified_on"
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
+					"enterprise": true
+				}
+			},
+			"put": {
+				"summary": "Edit IPFS Universal Path Gateway Content List Entry",
+				"parameters": [
+					{
+						"name": "content_list_entry_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1web3~1hostnames~1%7Bidentifier%7D~1ipfs_universal_path~1content_list~1entries~1%7Bcontent_list_entry_identifier%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1web3~1hostnames~1%7Bidentifier%7D~1ipfs_universal_path~1content_list~1entries~1%7Bcontent_list_entry_identifier%7D/get/parameters/1/schema"
+						}
+					},
+					{
+						"name": "zone_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1web3~1hostnames~1%7Bidentifier%7D~1ipfs_universal_path~1content_list~1entries~1%7Bcontent_list_entry_identifier%7D/get/parameters/2/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Edit IPFS Universal Path Gateway Content List Entry response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1web3~1hostnames~1%7Bidentifier%7D~1ipfs_universal_path~1content_list~1entries~1%7Bcontent_list_entry_identifier%7D/get/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"type": {
+										"type": "string",
+										"enum": [
+											"cid",
+											"content_path"
+										],
+										"description": "Type of content list entry to block",
+										"example": "cid"
+									},
+									"content": {
+										"type": "string",
+										"maxLength": 500,
+										"description": "CID or content path of content to block",
+										"example": "QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB"
+									},
+									"description": {
+										"type": "string",
+										"maxLength": 500,
+										"description": "An optional description of the content list entry.",
+										"example": "this is my content list entry"
+									}
+								},
+								"required": [
+									"type",
+									"content"
+								]
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"summary": "Delete IPFS Universal Path Gateway Content List Entry",
+				"parameters": [
+					{
+						"name": "content_list_entry_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1web3~1hostnames~1%7Bidentifier%7D~1ipfs_universal_path~1content_list~1entries~1%7Bcontent_list_entry_identifier%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1web3~1hostnames~1%7Bidentifier%7D~1ipfs_universal_path~1content_list~1entries~1%7Bcontent_list_entry_identifier%7D/get/parameters/1/schema"
+						}
+					},
+					{
+						"name": "zone_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1web3~1hostnames~1%7Bidentifier%7D~1ipfs_universal_path~1content_list~1entries~1%7Bcontent_list_entry_identifier%7D/get/parameters/2/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Delete IPFS Universal Path Gateway Content List Entry response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1user~1tokens~1%7Bidentifier%7D/delete/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
 					"enterprise": true
 				},
 				"requestBody": {

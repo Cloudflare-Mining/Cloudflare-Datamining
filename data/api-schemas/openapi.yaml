@@ -3339,7 +3339,7 @@ components:
       type: string
     client-default:
       description: Set if the location is the default one
-      example: "false"
+      example: false
       type: boolean
     client_id:
       description: The Client ID for the service token. Access will check for this
@@ -4181,6 +4181,7 @@ components:
       enum:
       - ethereum
       - ipfs
+      - ipfs_universal_path
       example: ipfs
       type: string
     components-schemas-timeout:
@@ -4639,6 +4640,88 @@ components:
       - id: 155
         name: Technology
         super_category_id: 26
+    content_list:
+      properties:
+        action:
+          $ref: '#/components/schemas/content_list_action'
+      type: object
+    content_list_action:
+      description: Behavior of the content list
+      enum:
+      - block
+      example: block
+      type: string
+    content_list_entries:
+      description: Content list entries
+      items:
+        $ref: '#/components/schemas/content_list_entry'
+      type: array
+    content_list_entry:
+      description: Content list entry to be blocked
+      properties:
+        content:
+          $ref: '#/components/schemas/content_list_entry_content'
+        created_on:
+          $ref: '#/components/schemas/timestamp'
+        description:
+          $ref: '#/components/schemas/content_list_entry_description'
+        id:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+        modified_on:
+          $ref: '#/components/schemas/timestamp'
+        type:
+          $ref: '#/components/schemas/content_list_entry_type'
+      type: object
+    content_list_entry_collection_response:
+      allOf:
+      - $ref: '#/components/schemas/api-response-collection'
+      - properties:
+          result:
+            properties:
+              entries:
+                $ref: '#/components/schemas/content_list_entries'
+            type: object
+    content_list_entry_content:
+      description: CID or content path of content to block
+      example: QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB
+      maxLength: 500
+      type: string
+    content_list_entry_create_request:
+      properties:
+        content:
+          $ref: '#/components/schemas/content_list_entry_content'
+        description:
+          $ref: '#/components/schemas/content_list_entry_description'
+        type:
+          $ref: '#/components/schemas/content_list_entry_type'
+      required:
+      - type
+      - content
+      type: object
+    content_list_entry_description:
+      description: An optional description of the content list entry.
+      example: this is my content list entry
+      maxLength: 500
+      type: string
+    content_list_entry_single_response:
+      allOf:
+      - $ref: '#/components/schemas/api-response-single'
+      - properties:
+          result:
+            $ref: '#/components/schemas/content_list_entry'
+    content_list_entry_type:
+      description: Type of content list entry to block
+      enum:
+      - cid
+      - content_path
+      example: cid
+      type: string
+    content_list_response:
+      allOf:
+      - $ref: '#/components/schemas/api-response-single'
+      - properties:
+          result:
+            $ref: '#/components/schemas/content_list'
     content_type:
       description: 'The content type of the body. Must be one of the following: `text/plain`,
         `text/xml`, or `application/json`.'
@@ -6942,6 +7025,10 @@ components:
       - "on"
       - "off"
       type: string
+    ecs-support:
+      description: Set if the location needs to resolve EDNS queries
+      example: false
+      type: boolean
     ecs_fallback:
       description: Forward client IP (resolver) subnet if no EDNS Client Subnet is
         sent
@@ -10522,6 +10609,8 @@ components:
           $ref: '#/components/schemas/timestamp'
         doh_subdomain:
           $ref: '#/components/schemas/subdomain'
+        ecs_support:
+          $ref: '#/components/schemas/ecs-support'
         id:
           $ref: '#/components/schemas/locations_components-schemas-uuid'
         ip:
@@ -37819,6 +37908,8 @@ paths:
               properties:
                 client_default:
                   $ref: '#/components/schemas/client-default'
+                ecs_support:
+                  $ref: '#/components/schemas/ecs-support'
                 name:
                   $ref: '#/components/schemas/locations_components-schemas-name'
                 networks:
@@ -37937,6 +38028,8 @@ paths:
               properties:
                 client_default:
                   $ref: '#/components/schemas/client-default'
+                ecs_support:
+                  $ref: '#/components/schemas/ecs-support'
                 name:
                   $ref: '#/components/schemas/locations_components-schemas-name'
                 networks:
@@ -59510,6 +59603,310 @@ paths:
         enterprise: true
         free: true
         pro: true
+  /zones/{zone_identifier}/web3/hostnames/{identifier}/ipfs_universal_path/content_list:
+    get:
+      operationId: web3-hostname-ipfs-universal-path-gateway-content-list-details
+      parameters:
+      - in: path
+        name: identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      - in: path
+        name: zone_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/content_list_response'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: IPFS Universal Path Gateway Content List Details response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/content_list_response'
+          description: IPFS Universal Path Gateway Content List Details response
+      security:
+      - api_email: []
+        api_key: []
+      summary: IPFS Universal Path Gateway Content List Details
+      x-cfPlanAvailability:
+        business: false
+        enterprise: true
+        free: false
+        pro: false
+    put:
+      operationId: web3-hostname-update-ipfs-universal-path-gateway-content-list
+      parameters:
+      - in: path
+        name: identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      - in: path
+        name: zone_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/content_list'
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/content_list_response'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Update IPFS Universal Path Gateway Content List response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/content_list_response'
+          description: Update IPFS Universal Path Gateway Content List response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Update IPFS Universal Path Gateway Content List
+      x-cfPlanAvailability:
+        business: false
+        enterprise: true
+        free: false
+        pro: false
+  /zones/{zone_identifier}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries:
+    get:
+      operationId: web3-hostname-list-ipfs-universal-path-gateway-content-list-entries
+      parameters:
+      - in: path
+        name: identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      - in: path
+        name: zone_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/content_list_entry_collection_response'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: List IPFS Universal Path Gateway Content List Entries response
+            failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/content_list_entry_collection_response'
+          description: List IPFS Universal Path Gateway Content List Entries response
+      security:
+      - api_email: []
+        api_key: []
+      summary: List IPFS Universal Path Gateway Content List Entries
+      x-cfPlanAvailability:
+        business: false
+        enterprise: true
+        free: false
+        pro: false
+    post:
+      operationId: web3-hostname-create-ipfs-universal-path-gateway-content-list-entry
+      parameters:
+      - in: path
+        name: identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      - in: path
+        name: zone_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/content_list_entry_create_request'
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/content_list_entry_single_response'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Create IPFS Universal Path Gateway Content List Entry response
+            failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/content_list_entry_single_response'
+          description: Create IPFS Universal Path Gateway Content List Entry response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Create IPFS Universal Path Gateway Content List Entry
+      x-cfPlanAvailability:
+        business: false
+        enterprise: true
+        free: false
+        pro: false
+  /zones/{zone_identifier}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries/{content_list_entry_identifier}:
+    delete:
+      operationId: web3-hostname-delete-ipfs-universal-path-gateway-content-list-entry
+      parameters:
+      - in: path
+        name: content_list_entry_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      - in: path
+        name: identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      - in: path
+        name: zone_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      requestBody:
+        content:
+          application/json: {}
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/api-response-single-id'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Delete IPFS Universal Path Gateway Content List Entry response
+            failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/api-response-single-id'
+          description: Delete IPFS Universal Path Gateway Content List Entry response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Delete IPFS Universal Path Gateway Content List Entry
+      x-cfPlanAvailability:
+        business: false
+        enterprise: true
+        free: false
+        pro: false
+    get:
+      operationId: web3-hostname-ipfs-universal-path-gateway-content-list-entry-details
+      parameters:
+      - in: path
+        name: content_list_entry_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      - in: path
+        name: identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      - in: path
+        name: zone_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/content_list_entry_single_response'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: IPFS Universal Path Gateway Content List Entry Details response
+            failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/content_list_entry_single_response'
+          description: IPFS Universal Path Gateway Content List Entry Details response
+      security:
+      - api_email: []
+        api_key: []
+      summary: IPFS Universal Path Gateway Content List Entry Details
+      x-cfPlanAvailability:
+        business: false
+        enterprise: true
+        free: false
+        pro: false
+    put:
+      operationId: web3-hostname-edit-ipfs-universal-path-gateway-content-list-entry
+      parameters:
+      - in: path
+        name: content_list_entry_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      - in: path
+        name: identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      - in: path
+        name: zone_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/content_list_entry_create_request'
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/content_list_entry_single_response'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Edit IPFS Universal Path Gateway Content List Entry response
+            failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/content_list_entry_single_response'
+          description: Edit IPFS Universal Path Gateway Content List Entry response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Edit IPFS Universal Path Gateway Content List Entry
+      x-cfPlanAvailability:
+        business: false
+        enterprise: true
+        free: false
+        pro: false
   /zones/{zone_identifier}/workers/script:
     delete:
       description: Delete your worker. This call has no response body on a successful
