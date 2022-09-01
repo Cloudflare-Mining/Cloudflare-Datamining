@@ -72,7 +72,7 @@ async function getChunks(){
 
 	const appRes = await fetch(`${staticDashURL}${appFile}`, {agent});
 	const appJs = await appRes.text();
-	await writeJS(appFile, appJs);
+	//await writeJS(appFile, appJs);
 
 	// get chunks from AST
 	const chunks = [];
@@ -115,7 +115,7 @@ async function getChunks(){
 				return;
 			}
 			translations[node.arguments[0].value] ??= {};
-			console.log('Found translation--call', node.arguments[0].value);
+			console.log('Found translation', node.arguments[0].value);
 			for(const property of node.arguments[1].properties){
 				if(property.key.type === 'Identifier'){
 					translations[node.arguments[0].value][property.key.name] = property.value.value;
@@ -361,11 +361,11 @@ async function run(){
 		await fs.writeFile(file, JSON.stringify(sorted, null, '\t'));
 	}
 
-	// app version
-	if(chunks.app.version){
-		const versionFile = path.resolve(`../data/zt-dashboard/version.json`);
-		await fs.writeFile(versionFile, JSON.stringify(chunks.app.version, null, '\t'));
-	}
+	// // app version
+	// if(chunks.app.version){
+	// 	const versionFile = path.resolve(`../data/zt-dashboard/version.json`);
+	// 	await fs.writeFile(versionFile, JSON.stringify(chunks.app.version, null, '\t'));
+	// }
 
 	// parse navigation
 	let navigation = null;
@@ -396,6 +396,20 @@ async function run(){
 			fs.ensureDir(path.dirname(file));
 			await fs.writeFile(file, JSON.stringify(realNavigation, null, '\t'));
 		}
+	}
+
+	const version = await fetch(`${staticDashURL}version.json`, {agent});
+	if(version.ok){
+		const json = await version.json();
+		const file = path.resolve(`../data/zt-dashboard/version.json`);
+		await fs.ensureDir(path.dirname(file));
+		await fs.writeFile(file, JSON.stringify(json, null, '\t'));
+
+		const allVersions = await fs.readJson(path.resolve('../data/zt-dashboard/versions.json'));
+		if(!allVersions.some(existingVersion => existingVersion.revision === json.revision && existingVersion.build_id === json.build_id)){
+			allVersions.unshift(json);
+		}
+		await fs.writeFile(path.resolve('../data/zt-dashboard/versions.json'), JSON.stringify(allVersions, null, '\t'));
 	}
 
 	console.log('Pushing!');

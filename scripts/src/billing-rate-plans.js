@@ -141,7 +141,7 @@ try{
 	const plans = ratePlanRaw.matchAll(/\('(.*)?'\)/g);
 	for(const plan of plans){
 		const planName = plan?.[1]?.trim?.()?.toLowerCase?.();
-		if(!planName){
+		if(!planName || planName === '_list'){
 			continue;
 		}
 		addRatePlan(planName);
