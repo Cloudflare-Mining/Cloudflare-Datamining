@@ -77002,6 +77002,9 @@
 															"client_default": {
 																"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1gateway~1locations/post/requestBody/content/application~1json/schema/properties/client_default"
 															},
+															"ecs_support": {
+																"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1gateway~1locations/post/requestBody/content/application~1json/schema/properties/ecs_support"
+															},
 															"created_at": {
 																"$ref": "#/paths/~1user~1load_balancers~1monitors/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/created_on"
 															},
@@ -77094,7 +77097,12 @@
 									"client_default": {
 										"type": "boolean",
 										"description": "Set if the location is the default one",
-										"example": "false"
+										"example": false
+									},
+									"ecs_support": {
+										"type": "boolean",
+										"description": "Set if the location needs to resolve EDNS queries",
+										"example": false
 									}
 								}
 							}
@@ -77161,6 +77169,9 @@
 														},
 														"client_default": {
 															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1gateway~1locations~1%7Buuid%7D/put/requestBody/content/application~1json/schema/properties/client_default"
+														},
+														"ecs_support": {
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1gateway~1locations~1%7Buuid%7D/put/requestBody/content/application~1json/schema/properties/ecs_support"
 														},
 														"created_at": {
 															"$ref": "#/paths/~1user~1load_balancers~1monitors/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/created_on"
@@ -77250,7 +77261,12 @@
 									"client_default": {
 										"type": "boolean",
 										"description": "Set if the location is the default one",
-										"example": "false"
+										"example": false
+									},
+									"ecs_support": {
+										"type": "boolean",
+										"description": "Set if the location needs to resolve EDNS queries",
+										"example": false
 									}
 								}
 							}
