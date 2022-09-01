@@ -128,7 +128,7 @@
 				"objects": [],
 				"example": "{\n  \"limit\": 20,\n  \"cursor\": \"MjAyMS0xMC0xOVQyMDo1MDoyNS41NDU5NDda.L2KKczEeEeynSvpH_4kcCQ\",\n  \"start_date\": \"2017-06-14T00:00:00Z\",\n  \"end_date\": \"2017-06-14T00:00:00Z\",\n  \"order_by\": \"created\",\n  \"direction\": \"desc\",\n  \"deviceName\": \"MyPhone\",\n  \"userName\": \"John\",\n  \"email\": \"user@example.com\",\n  \"type\": \"windows\",\n  \"version\": \"1.0.0\",\n  \"match\": \"any\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"user\": {\n        \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n        \"name\": \"John Appleseed\",\n        \"email\": \"user@example.com\"\n      },\n      \"key\": \"yek0SUYoOQ10vMGsIYAevozXUQpQtNFJFfFGqER/BGc=\",\n      \"device_type\": \"windows\",\n      \"name\": \"My mobile device\",\n      \"model\": \"MyPhone(pro-X)\",\n      \"manufacturer\": \"My phone corp\",\n      \"deleted\": true,\n      \"version\": \"1.0.0\",\n      \"serial_number\": \"EXAMPLEHMD6R\",\n      \"os_version\": \"10.0.0\",\n      \"mac_address\": \"00-00-5E-00-53-00\",\n      \"ip\": \"1.1.1.1\",\n      \"created\": \"2017-06-14T00:00:00Z\",\n      \"updated\": \"2017-06-14T00:00:00Z\",\n      \"last_seen\": \"2017-06-14T00:00:00Z\",\n      \"revoked_at\": \"2017-06-14T00:00:00Z\"\n    }\n  ]\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"user\": {\n        \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n        \"name\": \"John Appleseed\",\n        \"email\": \"user@example.com\"\n      },\n      \"key\": \"yek0SUYoOQ10vMGsIYAevozXUQpQtNFJFfFGqER/BGc=\",\n      \"device_type\": \"windows\",\n      \"name\": \"My mobile device\",\n      \"model\": \"MyPhone(pro-X)\",\n      \"manufacturer\": \"My phone corp\",\n      \"deleted\": true,\n      \"version\": \"1.0.0\",\n      \"serial_number\": \"EXAMPLEHMD6R\",\n      \"os_version\": \"10.0.0\",\n      \"os_distro_name\": \"ubuntu\",\n      \"os_distro_revision\": \"1.0.0\",\n      \"mac_address\": \"00-00-5E-00-53-00\",\n      \"ip\": \"1.1.1.1\",\n      \"created\": \"2017-06-14T00:00:00Z\",\n      \"updated\": \"2017-06-14T00:00:00Z\",\n      \"last_seen\": \"2017-06-14T00:00:00Z\",\n      \"revoked_at\": \"2017-06-14T00:00:00Z\"\n    }\n  ]\n}"
 		},
 		{
 			"title": "Device Details",
@@ -140,7 +140,7 @@
 			"html_id": "devices-device-details",
 			"uri": "accounts/:identifier/devices/:uuid",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"user\": {\n      \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"name\": \"John Appleseed\",\n      \"email\": \"user@example.com\"\n    },\n    \"key\": \"yek0SUYoOQ10vMGsIYAevozXUQpQtNFJFfFGqER/BGc=\",\n    \"device_type\": \"windows\",\n    \"name\": \"My mobile device\",\n    \"model\": \"MyPhone(pro-X)\",\n    \"manufacturer\": \"My phone corp\",\n    \"deleted\": true,\n    \"version\": \"1.0.0\",\n    \"serial_number\": \"EXAMPLEHMD6R\",\n    \"os_version\": \"10.0.0\",\n    \"mac_address\": \"00-00-5E-00-53-00\",\n    \"ip\": \"1.1.1.1\",\n    \"created\": \"2017-06-14T00:00:00Z\",\n    \"updated\": \"2017-06-14T00:00:00Z\",\n    \"last_seen\": \"2017-06-14T00:00:00Z\",\n    \"revoked_at\": \"2017-06-14T00:00:00Z\"\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"user\": {\n      \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"name\": \"John Appleseed\",\n      \"email\": \"user@example.com\"\n    },\n    \"key\": \"yek0SUYoOQ10vMGsIYAevozXUQpQtNFJFfFGqER/BGc=\",\n    \"device_type\": \"windows\",\n    \"name\": \"My mobile device\",\n    \"model\": \"MyPhone(pro-X)\",\n    \"manufacturer\": \"My phone corp\",\n    \"deleted\": true,\n    \"version\": \"1.0.0\",\n    \"serial_number\": \"EXAMPLEHMD6R\",\n    \"os_version\": \"10.0.0\",\n    \"os_distro_name\": \"ubuntu\",\n    \"os_distro_revision\": \"1.0.0\",\n    \"mac_address\": \"00-00-5E-00-53-00\",\n    \"ip\": \"1.1.1.1\",\n    \"created\": \"2017-06-14T00:00:00Z\",\n    \"updated\": \"2017-06-14T00:00:00Z\",\n    \"last_seen\": \"2017-06-14T00:00:00Z\",\n    \"revoked_at\": \"2017-06-14T00:00:00Z\"\n  }\n}"
 		},
 		{
 			"title": "Revoke Devices",
@@ -455,6 +455,16 @@
 				"example": "\"10.0.0\"",
 				"description": "The operating system version"
 			},
+			"os_distro_name": {
+				"type": "string",
+				"example": "\"ubuntu\"",
+				"description": "The Linux distro name"
+			},
+			"os_distro_revision": {
+				"type": "string",
+				"example": "\"1.0.0\"",
+				"description": "The Linux distro revision"
+			},
 			"mac_address": {
 				"type": "string",
 				"example": "\"00-00-5E-00-53-00\"",
@@ -503,6 +513,8 @@
 			"version",
 			"serial_number",
 			"os_version",
+			"os_distro_name",
+			"os_distro_revision",
 			"mac_address",
 			"ip",
 			"created",
@@ -511,7 +523,7 @@
 			"revoked_at"
 		],
 		"objects": [],
-		"example": "{\n  \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n  \"user\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"name\": \"John Appleseed\",\n    \"email\": \"user@example.com\"\n  },\n  \"key\": \"yek0SUYoOQ10vMGsIYAevozXUQpQtNFJFfFGqER/BGc=\",\n  \"device_type\": \"windows\",\n  \"name\": \"My mobile device\",\n  \"model\": \"MyPhone(pro-X)\",\n  \"manufacturer\": \"My phone corp\",\n  \"deleted\": true,\n  \"version\": \"1.0.0\",\n  \"serial_number\": \"EXAMPLEHMD6R\",\n  \"os_version\": \"10.0.0\",\n  \"mac_address\": \"00-00-5E-00-53-00\",\n  \"ip\": \"1.1.1.1\",\n  \"created\": \"2017-06-14T00:00:00Z\",\n  \"updated\": \"2017-06-14T00:00:00Z\",\n  \"last_seen\": \"2017-06-14T00:00:00Z\",\n  \"revoked_at\": \"2017-06-14T00:00:00Z\"\n}",
+		"example": "{\n  \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n  \"user\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"name\": \"John Appleseed\",\n    \"email\": \"user@example.com\"\n  },\n  \"key\": \"yek0SUYoOQ10vMGsIYAevozXUQpQtNFJFfFGqER/BGc=\",\n  \"device_type\": \"windows\",\n  \"name\": \"My mobile device\",\n  \"model\": \"MyPhone(pro-X)\",\n  \"manufacturer\": \"My phone corp\",\n  \"deleted\": true,\n  \"version\": \"1.0.0\",\n  \"serial_number\": \"EXAMPLEHMD6R\",\n  \"os_version\": \"10.0.0\",\n  \"os_distro_name\": \"ubuntu\",\n  \"os_distro_revision\": \"1.0.0\",\n  \"mac_address\": \"00-00-5E-00-53-00\",\n  \"ip\": \"1.1.1.1\",\n  \"created\": \"2017-06-14T00:00:00Z\",\n  \"updated\": \"2017-06-14T00:00:00Z\",\n  \"last_seen\": \"2017-06-14T00:00:00Z\",\n  \"revoked_at\": \"2017-06-14T00:00:00Z\"\n}",
 		"title": "Devices",
 		"description": "Manage devices enrolled in Cloudflare for Teams."
 	}
