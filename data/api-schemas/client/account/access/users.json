@@ -90,7 +90,7 @@
 				"objects": [],
 				"example": "{\n  \"seat_type\": \"any\",\n  \"since\": \"2020-07-01T05:20:00Z\",\n  \"until\": \"2020-10-01T05:20:00Z\",\n  \"offset\": 0,\n  \"per_page\": 20,\n  \"direction\": \"desc\",\n  \"match\": \"all\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"f3b12456-80dd-4e89-9f5f-ba3dfff12365\",\n      \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"uid\": \"9a7806061c88ada191ed06f989cc3dac\",\n      \"name\": \"jdoe@example.com\",\n      \"email\": \"jdoe@example.com\",\n      \"last_successful_login\": \"2020-07-01T05:20:00Z\",\n      \"access_seat\": false,\n      \"gateway_seat\": false,\n      \"seat_uid\": \"9a7806061c88ada191ed06f989cc3dac\",\n      \"active_device_count\": 2\n    }\n  ],\n  \"result_info\": {\n    \"page\": 1,\n    \"per_page\": 100,\n    \"count\": 1,\n    \"total_count\": 1\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"f3b12456-80dd-4e89-9f5f-ba3dfff12365\",\n      \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"uid\": \"9a7806061c88ada191ed06f989cc3dac\",\n      \"name\": \"Jane Doe\",\n      \"email\": \"jdoe@example.com\",\n      \"last_successful_login\": \"2020-07-01T05:20:00Z\",\n      \"access_seat\": false,\n      \"gateway_seat\": false,\n      \"seat_uid\": \"9a7806061c88ada191ed06f989cc3dac\",\n      \"active_device_count\": 2\n    }\n  ],\n  \"result_info\": {\n    \"page\": 1,\n    \"per_page\": 100,\n    \"count\": 1,\n    \"total_count\": 1\n  }\n}"
 		},
 		{
 			"title": "Get failed logins",
@@ -144,9 +144,8 @@
 			},
 			"name": {
 				"type": "string",
-				"example": "\"jdoe@example.com\"",
-				"format": "email",
-				"description": "The email of the user."
+				"example": "\"Jane Doe\"",
+				"description": "The name of the user."
 			},
 			"email": {
 				"type": "string",
@@ -200,7 +199,7 @@
 			"active_device_count"
 		],
 		"objects": [],
-		"example": "{\n  \"id\": \"f3b12456-80dd-4e89-9f5f-ba3dfff12365\",\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"uid\": \"9a7806061c88ada191ed06f989cc3dac\",\n  \"name\": \"jdoe@example.com\",\n  \"email\": \"jdoe@example.com\",\n  \"last_successful_login\": \"2020-07-01T05:20:00Z\",\n  \"access_seat\": false,\n  \"gateway_seat\": false,\n  \"seat_uid\": \"9a7806061c88ada191ed06f989cc3dac\",\n  \"active_device_count\": 2\n}",
+		"example": "{\n  \"id\": \"f3b12456-80dd-4e89-9f5f-ba3dfff12365\",\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"uid\": \"9a7806061c88ada191ed06f989cc3dac\",\n  \"name\": \"Jane Doe\",\n  \"email\": \"jdoe@example.com\",\n  \"last_successful_login\": \"2020-07-01T05:20:00Z\",\n  \"access_seat\": false,\n  \"gateway_seat\": false,\n  \"seat_uid\": \"9a7806061c88ada191ed06f989cc3dac\",\n  \"active_device_count\": 2\n}",
 		"title": "Zero Trust users",
 		"description": "Users enrolled in a Zero Trust organization."
 	}

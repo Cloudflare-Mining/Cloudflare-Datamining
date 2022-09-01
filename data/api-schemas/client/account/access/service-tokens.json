@@ -89,6 +89,18 @@
 			"uri": "accounts/:identifier/access/service_tokens/:uuid",
 			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/access/service_tokens/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"name\": \"CI/CD token\",\n    \"client_id\": \"88bf3b6d86161464f6509f7219099e57.access.example.com\"\n  }\n}"
+		},
+		{
+			"title": "Refresh a service token",
+			"description": "Refreshes the expiration of a service token",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/access/service_tokens/{#/definitions/uuid}/refresh",
+			"method": "POST",
+			"cfOwnership": "access",
+			"html_id": "access-service-tokens-refresh-a-service-token",
+			"uri": "accounts/:identifier/access/service_tokens/:uuid/refresh",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/access/service_tokens/f174e90a-fafe-4643-bbbc-4a0ed4fc8415/refresh\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"name\": \"CI/CD token\",\n    \"client_id\": \"88bf3b6d86161464f6509f7219099e57.access.example.com\"\n  }\n}"
 		}
 	],
 	"html_id": "access-service-tokens",

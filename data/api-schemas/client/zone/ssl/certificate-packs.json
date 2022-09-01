@@ -44,7 +44,7 @@
 				"objects": [],
 				"example": "{\n  \"status\": \"all\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"3822ff90-ea29-44df-9e55-21300bb9419b\",\n      \"type\": \"custom\",\n      \"hosts\": [\n        \"example.com\",\n        \"*.example.com\",\n        \"www.example.com\"\n      ],\n      \"certificates\": [\n        {\n          \"id\": \"2458ce5a-0c35-4c7f-82c7-8e9487d3ff60\",\n          \"hosts\": [\n            \"example.com\"\n          ],\n          \"issuer\": \"GlobalSign\",\n          \"signature\": \"SHA256WithRSA\",\n          \"status\": \"active\",\n          \"bundle_method\": \"ubiquitous\",\n          \"geo_restrictions\": {\n            \"label\": \"us\"\n          },\n          \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n          \"uploaded_on\": \"2014-01-01T05:20:00Z\",\n          \"modified_on\": \"2014-01-01T05:20:00Z\",\n          \"expires_on\": \"2016-01-01T05:20:00Z\",\n          \"priority\": 1\n        }\n      ],\n      \"primary_certificate\": \"7e7b8deba8538af625850b7b2530034c\"\n    }\n  ]\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"3822ff90-ea29-44df-9e55-21300bb9419b\",\n      \"type\": \"custom\",\n      \"hosts\": [\n        \"example.com\",\n        \"*.example.com\",\n        \"www.example.com\"\n      ],\n      \"certificates\": [\n        {\n          \"id\": \"2458ce5a-0c35-4c7f-82c7-8e9487d3ff60\",\n          \"hosts\": [\n            \"example.com\"\n          ],\n          \"issuer\": \"GlobalSign\",\n          \"signature\": \"SHA256WithRSA\",\n          \"status\": \"active\",\n          \"bundle_method\": \"ubiquitous\",\n          \"geo_restrictions\": {\n            \"label\": \"us\"\n          },\n          \"policy\": \"(country: US) or (region: EU)\",\n          \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n          \"uploaded_on\": \"2014-01-01T05:20:00Z\",\n          \"modified_on\": \"2014-01-01T05:20:00Z\",\n          \"expires_on\": \"2016-01-01T05:20:00Z\",\n          \"priority\": 1\n        }\n      ],\n      \"primary_certificate\": \"7e7b8deba8538af625850b7b2530034c\"\n    }\n  ]\n}"
 		},
 		{
 			"title": "Get Certificate Pack",
@@ -67,7 +67,7 @@
 			"html_id": "certificate-packs-get-certificate-pack",
 			"uri": "zones/:zone_identifier/ssl/certificate_packs/:identifier",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/ssl/certificate_packs/3822ff90-ea29-44df-9e55-21300bb9419b\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"3822ff90-ea29-44df-9e55-21300bb9419b\",\n    \"type\": \"custom\",\n    \"hosts\": [\n      \"example.com\",\n      \"*.example.com\",\n      \"www.example.com\"\n    ],\n    \"certificates\": [\n      {\n        \"id\": \"2458ce5a-0c35-4c7f-82c7-8e9487d3ff60\",\n        \"hosts\": [\n          \"example.com\"\n        ],\n        \"issuer\": \"GlobalSign\",\n        \"signature\": \"SHA256WithRSA\",\n        \"status\": \"active\",\n        \"bundle_method\": \"ubiquitous\",\n        \"geo_restrictions\": {\n          \"label\": \"us\"\n        },\n        \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n        \"uploaded_on\": \"2014-01-01T05:20:00Z\",\n        \"modified_on\": \"2014-01-01T05:20:00Z\",\n        \"expires_on\": \"2016-01-01T05:20:00Z\",\n        \"priority\": 1\n      }\n    ],\n    \"primary_certificate\": \"7e7b8deba8538af625850b7b2530034c\"\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"3822ff90-ea29-44df-9e55-21300bb9419b\",\n    \"type\": \"custom\",\n    \"hosts\": [\n      \"example.com\",\n      \"*.example.com\",\n      \"www.example.com\"\n    ],\n    \"certificates\": [\n      {\n        \"id\": \"2458ce5a-0c35-4c7f-82c7-8e9487d3ff60\",\n        \"hosts\": [\n          \"example.com\"\n        ],\n        \"issuer\": \"GlobalSign\",\n        \"signature\": \"SHA256WithRSA\",\n        \"status\": \"active\",\n        \"bundle_method\": \"ubiquitous\",\n        \"geo_restrictions\": {\n          \"label\": \"us\"\n        },\n        \"policy\": \"(country: US) or (region: EU)\",\n        \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n        \"uploaded_on\": \"2014-01-01T05:20:00Z\",\n        \"modified_on\": \"2014-01-01T05:20:00Z\",\n        \"expires_on\": \"2016-01-01T05:20:00Z\",\n        \"priority\": 1\n      }\n    ],\n    \"primary_certificate\": \"7e7b8deba8538af625850b7b2530034c\"\n  }\n}"
 		},
 		{
 			"title": "Get Certificate Pack Quotas",
@@ -135,7 +135,7 @@
 				"objects": [],
 				"example": "{\n  \"hosts\": [\n    \"example.com\",\n    \"*.example.com\",\n    \"www.example.com\"\n  ]\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"3822ff90-ea29-44df-9e55-21300bb9419b\",\n    \"type\": \"custom\",\n    \"hosts\": [\n      \"example.com\",\n      \"*.example.com\",\n      \"www.example.com\"\n    ],\n    \"certificates\": [\n      {\n        \"id\": \"2458ce5a-0c35-4c7f-82c7-8e9487d3ff60\",\n        \"hosts\": [\n          \"example.com\"\n        ],\n        \"issuer\": \"GlobalSign\",\n        \"signature\": \"SHA256WithRSA\",\n        \"status\": \"active\",\n        \"bundle_method\": \"ubiquitous\",\n        \"geo_restrictions\": {\n          \"label\": \"us\"\n        },\n        \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n        \"uploaded_on\": \"2014-01-01T05:20:00Z\",\n        \"modified_on\": \"2014-01-01T05:20:00Z\",\n        \"expires_on\": \"2016-01-01T05:20:00Z\",\n        \"priority\": 1\n      }\n    ],\n    \"primary_certificate\": \"7e7b8deba8538af625850b7b2530034c\"\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"3822ff90-ea29-44df-9e55-21300bb9419b\",\n    \"type\": \"custom\",\n    \"hosts\": [\n      \"example.com\",\n      \"*.example.com\",\n      \"www.example.com\"\n    ],\n    \"certificates\": [\n      {\n        \"id\": \"2458ce5a-0c35-4c7f-82c7-8e9487d3ff60\",\n        \"hosts\": [\n          \"example.com\"\n        ],\n        \"issuer\": \"GlobalSign\",\n        \"signature\": \"SHA256WithRSA\",\n        \"status\": \"active\",\n        \"bundle_method\": \"ubiquitous\",\n        \"geo_restrictions\": {\n          \"label\": \"us\"\n        },\n        \"policy\": \"(country: US) or (region: EU)\",\n        \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n        \"uploaded_on\": \"2014-01-01T05:20:00Z\",\n        \"modified_on\": \"2014-01-01T05:20:00Z\",\n        \"expires_on\": \"2016-01-01T05:20:00Z\",\n        \"priority\": 1\n      }\n    ],\n    \"primary_certificate\": \"7e7b8deba8538af625850b7b2530034c\"\n  }\n}"
 		},
 		{
 			"title": "Order Advanced Certificate Manager Certificate Pack",
@@ -332,7 +332,7 @@
 			},
 			"certificates": {
 				"type": "array",
-				"example": "[\n  {\n    \"id\": \"2458ce5a-0c35-4c7f-82c7-8e9487d3ff60\",\n    \"hosts\": [\n      \"example.com\"\n    ],\n    \"issuer\": \"GlobalSign\",\n    \"signature\": \"SHA256WithRSA\",\n    \"status\": \"active\",\n    \"bundle_method\": \"ubiquitous\",\n    \"geo_restrictions\": {\n      \"label\": \"us\"\n    },\n    \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"uploaded_on\": \"2014-01-01T05:20:00Z\",\n    \"modified_on\": \"2014-01-01T05:20:00Z\",\n    \"expires_on\": \"2016-01-01T05:20:00Z\",\n    \"priority\": 1\n  }\n]",
+				"example": "[\n  {\n    \"id\": \"2458ce5a-0c35-4c7f-82c7-8e9487d3ff60\",\n    \"hosts\": [\n      \"example.com\"\n    ],\n    \"issuer\": \"GlobalSign\",\n    \"signature\": \"SHA256WithRSA\",\n    \"status\": \"active\",\n    \"bundle_method\": \"ubiquitous\",\n    \"geo_restrictions\": {\n      \"label\": \"us\"\n    },\n    \"policy\": \"(country: US) or (region: EU)\",\n    \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"uploaded_on\": \"2014-01-01T05:20:00Z\",\n    \"modified_on\": \"2014-01-01T05:20:00Z\",\n    \"expires_on\": \"2016-01-01T05:20:00Z\",\n    \"priority\": 1\n  }\n]",
 				"items": {
 					"id": "https://api.cloudflare.com/schemas/v4/client/zone/custom-certificate.json",
 					"$schema": "http://json-schema.org/draft-04/hyper-schema#",
@@ -449,6 +449,11 @@
 								}
 							},
 							"description": "Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance."
+						},
+						"policy": {
+							"type": "string",
+							"description": "Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.",
+							"example": "(country: US) or (region: EU)"
 						},
 						"type": {
 							"type": "string",
@@ -1240,6 +1245,11 @@
 								}
 							},
 							"description": "Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance."
+						},
+						"policy": {
+							"type": "string",
+							"description": "Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.",
+							"example": "(country: US) or (region: EU)"
 						},
 						"zone_id": {
 							"description": "Zone identifier tag",
@@ -3895,6 +3905,11 @@
 										},
 										"description": "Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance."
 									},
+									"policy": {
+										"type": "string",
+										"description": "Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.",
+										"example": "(country: US) or (region: EU)"
+									},
 									"type": {
 										"type": "string",
 										"enum": [
@@ -4397,6 +4412,11 @@
 											}
 										},
 										"description": "Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance."
+									},
+									"policy": {
+										"type": "string",
+										"description": "Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.",
+										"example": "(country: US) or (region: EU)"
 									}
 								}
 							},
@@ -5210,7 +5230,7 @@
 			"primary_certificate"
 		],
 		"objects": [],
-		"example": "{\n  \"id\": \"3822ff90-ea29-44df-9e55-21300bb9419b\",\n  \"type\": \"custom\",\n  \"hosts\": [\n    \"example.com\",\n    \"*.example.com\",\n    \"www.example.com\"\n  ],\n  \"certificates\": [\n    {\n      \"id\": \"2458ce5a-0c35-4c7f-82c7-8e9487d3ff60\",\n      \"hosts\": [\n        \"example.com\"\n      ],\n      \"issuer\": \"GlobalSign\",\n      \"signature\": \"SHA256WithRSA\",\n      \"status\": \"active\",\n      \"bundle_method\": \"ubiquitous\",\n      \"geo_restrictions\": {\n        \"label\": \"us\"\n      },\n      \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n      \"uploaded_on\": \"2014-01-01T05:20:00Z\",\n      \"modified_on\": \"2014-01-01T05:20:00Z\",\n      \"expires_on\": \"2016-01-01T05:20:00Z\",\n      \"priority\": 1\n    }\n  ],\n  \"primary_certificate\": \"7e7b8deba8538af625850b7b2530034c\"\n}",
+		"example": "{\n  \"id\": \"3822ff90-ea29-44df-9e55-21300bb9419b\",\n  \"type\": \"custom\",\n  \"hosts\": [\n    \"example.com\",\n    \"*.example.com\",\n    \"www.example.com\"\n  ],\n  \"certificates\": [\n    {\n      \"id\": \"2458ce5a-0c35-4c7f-82c7-8e9487d3ff60\",\n      \"hosts\": [\n        \"example.com\"\n      ],\n      \"issuer\": \"GlobalSign\",\n      \"signature\": \"SHA256WithRSA\",\n      \"status\": \"active\",\n      \"bundle_method\": \"ubiquitous\",\n      \"geo_restrictions\": {\n        \"label\": \"us\"\n      },\n      \"policy\": \"(country: US) or (region: EU)\",\n      \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n      \"uploaded_on\": \"2014-01-01T05:20:00Z\",\n      \"modified_on\": \"2014-01-01T05:20:00Z\",\n      \"expires_on\": \"2016-01-01T05:20:00Z\",\n      \"priority\": 1\n    }\n  ],\n  \"primary_certificate\": \"7e7b8deba8538af625850b7b2530034c\"\n}",
 		"title": "Certificate Packs"
 	}
 }
