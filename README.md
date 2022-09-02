@@ -12,6 +12,7 @@ You can join the Discord at https://discord.gg/Z94Hn6qVDm for notifications of c
 
 ## Data
 
+- `account`: Tracks a free account's entitlements and flags
 - `api-schemas`: This extracts the API schemas from `api.cloudflare.com`, and tracks their changes over time.
 - `billing-rate-plans`: This tracks billing rate plans and their changes over time.
 - `cdn-cgi`: This tracks various changes to `cdn-cgi` endpoints on Cloudflare's CDN, as well as `request.cf` keys for any additions or changes. This also tracks component changes throughout Cloudflare's network and their different datacenters.
