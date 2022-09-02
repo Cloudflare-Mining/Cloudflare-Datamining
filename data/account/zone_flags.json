@@ -1,0 +1,411 @@
+{
+	"APIGatewayandAPIShieldsecurity/managementfeatures.": {
+		"json_body_validation": false
+	},
+	"Calls": {
+		"calls": false,
+		"enabled": false
+	},
+	"ChallengeAPI": {
+		"beta": false
+	},
+	"CloudflareImages": {
+		"beta_access": false,
+		"sourcing_kit_enabled": false,
+		"sourcing_kit_waitlist": true
+	},
+	"CloudflarePubsub": {
+		"enabled": false
+	},
+	"Ninjapanelrelatedproductandfeatures": {
+		"use_mobx_np_auth_component": true
+	},
+	"Research": {
+		"visitor_ip": false
+	},
+	"Secondary DNS": {
+		"enable": false,
+		"onboarding": true,
+		"partial_to_secondary": false
+	},
+	"access": {
+		"access_ip_lists": false,
+		"access_non_idp_rules_at_allow": false,
+		"access_resolver_activity_log_enabled": false,
+		"access_resolver_origin_registry_enabled": false,
+		"access_self_serve_sso": false,
+		"allows_dev_colo": false,
+		"app_launcher": false,
+		"custom_auth_domain": false,
+		"device_posture_ui": false,
+		"disable_login_lockdown": false,
+		"dlp_dlpscan": false,
+		"dlp_eng_only": false,
+		"malware_scanning": false,
+		"s2s_posture": false,
+		"teams_biso_beta": false,
+		"teams_browser_isolate": false,
+		"teams_casb_alpha": false,
+		"teams_casb_beta": false,
+		"teams_dashboard": false,
+		"teams_devices_enrollment": false,
+		"teams_dot_enabled": false,
+		"teams_executive_dash": false,
+		"teams_gateway_antivirus": false,
+		"teams_gateway_billing_enabled": false,
+		"teams_l4_firewall": false,
+		"teams_onboarding": false,
+		"teams_purpose_justification": false,
+		"teams_rule_builder": false,
+		"teams_split_tunnel": false,
+		"teams_ssh_logging": false,
+		"teams_ui_alpha_engineering_only": false,
+		"teams_ui_core": false,
+		"tls_client_auth": false,
+		"zt_dlp_beta": false,
+		"zt_network_discovery": false,
+		"zt_seats_garbage_collector": false
+	},
+	"account_analytics": {
+		"carbon_dashboard": true,
+		"dos_analytics": false,
+		"dos_analytics_v2": false,
+		"grey_cloud": true,
+		"overview": true,
+		"workers_analytics_engine": false
+	},
+	"addressing": {
+		"ip_prefixes": false
+	},
+	"alert notification service": {
+		"http_alerts_origin_error_rate_enabled": false,
+		"rom_alerts_use_ans": true,
+		"show_integration_pagerduty": false,
+		"show_integration_webhooks": false
+	},
+	"analytics": {
+		"account_overview": false,
+		"logpush_v2_enabled": true,
+		"secondary_nav": true,
+		"zap_enabled": true,
+		"zap_opt_in": false,
+		"zone-overview-abr": false
+	},
+	"anomaly_detection_alerter": {
+		"http_edge_error_alert_enabled": false,
+		"http_origin_error_alert_high_sensitivity_enabled": false,
+		"http_origin_error_rate_alert_high_sensitivity_enabled": false,
+		"periodicity_alerting_enabled": false
+	},
+	"billing": {
+		"compliance-docs-enable": true,
+		"contract_self_service_allowed": false,
+		"contract_self_service_allowed_bots": false,
+		"contract_self_service_allowed_load_balancing": false,
+		"contract_self_service_allowed_r2": true,
+		"cr-compliance-docs": false,
+		"enable_delay_downgrade": true,
+		"invoices-view-disallowed": false,
+		"no_cf_free_zero_cost": true,
+		"show_old_dedicated_certs": false,
+		"ubb_alerts": false,
+		"ui_refresh": false
+	},
+	"bots": {
+		"analytics": true,
+		"enabled": false,
+		"management": true,
+		"paygo": true
+	},
+	"cache": {
+		"analytics": true,
+		"cache_reserve_beta": true,
+		"cache_reserve_beta_accepted": false,
+		"crawlhints_card": true,
+		"crawlhints_enabled": false,
+		"earlyhints_beta_signup": false,
+		"earlyhints_enabled": false,
+		"photo_dna": true,
+		"tiered_cache_for_all": true,
+		"tiered_cache_plus": true
+	},
+	"cloudflare_images": {
+		"early_release_access": true
+	},
+	"ddos_protection": {
+		"advanced_tcp_protection": false,
+		"l4_rulesets": true
+	},
+	"dns": {},
+	"dns_editor": {
+		"enabled": false,
+		"record_wizard": false,
+		"safe_edit": false
+	},
+	"edge_reachability_dash": {
+		"dash_view": true
+	},
+	"edge_zone_tracing": {
+		"ends_at": 0,
+		"pii": false,
+		"ratio": 0,
+		"starts_at": 0,
+		"uri": ""
+	},
+	"email": {
+		"beta": false,
+		"max_addresses": 200,
+		"max_rules": 200,
+		"visible": false,
+		"workers_enabled": false,
+		"workers_waitlist": true
+	},
+	"firewall": {
+		"analytics_load_on_scroll": false,
+		"api_shield_tab": true,
+		"captcha_solved_rate": true,
+		"filter_ui": true,
+		"managed_rules_matched_data": false,
+		"matched_data_enabled": false,
+		"matched_data_public_key": "",
+		"per_rule_activity_sparkline": true,
+		"rule_log_ref_field": false,
+		"rule_preview": true,
+		"tab_analytics": true,
+		"waf_tab": true
+	},
+	"http_applications": {
+		"beta_access": false
+	},
+	"i18n": {
+		"language_selector_enabled": false
+	},
+	"intel": {
+		"attack_surface_report": true
+	},
+	"kv": {
+		"enabled": false
+	},
+	"lists": {
+		"enabled": true,
+		"managed_lists": true
+	},
+	"load_balancing": {
+		"analytics": true,
+		"demodal": true,
+		"hc_analytics_v1": true,
+		"health_checks_analytics": true,
+		"health_checks_tab": true
+	},
+	"logs": {
+		"instant_log": true
+	},
+	"magic_firewall": {
+		"analytics": true
+	},
+	"magic_transit": {
+		"configuration": false,
+		"mt_healthchecks": false,
+		"mt_home": false
+	},
+	"magic_wan": {
+		"mw_home": false
+	},
+	"nel_reporting": {
+		"enable": false,
+		"encrypted_state": true,
+		"endpoint_params": "",
+		"success_fraction": 0.01
+	},
+	"origin_reachability_dash": {
+		"dash_view": false
+	},
+	"page_rules": {
+		"cache_rules": false,
+		"config_rules": false,
+		"dynamic_redirects": false,
+		"edge_visualization": false,
+		"normalization": true,
+		"origin_rules": false,
+		"response_headers": false,
+		"to_react": true,
+		"transform_rules": true
+	},
+	"protocols": {
+		"gRPC": false,
+		"grpc_beta": true,
+		"websocket_handover": false
+	},
+	"quic": {
+		"enabled": true,
+		"show_signup_ui": false
+	},
+	"r2": {
+		"r2_logpush": true
+	},
+	"real_user_monitoring": {
+		"enabled": false,
+		"releaseVer": 1,
+		"samplingRate": 10,
+		"visible": true,
+		"waitlisted": false
+	},
+	"registrar": {
+		"donated": false,
+		"enabled": true,
+		"expiration": true,
+		"global_wave": 0,
+		"opted_in": false,
+		"partner": false,
+		"registrar-managed": false,
+		"registration": true,
+		"registration-api-enabled": false,
+		"registration-override": false,
+		"tweeted": false
+	},
+	"sandbox": {
+		"e2e_test": 0,
+		"e2e_test_bool": true,
+		"test_product_feature": true
+	},
+	"spectrum": {
+		"argo_smart_routing": false,
+		"byoip": false,
+		"dns_grpc": false,
+		"enabled": false,
+		"ftp": false,
+		"ipv4_quota": 10,
+		"payg": false,
+		"ppv2_webrtcturn": false,
+		"subscribed": false,
+		"udp": false,
+		"webrtc_turn": false,
+		"workers": false
+	},
+	"speed": {
+		"amp_real_urls_enabled": false,
+		"apo": true,
+		"enabled": false,
+		"image_resizing_new_pricing": true,
+		"sxg_beta": true,
+		"sxg_visible": true
+	},
+	"ssl": {
+		"client_certificates": true,
+		"show_ussl_ca_selector_card": false
+	},
+	"stream": {
+		"4k": false,
+		"allrenditionsreadywebhook": false,
+		"clipping": true,
+		"connect": true,
+		"connect_destination_limit": 10,
+		"connect_source_limit": 1000,
+		"custom_hostnames": true,
+		"custom_hostnames_limit": 5,
+		"customer_subdomain": true,
+		"encode2": true,
+		"encoding_bufsize_multiple": 1,
+		"encoding_maxbitrate_multiple": 1,
+		"encoding_preset": "faster",
+		"hq_audio": false,
+		"live": true,
+		"maxProcessingConcurrency": 120,
+		"maxWatermarks": 1000,
+		"max_download_concurrency": 120,
+		"max_fps": 90,
+		"mp4download": true,
+		"public-details-enabled": false,
+		"quality_parameter": 23,
+		"rm-11631": false,
+		"rtmp_playback": true,
+		"source_stats": true,
+		"srt": true,
+		"srt_playback": true,
+		"storageUseEmail": true,
+		"storage_0": false,
+		"storage_1": true,
+		"storage_2": false,
+		"stream-4371": false,
+		"stream-subdomain-copy": false,
+		"tcdc": false
+	},
+	"support_2": {
+		"tsf_helperbot": true,
+		"tsf_v2": true,
+		"tsf_v3": true
+	},
+	"test_product_description": {},
+	"waitingroomaccessfeatureflipper": {
+		"analytics": false,
+		"waiting_rooms_ga": true,
+		"waiting_rooms_survey": false
+	},
+	"warp": {
+		"allowedTunnels": 1000,
+		"enabled": false,
+		"maxConnectionsPerHostname": 10,
+		"maxConnectionsPerNamedTunnel": 100,
+		"max_named_tunnels_per_account": 1000,
+		"max_routes_per_account": 1000,
+		"max_vnets_per_account": 1000
+	},
+	"workers": {
+		"actors": false,
+		"appworker_develop": false,
+		"bulk_compute": true,
+		"cfsql_bindings": false,
+		"cloudflare_pages": false,
+		"cloudflare_pages_admin": false,
+		"cloudflare_pages_build_image_v2": false,
+		"cloudflare_pages_concurrent_builds_limit": 1,
+		"cloudflare_pages_direct_uploads": true,
+		"cloudflare_pages_functions_beta": true,
+		"cloudflare_pages_functions_daily_limit": 1000001,
+		"cloudflare_pages_gitlab_beta": true,
+		"cloudflare_pages_internal_ewc": true,
+		"cloudflare_pages_nmrsdd": false,
+		"cloudflare_pages_preview_branch_syntax_preview": true,
+		"cloudflare_pages_project_limit_override": false,
+		"cloudflare_pages_skip_commit": true,
+		"cloudflare_pages_streaming_logs": true,
+		"cloudflare_pages_wfp_routing": false,
+		"cron_triggers": -1,
+		"durable_object_alarms": false,
+		"durable_objects": false,
+		"enabled": false,
+		"green_compute": true,
+		"live_tailing": false,
+		"origin_workers": true,
+		"origin_workers_limit": 100,
+		"queues": false,
+		"r2_admin_bindings": false,
+		"r2_bindings": true,
+		"r2_publicbuckets": false,
+		"request_cpu_ms": -1,
+		"same_zone_worker_on_subrequest": false,
+		"scheduled": false,
+		"script_limit_exception": 100,
+		"script_rebalancing": true,
+		"script_size_limit_exception_mb": 1,
+		"scripts": 1000,
+		"service_bindings": true,
+		"subrequest_limit": 1000,
+		"tail_rps_limit": 200,
+		"text_binding_size_limit_exception": 5120,
+		"trace_workers_self_tracing": false,
+		"triggers_ui": false,
+		"use_pipeline": false,
+		"user_notifications": true,
+		"workers_for_saas": false
+	},
+	"zaraz": {
+		"enabled": true
+	},
+	"zt_gateway": {
+		"1000_dns_rules": false,
+		"dedicated_egress_udp": false,
+		"geo_exit_ip_map": false,
+		"h3_inspection": false
+	}
+}

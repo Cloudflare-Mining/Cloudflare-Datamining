@@ -1,0 +1,82 @@
+[
+	{
+		"id": "filters.max_lists",
+		"feature": {
+			"feature_set": "filters",
+			"id": 731,
+			"key": "filters.max_lists",
+			"name": "Filters - Max Lists"
+		},
+		"allocation": {
+			"value": 1,
+			"type": "max_count"
+		},
+		"created_date": "2022-08-16T17:48:05.000000",
+		"edited_date": "2022-08-16T17:57:54.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "logpush.audit_log_events.max_jobs_allowed",
+		"feature": {
+			"feature_set": "logpush",
+			"id": 904,
+			"key": "logpush.audit_log_events.max_jobs_allowed",
+			"name": "Logpush - Audit Logs - Max Jobs"
+		},
+		"allocation": {
+			"value": 2,
+			"type": "max_count"
+		},
+		"created_date": "2022-08-16T17:51:10.000000",
+		"edited_date": "2022-08-16T17:51:10.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "filters.mass_redirects_max_lists",
+		"feature": {
+			"feature_set": "filters",
+			"id": 961,
+			"key": "filters.mass_redirects_max_lists",
+			"name": "Mass URL Redirects - URL Lists"
+		},
+		"allocation": {
+			"value": 25,
+			"type": "max_count"
+		},
+		"created_date": "2022-08-16T17:51:10.000000",
+		"edited_date": "2022-08-16T17:51:10.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "filters.mass_redirects_max_list_items",
+		"feature": {
+			"feature_set": "filters",
+			"id": 962,
+			"key": "filters.mass_redirects_max_list_items",
+			"name": "Mass URL Redirects - Redirects Allowed"
+		},
+		"allocation": {
+			"value": 10000,
+			"type": "max_count"
+		},
+		"created_date": "2022-08-16T17:51:10.000000",
+		"edited_date": "2022-08-16T17:51:10.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "rulesets.edge_rules",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 963,
+			"key": "rulesets.edge_rules",
+			"name": "Account level - Edge Rules"
+		},
+		"allocation": {
+			"value": 50,
+			"type": "max_count"
+		},
+		"created_date": "2022-08-16T17:51:10.000000",
+		"edited_date": "2022-08-16T17:51:10.000000",
+		"deleted_date": ""
+	}
+]

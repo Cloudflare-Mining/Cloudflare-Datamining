@@ -10,7 +10,8 @@
 	"scripts": {
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
-		"mine": "npm run mine:npm && npm run mine:types && npm run mine:github && npm run mine:api-schemas && npm run mine:ips && npm run mine:coveo && npm run mine:gates && npm run mine:products && npm run mine:billing-rate-plans",
+		"mine": "npm run mine:npm && npm run mine:types && npm run mine:github && npm run mine:api-schemas && npm run mine:ips && npm run mine:coveo && npm run mine:gates && npm run mine:products && npm run mine:billing-rate-plans && npm run mine:graphql && npm run mine:account",
+		"mine:account": "node src/account.js",
 		"mine:api-schemas": "node src/api-schemas.js",
 		"mine:billing-rate-plans": "node src/billing-rate-plans.js",
 		"mine:cdn-cgi": "node src/cdn-cgi.js",
@@ -19,6 +20,7 @@
 		"mine:domains": "node src/domains.js",
 		"mine:gates": "node src/gates.js",
 		"mine:github": "node src/github.js",
+		"mine:graphql": "node src/graphql.js",
 		"mine:ips": "node src/ips.js",
 		"mine:npm": "node src/npm.js",
 		"mine:marketing": "node src/marketing.js",
