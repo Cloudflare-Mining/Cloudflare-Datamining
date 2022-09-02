@@ -137,7 +137,7 @@ You will only be billed each month based on how many minutes you stream. If you 
 	modal_add_storage_custom_calculation: (0, a.d)(E(), "value"),
 	modal_add_extra_storage_custom_calculation: (0, a.d)(O(), "value"),
 	modal_extra_images: (0, a.d)(I(), "value"),
-	modal_total_storage: (0, a.d)(P(), "value"),
+	modal_total_storage: (0, a.d)(A(), "value"),
 	subscription: {
 		error: "There was an error enabling Stream",
 		success: "Created Stream subscription successfully",
@@ -192,18 +192,19 @@ After enabling Stream, upload videos to get an embed code in minutes. View [deve
 	question_mark: "?",
 	banners_beta_end_ent: "Stream beta has ended. Thank you for using Stream during the beta period! Please contact your Success Manager for continued upload service.",
 	banners_beta_end: "Stream Beta has ended. Thank you for using Stream during the beta period!",
-	banners_low_storage_capacity_contract_customer: (0, a.d)(A(), "percentRemaining"),
+	banners_low_storage_capacity_contract_customer: (0, a.d)(P(), "percentRemaining"),
 	banners_low_storage_capacity_payg: (0, a.d)(T(), "percentRemaining"),
 	banners_no_remaining_capacity_contract_customer: (0, a.d)(R()),
-	banners_no_remaining_capacity_payg: (0, a.d)(k()),
+	banners_no_remaining_capacity_payg: (0, a.d)(C()),
 	embed: "Embed",
+	public_details: "Public Details",
 	embed_restrictions_tooltip: "Enter allowed origins for embedding video. Leave blank to allow embedding everywhere.",
 	embed_restrictions_placeholder: "Allow embedding everywhere",
 	embed_restrictions_textarea_label: "Allowed Origins",
 	embed_restrictions_textarea_helper: "Comma separated list of origins to restrict embedding. Cloudflare's dashboard is always allowed. Leave blank to allow all origins.",
 	require_signed_urls: "Require Signed URLs",
 	enable_mp4_downloads: "Enable MP4 Downloads",
-	creating_download: (0, a.d)(C(), "percentComplete"),
+	creating_download: (0, a.d)(k(), "percentComplete"),
 	error_creating_download: (0, a.d)(S()),
 	get_keys_here: "(Get an API key here)",
 	get_tokens_here: "(Get an API token here)",
@@ -484,11 +485,11 @@ To read the full docs, [click here](https://developers.cloudflare.com/stream/).`
 	live_video_inputs: "Live Inputs",
 	live_video_input_id: "Live Input ID",
 	custom_input_domains: "Custom Input Domains",
-	custom_input_domains_description: (0, a.d)(h()),
+	custom_input_domains_description: (0, a.d)(v()),
 	cname_not_found_yet: "CNAME record not found yet. If you've already created the record it may take some time for DNS caches to expire.",
 	domain_required: "Domain is required",
 	invalid_domain: "Invalid domain",
-	custom_input_domains_limit_reached: (0, a.d)(v(), "limit"),
+	custom_input_domains_limit_reached: (0, a.d)(g(), "limit"),
 	error_fetching_custom_input_domains: "An error occured while fetching Custom Domains",
 	add_domain: "Add domain",
 	delete_domain_confirmation_title: "Delete Custom Live Input Domain?",
@@ -511,7 +512,7 @@ To read the full docs, [click here](https://developers.cloudflare.com/stream/).`
 	stream_key_required: "Stream Key is required.",
 	create_output: "Create Output",
 	output_confirm_delete_title: "Delete Output?",
-	output_confirm_delete_body: (0, a.d)(g(), "outputUrl"),
+	output_confirm_delete_body: (0, a.d)(h(), "outputUrl"),
 	url_required: "URL is required.",
 	output_url_required: "Output URL is required.",
 	output_url_invalid_protocol: "Output URL must use rtmp:// or rtmps:// protocol.",
@@ -624,7 +625,7 @@ To read the full docs, [click here](https://developers.cloudflare.com/stream/).`
 	email_verification_required: "You must <0>verify your email address</0> before you can enable Cloudflare Stream.",
 	video_minutes_viewed_in_last_thirty_days: (0, a.d)(_(), "minutesViewed"),
 	domain_notice: "Cloudflare is investigating reports of `videodelivery.net` being inaccessible from certain local ISPs. While we investigate these reports, we recommend switching to the backup domain `cloudflarestream.com`:\n  - If you are using the Stream Player: `https://iframe.cloudflarestream.com/$VIDEOID`\n  - If you are using your own player: `https://cloudflarestream.com/$VIDEOID/manifest/manifest.m3u8`",
-	custom_subdomain_notice: (0, a.d)(i(), "customer_subdomain"),
+	custom_subdomain_notice: (0, a.d)(n(), "customer_subdomain"),
 	create_cname_record_title: "Automatically create CNAME record?",
 	coming_in_aug_15_notice: (0, a.d)(u(), "customer_subdomain"),
 	create_cname_record_description: (0, a.d)(l(), "cname", "zone"),
@@ -634,5 +635,31 @@ To read the full docs, [click here](https://developers.cloudflare.com/stream/).`
 	created_cname_success: "CNAME record created successfully!",
 	customer_subdomain: "Customer subdomain",
 	read_docs: "read docs",
-	customer_subdomain_tooltip: "This domain is specific to your Cloudflare account. Use it for all requests to fetch video manifests, thumbnails and embed codes."
+	customer_subdomain_tooltip: "This domain is specific to your Cloudflare account. Use it for all requests to fetch video manifests, thumbnails and embed codes.",
+	public_details_validation: {
+		link_limit: "Link exceeds the max allowed length of 2048",
+		title_limit: "Title exceeds the max allowed length of 100"
+	},
+	public_details_tab: {
+		title: {
+			label: "Title",
+			placeholder: "Enter a title to overlay on your video",
+			tooltip: "(Optional) Displays a title over the video when hovering over the video"
+		},
+		logo: {
+			label: "Logo",
+			placeholder: "Enter a link of an image to overlay on a video",
+			tooltip: "(Optional) Displays an image logo from the provided link when hovering over the video"
+		},
+		channel_link: {
+			label: "Channel Link",
+			placeholder: "Enter a link which will redirect the user when clicking on the logo",
+			tooltip: "(Optional) This link is added as a clickable link to the title and logo if provided"
+		},
+		share_link: {
+			label: "Share Link",
+			placeholder: "This link is added as a share url to the share button",
+			tooltip: "(Optional) This link is added as a share url to the share button"
+		}
+	}
 }
