@@ -159,3 +159,8 @@ export const DomainEligibility = eg.object({
 });
 
 export type DomainEligibility = TypeFromCodec<typeof DomainEligibility>;
+
+export const DomainProtectionConfigPostResult = eg.object({
+  status: eg.number,
+  message: eg.string
+});

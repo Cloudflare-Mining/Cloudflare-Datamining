@@ -28,7 +28,8 @@ export const Permissions = eg.object({
   worker: PermValue,
   zaraz: PermValue,
   zone: PermValue,
-  zone_settings: PermValue
+  zone_settings: PermValue,
+  http_applications: PermValue,
 });
 
 export type Permissions = TypeFromCodec<typeof Permissions>;

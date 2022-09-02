@@ -43,7 +43,6 @@ export const ApiToken = eg.object({
   zoneResources: eg.array(ZoneResource).optional,
   permissionGroups: eg.array(eg.string || eg.number),
   rowId: eg.number,
-  'h-captcha-response': eg.string.optional,
   cf_challenge_response: eg.string.optional
 });
 
