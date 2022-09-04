@@ -25,6 +25,17 @@ const payloads = [
 			"exactMatch": false,
 		}],
 	},
+	{
+		"apiKey": process.env.WHOISXMLAPI_KEY,
+		"sinceDate": "2009-01-01",
+		"mode": "purchase",
+		"punycode": true,
+		"advancedSearchTerms": [{
+			"field": "RegistrantContact.Email",
+			"term": "domains@cloudflare.com",
+			"exactMatch": true,
+		}],
+	},
 ];
 const domainsRes = [
 	await fetch(`https://registrant-alert.whoisxmlapi.com/api/v2`, {
