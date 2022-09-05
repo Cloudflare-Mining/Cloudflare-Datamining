@@ -36,8 +36,6 @@ if(rss.ok){
 	}
 }
 
-console.log('Processing blog posts...', blogURLs.size);
-
 const limit = pLimit(20);
 // setup helpers for puppeteer
 const browser = await puppeteer.launch({
@@ -102,6 +100,8 @@ for(const element of sitemapXml?.html?.head?.body?.div?.table?.tbody?.tr ?? []){
 	}
 }
 await fs.writeFile(path.resolve(dir, 'sitemap.json'), JSON.stringify([...blogURLs].sort(), null, '\t'));
+
+console.log('Processing blog posts...', blogURLs.size);
 
 const promises = [];
 for(const url of blogURLs){
