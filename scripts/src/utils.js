@@ -55,7 +55,7 @@ export async function tryAndPush(files, commitMessage, webhookUsername, webhookM
 		await git.push('origin', 'main');
 		const commit = (await git.log({maxCount: 1})).latest;
 		if(commit.hash !== prevCommit.hash){
-			const commitUrl = `https://github.com/Cherry/Cloudflare-Datamining/commit/${commit.hash}`;
+			const commitUrl = `https://github.com/Cloudflare-Mining/Cloudflare-Datamining/commit/${commit.hash}`;
 			await sendToDiscord(webhookUsername, `[${webhookMessage}](${commitUrl})`, type);
 		}
 	}catch(err){
